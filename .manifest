@@ -1,5 +1,5 @@
 host=dev3.dnet
-server=main.novikombank.3.dev.dalee.ru
+server=s1.main.novikombank.3.dev.dalee.ru
 strategy=plain
 
 [users]
