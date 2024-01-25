@@ -1,0 +1,6 @@
+host=dev3.dnet
+server=main.novikombank.3.dev.dalee.ru
+strategy=plain
+
+[users]
+markiros=/home/markiros/web/novikombank/main

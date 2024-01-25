@@ -1,0 +1,31 @@
+include:
+  - project: 'dalee/git-autodeploy'
+    ref: gitlab-ci
+    file: '/autodeploy.gitlab-ci.yml'
+
+variables:
+  AUTODEPLOY_BASE_DOMAIN: main.novikombank.23.dev.dalee.ru
+
+##
+# Deploy to production
+#
+#.base_deploy:
+#  stage: deploy
+#  image: dalee/php-deployer
+#  tags:
+#    - docker_dalee
+#  before_script:
+#    - mkdir -p ~/.ssh && chmod 700 ~/.ssh && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+#    - eval $(ssh-agent -s)
+#    - chmod 600 $SSH_PRIVATE_DEPLOY_KEY
+#    - ssh-add $SSH_PRIVATE_DEPLOY_KEY
+#  script:
+#    - dep deploy $CI_ENVIRONMENT_NAME -o branch=$CI_COMMIT_REF_NAME
+#
+#deploy:production:
+#  extends: .base_deploy
+#  environment:
+#    name: production
+#    url: https://novikombank.ru/
+#  only:
+#    - production
