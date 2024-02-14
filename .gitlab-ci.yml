@@ -4,7 +4,7 @@ include:
     file: '/autodeploy.gitlab-ci.yml'
 
 variables:
-  AUTODEPLOY_BASE_DOMAIN: main.novikombank.23.dev.dalee.ru
+  AUTODEPLOY_BASE_DOMAIN: main.novikombank.3.dev.dalee.ru
 
 ##
 # Deploy to production
