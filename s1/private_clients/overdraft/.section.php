@@ -1,0 +1,6 @@
+<?
+$sSectionName = "Овердрафт";
+$arDirProperties = Array(
+
+);
+?>

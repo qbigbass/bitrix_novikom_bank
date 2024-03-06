@@ -1,0 +1,6 @@
+<?
+$sSectionName = "МСФО";
+$arDirProperties = Array(
+
+);
+?>
