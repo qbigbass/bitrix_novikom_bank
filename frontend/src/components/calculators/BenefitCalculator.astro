@@ -1,5 +1,4 @@
 ---
-
 import ADropDownButton from "../ui/ADropDown/ADropDownButton/ADropDownButton.astro";
 import ATab from "../ui/ATabs/common/ATab/ATab.astro";
 import LoanApplicationForm from "../common/LoanApplicationForm/LoanApplicationForm.astro";
@@ -14,8 +13,8 @@ import ATabs from "../ui/ATabs/ATabs.astro";
 <CalculatorLayout class="benefit-calculator">
 	<Fragment slot="form">
 		<div class="benefit-calculator">
-			<div class="section-calculate-benefit__types-loan-tabs">
-				<div class="section-calculate-benefit__types-loan-tabs-descktop">
+			<div class="benefit-calculator__tabs">
+				<div class="benefit-calculator__tabs-desktop">
 					<ATabs>
 						<Fragment slot="tabs">
 							<ATab size="m" isActive>Потребительский кредит</ATab>
@@ -23,7 +22,7 @@ import ATabs from "../ui/ATabs/ATabs.astro";
 						</Fragment>
 					</ATabs>
 				</div>
-				<div class="section-calculate-benefit__types-loan-tabs-mobile">
+				<div class="benefit-calculator__tabs-mobile">
 					<ASelectInput size="s">
 						<ADropDownButton value="Потребительский кредит" selected>Потребительский кредит</ADropDownButton>
 						<ADropDownButton value="Рефинансирование">Рефинансирование</ADropDownButton>
@@ -49,7 +48,7 @@ import ATabs from "../ui/ATabs/ATabs.astro";
 				type="month"
 				editable
 			/>
-			<div class="section-calculate-benefit__agreements">
+			<div class="benefit-calculator__agreements">
 				<ACheckbox id="is-card-novkom" size="m">
 					<div class="body-m-light" slot="label">Получаю зарплату на карту НОВИКОМ</div>
 				</ACheckbox>
@@ -65,3 +64,45 @@ import ATabs from "../ui/ATabs/ATabs.astro";
 		</APolygonContainer>
 	</Fragment>
 </CalculatorLayout>
+
+<style lang="scss" is:global>
+    @import '@styles/media-queries';
+
+    .benefit-calculator {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+
+        @include use-media(tablet) {
+            gap: 2.5rem;
+        }
+
+        @include use-media(tablet-album) {
+            gap: 3rem;
+        }
+
+        &__tabs-desktop {
+            display: none;
+
+            @include use-media(tablet-album) {
+                display: block;
+            }
+        }
+
+        &__tabs-mobile {
+            @include use-media(tablet-album) {
+                display: none;
+            }
+        }
+
+        &__agreements {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+
+            @include use-media(tablet) {
+                gap: 1rem;
+            }
+        }
+    }
+</style>
