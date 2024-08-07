@@ -23,6 +23,7 @@ import ATableRow from "../components/common/ATable/ATableRow.astro";
 import ATable from "../components/common/ATable/ATable.astro";
 import ATableBody from "../components/common/ATable/ATableBody.astro";
 import ATableCell from "../components/common/ATable/ATableCell.astro";
+import MortgageCalculator from "../components/calculators/MortgageCalculator.astro";
 
 const benefitCards = [
 	{
@@ -83,7 +84,7 @@ const benefitCards = [
 		</Fragment>
 		<Fragment slot="tabPanels">
 			<ATabPanel value="0">
-				<p class="body-m-light">Калькулятор</p>
+				<MortgageCalculator />
 			</ATabPanel>
 			<ATabPanel value="1">
 				<ATable class="md:in-column" cols="2">
