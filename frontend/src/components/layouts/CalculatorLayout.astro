@@ -1,10 +1,26 @@
 ---
+interface Props {
+    classList?: string;
+}
 
+const {
+    class: classList
+} = Astro.props as Props
 ---
 
-<div class="calculator-layout">
+<div class:list={[
+    'calculator-layout',
+    classList
+]}>
 	<div class="calculator-layout__form">
 		<slot name="form" />
+        {
+            Astro.slots['agreements'] && (
+                <div class="calculator-layout__agreements">
+                    <slot name="agreements" />
+                </div>
+            )
+        }
 	</div>
 	<div class="calculator-layout__card">
 		<slot name="card" />
@@ -17,7 +33,33 @@
 	.calculator-layout {
 		display: grid;
 		grid-template-columns: 100%;
+        align-items: flex-start;
 		gap: 1.5rem;
+
+        &__form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+
+            @include use-media(tablet) {
+                gap: 2.5rem;
+            }
+
+            @include use-media(tablet-album) {
+                gap: 3rem;
+                padding-left: 2.5rem;
+            }
+        }
+
+        &__agreements {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+
+            @include use-media(tablet) {
+                gap: 1rem;
+            }
+        }
 
 		@include use-media(tablet) {
 			gap: 2.5rem;

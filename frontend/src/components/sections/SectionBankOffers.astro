@@ -11,7 +11,7 @@ const offerCards = [
 	{
 		title: 'Вклад «Рантье»',
 		description: '',
-		symbolId: 'rentier-contribution-2',
+		imgSrc: 'assets/big-illustrations/large-individual/contribution-rentier.png',
 		href: '#',
 		beforeNumberText: 'до',
 		numberText: '15,5%',
@@ -23,7 +23,7 @@ const offerCards = [
 	{
 		title: 'Резервирование<br>счетов',
 		description: 'Дистанционная подача заявки<br>на&nbsp;открытие расчетного счета',
-		symbolId: 'account-reservation-3',
+        imgSrc: 'assets/big-illustrations/large-corporate/account-reservation.png',
 		href: '#',
 		beforeNumberText: '',
 		numberText: '',
@@ -35,7 +35,7 @@ const offerCards = [
 	{
 		title: 'Экспресс-гарантии<br>44-ФЗ, 223-ФЗ',
 		description: 'Принятие решения за 1 день,<br>до&nbsp;30 000 000 рублей, без залога',
-		symbolId: 'express-guarantee',
+        imgSrc: 'assets/big-illustrations/large-corporate/guarantees.png',
 		href: '#',
 		beforeNumberText: '',
 		numberText: '',
@@ -44,42 +44,42 @@ const offerCards = [
 		tagText: 'Малому и среднему бизнесу',
 		cardColor: 'yellow'
 	},
-	{
-		title: 'Вклад «Рантье»',
-		description: '',
-		symbolId: 'rentier-contribution-2',
-		href: '#',
-		beforeNumberText: 'до',
-		numberText: '15,5%',
-		afterNumberText: '',
-		buttonText: 'Открыть вклад',
-		tagText: 'Частным клиентам',
-		cardColor: 'green'
-	},
-	{
-		title: 'Резервирование<br>счетов',
-		description: 'Дистанционная подача заявки<br>на&nbsp;открытие расчетного счета',
-		symbolId: 'account-reservation-3',
-		href: '#',
-		beforeNumberText: '',
-		numberText: '',
-		afterNumberText: '',
-		buttonText: 'Подать заявку',
-		tagText: 'Корпоративным клиентам',
-		cardColor: 'orange'
-	},
-	{
-		title: 'Экспресс-гарантии<br>44-ФЗ, 223-ФЗ',
-		description: 'Принятие решения за 1 день,<br>до&nbsp;30 000 000 рублей, без залога',
-		symbolId: 'express-guarantee',
-		href: '#',
-		beforeNumberText: '',
-		numberText: '',
-		afterNumberText: '',
-		buttonText: 'Оформить',
-		tagText: 'Малому и среднему бизнесу',
-		cardColor: 'yellow'
-	},
+    {
+        title: 'Вклад «Рантье»',
+        description: '',
+        imgSrc: 'assets/big-illustrations/large-individual/contribution-rentier.png',
+        href: '#',
+        beforeNumberText: 'до',
+        numberText: '15,5%',
+        afterNumberText: '',
+        buttonText: 'Открыть вклад',
+        tagText: 'Частным клиентам',
+        cardColor: 'green'
+    },
+    {
+        title: 'Резервирование<br>счетов',
+        description: 'Дистанционная подача заявки<br>на&nbsp;открытие расчетного счета',
+        imgSrc: 'assets/big-illustrations/large-corporate/account-reservation.png',
+        href: '#',
+        beforeNumberText: '',
+        numberText: '',
+        afterNumberText: '',
+        buttonText: 'Подать заявку',
+        tagText: 'Корпоративным клиентам',
+        cardColor: 'orange'
+    },
+    {
+        title: 'Экспресс-гарантии<br>44-ФЗ, 223-ФЗ',
+        description: 'Принятие решения за 1 день,<br>до&nbsp;30 000 000 рублей, без залога',
+        imgSrc: 'assets/big-illustrations/large-corporate/guarantees.png',
+        href: '#',
+        beforeNumberText: '',
+        numberText: '',
+        afterNumberText: '',
+        buttonText: 'Оформить',
+        tagText: 'Малому и среднему бизнесу',
+        cardColor: 'yellow'
+    }
 ];
 ---
 
@@ -95,7 +95,7 @@ const offerCards = [
 				offerCards.map((card) =>(
 					<SliderSlide>
 						<OfferCard
-							symbolId={card.symbolId}
+                            imgSrc={card.imgSrc}
 							color={card.cardColor}
 							textButton={card.buttonText}
 							title={card.title}

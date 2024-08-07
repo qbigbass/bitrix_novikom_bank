@@ -7,274 +7,308 @@ import ProductList from "../layouts/ProductList.astro";
 
 const primaryMortgageMarket = [
 	{
-		title: 'Кредит на любые цели<br> для зарплатных клиентов',
-		description: 'Воплощение задуманных планов и реализация любых целей уже сегодня',
-		symbolId: 'loan-for-any-purpose',
+		title: 'Первичный рынок',
+		description: '',
+		imgSrc: 'assets/big-illustrations/large-individual/mortgage-primary-market.png',
 		links: [],
 		tagText: '',
 		textButton: 'Оформить заявку',
 		conditions: [
 			{
 				startText: '',
-				beforeText: 'от',
-				text: '18%',
-				afterText: '',
-				currency: '',
-				description: 'Ставка'
-			},
-			{
-				startText: '',
 				beforeText: 'до',
-				text: '1 500 000',
+				text: '30 000 000',
 				afterText: '',
 				currency: '₽',
 				description: 'Сумма'
 			},
 			{
 				startText: '',
-				beforeText: 'до',
-				text: '3 лет',
+				beforeText: 'от',
+				text: '16,3%',
 				afterText: '',
-				currency: '',
-				description: 'Срок'
+				currency: '₽',
+				description: 'Процентная ставка'
 			}
-		]
-	},
-	{
-		title: 'Кредит на любые цели <br> для стратегических клиентов',
-		description: 'Воплощение задуманных планов и реализация любых целей уже сегодня',
-		symbolId: 'loan-for-any-purpose-1',
-		links: [],
-		tagText: '',
-		textButton: 'Оформить заявку',
-		conditions: [
+		],
+        additionalConditions: [
 			{
 				startText: '',
-				beforeText: 'от',
-				text: '18%',
+				beforeText: '',
+				text: '17,290 - 20,615%',
 				afterText: '',
 				currency: '',
-				description: 'Ставка'
-			},
-			{
-				startText: '',
-				beforeText: 'до',
-				text: '1 500 000',
-				afterText: '',
-				currency: '₽',
-				description: 'Сумма'
-			},
-			{
-				startText: '',
-				beforeText: 'до',
-				text: '3 лет',
-				afterText: '',
-				currency: '',
-				description: 'Срок'
+				description: 'Диапазон полной стоимости кредита'
 			}
 		]
 	}
 ]
 
 const iTMortgage = [
-	{
-		title: 'Кредит на образование',
-		description: 'Для оплаты до 100% от стоимости обучения в вузе или дополнительного образования',
-		symbolId: 'education-loan',
-		links: [],
-		tagText: '',
-		textButton: 'Оформить заявку',
-		conditions: [
-			{
-				startText: '',
-				beforeText: 'от',
-				text: '16%',
-				afterText: '',
-				currency: '',
-				description: 'Ставка'
-			},
-			{
-				startText: '',
-				beforeText: 'до',
-				text: '3 000 000',
-				afterText: '',
-				currency: '₽',
-				description: 'Сумма'
-			},
-			{
-				startText: '',
-				beforeText: 'до',
-				text: '8 лет',
-				afterText: '',
-				currency: '',
-				description: 'Срок'
-			}
-		]
-	}
+    {
+        title: 'IT-ипотека',
+        description: '',
+        imgSrc: 'assets/big-illustrations/large-individual/it-mortgage.png',
+        links: [],
+        tagText: '',
+        textButton: 'Оформить заявку',
+        conditions: [
+            {
+                startText: '',
+                beforeText: 'до',
+                text: '18 000 000',
+                afterText: '',
+                currency: '₽',
+                description: 'Сумма'
+            },
+            {
+                startText: '',
+                beforeText: 'от',
+                text: '4,8%',
+                afterText: '',
+                currency: '',
+                description: 'Процентная ставка'
+            }
+        ],
+        additionalConditions: [
+            {
+                startText: '',
+                beforeText: '',
+                text: '4,993 - 7,186%',
+                afterText: '',
+                currency: '',
+                description: 'Диапазон полной стоимости кредита'
+            }
+        ]
+    }
 ]
 
 const farEasternMortgage = [
 	{
-		title: 'Овердрафт',
-		description: 'Кредит «до зарплаты» на случай непредвиденных расходов и неотложных платежей',
-		symbolId: 'overdraft',
+		title: 'Дальневосточная ипотека',
+		description: '',
+        imgSrc: 'assets/big-illustrations/large-individual/far-eastern-mortgage.png',
 		links: [],
 		tagText: '',
 		textButton: 'Оформить заявку',
 		conditions: [
+            {
+                startText: '',
+                beforeText: 'до',
+                text: '6 000 000',
+                afterText: '',
+                currency: '₽',
+                description: 'Сумма'
+            },
 			{
 				startText: '',
 				beforeText: 'от',
-				text: '16%',
+				text: '1,4%',
 				afterText: '',
 				currency: '',
-				description: 'Ставка'
-			},
-			{
-				startText: '',
-				beforeText: 'до',
-				text: '3 000 000',
-				afterText: '',
-				currency: '₽',
-				description: 'Сумма'
-			},
-			{
-				startText: '',
-				beforeText: 'до',
-				text: '8 лет',
-				afterText: '',
-				currency: '',
-				description: 'Срок'
+				description: 'Процентная ставка'
 			}
-		]
+		],
+        additionalConditions: [
+            {
+                startText: '',
+                beforeText: '',
+                text: '2,396 - 4,167%',
+                afterText: '',
+                currency: '',
+                description: 'Диапазон полной стоимости кредита'
+            }
+        ]
 	}
 ]
 
 const secondaryMortgageMarket = [
 	{
-		title: 'Кредит на рефинансирование<br> для зарплатных клиентов',
-		description: 'Воплощение задуманных планов и реализация любых целей уже сегодня',
-		symbolId: 'refinancing-1',
+		title: 'Вторичный рынок',
+		description: '',
+        imgSrc: 'assets/big-illustrations/large-individual/mortgage-secondary-market.png',
 		links: [],
 		tagText: '',
 		textButton: 'Оформить заявку',
 		conditions: [
-			{
-				startText: '',
-				beforeText: 'от',
-				text: '16%',
-				afterText: '',
-				currency: '',
-				description: 'Ставка'
-			},
-			{
-				startText: '',
-				beforeText: 'до',
-				text: '5 000 000',
-				afterText: '',
-				currency: '₽',
-				description: 'Сумма'
-			},
-			{
-				startText: '',
-				beforeText: 'до',
-				text: '8 лет',
-				afterText: '',
-				currency: '',
-				description: 'Срок'
-			}
-		]
+            {
+                startText: '',
+                beforeText: 'до',
+                text: '30 000 000',
+                afterText: '',
+                currency: '₽',
+                description: 'Сумма'
+            },
+            {
+                startText: '',
+                beforeText: 'от',
+                text: '16,3%',
+                afterText: '',
+                currency: '',
+                description: 'Процентная ставка'
+            }
+		],
+        additionalConditions: [
+            {
+                startText: '',
+                beforeText: '',
+                text: '17,290 - 23,801%',
+                afterText: '',
+                currency: '',
+                description: 'Диапазон полной стоимости кредита'
+            }
+        ]
 	},
-	{
-		title: 'Кредит на рефинансирование<br> для стратегических клиентов',
-		description: 'Воплощение задуманных планов и реализация любых целей уже сегодня',
-		symbolId: 'refinancing',
-		links: [],
-		tagText: '',
-		textButton: 'Оформить заявку',
-		conditions: [
-			{
-				startText: '',
-				beforeText: 'от',
-				text: '16%',
-				afterText: '',
-				currency: '',
-				description: 'Ставка'
-			},
-			{
-				startText: '',
-				beforeText: 'до',
-				text: '5 000 000',
-				afterText: '',
-				currency: '₽',
-				description: 'Сумма'
-			},
-			{
-				startText: '',
-				beforeText: 'до',
-				text: '8 лет',
-				afterText: '',
-				currency: '',
-				description: 'Срок'
-			}
-		]
-	}
 ]
 
 const familyMortgage = [
 	{
-		title: 'Реструктуризация',
-		description: 'Программы для заемщиков, у которых возникли трудности с погашением кредита',
-		symbolId: 'restructuring',
+		title: 'Семейная ипотека',
+		description: '',
+        imgSrc: 'assets/big-illustrations/large-individual/family-mortgage.png',
 		links: [],
 		tagText: '',
+        textButton: 'Оформить заявку',
 		conditions: [
-			{
-				startText: 'Уменьшение',
-				beforeText: '',
-				text: '',
-				afterText: '',
-				currency: '',
-				description: 'Кредитной ставки'
-			},
-			{
-				startText: 'Кредитные',
-				beforeText: '',
-				text: '',
-				afterText: '',
-				currency: '',
-				description: 'Каникулы'
-			}
-		]
+            {
+                startText: '',
+                beforeText: 'до',
+                text: '12 000 000',
+                afterText: '',
+                currency: '₽',
+                description: 'Сумма'
+            },
+            {
+                startText: '',
+                beforeText: 'от',
+                text: '4,8%',
+                afterText: '',
+                currency: '',
+                description: 'Процентная ставка'
+            }
+		],
+        additionalConditions: [
+            {
+                startText: '',
+                beforeText: '',
+                text: '5,204 - 8,485%',
+                afterText: '',
+                currency: '',
+                description: 'Диапазон полной стоимости кредита'
+            }
+        ]
 	}
 ]
 
 const mortgageRefinancing = [
 	{
-		title: 'Реструктуризация',
-		description: 'Программы для заемщиков, у которых возникли трудности с погашением кредита',
-		symbolId: 'restructuring',
+		title: 'Рефинансирование ипотеки  стороннего банка',
+		description: '',
+        imgSrc: 'assets/big-illustrations/large-individual/refinancing.png',
 		links: [],
 		tagText: '',
+        textButton: 'Оформить заявку',
 		conditions: [
-			{
-				startText: 'Уменьшение',
-				beforeText: '',
-				text: '',
-				afterText: '',
-				currency: '',
-				description: 'Кредитной ставки'
-			},
-			{
-				startText: 'Кредитные',
-				beforeText: '',
-				text: '',
-				afterText: '',
-				currency: '',
-				description: 'Каникулы'
-			}
-		]
-	}
+            {
+                startText: '',
+                beforeText: 'до',
+                text: '30 000 000',
+                afterText: '',
+                currency: '₽',
+                description: 'Сумма'
+            },
+            {
+                startText: '',
+                beforeText: 'от',
+                text: '16,3%',
+                afterText: '',
+                currency: '',
+                description: 'Процентная ставка'
+            }
+		],
+        additionalConditions: [
+            {
+                startText: '',
+                beforeText: '',
+                text: '17,290 - 21,831%',
+                afterText: '',
+                currency: '',
+                description: 'Диапазон полной стоимости кредита'
+            }
+        ]
+	},
+    {
+        title: 'Ипотека на новостройки в ЖК ALIA',
+        description: '',
+        imgSrc: 'assets/big-illustrations/large-individual/mortgage-for-new-buildings-ALIA.png',
+        links: [],
+        tagText: '',
+        textButton: 'Оформить заявку',
+        conditions: [
+            {
+                startText: '',
+                beforeText: 'до',
+                text: '50 млн',
+                afterText: '',
+                currency: '₽',
+                description: 'Сумма'
+            },
+            {
+                startText: '',
+                beforeText: 'от',
+                text: '16,3%',
+                afterText: '',
+                currency: '',
+                description: 'Процентная ставка'
+            }
+        ],
+        additionalConditions: [
+            {
+                startText: '',
+                beforeText: '',
+                text: '17,290 – 20,615%',
+                afterText: '',
+                currency: '',
+                description: 'Диапазон полной стоимости кредита'
+            }
+        ]
+    },
+    {
+        title: 'Целевой кредит под залог имеющейся недвижимости',
+        description: '',
+        imgSrc: 'assets/big-illustrations/large-individual/secured-by-existing-real-estate.png',
+        links: [],
+        tagText: '',
+        textButton: 'Оформить заявку',
+        conditions: [
+            {
+                startText: '',
+                beforeText: 'до',
+                text: '15 000 000',
+                afterText: '',
+                currency: '₽',
+                description: 'Сумма'
+            },
+            {
+                startText: '',
+                beforeText: 'от',
+                text: '21,4%',
+                afterText: '',
+                currency: '',
+                description: 'Процентная ставка'
+            }
+        ],
+        additionalConditions: [
+            {
+                startText: '',
+                beforeText: '',
+                text: '22,395 - 28,301%',
+                afterText: '',
+                currency: '',
+                description: 'Диапазон полной стоимости кредита'
+            }
+        ]
+    }
 ]
 
 const allLoans = [
@@ -304,8 +338,9 @@ const allLoans = [
 						<ProductCard
 							title={card.title}
 							description={card.description}
-							symbolId={card.symbolId}
+							imgSrc={card.imgSrc}
 							conditions={card.conditions}
+                            additionalConditions={card.additionalConditions}
 							links={card.links}
 							tagText={card.tagText}
 							textButton={card.textButton}
@@ -321,8 +356,9 @@ const allLoans = [
 						<ProductCard
 							title={card.title}
 							description={card.description}
-							symbolId={card.symbolId}
+							imgSrc={card.imgSrc}
 							conditions={card.conditions}
+                            additionalConditions={card.additionalConditions}
 							links={card.links}
 							tagText={card.tagText}
 							textButton={card.textButton}
@@ -338,8 +374,9 @@ const allLoans = [
 						<ProductCard
 							title={card.title}
 							description={card.description}
-							symbolId={card.symbolId}
+							imgSrc={card.imgSrc}
 							conditions={card.conditions}
+                            additionalConditions={card.additionalConditions}
 							links={card.links}
 							tagText={card.tagText}
 							textButton={card.textButton}
@@ -355,8 +392,9 @@ const allLoans = [
 						<ProductCard
 							title={card.title}
 							description={card.description}
-							symbolId={card.symbolId}
+							imgSrc={card.imgSrc}
 							conditions={card.conditions}
+                            additionalConditions={card.additionalConditions}
 							links={card.links}
 							tagText={card.tagText}
 							textButton={card.textButton}
@@ -368,12 +406,13 @@ const allLoans = [
 		<ATabPanel value="4">
 			<ProductList>
 				{
-					familyMortgage.map((card) => (
+                    secondaryMortgageMarket.map((card) => (
 						<ProductCard
 							title={card.title}
 							description={card.description}
-							symbolId={card.symbolId}
+							imgSrc={card.imgSrc}
 							conditions={card.conditions}
+                            additionalConditions={card.additionalConditions}
 							links={card.links}
 							tagText={card.tagText}
 							textButton={card.textButton}
@@ -389,8 +428,9 @@ const allLoans = [
 						<ProductCard
 							title={card.title}
 							description={card.description}
-							symbolId={card.symbolId}
+							imgSrc={card.imgSrc}
 							conditions={card.conditions}
+                            additionalConditions={card.additionalConditions}
 							links={card.links}
 							tagText={card.tagText}
 							textButton={card.textButton}
@@ -406,8 +446,9 @@ const allLoans = [
 						<ProductCard
 							title={card.title}
 							description={card.description}
-							symbolId={card.symbolId}
+							imgSrc={card.imgSrc}
 							conditions={card.conditions}
+                            additionalConditions={card.additionalConditions}
 							links={card.links}
 							tagText={card.tagText}
 							textButton={card.textButton}

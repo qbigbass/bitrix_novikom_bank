@@ -26,6 +26,7 @@ import ATableCell from "../components/common/ATable/ATableCell.astro";
 import SectionLayout from "../components/layouts/SectionLayout.astro";
 import APolygonContainer from "../components/common/APolygonContainer/APolygonContainer.astro";
 import AHelper from "../components/common/AHelper.astro";
+import LoanCalculator from "../components/calculators/LoanCalculator.astro";
 
 const benefitCards = [
 	{
@@ -108,7 +109,7 @@ const benefitCards = [
 		</Fragment>
 		<Fragment slot="tabPanels">
 			<ATabPanel value="0">
-				<p class="body-m-light">Калькулятор</p>
+				<LoanCalculator />
 			</ATabPanel>
 			<ATabPanel value="1">
 				<ATable class="md:in-column" cols="2">

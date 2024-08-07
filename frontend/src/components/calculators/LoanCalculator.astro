@@ -1,0 +1,54 @@
+---
+import ADropDownButton from "../ui/ADropDown/ADropDownButton/ADropDownButton.astro";
+import LoanApplicationForm from "../common/LoanApplicationForm/LoanApplicationForm.astro";
+import ASelectInput from "../ui/ASelectInput/ASelectInput.astro";
+import ASliderInput from "../ui/ASliderInput/ASliderInput.astro";
+import APolygonContainer from "../common/APolygonContainer/APolygonContainer.astro";
+import CalculatorLayout from "../layouts/CalculatorLayout.astro";
+import ACheckbox from "../ui/ACheckbox/ACheckbox.astro";
+---
+
+<CalculatorLayout class="loan-calculator">
+	<Fragment slot="form">
+        <ASliderInput
+            id="amount-credit"
+            label="Сумма кредита"
+            maxValue={5000000}
+            minValue={20000}
+            startValue={1000000}
+            stepSize={5000}
+            editable
+            type="price"
+        />
+        <ASliderInput
+            id="payment-term"
+            label="Срок выплаты"
+            maxValue={60}
+            minValue={1}
+            startValue={36}
+            type="month"
+            editable
+        />
+        <ASelectInput size="ms" label="Особенности">
+            <ADropDownButton value="С поручительством физического лица" selected>С поручительством физического лица</ADropDownButton>
+            <ADropDownButton value="Вариант 2">Вариант 2</ADropDownButton>
+        </ASelectInput>
+        <ASelectInput size="ms" label="Тип платежей">
+            <ADropDownButton value="Аннуитетные" selected>Аннуитетные</ADropDownButton>
+            <ADropDownButton value="Вариант 2">Вариант 2</ADropDownButton>
+        </ASelectInput>
+	</Fragment>
+    <Fragment slot="agreements">
+        <ACheckbox id="is-card-novkom" size="m" checked>
+            <div class="body-m-light" slot="label">Получаю зарплату на карту НОВИКОМ</div>
+        </ACheckbox>
+        <ACheckbox id="insurance" size="m">
+            <div class="body-m-light" slot="label">Страховка</div>
+        </ACheckbox>
+    </Fragment>
+	<Fragment slot="card">
+		<APolygonContainer color="green-100">
+			<LoanApplicationForm backgroundColor="grey" />
+		</APolygonContainer>
+	</Fragment>
+</CalculatorLayout>

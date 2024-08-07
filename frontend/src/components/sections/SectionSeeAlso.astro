@@ -10,7 +10,7 @@ const offerCards = [
 	{
 		title: 'Программа «Кешбэк»',
 		description: '',
-		symbolId: 'rentier-contribution-2',
+        imgSrc: 'assets/big-illustrations/large-individual/contribution-rentier.png',
 		href: '#',
 		beforeNumberText: 'до',
 		numberText: '15,5%',
@@ -22,7 +22,7 @@ const offerCards = [
 	{
 		title: 'Ипотека по программе <br>«IT-ипотека»',
 		description: '',
-		symbolId: 'mortgage',
+        imgSrc: 'assets/big-illustrations/large-individual/it-mortgage.png',
 		href: '#',
 		beforeNumberText: 'от',
 		numberText: '4,8%',
@@ -34,7 +34,7 @@ const offerCards = [
 	{
 		title: 'Кредит<br>на образование',
 		description: '',
-		symbolId: 'education-loan',
+        imgSrc: 'assets/big-illustrations/large-individual/credit-education.png',
 		href: '#',
 		beforeNumberText: 'от',
 		numberText: '16%',
@@ -43,42 +43,42 @@ const offerCards = [
 		tagText: 'Частным клиентам',
 		cardColor: 'yellow'
 	},
-	{
-		title: 'Программа «Кешбэк»',
-		description: '',
-		symbolId: 'rentier-contribution-2',
-		href: '#',
-		beforeNumberText: 'до',
-		numberText: '15,5%',
-		afterNumberText: '',
-		buttonText: 'Открыть вклад',
-		tagText: 'Частным клиентам',
-		cardColor: 'green'
-	},
-	{
-		title: 'Ипотека по программе <br>«IT-ипотека»',
-		description: '',
-		symbolId: 'mortgage',
-		href: '#',
-		beforeNumberText: 'от',
-		numberText: '4,8%',
-		afterNumberText: '',
-		buttonText: 'Подать заявку',
-		tagText: 'Частным клиентам',
-		cardColor: 'orange'
-	},
-	{
-		title: 'Кредит<br>на образование',
-		description: '',
-		symbolId: 'education-loan',
-		href: '#',
-		beforeNumberText: 'от',
-		numberText: '16%',
-		afterNumberText: '',
-		buttonText: 'Оформить',
-		tagText: 'Частным клиентам',
-		cardColor: 'yellow'
-	}
+    {
+        title: 'Программа «Кешбэк»',
+        description: '',
+        imgSrc: 'assets/big-illustrations/large-individual/contribution-rentier.png',
+        href: '#',
+        beforeNumberText: 'до',
+        numberText: '15,5%',
+        afterNumberText: '',
+        buttonText: 'Открыть вклад',
+        tagText: 'Частным клиентам',
+        cardColor: 'green'
+    },
+    {
+        title: 'Ипотека по программе <br>«IT-ипотека»',
+        description: '',
+        imgSrc: 'assets/big-illustrations/large-individual/it-mortgage.png',
+        href: '#',
+        beforeNumberText: 'от',
+        numberText: '4,8%',
+        afterNumberText: '',
+        buttonText: 'Подать заявку',
+        tagText: 'Частным клиентам',
+        cardColor: 'orange'
+    },
+    {
+        title: 'Кредит<br>на образование',
+        description: '',
+        imgSrc: 'assets/big-illustrations/large-individual/credit-education.png',
+        href: '#',
+        beforeNumberText: 'от',
+        numberText: '16%',
+        afterNumberText: '',
+        buttonText: 'Оформить',
+        tagText: 'Частным клиентам',
+        cardColor: 'yellow'
+    }
 ];
 ---
 
@@ -90,7 +90,7 @@ const offerCards = [
 				offerCards.map((card) =>(
 					<SliderSlide>
 						<OfferCard
-							symbolId={card.symbolId}
+							imgSrc={card.imgSrc}
 							color={card.cardColor}
 							textButton={card.buttonText}
 							title={card.title}

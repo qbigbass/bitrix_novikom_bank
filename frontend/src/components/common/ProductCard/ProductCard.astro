@@ -25,6 +25,7 @@ interface Props {
 	symbolId: string;
 	imgSrc: string;
 	conditions?: Condition[];
+    additionalConditions?: Condition[];
 	links?: Link[]
 	tagText?: string;
 	textButton?: string;
@@ -36,6 +37,7 @@ const {
 	description,
 	symbolId,
 	conditions = [],
+    additionalConditions = [],
 	links = [],
 	tagText,
 	textButton,
@@ -84,28 +86,56 @@ const useTag = !!tagText;
 		</div>
 		{
 			conditions.length > 0 && (
-				<div class:list={[
-					'product-card__conditions',
-					{'is-big-gap': conditions.length <= 3}
-				]}>
-					{
-						conditions?.map((item) => (
-							<TextIndicatingBenefits
-								startText={item.startText}
-								beforeText={item.beforeText}
-								text={item.text}
-								afterText={item.afterText}
-								currency={item.currency}
-							>
-								{
-									item.description && (
-										<div class="body-m-light dark-70">{item.description}</div>
-									)
-								}
-							</TextIndicatingBenefits>
-						))
-					}
-				</div>
+                <div class="product-card__conditions-box">
+                    <div class:list={[
+                        'product-card__conditions',
+                        {'is-big-gap': conditions.length <= 3}
+                    ]}>
+                        {
+                            conditions?.map((item) => (
+                                <TextIndicatingBenefits
+                                    startText={item.startText}
+                                    beforeText={item.beforeText}
+                                    text={item.text}
+                                    afterText={item.afterText}
+                                    currency={item.currency}
+                                >
+                                    {
+                                        item.description && (
+                                            <div class="body-m-light dark-70">{item.description}</div>
+                                        )
+                                    }
+                                </TextIndicatingBenefits>
+                            ))
+                        }
+                    </div>
+                    {
+                        additionalConditions.length > 0 && (
+                            <div class:list={[
+                                'product-card__additional-conditions',
+                                {'is-big-gap': additionalConditions.length <= 3}
+                            ]}>
+                                {
+                                    additionalConditions?.map((item) => (
+                                        <TextIndicatingBenefits
+                                            startText={item.startText}
+                                            beforeText={item.beforeText}
+                                            text={item.text}
+                                            afterText={item.afterText}
+                                            currency={item.currency}
+                                        >
+                                            {
+                                                item.description && (
+                                                    <div class="body-m-light dark-70">{item.description}</div>
+                                                )
+                                            }
+                                        </TextIndicatingBenefits>
+                                    ))
+                                }
+                            </div>
+                        )
+                    }
+                </div>
 			)
 		}
 		<div class="product-card__buttons">
@@ -208,7 +238,22 @@ const useTag = !!tagText;
 			}
 		}
 
-		&__conditions {
+        &__conditions-box {
+            display: flex;
+            flex-direction: column;
+            row-gap: 1.5rem;
+
+            @include use-media(tablet) {
+                column-gap: 2.5rem;
+                row-gap: 2.5rem;
+            }
+
+            @include use-media(tablet-album) {
+                column-gap: 5rem;
+            }
+        }
+
+		&__conditions, &__additional-conditions {
 			display: flex;
 			flex-direction: column;
 			row-gap: 1.5rem;
