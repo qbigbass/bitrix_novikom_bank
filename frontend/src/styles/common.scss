@@ -1,0 +1,44 @@
+@import "normalize.css";
+@import "fonts";
+@import "variables";
+@import "media-queries";
+@import "mixins";
+@import "layouts";
+@import "theme";
+@import "utility";
+@import "typography";
+@import "colors";
+
+:root {
+	--container-padding: 1.5rem;
+
+	@include use-media(tablet) {
+		--container-padding: 2.5rem;
+	}
+
+	@include use-media(tablet-album) {
+		--container-padding: 5rem;
+	}
+
+	@include use-media(desktop) {
+		--container-padding: 10rem;
+	}
+}
+
+:root {
+	--polygon-padding: 1.5rem 1rem;
+	--polygon-square: 1.5rem;
+	--polygon-spacing: 0.5rem;
+
+	@include use-media(tablet) {
+		--polygon-padding: 2rem;
+		--polygon-square: 2rem;
+		--polygon-spacing: 1rem;
+	}
+
+	@include use-media(tablet-album) {
+		--polygon-padding: 2.5rem;
+		--polygon-square: 2.5rem;
+		--polygon-spacing: 1.5rem;
+	}
+}

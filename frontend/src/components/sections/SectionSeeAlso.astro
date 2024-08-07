@@ -1,0 +1,113 @@
+---
+import SectionLayout from "../layouts/SectionLayout.astro";
+import ATag from "../ui/ATag/ATag.astro";
+import SliderSlide from "../common/Sliders/common/SliderSlide/SliderSlide.astro";
+import OfferCard from "../common/OfferCard/OfferCard.astro";
+import SectionTitle from "../ui/SectionTitle/SectionTitle.astro";
+import PersistentSlider from "../common/Sliders/PersistentSlider/PersistentSlider.astro";
+
+const offerCards = [
+	{
+		title: 'Программа «Кешбэк»',
+		description: '',
+		symbolId: 'rentier-contribution-2',
+		href: '#',
+		beforeNumberText: 'до',
+		numberText: '15,5%',
+		afterNumberText: '',
+		buttonText: 'Открыть вклад',
+		tagText: 'Частным клиентам',
+		cardColor: 'green'
+	},
+	{
+		title: 'Ипотека по программе <br>«IT-ипотека»',
+		description: '',
+		symbolId: 'mortgage',
+		href: '#',
+		beforeNumberText: 'от',
+		numberText: '4,8%',
+		afterNumberText: '',
+		buttonText: 'Подать заявку',
+		tagText: 'Частным клиентам',
+		cardColor: 'orange'
+	},
+	{
+		title: 'Кредит<br>на образование',
+		description: '',
+		symbolId: 'education-loan',
+		href: '#',
+		beforeNumberText: 'от',
+		numberText: '16%',
+		afterNumberText: '',
+		buttonText: 'Оформить',
+		tagText: 'Частным клиентам',
+		cardColor: 'yellow'
+	},
+	{
+		title: 'Программа «Кешбэк»',
+		description: '',
+		symbolId: 'rentier-contribution-2',
+		href: '#',
+		beforeNumberText: 'до',
+		numberText: '15,5%',
+		afterNumberText: '',
+		buttonText: 'Открыть вклад',
+		tagText: 'Частным клиентам',
+		cardColor: 'green'
+	},
+	{
+		title: 'Ипотека по программе <br>«IT-ипотека»',
+		description: '',
+		symbolId: 'mortgage',
+		href: '#',
+		beforeNumberText: 'от',
+		numberText: '4,8%',
+		afterNumberText: '',
+		buttonText: 'Подать заявку',
+		tagText: 'Частным клиентам',
+		cardColor: 'orange'
+	},
+	{
+		title: 'Кредит<br>на образование',
+		description: '',
+		symbolId: 'education-loan',
+		href: '#',
+		beforeNumberText: 'от',
+		numberText: '16%',
+		afterNumberText: '',
+		buttonText: 'Оформить',
+		tagText: 'Частным клиентам',
+		cardColor: 'yellow'
+	}
+];
+---
+
+<SectionLayout class="section-see-also">
+	<div class="content-container">
+		<SectionTitle titleClass="headline-2" usePadding>Смотрите также</SectionTitle>
+		<PersistentSlider spaceBetween="mobile-s:8,mobile:8,tablet:16,laptop:40" slidesPerView="mobile-s:1,mobile:1,tablet:2,tablet-album:3,laptop:3">
+			{
+				offerCards.map((card) =>(
+					<SliderSlide>
+						<OfferCard
+							symbolId={card.symbolId}
+							color={card.cardColor}
+							textButton={card.buttonText}
+							title={card.title}
+							description={card.description}
+							textIndicating={
+								{
+									text: card.numberText,
+									beforeText: card.beforeNumberText,
+									afterText: card.afterNumberText
+								}
+							}
+						>
+							<ATag slot="tag">{card.tagText}</ATag>
+						</OfferCard>
+					</SliderSlide>
+				))
+			}
+		</PersistentSlider>
+	</div>
+</SectionLayout>

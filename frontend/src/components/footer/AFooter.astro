@@ -1,0 +1,87 @@
+---
+import AFooterNav from '@components/footer/nav/AFooterNav.astro';
+import AFooterApps from '@components/footer/AFooterApps.astro';
+import AFooterInfo from '@components/footer/AFooterInfo.astro';
+import AFooterFeedback from '@components/footer/AFooterFeedback.astro';
+import APolygonContainer from "../common/APolygonContainer/APolygonContainer.astro";
+---
+
+<footer class="a-footer">
+	<div class="content-container">
+		<div class="a-footer__content">
+			<AFooterNav class="a-footer__nav" />
+			<div class="a-footer__apps">
+				<APolygonContainer color="purple-70">
+					<AFooterApps />
+				</APolygonContainer>
+			</div>
+
+			<AFooterFeedback class="a-footer__feedback" />
+		</div>
+	</div>
+	<AFooterInfo class="a-footer__footer-info"/>
+</footer>
+
+<style lang="scss" is:global>
+	@import '@styles/variables';
+	@import '@styles/functions';
+	@import '@styles/media-queries';
+
+	.a-footer {
+		border-top: 1px solid var(--blue-30);
+
+		&__content {
+			display: grid;
+			grid-template-columns: 1fr;
+			column-gap: 32px;
+			row-gap: 40px;
+			padding: calc-clamp(2.5rem, 5rem) 0;
+
+			@include use-media(tablet) {
+				grid-template-columns: repeat(2, 1fr);
+			}
+
+			@include use-media(tablet-album) {
+				grid-template-columns: repeat(12, 1fr);
+				column-gap: 40px;
+				row-gap: 48px;
+			}
+		}
+
+		&__nav {
+			display: none;
+
+			@include use-media(tablet-album) {
+				grid-column: span 12;
+				display: grid;
+			}
+
+			@include use-media(laptop-x) {
+				grid-column: span 6;
+			}
+		}
+
+		&__apps {
+			align-self: flex-start;
+
+			@include use-media(tablet-album) {
+				grid-column: span 6;
+				display: grid;
+			}
+
+			@include use-media(laptop-x) {
+				grid-column: span 3;
+			}
+		}
+
+		&__feedback {
+			@include use-media(tablet-album) {
+				grid-column: span 6;
+			}
+
+			@include use-media(laptop-x) {
+				grid-column: span 3;
+			}
+		}
+	}
+</style>

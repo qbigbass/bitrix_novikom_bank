@@ -1,0 +1,103 @@
+---
+type State = 'no-padding-bottom' | 'no-padding-top' | 'no-padding' | 's-no-padding' ;
+
+interface Props {
+	class?: string;
+	types?: State[];
+	small?: boolean
+}
+
+const {
+	class: className,
+	types,
+	small = false,
+	...rest
+} = Astro.props as Props;
+
+const typeClasses = types?.map((type) => `${type}`);
+---
+<section
+	class="section-layout"
+	class:list={[
+		className,
+		typeClasses,
+		{ 'section-layout--s': small }
+	]}
+	{...rest}
+>
+	<slot />
+</section>
+
+<style lang="scss" is:global>
+	@import "@styles/media-queries";
+
+	.section-layout {
+		padding-top: 2.5rem;
+		padding-bottom: 2.5rem;
+
+		@include use-media(tablet) {
+			padding-top: 4rem;
+			padding-bottom: 4rem;
+		}
+
+		@include use-media(tablet-album) {
+			padding-top: 5rem;
+			padding-bottom: 5rem;
+		}
+
+		@include use-media(laptop-x) {
+			padding-top: 7.5rem;
+			padding-bottom: 7.5rem;
+		}
+
+		&--bg-gray {
+			background-color: var(--dark-10);
+		}
+	}
+
+	.section-layout.section-layout--s {
+		padding-top: 2.5rem;
+		padding-bottom: 2.5rem;
+
+		@include use-media(tablet) {
+			padding-top: 4rem;
+			padding-bottom: 4rem;
+		}
+
+		@include use-media(tablet-album) {
+			padding-top: 5rem;
+			padding-bottom: 5rem;
+		}
+	}
+
+	.section-layout.no-padding {
+		padding: 0;
+	}
+
+	.section-layout.s-no-padding {
+		padding: 0;
+
+		@include use-media(tablet) {
+			padding-top: 4rem;
+			padding-bottom: 4rem;
+		}
+
+		@include use-media(tablet-album) {
+			padding-top: 5rem;
+			padding-bottom: 5rem;
+		}
+
+		@include use-media(laptop-x) {
+			padding-top: 7.5rem;
+			padding-bottom: 7.5rem;
+		}
+	}
+
+	.section-layout.no-padding-top {
+		padding-top: 0;
+	}
+
+	.section-layout.no-padding-bottom {
+		padding-bottom: 0;
+	}
+</style>

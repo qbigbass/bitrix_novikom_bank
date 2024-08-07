@@ -1,0 +1,60 @@
+---
+import type { DefaultSliderProps } from "../../interfaces";
+import SliderControls from "../SliderControls/SliderControls.astro";
+
+const {
+	class: className,
+	spaceBetween = 'mobile-s:16,mobile:24,tablet:32,laptop:40',
+	slidesPerView = 'mobile-s:1,mobile:1,tablet:2,laptop:3',
+	...rest
+} = Astro.props as DefaultSliderProps;
+---
+
+<div
+	class="slider-skeleton swiper"
+	class:list={className}
+	data-slides-per-view={slidesPerView}
+	data-space-between={spaceBetween}
+	{...rest}
+>
+	<slot />
+	{
+		Astro.slots['controls'] && (
+			<div class="slider-skeleton__controls">
+				<slot name="controls" />
+			</div>
+		)
+	}
+</div>
+
+
+<style lang="scss" is:global>
+	@import "@styles/media-queries";
+
+	.slider-skeleton {
+		margin: 0 -1.5rem;
+		padding: 0 1.5rem;
+
+		&__controls {
+			margin-top: 1rem;
+
+			@include use-media(tablet) {
+				margin-top: 1.5rem;
+			}
+		}
+
+		&.swiper-navigation-disabled.swiper-pagination-disabled &__controls {
+			display: none !important;
+		}
+
+		@include use-media(tablet) {
+			margin: 0 -2.5rem;
+			padding: 0 2.5rem;
+		}
+
+		@include use-media(tablet-album) {
+			margin: 0;
+			padding: 0;
+		}
+	}
+</style>

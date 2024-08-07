@@ -1,0 +1,16 @@
+.inherits-link {
+	text-decoration: none;
+	color: inherit;
+
+	&:active, &:focus, &:visited {
+		color: inherit;
+	}
+}
+
+.hidden {
+	display: none;
+}
+
+.is-hidden {
+	display: none !important;
+}

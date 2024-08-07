@@ -1,0 +1,969 @@
+---
+import DefaultPageLayout from "../layouts/DefaultPageLayout.astro";
+import SectionTitle from "@components/ui/SectionTitle/SectionTitle.astro";
+import ATag from "@components/ui/ATag/ATag.astro";
+import AButton from "@components/ui/Buttons/AButton.astro";
+import AIcon from "../components/AIcon.astro";
+
+import ATabs from "@components/ui/ATabs/ATabs.astro";
+import ABreadcrumbs from "@components/ui/ABreadcrumbs/ABreadcrumbs.astro";
+import OfferCard from "@components/common/OfferCard/OfferCard.astro";
+import AppButton from "../components/ui/Buttons/AppButton.astro";
+import AInput from "../components/ui/AInput/AInput.astro";
+import ServiceCard from "../components/common/ServiceCard.astro";
+import ServiceAppsCard from "../components/common/ServiceAppsCard.astro";
+import ServiceSalaryCard from "../components/common/ServiceSalaryCard.astro";
+import APolygonContainer from "../components/common/APolygonContainer/APolygonContainer.astro";
+import AFooterApps from "../components/footer/AFooterApps.astro";
+import AAccordion from "../components/ui/AAccordion/AAccordion.astro";
+import AAccordionPanel from "../components/ui/AAccordion/AAccordionPanel.astro";
+import AAccordionHeader from "../components/ui/AAccordion/AAccordionHeader.astro";
+import AAccordionContent from "../components/ui/AAccordion/AAccordionContent.astro";
+import InputWithIcon from "../components/ui/InputWithIcon/InputWithIcon.astro";
+import TagSimple from "../components/ui/TagSimple/TagSimple.astro";
+import ASliderInput from "../components/ui/ASliderInput/ASliderInput.astro";
+import BenefitCard from "../components/common/BenefitCard/BenefitCard.astro";
+import ATab from "../components/ui/ATabs/common/ATab/ATab.astro";
+import ATabPanel from "../components/ui/ATabs/common/ATabPanel.astro";
+import ATabSwiper from "../components/ui/ATabs/common/ATabSwiper/ATabSwiper.astro";
+import ATabSwiperWrapper from "../components/ui/ATabs/common/ATabSwiperWrapper.astro";
+import ATabPanels from "../components/ui/ATabs/common/ATabPanels.astro";
+import ACollapseContent from "../components/ui/ACollapseContent/ACollapseContent.astro";
+import ProductCard from "../components/common/ProductCard/ProductCard.astro";
+import TextIndicatingBenefits from "../components/common/TextIndicatingBenefits/TextIndicatingBenefits.astro";
+import ARte from "../components/ARte.astro";
+import AList from "../components/ui/AList/AList.astro";
+import AHelper from "../components/common/AHelper.astro";
+import ACollapsedItems from "../components/ui/ACollapsedItems/ACollapsedItems.astro";
+import ACollapsedItem from "../components/ui/ACollapsedItems/ACollapsedItem.astro";
+import ACollapsedButton from "../components/ui/ACollapsedItems/ACollapsedButton.astro";
+
+const loan = {
+	title: 'Кредит на любые цели<br> для зарплатных клиентов',
+	description: 'Воплощение задуманных планов и реализация любых целей уже сегодня',
+	symbolId: 'loan-for-any-purpose',
+	links: [],
+	conditions: [
+		{
+			startText: '',
+			beforeText: 'от',
+			text: '18%',
+			afterText: '',
+			currency: '',
+			description: 'Ставка'
+		},
+		{
+			startText: '',
+			beforeText: 'до',
+			text: '1 500 000',
+			afterText: '',
+			currency: '₽',
+			description: 'Сумма'
+		},
+		{
+			startText: '',
+			beforeText: 'до',
+			text: '3 лет',
+			afterText: '',
+			currency: '',
+			description: 'Срок'
+		}
+	]
+}
+---
+
+<DefaultPageLayout title="index">
+	<Fragment slot="header">header</Fragment>
+	<div class="content-container">
+		<div class="ui-section">
+			<SectionTitle class="ui-section-title" titleClass="headline-2" >{"AIcon"}</SectionTitle>
+
+			<div class="ui-row">
+				<AIcon symbolId="icon-chevron-down" size="m" />
+				<AIcon symbolId="icon-chevron-left" size="m" />
+				<AIcon symbolId="icon-chevron-right" size="m" />
+				<AIcon symbolId="icon-chevron-up" size="m" />
+				<AIcon symbolId="icon-circle-telegram" size="m" />
+				<AIcon symbolId="icon-arrow-left" size="m" />
+				<AIcon symbolId="icon-arrow-right" size="m" />
+				<AIcon symbolId="icon-close" size="m" />
+				<AIcon symbolId="icon-plus" size="m" />
+				<AIcon symbolId="icon-mobile" size="m" />
+				<AIcon symbolId="icon-download" size="m" />
+				<AIcon symbolId="icon-glasses" size="m" />
+				<AIcon symbolId="icon-point" size="m" />
+				<AIcon symbolId="icon-edit" size="m" />
+				<AIcon symbolId="icon-search" size="m" />
+				<AIcon symbolId="icon-more" size="m" />
+				<AIcon symbolId="icon-time" size="m" />
+				<AIcon symbolId="icon-bonus" size="m" />
+				<AIcon symbolId="icon-transfer" size="m" />
+				<AIcon symbolId="icon-percent" size="m" />
+				<AIcon symbolId="icon-question" size="m" />
+				<AIcon symbolId="icon-info" size="m" />
+				<AIcon symbolId="icon-done" size="m" />
+				<AIcon symbolId="icon-alert" size="m" />
+				<AIcon symbolId="icon-cash" size="m" />
+				<AIcon symbolId="icon-card" size="m" />
+				<AIcon symbolId="icon-deposit" size="m" />
+				<AIcon symbolId="icon-wallet" size="m" />
+				<AIcon symbolId="icon-house" size="m" />
+				<AIcon symbolId="icon-sale" size="m" />
+				<AIcon symbolId="icon-doc" size="m" />
+				<AIcon symbolId="icon-phone" size="m" />
+				<AIcon symbolId="icon-mail" size="m" />
+				<AIcon symbolId="icon-check" size="m" />
+				<AIcon symbolId="icon-menu" size="m" />
+			</div>
+
+			<div class="ui-row">
+				<AIcon symbolId="icon-a-web-bank" size="xl" />
+				<AIcon symbolId="icon-a-house" size="xl" />
+				<AIcon symbolId="icon-a-money" size="xl" />
+				<AIcon symbolId="icon-a-money-out" size="xl" />
+				<AIcon symbolId="icon-a-money-on" size="xl" />
+				<AIcon symbolId="icon-a-transfer" size="xl" />
+				<AIcon symbolId="icon-a-hand-money" size="xl" />
+				<AIcon symbolId="icon-a-notification" size="xl" />
+				<AIcon symbolId="icon-a-car" size="xl" />
+				<AIcon symbolId="icon-a-heart" size="xl" />
+				<AIcon symbolId="icon-a-chill" size="xl" />
+				<AIcon symbolId="icon-a-shop" size="xl" />
+				<AIcon symbolId="icon-a-fun" size="xl" />
+				<AIcon symbolId="icon-a-date" size="xl" />
+				<AIcon symbolId="icon-a-multitasking" size="xl" />
+				<AIcon symbolId="icon-a-documents" size="xl" />
+				<AIcon symbolId="icon-a-money-down" size="xl" />
+				<AIcon symbolId="icon-a-money-up" size="xl" />
+				<AIcon symbolId="icon-a-part-down" size="xl" />
+				<AIcon symbolId="icon-a-document-money" size="xl" />
+				<AIcon symbolId="icon-a-doc-stat" size="xl" />
+				<AIcon symbolId="icon-a-timer" size="xl" />
+				<AIcon symbolId="icon-a-hands" size="xl" />
+				<AIcon symbolId="icon-a-global" size="xl" />
+				<AIcon symbolId="icon-a-low-percent" size="xl" />
+				<AIcon symbolId="icon-a-flexibility" size="xl" />
+				<AIcon symbolId="icon-a-stability" size="xl" />
+				<AIcon symbolId="icon-a-rates" size="xl" />
+				<AIcon symbolId="icon-a-easily" size="xl" />
+				<AIcon symbolId="icon-a-stock-exchange" size="xl" />
+				<AIcon symbolId="icon-a-limits" size="xl" />
+				<AIcon symbolId="icon-a-channels" size="xl" />
+				<AIcon symbolId="icon-a-calculator" size="xl" />
+				<AIcon symbolId="icon-a-cash-machine" size="xl" />
+				<AIcon symbolId="icon-a-delivery" size="xl" />
+				<AIcon symbolId="icon-a-reputation" size="xl" />
+				<AIcon symbolId="icon-a-old-money" size="xl" />
+				<AIcon symbolId="icon-a-rub-euro-dollar" size="xl" />
+				<AIcon symbolId="icon-a-conversion" size="xl" />
+				<AIcon symbolId="icon-a-server" size="xl" />
+				<AIcon symbolId="icon-a-report" size="xl" />
+				<AIcon symbolId="icon-a-prices" size="xl" />
+				<AIcon symbolId="icon-a-individual" size="xl" />
+				<AIcon symbolId="icon-a-low-price" size="xl" />
+				<AIcon symbolId="icon-a-other" size="xl" />
+				<AIcon symbolId="icon-a-credit-rating" size="xl" />
+				<AIcon symbolId="icon-a-conditions" size="xl" />
+				<AIcon symbolId="icon-a-reward" size="xl" />
+				<AIcon symbolId="icon-a-relevance" size="xl" />
+				<AIcon symbolId="icon-a-mir-pass" size="xl" />
+				<AIcon symbolId="icon-a-card-security" size="xl" />
+				<AIcon symbolId="icon-a-free-service-card" size="xl" />
+				<AIcon symbolId="icon-a-cashback" size="xl" />
+				<AIcon symbolId="icon-a-bank" size="xl" />
+				<AIcon symbolId="icon-a-bankInform" size="xl" />
+				<AIcon symbolId="icon-a-personal-manager" size="xl" />
+				<AIcon symbolId="icon-a-concierge-service" size="xl" />
+				<AIcon symbolId="icon-a-mobile-ready" size="xl" />
+				<AIcon symbolId="icon-a-mobile-stick" size="xl" />
+				<AIcon symbolId="icon-a-mobile-payment" size="xl" />
+				<AIcon symbolId="icon-a-mir-payment" size="xl" />
+				<AIcon symbolId="icon-a-free-service" size="xl" />
+				<AIcon symbolId="icon-a-free-service-2" size="xl" />
+				<AIcon symbolId="icon-a-info" size="xl" />
+				<AIcon symbolId="icon-a-account" size="xl" />
+				<AIcon symbolId="icon-a-rub" size="xl" />
+				<AIcon symbolId="icon-a-euro" size="xl" />
+				<AIcon symbolId="icon-a-transh" size="xl" />
+			</div>
+		</div>
+
+		<div class="ui-section">
+			<SectionTitle class="ui-section-title" titleClass="headline-2" >{"ATag"}</SectionTitle>
+
+			<div class="ui-row ui-dark-bg" style="padding-bottom: 32px">
+				<ATag href="#">Filled</ATag>
+				<ATag href="#" outline>Outlined</ATag>
+			</div>
+		</div>
+		<div class="ui-section">
+			<SectionTitle class="ui-section-title" titleClass="headline-2" >{"TagSimple"}</SectionTitle>
+
+			<div class="ui-row ui-dark-bg" style="padding-bottom: 32px">
+				<TagSimple href="#">Зарплатный проект</TagSimple>
+				<TagSimple href="#">Зарплатная карта</TagSimple>
+				<TagSimple href="#">Расчетный счет</TagSimple>
+				<TagSimple href="#">Ипотека в новостройке</TagSimple>
+				<TagSimple href="#">Кредит на бизнес</TagSimple>
+				<TagSimple href="#">Депозиты</TagSimple>
+				<TagSimple href="#">Вклады</TagSimple>
+				<TagSimple href="#">Социально-платежная карта МИР</TagSimple>
+				<TagSimple href="#">Банковские гарантии</TagSimple>
+			</div>
+		</div>
+		<div class="ui-section">
+			<SectionTitle class="ui-section-title" titleClass="headline-2" >{"AButton"}</SectionTitle>
+
+			<div class="ui-grid">
+				<div class="headline-3 dark-70">Sizes Button</div>
+				<div class="ui-row">
+					<AButton size="l">Primary Button size L</AButton>
+					<AButton size="m">Primary Button size M</AButton>
+					<AButton size="s">Primary Button size S</AButton>
+					<AButton size="lm">Primary Button size LM</AButton>
+					<AButton size="ls">Primary Button size LS</AButton>
+					<AButton size="ms">Primary Button size MS</AButton>
+				</div>
+				<div class="headline-3 dark-70">Color Button</div>
+				<div class="ui-row ui-dark-bg">
+					<AButton size="m">Secondary Button</AButton>
+					<AButton size="m" color="secondary">Secondary Button</AButton>
+					<AButton size="m" color="white">Secondary Button</AButton>
+				</div>
+				<div class="headline-3 dark-70">Icon Button</div>
+				<div class="ui-row ui-dark-bg">
+					<AButton size="m" beforeIcon="icon-download">Icon Button</AButton>
+					<AButton size="m" color="secondary" afterIcon="icon-download">Icon Button</AButton>
+					<AButton size="m" color="white" beforeIcon="icon-download" afterIcon="icon-download">Icon Button</AButton>
+					<AButton element="a" href="#" size="m" beforeIcon="icon-download">Icon Button</AButton>
+					<AButton element="a" href="#" size="m" color="secondary" afterIcon="icon-download">Icon Button</AButton>
+					<AButton element="a" href="#" size="m" color="white" beforeIcon="icon-download" afterIcon="icon-download">Icon Button</AButton>
+				</div>
+				<div class="headline-3 dark-70">Link Button</div>
+				<div class="ui-row">
+					<AButton element="a" href="#" size="m">Link Button</AButton>
+					<AButton element="a" href="#" size="m">Link Button</AButton>
+					<AButton element="a" href="#" size="m">Link Button</AButton>
+				</div>
+				<div class="headline-3 dark-70">Outlined Button</div>
+				<div class="ui-row ui-dark-bg">
+					<AButton element="a" href="#" size="m" outline>Outlined Link Button</AButton>
+					<AButton size="m" outline>Outlined Button</AButton>
+				</div>
+				<div class="headline-3 dark-70">Text Button</div>
+				<div class="ui-row ui-dark-bg">
+					<AButton element="a" href="#" size="m" text>Text Link Button</AButton>
+					<AButton element="a" href="#" size="m" color="white" text>Text Link Button</AButton>
+					<AButton size="m" text>Text Button</AButton>
+					<AButton size="m" color="white" text>Text Button</AButton>
+				</div>
+				<div class="headline-3 dark-70">Full Button</div>
+				<div class="ui-row ui-dark-bg">
+					<AButton size="m" full beforeIcon="icon-download" afterIcon="icon-download">Full Button</AButton>
+				</div>
+			</div>
+		</div>
+		<div class="ui-section">
+			<SectionTitle class="ui-section-title" titleClass="headline-2" >{"AInput"}</SectionTitle>
+
+			<div class="ui-grid">
+				<div class="headline-3 dark-70">Sizes Input</div>
+				<div class="ui-row">
+					<AInput size="ms" placeholder="Primary Button size MS" name="input-1" />
+					<AInput size="m" placeholder="Primary Button size M" name="input-2" />
+					<AInput size="s" placeholder="Primary Button size S" name="input-3" />
+				</div>
+				<div class="headline-3 dark-70">Label Input</div>
+				<div class="ui-row">
+					<AInput size="ms" placeholder="Primary Button size MS" label="Наименование" forId="name-1" name="input-1"/>
+					<AInput size="m" placeholder="Primary Button size M" label="Наименование" forId="name-2" name="input-2"/>
+					<AInput size="s" placeholder="Primary Button size S" label="Наименование" forId="name-3" name="input-3"/>
+				</div>
+				<div class="headline-3 dark-70">Hint Input</div>
+				<div class="ui-row">
+					<AInput size="ms" placeholder="Primary Button size MS" hint="Подсказка" label="Наименование" forId="name-1" name="input-1"/>
+					<AInput size="m" placeholder="Primary Button size M" hint="Подсказка" label="Наименование" forId="name-2" name="input-2"/>
+					<AInput size="s" placeholder="Primary Button size S" hint="Подсказка" label="Наименование" forId="name-3" name="input-3"/>
+				</div>
+				<div class="headline-3 dark-70">Required Input</div>
+				<div class="ui-row">
+					<AInput size="ms" placeholder="Primary Button size MS" hint="Подсказка" label="Наименование" forId="name-1" required name="input-1"/>
+					<AInput size="m" placeholder="Primary Button size M" hint="Подсказка" label="Наименование" forId="name-2" required name="input-2"/>
+					<AInput size="s" placeholder="Primary Button size S" hint="Подсказка" label="Наименование" forId="name-3" required name="input-3"/>
+				</div>
+			</div>
+		</div>
+		<div class="ui-section">
+			<SectionTitle class="ui-section-title" titleClass="headline-2" >&lt;ASliderInput&gt;</SectionTitle>
+
+			<div class="ui-grid">
+				<div class="headline-3 dark-70">Basic</div>
+				<ASliderInput
+					id="amount-credit"
+					label="Сумма кредита"
+					maxValue={5000000}
+					minValue={20000}
+					startValue={1000000}
+					stepSize={5000}
+					type="price"
+				/>
+				<ASliderInput
+					id="deposit-term"
+					label="Срок вклада"
+					startValue={550}
+					maxValue={1100}
+					minValue={250}
+					type="day"
+				/>
+				<ASliderInput
+					id="credit-term"
+					label="Срок кредита"
+					maxValue={60}
+					minValue={1}
+					startValue={31}
+					type="month"
+				/>
+				<div class="headline-3 dark-70">Editable</div>
+				<ASliderInput
+					id="amount-credit-2"
+					label="Сумма кредита"
+					maxValue={5000000}
+					minValue={20000}
+					startValue={1000000}
+					stepSize={5000}
+					type="price"
+					editable
+				/>
+				<ASliderInput
+					id="deposit-term-2"
+					label="Срок вклада"
+					startValue={550}
+					maxValue={1100}
+					minValue={250}
+					type="day"
+					editable
+				/>
+				<ASliderInput
+					id="credit-term-2"
+					label="Срок кредита"
+					maxValue={60}
+					minValue={1}
+					startValue={31}
+					type="month"
+					editable
+				/>
+				<div class="headline-3 dark-70">Steps</div>
+				<ASliderInput
+					id="amount-credit-3"
+					label="Сумма кредита"
+					startValue={1000000}
+					steps={[20000, 1000000, 2000000, 3000000, 4000000, 5000000]}
+					editable
+					type="price"
+				/>
+				<ASliderInput
+					id="deposit-term-3"
+					label="Срок вклада"
+					startValue={550}
+					steps={[250, 550, 1100]}
+					type="day"
+					editable
+				/>
+				<ASliderInput
+					id="credit-term-3"
+					label="Срок кредита"
+					startValue={10}
+					steps={[1, 10, 30, 50, 60]}
+					type="month"
+					editable
+				/>
+			</div>
+		</div>
+		<div class="ui-section">
+			<SectionTitle class="ui-section-title" titleClass="headline-2" >{"InputWithIcon"}</SectionTitle>
+
+			<div class="ui-grid">
+				<div class="ui-row">
+					<InputWithIcon placeholder="Поиск по сайту" beforeIcon="icon-search" />
+				</div>
+			</div>
+		</div>
+		<div class="ui-section">
+			<SectionTitle class="ui-section-title" titleClass="headline-2" >{"ServiceCard"}</SectionTitle>
+
+			<div class="ui-grid ui-grid-col-3">
+				<ServiceCard title="Интернет-банк" icon="icon-a-web-bank" />
+				<ServiceCard title="Кредиты" icon="icon-a-money" />
+				<ServiceCard title="Ипотека" icon="icon-a-house" />
+			</div>
+		</div>
+		<div class="ui-section">
+			<SectionTitle class="ui-section-title" titleClass="headline-2" >{"ServiceAppsCard"}</SectionTitle>
+
+			<div class="ui-grid">
+				<ServiceAppsCard />
+			</div>
+		</div>
+		<div class="ui-section">
+			<SectionTitle class="ui-section-title" titleClass="headline-2" >{"ServiceSalaryCard"}</SectionTitle>
+
+			<div class="ui-grid">
+				<ServiceSalaryCard />
+			</div>
+		</div>
+		<div class="ui-section">
+			<SectionTitle class="ui-section-title" titleClass="headline-2" >{"APolygonContainer"}</SectionTitle>
+
+			<div class="ui-grid ui-grid-col-3">
+				<APolygonContainer size="ms" color="purple-100">
+					<AFooterApps />
+				</APolygonContainer>
+				<APolygonContainer size="l" color="green-100">
+					<div style="
+						display: flex;
+						flex-direction: column;
+						height: 100%;
+						background-color: var(--dark-10);
+						padding: 2.5rem"
+					>
+						<div class="headline-2">Заголовок</div>
+						<p class="body-l-heavy">Описание</p>
+					</div>
+				</APolygonContainer>
+			</div>
+		</div>
+
+		<div class="ui-section">
+			<SectionTitle class="ui-section-title" titleClass="headline-2" >{"BenefitCard"}</SectionTitle>
+
+			<div class="ui-grid ui-grid-col-3">
+				<BenefitCard
+					title="Заголовок"
+					description="Описание"
+					icon="icon-a-money"
+					headerIcon="icon-a-money"
+					theme="grey"
+					textButton="Подробнее"
+				/>
+				<BenefitCard
+					title="Заголовок"
+					description="Описание"
+					icon="icon-a-money"
+					headerIcon="icon-a-money"
+					theme="light-blue"
+					textButton="Подробнее"
+				/>
+				<BenefitCard
+					title="Заголовок"
+					description="Описание"
+					icon="icon-a-money"
+					headerIcon="icon-a-money"
+					theme="gradient"
+					textButton="Подробнее"
+				/>
+			</div>
+		</div>
+
+		<div class="ui-section">
+			<SectionTitle class="ui-section-title" titleClass="headline-2" >{"AppButton"}</SectionTitle>
+
+			<div class="ui-grid ui-grid-col-3 ui-dark-bg">
+				<AppButton iconName="ru-store" />
+				<AppButton iconName="ru-market" />
+				<AppButton iconName="nash-store" />
+			</div>
+		</div>
+
+		<div class="ui-section">
+			<SectionTitle class="ui-section-title" titleClass="headline-2" >{"AAccordion"}</SectionTitle>
+
+			<div class="ui-grid ui-light-bg">
+				<div class="headline-3 dark-70">Component Basic Accordion</div>
+				<AAccordion type="component">
+					<AAccordionPanel>
+						<AAccordionHeader>
+							<div class="headline-4">Header 1</div>
+						</AAccordionHeader>
+						<AAccordionContent>
+							<div class="body-s-light dark-70">
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+							</div>
+						</AAccordionContent>
+					</AAccordionPanel>
+					<AAccordionPanel>
+						<AAccordionHeader>
+							<div class="headline-4">Header 2</div>
+						</AAccordionHeader>
+						<AAccordionContent>
+							<div class="body-s-light dark-70">
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+							</div>
+						</AAccordionContent>
+					</AAccordionPanel>
+					<AAccordionPanel>
+						<AAccordionHeader>
+							<div class="headline-4">Header 3</div>
+						</AAccordionHeader>
+						<AAccordionContent>
+							<div class="body-s-light dark-70">
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+							</div>
+						</AAccordionContent>
+					</AAccordionPanel>
+				</AAccordion>
+				<div class="headline-3 dark-70">Component Multiple Accordion</div>
+				<AAccordion type="component" multiple>
+					<AAccordionPanel>
+						<AAccordionHeader>
+							<div class="headline-4">Header 1</div>
+						</AAccordionHeader>
+						<AAccordionContent>
+							<div class="body-s-light">
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+							</div>
+						</AAccordionContent>
+					</AAccordionPanel>
+					<AAccordionPanel>
+						<AAccordionHeader>
+							<div class="headline-4">Header 2</div>
+						</AAccordionHeader>
+						<AAccordionContent>
+							<div class="body-s-light">
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+							</div>
+						</AAccordionContent>
+					</AAccordionPanel>
+					<AAccordionPanel>
+						<AAccordionHeader>
+							<div class="headline-4">Header 3</div>
+						</AAccordionHeader>
+						<AAccordionContent>
+							<div class="body-s-light">
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+							</div>
+						</AAccordionContent>
+					</AAccordionPanel>
+				</AAccordion>
+				<div class="headline-3 dark-70">Layout Basic Accordion</div>
+				<AAccordion type="layout">
+					<AAccordionPanel>
+						<AAccordionHeader>
+							<div class="headline-4">Header 1</div>
+						</AAccordionHeader>
+						<AAccordionContent>
+							<div class="body-s-light dark-70">
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+							</div>
+						</AAccordionContent>
+					</AAccordionPanel>
+					<AAccordionPanel>
+						<AAccordionHeader>
+							<div class="headline-4">Header 2</div>
+						</AAccordionHeader>
+						<AAccordionContent>
+							<div class="body-s-light dark-70">
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+							</div>
+						</AAccordionContent>
+					</AAccordionPanel>
+					<AAccordionPanel>
+						<AAccordionHeader>
+							<div class="headline-4">Header 3</div>
+						</AAccordionHeader>
+						<AAccordionContent>
+							<div class="body-s-light dark-70">
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+							</div>
+						</AAccordionContent>
+					</AAccordionPanel>
+				</AAccordion>
+				<div class="headline-3 dark-70">Layout Multiple Accordion</div>
+				<AAccordion type="layout" multiple>
+					<AAccordionPanel>
+						<AAccordionHeader>
+							<div class="headline-4">Header 1</div>
+						</AAccordionHeader>
+						<AAccordionContent>
+							<div class="body-s-light">
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+							</div>
+						</AAccordionContent>
+					</AAccordionPanel>
+					<AAccordionPanel>
+						<AAccordionHeader>
+							<div class="headline-4">Header 2</div>
+						</AAccordionHeader>
+						<AAccordionContent>
+							<div class="body-s-light">
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+							</div>
+						</AAccordionContent>
+					</AAccordionPanel>
+					<AAccordionPanel>
+						<AAccordionHeader>
+							<div class="headline-4">Header 3</div>
+						</AAccordionHeader>
+						<AAccordionContent>
+							<div class="body-s-light">
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+							</div>
+						</AAccordionContent>
+					</AAccordionPanel>
+				</AAccordion>
+			</div>
+		</div>
+		<div class="ui-section">
+			<SectionTitle class="ui-section-title" titleClass="headline-2" >{"OfferCard"}</SectionTitle>
+
+			<div class="ui-grid ui-gap-2 ui-grid-col-3 ui-grid-items-a-stretch">
+				<OfferCard
+					symbolId="rentier-contribution-2"
+					color="green"
+					textButton="Открыть вклад"
+					class="bank-offers__card"
+					title="Вклад «Рантье»"
+					numberText="15,5%"
+					beforeNumberText="до"
+				>
+					<ATag slot="tag">Частным клиентам</ATag>
+				</OfferCard>
+				<OfferCard
+					symbolId="account-reservation-3"
+					color="orange"
+					textButton="Подать заявку"
+					class="bank-offers__card"
+					title="Резервирование счетов"
+					description="Дистанционная подача заявки<br>на открытие расчетного счета"
+				>
+					<ATag slot="tag">Корпоративным клиентам</ATag>
+				</OfferCard>
+				<OfferCard
+					symbolId="express-guarantee"
+					color="yellow"
+					textButton="Оформить"
+					class="bank-offers__card"
+					title="Экспресс-гарантии 44&#8288;-&#8288;ФЗ,<br>223&#8288;-&#8288;ФЗ"
+					description="Принятие решения за 1 день,<br> до 30 000 000 рублей,<br> без залога"
+				>
+					<ATag slot="tag">Малому и среднему бизнесу</ATag>
+				</OfferCard>
+			</div>
+		</div>
+		<div class="ui-section">
+			<SectionTitle class="ui-section-title" titleClass="headline-2" >&lt;ATabs&gt;</SectionTitle>
+
+			<div class="ui-grid">
+				<div class="headline-3 dark-70">Component Default</div>
+				<ATabs>
+					<Fragment slot="tabs">
+						<ATab value="0" size="m" isActive>Первый</ATab>
+						<ATab value="1" size="m">Второй</ATab>
+						<ATab value="2" size="m">Третий</ATab>
+					</Fragment>
+					<Fragment slot="panels">
+						<ATabPanel value="0">Контент 1</ATabPanel>
+						<ATabPanel value="1">Контент 2</ATabPanel>
+						<ATabPanel value="2">Контент 3</ATabPanel>
+					</Fragment>
+				</ATabs>
+				<div class="headline-3 dark-70">Component Layout</div>
+				<ATabs useLayout>
+					<div style="padding: 16px 0">Первый Контент</div>
+					<ATabSwiper>
+						<ATabSwiperWrapper>
+							<ATab value="0" size="m" isActive>Первый</ATab>
+							<ATab value="1" size="m">Второй</ATab>
+							<ATab value="2" size="m">Третий</ATab>
+						</ATabSwiperWrapper>
+					</ATabSwiper>
+					<div style="padding: 16px 0">Второй контент</div>
+					<ATabPanels>
+						<ATabPanel value="0">Контент 1</ATabPanel>
+						<ATabPanel value="1">Контент 2</ATabPanel>
+						<ATabPanel value="2">Контент 3</ATabPanel>
+					</ATabPanels>
+					<div style="padding: 16px 0">Третий контент</div>
+				</ATabs>
+				<div class="headline-3 dark-70">Component Links</div>
+				<ATabs>
+					<Fragment slot="tabs">
+						<ATab href="#" size="lm">Для работников ГК «Ростех»</ATab>
+						<ATab href="#" size="lm">Для организаций</ATab>
+						<ATab href="#" size="lm" isActive>Для руководителей</ATab>
+						<ATab href="#" size="lm">Для новых зарплатных клиентов</ATab>
+					</Fragment>
+				</ATabs>
+				<div class="headline-3 dark-70">Component Sizes</div>
+				<ATabs>
+					<Fragment slot="tabs">
+						<ATab value="0" size="l" isActive>Первый</ATab>
+						<ATab value="1" size="l">Второй</ATab>
+						<ATab value="2" size="l">Третий</ATab>
+					</Fragment>
+					<Fragment slot="panels">
+						<ATabPanel value="0">Контент 1</ATabPanel>
+						<ATabPanel value="1">Контент 2</ATabPanel>
+						<ATabPanel value="2">Контент 3</ATabPanel>
+					</Fragment>
+				</ATabs>
+				<ATabs>
+					<Fragment slot="tabs">
+						<ATab value="0" size="lm" isActive>Первый</ATab>
+						<ATab value="1" size="lm">Второй</ATab>
+						<ATab value="2" size="lm">Третий</ATab>
+					</Fragment>
+					<Fragment slot="panels">
+						<ATabPanel value="0">Контент 1</ATabPanel>
+						<ATabPanel value="1">Контент 2</ATabPanel>
+						<ATabPanel value="2">Контент 3</ATabPanel>
+					</Fragment>
+				</ATabs>
+				<ATabs>
+					<Fragment slot="tabs">
+						<ATab value="0" size="m" isActive>Первый</ATab>
+						<ATab value="1" size="m">Второй</ATab>
+						<ATab value="2" size="m">Третий</ATab>
+					</Fragment>
+					<Fragment slot="panels">
+						<ATabPanel value="0">Контент 1</ATabPanel>
+						<ATabPanel value="1">Контент 2</ATabPanel>
+						<ATabPanel value="2">Контент 3</ATabPanel>
+					</Fragment>
+				</ATabs>
+			</div>
+		</div>
+		<div class="ui-section">
+			<SectionTitle class="ui-section-title" titleClass="headline-2" >&lt;ABreadcrumbs&gt;</SectionTitle>
+
+			<div class="ui-grid">
+				<div class="ui-dark-light-bg">
+					<ABreadcrumbs
+						links={[
+							{ title: "Частным клиентам", url: "#" },
+							{ title: "Карты", url: "#" },
+							{ title: "Зарплатные карты", url: "#" },
+						]}
+					/>
+				</div>
+			</div>
+			<div class="ui-dark-bg">
+				<ABreadcrumbs
+					dark
+					links={[
+						{ title: "Частным клиентам", url: "#" },
+						{ title: "Карты", url: "#" },
+						{ title: "Зарплатные карты", url: "#" },
+					]}
+				/>
+			</div>
+		</div>
+		<div class="ui-section">
+			<SectionTitle class="ui-section-title" titleClass="headline-2" >&lt;TextIndicatingBenefits&gt;</SectionTitle>
+
+			<div class="ui-grid ui-gap-2 ui-grid-col-3">
+				<TextIndicatingBenefits
+					startText="Выгодно"
+					beforeText="от"
+					text="1 000 000"
+					afterText="дней"
+					currency="₽"
+				>
+					<div class="body-m-light">Описание</div>
+					<ARte class="body-m-light">
+						<ul>
+							<li>Пункт 1</li>
+							<li>Пункт 2</li>
+							<li>Пункт 3</li>
+						</ul>
+					</ARte>
+				</TextIndicatingBenefits>
+				<TextIndicatingBenefits
+					beforeText="от"
+					text="0"
+					afterText="дней"
+					currency="₽"
+				>
+					<div class="body-m-light dark-70">Описание</div>
+				</TextIndicatingBenefits>
+				<TextIndicatingBenefits
+					text="Без комиссии"
+				>
+					<div class="body-m-light dark-70">Снятие и внесение наличных</div>
+				</TextIndicatingBenefits>
+			</div>
+		</div>
+		<div class="ui-section">
+			<SectionTitle class="ui-section-title" titleClass="headline-2" >&lt;AList&gt;</SectionTitle>
+
+			<div class="ui-grid ui-gap-2 ui-grid-col-3">
+				<div>
+					<h3 class="headline-3">List M</h3>
+					<AList>
+						<li>Lorem ipsum dolor sit amet.</li>
+						<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, quasi.</li>
+						<li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>
+						<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci assumenda cumque doloribus excepturi molestiae molestias necessitatibus quia quo repudiandae vel?</li>
+					</AList>
+				</div>
+				<div>
+					<h3 class="headline-3">List S Heavy</h3>
+					<AList size="s" isHeavy>
+						<li>Lorem ipsum dolor sit amet.</li>
+						<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, quasi.</li>
+						<li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>
+						<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci assumenda cumque doloribus excepturi molestiae molestias necessitatibus quia quo repudiandae vel?</li>
+					</AList>
+				</div>
+				<div>
+					<h3 class="headline-3">List L</h3>
+					<AList size="l">
+						<li>Lorem ipsum dolor sit amet.</li>
+						<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, quasi.</li>
+						<li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>
+						<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci assumenda cumque doloribus excepturi molestiae molestias necessitatibus quia quo repudiandae vel?</li>
+					</AList>
+				</div>
+			</div>
+		</div>
+		<div class="ui-section">
+			<SectionTitle class="ui-section-title" titleClass="headline-2" >&lt;ProductCard&gt;</SectionTitle>
+
+			<div class="ui-grid">
+				<ProductCard
+					title={loan.title}
+					description={loan.description}
+					symbolId={loan.symbolId}
+					conditions={loan.conditions}
+					links={loan.links}
+				/>
+			</div>
+		</div>
+		<div class="ui-section">
+			<SectionTitle class="ui-section-title" titleClass="headline-2" >&lt;ACollapsedItems&gt;</SectionTitle>
+
+			<div class="ui-grid">
+				<ACollapsedItems
+					visibleItems="2"
+					rebuildingMq="tablet"
+					useCountInButton={true}
+				>
+					<div class="ui-grid ui-gap-2 ui-grid-col-3">
+						<ACollapsedItem>Первый элемент</ACollapsedItem>
+						<ACollapsedItem>Второй элемент</ACollapsedItem>
+						<ACollapsedItem>Третий элемент</ACollapsedItem>
+						<ACollapsedItem>Четвертый элемент</ACollapsedItem>
+						<ACollapsedItem>Пятый элемент</ACollapsedItem>
+						<ACollapsedItem>Шестой элемент</ACollapsedItem>
+					</div>
+					<ACollapsedButton style="margin-top: 2.5rem;"/>
+				</ACollapsedItems>
+			</div>
+		</div>
+		<div class="ui-section">
+			<SectionTitle class="ui-section-title" titleClass="headline-2" >&lt;ACollapseContent&gt;</SectionTitle>
+
+			<div class="ui-grid">
+				<ACollapseContent showText="Больше элементов" hideText="Меньше элементов">
+					<Fragment>
+						Элемент, который скрыт
+					</Fragment>
+				</ACollapseContent>
+			</div>
+		</div>
+		<div class="ui-section">
+			<SectionTitle class="ui-section-title" titleClass="headline-2" >&lt;AHelper&gt;</SectionTitle>
+
+			<div class="ui-grid ui-dark-bg">
+				<APolygonContainer color="violet-100">
+					<AHelper
+						image="helper-icon.png"
+						title="Заголовок"
+						description="Скачивайте мобильное приложение"
+					/>
+				</APolygonContainer>
+			</div>
+		</div>
+	</div>
+	<Fragment slot="footer">footer</Fragment>
+</DefaultPageLayout>
+
+<style lang="scss">
+	@use "sass:map";
+	@import "@styles/variables";
+	.ui-section {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		margin: 60px 0;
+	}
+
+	.ui-grid {
+		display: flex;
+		grid-template-columns: 100%;
+		flex-direction: column;
+		gap: 1rem;
+		height: 100%;
+		align-items: flex-start;
+	}
+
+	.ui-section-title {
+		margin-bottom: 24px;
+	}
+
+	.ui-description {
+		margin: 0;
+		font-size: 14px;
+	}
+
+	.ui-dark-bg, .ui-dark-light-bg, .ui-light-bg {
+		padding: 16px 24px;
+		border-radius: 0.25rem;
+	}
+
+	.ui-dark-bg {
+		background-color: var(--dark-30);
+	}
+
+	.ui-dark-light-bg {
+		background-color: var(--dark-70);
+	}
+
+	.ui-light-bg {
+		background-color: var(--dark-10);
+	}
+
+	.ui-row {
+		display: flex;
+		align-items: flex-start;
+		flex-wrap: wrap;
+		gap: 1rem;
+	}
+
+	.ui-grid {
+		display: grid;
+	}
+
+	.ui-grid-items-a-stretch {
+		align-items: stretch;
+	}
+
+	.ui-grid-col-2 {
+		grid-template-columns: 1fr 1fr;
+	}
+
+	.ui-grid-col-2 {
+		grid-template-columns: 1fr 1fr;
+	}
+
+	.ui-grid-col-3 {
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+
+	.ui-gap-1 {
+		gap: 1rem;
+	}
+
+	.ui-gap-2 {
+		gap: 2rem;
+	}
+</style>

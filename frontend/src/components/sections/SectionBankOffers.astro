@@ -1,0 +1,122 @@
+---
+import OfferCard from "../common/OfferCard/OfferCard.astro";
+import ATag from "../ui/ATag/ATag.astro";
+import SectionTitle from "../ui/SectionTitle/SectionTitle.astro";
+import SectionLayout from "../layouts/SectionLayout.astro";
+import ExpandableSlider from "../common/Sliders/ExpandableSlider/ExpandableSlider.astro";
+import SliderSlide from "../common/Sliders/common/SliderSlide/SliderSlide.astro";
+import PersistentSlider from "../common/Sliders/PersistentSlider/PersistentSlider.astro";
+
+const offerCards = [
+	{
+		title: 'Вклад «Рантье»',
+		description: '',
+		symbolId: 'rentier-contribution-2',
+		href: '#',
+		beforeNumberText: 'до',
+		numberText: '15,5%',
+		afterNumberText: '',
+		buttonText: 'Открыть вклад',
+		tagText: 'Частным клиентам',
+		cardColor: 'green'
+	},
+	{
+		title: 'Резервирование<br>счетов',
+		description: 'Дистанционная подача заявки<br>на&nbsp;открытие расчетного счета',
+		symbolId: 'account-reservation-3',
+		href: '#',
+		beforeNumberText: '',
+		numberText: '',
+		afterNumberText: '',
+		buttonText: 'Подать заявку',
+		tagText: 'Корпоративным клиентам',
+		cardColor: 'orange'
+	},
+	{
+		title: 'Экспресс-гарантии<br>44-ФЗ, 223-ФЗ',
+		description: 'Принятие решения за 1 день,<br>до&nbsp;30 000 000 рублей, без залога',
+		symbolId: 'express-guarantee',
+		href: '#',
+		beforeNumberText: '',
+		numberText: '',
+		afterNumberText: '',
+		buttonText: 'Оформить',
+		tagText: 'Малому и среднему бизнесу',
+		cardColor: 'yellow'
+	},
+	{
+		title: 'Вклад «Рантье»',
+		description: '',
+		symbolId: 'rentier-contribution-2',
+		href: '#',
+		beforeNumberText: 'до',
+		numberText: '15,5%',
+		afterNumberText: '',
+		buttonText: 'Открыть вклад',
+		tagText: 'Частным клиентам',
+		cardColor: 'green'
+	},
+	{
+		title: 'Резервирование<br>счетов',
+		description: 'Дистанционная подача заявки<br>на&nbsp;открытие расчетного счета',
+		symbolId: 'account-reservation-3',
+		href: '#',
+		beforeNumberText: '',
+		numberText: '',
+		afterNumberText: '',
+		buttonText: 'Подать заявку',
+		tagText: 'Корпоративным клиентам',
+		cardColor: 'orange'
+	},
+	{
+		title: 'Экспресс-гарантии<br>44-ФЗ, 223-ФЗ',
+		description: 'Принятие решения за 1 день,<br>до&nbsp;30 000 000 рублей, без залога',
+		symbolId: 'express-guarantee',
+		href: '#',
+		beforeNumberText: '',
+		numberText: '',
+		afterNumberText: '',
+		buttonText: 'Оформить',
+		tagText: 'Малому и среднему бизнесу',
+		cardColor: 'yellow'
+	},
+];
+---
+
+<SectionLayout
+	class="bank-offers js-bank-offers-expand"
+	data-visible-on-mobile="3"
+>
+	<div class="content-container">
+		<SectionTitle titleClass="headline-2" usePadding>Предложения Новикомбанка</SectionTitle>
+
+		<PersistentSlider class="bank-services__slider" spaceBetween="mobile-s:8,mobile:8,tablet:16,laptop:40" slidesPerView="mobile-s:1,mobile:1,tablet:2,laptop:3">
+			{
+				offerCards.map((card) =>(
+					<SliderSlide>
+						<OfferCard
+							symbolId={card.symbolId}
+							color={card.cardColor}
+							textButton={card.buttonText}
+							title={card.title}
+							description={card.description}
+							textIndicating={
+								{
+									text: card.numberText,
+									beforeText: card.beforeNumberText,
+									afterText: card.afterNumberText
+								}
+							}
+						>
+							<ATag slot="tag">{card.tagText}</ATag>
+						</OfferCard>
+					</SliderSlide>
+				))
+			}
+		</PersistentSlider>
+		<ExpandableSlider>
+
+		</ExpandableSlider>
+	</div>
+</SectionLayout>
+

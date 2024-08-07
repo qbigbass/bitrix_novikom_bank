@@ -1,0 +1,95 @@
+---
+import AIcon from "../../AIcon.astro";
+import AButton from "../Buttons/AButton.astro";
+---
+
+<AButton color="transparent" size="s" class="drop-down-button js-drop-down-button">
+    <AIcon symbolId="icon-more" size="m"></AIcon>
+    <div class="drop-down-menu js-drop-down-menu">
+        <slot></slot>
+    </div>
+</AButton>
+
+<script>
+    import DropDownMenu from "./index";
+
+    DropDownMenu();
+</script>
+
+<style lang="scss" is:global>
+  @use "sass:map";
+  @import "@styles/variables";
+  @import "@styles/placeholders";
+  @import "@styles/media-queries";
+
+  .drop-down-button {
+    @extend %reset-button;
+    position: relative;
+
+    &.a-button {
+      padding: 0;
+
+      &:hover {
+        color: var(--blue-100);
+      }
+    }
+  }
+
+  .drop-down-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 1rem);
+    right: 0;
+    flex-direction: column;
+    border-radius: map.get($border-radius, card-desktop);
+    box-shadow: 0 8px 32px 0 #3C3C474D;
+    padding: .5rem 0;
+    background-color: white;
+    z-index: 10;
+    min-width: 17.5rem; //280px
+
+    @include use-media(tablet-album) {
+      top: calc(100% + 1px);
+    }
+
+    &.is-active {
+      display: flex;
+    }
+
+    &__link {
+      @extend %reset-link;
+
+      padding: 1em;
+      font-size: 1rem;
+      text-align: left;
+      color: var(--dark-100);
+      transition: color ease .33s;
+
+      &.desktop-secondary-menu__item {
+        color: var(--dark-100);
+      }
+
+      &.js-spoiler-button-active {
+
+        & .a-icon {
+          transform: none !important;
+        }
+      }
+
+      &:hover {
+        color: var(--blue-100);
+      }
+    }
+
+    & .icon-box {
+      width: 100%;
+      justify-content: space-between;
+
+      & .a-icon svg {
+        opacity: 1;
+        transform: rotate(-90deg);
+      }
+    }
+  }
+
+</style>

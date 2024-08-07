@@ -1,0 +1,62 @@
+---
+import CardAboutBank from "../common/CardAboutBank/CardAboutBank.astro";
+import AnnouncementCardClients from "../common/AnnouncementCardClients/AnnouncementCardClients.astro";
+import SectionLayout from "../layouts/SectionLayout.astro";
+const { class: className = '' } = Astro.props;
+---
+<SectionLayout
+	class="section-client-info"
+	class:list={className}
+>
+	<div class="content-container">
+		<div class="section-client-info__container">
+			<div class="section-client-info__top">
+				<AnnouncementCardClients class="section-client-info__announcement-card" />
+			</div>
+			<div class="section-client-info__bottom">
+				<CardAboutBank class="section-client-info__about-card" />
+			</div>
+		</div>
+	</div>
+</SectionLayout>
+
+<style lang="scss" is:global>
+	@import "@styles/placeholders";
+	@import "@styles/media-queries";
+
+	.section-client-info {
+		$root: #{&};
+
+		&__container {
+			display: flex;
+			flex-direction: column;
+			gap: 2.5rem;
+
+			@include use-media(laptop-x) {
+				flex-direction: row;
+			}
+		}
+
+		&__top {
+			width: 100%;
+
+			@include use-media(laptop-x) {
+				width: calc(50% - 1.25rem);
+				flex-basis: calc(50% - 1.25rem);
+			}
+		}
+
+		&__bottom {
+			width: 100%;
+
+			@include use-media(laptop-x) {
+				width: calc(50% - 1.25rem);
+				flex-basis: calc(50% - 1.25rem);
+			}
+		}
+
+		&__announcement-card, &__about-card {
+			height: 100%;
+		}
+	}
+</style>

@@ -1,0 +1,42 @@
+---
+import AIcon from "../../AIcon.astro";
+
+interface Props {
+	title: string;
+	description: string;
+	iconId: string
+}
+
+const {
+	title,
+	description,
+	iconId
+} = Astro.props as Props;
+
+---
+
+<div class="benefit-text-card">
+	<div class="benefit-text-card__icon">
+		<AIcon symbolId={iconId} size="xll" />
+	</div>
+	<h3 class="benefit-text-card__title headline-3" set:html={title}></h3>
+	<p class="benefit-text-card__description body-m-light" set:html={description}></p>
+</div>
+
+<style lang="scss" is:global>
+	@import "@styles/media-queries";
+
+	.benefit-text-card {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+
+		&__icon {
+			color: var(--green-100);
+		}
+
+		@include use-media(tablet) {
+			gap: 1rem;
+		}
+	}
+</style>

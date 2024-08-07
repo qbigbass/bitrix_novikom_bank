@@ -1,0 +1,222 @@
+---
+import AFooterNavHeadLink from '@components/footer/nav/AFooterNavHeadLink.astro';
+import AFooterNavLink from '@components/footer/nav/AFooterNavLink.astro';
+
+interface Props {
+	class: string;
+}
+
+const { class: className } = Astro.props as Props;
+
+const nav = [
+	{
+		head: {
+			link: '#',
+			text: 'Частным клиентам'
+		},
+		links: [
+			{
+				link: '#',
+				text: 'Карты'
+			},
+			{
+				link: '#',
+				text: 'Вклады'
+			},
+			{
+				link: '#',
+				text: 'Кредиты'
+			},
+			{
+				link: '#',
+				text: 'Ипотека'
+			},
+			{
+				link: '#',
+				text: 'Платежи и переводы'
+			},
+			{
+				link: '#',
+				text: 'Онлайн сервисы'
+			},
+			{
+				link: '#',
+				text: 'Услуги'
+			},
+		]
+	},
+	{
+		head: {
+			link: '#',
+			text: 'Корпоративным клиентам'
+		},
+		links: [
+			{
+				link: '#',
+				text: 'Финансирование'
+			},
+			{
+				link: '#',
+				text: 'Зарплатный проект'
+			},
+			{
+				link: '#',
+				text: 'Депозиты'
+			},
+			{
+				link: '#',
+				text: 'ДБО'
+			},
+			{
+				link: '#',
+				text: 'Финансовые рынки'
+			},
+			{
+				link: '#',
+				text: 'Ценные бумаги'
+			},
+			{
+				link: '#',
+				text: 'Онлайн-банк для бизнеса'
+			}
+		]
+	},
+	{
+		head: {
+			link: '#',
+			text: 'Малому и среднему бизнесу'
+		},
+		links: [
+			{
+				link: '#',
+				text: 'Расчетный счет'
+			},
+			{
+				link: '#',
+				text: 'Кредитование'
+			},
+			{
+				link: '#',
+				text: 'ДБО'
+			},
+			{
+				link: '#',
+				text: 'Гарантии'
+			},
+			{
+				link: '#',
+				text: 'Депозиты'
+			},
+			{
+				link: '#',
+				text: 'Меры господдержки'
+			},
+			{
+				link: '#',
+				text: 'Страхование'
+			},
+			{
+				link: '#',
+				text: 'ВЭД'
+			},
+			{
+				link: '#',
+				text: 'Услуги'
+			},
+			{
+				link: '#',
+				text: 'Онлайн-банк для бизнеса'
+			}
+		]
+	},
+	{
+		head: {
+			link: '#',
+			text: 'О банке'
+		},
+		links: [
+			{
+				link: '#',
+				text: 'Новиком сегодня'
+			},
+			{
+				link: '#',
+				text: 'Пресс-центр'
+			},
+			{
+				link: '#',
+				text: 'Устав и документы'
+			},
+			{
+				link: '#',
+				text: 'Закупки'
+			},
+			{
+				link: '#',
+				text: 'Реквизиты'
+			},
+			{
+				link: '#',
+				text: 'Карьера'
+			},
+			{
+				link: '#',
+				text: 'Контактная информация'
+			}
+		]
+	},
+	{
+		head: {
+			link: '#',
+			text: 'Помощь'
+		},
+		links: [
+			{
+				link: '#',
+				text: 'Для частных клиентов'
+			},
+			{
+				link: '#',
+				text: 'Для малого и среднего бизнеса'
+			},
+			{
+				link: '#',
+				text: 'Для корпораивных клиентов'
+			}
+		]
+	},
+]
+---
+<div class="a-footer-nav" class:list={[className]}>
+	{
+		nav.map((item) =>
+			<div class="a-footer-nav__col">
+				<AFooterNavHeadLink href={item.head.link}>{item.head.text}</AFooterNavHeadLink>
+				{
+					item.links.map((link) =>
+						<AFooterNavLink href={link.link}>{link.text}</AFooterNavLink>)
+				}
+			</div>
+		)
+	}
+	<div class="a-footer-nav__col">
+		<AFooterNavHeadLink>Private Banking</AFooterNavHeadLink>
+		<AFooterNavHeadLink>Финансовым институтам</AFooterNavHeadLink>
+		<AFooterNavHeadLink>Устойчивое развитие</AFooterNavHeadLink>
+	</div>
+</div>
+
+<style lang="scss" is:global>
+	.a-footer-nav {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		column-gap: 40px;
+		row-gap: 48px;
+
+		&__col {
+			display: flex;
+			flex-direction: column;
+			row-gap: 8px;
+		}
+	}
+</style>

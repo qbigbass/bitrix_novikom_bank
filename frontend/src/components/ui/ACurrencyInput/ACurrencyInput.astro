@@ -1,0 +1,184 @@
+---
+import AIcon from "../../AIcon.astro";
+import ADropDown from "../ADropDown/ADropDownMenu/ADropDownMenu.astro";
+type Size = "m" | "s" | "ms";
+
+interface Props {
+	className?: string;
+	placeholder?: string;
+	disabled?: boolean;
+	name?: string;
+	value?: string;
+	label?: string;
+	forId?: string;
+	hint?: string;
+	required?: boolean;
+	size: Size;
+}
+
+const {
+	class: className,
+	placeholder,
+	label,
+	disabled,
+	name,
+	value,
+	forId,
+	hint,
+	required,
+	size = 'ms',
+	...rest
+} = Astro.props;
+---
+
+<div
+	class="a-input a-currency-input js-a-currency-input"
+	class:list={
+		[
+			className,
+			{'a-input--required': required},
+			`a-input--${size}`
+		]
+	}
+	{...rest}
+>
+	{ label && (<label for={forId} class="a-currency-input__label body-s-heavy">{label}</label>)}
+
+	<div class="a-currency-input__inner">
+		<input
+			id={forId}
+			class="a-input__input"
+			placeholder={placeholder}
+			disabled={disabled}
+			name={name}
+			value={value}
+			aria-describedby=`${forId + '-hint'}`
+		/>
+		<button class="a-currency-input__button js-a-currency-input-button" type="button">
+			<span class="a-currency-input__button-text js-a-currency-input-button-text"></span>
+			<AIcon class="a-currency-input__button-icon" symbolId="icon-chevron-down" size="s" />
+		</button>
+		<ADropDown class="a-currency-input__drop-down">
+			<slot />
+		</ADropDown>
+	</div>
+	{ hint && (<small class="a-input__hint js-a-input-hint caption-m" id=`${forId + '-hint'}`>{hint}</small>)}
+</div>
+
+<script>
+	import initACurrencyInput from './';
+	import { JS_CLASSES } from './';
+	import type { ACurrencyInputState } from './interfaces'
+	const currencyInputs: NodeListOf<HTMLDivElement> = document.querySelectorAll(JS_CLASSES.root);
+
+	currencyInputs?.forEach((currencyInput) => {
+		const input = initACurrencyInput(currencyInput) as ACurrencyInputState;
+
+		input.root.addEventListener('input', (event) => {
+			console.log('Input', input)
+		});
+
+		input.root.addEventListener('selected', (event) => {
+			console.log('Selected', input)
+		});
+	});
+</script>
+
+<style lang="scss" is:global>
+	@use "sass:map";
+	@import "@styles/variables.scss";
+	@import "@styles/functions.scss";
+	@import "@styles/placeholders.scss";
+
+	.a-currency-input {
+		display: flex;
+		flex-direction: column;
+
+		&__inner {
+			position: relative;
+			display: flex;
+		}
+
+		&__label {
+			color: var(--dark-70);
+		}
+
+		&__button {
+			display: flex;
+			background-color: transparent;
+			align-items: center;
+			justify-content: center;
+			gap: 0.5rem;
+			border: 1px solid var(--purple-30);
+			border-radius: 0 0.25rem 0.25rem 0;
+			cursor: pointer;
+			font-size: inherit;
+
+			&:focus {
+				outline: none;
+			}
+
+			&:disabled {
+				cursor: not-allowed;
+			}
+		}
+
+		&__drop-down {
+			top: calc(100% + 0.5rem);
+			width: 100%;
+		}
+
+		.a-input__input {
+			border-radius: 0.25rem 0 0 0.25rem;
+			border-right: 0;
+		}
+
+		.a-input__input:disabled ~ &__button {
+			pointer-events: none;
+			cursor: not-allowed;
+			border-color: transparent;
+			border-left: 1px solid var(--dark-50);
+			background-color: var(--dark-10);
+		}
+
+		.a-input__input:enabled:hover ~ &__button {
+			border-color: var(--purple-70);
+		}
+
+		.a-input__input:focus ~ &__button {
+			border-color: var(--purple-70);
+		}
+
+		&__button-icon {
+			color: var(--violet-70);
+		}
+
+		&.a-input.a-input--m & {
+			&__button {
+				padding: 0.938rem 0.938rem 0.938rem 0.438rem;
+			}
+		}
+
+		&.a-input.a-input--s & {
+			&__button {
+				padding: 0.625rem 0.438rem 0.625rem 0.438rem;
+			}
+		}
+
+		&.a-input.a-input--ms & {
+			&__button {
+				padding:
+					calc-clamp(0.563rem, 0.938rem, map.get($mq-breakpoints, laptop-x))
+					calc-clamp(0.563rem, 0.938rem, map.get($mq-breakpoints, laptop-x))
+					calc-clamp(0.563rem, 0.938rem, map.get($mq-breakpoints, laptop-x))
+					0.438rem;
+			}
+		}
+
+		&.is-open & {
+			&__button-icon {
+				transform: rotate(-180deg);
+			}
+		}
+	}
+</style>

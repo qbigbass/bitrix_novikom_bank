@@ -1,0 +1,19 @@
+---
+interface Props {
+	classList: string;
+}
+
+const {
+	class: classList,
+	...rest
+} = Astro.props as Props;
+---
+<div
+	class:list={[
+		'a-table-row',
+		classList
+	]}
+	{...rest}
+>
+	<slot />
+</div>

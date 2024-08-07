@@ -1,0 +1,88 @@
+---
+import SliderSkeleton from "@components/common/Sliders/common/SliderSkeleton/SliderSkeleton.astro";
+import type { ExpandableSliderProps } from "./interfaces";
+import SliderWrapper from "../common/SliderWrapper/SliderWrapper.astro";
+import AButton from "../../../ui/Buttons/AButton.astro";
+import AIcon from "../../../AIcon.astro";
+import SliderControls from "../common/SliderControls/SliderControls.astro";
+
+const {
+	class: className,
+	spaceBetween = 'mobile-s:0,mobile:0,tablet:32,laptop:40',
+	slidesPerView = 'mobile-s:1,mobile:1,tablet:2,laptop:3',
+	rebuildingSlides = 'mobile',
+	visibleSlides = 3,
+	expandableButtonText = 'Все предложения'
+	} = Astro.props as ExpandableSliderProps;
+---
+<SliderSkeleton
+	class="expandable-slider js-expandable-slider"
+	spaceBetween={spaceBetween}
+	slidesPerView={slidesPerView}
+	data-rebuilding-slides={rebuildingSlides}
+	data-visible-slides={visibleSlides}
+>
+	<SliderWrapper>
+		<slot />
+	</SliderWrapper>
+	<AButton size="m" class="expandable-slider__trigger js-expandable-slider-trigger" afterIcon="icon-chevron-down" text>
+		{expandableButtonText}
+		<AIcon symbolId="chevron" size="s" slot="after-icon" />
+	</AButton>
+	<Fragment slot="controls">
+		<SliderControls />
+	</Fragment>
+</SliderSkeleton>
+
+<script>
+	import initExpandedSlider, {JS_CLASSES} from './';
+
+	const expandableSliders: NodeListOf<HTMLDivElement> = document.querySelectorAll(JS_CLASSES.slider);
+
+	expandableSliders.forEach((slider: HTMLDivElement) => initExpandedSlider(slider));
+</script>
+
+<style lang="scss" is:global>
+	.expandable-slider {
+		$root: #{&};
+
+		&__trigger {
+			display: none;
+			margin-top: 1.5rem;
+			margin-right: auto;
+			margin-left: auto;
+		}
+
+		&.swiper-disabled {
+			.swiper-wrapper {
+				display: flex;
+				flex-direction: column;
+				gap: 1.5rem;
+			}
+
+			.slider-skeleton {
+				&__controls {
+					display: none;
+				}
+			}
+
+			#{$root}__trigger {
+				display: flex;
+			}
+
+			.swiper-slide.is-hidden {
+				display: none;
+			}
+		}
+
+		&.is-expanded {
+			.swiper-slide.is-hidden {
+				display: block;
+			}
+
+			#{$root}__trigger {
+				display: none;
+			}
+		}
+	}
+</style>

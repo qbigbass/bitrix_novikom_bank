@@ -1,0 +1,109 @@
+---
+import ABreadcrumbs from "../ui/ABreadcrumbs/ABreadcrumbs.astro";
+interface Breadcrumb {
+	title: string;
+	url: string;
+}
+
+interface Props {
+	breadcrumbs?: Breadcrumb[];
+	title?: string;
+	description?: string;
+	backgroundColor?: 'blue' | 'heavy-purple' | 'heavy-violet'
+}
+
+const {
+	breadcrumbs,
+	title,
+	description,
+	backgroundColor = 'blue'
+} = Astro.props as Props;
+---
+
+<div class:list={[
+	'text-banner',
+	`text-banner--${backgroundColor}`,
+]}>
+	<div class="content-container">
+		<div class="text-banner__content">
+			{breadcrumbs &&
+				breadcrumbs.length > 0 && (
+					<ABreadcrumbs
+						links={breadcrumbs}
+					/>
+				)
+			}
+			<div class="text-banner__title headline-0" set:html={title}></div>
+			<div class="text-banner__description body-l-light" set:html={description}></div>
+		</div>
+	</div>
+	<div class="text-banner__bg">
+		<img src="/assets/text-banner-pattern.svg" >
+	</div>
+</div>
+
+<style lang="scss" is:global>
+	@import "@styles/media-queries";
+
+	.text-banner {
+		position: relative;
+		border-top: 0.5rem solid var(--green-100);
+		min-height: 20rem;
+		overflow: hidden;
+
+		&__content {
+			position: relative;
+			z-index: 1;
+			display: flex;
+			flex-direction: column;
+			gap: 1rem;
+			padding: 2.5rem 0;
+
+			@include use-media(tablet-album) {
+				gap: 1.5rem;
+				padding: 2.5rem;
+			}
+		}
+
+		&__title, &__description {
+			color: var(--dark-0);
+		}
+
+		&__bg {
+			position: absolute;
+			bottom: -12.75rem;
+			right: -81.5rem;
+			z-index: 0;
+
+			@include use-media(tablet) {
+				bottom: -15.938rem;
+				right: -67.938rem;
+			}
+
+			@include use-media(tablet-album) {
+				right: -61.938rem;
+			}
+
+			@include use-media(laptop-x) {
+				bottom: 0;
+				right: -34.25rem;
+			}
+		}
+
+		@include use-media(tablet-album) {
+			min-height: 25rem;
+		}
+	}
+
+	.text-banner.text-banner--blue {
+		background: linear-gradient(42.24deg, #383A74 20%, #2E1B52 80%);
+	}
+
+	.text-banner.text-banner--heavy-purple {
+		background: linear-gradient(222.24deg, #101317 20%, #5A2375 80%);
+	}
+
+	.text-banner.text-banner--heavy-violet {
+		background: linear-gradient(222.24deg, #101317 20%, #6655A2 80%);
+	}
+</style>

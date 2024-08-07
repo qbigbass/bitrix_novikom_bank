@@ -1,0 +1,166 @@
+---
+type Size = 'l' | 'm' | 'lm';
+
+interface Props {
+	value?: string;
+	href?: string;
+	isActive?: boolean;
+	size: Size;
+	color?: 'primary' | 'white';
+}
+
+const {
+	value,
+	href,
+	isActive = false,
+	size = 'm',
+	color = 'primary',
+} = Astro.props as Props;
+
+const Element = href ? 'a' : 'button';
+const isLink = Element.toLocaleLowerCase() === 'a';
+---
+
+<Element
+	class:list={[
+		'a-tab',
+		`a-tab--${size}`,
+		`a-tab--${color}`,
+		`swiper-slide`,
+		'js-a-tab',
+		{'is-active': isActive},
+	]}
+	type={isLink ? undefined : 'button'}
+	href={isLink ? href : undefined}
+	data-value={value}
+>
+	<slot />
+</Element>
+
+<style lang="scss" is:global>
+	@use "sass:map";
+	@import "@styles/placeholders";
+	@import "@styles/media-queries";
+
+	.a-tab {
+		@extend %reset-button;
+
+		display: block;
+		height: 100%;
+		width: auto;
+		position: relative;
+		text-wrap: nowrap;
+		box-sizing: border-box;
+		text-decoration: none;
+		flex-grow: 1;
+
+		&::before {
+			content: "";
+			position: absolute;
+			border: 1px solid var(--purple-30);
+			left: 0;
+			top: 0;
+			height: 100%;
+			width: 100%;
+			box-sizing: border-box;
+			border-left: 0;
+			border-right: 0;
+		}
+
+		&:first-child {
+			&::before {
+				border-left: 1px solid var(--purple-30);
+				border-radius: 0.25rem 0 0 0.25rem;
+			}
+		}
+
+		&:last-child {
+			&::before {
+				border-right: 1px solid var(--purple-30);
+				border-radius: 0 0.25rem 0.25rem 0;
+			}
+		}
+
+		&:first-child:last-child {
+			&::before {
+				border-radius: 0.25rem;
+			}
+		}
+
+		&::after {
+			content: none;
+			position: absolute;
+			border: 1px solid var(--purple-100);
+			left: 0;
+			top: 0;
+			height: 100%;
+			width: 100%;
+			box-sizing: border-box;
+			border-radius: 0.25rem;
+		}
+
+		&.is-active {
+			&::after {
+				content: "";
+			}
+		}
+
+		&:focus-visible {
+			outline: none;
+
+			&::after {
+				content: "";
+			}
+		}
+
+		//SIZES
+		&.a-tab--l {
+			padding: 0.938rem 2.438rem;
+			font-size: 1.125rem;
+			line-height: 135%;
+			font-weight: 600;
+		}
+
+		&.a-tab--m {
+			padding: 0.438rem 1.438rem;
+			font-size: 1rem;
+			line-height: 125%;
+		}
+
+		&.a-tab--lm {
+			padding: 0.438rem 1.438rem;
+			font-size: 1rem;
+			line-height: 125%;
+
+			@include use-media(tablet-album) {
+				font-size: 1.125rem;
+				font-weight: 600;
+				line-height: 135%;
+				padding: 0.938rem 2.438rem;
+			}
+		}
+
+		//COLORS
+		&.a-tab--primary {
+			color: var(--blue-100);
+		}
+
+		&.a-tab--primary.is-active {
+			color: var(--violet-100);
+			border-color: var(--violet-100);
+		}
+
+		&.a-tab--white {
+			color: var(--blue-70);
+		}
+
+		&.a-tab--white.is-active {
+			color: var(--dark-0);
+			border-color: var(--dark-0);
+		}
+
+		@include use-media(tablet-album) {
+			flex-grow: unset;
+		}
+	}
+</style>

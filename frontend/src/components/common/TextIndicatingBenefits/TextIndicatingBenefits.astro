@@ -1,0 +1,69 @@
+---
+import type { TextIndicatingBenefitsProps } from "./";
+
+const {
+	class: classList,
+	startText,
+	beforeText,
+	text,
+	afterText,
+	currency,
+	headClass,
+	startTextClass = 'headline-2',
+	beforeTextClass = 'body-l-heavy',
+	textClass = 'number-l-heavy',
+	currencyClass = 'number-l-heavy',
+	afterTextClass = 'body-l-heavy',
+	...rest
+} = Astro.props as TextIndicatingBenefitsProps;
+
+let currencyTmpClass = currencyClass + ' currency';
+---
+
+<div
+	class:list={[
+		'text-indicating-benefits',
+		classList
+	]}
+	{...rest}
+>
+	<div class:list={[
+		'text-indicating-benefits-head',
+		headClass
+	]}>
+		{
+			startText && (
+				<span class={startTextClass}>{ startText }</span>
+			)
+		}
+		{
+			beforeText && (
+				<span class={beforeTextClass}>{ beforeText }</span>
+			)
+		}
+		{
+			text && (
+				<span class={textClass}>{ text }</span>
+			)
+		}
+		{
+			currency && (
+				<span class={currencyTmpClass}>{ currency }</span>
+			)
+		}
+		{
+			afterText && (
+				<span class={afterTextClass}>{ afterText }</span>
+			)
+		}
+	</div>
+	<slot />
+</div>
+
+<style lang="scss" is:global>
+	.text-indicating-benefits {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+</style>

@@ -1,0 +1,62 @@
+---
+interface Props {
+	className?: string;
+	value: string;
+	selected?: boolean;
+}
+
+const {
+	class: className,
+	value,
+	selected = false,
+	...rest
+} = Astro.props as Props;
+
+---
+
+<button
+	class="a-drop-down-button btn-m-heavy js-a-drop-down-button"
+	class:list={
+		[
+			className
+		]
+	}
+	type="button"
+	data-value={value}
+	aria-selected={[selected]}
+	{...rest}
+>
+	<slot/>
+</button>
+
+<style lang="scss" is:global>
+	@import "@styles/media-queries";
+	@import "@styles/placeholders";
+
+	.a-drop-down-button {
+		display: block;
+		border: none;
+		width: 100%;
+		text-align: left;
+		cursor: pointer;
+		padding: 0.938rem 1rem;
+		background-color: var(--dark-0);
+
+		@include use-media(tablet) {
+			padding: 1rem;
+		}
+
+		@include use-media(tablet-album) {
+			padding: 1.125rem 1rem;
+		}
+
+		&:hover {
+			color: var(--blue-100);
+		}
+
+		&[aria-selected=true] {
+			background-color: var(--dark-30);
+			color: var(--blue-100);
+		}
+	}
+</style>

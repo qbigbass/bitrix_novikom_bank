@@ -1,0 +1,115 @@
+---
+
+import SectionLayout from "../layouts/SectionLayout.astro";
+import AAccordion from "../ui/AAccordion/AAccordion.astro";
+import AAccordionPanel from "../ui/AAccordion/AAccordionPanel.astro";
+import AAccordionHeader from "../ui/AAccordion/AAccordionHeader.astro";
+import AAccordionContent from "../ui/AAccordion/AAccordionContent.astro";
+import AButton from "../ui/Buttons/AButton.astro";
+import DisplayStepper from "../common/DisplayStepper/DisplayStepper.astro";
+import DisplayStepperItem from "../common/DisplayStepper/DisplayStepperItem.astro";
+import ARte from "../ARte.astro";---
+
+<SectionLayout class="section-how-apply-card">
+	<div class="content-container">
+		<div class="section-how-apply-card__container">
+			<AAccordion type="layout">
+				<AAccordionPanel>
+					<AAccordionHeader class="section-how-apply-card__accordion-header">
+						<div class="headline-2">Как оформить карту</div>
+					</AAccordionHeader>
+					<AAccordionContent class="section-how-apply-card__accordion-content">
+						<div class="section-how-apply-card__content">
+							<div class="section-how-apply-card__title headline-2">Как оформить карту</div>
+							<DisplayStepper>
+								<DisplayStepperItem icon="icon-a-web-bank">
+									<div class="headline-3">Онлайн</div>
+									<ARte class="body-l-light">
+										<p>Закажите выпуск именной карты «Мир Supreme» прямо сейчас.</p>
+									</ARte>
+									<AButton element="a" href="#" size="lm">Оформить карту</AButton>
+								</DisplayStepperItem>
+								<DisplayStepperItem icon="icon-a-personal-manager">
+									<div class="headline-3">Через менеджера</div>
+									<ARte class="body-l-light">
+										<p>Закажите консультацию сотрудника по телефону 8 800 250-70-07.</p>
+									</ARte>
+								</DisplayStepperItem>
+								<DisplayStepperItem icon="icon-a-bank">
+									<div class="headline-3">В офисе банка</div>
+									<ARte class="body-l-light">
+										<p>Приходите в ближайший офис банка Новиком</p>
+									</ARte>
+									<AButton element="a" href="#" size="lm" text afterIcon="icon-chevron-right">Найти на карте</AButton>
+								</DisplayStepperItem>
+							</DisplayStepper>
+						</div>
+					</AAccordionContent>
+				</AAccordionPanel>
+			</AAccordion>
+		</div>
+	</div>
+</SectionLayout>
+
+<style lang="scss" is:global>
+	@import "@styles/media-queries";
+
+	.section-how-apply-card {
+		background-color: var(--dark-10);
+
+		&__container {
+
+		}
+
+		&__accordion-header {
+			@include use-media(tablet) {
+				display: none;
+			}
+		}
+
+		&__accordion-content {
+			@include use-media(tablet) {
+				display: block;
+				max-height: unset !important;
+			}
+		}
+
+		&__content {
+			display: flex;
+			flex-direction: column;
+			gap: 3rem;
+			padding-top: 1.5rem;
+
+			@include use-media(tablet) {
+				padding-top: 0;
+			}
+
+			@include use-media(tablet-album) {
+				padding: 0 40px;
+			}
+		}
+
+		&__title {
+			display: none;
+
+			@include use-media(tablet) {
+				display: flex;
+			}
+		}
+
+		&__items {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 2rem;
+
+			@include use-media(tablet) {
+				grid-template-columns: repeat(3, 1fr);
+			}
+
+			@include use-media(tablet-album) {
+				grid-template-columns: repeat(3, 1fr);
+				gap: 2.5rem;
+			}
+		}
+	}
+</style>

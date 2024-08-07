@@ -1,0 +1,18 @@
+---
+interface Props {
+	className: string,
+}
+
+const {
+	class: className,
+	...rest
+} = Astro.props as Props;
+---
+
+<div
+	class="swiper-wrapper js-swiper-wrapper"
+	class:list={className}
+	{...rest}
+>
+	<slot />
+</div>

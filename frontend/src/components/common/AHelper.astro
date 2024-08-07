@@ -1,0 +1,87 @@
+---
+// баннер с хелп информацией
+
+interface Props {
+    title?: string;
+    description?: string,
+    image?: string,
+    class?: string
+}
+
+const {
+    title, description, image, class: className = 'dark-0'
+} = Astro.props as Props
+---
+<div class:list={[
+	'a-helper',
+	className
+]}>
+    <img src=`assets/${image}` class="a-helper__icon" alt="" loading="lazy" />
+    <div class="a-helper__content">
+        {
+            title
+                ? (
+                    <h3 class="headline-3" set:html={title}></h3>
+                ) : ''
+        }
+        {
+            description
+                ? (
+                    <p class="body-l-light" set:html={description}></p>
+                ) : ''
+        }
+    </div>
+</div>
+
+<style lang="scss" is:global>
+  @import "@styles/media-queries";
+
+  .a-helper {
+    padding: 1rem 2rem 3.5rem 1rem;
+    background-color: currentColor;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+
+    @include use-media(tablet) {
+      flex-direction: row;
+      align-items: center;
+      padding: 1.5rem 2rem 2rem 1.5rem;
+    }
+
+    @include use-media(laptop) {
+      gap: 2.5rem;
+      padding: 1.5rem;
+    }
+
+    &__icon {
+        width: 7.5rem; //120px
+        height: 7.5rem; //120px
+
+      @include use-media(laptop) {
+        width: 10rem; //160px
+        height: 10rem; //160px
+      }
+    }
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+
+      color: var(--dark-100);
+
+      @include use-media(laptop) {
+       max-width: 80%;
+      }
+
+      @include use-media(laptop-x) {
+        max-width: 65%;
+      }
+    }
+  }
+</style>

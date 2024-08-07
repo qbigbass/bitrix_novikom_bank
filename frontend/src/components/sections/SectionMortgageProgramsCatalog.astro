@@ -1,0 +1,420 @@
+---
+import ProductCard from "../common/ProductCard/ProductCard.astro";
+import ATab from "../ui/ATabs/common/ATab/ATab.astro";
+import ATabPanel from "../ui/ATabs/common/ATabPanel.astro";
+import SectionCatalogLayout from "../layouts/SectionCatalogLayout.astro";
+import ProductList from "../layouts/ProductList.astro";
+
+const primaryMortgageMarket = [
+	{
+		title: 'Кредит на любые цели<br> для зарплатных клиентов',
+		description: 'Воплощение задуманных планов и реализация любых целей уже сегодня',
+		symbolId: 'loan-for-any-purpose',
+		links: [],
+		tagText: '',
+		textButton: 'Оформить заявку',
+		conditions: [
+			{
+				startText: '',
+				beforeText: 'от',
+				text: '18%',
+				afterText: '',
+				currency: '',
+				description: 'Ставка'
+			},
+			{
+				startText: '',
+				beforeText: 'до',
+				text: '1 500 000',
+				afterText: '',
+				currency: '₽',
+				description: 'Сумма'
+			},
+			{
+				startText: '',
+				beforeText: 'до',
+				text: '3 лет',
+				afterText: '',
+				currency: '',
+				description: 'Срок'
+			}
+		]
+	},
+	{
+		title: 'Кредит на любые цели <br> для стратегических клиентов',
+		description: 'Воплощение задуманных планов и реализация любых целей уже сегодня',
+		symbolId: 'loan-for-any-purpose-1',
+		links: [],
+		tagText: '',
+		textButton: 'Оформить заявку',
+		conditions: [
+			{
+				startText: '',
+				beforeText: 'от',
+				text: '18%',
+				afterText: '',
+				currency: '',
+				description: 'Ставка'
+			},
+			{
+				startText: '',
+				beforeText: 'до',
+				text: '1 500 000',
+				afterText: '',
+				currency: '₽',
+				description: 'Сумма'
+			},
+			{
+				startText: '',
+				beforeText: 'до',
+				text: '3 лет',
+				afterText: '',
+				currency: '',
+				description: 'Срок'
+			}
+		]
+	}
+]
+
+const iTMortgage = [
+	{
+		title: 'Кредит на образование',
+		description: 'Для оплаты до 100% от стоимости обучения в вузе или дополнительного образования',
+		symbolId: 'education-loan',
+		links: [],
+		tagText: '',
+		textButton: 'Оформить заявку',
+		conditions: [
+			{
+				startText: '',
+				beforeText: 'от',
+				text: '16%',
+				afterText: '',
+				currency: '',
+				description: 'Ставка'
+			},
+			{
+				startText: '',
+				beforeText: 'до',
+				text: '3 000 000',
+				afterText: '',
+				currency: '₽',
+				description: 'Сумма'
+			},
+			{
+				startText: '',
+				beforeText: 'до',
+				text: '8 лет',
+				afterText: '',
+				currency: '',
+				description: 'Срок'
+			}
+		]
+	}
+]
+
+const farEasternMortgage = [
+	{
+		title: 'Овердрафт',
+		description: 'Кредит «до зарплаты» на случай непредвиденных расходов и неотложных платежей',
+		symbolId: 'overdraft',
+		links: [],
+		tagText: '',
+		textButton: 'Оформить заявку',
+		conditions: [
+			{
+				startText: '',
+				beforeText: 'от',
+				text: '16%',
+				afterText: '',
+				currency: '',
+				description: 'Ставка'
+			},
+			{
+				startText: '',
+				beforeText: 'до',
+				text: '3 000 000',
+				afterText: '',
+				currency: '₽',
+				description: 'Сумма'
+			},
+			{
+				startText: '',
+				beforeText: 'до',
+				text: '8 лет',
+				afterText: '',
+				currency: '',
+				description: 'Срок'
+			}
+		]
+	}
+]
+
+const secondaryMortgageMarket = [
+	{
+		title: 'Кредит на рефинансирование<br> для зарплатных клиентов',
+		description: 'Воплощение задуманных планов и реализация любых целей уже сегодня',
+		symbolId: 'refinancing-1',
+		links: [],
+		tagText: '',
+		textButton: 'Оформить заявку',
+		conditions: [
+			{
+				startText: '',
+				beforeText: 'от',
+				text: '16%',
+				afterText: '',
+				currency: '',
+				description: 'Ставка'
+			},
+			{
+				startText: '',
+				beforeText: 'до',
+				text: '5 000 000',
+				afterText: '',
+				currency: '₽',
+				description: 'Сумма'
+			},
+			{
+				startText: '',
+				beforeText: 'до',
+				text: '8 лет',
+				afterText: '',
+				currency: '',
+				description: 'Срок'
+			}
+		]
+	},
+	{
+		title: 'Кредит на рефинансирование<br> для стратегических клиентов',
+		description: 'Воплощение задуманных планов и реализация любых целей уже сегодня',
+		symbolId: 'refinancing',
+		links: [],
+		tagText: '',
+		textButton: 'Оформить заявку',
+		conditions: [
+			{
+				startText: '',
+				beforeText: 'от',
+				text: '16%',
+				afterText: '',
+				currency: '',
+				description: 'Ставка'
+			},
+			{
+				startText: '',
+				beforeText: 'до',
+				text: '5 000 000',
+				afterText: '',
+				currency: '₽',
+				description: 'Сумма'
+			},
+			{
+				startText: '',
+				beforeText: 'до',
+				text: '8 лет',
+				afterText: '',
+				currency: '',
+				description: 'Срок'
+			}
+		]
+	}
+]
+
+const familyMortgage = [
+	{
+		title: 'Реструктуризация',
+		description: 'Программы для заемщиков, у которых возникли трудности с погашением кредита',
+		symbolId: 'restructuring',
+		links: [],
+		tagText: '',
+		conditions: [
+			{
+				startText: 'Уменьшение',
+				beforeText: '',
+				text: '',
+				afterText: '',
+				currency: '',
+				description: 'Кредитной ставки'
+			},
+			{
+				startText: 'Кредитные',
+				beforeText: '',
+				text: '',
+				afterText: '',
+				currency: '',
+				description: 'Каникулы'
+			}
+		]
+	}
+]
+
+const mortgageRefinancing = [
+	{
+		title: 'Реструктуризация',
+		description: 'Программы для заемщиков, у которых возникли трудности с погашением кредита',
+		symbolId: 'restructuring',
+		links: [],
+		tagText: '',
+		conditions: [
+			{
+				startText: 'Уменьшение',
+				beforeText: '',
+				text: '',
+				afterText: '',
+				currency: '',
+				description: 'Кредитной ставки'
+			},
+			{
+				startText: 'Кредитные',
+				beforeText: '',
+				text: '',
+				afterText: '',
+				currency: '',
+				description: 'Каникулы'
+			}
+		]
+	}
+]
+
+const allLoans = [
+	...primaryMortgageMarket,
+	...iTMortgage,
+	...farEasternMortgage,
+	...secondaryMortgageMarket,
+	...familyMortgage,
+	...mortgageRefinancing
+]
+---
+<SectionCatalogLayout small>
+	<Fragment slot="tabs">
+		<ATab size="lm" value="0" isActive>Все программы</ATab>
+		<ATab size="lm" value="1">Первичный рынок</ATab>
+		<ATab size="lm" value="2">IT-ипотека</ATab>
+		<ATab size="lm" value="3">Дальневосточная ипотека</ATab>
+		<ATab size="lm" value="4">Вторичный рынок</ATab>
+		<ATab size="lm" value="5">Семейная ипотека</ATab>
+		<ATab size="lm" value="6">Рефинансирование</ATab>
+	</Fragment>
+	<Fragment slot="panels">
+		<ATabPanel value="0">
+			<ProductList>
+				{
+					allLoans.map((card) => (
+						<ProductCard
+							title={card.title}
+							description={card.description}
+							symbolId={card.symbolId}
+							conditions={card.conditions}
+							links={card.links}
+							tagText={card.tagText}
+							textButton={card.textButton}
+						/>
+					))
+				}
+			</ProductList>
+		</ATabPanel>
+		<ATabPanel value="1">
+			<ProductList>
+				{
+					primaryMortgageMarket.map((card) => (
+						<ProductCard
+							title={card.title}
+							description={card.description}
+							symbolId={card.symbolId}
+							conditions={card.conditions}
+							links={card.links}
+							tagText={card.tagText}
+							textButton={card.textButton}
+						/>
+					))
+				}
+			</ProductList>
+		</ATabPanel>
+		<ATabPanel value="2">
+			<ProductList>
+				{
+					iTMortgage.map((card) => (
+						<ProductCard
+							title={card.title}
+							description={card.description}
+							symbolId={card.symbolId}
+							conditions={card.conditions}
+							links={card.links}
+							tagText={card.tagText}
+							textButton={card.textButton}
+						/>
+					))
+				}
+			</ProductList>
+		</ATabPanel>
+		<ATabPanel value="3">
+			<ProductList>
+				{
+					farEasternMortgage.map((card) => (
+						<ProductCard
+							title={card.title}
+							description={card.description}
+							symbolId={card.symbolId}
+							conditions={card.conditions}
+							links={card.links}
+							tagText={card.tagText}
+							textButton={card.textButton}
+						/>
+					))
+				}
+			</ProductList>
+		</ATabPanel>
+		<ATabPanel value="4">
+			<ProductList>
+				{
+					familyMortgage.map((card) => (
+						<ProductCard
+							title={card.title}
+							description={card.description}
+							symbolId={card.symbolId}
+							conditions={card.conditions}
+							links={card.links}
+							tagText={card.tagText}
+							textButton={card.textButton}
+						/>
+					))
+				}
+			</ProductList>
+		</ATabPanel>
+		<ATabPanel value="5">
+			<ProductList>
+				{
+					familyMortgage.map((card) => (
+						<ProductCard
+							title={card.title}
+							description={card.description}
+							symbolId={card.symbolId}
+							conditions={card.conditions}
+							links={card.links}
+							tagText={card.tagText}
+							textButton={card.textButton}
+						/>
+					))
+				}
+			</ProductList>
+		</ATabPanel>
+		<ATabPanel value="6">
+			<ProductList>
+				{
+					mortgageRefinancing.map((card) => (
+						<ProductCard
+							title={card.title}
+							description={card.description}
+							symbolId={card.symbolId}
+							conditions={card.conditions}
+							links={card.links}
+							tagText={card.tagText}
+							textButton={card.textButton}
+						/>
+					))
+				}
+			</ProductList>
+		</ATabPanel>
+	</Fragment>
+</SectionCatalogLayout>

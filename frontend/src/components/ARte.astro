@@ -1,0 +1,75 @@
+---
+interface Props {
+	class?: string;
+}
+
+const {
+	class: className,
+	...rest
+} = Astro.props as Props;
+---
+<div
+	class="a-rte"
+	class:list={className}
+	{...rest}
+>
+	<slot />
+</div>
+
+<style lang="scss" is:global>
+	@import "@styles/typography";
+	.a-rte {
+
+		h3 {
+			@extend .headline-3;
+		}
+
+		p {
+			margin-bottom: 1rem;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+
+		ul {
+			margin: 0.5rem 0;
+			padding-inline-start: 28px;
+
+			li {
+				position: relative;
+				list-style: none;
+				margin-bottom: 0.5rem;
+
+				&:last-child {
+					margin-bottom: 0;
+				}
+
+				&::before {
+					position: absolute;
+					content: url("assets/ul-li-icon.svg");
+					left: -28px;
+					top: 0;
+					width: 12px;
+					height: 18px;
+				}
+			}
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+
+		a {
+			font-size: inherit;
+			font-weight: inherit;
+			line-height: inherit;
+			text-decoration: none;
+			color: var(--blue-100);
+
+			&:hover {
+				color: var(--violet-100);
+			}
+		}
+	}
+</style>

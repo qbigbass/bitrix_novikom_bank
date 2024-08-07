@@ -1,0 +1,64 @@
+---
+interface Props {
+	class?: string;
+}
+
+const {
+	class: className,
+	...rest
+} = Astro.props;
+---
+
+<details class="detail-accordion js-detail-accordion" class:list={className} {...rest}>
+    <summary class="detail-accordion__summary">
+		{Astro.slots.has('title') && (
+			<slot name="title" />
+		)}
+	    <slot name="icon">marker</slot>
+	</summary>
+	<div class="detail-accordion__content">
+		<slot />
+	</div>
+</details>
+
+<script>
+	import initDetailAccordion, { JS_CLASSES } from "./index";
+
+	const accordions: NodeListOf<HTMLDetailsElement> = document.querySelectorAll(JS_CLASSES.ROOT);
+
+	accordions.forEach((accordion) => {
+		initDetailAccordion(accordion);
+	});
+</script>
+
+<style lang="scss">
+	.detail-accordion {
+		$root: #{&};
+
+		&__summary {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 1rem;
+			list-style: none;
+			cursor: pointer;
+		}
+
+		&__icon {
+			padding: 0.25rem;
+			background-color: #F1F1F1;
+			color: #616161;
+			border-radius: 100%;
+		}
+
+		&[open] {
+			#{$root}__icon {
+				transform: rotate(180deg);
+			}
+		}
+
+		&__content {
+
+		}
+	}
+</style>

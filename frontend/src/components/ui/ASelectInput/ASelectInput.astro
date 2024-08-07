@@ -1,0 +1,141 @@
+---
+import AIcon from "../../AIcon.astro";
+import ADropDown from "../ADropDown/ADropDownMenu/ADropDownMenu.astro";
+type Validations = "notEmpty" | "isEmail" | "isPhone";
+type Masks = "phone";
+type Size = "m" | "s" | "ms";
+
+interface Props {
+	className?: string;
+	placeholder?: string;
+	disabled?: boolean;
+	name?: string;
+	value?: string;
+	label?: string;
+	validations?: Validations[];
+	mask?: Masks;
+	forId?: string;
+	hint?: string;
+	required?: boolean;
+	size: Size;
+}
+
+const {
+	class: className,
+	placeholder,
+	label,
+	disabled,
+	name,
+	value,
+	validations,
+	mask,
+	forId,
+	hint,
+	required,
+	size = 'ms',
+	...rest
+} = Astro.props;
+---
+
+
+<div
+	class="a-input a-select-input js-a-select-input"
+	class:list={
+		[
+			className,
+			{'a-input--required': required},
+			`a-input--${size}`
+		]
+	}
+	{...rest}
+>
+	{ label && (<label for={forId} class="a-input__label body-s-heavy">{label}</label>)}
+	<div class="a-select-input__inner">
+		<input
+			id={forId}
+			class="a-input__input"
+			placeholder={placeholder}
+			disabled={disabled}
+			name={name}
+			value={value}
+			data-validations={validations}
+			data-mask={mask}
+			aria-describedby=`${forId + '-hint'}`
+		/>
+		<AIcon class="a-select-input__icon" symbolId="icon-chevron-down" size="s" />
+		<ADropDown class="a-select-input__drop-down">
+			<slot />
+		</ADropDown>
+	</div>
+	{ hint && (<small class="a-input__hint js-a-input-hint caption-m" id=`${forId + '-hint'}`>{hint}</small>)}
+</div>
+
+<script>
+	import initSelectInput from './';
+
+	import { JS_CLASSES } from './';
+	import type { ASelectInputState } from './interfaces'
+	const currencyInputs: NodeListOf<HTMLDivElement> = document.querySelectorAll(JS_CLASSES.root);
+
+	currencyInputs?.forEach((currencyInput) => {
+		const input = initSelectInput(currencyInput) as ASelectInputState;
+
+		input.root.addEventListener('selected', (event) => {
+			console.log('Selected', input)
+		});
+	});
+</script>
+
+<style lang="scss" is:global>
+	@use "sass:map";
+	@import "@styles/variables.scss";
+	@import "@styles/functions.scss";
+	@import "@styles/placeholders.scss";
+
+	.a-select-input {
+		&__inner {
+			position: relative;
+		}
+
+		&__icon {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			right: 1rem;
+			color: var(--violet-70);
+		}
+
+		&__drop-down {
+			top: calc(100% + 0.5rem);
+			width: 100%;
+		}
+
+		&.a-input.a-input--m {
+			.a-input__input {
+				padding: 0.938rem 2.438rem 0.938rem 0.438rem;
+			}
+		}
+
+		&.a-input.a-input--s {
+			.a-input__input{
+				padding: 0.625rem 2.438rem 0.625rem 0.438rem;
+			}
+		}
+
+		&.a-input.a-input--ms {
+			.a-input__input {
+				padding:
+					calc-clamp(0.563rem, 0.938rem, map.get($mq-breakpoints, laptop-x))
+					2.438rem
+					calc-clamp(0.563rem, 0.938rem, map.get($mq-breakpoints, laptop-x))
+					0.438rem;
+			}
+		}
+
+		&.is-open & {
+			&__icon {
+				transform: translateY(-50%) rotate(-180deg);
+			}
+		}
+	}
+</style>

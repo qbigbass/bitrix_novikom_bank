@@ -1,0 +1,93 @@
+---
+import InputWithIcon from "../ui/InputWithIcon/InputWithIcon.astro";
+import TagSimple from "../ui/TagSimple/TagSimple.astro";
+---
+
+<div class="mobile-search">
+    <form class="mobile-search__form js-mobile-search">
+        <InputWithIcon placeholder="Поиск по сайту" beforeIcon="icon-search"/>
+    </form>
+
+    <div class="mobile-search__tag-layout">
+        <p class="body-s-light dark-70">Популярные запросы:</p>
+        <div class="mobile-search__tag-wrapper">
+            <TagSimple href="#">Зарплатный проект</TagSimple>
+            <TagSimple href="#">Зарплатная карта</TagSimple>
+            <TagSimple href="#">Расчетный счет</TagSimple>
+            <TagSimple href="#">Ипотека в новостройке</TagSimple>
+            <TagSimple href="#">Кредит на бизнес</TagSimple>
+            <TagSimple href="#">Депозиты</TagSimple>
+            <TagSimple href="#">Вклады</TagSimple>
+            <TagSimple href="#">Социально-платежная карта МИР</TagSimple>
+            <TagSimple href="#">Банковские гарантии</TagSimple>
+        </div>
+    </div>
+</div>
+
+<script>
+    const ELEMENTS = {
+        searchWrapper: '.js-mobile-search',
+        menuBody: '.js-mobile-menu-body'
+    }
+
+    const CLASSES = {
+        active: 'is-active-search'
+    }
+
+    function initMobileSearch() {
+        const searchWrapper = document.querySelector(ELEMENTS.searchWrapper) as HTMLElement;
+        const menuBody = document.querySelector(ELEMENTS.menuBody) as HTMLElement;
+
+        if (!searchWrapper || !menuBody) return;
+
+        const searchInput = searchWrapper.querySelector('input') as HTMLInputElement;
+        searchInput?.addEventListener('focus', () => {
+            menuBody.classList.add(CLASSES.active);
+        });
+        searchInput?.addEventListener('blur', () => {
+            menuBody.classList.remove(CLASSES.active);
+        });
+    }
+
+    initMobileSearch();
+</script>
+
+<style lang="scss" is:global>
+  @use "sass:map";
+  @import "@styles/media-queries";
+
+  .mobile-search {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    @include use-media(tablet) {
+      gap: 1.5rem;
+    }
+
+    &__tag-layout {
+      display: none;
+      flex-direction: column;
+      gap: 1rem;
+
+      @at-root .is-active-search & {
+        display: flex;
+      }
+    }
+
+    &__tag-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+
+      @include use-media(tablet) {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+    }
+  }
+
+</style>
+
+

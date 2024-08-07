@@ -1,0 +1,49 @@
+---
+interface Props {
+	class?: string;
+	usePadding?: boolean;
+	titleClass?: string;
+}
+
+const { class: className, usePadding = false, titleClass } = Astro.props as Props;
+---
+
+<div class:list={['section-title', className, {'section-title--padding': usePadding}]}>
+	<div class="section-title__text" class:list={titleClass}>
+		<slot />
+	</div>
+	{
+		Astro.slots.after && (
+			<div class="section-title__after">
+				<slot name="after" />
+			</div>
+		)
+	}
+</div>
+
+<style lang="scss" is:global>
+	@import "@styles/media-queries";
+
+	.section-title {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 1.5rem;
+
+		@include use-media(tablet) {
+			margin-bottom: 2.5rem;
+		}
+
+		@include use-media(tablet-album) {
+			margin-bottom: 3rem;
+		}
+	}
+
+	.section-title.section-title--padding {
+		@include use-media(tablet-album) {
+			.section-title__text {
+				padding: 0 2.5rem;
+			}
+		}
+	}
+</style>

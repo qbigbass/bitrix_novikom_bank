@@ -1,0 +1,261 @@
+---
+import DefaultPageLayout from "../layouts/DefaultPageLayout.astro";
+import SectionSeeAlso from "../components/sections/SectionSeeAlso.astro";
+import SectionCallMeBack from "../components/sections/SectionCallMeBack.astro";
+import SectionLoansCatalog from "../components/sections/SectionLoansCatalog.astro";
+import TextBanner from "../components/banners/TextBanner.astro";
+import SectionBenefitsLayout from "../components/layouts/SectionBenefitsLayout.astro";
+import AAccordionPanel from "../components/ui/AAccordion/AAccordionPanel.astro";
+import SectionHelpContentLayout from "../components/layouts/SectionHelpLayout/SectionHelpContentLayout.astro";
+import BenefitCard from "../components/common/BenefitCard/BenefitCard.astro";
+import ATableRow from "../components/common/ATable/ATableRow.astro";
+import ARte from "../components/ARte.astro";
+import AAccordion from "../components/ui/AAccordion/AAccordion.astro";
+import ATabPanel from "../components/ui/ATabs/common/ATabPanel.astro";
+import ATable from "../components/common/ATable/ATable.astro";
+import DocumentDownload from "../components/ui/DocumentDownload/DocumentDownload.astro";
+import AddInfoItemLayout from "../components/layouts/AddInfoLayout/AddInfoItemLayout.astro";
+import ATab from "../components/ui/ATabs/common/ATab/ATab.astro";
+import AList from "../components/ui/AList/AList.astro";
+import AButton from "../components/ui/Buttons/AButton.astro";
+import FormCallMeBack from "../components/common/FormCallMeBack/FormCallMeBack.astro";
+import AddInfoLayout from "../components/layouts/AddInfoLayout/AddInfoLayout.astro";
+import AAccordionHeader from "../components/ui/AAccordion/AAccordionHeader.astro";
+import ATableBody from "../components/common/ATable/ATableBody.astro";
+import ATableCell from "../components/common/ATable/ATableCell.astro";
+import AAccordionContent from "../components/ui/AAccordion/AAccordionContent.astro";
+import SectionHelpLayout from "../components/layouts/SectionHelpLayout/SectionHelpLayout.astro";
+import PageBanner from "../components/common/Banners/PageBanner.astro";
+import ATag from "../components/ui/ATag/ATag.astro";
+
+const breadcrumbs = [
+	{
+		title: 'Частным клиентам',
+		url: '#'
+	},
+	{
+		title: 'Кредиты',
+		url: '#'
+	}
+]
+
+const benefitCards = [
+	{
+		title: 'Погашается автоматически',
+		description: 'При поступлении денежных средств <br>на&nbsp;счет карты',
+		iconId: 'icon-a-money-on'
+	},
+	{
+		title: '15 000 рублей',
+		description: 'Максимальный размер кредитного лимита, <br>но&nbsp;не&nbsp;более 70% от&nbsp;ежемесячного оклада',
+		iconId: 'icon-a-money'
+	},
+	{
+		title: '1 год',
+		description: 'Срок предоставления лимита <br>с&nbsp; возможностью пролонгации',
+		iconId: 'icon-a-date'
+	}
+];
+---
+<DefaultPageLayout title="Овердрафт">
+	<TextBanner
+		title="Овердрафт"
+		breadcrumbs={breadcrumbs}
+		description="Кредит «до зарплаты» на случай непредвиденных расходов и неотложных платежей."
+		backgroundColor="heavy-violet"
+	/>
+	<SectionBenefitsLayout
+		title="Преимущества для каждого"
+		benefits={benefitCards}
+	/>
+	<PageBanner img="/assets/banners/page-banner-3.png">
+		<Fragment slot="tag">
+			<ATag href="#" outline>Привилегия</ATag>
+		</Fragment>
+		<Fragment>
+			<div class="headline-2">Как получить кредит</div>
+			<div class="body-l-light">
+				Обратиться в офис Банка с необходимым пакетом документов.
+				Клиенты, получающие заработную плату на счет в банке Новиком, могут оформить заявку на территории своей организации.
+			</div>
+		</Fragment>
+		<Fragment slot="footer">
+			<AButton element="a" size="lm" outline>Подробнее</AButton>
+		</Fragment>
+	</PageBanner>
+	<SectionHelpLayout
+		title="Подробые условия"
+	>
+		<Fragment slot="tabs">
+			<ATab value="0" size="lm" isActive>Условия для заемщика</ATab>
+			<ATab value="1" size="lm">Необходимые документы</ATab>
+			<ATab value="2" size="lm">Вопросы и ответы</ATab>
+		</Fragment>
+		<Fragment slot="tabPanels">
+			<ATabPanel value="0">
+				<AList size="l">
+					<li>Возраст от 21 до 60 лет</li>
+					<li>Стаж на последнем месте работы не менее 3 месяцев</li>
+					<li>Перечисление зарплаты на счет в банке Новиком</li>
+				</AList>
+			</ATabPanel>
+			<ATabPanel value="1">
+				<AddInfoLayout>
+					<AddInfoItemLayout isNarrow>
+						<AList size="l">
+							<li>Заявление - анкета на получение кредита;</li>
+							<li>Документ, удостоверяющий личность;</li>
+							<li>Военный билет/ документ, подтверждающий отсрочку от военной службы на весь период призывного возраста - для мужчин младше 30 лет.</li>
+							<li>Документ, подтверждающий финансовое состояние заемщика/созаемщика/поручителя  за последние 12 месяцев или за фактическое количество отработанных месяцев с учетом требований к стажу на последнем месте работы¹ (на выбор):</li>
+						</AList>
+						<ARte class="body-m-light">
+							<p>
+								Для подтверждения стажа на последнем месте работы менее 12 месяцев заемщику/созаемщику/поручителю рекомендуется предоставить копию трудовой книжки, заверенную работодателем, или справку от работодателя, содержащую сведения о стаже работы в организации² или сведения о трудовой деятельности (форма СТД-Р или форма  СТД-ПФР)³.
+							</p>
+						</ARte>
+						<p class="caption-m dark-70">
+							¹Период подтверждения доходов должен заканчиваться не ранее двух календарных месяцев, предшествующих месяцу предоставления документа, подтверждающего финансовое состояние
+							<br><br>
+							²При отсутствии у Банка документа, подтверждающего стаж на последнем месте работы менее 12 месяцев, расчетная сумма среднемесячного дохода клиента может быть ниже фактического значения, что может негативно повлиять на условия кредитования.
+							<br><br>
+							³Форма СТД-Р предоставляется на бумажном носителе и заверяется работодателем, форма СТД–ПФР предоставляется на бумажном носителе и заверяется работодателем или ПФР, либо формируется из личного кабинета на портале государственных услуг (gosuslugi.ru), документ подписывается усиленной квалифицированной электронной подписью уполномоченного должностного лица ПФР.
+						</p>
+					</AddInfoItemLayout>
+				</AddInfoLayout>
+			</ATabPanel>
+			<ATabPanel value="2">
+				<SectionHelpContentLayout>
+					<Fragment slot="left">
+						<AAccordion type="component">
+							<AAccordionPanel>
+								<AAccordionHeader>
+									<div class="body-l-light">Что нужно знать клиентам о продлении срока действия карт?</div>
+								</AAccordionHeader>
+								<AAccordionContent>
+									<ARte class="body-m-light">
+										<p>
+											Разнообразный и богатый опыт сложившаяся структура организации
+											требуют от нас анализа существенных финансовых и
+											административных условий. Значимость этих проблем настолько
+											очевидна, что укрепление и развитие структуры требуют от нас
+											анализа позиций, занимаемых участниками в отношении поставленных
+											задач.
+										</p>
+										<ul>
+											<li>
+												При&nbsp;отсутствии лимита&nbsp;— возможность работы
+												под&nbsp;результаты 1, 2, 3&nbsp;рейсов
+												МЦИ&nbsp;(для&nbsp;валюты РФ) и&nbsp;отправка срочных
+												кредитовых авизо (по&nbsp;иностранным валютам);
+											</li>
+											<li>
+												При&nbsp;отсутствии лимита&nbsp;— возможность работы
+												под&nbsp;результаты 1, 2, 3&nbsp;рейсов
+												МЦИ&nbsp;(для&nbsp;валюты РФ) и&nbsp;отправка срочных
+												кредитовых авизо (по&nbsp;иностранным валютам);
+											</li>
+										</ul>
+									</ARte>
+								</AAccordionContent>
+							</AAccordionPanel>
+							<AAccordionPanel>
+								<AAccordionHeader>
+									<div class="body-l-light">Взимается ли комиссия за снятие наличных денежных средств в банкоматах,  если моя организация – работодатель  является участником зарплатного проекта Банка?</div>
+								</AAccordionHeader>
+								<AAccordionContent>
+									<ARte class="body-m-light">
+										<p>
+											Разнообразный и богатый опыт сложившаяся структура организации
+											требуют от нас анализа существенных финансовых и
+											административных условий. Значимость этих проблем настолько
+											очевидна, что укрепление и развитие структуры требуют от нас
+											анализа позиций, занимаемых участниками в отношении поставленных
+											задач.
+										</p>
+										<ul>
+											<li>
+												При&nbsp;отсутствии лимита&nbsp;— возможность работы
+												под&nbsp;результаты 1, 2, 3&nbsp;рейсов
+												МЦИ&nbsp;(для&nbsp;валюты РФ) и&nbsp;отправка срочных
+												кредитовых авизо (по&nbsp;иностранным валютам);
+											</li>
+											<li>
+												При&nbsp;отсутствии лимита&nbsp;— возможность работы
+												под&nbsp;результаты 1, 2, 3&nbsp;рейсов
+												МЦИ&nbsp;(для&nbsp;валюты РФ) и&nbsp;отправка срочных
+												кредитовых авизо (по&nbsp;иностранным валютам);
+											</li>
+										</ul>
+									</ARte>
+								</AAccordionContent>
+							</AAccordionPanel>
+							<AAccordionPanel>
+								<AAccordionHeader>
+									<div class="body-l-light">Вместе с основной зарплатной картой мне выдали дополнительную. По каким тарифам она обслуживается?</div>
+								</AAccordionHeader>
+								<AAccordionContent>
+									<ARte class="body-m-light">
+										<p>
+											Разнообразный и богатый опыт сложившаяся структура организации
+											требуют от нас анализа существенных финансовых и
+											административных условий. Значимость этих проблем настолько
+											очевидна, что укрепление и развитие структуры требуют от нас
+											анализа позиций, занимаемых участниками в отношении поставленных
+											задач.
+										</p>
+									</ARte>
+								</AAccordionContent>
+							</AAccordionPanel>
+							<AAccordionPanel>
+								<AAccordionHeader>
+									<div class="body-l-light">Что делать, если потерял карту или забыл ПИН-код?</div>
+								</AAccordionHeader>
+								<AAccordionContent>
+									<ARte class="body-m-light">
+										<p>Если есть подозрение, что ПИН-код мог стать доступен третьим лицам, незамедлительно заблокируйте карту.   Если ПИН-код не удается вспомнить карту необходимо перевыпустить.</p>
+									</ARte>
+								</AAccordionContent>
+							</AAccordionPanel>
+							<AAccordionPanel>
+								<AAccordionHeader>
+									<div class="body-l-light">Мою карту заблокировал Банк. Что делать?</div>
+								</AAccordionHeader>
+								<AAccordionContent>
+									<ARte class="body-m-light">
+										<ul>
+											<li>
+												При&nbsp;отсутствии лимита&nbsp;— возможность работы
+												под&nbsp;результаты 1, 2, 3&nbsp;рейсов
+												МЦИ&nbsp;(для&nbsp;валюты РФ) и&nbsp;отправка срочных
+												кредитовых авизо (по&nbsp;иностранным валютам);
+											</li>
+											<li>
+												При&nbsp;отсутствии лимита&nbsp;— возможность работы
+												под&nbsp;результаты 1, 2, 3&nbsp;рейсов
+												МЦИ&nbsp;(для&nbsp;валюты РФ) и&nbsp;отправка срочных
+												кредитовых авизо (по&nbsp;иностранным валютам);
+											</li>
+										</ul>
+									</ARte>
+								</AAccordionContent>
+							</AAccordionPanel>
+						</AAccordion>
+					</Fragment>
+					<Fragment slot="left-footer">
+						<AButton element="a" href="#" text afterIcon="icon-chevron-right" size="m">Все вопросы и ответы</AButton>
+					</Fragment>
+					<Fragment slot="right">
+						<FormCallMeBack
+							title="Остались вопросы?"
+							description="Оставьте свой телефон и мы перезвоним вам, либо задайте вопрос в чате"
+							agreement="Нажимая кнопку «Перезвоните мне», вы соглашаетесь с условиями предоставления информации"
+							type="light-blue"
+							useChat
+						/>
+					</Fragment>
+				</SectionHelpContentLayout>
+			</ATabPanel>
+		</Fragment>
+	</SectionHelpLayout>
+	<SectionSeeAlso />
+</DefaultPageLayout>

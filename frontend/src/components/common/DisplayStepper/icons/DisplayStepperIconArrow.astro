@@ -1,0 +1,50 @@
+---
+
+---
+<div class="display-stepper-icon-arrow">
+	<div></div>
+</div>
+
+<style lang="scss" is:global>
+	.display-stepper-icon-arrow {
+		cursor: pointer;
+		position: relative;
+		width: 100%;
+		margin: 4px 1px;
+
+		& div {
+			position: relative;
+			width: 100%;
+			height: 1px;
+			background-color: var(--green-100);
+			left:0;
+			display: block;
+			border-radius: 0.25rem;
+
+			&::after {
+				content: '';
+				position: absolute;
+				width: 6px;
+				height: 1px;
+				top: -2px;
+				right: -1px;
+				background-color: var(--green-100);
+				transform: rotate(45deg);
+				border-radius: 0.25rem;
+			}
+
+			&::before {
+				content: '';
+				position: absolute;
+				width: 6px;
+				height: 1px;
+				top: 2px;
+				right: -1px;
+				background-color: var(--green-100);
+				transform: rotate(-45deg);
+				border-radius: 0.25rem;
+				z-index: 3;
+			}
+		}
+	}
+</style>

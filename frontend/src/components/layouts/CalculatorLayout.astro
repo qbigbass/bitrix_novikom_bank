@@ -1,0 +1,34 @@
+---
+
+---
+
+<div class="calculator-layout">
+	<div class="calculator-layout__form">
+		<slot name="form" />
+	</div>
+	<div class="calculator-layout__card">
+		<slot name="card" />
+	</div>
+</div>
+
+<style lang="scss" is:global>
+	@import "@styles/media-queries";
+
+	.calculator-layout {
+		display: grid;
+		grid-template-columns: 100%;
+		gap: 1.5rem;
+
+		@include use-media(tablet) {
+			gap: 2.5rem;
+		}
+
+		@include use-media(tablet-album) {
+			grid-template-columns: 1fr 1fr;
+		}
+
+		@include use-media(laptop-x) {
+			gap: 7.5rem;
+		}
+	}
+</style>

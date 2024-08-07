@@ -1,0 +1,50 @@
+---
+interface Props {
+	inNarrow?: boolean;
+}
+
+const {
+	isNarrow = false,
+	...rest
+} = Astro.props;
+---
+
+
+<div
+	class:list={[
+		'add-info-item-layout',
+		{'is-narrow': isNarrow},
+	]}
+	{...rest}
+>
+	<slot>
+
+	</slot>
+</div>
+
+<style lang="scss" is:global>
+	@import "@styles/media-queries";
+
+	.add-info-item-layout {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 1.25rem;
+		width: 100%;
+
+		@include use-media(tablet-album) {
+			gap: 2rem;
+		}
+
+		@include use-media(laptop) {
+			gap: 2.5rem;
+		}
+
+		&.is-narrow {
+
+			@include use-media(laptop) {
+				max-width: 64rem;
+			}
+		}
+	}
+</style>
