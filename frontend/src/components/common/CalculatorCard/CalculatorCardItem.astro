@@ -1,0 +1,86 @@
+---
+import AButton from "../../ui/Buttons/AButton.astro";
+
+interface Props {
+    classList?: string;
+    hint: string;
+    text: string;
+    currency?: string;
+    link: {
+        href: string;
+        text: string;
+    }
+}
+
+const {
+    class: classList,
+    hint,
+    text,
+    link,
+    currency,
+    ...rest
+} = Astro.props as Props;
+---
+<div
+    class:list={[
+        'calculator-card-item',
+        'js-calculator-card-item',
+        classList
+    ]}
+    {...rest}
+>
+    <div class="calculator-card-item__hint body-s-light">{hint}</div>
+    <div class="calculator-card-item__value">
+        <div class="calculator-card-item__text number-l-heavy">
+            <span class="calculator-card-item__number js-calculator-card-item-number">{text}</span>
+            {
+                currency && (
+                    <span class="calculator-card-item__currency currency">{currency}</span>
+                )
+            }
+        </div>
+        {
+            link && (
+                <AButton
+                    element="a"
+                    href={link.href}
+                    size="s"
+                    class="calculator-card-item__link js-calculator-card-item-link"
+                    text
+                    afterIcon="icon-chevron-right"
+                >
+                    {link.text}
+                </AButton>
+            )
+        }
+    </div>
+</div>
+
+<style lang="scss" is:global>
+    @import '@styles/media-queries';
+
+    .calculator-card-item {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        &__hint {
+            color: var(--dark-70);
+        }
+
+        &__value {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+
+            @include use-media(tablet) {
+                gap: 1rem;
+                flex-direction: row;
+                align-items: flex-end;
+            }
+        }
+    }
+</style>
