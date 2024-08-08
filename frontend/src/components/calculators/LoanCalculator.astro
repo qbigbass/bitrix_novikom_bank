@@ -1,11 +1,11 @@
 ---
 import ADropDownButton from "../ui/ADropDown/ADropDownButton/ADropDownButton.astro";
-import LoanApplicationForm from "../common/LoanApplicationForm/LoanApplicationForm.astro";
 import ASelectInput from "../ui/ASelectInput/ASelectInput.astro";
 import ASliderInput from "../ui/ASliderInput/ASliderInput.astro";
-import APolygonContainer from "../common/APolygonContainer/APolygonContainer.astro";
 import CalculatorLayout from "../layouts/CalculatorLayout.astro";
 import ACheckbox from "../ui/ACheckbox/ACheckbox.astro";
+import CalculatorCardItem from "../common/CalculatorCard/CalculatorCardItem.astro";
+import CalculatorCard from "../common/CalculatorCard/CalculatorCard.astro";
 ---
 
 <CalculatorLayout class="loan-calculator">
@@ -47,8 +47,24 @@ import ACheckbox from "../ui/ACheckbox/ACheckbox.astro";
         </ACheckbox>
     </Fragment>
 	<Fragment slot="card">
-		<APolygonContainer color="green-100">
-			<LoanApplicationForm backgroundColor="grey" />
-		</APolygonContainer>
+        <CalculatorCard backgroundColor="grey" polygonColor="green-100">
+            <CalculatorCardItem
+                hint="Процентная ставка"
+                text="16,5%"
+            />
+            <CalculatorCardItem
+                hint="Ежемесячный платеж"
+                text="35 404,38"
+                currency="₽"
+                link={{
+                    href: '#',
+                    text: 'График платежей'
+                }}
+            />
+            <CalculatorCardItem
+                hint="Диапазон полной стоимости кредита"
+                text="16,464 – 20,474 %"
+            />
+        </CalculatorCard>
 	</Fragment>
 </CalculatorLayout>
