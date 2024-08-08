@@ -13,7 +13,6 @@ const {
 ---
 
 <SectionLayout class="info-banner">
-
 		<div class="info-banner__container">
 			{
 				imgSrc && (
@@ -75,6 +74,10 @@ const {
 			display: flex;
 			flex-direction: column;
 			gap: 1.5rem;
+
+            @include use-media(tablet) {
+                gap: 2.5rem;
+            }
 		}
 
 		&__pattern {
