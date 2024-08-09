@@ -1,0 +1,59 @@
+---
+/**
+	Разметка для связанных элементов - иконка + текст
+	*/
+
+interface Props{
+	class?: string,
+	element?: string;
+	href?: string;
+}
+
+const {
+	element,
+	class: className,
+	...rest
+} = Astro.props as Props;
+
+const RootElement = element || 'div';
+---
+
+<RootElement class:list={['icon-box', className]} {...rest}>
+	{Astro.slots.has('icon-before') && (
+		<span class="icon-box__icon">
+			<slot name="icon-before" />
+		</span>
+	)}
+	{Astro.slots.has('default') && (
+		<span class="icon-box__body">
+			<slot />
+		</span>
+	)}
+	{Astro.slots.has('icon-after') && (
+		<span class="icon-box__icon">
+			<slot name="icon-after" />
+		</span>
+	)}
+</RootElement>
+
+<style lang="scss" is:global>
+	.icon-box {
+		max-height: 100%;
+		display: inline-flex;
+		gap: 0 .5rem;
+
+		&__icon {
+			display: flex;
+			place-items: center;
+			flex-shrink: 0;
+		}
+
+		&__body {
+			flex-basis: 100%;
+		}
+
+		&--gap-xs {
+			gap: 0 .25rem;
+		}
+	}
+</style>

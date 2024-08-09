@@ -1,0 +1,63 @@
+---
+
+import SliderSlide from "../common/Sliders/common/SliderSlide/SliderSlide.astro";
+import PersistentSlider from "../common/Sliders/PersistentSlider/PersistentSlider.astro";
+import DiscountLink from "../common/DiscountLink/DiscountLink.astro";
+import SectionLayout from "../layouts/SectionLayout.astro";
+import SectionTitle from "../ui/SectionTitle/SectionTitle.astro";
+
+const discountLinks = [
+	{
+		icon: 'assets/discount-cards/food-entertainment-events.png',
+		text: 'Еда, развлечения,<br>мероприятия'
+	},
+	{
+		icon: 'assets/discount-cards/holidays-and-travel.png',
+		text: 'Отдых и путешествия'
+	},
+	{
+		icon: 'assets/discount-cards/sports-beauty-health.png',
+		text: 'Спорт, красота, здоровье'
+	},
+	{
+		icon: 'assets/discount-cards/cars-and-service.png',
+		text: 'Автомобили и сервис'
+	},
+	{
+		icon: 'assets/discount-cards/purchases.png',
+		text: 'Покупки'
+	},
+]
+---
+
+<SectionLayout class="section-discount-links">
+	<div class="content-container">
+		<div class="section-discount-links__container">
+			<SectionTitle titleClass="headline-2">Скидки</SectionTitle>
+			<PersistentSlider slidesPerView="mobile-s:1,mobile:1,tablet:3,tablet-album:4,laptop:5">
+				{
+					discountLinks.map(({icon, text}) => (
+						<SliderSlide>
+							<DiscountLink
+								icon={icon}
+								text={text}
+							/>
+						</SliderSlide>
+					))
+				}
+			</PersistentSlider>
+		</div>
+	</div>
+</SectionLayout>
+
+<style lang="scss" is:global>
+	@import "@styles/media-queries";
+
+	.section-discount-links {
+		&__container {
+			@include use-media(tablet-album) {
+				padding: 0 2.5rem;
+			}
+		}
+	}
+</style>

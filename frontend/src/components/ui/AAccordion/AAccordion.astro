@@ -1,0 +1,91 @@
+---
+type Type = 'layout' | 'component'
+interface Props {
+	className?: string;
+	multiple?: boolean;
+	type?: Type;
+	['data-active-on-mq']?: string;
+}
+
+const {
+	class: className,
+	multiple = false,
+	type = 'component',
+	...rest
+} = Astro.props as Props;
+---
+<div
+	class="a-accordion js-a-accordion"
+	class:list={[
+		className,
+		`a-accordion-${type}`
+	]}
+	data-multiple={multiple}
+	{...rest}
+>
+	<slot></slot>
+</div>
+
+<script>
+	import initAAccordion, { JS_CLASSES } from "./index";
+
+	const accordions = document.querySelectorAll(JS_CLASSES.jsAccordion);
+
+	accordions.forEach((accordion: HTMLDivElement) => {
+		initAAccordion(accordion);
+	});
+</script>
+
+<style lang="scss" is:global>
+	@import "@styles/media-queries";
+
+	.a-accordion {
+
+		& .a-accordion-panel {
+			&.is-expanded {
+				& > .a-accordion-header .a-accordion-header__icon {
+					transform: rotate(-180deg);
+				}
+			}
+		}
+
+		&.a-accordion-component {
+			& .a-accordion-panel {
+				border-bottom: 1px dashed var(--blue-30);
+				transition: padding-bottom ease .33s;
+
+				& .a-accordion-header {
+					padding: 1rem 0;
+
+					@include use-media(tablet) {
+						padding: 1.5rem 0;
+					}
+				}
+
+				& .a-accordion-content {
+					padding: 0 1rem;
+
+					@include use-media(tablet) {
+						padding: 0 1.5rem;
+					}
+				}
+
+				&.is-expanded {
+					padding-bottom: 1rem;
+
+					& > .a-accordion-header {
+						color: var(--blue-100);
+					}
+
+					@include use-media(tablet) {
+						padding-bottom: 1.5rem;
+					}
+				}
+
+				&:last-child {
+					border-bottom: unset;
+				}
+			}
+		}
+	}
+</style>

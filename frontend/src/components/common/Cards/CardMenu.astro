@@ -1,0 +1,64 @@
+---
+interface Props {
+	title: string;
+}
+
+const {title} = Astro.props;
+---
+<div class="card-menu">
+	<h3 class="card-menu__title headline-4">{title}</h3>
+	<p class="card-menu__description body-s-light">
+		<slot/>
+	</p>
+</div>
+
+<style lang="scss" is:global>
+	@use "sass:map";
+	@import "@styles/media-queries";
+
+	.card-menu {
+		padding: 2.5rem;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 1rem;
+		color: var(--dark-0);
+		height: 100%;
+		position: relative;
+		background: linear-gradient(84.42deg, #412674 0%, #2E1B52 100%);;
+
+		&:before,
+		&:after {
+			content: '';
+			position: absolute;
+			right: 0;
+			background-position: right center;
+			width: 100%;
+			top: 50%;
+			transform: translateY(-50%);
+			height: 100%;
+			background-image: linear-gradient(222.24deg, #101317 20%, #5A2375 80%);
+		}
+
+		&:after {
+			transform: translateY(0);
+			top: 0;
+			height: 100px;
+			background-image: url('/assets/card-header-bg.svg');
+		}
+
+		&__title,
+		&__description {
+			position: relative;
+			z-index: 10;
+		}
+
+		&__description {
+			max-width: 80%;
+
+			@include use-media(laptop) {
+				max-width: 70%;
+			}
+		}
+	}
+</style>

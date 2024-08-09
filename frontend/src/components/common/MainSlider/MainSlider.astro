@@ -1,0 +1,302 @@
+---
+import MainSliderThumb from "./MainSliderThumb.astro";
+import AIcon from "@components/AIcon.astro";
+import AButton from "@components/ui/Buttons/AButton.astro";
+
+const slides = [
+	{
+		title: "Банк российских<br> инженеров",
+	},
+	{
+		title: "Новикомбанку<br> 30 лет",
+	},
+	{
+		title: "Ваша финансовая<br> безопасность",
+	},
+	{
+		title: "Годовой<br> отчет",
+	},
+];
+---
+
+<div class="main-slider">
+	<img src="assets/slides/hero_banner_bg_desktop.png" class="main-slider__bg" alt="">
+	<div class="main-slider__container swiper swiper-container">
+		<div class="main-slider__wrapper swiper-wrapper">
+			{
+				slides.map((slide) => (
+					<div class="swiper-slide main-slider__slide">
+						<div class="main-slider__content">
+							<div class="main-slider-content">
+								<div class="main-slider-content__text">
+									<h1 class="main-slider-content__title" set:html={slide.title}></h1>
+									<p class="body-l-light">
+										Мы&nbsp;укрепляем технологический суверенитет России и&nbsp;помогаем занять
+										лидерские позиции в&nbsp;экономике будущего
+									</p>
+									<AButton
+										element="a"
+										href="#"
+										theme="dark"
+										color="secondary"
+										size="m"
+										class="main-slider-content__button"
+									>
+										Больше о банке
+									</AButton>
+								</div>
+							</div>
+						</div>
+					</div>
+				))
+			}
+		</div>
+
+		<div class="main-slider-pagination"></div>
+		<div class="main-slider-controls">
+			<button type="button" class="main-slider-control main-slider-control__prev">
+				<AIcon symbolId="icon-chevron-left" />
+			</button>
+			<button type="button" class="main-slider-control main-slider-control__next">
+				<AIcon symbolId="icon-chevron-right" />
+			</button>
+		</div>
+	</div>
+
+	<div class="main-slider__thumbs swiper">
+		<div class="main-slider__thumbs-wrapper swiper-wrapper">
+			{slides.map((slide) => <MainSliderThumb set:html={slide.title} />)}
+		</div>
+	</div>>
+</div>
+
+<script>
+	import { initMainSlider } from "./index";
+
+	initMainSlider();
+</script>
+
+<style lang="scss" is:global>
+	@use "sass:map";
+	@import "@styles/variables";
+	@import "@styles/placeholders";
+	@import "@styles/media-queries";
+
+	$transition: map.get($transitions, default);
+
+	.main-slider {
+		width: 100%;
+		height: 30rem; //480px
+		overflow: hidden;
+		position: relative;
+
+		@include use-media(tablet-album) {
+			height: 43.75rem; //700px
+		}
+
+		&__container {
+			height: 100%;
+			position: relative;
+
+			@include use-media(desktop) {
+				max-width: 120rem;
+				margin: 0 auto;
+			}
+		}
+
+		&__bg {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+
+		&__slide {
+			height: 100%;
+			overflow: hidden;
+			padding: 0;
+			border: none;
+		}
+
+		&__thumbs {
+			display: none;
+
+			@include use-media(tablet-album) {
+				z-index: 1;
+				display: block;
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				border-top: 1px solid var(--violet-70);
+			}
+
+			@include use-media(laptop-x) {
+				max-width: 100rem;
+				margin: 0 auto;
+				border-left: 1px solid var(--violet-70);
+				border-right: 1px solid var(--violet-70);
+			}
+		}
+
+		&__thumbs-wrapper {
+
+			@include use-media(tablet-album) {
+				display: flex;
+				align-items: center;
+				width: 100%;
+			}
+		}
+	}
+
+	.main-slider-content {
+		color: var(--dark-0);
+		padding: 2.5rem 1rem;
+
+		@include use-media(tablet) {
+			padding: 4rem 2.5rem;
+		}
+
+		@include use-media(tablet-album) {
+			padding: 5rem;
+		}
+
+		@include use-media(laptop-x) {
+			padding-top: 7.5rem; //120px
+		}
+
+		@include use-media(desktop) {
+			padding-left: 10rem;
+			padding-right: 10rem;
+		}
+
+		&__text {
+			gap: 1.5rem;
+			flex-direction: column;
+			display: flex;
+			align-items: flex-start;
+
+			@include use-media(tablet) {
+				max-width: 20.5rem; //328px
+			}
+
+			@include use-media(tablet-album) {
+				max-width: 42.5rem; //680px
+				padding-left: 2.5rem;
+				gap: 3rem;
+			}
+		}
+
+		&__title {
+			margin: 0;
+			font-size: 2rem;
+			line-height: 1.25;
+			font-weight: 700;
+
+			@include use-media(tablet) {
+				font-size: 2.25rem; //36px
+				line-height: 1.32;
+				font-weight: 600;
+			}
+
+			@include use-media(tablet-album) {
+				font-size: 3.5rem; //56px
+				line-height: 1.22;
+			}
+		}
+
+		&__button.a-button {
+			width: 100%;
+
+			@include use-media(tablet) {
+				width: auto;
+			}
+
+			@include use-media(tablet-album) {
+				font-size: 1.125rem;
+				padding: 1rem 2rem;
+			}
+		}
+	}
+
+	.main-slider-controls {
+		position: absolute;
+		z-index: 1;
+		gap: 1rem;
+		bottom: 1rem;
+		right: 2.5rem;
+		display: none;
+
+		@include use-media(tablet) {
+			display: flex;
+		}
+
+		@include use-media(tablet-album) {
+			bottom: auto;
+			top: 50%;
+			left: 2.5rem;
+			transform: translateY(-50%);
+			justify-content: space-between;
+		}
+	}
+
+	.main-slider-control {
+		@extend %reset-button;
+
+		width: 1.5rem;
+		height: 1.5rem;
+		color: var(--dark-0);
+		cursor: pointer;
+
+		@include use-media(tablet-album) {
+			width: 2rem;
+			height: 2rem;
+			color: var(--blue-70);
+
+			& svg {
+				transform: scale(1.5);
+			}
+		}
+
+		.a-icon {
+			width: 100%;
+			height: 100%;
+		}
+	}
+
+	.main-slider-pagination {
+		display: flex;
+		gap: .5rem;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		align-items: center;
+		padding: 1rem;
+		justify-content: center;
+		z-index: 2;
+
+		@include use-media(tablet) {
+			padding: .75rem 0;
+			justify-content: flex-start;
+			max-width: 20.5rem; //328px
+			left: 2.5rem;
+			bottom: 1rem;
+		}
+
+		@include use-media(tablet-album) {
+			display: none;
+		}
+
+		.swiper-pagination-bullet {
+			background-color: var(--blue-30);
+		}
+
+		.swiper-pagination-bullet-active {
+			background-color: var(--dark-0);
+		}
+	}
+</style>

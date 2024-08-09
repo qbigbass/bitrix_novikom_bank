@@ -1,0 +1,56 @@
+---
+interface Props {
+	maxCols: 2 | 3;
+}
+
+const {
+	maxCols = 3
+} = Astro.props as Props;
+---
+
+<div
+	class="benefit-cards-layout"
+	class:list={`max-cols-${maxCols}`}
+>
+	<slot />
+</div>
+
+<style lang="scss" is:global>
+	@import "@styles/media-queries";
+
+	.benefit-cards-layout {
+		display: grid;
+		grid-template-columns: 1fr;
+		row-gap: 2.5rem;
+
+		&.max-cols-2 {
+			@include use-media(tablet) {
+				grid-template-columns: repeat(2, 1fr);
+			}
+		}
+
+		&.max-cols-3 {
+			@include use-media(tablet) {
+				grid-template-columns: repeat(2, 1fr);
+			}
+
+			@include use-media(tablet-album) {
+				grid-template-columns: repeat(3, 1fr);
+			}
+		}
+
+		@include use-media(tablet) {
+			column-gap: 2rem;
+			row-gap: 2.5rem;
+		}
+
+		@include use-media(tablet-album) {
+			column-gap: 2.5rem;
+			row-gap: 3rem;
+		}
+
+		@include use-media(laptop-x) {
+			column-gap: 7.5rem;
+		}
+	}
+</style>

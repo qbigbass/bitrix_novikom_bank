@@ -1,0 +1,92 @@
+---
+
+interface Props {
+	color?: string, //Цвета из styles/colors.scss
+	img?: string,
+	class?: string,
+}
+
+const {
+	class: className,
+	color = 'purple',
+	img,
+	...rest
+} = Astro.props as Props;
+---
+
+<div
+	class="a-polygon-container js-a-polygon-container"
+	class:list={[
+	className,
+]}
+	 {...rest}>
+	<div class="a-polygon-container__content">
+		{
+			img
+				? (<img class="a-polygon-container__img" src={img} alt="" loading="lazy">)
+				: (<slot />)
+		}
+	</div>
+	<div
+		class:list={[
+			'a-polygon-container__polygon',
+			'js-a-polygon-container-polygon',
+			color
+		]}
+	>
+		<svg xmlns="http://www.w3.org/2000/svg" class="js-a-polygon-container-svg">
+			<polygon
+				points=""
+				fill="none"
+				stroke="currentColor"
+				stroke-width="2"
+				stroke-dasharray="10"
+			/>
+		</svg>
+	</div>
+</div>
+
+<script>
+	import initAPolygonContainer, { JS_CLASSES } from "./";
+
+	const aPolygonContainers: NodeListOf<HTMLDivElement> = document.querySelectorAll(JS_CLASSES.root);
+
+	aPolygonContainers.forEach(polygon => initAPolygonContainer(polygon));
+</script>
+
+<style lang="scss" is:global>
+	@import '@styles/media-queries';
+
+	.a-polygon-container {
+		position: relative;
+		padding: 0 var(--polygon-spacing) var(--polygon-spacing) 0;
+		height: 100%;
+
+		&__img {
+			height: 100%;
+			width: 100%;
+			object-fit: cover;
+			object-position: center;
+			clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--polygon-square)), calc(100% - var(--polygon-square)) 100%, 0 100%);
+		}
+
+		&__content {
+			position: relative;
+			display: flex;
+			flex-direction: column;
+			row-gap: 1.5rem;
+			height: 100%;
+			z-index: 1;
+			clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--polygon-square)), calc(100% - var(--polygon-square)) 100%, 0 100%);
+		}
+
+		&__polygon {
+			position: absolute;
+			top: var(--polygon-spacing);
+			left: var(--polygon-spacing);
+			width: calc(100% - var(--polygon-spacing));
+			height: calc(100% - var(--polygon-spacing));
+			z-index: 0;
+		}
+	}
+</style>

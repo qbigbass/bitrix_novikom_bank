@@ -1,0 +1,156 @@
+---
+import APolygonContainer from "../APolygonContainer/APolygonContainer.astro";
+import SectionLayout from "../../layouts/SectionLayout.astro";
+
+const { img } = Astro.props;
+---
+
+<SectionLayout class="page-banner">
+	<div class="content-container">
+		<div class="page-banner__container">
+			<div class="page-banner__content">
+				<slot name="header" />
+				{
+					Astro.slots['tag'] && (
+						<div class="page-banner__tag">
+							<slot name="tag"></slot>
+						</div>
+					)
+				}
+				<div class="page-banner__text">
+					<slot />
+				</div>
+				<slot name="footer" />
+				{
+					Astro.slots['hint'] && (
+						<div class="page-banner__hint">
+							<slot name="hint" />
+						</div>
+					)
+				}
+			</div>
+			<div class="page-banner__photo">
+				<APolygonContainer color="violet-100" img={img} size="ms" />
+			</div>
+		</div>
+		<div class="page-banner__background">
+			<img src="assets/page-banner-bg.svg" >
+		</div>
+		{
+			Astro.slots['helper'] && (
+				<div class="page-banner__helper">
+					<slot name="helper" />
+				</div>
+			)
+		}
+	</div>
+</SectionLayout>
+
+<style lang="scss" is:global>
+	@import "@styles/media-queries";
+
+	.page-banner {
+		position: relative;
+		overflow: hidden;
+		background-color: var(--blue-10);
+
+		&__container {
+			position: relative;
+			z-index: 1;
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 2.5rem;
+
+			@include use-media(tablet-album) {
+				grid-template-columns: 1fr 1fr;
+			}
+		}
+
+		&__content {
+			display: flex;
+			gap: 2.5rem;
+			flex-direction: column;
+
+			.a-button.a-button--text {
+				align-self: flex-start;
+			}
+
+			@include use-media(tablet) {
+				gap: 3rem;
+
+				.a-button {
+					align-self: flex-start;
+				}
+			}
+
+			@include use-media(tablet-album) {
+				grid-template-columns: 1fr 1fr;
+				padding-left: 2.5rem;
+				max-width: 41.25rem;
+			}
+		}
+
+		&__text {
+			display: flex;
+			flex-direction: column;
+			gap: 1.5rem;
+		}
+
+		&__background {
+			position: absolute;
+			/*bottom: -8.25rem;*/
+			/*left: 35rem;*/
+
+			top: 160px;
+			left: 50%;
+			transform: translateX(-50%);
+
+			@include use-media(tablet) {
+				top: 0;
+				left: 0;
+				transform: none;
+			}
+
+			@include use-media(tablet-album) {
+				top: 3rem;
+				left: auto;
+				right: -1rem;
+			}
+
+			@include use-media(desktop) {
+				top: 13rem; //208px
+				right: auto;
+				left: 55%;
+				transform: translateX(-50%);
+			}
+		}
+
+		&__photo {
+			@include use-media(tablet-album) {
+				min-height: 28.5rem;
+			}
+		}
+
+		&__hint {
+			color: var(--violet-100);
+			padding-top: 1.5rem;
+			border-top: 1px solid var(--violet-100);
+		}
+
+		&__tag {
+			margin-bottom: -1.313rem;
+		}
+
+		&__helper {
+			margin-top: 2rem;
+
+			@include use-media(tablet) {
+				margin-top: 3rem;
+			}
+
+			@include use-media(desktop) {
+				margin-top: 5rem;
+			}
+		}
+	}
+</style>

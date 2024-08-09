@@ -1,0 +1,78 @@
+---
+const { class: className, ...rest } = Astro.props;
+---
+
+<div class="a-accordion-content js-a-accordion-content" class:list={className} {...rest}>
+	<slot />
+</div>
+
+<style lang="scss" is:global>
+	@use "sass:map";
+	@import "@styles/media-queries.scss";
+
+	.a-accordion-content {
+		$root: #{&};
+
+		overflow: hidden;
+		width: 100%;
+		transition: max-height ease 0.33s;
+
+		&__wrapper {
+			/*display: flex;*/
+			/*flex-direction: column;*/
+			/*align-items: flex-start;*/
+
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 2.5rem;
+			padding-top: 2.5rem;
+
+			@include use-media(tablet) {
+				padding-top: 0;
+				grid-template-areas:
+					'title tabs'
+					'panels panels';
+			}
+
+			@include use-media(tablet-album) {
+				padding: 0 2.5rem;
+			}
+
+			& .a-tab-panels {
+				@include use-media(tablet) {
+					grid-area: panels;
+				}
+			}
+		}
+
+		&__tabs {
+
+			@include use-media(tablet) {
+				grid-area: tabs;
+			}
+		}
+
+		&__content {
+			@include use-media(tablet) {
+				grid-area: panels;
+			}
+		}
+
+		&--hide-mobile {
+
+			@include use-media(tablet) {
+				display: block;
+				max-height: unset !important;
+			}
+
+			#{$root}__title {
+				display: none;
+
+				@include use-media(tablet) {
+					display: initial;
+					grid-area: title;
+				}
+			}
+		}
+	}
+</style>

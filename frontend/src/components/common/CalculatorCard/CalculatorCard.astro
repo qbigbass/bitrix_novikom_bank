@@ -1,0 +1,77 @@
+---
+import APolygonContainer from "../APolygonContainer/APolygonContainer.astro";
+import AButton from "../../ui/Buttons/AButton.astro";
+
+interface Props {
+    polygonColor?: string;
+    backgroundColor?: 'grey' | 'white'
+}
+
+const {
+    polygonColor = 'green-100',
+    backgroundColor = 'white'
+} = Astro.props as Props;
+---
+<div class:list={[
+    'calculator-card',
+    'js-calculator-card',
+    `calculator-card--${backgroundColor}`
+]}>
+    <APolygonContainer color={polygonColor}>
+        <div class="calculator-card__inner">
+            <slot />
+            <div class="calculator-card__footer">
+                <AButton class="js-calculator-card-button" size="lm" full>Оформить заявку</AButton>
+                <div class="calculator-card__note body-s-light">
+                    Калькулятор не гарантирует точность расчетов. Окончательные параметры кредита определяются по итогам рассмотрения заявки.
+                </div>
+            </div>
+        </div>
+    </APolygonContainer>
+</div>
+
+
+<style lang="scss" is:global>
+    @import '@styles/media-queries';
+
+    .calculator-card {
+        $root: #{&};
+
+        &__inner {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            padding: var(--polygon-padding);
+
+            @include use-media(tablet-album) {
+                gap: 3rem;
+            }
+        }
+
+        &__footer {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+
+            @include use-media(tablet-album) {
+                gap: 1.5rem;
+            }
+        }
+
+        &__note {
+            color: var(--dark-70);
+        }
+
+        &#{$root}--white {
+            #{$root}__inner {
+                background-color: var(--dark-0);
+            }
+        }
+
+        &#{$root}--grey {
+            #{$root}__inner {
+                background-color: var(--dark-10);
+            }
+        }
+    }
+</style>

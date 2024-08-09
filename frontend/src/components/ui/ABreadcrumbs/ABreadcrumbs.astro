@@ -1,0 +1,103 @@
+---
+import AIcon from "../../AIcon.astro";
+interface Props {
+    links: {
+        title: string;
+        url: string;
+    }[];
+    dark?: boolean;
+}
+
+const { links, dark = false } = Astro.props as Props;
+---
+
+<nav
+	class:list={[
+		'breadcrumbs',
+		'body-s-light',
+		{'is-dark' : dark}
+	]}
+>
+    <ul class="breadcrumbs__list">
+        {
+            links.map(({ title, url }) => (
+                <li class="breadcrumbs__item">
+                    <a
+						href={url}
+						class="breadcrumbs__link"
+					>
+						{title}
+					</a>
+                </li>
+            ))
+        }
+    </ul>
+	<a
+		href={links[links.length - 1].url}
+		class="breadcrumbs__link breadcrumbs__link-mobile"
+	>
+		<AIcon symbolId="icon-chevron-left" size="s" />
+		{links[links.length - 1].title}
+	</a>
+</nav>
+
+<style lang="scss" is:global>
+	@import "@styles/media-queries";
+
+    .breadcrumbs {
+        $root: #{&};
+
+        &__list {
+            display: none;
+            list-style: none;
+            gap: 1.25rem;
+            padding: 0;
+            margin: 0;
+
+			@include use-media(tablet-album) {
+				display: flex;
+			}
+        }
+
+        &__link {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+            text-decoration: none;
+            color: rgba(255, 255, 255, .5);
+        }
+
+		&__link-mobile {
+			@include use-media(tablet-album) {
+				display: none;
+			}
+		}
+        
+        &__item {
+            position: relative;
+
+            &:not(:last-child)::after {
+                content: "";
+                width: .25rem;
+                height: .25rem;
+                background-color: rgba(255, 255, 255, .5);
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                right: -0.75rem;
+            }
+        }
+
+		&.is-dark {
+			#{$root}__link {
+				color: var(--dark-70);
+			}
+
+			#{$root}__item {
+				&:not(:last-child)::after {
+					background-color: var(--blue-70);
+				}
+			}
+		}
+    }
+</style>

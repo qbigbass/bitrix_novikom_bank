@@ -1,0 +1,28 @@
+---
+interface Props {
+	title?: string;
+	description: string;
+}
+
+const { title, description } = Astro.props as Props;
+---
+
+<div class="card-about-bank-item">
+	{ title && (<div class="card-about-bank-item__title violet-100 number-m-heavy">{title}</div>) }
+	<div class="card-about-bank-item__description body-s-heavy">
+		{ Astro.slots['description'] ? (<slot name="description" />) : description }
+	</div>
+</div>
+
+<style lang="scss" is:global>
+	.card-about-bank-item {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+
+		&__description {
+			padding-top: 0.5rem;
+			border-top: 1px dashed var(--violet-100);
+		}
+	}
+</style>

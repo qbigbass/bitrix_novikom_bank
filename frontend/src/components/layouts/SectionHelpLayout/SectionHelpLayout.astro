@@ -1,0 +1,144 @@
+---
+import SectionLayout from "../SectionLayout.astro";
+import AAccordion from "../../ui/AAccordion/AAccordion.astro";
+import AAccordionPanel from "../../ui/AAccordion/AAccordionPanel.astro";
+import AAccordionHeader from "../../ui/AAccordion/AAccordionHeader.astro";
+import AAccordionContent from "../../ui/AAccordion/AAccordionContent.astro";
+import ATabs from "../../ui/ATabs/ATabs.astro";
+import ATabSwiperWrapper from "../../ui/ATabs/common/ATabSwiperWrapper.astro";
+import ATabSwiper from "../../ui/ATabs/common/ATabSwiper/ATabSwiper.astro";
+import ATabPanels from "../../ui/ATabs/common/ATabPanels.astro";
+
+interface Props {
+	title?: string;
+}
+
+const {
+	title = 'Подробнее о карте'
+} = Astro.props as Props
+---
+
+<SectionLayout class="section-help-layout">
+	<div class="content-container">
+		<AAccordion type="layout">
+			<AAccordionPanel>
+				<AAccordionHeader class="section-help-layout__accordion-header">
+					<div class="headline-2">{title}</div>
+				</AAccordionHeader>
+				<AAccordionContent class="section-help-layout__accordion-content">
+					<ATabs useLayout>
+						<div class="section-help-layout__content">
+							<div class="section-help-layout__title headline-2">{title}</div>
+							<div class="section-help-layout__tabs">
+								<Fragment slot="tabs">
+									<ATabSwiper class="section-help-layout__swiper">
+										<ATabSwiperWrapper>
+											<slot name="tabs" />
+										</ATabSwiperWrapper>
+									</ATabSwiper>
+								</Fragment>
+							</div>
+							<ATabPanels>
+								<slot name="tabPanels"/>
+							</ATabPanels>
+						</div>
+					</ATabs>
+				</AAccordionContent>
+			</AAccordionPanel>
+		</AAccordion>
+	</div>
+</SectionLayout>
+
+<style lang="scss" is:global>
+	@import "@styles/media-queries";
+
+	.section-help-layout {
+		position: relative;
+
+		@include use-media(tablet-album) {
+			background: url("/assets/section-help.svg") bottom right no-repeat;
+		}
+
+		&__accordion-header {
+			@include use-media(tablet) {
+				display: none;
+			}
+		}
+
+		&__accordion-content {
+			@include use-media(tablet) {
+				display: block;
+				max-height: unset !important;
+                overflow: visible;
+			}
+		}
+
+		&__content {
+			display: flex;
+			flex-direction: column;
+			gap: 1.5rem;
+			padding-top: 1.5rem;
+
+			@include use-media(tablet) {
+				padding-top: 0;
+				gap: 2.5rem;
+			}
+
+			@include use-media(tablet-album) {
+				gap: 3rem;
+				padding-left: 2.5rem;
+			}
+		}
+
+		&__title {
+			display: none;
+
+			@include use-media(tablet) {
+				display: block;
+			}
+		}
+
+		&__swiper {
+			margin: 0 calc(-1 * var(--container-padding));
+			padding: 0 var(--container-padding);
+
+			@include use-media(tablet-album) {
+				margin: 0;
+				padding: 0;
+			}
+		}
+
+		&__panels {
+			align-self: flex-start;
+			padding: 1.5rem 1rem;
+			background-color: var(--dark-10);
+			border-radius: 0.75rem;
+
+			@include use-media(tablet) {
+				padding: 1.5rem;
+			}
+
+			@include use-media(tablet-album) {
+				padding: 2.5rem;
+			}
+
+			@include use-media(laptop-x) {
+				grid-column: span 8;
+			}
+		}
+
+		&__card {
+			align-self: flex-start;
+
+			@include use-media(laptop-x) {
+				grid-column: span 4;
+			}
+		}
+
+		&__footer {
+			@include use-media(laptop-x) {
+				grid-column: span 12;
+			}
+		}
+	}
+</style>

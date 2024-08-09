@@ -1,0 +1,214 @@
+---
+import DisplayStepperIconArrow from "./icons/DisplayStepperIconArrow.astro";
+import DisplayStepperIconLevel1 from "./icons/DisplayStepperIconLevel1.astro";
+import DisplayStepperIconLevel2 from "./icons/DisplayStepperIconLevel2.astro";
+import DisplayStepperIconLevel3 from "./icons/DisplayStepperIconLevel3.astro";
+import AIcon from "../../AIcon.astro";
+
+interface Props {
+	icon?: string;
+	number?: number;
+	inRow?: boolean;
+}
+
+let {
+	number,
+	icon,
+	class: className,
+	inRow,
+	...rest
+} = Astro.props;
+
+if (number < 1) {
+	number = 1
+}
+---
+
+<div class="display-stepper-item"
+	 class:list={[
+		 className,
+		 {'display-stepper-item--in-row': inRow}
+	 ]}
+	 {...rest}
+>
+	<div class="display-stepper-item__header">
+		{
+			icon
+				? (
+					<div class="display-stepper-item__icon">
+						<AIcon symbolId={icon} size="xl" />
+					</div>
+				)
+				: (
+					<div class="display-stepper-item__number">
+						<div class="display-stepper-item__number-value dark-0">{number}</div>
+						<div class="display-stepper-item__number-icon">
+							{ number >= 1 && (<DisplayStepperIconLevel1 />) }
+							{ number >= 2 && (<DisplayStepperIconLevel2 />) }
+							{ number >= 3 && (<DisplayStepperIconLevel3 />) }
+						</div>
+					</div>
+					<div class="display-stepper-item__arrow">
+						<DisplayStepperIconArrow />
+					</div>
+				)
+		}
+	</div>
+	<div class="display-stepper-item__content">
+		<slot />
+		{Astro.slots.has('footer') && (
+			<div class="display-stepper-item__footer">
+				<slot name="footer" />
+			</div>
+		)}
+	</div>
+
+</div>
+
+<style lang="scss" is:global>
+	@import "@styles/media-queries";
+
+	.display-stepper-item {
+		$root: &;
+
+		display: flex;
+		flex-direction: column;
+		gap: .5rem;
+
+		@include use-media(tablet) {
+			flex-direction: row;
+			align-items: center;
+			gap: 1.5rem;
+		}
+
+		@include use-media(tablet-album) {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 1rem;
+		}
+
+		&__icon {
+			color: var(--green-100);
+		}
+
+		&__header {
+			display: flex;
+			flex-shrink: 0;
+			align-items: flex-start;
+			gap: 1.5rem;
+
+			@include use-media(tablet-album) {
+				width: 100%;
+			}
+		}
+
+		&__number {
+			display: flex;
+			justify-content: center;
+			position: relative;
+			height: 5rem;
+			flex-shrink: 0;
+			width: 5rem;
+		}
+
+		&__number-value {
+			padding: 0.5rem 0;
+			position: relative;
+			width: 100%;
+			text-align: center;
+			z-index: 1;
+
+			font-size: 2rem;
+			line-height: 1.25;
+			font-weight: 700;
+		}
+
+		&__number-icon {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			padding: 0.5rem 0;
+		}
+
+		&__arrow {
+			display: none;
+			flex-grow: 1;
+			padding-top: calc(1.875rem - 0.563rem / 2);
+
+			@include use-media(tablet-album) {
+				display: flex;
+			}
+		}
+
+		&__content {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			gap: .5rem;
+
+			@include use-media(tablet-album) {
+				flex-grow: 1;
+			}
+		}
+
+		&__footer {
+
+			@include use-media(tablet) {
+				padding-top: .5rem;
+			}
+
+			@include use-media(tablet-album) {
+				margin-top: auto;
+			}
+		}
+
+		&:last-child & {
+			&__arrow {
+				display: none;
+			}
+		}
+
+		&--in-row {
+
+			@include use-media(tablet) {
+				display: flex;
+				align-items: center;
+				row-gap: unset;
+			}
+
+			@include use-media(tablet-album) {
+				flex-direction: row;
+				gap: 2.5rem;
+			}
+
+			#{$root}__header {
+				width: auto;
+			}
+		}
+	}
+
+	.display-stepper-icon {
+		display: flex;
+		flex-shrink: 0;
+		position: absolute;
+		width: 100%;
+
+		svg {
+			width: 100%;
+		}
+
+		&[data-level="1"] {
+			top: 0.5rem;
+		}
+
+		&[data-level="2"] {
+			top: 1rem;
+		}
+
+		&[data-level="3"] {
+			top: 1.5rem;
+		}
+	}
+</style>

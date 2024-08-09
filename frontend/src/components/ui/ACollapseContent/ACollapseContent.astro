@@ -1,0 +1,112 @@
+---
+import { type Colors } from "@components/ui/Buttons/types";
+import AButton from "@components/ui/Buttons/AButton.astro";
+
+interface Props {
+	showText?: string;
+	hideText?: string;
+	color?: Colors;
+}
+
+const { showText = "Показать", hideText = "Скрыть", color = "primary" } = Astro.props as Props;
+---
+
+<div class="a-collapsed-content js-a-collapsed-content">
+	<div class="a-collapsed-content__value js-a-collapsed-content--value">
+		<slot />
+	</div>
+	<AButton
+		class="js-a-collapsed-content--trigger a-collapsed-content__trigger"
+		element="button"
+		text
+		color={color}
+		afterIcon="icon-chevron-down"
+		data-show-text={showText}
+		data-hide-text={hideText}
+	>
+		<span>
+			{showText}
+		</span>
+	</AButton>
+</div>
+
+<script>
+	const ELEMENTS = {
+		root: ".js-a-collapsed-content",
+		trigger: ".js-a-collapsed-content--trigger",
+		content: ".js-a-collapsed-content--value",
+	};
+
+	const triggers = document.querySelectorAll(ELEMENTS.trigger);
+	triggers.forEach((item: Element) => {
+		item.addEventListener("click", handleItemClick);
+	});
+
+	function handleItemClick(event: Event) {
+		const currentTarget = event.currentTarget as HTMLElement | null;
+		if (!currentTarget) {
+			return;
+		}
+		const rootEl = currentTarget.closest(ELEMENTS.root);
+		const contentEl = rootEl?.querySelector(ELEMENTS.content) as HTMLElement;
+
+		if (!contentEl) {
+			return;
+		}
+		const resetMaxHeightHandler = resetMaxHeight.bind(null, contentEl);
+
+		if (currentTarget.classList.contains("is-active")) {
+			contentEl.style.maxHeight = contentEl.scrollHeight + "px";
+			handleBtnText(currentTarget, false);
+			setTimeout(() => {
+				contentEl.style.maxHeight = "";
+			}, 1);
+		} else {
+			contentEl.style.maxHeight = contentEl.scrollHeight + "px";
+			handleBtnText(currentTarget, true);
+			contentEl.addEventListener("transitionend", resetMaxHeightHandler);
+		}
+
+		function resetMaxHeight(el: HTMLElement) {
+			el.style.maxHeight = "none";
+			el.removeEventListener("transitionend", resetMaxHeightHandler);
+		}
+	}
+
+	function handleBtnText(btn: HTMLElement, isOpened: boolean = false) {
+		btn.classList.toggle("is-active", isOpened);
+		const btnText = btn.querySelector("span");
+		if (btnText) {
+			btnText.innerText = isOpened ? String(btn.dataset.hideText) : String(btn.dataset.showText);
+		}
+	}
+</script>
+
+<style lang="scss" is:global>
+	@import "@styles/media-queries";
+
+	.a-collapsed-content {
+		&__trigger {
+			cursor: pointer;
+			margin-top: 24px;
+
+			.a-icon {
+				transition: transform 0.3s ease;
+				transform: rotate(0);
+			}
+
+			&.is-active {
+				.a-icon {
+					transform: rotate(180deg);
+					animation: transform 0.3s ease;
+				}
+			}
+		}
+
+		&__value {
+			max-height: 0;
+			overflow: hidden;
+			transition: max-height 0.2s ease-out;
+		}
+	}
+</style>

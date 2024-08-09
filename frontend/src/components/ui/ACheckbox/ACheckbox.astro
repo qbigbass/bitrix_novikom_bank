@@ -1,0 +1,134 @@
+---
+import AIcon from "../../AIcon.astro";
+
+type Size = 'l' | 'm' | 'lm';
+
+interface Props {
+	checked?: boolean,
+	value?: any,
+	id: number | string,
+	size: Size
+}
+
+const {
+	class: className,
+	checked,
+	value,
+	id,
+	size = 'l'
+} = Astro.props as Props;
+---
+
+<div
+	class="a-checkbox js-a-checkbox"
+	class:list={[
+		className,
+		`a-checkbox--${size}`,
+	]}
+>
+	<label class="a-checkbox__inner" for={id}>
+		<input
+			class="a-checkbox__input"
+			id={id}
+			type="checkbox"
+			checked={checked}
+			value={value}
+		/>
+		<span class="a-checkbox__box">
+			<AIcon class="a-checkbox__icon" symbolId="icon-check" size="s" />
+		</span>
+	</label>
+	{
+		Astro.slots['label'] && (
+			<div class="a-checkbox__label">
+				<slot name="label" />
+			</div>
+		)
+	}
+</div>
+
+<script>
+	import initACheckbox from './';
+	import { JS_CLASSES } from './';
+	import type { ACheckboxState, ACheckboxCustomEvent } from './interfaces'
+	const checkboxes: NodeListOf<HTMLDivElement> = document.querySelectorAll(JS_CLASSES.root);
+
+	checkboxes?.forEach((checkbox) => {
+		const input = initACheckbox(checkbox) as ACheckboxState;
+
+		input.root.addEventListener('change', (event) => {
+			const checkboxEvent = event as CustomEvent<ACheckboxCustomEvent>;
+			console.log('Change', checkboxEvent);
+		});
+	});
+</script>
+
+<style lang="scss" is:global>
+	.a-checkbox {
+		position: relative;
+		display: inline-flex;
+		gap: 1rem;
+
+		&__inner {
+			cursor: pointer;
+		}
+
+		&__input {
+			position: absolute;
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			appearance: none;
+		}
+
+		&__box {
+			border: 1px solid var(--purple-30);
+			border-radius: 0.125rem;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		&__icon {
+			display: none;
+			color: var(--dark-0);
+		}
+
+		&__input:checked + &__box {
+			background-color: var(--blue-100);
+			border-color: var(--blue-100);
+		}
+
+		&__input:checked + &__box &__icon {
+			display: block;
+		}
+
+		&:hover & {
+			&__box {
+				border-color: var(--blue-100);
+			}
+		}
+
+		&.a-checkbox--l & {
+			&__box {
+				width: 2rem;
+				height: 2rem;
+			}
+		}
+
+		&.a-checkbox--m & {
+			&__box {
+				width: 1.5rem;
+				height: 1.5rem;
+			}
+		}
+
+		&.a-checkbox--lm & {
+			&__box {
+				width: 1.5rem;
+				height: 1.5rem;
+			}
+		}
+	}
+
+
+</style>

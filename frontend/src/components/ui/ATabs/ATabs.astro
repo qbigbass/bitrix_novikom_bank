@@ -1,0 +1,48 @@
+---
+import ATabSwiperWrapper from "./common/ATabSwiperWrapper.astro";
+import ATabPanels from "./common/ATabPanels.astro";
+import ATabSwiper from "./common/ATabSwiper/ATabSwiper.astro";
+
+interface Props {
+	useLayout?: boolean;
+}
+
+const {
+	useLayout = false
+} = Astro.props as Props;
+---
+<div class:list={[
+	'a-tabs',
+	{ 'a-tabs--layout': useLayout },
+	{ 'a-tabs--component': !useLayout },
+	'js-a-tabs'
+]}>
+	{
+		useLayout ? (
+			<slot />
+		) : (
+			<>
+				<ATabSwiper>
+					<ATabSwiperWrapper>
+						<slot name="tabs" />
+					</ATabSwiperWrapper>
+				</ATabSwiper>
+				{Astro.slots['panels'] && (
+					<ATabPanels>
+						<slot name="panels" />
+					</ATabPanels>
+				)}
+			</>
+		)
+	}
+</div>
+
+<script>
+	import initATabs, { JS_CLASSES } from "./";
+
+	const tabs = document.querySelectorAll(JS_CLASSES.root) as NodeListOf<HTMLDivElement>;
+
+	tabs.forEach((tabsRoot) => {
+		initATabs(tabsRoot);
+	});
+</script>

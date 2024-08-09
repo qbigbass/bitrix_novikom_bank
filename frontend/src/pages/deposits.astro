@@ -1,0 +1,712 @@
+---
+import DefaultPageLayout from "../layouts/DefaultPageLayout.astro";
+import SectionSeeAlso from "../components/sections/SectionSeeAlso.astro";
+import TextBanner from "../components/banners/TextBanner.astro";
+import SectionDepositsCatalog from "../components/sections/SectionDepositsCatalog.astro";
+import ARte from "../components/ARte.astro";
+import BenefitCard from "../components/common/BenefitCard/BenefitCard.astro";
+import AAccordionContent from "../components/ui/AAccordion/AAccordionContent.astro";
+import SectionHelpContentLayout from "../components/layouts/SectionHelpLayout/SectionHelpContentLayout.astro";
+import AButton from "../components/ui/Buttons/AButton.astro";
+import FormCallMeBack from "../components/common/FormCallMeBack/FormCallMeBack.astro";
+import SectionHelpLayout from "../components/layouts/SectionHelpLayout/SectionHelpLayout.astro";
+import AAccordionPanel from "../components/ui/AAccordion/AAccordionPanel.astro";
+import AAccordionHeader from "../components/ui/AAccordion/AAccordionHeader.astro";
+import ATab from "../components/ui/ATabs/common/ATab/ATab.astro";
+import AAccordion from "../components/ui/AAccordion/AAccordion.astro";
+import ATabPanel from "../components/ui/ATabs/common/ATabPanel.astro";
+import DocumentDownload from "../components/ui/DocumentDownload/DocumentDownload.astro";
+import InfoProductBanner from "../components/common/Banners/InfoProductBanner.astro";
+
+const breadcrumbs = [{
+	title: 'Частным клиентам',
+	url: '#'
+}]
+---
+<DefaultPageLayout title="Вклады Новикома">
+	<TextBanner
+		title="Вклады Новикома"
+		breadcrumbs={breadcrumbs}
+		description="Сохранение и приумножение накоплений"
+	/>
+	<SectionDepositsCatalog />
+	<SectionHelpLayout
+		title="Подробнее о&nbspвкладах"
+	>
+		<Fragment slot="tabs">
+			<ATab value="0" size="lm" isActive>Валютные вклады</ATab>
+			<ATab value="1" size="lm">Возмещения по вкладам</ATab>
+			<ATab value="2" size="lm">Налог на доход</ATab>
+			<ATab value="3" size="lm">Тарифы и документы</ATab>
+			<ATab value="4" size="lm">Вопросы и ответы</ATab>
+		</Fragment>
+		<Fragment slot="tabPanels">
+			<ATabPanel value="0">
+				<SectionHelpContentLayout>
+					<Fragment slot="left">
+						<AAccordion type="component">
+							<AAccordionPanel>
+								<AAccordionHeader>
+									<div class="body-l-light">Тарифы для физических лиц</div>
+								</AAccordionHeader>
+								<AAccordionContent>
+									<p class="body-m-light dark-70" style="margin-bottom: 1.5rem;">Тарифы для физических лиц, действующие во всех регионах присутствия Банка.</p>
+									<DocumentDownload
+										fileName="Сборник тарифов на обслуживание банковских карт для физических лиц, выпущенных по 21.08.2022 г."
+										dateTime="12.12.23 18:56"
+										fileType="XLS"
+									/>
+									<DocumentDownload
+										fileName="Сборник тарифов на обслуживание банковских карт Мир для физических лиц, выпущенных с 22.08.2022 г."
+										dateTime="12.12.23 18:56"
+										fileType="XLS"
+									/>
+									<DocumentDownload
+										fileName="Сборник тарифов на обслуживание физических лиц"
+										dateTime="12.12.23 18:56"
+										fileType="XLS"
+									/>
+								</AAccordionContent>
+							</AAccordionPanel>
+							<AAccordionPanel>
+								<AAccordionHeader>
+									<div class="body-l-light">Договор банковского обслуживания</div>
+								</AAccordionHeader>
+								<AAccordionContent>
+									<p class="body-m-light dark-70" style="margin-bottom: 1.5rem;">Тарифы для физических лиц, действующие во всех регионах присутствия Банка.</p>
+									<DocumentDownload
+										fileName="Сборник тарифов на обслуживание банковских карт для физических лиц, выпущенных по 21.08.2022 г."
+										dateTime="12.12.23 18:56"
+										fileType="XLS"
+									/>
+									<DocumentDownload
+										fileName="Сборник тарифов на обслуживание банковских карт Мир для физических лиц, выпущенных с 22.08.2022 г."
+										dateTime="12.12.23 18:56"
+										fileType="XLS"
+									/>
+									<DocumentDownload
+										fileName="Сборник тарифов на обслуживание физических лиц"
+										dateTime="12.12.23 18:56"
+										fileType="XLS"
+									/>
+								</AAccordionContent>
+							</AAccordionPanel>
+							<AAccordionPanel>
+								<AAccordionHeader>
+									<div class="body-l-light">Типовые документы</div>
+								</AAccordionHeader>
+								<AAccordionContent>
+									<p class="body-m-light dark-70" style="margin-bottom: 1.5rem;">Тарифы для физических лиц, действующие во всех регионах присутствия Банка.</p>
+									<DocumentDownload
+										fileName="Сборник тарифов на обслуживание банковских карт для физических лиц, выпущенных по 21.08.2022 г."
+										dateTime="12.12.23 18:56"
+										fileType="XLS"
+									/>
+									<DocumentDownload
+										fileName="Сборник тарифов на обслуживание банковских карт Мир для физических лиц, выпущенных с 22.08.2022 г."
+										dateTime="12.12.23 18:56"
+										fileType="XLS"
+									/>
+									<DocumentDownload
+										fileName="Сборник тарифов на обслуживание физических лиц"
+										dateTime="12.12.23 18:56"
+										fileType="XLS"
+									/>
+								</AAccordionContent>
+							</AAccordionPanel>
+							<AAccordionPanel>
+								<AAccordionHeader>
+									<div class="body-l-light">Паспорта дебетовых карт</div>
+								</AAccordionHeader>
+								<AAccordionContent>
+									<p class="body-m-light dark-70" style="margin-bottom: 1.5rem;">Тарифы для физических лиц, действующие во всех регионах присутствия Банка.</p>
+									<DocumentDownload
+										fileName="Сборник тарифов на обслуживание банковских карт для физических лиц, выпущенных по 21.08.2022 г."
+										dateTime="12.12.23 18:56"
+										fileType="XLS"
+									/>
+									<DocumentDownload
+										fileName="Сборник тарифов на обслуживание банковских карт Мир для физических лиц, выпущенных с 22.08.2022 г."
+										dateTime="12.12.23 18:56"
+										fileType="XLS"
+									/>
+									<DocumentDownload
+										fileName="Сборник тарифов на обслуживание физических лиц"
+										dateTime="12.12.23 18:56"
+										fileType="XLS"
+									/>
+								</AAccordionContent>
+							</AAccordionPanel>
+							<AAccordionPanel>
+								<AAccordionHeader>
+									<div class="body-l-light">Иные документы</div>
+								</AAccordionHeader>
+								<AAccordionContent>
+									<p class="body-m-light dark-70" style="margin-bottom: 1.5rem;">Тарифы для физических лиц, действующие во всех регионах присутствия Банка.</p>
+									<DocumentDownload
+										fileName="Сборник тарифов на обслуживание банковских карт для физических лиц, выпущенных по 21.08.2022 г."
+										dateTime="12.12.23 18:56"
+										fileType="XLS"
+									/>
+									<DocumentDownload
+										fileName="Сборник тарифов на обслуживание банковских карт Мир для физических лиц, выпущенных с 22.08.2022 г."
+										dateTime="12.12.23 18:56"
+										fileType="XLS"
+									/>
+									<DocumentDownload
+										fileName="Сборник тарифов на обслуживание физических лиц"
+										dateTime="12.12.23 18:56"
+										fileType="XLS"
+									/>
+								</AAccordionContent>
+							</AAccordionPanel>
+						</AAccordion>
+					</Fragment>
+					<Fragment slot="right">
+						<BenefitCard
+							title="Защита от мошенников"
+							description="Узнайте как уберечь себя и своих близких от финансового мошенничества."
+							icon="icon-a-bankInform"
+							theme="light-blue"
+							textButton="Подробнее"
+						/>
+					</Fragment>
+				</SectionHelpContentLayout>
+			</ATabPanel>
+			<ATabPanel value="1">
+				<SectionHelpContentLayout>
+					<Fragment slot="left">
+						<AAccordion type="component">
+							<AAccordionPanel>
+								<AAccordionHeader>
+									<div class="body-l-light">Что нужно знать клиентам о продлении срока действия карт?</div>
+								</AAccordionHeader>
+								<AAccordionContent>
+									<ARte class="body-m-light">
+										<p>
+											Разнообразный и богатый опыт сложившаяся структура организации
+											требуют от нас анализа существенных финансовых и
+											административных условий. Значимость этих проблем настолько
+											очевидна, что укрепление и развитие структуры требуют от нас
+											анализа позиций, занимаемых участниками в отношении поставленных
+											задач.
+										</p>
+										<ul>
+											<li>
+												При&nbsp;отсутствии лимита&nbsp;— возможность работы
+												под&nbsp;результаты 1, 2, 3&nbsp;рейсов
+												МЦИ&nbsp;(для&nbsp;валюты РФ) и&nbsp;отправка срочных
+												кредитовых авизо (по&nbsp;иностранным валютам);
+											</li>
+											<li>
+												При&nbsp;отсутствии лимита&nbsp;— возможность работы
+												под&nbsp;результаты 1, 2, 3&nbsp;рейсов
+												МЦИ&nbsp;(для&nbsp;валюты РФ) и&nbsp;отправка срочных
+												кредитовых авизо (по&nbsp;иностранным валютам);
+											</li>
+										</ul>
+									</ARte>
+								</AAccordionContent>
+							</AAccordionPanel>
+							<AAccordionPanel>
+								<AAccordionHeader>
+									<div class="body-l-light">Взимается ли комиссия за снятие наличных денежных средств в банкоматах,  если моя организация – работодатель  является участником зарплатного проекта Банка?</div>
+								</AAccordionHeader>
+								<AAccordionContent>
+									<ARte class="body-m-light">
+										<p>
+											Разнообразный и богатый опыт сложившаяся структура организации
+											требуют от нас анализа существенных финансовых и
+											административных условий. Значимость этих проблем настолько
+											очевидна, что укрепление и развитие структуры требуют от нас
+											анализа позиций, занимаемых участниками в отношении поставленных
+											задач.
+										</p>
+										<ul>
+											<li>
+												При&nbsp;отсутствии лимита&nbsp;— возможность работы
+												под&nbsp;результаты 1, 2, 3&nbsp;рейсов
+												МЦИ&nbsp;(для&nbsp;валюты РФ) и&nbsp;отправка срочных
+												кредитовых авизо (по&nbsp;иностранным валютам);
+											</li>
+											<li>
+												При&nbsp;отсутствии лимита&nbsp;— возможность работы
+												под&nbsp;результаты 1, 2, 3&nbsp;рейсов
+												МЦИ&nbsp;(для&nbsp;валюты РФ) и&nbsp;отправка срочных
+												кредитовых авизо (по&nbsp;иностранным валютам);
+											</li>
+										</ul>
+									</ARte>
+								</AAccordionContent>
+							</AAccordionPanel>
+							<AAccordionPanel>
+								<AAccordionHeader>
+									<div class="body-l-light">Вместе с основной зарплатной картой мне выдали дополнительную. По каким тарифам она обслуживается?</div>
+								</AAccordionHeader>
+								<AAccordionContent>
+									<ARte class="body-m-light">
+										<p>
+											Разнообразный и богатый опыт сложившаяся структура организации
+											требуют от нас анализа существенных финансовых и
+											административных условий. Значимость этих проблем настолько
+											очевидна, что укрепление и развитие структуры требуют от нас
+											анализа позиций, занимаемых участниками в отношении поставленных
+											задач.
+										</p>
+									</ARte>
+								</AAccordionContent>
+							</AAccordionPanel>
+							<AAccordionPanel>
+								<AAccordionHeader>
+									<div class="body-l-light">Что делать, если потерял карту или забыл ПИН-код?</div>
+								</AAccordionHeader>
+								<AAccordionContent>
+									<ARte class="body-m-light">
+										<p>Если есть подозрение, что ПИН-код мог стать доступен третьим лицам, незамедлительно заблокируйте карту.   Если ПИН-код не удается вспомнить карту необходимо перевыпустить.</p>
+									</ARte>
+								</AAccordionContent>
+							</AAccordionPanel>
+							<AAccordionPanel>
+								<AAccordionHeader>
+									<div class="body-l-light">Мою карту заблокировал Банк. Что делать?</div>
+								</AAccordionHeader>
+								<AAccordionContent>
+									<ARte class="body-m-light">
+										<ul>
+											<li>
+												При&nbsp;отсутствии лимита&nbsp;— возможность работы
+												под&nbsp;результаты 1, 2, 3&nbsp;рейсов
+												МЦИ&nbsp;(для&nbsp;валюты РФ) и&nbsp;отправка срочных
+												кредитовых авизо (по&nbsp;иностранным валютам);
+											</li>
+											<li>
+												При&nbsp;отсутствии лимита&nbsp;— возможность работы
+												под&nbsp;результаты 1, 2, 3&nbsp;рейсов
+												МЦИ&nbsp;(для&nbsp;валюты РФ) и&nbsp;отправка срочных
+												кредитовых авизо (по&nbsp;иностранным валютам);
+											</li>
+										</ul>
+									</ARte>
+								</AAccordionContent>
+							</AAccordionPanel>
+						</AAccordion>
+					</Fragment>
+					<Fragment slot="right">
+						<BenefitCard
+							title="Защита от мошенников"
+							description="Узнайте как уберечь себя и своих близких от финансового мошенничества."
+							icon="icon-a-bankInform"
+							theme="light-blue"
+							textButton="Подробнее"
+						/>
+					</Fragment>
+				</SectionHelpContentLayout>
+			</ATabPanel>
+			<ATabPanel value="2">
+				<SectionHelpContentLayout>
+					<Fragment slot="left">
+						<AAccordion type="component">
+							<AAccordionPanel>
+								<AAccordionHeader>
+									<div class="body-l-light">Тарифы для физических лиц</div>
+								</AAccordionHeader>
+								<AAccordionContent>
+									<p class="body-m-light dark-70" style="margin-bottom: 1.5rem;">Тарифы для физических лиц, действующие во всех регионах присутствия Банка.</p>
+									<DocumentDownload
+										fileName="Сборник тарифов на обслуживание банковских карт для физических лиц, выпущенных по 21.08.2022 г."
+										dateTime="12.12.23 18:56"
+										fileType="XLS"
+									/>
+									<DocumentDownload
+										fileName="Сборник тарифов на обслуживание банковских карт Мир для физических лиц, выпущенных с 22.08.2022 г."
+										dateTime="12.12.23 18:56"
+										fileType="XLS"
+									/>
+									<DocumentDownload
+										fileName="Сборник тарифов на обслуживание физических лиц"
+										dateTime="12.12.23 18:56"
+										fileType="XLS"
+									/>
+								</AAccordionContent>
+							</AAccordionPanel>
+							<AAccordionPanel>
+								<AAccordionHeader>
+									<div class="body-l-light">Договор банковского обслуживания</div>
+								</AAccordionHeader>
+								<AAccordionContent>
+									<p class="body-m-light dark-70" style="margin-bottom: 1.5rem;">Тарифы для физических лиц, действующие во всех регионах присутствия Банка.</p>
+									<DocumentDownload
+										fileName="Сборник тарифов на обслуживание банковских карт для физических лиц, выпущенных по 21.08.2022 г."
+										dateTime="12.12.23 18:56"
+										fileType="XLS"
+									/>
+									<DocumentDownload
+										fileName="Сборник тарифов на обслуживание банковских карт Мир для физических лиц, выпущенных с 22.08.2022 г."
+										dateTime="12.12.23 18:56"
+										fileType="XLS"
+									/>
+									<DocumentDownload
+										fileName="Сборник тарифов на обслуживание физических лиц"
+										dateTime="12.12.23 18:56"
+										fileType="XLS"
+									/>
+								</AAccordionContent>
+							</AAccordionPanel>
+							<AAccordionPanel>
+								<AAccordionHeader>
+									<div class="body-l-light">Типовые документы</div>
+								</AAccordionHeader>
+								<AAccordionContent>
+									<p class="body-m-light dark-70" style="margin-bottom: 1.5rem;">Тарифы для физических лиц, действующие во всех регионах присутствия Банка.</p>
+									<DocumentDownload
+										fileName="Сборник тарифов на обслуживание банковских карт для физических лиц, выпущенных по 21.08.2022 г."
+										dateTime="12.12.23 18:56"
+										fileType="XLS"
+									/>
+									<DocumentDownload
+										fileName="Сборник тарифов на обслуживание банковских карт Мир для физических лиц, выпущенных с 22.08.2022 г."
+										dateTime="12.12.23 18:56"
+										fileType="XLS"
+									/>
+									<DocumentDownload
+										fileName="Сборник тарифов на обслуживание физических лиц"
+										dateTime="12.12.23 18:56"
+										fileType="XLS"
+									/>
+								</AAccordionContent>
+							</AAccordionPanel>
+							<AAccordionPanel>
+								<AAccordionHeader>
+									<div class="body-l-light">Паспорта дебетовых карт</div>
+								</AAccordionHeader>
+								<AAccordionContent>
+									<p class="body-m-light dark-70" style="margin-bottom: 1.5rem;">Тарифы для физических лиц, действующие во всех регионах присутствия Банка.</p>
+									<DocumentDownload
+										fileName="Сборник тарифов на обслуживание банковских карт для физических лиц, выпущенных по 21.08.2022 г."
+										dateTime="12.12.23 18:56"
+										fileType="XLS"
+									/>
+									<DocumentDownload
+										fileName="Сборник тарифов на обслуживание банковских карт Мир для физических лиц, выпущенных с 22.08.2022 г."
+										dateTime="12.12.23 18:56"
+										fileType="XLS"
+									/>
+									<DocumentDownload
+										fileName="Сборник тарифов на обслуживание физических лиц"
+										dateTime="12.12.23 18:56"
+										fileType="XLS"
+									/>
+								</AAccordionContent>
+							</AAccordionPanel>
+							<AAccordionPanel>
+								<AAccordionHeader>
+									<div class="body-l-light">Иные документы</div>
+								</AAccordionHeader>
+								<AAccordionContent>
+									<p class="body-m-light dark-70" style="margin-bottom: 1.5rem;">Тарифы для физических лиц, действующие во всех регионах присутствия Банка.</p>
+									<DocumentDownload
+										fileName="Сборник тарифов на обслуживание банковских карт для физических лиц, выпущенных по 21.08.2022 г."
+										dateTime="12.12.23 18:56"
+										fileType="XLS"
+									/>
+									<DocumentDownload
+										fileName="Сборник тарифов на обслуживание банковских карт Мир для физических лиц, выпущенных с 22.08.2022 г."
+										dateTime="12.12.23 18:56"
+										fileType="XLS"
+									/>
+									<DocumentDownload
+										fileName="Сборник тарифов на обслуживание физических лиц"
+										dateTime="12.12.23 18:56"
+										fileType="XLS"
+									/>
+								</AAccordionContent>
+							</AAccordionPanel>
+						</AAccordion>
+					</Fragment>
+					<Fragment slot="right">
+						<BenefitCard
+							title="Защита от мошенников"
+							description="Узнайте как уберечь себя и своих близких от финансового мошенничества."
+							icon="icon-a-bankInform"
+							theme="light-blue"
+							textButton="Подробнее"
+						/>
+					</Fragment>
+				</SectionHelpContentLayout>
+			</ATabPanel>
+			<ATabPanel value="3">
+				<SectionHelpContentLayout>
+					<Fragment slot="left">
+						<AAccordion type="component">
+							<AAccordionPanel>
+								<AAccordionHeader>
+									<div class="body-l-light">Что нужно знать клиентам о продлении срока действия карт?</div>
+								</AAccordionHeader>
+								<AAccordionContent>
+									<ARte class="body-m-light">
+										<p>
+											Разнообразный и богатый опыт сложившаяся структура организации
+											требуют от нас анализа существенных финансовых и
+											административных условий. Значимость этих проблем настолько
+											очевидна, что укрепление и развитие структуры требуют от нас
+											анализа позиций, занимаемых участниками в отношении поставленных
+											задач.
+										</p>
+										<ul>
+											<li>
+												При&nbsp;отсутствии лимита&nbsp;— возможность работы
+												под&nbsp;результаты 1, 2, 3&nbsp;рейсов
+												МЦИ&nbsp;(для&nbsp;валюты РФ) и&nbsp;отправка срочных
+												кредитовых авизо (по&nbsp;иностранным валютам);
+											</li>
+											<li>
+												При&nbsp;отсутствии лимита&nbsp;— возможность работы
+												под&nbsp;результаты 1, 2, 3&nbsp;рейсов
+												МЦИ&nbsp;(для&nbsp;валюты РФ) и&nbsp;отправка срочных
+												кредитовых авизо (по&nbsp;иностранным валютам);
+											</li>
+										</ul>
+									</ARte>
+								</AAccordionContent>
+							</AAccordionPanel>
+							<AAccordionPanel>
+								<AAccordionHeader>
+									<div class="body-l-light">Взимается ли комиссия за снятие наличных денежных средств в банкоматах,  если моя организация – работодатель  является участником зарплатного проекта Банка?</div>
+								</AAccordionHeader>
+								<AAccordionContent>
+									<ARte class="body-m-light">
+										<p>
+											Разнообразный и богатый опыт сложившаяся структура организации
+											требуют от нас анализа существенных финансовых и
+											административных условий. Значимость этих проблем настолько
+											очевидна, что укрепление и развитие структуры требуют от нас
+											анализа позиций, занимаемых участниками в отношении поставленных
+											задач.
+										</p>
+										<ul>
+											<li>
+												При&nbsp;отсутствии лимита&nbsp;— возможность работы
+												под&nbsp;результаты 1, 2, 3&nbsp;рейсов
+												МЦИ&nbsp;(для&nbsp;валюты РФ) и&nbsp;отправка срочных
+												кредитовых авизо (по&nbsp;иностранным валютам);
+											</li>
+											<li>
+												При&nbsp;отсутствии лимита&nbsp;— возможность работы
+												под&nbsp;результаты 1, 2, 3&nbsp;рейсов
+												МЦИ&nbsp;(для&nbsp;валюты РФ) и&nbsp;отправка срочных
+												кредитовых авизо (по&nbsp;иностранным валютам);
+											</li>
+										</ul>
+									</ARte>
+								</AAccordionContent>
+							</AAccordionPanel>
+							<AAccordionPanel>
+								<AAccordionHeader>
+									<div class="body-l-light">Вместе с основной зарплатной картой мне выдали дополнительную. По каким тарифам она обслуживается?</div>
+								</AAccordionHeader>
+								<AAccordionContent>
+									<ARte class="body-m-light">
+										<p>
+											Разнообразный и богатый опыт сложившаяся структура организации
+											требуют от нас анализа существенных финансовых и
+											административных условий. Значимость этих проблем настолько
+											очевидна, что укрепление и развитие структуры требуют от нас
+											анализа позиций, занимаемых участниками в отношении поставленных
+											задач.
+										</p>
+									</ARte>
+								</AAccordionContent>
+							</AAccordionPanel>
+							<AAccordionPanel>
+								<AAccordionHeader>
+									<div class="body-l-light">Что делать, если потерял карту или забыл ПИН-код?</div>
+								</AAccordionHeader>
+								<AAccordionContent>
+									<ARte class="body-m-light">
+										<p>Если есть подозрение, что ПИН-код мог стать доступен третьим лицам, незамедлительно заблокируйте карту.   Если ПИН-код не удается вспомнить карту необходимо перевыпустить.</p>
+									</ARte>
+								</AAccordionContent>
+							</AAccordionPanel>
+							<AAccordionPanel>
+								<AAccordionHeader>
+									<div class="body-l-light">Мою карту заблокировал Банк. Что делать?</div>
+								</AAccordionHeader>
+								<AAccordionContent>
+									<ARte class="body-m-light">
+										<ul>
+											<li>
+												При&nbsp;отсутствии лимита&nbsp;— возможность работы
+												под&nbsp;результаты 1, 2, 3&nbsp;рейсов
+												МЦИ&nbsp;(для&nbsp;валюты РФ) и&nbsp;отправка срочных
+												кредитовых авизо (по&nbsp;иностранным валютам);
+											</li>
+											<li>
+												При&nbsp;отсутствии лимита&nbsp;— возможность работы
+												под&nbsp;результаты 1, 2, 3&nbsp;рейсов
+												МЦИ&nbsp;(для&nbsp;валюты РФ) и&nbsp;отправка срочных
+												кредитовых авизо (по&nbsp;иностранным валютам);
+											</li>
+										</ul>
+									</ARte>
+								</AAccordionContent>
+							</AAccordionPanel>
+						</AAccordion>
+					</Fragment>
+					<Fragment slot="right">
+						<BenefitCard
+							title="Защита от мошенников"
+							description="Узнайте как уберечь себя и своих близких от финансового мошенничества."
+							icon="icon-a-bankInform"
+							theme="light-blue"
+							textButton="Подробнее"
+						/>
+					</Fragment>
+				</SectionHelpContentLayout>
+			</ATabPanel>
+			<ATabPanel value="4">
+				<SectionHelpContentLayout>
+					<Fragment slot="left">
+						<AAccordion type="component">
+							<AAccordionPanel>
+								<AAccordionHeader>
+									<div class="body-l-light">Что нужно знать клиентам о продлении срока действия карт?</div>
+								</AAccordionHeader>
+								<AAccordionContent>
+									<ARte class="body-m-light">
+										<p>
+											Разнообразный и богатый опыт сложившаяся структура организации
+											требуют от нас анализа существенных финансовых и
+											административных условий. Значимость этих проблем настолько
+											очевидна, что укрепление и развитие структуры требуют от нас
+											анализа позиций, занимаемых участниками в отношении поставленных
+											задач.
+										</p>
+										<ul>
+											<li>
+												При&nbsp;отсутствии лимита&nbsp;— возможность работы
+												под&nbsp;результаты 1, 2, 3&nbsp;рейсов
+												МЦИ&nbsp;(для&nbsp;валюты РФ) и&nbsp;отправка срочных
+												кредитовых авизо (по&nbsp;иностранным валютам);
+											</li>
+											<li>
+												При&nbsp;отсутствии лимита&nbsp;— возможность работы
+												под&nbsp;результаты 1, 2, 3&nbsp;рейсов
+												МЦИ&nbsp;(для&nbsp;валюты РФ) и&nbsp;отправка срочных
+												кредитовых авизо (по&nbsp;иностранным валютам);
+											</li>
+										</ul>
+									</ARte>
+								</AAccordionContent>
+							</AAccordionPanel>
+							<AAccordionPanel>
+								<AAccordionHeader>
+									<div class="body-l-light">Взимается ли комиссия за снятие наличных денежных средств в банкоматах,  если моя организация – работодатель  является участником зарплатного проекта Банка?</div>
+								</AAccordionHeader>
+								<AAccordionContent>
+									<ARte class="body-m-light">
+										<p>
+											Разнообразный и богатый опыт сложившаяся структура организации
+											требуют от нас анализа существенных финансовых и
+											административных условий. Значимость этих проблем настолько
+											очевидна, что укрепление и развитие структуры требуют от нас
+											анализа позиций, занимаемых участниками в отношении поставленных
+											задач.
+										</p>
+										<ul>
+											<li>
+												При&nbsp;отсутствии лимита&nbsp;— возможность работы
+												под&nbsp;результаты 1, 2, 3&nbsp;рейсов
+												МЦИ&nbsp;(для&nbsp;валюты РФ) и&nbsp;отправка срочных
+												кредитовых авизо (по&nbsp;иностранным валютам);
+											</li>
+											<li>
+												При&nbsp;отсутствии лимита&nbsp;— возможность работы
+												под&nbsp;результаты 1, 2, 3&nbsp;рейсов
+												МЦИ&nbsp;(для&nbsp;валюты РФ) и&nbsp;отправка срочных
+												кредитовых авизо (по&nbsp;иностранным валютам);
+											</li>
+										</ul>
+									</ARte>
+								</AAccordionContent>
+							</AAccordionPanel>
+							<AAccordionPanel>
+								<AAccordionHeader>
+									<div class="body-l-light">Вместе с основной зарплатной картой мне выдали дополнительную. По каким тарифам она обслуживается?</div>
+								</AAccordionHeader>
+								<AAccordionContent>
+									<ARte class="body-m-light">
+										<p>
+											Разнообразный и богатый опыт сложившаяся структура организации
+											требуют от нас анализа существенных финансовых и
+											административных условий. Значимость этих проблем настолько
+											очевидна, что укрепление и развитие структуры требуют от нас
+											анализа позиций, занимаемых участниками в отношении поставленных
+											задач.
+										</p>
+									</ARte>
+								</AAccordionContent>
+							</AAccordionPanel>
+							<AAccordionPanel>
+								<AAccordionHeader>
+									<div class="body-l-light">Что делать, если потерял карту или забыл ПИН-код?</div>
+								</AAccordionHeader>
+								<AAccordionContent>
+									<ARte class="body-m-light">
+										<p>Если есть подозрение, что ПИН-код мог стать доступен третьим лицам, незамедлительно заблокируйте карту.   Если ПИН-код не удается вспомнить карту необходимо перевыпустить.</p>
+									</ARte>
+								</AAccordionContent>
+							</AAccordionPanel>
+							<AAccordionPanel>
+								<AAccordionHeader>
+									<div class="body-l-light">Мою карту заблокировал Банк. Что делать?</div>
+								</AAccordionHeader>
+								<AAccordionContent>
+									<ARte class="body-m-light">
+										<ul>
+											<li>
+												При&nbsp;отсутствии лимита&nbsp;— возможность работы
+												под&nbsp;результаты 1, 2, 3&nbsp;рейсов
+												МЦИ&nbsp;(для&nbsp;валюты РФ) и&nbsp;отправка срочных
+												кредитовых авизо (по&nbsp;иностранным валютам);
+											</li>
+											<li>
+												При&nbsp;отсутствии лимита&nbsp;— возможность работы
+												под&nbsp;результаты 1, 2, 3&nbsp;рейсов
+												МЦИ&nbsp;(для&nbsp;валюты РФ) и&nbsp;отправка срочных
+												кредитовых авизо (по&nbsp;иностранным валютам);
+											</li>
+										</ul>
+									</ARte>
+								</AAccordionContent>
+							</AAccordionPanel>
+						</AAccordion>
+					</Fragment>
+					<Fragment slot="left-footer">
+						<AButton element="a" href="#" text afterIcon="icon-chevron-right" size="m">Все вопросы и ответы</AButton>
+					</Fragment>
+					<Fragment slot="right">
+						<FormCallMeBack
+							title="Остались вопросы?"
+							description="Оставьте свой телефон и мы перезвоним вам, либо задайте вопрос в чате"
+							agreement="Нажимая кнопку «Перезвоните мне», вы соглашаетесь с условиями предоставления информации"
+							type="light-blue"
+							useChat
+						/>
+					</Fragment>
+				</SectionHelpContentLayout>
+			</ATabPanel>
+		</Fragment>
+	</SectionHelpLayout>
+	<InfoProductBanner
+		title="Вклады застрахованы"
+		imgSrc="img/footer-insurance.png"
+	>
+		<Fragment slot="content">
+			<ARte class="body-l-light">
+				<p>Страхование вкладов осуществляется согласно Федеральному закону «О страховании вкладов в банках Российской Федерации» от 23.12.2003 № 177-ФЗ. АО АКБ «НОВИКОМБАНК» является участником государственной системы обязательного страхования вкладов с 2 декабря 2004 года. Банк включен в реестр банков – участников системы обязательного страхования вкладов под номером 254.</p>
+				<p>С полным перечнем вопросов и ответов по страхованию вкладов физических лиц можно ознакомиться на сайте Агентства по страхованию вкладов в сети Интернет - <a href="#">www.asv.org.ru.</a></p>
+			</ARte>
+		</Fragment>
+	</InfoProductBanner>
+	<SectionSeeAlso />
+</DefaultPageLayout>

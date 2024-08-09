@@ -1,0 +1,92 @@
+---
+import AButton from "../ui/Buttons/AButton.astro";
+
+interface Props {
+	className: string;
+}
+
+const {
+	class: className,
+	...rest
+} = Astro.props as Props;
+---
+
+<div class="service-salary-card" class:list={className} {...rest}>
+	<div class="service-salary-card__content">
+		<div class="service-salary-card__title headline-2 dark-0">Зарплатная карта</div>
+		<div class="service-salary-card__links">
+			<AButton element="a" text color="white" afterIcon="icon-arrow-right" size="lm">Кешбек</AButton>
+			<AButton element="a" text color="white" afterIcon="icon-arrow-right" size="lm">Бонусы</AButton>
+			<AButton element="a" text color="white" afterIcon="icon-arrow-right" size="lm">Акции</AButton>
+		</div>
+	</div>
+	<div class="service-salary-card__background">
+		<img src="assets/service-salary-card-bg.svg" />
+	</div>
+</div>
+
+<style lang="scss" is:global>
+	@use "sass:map";
+	@import "@styles/variables.scss";
+	@import "@styles/media-queries";
+	@import "@styles/functions.scss";
+
+	.service-salary-card {
+		position: relative;
+		border-radius: 0.75rem;
+		overflow: hidden;
+		background-color: var(--violet-100);
+		padding: 1.5rem 1rem;
+		min-height: 15rem;
+
+		@include use-media(tablet) {
+			padding: 2rem;
+			min-height: unset;
+		}
+
+		@include use-media(tablet-album) {
+			padding: 3rem;
+		}
+
+		&__content {
+			position: relative;
+			display: flex;
+			flex-direction: column;
+			gap: 1.5rem;
+			z-index: 1;
+
+			@include use-media(tablet) {
+				gap: 2.5rem;
+			}
+
+			@include use-media(tablet-album) {
+				gap: 3rem;
+			}
+		}
+
+		&__links {
+			display: flex;
+			flex-wrap: wrap;
+			column-gap: 2rem;
+			row-gap: 1.5rem;
+
+			@include use-media(tablet-album) {
+				column-gap: 3rem;
+			}
+		}
+
+		&__background {
+			position: absolute;
+			left: 0;
+			top: -68px;
+
+			@include use-media(tablet) {
+				column-gap: 3rem;
+				right: 0;
+				bottom: 0;
+				left: unset;
+				top: unset;
+			}
+		}
+	}
+</style>

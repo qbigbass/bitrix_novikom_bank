@@ -1,0 +1,79 @@
+---
+interface Props {
+	outline?: boolean,
+	class?: string;
+}
+
+const {
+	class: className,
+	outline = false,
+	...rest
+} = Astro.props as Props;
+---
+
+<div class="a-tag"
+	 class:list={[
+		 className,
+		 {'a-tag--outline': outline},
+	 ]}
+	 {...rest}
+>
+	<span class="a-tag__content body-s-heavy">
+		<slot />
+	</span>
+	<span class="a-tag__triangle">
+		<svg width="14" height="21" viewBox="0 0 14 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path d="M13.5 19.3486L0.934259 0.5H13.5V19.3486Z" />
+		</svg>
+	</span>
+</div>
+
+<style lang="scss" is:global>
+	@use "sass:map";
+	@import "@styles/variables";
+
+	.a-tag {
+		position: relative;
+		display: inline-flex;
+		margin-bottom: 1.313rem;
+		z-index: 1;
+
+		&__content {
+			color: var(--blue-100);
+			background-color: var(--dark-0);
+			padding: 0.375rem 1rem;
+			border: 1px solid transparent;
+		}
+
+		&__triangle {
+			position: absolute;
+			display: inline-flex;
+			z-index: -1;
+			top: calc(100% - 1px);
+			left: 0;
+
+			svg {
+				path {
+					fill: var(--blue-30);
+					stroke: var(--blue-30);
+				}
+			}
+		}
+	}
+
+	.a-tag.a-tag--outline {
+		.a-tag__content {
+			border-color: var(--blue-100);
+			background-color: transparent;
+		}
+
+		.a-tag__triangle {
+			svg {
+				path {
+					fill: transparent;
+					stroke: var(--blue-100);
+				}
+			}
+		}
+	}
+</style>

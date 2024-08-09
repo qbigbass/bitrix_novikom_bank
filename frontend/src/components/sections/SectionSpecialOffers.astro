@@ -1,0 +1,63 @@
+---
+import SectionLayout from "../layouts/SectionLayout.astro";
+import PersistentSlider from "../common/Sliders/PersistentSlider/PersistentSlider.astro";
+import SliderSlide from "../common/Sliders/common/SliderSlide/SliderSlide.astro";
+import NewsCard from "../common/NewsCard.astro";
+import SectionTitle from "../ui/SectionTitle/SectionTitle.astro";
+
+const specialOffers = [
+	{
+		tag: "Акция",
+		date: "25.04.2024",
+		title: "Избранные категории для программы лояльности «Кешбэк» через мобильное приложение и интернет-банк"
+	},
+	{
+		tag: "Акция",
+		date: "25.04.2024",
+		title: "Избранные категории для программы лояльности «Кешбэк» через мобильное приложение и интернет-банк"
+	},
+	{
+		tag: "Акция",
+		date: "25.04.2024",
+		title: "Избранные категории для программы лояльности «Кешбэк» через мобильное приложение и интернет-банк"
+	},
+	{
+		tag: "Акция",
+		date: "25.04.2024",
+		title: "Избранные категории для программы лояльности «Кешбэк» через мобильное приложение и интернет-банк"
+	},
+	{
+		tag: "Акция",
+		date: "25.04.2024",
+		title: "Избранные категории для программы лояльности «Кешбэк» через мобильное приложение и интернет-банк"
+	},
+	{
+		tag: "Акция",
+		date: "25.04.2024",
+		title: "Избранные категории для программы лояльности «Кешбэк» через мобильное приложение и интернет-банк"
+	}
+];
+---
+
+<SectionLayout class="section-special-offers">
+	<div class="content-container">
+		<SectionTitle titleClass="headline-2" usePadding>Спецпредложения</SectionTitle>
+		<PersistentSlider spaceBetween="mobile-s:8,mobile:8,tablet:8,laptop:8" slidesPerView="mobile-s:1,mobile:1,tablet:2,laptop:2">
+			{
+				specialOffers.map((release) => (
+					<SliderSlide>
+						<NewsCard class="section-news__card" tagText={release.tag} date={release.date} title={release.title} />
+					</SliderSlide>
+				))
+			}
+		</PersistentSlider>
+	</div>
+</SectionLayout>
+
+<style lang="scss" is:global>
+	@import "@styles/media-queries";
+
+	.section-special-offers {
+		background-color: var(--blue-10);
+	}
+</style>

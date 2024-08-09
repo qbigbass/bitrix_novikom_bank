@@ -1,0 +1,142 @@
+---
+import AFooterNavLink from "./nav/AFooterNavLink.astro";
+interface Props {
+	class: string;
+}
+
+const { class: className } = Astro.props as Props;
+
+const nav = [
+	{ link: '#', text: 'Карта сайта' },
+	{ link: '#', text: 'Противодействие коррупции' },
+	{ link: '#', text: 'Противодействие коррупции' },
+	{ link: '#', text: 'Раскрытие информации' },
+	{ link: '#', text: 'Порядок обращения в банк' },
+	{ link: '#', text: 'Инсайдерам Новикомбанка' },
+	{ link: '#', text: 'Страховые компании' }
+]
+const navInfo = [
+	{ link: '#', text: 'Информация о процентных ставках по договорам банковского вклада с физическими лицами' },
+	{ link: '#', text: 'Раскрытие информации профессиональным участником' },
+	{ link: '#', text: 'О праве потребителей на направление обращения финансовому уполномоченному' },
+	{ link: '#', text: 'Информационно-просветительский портал Банка России «Финансовая культура»' },
+	{ link: '#', text: 'Раскрытие информации на сайте агентства «Интерфакс-ЦРКИ»' },
+	{ link: '#', text: 'Информация о лицах, под контролем или значительным влиянием которых находится Банк' }
+]
+---
+
+<div class="a-footer-info" class:list={[className]}>
+	<div class="content-container">
+		<div class="a-footer-info__content">
+			<div class="a-footer-info__nav a-footer-info-nav">
+				<div class="a-footer-info-nav__col">
+					{
+						nav.map((item) =>
+							<AFooterNavLink href={item.link}>{item.text}</AFooterNavLink>
+						)
+					}
+				</div>
+				<div class="a-footer-info-nav__col">
+					{
+						navInfo.map((item) =>
+							<AFooterNavLink href={item.link}>{item.text}</AFooterNavLink>
+						)
+					}
+				</div>
+			</div>
+			<div class="a-footer-info__insurance">
+				<img src="/img/footer-insurance.png" class="a-footer-info__insurance-img">
+				<div class="a-footer-info__insurance-content">
+					<p class="a-footer-info__insurance-license body-s-heavy">Генеральная лицензия №&nbsp;2546 от&nbsp;20&nbsp;ноября&nbsp;2014&nbsp;года</p>
+					<p class="a-footer-info__insurance-copy body-s-heavy">©&nbsp;2009&nbsp;–&nbsp;2024 АО&nbsp;АКБ&nbsp;«НОВИКОМБАНК»</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<style lang="scss" is:global>
+	@import '@styles/variables';
+	@import '@styles/functions';
+	@import '@styles/media-queries';
+
+	.a-footer-info {
+		padding: 40px 0;
+		background: var(--dark-10);
+
+		&__content {
+			display: grid;
+			grid-template-columns: repeat(8, 1fr);
+			gap: 16px;
+
+			@include use-media(tablet) {
+				gap: 40px;
+			}
+
+			@include use-media(tablet-album) {
+				grid-template-columns: repeat(12, 1fr);
+			}
+		}
+
+		&__nav {
+			display: grid;
+			grid-template-columns: 1fr;
+			grid-column: span 8;
+			gap: 16px;
+
+			@include use-media(tablet) {
+				grid-template-columns: 1fr 1fr;
+				gap: 40px;
+			}
+
+			@include use-media(tablet-album) {
+				grid-template-columns: 4fr 5fr;
+				grid-column: span 9;
+			}
+		}
+
+		&__insurance {
+			display: flex;
+			flex-direction: column;
+			gap: 16px;
+			grid-column: span 8;
+
+			@include use-media(tablet) {
+				align-items: center;
+				flex-direction: row;
+				gap: 40px;
+			}
+
+			@include use-media(tablet-album) {
+				grid-column: span 3;
+				align-items: flex-start;
+				flex-direction: column;
+				gap: 48px;
+			}
+		}
+
+		&__insurance-img {
+			width: 120px;
+			height: 120px;
+		}
+
+		&__insurance-content {
+			display: flex;
+			flex-direction: column;
+			gap: 16px;
+		}
+
+		&__insurance-license,
+		&__insurance-copy {
+			color: var(--dark-70);
+		}
+	}
+
+	.a-footer-info-nav {
+		&__col {
+			display: flex;
+			flex-direction: column;
+			gap: 16px;
+		}
+	}
+</style>

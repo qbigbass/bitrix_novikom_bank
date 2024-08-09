@@ -1,0 +1,174 @@
+---
+type Validations = "notEmpty" | "isEmail" | "isPhone";
+type Masks = "phone";
+type Size = "m" | "s" | "ms";
+
+interface Props {
+	className?: string;
+	placeholder?: string;
+	disabled?: boolean;
+	name?: string;
+	value?: string;
+	label?: string;
+	validations?: Validations[];
+	mask?: Masks;
+	forId?: string;
+	hint?: string;
+	required?: boolean;
+	size: Size;
+}
+
+const {
+	class: className,
+	placeholder,
+	label,
+	disabled,
+	name,
+	value,
+	validations,
+	mask,
+	forId,
+	hint,
+	required,
+	size = 'ms',
+	...rest
+} = Astro.props;
+---
+
+<div
+	class="a-input js-a-input"
+	class:list={
+		[
+			className,
+			{'a-input--required': required},
+			`a-input--${size}`
+		]
+	}
+	{...rest}
+>
+	{ label && (<label for={forId} class="a-input__label body-s-heavy">{label}</label>)}
+	<input
+		id={forId}
+		class="a-input__input"
+		placeholder={placeholder}
+		disabled={disabled}
+		name={name}
+		value={value}
+		data-validations={validations}
+		data-mask={mask}
+		aria-describedby=`${forId + '-hint'}`
+	/>
+	{ hint && (<small class="a-input__hint js-a-input-hint caption-m" id=`${forId + '-hint'}`>{hint}</small>)}
+</div>
+
+<script>
+	//Пример использования. В будущем перенести отсюда или использовать только в формах
+	// import initAInput from "./index";
+	// import { JS_CLASSES } from "./index";
+	//
+	// const inputs: NodeListOf<HTMLElement> = document.querySelectorAll(JS_CLASSES.root);
+	//
+	// inputs.forEach((inputWrapper: HTMLElement) => {
+	// 	const aInput = initAInput(inputWrapper);
+	//
+	// 	aInput.input.addEventListener("validate", (evt) => {
+	// 		console.log("Валдация", evt);
+	// 	});
+	//
+	// 	// Для вызова валидации инпута. Например когда пользователь сразу жмет кнопку отправить в форме
+	// 	// aInput.validate();
+	// });
+</script>
+
+<style lang="scss" is:global>
+	@use "sass:map";
+	@import "@styles/variables.scss";
+	@import "@styles/media-queries";
+	@import "@styles/functions.scss";
+
+	.a-input {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+
+		&__label {
+			color: var(--dark-70);
+		}
+
+		&__input {
+			display: inline-block;
+			width: 100%;
+			min-width: 0;
+			border: 1px solid var(--purple-30);
+			border-radius: 0.25rem;
+			background-color: inherit;
+			color: inherit;
+			font-family: inherit;
+
+			&::placeholder {
+				color: var(--dark-70);
+
+			}
+
+			&:disabled {
+				cursor: not-allowed;
+				border-color: transparent;
+				background-color: var(--dark-10);
+			}
+
+			&:focus {
+				outline: none;
+				border-color: var(--purple-70);
+			}
+
+			&:enabled:hover {
+				border-color: var(--purple-70);
+			}
+		}
+
+		&__hint {
+			color: var(--dark-70);
+		}
+	}
+
+	.a-input.a-input--required {
+		.a-input__label {
+			&::after {
+				content: '*';
+				display: inline-block;
+				margin-left: 4px;
+				color: var(--orange-100);
+			}
+		}
+	}
+
+	.a-input.a-input--m {
+		.a-input__input {
+			padding: 0.938rem;
+			font-size: 1rem;
+			line-height: 150%;
+		}
+	}
+
+	.a-input.a-input--s {
+		.a-input__input {
+			padding: 0.625rem 0.938rem;
+			font-size: 0.875rem;
+			line-height: 130%;
+		}
+	}
+
+	.a-input.a-input--ms {
+		.a-input__input {
+			padding: 0.625rem 0.938rem;
+			font-size: 0.875rem;
+			line-height: 130%;
+
+			@include use-media(tablet-album) {
+				padding: 0.938rem;
+				font-size: 1rem;
+				line-height: 150%;
+			}
+		}
+	}
+</style>

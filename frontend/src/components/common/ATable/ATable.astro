@@ -1,0 +1,82 @@
+---
+interface Props {
+	classList: string;
+	cols: number
+}
+
+const {
+	class: classList,
+	cols = 2,
+	...rest
+} = Astro.props as Props;
+---
+<div
+	class:list={[
+		'a-table',
+		`col-${cols}`,
+		classList
+	]}
+	{...rest}
+>
+	<slot />
+</div>
+
+<style lang="scss" is:global>
+	@import "@styles/media-queries";
+
+	.a-table {
+		.a-table-row {
+			display: grid;
+			gap: 1rem;
+			border-bottom: 1px dashed var(--blue-30);
+
+			@include use-media(tablet-album) {
+				gap: 2.5rem;
+			}
+		}
+
+		&.col-2 {
+			.a-table-row {
+				grid-template-columns: 1fr 1fr;
+			}
+		}
+
+		&.md {
+			&\:in-column {
+				.a-table-header {
+					display: none;
+
+					@include use-media(tablet) {
+						display: block;
+					}
+				}
+
+				&.col-2 {
+					.a-table-body {
+						.a-table-row {
+							gap: unset;
+							grid-template-columns: 1fr;
+
+							.a-table-cell:first-child {
+								padding-bottom: 0;
+							}
+
+							@include use-media(tablet) {
+								gap: 1rem;
+								grid-template-columns: 1fr 1fr;
+
+								.a-table-cell:first-child {
+									padding-bottom: 1.5rem;
+								}
+							}
+
+							@include use-media(tablet-album) {
+								gap: 2.5rem;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+</style>

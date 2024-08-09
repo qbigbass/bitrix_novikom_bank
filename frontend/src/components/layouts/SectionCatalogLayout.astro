@@ -1,0 +1,48 @@
+---
+import SectionLayout from "../layouts/SectionLayout.astro";
+import ATabs from "../ui/ATabs/ATabs.astro";
+import ATabSwiper from "../ui/ATabs/common/ATabSwiper/ATabSwiper.astro";
+import ATabSwiperWrapper from "../ui/ATabs/common/ATabSwiperWrapper.astro";
+import ATabPanels from "../ui/ATabs/common/ATabPanels.astro";
+
+const {
+	...rest
+} = Astro.props;
+---
+
+<SectionLayout class="section-catalog-layout" {...rest}>
+	<div class="content-container">
+		<ATabs useLayout>
+			<div class="section-catalog-layout__content">
+				<div class="section-catalog-layout__tabs">
+					<ATabSwiper>
+						<ATabSwiperWrapper>
+							<slot name="tabs" />
+						</ATabSwiperWrapper>
+					</ATabSwiper>
+				</div>
+				<div class="section-catalog-layout__panels">
+					<ATabPanels>
+						<slot name="panels"></slot>
+					</ATabPanels>
+				</div>
+			</div>
+		</ATabs>
+	</div>
+</SectionLayout>
+
+<style lang="scss" is:global>
+	@import "@styles/media-queries";
+
+	.section-catalog-layout {
+		&__content {
+			display: flex;
+			flex-direction: column;
+			gap: 1.5rem;
+
+			@include use-media(tablet) {
+				gap: 3rem;
+			}
+		}
+	}
+</style>

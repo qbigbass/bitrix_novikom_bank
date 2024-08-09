@@ -1,0 +1,99 @@
+---
+import ADropDownButton from "../ui/ADropDown/ADropDownButton/ADropDownButton.astro";
+import ASelectInput from "../ui/ASelectInput/ASelectInput.astro";
+import ASliderInput from "../ui/ASliderInput/ASliderInput.astro";
+import CalculatorLayout from "../layouts/CalculatorLayout.astro";
+import ACheckbox from "../ui/ACheckbox/ACheckbox.astro";
+import CalculatorCardItem from "../common/CalculatorCard/CalculatorCardItem.astro";
+import CalculatorCard from "../common/CalculatorCard/CalculatorCard.astro";
+---
+
+<CalculatorLayout class="mortgage-calculator">
+	<Fragment slot="form">
+        <ASliderInput
+            id="amount-credit"
+            label="Сумма кредита"
+            maxValue={5000000}
+            minValue={20000}
+            startValue={1000000}
+            stepSize={5000}
+            editable
+            type="price"
+        />
+        <ASliderInput
+            id="payment-term"
+            label="Срок выплаты"
+            maxValue={60}
+            minValue={1}
+            startValue={36}
+            type="month"
+            editable
+        />
+        <ASliderInput
+            id="property-value"
+            label="Стоимость недвижимости"
+            maxValue={30000000}
+            minValue={500000}
+            startValue={3000000}
+            stepSize={5000}
+            type="price"
+            editable
+        />
+        <ASliderInput
+            id="an-initial-fee"
+            label="Первоначальный взнос"
+            maxValue={5000000}
+            minValue={20000}
+            startValue={120000}
+            stepSize={5000}
+            type="price"
+            editable
+        />
+        <ASelectInput size="ms" label="Регион">
+            <ADropDownButton value="Дальневосточный федеральный округ" selected>Дальневосточный федеральный округ</ADropDownButton>
+            <ADropDownButton value="Вариант 2">Вариант 2</ADropDownButton>
+        </ASelectInput>
+        <ASelectInput size="ms" label="Программа кредитования">
+            <ADropDownButton value="Ипотека по программе «Первичный рынок»" selected>Ипотека по программе «Первичный рынок»</ADropDownButton>
+            <ADropDownButton value="Вариант 2">Вариант 2</ADropDownButton>
+        </ASelectInput>
+        <ASelectInput size="ms" label="Объект залога">
+            <ADropDownButton value="Квартира" selected>Квартира</ADropDownButton>
+            <ADropDownButton value="Вариант 2">Вариант 2</ADropDownButton>
+        </ASelectInput>
+	</Fragment>
+    <Fragment slot="agreements">
+        <ACheckbox id="is-card-novkom" size="m" checked>
+            <div class="body-m-light" slot="label">Получаю зарплату на карту НОВИКОМ</div>
+        </ACheckbox>
+        <ACheckbox id="insurance" size="m">
+            <div class="body-m-light" slot="label">Страховка</div>
+        </ACheckbox>
+    </Fragment>
+	<Fragment slot="card">
+        <CalculatorCard backgroundColor="grey" polygonColor="green-100">
+            <CalculatorCardItem
+                hint="Процентная ставка"
+                text="16,5%"
+            />
+            <CalculatorCardItem
+                hint="Ежемесячный платеж"
+                text="24 404,38"
+                currency="₽"
+                link={{
+                    href: '#',
+                    text: 'График платежей'
+                }}
+            />
+            <CalculatorCardItem
+                hint="Необходимый ежемесячный доход, от"
+                text="35 404,38"
+                currency="₽"
+            />
+            <CalculatorCardItem
+                hint="Диапазон полной стоимости кредита"
+                text="16,464 – 20,474 %"
+            />
+        </CalculatorCard>
+	</Fragment>
+</CalculatorLayout>

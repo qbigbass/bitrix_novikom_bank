@@ -1,0 +1,33 @@
+---
+import type { DefaultSliderProps } from "../interfaces";
+import SliderSkeleton from "../common/SliderSkeleton/SliderSkeleton.astro";
+import SliderWrapper from "../common/SliderWrapper/SliderWrapper.astro";
+import SliderControls from "../common/SliderControls/SliderControls.astro";
+
+const {
+	class: className,
+	spaceBetween = 'mobile-s:8,mobile:8,tablet:16,laptop:40',
+	slidesPerView = 'mobile-s:1,mobile:1,tablet:2,laptop:3',
+} = Astro.props as DefaultSliderProps;
+---
+
+<SliderSkeleton
+	class="persistent-slider js-persistent-slider"
+	spaceBetween={spaceBetween}
+	slidesPerView={slidesPerView}
+>
+	<SliderWrapper>
+		<slot />
+	</SliderWrapper>
+	<Fragment slot="controls">
+		<SliderControls />
+	</Fragment>
+</SliderSkeleton>
+
+<script>
+	import initPersistentSlider, { JS_CLASSES } from './';
+
+	const persistentSliders: NodeListOf<HTMLDivElement> = document.querySelectorAll(JS_CLASSES.slider);
+
+	persistentSliders.forEach((slider: HTMLDivElement) => initPersistentSlider(slider));
+</script>

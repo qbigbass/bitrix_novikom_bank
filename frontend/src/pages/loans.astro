@@ -1,0 +1,22 @@
+---
+import DefaultPageLayout from "../layouts/DefaultPageLayout.astro";
+import SectionSeeAlso from "../components/sections/SectionSeeAlso.astro";
+import SectionCallMeBack from "../components/sections/SectionCallMeBack.astro";
+import SectionLoansCatalog from "../components/sections/SectionLoansCatalog.astro";
+import TextBanner from "../components/banners/TextBanner.astro";
+
+const breadcrumbs = [{
+	title: 'Частным клиентам',
+	url: '#'
+}]
+---
+<DefaultPageLayout title="Кредиты">
+	<TextBanner
+		title="Кредиты"
+		breadcrumbs={breadcrumbs}
+		description="Быстрые кредиты по оптимальной ставке на любые цели"
+	/>
+	<SectionLoansCatalog />
+	<SectionSeeAlso />
+	<SectionCallMeBack />
+</DefaultPageLayout>

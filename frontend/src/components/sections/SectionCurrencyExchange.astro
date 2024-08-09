@@ -1,0 +1,164 @@
+---
+import CurrencyExchangeCalculatorCard from "../common/CurrencyExchange/CurrencyExchangeCalculatorCard.astro";
+import CurrencyExchangeTable from "../common/CurrencyExchange/CurrencyExchangeTable.astro";
+import AAccordion from "../ui/AAccordion/AAccordion.astro";
+import AAccordionPanel from "../ui/AAccordion/AAccordionPanel.astro";
+import AAccordionHeader from "../ui/AAccordion/AAccordionHeader.astro";
+import AAccordionContent from "../ui/AAccordion/AAccordionContent.astro";
+import SectionLayout from "../layouts/SectionLayout.astro";
+
+---
+<SectionLayout
+	class="section-currency-exchange"
+	types={['s-no-padding']}
+>
+	<div class="content-container">
+		<div class="section-currency-exchange__container">
+			<AAccordion type="layout">
+				<AAccordionPanel>
+					<AAccordionHeader class="section-currency-exchange__accordion-header">
+						<div class="headline-2">Обмен валюты</div>
+					</AAccordionHeader>
+					<AAccordionContent class="section-currency-exchange__accordion-content">
+						<div class="section-currency-exchange__content">
+							<div class="section-currency-exchange__box">
+								<div class="section-currency-exchange__head">
+									<div class="section-currency-exchange__title headline-2">Обмен валюты</div>
+									<div class="section-currency-exchange__description body-s-light">Курс банка актуален на 14:00 по МСК 30 апреля 2024 г.</div>
+								</div>
+								<CurrencyExchangeTable class="section-currency-exchange__table" />
+								<div class="section-currency-exchange__note body-s-light">
+									<p>
+										Банк оставляет за&nbsp;собой право на&nbsp;изменение курса купли-продажи иностранной валюты.<br>
+										Действующие на&nbsp;момент совершения операций курсы уточняйте в&nbsp;отделениях банка.
+										Список отделений доступен по&nbsp;ссылке.
+									</p>
+									<p>Покупка и&nbsp;продажа фунтов стерлингов и&nbsp;швейцарских франков осуществляется только в&nbsp;ДО&nbsp;«Якиманка».</p>
+								</div>
+							</div>
+							<div class="section-currency-exchange__card">
+								<CurrencyExchangeCalculatorCard />
+							</div>
+						</div>
+					</AAccordionContent>
+				</AAccordionPanel>
+			</AAccordion>
+		</div>
+	</div>
+</SectionLayout>
+
+<style lang="scss" is:global>
+	@use "sass:map";
+	@import "@styles/variables.scss";
+	@import "@styles/placeholders";
+	@import "@styles/media-queries";
+
+	.section-currency-exchange {
+		background-color: var(--dark-10);
+
+		&__container {
+			background-color: var(--dark-10);
+			padding: 2.5rem var(--container-padding);
+			margin: 0 calc(-1 * var(--container-padding));
+
+			@include use-media(tablet) {
+				padding: 0 var(--container-padding);
+			}
+
+			@include use-media(tablet-album) {
+				padding: 4rem 2.5rem;
+				border-radius: 0.75rem;
+				margin: 0;
+			}
+		}
+
+		&__accordion-header {
+			@include use-media(tablet) {
+				display: none;
+			}
+		}
+
+		&__accordion-content {
+			@include use-media(tablet) {
+				display: block;
+				max-height: unset !important;
+				overflow: visible;
+			}
+		}
+
+		&__content {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 2.5rem;
+			padding-top: 1.5rem;
+
+			@include use-media(tablet) {
+				padding-top: 0;
+			}
+
+			@include use-media(laptop-x) {
+				grid-template-columns: repeat(12, 1fr);
+			}
+		}
+
+		&__box {
+			display: flex;
+			flex-direction: column;
+			gap: 1.5rem;
+
+			@include use-media(laptop-x) {
+				grid-column: span 8;
+			}
+		}
+
+		&__card {
+			@include use-media(laptop-x) {
+				grid-column: span 4;
+			}
+		}
+
+		&__head {
+			display: flex;
+			flex-direction: column;
+			gap: 1.5rem;
+
+			@include use-media(tablet-album) {
+				margin-bottom: 1rem;
+				flex-direction: row;
+				justify-content: space-between;
+				align-items: flex-end;
+			}
+		}
+
+		&__title {
+			display: none;
+
+			@include use-media(tablet) {
+				display: flex;
+			}
+		}
+
+		&__description {
+			color: var(--dark-70);
+
+			@include use-media(tablet-album) {
+				text-align: right;
+			}
+		}
+
+		&__note {
+			p {
+				color: var(--dark-70);
+				margin-bottom: 1rem;
+
+				&:last-child {
+					margin-bottom: 0;
+				}
+			}
+		}
+
+		@include use-media(tablet-album) {
+			background-color: unset;
+		}
+	}
+</style>

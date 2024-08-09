@@ -1,0 +1,66 @@
+---
+
+---
+<button class="swiper-slide main-slider-thumb">
+	<span class="headline-4"><slot /></span>
+</button>
+
+<style lang="scss" is:global>
+	@use "sass:map";
+	@import "@styles/variables";
+	@import "@styles/placeholders";
+	$transition: map.get($transitions, default);
+
+	.swiper-slide.main-slider-thumb {
+		height: 6rem;
+	}
+
+	.main-slider-thumb {
+		$root: #{&};
+		@extend %reset-button;
+
+		padding: 1.5rem 2.5rem;
+		box-sizing: border-box;
+		display: flex;
+		align-items: center;
+		cursor: pointer;
+		color: var(--violet-30);
+		overflow: hidden;
+		text-overflow: ellipsis;
+		background: #1211124D;
+		will-change: background, color, box-shadow;
+		position: relative;
+		transition:
+			background $transition,
+			color $transition;
+
+		&:hover {
+			color: var(--dark-0);
+		}
+
+		&:not(:first-child) {
+			border-left: 1px solid var(--violet-70);
+		}
+
+		span {
+			text-align: left;
+			color: currentColor;
+		}
+
+		&.swiper-slide-thumb-active {
+			background: var(--violet-100, #55246A);
+			box-shadow: 68.6px -68.6px 68.6px 0px #2A1452 inset;
+
+			&:after {
+				content: '';
+				position: absolute;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				height: 4px;
+				background-color: var(--green-100);
+			}
+		}
+	}
+
+</style>

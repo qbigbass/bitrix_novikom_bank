@@ -1,0 +1,114 @@
+---
+import SectionLayout from "./SectionLayout.astro";
+import ACollapsedButton from "../ui/ACollapsedItems/ACollapsedButton.astro";
+import BenefitTextCard from "../common/BenefitCard/BenefitTextCard.astro";
+import ACollapsedItem from "../ui/ACollapsedItems/ACollapsedItem.astro";
+import BenefitCardsLayout from "./BenefitCardsLayout.astro";
+import ACollapsedItems from "../ui/ACollapsedItems/ACollapsedItems.astro";
+
+interface Props {
+	title: string;
+	benefits: {
+		title: string;
+		description: string;
+		iconId: string;
+	}[];
+	visibleItems?: number
+}
+
+const {
+	title,
+	benefits = [],
+	visibleItems = 4
+} = Astro.props as Props;
+
+const benefitsLength = benefits.length;
+const maxCols = benefitsLength === 2 || benefitsLength === 4 ? 2 : benefitsLength === 3 || benefitsLength > 4 ? 3 : 1;
+---
+<SectionLayout class="section-benefits">
+	<div class="content-container">
+		<div class="section-benefits__container">
+			{
+				title && (
+					<div class="section-benefits__title headline-2">{title}</div>
+				)
+			}
+			{
+				Astro.slots['tabs'] && (
+					<div class="section-benefits__tabs">
+						<slot name="tabs" />
+					</div>
+				)
+			}
+			{
+				benefits.length > visibleItems ? (
+					<ACollapsedItems>
+						<div class="section-benefits__content">
+							<BenefitCardsLayout
+								maxCols={maxCols}
+							>
+								{
+									benefits.map(({ title, description, iconId }) => (
+										<ACollapsedItem>
+											<BenefitTextCard
+												title={title}
+												description={description}
+												iconId={iconId}
+											/>
+										</ACollapsedItem>
+									))
+								}
+							</BenefitCardsLayout>
+							<ACollapsedButton hiddenText="Скрыть" visibleText="Еще преимущества"/>
+						</div>
+					</ACollapsedItems>
+				) : (
+					<div class="section-benefits__content">
+						<BenefitCardsLayout
+							maxCols={maxCols}
+						>
+							{
+								benefits.map(({ title, description, iconId }) => (
+									<BenefitTextCard
+										title={title}
+										description={description}
+										iconId={iconId}
+									/>
+								))
+							}
+						</BenefitCardsLayout>
+					</div>
+				)
+			}
+		</div>
+	</div>
+</SectionLayout>
+
+<style lang="scss" is:global>
+	@import "@styles/media-queries";
+
+	.section-benefits {
+		background: url("/assets/section-benefits.svg") bottom right no-repeat;;
+
+		&__container {
+			display: flex;
+			flex-direction: column;
+			gap: 2rem;
+
+			@include use-media(tablet) {
+				gap: 2.5rem;
+				padding: 0 2.5rem;
+			}
+
+			@include use-media(tablet-album) {
+				gap: 3rem;
+			}
+		}
+
+		&__content {
+			display: flex;
+			flex-direction: column;
+			gap: 2rem;
+		}
+	}
+</style>

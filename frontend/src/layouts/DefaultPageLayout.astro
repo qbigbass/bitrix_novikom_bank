@@ -1,0 +1,114 @@
+---
+import '../styles/common.scss';
+
+import DesktopNavLayout from '@components/layouts/DesktopNav.astro';
+import MobileMainNav from '@components/layouts/MobileMainNav.astro';
+import AFooter from '@components/footer/AFooter.astro';
+
+interface Props {
+	title: string;
+}
+
+const {title} = Astro.props;
+---
+
+<!doctype html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8"/>
+		<meta content="IE=edge" http-equiv="X-UA-Compatible">
+		<meta content="" name="description">
+		<meta content="" name="keywords">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+		<title>{title}</title>
+	</head>
+	<body>
+		<div class="default-page-layout js-page-wrapper">
+			<header class="default-page-layout__header">
+				<DesktopNavLayout></DesktopNavLayout>
+				<slot name="page-header"></slot>
+			</header>
+			<main class="default-page-layout__body">
+				<slot/>
+			</main>
+			<AFooter />
+		</div>
+		<MobileMainNav></MobileMainNav>
+	</body>
+</html>
+
+<style lang="scss" is:global>
+	@use 'sass:map';
+	@import '@styles/variables';
+	@import '@styles/media-queries';
+
+	html, body {
+		height: 100%;
+		margin: 0;
+		padding: 0;
+		background-color: #fff;
+		scroll-behavior: smooth;
+		scroll-snap-stop: always;
+		min-width: map.get($mq-breakpoints, mobile-s);
+
+		&.scroll-disabled {
+			height: 100%;
+			overflow: hidden;
+		}
+	}
+
+	.default-page-layout {
+		width: 100%;
+		height: 100%;
+		background-color: #fff;
+		position: relative;
+
+		display: grid;
+		grid-template-columns: 100%;
+		grid-template-rows: auto 1fr auto;
+
+		&__header {
+			grid-column: 1 / 2;
+			grid-row: 1 / 2;
+			background: linear-gradient(180deg, #FFFFFF 0%, #F5F4F6 100%);
+		}
+
+		&__body {
+			grid-column: 1 / 2;
+			grid-row: 2 / 3;
+		}
+
+		&__footer {
+			grid-column: 1 / 2;
+			grid-row: 3 / 4;
+		}
+
+		&.is-blur {
+			height: 100%;
+			overflow: hidden;
+			filter: blur(6px);
+
+			@include use-media(tablet-album) {
+				filter: none;
+				height: auto;
+				overflow: auto;
+			}
+
+			&:after{
+				content: '';
+				position: fixed;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background-color: #12111280;
+
+				@include use-media(tablet-album) {
+					display: none;
+				}
+			}
+
+		}
+	}
+</style>

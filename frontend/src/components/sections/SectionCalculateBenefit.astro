@@ -1,0 +1,117 @@
+---
+import SectionLayout from "../layouts/SectionLayout.astro";
+import AAccordion from "../ui/AAccordion/AAccordion.astro";
+import AAccordionPanel from "../ui/AAccordion/AAccordionPanel.astro";
+import AAccordionHeader from "../ui/AAccordion/AAccordionHeader.astro";
+import AAccordionContent from "../ui/AAccordion/AAccordionContent.astro";
+import ATabs from "../ui/ATabs/ATabs.astro";
+import ATab from "../ui/ATabs/common/ATab/ATab.astro";
+import ATabSwiper from "../ui/ATabs/common/ATabSwiper/ATabSwiper.astro";
+import ATabSwiperWrapper from "../ui/ATabs/common/ATabSwiperWrapper.astro";
+import ATabPanels from "../ui/ATabs/common/ATabPanels.astro";
+import ATabPanel from "../ui/ATabs/common/ATabPanel.astro";
+import BenefitCalculator from "../calculators/BenefitCalculator.astro";
+---
+
+<SectionLayout class="section-calculate-benefit">
+	<div class="content-container">
+		<AAccordion type="layout">
+			<AAccordionPanel>
+				<AAccordionHeader class="section-calculate-benefit__accordion-header">
+					<div class="headline-2">Рассчитайте выгоду</div>
+				</AAccordionHeader>
+				<AAccordionContent class="section-calculate-benefit__accordion-content">
+					<ATabs useLayout>
+						<div class="section-calculate-benefit__content">
+							<div class="section-calculate-benefit__head">
+								<div class="section-calculate-benefit__title headline-2">Рассчитайте выгоду</div>
+								<div class="section-calculate-benefit__loan-tabs">
+									<ATabSwiper>
+										<ATabSwiperWrapper>
+											<ATab value="0" size="lm" isActive>Кредит</ATab>
+											<ATab value="1" size="lm">Ипотека</ATab>
+											<ATab value="2" size="lm">Вклад</ATab>
+										</ATabSwiperWrapper>
+									</ATabSwiper>
+								</div>
+							</div>
+							<ATabPanels>
+								<ATabPanel value="0">
+                                    <BenefitCalculator />
+								</ATabPanel>
+								<ATabPanel value="1">
+									Калькулятор 1
+								</ATabPanel>
+								<ATabPanel value="2">
+                                    Калькулятор 2
+								</ATabPanel>
+							</ATabPanels>
+						</div>
+					</ATabs>
+				</AAccordionContent>
+			</AAccordionPanel>
+		</AAccordion>
+	</div>
+</SectionLayout>
+
+<style lang="scss" is:global>
+	@import '@styles/media-queries';
+
+	.section-calculate-benefit {
+		background-color: var(--dark-10);
+
+		&__accordion-header {
+			@include use-media(tablet) {
+				display: none;
+			}
+		}
+
+		&__accordion-content {
+			@include use-media(tablet) {
+				display: block;
+				max-height: unset !important;
+			}
+		}
+
+		&__content {
+			display: flex;
+			flex-direction: column;
+			gap: 1.5rem;
+
+			@include use-media(tablet) {
+				gap: 2.5rem;
+			}
+
+			@include use-media(tablet-album) {
+				row-gap: 3rem;
+				column-gap: 2.5rem;
+			}
+		}
+
+		&__head {
+			display: flex;
+			flex-direction: column;
+			gap: 1.5rem;
+			margin-top: 1.5rem;
+
+			@include use-media(tablet) {
+				margin-top: 0;
+			}
+
+			@include use-media(tablet-album) {
+				padding-left: 2.5rem;
+				flex-direction: row;
+				justify-content: space-between;
+				align-items: center;
+			}
+		}
+
+		&__title {
+			display: none;
+
+			@include use-media(tablet) {
+				display: block;
+			}
+		}
+	}
+</style>

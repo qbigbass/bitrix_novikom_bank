@@ -1,0 +1,91 @@
+---
+import SectionLayout from "../layouts/SectionLayout.astro";
+import DisplayStepper from "../common/DisplayStepper/DisplayStepper.astro";
+import DisplayStepperItem from "../common/DisplayStepper/DisplayStepperItem.astro";
+import AButton from "../ui/Buttons/AButton.astro";
+import AAccordionContent from "../ui/AAccordion/AAccordionContent.astro";
+import AAccordionHeader from "../ui/AAccordion/AAccordionHeader.astro";
+import AAccordionPanel from "../ui/AAccordion/AAccordionPanel.astro";
+import AAccordion from "../ui/AAccordion/AAccordion.astro";
+import ARte from "../ARte.astro";
+---
+
+<SectionLayout class="section-spc-use-card">
+	<div class="content-container">
+		<div class="section-spc-use-card__container">
+			<AAccordion type="layout">
+				<AAccordionPanel>
+					<AAccordionHeader class="section-spc-use-card__accordion-header">
+						<div class="headline-2">Как пользоваться картой</div>
+					</AAccordionHeader>
+					<AAccordionContent class="section-spc-use-card__accordion-content">
+						<div class="section-spc-use-card__content">
+							<div class="section-spc-use-card__title headline-2">Три шага для удобного и комфортного использования зарплатной карты</div>
+							<DisplayStepper steps={3}>
+								<DisplayStepperItem number={1}>
+									<div class="headline-3">Зарегистрируйтесь</div>
+									<div class="body-l-light">в Интернет-банке</div>
+									<AButton element="a" href="#" size="lm">Зарегистрироваться</AButton>
+								</DisplayStepperItem>
+								<DisplayStepperItem number={2}>
+									<div class="headline-3">Скачайте</div>
+									<div class="body-l-light">мобильное приложение банка Новиком</div>
+								</DisplayStepperItem>
+								<DisplayStepperItem number={3}>
+									<div class="headline-3">Участвуйте</div>
+									<ARte class="body-l-light">
+										<p>в программе лояльности <a href="#">«Привет&nbsp;МИР»</a> и&nbsp;получайте кешбэк от&nbsp;3%&nbsp;до&nbsp;50% за&nbsp;покупки.</p>
+									</ARte>
+								</DisplayStepperItem>
+							</DisplayStepper>
+						</div>
+					</AAccordionContent>
+				</AAccordionPanel>
+			</AAccordion>
+		</div>
+	</div>
+</SectionLayout>
+
+<style lang="scss" is:global>
+	@import "@styles/media-queries";
+
+	.section-spc-use-card {
+		background-color: var(--dark-10);
+
+		&__accordion-header {
+			@include use-media(tablet) {
+				display: none;
+			}
+		}
+
+		&__accordion-content {
+			@include use-media(tablet) {
+				display: block;
+				max-height: unset !important;
+			}
+		}
+
+		&__content {
+			display: flex;
+			flex-direction: column;
+			gap: 3rem;
+			padding-top: 1.5rem;
+
+			@include use-media(tablet) {
+				padding-top: 0;
+			}
+
+			@include use-media(tablet-album) {
+				padding: 0 2.5rem;
+			}
+		}
+
+		&__title {
+			display: none;
+
+			@include use-media(tablet) {
+				display: block;
+			}
+		}
+	}
+</style>

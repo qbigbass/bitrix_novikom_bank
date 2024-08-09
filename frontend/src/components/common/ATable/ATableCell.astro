@@ -1,0 +1,31 @@
+---
+interface Props {
+	classList: string;
+}
+
+const {
+	class: classList,
+	...rest
+} = Astro.props as Props;
+---
+<div
+	class:list={[
+		'a-table-cell',
+		classList
+	]}
+	 {...rest}
+>
+	<slot />
+</div>
+
+<style lang="scss" is:global>
+	@import "@styles/media-queries";
+
+	.a-table-cell {
+		padding: 1.5rem 0;
+
+		& p:not(:last-child) {
+			margin-bottom: 1em;
+		}
+	}
+</style>
