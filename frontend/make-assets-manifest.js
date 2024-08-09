@@ -27,14 +27,14 @@ const getAssetsLinks = (str) => {
 			if (key === 'css') {
 				pageAssets.css = assetsCollection.map((link) => {
 					const filePath = /href="(.+)"/.exec(link);
-					return filePath.length && filePath[1] ?  `/${buildDir}${filePath[1]}` : '';
+					return filePath.length && filePath[1] ?  `${filePath[1]}` : '';
 				});
 			}
 
 			if (key === 'js') {
 				pageAssets.js = assetsCollection.map((link) => {
 					const filePath = /src="(.+)"/.exec(link);
-					return filePath.length && filePath[1] ?  `/${buildDir}${filePath[1]}` : '';
+					return filePath.length && filePath[1] ?  `${filePath[1]}` : '';
 				});
 			}
 		}
@@ -56,7 +56,7 @@ const writeAssetsList = (assets) => {
 
 const getPagesAssets = async () => {
 	let pages = await readdir(buildDir);
-	const assetsList = [];
+	const assetsList = {};
 
 	pages = pages.filter((page) => {
 		const ext = page.split('.')[1];
@@ -68,10 +68,12 @@ const getPagesAssets = async () => {
 	for(const page of pages) {
 		const html = await readFile(`${buildDir}/${page}`);
 		const assets = getAssetsLinks(html);
-		assetsList.push({
-			template: page.replace('.html', ''),
-			...assets
-		});
+		const pageName = page.replace('.html', '');
+
+		assetsList[pageName] = {
+			css: assets.css,
+			js: assets.js
+		}
 	}
 
 	return assetsList;
