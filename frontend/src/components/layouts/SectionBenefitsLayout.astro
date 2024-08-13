@@ -5,13 +5,15 @@ import BenefitTextCard from "../common/BenefitCard/BenefitTextCard.astro";
 import ACollapsedItem from "../ui/ACollapsedItems/ACollapsedItem.astro";
 import BenefitCardsLayout from "./BenefitCardsLayout.astro";
 import ACollapsedItems from "../ui/ACollapsedItems/ACollapsedItems.astro";
+import AList from "../ui/AList/AList.astro";
 
 interface Props {
 	title: string;
 	benefits: {
 		title: string;
-		description: string;
+		description?: string;
 		iconId: string;
+        list?: string[];
 	}[];
 	visibleItems?: number
 }
@@ -48,13 +50,25 @@ const maxCols = benefitsLength === 2 || benefitsLength === 4 ? 2 : benefitsLengt
 								maxCols={maxCols}
 							>
 								{
-									benefits.map(({ title, description, iconId }) => (
+									benefits.map(({ title, description, iconId, list }) => (
 										<ACollapsedItem>
 											<BenefitTextCard
 												title={title}
 												description={description}
 												iconId={iconId}
-											/>
+                                            >
+                                                {
+                                                    (Array.isArray(list) && list?.length) > 0 && (
+                                                        <AList size="m">
+                                                            {
+                                                                list.map((text) => (
+                                                                    <li set:html={text}></li>
+                                                                ))
+                                                            }
+                                                        </AList>
+                                                    )
+                                                }
+                                            </BenefitTextCard>
 										</ACollapsedItem>
 									))
 								}
@@ -68,12 +82,24 @@ const maxCols = benefitsLength === 2 || benefitsLength === 4 ? 2 : benefitsLengt
 							maxCols={maxCols}
 						>
 							{
-								benefits.map(({ title, description, iconId }) => (
+								benefits.map(({ title, description, iconId, list }) => (
 									<BenefitTextCard
 										title={title}
 										description={description}
 										iconId={iconId}
-									/>
+									>
+                                        {
+                                            (Array.isArray(list) && list?.length) > 0 && (
+                                                <AList size="m">
+                                                    {
+                                                        list.map((text) => (
+                                                            <li set:html={text}></li>
+                                                        ))
+                                                    }
+                                                </AList>
+                                            )
+                                        }
+                                    </BenefitTextCard>
 								))
 							}
 						</BenefitCardsLayout>
