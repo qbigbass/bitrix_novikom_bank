@@ -1,0 +1,349 @@
+---
+import DefaultPageLayout from "../layouts/DefaultPageLayout.astro";
+import SectionSeeAlso from "../components/sections/SectionSeeAlso.astro";
+import SectionCallMeBack from "../components/sections/SectionCallMeBack.astro";
+import SectionLoansCatalog from "../components/sections/SectionLoansCatalog.astro";
+import TextBanner from "../components/banners/TextBanner.astro";
+import SectionBenefitsLayout from "../components/layouts/SectionBenefitsLayout.astro";
+import AAccordionPanel from "../components/ui/AAccordion/AAccordionPanel.astro";
+import SectionHelpContentLayout from "../components/layouts/SectionHelpLayout/SectionHelpContentLayout.astro";
+import BenefitCard from "../components/common/BenefitCard/BenefitCard.astro";
+import ATableRow from "../components/common/ATable/ATableRow.astro";
+import ARte from "../components/ARte.astro";
+import AAccordion from "../components/ui/AAccordion/AAccordion.astro";
+import ATabPanel from "../components/ui/ATabs/common/ATabPanel.astro";
+import ATable from "../components/common/ATable/ATable.astro";
+import DocumentDownload from "../components/ui/DocumentDownload/DocumentDownload.astro";
+import AddInfoItemLayout from "../components/layouts/AddInfoLayout/AddInfoItemLayout.astro";
+import ATab from "../components/ui/ATabs/common/ATab/ATab.astro";
+import AList from "../components/ui/AList/AList.astro";
+import AButton from "../components/ui/Buttons/AButton.astro";
+import FormCallMeBack from "../components/common/FormCallMeBack/FormCallMeBack.astro";
+import AddInfoLayout from "../components/layouts/AddInfoLayout/AddInfoLayout.astro";
+import AAccordionHeader from "../components/ui/AAccordion/AAccordionHeader.astro";
+import ATableBody from "../components/common/ATable/ATableBody.astro";
+import ATableCell from "../components/common/ATable/ATableCell.astro";
+import AAccordionContent from "../components/ui/AAccordion/AAccordionContent.astro";
+import SectionHelpLayout from "../components/layouts/SectionHelpLayout/SectionHelpLayout.astro";
+import PageBanner from "../components/common/Banners/PageBanner.astro";
+import ATag from "../components/ui/ATag/ATag.astro";
+import AHelper from "../components/common/AHelper.astro";
+import APolygonContainer from "../components/common/APolygonContainer/APolygonContainer.astro";
+import SectionLayout from "../components/layouts/SectionLayout.astro";
+import DisplayStepper from "../components/common/DisplayStepper/DisplayStepper.astro";
+import DisplayStepperItem from "../components/common/DisplayStepper/DisplayStepperItem.astro";
+
+const breadcrumbs = [
+	{
+		title: 'Частным клиентам',
+		url: '#'
+	},
+	{
+		title: 'Карты',
+		url: '#'
+	}
+]
+
+const benefitCards = [
+	{
+		title: 'Подключение',
+		description: 'К&nbsp;счетам зарплатной или дебетовой карты',
+		iconId: 'icon-a-free-service-card'
+	},
+	{
+		title: 'до 7% годовых',
+		description: 'В&nbsp;виде бонусных баллов за&nbsp;наличие остатка на&nbsp;счете карты',
+		iconId: 'icon-a-prices'
+	},
+	{
+		title: '1 бонус',
+		description: 'Равен одному рублю',
+		iconId: 'icon-a-rub'
+	},
+	{
+		title: 'Обмен бонусов',
+		description: 'На&nbsp;товары, подарочные сертификаты и&nbsp;путешествия',
+		iconId: 'icon-a-reward'
+	}
+];
+---
+<DefaultPageLayout title="Программа «Бонусная копилка»">
+	<TextBanner
+		title="Программа «Бонусная копилка»"
+		breadcrumbs={breadcrumbs}
+		description="Начисление бонусных баллов за&nbsp;наличие остатка на&nbsp;счете вашей карты"
+		backgroundColor="blue"
+        img="assets/big-illustrations/large-individual/bonus-piggy-bank-program.png"
+	/>
+	<SectionBenefitsLayout
+		benefits={benefitCards}
+	/>
+	<SectionLayout
+		types={['no-padding-top', 'padding-m']}
+		small
+	>
+		<div class="content-container">
+			<APolygonContainer color="green-100">
+				<AHelper
+					class="dark-10"
+					image="helper-icon.png"
+					description="В&nbsp;2023&nbsp;г. программа лояльности банка Новиком была награждена премией &laquo;Финансовая элита России&raquo; в&nbsp;номинации &laquo;Программа лояльности с&nbsp;максимальной выгодой&raquo;."
+				/>
+			</APolygonContainer>
+		</div>
+
+	</SectionLayout>
+	<SectionLayout class="section-layout--bg-gray">
+		<div class="content-container">
+			<AAccordion type="layout">
+				<AAccordionPanel>
+					<AAccordionHeader class="a-accordion-header--mobile-only">
+						<h3 class="headline-2">Где узнать о&nbsp;сумме начисленных бонусов</h3>
+					</AAccordionHeader>
+					<AAccordionContent class="a-accordion-content--hide-mobile">
+						<div class="a-accordion-content__wrapper">
+							<h3 class="headline-2 a-accordion-content__title">
+								Где узнать о&nbsp;сумме начисленных бонусов
+							</h3>
+							<div class="a-accordion-content__content">
+								<DisplayStepper steps={2}>
+									<DisplayStepperItem icon="icon-a-web-bank">
+										<ARte class="body-l-light">
+											<p>В&nbsp;личном кабинете на&nbsp;сайте программы</p>
+										</ARte>
+									</DisplayStepperItem>
+									<DisplayStepperItem icon="icon-a-notification">
+										<ARte class="body-l-light">
+											<p>В&nbsp;ежемесячном SMS</p>
+										</ARte>
+									</DisplayStepperItem>
+								</DisplayStepper>
+							</div>
+						</div>
+					</AAccordionContent>
+				</AAccordionPanel>
+			</AAccordion>
+		</div>
+	</SectionLayout>
+	<SectionHelpLayout
+		title="Подробнее о&nbsp;программе &laquo;Бонусная копилка&raquo;"
+	>
+		<Fragment slot="tabs">
+			<ATab value="0" size="lm" isActive>Условия начисления кешбэка</ATab>
+			<ATab value="1" size="lm">На что потратить бонусы</ATab>
+			<ATab value="2" size="lm">Тарифы и документы</ATab>
+			<ATab value="2" size="lm">Вопросы и ответы</ATab>
+		</Fragment>
+		<Fragment slot="tabPanels">
+			<ATabPanel value="0">
+				<AddInfoLayout>
+					<AddInfoItemLayout isNarrow>
+						<p class="body-l-light">
+							Чем больше остаток на&nbsp;текущем счете карты, тем выше размер бонусного вознаграждения
+						</p>
+						<AList size="l">
+							<li>Максимальный размер бонусного вознаграждения&nbsp;&mdash; 7%&nbsp;годовых</li>
+							<li>Минимальный ежедневный остаток по&nbsp;текущему счету карты должен быть не&nbsp;меньше 10&nbsp;000 рублей</li>
+							<li>5000 бонусов максимальное количество бонусов ежемесячно по&nbsp;текущему счету карты</li>
+							<li>Подключение к&nbsp;счету одновременно программ &laquo;Бонусная копилка, &laquo;Бонусы&raquo; или &laquo;Кешбэк&raquo;</li>
+						</AList>
+					</AddInfoItemLayout>
+				</AddInfoLayout>
+			</ATabPanel>
+			<ATabPanel value="1">
+				<AddInfoLayout>
+					<AddInfoItemLayout isNarrow>
+						<AList size="l">
+							<li>Заявление - анкета на получение кредита;</li>
+							<li>Документ, удостоверяющий личность;</li>
+							<li>Военный билет/ документ, подтверждающий отсрочку от военной службы на весь период призывного возраста - для мужчин младше 30 лет.</li>
+							<li>Документ, подтверждающий финансовое состояние заемщика/созаемщика/поручителя  за последние 12 месяцев или за фактическое количество отработанных месяцев с учетом требований к стажу на последнем месте работы¹ (на выбор):</li>
+						</AList>
+						<ARte class="body-m-light">
+							<p>
+								Для подтверждения стажа на последнем месте работы менее 12 месяцев заемщику/созаемщику/поручителю рекомендуется предоставить копию трудовой книжки, заверенную работодателем, или справку от работодателя, содержащую сведения о стаже работы в организации² или сведения о трудовой деятельности (форма СТД-Р или форма  СТД-ПФР)³.
+							</p>
+						</ARte>
+						<p class="caption-m dark-70">
+							¹Период подтверждения доходов должен заканчиваться не ранее двух календарных месяцев, предшествующих месяцу предоставления документа, подтверждающего финансовое состояние
+							<br><br>
+							²При отсутствии у Банка документа, подтверждающего стаж на последнем месте работы менее 12 месяцев, расчетная сумма среднемесячного дохода клиента может быть ниже фактического значения, что может негативно повлиять на условия кредитования.
+							<br><br>
+							³Форма СТД-Р предоставляется на бумажном носителе и заверяется работодателем, форма СТД–ПФР предоставляется на бумажном носителе и заверяется работодателем или ПФР, либо формируется из личного кабинета на портале государственных услуг (gosuslugi.ru), документ подписывается усиленной квалифицированной электронной подписью уполномоченного должностного лица ПФР.
+						</p>
+					</AddInfoItemLayout>
+				</AddInfoLayout>
+			</ATabPanel>
+			<ATabPanel value="2">
+				<SectionHelpContentLayout>
+					<Fragment slot="left">
+						<AAccordion type="component">
+							<AAccordionPanel>
+								<AAccordionHeader>
+									<div class="body-l-light">Что нужно знать клиентам о продлении срока действия карт?</div>
+								</AAccordionHeader>
+								<AAccordionContent>
+									<ARte class="body-m-light">
+										<p>
+											Разнообразный и богатый опыт сложившаяся структура организации
+											требуют от нас анализа существенных финансовых и
+											административных условий. Значимость этих проблем настолько
+											очевидна, что укрепление и развитие структуры требуют от нас
+											анализа позиций, занимаемых участниками в отношении поставленных
+											задач.
+										</p>
+										<ul>
+											<li>
+												При&nbsp;отсутствии лимита&nbsp;— возможность работы
+												под&nbsp;результаты 1, 2, 3&nbsp;рейсов
+												МЦИ&nbsp;(для&nbsp;валюты РФ) и&nbsp;отправка срочных
+												кредитовых авизо (по&nbsp;иностранным валютам);
+											</li>
+											<li>
+												При&nbsp;отсутствии лимита&nbsp;— возможность работы
+												под&nbsp;результаты 1, 2, 3&nbsp;рейсов
+												МЦИ&nbsp;(для&nbsp;валюты РФ) и&nbsp;отправка срочных
+												кредитовых авизо (по&nbsp;иностранным валютам);
+											</li>
+										</ul>
+									</ARte>
+								</AAccordionContent>
+							</AAccordionPanel>
+							<AAccordionPanel>
+								<AAccordionHeader>
+									<div class="body-l-light">Взимается ли комиссия за снятие наличных денежных средств в банкоматах,  если моя организация – работодатель  является участником зарплатного проекта Банка?</div>
+								</AAccordionHeader>
+								<AAccordionContent>
+									<ARte class="body-m-light">
+										<p>
+											Разнообразный и богатый опыт сложившаяся структура организации
+											требуют от нас анализа существенных финансовых и
+											административных условий. Значимость этих проблем настолько
+											очевидна, что укрепление и развитие структуры требуют от нас
+											анализа позиций, занимаемых участниками в отношении поставленных
+											задач.
+										</p>
+										<ul>
+											<li>
+												При&nbsp;отсутствии лимита&nbsp;— возможность работы
+												под&nbsp;результаты 1, 2, 3&nbsp;рейсов
+												МЦИ&nbsp;(для&nbsp;валюты РФ) и&nbsp;отправка срочных
+												кредитовых авизо (по&nbsp;иностранным валютам);
+											</li>
+											<li>
+												При&nbsp;отсутствии лимита&nbsp;— возможность работы
+												под&nbsp;результаты 1, 2, 3&nbsp;рейсов
+												МЦИ&nbsp;(для&nbsp;валюты РФ) и&nbsp;отправка срочных
+												кредитовых авизо (по&nbsp;иностранным валютам);
+											</li>
+										</ul>
+									</ARte>
+								</AAccordionContent>
+							</AAccordionPanel>
+							<AAccordionPanel>
+								<AAccordionHeader>
+									<div class="body-l-light">Вместе с основной зарплатной картой мне выдали дополнительную. По каким тарифам она обслуживается?</div>
+								</AAccordionHeader>
+								<AAccordionContent>
+									<ARte class="body-m-light">
+										<p>
+											Разнообразный и богатый опыт сложившаяся структура организации
+											требуют от нас анализа существенных финансовых и
+											административных условий. Значимость этих проблем настолько
+											очевидна, что укрепление и развитие структуры требуют от нас
+											анализа позиций, занимаемых участниками в отношении поставленных
+											задач.
+										</p>
+									</ARte>
+								</AAccordionContent>
+							</AAccordionPanel>
+							<AAccordionPanel>
+								<AAccordionHeader>
+									<div class="body-l-light">Что делать, если потерял карту или забыл ПИН-код?</div>
+								</AAccordionHeader>
+								<AAccordionContent>
+									<ARte class="body-m-light">
+										<p>Если есть подозрение, что ПИН-код мог стать доступен третьим лицам, незамедлительно заблокируйте карту.   Если ПИН-код не удается вспомнить карту необходимо перевыпустить.</p>
+									</ARte>
+								</AAccordionContent>
+							</AAccordionPanel>
+							<AAccordionPanel>
+								<AAccordionHeader>
+									<div class="body-l-light">Мою карту заблокировал Банк. Что делать?</div>
+								</AAccordionHeader>
+								<AAccordionContent>
+									<ARte class="body-m-light">
+										<ul>
+											<li>
+												При&nbsp;отсутствии лимита&nbsp;— возможность работы
+												под&nbsp;результаты 1, 2, 3&nbsp;рейсов
+												МЦИ&nbsp;(для&nbsp;валюты РФ) и&nbsp;отправка срочных
+												кредитовых авизо (по&nbsp;иностранным валютам);
+											</li>
+											<li>
+												При&nbsp;отсутствии лимита&nbsp;— возможность работы
+												под&nbsp;результаты 1, 2, 3&nbsp;рейсов
+												МЦИ&nbsp;(для&nbsp;валюты РФ) и&nbsp;отправка срочных
+												кредитовых авизо (по&nbsp;иностранным валютам);
+											</li>
+										</ul>
+									</ARte>
+								</AAccordionContent>
+							</AAccordionPanel>
+						</AAccordion>
+					</Fragment>
+					<Fragment slot="left-footer">
+						<AButton element="a" href="#" text afterIcon="icon-chevron-right" size="m">Все вопросы и ответы</AButton>
+					</Fragment>
+					<Fragment slot="right">
+						<FormCallMeBack
+							title="Остались вопросы?"
+							description="Оставьте свой телефон и мы перезвоним вам, либо задайте вопрос в чате"
+							agreement="Нажимая кнопку «Перезвоните мне», вы соглашаетесь с условиями предоставления информации"
+							type="light-blue"
+							useChat
+						/>
+					</Fragment>
+				</SectionHelpContentLayout>
+			</ATabPanel>
+		</Fragment>
+	</SectionHelpLayout>
+	<SectionLayout class="section-layout--bg-gray">
+		<div class="content-container">
+			<AAccordion type="layout">
+				<AAccordionPanel>
+					<AAccordionHeader class="a-accordion-header--mobile-only">
+						<h3 class="headline-2">Как подключить</h3>
+					</AAccordionHeader>
+					<AAccordionContent class="a-accordion-content--hide-mobile">
+						<div class="a-accordion-content__wrapper">
+							<h3 class="headline-2 a-accordion-content__title">
+								Как подключить
+							</h3>
+							<div class="a-accordion-content__content">
+								<DisplayStepper steps={3}>
+									<DisplayStepperItem icon="icon-a-mobile-ready">
+										<ARte class="body-l-light">
+											<p>Через Контактный центр <br>по&nbsp;телефону +7&nbsp;800 250-70-07</p>
+										</ARte>
+									</DisplayStepperItem>
+									<DisplayStepperItem icon="icon-a-bank">
+										<ARte class="body-l-light">
+											<p>В&nbsp;офисе банка Новиком</p>
+										</ARte>
+									</DisplayStepperItem>
+									<DisplayStepperItem icon="icon-a-personal-manager">
+										<ARte class="body-l-light">
+											<p>Через персонального менеджера <br>в&nbsp;организации, где получает зарплату <br>владелец карты</p>
+										</ARte>
+									</DisplayStepperItem>
+								</DisplayStepper>
+							</div>
+						</div>
+					</AAccordionContent>
+				</AAccordionPanel>
+			</AAccordion>
+		</div>
+	</SectionLayout>
+	<SectionSeeAlso />
+</DefaultPageLayout>

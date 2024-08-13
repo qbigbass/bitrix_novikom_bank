@@ -2,7 +2,8 @@ import type { ADropDownMenuState } from '@components/ui/ADropDown/ADropDownMenu/
 
 export interface ASelectInputState {
 	root: HTMLDivElement;
-	inputEl: HTMLInputElement | null;
+	inputEl: HTMLDivElement | null;
+	inputHidden: HTMLInputElement | null;
 	dropDownMenu: ADropDownMenuState | null;
 	isOpen: boolean;
 	selectedValues: string | null | undefined;

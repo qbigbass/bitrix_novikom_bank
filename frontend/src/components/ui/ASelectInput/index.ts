@@ -3,7 +3,8 @@ import initADropDownMenu, { JS_CLASSES as JS_DROP_DOWN_MENU_CLASSES } from "@com
 import type { ASelectInputState } from "@components/ui/ASelectInput/interfaces";
 
 export const JS_CLASSES = {
-	root: '.js-a-select-input'
+	root: '.js-select',
+	input: '.js-select-input'
 }
 
 export const ACTION_CLASSES = {
@@ -45,27 +46,35 @@ const clickOutsideHandler = (
 };
 
 const setInputValue = (value: string, STATE: ASelectInputState) => {
-	if (STATE.inputEl) {
+	console.log('setInputValue', value);
+	if (STATE.inputEl && STATE.inputHidden) {
 		STATE.selectedValues = value;
 		STATE.value = value;
-		STATE.inputEl.value = value;
+		STATE.inputHidden.value = value;
+
+		if (value) {
+			STATE.inputEl.textContent = value;
+		}
+
 	}
 }
 
 const initState = (selectInput: HTMLDivElement) => {
 	const root = selectInput;
-	const inputEl: HTMLInputElement | null = root?.querySelector('input');
+	const inputEl: HTMLDivElement | null = root?.querySelector(JS_CLASSES.input);
+	const inputHidden: HTMLInputElement | null = root?.querySelector('input');
 	const dropDownEl: HTMLDivElement | null = root?.querySelector(JS_DROP_DOWN_MENU_CLASSES.root);
 	const dropDownMenu: ADropDownMenuState | null = dropDownEl ? initADropDownMenu(dropDownEl) : null;
 
 	const STATE: ASelectInputState = {
 		root,
 		inputEl,
+		inputHidden,
 		dropDownMenu,
 		isOpen: false,
 		selectedValues: null,
 		value: '',
-		disabled: inputEl?.disabled ?? false,
+		disabled: inputHidden?.disabled ?? false, //TODO: переделать disabled
 		clickOutsideHandler: (event: MouseEvent) => {}
 	}
 

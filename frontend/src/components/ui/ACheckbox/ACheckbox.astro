@@ -1,13 +1,14 @@
 ---
 import AIcon from "../../AIcon.astro";
 
-type Size = 'l' | 'm' | 'lm';
+type Size = 'l' | 'm';
 
 interface Props {
 	checked?: boolean,
 	value?: any,
 	id: number | string,
-	size: Size
+	size: Size,
+	class?: string,
 }
 
 const {
@@ -23,7 +24,7 @@ const {
 	class="a-checkbox js-a-checkbox"
 	class:list={[
 		className,
-		`a-checkbox--${size}`,
+		`a-checkbox--size-${size}`,
 	]}
 >
 	<label class="a-checkbox__inner" for={id}>
@@ -37,14 +38,14 @@ const {
 		<span class="a-checkbox__box">
 			<AIcon class="a-checkbox__icon" symbolId="icon-check" size="s" />
 		</span>
-	</label>
-	{
-		Astro.slots['label'] && (
-			<div class="a-checkbox__label">
+		{
+			Astro.slots['label'] && (
+			<span class="a-checkbox__label">
 				<slot name="label" />
-			</div>
-		)
-	}
+			</span>
+			)
+		}
+	</label>
 </div>
 
 <script>
@@ -65,12 +66,14 @@ const {
 
 <style lang="scss" is:global>
 	.a-checkbox {
+		$root: #{&};
+
 		position: relative;
-		display: inline-flex;
-		gap: 1rem;
 
 		&__inner {
 			cursor: pointer;
+			display: inline-flex;
+			gap: 1rem;
 		}
 
 		&__input {
@@ -86,11 +89,17 @@ const {
 			display: flex;
 			align-items: center;
 			justify-content: center;
+			flex-shrink: 0;
+			transition: border-color ease .33s, background-color ease .33s;
 		}
 
 		&__icon {
-			display: none;
+			opacity: 0;
 			color: var(--dark-0);
+		}
+
+		&__label {
+			transition: color ease .33s;
 		}
 
 		&__input:checked + &__box {
@@ -99,7 +108,7 @@ const {
 		}
 
 		&__input:checked + &__box &__icon {
-			display: block;
+			opacity: 1;
 		}
 
 		&:hover & {
@@ -108,25 +117,31 @@ const {
 			}
 		}
 
-		&.a-checkbox--l & {
-			&__box {
+		&--size-l {
+			#{$root}__box {
 				width: 2rem;
 				height: 2rem;
 			}
-		}
 
-		&.a-checkbox--m & {
-			&__box {
-				width: 1.5rem;
-				height: 1.5rem;
+			#{$root}__label {
+				padding-top: .25rem;
 			}
 		}
 
-		&.a-checkbox--lm & {
-			&__box {
+		&--size-m {
+			#{$root}__box {
 				width: 1.5rem;
 				height: 1.5rem;
 			}
+
+			#{$root}__label {
+				padding-top: .125rem;
+			}
+		}
+
+		& a {
+			color: var(--blue-100);
+			text-decoration: underline;
 		}
 	}
 

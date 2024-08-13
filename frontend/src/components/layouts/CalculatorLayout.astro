@@ -1,6 +1,7 @@
 ---
 interface Props {
     classList?: string;
+	class?: string;
 }
 
 const {
@@ -48,6 +49,10 @@ const {
             @include use-media(tablet-album) {
                 gap: 3rem;
                 padding-left: 2.5rem;
+
+				@at-root .section-help-layout__content & {
+					padding-left: 0;
+				}
             }
         }
 

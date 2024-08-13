@@ -4,12 +4,16 @@ import AButton from "../../ui/Buttons/AButton.astro";
 
 interface Props {
     polygonColor?: string;
-    backgroundColor?: 'grey' | 'white'
+    buttonText?: string;
+    textNotes?: string;
+    backgroundColor?: 'grey' | 'white' | 'violet';
 }
 
 const {
     polygonColor = 'green-100',
-    backgroundColor = 'white'
+    backgroundColor = 'white',
+    buttonText = 'Оформить заявку',
+    textNotes
 } = Astro.props as Props;
 ---
 <div class:list={[
@@ -21,9 +25,9 @@ const {
         <div class="calculator-card__inner">
             <slot />
             <div class="calculator-card__footer">
-                <AButton class="js-calculator-card-button" size="lm" full>Оформить заявку</AButton>
+                <AButton class="js-calculator-card-button" size="lm" full>{buttonText}</AButton>
                 <div class="calculator-card__note body-s-light">
-                    Калькулятор не гарантирует точность расчетов. Окончательные параметры кредита определяются по итогам рассмотрения заявки.
+                    <slot name="notes" />
                 </div>
             </div>
         </div>
@@ -72,6 +76,13 @@ const {
             #{$root}__inner {
                 background-color: var(--dark-10);
             }
+        }
+
+        &#{$root}--violet {
+          #{$root}__inner {
+            background: linear-gradient(42.24deg, #6655A2 20%, #55246A 80%);
+            color: var(--dark-0);
+          }
         }
     }
 </style>

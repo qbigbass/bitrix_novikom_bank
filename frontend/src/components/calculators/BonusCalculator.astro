@@ -1,0 +1,67 @@
+---
+import ASliderInput from "../ui/ASliderInput/ASliderInput.astro";
+import CalculatorLayout from "../layouts/CalculatorLayout.astro";
+import CalculatorResult from "../common/CalculatorResult/CalculatorResult.astro";
+import ASelectInput from "../ui/ASelectInput/ASelectInput.astro";
+import ADropDownCheckbox from "../ui/ADropDown/ADropDownCheckbox/ADropDownCheckbox.astro";
+import FormRow from "../layouts/FormLayout/FormRow.astro";
+import ADropDownItem from "../ui/ADropDown/ADropDownItem/ADropDownItem.astro";
+---
+
+<CalculatorLayout class="bonus-calculator">
+    <Fragment slot="form">
+        <ASliderInput
+                id="amount-credit"
+                label="Ваши покупки по карте в месяц"
+                maxValue={5000000}
+                minValue={20000}
+                startValue={3534321}
+                stepSize={5000}
+                editable
+                type="price"
+        />
+        <FormRow cols={2}>
+            <ASelectInput size="m" label="Тип карты" placeholder="Дебетовая1234" name="cardType">
+                <ADropDownItem value="Дебетовая Дебетовая Дебетовая Дебетовая Дебетовая"><span class="body-m-light">Дебетовая</span></ADropDownItem>
+                <ADropDownItem value="Кредитная"><span class="body-m-light">Кредитная</span></ADropDownItem>
+                <ADropDownItem value="Кредитная 2"><span class="body-m-light">Кредитная 2</span></ADropDownItem>
+                <!--<ADropDownCheckbox size="m" id="1"><span class="body-m-light">Дебетовая</span></ADropDownCheckbox>-->
+                <!--<ADropDownCheckbox size="m" id="2"><span class="body-m-light">Кредитная</span></ADropDownCheckbox>-->
+                <!--<ADropDownCheckbox size="m" id="3"><span class="body-m-light">Кредитная 2</span></ADropDownCheckbox>-->
+            </ASelectInput>
+
+            <ASelectInput size="m" label="Категория основной карты" placeholder="Выберите" name="cardCategory">
+                <ADropDownCheckbox size="m" id="10"><span class="body-m-light">Standard</span></ADropDownCheckbox>
+                <ADropDownCheckbox size="m" id="11"><span class="body-m-light">Bonus</span></ADropDownCheckbox>
+                <ADropDownCheckbox size="m" id="111"><span class="body-m-light">Bonus 2</span></ADropDownCheckbox>
+            </ASelectInput>
+        </FormRow>
+    </Fragment>
+    <Fragment slot="card">
+        <CalculatorResult
+            label="За год получено"
+            value="600 бонусов"
+            polygonColor="green-100"
+        />
+    </Fragment>
+</CalculatorLayout>
+
+<style lang="scss" is:global>
+    @import "@styles/media-queries";
+
+    .bonus-calculator {
+
+        & .calculator-layout {
+            &__form {
+
+                @include use-media(tablet-album) {
+                    padding-left: 0;
+                }
+            }
+        }
+
+        & .a-slider-input-text-steps {
+            display: none;
+        }
+    }
+</style>
