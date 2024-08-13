@@ -1,17 +1,24 @@
 ---
+type Elements = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 interface Props {
 	class?: string;
 	usePadding?: boolean;
 	titleClass?: string;
+    element?: Elements
 }
 
-const { class: className, usePadding = false, titleClass } = Astro.props as Props;
+const {
+    class: className,
+    usePadding = false,
+    titleClass,
+    element: Element= 'h3'
+} = Astro.props as Props;
 ---
 
 <div class:list={['section-title', className, {'section-title--padding': usePadding}]}>
-	<div class="section-title__text" class:list={titleClass}>
+	<Element class="section-title__text" class:list={titleClass}>
 		<slot />
-	</div>
+	</Element>
 	{
 		Astro.slots.after && (
 			<div class="section-title__after">

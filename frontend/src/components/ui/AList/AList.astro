@@ -10,7 +10,7 @@ interface Props {
 const {size = 'm', isHeavy = false} = Astro.props;
 ---
 
-<ul class=`list list--size-${size} ${isHeavy ? 'list--heavy' : ''}`>
+<ul class=`a-list a-list--size-${size} ${isHeavy ? 'list--heavy' : ''}`>
     <slot/>
 </ul>
 
@@ -18,7 +18,7 @@ const {size = 'm', isHeavy = false} = Astro.props;
   @import "@styles/media-queries";
   @import "@styles/typography";
 
-  .list {
+  .a-list {
     $root: #{&};
 
     list-style: none;

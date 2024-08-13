@@ -3,7 +3,7 @@ import AIcon from "../../AIcon.astro";
 
 interface Props {
 	title: string;
-	description: string;
+	description?: string;
 	iconId: string
 }
 
@@ -20,7 +20,12 @@ const {
 		<AIcon symbolId={iconId} size="xll" />
 	</div>
 	<h3 class="benefit-text-card__title headline-3" set:html={title}></h3>
-	<p class="benefit-text-card__description body-m-light" set:html={description}></p>
+    {
+        description && (
+            <p class="benefit-text-card__description body-m-light" set:html={description}></p>
+        )
+    }
+    <slot />
 </div>
 
 <style lang="scss" is:global>

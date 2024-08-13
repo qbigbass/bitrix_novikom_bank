@@ -5,32 +5,43 @@ import BenefitTextCard from "../common/BenefitCard/BenefitTextCard.astro";
 import ACollapsedItem from "../ui/ACollapsedItems/ACollapsedItem.astro";
 import BenefitCardsLayout from "./BenefitCardsLayout.astro";
 import ACollapsedItems from "../ui/ACollapsedItems/ACollapsedItems.astro";
+import AList from "../ui/AList/AList.astro";
 
 interface Props {
 	title: string;
 	benefits: {
 		title: string;
-		description: string;
+		description?: string;
 		iconId: string;
+        list?: string[];
 	}[];
-	visibleItems?: number
+	visibleItems?: number;
+    useBackground?: boolean;
 }
 
 const {
 	title,
 	benefits = [],
-	visibleItems = 4
+	visibleItems = 4,
+    useBackground = true,
+    ...rest
 } = Astro.props as Props;
 
 const benefitsLength = benefits.length;
 const maxCols = benefitsLength === 2 || benefitsLength === 4 ? 2 : benefitsLength === 3 || benefitsLength > 4 ? 3 : 1;
 ---
-<SectionLayout class="section-benefits">
+<SectionLayout
+    class:list={[
+        'section-benefits',
+        {'section-benefits--bg': useBackground},
+    ]}
+    {...rest}
+>
 	<div class="content-container">
 		<div class="section-benefits__container">
 			{
 				title && (
-					<div class="section-benefits__title headline-2">{title}</div>
+					<h3 class="section-benefits__title headline-2">{title}</h3>
 				)
 			}
 			{
@@ -41,43 +52,71 @@ const maxCols = benefitsLength === 2 || benefitsLength === 4 ? 2 : benefitsLengt
 				)
 			}
 			{
-				benefits.length > visibleItems ? (
-					<ACollapsedItems>
-						<div class="section-benefits__content">
-							<BenefitCardsLayout
-								maxCols={maxCols}
-							>
-								{
-									benefits.map(({ title, description, iconId }) => (
-										<ACollapsedItem>
-											<BenefitTextCard
-												title={title}
-												description={description}
-												iconId={iconId}
-											/>
-										</ACollapsedItem>
-									))
-								}
-							</BenefitCardsLayout>
-							<ACollapsedButton hiddenText="Скрыть" visibleText="Еще преимущества"/>
-						</div>
-					</ACollapsedItems>
+                benefitsLength > visibleItems ? (
+                    benefitsLength > 0 && (
+                        <ACollapsedItems>
+                            <div class="section-benefits__content">
+                                <BenefitCardsLayout
+                                    maxCols={maxCols}
+                                >
+                                    {
+                                        benefits.map(({ title, description, iconId, list }) => (
+                                            <ACollapsedItem>
+                                                <BenefitTextCard
+                                                    title={title}
+                                                    description={description}
+                                                    iconId={iconId}
+                                                >
+                                                    {
+                                                        (Array.isArray(list) && list?.length) > 0 && (
+                                                            <AList size="m">
+                                                                {
+                                                                    list.map((text) => (
+                                                                        <li set:html={text}></li>
+                                                                    ))
+                                                                }
+                                                            </AList>
+                                                        )
+                                                    }
+                                                </BenefitTextCard>
+                                            </ACollapsedItem>
+                                        ))
+                                    }
+                                </BenefitCardsLayout>
+                                <ACollapsedButton hiddenText="Скрыть" visibleText="Еще преимущества"/>
+                            </div>
+                        </ACollapsedItems>
+                    )
 				) : (
-					<div class="section-benefits__content">
-						<BenefitCardsLayout
-							maxCols={maxCols}
-						>
-							{
-								benefits.map(({ title, description, iconId }) => (
-									<BenefitTextCard
-										title={title}
-										description={description}
-										iconId={iconId}
-									/>
-								))
-							}
-						</BenefitCardsLayout>
-					</div>
+                    benefitsLength > 0 && (
+                        <div class="section-benefits__content">
+                            <BenefitCardsLayout
+                                maxCols={maxCols}
+                            >
+                                {
+                                    benefits.map(({ title, description, iconId, list }) => (
+                                        <BenefitTextCard
+                                            title={title}
+                                            description={description}
+                                            iconId={iconId}
+                                        >
+                                            {
+                                                (Array.isArray(list) && list?.length) > 0 && (
+                                                    <AList size="m">
+                                                        {
+                                                            list.map((text) => (
+                                                                <li set:html={text}></li>
+                                                            ))
+                                                        }
+                                                    </AList>
+                                                )
+                                            }
+                                        </BenefitTextCard>
+                                    ))
+                                }
+                            </BenefitCardsLayout>
+                        </div>
+                    )
 				)
 			}
 		</div>
@@ -88,7 +127,9 @@ const maxCols = benefitsLength === 2 || benefitsLength === 4 ? 2 : benefitsLengt
 	@import "@styles/media-queries";
 
 	.section-benefits {
-		background: url("/assets/section-benefits.svg") bottom right no-repeat;;
+        &.section-benefits--bg {
+            background: url("/assets/section-benefits.svg") bottom right no-repeat;
+        }
 
 		&__container {
 			display: flex;
