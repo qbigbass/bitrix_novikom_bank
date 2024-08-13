@@ -8,26 +8,25 @@ const { img } = Astro.props;
 <SectionLayout class="page-banner" small>
 	<div class="content-container">
 		<div class="page-banner__container">
+            {
+                Astro.slots['tag'] && (
+                    <div class="page-banner__tag">
+                        <slot name="tag"></slot>
+                    </div>
+                )
+            }
+            {
+                Astro.slots['title'] && (
+                    <div class="page-banner__title">
+                        <slot name="title"></slot>
+                    </div>
+                )
+            }
 			<div class="page-banner__content">
-				<slot name="header" />
-				{
-					Astro.slots['tag'] && (
-						<div class="page-banner__tag">
-							<slot name="tag"></slot>
-						</div>
-					)
-				}
 				<div class="page-banner__text">
 					<slot />
 				</div>
 				<slot name="footer" />
-				{
-					Astro.slots['hint'] && (
-						<div class="page-banner__hint">
-							<slot name="hint" />
-						</div>
-					)
-				}
 			</div>
 			<div class="page-banner__photo">
 				<APolygonContainer color="violet-100" img={img} size="ms" />
@@ -58,13 +57,31 @@ const { img } = Astro.props;
 			position: relative;
 			z-index: 1;
 			display: grid;
-			grid-template-columns: 1fr;
-			gap: 2.5rem;
+            grid-template-columns: 100%;
+            column-gap: 2rem;
+            row-gap: 1.5rem;
 
-			@include use-media(tablet-album) {
+			@include use-media(tablet) {
 				grid-template-columns: 1fr 1fr;
+                grid-template-rows: min-content min-content min-content min-content;
+                column-gap: 5rem;
 			}
+
+            @include use-media(tablet-album) {
+                column-gap: 7.5rem;
+            }
 		}
+
+        &__title {
+            @include use-media(tablet) {
+                grid-column: span 2;
+            }
+
+            @include use-media(tablet-album) {
+                padding-left: 2.5rem;
+                grid-column: 1 / 2;
+            }
+        }
 
 		&__content {
 			display: flex;
@@ -77,6 +94,7 @@ const { img } = Astro.props;
 
 			@include use-media(tablet) {
 				gap: 3rem;
+                grid-column: 1 / 2;
 
 				.a-button {
 					align-self: flex-start;
@@ -84,9 +102,7 @@ const { img } = Astro.props;
 			}
 
 			@include use-media(tablet-album) {
-				grid-template-columns: 1fr 1fr;
 				padding-left: 2.5rem;
-				max-width: 41.25rem;
 			}
 		}
 
@@ -98,9 +114,6 @@ const { img } = Astro.props;
 
 		&__background {
 			position: absolute;
-			/*bottom: -8.25rem;*/
-			/*left: 35rem;*/
-
 			top: 160px;
 			left: 50%;
 			transform: translateX(-50%);
@@ -126,19 +139,27 @@ const { img } = Astro.props;
 		}
 
 		&__photo {
+            margin-top: 1rem;
+
+            @include use-media(tablet) {
+                grid-column: 2 / 3;
+                margin-top: 0;
+            }
+
 			@include use-media(tablet-album) {
-				min-height: 28.5rem;
+                grid-row: 1 / -1;
 			}
 		}
 
-		&__hint {
-			color: var(--violet-100);
-			padding-top: 1.5rem;
-			border-top: 1px solid var(--violet-100);
-		}
-
 		&__tag {
-			margin-bottom: -1.313rem;
+            @include use-media(tablet) {
+                grid-column: span 2;
+            }
+
+            @include use-media(tablet-album) {
+                padding-left: 2.5rem;
+                grid-column: unset;
+            }
 		}
 
 		&__helper {
