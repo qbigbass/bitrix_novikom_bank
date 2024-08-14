@@ -1,6 +1,7 @@
 ---
 interface Props {
     classList?: string;
+	class?: string;
 }
 
 const {
@@ -21,6 +22,11 @@ const {
                 </div>
             )
         }
+		{
+			Astro.slots['fields'] && (
+				<slot name="fields" />
+			)
+		}
 	</div>
 	<div class="calculator-layout__card">
 		<slot name="card" />
@@ -36,6 +42,18 @@ const {
         align-items: flex-start;
 		gap: 1.5rem;
 
+		@include use-media(tablet) {
+			gap: 2.5rem;
+		}
+
+		@include use-media(tablet-album) {
+			grid-template-columns: 1fr 1fr;
+		}
+
+		@include use-media(laptop-x) {
+			gap: 7.5rem;
+		}
+
         &__form {
             display: flex;
             flex-direction: column;
@@ -48,6 +66,10 @@ const {
             @include use-media(tablet-album) {
                 gap: 3rem;
                 padding-left: 2.5rem;
+
+				@at-root .section-help-layout__content & {
+					padding-left: 0;
+				}
             }
         }
 
@@ -60,17 +82,5 @@ const {
                 gap: 1rem;
             }
         }
-
-		@include use-media(tablet) {
-			gap: 2.5rem;
-		}
-
-		@include use-media(tablet-album) {
-			grid-template-columns: 1fr 1fr;
-		}
-
-		@include use-media(laptop-x) {
-			gap: 7.5rem;
-		}
 	}
 </style>

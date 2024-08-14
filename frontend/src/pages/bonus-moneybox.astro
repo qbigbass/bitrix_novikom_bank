@@ -1,31 +1,37 @@
 ---
 import DefaultPageLayout from "../layouts/DefaultPageLayout.astro";
 import SectionSeeAlso from "../components/sections/SectionSeeAlso.astro";
+import SectionCallMeBack from "../components/sections/SectionCallMeBack.astro";
+import SectionLoansCatalog from "../components/sections/SectionLoansCatalog.astro";
 import TextBanner from "../components/banners/TextBanner.astro";
-import PageBanner from "../components/common/Banners/PageBanner.astro";
-import AList from "../components/ui/AList/AList.astro";
-import DisplayStepperItem from "../components/common/DisplayStepper/DisplayStepperItem.astro";
+import SectionBenefitsLayout from "../components/layouts/SectionBenefitsLayout.astro";
 import AAccordionPanel from "../components/ui/AAccordion/AAccordionPanel.astro";
 import SectionHelpContentLayout from "../components/layouts/SectionHelpLayout/SectionHelpContentLayout.astro";
-import DisplayStepper from "../components/common/DisplayStepper/DisplayStepper.astro";
 import BenefitCard from "../components/common/BenefitCard/BenefitCard.astro";
+import ATableRow from "../components/common/ATable/ATableRow.astro";
 import ARte from "../components/ARte.astro";
 import AAccordion from "../components/ui/AAccordion/AAccordion.astro";
 import ATabPanel from "../components/ui/ATabs/common/ATabPanel.astro";
+import ATable from "../components/common/ATable/ATable.astro";
 import DocumentDownload from "../components/ui/DocumentDownload/DocumentDownload.astro";
-import SectionLayout from "../components/layouts/SectionLayout.astro";
+import AddInfoItemLayout from "../components/layouts/AddInfoLayout/AddInfoItemLayout.astro";
 import ATab from "../components/ui/ATabs/common/ATab/ATab.astro";
+import AList from "../components/ui/AList/AList.astro";
 import AButton from "../components/ui/Buttons/AButton.astro";
 import FormCallMeBack from "../components/common/FormCallMeBack/FormCallMeBack.astro";
-import AAccordionHeader from "../components/ui/AAccordion/AAccordionHeader.astro";
-import SectionHelpLayout from "../components/layouts/SectionHelpLayout/SectionHelpLayout.astro";
-import AAccordionContent from "../components/ui/AAccordion/AAccordionContent.astro";
 import AddInfoLayout from "../components/layouts/AddInfoLayout/AddInfoLayout.astro";
-import AddInfoItemLayout from "../components/layouts/AddInfoLayout/AddInfoItemLayout.astro";
-import GridVariantsLayout from "../components/layouts/GridVariantsLayout/GridVariantsLayout.astro";
-import GridVariantCard from "../components/layouts/GridVariantsLayout/GridVariantCard.astro";
-import CardWithButtonLayout from "../components/layouts/CardWithButtonLayout.astro";
-import SectionTitle from "../components/ui/SectionTitle/SectionTitle.astro";
+import AAccordionHeader from "../components/ui/AAccordion/AAccordionHeader.astro";
+import ATableBody from "../components/common/ATable/ATableBody.astro";
+import ATableCell from "../components/common/ATable/ATableCell.astro";
+import AAccordionContent from "../components/ui/AAccordion/AAccordionContent.astro";
+import SectionHelpLayout from "../components/layouts/SectionHelpLayout/SectionHelpLayout.astro";
+import PageBanner from "../components/common/Banners/PageBanner.astro";
+import ATag from "../components/ui/ATag/ATag.astro";
+import AHelper from "../components/common/AHelper.astro";
+import APolygonContainer from "../components/common/APolygonContainer/APolygonContainer.astro";
+import SectionLayout from "../components/layouts/SectionLayout.astro";
+import DisplayStepper from "../components/common/DisplayStepper/DisplayStepper.astro";
+import DisplayStepperItem from "../components/common/DisplayStepper/DisplayStepperItem.astro";
 
 const breadcrumbs = [
 	{
@@ -33,77 +39,118 @@ const breadcrumbs = [
 		url: '#'
 	},
 	{
-		title: 'Кредиты',
+		title: 'Карты',
 		url: '#'
 	}
-];
-
-const variants = [
-	{
-		title: 'Реструктуризация по программе Банка'
-	},
-	{
-		title: 'Кредитные каникулы по ипотечным кредитам согласно Федеральному закону № 353-ФЗ'
-	},
-	{
-		title: 'Кредитные каникулы по потребительским кредитам'
-	},
-	{
-		title: 'Предоставление Льготного периода по Федеральному закону № 106-ФЗ'
-	},
-	{
-		title: 'Предоставление Льготного периода по Федеральному закону № 377-ФЗ (для участников СВО и членов их семей)'
-	},
 ]
+
+const benefitCards = [
+	{
+		title: 'Подключение',
+		description: 'К&nbsp;счетам зарплатной или дебетовой карты',
+		iconId: 'icon-a-free-service-card'
+	},
+	{
+		title: 'до 7% годовых',
+		description: 'В&nbsp;виде бонусных баллов за&nbsp;наличие остатка на&nbsp;счете карты',
+		iconId: 'icon-a-prices'
+	},
+	{
+		title: '1 бонус',
+		description: 'Равен одному рублю',
+		iconId: 'icon-a-rub'
+	},
+	{
+		title: 'Обмен бонусов',
+		description: 'На&nbsp;товары, подарочные сертификаты и&nbsp;путешествия',
+		iconId: 'icon-a-reward'
+	}
+];
 ---
-<DefaultPageLayout title="Реструктуризация">
+<DefaultPageLayout title="Программа «Бонусная копилка»">
 	<TextBanner
-		title="Реструктуризация"
+		title="Программа «Бонусная копилка»"
 		breadcrumbs={breadcrumbs}
-		description="Программы для заемщиков, у которых возникли трудности с погашением кредитов"
-        img="assets/big-illustrations/large-individual/restructuring.png"
+		description="Начисление бонусных баллов за&nbsp;наличие остатка на&nbsp;счете вашей карты"
+		backgroundColor="blue"
+        img="assets/big-illustrations/large-individual/bonus-piggy-bank-program.png"
 	/>
-	<CardWithButtonLayout>
-		<SectionTitle titleClass="headline-2" usePadding>
-			Варианты реструктуризации
-		</SectionTitle>
-		<GridVariantsLayout>
-			{
-				variants.map(variant => (
-					<GridVariantCard>
-						<BenefitCard
-							title={variant.title}
-							theme="white"
-							textButton="Подробнее"
-						/>
-					</GridVariantCard>
-				))
-			}
-		</GridVariantsLayout>
-	</CardWithButtonLayout>
-	<PageBanner img="/assets/banners/page-banner-1.png">
-        <h3 slot="title" class="headline-2">Банк готов оказать необходимую поддержку в урегулировании задолженности в случаях</h3>
-        <Fragment>
-			<AList size="l">
-				<li>
-					Если вы пострадали от недружественных действий других государств в приграничных субъектах Российской Федерации
-				</li>
-				<li>
-					Если вы пострадали в связи с чрезвычайными ситуациями природного характера (наводнениями) на территории субъектов Российской Федерации в рамках Федерального закона «О потребительском кредите (займе)»
-					от 21.12.2013 № 353-ФЗ или по программе Банка
-				</li>
-			</AList>
-		</Fragment>
-	</PageBanner>
-	<SectionHelpLayout title="Условия реструктуризации">
+	<SectionBenefitsLayout
+		benefits={benefitCards}
+	/>
+	<SectionLayout
+		types={['no-padding-top', 'padding-m']}
+		small
+	>
+		<div class="content-container">
+			<APolygonContainer color="green-100">
+				<AHelper
+					class="dark-10"
+					image="helper-icon.png"
+					description="В&nbsp;2023&nbsp;г. программа лояльности банка Новиком была награждена премией &laquo;Финансовая элита России&raquo; в&nbsp;номинации &laquo;Программа лояльности с&nbsp;максимальной выгодой&raquo;."
+				/>
+			</APolygonContainer>
+		</div>
+
+	</SectionLayout>
+	<SectionLayout bgColor="gray">
+		<div class="content-container">
+			<AAccordion type="layout">
+				<AAccordionPanel>
+					<AAccordionHeader class="a-accordion-header--mobile-only">
+						<h3 class="headline-2">Где узнать о&nbsp;сумме начисленных бонусов</h3>
+					</AAccordionHeader>
+					<AAccordionContent class="a-accordion-content--hide-mobile">
+						<div class="a-accordion-content__wrapper">
+							<h3 class="headline-2 a-accordion-content__title">
+								Где узнать о&nbsp;сумме начисленных бонусов
+							</h3>
+							<div class="a-accordion-content__content">
+								<DisplayStepper steps={2}>
+									<DisplayStepperItem icon="icon-a-web-bank">
+										<ARte class="body-l-light">
+											<p>В&nbsp;личном кабинете на&nbsp;сайте программы</p>
+										</ARte>
+									</DisplayStepperItem>
+									<DisplayStepperItem icon="icon-a-notification">
+										<ARte class="body-l-light">
+											<p>В&nbsp;ежемесячном SMS</p>
+										</ARte>
+									</DisplayStepperItem>
+								</DisplayStepper>
+							</div>
+						</div>
+					</AAccordionContent>
+				</AAccordionPanel>
+			</AAccordion>
+		</div>
+	</SectionLayout>
+	<SectionHelpLayout
+		title="Подробнее о&nbsp;программе &laquo;Бонусная копилка&raquo;"
+	>
 		<Fragment slot="tabs">
-			<ATab value="0" size="lm" isActive>Необходимые документы</ATab>
-			<ATab value="1" size="lm">Требования к кредитам</ATab>
-			<ATab value="2" size="lm">Документы и тарифы</ATab>
-			<ATab value="3" size="lm">Вопросы и ответы</ATab>
+			<ATab value="0" size="lm" isActive>Условия начисления кешбэка</ATab>
+			<ATab value="1" size="lm">На что потратить бонусы</ATab>
+			<ATab value="2" size="lm">Тарифы и документы</ATab>
+			<ATab value="2" size="lm">Вопросы и ответы</ATab>
 		</Fragment>
 		<Fragment slot="tabPanels">
 			<ATabPanel value="0">
+				<AddInfoLayout>
+					<AddInfoItemLayout isNarrow>
+						<p class="body-l-light">
+							Чем больше остаток на&nbsp;текущем счете карты, тем выше размер бонусного вознаграждения
+						</p>
+						<AList size="l">
+							<li>Максимальный размер бонусного вознаграждения&nbsp;&mdash; 7%&nbsp;годовых</li>
+							<li>Минимальный ежедневный остаток по&nbsp;текущему счету карты должен быть не&nbsp;меньше 10&nbsp;000 рублей</li>
+							<li>5000 бонусов максимальное количество бонусов ежемесячно по&nbsp;текущему счету карты</li>
+							<li>Подключение к&nbsp;счету одновременно программ &laquo;Бонусная копилка, &laquo;Бонусы&raquo; или &laquo;Кешбэк&raquo;</li>
+						</AList>
+					</AddInfoItemLayout>
+				</AddInfoLayout>
+			</ATabPanel>
+			<ATabPanel value="1">
 				<AddInfoLayout>
 					<AddInfoItemLayout isNarrow>
 						<AList size="l">
@@ -127,150 +174,7 @@ const variants = [
 					</AddInfoItemLayout>
 				</AddInfoLayout>
 			</ATabPanel>
-			<ATabPanel value="1">
-				<AddInfoLayout>
-					<AddInfoItemLayout isNarrow>
-						<ARte class="body-m-light">
-							<p>
-								Для подтверждения стажа на последнем месте работы менее 12 месяцев заемщику/созаемщику/поручителю рекомендуется предоставить копию трудовой книжки, заверенную работодателем, или справку от работодателя, содержащую сведения о стаже работы в организации² или сведения о трудовой деятельности (форма СТД-Р или форма  СТД-ПФР)³.
-							</p>
-						</ARte>
-					</AddInfoItemLayout>
-				</AddInfoLayout>
-			</ATabPanel>
 			<ATabPanel value="2">
-				<SectionHelpContentLayout>
-					<Fragment slot="left">
-						<AAccordion type="component">
-							<AAccordionPanel>
-								<AAccordionHeader>
-									<div class="body-l-light">Тарифы для физических лиц</div>
-								</AAccordionHeader>
-								<AAccordionContent>
-									<p class="body-m-light dark-70" style="margin-bottom: 1.5rem;">Тарифы для физических лиц, действующие во всех регионах присутствия Банка.</p>
-									<DocumentDownload
-										fileName="Сборник тарифов на обслуживание банковских карт для физических лиц, выпущенных по 21.08.2022 г."
-										dateTime="12.12.23 18:56"
-										fileType="XLS"
-									/>
-									<DocumentDownload
-										fileName="Сборник тарифов на обслуживание банковских карт Мир для физических лиц, выпущенных с 22.08.2022 г."
-										dateTime="12.12.23 18:56"
-										fileType="XLS"
-									/>
-									<DocumentDownload
-										fileName="Сборник тарифов на обслуживание физических лиц"
-										dateTime="12.12.23 18:56"
-										fileType="XLS"
-									/>
-								</AAccordionContent>
-							</AAccordionPanel>
-							<AAccordionPanel>
-								<AAccordionHeader>
-									<div class="body-l-light">Договор банковского обслуживания</div>
-								</AAccordionHeader>
-								<AAccordionContent>
-									<p class="body-m-light dark-70" style="margin-bottom: 1.5rem;">Тарифы для физических лиц, действующие во всех регионах присутствия Банка.</p>
-									<DocumentDownload
-										fileName="Сборник тарифов на обслуживание банковских карт для физических лиц, выпущенных по 21.08.2022 г."
-										dateTime="12.12.23 18:56"
-										fileType="XLS"
-									/>
-									<DocumentDownload
-										fileName="Сборник тарифов на обслуживание банковских карт Мир для физических лиц, выпущенных с 22.08.2022 г."
-										dateTime="12.12.23 18:56"
-										fileType="XLS"
-									/>
-									<DocumentDownload
-										fileName="Сборник тарифов на обслуживание физических лиц"
-										dateTime="12.12.23 18:56"
-										fileType="XLS"
-									/>
-								</AAccordionContent>
-							</AAccordionPanel>
-							<AAccordionPanel>
-								<AAccordionHeader>
-									<div class="body-l-light">Типовые документы</div>
-								</AAccordionHeader>
-								<AAccordionContent>
-									<p class="body-m-light dark-70" style="margin-bottom: 1.5rem;">Тарифы для физических лиц, действующие во всех регионах присутствия Банка.</p>
-									<DocumentDownload
-										fileName="Сборник тарифов на обслуживание банковских карт для физических лиц, выпущенных по 21.08.2022 г."
-										dateTime="12.12.23 18:56"
-										fileType="XLS"
-									/>
-									<DocumentDownload
-										fileName="Сборник тарифов на обслуживание банковских карт Мир для физических лиц, выпущенных с 22.08.2022 г."
-										dateTime="12.12.23 18:56"
-										fileType="XLS"
-									/>
-									<DocumentDownload
-										fileName="Сборник тарифов на обслуживание физических лиц"
-										dateTime="12.12.23 18:56"
-										fileType="XLS"
-									/>
-								</AAccordionContent>
-							</AAccordionPanel>
-							<AAccordionPanel>
-								<AAccordionHeader>
-									<div class="body-l-light">Паспорта дебетовых карт</div>
-								</AAccordionHeader>
-								<AAccordionContent>
-									<p class="body-m-light dark-70" style="margin-bottom: 1.5rem;">Тарифы для физических лиц, действующие во всех регионах присутствия Банка.</p>
-									<DocumentDownload
-										fileName="Сборник тарифов на обслуживание банковских карт для физических лиц, выпущенных по 21.08.2022 г."
-										dateTime="12.12.23 18:56"
-										fileType="XLS"
-									/>
-									<DocumentDownload
-										fileName="Сборник тарифов на обслуживание банковских карт Мир для физических лиц, выпущенных с 22.08.2022 г."
-										dateTime="12.12.23 18:56"
-										fileType="XLS"
-									/>
-									<DocumentDownload
-										fileName="Сборник тарифов на обслуживание физических лиц"
-										dateTime="12.12.23 18:56"
-										fileType="XLS"
-									/>
-								</AAccordionContent>
-							</AAccordionPanel>
-							<AAccordionPanel>
-								<AAccordionHeader>
-									<div class="body-l-light">Иные документы</div>
-								</AAccordionHeader>
-								<AAccordionContent>
-									<p class="body-m-light dark-70" style="margin-bottom: 1.5rem;">Тарифы для физических лиц, действующие во всех регионах присутствия Банка.</p>
-									<DocumentDownload
-										fileName="Сборник тарифов на обслуживание банковских карт для физических лиц, выпущенных по 21.08.2022 г."
-										dateTime="12.12.23 18:56"
-										fileType="XLS"
-									/>
-									<DocumentDownload
-										fileName="Сборник тарифов на обслуживание банковских карт Мир для физических лиц, выпущенных с 22.08.2022 г."
-										dateTime="12.12.23 18:56"
-										fileType="XLS"
-									/>
-									<DocumentDownload
-										fileName="Сборник тарифов на обслуживание физических лиц"
-										dateTime="12.12.23 18:56"
-										fileType="XLS"
-									/>
-								</AAccordionContent>
-							</AAccordionPanel>
-						</AAccordion>
-					</Fragment>
-					<Fragment slot="right">
-						<BenefitCard
-							title="Защита от мошенников"
-							description="Узнайте как уберечь себя и своих близких от финансового мошенничества."
-							icon="icon-a-money-out"
-							theme="light-blue"
-							textButton="Подробнее"
-						/>
-					</Fragment>
-				</SectionHelpContentLayout>
-			</ATabPanel>
-			<ATabPanel value="3">
 				<SectionHelpContentLayout>
 					<Fragment slot="left">
 						<AAccordion type="component">
@@ -409,28 +313,32 @@ const variants = [
 			<AAccordion type="layout">
 				<AAccordionPanel>
 					<AAccordionHeader class="a-accordion-header--mobile-only">
-						<h3 class="headline-2">Как реструктуризировать задолженность</h3>
+						<h3 class="headline-2">Как подключить</h3>
 					</AAccordionHeader>
 					<AAccordionContent class="a-accordion-content--hide-mobile">
 						<div class="a-accordion-content__wrapper">
 							<h3 class="headline-2 a-accordion-content__title">
-								Как реструктуризировать задолженность
+								Как подключить
 							</h3>
-							<DisplayStepper steps={3}>
-								<DisplayStepperItem number={1}>
-									<p class="body-l-light">
-										Оформите заявку на сайте или у кредитного менеджера в офисе Новиком
-									</p>
-								</DisplayStepperItem>
-								<DisplayStepperItem number={2}>
-									<p class="body-l-light">
-										Получите ответ кредитного специалиста Новикома  в течение 10 дней
-									</p>
-								</DisplayStepperItem>
-								<DisplayStepperItem number={3}>
-									<p class="body-l-light">Подпишите документы в случае одобрения реструктуризации</p>
-								</DisplayStepperItem>
-							</DisplayStepper>
+							<div class="a-accordion-content__content">
+								<DisplayStepper steps={3}>
+									<DisplayStepperItem icon="icon-a-mobile-ready">
+										<ARte class="body-l-light">
+											<p>Через Контактный центр <br>по&nbsp;телефону +7&nbsp;800 250-70-07</p>
+										</ARte>
+									</DisplayStepperItem>
+									<DisplayStepperItem icon="icon-a-bank">
+										<ARte class="body-l-light">
+											<p>В&nbsp;офисе банка Новиком</p>
+										</ARte>
+									</DisplayStepperItem>
+									<DisplayStepperItem icon="icon-a-personal-manager">
+										<ARte class="body-l-light">
+											<p>Через персонального менеджера <br>в&nbsp;организации, где получает зарплату <br>владелец карты</p>
+										</ARte>
+									</DisplayStepperItem>
+								</DisplayStepper>
+							</div>
 						</div>
 					</AAccordionContent>
 				</AAccordionPanel>

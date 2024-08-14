@@ -1,0 +1,183 @@
+---
+
+import ATabSwiper from "../ui/ATabs/common/ATabSwiper/ATabSwiper.astro";
+import DiscountLink from "../common/DiscountLink/DiscountLink.astro";
+import ATabSwiperWrapper from "../ui/ATabs/common/ATabSwiperWrapper.astro";
+import SliderSlide from "../common/Sliders/common/SliderSlide/SliderSlide.astro";
+import SectionLayout from "./SectionLayout.astro";
+import ATabs from "../ui/ATabs/ATabs.astro";
+import PersistentSlider from "../common/Sliders/PersistentSlider/PersistentSlider.astro";
+import ATabPanels from "../ui/ATabs/common/ATabPanels.astro";
+import ATab from "../ui/ATabs/common/ATab/ATab.astro";
+import ATabPanel from "../ui/ATabs/common/ATabPanel.astro";
+import AButton from "../ui/Buttons/AButton.astro";
+
+
+const favoriteCategories = [
+    {
+        icon: 'assets/discount-cards/food-entertainment-events.png',
+        text: 'Еда, развлечения,<br>мероприятия',
+        description: '5% кешбэк'
+    },
+    {
+        icon: 'assets/discount-cards/holidays-and-travel.png',
+        text: 'Отдых и путешествия',
+        description: '5% кешбэк'
+    },
+    {
+        icon: 'assets/discount-cards/sports-beauty-health.png',
+        text: 'Спорт, красота, здоровье',
+        description: '5% кешбэк'
+    },
+    {
+        icon: 'assets/discount-cards/cars-and-service.png',
+        text: 'Автомобили и сервис',
+        description: '5% кешбэк'
+    },
+    {
+        icon: 'assets/discount-cards/purchases.png',
+        text: 'Покупки',
+        description: '5% кешбэк'
+    },
+    {
+        icon: 'assets/discount-cards/holidays-and-travel.png',
+        text: 'Отдых и путешествия',
+        description: '5% кешбэк'
+    },
+    {
+        icon: 'assets/discount-cards/sports-beauty-health.png',
+        text: 'Спорт, красота, здоровье',
+        description: '5% кешбэк'
+    },
+    {
+        icon: 'assets/discount-cards/cars-and-service.png',
+        text: 'Автомобили и сервис',
+        description: '5% кешбэк'
+    },
+    {
+        icon: 'assets/discount-cards/purchases.png',
+        text: 'Покупки',
+        description: '5% кешбэк'
+    },
+];
+
+const favoriteCategories1 = [
+    {
+        icon: 'assets/discount-cards/cars-and-service.png',
+        text: 'Топливо',
+        description: '7% кешбэк'
+    },
+    {
+        icon: 'assets/discount-cards/sports-beauty-health.png',
+        text: 'Аптеки',
+        description: '5% кешбэк'
+    },
+    {
+        icon: 'assets/discount-cards/holidays-and-travel.png',
+        text: 'Авиабилеты',
+        description: '5% кешбэк'
+    },
+    {
+        icon: 'assets/discount-cards/kids-products.png',
+        text: 'Детские товары',
+        description: '5% кешбэк'
+    },
+    {
+        icon: 'assets/discount-cards/hotels.png',
+        text: 'Гостиницы, отели',
+        description: '5% кешбэк'
+    },
+    {
+        icon: 'assets/discount-cards/holidays-and-travel.png',
+        text: 'Топливо',
+        description: '7% кешбэк'
+    },
+];
+---
+<SectionLayout class="section-cashback-layout" bgColor="blue">
+    <div class="content-container">
+        <ATabs useLayout>
+            <div class="section-cashback-layout__wrapper">
+                <div class="section-cashback-layout__header">
+                    <h3 class="headline-2">Перечень избранных категорий</h3>
+                    <div class="section-cashback-layout__tabs">
+                        <ATabSwiper>
+                            <ATabSwiperWrapper>
+                                <ATab size="l" value="0" isActive>с 01 мая по 30 июня 2024</ATab>
+                                <ATab size="l" value="1">с 01 июля по 31 августа 2024</ATab>
+                            </ATabSwiperWrapper>
+                        </ATabSwiper>
+                    </div>
+                </div>
+                <div class="section-cashback-layout__body">
+                    <ATabPanels>
+                        <ATabPanel value="0">
+                            <PersistentSlider spaceBetween="mobile-s:16,mobile:16,tablet:32,tablet-album:40,laptop-x:40" slidesPerView="mobile-s:2,mobile:2,tablet:3,tablet-album:4,laptop-x:5">
+                                {
+                                    favoriteCategories.map(({icon, text, description}) => (
+                                            <SliderSlide>
+                                                <DiscountLink
+                                                        icon={icon}
+                                                        text={text}
+                                                        description={description}
+                                                />
+                                            </SliderSlide>
+                                    ))
+                                }
+                            </PersistentSlider>
+                        </ATabPanel>
+                        <ATabPanel value="1">
+                            <PersistentSlider spaceBetween="mobile-s:16,mobile:16,tablet:32,tablet-album:40,laptop-x:40" slidesPerView="mobile-s:2,mobile:2,tablet:3,tablet-album:4,laptop-x:5">
+                                {
+                                    favoriteCategories1.map(({icon, text, description}) => (
+                                            <SliderSlide>
+                                                <DiscountLink
+                                                        icon={icon}
+                                                        text={text}
+                                                        description={description}
+                                                />
+                                            </SliderSlide>
+                                    ))
+                                }
+                            </PersistentSlider>
+                        </ATabPanel>
+                    </ATabPanels>
+                </div>
+                <div class="section-cashback-layout__footer">
+                    <AButton element="a" href="#" color="primary" afterIcon="icon-chevron-right" text size="l">
+                        Перечень МСС кодов по&nbsp;избранным категориям
+                    </AButton>
+                </div>
+            </div>
+        </ATabs>
+    </div>
+</SectionLayout>
+
+<style lang="scss" is:global>
+    @import "@styles/media-queries";
+
+    .section-cashback-layout {
+
+        &__wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+
+            @include use-media(tablet-album) {
+                gap: 3rem;
+                padding-left: 2.5rem;
+                padding-right: 2.5rem;
+            }
+        }
+
+        &__header {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+
+            @include use-media(tablet-album) {
+                gap: 3rem;
+            }
+        }
+    }
+</style>

@@ -1,137 +1,137 @@
 ---
 import DefaultPageLayout from "../layouts/DefaultPageLayout.astro";
-import PageBanner from "../components/common/Banners/PageBanner.astro";
-import ATag from "../components/ui/ATag/ATag.astro";
 import SectionSeeAlso from "../components/sections/SectionSeeAlso.astro";
-import SectionSpecialOffers from "../components/sections/SectionSpecialOffers.astro";
+import TextBanner from "../components/banners/TextBanner.astro";
 import SectionBenefitsLayout from "../components/layouts/SectionBenefitsLayout.astro";
-import SectionHowApplyCard from "../components/sections/SectionHowApplyCard.astro";
-import AButton from "../components/ui/Buttons/AButton.astro";
-import BenefitCard from "../components/common/BenefitCard/BenefitCard.astro";
-import ProductCardBanner from "../components/banners/ProductCardBanner.astro";
-import SectionConnectYourBenefits from "../components/sections/SectionConnectYourBenefits.astro";
-import AAccordionHeader from "../components/ui/AAccordion/AAccordionHeader.astro";
 import AAccordionPanel from "../components/ui/AAccordion/AAccordionPanel.astro";
+import SectionHelpContentLayout from "../components/layouts/SectionHelpLayout/SectionHelpContentLayout.astro";
+import ATableRow from "../components/common/ATable/ATableRow.astro";
 import ARte from "../components/ARte.astro";
 import AAccordion from "../components/ui/AAccordion/AAccordion.astro";
-import ATab from "../components/ui/ATabs/common/ATab/ATab.astro";
 import ATabPanel from "../components/ui/ATabs/common/ATabPanel.astro";
+import ATable from "../components/common/ATable/ATable.astro";
+import AddInfoItemLayout from "../components/layouts/AddInfoLayout/AddInfoItemLayout.astro";
+import ATab from "../components/ui/ATabs/common/ATab/ATab.astro";
+import AList from "../components/ui/AList/AList.astro";
+import AButton from "../components/ui/Buttons/AButton.astro";
+import FormCallMeBack from "../components/common/FormCallMeBack/FormCallMeBack.astro";
+import AddInfoLayout from "../components/layouts/AddInfoLayout/AddInfoLayout.astro";
+import AAccordionHeader from "../components/ui/AAccordion/AAccordionHeader.astro";
+import ATableBody from "../components/common/ATable/ATableBody.astro";
+import ATableCell from "../components/common/ATable/ATableCell.astro";
 import AAccordionContent from "../components/ui/AAccordion/AAccordionContent.astro";
 import SectionHelpLayout from "../components/layouts/SectionHelpLayout/SectionHelpLayout.astro";
-import SectionHelpContentLayout from "../components/layouts/SectionHelpLayout/SectionHelpContentLayout.astro";
-import DocumentDownload from "../components/ui/DocumentDownload/DocumentDownload.astro";
-import FormCallMeBack from "../components/common/FormCallMeBack/FormCallMeBack.astro";
-import BenefitCardsLayout from "../components/layouts/BenefitCardsLayout.astro";
+import AHelper from "../components/common/AHelper.astro";
+import APolygonContainer from "../components/common/APolygonContainer/APolygonContainer.astro";
+import SectionLayout from "../components/layouts/SectionLayout.astro";
+import DisplayStepper from "../components/common/DisplayStepper/DisplayStepper.astro";
 import DisplayStepperItem from "../components/common/DisplayStepper/DisplayStepperItem.astro";
+import SectionCashBackLayout from "../components/layouts/SectionCashBackLayout.astro";
+import BenefitCard from "../components/common/BenefitCard/BenefitCard.astro";
+import DocumentDownload from "../components/ui/DocumentDownload/DocumentDownload.astro";
+
+const breadcrumbs = [
+	{
+		title: 'Частным клиентам',
+		url: '#'
+	},
+	{
+		title: 'Карты',
+		url: '#'
+	}
+]
 
 const benefitCards = [
 	{
-		title: 'Mir Pass',
-		description: 'Предоставление опции доступа в бизнес-залы аэропортов и железнодорожных вокзалов на территории РФ и за рубежом с сервисом Mir Pass',
-		iconId: 'icon-a-mir-pass'
-	},
-	{
-		title: 'Безопасность',
-		description: 'Оператор платёжной системы «Мир» принадлежит банку России',
-		iconId: 'icon-a-card-security'
-	},
-	{
-		title: 'Кешбэк рублями до 30%',
-		description: 'за покупки у партнёров банка, до 7% в избранных категориях',
+		title: 'До 7%',
+		description: 'Кешбэк рублями на&nbsp;счет ежемесячно',
 		iconId: 'icon-a-cashback'
 	},
 	{
-		title: 'Программа лояльности',
-		description: 'Автоматическая регистрация в программе лояльности от платёжной системы «Мир»',
-		iconId: 'icon-a-hands'
+		title: '4 категории',
+		description: 'Повышенного кешбэка',
+		iconId: 'icon-a-multitasking'
+	},
+	{
+		title: 'Гибкое подключение',
+		description: 'К&nbsp;счетам кредитных, дебетовых и&nbsp;зарплатных карт',
+		iconId: 'icon-a-flexibility'
+	},
+	{
+		title: 'Ежемесячные обновления',
+		description: 'Новые избранные категории каждый месяц',
+		iconId: 'icon-a-other'
 	}
 ];
----
 
-<DefaultPageLayout title="«Мир» Supreme">
-	<ProductCardBanner
-		benefits={[
-			{
-				beforeNum: 'до',
-				num: '30%',
-				description: 'Кешбэк рублями за покупки у партнёров банка'
-			},
-			{
-				num: '7%',
-				beforeNum: 'от',
-				description: 'Кешбэк от суммы покупок в избранных категориях'
-			}
-		]}
-		image="assets/hero-banner/mir-supreme.png"
-		urlHref="#"
-		buttonText="Оформить карту"
-		hasPattern
-		backgroundColor="heavy-violet"
-	>
-		<Fragment slot="title">Мир Supreme</Fragment>
-		<Fragment slot="subtitle">Премиальная карта национальной платежной системы «Мир»</Fragment>
-	</ProductCardBanner>
+---
+<DefaultPageLayout title="Программа «Кешбэк»">
+	<TextBanner
+		title="Программа «Кешбэк»"
+		breadcrumbs={breadcrumbs}
+		description="Возврат рублями от&nbsp;покупок по&nbsp;карте"
+		backgroundColor="blue"
+        img="assets/big-illustrations/large-individual/cashback-program.png"
+	/>
 	<SectionBenefitsLayout
-		title="Преимущества карты Мир Supreme"
 		benefits={benefitCards}
 	/>
-	<SectionConnectYourBenefits visibleSlides="3" slidesPerView="mobile-s:1,mobile:1,tablet:2,laptop:2" />
-	<PageBanner img="/assets/banners/page-banner-3.png">
-		<Fragment slot="tag">
-			<ATag href="#" outline>Привилегия</ATag>
-		</Fragment>
-        <h3 slot="title" class="headline-2">Доступ в бизнес-залы аэропортов  и вокзалов</h3>
-        <Fragment>
-			<div class="body-l-light">
-				Путешествуйте с комфортом и наслаждайтесь каждой поездкой, ожидая свой рейс в бизнес-залах ON PASS или в ресторанах ON FOOD.
-			</div>
-			<div class="body-l-light">
-				С полным актуальным списком доступных бизнес-залов можно ознакомиться на сайте Mir Pass или в мобильном приложении «Привет!)»
-			</div>
-		</Fragment>
-		<Fragment slot="footer">
-			<AButton element="a" size="lm" outline text afterIcon="icon-chevron-right">Полный список бизнес-залов</AButton>
-		</Fragment>
-	</PageBanner>
+	<SectionCashBackLayout />
 	<SectionHelpLayout
-		title="О карте Мир Supreme"
+		title="Подробнее о&nbsp;программе &laquo;Кешбэк&raquo;"
 	>
 		<Fragment slot="tabs">
-			<ATab value="0" size="lm" isActive>Как пополнить карту</ATab>
-			<ATab value="1" size="lm">Документы и тарифы</ATab>
-			<ATab value="2" size="lm">Вопросы и ответы</ATab>
+			<ATab value="0" size="lm" isActive>Условия начисления кешбэка</ATab>
+			<ATab value="1" size="lm">Размер кешбэка</ATab>
+			<ATab value="2" size="lm">Документы и тарифы</ATab>
+			<ATab value="3" size="lm">Вопросы и ответы</ATab>
 		</Fragment>
 		<Fragment slot="tabPanels">
 			<ATabPanel value="0">
-				<BenefitCardsLayout>
-					<DisplayStepperItem icon="icon-a-web-bank" inRow>
-						<ARte class="body-l-heavy">
-							<p>Через интернет-банк<br> и мобильное приложение</p>
-						</ARte>
-					</DisplayStepperItem>
-					<DisplayStepperItem icon="icon-a-bank" inRow>
-						<ARte class="body-l-heavy">
-							<p>В офисах банка<br> Новиком</p>
-						</ARte>
-					</DisplayStepperItem>
-					<DisplayStepperItem icon="icon-a-mir-payment" inRow>
-						<ARte class="body-l-heavy">
-							<p>В платежных терминалах/банкоматах Банка и партнеров</p>
-						</ARte>
-					</DisplayStepperItem>
-					<DisplayStepperItem icon="icon-a-transfer" inRow>
-						<ARte class="body-l-heavy">
-							<p>Используя услугу<br> «Перевод с карты на карту»</p>
-						</ARte>
-					</DisplayStepperItem>
-					<DisplayStepperItem icon="icon-a-transh" inRow>
-						<ARte class="body-l-heavy">
-							<p>C помощью банковского перевода</p>
-						</ARte>
-					</DisplayStepperItem>
-				</BenefitCardsLayout>
+				<AddInfoLayout>
+					<AddInfoItemLayout isNarrow>
+						<p class="body-l-light">
+							Кешбэк начисляется при оплате товаров и&nbsp;услуг с&nbsp;использованием карт Банка:
+						</p>
+						<AList size="l">
+							<li>по&nbsp;карте МИР Премиальная &laquo;Всегда в&nbsp;плюсе&raquo; на&nbsp;сумму не&nbsp;менее 20&nbsp;000 рублей в&nbsp;месяц,</li>
+							<li>по&nbsp;остальным картам Банка на&nbsp;сумму не&nbsp;менее 5000 рублей в&nbsp;месяц.</li>
+						</AList>
+					</AddInfoItemLayout>
+				</AddInfoLayout>
 			</ATabPanel>
 			<ATabPanel value="1">
+				<AddInfoLayout>
+					<AddInfoItemLayout>
+						<ARte class="body-l-light">
+							<p>
+								Чем выше категория карты, к&nbsp;которой подключена программа, и&nbsp;чем больше покупок вы&nbsp;совершите, тем выше будет размер бонусного вознаграждения.
+							</p>
+						</ARte>
+						<ATable class="md:in-column" cols={2}>
+							<ATableBody>
+								<ATableRow>
+									<ATableCell class="body-l-heavy dark-70">Для владельцев карт</ATableCell>
+									<ATableCell class="body-l-light">
+										Без комиссии в&nbsp;банкоматах и&nbsp;ПВН банка Новиком
+										<br><br>
+										0,5% от&nbsp;суммы операции в&nbsp;банкоматах и&nbsp;ПВН сторонних банков
+									</ATableCell>
+								</ATableRow>
+								<ATableRow>
+									<ATableCell class="body-l-heavy dark-70">
+										Для клиентов, получающих зарплату <br>на&nbsp;счет в&nbsp;Новикоме
+									</ATableCell>
+									<ATableCell class="body-l-light">
+										Без комиссии в&nbsp;банкоматах и&nbsp;ПВН банка Новиком и&nbsp;сторонних банков
+									</ATableCell>
+								</ATableRow>
+							</ATableBody>
+						</ATable>
+					</AddInfoItemLayout>
+				</AddInfoLayout>
+			</ATabPanel>
+			<ATabPanel value="2">
 				<SectionHelpContentLayout>
 					<Fragment slot="left">
 						<AAccordion type="component">
@@ -253,17 +253,17 @@ const benefitCards = [
 						</AAccordion>
 					</Fragment>
 					<Fragment slot="right">
-                        <BenefitCard
-                            title="Защита от мошенников"
-                            description="Узнайте как уберечь себя и своих близких от финансового мошенничества."
-                            icon="icon-a-protection"
-                            theme="grey"
-                            textButton="Подробнее"
-                        />
+						<BenefitCard
+							title="Защита от мошенников"
+							description="Узнайте как уберечь себя и своих близких от финансового мошенничества."
+							icon="icon-a-money-out"
+							theme="light-blue"
+							textButton="Подробнее"
+						/>
 					</Fragment>
 				</SectionHelpContentLayout>
 			</ATabPanel>
-			<ATabPanel value="2">
+			<ATabPanel value="3">
 				<SectionHelpContentLayout>
 					<Fragment slot="left">
 						<AAccordion type="component">
@@ -397,7 +397,98 @@ const benefitCards = [
 			</ATabPanel>
 		</Fragment>
 	</SectionHelpLayout>
-	<SectionHowApplyCard />
-	<SectionSpecialOffers />
+	<SectionLayout bgColor="gray">
+		<div class="content-container">
+			<AAccordion type="layout">
+				<AAccordionPanel>
+					<AAccordionHeader class="a-accordion-header--mobile-only">
+						<h3 class="headline-2">Как узнать сумму выплаченного кешбэка</h3>
+					</AAccordionHeader>
+					<AAccordionContent class="a-accordion-content--hide-mobile">
+						<div class="a-accordion-content__wrapper">
+							<h3 class="headline-2 a-accordion-content__title">
+								Как узнать сумму выплаченного кешбэка
+							</h3>
+							<div class="a-accordion-content__content">
+								<DisplayStepper steps={3}>
+									<DisplayStepperItem icon="icon-a-web-bank">
+										<ARte class="body-l-light">
+											<p>
+												В&nbsp;выписке по&nbsp;карте в&nbsp;мобильном <br>
+												приложении или интернет-банке
+											</p>
+										</ARte>
+									</DisplayStepperItem>
+									<DisplayStepperItem icon="icon-a-notification">
+										<ARte class="body-l-light">
+											<p>В&nbsp;ежемесячном SMS</p>
+										</ARte>
+									</DisplayStepperItem>
+									<DisplayStepperItem icon="icon-a-bank">
+										<ARte class="body-l-light">
+											<p>В&nbsp;офисе банка Новиком</p>
+										</ARte>
+									</DisplayStepperItem>
+								</DisplayStepper>
+							</div>
+						</div>
+					</AAccordionContent>
+				</AAccordionPanel>
+			</AAccordion>
+		</div>
+	</SectionLayout>
+	<SectionLayout>
+		<div class="content-container">
+			<APolygonContainer color="green-100">
+				<AHelper
+					class="dark-10"
+					image="helper-icon.png"
+					description="В&nbsp;2023&nbsp;г. программа лояльности банка Новиком была награждена премией &laquo;Финансовая элита России&raquo; в&nbsp;номинации &laquo;Программа лояльности с&nbsp;максимальной выгодой&raquo;."
+				/>
+			</APolygonContainer>
+		</div>
+	</SectionLayout>
+	<SectionLayout bgColor="gray">
+		<div class="content-container">
+			<AAccordion type="layout">
+				<AAccordionPanel>
+					<AAccordionHeader class="a-accordion-header--mobile-only">
+						<h3 class="headline-2">Как подключить кешбэк</h3>
+					</AAccordionHeader>
+					<AAccordionContent class="a-accordion-content--hide-mobile">
+						<div class="a-accordion-content__wrapper">
+							<h3 class="headline-2 a-accordion-content__title">
+								Как подключить кешбэк
+							</h3>
+							<div class="a-accordion-content__content">
+								<DisplayStepper steps={2}>
+									<DisplayStepperItem icon="icon-a-mobile-ready">
+										<ARte class="body-l-light">
+											<p>Через Контактный центр <br>по&nbsp;телефону +7&nbsp;800 250-70-07</p>
+										</ARte>
+									</DisplayStepperItem>
+									<DisplayStepperItem icon="icon-a-web-bank">
+										<ARte class="body-l-light">
+											<p>В&nbsp;Мобильном приложении Банка и&nbsp;Интернет-Банке</p>
+										</ARte>
+									</DisplayStepperItem>
+									<DisplayStepperItem icon="icon-a-bank">
+										<ARte class="body-l-light">
+											<p>В&nbsp;офисе банка Новиком</p>
+										</ARte>
+									</DisplayStepperItem>
+									<DisplayStepperItem icon="icon-a-personal-manager">
+										<ARte class="body-l-light">
+											<p>Через персонального менеджера <br>в&nbsp;организации, где получает зарплату владелец карты</p>
+										</ARte>
+									</DisplayStepperItem>
+								</DisplayStepper>
+							</div>
+						</div>
+					</AAccordionContent>
+				</AAccordionPanel>
+			</AAccordion>
+		</div>
+	</SectionLayout>
 	<SectionSeeAlso />
 </DefaultPageLayout>

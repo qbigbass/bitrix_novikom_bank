@@ -1,0 +1,73 @@
+---
+
+import ACheckbox from "../../ACheckbox/ACheckbox.astro";
+
+type Size = 's' | 'm';
+
+interface Props {
+    checked?: boolean,
+    value?: any,
+    id: string | number,
+    size: Size,
+}
+
+const { id, checked,
+    size = 's', value, } = Astro.props;
+---
+<div class="drop-down-checkbox" class:list={[
+    `drop-down-checkbox--size-${size}`,
+]}>
+    <ACheckbox size="m" id={id} checked={checked} value={value} class="js-drop-down-checkbox">
+        <Fragment slot="label"><slot /></Fragment>
+    </ACheckbox>
+</div>
+
+<style lang="scss" is:global>
+    .drop-down-checkbox {
+
+        & .a-checkbox__inner {
+            padding: 1rem;
+            width: 100%;
+        }
+
+        &--size-s {
+
+            & .a-checkbox {
+
+                &__inner {
+                    gap: .5rem;
+                }
+
+                &__label {
+                    padding-top: 3px;
+                }
+            }
+        }
+
+        &--size-m {
+
+            & .a-checkbox {
+
+                &__inner {
+                    gap: .75rem;
+                }
+
+                &__label {
+                    padding-top: 0;
+                }
+            }
+        }
+
+        &:hover {
+            background-color: var(--dark-10);
+
+            & .a-checkbox {
+
+                &__label {
+                    color: var(--blue-100);
+                }
+            }
+        }
+    }
+</style>
+
