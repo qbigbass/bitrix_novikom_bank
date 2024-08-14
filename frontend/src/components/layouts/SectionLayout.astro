@@ -1,15 +1,18 @@
 ---
 type State = 'no-padding-bottom' | 'no-padding-top' | 'no-padding' | 's-no-padding' ;
+type BgColor = 'gray' | 'blue';
 
 interface Props {
 	class?: string;
 	types?: State[];
-	small?: boolean
+	small?: boolean;
+	bgColor?: BgColor;
 }
 
 const {
 	class: className,
 	types,
+	bgColor,
 	small = false,
 	...rest
 } = Astro.props as Props;
@@ -21,7 +24,8 @@ const typeClasses = types?.map((type) => `${type}`);
 	class:list={[
 		className,
 		typeClasses,
-		{ 'section-layout--s': small }
+		{ 'section-layout--s': small },
+		`section-layout--bg-${bgColor}`
 	]}
 	{...rest}
 >
@@ -52,6 +56,10 @@ const typeClasses = types?.map((type) => `${type}`);
 
 		&--bg-gray {
 			background-color: var(--dark-10);
+		}
+
+		&--bg-blue {
+			background-color: var(--blue-10);
 		}
 	}
 

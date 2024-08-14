@@ -1,241 +1,135 @@
 ---
-import DefaultPageLayout from '../layouts/DefaultPageLayout.astro';
-import SectionSpecialOffers from "../components/sections/SectionSpecialOffers.astro";
+import DefaultPageLayout from "../layouts/DefaultPageLayout.astro";
 import SectionSeeAlso from "../components/sections/SectionSeeAlso.astro";
-import AAccordionHeader from "../components/ui/AAccordion/AAccordionHeader.astro";
+import TextBanner from "../components/banners/TextBanner.astro";
+import SectionBenefitsLayout from "../components/layouts/SectionBenefitsLayout.astro";
 import AAccordionPanel from "../components/ui/AAccordion/AAccordionPanel.astro";
+import SectionHelpContentLayout from "../components/layouts/SectionHelpLayout/SectionHelpContentLayout.astro";
+import ATableRow from "../components/common/ATable/ATableRow.astro";
 import ARte from "../components/ARte.astro";
-import BenefitCard from "../components/common/BenefitCard/BenefitCard.astro";
 import AAccordion from "../components/ui/AAccordion/AAccordion.astro";
 import ATabPanel from "../components/ui/ATabs/common/ATabPanel.astro";
-import AAccordionContent from "../components/ui/AAccordion/AAccordionContent.astro";
-import SectionHelpLayout from "../components/layouts/SectionHelpLayout/SectionHelpLayout.astro";
-import SectionHelpContentLayout from "../components/layouts/SectionHelpLayout/SectionHelpContentLayout.astro";
-import DocumentDownload from "../components/ui/DocumentDownload/DocumentDownload.astro";
+import ATable from "../components/common/ATable/ATable.astro";
+import AddInfoItemLayout from "../components/layouts/AddInfoLayout/AddInfoItemLayout.astro";
+import ATab from "../components/ui/ATabs/common/ATab/ATab.astro";
+import AList from "../components/ui/AList/AList.astro";
 import AButton from "../components/ui/Buttons/AButton.astro";
 import FormCallMeBack from "../components/common/FormCallMeBack/FormCallMeBack.astro";
-import ATab from "../components/ui/ATabs/common/ATab/ATab.astro";
-import SectionConnectYourBenefits from "../components/sections/SectionConnectYourBenefits.astro";
+import AddInfoLayout from "../components/layouts/AddInfoLayout/AddInfoLayout.astro";
+import AAccordionHeader from "../components/ui/AAccordion/AAccordionHeader.astro";
+import ATableBody from "../components/common/ATable/ATableBody.astro";
+import ATableCell from "../components/common/ATable/ATableCell.astro";
+import AAccordionContent from "../components/ui/AAccordion/AAccordionContent.astro";
+import SectionHelpLayout from "../components/layouts/SectionHelpLayout/SectionHelpLayout.astro";
+import AHelper from "../components/common/AHelper.astro";
+import APolygonContainer from "../components/common/APolygonContainer/APolygonContainer.astro";
 import SectionLayout from "../components/layouts/SectionLayout.astro";
-import DisplayStepperItem from "../components/common/DisplayStepper/DisplayStepperItem.astro";
 import DisplayStepper from "../components/common/DisplayStepper/DisplayStepper.astro";
-import TableAdaptive from "../components/ui/TableAdaptive/TableAdaptive.astro";
-import SectionBenefitsLayout from "../components/layouts/SectionBenefitsLayout.astro";
-import ProductCardBanner from "../components/banners/ProductCardBanner.astro";
+import DisplayStepperItem from "../components/common/DisplayStepper/DisplayStepperItem.astro";
+import SectionCashBackLayout from "../components/layouts/SectionCashBackLayout.astro";
+import BenefitCard from "../components/common/BenefitCard/BenefitCard.astro";
+import DocumentDownload from "../components/ui/DocumentDownload/DocumentDownload.astro";
+
+const breadcrumbs = [
+	{
+		title: 'Частным клиентам',
+		url: '#'
+	},
+	{
+		title: 'Карты',
+		url: '#'
+	}
+]
 
 const benefitCards = [
 	{
-		title: 'Кешбэк рублями до&nbsp;30%',
-		description: 'За&nbsp;покупки у&nbsp;партнеров банка, до&nbsp;7% в&nbsp;избранных категориях',
-		iconId: 'icon-a-money-out'
+		title: 'До 7%',
+		description: 'Кешбэк рублями на&nbsp;счет ежемесячно',
+		iconId: 'icon-a-cashback'
 	},
 	{
-		title: 'Бонусы',
-		description: 'При оплате товаров и&nbsp;услуг на&nbsp;сумму 15&nbsp;000 руб в&nbsp;месяц',
-		iconId: 'icon-a-money'
+		title: '4 категории',
+		description: 'Повышенного кешбэка',
+		iconId: 'icon-a-multitasking'
 	},
 	{
-		title: '0 <span class="currency">₽</span> СМС информирование',
-		description: 'При покупках по&nbsp;карте в&nbsp;месяц на&nbsp;сумму равную или более 20&nbsp;000 рублей',
-		iconId: 'icon-a-transfer'
+		title: 'Гибкое подключение',
+		description: 'К&nbsp;счетам кредитных, дебетовых и&nbsp;зарплатных карт',
+		iconId: 'icon-a-flexibility'
 	},
 	{
-		title: '0 <span class="currency">₽</span> обслуживание',
-		description: 'Основной и&nbsp;дополнительной карты, в&nbsp;том числе в&nbsp;формате электронного <br>Платежного кольца/Платежного стикера',
-		iconId: 'icon-a-hand-money'
+		title: 'Ежемесячные обновления',
+		description: 'Новые избранные категории каждый месяц',
+		iconId: 'icon-a-other'
 	}
 ];
 
-const offerCards = [
-	{
-		title: 'Программа «Кешбэк»',
-		description: 'Возврат рублями от покупок по карте ',
-		symbolId: 'cashback-program',
-		imgSrc: "assets/big-illustrations/large-individual/contribution-rentier.png",
-		href: '#',
-		beforeNumberText: 'до',
-		numberText: '15,5%',
-		afterNumberText: '',
-		buttonText: 'Подробнее'
-	},
-	{
-		title: 'Программа «Бонусы»',
-		description: 'Бонусные баллы за покупки',
-		imgSrc: 'assets/big-illustrations/large-individual/bonus-program.png',
-		symbolId: 'bonus-program',
-		href: '#',
-		beforeNumberText: 'до',
-		numberText: '20%',
-		afterNumberText: '',
-		buttonText: 'Подробнее'
-	}
-];
-
-const tableDataPercent = {
-	header: [
-		'Процент годовых в месяц',
-		'Условия'
-	],
-	body: [
-		{
-			cells: [
-				{
-					className: 'number-l-heavy',
-					text: '4,5%',
-				},
-				{
-					className: 'body-l-light',
-					text: '<p>\n' +
-						'                    при сумме остатка не&nbsp;более 1&nbsp;400&nbsp;000 рублей на&nbsp;Текущем счете карты\n' +
-						'                </p>\n' +
-						'                <p>\n' +
-						'                    сумме покупок по&nbsp;карте (за&nbsp;исключением оплаты товаров и&nbsp;услуг через СБП)\n' +
-						'                    на&nbsp;общую сумму менее 20&nbsp;000 рублей в&nbsp;календарном месяце\n' +
-						'                </p>',
-				}
-
-			],
-		},
-		{
-			cells: [
-				{
-					className: 'number-l-heavy',
-					text: '5%',
-				},
-				{
-					className: 'body-l-light',
-					text: '<p>\n' +
-						'                    при сумме остатка не&nbsp;более 1&nbsp;400&nbsp;000 рублей на&nbsp;Текущем счете карты\n' +
-						'                </p>\n' +
-						'                <p>\n' +
-						'                    сумме покупок по&nbsp;карте (за&nbsp;исключением оплаты товаров и&nbsp;услуг через СБП)\n' +
-						'                    на&nbsp;общую сумму менее 20&nbsp;000 рублей в&nbsp;календарном месяце\n' +
-						'                </p>',
-				}
-
-			],
-		},
-		{
-			cells: [
-				{
-					className: 'number-l-heavy',
-					text: '7,5%',
-				},
-				{
-					className: 'body-l-light',
-					text: '<p>\n' +
-						'                    при сумме остатка не&nbsp;более 1&nbsp;400&nbsp;000 рублей на&nbsp;Текущем счете карты\n' +
-						'                </p>\n' +
-						'                <p>\n' +
-						'                    сумме покупок по&nbsp;карте (за&nbsp;исключением оплаты товаров и&nbsp;услуг через СБП)\n' +
-						'                    на&nbsp;общую сумму менее 20&nbsp;000 рублей в&nbsp;календарном месяце\n' +
-						'                </p>',
-				}
-
-			],
-		},
-		{
-			cells: [
-				{
-					className: 'number-l-heavy',
-					text: '8%',
-				},
-				{
-					className: 'body-l-light',
-					text: '<p>\n' +
-						'                    при сумме остатка не&nbsp;более 1&nbsp;400&nbsp;000 рублей на&nbsp;Текущем счете карты\n' +
-						'                </p>\n' +
-						'                <p>\n' +
-						'                    сумме покупок по&nbsp;карте (за&nbsp;исключением оплаты товаров и&nbsp;услуг через СБП)\n' +
-						'                    на&nbsp;общую сумму менее 20&nbsp;000 рублей в&nbsp;календарном месяце\n' +
-						'                </p>',
-				}
-
-			],
-		},
-	]
-}
 ---
-
-<DefaultPageLayout title="Всегда в плюсе карта">
-	<ProductCardBanner
-		benefits={[
-			{
-				beforeNum: 'до',
-				num: '8%',
-				description: 'Годовых в&nbsp;месяц на&nbsp;остаток'
-			},
-			{
-				num: '0',
-				currency: '₽',
-				description: 'Обслуживание карты'
-			},
-			{
-				num: '0',
-				currency: '₽',
-				description: 'Выпуск цифровой карты'
-			},
-		]}
-		image="assets/hero-banner/always-plus.png"
-		urlHref="#"
-		buttonText="Оформить карту"
-		hasPattern
-	>
-		<Fragment slot="title">
-			Всегда в&nbsp;плюсе
-		</Fragment>
-		<Fragment slot="subtitle">
-			Дебетовая карта Мир Премиальная
-		</Fragment>
-	</ProductCardBanner>
+<DefaultPageLayout title="Программа «Кешбэк»">
+	<TextBanner
+		title="Программа «Кешбэк»"
+		breadcrumbs={breadcrumbs}
+		description="Возврат рублями от&nbsp;покупок по&nbsp;карте"
+		backgroundColor="blue"
+        img="assets/big-illustrations/large-individual/cashback-program.png"
+	/>
 	<SectionBenefitsLayout
-		title="Преимущества"
 		benefits={benefitCards}
+	/>
+	<SectionCashBackLayout />
+	<SectionHelpLayout
+		title="Подробнее о&nbsp;программе &laquo;Кешбэк&raquo;"
 	>
-	</SectionBenefitsLayout>
-	<SectionConnectYourBenefits offerCards={offerCards} slidesPerView="mobile-s:1,mobile:1,tablet:2,laptop:2" />
-	<SectionHelpLayout title="О&nbsp;карте Всегда в&nbsp;плюсе">
 		<Fragment slot="tabs">
-			<ATab value="0" size="lm" isActive>Как пополнить карту</ATab>
-			<ATab value="1" size="lm">Стоимость и сроки</ATab>
+			<ATab value="0" size="lm" isActive>Условия начисления кешбэка</ATab>
+			<ATab value="1" size="lm">Размер кешбэка</ATab>
 			<ATab value="2" size="lm">Документы и тарифы</ATab>
 			<ATab value="3" size="lm">Вопросы и ответы</ATab>
 		</Fragment>
 		<Fragment slot="tabPanels">
 			<ATabPanel value="0">
-				<DisplayStepper>
-					<DisplayStepperItem icon="icon-a-web-bank" inRow>
-						<ARte class="body-l-heavy">
-							<p>
-								Через интернет-банк<br>
-								и&nbsp;мобильное приложение
-							</p>
-						</ARte>
-					</DisplayStepperItem>
-					<DisplayStepperItem icon="icon-a-bank" inRow>
-						<ARte class="body-l-heavy">
-							<p>В&nbsp;офисах банка <br>Новиком</p>
-						</ARte>
-					</DisplayStepperItem>
-					<DisplayStepperItem icon="icon-a-mir-payment" inRow>
-						<ARte class="body-l-heavy">
-							<p>В&nbsp;платежных терминалах/<br>банкоматах Банка и&nbsp;партнеров</p>
-						</ARte>
-					</DisplayStepperItem>
-					<DisplayStepperItem icon="icon-a-transfer" inRow>
-						<ARte class="body-l-heavy">
-							<p>Используя услугу <br>&laquo;Перевод с&nbsp;карты на&nbsp;карту&raquo;</p>
-						</ARte>
-					</DisplayStepperItem>
-					<DisplayStepperItem icon="icon-a-transh" inRow>
-						<ARte class="body-l-heavy">
-							<p>C&nbsp;помощью банковского<br> перевода</p>
-						</ARte>
-					</DisplayStepperItem>
-				</DisplayStepper>
+				<AddInfoLayout>
+					<AddInfoItemLayout isNarrow>
+						<p class="body-l-light">
+							Кешбэк начисляется при оплате товаров и&nbsp;услуг с&nbsp;использованием карт Банка:
+						</p>
+						<AList size="l">
+							<li>по&nbsp;карте МИР Премиальная &laquo;Всегда в&nbsp;плюсе&raquo; на&nbsp;сумму не&nbsp;менее 20&nbsp;000 рублей в&nbsp;месяц,</li>
+							<li>по&nbsp;остальным картам Банка на&nbsp;сумму не&nbsp;менее 5000 рублей в&nbsp;месяц.</li>
+						</AList>
+					</AddInfoItemLayout>
+				</AddInfoLayout>
 			</ATabPanel>
 			<ATabPanel value="1">
-				<TableAdaptive tableData={tableDataPercent} />
+				<AddInfoLayout>
+					<AddInfoItemLayout>
+						<ARte class="body-l-light">
+							<p>
+								Чем выше категория карты, к&nbsp;которой подключена программа, и&nbsp;чем больше покупок вы&nbsp;совершите, тем выше будет размер бонусного вознаграждения.
+							</p>
+						</ARte>
+						<ATable class="md:in-column" cols={2}>
+							<ATableBody>
+								<ATableRow>
+									<ATableCell class="body-l-heavy dark-70">Для владельцев карт</ATableCell>
+									<ATableCell class="body-l-light">
+										Без комиссии в&nbsp;банкоматах и&nbsp;ПВН банка Новиком
+										<br><br>
+										0,5% от&nbsp;суммы операции в&nbsp;банкоматах и&nbsp;ПВН сторонних банков
+									</ATableCell>
+								</ATableRow>
+								<ATableRow>
+									<ATableCell class="body-l-heavy dark-70">
+										Для клиентов, получающих зарплату <br>на&nbsp;счет в&nbsp;Новикоме
+									</ATableCell>
+									<ATableCell class="body-l-light">
+										Без комиссии в&nbsp;банкоматах и&nbsp;ПВН банка Новиком и&nbsp;сторонних банков
+									</ATableCell>
+								</ATableRow>
+							</ATableBody>
+						</ATable>
+					</AddInfoItemLayout>
+				</AddInfoLayout>
 			</ATabPanel>
 			<ATabPanel value="2">
 				<SectionHelpContentLayout>
@@ -502,53 +396,38 @@ const tableDataPercent = {
 				</SectionHelpContentLayout>
 			</ATabPanel>
 		</Fragment>
-		<Fragment slot="card">
-			<BenefitCard
-				title="Защита от мошенников"
-				description="Узнайте как уберечь себя и своих близких от финансового мошенничества."
-				icon="icon-a-bankInform"
-				theme="light-blue"
-				textButton="Подробнее"
-			/>
-		</Fragment>
 	</SectionHelpLayout>
 	<SectionLayout bgColor="gray">
 		<div class="content-container">
 			<AAccordion type="layout">
 				<AAccordionPanel>
 					<AAccordionHeader class="a-accordion-header--mobile-only">
-						<h3 class="headline-2">Как оформить карту</h3>
+						<h3 class="headline-2">Как узнать сумму выплаченного кешбэка</h3>
 					</AAccordionHeader>
 					<AAccordionContent class="a-accordion-content--hide-mobile">
 						<div class="a-accordion-content__wrapper">
 							<h3 class="headline-2 a-accordion-content__title">
-								Как оформить карту
+								Как узнать сумму выплаченного кешбэка
 							</h3>
 							<div class="a-accordion-content__content">
 								<DisplayStepper steps={3}>
 									<DisplayStepperItem icon="icon-a-web-bank">
-										<h3 class="headline-3">Онлайн</h3>
 										<ARte class="body-l-light">
-											<p>Закажите выпуск именной карты «Мир»<br> прямо сейчас.</p>
+											<p>
+												В&nbsp;выписке по&nbsp;карте в&nbsp;мобильном <br>
+												приложении или интернет-банке
+											</p>
 										</ARte>
-										<Fragment slot="footer">
-											<AButton element="a" href="#" size="lm">Оформить карту</AButton>
-										</Fragment>
 									</DisplayStepperItem>
-									<DisplayStepperItem icon="icon-a-personal-manager">
-										<h3 class="headline-3">Через менеджера</h3>
+									<DisplayStepperItem icon="icon-a-notification">
 										<ARte class="body-l-light">
-											<p>Закажите консультацию сотрудника по телефону 8 800 250-70-07.</p>
+											<p>В&nbsp;ежемесячном SMS</p>
 										</ARte>
 									</DisplayStepperItem>
 									<DisplayStepperItem icon="icon-a-bank">
-										<h3 class="headline-3">В офисе банка</h3>
 										<ARte class="body-l-light">
-											<p>Приходите в ближайший офис банка Новиком</p>
+											<p>В&nbsp;офисе банка Новиком</p>
 										</ARte>
-										<Fragment slot="footer">
-											<AButton element="a" href="#" size="lm" text afterIcon="icon-chevron-right">Найти на карте</AButton>
-										</Fragment>
 									</DisplayStepperItem>
 								</DisplayStepper>
 							</div>
@@ -558,6 +437,58 @@ const tableDataPercent = {
 			</AAccordion>
 		</div>
 	</SectionLayout>
-	<SectionSpecialOffers />
+	<SectionLayout>
+		<div class="content-container">
+			<APolygonContainer color="green-100">
+				<AHelper
+					class="dark-10"
+					image="helper-icon.png"
+					description="В&nbsp;2023&nbsp;г. программа лояльности банка Новиком была награждена премией &laquo;Финансовая элита России&raquo; в&nbsp;номинации &laquo;Программа лояльности с&nbsp;максимальной выгодой&raquo;."
+				/>
+			</APolygonContainer>
+		</div>
+	</SectionLayout>
+	<SectionLayout bgColor="gray">
+		<div class="content-container">
+			<AAccordion type="layout">
+				<AAccordionPanel>
+					<AAccordionHeader class="a-accordion-header--mobile-only">
+						<h3 class="headline-2">Как подключить кешбэк</h3>
+					</AAccordionHeader>
+					<AAccordionContent class="a-accordion-content--hide-mobile">
+						<div class="a-accordion-content__wrapper">
+							<h3 class="headline-2 a-accordion-content__title">
+								Как подключить кешбэк
+							</h3>
+							<div class="a-accordion-content__content">
+								<DisplayStepper steps={2}>
+									<DisplayStepperItem icon="icon-a-mobile-ready">
+										<ARte class="body-l-light">
+											<p>Через Контактный центр <br>по&nbsp;телефону +7&nbsp;800 250-70-07</p>
+										</ARte>
+									</DisplayStepperItem>
+									<DisplayStepperItem icon="icon-a-web-bank">
+										<ARte class="body-l-light">
+											<p>В&nbsp;Мобильном приложении Банка и&nbsp;Интернет-Банке</p>
+										</ARte>
+									</DisplayStepperItem>
+									<DisplayStepperItem icon="icon-a-bank">
+										<ARte class="body-l-light">
+											<p>В&nbsp;офисе банка Новиком</p>
+										</ARte>
+									</DisplayStepperItem>
+									<DisplayStepperItem icon="icon-a-personal-manager">
+										<ARte class="body-l-light">
+											<p>Через персонального менеджера <br>в&nbsp;организации, где получает зарплату владелец карты</p>
+										</ARte>
+									</DisplayStepperItem>
+								</DisplayStepper>
+							</div>
+						</div>
+					</AAccordionContent>
+				</AAccordionPanel>
+			</AAccordion>
+		</div>
+	</SectionLayout>
 	<SectionSeeAlso />
 </DefaultPageLayout>
