@@ -30,7 +30,6 @@ import ATable from "../components/common/ATable/ATable.astro";
 import ATag from "../components/ui/ATag/ATag.astro";
 import PageBanner from "../components/common/Banners/PageBanner.astro";
 import AHelper from "../components/common/AHelper.astro";
-import AList from "../components/ui/AList/AList.astro";
 import APolygonContainer from "../components/common/APolygonContainer/APolygonContainer.astro";
 
 const benefitCards = [
@@ -280,13 +279,13 @@ const benefitCards = [
 						</AAccordion>
 					</Fragment>
 					<Fragment slot="right">
-						<BenefitCard
-							title="Защита от мошенников"
-							description="Узнайте как уберечь себя и своих близких от финансового мошенничества."
-							icon="icon-a-bankInform"
-							theme="light-blue"
-							textButton="Подробнее"
-						/>
+                        <BenefitCard
+                            title="Защита от мошенников"
+                            description="Узнайте как уберечь себя и своих близких от финансового мошенничества."
+                            icon="icon-a-protection"
+                            theme="grey"
+                            textButton="Подробнее"
+                        />
 					</Fragment>
 				</SectionHelpContentLayout>
 			</ATabPanel>
@@ -426,11 +425,11 @@ const benefitCards = [
 	</SectionHelpLayout>
 	<SectionHowApplyCard />
 	<PageBanner img="/assets/banners/page-banner-mir-credit-premium.png">
-		<Fragment slot="header">
+		<Fragment slot="tag">
 			<ATag outline>Услуга</ATag>
 		</Fragment>
-		<Fragment>
-			<h3 class="headline-2">О карте</h3>
+        <h3 slot="title" class="headline-2">О карте</h3>
+        <Fragment>
 			<p class="body-l-light">
 				Предоставляет держателю возможность участвовать в акциях и различных мероприятиях, организуемых для держателей карт «Мир» АО «НСПК»: билеты на фестивали, посещение закрытых мероприятий, скидки при оплате товаров и услуг, розыгрыши ценных призов и т.д.
 			</p>

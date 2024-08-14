@@ -1,0 +1,272 @@
+---
+import DefaultPageLayout from "../layouts/DefaultPageLayout.astro";
+import SectionSeeAlso from "../components/sections/SectionSeeAlso.astro";
+import TextBanner from "../components/banners/TextBanner.astro";
+import ATab from "../components/ui/ATabs/common/ATab/ATab.astro";
+import AddInfoLayout from "../components/layouts/AddInfoLayout/AddInfoLayout.astro";
+import AAccordionContent from "../components/ui/AAccordion/AAccordionContent.astro";
+import SectionHelpContentLayout from "../components/layouts/SectionHelpLayout/SectionHelpContentLayout.astro";
+import AAccordionHeader from "../components/ui/AAccordion/AAccordionHeader.astro";
+import AAccordionPanel from "../components/ui/AAccordion/AAccordionPanel.astro";
+import SectionHelpLayout from "../components/layouts/SectionHelpLayout/SectionHelpLayout.astro";
+import ATabPanel from "../components/ui/ATabs/common/ATabPanel.astro";
+import AAccordion from "../components/ui/AAccordion/AAccordion.astro";
+import AddInfoItemLayout from "../components/layouts/AddInfoLayout/AddInfoItemLayout.astro";
+import BenefitCard from "../components/common/BenefitCard/BenefitCard.astro";
+import DocumentDownload from "../components/ui/DocumentDownload/DocumentDownload.astro";
+import ATableBody from "../components/common/ATable/ATableBody.astro";
+import ATableCell from "../components/common/ATable/ATableCell.astro";
+import ATable from "../components/common/ATable/ATable.astro";
+import ATableRow from "../components/common/ATable/ATableRow.astro";
+import ATabs from "../components/ui/ATabs/ATabs.astro";
+import DisplayStepper from "../components/common/DisplayStepper/DisplayStepper.astro";
+import ARte from "../components/ARte.astro";
+import DisplayStepperItem from "../components/common/DisplayStepper/DisplayStepperItem.astro";
+import SectionTransfersOfficeStepsLayout from "../components/layouts/SectionTransfersOfficeStepsLayout.astro";
+import SectionBenefitsLayout from "../components/layouts/SectionBenefitsLayout.astro";
+
+const breadcrumbs = [
+    {
+        title: 'Частным клиентам',
+        url: '#'
+    },
+    {
+        title: 'Платежи и переводы',
+        url: '#'
+    }
+];
+---
+<DefaultPageLayout title="Банковские переводы в офисе">
+    <TextBanner
+        title="Банковские переводы в офисе"
+        breadcrumbs={breadcrumbs}
+        description="Переводы денежных средств в рублях и иностранной валюте в пользу физических <br>и юридических лиц в любую точку мира"
+    />
+    <SectionBenefitsLayout
+        useBackground={false}
+        small
+        types={['no-padding-bottom']}
+    >
+        <ATabs slot="tabs">
+            <Fragment slot="tabs">
+                <ATab href="/spc-for-employees" size="lm" isActive>Переводы со счетов</ATab>
+                <ATab href="/spc-for-organizations" size="lm">Переводы без открытия счета</ATab>
+            </Fragment>
+        </ATabs>
+    </SectionBenefitsLayout>
+    <SectionTransfersOfficeStepsLayout
+        title="Как оформить перевод"
+    >
+        <DisplayStepper steps="4">
+            <DisplayStepperItem number="1">
+                <ARte class="body-l-light">
+                    <p>
+                        Обратиться в офис Банка<br>
+                        с документом, удостоверяющим личность
+                    </p>
+                </ARte>
+            </DisplayStepperItem>
+            <DisplayStepperItem number="2">
+                <ARte class="body-l-light">
+                    <p>
+                        Сообщить необходимые реквизиты получателя перевода
+                        и назначение перевода
+                    </p>
+                </ARte>
+            </DisplayStepperItem>
+            <DisplayStepperItem number="3">
+                <ARte class="body-l-light">
+                    <p>
+                        Подписать заявление (распоряжение) на перевод
+                    </p>
+                </ARte>
+            </DisplayStepperItem>
+            <DisplayStepperItem number="4">
+                <ARte class="body-l-light">
+                    <p>
+                        Получить документ, подтверждающий осуществление перевода
+                    </p>
+                </ARte>
+            </DisplayStepperItem>
+        </DisplayStepper>
+    </SectionTransfersOfficeStepsLayout>
+    <SectionHelpLayout title="Условия переводов со счетов">
+        <Fragment slot="tabs">
+            <ATab value="0" size="lm" isActive>Лимиты</ATab>
+            <ATab value="1" size="lm">Сроки исполнения переводов</ATab>
+            <ATab value="2" size="lm">Операционное время</ATab>
+            <ATab value="3" size="lm">Документы и тарифы</ATab>
+        </Fragment>
+        <Fragment slot="tabPanels">
+            <ATabPanel value="0">
+                <AddInfoLayout>
+                    <AddInfoItemLayout>
+                        <ATable class="md:in-column" cols="2">
+                            <ATableBody>
+                                <ATableRow>
+                                    <ATableCell class="body-l-heavy dark-70">Внутрибанковские переводы в пользу физических лиц и между своими счетами</ATableCell>
+                                    <ATableCell class="body-l-light">Без комиссии</ATableCell>
+                                </ATableRow>
+                                <ATableRow>
+                                    <ATableCell class="body-l-heavy dark-70">Внутрибанковский перевод в пользу юридических лиц</ATableCell>
+                                    <ATableCell class="body-l-light">1% от суммы (минимум - 50 рублей, максимум - 500 рублей)</ATableCell>
+                                </ATableRow>
+                                <ATableRow>
+                                    <ATableCell class="body-l-heavy dark-70">Перевод в бюджет всех уровней в связи с уплатой налогов и сборов</ATableCell>
+                                    <ATableCell class="body-l-light">Без комиссии</ATableCell>
+                                </ATableRow>
+                                <ATableRow>
+                                    <ATableCell class="body-l-heavy dark-70">Межбанковский перевод, между своими счетами в разных банках</ATableCell>
+                                    <ATableCell class="body-l-light">без комиссии до 30 000 000 ₽. в месяц</ATableCell>
+                                </ATableRow>
+                                <ATableRow>
+                                    <ATableCell class="body-l-heavy dark-70">Межбанковский перевод, если валютный счет получателя открыт в&nbsp;другом&nbsp;банке</ATableCell>
+                                    <ATableCell class="body-l-light">1% от суммы (минимум - 15 ед. валюты операции, макс. - 250 ед. валюты операции)</ATableCell>
+                                </ATableRow>
+                            </ATableBody>
+                        </ATable>
+                    </AddInfoItemLayout>
+                </AddInfoLayout>
+            </ATabPanel>
+            <ATabPanel value="1">
+                Сроки исполнения переводов
+            </ATabPanel>
+            <ATabPanel value="2">
+                Операционное время
+            </ATabPanel>
+            <ATabPanel value="3">
+                <SectionHelpContentLayout>
+                    <Fragment slot="left">
+                        <AAccordion type="component">
+                            <AAccordionPanel>
+                                <AAccordionHeader>
+                                    <div class="body-l-light">Тарифы для физических лиц</div>
+                                </AAccordionHeader>
+                                <AAccordionContent>
+                                    <p class="body-m-light dark-70" style="margin-bottom: 1.5rem;">Тарифы для физических лиц, действующие во всех регионах присутствия Банка.</p>
+                                    <DocumentDownload
+                                        fileName="Сборник тарифов на обслуживание банковских карт для физических лиц, выпущенных по 21.08.2022 г."
+                                        dateTime="12.12.23 18:56"
+                                        fileType="XLS"
+                                    />
+                                    <DocumentDownload
+                                        fileName="Сборник тарифов на обслуживание банковских карт Мир для физических лиц, выпущенных с 22.08.2022 г."
+                                        dateTime="12.12.23 18:56"
+                                        fileType="XLS"
+                                    />
+                                    <DocumentDownload
+                                        fileName="Сборник тарифов на обслуживание физических лиц"
+                                        dateTime="12.12.23 18:56"
+                                        fileType="XLS"
+                                    />
+                                </AAccordionContent>
+                            </AAccordionPanel>
+                            <AAccordionPanel>
+                                <AAccordionHeader>
+                                    <div class="body-l-light">Договор банковского обслуживания</div>
+                                </AAccordionHeader>
+                                <AAccordionContent>
+                                    <p class="body-m-light dark-70" style="margin-bottom: 1.5rem;">Тарифы для физических лиц, действующие во всех регионах присутствия Банка.</p>
+                                    <DocumentDownload
+                                        fileName="Сборник тарифов на обслуживание банковских карт для физических лиц, выпущенных по 21.08.2022 г."
+                                        dateTime="12.12.23 18:56"
+                                        fileType="XLS"
+                                    />
+                                    <DocumentDownload
+                                        fileName="Сборник тарифов на обслуживание банковских карт Мир для физических лиц, выпущенных с 22.08.2022 г."
+                                        dateTime="12.12.23 18:56"
+                                        fileType="XLS"
+                                    />
+                                    <DocumentDownload
+                                        fileName="Сборник тарифов на обслуживание физических лиц"
+                                        dateTime="12.12.23 18:56"
+                                        fileType="XLS"
+                                    />
+                                </AAccordionContent>
+                            </AAccordionPanel>
+                            <AAccordionPanel>
+                                <AAccordionHeader>
+                                    <div class="body-l-light">Типовые документы</div>
+                                </AAccordionHeader>
+                                <AAccordionContent>
+                                    <p class="body-m-light dark-70" style="margin-bottom: 1.5rem;">Тарифы для физических лиц, действующие во всех регионах присутствия Банка.</p>
+                                    <DocumentDownload
+                                        fileName="Сборник тарифов на обслуживание банковских карт для физических лиц, выпущенных по 21.08.2022 г."
+                                        dateTime="12.12.23 18:56"
+                                        fileType="XLS"
+                                    />
+                                    <DocumentDownload
+                                        fileName="Сборник тарифов на обслуживание банковских карт Мир для физических лиц, выпущенных с 22.08.2022 г."
+                                        dateTime="12.12.23 18:56"
+                                        fileType="XLS"
+                                    />
+                                    <DocumentDownload
+                                        fileName="Сборник тарифов на обслуживание физических лиц"
+                                        dateTime="12.12.23 18:56"
+                                        fileType="XLS"
+                                    />
+                                </AAccordionContent>
+                            </AAccordionPanel>
+                            <AAccordionPanel>
+                                <AAccordionHeader>
+                                    <div class="body-l-light">Паспорта дебетовых карт</div>
+                                </AAccordionHeader>
+                                <AAccordionContent>
+                                    <p class="body-m-light dark-70" style="margin-bottom: 1.5rem;">Тарифы для физических лиц, действующие во всех регионах присутствия Банка.</p>
+                                    <DocumentDownload
+                                        fileName="Сборник тарифов на обслуживание банковских карт для физических лиц, выпущенных по 21.08.2022 г."
+                                        dateTime="12.12.23 18:56"
+                                        fileType="XLS"
+                                    />
+                                    <DocumentDownload
+                                        fileName="Сборник тарифов на обслуживание банковских карт Мир для физических лиц, выпущенных с 22.08.2022 г."
+                                        dateTime="12.12.23 18:56"
+                                        fileType="XLS"
+                                    />
+                                    <DocumentDownload
+                                        fileName="Сборник тарифов на обслуживание физических лиц"
+                                        dateTime="12.12.23 18:56"
+                                        fileType="XLS"
+                                    />
+                                </AAccordionContent>
+                            </AAccordionPanel>
+                            <AAccordionPanel>
+                                <AAccordionHeader>
+                                    <div class="body-l-light">Иные документы</div>
+                                </AAccordionHeader>
+                                <AAccordionContent>
+                                    <p class="body-m-light dark-70" style="margin-bottom: 1.5rem;">Тарифы для физических лиц, действующие во всех регионах присутствия Банка.</p>
+                                    <DocumentDownload
+                                        fileName="Сборник тарифов на обслуживание банковских карт для физических лиц, выпущенных по 21.08.2022 г."
+                                        dateTime="12.12.23 18:56"
+                                        fileType="XLS"
+                                    />
+                                    <DocumentDownload
+                                        fileName="Сборник тарифов на обслуживание банковских карт Мир для физических лиц, выпущенных с 22.08.2022 г."
+                                        dateTime="12.12.23 18:56"
+                                        fileType="XLS"
+                                    />
+                                    <DocumentDownload
+                                        fileName="Сборник тарифов на обслуживание физических лиц"
+                                        dateTime="12.12.23 18:56"
+                                        fileType="XLS"
+                                    />
+                                </AAccordionContent>
+                            </AAccordionPanel>
+                        </AAccordion>
+                    </Fragment>
+                    <Fragment slot="right">
+                        <BenefitCard
+                            title="Защита от мошенников"
+                            description="Узнайте как уберечь себя и своих близких от финансового мошенничества."
+                            icon="icon-a-protection"
+                            theme="grey"
+                            textButton="Подробнее"
+                        />
+                    </Fragment>
+                </SectionHelpContentLayout>
+            </ATabPanel>
+        </Fragment>
+    </SectionHelpLayout>
+    <SectionSeeAlso />
+</DefaultPageLayout>
