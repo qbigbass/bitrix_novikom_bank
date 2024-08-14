@@ -57,8 +57,8 @@ const breadcrumbs = [
     <SectionTransfersOfficeStepsLayout
         title="Как оформить перевод"
     >
-        <DisplayStepper steps="4">
-            <DisplayStepperItem number="1">
+        <DisplayStepper steps={4}>
+            <DisplayStepperItem number={1}>
                 <ARte class="body-l-light">
                     <p>
                         Обратиться в офис Банка<br>
@@ -66,7 +66,7 @@ const breadcrumbs = [
                     </p>
                 </ARte>
             </DisplayStepperItem>
-            <DisplayStepperItem number="2">
+            <DisplayStepperItem number={2}>
                 <ARte class="body-l-light">
                     <p>
                         Сообщить необходимые реквизиты получателя перевода
@@ -74,14 +74,14 @@ const breadcrumbs = [
                     </p>
                 </ARte>
             </DisplayStepperItem>
-            <DisplayStepperItem number="3">
+            <DisplayStepperItem number={3}>
                 <ARte class="body-l-light">
                     <p>
                         Подписать заявление (распоряжение) на перевод
                     </p>
                 </ARte>
             </DisplayStepperItem>
-            <DisplayStepperItem number="4">
+            <DisplayStepperItem number={4}>
                 <ARte class="body-l-light">
                     <p>
                         Получить документ, подтверждающий осуществление перевода
@@ -101,7 +101,7 @@ const breadcrumbs = [
             <ATabPanel value="0">
                 <AddInfoLayout>
                     <AddInfoItemLayout>
-                        <ATable class="md:in-column" cols="2">
+                        <ATable class="md:in-column" cols={2}>
                             <ATableBody>
                                 <ATableRow>
                                     <ATableCell class="body-l-heavy dark-70">Внутрибанковские переводы в пользу физических лиц и между своими счетами</ATableCell>

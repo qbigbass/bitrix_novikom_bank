@@ -32,6 +32,7 @@ import CalculatorCardItem from "../components/common/CalculatorCard/CalculatorCa
 import CalculatorCard from "../components/common/CalculatorCard/CalculatorCard.astro";
 import FormRow from "../components/layouts/FormLayout/FormRow.astro";
 import AInput from "../components/ui/AInput/AInput.astro";
+import InputWithIcon from "../components/ui/InputWithIcon/InputWithIcon.astro";
 
 const benefitCards = [
 	{
@@ -207,10 +208,6 @@ const tableDataPercent = {
 							type="month"
 							editable
 						/>
-						<FormRow cols={2}>
-							<AInput size="m" label="Дата пополнения" forId="name-1" name="input-1"/>
-							<AInput size="m" label="Сумма пополнения" forId="name-2" name="input-2"/>
-						</FormRow>
 					</Fragment>
 					<Fragment slot="agreements">
 						<ACheckbox id="is-card-novkom" size="l" checked>
@@ -219,6 +216,13 @@ const tableDataPercent = {
 						<ACheckbox id="insurance" size="l">
 							<span class="body-m-light" slot="label">Планируются пополнения суммы вклада</span>
 						</ACheckbox>
+					</Fragment>
+					<Fragment slot="fields">
+						<FormRow cols={2}>
+							<InputWithIcon afterIcon="icon-search" />
+							<!--<AInput size="m" label="Дата пополнения" forId="name-1" name="input-1"/>-->
+							<AInput size="m" label="Сумма пополнения" forId="name-2" name="input-2"/>
+						</FormRow>
 					</Fragment>
 					<Fragment slot="card">
 						<CalculatorCard

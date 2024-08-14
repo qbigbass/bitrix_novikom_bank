@@ -22,6 +22,11 @@ const {
                 </div>
             )
         }
+		{
+			Astro.slots['fields'] && (
+				<slot name="fields" />
+			)
+		}
 	</div>
 	<div class="calculator-layout__card">
 		<slot name="card" />
@@ -36,6 +41,18 @@ const {
 		grid-template-columns: 100%;
         align-items: flex-start;
 		gap: 1.5rem;
+
+		@include use-media(tablet) {
+			gap: 2.5rem;
+		}
+
+		@include use-media(tablet-album) {
+			grid-template-columns: 1fr 1fr;
+		}
+
+		@include use-media(laptop-x) {
+			gap: 7.5rem;
+		}
 
         &__form {
             display: flex;
@@ -65,17 +82,5 @@ const {
                 gap: 1rem;
             }
         }
-
-		@include use-media(tablet) {
-			gap: 2.5rem;
-		}
-
-		@include use-media(tablet-album) {
-			grid-template-columns: 1fr 1fr;
-		}
-
-		@include use-media(laptop-x) {
-			gap: 7.5rem;
-		}
 	}
 </style>
