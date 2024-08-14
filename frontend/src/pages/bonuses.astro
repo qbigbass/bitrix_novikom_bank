@@ -27,6 +27,8 @@ import SectionLayout from "../components/layouts/SectionLayout.astro";
 import DisplayStepper from "../components/common/DisplayStepper/DisplayStepper.astro";
 import DisplayStepperItem from "../components/common/DisplayStepper/DisplayStepperItem.astro";
 import BonusCalculator from "../components/calculators/BonusCalculator.astro";
+import BenefitCard from "../components/common/BenefitCard/BenefitCard.astro";
+import DocumentDownload from "../components/ui/DocumentDownload/DocumentDownload.astro";
 
 const breadcrumbs = [
 	{
@@ -57,7 +59,7 @@ const benefitCards = [
 	}
 ];
 ---
-<DefaultPageLayout title="Программа «Бонусная копилка»">
+<DefaultPageLayout title="Программа «Бонусны»">
 	<TextBanner
 		title="Программа «Бонусы»"
 		breadcrumbs={breadcrumbs}
@@ -69,7 +71,7 @@ const benefitCards = [
 		benefits={benefitCards}
 	/>
 	<SectionLayout
-		types={['no-padding-top', 'padding-m']}
+		types={['no-padding-top']}
 		small
 	>
 		<div class="content-container">
@@ -138,7 +140,7 @@ const benefitCards = [
 								Чем выше категория карты, к&nbsp;которой подключена программа, и&nbsp;чем больше покупок вы&nbsp;совершите, тем выше будет размер бонусного вознаграждения.
 							</p>
 						</ARte>
-						<ATable class="md:in-column" cols="2">
+						<ATable class="md:in-column" cols={2}>
 							<ATableBody>
 								<ATableRow>
 									<ATableCell class="body-l-heavy dark-70">Для владельцев карт</ATableCell>
@@ -160,6 +162,138 @@ const benefitCards = [
 						</ATable>
 					</AddInfoItemLayout>
 				</AddInfoLayout>
+			</ATabPanel>
+			<ATabPanel value="3">
+				<SectionHelpContentLayout>
+					<Fragment slot="left">
+						<AAccordion type="component">
+							<AAccordionPanel>
+								<AAccordionHeader>
+									<div class="body-l-light">Тарифы для физических лиц</div>
+								</AAccordionHeader>
+								<AAccordionContent>
+									<p class="body-m-light dark-70" style="margin-bottom: 1.5rem;">Тарифы для физических лиц, действующие во всех регионах присутствия Банка.</p>
+									<DocumentDownload
+										fileName="Сборник тарифов на обслуживание банковских карт для физических лиц, выпущенных по 21.08.2022 г."
+										dateTime="12.12.23 18:56"
+										fileType="XLS"
+									/>
+									<DocumentDownload
+										fileName="Сборник тарифов на обслуживание банковских карт Мир для физических лиц, выпущенных с 22.08.2022 г."
+										dateTime="12.12.23 18:56"
+										fileType="XLS"
+									/>
+									<DocumentDownload
+										fileName="Сборник тарифов на обслуживание физических лиц"
+										dateTime="12.12.23 18:56"
+										fileType="XLS"
+									/>
+								</AAccordionContent>
+							</AAccordionPanel>
+							<AAccordionPanel>
+								<AAccordionHeader>
+									<div class="body-l-light">Договор банковского обслуживания</div>
+								</AAccordionHeader>
+								<AAccordionContent>
+									<p class="body-m-light dark-70" style="margin-bottom: 1.5rem;">Тарифы для физических лиц, действующие во всех регионах присутствия Банка.</p>
+									<DocumentDownload
+										fileName="Сборник тарифов на обслуживание банковских карт для физических лиц, выпущенных по 21.08.2022 г."
+										dateTime="12.12.23 18:56"
+										fileType="XLS"
+									/>
+									<DocumentDownload
+										fileName="Сборник тарифов на обслуживание банковских карт Мир для физических лиц, выпущенных с 22.08.2022 г."
+										dateTime="12.12.23 18:56"
+										fileType="XLS"
+									/>
+									<DocumentDownload
+										fileName="Сборник тарифов на обслуживание физических лиц"
+										dateTime="12.12.23 18:56"
+										fileType="XLS"
+									/>
+								</AAccordionContent>
+							</AAccordionPanel>
+							<AAccordionPanel>
+								<AAccordionHeader>
+									<div class="body-l-light">Типовые документы</div>
+								</AAccordionHeader>
+								<AAccordionContent>
+									<p class="body-m-light dark-70" style="margin-bottom: 1.5rem;">Тарифы для физических лиц, действующие во всех регионах присутствия Банка.</p>
+									<DocumentDownload
+										fileName="Сборник тарифов на обслуживание банковских карт для физических лиц, выпущенных по 21.08.2022 г."
+										dateTime="12.12.23 18:56"
+										fileType="XLS"
+									/>
+									<DocumentDownload
+										fileName="Сборник тарифов на обслуживание банковских карт Мир для физических лиц, выпущенных с 22.08.2022 г."
+										dateTime="12.12.23 18:56"
+										fileType="XLS"
+									/>
+									<DocumentDownload
+										fileName="Сборник тарифов на обслуживание физических лиц"
+										dateTime="12.12.23 18:56"
+										fileType="XLS"
+									/>
+								</AAccordionContent>
+							</AAccordionPanel>
+							<AAccordionPanel>
+								<AAccordionHeader>
+									<div class="body-l-light">Паспорта дебетовых карт</div>
+								</AAccordionHeader>
+								<AAccordionContent>
+									<p class="body-m-light dark-70" style="margin-bottom: 1.5rem;">Тарифы для физических лиц, действующие во всех регионах присутствия Банка.</p>
+									<DocumentDownload
+										fileName="Сборник тарифов на обслуживание банковских карт для физических лиц, выпущенных по 21.08.2022 г."
+										dateTime="12.12.23 18:56"
+										fileType="XLS"
+									/>
+									<DocumentDownload
+										fileName="Сборник тарифов на обслуживание банковских карт Мир для физических лиц, выпущенных с 22.08.2022 г."
+										dateTime="12.12.23 18:56"
+										fileType="XLS"
+									/>
+									<DocumentDownload
+										fileName="Сборник тарифов на обслуживание физических лиц"
+										dateTime="12.12.23 18:56"
+										fileType="XLS"
+									/>
+								</AAccordionContent>
+							</AAccordionPanel>
+							<AAccordionPanel>
+								<AAccordionHeader>
+									<div class="body-l-light">Иные документы</div>
+								</AAccordionHeader>
+								<AAccordionContent>
+									<p class="body-m-light dark-70" style="margin-bottom: 1.5rem;">Тарифы для физических лиц, действующие во всех регионах присутствия Банка.</p>
+									<DocumentDownload
+										fileName="Сборник тарифов на обслуживание банковских карт для физических лиц, выпущенных по 21.08.2022 г."
+										dateTime="12.12.23 18:56"
+										fileType="XLS"
+									/>
+									<DocumentDownload
+										fileName="Сборник тарифов на обслуживание банковских карт Мир для физических лиц, выпущенных с 22.08.2022 г."
+										dateTime="12.12.23 18:56"
+										fileType="XLS"
+									/>
+									<DocumentDownload
+										fileName="Сборник тарифов на обслуживание физических лиц"
+										dateTime="12.12.23 18:56"
+										fileType="XLS"
+									/>
+								</AAccordionContent>
+							</AAccordionPanel>
+						</AAccordion>
+					</Fragment>
+					<Fragment slot="right">
+						<BenefitCard
+							title="Защита от мошенников"
+							description="Узнайте как уберечь себя и своих близких от финансового мошенничества."
+							icon="icon-a-money-out"
+							theme="light-blue"
+							textButton="Подробнее"
+						/>
+					</Fragment>
+				</SectionHelpContentLayout>
 			</ATabPanel>
 			<ATabPanel value="4">
 				<SectionHelpContentLayout>
