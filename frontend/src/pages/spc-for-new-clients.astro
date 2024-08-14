@@ -22,7 +22,6 @@ import FormCallMeBack from "../components/common/FormCallMeBack/FormCallMeBack.a
 import ATable from "../components/common/ATable/ATable.astro";
 import ATableRow from "../components/common/ATable/ATableRow.astro";
 import ATableCell from "../components/common/ATable/ATableCell.astro";
-import ATableHeader from "../components/common/ATable/ATableHeader.astro";
 import ATableBody from "../components/common/ATable/ATableBody.astro";
 
 const benefitCards = [
@@ -79,7 +78,7 @@ const benefitCards = [
 				description: 'Скидки на&nbsp;отдых, спорт, обучение и&nbsp;многое другое'
 			}
 		]}
-		image="assets/cards/mir-pc.png"
+		image="assets/hero-banner/mir-pc.png"
 		urlHref="#"
 		buttonText="Оформить карту"
 		hasPattern
@@ -235,13 +234,13 @@ const benefitCards = [
 						</AAccordion>
 					</Fragment>
 					<Fragment slot="right">
-						<BenefitCard
-							title="Защита от мошенников"
-							description="Узнайте как уберечь себя и своих близких от финансового мошенничества."
-							icon="icon-a-bankInform"
-							theme="light-blue"
-							textButton="Подробнее"
-						/>
+                        <BenefitCard
+                            title="Защита от мошенников"
+                            description="Узнайте как уберечь себя и своих близких от финансового мошенничества."
+                            icon="icon-a-protection"
+                            theme="grey"
+                            textButton="Подробнее"
+                        />
 					</Fragment>
 				</SectionHelpContentLayout>
 			</ATabPanel>

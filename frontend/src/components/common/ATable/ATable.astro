@@ -1,6 +1,7 @@
 ---
 interface Props {
-	classList: string;
+	classList?: string;
+	class?: string;
 	cols: number
 }
 
@@ -25,6 +26,8 @@ const {
 	@import "@styles/media-queries";
 
 	.a-table {
+        width: 100%;
+
 		.a-table-row {
 			display: grid;
 			gap: 1rem;

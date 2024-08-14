@@ -62,7 +62,7 @@ const benefitCards = [
 				description: 'Кешбэк от суммы покупок в избранных категориях'
 			}
 		]}
-		image="assets/cards/mir-supreme.png"
+		image="assets/hero-banner/mir-supreme.png"
 		urlHref="#"
 		buttonText="Оформить карту"
 		hasPattern
@@ -80,8 +80,8 @@ const benefitCards = [
 		<Fragment slot="tag">
 			<ATag href="#" outline>Привилегия</ATag>
 		</Fragment>
-		<Fragment>
-			<div class="headline-2">Доступ в бизнес-залы аэропортов  и вокзалов</div>
+        <h3 slot="title" class="headline-2">Доступ в бизнес-залы аэропортов  и вокзалов</h3>
+        <Fragment>
 			<div class="body-l-light">
 				Путешествуйте с комфортом и наслаждайтесь каждой поездкой, ожидая свой рейс в бизнес-залах ON PASS или в ресторанах ON FOOD.
 			</div>
@@ -253,13 +253,13 @@ const benefitCards = [
 						</AAccordion>
 					</Fragment>
 					<Fragment slot="right">
-						<BenefitCard
-							title="Защита от мошенников"
-							description="Узнайте как уберечь себя и своих близких от финансового мошенничества."
-							icon="icon-a-bankInform"
-							theme="light-blue"
-							textButton="Подробнее"
-						/>
+                        <BenefitCard
+                            title="Защита от мошенников"
+                            description="Узнайте как уберечь себя и своих близких от финансового мошенничества."
+                            icon="icon-a-protection"
+                            theme="grey"
+                            textButton="Подробнее"
+                        />
 					</Fragment>
 				</SectionHelpContentLayout>
 			</ATabPanel>

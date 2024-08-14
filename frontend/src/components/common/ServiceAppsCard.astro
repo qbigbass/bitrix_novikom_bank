@@ -4,7 +4,8 @@ import AButton from "../ui/Buttons/AButton.astro";
 import AIcon from "../AIcon.astro";
 
 interface Props {
-	className: string;
+	className?: string;
+	class?: string;
 }
 
 const {
@@ -15,7 +16,7 @@ const {
 
 <div class="service-apps-card" class:list={className} {...rest}>
 	<div class="service-apps-card__content">
-		<div class="service-apps-card__title headline-2">Мобильное приложение</div>
+		<h3 class="service-apps-card__title headline-2">Мобильное приложение</h3>
 		<div class="service-apps-card__benefits">
 			<div class="service-apps-card-benefit">
 				<div class="service-apps-card-benefit__icon"><AIcon symbolId="icon-mobile" size="m"/></div>

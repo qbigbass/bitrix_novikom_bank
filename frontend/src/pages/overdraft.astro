@@ -19,6 +19,8 @@ import AAccordionContent from "../components/ui/AAccordion/AAccordionContent.ast
 import SectionHelpLayout from "../components/layouts/SectionHelpLayout/SectionHelpLayout.astro";
 import PageBanner from "../components/common/Banners/PageBanner.astro";
 import ATag from "../components/ui/ATag/ATag.astro";
+import BenefitCardsLayout from "../components/layouts/BenefitCardsLayout.astro";
+import DisplayStepperItem from "../components/common/DisplayStepper/DisplayStepperItem.astro";
 
 const breadcrumbs = [
 	{
@@ -65,8 +67,8 @@ const benefitCards = [
 		<Fragment slot="tag">
 			<ATag href="#" outline>Привилегия</ATag>
 		</Fragment>
-		<Fragment>
-			<div class="headline-2">Как получить кредит</div>
+        <h3 slot="title" class="headline-2">Как получить кредит</h3>
+        <Fragment>
 			<div class="body-l-light">
 				Обратиться в офис Банка с необходимым пакетом документов.
 				Клиенты, получающие заработную плату на счет в банке Новиком, могут оформить заявку на территории своей организации.
@@ -86,11 +88,23 @@ const benefitCards = [
 		</Fragment>
 		<Fragment slot="tabPanels">
 			<ATabPanel value="0">
-				<AList size="l">
-					<li>Возраст от 21 до 60 лет</li>
-					<li>Стаж на последнем месте работы не менее 3 месяцев</li>
-					<li>Перечисление зарплаты на счет в банке Новиком</li>
-				</AList>
+                <BenefitCardsLayout>
+                    <DisplayStepperItem icon="icon-a-personal-manager" inRow>
+                        <ARte class="body-l-heavy">
+                            <p>Возраст от 21 до 60 лет</p>
+                        </ARte>
+                    </DisplayStepperItem>
+                    <DisplayStepperItem icon="icon-a-hands" inRow>
+                        <ARte class="body-l-heavy">
+                            <p>Стаж на последнем месте работы не менее 3 месяцев</p>
+                        </ARte>
+                    </DisplayStepperItem>
+                    <DisplayStepperItem icon="icon-a-money" inRow>
+                        <ARte class="body-l-heavy">
+                            <p>Стаж на последнем месте работы не менее 3 месяцев</p>
+                        </ARte>
+                    </DisplayStepperItem>
+                </BenefitCardsLayout>
 			</ATabPanel>
 			<ATabPanel value="1">
 				<AddInfoLayout>

@@ -4,6 +4,7 @@ export type MqType = keyof typeof MEDIA_QUERIES;
 
 export interface DefaultSliderProps {
 	className?: string;
+	class?: string;
 	spaceBetween?: string;
 	slidesPerView?: string;
 }

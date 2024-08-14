@@ -22,10 +22,10 @@ const {tableData} = Astro.props
     </div>
     <div class="table-adaptive__body">
         {
-            tableData.body.map((row, idx) => (
+            tableData.body.map((row) => (
                     <div class="table-adaptive__row">
                         {
-                            row.cells.map((cell) => (
+                            row.cells.map((cell, idx) => (
                                     <div class=`table-adaptive__cell ${cell.className}`>
                                         <span class="table-adaptive__label body-s-light">{tableData.header[idx]}</span>
                                         <span set:html={cell.text}></span>
@@ -74,19 +74,15 @@ const {tableData} = Astro.props
       display: flex;
       flex-direction: column;
       align-items: start;
-      gap: 1rem;
+      gap: 2rem;
 
       border-bottom: 1px dashed var(--blue-30);
-      padding: 1rem 0;
+      padding: 1.5rem 0;
       width: 100%;
 
       @include use-media(tablet) {
         flex-direction: row;
         align-items: center;
-      }
-
-      @include use-media(laptop-x) {
-        padding: 1.5rem 0;
         gap: 2.5rem;
       }
     }
@@ -111,7 +107,7 @@ const {tableData} = Astro.props
 
     &__label {
       color: var(--dark-70);
-      margin-bottom: .5rem;
+      margin-bottom: 1rem;
       font-weight: 400;
       display: block;
 

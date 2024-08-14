@@ -18,10 +18,6 @@ const { class: className, ...rest } = Astro.props;
 		transition: max-height ease 0.33s;
 
 		&__wrapper {
-			/*display: flex;*/
-			/*flex-direction: column;*/
-			/*align-items: flex-start;*/
-
 			display: grid;
 			grid-template-columns: 1fr;
 			gap: 2.5rem;
@@ -62,6 +58,7 @@ const { class: className, ...rest } = Astro.props;
 
 			@include use-media(tablet) {
 				display: block;
+				overflow: visible;
 				max-height: unset !important;
 			}
 

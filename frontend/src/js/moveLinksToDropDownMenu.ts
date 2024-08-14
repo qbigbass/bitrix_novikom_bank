@@ -17,6 +17,9 @@ const moveLinksToDropDownMenu = (menuClass: string, linkClass: string) => {
     if (!menu || !dropDownMenu) return;
 
     const links = menu.querySelectorAll(ELEMENTS.link) as NodeListOf<HTMLElement>;
+
+    if (!links.length) return;
+
     const arrayLinks = Array.from(links);
 
     if (window.innerWidth < Number.parseInt(MEDIA_QUERIES['laptop-x'])) {

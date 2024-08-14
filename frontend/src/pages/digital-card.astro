@@ -56,6 +56,7 @@ const offerCards = [
 		title: 'Программа «Кешбэк»',
 		description: 'Возврат рублями от покупок по карте ',
 		symbolId: 'cashback-program',
+		imgSrc: "assets/big-illustrations/large-individual/contribution-rentier.png",
 		href: '#',
 		beforeNumberText: 'до',
 		numberText: '15,5%',
@@ -65,6 +66,7 @@ const offerCards = [
 	{
 		title: 'Программа «Бонусы»',
 		description: 'Бонусные баллы за покупки',
+		imgSrc: 'assets/big-illustrations/large-individual/bonus-program.png',
 		symbolId: 'bonus-program',
 		href: '#',
 		beforeNumberText: 'до',
@@ -180,7 +182,7 @@ const tableDataPercent = {
 				description: 'Обслуживание'
 			}
 		]}
-		image="assets/cards/digital-card.png"
+		image="assets/hero-banner/digital-card.png"
 		urlHref="#"
 		buttonText="Оформить карту"
 		backgroundColor="heavy-violet"
@@ -203,8 +205,8 @@ const tableDataPercent = {
 		<Fragment slot="tag">
 			<ATag outline>Услуга</ATag>
 		</Fragment>
-		<Fragment>
-			<h3 class="headline-2">Как работает цифровая карта</h3>
+        <h3 slot="title" class="headline-2">Как работает цифровая карта</h3>
+        <Fragment>
 			<AList size="l">
 				<li>
 					Для оплаты товаров и&nbsp;услуг поднесите мобильное устройство с&nbsp;установленным приложением
@@ -391,13 +393,13 @@ const tableDataPercent = {
 						</AAccordion>
 					</Fragment>
 					<Fragment slot="right">
-						<BenefitCard
-							title="Защита от мошенников"
-							description="Узнайте как уберечь себя и своих близких от финансового мошенничества."
-							icon="icon-a-money-out"
-							theme="light-blue"
-							textButton="Подробнее"
-						/>
+                        <BenefitCard
+                            title="Защита от мошенников"
+                            description="Узнайте как уберечь себя и своих близких от финансового мошенничества."
+                            icon="icon-a-protection"
+                            theme="grey"
+                            textButton="Подробнее"
+                        />
 					</Fragment>
 				</SectionHelpContentLayout>
 			</ATabPanel>
@@ -535,7 +537,7 @@ const tableDataPercent = {
 			</ATabPanel>
 		</Fragment>
 	</SectionHelpLayout>
-	<SectionLayout class="section-layout--bg-gray">
+	<SectionLayout bgColor="gray">
 		<div class="content-container">
 			<AAccordion type="layout">
 				<AAccordionPanel>

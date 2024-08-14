@@ -113,7 +113,7 @@ const reliableCards = [
 				description: 'Скидки на&nbsp;отдых, спорт, обучение и&nbsp;многое другое'
 			}
 		]}
-		image="assets/cards/mir-pc.png"
+		image="assets/hero-banner/mir-pc.png"
 		urlHref="#"
 		buttonText="Оформить карту"
 		hasPattern
@@ -160,11 +160,11 @@ const reliableCards = [
 		</div>
 	</SectionLayout>
 	<PageBanner img="/assets/banners/page-banner-1.png">
-		<Fragment slot="header">
+		<Fragment slot="tag">
 			<ATag href="#" outline>Услуга</ATag>
 		</Fragment>
-		<Fragment>
-			<div class="headline-2">Льготные процентные ставки по потребительским кредитам и ипотеке</div>
+        <h3 slot="title" class="headline-2">Льготные процентные ставки по потребительским кредитам и ипотеке</h3>
+        <Fragment>
 			<div class="body-l-light">
 				Держателям социально-платёжной карты «Мир» доступны специальные льготные условия по потребительским кредитам и ипотеке.
 			</div>
@@ -303,13 +303,13 @@ const reliableCards = [
 						</AAccordion>
 					</Fragment>
 					<Fragment slot="right">
-						<BenefitCard
-							title="Защита от мошенников"
-							description="Узнайте как уберечь себя и своих близких от финансового мошенничества."
-							icon="icon-a-bankInform"
-							theme="light-blue"
-							textButton="Подробнее"
-						/>
+                        <BenefitCard
+                            title="Защита от мошенников"
+                            description="Узнайте как уберечь себя и своих близких от финансового мошенничества."
+                            icon="icon-a-protection"
+                            theme="grey"
+                            textButton="Подробнее"
+                        />
 					</Fragment>
 				</SectionHelpContentLayout>
 			</ATabPanel>

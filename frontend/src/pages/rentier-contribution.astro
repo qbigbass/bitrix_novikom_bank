@@ -25,6 +25,14 @@ import ATabSwiperWrapper from "../components/ui/ATabs/common/ATabSwiperWrapper.a
 import ATabSwiper from "../components/ui/ATabs/common/ATabSwiper/ATabSwiper.astro";
 import ATabPanels from "../components/ui/ATabs/common/ATabPanels.astro";
 import InfoProductBanner from "../components/common/Banners/InfoProductBanner.astro";
+import ASliderInput from "../components/ui/ASliderInput/ASliderInput.astro";
+import CalculatorLayout from "../components/layouts/CalculatorLayout.astro";
+import ACheckbox from "../components/ui/ACheckbox/ACheckbox.astro";
+import CalculatorCardItem from "../components/common/CalculatorCard/CalculatorCardItem.astro";
+import CalculatorCard from "../components/common/CalculatorCard/CalculatorCard.astro";
+import FormRow from "../components/layouts/FormLayout/FormRow.astro";
+import AInput from "../components/ui/AInput/AInput.astro";
+import InputWithIcon from "../components/ui/InputWithIcon/InputWithIcon.astro";
 
 const benefitCards = [
 	{
@@ -152,7 +160,7 @@ const tableDataPercent = {
 				description: 'Минимальная сумма вклада'
 			},
 		]}
-		image="always-plus.png"
+		image="assets/hero-banner/rentier-contribution.png"
 		urlHref="#"
 		buttonText="Отркыть вклад"
 		hasPattern
@@ -179,36 +187,67 @@ const tableDataPercent = {
 		</Fragment>
 		<Fragment slot="tabPanels">
 			<ATabPanel value="0">
-				<DisplayStepper>
-					<DisplayStepperItem icon="icon-a-web-bank" inRow>
-						<ARte class="body-l-heavy">
-							<p>
-								Через интернет-банк<br>
-								и&nbsp;мобильное приложение
-							</p>
-						</ARte>
-					</DisplayStepperItem>
-					<DisplayStepperItem icon="icon-a-bank" inRow>
-						<ARte class="body-l-heavy">
-							<p>В&nbsp;офисах банка <br>Новиком</p>
-						</ARte>
-					</DisplayStepperItem>
-					<DisplayStepperItem icon="icon-a-mir-payment" inRow>
-						<ARte class="body-l-heavy">
-							<p>В&nbsp;платежных терминалах/<br>банкоматах Банка и&nbsp;партнеров</p>
-						</ARte>
-					</DisplayStepperItem>
-					<DisplayStepperItem icon="icon-a-transfer" inRow>
-						<ARte class="body-l-heavy">
-							<p>Используя услугу <br>&laquo;Перевод с&nbsp;карты на&nbsp;карту&raquo;</p>
-						</ARte>
-					</DisplayStepperItem>
-					<DisplayStepperItem icon="icon-a-transh" inRow>
-						<ARte class="body-l-heavy">
-							<p>C&nbsp;помощью банковского<br> перевода</p>
-						</ARte>
-					</DisplayStepperItem>
-				</DisplayStepper>
+				<CalculatorLayout>
+					<Fragment slot="form">
+						<ASliderInput
+							id="amount-credit"
+							label="Сумма вклада"
+							maxValue={5000000}
+							minValue={20000}
+							startValue={1000000}
+							stepSize={5000}
+							editable
+							type="price"
+						/>
+						<ASliderInput
+							id="credit-term"
+							label="Срок вклада"
+							maxValue={60}
+							minValue={6}
+							startValue={31}
+							type="month"
+							editable
+						/>
+					</Fragment>
+					<Fragment slot="agreements">
+						<ACheckbox id="is-card-novkom" size="l" checked>
+							<span class="body-m-light" slot="label"><a href="#">Капитализация</a> процентов на&nbsp;счет вклада</span>
+						</ACheckbox>
+						<ACheckbox id="insurance" size="l">
+							<span class="body-m-light" slot="label">Планируются пополнения суммы вклада</span>
+						</ACheckbox>
+					</Fragment>
+					<Fragment slot="fields">
+						<FormRow cols={2}>
+							<InputWithIcon afterIcon="icon-search" />
+							<!--<AInput size="m" label="Дата пополнения" forId="name-1" name="input-1"/>-->
+							<AInput size="m" label="Сумма пополнения" forId="name-2" name="input-2"/>
+						</FormRow>
+					</Fragment>
+					<Fragment slot="card">
+						<CalculatorCard
+							backgroundColor="grey"
+							polygonColor="green-100"
+							buttonText="Открыть вклад">
+							<CalculatorCardItem
+								hint="Ваш доход составит ориентировочно"
+								text="35 404,38"
+								currency="₽"
+							/>
+							<CalculatorCardItem
+								hint="Ставка по вкладу"
+								text="15%"
+							/>
+							<CalculatorCardItem
+								hint="Срок вклада"
+								text="550 дней"
+							/>
+							<Fragment slot="notes">
+								Калькулятор не&nbsp;гарантирует точность расчетов. Окончательные параметры вклада определяются по&nbsp;итогам рассмотрения заявки.
+							</Fragment>
+						</CalculatorCard>
+					</Fragment>
+				</CalculatorLayout>
 			</ATabPanel>
 			<ATabPanel value="1">
 				<TableAdaptive tableData={tableDataPercent} />
@@ -335,13 +374,13 @@ const tableDataPercent = {
 						</AAccordion>
 					</Fragment>
 					<Fragment slot="right">
-						<BenefitCard
-							title="Защита от мошенников"
-							description="Узнайте как уберечь себя и своих близких от финансового мошенничества."
-							icon="icon-a-money-out"
-							theme="light-blue"
-							textButton="Подробнее"
-						/>
+                        <BenefitCard
+                            title="Защита от мошенников"
+                            description="Узнайте как уберечь себя и своих близких от финансового мошенничества."
+                            icon="icon-a-protection"
+                            theme="grey"
+                            textButton="Подробнее"
+                        />
 					</Fragment>
 				</SectionHelpContentLayout>
 			</ATabPanel>
@@ -478,17 +517,8 @@ const tableDataPercent = {
 				</SectionHelpContentLayout>
 			</ATabPanel>
 		</Fragment>
-		<Fragment slot="card">
-			<BenefitCard
-				title="Защита от мошенников"
-				description="Узнайте как уберечь себя и своих близких от финансового мошенничества."
-				icon="icon-a-bankInform"
-				theme="light-blue"
-				textButton="Подробнее"
-			/>
-		</Fragment>
 	</SectionHelpLayout>
-	<SectionLayout class="section-layout--bg-gray">
+	<SectionLayout bgColor="gray">
 		<div class="content-container">
 			<AAccordion type="layout">
 				<AAccordionPanel>

@@ -1,0 +1,48 @@
+---
+interface Props {
+    className?: string;
+    selected?: boolean;
+    value: string;
+    class?: string;
+}
+
+const {
+    class: className,
+    selected = false,
+    value,
+} = Astro.props as Props;
+---
+
+<div
+        class="drop-down-item js-a-drop-down-button"
+        data-value={value}
+        aria-selected={[selected]}
+        class:list={
+            [
+                className
+            ]
+        }>
+    <slot />
+</div>
+
+<style lang="scss" is:global>
+    .drop-down-item {
+        $root: #{&};
+
+        padding: 1rem;
+        color: var(--dark-100);
+        transition: color ease .33s;
+        cursor: pointer;
+
+        &:hover {
+            color: var(--blue-100);
+        }
+
+        &[aria-selected=true] {
+            background-color: var(--dark-30);
+            pointer-events: none;
+        }
+    }
+
+</style>
+
