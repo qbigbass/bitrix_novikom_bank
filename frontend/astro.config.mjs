@@ -12,7 +12,7 @@ export default defineConfig({
 			rollupOptions: {
 				output: {
 					entryFileNames: (chunkInfo) => {
-						if (chunkInfo?.isEntry && chunkInfo.moduleIds[0].includes('/pages')) {
+						if (chunkInfo?.isEntry && chunkInfo.moduleIds[0]?.includes('/pages')) {
 							const pageName = chunkInfo.moduleIds[0].match(/pages\/(.*)\.astro/gm);
 							if (pageName && pageName[0]) {
 								return 'js/'+pageName[0].split('/')[1].split('.')[0]+'.js';
