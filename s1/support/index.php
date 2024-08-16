@@ -3,7 +3,7 @@ require($_SERVER['DOCUMENT_ROOT'].'/bitrix/header.php');
 use Galago\Frontend\Asset;
 global $APPLICATION;
 
-$APPLICATION->SetTitle('О банке');
+$APPLICATION->SetTitle('Помощь');
 Asset::getInstance()->addJsAndCss('index');
 ?>
 

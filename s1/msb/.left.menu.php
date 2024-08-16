@@ -1,0 +1,67 @@
+<?
+$aMenuLinks = Array(
+	Array(
+		"Расчетный счет",
+		"#",
+		Array(),
+		Array(),
+		""
+	),
+	Array(
+		"Кредитование",
+		"#",
+		Array(),
+		Array(),
+		""
+	),
+	Array(
+		"ДБО",
+		"#",
+		Array(),
+		Array(),
+		""
+	),
+	Array(
+		"Гарантии",
+		"#",
+		Array(),
+		Array(),
+		""
+	),
+	Array(
+		"Депозиты",
+		"#",
+		Array(),
+		Array(),
+		""
+	),
+	Array(
+		"Меры господдержки",
+		"#",
+		Array(),
+		Array(),
+		""
+	),
+	Array(
+		"ВЭД",
+		"#",
+		Array(),
+		Array(),
+		""
+	),
+	Array(
+		"Услуги",
+		"#",
+		Array(),
+		Array(),
+		""
+	),
+	Array(
+		"Онлайн-банк для бизнеса",
+		"#",
+		Array(),
+		Array(),
+		""
+	),
+);
+?>

@@ -1,0 +1,12 @@
+<?php
+const LIBRARY_DIRECTORY = '/local/php_interface/lib/';
+const MOBIL_APP_LINK = '#';
+const ONLINE_BANK_LINK = '#';
+const OFFICES_AND_ATMS_LINK = '#';
+const MOBIL_PHONE_CONTACT_NUMBER = '+7 (800) 250-70-07';
+const MOBIL_PHONE_CONTACT_NUMBER_2 = '+7 (495) 974-71-87';
+const RU_STORE_APP_LINK = '#';
+const RU_MARKET_APP_LINK = '#';
+const NASH_STORE_APP_LINK = '#';
+const TELEGRAM_LINK = '#';
+const ENGLISH_VERSION_LINK = '#';
