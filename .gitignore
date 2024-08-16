@@ -21,6 +21,7 @@ pnpm-debug.log*
 *.sw?
 
 /bitrix
+/frontend/build
 /include
 /logs
 /sitemap
