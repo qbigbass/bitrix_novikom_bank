@@ -2,7 +2,7 @@
 import DefaultPageLayout from '../layouts/DefaultPageLayout.astro';
 import SectionBenefitsLayout from "../components/layouts/SectionBenefitsLayout.astro";
 import ATabs from "../components/ui/ATabs/ATabs.astro";
-import ATab from "../components/ui/ATabs/common/ATab/Atab.astro";
+import ATab from "../components/ui/ATabs/common/ATab/ATab.astro";
 import SectionSPCUseCard from "../components/sections/SectionSPCUseCard.astro";
 import SectionSpecialOffers from "../components/sections/SectionSpecialOffers.astro";
 import SectionSeeAlso from "../components/sections/SectionSeeAlso.astro";
@@ -97,6 +97,7 @@ const benefitCards = [
 	>
 		<ATabs slot="tabs">
 			<Fragment slot="tabs">
+				<ATab size="l"
                 <ATab href="/spc-for-employees" size="lm">Для работников ГК «Ростех»</ATab>
                 <ATab href="/spc-for-organizations" size="lm">Для организаций</ATab>
                 <ATab href="/spc-for-managers" size="lm">Для руководителей</ATab>

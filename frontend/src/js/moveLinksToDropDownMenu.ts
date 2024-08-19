@@ -7,7 +7,8 @@ const ELEMENTS = {
 }
 
 const CLASSES = {
-    dropDownLinkClass: 'drop-down-menu__link'
+    dropDownLinkClass: 'drop-down-menu__link',
+    activeClass: 'is-active'
 }
 
 const moveLinksToDropDownMenu = (menuClass: string, linkClass: string) => {
