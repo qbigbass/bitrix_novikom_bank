@@ -1,6 +1,7 @@
 import type {ADropDownMenu, ADropDownMenuCustomEvent, ADropDownMenuState} from "../ADropDown/ADropDownMenu/interfaces";
 import initADropDownMenu, { JS_CLASSES as JS_DROP_DOWN_MENU_CLASSES } from "@components/ui/ADropDown/ADropDownMenu";
 import type { ASelectInputState } from "@components/ui/ASelectInput/interfaces";
+import {closeAllOpenCurrencyInputs} from "@components/ui/ACurrencyInput";
 
 export const JS_CLASSES = {
 	root: '.js-select',
@@ -9,6 +10,16 @@ export const JS_CLASSES = {
 
 export const ACTION_CLASSES = {
 	open: 'is-open'
+}
+
+export const closeAllOpenSelectInputs = () => {
+	const openSelectInputs = ALL_SELECT.filter((selectInput) => selectInput.isOpen);
+
+	if (openSelectInputs.length > 0) {
+		openSelectInputs.forEach((selectInput) => {
+			closeHandler(selectInput.root, selectInput.dropDownMenu?.root, selectInput);
+		});
+	}
 }
 
 const ALL_SELECT: Array<ASelectInputState> = [];
@@ -35,16 +46,6 @@ const closeHandler = (
 	setInputValue(STATE.value, STATE);
 	document.removeEventListener('click', STATE.clickOutsideHandler);
 };
-
-const closeAllOpenSelectInputs = () => {
-	const openSelectInputs = ALL_SELECT.filter((selectInput) => selectInput.isOpen);
-
-	if (openSelectInputs.length > 0) {
-		openSelectInputs.forEach((selectInput) => {
-			closeHandler(selectInput.root, selectInput.dropDownMenu?.root, selectInput);
-		});
-	}
-}
 
 const clickOutsideHandler = (
 	event: MouseEvent,
@@ -105,6 +106,7 @@ const initSelectInput = (selectInput: HTMLDivElement): ASelectInputState => {
 				closeHandler(selectInput, STATE.dropDownMenu?.root, STATE);
 			} else {
 				closeAllOpenSelectInputs();
+				closeAllOpenCurrencyInputs()
 				openHandler(selectInput, STATE.dropDownMenu?.root, STATE);
 			}
 		});
