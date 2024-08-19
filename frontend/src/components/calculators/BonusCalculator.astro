@@ -21,14 +21,14 @@ import ADropDownItem from "../ui/ADropDown/ADropDownItem/ADropDownItem.astro";
                 type="price"
         />
         <FormRow cols={2}>
-            <ASelectInput size="m" label="Тип карты" placeholder="Дебетовая1234" name="cardType">
-                <ADropDownItem value="Дебетовая Дебетовая Дебетовая Дебетовая Дебетовая"><span class="body-m-light">Дебетовая</span></ADropDownItem>
+            <ASelectInput size="m" label="Тип карты" placeholder="Дебетовая" name="cardType">
+                <ADropDownItem selected value="Дебетовая"><span class="body-m-light">Дебетовая</span></ADropDownItem>
                 <ADropDownItem value="Кредитная"><span class="body-m-light">Кредитная</span></ADropDownItem>
                 <ADropDownItem value="Кредитная 2"><span class="body-m-light">Кредитная 2</span></ADropDownItem>
             </ASelectInput>
 
             <ASelectInput size="m" label="Категория основной карты" placeholder="Выберите" name="cardCategory">
-                <ADropDownCheckbox size="m" id="10"><span class="body-m-light">Standard</span></ADropDownCheckbox>
+                <ADropDownCheckbox checked size="m" id="10"><span class="body-m-light">Standard</span></ADropDownCheckbox>
                 <ADropDownCheckbox size="m" id="11"><span class="body-m-light">Bonus</span></ADropDownCheckbox>
                 <ADropDownCheckbox size="m" id="111"><span class="body-m-light">Bonus 2</span></ADropDownCheckbox>
             </ASelectInput>
