@@ -12,8 +12,10 @@ const {
 ---
 <script>
 	import moveLinksToDropDownMenu from "../../../js/moveLinksToDropDownMenu";
+	import moveActiveLink from "./index";
 
 	moveLinksToDropDownMenu('.js-desktop-main-menu', 'body-s-light');
+	moveActiveLink();
 
 	window.addEventListener('resize', () => {
 		moveLinksToDropDownMenu('.js-desktop-main-menu', 'body-s-light');
@@ -22,13 +24,13 @@ const {
 
 <nav class="desktop-main-menu" class:list={className} {...rest}>
 	<div class="desktop-main-menu__links js-desktop-main-menu">
-		<a class="desktop-main-menu-link body-s-light is-active" href="#">Частным клиентам</a>
-		<a class="desktop-main-menu-link body-s-light js-desktop-move-link" href="#">Корпоративным клиентам</a>
+		<a class="desktop-main-menu-link body-s-light " href="#">Частным клиентам</a>
+		<a class="desktop-main-menu-link body-s-light js-desktop-move-link is-active" href="#">Корпоративным клиентам</a>
 		<a class="desktop-main-menu-link body-s-light js-desktop-move-link" href="#">МСБ</a>
 		<DropDownMenu>
 			<a class="drop-down-menu__link" href="#">Финансовым институтам</a>
-			<a class="drop-down-menu__link" href="#">О банке</a>
-			<a class="drop-down-menu__link" href="#">Помощь</a>
+			<a class="drop-down-menu__link " href="#">О банке</a>
+			<a class="drop-down-menu__link " href="#">Помощь</a>
 			<a class="drop-down-menu__link" href="#">English version</a>
 		</DropDownMenu>
 	</div>
@@ -82,7 +84,7 @@ const {
 
 			&:after {
 
-				@include use-media(laptop) {
+				@include use-media(laptop-x) {
 					content: '';
 					position: absolute;
 					left: 0;
