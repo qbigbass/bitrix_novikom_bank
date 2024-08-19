@@ -9,108 +9,63 @@ Asset::getInstance()->addJsAndCss('index');
     <main class="default-page-layout__body">
 
         <div class="main-slider">
-            <img src="/frontend/build/assets/slides/hero_banner_bg_desktop.png" class="main-slider__bg" alt="">
-            <div class="main-slider__container swiper swiper-container">
-                <div class="main-slider__wrapper swiper-wrapper">
-                    <div class="swiper-slide main-slider__slide">
-                        <div class="main-slider__content">
-                            <div class="main-slider-content">
-                                <div class="main-slider-content__text">
-                                    <h1 class="main-slider-content__title">Банк российских<br> инженеров</h1>
-                                    <p class="body-l-light">
-                                        Мы&nbsp;укрепляем технологический суверенитет России и&nbsp;помогаем занять
-                                        лидерские позиции в&nbsp;экономике будущего
-                                    </p>
-                                    <a href="#" theme="dark" class="a-button main-slider-content__button a-button--m a-button--secondary a-button--link">
-                                        Больше о банке
-
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div><div class="swiper-slide main-slider__slide">
-                        <div class="main-slider__content">
-                            <div class="main-slider-content">
-                                <div class="main-slider-content__text">
-                                    <h1 class="main-slider-content__title">Новикомбанку<br> 30 лет</h1>
-                                    <p class="body-l-light">
-                                        Мы&nbsp;укрепляем технологический суверенитет России и&nbsp;помогаем занять
-                                        лидерские позиции в&nbsp;экономике будущего
-                                    </p>
-                                    <a href="#" theme="dark" class="a-button main-slider-content__button a-button--m a-button--secondary a-button--link">
-                                        Больше о банке
-
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div><div class="swiper-slide main-slider__slide">
-                        <div class="main-slider__content">
-                            <div class="main-slider-content">
-                                <div class="main-slider-content__text">
-                                    <h1 class="main-slider-content__title">Ваша финансовая<br> безопасность</h1>
-                                    <p class="body-l-light">
-                                        Мы&nbsp;укрепляем технологический суверенитет России и&nbsp;помогаем занять
-                                        лидерские позиции в&nbsp;экономике будущего
-                                    </p>
-                                    <a href="#" theme="dark" class="a-button main-slider-content__button a-button--m a-button--secondary a-button--link">
-                                        Больше о банке
-
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div><div class="swiper-slide main-slider__slide">
-                        <div class="main-slider__content">
-                            <div class="main-slider-content">
-                                <div class="main-slider-content__text">
-                                    <h1 class="main-slider-content__title">Годовой<br> отчет</h1>
-                                    <p class="body-l-light">
-                                        Мы&nbsp;укрепляем технологический суверенитет России и&nbsp;помогаем занять
-                                        лидерские позиции в&nbsp;экономике будущего
-                                    </p>
-                                    <a href="#" theme="dark" class="a-button main-slider-content__button a-button--m a-button--secondary a-button--link">
-                                        Больше о банке
-
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="main-slider-pagination"></div>
-                <div class="main-slider-controls">
-                    <button type="button" class="main-slider-control main-slider-control__prev">
-				<span class="a-icon">
-	<svg>
-				<use  xlink:href="/frontend/build/assets/svg-sprite.svg#icon-chevron-left"></use>
-			</svg>
-</span>
-                    </button>
-                    <button type="button" class="main-slider-control main-slider-control__next">
-				<span class="a-icon">
-	<svg>
-				<use  xlink:href="/frontend/build/assets/svg-sprite.svg#icon-chevron-right"></use>
-			</svg>
-</span>
-                    </button>
-                </div>
-            </div>
-
-            <div class="main-slider__thumbs swiper">
-                <div class="main-slider__thumbs-wrapper swiper-wrapper">
-                    <button class="swiper-slide main-slider-thumb">
-                        <span class="headline-4">Банк российских<br> инженеров</span>
-                    </button><button class="swiper-slide main-slider-thumb">
-                        <span class="headline-4">Новикомбанку<br> 30 лет</span>
-                    </button><button class="swiper-slide main-slider-thumb">
-                        <span class="headline-4">Ваша финансовая<br> безопасность</span>
-                    </button><button class="swiper-slide main-slider-thumb">
-                        <span class="headline-4">Годовой<br> отчет</span>
-                    </button>
-                </div>
-            </div>>
+            <?$APPLICATION->IncludeComponent(
+                "bitrix:news.list",
+                "main_slider",
+                Array(
+                    "ACTIVE_DATE_FORMAT" => "d.m.Y",
+                    "ADD_SECTIONS_CHAIN" => "N",
+                    "AJAX_MODE" => "N",
+                    "AJAX_OPTION_ADDITIONAL" => "",
+                    "AJAX_OPTION_HISTORY" => "N",
+                    "AJAX_OPTION_JUMP" => "N",
+                    "AJAX_OPTION_STYLE" => "Y",
+                    "CACHE_FILTER" => "N",
+                    "CACHE_GROUPS" => "Y",
+                    "CACHE_TIME" => "36000000",
+                    "CACHE_TYPE" => "A",
+                    "CHECK_DATES" => "Y",
+                    "DETAIL_URL" => "",
+                    "DISPLAY_BOTTOM_PAGER" => "N",
+                    "DISPLAY_DATE" => "N",
+                    "DISPLAY_NAME" => "Y",
+                    "DISPLAY_PICTURE" => "N",
+                    "DISPLAY_PREVIEW_TEXT" => "N",
+                    "DISPLAY_TOP_PAGER" => "N",
+                    "FIELD_CODE" => array("ID", "NAME", ""),
+                    "FILTER_NAME" => "",
+                    "HIDE_LINK_WHEN_NO_DETAIL" => "N",
+                    "IBLOCK_ID" => "115",
+                    "IBLOCK_TYPE" => "for_private_clients_ru",
+                    "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+                    "INCLUDE_SUBSECTIONS" => "N",
+                    "MESSAGE_404" => "",
+                    "NEWS_COUNT" => "20",
+                    "PAGER_BASE_LINK_ENABLE" => "N",
+                    "PAGER_DESC_NUMBERING" => "N",
+                    "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+                    "PAGER_SHOW_ALL" => "N",
+                    "PAGER_SHOW_ALWAYS" => "N",
+                    "PAGER_TEMPLATE" => ".default",
+                    "PAGER_TITLE" => "Новости",
+                    "PARENT_SECTION" => "",
+                    "PARENT_SECTION_CODE" => "",
+                    "PREVIEW_TRUNCATE_LEN" => "",
+                    "PROPERTY_CODE" => array("BUTTON_LINK", "BUTTON_TEXT", "TEXT", ""),
+                    "SET_BROWSER_TITLE" => "N",
+                    "SET_LAST_MODIFIED" => "N",
+                    "SET_META_DESCRIPTION" => "N",
+                    "SET_META_KEYWORDS" => "N",
+                    "SET_STATUS_404" => "N",
+                    "SET_TITLE" => "N",
+                    "SHOW_404" => "N",
+                    "SORT_BY1" => "ACTIVE_FROM",
+                    "SORT_BY2" => "SORT",
+                    "SORT_ORDER1" => "DESC",
+                    "SORT_ORDER2" => "ASC",
+                    "STRICT_SECTION_CHECK" => "N"
+                )
+            );?>
         </div>
         <section class="section-layout bank-offers js-bank-offers-expand" data-visible-on-mobile="3">
 
