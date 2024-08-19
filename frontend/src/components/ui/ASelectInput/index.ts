@@ -11,6 +11,8 @@ export const ACTION_CLASSES = {
 	open: 'is-open'
 }
 
+const ALL_SELECT: Array<ASelectInputState> = [];
+
 const openHandler = (
 	selectInput: Element,
 	dropDownMenu: ADropDownMenu | undefined,
@@ -34,6 +36,16 @@ const closeHandler = (
 	document.removeEventListener('click', STATE.clickOutsideHandler);
 };
 
+const closeAllOpenSelectInputs = () => {
+	const openSelectInputs = ALL_SELECT.filter((selectInput) => selectInput.isOpen);
+
+	if (openSelectInputs.length > 0) {
+		openSelectInputs.forEach((selectInput) => {
+			closeHandler(selectInput.root, selectInput.dropDownMenu?.root, selectInput);
+		});
+	}
+}
+
 const clickOutsideHandler = (
 	event: MouseEvent,
 	selectInput: Element,
@@ -46,7 +58,6 @@ const clickOutsideHandler = (
 };
 
 const setInputValue = (value: string, STATE: ASelectInputState) => {
-	console.log('setInputValue', value);
 	if (STATE.inputEl && STATE.inputHidden) {
 		STATE.selectedValues = value;
 		STATE.value = value;
@@ -74,12 +85,13 @@ const initState = (selectInput: HTMLDivElement) => {
 		isOpen: false,
 		selectedValues: null,
 		value: '',
-		disabled: inputHidden?.disabled ?? false, //TODO: переделать disabled
+		disabled: inputHidden?.disabled ?? false,
 		clickOutsideHandler: (event: MouseEvent) => {}
 	}
 
-	STATE.clickOutsideHandler = (event: MouseEvent) => clickOutsideHandler(event, selectInput, STATE.dropDownMenu?.root, STATE)
+	STATE.clickOutsideHandler = (event: MouseEvent) => clickOutsideHandler(event, selectInput, STATE.dropDownMenu?.root, STATE);
 
+	ALL_SELECT.push(STATE)
 	return STATE;
 }
 
@@ -92,6 +104,7 @@ const initSelectInput = (selectInput: HTMLDivElement): ASelectInputState => {
 			if (STATE.isOpen) {
 				closeHandler(selectInput, STATE.dropDownMenu?.root, STATE);
 			} else {
+				closeAllOpenSelectInputs();
 				openHandler(selectInput, STATE.dropDownMenu?.root, STATE);
 			}
 		});
@@ -112,7 +125,7 @@ const initSelectInput = (selectInput: HTMLDivElement): ASelectInputState => {
 			selectInput.dispatchEvent(customEvent);
 		});
 
-		STATE.inputEl?.addEventListener('input', (event) => {
+		STATE.inputHidden?.addEventListener('input', (event) => {
 			return;
 		});
 
