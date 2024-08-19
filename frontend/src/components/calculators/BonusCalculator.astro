@@ -3,7 +3,6 @@ import ASliderInput from "../ui/ASliderInput/ASliderInput.astro";
 import CalculatorLayout from "../layouts/CalculatorLayout.astro";
 import CalculatorResult from "../common/CalculatorResult/CalculatorResult.astro";
 import ASelectInput from "../ui/ASelectInput/ASelectInput.astro";
-import ADropDownCheckbox from "../ui/ADropDown/ADropDownCheckbox/ADropDownCheckbox.astro";
 import FormRow from "../layouts/FormLayout/FormRow.astro";
 import ADropDownItem from "../ui/ADropDown/ADropDownItem/ADropDownItem.astro";
 ---
@@ -21,16 +20,16 @@ import ADropDownItem from "../ui/ADropDown/ADropDownItem/ADropDownItem.astro";
                 type="price"
         />
         <FormRow cols={2}>
-            <ASelectInput size="m" label="Тип карты" placeholder="Дебетовая" name="cardType">
+            <ASelectInput size="m" label="Тип карты" placeholder="Выберите" name="cardType">
                 <ADropDownItem selected value="Дебетовая"><span class="body-m-light">Дебетовая</span></ADropDownItem>
                 <ADropDownItem value="Кредитная"><span class="body-m-light">Кредитная</span></ADropDownItem>
                 <ADropDownItem value="Кредитная 2"><span class="body-m-light">Кредитная 2</span></ADropDownItem>
             </ASelectInput>
 
             <ASelectInput size="m" label="Категория основной карты" placeholder="Выберите" name="cardCategory">
-                <ADropDownCheckbox checked size="m" id="10"><span class="body-m-light">Standard</span></ADropDownCheckbox>
-                <ADropDownCheckbox size="m" id="11"><span class="body-m-light">Bonus</span></ADropDownCheckbox>
-                <ADropDownCheckbox size="m" id="111"><span class="body-m-light">Bonus 2</span></ADropDownCheckbox>
+                <ADropDownItem  value="Premium"><span class="body-m-light">Premium</span></ADropDownItem>
+                <ADropDownItem selected value="Standard"><span class="body-m-light">Standard</span></ADropDownItem>
+                <ADropDownItem value="Premium 2"><span class="body-m-light">Premium 2</span></ADropDownItem>
             </ASelectInput>
         </FormRow>
     </Fragment>
