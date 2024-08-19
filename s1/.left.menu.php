@@ -16,7 +16,7 @@ $aMenuLinks = Array(
 	),
 	Array(
 		"Кредиты",
-		"/for-private-clients/credits/",
+		"/for-private-clients/loans/",
 		Array(),
 		Array("submenu_item_name"=>"Все кредиты НОВИКОМ"),
 		""
