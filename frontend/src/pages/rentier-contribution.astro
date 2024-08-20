@@ -39,6 +39,7 @@ import AList from "../components/ui/AList/AList.astro";
 import ATableHeader from "../components/common/ATable/ATableHeader.astro";
 import AddInfoLayout from "../components/layouts/AddInfoLayout/AddInfoLayout.astro";
 import ATableFooter from "../components/common/ATable/ATableFooter.astro";
+import InputWithIcon from "../components/ui/InputWithIcon/InputWithIcon.astro";
 
 const benefitCards = [
 	{
@@ -99,8 +100,8 @@ const benefitCards = [
 	</SectionBenefitsLayout>
 	<SectionHelpLayout title="Условия по&nbsp;вкладу и&nbsp;ваш доход">
 		<Fragment slot="tabs">
-			<ATab value="0" size="lm">Калькулятор</ATab>
-			<ATab value="1" size="lm" isActive>Процентные ставки</ATab>
+			<ATab value="0" size="lm" isActive>Калькулятор</ATab>
+			<ATab value="1" size="lm">Процентные ставки</ATab>
 			<ATab value="2" size="lm">Условия</ATab>
 			<ATab value="3" size="lm">Документы и тарифы</ATab>
 			<ATab value="4" size="lm">Вопросы и ответы</ATab>
@@ -139,8 +140,8 @@ const benefitCards = [
 					</Fragment>
 					<Fragment slot="fields">
 						<FormRow cols={2}>
-							<AInput size="m" label="Дата пополнения" forId="name-1" name="input-1"/>
-							<AInput size="m" label="Сумма пополнения" forId="name-2" name="input-2"/>
+							<AInput size="m" label="Дата пополнения" forId="name-1" name="input-1" afterIcon="icon-calendar" />
+							<AInput size="m" label="Сумма пополнения" forId="name-2" name="input-2" afterIcon="icon-rub"/>
 						</FormRow>
 					</Fragment>
 					<Fragment slot="card">
