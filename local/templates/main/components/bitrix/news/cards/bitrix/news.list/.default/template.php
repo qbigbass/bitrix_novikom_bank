@@ -19,6 +19,39 @@ $this->setFrameMode(true);
 $request = Application::getInstance()->getContext()->getRequest()->toArray();
 ?>
 
+<? /* Баннер разводящей страницы */ ?>
+<div class="text-banner text-banner--blue">
+    <div class="content-container">
+        <div class="text-banner__inner">
+            <div class="text-banner__content">
+                <nav class="breadcrumbs body-s-light">
+                    <ul class="breadcrumbs__list">
+                        <li class="breadcrumbs__item">
+                            <a href="#" class="breadcrumbs__link">
+                                Частным клиентам
+                            </a>
+                        </li>
+                    </ul>
+                    <a href="#" class="breadcrumbs__link breadcrumbs__link-mobile">
+                            <span class="a-icon size-s">
+                                <svg>
+                                    <use xlink:href="/frontend/build/assets/svg-sprite.svg#icon-chevron-left"></use>
+                                </svg>
+                            </span>
+                        Частным клиентам
+                    </a>
+                </nav>
+                <div class="text-banner__title headline-0">Банковские карты</div>
+                <div class="text-banner__description body-l-light">Карты с оптимальными условиями и приятными бонусами</div>
+            </div>
+        </div>
+    </div>
+    <div class="text-banner__pattern">
+        <img src="/frontend/build/assets/text-banner-pattern.svg">
+    </div>
+</div>
+
+<? /* Вывод элементов */ ?>
 <section class="section-layout section-catalog-layout section-layout--s section-layout--bg-undefined">
     <div class="content-container">
         <div class="a-tabs a-tabs--layout js-a-tabs">
@@ -64,7 +97,7 @@ $request = Application::getInstance()->getContext()->getRequest()->toArray();
                                 <? foreach ($arResult['ITEMS'] as $sectionItem) { ?>
                                     <div class="product-card product-card--use-tag">
                                         <div class="product-card__image-container">
-                                            <img src="/frontend/build/assets/showcase-cards/showcase-spk.png" class="product-card__image">
+                                            <img src="<?= $sectionItem['PREVIEW_PICTURE']['SRC'] ?>" class="product-card__image">
                                         </div>
                                         <? if (!empty($sectionItem['IBLOCK_SECTION_PROP_TYPE_CARDS'])) { ?>
                                             <div class="product-card__tag">
@@ -205,7 +238,7 @@ $request = Application::getInstance()->getContext()->getRequest()->toArray();
                                                     <button type="button" class="a-button a-button--lm a-button--green">
                                                         Оформить заявку
                                                     </button>
-                                                    <a href="#" class="a-button a-button--lm a-button--primary a-button--link a-button--text">Подробнее
+                                                    <a href="<?= $sectionItem['DETAIL_PAGE_URL'] ?>" class="a-button a-button--lm a-button--primary a-button--link a-button--text">Подробнее
                                                         <span class="a-icon a-button__icon">
                                                             <svg>
                                                                 <use xlink:href="/frontend/build/assets/svg-sprite.svg#icon-chevron-right"></use>
@@ -225,6 +258,8 @@ $request = Application::getInstance()->getContext()->getRequest()->toArray();
         </div>
     </div>
 </section>
+
+<? /* Вывод статичным список рандомных элементов */ ?>
 <section class="section-layout section-see-also section-layout--bg-undefined">
     <div class="content-container">
         <div class="section-title section-title--padding">

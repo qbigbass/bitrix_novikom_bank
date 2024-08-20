@@ -25,6 +25,5 @@ foreach ($arResult['ITEMS'] as $key => &$item) {
     $findKey = array_search($item['IBLOCK_SECTION_ID'], array_column($sectionQuery,'ID'));
     if ($findKey !== false) {
         $item['IBLOCK_SECTION_PROP_TYPE_CARDS'] = $sectionQuery[$findKey]['UF_TYPE_CARDS'];
-        $item['IBLOCK_SECTION_NAME'] = $sectionQuery[$findKey]['NAME'];
     }
 }
