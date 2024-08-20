@@ -10,36 +10,6 @@ Asset::getInstance()->addJsAndCss('showcase-of-cards');
 ?>
 
 <main class="default-page-layout__body">
-    <div class="text-banner text-banner--blue">
-        <div class="content-container">
-            <div class="text-banner__inner">
-                <div class="text-banner__content">
-                    <nav class="breadcrumbs body-s-light">
-                        <ul class="breadcrumbs__list">
-                            <li class="breadcrumbs__item">
-                                <a href="#" class="breadcrumbs__link">
-                                    Частным клиентам
-                                </a>
-                            </li>
-                        </ul>
-                        <a href="#" class="breadcrumbs__link breadcrumbs__link-mobile">
-                            <span class="a-icon size-s">
-                                <svg>
-                                    <use xlink:href="/frontend/build/assets/svg-sprite.svg#icon-chevron-left"></use>
-                                </svg>
-                            </span>
-                            Частным клиентам
-                        </a>
-                    </nav>
-                    <div class="text-banner__title headline-0">Банковские карты</div>
-                    <div class="text-banner__description body-l-light">Карты с оптимальными условиями и приятными бонусами</div>
-                </div>
-            </div>
-        </div>
-        <div class="text-banner__pattern">
-            <img src="/frontend/build/assets/text-banner-pattern.svg">
-        </div>
-    </div>
     <?
     $APPLICATION->IncludeComponent(
         "bitrix:news",
