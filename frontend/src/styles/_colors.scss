@@ -57,6 +57,9 @@
 
 	//GRAPHITE
 	--graphite-100: #121112;
+
+	//GREY
+	--grey: #D5D9E0;
 }
 
 //DARK
@@ -117,3 +120,6 @@
 
 //GRAPHITE
 .graphite-100 { color: var(--graphite-100); }
+
+//GREY
+.grey { color: var(--grey); }

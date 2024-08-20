@@ -1,10 +1,13 @@
 ---
+import InputWithIcon from "../InputWithIcon/InputWithIcon.astro";
+import AIcon from "../../AIcon.astro";
 type Validations = "notEmpty" | "isEmail" | "isPhone";
 type Masks = "phone";
 type Size = "m" | "s" | "ms";
 
 interface Props {
 	className?: string;
+	class?: string;
 	placeholder?: string;
 	disabled?: boolean;
 	name?: string;
@@ -16,6 +19,8 @@ interface Props {
 	hint?: string;
 	required?: boolean;
 	size: Size;
+	beforeIcon?: string,
+	afterIcon?: string,
 }
 
 const {
@@ -24,6 +29,8 @@ const {
 	label,
 	disabled,
 	name,
+	beforeIcon,
+	afterIcon,
 	value,
 	validations,
 	mask,
@@ -47,17 +54,27 @@ const {
 	{...rest}
 >
 	{ label && (<label for={forId} class="a-input__label body-s-heavy">{label}</label>)}
-	<input
-		id={forId}
-		class="a-input__input"
-		placeholder={placeholder}
-		disabled={disabled}
-		name={name}
-		value={value}
-		data-validations={validations}
-		data-mask={mask}
-		aria-describedby=`${forId + '-hint'}`
-	/>
+	<div class="a-input__field">
+		{ beforeIcon && (
+			<AIcon symbolId={beforeIcon} class="a-input__icon" />
+		)
+		}
+		<input
+			id={forId}
+			class="a-input__input"
+			placeholder={placeholder}
+			disabled={disabled}
+			name={name}
+			value={value}
+			data-validations={validations}
+			data-mask={mask}
+			aria-describedby=`${forId + '-hint'}`
+		/>
+		{ afterIcon && (
+			<AIcon symbolId={afterIcon} class="a-input__icon" />
+		)
+		}
+	</div>
 	{ hint && (<small class="a-input__hint js-a-input-hint caption-m" id=`${forId + '-hint'}`>{hint}</small>)}
 </div>
 
@@ -85,6 +102,7 @@ const {
 	@import "@styles/variables.scss";
 	@import "@styles/media-queries";
 	@import "@styles/functions.scss";
+	@import "@styles/placeholders.scss";
 
 	.a-input {
 		display: flex;
@@ -96,12 +114,11 @@ const {
 		}
 
 		&__input {
+			@extend %reset-input;
 			display: inline-block;
 			width: 100%;
 			min-width: 0;
-			border: 1px solid var(--purple-30);
-			border-radius: 0.25rem;
-			background-color: inherit;
+
 			color: inherit;
 			font-family: inherit;
 
@@ -128,6 +145,23 @@ const {
 		&__hint {
 			color: var(--dark-70);
 		}
+
+		&__field {
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+
+			border: 1px solid var(--purple-30);
+			border-radius: 0.25rem;
+			background-color: inherit;
+		}
+
+		&__icon {
+			flex-shrink: 0;
+			width: 1.5rem;
+			height: 1.5rem;
+			color: var(--violet-70);
+		}
 	}
 
 	.a-input.a-input--required {
@@ -143,20 +177,32 @@ const {
 
 	.a-input.a-input--m {
 		.a-input__input {
-			padding: 0.938rem;
 			font-size: 1rem;
 			line-height: 150%;
+		}
+
+		.a-input__field {
+			padding: calc(1rem - 1px); // 1px - border
 		}
 	}
 
 	.a-input.a-input--s {
 		.a-input__input {
-			padding: 0.625rem 0.938rem;
 			font-size: 0.875rem;
 			line-height: 130%;
 		}
+
+		.a-input__field {
+			padding: 0.625rem 1rem;
+		}
+
+		.a-input__icon {
+			width: 1rem;
+			height: 1rem;
+		}
 	}
 
+	// TODO: убрать это?
 	.a-input.a-input--ms {
 		.a-input__input {
 			padding: 0.625rem 0.938rem;
