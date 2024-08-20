@@ -18,6 +18,8 @@ $this->setFrameMode(true);
 
 $request = Application::getInstance()->getContext()->getRequest()->toArray();
 ?>
+
+<? /* Баннер разводящей страницы */ ?>
 <div class="text-banner text-banner--blue">
     <div class="content-container">
         <div class="text-banner__inner">
@@ -49,6 +51,7 @@ $request = Application::getInstance()->getContext()->getRequest()->toArray();
     </div>
 </div>
 
+<? /* Вывод элементов */ ?>
 <section class="section-layout section-catalog-layout section-layout--s section-layout--bg-undefined">
     <div class="content-container">
         <div class="a-tabs a-tabs--layout js-a-tabs">
@@ -94,7 +97,7 @@ $request = Application::getInstance()->getContext()->getRequest()->toArray();
                                 <? foreach ($arResult['ITEMS'] as $sectionItem) { ?>
                                     <div class="product-card product-card--use-tag">
                                         <div class="product-card__image-container">
-                                            <img src="/frontend/build/assets/showcase-cards/showcase-spk.png" class="product-card__image">
+                                            <img src="<?= $sectionItem['PREVIEW_PICTURE']['SRC'] ?>" class="product-card__image">
                                         </div>
                                         <? if (!empty($sectionItem['IBLOCK_SECTION_PROP_TYPE_CARDS'])) { ?>
                                             <div class="product-card__tag">
@@ -255,6 +258,8 @@ $request = Application::getInstance()->getContext()->getRequest()->toArray();
         </div>
     </div>
 </section>
+
+<? /* Вывод статичным список рандомных элементов */ ?>
 <section class="section-layout section-see-also section-layout--bg-undefined">
     <div class="content-container">
         <div class="section-title section-title--padding">
