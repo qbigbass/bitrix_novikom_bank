@@ -36,10 +36,6 @@ function modifyMainSubmenuResult(array $arResult) : array {
     return $modifiedResult;
 }
 
-function modifyParentName(string $name) : string {
-    return 'Все ' . mb_strtolower($name) . ' НОВИКОМ';
-}
-
 function clearPhoneNumber(string $phoneNumber) : string {
     return preg_replace('/[^0-9\+]+/', '', $phoneNumber);
 }
