@@ -1,8 +1,18 @@
 ---
 // табилца с лейблами и перестроением, используется в табах для процентных ставок
 
+interface TableData {
+    header: string[],
+    body: {
+        cells: {
+            className: string,
+            text: string,
+        }[]
+    }[],
+}
+
 interface Props {
-    tableData: object
+    tableData: TableData
 }
 
 const {tableData} = Astro.props

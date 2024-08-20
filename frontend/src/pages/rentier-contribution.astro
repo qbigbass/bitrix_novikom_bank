@@ -32,7 +32,11 @@ import CalculatorCardItem from "../components/common/CalculatorCard/CalculatorCa
 import CalculatorCard from "../components/common/CalculatorCard/CalculatorCard.astro";
 import FormRow from "../components/layouts/FormLayout/FormRow.astro";
 import AInput from "../components/ui/AInput/AInput.astro";
-import InputWithIcon from "../components/ui/InputWithIcon/InputWithIcon.astro";
+import ATableRow from "../components/common/ATable/ATableRow.astro";
+import ATable from "../components/common/ATable/ATable.astro";
+import ATableCell from "../components/common/ATable/ATableCell.astro";
+import ATableBody from "../components/common/ATable/ATableBody.astro";
+import AList from "../components/ui/AList/AList.astro";
 
 const benefitCards = [
 	{
@@ -179,8 +183,8 @@ const tableDataPercent = {
 	</SectionBenefitsLayout>
 	<SectionHelpLayout title="Условия по&nbsp;вкладу и&nbsp;ваш доход">
 		<Fragment slot="tabs">
-			<ATab value="0" size="lm" isActive>Калькулятор</ATab>
-			<ATab value="1" size="lm">Процентные ставки</ATab>
+			<ATab value="0" size="lm">Калькулятор</ATab>
+			<ATab value="1" size="lm" isActive>Процентные ставки</ATab>
 			<ATab value="2" size="lm">Условия</ATab>
 			<ATab value="3" size="lm">Документы и тарифы</ATab>
 			<ATab value="4" size="lm">Вопросы и ответы</ATab>
@@ -219,8 +223,7 @@ const tableDataPercent = {
 					</Fragment>
 					<Fragment slot="fields">
 						<FormRow cols={2}>
-							<InputWithIcon afterIcon="icon-search" />
-							<!--<AInput size="m" label="Дата пополнения" forId="name-1" name="input-1"/>-->
+							<AInput size="m" label="Дата пополнения" forId="name-1" name="input-1"/>
 							<AInput size="m" label="Сумма пополнения" forId="name-2" name="input-2"/>
 						</FormRow>
 					</Fragment>
@@ -251,6 +254,127 @@ const tableDataPercent = {
 			</ATabPanel>
 			<ATabPanel value="1">
 				<TableAdaptive tableData={tableDataPercent} />
+				<ATable class="md:in-column" cols={2}>
+					<ATableBody>
+						<ATableRow>
+							<ATableCell class="body-l-heavy dark-70">При изменении КС</ATableCell>
+							<ATableCell class="body-l-light">
+								<AList size="l">
+									<li>
+										до&nbsp;25-го числа месяца включительно изменение процентной ставки
+										по&nbsp;вкладу происходит в&nbsp;первый рабочий день месяца, следующего за&nbsp;месяцем изменения,
+									</li>
+									<li>
+										после 25-го числа месяца, процентная ставка по&nbsp;вкладу меняется
+										в&nbsp;пятый рабочий день месяца, следующего за&nbsp;месяцем изменения
+									</li>
+								</AList>
+							</ATableCell>
+						</ATableRow>
+						<ATableRow>
+							<ATableCell class="body-l-heavy dark-70">Порядок изменения ставки применяется</ATableCell>
+							<ATableCell class="body-l-light">
+								<AList size="l">
+									<li>
+										для действующих вкладов,
+									</li>
+									<li>
+										для вкладов, размещаемых в&nbsp;период между датой изменения Банком России
+										КС&nbsp;и&nbsp;вышеуказанным днем изменения Банком ставки по&nbsp;вкладу.
+									</li>
+								</AList>
+							</ATableCell>
+						</ATableRow>
+						<ATableRow>
+							<ATableCell class="body-l-heavy dark-70">Определение даты изменения КС</ATableCell>
+							<ATableCell class="body-l-light">
+								<p>
+									Для целей определения даты изменения&nbsp;КС принимается дата опубликования
+									информационного сообщения Банка России об&nbsp;изменении&nbsp;КС на&nbsp;сайте Банка России.
+								</p>
+							</ATableCell>
+						</ATableRow>
+					</ATableBody>
+				</ATable>
+			</ATabPanel>
+			<ATabPanel value="2">
+				<ATable class="md:in-column" cols={2}>
+					<ATableBody>
+						<ATableRow>
+							<ATableCell class="body-l-heavy dark-70">Минимальная ставка по&nbsp;вкладу</ATableCell>
+							<ATableCell class="body-l-light">
+								2,5% (гарантированная минимальная ставка по&nbsp;вкладу при значении ключевой ставки Банка России менее 2,5% или при досрочном закрытии вклада).
+							</ATableCell>
+						</ATableRow>
+						<ATableRow>
+							<ATableCell class="body-l-heavy dark-70">Валюта вклада</ATableCell>
+							<ATableCell class="body-l-light">₽, российские рубли</ATableCell>
+						</ATableRow>
+						<ATableRow>
+							<ATableCell class="body-l-heavy dark-70">Срок размещения вклада</ATableCell>
+							<ATableCell class="body-l-light">250, 550 и&nbsp;1100 дней</ATableCell>
+						</ATableRow>
+						<ATableRow>
+							<ATableCell class="body-l-heavy dark-70">Процентная ставка</ATableCell>
+							<ATableCell class="body-l-light">
+								<p>
+									При заключении договора процентная ставка по&nbsp;вкладу устанавливается в&nbsp;зависимости от&nbsp;размера первоначального взноса по&nbsp;вкладу.
+								</p>
+								<AList size="l">
+									<li>
+										или путем перечисления на&nbsp;текущий счет Вкладчика, открытый в&nbsp;Банке, в&nbsp;том числе на&nbsp;текущий счет для проведения расчетов с&nbsp;использованием банковской карты с&nbsp;возможностью дальнейшего снятия начисленных процентов;
+									</li>
+									<li>
+										или путем присоединения начисленных процентов к&nbsp;сумме вклада (капитализация).
+									</li>
+
+								</AList>
+								<p>
+									Вкладчик вправе изменить порядок выплаты процентов, подав в&nbsp;Банк соответствующее заявление по&nbsp;форме Банка. Измененный порядок выплаты процентов применяется, начиная с&nbsp;процентного периода, следующего за&nbsp;датой подачи указанного заявления.
+								</p>
+								<p>
+									Каждый последующий промежуточный период начисления процентов исчисляется с&nbsp;календарного дня, следующего за&nbsp;датой заключения договора банковского вклада.
+								</p>
+							</ATableCell>
+						</ATableRow>
+						<ATableRow>
+							<ATableCell class="body-l-heavy dark-70">Выплата процентов</ATableCell>
+							<ATableCell class="body-l-light">
+								<p>
+									Выплата процентов, начисленных по&nbsp;вкладу, производится ежемесячно по&nbsp;истечении каждого месяца со&nbsp;дня внесения денежных средств во&nbsp;вклад, одним из&nbsp;способов по&nbsp;выбору Вкладчика:
+								</p>
+								<p>
+									Осуществление расходных операций по&nbsp;вкладу (снятие части денежных средств) не&nbsp;предусмотрено.
+								</p>
+							</ATableCell>
+						</ATableRow>
+						<ATableRow>
+							<ATableCell class="body-l-heavy dark-70">Пополнение и&nbsp;снятие</ATableCell>
+							<ATableCell class="body-l-light">
+								<p>
+									Пополнение вклада возможно без ограничения сумм в&nbsp;течение всего срока вклада.
+								</p>
+								<p>
+									2,5% (гарантированная минимальная ставка по&nbsp;вкладу при значении ключевой ставки Банка России менее 2,5% или при досрочном закрытии вклада).
+								</p>
+								<p>
+									В&nbsp;случае досрочного востребования всей суммы вклада или её&nbsp;части проценты начисляются и&nbsp;выплачиваются по&nbsp;минимальной ставке за&nbsp;фактический срок вклада со&nbsp;дня, следующего за&nbsp;днем размещения вклада (дня начала очередного срока вклада&nbsp;&mdash; при продлении договора), по&nbsp;день досрочного возврата вклада или его части включительно).
+								</p>
+							</ATableCell>
+						</ATableRow>
+						<ATableRow>
+							<ATableCell class="body-l-heavy dark-70">Прочее</ATableCell>
+							<ATableCell class="body-l-light">
+								<p>
+									По&nbsp;желанию Вкладчика, заключившего с&nbsp;Банком договор вклада &laquo;Рантье&raquo; на&nbsp;сумму 1,5&nbsp;млн. рублей и&nbsp;более, на&nbsp;основании письменного заявления Вкладчика на&nbsp;выпуск карты ему предоставляется одна банковская карта МИР Премиальная (за&nbsp;исключением карт &laquo;Всегда в&nbsp;плюсе&raquo;) без взимания комиссии за&nbsp;обслуживание текущего счета карты в&nbsp;течение всего срока ее&nbsp;действия.
+								</p>
+								<p>
+									Возврат Вклада и&nbsp;причитающихся процентов осуществляется Банком путем перевода соответствующей суммы на&nbsp;Счет обслуживания вклада, открытый на&nbsp;имя Вкладчика в&nbsp;валюте Вклада. По&nbsp;требованию Вкладчика возврат Вклада может производиться наличными денежными средствами через кассу Банка.
+								</p>
+							</ATableCell>
+						</ATableRow>
+					</ATableBody>
+				</ATable>
 			</ATabPanel>
 			<ATabPanel value="3">
 				<SectionHelpContentLayout>
