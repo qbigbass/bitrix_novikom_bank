@@ -40,6 +40,7 @@ import ATableHeader from "../components/common/ATable/ATableHeader.astro";
 import AddInfoLayout from "../components/layouts/AddInfoLayout/AddInfoLayout.astro";
 import ATableFooter from "../components/common/ATable/ATableFooter.astro";
 import InputWithIcon from "../components/ui/InputWithIcon/InputWithIcon.astro";
+import AInputField from "../components/ui/AInput/AInputField.astro";
 
 const benefitCards = [
 	{
@@ -140,8 +141,8 @@ const benefitCards = [
 					</Fragment>
 					<Fragment slot="fields">
 						<FormRow cols={2}>
-							<AInput size="m" label="Дата пополнения" forId="name-1" name="input-1" afterIcon="icon-calendar" />
-							<AInput size="m" label="Сумма пополнения" forId="name-2" name="input-2" afterIcon="icon-rub"/>
+							<AInputField size="m" label="Дата пополнения" forId="name-1" name="input-1" afterIcon="icon-calendar" hint="подсказка" required />
+							<AInputField size="m" label="Сумма пополнения" forId="name-2" name="input-2" afterIcon="icon-rub" />
 						</FormRow>
 					</Fragment>
 					<Fragment slot="card">
