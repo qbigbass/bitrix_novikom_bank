@@ -1,16 +1,15 @@
 ---
 import AButton from "../../ui/Buttons/AButton.astro";
-import ABigIllustrations from "../../ABigIllustrations.astro";
 import type { TextIndicatingBenefitsProps } from "../TextIndicatingBenefits";
 import TextIndicatingBenefits from "../TextIndicatingBenefits/TextIndicatingBenefits.astro";
-type Color = 'green' | 'orange' | 'yellow';
+export type OfferCardColor = 'green' | 'orange' | 'yellow';
 
 export interface Props {
-	color?: Color;
+	color?: OfferCardColor;
 	textButton?: string;
     imgSrc: string;
 	href?: string;
-	className?: string;
+	class?: string;
 	title: string;
 	description?: string;
 	textIndicating?: TextIndicatingBenefitsProps;
@@ -27,6 +26,8 @@ const {
 	textIndicating,
 	...rest
 } = Astro.props;
+
+const showTag = !!Astro.slots['tag'];
 ---
 
 <div
@@ -35,18 +36,15 @@ const {
 		className,
 		`offer-card--${color}`,
 	]}
-	{...rest}
 >
 	<div class="offer-card__inner">
-		{Astro.slots['tag'] && (
-			<div class="offer-card__tag">
-				<slot name="tag" />
-			</div>
+		{ showTag && (
+			<slot name="tag" />
 		)}
 		<div class="offer-card__content">
 			<div class="offer-card__title headline-3" set:html={title}></div>
 			{
-				(textIndicating) && (
+				textIndicating && (
 					<TextIndicatingBenefits
 						headClass="violet-100"
 						startText={textIndicating.startText}
@@ -59,12 +57,12 @@ const {
 			}
 			{
 				description && (
-					<div class="offer-card__description body-m-light" set:html={description}></div>
+					<p class="offer-card__description body-m-light" set:html={description}></p>
 				)
 			}
 		</div>
-        <img class="offer-card__img" src={imgSrc}>
-		<AButton element="a" href={href} size="m" slot="link" class="offer-card__link">{textButton}</AButton>
+        <img class="offer-card__img" src={imgSrc} alt="" loading="lazy" />
+		<AButton element="a" href={href} size="m" class="offer-card__link">{textButton}</AButton>
 	</div>
 </div>
 
@@ -120,7 +118,15 @@ const {
 			z-index: 1;
 		}
 
-		&__description {}
+		&__description {
+			@include use-media(tablet-album) {
+				max-width: 60%;
+			}
+
+			@include use-media(desktop) {
+				max-width: 80%;
+			}
+		}
 
 		&__link {
 			position: relative;

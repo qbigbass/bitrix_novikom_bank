@@ -3,12 +3,10 @@ import DefaultPageLayout from '../layouts/DefaultPageLayout.astro';
 import SectionBankOffers from "../components/sections/SectionBankOffers.astro";
 import SectionBankServices from "../components/sections/SectionBankServices.astro";
 import MainSlider from '@components/common/MainSlider/MainSlider.astro';
-import SectionNews from '../components/sections/SectionNews.astro';
-import SectionCallMeBack from "../components/sections/SectionCallMeBack.astro";
 import SectionClientInfo from "../components/sections/SectionClientInfo.astro";
-import SectionCurrencyExchange from "../components/sections/SectionCurrencyExchange.astro";
-import SectionCalculateBenefit from "../components/sections/SectionCalculateBenefit.astro";
+import AnnouncementCardClients from "../components/common/AnnouncementCardClients/AnnouncementCardClients.astro";
 import type {Colors} from "../components/ui/Buttons/types";
+import type {OfferCardColor} from "@components/common/OfferCard/OfferCard.astro";
 
 const mainSliders = [
 	{
@@ -48,15 +46,34 @@ const mainSliders = [
 		image: "assets/big-illustrations/large-business/deposit-insurance.png"
 	},
 ]
+
+const offerCards = [
+	{
+		title: 'Кредиты для малого бизнеса',
+		description: 'Новиком предоставляет услуги консультирования на&nbsp;каждом этапе реализации сделки, индивидуальное структурирование сделки по&nbsp;запросу и&nbsp;конкурентные ставки.',
+		imgSrc: 'assets/big-illustrations/large-business/crediting.png',
+		href: '#',
+		buttonText: 'Узнать больше',
+		cardColor: 'yellow' as OfferCardColor,
+	},
+	{
+		title: 'Меры господдержки',
+		description: 'Возможность оформить кредит без комиссии под поручительство АО&nbsp;&laquo;Корпорация МСП&raquo;. Поручительство предоставляется мгновенно вместе с&nbsp;кредитом, исключая дополнительное обращение в&nbsp;Корпорацию МСП.',
+		imgSrc: 'assets/big-illustrations/large-business/state-support.png',
+		href: '#',
+		buttonText: 'Узнать больше',
+		cardColor: 'yellow' as OfferCardColor
+	},
+];
 ---
 
 <DefaultPageLayout title="МСБ Главная">
 	<MainSlider slides={mainSliders} backgroundColor="heavy-violet" bannerType="msb" hasPattern/>
-	<SectionBankOffers/>
 	<SectionBankServices/>
-	<SectionCalculateBenefit />
-	<SectionClientInfo />
-	<SectionNews />
-	<SectionCallMeBack />
-	<SectionCurrencyExchange />
+	<SectionBankOffers cards={offerCards} slidesPerView="mobile-s:1,mobile:1,tablet:2,laptop:2"/>
+	<SectionClientInfo backgroundColor="gray" hasPattern>
+		<Fragment slot="top">
+			<AnnouncementCardClients />
+		</Fragment>
+	</SectionClientInfo>
 </DefaultPageLayout>

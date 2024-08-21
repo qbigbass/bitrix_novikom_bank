@@ -9,6 +9,9 @@ import SectionCallMeBack from "../components/sections/SectionCallMeBack.astro";
 import SectionClientInfo from "../components/sections/SectionClientInfo.astro";
 import SectionCurrencyExchange from "../components/sections/SectionCurrencyExchange.astro";
 import SectionCalculateBenefit from "../components/sections/SectionCalculateBenefit.astro";
+import AnnouncementCardClients from "../components/common/AnnouncementCardClients/AnnouncementCardClients.astro";
+import CardAboutBank from "../components/common/CardAboutBank/CardAboutBank.astro";
+import type {OfferCardColor} from "@components/common/OfferCard/OfferCard.astro";
 
 const mainSliders = [
 	{
@@ -44,14 +47,95 @@ const mainSliders = [
 		}
 	},
 ];
+const offerCards = [
+	{
+		title: 'Вклад «Рантье»',
+		description: '',
+		imgSrc: 'assets/big-illustrations/large-individual/contribution-rentier.png',
+		href: '#',
+		beforeNumberText: 'до',
+		numberText: '15,5%',
+		afterNumberText: '',
+		buttonText: 'Открыть вклад',
+		tagText: 'Частным клиентам',
+		cardColor: 'green' as OfferCardColor
+	},
+	{
+		title: 'Резервирование<br>счетов',
+		description: 'Дистанционная подача заявки на&nbsp;открытие расчетного счета',
+		imgSrc: 'assets/big-illustrations/large-corporate/account-reservation.png',
+		href: '#',
+		beforeNumberText: '',
+		numberText: '',
+		afterNumberText: '',
+		buttonText: 'Подать заявку',
+		tagText: 'Корпоративным клиентам',
+		cardColor: 'orange' as OfferCardColor
+	},
+	{
+		title: 'Экспресс-гарантии<br>44-ФЗ, 223-ФЗ',
+		description: 'Принятие решения за&nbsp;1 день, до&nbsp;30&nbsp;000&nbsp;000&nbsp;рублей, без залога',
+		imgSrc: 'assets/big-illustrations/large-corporate/guarantees.png',
+		href: '#',
+		beforeNumberText: '',
+		numberText: '',
+		afterNumberText: '',
+		buttonText: 'Оформить',
+		tagText: 'Малому и среднему бизнесу',
+		cardColor: 'yellow' as OfferCardColor
+	},
+	{
+		title: 'Вклад «Рантье»',
+		description: '',
+		imgSrc: 'assets/big-illustrations/large-individual/contribution-rentier.png',
+		href: '#',
+		beforeNumberText: 'до',
+		numberText: '15,5%',
+		afterNumberText: '',
+		buttonText: 'Открыть вклад',
+		tagText: 'Частным клиентам',
+		cardColor: 'green' as OfferCardColor
+	},
+	{
+		title: 'Резервирование<br>счетов',
+		description: 'Дистанционная подача заявки на&nbsp;открытие расчетного счета',
+		imgSrc: 'assets/big-illustrations/large-corporate/account-reservation.png',
+		href: '#',
+		beforeNumberText: '',
+		numberText: '',
+		afterNumberText: '',
+		buttonText: 'Подать заявку',
+		tagText: 'Корпоративным клиентам',
+		cardColor: 'orange' as OfferCardColor
+	},
+	{
+		title: 'Экспресс-гарантии<br>44-ФЗ, 223-ФЗ',
+		description: 'Принятие решения за&nbsp;1 день, до&nbsp;30&nbsp;000&nbsp;000&nbsp;рублей, без залога',
+		imgSrc: 'assets/big-illustrations/large-corporate/guarantees.png',
+		href: '#',
+		beforeNumberText: '',
+		numberText: '',
+		afterNumberText: '',
+		buttonText: 'Оформить',
+		tagText: 'Малому и среднему бизнесу',
+		cardColor: 'yellow' as OfferCardColor
+	}
+];
 ---
 
 <DefaultPageLayout title="Частным клиентам v1">
 	<MainSlider slides={mainSliders} staticBackground />
-	<SectionBankOffers/>
+	<SectionBankOffers title="Предложения банка Новиком" cards={offerCards}/>
 	<SectionBankServices/>
 	<SectionCalculateBenefit />
-	<SectionClientInfo />
+	<SectionClientInfo>
+		<Fragment slot="top">
+			<AnnouncementCardClients />
+		</Fragment>
+		<Fragment slot="bottom">
+			<CardAboutBank />
+		</Fragment>
+	</SectionClientInfo>
 	<SectionNews />
 	<SectionCallMeBack />
 	<SectionCurrencyExchange />
