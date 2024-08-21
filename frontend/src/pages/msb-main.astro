@@ -1,0 +1,62 @@
+---
+import DefaultPageLayout from '../layouts/DefaultPageLayout.astro';
+import SectionBankOffers from "../components/sections/SectionBankOffers.astro";
+import SectionBankServices from "../components/sections/SectionBankServices.astro";
+import MainSlider from '@components/common/MainSlider/MainSlider.astro';
+import SectionNews from '../components/sections/SectionNews.astro';
+import SectionCallMeBack from "../components/sections/SectionCallMeBack.astro";
+import SectionClientInfo from "../components/sections/SectionClientInfo.astro";
+import SectionCurrencyExchange from "../components/sections/SectionCurrencyExchange.astro";
+import SectionCalculateBenefit from "../components/sections/SectionCalculateBenefit.astro";
+import type {Colors} from "../components/ui/Buttons/types";
+
+const mainSliders = [
+	{
+		title: 'Страхование вкладов',
+		text: 'Новиком является участником государственной системы обязательного страхования вкладов',
+		button: {
+			text: 'Заказать услугу',
+			color: 'yellow' as Colors
+		},
+		image: "assets/big-illustrations/large-business/deposit-insurance.png"
+	},
+	{
+		title: 'Депозиты',
+		text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, numquam.',
+		button: {
+			text: 'Заказать услугу',
+			color: 'yellow' as Colors
+		},
+		image: "assets/big-illustrations/large-business/deposit-insurance.png"
+	},
+	{
+		title: 'Интернет-банк',
+		text: 'Lorem ipsum dolor sit amet, consectetur.',
+		button: {
+			text: 'Заказать услугу',
+			color: 'yellow' as Colors
+		},
+		image: "assets/big-illustrations/large-business/deposit-insurance.png"
+	},
+	{
+		title: 'Банковские гарантии',
+		text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid distinctio nihil temporibus.',
+		button: {
+			text: 'Заказать услугу',
+			color: 'yellow' as Colors
+		},
+		image: "assets/big-illustrations/large-business/deposit-insurance.png"
+	},
+]
+---
+
+<DefaultPageLayout title="МСБ Главная">
+	<MainSlider slides={mainSliders} backgroundColor="heavy-violet" bannerType="msb" hasPattern/>
+	<SectionBankOffers/>
+	<SectionBankServices/>
+	<SectionCalculateBenefit />
+	<SectionClientInfo />
+	<SectionNews />
+	<SectionCallMeBack />
+	<SectionCurrencyExchange />
+</DefaultPageLayout>

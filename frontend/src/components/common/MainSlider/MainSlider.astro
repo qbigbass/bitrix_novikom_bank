@@ -2,25 +2,63 @@
 import MainSliderThumb from "./MainSliderThumb.astro";
 import AIcon from "@components/AIcon.astro";
 import AButton from "@components/ui/Buttons/AButton.astro";
+import type { Colors } from "@components/ui/Buttons/types";
 
-const slides = [
-	{
-		title: "Банк российских<br> инженеров",
-	},
-	{
-		title: "Новикомбанку<br> 30 лет",
-	},
-	{
-		title: "Ваша финансовая<br> безопасность",
-	},
-	{
-		title: "Годовой<br> отчет",
-	},
-];
+type Slides = {
+	title: string;
+	text: string;
+	button?: {
+		text: string;
+		color: Colors;
+	};
+	image?: string
+}
+
+type BackgroundColors = 'heavy-purple' | 'heavy-violet' | 'blue';
+type BannerType = 'msb';
+
+interface Props {
+	class?: string;
+	className?: string;
+	slides: Slides[];
+	staticBackground?: boolean;
+	hasPattern?: boolean;
+	image?: string;
+	backgroundColor?: BackgroundColors;
+	bannerType?: BannerType;
+}
+
+const {
+	class: className,
+	staticBackground = false,
+	hasPattern = false,
+	slides,
+	image,
+	backgroundColor,
+	bannerType,
+	...rest
+} = Astro.props;
+
+const backgroundClass = `${backgroundColor ? `main-slider--${backgroundColor}` : ''}`
+const typeClass = `${bannerType ? `main-slider--type-${bannerType}` : ''}`
 ---
 
-<div class="main-slider">
-	<img src="assets/slides/hero_banner_bg_desktop.png" class="main-slider__bg" alt="">
+<div class:list={[
+	'main-slider',
+	backgroundClass,
+	typeClass,
+	className
+]}>
+	{staticBackground && (
+		<img src="assets/slides/hero_banner_bg_desktop.png" class="main-slider__bg" alt="">
+	)}
+	{hasPattern && (
+		<picture class="main-slider__pattern">
+			<source srcset="assets/hero-banner-spc-bg_tablet.svg" media="(max-width: 768px)" />
+			<source srcset="assets/hero-banner-spc-bg_laptop.svg" media="(max-width: 1200px)" />
+			<img src="assets/hero-banner-pattern.svg" alt="" />
+		</picture>
+	)}
 	<div class="main-slider__container swiper swiper-container">
 		<div class="main-slider__wrapper swiper-wrapper">
 			{
@@ -30,20 +68,23 @@ const slides = [
 							<div class="main-slider-content">
 								<div class="main-slider-content__text">
 									<h1 class="main-slider-content__title" set:html={slide.title}></h1>
-									<p class="body-l-light">
-										Мы&nbsp;укрепляем технологический суверенитет России и&nbsp;помогаем занять
-										лидерские позиции в&nbsp;экономике будущего
-									</p>
-									<AButton
-										element="a"
-										href="#"
-										theme="dark"
-										color="secondary"
-										size="m"
-										class="main-slider-content__button"
-									>
-										Больше о банке
-									</AButton>
+									<p class="body-l-light" set:html={slide.text}></p>
+									{
+										slide.image && (
+											<img src={`${slide.image}`} class="main-slider-content__image" alt=""/>
+										)
+									}
+									{slide.button && (
+										<AButton
+											element="a"
+											href="#"
+											color={slide.button.color}
+											size="m"
+											class="main-slider-content__button"
+										>
+											{slide.button.text}
+										</AButton>
+									)}
 								</div>
 							</div>
 						</div>
@@ -83,20 +124,26 @@ const slides = [
 	@import "@styles/media-queries";
 
 	$transition: map.get($transitions, default);
+	$dark-100: var(--dark-100);
 
 	.main-slider {
 		width: 100%;
-		height: 30rem; //480px
 		overflow: hidden;
 		position: relative;
 
+		@include use-media(tablet) {
+			height: 30rem; //480px
+		}
+
 		@include use-media(tablet-album) {
+			min-height: unset;
 			height: 43.75rem; //700px
 		}
 
 		&__container {
 			height: 100%;
 			position: relative;
+			min-height: 30rem; //480px
 
 			@include use-media(desktop) {
 				max-width: 120rem;
@@ -112,6 +159,25 @@ const slides = [
 			width: 100%;
 			height: 100%;
 			object-fit: cover;
+		}
+
+		&__pattern {
+			position: absolute;
+			left: 0;
+			bottom: 0;
+
+			@include use-media(tablet-album) {
+				height: 100%;
+
+				& img {
+					height: 100%;
+				}
+			}
+
+			@include use-media(desktop) {
+				left: auto;
+				right: 0;
+			}
 		}
 
 		&__slide {
@@ -143,11 +209,30 @@ const slides = [
 		}
 
 		&__thumbs-wrapper {
+			background-color: rgba(#121112, .3);
 
 			@include use-media(tablet-album) {
 				display: flex;
 				align-items: center;
 				width: 100%;
+			}
+		}
+
+		&--heavy-violet {
+			background: linear-gradient(222.24deg, #101317 20%, #6655A2 80%);
+		}
+
+		&--type-msb {
+			border-top: .25rem solid var(--yellow-100);
+
+			@include use-media(tablet-album) {
+				border-width: .5rem;
+			}
+
+			& .swiper-slide-thumb-active {
+				&:after {
+					background-color: var(--yellow-100);
+				}
 			}
 		}
 	}
@@ -188,6 +273,10 @@ const slides = [
 				padding-left: 2.5rem;
 				gap: 3rem;
 			}
+
+			@include use-media(desktop) {
+				gap: 4rem;
+			}
 		}
 
 		&__title {
@@ -218,6 +307,32 @@ const slides = [
 			@include use-media(tablet-album) {
 				font-size: 1.125rem;
 				padding: 1rem 2rem;
+			}
+		}
+
+		&__image {
+			display: block;
+			width: calc(100% + 2rem);
+			margin: -1rem;
+
+			@include use-media(mobile) {
+				max-width: 23.75rem; //380px
+			}
+
+			@include use-media(tablet) {
+				margin: 0;
+				position: absolute;
+				z-index: 1;
+				top: 50%;
+				right: -4vw;
+				transform: translateY(-50%);
+				width: 62.5vw;
+				max-width: 45rem; //720px
+			}
+
+			@include use-media(tablet-album) {
+				width: 45vw;
+				right: 0;
 			}
 		}
 	}

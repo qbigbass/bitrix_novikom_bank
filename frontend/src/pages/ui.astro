@@ -43,6 +43,7 @@ import ADropDownItem from "../components/ui/ADropDown/ADropDownItem/ADropDownIte
 import FormRow from "../components/layouts/FormLayout/FormRow.astro";
 import ACurrencyInput from "../components/ui/ACurrencyInput/ACurrencyInput.astro";
 import ADropDownButton from "../components/ui/ADropDown/ADropDownButton/ADropDownButton.astro";
+import AInputField from "../components/ui/AInput/AInputField.astro";
 
 const loan = {
 	title: 'Кредит на любые цели<br> для зарплатных клиентов',
@@ -297,6 +298,16 @@ const loan = {
 					<AInput size="m" placeholder="Primary Button size M" hint="Подсказка" label="Наименование" forId="name-2" required name="input-2"/>
 					<AInput size="s" placeholder="Primary Button size S" hint="Подсказка" label="Наименование" forId="name-3" required name="input-3"/>
 				</div>
+			</div>
+		</div>
+		<div class="ui-section">
+			<SectionTitle class="ui-section-title" titleClass="headline-2" >{"AInputField"}</SectionTitle>
+
+			<div class="ui-grid">
+				<FormRow cols={2}>
+					<AInputField size="m" label="Дата пополнения" forId="name-1" name="input-1" afterIcon="icon-calendar" hint="подсказка" required />
+					<AInputField size="m" label="Сумма пополнения" forId="name-2" name="input-2" afterIcon="icon-rub" />
+				</FormRow>
 			</div>
 		</div>
 		<div class="ui-section">
@@ -900,7 +911,7 @@ const loan = {
 					<ADropDownItem value="Кредитная 2"><span class="body-m-light">Кредитная 2</span></ADropDownItem>
 				</ASelectInput>
 
-				<ASelectInput size="m" label="Категория основной карты" placeholder="Выберите" name="cardCategory">
+				<ASelectInput multiple size="m" label="Категория основной карты" placeholder="Выберите" name="cardCategory">
 					<ADropDownCheckbox checked size="m" id="10"><span class="body-m-light">Standard</span></ADropDownCheckbox>
 					<ADropDownCheckbox checked size="m" id="11"><span class="body-m-light">Bonus</span></ADropDownCheckbox>
 					<ADropDownCheckbox size="m" id="111"><span class="body-m-light">Bonus 2</span></ADropDownCheckbox>

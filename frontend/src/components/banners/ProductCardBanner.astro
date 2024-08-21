@@ -3,20 +3,23 @@ import AButton from "../ui/Buttons/AButton.astro";
 import ABreadcrumbs from "../ui/ABreadcrumbs/ABreadcrumbs.astro";
 import TextIndicatingBenefits from "../common/TextIndicatingBenefits/TextIndicatingBenefits.astro";
 
+type BackgroundColors = 'heavy-purple' | 'heavy-violet' | 'blue';
+type Benefit = {
+	beforeNum?: string,
+	afterNum?: string,
+	num: string;
+	description: string;
+	currency?: string;
+}
+
 interface Props {
 	class?: string,
 	hasPattern?: boolean;
 	urlHref?: string;
 	buttonText?: string;
 	image: string;
-	benefits: {
-		beforeNum?: string,
-		afterNum?: string,
-		num: string;
-		description: string;
-		currency?: string;
-	}[];
-	backgroundColor?: 'heavy-purple' | 'heavy-violet' | 'blue';
+	benefits: Benefit[];
+	backgroundColor?: BackgroundColors;
 	isSticker?: boolean;
 }
 
