@@ -1,4 +1,5 @@
 export interface TextIndicatingBenefitsProps {
+	class?: string;
 	startText?: string;
 	beforeText?: string;
 	text?: string;

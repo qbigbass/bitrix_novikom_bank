@@ -1,47 +1,50 @@
 ---
-import DefaultPageLayout from '../layouts/DefaultPageLayout.astro';
+import DefaultPageLayout from "../layouts/DefaultPageLayout.astro";
 import SectionBankOffers from "../components/sections/SectionBankOffers.astro";
 import SectionBankServices from "../components/sections/SectionBankServices.astro";
-import MainSlider from '@components/common/MainSlider/MainSlider.astro';
+import MainSlider from "@components/common/MainSlider/MainSlider.astro";
 import SectionClientInfo from "../components/sections/SectionClientInfo.astro";
 import AnnouncementCardClients from "../components/common/AnnouncementCardClients/AnnouncementCardClients.astro";
 import type {Colors} from "../components/ui/Buttons/types";
 import type {OfferCardColor} from "@components/common/OfferCard/OfferCard.astro";
+import SectionLayout from "../components/layouts/SectionLayout.astro";
+import CardPromo from "@components/common/Cards/CardPromo.astro";
+import AButton from "@components/ui/Buttons/AButton.astro";
 
 const mainSliders = [
 	{
-		title: 'Страхование вкладов',
-		text: 'Новиком является участником государственной системы обязательного страхования вкладов',
+		title: "Страхование вкладов",
+		text: "Новиком является участником государственной системы обязательного страхования вкладов",
 		button: {
-			text: 'Заказать услугу',
-			color: 'yellow' as Colors
+			text: "Заказать услугу",
+			color: "yellow" as Colors
 		},
 		image: "assets/big-illustrations/large-business/deposit-insurance.png"
 	},
 	{
-		title: 'Депозиты',
-		text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, numquam.',
+		title: "Депозиты",
+		text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, numquam.",
 		button: {
-			text: 'Заказать услугу',
-			color: 'yellow' as Colors
+			text: "Заказать услугу",
+			color: "yellow" as Colors
 		},
 		image: "assets/big-illustrations/large-business/deposit-insurance.png"
 	},
 	{
-		title: 'Интернет-банк',
-		text: 'Lorem ipsum dolor sit amet, consectetur.',
+		title: "Интернет-банк",
+		text: "Lorem ipsum dolor sit amet, consectetur.",
 		button: {
-			text: 'Заказать услугу',
-			color: 'yellow' as Colors
+			text: "Заказать услугу",
+			color: "yellow" as Colors
 		},
 		image: "assets/big-illustrations/large-business/deposit-insurance.png"
 	},
 	{
-		title: 'Банковские гарантии',
-		text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid distinctio nihil temporibus.',
+		title: "Банковские гарантии",
+		text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid distinctio nihil temporibus.",
 		button: {
-			text: 'Заказать услугу',
-			color: 'yellow' as Colors
+			text: "Заказать услугу",
+			color: "yellow" as Colors
 		},
 		image: "assets/big-illustrations/large-business/deposit-insurance.png"
 	},
@@ -49,29 +52,67 @@ const mainSliders = [
 
 const offerCards = [
 	{
-		title: 'Кредиты для малого бизнеса',
-		description: 'Новиком предоставляет услуги консультирования на&nbsp;каждом этапе реализации сделки, индивидуальное структурирование сделки по&nbsp;запросу и&nbsp;конкурентные ставки.',
-		imgSrc: 'assets/big-illustrations/large-business/crediting.png',
-		href: '#',
-		buttonText: 'Узнать больше',
-		cardColor: 'yellow' as OfferCardColor,
+		title: "Кредиты для малого бизнеса",
+		description: "Новиком предоставляет услуги консультирования на&nbsp;каждом этапе реализации сделки, индивидуальное структурирование сделки по&nbsp;запросу и&nbsp;конкурентные ставки.",
+		imgSrc: "assets/big-illustrations/large-business/crediting.png",
+		href: "#",
+		buttonText: "Узнать больше",
+		cardColor: "yellow" as OfferCardColor,
 		textLink: true,
 	},
 	{
-		title: 'Меры господдержки',
-		description: 'Возможность оформить кредит без комиссии под поручительство АО&nbsp;&laquo;Корпорация МСП&raquo;. Поручительство предоставляется мгновенно вместе с&nbsp;кредитом, исключая дополнительное обращение в&nbsp;Корпорацию МСП.',
-		imgSrc: 'assets/big-illustrations/large-business/state-support.png',
-		href: '#',
-		buttonText: 'Узнать больше',
-		cardColor: 'yellow' as OfferCardColor,
+		title: "Меры господдержки",
+		description: "Возможность оформить кредит без комиссии под поручительство АО&nbsp;&laquo;Корпорация МСП&raquo;. Поручительство предоставляется мгновенно вместе с&nbsp;кредитом, исключая дополнительное обращение в&nbsp;Корпорацию МСП.",
+		imgSrc: "assets/big-illustrations/large-business/state-support.png",
+		href: "#",
+		buttonText: "Узнать больше",
+		cardColor: "yellow" as OfferCardColor,
 		textLink: true,
 	},
 ];
+
+const cardOfferBenefits = [
+	{
+		num: "0",
+		currency: "₽",
+		description: "Открытие <br>и&nbsp;обслуживание счета",
+		colorClass: "yellow-100"
+	},
+	{
+		beforeNum: "от",
+		num: "500",
+		currency: "₽",
+		description: "Ежемесячная плата <br>за&nbsp;счёт",
+		colorClass: "yellow-100"
+	},
+	{
+		beforeNum: "до",
+		num: "150",
+		description: "Бесплатных <br>платежей",
+		colorClass: "yellow-100"
+	}
+]
 ---
 
 <DefaultPageLayout title="МСБ Главная">
 	<MainSlider slides={mainSliders} backgroundColor="heavy-violet" bannerType="msb" hasPattern/>
 	<SectionBankServices/>
+	<SectionLayout bgColor="gray">
+		<div class="content-container">
+			<CardPromo
+				backgroundColor="heavy-violet"
+				title="Откройте счёт в&nbsp;Новиком"
+				text="Бесплатное дистанционное обслуживание и&nbsp;бесплатное сопровождение сделки при открытии счёта в&nbsp;банке Новиком"
+				image="assets/big-illustrations/large-business/account-reservation.png"
+				benefits={cardOfferBenefits}
+				hasPattern>
+				<Fragment slot="footer">
+					<AButton element="a" size="lm" color="yellow" href="#">Открыть счет</AButton>
+					<AButton element="a" size="lm" color="white" afterIcon="icon-chevron-right" text href="#">Подробнее</AButton>
+				</Fragment>
+			</CardPromo>
+		</div>
+	</SectionLayout>
 	<SectionBankOffers cards={offerCards} slidesPerView="mobile-s:1,mobile:1,tablet:2,laptop:2"/>
 	<SectionClientInfo backgroundColor="gray" hasPattern>
 		<Fragment slot="top">
