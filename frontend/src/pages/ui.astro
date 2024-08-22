@@ -4,7 +4,6 @@ import SectionTitle from "@components/ui/SectionTitle/SectionTitle.astro";
 import ATag from "@components/ui/ATag/ATag.astro";
 import AButton from "@components/ui/Buttons/AButton.astro";
 import AIcon from "../components/AIcon.astro";
-
 import ATabs from "@components/ui/ATabs/ATabs.astro";
 import ABreadcrumbs from "@components/ui/ABreadcrumbs/ABreadcrumbs.astro";
 import OfferCard from "@components/common/OfferCard/OfferCard.astro";
@@ -44,6 +43,7 @@ import FormRow from "../components/layouts/FormLayout/FormRow.astro";
 import ACurrencyInput from "../components/ui/ACurrencyInput/ACurrencyInput.astro";
 import ADropDownButton from "../components/ui/ADropDown/ADropDownButton/ADropDownButton.astro";
 import AInputField from "../components/ui/AInput/AInputField.astro";
+import CardPromo from "@components/common/Cards/CardPromo.astro";
 
 const loan = {
 	title: 'Кредит на любые цели<br> для зарплатных клиентов',
@@ -77,6 +77,28 @@ const loan = {
 		}
 	]
 }
+
+const cardOfferBenefits = [
+	{
+		num: "0",
+		currency: "₽",
+		description: "Открытие <br>и&nbsp;обслуживание счета",
+		colorClass: "yellow-100"
+	},
+	{
+		beforeNum: "от",
+		num: "500",
+		currency: "₽",
+		description: "Ежемесячная плата <br>за&nbsp;счёт",
+		colorClass: "yellow-100"
+	},
+	{
+		beforeNum: "до",
+		num: "150",
+		description: "Бесплатных <br>платежей",
+		colorClass: "yellow-100"
+	}
+]
 ---
 
 <DefaultPageLayout title="index">
@@ -956,6 +978,24 @@ const loan = {
 					<ADropDownButton value="CNY">CNY</ADropDownButton>
 				</ACurrencyInput>
 			</FormRow>
+		</div>
+
+		<div class="ui-section">
+			<SectionTitle class="ui-section-title" titleClass="headline-2" >&lt;CardPromo&gt;</SectionTitle>
+
+			<CardPromo
+				backgroundColor="heavy-violet"
+				title="Откройте счёт в&nbsp;Новиком"
+				text="Бесплатное дистанционное обслуживание и&nbsp;бесплатное сопровождение сделки при открытии счёта в&nbsp;банке Новиком"
+				image="assets/big-illustrations/large-business/account-reservation.png"
+				benefits={cardOfferBenefits}
+				hasPattern>
+				<Fragment slot="footer">
+					<AButton element="a" size="lm" color="yellow" href="#">Открыть счет</AButton>
+					<AButton element="a" size="lm" color="white" afterIcon="icon-chevron-right" text href="#">Подробнее</AButton>
+				</Fragment>
+			</CardPromo>
+			
 		</div>
 	</div>
 	<Fragment slot="footer">footer</Fragment>
