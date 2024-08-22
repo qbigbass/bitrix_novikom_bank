@@ -1,7 +1,7 @@
 ---
 type Type = 'layout' | 'component'
 interface Props {
-	className?: string;
+	class?: string;
 	multiple?: boolean;
 	type?: Type;
 	['data-active-on-mq']?: string;
@@ -31,8 +31,8 @@ const {
 
 	const accordions = document.querySelectorAll(JS_CLASSES.jsAccordion);
 
-	accordions.forEach((accordion: HTMLDivElement) => {
-		initAAccordion(accordion);
+	accordions.forEach((accordion) => {
+		initAAccordion(accordion as HTMLDivElement);
 	});
 </script>
 
