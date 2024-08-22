@@ -19,11 +19,11 @@ interface Link {
 }
 
 interface Props {
-	classList: string;
+	class?: string;
 	title: string;
 	description: string;
-	symbolId: string;
-	imgSrc: string;
+	symbolId?: string;
+	imgSrc?: string;
 	conditions?: Condition[];
     additionalConditions?: Condition[];
 	links?: Link[]

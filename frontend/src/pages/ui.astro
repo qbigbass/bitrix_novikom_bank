@@ -6,7 +6,9 @@ import AButton from "@components/ui/Buttons/AButton.astro";
 import AIcon from "../components/AIcon.astro";
 import ATabs from "@components/ui/ATabs/ATabs.astro";
 import ABreadcrumbs from "@components/ui/ABreadcrumbs/ABreadcrumbs.astro";
-import OfferCard from "@components/common/OfferCard/OfferCard.astro";
+import OfferCard, {
+    type OfferCardColor,
+} from "@components/common/OfferCard/OfferCard.astro";
 import AppButton from "../components/ui/Buttons/AppButton.astro";
 import AInput from "../components/ui/AInput/AInput.astro";
 import ServiceCard from "../components/common/ServiceCard.astro";
@@ -114,6 +116,44 @@ const serviceAppBenefits = [
     {
         icon: "icon-cash",
         text: "Платежи и&nbsp;переводы без&nbsp;комиссии",
+    },
+];
+
+const offerCards = [
+    {
+        title: "Программа «Кешбэк»",
+        description: "",
+        imgSrc: "assets/big-illustrations/large-individual/contribution-rentier.png",
+        href: "#",
+        beforeNumberText: "до",
+        numberText: "15,5%",
+        afterNumberText: "",
+        buttonText: "Открыть вклад",
+        tagText: "Частным клиентам",
+        cardColor: "green" as OfferCardColor,
+		textLink: false,
+    },
+    {
+        title: "Ипотека по программе <br>«IT-ипотека»",
+        description: "",
+        imgSrc: "assets/big-illustrations/large-individual/it-mortgage.png",
+        href: "#",
+        buttonText: "Подать заявку",
+        cardColor: "transparent" as OfferCardColor,
+		textLink: true,
+    },
+    {
+        title: "Кредит<br>на образование",
+        description: "",
+        imgSrc: "assets/big-illustrations/large-individual/credit-education.png",
+        href: "#",
+        beforeNumberText: "от",
+        numberText: "16%",
+        afterNumberText: "",
+        buttonText: "Оформить",
+        tagText: "Частным клиентам",
+        cardColor: "yellow" as OfferCardColor,
+		textLink: false,
     },
 ];
 ---
@@ -242,8 +282,8 @@ const serviceAppBenefits = [
             >
 
             <div class="ui-row ui-dark-bg" style="padding-bottom: 32px">
-                <ATag href="#">Filled</ATag>
-                <ATag href="#" outline>Outlined</ATag>
+                <ATag>Filled</ATag>
+                <ATag outline>Outlined</ATag>
             </div>
         </div>
         <div class="ui-section">
@@ -646,10 +686,10 @@ const serviceAppBenefits = [
             >
 
             <div class="ui-grid ui-grid-col-3">
-                <APolygonContainer size="ms" color="purple-100">
+                <APolygonContainer color="purple-100">
                     <AFooterApps />
                 </APolygonContainer>
-                <APolygonContainer size="l" color="green-100">
+                <APolygonContainer color="green-100">
                     <div
                         style="
 						display: flex;
@@ -704,9 +744,9 @@ const serviceAppBenefits = [
             >
 
             <div class="ui-grid ui-grid-col-3 ui-dark-bg">
-                <AppButton iconName="ru-store" />
-                <AppButton iconName="ru-market" />
-                <AppButton iconName="nash-store" />
+                <AppButton href="#" iconName="ru-store" />
+                <AppButton href="#" iconName="ru-market" />
+                <AppButton href="#" iconName="nash-store" />
             </div>
         </div>
 
@@ -966,37 +1006,33 @@ const serviceAppBenefits = [
             >
 
             <div class="ui-grid ui-gap-2 ui-grid-col-3 ui-grid-items-a-stretch">
-                <OfferCard
-                    imgSrc="assets/big-illustrations/large-individual/contribution-rentier.png"
-                    color="green"
-                    textButton="Открыть вклад"
-                    class="bank-offers__card"
-                    title="Вклад «Рантье»"
-                    numberText="15,5%"
-                    beforeNumberText="до"
-                >
-                    <ATag slot="tag">Частным клиентам</ATag>
-                </OfferCard>
-                <OfferCard
-                    imgSrc="assets/big-illustrations/large-corporate/account-reservation.png"
-                    color="orange"
-                    textButton="Подать заявку"
-                    class="bank-offers__card"
-                    title="Резервирование счетов"
-                    description="Дистанционная подача заявки<br>на открытие расчетного счета"
-                >
-                    <ATag slot="tag">Корпоративным клиентам</ATag>
-                </OfferCard>
-                <OfferCard
-                    imgSrc="assets/big-illustrations/large-corporate/guarantees.png"
-                    color="yellow"
-                    textButton="Оформить"
-                    class="bank-offers__card"
-                    title="Экспресс-гарантии 44⁠-⁠ФЗ,<br>223⁠-⁠ФЗ"
-                    description="Принятие решения за 1 день,<br> до 30 000 000 рублей,<br> без залога"
-                >
-                    <ATag slot="tag">Малому и среднему бизнесу</ATag>
-                </OfferCard>
+                {
+                    offerCards.map((card) => (
+                        <OfferCard
+                            imgSrc={card.imgSrc}
+                            color={card.cardColor}
+                            textButton={card.buttonText}
+                            title={card.title}
+                            description={card.description}
+                            textIndicating={{
+                                text: card.numberText ? card.numberText : "",
+                                beforeText: card.beforeNumberText
+                                    ? card.beforeNumberText
+                                    : "",
+                                afterText: card.afterNumberText
+                                    ? card.afterNumberText
+                                    : "",
+                            }}
+                            textLink={card.textLink}
+                        >
+                            {card.tagText && (
+                                <div class="offer-card__tag" slot="tag">
+                                    <ATag>{card.tagText}</ATag>
+                                </div>
+                            )}
+                        </OfferCard>
+                    ))
+                }
             </div>
         </div>
         <div class="ui-section">
@@ -1226,6 +1262,7 @@ const serviceAppBenefits = [
 
             <div class="ui-grid">
                 <ProductCard
+					imgSrc= "assets/big-illustrations/large-individual/contribution-rentier.png",
                     title={loan.title}
                     description={loan.description}
                     symbolId={loan.symbolId}
@@ -1253,7 +1290,7 @@ const serviceAppBenefits = [
                         <ACollapsedItem>Пятый элемент</ACollapsedItem>
                         <ACollapsedItem>Шестой элемент</ACollapsedItem>
                     </div>
-                    <ACollapsedButton style="margin-top: 2.5rem;" />
+                    <ACollapsedButton  />
                 </ACollapsedItems>
             </div>
         </div>
@@ -1314,7 +1351,6 @@ const serviceAppBenefits = [
                 </ASelectInput>
 
                 <ASelectInput
-                    multiple
                     size="m"
                     label="Категория основной карты"
                     placeholder="Выберите"
