@@ -1,7 +1,6 @@
 ---
 import DefaultPageLayout from "../layouts/DefaultPageLayout.astro";
 import SectionBankOffers from "../components/sections/SectionBankOffers.astro";
-import SectionBankServices from "../components/sections/SectionBankServices.astro";
 import MainSlider from "@components/common/MainSlider/MainSlider.astro";
 import SectionClientInfo from "../components/sections/SectionClientInfo.astro";
 import AnnouncementCardClients from "../components/common/AnnouncementCardClients/AnnouncementCardClients.astro";
@@ -10,6 +9,8 @@ import type {OfferCardColor} from "@components/common/OfferCard/OfferCard.astro"
 import SectionLayout from "../components/layouts/SectionLayout.astro";
 import CardPromo from "@components/common/Cards/CardPromo.astro";
 import AButton from "@components/ui/Buttons/AButton.astro";
+import SectionCardLayout from "@components/layouts/SectionCardLayout.astro";
+import type { BackgroundColors, iconColors } from "@components/common/Cards/CardProduct.astro";
 
 const mainSliders = [
 	{
@@ -92,11 +93,68 @@ const cardOfferBenefits = [
 		colorClass: "yellow-100"
 	}
 ]
+
+const productCards = [
+	{	
+		title: "Страхование вкладов",
+        text: "Страхование корпоративных рисков",
+        icon: "icon-a-card-security",
+        backgroundColor: "white" as BackgroundColors,
+        iconColor: "yellow-150" as iconColors,
+	},
+	{
+		title: "ДБО",
+        text: "Выставление всех видов банковских гарантий",
+        icon: "icon-a-web-bank",
+        backgroundColor: "white" as BackgroundColors,
+        iconColor: "yellow-150" as iconColors,
+	},
+	{
+		title: "Меры господдержки",
+        text: "Новиком оказывает услуги лизинга через своего партнера&nbsp;&mdash; лизинговую компанию &laquo;Нацпромлизинг&raquo;",
+        icon: "icon-a-hand-money",
+        backgroundColor: "white" as BackgroundColors,
+        iconColor: "yellow-150" as iconColors,
+	},
+	{
+		title: "Расчетный счет",
+        text: "Большой объем финансирования в&nbsp;рамках одной сделки",
+        icon: "icon-a-ticket",
+        backgroundColor: "white" as BackgroundColors,
+        iconColor: "yellow-150" as iconColors,
+	},
+	{
+		title: "Госзакупки",
+        text: "Льготное финансирование организациям",
+        icon: "icon-a-personal-manager",
+        backgroundColor: "white" as BackgroundColors,
+        iconColor: "yellow-150" as iconColors,
+	},
+	{
+		title: "ВЭД",
+        text: "Карта для совершения операций по&nbsp;счёту юридического лица",
+        icon: "icon-a-money",
+        backgroundColor: "white" as BackgroundColors,
+        iconColor: "yellow-150" as iconColors,
+	},
+	{
+		title: "Конверсионные операции",
+        text: "Централизованное управление денежными потоками",
+        icon: "icon-a-multitasking",
+        backgroundColor: "white" as BackgroundColors,
+        iconColor: "yellow-150" as iconColors,
+	},
+
+]
 ---
 
 <DefaultPageLayout title="МСБ Главная">
 	<MainSlider slides={mainSliders} backgroundColor="heavy-violet" bannerType="msb" hasPattern/>
-	<SectionBankServices/>
+	<SectionLayout bgColor="gray">
+		<div class="content-container">
+			<SectionCardLayout productCards={productCards}/>
+		</div>
+	</SectionLayout>
 	<SectionLayout bgColor="gray">
 		<div class="content-container">
 			<CardPromo

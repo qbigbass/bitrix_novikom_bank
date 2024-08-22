@@ -1,0 +1,152 @@
+---
+import CardProduct from "@components/common/Cards/CardProduct.astro";
+import type {
+    iconColors,
+    BackgroundColors,
+} from "@components/common/Cards/CardProduct.astro";
+
+type productCards = {
+    title: string;
+    text: string;
+    icon: string;
+    backgroundColor: BackgroundColors;
+    iconColor: iconColors;
+};
+
+interface Props {
+    class?: string;
+    productCards?: productCards[];
+}
+
+const { class: className, productCards } = Astro.props as Props;
+
+// сетка для катрочек
+---
+
+<div class="section-card-layout">
+    {
+        productCards && (
+            <div class="product-card-grid">
+                {productCards.map(
+                    ({ title, text, icon, backgroundColor, iconColor }) => (
+                        <CardProduct
+                            title={title}
+                            text={text}
+                            icon={icon}
+                            backgroundColor={backgroundColor}
+                            iconColor={iconColor}
+                        />
+                    ),
+                )}
+            </div>
+        )
+    }
+</div>
+
+<style lang="scss" is:global>
+    @import "@styles/media-queries";
+
+    .section-card-layout {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+
+        @include use-media(tablet) {
+            gap: 2rem;
+        }
+
+        @include use-media(tablet-album) {
+            gap: 3rem;
+        }
+    }
+
+    .product-card-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+
+        @include use-media(tablet) {
+            gap: 2rem;
+        }
+
+        @include use-media(tablet-album) {
+            column-gap: 2.5rem;
+            row-gap: 3rem;
+        }
+
+        & > * {
+            flex-basis: 100%;
+            
+            @include use-media(tablet) {
+                flex-basis: calc(50% - 2rem / 2);
+            }
+
+            @include use-media(tablet-album) {
+                flex-basis: calc(50% - 2.5rem / 2);
+            }
+
+            @include use-media(laptop) {
+                flex-basis: calc(25% - 2.5rem * 3 / 4);
+            }
+
+            &:nth-child(1) {
+                @include use-media(tablet) {
+                    flex-basis: calc(50% - 2rem / 2);
+                }
+
+                @include use-media(tablet-album) {
+                    flex-basis: calc(33.33% - 2.5rem * 2 / 3);
+                }
+
+                // @include use-media(laptop) {
+                //     flex-basis: calc(33.33% - 2.5rem * 2 / 3);
+                // }
+            }
+
+            &:nth-child(2) {
+                @include use-media(tablet) {
+                    flex-basis: calc(50% - 2rem / 2);
+                }
+
+                @include use-media(tablet-album) {
+                    flex-basis: calc(33.33% - 2.5rem * 2 / 3);
+                }
+
+                // @include use-media(laptop) {
+                //     flex-basis: calc(33.33% - 2.5rem * 2 / 3);
+                // }
+            }
+
+            &:nth-child(3) {
+                @include use-media(tablet) {
+                    flex-basis: 100%;
+                }
+
+                @include use-media(tablet-album) {
+                    flex-basis: calc(33.33% - 2.5rem * 2 / 3);
+                }
+
+                // @include use-media(laptop) {
+                //     flex-basis: calc(33.33% - 2.5rem * 2 / 3);
+                // }
+            }
+
+            // &:nth-child(4),
+            // &:nth-child(5),
+            // &:nth-child(6),
+            // &:nth-child(7) {
+            //     @include use-media(tablet) {
+            //         flex-basis: calc(50% - 2rem / 2);
+            //     }
+
+            //     @include use-media(tablet-album) {
+            //         grid-column: span 3;
+            //     }
+
+            //     @include use-media(laptop) {
+            //         flex-basis: calc(25% - 2.5rem * 3 / 4);
+            //     }
+            // }
+        }
+    }
+</style>
