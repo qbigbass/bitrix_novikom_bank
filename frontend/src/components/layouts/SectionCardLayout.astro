@@ -25,6 +25,12 @@ const { class: className, productCards } = Astro.props as Props;
 
 <div class="section-card-layout">
     {
+        Astro.slots["banner"] && (
+            <slot name="banner" />
+        )
+    }
+    
+    {
         productCards && (
             <div class="product-card-grid">
                 {productCards.map(
@@ -76,7 +82,7 @@ const { class: className, productCards } = Astro.props as Props;
 
         & > * {
             flex-basis: 100%;
-            
+
             @include use-media(tablet) {
                 flex-basis: calc(50% - 2rem / 2);
             }

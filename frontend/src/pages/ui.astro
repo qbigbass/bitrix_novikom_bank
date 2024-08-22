@@ -101,6 +101,21 @@ const cardOfferBenefits = [
         colorClass: "yellow-100",
     },
 ];
+
+const serviceAppBenefits = [
+    {
+        icon: "icon-mobile",
+        text: "Управление кешбэком и&nbsp;бонусами",
+    },
+    {
+        icon: "icon-time",
+        text: "Доступ к&nbsp;услугам банка 24/7",
+    },
+    {
+        icon: "icon-cash",
+        text: "Платежи и&nbsp;переводы без&nbsp;комиссии",
+    },
+];
 ---
 
 <DefaultPageLayout title="index">
@@ -596,7 +611,24 @@ const cardOfferBenefits = [
             >
 
             <div class="ui-grid">
-                <ServiceAppsCard />
+                <ServiceAppsCard
+                    benefits={serviceAppBenefits}
+                    title="Мобильное приложение"
+                    class="bank-services__apps"
+                >
+                    <Fragment slot="footer">
+                        <AppButton href="#" iconName="ru-store" />
+                        <AppButton href="#" iconName="ru-market" />
+                        <AppButton href="#" iconName="nash-store" />
+                        <AButton
+                            element="a"
+                            href="#"
+                            size="m"
+                            afterIcon="icon-download"
+                            color="white">Скачать</AButton
+                        >
+                    </Fragment>
+                </ServiceAppsCard>
             </div>
         </div>
         <div class="ui-section">
@@ -1403,7 +1435,7 @@ const cardOfferBenefits = [
                         iconColor="violet-100"
                     />
                 </div>
-				<div>
+                <div>
                     <CardProduct
                         title="Зоголовок 2"
                         text="Текст 2"
@@ -1412,7 +1444,7 @@ const cardOfferBenefits = [
                         iconColor="yellow-150"
                     />
                 </div>
-				<div>
+                <div>
                     <CardProduct
                         title="Зоголовок 3"
                         text="Текст 2"
