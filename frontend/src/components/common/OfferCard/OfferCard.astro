@@ -13,6 +13,7 @@ export interface Props {
 	title: string;
 	description?: string;
 	textIndicating?: TextIndicatingBenefitsProps;
+	textLink?: boolean;
 }
 
 const {
@@ -24,6 +25,7 @@ const {
 	description,
 	href,
 	textIndicating,
+	textLink = false,
 	...rest
 } = Astro.props;
 
@@ -62,7 +64,11 @@ const showTag = !!Astro.slots['tag'];
 			}
 		</div>
         <img class="offer-card__img" src={imgSrc} alt="" loading="lazy" />
-		<AButton element="a" href={href} size="m" class="offer-card__link">{textButton}</AButton>
+		{ textLink ?
+				<AButton element="a" text afterIcon="icon-chevron-right" href={href} size="m" class="offer-card__link">{textButton}</AButton>
+				:
+				<AButton element="a" href={href} size="m" class="offer-card__link">{textButton}</AButton>
+		}
 	</div>
 </div>
 

@@ -19,6 +19,7 @@ type OfferCard = {
     buttonText: string;
     tagText?: string;
     cardColor: OfferCardColor;
+    textLink?: boolean;
 }
 
 interface Props {
@@ -61,6 +62,7 @@ const {
                                             afterText: card.afterNumberText ? card.afterNumberText : '',
                                         }
                                     }
+                                    textLink={card.textLink}å
                             >
                                 {card.tagText && (
                                         <div class="offer-card__tag" slot="tag">
