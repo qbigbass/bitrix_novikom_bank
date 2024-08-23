@@ -148,6 +148,10 @@ if (number < 1) {
 			align-items: flex-start;
 			gap: .5rem;
 
+			@include use-media(tablet) {
+				gap: 1rem;
+			}
+
 			@include use-media(tablet-album) {
 				flex-grow: 1;
 			}

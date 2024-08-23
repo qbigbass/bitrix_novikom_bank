@@ -18,7 +18,6 @@ import ATab from "../components/ui/ATabs/common/ATab/ATab.astro";
 import SectionLayout from "../components/layouts/SectionLayout.astro";
 import DisplayStepperItem from "../components/common/DisplayStepper/DisplayStepperItem.astro";
 import DisplayStepper from "../components/common/DisplayStepper/DisplayStepper.astro";
-import TableAdaptive from "../components/ui/TableAdaptive/TableAdaptive.astro";
 import SectionBenefitsLayout from "../components/layouts/SectionBenefitsLayout.astro";
 import ATabs from "../components/ui/ATabs/ATabs.astro";
 import ATabSwiperWrapper from "../components/ui/ATabs/common/ATabSwiperWrapper.astro";
@@ -32,7 +31,16 @@ import CalculatorCardItem from "../components/common/CalculatorCard/CalculatorCa
 import CalculatorCard from "../components/common/CalculatorCard/CalculatorCard.astro";
 import FormRow from "../components/layouts/FormLayout/FormRow.astro";
 import AInput from "../components/ui/AInput/AInput.astro";
+import ATableRow from "../components/common/ATable/ATableRow.astro";
+import ATable from "../components/common/ATable/ATable.astro";
+import ATableCell from "../components/common/ATable/ATableCell.astro";
+import ATableBody from "../components/common/ATable/ATableBody.astro";
+import AList from "../components/ui/AList/AList.astro";
+import ATableHeader from "../components/common/ATable/ATableHeader.astro";
+import AddInfoLayout from "../components/layouts/AddInfoLayout/AddInfoLayout.astro";
+import ATableFooter from "../components/common/ATable/ATableFooter.astro";
 import InputWithIcon from "../components/ui/InputWithIcon/InputWithIcon.astro";
+import AInputField from "../components/ui/AInput/AInputField.astro";
 
 const benefitCards = [
 	{
@@ -51,92 +59,6 @@ const benefitCards = [
 		iconId: 'icon-a-money'
 	}
 ];
-
-const tableDataPercent = {
-	header: [
-		'Процент годовых в месяц',
-		'Условия'
-	],
-	body: [
-		{
-			cells: [
-				{
-					className: 'number-l-heavy',
-					text: '4,5%',
-				},
-				{
-					className: 'body-l-light',
-					text: '<p>\n' +
-						'                    при сумме остатка не&nbsp;более 1&nbsp;400&nbsp;000 рублей на&nbsp;Текущем счете карты\n' +
-						'                </p>\n' +
-						'                <p>\n' +
-						'                    сумме покупок по&nbsp;карте (за&nbsp;исключением оплаты товаров и&nbsp;услуг через СБП)\n' +
-						'                    на&nbsp;общую сумму менее 20&nbsp;000 рублей в&nbsp;календарном месяце\n' +
-						'                </p>',
-				}
-
-			],
-		},
-		{
-			cells: [
-				{
-					className: 'number-l-heavy',
-					text: '5%',
-				},
-				{
-					className: 'body-l-light',
-					text: '<p>\n' +
-						'                    при сумме остатка не&nbsp;более 1&nbsp;400&nbsp;000 рублей на&nbsp;Текущем счете карты\n' +
-						'                </p>\n' +
-						'                <p>\n' +
-						'                    сумме покупок по&nbsp;карте (за&nbsp;исключением оплаты товаров и&nbsp;услуг через СБП)\n' +
-						'                    на&nbsp;общую сумму менее 20&nbsp;000 рублей в&nbsp;календарном месяце\n' +
-						'                </p>',
-				}
-
-			],
-		},
-		{
-			cells: [
-				{
-					className: 'number-l-heavy',
-					text: '7,5%',
-				},
-				{
-					className: 'body-l-light',
-					text: '<p>\n' +
-						'                    при сумме остатка не&nbsp;более 1&nbsp;400&nbsp;000 рублей на&nbsp;Текущем счете карты\n' +
-						'                </p>\n' +
-						'                <p>\n' +
-						'                    сумме покупок по&nbsp;карте (за&nbsp;исключением оплаты товаров и&nbsp;услуг через СБП)\n' +
-						'                    на&nbsp;общую сумму менее 20&nbsp;000 рублей в&nbsp;календарном месяце\n' +
-						'                </p>',
-				}
-
-			],
-		},
-		{
-			cells: [
-				{
-					className: 'number-l-heavy',
-					text: '8%',
-				},
-				{
-					className: 'body-l-light',
-					text: '<p>\n' +
-						'                    при сумме остатка не&nbsp;более 1&nbsp;400&nbsp;000 рублей на&nbsp;Текущем счете карты\n' +
-						'                </p>\n' +
-						'                <p>\n' +
-						'                    сумме покупок по&nbsp;карте (за&nbsp;исключением оплаты товаров и&nbsp;услуг через СБП)\n' +
-						'                    на&nbsp;общую сумму менее 20&nbsp;000 рублей в&nbsp;календарном месяце\n' +
-						'                </p>',
-				}
-
-			],
-		},
-
-	]
-}
 ---
 
 <DefaultPageLayout title="Вклад «РАНТЬЕ»">
@@ -219,9 +141,8 @@ const tableDataPercent = {
 					</Fragment>
 					<Fragment slot="fields">
 						<FormRow cols={2}>
-							<InputWithIcon afterIcon="icon-search" />
-							<!--<AInput size="m" label="Дата пополнения" forId="name-1" name="input-1"/>-->
-							<AInput size="m" label="Сумма пополнения" forId="name-2" name="input-2"/>
+							<AInputField size="m" label="Дата пополнения" forId="name-1" name="input-1" afterIcon="icon-calendar" hint="подсказка" required />
+							<AInputField size="m" label="Сумма пополнения" forId="name-2" name="input-2" afterIcon="icon-rub" />
 						</FormRow>
 					</Fragment>
 					<Fragment slot="card">
@@ -250,7 +171,171 @@ const tableDataPercent = {
 				</CalculatorLayout>
 			</ATabPanel>
 			<ATabPanel value="1">
-				<TableAdaptive tableData={tableDataPercent} />
+				<AddInfoLayout>
+					<ATable cols={4} isScrollable>
+						<ATableHeader>
+							<ATableRow>
+								<ATableCell class="body-s-light">Срок вклада</ATableCell>
+								<ATableCell class="body-s-light">250 дней</ATableCell>
+								<ATableCell class="body-s-light">550 дней</ATableCell>
+								<ATableCell class="body-s-light">1 100 дней</ATableCell>
+							</ATableRow>
+						</ATableHeader>
+						<ATableBody>
+							<ATableRow>
+								<ATableCell class="body-l-light">от 10 000 <span class="currency-regular">₽</span></ATableCell>
+								<ATableCell class="body-l-heavy">КС –0,8%</ATableCell>
+								<ATableCell class="body-l-heavy">КС</ATableCell>
+								<ATableCell class="body-l-heavy">КС</ATableCell>
+							</ATableRow>
+							<ATableRow>
+								<ATableCell class="body-l-light">от 1 500 000 <span class="currency-regular">₽</span></ATableCell>
+								<ATableCell class="body-l-heavy">КС –0,6%</ATableCell>
+								<ATableCell class="body-l-heavy">КС</ATableCell>
+								<ATableCell class="body-l-heavy">КС +0,2%</ATableCell>
+							</ATableRow>
+							<ATableRow>
+								<ATableCell class="body-l-light">от 5 000 000 <span class="currency-regular">₽</span></ATableCell>
+								<ATableCell class="body-l-heavy">КС –0,5%</ATableCell>
+								<ATableCell class="body-l-heavy">КС +0,1%</ATableCell>
+								<ATableCell class="body-l-heavy">КС +0,3%</ATableCell>
+							</ATableRow>
+							<ATableRow>
+								<ATableCell class="body-l-light">от 30 000 000 <span class="currency-regular">₽</span></ATableCell>
+								<ATableCell class="body-l-heavy">КС –0,4%</ATableCell>
+								<ATableCell class="body-l-heavy">КС +0,2%</ATableCell>
+								<ATableCell class="body-l-heavy">КС +0,2%</ATableCell>
+							</ATableRow>
+						</ATableBody>
+						<ATableFooter isSticky>
+							<p class="body-s-light">
+								КС&nbsp;&mdash; ключевая ставка Банка России
+							</p>
+						</ATableFooter>
+					</ATable>
+
+					<ATable class="md:in-column" cols={2}>
+					<ATableBody>
+						<ATableRow>
+							<ATableCell class="body-l-heavy dark-70">При изменении КС</ATableCell>
+							<ATableCell class="body-l-light">
+								<AList size="l">
+									<li>
+										до&nbsp;25-го числа месяца включительно изменение процентной ставки
+										по&nbsp;вкладу происходит в&nbsp;первый рабочий день месяца, следующего за&nbsp;месяцем изменения,
+									</li>
+									<li>
+										после 25-го числа месяца, процентная ставка по&nbsp;вкладу меняется
+										в&nbsp;пятый рабочий день месяца, следующего за&nbsp;месяцем изменения
+									</li>
+								</AList>
+							</ATableCell>
+						</ATableRow>
+						<ATableRow>
+							<ATableCell class="body-l-heavy dark-70">Порядок изменения ставки применяется</ATableCell>
+							<ATableCell class="body-l-light">
+								<AList size="l">
+									<li>
+										для действующих вкладов,
+									</li>
+									<li>
+										для вкладов, размещаемых в&nbsp;период между датой изменения Банком России
+										КС&nbsp;и&nbsp;вышеуказанным днем изменения Банком ставки по&nbsp;вкладу.
+									</li>
+								</AList>
+							</ATableCell>
+						</ATableRow>
+						<ATableRow>
+							<ATableCell class="body-l-heavy dark-70">Определение даты изменения КС</ATableCell>
+							<ATableCell class="body-l-light">
+								<p>
+									Для целей определения даты изменения&nbsp;КС принимается дата опубликования
+									информационного сообщения Банка России об&nbsp;изменении&nbsp;КС на&nbsp;сайте Банка России.
+								</p>
+							</ATableCell>
+						</ATableRow>
+					</ATableBody>
+				</ATable>
+				</AddInfoLayout>
+			</ATabPanel>
+			<ATabPanel value="2">
+				<ATable class="md:in-column" cols={2}>
+					<ATableBody>
+						<ATableRow>
+							<ATableCell class="body-l-heavy dark-70">Минимальная ставка по&nbsp;вкладу</ATableCell>
+							<ATableCell class="body-l-light">
+								2,5% (гарантированная минимальная ставка по&nbsp;вкладу при значении ключевой ставки Банка России менее 2,5% или при досрочном закрытии вклада).
+							</ATableCell>
+						</ATableRow>
+						<ATableRow>
+							<ATableCell class="body-l-heavy dark-70">Валюта вклада</ATableCell>
+							<ATableCell class="body-l-light"><span class="currency-regular">₽</span>, российские рубли</ATableCell>
+						</ATableRow>
+						<ATableRow>
+							<ATableCell class="body-l-heavy dark-70">Срок размещения вклада</ATableCell>
+							<ATableCell class="body-l-light">250, 550 и&nbsp;1100 дней</ATableCell>
+						</ATableRow>
+						<ATableRow>
+							<ATableCell class="body-l-heavy dark-70">Процентная ставка</ATableCell>
+							<ATableCell class="body-l-light">
+								<p>
+									При заключении договора процентная ставка по&nbsp;вкладу устанавливается в&nbsp;зависимости от&nbsp;размера первоначального взноса по&nbsp;вкладу.
+								</p>
+								<AList size="l">
+									<li>
+										или путем перечисления на&nbsp;текущий счет Вкладчика, открытый в&nbsp;Банке, в&nbsp;том числе на&nbsp;текущий счет для проведения расчетов с&nbsp;использованием банковской карты с&nbsp;возможностью дальнейшего снятия начисленных процентов;
+									</li>
+									<li>
+										или путем присоединения начисленных процентов к&nbsp;сумме вклада (капитализация).
+									</li>
+
+								</AList>
+								<p>
+									Вкладчик вправе изменить порядок выплаты процентов, подав в&nbsp;Банк соответствующее заявление по&nbsp;форме Банка. Измененный порядок выплаты процентов применяется, начиная с&nbsp;процентного периода, следующего за&nbsp;датой подачи указанного заявления.
+								</p>
+								<p>
+									Каждый последующий промежуточный период начисления процентов исчисляется с&nbsp;календарного дня, следующего за&nbsp;датой заключения договора банковского вклада.
+								</p>
+							</ATableCell>
+						</ATableRow>
+						<ATableRow>
+							<ATableCell class="body-l-heavy dark-70">Выплата процентов</ATableCell>
+							<ATableCell class="body-l-light">
+								<p>
+									Выплата процентов, начисленных по&nbsp;вкладу, производится ежемесячно по&nbsp;истечении каждого месяца со&nbsp;дня внесения денежных средств во&nbsp;вклад, одним из&nbsp;способов по&nbsp;выбору Вкладчика:
+								</p>
+								<p>
+									Осуществление расходных операций по&nbsp;вкладу (снятие части денежных средств) не&nbsp;предусмотрено.
+								</p>
+							</ATableCell>
+						</ATableRow>
+						<ATableRow>
+							<ATableCell class="body-l-heavy dark-70">Пополнение и&nbsp;снятие</ATableCell>
+							<ATableCell class="body-l-light">
+								<p>
+									Пополнение вклада возможно без ограничения сумм в&nbsp;течение всего срока вклада.
+								</p>
+								<p>
+									2,5% (гарантированная минимальная ставка по&nbsp;вкладу при значении ключевой ставки Банка России менее 2,5% или при досрочном закрытии вклада).
+								</p>
+								<p>
+									В&nbsp;случае досрочного востребования всей суммы вклада или её&nbsp;части проценты начисляются и&nbsp;выплачиваются по&nbsp;минимальной ставке за&nbsp;фактический срок вклада со&nbsp;дня, следующего за&nbsp;днем размещения вклада (дня начала очередного срока вклада&nbsp;&mdash; при продлении договора), по&nbsp;день досрочного возврата вклада или его части включительно).
+								</p>
+							</ATableCell>
+						</ATableRow>
+						<ATableRow>
+							<ATableCell class="body-l-heavy dark-70">Прочее</ATableCell>
+							<ATableCell class="body-l-light">
+								<p>
+									По&nbsp;желанию Вкладчика, заключившего с&nbsp;Банком договор вклада &laquo;Рантье&raquo; на&nbsp;сумму 1,5&nbsp;млн. рублей и&nbsp;более, на&nbsp;основании письменного заявления Вкладчика на&nbsp;выпуск карты ему предоставляется одна банковская карта МИР Премиальная (за&nbsp;исключением карт &laquo;Всегда в&nbsp;плюсе&raquo;) без взимания комиссии за&nbsp;обслуживание текущего счета карты в&nbsp;течение всего срока ее&nbsp;действия.
+								</p>
+								<p>
+									Возврат Вклада и&nbsp;причитающихся процентов осуществляется Банком путем перевода соответствующей суммы на&nbsp;Счет обслуживания вклада, открытый на&nbsp;имя Вкладчика в&nbsp;валюте Вклада. По&nbsp;требованию Вкладчика возврат Вклада может производиться наличными денежными средствами через кассу Банка.
+								</p>
+							</ATableCell>
+						</ATableRow>
+					</ATableBody>
+				</ATable>
 			</ATabPanel>
 			<ATabPanel value="3">
 				<SectionHelpContentLayout>
@@ -599,7 +684,7 @@ const tableDataPercent = {
 		<Fragment slot="content">
 			<ARte class="body-l-light">
 				<p>
-					Денежные средства по&nbsp;совокупности вкладов и&nbsp;остатков на&nbsp;счетах физических лиц застрахованы в&nbsp;пределах суммы 1&nbsp;400&nbsp;000&nbsp;₽ в&nbsp;соответствии с&nbsp;Федеральным законом &laquo;О&nbsp;страховании вкладов в&nbsp;банках Российской Федерации&raquo;
+					Денежные средства по&nbsp;совокупности вкладов и&nbsp;остатков на&nbsp;счетах физических лиц застрахованы в&nbsp;пределах суммы 1&nbsp;400&nbsp;000&nbsp;<span class="currency-regular">₽</span> в&nbsp;соответствии с&nbsp;Федеральным законом &laquo;О&nbsp;страховании вкладов в&nbsp;банках Российской Федерации&raquo;
 				</p>
 			</ARte>
 		</Fragment>

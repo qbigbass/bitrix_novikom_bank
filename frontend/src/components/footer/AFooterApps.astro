@@ -2,7 +2,7 @@
 import AppButton from "../ui/Buttons/AppButton.astro";
 import AButton from "../ui/Buttons/AButton.astro";
 interface Props {
-	class: string;
+	class?: string;
 }
 
 const { class: className } = Astro.props as Props;
@@ -10,10 +10,10 @@ const { class: className } = Astro.props as Props;
 
 <div class="a-footer-apps" class:list={[className]}>
 	<div class="a-footer-apps__title headline-4">Скачивайте <br> мобильное приложение</div>
-	<AppButton iconName="ru-store" />
-	<AppButton iconName="ru-market" />
-	<AppButton iconName="nash-store" />
-	<AButton element="a" href="#" size="lm" afterIcon="icon-download" download>Скачать</AButton>
+	<AppButton href="#" iconName="ru-store" />
+	<AppButton href="#" iconName="ru-market" />
+	<AppButton href="#" iconName="nash-store" />
+	<AButton element="a" href="#" size="lm" afterIcon="icon-download">Скачать</AButton>
 </div>
 
 <style lang="scss" is:global>

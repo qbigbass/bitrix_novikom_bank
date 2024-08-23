@@ -184,3 +184,7 @@
 .currency {
 	font-family: map-get($font-family, currency);
 }
+
+.currency-regular {
+	font-family: map-get($font-family, currency-regular);
+}
