@@ -49,6 +49,8 @@ import CardPromo from "@components/common/Cards/CardPromo.astro";
 import CardProduct from "@components/common/Cards/CardProduct.astro";
 import CardContact from "@components/common/Cards/CardContact.astro";
 import CardFeedback from "@components/common/Cards/CardFeedback.astro";
+import DisplayStepper from "@components/common/DisplayStepper/DisplayStepper.astro";
+import DisplayStepperItem from "@components/common/DisplayStepper/DisplayStepperItem.astro";
 
 const loan = {
     title: "Кредит на любые цели<br> для зарплатных клиентов",
@@ -1553,14 +1555,14 @@ const listConatact = [
                 </div>
             </div>
         </div>
-		<div class="ui-section">
+        <div class="ui-section">
             <SectionTitle class="ui-section-title" titleClass="headline-2"
                 >&lt;CardFeedback&gt;</SectionTitle
             >
 
             <div class="ui-grid ui-gap-2 ui-grid-col-2 ui-dark-bg">
                 <div>
-					<CardFeedback
+                    <CardFeedback
                         title="Остались вопросы"
                         description="Оставьте свой телефон и мы перезвоним вам, либо задайте вопрос в чате"
                     >
@@ -1572,6 +1574,103 @@ const listConatact = [
                         </Fragment>
                     </CardFeedback>
                 </div>
+            </div>
+        </div>
+
+        <div class="ui-section">
+            <SectionTitle class="ui-section-title" titleClass="headline-2"
+                >&lt;DisplayStepper&gt;</SectionTitle
+            >
+
+            <div class="content-container">
+                <ATabs useLayout>
+                    <div class="a-accordion-content__wrapper">
+                        <h3 class="headline-2 a-accordion-content__title">
+                            Оформление гарантии
+                        </h3>
+                        <ATabSwiper class="a-accordion-content__tabs">
+                            <ATabSwiperWrapper>
+                                <ATab value="0" size="m">Онлайн</ATab>
+                                <ATab value="1" size="m" isActive>В банке</ATab>
+                            </ATabSwiperWrapper>
+                        </ATabSwiper>
+                        <ATabPanels>
+                            <ATabPanel value="0">
+                                <DisplayStepper steps={3}>
+                                    <DisplayStepperItem number={1}>
+                                        <h3 class="headline-3">Посетите</h3>
+                                        <ARte class="body-l-light">
+                                            <p>
+                                                <a href="#">ближайший офис Новикомбанка</a> или <a href="#">закажите консультацию</a> сотрудника Банка по&nbsp;телефону
+                                            </p>
+                                        </ARte>
+                                    </DisplayStepperItem>
+                                    <DisplayStepperItem number={2}>
+                                        <h3 class="headline-3">Подпишите</h3>
+                                        <ARte class="body-l-light">
+                                            <p>
+                                                все необходимые документы
+                                                в&nbsp;офисе
+                                            </p>
+                                        </ARte>
+                                    </DisplayStepperItem>
+                                    <DisplayStepperItem number={3}>
+                                        <h3 class="headline-3">Внесите</h3>
+                                        <ARte class="body-l-light">
+                                            <p>деньги на&nbsp;счет вклада</p>
+                                        </ARte>
+                                    </DisplayStepperItem>
+                                </DisplayStepper>
+                            </ATabPanel>
+                            <ATabPanel value="1">
+                                <DisplayStepper steps={4}>
+                                    <DisplayStepperItem
+                                        number={1}
+                                        color="yellow"
+                                    >
+                                        <ARte class="body-l-light">
+                                            <p>
+                                                Заполните заявку
+                                                и&nbsp;подготовьте комплект
+                                                документов
+                                            </p>
+                                        </ARte>
+                                    </DisplayStepperItem>
+                                    <DisplayStepperItem
+                                        number={2}
+                                        color="yellow"
+                                    >
+                                        <ARte class="body-l-light">
+                                            <p>
+                                                Получите консультацию
+                                                специалиста по&nbsp;телефону
+                                            </p>
+                                        </ARte>
+                                    </DisplayStepperItem>
+                                    <DisplayStepperItem
+                                        number={3}
+                                        color="yellow"
+                                    >
+                                        <ARte class="body-l-light">
+                                            <p>
+                                                Согласуйте текст гарантии
+                                                и&nbsp;подпишите документы
+                                            </p>
+                                        </ARte>
+                                    </DisplayStepperItem>
+                                    <DisplayStepperItem
+                                        number={4}
+                                        color="yellow"
+                                    >
+                                        <ARte class="body-l-light">
+                                            <p>Получите решение</p>
+                                        </ARte>
+                                    </DisplayStepperItem>
+                                </DisplayStepper>
+                            </ATabPanel>
+                        </ATabPanels>
+                    </div>
+                </ATabs>
             </div>
         </div>
     </div>
