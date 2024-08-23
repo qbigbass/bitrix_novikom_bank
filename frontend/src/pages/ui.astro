@@ -47,6 +47,7 @@ import ADropDownButton from "../components/ui/ADropDown/ADropDownButton/ADropDow
 import AInputField from "../components/ui/AInput/AInputField.astro";
 import CardPromo from "@components/common/Cards/CardPromo.astro";
 import CardProduct from "@components/common/Cards/CardProduct.astro";
+import CardContact from "@components/common/Cards/CardContact.astro";
 
 const loan = {
     title: "Кредит на любые цели<br> для зарплатных клиентов",
@@ -131,7 +132,7 @@ const offerCards = [
         buttonText: "Открыть вклад",
         tagText: "Частным клиентам",
         cardColor: "green" as OfferCardColor,
-		textLink: false,
+        textLink: false,
     },
     {
         title: "Ипотека по программе <br>«IT-ипотека»",
@@ -140,7 +141,7 @@ const offerCards = [
         href: "#",
         buttonText: "Подать заявку",
         cardColor: "transparent" as OfferCardColor,
-		textLink: true,
+        textLink: true,
     },
     {
         title: "Кредит<br>на образование",
@@ -153,7 +154,25 @@ const offerCards = [
         buttonText: "Оформить",
         tagText: "Частным клиентам",
         cardColor: "yellow" as OfferCardColor,
-		textLink: false,
+        textLink: false,
+    },
+];
+
+const listConatact = [
+    {
+        href: "tel:+78002507007",
+        text: "+7 (800) 250-70-07",
+        icon: "icon-phone",
+    },
+    {
+        href: "tel:+74959747187",
+        text: "+7 (495) 974-71-87",
+        icon: "icon-phone",
+    },
+    {
+        href: "emailto:garant@novikom.ru",
+        text: "garant@novikom.ru",
+        icon: "icon-mail",
     },
 ];
 ---
@@ -1262,7 +1281,8 @@ const offerCards = [
 
             <div class="ui-grid">
                 <ProductCard
-					imgSrc= "assets/big-illustrations/large-individual/contribution-rentier.png",
+                    imgSrc="assets/big-illustrations/large-individual/contribution-rentier.png"
+                    ,
                     title={loan.title}
                     description={loan.description}
                     symbolId={loan.symbolId}
@@ -1290,7 +1310,7 @@ const offerCards = [
                         <ACollapsedItem>Пятый элемент</ACollapsedItem>
                         <ACollapsedItem>Шестой элемент</ACollapsedItem>
                     </div>
-                    <ACollapsedButton  />
+                    <ACollapsedButton />
                 </ACollapsedItems>
             </div>
         </div>
@@ -1487,6 +1507,47 @@ const offerCards = [
                         icon="icon-a-hand-money"
                         backgroundColor="gray"
                         iconColor="orange-100"
+                    />
+                </div>
+            </div>
+        </div>
+
+        <div class="ui-section">
+            <SectionTitle class="ui-section-title" titleClass="headline-2"
+                >&lt;CardContact&gt;</SectionTitle
+            >
+
+            <div class="ui-grid ui-gap-2 ui-grid-col-3">
+                <div>
+                    <CardContact
+                        title="Отдел поддержки клиентов МСП"
+                        backgoroundColor="blue"
+                        list={listConatact}
+                    />
+                </div>
+                <div>
+                    <CardContact
+                        title="Отдел поддержки клиентов МСП"
+                        description="Описание"
+                        backgoroundColor="blue"
+                        list={listConatact}
+                        tag={{
+                            text: "Частным клиентам",
+                            color: "white",
+                            outline: true,
+                        }}
+                    />
+                </div>
+                <div>
+                    <CardContact
+                        title="Отдел поддержки клиентов МСП"
+                        description="Описание"
+                        backgoroundColor="gray"
+                        list={listConatact}
+                        tag={{
+                            text: "Частным клиентам",
+                            outline: true,
+                        }}
                     />
                 </div>
             </div>
