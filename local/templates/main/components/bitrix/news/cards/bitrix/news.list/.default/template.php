@@ -97,7 +97,7 @@ $request = Application::getInstance()->getContext()->getRequest()->toArray();
                                 <? foreach ($arResult['ITEMS'] as $sectionItem) { ?>
                                     <div class="product-card product-card--use-tag">
                                         <div class="product-card__image-container">
-                                            <img src="<?= $sectionItem['PREVIEW_PICTURE']['SRC'] ?>" class="product-card__image">
+                                            <img src="<?= $sectionItem['PREVIEW_PICTURE']['SRC'] ?>" class="product-card__image" alt="<?= $sectionItem['NAME'] ?>">
                                         </div>
                                         <? if (!empty($sectionItem['IBLOCK_SECTION_PROP_TYPE_CARDS'])) { ?>
                                             <div class="product-card__tag">
