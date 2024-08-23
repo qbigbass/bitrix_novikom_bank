@@ -51,6 +51,7 @@ import CardContact from "@components/common/Cards/CardContact.astro";
 import CardFeedback from "@components/common/Cards/CardFeedback.astro";
 import DisplayStepper from "@components/common/DisplayStepper/DisplayStepper.astro";
 import DisplayStepperItem from "@components/common/DisplayStepper/DisplayStepperItem.astro";
+import CardRating from "@components/common/Cards/CardRating.astro";
 
 const loan = {
     title: "Кредит на любые цели<br> для зарплатных клиентов",
@@ -1601,7 +1602,11 @@ const listConatact = [
                                         <h3 class="headline-3">Посетите</h3>
                                         <ARte class="body-l-light">
                                             <p>
-                                                <a href="#">ближайший офис Новикомбанка</a> или <a href="#">закажите консультацию</a> сотрудника Банка по&nbsp;телефону
+                                                <a href="#"
+                                                    >ближайший офис Новикомбанка</a
+                                                > или <a href="#"
+                                                    >закажите консультацию</a
+                                                > сотрудника Банка по&nbsp;телефону
                                             </p>
                                         </ARte>
                                     </DisplayStepperItem>
@@ -1671,6 +1676,27 @@ const listConatact = [
                         </ATabPanels>
                     </div>
                 </ATabs>
+            </div>
+        </div>
+
+        <div class="ui-section">
+            <SectionTitle class="ui-section-title" titleClass="headline-2"
+                >&lt;CardRating&gt;</SectionTitle
+            >
+
+            <div class="ui-grid">
+                <div>
+                    <CardRating
+                        title="Рейтинги Банка НОВИКОМ"
+                        image="/assets/big-illustrations/large-business/bank-rating.png"
+                    >
+                        <AList class="card-rating__list" size="l" isHeavy>
+                            <li>АКРА&nbsp;&mdash; &laquo;А+(RU)&raquo;</li>
+                            <li>НКР&nbsp;&mdash; &laquo;АА-.ru&raquo;</li>
+                            <li>Эксперт РА&nbsp;&mdash; ruA+</li>
+                        </AList>
+                    </CardRating>
+                </div>
             </div>
         </div>
     </div>
