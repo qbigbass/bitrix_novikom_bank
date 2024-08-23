@@ -2,7 +2,7 @@
 
 /** @var $block array */
 $elements = Sprint\Editor\Blocks\IblockElements::getList($block, [
-    'select' => ['PROPERTY_FILE_SVG'],
+    'select' => ['PROPERTY_SVG_ID'],
 ]);
 ?>
 
@@ -17,8 +17,7 @@ $elements = Sprint\Editor\Blocks\IblockElements::getList($block, [
                             <div class="benefit-text-card__icon">
                                 <span class="a-icon size-xll">
                                     <svg>
-                                        <!--<use xlink:href="<?/*= CFile::GetPath($element['PROPERTY_FILE_SVG_VALUE'])*/?>"></use>-->
-                                        <use xlink:href="/frontend/build/assets/svg-sprite.svg#icon-a-mir-pass"></use>
+                                        <use xlink:href="/frontend/build/assets/svg-sprite.svg#<?= $element['PROPERTY_SVG_ID_VALUE'] ?>"></use>
                                     </svg>
                                 </span>
                             </div>
