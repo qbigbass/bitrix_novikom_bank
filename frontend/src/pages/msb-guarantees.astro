@@ -15,6 +15,10 @@ import type {
     iconColors,
 } from "@components/common/Cards/CardProduct.astro";
 import ServiceAppsCard from "@components/common/ServiceAppsCard.astro";
+import SectionTitle from "@components/ui/SectionTitle/SectionTitle.astro";
+import PersistentSlider from "@components/common/Sliders/PersistentSlider/PersistentSlider.astro";
+import SliderSlide from "@components/common/Sliders/common/SliderSlide/SliderSlide.astro";
+import CardContact from "@components/common/Cards/CardContact.astro";
 
 const mainSliders = [
     {
@@ -58,8 +62,7 @@ const mainSliders = [
 const offerCards = [
     {
         title: "Меры господдержки",
-        description:
-            "Подача заявки на&nbsp;льготное финансирование",
+        description: "Подача заявки на&nbsp;льготное финансирование",
         imgSrc: "assets/big-illustrations/large-business/state-support.png",
         href: "#",
         buttonText: "Подробнее",
@@ -179,6 +182,24 @@ const serviceAppBenefits = [
         text: "Управление расчетными счетами",
     },
 ];
+
+const listConatact = [
+    {
+        href: "tel:+78002507007",
+        text: "+7 (800) 250-70-07",
+        icon: "icon-phone",
+    },
+    {
+        href: "tel:+74959747187",
+        text: "+7 (495) 974-71-87",
+        icon: "icon-phone",
+    },
+    {
+        href: "emailto:garant@novikom.ru",
+        text: "garant@novikom.ru",
+        icon: "icon-mail",
+    },
+];
 ---
 
 <DefaultPageLayout title="МСБ Гарантии">
@@ -234,6 +255,25 @@ const serviceAppBenefits = [
                     >
                 </Fragment>
             </CardPromo>
+        </div>
+    </SectionLayout>
+    <SectionLayout bgColor="blue">
+        <div class="content-container">
+            <SectionTitle titleClass="headline-2" usePadding
+                >Контакты</SectionTitle
+            >
+            <PersistentSlider
+                spaceBetween="mobile-s:8,mobile:8,tablet:16,laptop:40,laptop-x:40"
+                slidesPerView="mobile-s:1,mobile:1,tablet:1,laptop:2,laptop-x:2"
+            >
+                <SliderSlide>
+                    <CardContact
+                        title="Отдел поддержки клиентов МСП"
+                        backgoroundColor="blue"
+                        list={listConatact}
+                    />
+                </SliderSlide>
+            </PersistentSlider>
         </div>
     </SectionLayout>
     <SectionBankOffers

@@ -5,7 +5,7 @@ import AButton from "../../ui/Buttons/AButton.astro";
 type Theme = 'grey' | 'light-blue' |'gradient' | 'white';
 
 interface Props {
-	className?: string;
+	class?: string;
 	theme: Theme;
 	title: string;
 	description: string;
@@ -40,7 +40,7 @@ const btnColorByTheme = () => {
 	<div class="benefit-card__title">
 		{
 			headerIcon && (
-				<AIcon class="benefit-card__icon" symbolId={headerIcon} size="xll" />
+				<AIcon class="benefit-card__icon" symbolId={headerIcon} size="xxl" />
 			)
 		}
 		<div class="headline-3">{title}</div>
@@ -49,7 +49,7 @@ const btnColorByTheme = () => {
 	<div class="benefit-card__footer">
 		{
 			icon && (
-				<AIcon class="benefit-card__icon" symbolId={icon} size="xll" />
+				<AIcon class="benefit-card__icon" symbolId={icon} size="xxl" />
 			)
 		}
 		{
