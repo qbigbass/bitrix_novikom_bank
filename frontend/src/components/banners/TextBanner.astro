@@ -10,6 +10,7 @@ interface Props {
 	title?: string;
 	description?: string;
 	backgroundColor?: 'blue' | 'heavy-purple' | 'heavy-violet';
+    borderColor?: 'green' | 'none';
     img?: string;
 }
 
@@ -18,6 +19,7 @@ const {
 	title,
 	description,
 	backgroundColor = 'blue',
+    borderColor = 'green',
     img
 } = Astro.props as Props;
 ---
@@ -25,6 +27,7 @@ const {
 <div class:list={[
 	'text-banner',
 	`text-banner--${backgroundColor}`,
+	`text-banner--border-${borderColor}`,
 ]}>
 	<div class="content-container">
         <div class="text-banner__inner">
@@ -56,7 +59,6 @@ const {
 
 	.text-banner {
 		position: relative;
-		border-top: 0.5rem solid var(--green-100);
 		min-height: 20rem;
 		overflow: hidden;
 
@@ -70,6 +72,14 @@ const {
 
         &.text-banner--heavy-violet {
             background: linear-gradient(222.24deg, #101317 20%, #6655A2 80%);
+        }
+
+        &.text-banner--border-green {
+            border-top: 0.5rem solid var(--green-100);
+        }
+
+        &.text-banner--border-none {
+            border-top: none;
         }
 
         &__inner {

@@ -6,12 +6,14 @@ interface Props {
 	href?: string;
 	isActive?: boolean;
 	size: Size;
+    viewType?: 'fit'
 	color?: 'primary' | 'white';
 }
 
 const {
 	value,
 	href,
+    viewType,
 	isActive = false,
 	size = 'm',
 	color = 'primary',
@@ -29,6 +31,7 @@ const isLink = Element.toLocaleLowerCase() === 'a';
 		`swiper-slide`,
 		'js-a-tab',
 		{'is-active': isActive},
+        {'a-tab--fit': viewType === 'fit'}
 	]}
 	type={isLink ? undefined : 'button'}
 	href={isLink ? href : undefined}
@@ -118,7 +121,6 @@ const isLink = Element.toLocaleLowerCase() === 'a';
 			padding: 0.938rem 2.438rem;
 			font-size: 1.125rem;
 			line-height: 135%;
-			font-weight: 600;
 		}
 
 		&.a-tab--m {
@@ -134,7 +136,6 @@ const isLink = Element.toLocaleLowerCase() === 'a';
 
 			@include use-media(tablet-album) {
 				font-size: 1.125rem;
-				font-weight: 600;
 				line-height: 135%;
 				padding: 0.938rem 2.438rem;
 			}
@@ -162,5 +163,13 @@ const isLink = Element.toLocaleLowerCase() === 'a';
 		@include use-media(tablet-album) {
 			flex-grow: unset;
 		}
+
+        &.a-tab--fit {
+            flex-grow: 1;
+
+            @include use-media(tablet-album) {
+                flex-grow: 1;
+            }
+        }
 	}
 </style>
