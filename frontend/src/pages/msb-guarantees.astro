@@ -57,24 +57,37 @@ const mainSliders = [
 
 const offerCards = [
     {
-        title: "Кредиты для малого бизнеса",
-        description:
-            "Новиком предоставляет услуги консультирования на&nbsp;каждом этапе реализации сделки, индивидуальное структурирование сделки по&nbsp;запросу и&nbsp;конкурентные ставки.",
-        imgSrc: "assets/big-illustrations/large-business/crediting.png",
-        href: "#",
-        buttonText: "Узнать больше",
-        cardColor: "yellow" as OfferCardColor,
-        textLink: true,
-    },
-    {
         title: "Меры господдержки",
         description:
-            "Возможность оформить кредит без комиссии под поручительство АО&nbsp;&laquo;Корпорация МСП&raquo;. Поручительство предоставляется мгновенно вместе с&nbsp;кредитом, исключая дополнительное обращение в&nbsp;Корпорацию МСП.",
+            "Подача заявки на&nbsp;льготное финансирование",
         imgSrc: "assets/big-illustrations/large-business/state-support.png",
         href: "#",
-        buttonText: "Узнать больше",
+        buttonText: "Подробнее",
         cardColor: "yellow" as OfferCardColor,
         textLink: true,
+        tagText: "Малому и среднему бизнесу",
+    },
+    {
+        title: "Кредиты для малого бизнеса",
+        description:
+            "Поддержка производственных предприятий малого и&nbsp;среднего бизнеса",
+        imgSrc: "assets/big-illustrations/large-business/crediting.png",
+        href: "#",
+        buttonText: "Подробнее",
+        cardColor: "yellow" as OfferCardColor,
+        textLink: true,
+        tagText: "Малому и среднему бизнесу",
+    },
+    {
+        title: "Валютный контроль",
+        description:
+            "Соблюдение требований валютного законодательства резидентами и&nbsp;нерезидентами",
+        imgSrc: "assets/big-illustrations/large-business/deposits.png",
+        href: "#",
+        buttonText: "Подробнее",
+        cardColor: "yellow" as OfferCardColor,
+        textLink: true,
+        tagText: "Малому и среднему бизнесу",
     },
 ];
 
@@ -168,7 +181,7 @@ const serviceAppBenefits = [
 ];
 ---
 
-<DefaultPageLayout title="МСБ Главная">
+<DefaultPageLayout title="МСБ Гарантии">
     <MainSlider
         slides={mainSliders}
         backgroundColor="heavy-violet"
@@ -225,11 +238,6 @@ const serviceAppBenefits = [
     </SectionLayout>
     <SectionBankOffers
         cards={offerCards}
-        slidesPerView="mobile-s:1,mobile:1,tablet:2,laptop:2,laptop-x:2"
+        slidesPerView="mobile-s:1,mobile:1,tablet:2,laptop:3,laptop-x:3"
     />
-    <SectionClientInfo backgroundColor="gray" hasPattern>
-        <Fragment slot="top">
-            <AnnouncementCardClients />
-        </Fragment>
-    </SectionClientInfo>
 </DefaultPageLayout>
