@@ -48,6 +48,7 @@ import AInputField from "../components/ui/AInput/AInputField.astro";
 import CardPromo from "@components/common/Cards/CardPromo.astro";
 import CardProduct from "@components/common/Cards/CardProduct.astro";
 import CardContact from "@components/common/Cards/CardContact.astro";
+import CardFeedback from "@components/common/Cards/CardFeedback.astro";
 
 const loan = {
     title: "Кредит на любые цели<br> для зарплатных клиентов",
@@ -1549,6 +1550,27 @@ const listConatact = [
                             outline: true,
                         }}
                     />
+                </div>
+            </div>
+        </div>
+		<div class="ui-section">
+            <SectionTitle class="ui-section-title" titleClass="headline-2"
+                >&lt;CardFeedback&gt;</SectionTitle
+            >
+
+            <div class="ui-grid ui-gap-2 ui-grid-col-2 ui-dark-bg">
+                <div>
+					<CardFeedback
+                        title="Остались вопросы"
+                        description="Оставьте свой телефон и мы перезвоним вам, либо задайте вопрос в чате"
+                    >
+                        <Fragment slot="footer">
+                            <AButton element="a" href="#" size="lm" outline>
+                                Открыть чат
+                            </AButton>
+                            <AButton size="lm">Перезвоните мне</AButton>
+                        </Fragment>
+                    </CardFeedback>
                 </div>
             </div>
         </div>
