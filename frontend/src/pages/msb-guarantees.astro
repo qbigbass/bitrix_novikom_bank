@@ -5,14 +5,7 @@ import MainSlider from "@components/common/MainSlider/MainSlider.astro";
 import type { Colors } from "../components/ui/Buttons/types";
 import type { OfferCardColor } from "@components/common/OfferCard/OfferCard.astro";
 import SectionLayout from "../components/layouts/SectionLayout.astro";
-import CardPromo from "@components/common/Cards/CardPromo.astro";
 import AButton from "@components/ui/Buttons/AButton.astro";
-import SectionCardLayout from "@components/layouts/SectionCardLayout.astro";
-import type {
-    BackgroundColors,
-    iconColors,
-} from "@components/common/Cards/CardProduct.astro";
-import ServiceAppsCard from "@components/common/ServiceAppsCard.astro";
 import SectionTitle from "@components/ui/SectionTitle/SectionTitle.astro";
 import PersistentSlider from "@components/common/Sliders/PersistentSlider/PersistentSlider.astro";
 import SliderSlide from "@components/common/Sliders/common/SliderSlide/SliderSlide.astro";
@@ -31,6 +24,8 @@ import ATabPanels from "@components/ui/ATabs/common/ATabPanels.astro";
 import DisplayStepper from "@components/common/DisplayStepper/DisplayStepper.astro";
 import DisplayStepperItem from "@components/common/DisplayStepper/DisplayStepperItem.astro";
 import ARte from "@components/ARte.astro";
+import CardRating from "@components/common/Cards/CardRating.astro";
+import AList from "@components/ui/AList/AList.astro";
 
 const mainSliders = [
     {
@@ -106,95 +101,6 @@ const offerCards = [
     },
 ];
 
-const cardOfferBenefits = [
-    {
-        num: "0",
-        currency: "₽",
-        description: "Открытие <br>и&nbsp;обслуживание счета",
-        colorClass: "yellow-100",
-    },
-    {
-        beforeNum: "от",
-        num: "500",
-        currency: "₽",
-        description: "Ежемесячная плата <br>за&nbsp;счёт",
-        colorClass: "yellow-100",
-    },
-    {
-        beforeNum: "до",
-        num: "150",
-        description: "Бесплатных <br>платежей",
-        colorClass: "yellow-100",
-    },
-];
-
-const productCards = [
-    {
-        title: "Страхование вкладов",
-        text: "Страхование корпоративных рисков",
-        icon: "icon-a-card-security",
-        backgroundColor: "white" as BackgroundColors,
-        iconColor: "yellow-150" as iconColors,
-    },
-    {
-        title: "ДБО",
-        text: "Выставление всех видов банковских гарантий",
-        icon: "icon-a-web-bank",
-        backgroundColor: "white" as BackgroundColors,
-        iconColor: "yellow-150" as iconColors,
-    },
-    {
-        title: "Меры господдержки",
-        text: "Новиком оказывает услуги лизинга через своего партнера&nbsp;&mdash; лизинговую компанию &laquo;Нацпромлизинг&raquo;",
-        icon: "icon-a-hand-money",
-        backgroundColor: "white" as BackgroundColors,
-        iconColor: "yellow-150" as iconColors,
-    },
-    {
-        title: "Расчетный счет",
-        text: "Большой объем финансирования в&nbsp;рамках одной сделки",
-        icon: "icon-a-ticket",
-        backgroundColor: "white" as BackgroundColors,
-        iconColor: "yellow-150" as iconColors,
-    },
-    {
-        title: "Госзакупки",
-        text: "Льготное финансирование организациям",
-        icon: "icon-a-personal-manager",
-        backgroundColor: "white" as BackgroundColors,
-        iconColor: "yellow-150" as iconColors,
-    },
-    {
-        title: "ВЭД",
-        text: "Карта для совершения операций по&nbsp;счёту юридического лица",
-        icon: "icon-a-money",
-        backgroundColor: "white" as BackgroundColors,
-        iconColor: "yellow-150" as iconColors,
-    },
-    {
-        title: "Конверсионные операции",
-        text: "Централизованное управление денежными потоками",
-        icon: "icon-a-multitasking",
-        backgroundColor: "white" as BackgroundColors,
-        iconColor: "yellow-150" as iconColors,
-    },
-];
-
-const serviceAppBenefits = [
-    {
-        icon: "icon-doc",
-        text: "Удаленный документооборот",
-    },
-    {
-        icon: "icon-cash",
-        text: "Проведение платежей",
-    },
-    {
-        icon: "icon-wallet",
-        text: "Управление расчетными счетами",
-    },
-];
-
 const listConatact = [
     {
         href: "tel:+78002507007",
@@ -221,28 +127,18 @@ const listConatact = [
         bannerType="msb"
         hasPattern
     />
-    <SectionLayout bgColor="gray">
+    <SectionLayout small>
         <div class="content-container">
-            <SectionCardLayout productCards={productCards}>
-                <Fragment slot="banner">
-                    <ServiceAppsCard
-                        benefits={serviceAppBenefits}
-                        title="Интернет-банк для бизнеса"
-                        backgroundColor="heavy-violet"
-                    >
-                        <Fragment slot="footer">
-                            <AButton
-                                element="a"
-                                href="#"
-                                size="ms"
-                                color="yellow">Перейти в интернет-банк</AButton
-                            >
-                        </Fragment>
-                    </ServiceAppsCard>
-                </Fragment>
-            </SectionCardLayout>
+            <CardRating title="Рейтинги Банка НОВИКОМ" image="/assets/big-illustrations/large-business/bank-rating.png">
+                <AList class="card-rating__list" size="l" isHeavy>
+                    <li>АКРА&nbsp;&mdash; &laquo;А+(RU)&raquo;</li>
+                    <li>НКР&nbsp;&mdash; &laquo;АА-.ru&raquo;</li>
+                    <li>Эксперт РА&nbsp;&mdash; ruA+</li>
+                </AList>
+            </CardRating>
         </div>
     </SectionLayout>
+   
     <SectionLayout>
         <div class="content-container">
             <AAccordion type="layout">
