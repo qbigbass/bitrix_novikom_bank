@@ -114,6 +114,7 @@ const tagOutline = tag?.outline ? "outline" : "";
             display: flex;
             flex-direction: column;
             gap: 2rem;
+            height: 100%;
 
             @include use-media(tablet) {
                 gap: 2.5rem;
@@ -132,6 +133,10 @@ const tagOutline = tag?.outline ? "outline" : "";
             display: flex;
             flex-direction: column;
             gap: 0.5rem;
+        }
+
+        &__body {
+            margin-top: auto;
         }
 
         &__list {
@@ -167,6 +172,10 @@ const tagOutline = tag?.outline ? "outline" : "";
             #{$root}__icon {
                 color: var(--violet-100);
             }
+        }
+
+        @at-root .swiper-slide & {
+            height: 100%;
         }
     }
 </style>

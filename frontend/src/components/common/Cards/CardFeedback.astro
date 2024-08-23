@@ -1,0 +1,81 @@
+---
+interface Props {
+    class?: string;
+    title: string;
+    description?: string;
+}
+
+const { class: className, title, description, ...rest } = Astro.props as Props;
+
+// карточка обратной связи
+---
+
+<div class:list={["card-feedback", className, { ...rest }]}>
+    <div class="card-feedback__header">
+        <h3 class="headline-3">{title}</h3>
+        {description && <p class="body-l-light" set:html={description} />}
+    </div>
+    {
+        Astro.slots["footer"] && (
+            <div class="card-feedback__footer">
+                <slot name="footer" />
+            </div>
+        )
+    }
+</div>
+
+<style lang="scss" is:global>
+    @import "@styles/media-queries";
+
+    .card-feedback {
+        background-color: var(--dark-0);
+        border-radius: 0.75rem;
+        padding: 1.5rem 1rem;
+
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+
+        @include use-media(tablet) {
+            padding: 2rem;
+            background-image: url("/assets/card-feedback-pattern.svg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        @include use-media(tablet-album) {
+            padding: 2.5rem;
+            gap: 3rem;
+        }
+
+        &__header {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+
+            @include use-media(tablet) {
+                gap: 1.5rem;
+            }
+        }
+
+        &__footer {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: auto;
+
+            @include use-media(tablet) {
+                flex-direction: row;
+                gap: 1.5rem;
+            }
+
+            & > * {
+                flex-shrink: 0;
+            }
+        }
+
+        @at-root .swiper-slide & {
+            height: 100%;
+        }
+    }
+</style>
