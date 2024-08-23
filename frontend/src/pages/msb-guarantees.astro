@@ -18,6 +18,19 @@ import PersistentSlider from "@components/common/Sliders/PersistentSlider/Persis
 import SliderSlide from "@components/common/Sliders/common/SliderSlide/SliderSlide.astro";
 import CardContact from "@components/common/Cards/CardContact.astro";
 import CardFeedback from "@components/common/Cards/CardFeedback.astro";
+import AAccordion from "@components/ui/AAccordion/AAccordion.astro";
+import AAccordionPanel from "@components/ui/AAccordion/AAccordionPanel.astro";
+import AAccordionHeader from "@components/ui/AAccordion/AAccordionHeader.astro";
+import AAccordionContent from "@components/ui/AAccordion/AAccordionContent.astro";
+import ATabs from "@components/ui/ATabs/ATabs.astro";
+import ATabSwiper from "@components/ui/ATabs/common/ATabSwiper/ATabSwiper.astro";
+import ATabSwiperWrapper from "@components/ui/ATabs/common/ATabSwiperWrapper.astro";
+import ATab from "@components/ui/ATabs/common/ATab/ATab.astro";
+import ATabPanel from "@components/ui/ATabs/common/ATabPanel.astro";
+import ATabPanels from "@components/ui/ATabs/common/ATabPanels.astro";
+import DisplayStepper from "@components/common/DisplayStepper/DisplayStepper.astro";
+import DisplayStepperItem from "@components/common/DisplayStepper/DisplayStepperItem.astro";
+import ARte from "@components/ARte.astro";
 
 const mainSliders = [
     {
@@ -230,30 +243,80 @@ const listConatact = [
             </SectionCardLayout>
         </div>
     </SectionLayout>
-    <SectionLayout bgColor="gray">
+    <SectionLayout>
         <div class="content-container">
-            <CardPromo
-                backgroundColor="heavy-violet"
-                title="Откройте счёт в Новиком"
-                text="Бесплатное дистанционное обслуживание и бесплатное сопровождение сделки при открытии счёта в банке Новиком"
-                image="assets/big-illustrations/large-business/account-reservation.png"
-                benefits={cardOfferBenefits}
-                hasPattern
-            >
-                <Fragment slot="footer">
-                    <AButton element="a" size="lm" color="yellow" href="#"
-                        >Открыть счет</AButton
-                    >
-                    <AButton
-                        element="a"
-                        size="lm"
-                        color="white"
-                        afterIcon="icon-chevron-right"
-                        text
-                        href="#">Подробнее</AButton
-                    >
-                </Fragment>
-            </CardPromo>
+            <AAccordion type="layout">
+				<AAccordionPanel>
+					<AAccordionHeader class="a-accordion-header--mobile-only">
+						<h3 class="headline-2">Оформление гарантии</h3>
+					</AAccordionHeader>
+					<AAccordionContent class="a-accordion-content--hide-mobile">
+						<ATabs useLayout>
+							<div class="a-accordion-content__wrapper">
+								<h3 class="headline-2 a-accordion-content__title">
+									Оформление гарантии
+								</h3>
+								<ATabSwiper class="a-accordion-content__tabs">
+									<ATabSwiperWrapper>
+										<ATab value="0" size="m">Онлайн</ATab>
+										<ATab value="1" size="m" isActive>В банке</ATab>
+									</ATabSwiperWrapper>
+								</ATabSwiper>
+								<ATabPanels>
+									<ATabPanel value="0">
+										<DisplayStepper steps={4}>
+											<DisplayStepperItem number={1} color="yellow">
+												<ARte class="body-l-light">
+													<p>Заполните заявку и&nbsp;подготовьте комплект документов</p>
+												</ARte>
+											</DisplayStepperItem>
+											<DisplayStepperItem number={2} color="yellow">
+												<ARte class="body-l-light">
+													<p>Получите консультацию специалиста по&nbsp;телефону</p>
+												</ARte>
+											</DisplayStepperItem>
+											<DisplayStepperItem number={3} color="yellow">
+												<ARte class="body-l-light">
+													<p>Согласуйте текст гарантии и&nbsp;подпишите документы</p>
+												</ARte>
+											</DisplayStepperItem>
+                                            <DisplayStepperItem number={4} color="yellow">
+												<ARte class="body-l-light">
+													<p>Получите решение</p>
+												</ARte>
+											</DisplayStepperItem>
+										</DisplayStepper>
+									</ATabPanel>
+									<ATabPanel value="1">
+										<DisplayStepper steps={4}>
+											<DisplayStepperItem number={1} color="yellow">
+												<ARte class="body-l-light">
+													<p>Заполните заявку и&nbsp;подготовьте комплект документов</p>
+												</ARte>
+											</DisplayStepperItem>
+											<DisplayStepperItem number={2} color="yellow">
+												<ARte class="body-l-light">
+													<p>Получите консультацию специалиста по&nbsp;телефону</p>
+												</ARte>
+											</DisplayStepperItem>
+											<DisplayStepperItem number={3} color="yellow">
+												<ARte class="body-l-light">
+													<p>Согласуйте текст гарантии и&nbsp;подпишите документы</p>
+												</ARte>
+											</DisplayStepperItem>
+                                            <DisplayStepperItem number={4} color="yellow">
+												<ARte class="body-l-light">
+													<p>Получите решение</p>
+												</ARte>
+											</DisplayStepperItem>
+										</DisplayStepper>
+									</ATabPanel>
+								</ATabPanels>
+							</div>
+						</ATabs>
+					</AAccordionContent>
+				</AAccordionPanel>
+			</AAccordion>
         </div>
     </SectionLayout>
     <SectionLayout bgColor="blue">
