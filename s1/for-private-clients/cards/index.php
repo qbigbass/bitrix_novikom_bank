@@ -7,6 +7,7 @@ global $APPLICATION;
 
 $APPLICATION->SetTitle('Банковские карты');
 Asset::getInstance()->addJsAndCss('showcase-of-cards');
+Asset::getInstance()->addJsAndCss('always-plus-card');
 ?>
 
 <main class="default-page-layout__body">
@@ -35,7 +36,7 @@ Asset::getInstance()->addJsAndCss('showcase-of-cards');
             "DETAIL_PAGER_SHOW_ALL" => "Y",
             "DETAIL_PAGER_TEMPLATE" => "",
             "DETAIL_PAGER_TITLE" => "Страница",
-            "DETAIL_PROPERTY_CODE" => array("", ""),
+            "DETAIL_PROPERTY_CODE" => array("SELECTED_CATEGORY", ""),
             "DETAIL_SET_CANONICAL_URL" => "N",
             "DISPLAY_BOTTOM_PAGER" => "Y",
             "DISPLAY_DATE" => "N",
