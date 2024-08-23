@@ -168,6 +168,7 @@ $bannerClass = $arResult["PROPERTY_{$properties['CLASS_BANNER_DETAIL']['ID']}"];
     </div>
 </div>
 
+<? $APPLICATION->ShowViewContent('detailCardInformation'); ?>
 
 <? /* Блок Смотрите также */ ?>
 <section class="section-layout section-see-also section-layout--bg-undefined">
