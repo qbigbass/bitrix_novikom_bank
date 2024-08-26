@@ -26,6 +26,8 @@ import DisplayStepperItem from "@components/common/DisplayStepper/DisplayStepper
 import ARte from "@components/ARte.astro";
 import CardRating from "@components/common/Cards/CardRating.astro";
 import AList from "@components/ui/AList/AList.astro";
+import ProductCardBanner from "@components/banners/ProductCardBanner.astro";
+import BenefitTextCard from "@components/common/BenefitCard/BenefitTextCard.astro";
 
 const mainSliders = [
     {
@@ -118,18 +120,89 @@ const listConatact = [
         icon: "icon-mail",
     },
 ];
+
+const breadcrumbs = [
+    { title: "Малому и среднему бизнесу", url: "#" },
+    { title: "Гарантии", url: "#" },
+];
+
+const productBenefits = [
+    {
+        title: "Индивидуальный<br> подход",
+        description:
+            "Банк готов согласовать любую форму гарантии, предложенную заказчиком",
+        iconId: "icon-a-part-down",
+    },
+    {
+        title: "Гарантии в&nbsp;пользу <br>госкорпораций",
+        description:
+            "Упрощенное рассмотрение заявок на&nbsp;гарантии в&nbsp;пользу государственных корпораций",
+        iconId: "icon-a-money",
+    },
+    {
+        title: "Минимальный <br>пакет документов",
+        description:
+            "Всего 8&nbsp;документов для принятия решения",
+        iconId: "icon-a-money-down",
+    },
+];
 ---
 
 <DefaultPageLayout title="МСБ Гарантии">
-    <MainSlider
-        slides={mainSliders}
-        backgroundColor="heavy-violet"
-        bannerType="msb"
+    <ProductCardBanner
+        benefits={[
+            {
+                beforeNum: "до",
+                num: "30 млн",
+                currency: "₽",
+                description: "Сумма",
+            },
+            {
+                num: "2%",
+                beforeNum: "от",
+                afterNum: "годовых",
+                description: "Ставка",
+            },
+            {
+                num: "1",
+                beforeNum: "за",
+                afterNum: "день",
+                description: "Принятие решение",
+            },
+        ]}
+        image="/assets/big-illustrations/large-business/guarantees.png"
+        urlHref="#"
+        buttonText="Отправить заявку на услугу"
         hasPattern
-    />
+        backgroundColor="heavy-violet"
+        breadcrumbs={breadcrumbs}
+        ,
+        type="msb"
+    >
+        <Fragment slot="title">Экспресс-гарантия</Fragment>
+        <Fragment slot="subtitle"
+            >Гарантии для юридических лиц, участвующих в&nbsp;государственных
+            закупках</Fragment
+        >
+        <Fragment slot="footer">
+            {
+                productBenefits.map(({ title, description, iconId }) => (
+                    <BenefitTextCard
+                        title={title}
+                        description={description}
+                        iconId={iconId}
+                    />
+                ))
+            }
+        </Fragment>
+    </ProductCardBanner>
+
     <SectionLayout small>
         <div class="content-container">
-            <CardRating title="Рейтинги Банка НОВИКОМ" image="/assets/big-illustrations/large-business/bank-rating.png">
+            <CardRating
+                title="Рейтинги Банка НОВИКОМ"
+                image="/assets/big-illustrations/large-business/bank-rating.png"
+            >
                 <AList class="card-rating__list" size="l" isHeavy>
                     <li>АКРА&nbsp;&mdash; &laquo;А+(RU)&raquo;</li>
                     <li>НКР&nbsp;&mdash; &laquo;АА-.ru&raquo;</li>
@@ -138,81 +211,135 @@ const listConatact = [
             </CardRating>
         </div>
     </SectionLayout>
-   
+
     <SectionLayout>
         <div class="content-container">
             <AAccordion type="layout">
-				<AAccordionPanel>
-					<AAccordionHeader class="a-accordion-header--mobile-only">
-						<h3 class="headline-2">Оформление гарантии</h3>
-					</AAccordionHeader>
-					<AAccordionContent class="a-accordion-content--hide-mobile">
-						<ATabs useLayout>
-							<div class="a-accordion-content__wrapper">
-								<h3 class="headline-2 a-accordion-content__title">
-									Оформление гарантии
-								</h3>
-								<ATabSwiper class="a-accordion-content__tabs">
-									<ATabSwiperWrapper>
-										<ATab value="0" size="m">Онлайн</ATab>
-										<ATab value="1" size="m" isActive>В банке</ATab>
-									</ATabSwiperWrapper>
-								</ATabSwiper>
-								<ATabPanels>
-									<ATabPanel value="0">
-										<DisplayStepper steps={4}>
-											<DisplayStepperItem number={1} color="yellow">
-												<ARte class="body-l-light">
-													<p>Заполните заявку и&nbsp;подготовьте комплект документов</p>
-												</ARte>
-											</DisplayStepperItem>
-											<DisplayStepperItem number={2} color="yellow">
-												<ARte class="body-l-light">
-													<p>Получите консультацию специалиста по&nbsp;телефону</p>
-												</ARte>
-											</DisplayStepperItem>
-											<DisplayStepperItem number={3} color="yellow">
-												<ARte class="body-l-light">
-													<p>Согласуйте текст гарантии и&nbsp;подпишите документы</p>
-												</ARte>
-											</DisplayStepperItem>
-                                            <DisplayStepperItem number={4} color="yellow">
-												<ARte class="body-l-light">
-													<p>Получите решение</p>
-												</ARte>
-											</DisplayStepperItem>
-										</DisplayStepper>
-									</ATabPanel>
-									<ATabPanel value="1">
-										<DisplayStepper steps={4}>
-											<DisplayStepperItem number={1} color="yellow">
-												<ARte class="body-l-light">
-													<p>Заполните заявку и&nbsp;подготовьте комплект документов</p>
-												</ARte>
-											</DisplayStepperItem>
-											<DisplayStepperItem number={2} color="yellow">
-												<ARte class="body-l-light">
-													<p>Получите консультацию специалиста по&nbsp;телефону</p>
-												</ARte>
-											</DisplayStepperItem>
-											<DisplayStepperItem number={3} color="yellow">
-												<ARte class="body-l-light">
-													<p>Согласуйте текст гарантии и&nbsp;подпишите документы</p>
-												</ARte>
-											</DisplayStepperItem>
-                                            <DisplayStepperItem number={4} color="yellow">
-												<ARte class="body-l-light">
-													<p>Получите решение</p>
-												</ARte>
-											</DisplayStepperItem>
-										</DisplayStepper>
-									</ATabPanel>
-								</ATabPanels>
-							</div>
-						</ATabs>
-					</AAccordionContent>
-				</AAccordionPanel>
-			</AAccordion>
+                <AAccordionPanel>
+                    <AAccordionHeader class="a-accordion-header--mobile-only">
+                        <h3 class="headline-2">Оформление гарантии</h3>
+                    </AAccordionHeader>
+                    <AAccordionContent class="a-accordion-content--hide-mobile">
+                        <ATabs useLayout>
+                            <div class="a-accordion-content__wrapper">
+                                <h3
+                                    class="headline-2 a-accordion-content__title"
+                                >
+                                    Оформление гарантии
+                                </h3>
+                                <ATabSwiper class="a-accordion-content__tabs">
+                                    <ATabSwiperWrapper>
+                                        <ATab value="0" size="m">Онлайн</ATab>
+                                        <ATab value="1" size="m" isActive
+                                            >В банке</ATab
+                                        >
+                                    </ATabSwiperWrapper>
+                                </ATabSwiper>
+                                <ATabPanels>
+                                    <ATabPanel value="0">
+                                        <DisplayStepper steps={4}>
+                                            <DisplayStepperItem
+                                                number={1}
+                                                color="yellow"
+                                            >
+                                                <ARte class="body-l-light">
+                                                    <p>
+                                                        Заполните заявку
+                                                        и&nbsp;подготовьте
+                                                        комплект документов
+                                                    </p>
+                                                </ARte>
+                                            </DisplayStepperItem>
+                                            <DisplayStepperItem
+                                                number={2}
+                                                color="yellow"
+                                            >
+                                                <ARte class="body-l-light">
+                                                    <p>
+                                                        Получите консультацию
+                                                        специалиста
+                                                        по&nbsp;телефону
+                                                    </p>
+                                                </ARte>
+                                            </DisplayStepperItem>
+                                            <DisplayStepperItem
+                                                number={3}
+                                                color="yellow"
+                                            >
+                                                <ARte class="body-l-light">
+                                                    <p>
+                                                        Согласуйте текст
+                                                        гарантии
+                                                        и&nbsp;подпишите
+                                                        документы
+                                                    </p>
+                                                </ARte>
+                                            </DisplayStepperItem>
+                                            <DisplayStepperItem
+                                                number={4}
+                                                color="yellow"
+                                            >
+                                                <ARte class="body-l-light">
+                                                    <p>Получите решение</p>
+                                                </ARte>
+                                            </DisplayStepperItem>
+                                        </DisplayStepper>
+                                    </ATabPanel>
+                                    <ATabPanel value="1">
+                                        <DisplayStepper steps={4}>
+                                            <DisplayStepperItem
+                                                number={1}
+                                                color="yellow"
+                                            >
+                                                <ARte class="body-l-light">
+                                                    <p>
+                                                        Заполните заявку
+                                                        и&nbsp;подготовьте
+                                                        комплект документов
+                                                    </p>
+                                                </ARte>
+                                            </DisplayStepperItem>
+                                            <DisplayStepperItem
+                                                number={2}
+                                                color="yellow"
+                                            >
+                                                <ARte class="body-l-light">
+                                                    <p>
+                                                        Получите консультацию
+                                                        специалиста
+                                                        по&nbsp;телефону
+                                                    </p>
+                                                </ARte>
+                                            </DisplayStepperItem>
+                                            <DisplayStepperItem
+                                                number={3}
+                                                color="yellow"
+                                            >
+                                                <ARte class="body-l-light">
+                                                    <p>
+                                                        Согласуйте текст
+                                                        гарантии
+                                                        и&nbsp;подпишите
+                                                        документы
+                                                    </p>
+                                                </ARte>
+                                            </DisplayStepperItem>
+                                            <DisplayStepperItem
+                                                number={4}
+                                                color="yellow"
+                                            >
+                                                <ARte class="body-l-light">
+                                                    <p>Получите решение</p>
+                                                </ARte>
+                                            </DisplayStepperItem>
+                                        </DisplayStepper>
+                                    </ATabPanel>
+                                </ATabPanels>
+                            </div>
+                        </ATabs>
+                    </AAccordionContent>
+                </AAccordionPanel>
+            </AAccordion>
         </div>
     </SectionLayout>
     <SectionLayout bgColor="blue">
