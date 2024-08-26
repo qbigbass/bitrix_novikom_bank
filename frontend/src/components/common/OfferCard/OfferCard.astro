@@ -178,8 +178,17 @@ const listSize = size === "large" ? "ml" : "m";
         }
 
         &__description {
+            
             @include use-media(tablet-album) {
                 max-width: 80%;
+            }
+
+            & br {
+                display: none;
+
+                @include use-media(tablet) {
+                    display: inherit;
+                }
             }
         }
 
@@ -246,6 +255,11 @@ const listSize = size === "large" ? "ml" : "m";
         }
 
         &--type-large {
+
+            @include use-media(tablet-album) {
+                min-height: 25rem; //400px
+            }
+
             #{$root}__img {
                 @include use-media(tablet) {
                     position: absolute;

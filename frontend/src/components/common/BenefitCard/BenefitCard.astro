@@ -2,7 +2,7 @@
 import AIcon from "../../AIcon.astro";
 import AButton from "../../ui/Buttons/AButton.astro";
 
-type Theme = 'grey' | 'light-blue' |'gradient' | 'white';
+type Theme = 'grey' | 'light-blue' |'gradient' | 'white' | 'orange';
 
 interface Props {
 	class?: string;
@@ -117,5 +117,14 @@ const btnColorByTheme = () => {
 		&.benefit-card--white {
 			background: var(--dark-0);
 		}
+
+		&.benefit-card--orange {
+			background: var(--dark-10);
+
+			& .benefit-card__icon {
+				color: var(--orange-100);
+			}
+		}
+
 	}
 </style>
