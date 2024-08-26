@@ -7,7 +7,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 /** @var array $arResult */
 /** @global CMain $APPLICATION */
 
-$elementDetailCardQuery = $arResult['elementDetailCardQuery'];
+/*$elementDetailCardQuery = $arResult['elementDetailCardQuery'];
 
 // подключение компонента sprint.editor
 $this->__template->SetViewTarget('detailCardInformation');
@@ -24,4 +24,4 @@ $APPLICATION->IncludeComponent(
     )
 );
 
-$this->__template->EndViewTarget();
+$this->__template->EndViewTarget();*/
