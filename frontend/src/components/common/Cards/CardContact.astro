@@ -4,7 +4,7 @@ import ATag from "@components/ui/ATag/ATag.astro";
 
 import type { Colors } from "@components/ui/ATag/ATag.astro";
 
-type BackgroundColors = "blue" | "gray";
+type BackgroundColors = "blue" | "gray" | "heavy-purple";
 type Tag = {
     text: string;
     color?: Colors;
@@ -171,6 +171,19 @@ const tagOutline = tag?.outline ? "outline" : "";
 
             #{$root}__icon {
                 color: var(--violet-100);
+            }
+        }
+
+        &--bg-heavy-purple {
+            background: linear-gradient(222.24deg, #101317 20%, #5A2375 80%);
+            color: var(--dark-0);
+
+            #{$root}__description {
+                opacity: 0.5;
+            }
+
+            #{$root}__icon {
+                color: var(--dark-0);
             }
         }
 

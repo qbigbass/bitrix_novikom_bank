@@ -24,7 +24,7 @@ interface Props {
     hasPattern?: boolean;
     urlHref?: string;
     buttonText?: string;
-    image: string;
+    image?: string;
     benefits?: Benefit[];
     backgroundColor?: BackgroundColors;
     isSticker?: boolean;
@@ -61,7 +61,7 @@ const createTheme = () => {
             buttonColor = "yellow";
             benefitsColor = "yellow-100";
             break;
-        case "сopr-client":
+        case "corp":
             buttonColor = "orange";
             benefitsColor = "orange-100";
             break;
@@ -554,6 +554,42 @@ const createTheme = () => {
                 color: var(--yellow-100);
             }
         }
+
+		&--type-corp {
+			border-top-color: var(--orange-100);
+
+			@include use-media(tablet-album) {
+                height: auto;
+            }
+
+            #{$root}__wrapper {
+                @include use-media(tablet-album) {
+                    padding-bottom: 7.5rem;
+                }
+            }
+
+			#{$root}__benefit-item {
+                color: var(--orange-100);
+            }
+
+			#{$root}__footer {
+                & .benefit-text-card {
+                    color: var(--dark-0);
+
+                    &__title {
+                        color: var(--dark-0);
+                    }
+
+                    &__icon {
+                        color: var(--orange-100);
+                    }
+                }
+            }
+
+			& .benefit-text-card__title {
+                color: var(--orange-100);
+            }
+		}
     }
 
     .product-card-banner.product-card-banner--blue {
