@@ -19,6 +19,11 @@ type Breadcrumbs = {
     url: string;
 };
 
+type TextBenefit = {
+    title: string;
+    description?: string;
+};
+
 interface Props {
     class?: string;
     hasPattern?: boolean;
@@ -30,7 +35,7 @@ interface Props {
     isSticker?: boolean;
     breadcrumbs?: Breadcrumbs[];
     type?: string;
-    textBenefits?: string[];
+    textBenefits?: TextBenefit[];
     footerCol?: number;
 }
 
@@ -86,6 +91,7 @@ const createTheme = () => {
         "product-card-banner",
         `product-card-banner--${backgroundColor}`,
         `${type ? `product-card-banner--type-${type}` : ""}`,
+        `${Astro.slots["footer"] ? `product-card-banner--size-xl` : ""}`,
         { "is-sticker": isSticker },
         className,
     ]}
@@ -150,8 +156,8 @@ const createTheme = () => {
             {
                 textBenefits && textBenefits.length > 0 && (
                     <ul class="product-card-banner__text-benefits">
-                        {textBenefits.map((text) => (
-                            <BenefitTextCard title={text} />
+                        {textBenefits.map(({ title, description }) => (
+                            <BenefitTextCard title={title} description={description} />
                         ))}
                     </ul>
                 )
@@ -374,7 +380,6 @@ const createTheme = () => {
             @include use-media(desktop) {
                 gap: 3rem;
                 flex-wrap: nowrap;
-                padding-bottom: 8.375rem;
 
                 & > * {
                     flex-basis: auto;
@@ -427,7 +432,7 @@ const createTheme = () => {
                 }
             }
 
-			&.col-laptop-4 {
+            &.col-laptop-4 {
                 @include use-media(laptop) {
                     & > * {
                         flex-basis: calc(25% - 2.5rem * 3 / 4);
@@ -491,7 +496,6 @@ const createTheme = () => {
                 max-width: 22.5rem; //360px
 
                 @include use-media(tablet) {
-                    // max-width: 22.5rem; //360px
                     width: 46.875vw;
                     max-width: 26.25rem; //420px
                     top: 2.5rem;
@@ -501,7 +505,6 @@ const createTheme = () => {
                 @include use-media(tablet-album) {
                     width: 35vw;
                     max-width: 35em; //560px
-                    // max-width: 26.25rem; //420px
                 }
 
                 @include use-media(laptop-x) {
@@ -555,12 +558,8 @@ const createTheme = () => {
             }
         }
 
-		&--type-corp {
-			border-top-color: var(--orange-100);
-
-			@include use-media(tablet-album) {
-                height: auto;
-            }
+        &--type-corp {
+            border-top-color: var(--orange-100);
 
             #{$root}__wrapper {
                 @include use-media(tablet-album) {
@@ -568,11 +567,11 @@ const createTheme = () => {
                 }
             }
 
-			#{$root}__benefit-item {
+            #{$root}__benefit-item {
                 color: var(--orange-100);
             }
 
-			#{$root}__footer {
+            #{$root}__footer {
                 & .benefit-text-card {
                     color: var(--dark-0);
 
@@ -586,10 +585,22 @@ const createTheme = () => {
                 }
             }
 
-			& .benefit-text-card__title {
+            & .benefit-text-card__title {
                 color: var(--orange-100);
             }
-		}
+        }
+
+        &--size-xl {
+            @include use-media(tablet-album) {
+                height: auto;
+            }
+
+            @include use-media(desktop) {
+                #{$root}__text-benefits {
+                    padding-bottom: 8.375rem;
+                }
+            }
+        }
     }
 
     .product-card-banner.product-card-banner--blue {

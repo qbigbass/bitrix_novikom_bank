@@ -25,6 +25,14 @@ import SectionTitle from "@components/ui/SectionTitle/SectionTitle.astro";
 import PersistentSlider from "@components/common/Sliders/PersistentSlider/PersistentSlider.astro";
 import SliderSlide from "@components/common/Sliders/common/SliderSlide/SliderSlide.astro";
 import CardContact from "@components/common/Cards/CardContact.astro";
+import APolygonContainer from "@components/common/APolygonContainer/APolygonContainer.astro";
+import AHelper from "@components/common/AHelper.astro";
+import CardFeedback from "@components/common/Cards/CardFeedback.astro";
+import ATabs from "@components/ui/ATabs/ATabs.astro";
+import ATabSwiper from "@components/ui/ATabs/common/ATabSwiper/ATabSwiper.astro";
+import ATabSwiperWrapper from "@components/ui/ATabs/common/ATabSwiperWrapper.astro";
+import ATabPanels from "@components/ui/ATabs/common/ATabPanels.astro";
+import CardText from "@components/common/Cards/CardText.astro";
 
 const offerCards = [
     {
@@ -157,74 +165,132 @@ const listConatact = [
         text: "corp@novikom.ru",
         icon: "icon-mail",
     },
+];
+
+const cardsText = [
     {
-        text: "119180 Москва, ул. Полянка Большая д. 50/1 стр. 1",
-        icon: "icon-point",
+        title: "Льготное финансирование мероприятий по&nbsp;снижению выбросов опасных загрязняющих веществ (ПП&nbsp;РФ &#8470;&nbsp;709)",
+    },
+    {
+        title: "Льготное финансирование инвестиционных проектов, направленных на&nbsp;производство приоритетной продукции (ПП&nbsp;РФ &#8470;&nbsp;295)",
+    },
+    {
+        title: "Льготное финансирование на&nbsp;приобретение приоритетной для импорта продукции (ПП &#8470;&nbsp;895)",
+    },
+    {
+        title: "Льготное кредитование проектов, направленных на&nbsp;экспорт продукции (экспортеров и&nbsp;покупателей данной продукции) (ПП&nbsp;РФ &#8470;&nbsp;191)",
+    },
+    {
+        title: "Льготное финансирование на&nbsp;приобретение, строительство, модернизацию и&nbsp;реконструкцию объектов недвижимости для организации промышленного производства (программа &laquo;Промышленная ипотека&raquo;) (ПП&nbsp;РФ &#8470;&nbsp;1570)",
+    },
+    {
+        title: "Льготное финансирование подрядных организаций на&nbsp;досрочное исполнение контрактов (ПП&nbsp;РФ &#8470;&nbsp;2438)",
+    },
+    {
+        title: "Льготное финансирование проектов диверсификации оборонно-промышленного комплекса (ПП&nbsp;РФ&nbsp;от&nbsp;21.01.2020 &#8470;&nbsp;26)",
+    },
+    {
+        title: "Льготное финансирование проектов по&nbsp;цифровой трансформации, реализуемых на&nbsp;базе российских ИТ-решений (ПП&nbsp;РФ &#8470;&nbsp;1598)",
     },
 ];
 ---
 
-<DefaultPageLayout title="Финансирование и гарантии">
+<DefaultPageLayout title="Меры господдержки">
     <ProductCardBanner
         urlHref="#"
-        buttonText="Отправить заявку на услугу"
+        buttonText="Подать заявку"
         hasPattern
         backgroundColor="heavy-purple"
         breadcrumbs={breadcrumbs}
         type="corp"
-        footerCol={4}
-    >
-        <Fragment slot="title">Лизинг</Fragment>
-        <Fragment slot="subtitle">
-            Финансовая аренда через нашего партнёра Нацпромлизинг
-        </Fragment>
-        <Fragment slot="footer">
+        image="/assets/big-illustrations/large-business/state-support.png"
+        textBenefits={[
             {
-                productBenefits.map(({ title, description, iconId }) => (
-                    <BenefitTextCard
-                        title={title}
-                        description={description}
-                        iconId={iconId}
-                    />
-                ))
-            }
+                title: "Уменьшение",
+                description: "налогооблагаемой база",
+            },
+            {
+                title: "Сокращение",
+                description: "расходов по&nbsp;налогу <br>на&nbsp;имущество",
+            },
+            {
+                title: "Не требуется",
+                description: "дополнительное <br>обеспечение сделки",
+            },
+        ]}
+    >
+        <Fragment slot="title">Меры господдержки</Fragment>
+        <Fragment slot="subtitle">
+            Новиком Банк&nbsp;&mdash; Уполномоченный Банк системы мер
+            государственной поддержки
         </Fragment>
     </ProductCardBanner>
 
-    <SectionLayout>
+    <SectionLayout small>
         <div class="content-container">
-            <CardPromo
-                title="Лизинг выстраивает <br>позитивный имидж"
-                backgroundColor="heavy-purple"
-                text="Лизинг является эффективным инструментом формирования позитивного имиджа и кредитной истории компании на финансовом рынке"
-                image="/assets/leasing-image.png"
-                hasPattern
-            />
+            <APolygonContainer color="orange">
+                <AHelper class="purple-10" image="helper-icon-corp.png">
+                    <p class="body-l-light">
+                        Новиком Банк является активным участником системы мер
+                        государственной поддержки, реализуемых Минпромторгом
+                        России, Минцифры России, Минэкономразвития России,
+                        ДОМ.РФ и&nbsp;другими.
+                    </p>
+                    <p class="body-l-light">
+                        Статус Уполномоченного Банка позволяет Новикому
+                        предоставлять льготное финансирование предпринимателям
+                        и&nbsp;организациям разных отраслей экономики,
+                        направленное прежде всего на&nbsp;сохранение
+                        стабильности и&nbsp;создание условий экономического
+                        роста.
+                    </p>
+                </AHelper>
+            </APolygonContainer>
         </div>
     </SectionLayout>
-    <SectionLayout bgColor="gray">
+    <SectionLayout bgColor="purple">
         <div class="content-container">
-            <SectionTitle titleClass="headline-3" usePadding
-                >Преимущества лизинга перед кредитом</SectionTitle
-            >
-
-            <PersistentSlider
-                spaceBetween="mobile-s:8,mobile:8,tablet:8,laptop:8,laptop-x:8"
-                slidesPerView="mobile-s:1,mobile:1,tablet:2,laptop:2,laptop-x:3"
-            >
-                {
-                    cardOfferBenefits.map(({ title, description, icon }) => (
-                        <SliderSlide>
-                            <BenefitCard
-                                title={title}
-                                description={description}
-                                icon={icon}
-                                theme="orange"
-                            />
-                        </SliderSlide>
-                    ))
-                }
-            </PersistentSlider>
+            <ATabs useLayout>
+                <div class="section-help-layout__content">
+                    <h3 class="section-help-layout__title headline-2">
+                        Меры финансирования
+                    </h3>
+                    <div class="section-help-layout__tabs">
+                        <Fragment slot="tabs">
+                            <ATabSwiper class="section-help-layout__swiper">
+                                <ATabSwiperWrapper>
+                                    <ATab value="0" size="lm" isActive
+                                        >Все меры</ATab
+                                    >
+                                    <ATab value="1" size="lm"
+                                        >Строительство</ATab
+                                    >
+                                    <ATab value="2" size="lm">Инвестиции</ATab>
+                                    <ATab value="3" size="lm">Экология</ATab>
+                                    <ATab value="4" size="lm"
+                                        >Оборонная отрасль</ATab
+                                    >
+                                </ATabSwiperWrapper>
+                            </ATabSwiper>
+                        </Fragment>
+                    </div>
+                    <ATabPanels>
+                        <ATabPanel value="0">
+                            <div class="text-card-layout">
+                                {
+                                    cardsText.map(({ title }) => (
+                                        <CardText title={title} />
+                                    ))
+                                }
+                            </div>
+                        </ATabPanel>
+                        <ATabPanel value="1" />
+                        <ATabPanel value="2" />
+                        <ATabPanel value="3" />
+                        <ATabPanel value="4" />
+                    </ATabPanels>
+                </div>
+            </ATabs>
         </div>
     </SectionLayout>
     <SectionHelpLayout title="Подробнее о услуге">
@@ -617,55 +683,53 @@ const listConatact = [
             >
                 <SliderSlide>
                     <CardContact
-                        title="Департамент Казначейство"
+                        title="ООО «Нацпромлизинг»"
                         backgoroundColor="heavy-purple"
                         list={listConatact}
                     />
                 </SliderSlide>
                 <SliderSlide>
-                    <CardContact
-                        title="Техническая поддержка"
-                        backgoroundColor="heavy-purple"
-                        list={[
-                            {
-                                href: "tel:+74959747187",
-                                text: "+7 (495) 974-71-87",
-                                icon: "icon-phone",
-                            },
-                        ]}
-                    />
-                </SliderSlide>
-				<SliderSlide>
-                    <CardContact
-                        title="Департамент Казначейство"
-                        backgoroundColor="heavy-purple"
-                        list={listConatact}
-                    />
-                </SliderSlide>
-                <SliderSlide>
-                    <CardContact
-                        title="Техническая поддержка"
-                        backgoroundColor="heavy-purple"
-                        list={[
-                            {
-                                href: "tel:+74959747187",
-                                text: "+7 (495) 974-71-87",
-                                icon: "icon-phone",
-                            },
-                        ]}
-                    />
+                    <CardFeedback
+                        title="Остались вопросы"
+                        description="Оставьте свой телефон и мы перезвоним вам, либо задайте вопрос в чате"
+                    >
+                        <Fragment slot="footer">
+                            <AButton element="a" href="#" size="lm" outline>
+                                Открыть чат
+                            </AButton>
+                            <AButton size="lm">Перезвоните мне</AButton>
+                        </Fragment>
+                    </CardFeedback>
                 </SliderSlide>
             </PersistentSlider>
         </div>
     </SectionLayout>
-    <SectionClientInfo backgroundColor="gray" hasPattern>
-        <Fragment slot="top">
-            <AnnouncementCardClients />
-        </Fragment>
-    </SectionClientInfo>
 
     <SectionBankOffers
         cards={offerCards}
         slidesPerView="mobile-s:1,mobile:1,tablet:2,laptop:3,laptop-x:3"
     />
 </DefaultPageLayout>
+
+<style lang="scss" is:global>
+    @import "@styles/media-queries";
+
+    .text-card-layout {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+
+        @include use-media(tablet) {
+            gap: 2.5rem;
+        }
+
+        @include use-media(tablet-album) {
+            flex-direction: row;
+            flex-wrap: wrap;
+            
+            & > * {
+                flex-basis: calc(50% - 2.5rem / 2);
+            }
+        }
+    }
+</style>
