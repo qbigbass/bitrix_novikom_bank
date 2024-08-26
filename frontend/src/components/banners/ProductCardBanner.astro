@@ -3,13 +3,14 @@ import AButton from "../ui/Buttons/AButton.astro";
 import ABreadcrumbs from "../ui/ABreadcrumbs/ABreadcrumbs.astro";
 import TextIndicatingBenefits from "../common/TextIndicatingBenefits/TextIndicatingBenefits.astro";
 import type { Colors } from "@components/ui/Buttons/types";
+import BenefitTextCard from "@components/common/BenefitCard/BenefitTextCard.astro";
 
 type BackgroundColors = "heavy-purple" | "heavy-violet" | "blue";
 type Benefit = {
     beforeNum?: string;
     afterNum?: string;
     num: string;
-    description: string;
+    description?: string;
     currency?: string;
 };
 
@@ -24,11 +25,13 @@ interface Props {
     urlHref?: string;
     buttonText?: string;
     image: string;
-    benefits: Benefit[];
+    benefits?: Benefit[];
     backgroundColor?: BackgroundColors;
     isSticker?: boolean;
     breadcrumbs?: Breadcrumbs[];
     type?: string;
+    textBenefits?: string[];
+    footerCol?: number;
 }
 
 const {
@@ -44,7 +47,9 @@ const {
         { title: "Частным клиентам", url: "spc-for-employees" },
         { title: "Карты", url: "#" },
     ],
+    textBenefits,
     type,
+    footerCol = 3,
 } = Astro.props as Props;
 
 const createTheme = () => {
@@ -111,52 +116,65 @@ const createTheme = () => {
                     <slot name="subtitle" />
                 </p>
             </div>
-            <img
-                src={`${image}`}
-                class="product-card-banner__image"
-                alt="карта мир"
-            />
-            <div class="product-card-banner__benefits-list">
-                {
-                    benefits.map(
-                        ({
-                            beforeNum,
-                            afterNum,
-                            num,
-                            description,
-                            currency,
-                        }) => (
-                            <TextIndicatingBenefits
-                                headClass={createTheme().benefitsColor}
-                                beforeText={beforeNum}
-                                text={num}
-                                afterText={afterNum}
-                                currency={currency}
-                            >
-                                {description && (
-                                    <div
-                                        class="body-m-light dark-0"
-                                        set:html={description}
-                                    />
-                                )}
-                            </TextIndicatingBenefits>
-                        ),
-                    )
-                }
-            </div>
-            <AButton
-                size="lm"
-                element="a"
-                color={createTheme().buttonColor as Colors}
-                href={urlHref}
-                class="product-card-banner__button"
-            >
-                {buttonText}
-            </AButton>
+            <img src={`${image}`} class="product-card-banner__image" alt="" />
+            {
+                benefits && benefits.length > 0 && (
+                    <div class="product-card-banner__benefits-list">
+                        {benefits.map(
+                            ({
+                                beforeNum,
+                                afterNum,
+                                num,
+                                description,
+                                currency,
+                            }) => (
+                                <TextIndicatingBenefits
+                                    headClass={createTheme().benefitsColor}
+                                    beforeText={beforeNum}
+                                    text={num}
+                                    afterText={afterNum}
+                                    currency={currency}
+                                >
+                                    {description && (
+                                        <div
+                                            class="body-m-light dark-0"
+                                            set:html={description}
+                                        />
+                                    )}
+                                </TextIndicatingBenefits>
+                            ),
+                        )}
+                    </div>
+                )
+            }
+            {
+                textBenefits && textBenefits.length > 0 && (
+                    <ul class="product-card-banner__text-benefits">
+                        {textBenefits.map((text) => (
+                            <BenefitTextCard title={text} />
+                        ))}
+                    </ul>
+                )
+            }
+            {
+                buttonText && (
+                    <AButton
+                        size="lm"
+                        element="a"
+                        color={createTheme().buttonColor as Colors}
+                        href={urlHref}
+                        class="product-card-banner__button"
+                    >
+                        {buttonText}
+                    </AButton>
+                )
+            }
         </div>
         {
             Astro.slots["footer"] && (
-                <div class="product-card-banner__footer">
+                <div
+                    class={`product-card-banner__footer col-laptop-${footerCol}`}
+                >
                     <slot name="footer" />
                 </div>
             )
@@ -336,6 +354,34 @@ const createTheme = () => {
             }
         }
 
+        &__text-benefits {
+            @extend %reset-list;
+
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            width: 100%;
+
+            @include use-media(tablet-album) {
+                flex-direction: row;
+                flex-wrap: wrap;
+
+                & > * {
+                    flex-basis: calc(50% - 1.5rem / 2);
+                }
+            }
+
+            @include use-media(desktop) {
+                gap: 3rem;
+                flex-wrap: nowrap;
+                padding-bottom: 8.375rem;
+
+                & > * {
+                    flex-basis: auto;
+                }
+            }
+        }
+
         &__button {
             width: 100%;
             position: relative;
@@ -365,7 +411,7 @@ const createTheme = () => {
 
             @include use-media(tablet-album) {
                 margin-top: 7.5rem;
-				padding-left: 2.5rem;
+                padding-left: 2.5rem;
                 gap: 2.5rem;
 
                 & > * {
@@ -373,9 +419,19 @@ const createTheme = () => {
                 }
             }
 
-            @include use-media(desktop) {
-                & > * {
-                    flex-basis: calc(33.33% - 2.5rem * 2 / 3);
+            &.col-laptop-3 {
+                @include use-media(laptop) {
+                    & > * {
+                        flex-basis: calc(33.33% - 2.5rem * 2 / 3);
+                    }
+                }
+            }
+
+			&.col-laptop-4 {
+                @include use-media(laptop) {
+                    & > * {
+                        flex-basis: calc(25% - 2.5rem * 3 / 4);
+                    }
                 }
             }
         }
@@ -476,14 +532,26 @@ const createTheme = () => {
                 }
             }
 
+            #{$root}__benefit-item {
+                color: var(--yellow-100);
+            }
+
             #{$root}__footer {
                 & .benefit-text-card {
                     color: var(--dark-0);
+
+                    &__title {
+                        color: var(--dark-0);
+                    }
 
                     &__icon {
                         color: var(--yellow-100);
                     }
                 }
+            }
+
+            & .benefit-text-card__title {
+                color: var(--yellow-100);
             }
         }
     }

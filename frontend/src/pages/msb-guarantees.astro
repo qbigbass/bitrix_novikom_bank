@@ -1,8 +1,6 @@
 ---
 import DefaultPageLayout from "../layouts/DefaultPageLayout.astro";
 import SectionBankOffers from "../components/sections/SectionBankOffers.astro";
-import MainSlider from "@components/common/MainSlider/MainSlider.astro";
-import type { Colors } from "../components/ui/Buttons/types";
 import type { OfferCardColor } from "@components/common/OfferCard/OfferCard.astro";
 import SectionLayout from "../components/layouts/SectionLayout.astro";
 import AButton from "@components/ui/Buttons/AButton.astro";
@@ -29,46 +27,40 @@ import AList from "@components/ui/AList/AList.astro";
 import ProductCardBanner from "@components/banners/ProductCardBanner.astro";
 import BenefitTextCard from "@components/common/BenefitCard/BenefitTextCard.astro";
 
-const mainSliders = [
-    {
-        title: "Страхование вкладов",
-        text: "Новиком является участником государственной системы обязательного страхования вкладов",
-        button: {
-            text: "Заказать услугу",
-            color: "yellow" as Colors,
-        },
-        image: "assets/big-illustrations/large-business/deposit-insurance.png",
-    },
-    {
-        title: "Депозиты",
-        text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, numquam.",
-        button: {
-            text: "Заказать услугу",
-            color: "yellow" as Colors,
-        },
-        image: "assets/big-illustrations/large-business/deposit-insurance.png",
-    },
-    {
-        title: "Интернет-банк",
-        text: "Lorem ipsum dolor sit amet, consectetur.",
-        button: {
-            text: "Заказать услугу",
-            color: "yellow" as Colors,
-        },
-        image: "assets/big-illustrations/large-business/deposit-insurance.png",
-    },
-    {
-        title: "Банковские гарантии",
-        text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid distinctio nihil temporibus.",
-        button: {
-            text: "Заказать услугу",
-            color: "yellow" as Colors,
-        },
-        image: "assets/big-illustrations/large-business/deposit-insurance.png",
-    },
-];
 
 const offerCards = [
+    {
+        title: "Меры господдержки",
+        description: "Подача заявки на&nbsp;льготное финансирование",
+        imgSrc: "assets/big-illustrations/large-business/state-support.png",
+        href: "#",
+        buttonText: "Подробнее",
+        cardColor: "yellow" as OfferCardColor,
+        textLink: true,
+        tagText: "Малому и среднему бизнесу",
+    },
+    {
+        title: "Кредиты для малого бизнеса",
+        description:
+            "Поддержка производственных предприятий малого и&nbsp;среднего бизнеса",
+        imgSrc: "assets/big-illustrations/large-business/crediting.png",
+        href: "#",
+        buttonText: "Подробнее",
+        cardColor: "yellow" as OfferCardColor,
+        textLink: true,
+        tagText: "Малому и среднему бизнесу",
+    },
+    {
+        title: "Валютный контроль",
+        description:
+            "Соблюдение требований валютного законодательства резидентами и&nbsp;нерезидентами",
+        imgSrc: "assets/big-illustrations/large-business/deposits.png",
+        href: "#",
+        buttonText: "Подробнее",
+        cardColor: "yellow" as OfferCardColor,
+        textLink: true,
+        tagText: "Малому и среднему бизнесу",
+    },
     {
         title: "Меры господдержки",
         description: "Подача заявки на&nbsp;льготное финансирование",
@@ -375,6 +367,7 @@ const productBenefits = [
         </div>
     </SectionLayout>
     <SectionBankOffers
+        title="Другие услуги для бизнеса"
         cards={offerCards}
         slidesPerView="mobile-s:1,mobile:1,tablet:2,tablet-album:2,laptop:3,laptop-x:3"
         spaceBetween="mobile-s:8,mobile:8,tablet:16,tablet-album:40,laptop:40,laptop-x:40"
