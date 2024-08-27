@@ -465,7 +465,8 @@ const cardsText = [
                             title="Защита от мошенников"
                             description="Узнайте как уберечь себя и своих близких от финансового мошенничества."
                             icon="icon-a-protection"
-                            theme="orange"
+                            theme="grey"
+                            iconColorClass="orange-100"
                             textButton="Подробнее"
                         />
                     </Fragment>
@@ -706,6 +707,7 @@ const cardsText = [
     </SectionLayout>
 
     <SectionBankOffers
+        title="Другие услуги для корпоративных клиентов"
         cards={offerCards}
         slidesPerView="mobile-s:1,mobile:1,tablet:2,laptop:3,laptop-x:3"
     />
@@ -726,7 +728,7 @@ const cardsText = [
         @include use-media(tablet-album) {
             flex-direction: row;
             flex-wrap: wrap;
-            
+
             & > * {
                 flex-basis: calc(50% - 2.5rem / 2);
             }

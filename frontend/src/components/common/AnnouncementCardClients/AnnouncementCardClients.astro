@@ -105,7 +105,7 @@ const { class: className, ...rest } = Astro.props;
 		}
 	} as SwiperOptions;
 
-	const slider = document.querySelector(ELEMENTS.root);
+	const slider = document.querySelector(ELEMENTS.root) as HTMLDivElement;
 
 	const swiper = new Swiper(slider, SWIPER_OPTIONS);
 </script>

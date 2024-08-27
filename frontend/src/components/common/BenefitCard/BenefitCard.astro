@@ -2,7 +2,8 @@
 import AIcon from "../../AIcon.astro";
 import AButton from "../../ui/Buttons/AButton.astro";
 
-type Theme = 'grey' | 'light-blue' |'gradient' | 'white' | 'orange';
+type Theme = 'grey' | 'light-blue' |'gradient' | 'white';
+type IconColorClass = 'green-100' | 'orange-100' | 'yellow-100';
 
 interface Props {
 	class?: string;
@@ -12,6 +13,7 @@ interface Props {
 	icon?: string;
 	textButton?: string;
 	headerIcon?: string;
+	iconColorClass?: IconColorClass;
 }
 
 const {
@@ -21,7 +23,8 @@ const {
 	headerIcon,
 	description,
 	textButton,
-	theme= 'grey'
+	theme= 'grey',
+	iconColorClass = 'green-100'
 } = Astro.props as Props;
 
 const btnColorByTheme = () => {
@@ -40,7 +43,7 @@ const btnColorByTheme = () => {
 	<div class="benefit-card__title">
 		{
 			headerIcon && (
-				<AIcon class="benefit-card__icon" symbolId={headerIcon} size="xxl" />
+				<AIcon class={`${iconColorClass}`} symbolId={headerIcon} size="xxl" />
 			)
 		}
 		<div class="headline-3">{title}</div>
@@ -49,7 +52,7 @@ const btnColorByTheme = () => {
 	<div class="benefit-card__footer">
 		{
 			icon && (
-				<AIcon class="benefit-card__icon" symbolId={icon} size="xxl" />
+				<AIcon class={`${iconColorClass}`} symbolId={icon} size="xxl" />
 			)
 		}
 		{
@@ -97,10 +100,6 @@ const btnColorByTheme = () => {
 			}
 		}
 
-		&__icon {
-			color: var(--green-100);
-		}
-
 		&.benefit-card--grey {
 			background: var(--dark-10);
 		}
@@ -117,14 +116,5 @@ const btnColorByTheme = () => {
 		&.benefit-card--white {
 			background: var(--dark-0);
 		}
-
-		&.benefit-card--orange {
-			background: var(--dark-0);
-
-			& .benefit-card__icon {
-				color: var(--orange-100);
-			}
-		}
-
 	}
 </style>
