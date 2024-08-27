@@ -183,14 +183,15 @@ $bannerClass = $arResult["PROPERTY_{$properties['CLASS_BANNER_DETAIL']['ID']}"];
                                     <?
                                         $isActive = false;
 
-                                        if ( $generateTabs['ID'] == $request['item'] ) {
+                                        if ( $generateTabs['CODE'] == $request['DETAIL_ELEMENT_CODE'] ) {
                                             $isActive = true;
-                                        } elseif (!isset($request['item']) && $key == 0) {
+                                        } elseif (!isset($request['DETAIL_ELEMENT_CODE']) && $key == 0) {
                                             $isActive = true;
                                         }
+
                                     ?>
                                     <a
-                                        href="<?= $arResult['DETAIL_PAGE_URL'] . $generateTabs['CODE'] . '/' ?>"
+                                        href="<?= $arResult['DETAIL_PAGE_URL'] .'/'. $generateTabs['CODE'] . '/' ?>"
                                         class="a-tab a-tab--lm a-tab--primary swiper-slide js-a-tab <?= $isActive ? 'is-active' : '' ?>"
                                     >
                                         <?= $generateTabs['NAME'] ?>

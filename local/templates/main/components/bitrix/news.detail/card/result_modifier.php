@@ -35,34 +35,26 @@ $arResult['generalPage'] = $generalPage;
 
 // запрос на получение прикрепленных элементов для блока Преиммущества
 $generalPageElementsQuery = $elementEntity::query();
+$generalPageElementsQuery->setSelect([
+    'ID', 'NAME', 'CODE',
+    'ADVANTAGES_ELEMENT_ID' => 'ADVANTAGES.ELEMENT.ID',
+    'ADVANTAGES_ELEMENT_NAME' => 'ADVANTAGES.ELEMENT.NAME',
+    'ADVANTAGES_ELEMENT_CODE' => 'ADVANTAGES.ELEMENT.CODE',
+    'ADVANTAGES_ELEMENT_DESCRIPTION' => 'ADVANTAGES.ELEMENT.PREVIEW_TEXT',
+    new ExpressionField('ADVANTAGES_ELEMENT_IMG_PATH','CONCAT("/upload/", %s,"/",%s)', ['ADVANTAGES.ELEMENT.SVG_FILE.FILE.SUBDIR', 'ADVANTAGES.ELEMENT.SVG_FILE.FILE.FILE_NAME']),
+
+]);
 
 if (!$generalPage) {
-    $generalPageElementsQuery->setSelect([
-        'ID', 'NAME', 'CODE',
-        'ADVANTAGES_ELEMENT_ID' => 'ADVANTAGES.ELEMENT.ID',
-        'ADVANTAGES_ELEMENT_NAME' => 'ADVANTAGES.ELEMENT.NAME',
-        'ADVANTAGES_ELEMENT_CODE' => 'ADVANTAGES.ELEMENT.CODE',
-        'ADVANTAGES_ELEMENT_DESCRIPTION' => 'ADVANTAGES.ELEMENT.PREVIEW_TEXT',
-        new ExpressionField('ADVANTAGES_ELEMENT_IMG_PATH','CONCAT("/upload/", %s,"/",%s)', ['ADVANTAGES.ELEMENT.SVG_FILE.FILE.SUBDIR', 'ADVANTAGES.ELEMENT.SVG_FILE.FILE.FILE_NAME']),
 
-    ]);
-
-    if (isset($request['item'])) {
-        $generalPageElementsQuery->setFilter(['IBLOCK_ID' => iblock('inner_card_info'), 'ID' => $request['item'] ]);
+    if (isset($request['DETAIL_ELEMENT_CODE'])) {
+        $generalPageElementsQuery->setFilter(['IBLOCK_ID' => iblock('inner_card_info'), 'CODE' => $request['DETAIL_ELEMENT_CODE'] ]);
     } else {
         $generalPageElementsQuery->setFilter(['IBLOCK_ID' => iblock('inner_card_info'), 'ID' => $generalPageTabs[0]['ID'] ]);
     }
 
 } elseif ($generalPage) {
-    $generalPageElementsQuery->setSelect([
-        'ID', 'NAME', 'CODE',
-        'ADVANTAGES_ELEMENT_ID' => 'ADVANTAGES.ELEMENT.ID',
-        'ADVANTAGES_ELEMENT_NAME' => 'ADVANTAGES.ELEMENT.NAME',
-        'ADVANTAGES_ELEMENT_CODE' => 'ADVANTAGES.ELEMENT.CODE',
-        'ADVANTAGES_ELEMENT_DESCRIPTION' => 'ADVANTAGES.ELEMENT.PREVIEW_TEXT',
-        new ExpressionField('ADVANTAGES_ELEMENT_IMG_PATH','CONCAT("/upload/", %s,"/",%s)', ['ADVANTAGES.ELEMENT.SVG_FILE.FILE.SUBDIR', 'ADVANTAGES.ELEMENT.SVG_FILE.FILE.FILE_NAME']),
 
-    ]);
     $generalPageElementsQuery->setFilter(['IBLOCK_ID' => iblock('inner_card_info'), 'ID' => $generalPageTabs[0]['ID'] ]);
 }
 
