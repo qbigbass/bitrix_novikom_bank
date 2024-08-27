@@ -3,161 +3,181 @@ import AppButton from "../ui/Buttons/AppButton.astro";
 import AButton from "../ui/Buttons/AButton.astro";
 import AIcon from "../AIcon.astro";
 
-interface Props {
-	className?: string;
-	class?: string;
+type Benefit = {
+	icon: string;
+	text: string;
 }
 
-const {
-	class: className,
-	...rest
-} = Astro.props as Props;
+type BackgroundColor = 'heavy-violet' | 'violet' | "heavy-purple";
+
+interface Props {
+    className?: string;
+    class?: string;
+    title: string;
+	benefits: Benefit[];
+	backgroundColor?: BackgroundColor;
+}
+
+const { class: className, title, benefits, backgroundColor, ...rest } = Astro.props as Props;
 ---
 
-<div class="service-apps-card" class:list={className} {...rest}>
-	<div class="service-apps-card__content">
-		<h3 class="service-apps-card__title headline-2">Мобильное приложение</h3>
-		<div class="service-apps-card__benefits">
-			<div class="service-apps-card-benefit">
-				<div class="service-apps-card-benefit__icon"><AIcon symbolId="icon-mobile" size="m"/></div>
-				<div class="service-apps-card-benefit__title body-s-heavy">Управление кешбэком и бонусами</div>
-			</div>
-			<div class="service-apps-card-benefit">
-				<div class="service-apps-card-benefit__icon"><AIcon symbolId="icon-time" size="m"></AIcon></div>
-				<div class="service-apps-card-benefit__title body-s-heavy">Доступ к услугам банка 24/7</div>
-			</div>
-			<div class="service-apps-card-benefit">
-				<div class="service-apps-card-benefit__icon"><AIcon symbolId="icon-cash" size="m"></AIcon></div>
-				<div class="service-apps-card-benefit__title body-s-heavy">Платежи и переводы без комиссии</div>
-			</div>
-		</div>
-		<div class="service-apps-card__apps">
-			<AppButton iconName="ru-store" />
-			<AppButton iconName="ru-market" />
-			<AppButton iconName="nash-store" />
-			<AButton element="a" href="#" size="m" afterIcon="icon-download" color="white" download>Скачать</AButton>
-		</div>
-	</div>
-	<div class="service-apps-card__background">
-		<img src="assets/service-apps-card-bg.svg" />
-		<div class="service-apps-card__background-block"></div>
-	</div>
+<div class:list={["service-apps-card", `${backgroundColor ? `service-apps-card--${backgroundColor}` : ""}`, className]}
+	{...rest}
+>
+    <div class="service-apps-card__content">
+        <h3 class="service-apps-card__title headline-2">{title}</h3>
+        <div class="service-apps-card__benefits">
+			{
+				benefits.map(({ icon, text }) => (
+					<div class="service-apps-card-benefit">
+						<div class="service-apps-card-benefit__icon">
+							<AIcon symbolId={icon} size="m" />
+						</div>
+						<span class="service-apps-card-benefit__title body-s-heavy" set:html={text}></span>
+					</div>
+				))
+			}
+        </div>
+		{
+            Astro.slots["footer"] && (
+                <div class="service-apps-card__apps">
+                    <slot name="footer" />
+                </div>
+            )
+        }
+    </div>
+    <div class="service-apps-card__background">
+        <img src="assets/service-apps-card-bg.svg" />
+        <div class="service-apps-card__background-block"></div>
+    </div>
 </div>
 
 <style lang="scss" is:global>
-	@use "sass:map";
-	@import "@styles/variables.scss";
-	@import "@styles/media-queries";
-	@import "@styles/functions.scss";
+    @use "sass:map";
+    @import "@styles/variables.scss";
+    @import "@styles/media-queries";
+    @import "@styles/functions.scss";
 
-	.service-apps-card {
-		position: relative;
-		border-radius: 0.75rem;
-		overflow: hidden;
-		background: var(--violet-100);
-		padding: 1.5rem 1rem;
+    .service-apps-card {
+        position: relative;
+        border-radius: 0.75rem;
+        overflow: hidden;
+        background-color: var(--violet-100);
+        padding: 1.5rem 1rem;
 
-		@include use-media(tablet) {
-			padding: 2rem;
+        @include use-media(tablet) {
+            padding: 2rem;
+        }
+
+        @include use-media(tablet-album) {
+            padding: 3rem;
+        }
+
+        &__content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+
+            @include use-media(tablet) {
+                gap: 2rem;
+            }
+
+            @include use-media(tablet-album) {
+                gap: 3rem;
+            }
+        }
+
+        &__title {
+            color: var(--dark-0);
+
+            @include use-media(tablet-album) {
+                margin-bottom: 1.75rem;
+            }
+        }
+
+        &__apps {
+            display: flex;
+            gap: 1rem;
+            max-width: 40.875rem;
+
+            .app-button {
+                display: none;
+
+                @include use-media(tablet) {
+                    display: inline-flex;
+                }
+            }
+
+            .a-button {
+                width: 100%;
+
+                @include use-media(tablet) {
+                    width: auto;
+                }
+            }
+        }
+
+        &__benefits {
+            display: flex;
+            flex-direction: column;
+            row-gap: 1rem;
+            column-gap: 2.5rem;
+            max-width: 43.75rem;
+
+            @include use-media(tablet) {
+                flex-direction: row;
+            }
+        }
+
+        &__background {
+            position: absolute;
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-start;
+            right: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0.5;
+        }
+
+        &__background-block {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                rgba(65, 38, 116, 0.9) 0%,
+                rgba(65, 38, 116, 0) 90%
+            );
+        }
+
+		&--heavy-violet {
+			background: linear-gradient(222.24deg, #101317 20%, #6655A2 80%);
 		}
 
-		@include use-media(tablet-album) {
-			padding: 3rem;
-		}
+        &--heavy-purple {
+            background: linear-gradient(222.24deg, #101317 20%, #5A2375 80%);
+        }
+    }
 
-		&__content {
-			position: relative;
-			z-index: 2;
-			display: flex;
-			flex-direction: column;
-			gap: 1.5rem;
+    .service-apps-card-benefit {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        color: var(--dark-0);
 
-			@include use-media(tablet) {
-				gap: 2rem;
-			}
+        &__icon {
+            flex-shrink: 0;
+        }
 
-			@include use-media(tablet-album) {
-				gap: 3rem;
-			}
-		}
-
-		&__title {
-			color: var(--dark-0);
-
-			@include use-media(tablet-album) {
-				margin-bottom: 1.75rem;
-			}
-		}
-
-		&__apps {
-			display: flex;
-			gap: 1rem;
-			max-width: 40.875rem;
-
-			.app-button {
-				display: none;
-
-				@include use-media(tablet) {
-					display: inline-flex;
-				}
-			}
-
-			.a-button {
-				width: 100%;
-
-				@include use-media(tablet) {
-					width: auto;
-				}
-			}
-		}
-
-		&__benefits {
-			display: flex;
-			flex-direction: column;
-			row-gap: 1rem;
-			column-gap: 2.5rem;
-			max-width: 43.75rem;
-
-			@include use-media(tablet) {
-				flex-direction: row;
-			}
-		}
-
-		&__background {
-			position: absolute;
-			display: flex;
-			justify-content: flex-end;
-			align-items: flex-start;
-			right: 0;
-			top: 0;
-			width: 100%;
-			height: 100%;
-			z-index: 1;
-			opacity: 0.5;
-		}
-
-		&__background-block {
-			position: absolute;
-			right: 0;
-			top: 0;
-			width: 100%;
-			height: 100%;
-			background: linear-gradient(90deg, rgba(65, 38, 116, 0.9) 0%, rgba(65, 38, 116, 0) 90%);
-		}
-	}
-
-	.service-apps-card-benefit {
-		display: flex;
-		align-items: center;
-		gap: 1rem;
-		color: var(--dark-0);
-
-		&__icon {
-			flex-shrink: 0;
-		}
-
-		@include use-media(tablet) {
-			align-items: flex-start;
-		}
-	}
+        @include use-media(tablet) {
+            align-items: flex-start;
+        }
+    }
 </style>

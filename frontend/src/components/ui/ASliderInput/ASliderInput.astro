@@ -3,10 +3,10 @@ import type { ASliderInputType } from './interfaces';
 import ASliderInputText from "./ASliderInputText/ASliderInputText.astro";
 
 interface Props {
-	className?: string;
+	class?: string;
 	stepSize?: number;
-	minValue: number;
-	maxValue: number;
+	minValue?: number;
+	maxValue?: number;
 	startValue: number;
 	label?: string;
 	id: string;
@@ -73,9 +73,9 @@ const {
 	const sliderInputs: NodeListOf<HTMLDivElement> = document.querySelectorAll(JS_CLASSES.root);
 
 	sliderInputs.forEach((input) => {
-		const slider: ASliderInputState = initASliderInput(input);
+		const slider = initASliderInput(input);
 
-		slider.elements.root.addEventListener('input', (e) => {
+		slider?.elements.root.addEventListener('input', (e) => {
 			console.log(e);
 		});
 	});

@@ -10,7 +10,7 @@ use Bitrix\Main\Localization\Loc;
     <meta charset="UTF-8">
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/svg+xml" href="/frontend/build/favicon.svg">
     <title><?php $APPLICATION->ShowTitle();?></title>
     <?php $APPLICATION->ShowHead();?>
 </head>

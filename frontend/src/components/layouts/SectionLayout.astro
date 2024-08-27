@@ -1,6 +1,6 @@
 ---
 type State = 'no-padding-bottom' | 'no-padding-top' | 'no-padding' | 's-no-padding' ;
-type BgColor = 'gray' | 'blue';
+export type BgColor = 'gray' | 'blue' | 'purple';
 
 interface Props {
 	class?: string;
@@ -18,14 +18,15 @@ const {
 } = Astro.props as Props;
 
 const typeClasses = types?.map((type) => `${type}`);
+const backgroundClass = `${bgColor ? `section-layout--bg-${bgColor}` : ''}`
 ---
 <section
 	class="section-layout"
 	class:list={[
 		className,
 		typeClasses,
+		backgroundClass,
 		{ 'section-layout--s': small },
-		`section-layout--bg-${bgColor}`
 	]}
 	{...rest}
 >
@@ -60,6 +61,10 @@ const typeClasses = types?.map((type) => `${type}`);
 
 		&--bg-blue {
 			background-color: var(--blue-10);
+		}
+
+		&--bg-purple {
+			background-color: var(--purple-10);
 		}
 	}
 

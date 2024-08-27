@@ -24,19 +24,12 @@
 		display: flex;
 		align-items: center;
 		cursor: pointer;
-		color: var(--violet-30);
+		color: var(--dark-0);
 		overflow: hidden;
 		text-overflow: ellipsis;
-		background: #1211124D;
 		will-change: background, color, box-shadow;
 		position: relative;
-		transition:
-			background $transition,
-			color $transition;
-
-		&:hover {
-			color: var(--dark-0);
-		}
+		transition: background $transition;
 
 		&:not(:first-child) {
 			border-left: 1px solid var(--violet-70);
@@ -48,8 +41,7 @@
 		}
 
 		&.swiper-slide-thumb-active {
-			background: var(--violet-100, #55246A);
-			box-shadow: 68.6px -68.6px 68.6px 0px #2A1452 inset;
+			background: rgba(#fff, .1);
 
 			&:after {
 				content: '';
@@ -57,7 +49,7 @@
 				left: 0;
 				right: 0;
 				bottom: 0;
-				height: 4px;
+				height: .25rem;
 				background-color: var(--green-100);
 			}
 		}

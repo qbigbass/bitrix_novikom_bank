@@ -52,11 +52,15 @@
 	--yellow-30: #fff9b1;
 	--yellow-70: #fff355;
 	--yellow-100: #ffed00;
-	--yellow-150: #b5a801;
+	--yellow-150: #debd10;
 	--yellow-200: #6b6401;
+
 
 	//GRAPHITE
 	--graphite-100: #121112;
+
+	//GREY
+	--grey: #D5D9E0;
 }
 
 //DARK
@@ -117,3 +121,6 @@
 
 //GRAPHITE
 .graphite-100 { color: var(--graphite-100); }
+
+//GREY
+.grey { color: var(--grey); }

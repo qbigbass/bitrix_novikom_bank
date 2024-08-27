@@ -184,3 +184,25 @@
 .currency {
 	font-family: map-get($font-family, currency);
 }
+
+.currency-regular {
+	font-family: map-get($font-family, currency-regular);
+}
+
+.list {
+	@extend %reset-list;
+
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+
+	& li {
+		display: flex;
+		gap: 0.5rem;
+		padding-left: .5rem;
+
+		&::before {
+			content: '•';
+		}
+	}
+}

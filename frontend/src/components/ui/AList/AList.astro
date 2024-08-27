@@ -1,106 +1,141 @@
 ---
 // дефолтный список
-export type Sizes = 's' | 'm' | 'l' ;
+export type Sizes = "s" | "m" | "l" | "ml";
 
 interface Props {
+    class?: string;
     size?: Sizes;
     isHeavy?: boolean;
 }
 
-const {size = 'm', isHeavy = false} = Astro.props;
+const { class: className, size = "m", isHeavy = false } = Astro.props;
 ---
 
-<ul class=`a-list a-list--size-${size} ${isHeavy ? 'list--heavy' : ''}`>
-    <slot/>
+<ul
+    class:list={[
+        "a-list",
+        `${size ? `a-list--size-${size}` : ""}`,
+        `${isHeavy ? `a-list-heavy` : ""}`,
+        className
+    ]}
+>
+    <slot />
 </ul>
 
 <style lang="scss" is:global>
-  @import "@styles/media-queries";
-  @import "@styles/typography";
+    @import "@styles/media-queries";
+    @import "@styles/typography";
 
-  .a-list {
-    $root: #{&};
+    .a-list {
+        $root: #{&};
 
-    list-style: none;
-    margin: 0;
-    padding: 0;
+        list-style: none;
+        margin: 0;
+        padding: 0;
 
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1em;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1em;
 
-    & li {
-      @extend .body-m-light;
-
-      display: flex;
-      align-items: flex-start;
-      gap: 1rem;
-      font-size: 1rem;
-      line-height: 1.5;
-
-      &:before {
-        flex-shrink: 0;
-        content: '';
-        margin-top: 6px;
-        width: .75rem;
-        height: .75rem;
-        background-image: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='2.5' y='2.5' width='9' height='9' stroke='%23806EA2' stroke-dasharray='2 2'/%3E%3Crect width='10' height='10' fill='%2355246A'/%3E%3C/svg%3E%0A");
-        background-size: contain;
-      }
-    }
-
-    &--heavy {
         & li {
-          font-weight: 600;
+            @extend .body-m-light;
+
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            font-size: 1rem;
+            line-height: 1.5;
+
+            &:before {
+                content: "";
+                flex-shrink: 0;
+                margin-top: 6px;
+                width: 0.75rem;
+                height: 0.75rem;
+                background-image: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='2.5' y='2.5' width='9' height='9' stroke='%23806EA2' stroke-dasharray='2 2'/%3E%3Crect width='10' height='10' fill='%2355246A'/%3E%3C/svg%3E%0A");
+                background-size: contain;
+            }
+        }
+
+        &--heavy {
+            & li {
+                font-weight: 600;
+            }
+        }
+
+        &--size-s {
+            & li {
+                font-size: 0.875rem;
+                line-height: 1.3;
+                gap: 0.5rem;
+
+                &:before {
+                    margin-top: 0.125rem;
+                }
+            }
+        }
+
+        &--size-l {
+            @include use-media(tablet-album) {
+                gap: 1.5rem;
+            }
+
+            & li {
+                @include use-media(tablet) {
+                    font-size: 1.125rem;
+                    line-height: 1.45;
+                }
+
+                @include use-media(tablet-album) {
+                    font-size: 1.25rem;
+                    line-height: 1.4;
+                }
+
+                &:before {
+                    margin-top: 0.25rem;
+                    width: 1rem;
+                    height: 1rem;
+
+                    @include use-media(tablet) {
+                        margin-top: 0.375rem;
+                    }
+
+                    @include use-media(tablet-album) {
+                        margin-top: 0.5rem;
+                    }
+                }
+            }
+        }
+
+        &--size-ml {
+            @include use-media(tablet-album) {
+                gap: 1.5rem;
+            }
+
+            & li {
+                @include use-media(tablet) {
+                    font-size: 1.125rem;
+                    line-height: 1.45;
+                }
+
+                @include use-media(tablet-album) {
+                    font-size: 1.25rem;
+                    line-height: 1.4;
+                }
+
+                &:before {
+                    @include use-media(tablet) {
+                        width: 1rem;
+                        height: 1rem;
+                        margin-top: 0.375rem;
+                    }
+
+                    @include use-media(tablet-album) {
+                        margin-top: 0.5rem;
+                    }
+                }
+            }
         }
     }
-
-    &--size-s {
-
-      & li {
-        font-size: .875rem;
-        line-height: 1.3;
-        gap: .5rem;
-
-        &:before {
-          margin-top: .125rem;
-        }
-      }
-    }
-
-    &--size-l {
-
-      @include use-media(laptop-x) {
-        gap: 1.5rem;
-      }
-
-      & li {
-
-        @include use-media(tablet) {
-          font-size: 1.125rem;
-          line-height: 1.45;
-        }
-
-        @include use-media(laptop-x) {
-          font-size: 1.25rem;
-          line-height: 1.4;
-        }
-
-        &:before {
-          margin-top: .25rem;
-          width: 1rem;
-          height: 1rem;
-
-          @include use-media(tablet) {
-            margin-top: .375rem;
-          }
-
-          @include use-media(laptop-x) {
-            margin-top: .5rem;
-          }
-        }
-      }
-    }
-  }
 </style>

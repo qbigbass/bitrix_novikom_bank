@@ -21,38 +21,56 @@ import ATableRow from "../components/common/ATable/ATableRow.astro";
 import SectionBenefitsLayout from "../components/layouts/SectionBenefitsLayout.astro";
 import SectionLayout from "../components/layouts/SectionLayout.astro";
 import ServiceAppsCard from "../components/common/ServiceAppsCard.astro";
+import AppButton from "@components/ui/Buttons/AppButton.astro";
+import AButton from "@components/ui/Buttons/AButton.astro";
 
 const breadcrumbs = [
     {
-        title: 'Частным клиентам',
-        url: '#'
+        title: "Частным клиентам",
+        url: "#",
     },
     {
-        title: 'Платежи и переводы',
-        url: '#'
-    }
+        title: "Платежи и переводы",
+        url: "#",
+    },
 ];
 
 const benefitCards = [
     {
-        title: 'C дебетовых карт банка Новиком',
-        description: '',
-        iconId: 'icon-a-transfer',
+        title: "C дебетовых карт банка Новиком",
+        description: "",
+        iconId: "icon-a-transfer",
         list: [
-          'Без комиссии на карты Новиком.',
-          '1,5 % от суммы перевода, минимум 49 рублей на карты сторонних банков.'
+            "Без комиссии на карты Новиком.",
+            "1,5 % от суммы перевода, минимум 49 рублей на карты сторонних банков.",
         ],
     },
     {
-        title: 'С кредитных карт банка Новиком',
-        description: '',
+        title: "С кредитных карт банка Новиком",
+        description: "",
         list: [
-          'При переводе с карты с беспроцентным периодом кредитования дополнительно взимается 2,7 % от суммы перевода (минимум 200 рублей)',
+            "При переводе с карты с беспроцентным периодом кредитования дополнительно взимается 2,7 % от суммы перевода (минимум 200 рублей)",
         ],
-        iconId: 'icon-a-transfer'
-    }
+        iconId: "icon-a-transfer",
+    },
+];
+
+const serviceAppBenefits = [
+    {
+        icon: "icon-mobile",
+        text: "Управление кешбэком и&nbsp;бонусами",
+    },
+    {
+        icon: "icon-time",
+        text: "Доступ к&nbsp;услугам банка 24/7",
+    },
+    {
+        icon: "icon-cash",
+        text: "Платежи и&nbsp;переводы без&nbsp;комиссии",
+    },
 ];
 ---
+
 <DefaultPageLayout title="Переводы в интернет-банке или приложении">
     <TextBanner
         title="Переводы в интернет-банке <br>или приложении"
@@ -68,7 +86,24 @@ const benefitCards = [
         <div class="content-container">
             <div class="transfers-internet-banking-services">
                 <div class="transfers-internet-banking-services__apps">
-                    <ServiceAppsCard />
+                    <ServiceAppsCard
+                        benefits={serviceAppBenefits}
+                        title="Мобильное приложение"
+                        class="bank-services__apps"
+                    >
+                        <Fragment slot="footer">
+                            <AppButton href="#" iconName="ru-store" />
+                            <AppButton href="#" iconName="ru-market" />
+                            <AppButton href="#" iconName="nash-store" />
+                            <AButton
+                                element="a"
+                                href="#"
+                                size="m"
+                                afterIcon="icon-download"
+                                color="white">Скачать</AButton
+                            >
+                        </Fragment>
+                    </ServiceAppsCard>
                 </div>
                 <div class="transfers-internet-banking-services__bank">
                     <BenefitCard
@@ -94,24 +129,50 @@ const benefitCards = [
                         <ATable class="md:in-column" cols={2}>
                             <ATableBody>
                                 <ATableRow>
-                                    <ATableCell class="body-l-heavy dark-70">Cумма одного перевода</ATableCell>
-                                    <ATableCell class="body-l-light">От 100 до 70 000 рублей, без учёта дополнительной комиссии</ATableCell>
+                                    <ATableCell class="body-l-heavy dark-70"
+                                        >Cумма одного перевода</ATableCell
+                                    >
+                                    <ATableCell class="body-l-light"
+                                        >От 100 до 70 000 рублей, без учёта
+                                        дополнительной комиссии</ATableCell
+                                    >
                                 </ATableRow>
                                 <ATableRow>
-                                    <ATableCell class="body-l-heavy dark-70">Максимальная сумма переводов в сутки</ATableCell>
-                                    <ATableCell class="body-l-light">300 000 рублей с учётом дополнительной комиссии по одной карте</ATableCell>
+                                    <ATableCell class="body-l-heavy dark-70"
+                                        >Максимальная сумма переводов в сутки</ATableCell
+                                    >
+                                    <ATableCell class="body-l-light"
+                                        >300 000 рублей с учётом дополнительной
+                                        комиссии по одной карте</ATableCell
+                                    >
                                 </ATableRow>
                                 <ATableRow>
-                                    <ATableCell class="body-l-heavy dark-70">Максимальная сумма переводов за календарный месяц</ATableCell>
-                                    <ATableCell class="body-l-light">1 500 000 рублей, с учётом дополнительной комиссии по одной карте</ATableCell>
+                                    <ATableCell class="body-l-heavy dark-70"
+                                        >Максимальная сумма переводов
+                                        за календарный месяц</ATableCell
+                                    >
+                                    <ATableCell class="body-l-light"
+                                        >1 500 000 рублей, с учётом
+                                        дополнительной комиссии по одной карте</ATableCell
+                                    >
                                 </ATableRow>
                                 <ATableRow>
-                                    <ATableCell class="body-l-heavy dark-70">Максимальное количество переводов в сутки</ATableCell>
-                                    <ATableCell class="body-l-light">8 переводов по одной карте</ATableCell>
+                                    <ATableCell class="body-l-heavy dark-70"
+                                        >Максимальное количество переводов
+                                        в сутки</ATableCell
+                                    >
+                                    <ATableCell class="body-l-light"
+                                        >8 переводов по одной карте</ATableCell
+                                    >
                                 </ATableRow>
                                 <ATableRow>
-                                    <ATableCell class="body-l-heavy dark-70">Максимальное количество переводов за 4 календарных дня</ATableCell>
-                                    <ATableCell class="body-l-light">20 переводов по одной карте</ATableCell>
+                                    <ATableCell class="body-l-heavy dark-70"
+                                        >Максимальное количество переводов
+                                        за 4 календарных дня</ATableCell
+                                    >
+                                    <ATableCell class="body-l-light"
+                                        >20 переводов по одной карте</ATableCell
+                                    >
                                 </ATableRow>
                             </ATableBody>
                         </ATable>
@@ -124,10 +185,18 @@ const benefitCards = [
                         <AAccordion type="component">
                             <AAccordionPanel>
                                 <AAccordionHeader>
-                                    <div class="body-l-light">Тарифы для физических лиц</div>
+                                    <div class="body-l-light">
+                                        Тарифы для физических лиц
+                                    </div>
                                 </AAccordionHeader>
                                 <AAccordionContent>
-                                    <p class="body-m-light dark-70" style="margin-bottom: 1.5rem;">Тарифы для физических лиц, действующие во всех регионах присутствия Банка.</p>
+                                    <p
+                                        class="body-m-light dark-70"
+                                        style="margin-bottom: 1.5rem;"
+                                    >
+                                        Тарифы для физических лиц, действующие
+                                        во всех регионах присутствия Банка.
+                                    </p>
                                     <DocumentDownload
                                         fileName="Сборник тарифов на обслуживание банковских карт для физических лиц, выпущенных по 21.08.2022 г."
                                         dateTime="12.12.23 18:56"
@@ -147,10 +216,18 @@ const benefitCards = [
                             </AAccordionPanel>
                             <AAccordionPanel>
                                 <AAccordionHeader>
-                                    <div class="body-l-light">Договор банковского обслуживания</div>
+                                    <div class="body-l-light">
+                                        Договор банковского обслуживания
+                                    </div>
                                 </AAccordionHeader>
                                 <AAccordionContent>
-                                    <p class="body-m-light dark-70" style="margin-bottom: 1.5rem;">Тарифы для физических лиц, действующие во всех регионах присутствия Банка.</p>
+                                    <p
+                                        class="body-m-light dark-70"
+                                        style="margin-bottom: 1.5rem;"
+                                    >
+                                        Тарифы для физических лиц, действующие
+                                        во всех регионах присутствия Банка.
+                                    </p>
                                     <DocumentDownload
                                         fileName="Сборник тарифов на обслуживание банковских карт для физических лиц, выпущенных по 21.08.2022 г."
                                         dateTime="12.12.23 18:56"
@@ -170,10 +247,18 @@ const benefitCards = [
                             </AAccordionPanel>
                             <AAccordionPanel>
                                 <AAccordionHeader>
-                                    <div class="body-l-light">Типовые документы</div>
+                                    <div class="body-l-light">
+                                        Типовые документы
+                                    </div>
                                 </AAccordionHeader>
                                 <AAccordionContent>
-                                    <p class="body-m-light dark-70" style="margin-bottom: 1.5rem;">Тарифы для физических лиц, действующие во всех регионах присутствия Банка.</p>
+                                    <p
+                                        class="body-m-light dark-70"
+                                        style="margin-bottom: 1.5rem;"
+                                    >
+                                        Тарифы для физических лиц, действующие
+                                        во всех регионах присутствия Банка.
+                                    </p>
                                     <DocumentDownload
                                         fileName="Сборник тарифов на обслуживание банковских карт для физических лиц, выпущенных по 21.08.2022 г."
                                         dateTime="12.12.23 18:56"
@@ -193,10 +278,18 @@ const benefitCards = [
                             </AAccordionPanel>
                             <AAccordionPanel>
                                 <AAccordionHeader>
-                                    <div class="body-l-light">Паспорта дебетовых карт</div>
+                                    <div class="body-l-light">
+                                        Паспорта дебетовых карт
+                                    </div>
                                 </AAccordionHeader>
                                 <AAccordionContent>
-                                    <p class="body-m-light dark-70" style="margin-bottom: 1.5rem;">Тарифы для физических лиц, действующие во всех регионах присутствия Банка.</p>
+                                    <p
+                                        class="body-m-light dark-70"
+                                        style="margin-bottom: 1.5rem;"
+                                    >
+                                        Тарифы для физических лиц, действующие
+                                        во всех регионах присутствия Банка.
+                                    </p>
                                     <DocumentDownload
                                         fileName="Сборник тарифов на обслуживание банковских карт для физических лиц, выпущенных по 21.08.2022 г."
                                         dateTime="12.12.23 18:56"
@@ -216,10 +309,18 @@ const benefitCards = [
                             </AAccordionPanel>
                             <AAccordionPanel>
                                 <AAccordionHeader>
-                                    <div class="body-l-light">Иные документы</div>
+                                    <div class="body-l-light">
+                                        Иные документы
+                                    </div>
                                 </AAccordionHeader>
                                 <AAccordionContent>
-                                    <p class="body-m-light dark-70" style="margin-bottom: 1.5rem;">Тарифы для физических лиц, действующие во всех регионах присутствия Банка.</p>
+                                    <p
+                                        class="body-m-light dark-70"
+                                        style="margin-bottom: 1.5rem;"
+                                    >
+                                        Тарифы для физических лиц, действующие
+                                        во всех регионах присутствия Банка.
+                                    </p>
                                     <DocumentDownload
                                         fileName="Сборник тарифов на обслуживание банковских карт для физических лиц, выпущенных по 21.08.2022 г."
                                         dateTime="12.12.23 18:56"
@@ -255,7 +356,6 @@ const benefitCards = [
     <SectionSeeAlso />
 </DefaultPageLayout>
 
-
 <style lang="scss" is:global>
     @import "@styles/media-queries";
 
@@ -267,6 +367,5 @@ const benefitCards = [
         @include use-media(laptop) {
             grid-template-columns: 2fr 1fr;
         }
-
     }
 </style>

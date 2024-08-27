@@ -97,7 +97,6 @@ const benefitCards = [
 	>
 		<ATabs slot="tabs">
 			<Fragment slot="tabs">
-				<ATab size="l"
                 <ATab href="/spc-for-employees" size="lm">Для работников ГК «Ростех»</ATab>
                 <ATab href="/spc-for-organizations" size="lm">Для организаций</ATab>
                 <ATab href="/spc-for-managers" size="lm">Для руководителей</ATab>
@@ -246,7 +245,7 @@ const benefitCards = [
 				</SectionHelpContentLayout>
 			</ATabPanel>
 			<ATabPanel value="1">
-				<ATable class="md:in-column" cols="2">
+				<ATable class="md:in-column" cols={2}>
 					<ATableBody>
 						<ATableRow>
 							<ATableCell class="body-l-heavy dark-70">Первый и последующие годы обслуживания</ATableCell>
@@ -310,7 +309,7 @@ const benefitCards = [
 							</AAccordionPanel>
 							<AAccordionPanel>
 								<AAccordionHeader>
-									<div class="body-l-light">Взимается ли комиссия за снятие наличных денежных средств в банкоматах,  если моя организация – работодатель  является участником зарплатного проекта Банка?</div>
+									<div class="body-l-light">Взимается ли комиссия за снятие наличных денежных средств в банкоматах, если моя организация – работодатель  является участником зарплатного проекта Банка?</div>
 								</AAccordionHeader>
 								<AAccordionContent>
 									<ARte class="body-m-light">
@@ -362,7 +361,7 @@ const benefitCards = [
 								</AAccordionHeader>
 								<AAccordionContent>
 									<ARte class="body-m-light">
-										<p>Если есть подозрение, что ПИН-код мог стать доступен третьим лицам, незамедлительно заблокируйте карту.   Если ПИН-код не удается вспомнить карту необходимо перевыпустить.</p>
+										<p>Если есть подозрение, что ПИН-код мог стать доступен третьим лицам, незамедлительно заблокируйте карту.  Если ПИН-код не удается вспомнить карту необходимо перевыпустить.</p>
 									</ARte>
 								</AAccordionContent>
 							</AAccordionPanel>

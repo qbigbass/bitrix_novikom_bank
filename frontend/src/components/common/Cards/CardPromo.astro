@@ -1,0 +1,223 @@
+---
+import TextIndicatingBenefits from "../TextIndicatingBenefits/TextIndicatingBenefits.astro";
+
+type BackgroundColors = "heavy-purple" | "heavy-violet";
+
+type Benefit = {
+    beforeNum?: string;
+    afterNum?: string;
+    num: string;
+    description: string;
+    currency?: string;
+    colorClass: string;
+};
+
+interface Props {
+    class?: string;
+    hasPattern?: boolean;
+    image: string;
+    title: string;
+    text?: string;
+    benefits?: Benefit[];
+    backgroundColor?: BackgroundColors;
+}
+
+const {
+    class: className,
+    hasPattern = false,
+    image,
+    title,
+    text,
+    benefits,
+    backgroundColor = "heavy-purple",
+} = Astro.props as Props;
+
+// Промо карточка
+---
+
+<div class:list={["card-promo", `card-promo--${backgroundColor}`, className]}>
+    {
+        hasPattern && (
+            <picture class="card-promo__pattern">
+                <source
+                    srcset="assets/card-promo-pattern-mobile.svg"
+                    media="(max-width: 1199px)"
+                />
+                <source
+                    srcset="assets/card-promo-pattern-laptop.svg"
+                    media="(max-width: 1600px)"
+                />
+                <img
+                    src="assets/card-promo-pattern.svg"
+                    alt=""
+                    loading="lazy"
+                />
+            </picture>
+        )
+    }
+
+    <div class="card-promo__wrapper">
+        <div class="card-promo__header">
+            <h3 class="headline-1" set:html={title} />
+            {text && <p class="body-l-light" set:html={text} />}
+        </div>
+        <img class="card-promo__image" src={image} alt="" loading="lazy" />
+        {
+            benefits && (
+                <div class="card-promo__body">
+                    <div class="card-promo__benefit-list">
+                        {benefits.map(
+                            ({
+                                beforeNum,
+                                afterNum,
+                                num,
+                                description,
+                                currency,
+                                colorClass,
+                            }) => (
+                                <TextIndicatingBenefits
+                                    headClass={colorClass}
+                                    beforeText={beforeNum}
+                                    text={num}
+                                    afterText={afterNum}
+                                    currency={currency}
+                                >
+                                    {description && (
+                                        <div
+                                            class="body-m-light dark-0"
+                                            set:html={description}
+                                        />
+                                    )}
+                                </TextIndicatingBenefits>
+                            ),
+                        )}
+                    </div>
+                </div>
+            )
+        }
+        {
+            Astro.slots["footer"] && (
+                <div class="card-promo__footer">
+                    <slot name="footer" />
+                </div>
+            )
+        }
+    </div>
+</div>
+
+<style lang="scss" is:global>
+    @import "@styles/media-queries";
+
+    .card-promo {
+        position: relative;
+        overflow: hidden;
+        border-radius: 0.75rem;
+
+        &__pattern {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+
+            @include use-media(tablet) {
+                left: auto;
+                right: 0;
+            }
+
+            @include use-media(laptop) {
+                height: 100%;
+
+                & img {
+                    height: 100%;
+                }
+            }
+        }
+
+        &__wrapper {
+            padding: 2.5rem 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            position: relative;
+            height: 100%;
+
+            @include use-media(tablet) {
+                gap: 2.5rem;
+                padding: 2.5rem;
+                min-height: 25rem; //400px
+            }
+
+            @include use-media(tablet-album) {
+                gap: 3rem;
+            }
+
+            @include use-media(laptop-x) {
+                padding: 5rem;
+            }
+        }
+
+        &__header,
+        &__footer {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+
+            @include use-media(tablet) {
+                gap: 1.5rem;
+                max-width: 55%;
+            }
+        }
+
+        &__image {
+            max-width: 20rem; //320px
+
+            @include use-media(tablet) {
+                position: absolute;
+                right: 0;
+                top: 50%;
+                transform: translate(0, -50%);
+                max-width: 30rem; //480px;
+                width: 50vw;
+            }
+
+            @include use-media(laptop-x) {
+                right: 3%;
+            }
+        }
+
+        &__footer {
+            @include use-media(tablet) {
+                gap: 2.5rem;
+                flex-direction: row;
+                align-items: center;
+                margin-top: auto;
+            }
+        }
+
+        &__benefit-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+
+            @include use-media(tablet) {
+                gap: 1.5rem;
+                max-width: 50%;
+            }
+
+            @include use-media(tablet-album) {
+                flex-direction: row;
+                gap: 5rem;
+                max-width: 60%;
+            }
+        }
+
+        &--heavy-purple {
+            background: linear-gradient(222.24deg, #101317 20%, #5a2375 80%);
+            color: var(--dark-0);
+        }
+
+        &--heavy-violet {
+            background: linear-gradient(222.24deg, #101317 20%, #6655a2 80%);
+            color: var(--dark-0);
+        }
+    }
+</style>

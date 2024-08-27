@@ -3,120 +3,77 @@ import OfferCard from "../common/OfferCard/OfferCard.astro";
 import ATag from "../ui/ATag/ATag.astro";
 import SectionTitle from "../ui/SectionTitle/SectionTitle.astro";
 import SectionLayout from "../layouts/SectionLayout.astro";
-import ExpandableSlider from "../common/Sliders/ExpandableSlider/ExpandableSlider.astro";
 import SliderSlide from "../common/Sliders/common/SliderSlide/SliderSlide.astro";
 import PersistentSlider from "../common/Sliders/PersistentSlider/PersistentSlider.astro";
 
-const offerCards = [
-	{
-		title: 'Вклад «Рантье»',
-		description: '',
-		imgSrc: 'assets/big-illustrations/large-individual/contribution-rentier.png',
-		href: '#',
-		beforeNumberText: 'до',
-		numberText: '15,5%',
-		afterNumberText: '',
-		buttonText: 'Открыть вклад',
-		tagText: 'Частным клиентам',
-		cardColor: 'green'
-	},
-	{
-		title: 'Резервирование<br>счетов',
-		description: 'Дистанционная подача заявки<br>на&nbsp;открытие расчетного счета',
-        imgSrc: 'assets/big-illustrations/large-corporate/account-reservation.png',
-		href: '#',
-		beforeNumberText: '',
-		numberText: '',
-		afterNumberText: '',
-		buttonText: 'Подать заявку',
-		tagText: 'Корпоративным клиентам',
-		cardColor: 'orange'
-	},
-	{
-		title: 'Экспресс-гарантии<br>44-ФЗ, 223-ФЗ',
-		description: 'Принятие решения за 1 день,<br>до&nbsp;30 000 000 рублей, без залога',
-        imgSrc: 'assets/big-illustrations/large-corporate/guarantees.png',
-		href: '#',
-		beforeNumberText: '',
-		numberText: '',
-		afterNumberText: '',
-		buttonText: 'Оформить',
-		tagText: 'Малому и среднему бизнесу',
-		cardColor: 'yellow'
-	},
-    {
-        title: 'Вклад «Рантье»',
-        description: '',
-        imgSrc: 'assets/big-illustrations/large-individual/contribution-rentier.png',
-        href: '#',
-        beforeNumberText: 'до',
-        numberText: '15,5%',
-        afterNumberText: '',
-        buttonText: 'Открыть вклад',
-        tagText: 'Частным клиентам',
-        cardColor: 'green'
-    },
-    {
-        title: 'Резервирование<br>счетов',
-        description: 'Дистанционная подача заявки<br>на&nbsp;открытие расчетного счета',
-        imgSrc: 'assets/big-illustrations/large-corporate/account-reservation.png',
-        href: '#',
-        beforeNumberText: '',
-        numberText: '',
-        afterNumberText: '',
-        buttonText: 'Подать заявку',
-        tagText: 'Корпоративным клиентам',
-        cardColor: 'orange'
-    },
-    {
-        title: 'Экспресс-гарантии<br>44-ФЗ, 223-ФЗ',
-        description: 'Принятие решения за 1 день,<br>до&nbsp;30 000 000 рублей, без залога',
-        imgSrc: 'assets/big-illustrations/large-corporate/guarantees.png',
-        href: '#',
-        beforeNumberText: '',
-        numberText: '',
-        afterNumberText: '',
-        buttonText: 'Оформить',
-        tagText: 'Малому и среднему бизнесу',
-        cardColor: 'yellow'
-    }
-];
+import type {OfferCardColor} from "../common/OfferCard/OfferCard.astro";
+
+type OfferCard = {
+    title: string;
+    description?: string;
+    imgSrc: string;
+    href: string;
+    beforeNumberText?: string;
+    numberText?: string;
+    afterNumberText?: string;
+    buttonText: string;
+    tagText?: string;
+    cardColor: OfferCardColor;
+    textLink?: boolean;
+}
+
+interface Props {
+    class?: string;
+    title?: string;
+	slidesPerView?: string;
+	spaceBetween?: string;
+    cards: OfferCard[]
+}
+
+const {
+    class: className,
+    title,
+    cards: offerCards,
+	spaceBetween = 'mobile-s:8,mobile:8,tablet:16,laptop:16,laptop-x:40',
+	slidesPerView = 'mobile-s:1,mobile:1,tablet:2,laptop:2,laptop-x:3',
+    ...rest
+} = Astro.props;
 ---
 
-<SectionLayout
-	class="bank-offers js-bank-offers-expand"
-	data-visible-on-mobile="3"
->
-	<div class="content-container">
-		<SectionTitle titleClass="headline-2" usePadding>Предложения Новикомбанка</SectionTitle>
+<SectionLayout>
+    <div class="content-container">
+        {title &&
+                <SectionTitle titleClass="headline-3" usePadding>{title}</SectionTitle>}
 
-		<PersistentSlider class="bank-services__slider" spaceBetween="mobile-s:8,mobile:8,tablet:16,laptop:40" slidesPerView="mobile-s:1,mobile:1,tablet:2,laptop:3">
-			{
-				offerCards.map((card) =>(
-					<SliderSlide>
-						<OfferCard
-                            imgSrc={card.imgSrc}
-							color={card.cardColor}
-							textButton={card.buttonText}
-							title={card.title}
-							description={card.description}
-							textIndicating={
-								{
-									text: card.numberText,
-									beforeText: card.beforeNumberText,
-									afterText: card.afterNumberText
-								}
-							}
-						>
-							<ATag slot="tag">{card.tagText}</ATag>
-						</OfferCard>
-					</SliderSlide>
-				))
-			}
-		</PersistentSlider>
-		<ExpandableSlider>
-
-		</ExpandableSlider>
-	</div>
+        <PersistentSlider spaceBetween={spaceBetween} slidesPerView={slidesPerView}>
+            {
+                offerCards.map((card) => (
+                        <SliderSlide>
+                            <OfferCard
+                                    imgSrc={card.imgSrc}
+                                    color={card.cardColor}
+                                    textButton={card.buttonText}
+                                    title={card.title}
+                                    description={card.description}
+                                    textIndicating={
+                                        {
+                                            text: card.numberText ? card.numberText : '',
+                                            beforeText: card.beforeNumberText ? card.beforeNumberText : '',
+                                            afterText: card.afterNumberText ? card.afterNumberText : '',
+                                        }
+                                    }
+                                    textLink={card.textLink}
+                            >
+                                {card.tagText && (
+                                        <div class="offer-card__tag" slot="tag">
+                                            <ATag>{card.tagText}</ATag>
+                                        </div>
+                                )}
+                            </OfferCard>
+                        </SliderSlide>
+                ))
+            }
+        </PersistentSlider>
+    </div>
 </SectionLayout>
 

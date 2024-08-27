@@ -5,6 +5,7 @@ type Size = "m" | "s" | "ms";
 
 interface Props {
 	className?: string;
+	class?: string;
 	placeholder?: string;
 	disabled?: boolean;
 	name?: string;
@@ -143,7 +144,7 @@ const {
 
 	.a-input.a-input--m {
 		.a-input__input {
-			padding: 0.938rem;
+			padding: calc(1rem - 1px); // 1px - border
 			font-size: 1rem;
 			line-height: 150%;
 		}
@@ -151,7 +152,7 @@ const {
 
 	.a-input.a-input--s {
 		.a-input__input {
-			padding: 0.625rem 0.938rem;
+			padding: 0.625rem 1rem;
 			font-size: 0.875rem;
 			line-height: 130%;
 		}
@@ -159,12 +160,12 @@ const {
 
 	.a-input.a-input--ms {
 		.a-input__input {
-			padding: 0.625rem 0.938rem;
+			padding: 0.625rem 1rem;
 			font-size: 0.875rem;
 			line-height: 130%;
 
 			@include use-media(tablet-album) {
-				padding: 0.938rem;
+				padding: calc(1rem - 1px); // 1px - border
 				font-size: 1rem;
 				line-height: 150%;
 			}

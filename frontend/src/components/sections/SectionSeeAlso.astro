@@ -2,7 +2,7 @@
 import SectionLayout from "../layouts/SectionLayout.astro";
 import ATag from "../ui/ATag/ATag.astro";
 import SliderSlide from "../common/Sliders/common/SliderSlide/SliderSlide.astro";
-import OfferCard from "../common/OfferCard/OfferCard.astro";
+import OfferCard, { type OfferCardColor } from "../common/OfferCard/OfferCard.astro";
 import SectionTitle from "../ui/SectionTitle/SectionTitle.astro";
 import PersistentSlider from "../common/Sliders/PersistentSlider/PersistentSlider.astro";
 
@@ -17,7 +17,7 @@ const offerCards = [
 		afterNumberText: '',
 		buttonText: 'Открыть вклад',
 		tagText: 'Частным клиентам',
-		cardColor: 'green'
+		cardColor: 'green' as OfferCardColor
 	},
 	{
 		title: 'Ипотека по программе <br>«IT-ипотека»',
@@ -29,7 +29,7 @@ const offerCards = [
 		afterNumberText: '',
 		buttonText: 'Подать заявку',
 		tagText: 'Частным клиентам',
-		cardColor: 'orange'
+		cardColor: 'orange' as OfferCardColor
 	},
 	{
 		title: 'Кредит<br>на образование',
@@ -41,7 +41,7 @@ const offerCards = [
 		afterNumberText: '',
 		buttonText: 'Оформить',
 		tagText: 'Частным клиентам',
-		cardColor: 'yellow'
+		cardColor: 'yellow' as OfferCardColor
 	},
     {
         title: 'Программа «Кешбэк»',
@@ -53,7 +53,7 @@ const offerCards = [
         afterNumberText: '',
         buttonText: 'Открыть вклад',
         tagText: 'Частным клиентам',
-        cardColor: 'green'
+        cardColor: 'green' as OfferCardColor
     },
     {
         title: 'Ипотека по программе <br>«IT-ипотека»',
@@ -65,7 +65,7 @@ const offerCards = [
         afterNumberText: '',
         buttonText: 'Подать заявку',
         tagText: 'Частным клиентам',
-        cardColor: 'orange'
+        cardColor: 'orange' as OfferCardColor
     },
     {
         title: 'Кредит<br>на образование',
@@ -77,7 +77,7 @@ const offerCards = [
         afterNumberText: '',
         buttonText: 'Оформить',
         tagText: 'Частным клиентам',
-        cardColor: 'yellow'
+        cardColor: 'yellow' as OfferCardColor
     }
 ];
 ---

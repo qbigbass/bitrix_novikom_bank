@@ -1,6 +1,7 @@
 import type {ADropDownMenu, ADropDownMenuCustomEvent, ADropDownMenuState} from "../ADropDown/ADropDownMenu/interfaces";
 import type { ACurrencyInputState } from "./interfaces";
 import initADropDownMenu, { JS_CLASSES as JS_DROP_DOWN_MENU_CLASSES } from "@components/ui/ADropDown/ADropDownMenu";
+import { closeAllOpenSelectInputs } from "@components/ui/ASelectInput";
 
 //TODO В будущем скорее всего необходимо будет добавить методы:
 // 1) Перерисовка DropDownMenu и его элементов
@@ -14,9 +15,21 @@ export const JS_CLASSES = {
 	buttonText: '.js-a-currency-input-button-text'
 }
 
+export const closeAllOpenCurrencyInputs = () => {
+	const openCurrencyInputs = ALL_INPUT.filter((input) => input.isOpen);
+
+	if (openCurrencyInputs.length > 0) {
+		openCurrencyInputs.forEach((currencyInput) => {
+			closeHandler(currencyInput.root, currencyInput.dropDownMenu?.root, currencyInput);
+		});
+	}
+}
+
 const ACTION_CLASSES = {
 	open: 'is-open'
 }
+
+const ALL_INPUT: Array<ACurrencyInputState> = [];
 
 const openHandler = (
 	currencyInput: Element,
@@ -78,7 +91,7 @@ const initState = (currencyInput: HTMLDivElement) => {
 	}
 
 	STATE.clickOutsideHandler = (event: MouseEvent) => clickOutsideHandler(event, currencyInput, STATE.dropDownMenu?.root, STATE)
-
+	ALL_INPUT.push(STATE);
 	return STATE;
 }
 
@@ -91,6 +104,8 @@ const initACurrencyInput = (currencyInput: HTMLDivElement): ACurrencyInputState 
 			if (STATE.isOpen) {
 				closeHandler(currencyInput, STATE.dropDownMenu?.root, STATE);
 			} else {
+				closeAllOpenCurrencyInputs();
+				closeAllOpenSelectInputs();
 				openHandler(currencyInput, STATE.dropDownMenu?.root, STATE);
 			}
 		});

@@ -35,3 +35,11 @@ $assets-path: '/fonts/';
 	font-weight: 700;
 	src: url('../fonts/RobotoCondensed-Bold.woff') format('woff');
 }
+
+@font-face {
+	font-display: swap;
+	font-family: 'Roboto Condensed Regular';
+	font-style: normal;
+	font-weight: 400;
+	src: url('../fonts/RobotoCondensed-Regular.woff') format('woff');
+}

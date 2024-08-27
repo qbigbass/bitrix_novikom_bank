@@ -3,34 +3,38 @@ import DisplayStepperIconArrow from "./icons/DisplayStepperIconArrow.astro";
 import DisplayStepperIconLevel1 from "./icons/DisplayStepperIconLevel1.astro";
 import DisplayStepperIconLevel2 from "./icons/DisplayStepperIconLevel2.astro";
 import DisplayStepperIconLevel3 from "./icons/DisplayStepperIconLevel3.astro";
+import DisplayStepperIconLevel4 from "./icons/DisplayStepperIconLevel4.astro";
 import AIcon from "../../AIcon.astro";
+type Colors = "yellow"; // default green
 
 interface Props {
+	class?: string;
 	icon?: string;
 	number?: number;
 	inRow?: boolean;
+	color?: Colors;
 }
 
 let {
-	number,
+	number = 1,
 	icon,
 	class: className,
 	inRow,
+	color,
 	...rest
 } = Astro.props;
 
-if (number < 1) {
-	number = 1
-}
+if (number < 1) number = 1;
 ---
 
-<div class="display-stepper-item"
-	 class:list={[
-		 className,
-		 {'display-stepper-item--in-row': inRow}
-	 ]}
-	 {...rest}
->
+<div
+class:list={[
+	"display-stepper-item",
+	{'display-stepper-item--in-row': inRow},
+	`${color ? `display-stepper-item--color-${color}` : ""}`,
+	className,
+	{ ...rest },
+]}>
 	<div class="display-stepper-item__header">
 		{
 			icon
@@ -41,11 +45,12 @@ if (number < 1) {
 				)
 				: (
 					<div class="display-stepper-item__number">
-						<div class="display-stepper-item__number-value dark-0">{number}</div>
+						<div class="display-stepper-item__number-value">{number}</div>
 						<div class="display-stepper-item__number-icon">
 							{ number >= 1 && (<DisplayStepperIconLevel1 />) }
 							{ number >= 2 && (<DisplayStepperIconLevel2 />) }
 							{ number >= 3 && (<DisplayStepperIconLevel3 />) }
+							{ number >= 4 && (<DisplayStepperIconLevel4 />) }
 						</div>
 					</div>
 					<div class="display-stepper-item__arrow">
@@ -87,6 +92,12 @@ if (number < 1) {
 			gap: 1rem;
 		}
 
+		&:last-child & {
+			&__arrow {
+				display: none;
+			}
+		}
+
 		&__icon {
 			color: var(--green-100);
 		}
@@ -114,6 +125,7 @@ if (number < 1) {
 		&__number-value {
 			padding: 0.5rem 0;
 			position: relative;
+			color: var(--dark-0);
 			width: 100%;
 			text-align: center;
 			z-index: 1;
@@ -125,6 +137,7 @@ if (number < 1) {
 
 		&__number-icon {
 			position: absolute;
+			color: var(--green-100);
 			top: 0;
 			left: 0;
 			width: 100%;
@@ -136,6 +149,7 @@ if (number < 1) {
 			display: none;
 			flex-grow: 1;
 			padding-top: calc(1.875rem - 0.563rem / 2);
+			color: var(--green-100);
 
 			@include use-media(tablet-album) {
 				display: flex;
@@ -147,6 +161,10 @@ if (number < 1) {
 			flex-direction: column;
 			align-items: flex-start;
 			gap: .5rem;
+
+			@include use-media(tablet) {
+				gap: 1rem;
+			}
 
 			@include use-media(tablet-album) {
 				flex-grow: 1;
@@ -161,12 +179,6 @@ if (number < 1) {
 
 			@include use-media(tablet-album) {
 				margin-top: auto;
-			}
-		}
-
-		&:last-child & {
-			&__arrow {
-				display: none;
 			}
 		}
 
@@ -185,6 +197,19 @@ if (number < 1) {
 
 			#{$root}__header {
 				width: auto;
+			}
+		}
+
+		&--color-yellow {
+
+			#{$root}__number-value {
+				color: var(--dark-100);
+			}
+
+			#{$root}__number-icon,
+			#{$root}__icon,
+			#{$root}__arrow {
+				color: var(--yellow-100);
 			}
 		}
 	}
@@ -209,6 +234,10 @@ if (number < 1) {
 
 		&[data-level="3"] {
 			top: 1.5rem;
+		}
+
+		&[data-level="4"] {
+			top: 2rem;
 		}
 	}
 </style>
