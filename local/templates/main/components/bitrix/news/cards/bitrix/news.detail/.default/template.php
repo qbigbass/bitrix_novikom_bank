@@ -190,7 +190,7 @@ $bannerClass = $arResult["PROPERTY_{$properties['CLASS_BANNER_DETAIL']['ID']}"];
                                         }
                                     ?>
                                     <a
-                                        href="<?= $arResult['DETAIL_PAGE_URL'] .'?item='. $generateTabs['ID'] ?>"
+                                        href="<?= $arResult['DETAIL_PAGE_URL'] . $generateTabs['CODE'] . '/' ?>"
                                         class="a-tab a-tab--lm a-tab--primary swiper-slide js-a-tab <?= $isActive ? 'is-active' : '' ?>"
                                     >
                                         <?= $generateTabs['NAME'] ?>
