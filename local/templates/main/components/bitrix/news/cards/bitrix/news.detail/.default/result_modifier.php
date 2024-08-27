@@ -14,7 +14,7 @@ $request = Application::getInstance()->getContext()->getRequest()->toArray();
 
 // получение данных для вывода детальной информации
 $arrElementsForCardInfo = $arResult["PROPERTY_{$arResult['PROPERTIES']['DETAIL_INFO_CARD']['ID']}"];
-$iblockInnerCardInfoId = iblock('inner_card_info');
+$arResult['iblockInnerCardInfo'] = $iblockInnerCardInfoId = iblock('inner_card_info');
 $elementEntity = \Bitrix\Iblock\Iblock::wakeUp($iblockInnerCardInfoId)->getEntityDataClass();
 $generalPage = false;
 $generalPageTabs = [];
