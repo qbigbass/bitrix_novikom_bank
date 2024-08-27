@@ -166,6 +166,47 @@ const serviceAppBenefits = [
         text: "Управление расчетными счетами",
     },
 ];
+
+const offerCardsMain = [
+    {
+        href: "#",
+        imgSrc: "assets/big-illustrations/large-business/crediting.png",
+        title: "Кредитование",
+        description:
+            "Поддержка производственных предприятий малого и&nbsp;среднего бизнеса:",
+        textButton: "Подробнее",
+        backgroundColor: "white",
+        color: "transparent" as OfferCardColor,
+        textLink: true,
+        list: [
+            "кредитные и&nbsp;гарантийные продукты,",
+            "персональный менеджер,",
+            "быстрые кредитные решения.",
+        ],
+        size: "large" as "large" | "default",
+    },
+    {
+        href: "#",
+        imgSrc: "assets/big-illustrations/large-business/guarantees.png",
+        title: "Банковские гарантии",
+        description: "Все виды банковских гарантий",
+        textButton: "Подробнее",
+        backgroundColor: "white",
+        color: "transparent" as OfferCardColor,
+        textLink: true,
+    },
+    {
+        href: "#",
+        imgSrc: "assets/big-illustrations/large-business/currency-control.png",
+        title: "Депозиты",
+        description:
+            "Надежный инструмент превратить свободные финансовые ресурсы в&nbsp;дополнительный источник дохода вашего бизнеса",
+        textButton: "Подробнее",
+        backgroundColor: "white",
+        color: "transparent" as OfferCardColor,
+        textLink: true,
+    },
+];
 ---
 
 <DefaultPageLayout title="МСБ Главная">
@@ -177,7 +218,7 @@ const serviceAppBenefits = [
     />
     <SectionLayout bgColor="gray">
         <div class="content-container">
-            <SectionCardLayout productCards={productCards}>
+            <SectionCardLayout productCards={productCards} offerCards={offerCardsMain}>
                 <Fragment slot="banner">
                     <ServiceAppsCard
                         benefits={serviceAppBenefits}
@@ -225,7 +266,7 @@ const serviceAppBenefits = [
     </SectionLayout>
     <SectionBankOffers
         cards={offerCards}
-        slidesPerView="mobile-s:1,mobile:1,tablet:2,laptop:2"
+        slidesPerView="mobile-s:1,mobile:1,tablet:2,laptop:2,laptop-x:2"
     />
     <SectionClientInfo backgroundColor="gray" hasPattern>
         <Fragment slot="top">

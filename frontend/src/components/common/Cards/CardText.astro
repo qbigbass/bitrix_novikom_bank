@@ -1,0 +1,63 @@
+---
+import AButton from "@components/ui/Buttons/AButton.astro";
+
+interface Props {
+    class?: string;
+    title: string;
+    description?: string;
+}
+
+const { class: className, title, description } = Astro.props as Props;
+
+// текстовая карточка
+---
+
+<div class="card-text">
+    <div class="card-text__content">
+        <h3 class="headline-3" set:html={title}></h3>
+        {description && <p class="body-l-light" set:html={description} />}
+    </div>
+    <div class="card-text__footer">
+        <AButton href="#" text afterIcon="icon-chevron-right" size="ms"
+            >Подробнее</AButton
+        >
+    </div>
+</div>
+
+<style lang="scss" is:global>
+    @import "@styles/media-queries";
+
+    .card-text {
+        background-color: var(--dark-0);
+        border-radius: 0.75rem;
+
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+        padding: 1.5rem 1rem;
+
+        @include use-media(tablet) {
+            padding: 2rem;
+            gap: 2.5rem;
+        }
+
+        @include use-media(tablet-album) {
+            padding: 2.5rem;
+            gap: 3rem;
+        }
+
+        &__content {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+
+            @include use-media(tablet) {
+                gap: 1.5rem;
+            }
+        }
+
+        &__footer {
+            margin-top: auto;
+        }
+    }
+</style>

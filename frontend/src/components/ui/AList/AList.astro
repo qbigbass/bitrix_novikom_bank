@@ -3,11 +3,12 @@
 export type Sizes = "s" | "m" | "l" | "ml";
 
 interface Props {
+    class?: string;
     size?: Sizes;
     isHeavy?: boolean;
 }
 
-const { size = "m", isHeavy = false } = Astro.props;
+const { class: className, size = "m", isHeavy = false } = Astro.props;
 ---
 
 <ul
@@ -15,6 +16,7 @@ const { size = "m", isHeavy = false } = Astro.props;
         "a-list",
         `${size ? `a-list--size-${size}` : ""}`,
         `${isHeavy ? `a-list-heavy` : ""}`,
+        className
     ]}
 >
     <slot />

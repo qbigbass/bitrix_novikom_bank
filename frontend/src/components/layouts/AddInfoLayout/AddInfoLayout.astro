@@ -1,26 +1,51 @@
 ---
-// доп контент в табе, "Как пользоваться платежным стикером"
+interface Props {
+    class?: string;
+    isContent?: boolean;
+}
+
+const { class: className, isContent = false } = Astro.props;
+
+// доп контент в табах
 ---
 
-<div class="add-info-layout">
-    <slot></slot>
+<div
+    class:list={[
+        "add-info-layout",
+        `${isContent ? `add-info-layout--type-content` : ""}`,
+        className,
+    ]}
+>
+    <slot />
 </div>
 
 <style lang="scss" is:global>
-  @import "@styles/media-queries";
+    @import "@styles/media-queries";
 
-  .add-info-layout {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 2.5rem;
+    .add-info-layout {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2.5rem;
 
-    @include use-media(tablet) {
-      gap: 4rem;
+        @include use-media(tablet) {
+            gap: 4rem;
+        }
+
+        @include use-media(laptop) {
+            gap: 5rem;
+        }
+
+        &--type-content {
+            gap: 1.5rem;
+
+            @include use-media(tablet) {
+                gap: 2.5rem;
+            }
+
+            @include use-media(laptop) {
+                gap: 3rem;
+            }
+        }
     }
-
-    @include use-media(laptop) {
-      gap: 5rem;
-    }
-  }
 </style>

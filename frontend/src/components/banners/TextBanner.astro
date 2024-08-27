@@ -11,6 +11,7 @@ interface Props {
 	description?: string;
 	backgroundColor?: 'blue' | 'heavy-purple' | 'heavy-violet';
     img?: string;
+	type?: string;
 }
 
 const {
@@ -18,13 +19,15 @@ const {
 	title,
 	description,
 	backgroundColor = 'blue',
-    img
+    img,
+	type,
 } = Astro.props as Props;
 ---
 
 <div class:list={[
 	'text-banner',
 	`text-banner--${backgroundColor}`,
+	`${type ? `text-banner--type-${type}` : ''}`,
 ]}>
 	<div class="content-container">
         <div class="text-banner__inner">
@@ -136,6 +139,10 @@ const {
 
 		@include use-media(tablet-album) {
 			min-height: 25rem;
+		}
+
+		&--type-corp {
+			border-top-color: var(--orange-100);
 		}
 	}
 </style>
