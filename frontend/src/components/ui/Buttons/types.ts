@@ -1,5 +1,5 @@
 export type Sizes = 'l' | 'm' | 's' | 'lm' | 'ls' | 'ms';
-export type Colors = 'primary' | 'secondary' | 'white' | 'transparent' | 'green' | 'yellow';
+export type Colors = 'primary' | 'secondary' | 'white' | 'transparent' | 'green' | 'yellow' | "orange";
 export type Elements = 'a' | 'button';
 
 export interface Props {

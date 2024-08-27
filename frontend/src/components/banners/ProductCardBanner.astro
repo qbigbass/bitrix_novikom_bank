@@ -2,368 +2,652 @@
 import AButton from "../ui/Buttons/AButton.astro";
 import ABreadcrumbs from "../ui/ABreadcrumbs/ABreadcrumbs.astro";
 import TextIndicatingBenefits from "../common/TextIndicatingBenefits/TextIndicatingBenefits.astro";
+import type { Colors } from "@components/ui/Buttons/types";
+import BenefitTextCard from "@components/common/BenefitCard/BenefitTextCard.astro";
 
-type BackgroundColors = 'heavy-purple' | 'heavy-violet' | 'blue';
+type BackgroundColors = "heavy-purple" | "heavy-violet" | "blue";
 type Benefit = {
-	beforeNum?: string,
-	afterNum?: string,
-	num: string;
-	description: string;
-	currency?: string;
-}
+    beforeNum?: string;
+    afterNum?: string;
+    num: string;
+    description?: string;
+    currency?: string;
+};
+
+type Breadcrumbs = {
+    title: string;
+    url: string;
+};
+
+type TextBenefit = {
+    title: string;
+    description?: string;
+};
 
 interface Props {
-	class?: string,
-	hasPattern?: boolean;
-	urlHref?: string;
-	buttonText?: string;
-	image: string;
-	benefits: Benefit[];
-	backgroundColor?: BackgroundColors;
-	isSticker?: boolean;
+    class?: string;
+    hasPattern?: boolean;
+    urlHref?: string;
+    buttonText?: string;
+    image?: string;
+    benefits?: Benefit[];
+    backgroundColor?: BackgroundColors;
+    isSticker?: boolean;
+    breadcrumbs?: Breadcrumbs[];
+    type?: string;
+    textBenefits?: TextBenefit[];
+    footerCol?: number;
 }
 
 const {
-	class: className,
-	hasPattern = false,
-	urlHref = '#',
-	buttonText,
-	image,
-	benefits,
-	backgroundColor = 'heavy-purple',
-	isSticker
+    class: className,
+    hasPattern = false,
+    urlHref = "#",
+    buttonText,
+    image,
+    benefits,
+    backgroundColor = "heavy-purple",
+    isSticker,
+    breadcrumbs = [
+        { title: "Частным клиентам", url: "spc-for-employees" },
+        { title: "Карты", url: "#" },
+    ],
+    textBenefits,
+    type,
+    footerCol = 3,
 } = Astro.props as Props;
+
+const createTheme = () => {
+    let buttonColor;
+    let benefitsColor;
+
+    switch (type) {
+        case "msb":
+            buttonColor = "yellow";
+            benefitsColor = "yellow-100";
+            break;
+        case "corp":
+            buttonColor = "orange";
+            benefitsColor = "orange-100";
+            break;
+        default:
+            buttonColor = "green";
+            benefitsColor = "green-100";
+    }
+
+    return {
+        buttonColor: buttonColor as string,
+        benefitsColor: benefitsColor as Colors,
+    };
+};
 
 /**
 	pc - private clients (Частным клиентам)
 */
 ---
-<div class:list={[
-	'product-card-banner',
-	`product-card-banner--${backgroundColor}`,
-	{'is-sticker': isSticker},
-	className
-]}>
-	{hasPattern && (
-		<picture class="product-card-banner__pattern">
-			<source srcset="assets/hero-banner-spc-bg_tablet.svg" media="(max-width: 768px)" />
-			<source srcset="assets/hero-banner-spc-bg_laptop.svg" media="(max-width: 1200px)" />
-			<img src="assets/hero-banner-spc-bg.svg" alt="" />
-		</picture>
-	)}
-	<div class="product-card-banner__wrapper">
-		<div class="product-card-banner__content">
-			<div class="product-card-banner__header">
-				<ABreadcrumbs
-					links={[
-						{ title: 'Частным клиентам', url: 'spc-for-employees' },
-						{ title: 'Карты', url: '#' },
-					]}
-				/>
-				<h1 class="product-card-banner__title headline-0">
-					<slot name="title"></slot>
-				</h1>
-				<p class="product-card-banner__subtitle body-l-light">
-					<slot name="subtitle"></slot>
-				</p>
-			</div>
-			<img src={`${image}`} class="product-card-banner__image" alt="карта мир"/>
-			<div class="product-card-banner__benefits-list">
-				{
-					benefits.map(({ beforeNum, afterNum, num, description, currency }) => (
-						<TextIndicatingBenefits
-							headClass="green-100"
-							beforeText={beforeNum}
-							text={num}
-							afterText={afterNum}
-							currency={currency}
-						>
-							{
-								description && (
-									<div class="body-m-light dark-0" set:html={description}></div>
-								)
-							}
-						</TextIndicatingBenefits>
-					))
-				}
 
-			</div>
-			<AButton size="lm" element="a" color="green" href={urlHref} class="product-card-banner__button">
-				{buttonText}
-			</AButton>
-		</div>
-	</div>
+<div
+    class:list={[
+        "product-card-banner",
+        `product-card-banner--${backgroundColor}`,
+        `${type ? `product-card-banner--type-${type}` : ""}`,
+        `${Astro.slots["footer"] ? `product-card-banner--size-xl` : ""}`,
+        { "is-sticker": isSticker },
+        className,
+    ]}
+>
+    {
+        hasPattern && (
+            <picture class="product-card-banner__pattern">
+                <source
+                    srcset="assets/hero-banner-spc-bg_tablet.svg"
+                    media="(max-width: 768px)"
+                />
+                <source
+                    srcset="assets/hero-banner-spc-bg_laptop.svg"
+                    media="(max-width: 1200px)"
+                />
+                <img src="assets/hero-banner-spc-bg.svg" alt="" />
+            </picture>
+        )
+    }
+    <div class="product-card-banner__wrapper">
+        <div class="product-card-banner__content">
+            <div class="product-card-banner__header">
+                <ABreadcrumbs links={breadcrumbs} />
+                <h1 class="product-card-banner__title headline-0">
+                    <slot name="title" />
+                </h1>
+                <p class="product-card-banner__subtitle body-l-light">
+                    <slot name="subtitle" />
+                </p>
+            </div>
+            <img src={`${image}`} class="product-card-banner__image" alt="" />
+            {
+                benefits && benefits.length > 0 && (
+                    <div class="product-card-banner__benefits-list">
+                        {benefits.map(
+                            ({
+                                beforeNum,
+                                afterNum,
+                                num,
+                                description,
+                                currency,
+                            }) => (
+                                <TextIndicatingBenefits
+                                    headClass={createTheme().benefitsColor}
+                                    beforeText={beforeNum}
+                                    text={num}
+                                    afterText={afterNum}
+                                    currency={currency}
+                                >
+                                    {description && (
+                                        <div
+                                            class="body-m-light dark-0"
+                                            set:html={description}
+                                        />
+                                    )}
+                                </TextIndicatingBenefits>
+                            ),
+                        )}
+                    </div>
+                )
+            }
+            {
+                textBenefits && textBenefits.length > 0 && (
+                    <ul class="product-card-banner__text-benefits">
+                        {textBenefits.map(({ title, description }) => (
+                            <BenefitTextCard title={title} description={description} />
+                        ))}
+                    </ul>
+                )
+            }
+            {
+                buttonText && (
+                    <AButton
+                        size="lm"
+                        element="a"
+                        color={createTheme().buttonColor as Colors}
+                        href={urlHref}
+                        class="product-card-banner__button"
+                    >
+                        {buttonText}
+                    </AButton>
+                )
+            }
+        </div>
+        {
+            Astro.slots["footer"] && (
+                <div
+                    class={`product-card-banner__footer col-laptop-${footerCol}`}
+                >
+                    <slot name="footer" />
+                </div>
+            )
+        }
+    </div>
 </div>
 
 <style lang="scss" is:global>
-	@use "sass:map";
-	@import "@styles/variables";
-	@import "@styles/placeholders";
-	@import "@styles/media-queries";
+    @use "sass:map";
+    @import "@styles/variables";
+    @import "@styles/placeholders";
+    @import "@styles/media-queries";
 
-	$borderWidth: .5rem;
-	$bannerHeight: 37.5rem; //600px
+    $borderWidth: 0.5rem;
+    $bannerHeight: 37.5rem; //600px
 
-	.product-card-banner {
-		$root: #{&};
+    .product-card-banner {
+        $root: #{&};
 
-		background: linear-gradient(222.24deg, #101317 20%, #5A2375 80%);
-		border-top: $borderWidth solid var(--green-100);
-		overflow: hidden;
-		position: relative;
+        background: linear-gradient(222.24deg, #101317 20%, #5a2375 80%);
+        border-top: $borderWidth solid var(--green-100);
+        overflow: hidden;
+        position: relative;
 
-		@include use-media(tablet-album) {
-			height: calc($bannerHeight + $borderWidth);
-			overflow: hidden;
-		}
+        @include use-media(tablet-album) {
+            height: calc($bannerHeight + $borderWidth);
+            overflow: hidden;
+        }
 
-		&__pattern {
-			position: absolute;
-			left: 0;
-			bottom: 0;
+        &__pattern {
+            position: absolute;
+            left: 0;
+            bottom: 0;
 
-			@include use-media(tablet) {
-				height: 100%;
+            @include use-media(tablet) {
+                height: 100%;
 
-				& img {
-					height: 100%;
-				}
-			}
+                & img {
+                    height: 100%;
+                }
+            }
 
-			@include use-media(desktop) {
-				left: auto;
-				right: 0;
-			}
-		}
+            @include use-media(desktop) {
+                left: auto;
+                right: 0;
+            }
+        }
 
-		&__wrapper {
-			padding: 2.5rem 1.5rem;
-			position: relative;
-			height: 100%;
-			z-index: 1;
+        &__wrapper {
+            padding: 2.5rem 1.5rem;
+            position: relative;
+            height: 100%;
+            z-index: 1;
 
-			@include use-media(tablet) {
-				padding: 2.5rem;
-				position: relative;
-			}
+            @include use-media(tablet) {
+                padding: 2.5rem;
+                position: relative;
+            }
 
-			@include use-media(tablet-album) {
-				padding: 2.5rem 5rem;
-			}
+            @include use-media(tablet-album) {
+                padding: 2.5rem 5rem;
+            }
 
-			@include use-media(desktop) {
-				max-width: 120rem; //1920px
-				margin: 0 auto;
-				padding-left: 10rem;
-				padding-right: 10rem;
-			}
-		}
+            @include use-media(desktop) {
+                max-width: 120rem; //1920px
+                margin: 0 auto;
+                padding-left: 10rem;
+                padding-right: 10rem;
+            }
+        }
 
-		&__content {
-			color: var(--dark-0);
-			display: flex;
-			flex-direction: column;
-			align-items: flex-start;
-			gap: 1.5rem;
+        &__content {
+            color: var(--dark-0);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1.5rem;
 
-			@include use-media(tablet) {
-				max-width: 25rem;
-				gap: 2rem;
-			}
+            @include use-media(tablet) {
+                max-width: 25rem;
+                gap: 2rem;
+            }
 
-			@include use-media(tablet-album) {
-				max-width: 45rem; //720px
-				gap: 3rem;
-				padding-left: 2.5rem;
-			}
+            @include use-media(tablet-album) {
+                max-width: 45rem; //720px
+                gap: 3rem;
+                padding-left: 2.5rem;
+            }
 
-			@include use-media(laptop-x) {
-				max-width: 50rem; //800px
-			}
+            @include use-media(laptop-x) {
+                max-width: 50rem; //800px
+            }
 
-			@include use-media(desktop) {
-				max-width: 57rem; //912px
-			}
-		}
+            @include use-media(desktop) {
+                max-width: 57rem; //912px
+            }
+        }
 
-		&__header {
-			display: flex;
-			flex-direction: column;
-			align-items: flex-start;
-			gap: 1rem;
-			position: relative;
-			z-index: 1;
+        &__header {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+            position: relative;
+            z-index: 1;
 
-			@include use-media(tablet) {
-				gap: 1.5rem;
-			}
-		}
+            @include use-media(tablet) {
+                gap: 1.5rem;
+            }
+        }
 
-		&__image {
-			display: block;
-			width: calc(100% + 2rem);
-			margin: -1rem;
+        &__image {
+            display: block;
+            width: calc(100% + 2rem);
+            margin: -1rem;
 
-			@include use-media(mobile) {
-				max-width: 23.75rem; //380px
-			}
+            @include use-media(mobile) {
+                max-width: 23.75rem; //380px
+            }
 
-			@include use-media(tablet) {
-				margin: 0;
-				position: absolute;
-				z-index: 1;
-				top: 50%;
-				right: -4vw;
-				transform: translateY(-50%);
-				width: 62.5vw;
-				max-width: 45rem; //720px
-			}
+            @include use-media(tablet) {
+                margin: 0;
+                position: absolute;
+                z-index: 1;
+                top: 50%;
+                right: -4vw;
+                transform: translateY(-50%);
+                width: 62.5vw;
+                max-width: 45rem; //720px
+            }
 
-			@include use-media(tablet-album) {
-				width: 45vw;
-				right: 0;
-			}
-		}
+            @include use-media(tablet-album) {
+                width: 45vw;
+                right: 0;
+            }
+        }
 
-		&__title {
+        &__title {
+            @include use-media(tablet-album) {
+                font-weight: 600;
+                font-size: 3.5rem;
+                line-height: 1.25;
+            }
+        }
 
-			@include use-media(tablet-album) {
-				font-weight: 600;
-				font-size: 3.5rem;
-				line-height: 1.25;
-			}
-		}
+        &__subtitle {
+            max-width: 20rem;
 
-		&__subtitle {
-			max-width: 20rem;
+            @include use-media(tablet-album) {
+                max-width: unset;
+            }
+        }
 
-			@include use-media(tablet-album) {
-				max-width: unset;
-			}
-		}
+        &__benefits-list {
+            @extend %reset-list;
 
-		&__benefits-list {
-			@extend %reset-list;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            max-width: 20rem;
+            position: relative;
+            z-index: 1;
 
-			display: grid;
-			grid-template-columns: 1fr;
-			gap: 1rem;
-			max-width: 20rem;
-			position: relative;
-			z-index: 1;
+            @include use-media(tablet-album) {
+                grid-template-columns: auto auto auto;
+                max-width: 32.5rem; //520px
+                gap: 2.5rem;
+            }
 
-			@include use-media(tablet-album) {
-				grid-template-columns: auto auto auto;
-				max-width: 32.5rem; //520px
-				gap: 2.5rem;
-			}
+            @include use-media(laptop) {
+                max-width: 50rem; //800px
+            }
 
-			@include use-media(laptop) {
-				max-width: 50rem; //800px
-			}
+            @include use-media(desktop) {
+                max-width: 55rem; //880px
+                gap: 5rem;
+            }
+        }
 
-			@include use-media(desktop) {
-				max-width: 55rem; //880px
-				gap: 5rem;
-			}
-		}
+        &__text-benefits {
+            @extend %reset-list;
 
-		&__button {
-			width: 100%;
-			position: relative;
-			z-index: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            width: 100%;
 
-			@include use-media(tablet) {
-				width: auto;
-			}
-		}
+            @include use-media(tablet-album) {
+                flex-direction: row;
+                flex-wrap: wrap;
 
-		&.is-sticker {
-			position: relative;
+                & > * {
+                    flex-basis: calc(50% - 1.5rem / 2);
+                }
+            }
 
-			#{$root}__wrapper {
-				position: static;
-			}
+            @include use-media(desktop) {
+                gap: 3rem;
+                flex-wrap: nowrap;
 
-			#{$root}__image {
-				display: none;
+                & > * {
+                    flex-basis: auto;
+                }
+            }
+        }
 
-				@include use-media(tablet) {
-					display: block;
-					width: 55vw;
-					max-width: 31.25rem; //500px
-					top: 100%;
-					transform: translateY(-100%);
-				}
+        &__button {
+            width: 100%;
+            position: relative;
+            z-index: 1;
 
-				@include use-media(tablet-album) {
-					top: 2rem;
-					transform: none;
-					right: -5.5vw;
-					width: 41vw;
-					max-width: 40rem; //640px
-				}
+            @include use-media(tablet) {
+                width: auto;
+            }
+        }
 
-				@include use-media(laptop-x) {
-					top: 144px;
-					right: -2rem;
-					max-width: 50.625rem; //810px
-				}
+        &__footer {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 2.5rem;
 
-				@include use-media(desktop) {
-					width: 100%;
-				}
-			}
-		}
-	}
+            @include use-media(tablet) {
+                column-gap: 2rem;
+                row-gap: 1.5rem;
+                flex-direction: row;
+                flex-wrap: wrap;
 
-	.product-card-banner.product-card-banner--blue {
-		background: linear-gradient(42.24deg, #383A74 20%, #2E1B52 80%);
-	}
+                & > * {
+                    flex-basis: calc(50% - 1rem);
+                }
+            }
 
-	.product-card-banner.product-card-banner--heavy-purple {
-		background: linear-gradient(222.24deg, #101317 20%, #5A2375 80%);
-	}
+            @include use-media(tablet-album) {
+                margin-top: 7.5rem;
+                padding-left: 2.5rem;
+                gap: 2.5rem;
 
-	.product-card-banner.product-card-banner--heavy-violet {
-		background: linear-gradient(222.24deg, #101317 20%, #6655A2 80%);
-	}
+                & > * {
+                    flex-basis: calc(50% - 2.5rem / 2);
+                }
+            }
 
-	.product-card-banner-benefit {
-		display: flex;
-		flex-direction: column;
-		gap: .5rem;
+            &.col-laptop-3 {
+                @include use-media(laptop) {
+                    & > * {
+                        flex-basis: calc(33.33% - 2.5rem * 2 / 3);
+                    }
+                }
+            }
 
-		&__unit {
-			color: var(--green-100);
-		}
+            &.col-laptop-4 {
+                @include use-media(laptop) {
+                    & > * {
+                        flex-basis: calc(25% - 2.5rem * 3 / 4);
+                    }
+                }
+            }
+        }
 
-		&__number {
+        &.is-sticker {
+            position: relative;
 
-			@include use-media(tablet-album) {
-				font-size: 2.5rem;
-				line-height: 1.2;
-			}
+            #{$root}__wrapper {
+                position: static;
+            }
 
-			& .a-icon {
-				width: .75rem;
-				height: 1.5rem;
-				margin-left: .25rem;
-				vertical-align: middle;
+            #{$root}__image {
+                display: none;
 
-				@include use-media(tablet-album) {
-					width: 1.25rem;
-					height: 2.5rem;
-				}
-			}
-		}
+                @include use-media(tablet) {
+                    display: block;
+                    width: 55vw;
+                    max-width: 31.25rem; //500px
+                    top: 100%;
+                    transform: translateY(-100%);
+                }
 
-		&__description {
+                @include use-media(tablet-album) {
+                    top: 2rem;
+                    transform: none;
+                    right: -5.5vw;
+                    width: 41vw;
+                    max-width: 40rem; //640px
+                }
 
-			@include use-media(tablet-album) {
-				font-size: 1rem;
-				line-height: 1.5;
-			}
-		}
-	}
+                @include use-media(laptop-x) {
+                    top: 144px;
+                    right: -2rem;
+                    max-width: 50.625rem; //810px
+                }
+
+                @include use-media(desktop) {
+                    width: 100%;
+                }
+            }
+        }
+
+        &--type-msb {
+            border-top-color: var(--yellow-100);
+
+            @include use-media(tablet-album) {
+                height: auto;
+            }
+
+            #{$root}__wrapper {
+                @include use-media(tablet-album) {
+                    padding-bottom: 7.5rem;
+                }
+            }
+
+            #{$root}__image {
+                max-width: 22.5rem; //360px
+
+                @include use-media(tablet) {
+                    width: 46.875vw;
+                    max-width: 26.25rem; //420px
+                    top: 2.5rem;
+                    transform: none;
+                }
+
+                @include use-media(tablet-album) {
+                    width: 35vw;
+                    max-width: 35em; //560px
+                }
+
+                @include use-media(laptop-x) {
+                    width: 100%;
+                    max-width: 35em; //560px
+                }
+
+                @include use-media(desktop) {
+                    right: 8rem;
+                }
+            }
+
+            #{$root}__subtitle {
+                max-width: unset;
+            }
+
+            #{$root}__benefits-list {
+                @include use-media(tablet-album) {
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 1.5rem;
+                    max-width: unset;
+                    width: 100%;
+                }
+
+                @include use-media(laptop) {
+                    grid-template-columns: repeat(3, 1fr);
+                    gap: 3rem;
+                }
+            }
+
+            #{$root}__benefit-item {
+                color: var(--yellow-100);
+            }
+
+            #{$root}__footer {
+                & .benefit-text-card {
+                    color: var(--dark-0);
+
+                    &__title {
+                        color: var(--dark-0);
+                    }
+
+                    &__icon {
+                        color: var(--yellow-100);
+                    }
+                }
+            }
+
+            & .benefit-text-card__title {
+                color: var(--yellow-100);
+            }
+        }
+
+        &--type-corp {
+            border-top-color: var(--orange-100);
+
+            #{$root}__wrapper {
+                @include use-media(tablet-album) {
+                    padding-bottom: 7.5rem;
+                }
+            }
+
+            #{$root}__benefit-item {
+                color: var(--orange-100);
+            }
+
+            #{$root}__footer {
+                & .benefit-text-card {
+                    color: var(--dark-0);
+
+                    &__title {
+                        color: var(--dark-0);
+                    }
+
+                    &__icon {
+                        color: var(--orange-100);
+                    }
+                }
+            }
+
+            & .benefit-text-card__title {
+                color: var(--orange-100);
+            }
+        }
+
+        &--size-xl {
+            @include use-media(tablet-album) {
+                height: auto;
+            }
+
+            @include use-media(desktop) {
+                #{$root}__text-benefits {
+                    padding-bottom: 8.375rem;
+                }
+            }
+        }
+    }
+
+    .product-card-banner.product-card-banner--blue {
+        background: linear-gradient(42.24deg, #383a74 20%, #2e1b52 80%);
+    }
+
+    .product-card-banner.product-card-banner--heavy-purple {
+        background: linear-gradient(222.24deg, #101317 20%, #5a2375 80%);
+    }
+
+    .product-card-banner.product-card-banner--heavy-violet {
+        background: linear-gradient(222.24deg, #101317 20%, #6655a2 80%);
+    }
+
+    .product-card-banner-benefit {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        &__unit {
+            color: var(--green-100);
+        }
+
+        &__number {
+            @include use-media(tablet-album) {
+                font-size: 2.5rem;
+                line-height: 1.2;
+            }
+
+            & .a-icon {
+                width: 0.75rem;
+                height: 1.5rem;
+                margin-left: 0.25rem;
+                vertical-align: middle;
+
+                @include use-media(tablet-album) {
+                    width: 1.25rem;
+                    height: 2.5rem;
+                }
+            }
+        }
+
+        &__description {
+            @include use-media(tablet-album) {
+                font-size: 1rem;
+                line-height: 1.5;
+            }
+        }
+    }
 </style>

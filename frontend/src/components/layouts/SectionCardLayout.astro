@@ -7,7 +7,7 @@ import type {
 import OfferCard from "@components/common/OfferCard/OfferCard.astro";
 import type { OfferCardColor } from "@components/common/OfferCard/OfferCard.astro";
 
-type productCards = {
+type ProductCards = {
     title: string;
     text: string;
     icon: string;
@@ -15,53 +15,27 @@ type productCards = {
     iconColor: iconColors;
 };
 
+type OfferCards = {
+    color?: OfferCardColor;
+    textButton?: string;
+    imgSrc: string;
+    href?: string;
+    class?: string;
+    title: string;
+    backgroundColor?: string;
+    description?: string;
+    textLink?: boolean;
+    list?: string[];
+    size?: "large" | "default";
+};
+
 interface Props {
     class?: string;
-    productCards?: productCards[];
+    productCards?: ProductCards[];
+    offerCards?: OfferCards[];
 }
 
-const { class: className, productCards } = Astro.props as Props;
-
-const offerCards = [
-    {
-        href: "#",
-        imgSrc: "assets/big-illustrations/large-business/crediting.png",
-        title: "Кредитование",
-        description:
-            "Поддержка производственных предприятий малого и&nbsp;среднего бизнеса:",
-        textButton: "Подробнее",
-        backgroundColor: "white",
-        color: "transparent" as OfferCardColor,
-        textLink: true,
-        list: [
-            "кредитные и&nbsp;гарантийные продукты,",
-            "персональный менеджер,",
-            "быстрые кредитные решения.",
-        ],
-        size: "large" as "large" | "default",
-    },
-    {
-        href: "#",
-        imgSrc: "assets/big-illustrations/large-business/guarantees.png",
-        title: "Банковские гарантии",
-        description: "Все виды банковских гарантий",
-        textButton: "Подробнее",
-        backgroundColor: "white",
-        color: "transparent" as OfferCardColor,
-        textLink: true,
-    },
-    {
-        href: "#",
-        imgSrc: "assets/big-illustrations/large-business/currency-control.png",
-        title: "Депозиты",
-        description:
-            "Надежный инструмент превратить свободные финансовые ресурсы в&nbsp;дополнительный источник дохода вашего бизнеса",
-        textButton: "Подробнее",
-        backgroundColor: "white",
-        color: "transparent" as OfferCardColor,
-        textLink: true,
-    },
-];
+const { class: className, productCards, offerCards } = Astro.props as Props;
 
 // сетка для катрочек
 ---

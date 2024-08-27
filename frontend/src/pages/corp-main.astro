@@ -1,169 +1,268 @@
 ---
 import DefaultPageLayout from "../layouts/DefaultPageLayout.astro";
-import SectionSeeAlso from "../components/sections/SectionSeeAlso.astro";
-import TextBanner from "../components/banners/TextBanner.astro";
-import SectionBenefitsLayout from "../components/layouts/SectionBenefitsLayout.astro";
-import AAccordionPanel from "../components/ui/AAccordion/AAccordionPanel.astro";
-import SectionHelpContentLayout from "../components/layouts/SectionHelpLayout/SectionHelpContentLayout.astro";
-import ATableRow from "../components/common/ATable/ATableRow.astro";
-import ARte from "../components/ARte.astro";
-import AAccordion from "../components/ui/AAccordion/AAccordion.astro";
-import ATabPanel from "../components/ui/ATabs/common/ATabPanel.astro";
-import ATable from "../components/common/ATable/ATable.astro";
-import AddInfoItemLayout from "../components/layouts/AddInfoLayout/AddInfoItemLayout.astro";
-import ATab from "../components/ui/ATabs/common/ATab/ATab.astro";
-import AList from "../components/ui/AList/AList.astro";
-import AButton from "../components/ui/Buttons/AButton.astro";
-import FormCallMeBack from "../components/common/FormCallMeBack/FormCallMeBack.astro";
-import AddInfoLayout from "../components/layouts/AddInfoLayout/AddInfoLayout.astro";
-import AAccordionHeader from "../components/ui/AAccordion/AAccordionHeader.astro";
-import ATableBody from "../components/common/ATable/ATableBody.astro";
-import ATableCell from "../components/common/ATable/ATableCell.astro";
-import AAccordionContent from "../components/ui/AAccordion/AAccordionContent.astro";
-import SectionHelpLayout from "../components/layouts/SectionHelpLayout/SectionHelpLayout.astro";
-import AHelper from "../components/common/AHelper.astro";
-import APolygonContainer from "../components/common/APolygonContainer/APolygonContainer.astro";
+import SectionBankOffers from "../components/sections/SectionBankOffers.astro";
+import SectionClientInfo from "../components/sections/SectionClientInfo.astro";
+import AnnouncementCardClients from "../components/common/AnnouncementCardClients/AnnouncementCardClients.astro";
+import type { OfferCardColor } from "@components/common/OfferCard/OfferCard.astro";
 import SectionLayout from "../components/layouts/SectionLayout.astro";
-import DisplayStepper from "../components/common/DisplayStepper/DisplayStepper.astro";
-import DisplayStepperItem from "../components/common/DisplayStepper/DisplayStepperItem.astro";
-import BonusCalculator from "../components/calculators/BonusCalculator.astro";
-import BenefitCard from "../components/common/BenefitCard/BenefitCard.astro";
-import DocumentDownload from "../components/ui/DocumentDownload/DocumentDownload.astro";
+import AButton from "@components/ui/Buttons/AButton.astro";
+import SectionCardLayout from "@components/layouts/SectionCardLayout.astro";
+import type {
+    BackgroundColors,
+    iconColors,
+} from "@components/common/Cards/CardProduct.astro";
+import ServiceAppsCard from "@components/common/ServiceAppsCard.astro";
+import TextBanner from "@components/banners/TextBanner.astro";
+import SectionHelpLayout from "@components/layouts/SectionHelpLayout/SectionHelpLayout.astro";
+import SectionHelpContentLayout from "@components/layouts/SectionHelpLayout/SectionHelpContentLayout.astro";
+import ATab from "@components/ui/ATabs/common/ATab/ATab.astro";
+import ATabPanel from "@components/ui/ATabs/common/ATabPanel.astro";
+import AAccordion from "@components/ui/AAccordion/AAccordion.astro";
+import AAccordionPanel from "@components/ui/AAccordion/AAccordionPanel.astro";
+import AAccordionHeader from "@components/ui/AAccordion/AAccordionHeader.astro";
+import AAccordionContent from "@components/ui/AAccordion/AAccordionContent.astro";
+import DocumentDownload from "@components/ui/DocumentDownload/DocumentDownload.astro";
+import BenefitCard from "@components/common/BenefitCard/BenefitCard.astro";
+import ARte from "@components/ARte.astro";
+import FormCallMeBack from "@components/common/FormCallMeBack/FormCallMeBack.astro";
 
-const breadcrumbs = [
-	{
-		title: 'Частным клиентам',
-		url: '#'
-	},
-	{
-		title: 'Карты',
-		url: '#'
-	}
-]
+const offerCards = [
+    {
+        title: "Размещение денежных средств",
+        description:
+            "Депозиты для корпоративных клиентов",
+        imgSrc: "assets/big-illustrations/large-corporate/deposits.png",
+        href: "#",
+        buttonText: "Подбробнее",
+        cardColor: "orange" as OfferCardColor,
+        textLink: true,
+        tagText: 'Корпоративным клиентам',
+    },
+    {
+        title: "Меры господдержки",
+        description:
+            "Льготное финансирование организациям",
+        imgSrc: "assets/big-illustrations/large-corporate/state-support.png",
+        href: "#",
+        buttonText: "Подбробнее",
+        cardColor: "orange" as OfferCardColor,
+        textLink: true,
+        tagText: 'Корпоративным клиентам',
+    },
+    {
+        title: "Программа поощрения «Развитие»",
+        description:
+            "Особые условия обслуживания в&nbsp;банке",
+        imgSrc: "assets/big-illustrations/large-corporate/program-development.png",
+        href: "#",
+        buttonText: "Подбробнее",
+        cardColor: "orange" as OfferCardColor,
+        textLink: true,
+        tagText: 'Корпоративным клиентам',
+    },
+    {
+        title: "Размещение денежных средств",
+        description:
+            "Депозиты для корпоративных клиентов",
+        imgSrc: "assets/big-illustrations/large-corporate/deposits.png",
+        href: "#",
+        buttonText: "Подбробнее",
+        cardColor: "orange" as OfferCardColor,
+        textLink: true,
+        tagText: 'Корпоративным клиентам',
+    },
+    {
+        title: "Меры господдержки",
+        description:
+            "Льготное финансирование организациям",
+        imgSrc: "assets/big-illustrations/large-corporate/state-support.png",
+        href: "#",
+        buttonText: "Подбробнее",
+        cardColor: "orange" as OfferCardColor,
+        textLink: true,
+        tagText: 'Корпоративным клиентам',
+    },
+    {
+        title: "Программа поощрения «Развитие»",
+        description:
+            "Особые условия обслуживания в&nbsp;банке",
+        imgSrc: "assets/big-illustrations/large-corporate/program-development.png",
+        href: "#",
+        buttonText: "Подбробнее",
+        cardColor: "orange" as OfferCardColor,
+        textLink: true,
+        tagText: 'Корпоративным клиентам',
+    },
+];
 
-const benefitCards = [
-	{
-		title: 'Подключение',
-		description: 'К&nbsp;счетам зарплатной или дебетовой карты',
-		iconId: 'icon-a-free-service-card'
-	},
-	{
-		title: '1 бонус',
-		description: 'Равен одному рублю',
-		iconId: 'icon-a-rub'
-	},
-	{
-		title: 'Обмен бонусов',
-		description: 'На&nbsp;товары, подарочные сертификаты и&nbsp;путешествия',
-		iconId: 'icon-a-reward'
-	}
+const cardOfferBenefits = [
+    {
+        num: "0",
+        currency: "₽",
+        description: "Открытие <br>и&nbsp;обслуживание счета",
+        colorClass: "yellow-100",
+    },
+    {
+        beforeNum: "от",
+        num: "500",
+        currency: "₽",
+        description: "Ежемесячная плата <br>за&nbsp;счёт",
+        colorClass: "yellow-100",
+    },
+    {
+        beforeNum: "до",
+        num: "150",
+        description: "Бесплатных <br>платежей",
+        colorClass: "yellow-100",
+    },
+];
+
+const productCards = [
+    {
+        title: "Страхование и оценка",
+        text: "Страхование корпоративных рисков",
+        icon: "icon-a-card-security",
+        backgroundColor: "white" as BackgroundColors,
+        iconColor: "orange-100" as iconColors,
+    },
+    {
+        title: "Гарантии",
+        text: "Выставление всех видов банковских гарантий",
+        icon: "icon-a-web-bank",
+        backgroundColor: "white" as BackgroundColors,
+        iconColor: "orange-100" as iconColors,
+    },
+    {
+        title: "Лизинг",
+        text: "Новиком оказывает услуги лизинга через своего партнера&nbsp;&mdash; лизинговую компанию &laquo;Нацпромлизинг&raquo;",
+        icon: "icon-a-hand-money",
+        backgroundColor: "white" as BackgroundColors,
+        iconColor: "orange-100" as iconColors,
+    },
+    {
+        title: "Синдицированное кредитование",
+        text: "Большой объем финансирования в&nbsp;рамках одной сделки",
+        icon: "icon-a-ticket",
+        backgroundColor: "white" as BackgroundColors,
+        iconColor: "orange-100" as iconColors,
+    },
+    {
+        title: "Меры господдержки",
+        text: "Льготное финансирование организациям",
+        icon: "icon-a-personal-manager",
+        backgroundColor: "white" as BackgroundColors,
+        iconColor: "orange-100" as iconColors,
+    },
+    {
+        title: "Карты",
+        text: "Карта для совершения операций по&nbsp;счёту юридического лица",
+        icon: "icon-a-money",
+        backgroundColor: "white" as BackgroundColors,
+        iconColor: "orange-100" as iconColors,
+    },
+    {
+        title: "Cash Pooling",
+        text: "Централизованное управление денежными потоками",
+        icon: "icon-a-multitasking",
+        backgroundColor: "white" as BackgroundColors,
+        iconColor: "orange-100" as iconColors,
+    },
+];
+
+const serviceAppBenefits = [
+    {
+        icon: "icon-doc",
+        text: "Удаленный документооборот",
+    },
+    {
+        icon: "icon-cash",
+        text: "Проведение платежей",
+    },
+    {
+        icon: "icon-wallet",
+        text: "Управление расчетными счетами",
+    },
+];
+
+const breadcrumbs = [{
+	title: 'Корпоративным клиентам',
+	url: '#'
+}]
+
+const offerCardsMain = [
+    {
+        href: "#",
+        imgSrc: "assets/big-illustrations/large-corporate/crediting.png",
+        title: "Корпоративное кредитование",
+        description:
+            "Новиком предлагает кредитные продукты <br>специально под формат бизнеса",
+        textButton: "Подробнее",
+        backgroundColor: "white",
+        color: "transparent" as OfferCardColor,
+        textLink: true,
+        size: "large" as "large" | "default",
+    },
+    {
+        href: "#",
+        imgSrc: "assets/big-illustrations/large-corporate/checking-account.png",
+        title: "Расчетный счет",
+        description: "Открытие и&nbsp;ведение специального счета участника закупки по&nbsp;44-ФфЗ и&nbsp;223-ФЗ осуществляется бесплатно",
+        textButton: "Подробнее",
+        backgroundColor: "white",
+        color: "transparent" as OfferCardColor,
+        textLink: true,
+    },
+    {
+        href: "#",
+        imgSrc: "assets/big-illustrations/large-corporate/guarantees.png",
+        title: "Сопровождение контрактов",
+        description:
+            "Обеспечение банковского сопровождения контрактов через открытие и&nbsp;ведение отдельных банковских счетов с&nbsp;бесплатным сопровождением сделки",
+        textButton: "Подробнее",
+        backgroundColor: "white",
+        color: "transparent" as OfferCardColor,
+        textLink: true,
+    },
 ];
 ---
-<DefaultPageLayout title="Программа «Бонусны»">
-	<TextBanner
-		title="Программа «Бонусы»"
-		breadcrumbs={breadcrumbs}
-		description="Бонусные баллы за&nbsp;покупки"
-		backgroundColor="heavy-purple"
-        img="assets/big-illustrations/large-individual/bonus-program.png"
-	/>
-	<SectionBenefitsLayout
-		benefits={benefitCards}
-	/>
-	<SectionLayout
-		types={['no-padding-top']}
-		small
-	>
-		<div class="content-container">
-			<APolygonContainer color="green-100">
-				<AHelper
-					class="dark-10"
-					image="helper-icon.png"
-					description="В&nbsp;2023&nbsp;г. программа лояльности банка Новиком была награждена премией &laquo;Финансовая элита России&raquo; в&nbsp;номинации &laquo;Программа лояльности с&nbsp;максимальной выгодой&raquo;."
-				/>
-			</APolygonContainer>
-		</div>
 
-	</SectionLayout>
-	<SectionLayout>
-		<div class="content-container">
-			<AAccordion type="layout">
-				<AAccordionPanel>
-					<AAccordionHeader class="a-accordion-header--mobile-only">
-						<h3 class="headline-2">Калькулятор бонусов</h3>
-					</AAccordionHeader>
-					<AAccordionContent class="a-accordion-content--hide-mobile">
-						<div class="a-accordion-content__wrapper">
-							<h3 class="headline-2 a-accordion-content__title">
-								Калькулятор бонусов
-							</h3>
-							<div class="a-accordion-content__content">
-								<BonusCalculator />
-							</div>
-						</div>
-					</AAccordionContent>
-				</AAccordionPanel>
-			</AAccordion>
-		</div>
-	</SectionLayout>
-	<SectionHelpLayout
-		title="Подробнее о&nbsp;программе &laquo;Бонусы&raquo;"
-	>
+<DefaultPageLayout title="Финансирование и гарантии">
+    <TextBanner
+		title="Финансирование <br>и&nbsp;гарантии"
+		breadcrumbs={breadcrumbs}
+        backgroundColor="heavy-purple"
+        type="corp"
+	/>
+   
+    <SectionLayout bgColor="gray">
+        <div class="content-container">
+            <SectionCardLayout productCards={productCards} offerCards={offerCardsMain}>
+                <Fragment slot="banner">
+                    <ServiceAppsCard
+                        benefits={serviceAppBenefits}
+                        title="Интернет-банк для бизнеса"
+                        backgroundColor="heavy-purple"
+                    >
+                        <Fragment slot="footer">
+                            <AButton
+                                element="a"
+                                href="#"
+                                size="ms"
+                                color="orange">Перейти в интернет-банк</AButton
+                            >
+                        </Fragment>
+                    </ServiceAppsCard>
+                </Fragment>
+            </SectionCardLayout>
+        </div>
+    </SectionLayout>
+    <SectionHelpLayout title="Подробнее о услугах">
 		<Fragment slot="tabs">
-			<ATab value="0" size="lm">Условия начисления</ATab>
-			<ATab value="1" size="lm" isActive>Размер бонусного вознаграждения</ATab>
-			<ATab value="2" size="lm">На что потратить бонусы</ATab>
-			<ATab value="3" size="lm">Документы и тарифы</ATab>
-			<ATab value="4" size="lm">Вопросы и ответы</ATab>
+			<ATab value="0" size="lm" isActive>Документы и тарифы</ATab>
+			<ATab value="1" size="lm">Вопросы и ответы</ATab>
 		</Fragment>
 		<Fragment slot="tabPanels">
 			<ATabPanel value="0">
-				<AddInfoLayout>
-					<AddInfoItemLayout isNarrow>
-						<p class="body-l-light">
-							Чем больше остаток на&nbsp;текущем счете карты, тем выше размер бонусного вознаграждения
-						</p>
-						<AList size="l">
-							<li>Максимальный размер бонусного вознаграждения&nbsp;&mdash; 7%&nbsp;годовых</li>
-							<li>Минимальный ежедневный остаток по&nbsp;текущему счету карты должен быть не&nbsp;меньше 10&nbsp;000 рублей</li>
-							<li>5000 бонусов максимальное количество бонусов ежемесячно по&nbsp;текущему счету карты</li>
-							<li>Подключение к&nbsp;счету одновременно программ &laquo;Бонусная копилка, &laquo;Бонусы&raquo; или &laquo;Кешбэк&raquo;</li>
-						</AList>
-					</AddInfoItemLayout>
-				</AddInfoLayout>
-			</ATabPanel>
-			<ATabPanel value="1">
-				<AddInfoLayout>
-					<AddInfoItemLayout>
-						<ARte class="body-l-light">
-							<p>
-								Чем выше категория карты, к&nbsp;которой подключена программа, и&nbsp;чем больше покупок вы&nbsp;совершите, тем выше будет размер бонусного вознаграждения.
-							</p>
-						</ARte>
-						<ATable class="md:in-column" cols={2}>
-							<ATableBody>
-								<ATableRow>
-									<ATableCell class="body-l-heavy dark-70">Для владельцев карт</ATableCell>
-									<ATableCell class="body-l-light">
-										Без комиссии в&nbsp;банкоматах и&nbsp;ПВН банка Новиком
-										<br><br>
-										0,5% от&nbsp;суммы операции в&nbsp;банкоматах и&nbsp;ПВН сторонних банков
-									</ATableCell>
-								</ATableRow>
-								<ATableRow>
-									<ATableCell class="body-l-heavy dark-70">
-										Для клиентов, получающих зарплату <br>на&nbsp;счет в&nbsp;Новикоме
-									</ATableCell>
-									<ATableCell class="body-l-light">
-										Без комиссии в&nbsp;банкоматах и&nbsp;ПВН банка Новиком и&nbsp;сторонних банков
-									</ATableCell>
-								</ATableRow>
-							</ATableBody>
-						</ATable>
-					</AddInfoItemLayout>
-				</AddInfoLayout>
-			</ATabPanel>
-			<ATabPanel value="3">
 				<SectionHelpContentLayout>
 					<Fragment slot="left">
 						<AAccordion type="component">
@@ -285,17 +384,18 @@ const benefitCards = [
 						</AAccordion>
 					</Fragment>
 					<Fragment slot="right">
-						<BenefitCard
-							title="Защита от мошенников"
-							description="Узнайте как уберечь себя и своих близких от финансового мошенничества."
-							icon="icon-a-money-out"
-							theme="light-blue"
-							textButton="Подробнее"
-						/>
+                        <BenefitCard
+                            title="Защита от мошенников"
+                            description="Узнайте как уберечь себя и своих близких от финансового мошенничества."
+                            icon="icon-a-protection"
+                            theme="grey"
+                            textButton="Подробнее"
+							iconColorClass="orange-100"
+                        />
 					</Fragment>
 				</SectionHelpContentLayout>
 			</ATabPanel>
-			<ATabPanel value="4">
+			<ATabPanel value="1">
 				<SectionHelpContentLayout>
 					<Fragment slot="left">
 						<AAccordion type="component">
@@ -429,47 +529,16 @@ const benefitCards = [
 			</ATabPanel>
 		</Fragment>
 	</SectionHelpLayout>
-	<SectionLayout bgColor="gray">
-		<div class="content-container">
-			<AAccordion type="layout">
-				<AAccordionPanel>
-					<AAccordionHeader class="a-accordion-header--mobile-only">
-						<h3 class="headline-2">Как подключить</h3>
-					</AAccordionHeader>
-					<AAccordionContent class="a-accordion-content--hide-mobile">
-						<div class="a-accordion-content__wrapper">
-							<h3 class="headline-2 a-accordion-content__title">
-								Как подключить
-							</h3>
-							<div class="a-accordion-content__content">
-								<DisplayStepper steps={2}>
-									<DisplayStepperItem icon="icon-a-mobile-ready">
-										<ARte class="body-l-light">
-											<p>Через Контактный центр <br>по&nbsp;телефону +7&nbsp;800 250-70-07</p>
-										</ARte>
-									</DisplayStepperItem>
-									<DisplayStepperItem icon="icon-a-web-bank">
-										<ARte class="body-l-light">
-											<p>В&nbsp;Мобильном приложении Банка и&nbsp;Интернет-Банке</p>
-										</ARte>
-									</DisplayStepperItem>
-									<DisplayStepperItem icon="icon-a-bank">
-										<ARte class="body-l-light">
-											<p>В&nbsp;офисе банка Новиком</p>
-										</ARte>
-									</DisplayStepperItem>
-									<DisplayStepperItem icon="icon-a-personal-manager">
-										<ARte class="body-l-light">
-											<p>Через персонального менеджера <br>в&nbsp;организации, где получает зарплату владелец карты</p>
-										</ARte>
-									</DisplayStepperItem>
-								</DisplayStepper>
-							</div>
-						</div>
-					</AAccordionContent>
-				</AAccordionPanel>
-			</AAccordion>
-		</div>
-	</SectionLayout>
-	<SectionSeeAlso />
+    
+    
+    <SectionClientInfo backgroundColor="gray" hasPattern>
+        <Fragment slot="top">
+            <AnnouncementCardClients />
+        </Fragment>
+    </SectionClientInfo>
+    <SectionBankOffers
+		title="Другие услуги для корпоративных клиентов"
+        cards={offerCards}
+        slidesPerView="mobile-s:1,mobile:1,tablet:2,laptop:3,laptop-x:3"
+    />
 </DefaultPageLayout>
