@@ -1,8 +1,10 @@
-<?
-require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("О банке");
+<?php
+require($_SERVER['DOCUMENT_ROOT'].'/bitrix/header.php');
+use Galago\Frontend\Asset;
+global $APPLICATION;
+
+$APPLICATION->SetTitle('О банке');
+Asset::getInstance()->addJsAndCss('index');
 ?>
 
-Text here....
-
-<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+<?require($_SERVER['DOCUMENT_ROOT'].'/bitrix/footer.php');?>

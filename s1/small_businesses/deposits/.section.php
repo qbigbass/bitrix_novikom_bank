@@ -1,6 +1,0 @@
-<?
-$sSectionName = "Вклады";
-$arDirProperties = Array(
-
-);
-?>
