@@ -19,7 +19,7 @@ global $USER;
 global $DB;
 
 if (CModule::IncludeModule('sprint.editor')) {
-    $iblockAdvantages = iblock('advantages');
+    $iblockAdvantages = iblock('benefits');
     $_REQUEST['enabled_iblocks'] = [$iblockAdvantages];
 
     $handler = new IblockElements();
