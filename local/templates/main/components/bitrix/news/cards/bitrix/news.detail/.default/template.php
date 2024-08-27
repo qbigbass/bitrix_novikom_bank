@@ -286,7 +286,24 @@ $bannerClass = $arResult["PROPERTY_{$properties['CLASS_BANNER_DETAIL']['ID']}"];
     </div>
 </section>
 
-<? //$APPLICATION->ShowViewContent('detailCardInformation'); ?>
+<?
+// вывод информации из конструктора
+$arrDetailInfoCardIds = $arResult["PROPERTY_{$arResult['PROPERTIES']['DETAIL_INFO_CARD']['ID']}"];
+
+$APPLICATION->IncludeComponent(
+    "sprint.editor:blocks",
+    "",
+    Array(
+        "IBLOCK_ID" => $arResult['iblockInnerCardInfo'],
+        "ELEMENT_ID" => $arrDetailInfoCardIds[0],
+        "PROPERTY_CODE" => "GENERATE_PAGE",
+    ),
+    false,
+    Array(
+        "HIDE_ICONS" => "Y"
+    )
+);
+?>
 
 
 <? /* Блок Смотрите также */ ?>
