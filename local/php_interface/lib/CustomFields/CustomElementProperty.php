@@ -2,6 +2,7 @@
 
 namespace Galago\CustomFields;
 
+use Bitrix\Iblock\IblockTable;
 use Bitrix\Iblock\PropertyTable;
 use CAdminList;
 use CIBlockElement;
@@ -123,7 +124,13 @@ class CustomElementProperty
 
     public static function GetPropertyFieldHtmlMulty($arProperty, $value, $strHTMLControlName)
     {
-        $getIblockIdByCode = iblock('inner_card_info');
+        $iblockInfo = IblockTable::query()
+            ->setSelect(['ID', 'IBLOCK_TYPE_ID', 'CODE'])
+            ->where('ID', $arProperty['LINK_IBLOCK_ID'])
+            ->setCacheTtl(86400)
+            ->exec()
+            ->fetch();
+
         $max_n = 0;
         $values = array();
         if (is_array($value)) {
@@ -187,7 +194,7 @@ class CustomElementProperty
                 $html .= '</select>';
 
                 if ($bWasSelect) {
-                    $linkToElement = "/bitrix/admin/iblock_element_edit.php?IBLOCK_ID={$getIblockIdByCode}&type=type_card&lang=ru&ID={$value}";
+                    $linkToElement = "/bitrix/admin/iblock_element_edit.php?IBLOCK_ID={$iblockInfo['ID']}&type={$iblockInfo['IBLOCK_TYPE_ID']}&lang=ru&ID={$value}";
 
                     $html .= "<span>
                         <a href='{$linkToElement}' style='text-decoration: none;' target='_blank'>Переход на элемент</a>
