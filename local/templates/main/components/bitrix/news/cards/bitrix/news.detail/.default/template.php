@@ -168,7 +168,7 @@ $bannerClass = $arResult["PROPERTY_{$properties['CLASS_BANNER_DETAIL']['ID']}"];
     </div>
 </div>
 
-<section class="section-layout section-benefits section-benefits--bg section-layout--bg-undefined">
+<section class="section-layout section-benefits section-benefits--bg">
     <div class="content-container">
         <div class="section-benefits__container">
             <h3 class="section-benefits__title headline-2"><?= !$arResult['generalPage'] ? 'Преимущества для каждого' : 'Преимущества карты ' . $arResult['NAME'] ?></h3>
@@ -221,7 +221,7 @@ $bannerClass = $arResult["PROPERTY_{$properties['CLASS_BANNER_DETAIL']['ID']}"];
                                 <div class="a-collapsed-item js-a-collapsed-item">
                                     <div class="benefit-text-card">
                                         <div class="benefit-text-card__icon">
-                                            <span class="a-icon size-xll">
+                                            <span class="a-icon size-xxl">
                                                 <svg>
                                                     <use xlink:href="/frontend/build/assets/svg-sprite.svg#icon-a-money-out"></use>
                                                 </svg>
@@ -249,21 +249,35 @@ $bannerClass = $arResult["PROPERTY_{$properties['CLASS_BANNER_DETAIL']['ID']}"];
             <? } else { ?>
 
                 <? /* Вывод общей информации по Преимуществам */ ?>
-                <div class="section-benefits__content">
-                    <div class="benefit-cards-layout max-cols-2">
-                        <? foreach ($arResult['advantagesItems'] as $advantagesItemGeneral) { ?>
-                            <div class="benefit-text-card">
-                                <div class="benefit-text-card__icon">
-                                    <span class="a-icon size-xll">
-                                        <svg>
-                                            <use xlink:href="/frontend/build/assets/svg-sprite.svg#icon-a-mir-pass"></use>
-                                        </svg>
-                                    </span>
+                <div class="a-collapsed-items js-a-collapsed-items" data-visible-items="4" data-rebuilding-mq="tablet" data-use-count="true">
+                    <div class="section-benefits__content">
+                        <div class="benefit-cards-layout max-cols-2">
+                            <? foreach ($arResult['advantagesItems'] as $advantagesItemGeneral) { ?>
+                                <div class="a-collapsed-item js-a-collapsed-item">
+                                    <div class="benefit-text-card">
+                                        <div class="benefit-text-card__icon">
+                                        <span class="a-icon size-xxl">
+                                            <svg>
+                                                <use xlink:href="/frontend/build/assets/svg-sprite.svg#icon-a-money-down"></use>
+                                            </svg>
+                                        </span>
+                                        </div>
+                                        <h3 class="benefit-text-card__title headline-3"><?= $advantagesItemGeneral['NAME'] ?></h3>
+                                        <p class="benefit-text-card__description body-m-light"><?= $advantagesItemGeneral['DESCRIPTION'] ?></p>
+                                    </div>
                                 </div>
-                                <h3 class="benefit-text-card__title headline-3"><?= $advantagesItemGeneral['NAME'] ?></h3>
-                                <p class="benefit-text-card__description body-m-light"><?= $advantagesItemGeneral['DESCRIPTION'] ?></p>
-                            </div>
-                        <? } ?>
+                            <? } ?>
+                        </div>
+                        <button data-hidden-text="Скрыть" data-visible-text="Еще преимущества" class="a-button a-collapsed-button js-a-collapsed-button is-hidden a-button--lm a-button--primary a-button--text">
+                            <span class="js-a-collapsed-button-text">
+                                Еще преимущества
+                            </span>
+                            <span class="a-icon a-button__icon">
+                                <svg>
+                                    <use xlink:href="/frontend/build/assets/svg-sprite.svg#icon-chevron-down"></use>
+                                </svg>
+                            </span>
+                        </button>
                     </div>
                 </div>
 
