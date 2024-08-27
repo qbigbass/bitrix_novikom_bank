@@ -2,7 +2,7 @@
 
 /** @var $block array */
 $elements = Sprint\Editor\Blocks\IblockElements::getList($block, [
-    'select' => ['PREVIEW_PICTURE','PROPERTY_TITLE', 'PROPERTY_DESCRIPTION', 'PROPERTY_BUTTON', 'PROPERTY_BUTTON_LINK','PROPERTY_TITLE_VALUE'],
+    'select' => ['PREVIEW_PICTURE','PROPERTY_TITLE', 'PROPERTY_BUTTON', 'PROPERTY_BUTTON_LINK','PROPERTY_TITLE_VALUE'],
 ]);
 ?>
 
@@ -30,7 +30,7 @@ $elements = Sprint\Editor\Blocks\IblockElements::getList($block, [
                                             <? } ?>
                                         </div>
                                     </div>
-                                    <p class="offer-card__description body-m-light"><?= htmlspecialchars_decode($element['PROPERTY_DESCRIPTION_VALUE']) ?></p>
+                                    <p class="offer-card__description body-m-light"><?= htmlspecialchars_decode($element['PREVIEW_TEXT']) ?></p>
                                 </div>
                                 <img class="offer-card__img" src="<?= CFile::GetPath($element['PREVIEW_PICTURE']) ?>" alt="" loading="lazy">
                                 <? if ($element['PROPERTY_BUTTON_VALUE'] == 'Да') { ?>
