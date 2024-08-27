@@ -58,6 +58,7 @@ if (!$generalPage) {
     $generalPageElementsQuery->setFilter(['IBLOCK_ID' => iblock('inner_card_info'), 'ID' => $generalPageTabs[0]['ID'] ]);
 }
 
+$generalPageElementsQuery->setOrder(['ADVANTAGES_ELEMENT_ID' => 'DESC']);
 $items = $generalPageElementsQuery->exec()->fetchAll();
 foreach ($items as $item) {
     $advantagesItems[] = [
