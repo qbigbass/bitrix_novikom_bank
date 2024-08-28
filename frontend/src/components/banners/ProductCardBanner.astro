@@ -4,6 +4,7 @@ import ABreadcrumbs from "../ui/ABreadcrumbs/ABreadcrumbs.astro";
 import TextIndicatingBenefits from "../common/TextIndicatingBenefits/TextIndicatingBenefits.astro";
 import type { Colors } from "@components/ui/Buttons/types";
 import BenefitTextCard from "@components/common/BenefitCard/BenefitTextCard.astro";
+import PatternBg from "@components/common/Pattern/PatternBg.astro";
 
 type BackgroundColors = "heavy-purple" | "heavy-violet" | "blue";
 type Benefit = {
@@ -98,17 +99,7 @@ const createTheme = () => {
 >
     {
         hasPattern && (
-            <picture class="product-card-banner__pattern">
-                <source
-                    srcset="assets/hero-banner-spc-bg_tablet.svg"
-                    media="(max-width: 768px)"
-                />
-                <source
-                    srcset="assets/hero-banner-spc-bg_laptop.svg"
-                    media="(max-width: 1200px)"
-                />
-                <img src="assets/hero-banner-spc-bg.svg" alt="" />
-            </picture>
+            <PatternBg theme="dark" type="section" />
         )
     }
     <div class="product-card-banner__wrapper">

@@ -1,7 +1,6 @@
 ---
-import AppButton from "../ui/Buttons/AppButton.astro";
-import AButton from "../ui/Buttons/AButton.astro";
 import AIcon from "../AIcon.astro";
+import PatternBg from "./Pattern/PatternBg.astro";
 
 type Benefit = {
 	icon: string;
@@ -46,10 +45,7 @@ const { class: className, title, benefits, backgroundColor, ...rest } = Astro.pr
             )
         }
     </div>
-    <div class="service-apps-card__background">
-        <img src="assets/service-apps-card-bg.svg" />
-        <div class="service-apps-card__background-block"></div>
-    </div>
+    <PatternBg class="service-apps-card__pattern" theme="dark" />
 </div>
 
 <style lang="scss" is:global>
@@ -71,6 +67,17 @@ const { class: className, title, benefits, backgroundColor, ...rest } = Astro.pr
 
         @include use-media(tablet-album) {
             padding: 3rem;
+        }
+
+        &:after{
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            transform: rotate(180deg);
+            background: linear-gradient(270deg, rgba(65, 38, 116, 0.9) 23.5%, rgba(65, 38, 116, 0) 100%);
         }
 
         &__content {
@@ -131,30 +138,14 @@ const { class: className, title, benefits, backgroundColor, ...rest } = Astro.pr
             }
         }
 
-        &__background {
-            position: absolute;
-            display: flex;
-            justify-content: flex-end;
-            align-items: flex-start;
-            right: 0;
+        &__pattern {
+            bottom: auto;
             top: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            opacity: 0.5;
-        }
 
-        &__background-block {
-            position: absolute;
-            right: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                90deg,
-                rgba(65, 38, 116, 0.9) 0%,
-                rgba(65, 38, 116, 0) 90%
-            );
+            @include use-media(tablet) {
+                top: auto;
+                bottom: 0;
+            }
         }
 
 		&--heavy-violet {

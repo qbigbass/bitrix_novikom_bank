@@ -3,6 +3,7 @@ import FormCallMeBack from "../common/FormCallMeBack/FormCallMeBack.astro";
 import SectionTitle from "../ui/SectionTitle/SectionTitle.astro";
 import AButton from "../ui/Buttons/AButton.astro";
 import SectionLayout from "../layouts/SectionLayout.astro";
+import PatternBg from "@components/common/Pattern/PatternBg.astro";
 ---
 
 <SectionLayout class="section-call-me-back">
@@ -24,9 +25,10 @@ import SectionLayout from "../layouts/SectionLayout.astro";
 			</div>
 		</div>
 	</div>
-	<div class="section-call-me-back__background">
+	<PatternBg class="section-call-me-back__pattern" theme="light" type="section-heavy" />
+	<!-- <div class="section-call-me-back__background">
 		<img src="assets/section-call-me-back-bg.svg" >
-	</div>
+	</div> -->
 </SectionLayout>
 
 <style lang="scss" is:global>
@@ -140,25 +142,30 @@ import SectionLayout from "../layouts/SectionLayout.astro";
 			}
 		}
 
-		&__background {
-			display: none;
-
-			@include use-media(tablet) {
-				position: absolute;
-				z-index: 0;
-				display: block;
-				top: 9.75rem;
-				right: -25.5rem;
-			}
-
-			@include use-media(tablet-album) {
-				top: 11.25rem;
-				right: -17.125rem;
-			}
-
-			@include use-media(laptop-x) {
-				top: 6rem;
-			}
+		&__pattern {
+			top: 0;
+			bottom: auto;
 		}
+
+		// &__background {
+		// 	display: none;
+
+		// 	@include use-media(tablet) {
+		// 		position: absolute;
+		// 		z-index: 0;
+		// 		display: block;
+		// 		top: 9.75rem;
+		// 		right: -25.5rem;
+		// 	}
+
+		// 	@include use-media(tablet-album) {
+		// 		top: 11.25rem;
+		// 		right: -17.125rem;
+		// 	}
+
+		// 	@include use-media(laptop-x) {
+		// 		top: 6rem;
+		// 	}
+		// }
 	}
 </style>
