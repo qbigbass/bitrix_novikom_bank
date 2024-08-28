@@ -13,6 +13,7 @@ interface Props {
 	number?: number;
 	inRow?: boolean;
 	color?: Colors;
+	isIconImage?: boolean;
 }
 
 let {
@@ -21,6 +22,7 @@ let {
 	class: className,
 	inRow,
 	color,
+	isIconImage = false,
 	...rest
 } = Astro.props;
 
@@ -40,7 +42,7 @@ class:list={[
 			icon
 				? (
 					<div class="display-stepper-item__icon">
-						<AIcon symbolId={icon} size="xl" />
+						<AIcon isImage={isIconImage} symbolId={icon} size="xl" />
 					</div>
 				)
 				: (

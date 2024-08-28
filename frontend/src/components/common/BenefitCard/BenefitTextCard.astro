@@ -5,16 +5,17 @@ interface Props {
     title: string;
     description?: string;
     iconId?: string;
+    isIconImage?: boolean;
 }
 
-const { title, description, iconId } = Astro.props as Props;
+const { title, description, iconId, isIconImage } = Astro.props as Props;
 ---
 
 <div class="benefit-text-card">
     {
         iconId && (
             <div class="benefit-text-card__icon">
-                <AIcon symbolId={iconId} size="xxl" />
+                <AIcon isImage={isIconImage} symbolId={iconId} size="xxl" />
             </div>
         )
     }
