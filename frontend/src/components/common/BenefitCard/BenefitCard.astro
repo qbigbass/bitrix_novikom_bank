@@ -14,6 +14,7 @@ interface Props {
 	textButton?: string;
 	headerIcon?: string;
 	iconColorClass?: IconColorClass;
+	isIconImage?: boolean;
 }
 
 const {
@@ -24,7 +25,8 @@ const {
 	description,
 	textButton,
 	theme= 'grey',
-	iconColorClass = 'green-100'
+	iconColorClass = 'green-100',
+	isIconImage = false,
 } = Astro.props as Props;
 
 const btnColorByTheme = () => {
@@ -43,7 +45,7 @@ const btnColorByTheme = () => {
 	<div class="benefit-card__title">
 		{
 			headerIcon && (
-				<AIcon class={`${iconColorClass}`} symbolId={headerIcon} size="xxl" />
+				<AIcon isImage={isIconImage} class={`${iconColorClass}`} symbolId={headerIcon} size="xxl" />
 			)
 		}
 		<div class="headline-3">{title}</div>
@@ -52,7 +54,7 @@ const btnColorByTheme = () => {
 	<div class="benefit-card__footer">
 		{
 			icon && (
-				<AIcon class={`${iconColorClass}`} symbolId={icon} size="xxl" />
+				<AIcon isImage={isIconImage} class={`${iconColorClass}`} symbolId={icon} size="xxl" />
 			)
 		}
 		{

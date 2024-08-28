@@ -1,4 +1,4 @@
-sprint_editor.registerBlock('my_iblock_elements', function ($, $el, data, settings) {
+sprint_editor.registerBlock('my_iblock_elements_benefits', function ($, $el, data, settings) {
 
     settings = settings || {};
 
@@ -135,14 +135,14 @@ sprint_editor.registerBlock('my_iblock_elements', function ($, $el, data, settin
         var $jresult = $el.find('.sp-result');
 
         $.ajax({
-            url: sprint_editor.getBlockWebPath('my_iblock_elements') + '/ajax.php',
+            url: sprint_editor.getBlockWebPath('my_iblock_elements_benefits') + '/ajax.php',
             type: 'post',
             data: requestParams,
             dataType: 'json',
             success: function (result) {
 
                 $jresult.html(
-                    sprint_editor.renderTemplate('my_iblock_elements-select', result)
+                    sprint_editor.renderTemplate('my_iblock_elements_benefits-select', result)
                 );
 
                 var $elem = $jresult.find('.sp-elements');

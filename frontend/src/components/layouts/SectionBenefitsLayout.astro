@@ -14,6 +14,7 @@ interface Props {
 		description?: string;
 		iconId: string;
         list?: string[];
+        isIconImage?: boolean;
 	}[];
 	visibleItems?: number;
     useBackground?: boolean;
@@ -60,15 +61,16 @@ const maxCols = benefitsLength === 2 || benefitsLength === 4 ? 2 : benefitsLengt
                                     maxCols={maxCols}
                                 >
                                     {
-                                        benefits.map(({ title, description, iconId, list }) => (
+                                        benefits.map(({ title, description, iconId, list, isIconImage }) => (
                                             <ACollapsedItem>
                                                 <BenefitTextCard
                                                     title={title}
                                                     description={description}
                                                     iconId={iconId}
+                                                    isIconImage={isIconImage}
                                                 >
                                                     {
-                                                        (Array.isArray(list) && list?.length) > 0 && (
+                                                        (Array.isArray(list) && list?.length > 0) && (
                                                             <AList size="m">
                                                                 {
                                                                     list.map((text) => (
@@ -101,7 +103,7 @@ const maxCols = benefitsLength === 2 || benefitsLength === 4 ? 2 : benefitsLengt
                                             iconId={iconId}
                                         >
                                             {
-                                                (Array.isArray(list) && list?.length) > 0 && (
+                                                (Array.isArray(list) && list?.length > 0) && (
                                                     <AList size="m">
                                                         {
                                                             list.map((text) => (
@@ -128,7 +130,7 @@ const maxCols = benefitsLength === 2 || benefitsLength === 4 ? 2 : benefitsLengt
 
 	.section-benefits {
         &.section-benefits--bg {
-            background: url("/assets/section-benefits.svg") bottom right no-repeat;
+            background: url("../assets/section-benefits.svg") bottom right no-repeat;
         }
 
 		&__container {

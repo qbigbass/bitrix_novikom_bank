@@ -22,6 +22,11 @@ import SliderSlide from "@components/common/Sliders/common/SliderSlide/SliderSli
 import CardContact from "@components/common/Cards/CardContact.astro";
 import CardFeedback from "@components/common/Cards/CardFeedback.astro";
 import TextBanner from "@components/banners/TextBanner.astro";
+import ATable from "@components/common/ATable/ATable.astro";
+import ATableBody from "@components/common/ATable/ATableBody.astro";
+import ATableRow from "@components/common/ATable/ATableRow.astro";
+import ATableCell from "@components/common/ATable/ATableCell.astro";
+import AList from "@components/ui/AList/AList.astro";
 
 const offerCards = [
     {
@@ -131,7 +136,46 @@ const listConatact = [
         </Fragment>
         <Fragment slot="tabPanels">
             <ATabPanel value="0">
-                
+                <ATable class="md:in-column" cols={2}>
+					<ATableBody>
+						<ATableRow>
+                            <ATableCell class="body-l-heavy dark-70">Целевое использование</ATableCell>
+							<ATableCell class="body-l-light">
+                                Финансирование мероприятий по&nbsp;снижению выбросов опасных загрязняющих веществ на&nbsp;объектах электроэнергетики, нефтедобывающей, нефтеперерабатывающей, нефтехимической, газовой, угольной, сланцевой и&nbsp;торфяной промышленности, а&nbsp;также объекты нефтепродуктообеспечения, теплоснабжения и&nbsp;газоснабжения
+                            </ATableCell>
+						</ATableRow>
+						<ATableRow>
+							<ATableCell class="body-l-heavy dark-70">Нормативный документ</ATableCell>
+							<ATableCell class="body-l-light">постановление Правительства РФ&nbsp;от&nbsp;06.05.2023 &#8470;&nbsp;709</ATableCell>
+						</ATableRow>
+						<ATableRow>
+							<ATableCell class="body-l-heavy dark-70">Заемщики</ATableCell>
+							<ATableCell class="body-l-light">
+                                <AList size="l">
+                                    <li>
+                                        Стандартные (в&nbsp;т.ч. резидентство&nbsp;РФ, не&nbsp;находится в&nbsp;процессе ликвидации, не&nbsp;введена процедура банкротства, отсутствуют просрочки по&nbsp;налогам и&nbsp;др.)
+                                    </li>
+                                    <li>
+                                        Выполняемые заемщиком мероприятия по&nbsp;снижению выбросов включены в&nbsp;комплексный план (определен Федеральным законом от&nbsp;26.07.2019 &#8470;&nbsp;195-ФЗ &laquo;О&nbsp;проведении эксперимента по&nbsp;квотированию выбросов загрязняющих веществ и&nbsp;внесении изменений в&nbsp;отдельные законодательные акты Российской Федерации в&nbsp;части снижения загрязнения атмосферного воздуха&raquo;)
+                                    </li>
+                                </AList>
+							</ATableCell>
+						</ATableRow>
+						<ATableRow>
+							<ATableCell class="body-l-heavy dark-70">Основные условия</ATableCell>
+							<ATableCell class="body-l-light">
+                                <AList size="l">
+                                    <li>
+                                        Льготная ставка&nbsp;&mdash; не&nbsp;более&nbsp;3%
+                                    </li>
+                                    <li>
+                                        Период субсидирования&nbsp;&mdash; до&nbsp;31.12.2024
+                                    </li>
+                                </AList>
+                            </ATableCell>
+						</ATableRow>
+					</ATableBody>
+				</ATable>
             </ATabPanel>
             <ATabPanel value="1">
                 <SectionHelpContentLayout>
