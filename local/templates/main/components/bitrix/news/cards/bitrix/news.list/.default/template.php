@@ -243,13 +243,17 @@ $request = Application::getInstance()->getContext()->getRequest()->toArray();
                                                     <button type="button" class="a-button a-button--lm a-button--green">
                                                         Оформить заявку
                                                     </button>
-                                                    <a href="<?= $sectionItem['DETAIL_PAGE_URL'] ?>" class="a-button a-button--lm a-button--primary a-button--link a-button--text">Подробнее
-                                                        <span class="a-icon a-button__icon">
-                                                            <svg>
-                                                                <use xlink:href="/frontend/build/assets/svg-sprite.svg#icon-chevron-right"></use>
-                                                            </svg>
-                                                        </span>
-                                                    </a>
+
+                                                    <? if (!empty($sectionItem['PROPERTIES']['DETAIL_INFO_CARD']['VALUE'])) { ?>
+                                                        <a href="<?= count($sectionItem['anchoredElements']) > 1 ? $sectionItem['DETAIL_PAGE_URL'] . $sectionItem['anchoredElements'][0]['CODE'] .'/'  : $sectionItem['DETAIL_PAGE_URL'] ?>" class="a-button a-button--lm a-button--primary a-button--link a-button--text">Подробнее
+                                                            <span class="a-icon a-button__icon">
+                                                                <svg>
+                                                                    <use xlink:href="/frontend/build/assets/svg-sprite.svg#icon-chevron-right"></use>
+                                                                </svg>
+                                                            </span>
+                                                        </a>
+                                                    <? } ?>
+
                                                 </div>
                                             </div>
                                         </div>
