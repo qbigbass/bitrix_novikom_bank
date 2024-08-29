@@ -1,12 +1,15 @@
 ---
 import AButton from "../../ui/Buttons/AButton.astro";
+type BackgroundColors = "gray" | "blue";
+
+
 interface Props {
     title: string;
     class?: string;
     description?: string;
     textLink?: string;
     imgSrc: string;
-    backgroundColor?: string;
+    backgroundColor?: BackgroundColors;
     size?: string;
 }
 
@@ -132,6 +135,10 @@ const {
 
         &--bg-gray {
             background-color: var(--dark-30);
+        }
+
+        &--bg-blue {
+            background-color: var(--blue-10);
         }
 
         &--size-xl {

@@ -83,7 +83,7 @@ const createTheme = () => {
 };
 
 /**
-	pc - private clients (Частным клиентам)
+	hero-баннер для продуктов
 */
 ---
 
@@ -99,7 +99,11 @@ const createTheme = () => {
 >
     {
         hasPattern && (
-            <PatternBg theme="dark" type="section" />
+            <PatternBg
+                class="product-card-banner__pattern"
+                theme="dark"
+                type="section"
+            />
         )
     }
     <div class="product-card-banner__wrapper">
@@ -148,7 +152,10 @@ const createTheme = () => {
                 textBenefits && textBenefits.length > 0 && (
                     <ul class="product-card-banner__text-benefits">
                         {textBenefits.map(({ title, description }) => (
-                            <BenefitTextCard title={title} description={description} />
+                            <BenefitTextCard
+                                title={title}
+                                description={description}
+                            />
                         ))}
                     </ul>
                 )
@@ -199,25 +206,6 @@ const createTheme = () => {
         @include use-media(tablet-album) {
             height: calc($bannerHeight + $borderWidth);
             overflow: hidden;
-        }
-
-        &__pattern {
-            position: absolute;
-            left: 0;
-            bottom: 0;
-
-            @include use-media(tablet) {
-                height: 100%;
-
-                & img {
-                    height: 100%;
-                }
-            }
-
-            @include use-media(desktop) {
-                left: auto;
-                right: 0;
-            }
         }
 
         &__wrapper {
@@ -591,19 +579,28 @@ const createTheme = () => {
                     padding-bottom: 8.375rem;
                 }
             }
+
+            #{$root}__pattern {
+                top: 12.5rem; //200px
+                bottom: auto;
+
+                @include use-media(tablet) {
+                    top: 0;
+                }
+            }
         }
-    }
 
-    .product-card-banner.product-card-banner--blue {
-        background: linear-gradient(42.24deg, #383a74 20%, #2e1b52 80%);
-    }
+        &--blue {
+            background: linear-gradient(42.24deg, #383a74 20%, #2e1b52 80%);
+        }
 
-    .product-card-banner.product-card-banner--heavy-purple {
-        background: linear-gradient(222.24deg, #101317 20%, #5a2375 80%);
-    }
+        &--heavy-purple {
+            background: linear-gradient(222.24deg, #101317 20%, #5a2375 80%);
+        }
 
-    .product-card-banner.product-card-banner--heavy-violet {
-        background: linear-gradient(222.24deg, #101317 20%, #6655a2 80%);
+        &--heavy-violet {
+            background: linear-gradient(222.24deg, #101317 20%, #6655a2 80%);
+        }
     }
 
     .product-card-banner-benefit {
