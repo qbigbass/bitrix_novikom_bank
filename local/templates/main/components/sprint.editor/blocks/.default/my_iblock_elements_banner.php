@@ -42,7 +42,7 @@ $element = Sprint\Editor\Blocks\IblockElements::getList($block, [
             <div class="page-banner__photo">
                 <div class="a-polygon-container js-a-polygon-container" size="ms">
                     <div class="a-polygon-container__content">
-                        <img class="a-polygon-container__img" src="/frontend/build/assets/banners/page-banner-3.png" alt="" loading="lazy">
+                        <img class="a-polygon-container__img" src="<?= CFile::GetPath($element['PREVIEW_PICTURE']) ?>" alt="" loading="lazy">
                     </div>
                     <div class="a-polygon-container__polygon js-a-polygon-container-polygon violet-100">
                         <svg xmlns="http://www.w3.org/2000/svg" class="js-a-polygon-container-svg">
