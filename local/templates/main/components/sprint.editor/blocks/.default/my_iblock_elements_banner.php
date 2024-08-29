@@ -52,8 +52,10 @@ $element = Sprint\Editor\Blocks\IblockElements::getList($block, [
                 </div>
             </div>
         </div>
-        <div class="page-banner__background">
-            <img src="/frontend/build/assets/page-banner-bg.svg">
-        </div>
+        <picture class="pattern-bg">
+            <source srcset="/frontend/build/assets/patterns/section-heavy/pattern-light-s.svg" media="(max-width: 767px)">
+            <source srcset="/frontend/build/assets/patterns/section-heavy/pattern-light-m.svg" media="(max-width: 1199px)">
+            <img src="/frontend/build/assets/patterns/section-heavy/pattern-light-l.svg" alt="bg pattenr" loading="lazy">
+        </picture>
     </div>
 </section>
