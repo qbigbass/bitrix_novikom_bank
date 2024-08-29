@@ -1,7 +1,6 @@
 <?
 
 use Bitrix\Main\Application;
-use Galago\Frontend\Asset;
 
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 
@@ -18,8 +17,6 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /** @var CBitrixComponent $component */
 
 $this->setFrameMode(true);
-
-Asset::getInstance()->addJsAndCss('spc-for-employees');
 
 $request = Application::getInstance()->getContext()->getRequest()->toArray();
 $properties = $arResult['PROPERTIES'];
