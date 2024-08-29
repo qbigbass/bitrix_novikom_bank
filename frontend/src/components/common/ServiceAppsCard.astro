@@ -3,41 +3,55 @@ import AIcon from "../AIcon.astro";
 import PatternBg from "./Pattern/PatternBg.astro";
 
 type Benefit = {
-	icon: string;
-	text: string;
-}
+    icon: string;
+    text: string;
+};
 
-type BackgroundColor = 'heavy-violet' | 'violet' | "heavy-purple";
+type BackgroundColor = "heavy-violet" | "violet" | "heavy-purple";
 
 interface Props {
     className?: string;
     class?: string;
     title: string;
-	benefits: Benefit[];
-	backgroundColor?: BackgroundColor;
+    benefits: Benefit[];
+    backgroundColor?: BackgroundColor;
 }
 
-const { class: className, title, benefits, backgroundColor, ...rest } = Astro.props as Props;
+const {
+    class: className,
+    title,
+    benefits,
+    backgroundColor,
+    ...rest
+} = Astro.props as Props;
 ---
 
-<div class:list={["service-apps-card", `${backgroundColor ? `service-apps-card--${backgroundColor}` : ""}`, className]}
-	{...rest}
+<div
+    class:list={[
+        "service-apps-card",
+        `${backgroundColor ? `service-apps-card--${backgroundColor}` : ""}`,
+        className,
+    ]}
+    {...rest}
 >
     <div class="service-apps-card__content">
         <h3 class="service-apps-card__title headline-2">{title}</h3>
         <div class="service-apps-card__benefits">
-			{
-				benefits.map(({ icon, text }) => (
-					<div class="service-apps-card-benefit">
-						<div class="service-apps-card-benefit__icon">
-							<AIcon symbolId={icon} size="m" />
-						</div>
-						<span class="service-apps-card-benefit__title body-s-heavy" set:html={text}></span>
-					</div>
-				))
-			}
+            {
+                benefits.map(({ icon, text }) => (
+                    <div class="service-apps-card-benefit">
+                        <div class="service-apps-card-benefit__icon">
+                            <AIcon symbolId={icon} size="m" />
+                        </div>
+                        <span
+                            class="service-apps-card-benefit__title body-s-heavy"
+                            set:html={text}
+                        />
+                    </div>
+                ))
+            }
         </div>
-		{
+        {
             Astro.slots["footer"] && (
                 <div class="service-apps-card__apps">
                     <slot name="footer" />
@@ -69,15 +83,19 @@ const { class: className, title, benefits, backgroundColor, ...rest } = Astro.pr
             padding: 3rem;
         }
 
-        &:after{
-            content: '';
+        &:after {
+            content: "";
             position: absolute;
             right: 0;
             top: 0;
             width: 100%;
             height: 100%;
             transform: rotate(180deg);
-            background: linear-gradient(270deg, rgba(65, 38, 116, 0.9) 23.5%, rgba(65, 38, 116, 0) 100%);
+            background: linear-gradient(
+                270deg,
+                rgba(65, 38, 116, 0.9) 23.5%,
+                rgba(65, 38, 116, 0) 100%
+            );
         }
 
         &__content {
@@ -148,12 +166,16 @@ const { class: className, title, benefits, backgroundColor, ...rest } = Astro.pr
             }
         }
 
-		&--heavy-violet {
-			background: linear-gradient(222.24deg, #101317 20%, #6655A2 80%);
-		}
+        &--heavy-violet {
+            background: linear-gradient(222.24deg, #101317 20%, #6655a2 80%);
+        }
 
         &--heavy-purple {
-            background: linear-gradient(222.24deg, #101317 20%, #5A2375 80%);
+            background: linear-gradient(222.24deg, #101317 20%, #5a2375 80%);
+
+            &:after {
+                background: linear-gradient(270deg, rgba(85, 36, 106, 0.9) 23.5%, rgba(85, 36, 106, 0) 100%);
+            }
         }
     }
 

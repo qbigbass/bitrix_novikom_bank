@@ -1,4 +1,5 @@
 ---
+import PatternBg from "@components/common/Pattern/PatternBg.astro";
 import SectionLayout from "../layouts/SectionLayout.astro";
 import type {BgColor} from "../layouts/SectionLayout.astro";
 
@@ -21,7 +22,7 @@ const {
 	class:list={className}
 >
 	{ hasPattern && (
-		<img src="assets/section-pattern-lg.svg" class="section-client-info__pattern" alt="pattern" loading="lazy" />
+		<PatternBg type="section-2" />
 	)}
 	<div class="content-container">
 		<div class="section-client-info__container">
