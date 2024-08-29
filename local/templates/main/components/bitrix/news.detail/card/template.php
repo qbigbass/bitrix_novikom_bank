@@ -24,10 +24,10 @@ $bannerClass = $arResult["PROPERTY_{$properties['CLASS_BANNER_DETAIL']['ID']}"];
 ?>
 <main class="default-page-layout__body">
     <div class="product-card-banner <?= !empty($bannerClass) ? $bannerClass : '' ?> ">
-        <picture class="product-card-banner__pattern">
-            <source srcset="/frontend/build/assets/hero-banner-spc-bg_tablet.svg" media="(max-width: 768px)">
-            <source srcset="/frontend/build/assets/hero-banner-spc-bg_laptop.svg" media="(max-width: 1200px)">
-            <img src="/frontend/build/assets/hero-banner-spc-bg.svg" alt="">
+        <picture class="pattern-bg product-card-banner__pattern">
+            <source srcset="/frontend/build/assets/patterns/section/pattern-dark-s.svg" media="(max-width: 767px)">
+            <source srcset="/frontend/build/assets/patterns/section/pattern-dark-m.svg" media="(max-width: 1199px)">
+            <img src="/frontend/build/assets/patterns/section/pattern-dark-l.svg" alt="bg pattenr" loading="lazy">
         </picture>
         <div class="product-card-banner__wrapper">
             <div class="product-card-banner__content">
@@ -219,11 +219,7 @@ $bannerClass = $arResult["PROPERTY_{$properties['CLASS_BANNER_DETAIL']['ID']}"];
                                 <div class="a-collapsed-item js-a-collapsed-item">
                                     <div class="benefit-text-card">
                                         <div class="benefit-text-card__icon">
-                                            <span class="a-icon size-xll">
-                                                <svg>
-                                                    <use xlink:href="/frontend/build/assets/svg-sprite.svg#icon-a-money-out"></use>
-                                                </svg>
-                                            </span>
+                                            <img src="/frontend/build/assets/icons/icon-a-transfer.svg" class="a-icon size-xxl" alt="" loading="lazy">
                                         </div>
                                         <h3 class="benefit-text-card__title headline-3"><?= $advantagesItem['NAME'] ?></h3>
                                         <p class="benefit-text-card__description body-m-light"><?= $advantagesItem['DESCRIPTION'] ?></p>
