@@ -224,7 +224,7 @@ $bannerClass = $arResult["PROPERTY_{$properties['CLASS_BANNER_DETAIL']['ID']}"];
                                 <div class="a-collapsed-item js-a-collapsed-item">
                                     <div class="benefit-text-card">
                                         <div class="benefit-text-card__icon">
-                                            <img src="/frontend/build/assets/icons/icon-a-transfer.svg" class="a-icon size-xxl" alt="" loading="lazy">
+                                            <img src="<?= $advantagesItem['IMG_PATH'] ?>" class="a-icon size-xxl" alt="" loading="lazy">
                                         </div>
                                         <h3 class="benefit-text-card__title headline-3"><?= $advantagesItem['NAME'] ?></h3>
                                         <p class="benefit-text-card__description body-m-light"><?= $advantagesItem['DESCRIPTION'] ?></p>
@@ -255,7 +255,7 @@ $bannerClass = $arResult["PROPERTY_{$properties['CLASS_BANNER_DETAIL']['ID']}"];
                                 <div class="a-collapsed-item js-a-collapsed-item">
                                     <div class="benefit-text-card">
                                         <div class="benefit-text-card__icon">
-                                            <img src="/frontend/build/assets/icons/icon-a-transfer.svg" class="a-icon size-xxl" alt="" loading="lazy">
+                                            <img src="<?= $advantagesItemGeneral['IMG_PATH'] ?>" class="a-icon size-xxl" alt="" loading="lazy">
                                         </div>
                                         <h3 class="benefit-text-card__title headline-3"><?= $advantagesItemGeneral['NAME'] ?></h3>
                                         <p class="benefit-text-card__description body-m-light"><?= $advantagesItemGeneral['DESCRIPTION'] ?></p>
