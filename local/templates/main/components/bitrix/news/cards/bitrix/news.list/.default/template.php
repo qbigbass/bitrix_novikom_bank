@@ -120,7 +120,7 @@ $request = Application::getInstance()->getContext()->getRequest()->toArray();
                                             <div class="product-card__conditions-box">
                                                 <div class="product-card__conditions">
 
-                                                    <? if ( isset($sectionItem['PROPERTIES']['SERVICE']['VALUE']) ) { ?>
+                                                    <? if ( isset($sectionItem['PROPERTIES']['SERVICE']['VALUE']) && !empty($sectionItem['PROPERTIES']['SERVICE']['VALUE']) ) { ?>
                                                         <div class="text-indicating-benefits">
                                                             <div class="text-indicating-benefits-head">
                                                                 <span class="number-l-heavy"><?= $sectionItem['PROPERTIES']['SERVICE']['VALUE'] ?></span>
