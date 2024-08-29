@@ -19,7 +19,6 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 
 $this->setFrameMode(true);
 
-Asset::getInstance()->addJsAndCss('always-plus-card');
 Asset::getInstance()->addJsAndCss('mir-credit-supreme');
 
 $request = Application::getInstance()->getContext()->getRequest()->toArray();
