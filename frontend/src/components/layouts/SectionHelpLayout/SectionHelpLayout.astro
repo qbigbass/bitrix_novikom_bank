@@ -8,6 +8,7 @@ import ATabs from "../../ui/ATabs/ATabs.astro";
 import ATabSwiperWrapper from "../../ui/ATabs/common/ATabSwiperWrapper.astro";
 import ATabSwiper from "../../ui/ATabs/common/ATabSwiper/ATabSwiper.astro";
 import ATabPanels from "../../ui/ATabs/common/ATabPanels.astro";
+import PatternBg from "@components/common/Pattern/PatternBg.astro";
 
 interface Props {
 	title?: string;
@@ -47,6 +48,7 @@ const {
 			</AAccordionPanel>
 		</AAccordion>
 	</div>
+	<PatternBg class="section-help-layout__pattern" theme="light" type="section-2" />
 </SectionLayout>
 
 <style lang="scss" is:global>
@@ -54,10 +56,7 @@ const {
 
 	.section-help-layout {
 		position: relative;
-
-		@include use-media(tablet-album) {
-			background: url("../assets/section-help.svg") bottom right no-repeat;
-		}
+		overflow: hidden;
 
 		&__accordion-header {
 			@include use-media(tablet) {
@@ -139,6 +138,19 @@ const {
 			@include use-media(laptop-x) {
 				grid-column: span 12;
 			}
+		}
+
+		&__pattern {
+			display: none;
+
+			@include use-media(tablet) {
+				display: block;
+			}
+		}
+
+		& .content-container {
+			position: relative;
+			z-index: 1;
 		}
 	}
 </style>

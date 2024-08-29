@@ -1,5 +1,6 @@
 ---
 import AButton from "../ui/Buttons/AButton.astro";
+import PatternBg from "./Pattern/PatternBg.astro";
 
 interface Props {
 	class?: string;
@@ -20,16 +21,12 @@ const {
 			<AButton element="a" text color="white" afterIcon="icon-arrow-right" size="lm">Акции</AButton>
 		</div>
 	</div>
-	<div class="service-salary-card__background">
-		<img src="assets/service-salary-card-bg.svg" />
-	</div>
+	<PatternBg class="service-salary-card__desktop-pattern" theme="dark" />
+	<PatternBg theme="dark" />
 </div>
 
 <style lang="scss" is:global>
-	@use "sass:map";
-	@import "@styles/variables.scss";
 	@import "@styles/media-queries";
-	@import "@styles/functions.scss";
 
 	.service-salary-card {
 		position: relative;
@@ -46,6 +43,17 @@ const {
 
 		@include use-media(tablet-album) {
 			padding: 3rem;
+		}
+
+		&:after {
+			content: "";
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			transform: rotate(180deg);
+			background: linear-gradient(270deg, rgba(65, 38, 116, 0.9) 23.5%, rgba(65, 38, 116, 0) 100%);
 		}
 
 		&__content {
@@ -75,17 +83,15 @@ const {
 			}
 		}
 
-		&__background {
-			position: absolute;
-			left: 0;
-			top: -68px;
+		&__desktop-pattern {
+			display: none;
 
-			@include use-media(tablet) {
-				column-gap: 3rem;
+			@include use-media(laptop-x) {
+				display: block;
+
+				position: absolute;
 				right: 0;
-				bottom: 0;
-				left: unset;
-				top: unset;
+				bottom: 12.5rem; //200px
 			}
 		}
 	}

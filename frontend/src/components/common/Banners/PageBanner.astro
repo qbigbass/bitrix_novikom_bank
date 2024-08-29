@@ -1,6 +1,7 @@
 ---
 import APolygonContainer from "../APolygonContainer/APolygonContainer.astro";
 import SectionLayout from "../../layouts/SectionLayout.astro";
+import PatternBg from "../Pattern/PatternBg.astro";
 
 const { img } = Astro.props;
 ---
@@ -29,12 +30,10 @@ const { img } = Astro.props;
 				<slot name="footer" />
 			</div>
 			<div class="page-banner__photo">
-				<APolygonContainer color="violet-100" img={img} size="ms" />
+				<APolygonContainer color="violet-100" img={img} />
 			</div>
 		</div>
-		<div class="page-banner__background">
-			<img src="assets/page-banner-bg.svg" >
-		</div>
+		<PatternBg type="section-heavy" />
 		{
 			Astro.slots['helper'] && (
 				<div class="page-banner__helper">
@@ -110,32 +109,6 @@ const { img } = Astro.props;
 			display: flex;
 			flex-direction: column;
 			gap: 1.5rem;
-		}
-
-		&__background {
-			position: absolute;
-			top: 160px;
-			left: 50%;
-			transform: translateX(-50%);
-
-			@include use-media(tablet) {
-				top: 0;
-				left: 0;
-				transform: none;
-			}
-
-			@include use-media(tablet-album) {
-				top: 3rem;
-				left: auto;
-				right: -1rem;
-			}
-
-			@include use-media(desktop) {
-				top: 13rem; //208px
-				right: auto;
-				left: 55%;
-				transform: translateX(-50%);
-			}
 		}
 
 		&__photo {

@@ -1,4 +1,6 @@
 ---
+import PatternBg from '../Pattern/PatternBg.astro';
+
 interface Props {
     class?: string;
     title: string;
@@ -22,6 +24,7 @@ const { class: className, title, description, ...rest } = Astro.props as Props;
             </div>
         )
     }
+    <PatternBg class='card-feedback__pattern' />
 </div>
 
 <style lang="scss" is:global>
@@ -31,6 +34,8 @@ const { class: className, title, description, ...rest } = Astro.props as Props;
         background-color: var(--dark-0);
         border-radius: 0.75rem;
         padding: 1.5rem 1rem;
+        position: relative;
+        overflow: hidden;
 
         display: flex;
         flex-direction: column;
@@ -38,10 +43,6 @@ const { class: className, title, description, ...rest } = Astro.props as Props;
 
         @include use-media(tablet) {
             padding: 2rem;
-            background-image: url("../assets/card-feedback-pattern.svg");
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: top right;
         }
 
         @include use-media(tablet-album) {
@@ -49,10 +50,23 @@ const { class: className, title, description, ...rest } = Astro.props as Props;
             gap: 3rem;
         }
 
+        &:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(270deg, rgba(173, 173, 212, 0) 0%, rgba(255, 255, 255, 0.9) 100%);
+            z-index: 0;
+        }
+
         &__header {
             display: flex;
             flex-direction: column;
             gap: 1rem;
+            position: relative;
+            z-index: 1;
 
             @include use-media(tablet) {
                 gap: 1.5rem;
@@ -64,6 +78,8 @@ const { class: className, title, description, ...rest } = Astro.props as Props;
             flex-direction: column;
             gap: 1rem;
             margin-top: auto;
+            position: relative;
+            z-index: 1;
 
             @include use-media(tablet) {
                 flex-direction: row;
@@ -73,6 +89,11 @@ const { class: className, title, description, ...rest } = Astro.props as Props;
             & > * {
                 flex-shrink: 0;
             }
+        }
+
+        &__pattern {
+            top: 0;
+            bottom: auto;
         }
 
         @at-root .swiper-slide & {
