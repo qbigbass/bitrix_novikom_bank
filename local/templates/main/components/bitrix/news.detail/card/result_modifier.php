@@ -23,6 +23,7 @@ $result = [];
 $generalPageTabs = $elementEntity::query()
     ->setSelect(['ID','NAME', 'CODE'])
     ->setFilter(['ID' => $arrElementsForCardInfo])
+    ->setCacheTtl(7200)
     ->exec()->fetchAll();
 
 $arResult['generalPageTabs'] = $generalPageTabs;

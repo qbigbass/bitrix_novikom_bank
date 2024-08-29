@@ -28,6 +28,7 @@ $generalPageElementsQuery = $elementEntity::query()
     ])
     ->setFilter(['ID' => $arrElementsForCardInfo])
     ->setOrder(['ADVANTAGES_ELEMENT_ID' => 'DESC'])
+    ->setCacheTtl(7200)
     ->exec()->fetchAll();
 
 foreach ($generalPageElementsQuery as $item) {
