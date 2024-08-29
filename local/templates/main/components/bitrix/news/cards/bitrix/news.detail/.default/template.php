@@ -19,12 +19,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 
 $this->setFrameMode(true);
 
-if ($arResult['generalPage']) {
-    Asset::getInstance()->addJsAndCss('mir-credit-supreme');
-} else {
-    Asset::getInstance()->addJsAndCss('spc-for-employees');
-}
-
+Asset::getInstance()->addJsAndCss('mir-credit-supreme');
 
 $request = Application::getInstance()->getContext()->getRequest()->toArray();
 $properties = $arResult['PROPERTIES'];
@@ -179,122 +174,41 @@ $bannerClass = $arResult["PROPERTY_{$properties['CLASS_BANNER_DETAIL']['ID']}"];
 <section class="section-layout section-benefits section-benefits--bg">
     <div class="content-container">
         <div class="section-benefits__container">
-            <h3 class="section-benefits__title headline-2"><?= !$arResult['generalPage'] ? 'Преимущества для каждого' : 'Преимущества карты ' . $arResult['NAME'] ?></h3>
-            <? if (!$arResult['generalPage']) { ?>
-
-                <? /* Вывод список страниц по Преимуществам */ ?>
-                <div class="section-benefits__tabs">
-                    <div class="a-tabs a-tabs--component js-a-tabs">
-                        <div class="a-tab-swiper swiper js-a-tab-swiper">
-                            <div class="a-tab-swiper-wrapper swiper-wrapper js-a-tab-swiper-wrapper">
-                                <? foreach ($arResult['generalPageTabs'] as $key => $generateTabs) { ?>
-                                    <?
-                                        $isActive = false;
-
-                                        if ( $generateTabs['ID'] == $request['item'] ) {
-                                            $isActive = true;
-                                        } elseif (!isset($request['item']) && $key == 0) {
-                                            $isActive = true;
-                                        }
-                                    ?>
-                                    <a
-                                        href="<?= $arResult['DETAIL_PAGE_URL'] . $generateTabs['CODE'] . '/' ?>"
-                                        class="a-tab a-tab--lm a-tab--primary swiper-slide js-a-tab <?= $isActive ? 'is-active' : '' ?>"
-                                    >
-                                        <?= $generateTabs['NAME'] ?>
-                                    </a>
-                                <? } ?>
+            <h3 class="section-benefits__title headline-2">Преимущества карты <?= $arResult['NAME'] ?></h3>
+            <div class="a-collapsed-items js-a-collapsed-items" data-visible-items="4" data-rebuilding-mq="tablet" data-use-count="true">
+                <div class="section-benefits__content">
+                    <div class="benefit-cards-layout max-cols-2">
+                        <? foreach ($arResult['advantagesItems'] as $advantagesItemGeneral) { ?>
+                            <div class="a-collapsed-item js-a-collapsed-item">
+                                <div class="benefit-text-card">
+                                    <div class="benefit-text-card__icon">
+                                        <img src="<?= $advantagesItemGeneral['IMG_PATH'] ?>" class="a-icon size-xxl" alt="" loading="lazy">
+                                    </div>
+                                    <h3 class="benefit-text-card__title headline-3"><?= $advantagesItemGeneral['NAME'] ?></h3>
+                                    <p class="benefit-text-card__description body-m-light"><?= $advantagesItemGeneral['DESCRIPTION'] ?></p>
+                                </div>
                             </div>
-                            <button class="a-tab-nav-button js-a-tab-prev is-prev">
-                                <span class="a-icon size-m">
-                                    <svg>
-                                        <use xlink:href="/frontend/build/assets/svg-sprite.svg#icon-chevron-left"></use>
-                                    </svg>
-                                </span>
-                            </button>
-                            <button class="a-tab-nav-button js-a-tab-next is-next">
-                                <span class="a-icon size-m">
-                                    <svg>
-                                        <use xlink:href="/frontend/build/assets/svg-sprite.svg#icon-chevron-right"></use>
-                                    </svg>
-                                </span>
-                            </button>
-                        </div>
+                        <? } ?>
                     </div>
+                    <button data-hidden-text="Скрыть" data-visible-text="Еще преимущества" class="a-button a-collapsed-button js-a-collapsed-button is-hidden a-button--lm a-button--primary a-button--text">
+                        <span class="js-a-collapsed-button-text">
+                            Еще преимущества
+                        </span>
+                        <span class="a-icon a-button__icon">
+                            <svg>
+                                <use xlink:href="/frontend/build/assets/svg-sprite.svg#icon-chevron-down"></use>
+                            </svg>
+                        </span>
+                    </button>
                 </div>
-                <div class="a-collapsed-items js-a-collapsed-items" data-visible-items="4" data-rebuilding-mq="tablet" data-use-count="true">
-                    <div class="section-benefits__content">
-                        <div class="benefit-cards-layout max-cols-3">
-                            <? foreach ($arResult['advantagesItems'] as $advantagesItem) { ?>
-                                <div class="a-collapsed-item js-a-collapsed-item">
-                                    <div class="benefit-text-card">
-                                        <div class="benefit-text-card__icon">
-                                            <img src="<?= $advantagesItem['IMG_PATH'] ?>" class="a-icon size-xxl" alt="" loading="lazy">
-                                        </div>
-                                        <h3 class="benefit-text-card__title headline-3"><?= $advantagesItem['NAME'] ?></h3>
-                                        <p class="benefit-text-card__description body-m-light"><?= $advantagesItem['DESCRIPTION'] ?></p>
-                                    </div>
-                                </div>
-                            <? } ?>
-                        </div>
-                        <button data-hidden-text="Скрыть" data-visible-text="Еще преимущества" class="a-button a-collapsed-button js-a-collapsed-button is-hidden a-button--lm a-button--primary a-button--text">
-                            <span class="js-a-collapsed-button-text">
-                                Еще преимущества
-                            </span>
-                            <span class="a-icon a-button__icon">
-                                <svg>
-                                    <use xlink:href="/frontend/build/assets/svg-sprite.svg#icon-chevron-down"></use>
-                                </svg>
-                            </span>
-                        </button>
-                    </div>
-                </div>
-
-            <? } else { ?>
-
-                <? /* Вывод общей информации по Преимуществам */ ?>
-                <div class="a-collapsed-items js-a-collapsed-items" data-visible-items="4" data-rebuilding-mq="tablet" data-use-count="true">
-                    <div class="section-benefits__content">
-                        <div class="benefit-cards-layout max-cols-2">
-                            <? foreach ($arResult['advantagesItems'] as $advantagesItemGeneral) { ?>
-                                <div class="a-collapsed-item js-a-collapsed-item">
-                                    <div class="benefit-text-card">
-                                        <div class="benefit-text-card__icon">
-                                            <img src="<?= $advantagesItemGeneral['IMG_PATH'] ?>" class="a-icon size-xxl" alt="" loading="lazy">
-                                        </div>
-                                        <h3 class="benefit-text-card__title headline-3"><?= $advantagesItemGeneral['NAME'] ?></h3>
-                                        <p class="benefit-text-card__description body-m-light"><?= $advantagesItemGeneral['DESCRIPTION'] ?></p>
-                                    </div>
-                                </div>
-                            <? } ?>
-                        </div>
-                        <button data-hidden-text="Скрыть" data-visible-text="Еще преимущества" class="a-button a-collapsed-button js-a-collapsed-button is-hidden a-button--lm a-button--primary a-button--text">
-                            <span class="js-a-collapsed-button-text">
-                                Еще преимущества
-                            </span>
-                            <span class="a-icon a-button__icon">
-                                <svg>
-                                    <use xlink:href="/frontend/build/assets/svg-sprite.svg#icon-chevron-down"></use>
-                                </svg>
-                            </span>
-                        </button>
-                    </div>
-                </div>
-
-            <? } ?>
+            </div>
         </div>
     </div>
 </section>
 
 <?
 // вывод информации из конструктора
-$arrDetailInfoCardIds = [];
-
-if (!$arResult['generalPage']) {
-    $arrDetailInfoCardIds = $arResult['generalPageTabs'];
-} else {
-    $arrDetailInfoCardIds = $arResult["PROPERTY_{$arResult['PROPERTIES']['DETAIL_INFO_CARD']['ID']}"];
-}
+$arrDetailInfoCardIds = $arResult["PROPERTY_{$arResult['PROPERTIES']['DETAIL_INFO_CARD']['ID']}"];
 
 $APPLICATION->IncludeComponent(
     "sprint.editor:blocks",
