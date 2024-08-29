@@ -196,18 +196,18 @@ $bannerClass = $arResult["PROPERTY_{$properties['CLASS_BANNER_DETAIL']['ID']}"];
                                 <? } ?>
                             </div>
                             <button class="a-tab-nav-button js-a-tab-prev is-prev">
-                        <span class="a-icon size-m">
-                            <svg>
-                                <use xlink:href="/frontend/build/assets/svg-sprite.svg#icon-chevron-left"></use>
-                            </svg>
-                        </span>
+                                <span class="a-icon size-m">
+                                    <svg>
+                                        <use xlink:href="/frontend/build/assets/svg-sprite.svg#icon-chevron-left"></use>
+                                    </svg>
+                                </span>
                             </button>
                             <button class="a-tab-nav-button js-a-tab-next is-next">
-                        <span class="a-icon size-m">
-                            <svg>
-                                <use xlink:href="/frontend/build/assets/svg-sprite.svg#icon-chevron-right"></use>
-                            </svg>
-                        </span>
+                                <span class="a-icon size-m">
+                                    <svg>
+                                        <use xlink:href="/frontend/build/assets/svg-sprite.svg#icon-chevron-right"></use>
+                                    </svg>
+                                </span>
                             </button>
                         </div>
                     </div>
@@ -219,11 +219,11 @@ $bannerClass = $arResult["PROPERTY_{$properties['CLASS_BANNER_DETAIL']['ID']}"];
                                 <div class="a-collapsed-item js-a-collapsed-item">
                                     <div class="benefit-text-card">
                                         <div class="benefit-text-card__icon">
-                                        <span class="a-icon size-xll">
-                                            <svg>
-                                                <use xlink:href="/frontend/build/assets/svg-sprite.svg#icon-a-money-out"></use>
-                                            </svg>
-                                        </span>
+                                            <span class="a-icon size-xll">
+                                                <svg>
+                                                    <use xlink:href="/frontend/build/assets/svg-sprite.svg#icon-a-money-out"></use>
+                                                </svg>
+                                            </span>
                                         </div>
                                         <h3 class="benefit-text-card__title headline-3"><?= $advantagesItem['NAME'] ?></h3>
                                         <p class="benefit-text-card__description body-m-light"><?= $advantagesItem['DESCRIPTION'] ?></p>
@@ -232,14 +232,14 @@ $bannerClass = $arResult["PROPERTY_{$properties['CLASS_BANNER_DETAIL']['ID']}"];
                             <? } ?>
                         </div>
                         <button data-hidden-text="Скрыть" data-visible-text="Еще преимущества" class="a-button a-collapsed-button js-a-collapsed-button is-hidden a-button--lm a-button--primary a-button--text">
-                        <span class="js-a-collapsed-button-text">
-                            Еще преимущества
-                        </span>
+                            <span class="js-a-collapsed-button-text">
+                                Еще преимущества
+                            </span>
                             <span class="a-icon a-button__icon">
-                            <svg>
-                                <use xlink:href="/frontend/build/assets/svg-sprite.svg#icon-chevron-down"></use>
-                            </svg>
-                        </span>
+                                <svg>
+                                    <use xlink:href="/frontend/build/assets/svg-sprite.svg#icon-chevron-down"></use>
+                                </svg>
+                            </span>
                         </button>
                     </div>
                 </div>
