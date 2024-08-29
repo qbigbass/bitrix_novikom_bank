@@ -1,6 +1,7 @@
 <?
 
 use Bitrix\Main\Application;
+use Galago\Frontend\Asset;
 
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 
@@ -17,6 +18,8 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /** @var CBitrixComponent $component */
 
 $this->setFrameMode(true);
+
+Asset::getInstance()->addJsAndCss('mir-credit-supreme');
 
 $request = Application::getInstance()->getContext()->getRequest()->toArray();
 $properties = $arResult['PROPERTIES'];
@@ -288,7 +291,13 @@ $bannerClass = $arResult["PROPERTY_{$properties['CLASS_BANNER_DETAIL']['ID']}"];
 
 <?
 // вывод информации из конструктора
-$arrDetailInfoCardIds = $arResult["PROPERTY_{$arResult['PROPERTIES']['DETAIL_INFO_CARD']['ID']}"];
+$arrDetailInfoCardIds = [];
+
+if (!$arResult['generalPage']) {
+    $arrDetailInfoCardIds = $arResult['generalPageTabs'];
+} else {
+    $arrDetailInfoCardIds = $arResult["PROPERTY_{$arResult['PROPERTIES']['DETAIL_INFO_CARD']['ID']}"];
+}
 
 $APPLICATION->IncludeComponent(
     "sprint.editor:blocks",

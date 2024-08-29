@@ -2,6 +2,7 @@
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 
 use Bitrix\Main\Application;
+use Galago\Frontend\Asset;
 
 /** @var array $arParams */
 /** @var array $arResult */
@@ -15,6 +16,8 @@ use Bitrix\Main\Application;
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
+
+Asset::getInstance()->addJsAndCss('showcase-of-cards');
 
 $request = Application::getInstance()->getContext()->getRequest()->toArray();
 ?>
@@ -120,7 +123,7 @@ $request = Application::getInstance()->getContext()->getRequest()->toArray();
                                             <div class="product-card__conditions-box">
                                                 <div class="product-card__conditions">
 
-                                                    <? if ( isset($sectionItem['PROPERTIES']['SERVICE']['VALUE']) ) { ?>
+                                                    <? if ( isset($sectionItem['PROPERTIES']['SERVICE']['VALUE']) && !empty($sectionItem['PROPERTIES']['SERVICE']['VALUE']) ) { ?>
                                                         <div class="text-indicating-benefits">
                                                             <div class="text-indicating-benefits-head">
                                                                 <span class="number-l-heavy"><?= $sectionItem['PROPERTIES']['SERVICE']['VALUE'] ?></span>
