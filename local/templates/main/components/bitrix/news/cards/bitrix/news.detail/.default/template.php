@@ -19,7 +19,12 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 
 $this->setFrameMode(true);
 
-Asset::getInstance()->addJsAndCss('mir-credit-supreme');
+if ($arResult['generalPage']) {
+    Asset::getInstance()->addJsAndCss('mir-credit-supreme');
+} else {
+    Asset::getInstance()->addJsAndCss('spc-for-employees');
+}
+
 
 $request = Application::getInstance()->getContext()->getRequest()->toArray();
 $properties = $arResult['PROPERTIES'];
