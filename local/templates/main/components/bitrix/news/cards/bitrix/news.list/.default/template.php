@@ -49,9 +49,11 @@ $request = Application::getInstance()->getContext()->getRequest()->toArray();
             </div>
         </div>
     </div>
-    <div class="text-banner__pattern">
-        <img src="/frontend/build/assets/text-banner-pattern.svg">
-    </div>
+    <picture class="pattern-bg">
+        <source srcset="/frontend/build/assets/patterns/section/pattern-dark-s.svg" media="(max-width: 767px)">
+        <source srcset="/frontend/build/assets/patterns/section/pattern-dark-m.svg" media="(max-width: 1199px)">
+        <img src="/frontend/build/assets/patterns/section/pattern-dark-l.svg" alt="bg pattenr" loading="lazy">
+    </picture>
 </div>
 
 <? /* Вывод элементов */ ?>

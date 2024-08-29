@@ -27,10 +27,10 @@ $bannerClass = $arResult["PROPERTY_{$properties['CLASS_BANNER_DETAIL']['ID']}"];
 ?>
 
 <div class="product-card-banner <?= !empty($bannerClass) ? $bannerClass : '' ?> ">
-    <picture class="product-card-banner__pattern">
-        <source srcset="/frontend/build/assets/hero-banner-spc-bg_tablet.svg" media="(max-width: 768px)">
-        <source srcset="/frontend/build/assets/hero-banner-spc-bg_laptop.svg" media="(max-width: 1200px)">
-        <img src="/frontend/build/assets/hero-banner-spc-bg.svg" alt="">
+    <picture class="pattern-bg product-card-banner__pattern">
+        <source srcset="/frontend/build/assets/patterns/section/pattern-dark-s.svg" media="(max-width: 767px)">
+        <source srcset="/frontend/build/assets/patterns/section/pattern-dark-m.svg" media="(max-width: 1199px)">
+        <img src="/frontend/build/assets/patterns/section/pattern-dark-l.svg" alt="bg pattenr" loading="lazy">
     </picture>
     <div class="product-card-banner__wrapper">
         <div class="product-card-banner__content">
