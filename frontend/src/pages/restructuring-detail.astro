@@ -1,0 +1,159 @@
+---
+import DefaultPageLayout from "../layouts/DefaultPageLayout.astro";
+import SectionSeeAlso from "../components/sections/SectionSeeAlso.astro";
+import TextBanner from "../components/banners/TextBanner.astro";
+import SectionBenefitsLayout from "../components/layouts/SectionBenefitsLayout.astro";
+import AAccordionPanel from "../components/ui/AAccordion/AAccordionPanel.astro";
+import SectionHelpContentLayout from "../components/layouts/SectionHelpLayout/SectionHelpContentLayout.astro";
+import ARte from "../components/ARte.astro";
+import AAccordion from "../components/ui/AAccordion/AAccordion.astro";
+import ATabPanel from "../components/ui/ATabs/common/ATabPanel.astro";
+import AddInfoItemLayout from "../components/layouts/AddInfoLayout/AddInfoItemLayout.astro";
+import ATab from "../components/ui/ATabs/common/ATab/ATab.astro";
+import AList from "../components/ui/AList/AList.astro";
+import AButton from "../components/ui/Buttons/AButton.astro";
+import FormCallMeBack from "../components/common/FormCallMeBack/FormCallMeBack.astro";
+import AddInfoLayout from "../components/layouts/AddInfoLayout/AddInfoLayout.astro";
+import AAccordionHeader from "../components/ui/AAccordion/AAccordionHeader.astro";
+import AAccordionContent from "../components/ui/AAccordion/AAccordionContent.astro";
+import SectionHelpLayout from "../components/layouts/SectionHelpLayout/SectionHelpLayout.astro";
+import PageBanner from "../components/common/Banners/PageBanner.astro";
+import ATag from "../components/ui/ATag/ATag.astro";
+import BenefitCardsLayout from "../components/layouts/BenefitCardsLayout.astro";
+import DisplayStepperItem from "../components/common/DisplayStepper/DisplayStepperItem.astro";
+import SectionLayout from "@components/layouts/SectionLayout.astro";
+import AHelper from "@components/common/AHelper.astro";
+import APolygonContainer from "@components/common/APolygonContainer/APolygonContainer.astro";
+import DisplayStepper from "@components/common/DisplayStepper/DisplayStepper.astro";
+
+const breadcrumbs = [
+    {
+        title: "Частным клиентам",
+        url: "#",
+    },
+    {
+        title: "Кредиты",
+        url: "#",
+    },
+    {
+        title: "Реструктуризация",
+        url: "#",
+    },
+];
+
+const benefitCards = [
+    {
+        description: "Изменение графика платежей по&nbsp;погашению основного долга и/или процентов",
+        iconId: "icon-a-money-on",
+		isIconImage: true
+    },
+    {
+        description: "Отсрочка по&nbsp;погашению основного долга на&nbsp;срок не&nbsp;более 12&nbsp;месяцев",
+        iconId: "icon-a-money",
+		isIconImage: true
+    },
+    {
+        description: "Предоставление заемщику кредитных каникул, предусматривающих приостановление исполнения заемщиком своих обязательств по&nbsp;кредитному договору, на&nbsp;срок до&nbsp;6&nbsp;месяцев с&nbsp;последующим увеличением срока кредита",
+        iconId: "icon-a-date",
+		isIconImage: true
+    },
+	{
+        description: "Пролонгация срока возврата кредита (в&nbsp;пределах срока, установленного соответствующей программой кредитования) с&nbsp;одновременным уменьшением размера ежемесячных платежей по&nbsp;кредитному договору",
+        iconId: "icon-a-money",
+		isIconImage: true
+    },
+    {
+        description: "Иные варианты (по&nbsp;согласованию с&nbsp;Банком)",
+        iconId: "icon-a-date",
+		isIconImage: true
+    },
+];
+---
+
+<DefaultPageLayout title="Реструктуризация по программе Банка">
+    <TextBanner
+        title="Реструктуризация <br>по программе Банка"
+        breadcrumbs={breadcrumbs}
+        backgroundColor="blue"
+    />
+    <SectionLayout>
+        <div class="content-container">
+            <APolygonContainer color="green-100">
+                <AHelper class="dark-10" image="helper-icon.png">
+                    <p class="body-l-light">
+                        Основанием для проведения реструктуризации
+                        по&nbsp;программе Банка является снижение дохода
+                        заемщика (совокупного дохода всех заемщиков),
+                        в&nbsp;результате которого среднемесячные выплаты
+                        по&nbsp;исполнению обязательств перед Банком
+                        превысили&nbsp;60% от&nbsp;текущего ежемесячного дохода
+                        заемщика (совокупного дохода всех заемщиков).
+                    </p>
+                </AHelper>
+            </APolygonContainer>
+        </div>
+    </SectionLayout>
+	<SectionBenefitsLayout
+		title="Возможные варианты реструктуризации"
+		benefits={benefitCards}
+	/>
+	<SectionLayout bgColor="gray">
+		<div class="content-container">
+			<AAccordion type="layout">
+				<AAccordionPanel>
+					<AAccordionHeader class="a-accordion-header--mobile-only">
+						<h3 class="headline-2">Как реструктуризировать задолженность</h3>
+					</AAccordionHeader>
+					<AAccordionContent class="a-accordion-content--hide-mobile">
+						
+							<div class="a-accordion-content__wrapper">
+								<h3 class="headline-2 a-accordion-content__title">
+									Как реструктуризировать задолженность
+								</h3>
+
+								<DisplayStepper steps={3}>
+									<DisplayStepperItem number={1}>
+										<h3 class="headline-3">Предоставить <br>в&nbsp;Банк документы</h3>
+										<ARte class="body-l-light">
+											<p>
+												Заявление об&nbsp;изменении условий договора и&nbsp;документы, подтверждающие снижение дохода. Заявление может быть оформлено заемщиком в&nbsp;офисе Банка, может быть направлено заемщиком в&nbsp;Банк с&nbsp;использованием системы дистанционного банковского обслуживания &laquo;Интер@ктив&raquo;.
+											</p>
+										</ARte>
+									</DisplayStepperItem>
+									<DisplayStepperItem number={2}>
+										<h3 class="headline-3">Банк проанализирует вашу ситуацию и&nbsp;примет решение</h3>
+										<ARte class="body-l-light">
+											<p>
+												Срок рассмотрения заявок на&nbsp;реструктуризацию составляет до&nbsp;10&nbsp;рабочих дней с&nbsp;даты предоставления полного пакета необходимых документов.
+											</p>
+										</ARte>
+									</DisplayStepperItem>
+									<DisplayStepperItem number={3}>
+										<h3 class="headline-3">Одобрение <br>реструктуризации</h3>
+										<ARte class="body-l-light">
+											<p>Если реструктуризация одобрена, подписать дополнительное соглашение к&nbsp;кредитному договору и&nbsp;прочей кредитно-обеспечительной документации (при наличии).</p>
+										</ARte>
+									</DisplayStepperItem>
+								</DisplayStepper>
+								
+							</div>
+						</ATabs>
+					</AAccordionContent>
+				</AAccordionPanel>
+			</AAccordion>
+		</div>
+	</SectionLayout>
+	<SectionLayout>
+        <div class="content-container">
+            <APolygonContainer color="green-100">
+                <AHelper class="dark-10" image="helper-icon.png">
+                    <p class="body-l-light">
+                        Обратите внимание, что после изменения условий кредитного договора может увеличиться переплата по&nbsp;процентам&nbsp;и, как следствие, полная стоимость кредита. Кроме того, при подаче заявления об&nbsp;изменении условий договора Банк имеет право приостановить возможность проведения расходных операций по&nbsp;картам с&nbsp;лимитом кредитования.
+                    </p>
+                </AHelper>
+            </APolygonContainer>
+        </div>
+    </SectionLayout>
+
+    <SectionSeeAlso />
+</DefaultPageLayout>

@@ -1,0 +1,163 @@
+---
+import SectionLayout from "@components/layouts/SectionLayout.astro";
+import ABreadcrumbs from "@components/ui/ABreadcrumbs/ABreadcrumbs.astro";
+import ATag from "@components/ui/ATag/ATag.astro";
+import DefaultPageLayout from "src/layouts/DefaultPageLayout.astro";
+import NewsLayout from "@components/layouts/NewsLayout.astro";
+import AHelper from "@components/common/AHelper.astro";
+import ARte from "@components/ARte.astro";
+import APolygonContainer from "@components/common/APolygonContainer/APolygonContainer.astro";
+
+const breadcrumbs = [
+    {
+        title: "О банке",
+        url: "#",
+    },
+    {
+        title: "Пресс-центр",
+        url: "#",
+    },
+];
+
+// детальная страница новостей
+---
+
+<DefaultPageLayout title="МСБ Главная">
+    <SectionLayout class="section-news-item">
+        <div class="content-container">
+            <ABreadcrumbs dark links={breadcrumbs} />
+            <NewsLayout
+                title="НОВИКОМ разместил средства Гарантийного фонда Чеченской Республики"
+            >
+                <Fragment slot="info">
+                    <ATag outline>Пресс-центр</ATag>
+                    <span class="body-m-light">07.08.2024</span>
+                </Fragment>
+                <Fragment slot="body">
+                    <ARte class="body-l-light">
+                        <img src="assets/news-temp-1.png" alt="" loading="lazy" />
+                        <p>
+                            <strong>
+                                Дочерний банк Госкорпорации Ростех опубликовал
+                                бухгалтерскую отчетность (РСБУ) за&nbsp;первое
+                                полугодие 2024&nbsp;года. Чистая прибыль
+                                НОВИКОМа на&nbsp;01&nbsp;июля составила 13,6
+                                млрд рублей. Это более чем в&nbsp;два раза
+                                превышает показатель за&nbsp;аналогичный период
+                                прошлого года. Рост обусловлен качественным
+                                кредитным портфелем, а&nbsp;также высокой
+                                эффективностью и&nbsp;динамикой бизнеса банка.
+                            </strong>
+                        </p>
+                        <h2>Заголовок абзаца</h2>
+                        <p>
+                            Активы НОВИКОМа на&nbsp;01&nbsp;июля 2024 года
+                            составили 926,7 млрд рублей, что на&nbsp;21,8%
+                            больше показателя за&nbsp;аналогичный период
+                            прошлого года. Собственные средства (капитал)
+                            за&nbsp;1&nbsp;полугодие 2024 года выросли
+                            на&nbsp;16%&nbsp;&mdash; с&nbsp;93,1 млрд рублей
+                            до&nbsp;108 млрд рублей.
+                        </p>
+                        <h3>Подзаголовок абзаца</h3>
+                        <ul>
+                            <li>Эксперт РА</li>
+                            <li>
+                                АКРА и&nbsp;НКР присвоили НОВИКОМу рейтинг
+                                на&nbsp;уровне АА-
+                            </li>
+                            <li>НРА на&nbsp;уровне&nbsp;АА</li>
+                        </ul>
+                        <p>
+                            По&nbsp;итогам отчетного периода чистый процентный
+                            доход НОВИКОМа составил 25 441,3 млн рублей, что
+                            выше аналогичного показателя 2023 года
+                            на&nbsp;87,8%. Чистые комиссионные доходы банка
+                            составили 908,4 млн рублей, продемонстрировав рост
+                            по&nbsp;сравнению с&nbsp;аналогичным периодом
+                            прошлого года на&nbsp;11,3%.
+                        </p>
+                        <h2>Новые процентные ставки</h2>
+                        <!-- TODO: тут таблица -->
+                        <p>
+                            Положительные финансовые результаты деятельности
+                            НОВИКОМа, который весной провел ребрендинг,
+                            обусловлены устойчивым бизнес-профилем,
+                            стабильностью ресурсной базы и&nbsp;ликвидности,
+                            высоким уровнем достаточности капитала. Эффективное
+                            развитие бизнеса банка и&nbsp;его лидирующие позиции
+                            среди крупнейших кредитных организаций подтверждают
+                            высокие кредитные рейтинги со&nbsp;стабильным
+                            прогнозом от&nbsp;всех рейтинговых агентств России:
+                        </p>
+                        <ul>
+                            <li>Эксперт РА</li>
+                            <li>
+                                АКРА и&nbsp;НКР присвоили НОВИКОМу рейтинг
+                                на&nbsp;уровне АА-
+                            </li>
+                            <li>НРА на&nbsp;уровне&nbsp;АА</li>
+                            <li>Эксперт РА</li>
+                            <li>
+                                АКРА и&nbsp;НКР присвоили НОВИКОМу рейтинг
+                                на&nbsp;уровне АА-
+                            </li>
+                            <li>НРА на&nbsp;уровне&nbsp;АА</li>
+                        </ul>
+                    </ARte>
+
+                    <APolygonContainer color="violet-100">
+                        <AHelper
+                            image="helper-icon.png"
+                            class="dark-10"
+                            title="Для держателей зарплатных карт Банка"
+                        >
+                            <p class="body-l-light">
+                                Под зарплатной картой понимается действующая
+                                банковская карта, выпущенная на&nbsp;имя заемщика
+                                в&nbsp;рамках договора о&nbsp;зарплатном
+                                обслуживании, заключенного между Банком
+                                и&nbsp;организацией&nbsp;&mdash; работодателем
+                                клиента
+                            </p>
+                        </AHelper>
+                    </APolygonContainer>
+
+                    <ARte class="body-l-light">
+                        <img src="assets/news-temp-2.png" alt="" loading="lazy" />
+                        <p>
+                            НОВИКОМ более 30&nbsp;лет содействует наращиванию производства инновационной промышленной продукции, модернизации предприятий, проведению научных исследований. Для бесперебойного финансирования высотехнологичных предприятий и&nbsp;обеспечения доступности заемных средств для отрасли банк направляет ресурсы на&nbsp;разработанные совместно с&nbsp;акционером преференциальные программы кредитования. Помимо этого, НОВИКОМ аккредитован во&nbsp;всех профильных механизмах господдержки промышленности.
+                        </p>
+                        <p>
+                            Новиком выделил поддержку кадров промышленности в&nbsp;отдельное направление работы. <br>
+В&nbsp;целях поддержки человеческого капитала Госкорпорации НОВИКОМ регулярно расширяет свою продуктовую розничную линейку, актуализирует условия мотивационной программы &laquo;Развитие&raquo;.
+                        </p>
+                    </ARte>
+                    <APolygonContainer class="a-polygon-container--for-quote" color="violet-100">
+                        <AHelper
+                            image="quote-image.png"
+                            class="blue-10 a-helper--type-quote"
+                        >
+                            <p class="body-l-quote">
+                                Векторы развития НОВИКОМа полностью синхронизированы с&nbsp;задачами, стоящими перед акционером банка&nbsp;&mdash; Госкорпорацией Ростех. 
+                                Вся заработанная банком прибыль реинвестируется в&nbsp;промышленность, тем самым обеспечивается необходимая финансовая поддержка проектов технологического лидерства страны
+                            </p>
+                            <p class="body-m-heavy violet-100">
+                                рассказала Председатель Правления НОВИКОМа,<br> куратор Воронежского отделения СоюзМаш России Елена Георгиева.
+                            </p>
+                        </AHelper>
+                    </APolygonContainer>
+                </Fragment>
+            </NewsLayout>
+        </div>
+    </SectionLayout>
+</DefaultPageLayout>
+
+<style lang="scss" is:global>
+    @import "@styles/media-queries";
+
+    .section-news-item {
+        border-top: 1px solid var(--blue-30);
+        padding-top: 2.5rem;
+    }
+</style>
