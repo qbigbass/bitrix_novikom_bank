@@ -20,20 +20,40 @@ const {
 	@import "@styles/typography";
 	.a-rte {
 
+		h2 {
+			@extend .headline-2;
+
+			&:not(:first-child) {
+				margin-top: 2.5rem;
+			}
+
+			&:not(:last-child) {
+				margin-bottom: 1.5rem;
+			}
+		}
+
 		h3 {
 			@extend .headline-3;
+
+			&:not(:last-child) {
+				margin-bottom: 1.5rem;
+			}
 		}
 
 		p {
-			margin-bottom: 1rem;
+			margin-bottom: 1.5rem;
 
 			&:last-child {
 				margin-bottom: 0;
 			}
+
+			& strong {
+				@extend .body-l-heavy;
+			}
 		}
 
 		ul {
-			margin: 0.5rem 0;
+			margin: 1.5rem 0;
 			padding-inline-start: 28px;
 
 			li {
@@ -69,6 +89,16 @@ const {
 
 			&:hover {
 				color: var(--violet-100);
+			}
+		}
+
+		img {
+			margin-left: -1.5rem;
+			margin-right: -1.5rem;
+			width: calc(100% + 3rem);
+
+			&:not(:last-child) {
+				margin-bottom: 2.5rem;
 			}
 		}
 	}
