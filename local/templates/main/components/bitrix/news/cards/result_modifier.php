@@ -21,7 +21,7 @@ $arParams['SHARE_SHORTEN_URL_KEY'] = (string)($arParams['SHARE_SHORTEN_URL_KEY']
 // Получение списка разделов для формирования табов
 $sectionQuery = SectionTable::query()
     ->setSelect(['ID', 'NAME', 'CODE'])
-    ->setFilter(['IBLOCK_ID' => iblock('cards')])
+    ->setFilter(['IBLOCK_ID' => $arParams['IBLOCK_ID'], 'ACTIVE' => 'Y'])
     ->setCacheTtl(7200)->exec()->fetchAll();
 
 $arResult['sectionList'] = $sectionQuery;

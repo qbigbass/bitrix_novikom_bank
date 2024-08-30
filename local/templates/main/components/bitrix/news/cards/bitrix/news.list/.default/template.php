@@ -2,6 +2,7 @@
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 
 use Bitrix\Main\Application;
+use Galago\Frontend\Asset;
 
 /** @var array $arParams */
 /** @var array $arResult */
@@ -15,6 +16,8 @@ use Bitrix\Main\Application;
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
+
+Asset::getInstance()->addJsAndCss('showcase-of-cards');
 
 $request = Application::getInstance()->getContext()->getRequest()->toArray();
 ?>
@@ -46,9 +49,11 @@ $request = Application::getInstance()->getContext()->getRequest()->toArray();
             </div>
         </div>
     </div>
-    <div class="text-banner__pattern">
-        <img src="/frontend/build/assets/text-banner-pattern.svg">
-    </div>
+    <picture class="pattern-bg">
+        <source srcset="/frontend/build/assets/patterns/section/pattern-dark-s.svg" media="(max-width: 767px)">
+        <source srcset="/frontend/build/assets/patterns/section/pattern-dark-m.svg" media="(max-width: 1199px)">
+        <img src="/frontend/build/assets/patterns/section/pattern-dark-l.svg" alt="bg pattenr" loading="lazy">
+    </picture>
 </div>
 
 <? /* Вывод элементов */ ?>
@@ -120,7 +125,7 @@ $request = Application::getInstance()->getContext()->getRequest()->toArray();
                                             <div class="product-card__conditions-box">
                                                 <div class="product-card__conditions">
 
-                                                    <? if ( isset($sectionItem['PROPERTIES']['SERVICE']['VALUE']) ) { ?>
+                                                    <? if ( isset($sectionItem['PROPERTIES']['SERVICE']['VALUE']) && !empty($sectionItem['PROPERTIES']['SERVICE']['VALUE']) ) { ?>
                                                         <div class="text-indicating-benefits">
                                                             <div class="text-indicating-benefits-head">
                                                                 <span class="number-l-heavy"><?= $sectionItem['PROPERTIES']['SERVICE']['VALUE'] ?></span>
@@ -238,13 +243,17 @@ $request = Application::getInstance()->getContext()->getRequest()->toArray();
                                                     <button type="button" class="a-button a-button--lm a-button--green">
                                                         Оформить заявку
                                                     </button>
-                                                    <a href="<?= $sectionItem['DETAIL_PAGE_URL'] ?>" class="a-button a-button--lm a-button--primary a-button--link a-button--text">Подробнее
-                                                        <span class="a-icon a-button__icon">
-                                                            <svg>
-                                                                <use xlink:href="/frontend/build/assets/svg-sprite.svg#icon-chevron-right"></use>
-                                                            </svg>
-                                                        </span>
-                                                    </a>
+
+                                                    <? if (!empty($sectionItem['PROPERTIES']['DETAIL_INFO_CARD']['VALUE'])) { ?>
+                                                        <a href="<?= count($sectionItem['anchoredElements']) > 1 ? $sectionItem['DETAIL_PAGE_URL'] . $sectionItem['anchoredElements'][0]['CODE'] .'/'  : $sectionItem['DETAIL_PAGE_URL'] ?>" class="a-button a-button--lm a-button--primary a-button--link a-button--text">Подробнее
+                                                            <span class="a-icon a-button__icon">
+                                                                <svg>
+                                                                    <use xlink:href="/frontend/build/assets/svg-sprite.svg#icon-chevron-right"></use>
+                                                                </svg>
+                                                            </span>
+                                                        </a>
+                                                    <? } ?>
+
                                                 </div>
                                             </div>
                                         </div>
