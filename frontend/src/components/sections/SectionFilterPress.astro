@@ -10,6 +10,7 @@ import ATabSwiper from "../ui/ATabs/common/ATabSwiper/ATabSwiper.astro";
 import AInputField from "../ui/AInput/AInputField.astro";
 import FormRow from "../layouts/FormLayout/FormRow.astro";
 import PressCard from "../common/PressCard/PressCard.astro";
+import APaginator from "../ui/APaginator/APaginator.astro";
 
 const tempNews = [
     {
@@ -120,6 +121,9 @@ const tempNews = [
             />
         ))}
     </div>
+    <div class="section-filter-press__paginator">
+        <APaginator />
+    </div>
 </div>
 
 <style lang="scss" is:global>
@@ -179,6 +183,18 @@ const tempNews = [
                 grid-template-columns: repeat(3, 1fr);
                 column-gap: 2.5rem;
                 row-gap: 3rem;
+            }
+        }
+
+        &__paginator {
+            margin-top: 2.5rem;
+
+            @include use-media(tablet) {
+                margin-top: 2rem;
+            }
+
+            @include use-media(tablet-album) {
+                margin-top: 3rem;
             }
         }
     }

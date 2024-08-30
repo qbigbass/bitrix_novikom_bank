@@ -1,0 +1,115 @@
+---
+import AIcon from "../../AIcon.astro";
+import APaginatorItem from "./APaginatorItem.astro";
+import APaginatorMore from "./APaginatorMore.astro";
+import APaginatorSelect from "./APaginatorSelect.astro";
+
+interface Props {
+    class?: string;
+    page: number;
+    totalPages: number;
+}
+
+let {
+    class: classList,
+    page= 1,
+    totalPages= 10,
+    ...rest
+} = Astro.props as Props;
+
+page = Math.max(1, Math.min(page, totalPages));  // Убедитесь, что страница в пределах от 1 до totalPages
+
+const pagesToShow: (number | 'dots')[] = [];
+const showDots = totalPages > 5;
+
+const addRange = (start: number, end: number) => {
+    for (let i = start; i <= end; i++) {
+        pagesToShow.push(i);
+    }
+}
+
+if (page <= 3) {
+    addRange(1, Math.min(4, totalPages));
+    if (showDots) pagesToShow.push('dots');
+} else if (page >= totalPages - 2) {
+    if (showDots) pagesToShow.push('dots');
+    addRange(Math.max(totalPages - 3, 1), totalPages);
+} else {
+    pagesToShow.push(1);
+    if (showDots && page > 3) pagesToShow.push('dots');
+    addRange(page - 1, page + 1);
+    if (showDots && page < totalPages - 2) pagesToShow.push('dots');
+}
+
+if (!pagesToShow.includes(totalPages)) {
+    pagesToShow.push(totalPages);
+}
+---
+
+<div
+    class:list={[
+        'a-paginator',
+        classList
+    ]}
+    {...rest}
+>
+    <div class="a-paginator__content">
+        {
+            page > 1 && (
+                <a href="#" class="a-paginator__icon">
+                    <AIcon symbolId="icon-chevron-left" size="m" />
+                </a>
+            )
+        }
+        <div class="a-paginator__items">
+            {
+                pagesToShow.map((pageNumber) =>
+                pageNumber === 'dots' ? (
+                    <APaginatorMore>...</APaginatorMore>
+                ) : (
+                    <APaginatorItem selected={page === pageNumber}>{pageNumber}</APaginatorItem>
+                ))
+            }
+        </div>
+        {
+            page < totalPages && (
+                <a href="#" class="a-paginator__icon">
+                    <AIcon symbolId="icon-chevron-right" size="m" />
+                </a>
+            )
+        }
+    </div>
+</div>
+
+
+<style lang="scss" is:global>
+    @import "@styles/media-queries";
+
+    .a-paginator {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &__content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+
+            @include use-media(tablet) {
+                justify-content: normal;
+            }
+        }
+
+
+        &__icon {
+            display: flex;
+            color: var(--violet-100);
+        }
+
+        &__items {
+            display: flex;
+            gap: 1rem;
+        }
+    }
+</style>
