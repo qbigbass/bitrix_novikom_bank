@@ -1,6 +1,10 @@
 ---
 import PatternBg from "@components/common/Pattern/PatternBg.astro";
 import ABreadcrumbs from "../ui/ABreadcrumbs/ABreadcrumbs.astro";
+
+type BackgroundColor = 'blue' | 'heavy-purple' | 'heavy-violet';
+type BorderColor = 'green' | 'orange';
+
 interface Breadcrumb {
 	title: string;
 	url: string;
@@ -10,9 +14,9 @@ interface Props {
 	breadcrumbs?: Breadcrumb[];
 	title?: string;
 	description?: string;
-	backgroundColor?: 'blue' | 'heavy-purple' | 'heavy-violet';
+	backgroundColor?: BackgroundColor;
+    borderColor?: BorderColor;
     img?: string;
-	type?: string;
 }
 
 const {
@@ -20,15 +24,15 @@ const {
 	title,
 	description,
 	backgroundColor = 'blue',
+    borderColor,
     img,
-	type,
 } = Astro.props as Props;
 ---
 
 <div class:list={[
 	'text-banner',
 	`text-banner--${backgroundColor}`,
-	`${type ? `text-banner--type-${type}` : ''}`,
+    borderColor ? `text-banner--border-${borderColor}` : ''
 ]}>
 	<div class="content-container">
         <div class="text-banner__inner">
@@ -57,10 +61,32 @@ const {
 	@import "@styles/media-queries";
 
 	.text-banner {
+        --border-thickness: 0.5rem;
 		position: relative;
-		border-top: 0.5rem solid var(--green-100);
 		min-height: 20rem;
 		overflow: hidden;
+
+        //BACKGROUND COLORS
+        &.text-banner--blue {
+            background: linear-gradient(42.24deg, #383A74 20%, #2E1B52 80%);
+        }
+
+        &.text-banner--heavy-purple {
+            background: linear-gradient(222.24deg, #101317 20%, #5A2375 80%);
+        }
+
+        &.text-banner--heavy-violet {
+            background: linear-gradient(222.24deg, #101317 20%, #6655A2 80%);
+        }
+
+        //BORDER COLORS
+        &.text-banner--border-green {
+            border-top: var(--border-thickness) solid var(--green-100);
+        }
+
+        &.text-banner--border-orange {
+            border-top: var(--border-thickness) solid var(--orange-100);
+        }
 
         &__inner {
             display: flex;
@@ -107,21 +133,5 @@ const {
 		@include use-media(tablet-album) {
 			min-height: 25rem;
 		}
-
-		&--type-corp {
-			border-top-color: var(--orange-100);
-		}
-
-		&--blue {
-			background: linear-gradient(42.24deg, #383A74 20%, #2E1B52 80%);
-		}
-
-		&--heavy-purple {
-            background: linear-gradient(222.24deg, #101317 20%, #5A2375 80%);
-        }
-
-        &--heavy-violet {
-            background: linear-gradient(222.24deg, #101317 20%, #6655A2 80%);
-        }
 	}
 </style>

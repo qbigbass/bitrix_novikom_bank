@@ -1,12 +1,12 @@
 ---
 interface Props {
-	className?: string;
+	class?: string;
 	value: string;
 	selected?: boolean;
 }
 
 const {
-	class: className,
+	class: classList,
 	value,
 	selected = false,
 	...rest
@@ -15,12 +15,8 @@ const {
 ---
 
 <button
-	class="a-drop-down-button btn-m-heavy js-a-drop-down-button"
-	class:list={
-		[
-			className
-		]
-	}
+	class="a-drop-down-button js-a-drop-down-button"
+	class:list={classList}
 	type="button"
 	data-value={value}
 	aria-selected={[selected]}
@@ -39,24 +35,18 @@ const {
 		width: 100%;
 		text-align: left;
 		cursor: pointer;
-		padding: 0.938rem 1rem;
+		padding: 1rem;
 		background-color: var(--dark-0);
+        transition: color ease .33s;
 
-		@include use-media(tablet) {
-			padding: 1rem;
-		}
-
-		@include use-media(tablet-album) {
-			padding: 1.125rem 1rem;
-		}
-
-		&:hover {
+		&:hover:not(&[aria-selected=true]) {
 			color: var(--blue-100);
 		}
 
 		&[aria-selected=true] {
 			background-color: var(--dark-30);
 			color: var(--blue-100);
+            pointer-events: none;
 		}
 	}
 </style>

@@ -4,7 +4,7 @@ import CalculatorLayout from "../layouts/CalculatorLayout.astro";
 import CalculatorResult from "../common/CalculatorResult/CalculatorResult.astro";
 import ASelectInput from "../ui/ASelectInput/ASelectInput.astro";
 import FormRow from "../layouts/FormLayout/FormRow.astro";
-import ADropDownItem from "../ui/ADropDown/ADropDownItem/ADropDownItem.astro";
+import ADropDownButton from "../ui/ADropDown/ADropDownButton/ADropDownButton.astro";
 ---
 
 <CalculatorLayout class="bonus-calculator">
@@ -21,15 +21,33 @@ import ADropDownItem from "../ui/ADropDown/ADropDownItem/ADropDownItem.astro";
         />
         <FormRow cols={2}>
             <ASelectInput size="m" label="Тип карты" placeholder="Выберите" name="cardType">
-                <ADropDownItem selected value="Дебетовая"><span class="body-m-light">Дебетовая</span></ADropDownItem>
-                <ADropDownItem value="Кредитная"><span class="body-m-light">Кредитная</span></ADropDownItem>
-                <ADropDownItem value="Кредитная 2"><span class="body-m-light">Кредитная 2</span></ADropDownItem>
+                <ADropDownButton
+                    selected
+                    class="body-m-light"
+                    value="Дебетовая"
+                >
+                    Дебетовая
+                </ADropDownButton>
+                <ADropDownButton class="body-m-light" value="Кредитная">
+                    Кредитная
+                </ADropDownButton>
+                <ADropDownButton
+                    class="body-m-light"
+                    value="Кредитная 2"
+                >
+                    Кредитная 2
+                </ADropDownButton>
             </ASelectInput>
-
             <ASelectInput size="m" label="Категория основной карты" placeholder="Выберите" name="cardCategory">
-                <ADropDownItem  value="Premium"><span class="body-m-light">Premium</span></ADropDownItem>
-                <ADropDownItem selected value="Standard"><span class="body-m-light">Standard</span></ADropDownItem>
-                <ADropDownItem value="Premium 2"><span class="body-m-light">Premium 2</span></ADropDownItem>
+                <ADropDownButton class="body-m-light" value="Premium">Premium</ADropDownButton>
+                <ADropDownButton
+                    selected
+                    class="body-m-light"
+                    value="Standard"
+                >
+                    Standard
+                </ADropDownButton>
+                <ADropDownButton class="body-m-light" value="Premium 2">Premium 2</ADropDownButton>
             </ASelectInput>
         </FormRow>
     </Fragment>
@@ -46,10 +64,8 @@ import ADropDownItem from "../ui/ADropDown/ADropDownItem/ADropDownItem.astro";
     @import "@styles/media-queries";
 
     .bonus-calculator {
-
         & .calculator-layout {
             &__form {
-
                 @include use-media(tablet-album) {
                     padding-left: 0;
                 }

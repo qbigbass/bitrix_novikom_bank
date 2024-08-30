@@ -1,7 +1,6 @@
 ---
 import ProductCard from "../common/ProductCard/ProductCard.astro";
 import ATab from "../ui/ATabs/common/ATab/ATab.astro";
-import ATabPanel from "../ui/ATabs/common/ATabPanel.astro";
 import SectionCatalogLayout from "../layouts/SectionCatalogLayout.astro";
 import ProductList from "../layouts/ProductList.astro";
 
@@ -277,7 +276,7 @@ const allLoans = [
 						conditions={card.conditions}
 						links={card.links}
 						tagText={card.tagText}
-						textButton={`card.textButton ? card.textButton : ""`}
+						textButton={card.textButton ? card.textButton : ""}
 					/>
 				))
 			}
