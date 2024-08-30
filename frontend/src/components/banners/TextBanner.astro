@@ -1,4 +1,5 @@
 ---
+import PatternBg from "@components/common/Pattern/PatternBg.astro";
 import ABreadcrumbs from "../ui/ABreadcrumbs/ABreadcrumbs.astro";
 interface Breadcrumb {
 	title: string;
@@ -12,6 +13,7 @@ interface Props {
 	backgroundColor?: 'blue' | 'heavy-purple' | 'heavy-violet';
     borderColor?: 'green' | 'none';
     img?: string;
+	type?: string;
 }
 
 const {
@@ -20,13 +22,15 @@ const {
 	description,
 	backgroundColor = 'blue',
     borderColor = 'green',
-    img
+    img,
+	type,
 } = Astro.props as Props;
 ---
 
 <div class:list={[
 	'text-banner',
 	`text-banner--${backgroundColor}`,
+	`${type ? `text-banner--type-${type}` : ''}`,
 	`text-banner--border-${borderColor}`,
 ]}>
 	<div class="content-container">
@@ -49,9 +53,7 @@ const {
             }
         </div>
 	</div>
-	<div class="text-banner__pattern">
-		<img src="/assets/text-banner-pattern.svg" >
-	</div>
+	<PatternBg theme="dark" type="section" />
 </div>
 
 <style lang="scss" is:global>
@@ -101,29 +103,9 @@ const {
 			}
 		}
 
-		&__title, &__description {
+		&__title,
+		&__description {
 			color: var(--dark-0);
-		}
-
-		&__pattern {
-			position: absolute;
-			bottom: -12.75rem;
-			right: -81.5rem;
-			z-index: 0;
-
-			@include use-media(tablet) {
-				bottom: -15.938rem;
-				right: -67.938rem;
-			}
-
-			@include use-media(tablet-album) {
-				right: -61.938rem;
-			}
-
-			@include use-media(laptop-x) {
-				bottom: 0;
-				right: -34.25rem;
-			}
 		}
 
         &__img {
@@ -147,5 +129,21 @@ const {
 		@include use-media(tablet-album) {
 			min-height: 25rem;
 		}
+
+		&--type-corp {
+			border-top-color: var(--orange-100);
+		}
+
+		&--blue {
+			background: linear-gradient(42.24deg, #383A74 20%, #2E1B52 80%);
+		}
+
+		&--heavy-purple {
+            background: linear-gradient(222.24deg, #101317 20%, #5A2375 80%);
+        }
+
+        &--heavy-violet {
+            background: linear-gradient(222.24deg, #101317 20%, #6655A2 80%);
+        }
 	}
 </style>

@@ -1,0 +1,114 @@
+---
+import PatternBg from '../Pattern/PatternBg.astro';
+
+interface Props {
+    title: string;
+    image: string;
+}
+
+const {
+    title,
+    image,
+} = Astro.props as Props;
+
+// карточка рейтинга
+---
+
+<div class="card-rating">
+    <img
+        src={image}
+        alt=""
+        class="card-rating__image"
+        loading="lazy"
+    />
+    <div class="card-rating__content">
+        <h3 class="headline-2">{title}</h3>
+        <slot />
+    </div>
+    <PatternBg type='section-2' />
+</div>
+
+<style lang="scss" is:global>
+    @import "@styles/media-queries";
+
+    .card-rating {
+        border-radius: 0.75rem;
+        padding: 1.5rem 1rem;
+        background-color: var(--blue-10);
+        position: relative;
+        overflow: hidden;
+
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+
+        @include use-media(tablet) {
+            padding: 2rem;
+            gap: 2.5rem;
+        }
+
+        @include use-media(tablet-album) {
+            padding: 2rem 2.5rem;
+            flex-direction: row;
+            align-items: center;
+            gap: 5rem;
+        }
+
+        @include use-media(desktop) {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+
+        &__image {
+            width: 12.5rem; //200px
+            height: 12.5rem; //200px
+            align-self: center;
+
+            @include use-media(tablet) {
+                width: 15rem; //240px
+                height: 15rem; //240px
+                position: absolute;
+                right: 0;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            @include use-media(tablet-album) {
+                width: 17.5rem; //280px
+                height: 17.5rem; //280px
+                position: relative;
+                right: auto;
+                top: auto;
+                transform: none;
+            }
+        }
+
+        &__content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+
+            @include use-media(tablet) {
+                gap: 2.5rem;
+            }
+
+            @include use-media(tablet-album) {
+                gap: 3rem;
+            }
+
+            @include use-media(desktop) {
+                padding-top: 3rem;
+                padding-bottom: 3rem;
+            }
+        }
+
+        &__list {
+            @include use-media(tablet-album) {
+                flex-direction: row;
+                flex-wrap: wrap;
+                column-gap: 5rem;
+                row-gap: 2.5rem;
+            }
+        }
+    }
+</style>

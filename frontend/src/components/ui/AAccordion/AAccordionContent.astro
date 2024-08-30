@@ -34,7 +34,8 @@ const { class: className, ...rest } = Astro.props;
 				padding: 0 2.5rem;
 			}
 
-			& .a-tab-panels {
+			& .a-tab-panels,
+			& .display-stepper {
 				@include use-media(tablet) {
 					grid-area: panels;
 				}

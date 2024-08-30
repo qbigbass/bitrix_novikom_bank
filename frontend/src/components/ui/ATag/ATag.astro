@@ -1,79 +1,108 @@
 ---
+export type Colors = "white";
+
 interface Props {
-	outline?: boolean,
-	class?: string;
+    outline?: boolean;
+    class?: string;
+    color?: Colors;
 }
 
 const {
-	class: className,
-	outline = false,
-	...rest
+    class: className,
+    color,
+    outline = false,
+    ...rest
 } = Astro.props as Props;
 ---
 
-<div class="a-tag"
-	 class:list={[
-		 className,
-		 {'a-tag--outline': outline},
-	 ]}
-	 {...rest}
+<div
+    class:list={[
+        "a-tag",
+        { "a-tag--outline": outline },
+		`${color ? `a-tag--color-${color}` : ""}`,
+		className,
+        { ...rest },
+    ]}
 >
-	<span class="a-tag__content body-s-heavy">
-		<slot />
-	</span>
-	<span class="a-tag__triangle">
-		<svg width="14" height="21" viewBox="0 0 14 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-			<path d="M13.5 19.3486L0.934259 0.5H13.5V19.3486Z" />
-		</svg>
-	</span>
+    <span class="a-tag__content body-s-heavy">
+        <slot />
+    </span>
+    <span class="a-tag__triangle">
+        <svg
+            width="14"
+            height="21"
+            viewBox="0 0 14 21"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <path d="M13.5 19.3486L0.934259 0.5H13.5V19.3486Z"></path>
+        </svg>
+    </span>
 </div>
 
 <style lang="scss" is:global>
-	@use "sass:map";
-	@import "@styles/variables";
+    @use "sass:map";
+    @import "@styles/variables";
 
-	.a-tag {
-		position: relative;
-		display: inline-flex;
-		margin-bottom: 1.313rem;
-		z-index: 1;
+    .a-tag {
+        $root: #{&};
 
-		&__content {
-			color: var(--blue-100);
-			background-color: var(--dark-0);
-			padding: 0.375rem 1rem;
-			border: 1px solid transparent;
+        position: relative;
+        display: inline-flex;
+        margin-bottom: 1.313rem;
+        z-index: 1;
+
+        &__content {
+            color: var(--blue-100);
+            background-color: var(--dark-0);
+            padding: 0.375rem 1rem;
+            border: 1px solid transparent;
+        }
+
+        &__triangle {
+            position: absolute;
+            display: inline-flex;
+            z-index: -1;
+            top: calc(100% - 1px);
+            left: 0;
+
+            svg {
+                path {
+                    fill: var(--blue-30);
+                    stroke: var(--blue-30);
+                }
+            }
+        }
+
+        &--outline {
+            #{$root}__content {
+                border-color: var(--blue-100);
+                background-color: transparent;
+            }
+
+            #{$root}__triangle {
+                svg {
+                    path {
+                        fill: transparent;
+                        stroke: var(--blue-100);
+                    }
+                }
+            }
+        }
+
+		&--color-white {
+			#{$root}__content {
+                border-color: var(--dark-0);
+				color: rgba(#fff, .5);
+            }
+
+            #{$root}__triangle {
+                svg {
+                    path {
+                        stroke: var(--dark-0);
+                    }
+                }
+            }
 		}
-
-		&__triangle {
-			position: absolute;
-			display: inline-flex;
-			z-index: -1;
-			top: calc(100% - 1px);
-			left: 0;
-
-			svg {
-				path {
-					fill: var(--blue-30);
-					stroke: var(--blue-30);
-				}
-			}
-		}
-	}
-
-	.a-tag.a-tag--outline {
-		.a-tag__content {
-			border-color: var(--blue-100);
-			background-color: transparent;
-		}
-
-		.a-tag__triangle {
-			svg {
-				path {
-					fill: transparent;
-					stroke: var(--blue-100);
-				}
-			}
-		}
-	}
+    }
 </style>

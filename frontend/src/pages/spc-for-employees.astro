@@ -37,32 +37,38 @@ const benefitCards = [
 	{
 		title: 'Бесплатное снятие наличных',
 		description: 'В&nbsp;банкоматах любых банков на&nbsp;территории <br>РФ&nbsp;без&nbsp;ограничения количества снятий',
-		iconId: 'icon-a-money-out'
+		iconId: 'icon-a-money-out',
+		isIconImage: true
 	},
 	{
 		title: 'Без комиссии',
 		description: 'До&nbsp;100&nbsp;тыс.&nbsp;₽ в&nbsp;месяц переводы <br>по&nbsp;Системе Быстрых Платежей (СБП)',
-		iconId: 'icon-a-money'
+		iconId: 'icon-a-money',
+		isIconImage: true
 	},
 	{
 		title: 'Бесплатные переводы',
 		description: 'До&nbsp;30&nbsp;млн&nbsp;в&nbsp;месяц&nbsp;между&nbsp;своими счетами <br> в&nbsp;разных банках',
-		iconId: 'icon-a-transfer'
+		iconId: 'icon-a-transfer',
+		isIconImage: true
 	},
 	{
 		title: 'Бесплатное обслуживание',
 		description: 'С&nbsp;первого&nbsp;дня',
-		iconId: 'icon-a-hand-money'
+		iconId: 'icon-a-hand-money',
+		isIconImage: true
 	},
 	{
 		title: 'Бесплатное СМС-информирование',
 		description: 'Обо&nbsp;всех операциях по&nbsp;карте, включая начисление зарплаты',
-		iconId: 'icon-a-notification'
+		iconId: 'icon-a-notification',
+		isIconImage: true
 	},
 	{
 		title: 'Бесплатное пополнение',
 		description: 'банковских карт в банкоматах сторонних банков',
-		iconId: 'icon-a-money-on'
+		iconId: 'icon-a-money-on',
+		isIconImage: true
 	}
 ];
 
@@ -71,19 +77,22 @@ const reliableCards = [
 		title: "Оплата в одно касание",
 		description: "Бесконтактная технология оплаты покупок MirPay",
 		icon: "icon-a-mir-payment",
-		iconColor: "green-100"
+		iconColor: "green-100",
+		isIconImage: true,
 	},
 	{
 		title: "Оплата с помощью смартфона",
 		description: "MirPay и СБПей для смартфонов на ОС Android",
 		icon: "icon-a-mobile-payment",
-		iconColor: "green-100"
+		iconColor: "green-100",
+		isIconImage: true,
 	},
 	{
 		title: "Мир Accept (3D-Secure)",
 		description: "Современная технология защиты для безопасных покупок в интернете",
 		icon: "icon-a-mobile-ready",
-		iconColor: "green-100"
+		iconColor: "green-100",
+		isIconImage: true,
 	}
 ];
 ---
@@ -139,13 +148,14 @@ const reliableCards = [
 			<SectionTitle titleClass="headline-2" usePadding>Надёжно и удобно</SectionTitle>
 			<ExpandableSlider spaceBetween="mobile-s:8,mobile:8,tablet:8,laptop:8">
 				{
-					reliableCards.map(({title, description, icon, iconColor }) => (
+					reliableCards.map(({title, description, icon, isIconImage }) => (
 						<SliderSlide>
 							<BenefitCard
 								title={title}
 								description={description}
 								icon={icon}
 								theme="grey"
+								isIconImage={isIconImage}
 							/>
 						</SliderSlide>
 					))
@@ -155,7 +165,7 @@ const reliableCards = [
 	</SectionLayout>
 	<PageBanner img="/assets/banners/page-banner-1.png">
 		<Fragment slot="tag">
-			<ATag href="#" outline>Услуга</ATag>
+			<ATag outline>Услуга</ATag>
 		</Fragment>
         <h3 slot="title" class="headline-2">Льготные процентные ставки по потребительским кредитам и ипотеке</h3>
         <Fragment>
@@ -305,7 +315,7 @@ const reliableCards = [
 				</SectionHelpContentLayout>
 			</ATabPanel>
 			<ATabPanel value="1">
-				<ATable class="md:in-column" cols="2">
+				<ATable class="md:in-column" cols={2}>
 					<ATableHeader>
 						<ATableRow>
 							<ATableCell class="body-s-light">Первая колонка</ATableCell>
@@ -375,7 +385,7 @@ const reliableCards = [
 							</AAccordionPanel>
 							<AAccordionPanel>
 								<AAccordionHeader>
-									<div class="body-l-light">Взимается ли комиссия за снятие наличных денежных средств в банкоматах,  если моя организация – работодатель  является участником зарплатного проекта Банка?</div>
+									<div class="body-l-light">Взимается ли комиссия за снятие наличных денежных средств в банкоматах, если моя организация – работодатель  является участником зарплатного проекта Банка?</div>
 								</AAccordionHeader>
 								<AAccordionContent>
 									<ARte class="body-m-light">
@@ -427,7 +437,7 @@ const reliableCards = [
 								</AAccordionHeader>
 								<AAccordionContent>
 									<ARte class="body-m-light">
-										<p>Если есть подозрение, что ПИН-код мог стать доступен третьим лицам, незамедлительно заблокируйте карту.   Если ПИН-код не удается вспомнить карту необходимо перевыпустить.</p>
+										<p>Если есть подозрение, что ПИН-код мог стать доступен третьим лицам, незамедлительно заблокируйте карту.  Если ПИН-код не удается вспомнить карту необходимо перевыпустить.</p>
 									</ARte>
 								</AAccordionContent>
 							</AAccordionPanel>

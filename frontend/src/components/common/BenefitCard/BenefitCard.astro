@@ -3,15 +3,18 @@ import AIcon from "../../AIcon.astro";
 import AButton from "../../ui/Buttons/AButton.astro";
 
 type Theme = 'grey' | 'light-blue' |'gradient' | 'white';
+type IconColorClass = 'green-100' | 'orange-100' | 'yellow-100';
 
 interface Props {
-	className?: string;
+	class?: string;
 	theme: Theme;
 	title: string;
-	description: string;
-	icon: string;
+	description?: string;
+	icon?: string;
 	textButton?: string;
 	headerIcon?: string;
+	iconColorClass?: IconColorClass;
+	isIconImage?: boolean;
 }
 
 const {
@@ -21,7 +24,9 @@ const {
 	headerIcon,
 	description,
 	textButton,
-	theme= 'grey'
+	theme= 'grey',
+	iconColorClass = 'green-100',
+	isIconImage = false,
 } = Astro.props as Props;
 
 const btnColorByTheme = () => {
@@ -40,7 +45,7 @@ const btnColorByTheme = () => {
 	<div class="benefit-card__title">
 		{
 			headerIcon && (
-				<AIcon class="benefit-card__icon" symbolId={headerIcon} size="xll" />
+				<AIcon isImage={isIconImage} class={`${iconColorClass}`} symbolId={headerIcon} size="xxl" />
 			)
 		}
 		<div class="headline-3">{title}</div>
@@ -49,7 +54,7 @@ const btnColorByTheme = () => {
 	<div class="benefit-card__footer">
 		{
 			icon && (
-				<AIcon class="benefit-card__icon" symbolId={icon} size="xll" />
+				<AIcon isImage={isIconImage} class={`${iconColorClass}`} symbolId={icon} size="xxl" />
 			)
 		}
 		{
@@ -95,10 +100,6 @@ const btnColorByTheme = () => {
 			@include use-media(tablet-album) {
 				margin-top: 3rem;
 			}
-		}
-
-		&__icon {
-			color: var(--green-100);
 		}
 
 		&.benefit-card--grey {

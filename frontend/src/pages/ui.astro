@@ -47,6 +47,12 @@ import ADropDownButton from "../components/ui/ADropDown/ADropDownButton/ADropDow
 import AInputField from "../components/ui/AInput/AInputField.astro";
 import CardPromo from "@components/common/Cards/CardPromo.astro";
 import CardProduct from "@components/common/Cards/CardProduct.astro";
+import CardContact from "@components/common/Cards/CardContact.astro";
+import CardFeedback from "@components/common/Cards/CardFeedback.astro";
+import DisplayStepper from "@components/common/DisplayStepper/DisplayStepper.astro";
+import DisplayStepperItem from "@components/common/DisplayStepper/DisplayStepperItem.astro";
+import CardRating from "@components/common/Cards/CardRating.astro";
+import CardText from "@components/common/Cards/CardText.astro";
 
 const loan = {
     title: "Кредит на любые цели<br> для зарплатных клиентов",
@@ -131,7 +137,7 @@ const offerCards = [
         buttonText: "Открыть вклад",
         tagText: "Частным клиентам",
         cardColor: "green" as OfferCardColor,
-		textLink: false,
+        textLink: false,
     },
     {
         title: "Ипотека по программе <br>«IT-ипотека»",
@@ -140,7 +146,7 @@ const offerCards = [
         href: "#",
         buttonText: "Подать заявку",
         cardColor: "transparent" as OfferCardColor,
-		textLink: true,
+        textLink: true,
     },
     {
         title: "Кредит<br>на образование",
@@ -153,7 +159,25 @@ const offerCards = [
         buttonText: "Оформить",
         tagText: "Частным клиентам",
         cardColor: "yellow" as OfferCardColor,
-		textLink: false,
+        textLink: false,
+    },
+];
+
+const listConatact = [
+    {
+        href: "tel:+78002507007",
+        text: "+7 (800) 250-70-07",
+        icon: "icon-phone",
+    },
+    {
+        href: "tel:+74959747187",
+        text: "+7 (495) 974-71-87",
+        icon: "icon-phone",
+    },
+    {
+        href: "emailto:garant@novikom.ru",
+        text: "garant@novikom.ru",
+        icon: "icon-mail",
     },
 ];
 ---
@@ -1262,7 +1286,8 @@ const offerCards = [
 
             <div class="ui-grid">
                 <ProductCard
-					imgSrc= "assets/big-illustrations/large-individual/contribution-rentier.png",
+                    imgSrc="assets/big-illustrations/large-individual/contribution-rentier.png"
+                    ,
                     title={loan.title}
                     description={loan.description}
                     symbolId={loan.symbolId}
@@ -1290,7 +1315,7 @@ const offerCards = [
                         <ACollapsedItem>Пятый элемент</ACollapsedItem>
                         <ACollapsedItem>Шестой элемент</ACollapsedItem>
                     </div>
-                    <ACollapsedButton  />
+                    <ACollapsedButton />
                 </ACollapsedItems>
             </div>
         </div>
@@ -1490,6 +1515,190 @@ const offerCards = [
                     />
                 </div>
             </div>
+        </div>
+
+        <div class="ui-section">
+            <SectionTitle class="ui-section-title" titleClass="headline-2"
+                >&lt;CardContact&gt;</SectionTitle
+            >
+
+            <div class="ui-grid ui-gap-2 ui-grid-col-3">
+                <div>
+                    <CardContact
+                        title="Отдел поддержки клиентов МСП"
+                        backgoroundColor="blue"
+                        list={listConatact}
+                    />
+                </div>
+                <div>
+                    <CardContact
+                        title="Отдел поддержки клиентов МСП"
+                        description="Описание"
+                        backgoroundColor="blue"
+                        list={listConatact}
+                        tag={{
+                            text: "Частным клиентам",
+                            color: "white",
+                            outline: true,
+                        }}
+                    />
+                </div>
+                <div>
+                    <CardContact
+                        title="Отдел поддержки клиентов МСП"
+                        description="Описание"
+                        backgoroundColor="gray"
+                        list={listConatact}
+                        tag={{
+                            text: "Частным клиентам",
+                            outline: true,
+                        }}
+                    />
+                </div>
+            </div>
+        </div>
+        <div class="ui-section">
+            <SectionTitle class="ui-section-title" titleClass="headline-2"
+                >&lt;CardFeedback&gt;</SectionTitle
+            >
+
+            <div class="ui-grid ui-gap-2 ui-grid-col-2 ui-dark-bg">
+                <div>
+                    <CardFeedback
+                        title="Остались вопросы"
+                        description="Оставьте свой телефон и мы перезвоним вам, либо задайте вопрос в чате"
+                    >
+                        <Fragment slot="footer">
+                            <AButton element="a" href="#" size="lm" outline>
+                                Открыть чат
+                            </AButton>
+                            <AButton size="lm">Перезвоните мне</AButton>
+                        </Fragment>
+                    </CardFeedback>
+                </div>
+            </div>
+        </div>
+
+        <div class="ui-section">
+            <SectionTitle class="ui-section-title" titleClass="headline-2"
+                >&lt;DisplayStepper&gt;</SectionTitle
+            >
+
+            <ATabs useLayout>
+                <div class="a-accordion-content__wrapper">
+                    <h3 class="headline-2 a-accordion-content__title">
+                        Оформление гарантии
+                    </h3>
+                    <ATabSwiper class="a-accordion-content__tabs">
+                        <ATabSwiperWrapper>
+                            <ATab value="0" size="m">Онлайн</ATab>
+                            <ATab value="1" size="m" isActive>В банке</ATab>
+                        </ATabSwiperWrapper>
+                    </ATabSwiper>
+                    <ATabPanels>
+                        <ATabPanel value="0">
+                            <DisplayStepper steps={3}>
+                                <DisplayStepperItem number={1}>
+                                    <h3 class="headline-3">Посетите</h3>
+                                    <ARte class="body-l-light">
+                                        <p>
+                                            <a href="#"
+                                                >ближайший офис Новикомбанка</a
+                                            > или <a href="#"
+                                                >закажите консультацию</a
+                                            > сотрудника Банка по&nbsp;телефону
+                                        </p>
+                                    </ARte>
+                                </DisplayStepperItem>
+                                <DisplayStepperItem number={2}>
+                                    <h3 class="headline-3">Подпишите</h3>
+                                    <ARte class="body-l-light">
+                                        <p>
+                                            все необходимые документы
+                                            в&nbsp;офисе
+                                        </p>
+                                    </ARte>
+                                </DisplayStepperItem>
+                                <DisplayStepperItem number={3}>
+                                    <h3 class="headline-3">Внесите</h3>
+                                    <ARte class="body-l-light">
+                                        <p>деньги на&nbsp;счет вклада</p>
+                                    </ARte>
+                                </DisplayStepperItem>
+                            </DisplayStepper>
+                        </ATabPanel>
+                        <ATabPanel value="1">
+                            <DisplayStepper steps={4}>
+                                <DisplayStepperItem number={1} color="yellow">
+                                    <ARte class="body-l-light">
+                                        <p>
+                                            Заполните заявку и&nbsp;подготовьте
+                                            комплект документов
+                                        </p>
+                                    </ARte>
+                                </DisplayStepperItem>
+                                <DisplayStepperItem number={2} color="yellow">
+                                    <ARte class="body-l-light">
+                                        <p>
+                                            Получите консультацию специалиста
+                                            по&nbsp;телефону
+                                        </p>
+                                    </ARte>
+                                </DisplayStepperItem>
+                                <DisplayStepperItem number={3} color="yellow">
+                                    <ARte class="body-l-light">
+                                        <p>
+                                            Согласуйте текст гарантии
+                                            и&nbsp;подпишите документы
+                                        </p>
+                                    </ARte>
+                                </DisplayStepperItem>
+                                <DisplayStepperItem number={4} color="yellow">
+                                    <ARte class="body-l-light">
+                                        <p>Получите решение</p>
+                                    </ARte>
+                                </DisplayStepperItem>
+                            </DisplayStepper>
+                        </ATabPanel>
+                    </ATabPanels>
+                </div>
+            </ATabs>
+        </div>
+
+        <div class="ui-section">
+            <SectionTitle class="ui-section-title" titleClass="headline-2"
+                >&lt;CardRating&gt;</SectionTitle
+            >
+
+            <div class="ui-grid">
+                <div>
+                    <CardRating
+                        title="Рейтинги Банка НОВИКОМ"
+                        image="/assets/big-illustrations/large-business/bank-rating.png"
+                    >
+                        <AList class="card-rating__list" size="l" isHeavy>
+                            <li>АКРА&nbsp;&mdash; &laquo;А+(RU)&raquo;</li>
+                            <li>НКР&nbsp;&mdash; &laquo;АА-.ru&raquo;</li>
+                            <li>Эксперт РА&nbsp;&mdash; ruA+</li>
+                        </AList>
+                    </CardRating>
+                </div>
+            </div>
+        </div>
+        <div class="ui-section">
+            <SectionTitle class="ui-section-title" titleClass="headline-2"
+                >&lt;CardText&gt;</SectionTitle
+            >
+
+            <div class="ui-grid ui-gap-2 ui-grid-col-2 ui-dark-bg">
+                <div>
+                    <CardText title="Заголовок" />
+                </div>
+                <div>
+                    <CardText title="Заголовок" description="Описание" />
+                </div>
+            </div>
+            
         </div>
     </div>
     <Fragment slot="footer">footer</Fragment>

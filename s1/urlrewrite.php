@@ -58,7 +58,16 @@ $arUrlRewrite = array(
         ),
     7 =>
         array(
-            'CONDITION' => '#^/for-private-clients/cards/([a-zA-Z0-9_-]*)/#',
+            'CONDITION' => '#^/for-private-clients/cards/([a-zA-Z0-9_-]*)/([a-zA-Z0-9_-]*)/([a-zA-Z0-9_-]*)/(.*)#',
+            'RULE' => 'SECTION_CODE=$1&&ELEMENT_CODE=$2&DETAIL_ELEMENT_CODE=$3',
+            'ID' => 'bitrix:news.detail',
+            'PATH' => '/for-private-clients/cards/detail.php',
+            'SORT' => 100,
+        ),
+
+    8 =>
+        array(
+            'CONDITION' => '#^/for-private-clients/cards/([a-zA-Z0-9_-]*)/(.*)#',
             'RULE' => 'SECTION_CODE=$1',
             'ID' => 'bitrix:news',
             'PATH' => '/for-private-clients/cards/index.php',

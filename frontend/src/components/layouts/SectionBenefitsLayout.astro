@@ -6,6 +6,7 @@ import ACollapsedItem from "../ui/ACollapsedItems/ACollapsedItem.astro";
 import BenefitCardsLayout from "./BenefitCardsLayout.astro";
 import ACollapsedItems from "../ui/ACollapsedItems/ACollapsedItems.astro";
 import AList from "../ui/AList/AList.astro";
+import PatternBg from "@components/common/Pattern/PatternBg.astro";
 
 interface Props {
 	title?: string;
@@ -14,6 +15,7 @@ interface Props {
 		description?: string;
 		iconId: string;
         list?: string[];
+        isIconImage?: boolean;
 	}[];
 	visibleItems?: number;
     useBackground?: boolean;
@@ -33,7 +35,6 @@ const maxCols = benefitsLength === 2 || benefitsLength === 4 ? 2 : benefitsLengt
 <SectionLayout
     class:list={[
         'section-benefits',
-        {'section-benefits--bg': useBackground},
     ]}
     {...rest}
 >
@@ -60,15 +61,16 @@ const maxCols = benefitsLength === 2 || benefitsLength === 4 ? 2 : benefitsLengt
                                     maxCols={maxCols}
                                 >
                                     {
-                                        benefits.map(({ title, description, iconId, list }) => (
+                                        benefits.map(({ title, description, iconId, list, isIconImage }) => (
                                             <ACollapsedItem>
                                                 <BenefitTextCard
                                                     title={title}
                                                     description={description}
                                                     iconId={iconId}
+                                                    isIconImage={isIconImage}
                                                 >
                                                     {
-                                                        (Array.isArray(list) && list?.length) > 0 && (
+                                                        (Array.isArray(list) && list?.length > 0) && (
                                                             <AList size="m">
                                                                 {
                                                                     list.map((text) => (
@@ -101,7 +103,7 @@ const maxCols = benefitsLength === 2 || benefitsLength === 4 ? 2 : benefitsLengt
                                             iconId={iconId}
                                         >
                                             {
-                                                (Array.isArray(list) && list?.length) > 0 && (
+                                                (Array.isArray(list) && list?.length > 0) && (
                                                     <AList size="m">
                                                         {
                                                             list.map((text) => (
@@ -121,20 +123,22 @@ const maxCols = benefitsLength === 2 || benefitsLength === 4 ? 2 : benefitsLengt
 			}
 		</div>
 	</div>
+    {useBackground && <PatternBg type="section" />}
 </SectionLayout>
 
 <style lang="scss" is:global>
 	@import "@styles/media-queries";
 
 	.section-benefits {
-        &.section-benefits--bg {
-            background: url("/assets/section-benefits.svg") bottom right no-repeat;
-        }
+        position: relative;
 
 		&__container {
 			display: flex;
 			flex-direction: column;
 			gap: 2rem;
+
+            position: relative;
+            z-index: 1;
 
 			@include use-media(tablet) {
 				gap: 2.5rem;
@@ -151,5 +155,10 @@ const maxCols = benefitsLength === 2 || benefitsLength === 4 ? 2 : benefitsLengt
 			flex-direction: column;
 			gap: 2rem;
 		}
+
+        & .content-container {
+            position: relative;
+            z-index: 1;
+        }
 	}
 </style>

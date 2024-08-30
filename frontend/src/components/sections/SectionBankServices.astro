@@ -30,26 +30,23 @@ const serviceAppBenefits = [
             <div class="bank-services__services">
                 <PersistentSlider
                     class="bank-services__slider"
-                    spaceBetween="mobile-s:8,mobile:8,tablet:8,laptop:8"
-                    slidesPerView="mobile-s:1,mobile:1,tablet:3,laptop:3"
+                    spaceBetween="mobile-s:8,mobile:8,tablet:8,laptop:8,laptop-x:8"
+                    slidesPerView="mobile-s:1,mobile:1,tablet:3,laptop:3,laptop-x:3"
                 >
                     <SliderSlide class="bank-services__slide">
                         <ServiceCard
-                            class="bank-services__card"
                             title="Интернет-банк"
                             icon="icon-a-web-bank"
                         />
                     </SliderSlide>
                     <SliderSlide class="bank-services__slide">
                         <ServiceCard
-                            class="bank-services__card"
                             title="Кредиты"
                             icon="icon-a-money"
                         />
                     </SliderSlide>
                     <SliderSlide class="bank-services__slide">
                         <ServiceCard
-                            class="bank-services__card"
                             title="Ипотека"
                             icon="icon-a-house"
                         />
@@ -125,7 +122,7 @@ const serviceAppBenefits = [
         }
 
         &__slide {
-            min-height: 12.5rem;
+            min-height: 15rem; //240px
         }
     }
 </style>

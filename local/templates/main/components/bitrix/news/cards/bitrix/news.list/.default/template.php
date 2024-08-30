@@ -2,6 +2,7 @@
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 
 use Bitrix\Main\Application;
+use Galago\Frontend\Asset;
 
 /** @var array $arParams */
 /** @var array $arResult */
@@ -15,6 +16,8 @@ use Bitrix\Main\Application;
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
+
+Asset::getInstance()->addJsAndCss('showcase-of-cards');
 
 $request = Application::getInstance()->getContext()->getRequest()->toArray();
 ?>
@@ -46,9 +49,11 @@ $request = Application::getInstance()->getContext()->getRequest()->toArray();
             </div>
         </div>
     </div>
-    <div class="text-banner__pattern">
-        <img src="/frontend/build/assets/text-banner-pattern.svg">
-    </div>
+    <picture class="pattern-bg">
+        <source srcset="/frontend/build/assets/patterns/section/pattern-dark-s.svg" media="(max-width: 767px)">
+        <source srcset="/frontend/build/assets/patterns/section/pattern-dark-m.svg" media="(max-width: 1199px)">
+        <img src="/frontend/build/assets/patterns/section/pattern-dark-l.svg" alt="bg pattenr" loading="lazy">
+    </picture>
 </div>
 
 <? /* Вывод элементов */ ?>
@@ -97,7 +102,7 @@ $request = Application::getInstance()->getContext()->getRequest()->toArray();
                                 <? foreach ($arResult['ITEMS'] as $sectionItem) { ?>
                                     <div class="product-card product-card--use-tag">
                                         <div class="product-card__image-container">
-                                            <img src="<?= $sectionItem['PREVIEW_PICTURE']['SRC'] ?>" class="product-card__image">
+                                            <img src="<?= $sectionItem['PREVIEW_PICTURE']['SRC'] ?>" class="product-card__image" alt="<?= $sectionItem['NAME'] ?>">
                                         </div>
                                         <? if (!empty($sectionItem['IBLOCK_SECTION_PROP_TYPE_CARDS'])) { ?>
                                             <div class="product-card__tag">
@@ -120,7 +125,7 @@ $request = Application::getInstance()->getContext()->getRequest()->toArray();
                                             <div class="product-card__conditions-box">
                                                 <div class="product-card__conditions">
 
-                                                    <? if ( isset($sectionItem['PROPERTIES']['SERVICE']['VALUE']) ) { ?>
+                                                    <? if ( isset($sectionItem['PROPERTIES']['SERVICE']['VALUE']) && !empty($sectionItem['PROPERTIES']['SERVICE']['VALUE']) ) { ?>
                                                         <div class="text-indicating-benefits">
                                                             <div class="text-indicating-benefits-head">
                                                                 <span class="number-l-heavy"><?= $sectionItem['PROPERTIES']['SERVICE']['VALUE'] ?></span>

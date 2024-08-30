@@ -1,17 +1,23 @@
 ---
 /**
 	Компонент вывода иконок из svg спрайта
-	*/
+*/
 
 interface Props {
 	class?: string;
-	size?: "xl" | "l" | "m" | "s" | "xll";
+	size?: "xl" | "l" | "m" | "s" | "xxl";
 	symbolId: string;
+	isImage?: boolean;
 }
 
-const { class: className, size, symbolId, ...rest } = Astro.props as Props;
+const { class: className, size, symbolId, isImage = false, ...rest } = Astro.props as Props;
 ---
 
+{isImage ? (
+	<img src={`assets/icons/icon-a-transfer.svg`} class="a-icon" class:list={[className, size ? `size-${size}` : ""]} {...rest} alt="" loading="lazy">
+</span>
+
+) : (
 <span class="a-icon" class:list={[className, size ? `size-${size}` : ""]} {...rest}>
 	{
 		symbolId && (
@@ -21,6 +27,7 @@ const { class: className, size, symbolId, ...rest } = Astro.props as Props;
 		)
 	}
 </span>
+)}
 
 <style lang="scss" is:global>
 	@import "@styles/media-queries";
@@ -59,7 +66,7 @@ const { class: className, size, symbolId, ...rest } = Astro.props as Props;
 			height: 1rem;
 		}
 
-		&.size-xll {
+		&.size-xxl {
 			width: 3rem;
 			height: 3rem;
 

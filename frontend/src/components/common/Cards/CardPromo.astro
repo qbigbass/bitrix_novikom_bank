@@ -1,4 +1,5 @@
 ---
+import PatternBg from "../Pattern/PatternBg.astro";
 import TextIndicatingBenefits from "../TextIndicatingBenefits/TextIndicatingBenefits.astro";
 
 type BackgroundColors = "heavy-purple" | "heavy-violet";
@@ -38,21 +39,7 @@ const {
 <div class:list={["card-promo", `card-promo--${backgroundColor}`, className]}>
     {
         hasPattern && (
-            <picture class="card-promo__pattern">
-                <source
-                    srcset="assets/card-promo-pattern-mobile.svg"
-                    media="(max-width: 1199px)"
-                />
-                <source
-                    srcset="assets/card-promo-pattern-laptop.svg"
-                    media="(max-width: 1600px)"
-                />
-                <img
-                    src="assets/card-promo-pattern.svg"
-                    alt=""
-                    loading="lazy"
-                />
-            </picture>
+            <PatternBg theme="dark" type="section-2" />
         )
     }
 

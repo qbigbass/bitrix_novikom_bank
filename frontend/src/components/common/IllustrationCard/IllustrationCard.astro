@@ -1,41 +1,73 @@
 ---
 import AButton from "../../ui/Buttons/AButton.astro";
+type BackgroundColors = "gray" | "blue";
+
+
 interface Props {
     title: string;
-    description: string;
-    textLink: string;
+    class?: string;
+    description?: string;
+    textLink?: string;
     imgSrc: string;
+    backgroundColor?: BackgroundColors;
+    size?: string;
 }
 
 const {
+    class: className,
     title,
     description,
     textLink,
-    imgSrc
+    imgSrc,
+    backgroundColor,
+    size,
 } = Astro.props as Props;
 ---
 
-<div class="illustration-card">
-    <img class="illustration-card__img" src={imgSrc} />
+<div
+    class:list={[
+        "illustration-card",
+        `${backgroundColor ? `illustration-card--bg-${backgroundColor}` : ""}`,
+        `${size ? `illustration-card--size-${size}` : ""}`,
+        className,
+    ]}
+>
+    <img class="illustration-card__img" src={imgSrc} alt="" loading="lazy" />
     <div class="illustration-card__content">
-        <h4 class="illustration-card__title headline-4" set:html={title}></h4>
-        <p class="illustration-card__description body-m-light" set:html={description}></p>
+        <h3 class="illustration-card__title headline-4" set:html={title} />
+        <div class="illustration-card__content-wrapper">
+            {
+                description && (
+                    <p
+                        class="illustration-card__description body-m-light"
+                        set:html={description}
+                    />
+                )
+            }
+            <slot />
+        </div>
     </div>
-    <AButton
-        class="illustration-card__link"
-        element="a"
-        size="m"
-        afterIcon="icon-chevron-right"
-        text
-    >
-        {textLink}
-    </AButton>
+    {
+        textLink && (
+            <AButton
+                class="illustration-card__link"
+                element="a"
+                size="m"
+                afterIcon="icon-chevron-right"
+                text
+            >
+                {textLink}
+            </AButton>
+        )
+    }
 </div>
 
 <style lang="scss" is:global>
     @import "@styles/media-queries";
 
     .illustration-card {
+        $root: #{&};
+
         --img-size: 11.25rem;
 
         position: relative;
@@ -47,6 +79,16 @@ const {
         background-color: var(--dark-0);
         height: 100%;
         overflow: hidden;
+
+        @include use-media(tablet) {
+            padding: 2rem;
+            gap: 3rem;
+        }
+
+        @include use-media(tablet-album) {
+            --img-size: 17.5rem;
+            padding: 2.5rem;
+        }
 
         &__img {
             align-self: center;
@@ -91,14 +133,61 @@ const {
             align-self: flex-start;
         }
 
-        @include use-media(tablet) {
-            padding: 2rem;
-            gap: 3rem;
+        &--bg-gray {
+            background-color: var(--dark-30);
         }
 
-        @include use-media(tablet-album) {
-            --img-size: 17.5rem;
-            padding: 2.5rem;
+        &--bg-blue {
+            background-color: var(--blue-10);
+        }
+
+        &--size-xl {
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+            gap: 1rem;
+
+            @include use-media(tablet) {
+                gap: 1.5rem;
+                padding: 2rem;
+            }
+
+            @include use-media(tablet-album) {
+                padding: 2.5rem;
+            }
+
+            @include use-media(laptop) {
+                min-height: 20rem;
+            }
+
+            #{$root}__content {
+                @include use-media(tablet-album) {
+                    gap: 2.5rem;
+                }
+            }
+
+            #{$root}__img {
+                @include use-media(tablet) {
+                    position: relative;
+                    right: auto;
+                    bottom: auto;
+                }
+
+                @include use-media(tablet-album) {
+                    position: absolute;
+                    right: -1.5rem;
+                    bottom: -1.5rem;
+                }
+            }
+
+            #{$root}__content-wrapper {
+                @include use-media(tablet-album) {
+                    max-width: 50%;
+                }
+
+                @include use-media(laptop) {
+                    max-width: 70%;
+                }
+            }
         }
     }
 </style>
