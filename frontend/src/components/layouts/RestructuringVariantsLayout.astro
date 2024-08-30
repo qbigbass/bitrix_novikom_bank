@@ -1,0 +1,46 @@
+---
+import SectionLayout from "./SectionLayout.astro";
+import ATabs from "../ui/ATabs/ATabs.astro";
+---
+<SectionLayout class="restructuring-variants-layout">
+    <div class="content-container">
+        <slot />
+        <div class="restructuring-variants-layout__content">
+            <div class="restructuring-variants-layout__tabs">
+                <ATabs>
+                    <Fragment slot="tabs">
+                        <slot name="tabs" />
+                    </Fragment>
+                </ATabs>
+            </div>
+            <div class="restructuring-variants-layout__cards">
+                <slot name="cards" />
+            </div>
+        </div>
+    </div>
+</SectionLayout>
+
+
+<style lang="scss" is:global>
+    @import "@styles/media-queries";
+
+    .restructuring-variants-layout {
+        background-color: var(--dark-10);
+
+        &__content {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+
+            @include use-media(table-talbum) {
+                gap: 3rem;
+            }
+        }
+
+        &__tabs {
+            @include use-media(tablet-album) {
+                padding-left: 2.5rem;
+            }
+        }
+    }
+</style>

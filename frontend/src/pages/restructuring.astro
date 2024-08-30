@@ -24,8 +24,8 @@ import AddInfoLayout from "../components/layouts/AddInfoLayout/AddInfoLayout.ast
 import AddInfoItemLayout from "../components/layouts/AddInfoLayout/AddInfoItemLayout.astro";
 import GridVariantsLayout from "../components/layouts/GridVariantsLayout/GridVariantsLayout.astro";
 import GridVariantCard from "../components/layouts/GridVariantsLayout/GridVariantCard.astro";
-import CardWithButtonLayout from "../components/layouts/CardWithButtonLayout.astro";
 import SectionTitle from "../components/ui/SectionTitle/SectionTitle.astro";
+import RestructuringVariantsLayout from "../components/layouts/RestructuringVariantsLayout.astro";
 
 const breadcrumbs = [
 	{
@@ -64,24 +64,32 @@ const variants = [
         img="assets/big-illustrations/large-individual/restructuring.png"
         borderColor="green"
 	/>
-	<CardWithButtonLayout>
-		<SectionTitle titleClass="headline-2" usePadding>
-			Варианты реструктуризации
-		</SectionTitle>
-		<GridVariantsLayout>
-			{
-				variants.map(variant => (
-					<GridVariantCard>
-						<BenefitCard
-							title={variant.title}
-							theme="white"
-							textButton="Подробнее"
-						/>
-					</GridVariantCard>
-				))
-			}
-		</GridVariantsLayout>
-	</CardWithButtonLayout>
+    <RestructuringVariantsLayout>
+        <SectionTitle titleClass="headline-2" usePadding>
+            Варианты реструктуризации
+        </SectionTitle>
+        <Fragment slot="tabs">
+            <ATab href="#" size="lm" isActive>Все варианты</ATab>
+            <ATab href="#" size="lm">Реструктуризация</ATab>
+            <ATab href="#" size="lm">Кредитные каникулы</ATab>
+            <ATab href="#" size="lm">Льготный период</ATab>
+        </Fragment>
+        <Fragment slot="cards">
+            <GridVariantsLayout>
+                {
+                    variants.map(variant => (
+                        <GridVariantCard>
+                            <BenefitCard
+                                title={variant.title}
+                                theme="white"
+                                textButton="Подробнее"
+                            />
+                        </GridVariantCard>
+                    ))
+                }
+            </GridVariantsLayout>
+        </Fragment>
+    </RestructuringVariantsLayout>
 	<PageBanner img="/assets/banners/page-banner-1.png">
         <h3 slot="title" class="headline-2">Банк готов оказать необходимую поддержку в урегулировании задолженности в случаях</h3>
         <Fragment>
