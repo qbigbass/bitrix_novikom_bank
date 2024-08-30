@@ -19,7 +19,7 @@ global $USER;
 global $DB;
 
 if (CModule::IncludeModule('sprint.editor')) {
-    $iblock = iblock('reliable');
+    $iblock = iblock('discounts');
     $_REQUEST['enabled_iblocks'] = [$iblock];
 
     $handler = new IblockElements();
