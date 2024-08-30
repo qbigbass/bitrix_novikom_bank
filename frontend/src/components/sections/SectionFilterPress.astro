@@ -1,13 +1,10 @@
 ---
 import AAccordionContent from "../ui/AAccordion/AAccordionContent.astro";
-import BenefitCalculator from "../calculators/BenefitCalculator.astro";
 import AAccordionHeader from "../ui/AAccordion/AAccordionHeader.astro";
 import AAccordion from "../ui/AAccordion/AAccordion.astro";
 import ATab from "../ui/ATabs/common/ATab/ATab.astro";
-import ATabPanel from "../ui/ATabs/common/ATabPanel.astro";
 import ATabs from "../ui/ATabs/ATabs.astro";
 import AAccordionPanel from "../ui/AAccordion/AAccordionPanel.astro";
-import ATabPanels from "../ui/ATabs/common/ATabPanels.astro";
 import ATabSwiperWrapper from "../ui/ATabs/common/ATabSwiperWrapper.astro";
 import ATabSwiper from "../ui/ATabs/common/ATabSwiper/ATabSwiper.astro";
 import AInputField from "../ui/AInput/AInputField.astro";
@@ -116,10 +113,10 @@ const tempNews = [
     <div class="section-filter-press__list">
         { tempNews.map((item) => (
             <PressCard
-                image={item.image}
+                image={item?.image}
                 title={item.title}
                 date={item.date}
-                isPinned={Boolean(item.isPinned)}
+                isPinned={item?.isPinned}
             />
         ))}
     </div>

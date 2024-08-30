@@ -3,9 +3,7 @@ const { class: className, ...rest } = Astro.props;
 ---
 
 <div class="a-drop-down custom-scrollbar js-a-drop-down" class:list={className} {...rest}>
-	<div class="custom-scrollbar">
-		<slot/>
-	</div>
+    <slot/>
 </div>
 
 <style lang="scss" is:global>
@@ -21,8 +19,6 @@ const { class: className, ...rest } = Astro.props;
 		padding: 0.5rem 0;
 		box-shadow: 0 8px 32px 0 rgba(60, 60, 71, 0.3);
 		z-index: 10;
-
-		/*overflow: hidden;*/
 		overflow-y: auto;
 
 		@include use-media(tablet) {
@@ -32,7 +28,5 @@ const { class: className, ...rest } = Astro.props;
 		&.is-open {
 			display: block;
 		}
-
-
 	}
 </style>
