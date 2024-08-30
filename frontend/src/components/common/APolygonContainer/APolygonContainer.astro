@@ -58,6 +58,8 @@ const {
 	@import '@styles/media-queries';
 
 	.a-polygon-container {
+		$root: #{&};
+		
 		position: relative;
 		padding: 0 var(--polygon-spacing) var(--polygon-spacing) 0;
 
@@ -86,6 +88,12 @@ const {
 			width: calc(100% - var(--polygon-spacing));
 			height: calc(100% - var(--polygon-spacing));
 			z-index: 0;
+		}
+
+		&--for-quote {
+			#{$root}__content {
+				clip-path: polygon(0 -40px, 100% 0, 100% calc(100% - var(--polygon-square)), calc(100% - var(--polygon-square)) 100%, 0 100%);
+			}
 		}
 	}
 </style>
