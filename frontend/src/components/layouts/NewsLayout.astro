@@ -7,14 +7,15 @@ const { title } = Astro.props as Props;
 
 // layout для Новости
 ---
+
 <div class="news-layout">
     <div class="news-layout__header">
-        <h1 class="headline-1" set:html={title}></h1>
+        <h1 class="headline-1" set:html={title} />
         <div class="news-layout__info">
             <slot name="info" />
         </div>
     </div>
-    
+
     <div class="news-layout__body">
         <slot name="body" />
     </div>
@@ -28,6 +29,10 @@ const { title } = Astro.props as Props;
         flex-direction: column;
         gap: 2.5rem;
 
+        @include use-media(tablet-album) {
+            gap: 3rem;
+        }
+
         &:not(:first-child) {
             margin-top: 2.5rem;
         }
@@ -36,12 +41,24 @@ const { title } = Astro.props as Props;
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
+
+            @include use-media(tablet) {
+                gap: 2rem;
+            }
+
+            @include use-media(tablet-album) {
+                gap: 2.5rem;
+            }
         }
 
         &__info {
             display: flex;
             gap: 1rem;
             align-items: center;
+
+            @include use-media(tablet) {
+                gap: 1.5rem;
+            }
 
             & .a-tag {
                 margin-bottom: 0;
@@ -52,6 +69,18 @@ const { title } = Astro.props as Props;
             display: flex;
             flex-direction: column;
             gap: 2.5rem;
+
+            @include use-media(tablet) {
+                gap: 3rem;
+            }
+
+            & .a-rte {
+                & > *:not(.a-table) {
+                    @include use-media(tablet-album) {
+                        max-width: 63.375rem; //1014px
+                    }
+                }
+            }
         }
     }
 </style>
