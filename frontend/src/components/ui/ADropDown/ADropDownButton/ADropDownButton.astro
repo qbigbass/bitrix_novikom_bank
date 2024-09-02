@@ -3,27 +3,32 @@ interface Props {
 	class?: string;
 	value: string;
 	selected?: boolean;
+    href?: string;
 }
 
 const {
 	class: classList,
 	value,
 	selected = false,
+    href,
 	...rest
 } = Astro.props as Props;
 
+let Element = href?.length ? 'a' : 'button';
+const isLink = Element.toLocaleLowerCase() === 'a';
 ---
 
-<button
+<Element
 	class="a-drop-down-button js-a-drop-down-button"
 	class:list={classList}
-	type="button"
+	type={isLink ? undefined : 'button'}
+    href={isLink ? href : undefined}
 	data-value={value}
 	aria-selected={[selected]}
 	{...rest}
 >
 	<slot/>
-</button>
+</Element>
 
 <style lang="scss" is:global>
 	@import "@styles/media-queries";

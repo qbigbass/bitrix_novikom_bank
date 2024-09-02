@@ -1,0 +1,71 @@
+---
+import ASelectInput from "../ASelectInput/ASelectInput.astro";
+import ADropDownButton from "../ADropDown/ADropDownButton/ADropDownButton.astro";
+import AIcon from "../../AIcon.astro";
+
+interface Props {
+    class: string;
+    page: number;
+    totalPages: number;
+    href: string;
+}
+
+let {
+    class: classList,
+    page= 1,
+    totalPages= 10,
+    href = '#',
+    ...rest
+} = Astro.props as Props;
+
+page = Math.max(1, Math.min(page, totalPages));
+
+const pagesToShow: number[] = [];
+
+for (let i = 1; i <= totalPages; i++) {
+    pagesToShow.push(i);
+}
+---
+<div class="a-paginator-select">
+    <div class="a-paginator-select__button">
+        <a href="#" class="a-paginator-select__icon">
+            <AIcon symbolId="icon-chevron-left" size="m" />
+        </a>
+    </div>
+    <ASelectInput size="s" name="paginator" outline>
+        {
+            pagesToShow.map((pageNumber) => (
+                <ADropDownButton
+                    selected={pageNumber === page}
+                    class="body-s-light"
+                    value={pageNumber + '/' + totalPages}
+                    href={href}
+                >
+                    {pageNumber}
+                </ADropDownButton>
+            ))
+        }
+    </ASelectInput>
+    <div class="a-paginator-select__button">
+        <a href="#" class="a-paginator-select__icon">
+            <AIcon symbolId="icon-chevron-right" size="m" />
+        </a>
+    </div>
+</div>
+
+<style lang="scss" is:global>
+    .a-paginator-select {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+
+        &__icon {
+            color: var(--violet-100);
+        }
+
+        &__button {
+            min-width: 1.5rem;
+        }
+    }
+</style>

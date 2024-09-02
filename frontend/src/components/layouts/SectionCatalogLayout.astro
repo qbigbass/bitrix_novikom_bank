@@ -12,22 +12,18 @@ const {
 
 <SectionLayout class="section-catalog-layout" {...rest}>
 	<div class="content-container">
-		<ATabs useLayout>
-			<div class="section-catalog-layout__content">
-				<div class="section-catalog-layout__tabs">
-					<ATabSwiper>
-						<ATabSwiperWrapper>
-							<slot name="tabs" />
-						</ATabSwiperWrapper>
-					</ATabSwiper>
-				</div>
-				<div class="section-catalog-layout__panels">
-					<ATabPanels>
-						<slot name="panels"></slot>
-					</ATabPanels>
-				</div>
-			</div>
-		</ATabs>
+        <div class="section-catalog-layout__content">
+            <div class="section-catalog-layout__tabs">
+                <ATabs>
+                    <Fragment slot="tabs">
+                        <slot name="tabs" />
+                    </Fragment>
+                </ATabs>
+            </div>
+            <div class="section-catalog-layout__list">
+                <slot name="list"></slot>
+            </div>
+        </div>
 	</div>
 </SectionLayout>
 

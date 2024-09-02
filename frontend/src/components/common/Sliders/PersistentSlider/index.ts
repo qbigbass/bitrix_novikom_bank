@@ -14,8 +14,6 @@ const initPersistentSlider = (persistentSlider: HTMLDivElement) => {
 	};
 
 	const dataAttrs = persistentSlider.dataset;
-	console.log('dataAttrs.slidesPerView', dataAttrs.slidesPerView);
-
 
 	const sliderDataAttrs: DefaultSliderDataAttrs = Object.assign(defaultSliderDataAttrs, dataAttrs);
 
@@ -23,8 +21,6 @@ const initPersistentSlider = (persistentSlider: HTMLDivElement) => {
 	const slidesLength = slides.length;
 
 	const options = createSliderOptionsByAttrs(sliderDataAttrs, slidesLength);
-
-	console.log('options', options);
 
 	new Swiper(persistentSlider, options);
 }
