@@ -17,7 +17,7 @@ let {
     ...rest
 } = Astro.props as Props;
 
-page = Math.max(1, Math.min(page, totalPages));  // Убедитесь, что страница в пределах от 1 до totalPages
+page = Math.max(1, Math.min(page, totalPages));
 
 const pagesToShow: (number | 'dots')[] = [];
 const showDots = totalPages > 5;
