@@ -100,7 +100,6 @@ const initSelectInput = (selectInput: HTMLDivElement): ASelectInputState => {
 	const STATE: ASelectInputState = initState(selectInput);
 
 	if (STATE.dropDownMenu !== null) {
-		console.log('111', STATE);
 		STATE.inputEl?.addEventListener('click', (event) => {
 			event.stopPropagation();
 			if (STATE.isOpen) {

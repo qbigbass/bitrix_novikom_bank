@@ -53,7 +53,7 @@ if (!pagesToShow.includes(totalPages)) {
     ]}
     {...rest}
 >
-    <div class="a-paginator__content">
+    <div class="a-paginator__content-desktop">
         {
             page > 1 && (
                 <a href="#" class="a-paginator__icon">
@@ -64,11 +64,11 @@ if (!pagesToShow.includes(totalPages)) {
         <div class="a-paginator__items">
             {
                 pagesToShow.map((pageNumber) =>
-                pageNumber === 'dots' ? (
-                    <APaginatorMore>...</APaginatorMore>
-                ) : (
-                    <APaginatorItem selected={page === pageNumber}>{pageNumber}</APaginatorItem>
-                ))
+                    pageNumber === 'dots' ? (
+                        <APaginatorMore>...</APaginatorMore>
+                    ) : (
+                        <APaginatorItem selected={page === pageNumber}>{pageNumber}</APaginatorItem>
+                    ))
             }
         </div>
         {
@@ -78,6 +78,12 @@ if (!pagesToShow.includes(totalPages)) {
                 </a>
             )
         }
+    </div>
+    <div class="a-paginator__content-mobile">
+        <APaginatorSelect
+            page={page}
+            totalPages={totalPages}
+        />
     </div>
 </div>
 
@@ -90,18 +96,6 @@ if (!pagesToShow.includes(totalPages)) {
         align-items: center;
         justify-content: center;
 
-        &__content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 1rem;
-
-            @include use-media(tablet) {
-                justify-content: normal;
-            }
-        }
-
-
         &__icon {
             display: flex;
             color: var(--violet-100);
@@ -110,6 +104,26 @@ if (!pagesToShow.includes(totalPages)) {
         &__items {
             display: flex;
             gap: 1rem;
+        }
+
+        &__content-desktop {
+            flex-grow: 1;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+
+            @include use-media(tablet-album) {
+                display: flex;
+            }
+        }
+
+        &__content-mobile {
+            flex-grow: 1;
+
+            @include use-media(tablet-album) {
+                display: none;
+            }
         }
     }
 </style>
