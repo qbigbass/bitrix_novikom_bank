@@ -322,140 +322,30 @@ const allLoans = [
 ---
 <SectionCatalogLayout small>
 	<Fragment slot="tabs">
-		<ATab size="lm" value="0" isActive>Все программы</ATab>
-		<ATab size="lm" value="1">Первичный рынок</ATab>
-		<ATab size="lm" value="2">IT-ипотека</ATab>
-		<ATab size="lm" value="3">Дальневосточная ипотека</ATab>
-		<ATab size="lm" value="4">Вторичный рынок</ATab>
-		<ATab size="lm" value="5">Семейная ипотека</ATab>
-		<ATab size="lm" value="6">Рефинансирование</ATab>
+		<ATab href="#" size="lm" value="0" isActive>Все программы</ATab>
+		<ATab href="#" size="lm" value="1">Первичный рынок</ATab>
+		<ATab href="#" size="lm" value="2">IT-ипотека</ATab>
+		<ATab href="#" size="lm" value="3">Дальневосточная ипотека</ATab>
+		<ATab href="#" size="lm" value="4">Вторичный рынок</ATab>
+		<ATab href="#" size="lm" value="5">Семейная ипотека</ATab>
+		<ATab href="#" size="lm" value="6">Рефинансирование</ATab>
 	</Fragment>
-	<Fragment slot="panels">
-		<ATabPanel value="0">
-			<ProductList>
-				{
-					allLoans.map((card) => (
-						<ProductCard
-							title={card.title}
-							description={card.description}
-							imgSrc={card.imgSrc}
-							conditions={card.conditions}
-                            additionalConditions={card.additionalConditions}
-							links={card.links}
-							tagText={card.tagText}
-							textButton={card.textButton}
-						/>
-					))
-				}
-			</ProductList>
-		</ATabPanel>
-		<ATabPanel value="1">
-			<ProductList>
-				{
-					primaryMortgageMarket.map((card) => (
-						<ProductCard
-							title={card.title}
-							description={card.description}
-							imgSrc={card.imgSrc}
-							conditions={card.conditions}
-                            additionalConditions={card.additionalConditions}
-							links={card.links}
-							tagText={card.tagText}
-							textButton={card.textButton}
-						/>
-					))
-				}
-			</ProductList>
-		</ATabPanel>
-		<ATabPanel value="2">
-			<ProductList>
-				{
-					iTMortgage.map((card) => (
-						<ProductCard
-							title={card.title}
-							description={card.description}
-							imgSrc={card.imgSrc}
-							conditions={card.conditions}
-                            additionalConditions={card.additionalConditions}
-							links={card.links}
-							tagText={card.tagText}
-							textButton={card.textButton}
-						/>
-					))
-				}
-			</ProductList>
-		</ATabPanel>
-		<ATabPanel value="3">
-			<ProductList>
-				{
-					farEasternMortgage.map((card) => (
-						<ProductCard
-							title={card.title}
-							description={card.description}
-							imgSrc={card.imgSrc}
-							conditions={card.conditions}
-                            additionalConditions={card.additionalConditions}
-							links={card.links}
-							tagText={card.tagText}
-							textButton={card.textButton}
-						/>
-					))
-				}
-			</ProductList>
-		</ATabPanel>
-		<ATabPanel value="4">
-			<ProductList>
-				{
-                    secondaryMortgageMarket.map((card) => (
-						<ProductCard
-							title={card.title}
-							description={card.description}
-							imgSrc={card.imgSrc}
-							conditions={card.conditions}
-                            additionalConditions={card.additionalConditions}
-							links={card.links}
-							tagText={card.tagText}
-							textButton={card.textButton}
-						/>
-					))
-				}
-			</ProductList>
-		</ATabPanel>
-		<ATabPanel value="5">
-			<ProductList>
-				{
-					familyMortgage.map((card) => (
-						<ProductCard
-							title={card.title}
-							description={card.description}
-							imgSrc={card.imgSrc}
-							conditions={card.conditions}
-                            additionalConditions={card.additionalConditions}
-							links={card.links}
-							tagText={card.tagText}
-							textButton={card.textButton}
-						/>
-					))
-				}
-			</ProductList>
-		</ATabPanel>
-		<ATabPanel value="6">
-			<ProductList>
-				{
-					mortgageRefinancing.map((card) => (
-						<ProductCard
-							title={card.title}
-							description={card.description}
-							imgSrc={card.imgSrc}
-							conditions={card.conditions}
-                            additionalConditions={card.additionalConditions}
-							links={card.links}
-							tagText={card.tagText}
-							textButton={card.textButton}
-						/>
-					))
-				}
-			</ProductList>
-		</ATabPanel>
+	<Fragment slot="list">
+        <ProductList>
+            {
+                allLoans.map((card) => (
+                    <ProductCard
+                        title={card.title}
+                        description={card.description}
+                        imgSrc={card.imgSrc}
+                        conditions={card.conditions}
+                        additionalConditions={card.additionalConditions}
+                        links={card.links}
+                        tagText={card.tagText}
+                        textButton={card.textButton}
+                    />
+                ))
+            }
+        </ProductList>
 	</Fragment>
 </SectionCatalogLayout>

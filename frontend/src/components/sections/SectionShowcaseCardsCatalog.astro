@@ -1,7 +1,6 @@
 ---
 import ProductCard from "../common/ProductCard/ProductCard.astro";
 import ATab from "../ui/ATabs/common/ATab/ATab.astro";
-import ATabPanel from "../ui/ATabs/common/ATabPanel.astro";
 import SectionCatalogLayout from "../layouts/SectionCatalogLayout.astro";
 import ProductList from "../layouts/ProductList.astro";
 
@@ -338,97 +337,27 @@ const allCards = [
 ---
 <SectionCatalogLayout small>
 	<Fragment slot="tabs">
-		<ATab size="lm" value="0" isActive>Все карты</ATab>
-		<ATab size="lm" value="1">Дебетовые карты</ATab>
-		<ATab size="lm" value="2">Кредитные карты</ATab>
-		<ATab size="lm" value="3">Цифровые карты</ATab>
-		<ATab size="lm" value="4">Стикеры</ATab>
+		<ATab href="#" size="lm" value="0" isActive>Все карты</ATab>
+		<ATab href="#" size="lm" value="1">Дебетовые карты</ATab>
+		<ATab href="#" size="lm" value="2">Кредитные карты</ATab>
+		<ATab href="#" size="lm" value="3">Цифровые карты</ATab>
+		<ATab href="#" size="lm" value="4">Стикеры</ATab>
 	</Fragment>
-	<Fragment slot="panels">
-		<ATabPanel value="0">
-			<ProductList>
-				{
-					allCards.map((card) => (
-						<ProductCard
-							title={card.title}
-							description={card.description}
-							imgSrc={card.imgSrc}
-							conditions={card.conditions}
-							links={card.links}
-							tagText={card.tagText}
-							textButton={card.textButton}
-						/>
-					))
-				}
-			</ProductList>
-		</ATabPanel>
-		<ATabPanel value="1">
-			<ProductList>
-				{
-					debitCards.map((card) => (
-						<ProductCard
-							title={card.title}
-							description={card.description}
-							imgSrc={card.imgSrc}
-							conditions={card.conditions}
-							links={card.links}
-							tagText={card.tagText}
-							textButton={card.textButton}
-						/>
-					))
-				}
-			</ProductList>
-		</ATabPanel>
-		<ATabPanel value="2">
-			<ProductList>
-				{
-					creditCards.map((card) => (
-						<ProductCard
-							title={card.title}
-							description={card.description}
-							imgSrc={card.imgSrc}
-							conditions={card.conditions}
-							links={card.links}
-							tagText={card.tagText}
-							textButton={card.textButton}
-						/>
-					))
-				}
-			</ProductList>
-		</ATabPanel>
-		<ATabPanel value="3">
-			<ProductList>
-				{
-					digitalCards.map((card) => (
-						<ProductCard
-							title={card.title}
-							description={card.description}
-							imgSrc={card.imgSrc}
-							conditions={card.conditions}
-							links={card.links}
-							tagText={card.tagText}
-							textButton={card.textButton}
-						/>
-					))
-				}
-			</ProductList>
-		</ATabPanel>
-		<ATabPanel value="4">
-			<ProductList>
-				{
-					stickerCards.map((card) => (
-						<ProductCard
-							title={card.title}
-							description={card.description}
-							imgSrc={card.imgSrc}
-							conditions={card.conditions}
-							links={card.links}
-							tagText={card.tagText}
-							textButton={card.textButton}
-						/>
-					))
-				}
-			</ProductList>
-		</ATabPanel>
+	<Fragment slot="list">
+        <ProductList>
+            {
+                allCards.map((card) => (
+                    <ProductCard
+                        title={card.title}
+                        description={card.description}
+                        imgSrc={card.imgSrc}
+                        conditions={card.conditions}
+                        links={card.links}
+                        tagText={card.tagText}
+                        textButton={card.textButton}
+                    />
+                ))
+            }
+        </ProductList>
 	</Fragment>
 </SectionCatalogLayout>
