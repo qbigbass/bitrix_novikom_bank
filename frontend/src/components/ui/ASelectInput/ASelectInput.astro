@@ -19,7 +19,7 @@ interface Props {
 
 const {
 	class: className,
-	placeholder,
+	placeholder = 'Выберите',
 	label,
 	disabled,
 	name,
@@ -33,7 +33,7 @@ const {
 ---
 
 <div
-	class="a-input a-select-input js-select"
+	class="a-select-input js-a-select-input"
 	class:list={
 		[
 			className,
@@ -44,13 +44,13 @@ const {
 	}
 	{...rest}
 >
-	{ label && (<label for={forId} class="a-input__label body-s-heavy">{label}</label>)}
+	{ label && (<label for={forId} class="a-select-input__label body-s-heavy">{label}</label>)}
 	<div class="a-select-input__inner">
-		<div class="a-select-input__input js-select-input">
-			{ value && {value} ||
-				(<span class="a-select-input__placeholder">{placeholder}</span>)
-			}
-		</div>
+		<button class="a-select-input__button js-select-input-button">
+			{
+                placeholder && (<span class="a-select-input__placeholder">{placeholder}</span>)
+            }
+		</button>
 		<input
 			type="hidden"
 			id={forId}
@@ -63,7 +63,7 @@ const {
 			<slot />
 		</ADropDown>
 	</div>
-	{ hint && (<small class="a-input__hint js-a-input-hint caption-m" id=`${forId + '-hint'}`>{hint}</small>)}
+	{ hint && (<small class="a-select-input__hint js-a-input-hint caption-m" id=`${forId + '-hint'}`>{hint}</small>)}
 </div>
 
 <script>
@@ -76,7 +76,7 @@ const {
 	currencyInputs?.forEach((currencyInput) => {
 		const input = initSelectInput(currencyInput) as ASelectInputState;
 
-		input.root.addEventListener('selected', (event) => {
+		input.elements.root.addEventListener('selected', (event) => {
 			console.log('Selected', input)
 		});
 	});
@@ -90,6 +90,13 @@ const {
 
 	.a-select-input {
 		$root: #{&};
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        &__label {
+            color: var(--dark-70);
+        }
 
 		&__inner {
 			position: relative;
@@ -114,21 +121,24 @@ const {
 			color: var(--dark-70);
 		}
 
-		&__input {
+		&__button {
 			overflow: hidden;
 			text-overflow: ellipsis;
 			white-space: nowrap;
-		}
-
-		&__input {
-			cursor: pointer;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
             border: 1px solid var(--purple-30);
             border-radius: 0.25rem;
+            background-color: inherit;
 		}
 
+        &__hint {
+            color: var(--dark-70);
+        }
 
 		&--size-m {
-            #{$root}__input {
+            #{$root}__button {
 				padding: 1rem 2.5rem 1rem 1rem;
 				font-size: 1rem;
 				line-height: 1.375;
@@ -136,7 +146,7 @@ const {
 		}
 
 		&--size-s {
-            #{$root}__input {
+            #{$root}__button {
 				padding: .625rem 2.5rem .625rem 1rem;
 				font-size: .875rem;
 				line-height: 1.3;
@@ -144,7 +154,7 @@ const {
 		}
 
 		&--disabled {
-			& #{$root}__input {
+			& #{$root}__button {
 				background-color: var(--dark-10);
 				border-color: var(--dark-10);
 				color: var(--dark-50);

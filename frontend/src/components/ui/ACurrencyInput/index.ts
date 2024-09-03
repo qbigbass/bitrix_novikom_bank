@@ -1,7 +1,6 @@
-import type {ADropDownMenu, ADropDownMenuCustomEvent, ADropDownMenuState} from "../ADropDown/ADropDownMenu/interfaces";
+import type { ADropDownMenuCustomEvent, ADropDownMenuState } from "../ADropDown/ADropDownMenu/interfaces";
 import type { ACurrencyInputState } from "./interfaces";
 import initADropDownMenu, { JS_CLASSES as JS_DROP_DOWN_MENU_CLASSES } from "@components/ui/ADropDown/ADropDownMenu";
-import { closeAllOpenSelectInputs } from "@components/ui/ASelectInput";
 
 //TODO В будущем скорее всего необходимо будет добавить методы:
 // 1) Перерисовка DropDownMenu и его элементов
@@ -15,58 +14,36 @@ export const JS_CLASSES = {
 	buttonText: '.js-a-currency-input-button-text'
 }
 
-export const closeAllOpenCurrencyInputs = () => {
-	const openCurrencyInputs = ALL_INPUT.filter((input) => input.isOpen);
-
-	if (openCurrencyInputs.length > 0) {
-		openCurrencyInputs.forEach((currencyInput) => {
-			closeHandler(currencyInput.root, currencyInput.dropDownMenu?.root, currencyInput);
-		});
-	}
-}
-
 const ACTION_CLASSES = {
 	open: 'is-open'
 }
 
-const ALL_INPUT: Array<ACurrencyInputState> = [];
-
-const openHandler = (
-	currencyInput: Element,
-	dropDownMenu: ADropDownMenu | undefined,
-	STATE: ACurrencyInputState
-) => {
-	dropDownMenu?.open();
+const openHandler = (STATE: ACurrencyInputState) => {
+	STATE.components.dropDownMenu?.methods.open();
 	STATE.isOpen = true;
-	currencyInput.classList.add(ACTION_CLASSES.open);
+	STATE.elements.root.classList.add(ACTION_CLASSES.open);
 	document.addEventListener('click', STATE.clickOutsideHandler);
 };
 
-const closeHandler = (
-	currencyInput: Element,
-	dropDownMenu: ADropDownMenu | undefined,
-	STATE: ACurrencyInputState
-) => {
-	dropDownMenu?.close();
+const closeHandler = (STATE: ACurrencyInputState) => {
+  STATE.components.dropDownMenu?.methods.close();
 	STATE.isOpen = false;
-	currencyInput.classList.remove(ACTION_CLASSES.open);
+  STATE.elements.root.classList.remove(ACTION_CLASSES.open);
 	document.removeEventListener('click', STATE.clickOutsideHandler);
 };
 
 const clickOutsideHandler = (
 	event: MouseEvent,
-	currencyInput: Element,
-	dropDownMenu: ADropDownMenu | undefined,
 	STATE: ACurrencyInputState
 ) => {
-	if (!currencyInput.contains(event.target as Node)) {
-		closeHandler(currencyInput, dropDownMenu, STATE);
+	if (!STATE.elements.root.contains(event.target as Node)) {
+		closeHandler(STATE);
 	}
 };
 
 const setButtonText = (STATE: ACurrencyInputState, text: string) => {
-	if (STATE.buttonTextEl) {
-		STATE.buttonTextEl.innerHTML = text;
+	if (STATE.elements.buttonTextEl) {
+		STATE.elements.buttonTextEl.innerHTML = text;
 	}
 }
 
@@ -78,11 +55,15 @@ const initState = (currencyInput: HTMLDivElement) => {
 	const dropDownMenu: ADropDownMenuState | null = dropDownEl ? initADropDownMenu(dropDownEl) : null;
 
 	const STATE: ACurrencyInputState = {
-		root,
-		inputEl,
-		dropDownMenu,
-		buttonEl,
-		buttonTextEl: buttonEl?.querySelector(JS_CLASSES.buttonText),
+    elements: {
+      root,
+      inputEl,
+      buttonEl,
+      buttonTextEl: buttonEl?.querySelector(JS_CLASSES.buttonText)
+    },
+    components: {
+      dropDownMenu
+    },
 		isOpen: false,
 		selectedCurrency: null,
 		value: '',
@@ -90,69 +71,64 @@ const initState = (currencyInput: HTMLDivElement) => {
 		clickOutsideHandler: (event: MouseEvent) => {}
 	}
 
-	STATE.clickOutsideHandler = (event: MouseEvent) => clickOutsideHandler(event, currencyInput, STATE.dropDownMenu?.root, STATE)
-	ALL_INPUT.push(STATE);
+	STATE.clickOutsideHandler = (event: MouseEvent) => clickOutsideHandler(event, STATE)
+
 	return STATE;
 }
 
 const initACurrencyInput = (currencyInput: HTMLDivElement): ACurrencyInputState => {
 	const STATE: ACurrencyInputState = initState(currencyInput);
 
-	if (STATE.dropDownMenu !== null) {
-		STATE.buttonEl?.addEventListener('click', (event) => {
-			event.stopPropagation();
+  const { components, elements } = STATE;
+
+	if (components.dropDownMenu !== null) {
+		elements.buttonEl?.addEventListener('click', (event) => {
 			if (STATE.isOpen) {
-				closeHandler(currencyInput, STATE.dropDownMenu?.root, STATE);
+				closeHandler(STATE);
 			} else {
-				closeAllOpenCurrencyInputs();
-				closeAllOpenSelectInputs();
-				openHandler(currencyInput, STATE.dropDownMenu?.root, STATE);
+				openHandler(STATE);
 			}
 		});
 
-		STATE.inputEl?.addEventListener('click', (event) => {
+		elements.inputEl?.addEventListener('click', (event) => {
 			if (STATE.isOpen) {
 				event.stopPropagation();
-				closeHandler(currencyInput, STATE.dropDownMenu?.root, STATE);
+				closeHandler(STATE);
 			}
 		});
 
-		STATE.dropDownMenu.root?.addEventListener('selected', (event) => {
-			const dropDownMenuCustomEvent = event as CustomEvent<ADropDownMenuCustomEvent>;
+		components.dropDownMenu.elements.root?.addEventListener('selected', (event) => {
+			const { detail } = event as CustomEvent<ADropDownMenuCustomEvent>;
 
-			if (STATE.buttonTextEl) {
-				setButtonText(STATE, String(dropDownMenuCustomEvent.detail.value));
+			if (elements.buttonTextEl) {
+				setButtonText(STATE, String(detail.value));
 			}
 
-			STATE.selectedCurrency = dropDownMenuCustomEvent.detail.value;
+			STATE.selectedCurrency = detail.value;
 
-			closeHandler(currencyInput, STATE.dropDownMenu?.root, STATE);
+			closeHandler(STATE);
 
-			const customEvent = new CustomEvent('selected', {
-				detail: {
-					value: dropDownMenuCustomEvent.detail.value
-				}
-			});
+			const customEvent = new CustomEvent('selected', { detail });
 
 			currencyInput.dispatchEvent(customEvent);
 		});
 
-		STATE.inputEl?.addEventListener('input', (event) => {
+		elements.inputEl?.addEventListener('input', (event) => {
 			event.stopPropagation();
 
-			STATE.value = STATE.inputEl?.value ?? '';
+			STATE.value = elements.inputEl?.value ?? '';
 
 			const customEvent = new CustomEvent('input', {
 				detail: {
-					value: STATE.inputEl?.value
+					value: elements.inputEl?.value
 				}
 			});
 
 			currencyInput.dispatchEvent(customEvent);
 		});
 
-		setButtonText(STATE, String(STATE.dropDownMenu.selectedItem?.value));
-		STATE.selectedCurrency = STATE.dropDownMenu.selectedItem?.value;
+		setButtonText(STATE, String(components.dropDownMenu.selectedItem?.value));
+		STATE.selectedCurrency = components.dropDownMenu.selectedItem?.value;
 
 		return STATE;
 	} else {

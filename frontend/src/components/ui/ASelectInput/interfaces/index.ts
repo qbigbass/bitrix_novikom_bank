@@ -1,13 +1,22 @@
 import type { ADropDownMenuState } from '@components/ui/ADropDown/ADropDownMenu/interfaces';
 
+export interface ASelectInputElements {
+  root: HTMLDivElement;
+  buttonEl: HTMLDivElement | null;
+  inputHidden: HTMLInputElement | null;
+}
+
+export interface ASelectInputComponents {
+  dropDownMenu: ADropDownMenuState | null;
+}
+
 export interface ASelectInputState {
-	root: HTMLDivElement;
-	inputEl: HTMLDivElement | null;
-	inputHidden: HTMLInputElement | null;
-	dropDownMenu: ADropDownMenuState | null;
+  elements: ASelectInputElements;
+  components: ASelectInputComponents;
 	isOpen: boolean;
 	selectedValues: string | null | undefined;
 	disabled: boolean;
 	value: string;
+  displayValue: string;
 	clickOutsideHandler: (event: MouseEvent) => void;
 }

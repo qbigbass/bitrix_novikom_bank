@@ -41,7 +41,7 @@ import ADropDownCheckbox from "../components/ui/ADropDown/ADropDownCheckbox/ADro
 import ASelectInput from "../components/ui/ASelectInput/ASelectInput.astro";
 import FormRow from "../components/layouts/FormLayout/FormRow.astro";
 import ACurrencyInput from "../components/ui/ACurrencyInput/ACurrencyInput.astro";
-import ADropDownButton from "../components/ui/ADropDown/ADropDownButton/ADropDownButton.astro";
+import ADropDownItem from "../components/ui/ADropDown/ADropDownItem/ADropDownItem.astro";
 import AInputField from "../components/ui/AInput/AInputField.astro";
 import CardPromo from "@components/common/Cards/CardPromo.astro";
 import CardProduct from "@components/common/Cards/CardProduct.astro";
@@ -1356,28 +1356,29 @@ const listConatact = [
                 <ASelectInput
                     size="m"
                     label="Тип карты"
-                    placeholder="Дебетовая"
                     name="cardType"
                 >
-                    <ADropDownButton
-                        value="Дебетовая"
+                    <ADropDownItem
+                        value="debit"
+                        displayValue="Дебетовая"
                         class="body-m-light"
                     >
                         Дебетовая
-                    </ADropDownButton>
-                    <ADropDownButton
-                        value="Кредитная"
+                    </ADropDownItem>
+                    <ADropDownItem
+                        value="credit"
+                        displayValue="Кредитная"
                         class="body-m-light"
-                        selected
                     >
                         Кредитная
-                    </ADropDownButton>
-                    <ADropDownButton
-                        value="Кредитная 2"
+                    </ADropDownItem>
+                    <ADropDownItem
+                        value="credit-2"
+                        displayValue="Кредитная 2"
                         class="body-m-light"
                     >
                         Кредитная 2
-                    </ADropDownButton>
+                    </ADropDownItem>
                 </ASelectInput>
 
                 <ASelectInput
@@ -1428,10 +1429,10 @@ const listConatact = [
                     forId="you-have"
                     name="you-have"
                 >
-                    <ADropDownButton value="RUB" selected>RUB</ADropDownButton>
-                    <ADropDownButton value="EUR">EUR</ADropDownButton>
-                    <ADropDownButton value="USD">USD</ADropDownButton>
-                    <ADropDownButton value="CNY">CNY</ADropDownButton>
+                    <ADropDownItem value="RUB" selected>RUB</ADropDownItem>
+                    <ADropDownItem value="EUR">EUR</ADropDownItem>
+                    <ADropDownItem value="USD">USD</ADropDownItem>
+                    <ADropDownItem value="CNY">CNY</ADropDownItem>
                 </ACurrencyInput>
                 <ACurrencyInput
                     size="ms"
@@ -1441,10 +1442,10 @@ const listConatact = [
                     forId="you-get"
                     name="you-get"
                 >
-                    <ADropDownButton value="RUB">RUB</ADropDownButton>
-                    <ADropDownButton value="EUR">EUR</ADropDownButton>
-                    <ADropDownButton value="USD" selected>USD</ADropDownButton>
-                    <ADropDownButton value="CNY">CNY</ADropDownButton>
+                    <ADropDownItem value="RUB">RUB</ADropDownItem>
+                    <ADropDownItem value="EUR">EUR</ADropDownItem>
+                    <ADropDownItem value="USD" selected>USD</ADropDownItem>
+                    <ADropDownItem value="CNY">CNY</ADropDownItem>
                 </ACurrencyInput>
             </FormRow>
         </div>

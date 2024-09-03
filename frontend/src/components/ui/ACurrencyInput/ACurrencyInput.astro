@@ -32,12 +32,12 @@ const {
 ---
 
 <div
-	class="a-input a-currency-input js-a-currency-input"
+	class="a-currency-input js-a-currency-input"
 	class:list={
 		[
 			className,
-			{'a-input--required': required},
-			`a-input--${size}`
+			{'a-currency-input--required': required},
+			`a-currency-input--${size}`
 		]
 	}
 	{...rest}
@@ -47,7 +47,7 @@ const {
 	<div class="a-currency-input__inner">
 		<input
 			id={forId}
-			class="a-input__input"
+			class="a-currency-input__input"
 			placeholder={placeholder}
 			disabled={disabled}
 			name={name}
@@ -62,7 +62,7 @@ const {
 			<slot />
 		</ADropDown>
 	</div>
-	{ hint && (<small class="a-input__hint js-a-input-hint caption-m" id=`${forId + '-hint'}`>{hint}</small>)}
+	{ hint && (<small class="a-currency-input__hint js-a-input-hint caption-m" id=`${forId + '-hint'}`>{hint}</small>)}
 </div>
 
 <script>
@@ -74,11 +74,11 @@ const {
 	currencyInputs?.forEach((currencyInput) => {
 		const input = initACurrencyInput(currencyInput) as ACurrencyInputState;
 
-		input.root.addEventListener('input', (event) => {
+		input.elements.root.addEventListener('input', (event) => {
 			console.log('Input', input)
 		});
 
-		input.root.addEventListener('selected', (event) => {
+		input.elements.root.addEventListener('selected', (event) => {
 			console.log('Selected', input)
 		});
 	});
@@ -91,8 +91,10 @@ const {
 	@import "@styles/placeholders.scss";
 
 	.a-currency-input {
+        $root: #{&};
 		display: flex;
 		flex-direction: column;
+        gap: 0.5rem;
 
 		&__inner {
 			position: relative;
@@ -128,12 +130,38 @@ const {
 			width: 100%;
 		}
 
-		.a-input__input {
+		&__input {
+            display: inline-block;
+            width: 100%;
+            min-width: 0;
+            border: 1px solid var(--purple-30);
 			border-radius: 0.25rem 0 0 0.25rem;
 			border-right: 0;
+            background-color: inherit;
+            color: inherit;
+            font-family: inherit;
+
+            &::placeholder {
+                color: var(--dark-70);
+            }
+
+            &:disabled {
+                cursor: not-allowed;
+                border-color: transparent;
+                background-color: var(--dark-10);
+            }
+
+            &:focus {
+                outline: none;
+                border-color: var(--purple-70);
+            }
+
+            &:enabled:hover {
+                border-color: var(--purple-70);
+            }
 		}
 
-		.a-input__input:disabled ~ &__button {
+		&__input:disabled ~ &__button {
 			pointer-events: none;
 			cursor: not-allowed;
 			border-color: transparent;
@@ -141,11 +169,11 @@ const {
 			background-color: var(--dark-10);
 		}
 
-		.a-input__input:enabled:hover ~ &__button {
+		&__input:enabled:hover ~ &__button {
 			border-color: var(--purple-70);
 		}
 
-		.a-input__input:focus ~ &__button {
+		&__input:focus ~ &__button {
 			border-color: var(--purple-70);
 		}
 
@@ -153,20 +181,44 @@ const {
 			color: var(--violet-70);
 		}
 
-		&.a-input.a-input--m & {
-			&__button {
+		&#{$root}--m {
+            #{$root}__input {
+                padding: calc(1rem - 1px); // 1px - border
+                font-size: 1rem;
+                line-height: 150%;
+            }
+
+            #{$root}__button {
 				padding: 0.938rem 0.938rem 0.938rem 0.438rem;
 			}
 		}
 
-		&.a-input.a-input--s & {
-			&__button {
+		&#{$root}--s {
+            #{$root}__input {
+                padding: 0.625rem 1rem;
+                font-size: 0.875rem;
+                line-height: 130%;
+            }
+
+            #{$root}__button {
 				padding: 0.625rem 0.438rem 0.625rem 0.438rem;
 			}
 		}
 
-		&.a-input.a-input--ms & {
-			&__button {
+		&#{$root}--ms {
+            #{$root}__input {
+                padding: 0.625rem 1rem;
+                font-size: 0.875rem;
+                line-height: 130%;
+
+                @include use-media(tablet-album) {
+                    padding: calc(1rem - 1px); // 1px - border
+                    font-size: 1rem;
+                    line-height: 150%;
+                }
+            }
+
+            #{$root}__button {
 				padding:
 					calc-clamp(0.563rem, 0.938rem, map.get($mq-breakpoints, laptop-x))
 					calc-clamp(0.563rem, 0.938rem, map.get($mq-breakpoints, laptop-x))
@@ -175,8 +227,8 @@ const {
 			}
 		}
 
-		&.is-open & {
-			&__button-icon {
+		&.is-open {
+            #{$root}__button-icon {
 				transform: rotate(-180deg);
 			}
 		}

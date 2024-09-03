@@ -1,11 +1,19 @@
 import type { ADropDownMenuState } from '@components/ui/ADropDown/ADropDownMenu/interfaces';
 
+export interface ACurrencyInputElements {
+  root: HTMLDivElement;
+  inputEl: HTMLInputElement | null;
+  buttonEl: HTMLButtonElement | null;
+  buttonTextEl: HTMLSpanElement | null | undefined;
+}
+
+export interface ACurrencyInputComponents {
+  dropDownMenu: ADropDownMenuState | null;
+}
+
 export interface ACurrencyInputState {
-	root: HTMLDivElement;
-	inputEl: HTMLInputElement | null;
-	dropDownMenu: ADropDownMenuState | null;
-	buttonEl: HTMLButtonElement | null;
-	buttonTextEl: HTMLSpanElement | null | undefined;
+  elements: ACurrencyInputElements;
+  components: ACurrencyInputComponents;
 	isOpen: boolean;
 	selectedCurrency: string | null | undefined;
 	disabled: boolean;

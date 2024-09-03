@@ -15,7 +15,7 @@ const { id, checked,
     size = 's', value, } = Astro.props;
 ---
 <div class="drop-down-checkbox" class:list={[
-    `drop-down-checkbox--size-${size}`,
+    `drop-down-checkbox--${size}`,
 ]}>
     <ACheckbox size="m" id={id} checked={checked} value={value} class="js-drop-down-checkbox">
         <Fragment slot="label"><slot /></Fragment>
@@ -29,7 +29,7 @@ const { id, checked,
             width: 100%;
         }
 
-        &--size-s {
+        &--s {
             & .a-checkbox {
                 &__inner {
                     gap: .5rem;
@@ -41,7 +41,7 @@ const { id, checked,
             }
         }
 
-        &--size-m {
+        &--m {
             & .a-checkbox {
                 &__inner {
                     gap: .75rem;

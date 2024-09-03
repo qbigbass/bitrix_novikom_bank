@@ -1,6 +1,6 @@
 ---
 import ASelectInput from "../ASelectInput/ASelectInput.astro";
-import ADropDownButton from "../ADropDown/ADropDownButton/ADropDownButton.astro";
+import ADropDownItem from "../ADropDown/ADropDownItem/ADropDownItem.astro";
 import AIcon from "../../AIcon.astro";
 
 interface Props {
@@ -35,14 +35,14 @@ for (let i = 1; i <= totalPages; i++) {
     <ASelectInput size="s" name="paginator" outline>
         {
             pagesToShow.map((pageNumber) => (
-                <ADropDownButton
+                <ADropDownItem
                     selected={pageNumber === page}
                     class="body-s-light"
                     value={pageNumber + '/' + totalPages}
                     href={href}
                 >
                     {pageNumber}
-                </ADropDownButton>
+                </ADropDownItem>
             ))
         }
     </ASelectInput>

@@ -2,6 +2,7 @@
 interface Props {
 	class?: string;
 	value: string;
+    displayValue: string;
 	selected?: boolean;
     href?: string;
 }
@@ -9,21 +10,23 @@ interface Props {
 const {
 	class: classList,
 	value,
+    displayValue,
 	selected = false,
     href,
 	...rest
 } = Astro.props as Props;
 
-let Element = href?.length ? 'a' : 'button';
+let Element = href?.length ? 'a' : 'div';
 const isLink = Element.toLocaleLowerCase() === 'a';
 ---
 
 <Element
-	class="a-drop-down-button js-a-drop-down-button"
+	class="a-drop-down-item js-a-drop-down-item"
 	class:list={classList}
 	type={isLink ? undefined : 'button'}
     href={isLink ? href : undefined}
 	data-value={value}
+    data-display-value={displayValue}
 	aria-selected={[selected]}
 	{...rest}
 >
@@ -34,7 +37,7 @@ const isLink = Element.toLocaleLowerCase() === 'a';
 	@import "@styles/media-queries";
 	@import "@styles/placeholders";
 
-	.a-drop-down-button {
+	.a-drop-down-item {
 		display: block;
 		border: none;
 		width: 100%;

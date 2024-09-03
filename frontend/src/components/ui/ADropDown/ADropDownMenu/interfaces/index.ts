@@ -1,7 +1,8 @@
-import type { ADropDownButtonState } from "@components/ui/ADropDown/ADropDownButton/interfaces";
+import type { ADropDownItemState } from "@components/ui/ADropDown/ADropDownItem/interfaces";
 
 export interface ADropDownMenuCustomEvent {
 	value: string;
+  displayValue: string;
 }
 
 export interface ADropDownMenu extends HTMLDivElement {
@@ -9,11 +10,22 @@ export interface ADropDownMenu extends HTMLDivElement {
 	close: () => void;
 }
 
+export interface ADropDownMenuElements {
+  root: ADropDownMenu;
+}
+
+export interface ADropDownMenuComponents {
+  items: ADropDownItemState[];
+}
+
 export interface ADropDownMenuState {
+  elements: ADropDownMenuElements;
+  components: ADropDownMenuComponents;
 	isOpen: boolean;
 	currentValue: string;
-	selectedItem: ADropDownButtonState | null;
-	root: ADropDownMenu;
-	buttons: NodeListOf<HTMLButtonElement>;
-	items: ADropDownButtonState[];
+	selectedItem: ADropDownItemState | null;
+  methods: {
+    open: () => void;
+    close: () => void;
+  }
 }

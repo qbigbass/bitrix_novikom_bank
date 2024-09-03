@@ -1,7 +1,7 @@
 import type { ADropDownMenu, ADropDownMenuCustomEvent, ADropDownMenuState } from './interfaces';
-import type { ADropDownButtonCustomEvent, ADropDownButtonState } from '@components/ui/ADropDown/ADropDownButton/interfaces';
+import type { ADropDownItemCustomEvent, ADropDownItemState } from '@components/ui/ADropDown/ADropDownItem/interfaces';
 
-import initDropDownButton, {JS_CLASSES as JS_BUTTON_CLASSES} from '@components/ui/ADropDown/ADropDownButton'
+import initDropDownButton, {JS_CLASSES as JS_BUTTON_CLASSES} from '@components/ui/ADropDown/ADropDownItem'
 
 export const JS_CLASSES = {
 	root: '.js-a-drop-down'
@@ -11,63 +11,64 @@ const ACTION_CLASSES = {
 	open: 'is-open'
 }
 
-const openHandler = (STATE: ADropDownMenuState,
-) => {
-	STATE.root.classList.add(ACTION_CLASSES.open);
+const openHandler = (STATE: ADropDownMenuState) => {
+	STATE.elements.root.classList.add(ACTION_CLASSES.open);
 	STATE.isOpen = true;
 }
 
 const closeHandler = (STATE: ADropDownMenuState) => {
-	STATE.root.classList.remove(ACTION_CLASSES.open);
+	STATE.elements.root.classList.remove(ACTION_CLASSES.open);
 	STATE.isOpen = false;
 }
 
-const setSelectedItem = (STATE: ADropDownMenuState, item: ADropDownButtonState) => {
+const setSelectedItem = (STATE: ADropDownMenuState, item: ADropDownItemState) => {
 	STATE.selectedItem = item;
 	STATE.currentValue = item.value;
 }
 
 const initState = (element: HTMLDivElement): ADropDownMenuState => {
-	const dropDown = element as ADropDownMenu;
+	const root = element as ADropDownMenu;
+  const dropDownItems: NodeListOf<HTMLDivElement | HTMLLinkElement> = element?.querySelectorAll(JS_BUTTON_CLASSES.root);
+  let items: ADropDownItemState[] = [];
+
+  dropDownItems.forEach((item) => {
+    const dropDownButton = initDropDownButton(item);
+    items.push(dropDownButton);
+  });
 
 	return {
+    elements: {
+      root,
+    },
+    components: {
+      items
+    },
 		isOpen: false,
 		currentValue: '',
 		selectedItem: null,
-		root: dropDown,
-		buttons: element?.querySelectorAll(JS_BUTTON_CLASSES.root),
-		items: [],
+    methods: {
+      open: () => {},
+      close: () => {}
+    }
 	}
 }
 
 const initADropDownMenu = (element: HTMLDivElement): ADropDownMenuState => {
 	const STATE = initState(element);
 
-	STATE.root['open'] = () => openHandler(STATE);
-	STATE.root['close'] = () => closeHandler(STATE);
+	STATE.methods.open = () => openHandler(STATE);
+	STATE.methods.close = () => closeHandler(STATE);
 
-	STATE.buttons.forEach((button: HTMLButtonElement) => {
-		const dropDownButton = initDropDownButton(button) as ADropDownButtonState;
-		STATE.items.push(dropDownButton);
-	});
-
-	STATE.items.forEach((item: ADropDownButtonState) => {
-		item.button?.addEventListener('select', (event) => {
-			const buttonEvent = event as CustomEvent<ADropDownButtonCustomEvent>;
-
-			if (STATE.selectedItem !== null) {
-				STATE.selectedItem.button.unselect();
-			}
+	STATE.components.items.forEach((item: ADropDownItemState) => {
+		item.elements.root.addEventListener('select', (event) => {
+			const { detail } = event as CustomEvent<ADropDownItemCustomEvent>;
+			STATE.selectedItem?.methods.unselect();
 
 			setSelectedItem(STATE, item);
 
-			const customEvent = new CustomEvent<ADropDownMenuCustomEvent>('selected', {
-				detail: {
-					value: buttonEvent.detail.value
-				}
-			});
+			const customEvent = new CustomEvent<ADropDownMenuCustomEvent>('selected', { detail });
 
-			STATE.root.dispatchEvent(customEvent);
+			STATE.elements.root.dispatchEvent(customEvent);
 		});
 
 		if (item.selected) {
