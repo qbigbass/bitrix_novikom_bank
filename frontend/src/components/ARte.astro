@@ -1,105 +1,141 @@
 ---
 interface Props {
-	class?: string;
+    class?: string;
 }
 
-const {
-	class: className,
-	...rest
-} = Astro.props as Props;
+const { class: className, ...rest } = Astro.props as Props;
 ---
-<div
-	class="a-rte"
-	class:list={className}
-	{...rest}
->
-	<slot />
+
+<div class="a-rte" class:list={className} {...rest}>
+    <slot />
 </div>
 
 <style lang="scss" is:global>
-	@import "@styles/typography";
-	.a-rte {
+    @import "@styles/typography";
+    @import "@styles/media-queries";
 
-		h2 {
-			@extend .headline-2;
+    .a-rte {
+        h2 {
+            @extend .headline-2;
 
-			&:not(:first-child) {
-				margin-top: 2.5rem;
-			}
+            &:not(:first-child) {
+                margin-top: 2.5rem;
 
-			&:not(:last-child) {
-				margin-bottom: 1.5rem;
-			}
-		}
+                @include use-media(tablet-album) {
+                    margin-top: 3rem;
+                }
+            }
 
-		h3 {
-			@extend .headline-3;
+            &:not(:last-child) {
+                margin-bottom: 1.5rem;
+            }
+        }
 
-			&:not(:last-child) {
-				margin-bottom: 1.5rem;
-			}
-		}
+        h3 {
+            @extend .headline-3;
 
-		p {
-			margin-bottom: 1.5rem;
+            &:not(:last-child) {
+                margin-bottom: 1.5rem;
+            }
+        }
 
-			&:last-child {
-				margin-bottom: 0;
-			}
+        p {
+            margin-bottom: 1.5rem;
 
-			& strong {
-				@extend .body-l-heavy;
-			}
-		}
+            &:last-child {
+                margin-bottom: 0;
+            }
 
-		ul {
-			margin: 1.5rem 0;
-			padding-inline-start: 28px;
+            & strong {
+                @extend .body-l-heavy;
+            }
+        }
 
-			li {
-				position: relative;
-				list-style: none;
-				margin-bottom: 0.5rem;
+        ul {
+            margin: 1.5rem 0;
+            padding-inline-start: 28px;
 
-				&:last-child {
-					margin-bottom: 0;
-				}
+            @include use-media(tablet-album) {
+                margin-bottom: 3rem;
+            }
 
-				&::before {
-					position: absolute;
-					content: url("../assets/ul-li-icon.svg");
-					left: -28px;
-					top: 0;
-					width: 12px;
-					height: 18px;
-				}
-			}
+            li {
+                position: relative;
+                list-style: none;
+                margin-bottom: 1rem;
 
-			&:last-child {
-				margin-bottom: 0;
-			}
-		}
+                @include use-media(tablet-album) {
+                    margin-bottom: 1.5rem;
+                }
 
-		a {
-			font-size: inherit;
-			font-weight: inherit;
-			line-height: inherit;
-			text-decoration: none;
-			color: var(--blue-100);
+                &:last-child {
+                    margin-bottom: 0;
+                }
 
-			&:hover {
-				color: var(--violet-100);
-			}
-		}
+                &::before {
+                    position: absolute;
+                    content: url("../assets/ul-li-icon.svg");
+                    left: -28px;
+                    top: 0;
+                    width: 12px;
+                    height: 18px;
+                }
+            }
 
-		img {
-			margin-left: -1.5rem;
-			margin-right: -1.5rem;
-			width: calc(100% + 3rem);
+            &:first-child {
+                margin-top: 0;
+            }
 
-			&:not(:last-child) {
-				margin-bottom: 2.5rem;
-			}
-		}
-	}
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        a {
+            font-size: inherit;
+            font-weight: inherit;
+            line-height: inherit;
+            text-decoration: none;
+            color: var(--blue-100);
+
+            &:hover {
+                color: var(--violet-100);
+            }
+        }
+
+        img {
+            margin-left: -1.5rem;
+            margin-right: -1.5rem;
+            width: calc(100% + 3rem);
+
+            @include use-media(tablet) {
+                margin-left: 0;
+                margin-right: 0;
+                width: 100%;
+                border-radius: 0.5rem;
+            }
+
+            &:not(:last-child) {
+                margin-bottom: 2.5rem;
+
+                @include use-media(tablet-album) {
+                    margin-bottom: 3rem;
+                }
+            }
+        }
+
+        .a-table {
+            &:not(:first-child) {
+                margin-top: 1.5rem;
+            }
+
+            &:not(:last-child) {
+                margin-bottom: 2.5rem;
+
+                @include use-media(tablet-album) {
+                    margin-bottom: 3rem;
+                }
+            }
+        }
+    }
 </style>
