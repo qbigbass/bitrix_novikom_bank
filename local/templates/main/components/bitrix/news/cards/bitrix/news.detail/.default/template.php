@@ -171,7 +171,7 @@ $bannerClass = $arResult["PROPERTY_{$properties['CLASS_BANNER_DETAIL']['ID']}"];
     </div>
 </div>
 
-<section class="section-layout section-benefits section-benefits--bg">
+<section class="section-layout section-benefits">
     <div class="content-container">
         <div class="section-benefits__container">
             <h3 class="section-benefits__title headline-2">Преимущества карты <?= $arResult['NAME'] ?></h3>
@@ -204,11 +204,16 @@ $bannerClass = $arResult["PROPERTY_{$properties['CLASS_BANNER_DETAIL']['ID']}"];
             </div>
         </div>
     </div>
+    <picture class="pattern-bg">
+        <source srcset="/frontend/build/assets/patterns/section/pattern-light-s.svg" media="(max-width: 767px)">
+        <source srcset="/frontend/build/assets/patterns/section/pattern-light-m.svg" media="(max-width: 1199px)">
+        <img src="/frontend/build/assets/patterns/section/pattern-light-l.svg" alt="bg pattenr" loading="lazy">
+    </picture>
 </section>
 
 <?
 // вывод информации из конструктора
-$arrDetailInfoCardIds = $arResult["PROPERTY_{$arResult['PROPERTIES']['DETAIL_INFO_CARD']['ID']}"];
+$arrDetailInfoCardIds = json_decode($arResult['PROPERTIES']['DETAIL_CARD']['~VALUE'], true)['blocks'][0]['element_ids'];
 
 $APPLICATION->IncludeComponent(
     "sprint.editor:blocks",

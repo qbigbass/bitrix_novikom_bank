@@ -6,9 +6,8 @@ import AButton from "@components/ui/Buttons/AButton.astro";
 import AIcon from "../components/AIcon.astro";
 import ATabs from "@components/ui/ATabs/ATabs.astro";
 import ABreadcrumbs from "@components/ui/ABreadcrumbs/ABreadcrumbs.astro";
-import OfferCard, {
-    type OfferCardColor,
-} from "@components/common/OfferCard/OfferCard.astro";
+import OfferCard from "@components/common/OfferCard/OfferCard.astro";
+import type OfferCardColor from "@components/common/OfferCard/OfferCard.astro";
 import AppButton from "../components/ui/Buttons/AppButton.astro";
 import AInput from "../components/ui/AInput/AInput.astro";
 import ServiceCard from "../components/common/ServiceCard.astro";
@@ -40,7 +39,6 @@ import ACollapsedItem from "../components/ui/ACollapsedItems/ACollapsedItem.astr
 import ACollapsedButton from "../components/ui/ACollapsedItems/ACollapsedButton.astro";
 import ADropDownCheckbox from "../components/ui/ADropDown/ADropDownCheckbox/ADropDownCheckbox.astro";
 import ASelectInput from "../components/ui/ASelectInput/ASelectInput.astro";
-import ADropDownItem from "../components/ui/ADropDown/ADropDownItem/ADropDownItem.astro";
 import FormRow from "../components/layouts/FormLayout/FormRow.astro";
 import ACurrencyInput from "../components/ui/ACurrencyInput/ACurrencyInput.astro";
 import ADropDownButton from "../components/ui/ADropDown/ADropDownButton/ADropDownButton.astro";
@@ -182,7 +180,7 @@ const listConatact = [
 ];
 ---
 
-<DefaultPageLayout title="index">
+<DefaultPageLayout title="UI-компоненты">
     <Fragment slot="header">header</Fragment>
     <div class="content-container">
         <div class="ui-section">
@@ -1361,18 +1359,25 @@ const listConatact = [
                     placeholder="Дебетовая"
                     name="cardType"
                 >
-                    <ADropDownItem value="Дебетовая"
-                        ><span class="body-m-light">Дебетовая</span
-                        ></ADropDownItem
+                    <ADropDownButton
+                        value="Дебетовая"
+                        class="body-m-light"
                     >
-                    <ADropDownItem selected value="Кредитная"
-                        ><span class="body-m-light">Кредитная</span
-                        ></ADropDownItem
+                        Дебетовая
+                    </ADropDownButton>
+                    <ADropDownButton
+                        value="Кредитная"
+                        class="body-m-light"
+                        selected
                     >
-                    <ADropDownItem value="Кредитная 2"
-                        ><span class="body-m-light">Кредитная 2</span
-                        ></ADropDownItem
+                        Кредитная
+                    </ADropDownButton>
+                    <ADropDownButton
+                        value="Кредитная 2"
+                        class="body-m-light"
                     >
+                        Кредитная 2
+                    </ADropDownButton>
                 </ASelectInput>
 
                 <ASelectInput
@@ -1381,38 +1386,30 @@ const listConatact = [
                     placeholder="Выберите"
                     name="cardCategory"
                 >
-                    <ADropDownCheckbox checked size="m" id="10"
-                        ><span class="body-m-light">Standard</span
-                        ></ADropDownCheckbox
-                    >
-                    <ADropDownCheckbox checked size="m" id="11"
-                        ><span class="body-m-light">Bonus</span
-                        ></ADropDownCheckbox
-                    >
-                    <ADropDownCheckbox size="m" id="111"
-                        ><span class="body-m-light">Bonus 2</span
-                        ></ADropDownCheckbox
-                    >
-                    <ADropDownCheckbox size="m" id="222"
-                        ><span class="body-m-light">Bonus 3</span
-                        ></ADropDownCheckbox
-                    >
-                    <ADropDownCheckbox size="m" id="333"
-                        ><span class="body-m-light">Bonus 4</span
-                        ></ADropDownCheckbox
-                    >
-                    <ADropDownCheckbox size="m" id="444"
-                        ><span class="body-m-light">Bonus 5</span
-                        ></ADropDownCheckbox
-                    >
-                    <ADropDownCheckbox size="m" id="555"
-                        ><span class="body-m-light">Bonus 6</span
-                        ></ADropDownCheckbox
-                    >
-                    <ADropDownCheckbox size="m" id="666"
-                        ><span class="body-m-light">Bonus 7</span
-                        ></ADropDownCheckbox
-                    >
+                    <ADropDownCheckbox checked size="m" id="10">
+                        <span class="body-m-light">Standard</span>
+                    </ADropDownCheckbox>
+                    <ADropDownCheckbox checked size="m" id="11">
+                        <span class="body-m-light">Bonus</span>
+                    </ADropDownCheckbox>
+                    <ADropDownCheckbox size="m" id="111">
+                        <span class="body-m-light">Bonus 2</span>
+                    </ADropDownCheckbox>
+                    <ADropDownCheckbox size="m" id="222">
+                        <span class="body-m-light">Bonus 3</span>
+                    </ADropDownCheckbox>
+                    <ADropDownCheckbox size="m" id="333">
+                        <span class="body-m-light">Bonus 4</span>
+                    </ADropDownCheckbox>
+                    <ADropDownCheckbox size="m" id="444">
+                        <span class="body-m-light">Bonus 5</span>
+                    </ADropDownCheckbox>
+                    <ADropDownCheckbox size="m" id="555">
+                        <span class="body-m-light">Bonus 6</span>
+                    </ADropDownCheckbox>
+                    <ADropDownCheckbox size="m" id="666">
+                        <span class="body-m-light">Bonus 7</span>
+                    </ADropDownCheckbox>
                 </ASelectInput>
             </FormRow>
         </div>
@@ -1698,7 +1695,7 @@ const listConatact = [
                     <CardText title="Заголовок" description="Описание" />
                 </div>
             </div>
-            
+
         </div>
     </div>
     <Fragment slot="footer">footer</Fragment>

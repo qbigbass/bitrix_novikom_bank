@@ -1,33 +1,34 @@
 ---
 interface Props {
-	className?: string;
+	class?: string;
 	value: string;
 	selected?: boolean;
+    href?: string;
 }
 
 const {
-	class: className,
+	class: classList,
 	value,
 	selected = false,
+    href,
 	...rest
 } = Astro.props as Props;
 
+let Element = href?.length ? 'a' : 'button';
+const isLink = Element.toLocaleLowerCase() === 'a';
 ---
 
-<button
-	class="a-drop-down-button btn-m-heavy js-a-drop-down-button"
-	class:list={
-		[
-			className
-		]
-	}
-	type="button"
+<Element
+	class="a-drop-down-button js-a-drop-down-button"
+	class:list={classList}
+	type={isLink ? undefined : 'button'}
+    href={isLink ? href : undefined}
 	data-value={value}
 	aria-selected={[selected]}
 	{...rest}
 >
 	<slot/>
-</button>
+</Element>
 
 <style lang="scss" is:global>
 	@import "@styles/media-queries";
@@ -39,24 +40,18 @@ const {
 		width: 100%;
 		text-align: left;
 		cursor: pointer;
-		padding: 0.938rem 1rem;
+		padding: 1rem;
 		background-color: var(--dark-0);
+        transition: color ease .33s;
 
-		@include use-media(tablet) {
-			padding: 1rem;
-		}
-
-		@include use-media(tablet-album) {
-			padding: 1.125rem 1rem;
-		}
-
-		&:hover {
+		&:hover:not(&[aria-selected=true]) {
 			color: var(--blue-100);
 		}
 
 		&[aria-selected=true] {
 			background-color: var(--dark-30);
 			color: var(--blue-100);
+            pointer-events: none;
 		}
 	}
 </style>
