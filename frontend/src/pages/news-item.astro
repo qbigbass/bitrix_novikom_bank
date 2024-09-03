@@ -13,6 +13,7 @@ import ATableRow from "@components/common/ATable/ATableRow.astro";
 import ATableCell from "@components/common/ATable/ATableCell.astro";
 import ATableBody from "@components/common/ATable/ATableBody.astro";
 import ATableFooter from "@components/common/ATable/ATableFooter.astro";
+import ContactBanner from "@components/common/Banners/ContactBanner.astro";
 
 const breadcrumbs = [
     {
@@ -31,10 +32,12 @@ const breadcrumbs = [
 <DefaultPageLayout title="МСБ Главная">
     <SectionLayout class="section-news-item">
         <div class="content-container">
-            <ABreadcrumbs dark links={breadcrumbs} />
             <NewsLayout
                 title="НОВИКОМ разместил средства Гарантийного фонда Чеченской Республики"
             >
+                <Fragment slot="breadcrumbs">
+                    <ABreadcrumbs dark links={breadcrumbs} />
+                </Fragment>
                 <Fragment slot="info">
                     <ATag outline>Пресс-центр</ATag>
                     <span class="body-m-light">07.08.2024</span>
@@ -279,6 +282,7 @@ const breadcrumbs = [
                     </APolygonContainer>
                 </Fragment>
             </NewsLayout>
+            <ContactBanner />
         </div>
     </SectionLayout>
 </DefaultPageLayout>
@@ -290,16 +294,16 @@ const breadcrumbs = [
         border-top: 1px solid var(--blue-30);
         padding-top: 2.5rem;
 
-        & .content-container {
-            @include use-media(tablet-album) {
-                padding-left: 7.5rem;
-                padding-right: 7.5rem;
-            }
+        // & .content-container {
+        //     @include use-media(tablet-album) {
+        //         padding-left: 7.5rem;
+        //         padding-right: 7.5rem;
+        //     }
 
-            @include use-media(desktop) {
-                padding-left: 10rem;
-                padding-right: 10rem;
-            }
-        }
+        //     @include use-media(desktop) {
+        //         padding-left: 10rem;
+        //         padding-right: 10rem;
+        //     }
+        // }
     }
 </style>

@@ -9,6 +9,7 @@ const { title } = Astro.props as Props;
 ---
 
 <div class="news-layout">
+    <slot name="breadcrumbs" />
     <div class="news-layout__header">
         <h1 class="headline-1" set:html={title} />
         <div class="news-layout__info">
@@ -31,10 +32,16 @@ const { title } = Astro.props as Props;
 
         @include use-media(tablet-album) {
             gap: 3rem;
+            padding-left: 2.5rem;
+            padding-right: 2.5rem;
         }
 
-        &:not(:first-child) {
-            margin-top: 2.5rem;
+        &:not(:last-child) {
+            margin-bottom: 2.5rem;
+
+            @include use-media(tablet-album) {
+                margin-bottom: 3rem;
+            }
         }
 
         &__header {
