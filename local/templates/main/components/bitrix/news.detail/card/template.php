@@ -170,7 +170,7 @@ $tabs = json_decode($arResult['PROPERTIES']['DETAIL_CARD']['~VALUE'], true)['blo
         </div>
     </div>
 
-    <section class="section-layout section-benefits section-benefits--bg section-layout--bg-undefined">
+    <section class="section-layout section-benefits">
         <div class="content-container">
             <div class="section-benefits__container">
                 <h3 class="section-benefits__title headline-2"><?= !$arResult['generalPage'] ? 'Преимущества для каждого' : 'Преимущества карты ' . $arResult['NAME'] ?></h3>
@@ -243,6 +243,11 @@ $tabs = json_decode($arResult['PROPERTIES']['DETAIL_CARD']['~VALUE'], true)['blo
                 </div>
             </div>
         </div>
+        <picture class="pattern-bg">
+            <source srcset="/frontend/build/assets/patterns/section/pattern-light-s.svg" media="(max-width: 767px)">
+            <source srcset="/frontend/build/assets/patterns/section/pattern-light-m.svg" media="(max-width: 1199px)">
+            <img src="/frontend/build/assets/patterns/section/pattern-light-l.svg" alt="bg pattenr" loading="lazy">
+        </picture>
     </section>
 
     <?
