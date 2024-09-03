@@ -51,6 +51,7 @@ import DisplayStepper from "@components/common/DisplayStepper/DisplayStepper.ast
 import DisplayStepperItem from "@components/common/DisplayStepper/DisplayStepperItem.astro";
 import CardRating from "@components/common/Cards/CardRating.astro";
 import CardText from "@components/common/Cards/CardText.astro";
+import ContactBanner from "@components/common/Banners/ContactBanner.astro";
 
 const loan = {
     title: "Кредит на любые цели<br> для зарплатных клиентов",
@@ -224,6 +225,8 @@ const listConatact = [
                 <AIcon symbolId="icon-mail" size="m" />
                 <AIcon symbolId="icon-check" size="m" />
                 <AIcon symbolId="icon-menu" size="m" />
+                <AIcon symbolId="icon-fax" size="m" />
+                <AIcon symbolId="icon-telegram" size="m" />
             </div>
 
             <div class="ui-row">
@@ -1693,6 +1696,19 @@ const listConatact = [
                 </div>
                 <div>
                     <CardText title="Заголовок" description="Описание" />
+                </div>
+            </div>
+
+        </div>
+
+        <div class="ui-section">
+            <SectionTitle class="ui-section-title" titleClass="headline-2"
+                >&lt;ContactBanner&gt;</SectionTitle
+            >
+
+            <div class="ui-grid">
+                <div>
+                    <ContactBanner title="Контакты для СМИ" subtitle="Департамент информационной политики" />
                 </div>
             </div>
 

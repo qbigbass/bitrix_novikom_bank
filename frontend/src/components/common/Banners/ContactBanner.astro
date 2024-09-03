@@ -1,7 +1,18 @@
 ---
-import AIcon from "@components/AIcon.astro";
 import PatternBg from "../Pattern/PatternBg.astro";
 import ContactList from "@components/ui/ContactList/ContactList.astro";
+
+interface Props {
+    class?: string;
+    title: string;
+    subtitle?: string;
+}
+
+const {
+    class: className,
+    title,
+    subtitle,
+} = Astro.props as Props;
 
 const list = [
     {
@@ -34,9 +45,12 @@ const list = [
 // компонент баннера контактов
 ---
 
-<div class="contact-banner">
+<div class:list={[
+        'contact-banner',
+		className ]}>
+
     <div class="contact-banner__wrapper">
-        <h3 class="headline-2">Контакты для СМИ</h3>
+        <h3 class="headline-2">{title}</h3>
         <img
             src="assets/big-illustrations/large-individual/contact.png"
             class="contact-banner__image"
@@ -44,9 +58,7 @@ const list = [
             loading="lazy"
         />
         <div class="contact-banner__body">
-            <p class="contact-banner__subtitle headline-4">
-                Департамент информационной политики
-            </p>
+            <p class="contact-banner__subtitle headline-4" set:html={subtitle}></p>
             <ContactList list={list} />
         </div>
     </div>
