@@ -46,140 +46,97 @@ sprint_editor.registerBlock('my_complex_element', function ($, $el, data, settin
   };
 
   this.afterRender = function () {
+    const res = $el.find('.sp-lists-result_my_complex_element');
 
-    var res = $el.find('.sp-lists-result_my_complex_element');
+    res.html(renderItems(data));
 
-    res.sortable({
-      items: ".sp-item",
-      handle: ".sp-item-handle",
-    });
+    function renderItems(block) {
+      if (!block.elements || block.elements.length === 0) return '';
 
-    res.html(
-      renderItemsCultureItemsPopup(data)
-    )
+      return block.elements.map(item => {
+        const uid = item.uid || sprint_editor.makeUid();
+        const title = sprint_editor.renderString('{{!it.title}}', item);
+        const desc = sprint_editor.renderString('{{!it.desc}}', item);
+        const imagesHtml = renderImages(uid);
 
-    function renderItemsCultureItemsPopup(block) {
-      var html = '';
-      if (block.elements && block.elements.length > 0) {
-        $.each(block.elements, function (index, item) {
-
-          const uid = item.uid || sprint_editor.makeUid();
-          const title = sprint_editor.renderString('{{!it.title}}', item);
-          const desc = sprint_editor.renderString('{{!it.desc}}', item);
-
-          // Создание родительского блока
-          html += `<div class="sp-item" data-uid="${uid}">`;
-
-          // Добавление полей в родительский блок
-          html += `
-                    <input class="sp-item-title" type="text" placeholder="Введите заголовок" value="${title}"/>
-                    <textarea class="sp-item-desc" cols="66" rows="5" placeholder="Введите описание">${desc}</textarea>
-                `;
-
-          // Проверка на вывод изображения
-          if (Array.isArray(data.img) && data.img.length > 0) {
-            const filteredImages = data.img.filter(val => val.uid === item.uid);
-            if (filteredImages.length > 0) {
-              // Если есть изображения, выводим их и кнопку "Удалить изображение"
-              html += filteredImages.map(val => `
-                      <div class="sp-item-group-img">
-                          <img src="${val.imgPath}" width="20%" height="20%" alt="" />
-                          <button class="img_delete" type="button" id="${item.uid}">Удалить изображение</button>
-                      </div>
-                    `).join('');
-            } else {
-              // Если изображений нет, выводим кнопку "Выберите файл"
-              html += `<input class="sp-item-img__my_complex_element" id="${uid}" type="file" />`;
-            }
-          } else {
-            // Если массив изображений пуст или не является массивом, выводим кнопку "Выберите файл"
-            html += `<input class="sp-item-img__my_complex_element" id="${uid}" type="file" />`;
-          }
-
-          // Кнопки для управления
-          html += `
-                    <div class="sp-item-group">
-                        <span class="sp-item-handle sp-x-btn">&uarr;&darr;</span>
-                        <span class="sp-item-del sp-x-btn">x</span>
-                    </div>
-                </div>`;
-        });
-
-      }
-      return html;
+        return `
+        <div class="sp-item" data-uid="${uid}">
+          <input class="sp-item-title" type="text" placeholder="Введите заголовок" value="${title}"/>
+          <textarea class="sp-item-desc" cols="66" rows="5" placeholder="Введите описание">${desc}</textarea>
+          ${imagesHtml}
+          <div class="sp-item-group">
+            <span class="sp-item-handle sp-x-btn">&uarr;&darr;</span>
+            <span class="sp-item-del sp-x-btn">x</span>
+          </div>
+        </div>`;
+      }).join('');
     }
 
-    getImgForUpload();
+    function renderImages(uid) {
+      const filteredImages = data.img?.filter(val => val.uid === uid) || [];
+      if (filteredImages.length > 0) {
+        return filteredImages.map(val => `
+          <div class="sp-item-group-img">
+            <img src="${val.imgPath}" width="20%" height="20%" alt="" />
+            <button class="img_delete" type="button" id="${uid}">Удалить изображение</button>
+          </div>`
+        ).join('');
+      }
+      return `<input class="sp-item-img__my_complex_element" id="${uid}" type="file" />`;
+    }
 
     $el.on('click', '.sp-item-del', function (e) {
       e.preventDefault();
       $(this).closest('.sp-item').remove();
     });
 
-    $el.on('keypress', '.sp-item-text', function (e) {
-      var keyCode = e.keyCode || e.which;
-      if (keyCode === 13) {
-        e.preventDefault();
-        addItem($(this).closest('.sp-item').parent(), true);
-      }
-    });
-
     $el.on('click', '.sp-lists-add-item_my_complex_element', function (e) {
       e.preventDefault();
-      addItem(res, false);
+      addItem(res);
     });
 
-    function searchInputFile() {
-      getImgForUpload();
-    }
-
     function addItem($container) {
-      $container.append(
-        renderItemsCultureItemsPopup({
-          elements: [{title: '', desc: ''}],
-        })
-      );
-      searchInputFile();
+      $container.append(renderItems({
+        elements: [{ title: '', desc: '' }],
+      }));
+      getImgForUpload();
     }
   }
 
-  // получение кнопок для загрузки картинки и обработка изменения кнопки
+  // Получение кнопок для загрузки картинки и обработка изменения кнопки
   function getImgForUpload() {
     const itemImg = document.querySelectorAll('.sp-item-img__my_complex_element');
-    itemImg.forEach(function (item) {
-      if (!item.hasAttribute('data-event-bound')) {
-        item.setAttribute('data-event-bound', 'true');
-        item.addEventListener('change', function (ev) {
-          const itemId = ev.target.getAttribute('id');
+    itemImg.forEach(item => {
+      if (!item.dataset.eventBound) {
+        item.dataset.eventBound = 'true'; // Используем dataset для установки атрибута
+        item.addEventListener('change', (ev) => {
+          const itemId = ev.target.id;
           const objFileByItem = ev.target.files[0];
           changeInputImg(itemId, objFileByItem);
-        })
+        });
       }
     });
   }
 
   function changeInputImg(uid, file) {
-
-    let img = new FormData();
+    const img = new FormData();
     img.append('img', file, file.name);
 
     $.ajax({
       url: sprint_editor.getBlockWebPath('my_complex_element') + '/upload.php',
-      method: 'post',
+      method: 'POST',
       dataType: 'json',
       data: img,
       processData: false,
       contentType: false,
-      success: function (response) {
-
-        if (typeof response['file'] !== "undefined") {
+      success: (response) => {
+        if (response.file) {
           renderFilesImg(uid, response.file);
 
           data.img.push({
             uid: uid,
             imgPath: response.file,
-          })
-
+          });
         }
       }
     });
@@ -203,6 +160,10 @@ sprint_editor.registerBlock('my_complex_element', function ($, $el, data, settin
     block.find('.sp-item-img__my_complex_element').remove();
   }
 
+  $el.on('click', '.sp-item-img__my_complex_element', function () {
+    getImgForUpload();
+  })
+
   $el.on('click', '.img_delete', function () {
     const uid = $(this).attr('id');
     const block = document.querySelector(`.sp-lists-result_my_complex_element [data-uid='${uid}']`);
@@ -217,8 +178,7 @@ sprint_editor.registerBlock('my_complex_element', function ($, $el, data, settin
     $(this).parent().remove();
 
     // Проверяем наличие кнопки импорта файла и добавляем, если её нет
-    const item = block.querySelector('.sp-item-img__my_complex_element');
-    if (!item) {
+    if (!block.querySelector('.sp-item-img__my_complex_element')) {
       const blockAdd = document.createElement('input');
       blockAdd.className = 'sp-item-img__my_complex_element';
       blockAdd.id = uid;
