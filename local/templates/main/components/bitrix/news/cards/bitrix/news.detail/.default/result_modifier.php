@@ -11,7 +11,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)
 /** @var array $arResult */
 
 // получение данных для вывода детальной информации
-$arrElementsForCardInfo = $arResult["PROPERTY_{$arResult['PROPERTIES']['DETAIL_INFO_CARD']['ID']}"];
+$arrElementsForCardInfo = json_decode($arResult['PROPERTIES']['DETAIL_CARD']['~VALUE'], true)['blocks'][0]['element_ids'];
 $arResult['iblockInnerCardInfo'] = $iblockInnerCardInfoId = iblock('inner_card_info');
 $elementEntity = \Bitrix\Iblock\Iblock::wakeUp($iblockInnerCardInfoId)->getEntityDataClass();
 $advantagesItems = [];

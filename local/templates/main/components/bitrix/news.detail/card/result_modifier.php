@@ -13,20 +13,9 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)
 $request = Application::getInstance()->getContext()->getRequest()->toArray();
 
 // получение данных для вывода детальной информации
-$arrElementsForCardInfo = $arResult["PROPERTY_{$arResult['PROPERTIES']['DETAIL_INFO_CARD']['ID']}"]; // массив ID элементов привязанных страниц
 $arResult['iblockInnerCardInfo'] = $iblockInnerCardInfoId = iblock('inner_card_info');
 $elementEntity = \Bitrix\Iblock\Iblock::wakeUp($iblockInnerCardInfoId)->getEntityDataClass();
-$generalPageTabs = [];
 $result = [];
-
-// запрос на получение табов (страниц)
-$generalPageTabs = $elementEntity::query()
-    ->setSelect(['ID','NAME', 'CODE'])
-    ->setFilter(['ID' => $arrElementsForCardInfo])
-    ->setCacheTtl(7200)
-    ->exec()->fetchAll();
-
-$arResult['generalPageTabs'] = $generalPageTabs;
 
 // запрос на получение прикрепленных элементов для блока Преиммущества
 $generalPageElementsQuery = $elementEntity::query();

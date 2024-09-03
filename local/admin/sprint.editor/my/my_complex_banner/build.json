@@ -1,0 +1,21 @@
+{
+    "title": "Блок с баннером",
+    "sort": "100",
+    "layouts": [
+        {
+            "title": "",
+            "columns": [
+                {
+                    "blocks": [
+                        "image"
+                    ]
+                },
+                {
+                    "blocks": [
+                        "text"
+                    ]
+                }
+            ]
+        }
+    ]
+}
