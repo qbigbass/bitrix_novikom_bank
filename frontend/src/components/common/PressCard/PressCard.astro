@@ -1,6 +1,7 @@
 ---
 import ATag from '@components/ui/ATag/ATag.astro';
 import AIcon from "../../AIcon.astro";
+import PatternBg from "../Pattern/PatternBg.astro";
 
 interface Props {
     href?: string;
@@ -22,6 +23,7 @@ const {
 ---
 <a class="press-card" href="#">
     <div class="press-card__cover">
+        <PatternBg class="press-card__pattern"/>
         {
             image && (
                 <img src={image} alt={title}/>
@@ -72,12 +74,22 @@ const {
 
         &__cover {
             position: relative;
-            background: url("/assets/temp-news/no-cover.png") no-repeat center center;
-            background-size: cover;
 
-            &:has(img) {
-                aspect-ratio: 272 / 130;
+            &:not(:has(> img)) {
+                position: absolute;
+                height: 6.25rem;
+                left: 0;
+                right: 0;
 
+                @include use-media(tablet) {
+                    position: relative;
+                    height: auto;
+                    left: initial;
+                    right: initial;
+                }
+            }
+
+            &:has(> img) {
                 @include use-media(tablet) {
                     &::before {
                         content: "";
@@ -86,6 +98,7 @@ const {
                         position: absolute;
                         height: 80px;
                         background: linear-gradient(180deg, rgba(18, 17, 18, 0.5) 0%, rgba(18, 17, 18, 0) 100%);
+                        z-index: 2;
                     }
                 }
             }
@@ -98,7 +111,9 @@ const {
                 aspect-ratio: 500 / 240;
             }
 
-            img {
+            > img {
+                position: relative;
+                z-index: 1;
                 display: block;
                 width: 100%;
                 height: 100%;
@@ -106,9 +121,14 @@ const {
             }
         }
 
+        &__pattern {
+            z-index: 0;
+        }
+
         &__head {
             display: flex;
             justify-content: space-between;
+            z-index: 3;
 
             @include use-media(tablet) {
                 position: absolute;
@@ -121,11 +141,14 @@ const {
         }
 
         &__content {
+            position: relative;
+            z-index: 1;
             padding: 1.5rem 1rem 1.5rem;
             display: grid;
             gap: 1.125rem;
 
             @include use-media(tablet) {
+                position: initial;
                 padding: 1.5rem 2rem 2rem;
             }
 
