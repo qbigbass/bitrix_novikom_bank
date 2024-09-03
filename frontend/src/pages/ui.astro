@@ -177,6 +177,30 @@ const listConatact = [
         href: "emailto:garant@novikom.ru",
         text: "garant@novikom.ru",
         icon: "icon-mail",
+        additionalClass: "is-underlined",
+    },
+];
+
+
+const listConatactGray = [
+    {
+        href: "tel:+78002507007",
+        text: "+7 (800) 250-70-07",
+        icon: "icon-phone",
+        iconColorClass: "violet-100",
+    },
+    {
+        href: "tel:+74959747187",
+        text: "+7 (495) 974-71-87",
+        icon: "icon-phone",
+        iconColorClass: "violet-100",
+    },
+    {
+        href: "emailto:garant@novikom.ru",
+        text: "garant@novikom.ru",
+        icon: "icon-mail",
+        iconColorClass: "violet-100",
+        additionalClass: "is-underlined",
     },
 ];
 ---
@@ -1548,7 +1572,7 @@ const listConatact = [
                         title="Отдел поддержки клиентов МСП"
                         description="Описание"
                         backgoroundColor="gray"
-                        list={listConatact}
+                        list={listConatactGray}
                         tag={{
                             text: "Частным клиентам",
                             outline: true,

@@ -110,7 +110,7 @@ const createTheme = () => {
         <div class="product-card-banner__content">
             <div class="product-card-banner__header">
                 <ABreadcrumbs links={breadcrumbs} />
-                <h1 class="product-card-banner__title headline-0">
+                <h1 class="headline-0">
                     <slot name="title" />
                 </h1>
                 <p class="product-card-banner__subtitle body-l-light">
@@ -294,14 +294,6 @@ const createTheme = () => {
             @include use-media(tablet-album) {
                 width: 45vw;
                 right: 0;
-            }
-        }
-
-        &__title {
-            @include use-media(tablet-album) {
-                font-weight: 600;
-                font-size: 3.5rem;
-                line-height: 1.25;
             }
         }
 

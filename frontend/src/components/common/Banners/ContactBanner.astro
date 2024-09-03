@@ -8,11 +8,7 @@ interface Props {
     subtitle?: string;
 }
 
-const {
-    class: className,
-    title,
-    subtitle,
-} = Astro.props as Props;
+const { class: className, title, subtitle } = Astro.props as Props;
 
 const list = [
     {
@@ -45,10 +41,7 @@ const list = [
 // компонент баннера контактов
 ---
 
-<div class:list={[
-        'contact-banner',
-		className ]}>
-
+<div class:list={["contact-banner", className]}>
     <div class="contact-banner__wrapper">
         <h3 class="headline-2">{title}</h3>
         <img
@@ -58,8 +51,15 @@ const list = [
             loading="lazy"
         />
         <div class="contact-banner__body">
-            <p class="contact-banner__subtitle headline-4" set:html={subtitle}></p>
-            <ContactList list={list} />
+            {
+                subtitle && (
+                    <p
+                        class="contact-banner__subtitle headline-4"
+                        set:html={subtitle}
+                    />
+                )
+            }
+            <ContactList class="contact-banner__list" list={list} />
         </div>
     </div>
     <PatternBg class="contact-banner__pattern" theme="dark" type="section-2" />
@@ -135,6 +135,15 @@ const list = [
                 top: 50%;
                 transform: translateY(-50%);
                 max-width: 30rem;
+            }
+        }
+
+        &__list {
+            &.contact-list {
+                @include use-media(tablet-album) {
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                }
             }
         }
     }
