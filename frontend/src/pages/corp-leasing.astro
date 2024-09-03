@@ -25,6 +25,7 @@ import SectionTitle from "@components/ui/SectionTitle/SectionTitle.astro";
 import PersistentSlider from "@components/common/Sliders/PersistentSlider/PersistentSlider.astro";
 import SliderSlide from "@components/common/Sliders/common/SliderSlide/SliderSlide.astro";
 import CardContact from "@components/common/Cards/CardContact.astro";
+import type { ContactListType } from "@components/ui/ContactList/ContactList.astro";
 
 const offerCards = [
     {
@@ -146,16 +147,19 @@ const productBenefits = [
     },
 ];
 
-const listConatact = [
+const listConatact: ContactListType[] = [
     {
         href: "tel:+74959747187",
         text: "+7 (495) 974-71-87",
         icon: "icon-phone",
+        additionalText: "доб. 055",
+
     },
     {
         href: "emailto:corp@novikom.ru",
         text: "corp@novikom.ru",
         icon: "icon-mail",
+        additionalClass: "is-underlined",
     },
     {
         text: "119180 Москва, ул. Полянка Большая д. 50/1 стр. 1",
@@ -620,6 +624,7 @@ const listConatact = [
                 <SliderSlide>
                     <CardContact
                         title="Департамент Казначейство"
+                        description="Отдел продаж Казначейских продуктов"
                         backgoroundColor="heavy-purple"
                         list={listConatact}
                     />

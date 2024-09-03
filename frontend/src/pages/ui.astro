@@ -51,6 +51,7 @@ import DisplayStepper from "@components/common/DisplayStepper/DisplayStepper.ast
 import DisplayStepperItem from "@components/common/DisplayStepper/DisplayStepperItem.astro";
 import CardRating from "@components/common/Cards/CardRating.astro";
 import CardText from "@components/common/Cards/CardText.astro";
+import ContactBanner from "@components/common/Banners/ContactBanner.astro";
 
 const loan = {
     title: "Кредит на любые цели<br> для зарплатных клиентов",
@@ -176,6 +177,30 @@ const listConatact = [
         href: "emailto:garant@novikom.ru",
         text: "garant@novikom.ru",
         icon: "icon-mail",
+        additionalClass: "is-underlined",
+    },
+];
+
+
+const listConatactGray = [
+    {
+        href: "tel:+78002507007",
+        text: "+7 (800) 250-70-07",
+        icon: "icon-phone",
+        iconColorClass: "violet-100",
+    },
+    {
+        href: "tel:+74959747187",
+        text: "+7 (495) 974-71-87",
+        icon: "icon-phone",
+        iconColorClass: "violet-100",
+    },
+    {
+        href: "emailto:garant@novikom.ru",
+        text: "garant@novikom.ru",
+        icon: "icon-mail",
+        iconColorClass: "violet-100",
+        additionalClass: "is-underlined",
     },
 ];
 ---
@@ -224,6 +249,8 @@ const listConatact = [
                 <AIcon symbolId="icon-mail" size="m" />
                 <AIcon symbolId="icon-check" size="m" />
                 <AIcon symbolId="icon-menu" size="m" />
+                <AIcon symbolId="icon-fax" size="m" />
+                <AIcon symbolId="icon-telegram" size="m" />
             </div>
 
             <div class="ui-row">
@@ -1545,7 +1572,7 @@ const listConatact = [
                         title="Отдел поддержки клиентов МСП"
                         description="Описание"
                         backgoroundColor="gray"
-                        list={listConatact}
+                        list={listConatactGray}
                         tag={{
                             text: "Частным клиентам",
                             outline: true,
@@ -1693,6 +1720,19 @@ const listConatact = [
                 </div>
                 <div>
                     <CardText title="Заголовок" description="Описание" />
+                </div>
+            </div>
+
+        </div>
+
+        <div class="ui-section">
+            <SectionTitle class="ui-section-title" titleClass="headline-2"
+                >&lt;ContactBanner&gt;</SectionTitle
+            >
+
+            <div class="ui-grid">
+                <div>
+                    <ContactBanner title="Контакты для СМИ" subtitle="Департамент информационной политики" />
                 </div>
             </div>
 
