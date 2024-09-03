@@ -1,0 +1,44 @@
+.sp-area-my_complex_element {
+    display: flex;
+    flex-direction: column;
+}
+
+.sp-area-my_complex_element__row {
+    margin-bottom: 10px;
+}
+
+.sp-area-my_complex_element__row textarea {
+    resize: none;
+}
+
+.sp-area-my_complex_element .sp-item-group-img {
+    display: flex;
+    flex-direction: column;
+}
+
+.sp-area-my_complex_element .sp-item-group-img button {
+    width: 20%;
+    margin: 10px 0;
+}
+
+.sp-area-my_complex_element .sp-item-group-img img {
+    margin-top: 10px;
+}
+
+.sp-area-my_complex_element .sp-item input {
+  width: 78%;
+  margin-bottom: 5px !important;
+}
+
+.sp-area-my_complex_element .sp-item {
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.sp-area-my_complex_element .sp-item-group{
+  font-size: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1;
+}
