@@ -21,6 +21,8 @@ $this->setFrameMode(true);
 $request = Application::getInstance()->getContext()->getRequest()->toArray();
 $properties = $arResult['PROPERTIES'];
 $bannerClass = $arResult["PROPERTY_{$properties['CLASS_BANNER_DETAIL']['ID']}"];
+
+$tabs = json_decode($arResult['PROPERTIES']['DETAIL_CARD']['~VALUE'], true)['blocks'][0]['info_elements'];
 ?>
 <main class="default-page-layout__body">
     <div class="product-card-banner <?= !empty($bannerClass) ? $bannerClass : '' ?> ">
@@ -176,11 +178,11 @@ $bannerClass = $arResult["PROPERTY_{$properties['CLASS_BANNER_DETAIL']['ID']}"];
                     <div class="a-tabs a-tabs--component js-a-tabs">
                         <div class="a-tab-swiper swiper js-a-tab-swiper">
                             <div class="a-tab-swiper-wrapper swiper-wrapper js-a-tab-swiper-wrapper">
-                                <? foreach ($arResult['generalPageTabs'] as $key => $generateTabs) { ?>
+                                <? foreach ($tabs as $key => $tab) { ?>
                                     <?
                                     $isActive = false;
 
-                                    if ( $generateTabs['CODE'] == $request['DETAIL_ELEMENT_CODE'] ) {
+                                    if ( $tab['code'] == $request['DETAIL_ELEMENT_CODE'] ) {
                                         $isActive = true;
                                     } elseif (!isset($request['DETAIL_ELEMENT_CODE']) && $key == 0) {
                                         $isActive = true;
@@ -188,10 +190,10 @@ $bannerClass = $arResult["PROPERTY_{$properties['CLASS_BANNER_DETAIL']['ID']}"];
 
                                     ?>
                                     <a
-                                        href="<?= $arResult['DETAIL_PAGE_URL'] .'/'. $generateTabs['CODE'] . '/' ?>"
+                                        href="<?= $arResult['DETAIL_PAGE_URL'] .'/'. $tab['code'] . '/' ?>"
                                         class="a-tab a-tab--lm a-tab--primary swiper-slide js-a-tab <?= $isActive ? 'is-active' : '' ?>"
                                     >
-                                        <?= $generateTabs['NAME'] ?>
+                                        <?= $tab['title'] ?>
                                     </a>
                                 <? } ?>
                             </div>

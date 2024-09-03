@@ -208,7 +208,7 @@ $bannerClass = $arResult["PROPERTY_{$properties['CLASS_BANNER_DETAIL']['ID']}"];
 
 <?
 // вывод информации из конструктора
-$arrDetailInfoCardIds = $arResult["PROPERTY_{$arResult['PROPERTIES']['DETAIL_INFO_CARD']['ID']}"];
+$arrDetailInfoCardIds = json_decode($arResult['PROPERTIES']['DETAIL_CARD']['~VALUE'], true)['blocks'][0]['element_ids'];
 
 $APPLICATION->IncludeComponent(
     "sprint.editor:blocks",
