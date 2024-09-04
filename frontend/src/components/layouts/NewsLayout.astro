@@ -80,14 +80,6 @@ const { title } = Astro.props as Props;
             @include use-media(tablet) {
                 gap: 3rem;
             }
-
-            & .a-rte {
-                & > *:not(.a-table) {
-                    @include use-media(tablet-album) {
-                        max-width: 63.375rem; //1014px
-                    }
-                }
-            }
         }
     }
 </style>
