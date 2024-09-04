@@ -45,11 +45,9 @@ const {
 	{...rest}
 >
 	{ label && (<label for={forId} class="a-select-input__label body-s-heavy">{label}</label>)}
-	<div class="a-select-input__inner">
+	<div class="a-select-input__inner js-a-select-input-inner">
 		<button class="a-select-input__button js-select-input-button">
-			{
-                placeholder && (<span class="a-select-input__placeholder">{placeholder}</span>)
-            }
+			<span class="a-select-input__placeholder">{placeholder}</span>
 		</button>
 		<input
 			type="hidden"
@@ -59,10 +57,10 @@ const {
 			value={value}
 		/>
 		<AIcon class="a-select-input__icon" symbolId="icon-chevron-down-small" size="s" />
-		<ADropDown class="a-select-input__drop-down">
-			<slot />
-		</ADropDown>
 	</div>
+    <ADropDown class="a-select-input__drop-down">
+        <slot />
+    </ADropDown>
 	{ hint && (<small class="a-select-input__hint js-a-input-hint caption-m" id=`${forId + '-hint'}`>{hint}</small>)}
 </div>
 
@@ -112,10 +110,7 @@ const {
 			pointer-events: none;
 		}
 
-		&__drop-down {
-			top: calc(100% + 0.5rem);
-			width: 100%;
-		}
+		&__drop-down {}
 
 		&__placeholder {
 			color: var(--dark-70);
@@ -139,6 +134,7 @@ const {
 
 		&--size-m {
             #{$root}__button {
+                min-height: 3.5rem;
 				padding: 1rem 2.5rem 1rem 1rem;
 				font-size: 1rem;
 				line-height: 1.375;
@@ -147,6 +143,7 @@ const {
 
 		&--size-s {
             #{$root}__button {
+                min-height: 2.5rem;
 				padding: .625rem 2.5rem .625rem 1rem;
 				font-size: .875rem;
 				line-height: 1.3;

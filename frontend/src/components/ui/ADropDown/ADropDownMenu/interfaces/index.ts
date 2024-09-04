@@ -25,7 +25,8 @@ export interface ADropDownMenuState {
 	currentValue: string;
 	selectedItem: ADropDownItemState | null;
   methods: {
-    open: () => void;
+    open: (rect: DOMRect) => void;
     close: () => void;
+    setPosition: (rect: DOMRect) => void;
   }
 }

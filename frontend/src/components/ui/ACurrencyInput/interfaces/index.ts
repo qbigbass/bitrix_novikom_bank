@@ -2,6 +2,7 @@ import type { ADropDownMenuState } from '@components/ui/ADropDown/ADropDownMenu/
 
 export interface ACurrencyInputElements {
   root: HTMLDivElement;
+  innerEl: HTMLInputElement | null;
   inputEl: HTMLInputElement | null;
   buttonEl: HTMLButtonElement | null;
   buttonTextEl: HTMLSpanElement | null | undefined;

@@ -7,18 +7,19 @@ const { class: className, ...rest } = Astro.props;
 </div>
 
 <style lang="scss" is:global>
+    @use "sass:map";
 	@import "@styles/media-queries";
 
 	.a-drop-down-menu {
 		display: none;
-		position: absolute;
+        margin-top: 0.5rem;
 		max-height: 16rem;
 		max-width: 100%;
 		background-color: var(--dark-0);
 		border-radius: 0.75rem;
 		padding: 0.5rem 0;
 		box-shadow: 0 8px 32px 0 rgba(60, 60, 71, 0.3);
-		z-index: 10;
+        z-index: map.get($z-layers, select-list);
 		overflow-y: auto;
 
 		@include use-media(tablet) {

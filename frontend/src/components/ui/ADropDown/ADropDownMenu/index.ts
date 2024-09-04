@@ -11,13 +11,23 @@ const ACTION_CLASSES = {
 	open: 'is-open'
 }
 
-const openHandler = (STATE: ADropDownMenuState) => {
+const openHandler = (STATE: ADropDownMenuState, rect: DOMRect) => {
+  setPositionHandler(STATE, rect);
+
 	STATE.elements.root.classList.add(ACTION_CLASSES.open);
 	STATE.isOpen = true;
 }
 
+const setPositionHandler = (STATE: ADropDownMenuState, rect: DOMRect) => {
+  STATE.elements.root.style.position = 'absolute';
+  STATE.elements.root.style.top = `${rect.bottom + window.scrollY}px`;
+  STATE.elements.root.style.left = `${rect.left + window.scrollX}px`;
+  STATE.elements.root.style.width = `${rect.width}px`;
+}
+
 const closeHandler = (STATE: ADropDownMenuState) => {
 	STATE.elements.root.classList.remove(ACTION_CLASSES.open);
+	STATE.elements.root.removeAttribute('style')
 	STATE.isOpen = false;
 }
 
@@ -47,8 +57,9 @@ const initState = (element: HTMLDivElement): ADropDownMenuState => {
 		currentValue: '',
 		selectedItem: null,
     methods: {
-      open: () => {},
-      close: () => {}
+      open: (rect) => {},
+      close: () => {},
+      setPosition: (rect) => {}
     }
 	}
 }
@@ -56,8 +67,9 @@ const initState = (element: HTMLDivElement): ADropDownMenuState => {
 const initADropDownMenu = (element: HTMLDivElement): ADropDownMenuState => {
 	const STATE = initState(element);
 
-	STATE.methods.open = () => openHandler(STATE);
+	STATE.methods.open = (rect) => openHandler(STATE, rect);
 	STATE.methods.close = () => closeHandler(STATE);
+  STATE.methods.setPosition = (rect) => setPositionHandler(STATE, rect);
 
 	STATE.components.items.forEach((item: ADropDownItemState) => {
 		item.elements.root.addEventListener('select', (event) => {

@@ -2,6 +2,7 @@ import type { ADropDownMenuState } from '@components/ui/ADropDown/ADropDownMenu/
 
 export interface ASelectInputElements {
   root: HTMLDivElement;
+  innerEl: HTMLDivElement | null;
   buttonEl: HTMLDivElement | null;
   inputHidden: HTMLInputElement | null;
 }

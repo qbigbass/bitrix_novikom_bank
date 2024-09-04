@@ -44,7 +44,7 @@ const {
 >
 	{ label && (<label for={forId} class="a-currency-input__label body-s-heavy">{label}</label>)}
 
-	<div class="a-currency-input__inner">
+	<div class="a-currency-input__inner js-a-currency-input-inner">
 		<input
 			id={forId}
 			class="a-currency-input__input"
@@ -58,10 +58,10 @@ const {
 			<span class="a-currency-input__button-text js-a-currency-input-button-text"></span>
 			<AIcon class="a-currency-input__button-icon" symbolId="icon-chevron-down" size="s" />
 		</button>
-		<ADropDown class="a-currency-input__drop-down">
-			<slot />
-		</ADropDown>
 	</div>
+    <ADropDown class="a-currency-input__drop-down">
+        <slot />
+    </ADropDown>
 	{ hint && (<small class="a-currency-input__hint js-a-input-hint caption-m" id=`${forId + '-hint'}`>{hint}</small>)}
 </div>
 
@@ -123,11 +123,6 @@ const {
 			&:disabled {
 				cursor: not-allowed;
 			}
-		}
-
-		&__drop-down {
-			top: calc(100% + 0.5rem);
-			width: 100%;
 		}
 
 		&__input {
