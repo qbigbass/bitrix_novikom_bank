@@ -1,5 +1,4 @@
 ---
-import AIcon from "@components/AIcon.astro";
 import ATag from "@components/ui/ATag/ATag.astro";
 
 import type { Colors } from "@components/ui/ATag/ATag.astro";
@@ -7,7 +6,7 @@ import ContactList from "@components/ui/ContactList/ContactList.astro";
 import type { ContactListType } from "@components/ui/ContactList/ContactList.astro";
 
 
-type BackgroundColors = "blue" | "gray" | "heavy-purple";
+type BackgroundColors = "blue" | "gray" | "heavy-purple" | "white";
 type Tag = {
     text: string;
     color?: Colors;
@@ -135,6 +134,15 @@ const tagOutline = tag?.outline ? "outline" : "";
 
         &--bg-gray {
             background-color: var(--dark-10);
+            color: var(--dark-100);
+
+            #{$root}__description {
+                color: var(--dark-70);
+            }
+        }
+
+        &--bg-white {
+            background-color: var(--dark-0);
             color: var(--dark-100);
 
             #{$root}__description {
