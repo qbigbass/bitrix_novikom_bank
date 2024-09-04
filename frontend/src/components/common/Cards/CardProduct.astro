@@ -29,7 +29,7 @@ const {
     class:list={["card-product", `card-product--${backgroundColor}`, className]}
 >
     <div class="card-product__header">
-        <h3 class="headline-3">{title}</h3>
+        <h3 class="headline-3" set:html={title}></h3>
         <p class="body-m-light" set:html={text} />
     </div>
     <div class:list={["card-product__footer", `${iconColor ? `${iconColor}` : ""}`]}>

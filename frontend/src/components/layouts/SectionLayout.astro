@@ -1,6 +1,6 @@
 ---
 type State = 'no-padding-bottom' | 'no-padding-top' | 'no-padding' | 's-no-padding' ;
-export type BgColor = 'gray' | 'blue' | 'purple';
+export type BgColor = 'gray' | 'blue' | 'purple' | 'middle-gray';
 
 interface Props {
 	class?: string;
@@ -67,6 +67,10 @@ const backgroundClass = `${bgColor ? `section-layout--bg-${bgColor}` : ''}`
 
 		&--bg-purple {
 			background-color: var(--purple-10);
+		}
+
+		&--bg-middle-gray {
+			background-color: var(--dark-30);
 		}
 	}
 

@@ -1,0 +1,297 @@
+---
+import DefaultPageLayout from "../layouts/DefaultPageLayout.astro";
+import MainSlider from "@components/common/MainSlider/MainSlider.astro";
+import SectionClientInfo from "../components/sections/SectionClientInfo.astro";
+import AnnouncementCardClients from "../components/common/AnnouncementCardClients/AnnouncementCardClients.astro";
+import type { OfferCardColor } from "@components/common/OfferCard/OfferCard.astro";
+import SectionLayout from "../components/layouts/SectionLayout.astro";
+import SectionCardLayout from "@components/layouts/SectionCardLayout.astro";
+import type {
+    BackgroundColors,
+    iconColors,
+} from "@components/common/Cards/CardProduct.astro";
+import SectionHelpLayout from "@components/layouts/SectionHelpLayout/SectionHelpLayout.astro";
+import SectionHelpContentLayout from "@components/layouts/SectionHelpLayout/SectionHelpContentLayout.astro";
+import DocumentDownload from "@components/ui/DocumentDownload/DocumentDownload.astro";
+import BenefitCard from "@components/common/BenefitCard/BenefitCard.astro";
+import SectionTitle from "@components/ui/SectionTitle/SectionTitle.astro";
+import PersistentSlider from "@components/common/Sliders/PersistentSlider/PersistentSlider.astro";
+import SliderSlide from "@components/common/Sliders/common/SliderSlide/SliderSlide.astro";
+import CardContact from "@components/common/Cards/CardContact.astro";
+import type { ContactListType } from "@components/ui/ContactList/ContactList.astro";
+
+const mainSliders = [
+    {
+        title: "Кредитным и&nbsp;финансовым организациям",
+        text: "Новиком нацелен на&nbsp;долгосрочные и&nbsp;доверетельные отношения с&nbsp;российскими и&nbsp;зарубежными финансовыми институтами",
+        image: "assets/big-illustrations/large-finorg/syndicated-loans-cheap-funding.png",
+    },
+    {
+        title: "Гарантии <br>и&nbsp;обязательства",
+        text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, numquam.",
+        image: "assets/big-illustrations/large-finorg/syndicated-loans-cheap-funding.png",
+    },
+    {
+        title: "Межбанковские <br>операции",
+        text: "Lorem ipsum dolor sit amet, consectetur.",
+        image: "assets/big-illustrations/large-finorg/syndicated-loans-cheap-funding.png",
+    },
+    {
+        title: "Депозитарное <br>обслуживание",
+        text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid distinctio nihil temporibus.",
+
+        image: "assets/big-illustrations/large-finorg/syndicated-loans-cheap-funding.png",
+    },
+];
+
+const productCards = [
+    {
+        title: "Доверительное <br>управление",
+        icon: "icon-a-hands",
+        backgroundColor: "white" as BackgroundColors,
+        iconColor: "violet-100" as iconColors,
+    },
+    {
+        title: "Гарантии <br>и&nbsp;обязательства",
+        icon: "icon-a-reputation",
+        backgroundColor: "white" as BackgroundColors,
+        iconColor: "violet-100" as iconColors,
+    },
+    {
+        title: "Организация <br>облигационных займов",
+        icon: "icon-a-document-money",
+        backgroundColor: "white" as BackgroundColors,
+        iconColor: "violet-100" as iconColors,
+    },
+    {
+        title: "Депозитарное <br>обслуживание",
+        icon: "icon-a-ticket",
+        backgroundColor: "white" as BackgroundColors,
+        iconColor: "violet-100" as iconColors,
+    },
+    {
+        title: "Финансирование экспортно-импортных операций",
+        icon: "icon-a-export-money",
+        backgroundColor: "white" as BackgroundColors,
+        iconColor: "violet-100" as iconColors,
+    },
+    {
+        title: "Система <br>Банк-клиент",
+        icon: "icon-a-account",
+        backgroundColor: "white" as BackgroundColors,
+        iconColor: "violet-100" as iconColors,
+    },
+    {
+        title: "Стимулирование экспорта стран&nbsp;СНГ",
+        icon: "icon-a-export-up",
+        backgroundColor: "white" as BackgroundColors,
+        iconColor: "violet-100" as iconColors,
+    },
+];
+
+const offerCardsMain = [
+    {
+        href: "#",
+        imgSrc: "assets/big-illustrations/large-finorg/settlement-services.png",
+        title: "Расчетное обслуживание",
+        description:
+            "Корреспондентские счета ЛОРО в&nbsp;российских рублях и&nbsp;иностранной валюте",
+        textButton: "Подробнее",
+        backgroundColor: "white",
+        color: "transparent" as OfferCardColor,
+        textLink: true,
+        size: "large" as "large" | "default",
+    },
+    {
+        href: "#",
+        imgSrc: "assets/big-illustrations/large-finorg/interbank-transactions.png",
+        title: "Межбанковские операции",
+        description:
+            "Операции на&nbsp;валютном и&nbsp;денежном рынках, сделки МБК, синдикации",
+        textButton: "Подробнее",
+        backgroundColor: "white",
+        color: "transparent" as OfferCardColor,
+        textLink: true,
+    },
+    {
+        href: "#",
+        imgSrc: "assets/big-illustrations/large-finorg/brokerage-services.png",
+        title: "Брокерское обслуживание",
+        description: "Услуги профессионального частника рынка ценных бумаг",
+        textButton: "Подробнее",
+        backgroundColor: "white",
+        color: "transparent" as OfferCardColor,
+        textLink: true,
+    },
+];
+
+const listConatact: ContactListType[] = [
+    {
+        href: "tel:+74959747187",
+        text: "+7 (495) 974-71-87",
+        icon: "icon-phone",
+        additionalText: "доб. 130",
+        iconColorClass: "violet-100",
+    },
+    {
+        href: "emailto:corp@novikom.ru",
+        text: "corp@novikom.ru",
+        icon: "icon-mail",
+        additionalClass: "is-underlined",
+        iconColorClass: "violet-100",
+    },
+    {
+        text: "119180 Москва, ул. Полянка Большая д. 50/1 стр. 1",
+        icon: "icon-point",
+        iconColorClass: "violet-100",
+    },
+];
+---
+
+<DefaultPageLayout title="Финансовые институты Главная">
+    <MainSlider
+        slides={mainSliders}
+        backgroundColor="heavy-purple"
+        bannerType="finance"
+        hasPattern
+    />
+    <SectionLayout bgColor="gray">
+        <div class="content-container">
+            <SectionCardLayout
+                offerCards={offerCardsMain}
+                productCards={productCards}
+            />
+        </div>
+    </SectionLayout>
+
+    <SectionHelpLayout title="Тарифы и документы">
+        <Fragment slot="content">
+            <SectionHelpContentLayout>
+                <Fragment slot="left">
+                    <div>
+                        <DocumentDownload
+                            fileName="Сборник тарифов на обслуживание банковских карт для физических лиц, выпущенных по 21.08.2022 г."
+                            dateTime="12.12.23 18:56"
+                            fileType="XLS"
+                        />
+                        <DocumentDownload
+                            fileName="Сборник тарифов на обслуживание банковских карт Мир для физических лиц, выпущенных с 22.08.2022 г."
+                            dateTime="12.12.23 18:56"
+                            fileType="XLS"
+                        />
+                        <DocumentDownload
+                            fileName="Сборник тарифов на обслуживание физических лиц"
+                            dateTime="12.12.23 18:56"
+                            fileType="XLS"
+                        />
+                    </div>
+                </Fragment>
+                <Fragment slot="right">
+                    <BenefitCard
+                        title="Защита от мошенников"
+                        description="Узнайте как уберечь себя и своих близких от финансового мошенничества."
+                        icon="icon-a-protection"
+                        theme="grey"
+                        textButton="Подробнее"
+                        iconColorClass="violet-100"
+                    />
+                </Fragment>
+            </SectionHelpContentLayout>
+        </Fragment>
+    </SectionHelpLayout>
+
+    <SectionLayout bgColor="middle-gray">
+        <div class="content-container">
+            <SectionTitle titleClass="headline-2" usePadding
+                >Контакты</SectionTitle
+            >
+            <PersistentSlider
+                spaceBetween="mobile-s:8,mobile:8,tablet:16,tablet-album:40,laptop:40,laptop-x:40"
+                slidesPerView="mobile-s:1,mobile:1,tablet:1,tablet-album:2,laptop:2,laptop-x:2"
+            >
+                <SliderSlide>
+                    <CardContact
+                        title="Департамент организации финансирования на рынке капитала АО АКБ «НОВИКОМ»"
+                        tag={{
+                            text: "Межбанковское кредитование (сделки МБК)",
+                            outline: true,
+                        }}
+                        backgoroundColor="white"
+                        list={listConatact}
+                    />
+                </SliderSlide>
+                <SliderSlide>
+                    <CardContact
+                        title="Голованов Валерий"
+                        tag={{
+                            text: "Межбанковское кредитование (сделки МБК)",
+                            outline: true,
+                        }}
+                        description="Директор департамента"
+                        backgoroundColor="white"
+                        list={[
+                            {
+                                href: "tel:+74959747187",
+                                text: "+7 (495) 974-71-87",
+                                icon: "icon-phone",
+                                iconColorClass: "violet-100",
+                                additionalText: "доб. 2360",
+                            },
+                            {
+                                href: "emailto:dcm@novikom.ru",
+                                text: "dcm@novikom.ru",
+                                icon: "icon-mail",
+                                additionalClass: "is-underlined",
+                                iconColorClass: "violet-100",
+                            },
+                        ]}
+                    />
+                </SliderSlide>
+                <SliderSlide>
+                    <CardContact
+                        title="Департамент организации финансирования на рынке капитала АО АКБ «НОВИКОМ»"
+                        tag={{
+                            text: "Межбанковское кредитование (сделки МБК)",
+                            outline: true,
+                        }}
+                        backgoroundColor="white"
+                        list={listConatact}
+                    />
+                </SliderSlide>
+                <SliderSlide>
+                    <CardContact
+                        title="Голованов Валерий"
+                        tag={{
+                            text: "Межбанковское кредитование (сделки МБК)",
+                            outline: true,
+                        }}
+                        description="Директор департамента"
+                        backgoroundColor="white"
+                        list={[
+                            {
+                                href: "tel:+74959747187",
+                                text: "+7 (495) 974-71-87",
+                                icon: "icon-phone",
+                                iconColorClass: "violet-100",
+                                additionalText: "доб. 2360",
+                            },
+                            {
+                                href: "emailto:dcm@novikom.ru",
+                                text: "dcm@novikom.ru",
+                                icon: "icon-mail",
+                                additionalClass: "is-underlined",
+                                iconColorClass: "violet-100",
+                            },
+                        ]}
+                    />
+                </SliderSlide>
+            </PersistentSlider>
+        </div>
+    </SectionLayout>
+
+    <SectionClientInfo backgroundColor="gray" hasPattern>
+        <Fragment slot="top">
+            <AnnouncementCardClients />
+        </Fragment>
+    </SectionClientInfo>
+</DefaultPageLayout>
