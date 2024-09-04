@@ -1,6 +1,7 @@
 ---
 import AIcon from "../../AIcon.astro";
 import ADropDown from "../ADropDown/ADropDownMenu/ADropDownMenu.astro";
+import AInputHint from "../AInputHint/AInputHint.astro";
 type Size = "m" | "s" | "ms";
 
 interface Props {
@@ -10,7 +11,6 @@ interface Props {
 	name?: string;
 	value?: string;
 	label?: string;
-	forId?: string;
 	hint?: string;
 	required?: boolean;
 	size: Size;
@@ -23,7 +23,6 @@ const {
 	disabled,
 	name,
 	value,
-	forId,
 	hint,
 	required,
 	size = 'ms',
@@ -42,17 +41,17 @@ const {
 	}
 	{...rest}
 >
-	{ label && (<label for={forId} class="a-currency-input__label body-s-heavy">{label}</label>)}
+	{ label && (<label for={name} class="a-currency-input__label body-s-heavy">{label}</label>)}
 
 	<div class="a-currency-input__inner js-a-currency-input-inner">
 		<input
-			id={forId}
+			id={name}
 			class="a-currency-input__input"
 			placeholder={placeholder}
 			disabled={disabled}
 			name={name}
 			value={value}
-			aria-describedby=`${forId + '-hint'}`
+			aria-describedby=`${name + '-hint'}`
 		/>
 		<button class="a-currency-input__button js-a-currency-input-button" type="button">
 			<span class="a-currency-input__button-text js-a-currency-input-button-text"></span>
@@ -62,7 +61,13 @@ const {
     <ADropDown class="a-currency-input__drop-down">
         <slot />
     </ADropDown>
-	{ hint && (<small class="a-currency-input__hint js-a-input-hint caption-m" id=`${forId + '-hint'}`>{hint}</small>)}
+	{
+        hint && (
+            <AInputHint id={`${name}`}>
+                { hint }
+            </AInputHint>
+        )
+    }
 </div>
 
 <script>
@@ -221,6 +226,17 @@ const {
 					0.438rem;
 			}
 		}
+
+        &#{$root}--required {
+            #{$root}__label {
+                &::after {
+                    content: '*';
+                    display: inline-block;
+                    margin-left: 4px;
+                    color: var(--orange-100);
+                }
+            }
+        }
 
 		&.is-open {
             #{$root}__button-icon {

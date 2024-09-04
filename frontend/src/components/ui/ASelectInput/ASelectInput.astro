@@ -1,6 +1,7 @@
 ---
 import AIcon from "../../AIcon.astro";
 import ADropDown from "../ADropDown/ADropDownMenu/ADropDownMenu.astro";
+import AInputHint from "../AInputHint/AInputHint.astro";
 type Size = "m" | "s";
 
 interface Props {
@@ -11,7 +12,6 @@ interface Props {
 	name: string;
 	value?: string;
 	label?: string;
-	forId?: string;
 	hint?: string;
 	required?: boolean;
 	size: Size;
@@ -24,7 +24,6 @@ const {
 	disabled,
 	name,
 	value,
-	forId,
 	hint,
 	required,
 	size = 'm',
@@ -37,31 +36,38 @@ const {
 	class:list={
 		[
 			className,
-			{'a-input--required': required},
+			{'a-select-input--required': required},
 			{'a-select-input--disabled': disabled},
 			`a-select-input--size-${size}`
 		]
 	}
 	{...rest}
 >
-	{ label && (<label for={forId} class="a-select-input__label body-s-heavy">{label}</label>)}
+	{ label && (<label for={name} class="a-select-input__label body-s-heavy">{label}</label>)}
 	<div class="a-select-input__inner js-a-select-input-inner">
 		<button class="a-select-input__button js-select-input-button">
 			<span class="a-select-input__placeholder">{placeholder}</span>
 		</button>
 		<input
 			type="hidden"
-			id={forId}
+			id={name}
 			name={name}
 			disabled={disabled}
 			value={value}
+            aria-describedby=`${name + '-hint'}`
 		/>
 		<AIcon class="a-select-input__icon" symbolId="icon-chevron-down-small" size="s" />
 	</div>
     <ADropDown class="a-select-input__drop-down">
         <slot />
     </ADropDown>
-	{ hint && (<small class="a-select-input__hint js-a-input-hint caption-m" id=`${forId + '-hint'}`>{hint}</small>)}
+    {
+        hint && (
+            <AInputHint id={`${name}`}>
+                { hint }
+            </AInputHint>
+        )
+    }
 </div>
 
 <script>
@@ -92,7 +98,7 @@ const {
         flex-direction: column;
         gap: 0.5rem;
 
-        &__label {
+        &__label, &__hint {
             color: var(--dark-70);
         }
 
@@ -150,7 +156,7 @@ const {
 			}
 		}
 
-		&--disabled {
+        &#{$root}--disabled {
 			& #{$root}__button {
 				background-color: var(--dark-10);
 				border-color: var(--dark-10);
@@ -167,6 +173,17 @@ const {
 				color: var(--dark-50);
 			}
 		}
+
+        &#{$root}--required {
+            #{$root}__label {
+                &::after {
+                    content: '*';
+                    display: inline-block;
+                    margin-left: 4px;
+                    color: var(--orange-100);
+                }
+            }
+        }
 
 		&.is-open & {
 			&__icon {
