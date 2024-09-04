@@ -30,12 +30,34 @@ import CalculatorCard from "../common/CalculatorCard/CalculatorCard.astro";
             editable
         />
         <ASelectInput size="m" label="Особенности">
-            <ADropDownItem value="С поручительством физического лица" selected>С поручительством физического лица</ADropDownItem>
-            <ADropDownItem value="Вариант 2">Вариант 2</ADropDownItem>
+            <ADropDownItem
+                value="with-individual"
+                displayValue="С поручительством физического лица"
+                selected
+            >
+                С поручительством физического лица
+            </ADropDownItem>
+            <ADropDownItem
+                value="variant-2"
+                displayValue="Вариант 2"
+            >
+                Вариант 2
+            </ADropDownItem>
         </ASelectInput>
         <ASelectInput size="m" label="Тип платежей">
-            <ADropDownItem value="Аннуитетные" selected>Аннуитетные</ADropDownItem>
-            <ADropDownItem value="Вариант 2">Вариант 2</ADropDownItem>
+            <ADropDownItem
+                value="annuity"
+                displayValue="Аннуитетные"
+                selected
+            >
+                Аннуитетные
+            </ADropDownItem>
+            <ADropDownItem
+                value="variant-2"
+                displayValue="Вариант 2"
+            >
+                Вариант 2
+            </ADropDownItem>
         </ASelectInput>
 	</Fragment>
     <Fragment slot="agreements">

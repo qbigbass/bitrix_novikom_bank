@@ -24,30 +24,49 @@ import ADropDownItem from "../ui/ADropDown/ADropDownItem/ADropDownItem.astro";
                 <ADropDownItem
                     selected
                     class="body-m-light"
-                    value="Дебетовая"
+                    value="debit"
+                    displayValue="Дебетовая"
                 >
                     Дебетовая
                 </ADropDownItem>
-                <ADropDownItem class="body-m-light" value="Кредитная">
+                <ADropDownItem
+                    class="body-m-light"
+                    value="credit"
+                    displayValue="Кредитная"
+                >
                     Кредитная
                 </ADropDownItem>
                 <ADropDownItem
                     class="body-m-light"
-                    value="Кредитная 2"
+                    value="credit-2"
+                    displayValue="Кредитная 2"
                 >
                     Кредитная 2
                 </ADropDownItem>
             </ASelectInput>
             <ASelectInput size="m" label="Категория основной карты" placeholder="Выберите" name="cardCategory">
-                <ADropDownItem class="body-m-light" value="Premium">Premium</ADropDownItem>
+                <ADropDownItem
+                    class="body-m-light"
+                    value="premium"
+                    displayValue="Premium"
+                >
+                    Premium
+                </ADropDownItem>
                 <ADropDownItem
                     selected
                     class="body-m-light"
-                    value="Standard"
+                    value="standard"
+                    displayValue="Standard"
                 >
                     Standard
                 </ADropDownItem>
-                <ADropDownItem class="body-m-light" value="Premium 2">Premium 2</ADropDownItem>
+                <ADropDownItem
+                    class="body-m-light"
+                    value="premium-2"
+                    displayValue="Premium 2"
+                >
+                    Premium 2
+                </ADropDownItem>
             </ASelectInput>
         </FormRow>
     </Fragment>

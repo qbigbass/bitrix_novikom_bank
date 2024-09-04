@@ -38,7 +38,8 @@ for (let i = 1; i <= totalPages; i++) {
                 <ADropDownItem
                     selected={pageNumber === page}
                     class="body-s-light"
-                    value={pageNumber + '/' + totalPages}
+                    value={pageNumber}
+                    displayValue={pageNumber + '/' + totalPages}
                     href={href}
                 >
                     {pageNumber}

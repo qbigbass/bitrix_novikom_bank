@@ -50,16 +50,49 @@ import CalculatorCard from "../common/CalculatorCard/CalculatorCard.astro";
             editable
         />
         <ASelectInput size="m" label="Регион">
-            <ADropDownItem value="Дальневосточный федеральный округ" selected>Дальневосточный федеральный округ</ADropDownItem>
-            <ADropDownItem value="Вариант 2">Вариант 2</ADropDownItem>
+            <ADropDownItem
+                value="eastern-federal-district"
+                displayValue="Дальневосточный федеральный округ"
+                selected
+            >
+                Дальневосточный федеральный округ
+            </ADropDownItem>
+            <ADropDownItem
+                value="variant-2"
+                displayValue="Вариант 2"
+            >
+                Вариант 2
+            </ADropDownItem>
         </ASelectInput>
         <ASelectInput size="m" label="Программа кредитования">
-            <ADropDownItem value="Ипотека по программе «Первичный рынок»" selected>Ипотека по программе «Первичный рынок»</ADropDownItem>
-            <ADropDownItem value="Вариант 2">Вариант 2</ADropDownItem>
+            <ADropDownItem
+                value="mortgage-program"
+                displayValue="Ипотека по программе «Первичный рынок»"
+                selected
+            >
+                Ипотека по программе «Первичный рынок»
+            </ADropDownItem>
+            <ADropDownItem
+                value="variant-2"
+                displayValue="Вариант 2"
+            >
+                Вариант 2
+            </ADropDownItem>
         </ASelectInput>
         <ASelectInput size="m" label="Объект залога">
-            <ADropDownItem value="Квартира" selected>Квартира</ADropDownItem>
-            <ADropDownItem value="Вариант 2">Вариант 2</ADropDownItem>
+            <ADropDownItem
+                value="apartment"
+                displayValue="Квартира"
+                selected
+            >
+                Квартира
+            </ADropDownItem>
+            <ADropDownItem
+                value="variant-2"
+                displayValue="Вариант 2"
+            >
+                Вариант 2
+            </ADropDownItem>
         </ASelectInput>
 	</Fragment>
     <Fragment slot="agreements">
