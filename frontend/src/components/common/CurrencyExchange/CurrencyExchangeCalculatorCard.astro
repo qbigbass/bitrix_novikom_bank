@@ -1,7 +1,7 @@
 ---
 import AButton from "../../ui/Buttons/AButton.astro";
 import ACurrencyInput from "../../ui/ACurrencyInput/ACurrencyInput.astro";
-import ADropDownButton from "../../ui/ADropDown/ADropDownButton/ADropDownButton.astro";
+import ADropDownItem from "../../ui/ADropDown/ADropDownItem/ADropDownItem.astro";
 ---
 <div class="currency-exchange-calculator-card">
 	<div class="currency-exchange-calculator-card__title headline-3">Предварительный расчет</div>
@@ -14,10 +14,10 @@ import ADropDownButton from "../../ui/ADropDown/ADropDownButton/ADropDownButton.
 			forId="you-have"
 			name="you-have"
 		>
-			<ADropDownButton value="RUB" selected>RUB</ADropDownButton>
-			<ADropDownButton value="EUR">EUR</ADropDownButton>
-			<ADropDownButton value="USD">USD</ADropDownButton>
-			<ADropDownButton value="CNY">CNY</ADropDownButton>
+			<ADropDownItem value="RUB" selected>RUB</ADropDownItem>
+			<ADropDownItem value="EUR">EUR</ADropDownItem>
+			<ADropDownItem value="USD">USD</ADropDownItem>
+			<ADropDownItem value="CNY">CNY</ADropDownItem>
 		</ACurrencyInput>
 		<ACurrencyInput
 			size="ms"
@@ -27,10 +27,10 @@ import ADropDownButton from "../../ui/ADropDown/ADropDownButton/ADropDownButton.
 			forId="you-get"
 			name="you-get"
 		>
-			<ADropDownButton value="RUB">RUB</ADropDownButton>
-			<ADropDownButton value="EUR">EUR</ADropDownButton>
-			<ADropDownButton value="USD" selected>USD</ADropDownButton>
-			<ADropDownButton value="CNY">CNY</ADropDownButton>
+			<ADropDownItem value="RUB">RUB</ADropDownItem>
+			<ADropDownItem value="EUR">EUR</ADropDownItem>
+			<ADropDownItem value="USD" selected>USD</ADropDownItem>
+			<ADropDownItem value="CNY">CNY</ADropDownItem>
 		</ACurrencyInput>
 		<AButton size="lm" type="submit">Зафиксировать курс</AButton>
 	</form>

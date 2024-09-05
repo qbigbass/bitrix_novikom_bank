@@ -4,17 +4,17 @@ import AIcon from "../../AIcon.astro";
 type Size = 'l' | 'm';
 
 interface Props {
-	checked?: boolean,
-	value?: any,
-	id: number | string,
-	size: Size,
-	class?: string,
+	checked?: boolean;
+	id: number | string;
+    name: string;
+	size: Size;
+	class?: string;
 }
 
 const {
 	class: className,
 	checked,
-	value,
+    name,
 	id,
 	size = 'l'
 } = Astro.props as Props;
@@ -33,7 +33,7 @@ const {
 			id={id}
 			type="checkbox"
 			checked={checked}
-			value={value}
+			name={name}
 		/>
 		<span class="a-checkbox__box">
 			<AIcon class="a-checkbox__icon" symbolId="icon-check" size="s" />
@@ -48,22 +48,6 @@ const {
 	</label>
 </div>
 
-<script>
-	import initACheckbox from './';
-	import { JS_CLASSES } from './';
-	import type { ACheckboxState, ACheckboxCustomEvent } from './interfaces'
-	const checkboxes: NodeListOf<HTMLDivElement> = document.querySelectorAll(JS_CLASSES.root);
-
-	checkboxes?.forEach((checkbox) => {
-		const input = initACheckbox(checkbox) as ACheckboxState;
-
-		input.root.addEventListener('change', (event) => {
-			const checkboxEvent = event as CustomEvent<ACheckboxCustomEvent>;
-			console.log('Change', checkboxEvent);
-		});
-	});
-</script>
-
 <style lang="scss" is:global>
 	.a-checkbox {
 		$root: #{&};
@@ -73,6 +57,7 @@ const {
 		&__inner {
 			cursor: pointer;
 			display: inline-flex;
+            align-items: center;
 			gap: 1rem;
 		}
 
@@ -122,20 +107,12 @@ const {
 				width: 2rem;
 				height: 2rem;
 			}
-
-			#{$root}__label {
-				padding-top: .25rem;
-			}
 		}
 
 		&--size-m {
 			#{$root}__box {
 				width: 1.5rem;
 				height: 1.5rem;
-			}
-
-			#{$root}__label {
-				padding-top: .125rem;
 			}
 		}
 

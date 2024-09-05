@@ -1,6 +1,7 @@
 ---
 import AIcon from "../../AIcon.astro";
 import ADropDown from "../ADropDown/ADropDownMenu/ADropDownMenu.astro";
+import AInputHint from "../AInputHint/AInputHint.astro";
 type Size = "m" | "s" | "ms";
 
 interface Props {
@@ -10,7 +11,6 @@ interface Props {
 	name?: string;
 	value?: string;
 	label?: string;
-	forId?: string;
 	hint?: string;
 	required?: boolean;
 	size: Size;
@@ -23,7 +23,6 @@ const {
 	disabled,
 	name,
 	value,
-	forId,
 	hint,
 	required,
 	size = 'ms',
@@ -32,57 +31,44 @@ const {
 ---
 
 <div
-	class="a-input a-currency-input js-a-currency-input"
+	class="a-currency-input js-a-currency-input"
 	class:list={
 		[
 			className,
-			{'a-input--required': required},
-			`a-input--${size}`
+			{'a-currency-input--required': required},
+			`a-currency-input--${size}`
 		]
 	}
 	{...rest}
 >
-	{ label && (<label for={forId} class="a-currency-input__label body-s-heavy">{label}</label>)}
+	{ label && (<label for={name} class="a-currency-input__label body-s-heavy">{label}</label>)}
 
-	<div class="a-currency-input__inner">
+	<div class="a-currency-input__inner js-a-currency-input-inner">
 		<input
-			id={forId}
-			class="a-input__input"
+			id={name}
+			class="a-currency-input__input"
 			placeholder={placeholder}
 			disabled={disabled}
 			name={name}
 			value={value}
-			aria-describedby=`${forId + '-hint'}`
+			aria-describedby=`${name + '-hint'}`
 		/>
 		<button class="a-currency-input__button js-a-currency-input-button" type="button">
 			<span class="a-currency-input__button-text js-a-currency-input-button-text"></span>
 			<AIcon class="a-currency-input__button-icon" symbolId="icon-chevron-down" size="s" />
 		</button>
-		<ADropDown class="a-currency-input__drop-down">
-			<slot />
-		</ADropDown>
 	</div>
-	{ hint && (<small class="a-input__hint js-a-input-hint caption-m" id=`${forId + '-hint'}`>{hint}</small>)}
+    <ADropDown class="a-currency-input__drop-down">
+        <slot />
+    </ADropDown>
+	{
+        hint && (
+            <AInputHint id={`${name}`}>
+                { hint }
+            </AInputHint>
+        )
+    }
 </div>
-
-<script>
-	import initACurrencyInput from './';
-	import { JS_CLASSES } from './';
-	import type { ACurrencyInputState } from './interfaces'
-	const currencyInputs: NodeListOf<HTMLDivElement> = document.querySelectorAll(JS_CLASSES.root);
-
-	currencyInputs?.forEach((currencyInput) => {
-		const input = initACurrencyInput(currencyInput) as ACurrencyInputState;
-
-		input.root.addEventListener('input', (event) => {
-			console.log('Input', input)
-		});
-
-		input.root.addEventListener('selected', (event) => {
-			console.log('Selected', input)
-		});
-	});
-</script>
 
 <style lang="scss" is:global>
 	@use "sass:map";
@@ -91,8 +77,10 @@ const {
 	@import "@styles/placeholders.scss";
 
 	.a-currency-input {
+        $root: #{&};
 		display: flex;
 		flex-direction: column;
+        gap: 0.5rem;
 
 		&__inner {
 			position: relative;
@@ -123,17 +111,38 @@ const {
 			}
 		}
 
-		&__drop-down {
-			top: calc(100% + 0.5rem);
-			width: 100%;
-		}
-
-		.a-input__input {
+		&__input {
+            display: inline-block;
+            width: 100%;
+            min-width: 0;
+            border: 1px solid var(--purple-30);
 			border-radius: 0.25rem 0 0 0.25rem;
 			border-right: 0;
+            background-color: inherit;
+            color: inherit;
+            font-family: inherit;
+
+            &::placeholder {
+                color: var(--dark-70);
+            }
+
+            &:disabled {
+                cursor: not-allowed;
+                border-color: transparent;
+                background-color: var(--dark-10);
+            }
+
+            &:focus {
+                outline: none;
+                border-color: var(--purple-70);
+            }
+
+            &:enabled:hover {
+                border-color: var(--purple-70);
+            }
 		}
 
-		.a-input__input:disabled ~ &__button {
+		&__input:disabled ~ &__button {
 			pointer-events: none;
 			cursor: not-allowed;
 			border-color: transparent;
@@ -141,11 +150,11 @@ const {
 			background-color: var(--dark-10);
 		}
 
-		.a-input__input:enabled:hover ~ &__button {
+		&__input:enabled:hover ~ &__button {
 			border-color: var(--purple-70);
 		}
 
-		.a-input__input:focus ~ &__button {
+		&__input:focus ~ &__button {
 			border-color: var(--purple-70);
 		}
 
@@ -153,20 +162,44 @@ const {
 			color: var(--violet-70);
 		}
 
-		&.a-input.a-input--m & {
-			&__button {
+		&#{$root}--m {
+            #{$root}__input {
+                padding: calc(1rem - 1px); // 1px - border
+                font-size: 1rem;
+                line-height: 150%;
+            }
+
+            #{$root}__button {
 				padding: 0.938rem 0.938rem 0.938rem 0.438rem;
 			}
 		}
 
-		&.a-input.a-input--s & {
-			&__button {
+		&#{$root}--s {
+            #{$root}__input {
+                padding: 0.625rem 1rem;
+                font-size: 0.875rem;
+                line-height: 130%;
+            }
+
+            #{$root}__button {
 				padding: 0.625rem 0.438rem 0.625rem 0.438rem;
 			}
 		}
 
-		&.a-input.a-input--ms & {
-			&__button {
+		&#{$root}--ms {
+            #{$root}__input {
+                padding: 0.625rem 1rem;
+                font-size: 0.875rem;
+                line-height: 130%;
+
+                @include use-media(tablet-album) {
+                    padding: calc(1rem - 1px); // 1px - border
+                    font-size: 1rem;
+                    line-height: 150%;
+                }
+            }
+
+            #{$root}__button {
 				padding:
 					calc-clamp(0.563rem, 0.938rem, map.get($mq-breakpoints, laptop-x))
 					calc-clamp(0.563rem, 0.938rem, map.get($mq-breakpoints, laptop-x))
@@ -175,8 +208,19 @@ const {
 			}
 		}
 
-		&.is-open & {
-			&__button-icon {
+        &#{$root}--required {
+            #{$root}__label {
+                &::after {
+                    content: '*';
+                    display: inline-block;
+                    margin-left: 4px;
+                    color: var(--orange-100);
+                }
+            }
+        }
+
+		&.is-open {
+            #{$root}__button-icon {
 				transform: rotate(-180deg);
 			}
 		}

@@ -1,4 +1,4 @@
-import type {ACheckboxCustomEvent, ACheckboxState} from "@components/ui/ACheckbox/interfaces";
+import type {ACheckbox, ACheckboxCustomEvent, ACheckboxState} from "@components/ui/ACheckbox/interfaces";
 
 export const JS_CLASSES = {
 	root: '.js-a-checkbox'
@@ -7,34 +7,46 @@ export const JS_CLASSES = {
 const initState = (checkbox: HTMLDivElement): ACheckboxState => {
 	const checkboxEl: HTMLInputElement | null = checkbox.querySelector('input');
 
-	return {
-		root: checkbox,
-		checkboxEl,
-		checked: checkboxEl?.checked ?? false
-	}
+  if (checkboxEl) {
+    return {
+      elements: {
+        root: checkbox,
+        checkboxEl
+      },
+      checked: checkboxEl?.checked ?? false,
+      name: checkboxEl.name ?? ''
+    }
+  } else {
+    throw new Error('Не удалось инициализировать работу компонента ACheckbox');
+  }
 }
 
-const initACheckbox = (checkbox: HTMLDivElement): ACheckboxState => {
-	const STATE = initState(checkbox);
+const initACheckbox = (checkbox: HTMLDivElement): ACheckbox | null => {
+  try {
+    const STATE = initState(checkbox);
+    const { elements } = STATE;
 
-	if (STATE.root && STATE.checkboxEl) {
-		STATE.checkboxEl.addEventListener('change', (event) => {
-			event.stopPropagation();
-			STATE.checked = STATE.checkboxEl?.checked ?? false
+    elements.checkboxEl.addEventListener('change', (event) => {
+      event.stopPropagation();
+      STATE.checked = elements.checkboxEl?.checked ?? false
 
-			const customEvent = new CustomEvent<ACheckboxCustomEvent>('change', {
-				detail: {
-					checked: STATE.checked,
-				},
-			});
+      const customEvent = new CustomEvent<ACheckboxCustomEvent>('changed', {
+        detail: {
+          checked: STATE.checked,
+          name: STATE.name
+        },
+      });
 
-			checkbox.dispatchEvent(customEvent);
-		});
-	} else {
-		throw new Error('Не удалось инициализировать работу компонента ACheckbox');
-	}
+      checkbox.dispatchEvent(customEvent);
+    });
 
-	return STATE;
+    const component = (STATE.elements.root as ACheckbox);
+    component['$state'] = STATE;
+    return component;
+  } catch (e) {
+    console.error(e);
+    return null;
+  }
 }
 
-export default initACheckbox
+export default initACheckbox;

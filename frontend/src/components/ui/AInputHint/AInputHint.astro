@@ -1,0 +1,27 @@
+---
+interface Props {
+    id?: string;
+}
+
+let {
+    id,
+} = Astro.props as Props;
+
+id = id ? `${id}-hint` : undefined;
+---
+<small
+    class="a-input-hint js-a-input-hint caption-m"
+    id={id}
+>
+    <slot />
+</small>
+
+<style lang="scss">
+    .a-input-hint {
+        color: var(--dark-70);
+
+        &.is-error {
+            color: var(--signals-alert);
+        }
+    }
+</style>

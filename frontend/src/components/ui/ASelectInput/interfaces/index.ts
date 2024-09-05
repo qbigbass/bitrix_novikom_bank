@@ -1,13 +1,29 @@
-import type { ADropDownMenuState } from '@components/ui/ADropDown/ADropDownMenu/interfaces';
+import type { ADropDownMenu } from '@components/ui/ADropDown/ADropDownMenu/interfaces';
+import type {ADropDownCheckbox} from "@components/ui/ADropDown/ADropDownCheckbox/interfaces";
+
+export interface ASelectInputElements {
+  root: HTMLDivElement;
+  innerEl: HTMLDivElement | null;
+  buttonEl: HTMLDivElement | null;
+  inputHidden: HTMLInputElement | null;
+  placeholderEl: HTMLSpanElement | null;
+}
+
+export interface ASelectInputComponents {
+  dropDownMenu: ADropDownMenu;
+}
 
 export interface ASelectInputState {
-	root: HTMLDivElement;
-	inputEl: HTMLDivElement | null;
-	inputHidden: HTMLInputElement | null;
-	dropDownMenu: ADropDownMenuState | null;
+  elements: ASelectInputElements;
+  components: ASelectInputComponents;
 	isOpen: boolean;
-	selectedValues: string | null | undefined;
+	selectedValues: ADropDownCheckbox[];
 	disabled: boolean;
 	value: string;
+  displayValue: string;
 	clickOutsideHandler: (event: MouseEvent) => void;
+}
+
+export interface ASelectInput extends HTMLDivElement {
+  $state?: ASelectInputState;
 }
