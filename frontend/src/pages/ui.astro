@@ -589,10 +589,10 @@ const listConatactGray = [
 
             <div class="ui-grid">
                 <FormRow cols={2}>
-                    <ACheckbox id="is-card-novkom" size="m" checked>
+                    <ACheckbox id="is-card-novkom" size="m"  name="novikom" checked>
                         <div class="body-m-light" slot="label">Получаю зарплату на карту НОВИКОМ</div>
                     </ACheckbox>
-                    <ACheckbox id="insurance" size="m">
+                    <ACheckbox id="insurance" size="m" name="strahovka">
                         <div class="body-m-light" slot="label">Страховка</div>
                     </ACheckbox>
                 </FormRow>
@@ -1433,28 +1433,28 @@ const listConatactGray = [
                     placeholder="Выберите"
                     name="cardCategory"
                 >
-                    <ADropDownCheckbox checked size="m" value="standard" id="10">
+                    <ADropDownCheckbox checked size="m" displayValue="Standard" name="standard" id="10">
                         <span class="body-m-light">Standard</span>
                     </ADropDownCheckbox>
-                    <ADropDownCheckbox checked size="m" value="bonus" id="11">
+                    <ADropDownCheckbox checked size="m" displayValue="Bonus" name="bonus" id="11">
                         <span class="body-m-light">Bonus</span>
                     </ADropDownCheckbox>
-                    <ADropDownCheckbox size="m" id="111">
+                    <ADropDownCheckbox size="m" displayValue="Bonus 2" name="bonus-2" id="111">
                         <span class="body-m-light">Bonus 2</span>
                     </ADropDownCheckbox>
-                    <ADropDownCheckbox size="m" id="222">
+                    <ADropDownCheckbox size="m" displayValue="Bonus 3" name="bonus-3" id="222">
                         <span class="body-m-light">Bonus 3</span>
                     </ADropDownCheckbox>
-                    <ADropDownCheckbox size="m" id="333">
+                    <ADropDownCheckbox size="m" displayValue="Bonus 4" name="bonus-4" id="333">
                         <span class="body-m-light">Bonus 4</span>
                     </ADropDownCheckbox>
-                    <ADropDownCheckbox size="m" id="444">
+                    <ADropDownCheckbox size="m" displayValue="Bonus 5" name="bonus-5" id="444">
                         <span class="body-m-light">Bonus 5</span>
                     </ADropDownCheckbox>
-                    <ADropDownCheckbox size="m" id="555">
+                    <ADropDownCheckbox size="m" displayValue="Bonus 6" name="bonus-6" id="555">
                         <span class="body-m-light">Bonus 6</span>
                     </ADropDownCheckbox>
-                    <ADropDownCheckbox size="m" id="666">
+                    <ADropDownCheckbox size="m" displayValue="Bonus 7" name="bonus-7" id="666">
                         <span class="body-m-light">Bonus 7</span>
                     </ADropDownCheckbox>
                 </ASelectInput>

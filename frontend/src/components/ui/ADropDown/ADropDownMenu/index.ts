@@ -1,17 +1,15 @@
 import type {
-  ADropDownMenu,
-  ADropDownMenuCustomEvent,
+  ADropDownMenu, ADropDownMenuChangedEvent,
+  ADropDownMenuSelectedEvent,
   ADropDownMenuState
 } from './interfaces';
 import type {
   ADropDownItem,
-  ADropDownItemCustomEvent,
-  ADropDownItemState
+  ADropDownItemCustomEvent
 } from '@components/ui/ADropDown/ADropDownItem/interfaces';
 import type {
   ADropDownCheckbox,
-  ADropDownCheckboxEvent,
-  ADropDownCheckboxState
+  ADropDownCheckboxEvent
 } from "@components/ui/ADropDown/ADropDownCheckbox/interfaces";
 import initADropDownItem, { JS_CLASSES as JS_ITEM_CLASSES } from '@components/ui/ADropDown/ADropDownItem';
 import initADropDownCheckbox, { JS_CLASSES as JS_CHECKBOX_CLASSES } from "@components/ui/ADropDown/ADropDownCheckbox";
@@ -46,7 +44,18 @@ const closeHandler = (STATE: ADropDownMenuState) => {
 
 const setSelectedItem = (STATE: ADropDownMenuState, item: ADropDownItem) => {
 	STATE.selectedItem = item;
-	STATE.currentValue = item.$state!.value;
+}
+
+const unsetSelectedItem = (STATE: ADropDownMenuState) => {
+  STATE.selectedItem?.$state.methods.unselect();
+}
+
+const setSelectedItems = (STATE: ADropDownMenuState, item: ADropDownCheckbox) => {
+  STATE.selectedItems.push(item);
+}
+
+const unsetSelectedItems = (STATE: ADropDownMenuState, item: ADropDownCheckbox) => {
+  STATE.selectedItems = [...STATE.selectedItems].filter((s: ADropDownCheckbox) => s.$state.name !== item.$state.name);
 }
 
 const initState = (element: HTMLDivElement): ADropDownMenuState => {
@@ -83,8 +92,8 @@ const initState = (element: HTMLDivElement): ADropDownMenuState => {
       checkboxes
     },
 		isOpen: false,
-		currentValue: '',
 		selectedItem: null,
+    selectedItems: [],
     methods: {
       open: (rect) => {},
       close: () => {},
@@ -104,16 +113,16 @@ const initADropDownMenu = (element: HTMLDivElement): ADropDownMenu => {
   components.items?.forEach((item: ADropDownItem) => {
 		item.addEventListener('selected', (event) => {
 			const { detail } = event as CustomEvent<ADropDownItemCustomEvent>;
-			STATE.selectedItem?.$state?.methods.unselect();
 
+      unsetSelectedItem(STATE);
 			setSelectedItem(STATE, item);
 
-			const customEvent = new CustomEvent<ADropDownMenuCustomEvent>('selected', { detail });
+			const customEvent = new CustomEvent<ADropDownMenuSelectedEvent>('selected', { detail });
 
 			elements.root.dispatchEvent(customEvent);
 		});
 
-		if (item.$state?.selected) {
+		if (item.$state.selected) {
 			setSelectedItem(STATE, item);
 		}
 	});
@@ -122,10 +131,22 @@ const initADropDownMenu = (element: HTMLDivElement): ADropDownMenu => {
     item.addEventListener('changed', (event) => {
       const { detail } = event as CustomEvent<ADropDownCheckboxEvent>
 
-      const customEvent = new CustomEvent<ADropDownCheckboxEvent>('changed', { detail });
+      if (detail.checked) {
+        setSelectedItems(STATE, item);
+      } else {
+        unsetSelectedItems(STATE, item);
+      }
+
+      const customEvent = new CustomEvent<ADropDownMenuChangedEvent>('changed', {
+        detail: { values: STATE.selectedItems}
+      });
 
       elements.root.dispatchEvent(customEvent);
     });
+
+    if (item.$state.checked) {
+      setSelectedItems(STATE, item);
+    }
   });
 
   const component = elements.root as ADropDownMenu;

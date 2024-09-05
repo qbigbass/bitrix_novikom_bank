@@ -14,7 +14,7 @@ const initState = (checkbox: HTMLDivElement): ACheckboxState => {
         checkboxEl
       },
       checked: checkboxEl?.checked ?? false,
-      value: checkboxEl?.value ?? ''
+      name: checkboxEl.name ?? ''
     }
   } else {
     throw new Error('Не удалось инициализировать работу компонента ACheckbox');
@@ -33,7 +33,7 @@ const initACheckbox = (checkbox: HTMLDivElement): ACheckbox | null => {
       const customEvent = new CustomEvent<ACheckboxCustomEvent>('changed', {
         detail: {
           checked: STATE.checked,
-          value: STATE.value
+          name: STATE.name
         },
       });
 

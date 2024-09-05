@@ -1,6 +1,6 @@
 export interface ACheckboxCustomEvent {
 	checked: boolean;
-  value: string;
+  name: string;
 }
 
 export interface ACheckboxElements {
@@ -10,10 +10,10 @@ export interface ACheckboxElements {
 
 export interface ACheckboxState {
   elements: ACheckboxElements;
-	checked: boolean,
-  value: string;
+	checked: boolean;
+  name: string;
 }
 
 export interface ACheckbox extends HTMLDivElement {
-  $state?: ACheckboxState;
+  $state: ACheckboxState;
 }

@@ -1,10 +1,12 @@
 import type { ADropDownMenu } from '@components/ui/ADropDown/ADropDownMenu/interfaces';
+import type {ADropDownCheckbox} from "@components/ui/ADropDown/ADropDownCheckbox/interfaces";
 
 export interface ASelectInputElements {
   root: HTMLDivElement;
   innerEl: HTMLDivElement | null;
   buttonEl: HTMLDivElement | null;
   inputHidden: HTMLInputElement | null;
+  placeholderEl: HTMLSpanElement | null;
 }
 
 export interface ASelectInputComponents {
@@ -15,7 +17,7 @@ export interface ASelectInputState {
   elements: ASelectInputElements;
   components: ASelectInputComponents;
 	isOpen: boolean;
-	selectedValues: string | null | undefined;
+	selectedValues: ADropDownCheckbox[];
 	disabled: boolean;
 	value: string;
   displayValue: string;

@@ -21,6 +21,10 @@ const initUIComponents = () => {
     component?.addEventListener('selected', (event) => {
       console.log('Selected', event);
     });
+
+    component?.addEventListener('changed', (event) => {
+      console.log('Changed', event);
+    });
   });
 
   const ACurrencyInputComponents: NodeListOf<HTMLDivElement> = document.querySelectorAll(JS_A_CURRENCY_INPUT.root);

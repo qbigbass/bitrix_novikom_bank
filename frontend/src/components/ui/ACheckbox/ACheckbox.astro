@@ -4,17 +4,17 @@ import AIcon from "../../AIcon.astro";
 type Size = 'l' | 'm';
 
 interface Props {
-	checked?: boolean,
-	value?: any,
-	id: number | string,
-	size: Size,
-	class?: string,
+	checked?: boolean;
+	id: number | string;
+    name: string;
+	size: Size;
+	class?: string;
 }
 
 const {
 	class: className,
 	checked,
-	value,
+    name,
 	id,
 	size = 'l'
 } = Astro.props as Props;
@@ -33,7 +33,7 @@ const {
 			id={id}
 			type="checkbox"
 			checked={checked}
-			value={value}
+			name={name}
 		/>
 		<span class="a-checkbox__box">
 			<AIcon class="a-checkbox__icon" symbolId="icon-check" size="s" />

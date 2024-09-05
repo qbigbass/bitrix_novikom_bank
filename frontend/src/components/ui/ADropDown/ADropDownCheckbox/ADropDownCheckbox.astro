@@ -4,14 +4,20 @@ import ACheckbox from "../../ACheckbox/ACheckbox.astro";
 type Size = 's' | 'm';
 
 interface Props {
-    checked?: boolean,
-    value?: any,
-    id: string | number,
-    size: Size,
+    checked?: boolean;
+    name: string;
+    displayValue: string;
+    id: string | number;
+    size: Size;
 }
 
-const { id, checked,
-    size = 's', value, } = Astro.props;
+const {
+    id,
+    checked,
+    size = 's',
+    name,
+    displayValue
+} = Astro.props;
 ---
 <div
      class:list={[
@@ -19,8 +25,9 @@ const { id, checked,
          'js-drop-down-checkbox',
         `drop-down-checkbox--${size}`,
     ]}
+     data-display-value={displayValue}
 >
-    <ACheckbox size={size} id={id} checked={checked} value={value}>
+    <ACheckbox size={size} id={id} checked={checked} name={name}>
         <Fragment slot="label">
             <slot />
         </Fragment>

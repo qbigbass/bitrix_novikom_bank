@@ -23,7 +23,10 @@ const initState = (root: HTMLDivElement): ADropDownCheckboxState => {
       },
       components: {
         checkbox: checkboxComponent
-      }
+      },
+      checked: checkboxComponent.$state.checked,
+      name: checkboxComponent.$state.name,
+      displayValue: root.getAttribute('data-display-value') ?? '',
     }
   } else {
     throw new Error('Не удалось инициализировать работу компонента ADropDownCheckbox');
@@ -39,6 +42,7 @@ const initADropDownCheckbox = (element: HTMLDivElement): ADropDownCheckbox | nul
     components.checkbox.addEventListener('changed', (event) => {
       event.stopPropagation();
       const { detail } = event as CustomEvent<ACheckboxCustomEvent>;
+      STATE.checked = detail.checked;
 
       const customEvent = new CustomEvent<ADropDownCheckboxEvent>('changed', { detail })
 

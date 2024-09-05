@@ -1,11 +1,14 @@
 import type { ADropDownItem } from "@components/ui/ADropDown/ADropDownItem/interfaces";
 import type { ADropDownCheckbox } from "@components/ui/ADropDown/ADropDownCheckbox/interfaces";
 
-export interface ADropDownMenuCustomEvent {
+export interface ADropDownMenuSelectedEvent {
 	value: string;
   displayValue: string;
 }
 
+export interface ADropDownMenuChangedEvent {
+  values: ADropDownCheckbox[];
+}
 
 export interface ADropDownMenuElements {
   root: HTMLDivElement;
@@ -20,8 +23,8 @@ export interface ADropDownMenuState {
   elements: ADropDownMenuElements;
   components: ADropDownMenuComponents;
 	isOpen: boolean;
-	currentValue: string;
 	selectedItem: ADropDownItem | null;
+	selectedItems: ADropDownCheckbox[];
   methods: {
     open: (rect: DOMRect) => void;
     close: () => void;

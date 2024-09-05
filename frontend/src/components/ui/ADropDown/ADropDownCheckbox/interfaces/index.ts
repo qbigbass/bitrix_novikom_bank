@@ -8,12 +8,15 @@ export interface ADropDownCheckboxElements {
 }
 
 export interface ADropDownCheckboxComponents {
-  checkbox: ACheckbox
+  checkbox: ACheckbox;
 }
 
 export interface ADropDownCheckboxState {
-  elements: ADropDownCheckboxElements,
-  components: ADropDownCheckboxComponents,
+  elements: ADropDownCheckboxElements;
+  components: ADropDownCheckboxComponents;
+  checked: boolean;
+  name: string;
+  displayValue: string;
 }
 
 export interface ADropDownCheckbox extends HTMLDivElement {
