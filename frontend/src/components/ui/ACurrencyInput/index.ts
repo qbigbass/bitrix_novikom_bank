@@ -1,6 +1,6 @@
 import type {
   ADropDownMenuCustomEvent,
-  ADropDownMenu
+  ADropDownMenu, ADropDownMenuSelectedEvent
 } from "../ADropDown/ADropDownMenu/interfaces";
 import type {
   ACurrencyInput,
@@ -120,10 +120,10 @@ const initACurrencyInput = (currencyInput: HTMLDivElement): ACurrencyInput | nul
     });
 
     components.dropDownMenu?.addEventListener('selected', (event) => {
-      const { detail } = event as CustomEvent<ADropDownMenuCustomEvent>;
+      const { detail } = event as CustomEvent<ADropDownMenuSelectedEvent>;
 
       if (elements.buttonTextEl) {
-        setButtonText(STATE, String(detail.value));
+        setButtonText(STATE, String(detail.displayValue));
       }
 
       STATE.selectedCurrency = detail.value;
@@ -150,7 +150,7 @@ const initACurrencyInput = (currencyInput: HTMLDivElement): ACurrencyInput | nul
     });
 
     setResizeObserver(STATE);
-    setButtonText(STATE, String(components.dropDownMenu.$state?.selectedItem?.$state?.value ?? ''));
+    setButtonText(STATE, String(components.dropDownMenu.$state?.selectedItem?.$state?.displayValue ?? ''));
     STATE.selectedCurrency = components.dropDownMenu.$state?.selectedItem?.$state?.value;
 
     const component = elements.root as ACurrencyInput;
