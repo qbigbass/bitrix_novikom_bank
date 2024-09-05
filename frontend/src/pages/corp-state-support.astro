@@ -1,8 +1,6 @@
 ---
 import DefaultPageLayout from "../layouts/DefaultPageLayout.astro";
 import SectionBankOffers from "../components/sections/SectionBankOffers.astro";
-import SectionClientInfo from "../components/sections/SectionClientInfo.astro";
-import AnnouncementCardClients from "../components/common/AnnouncementCardClients/AnnouncementCardClients.astro";
 import type { OfferCardColor } from "@components/common/OfferCard/OfferCard.astro";
 import SectionLayout from "../components/layouts/SectionLayout.astro";
 import AButton from "@components/ui/Buttons/AButton.astro";
@@ -19,8 +17,6 @@ import BenefitCard from "@components/common/BenefitCard/BenefitCard.astro";
 import ARte from "@components/ARte.astro";
 import FormCallMeBack from "@components/common/FormCallMeBack/FormCallMeBack.astro";
 import ProductCardBanner from "@components/banners/ProductCardBanner.astro";
-import BenefitTextCard from "@components/common/BenefitCard/BenefitTextCard.astro";
-import CardPromo from "@components/common/Cards/CardPromo.astro";
 import SectionTitle from "@components/ui/SectionTitle/SectionTitle.astro";
 import PersistentSlider from "@components/common/Sliders/PersistentSlider/PersistentSlider.astro";
 import SliderSlide from "@components/common/Sliders/common/SliderSlide/SliderSlide.astro";
@@ -97,26 +93,6 @@ const offerCards = [
     },
 ];
 
-const cardOfferBenefits = [
-    {
-        title: "Срок до 5 лет",
-        description: "Срок лизинга часто больше срока доступного кредитования",
-        icon: "icon-a-date",
-    },
-    {
-        title: "Широкий комплекс услуг",
-        description:
-            "Транспортировка, таможня, монтаж, наладка, регистрация, страхование и консультации по предмету лизинга.",
-        icon: "icon-a-multitasking",
-    },
-    {
-        title: "Без обеспечения сделки",
-        description:
-            "Не требуется дополнительное обеспечение сделки, т. к. в период лизинга сам предмет лизинга является основным обеспечением",
-        icon: "icon-a-documents",
-    },
-];
-
 const breadcrumbs = [
     {
         title: "Корпоративным клиентам",
@@ -125,32 +101,6 @@ const breadcrumbs = [
     {
         title: "Финансирование",
         url: "#",
-    },
-];
-
-const productBenefits = [
-    {
-        title: "Уменьшение <br>налогооблагаемой базы",
-        description:
-            "Поскольку относятся к&nbsp;расходам, связанным с&nbsp;производством и&nbsp;реализацией.",
-        iconId: "icon-a-part-down",
-    },
-    {
-        title: "Зачёт НДС с&nbsp;суммы <br>договора",
-        description: "Уменьшение налогооблаемой",
-        iconId: "icon-a-document-money",
-    },
-    {
-        title: "Сокращение <br>расходов",
-        description:
-            "Ускоренная амортизация снижает налог на&nbsp;имущество и&nbsp;ускоряет окупаемость оборудования.",
-        iconId: "icon-a-money-down",
-    },
-    {
-        title: "Повышение <br>кредитоспособности",
-        description:
-            "Поскольку относятся к&nbsp;расходам, связанным с&nbsp;производством и&nbsp;реализацией.",
-        iconId: "icon-a-money-up",
     },
 ];
 
@@ -164,6 +114,7 @@ const listConatact = [
         href: "emailto:corp@novikom.ru",
         text: "corp@novikom.ru",
         icon: "icon-mail",
+        additionalClass: "is-underlined",
     },
 ];
 

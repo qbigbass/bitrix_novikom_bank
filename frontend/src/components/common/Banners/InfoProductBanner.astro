@@ -1,5 +1,6 @@
 ---
 import SectionLayout from "../../layouts/SectionLayout.astro";
+import PatternBg from "../Pattern/PatternBg.astro";
 
 interface Props {
 	title: string;
@@ -29,7 +30,7 @@ const {
 			</div>
 		</div>
 
-	<img src="assets/info-banner-pattern.svg" class="info-banner__pattern" alt="" loading="lazy" />
+	<PatternBg class="info-banner__pattern" type="section-heavy" />
 </SectionLayout>
 
 <style lang="scss" is:global>
@@ -89,25 +90,8 @@ const {
 		}
 
 		&__pattern {
-			display: none;
-
-			@include use-media(tablet) {
-				display: initial;
-
-				position: absolute;
-				bottom: 0;
-				left: 30%;
-			}
-
-			@include use-media(tablet-album) {
-				height: 100%;
-				left: 20%;
-			}
-
-			@include use-media(laptop) {
-				right: 0;
-				left: auto;
-			}
+			bottom: auto;
+			top: 0;
 		}
 	}
 </style>

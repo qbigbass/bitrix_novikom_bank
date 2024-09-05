@@ -1,163 +1,164 @@
-import type {ADropDownMenu, ADropDownMenuCustomEvent, ADropDownMenuState} from "../ADropDown/ADropDownMenu/interfaces";
-import type { ACurrencyInputState } from "./interfaces";
+import type {
+  ADropDownMenu, ADropDownMenuSelectedEvent
+} from "../ADropDown/ADropDownMenu/interfaces";
+import type {
+  ACurrencyInput,
+  ACurrencyInputState
+} from "./interfaces";
 import initADropDownMenu, { JS_CLASSES as JS_DROP_DOWN_MENU_CLASSES } from "@components/ui/ADropDown/ADropDownMenu";
-import { closeAllOpenSelectInputs } from "@components/ui/ASelectInput";
 
 //TODO В будущем скорее всего необходимо будет добавить методы:
-// 1) Перерисовка DropDownMenu и его элементов
-// 2) Отрисовка ошибки
-// 3) Отрисовка подсказки
-// 4) отрисовка ошибки вместо подсказки
+// 1) Работу с подсказками(Ошибка/текст)
 
 export const JS_CLASSES = {
 	root: '.js-a-currency-input',
+  innerEl: '.js-a-currency-input-inner',
 	button: '.js-a-currency-input-button',
 	buttonText: '.js-a-currency-input-button-text'
-}
-
-export const closeAllOpenCurrencyInputs = () => {
-	const openCurrencyInputs = ALL_INPUT.filter((input) => input.isOpen);
-
-	if (openCurrencyInputs.length > 0) {
-		openCurrencyInputs.forEach((currencyInput) => {
-			closeHandler(currencyInput.root, currencyInput.dropDownMenu?.root, currencyInput);
-		});
-	}
 }
 
 const ACTION_CLASSES = {
 	open: 'is-open'
 }
 
-const ALL_INPUT: Array<ACurrencyInputState> = [];
-
-const openHandler = (
-	currencyInput: Element,
-	dropDownMenu: ADropDownMenu | undefined,
-	STATE: ACurrencyInputState
-) => {
-	dropDownMenu?.open();
-	STATE.isOpen = true;
-	currencyInput.classList.add(ACTION_CLASSES.open);
-	document.addEventListener('click', STATE.clickOutsideHandler);
+const openHandler = (STATE: ACurrencyInputState) => {
+  document.body.append(STATE.components.dropDownMenu);
+  const rect = STATE.elements.innerEl!.getBoundingClientRect();
+  STATE.components.dropDownMenu.$state.methods.open(rect);
+	STATE.elements.root.classList.add(ACTION_CLASSES.open);
+  STATE.isOpen = true;
+  document.addEventListener('click', STATE.clickOutsideHandler);
 };
 
-const closeHandler = (
-	currencyInput: Element,
-	dropDownMenu: ADropDownMenu | undefined,
-	STATE: ACurrencyInputState
-) => {
-	dropDownMenu?.close();
-	STATE.isOpen = false;
-	currencyInput.classList.remove(ACTION_CLASSES.open);
-	document.removeEventListener('click', STATE.clickOutsideHandler);
+const closeHandler = (STATE: ACurrencyInputState) => {
+  STATE.components.dropDownMenu.$state.methods.close();
+  STATE.elements.root.classList.remove(ACTION_CLASSES.open);
+  STATE.elements.root.append(STATE.components.dropDownMenu);
+  STATE.isOpen = false;
+  document.removeEventListener('click', STATE.clickOutsideHandler);
 };
 
 const clickOutsideHandler = (
 	event: MouseEvent,
-	currencyInput: Element,
-	dropDownMenu: ADropDownMenu | undefined,
 	STATE: ACurrencyInputState
 ) => {
-	if (!currencyInput.contains(event.target as Node)) {
-		closeHandler(currencyInput, dropDownMenu, STATE);
+	if (!STATE.elements.root.contains(event.target as Node)) {
+		closeHandler(STATE);
 	}
 };
 
 const setButtonText = (STATE: ACurrencyInputState, text: string) => {
-	if (STATE.buttonTextEl) {
-		STATE.buttonTextEl.innerHTML = text;
+	if (STATE.elements.buttonTextEl) {
+		STATE.elements.buttonTextEl.innerHTML = text;
 	}
 }
 
-const initState = (currencyInput: HTMLDivElement) => {
-	const root = currencyInput;
-	const inputEl: HTMLInputElement | null = root?.querySelector('input');
-	const buttonEl: HTMLButtonElement | null = root?.querySelector(JS_CLASSES.button);
-	const dropDownEl: HTMLDivElement | null = root?.querySelector(JS_DROP_DOWN_MENU_CLASSES.root);
-	const dropDownMenu: ADropDownMenuState | null = dropDownEl ? initADropDownMenu(dropDownEl) : null;
-
-	const STATE: ACurrencyInputState = {
-		root,
-		inputEl,
-		dropDownMenu,
-		buttonEl,
-		buttonTextEl: buttonEl?.querySelector(JS_CLASSES.buttonText),
-		isOpen: false,
-		selectedCurrency: null,
-		value: '',
-		disabled: inputEl?.disabled ?? false,
-		clickOutsideHandler: (event: MouseEvent) => {}
-	}
-
-	STATE.clickOutsideHandler = (event: MouseEvent) => clickOutsideHandler(event, currencyInput, STATE.dropDownMenu?.root, STATE)
-	ALL_INPUT.push(STATE);
-	return STATE;
+const setResizeObserver = (STATE: ACurrencyInputState) => {
+  const resizeObserver = new ResizeObserver((entries) => {
+    if (STATE.isOpen) {
+      const rect = STATE.elements.innerEl!.getBoundingClientRect();
+      STATE.components.dropDownMenu.$state.methods.setPosition(rect);
+    }
+  });
+  resizeObserver.observe(STATE.elements.root);
 }
 
-const initACurrencyInput = (currencyInput: HTMLDivElement): ACurrencyInputState => {
-	const STATE: ACurrencyInputState = initState(currencyInput);
+const initState = (root: HTMLDivElement) => {
+	const innerEl: HTMLInputElement | null = root.querySelector(JS_CLASSES.innerEl);
+	const inputEl: HTMLInputElement | null = root.querySelector('input');
+	const buttonEl: HTMLButtonElement | null = root.querySelector(JS_CLASSES.button);
+  const dropDownMenuElement: HTMLDivElement | null = root.querySelector(JS_DROP_DOWN_MENU_CLASSES.root);
+	const dropDownMenuComponent: ADropDownMenu | null = dropDownMenuElement ? initADropDownMenu(dropDownMenuElement) : null;
 
-	if (STATE.dropDownMenu !== null) {
-		STATE.buttonEl?.addEventListener('click', (event) => {
-			event.stopPropagation();
-			if (STATE.isOpen) {
-				closeHandler(currencyInput, STATE.dropDownMenu?.root, STATE);
-			} else {
-				closeAllOpenCurrencyInputs();
-				closeAllOpenSelectInputs();
-				openHandler(currencyInput, STATE.dropDownMenu?.root, STATE);
-			}
-		});
+  if (dropDownMenuComponent) {
+    const STATE: ACurrencyInputState = {
+      elements: {
+        root,
+        innerEl,
+        inputEl,
+        buttonEl,
+        buttonTextEl: buttonEl?.querySelector(JS_CLASSES.buttonText)
+      },
+      components: {
+        dropDownMenu: dropDownMenuComponent,
+      },
+      isOpen: false,
+      selectedCurrency: null,
+      value: '',
+      disabled: inputEl?.disabled ?? false,
+      clickOutsideHandler: (event: MouseEvent) => {}
+    }
 
-		STATE.inputEl?.addEventListener('click', (event) => {
-			if (STATE.isOpen) {
-				event.stopPropagation();
-				closeHandler(currencyInput, STATE.dropDownMenu?.root, STATE);
-			}
-		});
+    STATE.clickOutsideHandler = (event: MouseEvent) => clickOutsideHandler(event, STATE)
 
-		STATE.dropDownMenu.root?.addEventListener('selected', (event) => {
-			const dropDownMenuCustomEvent = event as CustomEvent<ADropDownMenuCustomEvent>;
+    return STATE;
+  } else {
+    throw new Error('Не удалось инициализировать работу компонента ACurrencyInput');
+  }
+}
 
-			if (STATE.buttonTextEl) {
-				setButtonText(STATE, String(dropDownMenuCustomEvent.detail.value));
-			}
+const initACurrencyInput = (currencyInput: HTMLDivElement): ACurrencyInput | null => {
+  try {
+    const STATE: ACurrencyInputState = initState(currencyInput);
 
-			STATE.selectedCurrency = dropDownMenuCustomEvent.detail.value;
+    const { components, elements } = STATE;
 
-			closeHandler(currencyInput, STATE.dropDownMenu?.root, STATE);
+    elements.buttonEl?.addEventListener('click', (event) => {
+      if (STATE.isOpen) {
+        closeHandler(STATE);
+      } else {
+        openHandler(STATE);
+      }
+    });
 
-			const customEvent = new CustomEvent('selected', {
-				detail: {
-					value: dropDownMenuCustomEvent.detail.value
-				}
-			});
+    elements.inputEl?.addEventListener('click', (event) => {
+      if (STATE.isOpen) {
+        event.stopPropagation();
+        closeHandler(STATE);
+      }
+    });
 
-			currencyInput.dispatchEvent(customEvent);
-		});
+    components.dropDownMenu?.addEventListener('selected', (event) => {
+      const { detail } = event as CustomEvent<ADropDownMenuSelectedEvent>;
 
-		STATE.inputEl?.addEventListener('input', (event) => {
-			event.stopPropagation();
+      if (elements.buttonTextEl) {
+        setButtonText(STATE, String(detail.displayValue));
+      }
 
-			STATE.value = STATE.inputEl?.value ?? '';
+      STATE.selectedCurrency = detail.value;
 
-			const customEvent = new CustomEvent('input', {
-				detail: {
-					value: STATE.inputEl?.value
-				}
-			});
+      closeHandler(STATE);
 
-			currencyInput.dispatchEvent(customEvent);
-		});
+      const customEvent = new CustomEvent('selected', { detail });
 
-		setButtonText(STATE, String(STATE.dropDownMenu.selectedItem?.value));
-		STATE.selectedCurrency = STATE.dropDownMenu.selectedItem?.value;
+      currencyInput.dispatchEvent(customEvent);
+    });
 
-		return STATE;
-	} else {
-		throw new Error('Не удалось инициализировать работу компонента ACurrencyInput');
-	}
+    elements.inputEl?.addEventListener('input', (event) => {
+      event.stopPropagation();
+
+      STATE.value = elements.inputEl?.value ?? '';
+
+      const customEvent = new CustomEvent('input', {
+        detail: {
+          value: elements.inputEl?.value
+        }
+      });
+
+      currencyInput.dispatchEvent(customEvent);
+    });
+
+    setResizeObserver(STATE);
+    setButtonText(STATE, String(components.dropDownMenu.$state?.selectedItem?.$state?.displayValue ?? ''));
+    STATE.selectedCurrency = components.dropDownMenu.$state?.selectedItem?.$state?.value;
+
+    const component = elements.root as ACurrencyInput;
+    component['$state'] = STATE;
+    return component;
+  } catch (e) {
+    console.error(e);
+    return null;
+  }
 }
 
 export default initACurrencyInput;

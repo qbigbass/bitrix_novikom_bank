@@ -1,0 +1,205 @@
+---
+import AAccordionContent from "../ui/AAccordion/AAccordionContent.astro";
+import AAccordionHeader from "../ui/AAccordion/AAccordionHeader.astro";
+import AAccordion from "../ui/AAccordion/AAccordion.astro";
+import ATab from "../ui/ATabs/common/ATab/ATab.astro";
+import ATabs from "../ui/ATabs/ATabs.astro";
+import AAccordionPanel from "../ui/AAccordion/AAccordionPanel.astro";
+import ATabSwiperWrapper from "../ui/ATabs/common/ATabSwiperWrapper.astro";
+import ATabSwiper from "../ui/ATabs/common/ATabSwiper/ATabSwiper.astro";
+import AInputField from "../ui/AInput/AInputField.astro";
+import FormRow from "../layouts/FormLayout/FormRow.astro";
+import PressCard from "../common/PressCard/PressCard.astro";
+import APaginator from "../ui/APaginator/APaginator.astro";
+
+const tempNews = [
+    {
+        image: '/assets/temp-news/cover-1.png',
+        title: `НОВИКОМ улучшает условия по вкладам`,
+        date: '08.08.2024',
+        isPinned: true
+    },
+    {
+        title: `Прибыль НОВИКОМа за первое полугодие 2024 года составила 13,6 млрд рублей`,
+        date: '08.08.2024',
+        isPinned: true
+    },
+    {
+        image: '/assets/temp-news/cover-1.png',
+        title: `НОВИКОМ разместил средства Гарантийного фонда Чеченской Республики`,
+        date: '07.08.2024',
+    },
+    {
+        image: '/assets/temp-news/cover-1.png',
+        title: `НОВИКОМ повысил ставки по вкладу-флоатеру`,
+        date: '07.08.2024',
+    },
+    {
+        title: `НОВИКОМ рассказал о ребрендинге и&nbsp;льготных программах кредитования МСП`,
+        date: '07.08.2024',
+    },
+    {
+        image: '/assets/temp-news/cover-1.png',
+        title: `НОВИКОМ расширяет возможности по&nbsp;операциям с&nbsp;цифровыми активами`,
+        date: '31.07.2024',
+    },
+    {
+        image: '/assets/temp-news/cover-1.png',
+        title: `НОВИКОМ вошел в ТОП-3 банков по&nbsp;условиям дальневосточной ипотеки`,
+        date: '29.07.2024',
+    },
+    {
+        image: '/assets/temp-news/cover-1.png',
+        title: `НОВИКОМ протестировал отечественное оборудование для&nbsp;российских банкоматов`,
+        date: '25.07.2024',
+    },
+    {
+        title: `НОВИКОМ предоставит малому бизнесу 1,8 млрд рублей под «зонтичные» поручительства Корпорации МСП`,
+        date: '26.07.2024',
+    },
+    {
+        image: '/assets/temp-news/cover-1.png',
+        title: `НОВИКОМ – участник онлайн-выставки МАКС-2024`,
+        date: '24.07.2024',
+    },
+    {
+        image: '/assets/temp-news/cover-1.png',
+        title: `НОВИКОМ и Свердловская область расширяют сотрудничество`,
+        date: '18.07.2024',
+    },
+    {
+        title: `НОВИКОМ внедрил новую технологию для работы с корпоративными клиентами`,
+        date: '18.07.2024',
+    }
+]
+---
+
+<div class="section-filter-press">
+    <AAccordion type="layout">
+        <AAccordionPanel>
+            <AAccordionHeader class="section-filter-press__accordion-header">
+                <h3 class="headline-4">Фильтры</h3>
+            </AAccordionHeader>
+            <AAccordionContent class="section-filter-press__accordion-content">
+                <ATabs useLayout>
+                    <div class="section-filter-press__content">
+                        <div class="section-filter-press__head">
+                            <div class="section-filter-press__loan-tabs">
+                                <ATabSwiper>
+                                    <ATabSwiperWrapper>
+                                        <ATab value="0" size="m" isActive>Все новости</ATab>
+                                        <ATab value="1" size="m">О банке</ATab>
+                                        <ATab value="2" size="m">Новости партнеров</ATab>
+                                        <ATab value="3" size="m">ESG</ATab>
+                                    </ATabSwiperWrapper>
+                                </ATabSwiper>
+                            </div>
+                            <div class="section-filter-press__datepicker">
+                                <FormRow cols={1}>
+                                    <AInputField
+                                        size="s"
+                                        placeholder="Показать за период"
+                                        forId="name-1"
+                                        name="input-1"
+                                        afterIcon="icon-calendar"
+                                    />
+                                </FormRow>
+                            </div>
+                        </div>
+                    </div>
+                </ATabs>
+            </AAccordionContent>
+        </AAccordionPanel>
+    </AAccordion>
+    <div class="section-filter-press__list">
+        { tempNews.map((item) => (
+            <PressCard
+                image={item?.image}
+                title={item.title}
+                date={item.date}
+                isPinned={item?.isPinned}
+            />
+        ))}
+    </div>
+    <div class="section-filter-press__paginator">
+        <APaginator
+            page={4}
+            totalPages={10}
+        />
+    </div>
+</div>
+
+<style lang="scss" is:global>
+    @import "@styles/media-queries";
+
+    .section-filter-press {
+        margin-top: 2.5rem;
+
+        @include use-media(tablet) {
+            margin-top: 2rem;
+        }
+
+        &__head {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+
+            @include use-media(tablet) {
+                gap: 2rem;
+                margin-top: 2rem;
+            }
+
+            @include use-media(tablet-album) {
+                flex-direction: row;
+                gap: 1.5rem;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+
+        &__accordion-header {
+            @include use-media(tablet-album) {
+                display: none;
+            }
+        }
+
+        &__accordion-content {
+            @include use-media(tablet-album) {
+                max-height: none !important;
+                overflow: visible;
+            }
+        }
+
+        &__list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+
+            @include use-media(tablet) {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            @include use-media(laptop) {
+                grid-template-columns: repeat(3, 1fr);
+                column-gap: 2.5rem;
+                row-gap: 3rem;
+            }
+        }
+
+        &__paginator {
+            margin-top: 2.5rem;
+
+            @include use-media(tablet) {
+                margin-top: 2rem;
+            }
+
+            @include use-media(tablet-album) {
+                margin-top: 3rem;
+            }
+        }
+    }
+
+</style>

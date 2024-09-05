@@ -34,7 +34,9 @@ const discountLinks = [
 	<div class="content-container">
 		<div class="section-discount-links__container">
 			<SectionTitle titleClass="headline-2">Скидки</SectionTitle>
-			<PersistentSlider slidesPerView="mobile-s:1,mobile:1,tablet:3,tablet-album:4,laptop:5">
+			<PersistentSlider 
+				slidesPerView="mobile-s:1.5,mobile:1.5,tablet:3,tablet-album:4,laptop:5" 
+				spaceBetween="mobile-s:16,mobile:16,tablet:16,laptop:40">
 				{
 					discountLinks.map(({icon, text}) => (
 						<SliderSlide>

@@ -116,6 +116,7 @@ const listConatact = [
         href: "emailto:corp@novikom.ru",
         text: "corp@novikom.ru",
         icon: "icon-mail",
+        additionalClass: "is-underlined",
     },
 ];
 ---
@@ -124,8 +125,8 @@ const listConatact = [
     <TextBanner
         title="Льготное финансирование мероприятий по&nbsp;снижению выбросов опасных загрязняющих веществ (ПП&nbsp;РФ &#8470;&nbsp;709)"
         breadcrumbs={breadcrumbs}
-        type="corp"
         backgroundColor="heavy-purple"
+        borderColor="orange"
     />
 
     <SectionHelpLayout title="Подробнее о услуге">
@@ -606,7 +607,7 @@ const listConatact = [
         @include use-media(tablet-album) {
             flex-direction: row;
             flex-wrap: wrap;
-            
+
             & > * {
                 flex-basis: calc(50% - 2.5rem / 2);
             }

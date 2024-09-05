@@ -1,48 +1,60 @@
 ---
 interface Props {
-    className?: string;
-    selected?: boolean;
-    value: string;
-    class?: string;
+	class?: string;
+	value: string;
+    displayValue: string;
+	selected?: boolean;
+    href?: string;
 }
 
 const {
-    class: className,
-    selected = false,
-    value,
+	class: classList,
+	value,
+    displayValue,
+	selected = false,
+    href,
+	...rest
 } = Astro.props as Props;
+
+let Element = href?.length ? 'a' : 'div';
+const isLink = Element.toLocaleLowerCase() === 'a';
 ---
 
-<div
-        class="drop-down-item js-a-drop-down-button"
-        data-value={value}
-        aria-selected={[selected]}
-        class:list={
-            [
-                className
-            ]
-        }>
-    <slot />
-</div>
+<Element
+	class="a-drop-down-item js-a-drop-down-item"
+	class:list={classList}
+    href={isLink ? href : undefined}
+	data-value={value}
+    data-display-value={displayValue}
+	aria-selected={[selected]}
+	{...rest}
+>
+	<slot/>
+</Element>
 
 <style lang="scss" is:global>
-    .drop-down-item {
-        $root: #{&};
+	@import "@styles/media-queries";
+	@import "@styles/placeholders";
 
-        padding: 1rem;
-        color: var(--dark-100);
+	.a-drop-down-item {
+		display: block;
+		border: none;
+		width: 100%;
+		text-align: left;
+		cursor: pointer;
+		padding: 1rem;
+		background-color: var(--dark-0);
         transition: color ease .33s;
-        cursor: pointer;
+        text-decoration: unset;
 
-        &:hover {
-            color: var(--blue-100);
-        }
+		&:hover:not(&[aria-selected=true]) {
+			color: var(--blue-100);
+		}
 
-        &[aria-selected=true] {
-            background-color: var(--dark-30);
+		&[aria-selected=true] {
+			background-color: var(--dark-30);
+			color: var(--blue-100);
             pointer-events: none;
-        }
-    }
-
+		}
+	}
 </style>
-

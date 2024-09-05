@@ -1,7 +1,6 @@
 ---
 import ProductCard from "../common/ProductCard/ProductCard.astro";
 import ATab from "../ui/ATabs/common/ATab/ATab.astro";
-import ATabPanel from "../ui/ATabs/common/ATabPanel.astro";
 import SectionCatalogLayout from "../layouts/SectionCatalogLayout.astro";
 import ProductList from "../layouts/ProductList.astro";
 
@@ -370,115 +369,28 @@ const allLoans = [
 ---
 <SectionCatalogLayout small>
 	<Fragment slot="tabs">
-		<ATab size="lm" value="0" isActive>Все вклады</ATab>
-		<ATab size="lm" value="1">С растущей ставкой</ATab>
-		<ATab size="lm" value="2">С пополнением</ATab>
-		<ATab size="lm" value="3">Со снятием</ATab>
-		<ATab size="lm" value="4">С капитализацией</ATab>
-		<ATab size="lm" value="5">Пенсионерам</ATab>
+		<ATab href="#" size="lm" value="0" isActive>Все вклады</ATab>
+		<ATab href="#" size="lm" value="1">С растущей ставкой</ATab>
+		<ATab href="#" size="lm" value="2">С пополнением</ATab>
+		<ATab href="#" size="lm" value="3">Со снятием</ATab>
+		<ATab href="#" size="lm" value="4">С капитализацией</ATab>
+		<ATab href="#" size="lm" value="5">Пенсионерам</ATab>
 	</Fragment>
-	<Fragment slot="panels">
-		<ATabPanel value="0">
-			<ProductList>
-				{
-					allLoans.map((card) => (
-						<ProductCard
-							title={card.title}
-							description={card.description}
-							imgSrc={card.imgSrc}
-							conditions={card.conditions}
-							links={card.links}
-							tagText={card.tagText}
-							textButton={card.textButton}
-						/>
-					))
-				}
-			</ProductList>
-		</ATabPanel>
-		<ATabPanel value="1">
-			<ProductList>
-				{
-					depositsWithIncreasingRates.map((card) => (
-						<ProductCard
-							title={card.title}
-							description={card.description}
-							imgSrc={card.imgSrc}
-							conditions={card.conditions}
-							links={card.links}
-							tagText={card.tagText}
-							textButton={card.textButton}
-						/>
-					))
-				}
-			</ProductList>
-		</ATabPanel>
-		<ATabPanel value="2">
-			<ProductList>
-				{
-					depositsWithReplenishment.map((card) => (
-						<ProductCard
-							title={card.title}
-							description={card.description}
-							imgSrc={card.imgSrc}
-							conditions={card.conditions}
-							links={card.links}
-							tagText={card.tagText}
-							textButton={card.textButton}
-						/>
-					))
-				}
-			</ProductList>
-		</ATabPanel>
-		<ATabPanel value="3">
-			<ProductList>
-				{
-					depositsWithWithdrawal.map((card) => (
-						<ProductCard
-							title={card.title}
-							description={card.description}
-							imgSrc={card.imgSrc}
-							conditions={card.conditions}
-							links={card.links}
-							tagText={card.tagText}
-							textButton={card.textButton}
-						/>
-					))
-				}
-			</ProductList>
-		</ATabPanel>
-		<ATabPanel value="4">
-			<ProductList>
-				{
-					depositsWithCapitalization.map((card) => (
-						<ProductCard
-							title={card.title}
-							description={card.description}
-							imgSrc={card.imgSrc}
-							conditions={card.conditions}
-							links={card.links}
-							tagText={card.tagText}
-							textButton={card.textButton}
-						/>
-					))
-				}
-			</ProductList>
-		</ATabPanel>
-		<ATabPanel value="5">
-			<ProductList>
-				{
-					depositsForPensioners.map((card) => (
-						<ProductCard
-							title={card.title}
-							description={card.description}
-							imgSrc={card.imgSrc}
-							conditions={card.conditions}
-							links={card.links}
-							tagText={card.tagText}
-							textButton={card.textButton}
-						/>
-					))
-				}
-			</ProductList>
-		</ATabPanel>
+	<Fragment slot="list">
+        <ProductList>
+            {
+                allLoans.map((card) => (
+                    <ProductCard
+                        title={card.title}
+                        description={card.description}
+                        imgSrc={card.imgSrc}
+                        conditions={card.conditions}
+                        links={card.links}
+                        tagText={card.tagText}
+                        textButton={card.textButton}
+                    />
+                ))
+            }
+        </ProductList>
 	</Fragment>
 </SectionCatalogLayout>

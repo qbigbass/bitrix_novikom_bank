@@ -8,8 +8,7 @@ use Galago\Frontend\Asset;
 global $APPLICATION;
 
 $APPLICATION->SetTitle('Банковские карты');
-Asset::getInstance()->addJsAndCss('showcase-of-cards');
-Asset::getInstance()->addJsAndCss('always-plus-card');
+Asset::getInstance()->addJsAndCss('spc-for-employees');
 
 $request = Application::getInstance()->getContext()->getRequest()->toArray();
 

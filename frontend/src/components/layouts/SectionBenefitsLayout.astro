@@ -6,11 +6,12 @@ import ACollapsedItem from "../ui/ACollapsedItems/ACollapsedItem.astro";
 import BenefitCardsLayout from "./BenefitCardsLayout.astro";
 import ACollapsedItems from "../ui/ACollapsedItems/ACollapsedItems.astro";
 import AList from "../ui/AList/AList.astro";
+import PatternBg from "@components/common/Pattern/PatternBg.astro";
 
 interface Props {
 	title?: string;
 	benefits: {
-		title: string;
+		title?: string;
 		description?: string;
 		iconId: string;
         list?: string[];
@@ -34,7 +35,6 @@ const maxCols = benefitsLength === 2 || benefitsLength === 4 ? 2 : benefitsLengt
 <SectionLayout
     class:list={[
         'section-benefits',
-        {'section-benefits--bg': useBackground},
     ]}
     {...rest}
 >
@@ -123,20 +123,22 @@ const maxCols = benefitsLength === 2 || benefitsLength === 4 ? 2 : benefitsLengt
 			}
 		</div>
 	</div>
+    {useBackground && <PatternBg type="section" />}
 </SectionLayout>
 
 <style lang="scss" is:global>
 	@import "@styles/media-queries";
 
 	.section-benefits {
-        &.section-benefits--bg {
-            background: url("../assets/section-benefits.svg") bottom right no-repeat;
-        }
+        position: relative;
 
 		&__container {
 			display: flex;
 			flex-direction: column;
 			gap: 2rem;
+
+            position: relative;
+            z-index: 1;
 
 			@include use-media(tablet) {
 				gap: 2.5rem;

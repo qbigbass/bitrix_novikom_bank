@@ -1,4 +1,6 @@
 ---
+import PatternBg from '../Pattern/PatternBg.astro';
+
 interface Props {
     title: string;
     image: string;
@@ -23,6 +25,7 @@ const {
         <h3 class="headline-2">{title}</h3>
         <slot />
     </div>
+    <PatternBg type='section-2' />
 </div>
 
 <style lang="scss" is:global>
@@ -31,8 +34,9 @@ const {
     .card-rating {
         border-radius: 0.75rem;
         padding: 1.5rem 1rem;
-        position: relative;
         background-color: var(--blue-10);
+        position: relative;
+        overflow: hidden;
 
         display: flex;
         flex-direction: column;
@@ -41,10 +45,6 @@ const {
         @include use-media(tablet) {
             padding: 2rem;
             gap: 2.5rem;
-            background-image: url("../assets/card-rating-pattern-tablet.svg");
-            background-repeat: no-repeat;
-            background-size: contain;
-            background-position: right center;
         }
 
         @include use-media(tablet-album) {
@@ -52,7 +52,6 @@ const {
             flex-direction: row;
             align-items: center;
             gap: 5rem;
-            background-image: url("../assets/card-rating-pattern.svg");
         }
 
         @include use-media(desktop) {

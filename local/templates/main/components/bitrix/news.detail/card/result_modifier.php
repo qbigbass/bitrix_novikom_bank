@@ -13,25 +13,9 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)
 $request = Application::getInstance()->getContext()->getRequest()->toArray();
 
 // получение данных для вывода детальной информации
-$arrElementsForCardInfo = $arResult["PROPERTY_{$arResult['PROPERTIES']['DETAIL_INFO_CARD']['ID']}"];
-$elementEntity = \Bitrix\Iblock\Iblock::wakeUp(iblock('inner_card_info'))->getEntityDataClass();
-$generalPage = false;
-$generalPageTabs = [];
-$advantagesItems = [];
-
-// запрос на получение табов (страниц)
-$generalPageTabs = $elementEntity::query()
-    ->setSelect(['ID','NAME', 'CODE'])
-    ->setFilter(['IBLOCK_ID', iblock('inner_card_info'), 'ID' => $arrElementsForCardInfo])
-    ->exec()->fetchAll();
-
-$arResult['generalPageTabs'] = $generalPageTabs;
-
-// проверка для вывода общего контента
-if (in_array('obshchaya', array_column($generalPageTabs, 'CODE'))) {
-    $generalPage = true;
-}
-$arResult['generalPage'] = $generalPage;
+$arResult['iblockInnerCardInfo'] = $iblockInnerCardInfoId = iblock('inner_card_info');
+$elementEntity = \Bitrix\Iblock\Iblock::wakeUp($iblockInnerCardInfoId)->getEntityDataClass();
+$result = [];
 
 // запрос на получение прикрепленных элементов для блока Преиммущества
 $generalPageElementsQuery = $elementEntity::query();
@@ -44,32 +28,24 @@ $generalPageElementsQuery->setSelect([
     new ExpressionField('ADVANTAGES_ELEMENT_IMG_PATH','CONCAT("/upload/", %s,"/",%s)', ['ADVANTAGES.ELEMENT.SVG_FILE.FILE.SUBDIR', 'ADVANTAGES.ELEMENT.SVG_FILE.FILE.FILE_NAME']),
 
 ]);
-
-if (!$generalPage) {
-
-    if (isset($request['DETAIL_ELEMENT_CODE'])) {
-        $generalPageElementsQuery->setFilter(['IBLOCK_ID' => iblock('inner_card_info'), 'CODE' => $request['DETAIL_ELEMENT_CODE'] ]);
-    } else {
-        $generalPageElementsQuery->setFilter(['IBLOCK_ID' => iblock('inner_card_info'), 'ID' => $generalPageTabs[0]['ID'] ]);
-    }
-
-} elseif ($generalPage) {
-
-    $generalPageElementsQuery->setFilter(['IBLOCK_ID' => iblock('inner_card_info'), 'ID' => $generalPageTabs[0]['ID'] ]);
-}
-
+$generalPageElementsQuery->setFilter(['CODE' => $request['DETAIL_ELEMENT_CODE'] ]);
 $generalPageElementsQuery->setOrder(['ADVANTAGES_ELEMENT_ID' => 'DESC']);
 $items = $generalPageElementsQuery->exec()->fetchAll();
 foreach ($items as $item) {
-    $advantagesItems[] = [
+    $advantagesElements[] = [
         'ID' => $item['ADVANTAGES_ELEMENT_ID'],
         'NAME' => $item['ADVANTAGES_ELEMENT_NAME'],
         'CODE' => $item['ADVANTAGES_ELEMENT_CODE'],
         'DESCRIPTION' => $item['ADVANTAGES_ELEMENT_DESCRIPTION'],
         'IMG_PATH' => $item['ADVANTAGES_ELEMENT_IMG_PATH'],
     ];
+
+    $result = [
+        'ID' => $item['ID'],
+        'NAME' => $item['NAME'],
+        'CODE' => $item['CODE'],
+        'ADVANTAGES' => $advantagesElements,
+    ];
 }
 
-$arResult['advantagesItems'] = $advantagesItems;
-
-//$this->__component->setResultCacheKeys(['detailCard', 'NAME']);
+$arResult['advantagesItems'] = $result;

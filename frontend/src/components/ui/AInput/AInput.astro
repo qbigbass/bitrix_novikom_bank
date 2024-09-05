@@ -1,4 +1,5 @@
 ---
+import AInputHint from "../AInputHint/AInputHint.astro";
 type Validations = "notEmpty" | "isEmail" | "isPhone";
 type Masks = "phone";
 type Size = "m" | "s" | "ms";
@@ -13,7 +14,6 @@ interface Props {
 	label?: string;
 	validations?: Validations[];
 	mask?: Masks;
-	forId?: string;
 	hint?: string;
 	required?: boolean;
 	size: Size;
@@ -28,7 +28,6 @@ const {
 	value,
 	validations,
 	mask,
-	forId,
 	hint,
 	required,
 	size = 'ms',
@@ -47,9 +46,9 @@ const {
 	}
 	{...rest}
 >
-	{ label && (<label for={forId} class="a-input__label body-s-heavy">{label}</label>)}
+	{ label && (<label for={name} class="a-input__label body-s-heavy">{label}</label>)}
 	<input
-		id={forId}
+		id={name}
 		class="a-input__input"
 		placeholder={placeholder}
 		disabled={disabled}
@@ -57,25 +56,31 @@ const {
 		value={value}
 		data-validations={validations}
 		data-mask={mask}
-		aria-describedby=`${forId + '-hint'}`
+		aria-describedby=`${name + '-hint'}`
 	/>
-	{ hint && (<small class="a-input__hint js-a-input-hint caption-m" id=`${forId + '-hint'}`>{hint}</small>)}
+    {
+        hint && (
+            <AInputHint id={`${name}`}>
+                { hint }
+            </AInputHint>
+        )
+    }
 </div>
 
 <script>
-	//Пример использования. В будущем перенести отсюда или использовать только в формах
+	// Пример использования. В будущем перенести отсюда или использовать только в формах
 	// import initAInput from "./index";
 	// import { JS_CLASSES } from "./index";
-	//
+    //
 	// const inputs: NodeListOf<HTMLElement> = document.querySelectorAll(JS_CLASSES.root);
-	//
+    //
 	// inputs.forEach((inputWrapper: HTMLElement) => {
 	// 	const aInput = initAInput(inputWrapper);
-	//
+    //
 	// 	aInput.input.addEventListener("validate", (evt) => {
-	// 		console.log("Валдация", evt);
+	// 		console.log("Валидация", evt);
 	// 	});
-	//
+    //
 	// 	// Для вызова валидации инпута. Например когда пользователь сразу жмет кнопку отправить в форме
 	// 	// aInput.validate();
 	// });
@@ -171,4 +176,10 @@ const {
 			}
 		}
 	}
+
+    .a-input.a-input--error {
+        .a-input__input {
+            border-color: var(--signals-alert);
+        }
+    }
 </style>

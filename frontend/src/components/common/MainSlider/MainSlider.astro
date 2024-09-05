@@ -3,6 +3,7 @@ import MainSliderThumb from "./MainSliderThumb.astro";
 import AIcon from "@components/AIcon.astro";
 import AButton from "@components/ui/Buttons/AButton.astro";
 import type { Colors } from "@components/ui/Buttons/types";
+import PatternBg from "../Pattern/PatternBg.astro";
 
 type Slides = {
 	title: string;
@@ -15,7 +16,7 @@ type Slides = {
 }
 
 type BackgroundColors = 'heavy-purple' | 'heavy-violet' | 'blue';
-type BannerType = 'msb';
+type BannerType = 'msb' | 'finance';
 
 interface Props {
 	class?: string;
@@ -50,14 +51,10 @@ const typeClass = `${bannerType ? `main-slider--type-${bannerType}` : ''}`
 	className
 ]}>
 	{staticBackground && (
-		<img src="assets/slides/hero_banner_bg_desktop.png" class="main-slider__bg" alt="">
+		<img src="assets/slides/hero_banner_bg_desktop.png" class="main-slider__bg" alt="" />
 	)}
 	{hasPattern && (
-		<picture class="main-slider__pattern">
-			<source srcset="assets/hero-banner-spc-bg_tablet.svg" media="(max-width: 768px)" />
-			<source srcset="assets/hero-banner-spc-bg_laptop.svg" media="(max-width: 1200px)" />
-			<img src="assets/hero-banner-pattern.svg" alt="" />
-		</picture>
+		<PatternBg theme="dark" type="section" />
 	)}
 	<div class="main-slider__container swiper swiper-container">
 		<div class="main-slider__wrapper swiper-wrapper">
@@ -119,9 +116,9 @@ const typeClass = `${bannerType ? `main-slider--type-${bannerType}` : ''}`
 
 <style lang="scss" is:global>
 	@use "sass:map";
-	@import "@styles/variables";
-	@import "@styles/placeholders";
+	@use "@styles/functions";
 	@import "@styles/media-queries";
+	@import "@styles/placeholders";
 
 	$transition: map.get($transitions, default);
 	$dark-100: var(--dark-100);
@@ -159,25 +156,6 @@ const typeClass = `${bannerType ? `main-slider--type-${bannerType}` : ''}`
 			width: 100%;
 			height: 100%;
 			object-fit: cover;
-		}
-
-		&__pattern {
-			position: absolute;
-			left: 0;
-			bottom: 0;
-
-			@include use-media(tablet-album) {
-				height: 100%;
-
-				& img {
-					height: 100%;
-				}
-			}
-
-			@include use-media(desktop) {
-				left: auto;
-				right: 0;
-			}
 		}
 
 		&__slide {
@@ -222,6 +200,10 @@ const typeClass = `${bannerType ? `main-slider--type-${bannerType}` : ''}`
 			background: linear-gradient(222.24deg, #101317 20%, #6655A2 80%);
 		}
 
+		&--heavy-purple {
+			background: linear-gradient(222.24deg, #101317 20%, #5A2375 80%);
+		}
+
 		&--type-msb {
 			border-top: .25rem solid var(--yellow-100);
 
@@ -232,6 +214,20 @@ const typeClass = `${bannerType ? `main-slider--type-${bannerType}` : ''}`
 			& .swiper-slide-thumb-active {
 				&:after {
 					background-color: var(--yellow-100);
+				}
+			}
+		}
+
+		&--type-finance {
+			border-top: .25rem solid var(--violet-100);
+
+			@include use-media(tablet-album) {
+				border-width: .5rem;
+			}
+
+			& .swiper-slide-thumb-active {
+				&:after {
+					background-color: var(--violet-100);
 				}
 			}
 		}
@@ -274,8 +270,13 @@ const typeClass = `${bannerType ? `main-slider--type-${bannerType}` : ''}`
 				gap: 3rem;
 			}
 
+			@include use-media(laptop-x) {
+				max-width: 43.75rem; //700px
+			}
+
 			@include use-media(desktop) {
 				gap: 4rem;
+				max-width: 57.5rem; //920px
 			}
 		}
 

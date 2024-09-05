@@ -6,9 +6,8 @@ import AButton from "@components/ui/Buttons/AButton.astro";
 import AIcon from "../components/AIcon.astro";
 import ATabs from "@components/ui/ATabs/ATabs.astro";
 import ABreadcrumbs from "@components/ui/ABreadcrumbs/ABreadcrumbs.astro";
-import OfferCard, {
-    type OfferCardColor,
-} from "@components/common/OfferCard/OfferCard.astro";
+import OfferCard from "@components/common/OfferCard/OfferCard.astro";
+import type { OfferCardColor } from "@components/common/OfferCard/OfferCard.astro";
 import AppButton from "../components/ui/Buttons/AppButton.astro";
 import AInput from "../components/ui/AInput/AInput.astro";
 import ServiceCard from "../components/common/ServiceCard.astro";
@@ -38,12 +37,12 @@ import AHelper from "../components/common/AHelper.astro";
 import ACollapsedItems from "../components/ui/ACollapsedItems/ACollapsedItems.astro";
 import ACollapsedItem from "../components/ui/ACollapsedItems/ACollapsedItem.astro";
 import ACollapsedButton from "../components/ui/ACollapsedItems/ACollapsedButton.astro";
+import ACheckbox from "../components/ui/ACheckbox/ACheckbox.astro";
+import ADropDownItem from "../components/ui/ADropDown/ADropDownItem/ADropDownItem.astro";
 import ADropDownCheckbox from "../components/ui/ADropDown/ADropDownCheckbox/ADropDownCheckbox.astro";
 import ASelectInput from "../components/ui/ASelectInput/ASelectInput.astro";
-import ADropDownItem from "../components/ui/ADropDown/ADropDownItem/ADropDownItem.astro";
-import FormRow from "../components/layouts/FormLayout/FormRow.astro";
 import ACurrencyInput from "../components/ui/ACurrencyInput/ACurrencyInput.astro";
-import ADropDownButton from "../components/ui/ADropDown/ADropDownButton/ADropDownButton.astro";
+import FormRow from "../components/layouts/FormLayout/FormRow.astro";
 import AInputField from "../components/ui/AInput/AInputField.astro";
 import CardPromo from "@components/common/Cards/CardPromo.astro";
 import CardProduct from "@components/common/Cards/CardProduct.astro";
@@ -53,6 +52,7 @@ import DisplayStepper from "@components/common/DisplayStepper/DisplayStepper.ast
 import DisplayStepperItem from "@components/common/DisplayStepper/DisplayStepperItem.astro";
 import CardRating from "@components/common/Cards/CardRating.astro";
 import CardText from "@components/common/Cards/CardText.astro";
+import ContactBanner from "@components/common/Banners/ContactBanner.astro";
 
 const loan = {
     title: "Кредит на любые цели<br> для зарплатных клиентов",
@@ -178,11 +178,35 @@ const listConatact = [
         href: "emailto:garant@novikom.ru",
         text: "garant@novikom.ru",
         icon: "icon-mail",
+        additionalClass: "is-underlined",
+    },
+];
+
+
+const listConatactGray = [
+    {
+        href: "tel:+78002507007",
+        text: "+7 (800) 250-70-07",
+        icon: "icon-phone",
+        iconColorClass: "violet-100",
+    },
+    {
+        href: "tel:+74959747187",
+        text: "+7 (495) 974-71-87",
+        icon: "icon-phone",
+        iconColorClass: "violet-100",
+    },
+    {
+        href: "emailto:garant@novikom.ru",
+        text: "garant@novikom.ru",
+        icon: "icon-mail",
+        iconColorClass: "violet-100",
+        additionalClass: "is-underlined",
     },
 ];
 ---
 
-<DefaultPageLayout title="index">
+<DefaultPageLayout title="UI-компоненты">
     <Fragment slot="header">header</Fragment>
     <div class="content-container">
         <div class="ui-section">
@@ -226,6 +250,8 @@ const listConatact = [
                 <AIcon symbolId="icon-mail" size="m" />
                 <AIcon symbolId="icon-check" size="m" />
                 <AIcon symbolId="icon-menu" size="m" />
+                <AIcon symbolId="icon-fax" size="m" />
+                <AIcon symbolId="icon-telegram" size="m" />
             </div>
 
             <div class="ui-row">
@@ -297,6 +323,8 @@ const listConatact = [
                 <AIcon symbolId="icon-a-rub" size="xl" />
                 <AIcon symbolId="icon-a-euro" size="xl" />
                 <AIcon symbolId="icon-a-transh" size="xl" />
+                <AIcon symbolId="icon-a-export-money" size="xl" />
+                <AIcon symbolId="icon-a-export-up" size="xl" />
             </div>
         </div>
 
@@ -553,6 +581,22 @@ const listConatact = [
                         name="input-2"
                         afterIcon="icon-rub"
                     />
+                </FormRow>
+            </div>
+        </div>
+        <div class="ui-section">
+            <SectionTitle class="ui-section-title" titleClass="headline-2"
+            >{"AInputField"}</SectionTitle
+            >
+
+            <div class="ui-grid">
+                <FormRow cols={2}>
+                    <ACheckbox id="is-card-novkom" size="m"  name="novikom" checked>
+                        <div class="body-m-light" slot="label">Получаю зарплату на карту НОВИКОМ</div>
+                    </ACheckbox>
+                    <ACheckbox id="insurance" size="m" name="strahovka">
+                        <div class="body-m-light" slot="label">Страховка</div>
+                    </ACheckbox>
                 </FormRow>
             </div>
         </div>
@@ -1358,21 +1402,31 @@ const listConatact = [
                 <ASelectInput
                     size="m"
                     label="Тип карты"
-                    placeholder="Дебетовая"
                     name="cardType"
+                    required
+                    hint="Подсказка"
                 >
-                    <ADropDownItem value="Дебетовая"
-                        ><span class="body-m-light">Дебетовая</span
-                        ></ADropDownItem
+                    <ADropDownItem
+                        value="debit"
+                        displayValue="Дебетовая"
+                        class="body-m-light"
                     >
-                    <ADropDownItem selected value="Кредитная"
-                        ><span class="body-m-light">Кредитная</span
-                        ></ADropDownItem
+                        Дебетовая
+                    </ADropDownItem>
+                    <ADropDownItem
+                        value="credit"
+                        displayValue="Кредитная"
+                        class="body-m-light"
                     >
-                    <ADropDownItem value="Кредитная 2"
-                        ><span class="body-m-light">Кредитная 2</span
-                        ></ADropDownItem
+                        Кредитная
+                    </ADropDownItem>
+                    <ADropDownItem
+                        value="credit-2"
+                        displayValue="Кредитная 2"
+                        class="body-m-light"
                     >
+                        Кредитная 2
+                    </ADropDownItem>
                 </ASelectInput>
 
                 <ASelectInput
@@ -1381,38 +1435,30 @@ const listConatact = [
                     placeholder="Выберите"
                     name="cardCategory"
                 >
-                    <ADropDownCheckbox checked size="m" id="10"
-                        ><span class="body-m-light">Standard</span
-                        ></ADropDownCheckbox
-                    >
-                    <ADropDownCheckbox checked size="m" id="11"
-                        ><span class="body-m-light">Bonus</span
-                        ></ADropDownCheckbox
-                    >
-                    <ADropDownCheckbox size="m" id="111"
-                        ><span class="body-m-light">Bonus 2</span
-                        ></ADropDownCheckbox
-                    >
-                    <ADropDownCheckbox size="m" id="222"
-                        ><span class="body-m-light">Bonus 3</span
-                        ></ADropDownCheckbox
-                    >
-                    <ADropDownCheckbox size="m" id="333"
-                        ><span class="body-m-light">Bonus 4</span
-                        ></ADropDownCheckbox
-                    >
-                    <ADropDownCheckbox size="m" id="444"
-                        ><span class="body-m-light">Bonus 5</span
-                        ></ADropDownCheckbox
-                    >
-                    <ADropDownCheckbox size="m" id="555"
-                        ><span class="body-m-light">Bonus 6</span
-                        ></ADropDownCheckbox
-                    >
-                    <ADropDownCheckbox size="m" id="666"
-                        ><span class="body-m-light">Bonus 7</span
-                        ></ADropDownCheckbox
-                    >
+                    <ADropDownCheckbox checked size="m" displayValue="Standard" name="standard" id="10">
+                        <span class="body-m-light">Standard</span>
+                    </ADropDownCheckbox>
+                    <ADropDownCheckbox checked size="m" displayValue="Bonus" name="bonus" id="11">
+                        <span class="body-m-light">Bonus</span>
+                    </ADropDownCheckbox>
+                    <ADropDownCheckbox size="m" displayValue="Bonus 2" name="bonus-2" id="111">
+                        <span class="body-m-light">Bonus 2</span>
+                    </ADropDownCheckbox>
+                    <ADropDownCheckbox size="m" displayValue="Bonus 3" name="bonus-3" id="222">
+                        <span class="body-m-light">Bonus 3</span>
+                    </ADropDownCheckbox>
+                    <ADropDownCheckbox size="m" displayValue="Bonus 4" name="bonus-4" id="333">
+                        <span class="body-m-light">Bonus 4</span>
+                    </ADropDownCheckbox>
+                    <ADropDownCheckbox size="m" displayValue="Bonus 5" name="bonus-5" id="444">
+                        <span class="body-m-light">Bonus 5</span>
+                    </ADropDownCheckbox>
+                    <ADropDownCheckbox size="m" displayValue="Bonus 6" name="bonus-6" id="555">
+                        <span class="body-m-light">Bonus 6</span>
+                    </ADropDownCheckbox>
+                    <ADropDownCheckbox size="m" displayValue="Bonus 7" name="bonus-7" id="666">
+                        <span class="body-m-light">Bonus 7</span>
+                    </ADropDownCheckbox>
                 </ASelectInput>
             </FormRow>
         </div>
@@ -1431,10 +1477,10 @@ const listConatact = [
                     forId="you-have"
                     name="you-have"
                 >
-                    <ADropDownButton value="RUB" selected>RUB</ADropDownButton>
-                    <ADropDownButton value="EUR">EUR</ADropDownButton>
-                    <ADropDownButton value="USD">USD</ADropDownButton>
-                    <ADropDownButton value="CNY">CNY</ADropDownButton>
+                    <ADropDownItem displayValue="RUB" value="rub" selected>RUB</ADropDownItem>
+                    <ADropDownItem displayValue="EUR" value="eur">EUR</ADropDownItem>
+                    <ADropDownItem displayValue="USD" value="usd">USD</ADropDownItem>
+                    <ADropDownItem displayValue="CNY" value="cny">CNY</ADropDownItem>
                 </ACurrencyInput>
                 <ACurrencyInput
                     size="ms"
@@ -1444,10 +1490,10 @@ const listConatact = [
                     forId="you-get"
                     name="you-get"
                 >
-                    <ADropDownButton value="RUB">RUB</ADropDownButton>
-                    <ADropDownButton value="EUR">EUR</ADropDownButton>
-                    <ADropDownButton value="USD" selected>USD</ADropDownButton>
-                    <ADropDownButton value="CNY">CNY</ADropDownButton>
+                    <ADropDownItem displayValue="RUB" value="rub">RUB</ADropDownItem>
+                    <ADropDownItem displayValue="EUR" value="eur">EUR</ADropDownItem>
+                    <ADropDownItem displayValue="USD" value="usd" selected>USD</ADropDownItem>
+                    <ADropDownItem displayValue="CNY" value="cny">CNY</ADropDownItem>
                 </ACurrencyInput>
             </FormRow>
         </div>
@@ -1548,7 +1594,7 @@ const listConatact = [
                         title="Отдел поддержки клиентов МСП"
                         description="Описание"
                         backgoroundColor="gray"
-                        list={listConatact}
+                        list={listConatactGray}
                         tag={{
                             text: "Частным клиентам",
                             outline: true,
@@ -1698,7 +1744,20 @@ const listConatact = [
                     <CardText title="Заголовок" description="Описание" />
                 </div>
             </div>
-            
+
+        </div>
+
+        <div class="ui-section">
+            <SectionTitle class="ui-section-title" titleClass="headline-2"
+                >&lt;ContactBanner&gt;</SectionTitle
+            >
+
+            <div class="ui-grid">
+                <div>
+                    <ContactBanner title="Контакты для СМИ" subtitle="Департамент информационной политики" />
+                </div>
+            </div>
+
         </div>
     </div>
     <Fragment slot="footer">footer</Fragment>

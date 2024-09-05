@@ -1,7 +1,14 @@
 <?
 $settings = [
     'title' => 'Конструктор для общей страницы Карт',
-    'block_enabled' => [],
+    'block_enabled' => [
+        'my_iblock_elements_benefits',
+        'my_iblock_elements_discounts',
+        'my_iblock_elements_register_card',
+        'my_iblock_elements_reliable',
+        'my_complex_banner',
+        'my_complex_element',
+    ],
     'block_settings' => [],
     'layout_enabled'  => [
         '',

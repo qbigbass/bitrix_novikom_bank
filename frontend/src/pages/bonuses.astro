@@ -29,6 +29,7 @@ import DisplayStepperItem from "../components/common/DisplayStepper/DisplayStepp
 import BonusCalculator from "../components/calculators/BonusCalculator.astro";
 import BenefitCard from "../components/common/BenefitCard/BenefitCard.astro";
 import DocumentDownload from "../components/ui/DocumentDownload/DocumentDownload.astro";
+import PatternBg from "@components/common/Pattern/PatternBg.astro";
 
 const breadcrumbs = [
 	{
@@ -65,6 +66,7 @@ const benefitCards = [
 		breadcrumbs={breadcrumbs}
 		description="Бонусные баллы за&nbsp;покупки"
 		backgroundColor="heavy-purple"
+        borderColor="green"
         img="assets/big-illustrations/large-individual/bonus-program.png"
 	/>
 	<SectionBenefitsLayout
@@ -105,6 +107,7 @@ const benefitCards = [
 				</AAccordionPanel>
 			</AAccordion>
 		</div>
+		<PatternBg type="section-2" />
 	</SectionLayout>
 	<SectionHelpLayout
 		title="Подробнее о&nbsp;программе &laquo;Бонусы&raquo;"

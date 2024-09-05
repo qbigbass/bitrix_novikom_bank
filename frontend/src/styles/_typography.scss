@@ -78,7 +78,7 @@
 	}
 }
 
-.body-l-heavy, .body-l-light {
+.body-l-heavy, .body-l-light, .body-l-quote {
 	font-size: map-get($font-size-body, base);
 	line-height: 150%;
 
@@ -105,6 +105,10 @@
 
 .body-l-heavy, .body-m-heavy, .body-s-heavy {
 	font-weight: 600;
+}
+
+.body-l-quote {
+	font-style: italic;
 }
 
 .caption-m {

@@ -1,0 +1,150 @@
+---
+import PatternBg from "../Pattern/PatternBg.astro";
+import ContactList from "@components/ui/ContactList/ContactList.astro";
+
+interface Props {
+    class?: string;
+    title: string;
+    subtitle?: string;
+}
+
+const { class: className, title, subtitle } = Astro.props as Props;
+
+const list = [
+    {
+        href: "emailto:pr@novikom.ru",
+        text: "pr@novikom.ru",
+        icon: "icon-mail",
+        additionalClass: "is-underlined",
+    },
+    {
+        href: "tel:+74959747187",
+        text: "+7 (495) 974-71-87",
+        additionalText: "доб. 1597",
+        icon: "icon-phone",
+    },
+    {
+        text: "+7 (495) 969-20-65",
+        icon: "icon-fax",
+        additionalText: "факс",
+        href: "tel:+74959692065",
+    },
+    {
+        href: "#",
+        text: "novikombank_official",
+        icon: "icon-telegram",
+        description: "Все новости банка Телеграм",
+        additionalClass: "is-underlined",
+    },
+];
+
+// компонент баннера контактов
+---
+
+<div class:list={["contact-banner", className]}>
+    <div class="contact-banner__wrapper">
+        <h3 class="headline-2">{title}</h3>
+        <img
+            src="assets/big-illustrations/large-individual/contact.png"
+            class="contact-banner__image"
+            alt=""
+            loading="lazy"
+        />
+        <div class="contact-banner__body">
+            {
+                subtitle && (
+                    <p
+                        class="contact-banner__subtitle headline-4"
+                        set:html={subtitle}
+                    />
+                )
+            }
+            <ContactList class="contact-banner__list" list={list} />
+        </div>
+    </div>
+    <PatternBg class="contact-banner__pattern" theme="dark" type="section-2" />
+</div>
+
+<style lang="scss" is:global>
+    @import "@styles/media-queries";
+
+    .contact-banner {
+        border-radius: 0.75rem;
+        overflow: hidden;
+        position: relative;
+
+        background: linear-gradient(42.24deg, #383a74 20%, #2e1b52 80%);
+        color: var(--dark-0);
+
+        &__wrapper {
+            padding: 1.5rem 1rem;
+            position: relative;
+            z-index: 1;
+
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+
+            @include use-media(tablet) {
+                padding: 2rem;
+                gap: 2.5rem;
+            }
+
+            @include use-media(tablet-album) {
+                padding: 2.5rem;
+                gap: 5rem;
+            }
+        }
+
+        &__body {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+
+            @include use-media(tablet) {
+                max-width: 50%;
+            }
+
+            @include use-media(tablet-album) {
+                max-width: 65%;
+            }
+        }
+
+        &__pattern {
+            top: 0;
+            bottom: auto;
+
+            @include use-media(tablet) {
+                bottom: 0;
+                top: auto;
+            }
+        }
+
+        &__subtitle {
+            color: rgba(#fff, 0.5);
+        }
+
+        &__image {
+            max-width: 20rem;
+            align-self: center;
+
+            @include use-media(tablet) {
+                position: absolute;
+                width: 42vw;
+                right: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                max-width: 30rem;
+            }
+        }
+
+        &__list {
+            &.contact-list {
+                @include use-media(tablet-album) {
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                }
+            }
+        }
+    }
+</style>

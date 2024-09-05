@@ -1,19 +1,37 @@
-import type { ADropDownButtonState } from "@components/ui/ADropDown/ADropDownButton/interfaces";
+import type { ADropDownItem } from "@components/ui/ADropDown/ADropDownItem/interfaces";
+import type { ADropDownCheckbox } from "@components/ui/ADropDown/ADropDownCheckbox/interfaces";
 
-export interface ADropDownMenuCustomEvent {
+export interface ADropDownMenuSelectedEvent {
 	value: string;
+  displayValue: string;
 }
 
-export interface ADropDownMenu extends HTMLDivElement {
-	open: () => void;
-	close: () => void;
+export interface ADropDownMenuChangedEvent {
+  values: ADropDownCheckbox[];
+}
+
+export interface ADropDownMenuElements {
+  root: HTMLDivElement;
+}
+
+export interface ADropDownMenuComponents {
+  items: ADropDownItem[];
+  checkboxes: ADropDownCheckbox[];
 }
 
 export interface ADropDownMenuState {
+  elements: ADropDownMenuElements;
+  components: ADropDownMenuComponents;
 	isOpen: boolean;
-	currentValue: string;
-	selectedItem: ADropDownButtonState | null;
-	root: ADropDownMenu;
-	buttons: NodeListOf<HTMLButtonElement>;
-	items: ADropDownButtonState[];
+	selectedItem: ADropDownItem | null;
+	selectedItems: ADropDownCheckbox[];
+  methods: {
+    open: (rect: DOMRect) => void;
+    close: () => void;
+    setPosition: (rect: DOMRect) => void;
+  }
+}
+
+export interface ADropDownMenu extends HTMLDivElement {
+  $state: ADropDownMenuState;
 }

@@ -1,5 +1,6 @@
 ---
 import AIcon from "../../AIcon.astro";
+import PatternBg from "../Pattern/PatternBg.astro";
 import CardAboutBankItem from "./CardAboutBankItem.astro";
 
 interface IContentAboutBank {
@@ -65,9 +66,7 @@ const {class: className, ...rest} = Astro.props;
 		<div class="card-about-bank__col-decor"></div>
 		<div class="card-about-bank__col-decor"></div>
 	</div>
-	<div class="card-about-bank__background">
-		<img src="assets/card-about-bank-bg.svg" />
-	</div>
+	<PatternBg class="card-about-bank__pattern" />
 </a>
 
 <style lang="scss" is:global>
@@ -85,6 +84,21 @@ const {class: className, ...rest} = Astro.props;
 		z-index: 1;
 		background-color: var(--blue-10);
 		padding: 1.5rem;
+
+		@include use-media(tablet-album) {
+			padding: 0;
+		}
+
+		&:after {
+			content: '';
+			position: absolute;
+			right: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			transform: rotate(180deg);
+			background: linear-gradient(270deg, rgba(245, 244, 246, 0.9) 0%, rgba(245, 244, 246, 0) 100%);
+		}
 
 		&__row-decor {
 			display: none;
@@ -200,33 +214,14 @@ const {class: className, ...rest} = Astro.props;
 			z-index: -1;
 		}
 
-		&__background {
-			position: absolute;
+		&__pattern {
 			display: none;
-			top: 40px;
-			left: 0;
-			z-index: 0;
-			width: 100%;
 
 			@include use-media(tablet-album) {
 				display: block;
+				top: 2.5rem;
+				bottom: auto;
 			}
-
-			img {
-				position: absolute;
-
-				@include use-media(tablet-album) {
-					right: -10px;
-				}
-
-				@include use-media(laptop-x) {
-					right: -12px;
-				}
-			}
-		}
-
-		@include use-media(tablet-album) {
-			padding: 0;
 		}
 	}
 </style>
