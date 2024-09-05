@@ -1,5 +1,4 @@
 import type {
-  ADropDownMenuCustomEvent,
   ADropDownMenu, ADropDownMenuSelectedEvent
 } from "../ADropDown/ADropDownMenu/interfaces";
 import type {
