@@ -1,6 +1,6 @@
-import type { ADropDownMenuCustomEvent, ADropDownMenuState } from "../ADropDown/ADropDownMenu/interfaces";
+import type { ADropDownMenuCustomEvent, ADropDownMenuState, ADropDownMenu } from "../ADropDown/ADropDownMenu/interfaces";
 import initADropDownMenu, { JS_CLASSES as JS_DROP_DOWN_MENU_CLASSES } from "@components/ui/ADropDown/ADropDownMenu";
-import type { ASelectInputState } from "@components/ui/ASelectInput/interfaces";
+import type { ASelectInput, ASelectInputState } from "@components/ui/ASelectInput/interfaces";
 
 export const JS_CLASSES = {
   root: '.js-a-select-input',
@@ -13,19 +13,19 @@ export const ACTION_CLASSES = {
 }
 
 const openHandler = (STATE: ASelectInputState) => {
-  document.body.append(STATE.components.dropDownMenu!.elements.root);
+  document.body.append(STATE.components.dropDownMenu!);
   const rect = STATE.elements.innerEl!.getBoundingClientRect();
-  STATE.components.dropDownMenu?.methods.open(rect);
+  STATE.components.dropDownMenu.$state.methods.open(rect);
   STATE.isOpen = true;
   STATE.elements.root.classList.add(ACTION_CLASSES.open);
   document.addEventListener('click', STATE.clickOutsideHandler);
 }
 
 const closeHandler = (STATE: ASelectInputState) => {
-  STATE.components.dropDownMenu?.methods.close();
+  STATE.components.dropDownMenu.$state.methods.close();
   STATE.isOpen = false;
   STATE.elements.root.classList.remove(ACTION_CLASSES.open);
-  STATE.elements.root.append(STATE.components.dropDownMenu!.elements.root);
+  STATE.elements.root.append(STATE.components.dropDownMenu);
   document.removeEventListener('click', STATE.clickOutsideHandler);
 };
 
@@ -33,7 +33,10 @@ const clickOutsideHandler = (
   event: MouseEvent,
   STATE: ASelectInputState
 ) => {
-  if (!STATE.elements.root.contains(event.target as Node)) {
+  if (
+    !STATE.elements.root.contains(event.target as Node)
+    && !STATE.components.dropDownMenu.contains(event.target as Node)
+  ) {
     closeHandler(STATE);
   }
 };
@@ -55,35 +58,39 @@ const setInputValue = (
   }
 }
 
-const initState = (selectInput: HTMLDivElement) => {
+const initState = (selectInput: HTMLDivElement): ASelectInputState => {
   const root = selectInput;
   const innerEl: HTMLDivElement | null = root.querySelector(JS_CLASSES.innerEl);
   const buttonEl: HTMLDivElement | null = innerEl?.querySelector(JS_CLASSES.buttonEl) ?? null;
   const inputHidden: HTMLInputElement | null = root.querySelector('input');
-  const dropDownEl: HTMLDivElement | null = root.querySelector(JS_DROP_DOWN_MENU_CLASSES.root);
-  const dropDownMenu: ADropDownMenuState | null = dropDownEl ? initADropDownMenu(dropDownEl) : null;
+  const dropDownMenuElement: HTMLDivElement | null = root.querySelector(JS_DROP_DOWN_MENU_CLASSES.root) ?? null;
+  const dropDownMenuComponent = dropDownMenuElement ? initADropDownMenu(dropDownMenuElement) : null;
 
-  const STATE: ASelectInputState = {
-    elements: {
-      root,
-      innerEl,
-      buttonEl,
-      inputHidden,
-    },
-    components: {
-      dropDownMenu,
-    },
-    isOpen: false,
-    selectedValues: null,
-    value: '',
-    displayValue: '',
-    disabled: inputHidden?.disabled ?? false,
-    clickOutsideHandler: (event: MouseEvent) => {}
+  if (dropDownMenuComponent) {
+    const STATE: ASelectInputState = {
+      elements: {
+        root,
+        innerEl,
+        buttonEl,
+        inputHidden,
+      },
+      components: {
+        dropDownMenu: dropDownMenuComponent,
+      },
+      isOpen: false,
+      selectedValues: null,
+      value: '',
+      displayValue: '',
+      disabled: inputHidden?.disabled ?? false,
+      clickOutsideHandler: (event: MouseEvent) => {}
+    }
+
+    STATE.clickOutsideHandler = (event: MouseEvent) => clickOutsideHandler(event, STATE);
+
+    return STATE;
+  } else {
+    throw new Error('Не удалось инициализировать работу компонента ASelectInput');
   }
-
-  STATE.clickOutsideHandler = (event: MouseEvent) => clickOutsideHandler(event, STATE);
-
-  return STATE;
 }
 
 const makeValues = (value: string, displayValue: string) => ({
@@ -95,17 +102,17 @@ const setResizeObserver = (STATE: ASelectInputState) => {
   const resizeObserver = new ResizeObserver((entries) => {
     if (STATE.isOpen) {
       const rect = STATE.elements.innerEl!.getBoundingClientRect();
-      STATE.components.dropDownMenu?.methods.setPosition(rect);
+      STATE.components.dropDownMenu.$state?.methods.setPosition(rect);
     }
   });
   resizeObserver.observe(STATE.elements.root);
 }
 
-const initSelectInput = (selectInput: HTMLDivElement): ASelectInputState => {
-  const STATE: ASelectInputState = initState(selectInput);
-  const { components, elements } = STATE;
+const initSelectInput = (selectInput: HTMLDivElement): ASelectInput | null => {
+  try {
+    const STATE: ASelectInputState = initState(selectInput);
+    const { components, elements } = STATE;
 
-  if (components.dropDownMenu !== null) {
     elements.buttonEl?.addEventListener('click', (event) => {
       if (STATE.isOpen) {
         closeHandler(STATE);
@@ -114,7 +121,7 @@ const initSelectInput = (selectInput: HTMLDivElement): ASelectInputState => {
       }
     });
 
-    components.dropDownMenu.elements.root.addEventListener('selected', (event) => {
+    components.dropDownMenu.addEventListener('selected', (event) => {
       const { detail} = event as CustomEvent<ADropDownMenuCustomEvent>;
       const values = makeValues(detail.value, detail.displayValue);
 
@@ -126,18 +133,26 @@ const initSelectInput = (selectInput: HTMLDivElement): ASelectInputState => {
       elements.root.dispatchEvent(customEvent);
     });
 
+    components.dropDownMenu.addEventListener('changed', (event) => {
+      console.log(event);
+    });
+
     elements.inputHidden?.addEventListener('input', (event) => {
       return;
     });
 
-    const { selectedItem } = components.dropDownMenu;
-    const values = makeValues(selectedItem?.value ?? '', selectedItem?.displayValue ?? '');
+    const selectedItem = components.dropDownMenu.$state?.selectedItem;
+    const values = makeValues(selectedItem?.$state?.value ?? '', selectedItem?.$state?.displayValue ?? '');
 
     setInputValue(values, STATE);
     setResizeObserver(STATE);
-    return STATE;
-  } else {
-    throw new Error('Не удалось инициализировать работу компонента ACurrencyInput');
+
+    const component = STATE.elements.root as ASelectInput;
+    component['$state'] = STATE;
+    return component;
+  } catch (e) {
+    console.error(e);
+    return null;
   }
 }
 

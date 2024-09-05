@@ -1,6 +1,7 @@
 import type {
-	ADropDownItemCustomEvent,
-	ADropDownItemState
+  ADropDownItem,
+  ADropDownItemCustomEvent,
+  ADropDownItemState
 } from './interfaces';
 
 export const JS_CLASSES = {
@@ -23,41 +24,44 @@ const initState = (root: HTMLDivElement | HTMLLinkElement): ADropDownItemState =
 }
 
 const selectHandler = (STATE: ADropDownItemState) => {
-	if (STATE.elements.root !== null) {
-		STATE.elements.root.setAttribute('aria-selected', 'true');
-		STATE.selected = true;
+  STATE.elements.root.setAttribute('aria-selected', 'true');
+  STATE.selected = true;
 
-		const customEvent: CustomEvent<ADropDownItemCustomEvent> = new CustomEvent('select', {
-			detail: {
-				value: STATE.value,
-        displayValue: STATE.displayValue
-			}
-		});
+  const customEvent: CustomEvent<ADropDownItemCustomEvent> = new CustomEvent('selected', {
+    detail: {
+      value: STATE.value,
+      displayValue: STATE.displayValue
+    }
+  });
 
-    STATE.elements.root.dispatchEvent(customEvent);
-	}
+  STATE.elements.root.dispatchEvent(customEvent);
 }
 
 const unselectHandler = (STATE: ADropDownItemState) => {
-	if (STATE.elements.root !== null) {
-		STATE.selected = false;
-    STATE.elements.root.setAttribute('aria-selected', 'false');
-	}
+  STATE.selected = false;
+  STATE.elements.root.setAttribute('aria-selected', 'false');
 }
 
-const initDropDownItem = (element: HTMLDivElement | HTMLLinkElement): ADropDownItemState => {
-	const STATE: ADropDownItemState = initState(element);
+const initADropDownItem = (element: HTMLDivElement | HTMLLinkElement): ADropDownItem | null => {
+  try {
+    const STATE: ADropDownItemState = initState(element);
 
-  STATE.methods.select = () => selectHandler(STATE);
-  STATE.methods.unselect= () => unselectHandler(STATE);
+    STATE.methods.select = () => selectHandler(STATE);
+    STATE.methods.unselect= () => unselectHandler(STATE);
 
-  STATE.elements.root.addEventListener('click', () => {
-		if (!STATE.selected) {
-			selectHandler(STATE);
-		}
-	});
+    STATE.elements.root.addEventListener('click', () => {
+      if (!STATE.selected) {
+        selectHandler(STATE);
+      }
+    });
 
-	return STATE;
+    const component = (STATE.elements.root as ADropDownItem);
+    component['$state'] = STATE;
+    return component;
+  } catch (e) {
+    console.error(e);
+    return null;
+  }
 }
 
-export default initDropDownItem;
+export default initADropDownItem;

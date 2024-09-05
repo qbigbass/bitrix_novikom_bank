@@ -70,25 +70,6 @@ const {
     }
 </div>
 
-<script>
-	import initACurrencyInput from './';
-	import { JS_CLASSES } from './';
-	import type { ACurrencyInputState } from './interfaces'
-	const currencyInputs: NodeListOf<HTMLDivElement> = document.querySelectorAll(JS_CLASSES.root);
-
-	currencyInputs?.forEach((currencyInput) => {
-		const input = initACurrencyInput(currencyInput) as ACurrencyInputState;
-
-		input.elements.root.addEventListener('input', (event) => {
-			console.log('Input', input)
-		});
-
-		input.elements.root.addEventListener('selected', (event) => {
-			console.log('Selected', input)
-		});
-	});
-</script>
-
 <style lang="scss" is:global>
 	@use "sass:map";
 	@import "@styles/variables.scss";

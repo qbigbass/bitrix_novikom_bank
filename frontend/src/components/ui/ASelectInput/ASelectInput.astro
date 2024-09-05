@@ -1,6 +1,6 @@
 ---
+import ADropDownMenu from "../ADropDown/ADropDownMenu/ADropDownMenu.astro";
 import AIcon from "../../AIcon.astro";
-import ADropDown from "../ADropDown/ADropDownMenu/ADropDownMenu.astro";
 import AInputHint from "../AInputHint/AInputHint.astro";
 type Size = "m" | "s";
 
@@ -58,9 +58,9 @@ const {
 		/>
 		<AIcon class="a-select-input__icon" symbolId="icon-chevron-down-small" size="s" />
 	</div>
-    <ADropDown class="a-select-input__drop-down">
+    <ADropDownMenu>
         <slot />
-    </ADropDown>
+    </ADropDownMenu>
     {
         hint && (
             <AInputHint id={`${name}`}>
@@ -69,22 +69,6 @@ const {
         )
     }
 </div>
-
-<script>
-	import initSelectInput from './';
-
-	import { JS_CLASSES } from './';
-	import type { ASelectInputState } from './interfaces'
-	const currencyInputs: NodeListOf<HTMLDivElement> = document.querySelectorAll(JS_CLASSES.root);
-
-	currencyInputs?.forEach((currencyInput) => {
-		const input = initSelectInput(currencyInput) as ASelectInputState;
-
-		input.elements.root.addEventListener('selected', (event) => {
-			console.log('Selected', input)
-		});
-	});
-</script>
 
 <style lang="scss" is:global>
 	@use "sass:map";
@@ -115,8 +99,6 @@ const {
 			transition: transform ease .33s;
 			pointer-events: none;
 		}
-
-		&__drop-down {}
 
 		&__placeholder {
 			color: var(--dark-70);

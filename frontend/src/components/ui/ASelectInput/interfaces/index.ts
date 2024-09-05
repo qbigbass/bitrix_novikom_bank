@@ -1,4 +1,4 @@
-import type { ADropDownMenuState } from '@components/ui/ADropDown/ADropDownMenu/interfaces';
+import type { ADropDownMenu } from '@components/ui/ADropDown/ADropDownMenu/interfaces';
 
 export interface ASelectInputElements {
   root: HTMLDivElement;
@@ -8,7 +8,7 @@ export interface ASelectInputElements {
 }
 
 export interface ASelectInputComponents {
-  dropDownMenu: ADropDownMenuState | null;
+  dropDownMenu: ADropDownMenu;
 }
 
 export interface ASelectInputState {
@@ -20,4 +20,8 @@ export interface ASelectInputState {
 	value: string;
   displayValue: string;
 	clickOutsideHandler: (event: MouseEvent) => void;
+}
+
+export interface ASelectInput extends HTMLDivElement {
+  $state?: ASelectInputState;
 }

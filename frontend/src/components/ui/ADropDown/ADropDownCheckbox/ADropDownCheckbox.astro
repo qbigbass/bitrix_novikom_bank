@@ -1,5 +1,4 @@
 ---
-
 import ACheckbox from "../../ACheckbox/ACheckbox.astro";
 
 type Size = 's' | 'm';
@@ -14,41 +13,41 @@ interface Props {
 const { id, checked,
     size = 's', value, } = Astro.props;
 ---
-<div class="drop-down-checkbox" class:list={[
-    `drop-down-checkbox--${size}`,
-]}>
-    <ACheckbox size="m" id={id} checked={checked} value={value} class="js-drop-down-checkbox">
-        <Fragment slot="label"><slot /></Fragment>
+<div
+     class:list={[
+         'drop-down-checkbox',
+         'js-drop-down-checkbox',
+        `drop-down-checkbox--${size}`,
+    ]}
+>
+    <ACheckbox size={size} id={id} checked={checked} value={value}>
+        <Fragment slot="label">
+            <slot />
+        </Fragment>
     </ACheckbox>
 </div>
 
 <style lang="scss" is:global>
     .drop-down-checkbox {
+        $root: #{&};
+
         & .a-checkbox__inner {
             padding: 1rem;
             width: 100%;
         }
 
-        &--s {
+        &#{$root}--s {
             & .a-checkbox {
                 &__inner {
                     gap: .5rem;
                 }
-
-                &__label {
-                    padding-top: 3px;
-                }
             }
         }
 
-        &--m {
+        &#{$root}--m {
             & .a-checkbox {
                 &__inner {
                     gap: .75rem;
-                }
-
-                &__label {
-                    padding-top: 0;
                 }
             }
         }

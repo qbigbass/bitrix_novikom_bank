@@ -1,4 +1,4 @@
-import type { ADropDownMenuState } from '@components/ui/ADropDown/ADropDownMenu/interfaces';
+import type { ADropDownMenu } from '@components/ui/ADropDown/ADropDownMenu/interfaces';
 
 export interface ACurrencyInputElements {
   root: HTMLDivElement;
@@ -9,7 +9,7 @@ export interface ACurrencyInputElements {
 }
 
 export interface ACurrencyInputComponents {
-  dropDownMenu: ADropDownMenuState | null;
+  dropDownMenu: ADropDownMenu;
 }
 
 export interface ACurrencyInputState {
@@ -20,4 +20,8 @@ export interface ACurrencyInputState {
 	disabled: boolean;
 	value: string;
 	clickOutsideHandler: (event: MouseEvent) => void;
+}
+
+export interface ACurrencyInput extends HTMLDivElement {
+  $state: ACurrencyInputState;
 }

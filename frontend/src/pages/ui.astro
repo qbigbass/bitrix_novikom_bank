@@ -37,11 +37,12 @@ import AHelper from "../components/common/AHelper.astro";
 import ACollapsedItems from "../components/ui/ACollapsedItems/ACollapsedItems.astro";
 import ACollapsedItem from "../components/ui/ACollapsedItems/ACollapsedItem.astro";
 import ACollapsedButton from "../components/ui/ACollapsedItems/ACollapsedButton.astro";
+import ACheckbox from "../components/ui/ACheckbox/ACheckbox.astro";
+import ADropDownItem from "../components/ui/ADropDown/ADropDownItem/ADropDownItem.astro";
 import ADropDownCheckbox from "../components/ui/ADropDown/ADropDownCheckbox/ADropDownCheckbox.astro";
 import ASelectInput from "../components/ui/ASelectInput/ASelectInput.astro";
-import FormRow from "../components/layouts/FormLayout/FormRow.astro";
 import ACurrencyInput from "../components/ui/ACurrencyInput/ACurrencyInput.astro";
-import ADropDownItem from "../components/ui/ADropDown/ADropDownItem/ADropDownItem.astro";
+import FormRow from "../components/layouts/FormLayout/FormRow.astro";
 import AInputField from "../components/ui/AInput/AInputField.astro";
 import CardPromo from "@components/common/Cards/CardPromo.astro";
 import CardProduct from "@components/common/Cards/CardProduct.astro";
@@ -578,6 +579,22 @@ const listConatactGray = [
                         name="input-2"
                         afterIcon="icon-rub"
                     />
+                </FormRow>
+            </div>
+        </div>
+        <div class="ui-section">
+            <SectionTitle class="ui-section-title" titleClass="headline-2"
+            >{"AInputField"}</SectionTitle
+            >
+
+            <div class="ui-grid">
+                <FormRow cols={2}>
+                    <ACheckbox id="is-card-novkom" size="m" checked>
+                        <div class="body-m-light" slot="label">Получаю зарплату на карту НОВИКОМ</div>
+                    </ACheckbox>
+                    <ACheckbox id="insurance" size="m">
+                        <div class="body-m-light" slot="label">Страховка</div>
+                    </ACheckbox>
                 </FormRow>
             </div>
         </div>
@@ -1416,10 +1433,10 @@ const listConatactGray = [
                     placeholder="Выберите"
                     name="cardCategory"
                 >
-                    <ADropDownCheckbox checked size="m" id="10">
+                    <ADropDownCheckbox checked size="m" value="standard" id="10">
                         <span class="body-m-light">Standard</span>
                     </ADropDownCheckbox>
-                    <ADropDownCheckbox checked size="m" id="11">
+                    <ADropDownCheckbox checked size="m" value="bonus" id="11">
                         <span class="body-m-light">Bonus</span>
                     </ADropDownCheckbox>
                     <ADropDownCheckbox size="m" id="111">

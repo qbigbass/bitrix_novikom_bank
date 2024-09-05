@@ -15,3 +15,7 @@ export interface ADropDownItemState {
   displayValue: string;
 	selected: boolean;
 }
+
+export interface ADropDownItem extends HTMLDivElement {
+  $state: ADropDownItemState
+}
