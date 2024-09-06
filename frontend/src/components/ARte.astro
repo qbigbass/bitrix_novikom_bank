@@ -15,6 +15,30 @@ const { class: className, ...rest } = Astro.props as Props;
     @import "@styles/media-queries";
 
     .a-rte {
+        &:not(:last-child) {
+            margin-bottom: 2.5rem;
+
+            @include use-media(tablet) {
+                margin-bottom: 4rem;
+            }
+
+            @include use-media(laptop) {
+                margin-bottom: 5rem;
+            }
+        }
+
+        &:not(:first-child) {
+            margin-top: 2.5rem;
+
+            @include use-media(tablet) {
+                margin-top: 4rem;
+            }
+
+            @include use-media(laptop) {
+                margin-top: 5rem;
+            }
+        }
+
         h2 {
             @extend .headline-2;
 
@@ -39,7 +63,17 @@ const { class: className, ...rest } = Astro.props as Props;
             }
         }
 
+        h4 {
+            @extend .headline-4;
+
+            &:not(:last-child) {
+                margin-bottom: 1.5rem;
+            }
+        }
+
         p {
+            @extend .body-m-light;
+
             margin-bottom: 1.5rem;
 
             &:last-child {
@@ -47,11 +81,45 @@ const { class: className, ...rest } = Astro.props as Props;
             }
 
             & strong {
-                @extend .body-l-heavy;
+                @extend .body-m-heavy;
+            }
+
+            & .text-tiny {
+                @extend .caption-m;
+
+                & strong {
+                    font-weight: 600;
+                }
+            }
+
+            & .text-small {
+                @extend .body-s-light;
+
+                & strong {
+                    @extend .body-s-heavy;
+                }
+            }
+
+            & .text-big {
+                @extend .body-l-light;
+
+                & strong {
+                    @extend .body-l-heavy;
+                }
+            }
+
+            & .text-huge {
+                @extend .number-l-light;
+
+                & strong {
+                    @extend .number-l-heavy;
+                }
             }
         }
 
         ul {
+            @extend .body-l-light;
+
             margin: 1.5rem 0;
             padding: 0;
             padding-inline-start: 1.75rem;
@@ -84,9 +152,13 @@ const { class: className, ...rest } = Astro.props as Props;
                 }
 
                 & ul {
-                    padding-top: 1.5rem;
+                    margin-top: 1.5rem;
                     font-weight: 400;
                     padding-inline-start: 1rem;
+
+                    &:first-child {
+                        margin-top: 1.5rem;
+                    }
 
                     & li {
                         &:before {
