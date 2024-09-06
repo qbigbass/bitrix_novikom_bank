@@ -1,0 +1,37 @@
+.section-layout {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+    position: relative;
+    overflow: hidden;
+
+    @include use-media(tablet) {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+    }
+
+    @include use-media(tablet-album) {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+    }
+
+    @include use-media(laptop-x) {
+        padding-top: 7.5rem;
+        padding-bottom: 7.5rem;
+    }
+
+    &--bg-gray {
+        background-color: var(--dark-10);
+    }
+
+    &--bg-blue {
+        background-color: var(--blue-10);
+    }
+
+    &--bg-purple {
+        background-color: var(--purple-10);
+    }
+
+    &--bg-middle-gray {
+        background-color: var(--dark-30);
+    }
+}

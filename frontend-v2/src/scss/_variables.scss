@@ -1,0 +1,32 @@
+$grid-gutter-width: 2.5rem;
+
+$grid-breakpoints: (
+        xs: 0,
+        sm: 576px,
+        md: 768px,
+        lg: 1200px,
+        xl: 1440px,
+        xxl: 1600px,
+        xxxl: 1920px
+);
+
+$container-max-widths: (
+        sm: 540px,
+        md: 768px,
+        lg: 1200px,
+        xl: 1440px,
+        xxl: 1600px,
+        xxxl: 1920px
+);
+
+$container-padding-x: 3rem;
+
+$mq-breakpoints: (
+        mobile-s: 320px,
+        mobile: 375px,
+        tablet: 768px,
+        tablet-album: 1200px,
+        laptop: 1440px,
+        laptop-x: 1600px,
+        desktop: 1920px
+);
