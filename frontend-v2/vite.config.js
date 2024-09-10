@@ -1,49 +1,18 @@
-// import { defineConfig } from 'vite';
-// import vue from '@vitejs/plugin-vue';
-import { resolve } from 'path';
+import { defineConfig } from 'vite';
+import { resolve } from 'path'
 
-// Plugins
-// import sass from 'sass';
-// import css from 'vite-plugin-css';
-
-export default {
+export default defineConfig({
   root: resolve(__dirname, 'src'),
   build: {
-    outDir: '../dist'
+    outDir: '../dist',
+    rollupOptions: {
+      input: {
+        main: resolve(__dirname, 'src', 'index.html'),
+        ui: resolve(__dirname, 'src', 'ui.html'),
+      }
+    }
   },
   server: {
     port: 8080
   }
-}
-
-// import { defineConfig } from 'vite';
-// import vue from '@vitejs/plugin-vue';
-// import { resolve } from 'path';
-//
-// // Plugins
-// import sass from 'sass';
-// import css from 'vite-plugin-css';
-//
-// export default defineConfig({
-//   plugins: [
-//     vue(),
-//     css({
-//       preprocessorOptions: {
-//         scss: {
-//           additionalData: '@import "./src/assets/scss/main.scss";',
-//           implementation: sass,
-//         },
-//       },
-//     }),
-//   ],
-//   resolve: {
-//     alias: {
-//       '@': resolve(__dirname, './src'),
-//     },
-//   },
-//   build: {
-//     commonjsOptions: {
-//       include: [/node_modules/],
-//     },
-//   },
-// });
+})

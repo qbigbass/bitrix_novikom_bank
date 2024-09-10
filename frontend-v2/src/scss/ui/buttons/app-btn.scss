@@ -1,0 +1,24 @@
+.app-btn {
+    height: 2.5rem;
+
+    @include use-media(tablet-album) {
+        height: 3.5rem;
+        font-size: 1.125rem;
+        line-height: 1.35;
+    }
+}
+
+
+// TODO: на удаление?
+//.app-button.app-button--l {
+//    height: 3.5rem;
+//}
+//
+//.app-button.app-button--lm {
+//    height: calc-clamp(2.5rem, 3.5rem);
+//}
+//
+//.app-button.app-button--m {
+//    height: 2.5rem;
+//}
+

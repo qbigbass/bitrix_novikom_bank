@@ -1,4 +1,15 @@
+@use "sass:map";
+
 $grid-gutter-width: 2.5rem;
+
+$gutters: (
+        0: 0,
+        1: 1.5rem,
+        2: 2rem,
+        3: 3rem,
+        4: 4rem,
+        5: 5rem,
+);
 
 $grid-breakpoints: (
         xs: 0,
@@ -11,11 +22,6 @@ $grid-breakpoints: (
 );
 
 $container-max-widths: (
-        sm: 540px,
-        md: 768px,
-        lg: 1200px,
-        xl: 1440px,
-        xxl: 1600px,
         xxxl: 1920px
 );
 
@@ -29,4 +35,137 @@ $mq-breakpoints: (
         laptop: 1440px,
         laptop-x: 1600px,
         desktop: 1920px
+);
+
+$display-font-sizes: (
+        1: 4rem,
+        2: 2.5rem,
+        3: 3rem,
+        4: 1.5rem,
+        5: 1.25rem,
+        6: 1.125rem
+);
+
+$font-family-open-sans: 'Open Sans', sans-serif;
+.font-roboto {
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+//$prefix: 'bs-';
+$font-family-base: 'Open Sans', sans-serif;
+//$font-family-base: var(--#{$prefix}font-open-sans);
+//$font-family-code: var(--#{$prefix}font-roboto);
+$font-family-code: 'Roboto Condensed', sans-serif;
+
+$font-size-body: (
+        small-xs: .625rem, //10px
+        small-x: .75rem, //12px
+        small: .875rem, //14px
+        base: 1rem, //16px
+        medium-xs: 1.125rem, //18px
+        medium-x: 1.25rem, //20px
+        medium: 1.5rem, //24px
+        large-xs: 1.75rem, //28px
+        large-x: 2rem, //32px
+        large: 2.25rem, //36px
+        xl: 2.5rem, //40px
+        xxl: 3.5rem, //56px
+);
+
+// scss-docs-start font-sizes
+$font-sizes: (
+        1: map-get($font-size-body, medium-x),
+        2: map-get($font-size-body, base),
+        3: map-get($font-size-body, small),
+        4: map-get($font-size-body, small-x),
+        5: map-get($font-size-body, small-xs)
+);
+
+$line-height-sm: 1.3;
+
+// Colors
+$body-color: #121112; // dark-100
+$body-secondary-bg: #f5f4f6; // dark-10
+$body-tertiary-bg: #e8eaef; // dark-30
+
+$primary: #55246A; // violet-100
+$secondary: #4F52A4; // blue-100
+//$tertiary: #4F52A4; // blue-100
+$success: #76B82A; // green-100
+$info: #ffffff; // dark-0
+$dark: #121112;
+
+$blue: #4f52a4;
+$purple: #412674;
+$violet: #55246a;
+$green: #76b82a;
+$orange: #f7a600;
+$yellow: #fdd400;
+
+//$theme-colors: (
+//        "primary":    $primary,
+//        "secondary":  $secondary,
+//        "dark":       $dark
+//);
+//
+$custom-colors: (
+        "tertiary": $green
+);
+
+
+//$colors: (
+//        "blue":       $blue,
+//        "indigo":     $indigo,
+//        "purple":     $purple,
+//        "pink":       $pink,
+//        "red":        $red,
+//        "orange":     $orange,
+//        "yellow":     $yellow,
+//        "green":      $green,
+//        "teal":       $teal,
+//        "cyan":       $cyan,
+//        "black":      $black,
+//        "white":      $white,
+//        "gray":       $gray-600,
+//        "gray-dark":  $gray-800
+//)
+
+$enable-dark-mode: false;
+
+
+// Buttons + Forms
+$btn-white-space: nowrap;
+$btn-border-radius: .25rem;
+$btn-border-radius-sm: .25rem;
+$btn-border-radius-lg: .25rem;
+$btn-line-height: 1.5;
+
+$btn-padding-y: .4375rem;
+$btn-padding-x: 1.5rem;
+
+$btn-padding-y-lg: .9375rem;
+$btn-padding-x-lg: 2rem;
+$btn-font-size-lg: 1.125rem;
+
+$btn-padding-y-sm: .3125rem;
+$btn-padding-x-sm: .5rem;
+$btn-font-size-sm: .8125rem;
+
+
+$btn-font-weight: 700;
+
+// Links
+$link-decoration: none;
+
+// Spacers
+$spacer: 1rem;
+$spacers: (
+        0: 0,
+        1: $spacer * .25,
+        2: $spacer * .5,
+        3: $spacer,
+        4: $spacer * 1.5,
+        5: $spacer * 2,
+        6: $spacer * 2.5,
+        7: $spacer * 3,
 );

@@ -1,0 +1,50 @@
+.footer {
+    border-top: 1px solid var(--blue-30);
+
+    &__content {
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
+
+        @include use-media(tablet-album) {
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+        }
+    }
+
+    &__footer-info {
+        padding: 2.5rem 0;
+        background-color: var(--dark-10);
+
+        a {
+
+            &:hover {
+                color: var(--blue-100);
+            }
+        }
+    }
+
+    &__copyright{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        @include use-media(tablet) {
+            align-items: center;
+            flex-direction: row;
+            gap: 2.5rem;
+        }
+
+        @include use-media(tablet-album) {
+            align-items: flex-start;
+            flex-direction: column;
+            gap: 3rem;
+        }
+    }
+
+    & nav a {
+
+        &:hover {
+            color: var(--blue-100);
+        }
+    }
+}

@@ -1,0 +1,553 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>UI компоненты</title>
+    <script type="module" src="./js/main.js"></script>
+</head>
+<body>
+<section class="section-layout">
+    <div class="container">
+        <div class="d-flex flex-column row-gap-5">
+            <h2 id="typography">Типографика</h2>
+            <div class="row row-gap-4 gap-md-0">
+                <div class="col-12 col-md-6">
+                    <div class="d-flex flex-column gap-2">
+                        <h1>Заголовок 1</h1>
+                        <h2>Заголовок 2</h2>
+                        <h3>Заголовок 3</h3>
+                        <h4>Заголовок 4</h4>
+                        <h5>Заголовок 5</h5>
+                        <h6>Заголовок 6</h6>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="d-flex flex-column gap-3">
+                        <span class="text-l fw-semibold">Текстовый фрейм L Heavy</span>
+                        <span class="text-l">Текстовый фрейм L</span>
+                        <span class="fw-semibold fs-2 lh-base">Текстовый фрейм M Heavy</span>
+                        <span class="text-m">Текстовый фрейм M</span>
+                        <span class="fw-semibold fs-3 lh-sm">Текстовый фрейм S Heavy</span>
+                        <span class="text-s">Текстовый фрейм S</span>
+                        <span class="fs-4 lh-sm">Подсказка</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row row-gap-4">
+                <div class="col-12 col-md-6 col-xl-2">
+                    <ul class="fw-semibold text-l list">
+                        <li>Список L</li>
+                        <li>Список L</li>
+                        <li>Список L</li>
+                    </ul>
+                </div>
+                <div class="col-12 col-md-6 col-xl-2">
+                    <ul class="fw-semibold text-l list">
+                        <li>Список L Heavy</li>
+                        <li>Список L Heavy</li>
+                        <li>Список L Heavy</li>
+                    </ul>
+                </div>
+                <div class="col-12 col-md-6 col-xl-2">
+                    <ul class="list">
+                        <li>Список M</li>
+                        <li>Список M</li>
+                        <li>Список M</li>
+                    </ul>
+                </div>
+                <div class="col-12 col-md-6 col-xl-2">
+                    <ul class="fw-semibold list">
+                        <li>Список M Heavy</li>
+                        <li>Список M Heavy</li>
+                        <li>Список M Heavy</li>
+                    </ul>
+                </div>
+                <div class="col-12 col-md-6 col-xl-2">
+                    <ul class="text-s list">
+                        <li>Список S</li>
+                        <li>Список S</li>
+                        <li>Список S</li>
+                    </ul>
+                </div>
+                <div class="col-12 col-md-6 col-xl-2">
+                    <ul class="fw-semibold text-s list">
+                        <li>Список S Heavy</li>
+                        <li>Список S Heavy</li>
+                        <li>Список S Heavy</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row row-gap-4">
+                <div class="col-12 col-md-6 col-xl-3">
+                    <div class="d-inline-flex flex-nowrap align-items-baseline text-l fw-semibold gap-1">
+                        <h4>Выгодно</h4>
+                        от
+                        <span class="text-number-l fw-bold">0</span>
+                        <span class="text-number-l font-roboto fw-bold">₽</span>
+                        дней
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-xl-5">
+
+                    <a href="#" class="d-flex flex-column gap-1 py-3 document-download text-l" download="">
+                        Сборник тарифов на обслуживание банковских карт для физических лиц, выпущенных по 21.08.2022
+                        г.
+                        <div class="d-flex gap-1 align-items-center">
+                            <div class="document-download__file caption-m dark-70">
+                                <span class="document-download__date-time">12.12.23 18:56</span>
+                                <span class="document-download__file-type">XLS</span>
+                            </div>
+                            <span class="icon size-s text-primary">
+                                    <svg>
+                                        <use xlink:href="svg-sprite.svg#icon-download"></use>
+                                    </svg>
+                            </span>
+                        </div>
+                    </a>
+                    <a href="#" class="d-flex  flex-column gap-1 py-3 document-download text-l" download="">
+                        Сборник тарифов на обслуживание банковских карт для физических лиц, выпущенных по 21.08.2022
+                        г.
+                        <div class="d-flex gap-1 align-items-center">
+                            <div class="document-download__file caption-m dark-70">
+                                <span class="document-download__date-time">12.12.23 18:56</span>
+                                <span class="document-download__file-type">XLS</span>
+                            </div>
+                            <span class="icon size-s text-primary">
+                                    <svg>
+                                        <use xlink:href="svg-sprite.svg#icon-download"></use>
+                                    </svg>
+                            </span>
+                        </div>
+                    </a>
+                    <a href="#" class="d-flex flex-column gap-1 py-3 document-download text-l" download="">
+                        Наименование документа
+                        <div class="d-flex gap-1 align-items-center">
+                            <div class="document-download__file caption-m dark-70">
+                                <span class="document-download__date-time">12.12.23 18:56</span>
+                                <span class="document-download__file-type">XLS</span>
+                            </div>
+                            <span class="icon size-s text-primary">
+                                    <svg>
+                                        <use xlink:href="svg-sprite.svg#icon-download"></use>
+                                    </svg>
+                            </span>
+                        </div>
+                    </a>
+                    <a href="#" class="d-flex  flex-column gap-1 py-3 document-download text-l" download="">
+                        Сборник тарифов на обслуживание банковских карт для физических лиц, выпущенных по 21.08.2022
+                        г.
+                        <div class="d-flex gap-1 align-items-center">
+                            <div class="document-download__file caption-m dark-70">
+                                <span class="document-download__date-time">12.12.23 18:56</span>
+                                <span class="document-download__file-type">XLS</span>
+                            </div>
+                            <span class="icon size-s text-primary">
+                                    <svg>
+                                        <use xlink:href="svg-sprite.svg#icon-download"></use>
+                                    </svg>
+                            </span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-12 col-md-6 col-xl-4">
+                    <p class="text-primary">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, natus.</p>
+                    <p class="text-secondary">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, natus.</p>
+                    <p class="text-success">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, natus.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="section-layout section-layout--padding-top-0">
+    <div class="container">
+        <div class="d-flex flex-column row-gap-5">
+            <h2 id="buttons">Кнопки</h2>
+            <div class="row row-gap-4 gap-md-0 row-gap-md-4">
+                <div class="col-12 col-md-6 col-xl-3 d-flex flex-column row-gap-3 p-3">
+                    <button type="button" class="btn btn-primary btn-lg">Кнопка Primary</button>
+                    <button type="button" class="btn btn-primary">Кнопка Primary</button>
+                    <button type="button" class="btn btn-primary btn-sm">Кнопка Primary</button>
+                </div>
+                <div class="col-12 col-md-6 col-xl-3 d-flex flex-column row-gap-3 p-3">
+                    <button type="button" class="btn btn-secondary btn-lg">Кнопка Secondary</button>
+                    <button type="button" class="btn btn-secondary">Кнопка Secondary</button>
+                    <button type="button" class="btn btn-secondary btn-sm">Кнопка Secondary</button>
+                </div>
+                <div class="col-12 col-md-6 col-xl-3 d-flex flex-column row-gap-3 p-3">
+                    <button type="button" class="btn btn-tertiary btn-lg">Кнопка Tertiary</button>
+                    <button type="button" class="btn btn-tertiary">Кнопка Tertiary</button>
+                    <button type="button" class="btn btn-tertiary btn-sm">Кнопка Tertiary</button>
+                </div>
+                <div class="col-12 col-md-6 col-xl-3 bg-body-tertiary p-3 d-flex flex-column row-gap-3">
+                    <button type="button" class="btn btn-info btn-lg">Кнопка Info</button>
+                    <button type="button" class="btn btn-info">Кнопка Info</button>
+                    <button type="button" class="btn btn-info btn-sm">Кнопка Info</button>
+                </div>
+                <div class="col-12 col-md-6 col-xl-3 d-flex flex-column row-gap-3 p-3">
+                    <button type="button"
+                            class="btn btn-outline-primary btn-lg d-inline-flex gap-3 align-items-center justify-content-center">
+                        <svg class="icon size-m">
+                            <use xlink:href="svg-sprite.svg#icon-download"></use>
+                        </svg>
+                        Outline Primary
+                        <svg class="icon size-m">
+                            <use xlink:href="svg-sprite.svg#icon-download"></use>
+                        </svg>
+                    </button>
+                    <button type="button"
+                            class="btn btn-outline-primary d-inline-flex gap-2 align-items-center justify-content-center">
+                        <svg class="icon size-m">
+                            <use xlink:href="svg-sprite.svg#icon-download"></use>
+                        </svg>
+                        Outline Primary
+                        <svg class="icon size-m">
+                            <use xlink:href="svg-sprite.svg#icon-download"></use>
+                        </svg>
+                    </button>
+                    <button type="button"
+                            class="btn btn-outline-primary btn-sm d-inline-flex gap-2 align-items-center justify-content-center">
+                        <svg class="icon size-s">
+                            <use xlink:href="svg-sprite.svg#icon-download"></use>
+                        </svg>
+                        Кнопка Outline Primary
+                        <svg class="icon size-s">
+                            <use xlink:href="svg-sprite.svg#icon-download"></use>
+                        </svg>
+                    </button>
+                </div>
+                <div class="col-12 col-md-6 col-xl-3 d-flex flex-column row-gap-3 p-3">
+                    <button type="button" class="btn btn-link btn-lg d-inline-flex gap-2 align-items-center">
+                        <svg class="icon size-m">
+                            <use xlink:href="svg-sprite.svg#icon-download"></use>
+                        </svg>
+                        Кнопка
+                        <svg class="icon size-m">
+                            <use xlink:href="svg-sprite.svg#icon-download"></use>
+                        </svg>
+                    </button>
+                    <button type="button" class="btn btn-link d-inline-flex gap-2 align-items-center">
+                        <svg class="icon size-m">
+                            <use xlink:href="svg-sprite.svg#icon-download"></use>
+                        </svg>
+                        Кнопка
+                        <svg class="icon size-m">
+                            <use xlink:href="svg-sprite.svg#icon-download"></use>
+                        </svg>
+                    </button>
+                    <button type="button" class="btn btn-link btn-sm d-inline-flex gap-2 align-items-center">
+                        <svg class="icon size-s">
+                            <use xlink:href="svg-sprite.svg#icon-download"></use>
+                        </svg>
+                        Кнопка
+                        <svg class="icon size-s">
+                            <use xlink:href="svg-sprite.svg#icon-download"></use>
+                        </svg>
+                    </button>
+                </div>
+                <div class="col-12 col-md-6 col-xl-3 d-flex flex-column align-items-start row-gap-3 bg-primary p-3">
+                    <button type="button" class="btn btn-link btn-lg text-info d-inline-flex gap-2 align-items-center">
+                        <svg class="icon size-m">
+                            <use xlink:href="svg-sprite.svg#icon-download"></use>
+                        </svg>
+                        Кнопка
+                        <svg class="icon size-m">
+                            <use xlink:href="svg-sprite.svg#icon-download"></use>
+                        </svg>
+                    </button>
+                    <button type="button" class="btn btn-link text-info d-inline-flex gap-2 align-items-center">
+                        <svg class="icon size-m">
+                            <use xlink:href="svg-sprite.svg#icon-download"></use>
+                        </svg>
+                        Кнопка
+                        <svg class="icon size-m">
+                            <use xlink:href="svg-sprite.svg#icon-download"></use>
+                        </svg>
+                    </button>
+                    <button type="button" class="btn btn-link btn-sm text-info d-inline-flex gap-2 align-items-center">
+                        <svg class="icon size-s">
+                            <use xlink:href="svg-sprite.svg#icon-download"></use>
+                        </svg>
+                        Кнопка
+                        <svg class="icon size-s">
+                            <use xlink:href="svg-sprite.svg#icon-download"></use>
+                        </svg>
+
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<footer class="footer">
+    <div class="container">
+        <div class="row row-gap-5 footer__content">
+            <nav class="col-lg-12 col-xl-6 d-none d-lg-block">
+                <div class="row row-gap-6">
+                    <div class="col-4 d-flex flex-column row-gap-2 align-items-start">
+                        <a href="#" class="fw-semibold dark-100">
+                            Частным клиентам
+                        </a>
+                        <a href="#" class="text-s dark-70">
+                            Карты
+                        </a>
+                        <a href="#" class="text-s dark-70">
+                            Вклады
+                        </a>
+                        <a href="#" class="text-s dark-70">
+                            Кредиты
+                        </a>
+                        <a href="#" class="text-s dark-70">
+                            Ипотека
+                        </a>
+                        <a href="#" class="text-s dark-70">
+                            Платежи и переводы
+                        </a>
+                        <a href="#" class="text-s dark-70">
+                            Онлайн сервисы
+                        </a>
+                        <a href="#" class="text-s dark-70">
+                            Услуги
+                        </a>
+                    </div>
+                    <div class="col-4 d-flex flex-column row-gap-2 align-items-start">
+                        <a href="#" class="fw-semibold dark-100">
+                            Корпоративным клиентам
+                        </a>
+                        <a href="#" class="text-s dark-70">
+                            Финансирование
+                        </a><a href="#" class="text-s dark-70">
+                        Зарплатный проект
+                    </a><a href="#" class="text-s dark-70">
+                        Депозиты
+                    </a><a href="#" class="text-s dark-70">
+                        ДБО
+                    </a><a href="#" class="text-s dark-70">
+                        Финансовые рынки
+                    </a><a href="#" class="text-s dark-70">
+                        Ценные бумаги
+                    </a><a href="#" class="text-s dark-70">
+                        Онлайн-банк для бизнеса
+                    </a>
+                    </div>
+                    <div class="col-4 d-flex flex-column row-gap-2 align-items-start">
+                        <a href="#" class="fw-semibold dark-100">
+                            Малому и&nbsp;среднему бизнесу
+                        </a>
+                        <a href="#" class="text-s dark-70">
+                            Расчетный счет
+                        </a><a href="#" class="text-s dark-70">
+                        Кредитование
+                    </a><a href="#" class="text-s dark-70">
+                        ДБО
+                    </a><a href="#" class="text-s dark-70">
+                        Гарантии
+                    </a><a href="#" class="text-s dark-70">
+                        Депозиты
+                    </a><a href="#" class="text-s dark-70">
+                        Меры господдержки
+                    </a><a href="#" class="text-s dark-70">
+                        Страхование
+                    </a><a href="#" class="text-s dark-70">
+                        ВЭД
+                    </a><a href="#" class="text-s dark-70">
+                        Услуги
+                    </a><a href="#" class="text-s dark-70">
+                        Онлайн-банк для бизнеса
+                    </a>
+                    </div>
+                    <div class="col-4 d-flex flex-column row-gap-2 align-items-start">
+                        <a href="#" class="fw-semibold dark-100">
+                            О банке
+                        </a>
+                        <a href="#" class="text-s dark-70">
+                            Новиком сегодня
+                        </a><a href="#" class="text-s dark-70">
+                        Пресс-центр
+                    </a><a href="#" class="text-s dark-70">
+                        Устав и документы
+                    </a><a href="#" class="text-s dark-70">
+                        Закупки
+                    </a><a href="#" class="text-s dark-70">
+                        Реквизиты
+                    </a><a href="#" class="text-s dark-70">
+                        Карьера
+                    </a><a href="#" class="text-s dark-70">
+                        Контактная информация
+                    </a>
+                    </div>
+                    <div class="col-4 d-flex flex-column row-gap-2 align-items-start">
+                        <a href="#" class="fw-semibold dark-100">
+                            Помощь
+                        </a>
+                        <a href="#" class="text-s dark-70">
+                            Для частных клиентов
+                        </a><a href="#" class="text-s dark-70">
+                        Для малого и среднего бизнеса
+                    </a><a href="#" class="text-s dark-70">
+                        Для корпораивных клиентов
+                    </a>
+                    </div>
+                    <div class="col-4 d-flex flex-column row-gap-2 align-items-start">
+                        <a href="#" class="fw-semibold dark-100">
+                            Private Banking
+                        </a>
+                        <a href="#" class="fw-semibold dark-100">
+                            Финансовым институтам
+                        </a>
+                        <a href="#" class="fw-semibold dark-100">
+                            Устойчивое развитие
+                        </a>
+                    </div>
+                </div>
+            </nav>
+            <div class="col-12 col-md-6 col-xl-3">
+                <div class="polygon-container js-polygon-container">
+                    <div class="polygon-container__content">
+                        <div class="d-flex flex-column row-gap-4 px-3 py-4 p-md-5 p-lg-6 bg-blue-10">
+                            <h5>Скачивайте мобильное приложение</h5>
+                            <a href="#"
+                               class="app-btn btn d-inline-flex justify-content-center align-items-center bg-white"
+                               target="_blank">
+                                <img src="../assets/app-logos/ru-store.svg" alt="ru-store" loading="lazy"/>
+                            </a>
+                            <a href="#"
+                               class="app-btn btn d-inline-flex justify-content-center align-items-center bg-white"
+                               target="_blank">
+                                <img src="../assets/app-logos/ru-market.svg" alt="ru-market" loading="lazy"/>
+                            </a>
+                            <a href="#"
+                               class="app-btn btn d-inline-flex justify-content-center align-items-center bg-white"
+                               target="_blank">
+                                <img src="../assets/app-logos/nash-store.svg" alt="nash-store" loading="lazy"/>
+                            </a>
+                            <a href="#"
+                               class="app-btn btn btn-primary d-flex align-items-center gap-3 justify-content-center">
+                                Скачать
+                                <svg class="icon size-m">
+                                    <use xlink:href="svg-sprite.svg#icon-download"></use>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="polygon-container__polygon  purple-70 js-polygon-container-polygon">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="js-polygon-container-svg">
+                            <polygon points="2,2 335,2 335,394 295,434 2,434" fill="none" stroke="currentColor"
+                                     stroke-width="2" stroke-dasharray="10"></polygon>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-xl-3 d-flex flex-column row-gap-3">
+                <a href="tel:88002527007" class="h3">+7 (800) 250-70-07</a>
+                <a href="tel:84959747187" class="h3">+7 (495) 974-71-87</a>
+                <span class="dark-70">
+                    119180 Москва,<br>
+                    ул.&nbsp;Полянка Большая д.&nbsp;50/1 стр.&nbsp;1
+                </span>
+                <a href="#" class="btn btn-link d-inline-flex gap-2 align-items-center">
+                    <svg class="icon size-m">
+                        <use xlink:href="svg-sprite.svg#icon-point"></use>
+                    </svg>
+                    Офисы и банкоматы
+                </a>
+                <a href="#" class="btn btn-link d-inline-flex gap-2 align-items-center">
+                    <svg class="icon size-m">
+                        <use xlink:href="svg-sprite.svg#icon-circle-telegram"></use>
+                    </svg>
+                    Мы в Telegram
+                </a>
+                <button type="button" class="btn btn-primary btn-lg-lg">Обратная связь</button>
+                <div class="d-flex flex-column row-gap-3 pt-md-3">
+                    <a href="#"
+                       class="btn btn-lg-lg btn-outline-primary d-flex gap-2 align-items-center justify-content-center">
+                        <svg class="icon size-m">
+                            <use xlink:href="svg-sprite.svg#icon-glasses"></use>
+                        </svg>
+                        <span class="d-none d-md-block">Версия для слабовидящих</span>
+                        <span class="d-md-none">Для слабовидящих</span>
+                    </a>
+
+                    <a href="#"
+                       class="btn btn-lg-lg btn-outline-primary d-flex gap-2 align-items-center justify-content-center">
+                        English version
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer__footer-info">
+        <div class="container">
+            <div class="row row-gap-3 row-gap-md-5">
+                <div class="col-12 col-md-6 col-lg-4 col-xl-4">
+                    <div class="d-flex flex-column row-gap-3">
+                        <a href="#" class="text-s dark-70">
+                            Карта сайта
+                        </a>
+                        <a href="#" class="text-s dark-70">
+                            Противодействие коррупции
+                        </a>
+                        <a href="#" class="text-s dark-70">
+                            Противодействие коррупции
+                        </a>
+                        <a href="#" class="text-s dark-70">
+                            Раскрытие информации
+                        </a>
+                        <a href="#" class="text-s dark-70">
+                            Порядок обращения в банк
+                        </a>
+                        <a href="#" class="text-s dark-70">
+                            Инсайдерам Новикомбанка
+                        </a>
+                        <a href="#" class="text-s dark-70">
+                            Страховые компании
+                        </a>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 col-xl-5">
+                    <div class="d-flex flex-column row-gap-3">
+                        <a href="#" class="text-s dark-70">
+                            Информация о&nbsp;процентных ставках по&nbsp;договорам банковского вклада с&nbsp;физическими лицами
+                        </a>
+                        <a href="#" class="text-s dark-70">
+                            Раскрытие информации профессиональным участником
+                        </a>
+                        <a href="#" class="text-s dark-70">
+                            О&nbsp;праве потребителей на&nbsp;направление обращения финансовому уполномоченному
+                        </a>
+                        <a href="#" class="text-s dark-70">
+                            Информационно-просветительский портал Банка России &laquo;Финансовая культура&raquo;
+                        </a>
+                        <a href="#" class="text-s dark-70">
+                            Раскрытие информации на&nbsp;сайте агентства &laquo;Интерфакс-ЦРКИ&raquo;
+                        </a>
+                        <a href="#" class="text-s dark-70">
+                            Информация о&nbsp;лицах, под контролем или значительным влиянием которых находится Банк
+                        </a>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-4 col-xl-3">
+                    <div class="footer__copyright">
+                        <img src="../assets/images/footer-insurance.png" width="120" height="120" alt="" loading="lazy" />
+                        <div class="d-flex flex-column row-gap-3">
+                            <span class="text-s fw-semibold dark-70">Генеральная лицензия №&nbsp;2546 от&nbsp;20&nbsp;ноября&nbsp;2014&nbsp;года</span>
+                            <span class="text-s fw-semibold dark-70">©&nbsp;2009&nbsp;–&nbsp;2024 АО&nbsp;АКБ&nbsp;«НОВИКОМБАНК»</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+</body>
+</html>
+
+
