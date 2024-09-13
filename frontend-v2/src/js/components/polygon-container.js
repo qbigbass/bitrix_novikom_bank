@@ -6,18 +6,6 @@ const POLYGON_CLASSES = {
     svg: '.js-polygon-container-svg',
 }
 
-// function initPolygonContainer() {
-//     const containers = $(POLYGON_CLASSES.root);
-//
-//     containers.each(container => {
-//         const polygon = $(POLYGON_CLASSES.polygon, container);
-//         const svg = $(POLYGON_CLASSES.svg, container);
-//
-//         console.log('polygon', polygon);
-//         console.log('svg', svg);
-//     });
-// }
-
 const initPolygonContainer = () => {
     const polygonContainers = $(POLYGON_CLASSES.root);
 

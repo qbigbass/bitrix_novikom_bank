@@ -1,0 +1,28 @@
+.page-wrapper {
+    &.is-blur {
+        height: 100%;
+        overflow: hidden;
+        filter: blur(6px);
+
+        @include use-media(tablet-album) {
+            filter: none;
+            height: auto;
+            overflow: auto;
+        }
+
+        &:after{
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #12111280;
+
+            @include use-media(tablet-album) {
+                display: none;
+            }
+        }
+
+    }
+}

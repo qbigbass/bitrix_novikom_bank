@@ -1,9 +1,17 @@
+button {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
 .btn-lg {
     line-height: 1.35;
 }
 
 .btn-sm {
     line-height: 1.2;
+    font-weight: 600;
 }
 
 .btn-tertiary {

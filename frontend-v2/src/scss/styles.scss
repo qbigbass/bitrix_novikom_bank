@@ -48,6 +48,7 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 @import "bootstrap/scss/spinners";
 @import "bootstrap/scss/offcanvas";
 @import "bootstrap/scss/placeholders";
+//@import "swiper/swiper";
 
 @import "bootstrap/scss/helpers";
 
@@ -57,9 +58,21 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 // Customization
 @import "media-queries";
 @import "grid";
-@import "layout";
 @import "typography";
-@import "footer";
+@import "ui/icon";
+@import "layouts/section-layout";
+@import "layouts/header";
+@import "layouts/footer";
+@import "layouts/page-wrapper";
 @import "components/polygon-container";
 @import "ui/buttons/btn";
-@import "ui/buttons/app-btn";
+@import "ui/buttons/btn-app";
+@import "ui/dropdown-menu";
+@import "ui/forms/input";
+@import "ui/buttons/btn-nav-panel";
+@import "components/main-menu";
+@import "components/dropdown-nav";
+@import "components/card-menu";
+@import "components/chip";
+@import "components/mobile-main-nav";
+@import "components/mobile-menu";

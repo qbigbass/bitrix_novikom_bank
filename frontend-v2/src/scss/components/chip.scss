@@ -1,0 +1,31 @@
+.chip {
+    display: inline-block;
+    white-space: nowrap;
+    padding: .25rem .5rem;
+    background-color: var(--dark-10);
+    color: var(--violet-100);
+    transition: color ease .33s;
+    border-radius: .25rem;
+
+    @include use-media(tablet-album) {
+        padding: .5rem 1rem;
+    }
+
+    &:hover {
+        color: var(--blue-100);
+    }
+
+    &--outlined {
+        background-color: transparent;
+        color: var(--dark-70);
+        border: 1px solid var(--purple-30);
+
+        @include use-media(tablet-album) {
+            padding: .25rem .5rem;
+        }
+
+        &:hover {
+            color: currentColor;
+        }
+    }
+}

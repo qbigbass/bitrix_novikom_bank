@@ -169,3 +169,36 @@ $spacers: (
         6: $spacer * 2.5,
         7: $spacer * 3,
 );
+
+// DropDown
+$dropdown-border-radius: .75rem;
+$dropdown-border-width: 0;
+$dropdown-min-width: 15rem;
+
+$enable-caret: false;
+
+//Navbar
+$navbar-padding-y: 0;
+
+// Inputs
+$input-border-color: var(--purple-30);
+$input-focus-border-color: var(--purple-70);
+$input-placeholder-color: var(--dark-70);
+$input-border-radius: .25rem;
+$input-focus-box-shadow: none;
+//--bs-border-color
+
+// Accordion
+$accordion-button-padding-y: 1rem;
+$accordion-button-padding-x: 0;
+
+$accordion-icon-width: 1.5rem;
+$accordion-button-active-bg: transparent;
+$accordion-border-radius: 0;
+
+$accordion-button-focus-border-color: none;
+$accordion-button-focus-box-shadow: none;
+
+$accordion-body-padding-y: 1rem;
+$accordion-body-padding-x: 0;
+$accordion-button-focus-box-shadow: 0;
