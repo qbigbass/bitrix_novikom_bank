@@ -1,0 +1,7 @@
+{
+  "title": "Документы",
+  "sort": "700",
+  "templates": [
+    "select.html"
+  ]
+}

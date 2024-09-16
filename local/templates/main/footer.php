@@ -5,133 +5,133 @@ use Bitrix\Main\Localization\Loc;
 ?>
 
 <!-- /#WORK_AREA# -------------------------------------------------------------------------------------------------- -->
-
-<footer class="a-footer">
-    <div class="content-container">
-        <div class="a-footer__content">
-            <?php $APPLICATION->IncludeComponent(
-                "bitrix:menu",
-                "main_menu_footer",
-                Array(
-                    "ALLOW_MULTI_SELECT" => "N",
-                    "CHILD_MENU_TYPE" => "left",
-                    "DELAY" => "N",
-                    "MAX_LEVEL" => "2",
-                    "MENU_CACHE_GET_VARS" => array(""),
-                    "MENU_CACHE_TIME" => "3600",
-                    "MENU_CACHE_TYPE" => "A",
-                    "MENU_CACHE_USE_GROUPS" => "Y",
-                    "ROOT_MENU_TYPE" => "top",
-                    "USE_EXT" => "N"
-                )
-            );?>
-            <div class="a-footer__apps">
-                <div class="a-polygon-container js-a-polygon-container">
-                    <div class="a-polygon-container__content">
-
-                        <div class="a-footer-apps">
-                            <div class="a-footer-apps__title headline-4"><?=Loc::getMessage('DOWNLOAD_MOBIL_APP_HEADER')?></div>
-                            <a href="<?=RU_STORE_APP_LINK?>" class="app-button app-button--m app-button--ru-store" target="_blank">
-                                <svg>
-                                    <use  xlink:href="/frontend/build/assets/app-logos.svg#ru-store"></use>
-                                </svg>
-                            </a>
-                            <a href="<?=RU_MARKET_APP_LINK?>" class="app-button app-button--m app-button--ru-market" target="_blank">
-                                <svg>
-                                    <use  xlink:href="/frontend/build/assets/app-logos.svg#ru-market"></use>
-                                </svg>
-                            </a>
-                            <a href="<?=NASH_STORE_APP_LINK?>" class="app-button app-button--m app-button--nash-store" target="_blank">
-                                <svg>
-                                    <use  xlink:href="/frontend/build/assets/app-logos.svg#nash-store"></use>
-                                </svg>
-                            </a>
-                            <a href="<?=MOBIL_APP_LINK?>" download="true" class="a-button a-button--lm a-button--primary a-button--link">
-                                <?=Loc::getMessage('DOWNLOAD_MOBIL_APP_BUTTON_TITLE_IN_FOOTER')?>
-                                <span class="a-icon a-button__icon">
-                                    <svg>
-                                        <use  xlink:href="/frontend/build/assets/svg-sprite.svg#icon-download"></use>
-                                    </svg>
-                                </span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="a-polygon-container__polygon js-a-polygon-container-polygon purple-70">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="js-a-polygon-container-svg">
-                            <polygon points="" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="10"></polygon>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-
-            <div class="a-footer-feedback a-footer__feedback">
-                <a href="tel:<?=clearPhoneNumber(MOBIL_PHONE_CONTACT_NUMBER)?>" class="a-footer-feedback__number headline-3"><?=MOBIL_PHONE_CONTACT_NUMBER?></a>
-                <a href="tel:<?=clearPhoneNumber(MOBIL_PHONE_CONTACT_NUMBER_2)?>" class="a-footer-feedback__number headline-3"><?=MOBIL_PHONE_CONTACT_NUMBER_2?></a>
-                <div class="a-footer-feedback__address body-m-light"><?=Loc::getMessage('ADDRESS')?></div>
-                <a href="<?=OFFICES_AND_ATMS_LINK?>" class="a-button a-button--m a-button--primary a-button--link a-button--outline a-button--text">
-                    <span class="a-icon a-button__icon">
-                        <svg>
-                            <use  xlink:href="/frontend/build/assets/svg-sprite.svg#icon-point"></use>
-                        </svg>
-                    </span>
-                    <?=Loc::getMessage('OFFICES_AND_ATMS_BUTTON_TITLE')?>
-                </a>
-                <a href="<?=TELEGRAM_LINK?>" class="a-button a-button--m a-button--primary a-button--link a-button--outline a-button--text">
-                    <span class="a-icon a-button__icon">
-                        <svg>
-                            <use  xlink:href="/frontend/build/assets/svg-sprite.svg#icon-circle-telegram"></use>
-                        </svg>
-                    </span>
-                    <?=Loc::getMessage('TELEGRAM_BUTTON_TITLE')?>
-                </a>
-                <button href="#" class="a-button a-button--lm a-button--primary a-button--full"><?=Loc::getMessage('FEEDBACK_BUTTON_TITLE')?></button>
-                <div class="a-footer-feedback__help">
-                    <button class="a-button a-footer-feedback__visually a-button--lm a-button--primary a-button--full a-button--outline">
-                        <span class="a-icon a-button__icon">
-                            <svg>
-                                <use  xlink:href="/frontend/build/assets/svg-sprite.svg#icon-glasses"></use>
-                            </svg>
-                        </span>
-                        <span class="a-footer-feedback__visually-desktop"><?=Loc::getMessage('VERSION_FOR_THE_VISUALLY_IMPAIRED_DESKTOP_BUTTON')?></span>
-                        <span class="a-footer-feedback__visually-mobile"><?=Loc::getMessage('VERSION_FOR_THE_VISUALLY_IMPAIRED_MOBIL_BUTTON')?></span>
-                    </button>
-                    <a href="<?=ENGLISH_VERSION_LINK?>" class="a-button a-button--lm a-button--primary a-button--full a-button--outline">
-                        English version
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="a-footer-info a-footer__footer-info">
+    </main>
+    <footer class="a-footer">
         <div class="content-container">
-            <div class="a-footer-info__content">
+            <div class="a-footer__content">
                 <?php $APPLICATION->IncludeComponent(
                     "bitrix:menu",
-                    "additional_menu_footer",
+                    "main_menu_footer",
                     Array(
                         "ALLOW_MULTI_SELECT" => "N",
                         "CHILD_MENU_TYPE" => "left",
                         "DELAY" => "N",
-                        "MAX_LEVEL" => "1",
+                        "MAX_LEVEL" => "2",
                         "MENU_CACHE_GET_VARS" => array(""),
                         "MENU_CACHE_TIME" => "3600",
                         "MENU_CACHE_TYPE" => "A",
                         "MENU_CACHE_USE_GROUPS" => "Y",
-                        "ROOT_MENU_TYPE" => "bottom",
+                        "ROOT_MENU_TYPE" => "top",
                         "USE_EXT" => "N"
                     )
                 );?>
-                <div class="a-footer-info__insurance">
-                    <img src="/frontend/build/img/footer-insurance.png" class="a-footer-info__insurance-img">
-                    <div class="a-footer-info__insurance-content">
-                        <p class="a-footer-info__insurance-license body-s-heavy"><?=Loc::getMessage('LICENSE_TITLE')?></p>
-                        <p class="a-footer-info__insurance-copy body-s-heavy"><?=Loc::getMessage('COPYRIGHT_TEXT')?></p>
+                <div class="a-footer__apps">
+                    <div class="a-polygon-container js-a-polygon-container">
+                        <div class="a-polygon-container__content">
+
+                            <div class="a-footer-apps">
+                                <div class="a-footer-apps__title headline-4"><?=Loc::getMessage('DOWNLOAD_MOBIL_APP_HEADER')?></div>
+                                <a href="<?=RU_STORE_APP_LINK?>" class="app-button app-button--m app-button--ru-store" target="_blank">
+                                    <svg>
+                                        <use  xlink:href="/frontend/build/assets/app-logos.svg#ru-store"></use>
+                                    </svg>
+                                </a>
+                                <a href="<?=RU_MARKET_APP_LINK?>" class="app-button app-button--m app-button--ru-market" target="_blank">
+                                    <svg>
+                                        <use  xlink:href="/frontend/build/assets/app-logos.svg#ru-market"></use>
+                                    </svg>
+                                </a>
+                                <a href="<?=NASH_STORE_APP_LINK?>" class="app-button app-button--m app-button--nash-store" target="_blank">
+                                    <svg>
+                                        <use  xlink:href="/frontend/build/assets/app-logos.svg#nash-store"></use>
+                                    </svg>
+                                </a>
+                                <a href="<?=MOBIL_APP_LINK?>" download="true" class="a-button a-button--lm a-button--primary a-button--link">
+                                    <?=Loc::getMessage('DOWNLOAD_MOBIL_APP_BUTTON_TITLE_IN_FOOTER')?>
+                                    <span class="a-icon a-button__icon">
+                                        <svg>
+                                            <use  xlink:href="/frontend/build/assets/svg-sprite.svg#icon-download"></use>
+                                        </svg>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="a-polygon-container__polygon js-a-polygon-container-polygon purple-70">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="js-a-polygon-container-svg">
+                                <polygon points="" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="10"></polygon>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="a-footer-feedback a-footer__feedback">
+                    <a href="tel:<?=clearPhoneNumber(MOBIL_PHONE_CONTACT_NUMBER)?>" class="a-footer-feedback__number headline-3"><?=MOBIL_PHONE_CONTACT_NUMBER?></a>
+                    <a href="tel:<?=clearPhoneNumber(MOBIL_PHONE_CONTACT_NUMBER_2)?>" class="a-footer-feedback__number headline-3"><?=MOBIL_PHONE_CONTACT_NUMBER_2?></a>
+                    <div class="a-footer-feedback__address body-m-light"><?=Loc::getMessage('ADDRESS')?></div>
+                    <a href="<?=OFFICES_AND_ATMS_LINK?>" class="a-button a-button--m a-button--primary a-button--link a-button--outline a-button--text">
+                        <span class="a-icon a-button__icon">
+                            <svg>
+                                <use  xlink:href="/frontend/build/assets/svg-sprite.svg#icon-point"></use>
+                            </svg>
+                        </span>
+                        <?=Loc::getMessage('OFFICES_AND_ATMS_BUTTON_TITLE')?>
+                    </a>
+                    <a href="<?=TELEGRAM_LINK?>" class="a-button a-button--m a-button--primary a-button--link a-button--outline a-button--text">
+                        <span class="a-icon a-button__icon">
+                            <svg>
+                                <use  xlink:href="/frontend/build/assets/svg-sprite.svg#icon-circle-telegram"></use>
+                            </svg>
+                        </span>
+                        <?=Loc::getMessage('TELEGRAM_BUTTON_TITLE')?>
+                    </a>
+                    <button href="#" class="a-button a-button--lm a-button--primary a-button--full"><?=Loc::getMessage('FEEDBACK_BUTTON_TITLE')?></button>
+                    <div class="a-footer-feedback__help">
+                        <button class="a-button a-footer-feedback__visually a-button--lm a-button--primary a-button--full a-button--outline">
+                            <span class="a-icon a-button__icon">
+                                <svg>
+                                    <use  xlink:href="/frontend/build/assets/svg-sprite.svg#icon-glasses"></use>
+                                </svg>
+                            </span>
+                            <span class="a-footer-feedback__visually-desktop"><?=Loc::getMessage('VERSION_FOR_THE_VISUALLY_IMPAIRED_DESKTOP_BUTTON')?></span>
+                            <span class="a-footer-feedback__visually-mobile"><?=Loc::getMessage('VERSION_FOR_THE_VISUALLY_IMPAIRED_MOBIL_BUTTON')?></span>
+                        </button>
+                        <a href="<?=ENGLISH_VERSION_LINK?>" class="a-button a-button--lm a-button--primary a-button--full a-button--outline">
+                            English version
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</footer>
+        <div class="a-footer-info a-footer__footer-info">
+            <div class="content-container">
+                <div class="a-footer-info__content">
+                    <?php $APPLICATION->IncludeComponent(
+                        "bitrix:menu",
+                        "additional_menu_footer",
+                        Array(
+                            "ALLOW_MULTI_SELECT" => "N",
+                            "CHILD_MENU_TYPE" => "left",
+                            "DELAY" => "N",
+                            "MAX_LEVEL" => "1",
+                            "MENU_CACHE_GET_VARS" => array(""),
+                            "MENU_CACHE_TIME" => "3600",
+                            "MENU_CACHE_TYPE" => "A",
+                            "MENU_CACHE_USE_GROUPS" => "Y",
+                            "ROOT_MENU_TYPE" => "bottom",
+                            "USE_EXT" => "N"
+                        )
+                    );?>
+                    <div class="a-footer-info__insurance">
+                        <img src="/frontend/build/img/footer-insurance.png" class="a-footer-info__insurance-img">
+                        <div class="a-footer-info__insurance-content">
+                            <p class="a-footer-info__insurance-license body-s-heavy"><?=Loc::getMessage('LICENSE_TITLE')?></p>
+                            <p class="a-footer-info__insurance-copy body-s-heavy"><?=Loc::getMessage('COPYRIGHT_TEXT')?></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 </div>
 <div class="mobile-main-nav js-mobile-main-nav">
     <div class="mobile-main-nav__panel">

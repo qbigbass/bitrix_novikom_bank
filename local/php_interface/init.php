@@ -1,6 +1,7 @@
 <?php
 require 'constants.php';
 require 'functions.php';
+require 'deferred_functions.php';
 require 'autoload.php';
 require 'events_handler.php';
 

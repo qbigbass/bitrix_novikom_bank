@@ -1,0 +1,36 @@
+.sp-block-my_list_with_cols .sp-item {
+    margin-bottom: 6px;
+    position: relative;
+}
+
+.sp-block-my_list_with_cols .sp-subitems {
+    margin-top: 6px;
+}
+
+.sp-block-my_list_with_cols .sp-item input {
+    width: calc(95% - 96px);
+    min-width: 10px;
+    padding: 0;
+    text-indent: 5px;
+}
+
+.sp-block-my_list_with_cols .sp-item-group{
+    font-size: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1;
+}
+.sp-block-my_list_with_cols .sp-subitems{
+    padding-left: 20px;
+}
+
+.sp-block-my_list_with_cols .list-row {
+    display: flex;
+}
+
+.sp-block-my_list_with_cols .list-row .sp-item-text,
+.sp-block-my_list_with_cols .list-row .sp-item-name {
+    width: 35%;
+    margin-right: 10px;
+}

@@ -4,49 +4,49 @@ $aMenuLinks = Array(
 		"Карты",
 		"/for-private-clients/cards/",
 		Array(),
-		Array("submenu_item_name"=>"Все карты НОВИКОМ"),
+		Array(),
 		""
 	),
 	Array(
 		"Вклады",
 		"/for-private-clients/deposits/",
 		Array(),
-		Array("submenu_item_name"=>"Все вклады НОВИКОМ"),
+		Array(),
 		""
 	),
 	Array(
 		"Кредиты",
-		"/for-private-clients/credits/",
+		"/for-private-clients/loans/",
 		Array(),
-		Array("submenu_item_name"=>"Все кредиты НОВИКОМ"),
+		Array(),
 		""
 	),
 	Array(
 		"Ипотека",
 		"/for-private-clients/mortgage/",
 		Array(),
-		Array("submenu_item_name"=>"Все ипотеки НОВИКОМ"),
+		Array(),
 		""
 	),
 	Array(
 		"Платежи и переводы",
 		"/for-private-clients/payments-and-transfers/",
 		Array(),
-		Array("submenu_item_name"=>"Все платежи и переводы НОВИКОМ"),
+		Array(),
 		""
 	),
 	Array(
 		"Онлайн сервисы",
 		"/for-private-clients/online-services/",
 		Array(),
-		Array("submenu_item_name"=>"Все онлайн сервисы НОВИКОМ"),
+		Array(),
 		""
 	),
 	Array(
 		"Услуги",
 		"/for-private-clients/services/",
 		Array(),
-		Array("submenu_item_name"=>"Все услуги НОВИКОМ"),
+		Array(),
 		""
 	),
 	Array(
