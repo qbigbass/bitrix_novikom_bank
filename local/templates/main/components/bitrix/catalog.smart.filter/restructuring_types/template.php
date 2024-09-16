@@ -19,7 +19,7 @@ $this->setFrameMode(true);
             <a href="<?=$arResult['FILTER_URL']?>" class="a-tab a-tab--lm a-tab--primary swiper-slide js-a-tab<?=$isActiveDefault?>">
                 Все варианты
             </a>
-            <?foreach($arResult["ITEMS"][44]["VALUES"] as $arValue) {?>
+            <?foreach($arResult["ITEMS"][$arResult['PROP_ID']]["VALUES"] as $arValue) {?>
                 <?$isActive = ($arValue['CHECKED']) ? ' is-active' : '';?>
                 <a href="<?=$arResult['FILTER_URL']?>?<?=$arValue['CONTROL_NAME']?>=Y&set_filter=Y" class="a-tab a-tab--lm a-tab--primary swiper-slide js-a-tab<?=$isActive?>">
                     <?=$arValue['VALUE']?>
