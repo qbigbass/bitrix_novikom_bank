@@ -27,7 +27,7 @@ class Version20240916133705 extends Version
         $helper->Iblock()->addSectionsFromTree(
             $iblockId,
             array (
-  0 => 
+  0 =>
   array (
     'NAME' => 'Реструктуризация',
     'CODE' => 'restrukturizatsiya',
@@ -43,5 +43,14 @@ class Version20240916133705 extends Version
     'UF_STEP_BY_STEP' => '{"version":2,"blocks":[{"heading":"Как реструктуризировать задолженность","items":[{"collapsed":false,"step_heading":"","step_description":"Оформите заявку на сайте или у кредитного менеджера в офисе Новиком"},{"collapsed":false,"step_heading":"","step_description":"Получите ответ кредитного специалиста Новикома  в течение 10 дней"},{"collapsed":false,"step_heading":"","step_description":"Подпишите документы в случае одобрения реструктуризации"}],"name":"my_step_by_step_visualization","settings":{},"layout":"0,0","meta":{}}],"layouts":[{"settings":{},"columns":[{"css":""}]}]}',
   ),
 )        );
+    }
+    
+    /**
+     * @throws Exceptions\MigrationException
+     * @throws Exceptions\RestartException
+     * @return bool|void
+     */
+    public function down()
+    {
     }
 }
