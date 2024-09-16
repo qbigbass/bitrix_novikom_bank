@@ -14,9 +14,9 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)
 /** @var string $templateFolder */
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
-$this->setFrameMode(true);
+$this->setFrameMode(true);?>
 
-$APPLICATION->IncludeComponent(
+<?$APPLICATION->IncludeComponent(
 	"bitrix:news.list",
 	"",
 	[
@@ -68,6 +68,8 @@ $APPLICATION->IncludeComponent(
         'sectionList' => $arResult['sectionList'],
 	],
 	$component
-);
+);?>
 
-$APPLICATION->IncludeFile('/local/php_interface/include/request_call.php');
+<?$APPLICATION->IncludeFile('/local/php_interface/include/cross_sale_products_block.php');?>
+
+<?$APPLICATION->IncludeFile('/local/php_interface/include/request_call.php');?>

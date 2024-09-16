@@ -2,29 +2,31 @@
 
 /** @var $block array */
 ?>
-
+<?if(!empty($block['text']['value']) && !empty($block['image']['file'])) {?>
 <section class="section-layout page-banner section-layout--s">
     <div class="content-container">
         <div class="page-banner__container">
-            <div class="page-banner__tag">
-                <div class="a-tag a-tag--outline href">
-                    <span class="a-tag__content body-s-heavy">
-                        <?= $block['tag'] ?>
-                    </span>
-                    <span class="a-tag__triangle">
-                        <svg width="14" height="21" viewBox="0 0 14 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M13.5 19.3486L0.934259 0.5H13.5V19.3486Z"></path>
-                        </svg>
-                    </span>
+            <?if(!empty($block['tag'])) {?>
+                <div class="page-banner__tag">
+                    <div class="a-tag a-tag--outline href">
+                        <span class="a-tag__content body-s-heavy">
+                            <?= $block['tag'] ?>
+                        </span>
+                        <span class="a-tag__triangle">
+                            <svg width="14" height="21" viewBox="0 0 14 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13.5 19.3486L0.934259 0.5H13.5V19.3486Z"></path>
+                            </svg>
+                        </span>
+                    </div>
                 </div>
-            </div>
+            <?}?>
             <div class="page-banner__title">
                 <<?= $block['htag']['type'] ?> class="headline-2"><?= $block['htag']['value'] ?></<?= $block['htag']['type'] ?>>
             </div>
             <div class="page-banner__content">
                 <div class="page-banner__text">
-                    <div class="body-l-light">
-                        <?= $block['text']['value'] ?>
+                    <div class="a-rte body-l-light">
+                        <?=Sprint\Editor\Blocks\Text::getValue($block['text'])?>
                     </div>
                 </div>
                 <? if (!empty($block['button_name']) && !empty($block['button_link'])) { ?>
@@ -51,3 +53,4 @@
         </picture>
     </div>
 </section>
+<?}?>

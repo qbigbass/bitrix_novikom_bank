@@ -1,0 +1,43 @@
+.sp-block-my_benefits .sp-x-box-block {
+  margin: 10px;
+}
+
+.sp-block-my_benefits .sp-buttons{
+    padding: 10px 10px 0;
+    background: #eee;
+    border: 1px solid #ccc;
+}
+.sp-block-my_benefits .sp-buttons {
+    font-size: 0;
+}
+
+.sp-block-my_benefits .sp-buttons span {
+    font-size: 13px;
+}
+
+.sp-block-my_benefits .sp-block-header {
+    padding: 10px 10px 0;
+    background: #eee;
+}
+
+.sp-block-my_benefits .sp-x-box {
+    border: 1px solid #ccc;
+    margin: 10px 0;
+}
+.sp-block-my_benefits .sp-x-box:first-child {
+    margin-top: 0;
+}
+
+.sp-block-my_benefits .sp-cont-box-handle {
+    cursor: move;
+}
+
+.sp-block-my_benefits .sp-x-box.ui-sortable-helper {
+    background: #e0e8ea;
+    padding: 10px 10px 20px;
+}
+
+.sp-block-my_benefits .sp-block-heading {
+    margin-bottom: 10px !important;
+    width: 50%;
+}
