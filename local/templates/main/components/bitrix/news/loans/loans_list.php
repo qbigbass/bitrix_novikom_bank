@@ -139,7 +139,7 @@ Galago\Frontend\Asset::getInstance()->addJsAndCss('loans');
                                             "SECTION_CODE" => "",
                                             "SECTION_FIELDS" => array("",""),
                                             "SECTION_ID" => $_REQUEST["SECTION_ID"],
-                                            "SECTION_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["section"],
+                                            "SECTION_URL" => $arResult["FOLDER"].'restructuring/'.$arResult["URL_TEMPLATES"]["section"],
                                             "SECTION_USER_FIELDS" => array("UF_ICON","UF_SHORT_CONDITIONS"),
                                             "SHOW_PARENT_NAME" => "Y",
                                             "TOP_DEPTH" => "1",
