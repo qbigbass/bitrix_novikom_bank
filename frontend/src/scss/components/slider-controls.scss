@@ -12,6 +12,7 @@ $base-transition: .3s ease-in-out;
     }
 
     &__navigation {
+        position: relative;
         display: none;
         gap: 1rem;
 

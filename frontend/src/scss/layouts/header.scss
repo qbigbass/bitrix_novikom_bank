@@ -2,7 +2,7 @@
     padding: 1rem 0;
 
     @include use-media(tablet-album) {
-        padding-bottom: 0;
+        padding: 0 0 1rem;
     }
 
     &__logo {
@@ -55,7 +55,7 @@
         @include use-media(tablet-album) {
             display: flex;
             justify-content: space-between;
-            padding-bottom: 1rem;
+            //padding-bottom: 1rem;
         }
     }
 
