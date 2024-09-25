@@ -33,8 +33,7 @@ function hideAllDropDownMenu() {
         $allDropDownNav.removeClass(MENU_CLASSES.openClass);
         closeAllLinks();
         for (let i = 0; i < $allDropDownNav.length; i++) {
-            const dropDownNav = $allDropDownNav[i];
-            setTabIndex(dropDownNav, "-1")
+            setTabIndex($allDropDownNav[i], "-1")
         }
     }
 }
