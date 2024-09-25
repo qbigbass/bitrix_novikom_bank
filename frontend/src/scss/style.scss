@@ -1,11 +1,11 @@
 //@import "bootstrap/scss/bootstrap";
 @import "bootstrap/scss/functions";
-@import "swiper/swiper-bundle.css";
 //@import "bootstrap/scss/variables-dark";
 
 @import "fonts";
 @import "colors";
 @import "variables";
+
 
 @import "bootstrap/scss/variables";
 
@@ -49,7 +49,7 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 @import "bootstrap/scss/spinners";
 @import "bootstrap/scss/offcanvas";
 @import "bootstrap/scss/placeholders";
-//@import "swiper/swiper";
+@import "swiper/css";
 
 @import "bootstrap/scss/helpers";
 

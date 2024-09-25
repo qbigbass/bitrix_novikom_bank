@@ -60,6 +60,15 @@ const config = {
             }
         ]
     },
+    devServer: {
+        watchFiles: {
+            paths: ['./src/pug/**/*.pug'],
+            options: {
+                usePolling: true
+            }
+        },
+        hot: true,
+    },
     plugins: [
         new MiniCssExtractPlugin({
             filename: './css/all.css'

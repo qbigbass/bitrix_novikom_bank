@@ -23,8 +23,10 @@ $border-width: 1px;
         transition: color ease .33s;
         position: relative;
 
-        //display: none;
-
+        @include use-media(laptop-x) {
+            padding-top: 1rem;
+            padding-bottom: calc(1rem - #{$border-width});
+        }
 
         &:hover {
             color: var(--blue-100);
