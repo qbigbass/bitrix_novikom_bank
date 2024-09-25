@@ -1,0 +1,70 @@
+.mobile-main-nav {
+    $root: #{&};
+    $breakpoint: tablet-album;
+    $navPanelHeightMobile: 2.5rem;
+    $navPanelHeightTablet: 3rem;
+    $navPanelGapMobile: 1rem;
+    $navPanelGapTablet: 1.5rem;
+
+    position: fixed;
+    left: .5rem;
+    right: .5rem;
+    bottom: .5rem;
+    z-index: 10;
+
+    @include use-media(tablet) {
+        bottom: 1rem;
+        left: 2.5rem;
+        right: 2.5rem;
+    }
+
+    @include use-media($breakpoint) {
+        display: none;
+    }
+
+    &__menu {
+        width: 100%;
+        background-color: var(--dark-0);
+        border-radius: .25rem;
+        z-index: 2;
+        transition: transform ease .33s;
+
+        position: absolute;
+        top: calc(100% + .5rem);
+        left: 0;
+        overflow: hidden;
+
+        @include use-media(tablet) {
+            top: calc(100% + 1rem);
+        }
+
+        @at-root #{$root}.is-menu-open & {
+            transform: translateY(calc(-100% - $navPanelHeightMobile - $navPanelGapMobile));
+
+            @include use-media(tablet) {
+                transform: translateY(calc(-100% - $navPanelHeightTablet - $navPanelGapTablet));
+            }
+        }
+
+        & .mobile-menu {
+            height: calc(100vh - $navPanelHeightMobile - 1.5rem);
+            height: calc(var(--vh, 1vh) * 100 - $navPanelHeightMobile - 1.5rem); // 1.5rem - gap
+
+            @include use-media(tablet) {
+                height: calc(100vh - $navPanelHeightTablet - 1.5rem - 5rem);
+                height: calc(var(--vh, 1vh) * 100 - $navPanelHeightTablet - 1.5rem - 5rem); // 1.5rem - gap, 5rem - margin-top
+            }
+        }
+    }
+}
+
+.nav-panel {
+    border-radius: .25rem;
+    background-color: var(--dark-0);
+    box-shadow: 0 0 1rem 0 #12111226;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+
+    position: relative;
+    z-index: 3;
+}

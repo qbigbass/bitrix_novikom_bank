@@ -1,0 +1,26 @@
+@use 'sass:math';
+@use 'sass:list';
+
+@import 'variables';
+@import 'functions';
+
+
+/**
+  $media, $maxMedia - должны совпадать с одним из ключей $mq-breakpoints
+ */
+
+@mixin use-media($media, $maxMedia: 0) {
+	@if (map-has-key($mq-breakpoints, $media) == false and map-has-key($mq-breakpoints, $maxMedia) == true) {
+		@media only screen and (max-width: #{strip-units(map-get($mq-breakpoints, $maxMedia)) - 1}px) {
+			@content;
+		}
+	} @else if (map-has-key($mq-breakpoints, $media) == true and map-has-key($mq-breakpoints, $maxMedia) == true) {
+		@media only screen and (min-width: map-get($mq-breakpoints, $media)) and (max-width: #{strip-units(map-get($mq-breakpoints, $maxMedia)) - 1}px) {
+			@content;
+		}
+	} @else {
+		@media only screen and (min-width: map-get($mq-breakpoints, $media)) {
+			@content;
+		}
+	}
+}

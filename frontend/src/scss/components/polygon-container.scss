@@ -1,0 +1,57 @@
+:root {
+    --polygon-padding: 1.5rem 1rem;
+    --polygon-square: 1.5rem;
+    --polygon-spacing: 0.5rem;
+
+    @include use-media(tablet) {
+        --polygon-padding: 2rem;
+        --polygon-square: 2rem;
+        --polygon-spacing: 1rem;
+    }
+
+    @include use-media(tablet-album) {
+        --polygon-padding: 2.5rem;
+        --polygon-square: 2.5rem;
+        --polygon-spacing: 1.5rem;
+    }
+}
+
+.polygon-container {
+    $root: #{&};
+
+    position: relative;
+    padding: 0 var(--polygon-spacing) var(--polygon-spacing) 0;
+
+    &__img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+        clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--polygon-square)), calc(100% - var(--polygon-square)) 100%, 0 100%);
+    }
+
+    &__content {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        row-gap: 1.5rem;
+        height: 100%;
+        z-index: 1;
+        clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--polygon-square)), calc(100% - var(--polygon-square)) 100%, 0 100%);
+    }
+
+    &__polygon {
+        position: absolute;
+        top: var(--polygon-spacing);
+        left: var(--polygon-spacing);
+        width: calc(100% - var(--polygon-spacing));
+        height: calc(100% - var(--polygon-spacing));
+        z-index: 0;
+    }
+
+    &--for-quote {
+        #{$root}__content {
+            clip-path: polygon(0 -40px, 100% 0, 100% calc(100% - var(--polygon-square)), calc(100% - var(--polygon-square)) 100%, 0 100%);
+        }
+    }
+}
