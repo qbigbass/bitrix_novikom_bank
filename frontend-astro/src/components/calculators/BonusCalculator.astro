@@ -4,7 +4,7 @@ import CalculatorLayout from "../layouts/CalculatorLayout.astro";
 import CalculatorResult from "../common/CalculatorResult/CalculatorResult.astro";
 import ASelectInput from "../ui/ASelectInput/ASelectInput.astro";
 import FormRow from "../layouts/FormLayout/FormRow.astro";
-import ADropDownButton from "../ui/ADropDown/ADropDownButton/ADropDownButton.astro";
+import ADropDownItem from "../ui/ADropDown/ADropDownItem/ADropDownItem.astro";
 ---
 
 <CalculatorLayout class="bonus-calculator">
@@ -21,33 +21,52 @@ import ADropDownButton from "../ui/ADropDown/ADropDownButton/ADropDownButton.ast
         />
         <FormRow cols={2}>
             <ASelectInput size="m" label="Тип карты" placeholder="Выберите" name="cardType">
-                <ADropDownButton
+                <ADropDownItem
                     selected
                     class="body-m-light"
-                    value="Дебетовая"
+                    value="debit"
+                    displayValue="Дебетовая"
                 >
                     Дебетовая
-                </ADropDownButton>
-                <ADropDownButton class="body-m-light" value="Кредитная">
-                    Кредитная
-                </ADropDownButton>
-                <ADropDownButton
+                </ADropDownItem>
+                <ADropDownItem
                     class="body-m-light"
-                    value="Кредитная 2"
+                    value="credit"
+                    displayValue="Кредитная"
+                >
+                    Кредитная
+                </ADropDownItem>
+                <ADropDownItem
+                    class="body-m-light"
+                    value="credit-2"
+                    displayValue="Кредитная 2"
                 >
                     Кредитная 2
-                </ADropDownButton>
+                </ADropDownItem>
             </ASelectInput>
             <ASelectInput size="m" label="Категория основной карты" placeholder="Выберите" name="cardCategory">
-                <ADropDownButton class="body-m-light" value="Premium">Premium</ADropDownButton>
-                <ADropDownButton
+                <ADropDownItem
+                    class="body-m-light"
+                    value="premium"
+                    displayValue="Premium"
+                >
+                    Premium
+                </ADropDownItem>
+                <ADropDownItem
                     selected
                     class="body-m-light"
-                    value="Standard"
+                    value="standard"
+                    displayValue="Standard"
                 >
                     Standard
-                </ADropDownButton>
-                <ADropDownButton class="body-m-light" value="Premium 2">Premium 2</ADropDownButton>
+                </ADropDownItem>
+                <ADropDownItem
+                    class="body-m-light"
+                    value="premium-2"
+                    displayValue="Premium 2"
+                >
+                    Premium 2
+                </ADropDownItem>
             </ASelectInput>
         </FormRow>
     </Fragment>
