@@ -1,0 +1,44 @@
+footer.footer
+    .container
+        div.row.row-gap-5.footer__content
+            include footer-nav
+            .col-12.col-md-6.col-xl-3
+                .polygon-container.js-polygon-container
+                    div(class="polygon-container__content")
+                        .d-flex.flex-column.row-gap-4.px-3.py-4.p-md-5.p-lg-6.bg-blue-10
+                            h5 Скачивайте мобильное приложение
+                            a.btn-app.btn.d-inline-flex.justify-content-center.align-items-center.bg-white(href="#", target="_blank")
+                                img(src="img/app-logos/ru-store.svg", alt="ru-store", loading="lazy")
+                            a.btn-app.btn.d-inline-flex.justify-content-center.align-items-center.bg-white(href="#", target="_blank")
+                                img(src="img/app-logos/ru-market.svg", alt="ru-market", loading="lazy")
+                            a.btn-app.btn.d-inline-flex.justify-content-center.align-items-center.bg-white(href="#", target="_blank")
+                                img(src="img/app-logos/nash-store.svg", alt="nash-store", loading="lazy")
+                            a.btn-app.btn.btn-primary.d-flex.align-items-center.gap-3.justify-content-center(href="#")
+                                | Скачать
+                                +svg-use('icon-download', 'icon size-m')
+
+                    div(class="polygon-container__polygon  purple-70 js-polygon-container-polygon")
+                        svg.js-polygon-container-svg(xmlns="http://www.w3.org/2000/svg")
+                            polygon(points="2,2 335,2 335,394 295,434 2,434", fill="none", stroke="currentColor", stroke-width="2", stroke-dasharray="10")
+            .col-12.col-md-6.col-xl-3.d-flex.flex-column.row-gap-3
+                a.h3(href="tel:88002527007") +7 (800) 250-70-07
+                a.h3(href="tel:84959747187") +7 (495) 974-71-87
+                span.dark-70
+                    | 119180 Москва,
+                    br
+                    | ул.&nbsp;Полянка Большая д.&nbsp;50/1 стр.&nbsp;1
+                a.btn.btn-link.d-inline-flex.gap-2.align-items-center(href="#")
+                    +svg-use('icon-point', 'icon size-m')
+                    | Офисы и банкоматы
+                a.btn.btn-link.d-inline-flex.gap-2.align-items-center(href="#")
+                    +svg-use('icon-circle-telegram', 'icon size-m')
+                    | Мы в Telegram
+                button.btn.btn-primary.btn-lg-lg(type="button") Обратная связь
+                .d-flex.flex-column.row-gap-3.pt-md-3
+                    a.btn.btn-lg-lg.btn-outline-primary.d-flex.gap-2.align-items-center.justify-content-center(href="#")
+                        +svg-use('icon-glasses', 'icon size-m')
+                        span.d-none.d-md-block Версия для слабовидящих
+                        span.d-md-none Для слабовидящих
+                    a.btn.btn-lg-lg.btn-outline-primary.d-flex.gap-2.align-items-center.justify-content-center(href="#")
+                        | English version
+    include footer-info

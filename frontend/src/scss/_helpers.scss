@@ -1,0 +1,39 @@
+.swiper.slider-cards {
+    margin: 0 -1.5rem;
+    padding: 0 1.5rem;
+
+    @include use-media(tablet) {
+        margin: 0 -2.5rem;
+        padding: 0 2.5rem;
+    }
+
+    @include use-media(tablet-album) {
+        margin: 0;
+        padding: 0;
+    }
+
+    & .swiper-slide {
+        height: auto;
+    }
+}
+
+.pattern-bg {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+    & img {
+        object-fit: cover;
+        display: block;
+    }
+
+    &--position-sm-top {
+        bottom: auto;
+        top: 0;
+
+        @include use-media(tablet) {
+            top: auto;
+            bottom: 0;
+        }
+    }
+}

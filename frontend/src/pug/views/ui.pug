@@ -1,0 +1,239 @@
+extends ../templates/base
+
+block title
+    title= 'Частные клиенты'
+    meta(name="description" content="Описание главной страницы")
+block content
+    -
+        var linkDownloadList = [
+            {
+                href: "#",
+                text: "Сборник тарифов на обслуживание банковских карт для физических лиц, выпущенных по 21.08.2022 г.",
+                dateTime: "12.12.23 18:56",
+                fileType: "XLS",
+            },
+            {
+                href: "#",
+                text: "Сборник тарифов на обслуживание банковских карт для физических лиц, выпущенных по 21.08.2022 г.",
+                dateTime: "12.12.23 18:56",
+                fileType: "XLS",
+            },
+            {
+                href: "#",
+                text: "Наименование документа",
+                dateTime: "12.12.23 18:56",
+                fileType: "XLS",
+            },
+            {
+                href: "#",
+                text: "Сборник тарифов на обслуживание банковских карт для физических лиц, выпущенных по 21.08.2022 г.",
+                dateTime: "12.12.23 18:56",
+                fileType: "XLS",
+            },
+        ]
+
+    include ../components/document-download
+
+    section.section-layout
+        .container
+            .d-flex.flex-column.row-gap-5
+                h2#typography Типографика
+                .row.row-gap-4.gap-md-0
+                    .col-12.col-md-6
+                        .d-flex.flex-column.gap-2
+                            h1 Заголовок 1
+                            h2 Заголовок 2
+                            h3 Заголовок 3
+                            h4 Заголовок 4
+                            h5 Заголовок 5
+                            h6 Заголовок 6
+                    .col-12.col-md-6
+                        .d-flex.flex-column.gap-3
+                            span.text-l.fw-semibold Текстовый фрейм L Heavy
+                            span.text-l Текстовый фрейм L
+                            span.fw-semibold.fs-2.lh-base Текстовый фрейм M Heavy
+                            span.text-m Текстовый фрейм M
+                            span.fw-semibold.fs-3.lh-sm Текстовый фрейм S Heavy
+                            span.text-s Текстовый фрейм S
+                            span.fs-4.lh-sm Подсказка
+                .row.row-gap-4
+                    .col-12.col-md-6.col-xl-2
+                        ul.fw-semibold.text-l.list
+                            li Список L
+                            li Список L
+                            li Список L
+                    .col-12.col-md-6.col-xl-2
+                        ul.fw-semibold.text-l.list
+                            li Список L Heavy
+                            li Список L Heavy
+                            li Список L Heavy
+                    .col-12.col-md-6.col-xl-2
+                        ul.list
+                            li Список M
+                            li Список M
+                            li Список M
+                    .col-12.col-md-6.col-xl-2
+                        ul.fw-semibold.list
+                            li Список M Heavy
+                            li Список M Heavy
+                            li Список M Heavy
+                    .col-12.col-md-6.col-xl-2
+                        ul.text-s.list
+                            li Список S
+                            li Список S
+                            li Список S
+                    .col-12.col-md-6.col-xl-2
+                        ul.fw-semibold.text-s.list
+                            li Список S Heavy
+                            li Список S Heavy
+                            li Список S Heavy
+                .row.row-gap-4
+                    .col-12.col-md-6.col-xl-3
+                        .d-inline-flex.flex-nowrap.align-items-baseline.text-l.fw-semibold.gap-1
+                            h4 Выгодно
+                            | от
+                            span.text-number-l.fw-bold 0
+                            span.text-number-l.font-roboto.fw-bold ₽
+                            | дней
+                    .col-12.col-md-6.col-xl-5
+                        each link in linkDownloadList
+                            +document-download(link)
+
+                    .col-12.col-md-6.col-xl-4
+                        p.text-primary Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, natus.
+                        p.text-secondary Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, natus.
+                        p.text-success Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, natus.
+    section.section-layout.section-layout--padding-top-0
+        .container
+            .d-flex.flex-column.row-gap-5
+                h2#buttons Кнопки
+                .row.row-gap-4.gap-md-0.row-gap-md-4
+                    .col-12.col-md-6.col-xl-3.d-flex.flex-column.row-gap-3.p-3
+                        button.btn.btn-primary.btn-lg(type="button") Кнопка Primary
+                        button.btn.btn-primary(type="button") Кнопка Primary
+                        button.btn.btn-primary.btn-sm(type="button") Кнопка Primary
+                    .col-12.col-md-6.col-xl-3.d-flex.flex-column.row-gap-3.p-3
+                        button.btn.btn-secondary.btn-lg(type="button") Кнопка Secondary
+                        button.btn.btn-secondary(type="button") Кнопка Secondary
+                        button.btn.btn-secondary.btn-sm(type="button") Кнопка Secondary
+                    .col-12.col-md-6.col-xl-3.d-flex.flex-column.row-gap-3.p-3
+                        button.btn.btn-tertiary.btn-lg(type="button") Кнопка Tertiary
+                        button.btn.btn-tertiary(type="button") Кнопка Tertiary
+                        button.btn.btn-tertiary.btn-sm(type="button") Кнопка Tertiary
+                    .col-12.col-md-6.col-xl-3.bg-body-tertiary.p-3.d-flex.flex-column.row-gap-3
+                        button.btn.btn-info.btn-lg(type="button") Кнопка Info
+                        button.btn.btn-info(type="button") Кнопка Info
+                        button.btn.btn-info.btn-sm(type="button") Кнопка Info
+                    .col-12.col-md-6.col-xl-3.d-flex.flex-column.row-gap-3.p-3
+                        button.btn.btn-outline-primary.btn-lg.d-inline-flex.gap-3.align-items-center.justify-content-center(type="button")
+                            +svg-use("icon-download", "icon size-m")
+                            | Outline Primary
+                            +svg-use("icon-download", "icon size-m")
+
+                        button.btn.btn-outline-primary.d-inline-flex.gap-2.align-items-center.justify-content-center(type="button")
+                            +svg-use("icon-download", "icon size-m")
+                            | Outline Primary
+                            +svg-use("icon-download", "icon size-m")
+                        button.btn.btn-outline-primary.btn-sm.d-inline-flex.gap-2.align-items-center.justify-content-center(type="button")
+                            +svg-use("icon-download", "icon size-s")
+                            | Кнопка Outline Primary
+                            +svg-use("icon-download", "icon size-s")
+                    .col-12.col-md-6.col-xl-3.d-flex.flex-column.row-gap-3.p-3
+                        button.btn.btn-link.btn-lg.d-inline-flex.gap-2.align-items-center(type="button")
+                            +svg-use("icon-download", "icon size-m")
+                            | Кнопка
+                            +svg-use("icon-download", "icon size-m")
+                        button.btn.btn-link.d-inline-flex.gap-2.align-items-center(type="button")
+                            +svg-use("icon-download", "icon size-m")
+                            | Кнопка
+                            +svg-use("icon-download", "icon size-m")
+                        button.btn.btn-link.btn-sm.d-inline-flex.gap-2.align-items-center(type="button")
+                            +svg-use("icon-download", "icon size-s")
+                            | Кнопка
+                            +svg-use("icon-download", "icon size-s")
+                    .col-12.col-md-6.col-xl-3.d-flex.flex-column.align-items-start.row-gap-3.bg-primary.p-3
+                        button.btn.btn-link.btn-lg.text-info.d-inline-flex.gap-2.align-items-center(type="button")
+                            +svg-use("icon-download", "icon size-m")
+                            | Кнопка
+                            +svg-use("icon-download", "icon size-m")
+                        button.btn.btn-link.text-info.d-inline-flex.gap-2.align-items-center(type="button")
+                            +svg-use("icon-download", "icon size-m")
+                            | Кнопка
+                            +svg-use("icon-download", "icon size-m")
+                        button.btn.btn-link.btn-sm.text-info.d-inline-flex.gap-2.align-items-center(type="button")
+                            +svg-use("icon-download", "icon size-s")
+                            | Кнопка
+                            +svg-use("icon-download", "icon size-s")
+    section.section-layout.section-layout--padding-top-0
+        .container
+            .d-flex.flex-column.row-gap-5
+                h2#dropDown DropDown
+                .row.row-gap-4.gap-md-0.row-gap-md-4(style="height: 384px")
+                    .col-12.col-md-6.col-xl-3
+                        .dropdown
+                            button.btn.btn-sm.btn-primary.dropdown-toggle(type="button", data-bs-toggle="dropdown", aria-expanded="false")
+                                | Онлайн-банк
+                            ul.dropdown-menu
+                                li
+                                    a.dropdown-item.fw-bold(href="#") Для частных лиц
+                                li
+                                    a.dropdown-item.fw-bold(href="#") Для организаций
+                    .col-12.col-md-6.col-xl-3
+                        ul.dropdown-menu.show
+                            li
+                                a.dropdown-item.fw-bold(href="#") Для частных лиц
+                            li
+                                a.dropdown-item.fw-bold(href="#") Для организаций
+                            li
+                                a.dropdown-item.fw-bold(href="#") Для организаций
+                            li
+                                a.dropdown-item.fw-bold(href="#") Для организаций
+                            li
+                                a.dropdown-item.fw-bold(href="#") Для организаций
+                            li
+                                a.dropdown-item.fw-bold(href="#") Для организаций
+                            li
+                                a.dropdown-item.fw-bold(href="#") Для организаций
+                            li
+                                a.dropdown-item.fw-bold(href="#") Для организаций
+                            li
+                                a.dropdown-item.fw-bold(href="#") Для организаций
+                            li
+                                a.dropdown-item.fw-bold(href="#") Для организаций
+                            li
+                                a.dropdown-item.fw-bold(href="#") Для организаций
+                            li
+                                a.dropdown-item.fw-bold(href="#") Для организаций
+    section.section-layout.section-layout--padding-top-0
+        .container
+            .d-flex.flex-column.row-gap-5
+                h2#chip Chip
+                .row.row-gap-4.gap-md-0.row-gap-md-4
+                    .col-6
+                        .d-flex.flex-wrap.gap-3
+                            a.chip.text-s(href="#")
+                                | Зарплатный проект
+                            a.chip.text-s(href="#")
+                                | Зарплатная карта
+                            a.chip.text-s(href="#")
+                                | Расчетный счет
+                            a.chip.text-s(href="#")
+                                | Ипотека в новостройке
+                            a.chip.text-s(href="#")
+                                | Кредит на бизнес
+                            a.chip.text-s(href="#")
+                                | Депозиты
+                            a.chip.text-s(href="#")
+                                | Вклады
+                            a.chip.text-s(href="#")
+                                | Социально-платежная карта МИР
+                            a.chip.text-s(href="#")
+                                | Банковские гарантии
+                    .col-6
+                        .d-flex.flex-wrap.gap-3
+                            span.chip.chip--outlined.caption-m
+                                | chip--outlined
+                            span.chip.chip--outlined.caption-m
+                                | доб. 055
+                            span.chip.chip--outlined.caption-m
+                                | Банковские гарантии

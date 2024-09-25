@@ -1,0 +1,15 @@
+mixin card-product(data)
+    .card-product(class= `card-product--${data.color}`)
+        div.card-product__inner
+            div.card-product__tag.tag
+                span.tag__content.text-s.fw-semibold= data.tag
+                span.tag__triangle
+                    svg(width="14", height="21", viewBox="0 0 14 21", fill="none", xmlns="http://www.w3.org/2000/svg")
+                        path(d="M13.5 19.3486L0.934259 0.5H13.5V19.3486Z")
+            div.card-product__content
+                h4.card-product__title!= data.title
+                if data.subtitle
+                    .d-inline-flex.flex-nowrap.align-items-baseline.text-l.fw-semibold.gap-1.violet-100= data.subtitle.before
+                        span.text-number-l.fw-bold= data.subtitle.number
+            img.card-product__img(src=`../img/big-illustrations/${data.img}`, alt="", loading="lazy")
+            a(href="#").btn.btn-primary.card-product__button= data.button

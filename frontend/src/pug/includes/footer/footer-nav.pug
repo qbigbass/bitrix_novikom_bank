@@ -1,0 +1,184 @@
+-
+    var menuList = [
+        [
+            {
+                href: "#",
+                text: "Карты"
+            },
+            {
+                href: "#",
+                text: "Вклады"
+            },
+            {
+                href: "#",
+                text: "Кредиты"
+            },
+            {
+                href: "#",
+                text: "Ипотека"
+            },
+            {
+                href: "#",
+                text: "Платежи и переводы"
+            },
+            {
+                href: "#",
+                text: "Онлайн сервисы"
+            },
+            {
+                href: "#",
+                text: "Услуги"
+            }
+        ],
+        [
+            {
+                href: "#",
+                text: "Финансирование"
+            },
+            {
+                href: "#",
+                text: "Зарплатный проект"
+            },
+            {
+                href: "#",
+                text: "Депозиты"
+            },
+            {
+                href: "#",
+                text: "ДБО"
+            },
+            {
+                href: "#",
+                text: "Финансовые рынки"
+            },
+            {
+                href: "#",
+                text: "Ценные бумаги"
+            },
+            {
+                href: "#",
+                text: "Онлайн-банк для бизнеса"
+            }
+        ],
+        [
+            {
+                href: "#",
+                text: "Расчетный счет"
+            },
+            {
+                href: "#",
+                text: "Кредитование"
+            },
+            {
+                href: "#",
+                text: "ДБО"
+            },
+            {
+                href: "#",
+                text: "Гарантии"
+            },
+            {
+                href: "#",
+                text: "Депозиты"
+            },
+            {
+                href: "#",
+                text: "Меры господдержки"
+            },
+            {
+                href: "#",
+                text: "Страхование"
+            },
+            {
+                href: "#",
+                text: "ВЭД"
+            },
+            {
+                href: "#",
+                text: "Услуги"
+            },
+            {
+                href: "#",
+                text: "Онлайн-банк для бизнеса"
+            }
+        ],
+        [
+            {
+                href: "#",
+                text: "Новиком сегодня"
+            },
+            {
+                href: "#",
+                text: "Пресс-центр"
+            },
+            {
+                href: "#",
+                text: "Устав и документы"
+            },
+            {
+                href: "#",
+                text: "Закупки"
+            },
+            {
+                href: "#",
+                text: "Реквизиты"
+            },
+            {
+                href: "#",
+                text: "Карьера"
+            },
+            {
+                href: "#",
+                text: "Контактная информация"
+            },
+        ],
+        [
+            {
+                href: "#",
+                text: "Для частных клиентов"
+            },
+            {
+                href: "#",
+                text: "Для малого и среднего бизнеса"
+            },
+            {
+                href: "#",
+                text: "Для корпораивных клиентов"
+            },
+        ]
+    ]
+
+nav.col-lg-12.col-xl-6.d-none.d-lg-block
+    .row.row-gap-7
+        .col-4.d-flex.flex-column.row-gap-2.align-items-start
+            a.fw-semibold.dark-100 Частным клиентам
+            each item in menuList[0]
+                a.text-s.dark-70(href= item.href)!= item.text
+
+        .col-4.d-flex.flex-column.row-gap-2.align-items-start
+            a.fw-semibold.dark-100 Корпоративным клиентам
+            each item in menuList[1]
+                a.text-s.dark-70(href= item.href)!= item.text
+
+        .col-4.d-flex.flex-column.row-gap-2.align-items-start
+            a.fw-semibold.dark-100(href="#") Малому и&nbsp;среднему бизнесу
+            each item in menuList[2]
+                a.text-s.dark-70(href= item.href)!= item.text
+
+        .col-4.d-flex.flex-column.row-gap-2.align-items-start
+            a.fw-semibold.dark-100(href="#") О банке
+            each item in menuList[3]
+                a.text-s.dark-70(href= item.href)!= item.text
+
+        .col-4.d-flex.flex-column.row-gap-2.align-items-start
+            a.fw-semibold.dark-100(href="#") Помощь
+            each item in menuList[4]
+                a.text-s.dark-70(href= item.href)!= item.text
+
+        .col-4.d-flex.flex-column.row-gap-2.align-items-start
+            a.fw-semibold.dark-100(href="#")
+                | Private Banking
+            a.fw-semibold.dark-100(href="#")
+                | Финансовым институтам
+            a.fw-semibold.dark-100(href="#")
+                | Устойчивое развитие

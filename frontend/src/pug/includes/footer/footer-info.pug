@@ -1,0 +1,78 @@
+-
+    var linkFirstCol = [
+        {
+            href: "#",
+            title: "Карта сайта"
+        },
+        {
+            href: "#",
+            title: "Противодействие коррупции"
+        },
+        {
+            href: "#",
+            title: "Защита от мошенничества"
+        },
+        {
+            href: "#",
+            title: "Раскрытие информации"
+        },
+        {
+            href: "#",
+            title: "Порядок обращения в банк"
+        },
+        {
+            href: "#",
+            title: "Инсайдерам Новикомбанка"
+        },
+        {
+            href: "#",
+            title: "Страховые компании"
+        }
+    ]
+
+    var linkSecondCol = [
+        {
+            href: "#",
+            title: "Информация о&nbsp;процентных ставках по&nbsp;договорам банковского вклада с&nbsp;физическими лицами"
+        },
+        {
+            href: "#",
+            title: "Раскрытие информации профессиональным участником"
+        },
+        {
+            href: "#",
+            title: "О&nbsp;праве потребителей на&nbsp;направление обращения финансовому уполномоченному"
+        },
+        {
+            href: "#",
+            title: "Информационно-просветительский портал Банка России &laquo;Финансовая культура&raquo;"
+        },
+        {
+            href: "#",
+            title: "Раскрытие информации на&nbsp;сайте агентства &laquo;Интерфакс-ЦРКИ&raquo;"
+        },
+        {
+            href: "#",
+            title: "Информация о&nbsp;лицах, под контролем или значительным влиянием которых находится Банк"
+        },
+    ]
+
+div.footer__info
+    .container
+        .row.row-gap-3.row-gap-md-5
+            .col-12.col-md-6.col-lg-4.col-xl-4
+                .d-flex.flex-column.row-gap-3
+                    each link in linkFirstCol
+                        a.text-s.dark-70(href= link.href)= link.title
+
+            .col-12.col-md-6.col-lg-4.col-xl-5
+                .d-flex.flex-column.row-gap-3
+                    each link in linkSecondCol
+                        a.text-s.dark-70(href= link.href)!= link.title
+
+            .col-12.col-lg-4.col-xl-3
+                div(class="footer__copyright")
+                    img(src="../img/footer-insurance.png", width="120", height="120", alt="", loading="lazy")
+                    .d-flex.flex-column.row-gap-3
+                        span.text-s.fw-semibold.dark-70 Генеральная лицензия №&nbsp;2546 от&nbsp;20&nbsp;ноября&nbsp;2014&nbsp;года
+                        span.text-s.fw-semibold.dark-70 ©&nbsp;2009&nbsp;–&nbsp;2024 АО&nbsp;АКБ&nbsp;«НОВИКОМБАНК»

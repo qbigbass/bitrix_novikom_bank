@@ -1,0 +1,20 @@
+doctype html
+html(lang="ru")
+    head
+        block title
+            title= ''
+            meta(name="description" content="Описание страницы")
+        include ../includes/head
+        block style
+
+    body
+        include ../mixins/svg-use
+
+        .page-wrapper.js-page-wrapper
+            block content
+
+            include ../includes/footer/footer
+
+        include ../includes/mobile-nav/mobile-main-nav
+        block script
+        script(src="js/bundle.js")
