@@ -45,18 +45,20 @@ const config = {
                 use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
             },
             {
-                test: /\.(png|jpg|gif)$/,
+                test: /\.(png|svg|jpg|jpeg|gif)$/i,
                 use: ['file-loader']
+            },
+            {
+                test: /\.(woff|woff2|eot|ttf|otf)$/i,
+                type: 'asset/resource',
+                generator: {
+                    filename: 'fonts/[name][ext]'
+                }
             },
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 use: ['babel-loader']
-            },
-            {
-                test: /\.(woff|woff2|ttf|eot|svg)$/,
-                exclude: /node_modules/,
-                use: 'ignore-loader'
             }
         ]
     },
@@ -75,10 +77,6 @@ const config = {
         }),
         new CopyWebpackPlugin({
             patterns: [
-                {
-                    from: './src/fonts',
-                    to: './fonts'
-                },
                 {
                     from: './src/img',
                     to: './img'

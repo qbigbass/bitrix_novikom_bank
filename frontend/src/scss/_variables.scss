@@ -49,10 +49,11 @@ $display-font-sizes: (
 $font-family-open-sans: 'Open Sans', sans-serif;
 .font-roboto {
     font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 700;
 }
 
 //$prefix: 'bs-';
-$font-family-base: 'Open Sans', sans-serif;
+$font-family-base: $font-family-open-sans;
 //$font-family-base: var(--#{$prefix}font-open-sans);
 //$font-family-code: var(--#{$prefix}font-roboto);
 $font-family-code: 'Roboto Condensed', sans-serif;
