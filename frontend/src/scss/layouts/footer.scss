@@ -12,8 +12,16 @@
     }
 
     &__info {
-        padding: 2.5rem 0;
+        padding: 2.5rem 0 3.5rem;
         background-color: var(--dark-10);
+
+        @include use-media(tablet) {
+            padding-bottom: 4.5rem;
+        }
+
+        @include use-media(tablet-album) {
+            padding-bottom: 2.5rem;
+        }
 
         a {
 
