@@ -7,6 +7,19 @@ const MENU_CLASSES = {
     openClass: 'is-open',
 }
 
+function setTabIndex(elem, value) {
+    const inputs = $(elem).find('input');
+    const links = $(elem).find('a');
+
+    $(inputs).each(function(){
+       $(this).attr('tabindex', value);
+    });
+
+    $(links).each(function() {
+        $(this).attr('tabindex', value);
+    });
+}
+
 function closeAllLinks() {
     const $links = $(MENU_CLASSES.links);
     if ($links.length) {
@@ -19,6 +32,10 @@ function hideAllDropDownMenu() {
     if ($allDropDownNav.length) {
         $allDropDownNav.removeClass(MENU_CLASSES.openClass);
         closeAllLinks();
+        for (let i = 0; i < $allDropDownNav.length; i++) {
+            const dropDownNav = $allDropDownNav[i];
+            setTabIndex(dropDownNav, "-1")
+        }
     }
 }
 
@@ -28,13 +45,18 @@ function toggleDropDownMenu(id, open) {
 
     if (open) {
         dropDownNav.addClass(MENU_CLASSES.openClass);
+        setTabIndex(dropDownNav, "0")
     } else {
         dropDownNav.removeClass(MENU_CLASSES.openClass);
+        setTabIndex(dropDownNav, "-1")
     }
 }
 
 function toggleDropMenu($links, currentLink) {
-    const id = currentLink.data('target');
+    let id = currentLink.data('target');
+    if (!id) {
+        id = currentLink.attr('href');
+    }
 
     if (currentLink.hasClass(MENU_CLASSES.activeClass)) {
         currentLink.removeClass(MENU_CLASSES.activeClass);

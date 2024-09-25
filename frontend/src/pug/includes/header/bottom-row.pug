@@ -270,10 +270,11 @@ div.header__bottom-row
     .navbar.w-100
         each item in menuList
             if item.target
-                div.header__link.js-dropdown-link.gap-1.align-items-center(
+                a.header__link.js-dropdown-link.gap-1.align-items-center(
                     class= item.additionalClass,
-                    data-target= `#${item.target}`,
+                    href= `#${item.target}`,
                     role="button",
+                    data-bs-toggle="collapse"
                     aria-expanded="false",
                     aria-controls= item.target
                     )
@@ -281,7 +282,7 @@ div.header__bottom-row
                     span.icon.size-s(slot="icon-after")
                         +svg-use("icon-chevron-down-small")
             else
-                a(href="#", class="header__link js-dropdown-link d-inline-flex gap-1 align-items-center")
+                a(href="#").header__link.d-inline-flex.gap-1.align-items-center
                     span.fw-semibold= item.text
 
         .dropdown
@@ -292,11 +293,12 @@ div.header__bottom-row
                 each item in dropDownMenuLink
                     if item.target
                         li
-                            div.dropdown-item.fw-bold.d-inline-flex.align-items-center.justify-content-between.d-xl-none.js-dropdown-link(
-                                data-target= `#${item.target}`,
+                            a.dropdown-item.fw-bold.d-inline-flex.align-items-center.justify-content-between.d-xl-none.js-dropdown-link(
+                                href= `#${item.target}`,
                                 role="button",
                                 aria-expanded="false",
-                                aria-controls= item.target)= item.text
+                                aria-controls= item.target,
+                                data-bs-toggle="collapse")= item.text
                                 span.icon.size-m(slot="icon-after")
                                     +svg-use("icon-chevron-right")
                     else
