@@ -73,13 +73,12 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 @import "ui/tag";
 @import "components/main-menu";
 @import "components/dropdown-nav";
-@import "components/card-menu";
 @import "components/chip";
 @import "components/mobile-main-nav";
 @import "components/mobile-menu";
 @import "components/banners/banner-hero";
 @import "components/slider-controls";
-@import "components/cards/card-product";
+@import "components/cards/index";
 @import "ui/forms/form-feedback";
 
 @import "helpers";

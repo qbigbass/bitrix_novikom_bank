@@ -33,11 +33,12 @@ block content
         ]
 
     include ../components/document-download
+    include ../cards/card-product
 
-    section.section-layout
+    section#typography.section-layout
         .container
             .d-flex.flex-column.row-gap-5
-                h2#typography Типографика
+                h2 Типографика
                 .row.row-gap-4.gap-md-0
                     .col-12.col-md-6
                         .d-flex.flex-column.gap-2
@@ -103,10 +104,10 @@ block content
                         p.text-primary Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, natus.
                         p.text-secondary Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, natus.
                         p.text-success Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, natus.
-    section.section-layout.section-layout--padding-top-0
+    section#buttons.section-layout.section-layout--padding-top-0
         .container
             .d-flex.flex-column.row-gap-5
-                h2#buttons Кнопки
+                h2 Кнопки
                 .row.row-gap-4.gap-md-0.row-gap-md-4
                     .col-12.col-md-6.col-xl-3.d-flex.flex-column.row-gap-3.p-3
                         button.btn.btn-primary.btn-lg(type="button") Кнопка Primary
@@ -164,10 +165,10 @@ block content
                             +svg-use("icon-download", "icon size-s")
                             | Кнопка
                             +svg-use("icon-download", "icon size-s")
-    section.section-layout.section-layout--padding-top-0
+    section#dropDown.section-layout.section-layout--padding-top-0
         .container
             .d-flex.flex-column.row-gap-5
-                h2#dropDown DropDown
+                h2 DropDown
                 .row.row-gap-4.gap-md-0.row-gap-md-4(style="height: 384px")
                     .col-12.col-md-6.col-xl-3
                         .dropdown
@@ -204,10 +205,10 @@ block content
                                 a.dropdown-item.fw-bold(href="#") Для организаций
                             li
                                 a.dropdown-item.fw-bold(href="#") Для организаций
-    section.section-layout.section-layout--padding-top-0
+    section#chip.section-layout.section-layout--padding-top-0
         .container
             .d-flex.flex-column.row-gap-5
-                h2#chip Chip
+                h2 Chip
                 .row.row-gap-4.gap-md-0.row-gap-md-4
                     .col-6
                         .d-flex.flex-wrap.gap-3
@@ -237,3 +238,43 @@ block content
                                 | доб. 055
                             span.chip.chip--outlined.caption-m
                                 | Банковские гарантии
+
+    section#card-product.section-layout.section-layout--padding-top-0
+        -
+            var cardProductList = [
+                {
+                    color: 'green',
+                    tag: 'Частным клиентам',
+                    title: 'Вклад «Рантье»',
+                    img: 'large-individual/contribution-rentier.png',
+                    button: 'Открыть вклад',
+                    subtitle: {
+                        before: 'до',
+                        number: '15,5%',
+                    }
+                },
+                {
+                    color: 'orange',
+                    tag: 'Корпоративным клиентам',
+                    title: 'Резервирование <br>счетов',
+                    img: 'large-corporate/account-reservation.png',
+                    button: 'Подать заявку',
+                    description: 'Дистанционная подача заявки на&nbsp;открытие расчетного счета'
+                },
+                {
+                    color: 'yellow',
+                    tag: 'Малому и среднему бизнесу',
+                    title: 'Экспресс-гарантии <br>44-ФЗ, 223-ФЗ',
+                    img: 'large-corporate/guarantees.png',
+                    button: 'Подать заявку',
+                    description: 'Принятие решения за&nbsp;1 день, до&nbsp;30&nbsp;000&nbsp;000&nbsp;рублей, без залога'
+                },
+            ]
+        .container
+            .d-flex.flex-column.row-gap-5
+                h2 Card Product
+
+                .row.row-gap-4.gap-md-0.row-gap-md-4
+                    each item in cardProductList
+                        .col-4
+                            +card-product(item)
