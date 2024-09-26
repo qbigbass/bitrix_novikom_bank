@@ -4,95 +4,13 @@ block title
     title= 'Частные клиенты'
     meta(name="description" content="Описание главной страницы")
 block content
-    -
-        var cardProductList = [
-            {
-                color: 'green',
-                tag: 'Частным клиентам',
-                title: 'Вклад «Рантье»',
-                img: 'large-individual/contribution-rentier.png',
-                button: 'Открыть вклад',
-                subtitle: {
-                    before: 'до',
-                    number: '15,5%',
-                }
-            },
-            {
-                color: 'orange',
-                tag: 'Корпоративным клиентам',
-                title: 'Резервирование <br>счетов',
-                img: 'large-corporate/account-reservation.png',
-                button: 'Подать заявку',
-                description: 'Дистанционная подача заявки на&nbsp;открытие расчетного счета'
-            },
-            {
-                color: 'yellow',
-                tag: 'Малому и среднему бизнесу',
-                title: 'Экспресс-гарантии <br>44-ФЗ, 223-ФЗ',
-                img: 'large-corporate/guarantees.png',
-                button: 'Подать заявку',
-                description: 'Принятие решения за&nbsp;1 день, до&nbsp;30&nbsp;000&nbsp;000&nbsp;рублей, без залога'
-            },
-            {
-                color: 'green',
-                tag: 'Частным клиентам',
-                title: 'Платежный стикер <br>&laquo;Мир&raquo;',
-                img: 'large-individual/payment-sticker.png',
-                button: 'Подробнее',
-                description: 'Полноценная банковская карта с&nbsp;NFC-чипом'
-            },
-            {
-                color: 'yellow',
-                tag: 'Малому и среднему бизнесу',
-                title: 'Экспресс-гарантии <br>44-ФЗ, 223-ФЗ',
-                img: 'large-corporate/guarantees.png',
-                button: 'Подать заявку',
-                description: 'Принятие решения за&nbsp;1 день, до&nbsp;30&nbsp;000&nbsp;000&nbsp;рублей, без залога'
-            }
-        ]
-
-    include ../cards/card-product
     include ../includes/header/header
     include ../components/banner-hero
-    include ../components/pattern-bg
 
     section.section-layout
         .container
             h3.px-lg-6.mb-6.mb-lg-7
                 | Предложения банка Новиком
-            .swiper.slider-cards.js-slider-product-cards
-                .swiper-wrapper
-                    each item in cardProductList
-                        .swiper-slide
-                            +card-product(item)
+            include ../includes/layout/slider-card-product
 
-                .slider-controls.js-swiper-controls.mt-3.mt-md-4
-                    div.slider-controls__pagination.js-swiper-pagination
-                    div.slider-controls__navigation.js-swiper-nav
-                        button.swiper-button-prev.js-swiper-prev(type="button")
-                            span.icon.size-m
-                                +svg-use("icon-chevron-left")
-
-                        button.swiper-button-next.js-swiper-next(type="button")
-                            span.icon.size-m
-                                +svg-use("icon-chevron-right")
-
-    section.section-layout.bg-blue-10
-        .container
-            .row
-                .col-12.col-md-6.col-xl-8.position-relative.z-1.mb-5.mb-md-0.d-flex.flex-column.align-items-start.gap-5.gap-lg-6
-                    .d-flex.flex-column.align-items-start.gap-3.gap-md-4
-                        h3 Остались вопросы
-                        p.text-l.mb-0
-                            | Оставьте свой телефон и&nbsp;мы&nbsp;перезвоним вам, либо задайте вопрос в&nbsp;чате
-                        button.btn.btn-info(type="button") Отркыть чат
-                        p.text-s.dark-70.mb-0
-                            | Нажимая кнопку &laquo;Перезвоните мне&raquo;, вы&nbsp;соглашаетесь с&nbsp;условиями предоставления информации
-                .col-12.col-md-6.col-xl-4.position-relative.z-1
-                    form.form-feedback.bg-white(action="/", method="POST")
-                        div
-                            label.form-label(for="mobile-phone") Мобильный телефон
-                            input#mobile-phone.form-control(type="text", aria-describedby="mobile-phone-hint", placeholder="+7")
-                        button.btn.btn-primary.btn-lg-lg.w-100(type="button")
-                            | Перезвоните мне
-        +pattern-bg('section-heavy', 'light', 'pattern-bg--position-sm-top')
+    include ../includes/layout/section-feedback
