@@ -19,6 +19,7 @@
 .polygon-container {
     $root: #{&};
 
+    display: block;
     position: relative;
     padding: 0 var(--polygon-spacing) var(--polygon-spacing) 0;
 

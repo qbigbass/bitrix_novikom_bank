@@ -6,7 +6,6 @@
 @import "colors";
 @import "variables";
 
-
 @import "bootstrap/scss/variables";
 
 $theme-colors: map-merge($theme-colors, $custom-colors);
