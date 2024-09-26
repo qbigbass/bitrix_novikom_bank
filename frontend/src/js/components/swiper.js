@@ -75,6 +75,42 @@ export function initHeroBanner () {
                     delay: VARIABLES.delay,
                 },
             },
+        },
+        on: {
+            slideChange: function () {
+                const activeSlide = this.slides[this.activeIndex];
+                const links = activeSlide.querySelectorAll('a');
+
+                // Установить tabindex="-1" для всех ссылок в неактивных слайдах
+                this.slides.forEach((slide, index) => {
+                    if (index !== this.activeIndex) {
+                        const links = slide.querySelectorAll('a');
+                        links.forEach((link) => {
+                            link.setAttribute('tabindex', '-1');
+                        });
+                    }
+                });
+
+                // Установить tabindex="0" для ссылок в активном слайде
+                links.forEach((link) => {
+                    link.setAttribute('tabindex', '0');
+                });
+            },
+        },
+    });
+}
+
+function setTabIndex(slides) {
+    slides.forEach((slide) => {
+        const links = slide.querySelectorAll('a');
+        if (slide.classList.contains('swiper-slide-visible')) {
+            links.forEach((link) => {
+                link.setAttribute('tabindex', '0');
+            });
+        } else {
+            links.forEach((link) => {
+                link.setAttribute('tabindex', '-1');
+            });
         }
     });
 }
@@ -84,6 +120,7 @@ export function initProductCardSlider() {
         modules: [Pagination, Navigation],
         slidesPerView: 1,
         spaceBetween: 8,
+        watchSlidesProgress: true,
         pagination: {
             el: ".js-swiper-pagination",
             type: "bullets",
@@ -107,7 +144,15 @@ export function initProductCardSlider() {
                 spaceBetween: 40,
                 slidesPerView: 3,
             }
-        }
+        },
+        on: {
+            init: function () {
+                setTabIndex(this.slides);
+            },
+            slideChange: function () {
+                setTabIndex(this.slides);
+            },
+        },
     });
 }
 
