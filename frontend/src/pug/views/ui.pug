@@ -34,6 +34,7 @@ block content
 
     include ../components/document-download
     include ../cards/card-product
+    include ../cards/card-service
 
     section#typography.section-layout
         .container
@@ -278,3 +279,31 @@ block content
                     each item in cardProductList
                         .col-4
                             +card-product(item)
+
+    section#card-service.section-layout.section-layout--padding-top-0
+        .container
+            .d-flex.flex-column.row-gap-5
+                h2 Card Service
+
+                .row.row-gap-4.gap-md-0.row-gap-md-4
+                    -
+                        var cardServiceList = [
+                            {
+                                href: "#",
+                                title: "Интернет-банк",
+                                icon: "icon-a-web-bank"
+                            },
+                            {
+                                href: "#",
+                                title: "Кредиты",
+                                icon: "icon-a-money"
+                            },
+                            {
+                                href: "#",
+                                title: "Ипотека",
+                                icon: "icon-a-house"
+                            }
+                        ]
+                    each card in cardServiceList
+                        .col-4
+                            +card-service(card)
