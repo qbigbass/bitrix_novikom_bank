@@ -1,0 +1,13 @@
+.bank-service-layout {
+    &__services {
+      & .swiper {
+          margin: 0 -1.5rem;
+          padding: 0 1.5rem;
+
+          @include use-media(tablet) {
+              margin: 0;
+              padding: 0;
+          }
+      }
+    }
+}
