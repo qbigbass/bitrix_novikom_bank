@@ -1,0 +1,7 @@
+mixin card-service(data)
+    a.service-card(href= data.href)
+        .service-card__content
+            h3.service-card__title.headline-3= data.title
+            span.icon.service-card__icon
+                +svg-use(data.icon)
+        +pattern-bg('card', 'light')

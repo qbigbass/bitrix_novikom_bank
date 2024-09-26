@@ -6,11 +6,41 @@ block title
 block content
     include ../includes/header/header
     include ../components/banner-hero
+    include ../cards/card-service
 
     section.section-layout
         .container
             h3.px-lg-6.mb-6.mb-lg-7
                 | Предложения банка Новиком
             include ../includes/layout/slider-card-product
+
+    section.section-layout.bank-service-layout
+        .container
+            .bank-service-layout__wrapper
+                .bank-service-layout__services
+                    .swiper.js-persistent-slider
+                        .swiper-wrapper.js-swiper-wrapper
+                            -
+                                var cardServiceList = [
+                                    {
+                                        href: "#",
+                                        title: "Интернет-банк",
+                                        icon: "icon-a-web-bank"
+                                    }
+                                ]
+                            each card in cardServiceList
+                                .swiper-slide
+                                    +card-service(card)
+
+                        .slider-controls.js-swiper-controls.mt-3.mt-md-4
+                            div.slider-controls__pagination.js-swiper-pagination
+                            div.slider-controls__navigation.js-swiper-nav
+                                button.swiper-button-prev.js-swiper-prev(type="button")
+                                    span.icon.size-m
+                                        +svg-use("icon-chevron-left")
+
+                                button.swiper-button-next.js-swiper-next(type="button")
+                                    span.icon.size-m
+                                        +svg-use("icon-chevron-right")
 
     include ../includes/layout/section-feedback
