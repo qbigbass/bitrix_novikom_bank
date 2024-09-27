@@ -4,10 +4,10 @@
 // tabItemClassName - str
 
 mixin tabs(tabsList, tabsClassName, tabItemClassName)
-    ul.nav.nav-tabs(class=className)
+    ul.tabs-panel.nav.nav-tabs.d-inline-flex.p-0.border.border-purple.rounded.w-auto(class=className)
         each tab, index in tabsList
-            li.nav-item
+            li.tabs-panel__item.nav-item.z-2
                 if index == 0
-                    a.nav-link.active(aria-current="page")(href=tab.link)= tab.linkText
+                    a.tabs-panel__item-link.nav-link.active(aria-current="page")(href=tab.link)= tab.linkText
                 else
-                    a.nav-link(href=tab.link)= tab.linkText
+                    a.tabs-panel__item-link.nav-link(href=tab.link)= tab.linkText
