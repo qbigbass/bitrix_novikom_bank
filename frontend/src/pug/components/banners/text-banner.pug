@@ -6,10 +6,10 @@
 // borderColor - str
 
 mixin text-banner(title, breadcrumbsData, description, borderColor)
-    section.text-banner.px-0.px-md-6.bg-linear-blue-purple(class=`text-banner--border-${borderColor}`)
-        div.container.text-banner__container.relative
+    section.text-banner.px-0.px-lg-8.px-lg-6.bg-linear-blue-purple(class=`text-banner--border-${borderColor}`)
+        div.container.text-banner__container.position-relative.z-2
             .row
-                .col-12.col-md-6.col-xl-8.position-relative.z-1.mb-5.mb-md-0.pt-6
+                .col-12.position-relative.z-1.mb-5.mb-md-0.pt-6
                     .d-flex.flex-column.align-items-start.gap-3.gap-md-4
                         a.text-banner__breadcrumbs.text-s.text-white-50(href=breadcrumbsData.link)= breadcrumbsData.linkText
                         h1.text-banner__title.dark-0= title

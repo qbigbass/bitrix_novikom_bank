@@ -1,8 +1,13 @@
 .text-banner {
-    --border-thickness: 0.5rem;
+    --border-thickness: 0.25rem;
     position: relative;
-    min-height: 25rem;
+    min-height: calc(20rem + var(--border-thickness));
     overflow: hidden;
+
+    @include use-media(tablet-album) {
+        --border-thickness: 0.5rem;
+        min-height: calc(25.5rem + var(--border-thickness));
+    }
 
     //BORDER COLORS
     &.text-banner--border-green {
@@ -12,16 +17,20 @@
     &.text-banner--border-orange {
         border-top: var(--border-thickness) solid var(--orange-100);
     }
-    
-    &__container {
-        position: relative;
-        z-index: 2;
-    }
 
     &__img {
         pointer-events: none;
         user-select: none;
         opacity: 0.3;
+        height: 100%;
+
+        @include use-media(tablet) {
+            height: auto;
+        }
+
+        img {
+            height: inherit;
+        }
     }
 
 }
