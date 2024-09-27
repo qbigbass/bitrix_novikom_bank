@@ -1,0 +1,29 @@
+mixin card-product-list(data)
+    .card-product-list.bg-dark-10.w-100
+        div.card-product-list__inner
+            div.card-product-list__image-container
+                img.card-product-list__image(src=`../img/big-illustrations/${data.imgSrc}`, alt="", loading="lazy")
+            div.card-product-list__content.flex-column.d-flex.align-start.gap-12
+                h2.card-product-list__title!= data.title
+                if data.description
+                    span.text-l.card-product-list__description.m-0!= data.description
+                if data.conditions.length > 0
+                    .d-flex.card-product-list__condition-list
+                        each item in data.conditions
+                            .card-product-list__condition.d-flex.flex-column.gap-2
+                                .d-inline-flex.flex-nowrap.align-items-baseline.gap-1
+                                    if item.startText
+                                        span.text-l.fw-semibold= item.startText
+                                    if item.beforeText
+                                        span.text-l.fw-semibold= item.beforeText
+                                    if item.text
+                                        span.text-number-l.fw-bold= item.text
+                                    if item.currency
+                                        span.text-number-l.fw-bold= item.currency
+                                if item.description
+                                    span.text-m.dark-70= item.description
+
+                .d-flex.gap-6
+                    if data.textButton
+                        a(href="#").btn.btn-tertiary.btn-lg.card-product-list__button= data.textButton
+                    a(href="#").btn.btn-link.btn-lg.d-inline-flex.gap-2.align-items-center.card-product-list__button= "Подробнее"
