@@ -1,0 +1,83 @@
+extends ../templates/base
+
+block title
+    title= 'Частные клиенты - Кредиты'
+    meta(name="description" content="Описание страницы с кредитами")
+block content
+    -
+        var cardProductList = [
+            {
+                color: 'green',
+                tag: 'Частным клиентам',
+                title: 'Вклад «Рантье»',
+                img: 'large-individual/contribution-rentier.png',
+                button: 'Открыть вклад',
+                subtitle: {
+                    before: 'до',
+                    number: '15,5%',
+                }
+            },
+            {
+                color: 'green',
+                tag: 'Частным клиентам',
+                title: 'IT-ипотека',
+                img: 'large-individual/it-mortgage.png',
+                button: 'Оформить',
+                subtitle: {
+                    before: 'от',
+                    number: '4,8%',
+                }
+            },
+            {
+                color: 'green',
+                tag: 'Частным клиентам',
+                title: 'Платежный стикер <br>&laquo;Мир&raquo;',
+                img: 'large-individual/payment-sticker.png',
+                button: 'Подробнее',
+                description: 'Полноценная банковская карта с&nbsp;NFC-чипом'
+            },
+            {
+                color: 'green',
+                tag: 'Частным клиентам',
+                title: 'IT-ипотека',
+                img: 'large-individual/it-mortgage.png',
+                button: 'Оформить',
+                subtitle: {
+                    before: 'от',
+                    number: '4,8%',
+                }
+            },
+            {
+                color: 'green',
+                tag: 'Частным клиентам',
+                title: 'IT-ипотека',
+                img: 'large-individual/it-mortgage.png',
+                button: 'Оформить',
+                subtitle: {
+                    before: 'от',
+                    number: '4,8%',
+                }
+            },
+        ]
+
+    include ../cards/card-product
+    include ../includes/header/header
+    include ../components/banners/text-banner
+
+    +text-banner(
+        "Кредиты",
+        {linkText: "Частным клиентам", link: "/"},
+        "Быстрые кредиты по оптимальной ставке на любые цели",
+        "green"
+    )
+
+    section.loans-catalog.section-layout.d-flex.flex-column.gap-7
+        include ../includes/layout/section-loans-catalog
+
+    include ../includes/layout/section-feedback
+
+    section.section-layout
+        .container
+            h3.px-lg-6.mb-6.mb-lg-7
+                | Смотрите также
+            include ../includes/layout/slider-card-product

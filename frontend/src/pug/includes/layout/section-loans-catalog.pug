@@ -1,0 +1,298 @@
+-
+    const tabsList = [
+        {
+            link: '#1',
+            linkText: 'Все кредиты',
+        },
+        {
+            link: '#2',
+            linkText: 'Потребительские',
+        },
+        {
+            link: '#3',
+            linkText: 'На образование',
+        },
+        {
+            link: '#4',
+            linkText: 'Рефинансирование',
+        },
+        {
+            link: '#5',
+            linkText: 'Овердрафт',
+        },
+        {
+            link: '#6',
+            linkText: 'Реструктуризация',
+        },
+    ]
+
+    const consumerLoans = [
+        {
+            title: 'Кредит на любые цели<br> для зарплатных клиентов',
+            description: 'Воплощение задуманных планов и реализация любых целей уже сегодня',
+            imgSrc: 'large-individual/credit-for-any-purpose-salary-clients.png',
+            links: [],
+            tagText: '',
+            textButton: 'Оформить заявку',
+            conditions: [
+                {
+                    startText: '',
+                    beforeText: 'от',
+                    text: '18%',
+                    afterText: '',
+                    currency: '',
+                    description: 'Ставка'
+                },
+                {
+                    startText: '',
+                    beforeText: 'до',
+                    text: '1 500 000',
+                    afterText: '',
+                    currency: '₽',
+                    description: 'Сумма'
+                },
+                {
+                    startText: '',
+                    beforeText: 'до',
+                    text: '3 лет',
+                    afterText: '',
+                    currency: '',
+                    description: 'Срок'
+                }
+            ]
+        },
+        {
+            title: 'Кредит на любые цели <br> для стратегических клиентов',
+            description: 'Воплощение задуманных планов и реализация любых целей уже сегодня',
+            imgSrc: 'large-individual/credit-for-any-purpose-strategic-clients.png',
+            links: [],
+            tagText: '',
+            textButton: 'Оформить заявку',
+            conditions: [
+                {
+                    startText: '',
+                    beforeText: 'от',
+                    text: '18%',
+                    afterText: '',
+                    currency: '',
+                    description: 'Ставка'
+                },
+                {
+                    startText: '',
+                    beforeText: 'до',
+                    text: '1 500 000',
+                    afterText: '',
+                    currency: '₽',
+                    description: 'Сумма'
+                },
+                {
+                    startText: '',
+                    beforeText: 'до',
+                    text: '3 лет',
+                    afterText: '',
+                    currency: '',
+                    description: 'Срок'
+                }
+            ]
+        }
+    ]
+
+    const educationLoans = [
+        {
+            title: 'Кредит на образование',
+            description: 'Для оплаты до 100% от стоимости обучения в вузе или дополнительного образования',
+            imgSrc: 'large-individual/credit-education.png',
+            links: [],
+            tagText: '',
+            textButton: 'Оформить заявку',
+            conditions: [
+                {
+                    startText: '',
+                    beforeText: 'от',
+                    text: '16%',
+                    afterText: '',
+                    currency: '',
+                    description: 'Ставка'
+                },
+                {
+                    startText: '',
+                    beforeText: 'до',
+                    text: '3 000 000',
+                    afterText: '',
+                    currency: '₽',
+                    description: 'Сумма'
+                },
+                {
+                    startText: '',
+                    beforeText: 'до',
+                    text: '8 лет',
+                    afterText: '',
+                    currency: '',
+                    description: 'Срок'
+                }
+            ]
+        }
+    ]
+
+    const overdraftLoans = [
+        {
+            title: 'Овердрафт',
+            description: 'Кредит «до зарплаты» на случай непредвиденных расходов и неотложных платежей',
+            imgSrc: 'large-individual/overdraft.png',
+            links: [],
+            tagText: '',
+            textButton: 'Оформить заявку',
+            conditions: [
+                {
+                    startText: '',
+                    beforeText: 'от',
+                    text: '16%',
+                    afterText: '',
+                    currency: '',
+                    description: 'Ставка'
+                },
+                {
+                    startText: '',
+                    beforeText: 'до',
+                    text: '3 000 000',
+                    afterText: '',
+                    currency: '₽',
+                    description: 'Сумма'
+                },
+                {
+                    startText: '',
+                    beforeText: 'до',
+                    text: '8 лет',
+                    afterText: '',
+                    currency: '',
+                    description: 'Срок'
+                }
+            ]
+        }
+    ]
+
+    const refinancingLoans = [
+        {
+            title: 'Кредит на рефинансирование<br> для зарплатных клиентов',
+            description: 'Воплощение задуманных планов и реализация любых целей уже сегодня',
+            imgSrc: 'large-individual/refinancing-salary-clients.png',
+            links: [],
+            tagText: '',
+            textButton: 'Оформить заявку',
+            conditions: [
+                {
+                    startText: '',
+                    beforeText: 'от',
+                    text: '16%',
+                    afterText: '',
+                    currency: '',
+                    description: 'Ставка'
+                },
+                {
+                    startText: '',
+                    beforeText: 'до',
+                    text: '5 000 000',
+                    afterText: '',
+                    currency: '₽',
+                    description: 'Сумма'
+                },
+                {
+                    startText: '',
+                    beforeText: 'до',
+                    text: '8 лет',
+                    afterText: '',
+                    currency: '',
+                    description: 'Срок'
+                }
+            ]
+        },
+        {
+            title: 'Кредит на рефинансирование<br> для стратегических клиентов',
+            description: 'Воплощение задуманных планов и реализация любых целей уже сегодня',
+            imgSrc: 'large-individual/refinancing-strategic-clients.png',
+            links: [],
+            tagText: '',
+            textButton: 'Оформить заявку',
+            conditions: [
+                {
+                    startText: '',
+                    beforeText: 'от',
+                    text: '16%',
+                    afterText: '',
+                    currency: '',
+                    description: 'Ставка'
+                },
+                {
+                    startText: '',
+                    beforeText: 'до',
+                    text: '5 000 000',
+                    afterText: '',
+                    currency: '₽',
+                    description: 'Сумма'
+                },
+                {
+                    startText: '',
+                    beforeText: 'до',
+                    text: '8 лет',
+                    afterText: '',
+                    currency: '',
+                    description: 'Срок'
+                }
+            ]
+        }
+    ]
+
+    const restructuringLoans = [
+        {
+            title: 'Реструктуризация',
+            description: 'Программы для заемщиков, у которых возникли трудности с погашением кредита',
+            imgSrc: 'large-individual/restructuring.png',
+            links: [],
+            tagText: '',
+            conditions: [
+                {
+                    startText: 'Уменьшение',
+                    beforeText: '',
+                    text: '',
+                    afterText: '',
+                    currency: '',
+                    description: 'Кредитной ставки'
+                },
+                {
+                    startText: 'Кредитные',
+                    beforeText: '',
+                    text: '',
+                    afterText: '',
+                    currency: '',
+                    description: 'Каникулы'
+                }
+            ]
+        }
+    ]
+
+    const allLoans = [
+        ...consumerLoans,
+        ...educationLoans,
+        ...overdraftLoans,
+        ...refinancingLoans,
+        ...restructuringLoans
+    ]
+
+include ../../cards/card-product-list
+include ../../components/tabs
+
+section.loans-catalog__tabs
+        .container
+            .row
+                +tabs(
+                    tabsList,
+                    "loans-catalog__tab-list",
+                    "loans-catalog__tab-list-item"
+                )
+
+section.loans-catalog__list
+        .container
+            .row
+                .col-12.position-relative.z-1.d-flex.flex-column.align-items-start.gap-5.gap-md-7
+                    each item in allLoans
+                        +card-product-list(item)

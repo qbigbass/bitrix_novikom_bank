@@ -71,6 +71,10 @@
 .dark-70 { color: var(--dark-70); }
 .dark-100 { color: var(--dark-100); }
 
+.bg-dark-10 {
+	background-color: var(--dark-10);
+}
+
 //VIOLET
 .violet-10 { color: var(--violet-10); }
 .violet-30 { color: var(--violet-30); }
@@ -97,6 +101,10 @@
 
 .bg-blue-10 {
 	background-color: var(--blue-10);
+}
+
+.bg-linear-blue-purple {
+	background: linear-gradient(14.48deg, var(--blue-150) 20%, var(--purple-150) 80%);
 }
 
 //GREEN
