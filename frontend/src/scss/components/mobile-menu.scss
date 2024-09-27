@@ -222,7 +222,7 @@
 
         & .accordion-header {
 
-            a {
+            a:not([data-bs-toggle="collapse"]) {
                 &:after {
                     display: none;
                 }

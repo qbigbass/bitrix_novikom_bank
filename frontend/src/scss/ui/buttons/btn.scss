@@ -14,6 +14,12 @@ button {
     font-weight: 600;
 }
 
+.btn-primary {
+    &:hover {
+        background-color: var(--violet-150);
+    }
+}
+
 .btn-tertiary {
     color: #fff;
 
@@ -25,6 +31,21 @@ button {
 .btn-link {
     font-weight: 700;
     padding: 0;
+}
+
+.btn-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+
+    &.btn-lg {
+        gap: 1rem;
+    }
+
+    &.btn-link {
+        justify-content: flex-start;
+    }
 }
 
 .btn-lg-lg {

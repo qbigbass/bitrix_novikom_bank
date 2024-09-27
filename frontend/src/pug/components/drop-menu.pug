@@ -1,13 +1,12 @@
 mixin drop-menu(data)
     .dropdown-nav.js-dropdown-nav(id= data.id role="menu")
         .row
-            .col-3.col-xxl-4.d-flex.flex-column.align-items-start.gap-4.violet-100
-                each link in data.items[0]
-                    a(href= link.href, class="header__link fw-semibold" tabindex="-1")= link.text
-            if data.items[1] && data.items[1].length
-                .col-3.col-xxl-4.d-flex.flex-column.align-items-start.gap-4.violet-100
-                    each link in data.items[1]
-                        a(href= link.href, class="header__link fw-semibold" tabindex="-1")= link.text
+            .col-6.col-xxl-8
+                .row.row-gap-4
+                    each link in data.items
+                        .col-6.violet-100
+                            a.header__link.fw-semibold(href= link.href tabindex="-1")= link.text
+
             if data.showBanner
                 .col-6.col-xxl-4
                     a(href="#" tabindex="-1").polygon-container.js-polygon-container

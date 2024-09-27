@@ -1,7 +1,7 @@
 mixin card-service(data)
-    a.service-card(href= data.href)
-        .service-card__content
-            h3.service-card__title.headline-3= data.title
-            span.icon.service-card__icon
+    a.card-service(href= data.href)
+        .card-service__content.d-flex.flex-column
+            h4.dark-100= data.title
+            span.icon.card-service__icon
                 +svg-use(data.icon)
-        +pattern-bg('card', 'light')
+        +pattern-bg('card', 'light', 'pattern-bg--position-sm-top')

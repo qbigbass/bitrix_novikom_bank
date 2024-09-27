@@ -1,9 +1,15 @@
 $base-transition: .3s ease-in-out;
 
 .slider-controls {
+    $root: #{&};
+
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @include use-media(tablet-album) {
+        justify-content: space-between;
+    }
 
     &__pagination {
         display: flex;
@@ -21,16 +27,17 @@ $base-transition: .3s ease-in-out;
         }
     }
 
-    &__navigation.swiper-navigation-disabled {
-        display: none !important;
+    @at-root .swiper-navigation-disabled & {
+
+        #{$root}__navigation {
+            display: none;
+        }
     }
 
-    &__pagination.swiper-pagination-disabled {
-        display: none !important;
-    }
-
-    @include use-media(tablet-album) {
-        justify-content: space-between;
+    @at-root .swiper-pagination-disabled & {
+        #{$root}__pagination {
+            display: none;
+        }
     }
 }
 
