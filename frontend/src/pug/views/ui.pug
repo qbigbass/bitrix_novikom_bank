@@ -34,6 +34,8 @@ block content
 
     include ../components/document-download
     include ../cards/card-product
+    include ../cards/card-service
+    include ../cards/card-service-app
 
     section#typography.section-layout
         .container
@@ -126,42 +128,42 @@ block content
                         button.btn.btn-info(type="button") Кнопка Info
                         button.btn.btn-info.btn-sm(type="button") Кнопка Info
                     .col-12.col-md-6.col-xl-3.d-flex.flex-column.row-gap-3.p-3
-                        button.btn.btn-outline-primary.btn-lg.d-inline-flex.gap-3.align-items-center.justify-content-center(type="button")
+                        button.btn.btn-outline-primary.btn-lg.btn-icon(type="button")
                             +svg-use("icon-download", "icon size-m")
                             | Outline Primary
                             +svg-use("icon-download", "icon size-m")
 
-                        button.btn.btn-outline-primary.d-inline-flex.gap-2.align-items-center.justify-content-center(type="button")
+                        button.btn.btn-outline-primary.btn-icon(type="button")
                             +svg-use("icon-download", "icon size-m")
                             | Outline Primary
                             +svg-use("icon-download", "icon size-m")
-                        button.btn.btn-outline-primary.btn-sm.d-inline-flex.gap-2.align-items-center.justify-content-center(type="button")
+                        button.btn.btn-outline-primary.btn-sm.btn-icon(type="button")
                             +svg-use("icon-download", "icon size-s")
                             | Кнопка Outline Primary
                             +svg-use("icon-download", "icon size-s")
                     .col-12.col-md-6.col-xl-3.d-flex.flex-column.row-gap-3.p-3
-                        button.btn.btn-link.btn-lg.d-inline-flex.gap-2.align-items-center(type="button")
+                        button.btn.btn-link.btn-lg.btn-icon(type="button")
                             +svg-use("icon-download", "icon size-m")
                             | Кнопка
                             +svg-use("icon-download", "icon size-m")
-                        button.btn.btn-link.d-inline-flex.gap-2.align-items-center(type="button")
+                        button.btn.btn-link.btn-icon(type="button")
                             +svg-use("icon-download", "icon size-m")
                             | Кнопка
                             +svg-use("icon-download", "icon size-m")
-                        button.btn.btn-link.btn-sm.d-inline-flex.gap-2.align-items-center(type="button")
+                        button.btn.btn-link.btn-sm.btn-icon(type="button")
                             +svg-use("icon-download", "icon size-s")
                             | Кнопка
                             +svg-use("icon-download", "icon size-s")
                     .col-12.col-md-6.col-xl-3.d-flex.flex-column.align-items-start.row-gap-3.bg-primary.p-3
-                        button.btn.btn-link.btn-lg.text-info.d-inline-flex.gap-2.align-items-center(type="button")
+                        button.btn.btn-link.btn-lg.text-info.btn-icon(type="button")
                             +svg-use("icon-download", "icon size-m")
                             | Кнопка
                             +svg-use("icon-download", "icon size-m")
-                        button.btn.btn-link.text-info.d-inline-flex.gap-2.align-items-center(type="button")
+                        button.btn.btn-link.text-info.btn-icon(type="button")
                             +svg-use("icon-download", "icon size-m")
                             | Кнопка
                             +svg-use("icon-download", "icon size-m")
-                        button.btn.btn-link.btn-sm.text-info.d-inline-flex.gap-2.align-items-center(type="button")
+                        button.btn.btn-link.btn-sm.text-info.btn-icon(type="button")
                             +svg-use("icon-download", "icon size-s")
                             | Кнопка
                             +svg-use("icon-download", "icon size-s")
@@ -276,5 +278,53 @@ block content
 
                 .row.row-gap-4.gap-md-0.row-gap-md-4
                     each item in cardProductList
-                        .col-4
+                        .col-12.col-md-6.col-xl-4
                             +card-product(item)
+
+    section#card-service.section-layout.section-layout--padding-top-0
+        .container
+            .d-flex.flex-column.row-gap-5
+                h2 Card Service
+
+                .row.row-gap-4.gap-md-0.row-gap-md-4
+                    -
+                        var cardServiceList = [
+                            {
+                                href: "#",
+                                title: "Интернет-банк",
+                                icon: "icon-a-web-bank"
+                            }
+                        ]
+                    each card in cardServiceList
+                        .col-12.col-md-6.col-lg-4
+                            +card-service(card)
+                        .col-12.col-lg-8
+                            +card-service-app({
+                                title: "Мобильное приложение",
+                                benefits: [
+                                    {
+                                        icon: "icon-mobile",
+                                        text: "Управление кешбэком и&nbsp;бонусами"
+                                    },
+                                    {
+                                        icon: "icon-time",
+                                        text: "Доступ к&nbsp;услугам банка 24/7"
+                                    },
+                                    {
+                                        icon: "icon-cash",
+                                        text: "Платежи и&nbsp;переводы без комиссии"
+                                    }
+                                ]
+                            })
+                                a(href="#").btn.btn-info.d-none.d-md-inline-flex.align-items-center
+                                    img(src="img/app-logos/ru-store.svg" width="94" height="24" alt="RuStore" loading="lazy")
+                                a(href="#").btn.btn-info.d-none.d-md-inline-flex.align-items-center
+                                    img(src="img/app-logos/ru-market.svg" width="120" height="28" alt="RuMarket" loading="lazy")
+                                a(href="#").btn.btn-info.d-none.d-md-inline-flex.align-items-center
+                                    img(src="img/app-logos/nash-store.svg" width="112" height="18" alt="NashStore" loading="lazy")
+                                a(href="#").btn.btn-info.btn-icon.d-none.d-md-inline-flex
+                                    | Скачать
+                                    +svg-use("icon-download", "icon size-m")
+                                a(href="#").btn.btn-sm.btn-info.btn-icon.d-md-none
+                                    | Скачать
+                                    +svg-use("icon-download-small", "icon size-s")

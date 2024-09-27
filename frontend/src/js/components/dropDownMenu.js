@@ -75,7 +75,8 @@ function initDropdownMenu() {
         return false;
     }
 
-    $links.on('click', function() {
+    $links.on('click', function(e) {
+        e.preventDefault();
         toggleDropMenu($links, $(this));
     });
 
