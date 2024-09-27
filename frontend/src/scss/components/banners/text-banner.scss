@@ -1,0 +1,27 @@
+.text-banner {
+    --border-thickness: 0.5rem;
+    position: relative;
+    min-height: 25rem;
+    overflow: hidden;
+
+    //BORDER COLORS
+    &.text-banner--border-green {
+        border-top: var(--border-thickness) solid var(--green-100);
+    }
+
+    &.text-banner--border-orange {
+        border-top: var(--border-thickness) solid var(--orange-100);
+    }
+    
+    &__container {
+        position: relative;
+        z-index: 2;
+    }
+
+    &__img {
+        pointer-events: none;
+        user-select: none;
+        opacity: 0.3;
+    }
+
+}
