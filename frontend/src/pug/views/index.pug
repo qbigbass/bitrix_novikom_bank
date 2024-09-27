@@ -7,6 +7,7 @@ block content
     include ../includes/header/header
     include ../components/banner-hero
     include ../cards/card-service
+    include ../cards/card-service-app
 
     section.section-layout
         .container
@@ -42,7 +43,7 @@ block content
                                 .swiper-slide.js-swiper-slide
                                     +card-service(card)
 
-                        .slider-controls.js-swiper-controls.mt-3.mt-md-4
+                        .slider-controls.js-swiper-controls.mt-3.mt-md-0
                             div.slider-controls__pagination.js-swiper-pagination
                             div.slider-controls__navigation.js-swiper-nav
                                 button.swiper-button-prev.js-swiper-prev(type="button")
@@ -52,5 +53,53 @@ block content
                                 button.swiper-button-next.js-swiper-next(type="button")
                                     span.icon.size-m
                                         +svg-use("icon-chevron-right")
+                .bank-service-layout__salary
+                    .card-service-salary
+                        .card-service-salary__content
+                            h3 Зарплатная карта
+                            .d-flex.flex-wrap.column-gap-6.row-gap-4.column-gap-md-7
+                                a.btn.btn-link.btn-lg-lg.text-info.btn-icon(href="#")
+                                    | Кешбэк
+                                    +svg-use("icon-arrow-right", "icon size-m")
+                                a.btn.btn-link.btn-lg-lg.text-info.btn-icon(href="#")
+                                    | Бонусы
+                                    +svg-use("icon-arrow-right", "icon size-m")
+                                a.btn.btn-link.btn-lg-lg.text-info.btn-icon(href="#")
+                                    | Акции
+                                    +svg-use("icon-arrow-right", "icon size-m")
+                        +pattern-bg('card', 'dark')
+                        +pattern-bg('card', 'dark', 'card-service-salary__desktop-pattern')
+                .bank-service-layout__app
+                    +card-service-app({
+                        title: "Мобильное приложение",
+                        benefits: [
+                            {
+                                icon: "icon-mobile",
+                                text: "Управление кешбэком и&nbsp;бонусами"
+                            },
+                            {
+                                icon: "icon-time",
+                                text: "Доступ к&nbsp;услугам банка 24/7"
+                            },
+                            {
+                                icon: "icon-cash",
+                                text: "Платежи и&nbsp;переводы без комиссии"
+                            }
+                        ]
+                    })
+                        a(href="#").btn.btn-info.d-none.d-md-inline-flex.align-items-center
+                            img(src="img/app-logos/ru-store.svg" width="94" height="24" alt="RuStore" loading="lazy")
+                        a(href="#").btn.btn-info.d-none.d-md-inline-flex.align-items-center
+                            img(src="img/app-logos/ru-market.svg" width="120" height="28" alt="RuMarket" loading="lazy")
+                        a(href="#").btn.btn-info.d-none.d-md-inline-flex.align-items-center
+                            img(src="img/app-logos/nash-store.svg" width="112" height="18" alt="NashStore" loading="lazy")
+                        a(href="#").btn.btn-info.btn-icon.d-none.d-md-inline-flex
+                            | Скачать
+                            +svg-use("icon-download", "icon size-m")
+                        a(href="#").btn.btn-sm.btn-info.btn-icon.d-md-none
+                            | Скачать
+                            +svg-use("icon-download-small", "icon size-s")
+
+
 
     include ../includes/layout/section-feedback
