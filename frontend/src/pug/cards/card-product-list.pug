@@ -1,15 +1,15 @@
 mixin card-product-list(data)
-    .card-product-list.bg-dark-10.w-100
-        div.card-product-list__inner
-            div.card-product-list__image-container
+    .card-product-list.overflow-hidden.position-relative.mh-100.h-auto.bg-dark-10.w-100.py-6.py-sm-9.py-md-11.px-3.px-sm-4.px-md-6
+        div.card-product-list__inner.d-flex.flex-column.flex-lg-row.align-items-start.h-100.gap-6.gap-xxl-11
+            div.card-product-list__image-container.mx-auto
                 img.card-product-list__image(src=`../img/big-illustrations/${data.imgSrc}`, alt="", loading="lazy")
-            div.card-product-list__content.flex-column.d-flex.align-start.gap-12
-                h2.card-product-list__title!= data.title
+            div.card-product-list__content.position-relative.z-1.flex-column.d-flex.align-items-start.gap-6.gap-xxl-9
+                h2.card-product-list__title.text-break!= data.title
                 if data.description
                     span.text-l.card-product-list__description.m-0!= data.description
                 if data.conditions.length > 0
-                    .d-flex.card-product-list__condition-list
-                        each item in data.conditions
+                    .d-flex.justify-content-between.flex-column.flex-sm-row.flex-wrap.card-product-list__condition-list.row-gap-4.row-gap-sm-6.gap-4.gap-sm-12.gap-xxl-16
+                        each item, index in data.conditions
                             .card-product-list__condition.d-flex.flex-column.gap-2
                                 .d-inline-flex.flex-nowrap.align-items-baseline.gap-1
                                     if item.startText
@@ -20,10 +20,14 @@ mixin card-product-list(data)
                                         span.text-number-l.fw-bold= item.text
                                     if item.currency
                                         span.text-number-l.fw-bold= item.currency
+                                    if item.afterText
+                                        span.text-l.fw-semibold= item.afterText
                                 if item.description
                                     span.text-m.dark-70= item.description
 
-                .d-flex.gap-6
+                .d-flex.flex-column.flex-sm-row.align-items-center.gap-5.gap-sm-6.w-100
                     if data.textButton
                         a(href="#").btn.btn-tertiary.btn-lg.card-product-list__button= data.textButton
-                    a(href="#").btn.btn-link.btn-lg.d-inline-flex.gap-2.align-items-center.card-product-list__button= "Подробнее"
+                    a(href="#").btn.btn-link.btn-lg.d-inline-flex.gap-2.align-items-center.card-product-list__button-more
+                        span Подробнее
+                        +svg-use('icon-chevron-right-small', 'card-product-list__button-icon')
