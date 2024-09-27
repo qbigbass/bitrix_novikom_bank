@@ -35,6 +35,7 @@ block content
     include ../components/document-download
     include ../cards/card-product
     include ../cards/card-service
+    include ../cards/card-service-app
 
     section#typography.section-layout
         .container
@@ -277,7 +278,7 @@ block content
 
                 .row.row-gap-4.gap-md-0.row-gap-md-4
                     each item in cardProductList
-                        .col-4
+                        .col-12.col-md-6.col-xl-4
                             +card-product(item)
 
     section#card-service.section-layout.section-layout--padding-top-0
@@ -292,18 +293,38 @@ block content
                                 href: "#",
                                 title: "Интернет-банк",
                                 icon: "icon-a-web-bank"
-                            },
-                            {
-                                href: "#",
-                                title: "Кредиты",
-                                icon: "icon-a-money"
-                            },
-                            {
-                                href: "#",
-                                title: "Ипотека",
-                                icon: "icon-a-house"
                             }
                         ]
                     each card in cardServiceList
-                        .col-4
+                        .col-12.col-md-6.col-lg-4
                             +card-service(card)
+                        .col-12.col-lg-8
+                            +card-service-app({
+                                title: "Мобильное приложение",
+                                benefits: [
+                                    {
+                                        icon: "icon-mobile",
+                                        text: "Управление кешбэком и&nbsp;бонусами"
+                                    },
+                                    {
+                                        icon: "icon-time",
+                                        text: "Доступ к&nbsp;услугам банка 24/7"
+                                    },
+                                    {
+                                        icon: "icon-cash",
+                                        text: "Платежи и&nbsp;переводы без комиссии"
+                                    }
+                                ]
+                            })
+                                a(href="#").btn.btn-info.d-none.d-md-inline-flex.align-items-center
+                                    img(src="img/app-logos/ru-store.svg" width="94" height="24" alt="RuStore" loading="lazy")
+                                a(href="#").btn.btn-info.d-none.d-md-inline-flex.align-items-center
+                                    img(src="img/app-logos/ru-market.svg" width="120" height="28" alt="RuMarket" loading="lazy")
+                                a(href="#").btn.btn-info.d-none.d-md-inline-flex.align-items-center
+                                    img(src="img/app-logos/nash-store.svg" width="112" height="18" alt="NashStore" loading="lazy")
+                                a(href="#").btn.btn-info.btn-icon.d-none.d-md-inline-flex
+                                    | Скачать
+                                    +svg-use("icon-download", "icon size-m")
+                                a(href="#").btn.btn-sm.btn-info.btn-icon.d-md-none
+                                    | Скачать
+                                    +svg-use("icon-download-small", "icon size-s")
