@@ -1,8 +1,31 @@
 .tabs-panel {
-    --bs-border-radius: 0.25rem;
-    --bs-border-color: var(--purple-30);
 
-    &__item {
+    &__navigation {
+
+        &-item {
+            aspect-ratio: 1;
+            transition: .275ms ease-in-out;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 69.91%);
+
+            &-reverse {
+                background: linear-gradient(-90deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 69.91%);
+            }
+        }
+        
+        &-item.swiper-button-disabled {
+            opacity: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+    }
+
+    &__list {
+        --bs-border-radius: 0.25rem;
+        --bs-border-color: var(--purple-30);
+        min-width: max-content;
+    }
+
+    &__list-item {
         
         &-link {
             --bs-nav-link-padding-x: 1.5rem;
