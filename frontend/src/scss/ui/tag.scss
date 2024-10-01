@@ -3,6 +3,7 @@
 
     position: relative;
     display: inline-flex;
+    max-width: 100%;
     z-index: 1;
 
     &__content {
@@ -10,6 +11,9 @@
         background-color: var(--dark-0);
         padding: 0.375rem 1rem;
         border: 1px solid transparent;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     &__triangle {
