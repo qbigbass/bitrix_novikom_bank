@@ -1,0 +1,32 @@
+@use 'sass:math';
+@use 'sass:list';
+
+@import 'variables';
+
+@function strip-units($number) {
+	@return math.div($number, ($number * 0 + 1));
+}
+
+@function to-rem($val, $rem: strip-units(16px)) {
+	@return math.div(strip-units($val), $rem);
+}
+
+@function to-px($val, $rem: strip-units(16px)) {
+	@return strip-units($val) * $rem;
+}
+
+/**
+ Фунция принимает
+ $min-value - минимальное значение в rem
+ $max-value - максимальное значение в rem
+ $min-vw - минимальный размер окна в px
+ $max-vw - максимальный размер окна в px
+ и вычисляет аргументы для css функции clamp, вычисляющей значение от мин до макс
+ */
+@function calc-clamp($min-value, $max-value, $min-vw: map-get($mq-breakpoints, mobile-s), $max-vw: map-get($mq-breakpoints, desktop)) {
+	$vw-factor: strip-units($max-vw - $min-vw);
+	$val-factor: to-px($max-value) - to-px($min-value);
+	$factor: math.div(1,($vw-factor)) * $val-factor;
+	$calc-value: unquote('#{ $min-value - to-rem($min-vw * $factor) } + #{strip-units(100 * $factor) + vw}');
+	@return clamp(#{if($min-value > $max-value, $max-value, $min-value)}, #{$calc-value}, #{if($min-value > $max-value, $min-value, $max-value)});
+}

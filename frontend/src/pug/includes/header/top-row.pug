@@ -1,0 +1,88 @@
+-
+    var mainMenu = [
+        {
+            href: "#",
+            text: "Частным клиентам",
+            additionalClass: "is-active"
+        },
+        {
+            href: "#",
+            text: "Корпоративным клиентам",
+            additionalClass: "d-none d-xl-block"
+        },
+        {
+            href: "#",
+            text: "МСБ",
+            additionalClass: "d-none d-xl-block"
+        }
+    ]
+
+    var mainDropDownMenu = [
+        {
+            href: "#",
+            text: "Корпоративным клиентам",
+            additionalClass: "d-xl-none"
+        },
+        {
+            href: "#",
+            text: "МСБ",
+            additionalClass: "d-xl-none"
+        },
+        {
+            href: "#",
+            text: "Финансовым институтам",
+        },
+        {
+            href: "#",
+            text: "О банке",
+        },
+        {
+            href: "#",
+            text: "Помощь",
+        },
+        {
+            href: "#",
+            text: "English version",
+        }
+    ]
+
+div.header__top-row
+    .d-none.d-lg-flex.align-items-center
+        nav.main-menu
+            each item in mainMenu
+                a.main-menu__link.text-s(href= item.href class= item.additionalClass)= item.text
+
+            .dropdown
+                button.icon.size-m.dropdown-toggle(type="button", data-bs-toggle="dropdown", aria-expanded="false")
+                    +svg-use("icon-more")
+                ul.dropdown-menu.dropdown-menu-end
+                    each item in mainDropDownMenu
+                        li
+                            a.dropdown-item.fw-bold(href= item.href class= item.additionalClass)= item.text
+
+    .d-flex.align-items-center.gap-4.column-gap-xxl-3.column-gap-xxxl-6
+        .d-none.d-lg-flex.gap-4.column-gap-xxl-3.column-gap-xxxl-6
+            a.text-s.d-inline-flex.gap-1.align-items-center.dark-100(href="#")
+                span.icon.size-s.d-none.d-xxl-inline-block.violet-70
+                    +svg-use("icon-point-small")
+                span.icon.size-m.d-xxl-none.violet-100
+                    +svg-use("icon-point")
+                span.header-contact-link__text.d-none.d-xxl-inline-block
+                    | Офисы и банкоматы
+            a.header-contact-link.text-s.dark-100(href="tel:+78002507007")
+                span.icon.size-m.d-xxl-none.violet-100
+                    +svg-use("icon-phone")
+                span.header-contact-link__text.d-none.d-xxl-inline-block
+                    | +7 800 250-70-07
+        .d-flex.column-gap-md-3.column-gap-lg-4.column-gap-xxl-3
+            button.btn.btn-outline-primary.btn-sm.d-none.d-md-inline-flex.gap-2.align-items-center.justify-content-center(type="button")
+                +svg-use("icon-download-small", "icon size-s")
+                | Мобильное приложение
+            .dropdown
+                button.btn.btn-sm.btn-primary.dropdown-toggle(type="button", data-bs-toggle="dropdown", aria-expanded="false")
+                    | Онлайн-банк
+                ul.dropdown-menu.dropdown-menu-end
+                    li
+                        a.dropdown-item.fw-bold(href="#") Для частных лиц
+                    li
+                        a.dropdown-item.fw-bold(href="#") Для организаций

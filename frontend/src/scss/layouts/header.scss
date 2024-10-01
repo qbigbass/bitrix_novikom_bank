@@ -1,0 +1,87 @@
+.header {
+    padding: 1rem 0;
+
+    @include use-media(tablet-album) {
+        padding: 0 0 1rem;
+    }
+
+    &__logo {
+        flex-shrink: 0;
+        height: 2.5rem;
+        width: 8.75rem; //140px
+        margin-right: 1.5rem;
+
+        @include use-media(tablet) {
+            height: 3rem;
+            width: 10.5rem; //168px
+            margin-right: 2.5rem;
+        }
+
+        @include use-media(laptop-x) {
+            height: auto;
+            width: auto;
+            margin-right: 5rem;
+        }
+
+        @include use-media(desktop) {
+            margin-right: 7.5rem;
+        }
+
+        & img {
+            height: 100%;
+        }
+    }
+
+    &__top-row,
+    &__bottom-row {
+        display: flex;
+        position: relative;
+        z-index: 10;
+    }
+
+    &__top-row {
+        justify-content: flex-end;
+        z-index: 11;
+
+        @include use-media(tablet-album) {
+            border-bottom: 1px solid var(--blue-30, #C6C7E2);
+            justify-content: space-between;
+        }
+    }
+
+    &__bottom-row {
+        display: none;
+
+        @include use-media(tablet-album) {
+            display: flex;
+            justify-content: space-between;
+            //padding-bottom: 1rem;
+        }
+    }
+
+    &__link {
+        cursor: pointer;
+        transition: color ease .33s;
+        color: var(--violet-100);
+
+        &:hover,
+        &.is-active {
+            color: var(--blue-100);
+
+            & .icon {
+                color: var(--blue-700);
+            }
+        }
+
+        & .icon {
+            color: var(--violet-70);
+        }
+
+        &.is-active {
+            & .icon {
+                transform: rotate(-180deg);
+            }
+        }
+    }
+}
+

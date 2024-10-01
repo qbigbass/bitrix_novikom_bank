@@ -1,0 +1,54 @@
+-
+    var chipsList = [
+        {
+            href: "#",
+            text: "Зарплатный проект",
+        },
+        {
+            href: "#",
+            text: "Зарплатная карта",
+        },
+        {
+            href: "#",
+            text: "Расчетный счет",
+        },
+        {
+            href: "#",
+            text: "Ипотека в новостройке",
+        },
+        {
+            href: "#",
+            text: "Кредит на бизнес",
+        },
+        {
+            href: "#",
+            text: "Депозиты",
+        },
+        {
+            href: "#",
+            text: "Вклады",
+        },
+        {
+            href: "#",
+            text: "Социально-платежная карта МИР",
+        },
+        {
+            href: "#",
+            text: "Банковские гарантии",
+        }
+    ]
+
+#search.dropdown-nav.js-dropdown-nav
+    .d-flex.flex-column.gap-6
+        form
+            .input-group.flex-nowrap
+                span#input-search.input-group-icon
+                    span.icon
+                        +svg-use("icon-search")
+
+                input.form-control(type="text", placeholder="Поиск по сайту", aria-label="Поиск по сайту", aria-describedby="input-search" tabindex="-1")
+        .d-flex.flex-column.gap-4
+            span.dark-70 Популярные запросы:
+            .d-flex.flex-wrap.gap-3
+                each chip in chipsList
+                    a.chip.text-s(href=chip.href tabindex="-1")= chip.text

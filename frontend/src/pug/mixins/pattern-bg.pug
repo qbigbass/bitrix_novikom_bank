@@ -1,0 +1,5 @@
+mixin pattern-bg(type, theme, className)
+    picture.pattern-bg(class=className)
+        source(srcset=`img/patterns/${type}/pattern-${theme}-s.svg`, media="(max-width: 767px)")
+        source(srcset=`img/patterns/${type}/pattern-${theme}-m.svg`, media="(max-width: 1199px)")
+        img(src=`img/patterns/${type}/pattern-${theme}-l.svg`, alt="bg pattern", loading="lazy")

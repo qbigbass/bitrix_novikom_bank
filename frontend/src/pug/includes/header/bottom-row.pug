@@ -1,0 +1,293 @@
+-
+    var menuList = [
+        {
+            text: "Карты",
+            target: "dropMenu1",
+            additionalClass: "d-inline-flex"
+        },
+        {
+            text: "Вклады",
+            target: "dropMenu2",
+            additionalClass: "d-inline-flex"
+        },
+        {
+            text: "Кредиты",
+            additionalClass: "d-inline-flex"
+        },
+        {
+            text: "Ипотека",
+            target: "dropMenu3",
+            additionalClass: "d-inline-flex"
+        },
+        {
+            text: "Платежи и переводы",
+            target: "dropMenu4",
+            additionalClass: "d-inline-flex"
+        },
+        {
+            text: "Онлайн-сервисы",
+            target: "dropMenu5",
+            additionalClass: "d-none d-xl-inline-flex"
+        },
+        {
+            text: "Услуги",
+            target: "dropMenu6",
+            additionalClass: "d-none d-xl-inline-flex"
+        }
+    ]
+
+    var dropDownMenuLink = [
+        {
+            text: "Онлайн-сервисы",
+            target: "dropMenu5"
+        },
+        {
+            text: "Услуги",
+            target: "dropMenu6"
+        },
+        {
+            text: "Страхование",
+            href: "#"
+        },
+        {
+            text: "Private Banking",
+            href: "#"
+        }
+    ]
+
+    var dropDownMenuContent = [
+        {
+            id: "dropMenu1",
+            items: [
+                {
+                    text: "Все карты НОВИКОМ",
+                    href: "#"
+                },
+                {
+                    text: "Кредитные карты",
+                    href: "#"
+                },
+                {
+                    text: "Дебетовые карты",
+                    href: "#"
+                },
+                {
+                    text: "Зарплатные карты",
+                    href: "#"
+                },
+                {
+                    text: "Блокировка карт",
+                    href: "#"
+                },
+                {
+                    text: "«Программа Кешбек»",
+                    href: "#"
+                },
+                {
+                    text: "«Программа Бонусы»",
+                    href: "#"
+                },
+                {
+                    text: "Бонусная копилка»",
+                    href: "#"
+                }
+            ],
+            showBanner: true
+        },
+        {
+            id: "dropMenu2",
+            items: [
+                {
+                    text: "Все вклады НОВИКОМ",
+                    href: "#"
+                },
+                {
+                    text: "Памятные и инвестиционные монеты",
+                    href: "#"
+                },
+                {
+                    text: "Индивидуальные сейфовые ячейки",
+                    href: "#"
+                },
+            ],
+            showBanner: true
+        },
+        {
+            id: "dropMenu3",
+            items: [
+                {
+                    text: "Все карты НОВИКОМ",
+                    href: "#"
+                },
+                {
+                    text: "Кредитные карты",
+                    href: "#"
+                },
+                {
+                    text: "Дебетовые карты",
+                    href: "#"
+                },
+                {
+                    text: "Зарплатные карты",
+                    href: "#"
+                },
+                {
+                    text: "Блокировка карт",
+                    href: "#"
+                },
+                {
+                    text: "«Программа Кешбек»",
+                    href: "#"
+                },
+                {
+                    text: "«Программа Бонусы»",
+                    href: "#"
+                },
+                {
+                    text: "Бонусная копилка»",
+                    href: "#"
+                }
+            ],
+            showBanner: true
+        },
+        {
+            id: "dropMenu4",
+            items: [
+                {
+                    text: "Все карты НОВИКОМ",
+                    href: "#"
+                },
+                {
+                    text: "Кредитные карты",
+                    href: "#"
+                },
+                {
+                    text: "Дебетовые карты",
+                    href: "#"
+                },
+                {
+                    text: "Зарплатные карты",
+                    href: "#"
+                },
+                {
+                    text: "Блокировка карт",
+                    href: "#"
+                },
+                {
+                    text: "«Программа Кешбек»",
+                    href: "#"
+                },
+                {
+                    text: "«Программа Бонусы»",
+                    href: "#"
+                },
+                {
+                    text: "Бонусная копилка»",
+                    href: "#"
+                }
+            ],
+            showBanner: true
+        },
+        {
+            id: "dropMenu5",
+            items: [
+                {
+                    text: "Все карты НОВИКОМ",
+                    href: "#"
+                },
+                {
+                    text: "Дебетовые карты",
+                    href: "#"
+                },
+                {
+                    text: "Кредитные карты",
+                    href: "#"
+                },
+                {
+                    text: "Зарплатные карты",
+                    href: "#"
+                },
+                {
+                    text: "Блокировка карт",
+                    href: "#"
+                },
+                {
+                    text: "«Программа Кешбек»",
+                    href: "#"
+                },
+                {
+                    text: "«Программа Бонусы»",
+                    href: "#"
+                },
+                {
+                    text: "Бонусная копилка»",
+                    href: "#"
+                }
+            ],
+            showBanner: true
+        },
+        {
+            id: "dropMenu6",
+            items: [
+                {
+                    text: "Все карты НОВИКОМ",
+                    href: "#"
+                },
+                {
+                    text: "Кредитные карты",
+                    href: "#"
+                },
+            ],
+            showBanner: false
+        },
+    ]
+
+include ../../components/drop-menu
+
+div.header__bottom-row
+    .navbar.w-100
+        each item in menuList
+            if item.target
+                a.header__link.js-dropdown-link.gap-1.align-items-center(
+                    class= item.additionalClass,
+                    href= `#${item.target}`,
+                    role="button",
+                    aria-expanded="false",
+                    aria-controls= item.target
+                    )
+                    span.fw-semibold= item.text
+                    span.icon.size-s(slot="icon-after")
+                        +svg-use("icon-chevron-down-small")
+            else
+                a(href="#").header__link.d-inline-flex.gap-1.align-items-center
+                    span.fw-semibold= item.text
+
+        .dropdown
+            button.icon.size-m.dropdown-toggle.violet-100(type="button", data-bs-toggle="dropdown", aria-expanded="false")
+                +svg-use("icon-more")
+
+            ul.dropdown-menu.dropdown-menu-end
+                each item in dropDownMenuLink
+                    if item.target
+                        li
+                            a.dropdown-item.fw-bold.d-inline-flex.align-items-center.justify-content-between.d-xl-none.js-dropdown-link(
+                                href= `#${item.target}`,
+                                role="button",
+                                aria-expanded="false",
+                                aria-controls= item.target,
+                                data-bs-toggle="collapse")= item.text
+                                span.icon.size-m(slot="icon-after")
+                                    +svg-use("icon-chevron-right")
+                    else
+                        li
+                            a.dropdown-item.fw-bold(href= item.href)= item.text
+
+        .dropdown
+            button.icon.size-m.dropdown-toggle.violet-100.js-dropdown-link(type="button", data-target="#search", aria-expanded="false", aria-controls="search")
+                +svg-use("icon-search")
+
+
+    each item in dropDownMenuContent
+        +drop-menu(item)
+    include desktop-search.pug
+

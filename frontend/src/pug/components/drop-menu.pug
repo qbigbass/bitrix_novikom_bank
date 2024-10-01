@@ -1,0 +1,25 @@
+mixin drop-menu(data)
+    .dropdown-nav.js-dropdown-nav(id= data.id role="menu")
+        .row
+            .col-6.col-xxl-8
+                .row.row-gap-4
+                    each link in data.items
+                        .col-6.violet-100
+                            a.header__link.fw-semibold(href= link.href tabindex="-1")= link.text
+
+            if data.showBanner
+                .col-6.col-xxl-4
+                    a(href="#" tabindex="-1").polygon-container.js-polygon-container
+                        div(class="polygon-container__content")
+                            .card-menu
+                                img(src="../img/card-menu-image.png", class="card-menu__image", alt="", loading="lazy")
+                                h5 Зарплатная карта «Мир»
+                                p.text-s.mb-0
+                                    | Карта с&nbsp;полным набором
+                                    br
+                                    | операций в&nbsp;торговых точках
+                                    br
+                                    | и&nbsp;интернете
+                        div(class="polygon-container__polygon js-polygon-container-polygon green-100")
+                            svg.js-polygon-container-svg(xmlns="http://www.w3.org/2000/svg")
+                                polygon(points="2,2 335,2 335,394 295,434 2,434", fill="none", stroke="currentColor", stroke-width="2", stroke-dasharray="10")

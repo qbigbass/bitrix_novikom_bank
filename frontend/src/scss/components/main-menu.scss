@@ -1,0 +1,58 @@
+$border-width: 1px;
+
+.main-menu {
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+
+    @include use-media(laptop) {
+        gap: 1.5rem;
+    }
+
+    @include use-media(desktop) {
+        gap: 2.5rem;
+    }
+
+    &__link {
+        padding-top: 1em;
+        padding-bottom: calc(1em - #{$border-width});
+        white-space: nowrap;
+        color: var(--dark-100);
+        text-decoration: none;
+        box-sizing: border-box;
+        transition: color ease .33s;
+        position: relative;
+
+        @include use-media(laptop-x) {
+            padding-top: 1rem;
+            padding-bottom: calc(1rem - #{$border-width});
+        }
+
+        &:hover {
+            color: var(--blue-100);
+        }
+
+        &.is-active {
+            pointer-events: none;
+
+            //display: block;
+
+            @include use-media(laptop) {
+                color: var(--violet-100);
+            }
+
+            &:after {
+
+                @include use-media(laptop) {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    top: 100%;
+                    height: $border-width;
+                    background-color: var(--violet-100);
+                }
+            }
+        }
+    }
+}

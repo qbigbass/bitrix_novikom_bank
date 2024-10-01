@@ -1,0 +1,218 @@
+-
+    var menuSlider = [
+        {
+            href: "#",
+            text: "Частным клиентам",
+            additionalClass: "is-active"
+        },
+        {
+            href: "#",
+            text: "Корпоративным клиентам"
+        },
+        {
+            href: "#",
+            text: "МСБ"
+        },
+        {
+            href: "#",
+            text: "Финансовым институтам"
+        },
+        {
+            href: "#",
+            text: "О банке"
+        }
+    ]
+
+    var accordionList = [
+        {
+            target: "collapse1",
+            text: "Карты",
+            links: [
+                {
+                    href: "#",
+                    text: "Все карты НОВИКОМ",
+                },
+                {
+                    href: "#",
+                    text: "Кредитные карты",
+                },
+                {
+                    href: "#",
+                    text: "Дебетовые карты",
+                },
+                {
+                    href: "#",
+                    text: "Зарплатные карты",
+                },
+                {
+                    href: "#",
+                    text: "Блокировка карт",
+                },
+                {
+                    href: "#",
+                    text: "«Программа Кешбек»",
+                },
+                {
+                    href: "#",
+                    text: "«Программа Бонусы»",
+                },
+                {
+                    href: "#",
+                    text: "«Бонусная копилка»",
+                }
+            ]
+        },
+        {
+            href: "#",
+            text: "Вклады",
+        },
+        {
+            href: "#",
+            text: "Кредиты",
+        },
+        {
+            target: "collapse2",
+            text: "Ипотека",
+            links: [
+                {
+                    href: "#",
+                    text: "Ипотека 1",
+                },
+                {
+                    href: "#",
+                    text: "Ипотека 2",
+                },
+                {
+                    href: "#",
+                    text: "Ипотека 3",
+                },
+            ]
+        },
+        {
+            target: "collapse3",
+            text: "Платежи и переводы",
+            links: [
+                {
+                    href: "#",
+                    text: "Платежи и переводы 1",
+                },
+                {
+                    href: "#",
+                    text: "Платежи и переводы 2",
+                },
+                {
+                    href: "#",
+                    text: "Платежи и переводы 3",
+                },
+                {
+                    href: "#",
+                    text: "Платежи и переводы 4",
+                },
+            ]
+        },
+        {
+            target: "collapse4",
+            text: "Онлайн-сервисы",
+            links: [
+                {
+                    href: "#",
+                    text: "Онлайн-сервисы 1",
+                },
+                {
+                    href: "#",
+                    text: "Онлайн-сервисы 2",
+                },
+                {
+                    href: "#",
+                    text: "Онлайн-сервисы 3",
+                },
+                {
+                    href: "#",
+                    text: "Онлайн-сервисы 4",
+                },
+            ]
+        },
+        {
+            target: "collapse5",
+            text: "Услуги",
+            links: [
+                {
+                    href: "#",
+                    text: "Услуги 1",
+                },
+                {
+                    href: "#",
+                    text: "Услуги 2",
+                },
+                {
+                    href: "#",
+                    text: "Услуги 3",
+                },
+                {
+                    href: "#",
+                    text: "Услуги 4",
+                },
+                {
+                    href: "#",
+                    text: "Услуги 5",
+                },
+            ]
+        },
+    ]
+
+.mobile-main-nav.js-mobile-main-nav
+    include nav-panel
+    .mobile-main-nav__menu
+        .mobile-menu
+            .mobile-menu__header
+                .swiper.js-swiper-mobile-menu
+                    .swiper-wrapper
+                        each slide in menuSlider
+                            .swiper-slide
+                                a.text-s(href= slide.href class= slide.additionalClass)= slide.text
+            .mobile-menu__body.js-mobile-menu-body
+                include mobile-search
+                .mobile-menu__nav
+                    #accordionMenu.accordion.accordion-flush
+                        each item in accordionList
+                            .accordion-item
+                                if item.target
+                                    .accordion-header
+                                        a.accordion-button.collapsed.fw-semibold(
+                                            href= `#${item.target}`,
+                                            data-bs-toggle="collapse",
+                                            aria-expanded="false",
+                                            aria-controls= item.target)= item.text
+                                    .accordion-collapse.collapse(data-bs-parent="#accordionMenu" id= item.target)
+                                        .accordion-body
+                                            .row.row-gap-4
+                                                each link in item.links
+                                                    .col-12.col-md-6
+                                                        a(href= link.href)= link.text
+                                else
+                                    .accordion-header
+                                        a.accordion-button.collapsed.fw-semibold(href= item.href)= item.text
+
+                .mobile-menu__bank-apps
+                    a.btn.btn-outline-primary.d-inline-flex.gap-2.align-items-center.justify-content-center(href="#")
+                        +svg-use("icon-download-small", "icon size-m")
+                        | Мобильное приложение
+                    .dropdown
+                        button.btn.btn-primary.w-100.dropdown-toggle(type="button", data-bs-toggle="dropdown", aria-expanded="false")
+                            | Онлайн-банк
+                        ul.dropdown-menu
+                            li
+                                a.dropdown-item.fw-bold(href="#") Для частных лиц
+                            li
+                                a.dropdown-item.fw-bold(href="#") Для организаций
+                .mobile-menu__bank-contact
+                    a.d-flex.align-items-center.gap-2(href="#")
+                        span.icon.size-m
+                            +svg-use("icon-point")
+                        span.fw-bold
+                            | Офисы и банкоматы
+                    a.d-flex.align-items-center.gap-2(href="tel:+78002507007")
+                        span.icon.size-m
+                            +svg-use("icon-mobile")
+                        span.fw-bold
+                            | +7 800 250-70-07

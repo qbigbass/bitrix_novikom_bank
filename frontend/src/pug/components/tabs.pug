@@ -1,0 +1,13 @@
+// tabsList - array
+// link - str
+// tabsClassName - str
+// tabItemClassName - str
+
+mixin tabs(tabsList, tabsClassName, tabItemClassName)
+    ul.nav.nav-tabs(class=className)
+        each tab, index in tabsList
+            li.nav-item
+                if index == 0
+                    a.nav-link.active(aria-current="page")(href=tab.link)= tab.linkText
+                else
+                    a.nav-link(href=tab.link)= tab.linkText

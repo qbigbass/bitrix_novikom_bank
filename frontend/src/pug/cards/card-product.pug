@@ -1,0 +1,15 @@
+include ../components/tag
+
+mixin card-product(data)
+    .card-product(class= `card-product--${data.color}`)
+        div.card-product__inner
+            +tag(data.tag).card-product__tag
+            div.card-product__content
+                h4.card-product__title!= data.title
+                if data.subtitle
+                    .d-inline-flex.flex-nowrap.align-items-baseline.text-l.fw-semibold.gap-1.violet-100= data.subtitle.before
+                        span.text-number-l.fw-bold= data.subtitle.number
+                if data.description
+                    p.card-product__description.m-0!= data.description
+            img.card-product__img(src=`../img/big-illustrations/${data.img}`, alt="", loading="lazy")
+            a(href="#").btn.btn-primary.card-product__button= data.button

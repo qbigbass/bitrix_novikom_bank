@@ -1,0 +1,19 @@
+section.section-layout.bg-blue-10
+    .container
+        .row
+            .col-12.col-md-6.col-xl-8.position-relative.z-1.mb-5.mb-md-0.d-flex.flex-column.align-items-start.gap-5.gap-lg-6
+                .d-flex.flex-column.align-items-start.gap-3.gap-md-4
+                    h3 Остались вопросы
+                    p.text-l.mb-0
+                        | Оставьте свой телефон и&nbsp;мы&nbsp;перезвоним вам, либо задайте вопрос в&nbsp;чате
+                    button.btn.btn-info(type="button") Отркыть чат
+                    p.text-s.dark-70.mb-0
+                        | Нажимая кнопку &laquo;Перезвоните мне&raquo;, вы&nbsp;соглашаетесь с&nbsp;условиями предоставления информации
+            .col-12.col-md-6.col-xl-4.position-relative.z-1
+                form.form-feedback.bg-white(action="/", method="POST")
+                    div
+                        label.form-label(for="mobile-phone") Мобильный телефон
+                        input#mobile-phone.form-control(type="text", aria-describedby="mobile-phone-hint", placeholder="+7")
+                    button.btn.btn-primary.btn-lg-lg.w-100(type="button")
+                        | Перезвоните мне
+    +pattern-bg('section-heavy', 'light', 'pattern-bg--position-sm-top')
