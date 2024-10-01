@@ -4,10 +4,19 @@
 // tabItemClassName - str
 
 mixin tabs(tabsList, tabsClassName, tabItemClassName)
-    ul.nav.nav-tabs(class=className)
-        each tab, index in tabsList
-            li.nav-item
-                if index == 0
-                    a.nav-link.active(aria-current="page")(href=tab.link)= tab.linkText
-                else
-                    a.nav-link(href=tab.link)= tab.linkText
+    .tabs-panel.js-tabs-slider.overflow-hidden.position-relative
+        .tabs-panel__navigation.js-tabs-slider-navigation.w-100
+            span.tabs-panel__navigation-item.tabs-panel__navigation-item-reverse.js-tabs-slider-navigation-prev.h-100.d-flex.align-items-center.justify-content-start.px-1.z-3.position-absolute.start-0.top-0
+                span.icon.size-m
+                    +svg-use("icon-chevron-left")
+            span.tabs-panel__navigation-item.js-tabs-slider-navigation-next.h-100.d-flex.align-items-center.justify-content-end.px-1.z-3.position-absolute.end-0.top-0
+                span.icon.size-m
+                    +svg-use("icon-chevron-right")
+
+        ul.swiper-wrapper.tabs-panel__list.nav.nav-tabs.d-inline-flex.flex-nowrap.w-auto.p-0.border.border-purple.rounded(class=className)
+            each tab, index in tabsList
+                li.swiper-slide.w-auto.tabs-panel__list-item.nav-item.z-2
+                    if index == 0
+                        a.tabs-panel__list-item-link.nav-link.active(aria-current="page")(href=tab.link)= tab.linkText
+                    else
+                        a.tabs-panel__list-item-link.nav-link(href=tab.link)= tab.linkText
