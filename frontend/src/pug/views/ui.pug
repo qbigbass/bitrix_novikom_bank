@@ -33,6 +33,7 @@ block content
         ]
 
     include ../components/document-download
+    include ../components/tabs
     include ../cards/card-product
     include ../cards/card-service
     include ../cards/card-service-app
@@ -240,6 +241,54 @@ block content
                                 | доб. 055
                             span.chip.chip--outlined.caption-m
                                 | Банковские гарантии
+
+    section#chip.section-layout.section-layout--padding-top-0
+        -
+            const tabsList = [
+                {
+                    link: '#',
+                    linkText: 'Кнопка',
+                },
+                {
+                    link: '#',
+                    linkText: 'Кнопка',
+                },
+                {
+                    link: '#',
+                    linkText: 'Кнопка',
+                },
+                {
+                    link: '#',
+                    linkText: 'Кнопка',
+                },
+                {
+                    link: '#',
+                    linkText: 'Кнопка',
+                },
+                {
+                    link: '#',
+                    linkText: 'Кнопка',
+                },
+            ]
+
+        .container
+            .d-flex.flex-column.row-gap-5
+                h2 Tab panel & Tab item
+                .row.row-gap-4.gap-md-0.row-gap-md-4
+                    .col-8
+                        +tabs(
+                            tabsList,
+                            "",
+                            ""
+                        )
+                    .col-4
+                        ul.tabs-panel__list.nav.nav-tabs.d-inline-flex.flex-nowrap.w-auto.p-0.border.border-purple.rounded
+                            li.w-auto.tabs-panel__list-item.nav-item.z-2
+                                a.tabs-panel__list-item-link.nav-link.active(aria-current="page")(href=tabsList[0].link)= tabsList[0].linkText
+                        ul.tabs-panel__list.nav.nav-tabs.d-inline-flex.flex-nowrap.w-auto.p-0.border.border-purple.rounded
+                            li.w-auto.tabs-panel__list-item.nav-item.z-2
+                                a.tabs-panel__list-item-link.nav-link(href=tabsList[1].link)= tabsList[1].linkText
+
 
     section#card-product.section-layout.section-layout--padding-top-0
         -
