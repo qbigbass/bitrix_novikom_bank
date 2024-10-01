@@ -1,5 +1,5 @@
 import Swiper from 'swiper';
-import {Autoplay, Thumbs, Pagination, Navigation} from 'swiper/modules';
+import {Autoplay, Thumbs, Pagination, Navigation, Grid} from 'swiper/modules';
 import {VARIABLES, MEDIA_QUERIES, DEFAULT_SEPARATORS, DEFAULT_SLIDER_DATA_ATTRS} from './constants';
 
 const CLASS_NAME = {
@@ -7,6 +7,7 @@ const CLASS_NAME = {
     bannerHero: '.js-banner-hero',
     thumbsHero: '.js-banner-hero-thumbs',
     cardsSlider: '.js-slider-cards',
+    announcementsSlider: '.js-announcement-slider',
     slide: '.js-swiper-slide',
     prevEl: '.js-swiper-prev',
     nextEl: '.js-swiper-next',
@@ -245,6 +246,42 @@ export function initCardSlider() {
         //     },
         // });
     })
+}
+
+export function initAnnouncementSlider() {
+    new Swiper(CLASS_NAME.announcementsSlider, {
+        modules: [Pagination, Navigation, Grid],
+        slidesPerView: 1,
+        spaceBetween: 40,
+        grid: {
+            fill: 'row',
+        },
+        navigation: {
+            prevEl: CLASS_NAME.prevEl,
+            nextEl: CLASS_NAME.nextEl,
+            navigationDisabledClass: 'swiper-navigation-disabled',
+        },
+        pagination: {
+            el: CLASS_NAME.pagination,
+            paginationDisabledClass: 'swiper-pagination-disabled',
+            type: 'bullets',
+            clickable: true
+        },
+        breakpoints: {
+            375: {
+                spaceBetween: 8,
+                grid: {
+                    rows: 1,
+                },
+            },
+            768: {
+                spaceBetween: 40,
+                grid: {
+                    rows: 2,
+                },
+            }
+        }
+    });
 }
 
 
