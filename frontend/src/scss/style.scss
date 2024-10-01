@@ -49,6 +49,7 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 @import "bootstrap/scss/offcanvas";
 @import "bootstrap/scss/placeholders";
 @import "swiper/css";
+@import "swiper/css/grid";
 
 @import "bootstrap/scss/helpers";
 

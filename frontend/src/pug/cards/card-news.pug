@@ -1,0 +1,8 @@
+include ../components/tag
+
+mixin card-news(data)
+    a(href="#").card-news&attributes(attributes)
+        .d-flex.column-gap-3.row-gap-4.justify-content-between.align-items-end.flex-wrap
+            +tag(data.tag, "outline").card-news__tag
+            span.text-s.dark-70= data.date
+        span.dark-100!= data.title

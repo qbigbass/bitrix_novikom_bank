@@ -8,10 +8,13 @@ block content
     include ../components/banner-hero
     include ../cards/card-service
     include ../cards/card-service-app
+    include ../components/announcement
+    include ../cards/card-news
+
 
     section.section-layout
         .container
-            h3.px-lg-6.mb-6.mb-lg-7
+            h3.ps-lg-6.mb-6.mb-lg-7
                 | Предложения банка Новиком
             include ../includes/layout/slider-card-product
 
@@ -43,16 +46,7 @@ block content
                                 .swiper-slide.js-swiper-slide
                                     +card-service(card)
 
-                        .slider-controls.js-swiper-controls.mt-3.mt-md-0
-                            div.slider-controls__pagination.js-swiper-pagination
-                            div.slider-controls__navigation.js-swiper-nav
-                                button.swiper-button-prev.js-swiper-prev(type="button")
-                                    span.icon.size-m
-                                        +svg-use("icon-chevron-left")
-
-                                button.swiper-button-next.js-swiper-next(type="button")
-                                    span.icon.size-m
-                                        +svg-use("icon-chevron-right")
+                        +slider-controls().mt-3.mt-md-0
                 .bank-service-layout__salary
                     .card-service-salary
                         .card-service-salary__content
@@ -100,6 +94,136 @@ block content
                             | Скачать
                             +svg-use("icon-download-small", "icon size-s")
 
+    section.section-layout
+        .container
+            .row
+                .col-12.col-xxl-6.d-flex.flex-column.gap-6.gap-lg-7
 
+                    a(href="#").h3.d-flex.align-items-center.ps-lg-6.pt-xxl-6
+                        span Объявления
+                            |
+                            |
+                            span.d-none.d-md-inline для клиентов
+                        span.icon.size-m.violet-100.ms-auto.ms-md-3
+                            +svg-use("icon-chevron-right")
+
+                    div.ps-lg-6.mt-xxl-auto.mw-100
+                        .swiper.js-announcement-slider
+                            -
+                                var announcementList = [
+                                    {
+                                        date: '25.04.2024',
+                                        title: 'Технические работы 30 апреля 2024 года в период с 0:00 до 3:30 (МСК)',
+                                        link: '#'
+                                    },
+                                    {
+                                        date: '25.04.2024',
+                                        title: 'Режим работы клиентских офисов в мае',
+                                        link: '#'
+                                    },
+                                    {
+                                        date: '25.04.2024',
+                                        title: 'Технические работы 30 апреля 2024 года в период с 0:00 до 3:30 (МСК)',
+                                        link: '#'
+                                    },
+                                    {
+                                        date: '25.04.2024',
+                                        title: 'Режим работы клиентских офисов в мае',
+                                        link: '#'
+                                    },
+                                    {
+                                        date: '25.04.2024',
+                                        title: 'Технические работы 30 апреля 2024 года в период с 0:00 до 3:30 (МСК)',
+                                        link: '#'
+                                    },
+                                    {
+                                        date: '25.04.2024',
+                                        title: 'Режим работы клиентских офисов в мае',
+                                        link: '#'
+                                    }
+                                ]
+                            .swiper-wrapper
+                                each item in announcementList
+                                    .swiper-slide.js-announcement-slide
+                                        +announcement(item)
+
+                            +slider-controls().mt-3.mt-md-4
+
+                .col-12.col-xxl-6.mt-6.mt-xxl-0
+                    a(href="#").card-link.h3.d-lg-none
+                        | О банке
+                        +svg-use("icon-chevron-right", "icon size-m blue-100")
+                    .card-about-bank.d-none.d-lg-flex
+                        .card-about-bank__col.d-flex.flex-column.gap-6
+                            a(href="#").h3
+                                | О банке
+                                +svg-use("icon-chevron-right", "icon size-m blue-100")
+                            .d-flex.flex-column
+                                span.violet-100.fw-semibold.text-number-m.fw-bold 30 лет
+                                p.card-about-bank__description.text-s.fw-semibold
+                                    | успешной работы в&nbsp;реальном секторе российской
+                                    br.d-xxl-none
+                                    |
+                                    | экономики
+                            .d-flex.flex-column
+                                span.violet-100.fw-semibold.text-number-m.fw-bold 19,4 млн
+                                p.card-about-bank__description.text-s.fw-semibold
+                                    | рекордная чистая прибыль
+                                    br
+                                    | за&nbsp;2022&nbsp;г
+
+                        .card-about-bank__col.d-flex.flex-column
+                            img(src="../img/top.svg" alt="Топ" width="138" height="54" loading="lazy")
+                            img(src="../img/top-20.svg" alt="20" width="138" height="144" loading="lazy")
+
+                            p.card-about-bank__description.text-s.fw-semibold.mt-auto
+                                | по&nbsp;величине капитала, объему активов
+                                br.d-xxl-none
+                                |
+                                | и&nbsp;корпоративных кредитов
+
+                        +pattern-bg('card', 'light', 'card-about-bank__pattern')
+    section.section-layout.pt-0
+        .container
+            .d-flex.align-items-end.ps-lg-6.mb-4.mb-md-6.mb-lg-7
+                h3 Новости
+                a(href="#").violet-100.d-flex.align-items-center.gap-2.ms-auto
+                    span.d-none.d-md-inline.text-s.fw-semibold Пресс-центр
+                    +svg-use('icon-chevron-right', 'icon size-m')
+            .swiper.js-slider-cards.slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:2,laptop:3,laptop-x:3" data-space-between="mobile-s:8,mobile:8,tablet:8,laptop:8,laptop-x:8")
+                -
+                    var pressReleases = [
+                        {
+                            tag: "Пресс-центр",
+                            date: "07.12.2023",
+                            title: "Новикомбанк рассказал о развитии финансовых инструментов",
+                        },
+                        {
+                            tag: "Пресс-центр",
+                            date: "06.12.2023",
+                            title: "Новикомбанк и Республика Татарстан договорились о сотрудничестве",
+                        },
+                        {
+                            tag: "Союз машиностроителей 1234 dfsfasd",
+                            date: "27.11.2023",
+                            title: "При поддержке Новикомбанка Росэлектроника начала серийный выпуск KVM-коммутаторов для удаленного управления оборудованием",
+                        },
+                        {
+                            tag: "Пресс-центр",
+                            date: "20.11.2023",
+                            title: "Новикомбанк и Республика Татарстан договорились о сотрудничестве",
+                        },
+                        {
+                            tag: "Союз машиностроителей",
+                            date: "05.11.2023",
+                            title: "При поддержке Новикомбанка Росэлектроника начала серийный выпуск KVM-коммутаторов для удаленного управления оборудованием",
+                        },
+                    ]
+                .swiper-wrapper.js-swiper-wrapper
+                    each item in pressReleases
+                        .swiper-slide.js-swiper-slide
+                            +card-news(item)
+
+                +slider-controls().mt-3.mt-md-4
 
     include ../includes/layout/section-feedback

@@ -1,0 +1,6 @@
+mixin announcement(data)
+    a(href= data.link tabIndex="-1").announcement
+        span.dark-70= data.date
+        span.dark-100!= data.title
+        span.icon.size-m.d-none.d-md-inline-block.ms-auto
+            +svg-use("icon-arrow-right")

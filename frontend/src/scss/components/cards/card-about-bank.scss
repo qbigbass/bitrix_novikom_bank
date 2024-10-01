@@ -1,0 +1,51 @@
+.card-about-bank {
+    border-radius: 0.5rem;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+
+
+    &__col {
+        padding: 2.5rem;
+        flex: 0 0 50%;
+        position: relative;
+        border-radius: 0 .75rem .75rem 0;
+        background-color: var(--blue-10);
+
+        &:first-child {
+            border-radius: .75rem 0 0 .75rem;
+            background-color: var(--dark-10);
+
+            &:after {
+                content: '';
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                background: linear-gradient(270deg, rgba(245, 244, 246, 0.90) 0%, rgba(245, 244, 246, 0.00) 100%);
+                transform: rotate(180deg);
+                z-index: 1;
+            }
+        }
+
+        & > * {
+            position: relative;
+            z-index: 2;
+        }
+    }
+
+    &__description {
+        margin-top: .5rem;
+        padding-top: .5rem;
+        border-top: 1px dashed var(--violet-100);
+    }
+
+    &__pattern {
+
+        @include use-media(tablet-album) {
+            top: 2.5rem;
+            bottom: auto;
+        }
+    }
+}
