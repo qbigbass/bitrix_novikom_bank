@@ -140,6 +140,14 @@ section.section-layout.section-currency-exchange
                         h4 Предварительный расчет
                         .row
                             .col-12.col-md-6.col-xl-12
-                                span У вас есть
+                                label(for="have").form-label У вас есть
+                                .input-group
+                                    input#have(type="text" name="you_have").form-control.form-control-lg
+                                    select(aria-label="Выберите валюту").form-select
+                                        option(selected value="RUB") RUB
+                                        option(value="USD") USD
+                                        option(value="CNY") CNY
+
+
                             .col-12.col-md-6.col-xl-12.mt-4.mt-md-0.mt-xl-4
                                 span Вы получите
