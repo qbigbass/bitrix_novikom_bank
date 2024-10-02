@@ -34,6 +34,7 @@ block content
 
     include ../components/document-download
     include ../components/tabs
+    include ../cards/card-text
     include ../cards/card-product-list
     include ../cards/card-product
     include ../cards/card-service
@@ -290,7 +291,33 @@ block content
                             li.w-auto.tabs-panel__list-item.nav-item.z-2
                                 a.tabs-panel__list-item-link.nav-link.bg-transparent(href=tabsList[1].link)= tabsList[1].linkText
 
-    section.loans-catalog__list.section-layout.section-layout--padding-top-0
+
+    section.card-text-list.section-layout.bg-dark-10.py-6
+        -
+            const cardTextItems = [
+                {
+                    title: 'Заголовок',
+                    description: 'Текстовый фрейм L',
+                    link: '#1'
+                },
+                {
+                    title: 'Кредитные каникулы по ипотечным кредитам согласно Федеральному закону № 353-ФЗ',
+                    link: '#2'
+                }
+            ]
+
+        .container
+            .d-flex.flex-column.row-gap-5.mb-4
+                h2 Card Text
+            .row.align-items-stretch.row-gap-4.row-gap-sm-6
+                .col-12.col-md-6 
+                    +card-text(cardTextItems[0])
+                .col-12.col-md-6 
+                    +card-text(cardTextItems[0])
+                .col-12
+                    +card-text(cardTextItems[1])
+
+    section.loans-catalog__list.section-layout
         -
             const consumerLoans = [
                 {
