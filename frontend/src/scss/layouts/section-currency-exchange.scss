@@ -13,7 +13,7 @@
             padding: 4rem 2.5rem;
         }
 
-        & .collapse {
+        &.collapse {
             @include use-media(tablet) {
                 display: block;
             }

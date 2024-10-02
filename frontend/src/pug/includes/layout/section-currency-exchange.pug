@@ -97,11 +97,10 @@ section.section-layout.section-currency-exchange
         ).h3.d-flex.align-items-center.justify-content-between.dark-100.d-md-none
             | Обмен валют
             +svg-use("icon-chevron-down", "icon size-m violet-100")
-        .section-currency-exchange__wrapper
+        #currency-exchange.section-currency-exchange__wrapper.collapse
             .row
                 .col-12.col-xl-8
-                    #currency-exchange.collapse
-                        .d-flex.flex-column.flex-lg-row.align-items-end.mb-4.mb-md-6.mb-lg-7.pt-4.pt-md-0.gap-md-3
+                        .d-flex.flex-column.flex-lg-row.align-items-lg-end.mb-4.mb-md-6.mb-lg-7.pt-4.pt-md-0.gap-md-3
                             h3.d-none.d-md-block Обмен валют
                             p.text-s.dark-70.mb-0.ms-lg-auto Курс банка актуален на&nbsp;14:00 по&nbsp;МСК 30&nbsp;апреля 2024&nbsp;г.
 
@@ -136,3 +135,11 @@ section.section-layout.section-currency-exchange
                             | Список отделений доступен по&nbsp;ссылке.
                         p.dark-70.pt-3.text-s.mb-0
                             | Покупка и&nbsp;продажа фунтов стерлингов и&nbsp;швейцарских франков осуществляется только в&nbsp;ДО&nbsp;&laquo;Якиманка&raquo;.
+                .col-12.col-xl-4.mt-4
+                    .d-flex.flex-column.gap-4.gap-lg-5.gap-xl-4.bg-dark-0.rounded-3.px-3.py-4.p-md-5.px-lg-6.p-xl-6
+                        h4 Предварительный расчет
+                        .row
+                            .col-12.col-md-6.col-xl-12
+                                span У вас есть
+                            .col-12.col-md-6.col-xl-12.mt-4.mt-md-0.mt-xl-4
+                                span Вы получите
