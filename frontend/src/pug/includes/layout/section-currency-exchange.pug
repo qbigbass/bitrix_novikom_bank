@@ -1,0 +1,138 @@
+-
+    var tabsList = [
+        {
+            link: 'eur',
+            linkText: 'EUR',
+            isActive: true
+        },
+        {
+            link: 'usd',
+            linkText: 'USD',
+            isActive: false
+        },
+        {
+            link: 'cny',
+            linkText: 'CNY',
+            isActive: false
+        },
+    ]
+
+    var tableDataEur = [
+        {
+            title: 'Продать, RUB',
+            value: '94,60'
+        },
+        {
+            title: 'Купить, RUB',
+            value: '99,10'
+        },
+        {
+            title: 'ЦБ РФ, RUB',
+            value: '97,15'
+        },
+    ]
+
+    var tableDataUsd = [
+        {
+            title: 'Продать, RUB',
+            value: '86,20'
+        },
+        {
+            title: 'Купить, RUB',
+            value: '91,50'
+        },
+        {
+            title: 'ЦБ РФ, RUB',
+            value: '91,34'
+        },
+    ]
+
+    var tableDataCny = [
+        {
+            title: 'Продать, RUB',
+            value: '12,25'
+        },
+        {
+            title: 'Купить, RUB',
+            value: '12,73'
+        },
+        {
+            title: 'ЦБ РФ, RUB',
+            value: '12,38'
+        },
+    ]
+
+    var tableCurrency = [
+        {
+            title: 'Евро — EUR',
+            value: [
+                '94,60', '99,10', '97,15'
+            ]
+        },
+        {
+            title: 'Доллар США — USD',
+            value: [
+                '86,20', '91,50', '91,34'
+            ]
+        },
+        {
+            title: 'Китайский юань — CNY',
+            value: [
+                '12,25', '12,73', '12,38'
+            ]
+        }
+    ]
+
+include ../../components/tables/table-currency
+
+
+section.section-layout.section-currency-exchange
+    .container
+        a(
+            data-bs-toggle="collapse"
+            href="#currency-exchange"
+            role="button"
+            aria-expanded="false"
+            aria-controls="currency-exchange"
+        ).h3.d-flex.align-items-center.justify-content-between.dark-100.d-md-none
+            | Обмен валют
+            +svg-use("icon-chevron-down", "icon size-m violet-100")
+        .section-currency-exchange__wrapper
+            .row
+                .col-12.col-xl-8
+                    #currency-exchange.collapse
+                        .d-flex.flex-column.flex-lg-row.align-items-end.mb-4.mb-md-6.mb-lg-7.pt-4.pt-md-0.gap-md-3
+                            h3.d-none.d-md-block Обмен валют
+                            p.text-s.dark-70.mb-0.ms-lg-auto Курс банка актуален на&nbsp;14:00 по&nbsp;МСК 30&nbsp;апреля 2024&nbsp;г.
+
+                        ul.nav.nav-tabs.d-md-none(role="tablist")
+                            each item in tabsList
+                                li.nav-item.flex-grow-1(role="presentation")
+                                    button.nav-link(
+                                        class= item.isActive ? 'active' : '',
+                                        data-bs-toggle="tab"
+                                        data-bs-target= `#${item.link}`
+                                        type="button"
+                                        role="tab"
+                                        aria-controls= item.link
+                                        aria-selected= item.isActive
+                                    )= item.linkText
+
+                        .tab-content.pt-3.d-md-none
+                            #eur.tab-pane.fade.show.active(role="tabpanel" aria-labelledby="eur" tabindex="0")
+                                +table-currency(tableDataEur, 'mobile')
+                            #usd.tab-pane.fade(role="tabpanel" aria-labelledby="usd" tabindex="0")
+                                +table-currency(tableDataUsd, 'mobile')
+                            #cny.tab-pane.fade(role="tabpanel" aria-labelledby="cny" tabindex="0")
+                                +table-currency(tableDataCny, 'mobile')
+
+                        +table-currency(tableCurrency).d-none.d-md-block
+
+                        p.dark-70.pt-4.text-s.mb-0
+                            | Банк оставляет за&nbsp;собой право на&nbsp;изменение курса купли-продажи иностранной валюты.
+                            br
+                            | Действующие на&nbsp;момент совершения операций курсы уточняйте в&nbsp;отделениях банка.
+                            br
+                            | Список отделений доступен по&nbsp;ссылке.
+                        p.dark-70.pt-3.text-s.mb-0
+                            | Покупка и&nbsp;продажа фунтов стерлингов и&nbsp;швейцарских франков осуществляется только в&nbsp;ДО&nbsp;&laquo;Якиманка&raquo;.
