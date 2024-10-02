@@ -10,7 +10,7 @@ const SELECT2_CLASSES = {
 function initSelect2() {
     $(SELECT2_CLASSES.root).each(function() {
         $(this).select2({
-            minimumResultsForSearch: -1
+            minimumResultsForSearch: -1,
         });
     });
 }
