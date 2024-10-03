@@ -33,6 +33,9 @@ block content
         ]
 
     include ../components/document-download
+    include ../components/tabs
+    include ../cards/card-text
+    include ../cards/card-product-list
     include ../cards/card-product
     include ../cards/card-service
     include ../cards/card-service-app
@@ -241,7 +244,153 @@ block content
                             span.chip.chip--outlined.caption-m
                                 | Банковские гарантии
 
-    section#card-product.section-layout.pt-0
+    section#tabs-panel.section-layout.section-layout--padding-top-0
+        -
+            const tabsList = [
+                {
+                    link: '#',
+                    linkText: 'Кнопка',
+                },
+                {
+                    link: '#',
+                    linkText: 'Кнопка',
+                },
+                {
+                    link: '#',
+                    linkText: 'Кнопка',
+                },
+                {
+                    link: '#',
+                    linkText: 'Кнопка',
+                },
+                {
+                    link: '#',
+                    linkText: 'Кнопка',
+                },
+                {
+                    link: '#',
+                    linkText: 'Кнопка',
+                },
+            ]
+
+        .container
+            .d-flex.flex-column.row-gap-5
+                h2 Tab panel & Tab item
+                .row.row-gap-4.gap-md-0.row-gap-md-4
+                    .col-8
+                        +tabs(
+                            tabsList,
+                            "",
+                            ""
+                        )
+                    .col-4
+                        ul.tabs-panel__list.nav.nav-tabs.d-inline-flex.flex-nowrap.w-auto.p-0.border.border-purple.rounded
+                            li.w-auto.tabs-panel__list-item.nav-item.z-2
+                                a.tabs-panel__list-item-link.nav-link.bg-transparent.active(aria-current="page")(href=tabsList[0].link)= tabsList[0].linkText
+                        ul.tabs-panel__list.nav.nav-tabs.d-inline-flex.flex-nowrap.w-auto.p-0.border.border-purple.rounded
+                            li.w-auto.tabs-panel__list-item.nav-item.z-2
+                                a.tabs-panel__list-item-link.nav-link.bg-transparent(href=tabsList[1].link)= tabsList[1].linkText
+
+
+    section.card-text-list.section-layout.bg-dark-10.py-6
+        -
+            const cardTextItems = [
+                {
+                    title: 'Заголовок',
+                    description: 'Текстовый фрейм L',
+                    link: '#1'
+                },
+                {
+                    title: 'Кредитные каникулы по ипотечным кредитам согласно Федеральному закону № 353-ФЗ',
+                    link: '#2'
+                }
+            ]
+
+        .container
+            .d-flex.flex-column.row-gap-5.mb-4
+                h2 Card Text
+            .row.align-items-stretch.row-gap-4.row-gap-sm-6
+                .col-12.col-md-6 
+                    +card-text(cardTextItems[0])
+                .col-12.col-md-6 
+                    +card-text(cardTextItems[0])
+                .col-12
+                    +card-text(cardTextItems[1])
+
+    section.loans-catalog__list.section-layout
+        -
+            const consumerLoans = [
+                {
+                    title: 'Кредит на любые цели<br> для зарплатных клиентов',
+                    description: 'Воплощение задуманных планов и реализация любых целей уже сегодня',
+                    imgSrc: 'large-individual/credit-for-any-purpose-salary-clients.png',
+                    links: [],
+                    tagText: '',
+                    textButton: 'Оформить заявку',
+                    conditions: [
+                        {
+                            startText: '',
+                            beforeText: 'от',
+                            text: '18%',
+                            afterText: '',
+                            currency: '',
+                            description: 'Ставка'
+                        },
+                        {
+                            startText: '',
+                            beforeText: 'до',
+                            text: '1 500 000',
+                            afterText: '',
+                            currency: '₽',
+                            description: 'Сумма'
+                        },
+                        {
+                            startText: '',
+                            beforeText: 'до',
+                            text: '3 лет',
+                            afterText: '',
+                            currency: '',
+                            description: 'Срок'
+                        }
+                    ]
+                },
+                {
+                    title: 'Реструктуризация',
+                    description: 'Программы для заемщиков, у которых возникли трудности с погашением кредита',
+                    imgSrc: 'large-individual/restructuring.png',
+                    links: [],
+                    tagText: '',
+                    conditions: [
+                        {
+                            startText: 'Уменьшение',
+                            beforeText: '',
+                            text: '',
+                            afterText: '',
+                            currency: '',
+                            description: 'Кредитной ставки'
+                        },
+                        {
+                            startText: 'Кредитные',
+                            beforeText: '',
+                            text: '',
+                            afterText: '',
+                            currency: '',
+                            description: 'Каникулы'
+                        }
+                    ]
+                }
+            ]
+
+        .container
+            .d-flex.flex-column.row-gap-5
+                h2 Card Product List
+
+                .row.row-gap-4.gap-md-0.row-gap-md-4
+                    .col-12.position-relative.z-1.d-flex.flex-column.align-items-start.gap-5.gap-md-7
+                        each item in consumerLoans
+                            +card-product-list(item)
+
+    section#card-product.section-layout.section-layout--padding-top-0
         -
             var cardProductList = [
                 {

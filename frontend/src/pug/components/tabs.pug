@@ -4,7 +4,7 @@
 // tabItemClassName - str
 
 mixin tabs(tabsList, tabsClassName, tabItemClassName)
-    .tabs-panel.js-tabs-slider.overflow-hidden.position-relative
+    .tabs-panel.js-tabs-slider.overflow-hidden.position-relative.px-1
         .tabs-panel__navigation.js-tabs-slider-navigation.w-100
             span.tabs-panel__navigation-item.tabs-panel__navigation-item-reverse.js-tabs-slider-navigation-prev.h-100.d-flex.align-items-center.justify-content-start.px-1.z-3.position-absolute.start-0.top-0
                 span.icon.size-m
@@ -17,6 +17,6 @@ mixin tabs(tabsList, tabsClassName, tabItemClassName)
             each tab, index in tabsList
                 li.swiper-slide.w-auto.tabs-panel__list-item.nav-item.z-2
                     if index == 0
-                        a.tabs-panel__list-item-link.nav-link.active(aria-current="page")(href=tab.link)= tab.linkText
+                        a.tabs-panel__list-item-link.nav-link.bg-transparent.active(aria-current="page")(href=tab.link)= tab.linkText
                     else
-                        a.tabs-panel__list-item-link.nav-link(href=tab.link)= tab.linkText
+                        a.tabs-panel__list-item-link.nav-link.bg-transparent(href=tab.link)= tab.linkText
