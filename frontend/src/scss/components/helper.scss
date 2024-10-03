@@ -1,0 +1,36 @@
+.helper {
+    
+    @include use-media(laptop) {
+        padding-right: 12.5rem!important;
+    }
+
+    &__background {
+        z-index: -1;
+        clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--polygon-square)), calc(100% - var(--polygon-square)) 100%, 0 100%);
+    }
+
+    &__image {
+        max-width: 7.5rem;
+
+        @include use-media(tablet-album) {
+            max-width: 10rem;
+        }
+    }
+
+    &__image-subtrack {
+        z-index: -2;
+        bottom: -1.5rem;
+        right: -1.5rem;
+    }
+
+    &__description {
+
+        & br {
+            display: none;
+
+            @include use-media(laptop) {
+                display: inherit;
+            }
+        }
+    }
+}
