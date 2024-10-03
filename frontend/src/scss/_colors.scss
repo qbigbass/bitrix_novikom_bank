@@ -61,6 +61,9 @@
 
 	//GRAY
 	--gray: #D5D9E0;
+
+	//SIGNALS ALERT
+	--alert: #c92a3d;
 }
 
 //DARK
@@ -140,3 +143,6 @@
 
 //GRAY
 .gray { color: var(--gray); }
+
+//ALERT
+.alert { color: var(--alert); }

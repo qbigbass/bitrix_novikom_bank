@@ -332,7 +332,37 @@ block content
     section#select.section-layout.pt-0
         .container
             .d-flex.flex-column.row-gap-5
-                h2 Select
+                h2 Input / Select
+
+                .row
+                    .col-12.col-md-6.col-xl-3
+                        .d-flex.flex-column.row-gap-2
+                            label(for="inp5").form-label.mb-0
+                                | Наименование
+                                span.orange-100.ms-1 *
+                            input#inp5(type="text" name="name5" placeholder="Введите текст").form-control.form-control-lg
+                            span.caption-m.dark-70.d-block Подсказка
+                    .col-12.col-md-6.col-xl-3
+                        .d-flex.flex-column.row-gap-2
+                            label(for="inp6").form-label.mb-0
+                                | Наименование
+                                span.orange-100.ms-1 *
+                            input#inp6(type="text" name="name6" placeholder="Введите текст" disabled).form-control.form-control-lg
+                            span.caption-m.dark-70.d-block Подсказка
+                    .col-12.col-md-6.col-xl-3
+                        .d-flex.flex-column.row-gap-2
+                            label(for="inp7").form-label.mb-0
+                                | Наименование
+                                span.orange-100.ms-1 *
+                            input#inp7(type="text" name="name7" placeholder="Введите текст").form-control
+                            span.caption-m.dark-70.d-block Подсказка
+                    .col-12.col-md-6.col-xl-3
+                        .d-flex.flex-column.row-gap-2
+                            label(for="inp8").form-label.mb-0
+                                | Наименование
+                                span.orange-100.ms-1 *
+                            input#inp8(type="text" name="name8" placeholder="Введите текст" required).form-control.is-invalid
+                            div.invalid-feedback Подсказка
 
                 .row
                     .col-12.col-md-6.col-xl-3

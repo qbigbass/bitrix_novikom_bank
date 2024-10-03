@@ -155,7 +155,14 @@ $btn-font-size-sm: .8125rem;
 
 $btn-font-weight: 700;
 
-// Links
+$form-invalid-color: var(--alert);
+$form-invalid-border-color: var(--alert);
+$form-feedback-margin-top: 0;
+$form-feedback-font-size: .75rem;
+$form-feedback-icon-invalid: none;
+
+
+    // Links
 $link-decoration: none;
 
 // Spacers
