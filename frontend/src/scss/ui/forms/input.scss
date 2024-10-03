@@ -54,13 +54,13 @@
 }
 
 .form-control-lg {
-    --bs-border-radius-lg: .25rem
+    --bs-border-radius-lg: .25rem;
 }
 
 .input-group {
 
     &__currency {
-        flex: 0 0 auto;
+        flex: 0 0 4.25rem;
 
         & .select2-container {
             height: 100%;
@@ -68,73 +68,52 @@
             & .selection {
                 display: inline-flex;
                 height: 100%;
+                width: 100%;
 
                 & .select2-selection {
                     display: inline-flex;
-                    height: 100%;
+                    height: 100% !important;
+                    width: 100%;
                     align-items: center;
-                    padding-right: 1rem;
-                    border-radius: 0 .25rem .25rem 0;
+                    border-radius: 0 .25rem .25rem 0 !important;
                     border-color: var(--purple-30);
 
                     &__rendered {
-                        color: var(--dark-100);
-                        padding: 0 .5rem;
+                        padding: 0 .5rem !important;
                     }
 
                     &__arrow {
                         position: relative;
-                        top: auto;;
-                        right: auto;
-                        width: 1rem;
-                        height: 1rem;
-                        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M3 6L8 10L13 6' stroke='%238D6C9B' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-                        background-repeat: no-repeat;
-                        background-position: center;
-                        background-size: contain;
-                        transition: transform ease .33s;
-
-                        & b {
-                            display: none;
-                        }
+                        top: auto !important;
+                        right: auto !important;
                     }
+                }
+            }
+
+            &--disabled {
+                & .selection .select2-selection {
+                    border-left: 1px solid var(--dark-50) !important;
                 }
             }
         }
     }
 
-    &.select2-container--open {
-        & .select2-selection__arrow {
-            transform: rotate(-180deg);
+    & .form-control-lg {
+
+        & + .input-group__currency {
+            flex-basis: 5rem;
         }
     }
 }
 
-.select2-container {
-    & .select2-dropdown {
-        border: none;
-        border-radius: .75rem !important;
 
-        top: .5rem;
+.form-control:disabled,
+.form-control.disabled {
+    background-color: var(--dark-10);
+    color: var(--dark-50);
+    border-color: var(--dark-10);
 
-        box-shadow: 0 8px 32px 0 rgba(60, 60, 71, 0.30);
-        padding: .5rem 0;
-    }
-}
-
-.select2-container--default .select2-results__option--highlighted.select2-results__option--selectable.select2-results__option--selected,
-.select2-container--default .select2-results__option--selected {
-    background-color: var(--dark-10) !important;
-    color: var(--dark-100) !important;
-}
-
-.select2-container--default .select2-results__option--highlighted.select2-results__option--selectable {
-    background-color: transparent !important;
-    color: var(--blue-100) !important;
-}
-
-.select2-container {
-    & .select2-results__option {
-        padding: .625rem 1rem;
+    &::placeholder {
+        color: var(--dark-50);
     }
 }
