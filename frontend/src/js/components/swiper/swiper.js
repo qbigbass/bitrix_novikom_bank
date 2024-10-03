@@ -8,6 +8,7 @@ const CLASS_NAME = {
     thumbsHero: '.js-banner-hero-thumbs',
     cardsSlider: '.js-slider-cards',
     announcementsSlider: '.js-announcement-slider',
+    tabsSlider: '.js-tabs-slider',
     slide: '.js-swiper-slide',
     prevEl: '.js-swiper-prev',
     nextEl: '.js-swiper-next',
@@ -284,6 +285,16 @@ export function initAnnouncementSlider() {
     });
 }
 
-
-
-
+export function initTabsSlider() {
+    new Swiper(CLASS_NAME.tabsSlider, {
+        slidesPerView: "auto",
+        loop: false,
+        freeMode: true,
+        pagination: false, 
+        modules: [Navigation],
+        navigation: {
+            prevEl: ".js-tabs-slider-navigation-prev",
+            nextEl: ".js-tabs-slider-navigation-next",
+        },
+    });
+}

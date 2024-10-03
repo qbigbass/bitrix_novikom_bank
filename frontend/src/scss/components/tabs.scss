@@ -1,0 +1,49 @@
+.tabs-panel {
+
+    &__navigation {
+
+        &-item {
+            aspect-ratio: 1;
+            transition: .275ms ease-in-out;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 69.91%);
+
+            &-reverse {
+                background: linear-gradient(-90deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 69.91%);
+            }
+        }
+        
+        &-item.swiper-button-disabled {
+            opacity: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+    }
+
+    &__list {
+        --bs-border-radius: 0.25rem;
+        --bs-border-color: var(--purple-30);
+        min-width: max-content;
+    }
+
+    &__list-item {
+        
+        &-link {
+            --bs-nav-link-padding-x: 1.5rem;
+            --bs-nav-link-padding-y: 0.5rem;
+            --bs-nav-link-font-size: 1rem;
+            --bs-nav-link-color: var(--blue-100);
+            border-radius: var(--bs-border-radius);
+
+            @include use-media(tablet) {
+                --bs-nav-link-padding-x: 2.5rem;
+                --bs-nav-link-padding-y: 1rem;
+                --bs-nav-link-font-size: 1.125rem;
+            }
+
+            &.active {
+                --bs-nav-tabs-link-active-border-color: var(--violet-100);
+                --bs-nav-tabs-link-active-color: var(--violet-100);
+            }
+        }
+    }
+}

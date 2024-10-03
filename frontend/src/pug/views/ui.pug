@@ -106,7 +106,7 @@ block content
                         p.text-primary Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, natus.
                         p.text-secondary Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, natus.
                         p.text-success Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, natus.
-    section#buttons.section-layout.section-layout--padding-top-0
+    section#buttons.section-layout.pt-0
         .container
             .d-flex.flex-column.row-gap-5
                 h2 Кнопки
@@ -167,7 +167,7 @@ block content
                             +svg-use("icon-download", "icon size-s")
                             | Кнопка
                             +svg-use("icon-download", "icon size-s")
-    section#dropDown.section-layout.section-layout--padding-top-0
+    section#dropDown.section-layout.pt-0
         .container
             .d-flex.flex-column.row-gap-5
                 h2 DropDown
@@ -207,7 +207,7 @@ block content
                                 a.dropdown-item.fw-bold(href="#") Для организаций
                             li
                                 a.dropdown-item.fw-bold(href="#") Для организаций
-    section#chip.section-layout.section-layout--padding-top-0
+    section#chip.section-layout.pt-0
         .container
             .d-flex.flex-column.row-gap-5
                 h2 Chip
@@ -241,7 +241,7 @@ block content
                             span.chip.chip--outlined.caption-m
                                 | Банковские гарантии
 
-    section#card-product.section-layout.section-layout--padding-top-0
+    section#card-product.section-layout.pt-0
         -
             var cardProductList = [
                 {
@@ -281,7 +281,7 @@ block content
                         .col-12.col-md-6.col-xl-4
                             +card-product(item)
 
-    section#card-service.section-layout.section-layout--padding-top-0
+    section#card-service.section-layout.pt-0
         .container
             .d-flex.flex-column.row-gap-5
                 h2 Card Service
@@ -328,3 +328,132 @@ block content
                                 a(href="#").btn.btn-sm.btn-info.btn-icon.d-md-none
                                     | Скачать
                                     +svg-use("icon-download-small", "icon size-s")
+
+    section#select.section-layout.pt-0
+        .container
+            .d-flex.flex-column.row-gap-5
+                h2 Select
+
+                .row
+                    .col-12.col-md-6.col-xl-3
+                        .d-flex.flex-column.row-gap-2
+                            label(for="inp1").form-label.mb-0
+                                | Наименование
+                                span.orange-100.ms-1 *
+                            .input-group
+                                input#inp1(type="text" name="name1" placeholder="Введите текст").form-control.form-control-lg
+                                .input-group__currency
+                                    select(aria-label="Выберите валюту").form-select.js-select
+                                        option(selected value="RUB") RUB
+                                        option(value="USD") USD
+                                        option(value="CNY") CNY
+                            span.caption-m.dark-70.d-block Подсказка
+                    .col-12.col-md-6.col-xl-3
+                        .d-flex.flex-column.row-gap-2
+                            label(for="inp3").form-label.mb-0
+                                | Наименование
+                                span.ms-1 *
+                            .input-group
+                                input#inp3(type="text" name="name3" placeholder="Введите текст" disabled).form-control.form-control-lg
+                                .input-group__currency
+                                    select(aria-label="Выберите валюту" disabled).form-select.js-select
+                                        option(value="RUB") RUB
+                                        option(value="USD") USD
+                                        option(value="CNY") CNY
+                            span.caption-m.dark-70.d-block Подсказка
+                    .col-12.col-md-6.col-xl-3
+                        .d-flex.flex-column.row-gap-2
+                            label(for="inp2").form-label.mb-0
+                                | Наименование
+                                span.orange-100.ms-1 *
+                            .input-group
+                                input#inp2(type="text" name="name1" placeholder="Введите текст").form-control
+                                .input-group__currency
+                                    select(aria-label="Выберите валюту").form-select.form-select--size-small.js-select
+                                        option(selected value="RUB") RUB
+                                        option(value="USD") USD
+                                        option(value="CNY") CNY
+                            span.caption-m.dark-70.d-block Подсказка
+                    .col-12.col-md-6.col-xl-3
+                        .d-flex.flex-column.row-gap-2
+                            label(for="inp4").form-label.mb-0
+                                | Наименование
+                                span.ms-1 *
+                            .input-group
+                                input#inp4(type="text" name="name1" placeholder="Введите текст" disabled).form-control
+                                .input-group__currency
+                                    select(aria-label="Выберите валюту" disabled).form-select.form-select--size-small.js-select
+                                        option(selected value="RUB") RUB
+                                        option(value="USD") USD
+                                        option(value="CNY") CNY
+                            span.caption-m.dark-70.d-block Подсказка
+
+                .row
+                    .col-12.col-md-6.col-xl-3
+                        .d-flex.flex-column.row-gap-2
+                            label(for="select1").form-label.mb-0
+                                | Наименование
+                                span.orange-100.ms-1 *
+                            select#select1(aria-label="Подсказка").form-select.js-select
+                                option(selected value="1") Список 1
+                                option(value="2") Список 2
+                                option(value="3") Список 3
+                                option(value="4") Список 4
+                                option(value="5") Список 5
+                                option(value="6") Список 6
+                                option(value="7") Список 7
+                                option(value="8") Список 8
+
+                            span.caption-m.dark-70.d-block Подсказка
+                    .col-12.col-md-6.col-xl-3
+                        .d-flex.flex-column.row-gap-2
+                            label(for="select3").form-label.mb-0
+                                | Наименование
+                                span.ms-1 *
+                            select#select3(aria-label="Подсказка" disabled).form-select.js-select
+                                option(selected value="1") Список 1
+                                option(value="2") Список 2
+                                option(value="3") Список 3
+                                option(value="4") Список 4
+                                option(value="5") Список 5
+                                option(value="6") Список 6
+                                option(value="7") Список 7
+                                option(value="8") Список 8
+
+                            span.caption-m.dark-70.d-block Подсказка
+
+                    .col-12.col-md-6.col-xl-3
+                        .d-flex.flex-column.row-gap-2
+                            label(for="select2").form-label.mb-0
+                                | Наименование
+                                span.orange-100.ms-1 *
+                            select#select2(aria-label="Подсказка" data-placeholder="Подсказка").form-select.form-select--size-small.js-select
+                                option
+                                option(value="1") Список 1
+                                option(value="2" disabled) Список 2
+                                option(value="3") Список 3
+                                option(value="4") Список 4
+                                option(value="5") Список 5
+                                option(value="6") Список 6
+                                option(value="7") Список 7
+                                option(value="8") Список 8
+
+                            span.caption-m.dark-70.d-block Подсказка
+
+                    .col-12.col-md-6.col-xl-3
+                        .d-flex.flex-column.row-gap-2
+                            label(for="select4").form-label.mb-0
+                                | Наименование
+                                span.ms-1 *
+                            select#select4(aria-label="Подсказка" data-placeholder="Подсказка" disabled).form-select.form-select--size-small.js-select
+                                option
+                                option(value="1") Список 1
+                                option(value="2" disabled) Список 2
+                                option(value="3") Список 3
+                                option(value="4") Список 4
+                                option(value="5") Список 5
+                                option(value="6") Список 6
+                                option(value="7") Список 7
+                                option(value="8") Список 8
+
+                            span.caption-m.dark-70.d-block Подсказка
