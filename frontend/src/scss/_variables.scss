@@ -155,7 +155,14 @@ $btn-font-size-sm: .8125rem;
 
 $btn-font-weight: 700;
 
-// Links
+$form-invalid-color: var(--alert);
+$form-invalid-border-color: var(--alert);
+$form-feedback-margin-top: 0;
+$form-feedback-font-size: .75rem;
+$form-feedback-icon-invalid: none;
+
+
+    // Links
 $link-decoration: none;
 
 // Spacers
@@ -197,12 +204,12 @@ $input-placeholder-color: var(--dark-70);
 $input-border-radius: .25rem;
 $input-focus-box-shadow: none;
 $input-btn-padding-y: .625rem;
-$input-btn-padding-x: 1rem;
-$input-btn-font-size: 1rem;
+$input-btn-padding-x: .9375rem;
+$input-btn-font-size: .875rem;
 $input-btn-line-height: 1.5;
-//$input-btn-font-size-lg: 1rem;
-//$input-btn-padding-x-lg: 1rem;
-//$input-btn-padding-y-lg: 1rem;
+$input-btn-font-size-lg: 1rem;
+$input-btn-padding-x-lg: .9375rem;
+$input-btn-padding-y-lg: .9375rem;
 
 // Accordion
 $accordion-button-padding-y: 1rem;

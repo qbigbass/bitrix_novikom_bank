@@ -1,0 +1,9 @@
+.sp-block-my_hint .sp-hint {
+  width: 78%;
+  height: 90px;
+}
+
+.sp-block-my_hint .sp-heading-hint {
+  width: 78%;
+  margin-bottom: 10px !important;
+}

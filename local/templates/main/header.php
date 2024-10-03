@@ -100,7 +100,7 @@ use Bitrix\Main\Localization\Loc;
                         "main_submenu_header",
                         Array(
                             "ALLOW_MULTI_SELECT" => "N",
-                            "CHILD_MENU_TYPE" => "left",
+                            "CHILD_MENU_TYPE" => "iblock_sections",
                             "DELAY" => "N",
                             "MAX_LEVEL" => "2",
                             "MENU_CACHE_GET_VARS" => array(""),
@@ -115,5 +115,5 @@ use Bitrix\Main\Localization\Loc;
             </div>
         </div>
     </header>
-
-<!-- #WORK_AREA# --------------------------------------------------------------------------------------------------- -->
+    <main class="default-page-layout__body">
+    <!-- #WORK_AREA# --------------------------------------------------------------------------------------------------- -->

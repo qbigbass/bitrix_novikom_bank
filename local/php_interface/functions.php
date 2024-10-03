@@ -16,28 +16,24 @@ function modifyMainSubmenuResult(array $arResult) : array {
         'SECOND_LEVEL_MENU' => [],
     ];
 
-
-    foreach ($arResult as $item) {
+    foreach ($arResult as &$item) {
         if ($item['DEPTH_LEVEL'] == 2) {
             $lastParentElement = end($modifiedResult['FIRST_LEVEL_MENU']);
             $itemIndex = $lastParentElement['ITEM_INDEX'];
 
-            if(empty($modifiedResult['SECOND_LEVEL_MENU'][$itemIndex]) && !empty($lastParentElement['PARAMS']['submenu_item_name'])) {
-                $lastParentElement['TEXT'] = $lastParentElement['PARAMS']['submenu_item_name'];
-                $modifiedResult['SECOND_LEVEL_MENU'][$itemIndex][] = $lastParentElement;
+            if(!empty($item['PARAMS']['alternative_name'])) {
+                $item["TEXT"] = $item['PARAMS']['alternative_name'];
             }
 
+            $item['LINK'] = str_replace('index.php', '', $item['LINK']);
             $modifiedResult['SECOND_LEVEL_MENU'][$itemIndex][] = $item;
         } else {
             $modifiedResult['FIRST_LEVEL_MENU'][] = $item;
         }
     }
+    unset($item);
 
     return $modifiedResult;
-}
-
-function modifyParentName(string $name) : string {
-    return 'Все ' . mb_strtolower($name) . ' НОВИКОМ';
 }
 
 function clearPhoneNumber(string $phoneNumber) : string {

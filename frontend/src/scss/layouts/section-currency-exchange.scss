@@ -1,0 +1,22 @@
+.section-currency-exchange {
+    background-color: var(--dark-10);
+
+    @include use-media(tablet-album) {
+        background-color: var(--dark-0);
+    }
+
+    &__wrapper {
+
+        @include use-media(tablet-album) {
+            background-color: var(--dark-10);
+            border-radius: 0.75rem;
+            padding: 4rem 2.5rem;
+        }
+
+        &.collapse {
+            @include use-media(tablet) {
+                display: block;
+            }
+        }
+    }
+}

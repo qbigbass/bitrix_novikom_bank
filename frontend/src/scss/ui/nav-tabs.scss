@@ -1,0 +1,24 @@
+:root {
+    --border-nav-width: 1px;
+}
+
+.nav-tabs {
+    border: var(--border-nav-width) solid var(--purple-30);
+    border-radius: .25rem;
+
+    & .nav-link {
+        padding: .5rem 1.5rem;
+        color: var(--blue-100);
+        margin: calc(-1 * var(--border-nav-width));
+        border: var(--border-nav-width) solid transparent;
+        border-radius: .25rem;
+        width: calc(100% + 2*var(--border-nav-width));
+
+        &.active {
+            background-color: transparent;
+            color: var(--violet-100);
+            border-color: var(--violet-100);
+            border-radius: .25rem;
+        }
+    }
+}

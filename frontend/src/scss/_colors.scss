@@ -61,6 +61,9 @@
 
 	//GRAY
 	--gray: #D5D9E0;
+
+	//SIGNALS ALERT
+	--alert: #c92a3d;
 }
 
 //DARK
@@ -73,6 +76,10 @@
 
 .bg-dark-10 {
 	background-color: var(--dark-10);
+}
+
+.bg-dark-0 {
+	background-color: var(--dark-0);
 }
 
 //VIOLET
@@ -136,3 +143,6 @@
 
 //GRAY
 .gray { color: var(--gray); }
+
+//ALERT
+.alert { color: var(--alert); }

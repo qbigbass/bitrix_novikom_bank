@@ -1,0 +1,77 @@
+.sp-block-my_step_by_step_visualization .sp-acc-tab {
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+.sp-block-my_step_by_step_visualization .sp-acc-blocks {
+  padding: 10px;
+}
+
+.sp-block-my_step_by_step_visualization .sp-acc-tab.sp-collapsed .sp-acc-blocks,
+.sp-block-my_step_by_step_visualization .sp-acc-tab.sp-collapsed .sp-acc-footer {
+    display: none;
+}
+
+.sp-block-my_step_by_step_visualization .sp-acc-tab.sp-collapsed .sp-acc-collapse {
+    background: #e0e0e0;
+}
+
+
+.sp-block-my_step_by_step_visualization .sp-acc-header {
+    position: relative;
+}
+
+.sp-block-my_step_by_step_visualization .sp-acc-footer,
+.sp-block-my_step_by_step_visualization .sp-acc-header {
+    padding: 10px 10px 0;
+    background: #eee;
+}
+
+
+.sp-block-my_step_by_step_visualization .sp-acc-header,
+.sp-block-my_step_by_step_visualization .sp-acc-footer {
+    font-size: 0;
+}
+
+.sp-block-my_step_by_step_visualization .sp-acc-footer span {
+    font-size: 13px;
+}
+
+.sp-block-my_step_by_step_visualization select.sp-program-type-value {
+    width: 60%;
+    float: right;
+}
+
+.sp-block-my_step_by_step_visualization .sp-x-box {
+    margin: 10px;
+}
+
+.sp-block-my_step_by_step_visualization .sp-acc-box-handle,
+.sp-block-my_step_by_step_visualization .sp-acc-tab-handle {
+    cursor: move;
+}
+
+
+.sp-block-my_step_by_step_visualization .sp-acc-box.ui-sortable-helper {
+    background: #e0e8ea;
+    padding: 10px 10px 20px;
+}
+
+.sp-block-my_step_by_step_visualization .sp-acc-tab.ui-sortable-helper {
+    background: #e0e8ea;
+}
+
+.sp-block-my_step_by_step_visualization .sp-heading {
+    margin-bottom: 10px !important;
+    width: 50%;
+}
+.sp-block-my_step_by_step_visualization input,
+.sp-block-my_step_by_step_visualization textarea {
+    display: block;
+    margin-bottom: 10px !important;
+    width: 78%;
+}
+
+.sp-block-my_step_by_step_visualization textarea {
+    height: 90px;
+}
