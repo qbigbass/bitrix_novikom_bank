@@ -10,7 +10,7 @@ block content
     include ../cards/card-service-app
     include ../components/announcement
     include ../cards/card-news
-
+    include ../components/tabs
 
     section.section-layout
         .container
@@ -183,47 +183,6 @@ block content
                                 | и&nbsp;корпоративных кредитов
 
                         +pattern-bg('card', 'light', 'card-about-bank__pattern')
-    section.section-layout.pt-0
-        .container
-            .d-flex.align-items-end.ps-lg-6.mb-4.mb-md-6.mb-lg-7
-                h3 Новости
-                a(href="#").violet-100.d-flex.align-items-center.gap-2.ms-auto
-                    span.d-none.d-md-inline.text-s.fw-semibold Пресс-центр
-                    +svg-use('icon-chevron-right', 'icon size-m')
-            .swiper.js-slider-cards.slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:2,laptop:3,laptop-x:3" data-space-between="mobile-s:8,mobile:8,tablet:8,laptop:8,laptop-x:8")
-                -
-                    var pressReleases = [
-                        {
-                            tag: "Пресс-центр",
-                            date: "07.12.2023",
-                            title: "Новикомбанк рассказал о развитии финансовых инструментов",
-                        },
-                        {
-                            tag: "Пресс-центр",
-                            date: "06.12.2023",
-                            title: "Новикомбанк и Республика Татарстан договорились о сотрудничестве",
-                        },
-                        {
-                            tag: "Союз машиностроителей 1234 dfsfasd",
-                            date: "27.11.2023",
-                            title: "При поддержке Новикомбанка Росэлектроника начала серийный выпуск KVM-коммутаторов для удаленного управления оборудованием",
-                        },
-                        {
-                            tag: "Пресс-центр",
-                            date: "20.11.2023",
-                            title: "Новикомбанк и Республика Татарстан договорились о сотрудничестве",
-                        },
-                        {
-                            tag: "Союз машиностроителей",
-                            date: "05.11.2023",
-                            title: "При поддержке Новикомбанка Росэлектроника начала серийный выпуск KVM-коммутаторов для удаленного управления оборудованием",
-                        },
-                    ]
-                .swiper-wrapper.js-swiper-wrapper
-                    each item in pressReleases
-                        .swiper-slide.js-swiper-slide
-                            +card-news(item)
-
-                +slider-controls().mt-3.mt-md-4
-
+    include ../includes/layout/section-news-cards
     include ../includes/layout/section-feedback
+    include ../includes/layout/section-currency-exchange

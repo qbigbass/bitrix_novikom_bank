@@ -1,0 +1,38 @@
+:root {
+    --table-currency-gap: 1rem;
+}
+
+.table-currency {
+
+    &__row {
+        display: flex;
+        align-items: center;
+        padding: 1rem 0;
+        border-bottom: 1px dashed var(--blue-30);
+        gap: var(--table-currency-gap);
+
+        @include use-media(tablet) {
+            padding: 1.5rem 0;
+        }
+
+        &--header {
+            @include use-media(tablet) {
+                padding: 1rem 0;
+            }
+        }
+    }
+
+    &__col {
+        flex: 0 0 calc(50% - var(--table-currency-gap) / 2);
+
+        @include use-media(tablet) {
+            flex-basis: 19%;
+        }
+
+        &:first-child {
+            @include use-media(tablet) {
+                flex-basis: 35%;
+            }
+        }
+    }
+}

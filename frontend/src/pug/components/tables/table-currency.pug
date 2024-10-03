@@ -1,0 +1,27 @@
+mixin table-currency(data, size)
+    if size === 'mobile'
+        .table-currency&attributes(attributes)
+            each row in data
+                .table-currency__row
+                    .table-currency__col
+                        span.text-s.dark-70= row.title
+                    .table-currency__col
+                        span.text-l.dark-100= row.value
+    else
+        .table-currency&attributes(attributes)
+            .table-currency__row.table-currency__row--header
+                .table-currency__col
+                    span.text-s.dark-70 Валюта
+                .table-currency__col
+                    span.text-s.dark-70 Продать, RUB
+                .table-currency__col
+                    span.text-s.dark-70 Купить, RUB
+                .table-currency__col
+                    span.text-s.dark-70 ЦБ РФ, RUB
+            each row in data
+                .table-currency__row
+                    .table-currency__col
+                        span.fw-semibold= row.title
+                    each value in row.value
+                        .table-currency__col
+                            span.text-l.dark-100= value
