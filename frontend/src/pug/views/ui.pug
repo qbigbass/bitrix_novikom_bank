@@ -290,6 +290,14 @@ block content
                         ul.tabs-panel__list.nav.nav-tabs.d-inline-flex.flex-nowrap.w-auto.p-0.border.border-purple.rounded
                             li.w-auto.tabs-panel__list-item.nav-item.z-2
                                 a.tabs-panel__list-item-link.nav-link.bg-transparent(href=tabsList[1].link)= tabsList[1].linkText
+                .row.row-gap-4.gap-md-0.row-gap-md-4
+                    .col-12
+                        +tabs(
+                            tabsList,
+                            "",
+                            "",
+                            true
+                        )
 
 
     section.card-text-list.section-layout.bg-dark-10.py-6
