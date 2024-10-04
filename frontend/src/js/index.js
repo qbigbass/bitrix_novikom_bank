@@ -8,6 +8,7 @@ import { initSwiperMenu, initHeroBanner, initCardSlider, initAnnouncementSlider,
 import initButtonNavMobile from './components/nav-panel.js'
 import initMobileSearch from './components/mobile-search.js'
 import initSelect2 from './components/select2.js'
+import { initTabsContentEvents } from './components/tabs.js'
 
 document.addEventListener('DOMContentLoaded', () => {
     initDropdownMenu();
@@ -21,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initAnnouncementSlider();
     initTabsSlider();
     initSelect2();
+    initTabsContentEvents();
 });
 
 window.addEventListener('resize', () => {
