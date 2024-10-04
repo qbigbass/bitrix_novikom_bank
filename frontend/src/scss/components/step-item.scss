@@ -4,4 +4,14 @@
         width: 5rem;
         height: 5rem;
     }
+
+    &__title {
+        & br {
+            display: none;
+
+            @include use-media(tablet) {
+                display: inherit;
+            }
+        }
+    }
 }
