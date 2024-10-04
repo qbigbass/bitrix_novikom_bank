@@ -1,0 +1,69 @@
+-
+    var calculatorData = {
+        rows: [
+            {
+                title: 'Процентная ставка',
+                value: '16,5%',
+            },
+            {
+                title: 'Ежемесячный платеж',
+                value: '35 404,38',
+                currency: true,
+                link: 'График платежей'
+            },
+            {
+                title: 'Необходимый ежемесячный доход, от',
+                value: '35 404,38',
+                currency: true
+            },
+            {
+                title: 'Диапазон полной стоимости кредита',
+                value: '16,464 – 20,474 %',
+            }
+        ],
+        btnText: 'Оформить заявку',
+        notes: 'Калькулятор не&nbsp;гарантирует точность расчетов. Окончательные параметры кредита определяются по&nbsp;итогам рассмотрения заявки.'
+    }
+
+    var tabsList = [
+        {
+            link: 'loan-consumer',
+            linkText: 'Потребительский кредит',
+            isActive: true
+        },
+        {
+            link: 'refinance',
+            linkText: 'Рефинансирование',
+            isActive: false
+        },
+    ]
+
+.row
+    .col-12.col-lg-6
+        .d-none.d-lg-inline-flex
+            +nav-tabs(tabsList)
+
+        .d-lg-none
+            select.form-select.form-select--size-small.js-select
+                option(selected value="loan") Потребительский кредит
+                option(value="refinance") Рефинансирование
+        .tab-content.pt-4.pt-md-6.pt-lg-7
+            #loan-consumer.tab-pane.fade.show.active(role="tabpanel" aria-labelledby="loan" tabindex="0")
+                .d-flex.flex-column.row-gap-4.row-gap-md-6.row-gap-lg-7
+                    p.mb-0 loan
+                    .d-flex.flex-column.row-gap-3
+                        .form-check
+                            input#inp1(type="checkbox" value="" checked).form-check-input
+                            label(for="inp1").form-check-label
+                                | Получаю зарплату на&nbsp;карту Новиком
+
+                        .form-check
+                            input#inp2(type="checkbox" value="").form-check-input
+                            label(for="inp2").form-check-label
+                                | Страхование
+            #refinance.tab-pane.fade(role="tabpanel" aria-labelledby="refinance" tabindex="0")
+                p refinance
+
+    .col-12.col-lg-6.mt-4.mt-md-6.mt-lg-0
+        +polygon-container()
+            +card-calculate-result(calculatorData)

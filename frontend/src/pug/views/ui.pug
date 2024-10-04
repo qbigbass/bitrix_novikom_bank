@@ -33,7 +33,7 @@ block content
         ]
 
     include ../components/document-download
-    include ../components/tabs
+    include ../components/ui/tabs
     include ../cards/card-text
     include ../cards/card-product-list
     include ../cards/card-product
@@ -318,9 +318,9 @@ block content
             .d-flex.flex-column.row-gap-5.mb-4
                 h2 Card Text
             .row.align-items-stretch.row-gap-4.row-gap-sm-6
-                .col-12.col-md-6 
+                .col-12.col-md-6
                     +card-text(cardTextItems[0])
-                .col-12.col-md-6 
+                .col-12.col-md-6
                     +card-text(cardTextItems[0])
                 .col-12
                     +card-text(cardTextItems[1])

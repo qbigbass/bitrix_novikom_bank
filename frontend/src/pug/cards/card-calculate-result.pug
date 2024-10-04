@@ -4,12 +4,22 @@ mixin card-calculate-result(data)
             each item in data.rows
                 .d-flex.flex-column.row-gap-2
                     span.card-calculate-result__label.text-s.dark-70= item.title
-                    span.text-number-ml.fw-bold= item.value
-                        if item.currency
-                            | &nbsp;
-                            span.currency ₽
+                    if item.link
+                        .d-flex.flex-column.flex-md-row.justify-content-md-between.align-items-md-end
+                            span.text-number-ml.fw-bold= item.value
+                                if item.currency
+                                    | &nbsp;
+                                    span.currency ₽
+                            button.btn.btn-link.btn-sm.btn-icon.mt-2(type="button")
+                                span= item.link
+                                +svg-use("icon-chevron-right-small", "icon size-s")
+                    else
+                        span.text-number-ml.fw-bold= item.value
+                            if item.currency
+                                | &nbsp;
+                                span.currency ₽
 
         .card-calculate-result__footer
-            button(type="button").btn.btn-primary.w-100= data.btnText
+            button(type="button").btn.btn-primary.btn-lg-lg.w-100= data.btnText
             if data.notes
                 p.dark-70.caption-m!= data.notes

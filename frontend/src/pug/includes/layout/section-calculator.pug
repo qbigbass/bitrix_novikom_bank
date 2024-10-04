@@ -1,32 +1,26 @@
 include ../../cards/card-calculate-result
+include ../../components/ui/nav-tabs
 -
-    var calculatorData = {
-        rows: [
-            {
-                title: 'Процентная ставка',
-                value: '16,5%',
-            },
-            {
-                title: 'Ежемесячный платеж',
-                value: '35 404,38',
-                currency: true
-            },
-            {
-                title: 'Необходимый ежемесячный доход, от',
-                value: '35 404,38',
-                currency: true
-            },
-            {
-                title: 'Диапазон полной стоимости кредита',
-                value: '16,464 – 20,474 %',
-            }
-        ],
-        btnText: 'Оформить заявку',
-        notes: 'Калькулятор не&nbsp;гарантирует точность расчетов. Окончательные параметры кредита определяются по&nbsp;итогам рассмотрения заявки.'
-    }
+    var calcList = [
+        {
+            link: 'loan',
+            linkText: 'Кредит',
+            isActive: true
+        },
+        {
+            link: 'mortgage',
+            linkText: 'Ипотека',
+            isActive: false
+        },
+        {
+            link: 'deposit',
+            linkText: 'Вклад',
+            isActive: false
+        },
+    ]
 
 
-section.section-layout.section-layout--bg-gray
+section.section-layout.section-layout--bg-gray.section-calculator
     .container
         a(
             data-bs-toggle="collapse"
@@ -37,19 +31,10 @@ section.section-layout.section-layout--bg-gray
         ).h3.d-flex.align-items-center.justify-content-between.dark-100.d-md-none
             | Рассчитайте выгоду
             +svg-use("icon-chevron-down", "icon size-m violet-100")
-        #calculator.collapse.show
-            .row
-                .col-12
-                    .d-flex.flex-column.row-gap-3
-                        div.form-check
-                            input#inp1(type="checkbox" value="").form-check-input
-                            label(for="inp1").form-check-label
-                                | Получаю зарплату на&nbsp;карту Новиком
-
-                        div.form-check
-                            input#inp2(type="checkbox" value="").form-check-input
-                            label(for="inp2").form-check-label
-                                | Страхование
-                .col-12
-                    +polygon-container()
-                        +card-calculate-result(calculatorData)
+        #calculator.collapse.show.section-calculator__wrapper
+            .section-calculator__header.d-flex.flex-md-column.flex-lg-row.gap-md-6.align-items-lg-end.py-4.p-md-0.mb-md-6.mb-lg-7.justify-content-lg-between.ps-lg-6
+                h3.d-none.d-md-inline Рассчитайте выгоду
+                +nav-tabs(calcList)
+            .tab-content
+                #loan.ps-lg-6
+                    include calculator-tabs/tab-loan
