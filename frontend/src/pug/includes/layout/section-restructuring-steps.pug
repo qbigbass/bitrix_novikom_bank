@@ -1,0 +1,35 @@
+-
+    const sectionTitle = "Как реструктуризировать задолженность"
+
+    const allSteps = [
+        {
+            imageSrc: "step-indicator-1.svg",
+            text: "Оформите заявку на сайте или у кредитного менеджера в офисе Новиком"
+        },
+        {
+            imageSrc: "step-indicator-2.svg",
+            text: "Получите ответ кредитного специалиста Новикома в течение 10 дней"
+        },
+        {
+            imageSrc: "step-indicator-3.svg",
+            text: "Подпишите документы в случае одобрения реструктуризации"
+        },
+    ]
+
+mixin arrowRight(className)
+    svg.d-none.d-lg-block(class=className, width="378", height="8", fill="none", viewBox="0 0 378 8")
+        path(fill="#76B82A", d="M1 3.5a.5.5 0 0 0 0 1v-1Zm376.354.854a.5.5 0 0 0 0-.708L374.172.464a.501.501 0 0 0-.708.708L376.293 4l-2.829 2.828a.5.5 0 0 0 .708.708l3.182-3.182ZM1 4.5h376v-1H1v1Z")
+
+section.restructuring-steps.bg-dark-10.py-6.py-sm-9.py-md-11.py-xl-16
+    .container
+        .row.mb-6.mb-lg-7
+            h3= sectionTitle
+        .row.row-gap-6
+            each item, index in allSteps
+                .col-12.col-md-4
+                    .step-item.d-flex.flex-row.flex-md-column.align-items-center.align-items-md-start.gap-4.gap-md-3
+                        .flex-shrink-0.step-item__indicator-group.d-flex.gap-4
+                            img(src='../img/steps/'+item.imageSrc, class="step-item__indicator-image", alt="")
+                            if index+1 != allSteps.length
+                                +arrowRight("mt-4")
+                        span.text-l= item.text
