@@ -34,6 +34,7 @@ block content
 
     include ../components/document-download
     include ../components/tabs
+    include ../components/helper
     include ../cards/card-text
     include ../cards/card-product-list
     include ../cards/card-product
@@ -644,3 +645,16 @@ block content
                                 option(value="8") Список 8
 
                             span.caption-m.dark-70.d-block Подсказка
+    
+    section#helper.section-layout.pt-0
+        .container
+            .d-flex.flex-column.row-gap-5
+                h2 Helper
+
+                .row
+                    .col-12
+                        +helper(
+                            "../img/restructuring-additional-info.png",
+                            "Банк вправе запросить дополнительные документы заемщика/созаемщика/поручителя <br />для подтверждения информации, указанной заемщиком/созаемщиком/поручителем.",
+                            "green"
+                        )
