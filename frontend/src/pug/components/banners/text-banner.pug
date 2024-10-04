@@ -10,7 +10,7 @@ mixin text-banner-content(title, breadcrumbsArray, description)
         .text-banner__breadcrumbs.d-flex.gap-2
             each item in breadcrumbsArray
                 a.text-banner__breadcrumbs-item.d-inline-flex.align-items-center.gap-2.text-s.text-white-50(href=item.link)= item.linkText
-        h1.text-banner__title.dark-0= title
+        h1.text-banner__title.dark-0!= title
         .text-banner__description.text-l.dark-0= description
 
 mixin text-banner(title, breadcrumbsArray, description, borderColor, image = '')
