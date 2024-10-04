@@ -1,0 +1,15 @@
+mixin card-calculate-result(data)
+    .card-calculate-result
+        .card-calculate-result__body
+            each item in data.rows
+                .d-flex.flex-column.row-gap-2
+                    span.card-calculate-result__label.text-s.dark-70= item.title
+                    span.text-number-ml.fw-bold= item.value
+                        if item.currency
+                            | &nbsp;
+                            span.currency ₽
+
+        .card-calculate-result__footer
+            button(type="button").btn.btn-primary.w-100= data.btnText
+            if data.notes
+                p.dark-70.caption-m!= data.notes

@@ -11,5 +11,5 @@ mixin card-product(data)
                         span.text-number-l.fw-bold= data.subtitle.number
                 if data.description
                     p.card-product__description.m-0!= data.description
-            img.card-product__img(src=`../img/big-illustrations/${data.img}`, alt="", loading="lazy")
+            img.card-product__img(src=`img/big-illustrations/${data.img}`, alt="", loading="lazy")
             a(href="#").btn.btn-primary.card-product__button= data.button

@@ -24,6 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 window.addEventListener('resize', () => {
-    initPolygonContainer();
+    initPolygonContainer(true);
     setVh();
 });

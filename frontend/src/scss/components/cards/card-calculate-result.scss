@@ -1,0 +1,35 @@
+.card-calculate-result {
+    background-color: var(--dark-0);
+    padding: 1.5rem 1rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+
+    @include use-media(tablet) {
+        padding: 2rem;
+    }
+
+    @include use-media(tablet-album) {
+        padding: 2.5rem;
+        gap: 3rem;
+    }
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+    }
+
+    &__footer {
+        & p {
+            margin: 1rem 0 0;
+
+            @include use-media(tablet-album) {
+                margin-top: 1.5rem;
+            }
+        }
+    }
+}

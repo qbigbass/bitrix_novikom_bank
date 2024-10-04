@@ -1,0 +1,55 @@
+include ../../cards/card-calculate-result
+-
+    var calculatorData = {
+        rows: [
+            {
+                title: 'Процентная ставка',
+                value: '16,5%',
+            },
+            {
+                title: 'Ежемесячный платеж',
+                value: '35 404,38',
+                currency: true
+            },
+            {
+                title: 'Необходимый ежемесячный доход, от',
+                value: '35 404,38',
+                currency: true
+            },
+            {
+                title: 'Диапазон полной стоимости кредита',
+                value: '16,464 – 20,474 %',
+            }
+        ],
+        btnText: 'Оформить заявку',
+        notes: 'Калькулятор не&nbsp;гарантирует точность расчетов. Окончательные параметры кредита определяются по&nbsp;итогам рассмотрения заявки.'
+    }
+
+
+section.section-layout.section-layout--bg-gray
+    .container
+        a(
+            data-bs-toggle="collapse"
+            href="#calculator"
+            role="button"
+            aria-expanded="false"
+            aria-controls="calculator"
+        ).h3.d-flex.align-items-center.justify-content-between.dark-100.d-md-none
+            | Рассчитайте выгоду
+            +svg-use("icon-chevron-down", "icon size-m violet-100")
+        #calculator.collapse.show
+            .row
+                .col-12
+                    .d-flex.flex-column.row-gap-3
+                        div.form-check
+                            input#inp1(type="checkbox" value="").form-check-input
+                            label(for="inp1").form-check-label
+                                | Получаю зарплату на&nbsp;карту Новиком
+
+                        div.form-check
+                            input#inp2(type="checkbox" value="").form-check-input
+                            label(for="inp2").form-check-label
+                                | Страхование
+                .col-12
+                    +polygon-container()
+                        +card-calculate-result(calculatorData)
