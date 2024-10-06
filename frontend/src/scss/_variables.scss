@@ -177,6 +177,23 @@ $form-check-input-checked-bg-image: url("data:image/svg+xml,%3Csvg xmlns='http:/
 $form-check-label-cursor: cursor;
 $form-check-transition: .33s;
 
+// Range
+$form-range-track-height: .25rem;
+$form-range-track-bg: var(--blue-30);
+$form-range-track-border-radius: .25rem;
+$form-range-track-box-shadow: none;
+
+$form-range-thumb-width: 1.5rem;
+$form-range-thumb-height: 1.5rem;
+$form-range-thumb-bg: var(--blue-100);
+$form-range-thumb-border: .125rem solid var(--dark-10);
+$form-range-thumb-border-radius: 2rem;
+$form-range-thumb-box-shadow: none;
+
+$form-range-thumb-active-bg: var(--blue-100);
+
+
+
 // Links
 $link-decoration: none;
 

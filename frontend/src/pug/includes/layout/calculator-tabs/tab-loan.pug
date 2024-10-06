@@ -38,6 +38,30 @@
         },
     ]
 
+    var inputSliderList = [
+        {
+            label: 'Сумма кредита',
+            id: 'amount-credit',
+            maxValue: 5000000,
+            minValue: 20000,
+            startValue: 1000000,
+            stepSize: 5000,
+            type: "price",
+            editable: true
+        },
+        {
+            label: 'Срок выплаты',
+            id: 'payment-term',
+            maxValue: 60,
+            minValue: 6,
+            startValue: 36,
+            type: "month",
+            editable: true
+        }
+    ]
+
+include ../../../components/ui/input/input-slider
+
 .row
     .col-12.col-lg-6
         .d-none.d-lg-inline-flex
@@ -50,8 +74,10 @@
         .tab-content.pt-4.pt-md-6.pt-lg-7
             #loan-consumer.tab-pane.fade.show.active(role="tabpanel" aria-labelledby="loan" tabindex="0")
                 .d-flex.flex-column.row-gap-4.row-gap-md-6.row-gap-lg-7
-                    p.mb-0 loan
-                    .d-flex.flex-column.row-gap-3
+                    each input in inputSliderList
+                        +input-slider(input)
+
+                    .d-flex.flex-column.row-gap-4
                         .form-check
                             input#inp1(type="checkbox" value="" checked).form-check-input
                             label(for="inp1").form-check-label
