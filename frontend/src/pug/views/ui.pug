@@ -288,7 +288,7 @@ block content
                     .col-4
                         ul.tabs-panel__list.nav.nav-tabs.d-inline-flex.flex-nowrap.w-auto.p-0.border.border-purple.rounded
                             li.w-auto.tabs-panel__list-item.nav-item.z-2
-                                a.tabs-panel__list-item-link.nav-link.bg-transparent.active(aria-current="page")(href=tabsList[0].link)= tabsList[0].linkText
+                                a.tabs-panel__list-item-link.nav-link.bg-transparent.active(aria-current="page" href=tabsList[0].link)= tabsList[0].linkText
                         ul.tabs-panel__list.nav.nav-tabs.d-inline-flex.flex-nowrap.w-auto.p-0.border.border-purple.rounded
                             li.w-auto.tabs-panel__list-item.nav-item.z-2
                                 a.tabs-panel__list-item-link.nav-link.bg-transparent(href=tabsList[1].link)= tabsList[1].linkText
@@ -320,9 +320,9 @@ block content
             .d-flex.flex-column.row-gap-5.mb-4
                 h2 Card Text
             .row.align-items-stretch.row-gap-4.row-gap-sm-6
-                .col-12.col-md-6 
+                .col-12.col-md-6
                     +card-text(cardTextItems[0])
-                .col-12.col-md-6 
+                .col-12.col-md-6
                     +card-text(cardTextItems[0])
                 .col-12
                     +card-text(cardTextItems[1])
@@ -646,7 +646,7 @@ block content
                                 option(value="8") Список 8
 
                             span.caption-m.dark-70.d-block Подсказка
-    
+
     section#helper.section-layout.pt-0
         .container
             .d-flex.flex-column.row-gap-5
@@ -663,7 +663,7 @@ block content
     section#info-product-banner.section-layout.pt-0
         -
             const listItemsStr = '<li>Если вы пострадали от недружественных действий других государств в приграничных субъектах Российской Федерации</li><li>Если вы пострадали в связи с чрезвычайными ситуациями природного характера (наводнениями) на территории субъектов Российской Федерации в рамках Федерального закона «О потребительском кредите (займе)»&nbsp;от 21.12.2013&nbsp;№&nbsp;353-ФЗ или по программе Банка</li>'
-        
+
         .container
             .d-flex.flex-column.row-gap-5.mb-5.mb-lg-6
                 h2 Info-Product Banner
