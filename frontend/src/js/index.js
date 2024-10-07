@@ -13,6 +13,7 @@ import initInputSlider from "./components/inputSlider";
 
 document.addEventListener('DOMContentLoaded', () => {
     initDropdownMenu();
+    // initPolygonContainer();
     setVh();
     initSwiperMenu();
     initButtonNavMobile();

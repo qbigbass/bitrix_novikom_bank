@@ -37,32 +37,38 @@ block content
 
         var tabsList = [
             {
-                link: 'calculator',
+                link: '#calculator',
+                id: 'calculator',
                 linkText: 'Калькулятор',
                 isActive: true
             },
             {
-                link: 'loan-conditions',
+                link: '#loan-conditions',
+                id: 'loan-conditions',
                 linkText: 'Условия',
                 isActive: false
             },
             {
-                link: 'requirements',
+                link: '#requirements',
+                id: 'requirements',
                 linkText: 'Требования к заемщику',
                 isActive: false
             },
             {
-                link: 'loan-repayment',
+                link: '#loan-repayment',
+                id: 'loan-repayment',
                 linkText: 'Погашение кредита',
                 isActive: false
             },
             {
-                link: 'documents',
+                link: '#documents',
+                id: 'documents',
                 linkText: 'Необходимые документы',
                 isActive: false
             },
             {
-                link: 'faq',
+                link: '#faq',
+                id: 'faq',
                 linkText: 'Вопросы и ответы',
                 isActive: false
             },
@@ -111,15 +117,18 @@ block content
             ).h3.d-flex.align-items-center.justify-content-between.dark-100.d-md-none
                 | Условия кредитования
                 +svg-use("icon-chevron-down", "icon size-m violet-100")
-            #conditions.collapse.show
-                .d-flex.flex-md-column.gap-md-6.gap-lg-7.mt-4.mt-md-0.mb-4.mb-md-6.mb-lg-7.ps-lg-6
-                    h3.d-none.d-md-inline Условия кредитования
-                    +tabs(tabsList, "additional-info__tab-list",
-                        "additional-info__tab-list-item",
-                        true)
-                .tab-content
-                    #calculator.ps-lg-6.tab-pane.fade.show.active(role="tabpanel" aria-labelledby="calculator" tabindex="0")
-                        include ../includes/layout/loan-tabs/tab-calculator
+            #conditions.collapse
+                .row
+                    .col-12
+                        h3.d-none.d-md-block.mb-md-6.mb-lg-7.ps-lg-6 Условия кредитования
+                        .tabs-with-content.mt-4.mt-md-0.ps-lg-6(id="tabsId")
+                            .tabs-with-content__header.mb-4.mb-md-6.mb-lg-7
+                                +tabs(tabsList, "additional-info__tab-list",
+                                    "additional-info__tab-list-item",
+                                    false)
+                            .tabs-content.tabs-with-content__content
+                                #calculator.tabs-content__item.collapse.show(data-bs-parent="#tabsId" aria-labelledby="calculator" tabindex="0" role="tabpanel")
+                                    include ../includes/layout/loan-tabs/tab-calculator
         +pattern-bg('section-2', 'light', 'pattern-bg--hide-mobile')
 
 

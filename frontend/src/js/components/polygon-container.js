@@ -6,13 +6,13 @@ const POLYGON_CLASSES = {
     svg: '.js-polygon-container-svg',
 }
 
-const initPolygonContainer = (isResize) => {
+const initPolygonContainer = () => {
     const polygonContainers = $(POLYGON_CLASSES.root);
 
     for (let i = 0; i < polygonContainers.length; i++) {
         const polygonContainer = polygonContainers[i];
         const STATE = initState(polygonContainer);
-        resizeSVGElement(STATE, isResize);
+        resizeSVGElement(STATE);
         initResizeObservableOnPolygonElement(STATE);
     }
 };
@@ -36,10 +36,10 @@ const initState = (polygonContainer) => {
     };
 };
 
-const resizeSVGElement = (STATE, isResize) => {
+const resizeSVGElement = (STATE) => {
     const $polygon = STATE.elements.polygon;
     const polygonRect = $polygon.get(0).getClientRects();
-    const flagCollapsed = $polygon.closest('.collapse');
+    // const flagCollapsed = $polygon.closest('.collapse');
 
     if (polygonRect.length) {
         const { height, width } = polygonRect[0];
@@ -58,9 +58,9 @@ const resizeSVGElement = (STATE, isResize) => {
 
     // изначально collapse c классом show,чтобы проставить размеры для svg-polygon
     // после скрываем collapse удаляя класс show
-    if (flagCollapsed.length && !isResize) {
-        flagCollapsed[0].classList.remove('show');
-    }
+    // if (flagCollapsed.length && !isResize) {
+    //     flagCollapsed[0].classList.remove('show');
+    // }
 };
 
 const getSizeBevelByCssVariable = () => {
@@ -78,7 +78,9 @@ const getSizeBevelByCssVariable = () => {
 const initResizeObservableOnPolygonElement = (STATE) => {
     const $polygon = STATE.elements.polygon;
     $polygon.on('resize', () => {
-        resizeSVGElement(STATE, true);
+        setTimeout(() => {
+            resizeSVGElement(STATE);
+        }, 800)
     });
 };
 

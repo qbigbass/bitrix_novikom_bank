@@ -1,7 +1,8 @@
 export function initTabsContent() {
     const updatePolygonInTabContent = (el) => {
-        const polygonArray = el.querySelectorAll('.js-polygon-container-polygon');
 
+        const polygonArray = el.querySelectorAll('.js-polygon-container-polygon');
+        console.log('updatePolygonInTabContent', polygonArray);
         polygonArray.forEach((polygon) => polygon.dispatchEvent(new Event("resize")));
     };
 
@@ -24,7 +25,7 @@ export function initTabsContent() {
                     resizeObserver.disconnect();
                 }
             });
-            
+
             // start observing a DOM node
             resizeObserver.observe(el);
         }
