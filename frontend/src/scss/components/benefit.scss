@@ -1,0 +1,13 @@
+.benefit {
+
+    &__description {
+        
+        & br {
+            display: none;
+
+            @include use-media(laptop) {
+                display: inherit;
+            }
+        }
+    }
+}
