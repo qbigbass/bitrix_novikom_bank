@@ -9,7 +9,7 @@ mixin card-product-list(data)
                     if data.description
                         span.text-l.card-product-list__description.m-0!= data.description
                 if data.conditions.length > 0
-                    .card-product-list__condition-list.w-100.d-flex.justify-content-between.flex-column.flex-sm-row.flex-wrap.row-gap-4.row-gap-sm-6.row-gap-lg-6.gap-lg-12.gap-xxl-16
+                    .card-product-list__condition-list.w-100.w-lg-auto.d-flex.justify-content-between.flex-column.flex-sm-row.flex-wrap.row-gap-4.row-gap-sm-6.row-gap-lg-6.gap-lg-12.gap-xxl-16
                         each item, index in data.conditions
                             .card-product-list__condition.d-flex.flex-column.gap-2.w-100.w-sm-50.w-lg-auto
                                 .d-inline-flex.flex-nowrap.align-items-baseline.gap-1
