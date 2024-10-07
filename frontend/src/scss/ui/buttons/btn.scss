@@ -31,6 +31,10 @@ button {
 .btn-link {
     font-weight: 700;
     padding: 0;
+
+    &.btn-sm {
+        font-weight: 600;
+    }
 }
 
 .btn-icon {

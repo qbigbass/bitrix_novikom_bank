@@ -1,0 +1,38 @@
+.section-calculator {
+
+    &__wrapper {
+        &.collapse {
+            @include use-media(tablet) {
+                display: block;
+            }
+        }
+
+        & .nav {
+            flex-wrap: nowrap;
+            width: 100%;
+
+            @include use-media(tablet-album) {
+                width: auto;
+            }
+        }
+
+        & .nav-item {
+            flex-grow: 1;
+
+            @include use-media(tablet-album) {
+                flex-grow: 0;
+            }
+        }
+    }
+
+    &__header {
+
+        & .nav-tabs {
+            & .nav-link {
+                @include use-media(tablet-album) {
+                    padding: 1rem 2.5rem;
+                }
+            }
+        }
+    }
+}

@@ -169,6 +169,25 @@ h6, .h6 {
     }
 }
 
+.text-number-ml {
+    font-size: map-get($font-size-body, medium);
+    line-height: 135%;
+
+    @include use-media(tablet) {
+        font-size: map-get($font-size-body, large-x);
+        line-height: 125%;
+    }
+
+    @include use-media(tablet-album) {
+        font-size: map-get($font-size-body, xl);
+        line-height: 120%;
+    }
+}
+
+.currency {
+    font-family: $font-family-code;
+}
+
 
 // Lists
 .list {

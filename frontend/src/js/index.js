@@ -3,12 +3,13 @@
 import * as bootstrap from 'bootstrap'
 import initPolygonContainer from './components/polygon-container.js'
 import initDropdownMenu from './components/dropDownMenu.js'
-import {setVh} from "./components/helpers";
+import {setVh} from "./utils";
 import { initSwiperMenu, initHeroBanner, initCardSlider, initAnnouncementSlider, initTabsSlider } from "./components/swiper/swiper";
 import initButtonNavMobile from './components/nav-panel.js'
 import initMobileSearch from './components/mobile-search.js'
 import initSelect2 from './components/select2.js'
 import { initTabsContentEvents } from './components/tabs.js'
+import initInputSlider from "./components/inputSlider";
 
 document.addEventListener('DOMContentLoaded', () => {
     initDropdownMenu();
@@ -23,9 +24,10 @@ document.addEventListener('DOMContentLoaded', () => {
     initTabsSlider();
     initSelect2();
     initTabsContentEvents();
+    initInputSlider();
 });
 
 window.addEventListener('resize', () => {
-    initPolygonContainer();
+    initPolygonContainer(true);
     setVh();
 });

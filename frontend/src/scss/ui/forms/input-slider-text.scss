@@ -1,0 +1,55 @@
+.input-slider-text {
+    position: relative;
+
+    &__input {
+        font-family: $font-family-code;
+
+        width: 100%;
+        padding: 0.438rem 0.938rem;
+        border-radius: 0.25rem;
+        border: 1px solid transparent;
+        background-color: transparent;
+
+        &:focus {
+            outline: none;
+            border-color: var(--purple-100);
+        }
+
+        &:disabled {
+            color: inherit;
+
+            &::placeholder {
+                color: inherit;
+            }
+        }
+    }
+
+    &__button {
+        position: absolute;
+        top: 50%;
+        right: 1rem;
+        transform: translateY(-50%);
+
+        &--edit {}
+
+        &--close {
+            display: none;
+        }
+    }
+
+    &.is-editable & {
+        &__input {
+            border-color: var(--purple-70);
+        }
+
+        &__button {
+            &--edit {
+                display: none;
+            }
+
+            &--close {
+                display: block;
+            }
+        }
+    }
+}
