@@ -111,13 +111,16 @@ block content
             ).h3.d-flex.align-items-center.justify-content-between.dark-100.d-md-none
                 | Условия кредитования
                 +svg-use("icon-chevron-down", "icon size-m violet-100")
-            #conditions.collapse
-                .d-flex.flex-md-column.gap-md-4.mb-md-6.mb-lg-7.ps-lg-6
+            #conditions.collapse.show
+                .d-flex.flex-md-column.gap-md-6.gap-lg-7.mt-4.mt-md-0.mb-4.mb-md-6.mb-lg-7.ps-lg-6
                     h3.d-none.d-md-inline Условия кредитования
                     +tabs(tabsList, "additional-info__tab-list",
                         "additional-info__tab-list-item",
-                        false)
-                    //+nav-tabs(tabList)
+                        true)
+                .tab-content
+                    #calculator.ps-lg-6.tab-pane.fade.show.active(role="tabpanel" aria-labelledby="calculator" tabindex="0")
+                        include ../includes/layout/loan-tabs/tab-calculator
+        +pattern-bg('section-2', 'light', 'pattern-bg--hide-mobile')
 
 
     section.section-layout
