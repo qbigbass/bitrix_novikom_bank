@@ -31,7 +31,7 @@
     &__breadcrumbs {
 
         &-item {
-            
+
             @include use-media(tablet) {
                 & + &:before {
                     content: '';
@@ -47,8 +47,13 @@
     &__image {
         max-width: 20rem;
 
+        @include use-media(tablet) {
+            right: -3rem;
+        }
+
         @include use-media(tablet-album) {
             max-width: 25rem;
+            right: 0;
         }
     }
 
