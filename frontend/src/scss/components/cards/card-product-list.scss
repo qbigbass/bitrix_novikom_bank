@@ -49,7 +49,7 @@
 
     &__image {
         align-self: center;
-        height: 16rem;
+        height: auto;
         width: 16rem;
 
         svg {
@@ -58,7 +58,7 @@
             object-fit: contain;
         }
         
-        @include use-media(mobile) {
+        @include use-media(sm) {
             height: 20rem;
             width: 20rem;
         }
@@ -71,14 +71,6 @@
         @include use-media(laptop) {
             height: 28.75rem;
             width: 28.75rem;
-        }
-    }
-
-    &__button {
-        width: 100%;
-
-        @include use-media(tablet-album) {
-            width: auto;
         }
     }
 }
