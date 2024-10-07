@@ -1,0 +1,7 @@
+mixin polygon-container(colorClass = 'green-100')
+    .polygon-container.js-polygon-container
+        div.polygon-container__content
+            block
+        div.polygon-container__polygon.js-polygon-container-polygon(class= colorClass)
+            svg.js-polygon-container-svg(xmlns="http://www.w3.org/2000/svg")
+                polygon(points="2,2 335,2 335,394 295,434 2,434", fill="none", stroke="currentColor", stroke-width="2", stroke-dasharray="10")
