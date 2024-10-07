@@ -15,6 +15,7 @@ block content
     include ../components/helper
     include ../components/benefit
     include ../components/step-item
+    include ../components/banners/banner-product
 
     -
         var allBenefits = [
@@ -74,16 +75,43 @@ block content
             },
         ]
 
-
-    +text-banner(
-        "Кредит на&nbsp;любые цели <br>для&nbsp;зарплатных клиентов",
-        [
-            {linkText: "Частным клиентам", link: "/"},
-            {linkText: "Кредиты для зарплатных клиентов", link: "/"},
-        ],
-        "",
-        "green",
-        "img/big-illustrations/large-individual/restructuring.png"
+    +banner-product(
+        {
+            title: "Кредит на&nbsp;любые цели для&nbsp;зарплатных клиентов",
+            subtitle: "Воплощение задуманных планов и реализация любых целей уже сегодня!",
+            imgSrc: "img/big-illustrations/large-individual/credit-for-any-purpose-salary-clients.png",
+            bgColor: "heavy-violet",
+            urlHref: "#",
+            buttonText: "Оформить карту",
+            benefits: [
+                {
+                    beforeNum: 'от',
+                    num: '16,5%',
+                    description: 'Минимальная ставка'
+                },
+                {
+                    beforeNum: 'до',
+                    num: '5 000 000',
+                    currency: '₽',
+                    description: 'Максимальная сумма кредита'
+                },
+                {
+                    beforeNum: 'до',
+                    num: '5 лет',
+                    description: 'Максимальный срок выплаты'
+                }
+            ],
+            breadcrumbsArray: [
+                {
+                    link: "#",
+                    linkText: "Частным клиентам"
+                },
+                {
+                    link: "#",
+                    linkText: "Кредиты для зарплатных клиентов"
+                }
+            ],
+        }
     )
 
 
