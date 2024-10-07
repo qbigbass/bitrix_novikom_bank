@@ -1,0 +1,15 @@
+mixin arrowRight(className)
+    svg.d-none.d-lg-block(class=className, width="378", height="8", fill="none", viewBox="0 0 378 8")
+        path(fill="#76B82A", d="M1 3.5a.5.5 0 0 0 0 1v-1Zm376.354.854a.5.5 0 0 0 0-.708L374.172.464a.501.501 0 0 0-.708.708L376.293 4l-2.829 2.828a.5.5 0 0 0 .708.708l3.182-3.182ZM1 4.5h376v-1H1v1Z")
+
+mixin step-item(item, index, maxIndex)
+    .step-item.d-flex.align-items-md-start.gap-4.gap-md-3.flex-md-column(class=item.title ? 'flex-column align-items-start' : 'flex-row align-items-center')
+        .flex-shrink-0.step-item__indicator-group.d-flex.gap-4
+            img(src='../img/steps/'+item.imageSrc, class="step-item__indicator-image", alt="")
+            if index != maxIndex
+                +arrowRight("mt-4")
+        .step-item__content.d-flex.flex-column.gap-2
+            if item.title
+                h4.step-item__title!= item.title
+            if item.text
+                span.text-l!= item.text

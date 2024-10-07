@@ -18,6 +18,16 @@
         border-top: var(--border-thickness) solid var(--orange-100);
     }
 
+    &__title {
+        & br {
+            display: none;
+
+            @include use-media(tablet) {
+                display: inherit;
+            }
+        }
+    }
+
     &__breadcrumbs {
 
         &-item {
