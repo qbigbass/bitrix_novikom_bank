@@ -32,8 +32,8 @@ section.section-restructuring-steps.bg-dark-10.py-6.py-sm-9.py-md-11.py-xl-16.px
             ).h3.d-flex.align-items-center.justify-content-between.dark-100.d-md-none
                 =sectionTitle
                 +svg-use("icon-chevron-down", "icon size-m violet-100")
-        #restructuring-steps-content.section-restructuring-steps__wrapper.collapse.mt-6.mt-lg-7
+        #restructuring-steps-content.section-restructuring-steps__wrapper.collapse.d-md-block.mt-6.mt-lg-7
             .row.row-gap-6
                 each item, index in allSteps
-                    .col-12.col-md-4
+                    .col-12.col-lg-4
                         +step-item(item, index, allSteps.length - 1)
