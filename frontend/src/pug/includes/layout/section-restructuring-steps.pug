@@ -18,11 +18,22 @@ include ../../components/step-item
         },
     ]
 
-section.restructuring-steps.bg-dark-10.py-6.py-sm-9.py-md-11.py-xl-16.px-lg-5
+section.section-restructuring-steps.bg-dark-10.py-6.py-sm-9.py-md-11.py-xl-16.px-lg-5
     .container
-        .row.mb-6.mb-lg-7
-            h3= sectionTitle
-        .row.row-gap-6
-            each item, index in allSteps
-                .col-12.col-md-4
-                    +step-item(item, index, allSteps.length - 1)
+        .row
+            .h3.d-none.d-md-flex
+                =sectionTitle
+            a(
+                data-bs-toggle="collapse"
+                href="#restructuring-steps-content"
+                role="button"
+                aria-expanded="false"
+                aria-controls="restructuring-steps-content"
+            ).h3.d-flex.align-items-center.justify-content-between.dark-100.d-md-none
+                =sectionTitle
+                +svg-use("icon-chevron-down", "icon size-m violet-100")
+        #restructuring-steps-content.section-restructuring-steps__wrapper.collapse.mt-6.mt-lg-7
+            .row.row-gap-6
+                each item, index in allSteps
+                    .col-12.col-md-4
+                        +step-item(item, index, allSteps.length - 1)
