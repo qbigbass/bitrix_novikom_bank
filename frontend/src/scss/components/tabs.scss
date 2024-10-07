@@ -28,7 +28,7 @@
     &__list-item {
         
         &-link {
-            --bs-nav-tabs-link-hover-border-color: var(--blue-10);
+            --bs-nav-tabs-link-hover-border-color: transparent;
             --bs-nav-link-padding-x: 1.5rem;
             --bs-nav-link-padding-y: 0.5rem;
             --bs-nav-link-font-size: 1rem;
@@ -42,9 +42,14 @@
                 --bs-nav-link-font-size: 1.125rem;
             }
 
+            &:hover {
+                opacity: 0.85;
+            }
+
             &.active {
                 --bs-nav-tabs-link-active-border-color: var(--violet-100);
                 --bs-nav-tabs-link-active-color: var(--violet-100);
+                pointer-events: none;
             }
         }
     }

@@ -1,0 +1,20 @@
+mixin tabs-with-content(tabsList, tabsClassName, tabItemClassName, isSmallTabs=false, tabsId='')
+    .tabs-with-content(id=tabsId)
+        .tabs-with-content__header.px-lg-6.mb-6.mb-lg-7
+            +tabs(tabsList, tabsClassName, tabItemClassName, isSmallTab)
+        .tabs-content.tabs-with-content__content
+            each item, index in tabsList
+                .tabs-content__item.accordion-collapse.collapse(id=item.id, data-bs-parent='#'+tabsId, class=index==0 && 'show')
+                    .accordion-body.tabs-content__item-content.d-flex.flex-column.gap-6.gap-lg-7.px-lg-6
+                        if item.content
+                            .pe-md-4.w-100.w-xl-75.d-flex.flex-column.gap-6.gap-lg-7
+                                != item.content
+                        if item.helper
+                            .w-100
+                                +helper(
+                                    item.helper.imageSrc,
+                                    item.helper.description,
+                                    item.helper.color
+                                )
+                        if item.caption
+                            p.caption-m.dark-70!= item.caption

@@ -1,0 +1,7 @@
+mixin benefit(spriteName, title, description)
+    .benefit.d-flex.flex-column.gap-3
+        +svg-use(spriteName, "icon size-lxl green-100")
+        if title
+            h4.benefit__title!= title
+        if description
+            span.benefit__description.w-100.w-md-75.text-m!= description
