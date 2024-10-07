@@ -64,7 +64,7 @@ block content
                     description: "Банк вправе запросить дополнительные документы заемщика/созаемщика/поручителя <br />для подтверждения информации, указанной заемщиком/созаемщиком/поручителем.",
                     color: "green"
                 },
-                caption: "¹Период подтверждения доходов должен заканчиваться не ранее двух календарных месяцев, предшествующих месяцу предоставления документа, подтверждающего финансовое состояние <br><br> ²При отсутствии у Банка документа, подтверждающего стаж на последнем месте работы менее 12 месяцев, расчетная сумма среднемесячного дохода клиента может быть ниже фактического значения, что может негативно повлиять на условия кредитования. <br><br> ³Форма СТД-Р предоставляется на бумажном носителе и заверяется работодателем, форма СТД–ПФР предоставляется на бумажном носителе и заверяется работодателем или ПФР, либо формируется из личного кабинета на портале государственных услуг (gosuslugi.ru), документ подписывается усиленной квалифицированной электронной подписью уполномоченного должностного лица ПФР.",
+                caption: "¹ Период подтверждения доходов должен заканчиваться не ранее двух календарных месяцев, предшествующих месяцу предоставления документа, подтверждающего финансовое состояние <br><br> ² При отсутствии у Банка документа, подтверждающего стаж на последнем месте работы менее 12 месяцев, расчетная сумма среднемесячного дохода клиента может быть ниже фактического значения, что может негативно повлиять на условия кредитования. <br><br> ³ Форма СТД-Р предоставляется на бумажном носителе и заверяется работодателем, форма СТД–ПФР предоставляется на бумажном носителе и заверяется работодателем или ПФР, либо формируется из личного кабинета на портале государственных услуг (gosuslugi.ru), документ подписывается усиленной квалифицированной электронной подписью уполномоченного должностного лица ПФР.",
             },
             {
                 linkText: "Требования к кредитам",
@@ -124,30 +124,39 @@ block content
                         .col-12
                             +card-text(item)
                     else
-                        .col-12.col-md-6
+                        .col-12.col-lg-6
                             +card-text(item)
 
     +info-product-banner(
         "Банк готов оказать необходимую поддержку в урегулировании задолженности в случаях",
-        '<ul class="fw-semibold text-l list list--size-l">'+listItemsStr+'</ul>',
+        '<ul class="fw-normal text-l list list--size-l">'+listItemsStr+'</ul>',
         "../img/banners/page-banner-1.png",
         "#"
     )
 
-    section.additional-info.py-6.py-sm-9.py-md-11.py-xl-16
+    section.section-additional-info.py-6.py-sm-9.py-md-11.py-xl-16
         .container
-            h3.px-lg-6.mb-4.mb-md-6.mb-lg-7
+            .h3.d-none.dark-100.d-md-flex.px-lg-6.mb-4.mb-md-6.mb-lg-7
                 | Подробнее
-
-            .row
-                .col-12
-                    +tabs-with-content(
-                        additionalTabsList,
-                        "additional-info__tab-list",
-                        "additional-info__tab-list-item",
-                        false,
-                        'additional-info-tabs'
-                    )
+            a.px-lg-6(
+                data-bs-toggle="collapse"
+                href="#additional-info-content"
+                role="button"
+                aria-expanded="false"
+                aria-controls="additional-info-content"
+            ).h3.d-flex.align-items-center.justify-content-between.dark-100.d-md-none
+                | Подробнее
+                +svg-use("icon-chevron-down", "icon size-m violet-100")
+            #additional-info-content.section-additional-info__wrapper.d-md-block.mt-4.mt-md-6.mt-lg-7
+                .row
+                    .col-12
+                        +tabs-with-content(
+                            additionalTabsList,
+                            "section-additional-info__tab-list",
+                            "section-additional-info__tab-list-item",
+                            false,
+                            'section-additional-info-tabs'
+                        )
 
     include ../includes/layout/section-restructuring-steps
 
