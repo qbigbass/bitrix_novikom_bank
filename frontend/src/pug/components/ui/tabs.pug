@@ -5,8 +5,8 @@
 // isSmallTabs - bool
 
 mixin tabs(tabsList, tabsClassName, tabItemClassName, isSmallTabs=false)
-    .tabs-panel.js-tabs-slider.overflow-hidden.position-relative.px-1(class=isSmallTabs ? 'tabs-panel--small' : '')
-        .tabs-panel__navigation.js-tabs-slider-navigation.w-100
+    .tabs-panel.js-tabs-slider.overflow-hidden.position-relative.px-1(class=isSmallTabs && 'tabs-panel--small')
+        .tabs-panel__navigation.d-none.d-lg-block.js-tabs-slider-navigation.w-100
             span.tabs-panel__navigation-item.tabs-panel__navigation-item-reverse.js-tabs-slider-navigation-prev.h-100.d-flex.align-items-center.justify-content-start.px-1.z-3.position-absolute.start-0.top-0
                 span.icon.size-m
                     +svg-use("icon-chevron-left")
@@ -18,6 +18,6 @@ mixin tabs(tabsList, tabsClassName, tabItemClassName, isSmallTabs=false)
             each tab, index in tabsList
                 li.swiper-slide.w-auto.tabs-panel__list-item.nav-item.z-2
                     if index == 0
-                        a.tabs-panel__list-item-link.nav-link.bg-transparent.active(class=tabItemClassName, aria-current="page", href=tab.link)= tab.linkText
+                        a.tabs-panel__list-item-link.nav-link.bg-transparent.active(class=tabItemClassName, aria-current="page", href=tab.link, data-bs-toggle=tab.id && "collapse", data-bs-target=tab.id && '#'+tab.id, aria-expanded=tab.id && 'true', class=tab.id && 'collapsed')= tab.linkText
                     else
-                        a.tabs-panel__list-item-link.nav-link.bg-transparent(class=tabItemClassName, href=tab.link)= tab.linkText
+                        a.tabs-panel__list-item-link.nav-link.bg-transparent(class=tabItemClassName, href=tab.link, data-bs-toggle=tab.id && "collapse", data-bs-target=tab.id && '#'+tab.id, aria-expanded=tab.id && 'false', class=tab.id && 'collapsed')= tab.linkText

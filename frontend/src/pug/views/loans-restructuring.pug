@@ -1,0 +1,167 @@
+extends ../templates/base
+
+block title
+    title= 'Кредиты - Реструктуризация'
+    meta(name="description" content="Описание страницы с кредитами")
+block content
+    -
+        const allVariants = [
+            {
+                title: 'Реструктуризация по программе Банка',
+                link: '#1'
+            },
+            {
+                title: 'Кредитные каникулы по ипотечным кредитам согласно Федеральному закону № 353-ФЗ',
+                link: '#2'
+            },
+            {
+                title: 'Кредитные каникулы по потребительским кредитам',
+                link: '#3'
+            },
+            {
+                title: 'Предоставление Льготного периода по Федеральному закону № 106-ФЗ',
+                link: '#4'
+            },
+            {
+                title: 'Предоставление Льготного периода по Федеральному закону № 377-ФЗ (для участников СВО и членов их семей)',
+                link: '#5'
+            },
+        ]
+
+        const ramificationTabsList = [
+            {
+                linkText: "Все варианты",
+                link: "#1"
+            },
+            {
+                linkText: "Реструктуризация",
+                link: "#2"
+            },
+            {
+                linkText: "Кредитные каникулы",
+                link: "#3"
+            },
+            {
+                linkText: "Льготный период",
+                link: "#4"
+            },
+        ]
+
+        const listItemsStr = '<li>Если вы пострадали от недружественных действий других государств в приграничных субъектах Российской Федерации</li><li>Если вы пострадали в связи с чрезвычайными ситуациями природного характера (наводнениями) на территории субъектов Российской Федерации в рамках Федерального закона «О потребительском кредите (займе)»&nbsp;от 21.12.2013&nbsp;№&nbsp;353-ФЗ или по программе Банка</li>'
+
+        const additionalInfoTabContent = [
+            `<ul class="fw-semibold text-l list list--size-l"> <li>Заявление - анкета на получение кредита;</li> <li>Документ, удостоверяющий личность;</li> <li>Военный билет/ документ, подтверждающий отсрочку от военной службы на весь период призывного возраста - для мужчин младше 30 лет.</li> <li class="d-flex flex-wrap"> <span class="w-85 w-md-90">Документ, подтверждающий финансовое состояние заемщика/созаемщика/поручителя за последние 12 месяцев или за фактическое количество отработанных месяцев с учетом требований к стажу на последнем месте работы¹ (на выбор):</span> <ul class="fw-normal list list--base-bullets"> <li>выписка со счета зарплатной карты Банка (формируется работником Банка);</li> <li>справка о доходах и суммах налога физического лица, предоставленная организацией – работодателем, оформленная в соответствии с требованиями Федеральной налоговой службы Российской Федерации;</li> </ul> </li> <li class="d-flex flex-wrap"> <span class="w-85 w-md-90">Дополнительно при учете доходов пенсионного характера (на выбор):</span> <ul class="fw-normal list list--base-bullets"> <li>справка о размере назначенной/выплаченной за последний месяц пенсии из отделения Социального фонда РФ и/или другого государственного органа, выплачивающего пенсию, по используемым ими формам (при учете пенсии для работающих пенсионеров). Справка может быть выдана многофункциональным центром предоставления государственных и муниципальных услуг в форме экземпляра электронного документа на бумажном носителе или выписки из информационной системы органов, предоставляющих услуги, на бумажном носителе;</li> <li>выписка со счета, на который осуществляется перечисление пенсии в сторонних банках, и пенсионное удостоверение. Выписка по счету, на который осуществляется перечисление пенсии в сторонних банках, должна содержать информацию об адресе (местонахождении) кредитной организации, телефоне кредитной организации, должности и ФИО лица, подготовившего и подписавшего выписку (за исключением выписок, сформированных с использованием систем онлайн и (или) мобильного банкинга).</li> </ul> </li> <li class="d-flex flex-wrap"> <span class="w-85 w-md-90">Дополнительно при учете доходов от работы по совместительству:</span> <ul class="fw-normal list list--base-bullets"> <li>справка о доходах и суммах налога физического лица за последние 12 месяцев или за фактическое количество отработанных месяцев, оформленная в соответствии с требованиями Федеральной налоговой службы Российской Федерации, или справка по форме Банка, подписанная руководителем организации и главным бухгалтером (при его наличии) с печатью и основными реквизитами организации;</li> <li>оригинал или копия трудового контракта/договора, постранично заверенная/прошитая и заверенная на последней странице с указанием количества листов работодателем.</li> </ul> </li> </ul>`
+        ]
+
+        const additionalTabsList = [
+            {
+                linkText: "Необходимые документы",
+                link: "#1",
+                id: "additional-info-1",
+                content: additionalInfoTabContent[0],
+                helper: {
+                    imageSrc: "../img/restructuring-additional-info.png",
+                    description: "Банк вправе запросить дополнительные документы заемщика/созаемщика/поручителя <br />для подтверждения информации, указанной заемщиком/созаемщиком/поручителем.",
+                    color: "green"
+                },
+                caption: "¹ Период подтверждения доходов должен заканчиваться не ранее двух календарных месяцев, предшествующих месяцу предоставления документа, подтверждающего финансовое состояние <br><br> ² При отсутствии у Банка документа, подтверждающего стаж на последнем месте работы менее 12 месяцев, расчетная сумма среднемесячного дохода клиента может быть ниже фактического значения, что может негативно повлиять на условия кредитования. <br><br> ³ Форма СТД-Р предоставляется на бумажном носителе и заверяется работодателем, форма СТД–ПФР предоставляется на бумажном носителе и заверяется работодателем или ПФР, либо формируется из личного кабинета на портале государственных услуг (gosuslugi.ru), документ подписывается усиленной квалифицированной электронной подписью уполномоченного должностного лица ПФР.",
+            },
+            {
+                linkText: "Требования к кредитам",
+                link: "#2",
+                id: "additional-info-2",
+                content: additionalInfoTabContent[0],
+            },
+            {
+                linkText: "Тарифы и документы",
+                link: "#3",
+                id: "additional-info-3",
+                content: additionalInfoTabContent[0],
+            },
+            {
+                linkText: "Вопросы и ответы",
+                link: "#4",
+                id: "additional-info-4",
+                content: additionalInfoTabContent[0],
+            },
+        ]
+
+    include ../cards/card-text
+    include ../cards/card-product
+    include ../includes/header/header
+    include ../components/banners/text-banner
+    include ../components/banners/info-product-banner
+    include ../components/ui/tabs
+    include ../components/tabs-with-content
+    include ../components/helper
+
+    +text-banner(
+        "Реструктуризация",
+        [
+            {linkText: "Частным клиентам", link: "/"},
+            {linkText: "Кредиты", link: "/"}
+        ],
+        "Программы для заемщиков, у которых возникли трудности с погашением кредиты",
+        "green",
+        "../img/big-illustrations/large-individual/restructuring.png"
+    )
+
+    section.restructuring-ramification.d-flex.flex-column.gap-7.py-6.py-sm-9.py-md-11.bg-dark-10
+        .container
+            h3.px-lg-6.mb-4.mb-md-6.mb-lg-7
+                | Варианты реструктуризации
+
+            .restructuring-ramification__tabs.px-lg-6.mb-4.mb-md-6.mb-lg-7
+                +tabs(
+                        ramificationTabsList,
+                        "loans-catalog__tab-list",
+                        "loans-catalog__tab-list-item"
+                )
+
+            .row.align-items-stretch.row-gap-4.row-gap-sm-6
+                each item, index in allVariants
+                    if index === allVariants.length - 1
+                        .col-12
+                            +card-text(item)
+                    else
+                        .col-12.col-lg-6
+                            +card-text(item)
+
+    +info-product-banner(
+        "Банк готов оказать необходимую поддержку в урегулировании задолженности в случаях",
+        '<ul class="fw-normal text-l list list--size-l">'+listItemsStr+'</ul>',
+        "../img/banners/page-banner-1.png",
+        "#"
+    )
+
+    section.section-additional-info.py-6.py-sm-9.py-md-11.py-xl-16
+        .container
+            .h3.d-none.dark-100.d-md-flex.px-lg-6.mb-4.mb-md-6.mb-lg-7
+                | Подробнее
+            a.px-lg-6(
+                data-bs-toggle="collapse"
+                href="#additional-info-content"
+                role="button"
+                aria-expanded="false"
+                aria-controls="additional-info-content"
+            ).h3.d-flex.align-items-center.justify-content-between.dark-100.d-md-none
+                | Подробнее
+                +svg-use("icon-chevron-down", "icon size-m violet-100")
+            #additional-info-content.section-additional-info__wrapper.collapse.d-md-block.mt-4.mt-md-6.mt-lg-7
+                .row
+                    .col-12
+                        +tabs-with-content(
+                            additionalTabsList,
+                            "section-additional-info__tab-list",
+                            "section-additional-info__tab-list-item",
+                            false,
+                            'section-additional-info-tabs'
+                        )
+
+    include ../includes/layout/section-restructuring-steps
+
+    section.section-layout
+        .container
+            h3.px-lg-6.mb-4.mb-md-6.mb-lg-7
+                | Смотрите также
+            include ../includes/layout/slider-card-product

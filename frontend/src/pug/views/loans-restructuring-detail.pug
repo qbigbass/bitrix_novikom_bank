@@ -1,0 +1,123 @@
+extends ../templates/base
+
+block title
+    title= 'Кредиты - Реструктуризация по программе Банка'
+    meta(name="description" content="Описание страницы с кредитами")
+block content
+
+    include ../cards/card-text
+    include ../cards/card-product
+    include ../includes/header/header
+    include ../components/banners/text-banner
+    include ../components/banners/info-product-banner
+    include ../components/ui/tabs
+    include ../components/tabs-with-content
+    include ../components/helper
+    include ../components/benefit
+    include ../components/step-item
+
+    +text-banner(
+        "Реструктуризация <br>по программе Банка",
+        [
+            {linkText: "Частным клиентам", link: "/"},
+            {linkText: "Кредиты", link: "/"},
+            {linkText: "Реструктуризация", link: "/"}
+        ],
+        "",
+        "green",
+    )
+
+    section.helper-section.py-6.py-sm-9.py-md-11.py-xl-16
+        .container
+            .row
+                .col-12
+                    +polygon-container()
+                        +helper("../img/restructuring-additional-info.png", "bg-dark-10")
+                            p.mb-0 Основанием для проведения реструктуризации по&nbsp;программе Банка является снижение дохода заемщика (совокупного дохода всех заемщиков), в&nbsp;результате которого среднемесячные выплаты по&nbsp;исполнению обязательств перед Банком превысили&nbsp;60% от&nbsp;текущего ежемесячного дохода заемщика (совокупного дохода всех заемщиков).
+
+    section.restructuring-benefits.py-6.py-sm-9.py-md-11.py-xl-16.position-relative.overflow-hidden
+        -
+            const allBenefits = [
+                {
+                    spriteName: 'icon-a-date',
+                    description: 'Изменение графика платежей по погашению основного долга и/или процентов',
+                },
+                {
+                    spriteName: 'icon-a-calculator',
+                    description: 'Отсрочка по погашению основного долга на срок не более 12 месяцев',
+                },
+                {
+                    spriteName: 'icon-a-easily',
+                    description: 'Предоставление заемщику кредитных каникул, предусматривающих приостановление исполнения заемщиком своих обязательств по кредитному договору, на срок до 6 месяцев с последующим увеличением срока кредита',
+                },
+                {
+                    spriteName: 'icon-doc',
+                    description: 'Пролонгация срока возврата кредита (в пределах срока, установленного соответствующей программой кредитования) с одновременным уменьшением размера ежемесячных платежей по кредитному договору',
+                },
+                {
+                    spriteName: 'icon-a-flexibility',
+                    description: 'Иные варианты (по согласованию с Банком)',
+                }
+            ]
+
+        .container
+            .row.mb-6.mb-lg-7
+                h3= "Возможные варианты реструктуризации"
+            .row.row-gap-6
+                each item, index in allBenefits
+                    .col-12.col-md-6.col-lg-4
+                        +benefit(item.spriteName, '', item.description)
+        +pattern-bg('section', 'light', 'pattern-bg--position-sm-bottom restructuring-benefits__pattern')
+
+    section.section-restructuring-steps.bg-dark-10.py-6.py-sm-9.py-md-11.py-xl-16
+        -
+            const allSteps = [
+                {
+                    imageSrc: "step-indicator-1.svg",
+                    title: "Предоставить <br>в Банк документы",
+                    text: "Заявление об изменении условий договора и документы, подтверждающие снижение дохода. Заявление может быть оформлено заемщиком в офисе Банка, может быть направлено заемщиком в Банк с использованием системы дистанционного банковского обслуживания «Интерактив».",
+                },
+                {
+                    imageSrc: "step-indicator-2.svg",
+                    title: "Банк проанализирует вашу <br>ситуацию и примет решение",
+                    text: "Срок рассмотрения заявок на реструктуризацию составляет до 10 рабочих дней с даты предоставления полного пакета необходимых документов.",
+                },
+                {
+                    imageSrc: "step-indicator-3.svg",
+                    title: "Одобрение <br>реструктуризации",
+                    text: "Если реструктуризация одобрена, подписать дополнительное соглашение к кредитному договору и прочей кредитно-обеспечительной документации (при наличии).",
+                },
+            ]
+
+        .container
+            .row
+                .h3.d-none.d-md-flex
+                    = "Как реструктуризировать задолженность"
+                a(
+                    data-bs-toggle="collapse"
+                    href="#restructuring-steps-content"
+                    role="button"
+                    aria-expanded="false"
+                    aria-controls="restructuring-steps-content"
+                ).h3.d-flex.align-items-center.justify-content-between.dark-100.d-md-none
+                    = "Как реструктуризировать задолженность"
+                    +svg-use("icon-chevron-down", "icon size-m violet-100")
+            #restructuring-steps-content.section-restructuring-steps__wrapper.collapse.d-md-block.mt-6.mt-lg-7
+                .row.row-gap-6
+                    each item, index in allSteps
+                        .col-12.col-lg-4
+                            +step-item(item, index, allSteps.length - 1)
+
+    section.helper-section.py-6.py-sm-9.py-md-11.py-xl-16.px-lg-5
+        .container
+            .row
+                .col-12
+                    +polygon-container()
+                        +helper("../img/restructuring-additional-info.png", "bg-dark-10")
+                            p.mb-0 Обратите внимание, что после изменения условий кредитного договора может увеличиться переплата по&nbsp;процентам&nbsp;и, как следствие, полная стоимость кредита. Кроме того, при подаче заявления об&nbsp;изменении условий договора Банк имеет право приостановить возможность проведения расходных операций по&nbsp;картам с&nbsp;лимитом кредитования.
+
+    section.section-layout
+        .container
+            h3.px-lg-6.mb-4.mb-md-6.mb-lg-7
+                | Смотрите также
+            include ../includes/layout/slider-card-product

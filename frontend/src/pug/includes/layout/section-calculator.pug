@@ -1,0 +1,40 @@
+include ../../cards/card-calculate-result
+include ../../components/ui/nav-tabs
+-
+    var calcList = [
+        {
+            link: 'loan',
+            linkText: 'Кредит',
+            isActive: true
+        },
+        {
+            link: 'mortgage',
+            linkText: 'Ипотека',
+            isActive: false
+        },
+        {
+            link: 'deposit',
+            linkText: 'Вклад',
+            isActive: false
+        },
+    ]
+
+
+section.section-layout.section-layout--bg-gray.section-calculator
+    .container
+        a(
+            data-bs-toggle="collapse"
+            href="#calculator"
+            role="button"
+            aria-expanded="false"
+            aria-controls="calculator"
+        ).h3.d-flex.align-items-center.justify-content-between.dark-100.d-md-none
+            | Рассчитайте выгоду
+            +svg-use("icon-chevron-down", "icon size-m violet-100")
+        #calculator.collapse.show.section-calculator__wrapper
+            .section-calculator__header.d-flex.flex-md-column.flex-lg-row.gap-md-6.align-items-lg-end.py-4.p-md-0.mb-md-6.mb-lg-7.justify-content-lg-between.ps-lg-6
+                h3.d-none.d-md-inline Рассчитайте выгоду
+                +nav-tabs(calcList)
+            .tab-content
+                #loan.ps-lg-6
+                    include calculator-tabs/tab-loan

@@ -4,13 +4,14 @@ mixin card-product-list(data)
             div.card-product-list__image-container.mx-auto
                 img.card-product-list__image(src=`img/big-illustrations/${data.imgSrc}`, alt="", loading="lazy")
             div.card-product-list__content.position-relative.z-1.flex-column.d-flex.align-items-start.gap-6.gap-xxl-9
-                h2.card-product-list__title.text-break!= data.title
-                if data.description
-                    span.text-l.card-product-list__description.m-0!= data.description
+                .card-product-list__title-group.d-flex.flex-column.gap-4.gap-lg-6
+                    h2.card-product-list__title.text-break!= data.title
+                    if data.description
+                        span.text-l.card-product-list__description.m-0!= data.description
                 if data.conditions.length > 0
-                    .d-flex.justify-content-between.flex-column.flex-sm-row.flex-wrap.card-product-list__condition-list.row-gap-4.row-gap-sm-6.gap-4.gap-sm-12.gap-xxl-16
+                    .card-product-list__condition-list.w-100.w-lg-auto.d-flex.justify-content-between.flex-column.flex-sm-row.flex-wrap.row-gap-4.row-gap-sm-6.row-gap-lg-6.gap-lg-12.gap-xxl-16
                         each item, index in data.conditions
-                            .card-product-list__condition.d-flex.flex-column.gap-2
+                            .card-product-list__condition.d-flex.flex-column.gap-2.w-100.w-sm-50.w-lg-auto
                                 .d-inline-flex.flex-nowrap.align-items-baseline.gap-1
                                     if item.startText
                                         span.text-l.fw-bold= item.startText
@@ -19,7 +20,7 @@ mixin card-product-list(data)
                                     if item.text
                                         span.text-number-l.fw-bold= item.text
                                     if item.currency
-                                        span.text-number-l.fw-bold= item.currency
+                                        span.currency.text-number-l.fw-bold= item.currency
                                     if item.afterText
                                         span.text-l.fw-semibold= item.afterText
                                 if item.description
@@ -27,7 +28,7 @@ mixin card-product-list(data)
 
                 .d-flex.flex-column.flex-sm-row.align-items-center.gap-5.gap-sm-6.w-100
                     if data.textButton
-                        a(href="#").btn.btn-tertiary.btn-lg.card-product-list__button= data.textButton
+                        a(href="#").btn.btn-tertiary.btn-lg.card-product-list__button.w-100.w-sm-auto= data.textButton
                     a(href="#").btn.btn-link.btn-lg.d-inline-flex.gap-2.align-items-center.card-product-list__button-more
                         span Подробнее
                         +svg-use('icon-chevron-right-small', 'card-product-list__button-icon')

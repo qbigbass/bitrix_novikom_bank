@@ -39,6 +39,7 @@ const initState = (polygonContainer) => {
 const resizeSVGElement = (STATE) => {
     const $polygon = STATE.elements.polygon;
     const polygonRect = $polygon.get(0).getClientRects();
+    // const flagCollapsed = $polygon.closest('.collapse');
 
     if (polygonRect.length) {
         const { height, width } = polygonRect[0];
@@ -54,6 +55,12 @@ const resizeSVGElement = (STATE) => {
 
         STATE.elements.svgPolygon.attr('points', points);
     }
+
+    // изначально collapse c классом show,чтобы проставить размеры для svg-polygon
+    // после скрываем collapse удаляя класс show
+    // if (flagCollapsed.length && !isResize) {
+    //     flagCollapsed[0].classList.remove('show');
+    // }
 };
 
 const getSizeBevelByCssVariable = () => {
@@ -71,7 +78,9 @@ const getSizeBevelByCssVariable = () => {
 const initResizeObservableOnPolygonElement = (STATE) => {
     const $polygon = STATE.elements.polygon;
     $polygon.on('resize', () => {
-        resizeSVGElement(STATE);
+        setTimeout(() => {
+            resizeSVGElement(STATE);
+        }, 800)
     });
 };
 

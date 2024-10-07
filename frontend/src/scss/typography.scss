@@ -169,6 +169,25 @@ h6, .h6 {
     }
 }
 
+.text-number-ml {
+    font-size: map-get($font-size-body, medium);
+    line-height: 135%;
+
+    @include use-media(tablet) {
+        font-size: map-get($font-size-body, large-x);
+        line-height: 125%;
+    }
+
+    @include use-media(tablet-album) {
+        font-size: map-get($font-size-body, xl);
+        line-height: 120%;
+    }
+}
+
+.currency {
+    font-family: $font-family-code;
+}
+
 
 // Lists
 .list {
@@ -198,6 +217,20 @@ h6, .h6 {
             height: 0.75rem;
             background-image: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='2.5' y='2.5' width='9' height='9' stroke='%23806EA2' stroke-dasharray='2 2'/%3E%3Crect width='10' height='10' fill='%2355246A'/%3E%3C/svg%3E%0A");
             background-size: contain;
+        }
+    }
+
+    &--base-bullets {
+        list-style: outside;
+        padding-left: 3.5rem;
+
+        li {
+            display: list-item;
+            list-style-type: disc;
+
+            &::before {
+                display: none;
+            }
         }
     }
 

@@ -1,0 +1,13 @@
+mixin nav-tabs(tabsList)
+    ul.nav.nav-tabs(role="tablist")
+        each item in tabsList
+            li.nav-item(role="presentation")
+                button.nav-link(
+                    class= item.isActive ? 'active' : '',
+                    data-bs-toggle="tab"
+                    data-bs-target= `#${item.link}`
+                    type="button"
+                    role="tab"
+                    aria-controls= item.link
+                    aria-selected= item.isActive
+                )= item.linkText
