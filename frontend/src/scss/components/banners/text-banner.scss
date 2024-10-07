@@ -32,12 +32,14 @@
 
         &-item {
 
-            & + &:before {
-                content: '';
-                width: 0.25rem;
-                height: 0.25rem;
-                background-color: var(--dark-0);
-                opacity: 0.5;
+            @include use-media(tablet) {
+                & + &:before {
+                    content: '';
+                    width: 0.25rem;
+                    height: 0.25rem;
+                    background-color: var(--dark-0);
+                    opacity: 0.5;
+                }
             }
         }
     }
@@ -45,8 +47,13 @@
     &__image {
         max-width: 20rem;
 
+        @include use-media(tablet) {
+            right: -3rem;
+        }
+
         @include use-media(tablet-album) {
             max-width: 25rem;
+            right: 0;
         }
     }
 

@@ -8,9 +8,12 @@
 mixin text-banner-content(title, breadcrumbsArray, description)
     .d-flex.flex-column.align-items-start.gap-3.gap-md-4
         .text-banner__breadcrumbs.d-flex.gap-2
-            each item in breadcrumbsArray
-                a.text-banner__breadcrumbs-item.d-inline-flex.align-items-center.gap-2.text-s.text-white-50(href=item.link)= item.linkText
-        h1.text-banner__title.dark-0!= title
+            each item, index in breadcrumbsArray
+                a.text-banner__breadcrumbs-item.d-md-inline-flex.align-items-center.gap-2.text-s.text-white-50(href=item.link, class= index==breadcrumbsArray.length-1 ? 'd-inline-flex' : 'd-none')
+                    if index == breadcrumbsArray.length-1
+                        +svg-use("icon-chevron-left", "icon size-s text-white-50 d-inline-block d-md-none")
+                    span=item.linkText
+        h1.text-banner__title.dark-0.text-break!= title
         .text-banner__description.text-l.dark-0= description
 
 mixin text-banner(title, breadcrumbsArray, description, borderColor, image = '')
@@ -21,7 +24,7 @@ mixin text-banner(title, breadcrumbsArray, description, borderColor, image = '')
                     .col-12.col-sm-6.col-md-8.position-relative.z-1.mb-5.mb-md-0.pt-6
                         +text-banner-content(title, breadcrumbsArray, description)
                     .d-none.d-sm-block.col-12.col-sm-6.col-md-4
-                        img(src=image, class="text-banner__image w-auto float-end", alt="")
+                        img(src=image, class="text-banner__image position-relative w-auto float-end", alt="")
                 else
                     .col-12.position-relative.z-1.mb-5.mb-md-0.pt-6
                         +text-banner-content(title, breadcrumbsArray, description)
