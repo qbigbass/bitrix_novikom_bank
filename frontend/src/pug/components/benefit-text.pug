@@ -3,7 +3,7 @@ mixin benefit-text(data, colorClass = 'green-100')
         div.d-inline-flex.flex-nowrap.align-items-baseline.text-l.fw-semibold.gap-1(class= colorClass)
             if data.beforeNum
                 span= data.beforeNum
-            span.text-number-l.fw-bold= data.num
+            span.text-number-l.fw-bold.text-nowrap= data.num
             if data.currency
                 span.text-number-l.currency.fw-bold= data.currency
             if data.afterNum
