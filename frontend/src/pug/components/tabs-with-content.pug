@@ -11,10 +11,8 @@ mixin tabs-with-content(tabsList, tabsClassName, tabItemClassName, isSmallTabs=f
                                 != item.content
                         if item.helper
                             .w-100
-                                +helper(
-                                    item.helper.imageSrc,
-                                    item.helper.description,
-                                    item.helper.color
-                                )
+                                +polygon-container()
+                                    +helper(item.helper.imageSrc, "bg-dark-10")
+                                        p.mb-0!= item.helper.description
                         if item.caption
                             p.tabs-content__item-caption.dark-70.text-m.m-0!= item.caption

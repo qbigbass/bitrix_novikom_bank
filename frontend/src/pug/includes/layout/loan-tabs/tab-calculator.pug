@@ -1,0 +1,101 @@
+-
+    var calculatorData = {
+        rows: [
+            {
+                title: 'Процентная ставка',
+                value: '16,5%',
+            },
+            {
+                title: 'Ежемесячный платеж',
+                value: '35 404,38',
+                currency: true,
+                link: 'График платежей'
+            },
+            {
+                title: 'Диапазон полной стоимости кредита',
+                value: '16,464 – 20,474 %',
+            }
+        ],
+        btnText: 'Оформить заявку',
+        notes: 'Калькулятор не&nbsp;гарантирует точность расчетов. Окончательные параметры кредита определяются по&nbsp;итогам рассмотрения заявки.'
+    }
+
+    var tabsList = [
+        {
+            link: 'loan-consumer',
+            linkText: 'Потребительский кредит',
+            isActive: true
+        },
+        {
+            link: 'refinance',
+            linkText: 'Рефинансирование',
+            isActive: false
+        },
+    ]
+
+    var inputSliderList = [
+        {
+            label: 'Сумма кредита',
+            id: 'amount-credit',
+            maxValue: 5000000,
+            minValue: 20000,
+            startValue: 1000000,
+            stepSize: 5000,
+            type: "price",
+            editable: true
+        },
+        {
+            label: 'Срок выплаты',
+            id: 'payment-term',
+            maxValue: 60,
+            minValue: 6,
+            startValue: 36,
+            type: "month",
+            editable: true
+        }
+    ]
+
+include ../../../components/ui/input/input-slider
+include ../../../cards/card-calculate-result
+
+.row
+    .col-12.col-lg-6
+        .tab-content.pe-xl-6
+            .d-flex.flex-column.row-gap-4.row-gap-md-6.row-gap-lg-7
+                each input in inputSliderList
+                    +input-slider(input)
+
+                .d-flex.flex-column.row-gap-4
+                    .form-check
+                        input#inp1(type="checkbox" value="" checked).form-check-input
+                        label(for="inp1").form-check-label
+                            | Получаю зарплату на&nbsp;карту Новиком
+
+                    .form-check
+                        input#inp2(type="checkbox" value="").form-check-input
+                        label(for="inp2").form-check-label
+                            | Страхование
+                .d-flex.flex-column.row-gap-4.row-gap-lg-6
+                    .d-flex.flex-column.row-gap-2
+                        label(for="select1").form-label.mb-0
+                            | Особенности
+                        select#select1(aria-label="Подсказка").form-select.js-select
+                            option(selected value="1") С поручительством физического лица
+                            option(value="2") Без поручительством физического лица
+                            option(value="3") Список 3
+                            option(value="4") Список 4
+
+                    .d-flex.flex-column.row-gap-2
+                        label(for="select2").form-label.mb-0
+                            | Тип платежей
+                        select#select2(aria-label="Подсказка").form-select.js-select
+                            option(selected value="1") Аннуитетные
+                            option(value="2") Список 2
+                            option(value="3") Список 3
+                            option(value="4") Список 4
+
+
+    .col-12.col-lg-6.mt-4.mt-md-6.mt-lg-0
+        .ps-xxl-6
+            +polygon-container()
+                +card-calculate-result(calculatorData, 'bg-dark-10')

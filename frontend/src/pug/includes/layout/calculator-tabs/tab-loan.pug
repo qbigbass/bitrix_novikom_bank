@@ -71,7 +71,7 @@ include ../../../components/ui/input/input-slider
             select.form-select.form-select--size-small.js-select
                 option(selected value="loan") Потребительский кредит
                 option(value="refinance") Рефинансирование
-        .tab-content.pt-4.pt-md-6.pt-lg-7
+        .tab-content.pt-4.pt-md-6.pt-lg-7.pe-xl-6
             #loan-consumer.tab-pane.fade.show.active(role="tabpanel" aria-labelledby="loan" tabindex="0")
                 .d-flex.flex-column.row-gap-4.row-gap-md-6.row-gap-lg-7
                     each input in inputSliderList
@@ -91,5 +91,6 @@ include ../../../components/ui/input/input-slider
                 p refinance
 
     .col-12.col-lg-6.mt-4.mt-md-6.mt-lg-0
-        +polygon-container()
-            +card-calculate-result(calculatorData)
+        .ps-xxl-6
+            +polygon-container()
+                +card-calculate-result(calculatorData)

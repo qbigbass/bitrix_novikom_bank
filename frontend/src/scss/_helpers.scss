@@ -20,3 +20,12 @@
 [aria-expanded="true"] .icon {
     transform: rotate(-180deg);
 }
+
+.section-collapsed-mobile {
+
+    & .collapse {
+        @include use-media(tablet) {
+            display: block;
+        }
+    }
+}

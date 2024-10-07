@@ -1,5 +1,5 @@
-mixin card-calculate-result(data)
-    .card-calculate-result
+mixin card-calculate-result(data, bgColor = 'bg-dark-0')
+    .card-calculate-result(class= bgColor)
         .card-calculate-result__body
             each item in data.rows
                 .d-flex.flex-column.row-gap-2
