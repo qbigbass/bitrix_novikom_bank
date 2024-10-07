@@ -1,4 +1,11 @@
 .tabs-panel {
+    width: 100vw;
+    margin-left: calc((100vw - 100%) / -2);
+
+    @include use-media(tablet) {
+        width: auto;
+        margin-left: 0;
+    }
 
     &__navigation {
 
