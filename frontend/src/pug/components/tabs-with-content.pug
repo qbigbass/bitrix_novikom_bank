@@ -1,6 +1,6 @@
 mixin tabs-with-content(tabsList, tabsClassName, tabItemClassName, isSmallTabs=false, tabsId='')
     .tabs-with-content(id=tabsId)
-        .tabs-with-content__header.px-lg-6.mb-6.mb-lg-7
+        .tabs-with-content__header.px-lg-6.mb-4.mb-md-6.mb-lg-7
             +tabs(tabsList, tabsClassName, tabItemClassName, isSmallTab)
         .tabs-content.tabs-with-content__content
             each item, index in tabsList
