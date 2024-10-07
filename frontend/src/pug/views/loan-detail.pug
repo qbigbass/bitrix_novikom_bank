@@ -1,0 +1,127 @@
+extends ../templates/base
+
+block title
+    title= 'Кредиты - Кредит на любые цели'
+    meta(name="description" content="Описание страницы с кредитами")
+block content
+
+    include ../cards/card-text
+    include ../cards/card-product
+    include ../includes/header/header
+    include ../components/banners/text-banner
+    include ../components/banners/info-product-banner
+    include ../components/ui/tabs
+    include ../components/tabs-with-content
+    include ../components/helper
+    include ../components/benefit
+    include ../components/step-item
+
+    -
+        var allBenefits = [
+            {
+                spriteName: 'icon-a-date',
+                title: 'От&nbsp;2&nbsp;до&nbsp;7&nbsp;рабочих дней',
+                description: 'Срок рассмотрения кредитной заявки',
+            },
+            {
+                spriteName: 'icon-a-money',
+                title: 'От&nbsp;20&nbsp;000 <span class="currency">₽</span>',
+                description: 'Минимальная сумма кредита',
+            },
+            {
+                spriteName: 'icon-a-low-percent',
+                title: 'Льготная ставка',
+                description: 'Для заемщиков, получающих заработную плату на&nbsp;карту Банка',
+            },
+        ]
+
+        var tabsList = [
+            {
+                link: 'calculator',
+                linkText: 'Калькулятор',
+                isActive: true
+            },
+            {
+                link: 'loan-conditions',
+                linkText: 'Условия',
+                isActive: false
+            },
+            {
+                link: 'requirements',
+                linkText: 'Требования к заемщику',
+                isActive: false
+            },
+            {
+                link: 'loan-repayment',
+                linkText: 'Погашение кредита',
+                isActive: false
+            },
+            {
+                link: 'documents',
+                linkText: 'Необходимые документы',
+                isActive: false
+            },
+            {
+                link: 'faq',
+                linkText: 'Вопросы и ответы',
+                isActive: false
+            },
+        ]
+
+
+    +text-banner(
+        "Кредит на&nbsp;любые цели <br>для&nbsp;зарплатных клиентов",
+        [
+            {linkText: "Частным клиентам", link: "/"},
+            {linkText: "Кредиты для зарплатных клиентов", link: "/"},
+        ],
+        "",
+        "green",
+        "img/big-illustrations/large-individual/restructuring.png"
+    )
+
+
+    section.section-layout
+        .container
+            .row.mb-6.mb-lg-7.px-lg-6
+                h3 Условия для&nbsp;зарплатных клиентов
+            .row.row-gap-6.px-lg-6
+                each item, index in allBenefits
+                    .col-12.col-md-6.col-lg-4
+                        +benefit(item.spriteName, item.title, item.description)
+        +pattern-bg('section', 'light', 'pattern-bg--position-sm-bottom')
+
+    section.section-layout.pt-0
+        .container
+            .row
+                .col-12
+                    +polygon-container()
+                        +helper("img/restructuring-additional-info.png", "bg-dark-10")
+                            h4.mb-3 Для держателей зарплатных карт Банка
+                            p.mb-0 Под зарплатной картой понимается действующая банковская карта, выпущенная на&nbsp;имя заемщика в&nbsp;рамках договора о&nbsp;зарплатном обслуживании, заключенного между Банком и&nbsp;организацией&nbsp;&mdash; работодателем клиента
+
+    section.section-layout.section-collapsed-mobile
+        .container
+            a(
+                data-bs-toggle="collapse"
+                href="#conditions"
+                role="button"
+                aria-expanded="false"
+                aria-controls="conditions"
+            ).h3.d-flex.align-items-center.justify-content-between.dark-100.d-md-none
+                | Условия кредитования
+                +svg-use("icon-chevron-down", "icon size-m violet-100")
+            #conditions.collapse
+                .d-flex.flex-md-column.gap-md-4.mb-md-6.mb-lg-7.ps-lg-6
+                    h3.d-none.d-md-inline Условия кредитования
+                    +tabs(tabsList, "additional-info__tab-list",
+                        "additional-info__tab-list-item",
+                        false)
+                    //+nav-tabs(tabList)
+
+
+    section.section-layout
+        .container
+            h3.px-lg-6.mb-6.mb-lg-7
+                | Смотрите также
+            include ../includes/layout/slider-card-product

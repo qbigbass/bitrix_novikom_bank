@@ -1,12 +1,17 @@
 .helper {
-    
+
     @include use-media(laptop) {
         padding-right: 12.5rem!important;
     }
 
-    &__background {
-        z-index: -1;
-        clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--polygon-square)), calc(100% - var(--polygon-square)) 100%, 0 100%);
+    &__wrapper {
+        padding: 1rem;
+        position: relative;
+        z-index: 1;
+
+        @include use-media(tablet) {
+            padding: 1.5rem;
+        }
     }
 
     &__image {
@@ -14,33 +19,6 @@
 
         @include use-media(tablet-album) {
             max-width: 10rem;
-        }
-    }
-
-    &__polygon-container {
-        position: absolute;
-        right: -0.5rem;
-        bottom: -0.5rem;
-
-        @include use-media(tablet) {
-            right: -1rem;
-            bottom: -1rem;
-        }    
-
-        @include use-media(tablet-album) {
-            right: -1.5rem;
-            bottom: -1.5rem;
-        }    
-    }
-
-    &__description {
-
-        & br {
-            display: none;
-
-            @include use-media(laptop) {
-                display: inherit;
-            }
         }
     }
 }

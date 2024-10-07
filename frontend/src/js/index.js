@@ -13,7 +13,6 @@ import initInputSlider from "./components/inputSlider";
 
 document.addEventListener('DOMContentLoaded', () => {
     initDropdownMenu();
-    initPolygonContainer();
     setVh();
     initSwiperMenu();
     initButtonNavMobile();
@@ -26,6 +25,10 @@ document.addEventListener('DOMContentLoaded', () => {
     initTabsContentEvents();
     initInputSlider();
 });
+
+window.onload = function() {
+    initPolygonContainer();
+};
 
 window.addEventListener('resize', () => {
     initPolygonContainer(true);
