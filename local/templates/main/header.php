@@ -2,6 +2,10 @@
 if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die();
 global $APPLICATION;
 use Bitrix\Main\Localization\Loc;
+use \Bitrix\Main\Page\Asset;
+
+Asset::getInstance()->addJs('/frontend/dist/js/bundle.js');
+Asset::getInstance()->addCss('/frontend/dist/css/all.css');
 ?>
 
 <!DOCTYPE html>
@@ -19,17 +23,17 @@ use Bitrix\Main\Localization\Loc;
     <?php $APPLICATION->ShowPanel();?>
 </div>
 
-<div class="default-page-layout js-page-wrapper">
-    <header class="default-page-layout__header">
-        <div class="desktop-nav-layout content-container">
-            <div class="desktop-nav-layout__logo">
-                <a href="/" class="inherits-link">
-                    <img src="/frontend/build/assets/logo-main.svg" width="196" height="56" alt="Новиком">
+<div class="page-wrapper js-page-wrapper">
+    <header class="header">
+        <div class="container d-flex align-items-center">
+            <div class="header__logo">
+                <a class="d-block" href="/">
+                    <img src="/frontend/dist/img/logo-main.svg" width="196" height="56" alt="Новиком">
                 </a>
             </div>
-            <div class="desktop-nav-layout__menu-wrapper">
-                <div class="desktop-nav-layout__top-row">
-                    <div class="desktop-nav-layout__main-menu">
+            <div class="d-flex flex-column gap-4 ms-auto flex-grow-1">
+                <div class="header__top-row">
+                    <div class="d-none d-lg-flex align-items-center">
                         <?php $APPLICATION->IncludeComponent(
                             "bitrix:menu",
                             "main_menu_header",
@@ -47,54 +51,48 @@ use Bitrix\Main\Localization\Loc;
                             )
                         );?>
                     </div>
-                    <div class="desktop-nav-layout__bank">
-                        <div class="desktop-nav-layout__bank-contact">
-                            <a href="#" class="header-contact-link body-s-light">
-                                <span class="header-contact-link__icon">
-                                    <svg>
-                                        <use  xlink:href="/frontend/build/assets/svg-sprite.svg#icon-point-small"></use>
+                    <div class="d-flex align-items-center gap-4 column-gap-xxl-3 column-gap-xxxl-6">
+                        <div class="d-none d-lg-flex gap-4 column-gap-xxl-3 column-gap-xxxl-6">
+                            <a class="text-s d-inline-flex gap-1 align-items-center dark-100" href="#">
+                                <span class="icon size-s d-none d-xxl-inline-block violet-70">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-point-small"></use>
                                     </svg>
                                 </span>
-                                <span class="header-contact-link__text">
-                                    <?=Loc::getMessage('OFFICES_AND_ATMS_BUTTON_TITLE')?>
-                                </span>
-                                <span class="header-contact-link__icon header-contact-link__icon--hide-desktop">
-                                    <svg>
-                                        <use  xlink:href="/frontend/build/assets/svg-sprite.svg#icon-point"></use>
+                                <span class="icon size-m d-xxl-none violet-100">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                        <use xlink:href="/frontend/dist/img/img/svg-sprite.svg#icon-point"></use>
                                     </svg>
                                 </span>
+                                <span class="header-contact-link__text d-none d-xxl-inline-block"><?=Loc::getMessage('OFFICES_AND_ATMS_BUTTON_TITLE')?></span>
                             </a>
-                            <a href="tel:<?=clearPhoneNumber(MOBIL_PHONE_CONTACT_NUMBER)?>" class="header-contact-link body-s-light">
-                                <span class="header-contact-link__text">
-                                    <?=MOBIL_PHONE_CONTACT_NUMBER?>
-                                </span>
-                                <span class="header-contact-link__icon header-contact-link__icon--hide-desktop">
-                                    <svg>
-                                        <use  xlink:href="/frontend/build/assets/svg-sprite.svg#icon-phone"></use>
+                            <a class="header-contact-link text-s dark-100" href="tel:<?=clearPhoneNumber(MOBIL_PHONE_CONTACT_NUMBER)?>">
+                                <span class="icon size-m d-xxl-none violet-100">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-phone"></use>
                                     </svg>
                                 </span>
+                                <span class="header-contact-link__text d-none d-xxl-inline-block"><?=MOBIL_PHONE_CONTACT_NUMBER?></span>
                             </a>
                         </div>
-                        <div class="desktop-nav-layout__bank-apps">
-                            <a href="#" target="_blank" class="a-button a-button--s a-button--primary a-button--link a-button--outline">
-                                <span class="a-icon a-button__icon">
-                                    <svg>
-                                        <use  xlink:href="/frontend/build/assets/svg-sprite.svg#icon-download-small"></use>
-                                    </svg>
-                                </span>
+                        <div class="d-flex column-gap-md-3 column-gap-lg-4 column-gap-xxl-3">
+                            <button class="btn btn-outline-primary btn-sm d-none d-md-inline-flex gap-2 align-items-center justify-content-center" type="button">
+                                <svg class="icon size-s" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                    <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-download-small"></use>
+                                </svg>
                                 <?=Loc::getMessage('DOWNLOAD_MOBIL_APP_BUTTON_TITLE')?>
-                            </a>
-                            <button class="a-button js-drop-down-button a-button--s a-button--primary">
-                                <?=Loc::getMessage('ONLINE_BUNK_BUTTON_TITLE')?>
-                                <div class="drop-down-menu js-drop-down-menu">
-                                    <a href="#" class="drop-down-menu__link"><?=Loc::getMessage('FOR_PRIVATE_CLIENTS_BUTTON_TITLE')?></a>
-                                    <a href="#" class="drop-down-menu__link"><?=Loc::getMessage('FOR_ORGANIZATIONS_BUTTON_TITLE')?></a>
-                                </div>
                             </button>
+                            <div class="dropdown">
+                                <button class="btn btn-sm btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"><?=Loc::getMessage('ONLINE_BUNK_BUTTON_TITLE')?></button>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><a class="dropdown-item fw-bold" href="#"><?=Loc::getMessage('FOR_PRIVATE_CLIENTS_BUTTON_TITLE')?></a></li>
+                                    <li><a class="dropdown-item fw-bold" href="#"><?=Loc::getMessage('FOR_ORGANIZATIONS_BUTTON_TITLE')?></a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="desktop-nav-layout__bottom-row">
+                <div class="header__bottom-row">
                     <?php $APPLICATION->IncludeComponent(
                         "bitrix:menu",
                         "main_submenu_header",
@@ -115,5 +113,4 @@ use Bitrix\Main\Localization\Loc;
             </div>
         </div>
     </header>
-    <main class="default-page-layout__body">
     <!-- #WORK_AREA# --------------------------------------------------------------------------------------------------- -->
