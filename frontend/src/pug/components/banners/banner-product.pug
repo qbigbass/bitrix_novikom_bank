@@ -1,0 +1,27 @@
+include ../benefit-text
+
+mixin banner-product(data)
+    .banner-product(
+        class= data.bgColor ? `banner-product--${data.bgColor}` : ''
+        class= data.type ? `banner-product--type-${data.type}` : ''
+        )
+        .banner-product__wrapper
+            .banner-product__content
+                .banner-product__header
+                    .banner-product__breadcrumbs.d-flex.gap-2
+                        each item, index in data.breadcrumbsArray
+                            a.text-banner__breadcrumbs-item.d-md-inline-flex.align-items-center.gap-2.text-s.text-white-50(href=item.link, class= index == data.breadcrumbsArray.length - 1 ? 'd-inline-flex' : 'd-none')
+                                if index === data.breadcrumbsArray.length - 1
+                                    +svg-use("icon-chevron-left", "icon size-s text-white-50 d-inline-block d-md-none")
+                                span=item.linkText
+                    h1!= data.title
+                    p.banner-product__subtitle!= data.subtitle
+                img(src= data.imgSrc, class="banner-product__image", alt="", loading="lazy")
+                if data.benefits
+                    .banner-product__benefits-list
+                        each benefit in data.benefits
+                            +benefit-text(benefit)
+                if data.buttonText
+                   a(href= data.urlHref).btn.btn-tertiary.btn-lg.banner-product__button!= data.buttonText
+
+        +pattern-bg("section", "dark", "banner-product__pattern")

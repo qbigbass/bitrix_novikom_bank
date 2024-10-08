@@ -1,11 +1,6 @@
-
-mixin helper(image, description, color)
-    .helper.position-relative.mb-2.mb-md-3.mb-lg-4
-        .helper__content.position-relative.d-flex.flex-column.flex-sm-row.align-items-start.align-items-sm-center.gap-4.gap-lg-6.z-3.pe-4.p-3.p-md-4.pb-6.pb-md-4
-            img(src=image, class="helper__image w-auto float-end", alt="")
-            .helper__description.text-l!= description
-        .helper__background.position-absolute.z-2.w-100.h-100.bg-dark-10.top-0.start-0
-        .helper__polygon-container.js-polygon-container.z-1.position-absolute.w-100.h-100
-            div(class="js-polygon-container-polygon helper__polygon w-100 h-100 green-100")
-                svg.js-polygon-container-svg.helper__polygon-svg.w-100.h-100(xmlns="http://www.w3.org/2000/svg")
-                    polygon(points="2,2 535,2 535,283 495,323 2,323", fill="none", stroke="currentColor", stroke-width="2", stroke-dasharray="10")
+mixin helper(imgSrc, bgColorClass)
+    .helper(class= bgColorClass)
+        .helper__wrapper.d-flex.flex-column.flex-sm-row.align-items-start.align-items-sm-center.gap-4.gap-lg-6
+            img(src= imgSrc, class="helper__image w-auto float-end", alt="" loading="lazy")
+            .helper__content
+                block

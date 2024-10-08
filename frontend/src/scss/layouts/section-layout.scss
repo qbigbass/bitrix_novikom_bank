@@ -54,22 +54,8 @@
         padding: 0;
     }
 
-    //.section-layout.s-no-padding {
-    //    padding: 0;
-    //
-    //    @include use-media(tablet) {
-    //        padding-top: 4rem;
-    //        padding-bottom: 4rem;
-    //    }
-    //
-    //    @include use-media(tablet-album) {
-    //        padding-top: 5rem;
-    //        padding-bottom: 5rem;
-    //    }
-    //
-    //    @include use-media(laptop-x) {
-    //        padding-top: 7.5rem;
-    //        padding-bottom: 7.5rem;
-    //    }
-    //}
+    & .container {
+        position: relative;
+        z-index: 1;
+    }
 }
