@@ -7,12 +7,17 @@ mixin tabs-with-content(tabsList, tabsClassName, tabItemClassName, isSmallTabs=f
                 .tabs-content__item.collapse(id=item.id, data-bs-parent='#'+tabsId, class= index===0 && 'show')
                     .tabs-content__item-content.d-flex.flex-column.gap-6.gap-lg-7.px-lg-6
                         if item.content
-                            .pe-md-4.w-100.w-xl-75.d-flex.flex-column.gap-6.gap-lg-7
+                            .pe-md-4.pe-lg-8.w-100.w-xl-75.d-flex.flex-column.gap-6.gap-lg-7
                                 != item.content
+                        if item.benefits
+                            .row.row-gap-6
+                                each benefit in item.benefits
+                                    .col-12.col-md-6.col-lg-4
+                                        +benefit(benefit.spriteData, benefit.title, benefit.description, true)
                         if item.helper
                             .w-100
                                 +polygon-container()
                                     +helper(item.helper.imageSrc, "bg-dark-10")
                                         p.mb-0!= item.helper.description
                         if item.caption
-                            p.tabs-content__item-caption.dark-70.text-m.m-0!= item.caption
+                            p.tabs-content__item-caption.dark-70.pe-md-4.pe-lg-8.w-100.w-xl-75.text-m.m-0!= item.caption
