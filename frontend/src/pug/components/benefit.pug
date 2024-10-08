@@ -1,6 +1,6 @@
 mixin benefit(spriteData, title, description, isHorizontal=false)
     .benefit.d-flex.gap-3(class=isHorizontal ? 'flex-column flex-md-row align-items-md-center gap-md-4 gap-lg-6' : 'flex-column')
-        +svg-use(spriteData.name, "icon green-100 " + spriteData.classList)
+        img.icon(src="img/icons/icon-money.svg" alt="icon" loading="lazy" class= spriteData.classList)
         .benefit__content.d-flex.flex-column.gap-3
             if title
                 if isHorizontal

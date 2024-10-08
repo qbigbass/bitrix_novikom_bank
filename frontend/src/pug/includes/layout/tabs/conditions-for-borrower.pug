@@ -1,0 +1,31 @@
+include ../../../components/benefit
+
+-
+    var benefits = [
+        {
+            spriteData: {
+                name: 'icon-a-account',
+                classList: 'size-lxl',
+            },
+            title: 'Возраст от 21 до 60 лет',
+        },
+        {
+            spriteData: {
+                name: 'icon-a-hands',
+                classList: 'size-lxl',
+            },
+            title: 'Стаж на последнем месте <br>работы не менее 3 месяцев',
+        },
+        {
+            spriteData: {
+                name: 'icon-a-money',
+                classList: 'size-lxl',
+            },
+            title: 'Перечисление зарплаты <br>на счет в банке Новиком',
+        },
+    ]
+
+.row.row-gap-6
+    each benefit in benefits
+        .col-12.col-md-6.col-lg-4
+            +benefit(benefit.spriteData, benefit.title, benefit.description, true)

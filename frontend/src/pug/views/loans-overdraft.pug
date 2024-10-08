@@ -9,94 +9,26 @@ block content
     include ../components/banners/text-banner
     include ../components/banners/info-product-banner
     include ../components/ui/tabs
+    include ../components/ui/tabs-simple
     include ../components/tabs-with-content
     include ../components/benefit
 
     -
-        const additionalTabsList = [
+        var additionalTabsList = [
             {
                 linkText: "Условия для заемщика",
                 link: "#1",
                 id: "additional-info-1",
-                benefits: [
-                    {
-                        spriteData: {
-                            name: 'icon-a-account',
-                            classList: 'size-lxl',
-                        },
-                        title: 'Возраст от 21 до 60 лет',
-                    },
-                    {
-                        spriteData: {
-                            name: 'icon-a-hands',
-                            classList: 'size-lxl',
-                        },
-                        title: 'Стаж на последнем месте <br>работы не менее 3 месяцев',
-                    },
-                    {
-                        spriteData: {
-                            name: 'icon-a-money',
-                            classList: 'size-lxl',
-                        },
-                        title: 'Перечисление зарплаты <br>на счет в банке Новиком',
-                    },
-                ]
             },
             {
                 linkText: "Необходимые документы",
                 link: "#2",
                 id: "additional-info-2",
-                benefits: [
-                    {
-                        spriteData: {
-                            name: 'icon-a-account',
-                            classList: 'size-lxl',
-                        },
-                        title: 'Возраст от 21 до 60 лет',
-                    },
-                    {
-                        spriteData: {
-                            name: 'icon-a-hands',
-                            classList: 'size-lxl',
-                        },
-                        title: 'Стаж на последнем месте <br>работы не менее 3 месяцев',
-                    },
-                    {
-                        spriteData: {
-                            name: 'icon-a-money',
-                            classList: 'size-lxl',
-                        },
-                        title: 'Перечисление зарплаты <br>на счет в банке Новиком',
-                    },
-                ]
             },
             {
                 linkText: "Вопросы и ответы",
                 link: "#3",
                 id: "additional-info-3",
-                benefits: [
-                    {
-                        spriteData: {
-                            name: 'icon-a-account',
-                            classList: 'size-lxl',
-                        },
-                        title: 'Возраст от 21 до 60 лет',
-                    },
-                    {
-                        spriteData: {
-                            name: 'icon-a-hands',
-                            classList: 'size-lxl',
-                        },
-                        title: 'Стаж на последнем месте <br>работы не менее 3 месяцев',
-                    },
-                    {
-                        spriteData: {
-                            name: 'icon-a-money',
-                            classList: 'size-lxl',
-                        },
-                        title: 'Перечисление зарплаты <br>на счет в банке Новиком',
-                    },
-                ]
             },
         ]
 
@@ -157,11 +89,11 @@ block content
         "Услуга"
     )
 
-    section.section-additional-info.py-6.py-sm-9.py-md-11.py-xl-16.position-relative.overflow-hidden
+    section.section-layout.js-collapsed-mobile
         .container
-            .h3.d-none.dark-100.d-md-flex.px-lg-6.mb-4.mb-md-6.mb-lg-7
+            h3.d-none.d-md-flex.mb-md-6.mb-lg-7.px-lg-6
                 | Подробные условия
-            a.px-lg-6(
+            a(
                 data-bs-toggle="collapse"
                 href="#additional-info-content"
                 role="button"
@@ -170,17 +102,19 @@ block content
             ).h3.d-flex.align-items-center.justify-content-between.dark-100.d-md-none
                 | Подробные условия
                 +svg-use("icon-chevron-down", "icon size-m violet-100")
-            #additional-info-content.section-additional-info__wrapper.collapse.d-md-block.mt-4.mt-md-6.mt-lg-7
-                .row.z-2.position-relative
+            #additional-info-content.collapse.d-md-block.mt-4.mt-md-6.mt-lg-7
+                .row.px-lg-6
                     .col-12
-                        +tabs-with-content(
-                            additionalTabsList,
-                            "section-additional-info__tab-list",
-                            "section-additional-info__tab-list-item",
-                            false,
-                            'section-additional-info-tabs'
-                        )
-                +pattern-bg('section-2', 'light', 'pattern-bg--position-sm-bottom section-additional-info__pattern z-1')
+                        +tabs-simple(additionalTabsList, false)
+                        .tab-content.mt-4.mt-md-6.mt-lg-7
+                            #additional-info-1.tab-pane.fade.show.active(aria-labelledby="additional-info-1" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/conditions-for-borrower
+                            #additional-info-2.tab-pane.fade(aria-labelledby="additional-info-2" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/necessary-documents
+                            #additional-info-3.tab-pane.fade(aria-labelledby="additional-info-3" tabindex="0" role="tabpanel")
+                                p Вопросы и ответы
+
+        +pattern-bg('section-2', 'light', 'pattern-bg--hide-mobile')
 
     section.section-layout
         .container
