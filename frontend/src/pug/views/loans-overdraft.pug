@@ -1,0 +1,189 @@
+extends ../templates/base
+
+block title
+    title= 'Кредиты - Овердрафт'
+    meta(name="description" content="Описание страницы с кредитами")
+block content
+
+    include ../includes/header/header
+    include ../components/banners/text-banner
+    include ../components/banners/info-product-banner
+    include ../components/ui/tabs
+    include ../components/tabs-with-content
+    include ../components/benefit
+
+    -
+        const additionalTabsList = [
+            {
+                linkText: "Условия для заемщика",
+                link: "#1",
+                id: "additional-info-1",
+                benefits: [
+                    {
+                        spriteData: {
+                            name: 'icon-a-account',
+                            classList: 'size-lxl',
+                        },
+                        title: 'Возраст от 21 до 60 лет',
+                    },
+                    {
+                        spriteData: {
+                            name: 'icon-a-hands',
+                            classList: 'size-lxl',
+                        },
+                        title: 'Стаж на последнем месте <br>работы не менее 3 месяцев',
+                    },
+                    {
+                        spriteData: {
+                            name: 'icon-a-money',
+                            classList: 'size-lxl',
+                        },
+                        title: 'Перечисление зарплаты <br>на счет в банке Новиком',
+                    },
+                ]
+            },
+            {
+                linkText: "Необходимые документы",
+                link: "#2",
+                id: "additional-info-2",
+                benefits: [
+                    {
+                        spriteData: {
+                            name: 'icon-a-account',
+                            classList: 'size-lxl',
+                        },
+                        title: 'Возраст от 21 до 60 лет',
+                    },
+                    {
+                        spriteData: {
+                            name: 'icon-a-hands',
+                            classList: 'size-lxl',
+                        },
+                        title: 'Стаж на последнем месте <br>работы не менее 3 месяцев',
+                    },
+                    {
+                        spriteData: {
+                            name: 'icon-a-money',
+                            classList: 'size-lxl',
+                        },
+                        title: 'Перечисление зарплаты <br>на счет в банке Новиком',
+                    },
+                ]
+            },
+            {
+                linkText: "Вопросы и ответы",
+                link: "#3",
+                id: "additional-info-3",
+                benefits: [
+                    {
+                        spriteData: {
+                            name: 'icon-a-account',
+                            classList: 'size-lxl',
+                        },
+                        title: 'Возраст от 21 до 60 лет',
+                    },
+                    {
+                        spriteData: {
+                            name: 'icon-a-hands',
+                            classList: 'size-lxl',
+                        },
+                        title: 'Стаж на последнем месте <br>работы не менее 3 месяцев',
+                    },
+                    {
+                        spriteData: {
+                            name: 'icon-a-money',
+                            classList: 'size-lxl',
+                        },
+                        title: 'Перечисление зарплаты <br>на счет в банке Новиком',
+                    },
+                ]
+            },
+        ]
+
+    +text-banner(
+        "Овердрафт",
+        [
+            {linkText: "Частным клиентам", link: "/"},
+            {linkText: "Кредиты", link: "/"}
+        ],
+        "Кредит «до зарплаты» на случай непредвиденных расходов и неотложных платежей.",
+        "green",
+        "../img/big-illustrations/large-individual/overdraft.png"
+    )
+
+    section.section-restructuring-benefits.px-0.px-lg-6.py-6.py-sm-9.py-md-11.py-xl-16.position-relative.overflow-hidden
+        -
+            const allBenefits = [
+                {
+                    spriteData: {
+                        name: 'icon-a-money-on',
+                        classList: 'size-xl',
+                    },
+                    title: 'Погашается автоматически',
+                    description: 'При поступлении денежных средств <br>на счет карты',
+                },
+                {
+                    spriteData: {
+                        name: 'icon-a-money',
+                        classList: 'size-xl',
+                    },
+                    title: '15 000 рублей',
+                    description: 'Максимальный размер кредитного лимита, <br>но не более 70% от ежемесячного оклада',
+                },
+                {
+                    spriteData: {
+                        name: 'icon-a-date',
+                        classList: 'size-xl',
+                    },
+                    title: '1 год',
+                    description: 'Срок предоставления лимита <br>с возможностью пролонгации',
+                }
+            ]
+
+        .container
+            .row.mb-6.mb-lg-7
+                h3= "Преимущества для каждого"
+            .row.row-gap-6
+                each item, index in allBenefits
+                    .col-12.col-md-6.col-lg-4
+                        +benefit(item.spriteData, item.title, item.description)
+        +pattern-bg('section', 'light', 'pattern-bg--position-sm-bottom section-restructuring-benefits__pattern')
+
+    +info-product-banner(
+        "Как получить кредит",
+        '<p class="text-l m-0 pe-lg-4">Обратиться в офис Банка с необходимым пакетом документов. Клиенты, получающие заработную плату на счет в банке Новиком, могут оформить заявку на территории своей организации.</p>',
+        "../img/banners/page-banner-2.png",
+        "#",
+        "Услуга"
+    )
+
+    section.section-additional-info.py-6.py-sm-9.py-md-11.py-xl-16.position-relative.overflow-hidden
+        .container
+            .h3.d-none.dark-100.d-md-flex.px-lg-6.mb-4.mb-md-6.mb-lg-7
+                | Подробные условия
+            a.px-lg-6(
+                data-bs-toggle="collapse"
+                href="#additional-info-content"
+                role="button"
+                aria-expanded="false"
+                aria-controls="additional-info-content"
+            ).h3.d-flex.align-items-center.justify-content-between.dark-100.d-md-none
+                | Подробные условия
+                +svg-use("icon-chevron-down", "icon size-m violet-100")
+            #additional-info-content.section-additional-info__wrapper.collapse.d-md-block.mt-4.mt-md-6.mt-lg-7
+                .row.z-2.position-relative
+                    .col-12
+                        +tabs-with-content(
+                            additionalTabsList,
+                            "section-additional-info__tab-list",
+                            "section-additional-info__tab-list-item",
+                            false,
+                            'section-additional-info-tabs'
+                        )
+                +pattern-bg('section-2', 'light', 'pattern-bg--position-sm-bottom section-additional-info__pattern z-1')
+
+    section.section-layout
+        .container
+            h3.px-lg-6.mb-4.mb-md-6.mb-lg-7
+                | Смотрите также
+            include ../includes/layout/slider-card-product
