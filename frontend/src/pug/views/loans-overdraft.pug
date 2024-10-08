@@ -171,7 +171,7 @@ block content
                 | Подробные условия
                 +svg-use("icon-chevron-down", "icon size-m violet-100")
             #additional-info-content.section-additional-info__wrapper.collapse.d-md-block.mt-4.mt-md-6.mt-lg-7
-                .row
+                .row.z-2.position-relative
                     .col-12
                         +tabs-with-content(
                             additionalTabsList,
@@ -180,7 +180,7 @@ block content
                             false,
                             'section-additional-info-tabs'
                         )
-        +pattern-bg('section-2', 'light', 'pattern-bg--position-sm-bottom section-additional-info__pattern')
+                +pattern-bg('section-2', 'light', 'pattern-bg--position-sm-bottom section-additional-info__pattern z-1')
 
     section.section-layout
         .container
