@@ -9,19 +9,23 @@
         border-bottom: 1px dashed var(--blue-30);
         padding: 1.5rem 0;
 
-        @include use-media(tablet-album) {
+        @include use-media(tablet) {
             gap: 2.5rem;
         }
     }
 
     &.cell-2 {
-        #{root}__row {
-            grid-template-columns: repeat(2, 1fr);
+        #{$root}__row {
+            //grid-template-columns: 1fr;
+
+            @include use-media(tablet) {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     }
 
     &.cell-4 {
-        #{root}__row {
+        #{$root}__row {
             grid-template-columns: repeat(4, 1fr);
         }
     }

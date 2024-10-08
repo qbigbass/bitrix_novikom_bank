@@ -27,7 +27,7 @@ block content
         "green",
     )
 
-    section.helper-section.py-6.py-sm-9.py-md-11.py-xl-16
+    section.section-layout
         .container
             .row
                 .col-12
@@ -76,9 +76,9 @@ block content
             ]
 
         .container
-            .row.mb-6.mb-lg-7
+            .row.mb-6.mb-lg-7.px-lg-6
                 h3= "Возможные варианты реструктуризации"
-            .row.row-gap-6
+            .row.row-gap-6.px-lg-6
                 each item, index in allBenefits
                     .col-12.col-md-6.col-lg-4
                         +benefit(item.spriteData, '', item.description)
@@ -105,8 +105,8 @@ block content
             ]
 
         .container
-            .row
-                .h3.d-none.d-md-flex
+            .row.px-lg-6
+                h3.d-none.d-md-flex
                     = "Как реструктуризировать задолженность"
                 a(
                     data-bs-toggle="collapse"
@@ -118,12 +118,12 @@ block content
                     = "Как реструктуризировать задолженность"
                     +svg-use("icon-chevron-down", "icon size-m violet-100")
             #restructuring-steps-content.section-restructuring-steps__wrapper.collapse.d-md-block.mt-6.mt-lg-7
-                .row.row-gap-6
+                .row.row-gap-6.px-lg-6
                     each item, index in allSteps
                         .col-12.col-lg-4
                             +step-item(item, index, allSteps.length - 1)
 
-    section.helper-section.py-6.py-sm-9.py-md-11.py-xl-16.px-lg-5
+    section.section-layout
         .container
             .row
                 .col-12

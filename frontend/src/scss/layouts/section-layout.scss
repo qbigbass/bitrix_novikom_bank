@@ -35,25 +35,6 @@
         background-color: var(--dark-30);
     }
 
-    &--padding-s {
-        padding-top: 2.5rem;
-        padding-bottom: 2.5rem;
-
-        @include use-media(tablet) {
-            padding-top: 4rem;
-            padding-bottom: 4rem;
-        }
-
-        @include use-media(tablet-album) {
-            padding-top: 5rem;
-            padding-bottom: 5rem;
-        }
-    }
-
-    &--padding-0 {
-        padding: 0;
-    }
-
     & .container {
         position: relative;
         z-index: 1;
