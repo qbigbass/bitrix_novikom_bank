@@ -4,6 +4,7 @@ const ELEMENTS = {
     collapsedSection: '.js-collapsed-mobile',
     collapse: '.collapse',
     polygonContainer: '.js-polygon-container-polygon',
+    tabSlider: '.js-tabs-slider',
 }
 
 const updatePolygonInTabContent = (el) => {
@@ -30,10 +31,8 @@ const resizePolygonInTabContent = (el) => {
 export function initTabsContent() {
     const tabsCollapseArray = document.querySelectorAll('.tabs-with-content .collapse');
 
-    tabsCollapseArray.forEach((el, index) => {
-        let tabContentIsVisible = () => el.clientHeight !== 0;
+    tabsCollapseArray.forEach((el) => {
         const linkEl = document.querySelector(`.tabs-panel__list-item-link[data-bs-target="#${el.id}"`);
-        const swiperEl = linkEl.closest(".js-tabs-slider");
 
         // Fixes initialization of active tab
         if (linkEl.classList.contains('active')) {
@@ -43,13 +42,7 @@ export function initTabsContent() {
         // Initializes a polygon when tab content is displayed
         resizePolygonInTabContent(el);
 
-        el.addEventListener('show.bs.collapse', (event) => {
-            linkEl.classList.add('active');
-
-            if (swiperEl && swiperEl.swiper) {
-                swiperEl.swiper.slideTo(index);
-            }
-        });
+        el.addEventListener('show.bs.collapse', (event) => linkEl.classList.add('active'));
         el.addEventListener('hide.bs.collapse', (event) => linkEl.classList.remove('active'));
     });
 
