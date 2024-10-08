@@ -1,16 +1,17 @@
 export function initTabsContent() {
     const updatePolygonInTabContent = (el) => {
-
         const polygonArray = el.querySelectorAll('.js-polygon-container-polygon');
-        console.log('updatePolygonInTabContent', polygonArray);
+
         polygonArray.forEach((polygon) => polygon.dispatchEvent(new Event("resize")));
     };
 
     const tabsCollapseArray = document.querySelectorAll('.tabs-with-content .collapse');
 
-    tabsCollapseArray.forEach((el) => {
+    tabsCollapseArray.forEach((el, index) => {
         let tabContentIsVisible = () => el.clientHeight !== 0;
+
         const linkEl = document.querySelector(`.tabs-panel__list-item-link[data-bs-target="#${el.id}"`);
+        const swiperEl = linkEl.closest(".js-tabs-slider");
 
         // Fixes initialization of active tab
         if (linkEl.classList.contains('active')) {
@@ -30,7 +31,13 @@ export function initTabsContent() {
             resizeObserver.observe(el);
         }
 
-        el.addEventListener('show.bs.collapse', (event) => linkEl.classList.add('active'))
-        el.addEventListener('hide.bs.collapse', (event) => linkEl.classList.remove('active'))
+        el.addEventListener('show.bs.collapse', (event) => {
+            linkEl.classList.add('active');
+            
+            if (swiperEl && swiperEl.swiper) {
+                swiperEl.swiper.slideTo(index);
+            }
+        });
+        el.addEventListener('hide.bs.collapse', (event) => linkEl.classList.remove('active'));
     });
 }
