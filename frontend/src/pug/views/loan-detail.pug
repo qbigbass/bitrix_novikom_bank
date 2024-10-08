@@ -11,6 +11,7 @@ block content
     include ../components/banners/text-banner
     include ../components/banners/info-product-banner
     include ../components/ui/tabs
+    include ../components/ui/tabs-simple
     include ../components/tabs-with-content
     include ../components/helper
     include ../components/benefit
@@ -134,7 +135,7 @@ block content
                             h4.mb-3 Для держателей зарплатных карт Банка
                             p.mb-0 Под зарплатной картой понимается действующая банковская карта, выпущенная на&nbsp;имя заемщика в&nbsp;рамках договора о&nbsp;зарплатном обслуживании, заключенного между Банком и&nbsp;организацией&nbsp;&mdash; работодателем клиента
 
-    section.section-layout.section-collapsed-mobile
+    section.section-layout.section-collapsed-mobile.js-collapsed-mobile
         .container
             a(
                 data-bs-toggle="collapse"
@@ -149,14 +150,16 @@ block content
                 .row
                     .col-12
                         h3.d-none.d-md-block.mb-md-6.mb-lg-7.ps-lg-6 Условия кредитования
-                        .tabs-with-content.mt-4.mt-md-0.ps-lg-6(id="tabsId")
-                            .tabs-with-content__header.mb-4.mb-md-6.mb-lg-7
-                                +tabs(tabsList, "additional-info__tab-list",
-                                    "additional-info__tab-list-item",
-                                    false)
-                            .tabs-content.tabs-with-content__content
-                                #calculator.tabs-content__item.collapse.show(data-bs-parent="#tabsId" aria-labelledby="calculator" tabindex="0" role="tabpanel")
+                        .mt-4.mt-md-0.ps-lg-6
+                            +tabs-simple(tabsList, false)
+
+                            .tab-content.mt-4.mt-md-6.mt-lg-7
+                                #calculator.tab-pane.fade.show.active(aria-labelledby="calculator" tabindex="0" role="tabpanel")
                                     include ../includes/layout/loan-tabs/tab-calculator
+                                #loan-conditions.tab-pane.fade(aria-labelledby="loan-conditions" tabindex="0" role="tabpanel")
+                                    include ../includes/layout/loan-tabs/tab-conditions
+                                #documents.tab-pane.fade(aria-labelledby="documents" tabindex="0" role="tabpanel")
+                                    p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, incidunt?
         +pattern-bg('section-2', 'light', 'pattern-bg--hide-mobile')
 
 
