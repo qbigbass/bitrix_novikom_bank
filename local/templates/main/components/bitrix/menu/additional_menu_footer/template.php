@@ -1,15 +1,16 @@
 <?php if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
 
 <?php if (!empty($arResult)) {?>
-    <div class="a-footer-info__nav a-footer-info-nav">
-        <?foreach ($arResult as $columnItems) {?>
-            <div class="a-footer-info-nav__col">
+    <?$xlCollSize = 4;?>
+    <?foreach ($arResult as $columnItems) {?>
+        <div class="col-12 col-md-6 col-lg-4 col-xl-<?=$xlCollSize++?>">
+            <div class="d-flex flex-column row-gap-3">
                 <?foreach ($columnItems as $item) {?>
-                    <a href="<?=$item['LINK']?>" class="a-footer-nav-link">
+                    <a href="<?=$item['LINK']?>" class="text-s dark-70">
                         <?=$item['TEXT']?>
                     </a>
                 <?}?>
             </div>
-        <?}?>
-    </div>
+        </div>
+    <?}?>
 <?php }?>
