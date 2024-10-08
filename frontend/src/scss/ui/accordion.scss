@@ -1,0 +1,7 @@
+.custom-accordion {
+
+    &__item  {
+        --bs-accordion-active-color: var(--blue-100);
+        border-bottom: var(--blue-30) dashed $accordion-border-width;
+    }
+}
