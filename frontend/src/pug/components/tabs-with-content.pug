@@ -16,5 +16,10 @@ mixin tabs-with-content(tabsList, tabsClassName, tabItemClassName, isSmallTabs=f
                                     item.helper.description,
                                     item.helper.color
                                 )
+                        if item.benefits
+                            .row.row-gap-6
+                                each benefit in item.benefits
+                                    .col-12.col-md-6.col-lg-4
+                                        +benefit(benefit.spriteData, benefit.title, benefit.description, true)
                         if item.caption
                             p.tabs-content__item-caption.dark-70.text-m.m-0!= item.caption
