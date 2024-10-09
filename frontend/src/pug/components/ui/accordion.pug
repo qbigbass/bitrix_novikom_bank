@@ -12,7 +12,7 @@ mixin accordion(items, id, type)
                         !=item.title
                         +svg-use("icon-chevron-down", "icon size-m violet-100")
                 .accordion-collapse.collapse(class=index===0 && 'show', id=itemId, data-bs-parent=accordionSelector)
-                    .accordion-body.d-flex.flex-column.gap-4.py-0.pb-4.pb-lg-5.ps-2.ps-sm-4.ps-lg-5
+                    .accordion-body.d-flex.flex-column.gap-4.py-0.pb-4.pb-lg-5.ps-2.ps-sm-3.ps-lg-4
                         .custom-accordion__content.text-m.dark-70!= item.content
                         if item.linkList
                             .custom-accordion__link-list
