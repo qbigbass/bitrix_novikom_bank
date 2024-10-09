@@ -162,6 +162,20 @@ $form-feedback-margin-top: 0;
 $form-feedback-font-size: .75rem;
 $form-feedback-icon-invalid: none;
 
+// Select
+$form-select-padding-y: 1rem;
+$form-select-padding-x: 1rem;
+$form-select-font-size: 1rem;
+$form-select-line-height: 1.5;
+$form-select-color: var(--dark-100);
+$form-select-feedback-icon-size: 1rem;
+$form-select-border-width: 1px;
+$form-select-border-color: var(--purple-30);
+$form-select-border-radius: .25rem;
+$form-select-focus-border-color: var(--purple-70);
+$form-select-focus-box-shadow: none;
+
+
 // CheckBox and Radio
 $form-check-input-width: 1.5rem;
 $form-check-min-height: 1.5rem;
@@ -175,6 +189,7 @@ $form-check-input-focus-box-shadow: none;
 $form-check-input-checked-color: var(--dark-0);
 $form-check-input-checked-bg-color: var(--blue-100);
 $form-check-input-checked-bg-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='17' viewBox='0 0 16 17' fill='none'%3E%3Cpath d='M4 9.5L7 12.5L12 4.5' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+$form-check-radio-checked-bg-image: none;
 $form-check-label-cursor: cursor;
 $form-check-transition: .33s;
 

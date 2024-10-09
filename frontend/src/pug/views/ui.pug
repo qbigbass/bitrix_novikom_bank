@@ -648,6 +648,84 @@ block content
 
                             span.caption-m.dark-70.d-block Подсказка
 
+    section#checkbox.section-layout.pt-0
+        .container
+            .d-flex.flex-column.row-gap-5
+                h2 Checkbox / Radio
+
+                .row
+                    .col-12.col-md-6.col-xl-3
+                        .form-check
+                            input#inp10(type="checkbox" value="").form-check-input
+                            label(for="inp10").form-check-label
+                                | Страхование
+                    .col-12.col-md-6.col-xl-3
+                        .form-check
+                            input#inp11(type="checkbox" value="" checked).form-check-input
+                            label(for="inp11").form-check-label
+                                | Получаю зарплату на&nbsp;карту Новиком
+                    .col-12.col-md-6.col-xl-3
+                        .form-check
+                            input#inp12(type="checkbox" value="" checked).form-check-input
+                            label(for="inp12").form-check-label
+                                a(href="#") Получаю зарплату на&nbsp;карту Новиком
+                    .col-12.col-md-6.col-xl-3
+                        .form-check
+                            input#inp13(type="checkbox" value="" disabled).form-check-input
+                            label(for="inp13").form-check-label
+                                | Страхование
+                .row
+                    .col-12.col-md-6.col-xl-3
+                        .form-check.form-check--size-small
+                            input#inp15(type="checkbox" value="").form-check-input
+                            label(for="inp15").form-check-label
+                                | Страхование
+                    .col-12.col-md-6.col-xl-3
+                        .form-check.form-check--size-small
+                            input#inp16(type="checkbox" value="" checked).form-check-input
+                            label(for="inp16").form-check-label
+                                | Получаю зарплату на&nbsp;карту Новиком
+                    .col-12.col-md-6.col-xl-3
+                        .form-check.form-check--size-small
+                            input#inp17(type="checkbox" value="" checked).form-check-input
+                            label(for="inp17").form-check-label
+                                a(href="#") Получаю зарплату на&nbsp;карту Новиком
+                    .col-12.col-md-6.col-xl-3
+                        .form-check.form-check--size-small
+                            input#inp18(type="checkbox" value="" disabled).form-check-input
+                            label(for="inp18").form-check-label
+                                | Страхование
+                .row
+                    .col-12.col-md-6.col-xl-3
+                        .d-flex.flex-column.row-gap-2
+                            .form-check
+                                input#radio1(type="radio" name="radioGroup1").form-check-input
+                                label(for="radio1").form-check-label
+                                    | Радио по умолчанию
+                            .form-check
+                                input#radio2(type="radio" name="radioGroup1" checked).form-check-input
+                                label(for="radio2").form-check-label
+                                    | Радио выбранное по умолчанию
+                            .form-check
+                                input#radio3(type="radio" name="radioGroup1" disabled).form-check-input
+                                label(for="radio3").form-check-label
+                                    | Радио отключенное
+                    .col-12.col-md-6.col-xl-3
+                        .d-flex.flex-column.row-gap-2
+                            .form-check.form-check--size-small
+                                input#radio10(type="radio" name="radioGroup2").form-check-input
+                                label(for="radio10").form-check-label
+                                    | Радио по умолчанию
+                            .form-check.form-check--size-small
+                                input#radio11(type="radio" name="radioGroup2" checked).form-check-input
+                                label(for="radio11").form-check-label
+                                    | Радио выбранное по умолчанию
+                            .form-check.form-check--size-small
+                                input#radio12(type="radio" name="radioGroup2" disabled).form-check-input
+                                label(for="radio12").form-check-label
+                                    | Радио отключенное
+
+
     section#helper.section-layout.pt-0
         .container
             .d-flex.flex-column.row-gap-5

@@ -5,8 +5,24 @@
 
     &:hover {
 
-        & .form-check-input {
+        & .form-check-input:not(:disabled) {
             border-color: var(--blue-100);
+        }
+    }
+
+    &--size-small {
+        & .form-check-label {
+            font-size: .875rem;
+            line-height: 1.3;
+        }
+
+        & .form-check-input {
+            width: 1.5rem;
+            height: 1.5rem;
+
+            &:checked[type=radio] {
+                border-width: .375rem;
+            }
         }
     }
 }
@@ -19,7 +35,7 @@
         font-size: 1rem;
         line-height: 1.5;
     }
-    
+
     & a {
         text-decoration: underline;
         color: var(--blue-100);
@@ -33,6 +49,9 @@
         width: 2rem;
         height: 2rem;
     }
-}
 
-//.form-check-input:checked[type=checkbox]
+    &:checked[type=radio] {
+        background-color: transparent;
+        border-width: .5rem;
+    }
+}
