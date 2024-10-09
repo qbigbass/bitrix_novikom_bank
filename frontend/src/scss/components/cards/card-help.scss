@@ -1,0 +1,22 @@
+.card-help {
+    border-radius: .75rem;
+
+    &__input {
+        min-height: auto;
+
+        @include use-media(mobile-s, tablet) {
+            padding-top: 0.438rem;
+            padding-bottom: 0.438rem;
+        }
+    }
+
+    &__title, &__description {
+        & br {
+            display: none;
+
+            @include use-media(laptop) {
+                display: inherit;
+            }
+        }
+    }
+}
