@@ -42,6 +42,7 @@ block content
     include ../cards/card-product
     include ../cards/card-service
     include ../cards/card-service-app
+    include ../cards/card-benefit
 
     section#typography.section-layout
         .container
@@ -736,9 +737,21 @@ block content
                 },
             ]
 
+            var cardBenefitData = {
+                title: 'Защита от мошенников',
+                description: 'Узнайте как уберечь себя и своих близких <br>от финансового мошенничества.',
+                sprite: {
+                    name: 'icon-a-protection',
+                    classList: 'size-md-xxl'
+                },
+                link: '#'
+            }
+
         .container
             h3.px-lg-6.mb-4.mb-md-6.mb-lg-7
-                | Accordion
-            .row
-                .col-12.col-lg-8.pe-lg-6
+                | Additional info (Accordion & Card-benefit)
+            .row.row-gap-6
+                .col-12.col-xxl-8.pe-xxl-6
                     +accordion(accordionList, 'custom-tabs-accordion')
+                .col-12.col-xxl-4
+                    +card-benefit(cardBenefitData)
