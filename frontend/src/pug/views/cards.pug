@@ -1,7 +1,7 @@
 extends ../templates/base
 
 block title
-    title= 'Частные клиенты - Кредиты'
+    title= 'Частные клиенты - Карты витрина'
     meta(name="description" content="Описание страницы с кредитами")
 block content
     -
@@ -65,16 +65,16 @@ block content
     include ../components/banners/text-banner
 
     +text-banner(
-        "Кредиты",
+        "Банковские карты",
         [
             {linkText: "Частным клиентам", link: "/"}
         ],
-        "Быстрые кредиты по оптимальной ставке на любые цели",
+        "Карты с&nbsp;оптимальными условиями и&nbsp;приятными бонусами",
         "green"
     )
 
     section.section-catalog.d-flex.flex-column.gap-7.py-6.py-sm-9.py-md-11
-        include ../includes/layout/section-loans-catalog
+        include ../includes/layout/section-cards-catalog
 
     section.section-layout
         .container

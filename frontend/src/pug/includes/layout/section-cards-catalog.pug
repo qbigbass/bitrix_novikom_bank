@@ -2,35 +2,31 @@
     const tabsList = [
         {
             link: '#1',
-            linkText: 'Все программы',
+            linkText: 'Все карты',
         },
         {
             link: '#2',
-            linkText: 'Первичный рынок',
+            linkText: 'Кредитные карты',
         },
         {
             link: '#3',
-            linkText: 'IT-ипотека',
+            linkText: 'Дебетовые карты',
         },
         {
             link: '#4',
-            linkText: 'Дальневосточная ипотека',
+            linkText: 'Зарплатная карта',
         },
         {
             link: '#5',
-            linkText: 'Вторичный рынок',
+            linkText: 'Цифровая карта',
         },
         {
             link: '#6',
-            linkText: 'Семейная ипотека',
-        },
-        {
-            link: '#7',
-            linkText: 'Рефинансирование',
+            linkText: 'Платежный стикер',
         },
     ]
 
-    const primaryMarketMortgages = [
+    var primaryMarketMortgages = [
         {
             title: 'Первичный рынок',
             description: '',
@@ -67,7 +63,7 @@
         }
     ]
 
-    const itMortgages = [
+    var itMortgages = [
         {
             title: 'IT-ипотека',
             description: '',
@@ -104,7 +100,7 @@
         }
     ]
 
-    const farEasternMortgages = [
+    var farEasternMortgages = [
         {
             title: 'Дальневосточная ипотека',
             description: '',
@@ -141,7 +137,7 @@
         }
     ]
 
-    const secondaryMarketMortgages = [
+    var secondaryMarketMortgages = [
         {
             title: 'Вторичный рынок',
             description: '',
@@ -178,7 +174,7 @@
         }
     ]
 
-    const familyMortgages = [
+    var familyMortgages = [
         {
             title: 'Семейная ипотека',
             description: '',
@@ -215,7 +211,7 @@
         },
     ]
 
-    const refinancingMortgages = [
+    var refinancingMortgages = [
         {
             title: 'Рефинансирование ипотеки <br>стороннего банка',
             description: '',
@@ -320,7 +316,7 @@
         }
     ]
 
-    const allMortgages = [
+    var allMortgages = [
         ...primaryMarketMortgages,
         ...itMortgages,
         ...farEasternMortgages,
@@ -332,19 +328,19 @@
 include ../../cards/card-product-list
 include ../../components/ui/tabs
 
-section.section-catalog__tabs
-        .container
-            .row
-                .col-12
-                    +tabs(
-                        tabsList,
-                        "section-catalog__tab-list",
-                        "section-catalog__tab-list-item"
-                    )
+.section-catalog__tabs
+    .container
+        .row
+            .col-12
+                +tabs(
+                    tabsList,
+                    "section-catalog__tab-list",
+                    "section-catalog__tab-list-item"
+                )
 
-section.section-catalog__list
-        .container
-            .row
-                .col-12.position-relative.z-1.d-flex.flex-column.align-items-start.gap-5.gap-md-7
-                    each item in allMortgages
-                        +card-product-list(item)
+.section-catalog__list
+    .container
+        .row
+            .col-12.position-relative.z-1.d-flex.flex-column.align-items-start.gap-5.gap-md-7
+                each item in allMortgages
+                    +card-product-list(item)
