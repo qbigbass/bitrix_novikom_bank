@@ -4,13 +4,22 @@
     border-radius: 0.75rem;
 
     &__tag {
-        margin-bottom: 1.5rem;
+        position: absolute;
+        left: 1rem;
+        top: 1rem;
+
+        @include use-media(tablet) {
+            left: 2.5rem;
+            top: 2.5rem;
+        }
 
         @include use-media(tablet-album) {
-            margin-bottom: -1.313rem;
+            position: relative;
+            left: auto;
+            top: auto;
         }
     }
-    
+
     &__button-icon {
         width: 1.5rem;
         height: 1.5rem;
@@ -57,13 +66,13 @@
             height: 100%;
             object-fit: contain;
         }
-        
+
         @include use-media(sm) {
             height: 20rem;
             width: 20rem;
         }
 
-        @include use-media(tablet) {
+        @include use-media(tablet-album) {
             height: 22.5rem;
             width: 22.5rem;
         }
@@ -71,6 +80,14 @@
         @include use-media(laptop) {
             height: 28.75rem;
             width: 28.75rem;
+        }
+    }
+
+    &--gap-small {
+        #{$root}__condition-list {
+            @include use-media(desktop) {
+                gap: 5rem !important
+            }
         }
     }
 }
