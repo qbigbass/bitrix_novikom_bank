@@ -42,6 +42,8 @@ block content
     include ../cards/card-product
     include ../cards/card-service
     include ../cards/card-service-app
+    include ../cards/card-benefit
+    include ../cards/card-help
 
     section#typography.section-layout
         .container
@@ -334,7 +336,7 @@ block content
                 {
                     title: 'Кредит на любые цели<br> для зарплатных клиентов',
                     description: 'Воплощение задуманных планов и реализация любых целей уже сегодня',
-                    imgSrc: 'large-individual/credit-for-any-purpose-salary-clients.png',
+                    imgSrc: 'big-illustrations/large-individual/credit-for-any-purpose-salary-clients.png',
                     links: [],
                     tagText: '',
                     textButton: 'Оформить заявку',
@@ -368,7 +370,7 @@ block content
                 {
                     title: 'Реструктуризация',
                     description: 'Программы для заемщиков, у которых возникли трудности с погашением кредита',
-                    imgSrc: 'large-individual/restructuring.png',
+                    imgSrc: 'big-illustrations/large-individual/restructuring.png',
                     links: [],
                     tagText: '',
                     conditions: [
@@ -648,6 +650,84 @@ block content
 
                             span.caption-m.dark-70.d-block Подсказка
 
+    section#checkbox.section-layout.pt-0
+        .container
+            .d-flex.flex-column.row-gap-5
+                h2 Checkbox / Radio
+
+                .row
+                    .col-12.col-md-6.col-xl-3
+                        .form-check
+                            input#inp10(type="checkbox" value="").form-check-input
+                            label(for="inp10").form-check-label
+                                | Страхование
+                    .col-12.col-md-6.col-xl-3
+                        .form-check
+                            input#inp11(type="checkbox" value="" checked).form-check-input
+                            label(for="inp11").form-check-label
+                                | Получаю зарплату на&nbsp;карту Новиком
+                    .col-12.col-md-6.col-xl-3
+                        .form-check
+                            input#inp12(type="checkbox" value="" checked).form-check-input
+                            label(for="inp12").form-check-label
+                                a(href="#") Получаю зарплату на&nbsp;карту Новиком
+                    .col-12.col-md-6.col-xl-3
+                        .form-check
+                            input#inp13(type="checkbox" value="" disabled).form-check-input
+                            label(for="inp13").form-check-label
+                                | Страхование
+                .row
+                    .col-12.col-md-6.col-xl-3
+                        .form-check.form-check--size-small
+                            input#inp15(type="checkbox" value="").form-check-input
+                            label(for="inp15").form-check-label
+                                | Страхование
+                    .col-12.col-md-6.col-xl-3
+                        .form-check.form-check--size-small
+                            input#inp16(type="checkbox" value="" checked).form-check-input
+                            label(for="inp16").form-check-label
+                                | Получаю зарплату на&nbsp;карту Новиком
+                    .col-12.col-md-6.col-xl-3
+                        .form-check.form-check--size-small
+                            input#inp17(type="checkbox" value="" checked).form-check-input
+                            label(for="inp17").form-check-label
+                                a(href="#") Получаю зарплату на&nbsp;карту Новиком
+                    .col-12.col-md-6.col-xl-3
+                        .form-check.form-check--size-small
+                            input#inp18(type="checkbox" value="" disabled).form-check-input
+                            label(for="inp18").form-check-label
+                                | Страхование
+                .row
+                    .col-12.col-md-6.col-xl-3
+                        .d-flex.flex-column.row-gap-2
+                            .form-check
+                                input#radio1(type="radio" name="radioGroup1").form-check-input
+                                label(for="radio1").form-check-label
+                                    | Радио по умолчанию
+                            .form-check
+                                input#radio2(type="radio" name="radioGroup1" checked).form-check-input
+                                label(for="radio2").form-check-label
+                                    | Радио выбранное по умолчанию
+                            .form-check
+                                input#radio3(type="radio" name="radioGroup1" disabled).form-check-input
+                                label(for="radio3").form-check-label
+                                    | Радио отключенное
+                    .col-12.col-md-6.col-xl-3
+                        .d-flex.flex-column.row-gap-2
+                            .form-check.form-check--size-small
+                                input#radio10(type="radio" name="radioGroup2").form-check-input
+                                label(for="radio10").form-check-label
+                                    | Радио по умолчанию
+                            .form-check.form-check--size-small
+                                input#radio11(type="radio" name="radioGroup2" checked).form-check-input
+                                label(for="radio11").form-check-label
+                                    | Радио выбранное по умолчанию
+                            .form-check.form-check--size-small
+                                input#radio12(type="radio" name="radioGroup2" disabled).form-check-input
+                                label(for="radio12").form-check-label
+                                    | Радио отключенное
+
+
     section#helper.section-layout.pt-0
         .container
             .d-flex.flex-column.row-gap-5
@@ -736,9 +816,75 @@ block content
                 },
             ]
 
+            var cardBenefitData = {
+                title: 'Защита от мошенников',
+                description: 'Узнайте как уберечь себя и своих близких <br>от финансового мошенничества.',
+                sprite: {
+                    name: 'icon-a-protection',
+                    classList: 'size-md-xxl'
+                },
+                link: '#'
+            }
+
         .container
             h3.px-lg-6.mb-4.mb-md-6.mb-lg-7
-                | Accordion
-            .row
-                .col-12.col-lg-8.pe-lg-6
-                    +accordion(accordionList, 'custom-tabs-accordion')
+                | Additional info (Accordion & Card-benefit)
+            .row.row-gap-6
+                .col-12.col-xxl-8.pe-xxl-6
+                    +accordion(accordionList, 'custom-accordion')
+                .col-12.col-xxl-4
+                    +card-benefit(cardBenefitData)
+
+    section.section-custom-accordion.section-layout.pt-0
+        -
+            var accordionList2 = [
+                {
+                    id: 1,
+                    title: 'Что нужно знать клиентам о продлении срока действия карт?',
+                    content: 'Если есть подозрение, что ПИН-код мог стать доступен третьим лицам, незамедлительно заблокируйте карту. <br>Если ПИН-код не удается вспомнить карту необходимо перевыпустить.',
+                },
+                {
+                    id: 2,
+                    title: 'Взимается ли комиссия за снятие наличных денежных средств в банкоматах, если моя организация – работодатель  является участником зарплатного проекта Банка?',
+                    content: 'Если есть подозрение, что ПИН-код мог стать доступен третьим лицам, незамедлительно заблокируйте карту. <br>Если ПИН-код не удается вспомнить карту необходимо перевыпустить.',
+                },
+                {
+                    id: 3,
+                    title: 'Вместе с основной зарплатной картой мне выдали дополнительную. По каким тарифам она обслуживается?',
+                    content: 'Если есть подозрение, что ПИН-код мог стать доступен третьим лицам, незамедлительно заблокируйте карту. <br>Если ПИН-код не удается вспомнить карту необходимо перевыпустить.',
+                },
+                {
+                    id: 4,
+                    title: 'Что делать, если потерял карту или забыл ПИН-код?',
+                    content: 'Если есть подозрение, что ПИН-код мог стать доступен третьим лицам, незамедлительно заблокируйте карту. <br>Если ПИН-код не удается вспомнить карту необходимо перевыпустить.',
+                },
+                {
+                    id: 5,
+                    title: 'Мою карту заблокировал Банк. Что делать?',
+                    content: 'Если есть подозрение, что ПИН-код мог стать доступен третьим лицам, незамедлительно заблокируйте карту. <br>Если ПИН-код не удается вспомнить карту необходимо перевыпустить.',
+                },
+            ]
+
+            var cardHelpData = {
+                title: 'Остались вопросы?',
+                description: 'Оставьте свой телефон и мы перезвоним вам, либо задайте вопрос в чате',
+                agreementText: 'Нажимая кнопку «Перезвоните мне», вы соглашаетесь с условиями предоставления информации',
+                chatButtonIsVisible: true,
+                sprite: {
+                    name: 'icon-a-protection',
+                    classList: 'size-md-xxl'
+                },
+                link: '#'
+            }
+
+        .container
+            h3.px-lg-6.mb-4.mb-md-6.mb-lg-7
+                | Additional info (Accordion & Card-help)
+            .row.row-gap-6
+                .col-12.col-xxl-8.pe-xxl-6
+                    +accordion(accordionList2, 'custom-accordion-second')
+                    a(href="#").btn.btn-link.btn-lg.d-inline-flex.gap-2.align-items-center.mt-4.mt-md-6.section-custom-accordion__button-more
+                        span.text-m Все вопросы и ответы
+                        +svg-use('icon-chevron-right-small', 'card-product-list__button-icon')
+                .col-12.col-xxl-4
+                    +card-help(cardHelpData)
