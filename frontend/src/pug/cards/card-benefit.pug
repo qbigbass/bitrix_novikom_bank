@@ -7,8 +7,8 @@ mixin card-benefit(data)
                     p.card-benefit__description.text-m.m-0!= data.description
             .card-benefit__read-more.d-flex.align-items-end.justify-content-between
                 if data.sprite
-                .card-benefit__icon
-                    +svg-use(data.sprite.name, "icon green-100 " + data.sprite.classList)
+                    .card-benefit__icon
+                        +svg-use(data.sprite.name, "icon green-100 " + data.sprite.classList)
                 a(href=data.link).card-benefit__read-more-button.text-m.btn.btn-link.btn-lg.d-inline-flex.gap-2.align-items-center
                     span.fw-bold Подробнее
                     
