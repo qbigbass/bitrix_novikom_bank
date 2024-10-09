@@ -1,15 +1,15 @@
 mixin card-product-list(data)
-    .card-product-list.overflow-hidden.position-relative.mh-100.h-auto.bg-dark-10.w-100.py-6.py-sm-9.py-md-11.px-3.px-sm-4.px-md-6
+    .card-product-list.overflow-hidden.position-relative.mh-100.h-auto.bg-dark-10.w-100.py-6.py-sm-9.py-md-11.px-3.px-sm-4.px-md-6.pe-xxl-16
         div.card-product-list__inner.d-flex.flex-column.flex-lg-row.align-items-start.h-100.gap-6.gap-xxl-11
             div.card-product-list__image-container.mx-auto
                 img.card-product-list__image(src=`img/big-illustrations/${data.imgSrc}`, alt="", loading="lazy")
-            div.card-product-list__content.position-relative.z-1.flex-column.d-flex.align-items-start.gap-6.gap-xxl-9
+            div.card-product-list__content.position-relative.z-1.flex-column.d-flex.align-items-start.gap-6.gap-xxl-9.w-100
                 .card-product-list__title-group.d-flex.flex-column.gap-4.gap-lg-6
                     h2.card-product-list__title.text-break!= data.title
                     if data.description
                         span.text-l.card-product-list__description.m-0!= data.description
                 if data.conditions.length > 0
-                    .card-product-list__condition-list.w-100.w-lg-auto.d-flex.justify-content-between.flex-column.flex-sm-row.flex-wrap.row-gap-4.row-gap-sm-6.row-gap-lg-6.gap-lg-12.gap-xxl-16
+                    .card-product-list__condition-list.w-100.w-lg-auto.d-flex.justify-content-between.justify-content-lg-start.flex-column.flex-sm-row.flex-wrap.row-gap-4.row-gap-sm-6.row-gap-lg-6.row-gap-xxl-6.gap-lg-12.gap-xxl-16
                         each item, index in data.conditions
                             .card-product-list__condition.d-flex.flex-column.gap-2.w-100.w-sm-50.w-lg-auto
                                 .d-inline-flex.flex-nowrap.align-items-baseline.gap-1

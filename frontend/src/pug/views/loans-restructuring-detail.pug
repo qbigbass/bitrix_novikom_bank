@@ -27,7 +27,7 @@ block content
         "green",
     )
 
-    section.helper-section.py-6.py-sm-9.py-md-11.py-xl-16
+    section.section-layout
         .container
             .row
                 .col-12
@@ -35,38 +35,53 @@ block content
                         +helper("img/restructuring-additional-info.png", "bg-dark-10")
                             p.mb-0 Основанием для проведения реструктуризации по&nbsp;программе Банка является снижение дохода заемщика (совокупного дохода всех заемщиков), в&nbsp;результате которого среднемесячные выплаты по&nbsp;исполнению обязательств перед Банком превысили&nbsp;60% от&nbsp;текущего ежемесячного дохода заемщика (совокупного дохода всех заемщиков).
 
-    section.restructuring-benefits.py-6.py-sm-9.py-md-11.py-xl-16.position-relative.overflow-hidden
+    section.section-layout.restructuring-benefits
         -
             const allBenefits = [
                 {
-                    spriteName: 'icon-a-date',
+                    spriteData: {
+                        name: 'icon-a-date',
+                        classList: 'size-lxl',
+                    },
                     description: 'Изменение графика платежей по погашению основного долга и/или процентов',
                 },
                 {
-                    spriteName: 'icon-a-calculator',
+                    spriteData: {
+                        name: 'icon-a-calculator',
+                        classList: 'size-lxl',
+                    },
                     description: 'Отсрочка по погашению основного долга на срок не более 12 месяцев',
                 },
                 {
-                    spriteName: 'icon-a-easily',
+                    spriteData: {
+                        name: 'icon-a-easily',
+                        classList: 'size-lxl',
+                    },
                     description: 'Предоставление заемщику кредитных каникул, предусматривающих приостановление исполнения заемщиком своих обязательств по кредитному договору, на срок до 6 месяцев с последующим увеличением срока кредита',
                 },
                 {
-                    spriteName: 'icon-doc',
+                    spriteData: {
+                        name: 'icon-doc',
+                        classList: 'size-lxl',
+                    },
                     description: 'Пролонгация срока возврата кредита (в пределах срока, установленного соответствующей программой кредитования) с одновременным уменьшением размера ежемесячных платежей по кредитному договору',
                 },
                 {
-                    spriteName: 'icon-a-flexibility',
+                    spriteData: {
+                        name: 'icon-a-flexibility',
+                        classList: 'size-lxl',
+                    },
                     description: 'Иные варианты (по согласованию с Банком)',
                 }
             ]
 
         .container
-            .row.mb-6.mb-lg-7
+            .row.mb-6.mb-lg-7.px-lg-6
                 h3= "Возможные варианты реструктуризации"
-            .row.row-gap-6
+            .row.row-gap-6.px-lg-6
                 each item, index in allBenefits
                     .col-12.col-md-6.col-lg-4
-                        +benefit(item.spriteName, '', item.description)
+                        +benefit(item.spriteData, '', item.description)
         +pattern-bg('section', 'light', 'pattern-bg--position-sm-bottom restructuring-benefits__pattern')
 
     section.section-restructuring-steps.bg-dark-10.py-6.py-sm-9.py-md-11.py-xl-16
@@ -90,8 +105,8 @@ block content
             ]
 
         .container
-            .row
-                .h3.d-none.d-md-flex
+            .row.px-lg-6
+                h3.d-none.d-md-flex
                     = "Как реструктуризировать задолженность"
                 a(
                     data-bs-toggle="collapse"
@@ -103,12 +118,12 @@ block content
                     = "Как реструктуризировать задолженность"
                     +svg-use("icon-chevron-down", "icon size-m violet-100")
             #restructuring-steps-content.section-restructuring-steps__wrapper.collapse.d-md-block.mt-6.mt-lg-7
-                .row.row-gap-6
+                .row.row-gap-6.px-lg-6
                     each item, index in allSteps
                         .col-12.col-lg-4
                             +step-item(item, index, allSteps.length - 1)
 
-    section.helper-section.py-6.py-sm-9.py-md-11.py-xl-16.px-lg-5
+    section.section-layout
         .container
             .row
                 .col-12

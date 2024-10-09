@@ -1,0 +1,350 @@
+-
+    const tabsList = [
+        {
+            link: '#1',
+            linkText: 'Все программы',
+        },
+        {
+            link: '#2',
+            linkText: 'Первичный рынок',
+        },
+        {
+            link: '#3',
+            linkText: 'IT-ипотека',
+        },
+        {
+            link: '#4',
+            linkText: 'Дальневосточная ипотека',
+        },
+        {
+            link: '#5',
+            linkText: 'Вторичный рынок',
+        },
+        {
+            link: '#6',
+            linkText: 'Семейная ипотека',
+        },
+        {
+            link: '#7',
+            linkText: 'Рефинансирование',
+        },
+    ]
+
+    const primaryMarketMortgages = [
+        {
+            title: 'Первичный рынок',
+            description: '',
+            imgSrc: 'large-individual/mortgage-primary-market.png',
+            links: [],
+            tagText: '',
+            textButton: 'Оформить заявку',
+            conditions: [
+                {
+                    startText: '',
+                    beforeText: 'до',
+                    text: '30 000 000',
+                    afterText: '',
+                    currency: '₽',
+                    description: 'Сумма'
+                },
+                {
+                    startText: '',
+                    beforeText: 'от',
+                    text: '16,3%',
+                    afterText: '',
+                    currency: '',
+                    description: 'Процентная ставка'
+                },
+                {
+                    startText: '',
+                    beforeText: '',
+                    text: '17,290 - 20,615%',
+                    afterText: '',
+                    currency: '',
+                    description: 'Диапазон полной стоимости кредита'
+                }
+            ]
+        }
+    ]
+
+    const itMortgages = [
+        {
+            title: 'IT-ипотека',
+            description: '',
+            imgSrc: 'large-individual/it-mortgage.png',
+            links: [],
+            tagText: '',
+            textButton: 'Оформить заявку',
+            conditions: [
+                {
+                    startText: '',
+                    beforeText: 'до',
+                    text: '18 000 000',
+                    afterText: '',
+                    currency: '₽',
+                    description: 'Сумма'
+                },
+                {
+                    startText: '',
+                    beforeText: 'от',
+                    text: '4,8%',
+                    afterText: '',
+                    currency: '',
+                    description: 'Процентная ставка'
+                },
+                {
+                    startText: '',
+                    beforeText: '',
+                    text: '4,993 - 7,186%',
+                    afterText: '',
+                    currency: '',
+                    description: 'Диапазон полной стоимости кредита'
+                }
+            ]
+        }
+    ]
+
+    const farEasternMortgages = [
+        {
+            title: 'Дальневосточная ипотека',
+            description: '',
+            imgSrc: 'large-individual/far-eastern-mortgage.png',
+            links: [],
+            tagText: '',
+            textButton: 'Оформить заявку',
+            conditions: [
+                {
+                    startText: '',
+                    beforeText: 'до',
+                    text: '6 000 000',
+                    afterText: '',
+                    currency: '₽',
+                    description: 'Сумма'
+                },
+                {
+                    startText: '',
+                    beforeText: 'от',
+                    text: '1,4%',
+                    afterText: '',
+                    currency: '',
+                    description: 'Процентная ставка'
+                },
+                {
+                    startText: '',
+                    beforeText: '',
+                    text: '2,396 - 4,167%',
+                    afterText: '',
+                    currency: '',
+                    description: 'Диапазон полной стоимости кредита'
+                }
+            ]
+        }
+    ]
+
+    const secondaryMarketMortgages = [
+        {
+            title: 'Вторичный рынок',
+            description: '',
+            imgSrc: 'large-individual/mortgage-secondary-market.png',
+            links: [],
+            tagText: '',
+            textButton: 'Оформить заявку',
+            conditions: [
+                {
+                    startText: '',
+                    beforeText: 'до',
+                    text: '30 000 000',
+                    afterText: '',
+                    currency: '₽',
+                    description: 'Сумма'
+                },
+                {
+                    startText: '',
+                    beforeText: 'от',
+                    text: '16,3%',
+                    afterText: '',
+                    currency: '',
+                    description: 'Процентная ставка'
+                },
+                {
+                    startText: '',
+                    beforeText: '',
+                    text: '17,290 - 23,801%',
+                    afterText: '',
+                    currency: '',
+                    description: 'Диапазон полной стоимости кредита'
+                }
+            ]
+        }
+    ]
+
+    const familyMortgages = [
+        {
+            title: 'Семейная ипотека',
+            description: '',
+            imgSrc: 'large-individual/family-mortgage.png',
+            links: [],
+            tagText: '',
+            textButton: 'Оформить заявку',
+            conditions: [
+                {
+                    startText: '',
+                    beforeText: 'до',
+                    text: '12 000 000',
+                    afterText: '',
+                    currency: '₽',
+                    description: 'Сумма'
+                },
+                {
+                    startText: '',
+                    beforeText: 'от',
+                    text: '4,8%',
+                    afterText: '',
+                    currency: '',
+                    description: 'Процентная ставка'
+                },
+                {
+                    startText: '',
+                    beforeText: '',
+                    text: '5,204 - 8,485%',
+                    afterText: '',
+                    currency: '',
+                    description: 'Диапазон полной стоимости кредита'
+                }
+            ]
+        },
+    ]
+
+    const refinancingMortgages = [
+        {
+            title: 'Рефинансирование ипотеки <br>стороннего банка',
+            description: '',
+            imgSrc: 'large-individual/refinancing.png',
+            links: [],
+            tagText: '',
+            textButton: 'Оформить заявку',
+            conditions: [
+                {
+                    startText: '',
+                    beforeText: 'до',
+                    text: '30 000 000',
+                    afterText: '',
+                    currency: '₽',
+                    description: 'Сумма'
+                },
+                {
+                    startText: '',
+                    beforeText: 'от',
+                    text: '16,3%',
+                    afterText: '',
+                    currency: '',
+                    description: 'Процентная ставка'
+                },
+                {
+                    startText: '',
+                    beforeText: '',
+                    text: '17,290 - 21,831%',
+                    afterText: '',
+                    currency: '',
+                    description: 'Диапазон полной стоимости кредита'
+                }
+            ]
+        },
+        {
+            title: 'Ипотека на новостройки в ЖК ALIA',
+            description: '',
+            imgSrc: 'large-individual/mortgage-for-new-buildings-ALIA.png',
+            links: [],
+            tagText: '',
+            textButton: 'Оформить заявку',
+            conditions: [
+                {
+                    startText: '',
+                    beforeText: 'до',
+                    text: '50 млн',
+                    afterText: '',
+                    currency: '₽',
+                    description: 'Сумма'
+                },
+                {
+                    startText: '',
+                    beforeText: 'от',
+                    text: '16,3%',
+                    afterText: '',
+                    currency: '',
+                    description: 'Процентная ставка'
+                },
+                {
+                    startText: '',
+                    beforeText: '',
+                    text: '17,290 – 20,615%',
+                    afterText: '',
+                    currency: '',
+                    description: 'Диапазон полной стоимости кредита'
+                }
+            ]
+        },
+        {
+            title: 'Целевой кредит под залог имеющейся недвижимости',
+            description: '',
+            imgSrc: 'large-individual/secured-by-existing-real-estate.png',
+            links: [],
+            tagText: '',
+            textButton: 'Оформить заявку',
+            conditions: [
+                {
+                    startText: '',
+                    beforeText: 'до',
+                    text: '15 000 000',
+                    afterText: '',
+                    currency: '₽',
+                    description: 'Сумма'
+                },
+                {
+                    startText: '',
+                    beforeText: 'от',
+                    text: '21,4%',
+                    afterText: '',
+                    currency: '',
+                    description: 'Процентная ставка'
+                },
+                {
+                    startText: '',
+                    beforeText: '',
+                    text: '22,395 - 28,301%',
+                    afterText: '',
+                    currency: '',
+                    description: 'Диапазон полной стоимости кредита'
+                }
+            ]
+        }
+    ]
+
+    const allMortgages = [
+        ...primaryMarketMortgages,
+        ...itMortgages,
+        ...farEasternMortgages,
+        ...secondaryMarketMortgages,
+        ...familyMortgages,
+        ...refinancingMortgages
+    ]
+
+include ../../cards/card-product-list
+include ../../components/ui/tabs
+
+section.mortgages-catalog__tabs
+        .container
+            .row
+                .col-12
+                    +tabs(
+                        tabsList,
+                        "mortgages-catalog__tab-list",
+                        "mortgages-catalog__tab-list-item"
+                    )
+
+section.mortgages-catalog__list
+        .container
+            .row
+                .col-12.position-relative.z-1.d-flex.flex-column.align-items-start.gap-5.gap-md-7
+                    each item in allMortgages
+                        +card-product-list(item)
