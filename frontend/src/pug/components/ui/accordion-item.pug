@@ -1,0 +1,7 @@
+mixin accordion-item(data, parentId)
+    .accordion-item
+        .accordion-header
+            button.accordion-button(type="button", class= data.isOpen ? '' : 'collapsed', data-bs-toggle="collapse", data-bs-target= `#${data.id}`, aria-expanded= !!data.isOpen, aria-controls= data.id)!= data.title
+        .accordion-collapse.collapse(id= data.id, class= data.isOpen ? 'show' : '', data-bs-parent= `#${parentId}`)
+            .accordion-body
+                block

@@ -1,7 +1,38 @@
-.custom-accordion {
-
-    &__item  {
-        --bs-accordion-active-color: var(--blue-100);
+.accordion {
+    & .accordion-item {
+        border-top: none;
+        border-left: none;
+        border-right: none;
         border-bottom: var(--blue-30) dashed $accordion-border-width;
+    }
+
+    & .accordion-button {
+        gap: 1rem;
+
+        @include use-media(tablet) {
+            font-size: 1.125rem;
+            line-height: 1.45;
+        }
+
+        @include use-media(tablet-album) {
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+            font-size: 1.25rem;
+            line-height: 1.4;
+        }
+
+        &:not(.collapsed) {
+            color: var(--blue-100);
+            background-color: transparent;
+            box-shadow: none;
+        }
+    }
+
+    & .accordion-body {
+        padding: .5rem 0 1rem 1rem;
+
+        @include use-media(tablet-album) {
+            padding: 0 0 1.5rem 1.5rem;
+        }
     }
 }

@@ -53,7 +53,7 @@ block content
             `<ul class="fw-semibold text-l list list--size-l"> <li>Заявление - анкета на получение кредита;</li> <li>Документ, удостоверяющий личность;</li> <li>Военный билет/ документ, подтверждающий отсрочку от военной службы на весь период призывного возраста - для мужчин младше 30 лет.</li> <li class="d-flex flex-wrap"> <span class="w-85 w-md-90">Документ, подтверждающий финансовое состояние заемщика/созаемщика/поручителя за последние 12 месяцев или за фактическое количество отработанных месяцев с учетом требований к стажу на последнем месте работы¹ (на выбор):</span> <ul class="fw-normal list list--base-bullets"> <li>выписка со счета зарплатной карты Банка (формируется работником Банка);</li> <li>справка о доходах и суммах налога физического лица, предоставленная организацией – работодателем, оформленная в соответствии с требованиями Федеральной налоговой службы Российской Федерации;</li> </ul> </li> <li class="d-flex flex-wrap"> <span class="w-85 w-md-90">Дополнительно при учете доходов пенсионного характера (на выбор):</span> <ul class="fw-normal list list--base-bullets"> <li>справка о размере назначенной/выплаченной за последний месяц пенсии из отделения Социального фонда РФ и/или другого государственного органа, выплачивающего пенсию, по используемым ими формам (при учете пенсии для работающих пенсионеров). Справка может быть выдана многофункциональным центром предоставления государственных и муниципальных услуг в форме экземпляра электронного документа на бумажном носителе или выписки из информационной системы органов, предоставляющих услуги, на бумажном носителе;</li> <li>выписка со счета, на который осуществляется перечисление пенсии в сторонних банках, и пенсионное удостоверение. Выписка по счету, на который осуществляется перечисление пенсии в сторонних банках, должна содержать информацию об адресе (местонахождении) кредитной организации, телефоне кредитной организации, должности и ФИО лица, подготовившего и подписавшего выписку (за исключением выписок, сформированных с использованием систем онлайн и (или) мобильного банкинга).</li> </ul> </li> <li class="d-flex flex-wrap"> <span class="w-85 w-md-90">Дополнительно при учете доходов от работы по совместительству:</span> <ul class="fw-normal list list--base-bullets"> <li>справка о доходах и суммах налога физического лица за последние 12 месяцев или за фактическое количество отработанных месяцев, оформленная в соответствии с требованиями Федеральной налоговой службы Российской Федерации, или справка по форме Банка, подписанная руководителем организации и главным бухгалтером (при его наличии) с печатью и основными реквизитами организации;</li> <li>оригинал или копия трудового контракта/договора, постранично заверенная/прошитая и заверенная на последней странице с указанием количества листов работодателем.</li> </ul> </li> </ul>`
         ]
 
-        const additionalTabsList = [
+        var additionalTabsList = [
             {
                 linkText: "Необходимые документы",
                 link: "#1",
@@ -92,7 +92,7 @@ block content
     include ../components/banners/text-banner
     include ../components/banners/info-product-banner
     include ../components/ui/tabs
-    include ../components/tabs-with-content
+    include ../components/ui/tabs-simple
     include ../components/helper
 
     +text-banner(
@@ -106,7 +106,7 @@ block content
         "img/big-illustrations/large-individual/restructuring.png"
     )
 
-    section.restructuring-ramification.d-flex.flex-column.gap-7.py-6.py-sm-9.py-md-11.bg-dark-10
+    section.restructuring-ramification.section-layout.d-flex.flex-column.gap-7.bg-dark-10
         .container
             h3.px-lg-6.mb-4.mb-md-6.mb-lg-7
                 | Варианты реструктуризации
@@ -134,11 +134,11 @@ block content
         "#"
     )
 
-    section.section-additional-info.py-6.py-sm-9.py-md-11.py-xl-16
+    section.section-layout.js-collapsed-mobile
         .container
-            .h3.d-none.dark-100.d-md-flex.px-lg-6.mb-4.mb-md-6.mb-lg-7
+            h3.d-none.d-md-flex.mb-4.mb-md-6.mb-lg-7.px-lg-6
                 | Подробнее
-            a.px-lg-6(
+            a(
                 data-bs-toggle="collapse"
                 href="#additional-info-content"
                 role="button"
@@ -147,16 +147,19 @@ block content
             ).h3.d-flex.align-items-center.justify-content-between.dark-100.d-md-none
                 | Подробнее
                 +svg-use("icon-chevron-down", "icon size-m violet-100")
-            #additional-info-content.section-additional-info__wrapper.collapse.d-md-block.mt-4.mt-md-6.mt-lg-7
-                .row
+            #additional-info-content.collapse.d-md-block.mt-4.mt-md-6.mt-lg-7
+                .row.px-lg-6
                     .col-12
-                        +tabs-with-content(
-                            additionalTabsList,
-                            "section-additional-info__tab-list",
-                            "section-additional-info__tab-list-item",
-                            false,
-                            'section-additional-info-tabs'
-                        )
+                        +tabs-simple(additionalTabsList, false)
+                        .tab-content.mt-4.mt-md-6.mt-lg-7
+                            #additional-info-1.tab-pane.fade.show.active(aria-labelledby="additional-info-1" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/necessary-documents
+                            #additional-info-2.tab-pane.fade(aria-labelledby="additional-info-2" tabindex="0" role="tabpanel")
+                                p Требования
+                            #additional-info-3.tab-pane.fade(aria-labelledby="additional-info-3" tabindex="0" role="tabpanel")
+                                p Тарифы и документы
+                            #additional-info-4.tab-pane.fade(aria-labelledby="additional-info-4" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/faq
 
     include ../includes/layout/section-restructuring-steps
 

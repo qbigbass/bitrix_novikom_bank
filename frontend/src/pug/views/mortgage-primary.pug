@@ -1,7 +1,7 @@
 extends ../templates/base
 
 block title
-    title= 'Кредиты - Кредит на любые цели'
+    title= 'Ипотека - Первичный рынок'
     meta(name="description" content="Описание страницы с кредитами")
 block content
 
@@ -25,24 +25,16 @@ block content
                     name: 'icon-a-date',
                     classList: 'size-xl'
                 },
-                title: 'От&nbsp;2&nbsp;до&nbsp;7&nbsp;рабочих дней',
-                description: 'Срок рассмотрения кредитной заявки',
+                title: 'Работники организаций',
+                description: 'Информация о&nbsp;принадлежности организации-работодателя к&nbsp;перечню стратегических партнеров Банка доводится до&nbsp;работников персональным менеджером в&nbsp;рамках услуги &laquo;Банк на&nbsp;работе&raquo; или по&nbsp;телефону&nbsp;8&nbsp;(800)&nbsp;250-70-07',
             },
             {
                 spriteName: {
-                    name: 'icon-a-money',
+                    name: 'icon-a-date',
                     classList: 'size-xl'
                 },
-                title: 'От&nbsp;20&nbsp;000 <span class="currency">₽</span>',
-                description: 'Минимальная сумма кредита',
-            },
-            {
-                spriteName: {
-                    name: 'icon-a-low-percent',
-                    classList: 'size-xl'
-                },
-                title: 'Льготная ставка',
-                description: 'Для заемщиков, получающих заработную плату на&nbsp;карту Банка',
+                title: 'Держатели зарплатных карт',
+                description: 'Под зарплатной картой понимается действующая банковская карта, выпущенная на&nbsp;имя заемщика в&nbsp;рамках договора о&nbsp;зарплатном обслуживании, заключенного между Банком и&nbsp;организацией&nbsp;&mdash; работодателем клиента',
             },
         ]
 
@@ -54,27 +46,45 @@ block content
                 isActive: true
             },
             {
-                link: '#loan-conditions',
-                id: 'loan-conditions',
+                link: '#mortgage-conditions',
+                id: 'mortgage-conditions',
                 linkText: 'Условия',
+                isActive: false
+            },
+            {
+                link: '#rates',
+                id: 'rates',
+                linkText: 'Ставки',
                 isActive: false
             },
             {
                 link: '#requirements',
                 id: 'requirements',
-                linkText: 'Требования к заемщику',
-                isActive: false
-            },
-            {
-                link: '#loan-repayment',
-                id: 'loan-repayment',
-                linkText: 'Погашение кредита',
+                linkText: 'Требования',
                 isActive: false
             },
             {
                 link: '#documents',
                 id: 'documents',
-                linkText: 'Необходимые документы',
+                linkText: 'Документы',
+                isActive: false
+            },
+            {
+                link: '#insurance',
+                id: 'insurance',
+                linkText: 'Страхование',
+                isActive: false
+            },
+            {
+                link: '#real-estate',
+                id: 'real-estate',
+                linkText: 'Оценка недвижимости',
+                isActive: false
+            },
+            {
+                link: '#procedure',
+                id: 'procedure',
+                linkText: 'Порядок погашения',
                 isActive: false
             },
             {
@@ -87,28 +97,28 @@ block content
 
     +banner-product(
         {
-            title: "Кредит на&nbsp;любые цели для&nbsp;зарплатных клиентов",
-            subtitle: "Воплощение задуманных планов и реализация любых целей уже сегодня!",
-            imgSrc: "img/big-illustrations/large-individual/credit-for-any-purpose-salary-clients.png",
+            title: "Ипотека по&nbsp;программе &laquo;Первичный рынок&raquo;",
+            subtitle: "Начисление зарплаты на&nbsp;карту Новикома",
+            imgSrc: "img/big-illustrations/large-individual/mortgage-primary-market.png",
             bgColor: "heavy-violet",
             urlHref: "#",
-            buttonText: "Оформить карту",
+            buttonText: "Оформить заявку",
             benefits: [
                 {
                     beforeNum: 'от',
-                    num: '16,5%',
+                    num: '7,4%',
                     description: 'Минимальная ставка'
                 },
                 {
                     beforeNum: 'до',
-                    num: '5 000 000',
+                    num: '30 000 000',
                     currency: '₽',
-                    description: 'Максимальная сумма кредита'
+                    description: 'Максимальная сумма'
                 },
                 {
                     beforeNum: 'до',
-                    num: '5 лет',
-                    description: 'Максимальный срок выплаты'
+                    num: '30 лет',
+                    description: 'Срок выплаты'
                 }
             ],
             breadcrumbsArray: [
@@ -118,7 +128,7 @@ block content
                 },
                 {
                     link: "#",
-                    linkText: "Кредиты для зарплатных клиентов"
+                    linkText: "Ипотека"
                 }
             ],
         }
@@ -128,52 +138,49 @@ block content
     section.section-layout
         .container
             .row.mb-6.mb-lg-7.px-lg-6
-                h3 Условия для&nbsp;зарплатных клиентов
+                h3 Могут участвовать
             .row.row-gap-6.px-lg-6
                 each item, index in allBenefits
-                    .col-12.col-md-6.col-lg-4
+                    .col-12.col-md-6
                         +benefit(item.spriteName, item.title, item.description)
         +pattern-bg('section', 'light', 'pattern-bg--position-sm-bottom')
-
-    section.section-layout.pt-0.pb-xxl-11
-        .container
-            .row
-                .col-12
-                    +polygon-container()
-                        +helper("img/restructuring-additional-info.png", "bg-dark-10")
-                            h4.mb-3 Для держателей зарплатных карт Банка
-                            p.mb-0 Под зарплатной картой понимается действующая банковская карта, выпущенная на&nbsp;имя заемщика в&nbsp;рамках договора о&nbsp;зарплатном обслуживании, заключенного между Банком и&nbsp;организацией&nbsp;&mdash; работодателем клиента
 
     section.section-layout.js-collapsed-mobile
         .container
             h3.d-none.d-md-block.mb-md-6.mb-lg-7.px-lg-6
-                | Условия кредитования
+                | Подробнее
             a(
                 data-bs-toggle="collapse"
-                href="#conditions"
+                href="#more-info"
                 role="button"
                 aria-expanded="false"
-                aria-controls="conditions"
+                aria-controls="more-info"
             ).h3.d-flex.align-items-center.justify-content-between.dark-100.d-md-none
-                | Условия кредитования
+                | Подробнее
                 +svg-use("icon-chevron-down", "icon size-m violet-100")
-            #conditions.collapse.d-md-block.mt-4.mt-md-6.mt-lg-7
+            #more-info.collapse.d-md-block.mt-4.mt-md-6.mt-lg-7
                 .row.px-lg-6
                     .col-12
                         +tabs-simple(tabsList, false)
                         .tab-content.mt-4.mt-md-6.mt-lg-7
                             #calculator.tab-pane.fade.show.active(aria-labelledby="calculator" tabindex="0" role="tabpanel")
-                                include ../includes/layout/loan-tabs/tab-calculator
-                            #loan-conditions.tab-pane.fade(aria-labelledby="loan-conditions" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/mortgage-calculator
+                            #mortgage-conditions.tab-pane.fade(aria-labelledby="mortgage-conditions" tabindex="0" role="tabpanel")
+                                include ../includes/layout/loan-tabs/tab-conditions
+                            #rates.tab-pane.fade(aria-labelledby="rates" tabindex="0" role="tabpanel")
                                 include ../includes/layout/loan-tabs/tab-conditions
                             #requirements.tab-pane.fade(aria-labelledby="requirements" tabindex="0" role="tabpanel")
-                                p Требования к заемщику
-                            #loan-repayment.tab-pane.fade(aria-labelledby="loan-repayment" tabindex="0" role="tabpanel")
-                                p Погашение кредита
+                                p Требования
                             #documents.tab-pane.fade(aria-labelledby="documents" tabindex="0" role="tabpanel")
                                 include ../includes/layout/tabs/necessary-documents
+                            #insurance.tab-pane.fade(aria-labelledby="insurance" tabindex="0" role="tabpanel")
+                                p Страхование
+                            #real-estate.tab-pane.fade(aria-labelledby="real-estate" tabindex="0" role="tabpanel")
+                                p Оценка недвижимости
+                            #procedure.tab-pane.fade(aria-labelledby="procedure" tabindex="0" role="tabpanel")
+                                p Порядок погашения
                             #faq.tab-pane.fade(aria-labelledby="faq" tabindex="0" role="tabpanel")
-                                include ../includes/layout/tabs/faq
+                                p Вопросы и ответы
         +pattern-bg('section-2', 'light', 'pattern-bg--hide-mobile')
 
 

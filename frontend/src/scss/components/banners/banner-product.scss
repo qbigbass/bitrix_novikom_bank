@@ -9,7 +9,7 @@ $bannerHeight: 37.5rem; //600px
     overflow: hidden;
     position: relative;
 
-    @include use-media(tablet-album) {
+    @include use-media(laptop) {
         height: calc($bannerHeight + $borderWidth);
         overflow: hidden;
     }
@@ -55,8 +55,8 @@ $bannerHeight: 37.5rem; //600px
             padding-left: 2.5rem;
         }
 
-        @include use-media(laptop-x) {
-            max-width: 50rem; //800px
+        @include use-media(laptop) {
+            max-width: 52rem; //832px
         }
 
         @include use-media(desktop) {

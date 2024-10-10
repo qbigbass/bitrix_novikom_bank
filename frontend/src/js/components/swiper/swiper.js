@@ -290,7 +290,8 @@ export function initTabsSlider() {
         slidesPerView: "auto",
         loop: false,
         freeMode: true,
-        pagination: false, 
+        pagination: false,
+        slideToClickedSlide: true,
         modules: [Navigation],
         navigation: {
             prevEl: ".js-tabs-slider-navigation-prev",

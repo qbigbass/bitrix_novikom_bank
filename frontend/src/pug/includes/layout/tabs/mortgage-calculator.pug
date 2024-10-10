@@ -7,9 +7,14 @@
             },
             {
                 title: 'Ежемесячный платеж',
-                value: '35 404,38',
+                value: '24 404,38',
                 currency: true,
                 link: 'График платежей'
+            },
+            {
+                title: 'Необходимый ежемесячный доход, от',
+                value: '35 404,38',
+                currency: true
             },
             {
                 title: 'Диапазон полной стоимости кредита',
@@ -39,7 +44,27 @@
             startValue: 36,
             type: "month",
             editable: true
-        }
+        },
+        {
+            label: 'Стоимость недвижимости',
+            id: 'property-value',
+            maxValue: 5000000,
+            minValue: 20000,
+            startValue: 3534321,
+            stepSize: 10000,
+            type: "price",
+            editable: true
+        },
+        {
+            label: 'Первоначальный взнос',
+            id: 'down-payment',
+            maxValue: 3000000,
+            minValue: 20000,
+            startValue: 120000,
+            stepSize: 10000,
+            type: "price",
+            editable: true
+        },
     ]
 
 include ../../../components/ui/input/input-slider
@@ -52,6 +77,34 @@ include ../../../cards/card-calculate-result
                 each input in inputSliderList
                     +input-slider(input)
 
+                .d-flex.flex-column.row-gap-4.row-gap-lg-6
+                    .d-flex.flex-column.row-gap-2
+                        label(for="select1").form-label.mb-0
+                            | Регион
+                        select#select1(aria-label="Подсказка").form-select.js-select
+                            option(selected value="1") Дальневосточный федеральный округ
+                            option(value="2") Список 2
+                            option(value="3") Список 3
+                            option(value="4") Список 4
+
+                    .d-flex.flex-column.row-gap-2
+                        label(for="select2").form-label.mb-0
+                            | Программа кредитования
+                        select#select2(aria-label="Подсказка").form-select.js-select
+                            option(selected value="1") Ипотека по программе «Первичный рынок»
+                            option(value="2") Список 2
+                            option(value="3") Список 3
+                            option(value="4") Список 4
+
+                    .d-flex.flex-column.row-gap-2
+                        label(for="select2").form-label.mb-0
+                            | Объект залога
+                        select#select3(aria-label="Подсказка").form-select.js-select
+                            option(selected value="1") Квартира
+                            option(value="2") Список 2
+                            option(value="3") Список 3
+                            option(value="4") Список 4
+
                 .d-flex.flex-column.row-gap-4
                     .form-check
                         input#inp1(type="checkbox" value="" checked).form-check-input
@@ -62,25 +115,6 @@ include ../../../cards/card-calculate-result
                         input#inp2(type="checkbox" value="").form-check-input
                         label(for="inp2").form-check-label
                             | Страхование
-                .d-flex.flex-column.row-gap-4.row-gap-lg-6
-                    .d-flex.flex-column.row-gap-2
-                        label(for="select1").form-label.mb-0
-                            | Особенности
-                        select#select1(aria-label="Подсказка").form-select.js-select
-                            option(selected value="1") С поручительством физического лица
-                            option(value="2") Без поручительством физического лица
-                            option(value="3") Список 3
-                            option(value="4") Список 4
-
-                    .d-flex.flex-column.row-gap-2
-                        label(for="select2").form-label.mb-0
-                            | Тип платежей
-                        select#select2(aria-label="Подсказка").form-select.js-select
-                            option(selected value="1") Аннуитетные
-                            option(value="2") Список 2
-                            option(value="3") Список 3
-                            option(value="4") Список 4
-
 
     .col-12.col-lg-6.mt-4.mt-md-6.mt-lg-0
         .ps-xxl-6
