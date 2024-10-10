@@ -1,0 +1,102 @@
+extends ../templates/base
+
+block title
+    title= 'Частные клиенты - Вклады'
+    meta(name="description" content="Описание страницы с вкладами")
+block content
+    -
+        var additionalTabsList = [
+            {
+                linkText: "Документы и тарифы",
+                link: "#1",
+                id: "additional-info-1",
+            },
+            {
+                linkText: "Возмещения по вкладам",
+                link: "#2",
+                id: "additional-info-2",
+            },
+            {
+                linkText: "Возмещения по вкладам",
+                link: "#3",
+                id: "additional-info-3",
+            },
+            {
+                linkText: "Налог на доход",
+                link: "#4",
+                id: "additional-info-4",
+            },
+            {
+                linkText: "Вопросы и ответы",
+                link: "#5",
+                id: "additional-info-5",
+            },
+            {
+                linkText: "Архив",
+                link: "#6",
+                id: "additional-info-6",
+            },
+        ]
+
+    include ../cards/card-product
+    include ../includes/header/header
+    include ../components/banners/text-banner
+    include ../components/banners/info-product-banner-alternative
+    include ../components/ui/tabs
+    include ../components/ui/tabs-simple
+
+    +text-banner(
+        "Вклады Новикома",
+        [
+            {linkText: "Частным клиентам", link: "/"}
+        ],
+        "Сохранение и приумножение накоплений",
+        "green"
+    )
+
+    section.section-catalog.d-flex.flex-column.gap-7.py-6.py-sm-9.py-md-11
+        include ../includes/layout/section-contributions-catalog
+
+    section.section-layout.js-collapsed-mobile
+        .container
+            h3.d-none.d-md-flex.mb-4.mb-md-6.mb-lg-7.px-lg-6
+                | Подробнее о вкладах
+            a(
+                data-bs-toggle="collapse"
+                href="#additional-info-content"
+                role="button"
+                aria-expanded="false"
+                aria-controls="additional-info-content"
+            ).h3.d-flex.align-items-center.justify-content-between.dark-100.d-md-none
+                | Подробнее
+                +svg-use("icon-chevron-down", "icon size-m violet-100")
+            #additional-info-content.collapse.d-md-block.mt-4.mt-md-6.mt-lg-7
+                .row.px-lg-6
+                    .col-12
+                        +tabs-simple(additionalTabsList, false)
+                        .tab-content.mt-4.mt-md-6.mt-lg-7
+                            #additional-info-1.tab-pane.fade.show.active(aria-labelledby="additional-info-1" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/contributions-documents
+                            #additional-info-2.tab-pane.fade(aria-labelledby="additional-info-2" tabindex="0" role="tabpanel")
+                                p Возмещения по вкладам
+                            #additional-info-3.tab-pane.fade(aria-labelledby="additional-info-3" tabindex="0" role="tabpanel")
+                                p Страхование вкладов
+                            #additional-info-4.tab-pane.fade(aria-labelledby="additional-info-4" tabindex="0" role="tabpanel")
+                                p Налог на доход
+                            #additional-info-5.tab-pane.fade(aria-labelledby="additional-info-5" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/faq
+                            #additional-info-6.tab-pane.fade(aria-labelledby="additional-info-6" tabindex="0" role="tabpanel")
+                                p Архив
+        +pattern-bg('section-2', 'light', 'pattern-bg--hide-mobile')
+
+
+    +info-product-banner-alternative("Вклады застрахованы", "img/footer-insurance.png")
+        p.m-0!= "Страхование вкладов осуществляется согласно Федеральному закону «О страховании вкладов в банках Российской Федерации» от 23.12.2003 № 177-ФЗ. АО АКБ «НОВИКОМ» является участником государственной системы обязательного страхования вкладов с 2 декабря 2004 года. Банк включен в реестр банков – участников системы обязательного страхования вкладов под номером 254."
+        p.m-0!= "С полным перечнем вопросов и ответов по страхованию вкладов физических лиц можно ознакомиться на сайте Агентства по страхованию вкладов в сети Интернет - "
+            a(href="https://www.asv.org.ru", target="_blank")!= "www.asv.org.ru."
+
+    section.section-layout
+        .container
+            h3.px-lg-6.mb-4.mb-md-6.mb-lg-7
+                | Смотрите также
+            include ../includes/layout/slider-card-product
