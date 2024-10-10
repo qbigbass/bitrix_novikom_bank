@@ -47,19 +47,20 @@
 
 include ../../cards/card-product
 
-.swiper.slider-cards.js-slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:2,laptop:2,laptop-x:3" data-space-between="mobile-s:8,mobile:8,tablet:16,laptop:16,laptop-x:40")
-    .swiper-wrapper
-        each item in cardProductList
-            .swiper-slide.js-swiper-slide
-                +card-product(item)
+mixin slider-card-product(data = cardProductList)
+    .swiper.slider-cards.js-slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:2,laptop:2,laptop-x:3" data-space-between="mobile-s:8,mobile:8,tablet:16,laptop:16,laptop-x:40")
+        .swiper-wrapper
+            each item in data
+                .swiper-slide.js-swiper-slide
+                    +card-product(item)
 
-    .slider-controls.js-swiper-controls.mt-3.mt-md-4
-        div.slider-controls__pagination.js-swiper-pagination
-        div.slider-controls__navigation.js-swiper-nav
-            button.swiper-button-prev.js-swiper-prev(type="button")
-                span.icon.size-m
-                    +svg-use("icon-chevron-left")
+        .slider-controls.js-swiper-controls.mt-3.mt-md-4
+            div.slider-controls__pagination.js-swiper-pagination
+            div.slider-controls__navigation.js-swiper-nav
+                button.swiper-button-prev.js-swiper-prev(type="button")
+                    span.icon.size-m
+                        +svg-use("icon-chevron-left")
 
-            button.swiper-button-next.js-swiper-next(type="button")
-                span.icon.size-m
-                    +svg-use("icon-chevron-right")
+                button.swiper-button-next.js-swiper-next(type="button")
+                    span.icon.size-m
+                        +svg-use("icon-chevron-right")

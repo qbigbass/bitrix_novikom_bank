@@ -92,6 +92,7 @@ block content
     include ../components/ui/tabs
     include ../components/ui/tabs-simple
     include ../components/helper
+    include ../includes/layout/slider-card-product
 
     +text-banner(
         "Реструктуризация",
@@ -167,4 +168,4 @@ block content
         .container
             h3.px-lg-6.mb-4.mb-md-6.mb-lg-7
                 | Смотрите также
-            include ../includes/layout/slider-card-product
+            +slider-card-product()
