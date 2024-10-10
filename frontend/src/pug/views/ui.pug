@@ -34,7 +34,7 @@ block content
 
     include ../components/document-download
     include ../components/ui/tabs
-    include ../components/ui/accordion
+    include ../components/ui/accordion-item
     include ../components/helper
     include ../components/banners/info-product-banner
     include ../cards/card-text
@@ -793,6 +793,7 @@ block content
                     title: 'Тарифы для физических лиц',
                     content: 'Тарифы для физических лиц, действующие во всех регионах присутствия Банка.',
                     linkList: linkDownloadList,
+                    isOpen: true
                 },
                 {
                     id: 2,
@@ -831,7 +832,15 @@ block content
                 | Additional info (Accordion & Card-benefit)
             .row.row-gap-6
                 .col-12.col-xxl-8.pe-xxl-6
-                    +accordion(accordionList, 'custom-accordion')
+                    .accordion#accordion-example-1
+                        each item in accordionList
+                            +accordion-item(item, 'accordion-example-1')
+                                p.text-m.mb-0.dark-70!= item.content
+                                if item.linkList
+                                    .mt-4
+                                        each link in item.linkList
+                                            +document-download(link)
+
                 .col-12.col-xxl-4
                     +card-benefit(cardBenefitData)
 
@@ -839,27 +848,28 @@ block content
         -
             var accordionList2 = [
                 {
-                    id: 1,
+                    id: 11,
                     title: 'Что нужно знать клиентам о продлении срока действия карт?',
                     content: 'Если есть подозрение, что ПИН-код мог стать доступен третьим лицам, незамедлительно заблокируйте карту. <br>Если ПИН-код не удается вспомнить карту необходимо перевыпустить.',
+                    isOpen: true
                 },
                 {
-                    id: 2,
+                    id: 12,
                     title: 'Взимается ли комиссия за снятие наличных денежных средств в банкоматах, если моя организация – работодатель  является участником зарплатного проекта Банка?',
                     content: 'Если есть подозрение, что ПИН-код мог стать доступен третьим лицам, незамедлительно заблокируйте карту. <br>Если ПИН-код не удается вспомнить карту необходимо перевыпустить.',
                 },
                 {
-                    id: 3,
+                    id: 13,
                     title: 'Вместе с основной зарплатной картой мне выдали дополнительную. По каким тарифам она обслуживается?',
                     content: 'Если есть подозрение, что ПИН-код мог стать доступен третьим лицам, незамедлительно заблокируйте карту. <br>Если ПИН-код не удается вспомнить карту необходимо перевыпустить.',
                 },
                 {
-                    id: 4,
+                    id: 14,
                     title: 'Что делать, если потерял карту или забыл ПИН-код?',
                     content: 'Если есть подозрение, что ПИН-код мог стать доступен третьим лицам, незамедлительно заблокируйте карту. <br>Если ПИН-код не удается вспомнить карту необходимо перевыпустить.',
                 },
                 {
-                    id: 5,
+                    id: 15,
                     title: 'Мою карту заблокировал Банк. Что делать?',
                     content: 'Если есть подозрение, что ПИН-код мог стать доступен третьим лицам, незамедлительно заблокируйте карту. <br>Если ПИН-код не удается вспомнить карту необходимо перевыпустить.',
                 },
@@ -880,11 +890,15 @@ block content
         .container
             h3.px-lg-6.mb-4.mb-md-6.mb-lg-7
                 | Additional info (Accordion & Card-help)
+
             .row.row-gap-6
                 .col-12.col-xxl-8.pe-xxl-6
-                    +accordion(accordionList2, 'custom-accordion-second')
-                    a(href="#").btn.btn-link.btn-lg.d-inline-flex.gap-2.align-items-center.mt-4.mt-md-6.section-custom-accordion__button-more
+                    .accordion#accordion-example-2
+                        each item in accordionList2
+                            +accordion-item(item, 'accordion-example-2')
+                                p.mb-0.dark-70!= item.content
+                    a(href="#").btn.btn-link.btn-lg.d-inline-flex.gap-2.align-items-center.mt-4.mt-lg-6
                         span.text-m Все вопросы и ответы
-                        +svg-use('icon-chevron-right-small', 'card-product-list__button-icon')
+                        +svg-use('icon-chevron-right-small', 'icon size-m')
                 .col-12.col-xxl-4
                     +card-help(cardHelpData)
