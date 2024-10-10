@@ -1,5 +1,5 @@
 // title - str
-// description - str
+// description - block
 // imageSrc - str
 
 include ../ui/tag
@@ -10,26 +10,27 @@ mixin info-product-banner-title(title, tag)
     if title
         h3.info-product-banner__title.dark-100= title
 
-mixin info-product-banner-content(title, description, link, tag)
+mixin info-product-banner-content(title, link, tag)
     .info-product-banner__content.d-flex.flex-column.align-items-start.gap-7
         .d-flex.flex-column.gap-4
             .info-product-banner__title-container.d-flex.flex-column.gap-4.d-md-none.d-lg-flex
                 +info-product-banner-title(title, tag)
-            .info-product-banner__description.text-l.dark-100!= description
+            .info-product-banner__description.text-l.dark-100
+                block
         button.btn.btn-outline-primary.btn-lg.w-100.w-sm-auto(type="button", href=link) Подробнее
 
-mixin info-product-banner(title, description, imageSrc, link, tag='')
+mixin info-product-banner(title, imageSrc, link, tag='')
     section.info-product-banner.overflow-hidden.position-relative.px-0.px-lg-6.py-9.py-md-8.py-lg-16.bg-blue-10
         div.container.info-product-banner__container.position-relative.z-2
             .info-product-banner__title-container.d-none.d-md-flex.d-lg-none.mb-6
                 +info-product-banner-title(title, tag)
             .row.row-gap-7
-                .col-12.col-md-6.col-lg-6.position-relative.z-1
-                    +info-product-banner-content(title, description, link, tag)
-                .col-12.col-md-6.col-lg-6
-                    .info-product-banner__image-container.js-polygon-container.position-relative.d-flex.align-items-stretch
-                        img.info-product-banner__image.z-2.w-auto.float-end.position-relative(src=imageSrc, alt="")
-                        div(class="js-polygon-container-polygon info-product-banner__polygon z-1 w-100 h-100 purple-70")
-                            svg.js-polygon-container-svg.info-product-banner__polygon-svg.w-100.h-100(xmlns="http://www.w3.org/2000/svg")
-                                polygon(points="2,2 535,2 535,283 495,323 2,323", fill="none", stroke="currentColor", stroke-width="2", stroke-dasharray="10")
+                .col-12.col-md-6.col-lg-6.position-relative.z-1(class=imageSrc ? 'col-md-6 col-lg-6' : 'col-md-8 col-lg-7')
+                    +info-product-banner-content(title, link, tag)
+                        block
+                if imageSrc
+                    .col-12.col-md-6.col-lg-6
+                        .info-product-banner__image-container.js-polygon-container.position-relative.d-flex.align-items-stretch
+                            +polygon-container('purple-70')
+                                img.info-product-banner__image.z-2.w-auto.float-end.position-relative(src=imageSrc, alt="")
         +pattern-bg('section-heavy', 'light', 'pattern-bg--position-sm-bottom info-product-banner__pattern')
