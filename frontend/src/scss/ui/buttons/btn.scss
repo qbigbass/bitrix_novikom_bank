@@ -12,6 +12,7 @@ button {
 .btn-sm {
     line-height: 1.2;
     font-weight: 600;
+    height: 1.75rem;
 }
 
 .btn-primary {
@@ -58,6 +59,18 @@ button {
         --bs-btn-padding-x: 2rem;
         --bs-btn-font-size: 1.125rem;
         line-height: 1.35;
+        height: auto;
+    }
+}
+
+.btn-md-md {
+    @include use-media(tablet) {
+        --bs-btn-padding-y: 0.4375rem;
+        --bs-btn-padding-x: 1.5rem;
+        --bs-btn-font-size: 1rem;
+        line-height: 1.5;
+        font-weight: 700;
+        height: auto;
     }
 }
 
