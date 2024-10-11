@@ -1,7 +1,0 @@
-{
-  "title": "Вопросы и ответы",
-  "sort": "700",
-  "templates": [
-    "select.html"
-  ]
-}

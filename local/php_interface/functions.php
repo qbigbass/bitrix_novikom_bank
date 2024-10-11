@@ -2,12 +2,16 @@
 
 function iblock(string $code) : ?int {
     try {
-        \Bitrix\Main\Loader::IncludeModule("iblock");
+        \Bitrix\Main\Loader::IncludeModule('iblock');
         $iblock = Bitrix\Iblock\IblockTable::getList(['select' => ['ID'], 'filter' => ['CODE' => $code]])->Fetch();
         return $iblock['ID'];
     } catch (Exception $e) {
         return false;
     }
+}
+
+function printIntoFile($text, string $filePath = '/logger.txt') {
+    file_put_contents($_SERVER['DOCUMENT_ROOT'] . $filePath, print_r($text, true), FILE_APPEND);
 }
 
 function modifyMainSubmenuResult(array $arResult) : array {
