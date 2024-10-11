@@ -1,0 +1,15 @@
+mixin card-step(data)
+    .d-flex.flex-column.flex-md-row.flex-lg-column.gap-2.gap-md-4.gap-lg-3.align-items-start.align-items-md-center.align-items-lg-start&attributes(attributes)
+        img.icon.size-xl(src="img/icons/icon-money.svg" alt="" loading="lazy")
+        .d-flex.flex-column.gap-2.align-items-start
+            if data.title
+                h4!= data.title
+            if data.text
+                span.text-l!= data.text
+            if data.link
+                a(href= data.link.href).btn.btn-link.d-inline-flex.gap-2.align-items-center.mt-md-2= data.link.text
+                    +svg-use("icon-chevron-right", "icon size-m")
+
+            if data.button
+                a(href= data.button.href).btn.btn-primary.btn-sm.btn-md-md.mt-md-2= data.button.text
+

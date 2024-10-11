@@ -7,6 +7,7 @@ block content
 
     include ../cards/card-text
     include ../cards/card-product
+    include ../cards/card-step
     include ../includes/header/header
     include ../components/banners/text-banner
     include ../components/banners/banner-product-info
@@ -182,6 +183,25 @@ block content
             },
         ]
 
+        var cardStepList = [
+            {
+                title: "Онлайн",
+                text: "Закажите выпуск именной карты &laquo;Мир&raquo; прямо сейчас"
+            },
+            {
+                title: "Через менеджера",
+                text: "Закажите консультацию сотрудника по&nbsp;телефону <span class='text-nowrap'>8&nbsp;800 250-70-07</span>"
+            },
+            {
+                title: "В&nbsp;офисе банка",
+                text: "Приходите в&nbsp;ближайший офис банка Новиком",
+                link: {
+                    href: "#",
+                    text: "Найти на карте",
+                }
+            },
+        ]
+
     +banner-product(
         {
             title: "Социально-платёжная карта&nbsp;&laquo;Мир&raquo;",
@@ -289,6 +309,24 @@ block content
                                 include ../includes/layout/tabs/faq
         +pattern-bg('section-2', 'light', 'pattern-bg--hide-mobile')
 
+    section.section-layout.js-collapsed-mobile.bg-dark-10
+        .container
+            h3.d-none.d-md-block.mb-md-6.mb-lg-7.px-lg-6
+                | Как оформить карту
+            a(
+                data-bs-toggle="collapse"
+                href="#how-apply"
+                role="button"
+                aria-expanded="false"
+                aria-controls="how-apply"
+            ).h3.d-flex.align-items-center.justify-content-between.dark-100.d-md-none
+                | Как оформить карту
+                +svg-use("icon-chevron-down", "icon size-m violet-100")
+            #how-apply.collapse.d-md-block.mt-4.mt-md-6.mt-lg-7
+                .row.px-lg-6.row-gap-6
+                    each item in cardStepList
+                        .col-12.col-lg-4
+                           +card-step(item).pe-xxl-11
 
     section.section-layout
         .container
