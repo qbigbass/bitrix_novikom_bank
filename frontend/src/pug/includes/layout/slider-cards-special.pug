@@ -1,0 +1,32 @@
+-
+    var cardSpecialList = [
+        {
+            href: "#",
+            tag: "Акция",
+            date: "25.04.2024",
+            text: "Избранные категории для программы лояльности &laquo;Кешбэк&raquo; через мобильное приложение и&nbsp;интернет-банк",
+        },
+        {
+            href: "#",
+            tag: "Акция",
+            date: "25.04.2024",
+            text: "Избранные категории для программы лояльности &laquo;Кешбэк&raquo; через мобильное приложение и&nbsp;интернет-банк",
+        },
+        {
+            href: "#",
+            tag: "Акция",
+            date: "25.04.2024",
+            text: "Избранные категории для программы лояльности &laquo;Кешбэк&raquo; через мобильное приложение и&nbsp;интернет-банк",
+        },
+    ]
+
+include ../../cards/card-special
+
+.row.px-lg-6
+    .col-12
+        .swiper.slider-cards.js-slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:2,tablet-album:2,laptop:2,laptop-x:2" data-space-between="mobile-s:8,mobile:8,tablet:8,laptop:8,laptop-x:8")
+            .swiper-wrapper
+                each item in cardSpecialList
+                    .swiper-slide.js-swiper-slide
+                        +card-special(item)
+            +slider-controls().mt-3.mt-md-4
