@@ -9,7 +9,7 @@ block content
     include ../cards/card-product
     include ../includes/header/header
     include ../components/banners/text-banner
-    include ../components/banners/info-product-banner
+    include ../components/banners/banner-product-info
     include ../components/ui/tabs
     include ../components/ui/tabs-simple
     include ../components/tabs-with-content
@@ -264,13 +264,17 @@ block content
                 | Надёжно и&nbsp;удобно
             include ../includes/layout/slider-cards-benefit
 
-    +info-product-banner(
-        "Льготные процентные ставки по&nbsp;потребительским кредитам и&nbsp;ипотеке",
-        "../img/banners/page-banner-1.png",
-        "#",
-        "Услуга"
-    )
-        p.text-l.m-0.pe-lg-4 Держателям социально-платёжной карты &laquo;Мир&raquo; доступны специальные льготные условия по&nbsp;потребительским кредитам и&nbsp;ипотеке.
+    +banner-product-info({
+        title: "Льготные процентные ставки по&nbsp;потребительским кредитам и&nbsp;ипотеке",
+        tag: "Услуга",
+        button: {
+            href: "#",
+            text: "Подробнее",
+        },
+        imageSrc: "img/banners/page-banner-1.png"
+    })
+        p.text-l.m-0 Держателям социально-платёжной карты &laquo;Мир&raquo; доступны специальные льготные условия по&nbsp;потребительским кредитам и&nbsp;ипотеке.
+
     section.section-layout.js-collapsed-mobile
         .container
             h3.d-none.d-md-block.mb-md-6.mb-lg-7.px-lg-6

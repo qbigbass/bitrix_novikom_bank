@@ -1,0 +1,20 @@
+include ../ui/tag
+
+mixin banner-product-info(data, bgColor='bg-blue-10')
+    section.section-layout.py-lg-11(class= bgColor)
+        .container
+            .banner-product-info.ps-lg-6
+                .banner-product-info__header
+                    if data.tag
+                        +tag(data.tag, 'outline')
+                    h3!= data.title
+                .banner-product-info__body
+                    block
+                    if data.button
+                        a(href= data.button.href).btn.btn-lg-lg.btn-outline-primary.fw-bold.w-100.w-md-auto.mt-6.mt-lg-7= data.button.text
+
+                if data.imageSrc
+                    .banner-product-info__image
+                        +polygon-container('purple-70')
+                            img(src=data.imageSrc alt="" loading="lazy")
+        +pattern-bg('section-heavy', 'light', 'pattern-bg--position-sm-bottom')

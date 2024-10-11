@@ -7,6 +7,7 @@ block content
 
     include ../includes/header/header
     include ../components/banners/text-banner
+    include ../components/banners/banner-product-info
     include ../components/banners/info-product-banner
     include ../components/ui/tabs
     include ../components/ui/tabs-simple
@@ -82,13 +83,16 @@ block content
                         +benefit(item.spriteData, item.title, item.description)
         +pattern-bg('section', 'light', 'pattern-bg--position-sm-bottom section-restructuring-benefits__pattern')
 
-    +info-product-banner(
-        "Как получить кредит",
-        "../img/banners/page-banner-2.png",
-        "#",
-        "Услуга"
-    )
-        p.text-l.m-0.pe-lg-4 Обратиться в офис Банка с необходимым пакетом документов. Клиенты, получающие заработную плату на счет в банке Новиком, могут оформить заявку на территории своей организации.
+    +banner-product-info({
+        title: "Как получить кредит",
+        tag: "Услуга",
+        button: {
+            href: "#",
+            text: "Подробнее",
+        },
+        imageSrc: "img/banners/page-banner-2.png"
+    })
+        p.text-l.m-0 Обратиться в&nbsp;офис Банка с&nbsp;необходимым пакетом документов. Клиенты, получающие заработную плату на&nbsp;счет в&nbsp;банке Новиком, могут оформить заявку на&nbsp;территории своей организации.
 
     section.section-layout.js-collapsed-mobile
         .container
