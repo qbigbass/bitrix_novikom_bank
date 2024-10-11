@@ -10,4 +10,8 @@
             }
         }
     }
+
+    @at-root .swiper-slide & {
+        height: 100%;
+    }
 }
