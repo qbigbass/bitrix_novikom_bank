@@ -15,6 +15,7 @@ block content
     include ../components/helper
     include ../components/benefit
     include ../components/step-item
+    include ../includes/layout/slider-card-product
 
     +text-banner(
         "Реструктуризация <br>по программе Банка",
@@ -135,4 +136,4 @@ block content
         .container
             h3.px-lg-6.mb-4.mb-md-6.mb-lg-7
                 | Смотрите также
-            include ../includes/layout/slider-card-product
+            +slider-card-product()

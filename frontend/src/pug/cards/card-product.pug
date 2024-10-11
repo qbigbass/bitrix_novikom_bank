@@ -3,7 +3,8 @@ include ../components/ui/tag
 mixin card-product(data)
     .card-product(class= `card-product--${data.color}`)
         div.card-product__inner
-            +tag(data.tag).card-product__tag
+            if data.tag
+                +tag(data.tag).card-product__tag
             div.card-product__content
                 h4.card-product__title!= data.title
                 if data.subtitle

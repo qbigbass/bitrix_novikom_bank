@@ -11,12 +11,13 @@ block content
     include ../components/announcement
     include ../cards/card-news
     include ../components/ui/tabs
+    include ../includes/layout/slider-card-product
 
     section.section-layout
         .container
             h3.ps-lg-6.mb-6.mb-lg-7
                 | Предложения банка Новиком
-            include ../includes/layout/slider-card-product
+            +slider-card-product()
 
     section.section-layout.bank-service-layout
         .container

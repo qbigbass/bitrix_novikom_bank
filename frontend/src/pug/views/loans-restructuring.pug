@@ -88,10 +88,11 @@ block content
     include ../cards/card-product
     include ../includes/header/header
     include ../components/banners/text-banner
-    include ../components/banners/info-product-banner
+    include ../components/banners/banner-product-info
     include ../components/ui/tabs
     include ../components/ui/tabs-simple
     include ../components/helper
+    include ../includes/layout/slider-card-product
 
     +text-banner(
         "Реструктуризация",
@@ -125,14 +126,18 @@ block content
                         .col-12.col-lg-6
                             +card-text(item)
 
-    +info-product-banner(
-        "Банк готов оказать необходимую поддержку в урегулировании задолженности в случаях",
-        "img/banners/page-banner-1.png",
-        "#"
-    )
-        ul.fw-normal.text-l.list.list--size-l.w-100.w-xl-75
-            li Если вы пострадали от недружественных действий других государств в приграничных субъектах Российской Федерации
-            li Если вы пострадали в связи с чрезвычайными ситуациями природного характера (наводнениями) на территории субъектов Российской Федерации в рамках Федерального закона «О потребительском кредите (займе)»&nbsp;от 21.12.2013&nbsp;№&nbsp;353-ФЗ или по программе Банка
+
+    +banner-product-info({
+        title: "Банк готов оказать необходимую поддержку в урегулировании задолженности в случаях",
+        button: {
+            href: "#",
+            text: "Подробнее",
+        },
+        imageSrc: "img/banners/page-banner-1.png"
+    })
+        ul.fw-normal.text-l.list.list--size-l
+            li Если вы&nbsp;пострадали от&nbsp;недружественных действий других государств в&nbsp;приграничных субъектах Российской Федерации
+            li Если вы&nbsp;пострадали в&nbsp;связи с&nbsp;чрезвычайными ситуациями природного характера (наводнениями) на&nbsp;территории субъектов Российской Федерации в&nbsp;рамках Федерального закона &laquo;О&nbsp;потребительском кредите (займе)&raquo; от&nbsp;21.12.2013 &#8470;&nbsp;353-ФЗ или по&nbsp;программе Банка
 
     section.section-layout.js-collapsed-mobile
         .container
@@ -167,4 +172,4 @@ block content
         .container
             h3.px-lg-6.mb-4.mb-md-6.mb-lg-7
                 | Смотрите также
-            include ../includes/layout/slider-card-product
+            +slider-card-product()

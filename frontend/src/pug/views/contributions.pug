@@ -44,6 +44,7 @@ block content
     include ../components/banners/info-product-banner-alternative
     include ../components/ui/tabs
     include ../components/ui/tabs-simple
+    include ../includes/layout/slider-card-product
 
     +text-banner(
         "Вклады Новикома",
@@ -99,4 +100,4 @@ block content
         .container
             h3.px-lg-6.mb-4.mb-md-6.mb-lg-7
                 | Смотрите также
-            include ../includes/layout/slider-card-product
+            +slider-card-product()

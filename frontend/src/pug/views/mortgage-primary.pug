@@ -17,6 +17,7 @@ block content
     include ../components/benefit
     include ../components/step-item
     include ../components/banners/banner-product
+    include ../includes/layout/slider-card-product
 
     -
         var allBenefits = [
@@ -188,4 +189,4 @@ block content
         .container
             h3.px-lg-6.mb-6.mb-lg-7
                 | Смотрите также
-            include ../includes/layout/slider-card-product
+            +slider-card-product()
