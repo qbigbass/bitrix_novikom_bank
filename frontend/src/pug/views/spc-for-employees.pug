@@ -71,35 +71,17 @@ block content
             },
         ]
 
-        var tabsList = [
+        var tabContentList = [
             {
-                link: '#calculator',
-                id: 'calculator',
-                linkText: 'Калькулятор',
-                isActive: true
-            },
-            {
-                link: '#loan-conditions',
-                id: 'loan-conditions',
-                linkText: 'Условия',
-                isActive: false
-            },
-            {
-                link: '#requirements',
-                id: 'requirements',
-                linkText: 'Требования к заемщику',
-                isActive: false
-            },
-            {
-                link: '#loan-repayment',
-                id: 'loan-repayment',
-                linkText: 'Погашение кредита',
+                link: '#commissions',
+                id: 'commissions',
+                linkText: 'Комиссии',
                 isActive: false
             },
             {
                 link: '#documents',
                 id: 'documents',
-                linkText: 'Необходимые документы',
+                linkText: 'Документы и тарифы',
                 isActive: false
             },
             {
@@ -284,7 +266,7 @@ block content
     section.section-layout.js-collapsed-mobile
         .container
             h3.d-none.d-md-block.mb-md-6.mb-lg-7.px-lg-6
-                | Условия кредитования
+                | Подробнее о&nbsp;карте
             a(
                 data-bs-toggle="collapse"
                 href="#conditions"
@@ -292,23 +274,17 @@ block content
                 aria-expanded="false"
                 aria-controls="conditions"
             ).h3.d-flex.align-items-center.justify-content-between.dark-100.d-md-none
-                | Условия кредитования
+                | Подробнее о&nbsp;карте
                 +svg-use("icon-chevron-down", "icon size-m violet-100")
             #conditions.collapse.d-md-block.mt-4.mt-md-6.mt-lg-7
                 .row.px-lg-6
                     .col-12
-                        +tabs-simple(tabsList, false)
+                        +tabs-simple(tabContentList, false)
                         .tab-content.mt-4.mt-md-6.mt-lg-7
-                            #calculator.tab-pane.fade.show.active(aria-labelledby="calculator" tabindex="0" role="tabpanel")
-                                include ../includes/layout/loan-tabs/tab-calculator
-                            #loan-conditions.tab-pane.fade(aria-labelledby="loan-conditions" tabindex="0" role="tabpanel")
-                                include ../includes/layout/loan-tabs/tab-conditions
-                            #requirements.tab-pane.fade(aria-labelledby="requirements" tabindex="0" role="tabpanel")
-                                p Требования к заемщику
-                            #loan-repayment.tab-pane.fade(aria-labelledby="loan-repayment" tabindex="0" role="tabpanel")
-                                p Погашение кредита
+                            #commissions.tab-pane.fade.show.active(aria-labelledby="commissions" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/commissions
                             #documents.tab-pane.fade(aria-labelledby="documents" tabindex="0" role="tabpanel")
-                                include ../includes/layout/tabs/necessary-documents
+                                include ../includes/layout/tabs/documents
                             #faq.tab-pane.fade(aria-labelledby="faq" tabindex="0" role="tabpanel")
                                 include ../includes/layout/tabs/faq
         +pattern-bg('section-2', 'light', 'pattern-bg--hide-mobile')
