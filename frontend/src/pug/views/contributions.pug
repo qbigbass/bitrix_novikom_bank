@@ -41,7 +41,7 @@ block content
     include ../cards/card-product
     include ../includes/header/header
     include ../components/banners/text-banner
-    include ../components/banners/info-product-banner-alternative
+    include ../components/banners/banner-product-info-alternative
     include ../components/ui/tabs
     include ../components/ui/tabs-simple
     include ../includes/layout/slider-card-product
@@ -91,9 +91,16 @@ block content
         +pattern-bg('section-2', 'light', 'pattern-bg--hide-mobile')
 
 
-    +info-product-banner-alternative("Вклады застрахованы", "img/footer-insurance.png")
-        p.m-0!= "Страхование вкладов осуществляется согласно Федеральному закону «О страховании вкладов в банках Российской Федерации» от 23.12.2003 № 177-ФЗ. АО АКБ «НОВИКОМ» является участником государственной системы обязательного страхования вкладов с 2 декабря 2004 года. Банк включен в реестр банков – участников системы обязательного страхования вкладов под номером 254."
-        p.m-0!= "С полным перечнем вопросов и ответов по страхованию вкладов физических лиц можно ознакомиться на сайте Агентства по страхованию вкладов в сети Интернет - "
+    +banner-product-info-alternative({
+        title: "Вклады застрахованы",
+        imageSrc: "img/footer-insurance.png",
+        imageSize: {
+            width: 160,
+            height: 160
+        }
+    })
+        p.m-0.col-lg-6!= "Страхование вкладов осуществляется согласно Федеральному закону «О&nbsp;страховании&nbsp;вкладов в банках Российской Федерации» от 23.12.2003 № 177-ФЗ. АО&nbsp;АКБ&nbsp;«НОВИКОМ» является участником государственной системы обязательного страхования вкладов с 2 декабря 2004 года. Банк включен в реестр банков – участников системы обязательного страхования вкладов под номером 254."
+        p.m-0.col-lg-6!= "С полным перечнем вопросов и ответов по страхованию вкладов физических лиц можно ознакомиться на сайте Агентства по страхованию вкладов в сети Интернет - "
             a(href="https://www.asv.org.ru", target="_blank")!= "www.asv.org.ru."
 
     section.section-layout

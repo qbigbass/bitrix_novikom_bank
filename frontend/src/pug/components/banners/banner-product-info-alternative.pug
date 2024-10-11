@@ -1,0 +1,15 @@
+mixin banner-product-info-alternative(data, bgColor='bg-blue-10')
+    section.section-layout.py-lg-11(class= bgColor)
+        .container
+            .d-flex.flex-column.flex-md-row.align-items-start.gap-4.gap-sm-5.gap-md-6
+                if data.imageSrc
+                    .banner-product-info-alternative__image.flex-shrink-0
+                        img(src=data.imageSrc width=data.imageSize&&data.imageSize.width height=data.imageSize&&data.imageSize.height alt="" loading="lazy")
+                .banner-product-info-alternative.d-flex.flex-column.gap-4.gap-md-6
+                    .banner-product-info-alternative__header
+                        h3!= data.title
+                    .banner-product-info-alternative__body.d-flex.flex-column.gap-4.gap-md-6
+                        block
+                        if data.button
+                            a(href= data.button.href).btn.btn-lg-lg.btn-outline-primary.fw-bold.w-100.w-md-auto.mt-6.mt-lg-7= data.button.text
+        +pattern-bg('section-heavy', 'light', 'pattern-bg--position-sm-bottom')
