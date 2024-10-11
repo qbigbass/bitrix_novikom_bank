@@ -9,7 +9,7 @@ mixin card-benefit(data)
                 if data.sprite
                     .card-benefit__icon
                         +svg-use(data.sprite.name, "icon green-100 " + data.sprite.classList)
-                a(href=data.link).card-benefit__read-more-button.text-m.btn.btn-link.btn-lg.d-inline-flex.gap-2.align-items-center
-                    span.fw-bold Подробнее
-                    
-                    +svg-use('icon-chevron-right-small', 'icon size-m card-benefit__read-more-button-icon')
+                if data.link
+                    a(href=data.link).text-m.btn.btn-link.btn-lg.d-inline-flex.gap-2.align-items-center
+                        span.fw-bold Подробнее
+                        +svg-use('icon-chevron-right-small', 'icon size-m')

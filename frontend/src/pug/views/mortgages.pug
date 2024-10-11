@@ -8,6 +8,7 @@ block content
     include ../cards/card-product
     include ../includes/header/header
     include ../components/banners/text-banner
+    include ../includes/layout/slider-card-product
 
     +text-banner(
         "Ипотечные программы",
@@ -25,7 +26,7 @@ block content
         .container
             h3.px-lg-6.mb-4.mb-md-6.mb-lg-7
                 | Смотрите также
-            include ../includes/layout/slider-card-product
+            +slider-card-product()
 
 
     include ../includes/layout/section-feedback

@@ -1,0 +1,63 @@
+.banner-product-info {
+    $root: #{&};
+
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    grid-template-areas:
+        "header"
+        "content"
+        "image";
+
+    @include use-media(tablet) {
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 2rem;
+        column-gap: 2.5rem;
+        grid-template-areas:
+            "header header"
+            "content image";
+    }
+
+    @include use-media(tablet-album) {
+        row-gap: 1.5rem;
+        grid-template-columns: 1fr 50%;
+        grid-template-rows: min-content 1fr;
+        grid-template-areas:
+            "header image"
+            "content image";
+    }
+
+    @include use-media(laptop) {
+        column-gap: 5rem;
+    }
+
+    @include use-media(desktop) {
+        column-gap: 7.5rem;
+    }
+
+    &__header {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+
+        grid-area: header;
+
+        @include use-media(tablet-album) {
+            gap: 2rem;
+        }
+    }
+
+    &__body {
+        grid-area: content;
+    }
+
+    &__image {
+        margin-top: 1rem;
+        grid-area: image;
+
+        @include use-media(tablet) {
+            margin-top: 0;
+        }
+    }
+}

@@ -64,8 +64,12 @@
 
     &__description {
 
-        @include use-media(tablet-album) {
+        @include use-media(laptop-x) {
             max-width: 80%;
+        }
+
+        @include use-media(desktop) {
+            max-width: unset;
         }
 
         & br {

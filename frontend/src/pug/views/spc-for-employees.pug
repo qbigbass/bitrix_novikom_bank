@@ -1,0 +1,315 @@
+extends ../templates/base
+
+block title
+    title= 'Карты - Социально-платежная карта Мир'
+    meta(name="description" content="Описание страницы с кредитами")
+block content
+
+    include ../cards/card-text
+    include ../cards/card-product
+    include ../includes/header/header
+    include ../components/banners/text-banner
+    include ../components/banners/banner-product-info
+    include ../components/ui/tabs
+    include ../components/ui/tabs-simple
+    include ../components/tabs-with-content
+    include ../components/helper
+    include ../components/benefit
+    include ../components/step-item
+    include ../components/banners/banner-product
+    include ../includes/layout/slider-card-product
+
+    -
+        var allBenefits = [
+            {
+                spriteName: {
+                    name: 'icon-a-date',
+                    classList: 'size-xl'
+                },
+                title: 'Бесплатное снятие наличных',
+                description: 'В&nbsp;банкоматах любых банков на&nbsp;территории&nbsp;РФ без ограничения количества снятий',
+            },
+            {
+                spriteName: {
+                    name: 'icon-a-money',
+                    classList: 'size-xl'
+                },
+                title: 'Без комиссии',
+                description: 'До&nbsp;100&nbsp;тыс.&nbsp;₽&nbsp;в&nbsp;месяц переводы по&nbsp;Системе Быстрых Платежей (СБП)',
+            },
+            {
+                spriteName: {
+                    name: 'icon-a-low-percent',
+                    classList: 'size-xl'
+                },
+                title: 'Бесплатные переводы',
+                description: 'До&nbsp;30&nbsp;млн в&nbsp;месяц между своими счетами в&nbsp;разных банках',
+            },
+            {
+                spriteName: {
+                    name: 'icon-a-date',
+                    classList: 'size-xl'
+                },
+                title: 'Бесплатное обслуживание',
+                description: 'С первого дня',
+            },
+            {
+                spriteName: {
+                    name: 'icon-a-money',
+                    classList: 'size-xl'
+                },
+                title: 'Бесплатное СМС-информирование',
+                description: 'Обо всех операциях по&nbsp;карте, включая начисление зарплаты',
+            },
+            {
+                spriteName: {
+                    name: 'icon-a-low-percent',
+                    classList: 'size-xl'
+                },
+                title: 'Бесплатное пополнение',
+                description: 'Банковских карт в&nbsp;банкоматах сторонних банков',
+            },
+        ]
+
+        var tabsList = [
+            {
+                link: '#calculator',
+                id: 'calculator',
+                linkText: 'Калькулятор',
+                isActive: true
+            },
+            {
+                link: '#loan-conditions',
+                id: 'loan-conditions',
+                linkText: 'Условия',
+                isActive: false
+            },
+            {
+                link: '#requirements',
+                id: 'requirements',
+                linkText: 'Требования к заемщику',
+                isActive: false
+            },
+            {
+                link: '#loan-repayment',
+                id: 'loan-repayment',
+                linkText: 'Погашение кредита',
+                isActive: false
+            },
+            {
+                link: '#documents',
+                id: 'documents',
+                linkText: 'Необходимые документы',
+                isActive: false
+            },
+            {
+                link: '#faq',
+                id: 'faq',
+                linkText: 'Вопросы и ответы',
+                isActive: false
+            },
+        ]
+
+        var mainTabsList = [
+            {
+                link: '#1',
+                linkText: 'Для работников ГК «Ростех»',
+            },
+            {
+                link: '#2',
+                linkText: 'Для организаций',
+            },
+            {
+                link: '#3',
+                linkText: 'Для руководителей',
+            },
+            {
+                link: '#4',
+                linkText: 'Для новых зарплатных клиентов',
+            },
+        ]
+
+        var spcCardProductList = [
+            {
+                color: 'green',
+                title: 'Программа «Кешбэк»',
+                img: 'large-individual/contribution-rentier.png',
+                button: 'Подробнее',
+                subtitle: {
+                    before: 'до',
+                    number: '7%',
+                },
+                description: 'Возврат рублями от&nbsp;покупок по&nbsp;карте'
+            },
+            {
+                color: 'green',
+                title: 'Программа &laquo;Бонусы&raquo;',
+                img: 'large-individual/contribution-rentier.png',
+                button: 'Подробнее',
+                subtitle: {
+                    before: 'до',
+                    number: '20%',
+                },
+                description: 'Бонусные баллы за&nbsp;покупки'
+            },
+            {
+                color: 'green',
+                title: 'Программа &laquo;Бонусная копилка&raquo;',
+                img: 'large-individual/contribution-rentier.png',
+                button: 'Подробнее',
+                subtitle: {
+                    before: 'до',
+                    number: '7%',
+                    after: 'годовых',
+                },
+                description: 'Начисление бонусных баллов за&nbsp;наличие остатка на&nbsp;счете вашей карты'
+            },
+            {
+                color: 'green',
+                title: 'Программа «Кешбэк»',
+                img: 'large-individual/contribution-rentier.png',
+                button: 'Подробнее',
+                subtitle: {
+                    before: 'до',
+                    number: '7%',
+                },
+                description: 'Возврат рублями от&nbsp;покупок по&nbsp;карте'
+            },
+            {
+                color: 'green',
+                title: 'Программа &laquo;Бонусы&raquo;',
+                img: 'large-individual/contribution-rentier.png',
+                button: 'Подробнее',
+                subtitle: {
+                    before: 'до',
+                    number: '20%',
+                },
+                description: 'Бонусные баллы за&nbsp;покупки'
+            },
+            {
+                color: 'green',
+                title: 'Программа &laquo;Бонусная копилка&raquo;',
+                img: 'large-individual/contribution-rentier.png',
+                button: 'Подробнее',
+                subtitle: {
+                    before: 'до',
+                    number: '7%',
+                    after: 'годовых',
+                },
+                description: 'Начисление бонусных баллов за&nbsp;наличие остатка на&nbsp;счете вашей карты'
+            },
+        ]
+
+    +banner-product(
+        {
+            title: "Социально-платёжная карта &laquo;Мир&raquo;",
+            subtitle: "Начисление зарплаты на&nbsp;карту Новикома",
+            imgSrc: "img/hero-banner/mir-pc.png",
+            bgColor: "heavy-purple",
+            urlHref: "#",
+            benefits: [
+                {
+                    beforeNum: 'от',
+                    num: '0',
+                    currency: '₽',
+                    description: 'Комиссия за&nbsp;снятие наличных в&nbsp;любых банкоматах'
+                },
+                {
+                    beforeNum: 'до',
+                    num: '7%',
+                    description: 'Кешбэк от&nbsp;суммы покупок'
+                },
+                {
+                    beforeNum: 'до',
+                    num: '80%',
+                    description: 'Скидки на&nbsp;отдых, спорт, обучение и&nbsp;многое другое'
+                }
+            ],
+            breadcrumbsArray: [
+                {
+                    link: "#",
+                    linkText: "Частным клиентам"
+                },
+                {
+                    link: "#",
+                    linkText: "Карты"
+                }
+            ],
+        }
+    )
+
+
+    section.section-layout
+        .container
+            .row.mb-6.mb-lg-7.px-lg-6
+                h3 Преимущества
+            .row.mb-6.mb-lg-7.px-lg-6
+                .col-12
+                    +tabs(mainTabsList)
+            .row.row-gap-6.px-lg-6
+                each item, index in allBenefits
+                    .col-12.col-md-6.col-lg-4
+                        +benefit(item.spriteName, item.title, item.description)
+        +pattern-bg('section', 'light', 'pattern-bg--position-sm-bottom')
+
+    section.section-layout
+        .container
+            h3.px-lg-6.mb-6.mb-lg-7
+                | Подключите выгоду
+            +slider-card-product(spcCardProductList)
+
+    section.section-layout
+        .container
+            h3.px-lg-6.mb-6.mb-lg-7
+                | Надёжно и&nbsp;удобно
+            include ../includes/layout/slider-cards-benefit
+
+    +banner-product-info({
+        title: "Льготные процентные ставки по&nbsp;потребительским кредитам и&nbsp;ипотеке",
+        tag: "Услуга",
+        button: {
+            href: "#",
+            text: "Подробнее",
+        },
+        imageSrc: "img/banners/page-banner-1.png"
+    })
+        p.text-l.m-0 Держателям социально-платёжной карты &laquo;Мир&raquo; доступны специальные льготные условия по&nbsp;потребительским кредитам и&nbsp;ипотеке.
+
+    section.section-layout.js-collapsed-mobile
+        .container
+            h3.d-none.d-md-block.mb-md-6.mb-lg-7.px-lg-6
+                | Условия кредитования
+            a(
+                data-bs-toggle="collapse"
+                href="#conditions"
+                role="button"
+                aria-expanded="false"
+                aria-controls="conditions"
+            ).h3.d-flex.align-items-center.justify-content-between.dark-100.d-md-none
+                | Условия кредитования
+                +svg-use("icon-chevron-down", "icon size-m violet-100")
+            #conditions.collapse.d-md-block.mt-4.mt-md-6.mt-lg-7
+                .row.px-lg-6
+                    .col-12
+                        +tabs-simple(tabsList, false)
+                        .tab-content.mt-4.mt-md-6.mt-lg-7
+                            #calculator.tab-pane.fade.show.active(aria-labelledby="calculator" tabindex="0" role="tabpanel")
+                                include ../includes/layout/loan-tabs/tab-calculator
+                            #loan-conditions.tab-pane.fade(aria-labelledby="loan-conditions" tabindex="0" role="tabpanel")
+                                include ../includes/layout/loan-tabs/tab-conditions
+                            #requirements.tab-pane.fade(aria-labelledby="requirements" tabindex="0" role="tabpanel")
+                                p Требования к заемщику
+                            #loan-repayment.tab-pane.fade(aria-labelledby="loan-repayment" tabindex="0" role="tabpanel")
+                                p Погашение кредита
+                            #documents.tab-pane.fade(aria-labelledby="documents" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/necessary-documents
+                            #faq.tab-pane.fade(aria-labelledby="faq" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/faq
+        +pattern-bg('section-2', 'light', 'pattern-bg--hide-mobile')
+
+
+    section.section-layout
+        .container
+            h3.px-lg-6.mb-6.mb-lg-7
+                | Смотрите также
+            +slider-card-product()
