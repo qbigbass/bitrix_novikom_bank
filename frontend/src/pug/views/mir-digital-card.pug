@@ -1,0 +1,261 @@
+extends ../templates/base
+
+block title
+    title= 'Карты - Цифровая карта'
+    meta(name="description" content="Описание страницы с кредитами")
+block content
+
+    include ../cards/card-text
+    include ../cards/card-product
+    include ../cards/card-step
+    include ../includes/header/header
+    include ../components/banners/text-banner
+    include ../components/banners/banner-product-info
+    include ../components/ui/tabs
+    include ../components/ui/tabs-simple
+    include ../components/tabs-with-content
+    include ../components/helper
+    include ../components/benefit
+    include ../components/step-item
+    include ../components/banners/banner-product
+    include ../includes/layout/slider-card-product
+
+    -
+        var allBenefits = [
+            {
+                spriteName: {
+                    name: 'icon-a-date',
+                    classList: 'size-xl'
+                },
+                title: 'Кешбэк рублями до&nbsp;20%',
+                description: 'За&nbsp;покупки у&nbsp;партнеров банка, до&nbsp;7% в&nbsp;избранных категориях',
+            },
+            {
+                spriteName: {
+                    name: 'icon-a-money',
+                    classList: 'size-xl'
+                },
+                title: 'Бонусы',
+                description: 'При оплате товаров и&nbsp;услуг на&nbsp;сумму 15&nbsp;000 руб в&nbsp;месяц',
+            },
+            {
+                spriteName: {
+                    name: 'icon-a-low-percent',
+                    classList: 'size-xl'
+                },
+                title: '0 <span class="currency">₽</span> СМС информирование',
+                description: 'При покупках по&nbsp;карте в&nbsp;месяц на&nbsp;сумму равную или более 20&nbsp;000 рублей',
+            },
+            {
+                spriteName: {
+                    name: 'icon-a-low-percent',
+                    classList: 'size-xl'
+                },
+                title: '0 <span class="currency">₽</span> обслуживание',
+                description: 'Основной и&nbsp;дополнительной карты, в&nbsp;том числе в&nbsp;формате электронного Платежного кольца/Платежного стикера',
+            },
+        ]
+
+        var tabContentList = [
+            {
+                link: '#commissions',
+                id: 'commissions',
+                linkText: 'Комиссии',
+                isActive: false
+            },
+            {
+                link: '#percent',
+                id: 'percent',
+                linkText: 'Проценты на остаток',
+                isActive: false
+            },
+            {
+                link: '#documents',
+                id: 'documents',
+                linkText: 'Документы и тарифы',
+                isActive: true
+            },
+            {
+                link: '#faq',
+                id: 'faq',
+                linkText: 'Вопросы и ответы',
+                isActive: false
+            },
+        ]
+
+        var spcCardProductList = [
+            {
+                color: 'green',
+                title: 'Программа «Кешбэк»',
+                img: 'large-individual/contribution-rentier.png',
+                button: 'Подробнее',
+                subtitle: {
+                    before: 'до',
+                    number: '7%',
+                },
+                description: 'Возврат рублями от&nbsp;покупок по&nbsp;карте'
+            },
+            {
+                color: 'green',
+                title: 'Программа &laquo;Бонусы&raquo;',
+                img: 'large-individual/contribution-rentier.png',
+                button: 'Подробнее',
+                subtitle: {
+                    before: 'до',
+                    number: '20%',
+                },
+                description: 'Бонусные баллы за&nbsp;покупки'
+            },
+        ]
+
+        var cardStepList = [
+            {
+                title: "Онлайн",
+                text: "Закажите выпуск именной карты &laquo;Мир&raquo; прямо сейчас"
+            },
+            {
+                title: "Через менеджера",
+                text: "Закажите консультацию сотрудника по&nbsp;телефону <span class='text-nowrap'>8&nbsp;800 250-70-07</span>"
+            },
+            {
+                title: "В&nbsp;офисе банка",
+                text: "Приходите в&nbsp;ближайший офис банка Новиком",
+                link: {
+                    href: "#",
+                    text: "Найти на карте",
+                }
+            },
+        ]
+
+    +banner-product(
+        {
+            title: "Цифровая карта",
+            subtitle: "Карта без пластикового носителя",
+            imgSrc: "img/hero-banner/digital-card.png",
+            bgColor: "heavy-violet",
+            urlHref: "#",
+            buttonText: "Оформить карту",
+            benefits: [
+                {
+                    num: '0',
+                    currency: '₽',
+                    description: 'Мгновенный выпуск карты'
+                },
+                {
+                    beforeNum: 'от',
+                    num: '8%',
+                    description: 'годовых в&nbsp;месяц на&nbsp;остаток'
+                },
+                {
+                    num: '0',
+                    currency: '₽',
+                    description: 'обслуживание'
+                },
+            ],
+            breadcrumbsArray: [
+                {
+                    link: "#",
+                    linkText: "Частным клиентам"
+                },
+                {
+                    link: "#",
+                    linkText: "Карты"
+                }
+            ],
+        }
+    )
+
+
+    section.section-layout
+        .container
+            .row.mb-6.mb-lg-7.px-lg-6
+                h3 Преимущества
+            .row.row-gap-6.row-gap-md-7.px-lg-6
+                each item, index in allBenefits
+                    .col-12.col-md-6(class= (index % 2) ? 'ps-xxl-8' : 'pe-xxl-8')
+                        +benefit(item.spriteName, item.title, item.description)
+        +pattern-bg('section', 'light', 'pattern-bg--position-sm-bottom')
+
+    section.section-layout
+        .container
+            h3.px-lg-6.mb-6.mb-lg-7
+                | Подключите выгоду
+            +slider-card-product(spcCardProductList, 'mobile-s:1,mobile:1,tablet:2,laptop:2,laptop-x:2')
+
+    +banner-product-info({
+        title: "Как работает цифровая карта",
+        tag: "Услуга",
+        imageSrc: "img/banners/page-banner-3.png"
+    })
+        ul.list
+            li.text-l Для оплаты товаров и&nbsp;услуг поднесите мобильное устройство с&nbsp;установленным приложением &laquo;Mir Pay&raquo; (только для Android) и&nbsp;привязанной к&nbsp;нему цифровой картой банка Новиком к&nbsp;терминалу.
+            li.text-l Для оплаты в&nbsp;интернете воспользуйтесь реквизитами цифровой карты.
+
+    section.section-layout.bg-blue-10.pt-0.pb-lg-11
+        .container
+            .row
+                .col-12
+                    +polygon-container("violet-100")
+                        +helper("img/restructuring-additional-info.png", "bg-dark-0")
+                            p.mb-0 Обеспечивает повышенную безопасность данных: АО&nbsp;&laquo;НСПК&raquo;, оператор платёжной системы &laquo;Мир&raquo;, на&nbsp;100% принадлежит банку России, что гарантирует наивысшие стандарты безопасности при проведении платежей
+
+    section.section-layout.js-collapsed-mobile
+        .container
+            h3.d-none.d-md-block.mb-md-6.mb-lg-7.px-lg-6
+                | О&nbsp;Цифровой карте
+            a(
+                data-bs-toggle="collapse"
+                href="#conditions"
+                role="button"
+                aria-expanded="false"
+                aria-controls="conditions"
+            ).h3.d-flex.align-items-center.justify-content-between.dark-100.d-md-none
+                | О&nbsp;Цифровой карте
+                +svg-use("icon-chevron-down", "icon size-m violet-100")
+            #conditions.collapse.d-md-block.mt-4.mt-md-6.mt-lg-7
+                .row.px-lg-6
+                    .col-12
+                        +tabs-simple(tabContentList, false)
+                        .tab-content.mt-4.mt-md-6.mt-lg-7
+                            #commissions.tab-pane.fade.show.active(aria-labelledby="commissions" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/commissions
+                            #percent.tab-pane.fade(aria-labelledby="percent" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/cost-always-plus
+                            #documents.tab-pane.fade(aria-labelledby="documents" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/documents
+                            #faq.tab-pane.fade(aria-labelledby="faq" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/faq
+        +pattern-bg('section-2', 'light', 'pattern-bg--hide-mobile')
+
+    section.section-layout.js-collapsed-mobile.bg-dark-10
+        .container
+            h3.d-none.d-md-block.mb-md-6.mb-lg-7.px-lg-6
+                | Как оформить карту
+            a(
+                data-bs-toggle="collapse"
+                href="#how-apply"
+                role="button"
+                aria-expanded="false"
+                aria-controls="how-apply"
+            ).h3.d-flex.align-items-center.justify-content-between.dark-100.d-md-none
+                | Как оформить карту
+                +svg-use("icon-chevron-down", "icon size-m violet-100")
+            #how-apply.collapse.d-md-block.mt-4.mt-md-6.mt-lg-7
+                .row.px-lg-6.row-gap-6
+                    each item in cardStepList
+                        .col-12.col-lg-4
+                           +card-step(item).pe-xxl-11
+    section.section-layout.bg-blue-10
+        .container
+            .d-flex.align-items-center.justify-content-between.px-lg-6.mb-6.mb-lg-7
+                h3 Спецпредложения
+                a(href="#").btn.btn-sm.btn-link.btn-icon.d-none.d-md-inline-flex
+                    | Смотреть все
+                    +svg-use("icon-chevron-right-small", "icon size-s")
+            include ../includes/layout/slider-cards-special
+
+    section.section-layout
+        .container
+            h3.px-lg-6.mb-6.mb-lg-7
+                | Смотрите также
+            +slider-card-product()
