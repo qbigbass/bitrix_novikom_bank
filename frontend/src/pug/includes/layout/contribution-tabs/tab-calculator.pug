@@ -1,0 +1,81 @@
+-
+    var calculatorData = {
+        rows: [
+            {
+                title: 'Процентная ставка',
+                value: '56 343,98',
+                currency: true,
+            },
+            {
+                title: 'Ставка по вкладу',
+                value: '15 %',
+            },
+            {
+                title: 'Срок вклада',
+                value: '550 дней',
+            }
+        ],
+        btnText: 'Оформить заявку',
+        notes: 'Калькулятор не&nbsp;гарантирует точность расчетов. Окончательные параметры вклада определяются по&nbsp;итогам рассмотрения заявки.'
+    }
+
+    var inputSliderList = [
+        {
+            label: 'Сумма вклада',
+            id: 'amount-credit',
+            maxValue: 5000000,
+            minValue: 20000,
+            startValue: 1000000,
+            stepSize: 5000,
+            type: "price",
+            editable: true
+        },
+        {
+            label: 'Срок выплаты',
+            id: 'payment-term',
+            maxValue: 60,
+            minValue: 6,
+            startValue: 36,
+            type: "month",
+            editable: true
+        }
+    ]
+
+include ../../../components/ui/input/input-slider
+include ../../../cards/card-calculate-result
+
+.row
+    .col-12.col-lg-6
+        .tab-content.pe-xl-6
+            .d-flex.flex-column.row-gap-4.row-gap-md-6.row-gap-lg-7
+                each input in inputSliderList
+                    +input-slider(input)
+
+                .d-flex.flex-column.row-gap-4
+                    .form-check
+                        input#inp1(type="checkbox" value="").form-check-input
+                        label(for="inp1").form-check-label
+                            | Капитализация процентов на счет вклада
+
+                    .form-check
+                        input#inp2(type="checkbox" value="" checked).form-check-input
+                        label(for="inp2").form-check-label
+                            | Планируются пополнения суммы вклада
+                .d-flex.flex-column.flex-md-row.gap-4.gap-lg-6
+                    .d-flex.flex-column.row-gap-2.w-100
+                        label(for="date1").form-label.mb-0
+                            | Дата пополнения
+                        input#date1(type="date" name="date1" placeholder="дд.мм.гг" disabled).form-control.form-control-lg
+
+                    .d-flex.flex-column.row-gap-2.w-100
+                        label(for="sum1").form-label.mb-0
+                            | Сумма пополнения
+                        .position-relative.w-100
+                            input#sum1(type="number" name="sum1").form-control.form-control-lg
+                            span.currency.position-absolute.top-0.end-0.dark-70.text-m.p-3
+                                | ₽
+
+    .col-12.col-lg-6.mt-4.mt-md-6.mt-lg-0
+        .ps-xxl-6
+            +polygon-container()
+                +card-calculate-result(calculatorData, 'bg-dark-10')

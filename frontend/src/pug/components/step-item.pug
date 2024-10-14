@@ -1,13 +1,36 @@
-mixin arrowRight(className)
-    svg.d-none.d-lg-block(class=className, width="378", height="8", fill="none", viewBox="0 0 378 8")
-        path(fill="#76B82A", d="M1 3.5a.5.5 0 0 0 0 1v-1Zm376.354.854a.5.5 0 0 0 0-.708L374.172.464a.501.501 0 0 0-.708.708L376.293 4l-2.829 2.828a.5.5 0 0 0 .708.708l3.182-3.182ZM1 4.5h376v-1H1v1Z")
+mixin arrowRight(className, colorClassName)
+    svg.mw-100.d-none.d-lg-block(class=`${className} ${colorClassName}`, width="378", height="8", fill="none", viewBox="0 0 378 8")
+        path(fill="currentColor", d="M1 3.5a.5.5 0 0 0 0 1v-1Zm376.354.854a.5.5 0 0 0 0-.708L374.172.464a.501.501 0 0 0-.708.708L376.293 4l-2.829 2.828a.5.5 0 0 0 .708.708l3.182-3.182ZM1 4.5h376v-1H1v1Z")
 
 mixin step-item(item, index, maxIndex)
-    .step-item.d-flex.align-items-lg-start.gap-4.gap-lg-3.flex-lg-column(class=item.title ? 'flex-column align-items-start' : 'flex-row align-items-center')
-        .flex-shrink-0.step-item__indicator-group.d-flex.gap-4
-            img(src='img/steps/'+item.imageSrc, class="step-item__indicator-image", alt="")
+    -
+        var stepIndex = index+1;
+        var colorClassName = item.colorClassName ? item.colorClassName : 'green-100';
+
+    .step-item.d-flex.align-items-lg-start.gap-2.gap-sm-4.gap-lg-3.flex-column.flex-lg-column.flex-sm-row.align-items-start
+        .step-item__indicator-group.d-flex.gap-4
+            .step-item__indicator.position-relative.d-flex.flex-column.flex-shrink-0
+                .position-relative.z-1
+                    span.text-white.h3.position-absolute.top-50.start-50.translate-middle(data-level=stepIndex)!= stepIndex
+                    svg.w-100(class=colorClassName width="76" height="44" viewBox="0 0 76 44" fill="none" xmlns="http://www.w3.org/2000/svg")
+                        path(d="M36.0723 1.06022C37.2727 0.400039 38.7273 0.400039 39.9277 1.06022L74.8138 20.2476C76.1953 21.0074 76.1953 22.9926 74.8138 23.7524L39.9277 42.9398C38.7273 43.6 37.2727 43.6 36.0723 42.9398L1.18624 23.7524C-0.195312 22.9926 -0.19531 21.0074 1.18624 20.2476L36.0723 1.06022Z" fill="currentColor")
+                if index > 0
+                    svg.position-absolute.mt-2(class=colorClassName xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="none" viewBox="0 0 80 80")
+                        -
+                            let iterationIndex = 0;
+
+                        while iterationIndex < index
+                            if iterationIndex === 0
+                                path(stroke="currentColor" stroke-dasharray="4 4" stroke-linecap="round" d="M39.518 2.265a1 1 0 0 1 .964 0l37.925 20.859a1 1 0 0 1 0 1.752L40.482 45.735a1 1 0 0 1-.964 0L1.593 24.876a1 1 0 0 1 0-1.752L39.518 2.265Z")
+                            else
+                                -
+                                    let opacity = +`0.${Math.round(10 / (iterationIndex + 1))}`
+                                    const topOffsetValue = iterationIndex * 8;
+                                path(stroke="currentColor" stroke-dasharray="4 4" stroke-linecap="round" d=`M39.518 ${2 + topOffsetValue}.265a1 1 0 0 1 .964 0l37.925 20.859a1 1 0 0 1 0 1.752L40.482 ${45 + topOffsetValue}.735a1 1 0 0 1-.964 0L1.593 ${24 + topOffsetValue}.876a1 1 0 0 1 0-1.752l37.925-20.859Z` opacity=opacity)
+                            -
+                                iterationIndex++;
             if index != maxIndex
-                +arrowRight("mt-4")
+                +arrowRight("mt-4", colorClassName)
         .step-item__content.d-flex.flex-column.gap-2.w-auto.w-md-75.w-lg-auto
             if item.title
                 h4.step-item__title!= item.title

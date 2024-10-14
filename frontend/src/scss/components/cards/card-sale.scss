@@ -1,0 +1,12 @@
+.card-sale {
+
+    &__image {
+        width: 5rem;
+        height: 5rem;
+
+        @include use-media(tablet-album) {
+            width: 7.5rem;
+            height: 7.5rem;
+        }
+    }
+}

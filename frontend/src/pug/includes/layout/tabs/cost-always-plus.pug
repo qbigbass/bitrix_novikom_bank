@@ -1,0 +1,99 @@
+-
+    var tableDataPercent = {
+        header: [
+            'Процент годовых в месяц',
+            'Условия'
+        ],
+        body: [
+            {
+                cells: [
+                    {
+                        className: 'text-number-l fw-bold',
+                        text: '4,5%',
+                    },
+                    {
+                        className: 'text-l',
+                        text: '<p>\n' +
+                                '                    при сумме остатка не&nbsp;более 1&nbsp;400&nbsp;000 рублей на&nbsp;Текущем счете карты\n' +
+                                '                </p>\n' +
+                                '                <p>\n' +
+                                '                    сумме покупок по&nbsp;карте (за&nbsp;исключением оплаты товаров и&nbsp;услуг через СБП)\n' +
+                                '                    на&nbsp;общую сумму менее 20&nbsp;000 рублей в&nbsp;календарном месяце\n' +
+                                '                </p>',
+                    }
+
+                ],
+            },
+            {
+                cells: [
+                    {
+                        className: 'text-number-l fw-bold',
+                        text: '5%',
+                    },
+                    {
+                        className: 'text-l',
+                        text: '<p>\n' +
+                                '                    при сумме остатка не&nbsp;более 1&nbsp;400&nbsp;000 рублей на&nbsp;Текущем счете карты\n' +
+                                '                </p>\n' +
+                                '                <p>\n' +
+                                '                    сумме покупок по&nbsp;карте (за&nbsp;исключением оплаты товаров и&nbsp;услуг через СБП)\n' +
+                                '                    на&nbsp;общую сумму менее 20&nbsp;000 рублей в&nbsp;календарном месяце\n' +
+                                '                </p>',
+                    }
+
+                ],
+            },
+            {
+                cells: [
+                    {
+                        className: 'text-number-l fw-bold',
+                        text: '7,5%',
+                    },
+                    {
+                        className: 'text-l',
+                        text: '<p>\n' +
+                                '                    при сумме остатка не&nbsp;более 1&nbsp;400&nbsp;000 рублей на&nbsp;Текущем счете карты\n' +
+                                '                </p>\n' +
+                                '                <p>\n' +
+                                '                    сумме покупок по&nbsp;карте (за&nbsp;исключением оплаты товаров и&nbsp;услуг через СБП)\n' +
+                                '                    на&nbsp;общую сумму менее 20&nbsp;000 рублей в&nbsp;календарном месяце\n' +
+                                '                </p>',
+                    }
+
+                ],
+            },
+            {
+                cells: [
+                    {
+                        className: 'text-number-l fw-bold',
+                        text: '8%',
+                    },
+                    {
+                        className: 'text-l',
+                        text: '<p>\n' +
+                                '                    при сумме остатка не&nbsp;более 1&nbsp;400&nbsp;000 рублей на&nbsp;Текущем счете карты\n' +
+                                '                </p>\n' +
+                                '                <p>\n' +
+                                '                    сумме покупок по&nbsp;карте (за&nbsp;исключением оплаты товаров и&nbsp;услуг через СБП)\n' +
+                                '                    на&nbsp;общую сумму менее 20&nbsp;000 рублей в&nbsp;календарном месяце\n' +
+                                '                </p>',
+                    }
+
+                ],
+            },
+        ]
+    }
+
+.table-adaptive
+    .table-adaptive__header
+        .table-adaptive__row
+            each cell in tableDataPercent.header
+                .table-adaptive__cell.text-s= cell
+
+    .table-adaptive__body
+        each row in tableDataPercent.body
+            .table-adaptive__row
+                each item, idx in row.cells
+                    .table-adaptive__cell(class= item.className)
+                        span.table-adaptive__label.text-s= tableDataPercent.header[idx]
+                        span!= item.text

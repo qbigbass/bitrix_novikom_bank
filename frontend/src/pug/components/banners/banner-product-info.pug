@@ -12,9 +12,13 @@ mixin banner-product-info(data, bgColor='bg-blue-10')
                     block
                     if data.button
                         a(href= data.button.href).btn.btn-lg-lg.btn-outline-primary.fw-bold.w-100.w-md-auto.mt-6.mt-lg-7= data.button.text
+                    if data.link
+                        a(href="#").btn.btn-link.btn-lg.d-inline-flex.gap-2.align-items-center.mt-6.mt-lg-7
+                            span.text-m.fw-bold= data.link.text
+                            +svg-use('icon-chevron-right', 'icon size-m')
 
                 if data.imageSrc
                     .banner-product-info__image
-                        +polygon-container('purple-70')
-                            img(src=data.imageSrc alt="" loading="lazy")
+                        +polygon-container('violet-100')
+                            img(src=data.imageSrc alt="")
         +pattern-bg('section-heavy', 'light', 'pattern-bg--position-sm-bottom')
