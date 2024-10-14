@@ -1,0 +1,72 @@
+-
+    var firstTableDataRows = [
+        [
+            "Срок вклада",
+            "250 дней",
+            "550 дней",
+            "1100 дней",
+        ],
+        [
+            "от 10 000 ₽",
+            "КС –0,8%",
+            "КС",
+            "КС"
+        ],
+        [
+            "от 1 500 000 ₽",
+            "КС –0,6%",
+            "КС +0,1%",
+            "КС +0,3%"
+        ],
+        [
+            "от 5 000 000 ₽",
+            "КС –0,5%",
+            "КС +0,1%",
+            "КС +0,3%"
+        ],
+        [
+            "от 30 000 000 ₽",
+            "КС –0,4%",
+            "КС +0,2%",
+            "КС +0,2%"
+        ],
+    ]
+
+    var secondTableData = [
+        {
+            label: "При изменении КС",
+            value: "<ul class='list'><li>до 25-го числа месяца включительно изменение процентной ставки по вкладу происходит в первый рабочий день месяца, следующего за месяцем изменения,</li><li>после 25-го числа месяца, процентная ставка по вкладу меняется в пятый рабочий день месяца, следующего за месяцем изменения</li></ul>"
+        },
+        {
+            label: "Порядок изменения ставки применяется",
+            value: "<ul class='list'><li>для действующих вкладов,</li><li>для вкладов, размещаемых в период между датой изменения Банком России КС и вышеуказанным днем изменения Банком ставки по вкладу.</li></ul>"
+        },
+        {
+            label: "Определение даты изменения КС",
+            value: "Для целей определения даты изменения КС принимается дата опубликования информационного сообщения Банка России об изменении КС на сайте Банка России."
+        },
+    ]
+
+.d-flex.flex-column.gap-6.gap-md-9
+    .overflow-auto
+        table.table.table-borderless.m-0
+            caption.dark-70.pt-4.text-s.mb-0
+                | КС – ключевая ставка Банка России
+            thead
+                tr.border-bottom-dashed
+                    each item, index in firstTableDataRows[0]
+                        th.text-nowrap.fs-2.lh-base.dark-70.fw-semibold.py-4.px-0(scope="col" style="min-width: 140px")!= item
+                        i
+            tbody
+                each row, rowIndex in firstTableDataRows
+                    if rowIndex > 0
+                        tr.border-bottom-dashed
+                            each item, index in row
+                                td.w-auto.text-l.dark-70.py-4.px-0(class=index>0 && 'fw-semibold' style="min-width: 140px")!= item
+            
+    .table-tab.cell-2
+        .table-tab__body
+                each row in secondTableData
+                    .table-tab__row
+                        .table-tab__cell.text-l.fw-semibold.dark-70!= row.label
+                        .table-tab__cell.text-l!= row.value

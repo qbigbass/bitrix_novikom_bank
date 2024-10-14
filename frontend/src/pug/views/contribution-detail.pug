@@ -1,0 +1,244 @@
+extends ../templates/base
+
+block title
+    title= 'Вклады - страница Вклада'
+    meta(name="description" content="Описание страницы с вкладами")
+block content
+
+    include ../cards/card-text
+    include ../cards/card-product
+    include ../includes/header/header
+    include ../components/banners/text-banner
+    include ../components/banners/banner-product-info-alternative
+    include ../components/ui/tabs
+    include ../components/ui/tabs-simple
+    include ../components/tabs-with-content
+    include ../components/helper
+    include ../components/benefit
+    include ../components/step-item
+    include ../components/banners/banner-product
+    include ../includes/layout/slider-card-product
+    include ../components/ui/nav-tabs
+
+    -
+        var allBenefits = [
+                {
+                    spriteData: {
+                        name: 'icon-a-bank',
+                        classList: 'size-xl',
+                    },
+                    title: 'Надежность',
+                    description: 'Ставка привязана к ключевой ставке Банка России',
+                },
+                {
+                    spriteData: {
+                        name: 'icon-a-prices',
+                        classList: 'size-xl',
+                    },
+                    title: 'Выплата процентов',
+                    description: 'Выплата процентов, начисленных по вкладу, производится&nbsp;ежемесячно',
+                },
+                {
+                    spriteData: {
+                        name: 'icon-a-money',
+                        classList: 'size-xl',
+                    },
+                    title: 'Пополнение вклада',
+                    description: 'Пополнение вклада возможно без ограничения сумм в&nbsp;течение всего срока вклада',
+                }
+        ]
+
+        var tabsList = [
+            {
+                link: '#calculator',
+                id: 'calculator',
+                linkText: 'Калькулятор',
+                isActive: true
+            },
+            {
+                link: '#interest-rates',
+                id: 'interest-rates',
+                linkText: 'Процентные ставки',
+                isActive: false
+            },
+            {
+                link: '#contribution-conditions',
+                id: 'contribution-conditions',
+                linkText: 'Условия',
+                isActive: false
+            },
+            {
+                link: '#documents',
+                id: 'documents',
+                linkText: 'Документы и тарифы',
+                isActive: false
+            },
+            {
+                link: '#faq',
+                id: 'faq',
+                linkText: 'Вопросы и ответы',
+                isActive: false
+            },
+        ]
+
+        const allSteps = [
+            {
+                imageSrc: "step-indicator-1.svg",
+                title: "Посетите",
+                text: "<a class='blue-100' href='#'>ближайший офис Новикома</a> или&nbsp;<a class='blue-100' href='#'>закажите&nbsp;консультацию</a> сотрудника&nbsp;Банка&nbsp;по телефону"
+            },
+            {
+                title: "Подпишите",
+                imageSrc: "step-indicator-2.svg",
+                text: "все необходимые документы в офисе"
+            },
+            {
+                imageSrc: "step-indicator-3.svg",
+                title: "Внесите",
+                text: "деньги на счет вклада"
+            },
+        ]
+
+        var stepsTabsList = [
+            {
+                link: 'online',
+                linkText: 'Онлайн',
+                isActive: true
+            },
+            {
+                link: 'in-bank',
+                linkText: 'В банке',
+                isActive: false
+            },
+        ]
+
+    +banner-product(
+        {
+            title: "Вклад «РАНТЬЕ»",
+            subtitle: "Максимальный процент при любом шторме",
+            imgSrc: "img/big-illustrations/large-individual/contribution-rentier.png",
+            bgColor: "heavy-purple",
+            urlHref: "#",
+            buttonText: "Открыть вклад",
+            benefits: [
+                {
+                    beforeNum: 'до',
+                    num: '16,5%',
+                    description: 'При ключевой ставке Банка&nbsp;России на 09.01.2024'
+                },
+                {
+                    beforeNum: 'от',
+                    num: '250',
+                    afterNum: 'дней',
+                    description: 'Минимальный срок вклада'
+                },
+                {
+                    beforeNum: 'от',
+                    num: '10 000',
+                    currency: '₽',
+                    description: 'Минимальная сумма вклада'
+                }
+            ],
+            breadcrumbsArray: [
+                {
+                    link: "#",
+                    linkText: "Частным клиентам"
+                },
+                {
+                    link: "#",
+                    linkText: "Вклады"
+                }
+            ],
+        }
+    )
+
+    section.section-restructuring-benefits.px-0.px-lg-6.py-6.py-sm-9.py-md-11.py-xl-16.position-relative.overflow-hidden
+        .container
+            .row.mb-6.mb-lg-7
+                h3= "Преимущества вклада"
+            .row.row-gap-6
+                each item, index in allBenefits
+                    .col-12.col-md-6.col-lg-4
+                        +benefit(item.spriteData, item.title, item.description)
+        +pattern-bg('section', 'light', 'pattern-bg--position-sm-bottom section-restructuring-benefits__pattern')
+
+    section.section-layout.js-collapsed-mobile
+        .container
+            h3.d-none.d-md-block.mb-md-6.mb-lg-7.px-lg-6
+                | Условия по вкладу и ваш доход
+            a(
+                data-bs-toggle="collapse"
+                href="#conditions"
+                role="button"
+                aria-expanded="false"
+                aria-controls="conditions"
+            ).h3.d-flex.align-items-center.justify-content-between.dark-100.d-md-none
+                | Условия по вкладу и ваш доход
+                +svg-use("icon-chevron-down", "icon size-m violet-100")
+            #conditions.collapse.d-md-block.mt-4.mt-md-6.mt-lg-7
+                .row.px-lg-6
+                    .col-12
+                        +tabs-simple(tabsList, false)
+                        .tab-content.mt-4.mt-md-6.mt-lg-7
+                            #calculator.tab-pane.fade.show.active(aria-labelledby="calculator" tabindex="0" role="tabpanel")
+                                include ../includes/layout/contribution-tabs/tab-calculator
+                            #interest-rates.tab-pane.fade(aria-labelledby="interest-rates" tabindex="0" role="tabpanel")
+                                include ../includes/layout/contribution-tabs/tab-rates
+                            #contribution-conditions.tab-pane.fade(aria-labelledby="contribution-conditions" tabindex="0" role="tabpanel")
+                                include ../includes/layout/contribution-tabs/tab-conditions
+                            #documents.tab-pane.fade(aria-labelledby="documents" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/necessary-documents
+                            #faq.tab-pane.fade(aria-labelledby="faq" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/faq
+        +pattern-bg('section-2', 'light', 'pattern-bg--hide-mobile')
+
+    section.section-restructuring-steps.section-layout.bg-dark-10
+        .container
+            .row.px-lg-6
+                .d-none.d-md-flex.justify-content-between
+                    h3.h3
+                        | Как открыть вклад
+
+                    .d-inline-flex
+                        +nav-tabs(stepsTabsList)
+                a(
+                    data-bs-toggle="collapse"
+                    href="#restructuring-steps-content"
+                    role="button"
+                    aria-expanded="false"
+                    aria-controls="restructuring-steps-content"
+                ).h3.d-flex.align-items-center.justify-content-between.dark-100.d-md-none
+                    | Как открыть вклад
+                    +svg-use("icon-chevron-down", "icon size-m violet-100")
+            #restructuring-steps-content.section-restructuring-steps__wrapper.collapse.d-md-block.mt-6.mt-lg-7
+                .d-inline-flex.d-md-none.w-100.mb-6
+                        +nav-tabs(stepsTabsList)
+                .tab-content
+                    #online.tab-pane.fade.show.active(role="tabpanel" aria-labelledby="loan" tabindex="0")
+                        .row.row-gap-6.px-lg-6
+                            each item, index in allSteps
+                                .col-12.col-lg-4
+                                    +step-item(item, index, allSteps.length - 1)
+
+                    #in-bank.tab-pane.fade(role="tabpanel" aria-labelledby="refinance" tabindex="0")
+                        .row.row-gap-6.px-lg-6
+                            each item, index in allSteps
+                                .col-12.col-lg-4
+                                    +step-item(item, index, allSteps.length - 1)
+
+
+    +banner-product-info-alternative({
+        title: "Вклады застрахованы",
+        imageSrc: "img/footer-insurance.png",
+        imageSize: {
+            width: 160,
+            height: 160
+        }
+    })
+        p.m-0.text-l.pe-0.col-lg-8= "Денежные средства по совокупности вкладов и остатков на счетах физических лиц застрахованы в пределах суммы 1 400 000 ₽ в соответствии с Федеральным законом «О страховании вкладов в банках Российской Федерации»"
+
+    section.section-layout
+        .container
+            h3.px-lg-6.mb-4.mb-md-6.mb-lg-7
+                | Смотрите также
+            +slider-card-product()
