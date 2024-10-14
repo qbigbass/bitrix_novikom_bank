@@ -1,7 +1,7 @@
 extends ../templates/base
 
 block title
-    title= 'Карты - Мир Supreme'
+    title= 'Карты - Мир Supreme Кредитная карта'
     meta(name="description" content="Описание страницы с кредитами")
 block content
 
@@ -27,32 +27,48 @@ block content
                     name: 'icon-a-date',
                     classList: 'size-xl'
                 },
-                title: 'Mir Pass',
-                description: 'Предоставление опции доступа в&nbsp;бизнес-залы аэропортов и&nbsp;железнодорожных вокзалов на&nbsp;территории&nbsp;РФ и&nbsp;за&nbsp;рубежом с&nbsp;сервисом Mir Pass',
+                title: 'От 15 000 рублей',
+                description: 'Минимальный размер кредита',
             },
             {
                 spriteName: {
                     name: 'icon-a-money',
                     classList: 'size-xl'
                 },
-                title: 'Безопасность',
-                description: 'Оператор платежной системы &laquo;Мир&raquo; принадлежит Банку России',
+                title: 'До 10 млн <span class="currency">₽</span>',
+                description: 'Максимальный размер кредита',
             },
             {
                 spriteName: {
                     name: 'icon-a-low-percent',
                     classList: 'size-xl'
                 },
-                title: 'Кешбэк рублями до 30%',
-                description: 'За&nbsp;покупки у&nbsp;партнеров банка, до&nbsp;7% в&nbsp;избранных категориях',
+                title: '12 месяцев',
+                description: 'Срок действия кредитного лимита <br>с&nbsp;последующей пролонгацией',
             },
             {
                 spriteName: {
                     name: 'icon-a-date',
                     classList: 'size-xl'
                 },
-                title: 'Программа лояльности',
-                description: 'Автоматическая регистрация в&nbsp;программе лояльности от&nbsp;платёжной системы &laquo;Мир&raquo;',
+                title: 'До 56 дней',
+                description: 'Беспроцентный период',
+            },
+            {
+                spriteName: {
+                    name: 'icon-a-low-percent',
+                    classList: 'size-xl'
+                },
+                title: '0 <span class="currency">₽</span>',
+                description: 'Стоимость обслуживания',
+            },
+            {
+                spriteName: {
+                    name: 'icon-a-date',
+                    classList: 'size-xl'
+                },
+                title: 'Надежность',
+                description: 'Работает на&nbsp;территории России независимо от&nbsp;внешних экономических и&nbsp;политических факторов',
             }
         ]
 
@@ -105,7 +121,11 @@ block content
         var cardStepList = [
             {
                 title: "Онлайн",
-                text: "Закажите выпуск именной карты &laquo;Мир&raquo; прямо сейчас"
+                text: "Закажите выпуск именной карты &laquo;Мир&raquo; прямо сейчас",
+                button: {
+                    href: "#",
+                    text: "Оформить карту",
+                }
             },
             {
                 title: "Через менеджера",
@@ -124,7 +144,6 @@ block content
     +banner-product(
         {
             title: "Мир Supreme",
-            subtitle: "Премиальная карта национальной платежной системы &laquo;Мир&raquo;",
             imgSrc: "img/hero-banner/mir-supreme.png",
             bgColor: "heavy-violet",
             urlHref: "#",
@@ -132,13 +151,15 @@ block content
             benefits: [
                 {
                     beforeNum: 'до',
-                    num: '30%',
-                    description: 'Кешбэк рублями <br>за&nbsp;покупки у&nbsp;партнёров банка'
+                    num: '10 млн',
+                    currency: '₽',
+                    description: 'Кредитный лимит'
                 },
                 {
-                    beforeNum: 'от',
-                    num: '7%',
-                    description: 'Кешбэк от&nbsp;суммы <br>покупок в&nbsp;избранных категориях'
+                    beforeNum: 'до',
+                    num: '56',
+                    afterNum: 'дней',
+                    description: 'Беспроцентный период'
                 },
             ],
             breadcrumbsArray: [
@@ -161,9 +182,20 @@ block content
                 h3 Преимущества
             .row.row-gap-6.row-gap-md-7.px-lg-6
                 each item, index in allBenefits
-                    .col-12.col-md-6(class= (index % 2) ? 'ps-xxl-8' : 'pe-xxl-8')
+                    .col-12.col-md-6.col-lg-4
                         +benefit(item.spriteName, item.title, item.description)
         +pattern-bg('section', 'light', 'pattern-bg--position-sm-bottom')
+
+    +banner-product-info({
+        title: "О карте",
+        tag: "Услуга",
+        button: {
+            href: "#",
+            text: "Подробнее",
+        },
+        imageSrc: "img/banners/page-banner-2.png"
+    })
+        p.text-l.m-0 Предоставление опции доступа в&nbsp;бизнес-залы аэропортов и&nbsp;железнодорожных вокзалов на&nbsp;территории&nbsp;РФ и&nbsp;за&nbsp;рубежом с&nbsp;сервисом Mir Pass
 
     section.section-layout
         .container
@@ -171,17 +203,6 @@ block content
                 | Подключите выгоду
             +slider-card-product(spcCardProductList, 'mobile-s:1,mobile:1,tablet:2,laptop:2,laptop-x:2')
 
-    +banner-product-info({
-        title: "Доступ в&nbsp;бизнес-залы аэропортов и&nbsp;вокзалов",
-        tag: "Привилегия",
-        link: {
-            href: "#",
-            text: "Полный список бизнес-залов",
-        },
-        imageSrc: "img/banners/page-banner-2.png"
-    })
-        p.text-l Путешествуйте с&nbsp;комфортом и&nbsp;наслаждайтесь каждой поездкой, ожидая свой рейс в&nbsp;бизнес-залах ON&nbsp;PASS или в&nbsp;ресторанах ON&nbsp;FOOD.
-        p.text-l.m-0 С&nbsp;полным актуальным списком доступных бизнес-залов можно ознакомиться на&nbsp;сайте Mir Pass или в&nbsp;мобильном приложении &laquo;Привет!)&raquo;
 
     section.section-layout.js-collapsed-mobile
         .container
