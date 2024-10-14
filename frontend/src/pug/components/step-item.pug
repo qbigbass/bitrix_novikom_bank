@@ -7,7 +7,7 @@ mixin step-item(item, index, maxIndex)
         var stepIndex = index+1;
         var colorClassName = item.colorClassName ? item.colorClassName : 'green-100';
 
-    .step-item.d-flex.align-items-lg-start.gap-2.gap-sm-4.gap-lg-3.flex-lg-column(class=item.title ? 'flex-column flex-sm-row align-items-start' : 'flex-row align-items-center')
+    .step-item.d-flex.align-items-lg-start.gap-2.gap-sm-4.gap-lg-3.flex-column.flex-lg-column.flex-sm-row.align-items-start
         .step-item__indicator-group.d-flex.gap-4
             .step-item__indicator.position-relative.d-flex.flex-column.flex-shrink-0
                 .position-relative.z-1
