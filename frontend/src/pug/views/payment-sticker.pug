@@ -1,0 +1,225 @@
+extends ../templates/base
+
+block title
+    title= 'Карты - Платежный стикер «Мир»'
+    meta(name="description" content="Описание страницы с кредитами")
+block content
+
+    include ../cards/card-text
+    include ../cards/card-product
+    include ../cards/card-step
+    include ../includes/header/header
+    include ../components/banners/text-banner
+    include ../components/banners/banner-product-info
+    include ../components/ui/tabs
+    include ../components/ui/tabs-simple
+    include ../components/tabs-with-content
+    include ../components/helper
+    include ../components/benefit
+    include ../components/step-item
+    include ../components/banners/banner-product
+    include ../includes/layout/slider-card-product
+
+    -
+        var allBenefits = [
+            {
+                spriteName: {
+                    name: 'icon-a-date',
+                    classList: 'size-xl'
+                },
+                title: 'Подготовьте телефон',
+                description: 'На&nbsp;платформе iOS нужно удалить все банковские карты из&nbsp;AppleWallet, а&nbsp;на&nbsp;платформе Android отключите NFC&nbsp;&mdash; бесконтактную оплату',
+            },
+            {
+                spriteName: {
+                    name: 'icon-a-money',
+                    classList: 'size-xl'
+                },
+                title: 'Приклейте стикер',
+                description: 'Выдавите платёжный стикер и&nbsp;наклейте на&nbsp;заднюю часть смартфона',
+            },
+            {
+                spriteName: {
+                    name: 'icon-a-low-percent',
+                    classList: 'size-xl'
+                },
+                title: 'Начните платить стикером',
+                description: 'Легко оплачивайте товары/услуги приложив стикер к&nbsp;любому терминалу принимающему бесконтактную оплату',
+            }
+        ]
+
+        var tabContentList = [
+            {
+                link: '#how-use',
+                id: 'how-use',
+                linkText: 'Как пользоваться',
+                isActive: true
+            },
+            {
+                link: '#how-to-glue',
+                id: 'how-to-glue',
+                linkText: 'Как приклеить',
+                isActive: false
+            },
+            {
+                link: '#how-to-pay',
+                id: 'how-to-pay',
+                linkText: 'Как платить',
+                isActive: false
+            },
+            {
+                link: '#how-get',
+                id: 'how-get',
+                linkText: 'Как получить',
+                isActive: false
+            },
+            {
+                link: '#faq',
+                id: 'faq',
+                linkText: 'Вопросы и ответы',
+                isActive: false
+            },
+        ]
+
+        var spcCardProductList = [
+            {
+                color: 'green',
+                title: 'Программа «Кешбэк»',
+                img: 'large-individual/contribution-rentier.png',
+                button: 'Подробнее',
+                subtitle: {
+                    before: 'до',
+                    number: '7%',
+                },
+                description: 'Возврат рублями от&nbsp;покупок по&nbsp;карте'
+            },
+            {
+                color: 'green',
+                title: 'Программа &laquo;Бонусы&raquo;',
+                img: 'large-individual/contribution-rentier.png',
+                button: 'Подробнее',
+                subtitle: {
+                    before: 'до',
+                    number: '20%',
+                },
+                description: 'Бонусные баллы за&nbsp;покупки'
+            },
+        ]
+
+        var cardStepList = [
+            {
+                title: "Онлайн",
+                text: "Закажите выпуск именной карты &laquo;Мир&raquo; прямо сейчас",
+                button: {
+                    href: "#",
+                    text: "Оформить карту",
+                }
+            },
+            {
+                title: "Через менеджера",
+                text: "Закажите консультацию сотрудника по&nbsp;телефону <span class='text-nowrap'>8&nbsp;800 250-70-07</span>"
+            },
+            {
+                title: "В&nbsp;офисе банка",
+                text: "Приходите в&nbsp;ближайший офис банка Новиком",
+                link: {
+                    href: "#",
+                    text: "Найти на карте",
+                }
+            },
+        ]
+
+    +banner-product(
+        {
+            title: "Платежный стикер «Мир»",
+            subtitle: "Полноценная банковская карта с&nbsp;NFC-чипом",
+            imgSrc: "img/hero-banner/mir-payment-sticker.png",
+            bgColor: "blue",
+            benefits: [
+                {
+                    beforeNum: 'Выгодно',
+                    description: 'Стикер приклеивается <br>на&nbsp;смартфон'
+                },
+                {
+                    beforeNum: 'Безопасно',
+                    description: 'Магнитное поле стикера не&nbsp;позволяет считать его на&nbsp;расстоянии'
+                },
+                {
+                    beforeNum: 'Защищено',
+                    description: 'Обязательное введение пин-кода при сумме оплаты от&nbsp;3&nbsp;000 рублей'
+                },
+            ],
+            breadcrumbsArray: [
+                {
+                    link: "#",
+                    linkText: "Частным клиентам"
+                },
+                {
+                    link: "#",
+                    linkText: "Банковские карты"
+                }
+            ],
+        }
+    ).is-sticker
+
+
+    section.section-layout
+        .container
+            .row.mb-6.mb-lg-7.px-lg-6
+                h3 Как пользоваться стикером
+            .row.row-gap-6.row-gap-md-7.px-lg-6
+                each item, index in allBenefits
+                    .col-12.col-md-6.col-xl-4
+                        +benefit(item.spriteName, item.title, item.description)
+        +pattern-bg('section', 'light', 'pattern-bg--position-sm-bottom')
+
+    section.section-layout
+        .container
+            h3.px-lg-6.mb-6.mb-lg-7
+                | Подключите выгоду
+            +slider-card-product(spcCardProductList, 'mobile-s:1,mobile:1,tablet:2,laptop:2,laptop-x:2')
+
+    section.section-layout.js-collapsed-mobile
+        .container
+            h3.d-none.d-md-block.mb-md-6.mb-lg-7.px-lg-6
+                | О&nbsp;стикере
+            a(
+                data-bs-toggle="collapse"
+                href="#conditions"
+                role="button"
+                aria-expanded="false"
+                aria-controls="conditions"
+            ).h3.d-flex.align-items-center.justify-content-between.dark-100.d-md-none
+                | О&nbsp;стикере
+                +svg-use("icon-chevron-down", "icon size-m violet-100")
+            #conditions.collapse.d-md-block.mt-4.mt-md-6.mt-lg-7
+                .row.px-lg-6
+                    .col-12
+                        +tabs-simple(tabContentList, false)
+                        .tab-content.mt-4.mt-md-6.mt-lg-7
+                            #how-use.tab-pane.fade.show.active(aria-labelledby="how-use" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/how-to-top-up
+                            #how-to-glue.tab-pane.fade(aria-labelledby="how-to-glue" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/cost-premium-credit
+                            #how-to-pay.tab-pane.fade(aria-labelledby="how-to-pay" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/documents
+                            #how-get.tab-pane.fade(aria-labelledby="how-get" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/documents
+                            #faq.tab-pane.fade(aria-labelledby="faq" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/faq
+        +pattern-bg('section-2', 'light', 'pattern-bg--hide-mobile')
+
+    section.section-layout.bg-blue-10
+        .container
+            .d-flex.align-items-center.justify-content-between.px-lg-6.mb-6.mb-lg-7
+                h3 Спецпредложения
+                a(href="#").btn.btn-sm.btn-link.btn-icon.d-none.d-md-inline-flex
+                    | Смотреть все
+                    +svg-use("icon-chevron-right-small", "icon size-s")
+            include ../includes/layout/slider-cards-special
+
+    section.section-layout
+        .container
+            h3.px-lg-6.mb-6.mb-lg-7
+                | Смотрите также
+            +slider-card-product()
