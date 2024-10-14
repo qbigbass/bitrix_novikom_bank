@@ -1,0 +1,243 @@
+extends ../templates/base
+
+block title
+    title= 'Карты - Мир Supreme'
+    meta(name="description" content="Описание страницы с кредитами")
+block content
+
+    include ../cards/card-text
+    include ../cards/card-product
+    include ../cards/card-step
+    include ../includes/header/header
+    include ../components/banners/text-banner
+    include ../components/banners/banner-product-info
+    include ../components/ui/tabs
+    include ../components/ui/tabs-simple
+    include ../components/tabs-with-content
+    include ../components/helper
+    include ../components/benefit
+    include ../components/step-item
+    include ../components/banners/banner-product
+    include ../includes/layout/slider-card-product
+
+    -
+        var allBenefits = [
+            {
+                spriteName: {
+                    name: 'icon-a-date',
+                    classList: 'size-xl'
+                },
+                title: 'Mir Pass',
+                description: 'Предоставление опции доступа в&nbsp;бизнес-залы аэропортов и&nbsp;железнодорожных вокзалов на&nbsp;территории&nbsp;РФ и&nbsp;за&nbsp;рубежом с&nbsp;сервисом Mir Pass',
+            },
+            {
+                spriteName: {
+                    name: 'icon-a-money',
+                    classList: 'size-xl'
+                },
+                title: 'Безопасность',
+                description: 'Оператор платежной системы &laquo;Мир&raquo; принадлежит Банку России',
+            },
+            {
+                spriteName: {
+                    name: 'icon-a-low-percent',
+                    classList: 'size-xl'
+                },
+                title: 'Кешбэк рублями до 30%',
+                description: 'За&nbsp;покупки у&nbsp;партнеров банка, до&nbsp;7% в&nbsp;избранных категориях',
+            },
+            {
+                spriteName: {
+                    name: 'icon-a-date',
+                    classList: 'size-xl'
+                },
+                title: 'Программа лояльности',
+                description: 'Автоматическая регистрация в&nbsp;программе лояльности от&nbsp;платёжной системы &laquo;Мир&raquo;',
+            }
+        ]
+
+        var tabContentList = [
+            {
+                link: '#how-to-top-up',
+                id: 'how-to-top-up',
+                linkText: 'Как пополнить карту',
+                isActive: false
+            },
+            {
+                link: '#documents',
+                id: 'documents',
+                linkText: 'Документы и тарифы',
+                isActive: false
+            },
+            {
+                link: '#faq',
+                id: 'faq',
+                linkText: 'Вопросы и ответы',
+                isActive: false
+            },
+        ]
+
+        var spcCardProductList = [
+            {
+                color: 'green',
+                title: 'Программа «Кешбэк»',
+                img: 'large-individual/contribution-rentier.png',
+                button: 'Подробнее',
+                subtitle: {
+                    before: 'до',
+                    number: '7%',
+                },
+                description: 'Возврат рублями от&nbsp;покупок по&nbsp;карте'
+            },
+            {
+                color: 'green',
+                title: 'Программа &laquo;Бонусы&raquo;',
+                img: 'large-individual/contribution-rentier.png',
+                button: 'Подробнее',
+                subtitle: {
+                    before: 'до',
+                    number: '20%',
+                },
+                description: 'Бонусные баллы за&nbsp;покупки'
+            },
+        ]
+
+        var cardStepList = [
+            {
+                title: "Онлайн",
+                text: "Закажите выпуск именной карты &laquo;Мир&raquo; прямо сейчас"
+            },
+            {
+                title: "Через менеджера",
+                text: "Закажите консультацию сотрудника по&nbsp;телефону <span class='text-nowrap'>8&nbsp;800 250-70-07</span>"
+            },
+            {
+                title: "В&nbsp;офисе банка",
+                text: "Приходите в&nbsp;ближайший офис банка Новиком",
+                link: {
+                    href: "#",
+                    text: "Найти на карте",
+                }
+            },
+        ]
+
+    +banner-product(
+        {
+            title: "Мир Supreme",
+            subtitle: "Премиальная карта национальной платежной системы &laquo;Мир&raquo;",
+            imgSrc: "img/hero-banner/mir-supreme.png",
+            bgColor: "heavy-violet",
+            urlHref: "#",
+            buttonText: "Оформить карту",
+            benefits: [
+                {
+                    beforeNum: 'до',
+                    num: '30%',
+                    description: 'Кешбэк рублями <br>за&nbsp;покупки у&nbsp;партнёров банка'
+                },
+                {
+                    beforeNum: 'от',
+                    num: '7%',
+                    description: 'Кешбэк от&nbsp;суммы <br>покупок в&nbsp;избранных категориях'
+                },
+            ],
+            breadcrumbsArray: [
+                {
+                    link: "#",
+                    linkText: "Частным клиентам"
+                },
+                {
+                    link: "#",
+                    linkText: "Карты"
+                }
+            ],
+        }
+    )
+
+
+    section.section-layout
+        .container
+            .row.mb-6.mb-lg-7.px-lg-6
+                h3 Преимущества
+            .row.row-gap-6.row-gap-md-7.px-lg-6
+                each item, index in allBenefits
+                    .col-12.col-md-6(class= (index % 2) ? 'ps-xxl-8' : 'pe-xxl-8')
+                        +benefit(item.spriteName, item.title, item.description)
+        +pattern-bg('section', 'light', 'pattern-bg--position-sm-bottom')
+
+    section.section-layout
+        .container
+            h3.px-lg-6.mb-6.mb-lg-7
+                | Подключите выгоду
+            +slider-card-product(spcCardProductList, 'mobile-s:1,mobile:1,tablet:2,laptop:2,laptop-x:2')
+
+    +banner-product-info({
+        title: "Доступ в&nbsp;бизнес-залы аэропортов и&nbsp;вокзалов",
+        tag: "Привилегия",
+        link: {
+            href: "#",
+            text: "Полный список бизнес-залов",
+        },
+        imageSrc: "img/banners/page-banner-2.png"
+    })
+        p.text-l Путешествуйте с&nbsp;комфортом и&nbsp;наслаждайтесь каждой поездкой, ожидая свой рейс в&nbsp;бизнес-залах ON&nbsp;PASS или в&nbsp;ресторанах ON&nbsp;FOOD.
+        p.text-l.m-0 С&nbsp;полным актуальным списком доступных бизнес-залов можно ознакомиться на&nbsp;сайте Mir Pass или в&nbsp;мобильном приложении &laquo;Привет!)&raquo;
+
+    section.section-layout.js-collapsed-mobile
+        .container
+            h3.d-none.d-md-block.mb-md-6.mb-lg-7.px-lg-6
+                | О&nbsp;карте Мир Supreme
+            a(
+                data-bs-toggle="collapse"
+                href="#conditions"
+                role="button"
+                aria-expanded="false"
+                aria-controls="conditions"
+            ).h3.d-flex.align-items-center.justify-content-between.dark-100.d-md-none
+                | О&nbsp;карте Мир Supreme
+                +svg-use("icon-chevron-down", "icon size-m violet-100")
+            #conditions.collapse.d-md-block.mt-4.mt-md-6.mt-lg-7
+                .row.px-lg-6
+                    .col-12
+                        +tabs-simple(tabContentList, false)
+                        .tab-content.mt-4.mt-md-6.mt-lg-7
+                            #how-to-top-up.tab-pane.fade.show.active(aria-labelledby="how-to-top-up" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/how-to-top-up
+                            #documents.tab-pane.fade(aria-labelledby="documents" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/documents
+                            #faq.tab-pane.fade(aria-labelledby="faq" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/faq
+        +pattern-bg('section-2', 'light', 'pattern-bg--hide-mobile')
+
+    section.section-layout.js-collapsed-mobile.bg-dark-10
+        .container
+            h3.d-none.d-md-block.mb-md-6.mb-lg-7.px-lg-6
+                | Как оформить карту
+            a(
+                data-bs-toggle="collapse"
+                href="#how-apply"
+                role="button"
+                aria-expanded="false"
+                aria-controls="how-apply"
+            ).h3.d-flex.align-items-center.justify-content-between.dark-100.d-md-none
+                | Как оформить карту
+                +svg-use("icon-chevron-down", "icon size-m violet-100")
+            #how-apply.collapse.d-md-block.mt-4.mt-md-6.mt-lg-7
+                .row.px-lg-6.row-gap-6
+                    each item in cardStepList
+                        .col-12.col-lg-4
+                           +card-step(item).pe-xxl-11
+    section.section-layout.bg-blue-10
+        .container
+            .d-flex.align-items-center.justify-content-between.px-lg-6.mb-6.mb-lg-7
+                h3 Спецпредложения
+                a(href="#").btn.btn-sm.btn-link.btn-icon.d-none.d-md-inline-flex
+                    | Смотреть все
+                    +svg-use("icon-chevron-right-small", "icon size-s")
+            include ../includes/layout/slider-cards-special
+
+    section.section-layout
+        .container
+            h3.px-lg-6.mb-6.mb-lg-7
+                | Смотрите также
+            +slider-card-product()

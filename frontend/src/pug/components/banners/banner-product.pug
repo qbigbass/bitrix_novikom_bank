@@ -4,7 +4,7 @@ mixin banner-product(data)
     .banner-product(
         class= data.bgColor ? `banner-product--${data.bgColor}` : ''
         class= data.type ? `banner-product--type-${data.type}` : ''
-        )
+        )&attributes(attributes)
         .banner-product__wrapper
             .banner-product__content
                 .banner-product__header

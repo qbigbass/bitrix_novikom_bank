@@ -1,0 +1,23 @@
+-
+    var tableData = [
+        {
+            label: "Стоимость обслуживания карты МИР Премиальная",
+            value: ["2000 рублей в год"]
+        },
+        {
+            label: "Время изготовления карты МИР Премиальная",
+            value: [
+                "от&nbsp;7&nbsp;рабочих дней (для клиентов Головного офиса Банка)",
+                "от&nbsp;10&nbsp;рабочих дней (для клиентов филиалов Банка)"
+            ]
+        },
+    ]
+
+.table-tab.cell-2
+    .table-tab__body
+        each row in tableData
+            .table-tab__row
+                .table-tab__cell.text-l.fw-semibold.dark-70!= row.label
+                .table-tab__cell
+                    each item in row.value
+                        p.text-l!= item
