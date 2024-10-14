@@ -1,0 +1,23 @@
+-
+    var tableData = [
+        {
+            label: "Для владельцев карт",
+            value: [
+                "Без комиссии в&nbsp;банкоматах и&nbsp;ПВН банка Новиком",
+                "0,5% от&nbsp;суммы операции в&nbsp;банкоматах и&nbsp;ПВН сторонних банков"
+            ]
+        },
+        {
+            label: "Для клиентов, получающих зарплату на&nbsp;счет в&nbsp;Новикоме",
+            value: ["Без комиссии в&nbsp;банкоматах и&nbsp;ПВН банка Новиком и&nbsp;сторонних банков"]
+        },
+    ]
+
+.table-tab.cell-2
+    .table-tab__body
+        each row in tableData
+            .table-tab__row
+                .table-tab__cell.text-l.fw-semibold.dark-70!= row.label
+                .table-tab__cell
+                    each item in row.value
+                        p.text-l!= item
