@@ -110,20 +110,16 @@ block content
 
         var cardStepList = [
             {
-                title: "Онлайн",
-                text: "Закажите выпуск именной карты &laquo;Мир&raquo; прямо сейчас"
+                imageSrc: "step-indicator-1.svg",
+                text: "В&nbsp;разделе &laquo;Главная&raquo; выберите: &laquo;Карты&raquo;&nbsp;&mdash; &laquo;Заказать новую карту&raquo;&nbsp;&mdash; &laquo;Дебетовая карта&raquo;"
             },
             {
-                title: "Через менеджера",
-                text: "Закажите консультацию сотрудника по&nbsp;телефону <span class='text-nowrap'>8&nbsp;800 250-70-07</span>"
+                imageSrc: "step-indicator-2.svg",
+                text: "Заполните необходимые поля. <br>В&nbsp;поле &laquo;Категория карты&raquo; выберете &laquo;МИР Цифровая&raquo;"
             },
             {
-                title: "В&nbsp;офисе банка",
-                text: "Приходите в&nbsp;ближайший офис банка Новиком",
-                link: {
-                    href: "#",
-                    text: "Найти на карте",
-                }
+                imageSrc: "step-indicator-3.svg",
+                text: "Подтвердите операцию"
             },
         ]
 
@@ -241,10 +237,10 @@ block content
                 | Как оформить карту
                 +svg-use("icon-chevron-down", "icon size-m violet-100")
             #how-apply.collapse.d-md-block.mt-4.mt-md-6.mt-lg-7
-                .row.px-lg-6.row-gap-6
-                    each item in cardStepList
+                .row.row-gap-6.px-lg-6
+                    each item, index in cardStepList
                         .col-12.col-lg-4
-                           +card-step(item).pe-xxl-11
+                            +step-item(item, index, cardStepList.length - 1)
     section.section-layout.bg-blue-10
         .container
             .d-flex.align-items-center.justify-content-between.px-lg-6.mb-6.mb-lg-7
