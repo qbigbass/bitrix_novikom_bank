@@ -1,6 +1,7 @@
 .card-calculate-result {
-    padding: 1.5rem 1rem;
+    $root: #{&};
 
+    padding: 1.5rem 1rem;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -21,6 +22,10 @@
         //align-items: flex-start;
         gap: 1.5rem;
         width: 100%;
+
+        @include use-media(laptop) {
+            gap: 3rem;
+        }
     }
 
     &__footer {
@@ -30,6 +35,18 @@
             @include use-media(tablet-album) {
                 margin-top: 1.5rem;
             }
+        }
+    }
+
+    &__label {
+        color: var(--dark-70);
+    }
+
+    &--type-bonus {
+        color: var(--dark-0);
+
+        #{$root}__label {
+            color: var(--dark-0);
         }
     }
 }

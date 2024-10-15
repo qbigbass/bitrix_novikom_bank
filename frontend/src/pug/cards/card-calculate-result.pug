@@ -1,9 +1,9 @@
 mixin card-calculate-result(data, bgColor = 'bg-dark-0')
-    .card-calculate-result(class= bgColor)
+    .card-calculate-result(class= bgColor)&attributes(attributes)
         .card-calculate-result__body
             each item in data.rows
                 .d-flex.flex-column.row-gap-2
-                    span.card-calculate-result__label.text-s.dark-70= item.title
+                    span.card-calculate-result__label.text-s= item.title
                     if item.link
                         .d-flex.flex-column.flex-md-row.justify-content-md-between.flex-wrap.align-items-md-end
                             span.text-number-ml.fw-bold.text-nowrap= item.value
@@ -19,7 +19,9 @@ mixin card-calculate-result(data, bgColor = 'bg-dark-0')
                                 | &nbsp;
                                 span.currency ₽
 
-        .card-calculate-result__footer
-            button(type="button").btn.btn-primary.btn-lg-lg.w-100= data.btnText
-            if data.notes
-                p.dark-70.caption-m!= data.notes
+        if data.btnText || data.notes
+            .card-calculate-result__footer
+                if data.btnText
+                    button(type="button").btn.btn-primary.btn-lg-lg.w-100= data.btnText
+                if data.notes
+                    p.dark-70.caption-m!= data.notes
