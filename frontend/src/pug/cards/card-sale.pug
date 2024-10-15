@@ -1,0 +1,8 @@
+mixin card-sale(data)
+    a(href= data.href).card-sale.d-flex.flex-column.align-items-start.gap-2.gap-lg-3
+        img.card-sale__image(src=`img/discount-card/${data.img}`, alt="", loading="lazy")
+        if data.title
+            h5.dark-100!=data.title
+        if data.text
+            span.dark-100!= data.text
+

@@ -1,0 +1,7 @@
+mixin card-special(data)
+    a(href= data.href).card-special.bg-dark-10.dark-100.d-flex.flex-column.row-gap-5.row-gap-lg-8
+        .card-special__header.d-flex.align-items-center.justify-content-between
+            +tag(data.tag, 'outline')
+            span.text-s.dark-70= data.date
+        .card-special__body
+            p.text-l.fw-semibold.m-0!= data.text

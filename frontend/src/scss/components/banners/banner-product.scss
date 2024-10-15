@@ -241,7 +241,7 @@ $bannerHeight: 37.5rem; //600px
             }
 
             @include use-media(laptop-x) {
-                top: 144px;
+                top: 5rem;
                 right: -2rem;
                 max-width: 50.625rem; //810px
             }

@@ -1,7 +1,7 @@
 extends ../templates/base
 
 block title
-    title= 'Карты - Социально-платежная карта Мир'
+    title= 'Карты - Всегда в плюсе'
     meta(name="description" content="Описание страницы с кредитами")
 block content
 
@@ -27,56 +27,46 @@ block content
                     name: 'icon-a-date',
                     classList: 'size-xl'
                 },
-                title: 'Бесплатное снятие наличных',
-                description: 'В&nbsp;банкоматах любых банков на&nbsp;территории&nbsp;РФ без ограничения количества снятий',
+                title: 'Кешбэк рублями до&nbsp;30%',
+                description: 'За&nbsp;покупки у&nbsp;партнеров банка, до&nbsp;7% в&nbsp;избранных категориях',
             },
             {
                 spriteName: {
                     name: 'icon-a-money',
                     classList: 'size-xl'
                 },
-                title: 'Без комиссии',
-                description: 'До&nbsp;100&nbsp;тыс.&nbsp;₽&nbsp;в&nbsp;месяц переводы по&nbsp;Системе Быстрых Платежей (СБП)',
+                title: 'Бонусы',
+                description: 'При оплате товаров и&nbsp;услуг на&nbsp;сумму 15&nbsp;000 руб в&nbsp;месяц',
             },
             {
                 spriteName: {
                     name: 'icon-a-low-percent',
                     classList: 'size-xl'
                 },
-                title: 'Бесплатные переводы',
-                description: 'До&nbsp;30&nbsp;млн в&nbsp;месяц между своими счетами в&nbsp;разных банках',
-            },
-            {
-                spriteName: {
-                    name: 'icon-a-date',
-                    classList: 'size-xl'
-                },
-                title: 'Бесплатное обслуживание',
-                description: 'С первого дня',
-            },
-            {
-                spriteName: {
-                    name: 'icon-a-money',
-                    classList: 'size-xl'
-                },
-                title: 'Бесплатное СМС-информирование',
-                description: 'Обо всех операциях по&nbsp;карте, включая начисление зарплаты',
+                title: '0 <span class="currency">₽</span> СМС информирование',
+                description: 'При покупках по&nbsp;карте в&nbsp;месяц на&nbsp;сумму равную или более 20&nbsp;000 рублей',
             },
             {
                 spriteName: {
                     name: 'icon-a-low-percent',
                     classList: 'size-xl'
                 },
-                title: 'Бесплатное пополнение',
-                description: 'Банковских карт в&nbsp;банкоматах сторонних банков',
+                title: '0 <span class="currency">₽</span> обслуживание',
+                description: 'Основной и&nbsp;дополнительной карты, в&nbsp;том числе в&nbsp;формате электронного Платежного кольца/Платежного стикера',
             },
         ]
 
         var tabContentList = [
             {
-                link: '#commissions',
-                id: 'commissions',
-                linkText: 'Комиссии',
+                link: '#how-to-top-up',
+                id: 'how-to-top-up',
+                linkText: 'Как пополнить карту',
+                isActive: true
+            },
+            {
+                link: '#cost',
+                id: 'cost',
+                linkText: 'Стоимость и сроки',
                 isActive: false
             },
             {
@@ -90,25 +80,6 @@ block content
                 id: 'faq',
                 linkText: 'Вопросы и ответы',
                 isActive: false
-            },
-        ]
-
-        var mainTabsList = [
-            {
-                link: '#1',
-                linkText: 'Для работников ГК «Ростех»',
-            },
-            {
-                link: '#2',
-                linkText: 'Для организаций',
-            },
-            {
-                link: '#3',
-                linkText: 'Для руководителей',
-            },
-            {
-                link: '#4',
-                linkText: 'Для новых зарплатных клиентов',
             },
         ]
 
@@ -135,52 +106,6 @@ block content
                 },
                 description: 'Бонусные баллы за&nbsp;покупки'
             },
-            {
-                color: 'green',
-                title: 'Программа &laquo;Бонусная копилка&raquo;',
-                img: 'large-individual/contribution-rentier.png',
-                button: 'Подробнее',
-                subtitle: {
-                    before: 'до',
-                    number: '7%',
-                    after: 'годовых',
-                },
-                description: 'Начисление бонусных баллов за&nbsp;наличие остатка на&nbsp;счете вашей карты'
-            },
-            {
-                color: 'green',
-                title: 'Программа «Кешбэк»',
-                img: 'large-individual/contribution-rentier.png',
-                button: 'Подробнее',
-                subtitle: {
-                    before: 'до',
-                    number: '7%',
-                },
-                description: 'Возврат рублями от&nbsp;покупок по&nbsp;карте'
-            },
-            {
-                color: 'green',
-                title: 'Программа &laquo;Бонусы&raquo;',
-                img: 'large-individual/contribution-rentier.png',
-                button: 'Подробнее',
-                subtitle: {
-                    before: 'до',
-                    number: '20%',
-                },
-                description: 'Бонусные баллы за&nbsp;покупки'
-            },
-            {
-                color: 'green',
-                title: 'Программа &laquo;Бонусная копилка&raquo;',
-                img: 'large-individual/contribution-rentier.png',
-                button: 'Подробнее',
-                subtitle: {
-                    before: 'до',
-                    number: '7%',
-                    after: 'годовых',
-                },
-                description: 'Начисление бонусных баллов за&nbsp;наличие остатка на&nbsp;счете вашей карты'
-            },
         ]
 
         var cardStepList = [
@@ -204,28 +129,28 @@ block content
 
     +banner-product(
         {
-            title: "Социально-платёжная карта&nbsp;&laquo;Мир&raquo;",
-            subtitle: "Начисление зарплаты на&nbsp;карту Новикома",
-            imgSrc: "img/hero-banner/mir-pc.png",
+            title: "Всегда в&nbsp;плюсе",
+            subtitle: "Дебетовая карта Мир Премиальная",
+            imgSrc: "img/hero-banner/always-plus.png",
             bgColor: "heavy-purple",
             urlHref: "#",
+            buttonText: "Оформить карту",
             benefits: [
                 {
-                    beforeNum: 'от',
+                    beforeNum: 'до',
+                    num: '8%',
+                    description: 'Годовых в&nbsp;месяц на&nbsp;остаток'
+                },
+                {
                     num: '0',
                     currency: '₽',
-                    description: 'Комиссия за&nbsp;снятие наличных в&nbsp;любых банкоматах'
+                    description: 'Обслуживание карты'
                 },
                 {
-                    beforeNum: 'до',
-                    num: '7%',
-                    description: 'Кешбэк от&nbsp;суммы покупок'
+                    num: '0',
+                    currency: '₽',
+                    description: 'Выпуск цифровой карты'
                 },
-                {
-                    beforeNum: 'до',
-                    num: '80%',
-                    description: 'Скидки на&nbsp;отдых, спорт, обучение и&nbsp;многое другое'
-                }
             ],
             breadcrumbsArray: [
                 {
@@ -245,12 +170,9 @@ block content
         .container
             .row.mb-6.mb-lg-7.px-lg-6
                 h3 Преимущества
-            .row.mb-6.mb-lg-7.px-lg-6
-                .col-12
-                    +tabs(mainTabsList)
-            .row.row-gap-6.px-lg-6
+            .row.row-gap-6.row-gap-md-7.px-lg-6
                 each item, index in allBenefits
-                    .col-12.col-md-6.col-lg-4
+                    .col-12.col-md-6(class= (index % 2) ? 'ps-xxl-8' : 'pe-xxl-8')
                         +benefit(item.spriteName, item.title, item.description)
         +pattern-bg('section', 'light', 'pattern-bg--position-sm-bottom')
 
@@ -258,35 +180,12 @@ block content
         .container
             h3.px-lg-6.mb-6.mb-lg-7
                 | Подключите выгоду
-            +slider-card-product(spcCardProductList)
-
-    section.section-layout
-        .container
-            h3.px-lg-6.mb-6.mb-lg-7
-                | Надёжно и&nbsp;удобно
-            include ../includes/layout/slider-cards-benefit
-
-    +banner-product-info({
-        title: "Льготные процентные ставки по&nbsp;потребительским кредитам и&nbsp;ипотеке",
-        tag: "Услуга",
-        button: {
-            href: "#",
-            text: "Подробнее",
-        },
-        imageSrc: "img/banners/page-banner-1.png"
-    })
-        p.text-l.m-0 Держателям социально-платёжной карты &laquo;Мир&raquo; доступны специальные льготные условия по&nbsp;потребительским кредитам и&nbsp;ипотеке.
-
-    section.section-layout
-        .container
-            h3.px-lg-6.mb-6.mb-lg-7
-                | Скидки
-            include ../includes/layout/slider-cards-sales
+            +slider-card-product(spcCardProductList, 'mobile-s:1,mobile:1,tablet:2,laptop:2,laptop-x:2')
 
     section.section-layout.js-collapsed-mobile
         .container
             h3.d-none.d-md-block.mb-md-6.mb-lg-7.px-lg-6
-                | Подробнее о&nbsp;карте
+                | О&nbsp;карте Всегда в&nbsp;плюсе
             a(
                 data-bs-toggle="collapse"
                 href="#conditions"
@@ -294,15 +193,17 @@ block content
                 aria-expanded="false"
                 aria-controls="conditions"
             ).h3.d-flex.align-items-center.justify-content-between.dark-100.d-md-none
-                | Подробнее о&nbsp;карте
+                | О&nbsp;карте Всегда в&nbsp;плюсе
                 +svg-use("icon-chevron-down", "icon size-m violet-100")
             #conditions.collapse.d-md-block.mt-4.mt-md-6.mt-lg-7
                 .row.px-lg-6
                     .col-12
                         +tabs-simple(tabContentList, false)
                         .tab-content.mt-4.mt-md-6.mt-lg-7
-                            #commissions.tab-pane.fade.show.active(aria-labelledby="commissions" tabindex="0" role="tabpanel")
-                                include ../includes/layout/tabs/commissions
+                            #how-to-top-up.tab-pane.fade.show.active(aria-labelledby="how-to-top-up" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/how-to-top-up
+                            #cost.tab-pane.fade(aria-labelledby="cost" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/cost-always-plus
                             #documents.tab-pane.fade(aria-labelledby="documents" tabindex="0" role="tabpanel")
                                 include ../includes/layout/tabs/documents
                             #faq.tab-pane.fade(aria-labelledby="faq" tabindex="0" role="tabpanel")

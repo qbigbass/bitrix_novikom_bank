@@ -1,0 +1,43 @@
+-
+    var benefitsList = [
+        {
+            spriteName: {
+                name: 'icon-a-date',
+                classList: 'size-xl'
+            },
+            title: 'Через интернет-банк <br>и&nbsp;мобильное приложение'
+        },
+        {
+            spriteName: {
+                name: 'icon-a-date',
+                classList: 'size-xl'
+            },
+            title: 'В&nbsp;офисах банка<br> Новиком'
+        },
+        {
+            spriteName: {
+                name: 'icon-a-date',
+                classList: 'size-xl'
+            },
+            title: 'В&nbsp;платежных терминалах/банкоматах Банка и&nbsp;партнеров'
+        },
+        {
+            spriteName: {
+                name: 'icon-a-date',
+                classList: 'size-xl'
+            },
+            title: 'Используя услугу <br>&laquo;Перевод с&nbsp;карты на&nbsp;карту&raquo;'
+        },
+        {
+            spriteName: {
+                name: 'icon-a-date',
+                classList: 'size-xl'
+            },
+            title: 'C&nbsp;помощью банковского<br> перевода'
+        },
+    ]
+
+.row.row-gap-6.row-gap-lg-7
+    each item, idx in benefitsList
+        .col-12.col-md-6.col-xl-4
+            +benefit(item.spriteName, item.title, item.description, true)

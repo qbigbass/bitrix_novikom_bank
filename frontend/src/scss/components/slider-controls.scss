@@ -39,6 +39,10 @@ $base-transition: .3s ease-in-out;
             display: none;
         }
     }
+
+    @at-root .swiper-navigation-disabled.swiper-pagination-disabled & {
+        display: none;
+    }
 }
 
 .swiper-pagination-bullet {

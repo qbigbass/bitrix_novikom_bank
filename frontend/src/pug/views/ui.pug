@@ -45,6 +45,7 @@ block content
     include ../cards/card-service-app
     include ../cards/card-benefit
     include ../cards/card-help
+    include ../cards/card-step
 
     section#typography.section-layout
         .container
@@ -491,6 +492,51 @@ block content
                                 a(href="#").btn.btn-sm.btn-info.btn-icon.d-md-none
                                     | Скачать
                                     +svg-use("icon-download-small", "icon size-s")
+
+
+    section#card-sale.section-layout.pt-0
+        .container
+            .d-flex.flex-column.row-gap-5
+                h2 Card Sale
+                include ../includes/layout/slider-cards-sales
+
+    section#card-step.section-layout.pt-0
+        .container
+            .d-flex.flex-column.row-gap-5
+                h2 Card Step
+                .row.px-lg-6.row-gap-6
+                    -
+                        var cardStepList = [
+                            {
+                                title: "Онлайн",
+                                text: "Закажите выпуск именной карты &laquo;Мир&raquo; прямо сейчас",
+                                button: {
+                                    href: "#",
+                                    text: "Подать заявку",
+                                }
+                            },
+                            {
+                                title: "Через менеджера",
+                                text: "Закажите консультацию сотрудника по&nbsp;телефону <span class='text-nowrap'>8&nbsp;800 250-70-07</span>"
+                            },
+                            {
+                                title: "В&nbsp;офисе банка",
+                                text: "Приходите в&nbsp;ближайший офис банка Новиком",
+                                link: {
+                                    href: "#",
+                                    text: "Найти на карте",
+                                }
+                            },
+                        ]
+
+                    each item in cardStepList
+                        .col-12.col-lg-4
+                            +card-step(item).pe-xxl-11
+    section#card-special.section-layout.pt-0
+        .container
+            .d-flex.flex-column.row-gap-5
+                h2 Card Special
+                include ../includes/layout/slider-cards-special
 
     section#select.section-layout.pt-0
         .container
