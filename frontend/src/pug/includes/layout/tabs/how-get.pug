@@ -1,0 +1,22 @@
+-
+    var benefitsList = [
+        {
+            spriteName: {
+                name: 'icon-a-date',
+                classList: 'size-xl'
+            },
+            title: 'Подать заявку в&nbsp;офисе Новикома'
+        },
+        {
+            spriteName: {
+                name: 'icon-a-date',
+                classList: 'size-xl'
+            },
+            title: 'Обратиться к&nbsp;персональному менеджеру'
+        },
+    ]
+
+.row.row-gap-6.row-gap-lg-7
+    each item, idx in benefitsList
+        .col-12.col-md-6
+            +benefit(item.spriteName, item.title, item.description, true)
