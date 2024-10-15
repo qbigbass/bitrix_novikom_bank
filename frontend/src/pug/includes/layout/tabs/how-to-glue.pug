@@ -24,9 +24,11 @@ h4.mb-4.mb-md-5.mb-lg-6 Подготовьте свои устройства к 
     each item, index in cardStepList
         .col-12.col-lg-6
             +step-item(item, index, cardStepList.length - 1)
-.row
-    .col-12
-        +polygon-container("violet-100")
-            +helper("img/sticker-rule.png", "bg-dark-10")
-                p.mb-0 Не&nbsp;рекомендуем клеить стикер на&nbsp;центральную часть телефона, чтобы не&nbsp;перекрыть интерфейс беспроводной зарядки на&nbsp;устройстве.
+
+.content-negative-wrapper
+    .row
+        .col-12
+            +polygon-container("violet-100")
+                +helper("img/sticker-rule.png", "bg-dark-10")
+                    p.mb-0 Не&nbsp;рекомендуем клеить стикер на&nbsp;центральную часть телефона, чтобы не&nbsp;перекрыть интерфейс беспроводной зарядки на&nbsp;устройстве.
 
