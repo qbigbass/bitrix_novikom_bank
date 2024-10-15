@@ -1,0 +1,12 @@
+-
+    var conditionsList = [
+        "по&nbsp;карте МИР Премиальная &laquo;Всегда в&nbsp;плюсе&raquo; на&nbsp;сумму не&nbsp;менее 20&nbsp;000 рублей в&nbsp;месяц,",
+        "по&nbsp;остальным картам Банка на&nbsp;сумму не&nbsp;менее 5000 рублей в&nbsp;месяц."
+    ]
+
+.row
+    .col-12
+        p.text-l.mb-3.mb-md-4 Кешбэк начисляется при оплате товаров и&nbsp;услуг с&nbsp;использованием карт Банка:
+        ul.list.list--size-l
+            each item in conditionsList
+                li!= item
