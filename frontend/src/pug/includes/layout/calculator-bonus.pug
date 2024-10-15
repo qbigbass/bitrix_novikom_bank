@@ -1,0 +1,56 @@
+-
+    var inputSliderList = [
+        {
+            label: 'Ваши покупки по карте в месяц',
+            id: 'amount-bonus',
+            maxValue: 100000,
+            minValue: 2000,
+            startValue: 10000,
+            stepSize: 1000,
+            type: "price",
+            editable: true
+        },
+    ]
+
+    var calculatorData = {
+        rows: [
+            {
+                title: 'За год будет начислено',
+                value: '600 бонусов',
+            },
+        ]
+    }
+
+include ../../components/ui/input/input-slider
+include ../../cards/card-calculate-result
+
+.row.px-lg-6
+    .col-12.col-lg-6
+        .pe-xl-6
+            .d-flex.flex-column.row-gap-4.row-gap-md-6.row-gap-lg-7
+                each input in inputSliderList
+                    +input-slider(input)
+
+                .row.row-gap-4.row-gap-lg-6
+                    .col-12.col-md-6
+                        .d-flex.flex-column.row-gap-2
+                            label(for="select1").form-label.mb-0
+                                | Тип карты
+                            select#select1(aria-label="Тип карты").form-select.js-select
+                                option(selected value="1") Дебетовая
+                                option(value="2") Кредитная
+
+                    .col-12.col-md-6
+                        .d-flex.flex-column.row-gap-2
+                            label(for="select2").form-label.mb-0
+                                | Категория основной карты
+                            select#select2(aria-label="Категория основной карты").form-select.js-select
+                                option(selected value="1") Standart
+                                option(value="2") Список 2
+                                option(value="3") Список 3
+                                option(value="4") Список 4
+
+    .col-12.col-lg-6.mt-4.mt-md-6.mt-lg-0
+        .ps-xxl-6
+            +polygon-container()
+                +card-calculate-result(calculatorData, 'bg-gradient-violet').card-calculate-result--type-bonus
