@@ -110,9 +110,19 @@
 	background-color: var(--blue-10);
 }
 
-.bg-linear-blue-purple {
+.bg-linear-blue {
 	background: linear-gradient(14.48deg, var(--blue-150) 20%, var(--purple-150) 80%);
 }
+
+.bg-heavy-purple {
+	background: linear-gradient(222deg, #101317 20%, #5A2375 80%);
+}
+
+
+.bg-gradient-violet {
+	background: linear-gradient(42deg, #6655A2 20%, #55246A 80%);;
+}
+
 
 //GREEN
 .green-10 { color: var(--green-10); }

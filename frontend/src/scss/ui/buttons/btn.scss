@@ -36,6 +36,10 @@ button {
     &.btn-sm {
         font-weight: 600;
     }
+
+    &.btn-icon.btn-lg {
+        gap: .5rem;
+    }
 }
 
 .btn-icon {
