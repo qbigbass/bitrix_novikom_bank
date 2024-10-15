@@ -1,0 +1,35 @@
+.card-how-use {
+    height: 100%;
+    background-color: var(--purple-10);
+    border-radius: .75rem;
+
+    @include use-media(tablet) {
+        padding-right: 1.25rem;
+        gap: 1.25rem;
+    }
+
+    @include use-media(laptop) {
+        gap: 3rem;
+        padding-right: 2.5rem;
+    }
+
+    &__image {
+        flex: 0 0 17.5rem; //280px
+        width: 17.5rem;
+        height: 17.5rem;
+    }
+
+    &__content {
+        padding: 1.25rem;
+
+        @include use-media(tablet) {
+            flex-grow: 1;
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        @include use-media(laptop) {
+            padding: 2.5rem 0;
+        }
+    }
+}
