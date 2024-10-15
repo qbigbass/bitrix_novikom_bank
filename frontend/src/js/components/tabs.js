@@ -5,6 +5,7 @@ const ELEMENTS = {
     collapse: '.collapse',
     polygonContainer: '.js-polygon-container-polygon',
     tabSlider: '.js-tabs-slider',
+    tabContent: '.tab-pane',
 }
 
 const updatePolygonInTabContent = (el) => {
@@ -47,6 +48,10 @@ export function initTabsContent() {
     });
 
     const collapsedSections = document.querySelectorAll(ELEMENTS.collapsedSection);
+    const tabsSections = document.querySelectorAll(ELEMENTS.tabContent);
+    tabsSections.forEach(tab => {
+        resizePolygonInTabContent(tab);
+    });
     const isTabletOrSmaller = window.matchMedia(`(max-width: ${MEDIA_QUERIES.tablet})`).matches;
     if (!isTabletOrSmaller) {return false;}
 
