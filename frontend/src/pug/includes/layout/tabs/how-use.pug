@@ -1,0 +1,31 @@
+-
+    var tipsList = [
+       "Не&nbsp;наклеивайте стикер под чехол&nbsp;&mdash; оплата может не&nbsp;пройти",
+        "На&nbsp;стикер нанесен достаточно крепкий клеевой слой, желательно наклеивать стикер на&nbsp;чехол, чтобы не&nbsp;повредить покрытие телефона в&nbsp;случае необходимости переклеить стикер",
+        "Если у&nbsp;вас два стикера, не&nbsp;клейте оба на&nbsp;один телефон. Вы&nbsp;не&nbsp;сможете выбрать, каким из&nbsp;них оплатить",
+        "Если вам необходимо переклеить свой стикер на&nbsp;другой телефон используйте дополнительное клеевой слой, выданный вам вместе со&nbsp;стикером, предварительно удалив текущий клеевой слой с&nbsp;платёжного стикера",
+        "Добавьте платёжный стикер в&nbsp;электронные кошелёк Mir Pay, используя реквизиты платежного стикера (нанесены на&nbsp;часть, которая остаётся у&nbsp;вас)",
+        "Храните часть с&nbsp;реквизитами в&nbsp;недоступном третьим лицам месте"
+    ]
+
+h4.mb-4.mb-md-5.mb-lg-6 Подготовьте свои устройства к&nbsp;использованию платежного стикера
+.row.row-gap-4.mb-6.mb-md-9.mb-lg-11
+    .col-12.col-lg-6
+        .card-how-use.d-flex.flex-column.flex-md-row.align-items-start
+            img.card-how-use__image(src="img/payment-sticker/how-use-ios.png" alt="" loading="lazy")
+            .card-how-use__content.d-flex.flex-column.align-items-start.gap-2.gap-md-3
+                h4 На платформе iOS
+                p.mb-0 нужно удалить все банковские карты из&nbsp;AppleWallet
+                p.mb-0.text-s.dark-70 Это связано с&nbsp;настройками IPhone: при оплате в&nbsp;первую очередь используются карты, добавленные в&nbsp;Wallet
+    .col-12.col-lg-6
+        .card-how-use.d-flex.flex-column.flex-md-row.align-items-start
+            img.card-how-use__image(src="img/payment-sticker/how-use-android.png" alt="" loading="lazy")
+            .card-how-use__content.d-flex.flex-column.align-items-start.gap-2.gap-md-3
+                h4 На платформе Android
+                p.mb-0 нужно удалить все банковские карты из&nbsp;AppleWallet
+
+h4.mb-4.mb-md-5.mb-lg-6 Советы по&nbsp;использованию стикера
+ul.list.list--size-l.w-lg-75
+    each tip in tipsList
+        li!= tip
+
