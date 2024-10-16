@@ -1,9 +1,9 @@
-include ../../components/step-item
+include ../../components/stepper
 
 -
-    const sectionTitle = "Как реструктуризировать задолженность"
+    var sectionTitle = "Как реструктуризировать задолженность"
 
-    const allSteps = [
+    var allSteps = [
         {
             imageSrc: "step-indicator-1.svg",
             text: "Оформите заявку на сайте или у кредитного менеджера в офисе Новиком"
@@ -34,6 +34,4 @@ section.section-restructuring-steps.section-layout.bg-dark-10
                 +svg-use("icon-chevron-down", "icon size-m violet-100")
         #restructuring-steps-content.section-restructuring-steps__wrapper.collapse.d-md-block.mt-6.mt-lg-7
             .row.row-gap-6.px-lg-6
-                each item, index in allSteps
-                    .col-12.col-lg-4
-                        +step-item(item, index, allSteps.length - 1)
+                +stepper(allSteps, allSteps.length)

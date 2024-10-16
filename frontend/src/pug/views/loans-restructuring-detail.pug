@@ -14,7 +14,7 @@ block content
     include ../components/tabs-with-content
     include ../components/helper
     include ../components/benefit
-    include ../components/step-item
+    include ../components/stepper
     include ../includes/layout/slider-card-product
 
     +text-banner(
@@ -120,9 +120,7 @@ block content
                     +svg-use("icon-chevron-down", "icon size-m violet-100")
             #restructuring-steps-content.section-restructuring-steps__wrapper.collapse.d-md-block.mt-6.mt-lg-7
                 .row.row-gap-6.px-lg-6
-                    each item, index in allSteps
-                        .col-12.col-lg-4
-                            +step-item(item, index, allSteps.length - 1)
+                    +stepper(allSteps, allSteps.length)
 
     section.section-layout
         .container
