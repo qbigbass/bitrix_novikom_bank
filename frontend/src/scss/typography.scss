@@ -188,6 +188,14 @@ h6, .h6 {
     font-family: $font-family-code;
 }
 
+.link {
+    color: var(--blue-100);
+
+    &:hover {
+        color: var(--purple-100);
+    }
+}
+
 
 // Lists
 .list {

@@ -1,0 +1,267 @@
+extends ../templates/base
+
+block title
+    title= 'Программа «Кешбэк»'
+    meta(name="description" content="Описание страницы с кредитами")
+block content
+
+    include ../cards/card-text
+    include ../cards/card-product
+    include ../cards/card-step
+    include ../includes/header/header
+    include ../components/banners/text-banner
+    include ../components/banners/banner-product-info
+    include ../components/ui/tabs-simple
+    include ../components/tabs-with-content
+    include ../components/helper
+    include ../components/benefit
+    include ../components/banners/banner-product
+    include ../includes/layout/slider-card-product
+
+    -
+        var allBenefits = [
+            {
+                spriteName: {
+                    name: 'icon-a-date',
+                    classList: 'size-xl'
+                },
+                title: 'До 7%',
+                description: 'Кешбэк рублями на&nbsp;счет ежемесячно',
+            },
+            {
+                spriteName: {
+                    name: 'icon-a-money',
+                    classList: 'size-xl'
+                },
+                title: '4 категории',
+                description: 'Повышенного кешбэка',
+            },
+            {
+                spriteName: {
+                    name: 'icon-a-low-percent',
+                    classList: 'size-xl'
+                },
+                title: 'Гибкое подключение',
+                description: 'К&nbsp;счетам кредитных, дебетовых и&nbsp;зарплатных карт',
+            },
+            {
+                spriteName: {
+                    name: 'icon-a-date',
+                    classList: 'size-xl'
+                },
+                title: 'Ежемесячные обновления',
+                description: 'Новые избранные категории каждый месяц',
+            }
+        ]
+
+        var tabContentList = [
+            {
+                link: '#conditions-for-cashback',
+                id: 'conditions-for-cashback',
+                linkText: 'Условия начисления кешбэка',
+                isActive: true
+            },
+            {
+                link: '#cashback-size',
+                id: 'cashback-size',
+                linkText: 'Размер кешбэка',
+                isActive: false
+            },
+            {
+                link: '#documents',
+                id: 'documents',
+                linkText: 'Документы и тарифы',
+                isActive: false
+            },
+            {
+                link: '#faq',
+                id: 'faq',
+                linkText: 'Вопросы и ответы',
+                isActive: false
+            },
+        ]
+
+        var stepsTabsList = [
+            {
+                link: '#first',
+                id: 'first',
+                linkText: 'с 01 мая по 30 июня 2024',
+                isActive: true
+            },
+            {
+                link: '#second',
+                id: 'second',
+                linkText: 'с 01 июля по 31 августа 2024',
+                isActive: false
+            },
+        ]
+
+        var spcCardProductList = [
+            {
+                color: 'green',
+                title: 'Программа «Кешбэк»',
+                img: 'large-individual/contribution-rentier.png',
+                button: 'Подробнее',
+                subtitle: {
+                    before: 'до',
+                    number: '7%',
+                },
+                description: 'Возврат рублями от&nbsp;покупок по&nbsp;карте'
+            },
+            {
+                color: 'green',
+                title: 'Программа &laquo;Бонусы&raquo;',
+                img: 'large-individual/contribution-rentier.png',
+                button: 'Подробнее',
+                subtitle: {
+                    before: 'до',
+                    number: '20%',
+                },
+                description: 'Бонусные баллы за&nbsp;покупки'
+            },
+        ]
+
+        var connectList = [
+            {
+                text: "Через Контактный центр <br>по&nbsp;телефону <span class='text-nowrap'>+7&nbsp;800 250-70-07</span>",
+            },
+            {
+                text: "В&nbsp;<a class='link' href='#'>Мобильном приложении Банка</a> и&nbsp;<a href='#' class='link'>Интернет-Банке</a>"
+            },
+            {
+                text: "В&nbsp;<a href='#' class='link'>офисе банка Новиком</a>",
+            },
+            {
+                text: "Через персонального менеджера в&nbsp;организации, где получает зарплату владелец карты",
+            },
+        ]
+
+        var stepList = [
+            {
+                text: "В&nbsp;выписке по&nbsp;карте в&nbsp;мобильном приложении или интернет-банке",
+            },
+            {
+                text: "В&nbsp;ежемесячном SMS",
+            },
+            {
+                text: "В&nbsp;любом офисе банка Новиком",
+            },
+        ]
+
+    +text-banner(
+        "Программа «Кешбэк»",
+        [
+            {linkText: "Частным клиентам", link: "/"},
+            {linkText: "Карты", link: "/"}
+        ],
+        "Возврат рублями от&nbsp;покупок по&nbsp;карте",
+        "green",
+        "img/big-illustrations/large-individual/cashback-program.png"
+    )
+
+
+    section.section-layout
+        .container
+            .row.row-gap-6.row-gap-md-7.px-lg-6
+                each item, index in allBenefits
+                    .col-12.col-md-6
+                        +benefit(item.spriteName, item.title, item.description)
+        +pattern-bg('section', 'light', 'pattern-bg--position-sm-bottom')
+
+    section.section-layout.bg-blue-10
+        .container
+            h3.mb-6.mb-lg-7.px-lg-6
+                | Перечень избранных категорий
+            .row.px-lg-6.mb-6.mb-lg-7
+                .col-12
+                    +tabs-simple(stepsTabsList, false)
+            .tab-content
+                #first.tab-pane.fade.show.active(aria-labelledby="first" tabindex="0" role="tabpanel")
+                    include ../includes/layout/slider-cards-cashback
+                #second.tab-pane.fade(aria-labelledby="second" tabindex="0" role="tabpanel")
+                    include ../includes/layout/slider-cards-sales
+            .row.px-lg-6.mt-6.mt-lg-7
+                .col-12
+                    a(href="#").btn.btn-lg.btn-link.btn-icon
+                        | Перечень МСС кодов по&nbsp;избранным категориям
+                        +svg-use("icon-chevron-right", "icon size-m")
+
+    section.section-layout.js-collapsed-mobile
+        .container
+            h3.d-none.d-md-block.mb-md-6.mb-lg-7.px-lg-6
+                | Подробнее о&nbsp;программе &laquo;Кешбэк&raquo;
+            a(
+                data-bs-toggle="collapse"
+                href="#conditions"
+                role="button"
+                aria-expanded="false"
+                aria-controls="conditions"
+            ).h3.d-flex.align-items-center.justify-content-between.dark-100.d-md-none
+                | Подробнее о&nbsp;программе &laquo;Кешбэк&raquo;
+                +svg-use("icon-chevron-down", "icon size-m violet-100")
+            #conditions.collapse.d-md-block.mt-4.mt-md-6.mt-lg-7
+                .row.px-lg-6
+                    .col-12
+                        +tabs-simple(tabContentList, false)
+                        .tab-content.mt-4.mt-md-6.mt-lg-7
+                            #conditions-for-cashback.tab-pane.fade.show.active(aria-labelledby="conditions-for-cashback" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/conditions-for-cashback
+                            #cashback-size.tab-pane.fade(aria-labelledby="cashback-size" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/cost-always-plus
+                            #documents.tab-pane.fade(aria-labelledby="documents" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/documents
+                            #faq.tab-pane.fade(aria-labelledby="faq" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/faq
+        +pattern-bg('section-2', 'light', 'pattern-bg--hide-mobile')
+
+    section.section-layout.js-collapsed-mobile.bg-dark-10
+        .container
+            h3.d-none.d-md-block.mb-md-6.mb-lg-7.px-lg-6
+                | Как узнать сумму выплаченного кешбэка
+            a(
+                data-bs-toggle="collapse"
+                href="#how-know"
+                role="button"
+                aria-expanded="false"
+                aria-controls="how-know"
+            ).h3.d-flex.align-items-center.justify-content-between.dark-100.d-md-none
+                | Как узнать сумму выплаченного кешбэка
+                +svg-use("icon-chevron-down", "icon size-m violet-100")
+            #how-know.collapse.d-md-block.mt-4.mt-md-6.mt-lg-7
+                .row.px-lg-6.row-gap-6.row-gap-lg-7
+                    each item in stepList
+                        .col-12.col-lg-4
+                            +card-step(item).pe-xxl-11
+
+    section.section-layout
+        .container
+            .row
+                .col-12
+                    +polygon-container()
+                        +helper("img/restructuring-additional-info.png", "bg-dark-10")
+                            p.mb-0 В&nbsp;2023&nbsp;г. программа лояльности банка Новиком была награждена премией &laquo;Финансовая элита России&raquo; в&nbsp;номинации &laquo;Программа лояльности с&nbsp;максимальной выгодой&raquo;.
+
+    section.section-layout.js-collapsed-mobile.bg-dark-10
+        .container
+            h3.d-none.d-md-block.mb-md-6.mb-lg-7.px-lg-6
+                | Как подключить кешбэк
+            a(
+                data-bs-toggle="collapse"
+                href="#how-connect"
+                role="button"
+                aria-expanded="false"
+                aria-controls="how-connect"
+            ).h3.d-flex.align-items-center.justify-content-between.dark-100.d-md-none
+                | Как подключить кешбэк
+                +svg-use("icon-chevron-down", "icon size-m violet-100")
+            #how-connect.collapse.d-md-block.mt-4.mt-md-6.mt-lg-7
+                .row.px-lg-6.row-gap-6.row-gap-lg-7
+                    each item in connectList
+                        .col-12.col-lg-6
+                           +card-step(item).pe-xxl-11
+
+    section.section-layout
+        .container
+            h3.px-lg-6.mb-6.mb-lg-7
+                | Смотрите также
+            +slider-card-product()

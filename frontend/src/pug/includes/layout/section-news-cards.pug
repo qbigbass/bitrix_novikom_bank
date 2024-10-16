@@ -4,26 +4,31 @@
             tag: "Пресс-центр",
             date: "07.12.2023",
             title: "Новикомбанк рассказал о развитии финансовых инструментов",
+            titleIsSmall: true
         },
         {
             tag: "Пресс-центр",
             date: "06.12.2023",
             title: "Новикомбанк и Республика Татарстан договорились о сотрудничестве",
+            titleIsSmall: true
         },
         {
             tag: "Союз машиностроителей",
             date: "27.11.2023",
             title: "При поддержке Новикомбанка Росэлектроника начала серийный выпуск KVM-коммутаторов для удаленного управления оборудованием",
+            titleIsSmall: true
         },
         {
             tag: "Пресс-центр",
             date: "20.11.2023",
             title: "Новикомбанк и Республика Татарстан договорились о сотрудничестве",
+            titleIsSmall: true
         },
         {
             tag: "Союз машиностроителей",
             date: "05.11.2023",
             title: "При поддержке Новикомбанка Росэлектроника начала серийный выпуск KVM-коммутаторов для удаленного управления оборудованием",
+            titleIsSmall: true
         },
     ]
 
@@ -38,6 +43,6 @@ section.section-layout.pt-0
             .swiper-wrapper.js-swiper-wrapper
                 each item in pressReleases
                     .swiper-slide.js-swiper-slide
-                        +card-news(item)
+                        +card-special(item)
 
             +slider-controls().mt-3.mt-md-4

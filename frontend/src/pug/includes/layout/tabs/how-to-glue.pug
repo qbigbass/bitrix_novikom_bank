@@ -19,11 +19,11 @@
         "Храните часть с&nbsp;реквизитами в&nbsp;недоступном третьим лицам месте"
     ]
 
+include ../../../components/stepper
+
 h4.mb-4.mb-md-5.mb-lg-6 Подготовьте свои устройства к использованию платежного стикера
 .row.row-gap-6.mb-6.mb-md-9.mb-lg-11
-    each item, index in cardStepList
-        .col-12.col-lg-6
-            +step-item(item, index, cardStepList.length - 1)
+    +stepper(cardStepList, cardStepList.length)
 
 .content-negative-wrapper
     .row

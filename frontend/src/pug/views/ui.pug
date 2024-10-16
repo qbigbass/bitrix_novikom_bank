@@ -36,6 +36,7 @@ block content
     include ../components/ui/tabs
     include ../components/ui/accordion-item
     include ../components/helper
+    include ../components/stepper
     include ../components/banners/info-product-banner
     include ../components/banners/banner-product-info
     include ../cards/card-text
@@ -46,6 +47,7 @@ block content
     include ../cards/card-benefit
     include ../cards/card-help
     include ../cards/card-step
+    include ../cards/card-news
 
     section#typography.section-layout
         .container
@@ -532,11 +534,121 @@ block content
                     each item in cardStepList
                         .col-12.col-lg-4
                             +card-step(item).pe-xxl-11
-    section#card-special.section-layout.pt-0
+
+    section#steps.section-layout.pt-0
         .container
             .d-flex.flex-column.row-gap-5
-                h2 Card Special
+                h2 Steps
+
+                .row.row-gap-6.px-lg-6
+                    -
+                        var allSteps = [
+                            {
+                                imageSrc: "step-indicator-1.svg",
+                                title: "Предоставить <br>в Банк документы",
+                                text: "Заявление об изменении условий договора и документы, подтверждающие снижение дохода. Заявление может быть оформлено заемщиком в офисе Банка, может быть направлено заемщиком в Банк с использованием системы дистанционного банковского обслуживания «Интерактив».",
+                                button: {
+                                    href: "#",
+                                    text: "Оформить карту",
+                                },
+                                colorClassName: "violet-100"
+                            },
+                            {
+                                imageSrc: "step-indicator-2.svg",
+                                title: "Банк проанализирует вашу <br>ситуацию и примет решение",
+                                text: "Срок рассмотрения заявок на реструктуризацию составляет до 10 рабочих дней с даты предоставления полного пакета необходимых документов.",
+                                colorClassName: "violet-100"
+                            },
+                            {
+                                imageSrc: "step-indicator-3.svg",
+                                title: "Одобрение <br>реструктуризации",
+                                text: "Если реструктуризация одобрена, подписать дополнительное соглашение к кредитному договору и прочей кредитно-обеспечительной документации (при наличии).",
+                                colorClassName: "violet-100"
+                            },
+                        ]
+                    +stepper(allSteps, allSteps.length, "violet")
+
+    section#card-special.section-layout.pt-0
+        -
+            var pressReleases = [
+                {
+                    tag: "Пресс-центр",
+                    date: "07.12.2023",
+                    title: "Новикомбанк рассказал о развитии финансовых инструментов",
+                    titleIsSmall: true
+                },
+                {
+                    tag: "Пресс-центр",
+                    date: "06.12.2023",
+                    title: "Новикомбанк и Республика Татарстан договорились о сотрудничестве",
+                    titleIsSmall: true
+                },
+                {
+                    tag: "Союз машиностроителей",
+                    date: "05.11.2023",
+                    title: "При поддержке Новикомбанка Росэлектроника начала серийный выпуск KVM-коммутаторов для удаленного управления оборудованием",
+                    titleIsSmall: true
+                },
+                {
+                    tag: "Пресс-центр",
+                    date: "20.11.2023",
+                    title: "Новикомбанк и Республика Татарстан договорились о сотрудничестве",
+                    titleIsSmall: true
+                }
+            ]
+
+        .container
+            .d-flex.flex-column.row-gap-5
+                .d-flex.flex-column.gap-2
+                    h2 Card Special
+                    h4 "Card News" and "Card Special" comps without image
                 include ../includes/layout/slider-cards-special
+                .swiper.js-slider-cards.slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:2,laptop:3,laptop-x:3" data-space-between="mobile-s:8,mobile:8,tablet:8,laptop:8,laptop-x:8")
+                    .swiper-wrapper.js-swiper-wrapper
+                        each item in pressReleases
+                            .swiper-slide.js-swiper-slide
+                                +card-special(item)
+
+                    +slider-controls().mt-3.mt-md-4
+
+    section#card-news.section-layout.pt-0
+        -
+            var allCardsNews = [
+                {
+                    id: 1,
+                    href: "#",
+                    tag: "Акция",
+                    title: "Избранные категории для программы лояльности «Кешбэк» через мобильное приложение и интернет-банк",
+                    date: "25.04.2024",
+                    imageSrc: "img/news-cards/card-image-1.png",
+                    isNeedStickyIcon: true,
+                },
+                {
+                    id: 2,
+                    href: "#",
+                    tag: "Предложение от партнеров",
+                    title: "Избранные категории для программы лояльности «Кешбэк» через мобильное приложение и интернет-банк",
+                    date: "25.04.2024",
+                    isNeedStickyIcon: true,
+                },
+                {
+                    id: 3,
+                    href: "#",
+                    tag: "Платежная система МИР",
+                    title: "Избранные категории для программы лояльности «Кешбэк» через мобильное приложение и интернет-банк",
+                    date: "25.04.2024",
+                }
+            ]
+        .container
+            .d-flex.flex-column.row-gap-5
+                .d-flex.flex-column.gap-2
+                    h2 Card News
+                    h4 "Card News" and "Card Special" comps with image
+                .row.row-gap-5.row-gap-md-7
+                    each item in allCardsNews
+                        .col-12.col-md-6.col-lg-4
+                            +card-news(item)
+
 
     section#select.section-layout.pt-0
         .container

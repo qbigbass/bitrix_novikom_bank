@@ -1,24 +1,62 @@
 .card-news {
-    display: flex;
-    flex-direction: column;
-    background-color: var(--dark-10);
-    border-radius: 0.5rem;
-    gap: 2.5rem;
-    padding: 1.5rem 1rem 2.5rem;
+    border-radius: .5rem;
+
+    &__header {
+        padding: 1.5rem 1rem 0;
+    }
+
+    &__image-container {
+        min-height: 6.25rem;
+    }
+
+    &__top-blackout {
+        height: 5rem;
+        background: linear-gradient(180deg, rgba(18, 17, 18, 0.5) 0%, rgba(18, 17, 18, 0) 100%);
+    }
+
+    &__body {
+        padding: 1.5rem 1rem;
+    }
+
+    &__sticky-icon {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    @include use-media(sm) {
+        &__image-container {
+            min-height: none;
+        }
+
+        &__top-blackout {
+            height: 6.25rem;
+        }
+
+        &__body {
+            padding: 1.5rem 1.5rem 2rem;
+        }
+    }
 
     @include use-media(tablet) {
-        padding: 1.5rem 1.5rem 2.5rem 1.5rem;
+        &__header {
+            padding: 1.5rem 1rem 0 1.5rem;
+        }
+
+        &__body {
+            padding: 1.5rem 2rem 2.5rem;
+        }
     }
 
     @include use-media(tablet-album) {
-        padding: 1.5rem 2.5rem 2.5rem;
-    }
+        border-radius: .75rem;
 
-    &__tag {
-        flex-shrink: 0;
-    }
+        &__header {
+            padding-left: 2.5rem;
+        }
 
-    @at-root .swiper-slide & {
-        height: 100%;
+        &__body {
+            padding-left: 2.5rem;
+            padding-right: 2.5rem;
+        }
     }
 }
