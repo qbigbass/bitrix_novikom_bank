@@ -1,0 +1,14 @@
+mixin pagination(data, size)
+    nav
+        ul.pagination.justify-content-center(class=size && `pagination-${size}`)
+            if data.prevLink
+                li.page-item
+                    a.page-link(href=data.prevLink)
+                        +svg-use("icon-chevron-left", "icon size-m")
+            each item in data.list
+                li.page-item(class=item.isActive && "active", aria-current=item.isActive && "page")
+                    a.page-link(href=item.link)!= item.linkText
+            if data.nextLink
+                li.page-item
+                    a.page-link(href=data.nextLink)
+                        +svg-use("icon-chevron-right", "icon size-m")
