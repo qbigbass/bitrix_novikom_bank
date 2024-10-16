@@ -36,6 +36,8 @@ block content
     include ../components/ui/tabs
     include ../components/ui/accordion-item
     include ../components/helper
+    include ../components/step-item
+    include ../components/stepper
     include ../components/banners/info-product-banner
     include ../components/banners/banner-product-info
     include ../cards/card-text
@@ -533,7 +535,40 @@ block content
                     each item in cardStepList
                         .col-12.col-lg-4
                             +card-step(item).pe-xxl-11
-    
+
+    section#steps.section-layout.pt-0
+        .container
+            .d-flex.flex-column.row-gap-5
+                h2 Steps
+
+                .row.row-gap-6.px-lg-6
+                    -
+                        var allSteps = [
+                            {
+                                imageSrc: "step-indicator-1.svg",
+                                title: "Предоставить <br>в Банк документы",
+                                text: "Заявление об изменении условий договора и документы, подтверждающие снижение дохода. Заявление может быть оформлено заемщиком в офисе Банка, может быть направлено заемщиком в Банк с использованием системы дистанционного банковского обслуживания «Интерактив».",
+                                button: {
+                                    href: "#",
+                                    text: "Оформить карту",
+                                },
+                                colorClassName: "violet-100"
+                            },
+                            {
+                                imageSrc: "step-indicator-2.svg",
+                                title: "Банк проанализирует вашу <br>ситуацию и примет решение",
+                                text: "Срок рассмотрения заявок на реструктуризацию составляет до 10 рабочих дней с даты предоставления полного пакета необходимых документов.",
+                                colorClassName: "violet-100"
+                            },
+                            {
+                                imageSrc: "step-indicator-3.svg",
+                                title: "Одобрение <br>реструктуризации",
+                                text: "Если реструктуризация одобрена, подписать дополнительное соглашение к кредитному договору и прочей кредитно-обеспечительной документации (при наличии).",
+                                colorClassName: "violet-100"
+                            },
+                        ]
+                    +stepper(allSteps, allSteps.length, "violet")
+
     section#card-special.section-layout.pt-0
         -
             var pressReleases = [
@@ -576,7 +611,7 @@ block content
                                 +card-special(item)
 
                     +slider-controls().mt-3.mt-md-4
-    
+
     section#card-news.section-layout.pt-0
         -
             var allCardsNews = [
@@ -614,7 +649,7 @@ block content
                     each item in allCardsNews
                         .col-12.col-md-6.col-lg-4
                             +card-news(item)
-                
+
 
     section#select.section-layout.pt-0
         .container
