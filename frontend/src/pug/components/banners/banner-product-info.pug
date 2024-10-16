@@ -1,8 +1,15 @@
 include ../ui/tag
 
 mixin banner-product-info(data, bgColor='bg-blue-10')
-    section.section-layout.py-lg-11(class= bgColor)
+    section.section-layout.py-lg-11(class= bgColor class=data.breadcrumbsArray && 'pt-6 pt-lg-6')
         .container
+            if data.breadcrumbsArray
+                .banner-product-info-breadcrumbs.ps-lg-6.mb-4.mb-sm-6.mb-lg-7.d-flex.gap-2
+                    each item, index in data.breadcrumbsArray
+                        a.text-banner__breadcrumbs-item.d-md-inline-flex.align-items-center.gap-2.text-s.dark-70(href=item.link, class= index==data.breadcrumbsArray.length-1 ? 'd-inline-flex' : 'd-none')
+                            if index == data.breadcrumbsArray.length-1
+                                +svg-use("icon-chevron-left", "icon size-s dark-70 d-inline-block d-md-none")
+                            span=item.linkText
             .banner-product-info.ps-lg-6
                 .banner-product-info__header
                     if data.tag
