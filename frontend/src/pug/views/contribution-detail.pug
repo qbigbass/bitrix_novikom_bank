@@ -15,7 +15,7 @@ block content
     include ../components/tabs-with-content
     include ../components/helper
     include ../components/benefit
-    include ../components/step-item
+    include ../components/stepper
     include ../components/banners/banner-product
     include ../includes/layout/slider-card-product
     include ../components/ui/nav-tabs
@@ -216,15 +216,11 @@ block content
                 .tab-content
                     #online.tab-pane.fade.show.active(role="tabpanel" aria-labelledby="loan" tabindex="0")
                         .row.row-gap-6.px-lg-6
-                            each item, index in allSteps
-                                .col-12.col-lg-4
-                                    +step-item(item, index, allSteps.length - 1)
+                            +stepper(allSteps, allSteps.length)
 
                     #in-bank.tab-pane.fade(role="tabpanel" aria-labelledby="refinance" tabindex="0")
                         .row.row-gap-6.px-lg-6
-                            each item, index in allSteps
-                                .col-12.col-lg-4
-                                    +step-item(item, index, allSteps.length - 1)
+                            +stepper(allSteps, allSteps.length)
 
 
     +banner-product-info-alternative({
