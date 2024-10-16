@@ -8,6 +8,7 @@ block content
     include ../cards/card-product
     include ../includes/header/header
     include ../components/banners/text-banner
+    include ../components/banners/banner-product-info
     include ../includes/layout/slider-card-product
 
     +text-banner(
@@ -21,6 +22,18 @@ block content
 
     section.section-layout
         .container
+
+    +banner-product-info({
+        title: "Защита от&nbsp;мошенничества",
+        tag: "Услуга",
+        imageSrc: "img/banners/page-banner-4.png",
+        button: {
+            href: "#",
+            text: "Подробнее",
+        },
+    })
+        p.text-l Мы&nbsp;придаём большое значение обеспечению безопасности доступа к&nbsp;денежным средствам Клиентов и&nbsp;подготовили для вас памятку.
+        p.text-l.mb-0 Узнайте как уберечь себе и&nbsp;своих близких от&nbsp;финансового мошенничества.
 
 
     section.section-layout
