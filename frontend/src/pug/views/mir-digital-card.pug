@@ -16,7 +16,7 @@ block content
     include ../components/tabs-with-content
     include ../components/helper
     include ../components/benefit
-    include ../components/step-item
+    include ../components/stepper
     include ../components/banners/banner-product
     include ../includes/layout/slider-card-product
 
@@ -238,9 +238,7 @@ block content
                 +svg-use("icon-chevron-down", "icon size-m violet-100")
             #how-apply.collapse.d-md-block.mt-4.mt-md-6.mt-lg-7
                 .row.row-gap-6.px-lg-6
-                    each item, index in cardStepList
-                        .col-12.col-lg-4
-                            +step-item(item, index, cardStepList.length - 1)
+                    +stepper(cardStepList, cardStepList.length)
     section.section-layout.bg-blue-10
         .container
             .d-flex.align-items-center.justify-content-between.px-lg-6.mb-6.mb-lg-7
