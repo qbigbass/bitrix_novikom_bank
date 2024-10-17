@@ -16,6 +16,6 @@ mixin card-product(data)
             if data.button
                 a(href="#").btn.btn-primary.card-product__button= data.button
             if data.link
-                a(href="#").btn.btn-link.btn-icon
+                a(href="#").btn.btn-link.btn-icon.m-auto.m-md-0
                     span!= data.link
                     +svg-use("icon-chevron-right", "icon size-m")
