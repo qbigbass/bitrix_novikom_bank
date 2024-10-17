@@ -123,27 +123,48 @@ block content
 
         var connectList = [
             {
+                spriteData: {
+                    classList: "size-xl",
+                },
                 text: "Через Контактный центр <br>по&nbsp;телефону <span class='text-nowrap'>+7&nbsp;800 250-70-07</span>",
             },
             {
+                spriteData: {
+                    classList: "size-xl",
+                },
                 text: "В&nbsp;<a class='link' href='#'>Мобильном приложении Банка</a> и&nbsp;<a href='#' class='link'>Интернет-Банке</a>"
             },
             {
+                spriteData: {
+                    classList: "size-xl",
+                },
                 text: "В&nbsp;<a href='#' class='link'>офисе банка Новиком</a>",
             },
             {
+                spriteData: {
+                    classList: "size-xl",
+                },
                 text: "Через персонального менеджера в&nbsp;организации, где получает зарплату владелец карты",
             },
         ]
 
         var stepList = [
             {
+                spriteData: {
+                    classList: "size-xl",
+                },
                 text: "В&nbsp;выписке по&nbsp;карте в&nbsp;мобильном приложении или интернет-банке",
             },
             {
+                spriteData: {
+                    classList: "size-xl",
+                },
                 text: "В&nbsp;ежемесячном SMS",
             },
             {
+                spriteData: {
+                    classList: "size-xl",
+                },
                 text: "В&nbsp;любом офисе банка Новиком",
             },
         ]
@@ -165,7 +186,8 @@ block content
             .row.row-gap-6.row-gap-md-7.px-lg-6
                 each item, index in allBenefits
                     .col-12.col-md-6
-                        +benefit(item.spriteName, item.title, item.description)
+                        +benefit(item.spriteName, item.title)
+                            span!= item.description
         +pattern-bg('section', 'light', 'pattern-bg--position-sm-bottom')
 
     section.section-layout.bg-blue-10
@@ -231,7 +253,8 @@ block content
                 .row.px-lg-6.row-gap-6.row-gap-lg-7
                     each item in stepList
                         .col-12.col-lg-4
-                            +card-step(item).pe-xxl-11
+                            +benefit(item.spriteData, "").pe-xxl-11
+                                span.text-l!= item.text
 
     section.section-layout
         .container
@@ -258,7 +281,8 @@ block content
                 .row.px-lg-6.row-gap-6.row-gap-lg-7
                     each item in connectList
                         .col-12.col-lg-6
-                           +card-step(item).pe-xxl-11
+                            +benefit(item.spriteData, "").pe-xxl-11
+                                span.text-l!= item.text
 
     section.section-layout
         .container

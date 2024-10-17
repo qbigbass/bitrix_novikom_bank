@@ -159,7 +159,8 @@ block content
             .row.row-gap-6
                 each item, index in allBenefits
                     .col-12.col-md-6.col-lg-4
-                        +benefit(item.spriteData, item.title, item.description)
+                        +benefit(item.spriteData, item.title)
+                            span!= item.description
         +pattern-bg('section', 'light', 'pattern-bg--position-sm-bottom section-restructuring-benefits__pattern')
 
     section.section-layout.js-collapsed-mobile

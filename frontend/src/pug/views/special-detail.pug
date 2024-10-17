@@ -150,7 +150,8 @@ block content
             .row.row-gap-6
                 each item, index in allBenefits
                     .col-12.col-md-6
-                        +benefit(item.spriteData, item.title, item.description)
+                        +benefit(item.spriteData, item.title)
+                            span.text-l!= item.description
 
     section.section-layout.px-lg-6
         .container

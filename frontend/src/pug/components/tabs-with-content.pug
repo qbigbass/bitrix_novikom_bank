@@ -13,7 +13,8 @@ mixin tabs-with-content(tabsList, tabsClassName, tabItemClassName, isSmallTabs=f
                             .row.row-gap-6
                                 each benefit in item.benefits
                                     .col-12.col-md-6.col-lg-4
-                                        +benefit(benefit.spriteData, benefit.title, benefit.description, true)
+                                        +benefit(benefit.spriteData, benefit.title, true)
+                                            span!= benefit.description
                         if item.helper
                             .w-100
                                 +polygon-container()
