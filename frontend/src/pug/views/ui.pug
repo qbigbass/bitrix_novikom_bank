@@ -34,6 +34,7 @@ block content
 
     include ../components/document-download
     include ../components/ui/tabs
+    include ../components/ui/pagination
     include ../components/ui/accordion-item
     include ../components/helper
     include ../components/stepper
@@ -648,6 +649,68 @@ block content
                         .col-12.col-md-6.col-lg-4
                             +card-news(item)
 
+    section#pagination.section-layout.pt-0
+        -
+            var paginationObject = {
+                prevLink: "",
+                nextLink: "#2",
+                list: [
+                    {
+                        link: "#1",
+                        linkText: "1",
+                        isActive: true,
+                    },
+                    {
+                        link: "#2",
+                        linkText: "2"
+                    },
+                    {
+                        link: "#3",
+                        linkText: "3"
+                    },
+                    {
+                        link: "#4",
+                        linkText: "4"
+                    }
+                ]
+            }
+
+            var paginationObject2 = {
+                prevLink: "#3",
+                nextLink: "#5",
+                firstLink: {
+                    link: "#1",
+                    linkText: "1",
+                },
+                lastLink: {
+                    link: "#9",
+                    linkText: "9",
+                },
+                list: [
+                    {
+                        link: "#3",
+                        linkText: "3"
+                    },
+                    {
+                        link: "#4",
+                        linkText: "4",
+                        isActive: true
+                    },
+                    {
+                        link: "#5",
+                        linkText: "5"
+                    }
+                ]
+            }
+        .container
+            .d-flex.flex-column.row-gap-5
+                .d-flex.flex-column.gap-2
+                    h2 Pagination
+                .row.row-gap-5.row-gap-md-7
+                    .col-12.col-md-6
+                        +pagination(paginationObject)
+                    .col-12.col-md-6
+                        +pagination(paginationObject2)
 
     section#select.section-layout.pt-0
         .container
