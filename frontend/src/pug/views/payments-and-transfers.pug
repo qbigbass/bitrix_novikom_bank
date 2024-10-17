@@ -20,8 +20,43 @@ block content
         "green"
     )
 
-    section.section-layout
+    section.section-layout.bg-dark-10
+        -
+            var cardList = [
+                {
+                    color: 'transparent',
+                    title: 'Моментальный онлайн-перевод',
+                    description: 'Переводы с&nbsp;карты на&nbsp;карту по&nbsp;России, а&nbsp;также в&nbsp;Абхазию, Армению, Беларусь, Казахстан, Таджикистан и&nbsp;Южную Осетию.',
+                    img: 'large-individual/instant-online-translation.png',
+                    link: 'Перевести онлайн',
+                },
+                {
+                    color: 'transparent',
+                    title: 'Переводы в&nbsp;интернет-банке или приложении',
+                    description: 'Удобные и&nbsp;быстрые переводы через онлайн сервисы',
+                    img: 'large-individual/transfers-in-internet-banking.png',
+                    link: 'Подробнее',
+                },
+                {
+                    color: 'transparent',
+                    title: 'Операции через банкомат',
+                    description: 'Переводы, пополнение и&nbsp;снятие наличных в&nbsp;банкоматах Новиком и&nbsp;сторонних банков',
+                    img: 'large-individual/ATM-transactions.png',
+                    link: 'Подробнее',
+                },
+                {
+                    color: 'transparent',
+                    title: 'Банковские переводы в&nbsp;офисе',
+                    description: 'Переводы денежных средств в&nbsp;рублях и&nbsp;иностранной валюте в&nbsp;пользу физических и&nbsp;юридических лиц в&nbsp;любую точку мира',
+                    img: 'large-individual/transfers-in-office.png',
+                    link: 'Подробнее',
+                },
+            ]
         .container
+            .row.row-gap-3.row-gap-lg-5
+                each card in cardList
+                    .col-12.col-md-6
+                        +card-product(card).card-product--bg-white
 
     +banner-product-info({
         title: "Защита от&nbsp;мошенничества",

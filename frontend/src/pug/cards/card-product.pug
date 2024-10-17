@@ -1,7 +1,7 @@
 include ../components/ui/tag
 
 mixin card-product(data)
-    .card-product(class= `card-product--${data.color}`)
+    .card-product(class= `card-product--${data.color}`)&attributes(attributes)
         div.card-product__inner
             if data.tag
                 +tag(data.tag).card-product__tag
@@ -13,4 +13,9 @@ mixin card-product(data)
                 if data.description
                     p.card-product__description.m-0!= data.description
             img.card-product__img(src=`img/big-illustrations/${data.img}`, alt="", loading="lazy")
-            a(href="#").btn.btn-primary.card-product__button= data.button
+            if data.button
+                a(href="#").btn.btn-primary.card-product__button= data.button
+            if data.link
+                a(href="#").btn.btn-link.btn-icon
+                    span!= data.link
+                    +svg-use("icon-chevron-right", "icon size-m")
