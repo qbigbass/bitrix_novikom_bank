@@ -1,0 +1,121 @@
+extends ../templates/base
+
+block title
+    title= 'Частные клиенты - Операции через банкомат'
+    meta(name="description" content="Описание страницы с вкладами")
+block content
+
+    include ../includes/header/header
+    include ../components/banners/text-banner
+    include ../components/benefit
+    include ../cards/card-service-app
+    include ../cards/card-benefit
+    include ../includes/layout/slider-card-product
+    include ../components/ui/tabs-simple
+
+    -
+        var tabContentList = [
+            {
+                link: '#limits',
+                id: 'limits',
+                linkText: 'Лимиты',
+                isActive: true
+            },
+            {
+                link: '#documents',
+                id: 'documents',
+                linkText: 'Документы и тарифы',
+                isActive: false
+            },
+        ]
+
+        var cardBenefit = {
+            title: 'Онлайн-банк',
+            description: 'Для авторизации необходимо являться клиентом Новикома.',
+            sprite: {
+                name: 'icon-a-web-bank',
+                classList: 'size-md-xxl'
+            },
+            link: '#',
+            linkText: 'Войти <span class="d-none d-md-inline">в Онлайн-банк</span>'
+        }
+
+    +text-banner(
+        "Операции через банкомат",
+        [
+            {linkText: "Частным клиентам", link: "/"},
+            {linkText: "Платежи и переводы", link: "/"}
+        ],
+        "Переводы, пополнение и&nbsp;снятие наличных в&nbsp;банкоматах Новиком и&nbsp;сторонних банков",
+        "green"
+    )
+
+    section.section-layout
+        .container
+            h3.px-lg-6.mb-4.mb-md-6.mb-lg-7
+                | Условия переводов в&nbsp;банкоматах банка Новиком
+            .row.row-gap-6.row-gap-md-7.px-lg-6
+                .col-12.col-md-6.pe-xxl-8
+                    +benefit({
+                        name: 'icon-a-date',
+                        classList: 'size-xl'
+                    }, "C&nbsp;дебетовых карт банка Новиком")
+                        ul.list
+                            li Без&nbsp;комиссии на&nbsp;карты Новиком.
+                            li 1,5% от&nbsp;суммы перевода (минимум&nbsp;&mdash; 60&nbsp;руб.) <br>на&nbsp;карты, эмитированные сторонними банками
+                .col-12.col-md-6.ps-xxl-8
+                    +benefit({
+                        name: 'icon-a-date',
+                        classList: 'size-xl'
+                    }, "С&nbsp;кредитных карт банка Новиком")
+                        ul.list
+                            li 2%&nbsp;от&nbsp;суммы перевода (минимум 200&nbsp;руб.) на&nbsp;карты банка Новиком
+                            li 3,5% от&nbsp;суммы перевода (минимум 260&nbsp;руб.) на&nbsp;карты, эмитированные сторонними банками
+                .col-12.col-md-6.pe-xxl-8
+                    +benefit({
+                        name: 'icon-a-date',
+                        classList: 'size-xl'
+                    }, "С&nbsp;карт сторонних банков")
+                        ul.list
+                            li Без комиссии на&nbsp;карты Новиком.
+                                br
+                                | (Банк-эмитент карты отправителя может взимать дополнительные комиссии)
+                            li 1,5% от&nbsp;суммы перевода (минимум&nbsp;&mdash; 60&nbsp;руб.) <br>на&nbsp;карты, эмитированные сторонними банками
+                .col-12.col-md-6.ps-xxl-8
+                    +benefit({
+                        name: 'icon-a-date',
+                        classList: 'size-xl'
+                    }, "Наличными")
+                        ul.list
+                            li Без комиссии на&nbsp;карты Новиком.
+                            li 1,5% от&nbsp;суммы перевода, минимум 60&nbsp;руб.&nbsp;на&nbsp;карты VISA российских банков-эмитентов
+
+    section.section-layout.js-collapsed-mobile
+        .container
+            h3.d-none.d-md-block.mb-md-6.mb-lg-7.px-lg-6
+                | Подробнее
+            a(
+                data-bs-toggle="collapse"
+                href="#more"
+                role="button"
+                aria-expanded="false"
+                aria-controls="more"
+            ).h3.d-flex.align-items-center.justify-content-between.dark-100.d-md-none
+                | Подробнее
+                +svg-use("icon-chevron-down", "icon size-m violet-100")
+            #more.collapse.d-md-block.mt-4.mt-md-6.mt-lg-7
+                .row.px-lg-6
+                    .col-12
+                        +tabs-simple(tabContentList, false)
+                        .tab-content.mt-4.mt-md-6.mt-lg-7
+                            #limits.tab-pane.fade.show.active(aria-labelledby="limits" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/limits-atm
+                            #documents.tab-pane.fade(aria-labelledby="documents" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/documents
+        +pattern-bg('section-2', 'light', 'pattern-bg--hide-mobile')
+
+    section.section-layout
+        .container
+            h3.px-lg-6.mb-4.mb-md-6.mb-lg-7
+                | Смотрите также
+            +slider-card-product()
