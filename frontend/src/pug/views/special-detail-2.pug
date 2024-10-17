@@ -1,0 +1,42 @@
+extends ../templates/base
+
+block title
+    title= 'Вклады - страница Спецпредложения 2'
+    meta(name="description" content="Описание страницы со спецпредложениями")
+block content
+
+    include ../cards/card-sale
+    include ../includes/header/header
+    include ../components/banners/banner-product-info
+    include ../includes/layout/slider-card-product
+    
+
+    +banner-product-info({
+        title: "Избранные категории для программы лояльности «Кешбэк» через мобильное приложение и интернет-банк",
+        tag: "Акция",
+        button: {
+            href: "#",
+            text: "О программе «Кешбэк»",
+        },
+        breadcrumbsArray: [
+            {linkText: "Частным клиентам", link: "/"},
+            {linkText: "Спецпредложения", link: "/"}
+        ]
+    }, "")
+        p.text-m.m-0 Держателям карт банка Новиком предлагается новая услуга по самостоятельному выбору избранных категорий кешбэк, которая будет выгодна для клиента.
+
+    section.section-layout.px-lg-6
+        .container
+            .row
+                .col-12.col-lg-10.col-xl-8
+                    .d-flex.flex-column.row-gap-4.text-l
+                        p.m-0 Период действия избранных категорий - с 01.07.2024 по 31.08.2024 включительно.
+                        p.m-0 Выбирайте самостоятельно 4 категории повышенного кешбэка из 7 доступных в мобильном приложении/интернет-банке. Обратите внимание, что в список категорий повышенного кешбэка входит социально-значимая категория «Аптеки», по категории «Топливо» начисляется кешбэк 7%.
+                        p.m-0 В июле-августе 2024 года в перечень категорий на выбор включены категории для поездок, спорта, приобретения детских товаров, электроники и техники
+        +pattern-bg('section-2', 'light', 'pattern-bg--position-sm-bottom')
+                    
+    section.section-layout
+        .container
+            h3.px-lg-6.mb-4.mb-md-6.mb-lg-7
+                | Смотрите также
+            +slider-card-product()
