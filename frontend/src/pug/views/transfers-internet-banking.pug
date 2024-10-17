@@ -1,28 +1,132 @@
 extends ../templates/base
 
 block title
-    title= 'Частные клиенты - Вклады'
+    title= 'Частные клиенты - Переводы в интернет-банке или приложении'
     meta(name="description" content="Описание страницы с вкладами")
 block content
 
     include ../includes/header/header
     include ../components/banners/text-banner
+    include ../components/benefit
+    include ../cards/card-service-app
+    include ../cards/card-benefit
     include ../includes/layout/slider-card-product
+    include ../components/ui/tabs-simple
+
+    -
+        var tabContentList = [
+            {
+                link: '#limits',
+                id: 'limits',
+                linkText: 'Лимиты',
+                isActive: true
+            },
+            {
+                link: '#documents',
+                id: 'documents',
+                linkText: 'Документы и тарифы',
+                isActive: false
+            },
+        ]
+
+        var cardBenefit = {
+            title: 'Онлайн-банк',
+            description: 'Для авторизации необходимо являться клиентом Новикома.',
+            sprite: {
+                name: 'icon-a-web-bank',
+                classList: 'size-md-xxl'
+            },
+            link: '#',
+            linkText: 'Войти <span class="d-none d-md-inline">в Онлайн-банк</span>'
+        }
 
     +text-banner(
-        "Моментальный онлайн-перевод",
+        "Переводы в&nbsp;интернет-банке или приложении",
         [
             {linkText: "Частным клиентам", link: "/"},
             {linkText: "Платежи и переводы", link: "/"}
         ],
-        "Переводы с&nbsp;карты на&nbsp;карту по&nbsp;России, а&nbsp;также в&nbsp;Абхазию, Армению, Беларусь, Казахстан, Таджикистан и&nbsp;Южную Осетию.",
+        "Удобные и&nbsp;быстрые переводы через онлайн сервисы",
         "green"
     )
 
     section.section-layout
         .container
-            // iframe
+            h3.px-lg-6.mb-4.mb-md-6.mb-lg-7
+                | Условия по&nbsp;переводам
+            .row.row-gap-6.row-gap-md-7.px-lg-6
+                .col-12.col-md-6.pe-xxl-8
+                    +benefit({
+                        name: 'icon-a-date',
+                        classList: 'size-xl'
+                    }, "C&nbsp;дебетовых карт банка Новиком")
+                        ul.list
+                            li Без&nbsp;комиссии на&nbsp;карты Новиком.
+                            li Без&nbsp;комиссии на&nbsp;карты Новиком.
+                .col-12.col-md-6.ps-xxl-8
+                    +benefit({
+                        name: 'icon-a-date',
+                        classList: 'size-xl'
+                    }, "С&nbsp;кредитных карт банка Новиком")
+                        ul.list
+                            li При переводе с&nbsp;карты с&nbsp;беспроцентным периодом кредитования дополнительно взимается 2,7&nbsp;% от&nbsp;суммы перевода (минимум 200&nbsp;рублей)
+            .row.mt-6.mt-lg-11.row-gap-2
+                .col-12.col-xl-8.pe-xl-0
+                    +card-service-app({
+                        title: "Мобильное приложение",
+                        benefits: [
+                            {
+                                icon: "icon-mobile",
+                                text: "Управление кешбэком и&nbsp;бонусами"
+                            },
+                            {
+                                icon: "icon-time",
+                                text: "Доступ к&nbsp;услугам банка 24/7"
+                            },
+                            {
+                                icon: "icon-cash",
+                                text: "Платежи и&nbsp;переводы без комиссии"
+                            }
+                        ]
+                    })
+                        a(href="#").btn.btn-info.d-none.d-md-inline-flex.align-items-center
+                            img(src="img/app-logos/ru-store.svg" width="94" height="24" alt="RuStore" loading="lazy")
+                        a(href="#").btn.btn-info.d-none.d-md-inline-flex.align-items-center
+                            img(src="img/app-logos/ru-market.svg" width="120" height="28" alt="RuMarket" loading="lazy")
+                        a(href="#").btn.btn-info.d-none.d-md-inline-flex.align-items-center
+                            img(src="img/app-logos/nash-store.svg" width="112" height="18" alt="NashStore" loading="lazy")
+                        a(href="#").btn.btn-info.btn-icon.d-none.d-md-inline-flex
+                            | Скачать
+                            +svg-use("icon-download", "icon size-m")
+                        a(href="#").btn.btn-sm.btn-info.btn-icon.d-md-none
+                            | Скачать
+                            +svg-use("icon-download-small", "icon size-s")
+                .col-12.col-xl-4.ps-xl-2
+                    +card-benefit(cardBenefit).h-100
 
+    section.section-layout.js-collapsed-mobile
+        .container
+            h3.d-none.d-md-block.mb-md-6.mb-lg-7.px-lg-6
+                | Подробнее
+            a(
+                data-bs-toggle="collapse"
+                href="#more"
+                role="button"
+                aria-expanded="false"
+                aria-controls="more"
+            ).h3.d-flex.align-items-center.justify-content-between.dark-100.d-md-none
+                | Подробнее
+                +svg-use("icon-chevron-down", "icon size-m violet-100")
+            #more.collapse.d-md-block.mt-4.mt-md-6.mt-lg-7
+                .row.px-lg-6
+                    .col-12
+                        +tabs-simple(tabContentList, false)
+                        .tab-content.mt-4.mt-md-6.mt-lg-7
+                            #limits.tab-pane.fade.show.active(aria-labelledby="limits" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/limits
+                            #documents.tab-pane.fade(aria-labelledby="documents" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/documents
+        +pattern-bg('section-2', 'light', 'pattern-bg--hide-mobile')
 
     section.section-layout
         .container
