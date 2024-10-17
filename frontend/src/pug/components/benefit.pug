@@ -1,11 +1,11 @@
-mixin benefit(spriteData, title, description, isHorizontal=false)
-    .benefit.d-flex.gap-3(class=isHorizontal ? 'flex-column flex-md-row align-items-md-center gap-md-4 gap-lg-6' : 'flex-column')
-        img.icon(src="img/icons/icon-money.svg" alt="icon" loading="lazy" class= spriteData.classList)
+mixin benefit(spriteData, title, isHorizontal=false)
+    .benefit.d-flex.gap-3(class=isHorizontal ? 'flex-column flex-md-row align-items-md-center gap-md-4 gap-lg-6' : 'flex-column')&attributes(attributes)
+        img.icon(src="img/icons/icon-money.svg" alt="icon" loading="lazy" class=spriteData&&spriteData.classList)
         .benefit__content.d-flex.flex-column.gap-3
             if title
                 if isHorizontal
                     h5.benefit__title.fw-semibold!= title
                 else
                     h4.benefit__title!= title
-            if description
-                span.benefit__description.w-100.text-m!= description
+            .benefit__description.w-100.text-m
+                block

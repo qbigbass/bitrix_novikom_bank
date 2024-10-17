@@ -1,0 +1,24 @@
+extends ../templates/base
+
+block title
+    title= 'Частные клиенты - Спецпредложения'
+    meta(name="description" content="Описание страницы со спецпредложениями")
+block content
+
+    include ../cards/card-news
+    include ../includes/header/header
+    include ../components/banners/text-banner
+
+    +text-banner(
+        "Спецпредложения",
+        [
+            {linkText: "Частным клиентам", link: "/"}
+        ],
+        "",
+        "green"
+    )
+
+    section.section-catalog.d-flex.flex-column.gap-7.py-6.py-sm-9.py-md-11
+        include ../includes/layout/section-specials-catalog
+
+    include ../includes/layout/section-feedback
