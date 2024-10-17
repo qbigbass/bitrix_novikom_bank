@@ -5,19 +5,21 @@ mixin pagination(data, size)
                 li.page-item
                     a.page-link(href=data.prevLink)
                         +svg-use("icon-chevron-left", "icon size-m")
+            if data.firstLink
+                li.page-item
+                    a.page-link(href=data.firstLink.link)!= data.firstLink.linkText
+                li.page-item
+                    .page-link
+                        +svg-use("icon-more", "icon size-m")
             each item, index in data.list
-                -
-                    var isLastItem = index === data.list.length - 1
-                    var isLimitNeeded = data.list.length > 5
-                    var isItemHidden = index < 4 && isLimitNeeded
-
-                if isLastItem && isLimitNeeded
-                    li.page-item
-                        .page-link
-                            +svg-use("icon-more", "icon size-m")
-                if !isLimitNeeded || isLastItem || isItemHidden
-                    li.page-item(class=item.isActive && "active", aria-current=item.isActive && "page")
-                        a.page-link(href=item.link)!= item.linkText
+                li.page-item(class=item.isActive && "active", aria-current=item.isActive && "page")
+                    a.page-link(href=item.link)!= item.linkText
+            if data.lastLink
+                li.page-item
+                    .page-link
+                        +svg-use("icon-more", "icon size-m")
+                li.page-item
+                    a.page-link(href=data.lastLink.link)!= data.lastLink.linkText
             if data.nextLink
                 li.page-item
                     a.page-link(href=data.nextLink)
