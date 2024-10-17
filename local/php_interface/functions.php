@@ -43,3 +43,10 @@ function modifyMainSubmenuResult(array $arResult) : array {
 function clearPhoneNumber(string $phoneNumber) : string {
     return preg_replace('/[^0-9\+]+/', '', $phoneNumber);
 }
+
+function pre(mixed ...$arrays): void
+{
+    foreach ($arrays as $array) {
+        echo '<pre>' . print_r($array, true) . '</pre>';
+    }
+}
