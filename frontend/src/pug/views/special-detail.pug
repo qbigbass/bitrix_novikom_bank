@@ -1,0 +1,174 @@
+extends ../templates/base
+
+block title
+    title= 'Вклады - страница Спецпредложения'
+    meta(name="description" content="Описание страницы со спецпредложениями")
+block content
+
+    include ../cards/card-sale
+    include ../includes/header/header
+    include ../components/banners/text-banner
+    include ../components/banners/banner-product-info
+    include ../components/ui/tabs
+    include ../components/tabs-with-content
+    include ../components/helper
+    include ../components/benefit
+    include ../components/stepper
+    include ../includes/layout/slider-card-product
+
+    -
+        var allBenefits = [
+                {
+                    spriteData: {
+                        name: 'icon-a-bank',
+                        classList: 'size-xl',
+                    },
+                    description: 'Через Контактный центр <br>по телефону +7 800 250-70-07',
+                },
+                {
+                    spriteData: {
+                        name: 'icon-a-prices',
+                        classList: 'size-xl',
+                    },
+                    description: 'В <a class="blue-100" href="#">Мобильном приложении Банка</a> <br>и <a class="blue-100" href="#">Интернет-Банке</a>',
+                },
+                {
+                    spriteData: {
+                        name: 'icon-a-money',
+                        classList: 'size-xl',
+                    },
+                    description: 'В <a class="blue-100" href="#">офисе банка Новиком</a>',
+                },
+                {
+                    spriteData: {
+                        name: 'icon-a-money',
+                        classList: 'size-xl',
+                    },
+                    description: 'Через персонального менеджера в организации, <br>где получает зарплату владелец карты',
+                }
+        ]
+
+        const allSteps = [
+            {
+                text: "Подключите вашу карту банка Новиком удобным&nbsp;для&nbsp;вас&nbsp;способом к программе лояльности «Кешбэк»"
+            },
+            {
+                text: "<a class='blue-100' href='#'>Выберите&nbsp;избранные&nbsp;категории</a> оплаты товаров из списка в мобильном приложении или интернет-банке. Совершайте операции оплаты по карте банка Новиком и получайте повышенное вознаграждение на ваш текущий счет карты"
+            },
+            {
+                text: "Кешбэк будет выплачен согласно правил программы лояльности «Кешбэк»"
+            },
+        ]
+
+        var cardSaleList = [
+            {
+                href: "#",
+                title: "Топливо",
+                text: "7% кешбэк",
+                img: "cars.png"
+            },
+            {
+                href: "#",
+                title: "Аптеки",
+                text: "5% кешбэк",
+                img: "sport.png"
+            },
+            {
+                href: "#",
+                title: "Авиабилеты",
+                text: "5% кешбэк",
+                img: "travel.png"
+            },
+            {
+                href: "#",
+                title: "Детские товары",
+                text: "5% кешбэк",
+                img: "baby-products.png"
+            },
+            {
+                href: "#",
+                title: "Гостиницы, отели",
+                text: "5% кешбэк",
+                img: "hotel.png"
+            },
+        ]
+
+    +banner-product-info({
+        borderColor: "green",
+        date: "12.01.2024",
+        title: "Избранные категории для программы лояльности «Кешбэк» через мобильное приложение и интернет-банк",
+        tag: "Акция",
+        button: {
+            href: "#",
+            text: "О программе «Кешбэк»",
+        },
+        imageSrc: "img/banners/page-banner-4.png",
+        breadcrumbsArray: [
+            {linkText: "Частным клиентам", link: "/"},
+            {linkText: "Спецпредложения", link: "/"}
+        ]
+    }, "")
+        p.text-m.m-0 Держателям карт банка Новиком предлагается новая услуга по самостоятельному выбору избранных категорий кешбэк, которая будет выгодна для клиента.
+
+    section.section-special-steps.section-layout.px-lg-6.bg-dark-10
+        .container
+            .row
+                .d-none.d-md-flex.justify-content-between
+                    h3.h3
+                        | Как подключить кешбэк и выбрать избранные категории
+                a(
+                    data-bs-toggle="collapse"
+                    href="#special-steps-content"
+                    role="button"
+                    aria-expanded="false"
+                    aria-controls="special-steps-content"
+                ).h3.d-flex.align-items-center.justify-content-between.dark-100.d-md-none
+                    | Как подключить кешбэк и выбрать избранные категории
+                    +svg-use("icon-chevron-down", "icon size-m violet-100")
+            #special-steps-content.section-special-steps__wrapper.collapse.d-md-block.mt-6.mt-lg-7
+                +stepper(allSteps, allSteps.length)
+
+    section.section-layout.bg-blue-10.px-lg-6
+        .container
+            .row.mb-6.mb-lg-7
+                h3 Перечень избранных категорий
+            .row
+                .col-12
+                    .d-flex.flex-row.justify-content-between
+                        .swiper.slider-cards.d-flex.flex-column.js-slider-cards(data-slides-per-view="mobile-s:1.5,mobile:1.5,tablet:3,tablet-album:4,laptop:5,laptop-x:5" data-space-between="mobile-s:16,mobile:16,tablet:16,laptop:40,laptop-x:40")
+                            .swiper-wrapper
+                                each item in cardSaleList
+                                    .swiper-slide.js-swiper-slide
+                                        +card-sale(item)
+                            +slider-controls().mt-3.mt-md-4
+                    a(href="#").btn.btn-link.btn-lg.d-inline-flex.gap-2.align-items-center.mt-4.mt-md-6
+                        span.text-wrap.text-start Список всех избранных категорий
+                        +svg-use('icon-chevron-right-small', 'icon size-m')
+    
+    section.section-special-benefits.bg-dark-10.px-0.px-lg-6.py-6.py-sm-9.py-md-11.py-xl-16.position-relative.overflow-hidden
+        .container
+            .row.mb-6.mb-lg-7
+                h3 Как подключить кэшбэк
+            .row.row-gap-6
+                each item, index in allBenefits
+                    .col-12.col-md-6
+                        +benefit(item.spriteData, item.title)
+                            span.text-l!= item.description
+
+    section.section-layout.px-lg-6
+        .container
+            .row.mb-6.mb-lg-7
+                h3 Дополнительно
+            .row
+                .col-12.col-lg-10.col-xl-8
+                    .d-flex.flex-column.row-gap-4.text-l
+                        p.m-0 Период действия избранных категорий - с 01.07.2024 по 31.08.2024 включительно.
+                        p.m-0 Выбирайте самостоятельно 4 категории повышенного кешбэка из 7 доступных в мобильном приложении/интернет-банке. Обратите внимание, что в список категорий повышенного кешбэка входит социально-значимая категория «Аптеки», по категории «Топливо» начисляется кешбэк 7%.
+                        p.m-0 В июле-августе 2024 года в перечень категорий на выбор включены категории для поездок, спорта, приобретения детских товаров, электроники и техники
+        +pattern-bg('section-2', 'light', 'pattern-bg--position-sm-bottom')
+                    
+    section.section-layout
+        .container
+            h3.px-lg-6.mb-4.mb-md-6.mb-lg-7
+                | Смотрите также
+            +slider-card-product()
