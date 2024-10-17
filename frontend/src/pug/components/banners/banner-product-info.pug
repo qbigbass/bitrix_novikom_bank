@@ -10,7 +10,7 @@ mixin banner-product-info(data, bgColor='bg-blue-10')
                             if index == data.breadcrumbsArray.length-1
                                 +svg-use("icon-chevron-left", "icon size-s dark-70 d-inline-block d-md-none")
                             span=item.linkText
-            .banner-product-info.ps-lg-6
+            .banner-product-info.ps-lg-6(class=!data.imageSrc&&'d-flex flex-column')
                 .banner-product-info__header
                     if data.tag
                         +tag(data.tag, 'outline')
