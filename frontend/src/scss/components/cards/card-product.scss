@@ -16,6 +16,10 @@
         padding: 2.5rem;
     }
 
+    @include use-media(laptop-x) {
+        min-height: 280px;
+    }
+
     &:before {
         content: "";
         position: absolute;
@@ -92,7 +96,6 @@
 
     &__img {
         align-self: center;
-        width: auto;
         height: 12.5rem;
         width: 12.5rem;
 
