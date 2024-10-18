@@ -17,6 +17,15 @@ links:
 	[ -L upload ]        || /usr/bin/env ln -s /home/deploy/_shared/novikombank/main/upload      upload
 	( [ -L bitrix ]      || /usr/bin/env ln -s /home/deploy/_shared/novikombank/main/bitrix      bitrix ) || /bin/true
 
+	@echo "-------------------------------------------"
+	@echo "  Make links to shared directories in s1"
+	@echo "-------------------------------------------"
+
+	[ -L s1/upload ]     || /usr/bin/env ln -s /home/deploy/_shared/novikombank/main/upload      s1/upload
+	[ -L s1/bitrix ]     || /usr/bin/env ln -s /home/deploy/_shared/novikombank/main/bitrix      s1/bitrix
+	[ -L s1/frontend ]   || /usr/bin/env ln -s /home/deploy/_shared/novikombank/main/frontend    s1/frontend
+	[ -L s1/local ]      || /usr/bin/env ln -s /home/deploy/_shared/novikombank/main/local       s1/local
+
 frontend.install:
 	@echo "-------------------------------------------"
 	@echo "  Install frontend dependencies"
