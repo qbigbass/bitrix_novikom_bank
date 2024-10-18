@@ -6,7 +6,7 @@ use \Bitrix\Main,
 
 class CUserTypeStringDescr
 {
-    public static function OnIBlockPropertyBuildList()
+    public static function OnIBlockPropertyBuildList(): array
     {
         return array(
             'PROPERTY_TYPE' => 'S',
@@ -20,7 +20,12 @@ class CUserTypeStringDescr
         );
     }
 
-    public static function ConvertToDB($arProperty, $value)
+    /**
+     * @param array $arProperty
+     * @param array $value
+     * @return array
+     */
+    public static function ConvertToDB(array $arProperty, array $value): array
     {
         $hasValues = false;
 
@@ -40,7 +45,13 @@ class CUserTypeStringDescr
         return $value;
     }
 
-    public static function ConvertFromDB($arProperty, $value, $format = '')
+    /**
+     * @param array $arProperty
+     * @param array $value
+     * @param string $format
+     * @return array
+     */
+    public static function ConvertFromDB(array $arProperty, array $value, string $format = ''): array
     {
         if ($value['VALUE'] != '') {
             $value['VALUE'] = json_decode($value['VALUE'], true);
@@ -49,7 +60,13 @@ class CUserTypeStringDescr
         return $value;
     }
 
-    public static function GetSettingsHTML($arProperty, $strHTMLControlName, &$arPropertyFields)
+    /**
+     * @param array $arProperty
+     * @param array $strHTMLControlName
+     * @param array $arPropertyFields
+     * @return string
+     */
+    public static function GetSettingsHTML(array $arProperty, array $strHTMLControlName, array &$arPropertyFields): string
     {
         $arPropertyFields = array(
             "HIDE" => [
@@ -57,20 +74,21 @@ class CUserTypeStringDescr
                 "FILTRABLE",
                 "DEFAULT_VALUE"
             ],
-            "SET" => ["FILTRABLE" => "N"],
             "USER_TYPE_SETTINGS_TITLE" => "Настройки отображения свойства"
         );
 
         $html = '<tr>
                     <td>Количество полей ввода:</td>
-                    <td><input type="text" size="3" id="input_count" name="' . $strHTMLControlName["NAME"] . '[COUNT]" value="' . ($arProperty["USER_TYPE_SETTINGS"]["COUNT"] ?? 1) . '" oninput="updateFields()"></td>
+                    <td><input type="text" size="3" id="input_count" name="' . $strHTMLControlName["NAME"] . '[COUNT]" value="' . ($arProperty["USER_TYPE_SETTINGS"]["COUNT"] ?? 3) . '" oninput="updateFields()"></td>
                 </tr>
                 <tr>
                     <td>Подписи для полей:</td>
                     <td id="field_descriptions">';
 
         if (empty($arProperty["USER_TYPE_SETTINGS"]["DESCR"])) {
-            $html .= '<input type="text" size="20" name="' . $strHTMLControlName["NAME"] . '[DESCR][1]" value="Первое поле">';
+            $html .= '<input type="text" size="20" name="' . $strHTMLControlName["NAME"] . '[DESCR][1]" value="Подпись">';
+            $html .= '<input type="text" size="20" name="' . $strHTMLControlName["NAME"] . '[DESCR][2]" value="Мелко">';
+            $html .= '<input type="text" size="20" name="' . $strHTMLControlName["NAME"] . '[DESCR][3]" value="Крупно">';
         } else {
             $count = 1;
             foreach ($arProperty["USER_TYPE_SETTINGS"]["DESCR"] as $value) {
@@ -114,11 +132,14 @@ class CUserTypeStringDescr
                     document.getElementById("input_count").addEventListener("input", updateFields);
                 </script>';
 
-
         return $html;
     }
 
-    public static function PrepareSettings($arFields)
+    /**
+     * @param array $arFields
+     * @return array
+     */
+    public static function PrepareSettings(array $arFields): array
     {
         $fields = [];
         if (isset($arFields['USER_TYPE_SETTINGS']) && is_array($arFields['USER_TYPE_SETTINGS']))
@@ -145,7 +166,13 @@ class CUserTypeStringDescr
         ];
     }
 
-    public static function GetPropertyFieldHtml($arProperty, $value, $arHtmlControl)
+    /**
+     * @param array $arProperty
+     * @param array $value
+     * @param array $arHtmlControl
+     * @return string
+     */
+    public static function GetPropertyFieldHtml(array $arProperty, array $value, array $arHtmlControl): string
     {
         $fieldName =  htmlspecialcharsbx($arHtmlControl['VALUE']);
         $arValue = $value['VALUE'];
