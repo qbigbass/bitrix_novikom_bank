@@ -3,7 +3,7 @@
 namespace Sprint\Migration;
 
 
-class Version20241018131642 extends Version
+class Version20241018134055 extends Version
 {
     protected $author = "vimbatu@gmail.com";
 
@@ -733,10 +733,10 @@ class Version20241018131642 extends Version
   ),
 ));
             $helper->Iblock()->saveProperty($iblockId, array (
-  'NAME' => 'Заголовок особенности',
+  'NAME' => 'Заголовок бенефитов',
   'ACTIVE' => 'Y',
   'SORT' => '800',
-  'CODE' => 'FEATURES_HEADER',
+  'CODE' => 'BENEFITS_HEADER',
   'DEFAULT_VALUE' => '',
   'PROPERTY_TYPE' => 'S',
   'ROW_COUNT' => '1',
@@ -978,8 +978,8 @@ class Version20241018131642 extends Version
     'PROPERTY_DETAIL_TERMS' => 'Краткие условия',
     'PROPERTY_BUTTON_DETAIL' => 'Выводить кнопку',
     'PROPERTY_BUTTON_TEXT_DETAIL' => 'Текст кнопки',
-    'cedit2_csection3' => 'Особенности',
-    'PROPERTY_FEATURES_HEADER' => 'Заголовок',
+    'cedit2_csection3' => 'Бенефиты',
+    'PROPERTY_BENEFITS_HEADER' => 'Заголовок',
     'PROPERTY_BENEFITS' => 'Элементы',
     'cedit2_csection4' => 'Сноска',
     'PROPERTY_QUOTE_HEADER' => 'Заголовок',
