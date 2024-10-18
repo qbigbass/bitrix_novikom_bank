@@ -4,7 +4,7 @@
 
 $APPLICATION->IncludeComponent(
     "bitrix:news.list",
-    "benefits",
+    "cross_sale_block",
     Array(
         "ACTIVE_DATE_FORMAT" => "d.m.Y",
         "ADD_SECTIONS_CHAIN" => "N",
@@ -29,7 +29,7 @@ $APPLICATION->IncludeComponent(
         "FILTER_NAME" => "",
         "HIDE_LINK_WHEN_NO_DETAIL" => "N",
         "HEADER_TEXT" => $arParams['HEADER_TEXT'] ?: "Смотрите также",
-        "IBLOCK_ID" => iblock('benefits'),
+        "IBLOCK_ID" => iblock('cross_sale'),
         "IBLOCK_TYPE" => "additional",
         "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
         "INCLUDE_SUBSECTIONS" => "N",
