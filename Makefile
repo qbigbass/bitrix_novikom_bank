@@ -2,6 +2,7 @@
 # Usage: $ make install
 #
 NVM := n --offline exec auto
+CURRENT_DIR := $(shell pwd)
 
 install: links frontend.install frontend.build
 
@@ -21,10 +22,10 @@ links:
 	@echo "  Make links to shared directories in s1"
 	@echo "-------------------------------------------"
 
-	[ -L s1/upload ]     || /usr/bin/env ln -s "$(pwd)/upload"		s1/upload
-	[ -L s1/bitrix ]     || /usr/bin/env ln -s "$(pwd)/bitrix"		s1/bitrix
-	[ -L s1/frontend ]   || /usr/bin/env ln -s "$(pwd)/frontend"	s1/frontend
-	[ -L s1/local ]      || /usr/bin/env ln -s "$(pwd)/local"       s1/local
+	[ -L s1/upload ]     || /usr/bin/env ln -s "$(CURRENT_DIR)/upload"		s1/upload
+	[ -L s1/bitrix ]     || /usr/bin/env ln -s "$(CURRENT_DIR)/bitrix"		s1/bitrix
+	[ -L s1/frontend ]   || /usr/bin/env ln -s "$(CURRENT_DIR)/frontend"	s1/frontend
+	[ -L s1/local ]      || /usr/bin/env ln -s "$(CURRENT_DIR)/local"       s1/local
 
 frontend.install:
 	@echo "-------------------------------------------"
