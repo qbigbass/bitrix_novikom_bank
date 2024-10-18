@@ -38,7 +38,6 @@ block content
     include ../components/ui/accordion-item
     include ../components/helper
     include ../components/stepper
-    include ../components/banners/info-product-banner
     include ../components/banners/banner-product-info
     include ../cards/card-text
     include ../cards/card-product-list
@@ -961,10 +960,10 @@ block content
                             +helper("img/restructuring-additional-info.png", "bg-dark-10")
                                 p.mb-0 Банк вправе запросить дополнительные документы заемщика/созаемщика/поручителя <br />для подтверждения информации, указанной заемщиком/созаемщиком/поручителем.
 
-    section#info-product-banner.section-layout.pt-0
+    section#banner-product-info.section-layout.pt-0
         .container
             .d-flex.flex-column.row-gap-5.mb-5.mb-lg-6
-                h2 Info-Product Banner
+                h2 Banner Product Info
         +banner-product-info({
             title: "Банк готов оказать необходимую поддержку в урегулировании задолженности в случаях",
             button: {

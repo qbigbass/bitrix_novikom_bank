@@ -1,0 +1,124 @@
+extends ../templates/base
+
+block title
+    title= 'Частные клиенты - Банковские переводы в офисе'
+    meta(name="description" content="Описание страницы с вкладами")
+block content
+
+    include ../includes/header/header
+    include ../components/banners/text-banner
+    include ../includes/layout/slider-card-product
+    include ../components/ui/tabs-simple
+    include ../components/ui/tabs
+    include ../components/stepper
+
+    -
+        var tabContentList = [
+            {
+                link: '#tariffs',
+                id: 'tariffs',
+                linkText: 'Тарифы',
+                isActive: true
+            },
+            {
+                link: '#deadlines',
+                id: 'deadlines',
+                linkText: 'Сроки исполнения переводов',
+                isActive: false
+            },
+            {
+                link: '#operating-time',
+                id: 'operating-time',
+                linkText: 'Операционное время',
+                isActive: false
+            },
+            {
+                link: '#documents',
+                id: 'documents',
+                linkText: 'Документы и тарифы',
+                isActive: false
+            },
+        ]
+
+        var tabsList = [
+            {
+                link: '#1',
+                linkText: 'Переводы со счетов',
+            },
+            {
+                link: '#2',
+                linkText: 'Переводы без открытия счета',
+            },
+        ]
+
+        var allSteps = [
+            {
+                text: "Обратиться в&nbsp;офис Банка с&nbsp;документом, удостоверяющим личность"
+            },
+            {
+                text: "Сообщить необходимые реквизиты получателя перевода и&nbsp;назначение перевода"
+            },
+            {
+                text: "Подписать заявление (распоряжение) на&nbsp;перевод"
+            },
+            {
+                text: "Получить документ, подтверждающий осуществление перевода"
+            },
+        ]
+
+    +text-banner(
+        "Банковские переводы в&nbsp;офисе",
+        [
+            {linkText: "Частным клиентам", link: "/"},
+            {linkText: "Платежи и переводы", link: "/"}
+        ],
+        "Для авторизации необходимо являться клиентом Новикома.",
+        "green"
+    )
+
+    section.section-layout.pb-0.pt-xl-11
+        .container
+            .row.px-lg-6
+                .col-12
+                    +tabs(tabsList)
+
+    section.section-layout
+        .container
+            h3.px-lg-6.mb-4.mb-md-6.mb-lg-7
+                | Как оформить перевод
+            .row.px-lg-6
+                +stepper(allSteps, allSteps.length)
+
+    section.section-layout.js-collapsed-mobile
+        .container
+            h3.d-none.d-md-block.mb-md-6.mb-lg-7.px-lg-6
+                | Условия переводов со&nbsp;счетов
+            a(
+                data-bs-toggle="collapse"
+                href="#more"
+                role="button"
+                aria-expanded="false"
+                aria-controls="more"
+            ).h3.d-flex.align-items-center.justify-content-between.dark-100.d-md-none
+                | Условия переводов со&nbsp;счетов
+                +svg-use("icon-chevron-down", "icon size-m violet-100")
+            #more.collapse.d-md-block.mt-4.mt-md-6.mt-lg-7
+                .row.px-lg-6
+                    .col-12
+                        +tabs-simple(tabContentList, false)
+                        .tab-content.mt-4.mt-md-6.mt-lg-7
+                            #tariffs.tab-pane.fade.show.active(aria-labelledby="tariffs" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/transfer-tariffs
+                            #deadlines.tab-pane.fade(aria-labelledby="deadlines" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/transfer-deadlines
+                            #operating-time.tab-pane.fade(aria-labelledby="operating-time" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/documents
+                            #documents.tab-pane.fade(aria-labelledby="documents" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/documents
+        +pattern-bg('section-2', 'light', 'pattern-bg--hide-mobile')
+
+    section.section-layout
+        .container
+            h3.px-lg-6.mb-4.mb-md-6.mb-lg-7
+                | Смотрите также
+            +slider-card-product()
