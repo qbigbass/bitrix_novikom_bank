@@ -31,7 +31,7 @@ $APPLICATION->SetTitle('Частным клиентам - Главная НОВ�
             "FIELD_CODE" => array("ID", "NAME", ""),
             "FILTER_NAME" => "",
             "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-            "IBLOCK_ID" => "115",
+            "IBLOCK_ID" => iblock('main_slider'),
             "IBLOCK_TYPE" => "for_private_clients_ru",
             "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
             "INCLUDE_SUBSECTIONS" => "N",
