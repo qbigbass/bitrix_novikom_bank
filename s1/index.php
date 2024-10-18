@@ -295,58 +295,68 @@ $APPLICATION->SetTitle('Частным клиентам - Главная НОВ�
         </div>
         <div class="swiper js-slider-cards slider-cards" data-slides-per-view="mobile-s:1,mobile:1,tablet:2,laptop:3,laptop-x:3" data-space-between="mobile-s:8,mobile:8,tablet:8,laptop:8,laptop-x:8">
             <div class="swiper-wrapper js-swiper-wrapper">
-                <div class="swiper-slide js-swiper-slide"><a class="card-news" href="#">
-                        <div class="d-flex column-gap-3 row-gap-4 justify-content-between align-items-end flex-wrap">
-                            <div class="tag tag--outline card-news__tag"><span class="tag__content text-s fw-semibold">Пресс-центр</span><span class="tag__triangle">
-                                <svg width="14" height="21" viewBox="0 0 14 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                  <path d="M13.5 19.3486L0.934259 0.5H13.5V19.3486Z"></path>
-                                </svg></span></div><span class="text-s dark-70">07.12.2023</span>
-                        </div><span class="dark-100">Новикомбанк рассказал о развитии финансовых инструментов</span></a>
+                <div class="swiper-slide js-swiper-slide"><a class="card-special bg-dark-10 dark-100 h-100 d-flex flex-column row-gap-6 row-gap-lg-9">
+                        <div class="card-special__header d-flex align-items-start justify-content-between">
+                            <div class="tag tag--outline"><span class="tag__content text-s fw-semibold">Пресс-центр</span><span class="tag__triangle">
+                                    <svg width="14" height="21" viewBox="0 0 14 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                      <path d="M13.5 19.3486L0.934259 0.5H13.5V19.3486Z"></path>
+                                    </svg></span></div><span class="text-s dark-70 my-auto mb-0">07.12.2023</span>
+                        </div>
+                        <div class="card-special__body"><span class="dark-100">Новикомбанк рассказал о развитии финансовых инструментов</span>
+                        </div></a>
                 </div>
-                <div class="swiper-slide js-swiper-slide"><a class="card-news" href="#">
-                        <div class="d-flex column-gap-3 row-gap-4 justify-content-between align-items-end flex-wrap">
-                            <div class="tag tag--outline card-news__tag"><span class="tag__content text-s fw-semibold">Пресс-центр</span><span class="tag__triangle">
-                                <svg width="14" height="21" viewBox="0 0 14 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                  <path d="M13.5 19.3486L0.934259 0.5H13.5V19.3486Z"></path>
-                                </svg></span></div><span class="text-s dark-70">06.12.2023</span>
-                        </div><span class="dark-100">Новикомбанк и Республика Татарстан договорились о сотрудничестве</span></a>
+                <div class="swiper-slide js-swiper-slide"><a class="card-special bg-dark-10 dark-100 h-100 d-flex flex-column row-gap-6 row-gap-lg-9">
+                        <div class="card-special__header d-flex align-items-start justify-content-between">
+                            <div class="tag tag--outline"><span class="tag__content text-s fw-semibold">Пресс-центр</span><span class="tag__triangle">
+                                    <svg width="14" height="21" viewBox="0 0 14 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                      <path d="M13.5 19.3486L0.934259 0.5H13.5V19.3486Z"></path>
+                                    </svg></span></div><span class="text-s dark-70 my-auto mb-0">06.12.2023</span>
+                        </div>
+                        <div class="card-special__body"><span class="dark-100">Новикомбанк и Республика Татарстан договорились о сотрудничестве</span>
+                        </div></a>
                 </div>
-                <div class="swiper-slide js-swiper-slide"><a class="card-news" href="#">
-                        <div class="d-flex column-gap-3 row-gap-4 justify-content-between align-items-end flex-wrap">
-                            <div class="tag tag--outline card-news__tag"><span class="tag__content text-s fw-semibold">Союз машиностроителей 1234 dfsfasd</span><span class="tag__triangle">
-                                <svg width="14" height="21" viewBox="0 0 14 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                  <path d="M13.5 19.3486L0.934259 0.5H13.5V19.3486Z"></path>
-                                </svg></span></div><span class="text-s dark-70">27.11.2023</span>
-                        </div><span class="dark-100">При поддержке Новикомбанка Росэлектроника начала серийный выпуск KVM-коммутаторов для удаленного управления оборудованием</span></a>
+                <div class="swiper-slide js-swiper-slide"><a class="card-special bg-dark-10 dark-100 h-100 d-flex flex-column row-gap-6 row-gap-lg-9">
+                        <div class="card-special__header d-flex align-items-start justify-content-between">
+                            <div class="tag tag--outline"><span class="tag__content text-s fw-semibold">Союз машиностроителей</span><span class="tag__triangle">
+                                    <svg width="14" height="21" viewBox="0 0 14 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                      <path d="M13.5 19.3486L0.934259 0.5H13.5V19.3486Z"></path>
+                                    </svg></span></div><span class="text-s dark-70 my-auto mb-0">27.11.2023</span>
+                        </div>
+                        <div class="card-special__body"><span class="dark-100">При поддержке Новикомбанка Росэлектроника начала серийный выпуск KVM-коммутаторов для удаленного управления оборудованием</span>
+                        </div></a>
                 </div>
-                <div class="swiper-slide js-swiper-slide"><a class="card-news" href="#">
-                        <div class="d-flex column-gap-3 row-gap-4 justify-content-between align-items-end flex-wrap">
-                            <div class="tag tag--outline card-news__tag"><span class="tag__content text-s fw-semibold">Пресс-центр</span><span class="tag__triangle">
-                                <svg width="14" height="21" viewBox="0 0 14 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                  <path d="M13.5 19.3486L0.934259 0.5H13.5V19.3486Z"></path>
-                                </svg></span></div><span class="text-s dark-70">20.11.2023</span>
-                        </div><span class="dark-100">Новикомбанк и Республика Татарстан договорились о сотрудничестве</span></a>
+                <div class="swiper-slide js-swiper-slide"><a class="card-special bg-dark-10 dark-100 h-100 d-flex flex-column row-gap-6 row-gap-lg-9">
+                        <div class="card-special__header d-flex align-items-start justify-content-between">
+                            <div class="tag tag--outline"><span class="tag__content text-s fw-semibold">Пресс-центр</span><span class="tag__triangle">
+                                    <svg width="14" height="21" viewBox="0 0 14 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                      <path d="M13.5 19.3486L0.934259 0.5H13.5V19.3486Z"></path>
+                                    </svg></span></div><span class="text-s dark-70 my-auto mb-0">20.11.2023</span>
+                        </div>
+                        <div class="card-special__body"><span class="dark-100">Новикомбанк и Республика Татарстан договорились о сотрудничестве</span>
+                        </div></a>
                 </div>
-                <div class="swiper-slide js-swiper-slide"><a class="card-news" href="#">
-                        <div class="d-flex column-gap-3 row-gap-4 justify-content-between align-items-end flex-wrap">
-                            <div class="tag tag--outline card-news__tag"><span class="tag__content text-s fw-semibold">Союз машиностроителей</span><span class="tag__triangle">
-                                <svg width="14" height="21" viewBox="0 0 14 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                  <path d="M13.5 19.3486L0.934259 0.5H13.5V19.3486Z"></path>
-                                </svg></span></div><span class="text-s dark-70">05.11.2023</span>
-                        </div><span class="dark-100">При поддержке Новикомбанка Росэлектроника начала серийный выпуск KVM-коммутаторов для удаленного управления оборудованием</span></a>
+                <div class="swiper-slide js-swiper-slide"><a class="card-special bg-dark-10 dark-100 h-100 d-flex flex-column row-gap-6 row-gap-lg-9">
+                        <div class="card-special__header d-flex align-items-start justify-content-between">
+                            <div class="tag tag--outline"><span class="tag__content text-s fw-semibold">Союз машиностроителей</span><span class="tag__triangle">
+                                    <svg width="14" height="21" viewBox="0 0 14 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                      <path d="M13.5 19.3486L0.934259 0.5H13.5V19.3486Z"></path>
+                                    </svg></span></div><span class="text-s dark-70 my-auto mb-0">05.11.2023</span>
+                        </div>
+                        <div class="card-special__body"><span class="dark-100">При поддержке Новикомбанка Росэлектроника начала серийный выпуск KVM-коммутаторов для удаленного управления оборудованием</span>
+                        </div></a>
                 </div>
             </div>
             <div class="slider-controls js-swiper-controls mt-3 mt-md-4">
                 <div class="slider-controls__pagination js-swiper-pagination"></div>
                 <div class="slider-controls__navigation js-swiper-nav">
                     <button class="swiper-button-prev js-swiper-prev" type="button"><span class="icon size-m">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                      <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-left"></use>
-                    </svg></span></button>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                              <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-left"></use>
+                            </svg></span></button>
                     <button class="swiper-button-next js-swiper-next" type="button"><span class="icon size-m">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                      <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
-                    </svg></span></button>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                              <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
+                            </svg></span></button>
                 </div>
             </div>
         </div>
