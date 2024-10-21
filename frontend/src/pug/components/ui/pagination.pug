@@ -1,6 +1,8 @@
-mixin pagination(data, size)
+mixin pagination(data, position='center', size)
     nav
-        ul.pagination.justify-content-center(class=size && `pagination-${size}`)
+        -
+            var activeIndex = 0;
+        ul.pagination.d-none.d-md-flex(class=`justify-content${position}`, class=size && `pagination-${size}`)
             if data.prevLink
                 li.page-item
                     a.page-link(href=data.prevLink)
@@ -12,14 +14,32 @@ mixin pagination(data, size)
                     .page-link
                         +svg-use("icon-more", "icon size-m")
             each item, index in data.list
+                -
+                    if (item.isActive)
+                        activeIndex = index + 1
                 li.page-item(class=item.isActive && "active", aria-current=item.isActive && "page")
                     a.page-link(href=item.link)!= item.linkText
-            if data.lastLink
+            if data.lastLink && data.lastLink.linkText !== data.list.at(-1).linkText
                 li.page-item
                     .page-link
                         +svg-use("icon-more", "icon size-m")
                 li.page-item
                     a.page-link(href=data.lastLink.link)!= data.lastLink.linkText
+            if data.nextLink
+                li.page-item
+                    a.page-link(href=data.nextLink)
+                        +svg-use("icon-chevron-right", "icon size-m")
+        ul.pagination.d-flex.d-md-none.justify-content-between
+            if data.prevLink
+                li.page-item
+                    a.page-link(href=data.prevLink)
+                        +svg-use("icon-chevron-left", "icon size-m")
+            li.min-w-50
+                form
+                    .position-relative.w-100
+                        input.pagination__input.form-control.text-s(type="number", step="1", min="1", max=data.lastLink.linkText, placeholder=`${activeIndex}/${data.lastLink.linkText}`, tabindex="-1")
+                        span.position-absolute.top-0.end-0.dark-70.text-m.p-2.px-3
+                            +svg-use("icon-chevron-down", "icon size-s")
             if data.nextLink
                 li.page-item
                     a.page-link(href=data.nextLink)

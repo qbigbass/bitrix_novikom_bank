@@ -1,5 +1,14 @@
 .pagination {
     gap: 1rem;
+
+    &__input {
+
+        &:focus {
+            background-color: var(--blue-100);
+            color: var(--dark-0);
+            border: 1px solid transparent;
+        }
+    }
 }
 
 .page-item {
