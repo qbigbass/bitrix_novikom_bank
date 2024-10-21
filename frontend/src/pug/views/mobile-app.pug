@@ -60,7 +60,7 @@ block content
         .container
             h3.px-lg-6.mb-4.mb-md-6.mb-lg-7
                 | Преимущества
-            .row.row-gap-6.row-gap-md-7.px-lg-6
+            #benefits.row.row-gap-6.row-gap-md-7.px-lg-6
                 .col-12.col-md-6.col-xl-4
                     +benefit(
                         {
@@ -100,7 +100,7 @@ block content
                             li Выгодные условия и&nbsp;обновления
                             li Акции
                             li Новости
-                .col-12.col-md-6.col-xl-4
+                .col-12.col-md-6.col-xl-4.d-none.d-md-block
                     +benefit(
                         {
                             name: 'icon-a-date',
@@ -109,7 +109,7 @@ block content
                         ul.list
                             li Бонусы
                             li Кешбэк
-                .col-12.col-md-6.col-xl-4
+                .col-12.col-md-6.col-xl-4.d-none.d-md-block
                     +benefit(
                         {
                             name: 'icon-a-date',
@@ -118,6 +118,10 @@ block content
                         ul.list
                             li Онлайн-консультант 24/7
                             li Ближайшие отделения и&nbsp;банкоматы на&nbsp;карте
+                .col-12.text-center
+                    button(type="button" data-target="benefits").btn.btn-link.btn-icon.d-md-none.js-more-content-link
+                        | Еще преимущества
+                        +svg-use("icon-chevron-down", "icon size-m violet-100")
         +pattern-bg('section', 'light', 'pattern-bg--position-sm-bottom')
 
     section.section-layout
