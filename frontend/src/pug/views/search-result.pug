@@ -190,7 +190,10 @@ block content
                 .col-12.col-lg-7
                     form
                         .d-flex.flex-column.flex-md-row.gap-4.gap-md-7.align-items-start.align-items-md-center
-                            input#date1(type="date" name="date1" placeholder="Показать за период" disabled).min-w-lg-auto.min-w-md-50.w-lg-240w.form-control
+                            .position-relative.min-w-lg-auto.min-w-md-50.w-lg-240w
+                                input#date1(type="date" name="date1" placeholder="Показать за период" disabled).w-100.form-control
+                                span.position-absolute.top-0.end-0.violet-70.text-m.p-2.px-3
+                                    +svg-use("icon-calendar", "icon size-m")
                             +tabs(fiterTabsList, "", "", true)
             .row.px-lg-6
                 .col-12.col-lg-7
