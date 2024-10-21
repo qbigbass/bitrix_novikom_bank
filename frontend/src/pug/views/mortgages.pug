@@ -4,18 +4,22 @@ block title
     title= 'Частные клиенты - Ипотеки'
     meta(name="description" content="Описание страницы с ипотеками")
 block content
+    -
+        var bannerTextData = {
+            title: "Ипотечные программы",
+            breadcrumbsArray: [
+                {linkText: "Частным клиентам", link: "/"}
+            ],
+            description: ""
+        }
 
     include ../cards/card-product
     include ../includes/header/header
-    include ../components/banners/text-banner
+    include ../components/banners/banner-text
     include ../includes/layout/slider-card-product
 
-    +text-banner(
-        "Ипотечные программы",
-        [
-            {linkText: "Частным клиентам", link: "/"}
-        ],
-        "",
+    +banner-text(
+        bannerTextData,
         "green"
     )
 

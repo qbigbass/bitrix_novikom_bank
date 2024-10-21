@@ -6,7 +6,7 @@ block title
 block content
 
     include ../includes/header/header
-    include ../components/banners/text-banner
+    include ../components/banners/banner-text
     include ../components/benefit
     include ../cards/card-service-app
     include ../cards/card-benefit
@@ -40,13 +40,17 @@ block content
             linkText: 'Войти <span class="d-none d-md-inline">в Онлайн-банк</span>'
         }
 
-    +text-banner(
-        "Операции через банкомат",
-        [
-            {linkText: "Частным клиентам", link: "/"},
-            {linkText: "Платежи и переводы", link: "/"}
-        ],
-        "Переводы, пополнение и&nbsp;снятие наличных в&nbsp;банкоматах Новиком и&nbsp;сторонних банков",
+        var bannerTextData = {
+            title: "Операции через банкомат",
+            breadcrumbsArray: [
+                {linkText: "Частным клиентам", link: "/"},
+                {linkText: "Платежи и переводы", link: "/"}
+            ],
+            description: "Переводы, пополнение и&nbsp;снятие наличных в&nbsp;банкоматах Новиком и&nbsp;сторонних банков"
+        }
+
+    +banner-text(
+        bannerTextData,
         "green"
     )
 

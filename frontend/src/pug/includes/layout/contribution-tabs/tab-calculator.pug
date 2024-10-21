@@ -65,7 +65,10 @@ include ../../../cards/card-calculate-result
                     .d-flex.flex-column.row-gap-2.w-100
                         label(for="date1").form-label.mb-0
                             | Дата пополнения
-                        input#date1(type="date" name="date1" placeholder="дд.мм.гг" disabled).form-control.form-control-lg
+                        .position-relative.w-100
+                            input#date1(type="date" name="date1" placeholder="дд.мм.гг" disabled).form-control.form-control-lg
+                            span.position-absolute.top-0.end-0.violet-70.text-m.p-3
+                                +svg-use("icon-calendar", "icon size-m")
 
                     .d-flex.flex-column.row-gap-2.w-100
                         label(for="sum1").form-label.mb-0

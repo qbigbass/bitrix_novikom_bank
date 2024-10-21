@@ -60,17 +60,21 @@ block content
             },
         ]
 
+        var bannerTextData = {
+            title: "Банковские карты",
+            breadcrumbsArray: [
+                {linkText: "Частным клиентам", link: "/"}
+            ],
+            description: "Карты с&nbsp;оптимальными условиями и&nbsp;приятными бонусами"
+        }
+
     include ../cards/card-product
     include ../includes/header/header
-    include ../components/banners/text-banner
+    include ../components/banners/banner-text
     include ../includes/layout/slider-card-product
 
-    +text-banner(
-        "Банковские карты",
-        [
-            {linkText: "Частным клиентам", link: "/"}
-        ],
-        "Карты с&nbsp;оптимальными условиями и&nbsp;приятными бонусами",
+    +banner-text(
+        bannerTextData,
         "green"
     )
 

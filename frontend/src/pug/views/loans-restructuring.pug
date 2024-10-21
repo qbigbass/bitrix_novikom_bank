@@ -84,25 +84,29 @@ block content
             },
         ]
 
+        var bannerTextData = {
+            title: "Реструктуризация",
+            breadcrumbsArray: [
+                {linkText: "Частным клиентам", link: "/"},
+                {linkText: "Кредиты", link: "/"}
+            ],
+            description: "Программы для заемщиков, у которых возникли трудности с погашением кредиты",
+            imageSrc: "img/big-illustrations/large-individual/restructuring.png"
+        }
+
     include ../cards/card-text
     include ../cards/card-product
     include ../includes/header/header
-    include ../components/banners/text-banner
+    include ../components/banners/banner-text
     include ../components/banners/banner-product-info
     include ../components/ui/tabs
     include ../components/ui/tabs-simple
     include ../components/helper
     include ../includes/layout/slider-card-product
 
-    +text-banner(
-        "Реструктуризация",
-        [
-            {linkText: "Частным клиентам", link: "/"},
-            {linkText: "Кредиты", link: "/"}
-        ],
-        "Программы для заемщиков, у которых возникли трудности с погашением кредиты",
+    +banner-text(
+        bannerTextData,
         "green",
-        "img/big-illustrations/large-individual/restructuring.png"
     )
 
     section.restructuring-ramification.section-layout.d-flex.flex-column.gap-7.bg-dark-10

@@ -20,6 +20,10 @@
     
     &__tag {
         max-width: 80%;
+
+        .tag__content {
+            width: 100%;
+        }
     }
 
     @include use-media(mobile-s, sm) {

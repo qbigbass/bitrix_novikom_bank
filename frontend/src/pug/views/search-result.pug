@@ -1,0 +1,206 @@
+extends ../templates/base
+
+block title
+    title= 'Страница результатов поиска'
+    meta(name="description" content="Описание страницы с результатами поиска")
+block content
+
+    -
+        var fiterTabsList = [
+            {
+                link: '#to-relevation',
+                linkText: 'По релевантности',
+                isActive: true
+            },
+            {
+                link: '#to-date',
+                linkText: 'По дате',
+                isActive: false
+            },
+        ]
+
+        var searchList = [
+            {
+                date: "10.06.2024",
+                name: "<mark>Программы</mark> страхования",
+                link: "#",
+                breadcrumbsArray: [
+                    {
+                        link: "#",
+                        linkText: "Частным клиентам",
+                    }
+                ]
+            },
+            {
+                date: "03.09.2024",
+                name: "<mark>Программа</mark> «Кешбэк»",
+                link: "#",
+                breadcrumbsArray: [
+                    {
+                        link: "#",
+                        linkText: "Частным клиентам",
+                    }
+                ]
+            },
+            {
+                date: "28.08.2024",
+                name: "<mark>Программа</mark> «Бонусы»",
+                link: "#",
+                breadcrumbsArray: [
+                    {
+                        link: "#",
+                        linkText: "Частным клиентам",
+                    }
+                ]
+            },
+            {
+                date: "28.08.2024",
+                name: "<mark>Программа</mark> «Бонусная копилка»",
+                link: "#",
+                breadcrumbsArray: [
+                    {
+                        link: "#",
+                        linkText: "Частным клиентам",
+                    }
+                ]
+            },
+            {
+                date: "23.07.2024",
+                name: "Мир Supreme",
+                link: "#",
+                breadcrumbsArray: [
+                    {
+                        link: "#",
+                        linkText: "Частным клиентам",
+                    },
+                    {
+                        link: "#",
+                        linkText: "Дебетовые карты",
+                    }
+                ]
+            },
+            {
+                date: "04.07.2024",
+                name: "Ипотека по <mark>программе</mark> «Дальневосточная ипотека»",
+                link: "#",
+                breadcrumbsArray: [
+                    {
+                        link: "#",
+                        linkText: "Частным клиентам",
+                    },
+                    {
+                        link: "#",
+                        linkText: "Ипотека",
+                    }
+                ]
+            },
+            {
+                date: "04.07.2024",
+                name: "Ипотека по <mark>программе</mark> «Семейная ипотека»",
+                link: "#",
+                breadcrumbsArray: [
+                    {
+                        link: "#",
+                        linkText: "Частным клиентам",
+                    },
+                    {
+                        link: "#",
+                        linkText: "Ипотека",
+                    }
+                ]
+            },
+            {
+                date: "16.05.2024",
+                name: "Заимствования на рынке капитала",
+                link: "#",
+                breadcrumbsArray: [
+                    {
+                        link: "#",
+                        linkText: "О банке",
+                    }
+                ]
+            },
+            {
+                date: "28.08.2024",
+                name: "Выбирайте избранные категории в рамках <mark>программы</mark> лояльности «Кешбэк» через мобильное приложение и интернет-банк",
+                link: "#",
+                breadcrumbsArray: [
+                    {
+                        link: "#",
+                        linkText: "Частным клиентам",
+                    },
+                    {
+                        link: "#",
+                        linkText: "Cпецпредложения",
+                    },
+                    {
+                        link: "#",
+                        linkText: "Частным лицам",
+                    }
+                ]
+            }
+        ]
+
+        var paginationObject = {
+            prevLink: "",
+            nextLink: "#2",
+            lastLink: {
+                link: "#9",
+                linkText: "9",
+            },
+            list: [
+                {
+                    link: "#1",
+                    linkText: "1",
+                    isActive: true,
+                },
+                {
+                    link: "#2",
+                    linkText: "2"
+                },
+                {
+                    link: "#3",
+                    linkText: "3"
+                },
+                {
+                    link: "#4",
+                    linkText: "4"
+                }
+            ]
+        }
+
+    include ../cards/card-news
+    include ../includes/header/header
+    include ../components/ui/tabs
+    include ../components/ui/pagination
+    include ../components/search-item
+
+    section.section-search-result.section-layout.py-lg-12
+        .container.d-flex.flex-column.row-gap-7.row-gap-lg-8
+            .row.row-gap-4.row-gap-md-7.row-gap-lg-8.px-lg-6
+                .col-12
+                    form
+                        .input-group.flex-nowrap
+                            span#input-search.input-group-icon
+                                span.icon
+                                    +svg-use("icon-search")
+                            input.form-control.form-control-lg.text-l(type="text", placeholder="Поиск по сайту", aria-label="Поиск по сайту", aria-describedby="input-search" tabindex="-1")
+                .col-12
+                    .text-l.fw-bold Найдено 360 результатов
+                .col-12.col-lg-7
+                    form
+                        .d-flex.flex-column.flex-md-row.gap-4.gap-md-7.align-items-start.align-items-md-center
+                            .position-relative.min-w-lg-auto.min-w-md-50.w-lg-240w
+                                input#date1(type="date" name="date1" placeholder="Показать за период" disabled).w-100.form-control
+                                span.position-absolute.top-0.end-0.violet-70.text-m.p-2.px-3
+                                    +svg-use("icon-calendar", "icon size-m")
+                            +tabs(fiterTabsList, "", "", true)
+            .row.px-lg-6
+                .col-12.col-lg-7
+                    .d-flex.flex-column.gap-4
+                        each item in searchList
+                            +search-item(item)
+            .row
+                .col-12
+                    .section-search-result__pagination
+                        +pagination(paginationObject, "start")
