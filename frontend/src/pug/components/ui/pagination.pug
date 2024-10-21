@@ -41,9 +41,14 @@ mixin pagination(data, position='center', size)
             li.min-w-50
                 form
                     .position-relative.w-100
-                        input.pagination__input.form-control.text-s(type="number", step="1", min="1", max=data.lastLink.linkText, placeholder=`${activeIndex}/${data.lastLink.linkText}`, tabindex="-1")
-                        span.position-absolute.top-0.end-0.dark-70.text-m.p-2.px-3
-                            +svg-use("icon-chevron-down", "icon size-s")
+                        select#pagination-select(aria-label="Выбрать страницу" data-placeholder=`${activeIndex}/${data.lastLink.linkText}`).form-select.form-select--size-small.js-select
+                            option
+                            -
+                                var n = 0
+                            while n < +data.lastLink.linkText
+                                -
+                                    n++
+                                option(value=n)!= n
             if data.nextLink
                 li.page-item
                     a.page-link(href=data.nextLink)
