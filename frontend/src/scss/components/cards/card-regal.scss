@@ -1,0 +1,26 @@
+.card-regal {
+    padding: 1.5rem 1rem;
+    border-radius: .75rem;
+
+    @include use-media(tablet) {
+        padding: 2rem;
+    }
+
+    @include use-media(laptop-x) {
+        padding: 2.5rem;
+    }
+
+    &__image {
+        width: 10rem;
+        height: 10rem;
+        flex-shrink: 0;
+        align-self: center;
+
+        @include use-media(laptop-x) {
+            width: 12.5rem;
+            height: 12.5rem;
+            margin-top: -1.5rem;
+            margin-bottom: -1.5rem;
+        }
+    }
+}

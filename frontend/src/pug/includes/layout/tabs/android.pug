@@ -1,0 +1,49 @@
+-
+    var androidSteps = [
+        {
+            text: "Скачайте приложение по&nbsp;ссылке ниже или отсканируйте QR-код",
+            image: 'img/qr-code.svg'
+        },
+        {
+            text: "Запустите установку. Файл &laquo;android-v19.apk&raquo; можно найти в&nbsp;загрузках или скачанных файлах."
+        },
+        {
+            text: "Разрешите браузеру устанавливать приложения. При установке появится сообщение о&nbsp;неизвестном источнике это стандартное предупреждение."
+        },
+        {
+            text: "Готово! Запускайте и пользуйтесь.",
+            button: {
+                href: "#",
+                text: "Скачать",
+                icon: "icon-download",
+            }
+        },
+    ]
+
+
+.row.mb-4.mb-md-6
+    .col-12.col-lg-8
+        p.text-l.mb-0
+            | Установка или обновление мобильного приложения банка Новиком в&nbsp;Google Play и&nbsp;AppGallery недоступны. Вы&nbsp;можете воспользоваться магазином приложений RuStore, RuMarket или NashStore или загрузить приложение напрямую с&nbsp;сайта Банка.
+.row
+    .col-12.col-lg-8
+        h4 Магазины приложений
+        .d-flex.flex-column.flex-md-row.gap-4.gap-6.my-4.my-md-6
+            a.btn.btn-primary.align-items-center(href="#")
+                img(src="img/app-logos/ru-store-white.svg" width="94" height="24" alt="RuStore" loading="lazy")
+            a.btn.btn-primary.align-items-center(href="#")
+                img(src="img/app-logos/ru-market-white.svg" width="120" height="28" alt="RuMarket" loading="lazy")
+            a.btn.btn-primary.align-items-center(href="#")
+                img(src="img/app-logos/nash-store-white.svg" width="112" height="18" alt="NashStore" loading="lazy")
+        p.text-l.mb-0
+            | Если у&nbsp;вас не&nbsp;установлен или не&nbsp;обновлен выбранный магазин приложений, сначала потребуется установить или обновить его.
+
+.row.mt-6.mt-lg-11
+    .col-12
+        h4.mb-6 Сайт банка
+        +stepper(androidSteps, androidSteps.length, 'violet')
+
+.row.mt-7
+    .col-12.col-lg-8
+        p.text-l Разрешите браузеру устанавливать приложения. При установке появится сообщение о&nbsp;неизвестном источнике это стандартное предупреждение.
+        p.text-l.mb-0 Если у&nbsp;вас версия Android 8&nbsp;и&nbsp;выше, при установке приложения любым из&nbsp;перечисленных способов может появиться оповещение о&nbsp;запрете на&nbsp;установку приложений из&nbsp;неизвестных источников. Перейдите по&nbsp;кнопке &laquo;Настройки&raquo; и&nbsp;разрешите установку. Если у&nbsp;вас более старая версия Android, самостоятельно перейдите в&nbsp;&laquo;Настройки&raquo; и&nbsp;разрешите установку приложений из&nbsp;неизвестных источников. После установки мобильное приложение банка Новиком появится на&nbsp;рабочем столе. Открыв приложение, Вы&nbsp;сможете зарегистрироваться или войти в&nbsp;личный кабинет.
