@@ -9,7 +9,7 @@ block content
     include ../cards/card-product
     include ../cards/card-step
     include ../includes/header/header
-    include ../components/banners/text-banner
+    include ../components/banners/banner-text
     include ../components/banners/banner-product-info
     include ../components/ui/tabs-simple
     include ../components/tabs-with-content
@@ -154,15 +154,19 @@ block content
             },
         ]
 
-    +text-banner(
-        "Программа &laquo;Бонусная копилка&raquo;",
-        [
-            {linkText: "Частным клиентам", link: "/"},
-            {linkText: "Карты", link: "/"}
-        ],
-        "Начисление бонусных баллов за&nbsp;наличие остатка на&nbsp;счете вашей карты",
+        var bannerTextData = {
+            title: "Программа &laquo;Бонусная копилка&raquo;",
+            breadcrumbsArray: [
+                {linkText: "Частным клиентам", link: "/"},
+                {linkText: "Карты", link: "/"}
+            ],
+            description: "Начисление бонусных баллов за&nbsp;наличие остатка на&nbsp;счете вашей карты",
+            imageSrc: "img/big-illustrations/large-individual/bonus-piggy-bank-program.png"
+        }
+
+    +banner-text(
+        bannerTextData,
         "green",
-        "img/big-illustrations/large-individual/bonus-piggy-bank-program.png",
     )
 
 
@@ -171,7 +175,8 @@ block content
             .row.row-gap-6.row-gap-md-7.px-lg-6
                 each item, index in allBenefits
                     .col-12.col-md-6
-                        +benefit(item.spriteName, item.title, item.description)
+                        +benefit(item.spriteName, item.title)
+                            span!= item.description
         +pattern-bg('section', 'light', 'pattern-bg--position-sm-bottom')
 
     section.section-layout.pt-0

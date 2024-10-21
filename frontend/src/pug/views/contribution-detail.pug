@@ -8,7 +8,8 @@ block content
     include ../cards/card-text
     include ../cards/card-product
     include ../includes/header/header
-    include ../components/banners/text-banner
+    include ../components/banners/banner-product
+    include ../components/banners/banner-text
     include ../components/banners/banner-product-info-alternative
     include ../components/ui/tabs
     include ../components/ui/tabs-simple
@@ -16,7 +17,6 @@ block content
     include ../components/helper
     include ../components/benefit
     include ../components/stepper
-    include ../components/banners/banner-product
     include ../includes/layout/slider-card-product
     include ../components/ui/nav-tabs
 
@@ -159,7 +159,8 @@ block content
             .row.row-gap-6
                 each item, index in allBenefits
                     .col-12.col-md-6.col-lg-4
-                        +benefit(item.spriteData, item.title, item.description)
+                        +benefit(item.spriteData, item.title)
+                            span!= item.description
         +pattern-bg('section', 'light', 'pattern-bg--position-sm-bottom section-restructuring-benefits__pattern')
 
     section.section-layout.js-collapsed-mobile

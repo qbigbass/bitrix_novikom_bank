@@ -4,12 +4,21 @@ block title
     title= 'Кредиты - Реструктуризация по программе Банка'
     meta(name="description" content="Описание страницы с кредитами")
 block content
+    -
+        var bannerTextData = {
+            title: "Реструктуризация <br>по программе Банка",
+            breadcrumbsArray: [
+                {linkText: "Частным клиентам", link: "/"},
+                {linkText: "Кредиты", link: "/"},
+                {linkText: "Реструктуризация", link: "/"}
+            ],
+            description: ""
+        }
 
     include ../cards/card-text
     include ../cards/card-product
     include ../includes/header/header
-    include ../components/banners/text-banner
-    include ../components/banners/info-product-banner
+    include ../components/banners/banner-text
     include ../components/ui/tabs
     include ../components/tabs-with-content
     include ../components/helper
@@ -17,14 +26,8 @@ block content
     include ../components/stepper
     include ../includes/layout/slider-card-product
 
-    +text-banner(
-        "Реструктуризация <br>по программе Банка",
-        [
-            {linkText: "Частным клиентам", link: "/"},
-            {linkText: "Кредиты", link: "/"},
-            {linkText: "Реструктуризация", link: "/"}
-        ],
-        "",
+    +banner-text(
+        bannerTextData,
         "green",
     )
 
@@ -82,7 +85,8 @@ block content
             .row.row-gap-6.px-lg-6
                 each item, index in allBenefits
                     .col-12.col-md-6.col-lg-4
-                        +benefit(item.spriteData, '', item.description)
+                        +benefit(item.spriteData, '')
+                            span!= item.description
         +pattern-bg('section', 'light', 'pattern-bg--position-sm-bottom restructuring-benefits__pattern')
 
     section.section-restructuring-steps.bg-dark-10.py-6.py-sm-9.py-md-11.py-xl-16

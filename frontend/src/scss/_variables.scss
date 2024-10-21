@@ -92,6 +92,7 @@ $body-tertiary-bg: #e8eaef; // dark-30
 
 $primary: #55246A; // violet-100
 $secondary: #4F52A4; // blue-100
+$blue10: #e3e3f9; // blue-10
 //$tertiary: #4F52A4; // blue-100
 $success: #76B82A; // green-100
 $info: #ffffff; // dark-0
@@ -111,7 +112,8 @@ $yellow: #fdd400;
 //);
 //
 $custom-colors: (
-        "tertiary": $green
+        "tertiary": $green,
+        "blue10": $blue10,
 );
 
 
@@ -133,6 +135,10 @@ $custom-colors: (
 //)
 
 $enable-dark-mode: false;
+
+// Borders-radius
+$border-radius: .75rem;
+$border-radius-sm: .25rem;
 
 
 // Buttons + Forms

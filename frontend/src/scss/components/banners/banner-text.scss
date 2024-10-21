@@ -1,0 +1,46 @@
+.banner-text {
+    --border-thickness: 0.25rem;
+    position: relative;
+    min-height: calc(20rem + var(--border-thickness));
+    overflow: hidden;
+
+    @include use-media(tablet-album) {
+        --border-thickness: 0.5rem;
+        min-height: calc(25.5rem + var(--border-thickness));
+    }
+
+    &__title {
+        & br {
+            display: none;
+
+            @include use-media(tablet) {
+                display: inherit;
+            }
+        }
+    }
+
+    &__image {
+        max-width: 20rem;
+
+        @include use-media(tablet) {
+            right: -3rem;
+        }
+
+        @include use-media(tablet-album) {
+            max-width: 25rem;
+            right: 0;
+        }
+    }
+
+    &__pattern {
+        opacity: 0.3;
+    }
+
+    &--border-green {
+        border-top: var(--border-thickness) solid var(--green-100);
+    }
+
+    &--border-orange {
+        border-top: var(--border-thickness) solid var(--orange-100);
+    }
+}

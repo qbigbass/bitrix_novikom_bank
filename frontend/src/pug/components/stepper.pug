@@ -28,6 +28,12 @@ mixin stepper(allSteps, steps, color="green")
                     if item.title
                         h4!= item.title
                     if item.text
-                        p.text-l.no-mb!= item.text
+                        p.text-l.mb-0!= item.text
                     if item.button
-                        a(href= item.button.href).btn.btn-primary= item.button.text
+                        if item.button.icon
+                            a(href= item.button.href).btn.btn-primary.btn-icon= item.button.text
+                                +svg-use(item.button.icon, 'icon size-m')
+                        else
+                            a(href= item.button.href).btn.btn-primary= item.button.text
+                    if item.image
+                        img(src= item.image alt="" loading="lazy")

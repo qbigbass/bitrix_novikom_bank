@@ -1,0 +1,16 @@
+include /ui/breadcrumbs
+
+mixin search-item(data)
+    .search-item.d-flex.flex-column.gap-3.gap-md-4.pb-3.pb-md-4.border-bottom-dashed
+        .search-item__header
+            if data.breadcrumbsArray
+                +breadcrumbs(data.breadcrumbsArray, 'dark-70', false).search-item__breadcrumbs
+        a.search-item__content.d-flex.gap-2.gap-md-3.justify-content-between(href=data.link)
+            if data.date || data.name
+                .d-flex.flex-column.flex-md-row.gap-2.gap-md-3
+                    if data.date
+                        span.search-item__date.text-m.dark-70= data.date
+                    if data.name
+                        span.search-item__name.text-m.dark-100!= data.name
+                .d-none.d-md-block
+                    +svg-use('icon-arrow-right', 'icon size-m violet-100')

@@ -1,0 +1,32 @@
+-
+    var tableData = [
+        {
+            label: "Внутрибанковские переводы в&nbsp;пользу физических лиц и&nbsp;между своими счетами",
+            value: ["Без комиссии"]
+        },
+        {
+            label: "Внутрибанковский перевод в&nbsp;пользу юридических лиц",
+            value: ["1%&nbsp;от&nbsp;суммы (минимум&nbsp;&mdash; 50&nbsp;рублей, максимум&nbsp;&mdash; 500&nbsp;рублей)"]
+        },
+        {
+            label: "Перевод в&nbsp;бюджет всех уровней в&nbsp;связи с&nbsp;уплатой налогов и&nbsp;сборов",
+            value: ["Без комиссии"]
+        },
+        {
+            label: "Межбанковский перевод, между своими счетами в&nbsp;разных банках",
+            value: ["без&nbsp;комиссии до&nbsp;30&nbsp;000&nbsp;000 <span class='currency'>₽</span> в&nbsp;месяц"]
+        },
+        {
+            label: "Межбанковский перевод, если валютный счет получателя открыт в&nbsp;другом банке",
+            value: ["1%&nbsp;от&nbsp;суммы (минимум&nbsp;&mdash; 15&nbsp;ед. валюты операции, макс. &mdash;&nbsp;250&nbsp;ед. валюты операции)"]
+        },
+    ]
+
+.table-tab.cell-2
+    .table-tab__body
+        each row in tableData
+            .table-tab__row
+                .table-tab__cell.text-l.fw-semibold.dark-70!= row.label
+                .table-tab__cell
+                    each item in row.value
+                        p.text-l!= item

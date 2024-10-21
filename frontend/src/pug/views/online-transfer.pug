@@ -1,0 +1,35 @@
+extends ../templates/base
+
+block title
+    title= 'Частные клиенты - Моментальный онлайн-перевод'
+    meta(name="description" content="Описание страницы с вкладами")
+block content
+    -
+        var bannerTextData = {
+            title: "Моментальный онлайн-перевод",
+            breadcrumbsArray: [
+                {linkText: "Частным клиентам", link: "/"},
+                {linkText: "Платежи и переводы", link: "/"}
+            ],
+            description: "Переводы с&nbsp;карты на&nbsp;карту по&nbsp;России, а&nbsp;также в&nbsp;Абхазию, Армению, Беларусь, Казахстан, Таджикистан и&nbsp;Южную Осетию."
+        }
+
+    include ../includes/header/header
+    include ../components/banners/banner-text
+    include ../includes/layout/slider-card-product
+
+    +banner-text(
+        bannerTextData,
+        "green"
+    )
+
+    section.section-layout
+        .container
+            // iframe
+
+
+    section.section-layout
+        .container
+            h3.px-lg-6.mb-4.mb-md-6.mb-lg-7
+                | Смотрите также
+            +slider-card-product()

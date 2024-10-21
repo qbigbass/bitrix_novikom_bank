@@ -64,14 +64,8 @@
     }
 
     &--small &__list-item-link {
-        --bs-nav-link-padding-x: 1.25rem;
+        --bs-nav-link-padding-x: 1.5rem;
         --bs-nav-link-padding-y: 0.5rem;
-        --bs-nav-link-font-size: 0.75rem;
-
-        @include use-media(tablet) {
-            --bs-nav-link-padding-x: 1.5rem;
-            --bs-nav-link-padding-y: 0.5rem;
-            --bs-nav-link-font-size: 1rem;
-        }
+        --bs-nav-link-font-size: 1rem;
     }
 }

@@ -3,7 +3,8 @@ include ../components/ui/tag
 mixin card-news(data)
     a(href= data.href).card-news.position-relative.bg-dark-10.dark-100.h-100.d-flex.flex-column.overflow-hidden
         .card-news__header.w-100.position-absolute.top-0.start-0.d-flex.align-items-start.justify-content-between.z-2
-            +tag(data.tag)
+            if data.tag
+                +tag(data.tag).card-news__tag
             if data.isNeedStickyIcon
                 span.card-news__sticky-icon.btn.btn-info.p-0.d-flex
                     +svg-use("icon-pin", "icon size-m blue-100 m-auto")
