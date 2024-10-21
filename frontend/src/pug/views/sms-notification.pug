@@ -7,7 +7,7 @@ block title
 block content
 
     include ../includes/header/header
-    include ../components/banners/text-banner
+    include ../components/banners/banner-text
     include ../includes/layout/slider-card-product
     include ../components/ui/tabs-simple
     include ../components/benefit
@@ -49,14 +49,16 @@ block content
             },
         ]
 
-    +text-banner(
-        "SMS-информирование",
-        [
-            {linkText: "Частным клиентам", link: "/"},
-            {linkText: "Услуги", link: "/"}
-        ],
-        "Контроль за&nbsp;операциями с&nbsp;использованием карты и&nbsp;оперативное получение информации о&nbsp;балансе карты"
-    )
+        var bannerTextData = {
+            title: "SMS-информирование",
+            breadcrumbsArray: [
+                {linkText: "Частным клиентам", link: "/"},
+                {linkText: "Услуги", link: "/"},
+            ],
+            description: "Контроль за&nbsp;операциями с&nbsp;использованием карты и&nbsp;оперативное получение информации о&nbsp;балансе карты"
+        }
+
+    +banner-text(bannerTextData, 'green')
 
     section.section-layout
         .container

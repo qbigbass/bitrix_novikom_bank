@@ -6,7 +6,7 @@ block title
 block content
 
     include ../includes/header/header
-    include ../components/banners/text-banner
+    include ../components/banners/banner-text
     include ../includes/layout/slider-card-product
     include ../components/ui/tabs-simple
     include ../components/stepper
@@ -48,13 +48,15 @@ block content
             }
         ]
 
-    +text-banner(
-        "Интернет-банк и&nbsp;Мобильное приложение",
-        [
-            {linkText: "Частным клиентам", link: "/"},
-            {linkText: "Онлайн-сервисы", link: "/"}
-        ],
-    )
+        var bannerTextData = {
+            title: "Интернет-банк и&nbsp;Мобильное приложение",
+            breadcrumbsArray: [
+                {linkText: "Частным клиентам", link: "/"},
+                {linkText: "Онлайн-сервисы", link: "/"},
+            ],
+        }
+
+    +banner-text(bannerTextData, 'green')
 
     section.section-layout
         .container
