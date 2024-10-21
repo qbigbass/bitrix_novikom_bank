@@ -34,6 +34,10 @@ mixin pagination(data, position='center', size)
                 li.page-item
                     a.page-link(href=data.prevLink)
                         +svg-use("icon-chevron-left", "icon size-m")
+            else
+                li.page-item.page-item--disabled
+                    a.page-link(href='#')
+                        +svg-use("icon-chevron-left", "icon size-m dark-50")
             li.min-w-50
                 form
                     .position-relative.w-100
