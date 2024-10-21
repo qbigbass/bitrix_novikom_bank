@@ -4,19 +4,23 @@ block title
     title= 'Частные клиенты - Платежи и переводы'
     meta(name="description" content="Описание страницы с вкладами")
 block content
+    -
+        var bannerTextData = {
+            title: "Платежи и переводы",
+            breadcrumbsArray: [
+                {linkText: "Частным клиентам", link: "/"}
+            ],
+            description: "Переводите деньги любым удобным для вас способом: на&nbsp;сайте, в&nbsp;банкоматах, в&nbsp;интернет-банке и&nbsp;мобильном приложении."
+        }
 
     include ../cards/card-product
     include ../includes/header/header
-    include ../components/banners/text-banner
+    include ../components/banners/banner-text
     include ../components/banners/banner-product-info
     include ../includes/layout/slider-card-product
 
-    +text-banner(
-        "Платежи и переводы",
-        [
-            {linkText: "Частным клиентам", link: "/"}
-        ],
-        "Переводите деньги любым удобным для вас способом: на&nbsp;сайте, в&nbsp;банкоматах, в&nbsp;интернет-банке и&nbsp;мобильном приложении.",
+    +banner-text(
+        bannerTextData,
         "green"
     )
 

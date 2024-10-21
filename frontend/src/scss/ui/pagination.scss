@@ -1,5 +1,14 @@
 .pagination {
     gap: 1rem;
+
+    &__input {
+
+        &:focus {
+            background-color: var(--blue-100);
+            color: var(--dark-0);
+            border: 1px solid transparent;
+        }
+    }
 }
 
 .page-item {
@@ -15,6 +24,10 @@
     --bs-pagination-focus-bg: transparent;
     --bs-pagination-padding-y: 0;
     --bs-pagination-padding-x: 0;
+
+    &--disabled {
+        pointer-events: none;
+    }
 
     & .page-link {
         border-radius: var(--bs-pagination-border-radius);

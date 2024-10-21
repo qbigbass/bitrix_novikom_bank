@@ -9,7 +9,7 @@ block content
     include ../cards/card-product
     include ../cards/card-step
     include ../includes/header/header
-    include ../components/banners/text-banner
+    include ../components/banners/banner-text
     include ../components/banners/banner-product-info
     include ../components/ui/tabs-simple
     include ../components/tabs-with-content
@@ -169,17 +169,20 @@ block content
             },
         ]
 
-    +text-banner(
-        "Программа «Кешбэк»",
-        [
-            {linkText: "Частным клиентам", link: "/"},
-            {linkText: "Карты", link: "/"}
-        ],
-        "Возврат рублями от&nbsp;покупок по&nbsp;карте",
-        "green",
-        "img/big-illustrations/large-individual/cashback-program.png"
-    )
+        var bannerTextData = {
+            title: "Программа «Кешбэк»",
+            breadcrumbsArray: [
+                {linkText: "Частным клиентам", link: "/"},
+                {linkText: "Карты", link: "/"}
+            ],
+            description: "Возврат рублями от&nbsp;покупок по&nbsp;карте",
+            imageSrc: "img/big-illustrations/large-individual/cashback-program.png"
+        }
 
+    +banner-text(
+        bannerTextData,
+        "green"
+    )
 
     section.section-layout
         .container

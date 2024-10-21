@@ -1,0 +1,7 @@
+mixin breadcrumbs(breadcrumbsArray, textColorClass='text-white-50', isNeedMobileArrow=true)
+    .breadcrumbs.d-flex.flex-wrap.gap-2(class=!isNeedMobileArrow && "breadcrumbs--without-mobile-arrow")&attributes(attributes)
+        each item, index in breadcrumbsArray
+            a.breadcrumbs__item.d-md-inline-flex.align-items-center.gap-2.text-s(href=item.link, class=textColorClass, class= index!==breadcrumbsArray.length-1 && isNeedMobileArrow ? 'd-none' : 'd-inline-flex')
+                if index === breadcrumbsArray.length-1 && isNeedMobileArrow
+                    +svg-use("icon-chevron-left", "icon size-s d-inline-block d-md-none")
+                span=item.linkText

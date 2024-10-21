@@ -1,4 +1,4 @@
-.text-banner {
+.banner-text {
     --border-thickness: 0.25rem;
     position: relative;
     min-height: calc(20rem + var(--border-thickness));
@@ -17,19 +17,6 @@
                 display: inherit;
             }
         }
-    }
-
-    &__breadcrumbs-item {
-
-            @include use-media(tablet) {
-                & + &:before {
-                    content: '';
-                    width: 0.25rem;
-                    height: 0.25rem;
-                    background-color: currentColor;
-                    opacity: 0.5;
-                }
-            }
     }
 
     &__image {
