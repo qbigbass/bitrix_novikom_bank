@@ -19,19 +19,6 @@
         }
     }
 
-    &__breadcrumbs-item {
-
-            @include use-media(tablet) {
-                & + &:before {
-                    content: '';
-                    width: 0.25rem;
-                    height: 0.25rem;
-                    background-color: currentColor;
-                    opacity: 0.5;
-                }
-            }
-    }
-
     &__image {
         max-width: 20rem;
 
