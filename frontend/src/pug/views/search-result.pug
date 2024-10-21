@@ -175,28 +175,33 @@ block content
     include ../components/ui/pagination
     include ../components/search-item
 
-    section.section-search-result.section-layout.py-lg-12
-        .container.d-flex.flex-column.row-gap-7.row-gap-lg-8
-            .row.row-gap-4.row-gap-md-7.row-gap-lg-8.px-lg-6
+    section.section-search-result.section-layout.py-lg-12.border-top.border-blue10
+        .container.d-flex.flex-column.row-gap-6.row-gap-lg-7
+            .row.row-gap-4.row-gap-md-6.row-gap-lg-7.px-lg-6
                 .col-12
                     form
-                        .input-group.flex-nowrap
-                            span#input-search.input-group-icon
-                                span.icon
+                        .input-group.flex-nowrap.d-none.d-lg-flex
+                            span.input-group-icon
+                                span.icon.violet-100
                                     +svg-use("icon-search")
-                            input.form-control.form-control-lg.text-l(type="text", placeholder="Поиск по сайту", aria-label="Поиск по сайту", aria-describedby="input-search" tabindex="-1")
+                            input#input-search.form-control.form-control-lg.text-l(type="text", placeholder="Поиск по сайту", aria-label="Поиск по сайту", aria-describedby="input-search" tabindex="-1")
+                        .input-group.flex-nowrap.d-flex.d-lg-none
+                            span.input-group-icon
+                                span.icon.violet-100
+                                    +svg-use("icon-search")
+                            input#input-search-mobile.form-control.ps-0.text-s(type="text", placeholder="Поиск по сайту", aria-label="Поиск по сайту", aria-describedby="#input-search-mobile" tabindex="-1")
                 .col-12
                     .text-l.fw-bold Найдено 360 результатов
-                .col-12.col-lg-7
+                .col-12.col-lg-8.col-xl-7
                     form
                         .d-flex.flex-column.flex-md-row.gap-4.gap-md-7.align-items-start.align-items-md-center
-                            .position-relative.min-w-lg-auto.min-w-md-50.w-lg-240w
+                            .position-relative.w-100.w-md-50.w-lg-240w
                                 input#date1(type="date" name="date1" placeholder="Показать за период" disabled).w-100.form-control
                                 span.position-absolute.top-0.end-0.violet-70.text-m.p-2.px-3
                                     +svg-use("icon-calendar", "icon size-m")
-                            +tabs(fiterTabsList, "", "", true)
+                            +tabs(fiterTabsList, "", "", true).w-auto
             .row.px-lg-6
-                .col-12.col-lg-7
+                .col-12.col-lg-8.col-xl-7
                     .d-flex.flex-column.gap-4
                         each item in searchList
                             +search-item(item)
