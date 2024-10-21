@@ -6,7 +6,7 @@ block title
 block content
 
     include ../includes/header/header
-    include ../components/banners/text-banner
+    include ../components/banners/banner-text
     include ../includes/layout/slider-card-product
     include ../components/ui/tabs-simple
     include ../components/ui/tabs
@@ -66,13 +66,17 @@ block content
             },
         ]
 
-    +text-banner(
-        "Банковские переводы в&nbsp;офисе",
-        [
-            {linkText: "Частным клиентам", link: "/"},
-            {linkText: "Платежи и переводы", link: "/"}
-        ],
-        "Для авторизации необходимо являться клиентом Новикома.",
+        var bannerTextData = {
+            title: "Банковские переводы в&nbsp;офисе",
+            breadcrumbsArray: [
+                {linkText: "Частным клиентам", link: "/"},
+                {linkText: "Платежи и переводы", link: "/"}
+            ],
+            description: "Для авторизации необходимо являться клиентом Новикома.",
+        }
+
+    +banner-text(
+        bannerTextData,
         "green"
     )
 

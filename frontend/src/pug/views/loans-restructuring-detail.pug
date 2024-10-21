@@ -4,11 +4,21 @@ block title
     title= 'Кредиты - Реструктуризация по программе Банка'
     meta(name="description" content="Описание страницы с кредитами")
 block content
+    -
+        var bannerTextData = {
+            title: "Реструктуризация <br>по программе Банка",
+            breadcrumbsArray: [
+                {linkText: "Частным клиентам", link: "/"},
+                {linkText: "Кредиты", link: "/"},
+                {linkText: "Реструктуризация", link: "/"}
+            ],
+            description: ""
+        }
 
     include ../cards/card-text
     include ../cards/card-product
     include ../includes/header/header
-    include ../components/banners/text-banner
+    include ../components/banners/banner-text
     include ../components/ui/tabs
     include ../components/tabs-with-content
     include ../components/helper
@@ -16,14 +26,8 @@ block content
     include ../components/stepper
     include ../includes/layout/slider-card-product
 
-    +text-banner(
-        "Реструктуризация <br>по программе Банка",
-        [
-            {linkText: "Частным клиентам", link: "/"},
-            {linkText: "Кредиты", link: "/"},
-            {linkText: "Реструктуризация", link: "/"}
-        ],
-        "",
+    +banner-text(
+        bannerTextData,
         "green",
     )
 

@@ -4,17 +4,21 @@ block title
     title= 'Частные клиенты - Спецпредложения'
     meta(name="description" content="Описание страницы со спецпредложениями")
 block content
+    -
+        var bannerTextData = {
+            title: "Спецпредложения",
+            breadcrumbsArray: [
+                {linkText: "Частным клиентам", link: "/"}
+            ],
+            description: ""
+        }
 
     include ../cards/card-news
     include ../includes/header/header
-    include ../components/banners/text-banner
+    include ../components/banners/banner-text
 
-    +text-banner(
-        "Спецпредложения",
-        [
-            {linkText: "Частным клиентам", link: "/"}
-        ],
-        "",
+    +banner-text(
+        bannerTextData,
         "green"
     )
 

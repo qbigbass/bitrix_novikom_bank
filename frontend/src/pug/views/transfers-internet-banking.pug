@@ -6,7 +6,7 @@ block title
 block content
 
     include ../includes/header/header
-    include ../components/banners/text-banner
+    include ../components/banners/banner-text
     include ../components/benefit
     include ../cards/card-service-app
     include ../cards/card-benefit
@@ -40,13 +40,17 @@ block content
             linkText: 'Войти <span class="d-none d-md-inline">в Онлайн-банк</span>'
         }
 
-    +text-banner(
-        "Переводы в&nbsp;интернет-банке или приложении",
-        [
-            {linkText: "Частным клиентам", link: "/"},
-            {linkText: "Платежи и переводы", link: "/"}
-        ],
-        "Удобные и&nbsp;быстрые переводы через онлайн сервисы",
+        var bannerTextData = {
+            title: "Переводы в&nbsp;интернет-банке или приложении",
+            breadcrumbsArray: [
+                {linkText: "Частным клиентам", link: "/"},
+                {linkText: "Платежи и переводы", link: "/"}
+            ],
+            description: "Удобные и&nbsp;быстрые переводы через онлайн сервисы",
+        }
+
+    +banner-text(
+        bannerTextData,
         "green"
     )
 

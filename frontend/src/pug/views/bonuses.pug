@@ -9,7 +9,7 @@ block content
     include ../cards/card-product
     include ../cards/card-step
     include ../includes/header/header
-    include ../components/banners/text-banner
+    include ../components/banners/banner-text
     include ../components/banners/banner-product-info
     include ../components/ui/tabs-simple
     include ../components/tabs-with-content
@@ -146,15 +146,19 @@ block content
             },
         ]
 
-    +text-banner(
-        "Программа &laquo;Бонусы&raquo;",
-        [
-            {linkText: "Частным клиентам", link: "/"},
-            {linkText: "Карты", link: "/"}
-        ],
-        "Бонусные баллы за&nbsp;покупки",
+        var bannerTextData = {
+            title: "Программа &laquo;Бонусы&raquo;",
+            breadcrumbsArray: [
+                {linkText: "Частным клиентам", link: "/"},
+                {linkText: "Карты", link: "/"}
+            ],
+            description: "Бонусные баллы за&nbsp;покупки",
+            imageSrc: "img/big-illustrations/large-individual/bonus-program.png"
+        }
+
+    +banner-text(
+        bannerTextData,
         "green",
-        "img/big-illustrations/large-individual/bonus-program.png",
         "bg-heavy-purple"
     )
 

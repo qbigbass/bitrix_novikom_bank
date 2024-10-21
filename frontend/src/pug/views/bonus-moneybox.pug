@@ -9,7 +9,7 @@ block content
     include ../cards/card-product
     include ../cards/card-step
     include ../includes/header/header
-    include ../components/banners/text-banner
+    include ../components/banners/banner-text
     include ../components/banners/banner-product-info
     include ../components/ui/tabs-simple
     include ../components/tabs-with-content
@@ -154,15 +154,19 @@ block content
             },
         ]
 
-    +text-banner(
-        "Программа &laquo;Бонусная копилка&raquo;",
-        [
-            {linkText: "Частным клиентам", link: "/"},
-            {linkText: "Карты", link: "/"}
-        ],
-        "Начисление бонусных баллов за&nbsp;наличие остатка на&nbsp;счете вашей карты",
+        var bannerTextData = {
+            title: "Программа &laquo;Бонусная копилка&raquo;",
+            breadcrumbsArray: [
+                {linkText: "Частным клиентам", link: "/"},
+                {linkText: "Карты", link: "/"}
+            ],
+            description: "Начисление бонусных баллов за&nbsp;наличие остатка на&nbsp;счете вашей карты",
+            imageSrc: "img/big-illustrations/large-individual/bonus-piggy-bank-program.png"
+        }
+
+    +banner-text(
+        bannerTextData,
         "green",
-        "img/big-illustrations/large-individual/bonus-piggy-bank-program.png",
     )
 
 

@@ -60,17 +60,21 @@ block content
             }
         ]
 
+        var bannerTextData = {
+            title: "Кредиты",
+            breadcrumbsArray: [
+                {linkText: "Частным клиентам", link: "/"}
+            ],
+            description: "Быстрые кредиты по оптимальной ставке на любые цели"
+        }
+
     include ../cards/card-product
     include ../includes/header/header
-    include ../components/banners/text-banner
+    include ../components/banners/banner-text
     include ../includes/layout/slider-card-product
 
-    +text-banner(
-        "Кредиты",
-        [
-            {linkText: "Частным клиентам", link: "/"}
-        ],
-        "Быстрые кредиты по оптимальной ставке на любые цели",
+    +banner-text(
+        bannerTextData,
         "green"
     )
 
