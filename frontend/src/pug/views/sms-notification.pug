@@ -1,0 +1,195 @@
+
+extends ../templates/base
+
+block title
+    title= 'Частные клиенты - SMS-информирование'
+    meta(name="description" content="Описание страницы с вкладами")
+block content
+
+    include ../includes/header/header
+    include ../components/banners/text-banner
+    include ../includes/layout/slider-card-product
+    include ../components/ui/tabs-simple
+    include ../components/benefit
+    include ../components/announcement
+    include ../components/helper
+    include ../cards/card-benefit
+
+    -
+        var tabContentList = [
+            {
+                link: '#documents',
+                id: 'documents',
+                linkText: 'Документы и тарифы',
+                isActive: true
+            },
+            {
+                link: '#faq',
+                id: 'faq',
+                linkText: 'Вопросы и ответы',
+                isActive: false
+            }
+        ]
+
+        var cardsListBenefit = [
+            {
+                title: 'Контроль за&nbsp;состоянием',
+                description: 'карточного счета в&nbsp;режиме реального времени.',
+                image: 'large-individual/condition-monitoring.png'
+            },
+            {
+                title: 'Оперативное получение информации',
+                description: 'о&nbsp;несанкционированных операциях',
+                image: 'large-individual/receiving-notification.png'
+            },
+            {
+                title: 'Контроль за&nbsp;расходами',
+                description: 'по&nbsp;дополнительным картам, выпущенным на&nbsp;третье лицо',
+                image: 'large-individual/cost-control.png'
+            },
+        ]
+
+    +text-banner(
+        "SMS-информирование",
+        [
+            {linkText: "Частным клиентам", link: "/"},
+            {linkText: "Услуги", link: "/"}
+        ],
+        "Контроль за&nbsp;операциями с&nbsp;использованием карты и&nbsp;оперативное получение информации о&nbsp;балансе карты"
+    )
+
+    section.section-layout
+        .container
+            h3.px-lg-6.mb-4.mb-md-6.mb-lg-7
+                | Преимущества
+            .row.px-lg-6
+                .col-12
+                    .swiper.slider-cards.js-slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:2,laptop:2,laptop-x:3" data-space-between="mobile-s:8,mobile:8,tablet:16,laptop:40,laptop-x:40")
+                        .swiper-wrapper
+                            each item in cardsListBenefit
+                                .swiper-slide.js-swiper-slide
+                                    +card-benefit(item).card-benefit--type-img
+
+                        +slider-controls().mt-3.mt-md-4
+
+        +pattern-bg('section', 'light', 'pattern-bg--position-sm-bottom')
+
+    section.section-layout
+        .container
+            h3.px-lg-6.mb-4.mb-md-6.mb-lg-7
+                | Возможности
+            #benefits.row.row-gap-6.row-gap-md-7.px-lg-6
+                .col-12.col-md-6.col-xl-4
+                    +benefit(
+                        {
+                            name: 'icon-a-date',
+                            classList: 'size-xl'
+                        }, "")
+                        span Подключение на&nbsp;любой номер телефона любого количества карт банка Новиком
+                .col-12.col-md-6.col-xl-4
+                    +benefit(
+                        {
+                            name: 'icon-a-date',
+                            classList: 'size-xl'
+                        }, "")
+                        span Получение сообщений о&nbsp;зачислении заработной платы
+                .col-12.col-md-6.col-xl-4
+                    +benefit(
+                        {
+                            name: 'icon-a-date',
+                            classList: 'size-xl'
+                        }, "")
+                        span Информирование о&nbsp;снятии наличных
+                .col-12.col-md-6.col-xl-4
+                    +benefit(
+                        {
+                            name: 'icon-a-date',
+                            classList: 'size-xl'
+                        }, "")
+                        span Отчеты о&nbsp;платежах в&nbsp;интернете
+
+                .col-12.col-md-6.col-xl-4.d-none.d-md-block
+                    +benefit(
+                        {
+                            name: 'icon-a-date',
+                            classList: 'size-xl'
+                        }, "")
+                        span Отчеты о&nbsp;действиях в&nbsp;интернет-банке
+                .col-12.col-md-6.col-xl-4.d-none.d-md-block
+                    +benefit(
+                        {
+                            name: 'icon-a-date',
+                            classList: 'size-xl'
+                        }, "")
+                        span Напоминания о&nbsp;необходимых платежах по&nbsp;кредитам и&nbsp;кредитным картам
+                .col-12.text-center
+                    button(type="button" data-target="benefits").btn.btn-link.btn-icon.d-md-none.js-more-content-link
+                        | Еще преимущества
+                        +svg-use("icon-chevron-down", "icon size-m violet-100")
+
+    section.section-layout.bg-dark-10
+        .container
+            h3.d-none.d-md-block.mb-md-6.mb-lg-7.px-lg-6
+                | Как подключить
+            a(
+                data-bs-toggle="collapse"
+                href="#how-connect"
+                role="button"
+                aria-expanded="false"
+                aria-controls="how-connect"
+            ).h3.d-flex.align-items-center.justify-content-between.dark-100.d-md-none
+                | Как подключить
+                +svg-use("icon-chevron-down", "icon size-m violet-100")
+            #how-connect.collapse.d-md-block.mt-6.mt-lg-7
+                .row.px-lg-6
+                    .col-12.col-lg-6
+                        +benefit(
+                            {
+                                name: 'icon-a-date',
+                                classList: 'size-xl'
+                            }, "Онлайн")
+                            span.text-l Через интернет-банк
+                    .col-12.col-lg-6
+                        +benefit(
+                            {
+                                name: 'icon-a-date',
+                                classList: 'size-xl'
+                            }, "В&nbsp;офисе банка")
+                            span.text-l При предъявлении паспорта
+    section.section-layout.py-lg-11
+        .container
+            .col-12
+                +polygon-container()
+                    +helper("img/restructuring-additional-info.png", "bg-dark-10")
+                        p При отсутствии на&nbsp;счете денежных средств, достаточных для оплаты комиссии за&nbsp;предоставление услуги, оплата будет произведена при пополнении баланса.
+                        p.mb-0 Круглосуточная бесплатная служба поддержки частных клиентов 8-800-250-70-07
+
+    section.section-layout.js-collapsed-mobile
+        .container
+            h3.d-none.d-md-block.mb-md-6.mb-lg-7.px-lg-6
+                | Подобнее
+            a(
+                data-bs-toggle="collapse"
+                href="#more"
+                role="button"
+                aria-expanded="false"
+                aria-controls="more"
+            ).h3.d-flex.align-items-center.justify-content-between.dark-100.d-md-none
+                | Подробнее
+                +svg-use("icon-chevron-down", "icon size-m violet-100")
+            #more.collapse.d-md-block.mt-4.mt-md-6.mt-lg-7
+                .row.px-lg-6
+                    .col-12
+                        +tabs-simple(tabContentList, false)
+                        .tab-content.mt-4.mt-md-6.mt-lg-7
+                            #documents.tab-pane.fade.show.active(aria-labelledby="documents" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/documents
+                            #faq.tab-pane.fade(aria-labelledby="faq" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/faq
+        +pattern-bg('section-2', 'light', 'pattern-bg--hide-mobile')
+
+    section.section-layout
+        .container
+            h3.px-lg-6.mb-4.mb-md-6.mb-lg-7
+                | Смотрите также
+            +slider-card-product()
