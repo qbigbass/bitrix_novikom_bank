@@ -187,16 +187,16 @@ block content
                             input.form-control.form-control-lg.text-l(type="text", placeholder="Поиск по сайту", aria-label="Поиск по сайту", aria-describedby="input-search" tabindex="-1")
                 .col-12
                     .text-l.fw-bold Найдено 360 результатов
-                .col-12.col-lg-7
+                .col-12.col-lg-8.col-xl-7
                     form
                         .d-flex.flex-column.flex-md-row.gap-4.gap-md-7.align-items-start.align-items-md-center
-                            .position-relative.min-w-lg-auto.min-w-md-50.w-lg-240w
+                            .position-relative.w-100.min-w-lg-auto.min-w-md-50.w-lg-240w
                                 input#date1(type="date" name="date1" placeholder="Показать за период" disabled).w-100.form-control
                                 span.position-absolute.top-0.end-0.violet-70.text-m.p-2.px-3
                                     +svg-use("icon-calendar", "icon size-m")
                             +tabs(fiterTabsList, "", "", true)
             .row.px-lg-6
-                .col-12.col-lg-7
+                .col-12.col-lg-8.col-xl-7
                     .d-flex.flex-column.gap-4
                         each item in searchList
                             +search-item(item)
