@@ -17,13 +17,28 @@
     &__body {
         padding: 1.5rem 1rem;
     }
+    
+    &__tag {
+        max-width: 80%;
 
-    &__sticky-icon {
-        width: 2.5rem;
-        height: 2.5rem;
+        .tag__content {
+            width: 100%;
+        }
+    }
+
+    @include use-media(mobile-s, sm) {
+        &__sticky-icon {
+            background: transparent;
+            border: none;
+        }
     }
 
     @include use-media(sm) {
+        &__sticky-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+        }
+
         &__image-container {
             min-height: none;
         }

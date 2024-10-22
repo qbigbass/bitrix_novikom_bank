@@ -26,4 +26,8 @@ pnpm-debug.log*
 /sitemap
 /tmp
 /upload
+/s1/frontend
+/s1/bitrix
+/s1/local
+/s1/upload
 911.php

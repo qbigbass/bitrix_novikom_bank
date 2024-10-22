@@ -31,7 +31,7 @@ $APPLICATION->SetTitle('Частным клиентам - Главная НОВ�
             "FIELD_CODE" => array("ID", "NAME", ""),
             "FILTER_NAME" => "",
             "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-            "IBLOCK_ID" => "115",
+            "IBLOCK_ID" => iblock('main_slider'),
             "IBLOCK_TYPE" => "for_private_clients_ru",
             "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
             "INCLUDE_SUBSECTIONS" => "N",
@@ -194,6 +194,148 @@ $APPLICATION->SetTitle('Частным клиентам - Главная НОВ�
         </div>
     </div>
 </section>
+<section class="section-layout section-layout--bg-gray section-calculator">
+    <div class="container"><a class="h3 d-flex align-items-center justify-content-between dark-100 d-md-none" data-bs-toggle="collapse" href="#calculator" role="button" aria-expanded="false" aria-controls="calculator">Рассчитайте выгоду
+            <svg class="icon size-m violet-100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-down"></use>
+            </svg></a>
+        <div class="collapse show section-calculator__wrapper" id="calculator">
+            <div class="section-calculator__header d-flex flex-md-column flex-lg-row gap-md-6 align-items-lg-end py-4 p-md-0 mb-md-6 mb-lg-7 justify-content-lg-between ps-lg-6">
+                <h3 class="d-none d-md-inline">Рассчитайте выгоду</h3>
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#loan" type="button" role="tab" aria-controls="loan" aria-selected>Кредит</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#mortgage" type="button" role="tab" aria-controls="mortgage">Ипотека</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#deposit" type="button" role="tab" aria-controls="deposit">Вклад</button>
+                    </li>
+                </ul>
+            </div>
+            <div class="tab-content">
+                <div class="ps-lg-6" id="loan">
+                    <div class="row">
+                        <div class="col-12 col-lg-6">
+                            <div class="d-none d-lg-inline-flex">
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#loan-consumer" type="button" role="tab" aria-controls="loan-consumer" aria-selected>Потребительский кредит</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#refinance" type="button" role="tab" aria-controls="refinance">Рефинансирование</button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="d-lg-none">
+                                <select class="form-select form-select--size-small js-select">
+                                    <option selected value="loan">Потребительский кредит</option>
+                                    <option value="refinance">Рефинансирование</option>
+                                </select>
+                            </div>
+                            <div class="tab-content pt-4 pt-md-6 pt-lg-7 pe-xl-6">
+                                <div class="tab-pane fade show active" id="loan-consumer" role="tabpanel" aria-labelledby="loan" tabindex="0">
+                                    <div class="d-flex flex-column row-gap-4 row-gap-md-6 row-gap-lg-7">
+                                        <div class="input-slider js-input-slider" data-type="price" data-start-value="1000000" data-max-value="5000000" data-min-value="20000" data-step-size="5000">
+                                            <label class="text-s dark-70 ps-3 mb-2" for="amount-credit">Сумма кредита</label>
+                                            <div class="input-slider-text js-input-slider-text">
+                                                <input class="input-slider-text__input h4 js-input-slider-text-input">
+                                                <button class="input-slider-text__button input-slider-text__button--edit js-input-slider-text-edit" type="button">
+                                                    <svg class="icon dark-70 size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-edit"></use>
+                                                    </svg>
+                                                </button>
+                                                <button class="input-slider-text__button input-slider-text__button--close js-input-slider-text-close" type="button">
+                                                    <svg class="icon dark-70 size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-close"></use>
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                            <div class="input-slider__inner js-input-slider-inner">
+                                                <input class="input-slider__item js-input-slider-input" id="amount-credit" type="range" step="1" min="0" max="1" value="0">
+                                            </div>
+                                            <div class="input-slider-text-steps js-input-slider-text-steps"></div>
+                                        </div>
+                                        <div class="input-slider js-input-slider" data-type="month" data-start-value="36" data-max-value="60" data-min-value="6">
+                                            <label class="text-s dark-70 ps-3 mb-2" for="payment-term">Срок выплаты</label>
+                                            <div class="input-slider-text js-input-slider-text">
+                                                <input class="input-slider-text__input h4 js-input-slider-text-input">
+                                                <button class="input-slider-text__button input-slider-text__button--edit js-input-slider-text-edit" type="button">
+                                                    <svg class="icon dark-70 size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-edit"></use>
+                                                    </svg>
+                                                </button>
+                                                <button class="input-slider-text__button input-slider-text__button--close js-input-slider-text-close" type="button">
+                                                    <svg class="icon dark-70 size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-close"></use>
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                            <div class="input-slider__inner js-input-slider-inner">
+                                                <input class="input-slider__item js-input-slider-input" id="payment-term" type="range" step="1" min="0" max="1" value="0">
+                                            </div>
+                                            <div class="input-slider-text-steps js-input-slider-text-steps"></div>
+                                        </div>
+                                        <div class="d-flex flex-column row-gap-4">
+                                            <div class="form-check">
+                                                <input class="form-check-input" id="inp1" type="checkbox" value="" checked>
+                                                <label class="form-check-label" for="inp1"><a href="#">Получаю зарплату на&nbsp;карту Новиком</a></label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" id="inp2" type="checkbox" value="">
+                                                <label class="form-check-label" for="inp2">Страхование</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="refinance" role="tabpanel" aria-labelledby="refinance" tabindex="0">
+                                    <p>refinance</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 mt-4 mt-md-6 mt-lg-0">
+                            <div class="ps-xxl-6">
+                                <div class="polygon-container js-polygon-container">
+                                    <div class="polygon-container__content">
+                                        <div class="card-calculate-result bg-dark-0">
+                                            <div class="card-calculate-result__body">
+                                                <div class="d-flex flex-column row-gap-2"><span class="card-calculate-result__label text-s">Процентная ставка</span><span class="text-number-ml fw-bold text-nowrap">16,5%</span>
+                                                </div>
+                                                <div class="d-flex flex-column row-gap-2"><span class="card-calculate-result__label text-s">Ежемесячный платеж</span>
+                                                    <div class="d-flex flex-column flex-md-row justify-content-md-between flex-wrap align-items-md-end"><span class="text-number-ml fw-bold text-nowrap">35 404,38&nbsp;<span class="currency">₽</span></span>
+                                                        <button class="btn btn-link btn-sm btn-icon mt-2 mt-md-0" type="button"><span>График платежей</span>
+                                                            <svg class="icon size-s" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                                                <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right-small"></use>
+                                                            </svg>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex flex-column row-gap-2"><span class="card-calculate-result__label text-s">Необходимый ежемесячный доход, от</span><span class="text-number-ml fw-bold text-nowrap">35 404,38&nbsp;<span class="currency">₽</span></span>
+                                                </div>
+                                                <div class="d-flex flex-column row-gap-2"><span class="card-calculate-result__label text-s">Диапазон полной стоимости кредита</span><span class="text-number-ml fw-bold text-nowrap">16,464 – 20,474 %</span>
+                                                </div>
+                                            </div>
+                                            <div class="card-calculate-result__footer">
+                                                <button class="btn btn-primary btn-lg-lg w-100" type="button">Оформить заявку</button>
+                                                <p class="dark-70 caption-m">Калькулятор не&nbsp;гарантирует точность расчетов. Окончательные параметры кредита определяются по&nbsp;итогам рассмотрения заявки.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="polygon-container__polygon js-polygon-container-polygon green-100">
+                                        <svg class="js-polygon-container-svg" xmlns="http://www.w3.org/2000/svg">
+                                            <polygon points="2,2 335,2 335,394 295,434 2,434" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="10"></polygon>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 <section class="section-layout">
     <div class="container">
         <div class="row">
@@ -295,58 +437,68 @@ $APPLICATION->SetTitle('Частным клиентам - Главная НОВ�
         </div>
         <div class="swiper js-slider-cards slider-cards" data-slides-per-view="mobile-s:1,mobile:1,tablet:2,laptop:3,laptop-x:3" data-space-between="mobile-s:8,mobile:8,tablet:8,laptop:8,laptop-x:8">
             <div class="swiper-wrapper js-swiper-wrapper">
-                <div class="swiper-slide js-swiper-slide"><a class="card-news" href="#">
-                        <div class="d-flex column-gap-3 row-gap-4 justify-content-between align-items-end flex-wrap">
-                            <div class="tag tag--outline card-news__tag"><span class="tag__content text-s fw-semibold">Пресс-центр</span><span class="tag__triangle">
-                                <svg width="14" height="21" viewBox="0 0 14 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                  <path d="M13.5 19.3486L0.934259 0.5H13.5V19.3486Z"></path>
-                                </svg></span></div><span class="text-s dark-70">07.12.2023</span>
-                        </div><span class="dark-100">Новикомбанк рассказал о развитии финансовых инструментов</span></a>
+                <div class="swiper-slide js-swiper-slide"><a class="card-special bg-dark-10 dark-100 h-100 d-flex flex-column row-gap-6 row-gap-lg-9">
+                        <div class="card-special__header d-flex align-items-start justify-content-between">
+                            <div class="tag tag--outline"><span class="tag__content text-s fw-semibold">Пресс-центр</span><span class="tag__triangle">
+                                    <svg width="14" height="21" viewBox="0 0 14 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                      <path d="M13.5 19.3486L0.934259 0.5H13.5V19.3486Z"></path>
+                                    </svg></span></div><span class="text-s dark-70 my-auto mb-0">07.12.2023</span>
+                        </div>
+                        <div class="card-special__body"><span class="dark-100">Новикомбанк рассказал о развитии финансовых инструментов</span>
+                        </div></a>
                 </div>
-                <div class="swiper-slide js-swiper-slide"><a class="card-news" href="#">
-                        <div class="d-flex column-gap-3 row-gap-4 justify-content-between align-items-end flex-wrap">
-                            <div class="tag tag--outline card-news__tag"><span class="tag__content text-s fw-semibold">Пресс-центр</span><span class="tag__triangle">
-                                <svg width="14" height="21" viewBox="0 0 14 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                  <path d="M13.5 19.3486L0.934259 0.5H13.5V19.3486Z"></path>
-                                </svg></span></div><span class="text-s dark-70">06.12.2023</span>
-                        </div><span class="dark-100">Новикомбанк и Республика Татарстан договорились о сотрудничестве</span></a>
+                <div class="swiper-slide js-swiper-slide"><a class="card-special bg-dark-10 dark-100 h-100 d-flex flex-column row-gap-6 row-gap-lg-9">
+                        <div class="card-special__header d-flex align-items-start justify-content-between">
+                            <div class="tag tag--outline"><span class="tag__content text-s fw-semibold">Пресс-центр</span><span class="tag__triangle">
+                                    <svg width="14" height="21" viewBox="0 0 14 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                      <path d="M13.5 19.3486L0.934259 0.5H13.5V19.3486Z"></path>
+                                    </svg></span></div><span class="text-s dark-70 my-auto mb-0">06.12.2023</span>
+                        </div>
+                        <div class="card-special__body"><span class="dark-100">Новикомбанк и Республика Татарстан договорились о сотрудничестве</span>
+                        </div></a>
                 </div>
-                <div class="swiper-slide js-swiper-slide"><a class="card-news" href="#">
-                        <div class="d-flex column-gap-3 row-gap-4 justify-content-between align-items-end flex-wrap">
-                            <div class="tag tag--outline card-news__tag"><span class="tag__content text-s fw-semibold">Союз машиностроителей 1234 dfsfasd</span><span class="tag__triangle">
-                                <svg width="14" height="21" viewBox="0 0 14 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                  <path d="M13.5 19.3486L0.934259 0.5H13.5V19.3486Z"></path>
-                                </svg></span></div><span class="text-s dark-70">27.11.2023</span>
-                        </div><span class="dark-100">При поддержке Новикомбанка Росэлектроника начала серийный выпуск KVM-коммутаторов для удаленного управления оборудованием</span></a>
+                <div class="swiper-slide js-swiper-slide"><a class="card-special bg-dark-10 dark-100 h-100 d-flex flex-column row-gap-6 row-gap-lg-9">
+                        <div class="card-special__header d-flex align-items-start justify-content-between">
+                            <div class="tag tag--outline"><span class="tag__content text-s fw-semibold">Союз машиностроителей</span><span class="tag__triangle">
+                                    <svg width="14" height="21" viewBox="0 0 14 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                      <path d="M13.5 19.3486L0.934259 0.5H13.5V19.3486Z"></path>
+                                    </svg></span></div><span class="text-s dark-70 my-auto mb-0">27.11.2023</span>
+                        </div>
+                        <div class="card-special__body"><span class="dark-100">При поддержке Новикомбанка Росэлектроника начала серийный выпуск KVM-коммутаторов для удаленного управления оборудованием</span>
+                        </div></a>
                 </div>
-                <div class="swiper-slide js-swiper-slide"><a class="card-news" href="#">
-                        <div class="d-flex column-gap-3 row-gap-4 justify-content-between align-items-end flex-wrap">
-                            <div class="tag tag--outline card-news__tag"><span class="tag__content text-s fw-semibold">Пресс-центр</span><span class="tag__triangle">
-                                <svg width="14" height="21" viewBox="0 0 14 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                  <path d="M13.5 19.3486L0.934259 0.5H13.5V19.3486Z"></path>
-                                </svg></span></div><span class="text-s dark-70">20.11.2023</span>
-                        </div><span class="dark-100">Новикомбанк и Республика Татарстан договорились о сотрудничестве</span></a>
+                <div class="swiper-slide js-swiper-slide"><a class="card-special bg-dark-10 dark-100 h-100 d-flex flex-column row-gap-6 row-gap-lg-9">
+                        <div class="card-special__header d-flex align-items-start justify-content-between">
+                            <div class="tag tag--outline"><span class="tag__content text-s fw-semibold">Пресс-центр</span><span class="tag__triangle">
+                                    <svg width="14" height="21" viewBox="0 0 14 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                      <path d="M13.5 19.3486L0.934259 0.5H13.5V19.3486Z"></path>
+                                    </svg></span></div><span class="text-s dark-70 my-auto mb-0">20.11.2023</span>
+                        </div>
+                        <div class="card-special__body"><span class="dark-100">Новикомбанк и Республика Татарстан договорились о сотрудничестве</span>
+                        </div></a>
                 </div>
-                <div class="swiper-slide js-swiper-slide"><a class="card-news" href="#">
-                        <div class="d-flex column-gap-3 row-gap-4 justify-content-between align-items-end flex-wrap">
-                            <div class="tag tag--outline card-news__tag"><span class="tag__content text-s fw-semibold">Союз машиностроителей</span><span class="tag__triangle">
-                                <svg width="14" height="21" viewBox="0 0 14 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                  <path d="M13.5 19.3486L0.934259 0.5H13.5V19.3486Z"></path>
-                                </svg></span></div><span class="text-s dark-70">05.11.2023</span>
-                        </div><span class="dark-100">При поддержке Новикомбанка Росэлектроника начала серийный выпуск KVM-коммутаторов для удаленного управления оборудованием</span></a>
+                <div class="swiper-slide js-swiper-slide"><a class="card-special bg-dark-10 dark-100 h-100 d-flex flex-column row-gap-6 row-gap-lg-9">
+                        <div class="card-special__header d-flex align-items-start justify-content-between">
+                            <div class="tag tag--outline"><span class="tag__content text-s fw-semibold">Союз машиностроителей</span><span class="tag__triangle">
+                                    <svg width="14" height="21" viewBox="0 0 14 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                      <path d="M13.5 19.3486L0.934259 0.5H13.5V19.3486Z"></path>
+                                    </svg></span></div><span class="text-s dark-70 my-auto mb-0">05.11.2023</span>
+                        </div>
+                        <div class="card-special__body"><span class="dark-100">При поддержке Новикомбанка Росэлектроника начала серийный выпуск KVM-коммутаторов для удаленного управления оборудованием</span>
+                        </div></a>
                 </div>
             </div>
             <div class="slider-controls js-swiper-controls mt-3 mt-md-4">
                 <div class="slider-controls__pagination js-swiper-pagination"></div>
                 <div class="slider-controls__navigation js-swiper-nav">
                     <button class="swiper-button-prev js-swiper-prev" type="button"><span class="icon size-m">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                      <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-left"></use>
-                    </svg></span></button>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                              <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-left"></use>
+                            </svg></span></button>
                     <button class="swiper-button-next js-swiper-next" type="button"><span class="icon size-m">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                      <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
-                    </svg></span></button>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                              <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
+                            </svg></span></button>
                 </div>
             </div>
         </div>
@@ -354,5 +506,145 @@ $APPLICATION->SetTitle('Частным клиентам - Главная НОВ�
 </section>
 
 <?$APPLICATION->IncludeFile('/local/php_interface/include/request_call.php');?>
+
+<section class="section-layout section-currency-exchange">
+    <div class="container"><a class="h3 d-flex align-items-center justify-content-between dark-100 d-md-none" data-bs-toggle="collapse" href="#currency-exchange" role="button" aria-expanded="false" aria-controls="currency-exchange">Обмен валют
+            <svg class="icon size-m violet-100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-down"></use>
+            </svg></a>
+        <div class="section-currency-exchange__wrapper collapse" id="currency-exchange">
+            <div class="row">
+                <div class="col-12 col-xl-8">
+                    <div class="d-flex flex-column flex-lg-row align-items-lg-end mb-4 mb-md-6 mb-lg-7 pt-4 pt-md-0 gap-md-3">
+                        <h3 class="d-none d-md-block">Обмен валют</h3>
+                        <p class="text-s dark-70 mb-0 ms-lg-auto">Курс банка актуален на&nbsp;14:00 по&nbsp;МСК 30&nbsp;апреля 2024&nbsp;г.</p>
+                    </div>
+                    <ul class="nav nav-tabs d-md-none" role="tablist">
+                        <li class="nav-item flex-grow-1" role="presentation">
+                            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#eur" type="button" role="tab" aria-controls="eur" aria-selected>EUR</button>
+                        </li>
+                        <li class="nav-item flex-grow-1" role="presentation">
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#usd" type="button" role="tab" aria-controls="usd">USD</button>
+                        </li>
+                        <li class="nav-item flex-grow-1" role="presentation">
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#cny" type="button" role="tab" aria-controls="cny">CNY</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content pt-3 d-md-none">
+                        <div class="tab-pane fade show active" id="eur" role="tabpanel" aria-labelledby="eur" tabindex="0">
+                            <div class="table-currency">
+                                <div class="table-currency__row">
+                                    <div class="table-currency__col"><span class="text-s dark-70">Продать, RUB</span></div>
+                                    <div class="table-currency__col"><span class="text-l dark-100">94,60</span></div>
+                                </div>
+                                <div class="table-currency__row">
+                                    <div class="table-currency__col"><span class="text-s dark-70">Купить, RUB</span></div>
+                                    <div class="table-currency__col"><span class="text-l dark-100">99,10</span></div>
+                                </div>
+                                <div class="table-currency__row">
+                                    <div class="table-currency__col"><span class="text-s dark-70">ЦБ РФ, RUB</span></div>
+                                    <div class="table-currency__col"><span class="text-l dark-100">97,15</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="usd" role="tabpanel" aria-labelledby="usd" tabindex="0">
+                            <div class="table-currency">
+                                <div class="table-currency__row">
+                                    <div class="table-currency__col"><span class="text-s dark-70">Продать, RUB</span></div>
+                                    <div class="table-currency__col"><span class="text-l dark-100">86,20</span></div>
+                                </div>
+                                <div class="table-currency__row">
+                                    <div class="table-currency__col"><span class="text-s dark-70">Купить, RUB</span></div>
+                                    <div class="table-currency__col"><span class="text-l dark-100">91,50</span></div>
+                                </div>
+                                <div class="table-currency__row">
+                                    <div class="table-currency__col"><span class="text-s dark-70">ЦБ РФ, RUB</span></div>
+                                    <div class="table-currency__col"><span class="text-l dark-100">91,34</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="cny" role="tabpanel" aria-labelledby="cny" tabindex="0">
+                            <div class="table-currency">
+                                <div class="table-currency__row">
+                                    <div class="table-currency__col"><span class="text-s dark-70">Продать, RUB</span></div>
+                                    <div class="table-currency__col"><span class="text-l dark-100">12,25</span></div>
+                                </div>
+                                <div class="table-currency__row">
+                                    <div class="table-currency__col"><span class="text-s dark-70">Купить, RUB</span></div>
+                                    <div class="table-currency__col"><span class="text-l dark-100">12,73</span></div>
+                                </div>
+                                <div class="table-currency__row">
+                                    <div class="table-currency__col"><span class="text-s dark-70">ЦБ РФ, RUB</span></div>
+                                    <div class="table-currency__col"><span class="text-l dark-100">12,38</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-currency d-none d-md-block">
+                        <div class="table-currency__row table-currency__row--header">
+                            <div class="table-currency__col"><span class="text-s dark-70">Валюта</span></div>
+                            <div class="table-currency__col"><span class="text-s dark-70">Продать, RUB</span></div>
+                            <div class="table-currency__col"><span class="text-s dark-70">Купить, RUB</span></div>
+                            <div class="table-currency__col"><span class="text-s dark-70">ЦБ РФ, RUB</span></div>
+                        </div>
+                        <div class="table-currency__row">
+                            <div class="table-currency__col"><span class="fw-semibold">Евро — EUR</span></div>
+                            <div class="table-currency__col"><span class="text-l dark-100">94,60</span></div>
+                            <div class="table-currency__col"><span class="text-l dark-100">99,10</span></div>
+                            <div class="table-currency__col"><span class="text-l dark-100">97,15</span></div>
+                        </div>
+                        <div class="table-currency__row">
+                            <div class="table-currency__col"><span class="fw-semibold">Доллар США — USD</span></div>
+                            <div class="table-currency__col"><span class="text-l dark-100">86,20</span></div>
+                            <div class="table-currency__col"><span class="text-l dark-100">91,50</span></div>
+                            <div class="table-currency__col"><span class="text-l dark-100">91,34</span></div>
+                        </div>
+                        <div class="table-currency__row">
+                            <div class="table-currency__col"><span class="fw-semibold">Китайский юань — CNY</span></div>
+                            <div class="table-currency__col"><span class="text-l dark-100">12,25</span></div>
+                            <div class="table-currency__col"><span class="text-l dark-100">12,73</span></div>
+                            <div class="table-currency__col"><span class="text-l dark-100">12,38</span></div>
+                        </div>
+                    </div>
+                    <p class="dark-70 pt-4 text-s mb-0">Банк оставляет за&nbsp;собой право на&nbsp;изменение курса купли-продажи иностранной валюты.<br>Действующие на&nbsp;момент совершения операций курсы уточняйте в&nbsp;отделениях банка.<br>Список отделений доступен по&nbsp;ссылке.</p>
+                    <p class="dark-70 pt-3 text-s mb-0">Покупка и&nbsp;продажа фунтов стерлингов и&nbsp;швейцарских франков осуществляется только в&nbsp;ДО&nbsp;&laquo;Якиманка&raquo;.</p>
+                </div>
+                <div class="col-12 col-xl-4 mt-4">
+                    <div class="d-flex flex-column gap-4 gap-lg-5 gap-xl-4 bg-dark-0 rounded-3 px-3 py-4 p-md-5 px-lg-6 p-xl-6">
+                        <h4>Предварительный расчет</h4>
+                        <div class="row">
+                            <div class="col-12 col-md-6 col-xl-12">
+                                <label class="form-label" for="have">У вас есть</label>
+                                <div class="input-group">
+                                    <input class="form-control form-control-lg" id="have" type="text" name="you_have" placeholder="1500">
+                                    <div class="input-group__currency">
+                                        <select class="form-select js-select" aria-label="Выберите валюту">
+                                            <option selected value="RUB">RUB</option>
+                                            <option value="USD">USD</option>
+                                            <option value="CNY">CNY</option>
+                                        </select>
+                                    </div>
+                                </div><span class="caption-m dark-70 mt-2 d-block">1 RUB = 0,01 USD</span>
+                            </div>
+                            <div class="col-12 col-md-6 col-xl-12 mt-4 mt-md-0 mt-xl-4">
+                                <label class="form-label" for="get">Вы получите</label>
+                                <div class="input-group">
+                                    <input class="form-control form-control-lg" id="get" type="text" name="you_get" placeholder="9,77">
+                                    <div class="input-group__currency">
+                                        <select class="form-select js-select" aria-label="Выберите валюту">
+                                            <option value="RUB">RUB</option>
+                                            <option value="USD" selected>USD</option>
+                                            <option value="CNY">CNY</option>
+                                        </select>
+                                    </div>
+                                </div><span class="caption-m dark-70 mt-2 d-block">1 USD = 97 RUB</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <?require($_SERVER['DOCUMENT_ROOT'].'/bitrix/footer.php');?>

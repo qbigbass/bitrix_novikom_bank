@@ -1,3 +1,19 @@
+.section-banner-product-info {
+    --border-thickness: 0.25rem;
+
+    @include use-media(tablet-album) {
+        --border-thickness: 0.5rem;
+    }
+
+    &.section-banner-product-info--border-green {
+        border-top: var(--border-thickness) solid var(--green-100);
+    }
+
+    &.section-banner-product-info--border-orange {
+        border-top: var(--border-thickness) solid var(--orange-100);
+    }
+}
+
 .banner-product-info {
     $root: #{&};
 

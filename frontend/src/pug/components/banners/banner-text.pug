@@ -1,0 +1,28 @@
+// title - str
+// breadcrumbsArray - array with obj's
+// breadcrumbsArray[0].link - str
+// breadcrumbsArray[0].linkText - str
+// description - str
+// borderColor - str
+
+include ../ui/breadcrumbs
+
+mixin banner-text-content(title, breadcrumbsArray, description)
+    .d-flex.flex-column.align-items-start.gap-3.gap-md-4
+        +breadcrumbs(breadcrumbsArray)
+        h1.banner-text__title.dark-0.text-break!= title
+        .banner-text__description.text-l.dark-0!= description
+
+mixin banner-text(data, borderColor, bgGradient='bg-linear-blue')
+    section.banner-text.pe-lg-0.px-0.px-lg-6(class=`banner-text--border-${borderColor} ${bgGradient}`)
+        div.container.banner-text__container.position-relative.z-2
+            .row
+                if data.imageSrc
+                    .col-12.col-sm-6.col-md-8.position-relative.z-1.mb-5.mb-md-0.pt-6
+                        +banner-text-content(data.title, data.breadcrumbsArray, data.description)
+                    .d-none.d-sm-block.col-12.col-sm-6.col-md-4
+                        img(src=data.imageSrc, class="banner-text__image position-relative w-auto float-end", alt="")
+                else
+                    .col-12.col-xl-7.position-relative.z-1.mb-5.mb-md-0.pt-6
+                        +banner-text-content(data.title, data.breadcrumbsArray, data.description)
+        +pattern-bg('section', 'light', 'pattern-bg--position-sm-top banner-text__pattern')

@@ -1,0 +1,32 @@
+-
+    var tableData = [
+        {
+            label: "Перевод денежных средств в&nbsp;пределах Российской Федерации",
+            value: ["Осуществляется в&nbsp;срок не&nbsp;более трех рабочих дней начиная со&nbsp;дня предоставления плательщиком наличных денежных средств в&nbsp;целях перевода денежных средств без открытия банковского счета"]
+        },
+        {
+            label: "Сроки проведения международных переводов",
+            value: ["Сроки переводов по&nbsp;территории иностранных государств зависят от&nbsp;банков-корреспондентов"]
+        },
+    ]
+
+include ../../../components/helper
+
+.row
+    .col-12
+        .table-tab.cell-2
+            .table-tab__body
+                each row in tableData
+                    .table-tab__row
+                        .table-tab__cell.text-l.fw-semibold.dark-70!= row.label
+                        .table-tab__cell
+                            each item in row.value
+                                p.text-l!= item
+
+.content-negative-wrapper.mt-6.mt-md-9.mt-lg-11
+    .row
+        .col-12
+            +polygon-container("violet-100")
+                +helper("img/restructuring-additional-info.png", "bg-dark-10")
+                    h4.mb-3 Платежи и&nbsp;переводы по&nbsp;России в&nbsp;рублях и&nbsp;за&nbsp;рубеж в&nbsp;иностранной валюте
+                    p.mb-0 Денежные средства, внесенные для осуществления перевода без открытия счета, не&nbsp;подлежат страхованию в&nbsp;соответствии с&nbsp;ФЗ &#8470;&nbsp;177 от&nbsp;23.12.2003 &laquo;О&nbsp;страховании вкладов физических лиц в&nbsp;банках Российской Федерации&raquo;.

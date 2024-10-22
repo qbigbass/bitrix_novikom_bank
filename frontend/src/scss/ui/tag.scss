@@ -11,7 +11,7 @@
     &__content {
         color: var(--blue-100);
         background-color: var(--dark-0);
-        padding: 0.375rem 1rem;
+        padding: 0.185rem 0.5rem;
         border: 1px solid transparent;
         white-space: nowrap;
         overflow: hidden;
@@ -30,6 +30,12 @@
                 fill: var(--blue-30);
                 stroke: var(--blue-30);
             }
+        }
+    }
+
+    @include use-media(tablet) {
+        &__content {
+            padding: 0.375rem 1rem;
         }
     }
 

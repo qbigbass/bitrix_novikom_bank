@@ -1,0 +1,226 @@
+extends ../templates/base
+
+block title
+    title= 'Частные клиенты - Интернет-банк и Мобильное приложение'
+    meta(name="description" content="Описание страницы с вкладами")
+block content
+
+    include ../includes/header/header
+    include ../components/banners/banner-text
+    include ../includes/layout/slider-card-product
+    include ../components/ui/tabs-simple
+    include ../components/stepper
+    include ../components/benefit
+    include ../components/announcement
+    include ../cards/card-regal
+
+    -
+        var tabContentList = [
+            {
+                link: '#android',
+                id: 'android',
+                linkText: 'Android',
+                isActive: true
+            },
+            {
+                link: '#ios',
+                id: 'ios',
+                linkText: 'iOS (устройства Apple)',
+                isActive: false
+            },
+            {
+                link: '#instructions',
+                id: 'instructions',
+                linkText: 'Инструкции',
+                isActive: false
+            },
+            {
+                link: '#documents',
+                id: 'documents',
+                linkText: 'Документы и тарифы',
+                isActive: false
+            },
+            {
+                link: '#faq',
+                id: 'faq',
+                linkText: 'Вопросы и ответы',
+                isActive: false
+            }
+        ]
+
+        var bannerTextData = {
+            title: "Интернет-банк и&nbsp;Мобильное приложение",
+            breadcrumbsArray: [
+                {linkText: "Частным клиентам", link: "/"},
+                {linkText: "Онлайн-сервисы", link: "/"},
+            ],
+        }
+
+    +banner-text(bannerTextData, 'green')
+
+    section.section-layout
+        .container
+            h3.px-lg-6.mb-4.mb-md-6.mb-lg-7
+                | Преимущества
+            #benefits.row.row-gap-6.row-gap-md-7.px-lg-6
+                .col-12.col-md-6.col-xl-4
+                    +benefit(
+                        {
+                            name: 'icon-a-date',
+                            classList: 'size-xl'
+                        }, "Платежи без комиссии")
+                        ul.list
+                            li Оплата услуг ЖКХ, интернета, сотовой связи
+                            li Госплатежи: налоги, штрафы ГИБДД и&nbsp;т.д.
+                .col-12.col-md-6.col-xl-4
+                    +benefit(
+                        {
+                            name: 'icon-a-date',
+                            classList: 'size-xl'
+                        }, "Доступ к&nbsp;продуктам банка 24/7")
+                        ul.list
+                            li Дебетовые и&nbsp;кредитные карты
+                            li Вклады
+                            li Кредиты
+                .col-12.col-md-6.col-xl-4
+                    +benefit(
+                        {
+                            name: 'icon-a-date',
+                            classList: 'size-xl'
+                        }, "Переводы без комиссии")
+                        ul.list
+                            li Через СБП
+                            li По&nbsp;номеру телефона
+                            li Со&nbsp;счетов в&nbsp;других банках
+                .col-12.col-md-6.col-xl-4
+                    +benefit(
+                        {
+                            name: 'icon-a-date',
+                            classList: 'size-xl'
+                        }, "Актуальная информация <br>о&nbsp;продуктах и&nbsp;услугах банка")
+                        ul.list
+                            li Выгодные условия и&nbsp;обновления
+                            li Акции
+                            li Новости
+                .col-12.col-md-6.col-xl-4.d-none.d-md-block
+                    +benefit(
+                        {
+                            name: 'icon-a-date',
+                            classList: 'size-xl'
+                        }, "Управление <br>программами лояльности")
+                        ul.list
+                            li Бонусы
+                            li Кешбэк
+                .col-12.col-md-6.col-xl-4.d-none.d-md-block
+                    +benefit(
+                        {
+                            name: 'icon-a-date',
+                            classList: 'size-xl'
+                        }, "Коммуникации с&nbsp;банком")
+                        ul.list
+                            li Онлайн-консультант 24/7
+                            li Ближайшие отделения и&nbsp;банкоматы на&nbsp;карте
+                .col-12.text-center
+                    button(type="button" data-target="benefits").btn.btn-link.btn-icon.d-md-none.js-more-content-link
+                        | Еще преимущества
+                        +svg-use("icon-chevron-down", "icon size-m violet-100")
+        +pattern-bg('section', 'light', 'pattern-bg--position-sm-bottom')
+
+    section.section-layout
+        .container
+            +card-regal({
+                title: "Награды",
+                image: "img/tagline_awards.png",
+            })
+                p.text-l.mb-0 Банк Новиком стал серебряным лауреатом престижной премии крупнейшего digital-конкурса в&nbsp;Восточной Европе Tagline Awards за&nbsp;&laquo;Лучшее приложение финансовой компании&raquo;.
+
+    section.section-layout.js-collapsed-mobile
+        .container
+            h3.d-none.d-md-block.mb-md-6.mb-lg-7.px-lg-6
+                | Установка
+            a(
+                data-bs-toggle="collapse"
+                href="#more"
+                role="button"
+                aria-expanded="false"
+                aria-controls="more"
+            ).h3.d-flex.align-items-center.justify-content-between.dark-100.d-md-none
+                | Установка
+                +svg-use("icon-chevron-down", "icon size-m violet-100")
+            #more.collapse.d-md-block.mt-4.mt-md-6.mt-lg-7
+                .row.px-lg-6
+                    .col-12
+                        +tabs-simple(tabContentList, false)
+                        .tab-content.mt-4.mt-md-6.mt-lg-7
+                            #android.tab-pane.fade.show.active(aria-labelledby="android" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/android
+                            #ios.tab-pane.fade(aria-labelledby="ios" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/ios
+                            #instructions.tab-pane.fade(aria-labelledby="instructions" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/documents
+                            #documents.tab-pane.fade(aria-labelledby="documents" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/documents
+                            #faq.tab-pane.fade(aria-labelledby="faq" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/faq
+        +pattern-bg('section-2', 'light', 'pattern-bg--hide-mobile')
+
+    section.section-layout.bg-dark-10
+        .container
+            .row
+                .col-12.col-xxl-6.d-flex.flex-column.gap-6.gap-lg-7
+
+                    a(href="#").h3.d-flex.align-items-center.ps-lg-6.pt-xxl-6
+                        span Объявления
+                            |
+                            |
+                            span.d-none.d-md-inline для клиентов
+                        span.icon.size-m.violet-100.ms-auto.ms-md-3
+                            +svg-use("icon-chevron-right")
+
+                    div.ps-lg-6.mt-xxl-auto.mw-100
+                        .swiper.js-announcement-slider
+                            -
+                                var announcementList = [
+                                    {
+                                        date: '25.04.2024',
+                                        title: 'Технические работы 30 апреля 2024 года в период с 0:00 до 3:30 (МСК)',
+                                        link: '#'
+                                    },
+                                    {
+                                        date: '25.04.2024',
+                                        title: 'Режим работы клиентских офисов в мае',
+                                        link: '#'
+                                    },
+                                    {
+                                        date: '25.04.2024',
+                                        title: 'Технические работы 30 апреля 2024 года в период с 0:00 до 3:30 (МСК)',
+                                        link: '#'
+                                    },
+                                    {
+                                        date: '25.04.2024',
+                                        title: 'Режим работы клиентских офисов в мае',
+                                        link: '#'
+                                    },
+                                    {
+                                        date: '25.04.2024',
+                                        title: 'Технические работы 30 апреля 2024 года в период с 0:00 до 3:30 (МСК)',
+                                        link: '#'
+                                    },
+                                    {
+                                        date: '25.04.2024',
+                                        title: 'Режим работы клиентских офисов в мае',
+                                        link: '#'
+                                    }
+                                ]
+                            .swiper-wrapper
+                                each item in announcementList
+                                    .swiper-slide.js-announcement-slide
+                                        +announcement(item)
+
+                            +slider-controls().mt-3.mt-md-4
+
+    section.section-layout
+        .container
+            h3.px-lg-6.mb-4.mb-md-6.mb-lg-7
+                | Смотрите также
+            +slider-card-product()

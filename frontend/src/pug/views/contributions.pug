@@ -38,20 +38,24 @@ block content
             },
         ]
 
+        var bannerTextData = {
+            title: "Вклады Новикома",
+            breadcrumbsArray: [
+                {linkText: "Частным клиентам", link: "/"}
+            ],
+            description: "Сохранение и приумножение накоплений"
+        }
+
     include ../cards/card-product
     include ../includes/header/header
-    include ../components/banners/text-banner
+    include ../components/banners/banner-text
     include ../components/banners/banner-product-info-alternative
     include ../components/ui/tabs
     include ../components/ui/tabs-simple
     include ../includes/layout/slider-card-product
 
-    +text-banner(
-        "Вклады Новикома",
-        [
-            {linkText: "Частным клиентам", link: "/"}
-        ],
-        "Сохранение и приумножение накоплений",
+    +banner-text(
+        bannerTextData,
         "green"
     )
 

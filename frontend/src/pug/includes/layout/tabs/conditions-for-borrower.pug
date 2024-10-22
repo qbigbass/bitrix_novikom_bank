@@ -28,4 +28,5 @@ include ../../../components/benefit
 .row.row-gap-6
     each benefit in benefits
         .col-12.col-md-6.col-lg-4
-            +benefit(benefit.spriteData, benefit.title, benefit.description, true)
+            +benefit(benefit.spriteData, benefit.title, true)
+                span!= benefit.description

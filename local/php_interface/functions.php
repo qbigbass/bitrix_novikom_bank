@@ -1,12 +1,12 @@
 <?php
 
-function iblock(string $code) : ?int {
+function iblock(string $code) : int {
     try {
         \Bitrix\Main\Loader::IncludeModule('iblock');
         $iblock = Bitrix\Iblock\IblockTable::getList(['select' => ['ID'], 'filter' => ['CODE' => $code]])->Fetch();
-        return $iblock['ID'];
+        return $iblock['ID'] ?? 0;
     } catch (Exception $e) {
-        return false;
+        return 0;
     }
 }
 

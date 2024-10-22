@@ -6,9 +6,8 @@ block title
 block content
 
     include ../includes/header/header
-    include ../components/banners/text-banner
+    include ../components/banners/banner-text
     include ../components/banners/banner-product-info
-    include ../components/banners/info-product-banner
     include ../components/ui/tabs
     include ../components/ui/tabs-simple
     include ../components/tabs-with-content
@@ -34,15 +33,19 @@ block content
             }
         ]
 
-    +text-banner(
-        "Овердрафт",
-        [
-            {linkText: "Частным клиентам", link: "/"},
-            {linkText: "Кредиты", link: "/"}
-        ],
-        "Кредит «до зарплаты» на случай непредвиденных расходов и неотложных платежей.",
+        var bannerTextData = {
+            title: "Овердрафт",
+            breadcrumbsArray: [
+                {linkText: "Частным клиентам", link: "/"},
+                {linkText: "Кредиты", link: "/"}
+            ],
+            description: "Кредит «до зарплаты» на случай непредвиденных расходов и неотложных платежей.",
+            imageSrc: "img/big-illustrations/large-individual/overdraft.png"
+        }
+
+    +banner-text(
+        bannerTextData,
         "green",
-        "../img/big-illustrations/large-individual/overdraft.png"
     )
 
     section.section-restructuring-benefits.px-0.px-lg-6.py-6.py-sm-9.py-md-11.py-xl-16.position-relative.overflow-hidden
@@ -80,7 +83,8 @@ block content
             .row.row-gap-6
                 each item, index in allBenefits
                     .col-12.col-md-6.col-lg-4
-                        +benefit(item.spriteData, item.title, item.description)
+                        +benefit(item.spriteData, item.title)
+                            span!=item.description
         +pattern-bg('section', 'light', 'pattern-bg--position-sm-bottom section-restructuring-benefits__pattern')
 
     +banner-product-info({
