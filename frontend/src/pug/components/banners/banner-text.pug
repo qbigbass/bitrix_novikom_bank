@@ -14,9 +14,9 @@ mixin banner-text-content(title, breadcrumbsArray, description)
         .banner-text__description.text-l.dark-0!= description
 
 mixin banner-text(data, borderColor, bgGradient='bg-linear-blue')
-    section.banner-text.pe-lg-0.px-0.px-lg-6(class=`banner-text--border-${borderColor} ${bgGradient}`)
+    section.banner-text(class=`banner-text--border-${borderColor} ${bgGradient}`)
         div.container.banner-text__container.position-relative.z-2
-            .row
+            .row.ps-lg-6
                 if data.imageSrc
                     .col-12.col-sm-6.col-md-8.position-relative.z-1.mb-5.mb-md-0.pt-6
                         +banner-text-content(data.title, data.breadcrumbsArray, data.description)
