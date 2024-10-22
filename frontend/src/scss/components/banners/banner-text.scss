@@ -22,13 +22,13 @@
     &__image {
         max-width: 20rem;
 
-        @include use-media(tablet) {
+        @include use-media(sm) {
             right: -3rem;
         }
 
         @include use-media(tablet-album) {
             max-width: 25rem;
-            right: 0;
+            //right: 0;
         }
     }
 
