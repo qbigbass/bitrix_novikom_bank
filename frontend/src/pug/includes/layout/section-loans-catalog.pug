@@ -1,5 +1,5 @@
 -
-    const tabsList = [
+    var tabsList = [
         {
             link: '#1',
             linkText: 'Все кредиты',
@@ -270,7 +270,7 @@
         }
     ]
 
-    const allLoans = [
+    var allLoans = [
         ...consumerLoans,
         ...educationLoans,
         ...overdraftLoans,
@@ -281,7 +281,7 @@
 include ../../cards/card-product-list
 include ../../components/ui/tabs
 
-section.section-catalog__tabs
+section.section-catalog__tabs.mb-4.mb-md-6.mb-lg-7
         .container
             .row
                 .col-12
