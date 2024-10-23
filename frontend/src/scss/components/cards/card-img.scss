@@ -3,10 +3,8 @@
 
     &__image-container {
         width: 100%;
-    }
 
-    @include use-media(sm) {
-        &__image-container {
+        @include use-media(mobile) {
             width: 15rem;
         }
     }
