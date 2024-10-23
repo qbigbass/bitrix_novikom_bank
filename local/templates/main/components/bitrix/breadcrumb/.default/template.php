@@ -15,7 +15,7 @@ $strReturn = '<div class="text-banner__breadcrumbs d-flex gap-2">';
 $itemSize = count($arResult);
 for($index = 0; $index < $itemSize; $index++)
 {
-	$title = htmlspecialcharsex($arResult[$index]["TITLE"]);
+	$title = htmlspecialcharsex(strip_tags($arResult[$index]["TITLE"]));
 	$arrow = ($index > 0 ? '
         <svg class="icon size-s text-white-50 d-inline-block d-md-none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
             <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-left"></use>

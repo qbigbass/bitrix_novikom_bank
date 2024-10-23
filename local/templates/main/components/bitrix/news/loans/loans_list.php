@@ -14,7 +14,7 @@ $this->setFrameMode(true);
 ?>
 
 <!-- Баннер в шапке -->
-<section class="text-banner pe-lg-0 px-0 px-lg-6 bg-linear-blue-purple text-banner--border-green">
+<section class="text-banner pe-lg-0 px-0 px-lg-6 bg-linear-blue text-banner--border-green">
     <div class="container text-banner__container position-relative z-2">
         <div class="row">
             <div class="col-12 position-relative z-1 mb-5 mb-md-0 pt-6">

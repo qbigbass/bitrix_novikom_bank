@@ -3,13 +3,13 @@
 namespace Sprint\Migration;
 
 
-class Version20241018134055 extends Version
+class Version20241022181258 extends Version
 {
     protected $author = "vimbatu@gmail.com";
 
-    protected $description = "Инфоблок кредитов";
+    protected $description = "Ставки по ипотеке";
 
-    protected $moduleVersion = "4.12.6";
+    protected $moduleVersion = "4.15.1";
 
     /**
      * @throws Exceptions\HelperException
@@ -19,7 +19,7 @@ class Version20241018134055 extends Version
     {
         $helper = $this->getHelperManager();
         $helper->Iblock()->saveIblockType(array (
-  'ID' => 'for_private_clients_ru',
+  'ID' => 'rates',
   'SECTIONS' => 'Y',
   'EDIT_FILE_BEFORE' => '',
   'EDIT_FILE_AFTER' => '',
@@ -29,34 +29,34 @@ class Version20241018134055 extends Version
   array (
     'ru' => 
     array (
-      'NAME' => 'Частным клиентам',
-      'SECTION_NAME' => '',
-      'ELEMENT_NAME' => '',
+      'NAME' => 'Ставки',
+      'SECTION_NAME' => 'Ставки',
+      'ELEMENT_NAME' => 'Ставки',
     ),
     'en' => 
     array (
-      'NAME' => 'For private clients',
-      'SECTION_NAME' => '',
-      'ELEMENT_NAME' => '',
+      'NAME' => 'Rates',
+      'SECTION_NAME' => 'Rates',
+      'ELEMENT_NAME' => 'Rates',
     ),
   ),
 ));
         $iblockId = $helper->Iblock()->saveIblock(array (
-  'IBLOCK_TYPE_ID' => 'for_private_clients_ru',
+  'IBLOCK_TYPE_ID' => 'rates',
   'LID' => 
   array (
     0 => 's1',
     1 => 's2',
   ),
-  'CODE' => 'loans',
-  'API_CODE' => 'loans',
+  'CODE' => 'mortgage_rates',
+  'API_CODE' => 'mortgageRates',
   'REST_ON' => 'N',
-  'NAME' => 'Кредиты',
+  'NAME' => 'Ставки по ипотеке',
   'ACTIVE' => 'Y',
   'SORT' => '500',
-  'LIST_PAGE_URL' => '#SITE_DIR#/loans/',
-  'DETAIL_PAGE_URL' => '#SITE_DIR#/loans/#SECTION_CODE#/#ELEMENT_CODE#/',
-  'SECTION_PAGE_URL' => '#SITE_DIR#/loans/#SECTION_CODE#/',
+  'LIST_PAGE_URL' => '',
+  'DETAIL_PAGE_URL' => '',
+  'SECTION_PAGE_URL' => '',
   'CANONICAL_PAGE_URL' => '',
   'PICTURE' => NULL,
   'DESCRIPTION' => '',
@@ -150,12 +150,12 @@ class Version20241018134055 extends Version
     'IS_REQUIRED' => 'N',
     'DEFAULT_VALUE' => 
     array (
-      'FROM_DETAIL' => 'Y',
+      'FROM_DETAIL' => 'N',
       'UPDATE_WITH_DETAIL' => 'N',
       'DELETE_WITH_DETAIL' => 'N',
-      'SCALE' => 'Y',
-      'WIDTH' => 500,
-      'HEIGHT' => 500,
+      'SCALE' => 'N',
+      'WIDTH' => '',
+      'HEIGHT' => '',
       'IGNORE_ERRORS' => 'N',
       'METHOD' => 'resample',
       'COMPRESSION' => 95,
@@ -193,9 +193,9 @@ class Version20241018134055 extends Version
     'IS_REQUIRED' => 'N',
     'DEFAULT_VALUE' => 
     array (
-      'SCALE' => 'Y',
-      'WIDTH' => 1000,
-      'HEIGHT' => 1000,
+      'SCALE' => 'N',
+      'WIDTH' => '',
+      'HEIGHT' => '',
       'IGNORE_ERRORS' => 'N',
       'METHOD' => 'resample',
       'COMPRESSION' => 95,
@@ -405,227 +405,33 @@ class Version20241018134055 extends Version
   'administrators' => 'X',
 ));
         $helper->Iblock()->saveProperty($iblockId, array (
-  'NAME' => 'Краткие условия в списке',
-  'ACTIVE' => 'Y',
-  'SORT' => '100',
-  'CODE' => 'LIST_TERMS',
-  'DEFAULT_VALUE' => NULL,
-  'PROPERTY_TYPE' => 'S',
-  'ROW_COUNT' => '1',
-  'COL_COUNT' => '30',
-  'LIST_TYPE' => 'L',
-  'MULTIPLE' => 'Y',
-  'XML_ID' => NULL,
-  'FILE_TYPE' => '',
-  'MULTIPLE_CNT' => '1',
-  'LINK_IBLOCK_ID' => '0',
-  'WITH_DESCRIPTION' => 'N',
-  'SEARCHABLE' => 'N',
-  'FILTRABLE' => 'N',
-  'IS_REQUIRED' => 'N',
-  'VERSION' => '1',
-  'USER_TYPE' => 'multiple_field',
-  'USER_TYPE_SETTINGS' => 
-  array (
-    'COUNT' => 3,
-    'DESCR' => 
-    array (
-      1 => 'Подпись',
-      2 => 'Мелко',
-      3 => 'Крупно',
-    ),
-  ),
-  'HINT' => '',
-  'FEATURES' => 
-  array (
-    0 => 
-    array (
-      'MODULE_ID' => 'iblock',
-      'FEATURE_ID' => 'DETAIL_PAGE_SHOW',
-      'IS_ENABLED' => 'N',
-    ),
-    1 => 
-    array (
-      'MODULE_ID' => 'iblock',
-      'FEATURE_ID' => 'LIST_PAGE_SHOW',
-      'IS_ENABLED' => 'Y',
-    ),
-  ),
-));
-            $helper->Iblock()->saveProperty($iblockId, array (
-  'NAME' => 'Выводить кнопку в списке',
-  'ACTIVE' => 'Y',
-  'SORT' => '200',
-  'CODE' => 'BUTTON_LIST',
-  'DEFAULT_VALUE' => '',
-  'PROPERTY_TYPE' => 'L',
-  'ROW_COUNT' => '1',
-  'COL_COUNT' => '30',
-  'LIST_TYPE' => 'C',
-  'MULTIPLE' => 'N',
-  'XML_ID' => NULL,
-  'FILE_TYPE' => '',
-  'MULTIPLE_CNT' => '5',
-  'LINK_IBLOCK_ID' => '0',
-  'WITH_DESCRIPTION' => 'N',
-  'SEARCHABLE' => 'N',
-  'FILTRABLE' => 'N',
-  'IS_REQUIRED' => 'N',
-  'VERSION' => '1',
-  'USER_TYPE' => NULL,
-  'USER_TYPE_SETTINGS' => 'a:0:{}',
-  'HINT' => '',
-  'VALUES' => 
-  array (
-    0 => 
-    array (
-      'VALUE' => 'Да',
-      'DEF' => 'Y',
-      'SORT' => '500',
-      'XML_ID' => 'Y',
-    ),
-  ),
-  'FEATURES' => 
-  array (
-    0 => 
-    array (
-      'MODULE_ID' => 'iblock',
-      'FEATURE_ID' => 'DETAIL_PAGE_SHOW',
-      'IS_ENABLED' => 'N',
-    ),
-    1 => 
-    array (
-      'MODULE_ID' => 'iblock',
-      'FEATURE_ID' => 'LIST_PAGE_SHOW',
-      'IS_ENABLED' => 'Y',
-    ),
-  ),
-));
-            $helper->Iblock()->saveProperty($iblockId, array (
-  'NAME' => 'Текст кнопки в списке',
-  'ACTIVE' => 'Y',
-  'SORT' => '300',
-  'CODE' => 'BUTTON_TEXT_LIST',
-  'DEFAULT_VALUE' => '',
-  'PROPERTY_TYPE' => 'S',
-  'ROW_COUNT' => '1',
-  'COL_COUNT' => '30',
-  'LIST_TYPE' => 'L',
-  'MULTIPLE' => 'N',
-  'XML_ID' => NULL,
-  'FILE_TYPE' => '',
-  'MULTIPLE_CNT' => '5',
-  'LINK_IBLOCK_ID' => '0',
-  'WITH_DESCRIPTION' => 'N',
-  'SEARCHABLE' => 'N',
-  'FILTRABLE' => 'N',
-  'IS_REQUIRED' => 'N',
-  'VERSION' => '1',
-  'USER_TYPE' => NULL,
-  'USER_TYPE_SETTINGS' => 'a:0:{}',
-  'HINT' => '',
-  'FEATURES' => 
-  array (
-    0 => 
-    array (
-      'MODULE_ID' => 'iblock',
-      'FEATURE_ID' => 'DETAIL_PAGE_SHOW',
-      'IS_ENABLED' => 'N',
-    ),
-    1 => 
-    array (
-      'MODULE_ID' => 'iblock',
-      'FEATURE_ID' => 'LIST_PAGE_SHOW',
-      'IS_ENABLED' => 'Y',
-    ),
-  ),
-));
-            $helper->Iblock()->saveProperty($iblockId, array (
-  'NAME' => 'Шапка на детальной',
-  'ACTIVE' => 'Y',
-  'SORT' => '400',
-  'CODE' => 'HEADER_TEMPLATE',
-  'DEFAULT_VALUE' => '',
-  'PROPERTY_TYPE' => 'L',
-  'ROW_COUNT' => '1',
-  'COL_COUNT' => '30',
-  'LIST_TYPE' => 'L',
-  'MULTIPLE' => 'N',
-  'XML_ID' => NULL,
-  'FILE_TYPE' => '',
-  'MULTIPLE_CNT' => '5',
-  'LINK_IBLOCK_ID' => '0',
-  'WITH_DESCRIPTION' => 'N',
-  'SEARCHABLE' => 'N',
-  'FILTRABLE' => 'N',
-  'IS_REQUIRED' => 'N',
-  'VERSION' => '1',
-  'USER_TYPE' => NULL,
-  'USER_TYPE_SETTINGS' => 'a:0:{}',
-  'HINT' => '',
-  'VALUES' => 
-  array (
-    0 => 
-    array (
-      'VALUE' => 'Компактная',
-      'DEF' => 'N',
-      'SORT' => '500',
-      'XML_ID' => 'compact',
-    ),
-    1 => 
-    array (
-      'VALUE' => 'С деталями',
-      'DEF' => 'Y',
-      'SORT' => '500',
-      'XML_ID' => 'detailed',
-    ),
-  ),
-  'FEATURES' => 
-  array (
-    0 => 
-    array (
-      'MODULE_ID' => 'iblock',
-      'FEATURE_ID' => 'DETAIL_PAGE_SHOW',
-      'IS_ENABLED' => 'Y',
-    ),
-    1 => 
-    array (
-      'MODULE_ID' => 'iblock',
-      'FEATURE_ID' => 'LIST_PAGE_SHOW',
-      'IS_ENABLED' => 'N',
-    ),
-  ),
-));
-            $helper->Iblock()->saveProperty($iblockId, array (
-  'NAME' => 'Краткие условия на детальной',
+  'NAME' => 'Регион',
   'ACTIVE' => 'Y',
   'SORT' => '500',
-  'CODE' => 'DETAIL_TERMS',
-  'DEFAULT_VALUE' => NULL,
+  'CODE' => 'REGION',
+  'DEFAULT_VALUE' => '',
   'PROPERTY_TYPE' => 'S',
   'ROW_COUNT' => '1',
   'COL_COUNT' => '30',
   'LIST_TYPE' => 'L',
-  'MULTIPLE' => 'Y',
+  'MULTIPLE' => 'N',
   'XML_ID' => NULL,
   'FILE_TYPE' => '',
-  'MULTIPLE_CNT' => '1',
+  'MULTIPLE_CNT' => '5',
   'LINK_IBLOCK_ID' => '0',
   'WITH_DESCRIPTION' => 'N',
   'SEARCHABLE' => 'N',
   'FILTRABLE' => 'N',
   'IS_REQUIRED' => 'N',
   'VERSION' => '1',
-  'USER_TYPE' => 'multiple_field',
+  'USER_TYPE' => 'directory',
   'USER_TYPE_SETTINGS' => 
   array (
-    'COUNT' => 3,
-    'DESCR' => 
-    array (
-      1 => 'Подпись',
-      2 => 'Мелко',
-      3 => 'Крупно',
-    ),
+    'size' => 1,
+    'width' => 0,
+    'group' => 'N',
+    'multiple' => 'N',
+    'TABLE_NAME' => 'regions_data',
   ),
   'HINT' => '',
   'FEATURES' => 
@@ -634,7 +440,7 @@ class Version20241018134055 extends Version
     array (
       'MODULE_ID' => 'iblock',
       'FEATURE_ID' => 'DETAIL_PAGE_SHOW',
-      'IS_ENABLED' => 'Y',
+      'IS_ENABLED' => 'N',
     ),
     1 => 
     array (
@@ -645,10 +451,294 @@ class Version20241018134055 extends Version
   ),
 ));
             $helper->Iblock()->saveProperty($iblockId, array (
-  'NAME' => 'Выводить кнопку на детальной',
+  'NAME' => 'Ипотека',
   'ACTIVE' => 'Y',
-  'SORT' => '600',
-  'CODE' => 'BUTTON_DETAIL',
+  'SORT' => '500',
+  'CODE' => 'MORTGAGE',
+  'DEFAULT_VALUE' => '',
+  'PROPERTY_TYPE' => 'E',
+  'ROW_COUNT' => '1',
+  'COL_COUNT' => '30',
+  'LIST_TYPE' => 'L',
+  'MULTIPLE' => 'Y',
+  'XML_ID' => NULL,
+  'FILE_TYPE' => '',
+  'MULTIPLE_CNT' => '5',
+  'LINK_IBLOCK_ID' => '0',
+  'WITH_DESCRIPTION' => 'N',
+  'SEARCHABLE' => 'N',
+  'FILTRABLE' => 'N',
+  'IS_REQUIRED' => 'N',
+  'VERSION' => '1',
+  'USER_TYPE' => NULL,
+  'USER_TYPE_SETTINGS' => NULL,
+  'HINT' => '',
+));
+            $helper->Iblock()->saveProperty($iblockId, array (
+  'NAME' => 'Объект',
+  'ACTIVE' => 'Y',
+  'SORT' => '500',
+  'CODE' => 'OBJECT',
+  'DEFAULT_VALUE' => '',
+  'PROPERTY_TYPE' => 'L',
+  'ROW_COUNT' => '1',
+  'COL_COUNT' => '30',
+  'LIST_TYPE' => 'L',
+  'MULTIPLE' => 'Y',
+  'XML_ID' => NULL,
+  'FILE_TYPE' => '',
+  'MULTIPLE_CNT' => '5',
+  'LINK_IBLOCK_ID' => '0',
+  'WITH_DESCRIPTION' => 'N',
+  'SEARCHABLE' => 'N',
+  'FILTRABLE' => 'N',
+  'IS_REQUIRED' => 'N',
+  'VERSION' => '1',
+  'USER_TYPE' => NULL,
+  'USER_TYPE_SETTINGS' => NULL,
+  'HINT' => '',
+  'VALUES' => 
+  array (
+    0 => 
+    array (
+      'VALUE' => 'Апартаменты',
+      'DEF' => 'N',
+      'SORT' => '500',
+      'XML_ID' => '389cae42c6ad5cb5eab572c69da947ee',
+    ),
+    1 => 
+    array (
+      'VALUE' => 'Гараж/машино-место',
+      'DEF' => 'N',
+      'SORT' => '500',
+      'XML_ID' => '792df8df7fe7a88fceb6fa147e616bca',
+    ),
+    2 => 
+    array (
+      'VALUE' => 'Доля',
+      'DEF' => 'N',
+      'SORT' => '500',
+      'XML_ID' => '30cffe8e86989f7e325c8a181f1675ea',
+    ),
+    3 => 
+    array (
+      'VALUE' => 'Жилой дом (таунхаус) с земельным участком',
+      'DEF' => 'N',
+      'SORT' => '500',
+      'XML_ID' => '5dd0d168e816579d3aeda87e5b12581c',
+    ),
+    4 => 
+    array (
+      'VALUE' => 'Квартира',
+      'DEF' => 'N',
+      'SORT' => '500',
+      'XML_ID' => '7982bcff8804ad28c63a949c5b254296',
+    ),
+    5 => 
+    array (
+      'VALUE' => 'Комната',
+      'DEF' => 'N',
+      'SORT' => '500',
+      'XML_ID' => '05339defd32fe72619810e40d61e4500',
+    ),
+  ),
+  'FEATURES' => 
+  array (
+    0 => 
+    array (
+      'MODULE_ID' => 'iblock',
+      'FEATURE_ID' => 'DETAIL_PAGE_SHOW',
+      'IS_ENABLED' => 'N',
+    ),
+    1 => 
+    array (
+      'MODULE_ID' => 'iblock',
+      'FEATURE_ID' => 'LIST_PAGE_SHOW',
+      'IS_ENABLED' => 'N',
+    ),
+  ),
+));
+            $helper->Iblock()->saveProperty($iblockId, array (
+  'NAME' => 'Тип заемщика',
+  'ACTIVE' => 'Y',
+  'SORT' => '500',
+  'CODE' => 'BORROWER_TYPE',
+  'DEFAULT_VALUE' => '',
+  'PROPERTY_TYPE' => 'L',
+  'ROW_COUNT' => '1',
+  'COL_COUNT' => '30',
+  'LIST_TYPE' => 'L',
+  'MULTIPLE' => 'Y',
+  'XML_ID' => NULL,
+  'FILE_TYPE' => '',
+  'MULTIPLE_CNT' => '5',
+  'LINK_IBLOCK_ID' => '0',
+  'WITH_DESCRIPTION' => 'N',
+  'SEARCHABLE' => 'N',
+  'FILTRABLE' => 'N',
+  'IS_REQUIRED' => 'N',
+  'VERSION' => '1',
+  'USER_TYPE' => NULL,
+  'USER_TYPE_SETTINGS' => NULL,
+  'HINT' => '',
+  'VALUES' => 
+  array (
+    0 => 
+    array (
+      'VALUE' => 'Держатель зарплатной карты Банка',
+      'DEF' => 'N',
+      'SORT' => '500',
+      'XML_ID' => 'ef756f4e33a3d3869bd34c7020136485',
+    ),
+    1 => 
+    array (
+      'VALUE' => 'Работник организации - стратегического партнера Банка',
+      'DEF' => 'N',
+      'SORT' => '500',
+      'XML_ID' => '90a0b0a0b182985b1fd77d3ea4d05919',
+    ),
+  ),
+  'FEATURES' => 
+  array (
+    0 => 
+    array (
+      'MODULE_ID' => 'iblock',
+      'FEATURE_ID' => 'DETAIL_PAGE_SHOW',
+      'IS_ENABLED' => 'N',
+    ),
+    1 => 
+    array (
+      'MODULE_ID' => 'iblock',
+      'FEATURE_ID' => 'LIST_PAGE_SHOW',
+      'IS_ENABLED' => 'N',
+    ),
+  ),
+));
+            $helper->Iblock()->saveProperty($iblockId, array (
+  'NAME' => 'Мин. стоим. недвиж.',
+  'ACTIVE' => 'Y',
+  'SORT' => '500',
+  'CODE' => 'MIN_PROPERTY_VALUE',
+  'DEFAULT_VALUE' => '',
+  'PROPERTY_TYPE' => 'S',
+  'ROW_COUNT' => '1',
+  'COL_COUNT' => '30',
+  'LIST_TYPE' => 'L',
+  'MULTIPLE' => 'N',
+  'XML_ID' => NULL,
+  'FILE_TYPE' => '',
+  'MULTIPLE_CNT' => '5',
+  'LINK_IBLOCK_ID' => '0',
+  'WITH_DESCRIPTION' => 'N',
+  'SEARCHABLE' => 'N',
+  'FILTRABLE' => 'N',
+  'IS_REQUIRED' => 'N',
+  'VERSION' => '1',
+  'USER_TYPE' => NULL,
+  'USER_TYPE_SETTINGS' => NULL,
+  'HINT' => '',
+));
+            $helper->Iblock()->saveProperty($iblockId, array (
+  'NAME' => 'Макс. стоим. недвиж.',
+  'ACTIVE' => 'Y',
+  'SORT' => '500',
+  'CODE' => 'MAX_PROPERTY_VALUE',
+  'DEFAULT_VALUE' => '',
+  'PROPERTY_TYPE' => 'S',
+  'ROW_COUNT' => '1',
+  'COL_COUNT' => '30',
+  'LIST_TYPE' => 'L',
+  'MULTIPLE' => 'N',
+  'XML_ID' => NULL,
+  'FILE_TYPE' => '',
+  'MULTIPLE_CNT' => '5',
+  'LINK_IBLOCK_ID' => '0',
+  'WITH_DESCRIPTION' => 'N',
+  'SEARCHABLE' => 'N',
+  'FILTRABLE' => 'N',
+  'IS_REQUIRED' => 'N',
+  'VERSION' => '1',
+  'USER_TYPE' => NULL,
+  'USER_TYPE_SETTINGS' => NULL,
+  'HINT' => '',
+));
+            $helper->Iblock()->saveProperty($iblockId, array (
+  'NAME' => 'Зарп. на карту банка',
+  'ACTIVE' => 'Y',
+  'SORT' => '500',
+  'CODE' => 'SALARY_BANK_CARD',
+  'DEFAULT_VALUE' => '',
+  'PROPERTY_TYPE' => 'S',
+  'ROW_COUNT' => '1',
+  'COL_COUNT' => '30',
+  'LIST_TYPE' => 'L',
+  'MULTIPLE' => 'N',
+  'XML_ID' => NULL,
+  'FILE_TYPE' => '',
+  'MULTIPLE_CNT' => '5',
+  'LINK_IBLOCK_ID' => '0',
+  'WITH_DESCRIPTION' => 'N',
+  'SEARCHABLE' => 'N',
+  'FILTRABLE' => 'N',
+  'IS_REQUIRED' => 'N',
+  'VERSION' => '1',
+  'USER_TYPE' => NULL,
+  'USER_TYPE_SETTINGS' => NULL,
+  'HINT' => '',
+));
+            $helper->Iblock()->saveProperty($iblockId, array (
+  'NAME' => 'Мин. срок кредита',
+  'ACTIVE' => 'Y',
+  'SORT' => '500',
+  'CODE' => 'MIN_LOAN_PERIOD',
+  'DEFAULT_VALUE' => '',
+  'PROPERTY_TYPE' => 'S',
+  'ROW_COUNT' => '1',
+  'COL_COUNT' => '30',
+  'LIST_TYPE' => 'L',
+  'MULTIPLE' => 'N',
+  'XML_ID' => NULL,
+  'FILE_TYPE' => '',
+  'MULTIPLE_CNT' => '5',
+  'LINK_IBLOCK_ID' => '0',
+  'WITH_DESCRIPTION' => 'N',
+  'SEARCHABLE' => 'N',
+  'FILTRABLE' => 'N',
+  'IS_REQUIRED' => 'N',
+  'VERSION' => '1',
+  'USER_TYPE' => NULL,
+  'USER_TYPE_SETTINGS' => NULL,
+  'HINT' => '',
+));
+            $helper->Iblock()->saveProperty($iblockId, array (
+  'NAME' => 'Макс. срок кредита',
+  'ACTIVE' => 'Y',
+  'SORT' => '500',
+  'CODE' => 'MAX_LOAN_PERIOD',
+  'DEFAULT_VALUE' => '',
+  'PROPERTY_TYPE' => 'S',
+  'ROW_COUNT' => '1',
+  'COL_COUNT' => '30',
+  'LIST_TYPE' => 'L',
+  'MULTIPLE' => 'N',
+  'XML_ID' => NULL,
+  'FILE_TYPE' => '',
+  'MULTIPLE_CNT' => '5',
+  'LINK_IBLOCK_ID' => '0',
+  'WITH_DESCRIPTION' => 'N',
+  'SEARCHABLE' => 'N',
+  'FILTRABLE' => 'N',
+  'IS_REQUIRED' => 'N',
+  'VERSION' => '1',
+  'USER_TYPE' => NULL,
+  'USER_TYPE_SETTINGS' => NULL,
+  'HINT' => '',
+));
+            $helper->Iblock()->saveProperty($iblockId, array (
+  'NAME' => 'Страховка',
+  'ACTIVE' => 'Y',
+  'SORT' => '500',
+  'CODE' => 'INSURANCE',
   'DEFAULT_VALUE' => '',
   'PROPERTY_TYPE' => 'L',
   'ROW_COUNT' => '1',
@@ -665,277 +755,18 @@ class Version20241018134055 extends Version
   'IS_REQUIRED' => 'N',
   'VERSION' => '1',
   'USER_TYPE' => NULL,
-  'USER_TYPE_SETTINGS' => 'a:0:{}',
+  'USER_TYPE_SETTINGS' => NULL,
   'HINT' => '',
   'VALUES' => 
   array (
     0 => 
     array (
       'VALUE' => 'Да',
-      'DEF' => 'Y',
+      'DEF' => 'N',
       'SORT' => '500',
-      'XML_ID' => 'Y',
+      'XML_ID' => '75dbe89fdfeb02ad563b73a0e3e6e6f2',
     ),
   ),
-  'FEATURES' => 
-  array (
-    0 => 
-    array (
-      'MODULE_ID' => 'iblock',
-      'FEATURE_ID' => 'DETAIL_PAGE_SHOW',
-      'IS_ENABLED' => 'Y',
-    ),
-    1 => 
-    array (
-      'MODULE_ID' => 'iblock',
-      'FEATURE_ID' => 'LIST_PAGE_SHOW',
-      'IS_ENABLED' => 'N',
-    ),
-  ),
-));
-            $helper->Iblock()->saveProperty($iblockId, array (
-  'NAME' => 'Текст кнопки на детальной',
-  'ACTIVE' => 'Y',
-  'SORT' => '700',
-  'CODE' => 'BUTTON_TEXT_DETAIL',
-  'DEFAULT_VALUE' => '',
-  'PROPERTY_TYPE' => 'S',
-  'ROW_COUNT' => '1',
-  'COL_COUNT' => '30',
-  'LIST_TYPE' => 'L',
-  'MULTIPLE' => 'N',
-  'XML_ID' => NULL,
-  'FILE_TYPE' => '',
-  'MULTIPLE_CNT' => '5',
-  'LINK_IBLOCK_ID' => '0',
-  'WITH_DESCRIPTION' => 'N',
-  'SEARCHABLE' => 'N',
-  'FILTRABLE' => 'N',
-  'IS_REQUIRED' => 'N',
-  'VERSION' => '1',
-  'USER_TYPE' => NULL,
-  'USER_TYPE_SETTINGS' => 'a:0:{}',
-  'HINT' => '',
-  'FEATURES' => 
-  array (
-    0 => 
-    array (
-      'MODULE_ID' => 'iblock',
-      'FEATURE_ID' => 'DETAIL_PAGE_SHOW',
-      'IS_ENABLED' => 'Y',
-    ),
-    1 => 
-    array (
-      'MODULE_ID' => 'iblock',
-      'FEATURE_ID' => 'LIST_PAGE_SHOW',
-      'IS_ENABLED' => 'N',
-    ),
-  ),
-));
-            $helper->Iblock()->saveProperty($iblockId, array (
-  'NAME' => 'Заголовок бенефитов',
-  'ACTIVE' => 'Y',
-  'SORT' => '800',
-  'CODE' => 'BENEFITS_HEADER',
-  'DEFAULT_VALUE' => '',
-  'PROPERTY_TYPE' => 'S',
-  'ROW_COUNT' => '1',
-  'COL_COUNT' => '30',
-  'LIST_TYPE' => 'L',
-  'MULTIPLE' => 'N',
-  'XML_ID' => NULL,
-  'FILE_TYPE' => '',
-  'MULTIPLE_CNT' => '5',
-  'LINK_IBLOCK_ID' => '0',
-  'WITH_DESCRIPTION' => 'N',
-  'SEARCHABLE' => 'N',
-  'FILTRABLE' => 'N',
-  'IS_REQUIRED' => 'N',
-  'VERSION' => '1',
-  'USER_TYPE' => NULL,
-  'USER_TYPE_SETTINGS' => 'a:0:{}',
-  'HINT' => '',
-  'FEATURES' => 
-  array (
-    0 => 
-    array (
-      'MODULE_ID' => 'iblock',
-      'FEATURE_ID' => 'DETAIL_PAGE_SHOW',
-      'IS_ENABLED' => 'Y',
-    ),
-    1 => 
-    array (
-      'MODULE_ID' => 'iblock',
-      'FEATURE_ID' => 'LIST_PAGE_SHOW',
-      'IS_ENABLED' => 'N',
-    ),
-  ),
-));
-            $helper->Iblock()->saveProperty($iblockId, array (
-  'NAME' => 'Бенефиты',
-  'ACTIVE' => 'Y',
-  'SORT' => '900',
-  'CODE' => 'BENEFITS',
-  'DEFAULT_VALUE' => '',
-  'PROPERTY_TYPE' => 'E',
-  'ROW_COUNT' => '1',
-  'COL_COUNT' => '30',
-  'LIST_TYPE' => 'L',
-  'MULTIPLE' => 'Y',
-  'XML_ID' => NULL,
-  'FILE_TYPE' => '',
-  'MULTIPLE_CNT' => '5',
-  'LINK_IBLOCK_ID' => 'additional:benefits',
-  'WITH_DESCRIPTION' => 'N',
-  'SEARCHABLE' => 'N',
-  'FILTRABLE' => 'N',
-  'IS_REQUIRED' => 'N',
-  'VERSION' => '1',
-  'USER_TYPE' => NULL,
-  'USER_TYPE_SETTINGS' => 'a:0:{}',
-  'HINT' => '',
-  'FEATURES' => 
-  array (
-    0 => 
-    array (
-      'MODULE_ID' => 'iblock',
-      'FEATURE_ID' => 'DETAIL_PAGE_SHOW',
-      'IS_ENABLED' => 'Y',
-    ),
-    1 => 
-    array (
-      'MODULE_ID' => 'iblock',
-      'FEATURE_ID' => 'LIST_PAGE_SHOW',
-      'IS_ENABLED' => 'N',
-    ),
-  ),
-));
-            $helper->Iblock()->saveProperty($iblockId, array (
-  'NAME' => 'Заголовок сноски',
-  'ACTIVE' => 'Y',
-  'SORT' => '1000',
-  'CODE' => 'QUOTE_HEADER',
-  'DEFAULT_VALUE' => '',
-  'PROPERTY_TYPE' => 'S',
-  'ROW_COUNT' => '1',
-  'COL_COUNT' => '30',
-  'LIST_TYPE' => 'L',
-  'MULTIPLE' => 'N',
-  'XML_ID' => NULL,
-  'FILE_TYPE' => '',
-  'MULTIPLE_CNT' => '5',
-  'LINK_IBLOCK_ID' => '0',
-  'WITH_DESCRIPTION' => 'N',
-  'SEARCHABLE' => 'N',
-  'FILTRABLE' => 'N',
-  'IS_REQUIRED' => 'N',
-  'VERSION' => '1',
-  'USER_TYPE' => NULL,
-  'USER_TYPE_SETTINGS' => 'a:0:{}',
-  'HINT' => '',
-));
-            $helper->Iblock()->saveProperty($iblockId, array (
-  'NAME' => 'Текст сноски',
-  'ACTIVE' => 'Y',
-  'SORT' => '1100',
-  'CODE' => 'QUOTE_TEXT',
-  'DEFAULT_VALUE' => 
-  array (
-    'TEXT' => '',
-    'TYPE' => 'HTML',
-  ),
-  'PROPERTY_TYPE' => 'S',
-  'ROW_COUNT' => '1',
-  'COL_COUNT' => '30',
-  'LIST_TYPE' => 'L',
-  'MULTIPLE' => 'N',
-  'XML_ID' => NULL,
-  'FILE_TYPE' => '',
-  'MULTIPLE_CNT' => '5',
-  'LINK_IBLOCK_ID' => '0',
-  'WITH_DESCRIPTION' => 'N',
-  'SEARCHABLE' => 'N',
-  'FILTRABLE' => 'N',
-  'IS_REQUIRED' => 'N',
-  'VERSION' => '1',
-  'USER_TYPE' => 'HTML',
-  'USER_TYPE_SETTINGS' => 
-  array (
-    'height' => 200,
-  ),
-  'HINT' => '',
-));
-            $helper->Iblock()->saveProperty($iblockId, array (
-  'NAME' => 'Услуги',
-  'ACTIVE' => 'Y',
-  'SORT' => '1200',
-  'CODE' => 'SERVICES',
-  'DEFAULT_VALUE' => '',
-  'PROPERTY_TYPE' => 'E',
-  'ROW_COUNT' => '1',
-  'COL_COUNT' => '30',
-  'LIST_TYPE' => 'L',
-  'MULTIPLE' => 'Y',
-  'XML_ID' => NULL,
-  'FILE_TYPE' => '',
-  'MULTIPLE_CNT' => '5',
-  'LINK_IBLOCK_ID' => '0',
-  'WITH_DESCRIPTION' => 'N',
-  'SEARCHABLE' => 'N',
-  'FILTRABLE' => 'N',
-  'IS_REQUIRED' => 'N',
-  'VERSION' => '1',
-  'USER_TYPE' => NULL,
-  'USER_TYPE_SETTINGS' => 'a:0:{}',
-  'HINT' => '',
-));
-            $helper->Iblock()->saveProperty($iblockId, array (
-  'NAME' => 'Заголовок табов',
-  'ACTIVE' => 'Y',
-  'SORT' => '1300',
-  'CODE' => 'TABS_HEADER',
-  'DEFAULT_VALUE' => '',
-  'PROPERTY_TYPE' => 'S',
-  'ROW_COUNT' => '1',
-  'COL_COUNT' => '30',
-  'LIST_TYPE' => 'L',
-  'MULTIPLE' => 'N',
-  'XML_ID' => NULL,
-  'FILE_TYPE' => '',
-  'MULTIPLE_CNT' => '5',
-  'LINK_IBLOCK_ID' => '0',
-  'WITH_DESCRIPTION' => 'N',
-  'SEARCHABLE' => 'N',
-  'FILTRABLE' => 'N',
-  'IS_REQUIRED' => 'N',
-  'VERSION' => '1',
-  'USER_TYPE' => NULL,
-  'USER_TYPE_SETTINGS' => 'a:0:{}',
-  'HINT' => '',
-));
-            $helper->Iblock()->saveProperty($iblockId, array (
-  'NAME' => 'Табы',
-  'ACTIVE' => 'Y',
-  'SORT' => '1400',
-  'CODE' => 'TABS',
-  'DEFAULT_VALUE' => '',
-  'PROPERTY_TYPE' => 'E',
-  'ROW_COUNT' => '1',
-  'COL_COUNT' => '30',
-  'LIST_TYPE' => 'L',
-  'MULTIPLE' => 'Y',
-  'XML_ID' => NULL,
-  'FILE_TYPE' => '',
-  'MULTIPLE_CNT' => '5',
-  'LINK_IBLOCK_ID' => 'additional:tabs',
-  'WITH_DESCRIPTION' => 'N',
-  'SEARCHABLE' => 'N',
-  'FILTRABLE' => 'N',
-  'IS_REQUIRED' => 'N',
-  'VERSION' => '1',
-  'USER_TYPE' => NULL,
-  'USER_TYPE_SETTINGS' => 'a:0:{}',
-  'HINT' => '',
   'FEATURES' => 
   array (
     0 => 
@@ -952,110 +783,199 @@ class Version20241018134055 extends Version
     ),
   ),
 ));
-            $helper->UserOptions()->saveElementForm($iblockId, array (
-  'Параметры|edit1' => 
-  array (
-    'ID' => 'ID',
-    'DATE_CREATE' => 'Создан',
-    'TIMESTAMP_X' => 'Изменен',
-    'ACTIVE' => 'Активность',
-    'NAME' => 'Название',
-    'CODE' => 'Символьный код',
-    'SORT' => 'Сортировка',
-    'PREVIEW_TEXT' => 'Описание',
-  ),
-  'Список|cedit1' => 
-  array (
-    'PREVIEW_PICTURE' => 'Картинка',
-    'PROPERTY_LIST_TERMS' => 'Краткие условия',
-    'PROPERTY_BUTTON_LIST' => 'Выводить кнопку',
-    'PROPERTY_BUTTON_TEXT_LIST' => 'Текст кнопки',
-  ),
-  'Детальная страница|cedit2' => 
-  array (
-    'PROPERTY_HEADER_TEMPLATE' => 'Шапка',
-    'DETAIL_PICTURE' => 'Картинка',
-    'PROPERTY_DETAIL_TERMS' => 'Краткие условия',
-    'PROPERTY_BUTTON_DETAIL' => 'Выводить кнопку',
-    'PROPERTY_BUTTON_TEXT_DETAIL' => 'Текст кнопки',
-    'cedit2_csection3' => 'Бенефиты',
-    'PROPERTY_BENEFITS_HEADER' => 'Заголовок',
-    'PROPERTY_BENEFITS' => 'Элементы',
-    'cedit2_csection4' => 'Сноска',
-    'PROPERTY_QUOTE_HEADER' => 'Заголовок',
-    'PROPERTY_QUOTE_TEXT' => 'Текст',
-    'cedit2_csection5' => 'Услуги',
-    'PROPERTY_SERVICES' => 'Услуги',
-    'cedit2_csection1' => 'Вкладки',
-    'PROPERTY_TABS_HEADER' => 'Заголовок',
-    'PROPERTY_TABS' => 'Вкладки',
-  ),
+            $helper->Iblock()->saveProperty($iblockId, array (
+  'NAME' => 'Ставка',
+  'ACTIVE' => 'Y',
+  'SORT' => '500',
+  'CODE' => 'INTEREST_RATE',
+  'DEFAULT_VALUE' => '',
+  'PROPERTY_TYPE' => 'S',
+  'ROW_COUNT' => '1',
+  'COL_COUNT' => '30',
+  'LIST_TYPE' => 'L',
+  'MULTIPLE' => 'N',
+  'XML_ID' => NULL,
+  'FILE_TYPE' => '',
+  'MULTIPLE_CNT' => '5',
+  'LINK_IBLOCK_ID' => '0',
+  'WITH_DESCRIPTION' => 'N',
+  'SEARCHABLE' => 'N',
+  'FILTRABLE' => 'N',
+  'IS_REQUIRED' => 'N',
+  'VERSION' => '1',
+  'USER_TYPE' => NULL,
+  'USER_TYPE_SETTINGS' => NULL,
+  'HINT' => '',
 ));
-    $helper->UserOptions()->saveElementGrid($iblockId, array (
-  'views' => 
+            $helper->Iblock()->saveProperty($iblockId, array (
+  'NAME' => 'Мин. сумма кредита',
+  'ACTIVE' => 'Y',
+  'SORT' => '500',
+  'CODE' => 'MIN_LOAN_AMOUNT',
+  'DEFAULT_VALUE' => '',
+  'PROPERTY_TYPE' => 'S',
+  'ROW_COUNT' => '1',
+  'COL_COUNT' => '30',
+  'LIST_TYPE' => 'L',
+  'MULTIPLE' => 'N',
+  'XML_ID' => NULL,
+  'FILE_TYPE' => '',
+  'MULTIPLE_CNT' => '5',
+  'LINK_IBLOCK_ID' => '0',
+  'WITH_DESCRIPTION' => 'N',
+  'SEARCHABLE' => 'N',
+  'FILTRABLE' => 'N',
+  'IS_REQUIRED' => 'N',
+  'VERSION' => '1',
+  'USER_TYPE' => NULL,
+  'USER_TYPE_SETTINGS' => NULL,
+  'HINT' => '',
+));
+            $helper->Iblock()->saveProperty($iblockId, array (
+  'NAME' => 'Макс. сумма кредита',
+  'ACTIVE' => 'Y',
+  'SORT' => '500',
+  'CODE' => 'MAX_LOAN_AMOUNT',
+  'DEFAULT_VALUE' => '',
+  'PROPERTY_TYPE' => 'S',
+  'ROW_COUNT' => '1',
+  'COL_COUNT' => '30',
+  'LIST_TYPE' => 'L',
+  'MULTIPLE' => 'N',
+  'XML_ID' => NULL,
+  'FILE_TYPE' => '',
+  'MULTIPLE_CNT' => '5',
+  'LINK_IBLOCK_ID' => '0',
+  'WITH_DESCRIPTION' => 'N',
+  'SEARCHABLE' => 'N',
+  'FILTRABLE' => 'N',
+  'IS_REQUIRED' => 'N',
+  'VERSION' => '1',
+  'USER_TYPE' => NULL,
+  'USER_TYPE_SETTINGS' => NULL,
+  'HINT' => '',
+));
+            $helper->Iblock()->saveProperty($iblockId, array (
+  'NAME' => 'Мин. сумма кредита (%)',
+  'ACTIVE' => 'Y',
+  'SORT' => '500',
+  'CODE' => 'MIN_LOAN_PERCENTAGE',
+  'DEFAULT_VALUE' => '',
+  'PROPERTY_TYPE' => 'S',
+  'ROW_COUNT' => '1',
+  'COL_COUNT' => '30',
+  'LIST_TYPE' => 'L',
+  'MULTIPLE' => 'N',
+  'XML_ID' => NULL,
+  'FILE_TYPE' => '',
+  'MULTIPLE_CNT' => '5',
+  'LINK_IBLOCK_ID' => '0',
+  'WITH_DESCRIPTION' => 'N',
+  'SEARCHABLE' => 'N',
+  'FILTRABLE' => 'N',
+  'IS_REQUIRED' => 'N',
+  'VERSION' => '1',
+  'USER_TYPE' => NULL,
+  'USER_TYPE_SETTINGS' => NULL,
+  'HINT' => '',
+));
+            $helper->Iblock()->saveProperty($iblockId, array (
+  'NAME' => 'Макс. сумма кредита (%)',
+  'ACTIVE' => 'Y',
+  'SORT' => '500',
+  'CODE' => 'MAX_LOAN_PERCENTAGE',
+  'DEFAULT_VALUE' => '',
+  'PROPERTY_TYPE' => 'S',
+  'ROW_COUNT' => '1',
+  'COL_COUNT' => '30',
+  'LIST_TYPE' => 'L',
+  'MULTIPLE' => 'N',
+  'XML_ID' => NULL,
+  'FILE_TYPE' => '',
+  'MULTIPLE_CNT' => '5',
+  'LINK_IBLOCK_ID' => '0',
+  'WITH_DESCRIPTION' => 'N',
+  'SEARCHABLE' => 'N',
+  'FILTRABLE' => 'N',
+  'IS_REQUIRED' => 'N',
+  'VERSION' => '1',
+  'USER_TYPE' => NULL,
+  'USER_TYPE_SETTINGS' => NULL,
+  'HINT' => '',
+));
+            $helper->Iblock()->saveProperty($iblockId, array (
+  'NAME' => 'Мин. первый взнос (%)',
+  'ACTIVE' => 'Y',
+  'SORT' => '500',
+  'CODE' => 'MIN_DOWN_PAYMENT',
+  'DEFAULT_VALUE' => '',
+  'PROPERTY_TYPE' => 'S',
+  'ROW_COUNT' => '1',
+  'COL_COUNT' => '30',
+  'LIST_TYPE' => 'L',
+  'MULTIPLE' => 'N',
+  'XML_ID' => NULL,
+  'FILE_TYPE' => '',
+  'MULTIPLE_CNT' => '5',
+  'LINK_IBLOCK_ID' => '0',
+  'WITH_DESCRIPTION' => 'N',
+  'SEARCHABLE' => 'N',
+  'FILTRABLE' => 'N',
+  'IS_REQUIRED' => 'N',
+  'VERSION' => '1',
+  'USER_TYPE' => NULL,
+  'USER_TYPE_SETTINGS' => NULL,
+  'HINT' => '',
+));
+            $helper->Iblock()->saveProperty($iblockId, array (
+  'NAME' => 'Население более 1 млн человек',
+  'ACTIVE' => 'Y',
+  'SORT' => '500',
+  'CODE' => 'POPULATION_OVER_1M',
+  'DEFAULT_VALUE' => '',
+  'PROPERTY_TYPE' => 'L',
+  'ROW_COUNT' => '1',
+  'COL_COUNT' => '30',
+  'LIST_TYPE' => 'C',
+  'MULTIPLE' => 'N',
+  'XML_ID' => NULL,
+  'FILE_TYPE' => '',
+  'MULTIPLE_CNT' => '5',
+  'LINK_IBLOCK_ID' => '0',
+  'WITH_DESCRIPTION' => 'N',
+  'SEARCHABLE' => 'N',
+  'FILTRABLE' => 'N',
+  'IS_REQUIRED' => 'N',
+  'VERSION' => '1',
+  'USER_TYPE' => NULL,
+  'USER_TYPE_SETTINGS' => NULL,
+  'HINT' => '',
+  'VALUES' => 
   array (
-    'default' => 
+    0 => 
     array (
-      'columns' => 
-      array (
-        0 => '',
-      ),
-      'columns_sizes' => 
-      array (
-        'expand' => 1,
-        'columns' => 
-        array (
-        ),
-      ),
-      'sticked_columns' => 
-      array (
-      ),
-      'custom_names' => 
-      array (
-      ),
+      'VALUE' => 'Да',
+      'DEF' => 'N',
+      'SORT' => '500',
+      'XML_ID' => '45b420330b20b3823737145bb34982ed',
     ),
   ),
-  'filters' => 
+  'FEATURES' => 
   array (
-  ),
-  'current_view' => 'default',
-));
-    $helper->UserOptions()->saveSectionGrid($iblockId, array (
-  'views' => 
-  array (
-    'default' => 
+    0 => 
     array (
-      'columns' => 
-      array (
-        0 => 'NAME',
-        1 => 'ACTIVE',
-        2 => 'SORT',
-        3 => 'CODE',
-        4 => 'TIMESTAMP_X',
-        5 => 'ID',
-      ),
-      'columns_sizes' => 
-      array (
-        'expand' => 1,
-        'columns' => 
-        array (
-        ),
-      ),
-      'sticked_columns' => 
-      array (
-      ),
-      'custom_names' => 
-      array (
-      ),
-      'last_sort_by' => 'sort',
-      'last_sort_order' => 'asc',
+      'MODULE_ID' => 'iblock',
+      'FEATURE_ID' => 'DETAIL_PAGE_SHOW',
+      'IS_ENABLED' => 'N',
+    ),
+    1 => 
+    array (
+      'MODULE_ID' => 'iblock',
+      'FEATURE_ID' => 'LIST_PAGE_SHOW',
+      'IS_ENABLED' => 'N',
     ),
   ),
-  'filters' => 
-  array (
-  ),
-  'current_view' => 'default',
 ));
-
+    
     }
 }
