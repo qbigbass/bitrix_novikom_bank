@@ -1,7 +1,8 @@
 mixin accordion-item(data, parentId, titleClassList)
     .accordion-item&attributes(attributes)
         .accordion-header
-            button.accordion-button(type="button", class= data.isOpen ? '' : 'collapsed', class= titleClassList && titleClassList, data-bs-toggle="collapse", data-bs-target= `#${data.id}`, aria-expanded= !!data.isOpen, aria-controls= data.id)!= data.title
+            button.accordion-button(type="button", class= data.isOpen ? '' : 'collapsed', data-bs-toggle="collapse", data-bs-target= `#${data.id}`, aria-expanded= !!data.isOpen, aria-controls= data.id)
+                span(class=titleClassList)!= data.title
         .accordion-collapse.collapse(id= data.id, class= data.isOpen ? 'show' : '', data-bs-parent= `#${parentId}`)
             .accordion-body
                 block
