@@ -104,17 +104,18 @@ block content
 
     +banner-text(
         bannerTextData,
-        "green"
+        "green",
+        "bg-heavy-violet"
     )
 
     section.section-layout.px-lg-6
         .container
             .row.row-gap-5.row-gap-md-6.row-gap-lg-7
                 .col-12
-                    .accordion#accordion-insurance-programs
+                    .accordion.accordion--size-lg.accordion--bg-transparent#accordion-insurance-programs
                         each item in accordionList
-                            +accordion-item(item, 'accordion-insurance-programs', 'fw-bold h4 bg-transparent py-4 py-md-5 py-lg-6').bg-transparent
-                                .pt-0.pt-lg-2.ms-n3.ms-lg-n4.d-flex.flex-column.gap-4.gap-md-5.gap-lg-7
+                            +accordion-item(item, 'accordion-insurance-programs', 'fw-bold h4')
+                                .d-flex.flex-column.gap-4.gap-md-5.gap-lg-7
                                     p.text-l.mb-0.dark-100!= item.content
                                     if item.programDetail
                                         div
