@@ -3,7 +3,7 @@ mixin card-img(data, bgColor="bg-purple-10")
         if data.imageSrc
             .card-img__image-container.flex-shrink-0
                 img.card-img__image.w-100.h-auto(src= `img/${data.imageSrc}`, alt= data.title, loading="lazy")
-        .card__content.d-flex.flex-column.gap-3.pb-4.pb-md-6.py-md-6.pe-md-6.px-3.px-md-0
+        .card-img__content.d-flex.flex-column.gap-3.pb-4.pb-md-6.py-md-6.pe-md-6.px-3.px-md-0
             if data.title
                 h4.card-img__title!= data.title
             block
