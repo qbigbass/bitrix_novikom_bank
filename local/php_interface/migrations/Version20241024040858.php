@@ -2,11 +2,11 @@
 
 namespace Sprint\Migration;
 
-class Version20241022181953 extends Version
+class Version20241024040858 extends Version
 {
     protected $author = "vimbatu@gmail.com";
 
-    protected $description   = "Бенефиты";
+    protected $description   = "Вкладки элементы";
 
     protected $moduleVersion = "4.15.1";
 
@@ -24,7 +24,7 @@ class Version20241022181953 extends Version
              ->execute(function ($item) {
                  $this->getHelperManager()
                       ->Iblock()
-                      ->saveElement(
+                      ->addElement(
                           $item['iblock_id'],
                           $item['fields'],
                           $item['properties']
@@ -39,17 +39,5 @@ class Version20241022181953 extends Version
      */
     public function down()
     {
-        $this->getExchangeManager()
-             ->IblockElementsImport()
-             ->setExchangeResource('iblock_elements.xml')
-             ->setLimit(10)
-             ->execute(function ($item) {
-                 $this->getHelperManager()
-                      ->Iblock()
-                      ->deleteElementByCode(
-                          $item['iblock_id'],
-                          $item['fields']['CODE']
-                 );
-             });
     }
 }
