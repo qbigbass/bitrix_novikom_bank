@@ -4,7 +4,8 @@
     "dev": "webpack --mode development",
     "watch": "webpack --mode development --watch",
     "start": "webpack-dev-server --mode development --open",
-    "build": "webpack --mode production"
+    "build": "webpack --mode development",
+    "prod": "webpack --mode production"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
