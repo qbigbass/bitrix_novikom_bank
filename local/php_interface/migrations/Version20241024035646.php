@@ -3,13 +3,13 @@
 namespace Sprint\Migration;
 
 
-class Version20241018132154 extends Version
+class Version20241024035646 extends Version
 {
     protected $author = "vimbatu@gmail.com";
 
-    protected $description = "Инфоблок необходимые документы";
+    protected $description = "Реструктуризация инфоблок";
 
-    protected $moduleVersion = "4.12.6";
+    protected $moduleVersion = "4.15.1";
 
     /**
      * @throws Exceptions\HelperException
@@ -19,7 +19,7 @@ class Version20241018132154 extends Version
     {
         $helper = $this->getHelperManager();
         $helper->Iblock()->saveIblockType(array (
-  'ID' => 'additional',
+  'ID' => 'for_private_clients_ru',
   'SECTIONS' => 'Y',
   'EDIT_FILE_BEFORE' => '',
   'EDIT_FILE_AFTER' => '',
@@ -29,34 +29,34 @@ class Version20241018132154 extends Version
   array (
     'ru' => 
     array (
-      'NAME' => 'Дополнительно',
+      'NAME' => 'Частным клиентам',
       'SECTION_NAME' => '',
       'ELEMENT_NAME' => '',
     ),
     'en' => 
     array (
-      'NAME' => 'Additional',
+      'NAME' => 'For private clients',
       'SECTION_NAME' => '',
       'ELEMENT_NAME' => '',
     ),
   ),
 ));
         $iblockId = $helper->Iblock()->saveIblock(array (
-  'IBLOCK_TYPE_ID' => 'additional',
+  'IBLOCK_TYPE_ID' => 'for_private_clients_ru',
   'LID' => 
   array (
     0 => 's1',
     1 => 's2',
   ),
-  'CODE' => 'documents',
-  'API_CODE' => 'documents',
+  'CODE' => 'restructuring',
+  'API_CODE' => 'restructuring',
   'REST_ON' => 'N',
-  'NAME' => 'Необходимые документы',
+  'NAME' => 'Реструктуризация',
   'ACTIVE' => 'Y',
   'SORT' => '500',
-  'LIST_PAGE_URL' => '',
-  'DETAIL_PAGE_URL' => '',
-  'SECTION_PAGE_URL' => '',
+  'LIST_PAGE_URL' => '#SITE_DIR#/loans/restructuring/',
+  'DETAIL_PAGE_URL' => '#SITE_DIR#/loans/restructuring/#SECTION_CODE#/#ELEMENT_CODE#',
+  'SECTION_PAGE_URL' => '#SITE_DIR#/loans/restructuring/#SECTION_CODE#',
   'CANONICAL_PAGE_URL' => '',
   'PICTURE' => NULL,
   'DESCRIPTION' => '',
@@ -73,7 +73,7 @@ class Version20241018132154 extends Version
   'WORKFLOW' => 'N',
   'BIZPROC' => 'N',
   'SECTION_CHOOSER' => 'L',
-  'LIST_MODE' => 'C',
+  'LIST_MODE' => '',
   'RIGHTS_MODE' => 'S',
   'SECTION_PROPERTY' => 'N',
   'PROPERTY_INDEX' => 'N',
@@ -84,16 +84,16 @@ class Version20241018132154 extends Version
   'EDIT_FILE_AFTER' => '',
   'SECTIONS_NAME' => 'Разделы',
   'SECTION_NAME' => 'Раздел',
-  'ELEMENTS_NAME' => 'Документы',
-  'ELEMENT_NAME' => 'Документ',
+  'ELEMENTS_NAME' => 'Элементы',
+  'ELEMENT_NAME' => 'Элемент',
   'EXTERNAL_ID' => NULL,
   'LANG_DIR' => '/en/',
   'IPROPERTY_TEMPLATES' => 
   array (
   ),
-  'ELEMENT_ADD' => 'Добавить документ',
-  'ELEMENT_EDIT' => 'Изменить документ',
-  'ELEMENT_DELETE' => 'Удалить документ',
+  'ELEMENT_ADD' => 'Добавить элемент',
+  'ELEMENT_EDIT' => 'Изменить элемент',
+  'ELEMENT_DELETE' => 'Удалить элемент',
   'SECTION_ADD' => 'Добавить раздел',
   'SECTION_EDIT' => 'Изменить раздел',
   'SECTION_DELETE' => 'Удалить раздел',
@@ -237,11 +237,11 @@ class Version20241018132154 extends Version
   'CODE' => 
   array (
     'NAME' => 'Символьный код',
-    'IS_REQUIRED' => 'N',
+    'IS_REQUIRED' => 'Y',
     'DEFAULT_VALUE' => 
     array (
-      'UNIQUE' => 'N',
-      'TRANSLITERATION' => 'N',
+      'UNIQUE' => 'Y',
+      'TRANSLITERATION' => 'Y',
       'TRANS_LEN' => 100,
       'TRANS_CASE' => 'L',
       'TRANS_SPACE' => '-',
@@ -344,11 +344,11 @@ class Version20241018132154 extends Version
   'SECTION_CODE' => 
   array (
     'NAME' => 'Символьный код',
-    'IS_REQUIRED' => 'N',
+    'IS_REQUIRED' => 'Y',
     'DEFAULT_VALUE' => 
     array (
-      'UNIQUE' => 'N',
-      'TRANSLITERATION' => 'N',
+      'UNIQUE' => 'Y',
+      'TRANSLITERATION' => 'Y',
       'TRANS_LEN' => 100,
       'TRANS_CASE' => 'L',
       'TRANS_SPACE' => '-',
@@ -404,15 +404,337 @@ class Version20241018132154 extends Version
     $helper->Iblock()->saveGroupPermissions($iblockId, array (
   'administrators' => 'X',
 ));
-        $helper->UserOptions()->saveElementForm($iblockId, array (
+        $helper->Iblock()->saveProperty($iblockId, array (
+  'NAME' => 'Верхняя сноска',
+  'ACTIVE' => 'Y',
+  'SORT' => '100',
+  'CODE' => 'QUOTE_TEXT',
+  'DEFAULT_VALUE' => 
+  array (
+    'TYPE' => 'TEXT',
+    'TEXT' => '',
+  ),
+  'PROPERTY_TYPE' => 'S',
+  'ROW_COUNT' => '1',
+  'COL_COUNT' => '30',
+  'LIST_TYPE' => 'L',
+  'MULTIPLE' => 'N',
+  'XML_ID' => NULL,
+  'FILE_TYPE' => '',
+  'MULTIPLE_CNT' => '5',
+  'LINK_IBLOCK_ID' => '0',
+  'WITH_DESCRIPTION' => 'N',
+  'SEARCHABLE' => 'N',
+  'FILTRABLE' => 'N',
+  'IS_REQUIRED' => 'N',
+  'VERSION' => '1',
+  'USER_TYPE' => 'HTML',
+  'USER_TYPE_SETTINGS' => 
+  array (
+    'height' => 200,
+  ),
+  'HINT' => '',
+  'FEATURES' => 
+  array (
+    0 => 
+    array (
+      'MODULE_ID' => 'iblock',
+      'FEATURE_ID' => 'DETAIL_PAGE_SHOW',
+      'IS_ENABLED' => 'Y',
+    ),
+    1 => 
+    array (
+      'MODULE_ID' => 'iblock',
+      'FEATURE_ID' => 'LIST_PAGE_SHOW',
+      'IS_ENABLED' => 'N',
+    ),
+  ),
+));
+            $helper->Iblock()->saveProperty($iblockId, array (
+  'NAME' => 'Нижняя сноска',
+  'ACTIVE' => 'Y',
+  'SORT' => '200',
+  'CODE' => 'QUOTE_TEXT_BOTTOM',
+  'DEFAULT_VALUE' => 
+  array (
+    'TYPE' => 'TEXT',
+    'TEXT' => '',
+  ),
+  'PROPERTY_TYPE' => 'S',
+  'ROW_COUNT' => '1',
+  'COL_COUNT' => '30',
+  'LIST_TYPE' => 'L',
+  'MULTIPLE' => 'N',
+  'XML_ID' => NULL,
+  'FILE_TYPE' => '',
+  'MULTIPLE_CNT' => '2',
+  'LINK_IBLOCK_ID' => '0',
+  'WITH_DESCRIPTION' => 'N',
+  'SEARCHABLE' => 'N',
+  'FILTRABLE' => 'N',
+  'IS_REQUIRED' => 'N',
+  'VERSION' => '1',
+  'USER_TYPE' => 'HTML',
+  'USER_TYPE_SETTINGS' => 
+  array (
+    'height' => 200,
+  ),
+  'HINT' => '',
+  'FEATURES' => 
+  array (
+    0 => 
+    array (
+      'MODULE_ID' => 'iblock',
+      'FEATURE_ID' => 'DETAIL_PAGE_SHOW',
+      'IS_ENABLED' => 'Y',
+    ),
+    1 => 
+    array (
+      'MODULE_ID' => 'iblock',
+      'FEATURE_ID' => 'LIST_PAGE_SHOW',
+      'IS_ENABLED' => 'N',
+    ),
+  ),
+));
+            $helper->Iblock()->saveProperty($iblockId, array (
+  'NAME' => 'Заголовок бенефитов',
+  'ACTIVE' => 'Y',
+  'SORT' => '300',
+  'CODE' => 'BENEFITS_HEADER',
+  'DEFAULT_VALUE' => '',
+  'PROPERTY_TYPE' => 'S',
+  'ROW_COUNT' => '1',
+  'COL_COUNT' => '30',
+  'LIST_TYPE' => 'L',
+  'MULTIPLE' => 'N',
+  'XML_ID' => NULL,
+  'FILE_TYPE' => '',
+  'MULTIPLE_CNT' => '5',
+  'LINK_IBLOCK_ID' => '0',
+  'WITH_DESCRIPTION' => 'N',
+  'SEARCHABLE' => 'N',
+  'FILTRABLE' => 'N',
+  'IS_REQUIRED' => 'N',
+  'VERSION' => '1',
+  'USER_TYPE' => NULL,
+  'USER_TYPE_SETTINGS' => 'a:0:{}',
+  'HINT' => '',
+  'FEATURES' => 
+  array (
+    0 => 
+    array (
+      'MODULE_ID' => 'iblock',
+      'FEATURE_ID' => 'DETAIL_PAGE_SHOW',
+      'IS_ENABLED' => 'Y',
+    ),
+    1 => 
+    array (
+      'MODULE_ID' => 'iblock',
+      'FEATURE_ID' => 'LIST_PAGE_SHOW',
+      'IS_ENABLED' => 'N',
+    ),
+  ),
+));
+            $helper->Iblock()->saveProperty($iblockId, array (
+  'NAME' => 'Бенефиты',
+  'ACTIVE' => 'Y',
+  'SORT' => '400',
+  'CODE' => 'BENEFITS',
+  'DEFAULT_VALUE' => '',
+  'PROPERTY_TYPE' => 'E',
+  'ROW_COUNT' => '1',
+  'COL_COUNT' => '30',
+  'LIST_TYPE' => 'L',
+  'MULTIPLE' => 'Y',
+  'XML_ID' => NULL,
+  'FILE_TYPE' => '',
+  'MULTIPLE_CNT' => '5',
+  'LINK_IBLOCK_ID' => 'additional:benefits',
+  'WITH_DESCRIPTION' => 'N',
+  'SEARCHABLE' => 'N',
+  'FILTRABLE' => 'N',
+  'IS_REQUIRED' => 'N',
+  'VERSION' => '1',
+  'USER_TYPE' => NULL,
+  'USER_TYPE_SETTINGS' => 'a:0:{}',
+  'HINT' => '',
+  'FEATURES' => 
+  array (
+    0 => 
+    array (
+      'MODULE_ID' => 'iblock',
+      'FEATURE_ID' => 'DETAIL_PAGE_SHOW',
+      'IS_ENABLED' => 'Y',
+    ),
+    1 => 
+    array (
+      'MODULE_ID' => 'iblock',
+      'FEATURE_ID' => 'LIST_PAGE_SHOW',
+      'IS_ENABLED' => 'N',
+    ),
+  ),
+));
+            $helper->Iblock()->saveProperty($iblockId, array (
+  'NAME' => 'Заголовок этапов',
+  'ACTIVE' => 'Y',
+  'SORT' => '500',
+  'CODE' => 'STEPS_HEADER',
+  'DEFAULT_VALUE' => '',
+  'PROPERTY_TYPE' => 'S',
+  'ROW_COUNT' => '1',
+  'COL_COUNT' => '30',
+  'LIST_TYPE' => 'L',
+  'MULTIPLE' => 'N',
+  'XML_ID' => NULL,
+  'FILE_TYPE' => '',
+  'MULTIPLE_CNT' => '5',
+  'LINK_IBLOCK_ID' => '0',
+  'WITH_DESCRIPTION' => 'N',
+  'SEARCHABLE' => 'N',
+  'FILTRABLE' => 'N',
+  'IS_REQUIRED' => 'N',
+  'VERSION' => '1',
+  'USER_TYPE' => NULL,
+  'USER_TYPE_SETTINGS' => 'a:0:{}',
+  'HINT' => '',
+));
+            $helper->Iblock()->saveProperty($iblockId, array (
+  'NAME' => 'Этапы',
+  'ACTIVE' => 'Y',
+  'SORT' => '600',
+  'CODE' => 'STEPS',
+  'DEFAULT_VALUE' => '',
+  'PROPERTY_TYPE' => 'S',
+  'ROW_COUNT' => '5',
+  'COL_COUNT' => '50',
+  'LIST_TYPE' => 'L',
+  'MULTIPLE' => 'Y',
+  'XML_ID' => NULL,
+  'FILE_TYPE' => '',
+  'MULTIPLE_CNT' => '3',
+  'LINK_IBLOCK_ID' => '0',
+  'WITH_DESCRIPTION' => 'Y',
+  'SEARCHABLE' => 'N',
+  'FILTRABLE' => 'N',
+  'IS_REQUIRED' => 'N',
+  'VERSION' => '1',
+  'USER_TYPE' => NULL,
+  'USER_TYPE_SETTINGS' => 'a:0:{}',
+  'HINT' => '',
+  'FEATURES' => 
+  array (
+    0 => 
+    array (
+      'MODULE_ID' => 'iblock',
+      'FEATURE_ID' => 'DETAIL_PAGE_SHOW',
+      'IS_ENABLED' => 'Y',
+    ),
+    1 => 
+    array (
+      'MODULE_ID' => 'iblock',
+      'FEATURE_ID' => 'LIST_PAGE_SHOW',
+      'IS_ENABLED' => 'N',
+    ),
+  ),
+));
+            $helper->Iblock()->saveProperty($iblockId, array (
+  'NAME' => 'Заголовок табов',
+  'ACTIVE' => 'Y',
+  'SORT' => '700',
+  'CODE' => 'TABS_HEADER',
+  'DEFAULT_VALUE' => '',
+  'PROPERTY_TYPE' => 'S',
+  'ROW_COUNT' => '1',
+  'COL_COUNT' => '30',
+  'LIST_TYPE' => 'L',
+  'MULTIPLE' => 'N',
+  'XML_ID' => NULL,
+  'FILE_TYPE' => '',
+  'MULTIPLE_CNT' => '5',
+  'LINK_IBLOCK_ID' => '0',
+  'WITH_DESCRIPTION' => 'N',
+  'SEARCHABLE' => 'N',
+  'FILTRABLE' => 'N',
+  'IS_REQUIRED' => 'N',
+  'VERSION' => '1',
+  'USER_TYPE' => NULL,
+  'USER_TYPE_SETTINGS' => 'a:0:{}',
+  'HINT' => '',
+  'FEATURES' => 
+  array (
+    0 => 
+    array (
+      'MODULE_ID' => 'iblock',
+      'FEATURE_ID' => 'DETAIL_PAGE_SHOW',
+      'IS_ENABLED' => 'Y',
+    ),
+    1 => 
+    array (
+      'MODULE_ID' => 'iblock',
+      'FEATURE_ID' => 'LIST_PAGE_SHOW',
+      'IS_ENABLED' => 'N',
+    ),
+  ),
+));
+            $helper->Iblock()->saveProperty($iblockId, array (
+  'NAME' => 'Табы',
+  'ACTIVE' => 'Y',
+  'SORT' => '800',
+  'CODE' => 'TABS',
+  'DEFAULT_VALUE' => '',
+  'PROPERTY_TYPE' => 'E',
+  'ROW_COUNT' => '1',
+  'COL_COUNT' => '30',
+  'LIST_TYPE' => 'L',
+  'MULTIPLE' => 'Y',
+  'XML_ID' => NULL,
+  'FILE_TYPE' => '',
+  'MULTIPLE_CNT' => '5',
+  'LINK_IBLOCK_ID' => 'additional:tabs',
+  'WITH_DESCRIPTION' => 'N',
+  'SEARCHABLE' => 'N',
+  'FILTRABLE' => 'N',
+  'IS_REQUIRED' => 'N',
+  'VERSION' => '1',
+  'USER_TYPE' => NULL,
+  'USER_TYPE_SETTINGS' => 'a:0:{}',
+  'HINT' => '',
+  'FEATURES' => 
+  array (
+    0 => 
+    array (
+      'MODULE_ID' => 'iblock',
+      'FEATURE_ID' => 'DETAIL_PAGE_SHOW',
+      'IS_ENABLED' => 'Y',
+    ),
+    1 => 
+    array (
+      'MODULE_ID' => 'iblock',
+      'FEATURE_ID' => 'LIST_PAGE_SHOW',
+      'IS_ENABLED' => 'N',
+    ),
+  ),
+));
+            $helper->UserOptions()->saveElementForm($iblockId, array (
   'Параметры|edit1' => 
   array (
     'ID' => 'ID',
     'ACTIVE' => 'Активность',
     'NAME' => 'Название',
+    'CODE' => 'Символьный код',
     'SORT' => 'Сортировка',
-    'PREVIEW_TEXT' => 'Дополнительное описание',
-    'DETAIL_TEXT' => 'Сноска',
+    'IBLOCK_ELEMENT_PROP_VALUE' => 'Сноски',
+    'PROPERTY_QUOTE_TEXT' => 'Верхняя сноска',
+    'PROPERTY_QUOTE_TEXT_BOTTOM' => 'Нижняя сноска',
+    'edit1_csection1' => 'Бенефиты',
+    'PROPERTY_BENEFITS_HEADER' => 'Заголовок',
+    'PROPERTY_BENEFITS' => 'Бенефиты',
+    'edit1_csection2' => 'Табы',
+    'PROPERTY_TABS_HEADER' => 'Заголовок',
+    'PROPERTY_TABS' => 'Табы',
+    'edit1_csection3' => 'Этапы',
+    'PROPERTY_STEPS_HEADER' => 'Заголовок',
+    'PROPERTY_STEPS' => 'Этапы',
   ),
 ));
     $helper->UserOptions()->saveElementGrid($iblockId, array (
