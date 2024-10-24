@@ -10,7 +10,7 @@
     left: .5rem;
     right: .5rem;
     bottom: .5rem;
-    z-index: 10;
+    z-index: 1100;
 
     @include use-media(tablet) {
         bottom: 1rem;
