@@ -47,6 +47,8 @@ $display-font-sizes: (
         6: 1.125rem
 );
 
+$enable-negative-margins: true !default;
+
 $font-family-open-sans: 'Open Sans', sans-serif;
 .font-roboto {
     font-family: 'Roboto Condensed', sans-serif;

@@ -1,4 +1,4 @@
-import $ from "jquery";
+import $ from "../vendors/jquery.min";
 
 const POLYGON_CLASSES = {
     root: '.js-polygon-container',
