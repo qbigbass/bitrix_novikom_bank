@@ -1,0 +1,133 @@
+extends ../templates/base
+
+block title
+    title= 'Программы страхования'
+    meta(name="description" content="Описание страницы с программами страхования")
+block content
+    -
+        var bannerTextData = {
+            title: "Программы <br>страхования",
+            breadcrumbsArray: [
+                {linkText: "Частным клиентам", link: "/"},
+                {linkText: "Услуги", link: "/"}
+            ],
+            description: "",
+        }
+
+        var accordionList = [
+            {
+                id: 11,
+                title: 'Страхование от укуса клеща',
+                content: 'Компания «Абсолют Страхование» предоставляет возможность застраховаться от укуса клеща или укуса клеща и иных животных (кроме насекомых) самому и застраховать детей. Возможно приобрести полис, гарантирующий организацию и оплату амбулаторно-поликлинических и стационарных медицинских услуг Застрахованному лицу.',
+                linkList: [
+                    {
+                        href: '#',
+                        text: 'Страхование от укуса клеща «Антиклещ»',
+                        dateTime: '12.12.23 18:56',
+                        fileType: 'PDF',
+                        classSize: 'text-m'
+                    },
+                ],
+                linkListTitle: 'Подробнее о программе',
+                programDetail: {
+                    title: 'Основные параметры программы:',
+                    list: [
+                        'сумма страховой защиты: от 100 000 до 200 000 рублей',
+                        'срок страхования: 1 год',
+                        'стоимость полиса: от 336 до 480 рублей',
+                        'можно застраховать до 4 человек в одном полисе'
+                    ]
+                },
+                isOpen: true
+            },
+            {
+                id: 12,
+                title: 'Страхование рисков вирусного заболевания семейства коронавирусов «Против вирусов»',
+                content: '',
+            },
+            {
+                id: 13,
+                title: 'Страхование ОСАГО',
+                content: '',
+            },
+            {
+                id: 14,
+                title: 'Страхование от несчастных случаев',
+                content: '',
+            },
+            {
+                id: 15,
+                title: 'Страхование имущества',
+                content: '',
+            },
+            {
+                id: 16,
+                title: 'Комплексное страхование',
+                content: '',
+            },
+            {
+                id: 17,
+                title: 'Страхование держателей банковских карт «МультиКарта»',
+                content: '',
+            },
+            {
+                id: 18,
+                title: 'Страхование рисков держателей банковских карт',
+                content: '',
+            },
+            {
+                id: 19,
+                title: 'Страхование от несчастных случаев. Дети',
+                content: '',
+            },
+            {
+                id: 20,
+                title: 'Страхование на случай недобровольной потери работы',
+                content: '',
+            },
+            {
+                id: 21,
+                title: 'Страхование от несчастных случаев (Расширенная программа)',
+                content: '',
+            },
+            {
+                id: 22,
+                title: 'Страхование от несчастного случая и потери работы',
+                content: '',
+            },
+        ]
+
+    include ../includes/header/header
+    include ../components/document-download
+    include ../components/ui/accordion-item
+    include ../components/banners/banner-text
+
+    +banner-text(
+        bannerTextData,
+        "green",
+        "bg-heavy-violet"
+    )
+
+    section.section-layout.px-lg-6
+        .container
+            .row.row-gap-5.row-gap-md-6.row-gap-lg-7
+                .col-12
+                    .accordion.accordion--size-lg.accordion--bg-transparent#accordion-insurance-programs
+                        each item in accordionList
+                            +accordion-item(item, 'accordion-insurance-programs', 'fw-bold h4')
+                                .d-flex.flex-column.gap-4.gap-md-5.gap-lg-7
+                                    p.text-l.mb-0.dark-100!= item.content
+                                    if item.programDetail
+                                        div
+                                            .text-l.fw-semibold.mb-3!= item.programDetail.title
+                                            ul.list.list--size-l
+                                                each listItem in item.programDetail.list
+                                                    li!=listItem
+                                    if item.linkList
+                                        div
+                                            if item.linkListTitle
+                                                .text-l.fw-bold.mb-3!= item.linkListTitle
+                                            .link-list
+                                                each link in item.linkList
+                                                    +document-download(link)
+        +pattern-bg('section-2', 'light', 'pattern-bg--position-sm-top')

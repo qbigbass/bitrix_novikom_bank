@@ -1,0 +1,244 @@
+extends ../templates/base
+
+block title
+    title= 'Биометрическая идентификация'
+    meta(name="description" content="Описание страницы с биометрической идентификацией")
+block content
+    -
+        var bannerTextData = {
+            title: "Биометрическая идентификация",
+            breadcrumbsArray: [
+                {linkText: "Частным клиентам", link: "/"},
+                {linkText: "Услуги", link: "/"}
+            ],
+            description: "",
+            isSmallTitle: true
+        }
+
+        var allBenefits = [
+            {
+                spriteData: {
+                    name: 'icon-a-bank',
+                    classList: 'size-xl',
+                },
+                description: 'Возможность получать финансовые услуги дистанционно&nbsp;и&nbsp;в&nbsp;удобное время',
+            },
+            {
+                spriteData: {
+                    name: 'icon-a-prices',
+                    classList: 'size-xl',
+                },
+                description: 'Безопасность данных',
+            },
+            {
+                spriteData: {
+                    name: 'icon-a-money',
+                    classList: 'size-xl',
+                },
+                description: 'Не требуются бумажные документы',
+            },
+            {
+                spriteData: {
+                    name: 'icon-a-money',
+                    classList: 'size-xl',
+                },
+                description: 'Услуга бесплатная',
+            },
+            {
+                spriteData: {
+                    name: 'icon-a-money',
+                    classList: 'size-xl',
+                },
+                description: 'Регистрация в системе является добровольной',
+            }
+        ]
+
+        var allSteps = [
+            {
+                text: "Вы можете сдать биометрические данные в ближайшем <a class='link text-decoration-underline' target='_blank' href='#'>отделении банка</a>, которое работает с биометрией."
+            },
+            {
+                text: "При себе необходимо иметь паспорт гражданина РФ и СНИЛС."
+            },
+            {
+                text: "Процедура занимает несколько минут: оператор сделает Вашу фотографию и произведет запись голоса."
+            },
+            {
+                text: "Впоследствии Вы сможете пользоваться банковскими сервисами в любом месте и в любое время, вне зависимости от графика работы отделений."
+            },
+        ]
+
+        var linkDownloadList = [
+            {
+                href: "#",
+                text: "Договор банковского обслуживания",
+                dateTime: "12.12.23 18:56",
+                fileType: "PDF",
+                classSize: 'text-m'
+            },
+            {
+                href: "#",
+                text: "Сборник тарифов на обслуживание физических лиц",
+                dateTime: "12.12.23 18:56",
+                fileType: "PDF",
+                classSize: 'text-m'
+            },
+        ]
+
+        var cardBenefitData = {
+            title: 'Защита от мошенников',
+            description: 'Узнайте как уберечь себя и своих близких <br>от финансового мошенничества.',
+            sprite: {
+                name: 'icon-a-protection',
+                classList: 'size-md-xxl'
+            },
+            link: '#'
+        }
+
+        var allCardsImg = [
+            {
+                title: "Мобильное приложение",
+                imageSrc: "img-cards/img-card-1.png"
+            },
+            {
+                title: "Интернет-банк",
+                imageSrc: "img-cards/img-card-2.png"
+            }
+        ]
+
+    include ../includes/header/header
+    include ../cards/card-benefit
+    include ../cards/card-img
+    include ../components/document-download
+    include ../components/ui/tabs
+    include ../components/ui/pagination
+    include ../components/banners/banner-text
+    include ../components/benefit
+    include ../components/stepper
+
+    +banner-text(
+        bannerTextData,
+        "green"
+    )
+
+    section.section-layout.pb-0.px-lg-6
+        .container
+            .row.row-gap-5.row-gap-md-6.row-gap-lg-7
+                .col-12
+                    h3 Идентификация с использованием Единой биометрической системы
+                .col-12
+                    p.text-l.m-0 С помощью биометрической идентификации физические лица могут получать финансовые услуги дистанционно, подтвердив свою личность с помощью биометрических персональных данных: изображения лица и голоса.
+    
+    section.section-layout.px-lg-6
+        .container
+            .row.mb-6.mb-lg-7
+                h3 Преимущества
+            .row.row-gap-6
+                each item, index in allBenefits
+                    if index === allBenefits.length - 1
+                        .col-12.d-md-none.order-1
+                            a(
+                                data-bs-toggle="collapse"
+                                href="#biometric-more-benefits"
+                                role="button"
+                                aria-expanded="false"
+                                aria-controls="biometric-more-benefits"
+                            ).d-flex.gap-2.align-items-center.justify-content-center.violet-100.text-m.fw-bold
+                                | Ещё преимущества
+                                +svg-use("icon-chevron-down", "icon size-m")
+                        #biometric-more-benefits.col-12.col-md-6.col-lg-4.collapse.d-md-block
+                            +benefit(item.spriteData, item.title)
+                                span!= item.description
+                    else
+                        .col-12.col-md-6.col-lg-4
+                            +benefit(item.spriteData, item.title)
+                                span!= item.description
+
+    section.section-layout.bg-dark-10.px-lg-6
+        .container
+            .row
+                .d-none.d-md-flex.justify-content-between
+                    h3.h3
+                        | Как и где можно сдать биометрические данные в Единую Биометрическую систему?
+                a(
+                    data-bs-toggle="collapse"
+                    href="#biometric-steps-content"
+                    role="button"
+                    aria-expanded="false"
+                    aria-controls="biometric-steps-content"
+                ).h3.d-flex.align-items-center.justify-content-between.dark-100.d-md-none
+                    | Как и где можно сдать биометрические данные в Единую Биометрическую систему?
+                    +svg-use("icon-chevron-down", "icon size-m violet-100")
+            #biometric-steps-content.collapse.d-md-block.mt-6.mt-lg-7
+                +stepper(allSteps, allSteps.length)
+
+    section.section-layout.px-lg-6
+        .container
+            .row.row-gap-5.row-gap-md-6.row-gap-lg-7
+                .col-12
+                    h3 Как проверить регистрацию в Единой биометрической системе?
+                .col-12
+                    p.text-l.mb-4 Вы можете проверить статус учетной записи:
+                    ul.list.list--size-l
+                        li На портале «Госуслуги» (сайт или мобильное приложение)
+                        li В мобильном приложении «Биометрия»
+
+    section.section-layout.bg-dark-10
+        .container
+            .row.row-gap-5.row-gap-md-6.row-gap-lg-7.px-lg-6
+                .col-12
+                    h3 Как воспользоваться сервисом удаленной идентификации в банке Новиком?
+                .col-12
+                    p.text-l.mb-4 Это возможно, если Вы еще не являетесь клиентом банка Новиком и уже сдали биометрические данные в Единую Биометрическую систему.
+                    p.text-l.m-0 При удаленной идентификации Вы сможете открыть текущий счет, получить доступ для регистрации в системе дистанционного банковского обслуживания банка Новиком и далее пользоваться услугами Банка (открыть вклад, получить кредит, совершать платежи и переводы).
+                .col-12
+                    h4.fw-bold Порядок действий:
+            .row.mt-6.row-gap-6
+                .col-12.col-xl-6
+                    +card-img(allCardsImg[0], "bg-white")
+                        ul.list.list--size-l
+                            li
+                                span Установите мобильное приложение банка Новиком, следуя <a class='link text-decoration-underline' target='_blank' href='#'>инструкции</a>
+                            li Проверьте, что на Ваш телефон установлено приложение «Биометрия»
+                            li Откройте мобильное приложение банка Новиком и нажмите на кнопку «Регистрация через Госуслуги»
+                            li Подтвердите свою личность с помощью&nbsp;Единой биометрической системы (это несложно, просто следуйте&nbsp;подсказкам системы)
+                            li Заполните анкету
+                            li Подтвердите открытие текущего счета
+                .col-12.col-xl-6
+                    +card-img(allCardsImg[1], "bg-white")
+                        ul.list.list--size-l
+                            li 
+                                span Установите плагин КриптоПро CSP 5.0 (<a class='link text-decoration-underline' target='_blank' href='#'>скачать</a>)
+                            li 
+                                span Установите Яндекс Браузер - версия 19.3 или выше (<a class='link text-decoration-underline' target='_blank' href='#'>скачать</a>) и настройте его (<a class='link text-decoration-underline' target='_blank' href='#'>инструкция по настройке</a>)
+                            li 
+                                span Откройте <a class='link text-decoration-underline' target='_blank' href='#'>Интернет-банк</a>
+                            li Нажмите на кнопку «Регистрация через Госуслуги»
+                            li Подтвердите свою личность с помощью&nbsp;Единой биометрической системы (это несложно, просто следуйте&nbsp;подсказкам системы)
+                            li Заполните Анкету
+                            li Подтвердите открытие текущего счета
+
+    section.section-layout.px-lg-6
+        .container
+            .row
+                .d-none.d-md-flex.justify-content-between
+                    h3.h3
+                        | Тарифы и документы
+                a(
+                    data-bs-toggle="collapse"
+                    href="#biometric-documents-content"
+                    role="button"
+                    aria-expanded="false"
+                    aria-controls="biometric-documents-content"
+                ).h3.d-flex.align-items-center.justify-content-between.dark-100.d-md-none
+                    | Тарифы и документы
+                    +svg-use("icon-chevron-down", "icon size-m violet-100")
+            #biometric-documents-content.collapse.d-md-block.mt-6.mt-lg-7
+                .row.row-gap-6
+                    .col-12.col-xxl-8.pe-xxl-6
+                        each link in linkDownloadList
+                            +document-download(link)
+
+                    .col-12.col-xxl-4
+                        +card-benefit(cardBenefitData)
+        +pattern-bg('section-2', 'light', 'pattern-bg--position-sm-top')

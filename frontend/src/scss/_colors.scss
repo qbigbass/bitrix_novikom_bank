@@ -102,6 +102,10 @@
 .purple-150 { color: var(--purple-150); }
 .purple-200 { color: var(--purple-200); }
 
+.bg-purple-10 {
+	background-color: var(--purple-10);
+}
+
 //BLUE
 .blue-10 { color: var(--blue-10); }
 .blue-30 { color: var(--blue-30); }
@@ -120,6 +124,10 @@
 
 .bg-heavy-purple {
 	background: linear-gradient(222deg, #101317 20%, #5A2375 80%);
+}
+
+.bg-heavy-violet {
+	background: linear-gradient(222.24deg, #101317 20%, #6655A2 80%);
 }
 
 

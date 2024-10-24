@@ -1,0 +1,11 @@
+.card-img {
+    border-radius: 0.75rem;
+
+    &__image-container {
+        width: 100%;
+
+        @include use-media(mobile) {
+            width: 15rem;
+        }
+    }
+}
