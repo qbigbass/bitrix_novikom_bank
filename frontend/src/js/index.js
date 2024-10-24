@@ -1,6 +1,6 @@
 // import '../scss/style.scss';
 // Import all of Bootstrap's JS
-import * as bootstrap from 'bootstrap'
+// import * as bootstrap from 'bootstrap'
 import initPolygonContainer from './components/polygon-container.js'
 import initDropdownMenu from './components/dropDownMenu.js'
 import {setVh} from "./utils";

@@ -23,13 +23,25 @@ function generateHtmlPlugins(templateDir) {
 const htmlPlugins = generateHtmlPlugins('./src/pug/views');
 
 const config = {
-    entry: ['./src/js/index.js', './src/scss/style.scss'],
+    entry: {
+        // jquery: './src/js/vendors/jquery.min.js',
+        // popover: './src/js/vendors/popover.js',
+        // 'bootstrap.bundle': './src/js/vendors/bootstrap.min.js',
+        // 'swiper.bundle': './src/js/vendors/swiper.min.js',
+        // 'select2.bundle': './src/js/vendors/select2.min.js',
+        bundle: './src/js/index.js',
+        bootstrap: './src/scss/bootstrap.scss',
+        swiper: './src/scss/swiper.scss',
+        select2: './src/scss/select2.scss',
+        all: './src/scss/all.scss',
+    },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: './js/bundle.js'
+        filename: './js/[name].js'
     },
-    devtool: 'source-map',
-    mode: 'production',
+    // devtool: 'source-map',
+    // mode: 'production',
+    mode: 'development',
     module: {
         rules: [
             {
@@ -71,15 +83,23 @@ const config = {
         },
         hot: true,
     },
+    // optimization: {
+    //     minimize: false,
+    //     minimizer: []
+    // },
     plugins: [
         new MiniCssExtractPlugin({
-            filename: './css/all.css'
+            filename: './css/[name].css',
         }),
         new CopyWebpackPlugin({
             patterns: [
                 {
                     from: './src/img',
                     to: './img'
+                },
+                {
+                    from: './src/js/vendors',
+                    to: './js'
                 }
             ]
         })
@@ -87,11 +107,15 @@ const config = {
 };
 
 module.exports = (env, argv) => {
-    if (argv.mode === 'production') {
-        config.plugins.push(new CleanWebpackPlugin({
-            root: __dirname,
-            verbose: false,
-        }));
-    }
+    // if (argv.mode === 'production') {
+    //     config.plugins.push(new CleanWebpackPlugin({
+    //         root: __dirname,
+    //         verbose: false,
+    //     }));
+    // }
+    config.plugins.push(new CleanWebpackPlugin({
+        root: __dirname,
+        verbose: false,
+    }));
     return config;
 };
