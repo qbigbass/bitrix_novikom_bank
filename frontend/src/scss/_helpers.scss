@@ -104,7 +104,12 @@
     }
 
     & th, td {
-        padding: 1.5rem 2.5rem;
+        padding: 1.5rem .5rem;
+
+        @include use-media(tablet) {
+            padding-left: 1.25rem;
+            padding-right: 1.25rem;
+        }
 
         &:first-child {
             padding-left: 0;
@@ -112,3 +117,6 @@
     }
 }
 
+.tooltip-inner {
+    box-shadow: 0 8px 32px 0 rgba(60, 60, 71, 0.30);
+}
