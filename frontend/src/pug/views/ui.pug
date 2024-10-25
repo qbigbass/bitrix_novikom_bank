@@ -183,7 +183,7 @@ block content
         .container
             .d-flex.flex-column.row-gap-5
                 h2 DropDown
-                .row.row-gap-4.gap-md-0.row-gap-md-4(style="height: 384px")
+                .row.row-gap-4.gap-md-0.row-gap-md-4(style="height: 200px")
                     .col-12.col-md-6.col-xl-3
                         .dropdown
                             button.btn.btn-sm.btn-primary.dropdown-toggle(type="button", data-bs-toggle="dropdown", aria-expanded="false")
@@ -193,32 +193,7 @@ block content
                                     a.dropdown-item.fw-bold(href="#") Для частных лиц
                                 li
                                     a.dropdown-item.fw-bold(href="#") Для организаций
-                    .col-12.col-md-6.col-xl-3
-                        ul.dropdown-menu.show
-                            li
-                                a.dropdown-item.fw-bold(href="#") Для частных лиц
-                            li
-                                a.dropdown-item.fw-bold(href="#") Для организаций
-                            li
-                                a.dropdown-item.fw-bold(href="#") Для организаций
-                            li
-                                a.dropdown-item.fw-bold(href="#") Для организаций
-                            li
-                                a.dropdown-item.fw-bold(href="#") Для организаций
-                            li
-                                a.dropdown-item.fw-bold(href="#") Для организаций
-                            li
-                                a.dropdown-item.fw-bold(href="#") Для организаций
-                            li
-                                a.dropdown-item.fw-bold(href="#") Для организаций
-                            li
-                                a.dropdown-item.fw-bold(href="#") Для организаций
-                            li
-                                a.dropdown-item.fw-bold(href="#") Для организаций
-                            li
-                                a.dropdown-item.fw-bold(href="#") Для организаций
-                            li
-                                a.dropdown-item.fw-bold(href="#") Для организаций
+
     section#chip.section-layout.pt-0
         .container
             .d-flex.flex-column.row-gap-5
@@ -286,13 +261,13 @@ block content
             .d-flex.flex-column.row-gap-5
                 h2 Tab panel & Tab item
                 .row.row-gap-4.gap-md-0.row-gap-md-4
-                    .col-8
+                    .col-12.col-lg-8
                         +tabs(
                             tabsList,
                             "",
                             ""
                         )
-                    .col-4
+                    .col-12.col-lg-4
                         ul.tabs-panel__list.nav.nav-tabs.d-inline-flex.flex-nowrap.w-auto.p-0.border.border-purple.rounded
                             li.w-auto.tabs-panel__list-item.nav-item.z-2
                                 a.tabs-panel__list-item-link.nav-link.bg-transparent.active(aria-current="page" href=tabsList[0].link)= tabsList[0].linkText
@@ -880,7 +855,7 @@ block content
             .d-flex.flex-column.row-gap-5
                 h2 Checkbox / Radio
 
-                .row
+                .row.row-gap-3
                     .col-12.col-md-6.col-xl-3
                         .form-check
                             input#inp10(type="checkbox" value="").form-check-input
@@ -901,7 +876,7 @@ block content
                             input#inp13(type="checkbox" value="" disabled).form-check-input
                             label(for="inp13").form-check-label
                                 | Страхование
-                .row
+                .row.row-gap-3
                     .col-12.col-md-6.col-xl-3
                         .form-check.form-check--size-small
                             input#inp15(type="checkbox" value="").form-check-input
@@ -922,7 +897,7 @@ block content
                             input#inp18(type="checkbox" value="" disabled).form-check-input
                             label(for="inp18").form-check-label
                                 | Страхование
-                .row
+                .row.row-gap-3
                     .col-12.col-md-6.col-xl-3
                         .d-flex.flex-column.row-gap-2
                             .form-check
