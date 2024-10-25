@@ -196,6 +196,19 @@ h6, .h6 {
     }
 }
 
+.link-hint {
+    color: var(--blue-100);
+    text-decoration: underline dashed currentColor;
+    text-underline-offset: .25rem;
+    white-space: nowrap;
+
+    &:hover,
+    &:active {
+        color: var(--purple-100);
+        text-decoration: none;
+    }
+}
+
 
 // Lists
 .list {
