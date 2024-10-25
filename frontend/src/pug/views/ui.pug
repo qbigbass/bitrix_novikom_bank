@@ -39,6 +39,7 @@ block content
     include ../components/helper
     include ../components/stepper
     include ../components/banners/banner-product-info
+    include ../components/ui/input/input-slider
     include ../cards/card-text
     include ../cards/card-product-list
     include ../cards/card-product
@@ -1103,3 +1104,112 @@ block content
                         +svg-use('icon-chevron-right-small', 'icon size-m')
                 .col-12.col-xxl-4
                     +card-help(cardHelpData)
+    section#close-button.section-layout.pt-0
+        .container
+            .row.px-lg-6
+                .col-12.col-md-6
+                    h3.mb-4.mb-md-6.mb-lg-7
+                        | Close button
+                    button(type="button" aria-label="Close").btn-close
+    section#collapse.section-layout.pt-0
+        .container
+            .row.px-lg-6
+                .col-12
+                    h3.mb-4.mb-md-6.mb-lg-7
+                        | Collapse
+            .row.row-gap-4.px-lg-6
+                .col-12.col-md-6
+                    p
+                        button(type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample").btn.btn-primary
+                            | Toggle width collapse
+                    div(style="min-height: 140px;")
+                        div#collapseWidthExample.collapse.collapse-horizontal
+                            div(style="width: 300px;").card.card-body
+                                | This is some placeholder content for a horizontal collapse. It&apos;s hidden by default and shown when triggered.
+                .col-12.col-md-6
+                    p
+                        button(type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample1" aria-expanded="false" aria-controls="collapseWidthExample1").btn.btn-primary
+                            | Toggle height collapse
+                        div()
+                            div#collapseWidthExample1.collapse
+                                div.card.card-body
+                                    | This is some placeholder content for a horizontal collapse. It&apos;s hidden by default and shown when triggered.
+    section#range.section-layout.pt-0
+        .container
+            .row.px-lg-6
+                .col-12
+                    h3.mb-4.mb-md-6.mb-lg-7
+                        | Range
+            .row.px-lg-6
+                .col-12.col-md-6
+                    +input-slider({
+                        label: 'Сумма кредита',
+                        id: 'amount-credit',
+                        maxValue: 5000000,
+                        minValue: 20000,
+                        startValue: 1000000,
+                        stepSize: 5000,
+                        type: "price",
+                        editable: true
+                    },)
+    section#tooltips.section-layout.pt-0
+        .container
+            .row.px-lg-6
+                .col-12
+                    h3.mb-4.mb-md-6.mb-lg-7
+                        | Tooltips
+            .row.px-lg-6
+                .col-12.col-lg-6
+                    p.muted Текст-заполнитель для демонстрации некоторых
+                        |
+                        |
+                        a.link-hint(href="#" data-bs-toggle="tooltip" data-bs-title="подсказок по умолчанию") встроенных ссылок
+                        |
+                        | с подсказками. Теперь это просто наполнитель, а не убийца. Контент размещен здесь только для того, чтобы имитировать присутствие
+                        |
+                        |
+                        a.link-hint(href="#" data-bs-toggle="tooltip" data-bs-title="Другая всплывающая подсказка") настоящего текста
+                        | . И все это только для того, чтобы дать вам представление о том, как будут выглядеть всплывающие подсказки при использовании в реальных ситуациях. Итак, надеюсь, теперь вы увидели, как эти всплывающие
+                        |
+                        |
+                        a.link-hint(href="#" data-bs-toggle="tooltip" data-bs-title="Еще одна здесь тоже") подсказки для ссылок
+                        |
+                        | могут работать на практике, после того, как вы используете их на
+                        |
+                        |
+                        a.link-hint(href="#" data-bs-toggle="tooltip" data-bs-title="Последний совет!") своем
+                        |
+                        | сайте или проекте.
+
+    section#table.section-layout.pt-0
+        .container
+            .row.px-lg-6
+                .col-12
+                    h3.mb-4.mb-md-6.mb-lg-7
+                        | Tables
+            .row.px-lg-6
+                .col-12.col-lg-6
+                    table.table
+                        thead
+                            tr
+                                th(scope="col") #
+                                th(scope="col") First
+                                th(scope="col") Last
+                                th(scope="col") Handle
+                        tbody
+                            tr
+                                th(scope="row") 1
+                                td Mark
+                                td Otto
+                                td @mdo
+                            tr
+                                th(scope="row") 2
+                                td Jacob
+                                td Thornton
+                                td @fat
+                            tr
+                                th(scope="row") 3
+                                td(colspan="2") Larry the Bird
+                                td @twitter
+
+
