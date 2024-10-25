@@ -31,14 +31,14 @@ $elements = Sprint\Editor\Blocks\IblockElements::getList($block, [
                             <button type="button" class="swiper-button-prev js-swiper-prev">
                                 <span class="a-icon size-m">
                                     <svg>
-                                        <use xlink:href="/frontend/build/assets/svg-sprite.svg#icon-chevron-left"></use>
+                                        <use xlink:href="/frontend/dist/assets/svg-sprite.svg#icon-chevron-left"></use>
                                     </svg>
                                 </span>
                             </button>
                             <button type="button" class="swiper-button-next js-swiper-next">
                                 <span class="a-icon size-m">
                                     <svg>
-                                        <use xlink:href="/frontend/build/assets/svg-sprite.svg#icon-chevron-right"></use>
+                                        <use xlink:href="/frontend/dist/assets/svg-sprite.svg#icon-chevron-right"></use>
                                     </svg>
                                 </span>
                             </button>
