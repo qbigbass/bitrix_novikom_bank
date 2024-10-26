@@ -44,7 +44,7 @@ foreach ($block['elements'] as $element) {
                         </span>
                         <span class="a-icon a-button__icon">
                             <svg>
-                                <use xlink:href="/frontend/build/assets/svg-sprite.svg#icon-chevron-down"></use>
+                                <use xlink:href="/frontend/dist/assets/svg-sprite.svg#icon-chevron-down"></use>
                             </svg>
                         </span>
                     </button>
@@ -53,8 +53,8 @@ foreach ($block['elements'] as $element) {
         </div>
     </div>
     <picture class="pattern-bg">
-        <source srcset="/frontend/build/assets/patterns/section/pattern-light-s.svg" media="(max-width: 767px)">
-        <source srcset="/frontend/build/assets/patterns/section/pattern-light-m.svg" media="(max-width: 1199px)">
-        <img src="/frontend/build/assets/patterns/section/pattern-light-l.svg" alt="bg pattenr" loading="lazy">
+        <source srcset="/frontend/dist/assets/patterns/section/pattern-light-s.svg" media="(max-width: 767px)">
+        <source srcset="/frontend/dist/assets/patterns/section/pattern-light-m.svg" media="(max-width: 1199px)">
+        <img src="/frontend/dist/assets/patterns/section/pattern-light-l.svg" alt="bg pattenr" loading="lazy">
     </picture>
 </section>

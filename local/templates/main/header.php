@@ -1,20 +1,32 @@
 <?php
 if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die();
+
 global $APPLICATION;
+
 use Bitrix\Main\Localization\Loc;
-use \Bitrix\Main\Page\Asset;
+use Bitrix\Main\Page\Asset;
 
-Asset::getInstance()->addJs('/frontend/dist/js/bundle.js');
-Asset::getInstance()->addCss('/frontend/dist/css/all.css');
+$asset = Asset::getInstance();
+$asset->addCss('/frontend/dist/css/bootstrap.css');
+$asset->addCss('/frontend/dist/css/select2.css');
+$asset->addCss('/frontend/dist/css/swiper.css');
+$asset->addCss('/frontend/dist/css/all.css');
+$asset->addJs('/frontend/dist/js/bootstrap.js');
+$asset->addJs('/frontend/dist/js/bundle.js');
+$asset->addJs('/frontend/dist/js/jquery.min.js');
+$asset->addJs('/frontend/dist/js/popover.js');
+$asset->addJs('/frontend/dist/js/select2.js');
+$asset->addJs('/frontend/dist/js/swiper.js');
+$asset->addJs('/frontend/dist/js/all.js');
+
 ?>
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/svg+xml" href="/frontend/build/favicon.svg">
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico">
     <title><?php $APPLICATION->ShowTitle();?></title>
     <?php $APPLICATION->ShowHead();?>
 </head>
@@ -113,4 +125,4 @@ Asset::getInstance()->addCss('/frontend/dist/css/all.css');
             </div>
         </div>
     </header>
-    <!-- #WORK_AREA# --------------------------------------------------------------------------------------------------- -->
+<!-- #WORK_AREA# --------------------------------------------------------------------------------------------------- -->

@@ -13,7 +13,7 @@
                         <h3 class="headline-2"><?=$block['block_heading']?></h3>
                         <span class="a-icon a-accordion-header__icon size-m">
                             <svg>
-                                <use  xlink:href="/frontend/build/assets/svg-sprite.svg#icon-chevron-down"></use>
+                                <use xlink:href="/frontend/dist/assets/svg-sprite.svg#icon-chevron-down"></use>
                             </svg>
                         </span>
                     </button>
@@ -33,14 +33,14 @@
                                         <button class="a-tab-nav-button js-a-tab-prev is-prev">
                                             <span class="a-icon size-m">
                                                 <svg>
-                                                    <use  xlink:href="/frontend/build/assets/svg-sprite.svg#icon-chevron-left"></use>
+                                                    <use xlink:href="/frontend/dist/assets/svg-sprite.svg#icon-chevron-left"></use>
                                                 </svg>
                                             </span>
                                         </button>
                                         <button class="a-tab-nav-button js-a-tab-next is-next">
                                             <span class="a-icon size-m">
                                                 <svg>
-                                                    <use  xlink:href="/frontend/build/assets/svg-sprite.svg#icon-chevron-right"></use>
+                                                    <use xlink:href="/frontend/dist/assets/svg-sprite.svg#icon-chevron-right"></use>
                                                 </svg>
                                             </span>
                                         </button>

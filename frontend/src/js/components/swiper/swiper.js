@@ -105,7 +105,7 @@ export function initSwiperMenu() {
         }
     });
 
-    // init Swiper
+    // init SwiperMin
     swiper.init();
 }
 
@@ -207,45 +207,6 @@ export function initCardSlider() {
         };
 
         new Swiper(slider, options);
-
-        // new Swiper(slider, {
-        //     modules: [Pagination, Navigation],
-        //     slidesPerView: 1,
-        //     spaceBetween: 8,
-        //     watchSlidesProgress: true,
-        //     pagination: {
-        //         el: ".js-swiper-pagination",
-        //         type: "bullets",
-        //         clickable: true,
-        //     },
-        //     navigation: {
-        //         prevEl: ".js-swiper-prev",
-        //         nextEl: ".js-swiper-next",
-        //     },
-        //     breakpoints: {
-        //         768: {
-        //             slidesPerView: 2,
-        //             spaceBetween: 16,
-        //         },
-        //         1200: {
-        //             pagination: false,
-        //             spaceBetween: 40,
-        //             slidesPerView: 2,
-        //         },
-        //         1600: {
-        //             spaceBetween: 40,
-        //             slidesPerView: 3,
-        //         }
-        //     },
-        //     on: {
-        //         init: function () {
-        //             setTabIndex(this.slides);
-        //         },
-        //         slideChange: function () {
-        //             setTabIndex(this.slides);
-        //         },
-        //     },
-        // });
     })
 }
 

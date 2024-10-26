@@ -1,7 +1,0 @@
-@use 'sass:map';
-@import "placeholders";
-
-/** Обертка задающая ширину контента и выравнивающая его по центру по горизонтали */
-.content-container {
-	@extend %content-container;
-}
