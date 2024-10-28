@@ -48,7 +48,7 @@ function getAnswer(string $json) : array {
         <?$APPLICATION->IncludeComponent(
             "bitrix:form.result.new",
             "questions",
-            Array(
+            [
                 "CACHE_TIME" => "3600",
                 "CACHE_TYPE" => "N",
                 "CHAIN_ITEM_LINK" => "",
@@ -61,12 +61,12 @@ function getAnswer(string $json) : array {
 //                "AJAX_OPTION_JUMP" => "Y",
                 "USE_EXTENDED_ERRORS" => "Y",
                 "SUCCESS_URL" => "",
-                "VARIABLE_ALIASES" => Array(
+                "VARIABLE_ALIASES" => [
                     "RESULT_ID" => "RESULT_ID",
                     "WEB_FORM_ID" => "WEB_FORM_ID"
-                ),
+                ],
                 "WEB_FORM_ID" => "1"
-            )
+            ]
         );?>
     </div>
 </div>
