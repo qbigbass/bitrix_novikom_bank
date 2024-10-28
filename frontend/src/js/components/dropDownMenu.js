@@ -1,4 +1,4 @@
-import $ from 'jquery';
+import $ from "../vendors/jquery.min";
 
 const MENU_CLASSES = {
     links: '.js-dropdown-link',
