@@ -10,6 +10,22 @@
 /** @var string $templateFolder */
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
+
+$terms = [
+    'RATE' => [
+        'SIGN' => 'Минимальная ставка',
+        'FROM_TO' => 'от&nbsp;',
+    ],
+    'SUM_TO' => [
+        'SIGN' => 'Максимальная сумма кредита',
+        'FROM_TO' => 'до&nbsp;',
+    ],
+    'PERIOD_TO' => [
+        'SIGN' => 'Максимальный срок выплаты',
+        'FROM_TO' => 'до&nbsp;',
+    ]
+];
+
 ?>
 
 <div class="banner-product banner-product--heavy-violet">
@@ -19,25 +35,26 @@
                 <?$APPLICATION->IncludeComponent(
                     "bitrix:breadcrumb",
                     "",
-                    Array(
+                    [
                         "PATH" => "",
                         "SITE_ID" => "s1",
                         "START_FROM" => "0"
-                    )
+                    ]
                 );?>
                 <h1><?= $arResult["~NAME"] ?></h1>
                 <p class="banner-product__subtitle"><?= $arResult["~PREVIEW_TEXT"] ?></p>
             </div>
             <img class="banner-product__image" src="<?= $arResult["DETAIL_PICTURE"]["SRC"] ?>" alt="<?= $arResult["DETAIL_PICTURE"]["ALT"] ?>" loading="lazy">
-            <? if ($arResult['PROPERTIES']['DETAIL_TERMS']['VALUE_FORMATTED']) { ?>
+            <? if (!empty($arResult['PROPERTIES']['TERMS'])) { ?>
                 <div class="banner-product__benefits-list">
-                    <? foreach ($arResult['PROPERTIES']['DETAIL_TERMS']['VALUE_FORMATTED'] as $term) { ?>
+                    <? $termsValues = processTerms($terms, $arResult['PROPERTIES']['TERMS']);
+                    foreach ($termsValues as $term) { ?>
                         <div class="d-inline-flex flex-column row-gap-2">
                             <div class="d-inline-flex flex-nowrap align-items-baseline text-l fw-semibold gap-1 green-100">
-                                <?= !empty($term["Мелко"]) ? "<span>{$term["Мелко"]}</span>" : '' ?>
-                                <?= !empty($term["Крупно"]) ? "<span class='text-number-l fw-bold text-nowrap'>{$term["Крупно"]}</span>" : '' ?>
+                                <span><?= $term['FROM_TO'] ?></span>
+                                <span class='text-number-l fw-bold text-nowrap'><?= $term['VALUE'] ?></span>
                             </div>
-                            <?= !empty($term["Подпись"]) ? "<span class='d-block'>{$term["Подпись"]}</span>" : '' ?>
+                            <span class='d-block'><?= $term['SIGN'] ?></span>
                         </div>
                     <? } ?>
                 </div>

@@ -19,8 +19,7 @@ if (file_exists($headerFilePath)) {
     include($headerFilePath);
 } else {
     echo "Шаблон шапки $headerTemplate не найден";
-}
-?>
+}?>
 
 <? if ($arResult['PROPERTIES']['BENEFITS']['VALUE'] && $arResult['PROPERTIES']['BENEFITS_HEADER']['VALUE']) { ?>
     <section class="section-restructuring-benefits px-0 px-lg-6 py-6 py-sm-9 py-md-11 py-xl-16 position-relative overflow-hidden">
@@ -84,70 +83,45 @@ if (file_exists($headerFilePath)) {
     </section>
 <? } ?>
 
-<? if ($arResult['PROPERTIES']['SERVICES']['VALUE']) {
-    foreach ($arResult['PROPERTIES']['SERVICES']['VALUE'] as $serviceId) {
-        if (isset($arResult['ELEMENTS_PROPERTIES'][$serviceId])) {
-            $service = $arResult['ELEMENTS_PROPERTIES'][$serviceId] ?>
-            <section class="section-layout py-lg-11 bg-blue-10">
-                <div class="container">
-                    <div class="banner-product-info ps-lg-6">
-                        <div class="banner-product-info__header">
-                            <div class="tag tag--outline"><span class="tag__content text-s fw-semibold">Услуга</span><span class="tag__triangle">
-                                      <svg width="14" height="21" viewBox="0 0 14 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M13.5 19.3486L0.934259 0.5H13.5V19.3486Z"></path>
-                                      </svg></span></div>
-                            <h3><?= $service->name ?? '' ?></h3>
-                        </div>
-                        <div class="banner-product-info__body">
-                            <p class="text-l m-0"><?= $service->previewText ?? '' ?></p>
-                            <a class="btn btn-lg-lg btn-outline-primary fw-bold w-100 w-md-auto mt-6 mt-lg-7" href="#">Подробнее</a>
-                        </div>
-                        <div class="banner-product-info__image">
-                            <div class="polygon-container js-polygon-container">
-                                <div class="polygon-container__content"><img src="<?= CFile::GetPath($service->previewPicture ?? '') ?>" alt="" loading="lazy">
-                                </div>
-                                <div class="polygon-container__polygon js-polygon-container-polygon purple-70">
-                                    <svg class="js-polygon-container-svg" xmlns="http://www.w3.org/2000/svg">
-                                        <polygon points="2,2 335,2 335,394 295,434 2,434" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="10"></polygon>
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <picture class="pattern-bg pattern-bg--position-sm-bottom">
-                    <source srcset="/frontend/dist/img/patterns/section-heavy/pattern-light-s.svg" media="(max-width: 767px)">
-                    <source srcset="/frontend/dist/img/patterns/section-heavy/pattern-light-m.svg" media="(max-width: 1199px)"><img src="/frontend/dist/img/patterns/section-heavy/pattern-light-l.svg" alt="bg pattern" loading="lazy">
-                </picture>
-            </section>
-        <? }
-    } ?>
-
-    <!-- TODO: Временная секция пока не готовы услуги, не забыть удалить -->
+<? if ($arResult['PROPERTIES']['TEXT_BLOCK_HEADER']['VALUE'] && $arResult['PROPERTIES']['TEXT_BLOCK']['VALUE']) { ?>
     <section class="section-layout py-lg-11 bg-blue-10">
         <div class="container">
             <div class="banner-product-info ps-lg-6">
                 <div class="banner-product-info__header">
-                    <div class="tag tag--outline"><span class="tag__content text-s fw-semibold">Услуга</span><span class="tag__triangle">
-                          <svg width="14" height="21" viewBox="0 0 14 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M13.5 19.3486L0.934259 0.5H13.5V19.3486Z"></path>
-                          </svg></span></div>
-                    <h3>Как получить кредит</h3>
+                    <? if ($arResult['PROPERTIES']['TEXT_BLOCK_TAG']['VALUE']) { ?>
+                        <div class="tag tag--outline">
+                            <span class="tag__content text-s fw-semibold"><?= $arResult['PROPERTIES']['TEXT_BLOCK_TAG']['VALUE'] ?></span>
+                            <span class="tag__triangle">
+                                  <svg width="14" height="21" viewBox="0 0 14 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M13.5 19.3486L0.934259 0.5H13.5V19.3486Z"></path>
+                                  </svg>
+                            </span>
+                        </div>
+                    <? } ?>
+                    <h3><?= $arResult['PROPERTIES']['TEXT_BLOCK_HEADER']['~VALUE'] ?></h3>
                 </div>
                 <div class="banner-product-info__body">
-                    <p class="text-l m-0">Обратиться в&nbsp;офис Банка с&nbsp;необходимым пакетом документов. Клиенты, получающие заработную плату на&nbsp;счет в&nbsp;банке Новиком, могут оформить заявку на&nbsp;территории своей организации.</p><a class="btn btn-lg-lg btn-outline-primary fw-bold w-100 w-md-auto mt-6 mt-lg-7" href="#">Подробнее</a>
+                    <p class="text-l m-0"><?= $arResult['PROPERTIES']['TEXT_BLOCK']['VALUE']['TEXT'] ?></p>
+                    <? if ($arResult['PROPERTIES']['TEXT_BLOCK_BUTTON']['VALUE'] && $arResult['PROPERTIES']['TEXT_BLOCK_BUTTON_LINK']['VALUE']) { ?>
+                        <a class="btn btn-lg-lg btn-outline-primary fw-bold w-100 w-md-auto mt-6 mt-lg-7" href="<?= $arResult['PROPERTIES']['TEXT_BLOCK_BUTTON_LINK']['VALUE'] ?>">
+                            <?= $arResult['PROPERTIES']['TEXT_BLOCK_BUTTON']['VALUE'] ?>
+                        </a>
+                    <? } ?>
                 </div>
-                <div class="banner-product-info__image">
-                    <div class="polygon-container js-polygon-container">
-                        <div class="polygon-container__content"><img src="/frontend/dist/img/banners/page-banner-2.png" alt="" loading="lazy">
-                        </div>
-                        <div class="polygon-container__polygon js-polygon-container-polygon purple-70">
-                            <svg class="js-polygon-container-svg" xmlns="http://www.w3.org/2000/svg">
-                                <polygon points="2,2 335,2 335,394 295,434 2,434" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="10"></polygon>
-                            </svg>
+                <? if ($arResult['PROPERTIES']['TEXT_BLOCK_IMAGE']['VALUE']) { ?>
+                    <div class="banner-product-info__image">
+                        <div class="polygon-container js-polygon-container">
+                            <div class="polygon-container__content">
+                                <img src="<?= CFile::GetPath($arResult['PROPERTIES']['TEXT_BLOCK_IMAGE']['VALUE']) ?>" alt="<?= $arResult['PROPERTIES']['TEXT_BLOCK_IMAGE']['ALT'] ?>" loading="lazy">
+                            </div>
+                            <div class="polygon-container__polygon js-polygon-container-polygon purple-70">
+                                <svg class="js-polygon-container-svg" xmlns="http://www.w3.org/2000/svg">
+                                    <polygon points="2,2 335,2 335,394 295,434 2,434" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="10"></polygon>
+                                </svg>
+                            </div>
                         </div>
                     </div>
-                </div>
+                <? } ?>
             </div>
         </div>
         <picture class="pattern-bg pattern-bg--position-sm-bottom">

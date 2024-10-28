@@ -20,11 +20,11 @@
                     <?$APPLICATION->IncludeComponent(
                         "bitrix:breadcrumb",
                         "",
-                        Array(
+                        [
                             "PATH" => "",
                             "SITE_ID" => "s1",
                             "START_FROM" => "0"
-                        )
+                        ]
                     );?>
                     <h1 class="text-banner__title dark-0 text-break"><?= $arResult["NAME"] ?></h1>
                     <div class="text-banner__description text-l dark-0"><?= $arResult["PREVIEW_TEXT"] ?></div>

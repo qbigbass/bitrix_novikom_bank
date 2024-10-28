@@ -3,9 +3,9 @@ require($_SERVER['DOCUMENT_ROOT'].'/bitrix/header.php');
 global $APPLICATION;
 $APPLICATION->SetTitle("Кредиты");
 ?><?$APPLICATION->IncludeComponent(
-	"bitrix:news", 
-	"loans", 
-	array(
+	"bitrix:news",
+	"loans",
+	[
 		"ADD_ELEMENT_CHAIN" => "N",
 		"ADD_SECTIONS_CHAIN" => "N",
 		"AJAX_MODE" => "N",
@@ -22,16 +22,16 @@ $APPLICATION->SetTitle("Кредиты");
 		"DETAIL_ACTIVE_DATE_FORMAT" => "d.m.Y",
 		"DETAIL_DISPLAY_BOTTOM_PAGER" => "Y",
 		"DETAIL_DISPLAY_TOP_PAGER" => "N",
-		"DETAIL_FIELD_CODE" => array(
+		"DETAIL_FIELD_CODE" => [
 			0 => "NAME",
 			1 => "PREVIEW_TEXT",
 			2 => "DETAIL_PICTURE",
 			3 => "",
-		),
+        ],
 		"DETAIL_PAGER_SHOW_ALL" => "Y",
 		"DETAIL_PAGER_TEMPLATE" => "",
 		"DETAIL_PAGER_TITLE" => "Страница",
-		"DETAIL_PROPERTY_CODE" => array(
+		"DETAIL_PROPERTY_CODE" => [
 			0 => "DETAIL_TERMS",
 			1 => "QUESTIONS",
 			2 => "BUTTON_DETAIL",
@@ -43,7 +43,7 @@ $APPLICATION->SetTitle("Кредиты");
 			8 => "HEADER_TEMPLATE",
 			9 => "",
 			10 => "",
-		),
+        ],
 		"DETAIL_SET_CANONICAL_URL" => "N",
 		"DISPLAY_BOTTOM_PAGER" => "Y",
 		"DISPLAY_DATE" => "Y",
@@ -53,24 +53,24 @@ $APPLICATION->SetTitle("Кредиты");
 		"DISPLAY_TOP_PAGER" => "N",
 		"FILE_404" => "",
 		"HIDE_LINK_WHEN_NO_DETAIL" => "N",
-		"IBLOCK_ID" => "126",
+		"IBLOCK_ID" => iblock("loans"),
 		"IBLOCK_TYPE" => "for_private_clients_ru",
 		"INCLUDE_IBLOCK_INTO_CHAIN" => "N",
 		"LIST_ACTIVE_DATE_FORMAT" => "d.m.Y",
-		"LIST_FIELD_CODE" => array(
+		"LIST_FIELD_CODE" => [
 			0 => "NAME",
 			1 => "PREVIEW_TEXT",
 			2 => "PREVIEW_PICTURE",
 			3 => "",
-		),
-		"LIST_PROPERTY_CODE" => array(
+        ],
+		"LIST_PROPERTY_CODE" => [
 			0 => "LIST_TERMS",
 			1 => "BUTTON_LIST",
 			2 => "BUTTON_TEXT_LIST",
 			3 => "",
 			4 => "",
 			5 => "",
-		),
+        ],
 		"MESSAGE_404" => "",
 		"META_DESCRIPTION" => "-",
 		"META_KEYWORDS" => "-",
@@ -102,12 +102,12 @@ $APPLICATION->SetTitle("Кредиты");
 		"USE_SEARCH" => "N",
 		"USE_SHARE" => "N",
 		"COMPONENT_TEMPLATE" => "loans",
-		"SEF_URL_TEMPLATES" => array(
+		"SEF_URL_TEMPLATES" => [
 			"news" => "",
 			"section" => "#SECTION_CODE#/",
 			"detail" => "#SECTION_CODE#/#ELEMENT_CODE#/",
-		)
-	),
+        ]
+    ],
 	false
 );?>
 

@@ -1,1 +1,1 @@
-<?include($_SERVER["DOCUMENT_ROOT"] . "/" . $this->GetFolder() . "/loans_list.php");?>
+<?include($_SERVER["DOCUMENT_ROOT"] . "/" . $this->GetFolder() . "/elements_list.php");?>
