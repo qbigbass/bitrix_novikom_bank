@@ -8,7 +8,7 @@ class CUserTypeStringDescr
 {
     public static function OnIBlockPropertyBuildList(): array
     {
-        return array(
+        return [
             'PROPERTY_TYPE' => 'S',
             "USER_TYPE" => 'multiple_field',
             "DESCRIPTION" => 'Множественное поле',
@@ -16,8 +16,8 @@ class CUserTypeStringDescr
             'ConvertFromDB' => [__CLASS__, 'ConvertFromDB'],
             'GetSettingsHTML' => [__CLASS__, 'GetSettingsHTML'],
             'PrepareSettings' => [__CLASS__, 'PrepareSettings'],
-            'GetPropertyFieldHtml' => array(__CLASS__, 'GetPropertyFieldHtml'),
-        );
+            'GetPropertyFieldHtml' => [__CLASS__, 'GetPropertyFieldHtml'],
+        ];
     }
 
     /**
@@ -68,14 +68,14 @@ class CUserTypeStringDescr
      */
     public static function GetSettingsHTML(array $arProperty, array $strHTMLControlName, array &$arPropertyFields): string
     {
-        $arPropertyFields = array(
+        $arPropertyFields = [
             "HIDE" => [
                 "SEARCHABLE",
                 "FILTRABLE",
                 "DEFAULT_VALUE"
             ],
             "USER_TYPE_SETTINGS_TITLE" => "Настройки отображения свойства"
-        );
+        ];
 
         $html = '<tr>
                     <td>Количество полей ввода:</td>

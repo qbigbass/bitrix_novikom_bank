@@ -50,3 +50,36 @@ function pre(mixed ...$arrays): void
         echo '<pre>' . print_r($array, true) . '</pre>';
     }
 }
+
+function processTerms(array $terms, array $properties): array
+{
+    $result = [];
+
+    foreach ($properties as $key => $term) {
+        if (!$term || !isset($terms[$key])) {
+            continue;
+        }
+
+        $sign = $terms[$key]['SIGN'];
+        $fromTo = $terms[$key]['FROM_TO'];
+        $value = '';
+
+        if ($key === 'RATE') {
+            $value = $term . ' %';
+        } elseif (in_array($key, ['SUM_FROM', 'SUM_TO'])) {
+            $value = number_format($term, 0, '', ' ') . ' ₽';
+        } elseif (in_array($key, ['PERIOD_FROM', 'PERIOD_TO'])) {
+            $value = round($term / 12) . ' лет';
+        } elseif ($key === 'DIAPASON') {
+            $value = $term;
+        }
+
+        $result[] = [
+            'SIGN' => $sign,
+            'FROM_TO' => $fromTo,
+            'VALUE' => $value,
+        ];
+    }
+
+    return $result;
+}
