@@ -26,7 +26,8 @@ $this->setFrameMode(true);
                             "PATH" => "",
                             "SITE_ID" => "s1",
                             "START_FROM" => "0"
-                        ]
+                        ],
+                        $component
                     );?>
                     <h1 class="text-banner__title dark-0 text-break"><?=$APPLICATION->GetTitle()?></h1>
                 </div>
@@ -65,7 +66,7 @@ $this->setFrameMode(true);
                             "ALL_LINK" => "Y",
                             "ALL_LINK_TEXT" => "Все " . mb_strtolower($APPLICATION->GetTitle())
                         ],
-                        false
+                        $component
                     ); ?>
                 </div>
             </div>

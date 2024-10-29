@@ -51,7 +51,7 @@ function pre(mixed ...$arrays): void
     }
 }
 
-function processTerms(array $terms, array $properties): array
+function processTerms(array $terms, array $properties, bool $days = false): array
 {
     $result = [];
 
@@ -69,7 +69,11 @@ function processTerms(array $terms, array $properties): array
         } elseif (in_array($key, ['SUM_FROM', 'SUM_TO'])) {
             $value = number_format($term, 0, '', ' ') . ' ₽';
         } elseif (in_array($key, ['PERIOD_FROM', 'PERIOD_TO'])) {
-            $value = round($term / 12) . ' лет';
+            if ($days) {
+                $value = $term . declensionFrom($term, 'day');
+            } else {
+                $value = round($term / 12) . declensionFrom($term);
+            }
         } elseif ($key === 'DIAPASON') {
             $value = $term;
         }
@@ -82,4 +86,15 @@ function processTerms(array $terms, array $properties): array
     }
 
     return $result;
+}
+
+function declensionFrom(int $number, string $period = 'year') {
+    $number = abs($number) % 100;
+
+    return match ($period) {
+        'year' => $number % 10 == 1 ? ' года' : ' лет',
+        'month' => $number % 10 == 1 ? ' месяца' : ' месяцев',
+        'day' => $number % 10 == 1 ? ' дня' : ' дней',
+        default => '',
+    };
 }

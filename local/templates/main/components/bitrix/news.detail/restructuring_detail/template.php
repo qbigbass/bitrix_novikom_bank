@@ -25,7 +25,8 @@ $this->setFrameMode(true);
                             "PATH" => "",
                             "SITE_ID" => "s1",
                             "START_FROM" => "0"
-                        ]
+                        ],
+                        $component
                     );?>
                     <h1 class="text-banner__title dark-0 text-break"><?= $arResult["NAME"] ?></h1>
                     <div class="text-banner__description text-l dark-0"><?= $arResult["PREVIEW_TEXT"] ?></div>
@@ -42,7 +43,7 @@ $this->setFrameMode(true);
     </picture>
 </section>
 
-<? if ($arResult['PROPERTIES']['QUOTE_TEXT']['VALUE']) { ?>
+<? if (!empty($arResult['PROPERTIES']['QUOTE_TEXT']['VALUE'])) { ?>
     <section class="section-layout">
         <div class="container">
             <div class="row">
@@ -69,7 +70,7 @@ $this->setFrameMode(true);
     </section>
 <? } ?>
 
-<? if ($arResult['PROPERTIES']['BENEFITS']['VALUE']) {
+<? if (!empty($arResult['PROPERTIES']['BENEFITS']['VALUE'])) {
 
     global $benefitsFilter;
     $benefitsFilter = [
@@ -130,14 +131,15 @@ $this->setFrameMode(true);
             "SORT_ORDER2" => "ASC",
             "STRICT_SECTION_CHECK" => "N",
             "HEADER_TEXT" => $arResult['PROPERTIES']['BENEFITS_HEADER']['~VALUE']
-        ]
+        ],
+        $component
     );
 
 } ?>
 
 <? if (
-    $arResult['PROPERTIES']['STEPS']['VALUE']
-    && $arResult['PROPERTIES']['STEPS']['DESCRIPTION']
+    !empty($arResult['PROPERTIES']['STEPS']['VALUE'])
+    && !empty($arResult['PROPERTIES']['STEPS']['DESCRIPTION'])
     && count($arResult['PROPERTIES']['STEPS']['VALUE']) == count($arResult['PROPERTIES']['STEPS']['DESCRIPTION'])) { ?>
 
     <section class="section-restructuring-steps bg-dark-10 py-6 py-sm-9 py-md-11 py-xl-16">
@@ -190,7 +192,7 @@ $this->setFrameMode(true);
     </section>
 <? } ?>
 
-<? if ($arResult['PROPERTIES']['TABS']['VALUE']) {
+<? if (!empty($arResult['PROPERTIES']['TABS']['VALUE'])) {
 
     global $tabsFilter;
     $tabsFilter = [
@@ -250,12 +252,13 @@ $this->setFrameMode(true);
             "SORT_ORDER2" => "ASC",
             "STRICT_SECTION_CHECK" => "N",
             "HEADER_TEXT" => $arResult['PROPERTIES']['TABS_HEADER']['~VALUE']
-        ]
+        ],
+        $component
     );
 
 } ?>
 
-<? if ($arResult['PROPERTIES']['QUOTE_TEXT_BOTTOM']['VALUE']) { ?>
+<? if (!empty($arResult['PROPERTIES']['QUOTE_TEXT_BOTTOM']['VALUE'])) { ?>
     <section class="section-layout">
         <div class="container">
             <div class="row">

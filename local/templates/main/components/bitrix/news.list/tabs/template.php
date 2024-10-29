@@ -11,7 +11,6 @@
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
-//pre($arResult['ITEMS']);
 ?>
 
 <section class="section-layout js-collapsed-mobile">
@@ -86,8 +85,8 @@ $this->setFrameMode(true);
 
                                                     <? foreach ($property['~VALUE'] as $key => $value) { ?>
                                                         <div class="table-tab__row">
-                                                            <div class="table-tab__cell text-l fw-semibold dark-70"><?= $value ?></div>
-                                                            <div class="table-tab__cell text-l"><?= $property['~DESCRIPTION'][$key] ?></div>
+                                                            <div class="table-tab__cell text-l fw-semibold dark-70"><?= $property['~DESCRIPTION'][$key] ?></div>
+                                                            <div class="table-tab__cell text-l"><?= $value['TEXT'] ?></div>
                                                         </div>
                                                     <? } ?>
 
@@ -131,7 +130,7 @@ $this->setFrameMode(true);
                                             </div>
                                         <? }
 
-                                        if ($property['CODE'] == 'QUESTIONS') { ?>
+                                        if ($property['CODE'] == 'QUESTIONS' && !empty($property['LINK_ELEMENT_VALUE'])) { ?>
                                             <div class="row row-gap-6 mt-7 mt-md-7 mt-lg-8">
                                                 <div class="col-12 col-xxl-8">
                                                     <div class="accordion" id="accordion-<?= $property['ID'] ?>">
@@ -161,6 +160,53 @@ $this->setFrameMode(true);
                                                 </div>
                                                 <div class="col-12 col-xxl-4">
                                                     <?$APPLICATION->IncludeFile('/local/php_interface/include/request_call_form.php');?>
+                                                </div>
+                                            </div>
+                                        <? }
+
+                                        if ($property['CODE'] == 'DOCUMENTS' && !empty($property['LINK_SECTION_VALUE'])) { ?>
+                                            <div class="row row-gap-6 mt-7 mt-md-7 mt-lg-8">
+                                                <div class="col-12 col-xxl-8">
+                                                    <div class="accordion" id="accordion-<?= $property['ID'] ?>">
+                                                        <? foreach ($property['LINK_SECTION_VALUE'] as $section) { ?>
+                                                            <div class="accordion-item">
+                                                                <div class="accordion-header">
+                                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#<?= $section['ID'] ?>" aria-controls="<?= $section['ID'] ?>">
+                                                                        <?= $section['~NAME'] ?>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="accordion-collapse collapse" id="<?= $section['ID'] ?>" data-bs-parent="#accordion-<?= $property['ID'] ?>">
+                                                                    <div class="accordion-body">
+                                                                        <p class="text-m mb-0 dark-70">
+                                                                            <?= $section['DESCRIPTION'] ?>
+                                                                        </p>
+                                                                        <div class="mt-4">
+                                                                        <? foreach ($section['ELEMENTS'] as $element) {
+                                                                            $file = CFile::GetFileArray($element['PROPERTIES']['FILE']['VALUE']);
+                                                                            ?>
+                                                                            <a class="d-flex flex-column gap-1 py-3 document-download text-m" href="<?= $file['SRC'] ?>" download="<?= $file['NAME'] ?>"><?= $element ['NAME'] ?>
+                                                                                <div class="d-flex gap-1 align-items-center">
+                                                                                    <div class="document-download__file caption-m dark-70">
+                                                                                        <span class="document-download__date-time"><?= $element['ACTIVE_FROM']->format('d.m.y H:i') ?></span>
+                                                                                        <span class="document-download__file-type"><?= explode('.', $file['ORIGINAL_NAME'])[1] ?></span>
+                                                                                    </div>
+                                                                                    <span class="icon size-s text-primary">
+                                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                                                                            <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-download-small"></use>
+                                                                                        </svg>
+                                                                                    </span>
+                                                                                </div>
+                                                                            </a>
+                                                                        <? } ?>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        <? } ?>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-xxl-4">
+                                                    <?$APPLICATION->IncludeFile('/local/php_interface/include/protection_from_scammers.php');?>
                                                 </div>
                                             </div>
                                         <? }

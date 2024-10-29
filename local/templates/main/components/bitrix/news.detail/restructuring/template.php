@@ -1,4 +1,18 @@
-<? if ($arResult['PROPERTIES']['TEXT_BLOCK_HEADER']['VALUE'] && $arResult['PROPERTIES']['TEXT_BLOCK']['VALUE']) { ?>
+<?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
+/** @var array $arParams */
+/** @var array $arResult */
+/** @global CMain $APPLICATION */
+/** @global CUser $USER */
+/** @global CDatabase $DB */
+/** @var CBitrixComponentTemplate $this */
+/** @var string $templateName */
+/** @var string $templateFile */
+/** @var string $templateFolder */
+/** @var string $componentPath */
+/** @var CBitrixComponent $component */
+$this->setFrameMode(true);
+
+if (!empty($arResult['PROPERTIES']['TEXT_BLOCK_HEADER']['VALUE']) && !empty($arResult['PROPERTIES']['TEXT_BLOCK']['VALUE'])) { ?>
     <section class="section-layout py-lg-11 bg-blue-10">
         <div class="container">
             <div class="banner-product-info ps-lg-6">
@@ -17,13 +31,13 @@
                 </div>
                 <div class="banner-product-info__body">
                     <p class="text-l m-0"><?= $arResult['PROPERTIES']['TEXT_BLOCK']['~VALUE']['TEXT'] ?></p>
-                    <? if ($arResult['PROPERTIES']['TEXT_BLOCK_BUTTON']['VALUE'] && $arResult['PROPERTIES']['TEXT_BLOCK_BUTTON_LINK']['VALUE']) { ?>
+                    <? if (!empty($arResult['PROPERTIES']['TEXT_BLOCK_BUTTON']['VALUE']) && !empty($arResult['PROPERTIES']['TEXT_BLOCK_BUTTON_LINK']['VALUE'])) { ?>
                         <a class="btn btn-lg-lg btn-outline-primary fw-bold w-100 w-md-auto mt-6 mt-lg-7" href="<?= $arResult['PROPERTIES']['TEXT_BLOCK_BUTTON_LINK']['VALUE'] ?>">
                             <?= $arResult['PROPERTIES']['TEXT_BLOCK_BUTTON']['VALUE'] ?>
                         </a>
                     <? } ?>
                 </div>
-                <? if ($arResult['PROPERTIES']['TEXT_BLOCK_IMAGE']['VALUE']) { ?>
+                <? if (!empty($arResult['PROPERTIES']['TEXT_BLOCK_IMAGE']['VALUE'])) { ?>
                     <div class="banner-product-info__image">
                         <div class="polygon-container js-polygon-container">
                             <div class="polygon-container__content">
@@ -46,7 +60,7 @@
     </section>
 <? } ?>
 
-<? if ($arResult['PROPERTIES']['TABS']['VALUE']) {
+<? if (!empty($arResult['PROPERTIES']['TABS']['VALUE'])) {
 
     global $tabsFilter;
     $tabsFilter = [
@@ -106,12 +120,13 @@
             "SORT_ORDER2" => "ASC",
             "STRICT_SECTION_CHECK" => "N",
             "HEADER_TEXT" => $arResult['PROPERTIES']['TABS_HEADER']['~VALUE']
-        ]
+        ],
+        $component
     );
 
 } ?>
 
-<? if ($arResult['PROPERTIES']['STEPS']['VALUE'] || $arResult['PROPERTIES']['STEPS']['DESCRIPTION']) { ?>
+<? if (!empty($arResult['PROPERTIES']['STEPS']['VALUE']) || !empty($arResult['PROPERTIES']['STEPS']['DESCRIPTION'])) { ?>
 
     <section class="section-restructuring-steps bg-dark-10 py-6 py-sm-9 py-md-11 py-xl-16">
         <div class="container">

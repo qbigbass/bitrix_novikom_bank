@@ -59,7 +59,7 @@ $terms = [
                 <? } ?>
 
                 <div class="d-flex flex-column flex-sm-row align-items-center gap-5 gap-sm-6 w-100">
-                    <? if ($loan['PROPERTIES']['BUTTON_LIST']['VALUE']) { ?>
+                    <? if (!empty($loan['PROPERTIES']['BUTTON_LIST']['VALUE'])) { ?>
                         <a class="btn btn-tertiary btn-lg card-product-list__button w-100 w-sm-auto" href="#"><?= $loan['PROPERTIES']['BUTTON_TEXT_LIST']['VALUE'] ?></a>
                     <? } ?>
                     <a class="btn btn-link btn-lg d-inline-flex gap-2 align-items-center card-product-list__button-more" href="<?= $loan['CODE'] == 'restructuring' ? '/loans/restructuring/' : $loan['DETAIL_PAGE_URL'] ?>">

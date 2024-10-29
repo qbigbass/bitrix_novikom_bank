@@ -26,7 +26,8 @@ $this->setFrameMode(true);
                             "PATH" => "",
                             "SITE_ID" => "s1",
                             "START_FROM" => "0"
-                        ]
+                        ],
+                        $component
                     );?>
                     <h1 class="text-banner__title dark-0 text-break"><?=$APPLICATION->GetTitle()?></h1>
                     <div class="text-banner__description text-l dark-0"><?=$APPLICATION->GetProperty("description")?></div>
@@ -65,7 +66,7 @@ $this->setFrameMode(true);
                     ],
                     "COMPONENT_TEMPLATE" => "iblock_sections",
                 ],
-                false
+                $component
             ); ?>
         </div>
 
@@ -184,7 +185,8 @@ $this->setFrameMode(true);
         "STRICT_SECTION_CHECK" => "N",
         "USE_PERMISSIONS" => "N",
         "USE_SHARE" => "N"
-    ]
+    ],
+    $component
 );?>
 
 <?$APPLICATION->IncludeFile('/local/php_interface/include/cross_sale_products_block.php', ['HEADER_TEXT' => 'Смотрите также']);?>

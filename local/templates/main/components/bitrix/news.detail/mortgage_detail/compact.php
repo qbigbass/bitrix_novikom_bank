@@ -24,7 +24,8 @@
                             "PATH" => "",
                             "SITE_ID" => "s1",
                             "START_FROM" => "0"
-                        ]
+                        ],
+                        $component
                     );?>
                     <h1 class="text-banner__title dark-0 text-break"><?= $arResult["NAME"] ?></h1>
                     <div class="text-banner__description text-l dark-0"><?= $arResult["PREVIEW_TEXT"] ?></div>

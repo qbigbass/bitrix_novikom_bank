@@ -39,7 +39,8 @@ $terms = [
                         "PATH" => "",
                         "SITE_ID" => "s1",
                         "START_FROM" => "0"
-                    ]
+                    ],
+                    $component
                 );?>
                 <h1><?= $arResult["~NAME"] ?></h1>
                 <p class="banner-product__subtitle"><?= $arResult["~PREVIEW_TEXT"] ?></p>
@@ -59,7 +60,7 @@ $terms = [
                     <? } ?>
                 </div>
             <? } ?>
-            <? if ($arResult['PROPERTIES']['BUTTON_DETAIL']['VALUE']) { ?>
+            <? if (!empty($arResult['PROPERTIES']['BUTTON_DETAIL']['VALUE'])) { ?>
                 <a class="btn btn-tertiary btn-lg banner-product__button" href="#"><?= $arResult['PROPERTIES']['BUTTON_TEXT_DETAIL']['VALUE'] ?></a>
             <? } ?>
         </div>
