@@ -140,12 +140,17 @@ class RatesFetcher
 
     /**
      * @param array $values
-     * @return array
+     * @return array|null
      */
-    public function calculatePSK(array $values): array
+    public function calculatePSK(array $values): ?array
     {
+        if (empty($values)) {
+            return null;
+        }
+
         // Преобразование процентной ставки в дробное значение и расчет месячной ставки
         $monthlyRate = $values['RATE'] / 100 / 12;
+
 
         // Расчет ПСК для минимальной суммы кредита
         $minMonthlyPayment = $this->calculateMonthlyPayment($values['SUM_FROM'], $monthlyRate, $values['PERIOD_FROM']);
@@ -155,11 +160,11 @@ class RatesFetcher
         // Расчет ПСК для максимальной суммы кредита
         $maxMonthlyPayment = $this->calculateMonthlyPayment($values['SUM_TO'], $monthlyRate, $values['PERIOD_FROM']);
         $maxTotalPayment = $maxMonthlyPayment * $values['PERIOD_FROM'];
-        $maxPSK = (($maxTotalPayment - $values['SUM_TO']) / $values['SUM_TO']) * 100;
+        $maxPSK = (($maxTotalPayment - $values['SUM_FROM']) / $values['SUM_TO']) * 100;
 
         return [
-            'minPSK' => floor($minPSK),
-            'maxPSK' => floor($maxPSK),
+            'minPSK' => number_format($minPSK / 12, 3, '.', ' '),
+            'maxPSK' => number_format($maxPSK / 12, 3, '.', ' '),
         ];
     }
 
@@ -174,6 +179,7 @@ class RatesFetcher
         if ($period == 0) {
             return 0;
         }
+
         return ($sum * $rate * pow(1 + $rate, $period)) / (pow(1 + $rate, $period) - 1);
     }
 }

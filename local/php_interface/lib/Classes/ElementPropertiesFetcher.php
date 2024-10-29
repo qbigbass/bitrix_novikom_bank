@@ -1,6 +1,6 @@
 <?php
 /**
- * @note Класс поднимает все свойства типа привязка к элементам ИБ, переданные в fetchElementProperties в $propertiesToGet
+ * @note Класс поднимает все свойства, переданные в fetchElementProperties в $propertiesToGet
  * @note и получает их значения. У полученных элементов аналогично поднимаются все привязки, рекурсивно.
  * @note Пока у привязанного элемента есть свои привязки, данные по ним также будут получены. При этом в $propertiesToGet
  * @note фильтруются значения с ошибками, не полученные значения пропускаются. Вложенные свойства сортируются по значению SORT.
@@ -12,6 +12,7 @@ use Bitrix\Iblock\ElementPropertyTable;
 use Bitrix\Iblock\Iblock;
 use Bitrix\Iblock\ORM\CommonElementTable;
 use Bitrix\Iblock\PropertyTable;
+use Bitrix\Iblock\SectionTable;
 use Bitrix\Main\ArgumentException;
 use Bitrix\Main\ObjectPropertyException;
 use Bitrix\Main\SystemException;
@@ -25,6 +26,7 @@ class ElementPropertiesFetcher
         'E' => 'ELEMENT',
         'F' => 'FILE',
         'L' => 'ITEM',
+        'G' => 'SECTION',
     ];
     private array $loadedElements = [];
 
@@ -51,7 +53,6 @@ class ElementPropertiesFetcher
                     return isset($this->propertyTypes[$prop['TYPE']]) ? $prop['CODE'] . "." . $this->propertyTypes[$prop['TYPE']] : $prop['CODE'];
                 }, $properties),
             ];
-
 
             $res = $dataClass::getList($data)->fetchCollection();
             foreach ($res as $element) {
@@ -134,6 +135,10 @@ class ElementPropertiesFetcher
                 $linkedItem = $this->getLinkedItem($arElementProperty->getLinkIblockId(), $propertyDTO->value);
                 $propertyDTO->linkedItem = $linkedItem;
                 $this->fetchLinkedElementProperties($linkedItem, $depth + 1);
+            } elseif ($propertyDTO->type === 'G') {
+                $linkedSection = $this->getLinkedSection($propertyDTO->value);
+                $propertyDTO->linkedSection = $linkedSection;
+                $this->fetchSectionElements($linkedSection);
             }
         }
     }
@@ -154,7 +159,8 @@ class ElementPropertiesFetcher
         return new ElementDTO(
             $property->getId(),
             $property->getName(),
-            $property->getPreviewPicture(),
+            $property->getCode(),
+            $property->getPreviewPicture() ? CFile::GetPath($property->getPreviewPicture()) : null,
             $property->getPreviewText(),
             $property->getDetailText()
         );
@@ -204,10 +210,68 @@ class ElementPropertiesFetcher
         return new ElementDTO (
             $res->getId(),
             $res->getName(),
-            $res->getPreviewPicture(),
+            $res->getCode(),
+            $res->getPreviewPicture() ? CFile::GetPath($res->getPreviewPicture()) : null,
             $res->getPreviewText(),
             $res->getDetailText()
         );
+    }
+
+    /**
+     * @param int $sectionId
+     * @return ElementDTO
+     * @throws ArgumentException
+     * @throws ObjectPropertyException
+     * @throws SystemException
+     */
+    private function getLinkedSection(int $sectionId): ElementDTO
+    {
+        $section = SectionTable::getByPrimary($sectionId)->fetchObject();
+
+        $elementDTO = new ElementDTO (
+            $section->getId(),
+            $section->getName(),
+            $section->getCode(),
+            $section->getPicture() ? CFile::GetPath($section->getPicture()) : null,
+            $section->getDescription(),
+        );
+
+        $elementDTO->iblockId = $section->getIblockId();
+
+        return $elementDTO;
+    }
+
+    /**
+     * @param ElementDTO $elementDTO
+     * @return void
+     * @throws ArgumentException
+     * @throws ObjectPropertyException
+     * @throws SystemException
+     */
+    private function fetchSectionElements(ElementDTO $elementDTO): void
+    {
+        $dataClass = $this->getDataClass($elementDTO->iblockId);
+
+        $data = [
+            'order' => ['SORT' => 'ASC'],
+            'filter' => ['IBLOCK_SECTION_ID' => $elementDTO->id],
+            'select' => ['ID', 'NAME', 'CODE', 'PREVIEW_PICTURE', 'PREVIEW_TEXT', 'DETAIL_TEXT'],
+        ];
+
+        $res = $dataClass::getList($data)->fetchCollection();
+        foreach ($res as $element) {
+            $element = new ElementDTO(
+                $element->getId(),
+                $element->getName(),
+                $element->getCode(),
+                $element->getPreviewPicture() ? CFile::GetPath($element->getPreviewPicture()) : null,
+                $element->getPreviewText(),
+                $element->getDetailText()
+            );
+
+            $elementDTO->elements[] = $element;
+            $this->fetchLinkedElementProperties($elementDTO, $depth = 0);
+        }
     }
 
     /**
@@ -308,4 +372,3 @@ class ElementPropertiesFetcher
         }
     }
 }
-

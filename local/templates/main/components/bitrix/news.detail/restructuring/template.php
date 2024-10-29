@@ -45,182 +45,72 @@
         </picture>
     </section>
 <? } ?>
-<? if ($arResult['PROPERTIES']['TABS']['VALUE'] && $arResult['PROPERTIES']['TABS_HEADER']['VALUE']) { ?>
-    <section class="section-layout js-collapsed-mobile">
-        <div class="container">
-            <h3 class="d-none d-md-flex mb-md-6 mb-lg-7 px-lg-6"><?= $arResult['PROPERTIES']['TABS_HEADER']['VALUE'] ?></h3>
-            <a class="h3 d-flex align-items-center justify-content-between dark-100 d-md-none" data-bs-toggle="collapse" href="#additional-info-content" role="button" aria-expanded="false" aria-controls="additional-info-content">Подробные условия
-                <svg class="icon size-m violet-100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                    <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-down"></use>
-                </svg>
-            </a>
-            <div class="collapse d-md-block mt-4 mt-md-6 mt-lg-7" id="additional-info-content">
-                <div class="row px-lg-6">
-                    <div class="col-12">
-                        <div class="tabs-panel js-tabs-slider overflow-hidden position-relative px-1">
-                            <div class="tabs-panel__navigation d-none d-lg-block js-tabs-slider-navigation w-100"><span class="tabs-panel__navigation-item tabs-panel__navigation-item-reverse js-tabs-slider-navigation-prev h-100 d-flex align-items-center justify-content-start px-1 z-3 position-absolute start-0 top-0"><span class="icon size-m">
-                                  <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                    <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-left"></use>
-                                  </svg></span></span><span class="tabs-panel__navigation-item js-tabs-slider-navigation-next h-100 d-flex align-items-center justify-content-end px-1 z-3 position-absolute end-0 top-0"><span class="icon size-m">
-                                  <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                    <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
-                                  </svg></span></span></div>
-                            <ul class="swiper-wrapper tabs-panel__list nav nav-tabs d-inline-flex flex-nowrap w-auto p-0 border border-purple rounded">
 
-                                <? foreach ($arResult['PROPERTIES']['TABS']['VALUE'] as $key => $tabId) {
-                                    if (isset($arResult['ELEMENTS_PROPERTIES'][$tabId])) {
-                                        $tab = $arResult['ELEMENTS_PROPERTIES'][$tabId]; ?>
-                                        <li class="swiper-slide w-auto tabs-panel__list-item nav-item z-2">
-                                            <button class="tabs-panel__list-item-link nav-link bg-transparent <?= $key == 0 ? 'active' : '' ?>"
-                                                    data-bs-toggle="tab"
-                                                    data-bs-target="#additional-info-<?= $tabId ?>"
-                                                    type="button"
-                                                    role="tab"
-                                                    aria-controls="additional-info-<?= $tabId ?>"
-                                                    aria-selected="true">
-                                                <?= $tab->name ?? '' ?>
-                                            </button>
-                                        </li>
-                                    <? } ?>
-                                <? } ?>
+<? if ($arResult['PROPERTIES']['TABS']['VALUE']) {
 
-                            </ul>
-                        </div>
-                        <div class="tab-content">
-                            <? foreach ($arResult['PROPERTIES']['TABS']['VALUE'] as $key => $tabId) {
-                                if (isset($arResult['ELEMENTS_PROPERTIES'][$tabId])) {
-                                    $tab = $arResult['ELEMENTS_PROPERTIES'][$tabId]; ?>
-                                    <div class="tab-pane fade<?= $key == 0 ? ' show active' : '' ?>"
-                                         id="additional-info-<?= $tabId ?>"
-                                         aria-labelledby="additional-info-<?= $tabId ?>"
-                                         tabindex="0"
-                                         role="tabpanel">
+    global $tabsFilter;
+    $tabsFilter = [
+        'ACTIVE' => 'Y',
+        'ID' => $arResult['PROPERTIES']['TABS']['VALUE']
+    ];
 
-                                        <? if (!empty($tab->properties)) {
-                                            foreach ($tab->properties as $code => $property) {
+    $APPLICATION->IncludeComponent(
+        "bitrix:news.list",
+        "tabs",
+        [
+            "ACTIVE_DATE_FORMAT" => "d.m.Y",
+            "ADD_SECTIONS_CHAIN" => "N",
+            "AJAX_MODE" => "N",
+            "AJAX_OPTION_ADDITIONAL" => "",
+            "AJAX_OPTION_HISTORY" => "N",
+            "AJAX_OPTION_JUMP" => "N",
+            "AJAX_OPTION_STYLE" => "Y",
+            "CACHE_FILTER" => "N",
+            "CACHE_GROUPS" => "Y",
+            "CACHE_TIME" => "36000000",
+            "CACHE_TYPE" => "A",
+            "CHECK_DATES" => "Y",
+            "DETAIL_URL" => "",
+            "DISPLAY_BOTTOM_PAGER" => "N",
+            "DISPLAY_TOP_PAGER" => "N",
+            "FIELD_CODE" => ["CODE","NAME","PREVIEW_TEXT","PREVIEW_PICTURE",""],
+            "FILTER_NAME" => "tabsFilter",
+            "HIDE_LINK_WHEN_NO_DETAIL" => "N",
+            "IBLOCK_ID" => iblock('tabs'),
+            "IBLOCK_TYPE" => "additional",
+            "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+            "INCLUDE_SUBSECTIONS" => "N",
+            "MESSAGE_404" => "",
+            "NEWS_COUNT" => "20",
+            "PAGER_BASE_LINK_ENABLE" => "N",
+            "PAGER_DESC_NUMBERING" => "N",
+            "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+            "PAGER_SHOW_ALL" => "N",
+            "PAGER_SHOW_ALWAYS" => "N",
+            "PAGER_TEMPLATE" => ".default",
+            "PAGER_TITLE" => "Новости",
+            "PARENT_SECTION" => "",
+            "PARENT_SECTION_CODE" => "",
+            "PREVIEW_TRUNCATE_LEN" => "",
+            "PROPERTY_CODE" => ["CONDITIONS_ICONS","CONDITIONS","TEXT_FIELD","SHORT_INFO","QUOTES","QUESTIONS"],
+            "SET_BROWSER_TITLE" => "N",
+            "SET_LAST_MODIFIED" => "N",
+            "SET_META_DESCRIPTION" => "N",
+            "SET_META_KEYWORDS" => "N",
+            "SET_STATUS_404" => "N",
+            "SET_TITLE" => "N",
+            "SHOW_404" => "N",
+            "SORT_BY1" => "ACTIVE_FROM",
+            "SORT_BY2" => "SORT",
+            "SORT_ORDER1" => "DESC",
+            "SORT_ORDER2" => "ASC",
+            "STRICT_SECTION_CHECK" => "N",
+            "HEADER_TEXT" => $arResult['PROPERTIES']['TABS_HEADER']['~VALUE']
+        ]
+    );
 
-                                                if ($code == 'CONDITIONS') { ?>
-                                                    <div class="table-tab cell-2 mt-7 mt-md-7 mt-lg-8">
-                                                        <div class="table-tab__body">
+} ?>
 
-                                                            <? foreach ($property as $condition) { ?>
-                                                                <div class="table-tab__row">
-                                                                    <div class="table-tab__cell text-l fw-semibold dark-70"><?= $condition->value ?? '' ?></div>
-                                                                    <div class="table-tab__cell text-l"><?= $condition->description ?? '' ?></div>
-                                                                </div>
-                                                            <? } ?>
-
-                                                        </div>
-                                                    </div>
-                                                <? }
-
-                                                if ($code == 'CONDITIONS_ICONS') { ?>
-                                                    <div class="row row-gap-6 mt-7 mt-md-7 mt-lg-8">
-
-                                                        <? foreach ($property as $conditionIcon) { ?>
-                                                            <div class="col-12 col-md-6 col-lg-4">
-                                                                <div class="benefit d-flex gap-3 flex-column flex-md-row align-items-md-center gap-md-4 gap-lg-6"><img class="icon size-lxl" src="<?= $conditionIcon->filePath ?? '' ?>" alt="icon" loading="lazy">
-                                                                    <div class="benefit__content d-flex flex-column gap-3">
-                                                                        <h5 class="benefit__title fw-semibold"><?= $conditionIcon->description ?? '' ?></h5>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        <? } ?>
-
-                                                    </div>
-                                                <? }
-
-                                                if ($code == 'TEXT_FIELD') { ?>
-                                                    <? foreach ($property as $textField) { ?>
-                                                        <div class="w-100 w-xl-75 rte mt-7 mt-md-7 mt-lg-8">
-                                                            <?= !empty($textField->value) ? unserialize($textField->value)['TEXT'] : '' ?>
-                                                        </div>
-                                                    <? } ?>
-                                                <? }
-
-                                                if ($code == 'SHORT_INFO') { ?>
-                                                    <? foreach ($property as $shortInfo) { ?>
-                                                        <div class="w-100 mt-7 mt-md-7 mt-lg-8">
-                                                            <div class="polygon-container js-polygon-container">
-                                                                <div class="polygon-container__content">
-                                                                    <div class="helper bg-dark-10">
-                                                                        <div class="helper__wrapper d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-4 gap-lg-6">
-                                                                            <img class="helper__image w-auto float-end" src="/frontend/dist/img/restructuring-additional-info.png" alt="" loading="lazy">
-                                                                            <div class="helper__content text-l">
-                                                                                <p class="mb-0">
-                                                                                    <?= !empty($shortInfo->value) ? unserialize($shortInfo->value)['TEXT'] : '' ?>
-                                                                                </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="polygon-container__polygon js-polygon-container-polygon green-100">
-                                                                    <svg class="js-polygon-container-svg" xmlns="http://www.w3.org/2000/svg">
-                                                                        <polygon points="2,2 335,2 335,394 295,434 2,434" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="10"></polygon>
-                                                                    </svg>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    <? } ?>
-                                                <? }
-
-                                                if ($code == 'QUOTES') { ?>
-                                                    <? foreach ($property as $quote) { ?>
-                                                        <div class="dark-70 w-100 w-xl-75 rte mt-7 mt-md-7 mt-lg-8">
-                                                            <p><?= !empty($quote->value) ? unserialize($quote->value)['TEXT'] : '' ?></p>
-                                                        </div>
-                                                    <? } ?>
-                                                <? }
-
-                                                if ($code == 'QUESTIONS') { ?>
-                                                    <div class="row row-gap-6 mt-7 mt-md-7 mt-lg-8">
-                                                        <div class="col-12 col-xxl-8">
-                                                            <div class="accordion" id="accordion-<?= $arResult['PROPERTIES']['QUESTIONS']['ID'] ?>">
-                                                                <? foreach ($property as $question) { ?>
-                                                                    <div class="accordion-item">
-                                                                        <div class="accordion-header">
-                                                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#<?= $question->id ?>" aria-controls="<?= $question->id ?>">
-                                                                                <?= $question->linkedItem->name ?? '' ?>
-                                                                            </button>
-                                                                        </div>
-                                                                        <div class="accordion-collapse collapse" id="<?= $question->id ?>" data-bs-parent="#accordion-<?= $arResult['PROPERTIES']['QUESTIONS']['ID'] ?>">
-                                                                            <div class="accordion-body">
-                                                                                <p class="text-m mb-0 dark-70">
-                                                                                    <?= $question->linkedItem->previewText ?? '' ?>
-                                                                                </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                <? } ?>
-                                                                <a class="btn btn-link btn-lg d-inline-flex gap-2 align-items-center mt-4 mt-md-6 section-custom-accordion__button-more" href="#">
-                                                                    <span class="text-m">Все вопросы и ответы</span>
-                                                                    <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                                                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right-small"></use>
-                                                                    </svg>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-12 col-xxl-4">
-                                                            <?$APPLICATION->IncludeFile('/local/php_interface/include/request_call_form.php');?>
-                                                        </div>
-                                                    </div>
-                                                <? }
-                                            }
-                                        }?>
-                                    </div>
-                                <? } ?>
-                            <? } ?>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <picture class="pattern-bg pattern-bg--hide-mobile">
-            <source srcset="/frontend/dist/img/patterns/section-2/pattern-light-s.svg" media="(max-width: 767px)">
-            <source srcset="/frontend/dist/img/patterns/section-2/pattern-light-m.svg" media="(max-width: 1199px)"><img src="/frontend/dist/img/patterns/section-2/pattern-light-l.svg" alt="bg pattern" loading="lazy">
-        </picture>
-    </section>
-<? } ?>
 <? if ($arResult['PROPERTIES']['STEPS']['VALUE'] || $arResult['PROPERTIES']['STEPS']['DESCRIPTION']) { ?>
 
     <section class="section-restructuring-steps bg-dark-10 py-6 py-sm-9 py-md-11 py-xl-16">
