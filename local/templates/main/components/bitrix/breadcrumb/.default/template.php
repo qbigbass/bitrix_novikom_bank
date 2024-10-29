@@ -1,40 +1,44 @@
 <?php
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 
-if(empty($arResult)) {
-    return '';
+/**
+ * @global CMain $APPLICATION
+ */
+
+global $APPLICATION;
+
+if(empty($arResult))
+	return "";
+
+$strReturn = '<div class="text-banner__breadcrumbs d-flex gap-2">';
+
+$itemSize = count($arResult);
+for($index = 0; $index < $itemSize; $index++)
+{
+	$title = htmlspecialcharsex(strip_tags($arResult[$index]["TITLE"]));
+	$arrow = ($index > 0 ? '
+        <svg class="icon size-s text-white-50 d-inline-block d-md-none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+            <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-left"></use>
+        </svg>' : '');
+
+	if($arResult[$index]["LINK"] <> "" && $index != $itemSize-1)
+	{
+        $strReturn .= '
+            <a class="text-banner__breadcrumbs-item d-md-inline-flex align-items-center gap-2 text-s text-white-50 d-inline-flex" href="' . $arResult[$index]["LINK"] . '">
+                ' . $arrow . '
+                <span>' . $title . '</span>
+            </a>';
+	}
+	else
+	{
+		$strReturn .= '
+			<div class="text-banner__breadcrumbs-item d-md-inline-flex align-items-center gap-2 text-s text-white-50 d-inline-flex">
+                ' . $arrow . '
+                <span>' . $title . '</span>
+            </div>';
+	}
 }
 
-$strReturn = '<nav class="breadcrumbs body-s-light"><ul class="breadcrumbs__list">';
-
-foreach($arResult as $item) {
-	$title = htmlspecialcharsex($item['TITLE']);
-    if($item["LINK"] <> "") {
-        $strReturn .= '
-        <li class="breadcrumbs__item">
-            <a href="' . $item['LINK'] . '" class="breadcrumbs__link">
-                ' . $title . '
-            </a>
-        </li>';
-    } else {
-        $strReturn .= '
-        <li class="breadcrumbs__item">
-            <span class="breadcrumbs__link">
-                ' . $title . '
-            </span>
-        </li>';
-    }
-}
-
-$strReturn .= '</ul>';
-$strReturn .= '<a href="' . $arResult[0]['LINK'] . '" class="breadcrumbs__link breadcrumbs__link-mobile">
-                    <span class="a-icon size-s">
-                        <svg>
-                            <use  xlink:href="/frontend/build/assets/svg-sprite.svg#icon-chevron-left"></use>
-                        </svg>
-                    </span>
-                    ' . htmlspecialcharsex($arResult[0]['TITLE']) . '
-                </a>';
-$strReturn .= '</nav>';
+$strReturn .= '</div>';
 
 return $strReturn;

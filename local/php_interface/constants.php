@@ -1,5 +1,4 @@
 <?php
-const LIBRARY_DIRECTORY = '/local/php_interface/lib/';
 const MOBIL_APP_LINK = '#';
 const ONLINE_BANK_LINK = '#';
 const OFFICES_AND_ATMS_LINK = '#';

@@ -2,56 +2,56 @@
 $aMenuLinks = Array(
 	Array(
 		"Карты",
-		"/for-private-clients/cards/",
+		"/cards/",
 		Array(),
 		Array(),
 		""
 	),
 	Array(
 		"Вклады",
-		"/for-private-clients/deposits/",
+		"/deposits/",
 		Array(),
 		Array(),
 		""
 	),
 	Array(
 		"Кредиты",
-		"/for-private-clients/loans/",
+		"/loans/",
 		Array(),
 		Array(),
 		""
 	),
 	Array(
 		"Ипотека",
-		"/for-private-clients/mortgage/",
+		"/mortgage/",
 		Array(),
 		Array(),
 		""
 	),
 	Array(
 		"Платежи и переводы",
-		"/for-private-clients/payments-and-transfers/",
+		"/payments-and-transfers/",
 		Array(),
 		Array(),
 		""
 	),
 	Array(
 		"Онлайн сервисы",
-		"/for-private-clients/online-services/",
+		"/online-services/",
 		Array(),
 		Array(),
 		""
 	),
 	Array(
 		"Услуги",
-		"/for-private-clients/services/",
+		"/services/",
 		Array(),
 		Array(),
 		""
 	),
 	Array(
 		"Страхование",
-		"/for-private-clients/insurance/",
+		"/insurance/",
 		Array(),
 		Array(),
 		""

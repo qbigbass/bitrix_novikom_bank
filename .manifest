@@ -1,7 +1,8 @@
-host=dev3.dnet
-server=s1.main.novikombank.3.dev.dalee.ru
+host=devz55.dnet
+server=s1.main.novikombank.z55.dev.dalee.ru
 strategy=plain
 
 [users]
 markiros=/home/markiros/web/novikombank/main
 ssidorov=/home/ssidorov/web/novikombank/main
+dkondratyev=/home/dkondratyev/web/novikombank/main

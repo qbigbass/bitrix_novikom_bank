@@ -2,7 +2,8 @@
 use Bitrix\Main\Loader;
 
 Loader::registerAutoLoadClasses(null, [
-    'Galago\Frontend\Asset' => LIBRARY_DIRECTORY . 'Frontend/Asset.php',
-    'Galago\CustomFields\CustomElementProperty' => LIBRARY_DIRECTORY . 'CustomFields/CustomElementProperty.php',
-    'Galago\Classes\CustomIblockElements' => LIBRARY_DIRECTORY . 'Classes/CustomIblockElements.php',
+    'Lib\UserType\CUserTypeStringDescr' => '/local/php_interface/Lib/UserType/CUserTypeStringDescr.php',
+    'Lib\Classes\ElementPropertiesFetcher' => '/local/php_interface/Lib/Classes/ElementPropertiesFetcher.php',
+    'Lib\Classes\ElementDTO' => '/local/php_interface/Lib/Classes/ElementDTO.php',
+    'Lib\Classes\ElementPropertyDTO' => '/local/php_interface/Lib/Classes/ElementPropertyDTO.php',
 ]);

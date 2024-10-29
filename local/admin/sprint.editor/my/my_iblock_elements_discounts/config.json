@@ -1,7 +1,0 @@
-{
-  "title": "Привязка к ИБ «Скидки»",
-  "sort": "700",
-  "templates": [
-    "select.html"
-  ]
-}

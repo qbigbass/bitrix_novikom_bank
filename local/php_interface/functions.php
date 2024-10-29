@@ -1,13 +1,17 @@
 <?php
 
-function iblock(string $code) : ?int {
+function iblock(string $code) : int {
     try {
-        \Bitrix\Main\Loader::IncludeModule("iblock");
+        \Bitrix\Main\Loader::IncludeModule('iblock');
         $iblock = Bitrix\Iblock\IblockTable::getList(['select' => ['ID'], 'filter' => ['CODE' => $code]])->Fetch();
-        return $iblock['ID'];
+        return $iblock['ID'] ?? 0;
     } catch (Exception $e) {
-        return false;
+        return 0;
     }
+}
+
+function printIntoFile($text, string $filePath = '/logger.txt') {
+    file_put_contents($_SERVER['DOCUMENT_ROOT'] . $filePath, print_r($text, true), FILE_APPEND);
 }
 
 function modifyMainSubmenuResult(array $arResult) : array {
@@ -38,4 +42,11 @@ function modifyMainSubmenuResult(array $arResult) : array {
 
 function clearPhoneNumber(string $phoneNumber) : string {
     return preg_replace('/[^0-9\+]+/', '', $phoneNumber);
+}
+
+function pre(mixed ...$arrays): void
+{
+    foreach ($arrays as $array) {
+        echo '<pre>' . print_r($array, true) . '</pre>';
+    }
 }

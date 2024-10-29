@@ -1,32 +1,30 @@
 <?if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
 
 <?if (!empty($arResult)) {?>
-    <nav class="desktop-main-menu">
-        <div class="desktop-main-menu__links js-desktop-main-menu">
-            <?foreach($arResult['NOT_HIDDEN'] as $key => $notHiddenItem) {?>
-                <?$isActive = ($notHiddenItem['SELECTED']) ? ' is-active' : ''?>
-                <?if($key == 0) {?>
-                    <a class="desktop-main-menu-link body-s-light<?=$isActive?>" href="<?=$notHiddenItem['LINK']?>"><?=$notHiddenItem['TEXT']?></a>
-                <?} else {?>
-                    <a class="desktop-main-menu-link body-s-light js-desktop-move-link<?=$isActive?>" href="<?=$notHiddenItem['LINK']?>"><?=$notHiddenItem['TEXT']?></a>
-                <?}?>
+    <nav class="main-menu">
+        <?foreach($arResult['NOT_HIDDEN'] as $key => $notHiddenItem) {?>
+            <?$isActive = ($notHiddenItem['SELECTED']) ? ' is-active' : ''?>
+            <?if($key == 0) {?>
+                <a class="main-menu__link text-s<?=$isActive?>" href="<?=$notHiddenItem['LINK']?>"><?=$notHiddenItem['TEXT']?></a>
+            <?} else {?>
+                <a class="main-menu__link text-s d-none d-xl-block<?=$isActive?>" href="<?=$notHiddenItem['LINK']?>"><?=$notHiddenItem['TEXT']?></a>
             <?}?>
+        <?}?>
 
-            <?if(!empty($arResult['HIDDEN'])) {?>
-                <button class="a-button drop-down-button js-drop-down-button a-button--s a-button--transparent">
-                    <span class="a-icon size-m">
-                        <svg>
-                            <use  xlink:href="/frontend/build/assets/svg-sprite.svg#icon-more"></use>
-                        </svg>
-                    </span>
-                    <div class="drop-down-menu js-drop-down-menu">
-                        <?foreach($arResult['HIDDEN'] as $hiddenItem) {?>
-                            <?$isActive = ($hiddenItem['SELECTED']) ? ' is-active' : ''?>
-                            <a class="drop-down-menu__link<?=$isActive?>" href="<?=$hiddenItem['LINK']?>"><?=$hiddenItem['TEXT']?></a>
-                        <?}?>
-                    </div>
+        <?if(!empty($arResult['HIDDEN'])) {?>
+            <div class="dropdown">
+                <button class="icon size-m dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-more"></use>
+                    </svg>
                 </button>
-            <?}?>
-        </div>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <?foreach($arResult['HIDDEN'] as $hiddenItem) {?>
+                        <?$isActive = ($hiddenItem['SELECTED']) ? ' is-active' : ''?>
+                        <li><a class="dropdown-item fw-bold<?=$isActive?>" href="<?=$hiddenItem['LINK']?>"><?=$hiddenItem['TEXT']?></a></li>
+                    <?}?>
+                </ul>
+            </div>
+        <?}?>
     </nav>
 <?}?>

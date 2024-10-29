@@ -11,45 +11,11 @@
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
-Galago\Frontend\Asset::getInstance()->addJsAndCss('loan-detail');
-Galago\Frontend\Asset::getInstance()->addJsAndCss('overdraft');
 ?>
-
-<div class="product-card-banner product-card-banner--heavy-violet">
-    <picture class="pattern-bg product-card-banner__pattern">
-        <source srcset="/frontend/build/assets/patterns/section/pattern-dark-s.svg" media="(max-width: 767px)">
-        <source srcset="/frontend/build/assets/patterns/section/pattern-dark-m.svg" media="(max-width: 1199px)">
-        <img src="/frontend/build/assets/patterns/section/pattern-dark-l.svg" alt="bg pattenr" loading="lazy">
-    </picture>
-    <div class="product-card-banner__wrapper">
-        <div class="product-card-banner__content">
-            <div class="product-card-banner__header">
-                <?$APPLICATION->IncludeComponent(
-                    "bitrix:breadcrumb",
-                    "",
-                    Array(
-                        "PATH" => "",
-                        "SITE_ID" => "s1",
-                        "START_FROM" => "0"
-                    )
-                );?>
-                <h1 class="<?$APPLICATION->AddBufferContent('showHeadingClass');?>">
-                    <?$APPLICATION->ShowProperty('NAME')?>
-                </h1>
-                <p class="product-card-banner__subtitle body-l-light">
-                    <?$APPLICATION->ShowProperty('DETAIL_TEXT')?>
-                </p>
-            </div>
-            <img src="<?$APPLICATION->ShowProperty('ICON_SRC')?>" class="product-card-banner__image" alt="">
-            <?$APPLICATION->AddBufferContent('showShortConditions');?>
-            <?$APPLICATION->AddBufferContent('showButton');?>
-        </div>
-    </div>
-</div>
 
 <?$APPLICATION->IncludeComponent(
     "bitrix:news.detail",
-    "loan_detail_info",
+    "",
     [
         "DISPLAY_DATE" => $arParams["DISPLAY_DATE"],
         "DISPLAY_NAME" => $arParams["DISPLAY_NAME"],
