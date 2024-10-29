@@ -36,23 +36,19 @@ const normalizeInputTextValue = (value) => {
     return parseInt(value.replace(/\s/g, ''));
 }
 
-const setValueInputText = (STATE, value, outsideCall = false, isFocus = false) => {
-    const isInvalidValue = isNaN(value);
-    const adjustedValue = isInvalidValue ? STATE.minValue : value;
+const setValueInputText = (state, value, {outsideCall = false, isFocus = false} = {}) => {
+    const isInvalid = isNaN(value);
+    const adjustedValue = isInvalid ? state.minValue : value;
 
-    if (STATE.useSteps && STATE.disabled) {
-        if (outsideCall) {
-            STATE.value = adjustedValue;
-        } else {
-            STATE.value = findIndexInRange(STATE.steps, adjustedValue);
-        }
+    if (state.useSteps && state.disabled) {
+        state.value = outsideCall ? adjustedValue : findIndexInRange(state.steps, adjustedValue);
     } else {
-        STATE.value = Math.min(Math.max(adjustedValue, STATE.minValue), STATE.maxValue);
+        state.value = Math.min(Math.max(adjustedValue, state.minValue), state.maxValue);
     }
-    const currentValue = STATE.useSteps ? STATE.steps[STATE.value] : STATE.value;
 
-    STATE.elements.inputText.setAttribute('value', currentValue);
-    STATE.elements.inputText.value =  getFormatedTextByType(currentValue, STATE.type, isFocus);
+    const currentValue = state.useSteps ? state.steps[state.value] : state.value;
+    state.elements.inputText.setAttribute('value', currentValue);
+    state.elements.inputText.value = getFormatedTextByType(currentValue, state.type, isFocus);
 }
 
 const initElements = (root, defaultValues) => {
@@ -114,7 +110,7 @@ const enableInputTextElement = (STATE) => {
     STATE.elements.inputText.removeAttribute('disabled');
     STATE.elements.inputText.focus();
     STATE.disabled = false;
-    setValueInputText(STATE, STATE.value, false, true);
+    setValueInputText(STATE, STATE.value,{ outsideCall: false, isFocus: true });
 }
 
 const disableInputTextElement = (STATE, value) => {
@@ -186,7 +182,7 @@ const initDefaultEventListeners = (STATE) => {
 const initInputSliderText = (sliderInputText, defaultValues) => {
     const STATE = initState(sliderInputText, defaultValues);
     initDefaultEventListeners(STATE);
-    STATE.methods.setValue = (value) => setValueInputText(STATE, value, true);
+    STATE.methods.setValue = (value) => setValueInputText(STATE, value, {outsideCall: true});
 
     return STATE;
 }
