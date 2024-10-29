@@ -1,4 +1,4 @@
-import IMask from 'imask';
+import {getFormatedTextByType} from './inputSlider';
 import {plural} from '../utils';
 
 export const ROOT_JS_CLASS = '.js-input-slider-text';
@@ -32,108 +32,11 @@ const findIndexInRange = (arr, target) => {
     return -1;
 }
 
-const updateMaskOptions = (mask, options) => {
-    if (mask.mask !== options.mask) {
-        mask.updateOptions(options);
-    }
-}
-
-const getYearsAndMonth = (value) => {
-    return {
-        years: Math.floor(value / 12),
-        months: value % 12
-    }
-}
-
 const normalizeInputTextValue = (value) => {
     return parseInt(value.replace(/\s/g, ''));
 }
 
-const getMaskOptions = (value, type, disabled = false) => {
-    let mask = '';
-    let defaultValue = String(value);
-
-    const defaultOptions = {
-        lazy: false,
-        mask: '',
-        blocks: {}
-    }
-
-    switch (type) {
-        case 'price':
-            mask = 'num ₽';
-            defaultOptions.blocks['num'] = {
-                mask: Number,
-                thousandsSeparator: ' ',
-                min: 0,
-            }
-            // defaultOptions.format = (value) => `${value} <span class="currency">₽</span>`;
-            break;
-        case 'day':
-            mask = `num ${plural(['день', 'дня', 'дней'], value)}`;
-            defaultOptions.blocks['num'] = {
-                mask: Number,
-                thousandsSeparator: ' ',
-                min: 0
-            }
-            break;
-        case 'month':
-            if (!disabled) {
-                const pluralWord = plural(['месяц', 'месяца', 'месяцев'], value);
-                mask = `num ${ pluralWord }`;
-
-                defaultOptions.blocks['num'] = {
-                    mask: Number,
-                    thousandsSeparator: ' ',
-                    min: 1
-                }
-            } else {
-                const { years, months } = getYearsAndMonth(value);
-
-                if (years >= 1) {
-                    mask = `years ${plural(['год', 'года', 'лет'], years)}`;
-
-                    defaultOptions.blocks['years'] = {
-                        mask: Number,
-                        thousandsSeparator: ' ',
-                        min: 0,
-                        max: 5
-                    }
-
-                    if (months > 0) {
-                        mask += ` months ${plural(['месяц', 'месяца', 'месяцев'], months)}`
-
-                        defaultOptions.blocks['months'] = {
-                            mask: Number,
-                            thousandsSeparator: ' ',
-                            min: 1,
-                            max: 11
-                        }
-                    }
-                } else {
-                    mask = `months ${plural(['месяц', 'месяца', 'месяцев'], months)}`;
-
-                    defaultOptions.blocks['months'] = {
-                        mask: Number,
-                        thousandsSeparator: ' ',
-                        min: 1,
-                        max: 11
-                    }
-                }
-
-                defaultValue = `${years}${months}`;
-            }
-
-            break;
-    }
-
-    defaultOptions.mask = mask;
-
-    return { options: defaultOptions, value: defaultValue };
-}
-
-
-const setValueInputText = (STATE, value, outsideCall = false) => {
+const setValueInputText = (STATE, value, outsideCall = false, isFocus = false) => {
     const isInvalidValue = isNaN(value);
     const adjustedValue = isInvalidValue ? STATE.minValue : value;
 
@@ -146,15 +49,10 @@ const setValueInputText = (STATE, value, outsideCall = false) => {
     } else {
         STATE.value = Math.min(Math.max(adjustedValue, STATE.minValue), STATE.maxValue);
     }
-
     const currentValue = STATE.useSteps ? STATE.steps[STATE.value] : STATE.value;
-    const { options, value: maskValue } = getMaskOptions(currentValue, STATE.type, STATE.disabled);
 
-    updateMaskOptions(STATE.mask, options);
-
-    STATE.elements.inputText.setAttribute('value', maskValue);
-    STATE.elements.inputText.value = maskValue;
-    STATE.mask.value = maskValue;
+    STATE.elements.inputText.setAttribute('value', currentValue);
+    STATE.elements.inputText.value =  getFormatedTextByType(currentValue, STATE.type, isFocus);
 }
 
 const initElements = (root, defaultValues) => {
@@ -179,15 +77,21 @@ const initElements = (root, defaultValues) => {
     }
 }
 
+const formatInputValue = (value, type) => {
+    // Удалить все пробелы из значения
+    value = String(value).replace(/\s/g, '');
+
+    // Преобразовать значение в число
+    value = parseFloat(value);
+
+    return getFormatedTextByType(value, type);
+}
+
 const initMaskInput = (elements, defaultValues) => {
     const currentValue = defaultValues.useSteps ? defaultValues.steps[defaultValues.value] : defaultValues.value;
-    let { options, value } = getMaskOptions(currentValue, defaultValues.type, true);
+    elements.inputText.value = formatInputValue(currentValue, defaultValues.type);
 
-    const mask = IMask(elements.inputText, options);
-    // const mask = elements.inputText;
-    mask.value = value;
-
-    return mask;
+    return {value: formatInputValue(currentValue, defaultValues.type)};
 }
 
 const initState = (root, defaultValues) => {
@@ -209,16 +113,14 @@ const enableInputTextElement = (STATE) => {
     STATE.elements.inputText.removeAttribute('readonly');
     STATE.elements.inputText.removeAttribute('disabled');
     STATE.elements.inputText.focus();
-
     STATE.disabled = false;
-    setValueInputText(STATE, STATE.value);
+    setValueInputText(STATE, STATE.value, false, true);
 }
 
 const disableInputTextElement = (STATE, value) => {
     STATE.elements.root.classList.remove(ACTION_CLASSES.isEditable);
     STATE.elements.inputText.setAttribute('readonly', '');
     STATE.elements.inputText.setAttribute('disabled', '');
-
     STATE.disabled = true;
     setValueInputText(STATE, value);
 }
@@ -238,7 +140,7 @@ const initDefaultEventListeners = (STATE) => {
     });
 
     STATE.elements.inputText.addEventListener('input', (event) => {
-        //Останавливаем событие для того чтобы изменения все работали через blur
+        // Останавливаем событие для того чтобы изменения все работали через blur
         event.stopPropagation();
     });
 
@@ -255,6 +157,32 @@ const initDefaultEventListeners = (STATE) => {
     });
 }
 
+/**
+ * Initializes a component for editing a number in a text input. The component
+ * consists of a text input, an edit button and a close button. The user can edit
+ * the number by clicking on the edit button. The component also supports a
+ * "steps" mode, where the user can select a value from a predefined list of
+ * values.
+ *
+ * @param {HTMLElement} sliderInputText - The root element of the component.
+ * @param {Object} defaultValues - The default values for the component. The
+ * object should have the following properties:
+ *   - `value`: The initial value of the component.
+ *   - `minValue`: The minimum value of the component.
+ *   - `maxValue`: The maximum value of the component.
+ *   - `stepSize`: The step size of the component.
+ *   - `type`: The type of the component. Can be one of the following:
+ *     - `price`: The component is for editing a price.
+ *     - `count`: The component is for editing a count.
+ *   - `useSteps`: A boolean indicating whether the component should use steps.
+ *   - `steps`: An array of values that the user can select from.
+ *
+ * @return {Object} An object containing the state of the component and methods
+ * for interacting with the component. The object has the following properties:
+ *   - `value`: The current value of the component.
+ *   - `setValue`: A function for setting the value of the component. The
+ *     function takes a single argument, which is the value to set.
+ */
 const initInputSliderText = (sliderInputText, defaultValues) => {
     const STATE = initState(sliderInputText, defaultValues);
     initDefaultEventListeners(STATE);
