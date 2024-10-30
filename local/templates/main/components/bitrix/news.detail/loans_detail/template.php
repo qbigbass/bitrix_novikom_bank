@@ -249,3 +249,5 @@ if (file_exists($headerFilePath)) {
         </div>
     </section>
 <? } ?>
+
+<? $helper->saveCache(); ?>

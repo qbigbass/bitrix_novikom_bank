@@ -11,6 +11,8 @@
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 
+use Dalee\Helpers\ComponentHelper;
+
 $terms = [
     'RATE' => [
         'SIGN' => 'Минимальная ставка',
@@ -32,16 +34,12 @@ $terms = [
     <div class="banner-product__wrapper">
         <div class="banner-product__content">
             <div class="banner-product__header">
-                <?$APPLICATION->IncludeComponent(
-                    "bitrix:breadcrumb",
-                    "",
-                    [
-                        "PATH" => "",
-                        "SITE_ID" => "s1",
-                        "START_FROM" => "0"
-                    ],
-                    $component
-                );?>
+
+                <?
+                    $helper = new ComponentHelper($component);
+                    $helper->deferredCall('showNavChain', ['.default']);
+                ?>
+
                 <h1>Ипотека по программе «<?= $arResult["~NAME"] ?>»</h1>
                 <p class="banner-product__subtitle"><?= $arResult["~PREVIEW_TEXT"] ?></p>
             </div>

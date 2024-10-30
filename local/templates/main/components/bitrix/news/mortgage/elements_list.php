@@ -1,4 +1,6 @@
-<?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();
+<? use Dalee\Helpers\ComponentHelper;
+
+if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();
 /** @var array $arParams */
 /** @var array $arResult */
 /** @global CMain $APPLICATION */
@@ -19,16 +21,12 @@ $this->setFrameMode(true);
         <div class="row">
             <div class="col-12 position-relative z-1 mb-5 mb-md-0 pt-6">
                 <div class="d-flex flex-column align-items-start gap-3 gap-md-4">
-                    <?$APPLICATION->IncludeComponent(
-                        "bitrix:breadcrumb",
-                        "",
-                        [
-                            "PATH" => "",
-                            "SITE_ID" => "s1",
-                            "START_FROM" => "0"
-                        ],
-                        $component
-                    );?>
+
+                    <?
+                        $helper = new ComponentHelper($component);
+                        $helper->deferredCall('showNavChain', ['.default']);
+                    ?>
+
                     <h1 class="text-banner__title dark-0 text-break"><?=$APPLICATION->GetTitle()?></h1>
                 </div>
             </div>
@@ -144,3 +142,5 @@ $this->setFrameMode(true);
 
 <?$APPLICATION->IncludeFile('/local/php_interface/include/cross_sale_products_block.php', ['HEADER_TEXT' => 'Смотрите также']);?>
 <?$APPLICATION->IncludeFile('/local/php_interface/include/request_call.php');?>
+
+<? $helper->saveCache(); ?>

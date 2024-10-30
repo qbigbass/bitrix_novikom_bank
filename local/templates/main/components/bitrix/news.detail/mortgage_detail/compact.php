@@ -10,6 +10,9 @@
 /** @var string $templateFolder */
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
+
+use Dalee\Helpers\ComponentHelper;
+
 ?>
 
 <section class="text-banner pe-lg-0 px-0 px-lg-6 bg-linear-blue text-banner--border-green">
@@ -17,16 +20,12 @@
         <div class="row">
             <div class="col-12 col-sm-6 col-md-8 position-relative z-1 mb-5 mb-md-0 pt-6">
                 <div class="d-flex flex-column align-items-start gap-3 gap-md-4">
-                    <?$APPLICATION->IncludeComponent(
-                        "bitrix:breadcrumb",
-                        "",
-                        [
-                            "PATH" => "",
-                            "SITE_ID" => "s1",
-                            "START_FROM" => "0"
-                        ],
-                        $component
-                    );?>
+
+                    <?
+                        $helper = new ComponentHelper($component);
+                        $helper->deferredCall('showNavChain', ['.default']);
+                    ?>
+
                     <h1 class="text-banner__title dark-0 text-break"><?= $arResult["NAME"] ?></h1>
                     <div class="text-banner__description text-l dark-0"><?= $arResult["PREVIEW_TEXT"] ?></div>
                 </div>

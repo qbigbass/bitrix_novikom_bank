@@ -1,7 +1,7 @@
 <?php
 /** @var array $arResult */
 
-use Lib\Dalee\Classes\RatesFetcher;
+use Dalee\Services\RatesFetcher;
 
 $ratesFetcher = new RatesFetcher(iblock($arResult['IBLOCK_CODE'] . '_rates'));
 $ratesFetcher->fetchRates($arResult['ID']);
