@@ -1,13 +1,14 @@
 mixin card-service-app(data)
     .card-service-app(class= `${data.bgColor ? `card-service-app--bg-${data.bgColor}` : ""}`)
-        .card-service-app__content
+        .card-service-app__inner
             h3= data.title
-            .row.row-gap-3
-                each benefit in data.benefits
-                    .col-12.col-lg-3
-                        .d-flex.align-items-center.gap-3
-                            +svg-use(benefit.icon, "icon size-m")
-                            span.fw-semibold.text-s!= benefit.text
-            .d-flex.gap-3
-                block
+            .card-service-app__content
+                .row.row-gap-3
+                    each benefit in data.benefits
+                        .col-12.col-lg-4
+                            .d-flex.align-items-center.gap-3
+                                +svg-use(benefit.icon, "icon size-m")
+                                span.fw-semibold.text-s!= benefit.text
+                .d-flex.gap-3
+                    block
         +pattern-bg('card', 'dark', 'pattern-bg--position-sm-top')
