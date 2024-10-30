@@ -11,18 +11,18 @@ use Bitrix\Main\Localization\Loc;
                 <?php $APPLICATION->IncludeComponent(
                     "bitrix:menu",
                     "main_menu_footer",
-                    Array(
+                    [
                         "ALLOW_MULTI_SELECT" => "N",
                         "CHILD_MENU_TYPE" => "left",
                         "DELAY" => "N",
                         "MAX_LEVEL" => "2",
-                        "MENU_CACHE_GET_VARS" => array(""),
+                        "MENU_CACHE_GET_VARS" => [""],
                         "MENU_CACHE_TIME" => "3600",
                         "MENU_CACHE_TYPE" => "A",
                         "MENU_CACHE_USE_GROUPS" => "Y",
                         "ROOT_MENU_TYPE" => "top",
                         "USE_EXT" => "N"
-                    )
+                    ]
                 );?>
                 <div class="col-12 col-md-6 col-xl-3">
                     <div class="polygon-container js-polygon-container">
@@ -89,18 +89,18 @@ use Bitrix\Main\Localization\Loc;
                     <?php $APPLICATION->IncludeComponent(
                         "bitrix:menu",
                         "additional_menu_footer",
-                        Array(
+                        [
                             "ALLOW_MULTI_SELECT" => "N",
                             "CHILD_MENU_TYPE" => "left",
                             "DELAY" => "N",
                             "MAX_LEVEL" => "1",
-                            "MENU_CACHE_GET_VARS" => array(""),
+                            "MENU_CACHE_GET_VARS" => [""],
                             "MENU_CACHE_TIME" => "3600",
                             "MENU_CACHE_TYPE" => "A",
                             "MENU_CACHE_USE_GROUPS" => "Y",
                             "ROOT_MENU_TYPE" => "bottom",
                             "USE_EXT" => "N"
-                        )
+                        ]
                     );?>
                     <div class="col-12 col-lg-4 col-xl-3">
                         <div class="footer__copyright">
@@ -168,18 +168,18 @@ use Bitrix\Main\Localization\Loc;
                 <?php $APPLICATION->IncludeComponent(
                     "bitrix:menu",
                     "main_mobil_menu",
-                    Array(
+                    [
                         "ALLOW_MULTI_SELECT" => "N",
                         "CHILD_MENU_TYPE" => "left",
                         "DELAY" => "N",
                         "MAX_LEVEL" => "1",
-                        "MENU_CACHE_GET_VARS" => array(""),
+                        "MENU_CACHE_GET_VARS" => [""],
                         "MENU_CACHE_TIME" => "3600",
                         "MENU_CACHE_TYPE" => "A",
                         "MENU_CACHE_USE_GROUPS" => "Y",
                         "ROOT_MENU_TYPE" => "top",
                         "USE_EXT" => "N"
-                    )
+                    ]
                 );?>
             </div>
             <div class="mobile-menu__body js-mobile-menu-body">
@@ -201,18 +201,18 @@ use Bitrix\Main\Localization\Loc;
                     <?php $APPLICATION->IncludeComponent(
                         "bitrix:menu",
                         "main_mobil_submenu",
-                        Array(
+                        [
                             "ALLOW_MULTI_SELECT" => "N",
                             "CHILD_MENU_TYPE" => "left",
                             "DELAY" => "N",
                             "MAX_LEVEL" => "2",
-                            "MENU_CACHE_GET_VARS" => array(""),
+                            "MENU_CACHE_GET_VARS" => [""],
                             "MENU_CACHE_TIME" => "3600",
                             "MENU_CACHE_TYPE" => "A",
                             "MENU_CACHE_USE_GROUPS" => "Y",
                             "ROOT_MENU_TYPE" => "left",
                             "USE_EXT" => "Y"
-                        )
+                        ]
                     );?>
                 </div>
 
