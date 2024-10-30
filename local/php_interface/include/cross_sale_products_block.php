@@ -5,7 +5,7 @@
 $APPLICATION->IncludeComponent(
     "bitrix:news.list",
     "cross_sale_block",
-    Array(
+    [
         "ACTIVE_DATE_FORMAT" => "d.m.Y",
         "ADD_SECTIONS_CHAIN" => "N",
         "AJAX_MODE" => "N",
@@ -25,7 +25,7 @@ $APPLICATION->IncludeComponent(
         "DISPLAY_PICTURE" => "N",
         "DISPLAY_PREVIEW_TEXT" => "N",
         "DISPLAY_TOP_PAGER" => "N",
-        "FIELD_CODE" => array("ID", "NAME", ""),
+        "FIELD_CODE" => ["ID", "NAME", ""],
         "FILTER_NAME" => "",
         "HIDE_LINK_WHEN_NO_DETAIL" => "N",
         "HEADER_TEXT" => $arParams['HEADER_TEXT'] ?: "Смотрите также",
@@ -45,7 +45,7 @@ $APPLICATION->IncludeComponent(
         "PARENT_SECTION" => "",
         "PARENT_SECTION_CODE" => "",
         "PREVIEW_TRUNCATE_LEN" => "",
-        "PROPERTY_CODE" => array("BUTTON_LINK", "BUTTON_TEXT", "TEXT", ""),
+        "PROPERTY_CODE" => ["BUTTON_LINK", "BUTTON_TEXT", "TEXT", ""],
         "SET_BROWSER_TITLE" => "N",
         "SET_LAST_MODIFIED" => "N",
         "SET_META_DESCRIPTION" => "N",
@@ -58,5 +58,5 @@ $APPLICATION->IncludeComponent(
         "SORT_ORDER1" => "DESC",
         "SORT_ORDER2" => "ASC",
         "STRICT_SECTION_CHECK" => "N"
-    )
+    ]
 );?>

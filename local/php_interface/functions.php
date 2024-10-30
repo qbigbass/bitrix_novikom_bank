@@ -50,3 +50,51 @@ function pre(mixed ...$arrays): void
         echo '<pre>' . print_r($array, true) . '</pre>';
     }
 }
+
+function processTerms(array $terms, array $properties, bool $days = false): array
+{
+    $result = [];
+
+    foreach ($properties as $key => $term) {
+        if (!$term || !isset($terms[$key])) {
+            continue;
+        }
+
+        $sign = $terms[$key]['SIGN'];
+        $fromTo = $terms[$key]['FROM_TO'];
+        $value = '';
+
+        if ($key === 'RATE') {
+            $value = $term . ' %';
+        } elseif (in_array($key, ['SUM_FROM', 'SUM_TO'])) {
+            $value = number_format($term, 0, '', ' ') . ' ₽';
+        } elseif (in_array($key, ['PERIOD_FROM', 'PERIOD_TO'])) {
+            if ($days) {
+                $value = $term . declensionFrom($term, 'day');
+            } else {
+                $value = round($term / 12) . declensionFrom($term);
+            }
+        } elseif ($key === 'DIAPASON') {
+            $value = $term;
+        }
+
+        $result[] = [
+            'SIGN' => $sign,
+            'FROM_TO' => $fromTo,
+            'VALUE' => $value,
+        ];
+    }
+
+    return $result;
+}
+
+function declensionFrom(int $number, string $period = 'year') {
+    $number = abs($number) % 100;
+
+    return match ($period) {
+        'year' => $number % 10 == 1 ? ' года' : ' лет',
+        'month' => $number % 10 == 1 ? ' месяца' : ' месяцев',
+        'day' => $number % 10 == 1 ? ' дня' : ' дней',
+        default => '',
+    };
+}
