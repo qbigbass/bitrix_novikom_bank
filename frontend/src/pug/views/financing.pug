@@ -1,103 +1,145 @@
 extends ../templates/base
 
 block title
-    title= 'Частные клиенты'
+    title= 'Финансирование и гарантии'
     meta(name="description" content="Описание главной страницы")
 block content
     include ../includes/header/header
-    include ../components/banner-hero
     include ../cards/card-service
     include ../cards/card-service-app
+    include ../components/banners/banner-text
     include ../components/announcement
     include ../cards/card-special
-    include ../components/ui/tabs
+    include ../components/ui/tabs-simple
     include ../includes/layout/slider-card-product
 
-    section.section-layout
-        .container
-            h3.ps-lg-6.mb-6.mb-lg-7
-                | Предложения банка Новиком
-            +slider-card-product()
+    -
+        var bannerTextData = {
+            title: "Финансирование <br>и&nbsp;гарантии",
+            breadcrumbsArray: [
+                {linkText: "Корпоративным клиентам", link: "/"}
+            ],
+        }
 
-    section.section-layout.bank-service-layout
-        .container
-            .bank-service-layout__wrapper
-                .bank-service-layout__services
-                    .swiper.js-slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:3,laptop:3,laptop-x:3" data-space-between="mobile-s:8,mobile:8,tablet:8,laptop:8,laptop-x:8")
-                        .swiper-wrapper.js-swiper-wrapper
-                            -
-                                var cardServiceList = [
-                                    {
-                                        href: "#",
-                                        title: "Интернет-банк",
-                                        icon: "icon-a-web-bank"
-                                    },
-                                    {
-                                        href: "#",
-                                        title: "Кредиты",
-                                        icon: "icon-a-money"
-                                    },
-                                    {
-                                        href: "#",
-                                        title: "Ипотека",
-                                        icon: "icon-a-house"
-                                    }
-                                ]
-                            each card in cardServiceList
-                                .swiper-slide.js-swiper-slide
-                                    +card-service(card)
+        var tabsList = [
+            {
+                link: '#documents',
+                id: 'documents',
+                linkText: 'Документы и тарифы',
+                isActive: true
+            },
+            {
+                link: '#faq',
+                id: 'faq',
+                linkText: 'Вопросы и ответы',
+                isActive: false
+            },
+        ]
 
-                        +slider-controls().mt-3.mt-md-0
-                .bank-service-layout__salary
-                    .card-service-salary
-                        .card-service-salary__content
-                            h3 Зарплатная карта
-                            .d-flex.flex-wrap.column-gap-6.row-gap-4.column-gap-md-7
-                                a.btn.btn-link.btn-lg-lg.text-info.btn-icon(href="#")
-                                    | Кешбэк
-                                    +svg-use("icon-arrow-right", "icon size-m")
-                                a.btn.btn-link.btn-lg-lg.text-info.btn-icon(href="#")
-                                    | Бонусы
-                                    +svg-use("icon-arrow-right", "icon size-m")
-                                a.btn.btn-link.btn-lg-lg.text-info.btn-icon(href="#")
-                                    | Акции
-                                    +svg-use("icon-arrow-right", "icon size-m")
-                        +pattern-bg('card', 'dark')
-                        +pattern-bg('card', 'dark', 'card-service-salary__desktop-pattern')
-                .bank-service-layout__app
+        var cardProductListCorp = [
+            {
+                color: 'orange',
+                tag: 'Корпоративным клиентам',
+                title: 'Размещение денежных средств',
+                img: 'large-corporate/deposits.png',
+                link: 'Подробнее',
+                description: 'Депозиты для корпоративных клиентов'
+            },
+            {
+                color: 'orange',
+                tag: 'Корпоративным клиентам',
+                title: 'Меры господдержки',
+                img: 'large-corporate/state-support.png',
+                link: 'Подробнее',
+                description: 'Льготное финансирование организациям'
+            },
+            {
+                color: 'orange',
+                tag: 'Корпоративным клиентам',
+                title: 'Программа поощрения «Развитие»',
+                img: 'large-corporate/program-development.png',
+                link: 'Подробнее',
+                description: 'Особые условия обслуживания в&nbsp;банке'
+            },
+            {
+                color: 'orange',
+                tag: 'Корпоративным клиентам',
+                title: 'Размещение денежных средств',
+                img: 'large-corporate/deposits.png',
+                link: 'Подробнее',
+                description: 'Депозиты для корпоративных клиентов'
+            },
+            {
+                color: 'orange',
+                tag: 'Корпоративным клиентам',
+                title: 'Меры господдержки',
+                img: 'large-corporate/state-support.png',
+                link: 'Подробнее',
+                description: 'Льготное финансирование организациям'
+            },
+
+        ]
+
+    +banner-text(
+        bannerTextData,
+        "orange",
+        "bg-heavy-purple"
+    )
+
+    section.section-layout.bg-dark-10
+        .container
+            .row.row-gap-4
+                .col-12
+
+                .col-12
                     +card-service-app({
-                        title: "Мобильное приложение",
+                        bgColor: 'purple',
+                        title: "Интернет-банк для бизнеса",
                         benefits: [
                             {
-                                icon: "icon-mobile",
-                                text: "Управление кешбэком и&nbsp;бонусами"
-                            },
-                            {
-                                icon: "icon-time",
-                                text: "Доступ к&nbsp;услугам банка 24/7"
+                                icon: "icon-doc",
+                                text: "Удаленный <br>документооборот"
                             },
                             {
                                 icon: "icon-cash",
-                                text: "Платежи и&nbsp;переводы без комиссии"
+                                text: "Проведение <br>платежей"
+                            },
+                            {
+                                icon: "icon-wallet",
+                                text: "Управление <br>расчетными счетами"
                             }
                         ]
                     })
-                        a(href="#").btn.btn-info.d-none.d-md-inline-flex.align-items-center
-                            img(src="img/app-logos/ru-store.svg" width="94" height="24" alt="RuStore" loading="lazy")
-                        a(href="#").btn.btn-info.d-none.d-md-inline-flex.align-items-center
-                            img(src="img/app-logos/ru-market.svg" width="120" height="28" alt="RuMarket" loading="lazy")
-                        a(href="#").btn.btn-info.d-none.d-md-inline-flex.align-items-center
-                            img(src="img/app-logos/nash-store.svg" width="112" height="18" alt="NashStore" loading="lazy")
-                        a(href="#").btn.btn-info.btn-icon.d-none.d-md-inline-flex
-                            | Скачать
-                            +svg-use("icon-download", "icon size-m")
-                        a(href="#").btn.btn-sm.btn-info.btn-icon.d-md-none
-                            | Скачать
-                            +svg-use("icon-download-small", "icon size-s")
+                        a(href="#").btn.btn-corporate.d-none.d-md-inline-flex
+                            | Перейти в интернет-банк
+                        a(href="#").btn.btn-sm.btn-corporate.d-md-none
+                            | Перейти в интернет-банк
 
-    include ../includes/layout/section-calculator
 
-    section.section-layout
+    section.section-layout.js-collapsed-mobile
+        .container
+            h3.d-none.d-md-block.mb-md-6.mb-lg-7.px-lg-6
+                | Подробнее о&nbsp;услугах
+            a(
+                data-bs-toggle="collapse"
+                href="#more-service"
+                role="button"
+                aria-expanded="false"
+                aria-controls="more-service"
+            ).h3.d-flex.align-items-center.justify-content-between.dark-100.d-md-none
+                | Подробнее о&nbsp;услугах
+                +svg-use("icon-chevron-down", "icon size-m violet-100")
+            #more-service.collapse.d-md-block.mt-4.mt-md-6.mt-lg-7
+                .row.px-lg-6
+                    .col-12
+                        +tabs-simple(tabsList, false)
+                        .tab-content.mt-4.mt-md-6.mt-lg-7
+                            #documents.tab-pane.fade.show.active(aria-labelledby="documents" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/documents-corp-clients
+                            #faq.tab-pane.fade(aria-labelledby="faq" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/faq
+        +pattern-bg('section-2', 'light', 'pattern-bg--hide-mobile')
+    section.section-layout.bg-dark-10
         .container
             .row
                 .col-12.col-xxl-6.d-flex.flex-column.gap-6.gap-lg-7
@@ -151,41 +193,9 @@ block content
                                         +announcement(item)
 
                             +slider-controls().mt-3.mt-md-4
-
-                .col-12.col-xxl-6.mt-6.mt-xxl-0
-                    a(href="#").card-link.h3.d-lg-none
-                        | О банке
-                        +svg-use("icon-chevron-right", "icon size-m blue-100")
-                    .card-about-bank.d-none.d-lg-flex
-                        .card-about-bank__col.d-flex.flex-column.gap-6
-                            a(href="#").h3
-                                | О банке
-                                +svg-use("icon-chevron-right", "icon size-m blue-100")
-                            .d-flex.flex-column
-                                span.violet-100.fw-semibold.text-number-m.fw-bold 30 лет
-                                p.card-about-bank__description.text-s.fw-semibold
-                                    | успешной работы в&nbsp;реальном секторе российской
-                                    br.d-xxl-none
-                                    |
-                                    | экономики
-                            .d-flex.flex-column
-                                span.violet-100.fw-semibold.text-number-m.fw-bold 19,4 млн
-                                p.card-about-bank__description.text-s.fw-semibold
-                                    | рекордная чистая прибыль
-                                    br
-                                    | за&nbsp;2022&nbsp;г
-
-                        .card-about-bank__col.d-flex.flex-column
-                            img(src="img/top.svg" alt="Топ" width="138" height="54" loading="lazy")
-                            img(src="img/top-20.svg" alt="20" width="138" height="144" loading="lazy")
-
-                            p.card-about-bank__description.text-s.fw-semibold.mt-auto
-                                | по&nbsp;величине капитала, объему активов
-                                br.d-xxl-none
-                                |
-                                | и&nbsp;корпоративных кредитов
-
-                        +pattern-bg('card', 'light', 'card-about-bank__pattern')
-    include ../includes/layout/section-news-cards
-    include ../includes/layout/section-feedback
-    include ../includes/layout/section-currency-exchange
+        +pattern-bg('section-2', 'light', 'pattern-bg--hide-mobile')
+    section.section-layout
+        .container
+            h3.px-lg-6.mb-4.mb-md-6.mb-lg-7
+                | Другие услуги для корпоративных клиентов
+            +slider-card-product(cardProductListCorp)
