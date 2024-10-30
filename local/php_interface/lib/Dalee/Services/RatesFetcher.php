@@ -144,13 +144,12 @@ class RatesFetcher
      */
     public function calculatePSK(array $values): ?array
     {
-        if (empty($values)) {
+        if (empty($values) || $values['SUM_FROM'] == 0 || $values['SUM_TO'] == 0) {
             return null;
         }
 
         // Преобразование процентной ставки в дробное значение и расчет месячной ставки
         $monthlyRate = $values['RATE'] / 100 / 12;
-
 
         // Расчет ПСК для минимальной суммы кредита
         $minMonthlyPayment = $this->calculateMonthlyPayment($values['SUM_FROM'], $monthlyRate, $values['PERIOD_FROM']);
