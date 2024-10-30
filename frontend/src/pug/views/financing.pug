@@ -5,12 +5,11 @@ block title
     meta(name="description" content="Описание главной страницы")
 block content
     include ../includes/header/header
-    include ../cards/card-service
     include ../cards/card-service-app
     include ../components/banners/banner-text
     include ../components/announcement
-    include ../cards/card-special
     include ../components/ui/tabs-simple
+    include ../cards/card-product
     include ../includes/layout/slider-card-product
 
     -
@@ -80,6 +79,95 @@ block content
 
         ]
 
+        var cardList = [
+            {
+                href: "#",
+                img: "large-corporate/crediting.png",
+                title: "Корпоративное кредитование",
+                description:
+                        "Новиком предлагает кредитные продукты <br>специально под формат бизнеса",
+                link: "Подробнее",
+                color: "transparent",
+                size: "large",
+            },
+            {
+                href: "#",
+                img: "large-corporate/checking-account.png",
+                title: "Расчетный счет",
+                description: "Открытие и&nbsp;ведение специального счета участника закупки по&nbsp;44-ФфЗ и&nbsp;223-ФЗ осуществляется бесплатно",
+                link: "Подробнее",
+                color: "transparent",
+            },
+            {
+                href: "#",
+                img: "large-corporate/guarantees.png",
+                title: "Сопровождение контрактов",
+                description:
+                        "Обеспечение банковского сопровождения контрактов через открытие и&nbsp;ведение отдельных банковских счетов с&nbsp;бесплатным сопровождением сделки",
+                link: "Подробнее",
+                color: "transparent",
+            },
+        ];
+
+        var productCards = [
+            {
+                title: "Страхование и&nbsp;оценка",
+                description: "Страхование корпоративных рисков",
+                icon: "icon-doc-certificate",
+                iconColor: "orange-100",
+                color: "transparent",
+                link: "Подробнее",
+            },
+            {
+                title: "Гарантии",
+                description: "Выставление всех видов банковских гарантий",
+                icon: "icon-a-reputation",
+                iconColor: "orange-100",
+                color: "transparent",
+                link: "Подробнее",
+            },
+            {
+                title: "Лизинг",
+                description: "Новиком оказывает услуги лизинга через своего партнера&nbsp;&mdash; лизинговую компанию &laquo;Нацпромлизинг&raquo;",
+                icon: "icon-a-car",
+                iconColor: "orange-100",
+                color: "transparent",
+                link: "Подробнее",
+            },
+            {
+                title: "Синдицированное кредитование",
+                description: "Большой объем финансирования в&nbsp;рамках одной сделки",
+                icon: "icon-a-money",
+                iconColor: "orange-100",
+                color: "transparent",
+                link: "Подробнее",
+            },
+            {
+                title: "Меры господдержки",
+                description: "Льготное финансирование организациям",
+                icon: "icon-a-bank",
+                iconColor: "orange-100",
+                color: "transparent",
+                link: "Подробнее",
+            },
+            {
+                title: "Карты",
+                description: "Карта для совершения операций по&nbsp;счёту юридического лица",
+                icon: "icon-a-cards",
+                iconColor: "orange-100",
+                color: "transparent",
+                link: "Подробнее",
+            },
+            {
+                title: "Cash Pooling",
+                description: "Централизованное управление денежными потоками",
+                icon: "icon-a-limits",
+                iconColor: "orange-100",
+                color: "transparent",
+                link: "Подробнее",
+            },
+        ];
+
     +banner-text(
         bannerTextData,
         "orange",
@@ -88,8 +176,10 @@ block content
 
     section.section-layout.bg-dark-10
         .container
-            .row.row-gap-4
-                .col-12
+            .row.row-gap-4.row-gap-md-5.row-gap-lg-7
+                .card-offer-grid
+                    each card in cardList
+                        +card-product(card).card-product--bg-white
 
                 .col-12
                     +card-service-app({
@@ -116,6 +206,20 @@ block content
                             | Перейти в интернет-банк
 
 
+                .col-12.col-md-6.col-lg-4.pe-md-3.pe-lg-3-5
+                    +card-product(productCards[0]).card-product--bg-white
+                .col-12.col-md-6.col-lg-4.ps-md-3.ps-lg-3-5
+                    +card-product(productCards[1]).card-product--bg-white
+                .col-12.col-lg-4
+                    +card-product(productCards[2]).card-product--bg-white
+                .col-12.col-md-6.col-xl-3.pe-md-3.pe-lg-3-5
+                    +card-product(productCards[3]).card-product--bg-white
+                .col-12.col-md-6.col-xl-3.ps-md-3.ps-lg-3-5
+                    +card-product(productCards[4]).card-product--bg-white
+                .col-12.col-md-6.col-xl-3.pe-md-3.pe-lg-3-5
+                    +card-product(productCards[5]).card-product--bg-white
+                .col-12.col-md-6.col-xl-3.ps-md-3.ps-lg-3-5
+                    +card-product(productCards[6]).card-product--bg-white
     section.section-layout.js-collapsed-mobile
         .container
             h3.d-none.d-md-block.mb-md-6.mb-lg-7.px-lg-6
