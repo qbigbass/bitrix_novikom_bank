@@ -23,11 +23,17 @@ class CUserTypeStringWithTabs
      */
     public static function ConvertToDB(array $arProperty, array $value): array
     {
-        $value['VALUE']['VALUES'] = array_filter($value['VALUE']['VALUES'] ?? [], function ($value) {
-            return !empty($value);
-        });
+        if (is_array($value['VALUE']) && isset($value['VALUE']['VALUES']) && is_array($value['VALUE']['VALUES'])) {
+            $value['VALUE']['VALUES'] = array_filter($value['VALUE']['VALUES'] ?? [], function ($value) {
+                return !empty($value);
+            });
+        } else {
+            $value['VALUE'] = '';
+        }
 
-        $value['VALUE'] = !empty($value['VALUE']['VALUES']) ? json_encode($value['VALUE']) : '';
+        if (!empty($value['VALUE']['VALUES'])) {
+            $value['VALUE'] = json_encode($value['VALUE']);
+        }
 
         return $value;
     }
