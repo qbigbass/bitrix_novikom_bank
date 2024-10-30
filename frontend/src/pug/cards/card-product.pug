@@ -1,21 +1,38 @@
 include ../components/ui/tag
 
 mixin card-product(data)
-    .card-product(class= `card-product--${data.color}`)&attributes(attributes)
-        div.card-product__inner
-            if data.tag
-                +tag(data.tag).card-product__tag
-            div.card-product__content
-                h4.card-product__title!= data.title
-                if data.subtitle
-                    .d-inline-flex.flex-nowrap.align-items-baseline.text-l.fw-semibold.gap-1.violet-100= data.subtitle.before
-                        span.text-number-l.fw-bold= data.subtitle.number
-                if data.description
-                    p.card-product__description.m-0!= data.description
-            img.card-product__img(src=`img/big-illustrations/${data.img}`, alt="", loading="lazy")
-            if data.button
-                a(href="#").btn.btn-primary.card-product__button= data.button
-            if data.link
-                a(href="#").btn.btn-link.btn-icon.m-auto.m-md-0
-                    span!= data.link
-                    +svg-use("icon-chevron-right", "icon size-m")
+    if data.icon
+        a.card-product(href="#" class= [`card-product--${data.color}`, data.size ? `card-product--size-${data.size}` : ''])&attributes(
+            attributes)
+            div.card-product__inner
+                div.card-product__content.mw-100
+                    h4.card-product__title!= data.title
+                    if data.description
+                        p.card-product__description.m-0!= data.description
+                div.card-product__footer
+                    if data.link
+                        span.btn.btn-link.btn-icon.d-none.d-md-inline-flex
+                            span!= data.link
+                            +svg-use("icon-chevron-right", "icon size-m")
+                    +svg-use(data.icon, "icon size-xxl ms-auto " + data.iconColor)
+
+    else
+        .card-product(class= [`card-product--${data.color}`, data.size ? `card-product--size-${data.size}`:''])&attributes(attributes)
+            div.card-product__inner
+                if data.tag
+                    +tag(data.tag).card-product__tag
+                div.card-product__content
+                    h4.card-product__title!= data.title
+                    if data.subtitle
+                        .d-inline-flex.flex-nowrap.align-items-baseline.text-l.fw-semibold.gap-1.violet-100= data.subtitle.before
+                            span.text-number-l.fw-bold= data.subtitle.number
+                    if data.description
+                        p.card-product__description.m-0!= data.description
+                if data.img
+                    img.card-product__img(src=`img/big-illustrations/${data.img}`, alt="", loading="lazy")
+                if data.button
+                    a(href="#").btn.btn-primary.card-product__button= data.button
+                if data.link
+                    a(href="#").btn.btn-link.btn-icon.m-auto.m-md-0
+                        span!= data.link
+                        +svg-use("icon-chevron-right", "icon size-m")
