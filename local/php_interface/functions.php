@@ -51,6 +51,12 @@ function pre(mixed ...$arrays): void
     }
 }
 
+/**
+ * @param array $terms
+ * @param array $properties
+ * @param bool $days
+ * @return array
+ */
 function processTerms(array $terms, array $properties, bool $days = false): array
 {
     $result = [];
@@ -88,7 +94,13 @@ function processTerms(array $terms, array $properties, bool $days = false): arra
     return $result;
 }
 
-function declensionFrom(int $number, string $period = 'year') {
+/**
+ * @param int $number
+ * @param string $period
+ * @return string
+ */
+function declensionFrom(int $number, string $period = 'year'): string
+{
     $number = abs($number) % 100;
 
     return match ($period) {
@@ -97,4 +109,22 @@ function declensionFrom(int $number, string $period = 'year') {
         'day' => $number % 10 == 1 ? ' дня' : ' дней',
         default => '',
     };
+}
+
+/**
+ * @param string $template
+ * @return void
+ */
+function showNavChain(string $template = '.default'): void
+{
+    global $APPLICATION;
+    $APPLICATION->IncludeComponent(
+        "bitrix:breadcrumb",
+        "",
+        [
+            "PATH" => "",
+            "SITE_ID" => "s1",
+            "START_FROM" => "0"
+        ]
+    );
 }

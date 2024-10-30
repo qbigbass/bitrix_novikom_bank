@@ -4,7 +4,7 @@
  * @note Используется для подготовки данных для вывода в списке и карточке
  */
 
-namespace Dalee\Helpers;
+namespace Dalee\Services;
 
 use Bitrix\Iblock\Iblock;
 use Bitrix\Iblock\ORM\CommonElementTable;
