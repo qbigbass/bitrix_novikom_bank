@@ -6,7 +6,7 @@
  * @note фильтруются значения с ошибками, не полученные значения пропускаются. Вложенные свойства сортируются по значению SORT.
  */
 
-namespace Lib\Classes;
+namespace Dalee\Helpers;
 
 use Bitrix\Iblock\ElementPropertyTable;
 use Bitrix\Iblock\Iblock;

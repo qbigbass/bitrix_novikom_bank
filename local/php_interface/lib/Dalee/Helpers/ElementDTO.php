@@ -1,6 +1,6 @@
 <?php
 
-namespace Lib\Classes;
+namespace Dalee\Helpers;
 
 class ElementDTO
 {

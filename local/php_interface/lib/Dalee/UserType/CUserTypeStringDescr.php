@@ -1,8 +1,5 @@
 <?php
-namespace Lib\UserType;
-
-use \Bitrix\Main,
-    \Bitrix\Main\UserField;
+namespace Dalee\UserType;
 
 class CUserTypeStringDescr
 {

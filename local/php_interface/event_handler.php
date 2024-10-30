@@ -1,6 +1,7 @@
 <?php
+
 use Bitrix\Main;
-use Lib\UserType\CUserTypeStringDescr;
+use Lib\Dalee\UserType\CUserTypeStringDescr;
 
 $eventManager = Main\EventManager::getInstance();
 
