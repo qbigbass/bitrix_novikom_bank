@@ -14,7 +14,7 @@
 use Dalee\Helpers\ComponentHelper;
 
 $terms = [
-    'RATE' => [
+    'RATE_TO' => [
         'SIGN' => 'При ключевой ставке<br>Банка России на ' . date('d.m.Y'),
         'FROM_TO' => 'до&nbsp;',
     ],

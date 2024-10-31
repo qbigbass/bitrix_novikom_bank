@@ -13,7 +13,7 @@
 $this->setFrameMode(true);
 
 $terms = [
-    'RATE' => [
+    'RATE_TO' => [
         'SIGN' => 'Процентная ставка',
         'FROM_TO' => 'до&nbsp;',
     ],

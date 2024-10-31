@@ -128,13 +128,24 @@ class RatesFetcher
         $elements = $this->getFilterElements($id);
 
         return array_reduce($elements, function ($carry, $item) {
-            return [
-                'RATE' => isset($carry['RATE']) ? min((float)$carry['RATE'], (float)$item['RATE_']) : (float)$item['RATE_'],
-                'SUM_FROM' => isset($carry['SUM_FROM']) ? min($carry['SUM_FROM'], $item['SUM_FROM_']) : $item['SUM_FROM_'],
-                'SUM_TO' => isset($carry['SUM_TO']) ? max($carry['SUM_TO'], $item['SUM_TO_']) : $item['SUM_TO_'],
-                'PERIOD_FROM' => isset($carry['PERIOD_FROM']) ? min($carry['PERIOD_FROM'], $item['PERIOD_FROM_']) : $item['PERIOD_FROM_'],
-                'PERIOD_TO' => isset($carry['PERIOD_TO']) ? max($carry['PERIOD_TO'], $item['PERIOD_TO_']) : $item['PERIOD_TO_'],
-            ];
+            if ($item['RATE_'] != 0) {
+                $carry['RATE_FROM'] = isset($carry['RATE_FROM']) ? min((float)$carry['RATE_FROM'], (float)$item['RATE_']) : (float)$item['RATE_'];
+                $carry['RATE_TO'] = isset($carry['RATE_TO']) ? max((float)$carry['RATE_TO'], (float)$item['RATE_']) : (float)$item['RATE_'];
+            }
+            if ($item['SUM_FROM_'] != 0) {
+                $carry['SUM_FROM'] = isset($carry['SUM_FROM']) ? min($carry['SUM_FROM'], $item['SUM_FROM_']) : $item['SUM_FROM_'];
+            }
+            if ($item['SUM_TO_'] != 0) {
+                $carry['SUM_TO'] = isset($carry['SUM_TO']) ? max($carry['SUM_TO'], $item['SUM_TO_']) : $item['SUM_TO_'];
+            }
+            if ($item['PERIOD_FROM_'] != 0) {
+                $carry['PERIOD_FROM'] = isset($carry['PERIOD_FROM']) ? min($carry['PERIOD_FROM'], $item['PERIOD_FROM_']) : $item['PERIOD_FROM_'];
+            }
+            if ($item['PERIOD_TO_'] != 0) {
+                $carry['PERIOD_TO'] = isset($carry['PERIOD_TO']) ? max($carry['PERIOD_TO'], $item['PERIOD_TO_']) : $item['PERIOD_TO_'];
+            }
+
+            return $carry;
         }, []);
     }
 
@@ -144,13 +155,12 @@ class RatesFetcher
      */
     public function calculatePSK(array $values): ?array
     {
-        if (empty($values)) {
+        if (empty($values) || $values['SUM_FROM'] == 0 || $values['SUM_TO'] == 0) {
             return null;
         }
 
         // Преобразование процентной ставки в дробное значение и расчет месячной ставки
         $monthlyRate = $values['RATE'] / 100 / 12;
-
 
         // Расчет ПСК для минимальной суммы кредита
         $minMonthlyPayment = $this->calculateMonthlyPayment($values['SUM_FROM'], $monthlyRate, $values['PERIOD_FROM']);
