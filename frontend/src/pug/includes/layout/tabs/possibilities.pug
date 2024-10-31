@@ -1,0 +1,90 @@
+include ../../../components/ui/accordion-item
+include ../../../components/document-download
+include ../../../cards/card-benefit
+
+-
+
+    var linkDownloadList = [
+        {
+            href: "#",
+            text: "Сборник тарифов на обслуживание банковских карт для физических лиц, выпущенных по 21.08.2022 г.",
+            dateTime: "12.12.23 18:56",
+            fileType: "XLS",
+            classSize: 'text-m'
+        },
+        {
+            href: "#",
+            text: "Сборник тарифов на обслуживание банковских карт для физических лиц, выпущенных по 21.08.2022 г.",
+            dateTime: "12.12.23 18:56",
+            fileType: "XLS",
+            classSize: 'text-m'
+        },
+        {
+            href: "#",
+            text: "Наименование документа",
+            dateTime: "12.12.23 18:56",
+            fileType: "XLS",
+            classSize: 'text-m'
+        },
+        {
+            href: "#",
+            text: "Сборник тарифов на обслуживание банковских карт для физических лиц, выпущенных по 21.08.2022 г.",
+            dateTime: "12.12.23 18:56",
+            fileType: "XLS",
+            classSize: 'text-m'
+        },
+    ]
+
+    var accordionList = [
+        {
+            id: 1,
+            title: 'Тарифы для физических лиц',
+            content: 'Тарифы для физических лиц, действующие во всех регионах присутствия Банка.',
+            linkList: linkDownloadList,
+            isOpen: true
+        },
+        {
+            id: 2,
+            title: 'Договор банковского обслуживания',
+            content: 'Тарифы для физических лиц, действующие во всех регионах присутствия Банка.',
+        },
+        {
+            id: 3,
+            title: 'Вместе с основной зарплатной картой мне выдали дополнительную. По каким тарифам она обслуживается?',
+            content: 'Тарифы для физических лиц, действующие во всех регионах присутствия Банка.',
+        },
+        {
+            id: 4,
+            title: 'Что делать, если потерял карту или забыл ПИН-код?',
+            content: 'Если есть подозрение, что ПИН-код мог стать доступен третьим лицам, незамедлительно заблокируйте карту. <br>Если ПИН-код не удается вспомнить карту необходимо перевыпустить.',
+        },
+        {
+            id: 5,
+            title: 'Иные документы',
+            content: 'Тарифы для физических лиц, действующие во всех регионах присутствия Банка.',
+        },
+    ]
+
+    var cardBenefitData = {
+        title: 'Защита от мошенников',
+        description: 'Узнайте как уберечь себя и своих близких <br>от финансового мошенничества.',
+        sprite: {
+            name: 'icon-a-protection',
+            classList: 'orange-100 size-md-xxl'
+        },
+        link: '#'
+    }
+
+.row.row-gap-6
+    .col-12.col-xxl-8.pe-xxl-6
+        .accordion#accordion-documents
+            each item in accordionList
+                +accordion-item(item, 'accordion-documents')
+                    p.text-m.mb-0.dark-70!= item.content
+                    if item.linkList
+                        .mt-4
+                            each link in item.linkList
+                                +document-download(link)
+
+    .col-12.col-xxl-4
+        +card-benefit(cardBenefitData)

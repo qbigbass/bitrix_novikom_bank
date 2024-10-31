@@ -1,0 +1,73 @@
+.card-promo {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.75rem;
+
+  &__wrapper {
+    padding: 2.5rem 1rem;
+    position: relative;
+
+    @include use-media(tablet) {
+      padding: 2.5rem;
+      min-height: 25rem; //400px
+    }
+
+    @include use-media(laptop-x) {
+      padding: 5rem;
+    }
+  }
+
+  &__header {
+    @include use-media(tablet-album) {
+      max-width: 38.75rem; //620px
+    }
+
+    @include use-media(desktop) {
+      max-width: 43.75rem; //700px
+    }
+  }
+
+  &__image {
+    max-width: 20rem; //320px
+
+    @include use-media(tablet) {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translate(0, -50%);
+      width: 50vw;
+    }
+
+    @include use-media(laptop-x) {
+      max-width: 30rem; //480px;
+      right: 3%;
+    }
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    @include use-media(tablet) {
+      gap: 1.5rem;
+      max-width: 50%;
+    }
+
+    @include use-media(tablet-album) {
+      flex-direction: row;
+      gap: 5rem;
+      max-width: 38.75rem; //620px
+    }
+  }
+
+  &--heavy-purple {
+    background: linear-gradient(222.24deg, #101317 20%, #5a2375 80%);
+    color: var(--dark-0);
+  }
+
+  &--heavy-violet {
+    background: linear-gradient(222.24deg, #101317 20%, #6655a2 80%);
+    color: var(--dark-0);
+  }
+}
