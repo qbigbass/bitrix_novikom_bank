@@ -1,0 +1,75 @@
+extends ../templates/base
+
+block title
+    title= 'О банке - Пресс центр'
+    meta(name="description" content="Описание страницы пресс-центра")
+block content
+    -
+        var bannerTextData = {
+            title: "Пресс-центр",
+            breadcrumbsArray: [
+                {linkText: "О банке", link: "/"}
+            ],
+            description: ""
+        }
+
+        var cardContactData = {
+            topTitle: "Контакты для СМИ",
+            title: "Департамент информационной политики",
+            imageSrc: "big-illustrations/large-individual/contact.png",
+            contactDetail: {
+                email: "pr@novikom.ru",
+                phone: "+7 (495) 974-71-87",
+                phoneChip: "доб. 1597",
+                fax: "+7 (495) 969-20-65",
+                faxChip: "факс",
+                telegram: "novikombank_official",
+                telegramLink: "https://t.me/novikombank_official",
+                telegramText: "Все новости банка Телеграм"
+            }
+        }
+
+    include ../includes/header/header
+    include ../cards/card-benefit
+    include ../cards/card-news
+    include ../cards/card-contact
+    include ../components/document-download
+    include ../components/ui/tabs
+    include ../components/ui/pagination
+    include ../components/banners/banner-text
+    include ../components/benefit
+    include ../components/stepper
+
+    +banner-text(
+        bannerTextData
+    )
+    
+    section.pt-11
+        .container
+            .row
+                .col-12
+                    +card-contact(cardContactData)
+                        .d-flex.flex-column.gap-4
+                            h5.card-contact__title.text-white-50!= cardContactData.title
+                            .card-contact__contacts.d-flex.flex-column.flex-lg-row.flex-lg-wrap.gap-4
+                                a.card-contact__link.dark-0.gap-3(href=`mailto:${cardContactData.contactDetail.email}`)
+                                    +svg-use("icon-mail", "icon size-m")
+                                    u!= cardContactData.contactDetail.email
+                                p.card-contact__link.dark-0.mb-0.gap-3(href=`mailto:${cardContactData.contactDetail.email}`)
+                                    +svg-use("icon-phone", "icon size-m")
+                                    span
+                                        span.me-2!= cardContactData.contactDetail.phone
+                                        span.chip.chip--outlined.caption-m.text-white-50!= cardContactData.contactDetail.phoneChip
+                                p.card-contact__link.dark-0.mb-0.gap-3(href=`mailto:${cardContactData.contactDetail.email}`)
+                                    +svg-use("icon-fax", "icon size-m")
+                                    span
+                                        span.me-2!= cardContactData.contactDetail.fax
+                                        span.chip.chip--outlined.caption-m.text-white-50!= cardContactData.contactDetail.faxChip
+                                a.card-contact__link.w-100.dark-0.gap-3(href=cardContactData.contactDetail.telegramLink)
+                                    +svg-use("icon-telegram", "icon size-m")
+                                    span
+                                        u!= cardContactData.contactDetail.telegram + ' '
+                                        span.d-inline-block.text-white-50.w-100.w-lg-auto!= cardContactData.contactDetail.telegramText
+    
+    section.section-catalog.d-flex.flex-column.gap-7.py-6.py-sm-9.py-md-11
+        include ../includes/layout/section-press-center-catalog
