@@ -49,6 +49,7 @@ block content
     include ../cards/card-help
     include ../cards/card-step
     include ../cards/card-news
+    include ../cards/card-promo
 
     section#typography.section-layout
         .container
@@ -511,6 +512,51 @@ block content
                         .col-12.col-lg-4
                             +card-step(item).pe-xxl-11
 
+    section#card-promo.section-layout.section-layout--padding-top-0
+        -
+            var cardPromo = {
+                title: "Лизинг от НОВИКОМа",
+                text: "Банк Новиком оказывает услуги лизинга (финансовой аренды) через своего партнера &mdash;&nbsp;лизинговую компанию &laquo;Нацпромлизинг&raquo;",
+                image: "leasing-image.png",
+                benefits: [
+                    {
+                        colorClass: "dark-0",
+                        beforeNum: "от",
+                        num: "0",
+                        currency: "₽",
+                        afterNum: "дней",
+                        description: "Описание"
+
+                    },
+                    {
+                        colorClass: "dark-0",
+                        beforeNum: "от",
+                        num: "0",
+                        currency: "₽",
+                        afterNum: "дней",
+                        description: "Описание"
+
+                    },
+                    {
+                        colorClass: "dark-0",
+                        beforeNum: "от",
+                        num: "0",
+                        currency: "₽",
+                        afterNum: "дней",
+                        description: "Описание"
+
+                    }
+                ]
+            }
+        .container
+            .d-flex.flex-column.row-gap-5
+                h2 Card Promo
+                .row.row-gap-6
+                    +card-promo(cardPromo).card-promo--heavy-purple
+                        a(href="#").btn.btn-info.w-100.w-md-auto Кнопка
+                        a(href="#").btn.btn-link.btn-icon.text-info.m-auto.m-md-0
+                            | Кнопка
+                            +svg-use("icon-download", "icon size-m")
     section#steps.section-layout.pt-0
         .container
             .d-flex.flex-column.row-gap-5
