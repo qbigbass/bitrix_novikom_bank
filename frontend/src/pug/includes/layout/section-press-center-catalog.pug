@@ -121,7 +121,11 @@ section.section-catalog__tabs
     .container
         .row
             .col-12.mb-6.mb-md-5.mb-lg-7
-                +tabs(tabsList, 'min-w-100', 'col-4')
+                +tabs(
+                    tabsList,
+                    'min-w-sm-100',
+                    'text-center'
+                ).tabs-panel--full-width-items.tabs-panel--auto-width-md
             .col-12
                 a(
                     data-bs-toggle="collapse"
@@ -137,10 +141,10 @@ section.section-catalog__tabs
                         .w-100
                             +tabs(
                                 newsTabsList,
-                                "section-catalog__tab-list min-w-100 min-w-lg-auto",
-                                "section-catalog__tab-list-item",
+                                "section-catalog__tab-list min-w-sm-100 min-w-lg-auto",
+                                "section-catalog__tab-list-item text-center",
                                 true
-                            )
+                            ).tabs-panel--full-width-items.tabs-panel--auto-width-md
                         .d-flex.w-100.justify-content-end
                             .position-relative.w-100.w-lg-240w
                                 input#date1(type="date" name="date1" placeholder="Показать за период" disabled).w-100.form-control
