@@ -1,0 +1,18 @@
+mixin list-contact(data)
+    ul.list-contact.d-flex.flex-column.row-gap-4
+        each item in data
+            li.d-flex.column-gap-3
+                span.icon.size-m.flex-shrink-0(class=item.iconColorClass ? item.iconColorClass : "dark-0")
+                    +svg-use(item.icon)
+                .list-contact__text.d-flex.flex-wrap.gap-2
+                    if item.href
+                        a(href=item.href class= item.additionalClass ? item.additionalClass : "").list-contact__link
+                            span.text-l= item.text
+                    else
+                        span.text-l= item.text
+
+                    if item.additionalText
+                        span.caption-m.list-contact__chip= item.additionalText
+                    if item.description
+                        span.list-contact__notes!= item.description
+
