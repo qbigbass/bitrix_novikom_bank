@@ -124,30 +124,33 @@ const setTextContentToDisplayValueElement = (STATE) => {
     let value = STATE.useSteps ? STATE.steps[STATE.value] : STATE.value;
 
     if (STATE.elements.displayValue) {
-        // STATE.elements.displayValue.textContent = getFormatedTextByType(value, STATE.type);
         STATE.elements.displayValue.innerHTML = getFormatedTextByType(value, STATE.type);
     }
 }
 
-const getFormatedTextByType = (value, type) => {
+export const getFormatedTextByType = (value, type, isFocus = false) => {
     let result = '';
 
     switch (type) {
         case 'price':
-            result = `${formatNumberWithSpaces(value)} <span class="currency">₽</span>`;
+            result = `${formatNumberWithSpaces(value)} ₽`;
             break;
         case 'month':
-            const years = Math.floor(value / 12);
-            const months = value % 12;
-
-            if (years >= 1) {
-                result = `${years} ${plural(['год', 'года', 'лет'], years)}`;
-
-                if (months > 0) {
-                    result += ` ${months} ${plural(['месяц', 'месяца', 'месяцев'], months)}`;
-                }
+            if (isFocus) {
+                result = `${value} ${plural(['месяц', 'месяца', 'месяцев'], value)}`;
             } else {
-                result = `${months} ${plural(['месяц', 'месяца', 'месяцев'], months)}`;
+                const years = Math.floor(value / 12);
+                const months = value % 12;
+
+                if (years >= 1) {
+                    result = `${years} ${plural(['год', 'года', 'лет'], years)}`;
+
+                    if (months > 0) {
+                        result += ` ${months} ${plural(['месяц', 'месяца', 'месяцев'], months)}`;
+                    }
+                } else {
+                    result = `${months} ${plural(['месяц', 'месяца', 'месяцев'], months)}`;
+                }
             }
 
             break;
@@ -191,6 +194,7 @@ const setSliderInputValue = (STATE, value) => {
     STATE.elements.sliderInput.setAttribute('value', stringValue);
 }
 
+
 const setValue = (STATE, value) => {
     setSliderInputValue(STATE, value);
     setBackgroundSliderInputElement(STATE);
@@ -210,7 +214,7 @@ const setBackgroundSliderInputElement = (STATE) => {
     STATE.elements.sliderInput.style.background = `linear-gradient(to right, var(--blue-100) ${percentage}%, var(--blue-30) ${percentage}%)`;
 }
 
-const initASliderInputTextComponent = (STATE) => {
+const initSliderInputTextComponent = (STATE) => {
     if (STATE.elements.textInput) {
         STATE.components.inputText = initInputSliderText(STATE.elements.textInput, {
             minValue: STATE.minValue,
@@ -226,7 +230,6 @@ const initASliderInputTextComponent = (STATE) => {
 const createTextStepElement = (text) => {
     const span = document.createElement('span');
     span.classList.add('input-slider-text-step', 'text-s', 'dark-70');
-    // span.textContent = text;
     span.innerHTML = text;
 
     return span;
@@ -279,7 +282,7 @@ function initInputSlider() {
         initDisplaySteps(STATE);
         initResizeObserverForRootElement(STATE);
         setValue(STATE, STATE.value);
-        initASliderInputTextComponent(STATE);
+        initSliderInputTextComponent(STATE);
 
         STATE.elements.sliderInput.addEventListener('input', function (event) {
             event.stopPropagation();

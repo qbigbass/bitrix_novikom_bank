@@ -12,17 +12,18 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 ?>
-<img src="/frontend/build/assets/slides/hero_banner_bg_desktop.png" class="main-slider__bg" alt="">
-<div class="main-slider__container swiper swiper-container">
-    <div class="main-slider__wrapper swiper-wrapper">
+<img class="banner-hero__bg" src="/frontend/dist/img/slides/hero_banner_bg_desktop.png" alt="">
+
+<div class="banner-hero__container swiper js-banner-hero">
+    <div class="swiper-wrapper">
         <?foreach ($arResult['ITEMS'] as $item) {?>
-            <div class="swiper-slide main-slider__slide">
-                <div class="main-slider__content">
-                    <div class="main-slider-content">
-                        <div class="main-slider-content__text">
-                            <h2 class="main-slider-content__title"><?=$item['NAME']?></h2>
-                            <p class="body-l-light"><?=$item['PROPERTIES']['TEXT']['~VALUE']?></p>
-                            <a href="<?=$item['PROPERTIES']['BUTTON_LINK']['~VALUE']?>" theme="dark" class="a-button main-slider-content__button a-button--m a-button--secondary a-button--link">
+            <div class="swiper-slide">
+                <div class="banner-hero-content row">
+                    <div class="col-12 col-md-6 col-lg-9 col-xl-8 col-xxl-6 d-flex flex-column gap-3 gap-md-4 gap-xxl-6 align-items-md-start">
+                        <div class="banner-hero-content__wrapper">
+                            <h2 class="banner-hero-content__title"><?=$item['NAME']?></h2>
+                            <p class="text-l mb-0"><?=$item['PROPERTIES']['TEXT']['~VALUE']?></p>
+                            <a class="btn btn-secondary btn-lg-lg d-inline-block" href="<?=$item['PROPERTIES']['BUTTON_LINK']['~VALUE']?>">
                                 <?=$item['PROPERTIES']['BUTTON_TEXT']['~VALUE']?>
                             </a>
                         </div>
@@ -31,32 +32,33 @@ $this->setFrameMode(true);
             </div>
         <?}?>
     </div>
-
-    <div class="main-slider-pagination"></div>
-    <div class="main-slider-controls">
-        <button type="button" class="main-slider-control main-slider-control__prev">
-            <span class="a-icon">
-                <svg>
-                    <use  xlink:href="/frontend/build/assets/svg-sprite.svg#icon-chevron-left"></use>
+    <div class="banner-hero-pagination"></div>
+    <div class="banner-hero-controls">
+        <button class="banner-hero-control banner-hero-control__prev" type="button">
+            <span class="icon size-m">
+                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                    <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-left"></use>
                 </svg>
             </span>
         </button>
-        <button type="button" class="main-slider-control main-slider-control__next">
-            <span class="a-icon">
-                <svg>
-                    <use  xlink:href="/frontend/build/assets/svg-sprite.svg#icon-chevron-right"></use>
+        <button class="banner-hero-control banner-hero-control__next" type="button">
+            <span class="icon size-m">
+                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                    <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
                 </svg>
             </span>
         </button>
     </div>
 </div>
 
-<div class="main-slider__thumbs swiper">
-    <div class="main-slider__thumbs-wrapper swiper-wrapper">
-        <?foreach ($arResult['ITEMS'] as $item) {?>
-            <button class="swiper-slide main-slider-thumb">
-                <span class="headline-4"><?=$item['NAME']?></span>
-            </button>
-        <?}?>
+<div class="banner-hero__thumbs d-none d-lg-block">
+    <div class="swiper js-banner-hero-thumbs">
+        <div class="banner-hero__thumbs-wrapper swiper-wrapper">
+            <?foreach ($arResult['ITEMS'] as $item) {?>
+                <div class="swiper-slide banner-hero-thumb" role="button">
+                    <h5><?=$item['NAME']?></h5>
+                </div>
+            <?}?>
+        </div>
     </div>
 </div>

@@ -20,7 +20,7 @@ function getAnswer(string $json) : array {
                     <div class="body-l-light"><?=$element['NAME']?></div>
                     <span class="a-icon a-accordion-header__icon size-m">
                         <svg>
-                            <use  xlink:href="/frontend/build/assets/svg-sprite.svg#icon-chevron-down"></use>
+                            <use xlink:href="/frontend/dist/assets/svg-sprite.svg#icon-chevron-down"></use>
                         </svg>
                     </span>
                 </button>
@@ -38,7 +38,7 @@ function getAnswer(string $json) : array {
                 Все вопросы и ответы
                 <span class="a-icon a-button__icon">
                     <svg>
-                        <use  xlink:href="/frontend/build/assets/svg-sprite.svg#icon-chevron-right"></use>
+                        <use xlink:href="/frontend/dist/assets/svg-sprite.svg#icon-chevron-right"></use>
                     </svg>
                 </span>
             </a>
@@ -48,7 +48,7 @@ function getAnswer(string $json) : array {
         <?$APPLICATION->IncludeComponent(
             "bitrix:form.result.new",
             "questions",
-            Array(
+            [
                 "CACHE_TIME" => "3600",
                 "CACHE_TYPE" => "N",
                 "CHAIN_ITEM_LINK" => "",
@@ -61,12 +61,12 @@ function getAnswer(string $json) : array {
 //                "AJAX_OPTION_JUMP" => "Y",
                 "USE_EXTENDED_ERRORS" => "Y",
                 "SUCCESS_URL" => "",
-                "VARIABLE_ALIASES" => Array(
+                "VARIABLE_ALIASES" => [
                     "RESULT_ID" => "RESULT_ID",
                     "WEB_FORM_ID" => "WEB_FORM_ID"
-                ),
+                ],
                 "WEB_FORM_ID" => "1"
-            )
+            ]
         );?>
     </div>
 </div>

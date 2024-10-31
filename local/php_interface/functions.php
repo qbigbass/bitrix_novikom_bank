@@ -1,13 +1,17 @@
 <?php
 
-function iblock(string $code) : ?int {
+function iblock(string $code) : int {
     try {
-        \Bitrix\Main\Loader::IncludeModule("iblock");
+        \Bitrix\Main\Loader::IncludeModule('iblock');
         $iblock = Bitrix\Iblock\IblockTable::getList(['select' => ['ID'], 'filter' => ['CODE' => $code]])->Fetch();
-        return $iblock['ID'];
+        return $iblock['ID'] ?? 0;
     } catch (Exception $e) {
-        return false;
+        return 0;
     }
+}
+
+function printIntoFile($text, string $filePath = '/logger.txt') {
+    file_put_contents($_SERVER['DOCUMENT_ROOT'] . $filePath, print_r($text, true), FILE_APPEND);
 }
 
 function modifyMainSubmenuResult(array $arResult) : array {
@@ -38,4 +42,89 @@ function modifyMainSubmenuResult(array $arResult) : array {
 
 function clearPhoneNumber(string $phoneNumber) : string {
     return preg_replace('/[^0-9\+]+/', '', $phoneNumber);
+}
+
+function pre(mixed ...$arrays): void
+{
+    foreach ($arrays as $array) {
+        echo '<pre>' . print_r($array, true) . '</pre>';
+    }
+}
+
+/**
+ * @param array $terms
+ * @param array $properties
+ * @param bool $days
+ * @return array
+ */
+function processTerms(array $terms, array $properties, bool $days = false): array
+{
+    $result = [];
+
+    foreach ($properties as $key => $term) {
+        if (!$term || !isset($terms[$key])) {
+            continue;
+        }
+
+        $sign = $terms[$key]['SIGN'];
+        $fromTo = $terms[$key]['FROM_TO'];
+        $value = '';
+
+        if ($key === 'RATE') {
+            $value = $term . ' %';
+        } elseif (in_array($key, ['SUM_FROM', 'SUM_TO'])) {
+            $value = number_format($term, 0, '', ' ') . ' ₽';
+        } elseif (in_array($key, ['PERIOD_FROM', 'PERIOD_TO'])) {
+            if ($days) {
+                $value = $term . declensionFrom($term, 'day');
+            } else {
+                $value = round($term / 12) . declensionFrom($term);
+            }
+        } elseif ($key === 'DIAPASON') {
+            $value = $term;
+        }
+
+        $result[] = [
+            'SIGN' => $sign,
+            'FROM_TO' => $fromTo,
+            'VALUE' => $value,
+        ];
+    }
+
+    return $result;
+}
+
+/**
+ * @param int $number
+ * @param string $period
+ * @return string
+ */
+function declensionFrom(int $number, string $period = 'year'): string
+{
+    $number = abs($number) % 100;
+
+    return match ($period) {
+        'year' => $number % 10 == 1 ? ' года' : ' лет',
+        'month' => $number % 10 == 1 ? ' месяца' : ' месяцев',
+        'day' => $number % 10 == 1 ? ' дня' : ' дней',
+        default => '',
+    };
+}
+
+/**
+ * @param string $template
+ * @return void
+ */
+function showNavChain(string $template = '.default'): void
+{
+    global $APPLICATION;
+    $APPLICATION->IncludeComponent(
+        "bitrix:breadcrumb",
+        "",
+        [
+            "PATH" => "",
+            "SITE_ID" => "s1",
+            "START_FROM" => "0"
+        ]
+    );
 }

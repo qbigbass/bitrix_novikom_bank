@@ -11,11 +11,11 @@
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
-Galago\Frontend\Asset::getInstance()->addJsAndCss('restructuring-detail');?>
+?>
 
 <?$APPLICATION->IncludeComponent(
     "bitrix:news.detail",
-    "restructuring_option_info",
+    "restructuring_detail",
     [
         "DISPLAY_DATE" => $arParams["DISPLAY_DATE"],
         "DISPLAY_NAME" => $arParams["DISPLAY_NAME"],
@@ -38,7 +38,7 @@ Galago\Frontend\Asset::getInstance()->addJsAndCss('restructuring-detail');?>
         "SHOW_404" => $arParams["SHOW_404"],
         "FILE_404" => $arParams["FILE_404"],
         "INCLUDE_IBLOCK_INTO_CHAIN" => $arParams["INCLUDE_IBLOCK_INTO_CHAIN"],
-        "ADD_SECTIONS_CHAIN" => "Y",
+        "ADD_SECTIONS_CHAIN" => $arParams["ADD_SECTIONS_CHAIN"],
         "ACTIVE_DATE_FORMAT" => $arParams["DETAIL_ACTIVE_DATE_FORMAT"],
         "CACHE_TYPE" => $arParams["CACHE_TYPE"],
         "CACHE_TIME" => $arParams["CACHE_TIME"],
@@ -63,11 +63,11 @@ Galago\Frontend\Asset::getInstance()->addJsAndCss('restructuring-detail');?>
         "SHARE_HANDLERS" => $arParams["SHARE_HANDLERS"],
         "SHARE_SHORTEN_URL_LOGIN" => $arParams["SHARE_SHORTEN_URL_LOGIN"],
         "SHARE_SHORTEN_URL_KEY" => $arParams["SHARE_SHORTEN_URL_KEY"],
-        "ADD_ELEMENT_CHAIN" => $arParams["ADD_ELEMENT_CHAIN"],
+        "ADD_ELEMENT_CHAIN" => "Y",
         'STRICT_SECTION_CHECK' => $arParams['STRICT_SECTION_CHECK'],
     ],
     $component
 );?>
 
-<?$APPLICATION->IncludeFile('/local/php_interface/include/cross_sale_products_block.php')?>
+<?$APPLICATION->IncludeFile('/local/php_interface/include/cross_sale_products_block.php');?>
 

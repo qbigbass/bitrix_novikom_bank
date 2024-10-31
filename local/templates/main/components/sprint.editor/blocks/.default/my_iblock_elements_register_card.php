@@ -22,7 +22,7 @@ $elements = Sprint\Editor\Blocks\IblockElements::getList($block, [
                         <h3 class="headline-2">Как оформить карту</h3>
                         <span class="a-icon a-accordion-header__icon size-m">
                             <svg>
-                                <use xlink:href="/frontend/build/assets/svg-sprite.svg#icon-chevron-down"></use>
+                                <use xlink:href="/frontend/dist/assets/svg-sprite.svg#icon-chevron-down"></use>
                             </svg>
                         </span>
                     </button>
@@ -49,7 +49,7 @@ $elements = Sprint\Editor\Blocks\IblockElements::getList($block, [
                                                 <a href="<?= $element['PROPERTY_LINK_VALUE'] ?>" class="a-button a-button--lm a-button--primary a-button--link a-button--text"><?= $element['PROPERTY_LINK_TEXT_VALUE'] ?>
                                                     <span class="a-icon a-button__icon">
                                                         <svg>
-                                                            <use xlink:href="/frontend/build/assets/svg-sprite.svg#icon-chevron-right"></use>
+                                                            <use xlink:href="/frontend/dist/assets/svg-sprite.svg#icon-chevron-right"></use>
                                                         </svg>
                                                     </span>
                                                 </a>

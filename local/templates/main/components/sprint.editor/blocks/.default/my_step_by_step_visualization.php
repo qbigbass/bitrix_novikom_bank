@@ -11,7 +11,7 @@
                     <h3 class="headline-2"><?=$block['heading']?></h3>
                     <span class="a-icon a-accordion-header__icon size-m">
                         <svg>
-                            <use  xlink:href="/frontend/build/assets/svg-sprite.svg#icon-chevron-down"></use>
+                            <use xlink:href="/frontend/dist/assets/svg-sprite.svg#icon-chevron-down"></use>
                         </svg>
                     </span>
                 </button>

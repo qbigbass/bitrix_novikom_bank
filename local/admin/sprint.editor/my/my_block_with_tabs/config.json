@@ -1,8 +1,0 @@
-{
-  "title": "Блок с табами",
-  "sort": "960",
-  "templates": [
-    "tab.html",
-    "box.html"
-  ]
-}

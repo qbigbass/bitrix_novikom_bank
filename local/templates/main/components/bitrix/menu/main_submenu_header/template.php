@@ -1,139 +1,118 @@
 <?if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
 
 <?if (!empty($arResult)) {?>
-    <div class="desktop-nav-layout__second-menu">
-        <nav data-spoiler-event="click" class="desktop-secondary-menu js-desktop-secondary-menu js-spoiler-group">
-            <?foreach($arResult['FIRST_LEVEL_MENU']['NOT_HIDDEN'] as $notHiddenItem) {?>
-                <?$issetChildren = isset($arResult['SECOND_LEVEL_MENU'][$notHiddenItem['ITEM_INDEX']])?>
-                <?$jsDesktopMoveLink = ($notHiddenItem['JS_DESKTOP_MOVE_LINK']) ? ' js-desktop-move-link' : '';?>
-                <?if($issetChildren) {?>
-                    <span class="desktop-secondary-menu__item body-m-heavy js-spoiler-button<?=$jsDesktopMoveLink?>" data-spoiler-id="spoiler-<?=$notHiddenItem['ITEM_INDEX']?>">
-                        <span class="icon-box icon-box--gap-xs">
-                            <span class="icon-box__body">
-                                <?=$notHiddenItem['TEXT']?>
-                            </span>
-                            <span class="icon-box__icon">
-                                <span class="a-icon size-s" slot="icon-after">
-                                    <svg>
-                                        <use  xlink:href="/frontend/build/assets/svg-sprite.svg#icon-chevron-down-small"></use>
-                                    </svg>
-                                </span>
-                            </span>
-                        </span>
-                    </span>
-                <?} else {?>
-                    <a href="<?=$notHiddenItem['LINK']?>" class="desktop-secondary-menu__item body-m-heavy<?=$jsDesktopMoveLink?>">
-                        <span class="icon-box icon-box--gap-xs">
-                            <span class="icon-box__body">
-                                <?=$notHiddenItem['TEXT']?>
-                            </span>
-                        </span>
-                    </a>
-                <?}?>
-            <?}?>
-            <?if(!empty($arResult['HIDDEN'])) {?>
-                <button class="a-button drop-down-button js-drop-down-button a-button--s a-button--transparent">
-                    <span class="a-icon size-m">
-                        <svg>
-                            <use  xlink:href="/frontend/build/assets/svg-sprite.svg#icon-more"></use>
+    <div class="navbar w-100">
+        <?foreach($arResult['FIRST_LEVEL_MENU']['NOT_HIDDEN'] as $notHiddenItem) {?>
+            <?$issetChildren = isset($arResult['SECOND_LEVEL_MENU'][$notHiddenItem['ITEM_INDEX']])?>
+            <?$jsDesktopMoveLink = ($notHiddenItem['JS_DESKTOP_MOVE_LINK']) ? ' js-desktop-move-link' : '';?>
+            <?if($issetChildren) {?>
+                <a class="header__link js-dropdown-link gap-1 align-items-center d-inline-flex" href="#spoiler-<?=$notHiddenItem['ITEM_INDEX']?>" role="button" aria-expanded="false" aria-controls="spoiler-<?=$notHiddenItem['ITEM_INDEX']?>">
+                    <span class="fw-semibold"><?=$notHiddenItem['TEXT']?></span>
+                    <span class="icon size-s" slot="icon-after">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                            <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-down-small"></use>
                         </svg>
                     </span>
-                    <div class="drop-down-menu js-drop-down-menu">
-                        <?foreach ($arResult['FIRST_LEVEL_MENU']['HIDDEN'] as $hiddenItem) {?>
-                            <a href="<?=$hiddenItem['LINK']?>" class="drop-down-menu__link"><?=$hiddenItem['TEXT']?></a>
-                        <?}?>
-                    </div>
-                </button>
+                </a>
+            <?} else {?>
+                <a class="header__link d-inline-flex gap-1 align-items-center" href="<?=$notHiddenItem['LINK']?>">
+                    <span class="fw-semibold"><?=$notHiddenItem['TEXT']?></span>
+                </a>
             <?}?>
-            <button type="button" class="button-search js-spoiler-button" data-spoiler-id="search">
-                <span class="a-icon size-m">
-                    <svg>
-                        <use  xlink:href="/frontend/build/assets/svg-sprite.svg#icon-search"></use>
+        <?}?>
+        <?if(!empty($arResult['HIDDEN'])) {?>
+            <div class="dropdown">
+                <button class="icon size-m dropdown-toggle violet-100" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-more"></use>
                     </svg>
-                </span>
-            </button>
-        </nav>
-    </div>
-    <div class="desktop-nav-layout__third-menu">
-        <?foreach ($arResult['SECOND_LEVEL_MENU'] as $indexItem => $secondLevelItems) {?>
-            <div class="desktop-third-lvl-nav" data-spoiler="spoiler-<?=$indexItem?>">
-                <div class="desktop-third-lvl-nav__column">
-                    <?$count = 1;?>
-                    <?foreach ($secondLevelItems as $item) {?>
-                        <a href="<?=$item['LINK']?>" class="inherits-link body-m-heavy"><?=$item['TEXT']?></a>
-                        <?if($count == 4) {?>
-                            </div>
-                            <div class="desktop-third-lvl-nav__column">
-                            <?$count = 1;?>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <?foreach ($arResult['FIRST_LEVEL_MENU']['HIDDEN'] as $hiddenItem) {?>
+                        <?$issetChildren = isset($arResult['SECOND_LEVEL_MENU'][$hiddenItem['ITEM_INDEX']])?>
+                        <?if($issetChildren) {?>
+                            <li>
+                                <a class="dropdown-item fw-bold d-inline-flex align-items-center justify-content-between d-xl-none js-dropdown-link" href="#spoiler-<?=$hiddenItem['ITEM_INDEX']?>" role="button" aria-expanded="false" aria-controls="spoiler-<?=$hiddenItem['ITEM_INDEX']?>" data-bs-toggle="collapse">
+                                    <?=$hiddenItem['TEXT']?>
+                                    <span class="icon size-m" slot="icon-after">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                            <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
+                                        </svg>
+                                    </span>
+                                </a>
+                            </li>
                         <?} else {?>
-                            <?$count++;?>
+                            <li><a class="dropdown-item fw-bold" href="<?=$hiddenItem['LINK']?>"><?=$hiddenItem['TEXT']?></a></li>
                         <?}?>
                     <?}?>
-                </div>
-                <div class="desktop-third-lvl-nav__aside">
-                    <div class="a-polygon-container js-a-polygon-container">
-                        <div class="a-polygon-container__content">
-                            <div class="card-menu">
-                                <h3 class="card-menu__title headline-4">Зарплатная карта «Мир»</h3>
-                                <p class="card-menu__description body-s-light">
-                                    Карта с&nbsp;полным набором<br>
-                                    операций в&nbsp;торговых точках<br>
-                                    и&nbsp;интернете
-                                </p>
-                            </div>
-                        </div>
-                        <div class="a-polygon-container__polygon js-a-polygon-container-polygon green-100">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="js-a-polygon-container-svg">
-                                <polygon points="" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="10"></polygon>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
+                </ul>
             </div>
         <?}?>
-        <div class="search-desktop" data-spoiler="search">
-            <div class="search-desktop__wrapper">
-                <form class="search-desktop__form">
-                    <div class="input-wrapper">
-                        <span class="a-icon input-wrapper__icon">
-                            <svg>
-                                <use  xlink:href="/frontend/build/assets/svg-sprite.svg#icon-search"></use>
+        <div class="dropdown">
+            <button class="icon size-m dropdown-toggle violet-100 js-dropdown-link" type="button" data-target="#search" aria-expanded="false" aria-controls="search">
+                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                    <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-search"></use>
+                </svg>
+            </button>
+        </div>
+    </div>
+    <?foreach ($arResult['SECOND_LEVEL_MENU'] as $indexItem => $secondLevelItems) {?>
+        <div class="dropdown-nav js-dropdown-nav" id="spoiler-<?=$indexItem?>" role="menu">
+            <div class="row">
+                <div class="col-6 col-xxl-8">
+                    <div class="row row-gap-4">
+                        <?foreach ($secondLevelItems as $item) {?>
+                            <div class="col-6 violet-100">
+                                <a class="header__link fw-semibold" href="<?=$item['LINK']?>" tabindex="-1"><?=$item['TEXT']?></a>
+                            </div>
+                        <?}?>
+                    </div>
+                </div>
+                <div class="col-6 col-xxl-4">
+                    <a class="polygon-container js-polygon-container" href="#" tabindex="-1">
+                        <div class="polygon-container__content">
+                            <div class="card-menu">
+                                <img class="card-menu__image" src="/frontend/dist/img/card-menu-image.png" alt="" loading="lazy">
+                                <h5>Зарплатная карта «Мир»</h5>
+                                <p class="text-s mb-0">Карта с&nbsp;полным набором<br>операций в&nbsp;торговых точках<br>и&nbsp;интернете</p>
+                            </div>
+                        </div>
+                        <div class="polygon-container__polygon js-polygon-container-polygon green-100">
+                            <svg class="js-polygon-container-svg" xmlns="http://www.w3.org/2000/svg">
+                                <polygon points="2,2 335,2 335,394 295,434 2,434" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="10"></polygon>
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    <?}?>
+    <div class="dropdown-nav js-dropdown-nav" id="search">
+        <div class="d-flex flex-column gap-6">
+            <form>
+                <div class="input-group flex-nowrap">
+                    <span class="input-group-icon" id="input-search">
+                        <span class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-search"></use>
                             </svg>
                         </span>
-                        <input placeholder="Поиск по сайту" class="input-wrapper__input">
-                    </div>
-                </form>
-                <div class="search-desktop__tag-layout">
-                    <p class="body-m-light dark-70">Популярные запросы:</p>
-                    <div class="search-desktop__tag-wrapper">
-                        <a class="tag-simple body-s-light" href="#">
-                            Зарплатный проект
-                        </a>
-                        <a class="tag-simple body-s-light" href="#">
-                            Зарплатная карта
-                        </a>
-                        <a class="tag-simple body-s-light" href="#">
-                            Расчетный счет
-                        </a>
-                        <a class="tag-simple body-s-light" href="#">
-                            Ипотека в новостройке
-                        </a>
-                        <a class="tag-simple body-s-light" href="#">
-                            Кредит на бизнес
-                        </a>
-                        <a class="tag-simple body-s-light" href="#">
-                            Депозиты
-                        </a>
-                        <a class="tag-simple body-s-light" href="#">
-                            Вклады
-                        </a>
-                        <a class="tag-simple body-s-light" href="#">
-                            Социально-платежная карта МИР
-                        </a>
-                        <a class="tag-simple body-s-light" href="#">
-                            Банковские гарантии
-                        </a>
-                    </div>
+                    </span>
+                    <input class="form-control" type="text" placeholder="Поиск по сайту" aria-label="Поиск по сайту" aria-describedby="input-search" tabindex="-1">
+                </div>
+            </form>
+            <div class="d-flex flex-column gap-4">
+                <span class="dark-70">Популярные запросы:</span>
+                <div class="d-flex flex-wrap gap-3">
+                    <a class="chip text-s" href="#" tabindex="-1">Зарплатный проект</a>
+                    <a class="chip text-s" href="#" tabindex="-1">Зарплатная карта</a>
+                    <a class="chip text-s" href="#" tabindex="-1">Расчетный счет</a>
+                    <a class="chip text-s" href="#" tabindex="-1">Ипотека в новостройке</a>
+                    <a class="chip text-s" href="#" tabindex="-1">Кредит на бизнес</a>
+                    <a class="chip text-s" href="#" tabindex="-1">Депозиты</a>
+                    <a class="chip text-s" href="#" tabindex="-1">Вклады</a>
+                    <a class="chip text-s" href="#" tabindex="-1">Социально-платежная карта МИР</a>
+                    <a class="chip text-s" href="#" tabindex="-1">Банковские гарантии</a>
                 </div>
             </div>
         </div>

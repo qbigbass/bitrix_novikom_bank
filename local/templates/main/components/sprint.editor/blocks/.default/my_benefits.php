@@ -23,9 +23,9 @@
             </div>
         </div>
         <picture class="pattern-bg">
-            <source srcset="/frontend/build/assets/patterns/section/pattern-light-s.svg" media="(max-width: 767px)">
-            <source srcset="/frontend/build/assets/patterns/section/pattern-light-m.svg" media="(max-width: 1199px)">
-            <img src="/frontend/build/assets/patterns/section/pattern-light-l.svg" alt="bg pattenr" loading="lazy">
+            <source srcset="/frontend/dist/assets/patterns/section/pattern-light-s.svg" media="(max-width: 767px)">
+            <source srcset="/frontend/dist/assets/patterns/section/pattern-light-m.svg" media="(max-width: 1199px)">
+            <img src="/frontend/dist/assets/patterns/section/pattern-light-l.svg" alt="bg pattenr" loading="lazy">
         </picture>
     </section>
 <?}?>

@@ -1,10 +1,68 @@
-include:
-  - project: 'dalee/git-autodeploy'
-    ref: gitlab-ci
-    file: '/autodeploy.gitlab-ci.yml'
-
 variables:
-  AUTODEPLOY_BASE_DOMAIN: main.novikombank.3.dev.dalee.ru
+  AUTODEPLOY_BASE_DOMAIN: main.novikombank.z55.dev.dalee.ru
+  GIT_DEPTH: 20
+
+##
+# Autodeploy
+#
+.autodeploy:
+  variables:
+    GIT_STRATEGY: fetch
+    GIT_CHECKOUT: "false"
+  stage: deploy
+  tags:
+    - autodeploy
+  before_script:
+    - git fetch --prune origin "+refs/heads/master:refs/remotes/origin/master" --depth="$GIT_DEPTH"
+    - git remote prune origin
+    - echo "Auto-deploing $CI_COMMIT_REF_NAME branch host"
+  script:
+    - php /app/autodeploy "$CI_COMMIT_REF_NAME" "$CI_PROJECT_DIR"
+  environment:
+    name: autodeploy/$CI_COMMIT_REF_NAME
+    url: http://$CI_COMMIT_REF_SLUG.$AUTODEPLOY_BASE_DOMAIN
+    on_stop: "deploy:autodeploy:stop"
+
+deploy:autodeploy:branches:
+  extends: .autodeploy
+  only:
+    - branches
+  except:
+    - master
+    - production
+    - /^cherry-pick/
+    - /^nodev-/
+    - /^revert-/
+
+deploy:autodeploy:trunk:
+  extends: .autodeploy
+  before_script:
+    - echo "Auto-deploing master branch host (trunk)"
+  environment:
+    url: http://trunk.$AUTODEPLOY_BASE_DOMAIN
+  only:
+    - master
+
+deploy:autodeploy:stop:
+  before_script:
+    - git init .
+    - rm -f .git/index.lock .git/shallow.lock .git/HEAD.lock .git/hooks/post-checkout
+    - git remote set-url origin $CI_REPOSITORY_URL 2>/dev/null || git remote add origin $CI_REPOSITORY_URL
+    - git fetch --prune origin "+refs/heads/master:refs/remotes/origin/master" --depth="$GIT_DEPTH"
+    - git remote prune origin
+    - echo "Removing $CI_COMMIT_REF_NAME branch host"
+  script:
+    - php /app/autodeploy "$CI_COMMIT_REF_NAME" "$CI_PROJECT_DIR" delete
+  extends: .autodeploy
+  variables:
+    GIT_STRATEGY: none
+  when: manual
+  environment:
+    action: stop
+  only:
+    - branches
+  except:
+    - production
 
 ##
 # Deploy to production

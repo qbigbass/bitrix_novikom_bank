@@ -27,7 +27,7 @@ unset($section);
                         <div class="body-l-light"><?=$section['NAME']?></div>
                         <span class="a-icon a-accordion-header__icon size-m">
                             <svg>
-                                <use  xlink:href="/frontend/build/assets/svg-sprite.svg#icon-chevron-down"></use>
+                                <use xlink:href="/frontend/dist/assets/svg-sprite.svg#icon-chevron-down"></use>
                             </svg>
                         </span>
                     </button>
@@ -44,7 +44,7 @@ unset($section);
                                     <a href="<?=$element['FILE']['SRC']?>" class="document-download__link">
                                         <span class="a-icon size-s">
                                             <svg>
-                                                <use  xlink:href="/frontend/build/assets/svg-sprite.svg#icon-download"></use>
+                                                <use xlink:href="/frontend/dist/assets/svg-sprite.svg#icon-download"></use>
                                             </svg>
                                         </span>
                                     </a>
@@ -65,13 +65,13 @@ unset($section);
             <div class="benefit-card__footer">
                 <span class="a-icon green-100 size-xxl">
                     <svg>
-                        <use  xlink:href="/frontend/build/assets/svg-sprite.svg#icon-a-protection"></use>
+                        <use xlink:href="/frontend/dist/assets/svg-sprite.svg#icon-a-protection"></use>
                     </svg>
                 </span>
                 <a href="#" class="a-button a-button--m a-button--primary a-button--link a-button--text">Подробнее
                     <span class="a-icon a-button__icon">
                         <svg>
-                            <use  xlink:href="/frontend/build/assets/svg-sprite.svg#icon-chevron-right"></use>
+                            <use xlink:href="/frontend/dist/assets/svg-sprite.svg#icon-chevron-right"></use>
                         </svg>
                     </span>
                 </a>

@@ -1,6 +1,7 @@
 .card-product {
     $root: #{&};
 
+    display: block;
     position: relative;
     padding: 1.5rem 1rem;
     background-color: var(--dark-10);
@@ -60,6 +61,7 @@
         gap: 1rem;
         flex: 1;
         z-index: 1;
+        color: var(--dark-100);
 
         @include use-media(tablet-album) {
             max-width: 75%;
@@ -126,6 +128,22 @@
         }
     }
 
+  &__footer {
+    flex-shrink: 0;
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+    margin-top: .5rem;
+
+    @include use-media(tablet) {
+      margin-top: 1rem;
+    }
+
+    @include use-media(tablet-album) {
+      margin-top: -.5rem;
+    }
+  }
+
     &--green {
         &:before {
             background-color: var(--green-100);
@@ -154,7 +172,7 @@
         background-color: var(--dark-0);
     }
 
-    &--type-large {
+    &--size-large {
 
         @include use-media(tablet-album) {
             min-height: 25rem; //400px
