@@ -45,22 +45,22 @@ $bannerHeight: 37.5rem; //600px
         gap: 1.5rem;
 
         @include use-media(tablet) {
-            max-width: 25rem;
+            width: 25rem;
             gap: 2rem;
         }
 
         @include use-media(tablet-album) {
-            max-width: 45rem; //720px
+            width: 45rem; //720px
             gap: 3rem;
             padding-left: 2.5rem;
         }
 
         @include use-media(laptop) {
-            max-width: 52rem; //832px
+            width: 52rem; //832px
         }
 
         @include use-media(desktop) {
-            max-width: 57rem; //912px
+            width: 57rem; //912px
         }
     }
 
@@ -75,6 +75,17 @@ $bannerHeight: 37.5rem; //600px
         @include use-media(tablet) {
             gap: 1.5rem;
         }
+    }
+
+    &__footer {
+
+      @include use-media(tablet-album) {
+        padding-left: 2.5rem;
+      }
+
+      & .benefit {
+        color: var(--dark-0);
+      }
     }
 
     &__image {
@@ -105,6 +116,7 @@ $bannerHeight: 37.5rem; //600px
 
     &__subtitle {
         max-width: 20rem;
+        margin: 0;
 
         @include use-media(tablet-album) {
             max-width: unset;
@@ -135,30 +147,30 @@ $bannerHeight: 37.5rem; //600px
         }
     }
 
-    &__text-benefits {
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-        width: 100%;
-
-        @include use-media(tablet-album) {
-            flex-direction: row;
-            flex-wrap: wrap;
-
-            & > * {
-                flex-basis: calc(50% - 1.5rem / 2);
-            }
-        }
-
-        @include use-media(desktop) {
-            gap: 3rem;
-            flex-wrap: nowrap;
-
-            & > * {
-                flex-basis: auto;
-            }
-        }
-    }
+    //&__text-benefits {
+    //    display: flex;
+    //    flex-direction: column;
+    //    gap: 1.5rem;
+    //    width: 100%;
+    //
+    //    @include use-media(tablet-album) {
+    //        flex-direction: row;
+    //        flex-wrap: wrap;
+    //
+    //        & > * {
+    //            flex-basis: calc(50% - 1.5rem / 2);
+    //        }
+    //    }
+    //
+    //    @include use-media(desktop) {
+    //        gap: 3rem;
+    //        flex-wrap: nowrap;
+    //
+    //        & > * {
+    //            flex-basis: auto;
+    //        }
+    //    }
+    //}
 
     &__button {
         width: 100%;
@@ -167,50 +179,6 @@ $bannerHeight: 37.5rem; //600px
 
         @include use-media(tablet) {
             width: auto;
-        }
-    }
-
-    &__footer {
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-        margin-top: 2.5rem;
-
-        @include use-media(tablet) {
-            column-gap: 2rem;
-            row-gap: 1.5rem;
-            flex-direction: row;
-            flex-wrap: wrap;
-
-            & > * {
-                flex-basis: calc(50% - 1rem);
-            }
-        }
-
-        @include use-media(tablet-album) {
-            margin-top: 7.5rem;
-            padding-left: 2.5rem;
-            gap: 2.5rem;
-
-            & > * {
-                flex-basis: calc(50% - 2.5rem / 2);
-            }
-        }
-
-        &.col-laptop-3 {
-            @include use-media(laptop) {
-                & > * {
-                    flex-basis: calc(33.33% - 2.5rem * 2 / 3);
-                }
-            }
-        }
-
-        &.col-laptop-4 {
-            @include use-media(laptop) {
-                & > * {
-                    flex-basis: calc(25% - 2.5rem * 3 / 4);
-                }
-            }
         }
     }
 
@@ -366,12 +334,6 @@ $bannerHeight: 37.5rem; //600px
     &--size-xl {
         @include use-media(tablet-album) {
             height: auto;
-        }
-
-        @include use-media(desktop) {
-            #{$root}__text-benefits {
-                padding-bottom: 8.375rem;
-            }
         }
 
         #{$root}__pattern {
