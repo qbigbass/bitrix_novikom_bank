@@ -17,7 +17,7 @@ $terms = [
         'SIGN' => 'Сумма',
         'FROM_TO' => 'до&nbsp;',
     ],
-    'RATE' => [
+    'RATE_FROM' => [
         'SIGN' => 'Процентная ставка',
         'FROM_TO' => 'от&nbsp;',
     ],

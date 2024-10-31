@@ -14,7 +14,7 @@
 use Dalee\Helpers\ComponentHelper;
 
 $terms = [
-    'RATE' => [
+    'RATE_FROM' => [
         'SIGN' => 'Минимальная ставка',
         'FROM_TO' => 'от&nbsp;',
     ],
