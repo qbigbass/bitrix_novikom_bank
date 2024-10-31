@@ -7,5 +7,7 @@ mixin benefit(spriteData, title, isHorizontal=false)
                     h5.benefit__title.fw-semibold!= title
                 else
                     h4.benefit__title!= title
-            .benefit__description.w-100.text-m
-                block
+
+            if block
+                .benefit__description.w-100.text-m
+                    block
