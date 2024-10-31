@@ -1,0 +1,63 @@
+.card-contact {
+    border-radius: 0.75rem;
+    padding: 1.5rem 1rem;
+
+    @include use-media(tablet) {
+        padding: 2rem;
+    }
+
+    @include use-media(tablet-album) {
+        padding: 2.5rem;
+    }
+
+    &__link {
+        display: flex;
+        align-items: flex-start;
+        font-size: 1rem;
+
+        @include use-media(tablet) {
+            font-size: 1.125rem;
+        }
+    
+        @include use-media(tablet-album) {
+            align-items: center;
+            font-size: 1.25rem;
+        }
+    }
+
+    &__content {
+        @include use-media(tablet) {
+            padding-right: 15rem;
+        }
+
+        @include use-media(tablet-album) {
+            padding-right: 25rem;
+        }
+    }
+
+    &__image {
+        width: 100%;
+        height: auto;
+
+        @include use-media(tablet) {
+            height: 20rem;
+            width: 20rem;
+        }
+
+        @include use-media(tablet-album) {
+            height: 30rem;
+            width: 30rem;
+        }
+    }
+
+    &__image-container {
+
+        @include use-media(tablet) {
+            position: absolute;
+            transform: translate(0, -50%);
+            top: 50%;
+            right: 0;
+            z-index: 0;
+        }
+    }
+}
