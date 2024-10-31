@@ -50,6 +50,14 @@ $this->setFrameMode(true);
                          tabindex="0"
                          role="tabpanel">
 
+                        <? if (
+                            !empty($tab['CODE']) && ($tab['CODE'] == 'protsentnye-stavki' || $tab['CODE'] == 'stavki')
+                            || ($tab['NAME'] == 'Процентные ставки' || $tab['NAME'] == 'Ставки')
+                            && !empty($component ->__parent->arResult['RATES_TABLE_HTML'])
+                        ) {
+                            echo($component ->__parent->arResult['RATES_TABLE_HTML']);
+                        } ?>
+
                         <? if (!empty($tab['DISPLAY_PROPERTIES'])) {
                             foreach ($tab['DISPLAY_PROPERTIES'] as $property) {
 
