@@ -70,7 +70,7 @@ function processTerms(array $terms, array $properties, bool $days = false): arra
         $fromTo = $terms[$key]['FROM_TO'];
         $value = '';
 
-        if ($key === 'RATE') {
+        if (in_array($key, ['RATE_FROM', 'RATE_TO'])) {
             $value = $term . ' %';
         } elseif (in_array($key, ['SUM_FROM', 'SUM_TO'])) {
             $value = number_format($term, 0, '', ' ') . ' ₽';

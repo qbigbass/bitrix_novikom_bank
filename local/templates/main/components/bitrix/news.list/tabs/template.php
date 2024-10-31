@@ -178,7 +178,7 @@ $this->setFrameMode(true);
                                                                     <a class="d-flex flex-column gap-1 py-3 document-download text-m" href="<?= $file['SRC'] ?>" download="<?= $file['NAME'] ?>"><?= $element ['NAME'] ?>
                                                                         <div class="d-flex gap-1 align-items-center">
                                                                             <div class="document-download__file caption-m dark-70">
-                                                                                <span class="document-download__date-time"><?= $element['ACTIVE_FROM']->format('d.m.y H:i') ?></span>
+                                                                                <span class="document-download__date-time"><?= !empty($element['ACTIVE_FROM']) ? $element['ACTIVE_FROM']->format('d.m.y H:i') : '' ?></span>
                                                                                 <span class="document-download__file-type"><?= explode('.', $file['ORIGINAL_NAME'])[1] ?></span>
                                                                             </div>
                                                                             <span class="icon size-s text-primary">
