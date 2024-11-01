@@ -55,8 +55,9 @@
         }
     }
 
-    &--color-white {
+    &--outline-white {
         #{$root}__content {
+            background-color: transparent;
             border-color: var(--dark-0);
             color: rgba(#fff, .5);
         }
@@ -64,6 +65,7 @@
         #{$root}__triangle {
             svg {
                 path {
+                    fill: transparent;
                     stroke: var(--dark-0);
                 }
             }

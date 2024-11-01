@@ -1,0 +1,18 @@
+.list-contact {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  &__text {
+    color: currentColor;
+  }
+
+  &__link {
+    color: currentColor;
+    text-decoration: none;
+  }
+
+  &__notes {
+    opacity: 0.5;
+  }
+}

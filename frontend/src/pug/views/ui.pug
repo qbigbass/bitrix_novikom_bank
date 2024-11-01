@@ -40,6 +40,7 @@ block content
     include ../components/stepper
     include ../components/banners/banner-product-info
     include ../components/ui/input/input-slider
+    include ../components/contact-block
     include ../cards/card-text
     include ../cards/card-product-list
     include ../cards/card-product
@@ -49,6 +50,7 @@ block content
     include ../cards/card-help
     include ../cards/card-step
     include ../cards/card-news
+    include ../cards/card-promo
 
     section#typography.section-layout
         .container
@@ -510,6 +512,158 @@ block content
                     each item in cardStepList
                         .col-12.col-lg-4
                             +card-step(item).pe-xxl-11
+
+    section#card-promo.section-layout.section-layout--padding-top-0
+        -
+            var cardPromo = {
+                title: "Лизинг от НОВИКОМа",
+                text: "Банк Новиком оказывает услуги лизинга (финансовой аренды) через своего партнера &mdash;&nbsp;лизинговую компанию &laquo;Нацпромлизинг&raquo;",
+                image: "leasing-image.png",
+                benefits: [
+                    {
+                        colorClass: "dark-0",
+                        beforeNum: "от",
+                        num: "0",
+                        currency: "₽",
+                        afterNum: "дней",
+                        description: "Описание"
+
+                    },
+                    {
+                        colorClass: "dark-0",
+                        beforeNum: "от",
+                        num: "0",
+                        currency: "₽",
+                        afterNum: "дней",
+                        description: "Описание"
+
+                    },
+                    {
+                        colorClass: "dark-0",
+                        beforeNum: "от",
+                        num: "0",
+                        currency: "₽",
+                        afterNum: "дней",
+                        description: "Описание"
+
+                    }
+                ]
+            }
+        .container
+            .d-flex.flex-column.row-gap-5
+                h2 Card Promo
+                .row.row-gap-6
+                    +card-promo(cardPromo).card-promo--heavy-purple
+                        a(href="#").btn.btn-info.w-100.w-md-auto Кнопка
+                        a(href="#").btn.btn-link.btn-icon.text-info.m-auto.m-md-0
+                            | Кнопка
+                            +svg-use("icon-download", "icon size-m")
+    section#card-contact.section-layout.section-layout--padding-top-0
+        -
+            var contactList = [
+                {
+                    tag: {
+                        text: "Частным клиентам",
+                        type: "outline-white",
+                    },
+                    title: "Департамент Казначейство",
+                    description: "Отдел продаж Казначейских продуктов",
+                    list: [
+                        {
+                            href: "tel:+74959747187",
+                            text: "+7 (495) 974-71-87",
+                            icon: "icon-phone",
+                            additionalText: "доб. 055",
+
+                        },
+                        {
+                            href: "emailto:corp@novikom.ru",
+                            text: "corp@novikom.ru",
+                            icon: "icon-mail",
+                            additionalClass: "text-decoration-underline",
+                        },
+                        {
+                            text: "119180 Москва, ул. Полянка Большая д. 50/1 стр. 1",
+                            icon: "icon-point",
+                        },
+                    ],
+                },
+                {
+                    tag: {
+                        text: "Частным клиентам",
+                        type: "outline",
+                    },
+                    title: "Департамент Казначейство",
+                    description: "Отдел продаж Казначейских продуктов",
+                    list: [
+                        {
+                            href: "tel:+74959747187",
+                            text: "+7 (495) 974-71-87",
+                            icon: "icon-phone",
+                            iconColorClass: "violet-100",
+                            additionalText: "доб. 055",
+
+                        },
+                        {
+                            text: "119180 Москва, ул. Полянка Большая д. 50/1 стр. 1",
+                            icon: "icon-point",
+                            iconColorClass: "violet-100",
+                        },
+                    ],
+                },
+                {
+                    title: "Департамент Казначейство",
+                    description: "Отдел продаж Казначейских продуктов",
+                    backgroundColor: "heavy-purple",
+                    list: [
+                        {
+                            text: "119180 Москва, ул. Полянка Большая д. 50/1 стр. 1",
+                            icon: "icon-point",
+                        },
+                    ],
+                },
+                {
+                    tag: {
+                        text: "Частным клиентам",
+                        type: "outline-white",
+
+                    },
+                    title: "Департамент Казначейство",
+                    description: "Отдел продаж Казначейских продуктов",
+                    backgroundColor: "heavy-purple",
+                    list: [
+                        {
+                            href: "tel:+74959747187",
+                            text: "+7 (495) 974-71-87",
+                            icon: "icon-phone",
+                            additionalText: "доб. 055",
+
+                        },
+                        {
+                            href: "emailto:corp@novikom.ru",
+                            text: "corp@novikom.ru",
+                            icon: "icon-mail",
+                            additionalClass: "text-decoration-underline",
+                        },
+                        {
+                            text: "119180 Москва, ул. Полянка Большая д. 50/1 стр. 1",
+                            icon: "icon-point",
+                        },
+                    ],
+                },
+            ]
+        .container
+            .d-flex.flex-column.row-gap-5
+                h2 Card Contact
+                .row.row-gap-6
+                    .col-12.col-lg-6
+                        +contact-block(contactList[0]).card-contact--bg-blue
+                    .col-12.col-lg-6
+                        +contact-block(contactList[1]).card-contact--bg-gray
+                    .col-12.col-lg-6
+                        +contact-block(contactList[2]).card-contact--bg-blue
+                    .col-12.col-lg-6
+                        +contact-block(contactList[3]).card-contact--bg-heavy-purple
 
     section#steps.section-layout.pt-0
         .container
