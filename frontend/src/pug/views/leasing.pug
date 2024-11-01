@@ -11,7 +11,7 @@ block content
     include ../cards/card-product
     include ../cards/card-promo
     include ../cards/card-benefit
-    include ../cards/card-contact
+    include ../components/contact-block
     include ../includes/layout/slider-card-product
 
     -
@@ -296,7 +296,7 @@ block content
                         .swiper-wrapper
                             each item in contactList
                                 .swiper-slide.js-swiper-slide
-                                    +card-contact(item).card-contact--bg-heavy-purple
+                                    +contact-block(item).card-contact--bg-heavy-purple
 
                         +slider-controls().mt-3.mt-md-4
 

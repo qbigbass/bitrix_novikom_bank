@@ -40,6 +40,7 @@ block content
     include ../components/stepper
     include ../components/banners/banner-product-info
     include ../components/ui/input/input-slider
+    include ../components/contact-block
     include ../cards/card-text
     include ../cards/card-product-list
     include ../cards/card-product
@@ -50,7 +51,6 @@ block content
     include ../cards/card-step
     include ../cards/card-news
     include ../cards/card-promo
-    include ../cards/card-contact
 
     section#typography.section-layout
         .container
@@ -657,13 +657,13 @@ block content
                 h2 Card Contact
                 .row.row-gap-6
                     .col-12.col-lg-6
-                        +card-contact(contactList[0]).card-contact--bg-blue
+                        +contact-block(contactList[0]).card-contact--bg-blue
                     .col-12.col-lg-6
-                        +card-contact(contactList[1]).card-contact--bg-gray
+                        +contact-block(contactList[1]).card-contact--bg-gray
                     .col-12.col-lg-6
-                        +card-contact(contactList[2]).card-contact--bg-blue
+                        +contact-block(contactList[2]).card-contact--bg-blue
                     .col-12.col-lg-6
-                        +card-contact(contactList[3]).card-contact--bg-heavy-purple
+                        +contact-block(contactList[3]).card-contact--bg-heavy-purple
 
     section#steps.section-layout.pt-0
         .container
