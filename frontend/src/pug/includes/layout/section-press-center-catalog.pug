@@ -1,0 +1,161 @@
+-
+    var tabsList = [
+        {
+            link: '#1',
+            linkText: 'Новости',
+        },
+        {
+            link: '#2',
+            linkText: 'СМИ о нас',
+        },
+        {
+            link: '#3',
+            linkText: 'Медиа',
+        }
+    ]
+
+    var newsTabsList = [
+        {
+            link: '#1',
+            linkText: 'Все новости',
+        },
+        {
+            link: '#2',
+            linkText: 'О банке',
+        },
+        {
+            link: '#3',
+            linkText: 'Новости партнеров',
+        },
+        {
+            link: '#4',
+            linkText: 'ESG',
+        }
+    ]
+
+    const allCards = [
+        {
+            id: 1,
+            href: "#",
+            tag: "Пресс-центр",
+            title: "НОВИКОМ улучшает условия по вкладам",
+            date: "08.08.2024",
+            imageSrc: "img/news-cards/card-image-1.png",
+            isNeedStickyIcon: true,
+        },
+        {
+            id: 2,
+            href: "#",
+            tag: "Пресс-центр",
+            title: "Прибыль НОВИКОМа за первое полугодие 2024 года составила 13,6 млрд рублей",
+            date: "08.08.2024",
+            isNeedStickyIcon: true,
+        },
+        {
+            id: 3,
+            href: "#",
+            tag: "Пресс-центр",
+            title: "НОВИКОМ разместил средства Гарантийного фонда Чеченской Республики",
+            date: "07.08.2024",
+            isNeedStickyIcon: false,
+        },
+        {
+            id: 4,
+            href: "#",
+            tag: "Пресс-центр",
+            title: "НОВИКОМ улучшает условия по вкладам",
+            date: "08.08.2024",
+            imageSrc: "img/news-cards/card-image-1.png",
+            isNeedStickyIcon: true,
+        },
+        {
+            id: 5,
+            href: "#",
+            tag: "Пресс-центр",
+            title: "Прибыль НОВИКОМа за первое полугодие 2024 года составила 13,6 млрд рублей",
+            date: "08.08.2024",
+            isNeedStickyIcon: true,
+        },
+        {
+            id: 6,
+            href: "#",
+            tag: "Пресс-центр",
+            title: "НОВИКОМ разместил средства Гарантийного фонда Чеченской Республики",
+            date: "07.08.2024",
+            isNeedStickyIcon: false,
+        },
+    ]
+
+    var paginationObject = {
+        prevLink: "",
+        nextLink: "#2",
+        lastLink: {
+            link: "#7",
+            linkText: "7",
+        },
+        list: [
+            {
+                link: "#1",
+                linkText: "1",
+                isActive: true,
+            },
+            {
+                link: "#2",
+                linkText: "2"
+            },
+            {
+                link: "#3",
+                linkText: "3"
+            },
+            {
+                link: "#4",
+                linkText: "4"
+            }
+        ]
+    }
+
+include ../../components/ui/tabs
+include ../../components/ui/pagination
+
+section.section-catalog__tabs
+    .container
+        .row
+            .col-12.mb-6.mb-md-5.mb-lg-7
+                +tabs(
+                    tabsList,
+                    'min-w-sm-100',
+                    'text-center'
+                ).tabs-panel--full-width-items.tabs-panel--auto-width-md
+            .col-12
+                a(
+                    data-bs-toggle="collapse"
+                    href="#filters-content"
+                    role="button"
+                    aria-expanded="true"
+                    aria-controls="filters-content"
+                ).btn.btn-lg.btn-link.p-0.border-none.d-flex.align-items-center.justify-content-between.d-md-none
+                    span.dark-100 Фильтры
+                    +svg-use("icon-chevron-down", "icon size-m violet-100")
+                #filters-content.collapse.show.d-md-block.mt-4.mt-sm-5.mt-md-0
+                    .w-100.d-flex.align-items-center.flex-column.flex-lg-row.justify-content-between.row-gap-4.row-gap-md-5
+                        .w-100
+                            +tabs(
+                                newsTabsList,
+                                "section-catalog__tab-list min-w-sm-100 min-w-lg-auto",
+                                "section-catalog__tab-list-item text-center",
+                                true
+                            ).tabs-panel--full-width-items.tabs-panel--auto-width-md
+                        .d-flex.w-100.justify-content-end
+                            .position-relative.w-100.w-lg-240w
+                                input#date1(type="date" name="date1" placeholder="Показать за период" disabled).w-100.form-control
+                                span.position-absolute.top-0.end-0.violet-70.text-m.p-2.px-3
+                                    +svg-use("icon-calendar", "icon size-m")
+
+section.section-catalog__list
+    .container
+        .row.row-gap-5.row-gap-md-7
+            each item in allCards
+                .col-12.col-md-6.col-lg-4
+                    +card-news(item)
+            .col-12
+                +pagination(paginationObject, "center")        

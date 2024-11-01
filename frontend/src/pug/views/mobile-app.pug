@@ -48,6 +48,78 @@ block content
             }
         ]
 
+        var allBenefits = [
+            {
+                spriteData: {
+                    name: 'icon-a-bank',
+                    classList: 'size-xl',
+                },
+                title: 'Платежи без комиссии',
+                list: [
+                    'Оплата услуг ЖКХ, интернета, сотовой связи',
+                    'Госплатежи: налоги, штрафы ГИБДД и&nbsp;т.д.'
+                ]
+            },
+            {
+                spriteData: {
+                    name: 'icon-a-prices',
+                    classList: 'size-xl',
+                },
+                title: 'Доступ к&nbsp;продуктам банка 24/7',
+                list: [
+                    'Дебетовые и&nbsp;кредитные карты',
+                    'Вклады',
+                    'Кредиты'
+                ]
+            },
+            {
+                spriteData: {
+                    name: 'icon-a-money',
+                    classList: 'size-xl',
+                },
+                title: 'Переводы без комиссии',
+                list: [
+                    'Через СБП',
+                    'По&nbsp;номеру телефона',
+                    'Со&nbsp;счетов в&nbsp;других банках'
+                ]
+            },
+            {
+                spriteData: {
+                    name: 'icon-a-money',
+                    classList: 'size-xl',
+                },
+                title: 'Актуальная информация <br>о&nbsp;продуктах и&nbsp;услугах банка',
+                list: [
+                    'Выгодные условия и&nbsp;обновления',
+                    'Акции',
+                    'Новости'
+                ]
+            },
+            {
+                spriteData: {
+                    name: 'icon-a-money',
+                    classList: 'size-xl',
+                },
+                title: 'Управление <br>программами лояльности',
+                list: [
+                    'Бонусы',
+                    'Кешбэк'
+                ]
+            },
+            {
+                spriteData: {
+                    name: 'icon-a-money',
+                    classList: 'size-xl',
+                },
+                title: 'Коммуникации с&nbsp;банком',
+                list: [
+                    'Онлайн-консультант 24/7',
+                    'Ближайшие отделения и&nbsp;банкоматы на&nbsp;карте'
+                ]
+            }
+        ]
+
         var bannerTextData = {
             title: "Интернет-банк и&nbsp;Мобильное приложение",
             breadcrumbsArray: [
@@ -58,72 +130,39 @@ block content
 
     +banner-text(bannerTextData, 'green')
 
-    section.section-layout
+    section.section-layout.px-lg-6
         .container
-            h3.px-lg-6.mb-4.mb-md-6.mb-lg-7
+            h3.mb-4.mb-md-6.mb-lg-7
                 | Преимущества
-            #benefits.row.row-gap-6.row-gap-md-7.px-lg-6
-                .col-12.col-md-6.col-xl-4
-                    +benefit(
-                        {
-                            name: 'icon-a-date',
-                            classList: 'size-xl'
-                        }, "Платежи без комиссии")
-                        ul.list
-                            li Оплата услуг ЖКХ, интернета, сотовой связи
-                            li Госплатежи: налоги, штрафы ГИБДД и&nbsp;т.д.
-                .col-12.col-md-6.col-xl-4
-                    +benefit(
-                        {
-                            name: 'icon-a-date',
-                            classList: 'size-xl'
-                        }, "Доступ к&nbsp;продуктам банка 24/7")
-                        ul.list
-                            li Дебетовые и&nbsp;кредитные карты
-                            li Вклады
-                            li Кредиты
-                .col-12.col-md-6.col-xl-4
-                    +benefit(
-                        {
-                            name: 'icon-a-date',
-                            classList: 'size-xl'
-                        }, "Переводы без комиссии")
-                        ul.list
-                            li Через СБП
-                            li По&nbsp;номеру телефона
-                            li Со&nbsp;счетов в&nbsp;других банках
-                .col-12.col-md-6.col-xl-4
-                    +benefit(
-                        {
-                            name: 'icon-a-date',
-                            classList: 'size-xl'
-                        }, "Актуальная информация <br>о&nbsp;продуктах и&nbsp;услугах банка")
-                        ul.list
-                            li Выгодные условия и&nbsp;обновления
-                            li Акции
-                            li Новости
-                .col-12.col-md-6.col-xl-4.d-none.d-md-block
-                    +benefit(
-                        {
-                            name: 'icon-a-date',
-                            classList: 'size-xl'
-                        }, "Управление <br>программами лояльности")
-                        ul.list
-                            li Бонусы
-                            li Кешбэк
-                .col-12.col-md-6.col-xl-4.d-none.d-md-block
-                    +benefit(
-                        {
-                            name: 'icon-a-date',
-                            classList: 'size-xl'
-                        }, "Коммуникации с&nbsp;банком")
-                        ul.list
-                            li Онлайн-консультант 24/7
-                            li Ближайшие отделения и&nbsp;банкоматы на&nbsp;карте
-                .col-12.text-center
-                    button(type="button" data-target="benefits").btn.btn-link.btn-icon.d-md-none.js-more-content-link
-                        | Еще преимущества
-                        +svg-use("icon-chevron-down", "icon size-m violet-100")
+            .row.row-gap-6
+                each item, index in allBenefits
+                    .col-12.col-md-6.col-lg-4(class=index > 3 && 'd-none d-md-block')
+                        +benefit(item.spriteData, item.title)
+                            if item.list
+                                ul.list
+                                    each listItem in item.list
+                                        li!=listItem
+            #mobile-app-more-benefits.collapse.d-md-none
+                .row.row-gap-6.row-gap-md-7.mt-6
+                    each item, index in allBenefits
+                        if index > 3
+                            .col-12
+                                +benefit(item.spriteData, item.title)
+                                    if item.list
+                                        ul.list
+                                            each listItem in item.list
+                                                li!=listItem
+            .row.d-md-none.mt-6
+                .col-12
+                    a(
+                        data-bs-toggle="collapse"
+                        href="#mobile-app-more-benefits"
+                        role="button"
+                        aria-expanded="false"
+                        aria-controls="mobile-app-more-benefits"
+                    ).d-flex.gap-2.align-items-center.justify-content-center.violet-100.text-m.fw-bold
+                        | Ещё преимущества
+                        +svg-use("icon-chevron-down", "icon size-m")
         +pattern-bg('section', 'light', 'pattern-bg--position-sm-bottom')
 
     section.section-layout

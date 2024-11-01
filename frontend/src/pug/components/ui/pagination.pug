@@ -2,7 +2,7 @@ mixin pagination(data, position='center', size)
     nav
         -
             var activeIndex = 0;
-        ul.pagination.d-none.d-md-flex(class=`justify-content${position}`, class=size && `pagination-${size}`)
+        ul.pagination.d-none.d-md-flex(class=`justify-content-${position}`, class=size && `pagination-${size}`)
             if data.prevLink
                 li.page-item
                     a.page-link(href=data.prevLink)

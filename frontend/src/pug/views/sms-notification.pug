@@ -49,6 +49,51 @@ block content
             },
         ]
 
+        var allBenefits = [
+            {
+                spriteData: {
+                    name: 'icon-a-bank',
+                    classList: 'size-xl',
+                },
+                description: 'Подключение на&nbsp;любой номер телефона любого количества карт банка Новиком',
+            },
+            {
+                spriteData: {
+                    name: 'icon-a-prices',
+                    classList: 'size-xl',
+                },
+                description: 'Получение сообщений о&nbsp;зачислении заработной платы',
+            },
+            {
+                spriteData: {
+                    name: 'icon-a-money',
+                    classList: 'size-xl',
+                },
+                description: 'Информирование о&nbsp;снятии наличных',
+            },
+            {
+                spriteData: {
+                    name: 'icon-a-money',
+                    classList: 'size-xl',
+                },
+                description: 'Отчеты о&nbsp;платежах в&nbsp;интернете',
+            },
+            {
+                spriteData: {
+                    name: 'icon-a-money',
+                    classList: 'size-xl',
+                },
+                description: 'Отчеты о&nbsp;действиях в&nbsp;интернет-банке',
+            },
+            {
+                spriteData: {
+                    name: 'icon-a-money',
+                    classList: 'size-xl',
+                },
+                description: 'Напоминания о&nbsp;необходимых платежах по&nbsp;кредитам и&nbsp;кредитным картам',
+            }
+        ]
+
         var bannerTextData = {
             title: "SMS-информирование",
             breadcrumbsArray: [
@@ -76,58 +121,33 @@ block content
 
         +pattern-bg('section', 'light', 'pattern-bg--position-sm-bottom')
 
-    section.section-layout
+    section.section-layout.px-lg-6
         .container
-            h3.px-lg-6.mb-4.mb-md-6.mb-lg-7
+            h3.mb-4.mb-md-6.mb-lg-7
                 | Возможности
-            #benefits.row.row-gap-6.row-gap-md-7.px-lg-6
-                .col-12.col-md-6.col-xl-4
-                    +benefit(
-                        {
-                            name: 'icon-a-date',
-                            classList: 'size-xl'
-                        }, "")
-                        span Подключение на&nbsp;любой номер телефона любого количества карт банка Новиком
-                .col-12.col-md-6.col-xl-4
-                    +benefit(
-                        {
-                            name: 'icon-a-date',
-                            classList: 'size-xl'
-                        }, "")
-                        span Получение сообщений о&nbsp;зачислении заработной платы
-                .col-12.col-md-6.col-xl-4
-                    +benefit(
-                        {
-                            name: 'icon-a-date',
-                            classList: 'size-xl'
-                        }, "")
-                        span Информирование о&nbsp;снятии наличных
-                .col-12.col-md-6.col-xl-4
-                    +benefit(
-                        {
-                            name: 'icon-a-date',
-                            classList: 'size-xl'
-                        }, "")
-                        span Отчеты о&nbsp;платежах в&nbsp;интернете
-
-                .col-12.col-md-6.col-xl-4.d-none.d-md-block
-                    +benefit(
-                        {
-                            name: 'icon-a-date',
-                            classList: 'size-xl'
-                        }, "")
-                        span Отчеты о&nbsp;действиях в&nbsp;интернет-банке
-                .col-12.col-md-6.col-xl-4.d-none.d-md-block
-                    +benefit(
-                        {
-                            name: 'icon-a-date',
-                            classList: 'size-xl'
-                        }, "")
-                        span Напоминания о&nbsp;необходимых платежах по&nbsp;кредитам и&nbsp;кредитным картам
-                .col-12.text-center
-                    button(type="button" data-target="benefits").btn.btn-link.btn-icon.d-md-none.js-more-content-link
-                        | Еще преимущества
-                        +svg-use("icon-chevron-down", "icon size-m violet-100")
+            .row.row-gap-6
+                each item, index in allBenefits
+                    .col-12.col-md-6.col-lg-4(class=index > 3 && 'd-none d-md-block')
+                        +benefit(item.spriteData, item.title)
+                            span!= item.description
+            #sms-more-benefits.collapse.d-md-none
+                .row.row-gap-6.mt-6
+                    each item, index in allBenefits
+                        if index > 3
+                            .col-12
+                                +benefit(item.spriteData, item.title)
+                                    span!= item.description
+            .row.d-md-none.mt-6
+                .col-12
+                    a(
+                        data-bs-toggle="collapse"
+                        href="#sms-more-benefits"
+                        role="button"
+                        aria-expanded="false"
+                        aria-controls="sms-more-benefits"
+                    ).d-flex.gap-2.align-items-center.justify-content-center.violet-100.text-m.fw-bold
+                        | Ещё преимущества
+                        +svg-use("icon-chevron-down", "icon size-m")
 
     section.section-layout.bg-dark-10
         .container

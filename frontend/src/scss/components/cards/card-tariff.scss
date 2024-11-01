@@ -1,0 +1,12 @@
+.card-tariff {
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+
+    @include use-media(tablet) {
+        padding: 2rem;
+    }
+
+    @include use-media(tablet-album) {
+        padding: 2.5rem;
+    }
+}
