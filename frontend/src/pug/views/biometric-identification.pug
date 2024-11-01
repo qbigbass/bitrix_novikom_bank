@@ -135,24 +135,27 @@ block content
                 h3 Преимущества
             .row.row-gap-6
                 each item, index in allBenefits
-                    if index === allBenefits.length - 1
-                        .col-12.d-md-none.order-1
-                            a(
-                                data-bs-toggle="collapse"
-                                href="#biometric-more-benefits"
-                                role="button"
-                                aria-expanded="false"
-                                aria-controls="biometric-more-benefits"
-                            ).d-flex.gap-2.align-items-center.justify-content-center.violet-100.text-m.fw-bold
-                                | Ещё преимущества
-                                +svg-use("icon-chevron-down", "icon size-m")
-                        #biometric-more-benefits.col-12.col-md-6.col-lg-4.collapse.d-md-block
-                            +benefit(item.spriteData, item.title)
-                                span!= item.description
-                    else
-                        .col-12.col-md-6.col-lg-4
-                            +benefit(item.spriteData, item.title)
-                                span!= item.description
+                    .col-12.col-md-6.col-lg-4(class=index > 3 && 'd-none d-md-block')
+                        +benefit(item.spriteData, item.title)
+                            span!= item.description
+            #biometric-more-benefits.collapse.d-md-none
+                .row.row-gap-6.mt-6
+                    each item, index in allBenefits
+                        if index > 3
+                            .col-12
+                                +benefit(item.spriteData, item.title)
+                                    span!= item.description
+            .row.d-md-none.mt-6
+                .col-12
+                    a(
+                        data-bs-toggle="collapse"
+                        href="#biometric-more-benefits"
+                        role="button"
+                        aria-expanded="false"
+                        aria-controls="biometric-more-benefits"
+                    ).d-flex.gap-2.align-items-center.justify-content-center.violet-100.text-m.fw-bold
+                        | Ещё преимущества
+                        +svg-use("icon-chevron-down", "icon size-m")
 
     section.section-layout.bg-dark-10.px-lg-6
         .container
