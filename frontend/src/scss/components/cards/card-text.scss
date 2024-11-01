@@ -1,3 +1,7 @@
 .card-text {
     border-radius: 0.75rem;
+
+    &__inner {
+        width: 100%;
+    }
 }

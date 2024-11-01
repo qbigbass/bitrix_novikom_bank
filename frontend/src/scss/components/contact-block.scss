@@ -1,59 +1,79 @@
 .contact-block {
-  $root: #{&};
+    $root: #{&};
 
-  padding: 1.5rem 1rem;
-  border-radius: 0.75rem;
-  overflow: hidden;
+    position: relative;
+    padding: 1.5rem 1rem;
+    border-radius: 0.75rem;
+    overflow: hidden;
 
-  @include use-media(tablet) {
-    padding: 2rem;
-  }
-
-  @include use-media(tablet-album) {
-    padding: 2.5rem;
-  }
-
-  &__tag {
-    margin-bottom: -1rem;
-  }
-
-  &--bg-blue {
-    background: linear-gradient(42.24deg, #383a74 20%, #2e1b52 80%);
-    color: var(--dark-0);
-
-    #{$root}__description {
-      opacity: 0.5;
+    @include use-media(tablet) {
+        padding: 2rem;
     }
-  }
 
-  &--bg-gray {
-    background-color: var(--dark-10);
-    color: var(--dark-100);
-
-    #{$root}__description {
-      color: var(--dark-70);
+    @include use-media(tablet-album) {
+        padding: 2.5rem;
     }
-  }
 
-  &--bg-white {
-    background-color: var(--dark-0);
-    color: var(--dark-100);
-
-    #{$root}__description {
-      color: var(--dark-70);
+    &__content {
+        position: relative;
+        z-index: 1;
     }
-  }
 
-  &--bg-heavy-purple {
-    background: linear-gradient(222.24deg, #101317 20%, #5A2375 80%);
-    color: var(--dark-0);
-
-    #{$root}__description {
-      opacity: 0.5;
+    &__tag {
+        margin-bottom: -1rem;
     }
-  }
 
-  @at-root .swiper-slide & {
-    height: 100%;
-  }
+    &__description {
+        text-wrap: balance;
+    }
+
+    &--bg-blue {
+        background: linear-gradient(42.24deg, #383a74 20%, #2e1b52 80%);
+        color: var(--dark-0);
+
+        #{$root}__description {
+            opacity: 0.5;
+        }
+    }
+
+    &--bg-gray {
+        background-color: var(--dark-10);
+        color: var(--dark-100);
+
+        #{$root}__description {
+            color: var(--dark-70);
+        }
+    }
+
+    &--bg-white {
+        background-color: var(--dark-0);
+        color: var(--dark-100);
+
+        #{$root}__description {
+            color: var(--dark-100);
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(245, 244, 246, 0.9) 0%, rgba(173, 173, 212, 0) 100%);
+        }
+    }
+
+    &--bg-heavy-purple {
+        background: linear-gradient(222.24deg, #101317 20%, #5A2375 80%);
+        color: var(--dark-0);
+
+        #{$root}__description {
+            opacity: 0.5;
+        }
+    }
+
+    @at-root .swiper-slide & {
+        height: 100%;
+    }
 }

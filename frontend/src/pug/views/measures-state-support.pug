@@ -1,0 +1,290 @@
+extends ../templates/base
+
+block title
+    title= 'Меры господдержки'
+    meta(name="description" content="Описание главной страницы")
+block content
+    include ../includes/header/header
+    include ../components/banners/banner-product
+    include ../components/helper
+    include ../components/ui/tabs
+    include ../cards/card-text
+    include ../components/ui/tabs-simple
+    include ../components/contact-block
+    include ../includes/layout/slider-card-product
+
+    -
+        var bannerPromoData = {
+            title: "Меры господдержки",
+            subtitle: "Новиком Банк&nbsp;&mdash; Уполномоченный Банк системы мер государственной поддержки",
+            type: "corp",
+            imgSrc: "img/hero-banner/state-support.png",
+            bgColor: "heavy-purple",
+            urlHref: "#",
+            buttonText: "Подать заявку",
+            benefits: [
+                {
+                    colorClass: 'orange-100',
+                    title: 'Уменьшение',
+                    description: 'налогооблагаемой база'
+                },
+                {
+                    colorClass: 'orange-100',
+                    title: 'Сокращение',
+                    description: 'расходов по&nbsp;налогу<br>на имущество'
+                },
+                {
+                    colorClass: 'orange-100',
+                    title: 'Не&nbsp;требуется',
+                    description: 'дополнительное<br>обеспечение сделки'
+                },
+            ],
+            breadcrumbsArray: [
+                {
+                    link: "#",
+                    linkText: "Корпоративным клиентам"
+                },
+                {
+                    link: "#",
+                    linkText: "Финансирование"
+                }
+            ],
+        }
+
+        var tabsListMeasures = [
+            {
+                link: '#all-measures',
+                id: 'all-measures',
+                linkText: 'Все меры',
+                isActive: true
+            },
+            {
+                link: '#construction',
+                id: 'construction',
+                linkText: 'Строительство',
+                isActive: false
+            },
+            {
+                link: '#investment',
+                id: 'investment',
+                linkText: 'Инвестиции',
+                isActive: false
+            },
+            {
+                link: '#ecology',
+                id: 'ecology',
+                linkText: 'Экология',
+                isActive: false
+            },
+            {
+                link: '#defense-industry',
+                id: 'defense-industry',
+                linkText: 'Оборонная отрасль',
+                isActive: false
+            },
+        ]
+
+        var tabsListCards = [
+            {
+                title: 'Льготное финансирование мероприятий по снижению выбросов опасных загрязняющих веществ(ПП РФ № 709)',
+                link: '#1'
+            },
+            {
+                title: 'Льготное финансирование инвестиционных проектов, направленных на производство приоритетной продукции(ПП РФ № 295)',
+                link: '#2'
+            },
+            {
+                title: 'Льготное финансирование на приобретение приоритетной для импорта продукции(ПП № 895)',
+                link: '#3'
+            },
+            {
+                title: 'Льготное кредитование проектов, направленных  на экспорт продукции (экспортеров и покупателей данной продукции) (ПП РФ № 191)',
+                link: '#4'
+            },
+            {
+                title: 'Льготное финансирование на приобретение, строительство, модернизацию и реконструкцию объектов недвижимости для организации промышленного производства (программа «Промышленная ипотека») (ПП РФ №1570)',
+                link: '#5'
+            },
+            {
+                title: 'Льготное финансирование подрядных организаций  на досрочное исполнение контрактов(ПП РФ №2438)',
+                link: '#6'
+            },
+            {
+                title: 'Льготное финансирование проектов диверсификации оборонно - промышленного комплекса (ПП РФ от 21.01.2020 № 26)',
+                link: '#7'
+            },
+            {
+                title: 'Льготное финансирование проектов по цифровой трансформации, реализуемых на базе российских  ИТ-решений (ПП РФ № 1598)',
+                link: '#8'
+            },
+        ]
+
+        var tabsListAbout = [
+            {
+                link: '#documents',
+                id: 'documents',
+                linkText: 'Документы и тарифы',
+                isActive: true
+            },
+            {
+                link: '#faq',
+                id: 'faq',
+                linkText: 'Вопросы и ответы',
+                isActive: false
+            },
+        ]
+
+        var contactList = [
+             {
+                 pattern: false,
+                 title: "ООО &laquo;Нацпромлизинг&raquo;",
+                 list: [
+                     {
+                         href: "tel:+74959747187",
+                         text: "+7 (495) 974-71-87",
+                         icon: "icon-phone",
+                     },
+                     {
+                         href: "emailto:info@prom-lk.ru",
+                         text: "info@prom-lk.ru",
+                         icon: "icon-mail",
+                         additionalClass: "text-decoration-underline",
+                     },
+                 ],
+             },
+             {
+                 pattern: true,
+                 title: "Остались вопросы",
+                 description: "Оставьте свой телефон и мы перезвоним вам, либо задайте вопрос в чате",
+                 buttons: [
+                     {
+                         type: "btn-outline-primary",
+                         text: "Открыть чат"
+                     },
+                     {
+                         type: "btn-primary",
+                         text: "Перезвоните мне"
+                     }
+                 ]
+             },
+         ]
+
+        var cardProductListCorp = [
+            {
+                color: 'orange',
+                tag: 'Корпоративным клиентам',
+                title: 'Размещение денежных средств',
+                img: 'large-corporate/deposits.png',
+                link: 'Подробнее',
+                description: 'Депозиты для корпоративных клиентов'
+            },
+            {
+                color: 'orange',
+                tag: 'Корпоративным клиентам',
+                title: 'Меры господдержки',
+                img: 'large-corporate/state-support.png',
+                link: 'Подробнее',
+                description: 'Льготное финансирование организациям'
+            },
+            {
+                color: 'orange',
+                tag: 'Корпоративным клиентам',
+                title: 'Программа поощрения «Развитие»',
+                img: 'large-corporate/program-development.png',
+                link: 'Подробнее',
+                description: 'Особые условия обслуживания в&nbsp;банке'
+            },
+            {
+                color: 'orange',
+                tag: 'Корпоративным клиентам',
+                title: 'Размещение денежных средств',
+                img: 'large-corporate/deposits.png',
+                link: 'Подробнее',
+                description: 'Депозиты для корпоративных клиентов'
+            },
+            {
+                color: 'orange',
+                tag: 'Корпоративным клиентам',
+                title: 'Меры господдержки',
+                img: 'large-corporate/state-support.png',
+                link: 'Подробнее',
+                description: 'Льготное финансирование организациям'
+            },
+
+        ]
+
+    +banner-product(bannerPromoData).banner-product--type-corp-withimg
+
+    section.section-layout
+        .container
+            .row
+                .col-12
+                    +polygon-container()
+                        +helper("img/restructuring-additional-info_orange.png", "bg-dark-10")
+                            p Новиком Банк является активным участником системы мер государственной поддержки, реализуемых Минпромторгом России, Минцифры России, Минэкономразвития России, ДОМ.РФ и&nbsp;другими.
+                            p.mb-0 Статус Уполномоченного Банка позволяет Новикому предоставлять льготное финансирование предпринимателям и&nbsp;организациям разных отраслей экономики, направленное прежде всего на&nbsp;сохранение стабильности и&nbsp;создание условий экономического роста.
+
+    section.section-catalog.section-layout.d-flex.flex-column.bg-dark-10
+        .container
+            h3.px-lg-6.mb-4.mb-md-6.mb-lg-7
+                | Меры финансирования
+        section.section-catalog__tabs.mb-4.mb-md-6.mb-lg-7
+            .container
+                .row.px-lg-6
+                    .col-12
+                        +tabs(
+                            tabsListMeasures,
+                            "section-catalog__tab-list",
+                            "section-catalog__tab-list-item"
+                        )
+
+        section.section-catalog__list
+            .container
+                .row.align-items-stretch.row-gap-4.row-gap-sm-6
+                    each item, index in tabsListCards
+                        .col-12.col-lg-6
+                            +card-text(item)
+
+    section.section-layout.js-collapsed-mobile
+        .container
+            h3.d-none.d-md-block.mb-md-6.mb-lg-7.px-lg-6
+                | Об услуге
+            a(
+                data-bs-toggle="collapse"
+                href="#about-service"
+                role="button"
+                aria-expanded="false"
+                aria-controls="about-service"
+            ).h3.d-flex.align-items-center.justify-content-between.dark-100.d-md-none
+                | Об услуге
+                +svg-use("icon-chevron-down", "icon size-m violet-100")
+            #about-service.collapse.d-md-block.mt-4.mt-md-6.mt-lg-7
+                .row.px-lg-6
+                    .col-12
+                        +tabs-simple(tabsListAbout, false)
+                        .tab-content.mt-4.mt-md-6.mt-lg-7
+                            #documents.tab-pane.fade.show.active(aria-labelledby="documents" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/documents-corp-clients
+                            #faq.tab-pane.fade(aria-labelledby="faq" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/faq
+        +pattern-bg('section-2', 'light', 'pattern-bg--hide-mobile')
+
+    section.section-layout.bg-purple-10
+        .container
+            h3.mb-4.mb-md-6.mb-lg-7.px-lg-6 Контакты
+            .row
+                .col-12
+                    .swiper.slider-cards.js-slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:1,tablet-album:2,laptop:2,laptop-x:2" data-space-between="mobile-s:8,mobile:8,tablet:16,tablet-album:40,laptop:40,laptop-x:40")
+                        .swiper-wrapper
+                            .swiper-slide.js-swiper-slide
+                                +contact-block(contactList[0]).contact-block--bg-heavy-purple
+                            .swiper-slide.js-swiper-slide
+                                +contact-block(contactList[1]).contact-block--bg-white
+
+                        +slider-controls().mt-3.mt-md-4
+
+    section.section-layout
+        .container
+            h3.px-lg-6.mb-4.mb-md-6.mb-lg-7
+                | Другие услуги для корпоративных клиентов
+            +slider-card-product(cardProductListCorp)

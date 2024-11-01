@@ -3,7 +3,7 @@ include ../components/ui/tag
 
 mixin contact-block(data)
     .contact-block&attributes(attributes)
-        .d-flex.flex-column.row-gap-5.row-gap-md-6.row-gap-lg-7.h-100
+        .contact-block__content.d-flex.flex-column.row-gap-5.row-gap-md-6.row-gap-lg-7.h-100
             if data.tag
                 +tag(data.tag.text, data.tag.type).contact-block__tag
             .d-flex.flex-column.row-gap-2
@@ -13,3 +13,9 @@ mixin contact-block(data)
             if data.list
                 .mt-auto
                     +list-contact(data.list)
+            if data.buttons
+                .contact-block__buttons.d-flex.flex-column.flex-sm-row.gap-4
+                    each btn in data.buttons
+                        a.btn.btn-lg-lg(href="#" class= btn.type)!= btn.text
+        if data.pattern
+            +pattern-bg('card', 'light', 'pattern-bg--position-top')
