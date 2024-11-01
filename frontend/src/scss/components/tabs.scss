@@ -44,6 +44,7 @@
             --bs-nav-link-color: var(--blue-100);
             border-radius: var(--bs-border-radius)!important;
             padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x)!important;
+            white-space: nowrap;
 
             @include use-media(tablet) {
                 --bs-nav-link-padding-x: 2.5rem;
@@ -67,5 +68,17 @@
         --bs-nav-link-padding-x: 1.5rem;
         --bs-nav-link-padding-y: 0.5rem;
         --bs-nav-link-font-size: 1rem;
+    }
+
+    &--full-width-items &__list-item {
+        flex: 1 1 0px;
+    }
+
+    &--auto-width-md {
+        @include use-media(tablet) {
+            width: auto;
+            margin-left: 0;
+            padding-left: 0!important;
+        }
     }
 }

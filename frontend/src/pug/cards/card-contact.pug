@@ -1,0 +1,8 @@
+mixin card-contact(data, bgColor="bg-linear-blue")
+    .card-contact.overflow-hidden.position-relative(class=bgColor)
+        .card-contact__content.d-flex.flex-column.gap-4.gap-md-6.gap-lg-11
+            h3.dark-0.card-contact__top-title!= data.topTitle
+            .card-contact__image-container
+                img.card-contact__image(src=`img/${data.imageSrc}`, alt="", loading="lazy")
+            block
+        +pattern-bg('section-2', 'dark', 'pattern-bg--position-sm-top z-1')
