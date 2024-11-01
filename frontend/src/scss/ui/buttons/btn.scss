@@ -22,11 +22,16 @@ button {
 }
 
 .btn-tertiary {
-    color: #fff;
+    color: var(--dark-0);
 
     &:hover {
-        color: #fff;
+        color: var(--dark-0);
     }
+}
+
+.btn-corporate {
+  background-color: var(--orange-100);
+  color: var(--dark-0);
 }
 
 .btn-link {

@@ -90,7 +90,7 @@ block content
             description: 'Узнайте как уберечь себя и своих близких <br>от финансового мошенничества.',
             sprite: {
                 name: 'icon-a-protection',
-                classList: 'size-md-xxl'
+                classList: 'green-100 size-md-xxl'
             },
             link: '#'
         }
@@ -128,31 +128,34 @@ block content
                     h3 Идентификация с использованием Единой биометрической системы
                 .col-12
                     p.text-l.m-0 С помощью биометрической идентификации физические лица могут получать финансовые услуги дистанционно, подтвердив свою личность с помощью биометрических персональных данных: изображения лица и голоса.
-    
+
     section.section-layout.px-lg-6
         .container
             .row.mb-6.mb-lg-7
                 h3 Преимущества
             .row.row-gap-6
                 each item, index in allBenefits
-                    if index === allBenefits.length - 1
-                        .col-12.d-md-none.order-1
-                            a(
-                                data-bs-toggle="collapse"
-                                href="#biometric-more-benefits"
-                                role="button"
-                                aria-expanded="false"
-                                aria-controls="biometric-more-benefits"
-                            ).d-flex.gap-2.align-items-center.justify-content-center.violet-100.text-m.fw-bold
-                                | Ещё преимущества
-                                +svg-use("icon-chevron-down", "icon size-m")
-                        #biometric-more-benefits.col-12.col-md-6.col-lg-4.collapse.d-md-block
-                            +benefit(item.spriteData, item.title)
-                                span!= item.description
-                    else
-                        .col-12.col-md-6.col-lg-4
-                            +benefit(item.spriteData, item.title)
-                                span!= item.description
+                    .col-12.col-md-6.col-lg-4(class=index > 3 && 'd-none d-md-block')
+                        +benefit(item.spriteData, item.title)
+                            span!= item.description
+            #biometric-more-benefits.collapse.d-md-none
+                .row.row-gap-6.mt-6
+                    each item, index in allBenefits
+                        if index > 3
+                            .col-12
+                                +benefit(item.spriteData, item.title)
+                                    span!= item.description
+            .row.d-md-none.mt-6
+                .col-12
+                    a(
+                        data-bs-toggle="collapse"
+                        href="#biometric-more-benefits"
+                        role="button"
+                        aria-expanded="false"
+                        aria-controls="biometric-more-benefits"
+                    ).d-flex.gap-2.align-items-center.justify-content-center.violet-100.text-m.fw-bold
+                        | Ещё преимущества
+                        +svg-use("icon-chevron-down", "icon size-m")
 
     section.section-layout.bg-dark-10.px-lg-6
         .container
@@ -207,11 +210,11 @@ block content
                 .col-12.col-xl-6
                     +card-img(allCardsImg[1], "bg-white")
                         ul.list.list--size-l
-                            li 
+                            li
                                 span Установите плагин КриптоПро CSP 5.0 (<a class='link text-decoration-underline' target='_blank' href='#'>скачать</a>)
-                            li 
+                            li
                                 span Установите Яндекс Браузер - версия 19.3 или выше (<a class='link text-decoration-underline' target='_blank' href='#'>скачать</a>) и настройте его (<a class='link text-decoration-underline' target='_blank' href='#'>инструкция по настройке</a>)
-                            li 
+                            li
                                 span Откройте <a class='link text-decoration-underline' target='_blank' href='#'>Интернет-банк</a>
                             li Нажмите на кнопку «Регистрация через Госуслуги»
                             li Подтвердите свою личность с помощью&nbsp;Единой биометрической системы (это несложно, просто следуйте&nbsp;подсказкам системы)

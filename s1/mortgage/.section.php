@@ -1,0 +1,6 @@
+<?
+$sSectionName = "Ипотечные программы";
+$arDirProperties = [
+
+];
+?>

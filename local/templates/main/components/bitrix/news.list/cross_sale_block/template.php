@@ -28,13 +28,13 @@ $this->setFrameMode(true);
                                     </svg></span></div>
                                 <div class="card-product__content">
                                     <h4 class="card-product__title"><?= $item['~NAME'] ?></h4>
-                                    <? if($item['PROPERTIES']['CONDITION']['VALUE']) { ?>
+                                    <? if(!empty($item['PROPERTIES']['CONDITION']['VALUE'])) { ?>
                                         <div class="d-inline-flex flex-nowrap align-items-baseline text-l fw-semibold gap-1 violet-100">
                                             <?= $item['PROPERTIES']['CONDITION']['DESCRIPTION'] ?>
                                             <span class="text-number-l fw-bold"><?= $item['PROPERTIES']['CONDITION']['VALUE'] ?></span>
                                         </div>
                                     <? } ?>
-                                    <? if($item['PREVIEW_TEXT']) { ?>
+                                    <? if(!empty($item['PREVIEW_TEXT'])) { ?>
                                         <p class="card-product__description m-0"><?= $item['~PREVIEW_TEXT'] ?></p>
                                     <? } ?>
                                 </div>

@@ -49,18 +49,18 @@ $asset->addJs('/frontend/dist/js/all.js');
                         <?php $APPLICATION->IncludeComponent(
                             "bitrix:menu",
                             "main_menu_header",
-                            Array(
+                            [
                                 "ALLOW_MULTI_SELECT" => "N",
                                 "CHILD_MENU_TYPE" => "left",
                                 "DELAY" => "N",
                                 "MAX_LEVEL" => "1",
-                                "MENU_CACHE_GET_VARS" => array(""),
+                                "MENU_CACHE_GET_VARS" => [""],
                                 "MENU_CACHE_TIME" => "3600",
                                 "MENU_CACHE_TYPE" => "A",
                                 "MENU_CACHE_USE_GROUPS" => "Y",
                                 "ROOT_MENU_TYPE" => "top",
                                 "USE_EXT" => "N"
-                            )
+                            ]
                         );?>
                     </div>
                     <div class="d-flex align-items-center gap-4 column-gap-xxl-3 column-gap-xxxl-6">
@@ -73,7 +73,7 @@ $asset->addJs('/frontend/dist/js/all.js');
                                 </span>
                                 <span class="icon size-m d-xxl-none violet-100">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                        <use xlink:href="/frontend/dist/img/img/svg-sprite.svg#icon-point"></use>
+                                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-point"></use>
                                     </svg>
                                 </span>
                                 <span class="header-contact-link__text d-none d-xxl-inline-block"><?=Loc::getMessage('OFFICES_AND_ATMS_BUTTON_TITLE')?></span>
@@ -108,18 +108,18 @@ $asset->addJs('/frontend/dist/js/all.js');
                     <?php $APPLICATION->IncludeComponent(
                         "bitrix:menu",
                         "main_submenu_header",
-                        Array(
+                        [
                             "ALLOW_MULTI_SELECT" => "N",
                             "CHILD_MENU_TYPE" => "iblock_sections",
                             "DELAY" => "N",
                             "MAX_LEVEL" => "2",
-                            "MENU_CACHE_GET_VARS" => array(""),
+                            "MENU_CACHE_GET_VARS" => [""],
                             "MENU_CACHE_TIME" => "3600",
                             "MENU_CACHE_TYPE" => "N",
                             "MENU_CACHE_USE_GROUPS" => "Y",
                             "ROOT_MENU_TYPE" => "left",
                             "USE_EXT" => "Y"
-                        )
+                        ]
                     );?>
                 </div>
             </div>

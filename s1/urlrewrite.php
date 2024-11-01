@@ -64,6 +64,14 @@ $arUrlRewrite=array (
     'PATH' => '/bitrix/services/ymarket/index.php',
     'SORT' => 100,
   ),
+  12 => 
+  array (
+    'CONDITION' => '#^/loans/restructuring/#',
+    'RULE' => '',
+    'ID' => 'bitrix:news',
+    'PATH' => '/loans/restructuring/index.php',
+    'SORT' => 100,
+  ),
   3 => 
   array (
     'CONDITION' => '#^/online/(/?)([^/]*)#',
@@ -78,6 +86,30 @@ $arUrlRewrite=array (
     'RULE' => '',
     'ID' => 'bitrix:stssync.server',
     'PATH' => '/bitrix/services/stssync/calendar/index.php',
+    'SORT' => 100,
+  ),
+  13 => 
+  array (
+    'CONDITION' => '#^/mortgage/#',
+    'RULE' => '',
+    'ID' => 'bitrix:news',
+    'PATH' => '/mortgage/index.php',
+    'SORT' => 100,
+  ),
+  14 => 
+  array (
+    'CONDITION' => '#^/deposits/#',
+    'RULE' => '',
+    'ID' => 'bitrix:news',
+    'PATH' => '/deposits/index.php',
+    'SORT' => 100,
+  ),
+  11 => 
+  array (
+    'CONDITION' => '#^/loans/#',
+    'RULE' => '',
+    'ID' => 'bitrix:news',
+    'PATH' => '/loans/index.php',
     'SORT' => 100,
   ),
   5 => 
