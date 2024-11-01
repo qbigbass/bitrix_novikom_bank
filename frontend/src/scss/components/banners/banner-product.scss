@@ -147,31 +147,6 @@ $bannerHeight: 37.5rem; //600px
         }
     }
 
-    //&__text-benefits {
-    //    display: flex;
-    //    flex-direction: column;
-    //    gap: 1.5rem;
-    //    width: 100%;
-    //
-    //    @include use-media(tablet-album) {
-    //        flex-direction: row;
-    //        flex-wrap: wrap;
-    //
-    //        & > * {
-    //            flex-basis: calc(50% - 1.5rem / 2);
-    //        }
-    //    }
-    //
-    //    @include use-media(desktop) {
-    //        gap: 3rem;
-    //        flex-wrap: nowrap;
-    //
-    //        & > * {
-    //            flex-basis: auto;
-    //        }
-    //    }
-    //}
-
     &__button {
         width: 100%;
         position: relative;
