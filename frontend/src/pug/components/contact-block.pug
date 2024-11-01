@@ -1,0 +1,15 @@
+include ../components/ui/list-contact
+include ../components/ui/tag
+
+mixin contact-block(data)
+    .contact-block&attributes(attributes)
+        .d-flex.flex-column.row-gap-5.row-gap-md-6.row-gap-lg-7.h-100
+            if data.tag
+                +tag(data.tag.text, data.tag.type).contact-block__tag
+            .d-flex.flex-column.row-gap-2
+                h4.contact-block__title!= data.title
+                if data.description
+                    p.mb-0.contact-block__description!= data.description
+            if data.list
+                .mt-auto
+                    +list-contact(data.list)

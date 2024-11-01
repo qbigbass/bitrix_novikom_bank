@@ -1,0 +1,59 @@
+.contact-block {
+  $root: #{&};
+
+  padding: 1.5rem 1rem;
+  border-radius: 0.75rem;
+  overflow: hidden;
+
+  @include use-media(tablet) {
+    padding: 2rem;
+  }
+
+  @include use-media(tablet-album) {
+    padding: 2.5rem;
+  }
+
+  &__tag {
+    margin-bottom: -1rem;
+  }
+
+  &--bg-blue {
+    background: linear-gradient(42.24deg, #383a74 20%, #2e1b52 80%);
+    color: var(--dark-0);
+
+    #{$root}__description {
+      opacity: 0.5;
+    }
+  }
+
+  &--bg-gray {
+    background-color: var(--dark-10);
+    color: var(--dark-100);
+
+    #{$root}__description {
+      color: var(--dark-70);
+    }
+  }
+
+  &--bg-white {
+    background-color: var(--dark-0);
+    color: var(--dark-100);
+
+    #{$root}__description {
+      color: var(--dark-70);
+    }
+  }
+
+  &--bg-heavy-purple {
+    background: linear-gradient(222.24deg, #101317 20%, #5A2375 80%);
+    color: var(--dark-0);
+
+    #{$root}__description {
+      opacity: 0.5;
+    }
+  }
+
+  @at-root .swiper-slide & {
+    height: 100%;
+  }
+}

@@ -1,0 +1,25 @@
+.document-download {
+  border-bottom: 1px dashed var(--blue-30);
+
+  text-decoration: none;
+  color: inherit;
+  transition: 0.3s;
+
+  &:hover {
+    color: var(--blue-100);
+  }
+
+  &:last-child {
+    border-bottom: unset;
+  }
+
+  &__date-time {
+    padding-right: 0.5rem;
+    border-right: 1px solid currentColor;
+  }
+
+  &__file-type {
+    padding-left: 0.5rem;
+    text-transform: uppercase;
+  }
+}

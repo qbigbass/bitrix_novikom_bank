@@ -1,5 +1,6 @@
 include ../benefit-text
-include ../ui/pagination
+include ../benefit
+include ../ui/breadcrumbs
 
 mixin banner-product(data)
     .banner-product(
@@ -7,18 +8,24 @@ mixin banner-product(data)
         class= data.type ? `banner-product--type-${data.type}` : ''
         )&attributes(attributes)
         .banner-product__wrapper
-            .banner-product__content
+            .banner-product__content(class= data.imgSrc ? '' : 'w-100 w-lg-60')
                 .banner-product__header
                     if data.breadcrumbsArray
                         +breadcrumbs(data.breadcrumbsArray).banner-product__breadcrumbs
                     h1!= data.title
-                    p.banner-product__subtitle!= data.subtitle
-                img(src= data.imgSrc, class="banner-product__image", alt="", loading="lazy")
+                    p.banner-product__subtitle(class= data.imgSrc ? '' : 'mw-100')!= data.subtitle
+                if data.imgSrc
+                    img(src= data.imgSrc, class="banner-product__image", alt="", loading="lazy")
                 if data.benefits
                     .banner-product__benefits-list
                         each benefit in data.benefits
                             +benefit-text(benefit)
                 if data.buttonText
                    a(href= data.urlHref).btn.btn-tertiary.btn-lg.banner-product__button!= data.buttonText
+            if data.footer
+                .banner-product__footer.row.row-gap-4.mt-6.mt-lg-16
+                    each item in data.footer
+                        .col-12.col-md-6.col-xl-3
+                            +benefit(item.spriteData, item.title)
 
         +pattern-bg("section", "dark", "banner-product__pattern")

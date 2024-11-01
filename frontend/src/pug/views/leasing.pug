@@ -1,0 +1,362 @@
+extends ../templates/base
+
+block title
+    title= 'Лизинг'
+    meta(name="description" content="Описание главной страницы")
+block content
+    include ../includes/header/header
+    include ../components/banners/banner-product
+    include ../components/announcement
+    include ../components/ui/tabs-simple
+    include ../cards/card-product
+    include ../cards/card-promo
+    include ../cards/card-benefit
+    include ../components/contact-block
+    include ../includes/layout/slider-card-product
+
+    -
+        var bannerPromoData = {
+            title: "Лизинг",
+            subtitle: "Приобретение в&nbsp;лизинг производственного и&nbsp;технологического оборудования, воздушных, морских и&nbsp;речных судов, спецтехники и&nbsp;транспортных средств",
+            type: "corp",
+            bgColor: "heavy-purple",
+            footer: [
+                {
+                    spriteData: {
+                        name: 'icon-a-bank',
+                        classList: 'size-xl',
+                    },
+                    title: 'Уменьшение налогооблагаемой базы'
+                },
+                {
+                    spriteData: {
+                        name: 'icon-a-bank',
+                        classList: 'size-xl',
+                    },
+                    title: 'Зачёт НДС&nbsp;с&nbsp;суммы <br>договора'
+                },
+                {
+                    spriteData: {
+                        name: 'icon-a-bank',
+                        classList: 'size-xl',
+                    },
+                    title: 'Сокращение <br>расходов'
+                },
+                {
+                    spriteData: {
+                        name: 'icon-a-bank',
+                        classList: 'size-xl',
+                    },
+                    title: 'Повышение кредитоспособности'
+                },
+            ],
+            breadcrumbsArray: [
+                {
+                    link: "#",
+                    linkText: "Корпоративным клиентам"
+                },
+                {
+                    link: "#",
+                    linkText: "Финансирование"
+                }
+            ],
+        }
+
+        var tabsList = [
+            {
+                link: '#possibilities',
+                id: 'possibilities',
+                linkText: 'Возможности',
+                isActive: true
+            },
+            {
+                link: '#documents',
+                id: 'documents',
+                linkText: 'Документы и тарифы',
+                isActive: false
+            },
+            {
+                link: '#faq',
+                id: 'faq',
+                linkText: 'Вопросы и ответы',
+                isActive: false
+            },
+        ]
+
+        var cardProductListCorp = [
+            {
+                color: 'orange',
+                tag: 'Корпоративным клиентам',
+                title: 'Размещение денежных средств',
+                img: 'large-corporate/deposits.png',
+                link: 'Подробнее',
+                description: 'Депозиты для корпоративных клиентов'
+            },
+            {
+                color: 'orange',
+                tag: 'Корпоративным клиентам',
+                title: 'Меры господдержки',
+                img: 'large-corporate/state-support.png',
+                link: 'Подробнее',
+                description: 'Льготное финансирование организациям'
+            },
+            {
+                color: 'orange',
+                tag: 'Корпоративным клиентам',
+                title: 'Программа поощрения «Развитие»',
+                img: 'large-corporate/program-development.png',
+                link: 'Подробнее',
+                description: 'Особые условия обслуживания в&nbsp;банке'
+            },
+            {
+                color: 'orange',
+                tag: 'Корпоративным клиентам',
+                title: 'Размещение денежных средств',
+                img: 'large-corporate/deposits.png',
+                link: 'Подробнее',
+                description: 'Депозиты для корпоративных клиентов'
+            },
+            {
+                color: 'orange',
+                tag: 'Корпоративным клиентам',
+                title: 'Меры господдержки',
+                img: 'large-corporate/state-support.png',
+                link: 'Подробнее',
+                description: 'Льготное финансирование организациям'
+            },
+
+        ]
+
+        var cardPromo = {
+            title: "Лизинг от НОВИКОМа",
+            text: "Банк Новиком оказывает услуги лизинга (финансовой аренды) через своего партнера &mdash;&nbsp;лизинговую компанию &laquo;Нацпромлизинг&raquo;",
+            image: "leasing-image.png",
+        }
+
+        var cardsListBenefit = [
+            {
+                title: 'Срок до 5 лет',
+                description: 'Срок лизинга часто больше срока доступного кредитования',
+                sprite: {
+                    name: 'icon-a-mir-payment',
+                    classList: 'size-md-xxl'
+                },
+            },
+            {
+                title: 'Широкий комплекс услуг',
+                description: 'Транспортировка, таможня, монтаж, наладка, регистрация, страхование и&nbsp;консультации по&nbsp;предмету лизинга.',
+                sprite: {
+                    name: 'icon-a-mobile-payment',
+                    classList: 'size-md-xxl'
+                },
+            },
+            {
+                title: 'Без обеспечения сделки',
+                description: 'Не&nbsp;требуется дополнительное обеспечение сделки, т.&nbsp;к.&nbsp;в&nbsp;период лизинга сам предмет лизинга является основным обеспечением',
+                sprite: {
+                    name: 'icon-a-mobile-ready',
+                    classList: 'size-md-xxl'
+                },
+            },
+            {
+                title: 'Срок до 5 лет',
+                description: 'Срок лизинга часто больше срока доступного кредитования',
+                sprite: {
+                    name: 'icon-a-mir-payment',
+                    classList: 'size-md-xxl'
+                },
+            },
+            {
+                title: 'Широкий комплекс услуг',
+                description: 'Транспортировка, таможня, монтаж, наладка, регистрация, страхование и&nbsp;консультации по&nbsp;предмету лизинга.',
+                sprite: {
+                    name: 'icon-a-mobile-payment',
+                    classList: 'size-md-xxl'
+                },
+            },
+            {
+                title: 'Без обеспечения сделки',
+                description: 'Не&nbsp;требуется дополнительное обеспечение сделки, т.&nbsp;к.&nbsp;в&nbsp;период лизинга сам предмет лизинга является основным обеспечением',
+                sprite: {
+                    name: 'icon-a-mobile-ready',
+                    classList: 'size-md-xxl'
+                },
+            },
+        ]
+
+        var contactList = [
+            {
+                title: "ООО &laquo;Нацпромлизинг&raquo;",
+                list: [
+                    {
+                        href: "tel:+74959747187",
+                        text: "+7 (495) 974-71-87",
+                        icon: "icon-phone",
+                    },
+                    {
+                        href: "emailto:info@prom-lk.ru",
+                        text: "info@prom-lk.ru",
+                        icon: "icon-mail",
+                        additionalClass: "text-decoration-underline",
+                    },
+                ],
+            },
+            {
+                title: "Техническая поддержка",
+                list: [
+                    {
+                        href: "tel:+74959747187",
+                        text: "+7 (495) 974-71-87",
+                        icon: "icon-phone",
+
+                    },
+                ],
+            },
+            {
+                title: "ООО &laquo;Нацпромлизинг&raquo;",
+                list: [
+                    {
+                        href: "tel:+74959747187",
+                        text: "+7 (495) 974-71-87",
+                        icon: "icon-phone",
+                    },
+                    {
+                        href: "emailto:corp@novikom.ru",
+                        text: "corp@novikom.ru",
+                        icon: "icon-mail",
+                        additionalClass: "text-decoration-underline",
+                    },
+                ],
+            },
+            {
+                title: "Техническая поддержка",
+                list: [
+                    {
+                        href: "tel:+74959747187",
+                        text: "+7 (495) 974-71-87",
+                        icon: "icon-phone",
+
+                    },
+                ],
+            },
+        ]
+
+    +banner-product(bannerPromoData).banner-product--size-xl
+
+    section.section-layout
+        .container
+            .row
+                .col-12
+                    +card-promo(cardPromo).card-promo--heavy-purple
+
+    section.section-layout.bg-dark-10
+        .container
+            h3.mb-4.mb-md-6.mb-lg-7.px-lg-6 Преимущества лизинга перед&nbsp;кредитом
+            .row
+                .col-12
+                    .swiper.slider-cards.js-slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:2,laptop:2,laptop-x:3" data-space-between="mobile-s:8,mobile:8,tablet:8,laptop:8,laptop-x:8")
+                        .swiper-wrapper
+                            each item in cardsListBenefit
+                                .swiper-slide.js-swiper-slide
+                                    +card-benefit(item).bg-dark-0
+
+                        +slider-controls().mt-3.mt-md-4
+
+    section.section-layout.js-collapsed-mobile
+        .container
+            h3.d-none.d-md-block.mb-md-6.mb-lg-7.px-lg-6
+                | Об услуге
+            a(
+                data-bs-toggle="collapse"
+                href="#about-service"
+                role="button"
+                aria-expanded="false"
+                aria-controls="about-service"
+            ).h3.d-flex.align-items-center.justify-content-between.dark-100.d-md-none
+                | Об услуге
+                +svg-use("icon-chevron-down", "icon size-m violet-100")
+            #about-service.collapse.d-md-block.mt-4.mt-md-6.mt-lg-7
+                .row.px-lg-6
+                    .col-12
+                        +tabs-simple(tabsList, false)
+                        .tab-content.mt-4.mt-md-6.mt-lg-7
+                            #possibilities.tab-pane.fade.show.active(aria-labelledby="possibilities" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/possibilities
+                            #documents.tab-pane.fade(aria-labelledby="documents" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/documents-corp-clients
+                            #faq.tab-pane.fade(aria-labelledby="faq" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/faq
+        +pattern-bg('section-2', 'light', 'pattern-bg--hide-mobile')
+    section.section-layout.bg-purple-10
+        .container
+            h3.mb-4.mb-md-6.mb-lg-7.px-lg-6 Контакты
+            .row
+                .col-12
+                    .swiper.slider-cards.js-slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:1,tablet-album:2,laptop:2,laptop-x:2" data-space-between="mobile-s:8,mobile:8,tablet:16,tablet-album:40,laptop:40,laptop-x:40")
+                        .swiper-wrapper
+                            each item in contactList
+                                .swiper-slide.js-swiper-slide
+                                    +contact-block(item).card-contact--bg-heavy-purple
+
+                        +slider-controls().mt-3.mt-md-4
+
+    section.section-layout.bg-dark-10
+        .container
+            .row
+                .col-12.col-xxl-6.d-flex.flex-column.gap-6.gap-lg-7
+
+                    a(href="#").h3.d-flex.align-items-center.ps-lg-6.pt-xxl-6
+                        span Объявления
+                            |
+                            |
+                            span.d-none.d-md-inline для клиентов
+                        span.icon.size-m.violet-100.ms-auto.ms-md-3
+                            +svg-use("icon-chevron-right")
+
+                    div.ps-lg-6.mt-xxl-auto.mw-100
+                        .swiper.js-announcement-slider
+                            -
+                                var announcementList = [
+                                    {
+                                        date: '25.04.2024',
+                                        title: 'Технические работы 30 апреля 2024 года в период с 0:00 до 3:30 (МСК)',
+                                        link: '#'
+                                    },
+                                    {
+                                        date: '25.04.2024',
+                                        title: 'Режим работы клиентских офисов в мае',
+                                        link: '#'
+                                    },
+                                    {
+                                        date: '25.04.2024',
+                                        title: 'Технические работы 30 апреля 2024 года в период с 0:00 до 3:30 (МСК)',
+                                        link: '#'
+                                    },
+                                    {
+                                        date: '25.04.2024',
+                                        title: 'Режим работы клиентских офисов в мае',
+                                        link: '#'
+                                    },
+                                    {
+                                        date: '25.04.2024',
+                                        title: 'Технические работы 30 апреля 2024 года в период с 0:00 до 3:30 (МСК)',
+                                        link: '#'
+                                    },
+                                    {
+                                        date: '25.04.2024',
+                                        title: 'Режим работы клиентских офисов в мае',
+                                        link: '#'
+                                    }
+                                ]
+                            .swiper-wrapper
+                                each item in announcementList
+                                    .swiper-slide.js-announcement-slide
+                                        +announcement(item)
+
+                            +slider-controls().mt-3.mt-md-4
+        +pattern-bg('section-2', 'light', 'pattern-bg--hide-mobile')
+    section.section-layout
+        .container
+            h3.px-lg-6.mb-4.mb-md-6.mb-lg-7
+                | Другие услуги для корпоративных клиентов
+            +slider-card-product(cardProductListCorp)

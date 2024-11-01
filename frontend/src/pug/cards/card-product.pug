@@ -8,13 +8,13 @@ mixin card-product(data)
                 div.card-product__content.mw-100
                     h4.card-product__title!= data.title
                     if data.description
-                        p.card-product__description.m-0!= data.description
+                        p.card-product__description.m-0.mw-100!= data.description
                 div.card-product__footer
                     if data.link
                         span.btn.btn-link.btn-icon.d-none.d-md-inline-flex
                             span!= data.link
                             +svg-use("icon-chevron-right", "icon size-m")
-                    +svg-use(data.icon, "icon size-xxl ms-auto " + data.iconColor)
+                    img(src="img/icons/money-orange.svg", alt="", loading="lazy").icon.size-xxl.ms-auto
 
     else
         .card-product(class= [`card-product--${data.color}`, data.size ? `card-product--size-${data.size}`:''])&attributes(attributes)
