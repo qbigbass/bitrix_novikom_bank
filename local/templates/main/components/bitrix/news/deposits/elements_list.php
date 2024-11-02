@@ -16,26 +16,27 @@ $this->setFrameMode(true);
 ?>
 
 <!-- Баннер в шапке -->
-<section class="text-banner pe-lg-0 px-0 px-lg-6 bg-linear-blue text-banner--border-green">
-    <div class="container text-banner__container position-relative z-2">
-        <div class="row">
-            <div class="col-12 position-relative z-1 mb-5 mb-md-0 pt-6">
+<section class="banner-text banner-text--border-green bg-linear-blue">
+    <div class="container banner-text__container position-relative z-2">
+        <div class="row ps-lg-6">
+            <div class="col-12 col-xl-7 position-relative z-1 mb-5 mb-md-0 pt-6">
                 <div class="d-flex flex-column align-items-start gap-3 gap-md-4">
 
                     <?
-                        $helper = new ComponentHelper($component);
-                        $helper->deferredCall('showNavChain', ['.default']);
+                    $helper = new ComponentHelper($component);
+                    $helper->deferredCall('showNavChain', ['.default']);
                     ?>
 
-                    <h1 class="text-banner__title dark-0 text-break"><?=$APPLICATION->GetTitle()?></h1>
-                    <div class="text-banner__description text-l dark-0"><?=$APPLICATION->GetProperty("description")?></div>
+                    <h1 class="banner-text__title dark-0 text-break"><?=$APPLICATION->GetTitle()?></h1>
+                    <div class="banner-text__description text-l dark-0"><?=$APPLICATION->GetProperty("description")?></div>
                 </div>
             </div>
         </div>
     </div>
-    <picture class="pattern-bg pattern-bg--position-sm-top text-banner__pattern">
+    <picture class="pattern-bg pattern-bg--position-sm-top banner-text__pattern">
         <source srcset="/frontend/dist/img/patterns/section/pattern-light-s.svg" media="(max-width: 767px)">
-        <source srcset="/frontend/dist/img/patterns/section/pattern-light-m.svg" media="(max-width: 1199px)"><img src="/frontend/dist/img/patterns/section/pattern-light-l.svg" alt="bg pattern" loading="lazy">
+        <source srcset="/frontend/dist/img/patterns/section/pattern-light-m.svg" media="(max-width: 1199px)">
+        <img src="/frontend/dist/img/patterns/section/pattern-light-l.svg" alt="bg pattern" loading="lazy">
     </picture>
 </section>
 
@@ -219,29 +220,34 @@ $this->setFrameMode(true);
     </picture>
 </section>
 
-<?
-$iblock = Bitrix\Iblock\IblockTable::getList([
-    'select' => ['DESCRIPTION'],
-    'filter' => ['CODE' => 'deposits']
-])->fetch();
-?>
+<? $arItems = getHlBlockEntries('DepositsInfo');
+if (!empty($arItems)) {
+    $arItem = reset($arItems); ?>
 
-<section class="section-layout py-lg-11 bg-blue-10">
-    <div class="container">
-        <div class="d-flex flex-column flex-md-row align-items-start gap-4 gap-sm-5 gap-md-6">
-            <div class="banner-product-info-alternative__image flex-shrink-0">
-                <img src="/frontend/dist/img/footer-insurance.png" width="160" height="160" alt="" loading="lazy">
-            </div>
-            <div class="banner-product-info-alternative d-flex flex-column gap-4 gap-md-6">
-                <?= $iblock['DESCRIPTION'] ?>
+    <section class="section-layout py-lg-11 bg-blue-10">
+        <div class="container">
+            <div class="d-flex flex-column flex-md-row align-items-start gap-4 gap-sm-5 gap-md-6">
+                <div class="banner-product-info-alternative__image flex-shrink-0">
+                    <img src="<?= !empty($arItem['UF_IMG']) ? CFile::GetPath($arItem['UF_IMG']) : '' ?>" width="160" height="160" alt="" loading="lazy">
+                </div>
+                <div class="banner-product-info-alternative d-flex flex-column gap-4 gap-md-6">
+                    <div class="banner-product-info-alternative__header">
+                        <h3><?= $arItem['UF_HEADER'] ?? '' ?></h3>
+                    </div>
+                    <div class="banner-product-info-alternative__body d-flex flex-column gap-4 gap-md-6">
+                        <?= $arItem['UF_TEXT'] ?? '' ?>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <picture class="pattern-bg pattern-bg--position-top">
-        <source srcset="/frontend/dist/img/patterns/section-heavy/pattern-light-s.svg" media="(max-width: 767px)">
-        <source srcset="/frontend/dist/img/patterns/section-heavy/pattern-light-m.svg" media="(max-width: 1199px)"><img src="/frontend/dist/img/patterns/section-heavy/pattern-light-l.svg" alt="bg pattern" loading="lazy">
-    </picture>
-</section>
+        <picture class="pattern-bg pattern-bg--position-top">
+            <source srcset="/frontend/dist/img/patterns/section-heavy/pattern-light-s.svg" media="(max-width: 767px)">
+            <source srcset="/frontend/dist/img/patterns/section-heavy/pattern-light-m.svg" media="(max-width: 1199px)">
+            <img src="/frontend/dist/img/patterns/section-heavy/pattern-light-l.svg" alt="bg pattern" loading="lazy">
+        </picture>
+    </section>
+
+<? } ?>
 
 <?$APPLICATION->IncludeFile('/local/php_interface/include/cross_sale_products_block.php', ['HEADER_TEXT' => 'Смотрите также']);?>
 <?$APPLICATION->IncludeFile('/local/php_interface/include/request_call.php');?>

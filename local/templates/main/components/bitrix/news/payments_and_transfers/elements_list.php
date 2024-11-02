@@ -16,24 +16,20 @@ $this->setFrameMode(true);
 ?>
 
 <!-- Баннер в шапке -->
-
 <section class="banner-text banner-text--border-green bg-linear-blue">
     <div class="container banner-text__container position-relative z-2">
         <div class="row ps-lg-6">
-            <div class="col-12 col-sm-6 col-md-8 position-relative z-1 mb-5 mb-md-0 pt-6">
+            <div class="col-12 col-xl-7 position-relative z-1 mb-5 mb-md-0 pt-6">
                 <div class="d-flex flex-column align-items-start gap-3 gap-md-4">
 
                     <?
-                    $helper = new ComponentHelper($component);
-                    $helper->deferredCall('showNavChain', ['.default']);
+                        $helper = new ComponentHelper($component);
+                        $helper->deferredCall('showNavChain', ['.default']);
                     ?>
 
                     <h1 class="banner-text__title dark-0 text-break"><?=$APPLICATION->GetTitle()?></h1>
                     <div class="banner-text__description text-l dark-0"><?=$APPLICATION->GetProperty("description")?></div>
                 </div>
-            </div>
-            <div class="d-none d-sm-block col-12 col-sm-6 col-md-4">
-                <img class="banner-text__image position-relative w-auto float-end" src="/frontend/dist/img/big-illustrations/large-individual/restructuring.png" alt="">
             </div>
         </div>
     </div>
@@ -44,37 +40,13 @@ $this->setFrameMode(true);
     </picture>
 </section>
 
-<section class="restructuring-ramification section-layout d-flex flex-column gap-7 bg-dark-10">
+<section class="section-layout bg-dark-10">
     <div class="container">
-        <h3 class="px-lg-6 mb-4 mb-md-6 mb-lg-7">Варианты реструктуризации</h3>
-        <div class="restructuring-ramification__tabs px-lg-6 mb-4 mb-md-6 mb-lg-7">
-            <? $APPLICATION->IncludeComponent(
-                "bitrix:menu",
-                "iblock_sections",
-                [
-                    "ROOT_MENU_TYPE" => "iblock_sections",
-                    "MAX_LEVEL" => "1",
-                    "CHILD_MENU_TYPE" => "",
-                    "USE_EXT" => "Y",
-                    "DELAY" => "N",
-                    "ALLOW_MULTI_SELECT" => "Y",
-                    "MENU_CACHE_TYPE" => "A",
-                    "MENU_CACHE_TIME" => "3600",
-                    "MENU_CACHE_USE_GROUPS" => "Y",
-                    "MENU_CACHE_GET_VARS" => [
-                    ],
-                    "COMPONENT_TEMPLATE" => "iblock_sections",
-                ],
-                $component
-            ); ?>
-        </div>
-
-        <!-- Список элементов -->
-        <div class="row align-items-stretch row-gap-4 row-gap-sm-6">
+        <div class="row row-gap-3 row-gap-lg-6">
 
             <?$APPLICATION->IncludeComponent(
                 "bitrix:news.list",
-                "restructuring_list",
+                "payments_and_transfers_list",
                 [
                     "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
                     "IBLOCK_ID" => $arParams["IBLOCK_ID"],
@@ -134,61 +106,56 @@ $this->setFrameMode(true);
     </div>
 </section>
 
-<?$APPLICATION->IncludeComponent(
-    "bitrix:news.detail",
-    "restructuring",
-    [
-        "ACTIVE_DATE_FORMAT" => "d.m.Y",
-        "ADD_ELEMENT_CHAIN" => "N",
-        "ADD_SECTIONS_CHAIN" => "N",
-        "AJAX_MODE" => "N",
-        "AJAX_OPTION_ADDITIONAL" => "",
-        "AJAX_OPTION_HISTORY" => "N",
-        "AJAX_OPTION_JUMP" => "N",
-        "AJAX_OPTION_STYLE" => "Y",
-        "BROWSER_TITLE" => "-",
-        "CACHE_GROUPS" => "Y",
-        "CACHE_TIME" => "36000000",
-        "CACHE_TYPE" => "A",
-        "CHECK_DATES" => "Y",
-        "DETAIL_URL" => "",
-        "DISPLAY_BOTTOM_PAGER" => "Y",
-        "DISPLAY_DATE" => "Y",
-        "DISPLAY_NAME" => "Y",
-        "DISPLAY_PICTURE" => "Y",
-        "DISPLAY_PREVIEW_TEXT" => "Y",
-        "DISPLAY_TOP_PAGER" => "N",
-        "ELEMENT_CODE" => "restructuring",
-        "ELEMENT_ID" => "",
-        "FIELD_CODE" => ["", ""],
-        "IBLOCK_ID" => iblock('loans'),
-        "IBLOCK_TYPE" => "for_private_clients_ru",
-        "IBLOCK_URL" => "",
-        "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
-        "MESSAGE_404" => "",
-        "META_DESCRIPTION" => "-",
-        "META_KEYWORDS" => "-",
-        "PAGER_BASE_LINK_ENABLE" => "N",
-        "PAGER_SHOW_ALL" => "N",
-        "PAGER_TEMPLATE" => ".default",
-        "PAGER_TITLE" => "Страница",
-        "PROPERTY_CODE" => ["", "TABS"],
-        "SET_BROWSER_TITLE" => "N",
-        "SET_CANONICAL_URL" => "N",
-        "SET_LAST_MODIFIED" => "N",
-        "SET_META_DESCRIPTION" => "Y",
-        "SET_META_KEYWORDS" => "Y",
-        "SET_STATUS_404" => "N",
-        "SET_TITLE" => "N",
-        "SHOW_404" => "N",
-        "STRICT_SECTION_CHECK" => "N",
-        "USE_PERMISSIONS" => "N",
-        "USE_SHARE" => "N"
-    ],
-    $component
-);?>
+<? $arItems = getHlBlockEntries('PaymentsAndTransfersInfo');
+if (!empty($arItems)) {
+    $arItem = reset($arItems); ?>
 
-<?$APPLICATION->IncludeFile('/local/php_interface/include/cross_sale_products_block.php', ['HEADER_TEXT' => 'Смотрите также']);?>
-<?$APPLICATION->IncludeFile('/local/php_interface/include/request_call.php');?>
+    <section class="section-layout py-lg-11 bg-blue-10">
+        <div class="container">
+            <div class="banner-product-info ps-lg-6">
+                <div class="banner-product-info__header">
+                    <? if (!empty($arItem['UF_TAG'])) { ?>
+                        <div class="tag tag--outline">
+                            <span class="tag__content text-s fw-semibold"><?= $arItem['UF_TAG'] ?></span>
+                            <span class="tag__triangle">
+                              <svg width="14" height="21" viewBox="0 0 14 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13.5 19.3486L0.934259 0.5H13.5V19.3486Z"></path>
+                              </svg>
+                        </span>
+                        </div>
+                    <? } ?>
+                    <h3><?= $arItem['UF_HEADER'] ?? '' ?></h3>
+                </div>
+                <div class="banner-product-info__body">
+                    <?= $arItem['UF_TEXT'] ?? '' ?>
+                    <? if (!empty($arItem['UF_BUTTON_TEXT']) && !empty($arItem['UF_BUTTON_LINK'])) { ?>
+                        <a class="btn btn-lg-lg btn-outline-primary fw-bold w-100 w-md-auto mt-6 mt-lg-7" href="<?= $arItem['UF_BUTTON_LINK'] ?>">
+                            <?= $arItem['UF_BUTTON_TEXT'] ?>
+                        </a>
+                    <? } ?>
+                </div>
+                <? if (!empty($arItem['UF_IMG'])) { ?>
+                    <div class="banner-product-info__image">
+                        <div class="polygon-container js-polygon-container">
+                            <div class="polygon-container__content">
+                                <img src="<?= CFile::GetPath($arItem['UF_IMG']) ?>" alt="" loading="lazy">
+                            </div>
+                            <div class="polygon-container__polygon js-polygon-container-polygon purple-70">
+                                <svg class="js-polygon-container-svg" xmlns="http://www.w3.org/2000/svg">
+                                    <polygon points="2,2 335,2 335,394 295,434 2,434" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="10"></polygon>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                <? } ?>
+            </div>
+        </div>
+        <picture class="pattern-bg pattern-bg--position-sm-bottom">
+            <source srcset="/frontend/dist/img/patterns/section-heavy/pattern-light-s.svg" media="(max-width: 767px)">
+            <source srcset="/frontend/dist/img/patterns/section-heavy/pattern-light-m.svg" media="(max-width: 1199px)"><img src="/frontend/dist/img/patterns/section-heavy/pattern-light-l.svg" alt="bg pattern" loading="lazy">
+        </picture>
+    </section>
+
+<? } ?>
 
 <? $helper->saveCache(); ?>

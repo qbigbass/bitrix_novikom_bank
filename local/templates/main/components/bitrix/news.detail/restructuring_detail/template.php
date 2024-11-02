@@ -13,33 +13,18 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
+
+$headerH1 = $arResult["~NAME"];
+$headerColorClass = 'bg-linear-blue';
+
+$headerFilePath = $_SERVER["DOCUMENT_ROOT"] . "/local/php_interface/include/header/news_detail/compact.php";
+
+if (file_exists($headerFilePath)) {
+    include($headerFilePath);
+} else {
+    echo "Шаблон шапки $headerFilePath не найден";
+}
 ?>
-
-<section class="text-banner pe-lg-0 px-0 px-lg-6 bg-linear-blue text-banner--border-green">
-    <div class="container text-banner__container position-relative z-2">
-        <div class="row">
-            <div class="col-12 col-sm-6 col-md-8 position-relative z-1 mb-5 mb-md-0 pt-6">
-                <div class="d-flex flex-column align-items-start gap-3 gap-md-4">
-
-                    <?
-                        $helper = new ComponentHelper($component);
-                        $helper->deferredCall('showNavChain', ['.default']);
-                    ?>
-
-                    <h1 class="text-banner__title dark-0 text-break"><?= $arResult["NAME"] ?></h1>
-                    <div class="text-banner__description text-l dark-0"><?= $arResult["PREVIEW_TEXT"] ?></div>
-                </div>
-            </div>
-            <div class="d-none d-sm-block col-12 col-sm-6 col-md-4">
-                <img class="text-banner__image position-relative w-auto float-end" src="<?= $arResult["DETAIL_PICTURE"]["SRC"] ?>" alt="<?= $arResult["DETAIL_PICTURE"]["ALT"] ?>">
-            </div>
-        </div>
-    </div>
-    <picture class="pattern-bg pattern-bg--position-sm-top text-banner__pattern">
-        <source srcset="/frontend/dist/img/patterns/section/pattern-light-s.svg" media="(max-width: 767px)">
-        <source srcset="/frontend/dist/img/patterns/section/pattern-light-m.svg" media="(max-width: 1199px)"><img src="/frontend/dist/img/patterns/section/pattern-light-l.svg" alt="bg pattern" loading="lazy">
-    </picture>
-</section>
 
 <? if (!empty($arResult['PROPERTIES']['QUOTE_TEXT']['VALUE'])) { ?>
     <section class="section-layout">
@@ -255,7 +240,7 @@ $this->setFrameMode(true);
                     "PARENT_SECTION" => "",
                     "PARENT_SECTION_CODE" => "",
                     "PREVIEW_TRUNCATE_LEN" => "",
-                    "PROPERTY_CODE" => ["CONDITIONS_ICONS","CONDITIONS","TEXT_FIELD","SHORT_INFO","QUOTES","QUESTIONS"],
+                    "PROPERTY_CODE" => ["CONDITIONS_ICONS","CONDITIONS","CONDITIONS_TABS","TEXT_FIELD","SHORT_INFO","QUOTES","QUESTIONS","DOCUMENTS"],
                     "SET_BROWSER_TITLE" => "N",
                     "SET_LAST_MODIFIED" => "N",
                     "SET_META_DESCRIPTION" => "N",

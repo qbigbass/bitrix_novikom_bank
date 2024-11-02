@@ -160,7 +160,7 @@ class RatesFetcher
         }
 
         // Преобразование процентной ставки в дробное значение и расчет месячной ставки
-        $monthlyRate = $values['RATE'] / 100 / 12;
+        $monthlyRate = $values['RATE_FROM'] / 100 / 12;
 
         // Расчет ПСК для минимальной суммы кредита
         $minMonthlyPayment = $this->calculateMonthlyPayment($values['SUM_FROM'], $monthlyRate, $values['PERIOD_FROM']);

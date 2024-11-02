@@ -93,6 +93,34 @@ $this->setFrameMode(true);
                                     </div>
                                 <? }
 
+                                if ($property['CODE'] == 'CONDITIONS_TABS' && !empty($property['~VALUE'])) { ?>
+                                    <div class="tab-content mt-4 mt-md-6 mt-lg-7">
+                                        <div class="tab-pane fade active show" id="limits" aria-labelledby="limits" tabindex="0" role="tabpanel">
+                                        <? foreach ($property['~VALUE'] as $key => $value) {
+                                            $valueDecoded = json_decode($value, 1); ?>
+
+                                            <div class="row <?= $key > 0 ? 'mt-6 mt-md-9 mt-lg-11' : '' ?>">
+                                                <div class="col-12">
+                                                    <h4 class="mb-4 mb-md-5 mb-lg-6"><?= $valueDecoded['TAB'] ?></h4>
+                                                    <div class="table-tab cell-2">
+                                                        <div class="table-tab__body">
+                                                            <? foreach ($valueDecoded['DESCRIPTIONS'] as $innerKey => $header) { ?>
+                                                                <div class="table-tab__row">
+                                                                    <div class="table-tab__cell text-l fw-semibold dark-70"><?= $header ?></div>
+                                                                    <div class="table-tab__cell">
+                                                                        <p class="text-l"><?= $valueDecoded['VALUES'][$innerKey] ?? '' ?></p>
+                                                                    </div>
+                                                                </div>
+                                                            <? } ?>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <? } ?>
+                                        </div>
+                                    </div>
+                                <? }
+
                                 if ($property['CODE'] == 'TEXT_FIELD' && !empty($property['~VALUE']['TEXT'])) { ?>
                                     <div class="w-100 w-xl-75 rte mt-7 mt-md-7 mt-lg-8">
                                         <?= $property['~VALUE']['TEXT'] ?>
@@ -167,40 +195,49 @@ $this->setFrameMode(true);
                                     <div class="row row-gap-6 mt-7 mt-md-7 mt-lg-8">
                                         <div class="col-12 col-xxl-8">
                                             <div class="accordion" id="accordion-<?= $property['ID'] ?>">
-                                                <? foreach ($property['LINK_SECTION_VALUE'] as $section) { ?>
-                                                    <div class="accordion-item">
-                                                        <div class="accordion-header">
-                                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#<?= $section['ID'] ?>" aria-controls="<?= $section['ID'] ?>">
-                                                                <?= $section['~NAME'] ?>
-                                                            </button>
-                                                        </div>
-                                                        <div class="accordion-collapse collapse" id="<?= $section['ID'] ?>" data-bs-parent="#accordion-<?= $property['ID'] ?>">
-                                                            <div class="accordion-body">
-                                                                <p class="text-m mb-0 dark-70">
-                                                                    <?= $section['DESCRIPTION'] ?>
-                                                                </p>
-                                                                <div class="mt-4">
-                                                                <? foreach ($section['ELEMENTS'] as $element) {
-                                                                    $file = CFile::GetFileArray($element['PROPERTIES']['FILE']['VALUE']);
-                                                                    ?>
-                                                                    <a class="d-flex flex-column gap-1 py-3 document-download text-m" href="<?= $file['SRC'] ?>" download="<?= $file['NAME'] ?>"><?= $element ['NAME'] ?>
-                                                                        <div class="d-flex gap-1 align-items-center">
-                                                                            <div class="document-download__file caption-m dark-70">
-                                                                                <span class="document-download__date-time"><?= !empty($element['ACTIVE_FROM']) ? $element['ACTIVE_FROM']->format('d.m.y H:i') : '' ?></span>
-                                                                                <span class="document-download__file-type"><?= explode('.', $file['ORIGINAL_NAME'])[1] ?></span>
+                                                <? foreach ($property['LINK_SECTION_VALUE'] as $key => $section) {
+                                                    if (!empty($section['ELEMENTS'])) { ?>
+                                                        <div class="accordion-item">
+                                                            <div class="accordion-header">
+                                                                <button
+                                                                    class="accordion-button <?= $key == array_key_first($property['LINK_SECTION_VALUE']) ? 'show' : 'collapsed' ?>"
+                                                                    type="button"
+                                                                    data-bs-toggle="collapse"
+                                                                    data-bs-target="#<?= $section['ID'] ?>"
+                                                                    aria-controls="<?= $section['ID'] ?>"
+                                                                    <?= $key == array_key_first($property['LINK_SECTION_VALUE']) ? 'aria-expanded="true"' : '' ?>
+                                                                >
+                                                                    <?= $section['~NAME'] ?>
+                                                                </button>
+                                                            </div>
+                                                            <div class="accordion-collapse collapse <?= $key == array_key_first($property['LINK_SECTION_VALUE']) ? 'show' : '' ?>" id="<?= $section['ID'] ?>" data-bs-parent="#accordion-<?= $property['ID'] ?>">
+                                                                <div class="accordion-body">
+                                                                    <p class="text-m mb-0 dark-70">
+                                                                        <?= $section['DESCRIPTION'] ?>
+                                                                    </p>
+                                                                    <div class="mt-4">
+                                                                    <? foreach ($section['ELEMENTS'] as $element) {
+                                                                        $file = CFile::GetFileArray($element['PROPERTIES']['FILE']['VALUE']);
+                                                                        ?>
+                                                                        <a class="d-flex flex-column gap-1 py-3 document-download text-m" href="<?= $file['SRC'] ?>" download="<?= $file['NAME'] ?>"><?= $element ['NAME'] ?>
+                                                                            <div class="d-flex gap-1 align-items-center">
+                                                                                <div class="document-download__file caption-m dark-70">
+                                                                                    <span class="document-download__date-time"><?= !empty($element['ACTIVE_FROM']) ? $element['ACTIVE_FROM']->format('d.m.y H:i') : '' ?></span>
+                                                                                    <span class="document-download__file-type"><?= explode('.', $file['ORIGINAL_NAME'])[1] ?></span>
+                                                                                </div>
+                                                                                <span class="icon size-s text-primary">
+                                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                                                                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-download-small"></use>
+                                                                                    </svg>
+                                                                                </span>
                                                                             </div>
-                                                                            <span class="icon size-s text-primary">
-                                                                                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                                                                    <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-download-small"></use>
-                                                                                </svg>
-                                                                            </span>
-                                                                        </div>
-                                                                    </a>
-                                                                <? } ?>
+                                                                        </a>
+                                                                    <? } ?>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    <? } ?>
                                                 <? } ?>
                                             </div>
                                         </div>
