@@ -127,18 +127,22 @@ block content
                 h2 Кнопки
                 .row.row-gap-4.gap-md-0.row-gap-md-4
                     .col-12.col-md-6.col-xl-3.d-flex.flex-column.row-gap-3.p-3
+                        button.btn.btn-primary.btn-lg-lg(type="button") Кнопка Primary
                         button.btn.btn-primary.btn-lg(type="button") Кнопка Primary
                         button.btn.btn-primary(type="button") Кнопка Primary
                         button.btn.btn-primary.btn-sm(type="button") Кнопка Primary
                     .col-12.col-md-6.col-xl-3.d-flex.flex-column.row-gap-3.p-3
+                        button.btn.btn-secondary.btn-lg-lg(type="button") Кнопка Secondary
                         button.btn.btn-secondary.btn-lg(type="button") Кнопка Secondary
                         button.btn.btn-secondary(type="button") Кнопка Secondary
                         button.btn.btn-secondary.btn-sm(type="button") Кнопка Secondary
                     .col-12.col-md-6.col-xl-3.d-flex.flex-column.row-gap-3.p-3
+                        button.btn.btn-tertiary.btn-lg-lg(type="button") Кнопка Tertiary
                         button.btn.btn-tertiary.btn-lg(type="button") Кнопка Tertiary
                         button.btn.btn-tertiary(type="button") Кнопка Tertiary
                         button.btn.btn-tertiary.btn-sm(type="button") Кнопка Tertiary
                     .col-12.col-md-6.col-xl-3.bg-body-tertiary.p-3.d-flex.flex-column.row-gap-3
+                        button.btn.btn-info.btn-lg-lg(type="button") Кнопка Info
                         button.btn.btn-info.btn-lg(type="button") Кнопка Info
                         button.btn.btn-info(type="button") Кнопка Info
                         button.btn.btn-info.btn-sm(type="button") Кнопка Info
@@ -651,19 +655,36 @@ block content
                         },
                     ],
                 },
+                {
+                    pattern: true,
+                    title: "Остались вопросы",
+                    description: "Оставьте свой телефон и мы перезвоним вам, либо задайте вопрос в чате",
+                    buttons: [
+                        {
+                            type: "btn-outline-primary",
+                            text: "Открыть чат"
+                        },
+                        {
+                            type: "btn-primary",
+                            text: "Перезвоните мне"
+                        }
+                    ]
+                },
             ]
         .container
             .d-flex.flex-column.row-gap-5
                 h2 Card Contact
                 .row.row-gap-6
                     .col-12.col-lg-6
-                        +contact-block(contactList[0]).card-contact--bg-blue
+                        +contact-block(contactList[0]).contact-block--bg-blue
                     .col-12.col-lg-6
-                        +contact-block(contactList[1]).card-contact--bg-gray
+                        +contact-block(contactList[1]).contact-block--bg-gray
                     .col-12.col-lg-6
-                        +contact-block(contactList[2]).card-contact--bg-blue
+                        +contact-block(contactList[2]).contact-block--bg-blue
                     .col-12.col-lg-6
-                        +contact-block(contactList[3]).card-contact--bg-heavy-purple
+                        +contact-block(contactList[3]).contact-block--bg-heavy-purple
+                    .col-12.col-lg-6
+                        +contact-block(contactList[4]).contact-block--bg-white
 
     section#steps.section-layout.pt-0
         .container
