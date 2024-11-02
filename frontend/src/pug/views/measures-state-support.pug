@@ -2,7 +2,7 @@ extends ../templates/base
 
 block title
     title= 'Меры господдержки'
-    meta(name="description" content="Описание главной страницы")
+    meta(name="description" content="Описание страницы мер господдержки")
 block content
     include ../includes/header/header
     include ../components/banners/banner-product
@@ -213,7 +213,7 @@ block content
 
         ]
 
-    +banner-product(bannerPromoData).banner-product--type-corp-withimg
+    +banner-product(bannerPromoData).banner-product--border-orange.banner-product--type-corp-withimg
 
     section.section-layout
         .container
