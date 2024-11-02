@@ -1,0 +1,78 @@
+extends ../templates/base
+
+block title
+    title= 'Пресс-центр - страница Новости #2'
+    meta(name="description" content="Описание страницы с новостью #2")
+block content
+
+    include ../cards/card-contact
+    include ../includes/header/header
+    include ../components/ui/breadcrumbs
+    include ../components/ui/tag
+
+    -
+        var breadcrumbsArray = [
+            {linkText: "О банке", link: "/"},
+            {linkText: "Пресс-центр", link: "/"}
+        ]
+        
+        var cardContactData = {
+            topTitle: "Контакты для СМИ",
+            title: "Департамент информационной политики",
+            imageSrc: "big-illustrations/large-individual/contact.png",
+            contactDetail: {
+                email: "pr@novikom.ru",
+                phone: "+7 (495) 974-71-87",
+                phoneChip: "доб. 1597",
+                fax: "+7 (495) 969-20-65",
+                faxChip: "факс",
+                telegram: "novikombank_official",
+                telegramLink: "https://t.me/novikombank_official",
+                telegramText: "Все новости банка Телеграм"
+            }
+        }
+
+    section.pt-6.px-lg-6.border-top.border-blue10
+        .container
+            .row.row-gap-6.row-gap-lg-7
+                .col-12
+                    +breadcrumbs(breadcrumbsArray, 'dark-70')
+                .col-12
+                    h1.h2.mb-4.mb-md-5.mb-lg-6
+                        | НОВИКОМ разместил средства Гарантийного фонда Чеченской Республики
+                    .d-flex.gap-3.gap-md-4.align-items-center
+                        +tag('Пресс-центр', 'outline tag--triangle-absolute')
+                        span.text-m.dark-70 07.08.2024
+                .col-12.col-lg-8
+                    p.text-l.mb-0.fw-semibold Дочерний банк Госкорпорации Ростех опубликовал бухгалтерскую отчетность (РСБУ) за первое полугодие 2024 года. Чистая прибыль НОВИКОМа на 01 июля составила 13,6 млрд рублей. Это более чем в два раза превышает показатель за аналогичный период прошлого года. Рост обусловлен качественным кредитным портфелем, а также высокой эффективностью и динамикой бизнеса банка.
+                .col-12.col-lg-8
+                    p.text-l.mb-0 Активы НОВИКОМа на 01 июля 2024 года составили 926,7 млрд рублей, что на 21,8% больше показателя за аналогичный период прошлого года. Собственные средства (капитал) за 1 полугодие 2024 года выросли на 16% – с 93,1 млрд рублей до 108 млрд рублей.
+                .col-12.col-lg-8
+                    p.text-l.mb-0 По итогам отчетного периода чистый процентный доход НОВИКОМа составил 25 441,3 млн рублей, что выше аналогичного показателя 2023 года на 87,8%. Чистые комиссионные доходы банка составили 908,4 млн рублей, продемонстрировав рост по сравнению с аналогичным периодом прошлого года на 11,3%.
+
+    section.pb-6.pb-md-9.pb-lg-11.pt-6.pt-lg-7
+        .container
+            .row
+                .col-12
+                    +card-contact(cardContactData)
+                        .d-flex.flex-column.gap-4
+                            h5.card-contact__title.text-white-50!= cardContactData.title
+                            .card-contact__contacts.d-flex.flex-column.flex-lg-row.flex-lg-wrap.gap-4
+                                a.card-contact__link.dark-0.gap-3(href=`mailto:${cardContactData.contactDetail.email}`)
+                                    +svg-use("icon-mail", "icon size-m")
+                                    u!= cardContactData.contactDetail.email
+                                p.card-contact__link.dark-0.mb-0.gap-3(href=`mailto:${cardContactData.contactDetail.email}`)
+                                    +svg-use("icon-phone", "icon size-m")
+                                    span
+                                        span.me-2!= cardContactData.contactDetail.phone
+                                        span.chip.chip--outlined.caption-m.text-white-50!= cardContactData.contactDetail.phoneChip
+                                p.card-contact__link.dark-0.mb-0.gap-3(href=`mailto:${cardContactData.contactDetail.email}`)
+                                    +svg-use("icon-fax", "icon size-m")
+                                    span
+                                        span.me-2!= cardContactData.contactDetail.fax
+                                        span.chip.chip--outlined.caption-m.text-white-50!= cardContactData.contactDetail.faxChip
+                                a.card-contact__link.w-100.dark-0.gap-3(href=cardContactData.contactDetail.telegramLink)
+                                    +svg-use("icon-telegram", "icon size-m")
+                                    span
+                                        u!= cardContactData.contactDetail.telegram + ' '
+                                        span.d-inline-block.text-white-50.w-100.w-lg-auto!= cardContactData.contactDetail.telegramText
