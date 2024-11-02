@@ -1,0 +1,41 @@
+.quote {
+
+    @include use-media(laptop) {
+        padding-right: 12.5rem!important;
+        padding-left: 0;
+    }
+
+    &__wrapper {
+        padding: 1rem 1rem 2rem;
+        z-index: 1;
+
+        @include use-media(tablet) {
+            padding: 1.5rem;
+            padding-left: 0;
+        }
+    }
+
+    &__image {
+        width: 7.5rem;
+        height: auto;
+        left: -1rem;
+        top: -3.5rem;
+        margin-bottom: -3.5rem;
+
+        @include use-media(tablet) {
+            left: 0;
+            top: -4rem;
+        }
+
+        @include use-media(tablet-album) {
+            width: 10rem;
+        }
+    }
+}
+
+.quote-polygon-container {
+
+    &__content {
+        clip-path: polygon(0 -2.5rem, 100% 0, 100% calc(100% - var(--polygon-square)), calc(100% - var(--polygon-square)) 100%, 0 100%);
+    }
+}
