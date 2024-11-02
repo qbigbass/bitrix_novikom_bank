@@ -1,4 +1,6 @@
-<?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
+<? use Dalee\Helpers\ComponentHelper;
+
+if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 /** @var array $arParams */
 /** @var array $arResult */
 /** @global CMain $APPLICATION */
@@ -12,45 +14,17 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 
-/** Переменные для кратких условий в щапке
- * RATE_FROM - Ставка от
- * RATE_TO - Ставка до
- * SUM_FROM - Сумма от
- * SUM_TO - Сумма до
- * PERIOD_FROM - Срок от
- * PERIOD_TO - Срок до
- * PERIOD - years / days - вывод срока в годах или днях
- */
-
-$terms = [
-    'RATE_FROM' => [
-        'SIGN' => 'Минимальная ставка',
-        'FROM_TO' => 'от&nbsp;',
-    ],
-    'SUM_TO' => [
-        'SIGN' => 'Максимальная сумма кредита',
-        'FROM_TO' => 'до&nbsp;',
-    ],
-    'PERIOD_TO' => [
-        'SIGN' => 'Максимальный срок выплаты',
-        'FROM_TO' => 'до&nbsp;',
-        'PERIOD' => 'years'
-    ]
-];
-
-// Переменные для заголовка и цвета шапки
 $headerH1 = $arResult["~NAME"];
-$headerColorClass = 'banner-product--heavy-violet';
+$headerColorClass = 'bg-linear-blue';
 
-// Поделючение шапки
-$headerTemplate = $arResult['PROPERTIES']['HEADER_TEMPLATE']['VALUE_XML_ID'] ?? 'detailed';
-$headerFilePath = $_SERVER["DOCUMENT_ROOT"] . "/local/php_interface/include/header/news_detail/" . $headerTemplate . ".php";
+$headerFilePath = $_SERVER["DOCUMENT_ROOT"] . "/local/php_interface/include/header/news_detail/compact.php";
 
 if (file_exists($headerFilePath)) {
     include($headerFilePath);
 } else {
-    echo "Шаблон шапки $headerTemplate не найден";
-}?>
+    echo "Шаблон шапки $headerFilePath не найден";
+}
+?>
 
 <? if (!empty($arResult['PROPERTIES']['BENEFITS']['VALUE'])) { ?>
     <section class="section-benefits px-0 px-lg-6 py-6 py-sm-9 py-md-11 py-xl-16 position-relative overflow-hidden">
@@ -81,7 +55,7 @@ if (file_exists($headerFilePath)) {
                         "CACHE_TIME" => "36000000",
                         "CACHE_TYPE" => "A",
                         "CHECK_DATES" => "Y",
-                        "COL_COUNT" => "3",
+                        "COL_COUNT" => "2",
                         "DETAIL_URL" => "",
                         "DISPLAY_BOTTOM_PAGER" => "N",
                         "DISPLAY_TOP_PAGER" => "N",
@@ -129,79 +103,58 @@ if (file_exists($headerFilePath)) {
     </section>
 <? } ?>
 
-<? if (!empty($arResult['PROPERTIES']['QUOTE_TEXT']['VALUE']) && !empty($arResult['PROPERTIES']['QUOTE_HEADER']['VALUE'])) { ?>
-    <section class="section-layout pt-0 pb-xxl-11">
+<? if (
+    !empty($arResult['PROPERTIES']['STEPS']['VALUE'])
+    && !empty($arResult['PROPERTIES']['STEPS']['DESCRIPTION'])
+    && count($arResult['PROPERTIES']['STEPS']['VALUE']) == count($arResult['PROPERTIES']['STEPS']['DESCRIPTION'])) { ?>
+
+    <section class="section-restructuring-steps bg-dark-10 py-6 py-sm-9 py-md-11 py-xl-16">
         <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="polygon-container js-polygon-container">
-                        <div class="polygon-container__content">
-                            <div class="helper bg-dark-10">
-                                <div class="helper__wrapper d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-4 gap-lg-6"><img class="helper__image w-auto float-end" src="/frontend/dist/img/restructuring-additional-info.png" alt="" loading="lazy">
-                                    <div class="helper__content text-l">
-                                        <h4 class="mb-3"><?= $arResult['PROPERTIES']['QUOTE_HEADER']['~VALUE'] ?></h4>
-                                        <p class="mb-0"><?= $arResult['PROPERTIES']['QUOTE_TEXT']['VALUE']['TEXT'] ?></p>
+            <div class="row px-lg-6">
+                <h3 class="d-none d-md-flex"><?= $arResult['PROPERTIES']['STEPS_HEADER']['VALUE'] ?></h3>
+                <a class="h3 d-flex align-items-center justify-content-between dark-100 d-md-none" data-bs-toggle="collapse" href="#restructuring-steps-content" role="button" aria-expanded="false" aria-controls="restructuring-steps-content">
+                    <?= $arResult['PROPERTIES']['STEPS_HEADER']['VALUE'] ?></h3>
+                    <svg class="icon size-m violet-100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-down"></use>
+                    </svg>
+                </a>
+            </div>
+            <div class="section-restructuring-steps__wrapper collapse d-md-block mt-6 mt-lg-7" id="restructuring-steps-content">
+                <div class="row row-gap-6 px-lg-6">
+                    <div class="stepper steps-3">
+                        <? foreach ($arResult['PROPERTIES']['STEPS']['~VALUE'] as $key => $step) {?>
+
+                            <div class="stepper-item stepper-item--color-green">
+                                <div class="stepper-item__header">
+                                    <div class="stepper-item__number">
+                                        <div class="stepper-item__number-value"><?= $key + 1 ?></div>
+                                        <div class="stepper-item__number-icon">
+                                            <div class="stepper-item__icon-border" data-level="1">
+                                                <svg width="76" height="44" viewBox="0 0 76 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M36.0723 1.06022C37.2727 0.400039 38.7273 0.400039 39.9277 1.06022L74.8138 20.2476C76.1953 21.0074 76.1953 22.9926 74.8138 23.7524L39.9277 42.9398C38.7273 43.6 37.2727 43.6 36.0723 42.9398L1.18624 23.7524C-0.195312 22.9926 -0.19531 21.0074 1.18624 20.2476L36.0723 1.06022Z" fill="currentColor"></path>
+                                                </svg>
+                                            </div>
+                                            <? for ($i = 0; $i < $key; $i++) {?>
+                                                <div class="stepper-item__icon-border" data-level="<?= $i + 2 ?>">
+                                                    <svg width="80" height="46" viewBox="0 0 80 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M39.5181 1.26505C39.8182 1.10001 40.1818 1.10001 40.4819 1.26506L78.4069 22.1238C79.0977 22.5037 79.0977 23.4963 78.4069 23.8762L40.4819 44.7349C40.1818 44.9 39.8182 44.9 39.5181 44.7349L1.59312 23.8762C0.902343 23.4963 0.902345 22.5037 1.59312 22.1238L39.5181 1.26505Z" stroke="currentColor" stroke-linecap="round" stroke-dasharray="4 4"></path>
+                                                    </svg>
+                                                </div>
+                                            <? } ?>
+                                        </div>
                                     </div>
+                                    <div class="stepper-item__arrow"></div>
+                                </div>
+                                <div class="stepper-item__content">
+                                    <h4><?= $arResult['PROPERTIES']['STEPS']['~DESCRIPTION'][$key] ?></h4>
+                                    <p class="text-l no-mb"><?= $step ?></p>
                                 </div>
                             </div>
-                        </div>
-                        <div class="polygon-container__polygon js-polygon-container-polygon green-100">
-                            <svg class="js-polygon-container-svg" xmlns="http://www.w3.org/2000/svg">
-                                <polygon points="2,2 335,2 335,394 295,434 2,434" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="10"></polygon>
-                            </svg>
-                        </div>
+                        <? } ?>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-<? } ?>
-
-<? if (!empty($arResult['PROPERTIES']['TEXT_BLOCK_HEADER']['VALUE']) && !empty($arResult['PROPERTIES']['TEXT_BLOCK']['VALUE'])) { ?>
-    <section class="section-layout py-lg-11 bg-blue-10">
-        <div class="container">
-            <div class="banner-product-info ps-lg-6">
-                <div class="banner-product-info__header">
-                    <? if (!empty($arResult['PROPERTIES']['TEXT_BLOCK_TAG']['VALUE'])) { ?>
-                        <div class="tag tag--outline">
-                            <span class="tag__content text-s fw-semibold"><?= $arResult['PROPERTIES']['TEXT_BLOCK_TAG']['VALUE'] ?></span>
-                            <span class="tag__triangle">
-                                  <svg width="14" height="21" viewBox="0 0 14 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M13.5 19.3486L0.934259 0.5H13.5V19.3486Z"></path>
-                                  </svg>
-                            </span>
-                        </div>
-                    <? } ?>
-                    <h3><?= $arResult['PROPERTIES']['TEXT_BLOCK_HEADER']['~VALUE'] ?></h3>
-                </div>
-                <div class="banner-product-info__body">
-                    <p class="text-l m-0"><?= $arResult['PROPERTIES']['TEXT_BLOCK']['VALUE']['TEXT'] ?></p>
-                    <? if (!empty($arResult['PROPERTIES']['TEXT_BLOCK_BUTTON']['VALUE']) && !empty($arResult['PROPERTIES']['TEXT_BLOCK_BUTTON_LINK']['VALUE'])) { ?>
-                        <a class="btn btn-lg-lg btn-outline-primary fw-bold w-100 w-md-auto mt-6 mt-lg-7" href="<?= $arResult['PROPERTIES']['TEXT_BLOCK_BUTTON_LINK']['VALUE'] ?>">
-                            <?= $arResult['PROPERTIES']['TEXT_BLOCK_BUTTON']['VALUE'] ?>
-                        </a>
-                    <? } ?>
-                </div>
-                <? if (!empty($arResult['PROPERTIES']['TEXT_BLOCK_IMAGE']['VALUE'])) { ?>
-                    <div class="banner-product-info__image">
-                        <div class="polygon-container js-polygon-container">
-                            <div class="polygon-container__content">
-                                <img src="<?= CFile::GetPath($arResult['PROPERTIES']['TEXT_BLOCK_IMAGE']['VALUE']) ?>" alt="<?= $arResult['PROPERTIES']['TEXT_BLOCK_IMAGE']['ALT'] ?>" loading="lazy">
-                            </div>
-                            <div class="polygon-container__polygon js-polygon-container-polygon purple-70">
-                                <svg class="js-polygon-container-svg" xmlns="http://www.w3.org/2000/svg">
-                                    <polygon points="2,2 335,2 335,394 295,434 2,434" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="10"></polygon>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                <? } ?>
-            </div>
-        </div>
-        <picture class="pattern-bg pattern-bg--position-sm-bottom">
-            <source srcset="/frontend/dist/img/patterns/section-heavy/pattern-light-s.svg" media="(max-width: 767px)">
-            <source srcset="/frontend/dist/img/patterns/section-heavy/pattern-light-m.svg" media="(max-width: 1199px)"><img src="/frontend/dist/img/patterns/section-heavy/pattern-light-l.svg" alt="bg pattern" loading="lazy">
-        </picture>
     </section>
 <? } ?>
 
@@ -277,6 +230,33 @@ if (file_exists($headerFilePath)) {
                 $component
             );?>
 
+        </div>
+    </section>
+<? } ?>
+
+<? if (!empty($arResult['PROPERTIES']['QUOTE_TEXT_BOTTOM']['VALUE'])) { ?>
+    <section class="section-layout">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="polygon-container js-polygon-container">
+                        <div class="polygon-container__content">
+                            <div class="helper bg-dark-10">
+                                <div class="helper__wrapper d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-4 gap-lg-6"><img class="helper__image w-auto float-end" src="/frontend/dist/img/restructuring-additional-info.png" alt="" loading="lazy">
+                                    <div class="helper__content text-l">
+                                        <p class="mb-0"><?= $arResult['PROPERTIES']['QUOTE_TEXT_BOTTOM']['~VALUE']['TEXT'] ?></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="polygon-container__polygon js-polygon-container-polygon green-100">
+                            <svg class="js-polygon-container-svg" xmlns="http://www.w3.org/2000/svg">
+                                <polygon points="2,2 335,2 335,394 295,434 2,434" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="10"></polygon>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 <? } ?>

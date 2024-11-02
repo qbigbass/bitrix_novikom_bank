@@ -53,7 +53,7 @@ $APPLICATION->SetTitle("Реструктуризация");
 		"DISPLAY_TOP_PAGER" => "N",
 		"FILE_404" => "",
 		"HIDE_LINK_WHEN_NO_DETAIL" => "N",
-		"IBLOCK_ID" => "131",
+		"IBLOCK_ID" => iblock('restructuring'),
 		"IBLOCK_TYPE" => "for_private_clients_ru",
 		"INCLUDE_IBLOCK_INTO_CHAIN" => "N",
 		"LIST_ACTIVE_DATE_FORMAT" => "d.m.Y",

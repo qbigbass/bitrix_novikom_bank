@@ -115,7 +115,7 @@ if (!empty($arResult['PROPERTIES']['TEXT_BLOCK_HEADER']['VALUE']) && !empty($arR
                     "PARENT_SECTION" => "",
                     "PARENT_SECTION_CODE" => "",
                     "PREVIEW_TRUNCATE_LEN" => "",
-                    "PROPERTY_CODE" => ["CONDITIONS_ICONS","CONDITIONS","TEXT_FIELD","SHORT_INFO","QUOTES","QUESTIONS"],
+                    "PROPERTY_CODE" => ["CONDITIONS_ICONS","CONDITIONS","CONDITIONS_TABS","TEXT_FIELD","SHORT_INFO","QUOTES","QUESTIONS","DOCUMENTS"],
                     "SET_BROWSER_TITLE" => "N",
                     "SET_LAST_MODIFIED" => "N",
                     "SET_META_DESCRIPTION" => "N",
