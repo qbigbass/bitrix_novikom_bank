@@ -160,7 +160,7 @@ class RatesFetcher
         }
 
         // Преобразование процентной ставки в дробное значение и расчет месячной ставки
-        $monthlyRate = $values['RATE'] / 100 / 12;
+        $monthlyRate = $values['RATE_FROM'] / 100 / 12;
 
         // Расчет ПСК для минимальной суммы кредита
         $minMonthlyPayment = $this->calculateMonthlyPayment($values['SUM_FROM'], $monthlyRate, $values['PERIOD_FROM']);
@@ -191,6 +191,70 @@ class RatesFetcher
         }
 
         return ($sum * $rate * pow(1 + $rate, $period)) / (pow(1 + $rate, $period) - 1);
+    }
+
+    /**
+     * @param float $keyRate
+     * @return string
+     */
+    public function generateRatesTableHTML(float $keyRate): string
+    {
+        $ratesData = [];
+
+        foreach ($this->loadedElements as $element) {
+
+            if (empty($element['SUM_FROM_']) || empty($element['PERIOD_FROM_']) || empty($element['RATE_'])) {
+                continue;
+            }
+
+            $sumFrom = $element['SUM_FROM_'];
+            $period = $element['PERIOD_FROM_'];
+            $rate = $element['RATE_'];
+
+            // Расчёт надбавки относительно ключевой ставки
+            $rateDiff = $rate - $keyRate;
+            $rateText = $rateDiff ? ($rateDiff > 0 ? '+' : '') . number_format($rateDiff, 1) . '%' : '';
+
+            // Группируем по диапазонам сумм и срокам
+            $ratesData[$sumFrom][$period] = 'КС ' . $rateText;
+        }
+
+        $ratesData = array_map(function ($periodRates) {
+            ksort($periodRates);
+            return $periodRates;
+        }, $ratesData);
+
+        ksort($ratesData);
+
+        $html = '
+            <div class="d-flex flex-column gap-6 gap-md-9 mt-4 mt-md-6 mt-lg-7">
+                <div class="overflow-auto custom-overflow-scrollbar">
+                    <table class="table table-borderless m-0">
+                        <caption class="dark-70 pt-4 text-s mb-0">КС – ключевая ставка Банка России</caption>
+                        <thead>
+                        <tr class="border-bottom-dashed">
+                            <th class="text-nowrap fs-2 lh-base dark-70 fw-semibold py-4 px-0" scope="col" style="min-width: 140px">Срок вклада</th><i></i>
+        ';
+
+        // Заголовки для сроков
+        $periods = array_keys(current($ratesData));
+        foreach ($periods as $period) {
+            $html .= '<th class="text-nowrap fs-2 lh-base dark-70 fw-semibold py-4 px-0" scope="col" style="min-width: 140px">' . $period . ' дней</th><i></i>';
+        }
+        $html .= '</tr></thead><tbody>';
+
+        // Построение строк таблицы по суммам
+        foreach ($ratesData as $sumFrom => $periodRates) {
+            $html .= '<tr class="border-bottom-dashed">
+                        <td class="w-auto text-l dark-70 py-4 px-0" style="min-width: 140px">от ' . number_format((float)$sumFrom, 0, '', ' ') . ' ₽</td>';
+            foreach ($periods as $period) {
+                $html .= '<td class="w-auto text-l dark-70 py-4 px-0" style="min-width: 140px">' . ($periodRates[$period] ?? 'КС') . '</td>';
+            }
+            $html .= '</tr>';
+        }
+
+        $html .= '</tbody></table></div></div>';
+        return $html;
     }
 }
 

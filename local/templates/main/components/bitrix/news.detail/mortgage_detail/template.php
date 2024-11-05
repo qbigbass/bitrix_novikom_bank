@@ -12,8 +12,27 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 
+$terms = [
+    'RATE_FROM' => [
+        'SIGN' => 'Минимальная ставка',
+        'FROM_TO' => 'от&nbsp;',
+    ],
+    'SUM_TO' => [
+        'SIGN' => 'Максимальная сумма',
+        'FROM_TO' => 'до&nbsp;',
+    ],
+    'PERIOD_TO' => [
+        'SIGN' => 'Срок выплаты',
+        'FROM_TO' => 'до&nbsp;',
+        'PERIOD' => 'years'
+    ]
+];
+
+$headerH1 = 'Ипотека по программе «' .  $arResult["~NAME"] . '»';
+$headerColorClass = 'banner-product--heavy-violet';
+
 $headerTemplate = $arResult['PROPERTIES']['HEADER_TEMPLATE']['VALUE_XML_ID'] ?? 'detailed';
-$headerFilePath = $_SERVER["DOCUMENT_ROOT"] . "/" . $this->GetFolder() . "/" . $headerTemplate . ".php";
+$headerFilePath = $_SERVER["DOCUMENT_ROOT"] . "/local/php_interface/include/header/news_detail/" . $headerTemplate . ".php";
 
 if (file_exists($headerFilePath)) {
     include($headerFilePath);
@@ -229,7 +248,7 @@ if (file_exists($headerFilePath)) {
                     "PARENT_SECTION" => "",
                     "PARENT_SECTION_CODE" => "",
                     "PREVIEW_TRUNCATE_LEN" => "",
-                    "PROPERTY_CODE" => ["CONDITIONS_ICONS","CONDITIONS","TEXT_FIELD","SHORT_INFO","QUOTES","QUESTIONS"],
+                    "PROPERTY_CODE" => ["CONDITIONS_ICONS","CONDITIONS","CONDITIONS_TABS","TEXT_FIELD","SHORT_INFO","QUOTES","QUESTIONS","DOCUMENTS"],
                     "SET_BROWSER_TITLE" => "N",
                     "SET_LAST_MODIFIED" => "N",
                     "SET_META_DESCRIPTION" => "N",

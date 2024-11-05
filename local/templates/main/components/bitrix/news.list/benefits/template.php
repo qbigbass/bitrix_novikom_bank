@@ -20,7 +20,7 @@ $this->setFrameMode(true);?>
                 <? if (!empty($benefit['~PREVIEW_TEXT'])) { ?>
                     <h4 class="benefit__title"><?= $benefit['~NAME'] ?></h4>
                 <? } ?>
-                <span class="benefit__description w-100 w-md-75 text-m">
+                <span class="benefit__description w-100 text-m">
                     <?= $benefit['~PREVIEW_TEXT'] ?: $benefit['~NAME'] ?>
                 </span>
             </div>

@@ -54,10 +54,9 @@ function pre(mixed ...$arrays): void
 /**
  * @param array $terms
  * @param array $properties
- * @param bool $days
  * @return array
  */
-function processTerms(array $terms, array $properties, bool $days = false): array
+function processTerms(array $terms, array $properties): array
 {
     $result = [];
 
@@ -68,18 +67,15 @@ function processTerms(array $terms, array $properties, bool $days = false): arra
 
         $sign = $terms[$key]['SIGN'];
         $fromTo = $terms[$key]['FROM_TO'];
+        $period = $terms[$key]['PERIOD'] ?? 'years';
         $value = '';
 
         if (in_array($key, ['RATE_FROM', 'RATE_TO'])) {
             $value = $term . ' %';
         } elseif (in_array($key, ['SUM_FROM', 'SUM_TO'])) {
-            $value = number_format($term, 0, '', ' ') . ' ₽';
+            $value = number_format($term, 0, '', ' ') . ' <span class="currency">₽</span>';
         } elseif (in_array($key, ['PERIOD_FROM', 'PERIOD_TO'])) {
-            if ($days) {
-                $value = $term . declensionFrom($term, 'day');
-            } else {
-                $value = round($term / 12) . declensionFrom($term);
-            }
+            $value = ($period == 'years' ? floor($term / 12) : $term) . declensionFrom($term, $period);
         } elseif ($key === 'DIAPASON') {
             $value = $term;
         }
@@ -99,14 +95,14 @@ function processTerms(array $terms, array $properties, bool $days = false): arra
  * @param string $period
  * @return string
  */
-function declensionFrom(int $number, string $period = 'year'): string
+function declensionFrom(int $number, string $period = 'years'): string
 {
     $number = abs($number) % 100;
 
     return match ($period) {
-        'year' => $number % 10 == 1 ? ' года' : ' лет',
-        'month' => $number % 10 == 1 ? ' месяца' : ' месяцев',
-        'day' => $number % 10 == 1 ? ' дня' : ' дней',
+        'years' => $number % 10 == 1 ? ' года' : ' лет',
+        'months' => $number % 10 == 1 ? ' месяца' : ' месяцев',
+        'days' => $number % 10 == 1 ? ' дня' : ' дней',
         default => '',
     };
 }
@@ -127,4 +123,13 @@ function showNavChain(string $template = '.default'): void
             "START_FROM" => "0"
         ]
     );
+}
+
+function getHlBlockEntries(string $hlBlockName): array
+{
+    \Bitrix\Main\Loader::includeModule("highloadblock");
+    Bitrix\Highloadblock\HighloadBlockTable::compileEntity($hlBlockName);
+    $strEntityDataClass = '\\' . $hlBlockName . 'Table';
+
+    return $strEntityDataClass::getList()->fetchAll();
 }

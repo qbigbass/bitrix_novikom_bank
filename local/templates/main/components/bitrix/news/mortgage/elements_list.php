@@ -16,25 +16,26 @@ $this->setFrameMode(true);
 ?>
 
 <!-- Баннер в шапке -->
-<section class="text-banner pe-lg-0 px-0 px-lg-6 bg-linear-blue text-banner--border-green">
-    <div class="container text-banner__container position-relative z-2">
-        <div class="row">
-            <div class="col-12 position-relative z-1 mb-5 mb-md-0 pt-6">
+<section class="banner-text banner-text--border-green bg-linear-blue">
+    <div class="container banner-text__container position-relative z-2">
+        <div class="row ps-lg-6">
+            <div class="col-12 col-xl-7 position-relative z-1 mb-5 mb-md-0 pt-6">
                 <div class="d-flex flex-column align-items-start gap-3 gap-md-4">
 
                     <?
-                        $helper = new ComponentHelper($component);
-                        $helper->deferredCall('showNavChain', ['.default']);
+                    $helper = new ComponentHelper($component);
+                    $helper->deferredCall('showNavChain', ['.default']);
                     ?>
 
-                    <h1 class="text-banner__title dark-0 text-break"><?=$APPLICATION->GetTitle()?></h1>
+                    <h1 class="banner-text__title dark-0 text-break"><?=$APPLICATION->GetTitle()?></h1>
                 </div>
             </div>
         </div>
     </div>
-    <picture class="pattern-bg pattern-bg--position-sm-top text-banner__pattern">
+    <picture class="pattern-bg pattern-bg--position-sm-top banner-text__pattern">
         <source srcset="/frontend/dist/img/patterns/section/pattern-light-s.svg" media="(max-width: 767px)">
-        <source srcset="/frontend/dist/img/patterns/section/pattern-light-m.svg" media="(max-width: 1199px)"><img src="/frontend/dist/img/patterns/section/pattern-light-l.svg" alt="bg pattern" loading="lazy">
+        <source srcset="/frontend/dist/img/patterns/section/pattern-light-m.svg" media="(max-width: 1199px)">
+        <img src="/frontend/dist/img/patterns/section/pattern-light-l.svg" alt="bg pattern" loading="lazy">
     </picture>
 </section>
 

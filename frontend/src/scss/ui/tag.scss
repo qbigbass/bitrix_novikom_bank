@@ -71,4 +71,12 @@
             }
         }
     }
+
+    &--triangle-absolute {
+
+        #{$root}__triangle {
+            position: absolute;
+            top: calc(100% - 1px);
+        }
+    }
 }

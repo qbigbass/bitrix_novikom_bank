@@ -11,13 +11,12 @@ $asset->addCss('/frontend/dist/css/bootstrap.css');
 $asset->addCss('/frontend/dist/css/select2.css');
 $asset->addCss('/frontend/dist/css/swiper.css');
 $asset->addCss('/frontend/dist/css/all.css');
-$asset->addJs('/frontend/dist/js/bootstrap.js');
-$asset->addJs('/frontend/dist/js/bundle.js');
+$asset->addJs('/frontend/dist/js/bootstrap.min.js');
 $asset->addJs('/frontend/dist/js/jquery.min.js');
 $asset->addJs('/frontend/dist/js/popover.js');
-$asset->addJs('/frontend/dist/js/select2.js');
-$asset->addJs('/frontend/dist/js/swiper.js');
-$asset->addJs('/frontend/dist/js/all.js');
+$asset->addJs('/frontend/dist/js/select2.min.js');
+$asset->addJs('/frontend/dist/js/swiper.min.js');
+$asset->addJs('/frontend/dist/js/bundle.js');
 
 ?>
 <!DOCTYPE html>

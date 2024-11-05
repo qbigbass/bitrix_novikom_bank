@@ -10,27 +10,14 @@
 /** @var string $templateFolder */
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
+/** @var array $terms */
+/** @var string $headerH1 */
+/** @var string $headerColorClass */
 
 use Dalee\Helpers\ComponentHelper;
-
-$terms = [
-    'RATE_TO' => [
-        'SIGN' => 'При ключевой ставке<br>Банка России на ' . date('d.m.Y'),
-        'FROM_TO' => 'до&nbsp;',
-    ],
-    'PERIOD_FROM' => [
-        'SIGN' => 'Минимальный срок вклада',
-        'FROM_TO' => 'от&nbsp;',
-    ],
-    'SUM_FROM' => [
-        'SIGN' => 'Минимальная сумма вклада',
-        'FROM_TO' => 'от&nbsp;',
-    ],
-];
-
 ?>
 
-<div class="banner-product banner-product--heavy-purple">
+<div class="banner-product <?= $headerColorClass ?>">
     <div class="banner-product__wrapper">
         <div class="banner-product__content">
             <div class="banner-product__header">
@@ -40,13 +27,13 @@ $terms = [
                     $helper->deferredCall('showNavChain', ['.default']);
                 ?>
 
-                <h1>Вклад «<?= $arResult["~NAME"] ?>»</h1>
+                <h1><?= $headerH1 ?></h1>
                 <p class="banner-product__subtitle"><?= $arResult["~PREVIEW_TEXT"] ?></p>
             </div>
             <img class="banner-product__image" src="<?= $arResult["DETAIL_PICTURE"]["SRC"] ?>" alt="<?= $arResult["DETAIL_PICTURE"]["ALT"] ?>" loading="lazy">
             <? if (!empty($arResult['PROPERTIES']['TERMS'])) { ?>
                 <div class="banner-product__benefits-list">
-                    <? $termsValues = processTerms($terms, $arResult['PROPERTIES']['TERMS'], true);
+                    <? $termsValues = processTerms($terms, $arResult['PROPERTIES']['TERMS']);
                     foreach ($termsValues as $term) { ?>
                         <div class="d-inline-flex flex-column row-gap-2">
                             <div class="d-inline-flex flex-nowrap align-items-baseline text-l fw-semibold gap-1 green-100">

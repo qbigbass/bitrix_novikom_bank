@@ -12,8 +12,27 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 
+$terms = [
+    'RATE_TO' => [
+        'SIGN' => 'При ключевой ставке<br>Банка России на ' . date('d.m.Y'),
+        'FROM_TO' => 'до&nbsp;',
+    ],
+    'SUM_FROM' => [
+        'SIGN' => 'Минимальная сумма вклада',
+        'FROM_TO' => 'от&nbsp;',
+    ],
+    'PERIOD_FROM' => [
+        'SIGN' => 'Минимальный срок вклада',
+        'FROM_TO' => 'от&nbsp;',
+        'PERIOD' => 'days'
+    ],
+];
+
+$headerH1 = "Вклад «" . $arResult["~NAME"] . "»";
+$headerColorClass = 'banner-product--heavy-purple';
+
 $headerTemplate = $arResult['PROPERTIES']['HEADER_TEMPLATE']['VALUE_XML_ID'] ?? 'detailed';
-$headerFilePath = $_SERVER["DOCUMENT_ROOT"] . "/" . $this->GetFolder() . "/" . $headerTemplate . ".php";
+$headerFilePath = $_SERVER["DOCUMENT_ROOT"] . "/local/php_interface/include/header/news_detail/" . $headerTemplate . ".php";
 
 if (file_exists($headerFilePath)) {
     include($headerFilePath);
@@ -201,7 +220,7 @@ if (file_exists($headerFilePath)) {
                 "PARENT_SECTION" => "",
                 "PARENT_SECTION_CODE" => "",
                 "PREVIEW_TRUNCATE_LEN" => "",
-                "PROPERTY_CODE" => ["CONDITIONS_ICONS","CONDITIONS","TEXT_FIELD","SHORT_INFO","QUOTES","QUESTIONS"],
+                "PROPERTY_CODE" => ["CONDITIONS_ICONS","CONDITIONS","CONDITIONS_TABS","TEXT_FIELD","SHORT_INFO","QUOTES","QUESTIONS","DOCUMENTS"],
                 "SET_BROWSER_TITLE" => "N",
                 "SET_LAST_MODIFIED" => "N",
                 "SET_META_DESCRIPTION" => "N",

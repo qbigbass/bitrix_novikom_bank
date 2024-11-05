@@ -1,0 +1,165 @@
+extends ../templates/base
+
+block title
+    title= 'Пресс-центр - страница Новости'
+    meta(name="description" content="Описание страницы с новостью")
+block content
+
+    include ../cards/card-contact
+    include ../includes/header/header
+    include ../components/ui/breadcrumbs
+    include ../components/ui/tag
+    include ../components/helper
+    include ../components/quote
+
+    -
+        var breadcrumbsArray = [
+            {linkText: "О банке", link: "/"},
+            {linkText: "Пресс-центр", link: "/"}
+        ];
+
+        var tableDataRows = [
+            [
+                "Срок вклада",
+                "250 дней",
+                "550 дней",
+                "1100 дней",
+            ],
+            [
+                "от 10 000 ₽",
+                "КС –0,8%",
+                "КС",
+                "КС"
+            ],
+            [
+                "от 1 500 000 ₽",
+                "КС –0,6%",
+                "КС +0,1%",
+                "КС +0,3%"
+            ],
+            [
+                "от 5 000 000 ₽",
+                "КС –0,5%",
+                "КС +0,1%",
+                "КС +0,3%"
+            ],
+            [
+                "от 30 000 000 ₽",
+                "КС –0,4%",
+                "КС +0,2%",
+                "КС +0,2%"
+            ],
+        ]
+        
+        var cardContactData = {
+            topTitle: "Контакты для СМИ",
+            title: "Департамент информационной политики",
+            imageSrc: "big-illustrations/large-individual/contact.png",
+            contactDetail: {
+                email: "pr@novikom.ru",
+                phone: "+7 (495) 974-71-87",
+                phoneChip: "доб. 1597",
+                fax: "+7 (495) 969-20-65",
+                faxChip: "факс",
+                telegram: "novikombank_official",
+                telegramLink: "https://t.me/novikombank_official",
+                telegramText: "Все новости банка Телеграм"
+            }
+        }
+
+    section.pt-6.px-lg-6.border-top.border-blue10
+        .container
+            .row.row-gap-6.row-gap-lg-7
+                .col-12
+                    +breadcrumbs(breadcrumbsArray, 'dark-70')
+                .col-12
+                    h1.h2.mb-4.mb-md-5.mb-lg-6
+                        | НОВИКОМ разместил средства Гарантийного фонда Чеченской Республики
+                    .d-flex.gap-3.gap-md-4.align-items-center
+                        +tag('Пресс-центр', 'outline tag--triangle-absolute')
+                        span.text-m.dark-70 07.08.2024
+                .col-12.col-lg-8
+                    img(src="img/banners/news-banner-1.png", alt="", loading="lazy").mobile-element-full-width
+                .col-12.col-lg-8
+                    p.text-l.mb-0.fw-semibold Дочерний банк Госкорпорации Ростех опубликовал бухгалтерскую отчетность (РСБУ) за первое полугодие 2024 года. Чистая прибыль НОВИКОМа на 01 июля составила 13,6 млрд рублей. Это более чем в два раза превышает показатель за аналогичный период прошлого года. Рост обусловлен качественным кредитным портфелем, а также высокой эффективностью и динамикой бизнеса банка.
+                .col-12.col-lg-8.d-flex.flex-column.gap-4
+                    h3 Заголовок абзаца
+                    p.text-l.mb-0 Активы НОВИКОМа на 01 июля 2024 года составили 926,7 млрд рублей, что на 21,8% больше показателя за аналогичный период прошлого года. Собственные средства (капитал) за 1 полугодие 2024 года выросли на 16% – с 93,1 млрд рублей до 108 млрд рублей.
+                    h4 Подзаголовок абзаца 
+                    ul.list.list--size-l.fw-semibold
+                        li Эксперт РА
+                        li АКРА и НКР присвоили НОВИКОМу рейтинг на уровне АА-
+                        li НРА на уровне АА
+                .col-12.col-lg-8
+                    p.text-l.mb-0 По итогам отчетного периода чистый процентный доход НОВИКОМа составил 25 441,3 млн рублей, что выше аналогичного показателя 2023 года на 87,8%. Чистые комиссионные доходы банка составили 908,4 млн рублей, продемонстрировав рост по сравнению с аналогичным периодом прошлого года на 11,3%.
+                .col-12.d-flex.flex-column.gap-4
+                    h3
+                        | Новые процентные ставки
+                    .overflow-auto.custom-overflow-scrollbar
+                        table.table.table-borderless.m-0
+                            caption.dark-70.pt-4.text-s.mb-0
+                                | КС – ключевая ставка Банка России
+                            thead
+                                tr.border-bottom-dashed
+                                    each item, index in tableDataRows[0]
+                                        th.text-nowrap.fs-2.lh-base.dark-70.fw-semibold.py-4.px-0(scope="col" style="min-width: 140px")!= item
+                                        i
+                            tbody
+                                each row, rowIndex in tableDataRows
+                                    if rowIndex > 0
+                                        tr.border-bottom-dashed
+                                            each item, index in row
+                                                td.w-auto.text-l.dark-70.py-4.px-0(class=index>0 && 'fw-semibold' style="min-width: 140px")!= item
+                .col-12.col-lg-8.d-flex.flex-column.gap-4
+                    p.text-l.mb-0 Положительные финансовые результаты деятельности НОВИКОМа, который весной провел ребрендинг, обусловлены устойчивым бизнес-профилем, стабильностью ресурсной базы и ликвидности, высоким уровнем достаточности капитала. Эффективное развитие бизнеса банка и его лидирующие позиции среди крупнейших кредитных организаций подтверждают высокие кредитные рейтинги со стабильным прогнозом от всех рейтинговых агентств России:
+                    ul.list.list--size-l.fw-semibold
+                        li Эксперт РА
+                        li АКРА и НКР присвоили НОВИКОМу рейтинг на уровне АА-
+                        li НРА на уровне АА
+                        li Эксперт РА
+                        li АКРА и НКР присвоили НОВИКОМу рейтинг на уровне АА-
+                        li НРА на уровне АА
+                .col-12
+                    +polygon-container()
+                        +helper("img/restructuring-additional-info.png", "bg-dark-10")
+                            h4.mb-3 Для держателей зарплатных карт Банка
+                            p.text-l.mb-0 Под зарплатной картой понимается действующая банковская карта, выпущенная на&nbsp;имя заемщика в&nbsp;рамках договора о&nbsp;зарплатном обслуживании, заключенного между Банком и&nbsp;организацией&nbsp;&mdash; работодателем клиента
+                .col-12.col-lg-8
+                    img(src="img/banners/news-banner-2.png", alt="", loading="lazy").mobile-element-full-width
+                .col-12.col-lg-8
+                    p.text-l.mb-0 НОВИКОМ более 30 лет содействует наращиванию производства инновационной промышленной продукции,  модернизации предприятий, проведению научных исследований. Для бесперебойного финансирования высотехнологичных предприятий и обеспечения доступности заемных средств для отрасли банк направляет ресурсы на разработанные совместно с акционером преференциальные программы кредитования. Помимо этого, НОВИКОМ аккредитован во всех профильных механизмах господдержки промышленности.
+                .col-12.col-lg-8
+                    p.text-l.mb-0 Новиком выделил поддержку кадров промышленности в отдельное направление работы. В целях поддержки человеческого капитала Госкорпорации НОВИКОМ регулярно расширяет свою продуктовую розничную линейку, актуализирует условия мотивационной программы «Развитие».
+                .col-12
+                    +polygon-container('violet-100', 'quote-polygon-container__content').quote-polygon-container
+                        +quote("img/small-quote-sticker.png")
+                            p.mb-3.mb-md-4.text-l
+                                i Векторы развития НОВИКОМа полностью синхронизированы с задачами, стоящими перед акционером банка – Госкорпорацией Ростех. Вся&nbsp;заработанная банком прибыль реинвестируется в промышленность, тем самым обеспечивается необходимая финансовая поддержка проектов технологического лидерства страны
+                            p.mb-0.text-m.fw-semibold.violet-100 рассказала Председатель Правления НОВИКОМа, <br>куратор Воронежского отделения СоюзМаш России Елена Георгиева.
+
+    section.pb-6.pb-md-9.pb-lg-11.pt-6.pt-lg-7
+        .container
+            .row
+                .col-12
+                    +card-contact(cardContactData)
+                        .d-flex.flex-column.gap-4
+                            h5.card-contact__title.text-white-50!= cardContactData.title
+                            .card-contact__contacts.d-flex.flex-column.flex-lg-row.flex-lg-wrap.gap-4
+                                a.card-contact__link.dark-0.gap-3(href=`mailto:${cardContactData.contactDetail.email}`)
+                                    +svg-use("icon-mail", "icon size-m")
+                                    u!= cardContactData.contactDetail.email
+                                p.card-contact__link.dark-0.mb-0.gap-3(href=`mailto:${cardContactData.contactDetail.email}`)
+                                    +svg-use("icon-phone", "icon size-m")
+                                    span
+                                        span.me-2!= cardContactData.contactDetail.phone
+                                        span.chip.chip--outlined.caption-m.text-white-50!= cardContactData.contactDetail.phoneChip
+                                p.card-contact__link.dark-0.mb-0.gap-3(href=`mailto:${cardContactData.contactDetail.email}`)
+                                    +svg-use("icon-fax", "icon size-m")
+                                    span
+                                        span.me-2!= cardContactData.contactDetail.fax
+                                        span.chip.chip--outlined.caption-m.text-white-50!= cardContactData.contactDetail.faxChip
+                                a.card-contact__link.w-100.dark-0.gap-3(href=cardContactData.contactDetail.telegramLink)
+                                    +svg-use("icon-telegram", "icon size-m")
+                                    span
+                                        u!= cardContactData.contactDetail.telegram + ' '
+                                        span.d-inline-block.text-white-50.w-100.w-lg-auto!= cardContactData.contactDetail.telegramText
