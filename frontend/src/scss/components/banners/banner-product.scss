@@ -83,6 +83,8 @@
     }
 
     &__footer {
+        position: relative;
+        z-index: 1;
 
         @include use-media(tablet-album) {
             padding-left: 2.5rem;
@@ -294,6 +296,31 @@
             color: var(--orange-100);
         }
 
+        #{$root}__image {
+            @include use-media(mobile-s, mobile) {
+                width: 100vw;
+                margin: -1.5rem;
+                max-width: unset;
+            }
+
+            @include use-media(tablet) {
+                top: 2.5rem;
+                right: 0;
+                transform: none;
+                width: 22.5rem;
+                max-width: unset;
+            }
+
+            @include use-media(tablet-album) {
+                width: 26.25rem;
+            }
+
+            @include use-media(laptop) {
+                width: 35rem;
+                right: 8rem;
+            }
+        }
+
         #{$root}__footer {
             & .benefit-text-card {
                 color: var(--dark-0);
@@ -305,6 +332,13 @@
                 &__icon {
                     color: var(--orange-100);
                 }
+            }
+        }
+
+        #{$root}__benefits-list {
+            @include use-media(tablet-album) {
+                max-width: 35.313rem; // 565px
+                margin-right: -1.563rem;
             }
         }
 
@@ -320,6 +354,19 @@
             }
         }
 
+        #{$root}__image {
+            @include use-media(tablet-album) {
+                width: 33.75rem;
+            }
+
+            @include use-media(laptop) {
+                width: 45rem;
+                top: 50%;
+                right: 5rem;
+                transform: translateY(-50%);
+            }
+        }
+
         #{$root}__content {
             @include use-media(tablet, tablet-album) {
                 width: 20.5rem; //328px
@@ -327,38 +374,6 @@
 
             @include use-media(tablet-album, laptop) {
                 width: 36.25rem; //580px
-            }
-        }
-
-        #{$root}__image {
-            width: 100vw;
-            margin: -1.5rem;
-            max-width: unset;
-
-            @include use-media(mobile) {
-                max-width: 23.75rem; //380px
-            }
-
-            @include use-media(tablet) {
-                margin: 0;
-            }
-
-            @include use-media(tablet, tablet-album) {
-                top: 4rem;
-                right: 0;
-                transform: none;
-            }
-
-            @include use-media(tablet-album) {
-                max-width: 45rem;
-                width: 45vw;
-            }
-        }
-
-        #{$root}__benefits-list {
-            @include use-media(tablet-album) {
-                max-width: 35.313rem; // 565px
-                margin-right: -1.563rem;
             }
         }
     }
