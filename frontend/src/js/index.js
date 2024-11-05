@@ -11,6 +11,7 @@ import initSelect2 from './components/select2.js'
 import { initTabsContent } from './components/tabs.js'
 import initInputSlider from "./components/inputSlider";
 import showMoreContent from "./components/showMoreContent";
+import setPage from "./components/setPage";
 
 document.addEventListener('DOMContentLoaded', () => {
     initDropdownMenu();
@@ -27,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initTabsContent();
     initInputSlider();
     showMoreContent();
+    setPage();
 });
 
 window.onload = function() {
