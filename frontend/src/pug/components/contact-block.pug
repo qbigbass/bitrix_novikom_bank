@@ -3,7 +3,7 @@ include ../components/ui/tag
 
 mixin contact-block(data)
     .contact-block&attributes(attributes)
-        .contact-block__content.d-flex.flex-column.row-gap-5.row-gap-md-6.row-gap-lg-7.h-100
+        .contact-block__content.d-flex.flex-column.justify-content-between.row-gap-5.row-gap-md-6.row-gap-lg-7.h-100
             if data.tag
                 +tag(data.tag.text, data.tag.type).contact-block__tag
             .d-flex.flex-column.row-gap-2

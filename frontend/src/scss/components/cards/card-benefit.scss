@@ -1,5 +1,6 @@
 .card-benefit {
     $root: &;
+    position: relative;
     border-radius: .75rem;
 
     &__title,
@@ -35,6 +36,7 @@
 
     &--type-img {
         position: relative;
+        overflow: hidden;
 
         @include use-media(laptop) {
             min-height: 19rem; //304px

@@ -8,6 +8,7 @@ block content
     include ../components/banners/banner-product
     include ../components/helper
     include ../cards/card-text
+    include ../cards/card-benefit
     include ../components/contact-block
     include ../components/announcement
     include ../includes/layout/slider-card-product
@@ -121,6 +122,48 @@ block content
                 },
                 description: 'Принятие неделимого обеспечения в пользу всех кредиторов синдиката',
             }
+        ]
+
+        var cardServicesList = [
+            {
+                bgColor: 'bg-purple-10',
+                title: 'Структурирование',
+                image: 'large-corporate/structuring.png',
+                list: '<ul class="list">' +
+                        '<li>позиционирование предстоящего займа с&nbsp;целью определения наилучших условий сделки</li>' +
+                        '<li>подготовка предложений по&nbsp;структуре и&nbsp;параметрам кредита</li>' +
+                        '<li>согласование с&nbsp;Заёмщиком основных условий и&nbsp;параметров кредита, отвечающих интересам как Заёмщика так и&nbsp;потенциальных кредиторов</li>' +
+                        '<li>подготовка кредитной и&nbsp;обеспечительной документации</li>' +
+                        '<li>согласование кредитной и&nbsp;обеспечительной документации с&nbsp;Заёмщиком и&nbsp;потенциальными кредиторами</li>' +
+                        '<li>организация денежных потоков</li>' +
+                        '</ul>'
+            },
+            {
+                bgColor: 'bg-purple-10',
+                title: 'Продажа и Синдикация',
+                image: 'large-corporate/syndicated-lending.png',
+                list: '<ul class="list">' +
+                        '<li>проведение комплекса мероприятий по&nbsp;открытию лимитов у&nbsp;кредиторов</li>' +
+                        '<li>формирование синдиката кредиторов</li>' +
+                        '<li>участие в&nbsp;синдикате в&nbsp;качестве кредитора с&nbsp;существенной долей собственных средств</li>' +
+                        '</ul>'
+            },
+            {
+                bgColor: 'bg-purple-10',
+                title: 'Аналитика',
+                image: 'large-corporate/analytics.png',
+                list: '<ul class="list">' +
+                        '<li>качественный аналитический материал для кредиторов о&nbsp;заемщике</li>' +
+                        '</ul>'
+            },
+            {
+                bgColor: 'bg-purple-10',
+                title: 'Бридж-финансирование',
+                image: 'large-corporate/finance.png',
+                list: '<ul class="list">' +
+                        '<li>предоставление на&nbsp;период подготовки кредитной и&nbsp;обеспечительной документации бридж-финансирования в&nbsp;необходимом объеме</li>' +
+                        '</ul>'
+            },
         ]
 
         var contactList = [
@@ -273,6 +316,13 @@ block content
                         +svg-use("icon-chevron-down", "icon size-m")
         +pattern-bg('section', 'light', 'pattern-bg--hide-mobile')
 
+    section.section-layout
+        .container
+            h3.mb-4.mb-md-6.mb-lg-7 Выгоды и преимущества синдицированного финансирования
+            .row.row-gap-4.row-gap-md-5.row-gap-lg-6.gx-md-2.gx-lg-2
+                each item in cardServicesList
+                    .col-12.col-md-6
+                        +card-benefit(item).card-benefit--type-img.h-100
 
     section.section-layout.bg-purple-10
         .container
