@@ -21,7 +21,7 @@ mixin banner-product(data)
                         each benefit in data.benefits
                             +benefit-text(benefit, benefit.colorClass)
                 if data.buttonText
-                   a(href= data.urlHref class= data.type === 'corp' ? 'btn-orange' : 'btn-tertiary').btn.btn-lg.banner-product__button!= data.buttonText
+                   a(href= data.urlHref class= data.type === 'corp' ? 'btn-orange' : 'btn-tertiary').btn.btn-lg-lg.banner-product__button!= data.buttonText
             if data.footer
                 .banner-product__footer.row.row-gap-4.mt-6.mt-lg-16
                     each item in data.footer

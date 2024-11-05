@@ -25,4 +25,10 @@
             max-width: 10rem;
         }
     }
+
+    &__content {
+        a {
+            color: var(--blue-100);
+        }
+    }
 }
