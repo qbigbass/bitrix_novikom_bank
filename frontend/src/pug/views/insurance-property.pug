@@ -1,0 +1,209 @@
+extends ../templates/base
+
+block title
+    title= 'Страхование залогового имущества'
+    meta(name="description" content="Описание страницы Страхование залогового имущества")
+block content
+    include ../includes/header/header
+    include ../components/banners/banner-text
+    include ../components/helper
+    include ../components/ui/tabs-simple
+    include ../components/contact-block
+    include ../includes/layout/slider-card-product
+
+    -
+        var bannerTextData = {
+            title: "Страхование<br>залогового имущества",
+            breadcrumbsArray: [
+                {
+                    link: "#",
+                    linkText: "Корпоративным клиентам"
+                },
+                {
+                    link: "#",
+                    linkText: "Страхование"
+                },
+            ],
+        }
+
+        var tabsListAbout = [
+            {
+                link: '#description-services',
+                id: 'description-services',
+                linkText: 'Описание',
+                isActive: true
+            },
+            {
+                link: '#insurance-more',
+                id: 'insurance-more',
+                linkText: 'Подробнее',
+                isActive: false
+            },
+        ]
+
+        var contactList = [
+            {
+                pattern: false,
+                title: "Проверка Страховой компании на&nbsp;соответствие требованиям АО&nbsp;АКБ &laquo;НОВИКОМБАНК&raquo;",
+                list: [
+                    {
+                        href: "emailto:office@novikom.ru",
+                        text: "office@novikom.ru",
+                        icon: "icon-mail",
+                        additionalClass: "text-decoration-underline",
+                    },
+                    {
+                        text: "119180, Москва, ул. Полянка Большая, д. 50/1, стр. 1",
+                        icon: "icon-point",
+                    },
+                ],
+            },
+            {
+                pattern: true,
+                title: "Остались вопросы",
+                description: "Оставьте свой телефон и мы перезвоним вам, либо задайте вопрос в чате",
+                buttons: [
+                    {
+                        type: "btn-outline-primary",
+                        text: "Открыть чат"
+                    },
+                    {
+                        type: "btn-primary",
+                        text: "Перезвоните мне"
+                    }
+                ]
+            },
+        ]
+
+        var cardProductListCorp = [
+            {
+                color: 'orange',
+                tag: 'Корпоративным клиентам',
+                title: 'Размещение денежных средств',
+                img: 'large-corporate/deposits.png',
+                link: 'Подробнее',
+                description: 'Депозиты для корпоративных клиентов'
+            },
+            {
+                color: 'orange',
+                tag: 'Корпоративным клиентам',
+                title: 'Меры господдержки',
+                img: 'large-corporate/state-support.png',
+                link: 'Подробнее',
+                description: 'Льготное финансирование организациям'
+            },
+            {
+                color: 'orange',
+                tag: 'Корпоративным клиентам',
+                title: 'Программа поощрения «Развитие»',
+                img: 'large-corporate/program-development.png',
+                link: 'Подробнее',
+                description: 'Особые условия обслуживания в&nbsp;банке'
+            },
+            {
+                color: 'orange',
+                tag: 'Корпоративным клиентам',
+                title: 'Размещение денежных средств',
+                img: 'large-corporate/deposits.png',
+                link: 'Подробнее',
+                description: 'Депозиты для корпоративных клиентов'
+            },
+            {
+                color: 'orange',
+                tag: 'Корпоративным клиентам',
+                title: 'Меры господдержки',
+                img: 'large-corporate/state-support.png',
+                link: 'Подробнее',
+                description: 'Льготное финансирование организациям'
+            },
+
+        ]
+
+    +banner-text(
+        bannerTextData,
+        "orange",
+        "bg-heavy-purple"
+    )
+
+    section.section-layout.py-lg-11
+        .container
+            .row
+                .col-12
+                    +polygon-container("orange-100")
+                        +helper("img/restructuring-additional-info_orange.png", "bg-purple-10")
+                            p Наличие Страховой компании в&nbsp;Перечне Страховых компаний, отвечающих требованиям Банка к&nbsp;Страховым компаниям, не&nbsp;гарантирует соответствие условий договора страхования требованиям Банка к&nbsp;страховой услуге, размещенным на&nbsp;сайте Банка.
+
+    section.section-layout
+        .container
+            h3.px-lg-6.mb-4.mb-md-6.mb-lg-7.text-balance
+                | Страховая защита принимается после проверки страховой компании на&nbsp;соответствие требованиям, предъявляемым АО&nbsp;АКБ &laquo;НОВИКОМБАНК&raquo;
+            .px-lg-6
+                ul.list.list--size-l
+                    li
+                        p к страховым компаниям
+                    li
+                        p #[a(href="#") к условиям] предоставления страховой услуги
+                    li
+                        p к договору страхования/страховому полису или его проекту
+        +pattern-bg('section-2', 'light', 'pattern-bg--hide-mobile')
+
+    section.section-layout.py-lg-11.bg-purple-10
+        .container
+            .row
+                .col-12
+                    +polygon-container("orange-100")
+                        +helper("img/restructuring-additional-info_orange.png", "bg-dark-0")
+                            p В&nbsp;случае заключения договора страхования со&nbsp;Страховой компанией, не&nbsp;отвечающей требованиям Банка к&nbsp;Страховым компаниям и&nbsp;условиям предоставления страховой услуги, в&nbsp;том числе исключенной из&nbsp;перечня Страховых компаний, Банк вправе применить штрафные и/или иные меры, предусмотренные кредитно-обеспечительной документацией для случаев невыполнения условий о&nbsp;страховании.
+
+    section.section-layout.js-collapsed-mobile
+        .container
+            h3.d-none.d-md-block.mb-md-6.mb-lg-7.px-lg-6
+                | Об услуге
+            a(
+                data-bs-toggle="collapse"
+                href="#about-insurance"
+                role="button"
+                aria-expanded="false"
+                aria-controls="about-insurance"
+            ).h3.d-flex.align-items-center.justify-content-between.dark-100.d-md-none
+                | Об услуге
+                +svg-use("icon-chevron-down", "icon size-m violet-100")
+            #about-insurance.collapse.d-md-block.mt-4.mt-md-6.mt-lg-7
+                .row.px-lg-6
+                    .col-12
+                        +tabs-simple(tabsListAbout, false)
+                        .tab-content.mt-4.mt-md-6.mt-lg-7
+                            #description-services.tab-pane.fade.show.active(aria-labelledby="description-services" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/description-services
+                            #insurance-more.tab-pane.fade(aria-labelledby="insurance-more" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/insurance-more
+
+        +pattern-bg('section-2', 'light', 'pattern-bg--hide-mobile')
+
+    section.section-layout.py-lg-11
+        .container
+            .row
+                .col-12
+                    +polygon-container("orange-100")
+                        +helper("img/restructuring-additional-info_orange.png", "bg-purple-10")
+                            p Сведения и&nbsp;документы предоставляются Страховой компанией только в&nbsp;случае отсутствия актуальной информации на&nbsp;официальном сайте Страховой компании и&nbsp;Центрального банка Российской Федерации в&nbsp;информационно-телекоммуникационной сети &laquo;Интернет&raquo;.
+
+    section.section-layout.bg-purple-10
+        .container
+            h3.mb-4.mb-md-6.mb-lg-7.px-lg-6 Контакты
+            .row
+                .col-12
+                    .swiper.slider-cards.js-slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:1,tablet-album:2,laptop:2,laptop-x:2" data-space-between="mobile-s:8,mobile:8,tablet:16,tablet-album:40,laptop:40,laptop-x:40")
+                        .swiper-wrapper
+                            .swiper-slide.js-swiper-slide
+                                +contact-block(contactList[0]).contact-block--bg-heavy-purple
+                            .swiper-slide.js-swiper-slide
+                                +contact-block(contactList[1]).contact-block--bg-white
+
+                        +slider-controls().mt-3.mt-md-4
+
+    section.section-layout
+        .container
+            h3.px-lg-6.mb-4.mb-md-6.mb-lg-7
+                | Другие услуги для корпоративных клиентов
+            +slider-card-product(cardProductListCorp)
