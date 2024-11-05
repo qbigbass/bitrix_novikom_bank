@@ -12,8 +12,30 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 
-$path = basename($APPLICATION->GetCurPage()); ?>
+$page = $_SESSION['current_page'] ?? '';
+?>
 
+<script>
+    function setPage(page) {
+        fetch('/local/php_interface/ajax/ajax_set_page.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: new URLSearchParams({
+                action: 'set_page',
+                page: page
+            })
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    location.reload();
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    }
+</script>
 <div class="tabs-panel js-tabs-slider overflow-hidden position-relative px-1">
     <? if (count($arResult) >= 4) { ?>
         <div class="tabs-panel__navigation d-none d-lg-block js-tabs-slider-navigation w-100">
@@ -36,12 +58,16 @@ $path = basename($APPLICATION->GetCurPage()); ?>
     <ul class="swiper-wrapper tabs-panel__list nav nav-tabs d-inline-flex flex-nowrap w-auto p-0 border border-purple rounded section-catalog__tab-list">
         <? foreach ($arResult as $key => $menuItem) { ?>
 
-            <? $class = basename($menuItem['LINK']) == $path ? ' active' : ''; ?>
+            <? if ($key == 0 && empty($page)) {
+                $class = ' active';
+            } else {
+                $class = $menuItem['LINK'] == $page ? ' active' : '';
+            } ?>
 
             <li class="swiper-slide w-auto tabs-panel__list-item nav-item z-2">
-                <a class="tabs-panel__list-item-link nav-link bg-transparent section-catalog__tab-list-item<?= $class ?>" href="<?= $menuItem['LINK'] ?>">
+                <button class="tabs-panel__list-item-link nav-link bg-transparent section-catalog__tab-list-item<?= $class ?>" onclick="setPage('<?= $menuItem['LINK'] ?>')">
                     <?= $menuItem['TEXT'] ?>
-                </a>
+                </button>
             </li>
         <? } ?>
     </ul>
