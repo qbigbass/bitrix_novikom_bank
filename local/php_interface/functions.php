@@ -133,3 +133,13 @@ function getHlBlockEntries(string $hlBlockName): array
 
     return $strEntityDataClass::getList()->fetchAll();
 }
+
+function getIBlockElements(int $IBlockId): array
+{
+    \Bitrix\Main\Loader::IncludeModule('iblock');
+    return Bitrix\Iblock\ElementTable::getList([
+        'order' => ['SORT' => 'ASC'],
+        'select' => ['ID', 'NAME', 'CODE'],
+        'filter' => ['IBLOCK_ID' => $IBlockId]
+    ])->fetchAll();
+}
