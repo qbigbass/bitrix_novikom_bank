@@ -25,7 +25,7 @@ mixin banner-product(data)
             if data.footer
                 .banner-product__footer.row.row-gap-4.mt-6.mt-lg-16
                     each item in data.footer
-                        .col-12.col-md-6.col-xl-3
+                        .col-12.col-md-6(class= data.footer.length === 3 ? 'col-xl-4' : 'col-xl-3')
                             +benefit(item.spriteData, item.title)
 
         +pattern-bg("section", "dark", "banner-product__pattern")
