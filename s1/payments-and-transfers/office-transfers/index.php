@@ -4,12 +4,19 @@ global $APPLICATION;
 $APPLICATION->SetTitle("Банковские переводы в офисе");
 ?>
 
+<?
+$iblockId = iblock('office_transfers');
+if (empty($_SESSION['current_page'])) {
+    $elements = getIBlockElements($iblockId);
+}
+?>
+
 <?$APPLICATION->IncludeComponent(
-	"bitrix:news.detail", 
-	"office_transfers_detail", 
-	array(
+	"bitrix:news.detail",
+	"office_transfers_detail",
+	[
 		"ACTIVE_DATE_FORMAT" => "d.m.Y",
-		"ADD_ELEMENT_CHAIN" => "Y",
+		"ADD_ELEMENT_CHAIN" => "N",
 		"ADD_SECTIONS_CHAIN" => "N",
 		"AJAX_MODE" => "N",
 		"AJAX_OPTION_ADDITIONAL" => "",
@@ -28,16 +35,16 @@ $APPLICATION->SetTitle("Банковские переводы в офисе");
 		"DISPLAY_PICTURE" => "Y",
 		"DISPLAY_PREVIEW_TEXT" => "Y",
 		"DISPLAY_TOP_PAGER" => "N",
-		"ELEMENT_CODE" => "online-transfers",
+		"ELEMENT_CODE" => !empty($_SESSION['current_page']) ? basename($_SESSION['current_page']) : $elements[0]['CODE'],
 		"ELEMENT_ID" => "",
-		"FIELD_CODE" => array(
+		"FIELD_CODE" => [
 			0 => "",
 			1 => "",
-		),
-		"IBLOCK_ID" => "139",
+        ],
+		"IBLOCK_ID" => $iblockId,
 		"IBLOCK_TYPE" => "for_private_clients_ru",
 		"IBLOCK_URL" => "",
-		"INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+		"INCLUDE_IBLOCK_INTO_CHAIN" => "Y",
 		"MESSAGE_404" => "",
 		"META_DESCRIPTION" => "-",
 		"META_KEYWORDS" => "-",
@@ -45,11 +52,11 @@ $APPLICATION->SetTitle("Банковские переводы в офисе");
 		"PAGER_SHOW_ALL" => "N",
 		"PAGER_TEMPLATE" => ".default",
 		"PAGER_TITLE" => "Страница",
-		"PROPERTY_CODE" => array(
-			0 => "",
-			1 => "TABS",
-			2 => "",
-		),
+		"PROPERTY_CODE" => [
+            0 => "STEPS",
+            1 => "TABS_HEADER",
+            2 => "TABS",
+        ],
 		"SET_BROWSER_TITLE" => "N",
 		"SET_CANONICAL_URL" => "N",
 		"SET_LAST_MODIFIED" => "N",
@@ -62,7 +69,7 @@ $APPLICATION->SetTitle("Банковские переводы в офисе");
 		"USE_PERMISSIONS" => "N",
 		"USE_SHARE" => "N",
 		"COMPONENT_TEMPLATE" => "office_transfers_detail"
-	),
+    ],
 	false
 );?>
 

@@ -72,54 +72,75 @@ $APPLICATION->SetTitle('Частным клиентам - Главная НОВ�
             <div class="bank-service-layout__services">
                 <div class="swiper js-slider-cards" data-slides-per-view="mobile-s:1,mobile:1,tablet:3,laptop:3,laptop-x:3" data-space-between="mobile-s:8,mobile:8,tablet:8,laptop:8,laptop-x:8">
                     <div class="swiper-wrapper js-swiper-wrapper">
-                        <div class="swiper-slide js-swiper-slide"><a class="card-service" href="#">
+                        <div class="swiper-slide js-swiper-slide">
+                            <a class="card-service" href="#">
                                 <div class="card-service__content d-flex flex-column">
-                                    <h4 class="dark-100">Интернет-банк</h4><span class="icon card-service__icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                              <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-a-web-bank"></use>
-                            </svg></span>
+                                    <h4 class="dark-100">Интернет-банк</h4>
+                                    <span class="icon card-service__icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                            <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-a-web-bank"></use>
+                                        </svg>
+                                    </span>
                                 </div>
                                 <picture class="pattern-bg pattern-bg--position-sm-top">
                                     <source srcset="/frontend/dist/img/patterns/card/pattern-light-s.svg" media="(max-width: 767px)">
-                                    <source srcset="/frontend/dist/img/patterns/card/pattern-light-m.svg" media="(max-width: 1199px)"><img src="/frontend/dist/img/patterns/card/pattern-light-l.svg" alt="bg pattern" loading="lazy">
-                                </picture></a>
+                                    <source srcset="/frontend/dist/img/patterns/card/pattern-light-m.svg" media="(max-width: 1199px)">
+                                    <img src="/frontend/dist/img/patterns/card/pattern-light-l.svg" alt="bg pattern" loading="lazy">
+                                </picture>
+                            </a>
                         </div>
-                        <div class="swiper-slide js-swiper-slide"><a class="card-service" href="#">
+                        <div class="swiper-slide js-swiper-slide">
+                            <a class="card-service" href="/loans/">
                                 <div class="card-service__content d-flex flex-column">
-                                    <h4 class="dark-100">Кредиты</h4><span class="icon card-service__icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                              <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-a-money"></use>
-                            </svg></span>
+                                    <h4 class="dark-100">Кредиты</h4>
+                                    <span class="icon card-service__icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                            <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-a-money"></use>
+                                        </svg>
+                                    </span>
                                 </div>
                                 <picture class="pattern-bg pattern-bg--position-sm-top">
                                     <source srcset="/frontend/dist/img/patterns/card/pattern-light-s.svg" media="(max-width: 767px)">
-                                    <source srcset="/frontend/dist/img/patterns/card/pattern-light-m.svg" media="(max-width: 1199px)"><img src="/frontend/dist/img/patterns/card/pattern-light-l.svg" alt="bg pattern" loading="lazy">
-                                </picture></a>
+                                    <source srcset="/frontend/dist/img/patterns/card/pattern-light-m.svg" media="(max-width: 1199px)">
+                                    <img src="/frontend/dist/img/patterns/card/pattern-light-l.svg" alt="bg pattern" loading="lazy">
+                                </picture>
+                            </a>
                         </div>
-                        <div class="swiper-slide js-swiper-slide"><a class="card-service" href="#">
+                        <div class="swiper-slide js-swiper-slide">
+                            <a class="card-service" href="/mortgage/">
                                 <div class="card-service__content d-flex flex-column">
-                                    <h4 class="dark-100">Ипотека</h4><span class="icon card-service__icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                              <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-a-house"></use>
-                            </svg></span>
+                                    <h4 class="dark-100">Ипотека</h4>
+                                    <span class="icon card-service__icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                            <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-a-house"></use>
+                                        </svg>
+                                    </span>
                                 </div>
                                 <picture class="pattern-bg pattern-bg--position-sm-top">
                                     <source srcset="/frontend/dist/img/patterns/card/pattern-light-s.svg" media="(max-width: 767px)">
-                                    <source srcset="/frontend/dist/img/patterns/card/pattern-light-m.svg" media="(max-width: 1199px)"><img src="/frontend/dist/img/patterns/card/pattern-light-l.svg" alt="bg pattern" loading="lazy">
-                                </picture></a>
+                                    <source srcset="/frontend/dist/img/patterns/card/pattern-light-m.svg" media="(max-width: 1199px)">
+                                    <img src="/frontend/dist/img/patterns/card/pattern-light-l.svg" alt="bg pattern" loading="lazy">
+                                </picture>
+                            </a>
                         </div>
                     </div>
                     <div class="slider-controls js-swiper-controls mt-3 mt-md-0">
                         <div class="slider-controls__pagination js-swiper-pagination"></div>
                         <div class="slider-controls__navigation js-swiper-nav">
-                            <button class="swiper-button-prev js-swiper-prev" type="button"><span class="icon size-m">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                          <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-left"></use>
-                        </svg></span></button>
-                            <button class="swiper-button-next js-swiper-next" type="button"><span class="icon size-m">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                          <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
-                        </svg></span></button>
+                            <button class="swiper-button-prev js-swiper-prev" type="button">
+                                <span class="icon size-m">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-left"></use>
+                                    </svg>
+                                </span>
+                            </button>
+                            <button class="swiper-button-next js-swiper-next" type="button">
+                                <span class="icon size-m">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
+                                    </svg>
+                                </span>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -150,46 +171,7 @@ $APPLICATION->SetTitle('Частным клиентам - Главная НОВ�
                 </div>
             </div>
             <div class="bank-service-layout__app">
-                <div class="card-service-app">
-                    <div class="card-service-app__content">
-                        <h3>Мобильное приложение</h3>
-                        <div class="row row-gap-3">
-                            <div class="col-12 col-lg-3">
-                                <div class="d-flex align-items-center gap-3">
-                                    <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-mobile"></use>
-                                    </svg><span class="fw-semibold text-s">Управление кешбэком и&nbsp;бонусами</span>
-                                </div>
-                            </div>
-                            <div class="col-12 col-lg-3">
-                                <div class="d-flex align-items-center gap-3">
-                                    <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-time"></use>
-                                    </svg><span class="fw-semibold text-s">Доступ к&nbsp;услугам банка 24/7</span>
-                                </div>
-                            </div>
-                            <div class="col-12 col-lg-3">
-                                <div class="d-flex align-items-center gap-3">
-                                    <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-cash"></use>
-                                    </svg><span class="fw-semibold text-s">Платежи и&nbsp;переводы без комиссии</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="d-flex gap-3"><a class="btn btn-info d-none d-md-inline-flex align-items-center" href="#"><img src="/frontend/dist/img/app-logos/ru-store.svg" width="94" height="24" alt="RuStore" loading="lazy"></a><a class="btn btn-info d-none d-md-inline-flex align-items-center" href="#"><img src="/frontend/dist/img/app-logos/ru-market.svg" width="120" height="28" alt="RuMarket" loading="lazy"></a><a class="btn btn-info d-none d-md-inline-flex align-items-center" href="#"><img src="/frontend/dist/img/app-logos/nash-store.svg" width="112" height="18" alt="NashStore" loading="lazy"></a><a class="btn btn-info btn-icon d-none d-md-inline-flex" href="#">Скачать
-                                <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                    <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-download"></use>
-                                </svg></a><a class="btn btn-sm btn-info btn-icon d-md-none" href="#">Скачать
-                                <svg class="icon size-s" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                    <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-download-small"></use>
-                                </svg></a>
-                        </div>
-                    </div>
-                    <picture class="pattern-bg pattern-bg--position-sm-top">
-                        <source srcset="/frontend/dist/img/patterns/card/pattern-dark-s.svg" media="(max-width: 767px)">
-                        <source srcset="/frontend/dist/img/patterns/card/pattern-dark-m.svg" media="(max-width: 1199px)"><img src="/frontend/dist/img/patterns/card/pattern-dark-l.svg" alt="bg pattern" loading="lazy">
-                    </picture>
-                </div>
+                    <? $APPLICATION->IncludeFile('/local/php_interface/include/mobile_app_block.php'); ?>
             </div>
         </div>
     </div>

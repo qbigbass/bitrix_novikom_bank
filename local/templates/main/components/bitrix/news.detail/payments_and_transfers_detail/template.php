@@ -94,9 +94,23 @@ if (file_exists($headerFilePath)) {
                 ); ?>
             </div>
 
-            <? if (!empty($arResult['PROPERTIES']['MOBILE_ONLINE']['VALUE']) && $arResult['PROPERTIES']['MOBILE_ONLINE']['VALUE'] == 'Y') {
-                $APPLICATION->IncludeFile('/local/php_interface/include/mobile_online_block.php');
-            } ?>
+            <? if (!empty($arResult['PROPERTIES']['MOBILE_APP']['VALUE']) && $arResult['PROPERTIES']['MOBILE_APP']['VALUE'] == 'Y') { ?>
+                <div class="row mt-6 mt-lg-11 row-gap-2">
+                    <div class="col-12 col-xl-8 pe-xl-0">
+                        <? $APPLICATION->IncludeFile('/local/php_interface/include/mobile_app_block.php'); ?>
+                    </div>
+            <? } ?>
+            <? if (!empty($arResult['PROPERTIES']['ONLINE_BANK']['VALUE']) && $arResult['PROPERTIES']['ONLINE_BANK']['VALUE'] == 'Y') { ?>
+                <? if (empty($arResult['PROPERTIES']['MOBILE_APP']['VALUE']) && $arResult['PROPERTIES']['MOBILE_APP']['VALUE'] != 'Y') { ?>
+                    <div class="row mt-6 mt-lg-11 row-gap-2">
+                <? } ?>
+                    <div class="col-12 col-xl-4 ps-xl-2">
+                        <? $APPLICATION->IncludeFile('/local/php_interface/include/online_bank_block.php'); ?>
+                    </div>
+                </div>
+            <? } else { ?>
+                </div>
+            <? } ?>
 
         </div>
         <picture class="pattern-bg pattern-bg--position-sm-bottom section-restructuring-benefits__pattern">

@@ -1,5 +1,5 @@
-mixin card-help(data)
-    .card-help.d-inline-flex.p-3.p-sm-5.p-lg-6.bg-blue-10.w-100
+mixin card-help(data, bgClass='bg-blue-10')
+    .card-help.d-inline-flex.p-3.p-sm-5.p-lg-6.w-100&attributes(attributes)(class=bgClass)
         div.card-help__inner.d-flex.flex-column.gap-4.gap-md-6.h-100.w-100
             div.card-help__title-group.d-flex.flex-column.gap-3.gap-md-4
                 if data.title
