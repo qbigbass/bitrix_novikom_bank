@@ -120,6 +120,14 @@ $arUrlRewrite=array (
     'PATH' => '/loans/index.php',
     'SORT' => 100,
   ),
+  15 => 
+  array (
+    'CONDITION' => '#^/cards/#',
+    'RULE' => '',
+    'ID' => 'bitrix:news',
+    'PATH' => '/cards/index.php',
+    'SORT' => 100,
+  ),
   5 => 
   array (
     'CONDITION' => '#^/rest/#',
