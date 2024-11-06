@@ -21,21 +21,12 @@ button {
     }
 }
 
-.btn-tertiary {
-    color: var(--dark-0);
-
-    &:hover {
-        color: var(--dark-0);
-    }
-}
-
+.btn-tertiary,
 .btn-orange {
-    background-color: var(--orange-100);
-    color: var(--dark-0);
-
-    &:hover {
-       background-color: var(--orange-150);
-    }
+    --bs-btn-color: var(--dark-0);
+    --bs-btn-hover-color: var(--dark-0);
+    --bs-btn-active-color: var(--dark-0);
+    --bs-btn-disabled-color: var(--dark-0);
 }
 
 .btn-link {

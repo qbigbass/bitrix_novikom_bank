@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__ . '/functions.php';
+
 foreach ($arResult['ITEMS'] as &$tab) {
     if (!empty($tab['DISPLAY_PROPERTIES'])) {
 

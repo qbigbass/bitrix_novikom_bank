@@ -1,0 +1,38 @@
+include ../../cards/card-benefit
+
+-
+    var cardBenefitsBankList = [
+        {
+            bgColor: 'bg-purple-10',
+            title: 'Финансирование в&nbsp;технологии',
+            image: 'large-corporate/finance-technology.png',
+            description: 'Приоритет финансированию проектов высокотехнологичных предприятий промышленности, включая проекты диверсификации и&nbsp;сопровождение их&nbsp;реализации'
+        },
+        {
+            bgColor: 'bg-purple-10',
+            title: 'Уникальные отраслевые компетенции',
+            image: 'large-corporate/unique-competencies.png',
+            description: 'Мы&nbsp;знаем все о&nbsp;проектах, реализуемых высокотехнологичными предприятиями'
+        },
+        {
+            bgColor: 'bg-purple-10',
+            title: 'Надежное сотрудничество',
+            image: 'large-corporate/cooperation.png',
+            description: 'Длительное сотрудничество с&nbsp;ФОИВ и&nbsp;институтами развития'
+        },
+        {
+            bgColor: 'bg-purple-10',
+            title: 'Финансирование в&nbsp;технологии',
+            image: 'large-corporate/finance-technology.png',
+            description: 'Приоритет финансированию проектов высокотехнологичных предприятий промышленности, включая проекты диверсификации и&nbsp;сопровождение их&nbsp;реализации'
+        },
+    ]
+
+mixin slider-card-benefit-bank(data = cardProductList, perView = 'mobile-s:1,mobile:1,tablet:2,laptop:2,laptop-x:3', spaceBetween = 'mobile-s:8,mobile:8,tablet:16,laptop:16,laptop-x:40')
+    .swiper.slider-cards.js-slider-cards(data-slides-per-view= perView, data-space-between= spaceBetween)
+        .swiper-wrapper
+            each item in cardBenefitsBankList
+                .swiper-slide.js-swiper-slide
+                    +card-benefit(item).card-benefit--type-img
+
+        +slider-controls().mt-3.mt-md-4

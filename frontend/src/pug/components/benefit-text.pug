@@ -1,6 +1,6 @@
 mixin benefit-text(data, colorClass = 'green-100')
     div.d-inline-flex.flex-column.row-gap-2
-        div.d-inline-flex.flex-nowrap.align-items-baseline.text-l.fw-semibold.gap-1l(class= colorClass)
+        div.d-inline-flex.flex-nowrap.align-items-baseline.text-l.fw-semibold.gap-1(class= colorClass)
             if data.title
                 span.h4!= data.title
             if data.beforeNum

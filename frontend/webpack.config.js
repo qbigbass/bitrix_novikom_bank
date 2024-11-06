@@ -33,6 +33,7 @@ const config = {
         bootstrap: './src/scss/bootstrap.scss',
         swiper: './src/scss/swiper.scss',
         select2: './src/scss/select2.scss',
+        'air-datepicker': './src/scss/air-datepicker.scss',
         all: './src/scss/all.scss',
     },
     output: {
