@@ -77,7 +77,7 @@ include ../../../cards/card-benefit
 
 .row.row-gap-6
     .col-12.col-xxl-8.pe-xxl-6
-        .accordion#accordion-documents
+        .accordion.accordion--bg-transparent#accordion-documents
             each item in accordionList
                 +accordion-item(item, 'accordion-documents')
                     p.text-m.mb-0.dark-70!= item.content
