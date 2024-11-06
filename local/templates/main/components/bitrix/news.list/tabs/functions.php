@@ -17,6 +17,6 @@ function getStepperIcons(int $stepIndex): string
                 </svg>
             </div>';
     }
-    pre($stepperIcons);
+
     return $stepperIcons;
 }
