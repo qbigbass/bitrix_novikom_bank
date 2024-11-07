@@ -1,62 +1,6 @@
 <?php
 $arUrlRewrite = [
     [
-        'CONDITION' => '#^/for-private-clients/cards/([a-zA-Z0-9_-]*)/([a-zA-Z0-9_-]*)/([a-zA-Z0-9_-]*)/(.*)#',
-        'RULE' => 'SECTION_CODE=$1&&ELEMENT_CODE=$2&DETAIL_ELEMENT_CODE=$3',
-        'ID' => 'bitrix:news.detail',
-        'PATH' => '/for-private-clients/cards/detail.php',
-        'SORT' => 100,
-    ],
-    [
-        'CONDITION' => '#^/for-private-clients/cards/([a-zA-Z0-9_-]*)/(.*)#',
-        'RULE' => 'SECTION_CODE=$1',
-        'ID' => 'bitrix:news',
-        'PATH' => '/for-private-clients/cards/index.php',
-        'SORT' => 100,
-    ],
-    [
-        'CONDITION' => '#^/for-private-clients/loans/restructuring/#',
-        'RULE' => '',
-        'ID' => 'bitrix:news',
-        'PATH' => '/for-private-clients/loans/restructuring/index.php',
-        'SORT' => 100,
-    ],
-    [
-        'CONDITION' => '#^/online/([\\.\\-0-9a-zA-Z]+)(/?)([^/]*)#',
-        'RULE' => 'alias=$1',
-        'ID' => NULL,
-        'PATH' => '/desktop_app/router.php',
-        'SORT' => 100,
-    ],
-    [
-        'CONDITION' => '#^/video([\\.\\-0-9a-zA-Z]+)(/?)([^/]*)#',
-        'RULE' => 'alias=$1&videoconf',
-        'ID' => NULL,
-        'PATH' => '/desktop_app/router.php',
-        'SORT' => 100,
-    ],
-    [
-        'CONDITION' => '#^\\/?\\/mobileapp/jn\\/(.*)\\/.*#',
-        'RULE' => 'componentName=$1',
-        'ID' => NULL,
-        'PATH' => '/bitrix/services/mobileapp/jn.php',
-        'SORT' => 100,
-    ],
-    [
-        'CONDITION' => '#^/for-private-clients/loans/#',
-        'RULE' => '',
-        'ID' => 'bitrix:news',
-        'PATH' => '/for-private-clients/loans/index.php',
-        'SORT' => 100,
-    ],
-    [
-        'CONDITION' => '#^/bitrix/services/ymarket/#',
-        'RULE' => '',
-        'ID' => '',
-        'PATH' => '/bitrix/services/ymarket/index.php',
-        'SORT' => 100,
-    ],
-    [
         'CONDITION' => '#^/payments-and-transfers/#',
         'RULE' => '',
         'ID' => 'bitrix:news',
@@ -68,20 +12,6 @@ $arUrlRewrite = [
         'RULE' => '',
         'ID' => 'bitrix:news',
         'PATH' => '/loans/restructuring/index.php',
-        'SORT' => 100,
-    ],
-    [
-        'CONDITION' => '#^/online/(/?)([^/]*)#',
-        'RULE' => '',
-        'ID' => NULL,
-        'PATH' => '/desktop_app/router.php',
-        'SORT' => 100,
-    ],
-    [
-        'CONDITION' => '#^/stssync/calendar/#',
-        'RULE' => '',
-        'ID' => 'bitrix:stssync.server',
-        'PATH' => '/bitrix/services/stssync/calendar/index.php',
         'SORT' => 100,
     ],
     [
@@ -110,13 +40,6 @@ $arUrlRewrite = [
         'RULE' => '',
         'ID' => 'bitrix:news',
         'PATH' => '/cards/index.php',
-        'SORT' => 100,
-    ],
-    [
-        'CONDITION' => '#^/rest/#',
-        'RULE' => '',
-        'ID' => NULL,
-        'PATH' => '/bitrix/services/rest/index.php',
         'SORT' => 100,
     ],
 ];
