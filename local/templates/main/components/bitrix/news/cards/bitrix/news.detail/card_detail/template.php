@@ -737,7 +737,7 @@ use Dalee\Helpers\ComponentHelper;
                             "FIELD_CODE" => ["PREVIEW_TEXT"],
                             "FILTER_NAME" => "cardReceiptOptionsFilter",
                             "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                            "IBLOCK_ID" => iblock('become_customer_ru'),
+                            "IBLOCK_ID" => iblock('instructions_ru'),
                             "IBLOCK_TYPE" => "additional",
                             "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
                             "INCLUDE_SUBSECTIONS" => "N",
