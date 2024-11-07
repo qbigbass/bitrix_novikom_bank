@@ -9,6 +9,8 @@ use Bitrix\Main\Page\Asset;
 $asset = Asset::getInstance();
 
 $asset->addCss('/frontend/dist/css/bootstrap.css');
+$asset->addCss('/frontend/dist/css/select2.css');
+$asset->addCss('/frontend/dist/css/air-datepicker.css');
 $asset->addCss('/frontend/dist/css/swiper.css');
 $asset->addCss('/frontend/dist/css/select2.css');
 $asset->addCss('/frontend/dist/css/air-datepicker.css');
@@ -19,6 +21,7 @@ $asset->addJs('/frontend/dist/js/popover.js');
 $asset->addJs('/frontend/dist/js/bootstrap.min.js');
 $asset->addJs('/frontend/dist/js/swiper.min.js');
 $asset->addJs('/frontend/dist/js/select2.min.js');
+$asset->addJs('/frontend/dist/js/airdatepicker.js');
 $asset->addJs('/frontend/dist/js/airdatepicker.js');
 $asset->addJs('/frontend/dist/js/bundle.js');
 ?>

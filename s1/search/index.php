@@ -6,10 +6,24 @@ require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 $APPLICATION->SetTitle("Поиск");
 ?>
 
-<?$APPLICATION->IncludeComponent(
+<?php
+if (!empty($_REQUEST['date'])) {
+    $parts = explode('-', $_REQUEST['date']);
+    $searchFrom = $parts[0] ?? null;
+    $searchTo   = $parts[1] ?? null;
+    if ($searchFrom) {
+        $_REQUEST['from'] = trim($parts[0]);
+    }
+    if ($searchTo) {
+        $_REQUEST['to'] = trim($parts[1]);
+    }
+}
+
+$APPLICATION->IncludeComponent(
     "bitrix:search.page",
     "main",
     [
+        "REQUEST_DATE" => $_REQUEST["date"] ?? '',
         "AJAX_MODE" => "N",
         "AJAX_OPTION_ADDITIONAL" => "",
         "AJAX_OPTION_HISTORY" => "N",
@@ -28,7 +42,7 @@ $APPLICATION->SetTitle("Поиск");
         "PAGER_TITLE" => "Результаты поиска",
         "PAGE_RESULT_COUNT" => "5",
         "RESTART" => "N",
-        "SHOW_WHEN" => "N",
+        "SHOW_WHEN" => "Y",
         "SHOW_WHERE" => "N",
         "USE_LANGUAGE_GUESS" => "Y",
         "USE_SUGGEST" => "N",
@@ -39,4 +53,4 @@ $APPLICATION->SetTitle("Поиск");
     ]
 );?>
 
-<? require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>
+<?php require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>

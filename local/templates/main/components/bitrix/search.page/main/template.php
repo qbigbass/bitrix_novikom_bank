@@ -16,6 +16,8 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
  * @var CBitrixComponentTemplate $this
  */
 
+$this->setFrameMode(true);
+
 use Bitrix\Main\Grid\Declension;
 use Bitrix\Main\Localization\Loc;
 
@@ -24,49 +26,48 @@ $resultsDeclension = new Declension('результат', 'результата'
 ?>
 <section class="section-search-result section-layout py-lg-12 border-top border-blue10">
     <div class="container d-flex flex-column row-gap-6 row-gap-lg-7">
-        <div class="row row-gap-4 row-gap-md-6 row-gap-lg-7 px-lg-6">
+        <form class="row row-gap-4 row-gap-md-6 row-gap-lg-7 px-lg-6" method="get" id="search-form">
             <div class="col-12">
-                <form method="get" action="">
-                    <div class="input-group flex-nowrap d-none d-lg-flex">
-                        <span class="input-group-icon">
-                            <span class="icon violet-100">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                    <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-search"></use>
-                                </svg>
-                            </span>
+                <div class="input-group flex-nowrap d-none d-lg-flex">
+                    <span class="input-group-icon">
+                        <span class="icon violet-100">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-search"></use>
+                            </svg>
                         </span>
-                        <input
-                            class="form-control form-control-lg text-l"
-                            id="input-search"
-                            type="text"
-                            name="q"
-                            placeholder="Поиск по сайту"
-                            aria-label="Поиск по сайту"
-                            aria-describedby="input-search"
-                            tabindex="-1"
-                            value="<?= $arResult["REQUEST"]["QUERY"] ?>"
-                        >
-                    </div>
-                    <div class="input-group flex-nowrap d-flex d-lg-none">
-                        <span class="input-group-icon">
-                            <span class="icon violet-100">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                    <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-search"></use>
-                                </svg>
-                            </span>
+                    </span>
+                    <input
+                        class="form-control form-control-lg text-l"
+                        id="input-search-desktop"
+                        type="text"
+                        name="q"
+                        placeholder="Поиск по сайту"
+                        aria-label="Поиск по сайту"
+                        aria-describedby="input-search-desktop"
+                        tabindex="-1"
+                        value="<?= $arResult["REQUEST"]["QUERY"] ?>"
+                    >
+                </div>
+                <div class="input-group flex-nowrap d-flex d-lg-none">
+                    <span class="input-group-icon">
+                        <span class="icon violet-100">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-search"></use>
+                            </svg>
                         </span>
-                        <input
-                            class="form-control ps-0 text-s"
-                            id="input-search-mobile"
-                            type="text"
-                            placeholder="Поиск по сайту"
-                            aria-label="Поиск по сайту"
-                            aria-describedby="#input-search-mobile"
-                            tabindex="-1"
-                        >
-                    </div>
-                    <button type="submit" style="visibility: hidden"><?= Loc::getMessage('SEARCH_GO'); ?></button>
-                </form>
+                    </span>
+                    <input
+                        class="form-control ps-0 text-s"
+                        id="input-search-mobile"
+                        type="text"
+                        placeholder="Поиск по сайту"
+                        aria-label="Поиск по сайту"
+                        aria-describedby="#input-search-mobile"
+                        tabindex="-1"
+                        value="<?= $arResult["REQUEST"]["QUERY"] ?>"
+                    >
+                </div>
+                <button type="submit" style="visibility: hidden"><?= Loc::getMessage('SEARCH_GO'); ?></button>
             </div>
             <?if (!empty($arResult["REQUEST"]["QUERY"])) : ?>
                 <div class="col-12">
@@ -80,63 +81,56 @@ $resultsDeclension = new Declension('результат', 'результата'
                 </div>
             <?endif;?>
             <div class="col-12 col-lg-8 col-xl-7">
-                <form>
-                    <div class="d-flex flex-column flex-md-row gap-4 gap-md-7 align-items-start align-items-md-center">
-                        <div class="position-relative w-100 w-md-50 w-lg-240w">
-                            <input class="w-100 form-control" id="date1" type="date" name="date1" placeholder="Показать за период" disabled>
-                            <span class="position-absolute top-0 end-0 violet-70 text-m p-2 px-3">
-                                <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                    <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-calendar"></use>
-                                </svg>
+                <div class="d-flex flex-column flex-md-row gap-4 gap-md-7 align-items-start align-items-md-center">
+                    <div class="position-relative w-100 w-md-50 w-lg-240w">
+                        <input
+                            class="js-date js-date--range js-date--today-max w-100 form-control"
+                            id="date1"
+                            type="text"
+                            name="date"
+                            placeholder="Показать за период"
+                            value="<?= htmlspecialchars($arParams['REQUEST_DATE']); ?>"
+                        >
+                        <span class="position-absolute top-0 end-0 violet-70 text-m p-2 px-3 pe-none">
+                            <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-calendar"></use>
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="tabs-panel js-tabs-slider overflow-hidden position-relative px-1 tabs-panel--small w-auto">
+                        <div class="tabs-panel__navigation d-none d-lg-block js-tabs-slider-navigation w-100">
+                            <span class="tabs-panel__navigation-item tabs-panel__navigation-item-reverse js-tabs-slider-navigation-prev h-100 d-flex align-items-center justify-content-start px-1 z-3 position-absolute start-0 top-0">
+                                <span class="icon size-m">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-left"></use>
+                                    </svg>
+                                </span>
+                            </span>
+                            <span class="tabs-panel__navigation-item js-tabs-slider-navigation-next h-100 d-flex align-items-center justify-content-end px-1 z-3 position-absolute end-0 top-0">
+                                <span class="icon size-m">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
+                                    </svg>
+                                </span>
                             </span>
                         </div>
-                        <div class="tabs-panel js-tabs-slider overflow-hidden position-relative px-1 tabs-panel--small w-auto">
-                            <div class="tabs-panel__navigation d-none d-lg-block js-tabs-slider-navigation w-100">
-                                <span class="tabs-panel__navigation-item tabs-panel__navigation-item-reverse js-tabs-slider-navigation-prev h-100 d-flex align-items-center justify-content-start px-1 z-3 position-absolute start-0 top-0">
-                                    <span class="icon size-m">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                            <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-left"></use>
-                                        </svg>
-                                    </span>
-                                </span>
-                                <span class="tabs-panel__navigation-item js-tabs-slider-navigation-next h-100 d-flex align-items-center justify-content-end px-1 z-3 position-absolute end-0 top-0">
-                                    <span class="icon size-m">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                            <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
-                                        </svg>
-                                    </span>
-                                </span>
-                            </div>
-                            <ul class="swiper-wrapper tabs-panel__list nav nav-tabs d-inline-flex flex-nowrap w-auto p-0 border border-purple rounded">
-                                <?if ($arResult["REQUEST"]["HOW"] == "d") : ?>
-                                    <li class="swiper-slide w-auto tabs-panel__list-item nav-item z-2">
-                                        <a class="tabs-panel__list-item-link nav-link bg-transparent active" aria-current="page" href="<?= $arResult["URL"] ?>&amp;how=r<?= $arResult["REQUEST"]["FROM"] ? '&amp;from=' . $arResult["REQUEST"]["FROM"] : '' ?><?= $arResult["REQUEST"]["TO"] ? '&amp;to=' . $arResult["REQUEST"]["TO"] : '' ?>">
-                                            По релевантности
-                                        </a>
-                                    </li>
-                                    <li class="swiper-slide w-auto tabs-panel__list-item nav-item z-2">
-                                        <a class="tabs-panel__list-item-link nav-link bg-transparent" href="#to-date">
-                                            По дате
-                                        </a>
-                                    </li>
-                                <?else : ?>
-                                    <li class="swiper-slide w-auto tabs-panel__list-item nav-item z-2">
-                                        <a class="tabs-panel__list-item-link nav-link bg-transparent active" aria-current="page" href="#to-relevation">
-                                            По релевантности
-                                        </a>
-                                    </li>
-                                    <li class="swiper-slide w-auto tabs-panel__list-item nav-item z-2">
-                                        <a class="tabs-panel__list-item-link nav-link bg-transparent" href="<?= $arResult["URL"] ?>&amp;how=d<?= $arResult["REQUEST"]["FROM"] ? '&amp;from=' . $arResult["REQUEST"]["FROM"] : '' ?><?= $arResult["REQUEST"]["TO"] ? '&amp;to=' . $arResult["REQUEST"]["TO"] : '' ?>">
-                                            По дате
-                                        </a>
-                                    </li>
-                                <?endif;?>
-                            </ul>
-                        </div>
+                        <input type="hidden" name="how" value="<?= $arResult['REQUEST']['HOW'] ?>" id="search-how-input">
+                        <ul class="swiper-wrapper tabs-panel__list nav nav-tabs d-inline-flex flex-nowrap w-auto p-0 border border-purple rounded" id="search-how-selector">
+                            <li class="swiper-slide w-auto tabs-panel__list-item nav-item z-2">
+                                <a class="tabs-panel__list-item-link nav-link bg-transparent <?= $arResult['REQUEST']['HOW'] === '' ? 'active' : ''; ?>" aria-current="page" href="#to-rel">
+                                    По релевантности
+                                </a>
+                            </li>
+                            <li class="swiper-slide w-auto tabs-panel__list-item nav-item z-2">
+                                <a class="tabs-panel__list-item-link nav-link bg-transparent <?= $arResult['REQUEST']['HOW'] === 'd' ? 'active' : ''; ?>" href="#to-date">
+                                    По дате
+                                </a>
+                            </li>
+                        </ul>
                     </div>
-                </form>
+                </div>
             </div>
-        </div>
+        </form>
         <div class="row px-lg-6">
             <div class="col-12 col-lg-8 col-xl-7">
                 <div class="d-flex flex-column gap-4">
