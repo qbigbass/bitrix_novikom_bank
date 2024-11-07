@@ -717,7 +717,7 @@ use Dalee\Helpers\ComponentHelper;
 
                     <?$APPLICATION->IncludeComponent(
                         "bitrix:news.list",
-                        "become_customer_options",
+                        "instructions",
                         [
                             "ACTIVE_DATE_FORMAT" => "d.m.Y",
                             "ADD_SECTIONS_CHAIN" => "N",
@@ -753,7 +753,7 @@ use Dalee\Helpers\ComponentHelper;
                             "PARENT_SECTION" => "",
                             "PARENT_SECTION_CODE" => "",
                             "PREVIEW_TRUNCATE_LEN" => "",
-                            "PROPERTY_CODE" => ["ICON","LINK_TITLE", "LINK"],
+                            "PROPERTY_CODE" => ["ICON","LINK_TITLE", "LINK", "SHOW_ONLY_DESCRIPTION"],
                             "SET_BROWSER_TITLE" => "N",
                             "SET_LAST_MODIFIED" => "N",
                             "SET_META_DESCRIPTION" => "N",
