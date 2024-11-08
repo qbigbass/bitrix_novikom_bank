@@ -11,6 +11,7 @@ import initSelect2 from './components/select2.js'
 import { initTabsContent } from './components/tabs.js'
 import initInputSlider from "./components/inputSlider";
 import showMoreContent from "./components/showMoreContent";
+import initCalculatorDeposit from "./components/calculator-deposit";
 
 document.addEventListener('DOMContentLoaded', () => {
     initDropdownMenu();
@@ -25,8 +26,10 @@ document.addEventListener('DOMContentLoaded', () => {
     initTabsSlider();
     initSelect2();
     initTabsContent();
-    initInputSlider();
     showMoreContent();
+    initInputSlider();
+    initCalculatorDeposit();
+
 });
 
 window.onload = function() {

@@ -6,7 +6,7 @@ mixin card-calculate-result(data, bgColor = 'bg-dark-0')
                     span.card-calculate-result__label.text-s= item.title
                     if item.link
                         .d-flex.flex-column.flex-md-row.justify-content-md-between.flex-wrap.align-items-md-end
-                            span.text-number-ml.fw-bold.text-nowrap= item.value
+                            span.text-number-ml.fw-bold.text-nowrap(class= item.additionalClass ? item.additionalClass : '')= item.value
                                 if item.currency
                                     | &nbsp;
                                     span.currency ₽
@@ -14,7 +14,7 @@ mixin card-calculate-result(data, bgColor = 'bg-dark-0')
                                 span= item.link
                                 +svg-use("icon-chevron-right-small", "icon size-s")
                     else
-                        span.text-number-ml.fw-bold.text-nowrap= item.value
+                        span.text-number-ml.fw-bold.text-nowrap(class= item.additionalClass ? item.additionalClass : '')= item.value
                             if item.currency
                                 | &nbsp;
                                 span.currency ₽

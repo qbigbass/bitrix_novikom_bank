@@ -45,7 +45,7 @@ const initElements = (root) => {
     }
 }
 
-const generateStepsFromAttrs = (attr) => {
+export const generateStepsFromAttrs = (attr) => {
     if (attr.length > 0) {
         return attr.split(',')?.map((step) => Number(step)) ?? [];
     } else {
@@ -54,6 +54,7 @@ const generateStepsFromAttrs = (attr) => {
 }
 
 const initDefaultValues = (root) => {
+    // TODO: здесь добавить получение данных для data-attr
     let value= Number(root.getAttribute(DATA_ATTRS.dataStartValue) ?? 0);
     let minValue = Number(root.getAttribute(DATA_ATTRS.dataMinValue) ?? 0);
     let maxValue = Number(root.getAttribute(DATA_ATTRS.dataMaxValue) ?? 100);
