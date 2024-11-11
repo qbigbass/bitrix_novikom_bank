@@ -22,6 +22,7 @@
     --adp-cell-background-color-in-range-hover: var(--blue-10);
     border-radius: 0.75rem;
     width: var(--adp-mobile-width);
+    z-index: 1055;
 }
 
 .air-datepicker--content {

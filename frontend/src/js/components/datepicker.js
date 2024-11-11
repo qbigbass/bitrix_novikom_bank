@@ -28,7 +28,7 @@ const defaultSelectOptions = {
         } else if (cellType === 'month') {
             cellText = date.toLocaleString('default', { month: 'long' }).slice(0, 3);
         }
-        
+
         return {
             html: `<div class="air-datepicker-cell-text">${cellText}</div>`
         }
@@ -48,7 +48,7 @@ function initDatepicker() {
         if ($(this).hasClass(DATEPICKER_CLASSES.todayIsMinDate)) {
             options.minDate = new Date();
         }
-        
+
         new AirDatepicker(DATEPICKER_CLASSES.root, options);
     });
 }

@@ -1,0 +1,13 @@
+mixin select(data, formName)
+    - var { id, label, required, placeholder, options } = data;
+    .d-flex.flex-column.row-gap-2&attributes(attributes)
+        label(for=`${formName}_${id}`).form-label.mb-0
+            != label
+            if required
+                span.orange-100.ms-1 *
+        select(id=`${formName}_${id}` aria-label=label data-placeholder=placeholder required=required).form-select.form-select--size-small.form-select--size-small-lg.js-select
+            if placeholder
+                option
+            each option, index in options
+                option(value=index selected= !placeholder && index === 0)= option
+        .invalid-feedback(aria-live="polite")

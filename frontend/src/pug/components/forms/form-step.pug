@@ -1,0 +1,7 @@
+mixin form-step(data)
+    - var { current, total, text } = data;
+    .form-step&attributes(attributes)
+        .form-step__item.text-m.fw-semibold
+            span!= `${current}/${total}`
+            span!= text
+        progress.form-step__progress(value= current max= total)

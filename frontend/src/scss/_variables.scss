@@ -6,6 +6,7 @@ $gutters: (
         0: 0,
         1: 1.5rem,
         2: 2rem,
+        "2_5": 2.5rem,
         3: 3rem,
         4: 4rem,
         5: 5rem,
@@ -172,6 +173,7 @@ $form-invalid-border-color: var(--alert);
 $form-feedback-margin-top: 0;
 $form-feedback-font-size: .75rem;
 $form-feedback-icon-invalid: none;
+$form-feedback-icon-valid: none;
 
 // Select
 $form-select-padding-y: 1rem;
@@ -218,7 +220,6 @@ $form-range-thumb-border-radius: 2rem;
 $form-range-thumb-box-shadow: none;
 
 $form-range-thumb-active-bg: var(--blue-100);
-
 
 
 // Links
@@ -269,6 +270,8 @@ $input-btn-line-height: 1.5;
 $input-btn-font-size-lg: 1rem;
 $input-btn-padding-x-lg: .9375rem;
 $input-btn-padding-y-lg: .9375rem;
+$input-group-addon-bg: transparent;
+$input-group-addon-color: var(--dark-70);
 
 // Accordion
 $accordion-button-padding-y: 1rem;
@@ -297,3 +300,17 @@ $tooltip-padding-x: 1rem;
 $tooltip-arrow-width: 0;
 $tooltip-arrow-height: 0;
 $tooltip-opacity: 1;
+
+// Modals
+$modal-inner-padding: 1.5rem 1rem;
+$modal-content-border-radius: .75rem;
+$modal-backdrop-bg: $dark;
+$modal-md: 48.75rem;
+$modal-xl: 65.875rem;
+$zindex-modal-backdrop: 1052;
+
+// Alert
+$alert-padding-y: 1rem;
+$alert-padding-x: 1rem;
+$alert-margin-bottom: 0;
+$alert-border-width: 0;
