@@ -29,21 +29,21 @@ $aMenuLinksExt = $APPLICATION->IncludeComponent(
 
 $aMenuLinksExt[] = [
     '«Программа кэшбэк»',
-    '#',
+    '/bonus-programs/programma-cashback/',
     Array(),
     Array('show_only_in_header' => 'Y')
 ];
 
 $aMenuLinksExt[] = [
     '«Программа бонусы»',
-    '#',
+    '/bonus-programs/programma-bonusy/',
     Array(),
     Array('show_only_in_header' => 'Y')
 ];
 
 $aMenuLinksExt[] = [
     '«Бонусная копилка»',
-    '#',
+    '/bonus-programs/programma-bonusnaya-kopilka/',
     Array(),
     Array('show_only_in_header' => 'Y')
 ];

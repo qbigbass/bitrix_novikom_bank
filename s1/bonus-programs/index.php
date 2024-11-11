@@ -1,0 +1,86 @@
+<?php
+/** @var string $ELEMENT_CODE */
+
+require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
+global $APPLICATION;
+$APPLICATION->SetTitle('Бонусные программы');
+?>
+
+<?$APPLICATION->IncludeComponent(
+    "bitrix:news.detail",
+    "bonus_programs_detail",
+    [
+        "DISPLAY_DATE" => "N",
+        "DISPLAY_NAME" => "Y",
+        "DISPLAY_PICTURE" => "N",
+        "DISPLAY_PREVIEW_TEXT" => "N",
+        "IBLOCK_TYPE" => "for_private_clients_ru",
+        "IBLOCK_ID" => iblock('bonus_programs_ru'),
+        "FIELD_CODE" => [],
+        "PROPERTY_CODE" => [
+            "ICON",
+            "BANNER_STYLE",
+            "BENEFITS_COL",
+            "BENEFITS",
+            "CASHBACK_CATEGORIES",
+            "SHOW_BONUSES_CALC",
+            "BENEFITS_INFO_BOX",
+            "TABS_HEADING",
+            "TABS",
+            "INSTRUCTION_1_HEADING",
+            "INSTRUCTION_1",
+            "INSTRUCTION_1_COLS",
+            "INSTRUCTION_2_HEADING",
+            "INSTRUCTION_2",
+            "INSTRUCTION_2_COLS",
+            "INSTRUCTION_3_HEADING",
+            "INSTRUCTION_3",
+            "INSTRUCTION_3_COLS",
+            "INFO_BOX",
+        ],
+        "DETAIL_URL" => "",
+        "SECTION_URL" => "",
+        "META_KEYWORDS" => "-",
+        "META_DESCRIPTION" => "-",
+        "BROWSER_TITLE" => "-",
+        "SET_CANONICAL_URL" => "N",
+        "SET_LAST_MODIFIED" => "N",
+        "SET_TITLE" => "Y",
+        "MESSAGE_404" => "",
+        "SET_STATUS_404" => "Y",
+        "SHOW_404" => "Y",
+        "FILE_404" => "",
+        "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+        "ADD_SECTIONS_CHAIN" => "N",
+        "ACTIVE_DATE_FORMAT" => "d.m.Y",
+        "CACHE_TYPE" => "A",
+        "CACHE_TIME" => "36000000",
+        "CACHE_GROUPS" => "Y",
+        "USE_PERMISSIONS" => "N",
+        "GROUP_PERMISSIONS" => "N",
+        "DISPLAY_TOP_PAGER" => "N",
+        "DISPLAY_BOTTOM_PAGER" => "N",
+        "PAGER_TITLE" => "",
+        "PAGER_SHOW_ALWAYS" => "N",
+        "PAGER_TEMPLATE" => "",
+        "PAGER_SHOW_ALL" => "N",
+        "CHECK_DATES" => "Y",
+        "ELEMENT_ID" => "",
+        "ELEMENT_CODE" => $ELEMENT_CODE,
+        "SECTION_ID" => "",
+        "SECTION_CODE" => "",
+        "IBLOCK_URL" => "",
+        "USE_SHARE" => "N",
+        "SHARE_HIDE" => "",
+        "SHARE_TEMPLATE" => "",
+        "SHARE_HANDLERS" => "",
+        "SHARE_SHORTEN_URL_LOGIN" => "",
+        "SHARE_SHORTEN_URL_KEY" => "",
+        "ADD_ELEMENT_CHAIN" => "Y",
+        'STRICT_SECTION_CHECK' => "Y",
+    ],
+);?>
+
+<?$APPLICATION->IncludeFile('/local/php_interface/include/cross_sale_products_block.php')?>
+
+<?require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php'); ?>
