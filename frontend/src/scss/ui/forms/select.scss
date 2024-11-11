@@ -125,6 +125,32 @@
                 }
             }
         }
+
+        &--size-large {
+            height: 4rem !important;
+
+            & .select2-selection {
+                &__rendered {
+                    font-size: 1.25rem;
+                    padding: 1.1rem 2.5rem 1.1rem 1rem !important;
+                    color: var(--dark-100) !important;
+                }
+            }
+        }
+
+        &--size-lg-large {
+            @include use-media(tablet-album) {
+                height: 4rem !important;
+
+                & .select2-selection {
+                    &__rendered {
+                        font-size: 1.25rem;
+                        padding: 1.1rem 2.5rem 1.1rem 1rem !important;
+                        color: var(--dark-100) !important;
+                    }
+                }
+            }
+        }
     }
 
     &--disabled {

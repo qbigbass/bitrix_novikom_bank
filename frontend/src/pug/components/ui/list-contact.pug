@@ -1,5 +1,5 @@
-mixin list-contact(data)
-    ul.list-contact.d-flex.flex-column.row-gap-4
+mixin list-contact(data, gapClass='row-gap-4')
+    ul.list-contact.d-flex.flex-column(class=gapClass)
         each item in data
             li.d-flex.column-gap-3
                 span.icon.size-m.flex-shrink-0(class=item.iconColorClass ? item.iconColorClass : "dark-0")

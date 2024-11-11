@@ -42,7 +42,7 @@ $this->setFrameMode(true);
 
                 </ul>
             </div>
-            <div class="tab-content">
+            <div class="tab-content mt-4 mt-md-6 mt-lg-7">
                 <? foreach ($arResult['ITEMS'] as $key => $tab) { ?>
                     <div class="tab-pane fade<?= $key == 0 ? ' show active' : '' ?>"
                          id="additional-info-<?= $tab['ID'] ?>"
@@ -60,6 +60,23 @@ $this->setFrameMode(true);
 
                         <? if (!empty($tab['DISPLAY_PROPERTIES'])) {
                             foreach ($tab['DISPLAY_PROPERTIES'] as $property) {
+
+                                if ($property['CODE'] == 'ICONS_WITH_DESCRIPTION' && !empty($property['~VALUE'])) { ?>
+                                    <div class="row row-gap-6 mt-7 mt-md-7 mt-lg-8">
+
+                                        <? foreach ($property['~VALUE'] as $key => $value) { ?>
+                                            <div class="col-12 col-md-6 col-lg-4">
+                                                <div class="benefit d-flex gap-3 flex-column flex-md-row align-items-md-center gap-md-4 gap-lg-6">
+                                                    <img class="icon size-lxl" src="<?= CFile::GetPath($value) ?>" alt="icon" loading="lazy">
+                                                    <div class="benefit__content d-flex flex-column gap-3">
+                                                        <h5 class="benefit__title fw-semibold"><?= $property['~DESCRIPTION'][$key] ?></h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <? } ?>
+
+                                    </div>
+                                <? }
 
                                 if ($property['CODE'] == 'CONDITIONS_ICONS' && !empty($property['~VALUE'])) { ?>
                                     <div class="row row-gap-6 mt-7 mt-md-7 mt-lg-8">
@@ -127,13 +144,73 @@ $this->setFrameMode(true);
                                     </div>
                                 <? }
 
+                                if ($property['CODE'] == 'RATES_DESCRIPTION' && !empty($property['~VALUE'])) {?>
+                                    <?$firstColumnName = 'Процент годовых в месяц';?>
+                                    <?$secondColumnName = 'Условия';?>
+                                    <div class="table-adaptive">
+                                        <div class="table-adaptive__header">
+                                            <div class="table-adaptive__row">
+                                                <div class="table-adaptive__cell text-s"><?=$firstColumnName?></div>
+                                                <div class="table-adaptive__cell text-s"><?=$secondColumnName?></div>
+                                            </div>
+                                        </div>
+                                        <div class="table-adaptive__body">
+                                            <?foreach ($property['~VALUE'] as $index => $value) {?>
+                                                <div class="table-adaptive__row">
+                                                    <div class="table-adaptive__cell text-number-l fw-bold">
+                                                        <span class="table-adaptive__label text-s"><?=$firstColumnName?></span>
+                                                        <span><?=$property['DESCRIPTION'][$index]?></span>
+                                                    </div>
+                                                    <div class="table-adaptive__cell text-l">
+                                                        <span class="table-adaptive__label text-s"><?=$secondColumnName?></span>
+                                                        <span><?=$value['TEXT']?></span>
+                                                    </div>
+                                                </div>
+                                            <?}?>
+                                        </div>
+                                    </div>
+                                <? }
+
+                                if ($property['CODE'] == 'HEADING' && !empty($property['~VALUE'])) { ?>
+                                    <h4 class="mb-4 mb-md-5 mb-lg-6">
+                                        <?=$property['~VALUE']?>
+                                    </h4>
+                                <? }
+
+                                if ($property['CODE'] == 'STEPS' && !empty($property['~VALUE'])) {?>
+                                    <div class="row row-gap-6 mb-6 mb-md-9 mb-lg-11">
+                                        <div class="stepper steps-2">
+                                            <?foreach ($property['~VALUE'] as $index => $value) {?>
+                                                <div class="stepper-item stepper-item--color-green">
+                                                    <div class="stepper-item__header">
+                                                        <div class="stepper-item__number">
+                                                            <div class="stepper-item__number-value"><?=$index + 1?></div>
+                                                            <div class="stepper-item__number-icon">
+                                                                <?=getStepperIcons($index)?>
+                                                            </div>
+                                                        </div>
+                                                        <div class="stepper-item__arrow"></div>
+                                                    </div>
+                                                    <div class="stepper-item__content">
+                                                        <p class="text-l mb-0"><?=$value['TEXT']?></p>
+                                                    </div>
+                                                </div>
+                                            <?}?>
+                                        </div>
+                                    </div>
+                                <?}
+
                                 if ($property['CODE'] == 'SHORT_INFO' && !empty($property['~VALUE']['TEXT'])) { ?>
+                                    <?$iconPath = (!empty($tab['DISPLAY_PROPERTIES']['ICON_SHORT_INFO']['FILE_VALUE']['SRC']))
+                                        ? $tab['DISPLAY_PROPERTIES']['ICON_SHORT_INFO']['FILE_VALUE']['SRC']
+                                        : '/frontend/dist/img/restructuring-additional-info.png';?>
+
                                     <div class="w-100 mt-7 mt-md-7 mt-lg-8">
                                         <div class="polygon-container js-polygon-container">
                                             <div class="polygon-container__content">
                                                 <div class="helper bg-dark-10">
                                                     <div class="helper__wrapper d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-4 gap-lg-6">
-                                                        <img class="helper__image w-auto float-end" src="/frontend/dist/img/restructuring-additional-info.png" alt="" loading="lazy">
+                                                        <img class="helper__image w-auto float-end" src="<?=$iconPath?>" alt="" loading="lazy">
                                                         <div class="helper__content text-l">
                                                             <p class="mb-0">
                                                                 <?= $property['~VALUE']['TEXT'] ?>

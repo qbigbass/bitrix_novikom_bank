@@ -7,11 +7,14 @@
 
 include ../ui/breadcrumbs
 
-mixin banner-text-content(title, breadcrumbsArray, description, isSmallTitle)
-    .d-flex.flex-column.align-items-start.gap-3.gap-md-4
+mixin banner-text-content(title, breadcrumbsArray, description, button, isSmallTitle, additionalClassList)
+    .d-flex.flex-column.align-items-start.gap-3.gap-md-4(class=additionalClassList)
         +breadcrumbs(breadcrumbsArray)
         h1.banner-text__title.dark-0.text-break(class=isSmallTitle && "h2 text-white")!= title
-        .banner-text__description.text-l.dark-0!= description
+        if description
+            .banner-text__description.text-l.dark-0!= description
+    if button
+        a.mt-7.w-100.w-sm-auto.btn.btn-secondary.btn-lg-lg.d-inline-block(href=button.link)= button.text
 
 mixin banner-text(data, borderColor, bgGradient='bg-linear-blue')
     section.banner-text(class=`banner-text--border-${borderColor} ${bgGradient}`)
@@ -19,10 +22,10 @@ mixin banner-text(data, borderColor, bgGradient='bg-linear-blue')
             .row.ps-lg-6
                 if data.imageSrc
                     .col-12.col-sm-6.col-md-8.position-relative.z-1.mb-5.mb-md-0.pt-6
-                        +banner-text-content(data.title, data.breadcrumbsArray, data.description, data.isSmallTitle)
+                        +banner-text-content(data.title, data.breadcrumbsArray, data.description, data.button, data.isSmallTitle, data.additionalClassList)
                     .d-none.d-sm-block.col-12.col-sm-6.col-md-4
                         img(src=data.imageSrc, class="banner-text__image position-relative w-auto float-end", alt="")
                 else
-                    .col-12.position-relative.z-1.mb-5.mb-md-0.pt-6(class= data.imageSrc ? 'col-xl-7' : '')
-                        +banner-text-content(data.title, data.breadcrumbsArray, data.description, data.isSmallTitle)
+                    .col-12.position-relative.z-1.mb-5.mb-md-0.pt-6(class=data.imageSrc && 'col-xl-7')
+                        +banner-text-content(data.title, data.breadcrumbsArray, data.description, data.button, data.isSmallTitle, data.additionalClassList)
         +pattern-bg('section', 'light', 'pattern-bg--position-sm-top banner-text__pattern')
