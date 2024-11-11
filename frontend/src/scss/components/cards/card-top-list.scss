@@ -1,0 +1,40 @@
+.card-top-list {
+    border-radius: 0.5rem;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+
+    &__col {
+        padding: 1.5rem 1rem;
+        flex: 0 0 50%;
+        position: relative;
+        border-radius: .75rem ;
+        
+        & > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        @include use-media(tabletm) {
+            padding: 2rem;
+        }
+
+        @include use-media(tablet-album) {
+            padding: 2.5rem;
+        }
+    }
+
+    &__description {
+        margin-top: .5rem;
+        padding-top: .5rem;
+        border-top: 1px dashed var(--violet-100);
+    }
+
+    &__pattern {
+
+        @include use-media(tablet-album) {
+            top: 2.5rem;
+            bottom: auto;
+        }
+    }
+}
