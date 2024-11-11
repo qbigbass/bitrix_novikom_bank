@@ -21,42 +21,42 @@ export function initUploadFile() {
     uploads.forEach(upload => {
         const uploadBox = upload.querySelector(UPLOAD_ELEMS.uploadBox)
         const uploadButton = upload.querySelector(UPLOAD_ELEMS.uploadButton)
+        const errorElement = upload.querySelector(UPLOAD_ELEMS.error)
         const input = upload.querySelector(UPLOAD_ELEMS.input)
+
         const maxFiles = Number(input.getAttribute(UPLOAD_ATTR.maxFiles))
         const maxSize = Number(input.getAttribute(UPLOAD_ATTR.maxSize))
-        const errorElement = upload.querySelector(UPLOAD_ELEMS.error)
 
         uploadButton.onclick = () => {
             input.click()
-        };
+        }
 
         input.addEventListener('change', function (e) {
             const files = e.target.files
 
             if (files.length > maxFiles) {
-                input.classList.add('is-invalid');
+                input.classList.add('is-invalid')
                 errorElement.textContent = `Вы превысили лимит выбора файлов: можно выбрать не более ${maxFiles} файлов.`
                 !errorElement.classList.contains('d-block') && errorElement.classList.add('d-block')
-                return;
+                return
             }
 
             [...files].forEach(file => {
-                const fileName = file.name;
+                const fileName = file.name
 
                 if (file.size > maxSize) {
-                    errorElement.textContent = `Размер файла ${fileName} превышен, выберите файл меньше 3МБ.`
+                    errorElement.textContent = `Размер файла ${fileName} превышен, выберите файл меньше ${bytesToMegabytes(maxSize)} МБ.`
                     !errorElement.classList.contains('d-block') && errorElement.classList.add('d-block')
-                    return;
+                    return
                 }
 
                 errorElement.classList.contains('d-block') && errorElement.classList.remove('d-block')
 
-                uploadBox.insertAdjacentHTML('beforebegin', renderFile(fileName));
-
-                initRemoveFile(upload, files)
+                uploadBox.insertAdjacentHTML('beforebegin', renderFile(fileName))
             })
-        });
+        })
 
+        initRemoveFile(upload)
     })
 }
 
@@ -80,4 +80,8 @@ function initRemoveFile(upload) {
             item.remove()
         }
     })
+}
+
+function bytesToMegabytes(bytes) {
+    return (bytes / (1024 * 1024))
 }
