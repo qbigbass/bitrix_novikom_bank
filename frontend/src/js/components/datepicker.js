@@ -37,7 +37,7 @@ const defaultSelectOptions = {
 
 
 function initDatepicker() {
-    $(DATEPICKER_CLASSES.root).each(function() {
+    $(DATEPICKER_CLASSES.root).each(function(index, element) {
         const options = {...defaultSelectOptions};
         if ($(this).hasClass(DATEPICKER_CLASSES.isRange)) {
             options.range = true;
@@ -49,7 +49,7 @@ function initDatepicker() {
             options.minDate = new Date();
         }
 
-        new AirDatepicker(DATEPICKER_CLASSES.root, options);
+        new AirDatepicker(element, options);
     });
 }
 
