@@ -7,8 +7,8 @@
         border-radius: 4px;
     }
 
-    &__file,
-    &__file + &__box {
+    &__item,
+    &__item + &__box {
         margin-top: 0.5rem;
     }
 }

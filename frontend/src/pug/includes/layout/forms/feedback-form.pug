@@ -183,7 +183,7 @@ form(action="/" method="POST" novalidate id="feedback-form" data-form data-form-
                         span.orange-100.ms-1 *
                 textarea(id=item.id type=`${item.type || "text"}` name=item.id placeholder=item.placeholder required=item.required autocomplete="off" data-form-input).form-control.form-control-lg-lg
                 .invalid-feedback(aria-live="polite")
-            +upload-file
+            +upload-file(feedbackForm.formName)
             +captcha(feedbackForm.formName)
             +confirm(feedbackForm.formName)
         .d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-6.mt-6.mt-lg-7

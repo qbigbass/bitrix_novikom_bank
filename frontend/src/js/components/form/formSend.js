@@ -1,34 +1,34 @@
-import {STEPS_ELEMS} from "./formSteps";
+import {STEPS_ELEMS} from './formSteps';
 
 export const FORM_ELEMS = {
-    form: "[data-form]",
-    validateGroup: "[data-form-validate-group]",
-    button: "[data-form-button]",
-    input: "[data-form-input]",
-    checkbox: "[data-form-checkbox]",
-    error: "[data-form-error]",
-    radio: "input[type='radio']",
+    form: '[data-form]',
+    validateGroup: '[data-form-validate-group]',
+    button: '[data-form-button]',
+    input: '[data-form-input]',
+    checkbox: '[data-form-checkbox]',
+    error: '[data-form-error]',
+    radio: 'input[type="radio"]',
 }
 
 const MODALS_ID = {
-    success: "modal-success",
-    error: "modal-error",
+    success: 'modal-success',
+    error: 'modal-error',
 }
 
 const MESSAGE_ELEMS = {
-    messageBox: ".js-message",
-    titleSuccess: ".js-success-title",
-    infoSuccess: ".js-success-info",
-    titleError: ".js-error-title",
-    infoError: ".js-error-info",
-    btnError: ".js-error-btn"
+    messageBox: '.js-message',
+    titleSuccess: '.js-success-title',
+    infoSuccess: '.js-success-info',
+    titleError: '.js-error-title',
+    infoError: '.js-error-info',
+    btnError: '.js-error-btn'
 }
 
 const MESSAGE_ATTR = {
-    titleSuccessContent: "data-success-title",
-    infoSuccessContent: "data-success-info",
-    titleErrorContent: "data-error-title",
-    infoErrorContent: "data-error-info",
+    titleSuccessContent: 'data-success-title',
+    infoSuccessContent: 'data-success-info',
+    titleErrorContent: 'data-error-title',
+    infoErrorContent: 'data-error-info',
 }
 
 export async function initFormSend() {
@@ -133,7 +133,7 @@ function resetForm(form) {
     const checkboxElement = form.querySelector(FORM_ELEMS.checkbox)
 
     inputList.forEach((inputElement) => {
-        inputElement.value = ""
+        inputElement.value = ''
     });
 
     if (checkboxElement) checkboxElement.checked = false
@@ -204,7 +204,7 @@ function checkInputValidity(inputElement) {
 }
 
 function checkEmptyRequiredInput(inputElement) {
-    if (inputElement.required && inputElement.value === "" && !inputElement.classList.contains("is-invalid")) inputElement.classList.add('is-required')
+    if (inputElement.required && inputElement.value === '' && !inputElement.classList.contains("is-invalid")) inputElement.classList.add('is-required')
 }
 
 function checkLengthMismatch(inputElement) {
@@ -220,12 +220,13 @@ function checkLengthMismatch(inputElement) {
 
 function hasInvalidInput(inputList, checkboxElement) {
     return (
-        inputList.some(inputElement => !inputElement.validity.valid && !inputElement.closest('[hidden]')) || (checkboxElement && !checkboxElement.validity.valid)
+        inputList.some(inputElement => !inputElement.validity.valid && !inputElement.closest('[hidden]'))
+        || (checkboxElement && !checkboxElement.validity.valid)
     )
 }
 
 function hasEmptyRequiredInput(inputList) {
-    const emptyRequiredInputs = inputList.filter(inputElement => !inputElement.closest('[hidden]') && inputElement.required && inputElement.value === "")
+    const emptyRequiredInputs = inputList.filter(inputElement => !inputElement.closest('[hidden]') && inputElement.required && inputElement.value === '')
     return !!emptyRequiredInputs.length;
 }
 

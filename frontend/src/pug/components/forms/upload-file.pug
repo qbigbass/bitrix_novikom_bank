@@ -1,11 +1,11 @@
 mixin upload-file(formName)
-    .upload-file.d-flex.flex-column.row-gap-2&attributes(attributes)
+    .upload-file.d-flex.flex-column.row-gap-2(data-upload)&attributes(attributes)
         label(for=`${formName}_upload-file`).form-label.mb-0
             | Прикрепить файлы
         .upload-file__box.p-3.p-md-4(data-upload-box)
             p.text-m.text-center Вы&nbsp;можете прикрепить файлы размером не&nbsp;более 3&nbsp;мб, всего не&nbsp;более 5&nbsp;файлов.
-            input(id=`${formName}_upload-file` type="file" name="attach-file" multiple data-form-input data-upload-input).d-none
+            input(id=`${formName}_upload-file` type="file" name="attach-file" multiple data-max-files="5" data-max-size="3145728" data-form-input data-upload-input).d-none
             button.btn.btn-link.btn-icon(type="button" data-upload-button)
-                +svg-use("icon-attach", "icon size-m")
+                +svg-use("icon-attach", "icon size-m violet-100")
                 | Прикрепить
         .invalid-feedback(aria-live="polite")

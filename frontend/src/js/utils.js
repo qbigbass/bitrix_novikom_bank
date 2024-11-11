@@ -21,7 +21,7 @@ export function formatNumberWithSpaces(number) {
 
     /**
      * Selects a plural form based on the number.
-     * @param {string[]} forms Array of plural form. The length of the array should be 3.
+     * @param {string[]} forms Array of plural forms. The length of the array should be 3.
      * @param {number} n Number to be used for plural form selection.
      * @returns {string} The selected plural form.
      */

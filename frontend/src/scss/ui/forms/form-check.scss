@@ -58,6 +58,10 @@
     &:checked[type=radio] {
         background-color: transparent;
         border-width: .4rem;
+
+        @include use-media(tablet-album) {
+            border-width: .5rem;
+        }
     }
 
     &.is-required {
