@@ -1,0 +1,27 @@
+extends ../templates/base
+
+block title
+    title= 'Ошибка 404'
+    meta(name="description" content="Описание страницы ошибки 404")
+block content
+    include ../includes/header/header
+    include ../includes/layout/slider-card-product
+
+    section.section-layout.page-error
+        .container
+            .d-flex.flex-column.flex-xl-row.column-gap-xl-6
+                .d-flex.flex-column.align-items-md-start.row-gap-4.row-gap-md-5.row-gap-lg-6
+                    h1
+                        | Страница не&nbsp;найдена
+                    p.text-l.m-0 Возможно, эта страница больше не&nbsp;существует или переехала в&nbsp;другой раздел.
+                    a(href="/").btn.btn-primary.btn-lg-lg На главную
+                img(src="img/big-illustrations/large-individual/404.png", class="page-error__image", alt="", loading="lazy")
+        +pattern-bg('section-2', 'light', 'pattern-bg--hide-mobile')
+
+    include ../includes/layout/section-feedback
+
+    section.section-layout
+        .container
+            h3.px-lg-6.mb-4.mb-md-6.mb-lg-7
+                | Смотрите также
+            +slider-card-product()

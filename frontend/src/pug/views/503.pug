@@ -1,0 +1,19 @@
+extends ../templates/base-clear
+
+block title
+    title= 'Ошибка 503'
+    meta(name="description" content="Описание страницы ошибки 503")
+block content
+    section.section-layout.page-error.min-vh-100
+        .container
+            .d-flex.flex-column.flex-xl-row.column-gap-xl-6
+                .d-flex.flex-column.align-items-md-start.row-gap-4.row-gap-md-5.row-gap-lg-6
+                    h1
+                        | Что-то пошло не&nbsp;так...
+                    p.text-l.m-0
+                        | Сервер временно не&nbsp;отвечает, попробуйте зайти позже
+                        br
+                        | Приносим извинения за&nbsp;временные неудобства
+                    a(href="/").btn.btn-primary.btn-lg-lg На главную
+                img(src="img/big-illustrations/large-individual/503.png", class="page-error__image", alt="", loading="lazy")
+        +pattern-bg('section-2', 'light', 'pattern-bg--hide-mobile')
