@@ -98,8 +98,8 @@ function onSuccess(form) {
     const titleContent = messagesBox.getAttribute(MESSAGE_ATTR.titleSuccessContent)
     const infoContent = messagesBox.getAttribute(MESSAGE_ATTR.infoSuccessContent)
 
-    titleEl.textContent = titleContent
-    infoEl.textContent = infoContent
+    titleEl.innerHTML = titleContent
+    infoEl.innerHTML = infoContent
 
     modalBsSuccess.show()
     resetForm(form)
@@ -117,8 +117,8 @@ function onError(form, modalId) {
     const titleContent = messagesBox.getAttribute(MESSAGE_ATTR.titleErrorContent)
     const infoContent = messagesBox.getAttribute(MESSAGE_ATTR.infoErrorContent)
 
-    titleEl.textContent = titleContent
-    infoEl.textContent = infoContent
+    titleEl.innerHTML = titleContent
+    infoEl.innerHTML = infoContent
 
     btnEL.removeAttribute('data-bs-dismiss')
     btnEL.setAttribute('data-bs-toggle', 'modal')
