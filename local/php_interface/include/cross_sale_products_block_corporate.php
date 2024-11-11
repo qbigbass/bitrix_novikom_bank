@@ -4,7 +4,7 @@
 
 global $crossSaleFilter;
 $crossSaleFilter = [
-    'SECTION_CODE' => 'private',
+    'SECTION_CODE' => 'corporate',
 ];
 
 $APPLICATION->IncludeComponent(
