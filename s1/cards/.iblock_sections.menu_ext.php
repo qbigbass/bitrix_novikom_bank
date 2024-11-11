@@ -29,7 +29,7 @@ $aMenuLinksExt = $APPLICATION->IncludeComponent(
 
 $aMenuLinksExt[] = [
     '«Программа кэшбэк»',
-    '/bonus-programs/programma-cashback/',
+    '/bonus-programs/programma-keshbek/',
     Array(),
     Array('show_only_in_header' => 'Y')
 ];
