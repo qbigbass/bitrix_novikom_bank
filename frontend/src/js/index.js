@@ -15,7 +15,7 @@ import initDatepicker from './components/datepicker.js'
 import setPage from "./components/setPage";
 import {initFormSteps} from "./components/form/formSteps";
 import {initFormFeedback} from "./components/form/formFeedback";
-import {initFormSend, initFormValidation} from "./components/form/forms";
+import {initFormSend, initFormValidation} from "./components/form/formSend";
 import {initUploadFile} from "./components/form/uploadFile";
 
 document.addEventListener('DOMContentLoaded', () => {

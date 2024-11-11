@@ -1,5 +1,5 @@
-const STEPS_ELEMS = {
-    form: "[data-form-step]",
+export const STEPS_ELEMS = {
+    step: "[data-form-step]",
     buttonNext: "[data-form-step-button-next]",
 }
 
@@ -14,7 +14,7 @@ export function initFormSteps() {
 }
 
 function handlerClickNextStep(e) {
-    const thisStep = e.target.closest(STEPS_ELEMS.form);
+    const thisStep = e.target.closest(STEPS_ELEMS.step);
 
     thisStep.hidden = true;
     thisStep.nextElementSibling.hidden = false;

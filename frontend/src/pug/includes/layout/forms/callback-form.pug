@@ -41,3 +41,11 @@ form(action="/" method="POST" novalidate id="callback-form" data-form).applicati
         .d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-6.mt-6.mt-lg-7
             button.btn.btn-primary.btn-lg-lg.w-100.w-md-auto(type="submit" disabled aria-disabled="true" data-form-button) Отправить
             div.text-m.orange-100.text-center(data-form-error)
+    div(
+        hidden
+        aria-hidden="true"
+        data-success-title="Ваше обращение успешно отправлено!"
+        data-success-info="Мы ответим на ваше обращение, по выбранному способу связи, как только получим и обработаем его"
+        data-error-title="Не удалось отправить обращение"
+        data-error-info="Проверьте правильно ли указаны все данные и отправьте обращение снова"
+    ).js-message

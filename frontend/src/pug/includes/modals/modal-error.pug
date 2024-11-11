@@ -3,7 +3,7 @@
         .modal-content
             .modal-body.d-flex.flex-column.row-gap-4.row-gap-md-5.row-gap-lg-6
                 img(src="img/modals/error.png").modal-img
-                .modal-title.h4.text-center Не&nbsp;удалось отправить обращение
-                p.text-l.text-center.m-0 Проверьте правильно&nbsp;ли указаны все данные и&nbsp;отправьте обращение снова
+                .modal-title.h4.text-center.js-error-title
+                p.text-l.text-center.m-0.js-error-info
             .modal-footer.border-0.justify-content-md-center
-                button.btn.btn-primary.btn-lg-lg.m-0.w-100.w-md-auto(type="button" data-bs-dismiss="modal") Вернуться
+                button.btn.btn-primary.btn-lg-lg.m-0.w-100.w-md-auto(type="button").js-error-btn Вернуться

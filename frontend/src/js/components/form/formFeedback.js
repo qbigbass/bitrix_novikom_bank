@@ -16,7 +16,6 @@ export function initFormFeedback() {
     if (!formFeedback) return;
 
     initFormPerson(formFeedback);
-
     initFormOtherEmail();
 }
 

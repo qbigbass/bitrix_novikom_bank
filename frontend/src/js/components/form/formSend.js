@@ -1,19 +1,44 @@
-const FORM_ELEMS = {
+import {STEPS_ELEMS} from "./formSteps";
+
+export const FORM_ELEMS = {
     form: "[data-form]",
     validateGroup: "[data-form-validate-group]",
     button: "[data-form-button]",
     input: "[data-form-input]",
     checkbox: "[data-form-checkbox]",
     error: "[data-form-error]",
+    radio: "input[type='radio']",
+}
+
+const MODALS_ID = {
+    success: "modal-success",
+    error: "modal-error",
+}
+
+const MESSAGE_ELEMS = {
+    messageBox: ".js-message",
+    titleSuccess: ".js-success-title",
+    infoSuccess: ".js-success-info",
+    titleError: ".js-error-title",
+    infoError: ".js-error-info",
+    btnError: ".js-error-btn"
+}
+
+const MESSAGE_ATTR = {
+    titleSuccessContent: "data-success-title",
+    infoSuccessContent: "data-success-info",
+    titleErrorContent: "data-error-title",
+    infoErrorContent: "data-error-info",
 }
 
 export async function initFormSend() {
-    const forms = document.querySelectorAll(FORM_ELEMS.form);
+    const forms = document.querySelectorAll(FORM_ELEMS.form)
 
     if (!forms.length) return;
 
     forms.forEach(form => {
         const validateGroup = form.querySelectorAll(FORM_ELEMS.validateGroup)
+        const modalId = form.closest('.modal').getAttribute('id');
 
         if (validateGroup.length) {
             validateGroup.forEach(formGroup => {
@@ -23,67 +48,111 @@ export async function initFormSend() {
             checkValidity(form)
         }
 
-        form.addEventListener('submit', handleFormSubmit)
+        form.addEventListener('submit', (event) => {
+            handleFormSubmit(event, modalId)
+        })
     })
 }
 
 
-async function handleFormSubmit(event) {
+async function handleFormSubmit(event, modalId) {
     event.preventDefault()
 
     const action = event.target.action
     const method = event.target.method
-
     const formData = new FormData(event.target)
+    const modalInstance = bootstrap.Modal.getInstance(document.getElementById(modalId))
 
     try {
         const response = await sendData(action, method, formData)
-        const data = await response.json();
+        const data = await response.json()
 
         if (data.status === 'success') {
+            modalInstance.hide()
             onSuccess(event.target)
         }
     } catch (error) {
-        onError(error)
+        console.error('Error:', error)
+        modalInstance.hide()
+        onError(event.target, modalId)
     }
 }
 
 async function sendData(action, method, data) {
     return await fetch(action, {
         method: method,
-        headers: {'Content-Type': 'multipart/form-data'},
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        },
         body: data,
     })
-
-    // Чтобы проверить, как работает
-    // обработка ответа, можно использовать
-    // поддельный ответ от сервера:
-
-    // return new Promise(resolve => {
-    //   setTimeout(() => {
-    //     resolve({
-    //       status: 400,
-    //       error: {
-    //         message: 'Что-то пошло не так!'
-    //       }
-    //     })
-    //   })
-    // })
 }
 
-function onSuccess() {
-    const modalSuccess = new bootstrap.Modal(document.getElementById('modal-success'));
-    modalSuccess.show()
+function onSuccess(form) {
+    const modalSuccessEl = document.getElementById(MODALS_ID.success)
+    const modalBsSuccess = new bootstrap.Modal(modalSuccessEl)
+    const titleEl = modalSuccessEl.querySelector(MESSAGE_ELEMS.titleSuccess)
+    const infoEl = modalSuccessEl.querySelector(MESSAGE_ELEMS.infoSuccess)
+
+    const messagesBox = form.querySelector(MESSAGE_ELEMS.messageBox)
+    const titleContent = messagesBox.getAttribute(MESSAGE_ATTR.titleSuccessContent)
+    const infoContent = messagesBox.getAttribute(MESSAGE_ATTR.infoSuccessContent)
+
+    titleEl.textContent = titleContent
+    infoEl.textContent = infoContent
+
+    modalBsSuccess.show()
+    resetForm(form)
+    resetStep(form)
 }
 
-function onError() {
-    const modalError = new bootstrap.Modal(document.getElementById('modal-error'));
-    modalError.show()
+function onError(form, modalId) {
+    const modalErrorEl = document.getElementById(MODALS_ID.error)
+    const modalBsError = new bootstrap.Modal(modalErrorEl)
+    const titleEl = modalErrorEl.querySelector(MESSAGE_ELEMS.titleError)
+    const infoEl = modalErrorEl.querySelector(MESSAGE_ELEMS.infoError)
+    const btnEL = document.querySelector(MESSAGE_ELEMS.btnError)
+
+    const messagesBox = form.querySelector(MESSAGE_ELEMS.messageBox)
+    const titleContent = messagesBox.getAttribute(MESSAGE_ATTR.titleErrorContent)
+    const infoContent = messagesBox.getAttribute(MESSAGE_ATTR.infoErrorContent)
+
+    titleEl.textContent = titleContent
+    infoEl.textContent = infoContent
+
+    btnEL.removeAttribute('data-bs-dismiss')
+    btnEL.setAttribute('data-bs-toggle', 'modal')
+    btnEL.setAttribute('data-bs-target', `#${modalId}`)
+
+    modalBsError.show()
+    resetStep(form)
+}
+
+function resetForm(form) {
+    const inputList = Array.from(form.querySelectorAll(FORM_ELEMS.input))
+    const checkboxElement = form.querySelector(FORM_ELEMS.checkbox)
+
+    inputList.forEach((inputElement) => {
+        inputElement.value = ""
+    });
+
+    if (checkboxElement) checkboxElement.checked = false
+}
+
+function resetStep(form) {
+    const steps = form.querySelectorAll(STEPS_ELEMS.step);
+
+    if (!steps) return
+
+    steps.forEach((step, index) => {
+        step.hidden = index !== 0
+    })
 }
 
 function checkValidity(form) {
     const inputList = Array.from(form.querySelectorAll(FORM_ELEMS.input))
     const checkboxElement = form.querySelector(FORM_ELEMS.checkbox)
+    const radioList = Array.from(form.querySelectorAll(FORM_ELEMS.radio))
     const buttonElement = form.querySelector(FORM_ELEMS.button)
     const formErrorElement = form.querySelector(FORM_ELEMS.error)
 
@@ -114,8 +183,14 @@ function checkValidity(form) {
     })
     if (checkboxElement) {
         checkboxElement.addEventListener('change', () => {
-            toggleInputError(checkboxElement)
             toggleButton(inputList, checkboxElement, buttonElement, formErrorElement)
+        })
+    }
+    if (radioList) {
+        radioList.forEach(radio => {
+            radio.addEventListener('change', () => {
+                toggleButton(inputList, checkboxElement, buttonElement, formErrorElement)
+            })
         })
     }
 }
@@ -150,7 +225,7 @@ function hasInvalidInput(inputList, checkboxElement) {
 }
 
 function hasEmptyRequiredInput(inputList) {
-    const emptyRequiredInputs = inputList.filter(inputElement => !inputElement.closest('[hidden]') && inputElement.required && inputElement.value === "");
+    const emptyRequiredInputs = inputList.filter(inputElement => !inputElement.closest('[hidden]') && inputElement.required && inputElement.value === "")
     return !!emptyRequiredInputs.length;
 }
 
@@ -163,7 +238,7 @@ function toggleInputError(inputElement) {
 }
 
 function toggleErrorSpan(inputElement, errorMessage) {
-    const errorElement = inputElement.parentElement.querySelector('.invalid-feedback');
+    const errorElement = inputElement.parentElement.querySelector('.invalid-feedback')
     if (errorMessage) {
         inputElement.classList.add('is-invalid')
         inputElement.classList.remove('is-required')
