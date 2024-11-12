@@ -12,15 +12,7 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 
-/** Переменные для кратких условий в щапке
- * RATE_FROM - Ставка от
- * RATE_TO - Ставка до
- * SUM_FROM - Сумма от
- * SUM_TO - Сумма до
- * PERIOD_FROM - Срок от
- * PERIOD_TO - Срок до
- * PERIOD - years / days - вывод срока в годах или днях
- */
+use Dalee\Helpers\HeaderView;
 
 $terms = [
     'RATE_FROM' => [
@@ -38,19 +30,18 @@ $terms = [
     ]
 ];
 
-// Переменные для заголовка и цвета шапки
-$headerH1 = $arResult["~NAME"];
-$headerColorClass = 'banner-product--heavy-violet';
+$headerView = new HeaderView($component);
+$helper = $headerView->helper();
 
-// Поделючение шапки
-$headerTemplate = $arResult['PROPERTIES']['HEADER_TEMPLATE']['VALUE_XML_ID'] ?? 'detailed';
-$headerFilePath = $_SERVER["DOCUMENT_ROOT"] . "/local/php_interface/include/header/news_detail/" . $headerTemplate . ".php";
-
-if (file_exists($headerFilePath)) {
-    include($headerFilePath);
-} else {
-    echo "Шаблон шапки $headerTemplate не найден";
-}?>
+$headerView->render(
+    $arResult['~NAME'],
+    $arResult['~PREVIEW_TEXT'],
+    null,
+    0,
+    $arResult,
+    $terms
+);
+?>
 
 <? if (!empty($arResult['PROPERTIES']['BENEFITS']['VALUE'])) { ?>
     <section class="section-benefits px-0 px-lg-6 py-6 py-sm-9 py-md-11 py-xl-16 position-relative overflow-hidden">
