@@ -1,6 +1,6 @@
 import Swiper from 'swiper';
 import {Autoplay, Thumbs, Pagination, Navigation, Grid} from 'swiper/modules';
-import {VARIABLES, MEDIA_QUERIES, DEFAULT_SEPARATORS, DEFAULT_SLIDER_DATA_ATTRS} from './constants';
+import {VARIABLES, MEDIA_QUERIES, DEFAULT_SEPARATORS, DEFAULT_SLIDER_DATA_ATTRS, SLIDER_ATTR} from './constants';
 
 const CLASS_NAME = {
     mobileMenu: '.js-swiper-mobile-menu',
@@ -9,9 +9,11 @@ const CLASS_NAME = {
     cardsSlider: '.js-slider-cards',
     announcementsSlider: '.js-announcement-slider',
     tabsSlider: '.js-tabs-slider',
+    wrapper: '.js-swiper-wrapper',
     slide: '.js-swiper-slide',
     prevEl: '.js-swiper-prev',
     nextEl: '.js-swiper-next',
+    controls: '.js-swiper-controls',
     pagination: '.js-swiper-pagination',
 }
 
@@ -187,6 +189,7 @@ function setTabIndex(slides) {
     });
 }
 
+let mySlider;
 export function initCardSlider() {
     const sliders = document.querySelectorAll(CLASS_NAME.cardsSlider);
 
@@ -197,6 +200,10 @@ export function initCardSlider() {
         const slidesLength = slides.length;
         const options = createSliderOptionsByAttrs(sliderDataAttrs, slidesLength);
 
+        const destroyBreakpoints = slider.getAttribute(SLIDER_ATTR.destroyBreakpoint);
+        const wrapper = slider.querySelector(CLASS_NAME.wrapper);
+        const controls = slider.querySelector(CLASS_NAME.controls)
+
         options.on = {
             init: function () {
                 setTabIndex(this.slides);
@@ -206,8 +213,50 @@ export function initCardSlider() {
             },
         };
 
-        new Swiper(slider, options);
+        if (!destroyBreakpoints) {
+            new Swiper(slider, options);
+        } else  {
+            cardSliderMode(slider, options, destroyBreakpoints, wrapper, slides, controls);
+        }
+
+        window.addEventListener('resize', function () {
+            cardSliderMode(slider, options, destroyBreakpoints, wrapper, slides, controls);
+        });
     })
+}
+
+function cardSliderMode(slider, options, destroyBreakpoints, wrapper, slides, controls) {
+    let init = false;
+    let toggleSlider = null;
+
+    const breakpoint = window.matchMedia(`(min-width: ${MEDIA_QUERIES[destroyBreakpoints]})`);
+
+    if (!breakpoint.matches) {
+        wrapper.classList.remove('row');
+        wrapper.classList.add('swiper-wrapper');
+        slides.forEach(slide => {
+            slide.classList.add('swiper-slide');
+        })
+        controls.hidden = false;
+
+        if (!init) {
+            toggleSlider = new Swiper(slider, options);
+            init = true;
+        }
+    } else {
+        wrapper.classList.add('row');
+        wrapper.classList.remove('swiper-wrapper');
+        slides.forEach(slide => {
+            slide.classList.remove('swiper-slide');
+            slide.removeAttribute('style');
+        })
+        controls.hidden = true;
+
+        if (init) {
+            toggleSlider.destroy(true, true);
+            init = false;
+        }
+    }
 }
 
 export function initAnnouncementSlider() {

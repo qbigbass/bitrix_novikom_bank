@@ -37,6 +37,7 @@
     &--type-img {
         position: relative;
         overflow: hidden;
+        height: 100%;
 
         @include use-media(laptop) {
             min-height: 19rem; //304px

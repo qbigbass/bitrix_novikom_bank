@@ -21,3 +21,7 @@ export const DEFAULT_SLIDER_DATA_ATTRS = {
     spaceBetween: 'mobile-s:16,mobile:24,tablet:32,laptop:40',
     slidesPerView: 'mobile-s:1,mobile:1,tablet:2,laptop:3',
 }
+
+export const SLIDER_ATTR = {
+    destroyBreakpoint: 'data-slider-breakpoint-destroy',
+}

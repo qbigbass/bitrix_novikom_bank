@@ -14,7 +14,7 @@ mixin card-product(data)
                         span.btn.btn-link.btn-icon.d-none.d-md-inline-flex
                             span!= data.link
                             +svg-use("icon-chevron-right", "icon size-m")
-                    img(src="img/icons/money-orange.svg", alt="", loading="lazy").icon.size-xxl.ms-auto
+                    img(src=`img/icons/${data.iconImg ? data.iconImg : 'money-orange'}.svg`, alt="", loading="lazy").icon.size-xxl
 
     else
         .card-product(class= [`card-product--${data.color}`, data.size ? `card-product--size-${data.size}`:''])&attributes(attributes)
