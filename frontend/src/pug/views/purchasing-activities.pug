@@ -16,17 +16,17 @@ block content
         var cardProductList = [
             {
                 title: 'Документы',
-                img: 'large-individual/contribution-rentier.png',
+                img: 'large-individual/individual-documents.png',
                 link: 'Подробнее',
             },
             {
                 title: 'Закупки <br>у субъектов МСП',
-                img: 'large-corporate/account-reservation.png',
+                img: 'large-business/membership-club.png',
                 link: 'Подробнее',
             },
             {
                 title: 'Реестр <br>недобросовестных поставщиков',
-                img: 'large-corporate/account-reservation.png',
+                img: 'large-individual/evolution.png',
                 link: 'Подробнее',
             },
         ]
@@ -129,36 +129,35 @@ block content
         .container
             .row
                 .col-12
-                    p.text-l.mb-7 Закупочная деятельность АО АКБ «НОВИКОМБАНК» регулируется Федеральным законом РФ <br class="d-none d-md-block">от 18.07.2011 №223 «О закупках товаров, работ, услуг отдельными видами юридических лиц».
-
+                    p.text-l.mb-4.mb-md-6.mb-lg-7 Закупочная деятельность АО АКБ «НОВИКОМБАНК» регулируется Федеральным законом РФ <br class="d-none d-lg-block">от 18.07.2011 №223 «О закупках товаров, работ, услуг отдельными видами юридических лиц».
                     +polygon-container("violet-100")
                         +helper("img/restructuring-additional-info.png", "bg-dark-10")
-                            p.size-l.mb-3 АО АКБ «НОВИКОМБАНК» размещает информацию о проведении закупочных процедур на следующих интернет-ресурсах:
+                            p.text-l.mb-3 АО АКБ «НОВИКОМБАНК» размещает информацию о проведении закупочных процедур на следующих интернет-ресурсах:
                             ul.list.list--size-l
                                 li
-                                    span <a href="www.zakupki.gov.ru" class="link">www.zakupki.gov.ru</a> — официальный сайт Единой информационной системы в сфере закупок Российской Федерации,
+                                    span <a href="www.zakupki.gov.ru" class="link">www.zakupki.gov.ru</a> — официальный сайт Единой&nbsp;информационной системы в сфере закупок Российской Федерации,
                                 li
                                     span <a href="www.astgoz.ru" class="link">www.astgoz.ru</a> — электронная торговая площадка ООО «АСТ ГОЗ»
 
     section.section-layout.bg-dark-30
         .container
             .row
-                .d-flex.flex-wrap.flex-xl-nowrap.gap-4.gap-md-5.gap-xl-6
-                    each item, index in cardProductList
-                        -
-                            var isLastIndex = index === cardProductList.length-1
-
-                        +card-product(item)(class=isLastIndex ? 'w-100 w-xl-auto flex-basis-100 flex-basis-xl-25' : 'flex-basis-100 flex-basis-md-25').h-auto.flex-grow-1.bg-white
-    
-    section.section-announcement-list.section-layout.py-lg-12.border-top.border-blue10
+                .col-12
+                    .swiper.slider-cards.js-slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:2,tablet-album:2,laptop:3,laptop-x:3" data-space-between="mobile-s:8,mobile:8,tablet:16,tablet-album:16,laptop:40,laptop-x:40")
+                        .swiper-wrapper
+                            each item in cardProductList
+                                .swiper-slide.js-swiper-slide
+                                    +card-product(item).h-100.bg-white
+                        +slider-controls().mt-3.mt-md-4
+    section.section-announcement-list.section-layout.py-lg-11
         .container.d-flex.flex-column.row-gap-6.row-gap-lg-7
             .row.row-gap-4.row-gap-md-6.row-gap-lg-7.px-lg-6
-                p.text-l.fw-bold Уважаемые участники закупки!
+                p.mb-0.text-l.fw-bold Уважаемые участники закупки!
                 .col-12.col-lg-9
-                    p.text-l.mb-0 Уведомляем, что с 01.07.2021 для участия в закупках, проводимых в соответствии с применяемым Банком положением о закупке, требуется прохождение процедуры аккредитации. <br><br> Подробные разъяснения и порядок аккредитации размещены здесь.
+                    p.text-l.mb-0 Уведомляем, что с 01.07.2021 для участия в закупках, проводимых в соответствии с применяемым Банком положением о закупке, требуется прохождение процедуры аккредитации. <br><br> Подробные разъяснения и порядок аккредитации размещены <a class="blue-100" href="#">здесь</a>.
             .row.px-lg-6
-                .col-12.col-lg-8.col-xl-8
-                    .d-flex.flex-column.gap-4
+                .col-12.col-lg-9.col-xl-8
+                    .d-flex.flex-column.gap-4.gap-md-6
                         each item in announcementList
                             +announcement(item)
             .row
