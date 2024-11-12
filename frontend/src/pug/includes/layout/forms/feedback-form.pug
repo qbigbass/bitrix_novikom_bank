@@ -4,6 +4,7 @@ include ../../../components/forms/input
 include ../../../components/forms/captcha
 include ../../../components/forms/confirm
 include ../../../components/forms/radio
+include ../../../components/forms/textarea
 
 -
     var feedbackForm = {
@@ -173,16 +174,9 @@ form(action="/" method="POST" novalidate id="feedback-form" data-form data-form-
                 .d-flex.flex-column.flex-md-row.flex-wrap.row-gap-3.row-gap-lg-4.column-gap-md-5.column-gap-lg-6
                     each item, index in step2.radiosTop
                         +radio(item, index, feedbackForm.formName)
-            p.text-m
+            p.text-m.m-0
                 | Спасибо, что обратились в&nbsp;Новиком! Повышение качества обслуживания для нас очень важно. С&nbsp;информацией о&nbsp;порядке и&nbsp;сроках рассмотрения обращения&nbsp;Вы можете ознакомиться по&nbsp;#[a(href="#") ссылке].
-            .d-flex.flex-column.row-gap-2
-                - var item = step2.textarea
-                label(for=item.id).form-label.mb-0
-                    != item.label
-                    if item.required
-                        span.orange-100.ms-1 *
-                textarea(id=item.id type=`${item.type || "text"}` name=item.id placeholder=item.placeholder required=item.required autocomplete="off" data-form-input).form-control.form-control-lg-lg
-                .invalid-feedback(aria-live="polite")
+            +textarea(step2.textarea, feedbackForm.formName)
             +upload-file(feedbackForm.formName)
             +captcha(feedbackForm.formName)
             +confirm(feedbackForm.formName)

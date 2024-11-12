@@ -1,0 +1,105 @@
+include ../../../components/forms/input
+include ../../../components/forms/captcha
+include ../../../components/forms/radio
+include ../../../components/forms/textarea
+
+-
+    var fraudForm = {
+        formName: "fraud",
+        inputs: [
+            {
+                id: "phone",
+                label: "Укажите ваш номер телефона",
+                placeholder: "+7",
+                required: true,
+            },
+            {
+                id: "phone-frauds",
+                label: "Телефоны мошенников",
+                placeholder: "",
+                required: true,
+            },
+            {
+                id: "date-call",
+                label: "Дата звонка мошенников",
+                placeholder: "",
+                required: true,
+                datepicker: true,
+            },
+        ],
+        radios1: [
+            {
+                id: "bank-client-true",
+                name: "bank-client",
+                value: "true",
+                text: "Клиент Банка"
+            },
+            {
+                id: "bank-client-false",
+                name: "bank-client",
+                value: "false",
+                text: "Не Клиент Банка"
+            },
+        ],
+        radios2: [
+            {
+                id: "fraud-interaction-true",
+                name: "fraud-interaction",
+                value: "true",
+                text: "Да"
+            },
+            {
+                id: "fraud-interaction-false",
+                name: "fraud-interaction",
+                value: "false",
+                text: "Нет"
+            },
+        ],
+        textarea: {
+            id: "add-info",
+            label: "Дополнительная информация (опишите ситуацию)",
+            placeholder: "Введите сообщение",
+            required: true,
+        },
+    }
+
+form(action="/" method="POST" novalidate id="fraud-form" data-form).application-form
+    .application-form__step(data-form-validate-group)
+        .d-flex.flex-column.gap-4.gap-md-5.gap-lg-6
+            .row.g-1.g-md-2.g-lg-2_5
+                .application-form__col.col-12.col-md-6
+                    fieldset
+                        legend.form-label.mb-3 Вы&nbsp;являетесь клиентом банка НОВИКОМ?
+                            span.orange-100.ms-1 *
+                        .d-flex.flex-column.flex-md-row.flex-wrap.row-gap-3.row-gap-lg-4.column-gap-md-5.column-gap-lg-6
+                            each item, index in fraudForm.radios1
+                                +radio(item, index, feedbackForm.formName)
+                .application-form__col.col-12.col-md-6
+                    +input(fraudForm.inputs[0], fraudForm.formName)
+            +input(fraudForm.inputs[1], fraudForm.formName)
+            .row.g-1.g-md-2.g-lg-2_5
+                .application-form__col.col-12.col-md-6
+                    fieldset
+                        legend.form-label.mb-3 Мошенникам озвучивались коды из&nbsp;СМС, пароли или&nbsp;были несанкционированные списания по&nbsp;картам?
+                            span.orange-100.ms-1 *
+                        .d-flex.flex-column.flex-md-row.flex-wrap.row-gap-3.row-gap-lg-4.column-gap-md-5.column-gap-lg-6
+                            each item, index in fraudForm.radios2
+                                +radio(item, index, feedbackForm.formName)
+                .application-form__col.col-12.col-md-6
+                    +input(fraudForm.inputs[2], fraudForm.formName)
+
+            +textarea(fraudForm.textarea, fraudForm.formName)
+            +captcha(fraudForm.formName)
+            p.text-m.m-0 В&nbsp;ближайшее время для уточнения с&nbsp;Вами свяжется специалист Банка
+        .d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-6.mt-6.mt-lg-7
+            button.btn.btn-primary.btn-lg-lg.w-100.w-md-auto(type="submit" disabled aria-disabled="true" data-form-button) Отправить
+            button.btn.btn-outline-primary.btn-lg-lg.w-100.w-md-auto(type="button" data-bs-dismiss="modal") Отменить
+            div.text-m.orange-100.text-center(data-form-error)
+    div(
+        hidden
+        aria-hidden="true"
+        data-success-title="Ваше обращение успешно отправлено!"
+        data-success-info="Мы ответим на ваше обращение, по выбранному способу связи, как только получим и обработаем его"
+        data-error-title="Не удалось отправить обращение"
+        data-error-info="Проверьте правильно ли указаны все данные и отправьте обращение снова"
+    ).js-message
