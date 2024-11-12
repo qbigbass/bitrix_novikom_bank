@@ -892,6 +892,24 @@ block content
                 .row
                     .col-12.col-md-6.col-xl-3
                         .d-flex.flex-column.row-gap-2
+                            label(for="inp20").form-label.mb-0
+                                | textarea
+                                span.orange-100.ms-1 *
+                            textarea#inp20(type="text" name="name5" placeholder="Введите текст").form-control.form-control-lg-lg
+                            span.caption-m.dark-70.d-block Подсказка
+
+                .row
+                    .col-12.col-md-6.col-xl-3
+                        .d-flex.flex-column.row-gap-2
+                            label(for="inp19").form-label.mb-0
+                                | form-control-lg-lg
+                                span.orange-100.ms-1 *
+                            input#inp19(type="text" name="name5" placeholder="Введите текст").form-control.form-control-lg-lg
+                            span.caption-m.dark-70.d-block Подсказка
+
+                .row
+                    .col-12.col-md-6.col-xl-3
+                        .d-flex.flex-column.row-gap-2
                             label(for="inp5").form-label.mb-0
                                 | Наименование
                                 span.orange-100.ms-1 *
@@ -1404,4 +1422,14 @@ block content
                                 td(colspan="2") Larry the Bird
                                 td @twitter
 
-
+    section#alert.section-layout.pt-0
+        .container
+            .row.px-lg-6
+                .col-12
+                    h3.mb-4.mb-md-6.mb-lg-7
+                        | Alerts
+            .row.px-lg-6
+                .col-12
+                    .alert.d-flex.align-items-center.gap-3.bg-dark-10(role="alert")
+                        +svg-use("icon-alert", "icon dark-70 size-m").flex-shrink-0
+                        div.text-m.dark-70 Оформление карты для новых клиентов Банка осуществляется при личном присутствии клиента в&nbsp;офисе Банка с&nbsp;документом, удостоверяющим личность

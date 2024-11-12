@@ -1,0 +1,6 @@
+mixin confirm(formName)
+    .form-check&attributes(attributes)
+        input(id=`${formName}_confirm` type="checkbox" name="request_confirm" value="" required data-form-checkbox data-form-input).form-check-input
+        label(for=`${formName}_confirm`).form-check-label
+            | Подтверждаю согласие на #[a(href="#") обработку персональных данных]
+        .invalid-feedback.w-100(aria-live="polite")

@@ -19,7 +19,7 @@ mixin banner-product(data)
                 if data.benefits
                     .banner-product__benefits-list
                         each benefit in data.benefits
-                            +benefit-text(benefit, benefit.colorClass)
+                            +benefit-text(benefit, benefit.colorClass)(class=benefit.widthMinContent&&'w-min-content')
                 if data.buttonText
                    a(href= data.urlHref class= data.type === 'corp' ? 'btn-orange' : 'btn-tertiary').btn.btn-lg-lg.banner-product__button!= data.buttonText
             if data.footer

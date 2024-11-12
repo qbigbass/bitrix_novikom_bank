@@ -1,0 +1,5 @@
+mixin radio(data, index, formName)
+    - var { id, name, value, text } = data;
+    .form-check
+        input(type="radio" id=`${formName}_${id}` name = name value= value checked = index === 0).form-check-input
+        label(for=`${formName}_${id}`).form-check-label!= text
