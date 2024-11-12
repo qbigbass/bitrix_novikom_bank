@@ -49,7 +49,7 @@ const createSliderOptionsByAttrs = (dataAttrs, slidesLength) => {
                     const optionBreakpointKey = Number.parseInt(MEDIA_QUERIES[mqKey]);
 
                     const optionBreakpointValue = {
-                        [attrKey]: mqValue
+                        [attrKey]: attrKey === 'autoHeight' ? mqValue === "true" : mqValue
                     }
 
                     if (!options?.breakpoints) {
