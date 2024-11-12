@@ -258,5 +258,18 @@ export function initTabsSlider() {
             prevEl: ".js-tabs-slider-navigation-prev",
             nextEl: ".js-tabs-slider-navigation-next",
         },
+        on: {
+            init: function () {
+                let indexActive = 0;
+                
+                this.el.querySelectorAll('.tabs-panel__list-item-link').forEach((el, index) => {
+                    if (el.classList.contains('active')) {
+                        indexActive = index;
+                    }
+                });
+                
+                this.activeIndex = indexActive;
+            },
+        },
     });
 }
