@@ -5,6 +5,11 @@ button {
     cursor: pointer;
 }
 
+.btn {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .btn-lg {
     line-height: 1.35;
 }
@@ -13,6 +18,15 @@ button {
     line-height: 1.2;
     font-weight: 600;
     height: 1.75rem;
+}
+
+.btn:disabled,
+.btn.disabled {
+    color: var(--dark-50);
+    pointer-events: none;
+    background-color: var(--dark-30);
+    border-color: var(--dark-30);
+    opacity: 1;
 }
 
 .btn-primary {

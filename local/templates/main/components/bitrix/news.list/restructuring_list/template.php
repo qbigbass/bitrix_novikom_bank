@@ -14,7 +14,11 @@ $this->setFrameMode(true);
 ?>
 
 <? foreach ($arResult['ITEMS'] as $key => $item) { ?>
-    <div class="col-12<? if ($key != count($arResult['ITEMS']) - 1 || count($arResult['ITEMS']) <= 2) { ?> col-lg-6<? } ?>">
+    <?
+    $this->AddEditAction($item['ID'], $item['EDIT_LINK'], CIBlock::GetArrayByID($item["IBLOCK_ID"], "ELEMENT_EDIT"));
+    $this->AddDeleteAction($item['ID'], $item['DELETE_LINK'], CIBlock::GetArrayByID($item["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
+    ?>
+    <div class="col-12<? if ($key != count($arResult['ITEMS']) - 1 || count($arResult['ITEMS']) <= 2) { ?> col-lg-6<? } ?>" id="<?=$this->GetEditAreaId($item['ID']);?>">
         <div class="card-text d-inline-flex px-3 px-md-4 p-4 p-sm-5 p-lg-6 bg-white w-100 h-100">
             <div class="card-text__inner d-flex flex-column gap-6 gap-md-7 justify-content-between h-100">
                 <div class="card-text__content d-flex flex-column gap-3 gap-md-4">

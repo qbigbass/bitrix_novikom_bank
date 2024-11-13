@@ -15,7 +15,7 @@
     }
 
     @include use-media(laptop) {
-        height: calc(var(--banner-height) + var(--border-top-width));
+        min-height: calc(var(--banner-height) + var(--border-top-width));
         overflow: hidden;
     }
 

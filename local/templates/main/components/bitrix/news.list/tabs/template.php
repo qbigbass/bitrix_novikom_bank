@@ -49,6 +49,7 @@ $this->setFrameMode(true);
                          aria-labelledby="additional-info-<?= $tab['ID'] ?>"
                          tabindex="0"
                          role="tabpanel">
+                        <div class="row row-gap-6 row-gap-md-9 row-gap-lg-11">
 
                         <? if (
                             !empty($tab['CODE']) && ($tab['CODE'] == 'protsentnye-stavki' || $tab['CODE'] == 'stavki')
@@ -61,37 +62,156 @@ $this->setFrameMode(true);
                         <? if (!empty($tab['DISPLAY_PROPERTIES'])) {
                             foreach ($tab['DISPLAY_PROPERTIES'] as $property) {
 
-                                if ($property['CODE'] == 'ICONS_WITH_DESCRIPTION' && !empty($property['~VALUE'])) { ?>
-                                    <div class="row row-gap-6 mt-7 mt-md-7 mt-lg-8">
+                                if ($property['CODE'] == 'BENEFITS' && !empty($property['VALUE'])) {
 
+                                    global $benefitsFilter;
+                                    $benefitsFilter = [
+                                        'ACTIVE' => 'Y',
+                                        'ID' => $property['VALUE']
+                                    ];
+
+                                    $APPLICATION->IncludeComponent(
+                                        "bitrix:news.list",
+                                        "benefits",
+                                        [
+                                            "ACTIVE_DATE_FORMAT" => "d.m.Y",
+                                            "ADD_SECTIONS_CHAIN" => "N",
+                                            "AJAX_MODE" => "N",
+                                            "AJAX_OPTION_ADDITIONAL" => "",
+                                            "AJAX_OPTION_HISTORY" => "N",
+                                            "AJAX_OPTION_JUMP" => "N",
+                                            "AJAX_OPTION_STYLE" => "Y",
+                                            "CACHE_FILTER" => "Y",
+                                            "CACHE_GROUPS" => "Y",
+                                            "CACHE_TIME" => "36000000",
+                                            "CACHE_TYPE" => "A",
+                                            "CHECK_DATES" => "Y",
+                                            "COL_COUNT" => "3",
+                                            "DETAIL_URL" => "",
+                                            "DISPLAY_BOTTOM_PAGER" => "N",
+                                            "DISPLAY_TOP_PAGER" => "N",
+                                            "FIELD_CODE" => ["CODE","NAME","PREVIEW_TEXT","PREVIEW_PICTURE",""],
+                                            "FILTER_NAME" => "benefitsFilter",
+                                            "HIDE_LINK_WHEN_NO_DETAIL" => "N",
+                                            "IBLOCK_ID" => iblock('benefits'),
+                                            "IBLOCK_TYPE" => "additional",
+                                            "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+                                            "INCLUDE_SUBSECTIONS" => "N",
+                                            "MESSAGE_404" => "",
+                                            "NEWS_COUNT" => "20",
+                                            "PAGER_BASE_LINK_ENABLE" => "N",
+                                            "PAGER_DESC_NUMBERING" => "N",
+                                            "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+                                            "PAGER_SHOW_ALL" => "N",
+                                            "PAGER_SHOW_ALWAYS" => "N",
+                                            "PAGER_TEMPLATE" => ".default",
+                                            "PAGER_TITLE" => "Новости",
+                                            "PARENT_SECTION" => "",
+                                            "PARENT_SECTION_CODE" => "",
+                                            "PREVIEW_TRUNCATE_LEN" => "",
+                                            "PROPERTY_CODE" => ["",""],
+                                            "SET_BROWSER_TITLE" => "N",
+                                            "SET_LAST_MODIFIED" => "N",
+                                            "SET_META_DESCRIPTION" => "N",
+                                            "SET_META_KEYWORDS" => "N",
+                                            "SET_STATUS_404" => "N",
+                                            "SET_TITLE" => "N",
+                                            "SHOW_404" => "N",
+                                            "SORT_BY1" => "ACTIVE_FROM",
+                                            "SORT_BY2" => "SORT",
+                                            "SORT_ORDER1" => "DESC",
+                                            "SORT_ORDER2" => "ASC",
+                                            "STRICT_SECTION_CHECK" => "N",
+                                        ],
+                                        $component
+                                    );
+                                }
+
+                                if ($property['CODE'] == 'TEXT_BLOCK_DESCRIPTION' && !empty($property['~VALUE'])) {
+                                    foreach ($property['~VALUE'] as $key => $value) { ?>
+                                        <div class="col-12 col-xxl-8">
+                                            <h4 class="mb-4 mb-md-6 mb-lg-7"><?= $property['DESCRIPTION'][$key] ?? '' ?></h4>
+                                            <?= $value['TEXT'] ?>
+                                        </div>
+                                    <? }
+                                }
+
+                                if ($property['CODE'] == 'COMPLEX_PROP' && !empty($property['~VALUE'])) { ?>
+                                    <div class="accordion accordion--size-lg accordion--bg-transparent" id="accordion-insurance-more">
                                         <? foreach ($property['~VALUE'] as $key => $value) { ?>
-                                            <div class="col-12 col-md-6 col-lg-4">
-                                                <div class="benefit d-flex gap-3 flex-column flex-md-row align-items-md-center gap-md-4 gap-lg-6">
-                                                    <img class="icon size-lxl" src="<?= CFile::GetPath($value) ?>" alt="icon" loading="lazy">
-                                                    <div class="benefit__content d-flex flex-column gap-3">
-                                                        <h5 class="benefit__title fw-semibold"><?= $property['~DESCRIPTION'][$key] ?></h5>
+                                            <div class="accordion-item">
+                                                <div class="accordion-header">
+                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#<?= $key ?>" aria-controls="<?= $key ?>">
+                                                        <span class="h4"><?= $value['SUB_VALUES']['COMPLEX_HEADER']['~VALUE'] ?></span>
+                                                    </button>
+                                                </div>
+                                                <div class="accordion-collapse collapse" id="<?= $key ?>" data-bs-parent="#accordion-insurance-more">
+                                                    <div class="accordion-body">
+                                                        <div class="d-flex flex-column gap-4 gap-md-5 gap-lg-7">
+                                                            <? foreach ($value['SUB_VALUES'] as $subKey => $subValue) {
+                                                                if ($subKey == 'COMPLEX_TEXT_FIELD' && !empty($subValue['~VALUE']['TEXT'])) { ?>
+                                                                    <p class="text-l mb-0 dark-100"><?= $subValue['~VALUE']['TEXT'] ?></p>
+                                                                <? }
+                                                                if ($subKey == 'COMPLEX_LIST' && !empty($subValue['~VALUE']['TEXT'])) { ?>
+                                                                    <div>
+                                                                        <div class="text-l fw-semibold mb-3"><?= $value['SUB_VALUES']['COMPLEX_LIST_HEADER']['~VALUE'] ?? '' ?></div>
+                                                                        <?= $subValue['~VALUE']['TEXT'] ?>
+                                                                    </div>
+                                                                <? }
+                                                                if ($subKey == 'COMPLEX_FILE' && !empty($subValue['VALUE'])) {
+                                                                    $file = CFile::GetFileArray($subValue['VALUE']);
+                                                                    $fileData = explode('.', $file['ORIGINAL_NAME']);
+                                                                    $fileName = $fileData[0];
+                                                                    $fileType = $fileData[1];
+                                                                    ?>
+                                                                    <div>
+                                                                        <div class="text-l fw-bold mb-3"><?= $value['SUB_VALUES']['COMPLEX_HEADER_FILE']['~VALUE'] ?? '' ?></div>
+                                                                        <div class="link-list">
+                                                                            <a class="d-flex flex-column gap-1 py-3 document-download text-m" href="#" download="">
+                                                                                <?= $fileName ?>
+                                                                                <div class="d-flex gap-1 align-items-center">
+                                                                                    <div class="document-download__file caption-m dark-70">
+                                                                                        <span class="document-download__date-time"><?= date('d.m.Y H:i', strtotime($file['TIMESTAMP_X'])) ?> </span>
+                                                                                        <span class="document-download__file-type"><?= mb_strtoupper($fileType) ?></span>
+                                                                                    </div>
+                                                                                    <span class="icon size-s text-primary">
+                                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                                                                            <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-download-small"></use>
+                                                                                        </svg>
+                                                                                    </span>
+                                                                                </div>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                <? }
+                                                            } ?>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         <? } ?>
-
                                     </div>
                                 <? }
 
-                                if ($property['CODE'] == 'CONDITIONS_ICONS' && !empty($property['~VALUE'])) { ?>
-                                    <div class="row row-gap-6 mt-7 mt-md-7 mt-lg-8">
-
-                                        <? foreach ($property['~VALUE'] as $key => $value) { ?>
-                                            <div class="col-12 col-md-6 col-lg-4">
-                                                <div class="benefit d-flex gap-3 flex-column flex-md-row align-items-md-center gap-md-4 gap-lg-6">
-                                                    <img class="icon size-lxl" src="<?= CFile::GetPath($value) ?>" alt="icon" loading="lazy">
-                                                    <div class="benefit__content d-flex flex-column gap-3">
-                                                        <h5 class="benefit__title fw-semibold"><?= $property['~DESCRIPTION'][$key] ?></h5>
+                                if (($property['CODE'] == 'CONDITIONS_ICONS' || $property['CODE'] == 'ICONS_WITH_DESCRIPTION') && !empty($property['~VALUE'])) { ?>
+                                    <div class="col-12 col-xl-8">
+                                        <? if (!empty($tab['PROPERTIES']['ICONS_WITH_DESCRIPTION_HEADER']['VALUE'])) { ?>
+                                            <h4 class="mb-4 mb-md-6">
+                                                <?= $tab['PROPERTIES']['ICONS_WITH_DESCRIPTION_HEADER']['VALUE'] ?>
+                                            </h4>
+                                        <? } ?>
+                                        <div class="row row-gap-6">
+                                            <? foreach ($property['~VALUE'] as $key => $value) { ?>
+                                                <div class="col-12 col-md-6 <?= count($property['~VALUE']) < 3 ? 'col-lg-6' : 'col-lg-4' ?>">
+                                                    <div class="benefit d-flex gap-3 flex-column flex-md-row align-items-md-center gap-md-4 gap-lg-6">
+                                                        <img class="icon size-lxl" src="<?= CFile::GetPath($value) ?>" alt="icon" loading="lazy">
+                                                        <div class="benefit__content d-flex flex-column gap-3">
+                                                            <h5 class="benefit__title fw-semibold"><?= $property['~DESCRIPTION'][$key] ?></h5>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        <? } ?>
-
+                                            <? } ?>
+                                        </div>
                                     </div>
                                 <? }
 
@@ -140,6 +260,11 @@ $this->setFrameMode(true);
 
                                 if ($property['CODE'] == 'TEXT_FIELD' && !empty($property['~VALUE']['TEXT'])) { ?>
                                     <div class="w-100 w-xl-75 rte mt-7 mt-md-7 mt-lg-8">
+                                        <? if (!empty($tab['PROPERTIES']['TEXT_FIELD_HEADER']['VALUE'])) { ?>
+                                            <h4 class="mb-4 mb-md-6">
+                                                <?= $tab['PROPERTIES']['TEXT_FIELD_HEADER']['VALUE'] ?>
+                                            </h4>
+                                        <? } ?>
                                         <?= $property['~VALUE']['TEXT'] ?>
                                     </div>
                                 <? }
@@ -242,7 +367,7 @@ $this->setFrameMode(true);
                                                     <div class="accordion-item">
                                                         <div class="accordion-header">
                                                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#<?= $question['ID'] ?>" aria-controls="<?= $question['ID'] ?>">
-                                                                <?= $question['~NAME'] ?>
+                                                                <?= $question['NAME'] ?>
                                                             </button>
                                                         </div>
                                                         <div class="accordion-collapse collapse" id="<?= $question['ID'] ?>" data-bs-parent="#accordion-<?= $property['ID'] ?>">
@@ -284,7 +409,7 @@ $this->setFrameMode(true);
                                                                     aria-controls="<?= $section['ID'] ?>"
                                                                     <?= $key == array_key_first($property['LINK_SECTION_VALUE']) ? 'aria-expanded="true"' : '' ?>
                                                                 >
-                                                                    <?= $section['~NAME'] ?>
+                                                                    <?= $section['NAME'] ?>
                                                                 </button>
                                                             </div>
                                                             <div class="accordion-collapse collapse <?= $key == array_key_first($property['LINK_SECTION_VALUE']) ? 'show' : '' ?>" id="<?= $section['ID'] ?>" data-bs-parent="#accordion-<?= $property['ID'] ?>">
@@ -325,6 +450,7 @@ $this->setFrameMode(true);
                                 <? }
                             }
                         }?>
+                        </div>
                     </div>
                 <? } ?>
             </div>
