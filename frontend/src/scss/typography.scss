@@ -12,15 +12,18 @@ h1, .h1 {
 
     font-size: map-get($font-size-body, large-x);
     line-height: 125%;
+    font-weight: 600;
 
     @include use-media(tablet) {
         font-size: map-get($font-size-body, large);
         line-height: 132%;
+        font-weight: 700;
     }
 
     @include use-media(tablet-album) {
         font-size: map-get($font-size-body, xxl);
         line-height: 122%;
+
     }
 }
 
@@ -211,5 +214,9 @@ h6, .h6 {
 
 .text-balance {
   text-wrap: balance;
+}
+
+.text-hyphens {
+  hyphens: auto;
 }
 
