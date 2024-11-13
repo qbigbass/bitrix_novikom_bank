@@ -20,6 +20,15 @@ button {
     height: 1.75rem;
 }
 
+.btn:disabled,
+.btn.disabled {
+    color: var(--dark-50);
+    pointer-events: none;
+    background-color: var(--dark-30);
+    border-color: var(--dark-30);
+    opacity: 1;
+}
+
 .btn-primary {
     &:hover {
         background-color: var(--violet-150);

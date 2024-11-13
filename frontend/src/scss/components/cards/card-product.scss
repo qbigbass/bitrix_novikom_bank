@@ -252,4 +252,8 @@
             }
         }
     }
+
+    &--size-height-auto {
+        min-height: 0;
+    }
 }

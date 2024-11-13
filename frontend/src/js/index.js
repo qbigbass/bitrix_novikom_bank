@@ -13,6 +13,10 @@ import initInputSlider from "./components/inputSlider";
 import showMoreContent from "./components/showMoreContent";
 import initDatepicker from './components/datepicker.js'
 import setPage from "./components/setPage";
+import {initFormSteps} from "./components/form/formSteps";
+import {initFormFeedback} from "./components/form/formFeedback";
+import {initFormSend, initFormValidation} from "./components/form/formSend";
+import {initUploadFile} from "./components/form/uploadFile";
 
 document.addEventListener('DOMContentLoaded', () => {
     initDropdownMenu();
@@ -31,6 +35,10 @@ document.addEventListener('DOMContentLoaded', () => {
     showMoreContent();
     initDatepicker();
     setPage();
+    initFormSteps();
+    initFormFeedback();
+    initFormSend();
+    initUploadFile();
 });
 
 window.onload = function() {

@@ -1,0 +1,52 @@
+.form-step {
+    position: relative;
+    gap: 0.5rem;
+    background-color: var(--dark-10);
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    color: var(--dark-70);
+    overflow: hidden;
+
+    @include use-media(tablet-album) {
+        border-radius: 0.75rem;
+        padding: 1rem;
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    &__progress {
+        width: 100%;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        height: 2px;
+        border-radius: 0;
+        background-color: transparent;
+        border: 0;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+
+        &[value]::-webkit-progress-bar {
+            background: transparent;
+        }
+
+        &[value]::-webkit-progress-value {
+            background-color: var(--green-100);
+        }
+
+        &[value]::-moz-progress-bar {
+            background-color: var(--green-100);
+        }
+
+        @include use-media(tablet-album) {
+            height: 4px;
+        }
+    }
+}

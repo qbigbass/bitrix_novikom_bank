@@ -1,0 +1,31 @@
+extends ../templates/base
+
+block title
+    title= "Модальные окна"
+    meta(name="description" content="Описание главной страницы")
+block content
+    include ../includes/header/header
+
+    section#modals.section-layout
+        .container
+            .d-flex.flex-column.row-gap-5
+                h2 Формы
+                .d-flex.flex-column.align-items-start.row-gap-3
+                    button.btn.btn-primary(type="button" data-bs-toggle="modal" data-bs-target="#modal-success") Результаты - успешно
+                    button.btn.btn-primary(type="button" data-bs-toggle="modal" data-bs-target="#modal-error") Результаты - ошибка
+                    button.btn.btn-primary(type="button" data-bs-toggle="modal" data-bs-target="#modal-callback-form") Заказать звонок
+                    button.btn.btn-primary(type="button" data-bs-toggle="modal" data-bs-target="#modal-feedback-form") Направить обращение
+                    button.btn.btn-primary(type="button" data-bs-toggle="modal" data-bs-target="#modal-loan-form") Заявка на кредит
+                    button.btn.btn-primary(type="button" data-bs-toggle="modal" data-bs-target="#modal-credit-card-form") Заявка на кредитную карту
+                    button.btn.btn-primary(type="button" data-bs-toggle="modal" data-bs-target="#modal-mortgage-form") Заявка на ипотеку
+                    button.btn.btn-primary(type="button" data-bs-toggle="modal" data-bs-target="#modal-consultation-form") Заявка на консультацию
+
+    include ../includes/modals/modal-success
+    include ../includes/modals/modal-error
+    include ../includes/modals/modal-callback-form
+    include ../includes/modals/modal-feedback-form
+    include ../includes/modals/modal-loan-form
+    include ../includes/modals/modal-credit-card-form
+    include ../includes/modals/modal-mortgage-form
+    include ../includes/modals/modal-consultation-form
+
