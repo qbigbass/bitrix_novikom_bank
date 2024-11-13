@@ -12,6 +12,8 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 
+use Dalee\Helpers\HeaderView;
+
 $terms = [
     'RATE_FROM' => [
         'SIGN' => 'Минимальная ставка',
@@ -28,17 +30,20 @@ $terms = [
     ]
 ];
 
-$headerH1 = 'Ипотека по программе «' .  $arResult["~NAME"] . '»';
+$headerView = new HeaderView($component);
+$helper = $headerView->helper();
+
+$headerView->render(
+    'Ипотека по программе «' .  $arResult["~NAME"] . '»',
+    $arResult['~PREVIEW_TEXT'],
+    null,
+    0,
+    $arResult,
+    $terms
+);
+
 $headerColorClass = 'banner-product--heavy-violet';
-
-$headerTemplate = $arResult['PROPERTIES']['HEADER_TEMPLATE']['VALUE_XML_ID'] ?? 'detailed';
-$headerFilePath = $_SERVER["DOCUMENT_ROOT"] . "/local/php_interface/include/header/news_detail/" . $headerTemplate . ".php";
-
-if (file_exists($headerFilePath)) {
-    include($headerFilePath);
-} else {
-    echo "Шаблон шапки $headerTemplate не найден";
-}?>
+?>
 
 <? if (!empty($arResult['PROPERTIES']['BENEFITS']['VALUE'])) { ?>
     <section class="section-benefits px-0 px-lg-6 py-6 py-sm-9 py-md-11 py-xl-16 position-relative overflow-hidden">
