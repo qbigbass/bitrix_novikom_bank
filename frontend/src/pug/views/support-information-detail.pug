@@ -1,0 +1,80 @@
+extends ../templates/base
+
+block title
+    title= "Поддержка / Продукты и услуги / Внутренняя"
+    meta(name="description" content="Описание страницы Продукты и услуги")
+block content
+
+    include ../includes/header/header
+    include ../components/banners/banner-text
+    include ../cards/card-promo
+
+    -
+        var bannerTextData = {
+            title: "Вклады",
+            breadcrumbsArray: [
+                {linkText: "Поддержка", link: "/"}
+            ],
+        }
+
+        var cardPromo = {
+            title: "Финансовая грамотность",
+            text: "Финансовая грамотность позволит достичь гармонии с&nbsp;деньгами. <br>Они перестанут быть причиной переживаний или самоцелью и&nbsp;превратятся в&nbsp;инструмент достижения ваших целей. И&nbsp;вот каким будет путь к&nbsp;этому",
+            image: "big-illustrations/large-individual/faq-fin-competition.png",
+        }
+
+        var paginationObject = {
+            prevLink: "",
+            nextLink: "#2",
+            lastLink: {
+                link: "#123",
+                linkText: "123",
+            },
+            list: [
+                {
+                    link: "#1",
+                    linkText: "1",
+                    isActive: true,
+                },
+                {
+                    link: "#2",
+                    linkText: "2"
+                },
+                {
+                    link: "#3",
+                    linkText: "3"
+                },
+                {
+                    link: "#4",
+                    linkText: "4"
+                }
+            ]
+        }
+
+    +banner-text(
+        bannerTextData
+    )
+
+    section.section-layout.px-lg-6
+        .container
+            form.w-100.mb-4.mb-md-6.mb-lg-7
+                .input-group.flex-nowrap.d-none.d-lg-flex
+                    span.input-group-icon.bg-transparent
+                        span.icon.violet-100
+                            +svg-use("icon-search")
+                    input#input-search.form-control.form-control-lg.text-l.bg-transparent(type="text", placeholder="Поиск по разделу", aria-label="Поиск по разделу", aria-describedby="input-search" tabindex="-1")
+                .input-group.flex-nowrap.d-flex.d-lg-none
+                    span.input-group-icon.bg-transparent
+                        span.icon.violet-100
+                            +svg-use("icon-search")
+                    input#input-search-mobile.form-control.ps-0.text-s.bg-transparent(type="text", placeholder="Поиск по разделу", aria-label="Поиск по разделу", aria-describedby="#input-search-mobile" tabindex="-1")
+            include ../includes/layout/tabs/insurance-more
+
+    section.section-layout.bg-dark-10
+        .container
+            .row
+                .col-12
+                    +card-promo(cardPromo).card-promo--heavy-blue
+                        a(href="#").btn.btn-info.btn-lg-lg.w-100.w-md-auto Подробнее
+
+    include ../includes/layout/section-feedback

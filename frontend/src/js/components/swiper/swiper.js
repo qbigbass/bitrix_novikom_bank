@@ -217,11 +217,11 @@ export function initCardSlider() {
             new Swiper(slider, options);
         } else  {
             cardSliderMode(slider, options, destroyBreakpoints, wrapper, slides, controls);
-        }
 
-        window.addEventListener('resize', function () {
-            cardSliderMode(slider, options, destroyBreakpoints, wrapper, slides, controls);
-        });
+            window.addEventListener('resize', function () {
+                cardSliderMode(slider, options, destroyBreakpoints, wrapper, slides, controls);
+            });
+        }
     })
 }
 
@@ -310,13 +310,13 @@ export function initTabsSlider() {
         on: {
             init: function () {
                 let indexActive = 0;
-                
+
                 this.el.querySelectorAll('.tabs-panel__list-item-link').forEach((el, index) => {
                     if (el.classList.contains('active')) {
                         indexActive = index;
                     }
                 });
-                
+
                 this.activeIndex = indexActive;
             },
         },
