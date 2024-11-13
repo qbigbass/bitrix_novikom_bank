@@ -5,6 +5,11 @@ button {
     cursor: pointer;
 }
 
+.btn {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .btn-lg {
     line-height: 1.35;
 }

@@ -20,7 +20,7 @@
                 background: linear-gradient(-90deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 69.91%);
             }
         }
-        
+
         &-item.swiper-button-disabled {
             opacity: 0;
             pointer-events: none;
@@ -35,7 +35,7 @@
     }
 
     &__list-item {
-        
+
         &-link {
             --bs-nav-tabs-link-hover-border-color: transparent;
             --bs-nav-link-padding-x: 1.5rem;
@@ -45,11 +45,14 @@
             border-radius: var(--bs-border-radius)!important;
             padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x)!important;
             white-space: nowrap;
+            line-height: 1.5;
 
-            @include use-media(tablet) {
+            @include use-media(tablet-album) {
                 --bs-nav-link-padding-x: 2.5rem;
+                //--bs-nav-link-padding-x: calc(2.5rem - 2px);
                 --bs-nav-link-padding-y: 1rem;
                 --bs-nav-link-font-size: 1.125rem;
+                line-height: 1.35;
             }
 
             &:hover {

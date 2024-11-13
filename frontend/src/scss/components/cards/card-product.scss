@@ -162,6 +162,12 @@
         &:before {
             display: none;
         }
+
+        #{$root}__description {
+          @include use-media(tablet-album) {
+            max-width: 80%;
+          }
+        }
     }
 
     &--bg-white {

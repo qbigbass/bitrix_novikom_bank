@@ -8,10 +8,10 @@ mixin tabs-simple(tabsList, isSmallTabs=false)
     .tabs-panel.js-tabs-slider.overflow-hidden.position-relative.px-1(class=isSmallTabs && 'tabs-panel--small')
         .tabs-panel__navigation.d-none.d-lg-block.js-tabs-slider-navigation.w-100
             span.tabs-panel__navigation-item.tabs-panel__navigation-item-reverse.js-tabs-slider-navigation-prev.h-100.d-flex.align-items-center.justify-content-start.px-1.z-3.position-absolute.start-0.top-0
-                span.icon.size-m
+                span.icon.size-s
                     +svg-use("icon-chevron-left")
             span.tabs-panel__navigation-item.js-tabs-slider-navigation-next.h-100.d-flex.align-items-center.justify-content-end.px-1.z-3.position-absolute.end-0.top-0
-                span.icon.size-m
+                span.icon.size-s
                     +svg-use("icon-chevron-right")
 
         ul.swiper-wrapper.tabs-panel__list.nav.nav-tabs.d-inline-flex.flex-nowrap.w-auto.p-0.border.border-purple.rounded
