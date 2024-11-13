@@ -75,12 +75,12 @@ block content
 
     section.pt-6.border-top.border-blue10
         .container
-            .row.row-gap-4.row-gap-md-6.row-gap-lg-7.px-lg-6
+            .row.row-gap-6.row-gap-lg-7.px-lg-6
                 .col-12
                     +breadcrumbs(breadcrumbsArray, 'dark-70')
                 .col-12
-                    h1.h2.mb-4.mb-md-5.mb-lg-6!= vacancyData.title
-                    .d-flex.gap-3.gap-md-4.row-gap-4.align-items-center.flex-wrap
+                    h1.h2.mb-5.mb-lg-6!= vacancyData.title
+                    .d-flex.gap-4.align-items-center.flex-wrap
                         if vacancyData.tags
                             each tag in vacancyData.tags
                                 +tag(tag.text, tag.type)
@@ -93,7 +93,7 @@ block content
                     .col-12.col-lg-8.pe-lg-0
                         p.text-l.mb-0.fw-semibold!= vacancyData.description
                 .col-12.col-lg-8
-                    button.btn.btn-secondary.btn-lg-lg.d-inline-block(data-bs-toggle="modal" data-bs-target="#modal-vacancy-form") Откликнуться на вакансию
+                    button.btn.btn-secondary.btn-lg-lg.d-inline-block.w-100.w-md-auto(data-bs-toggle="modal" data-bs-target="#modal-vacancy-form") Откликнуться<span class="d-none d-md-inline"> на вакансию</span>
                 .col-12.col-lg-8.d-flex.flex-column.gap-4.pe-lg-0
                     h4 Обязанности в НОВИКОМЕ
                     ul.list.list--size-l
@@ -123,7 +123,7 @@ block content
                         li Забота о твоём здоровье: программа ДМС, куда входит стоматология и обслуживание в лучших клиниках города, скидки на абонементы в фитнес-клубы, неформальные спортивные сообщества
                         li Возможности для разнообразного досуга: скидки на услуги туристических агентств, продукты питания, в рестораны и бары, в магазины и салоны красоты
                 .col-12.col-lg-8
-                    button.btn.btn-secondary.btn-lg-lg.d-inline-block(data-bs-toggle="modal" data-bs-target="#modal-vacancy-form") Откликнуться на вакансию
+                    button.btn.btn-secondary.btn-lg-lg.d-inline-block.w-100.w-md-auto(data-bs-toggle="modal" data-bs-target="#modal-vacancy-form") Откликнуться<span class="d-none d-md-inline"> на вакансию</span>
 
     section.pb-6.pb-md-9.pb-lg-11.pt-6.pt-lg-7
         .container
@@ -133,13 +133,13 @@ block content
                         .d-flex.flex-column.gap-4
                             h5.card-contact__title.text-white-50!= cardContactData.title
                             .card-contact__contacts.d-flex.flex-column.flex-lg-row.flex-lg-wrap.gap-4
-                                a.card-contact__link.dark-0.gap-3(href=`mailto:${cardContactData.contactDetail.email}`)
+                                a.card-contact__link.dark-0.gap-3.h5.fw-normal.text-white(href=`mailto:${cardContactData.contactDetail.email}`)
                                     +svg-use("icon-mail", "icon size-m")
                                     u!= cardContactData.contactDetail.email
                                 p.card-contact__link.dark-0.mb-0.gap-3(href=`mailto:${cardContactData.contactDetail.email}`)
                                     +svg-use("icon-phone", "icon size-m")
-                                    span
-                                        span.me-2!= cardContactData.contactDetail.phone
+                                    span.d-flex.flex-wrap.justify-content-start.gap-2
+                                        span!= cardContactData.contactDetail.phone
                                         span.chip.chip--outlined.caption-m.text-white-50!= cardContactData.contactDetail.phoneChip
 
     include ../includes/layout/section-career-similar-vacancies
