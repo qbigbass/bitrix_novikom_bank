@@ -14,7 +14,10 @@ mixin banner-text-content(title, breadcrumbsArray, description, button, isSmallT
         if description
             .banner-text__description.text-l.dark-0!= description
     if button
-        a.mt-7.w-100.w-sm-auto.btn.btn-secondary.btn-lg-lg.d-inline-block(href=button.link)= button.text
+        if button.isModalTrigger && button.modalSelector
+            button.mt-7.w-100.w-sm-auto.btn.btn-secondary.btn-lg-lg.d-inline-block(type="button" data-bs-toggle="modal" data-bs-target=button.modalSelector)= button.text
+        else
+            a.mt-7.w-100.w-sm-auto.btn.btn-secondary.btn-lg-lg.d-inline-block(href=button.link)= button.text
 
 mixin banner-text(data, borderColor, bgGradient='bg-linear-blue')
     section.banner-text(class=`banner-text--border-${borderColor} ${bgGradient}`)

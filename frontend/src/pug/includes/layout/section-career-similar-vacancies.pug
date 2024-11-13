@@ -1,0 +1,45 @@
+-
+    var similarVacancies = [
+        {
+            tag: "Развитие бизнеса",
+            date: "25.04.2024",
+            title: "Руководитель по продвижению продуктов и сервисов ВЭД",
+            titleIsSmall: true
+        },
+        {
+            tag: "Развитие бизнеса",
+            date: "25.04.2024",
+            title: "Руководитель направления по развитию микробизнеса в регионах",
+            titleIsSmall: true
+        },
+        {
+            tag: "Развитие бизнеса",
+            date: "25.04.2024",
+            title: "Главный менеджер по работе с клиентами среднего бизнеса",
+            titleIsSmall: true
+        },
+        {
+            tag: "Развитие бизнеса",
+            date: "25.04.2024",
+            title: "Главный менеджер по работе с клиентами среднего бизнеса",
+            titleIsSmall: true
+        },
+    ]
+
+include ../../cards/card-special
+include ../../components/ui/tag
+
+section.section-layout
+    .container
+        .d-flex.align-items-end.ps-lg-6.mb-4.mb-md-6.mb-lg-7
+            h3 Похожие&nbsp;вакансии в&nbsp;московском НОВИКОМЕ
+            a(href="#").w-md-75.w-lg-auto.violet-100.d-flex.justify-content-end.align-items-center.gap-2.ms-auto
+                span.d-none.d-md-inline.text-s.fw-semibold.text-nowrap Больше вакансий
+                +svg-use('icon-chevron-right', 'icon size-m')
+        .swiper.js-slider-cards.slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:2,laptop:3,laptop-x:3" data-space-between="mobile-s:8,mobile:8,tablet:8,laptop:8,laptop-x:8")
+            .swiper-wrapper.js-swiper-wrapper
+                each item in similarVacancies
+                    .swiper-slide.js-swiper-slide
+                        +card-special(item)
+
+            +slider-controls().mt-3.mt-md-4

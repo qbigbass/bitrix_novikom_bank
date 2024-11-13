@@ -131,7 +131,8 @@ block content
             description: "Работа мечты",
             button: {
                 text: 'Откликнуться',
-                link: '#'
+                isModalTrigger: true,
+                modalSelector: '#modal-vacancy-form'
             }
         }
         
@@ -146,7 +147,7 @@ block content
         bannerTextData
     )
 
-    section.section-search-result.section-layout.py-lg-11.border-top.border-blue10
+    section.section-career-list.section-layout.py-lg-11.border-top.border-blue10
         .container.d-flex.flex-column.row-gap-4.row-gap-md-6.row-gap-lg-7
             .row.row-gap-4.row-gap-md-6.row-gap-lg-7.px-lg-6
                 .col-12
@@ -183,6 +184,8 @@ block content
                             +search-item(item)
             .row.px-lg-6
                 .col-12
-                    .section-search-result__pagination
+                    .section-career-list__pagination
                         +pagination(paginationObject, "start")
         +pattern-bg('section', 'light', 'd-none d-md-block pattern-bg--position-sm-top')
+
+    include ../includes/modals/modal-vacancy-form
