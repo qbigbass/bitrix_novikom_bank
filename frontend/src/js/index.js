@@ -15,8 +15,9 @@ import initDatepicker from './components/datepicker.js'
 import setPage from "./components/setPage";
 import {initFormSteps} from "./components/form/formSteps";
 import {initFormFeedback} from "./components/form/formFeedback";
-import {initFormSend, initFormValidation} from "./components/form/formSend";
+import {initFormSend} from "./components/form/formSend";
 import {initUploadFile} from "./components/form/uploadFile";
+import {initMask} from "./components/form/mask";
 
 document.addEventListener('DOMContentLoaded', () => {
     initDropdownMenu();
@@ -39,6 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initFormFeedback();
     initFormSend();
     initUploadFile();
+    initMask();
 });
 
 window.onload = function() {

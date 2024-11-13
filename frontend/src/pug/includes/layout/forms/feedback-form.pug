@@ -75,6 +75,7 @@ include ../../../components/forms/radio
                     label: "Телефон",
                     placeholder: "+7",
                     required: false,
+                    mask: "phone"
                 },
             ],
             radiosBottom: [
@@ -135,57 +136,63 @@ include ../../../components/forms/radio
 form(action="/" method="POST" novalidate id="feedback-form" data-form data-form-feedback).application-form
     .application-form__step(data-form-step data-form-validate-group)
         - var step1 = feedbackForm.step1;
-        .d-flex.flex-column.gap-4.gap-md-5.gap-lg-6
-            +form-step({
-                current: "1",
-                total: "2",
-                text: "Личные данные"
-            })
-            fieldset
+        .row.g-1.g-md-2.g-lg-2_5
+            .application-form__col.col-12
+                +form-step({
+                    current: "1",
+                    total: "2",
+                    text: "Личные данные"
+                })
+            fieldset.application-form__col.col-12
                 legend.form-label.mb-3 Вы обращаетесь как
                 .d-flex.flex-column.flex-md-row.flex-wrap.row-gap-3.row-gap-lg-4.column-gap-md-5.column-gap-lg-6
                     each item, index in step1.radiosTop
                         +radio(item, index, feedbackForm.formName)
-            .row.g-1.g-md-2.g-lg-2_5
-                each item in step1.inputs
-                    .application-form__col.col-12(class= item.id !== "organization" ? "col-md-6" : "" hidden= item.hidden)
-                        +input(item, feedbackForm.formName)
-            fieldset
+            each item in step1.inputs
+                .application-form__col.col-12(class= item.id !== "organization" ? "col-md-6" : "" hidden= item.hidden)
+                    +input(item, feedbackForm.formName)
+            fieldset.application-form__col.col-12
                 legend.form-label.mb-3 Получить ответ на E-mail
                 .d-flex.flex-column.flex-md-row.flex-wrap.row-gap-3.row-gap-lg-4.column-gap-md-5.column-gap-lg-6
                     each item, index in step1.radiosBottom
                         +radio(item, index, feedbackForm.formName)
-            .application-form__col(hidden)
+            .application-form__col.col-12(hidden)
                 +input(step1.inputReplyEmail, feedbackForm.formName)
         .d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-6.mt-6.mt-lg-7
             button.btn.btn-primary.btn-lg-lg.w-100.w-md-auto(type="button" disabled aria-disabled="true" data-form-button data-form-step-button-next) Продолжить
             div.text-m.orange-100.text-center(data-form-error)
     .application-form__step(data-form-step data-form-validate-group hidden)
         - var step2 = feedbackForm.step2;
-        .d-flex.flex-column.gap-4.gap-md-5.gap-lg-6
-            +form-step({
-                current: "2",
-                total: "2",
-                text: "Обращение"
-            })
-            fieldset
+        .row.g-1.g-md-2.g-lg-2_5
+            .application-form__col.col-12
+                +form-step({
+                    current: "2",
+                    total: "2",
+                    text: "Обращение"
+                })
+            fieldset.application-form__col.col-12
                 legend.visually-hidden Причина обращения
                 .d-flex.flex-column.flex-md-row.flex-wrap.row-gap-3.row-gap-lg-4.column-gap-md-5.column-gap-lg-6
                     each item, index in step2.radiosTop
                         +radio(item, index, feedbackForm.formName)
-            p.text-m
-                | Спасибо, что обратились в&nbsp;Новиком! Повышение качества обслуживания для нас очень важно. С&nbsp;информацией о&nbsp;порядке и&nbsp;сроках рассмотрения обращения&nbsp;Вы можете ознакомиться по&nbsp;#[a(href="#") ссылке].
-            .d-flex.flex-column.row-gap-2
-                - var item = step2.textarea
-                label(for=item.id).form-label.mb-0
-                    != item.label
-                    if item.required
-                        span.orange-100.ms-1 *
-                textarea(id=item.id type=`${item.type || "text"}` name=item.id placeholder=item.placeholder required=item.required autocomplete="off" data-form-input).form-control.form-control-lg-lg
-                .invalid-feedback(aria-live="polite")
-            +upload-file(feedbackForm.formName)
-            +captcha(feedbackForm.formName)
-            +confirm(feedbackForm.formName)
+            .application-form__col.col-12
+                p.text-m
+                    | Спасибо, что обратились в&nbsp;Новиком! Повышение качества обслуживания для нас очень важно. С&nbsp;информацией о&nbsp;порядке и&nbsp;сроках рассмотрения обращения&nbsp;Вы можете ознакомиться по&nbsp;#[a(href="#") ссылке].
+            .application-form__col.col-12
+                .d-flex.flex-column.row-gap-2
+                    - var item = step2.textarea
+                    label(for=item.id).form-label.mb-0
+                        != item.label
+                        if item.required
+                            span.orange-100.ms-1 *
+                    textarea(id=item.id type=`${item.type || "text"}` name=item.id placeholder=item.placeholder required=item.required autocomplete="off" data-form-input).form-control.form-control-lg-lg
+                    .invalid-feedback(aria-live="polite")
+            .application-form__col.col-12
+                +upload-file(feedbackForm.formName)
+            .application-form__col.col-12
+                +captcha(feedbackForm.formName)
+            .application-form__col.col-12
+                +confirm(feedbackForm.formName)
         .d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-6.mt-6.mt-lg-7
             button.btn.btn-primary.btn-lg-lg.w-100.w-md-auto(type="submit" disabled aria-disabled="true" data-form-button) Отправить
             div.text-m.orange-100.text-center(data-form-error)
