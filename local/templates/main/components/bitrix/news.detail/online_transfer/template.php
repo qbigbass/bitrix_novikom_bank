@@ -12,18 +12,17 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 
-// Переменные для заголовка и цвета шапки
-$headerH1 = $arResult["~NAME"];
-$headerColorClass = 'bg-linear-blue';
+use Dalee\Helpers\HeaderView;
 
-// Поделючение шапки
-$headerFilePath = $_SERVER["DOCUMENT_ROOT"] . "/local/php_interface/include/header/news_detail/compact.php";
+$headerView = new HeaderView($component);
+$helper = $headerView->helper();
 
-if (file_exists($headerFilePath)) {
-    include($headerFilePath);
-} else {
-    echo "Шаблон шапки $headerFilePath не найден";
-}?>
+$headerView->render(
+    $arResult['~NAME'],
+    $arResult['~PREVIEW_TEXT'],
+    ['bg-linear-blue', 'banner-text--border-green'],
+);
+?>
 
 <section class="section-layout pb-0 pt-8">
     <div class="container">
