@@ -42,8 +42,7 @@ use Dalee\Helpers\ComponentHelper;
     <section class="section-layout">
         <div class="container">
             <div class="row row-gap-6 row-gap-md-7 px-lg-6">
-                <? global $benefitsFilter;?>
-                <?$benefitsFilter = [
+                <?$GLOBALS['benefitsFilter'] = [
                     'ACTIVE' => 'Y',
                     'ID' => $arResult['DISPLAY_PROPERTIES']['BENEFITS']['VALUE']
                 ];?>
@@ -143,8 +142,7 @@ use Dalee\Helpers\ComponentHelper;
 
 <?if(!empty($arResult['DISPLAY_PROPERTIES']['CASHBACK_CATEGORIES']['VALUE'])) : ?>
     <section class="section-layout bg-blue-10">
-        <? global $cashbackFilter;?>
-        <?$cashbackFilter = [
+        <?$GLOBALS['cashbackFilter'] = [
             'ACTIVE' => 'Y',
             'IBLOCK_SECTION_ID' => $arResult['DISPLAY_PROPERTIES']['CASHBACK_CATEGORIES']['VALUE']
         ];?>
@@ -308,8 +306,7 @@ use Dalee\Helpers\ComponentHelper;
             </a>
             <div class="collapse d-md-block mt-4 mt-md-6 mt-lg-7" id="how-connect">
                 <div class="row px-lg-6 row-gap-6 row-gap-lg-7">
-                    <? global $cardReceiptOptionsFilter;?>
-                    <?$cardReceiptOptionsFilter = [
+                    <?$GLOBALS['cardReceiptOptionsFilter'] = [
                         'ACTIVE' => 'Y',
                         'ID' => $arResult['DISPLAY_PROPERTIES']['INSTRUCTION_1']['VALUE']
                     ];?>
@@ -386,8 +383,7 @@ use Dalee\Helpers\ComponentHelper;
                 </svg>
             </a>
             <div class="collapse d-md-block mt-4 mt-md-6 mt-lg-7" id="conditions">
-                <? global $tabsFilter;
-                $tabsFilter = [
+                <?$GLOBALS['tabsFilter'] = [
                     'ACTIVE' => 'Y',
                     'ID' => $arResult['DISPLAY_PROPERTIES']['TABS']['VALUE']
                 ];
@@ -481,8 +477,7 @@ use Dalee\Helpers\ComponentHelper;
             </a>
             <div class="collapse d-md-block mt-4 mt-md-6 mt-lg-7" id="how-connect">
                 <div class="row px-lg-6 row-gap-6 row-gap-lg-7">
-                    <? global $cardReceiptOptionsFilter;?>
-                    <?$cardReceiptOptionsFilter = [
+                    <?$GLOBALS['cardReceiptOptionsFilter'] = [
                         'ACTIVE' => 'Y',
                         'ID' => $arResult['DISPLAY_PROPERTIES']['INSTRUCTION_2']['VALUE']
                     ];?>
@@ -588,8 +583,7 @@ use Dalee\Helpers\ComponentHelper;
             </a>
             <div class="collapse d-md-block mt-4 mt-md-6 mt-lg-7" id="how-connect">
                 <div class="row px-lg-6 row-gap-6 row-gap-lg-7">
-                    <? global $cardReceiptOptionsFilter;?>
-                    <?$cardReceiptOptionsFilter = [
+                    <?$GLOBALS['cardReceiptOptionsFilter'] = [
                         'ACTIVE' => 'Y',
                         'ID' => $arResult['DISPLAY_PROPERTIES']['INSTRUCTION_3']['VALUE']
                     ];?>
