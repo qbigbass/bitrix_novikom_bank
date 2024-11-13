@@ -40,6 +40,7 @@ include ../../../components/forms/confirm
                     placeholder: "Введите имя",
                     required: true,
                     hint: "Как в заграничном паспорте",
+                    mask: "latin",
                 },
                 {
                     id: "last-name_latin",
@@ -47,12 +48,14 @@ include ../../../components/forms/confirm
                     placeholder: "Введите фамилию",
                     required: true,
                     hint: "Как в заграничном паспорте",
+                    mask: "latin",
                 },
                 {
                     id: "phone",
                     label: "Телефон",
                     placeholder: "+7",
                     required: true,
+                    mask: "phone"
                 },
                 {
                     id: "e-mail",
@@ -111,7 +114,6 @@ include ../../../components/forms/confirm
                     id: "employment-history",
                     label: "Общий трудовой стаж",
                     placeholder: "Кол-во лет",
-                    type: "number",
                     required: true,
                     groupText: "лет",
                 },
@@ -119,7 +121,6 @@ include ../../../components/forms/confirm
                     id: "employment-last-work",
                     label: "Стаж на последнем месте работы",
                     placeholder: "Кол-во лет",
-                    type: "number",
                     required: true,
                     groupText: "лет",
                 },
@@ -129,6 +130,7 @@ include ../../../components/forms/confirm
                     placeholder: "Сумма",
                     required: false,
                     groupText: "₽",
+                    mask: "money"
                 },
             ],
             inputs2: [
@@ -182,6 +184,7 @@ include ../../../components/forms/confirm
                     placeholder: "Сумма",
                     groupText: "₽",
                     required: false,
+                    mask: "money"
                 },
             ]
         }

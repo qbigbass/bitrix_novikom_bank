@@ -18,13 +18,14 @@ include ../../../components/forms/confirm
                 label: "Телефон",
                 placeholder: "+7",
                 required: true,
+                mask: "phone",
             },
         ],
         select: {
             id: "time-call",
             label: "Удобное время для звонка",
             options: ["Любое", "09:00 - 12:00", "12:00 - 15:00"],
-            required: true,
+            required: false,
         }
     }
 

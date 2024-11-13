@@ -176,6 +176,7 @@ function checkValidity(form) {
         })
         inputElement.addEventListener('blur', () => {
             toggleInputError(inputElement)
+            checkEmptyRequiredInput(inputElement)
         })
         inputElement.addEventListener('focus', () => {
             toggleErrorSpan(inputElement)
@@ -184,6 +185,7 @@ function checkValidity(form) {
     if (checkboxElement) {
         checkboxElement.addEventListener('change', () => {
             toggleButton(inputList, checkboxElement, buttonElement, formErrorElement)
+            toggleErrorSpan(checkboxElement)
         })
     }
     if (radioList) {
@@ -204,7 +206,11 @@ function checkInputValidity(inputElement) {
 }
 
 function checkEmptyRequiredInput(inputElement) {
-    if (inputElement.required && inputElement.value === '' && !inputElement.classList.contains("is-invalid")) inputElement.classList.add('is-required')
+    if (!inputElement.closest(FORM_ELEMS.checkbox)) {
+        if (inputElement.required && inputElement.value.trim() === '' && !inputElement.classList.contains("is-invalid")) inputElement.classList.add('is-required')
+    } else {
+        if (!inputElement.checked && !inputElement.classList.contains("is-invalid")) inputElement.classList.add('is-required')
+    }
 }
 
 function checkLengthMismatch(inputElement) {
@@ -226,7 +232,7 @@ function hasInvalidInput(inputList, checkboxElement) {
 }
 
 function hasEmptyRequiredInput(inputList) {
-    const emptyRequiredInputs = inputList.filter(inputElement => !inputElement.closest('[hidden]') && inputElement.required && inputElement.value === '')
+    const emptyRequiredInputs = inputList.filter(inputElement => !inputElement.closest(FORM_ELEMS.checkbox) && !inputElement.closest('[hidden]') && inputElement.required && inputElement.value.trim() === '')
     return !!emptyRequiredInputs.length;
 }
 
@@ -252,7 +258,10 @@ function toggleErrorSpan(inputElement, errorMessage) {
 }
 
 function toggleButton(inputList, checkboxElement, buttonElement, formErrorElement) {
-    if (hasInvalidInput(inputList, checkboxElement)) {
+    const isInvalidInput = hasInvalidInput(inputList, checkboxElement);
+    const isEmptyRequiredInput = hasEmptyRequiredInput(inputList);
+
+    if (isInvalidInput || isEmptyRequiredInput) {
         buttonElement.disabled = true;
         buttonElement.setAttribute('aria-disabled', 'true')
     } else {

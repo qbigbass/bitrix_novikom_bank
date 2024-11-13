@@ -40,6 +40,7 @@ include ../../../components/forms/confirm
                     label: "Телефон",
                     placeholder: "+7",
                     required: true,
+                    mask: "phone"
                 },
                 {
                     id: "e-mail",
@@ -116,6 +117,7 @@ include ../../../components/forms/confirm
                     placeholder: "Сумма",
                     required: false,
                     groupText: "₽",
+                    mask: "money"
                 },
             ],
             inputs2: [
@@ -165,17 +167,17 @@ include ../../../components/forms/confirm
                     id: "mortgage-amount",
                     label: "Сумма ипотеки",
                     placeholder: "Сумма",
-                    type: "number",
                     required: true,
                     groupText: "₽",
+                    mask: "money"
                 },
                 {
                     id: "mortgage-initial-payment",
                     label: "Первоначальный взнос",
                     placeholder: "Сумма",
-                    type: "number",
                     required: true,
                     groupText: "₽",
+                    mask: "money"
                 },
                 {
                     id: "mortgage-term",

@@ -12,7 +12,7 @@
             margin-right: 0;
         }
 
-        @include use-media(desktop) {
+        @include use-media(laptop) {
             max-width: 37.5rem;
         }
     }
