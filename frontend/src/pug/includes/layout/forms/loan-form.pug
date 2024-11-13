@@ -40,6 +40,7 @@ include ../../../components/forms/confirm
                     label: "Телефон",
                     placeholder: "+7",
                     required: true,
+                    mask: "phone"
                 },
                 {
                     id: "e-mail",
@@ -116,6 +117,7 @@ include ../../../components/forms/confirm
                     placeholder: "Сумма",
                     required: false,
                     groupText: "₽",
+                    mask: "money"
                 },
             ],
             inputs2: [
@@ -133,9 +135,9 @@ include ../../../components/forms/confirm
                     id: "loan-amount",
                     label: "Сумма кредита",
                     placeholder: "Сумма",
-                    type: "number",
                     required: true,
                     groupText: "₽",
+                    mask: "money"
                 },
                 {
                     id: "loan-term",
@@ -174,38 +176,38 @@ include ../../../components/forms/confirm
 form(action="/" method="POST" novalidate id="loan-form" data-form).application-form
     .application-form__step(data-form-step data-form-validate-group)
         - var step1 = loanForm.step1;
-        .d-flex.flex-column.gap-4.gap-md-5.gap-lg-6
-            +form-step({
-                current: "1",
-                total: "3",
-                text: "Личные данные"
-            })
-            .row.g-1.g-md-2.g-lg-2_5
-                each item in step1.inputs1
-                    .application-form__col.col-12.col-md-6
-                        +input(item, loanForm.formName)
-            .row.g-1.g-md-2.g-lg-2_5
-                fieldset.application-form__col.col-12.col-md-6
-                    legend.form-label.mb-3 Пол
-                    .d-flex.flex-column.flex-md-row.flex-wrap.row-gap-3.row-gap-lg-4.column-gap-md-5.column-gap-lg-6
-                        each item, index in step1.radios1
-                            +radio(item, index, loanForm.formName)
-                fieldset.application-form__col.col-12.col-md-6
-                    legend.form-label.mb-3 Гражданство
-                    .d-flex.flex-column.flex-md-row.flex-wrap.row-gap-3.row-gap-lg-4.column-gap-md-5.column-gap-lg-6
-                        each item, index in step1.radios2
-                            +radio(item, index, loanForm.formName)
+        .row.g-1.g-md-2.g-lg-2_5
+            .application-form__col.col-12
+                +form-step({
+                    current: "1",
+                    total: "3",
+                    text: "Личные данные"
+                })
+            each item in step1.inputs1
+                .application-form__col.col-12.col-md-6
+                    +input(item, loanForm.formName)
+            fieldset.application-form__col.col-12.col-md-6
+                legend.form-label.mb-3 Пол
+                .d-flex.flex-column.flex-md-row.flex-wrap.row-gap-3.row-gap-lg-4.column-gap-md-5.column-gap-lg-6
+                    each item, index in step1.radios1
+                        +radio(item, index, loanForm.formName)
+            fieldset.application-form__col.col-12.col-md-6
+                legend.form-label.mb-3 Гражданство
+                .d-flex.flex-column.flex-md-row.flex-wrap.row-gap-3.row-gap-lg-4.column-gap-md-5.column-gap-lg-6
+                    each item, index in step1.radios2
+                        +radio(item, index, loanForm.formName)
         .d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-6.mt-6.mt-lg-7
             button.btn.btn-primary.btn-lg-lg.w-100.w-md-auto(type="button" disabled aria-disabled="true" data-form-button data-form-step-button-next) Продолжить
             div.text-m.orange-100.text-center(data-form-error)
     .application-form__step(data-form-step data-form-validate-group hidden)
         - var step2 = loanForm.step2;
-        .d-flex.flex-column.gap-4.gap-md-5.gap-lg-6
-            +form-step({
-                current: "2",
-                total: "3",
-                text: "Данные о работе"
-            })
+        .row.g-1.g-md-2.g-lg-2_5
+            .application-form__col.col-12
+                +form-step({
+                    current: "2",
+                    total: "3",
+                    text: "Данные о работе"
+                })
             .row.g-1.g-md-2.g-lg-2_5
                 each item in step2.inputs1
                     .application-form__col.col-12.col-md-4
@@ -217,21 +219,23 @@ form(action="/" method="POST" novalidate id="loan-form" data-form).application-f
             div.text-m.orange-100.text-center(data-form-error)
     .application-form__step(data-form-step data-form-validate-group hidden)
         - var step3 = loanForm.step3;
-        .d-flex.flex-column.gap-4.gap-md-5.gap-lg-6
-            +form-step({
-                current: "3",
-                total: "3",
-                text: "Настройка кредита"
-            })
-            .row.g-1.g-md-2.g-lg-2_5
-                each item in step3.inputs
-                    .application-form__col.col-12.col-md-6
-                        +input(item, loanForm.formName)
-                each item in step3.selects
-                    .application-form__col.col-12.col-md-6
-                        +select(item, loanForm.formName)
-            +captcha(loanForm.formName)
-            +confirm(loanForm.formName)
+        .row.g-1.g-md-2.g-lg-2_5
+            .application-form__col.col-12
+                +form-step({
+                    current: "3",
+                    total: "3",
+                    text: "Настройка кредита"
+                })
+            each item in step3.inputs
+                .application-form__col.col-12.col-md-6
+                    +input(item, loanForm.formName)
+            each item in step3.selects
+                .application-form__col.col-12.col-md-6
+                    +select(item, loanForm.formName)
+            .application-form__col.col-12
+                +captcha(loanForm.formName)
+            .application-form__col.col-12
+                +confirm(loanForm.formName)
         .d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-6.mt-6.mt-lg-7
             button.btn.btn-primary.btn-lg-lg.w-100.w-md-auto(type="submit" disabled aria-disabled="true" data-form-button) Отправить заявку
             div.text-m.orange-100.text-center(data-form-error)
