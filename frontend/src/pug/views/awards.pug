@@ -162,7 +162,8 @@ block content
                                     +card-award(award.imageSrc).h-auto.flex-basis-100.flex-basis-lg-33.flex-grow-1
                                         .d-flex.w-100.align-items-end.justify-content-between.mb-4
                                             h4.violet-100!= award.title
-                                            .h2.violet-100-important!= award.year
+                                            .d-none.d-md-inline.h2.violet-100-important!= award.year
+                                            .d-inline.d-md-none.h4.violet-100-important!= award.year
                                         p.mb-0!= award.text
 
                         #year-2023.tab-pane.fade(aria-labelledby="year-2023" tabindex="0" role="tabpanel")
@@ -171,5 +172,6 @@ block content
                                     +card-award(award.imageSrc).h-auto.flex-basis-100.flex-basis-lg-33.flex-grow-1
                                         .d-flex.w-100.align-items-end.justify-content-between.mb-4
                                             h4.violet-100!= award.title
-                                            .h2.violet-100-important!= award.year
+                                            .d-none.d-md-inline.h2.violet-100-important!= award.year
+                                            .d-inline.d-md-none.h4.violet-100-important!= award.year
                                         p.mb-0!= award.text

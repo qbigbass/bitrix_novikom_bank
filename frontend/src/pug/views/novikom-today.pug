@@ -278,7 +278,8 @@ block content
                                     +card-award(award.imageSrc).h-100
                                         .d-flex.w-100.align-items-end.justify-content-between.mb-4
                                             h4.violet-100!= award.title
-                                            .h2.violet-100-important!= award.year
+                                            .d-none.d-md-inline.h2.violet-100-important!= award.year
+                                            .d-inline.d-md-none.h4.violet-100-important!= award.year
                                         p.mb-0!= award.text
                         +slider-controls().mt-3.mt-md-4
                     .d-block.w-100.mt-5.mt-lg-7.text-center
