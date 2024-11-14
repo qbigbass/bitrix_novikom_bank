@@ -43,6 +43,13 @@ $arUrlRewrite = [
         'SORT' => 100,
     ],
     [
+        'CONDITION' => '#^/bonus-programs/#',
+        'RULE' => '',
+        'ID' => 'bitrix:news',
+        'PATH' => '/bonus-programs/index.php',
+        'SORT' => 100,
+    ],
+    [
         'CONDITION' => '#^/for-corporate-clients/#',
         'RULE' => '',
         'ID' => 'bitrix:news',

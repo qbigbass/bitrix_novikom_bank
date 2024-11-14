@@ -11,17 +11,20 @@
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
+$classColsCount = ($arParams['COL_COUNT'] == '2') ? 'col-lg-6' : 'col-lg-4';
 ?>
 <?foreach($arResult["ITEMS"] as $arItem) : ?>
     <?
     $this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
     $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
     ?>
-    <div class="col-12 col-lg-4" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
+    <div class="col-12 <?=$classColsCount?>" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
         <div class="d-flex flex-column flex-md-row flex-lg-column gap-2 gap-md-4 gap-lg-3 align-items-start align-items-md-center align-items-lg-start pe-xxl-11">
             <img class="icon size-xl" src="<?=$arItem['DISPLAY_PROPERTIES']['ICON']['FILE_VALUE']['SRC']?>" alt="" loading="lazy">
             <div class="d-flex flex-column gap-2 align-items-start">
-                <h4><?=$arItem['~NAME']?></h4>
+                <?if ($arItem['DISPLAY_PROPERTIES']['SHOW_ONLY_DESCRIPTION']['VALUE'] != 'Y'): ?>
+                    <h4><?=$arItem['~NAME']?></h4>
+                <?endif;?>
                 <span class="text-l"><?=$arItem['PREVIEW_TEXT']?></span>
                 <?if (!empty($arItem['DISPLAY_PROPERTIES']['LINK_TITLE']['~VALUE'])) : ?>
                     <a class="btn btn-link d-inline-flex gap-2 align-items-center mt-md-2" href="<?=$arItem['DISPLAY_PROPERTIES']['LINK']['VALUE']?>">
