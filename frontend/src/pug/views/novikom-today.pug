@@ -192,10 +192,13 @@ block content
     section.section-layout.py-lg-11
         .container
             h3.mb-5.mb-lg-7
-                | Рейтинги Банка НОВИКОМ
+                | Рейтинги&nbsp;Банка НОВИКОМ
             .row
                 .col-12
-                    +tabs-simple(tabsList, false)
+                    .d-none.d-lg-block.w-100
+                        +tabs-simple(tabsList, false)
+                    .d-block.d-lg-none.w-100
+                        +tabs-simple(tabsList, true)
                     .tab-content.mt-5.mt-lg-7
                         #year-2024.tab-pane.fade.show.active(aria-labelledby="year-2024" tabindex="0" role="tabpanel")
                             .swiper.slider-cards.js-slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:2,laptop:3,laptop-x:3" data-space-between="mobile-s:24,mobile:24,tablet:32,laptop:40,laptop-x:40")
