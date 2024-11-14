@@ -10,6 +10,7 @@ const CLASSES = {
     open: 'is-menu-open',
     openButton: 'is-open',
     blur: 'is-blur',
+    overflowHidden: 'overflow-hidden',
 }
 
 const STATE= {
@@ -22,15 +23,18 @@ const STATE= {
 function handlerButtonClick (event) {
     const button = event.currentTarget;
     const buttonText = button.querySelector(ELEMENTS.buttonText);
+    const body = document.querySelector('body');
 
     if (STATE.mobileMainNav?.classList.contains(CLASSES.open)) {
         STATE.mobileMainNav?.classList.remove(CLASSES.open);
         STATE.pageWrapper?.classList.remove(CLASSES.blur);
+        body.classList.remove(CLASSES.overflowHidden)
         button.classList.remove(CLASSES.openButton);
         buttonText.textContent = 'Меню';
     } else {
         STATE.mobileMainNav?.classList.add(CLASSES.open);
         STATE.pageWrapper?.classList.add(CLASSES.blur);
+        body.classList.add(CLASSES.overflowHidden)
         button.classList.add(CLASSES.openButton);
         buttonText.textContent = 'Закрыть';
     }

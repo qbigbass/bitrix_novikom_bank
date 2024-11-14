@@ -35,12 +35,14 @@ include ../../../components/forms/confirm
                 placeholder: "Введите ИНН",
                 required: false,
                 hidden: true,
+                mask: "inn"
             },
             {
                 id: "phone",
                 label: "Телефон",
                 placeholder: "+7",
                 required: true,
+                mask: "phone"
             },
             {
                 id: "e-mail",
@@ -54,20 +56,23 @@ include ../../../components/forms/confirm
 
 form(action="/" method="POST" novalidate id="callback-form" data-form).application-form
     .application-form__step(data-form-validate-group)
-        .d-flex.flex-column.gap-4.gap-md-5.gap-lg-6
-            +select(consultationForm.selects[0], consultationForm.formName)
-            .row.g-1.g-md-2.g-lg-2_5
-                .application-form__col.col-12.col-md-8
-                    +input(consultationForm.inputs[0], consultationForm.formName)
-                .application-form__col.col-12.col-md-4
-                    +input(consultationForm.inputs[1], consultationForm.formName)
-                .application-form__col.col-12.col-md-6
-                    +input(consultationForm.inputs[2], consultationForm.formName)
-                .application-form__col.col-12.col-md-6
-                    +input(consultationForm.inputs[3], consultationForm.formName)
-            +select(consultationForm.selects[1], consultationForm.formName)
-            +captcha(consultationForm.formName)
-            +confirm(consultationForm.formName)
+        .row.g-1.g-md-2.g-lg-2_5
+            .application-form__col.col-12
+                +select(consultationForm.selects[0], consultationForm.formName)
+            .application-form__col.col-12.col-md-8
+                +input(consultationForm.inputs[0], consultationForm.formName)
+            .application-form__col.col-12.col-md-4
+                +input(consultationForm.inputs[1], consultationForm.formName)
+            .application-form__col.col-12.col-md-6
+                +input(consultationForm.inputs[2], consultationForm.formName)
+            .application-form__col.col-12.col-md-6
+                +input(consultationForm.inputs[3], consultationForm.formName)
+            .application-form__col.col-12
+                +select(consultationForm.selects[1], consultationForm.formName)
+            .application-form__col.col-12
+                +captcha(consultationForm.formName)
+            .application-form__col.col-12
+                +confirm(consultationForm.formName)
         .d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-6.mt-6.mt-lg-7
             button.btn.btn-primary.btn-lg-lg.w-100.w-md-auto(type="submit" disabled aria-disabled="true" data-form-button) Отправить
             div.text-m.orange-100.text-center(data-form-error)
