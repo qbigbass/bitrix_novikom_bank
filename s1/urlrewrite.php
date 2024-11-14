@@ -43,9 +43,9 @@ $arUrlRewrite = [
         'SORT' => 100,
     ],
     [
-        'CONDITION' => '#^/bonus-programs/([a-zA-Z0-9_-]*)/(.*)#',
-        'RULE' => 'ELEMENT_CODE=$1',
-        'ID' => 'bitrix:news.detail',
+        'CONDITION' => '#^/bonus-programs/#',
+        'RULE' => '',
+        'ID' => 'bitrix:news',
         'PATH' => '/bonus-programs/index.php',
         'SORT' => 100,
     ],
