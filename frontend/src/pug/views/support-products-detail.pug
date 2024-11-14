@@ -2,12 +2,13 @@ extends ../templates/base
 
 block title
     title= "Поддержка / Продукты и услуги / Внутренняя"
-    meta(name="description" content="Описание страницы Продукты и услуги")
+    meta(name="description" content="Описание внутренней страницы Продукты и услуги")
 block content
 
     include ../includes/header/header
     include ../components/banners/banner-text
     include ../components/ui/tabs-simple
+    include ../components/ui/tabs
     include ../cards/card-promo
     include ../components/ui/pagination
 
@@ -22,29 +23,24 @@ block content
 
         var tabsListAbout = [
             {
-                id: 'card-all',
-                linkText: 'Все',
-                isActive: true
+                link: '#card-all',
+                linkText: 'Все'
             },
             {
-                id: 'card-debit',
-                linkText: 'Дебетовые карты',
-                isActive: false
+                link: '#card-debit',
+                linkText: 'Дебетовые карты'
             },
             {
-                id: 'card-credit',
-                linkText: 'Кредитные карты',
-                isActive: false
+                link: '#card-credit',
+                linkText: 'Кредитные карты'
             },
             {
-                id: 'card-salary',
-                linkText: 'Зарплатные карты',
-                isActive: false
+                link: '#card-salary',
+                linkText: 'Зарплатные карты'
             },
             {
-                id: 'card-blocking',
-                linkText: 'Блокировка карт',
-                isActive: false
+                link: '#card-blocking',
+                linkText: 'Блокировка карт'
             },
         ]
 
@@ -88,25 +84,25 @@ block content
 
     section.section-layout.px-lg-6
         .container
-            form.w-100.mb-4.mb-md-6.mb-lg-7
-                .input-group.flex-nowrap.d-none.d-lg-flex
-                    span.input-group-icon.bg-transparent
-                        span.icon.violet-100
-                            +svg-use("icon-search")
-                    input#input-search.form-control.form-control-lg.text-l.bg-transparent(type="text", placeholder="Поиск по разделу", aria-label="Поиск по разделу", aria-describedby="input-search" tabindex="-1")
-                .input-group.flex-nowrap.d-flex.d-lg-none
-                    span.input-group-icon.bg-transparent
-                        span.icon.violet-100
-                            +svg-use("icon-search")
-                    input#input-search-mobile.form-control.ps-0.text-s.bg-transparent(type="text", placeholder="Поиск по разделу", aria-label="Поиск по разделу", aria-describedby="#input-search-mobile" tabindex="-1")
-            .col-12
-                +tabs-simple(tabsListAbout, false)
-                .tab-content.mt-4.mt-md-6.mt-lg-7
-                    each tabContent, index in tabsListAbout
-                        .tab-pane.fade(id=tabContent.id aria-labelledby=tabContent.id class=[tabContent.isActive ? "show active" : ""] tabindex="0" role="tabpanel")
-                            include ../includes/layout/tabs/insurance-more
-                    .mt-4.mt-md-6.mt-lg-7
-                        +pagination(paginationObject, "start")
+            .row.row-gap-4.row-gap-md-6.row-gap-lg-7
+                .col-12
+                    form.w-100
+                        .input-group.flex-nowrap.d-none.d-lg-flex
+                            span.input-group-icon.bg-transparent
+                                span.icon.violet-100
+                                    +svg-use("icon-search")
+                            input#input-search.form-control.form-control-lg.text-l.bg-transparent(type="text", placeholder="Поиск по разделу", aria-label="Поиск по разделу", aria-describedby="input-search" tabindex="-1")
+                        .input-group.flex-nowrap.d-flex.d-lg-none
+                            span.input-group-icon.bg-transparent
+                                span.icon.violet-100
+                                    +svg-use("icon-search")
+                            input#input-search-mobile.form-control.ps-0.text-s.bg-transparent(type="text", placeholder="Поиск по разделу", aria-label="Поиск по разделу", aria-describedby="#input-search-mobile" tabindex="-1")
+                .col-12
+                    +tabs(tabsListAbout, "", "", true)
+                    .tab-content.mt-4.mt-md-6.mt-lg-7
+                        include ../includes/layout/tabs/insurance-more
+                        .mt-4.mt-md-6.mt-lg-7
+                            +pagination(paginationObject, "start")
 
     section.section-layout.bg-dark-10
         .container
