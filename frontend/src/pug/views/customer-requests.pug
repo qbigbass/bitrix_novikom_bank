@@ -1,0 +1,147 @@
+extends ../templates/base
+
+block title
+    title= 'Порядок обращения в банк'
+    meta(name="description" content="Описание страницы Порядок обращения в банк")
+block content
+    include ../includes/header/header
+    include ../components/banners/banner-text
+    include ../components/helper
+    include ../components/ui/tabs-simple
+    include ../components/benefit
+
+    -
+        var bannerTextData = {
+            title: "Порядок обращения в банк",
+        }
+
+        var tabContentList = [
+            {
+                link: '#documents',
+                id: 'documents',
+                linkText: 'Документы и тарифы',
+                isActive: true
+            },
+            {
+                link: '#faq',
+                id: 'faq',
+                linkText: 'Вопросы и ответы',
+                isActive: false
+            }
+        ]
+
+        var allBenefits1 = [
+            {
+                spriteData: {
+                    icon: 'mail',
+                    classList: 'size-xl',
+                },
+                description: '<h4 class="mb-3">В&nbsp;свободной письменной форме или по&nbsp;форме Банка</h4>\n' +
+                        '<ul class="list list--size-l">\n' +
+                        '  <li>Передать в&nbsp;Банк лично или Вашим уполномоченным представителем</li>\n' +
+                        '  <li><span>Почтовой/курьерской связью по&nbsp;адресу Банка: 119180, г. Москва, ул. Полянка Большая, д. 50/1, стр.&nbsp;1&nbsp;или по&nbsp;месту нахождения регионального офиса Банка. Информацию об&nbsp;адресах офисов Банка Вы&nbsp;можете уточнить в&nbsp;разделе <a href="" class="link">«Офисы&nbsp;и&nbsp;банкоматы»</a></span></li>\n' +
+                        '</ul>',
+            },
+            {
+                spriteData: {
+                    icon: 'web-bank',
+                    classList: 'size-xl',
+                },
+                description: '<h4 class="mb-3">В электронном виде</h4>\n' +
+                        '<ul class="list list--size-l">\n' +
+                        '  <li><span>Через форму Обратной связи на&nbsp;<a href="/" class="link">официальном сайте Банка</a>, вкладка «Направить\n' +
+                        '      обращение»</span>\n' +
+                        '  <li>\n' +
+                        '    <span>\n' +
+                        '      Сообщением по&nbsp;следующим электронным адресам Банка:\n' +
+                        '      <ul class="list--base-bullets">\n' +
+                        '        <li><span><a href="mailtocall-center@novikom.ru" class="link">call-center@novikom.ru</a>&nbsp;– для обращений\n' +
+                        '            не&nbsp;претензионного характера</span></li>\n' +
+                        '        <li><span><a href="mailto:oro@novikom.ru" class="link">oro@novikom.ru</a>&nbsp;– для обращений претензионного\n' +
+                        '            характера</span></li>\n' +
+                        '      </ul>\n' +
+                        '    </span>\n' +
+                        '  </li>\n' +
+                        '</ul>',
+            }
+        ]
+
+        var allBenefits2 = [
+            {
+                spriteData: {
+                    icon: 'account',
+                    classList: 'size-xl',
+                },
+                description: '<h4 class="mb-3">Для физических лиц</h4>\n' +
+                        '<ul class="list list--size-l">\n' +
+                        '  <li>Фамилию, имя, отчество (при наличии)</li>\n' +
+                        '  <li>Дата рождения</li>\n' +
+                        '  <li>Почтовый или электронный адрес, по которому должен быть направлен ответ на обращение </li>\n' +
+                        '  <li>Текст вашего обращения</li>\n' +
+                        '  <li>Копии документов при необходимости</li>\n' +
+                        '</ul>',
+            },
+            {
+                spriteData: {
+                    icon: 'personal-manager_green',
+                    classList: 'size-xl',
+                },
+                description: '<h4 class="mb-3">Для юридических лиц</h4>\n' +
+                        '<ul class="list list--size-l">\n' +
+                        '  <li>Наименование организации и контактное лицо</li>\n' +
+                        '  <li>ИНН организации</li>\n' +
+                        '  <li>Адрес, по которому должен быть направлен ответ на обращение:</li>\n' +
+                        '  <li>адрес места нахождения юридического лица или электронный адрес</li>\n' +
+                        '  <li>Текст обращения</li>\n' +
+                        '  <li>Копии документов при необходимости</li>\n' +
+                        '</ul>',
+            },
+        ]
+
+    +banner-text(
+        bannerTextData,
+        "green"
+    )
+
+    section.section-layout.px-lg-6
+        .container
+            .row.row-gap-6.gx-xl-6
+                each item, index in allBenefits1
+                    .col-12.col-md-6
+                        +benefit(item.spriteData, item.title)
+                            != item.description
+
+    section.section-layout.px-lg-6
+        .container
+            h3.mb-4.mb-md-6.mb-lg-7 Какую информацию необходимо указать в обращении
+            .row.row-gap-6.gx-xl-6
+                each item, index in allBenefits2
+                    .col-12.col-md-6
+                        +benefit(item.spriteData, item.title)
+                            span!= item.description
+
+    section.section-layout.bg-dark-10.px-lg-6
+        .container
+            .row
+                .col-12
+                    +polygon-container("violet-100")
+                        +helper("img/restructuring-additional-info.png", "bg-white")
+                            p.mb-0
+                                |Информируем Вас, что Банк не предоставляет сведения, составляющие банковскую тайну, по электронной почте и иным незащищенным каналам связи.
+                                br
+                                | С целью всестороннего и полного рассмотрения обращения, Банком могут быть запрошены у Вас дополнительные документы и материалы.
+
+    section.section-layout.px-lg-6
+        .container
+            h3.mb-md-6.mb-lg-7
+                | Тарифы и документы
+            .mt-4.mt-md-6.mt-lg-7
+                .row
+                    .col-12
+                        +tabs-simple(tabContentList, false)
+                        .tab-content.mt-4.mt-md-6.mt-lg-7
+                            #documents.tab-pane.fade.show.active(aria-labelledby="documents" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/documents
+                            #faq.tab-pane.fade(aria-labelledby="faq" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/faq
+        +pattern-bg('section-2', 'light', 'pattern-bg--hide-mobile')
