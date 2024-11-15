@@ -105,9 +105,9 @@ class HeaderView
 
         <? foreach ($termsValues as $term) { ?>
             <div class="d-inline-flex flex-column row-gap-2">
-                <div class="d-inline-flex flex-nowrap align-items-baseline text-l fw-semibold gap-1 green-100">
-                    <span><?= $term['FROM_TO'] ?></span>
-                    <span class='text-number-l fw-bold text-nowrap'><?= $term['VALUE'] ?></span>
+                <div class="d-inline-flex flex-nowrap align-items-baseline text-l fw-semibold green-100">
+                    <span><?= is_numeric($term['VALUE']) ? $term['FROM_TO'] : '' ?></span>
+                    <span class='<?= preg_match('/\d/', $term['VALUE']) ? 'text-number-l' : 'text-number-m' ?> fw-bold text-nowrap'><?= $term['VALUE'] ?></span>
                 </div>
                 <span class='d-block'><?= $term['SIGN'] ?></span>
             </div>
@@ -146,7 +146,7 @@ class HeaderView
                     <? echo $this->renderTerms($headerData['termsSettings'], $headerData['termsProperty'], $termsHtml); ?>
 
                     <? if ($headerData['showButton'] && !empty($headerData['buttonHref'])) { ?>
-                        <a class="btn <?= in_array('banner-product--type-corp', $headerData['additionalClasses']) ? 'btn-orange' : 'btn-tertiary' ?> btn-lg banner-product__button"
+                        <a class="btn <?= in_array('banner-product--type-corp', $headerData['additionalClasses']) ? 'btn-orange' : 'btn-tertiary' ?> btn-lg-lg banner-product__button"
                            href="<?= $headerData['buttonHref'] ?>">
                             <?= $headerData['buttonText'] ?>
                         </a>
