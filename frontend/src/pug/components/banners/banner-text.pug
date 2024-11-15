@@ -9,7 +9,8 @@ include ../ui/breadcrumbs
 
 mixin banner-text-content(title, breadcrumbsArray, description, button, isSmallTitle, additionalClassList)
     .d-flex.flex-column.align-items-start.gap-3.gap-md-4(class=additionalClassList)
-        +breadcrumbs(breadcrumbsArray)
+        if breadcrumbsArray
+            +breadcrumbs(breadcrumbsArray)
         h1.banner-text__title.dark-0.text-break(class=isSmallTitle && "h2 text-white")!= title
         if description
             .banner-text__description.text-l.dark-0!= description

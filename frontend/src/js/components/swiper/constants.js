@@ -22,3 +22,7 @@ export const DEFAULT_SLIDER_DATA_ATTRS = {
     slidesPerView: 'mobile-s:1,mobile:1,tablet:2,laptop:3',
     autoHeight: 'false',
 }
+
+export const SLIDER_ATTR = {
+    destroyBreakpoint: 'data-slider-breakpoint-destroy',
+}
