@@ -13,7 +13,7 @@ class novikom_settings extends CModule
     public $MODULE_DESCRIPTION;
     public $MODULE_GROUP_RIGHTS = 'Y';
 
-    public $MY_DIR = "bitrix";
+    public $MY_DIR = "local";
 
     public function __construct()
     {
@@ -22,13 +22,6 @@ class novikom_settings extends CModule
         $path = str_replace('\\', '/', __FILE__);
         $path = mb_substr($path, 0, mb_strlen($path) - mb_strlen('/index.php'));
         include($path . '/version.php');
-
-        $check_last = "/local/modules/" . $this->MODULE_ID . "/install/index.php";
-        $check_last_len = mb_strlen($check_last);
-
-        if (mb_substr($path, -$check_last_len) == $check_last) {
-            $this->MY_DIR = "local";
-        }
 
         if (is_array($arModuleVersion) && array_key_exists('VERSION', $arModuleVersion)) {
             $this->MODULE_VERSION = $arModuleVersion['VERSION'];
@@ -55,7 +48,7 @@ class novikom_settings extends CModule
             }
         }
 
-        $APPLICATION->IncludeAdminFile(GetMessage("NOVIKOM_SETTINGS_INSTALL_TITLE"), $_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/" . $this->MODULE_ID . "/install/step.php");
+        $APPLICATION->IncludeAdminFile(GetMessage("NOVIKOM_SETTINGS_INSTALL_TITLE"), $_SERVER["DOCUMENT_ROOT"] . "/local/modules/" . $this->MODULE_ID . "/install/step.php");
         return true;
     }
 
