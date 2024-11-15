@@ -83,41 +83,41 @@ block content
             [
                 {
                     title: 'Пресс-центр',
-                    img: 'large-individual/contribution-rentier.png',
+                    img: 'large-individual/press-center.png',
                     link: 'Подробнее',
                 },
                 {
                     title: 'Карьера',
-                    img: 'large-corporate/account-reservation.png',
+                    img: 'large-individual/career.png',
                     link: 'Подробнее',
                 },
             ],
             [
                 {
                     title: 'Устав и документы',
-                    img: 'large-individual/contribution-rentier.png',
+                    img: 'large-individual/documents.png',
                     link: 'Подробнее',
                 },
                 {
                     title: 'Контактная информация',
-                    img: 'large-corporate/account-reservation.png',
+                    img: 'large-individual/contact.png',
                     link: 'Подробнее',
                 },
             ],
             [
                 {
                     title: 'Членство <br>в&nbsp;организации',
-                    img: 'large-individual/contribution-rentier.png',
+                    img: 'large-individual/membership-club.png',
                     link: 'Подробнее',
                 },
                 {
                     title: 'Реквизиты',
-                    img: 'large-corporate/account-reservation.png',
+                    img: 'large-individual/details.png',
                     link: 'Подробнее',
                 },
                 {
                     title: 'Устойчивое <br>развитие',
-                    img: 'large-corporate/account-reservation.png',
+                    img: 'large-individual/evolution.png',
                     link: 'Подробнее',
                 },
             ],
@@ -148,31 +148,31 @@ block content
                 title: 'Август',
                 year: '2024',
                 text: 'НОВИКОМ отмечен в номинации «За вклад в организацию и проведение международного военно-технического форума «Армия»',
-                imageSrc: 'img/discount-card/buy.png',
+                imageSrc: 'img/awards/individual-certificate.png',
             },
             {
                 title: 'Май',
                 year: '2024',
                 text: 'Банк НОВИКОМ стал лауреатом Всероссийского конкурса образовательных программ и просветительских проектов кредитных организаций в интересах субъектов малого и среднего предпринимательства. Организаторы конкурса – Ассоциация развития финансовой грамотности и Ассоциация банков России – высоко оценили курс финансовой грамотности для МСП дочернего банка Госкорпорации Ростех',
-                imageSrc: 'img/discount-card/buy.png',
+                imageSrc: 'img/awards/individual-cup.png',
             },
             {
                 title: 'Май',
                 year: '2024',
                 text: 'НОВИКОМ получил две награды премии FINAWARD. Дочерний банк Ростеха стал лауреатом ежегодной премии в области инноваций и достижений финансовой отрасли FINAWARD 2024. НОВИКОМ победил в специальной номинации за организацию первого в стране выпуска ЦФА для предприятия оборонно-промышленного комплекса. Отдельного диплома удостоились инновационные решения банка, нацеленные на улучшение клиентского опыта.',
-                imageSrc: 'img/discount-card/buy.png',
+                imageSrc: 'img/awards/individual-medal.png',
             },
             {
                 title: 'Май',
                 year: '2024',
                 text: 'Торгово-промышленная палата РФ присудила НОВИКОМу победу в дополнительной номинации конкурса «Лучшая банковская программа для МСП – 2024». Экспертный совет назвал банк лучшим в развитии и продвижении инвестиционных возможностей для бизнеса. Помимо победы в дополнительной номинации, НОВИКОМ вошел в ТОП-3 лучших региональных банков с универсальной и базовой лицензией по итогам голосования предпринимателей.',
-                imageSrc: 'img/discount-card/buy.png',
+                imageSrc: 'img/awards/individual-certificate.png',
             },
             {
                 title: 'Апрель',
                 year: '2024',
                 text: 'В Туле состоялся финал регионального этапа конкурса в области предпринимательской деятельности «Золотой Меркурий», генеральным партнером которого выступил Новикомбанк. На торжественной церемонии опорный банк госкорпорации Ростех получил награду в номинации «Лучшая банковская программа для МСП»',
-                imageSrc: 'img/discount-card/buy.png',
+                imageSrc: 'img/awards/individual-cup.png',
             }
         ]
 
@@ -187,15 +187,18 @@ block content
     include ../includes/header/header
     include ../includes/layout/slider-card-product
 
-    +banner-product(bannerProductData)
+    +banner-product(bannerProductData).border-0
 
     section.section-layout.py-lg-11
         .container
             h3.mb-5.mb-lg-7
-                | Рейтинги Банка НОВИКОМ
+                | Рейтинги&nbsp;Банка НОВИКОМ
             .row
                 .col-12
-                    +tabs-simple(tabsList, false)
+                    .d-none.d-lg-block.w-100
+                        +tabs-simple(tabsList, false)
+                    .d-block.d-lg-none.w-100
+                        +tabs-simple(tabsList, true)
                     .tab-content.mt-5.mt-lg-7
                         #year-2024.tab-pane.fade.show.active(aria-labelledby="year-2024" tabindex="0" role="tabpanel")
                             .swiper.slider-cards.js-slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:2,laptop:3,laptop-x:3" data-space-between="mobile-s:24,mobile:24,tablet:32,laptop:40,laptop-x:40")
@@ -275,7 +278,8 @@ block content
                                     +card-award(award.imageSrc).h-100
                                         .d-flex.w-100.align-items-end.justify-content-between.mb-4
                                             h4.violet-100!= award.title
-                                            .h2.violet-100-important!= award.year
+                                            .d-none.d-md-inline.h2.violet-100-important!= award.year
+                                            .d-inline.d-md-none.h4.violet-100-important!= award.year
                                         p.mb-0!= award.text
                         +slider-controls().mt-3.mt-md-4
                     .d-block.w-100.mt-5.mt-lg-7.text-center

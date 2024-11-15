@@ -51,6 +51,8 @@ block content
     include ../cards/card-step
     include ../cards/card-news
     include ../cards/card-promo
+    include ../cards/card-award
+    include ../cards/card-about
 
     section#typography.section-layout
         .container
@@ -563,8 +565,8 @@ block content
                 h2 Card Promo
                 .row.row-gap-6
                     +card-promo(cardPromo).card-promo--heavy-purple
-                        a(href="#").btn.btn-info.w-100.w-md-auto Кнопка
-                        a(href="#").btn.btn-link.btn-icon.text-info.m-auto.m-md-0
+                        a(href="#").btn.btn-info.btn-lg-lg.w-100.w-md-auto Кнопка
+                        a(href="#").btn.btn-link.btn-lg-lg.btn-icon.text-info.m-auto.m-md-0
                             | Кнопка
                             +svg-use("icon-download", "icon size-m")
     section#card-contact.section-layout.section-layout--padding-top-0
@@ -816,8 +818,130 @@ block content
                     each item in allCardsNews
                         .col-12.col-md-6.col-lg-4
                             +card-news(item)
+    
+    section#card-award.section-layout.pt-0
+        -
+            var awardList = [
+                {
+                    title: 'Август',
+                    year: '2024',
+                    text: 'НОВИКОМ отмечен в номинации «За вклад в организацию и проведение международного военно-технического форума «Армия»',
+                    imageSrc: 'img/awards/individual-certificate.png',
+                },
+                {
+                    title: 'Май',
+                    year: '2024',
+                    text: 'Банк НОВИКОМ стал лауреатом Всероссийского конкурса образовательных программ и просветительских проектов кредитных организаций в интересах субъектов малого и среднего предпринимательства. Организаторы конкурса – Ассоциация развития финансовой грамотности и Ассоциация банков России – высоко оценили курс финансовой грамотности для МСП дочернего банка Госкорпорации Ростех',
+                    imageSrc: 'img/awards/individual-cup.png',
+                },
+                {
+                    title: 'Май',
+                    year: '2024',
+                    text: 'НОВИКОМ получил две награды премии FINAWARD. Дочерний банк Ростеха стал лауреатом ежегодной премии в области инноваций и достижений финансовой отрасли FINAWARD 2024. НОВИКОМ победил в специальной номинации за организацию первого в стране выпуска ЦФА для предприятия оборонно-промышленного комплекса. Отдельного диплома удостоились инновационные решения банка, нацеленные на улучшение клиентского опыта.',
+                    imageSrc: 'img/awards/individual-medal.png',
+                },
+                {
+                    title: 'Май',
+                    year: '2024',
+                    text: 'Торгово-промышленная палата РФ присудила НОВИКОМу победу в дополнительной номинации конкурса «Лучшая банковская программа для МСП – 2024». Экспертный совет назвал банк лучшим в развитии и продвижении инвестиционных возможностей для бизнеса. Помимо победы в дополнительной номинации, НОВИКОМ вошел в ТОП-3 лучших региональных банков с универсальной и базовой лицензией по итогам голосования предпринимателей.',
+                    imageSrc: 'img/awards/individual-certificate.png',
+                }
+            ]
+        
+        .container
+            .d-flex.flex-column.row-gap-5
+                .d-flex.flex-column.gap-2
+                    h2 Card Award
+                .d-flex.flex-wrap.gap-4.gap-md-5.gap-xl-6
+                    each award in awardList
+                        +card-award(award.imageSrc).h-auto.flex-basis-100.flex-basis-lg-33.flex-grow-1
+                            .d-flex.w-100.align-items-end.justify-content-between.mb-4
+                                h4.violet-100!= award.title
+                                .d-none.d-md-inline.h2.violet-100-important!= award.year
+                                .d-inline.d-md-none.h4.violet-100-important!= award.year
+                            p.mb-0!= award.text
 
-    section#pagination.section-layout.pt-0
+    section.section-layout.py-lg-11.mb-6.mb-sm-9.mb-lg-11.mb-xl-16
+        .container
+            h3.mb-5.mb-lg-7
+                | Card Award Slider
+            .row
+                .col-12
+                    .swiper.slider-cards.js-slider-cards(data-auto-height="mobile-s:true,mobile:true,tablet:true" data-slides-per-view="mobile-s:1,mobile:1,tablet:1,tablet-album:2,laptop:2,laptop-x:2" data-space-between="mobile-s:24,mobile:24,tablet:48,laptop:40,laptop-x:40")
+                        .swiper-wrapper
+                            each award in awardList
+                                .swiper-slide.js-swiper-slide
+                                    +card-award(award.imageSrc).h-100
+                                        .d-flex.w-100.align-items-end.justify-content-between.mb-4
+                                            h4.violet-100!= award.title
+                                            .d-none.d-md-inline.h2.violet-100-important!= award.year
+                                            .d-inline.d-md-none.h4.violet-100-important!= award.year
+                                        p.mb-0!= award.text
+                        +slider-controls().mt-3.mt-md-4
+                    .d-block.w-100.mt-5.mt-lg-7.text-center
+                        a(href="#").btn.btn-outline-primary.btn-lg-lg.btn-icon
+                            | Смотреть все награды
+                            +svg-use("icon-chevron-right", "icon size-m")
+    
+    section.section-layout.py-lg-11.bg-dark-30
+        -
+            var cardAboutBankData = {
+                pattern: false,
+                list: [
+                    {
+                        title: "Единая справочная система",
+                        list: [
+                            {
+                                href: "tel:+78002507007",
+                                text: "+7 (800) 250-70-07",
+                                icon: "icon-phone",
+                            },
+                        ],
+                    },
+                    {
+                        title: "Круглосуточно, звонки по России бесплатно",
+                        description: "Круглосуточно, для звонков из Москвы и заграницы",
+                        list: [
+                            {
+                                href: "tel:+74959747187",
+                                text: "+7 (495) 974-71-87",
+                                icon: "icon-phone",
+
+                            },
+                        ],
+                    },
+                    {
+                        title: "Срочная блокировка карт",
+                        list: [
+                            {
+                                href: "tel:+78002507007",
+                                text: "+7 (800) 250-70-07",
+                                icon: "icon-phone",
+                            },
+                            {
+                                href: "tel:+74959747187",
+                                text: "+7 (495) 974-71-87",
+                                icon: "icon-phone",
+                            },
+                        ],
+                    },
+                ]
+            }
+        .container
+            h3.mb-5.mb-lg-7
+                | Card About
+            .row
+                .col-12
+                    .swiper.js-slider-cards.slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:1,laptop:2,laptop-x:2" data-space-between="mobile-s:8,mobile:8,tablet:16,laptop:48,laptop-x:48")
+                        .swiper-wrapper.js-swiper-wrapper 
+                            .swiper-slide.js-swiper-slide
+                                +card-about(cardAboutBankData)
+                            .swiper-slide.js-swiper-slide
+                                +card-about(cardAboutBankData)
+
+                        +slider-controls().mt-3.mt-md-4
+
+    section#pagination.section-layout
         -
             var paginationObject = {
                 prevLink: "",

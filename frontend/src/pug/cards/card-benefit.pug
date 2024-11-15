@@ -17,4 +17,4 @@ mixin card-benefit(data)
                     if data.link
                         a(href=data.link).text-m.btn.btn-link.btn-lg.d-inline-flex.gap-2.align-items-center
                             span.fw-bold!= data.linkText ? data.linkText : 'Подробнее'
-                            +svg-use('icon-chevron-right-small', 'icon size-m')
+                            +svg-use('icon-chevron-right-small', `icon ${data.image ? 'size-s' : 'size-m'}`)
