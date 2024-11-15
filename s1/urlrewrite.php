@@ -56,4 +56,11 @@ $arUrlRewrite = [
         'PATH' => '/for-corporate-clients/index.php',
         'SORT' => 100,
     ],
+    [
+        'CONDITION' => '#^/services/#',
+        'RULE' => '',
+        'ID' => 'bitrix:news',
+        'PATH' => '/services/index.php',
+        'SORT' => 100,
+    ],
 ];
