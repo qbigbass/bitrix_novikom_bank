@@ -19,6 +19,10 @@
         padding-bottom: 7.5rem;
     }
 
+    &:not(:has([class*="bg"], > .pattern-bg)) + .section-layout:not([class*="bg"]) {
+        padding-top: 0;
+    }
+
     &--bg-gray {
         background-color: var(--dark-10);
     }

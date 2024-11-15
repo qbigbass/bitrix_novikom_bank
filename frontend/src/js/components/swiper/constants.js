@@ -18,7 +18,7 @@ export const DEFAULT_SEPARATORS = {
 }
 
 export const DEFAULT_SLIDER_DATA_ATTRS = {
-    spaceBetween: 'mobile-s:16,mobile:24,tablet:32,laptop:40',
+    spaceBetween: 'mobile-s:8,mobile:8,tablet:16,laptop:16',
     slidesPerView: 'mobile-s:1,mobile:1,tablet:2,laptop:3',
     autoHeight: 'false',
 }
