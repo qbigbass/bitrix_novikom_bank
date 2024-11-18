@@ -54,6 +54,8 @@ $APPLICATION->IncludeComponent(
             "STEPS_HEADING",
             "STEPS",
             "ADDITIONAL_INFO",
+            "BANNER_LINK_TEXT",
+            "LINK_IS_BUTTON",
         ],
         "DETAIL_SET_CANONICAL_URL" => "N",
         "DISPLAY_BOTTOM_PAGER" => "N",
