@@ -86,7 +86,7 @@ block content
 
     +banner-product(
         {
-            title: "Кредит на&nbsp;любые цели для&nbsp;зарплатных клиентов 1234",
+            title: "Кредит на&nbsp;любые цели для&nbsp;зарплатных клиентов",
             subtitle: "Воплощение задуманных планов и реализация любых целей уже сегодня!",
             imgSrc: "img/big-illustrations/large-individual/credit-for-any-purpose-salary-clients.png",
             bgColor: "heavy-violet",
@@ -158,10 +158,11 @@ block content
                 | Условия кредитования
                 +svg-use("icon-chevron-down", "icon size-m violet-100")
             #conditions.collapse.d-md-block.mt-4.mt-md-6.mt-lg-7
-                .row.px-lg-6
+                .row
                     .col-12
-                        +tabs-simple(tabsList, false)
-                        .tab-content.mt-4.mt-md-6.mt-lg-7
+                        .ps-lg-6
+                            +tabs-simple(tabsList, false)
+                        .tab-content.mt-4.mt-md-6.mt-lg-7.px-lg-6
                             #calculator.tab-pane.fade.show.active(aria-labelledby="calculator" tabindex="0" role="tabpanel")
                                 include ../includes/layout/loan-tabs/tab-calculator
                             #loan-conditions.tab-pane.fade(aria-labelledby="loan-conditions" tabindex="0" role="tabpanel")
