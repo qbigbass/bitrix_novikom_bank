@@ -76,10 +76,11 @@ block content
                 | Подробнее
                 +svg-use("icon-chevron-down", "icon size-m violet-100")
             #additional-info-content.collapse.d-md-block.mt-4.mt-md-6.mt-lg-7
-                .row.px-lg-6
+                .row
                     .col-12
-                        +tabs-simple(additionalTabsList, false)
-                        .tab-content.mt-4.mt-md-6.mt-lg-7
+                        .ps-lg-6
+                            +tabs-simple(additionalTabsList, false)
+                        .tab-content.mt-4.mt-md-6.mt-lg-7.px-lg-6
                             #additional-info-1.tab-pane.fade.show.active(aria-labelledby="additional-info-1" tabindex="0" role="tabpanel")
                                 include ../includes/layout/tabs/contributions-documents
                             #additional-info-2.tab-pane.fade(aria-labelledby="additional-info-2" tabindex="0" role="tabpanel")
