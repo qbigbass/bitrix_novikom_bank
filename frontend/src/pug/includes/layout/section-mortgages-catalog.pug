@@ -335,7 +335,7 @@ include ../../components/ui/tabs
 section.section-catalog__tabs
         .container
             .row
-                .col-12
+                .col-12.px-xl-2
                     +tabs(
                         tabsList,
                         "section-catalog__tab-list",
@@ -345,6 +345,6 @@ section.section-catalog__tabs
 section.section-catalog__list
         .container
             .row
-                .col-12.position-relative.z-1.d-flex.flex-column.align-items-start.gap-5.gap-md-7
+                .col-12.px-xl-2.position-relative.z-1.d-flex.flex-column.align-items-start.gap-5.gap-md-7
                     each item in allMortgages
                         +card-product-list(item)
