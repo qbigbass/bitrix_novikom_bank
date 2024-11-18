@@ -63,6 +63,7 @@ block content
                     color: "green"
                 },
                 caption: "¹ Период подтверждения доходов должен заканчиваться не ранее двух календарных месяцев, предшествующих месяцу предоставления документа, подтверждающего финансовое состояние <br><br> ² При отсутствии у Банка документа, подтверждающего стаж на последнем месте работы менее 12 месяцев, расчетная сумма среднемесячного дохода клиента может быть ниже фактического значения, что может негативно повлиять на условия кредитования. <br><br> ³ Форма СТД-Р предоставляется на бумажном носителе и заверяется работодателем, форма СТД–ПФР предоставляется на бумажном носителе и заверяется работодателем или ПФР, либо формируется из личного кабинета на портале государственных услуг (gosuslugi.ru), документ подписывается усиленной квалифицированной электронной подписью уполномоченного должностного лица ПФР.",
+                isActive: true
             },
             {
                 linkText: "Требования к кредитам",
@@ -161,10 +162,11 @@ block content
                 | Подробнее
                 +svg-use("icon-chevron-down", "icon size-m violet-100")
             #additional-info-content.collapse.d-md-block.mt-4.mt-md-6.mt-lg-7
-                .row.px-lg-6
+                .row
                     .col-12
-                        +tabs-simple(additionalTabsList, false)
-                        .tab-content.mt-4.mt-md-6.mt-lg-7
+                        .ps-lg-6
+                            +tabs-simple(additionalTabsList, false)
+                        .tab-content.mt-4.mt-md-6.mt-lg-7.px-lg-6
                             #additional-info-1.tab-pane.fade.show.active(aria-labelledby="additional-info-1" tabindex="0" role="tabpanel")
                                 include ../includes/layout/tabs/necessary-documents
                             #additional-info-2.tab-pane.fade(aria-labelledby="additional-info-2" tabindex="0" role="tabpanel")
