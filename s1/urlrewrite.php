@@ -42,4 +42,11 @@ $arUrlRewrite = [
         'PATH' => '/cards/index.php',
         'SORT' => 100,
     ],
+    [
+        'CONDITION' => '#^/offices-atm/#',
+        'RULE' => '',
+        'ID' => 'bitrix:news',
+        'PATH' => '/offices-atm/index.php',
+        'SORT' => 100,
+    ],
 ];
