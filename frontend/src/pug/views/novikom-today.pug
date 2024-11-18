@@ -1,0 +1,290 @@
+extends ../templates/base
+
+block title
+    title= 'О банке - Новиком сегодня'
+    meta(name="description" content="Описание страницы новиком сегодня")
+block content
+
+    -
+        var bannerProductData = {
+            title: "Новиком сегодня",
+            subtitle: "",
+            imgSrc: "img/big-illustrations/large-individual/novikom-today.png",
+            bgColor: "blue",
+            urlHref: "",
+            buttonText: "",
+            benefits: [
+                {
+                    num: '30 лет',
+                    description: 'успешной работы в&nbsp;реальном&nbsp;секторе российской&nbsp;экономики',
+                    descriptionColorClass: 'text-white-50',
+                    widthMinContent: true
+                },
+                {
+                    num: '19,4 млн',
+                    description: 'рекордная <br class="d-none d-lg-block">чистая&nbsp;прибыль<br class="d-none d-lg-block">за&nbsp;2022&nbsp;год',
+                    descriptionColorClass: 'text-white-50',
+                    widthMinContent: true
+                },
+                {
+                    num: '80%',
+                    description: 'по величине капитала, <br class="d-none d-lg-block">объему&nbsp;активов <br class="d-none d-lg-block">и корпоративных кредитов',
+                    descriptionColorClass: 'text-white-50',
+                    widthMinContent: false
+                }
+            ],
+            breadcrumbsArray: [
+                {
+                    link: "#",
+                    linkText: "О банке"
+                }
+            ],
+        }
+
+        var tabsList = [
+            {
+                link: '#year-2024',
+                id: 'year-2024',
+                linkText: '2024 год',
+                isActive: true
+            },
+            {
+                link: '#year-2023',
+                id: 'year-2023',
+                linkText: '2023 год',
+                isActive: false
+            },
+        ]
+
+        var ratingsList = [
+            {
+                text: 'Лучших Групп в Telegram <br class="d-none d-md-block">по вовлеченности аудитории',
+                imageSrc: 'img/top-15.svg',
+                imageAlt: '15',
+            },
+            {
+                text: 'Групп в Telegram по числу подписчиков',
+                imageSrc: 'img/top-30.svg',
+                imageAlt: '30',
+            },
+            {
+                text: 'Групп в Telegram по количеству просмотров постов в&nbsp;первые сутки',
+                imageSrc: 'img/top-25.svg',
+                imageAlt: '25',
+            },
+            {
+                text: 'Групп в Telegram по количеству просмотров постов в&nbsp;первые сутки',
+                imageSrc: 'img/top-25.svg',
+                imageAlt: '25',
+            },
+        ]
+
+        var cardProductRowsList = [
+            [
+                {
+                    title: 'Пресс-центр',
+                    img: 'large-individual/press-center.png',
+                    link: 'Подробнее',
+                },
+                {
+                    title: 'Карьера',
+                    img: 'large-individual/career.png',
+                    link: 'Подробнее',
+                },
+            ],
+            [
+                {
+                    title: 'Устав и документы',
+                    img: 'large-individual/documents.png',
+                    link: 'Подробнее',
+                },
+                {
+                    title: 'Контактная информация',
+                    img: 'large-individual/contact.png',
+                    link: 'Подробнее',
+                },
+            ],
+            [
+                {
+                    title: 'Членство <br>в&nbsp;организации',
+                    img: 'large-individual/membership-club.png',
+                    link: 'Подробнее',
+                },
+                {
+                    title: 'Реквизиты',
+                    img: 'large-individual/details.png',
+                    link: 'Подробнее',
+                },
+                {
+                    title: 'Устойчивое <br>развитие',
+                    img: 'large-individual/evolution.png',
+                    link: 'Подробнее',
+                },
+            ],
+            [
+                {
+                    title: 'Противодействие коррупции',
+                    icon: 'icon-a-hands',
+                    link: 'Подробнее',
+                    size: 'height-auto'
+                },
+                {
+                    title: 'Закупки',
+                    icon: 'icon-a-hands',
+                    link: 'Подробнее',
+                    size: 'height-auto'
+                },
+                {
+                    title: 'Сотрудничество с Союзмаша',
+                    icon: 'icon-a-hands',
+                    link: 'Подробнее',
+                    size: 'height-auto'
+                },
+            ]
+        ]
+
+        var awardList = [
+            {
+                title: 'Август',
+                year: '2024',
+                text: 'НОВИКОМ отмечен в номинации «За вклад в организацию и проведение международного военно-технического форума «Армия»',
+                imageSrc: 'img/awards/individual-certificate.png',
+            },
+            {
+                title: 'Май',
+                year: '2024',
+                text: 'Банк НОВИКОМ стал лауреатом Всероссийского конкурса образовательных программ и просветительских проектов кредитных организаций в интересах субъектов малого и среднего предпринимательства. Организаторы конкурса – Ассоциация развития финансовой грамотности и Ассоциация банков России – высоко оценили курс финансовой грамотности для МСП дочернего банка Госкорпорации Ростех',
+                imageSrc: 'img/awards/individual-cup.png',
+            },
+            {
+                title: 'Май',
+                year: '2024',
+                text: 'НОВИКОМ получил две награды премии FINAWARD. Дочерний банк Ростеха стал лауреатом ежегодной премии в области инноваций и достижений финансовой отрасли FINAWARD 2024. НОВИКОМ победил в специальной номинации за организацию первого в стране выпуска ЦФА для предприятия оборонно-промышленного комплекса. Отдельного диплома удостоились инновационные решения банка, нацеленные на улучшение клиентского опыта.',
+                imageSrc: 'img/awards/individual-medal.png',
+            },
+            {
+                title: 'Май',
+                year: '2024',
+                text: 'Торгово-промышленная палата РФ присудила НОВИКОМу победу в дополнительной номинации конкурса «Лучшая банковская программа для МСП – 2024». Экспертный совет назвал банк лучшим в развитии и продвижении инвестиционных возможностей для бизнеса. Помимо победы в дополнительной номинации, НОВИКОМ вошел в ТОП-3 лучших региональных банков с универсальной и базовой лицензией по итогам голосования предпринимателей.',
+                imageSrc: 'img/awards/individual-certificate.png',
+            },
+            {
+                title: 'Апрель',
+                year: '2024',
+                text: 'В Туле состоялся финал регионального этапа конкурса в области предпринимательской деятельности «Золотой Меркурий», генеральным партнером которого выступил Новикомбанк. На торжественной церемонии опорный банк госкорпорации Ростех получил награду в номинации «Лучшая банковская программа для МСП»',
+                imageSrc: 'img/awards/individual-cup.png',
+            }
+        ]
+
+    include ../components/banners/banner-text
+    include ../components/banners/banner-product
+    include ../components/ui/tabs
+    include ../components/ui/tabs-simple
+    include ../cards/card-award
+    include ../cards/card-news
+    include ../cards/card-product
+    include ../cards/card-special
+    include ../includes/header/header
+    include ../includes/layout/slider-card-product
+
+    +banner-product(bannerProductData).border-0
+
+    section.section-layout.py-lg-11
+        .container
+            h3.mb-5.mb-lg-7
+                | Рейтинги&nbsp;Банка НОВИКОМ
+            .row
+                .col-12
+                    .d-none.d-lg-block.w-100
+                        +tabs-simple(tabsList, false)
+                    .d-block.d-lg-none.w-100
+                        +tabs-simple(tabsList, true)
+                    .tab-content.mt-5.mt-lg-7
+                        #year-2024.tab-pane.fade.show.active(aria-labelledby="year-2024" tabindex="0" role="tabpanel")
+                            .swiper.slider-cards.js-slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:2,laptop:3,laptop-x:3" data-space-between="mobile-s:24,mobile:24,tablet:32,laptop:40,laptop-x:40")
+                                .swiper-wrapper
+                                    each item in ratingsList
+                                        .swiper-slide.js-swiper-slide
+                                            .card-top-list__col.bg-blue-10.h-100.overflow-hidden
+                                                .d-flex.flex-column.gap-4
+                                                    .d-flex.flex-column
+                                                        img(src="img/top.svg" alt="Топ" width="138" height="54" loading="lazy")
+                                                        img(src=item.imageSrc alt=item.imageAlt width="138" height="86" loading="lazy")
+
+                                                    p.card-top-list__description.dark-100.text-m.mt-auto.mb-0
+                                                        !=item.text
+                                                +pattern-bg('card', 'light', 'z-1 pattern-bg--position-sm-top')
+                                +slider-controls().mt-3.mt-md-4
+                        #year-2023.tab-pane.fade(aria-labelledby="year-2023" tabindex="0" role="tabpanel")
+                            .swiper.slider-cards.js-slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:2,laptop:3,laptop-x:3" data-space-between="mobile-s:24,mobile:24,tablet:32,laptop:40,laptop-x:40")
+                                .swiper-wrapper
+                                    each item in ratingsList
+                                        .swiper-slide.js-swiper-slide
+                                            .card-top-list__col.bg-blue-10.h-100.overflow-hidden
+                                                .d-flex.flex-column.gap-4
+                                                    .d-flex.flex-column
+                                                        img(src="img/top.svg" alt="Топ" width="138" height="54" loading="lazy")
+                                                        img(src=item.imageSrc alt=item.imageAlt width="138" height="86" loading="lazy")
+
+                                                    p.card-top-list__description.dark-100.text-m.mt-auto.mb-0
+                                                        !=item.text
+                                                +pattern-bg('card', 'light', 'z-1 pattern-bg--position-sm-top')
+                                +slider-controls().mt-3.mt-md-4
+                                
+    section.section-layout.bg-dark-30
+        -
+            var gapBetweenRowsClassList = 'row-gap-4 row-gap-md-5 row-gap-xl-6'
+            var gapRowClassList = 'gap-4 gap-md-5 gap-xl-6'
+        .container
+            .row(class=gapBetweenRowsClassList)
+                each rowArray, rowIndex in cardProductRowsList
+                    if rowIndex < 2
+                        .d-flex.flex-wrap(class=gapRowClassList)
+                            each item in rowArray
+                                +card-product(item).h-auto.flex-basis-100.flex-basis-md-25.flex-grow-1.bg-white
+                if cardProductRowsList.length > 2
+                    #more-ratifications.collapse.d-md-block
+                        .d-flex.flex-column(class=gapBetweenRowsClassList)
+                            each rowArray, rowIndex in cardProductRowsList
+                                if rowIndex > 1
+                                    .d-flex.flex-wrap.flex-xl-nowrap(class=gapRowClassList)
+                                        each item, index in rowArray
+                                            -
+                                                var isLastIndex = index === 2
+
+                                            +card-product(item)(class=isLastIndex ? 'w-100 w-xl-auto flex-basis-100 flex-basis-xl-25' : 'flex-basis-100 flex-basis-md-25').h-auto.flex-grow-1.bg-white
+            .row.d-md-none.mt-4
+                .col-12
+                    a(
+                        data-bs-toggle="collapse"
+                        href="#more-ratifications"
+                        role="button"
+                        aria-expanded="false"
+                        aria-controls="more-ratifications"
+                    ).d-flex.gap-2.align-items-center.justify-content-center.violet-100.text-m.fw-bold
+                        | Показать все
+                        +svg-use("icon-chevron-down", "icon size-m")
+    
+    section.section-layout.py-lg-11.mb-6.mb-sm-9.mb-lg-11.mb-xl-16
+        .container
+            h3.mb-5.mb-lg-7
+                | Награды
+            .row
+                .col-12
+                    .swiper.slider-cards.js-slider-cards(data-auto-height="mobile-s:true,mobile:true,tablet:true" data-slides-per-view="mobile-s:1,mobile:1,tablet:1,tablet-album:2,laptop:2,laptop-x:2" data-space-between="mobile-s:24,mobile:24,tablet:48,laptop:40,laptop-x:40")
+                        .swiper-wrapper
+                            each award in awardList
+                                .swiper-slide.js-swiper-slide
+                                    +card-award(award.imageSrc).h-100
+                                        .d-flex.w-100.align-items-end.justify-content-between.mb-4
+                                            h4.violet-100!= award.title
+                                            .d-none.d-md-inline.h2.violet-100-important!= award.year
+                                            .d-inline.d-md-none.h4.violet-100-important!= award.year
+                                        p.mb-0!= award.text
+                        +slider-controls().mt-3.mt-md-4
+                    .d-block.w-100.mt-5.mt-lg-7.text-center
+                        a(href="#").btn.btn-outline-primary.btn-lg-lg.btn-icon
+                            | Смотреть все награды
+                            +svg-use("icon-chevron-right", "icon size-m")
+
+    include ../includes/layout/section-news-cards

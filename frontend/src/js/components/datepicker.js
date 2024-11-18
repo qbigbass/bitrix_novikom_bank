@@ -28,7 +28,7 @@ const defaultSelectOptions = {
         } else if (cellType === 'month') {
             cellText = date.toLocaleString('default', { month: 'long' }).slice(0, 3);
         }
-        
+
         return {
             html: `<div class="air-datepicker-cell-text">${cellText}</div>`
         }
@@ -37,7 +37,7 @@ const defaultSelectOptions = {
 
 
 function initDatepicker() {
-    $(DATEPICKER_CLASSES.root).each(function() {
+    $(DATEPICKER_CLASSES.root).each(function(index, element) {
         const options = {...defaultSelectOptions};
         if ($(this).hasClass(DATEPICKER_CLASSES.isRange)) {
             options.range = true;
@@ -48,8 +48,8 @@ function initDatepicker() {
         if ($(this).hasClass(DATEPICKER_CLASSES.todayIsMinDate)) {
             options.minDate = new Date();
         }
-        
-        new AirDatepicker(DATEPICKER_CLASSES.root, options);
+
+        new AirDatepicker(element, options);
     });
 }
 

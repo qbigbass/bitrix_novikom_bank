@@ -1,0 +1,259 @@
+extends ../templates/base
+
+block title
+    title= "Защита от мошенничества"
+    meta(name="description" content="Описание страницы Защита от мошенничества")
+block content
+
+    include ../includes/header/header
+    include ../components/banners/banner-text
+    include ../components/benefit
+    include ../cards/card-product
+    include ../includes/layout/slider-card-fraud
+    include ../cards/card-benefit
+    include ../cards/card-promo
+    include ../components/helper
+
+    -
+        var bannerTextData = {
+            title: "Защита<br>от&nbsp;мошенничества",
+            description: "Узнайте как уберечь себе и&nbsp;своих близких<br>от&nbsp;финансового мошенничества",
+            imageSrc: "img/big-illustrations/large-individual/fraud-protection.png"
+        }
+
+        var allBenefits = [
+            {
+                spriteData: {
+                    icon: 'spam',
+                    classList: 'size-xl',
+                },
+                description: 'Не&nbsp;отвечайте на&nbsp;незнакомые звонки, тем более если они идут через мессенджеры. <br class="d-block"><br class="d-block">Сбросьте звонок, если вас просят назвать персональные данные, данные банковских карт, коды из&nbsp;СМС и&nbsp;пуш-уведомлений, включить трансляцию экрана, установить какую-либо программу.',
+            },
+            {
+                spriteData: {
+                    icon: 'message-alert',
+                    classList: 'size-xl',
+                },
+                description: 'Не&nbsp;доверяйте незнакомцам, кем&nbsp;бы они не&nbsp;представились по&nbsp;телефону. <br class="d-block"><br class="d-block">При общении через мессенджеры (WhatsApp, Telegram и&nbsp;т.д.) не&nbsp;включайте трансляцию экрана.',
+            },
+            {
+                spriteData: {
+                    icon: 'deposit-security',
+                    classList: 'size-xl',
+                },
+                description: 'Храните свои банковские карты, мобильный телефон, привязанный к&nbsp;личному кабинету Банка, и&nbsp;устройства с&nbsp;установленным приложением Банка в&nbsp;месте, исключающем несанкционированный доступ к&nbsp;ним.',
+            },
+            {
+                spriteData: {
+                    icon: 'protection_green',
+                    classList: 'size-xl',
+                },
+                description: 'Не&nbsp;скачивайте программы с&nbsp;неизвестных сайтов, из&nbsp;неофициальных магазинов приложений или по&nbsp;ссылкам, которые вам прислали незнакомцы. <br class="d-block"><br class="d-block">Используете на&nbsp;устройствах антивирусное программное обеспечение.',
+            },
+            {
+                spriteData: {
+                    icon: 'pin-code',
+                    classList: 'size-xl',
+                },
+                description: 'Не&nbsp;сообщайте коды, которые отображают программы удаленного доступа (RustDesk, Zoom и&nbsp;т.д.) для подключения к&nbsp;вашим устройствам. <br class="d-block"><br class="d-block">Не&nbsp;выполняйте никакие действия на&nbsp;своих устройствах по&nbsp;указаниям третьих лиц.',
+            },
+            {
+                spriteData: {
+                    icon: 'card-attention',
+                    classList: 'size-xl',
+                },
+                description: 'Никогда и&nbsp;никому не&nbsp;сообщайте данные ваших банковских карт, коды из&nbsp;СМС или пуш-уведомлений присылаемые Банком.',
+            }
+        ]
+
+        var tableData = [
+            {
+                label: "На&nbsp;вас выходят сами",
+                value: ["Могут представиться Центральным Банком, службой безопасности Банка, налоговой, прокуратурой и&nbsp;т.д"]
+            },
+            {
+                label: "На&nbsp;вас давят",
+                value: ["Мошенники всегда торопят, чтобы у&nbsp;вас не&nbsp;было времени подумать"]
+            },
+            {
+                label: "Радуют внезапной выгодой или пугают",
+                value: ["Сильные эмоции притупляют бдительность"]
+            },
+            {
+                label: "Говорят, о&nbsp;деньгах",
+                value: ["Предлагают спасти ваши сбережения, отменить кредит и&nbsp;т.д."]
+            },
+            {
+                label: "Просят сообщить конфиденциальные данные",
+                value: ["Мошенников интересуют ваши персональные данные, данные банковских карт, коды из&nbsp;СМС или пуш-уведомлений"]
+            },
+            {
+                label: "Предлагают установить какую-либо программу на&nbsp;ваше устройство",
+                value: ["Мошенники могут получить доступ к&nbsp;вашему устройству и&nbsp;дистанционно украсть ваши денежные средства"]
+            },
+            {
+                label: "Просят включить трансляцию экрана в&nbsp;мессенджере",
+                value: ["Используя подсмотренную информацию на&nbsp;вашем устройстве, мошенники также могут дистанционно украсть ваши денежные средства"]
+            },
+        ]
+
+        var productCards = [
+            {
+                title: "СМС и&nbsp;пуш-уведомления",
+                description: "Для подтверждения покупок и&nbsp;действия со&nbsp;счетом. Для доступа в&nbsp;личный кабинет и&nbsp;мобильное приложение Банка.",
+                icon: true,
+                iconImg: "notification",
+                color: "transparent",
+            },
+            {
+                title: "Логин и&nbsp;пароль",
+                description: "Для доступа в&nbsp;личный кабинет и&nbsp;мобильное приложение Банка.",
+                icon: true,
+                iconImg: "account",
+                color: "transparent",
+            },
+            {
+                title: "ПИН код",
+                description: "Для подтверждения покупок и&nbsp;снятия наличных.",
+                icon: true,
+                iconImg: "pin-code",
+                color: "transparent",
+            },
+            {
+                title: "Данные карты",
+                description: "Номер, срок действия, CVV-код (трехзначный код на&nbsp;обратной стороне карты). Для совершения покупок.",
+                icon: true,
+                iconImg: "card-security",
+                color: "transparent",
+            },
+        ];
+
+        var cardBenefits = [
+            {
+                bgColor: 'bg-dark-10',
+                title: 'Использование программы удалённого управления',
+                image: 'large-individual/remote-access.png',
+                link: true
+            },
+            {
+                bgColor: 'bg-dark-10',
+                title: 'Звонок от&nbsp;«банка»',
+                image: 'large-individual/call-of-bank.png',
+                link: true
+            },
+            {
+                bgColor: 'bg-dark-10',
+                title: 'Звонок от&nbsp;«представителей» различных структур (МВД, ФСБ и&nbsp;другие)',
+                image: 'large-individual/telephone-subscriber.png',
+                link: true
+            },
+            {
+                bgColor: 'bg-dark-10',
+                title: 'Обман<br> при покупке<br>или продаже товара',
+                image: 'large-individual/sale-purchase.png',
+                link: true
+            },
+            {
+                bgColor: 'bg-dark-10',
+                title: 'Видеозвонок<br>через мессенджер',
+                image: 'large-individual/video-call.png',
+                link: true
+            },
+            {
+                bgColor: 'bg-dark-10',
+                title: 'Звонок из&nbsp;государственных структур',
+                image: 'large-individual/personal-information.png',
+                link: true
+            },
+        ]
+
+        var list = [
+            "назвали кому-либо данные вашей банковской карты, коды из&nbsp;СМС или пуш-уведомлений присылаемые Банком",
+            "по&nbsp;указанию третьих лиц скачали какую-либо программу на&nbsp;ваше устройство или включали трансляцию экрана в&nbsp;мессенджере",
+            "заметили подозрительные действия в&nbsp;личном кабинете Банка",
+            "увидели подозрительные СМС или пуш-сообщения от&nbsp;Банка",
+            "потеряли мобильный телефон, привязанный к&nbsp;личному кабинету Банка, или устройства с&nbsp;установленным приложением Банка",
+            "потеряли свою банковскую карту"
+        ]
+
+        var cardPromo = {
+            title: "Сообщите о&nbsp;факте<br>мошенничества",
+            text: "Сообщите нам, если вам или вашим близким звонили или писали мошенники. Так вы&nbsp;поможете бороться с&nbsp;киберпреступниками.",
+            image: "big-illustrations/large-individual/send-message.png",
+        }
+
+    +banner-text(
+        bannerTextData,
+        "green",
+    )
+
+    section.section-layout.px-lg-6
+        .container
+            h3.mb-4.mb-md-6.mb-lg-7 Правила безопасности
+            .row.row-gap-6.gx-xl-6
+                each item, index in allBenefits
+                    .col-12.col-md-6.col-lg-4
+                        +benefit(item.spriteData, item.title)
+                            span!= item.description
+
+    section.section-layout.px-lg-6
+        .container
+            h3.mb-4.mb-md-6.mb-lg-7 Признаки мошеннического звонка
+            .table-tab.cell-2
+                .table-tab__body
+                    each row in tableData
+                        .table-tab__row
+                            .table-tab__cell.text-l.fw-semibold.dark-70!= row.label
+                            .table-tab__cell
+                                each item in row.value
+                                    p.text-l!= item
+        +pattern-bg('section-2', 'light')
+
+    section.section-layout.bg-dark-10
+        .container
+            h3.mb-4.mb-md-6.mb-lg-7.px-lg-6
+                | Держите в секрете данные
+            .row.row-gap-4.row-gap-md-5.row-gap-lg-7
+                each item in productCards
+                    .col-12.col-md-6.col-xl-3.ps-md-3.ps-lg-3-5
+                        +card-product(item).card-product--bg-white
+
+    section.section-layout
+        .container
+            h3.mb-4.mb-md-6.mb-lg-7.px-lg-6
+                | Самые распространенные способы мошенничества
+            +slider-card-fraud(cardBenefits)
+
+    section.section-layout.px-lg-6
+        .container
+            .row.row-gap-5.row-gap-md-6.row-gap-lg-7
+                .col-12
+                    h3 Срочно звоните +7 (800) 250-70-07, если:
+                .col-12
+                    ul.list.list--size-l
+                        each item in list
+                            li!= item
+
+    section.section-layout.bg-dark-10
+        .container
+            .row
+                .col-12
+                    +card-promo(cardPromo).card-promo--heavy-blue
+                        a(href="#").btn.btn-info.btn-lg-lg.w-100.w-md-auto Отправить обращение
+
+    section.section-layout
+        .container
+            .row
+                .col-12
+                    +polygon-container("green-100")
+                        +helper("img/restructuring-additional-info.png", "bg-dark-10")
+                            h3.h4.mb-3 Важная информация от Банка России
+                            ul.list-unstyled.m-0.text-l.d-flex.flex-column.row-gap-3
+                                li
+                                    a(href="https://cbr.ru/faq/information_security/").fw-semibold.link.link-underline Вопросы и ответы
+                                li
+                                    a(href="https://cbr.ru/information_security/").fw-semibold.link.link-underline Информационная безопасность
+                                li
+                                    a(href="https://fincult.info/rake").fw-semibold.link.link-underline Истории о мошенничестве — грабли, на которые лучше не наступать
+
+    include ../includes/layout/section-feedback

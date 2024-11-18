@@ -12,15 +12,18 @@ h1, .h1 {
 
     font-size: map-get($font-size-body, large-x);
     line-height: 125%;
+    font-weight: 600;
 
     @include use-media(tablet) {
         font-size: map-get($font-size-body, large);
         line-height: 132%;
+        font-weight: 700;
     }
 
     @include use-media(tablet-album) {
         font-size: map-get($font-size-body, xxl);
         line-height: 122%;
+
     }
 }
 
@@ -196,6 +199,12 @@ h6, .h6 {
     }
 }
 
+.link-underline {
+    --bs-link-color-rgb: var(--blue-100);
+    --bs-link-hover-color-rgb: var(--purple-100);
+    text-decoration-line: underline;
+}
+
 .link-hint {
     color: var(--blue-100);
     text-decoration: underline dashed currentColor;
@@ -211,5 +220,9 @@ h6, .h6 {
 
 .text-balance {
   text-wrap: balance;
+}
+
+.text-hyphens {
+  hyphens: auto;
 }
 

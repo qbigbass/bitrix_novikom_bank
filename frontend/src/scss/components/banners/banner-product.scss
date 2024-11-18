@@ -9,20 +9,22 @@
     border-top: var(--border-top-width) solid var(--border-top-color);
     overflow: hidden;
     position: relative;
+    display: flex;
 
     @include use-media(tablet-album) {
         --border-top-width: 0.5rem;
     }
 
     @include use-media(laptop) {
-        height: calc(var(--banner-height) + var(--border-top-width));
+        min-height: calc(var(--banner-height) + var(--border-top-width));
         overflow: hidden;
     }
 
     &__wrapper {
         padding: 2.5rem 1.5rem;
         position: relative;
-        height: 100%;
+        height: auto;
+        width: 100%;
         z-index: 1;
 
         @include use-media(tablet) {

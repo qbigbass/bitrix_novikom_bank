@@ -114,12 +114,12 @@
         }
 
         &--size-small {
-            height: 2.5rem !important;
+            height: auto !important;
+            max-height: 2.688rem !important;
 
             & .select2-selection {
                 &__rendered {
                     font-size: .875rem;
-                    line-height: 1.3 !important;
                     padding: .625rem 2.5rem .625rem 1rem !important;
                     color: var(--dark-100) !important;
                 }
@@ -127,7 +127,8 @@
         }
 
         &--size-large {
-            height: 4rem !important;
+            height: auto !important;
+            max-height: 4rem !important;
 
             & .select2-selection {
                 &__rendered {
@@ -138,9 +139,23 @@
             }
         }
 
+        &--size-small-lg {
+            @include use-media(tablet-album) {
+                height: auto !important;
+                max-height: 3.5rem !important;
+
+                & .select2-selection {
+                    &__rendered {
+                        font-size: 1rem;
+                        padding: 0.9375rem 2.5rem 0.9375rem 0.9375rem !important;
+                    }
+                }
+            }
+        }
+
         &--size-lg-large {
             @include use-media(tablet-album) {
-                height: 4rem !important;
+                max-height: 4rem !important;
 
                 & .select2-selection {
                     &__rendered {

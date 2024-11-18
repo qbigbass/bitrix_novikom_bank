@@ -1,0 +1,75 @@
+include ../../../components/forms/input
+include ../../../components/forms/select
+include ../../../components/forms/captcha
+include ../../../components/forms/confirm
+include ../../../components/forms/upload-file
+
+-
+    var vacancyForm = {
+        formName: "vacancy",
+        inputs: [
+            {
+                id: "lastName",
+                label: "Фамилия",
+                placeholder: "Введите фамилию",
+                required: true,
+                hidden: false
+            },
+            {
+                id: "firstName",
+                label: "Имя и отчество",
+                placeholder: "Введите имя и отчество",
+                required: true,
+                hidden: false
+            },
+            {
+                id: "email",
+                label: "E-mail",
+                placeholder: "Введите почту",
+                type: "email",
+                required: true,
+            },
+            {
+                id: "phone",
+                label: "Телефон",
+                placeholder: "+7",
+                required: true,
+                mask: "phone"
+            },
+            {
+                id: "cvLink",
+                label: "Или вставьте ссылку на online-резюме",
+                placeholder: "Любое",
+                required: false,
+            }
+        ],
+    }
+
+form(action="/" method="POST" novalidate id="vacancy-form" data-form).application-form
+    .application-form__step(data-form-validate-group)
+        .d-flex.flex-column.gap-4.gap-md-5.gap-lg-6
+            .row.g-1.g-md-2.g-lg-2_5
+                .application-form__col.col-12.col-md-6
+                    +input(vacancyForm.inputs[0], vacancyForm.formName)
+                .application-form__col.col-12.col-md-6
+                    +input(vacancyForm.inputs[1], vacancyForm.formName)
+                .application-form__col.col-12.col-md-6
+                    +input(vacancyForm.inputs[2], vacancyForm.formName)
+                .application-form__col.col-12.col-md-6
+                    +input(vacancyForm.inputs[3], vacancyForm.formName)
+                .application-form__col.col-12
+                    +upload-file(vacancyForm.formName)
+                .application-form__col.col-12
+                    +input(vacancyForm.inputs[4], vacancyForm.formName)
+            +confirm(vacancyForm.formName)
+        .d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-6.mt-6.mt-lg-7
+            button.btn.btn-primary.btn-lg-lg.w-100.w-md-auto(type="submit" disabled aria-disabled="true" data-form-button) Отправить
+            div.text-m.orange-100.text-center(data-form-error)
+    div(
+        hidden
+        aria-hidden="true"
+        data-success-title="Ваша заявка успешно отправлена!"
+        data-success-info="Мы ответим на вашу заявку, по выбранному способу связи, как только получим и обработаем её"
+        data-error-title="Не удалось отправить заявку"
+        data-error-info="Проверьте правильно ли указаны все данные и отправьте обращение снова"
+    ).js-message

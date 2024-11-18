@@ -12,6 +12,8 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 
+use Dalee\Helpers\HeaderView;
+
 $terms = [
     'RATE_TO' => [
         'SIGN' => 'При ключевой ставке<br>Банка России на ' . date('d.m.Y'),
@@ -28,17 +30,18 @@ $terms = [
     ],
 ];
 
-$headerH1 = "Вклад «" . $arResult["~NAME"] . "»";
-$headerColorClass = 'banner-product--heavy-purple';
+$headerView = new HeaderView($component);
+$helper = $headerView->helper();
 
-$headerTemplate = $arResult['PROPERTIES']['HEADER_TEMPLATE']['VALUE_XML_ID'] ?? 'detailed';
-$headerFilePath = $_SERVER["DOCUMENT_ROOT"] . "/local/php_interface/include/header/news_detail/" . $headerTemplate . ".php";
-
-if (file_exists($headerFilePath)) {
-    include($headerFilePath);
-} else {
-    echo "Шаблон шапки $headerTemplate не найден";
-}?>
+$headerView->render(
+    "Вклад «" . $arResult["~NAME"] . "»",
+    $arResult['~PREVIEW_TEXT'],
+    null,
+    0,
+    $arResult,
+    $terms
+);
+?>
 
 <? if (!empty($arResult['PROPERTIES']['BENEFITS']['VALUE'])) { ?>
     <section class="section-benefits px-0 px-lg-6 py-6 py-sm-9 py-md-11 py-xl-16 position-relative overflow-hidden">
@@ -307,18 +310,7 @@ if (file_exists($headerFilePath)) {
                                                 <div class="stepper-item__number">
                                                     <div class="stepper-item__number-value"><?= $innerKey + 1 ?></div>
                                                     <div class="stepper-item__number-icon">
-                                                        <div class="stepper-item__icon-border" data-level="1">
-                                                            <svg width="76" height="44" viewBox="0 0 76 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                <path d="M36.0723 1.06022C37.2727 0.400039 38.7273 0.400039 39.9277 1.06022L74.8138 20.2476C76.1953 21.0074 76.1953 22.9926 74.8138 23.7524L39.9277 42.9398C38.7273 43.6 37.2727 43.6 36.0723 42.9398L1.18624 23.7524C-0.195312 22.9926 -0.19531 21.0074 1.18624 20.2476L36.0723 1.06022Z" fill="currentColor"></path>
-                                                            </svg>
-                                                        </div>
-                                                        <? for ($i = 0; $i < $innerKey; $i++) {?>
-                                                            <div class="stepper-item__icon-border" data-level="<?= $i + 2 ?>">
-                                                                <svg width="80" height="46" viewBox="0 0 80 46" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                    <path d="M39.5181 1.26505C39.8182 1.10001 40.1818 1.10001 40.4819 1.26506L78.4069 22.1238C79.0977 22.5037 79.0977 23.4963 78.4069 23.8762L40.4819 44.7349C40.1818 44.9 39.8182 44.9 39.5181 44.7349L1.59312 23.8762C0.902343 23.4963 0.902345 22.5037 1.59312 22.1238L39.5181 1.26505Z" stroke="currentColor" stroke-linecap="round" stroke-dasharray="4 4"></path>
-                                                                </svg>
-                                                            </div>
-                                                        <? } ?>
+                                                        <?= getStepperIcons($innerKey) ?>
                                                     </div>
                                                 </div>
                                                 <div class="stepper-item__arrow"></div>
@@ -355,7 +347,7 @@ if (file_exists($headerFilePath)) {
                         <h3><?= $arResult['PROPERTIES']['QUOTE_HEADER']['~VALUE'] ?></h3>
                     </div>
                     <div class="banner-product-info-alternative__body d-flex flex-column gap-4 gap-md-6">
-                        <p class="m-0 text-l pe-0 col-lg-8"><?= $arResult['PROPERTIES']['QUOTE_TEXT']['VALUE']['TEXT'] ?></p>
+                        <p class="m-0 text-l pe-0 col-lg-8"><?= $arResult['PROPERTIES']['QUOTE_TEXT']['~VALUE']['TEXT'] ?></p>
                     </div>
                 </div>
             </div>

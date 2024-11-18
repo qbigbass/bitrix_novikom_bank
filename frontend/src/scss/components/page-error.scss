@@ -1,0 +1,19 @@
+.page-error {
+    &__image {
+        display: block;
+        margin-inline: auto;
+
+        @include use-media(mobile) {
+            width: 62.5vw;
+        }
+
+        @include use-media(tablet) {
+            max-width: 30rem; // 480px
+            margin-right: 0;
+        }
+
+        @include use-media(laptop) {
+            max-width: 37.5rem;
+        }
+    }
+}
