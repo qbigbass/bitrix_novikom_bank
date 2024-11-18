@@ -12,11 +12,11 @@
     display: flex;
 
     @include use-media(tablet-album) {
+        min-height: calc(var(--banner-height) + var(--border-top-width));
         --border-top-width: 0.5rem;
     }
 
     @include use-media(laptop) {
-        min-height: calc(var(--banner-height) + var(--border-top-width));
         overflow: hidden;
     }
 
@@ -33,7 +33,7 @@
         }
 
         @include use-media(tablet-album) {
-            padding: 2.5rem 5rem;
+            padding: 2.5rem 5rem 7.5rem 5rem;
         }
 
         @include use-media(desktop) {
@@ -283,55 +283,6 @@
         }
     }
 
-    &--border-orange {
-        --border-top-color: var(--orange-100);
-    }
-
-    &--type-corp {
-        #{$root}__wrapper {
-            @include use-media(tablet-album) {
-                padding-bottom: 7.5rem;
-            }
-        }
-
-        #{$root}__benefit-item {
-            color: var(--orange-100);
-        }
-
-        #{$root}__image {
-            @include use-media(tablet, laptop) {
-                top: 2.5rem;
-                right: 0;
-                transform: none;
-            }
-        }
-
-        #{$root}__footer {
-            & .benefit-text-card {
-                color: var(--dark-0);
-
-                &__title {
-                    color: var(--dark-0);
-                }
-
-                &__icon {
-                    color: var(--orange-100);
-                }
-            }
-        }
-
-        #{$root}__benefits-list {
-            @include use-media(tablet-album) {
-                max-width: 35.313rem; // 565px
-                margin-right: -1.563rem;
-            }
-        }
-
-        & .benefit-text-card__title {
-            color: var(--orange-100);
-        }
-    }
-
     &--size-xl {
         #{$root}__pattern {
             top: 12.5rem; //200px
@@ -341,6 +292,33 @@
                 top: 0;
             }
         }
+
+        #{$root}__image {
+            @include use-media(tablet) {
+                width: 46.875vw;
+                max-width: 26.25rem; //420px
+                top: 2.5rem;
+                transform: none;
+            }
+
+            @include use-media(tablet-album) {
+                width: 35vw;
+                max-width: 35em; //560px
+            }
+
+            @include use-media(laptop-x) {
+                width: 100%;
+                max-width: 35em; //560px
+            }
+
+            @include use-media(desktop) {
+                right: 8rem;
+            }
+        }
+    }
+
+    &--border-orange {
+        --border-top-color: var(--orange-100);
     }
 
     &--blue {

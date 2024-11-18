@@ -19,7 +19,7 @@
         padding-bottom: 7.5rem;
     }
 
-    &:not(:has([class*="bg"], > .pattern-bg)) + .section-layout:not([class*="bg"]) {
+    &:not([class*="bg"], :has(> .pattern-bg)) + .section-layout:not([class*="bg"]) {
         padding-top: 0;
     }
 

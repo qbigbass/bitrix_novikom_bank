@@ -17,7 +17,6 @@ block content
         var bannerPromoData = {
             title: "Меры господдержки",
             subtitle: "Новиком Банк&nbsp;&mdash; Уполномоченный Банк системы мер государственной поддержки",
-            type: "corp",
             imgSrc: "img/big-illustrations/large-corporate/state-support.png",
             bgColor: "heavy-purple",
             btnType: "btn-orange",
@@ -27,7 +26,7 @@ block content
                 {
                     colorClass: 'orange-100',
                     title: 'Уменьшение',
-                    description: 'налогооблагаемой база'
+                    description: 'налогооблагаемой<br>база'
                 },
                 {
                     colorClass: 'orange-100',
@@ -214,7 +213,7 @@ block content
 
         ]
 
-    +banner-product(bannerPromoData).banner-product--border-orange.banner-product--type-corp-withimg
+    +banner-product(bannerPromoData).banner-product--border-orange
 
     section.section-layout
         .container
