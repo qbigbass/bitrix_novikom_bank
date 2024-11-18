@@ -299,27 +299,10 @@
         }
 
         #{$root}__image {
-            @include use-media(mobile-s, mobile) {
-                width: 100vw;
-                margin: -1.5rem;
-                max-width: unset;
-            }
-
-            @include use-media(tablet) {
+            @include use-media(tablet, laptop) {
                 top: 2.5rem;
                 right: 0;
                 transform: none;
-                width: 22.5rem;
-                max-width: unset;
-            }
-
-            @include use-media(tablet-album) {
-                width: 26.25rem;
-            }
-
-            @include use-media(laptop) {
-                width: 35rem;
-                right: 8rem;
             }
         }
 
@@ -349,42 +332,7 @@
         }
     }
 
-    &--type-corp-withimg {
-        #{$root}__wrapper {
-            @include use-media(tablet-album) {
-                padding-bottom: 2.875rem;
-            }
-        }
-
-        #{$root}__image {
-            @include use-media(tablet-album) {
-                width: 33.75rem;
-            }
-
-            @include use-media(laptop) {
-                width: 45rem;
-                top: 50%;
-                right: 5rem;
-                transform: translateY(-50%);
-            }
-        }
-
-        #{$root}__content {
-            @include use-media(tablet, tablet-album) {
-                width: 20.5rem; //328px
-            }
-
-            @include use-media(tablet-album, laptop) {
-                width: 36.25rem; //580px
-            }
-        }
-    }
-
     &--size-xl {
-        @include use-media(tablet-album) {
-            height: auto;
-        }
-
         #{$root}__pattern {
             top: 12.5rem; //200px
             bottom: auto;
