@@ -2,7 +2,7 @@
 
 namespace Sprint\Migration;
 
-class Version20241119074004 extends Version
+class Version20241119081023 extends Version
 {
     protected $author = "votincev-aa@galagodigital.ru";
 
