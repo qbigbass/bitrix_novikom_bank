@@ -1,4 +1,4 @@
-<?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
+<? if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /** @var array $arParams */
 /** @var array $arResult */
 /** @global CMain $APPLICATION */
@@ -14,71 +14,80 @@ $this->setFrameMode(true);
 ?>
 
 <div class="card-offer-grid">
-<? $upIndex = 0;
-foreach ($arResult['ITEMS'] as $item) {
-    $this->AddEditAction($item['ID'], $item['EDIT_LINK'], CIBlock::GetArrayByID($item["IBLOCK_ID"], "ELEMENT_EDIT"));
-    $this->AddDeleteAction($item['ID'], $item['DELETE_LINK'], CIBlock::GetArrayByID($item["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
+    <? $upIndex = 0;
+    foreach ($arResult['ITEMS'] as $item) {
+        $this->AddEditAction($item['ID'], $item['EDIT_LINK'], CIBlock::GetArrayByID($item["IBLOCK_ID"], "ELEMENT_EDIT"));
+        $this->AddDeleteAction($item['ID'], $item['DELETE_LINK'], CIBlock::GetArrayByID($item["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
 
-    if (!empty($item['DISPLAY_PROPERTIES']['LIST_POSITION']['VALUE']) && $item['DISPLAY_PROPERTIES']['LIST_POSITION']['VALUE'] == 'Сверху') { ?>
-        <div class="card-product card-product--transparent <?= $upIndex == 0 ? 'card-product--size-large ' : '' ?>card-product--bg-white" id="<?=$this->GetEditAreaId($item['ID']);?>">
-            <div class="card-product__inner">
-                <div class="card-product__content">
-                    <h4 class="card-product__title"><?= $item['~NAME'] ?></h4>
-                    <p class="card-product__description m-0"><?= $item['~PREVIEW_TEXT'] ?></p>
+        if (!empty($item['DISPLAY_PROPERTIES']['LIST_POSITION']['VALUE']) && $item['DISPLAY_PROPERTIES']['LIST_POSITION']['VALUE'] == 'Сверху') { ?>
+            <div
+                class="card-product card-product--transparent <?= $upIndex == 0 ? 'card-product--size-large ' : '' ?>card-product--bg-white"
+                id="<?= $this->GetEditAreaId($item['ID']); ?>">
+                <div class="card-product__inner">
+                    <div class="card-product__content">
+                        <h4 class="card-product__title"><?= $item['~NAME'] ?></h4>
+                        <p class="card-product__description m-0"><?= $item['~PREVIEW_TEXT'] ?></p>
+                    </div>
+                    <? if (!empty($item['DETAIL_PICTURE']['SRC'])) { ?>
+                        <img class="card-product__img" src="<?= $item['DETAIL_PICTURE']['SRC'] ?>"
+                             alt="<?= $item['DETAIL_PICTURE']['ALT'] ?>" loading="lazy">
+                    <? } ?>
+                    <a class="btn btn-link btn-icon m-auto m-md-0" href="<?= $item['DETAIL_PAGE_URL'] ?>">
+                        <span>Подробнее</span>
+                        <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                            <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
+                        </svg>
+                    </a>
                 </div>
-                <? if (!empty($item['DETAIL_PICTURE']['SRC'])) { ?>
-                    <img class="card-product__img" src="<?= $item['DETAIL_PICTURE']['SRC'] ?>" alt="<?= $item['DETAIL_PICTURE']['ALT'] ?>" loading="lazy">
-                <? } ?>
-                <a class="btn btn-link btn-icon m-auto m-md-0" href="<?= $item['DETAIL_PAGE_URL'] ?>">
-                    <span>Подробнее</span>
-                    <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
-                    </svg>
-                </a>
             </div>
-        </div>
-    <?  $upIndex++;
-    }
-} ?>
+            <? $upIndex++;
+        }
+    } ?>
 </div>
 
-<?$APPLICATION->IncludeFile('/local/php_interface/include/internet_bank_for_business.php');?>
+<? $APPLICATION->IncludeFile('/local/php_interface/include/internet_bank_for_business.php'); ?>
+<div class="col-12">
+    <div class="row cards-gutter">
+        <? $downIndex = 0;
+        foreach ($arResult['ITEMS'] as $item) {
+            if (!empty($item['DISPLAY_PROPERTIES']['LIST_POSITION']['VALUE']) && $item['DISPLAY_PROPERTIES']['LIST_POSITION']['VALUE'] == 'Снизу') {
 
-<? $downIndex = 0;
-foreach ($arResult['ITEMS'] as $item) {
-    if (!empty($item['DISPLAY_PROPERTIES']['LIST_POSITION']['VALUE']) && $item['DISPLAY_PROPERTIES']['LIST_POSITION']['VALUE'] == 'Снизу') {
+                $classList = match ($downIndex) {
+                    0, 1 => 'col-12 col-md-6 col-lg-4',
+                    default => 'col-12 col-lg-4',
+                };
 
-        $classList = match($downIndex) {
-            0 => 'col-12 col-md-6 col-lg-4 pe-md-3 pe-lg-3-5',
-            1 => 'col-12 col-md-6 col-lg-4 ps-md-3 ps-lg-3-5',
-            default => 'col-12 col-lg-4',
-        };
+                if ($downIndex > 2) {
+                    $classList = 'col-12 col-md-6 col-xl-3';
+                }
+                ?>
 
-        if ($downIndex > 2) {
-            $classList = $downIndex % 2 == 0 ? 'col-12 col-md-6 col-xl-3 pe-md-3 pe-lg-3-5' : 'col-12 col-md-6 col-xl-3 ps-md-3 ps-lg-3-5';
-        }
-            ?>
-            <div class="<?= $classList ?>" id="<?=$this->GetEditAreaId($item['ID']);?>">
-                <a class="card-product card-product--transparent card-product--bg-white" href="<?= $item['DETAIL_PAGE_URL'] ?>">
-                    <div class="card-product__inner">
-                        <div class="card-product__content mw-100">
-                            <h4 class="card-product__title"><?= $item['~NAME'] ?></h4>
-                            <p class="card-product__description m-0 mw-100"><?= $item['~PREVIEW_TEXT'] ?></p>
-                        </div>
-                        <div class="card-product__footer">
+                <div class="<?= $classList ?>" id="<?= $this->GetEditAreaId($item['ID']); ?>">
+                    <a class="card-product card-product--transparent card-product--bg-white"
+                       href="<?= $item['DETAIL_PAGE_URL'] ?>">
+                        <div class="card-product__inner">
+                            <div class="card-product__content mw-100">
+                                <h4 class="card-product__title"><?= $item['~NAME'] ?></h4>
+                                <p class="card-product__description m-0 mw-100"><?= $item['~PREVIEW_TEXT'] ?></p>
+                            </div>
+                            <div class="card-product__footer">
                             <span class="btn btn-link btn-icon d-none d-md-inline-flex">
                             <span>Подробнее</span>
-                                <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%"
+                                     height="100%">
                                     <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
                                 </svg>
                             </span>
-                            <? if (!empty($item['PREVIEW_PICTURE']['SRC'])) { ?>
-                                <img class="icon size-xxl ms-auto" src="<?= $item['PREVIEW_PICTURE']['SRC'] ?>" alt="<?= $item['PREVIEW_PICTURE']['ALT'] ?>" loading="lazy">
-                            <? } ?>
+                                <? if (!empty($item['PREVIEW_PICTURE']['SRC'])) { ?>
+                                    <img class="icon size-xxl ms-auto" src="<?= $item['PREVIEW_PICTURE']['SRC'] ?>"
+                                         alt="<?= $item['PREVIEW_PICTURE']['ALT'] ?>" loading="lazy">
+                                <? } ?>
+                            </div>
                         </div>
-                    </div>
-                </a>
-            </div>
-        <? $downIndex++;
-    }
-} ?>
+                    </a>
+                </div>
+                <? $downIndex++;
+            }
+        } ?>
+    </div>
+</div>
