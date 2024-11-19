@@ -49,7 +49,6 @@ $this->setFrameMode(true);
                          aria-labelledby="additional-info-<?= $tab['ID'] ?>"
                          tabindex="0"
                          role="tabpanel">
-                        <div class="row row-gap-6 row-gap-md-9 row-gap-lg-11">
 
                         <? if (
                             !empty($tab['CODE']) && ($tab['CODE'] == 'protsentnye-stavki' || $tab['CODE'] == 'stavki')
@@ -135,6 +134,10 @@ $this->setFrameMode(true);
                                         </div>
                                     <? }
                                 }
+
+                                if ($property['CODE'] == 'HTML' && !empty($property['~VALUE'])) {?>
+                                    <?=$property['~VALUE']?>
+                                <?}
 
                                 if ($property['CODE'] == 'COMPLEX_PROP' && !empty($property['~VALUE'])) { ?>
                                     <div class="accordion accordion--size-lg accordion--bg-transparent" id="accordion-insurance-more">
@@ -450,7 +453,6 @@ $this->setFrameMode(true);
                                 <? }
                             }
                         }?>
-                        </div>
                     </div>
                 <? } ?>
             </div>
