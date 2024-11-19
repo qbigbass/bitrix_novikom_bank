@@ -3,8 +3,24 @@
 
 require_once __DIR__ . '/functions.php';
 
-foreach ($arResult['ITEMS'] as &$item) {
-    $arSection = \Bitrix\Iblock\SectionTable::getById($item['IBLOCK_SECTION_ID'])->fetch();
-    $item['SECTION_NAME'] = $arSection['NAME'];
+$sectionEntity = \Bitrix\Iblock\Model\Section::compileEntityByIblock($arResult['ID']);
+
+$sectionsId = [];
+foreach ($arResult['ITEMS'] as $item) {
+    if (!in_array($item['IBLOCK_SECTION_ID'], $sectionsId)) {
+        $sectionsId[] = $item['IBLOCK_SECTION_ID'];
+    }
 }
-unset($item);
+
+$arSections = [];
+foreach ($sectionsId as $sectionId) {
+    $arSection = $sectionEntity::getList([
+        'filter' => ['ID' => $sectionId],
+        'select' => ['NAME', 'UF_TAG'],
+        'limit' => 1
+    ])->fetch();
+
+    $arSections[$sectionId] = $arSection;
+}
+
+$arResult['SECTIONS'] = $arSections;
