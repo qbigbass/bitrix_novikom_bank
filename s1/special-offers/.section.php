@@ -1,0 +1,6 @@
+<?
+$sSectionName = "Спецпредложения";
+$arDirProperties = [
+    "description" => ""
+];
+?>
