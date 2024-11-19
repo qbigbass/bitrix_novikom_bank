@@ -29,7 +29,9 @@ $this->setFrameMode(true);
                         <div class="card-product-list__content flex-column d-flex align-items-start gap-6 gap-xxl-9 w-100">
                             <div class="card-product-list__title-group d-flex flex-column gap-4 gap-lg-6">
                                 <div class="tag card-product-list__tag">
-                                    <span class="tag__content text-s fw-semibold"><?=$arItem['SECTION_TAG']?></span>
+                                    <?$section = $arResult['SECTIONS'][$arItem['IBLOCK_SECTION_ID']];?>
+                                    <?$tag = (!empty($section['UF_TAG'])) ? $section['UF_TAG'] : $section['NAME'];?>
+                                    <span class="tag__content text-s fw-semibold"><?=$tag?></span>
                                     <span class="tag__triangle">
                                       <svg width="14" height="21" viewBox="0 0 14 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M13.5 19.3486L0.934259 0.5H13.5V19.3486Z"></path>

@@ -5,13 +5,22 @@ require_once __DIR__ . '/functions.php';
 
 $sectionEntity = \Bitrix\Iblock\Model\Section::compileEntityByIblock($arResult['ID']);
 
-foreach ($arResult['ITEMS'] as &$item) {
+$sectionsId = [];
+foreach ($arResult['ITEMS'] as $item) {
+    if (!in_array($item['IBLOCK_SECTION_ID'], $sectionsId)) {
+        $sectionsId[] = $item['IBLOCK_SECTION_ID'];
+    }
+}
+
+$arSections = [];
+foreach ($sectionsId as $sectionId) {
     $arSection = $sectionEntity::getList([
-        'filter' => ['ID' => $item['IBLOCK_SECTION_ID']],
+        'filter' => ['ID' => $sectionId],
         'select' => ['NAME', 'UF_TAG'],
         'limit' => 1
     ])->fetch();
-    $item['SECTION_NAME'] = $arSection['NAME'];
-    $item['SECTION_TAG'] = (!empty($arSection['UF_TAG'])) ? $arSection['UF_TAG'] : $arSection['NAME'];
+
+    $arSections[$sectionId] = $arSection;
 }
-unset($item);
+
+$arResult['SECTIONS'] = $arSections;
