@@ -26,7 +26,7 @@ $this->setFrameMode(true);?>
                 if ($arParams['HEADER_TAG'] == 'h4') { ?>
                     <h4 class="benefit__title"><?= $text ?></h4>
                 <? } else { ?>
-                    <span class="benefit__description w-100 text-m"><?= $text ?></span>
+                    <div class="benefit__description w-100 text-m rte mt-0"><?= $text ?></div>
                 <? } ?>
                 </span>
             </div>
