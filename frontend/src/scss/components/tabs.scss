@@ -4,19 +4,44 @@
     padding-left: calc((100vw - 100%) / 2)!important;
 
     @include use-media(tablet-album) {
+        max-width: 100%;
         width: auto;
         margin-left: 0;
         padding-left: 0!important;
+        display: inline-flex;
+
+        &::before {
+            content: '';
+            z-index: -1;
+            border: var(--border-nav-width) solid var(--purple-30);
+            border-radius: 0.25rem;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
     }
 
     &__navigation {
 
         &-item {
+            cursor: pointer;
+            top: var(--border-nav-width);
+            right: 0;
+            height: calc(100% - (var(--border-nav-width) * 2));
+            border-right: var(--border-nav-width) solid var(--purple-30);
+            border-radius: 0 0.25rem 0.25rem 0;
             aspect-ratio: 1;
             transition: .275ms ease-in-out;
             background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 69.91%);
 
             &-reverse {
+                border-right: none;
+                border-left: var(--border-nav-width) solid var(--purple-30);
+                left: 0;
+                right: unset;
+                border-radius: 0.25rem 0 0 0.25rem;
                 background: linear-gradient(-90deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 69.91%);
             }
         }
@@ -32,9 +57,20 @@
         --bs-border-radius: 0.25rem;
         --bs-border-color: var(--purple-30);
         min-width: max-content;
+
+        @include use-media(tablet-album) {
+            border: var(--border-nav-width) solid transparent!important;
+        }
     }
 
     &__list-item {
+        padding-right: 0.125rem; // child width border fix
+        
+        @include use-media(0, tablet-album) {
+            &:nth-last-child(1) {
+                padding-right: 0;
+            }
+        }
 
         &-link {
             --bs-nav-tabs-link-hover-border-color: transparent;

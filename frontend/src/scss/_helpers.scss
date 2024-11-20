@@ -81,6 +81,10 @@
   }
 }
 
+.cursor-pointer {
+    cursor: pointer;
+}
+
 // TODO: используется для нестандартной сетки, надо бы переделать
 .ps-lg-3-5 {
     @include use-media(tablet-album) {

@@ -197,7 +197,7 @@ block content
                         .d-flex.flex-column.flex-md-row.gap-4.gap-md-7.align-items-start.align-items-md-center
                             .position-relative.w-100.w-md-50.w-lg-240w
                                 input#date1(type="text" name="date1" placeholder="Показать за период").js-date.js-date--range.js-date--today-max.w-100.form-control
-                                span.position-absolute.top-0.end-0.violet-70.text-m.p-2.px-3.pe-none
+                                label(for="date1").cursor-pointer.position-absolute.top-0.end-0.violet-70.text-m.p-2.px-3
                                     +svg-use("icon-calendar", "icon size-m")
                             +tabs(fiterTabsList, "", "", true).w-auto
             .row.px-lg-6
