@@ -1,11 +1,11 @@
 <?
 $aMenuLinks = [
-	[
-		"Все",
-		"/special-offers/",
-		[],
-		[],
-		""
+    [
+        "Все",
+        "/special-offers/",
+        [],
+        [],
+        ""
     ]
 ];
 ?>
