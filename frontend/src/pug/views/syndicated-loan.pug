@@ -290,28 +290,18 @@ block content
 
     section.section-layout.px-lg-6
         .container
-            h3.mb-4.mb-md-6.mb-lg-7 Выгоды и преимущества синдицированного финансирования
-            .row.row-gap-6.gx-xl-6
+            h3.mb-4.mb-md-6.mb-lg-7
+                | Выгоды и преимущества синдицированного финансирования
+            #benefits.row.row-gap-6.gx-xl-6
                 each item, index in allBenefits
                     .col-12.col-md-6.col-lg-4(class=index > 3 && 'd-none d-md-block')
                         +benefit(item.spriteData, item.title)
                             span!= item.description
-            #syndicated-loan-benefits.collapse.d-md-none
-                .row.row-gap-6.mt-6
-                    each item, index in allBenefits
-                        if index > 3
-                            .col-12
-                                +benefit(item.spriteData, item.title)
-                                    span!= item.description
-            .row.d-md-none.mt-6
-                .col-12
-                    a(
-                        data-bs-toggle="collapse"
-                        href="#syndicated-loan-benefits"
+                .col-12.d-md-none
+                    button(
+                        data-target="benefits"
                         role="button"
-                        aria-expanded="false"
-                        aria-controls="syndicated-loan-benefits"
-                    ).d-flex.gap-2.align-items-center.justify-content-center.violet-100.text-m.fw-bold
+                    ).js-more-content-link.d-flex.gap-2.align-items-center.justify-content-center.violet-100.text-m.fw-bold
                         | Ещё преимущества
                         +svg-use("icon-chevron-down", "icon size-m")
         +pattern-bg('section', 'light', 'pattern-bg--hide-mobile')
