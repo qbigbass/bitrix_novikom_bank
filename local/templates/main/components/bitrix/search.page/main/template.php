@@ -85,7 +85,7 @@ $resultsDeclension = new Declension('результат', 'результата'
                     <div class="position-relative w-100 w-md-50 w-lg-240w">
                         <input
                             class="js-date js-date--range js-date--today-max w-100 form-control"
-                            id="date1"
+                            id="search-datepicker"
                             type="text"
                             name="date"
                             placeholder="Показать за период"
