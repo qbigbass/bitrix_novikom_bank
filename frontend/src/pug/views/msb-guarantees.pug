@@ -1,0 +1,229 @@
+extends ../templates/base
+
+block title
+    title= 'Бизнесу - гарантии'
+    meta(name="description" content="Описание страницы гарантии раздела Бизнес")
+block content
+    include ../includes/header/header
+    include ../components/banners/banner-product
+    include ../cards/card-about
+    include ../cards/card-feedback
+    include ../cards/card-special
+    include ../cards/card-rating
+    include ../components/ui/tabs
+    include ../includes/layout/slider-card-product
+    include ../components/benefit
+    include ../components/stepper
+    include ../components/ui/nav-tabs
+    
+
+    -
+        var bannerProductData = {
+            title: "Экспресс-гарантия",
+            subtitle: "Гарантии для юридических лиц, участвующих в государственных закупках",
+            type: "msb",
+            imgSrc: "img/big-illustrations/large-business/guarantees.png",
+            bgColor: "heavy-violet",
+            breadcrumbsArray: [
+                {
+                    link: "#",
+                    linkText: "Малому и среднему бизнесу"
+                },
+                {
+                    link: "#",
+                    linkText: "Гарантии"
+                }
+            ],
+            benefits: [
+                {
+                    beforeNum: 'до',
+                    num: '30 млн',
+                    currency: '₽',
+                    description: 'сумма',
+                    colorClass: 'yellow-100'
+                },
+                {
+                    beforeNum: 'от',
+                    num: '2%',
+                    afterNum: 'годовых',
+                    description: 'Ставка',
+                    colorClass: 'yellow-100'
+                },
+                {
+                    beforeNum: 'за',
+                    num: '1',
+                    afterNum: 'день',
+                    description: 'Принятие решения',
+                    colorClass: 'yellow-100'
+                }
+            ],
+            footer: [
+                {
+                    title: 'Индивидуальный <br>подход',
+                    description: 'Банк готов согласовать любую форму гарантии, предложенную заказчиком',
+                    colorClass: 'dark-0',
+                    spriteData: {
+                        icon: 'limits',
+                        classList: 'size-xl'
+                    },
+                },
+                {
+                    title: 'Гарантии в пользу <br>госкорпораций',
+                    description: 'Упрощенное рассмотрение заявок на гарантии в пользу государственных корпораций',
+                    colorClass: 'dark-0',
+                    spriteData: {
+                        icon: 'limits',
+                        classList: 'size-xl'
+                    },
+                },
+                {
+                    title: 'Минимальный <br>пакет документов',
+                    description: 'Всего 8 документов для принятия решения',
+                    colorClass: 'dark-0',
+                    spriteData: {
+                        icon: 'limits',
+                        classList: 'size-xl'
+                    },
+                }
+            ]
+        }
+
+        var stepsTabsList = [
+            {
+                link: 'online',
+                linkText: 'Онлайн',
+                isActive: true
+            },
+            {
+                link: 'in-bank',
+                linkText: 'В банке',
+                isActive: false
+            },
+        ]
+
+        var allSteps = [
+            {
+                text: "Заполните заявку и подготовьте комплект документов"
+            },
+            {
+                text: "Получите консультацию специалиста по телефону"
+            },
+            {
+                text: "Согласуйте текст гарантии и подпишите документы"
+            },
+            {
+                text: "Получите решение"
+            },
+        ]
+
+        var cardAboutBankData = {
+            pattern: false,
+            list: [
+                {
+                    title: "Отдел поддержки клиентов МСП",
+                    additionalClassList: "justify-content-between h-100",
+                    marginClassList: "mt-0",
+                    list: [
+                        {
+                            href: "tel:+78002507007",
+                            text: "+7 (800) 250-70-07",
+                            icon: "icon-phone",
+                        },
+                        {
+                            href: "tel:+74959747187",
+                            text: "+7 (495) 974-71-87",
+                            icon: "icon-phone",
+                        },
+                        {
+                            href: "mailto:garant@novikom.ru",
+                            text: "garant@novikom.ru",
+                            icon: "icon-mail",
+                            additionalClass: "text-decoration-underline",
+                        },
+                    ],
+                },
+            ]
+        }
+
+        var cardFeedbackData = {
+            title: 'Остались вопросы?',
+            description: 'Оставьте свой телефон и мы перезвоним вам, <br class="d-none d-md-block d-lg-none d-xl-block">либо задайте вопрос в чате',
+            chatButtonIsVisible: true,
+            link: '#',
+            pattern: true,
+        }
+
+        var cardRatingData = {
+            title: "Рейтинги Банка НОВИКОМ",
+            imgSrc: "big-illustrations/large-business/bank-rating.png",
+            pattern: true,
+            list: [
+                'АКРА – «А+(RU)»',
+                'НКР – «АА-.ru»',
+                'Эксперт РА – ruA+'
+            ]
+        }
+
+    +banner-product(bannerProductData)
+
+    section.section-layout.pt-lg-11
+        .container
+            .row
+                .col-12
+                    +card-rating(cardRatingData)
+                        if cardRatingData.list
+                            ul.list.list--size-l.fw-semibold.flex-wrap.flex-row.gap-4.row-gap-lg-6.gap-lg-11
+                                each item in cardRatingData.list
+                                    li.w-100.w-lg-auto!= item
+
+
+    section.section-layout.pt-0
+        .container
+            .row.px-lg-6
+                .d-none.d-md-flex.justify-content-between
+                    h3.h3
+                        | Оформление гарантии
+
+                    .d-inline-flex
+                        +nav-tabs(stepsTabsList)
+                a(
+                    data-bs-toggle="collapse"
+                    href="#restructuring-steps-content"
+                    role="button"
+                    aria-expanded="false"
+                    aria-controls="restructuring-steps-content"
+                ).h3.d-flex.align-items-center.justify-content-between.dark-100.d-md-none
+                    | Оформление гарантии
+                    +svg-use("icon-chevron-down", "icon size-m violet-100")
+            #restructuring-steps-content.collapse.d-md-block.mt-6.mt-lg-7
+                .d-inline-flex.d-md-none.w-100.mb-6
+                        +nav-tabs(stepsTabsList)
+                .tab-content
+                    #online.tab-pane.fade.show.active(role="tabpanel" aria-labelledby="loan" tabindex="0")
+                        .row.row-gap-6.px-lg-6
+                            +stepper(allSteps, allSteps.length, "yellow")
+
+                    #in-bank.tab-pane.fade(role="tabpanel" aria-labelledby="refinance" tabindex="0")
+                        .row.row-gap-6.px-lg-6
+                            +stepper(allSteps, allSteps.length, "yellow")
+
+    section.section-layout.bg-blue-10
+        .container
+            h3.px-lg-6.mb-4.mb-md-6.mb-lg-7
+                | Контакты
+            .row
+                .col-12
+                    .swiper.js-slider-cards.slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:1,tablet-album:2,laptop:2,laptop-x:2" data-space-between="mobile-s:8,mobile:8,tablet:16,laptop:16,laptop-x:16")
+                        .swiper-wrapper.js-swiper-wrapper 
+                            .swiper-slide.js-swiper-slide
+                                +card-about(cardAboutBankData, 'bg-heavy-violet').h-100
+                            .swiper-slide.js-swiper-slide
+                                +card-feedback(cardFeedbackData, 'bg-white').h-100
+
+                        +slider-controls().mt-3.mt-md-4
+                        
+    section.section-layout
+        .container
+            h3.px-lg-6.mb-4.mb-md-6.mb-lg-7
+                | Другие услуги для бизнеса
+            +slider-card-product()
