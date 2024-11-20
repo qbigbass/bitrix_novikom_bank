@@ -64,9 +64,14 @@
 
   &--bg-purple {
     background: linear-gradient(222deg, #101317 20%, #5A2375 80%);
+
     &:after {
       background: linear-gradient(270deg, rgba(85, 36, 106, 0.90) 23.5%, rgba(85, 36, 106, 0.00) 100%);
     }
+  }
+
+  &--bg-heavy-violet {
+    background: linear-gradient(222.24deg, #101317 20%, #6655a2 80%);
   }
 
   & .btn {
