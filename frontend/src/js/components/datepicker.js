@@ -41,8 +41,6 @@ function initDatepicker() {
         const root = $(this);
         const options = {...defaultSelectOptions,
             onHide(isFinished) {
-                console.log('test-1');
-
                 root.trigger('hide', [isFinished]);
             }
         };
