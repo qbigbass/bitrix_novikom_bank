@@ -9,6 +9,13 @@ $aMenuLinks = Array(
         ""
     ),
     Array(
+        "Защита от мошенничества",
+        "/fraud-protection/",
+        Array(),
+        Array(),
+        ""
+    ),
+    Array(
         "Противодействие коррупции",
         "#",
         Array(),
