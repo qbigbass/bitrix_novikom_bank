@@ -20,9 +20,9 @@ block content
         var bannerPromoData = {
             title: "Банковское сопровождение контрактов",
             subtitle: "Обеспечение контроля целевого расходования денежных средств в рамках исполнения сопровождаемого договора с использованием отдельных счетов",
-            type: "corp",
             imgSrc: "img/hero-banner/bank-support.png",
             bgColor: "heavy-purple",
+            btnType: "btn-orange",
             breadcrumbsArray: [
                 {
                     link: "#",
@@ -317,7 +317,7 @@ block content
             }
         ]
 
-    +banner-product(bannerPromoData).banner-product--border-orange.banner-product--type-corp-withimg
+    +banner-product(bannerPromoData).banner-product--border-orange
 
     section.section-layout
         .container
@@ -434,7 +434,7 @@ block content
             h3.mb-4.mb-md-6.mb-lg-7.px-lg-6 Контакты
             .row
                 .col-12
-                    .swiper.slider-cards.js-slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:1,tablet-album:2,laptop:2,laptop-x:2" data-space-between="mobile-s:8,mobile:8,tablet:16,tablet-album:40,laptop:40,laptop-x:40")
+                    .swiper.slider-cards.js-slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:1,tablet-album:2,laptop:2,laptop-x:2" data-space-between="mobile-s:8,mobile:8,tablet:16,tablet-album:16,laptop:16,laptop-x:16")
                         .swiper-wrapper
                             .swiper-slide.js-swiper-slide
                                 +contact-block(contactList[0]).contact-block--bg-heavy-purple
