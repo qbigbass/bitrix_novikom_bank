@@ -32,18 +32,19 @@ const defaultSelectOptions = {
         return {
             html: `<div class="air-datepicker-cell-text">${cellText}</div>`
         }
+    },
+    onHide(isFinished) {
+        const hideCustomEvent = new CustomEvent('hide');
+        hideCustomEvent.isFinished = isFinished;
+
+        document.querySelector(DATEPICKER_CLASSES.root).dispatchEvent(hideCustomEvent);
     }
 }
 
 
 function initDatepicker() {
     $(DATEPICKER_CLASSES.root).each(function(index, element) {
-        const root = $(this);
-        const options = {...defaultSelectOptions,
-            onHide(isFinished) {
-                root.trigger('hide', [isFinished]);
-            }
-        };
+        const options = {...defaultSelectOptions};
         if ($(this).hasClass(DATEPICKER_CLASSES.isRange)) {
             options.range = true;
         }
