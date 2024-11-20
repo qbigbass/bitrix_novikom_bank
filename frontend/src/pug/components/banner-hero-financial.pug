@@ -1,0 +1,61 @@
+-
+    var sliders = [
+        {
+            title: "Кредитным и финансовым организациям",
+            thumbTitle: "Финансовым<br>организациям",
+            text: "Новиком нацелен на&nbsp;долгосрочные и&nbsp;доверетельные отношения с&nbsp;российскими и&nbsp;зарубежными финансовыми институтами",
+            image: "img/big-illustrations/large-finorg/syndicated-loans-cheap-funding.png",
+        },
+        {
+            title: "Гарантии и обязательства",
+            thumbTitle: "Гарантии<br>и обязательства",
+            text: "Новиком нацелен на&nbsp;долгосрочные и&nbsp;доверетельные отношения с&nbsp;российскими и&nbsp;зарубежными финансовыми институтами",
+            image: "img/big-illustrations/large-finorg/syndicated-loans-cheap-funding.png",
+        },
+        {
+            title: "Межбанковские операции",
+            thumbTitle: "Межбанковские<br>операции",
+            text: "Новиком нацелен на&nbsp;долгосрочные и&nbsp;доверетельные отношения с&nbsp;российскими и&nbsp;зарубежными финансовыми институтами",
+            image: "img/big-illustrations/large-finorg/syndicated-loans-cheap-funding.png",
+        },
+        {
+            title: "Депозитарное обслуживание",
+            thumbTitle: "Депозитарное<br>обслуживание",
+            text: "Новиком нацелен на&nbsp;долгосрочные и&nbsp;доверетельные отношения с&nbsp;российскими и&nbsp;зарубежными финансовыми институтами",
+            image: "img/big-illustrations/large-finorg/syndicated-loans-cheap-funding.png",
+        },
+    ]
+
+
+.banner-hero.banner-hero--light.bg-gradient-graphite
+    div.banner-hero__container.swiper.js-banner-hero
+        .swiper-wrapper
+            each slide in sliders
+                .swiper-slide
+                    .banner-hero-content.row.gx-0
+                        div.col-12.col-md-6.col-lg-9.col-xl-8.col-xxl-7.d-flex.flex-column.gap-3.gap-md-4.gap-xxl-6.align-items-md-start
+                            div.banner-hero-content__wrapper
+                                h1.banner-hero-content__title!= slide.title
+                                p.text-l.mb-0!= slide.text
+                                if slide.button
+                                    a.btn.btn-secondary.btn-lg-lg.d-inline-block(href="#")= slide.button
+                                if slide.image
+                                    .banner-hero-content__image
+                                        img(src=slide.image alt=slide.title)
+        .banner-hero-pagination
+        .banner-hero-controls
+            button(type="button").banner-hero-control.banner-hero-control__prev
+                span.icon.size-m
+                    +svg-use("icon-chevron-left")
+            button(type="button").banner-hero-control.banner-hero-control__next
+                span.icon.size-m
+                    +svg-use("icon-chevron-right")
+    div.banner-hero__thumbs.d-none.d-lg-block
+        .swiper.js-banner-hero-thumbs
+            div.banner-hero__thumbs-wrapper.swiper-wrapper
+                each thumb in sliders
+                    .swiper-slide.banner-hero-thumb(role="button")
+                        - var title = thumb.thumbTitle ? thumb.thumbTitle : thumb.title
+                        h5!= title
+    +pattern-bg('section-heavy', 'light')
+

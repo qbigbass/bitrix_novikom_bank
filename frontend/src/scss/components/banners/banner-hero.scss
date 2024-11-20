@@ -1,4 +1,6 @@
 .banner-hero {
+    $root: #{&};
+
     width: 100%;
     color: var(--dark-0);
     overflow: hidden;
@@ -99,24 +101,76 @@
         }
     }
 
-    &--type-finance {
+    &--light {
         border-top: .25rem solid var(--violet-100);
 
         @include use-media(tablet-album) {
             border-width: .5rem;
         }
 
-        & .swiper-slide-thumb-active {
-            &:after {
-                background-color: var(--violet-100);
+        #{$root}__thumbs {
+            border-color: var(--purple-30);
+        }
+
+        #{$root}__thumbs-wrapper {
+            background-color: unset;
+        }
+
+        & .banner-hero-content {
+            color: var(--dark-100);
+
+            &__image {
+                @include use-media(tablet, tablet-album) {
+                    width: 41.667vw;
+                    top: 4rem;
+                    right: 1rem;
+                    transform: none;
+                }
+
+                @include use-media(tablet-album, laptop) {
+                    top: 1.875rem;
+                    transform: none;
+                }
+
+                @include use-media(desktop) {
+                    right: 5rem;
+                }
             }
+        }
+
+        & .banner-hero-thumb {
+            color: var(--dark-100);
+
+            &:not(:first-child) {
+                border-left: 1px solid var(--purple-30);
+            }
+
+            &.swiper-slide-thumb-active {
+                background-color: rgba(85, 36, 106, 0.2);
+
+                &:after {
+                    background-color: var(--violet-100);
+                }
+            }
+        }
+
+        & .banner-hero-control {
+            color: var(--blue-100);
+
+            @include use-media(tablet-album) {
+                color: var(--blue-70);
+            }
+        }
+
+        & .banner-hero-pagination .swiper-pagination-bullet-active {
+            background-color: var(--blue-100);
         }
     }
 }
 
 .banner-hero-content {
     color: var(--dark-0);
-    padding: 2.5rem 1rem;
+    padding: 2.5rem 1.5rem;
     max-width: 30rem;
 
     @include use-media(tablet) {
@@ -138,7 +192,7 @@
     }
 
     &__wrapper {
-        gap: 1.5rem;
+        gap: 1rem;
         flex-direction: column;
         display: flex;
 
@@ -149,6 +203,12 @@
         @include use-media(tablet-album) {
             padding-left: 2.5rem;
             gap: 3rem;
+        }
+
+        @include use-media(tablet-album, desktop) {
+            p {
+                max-width: 80%;
+            }
         }
 
         @include use-media(desktop) {
@@ -164,6 +224,9 @@
         @include use-media(tablet) {
             font-size: 2.25rem; //36px
             line-height: 1.32;
+        }
+
+        @include use-media(tablet, tablet-album) {
             font-weight: 600;
         }
 
@@ -174,9 +237,7 @@
     }
 
     &__image {
-        display: block;
-        width: calc(100% + 2rem);
-        margin: -1rem;
+        width: 100%;
 
         @include use-media(mobile) {
             max-width: 23.75rem; //380px
@@ -253,7 +314,7 @@
     left: 0;
     right: 0;
     align-items: center;
-    padding: 1rem;
+    padding: 1.5rem;
     justify-content: center;
     z-index: 2;
 
