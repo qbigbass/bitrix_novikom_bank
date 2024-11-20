@@ -3,6 +3,7 @@ $(function () {
     const searchForm = $('#search-form');
     const searchHowSelector = $('#search-how-selector');
     const searchHowInput = $('#search-how-input');
+    const searchDatepicker = $('#search-datepicker');
 
     // Синхронизируем строки запроса мобильной и десктопной версии
     $('#input-search-mobile').on('input', function () {
@@ -26,6 +27,17 @@ $(function () {
             searchHowInput.val('');
         }
         searchForm.submit();
+    });
+
+    // Смена даты в дейтепикере
+    const searchDatepickerValue = searchDatepicker.value;
+
+    searchDatepicker.on('hide', (isFinished) => {
+        const searchDatepickerNewValue = searchDatepicker.value;
+
+        if (isFinished && searchDatepickerNewValue !== searchDatepickerValue) {
+            searchForm.submit();
+        }
     });
 
 });
