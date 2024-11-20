@@ -1,6 +1,7 @@
 <?php
 
-function iblock(string $code) : int {
+function iblock(string $code): int
+{
     try {
         \Bitrix\Main\Loader::IncludeModule('iblock');
         $iblock = Bitrix\Iblock\IblockTable::getList(['select' => ['ID'], 'filter' => ['CODE' => $code]])->Fetch();
@@ -10,11 +11,13 @@ function iblock(string $code) : int {
     }
 }
 
-function printIntoFile($text, string $filePath = '/logger.txt') {
+function printIntoFile($text, string $filePath = '/logger.txt')
+{
     file_put_contents($_SERVER['DOCUMENT_ROOT'] . $filePath, print_r($text, true), FILE_APPEND);
 }
 
-function modifyMainSubmenuResult(array $arResult) : array {
+function modifyMainSubmenuResult(array $arResult): array
+{
     $modifiedResult = [
         'FIRST_LEVEL_MENU' => [],
         'SECOND_LEVEL_MENU' => [],
@@ -25,7 +28,7 @@ function modifyMainSubmenuResult(array $arResult) : array {
             $lastParentElement = end($modifiedResult['FIRST_LEVEL_MENU']);
             $itemIndex = $lastParentElement['ITEM_INDEX'];
 
-            if(!empty($item['PARAMS']['alternative_name'])) {
+            if (!empty($item['PARAMS']['alternative_name'])) {
                 $item["TEXT"] = $item['PARAMS']['alternative_name'];
             }
 
@@ -40,7 +43,8 @@ function modifyMainSubmenuResult(array $arResult) : array {
     return $modifiedResult;
 }
 
-function clearPhoneNumber(string $phoneNumber) : string {
+function clearPhoneNumber(string $phoneNumber): string
+{
     return preg_replace('/[^0-9\+]+/', '', $phoneNumber);
 }
 
@@ -117,7 +121,7 @@ function showNavChain(string $template = '.default', int $depth = 0): void
     global $APPLICATION;
     $APPLICATION->IncludeComponent(
         "bitrix:breadcrumb",
-        "",
+        "$template",
         [
             "PATH" => "",
             "SITE_ID" => "s1",

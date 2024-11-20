@@ -49,6 +49,7 @@ $this->setFrameMode(true);
                          aria-labelledby="additional-info-<?= $tab['ID'] ?>"
                          tabindex="0"
                          role="tabpanel">
+                        <div class="row row-gap-6 row-gap-lg-7 gx-xl-6">
 
                         <? if (
                             !empty($tab['CODE']) && ($tab['CODE'] == 'protsentnye-stavki' || $tab['CODE'] == 'stavki')
@@ -453,6 +454,7 @@ $this->setFrameMode(true);
                                 <? }
                             }
                         }?>
+                        </div>
                     </div>
                 <? } ?>
             </div>

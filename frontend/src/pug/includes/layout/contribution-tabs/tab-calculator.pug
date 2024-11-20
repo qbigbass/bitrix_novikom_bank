@@ -67,7 +67,7 @@ include ../../../cards/card-calculate-result
                             | Дата пополнения
                         .position-relative.w-100
                             input#date1(type="text" name="date1" placeholder="дд.мм.гг").js-date.js-date--today-min.form-control.form-control-lg
-                            span.position-absolute.top-0.end-0.violet-70.text-m.p-3.px-3.pe-none
+                            label(for="date1").cursor-pointer.position-absolute.top-0.end-0.violet-70.text-m.p-3.px-3
                                 +svg-use("icon-calendar", "icon size-m")
 
                     .d-flex.flex-column.row-gap-2.w-100

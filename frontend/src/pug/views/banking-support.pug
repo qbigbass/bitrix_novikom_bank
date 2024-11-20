@@ -380,6 +380,7 @@ block content
                                         .col-12.col-lg-6
                                             +benefit(item.spriteData, item.title)
                                                 span!= item.description
+                                span(aria-hidden="true").border-bottom-dashed
                                 .row.row-gap-6
                                     h4 Как организовать банковское сопровождение коммерческих контрактов?
                                     +stepper(accordionContent.steps.items, accordionContent.steps.items.length, accordionContent.steps.color )

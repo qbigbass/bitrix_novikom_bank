@@ -21,10 +21,10 @@ $headerView->render(
     $arResult['~NAME'],
     $arResult['~PREVIEW_TEXT'],
     [
-        'banner-product--type-corp',
         'banner-product--border-orange',
-        !empty($arResult['DETAIL_PICTURE']) ? 'banner-product--type-corp-withimg' : 'banner-product--size-xl',
-        $arResult['PROPERTIES']['HEADER_TEMPLATE']['VALUE_XML_ID'] == 'compact' ? 'banner-text--border-orange' : ''
+        !empty($arResult['PROPERTIES']['BENEFITS_TOP']['VALUE']) ? 'banner-product-size--xl' : '',
+        $arResult['PROPERTIES']['HEADER_TEMPLATE']['VALUE_XML_ID'] == 'compact' || empty($arResult['PROPERTIES']['HEADER_TEMPLATE']['VALUE_XML_ID'])
+            ? 'banner-text--border-orange banner-product--heavy-purple' : ''
     ],
     1,
     $arResult,
@@ -241,7 +241,7 @@ $headerView->render(
     <section class="section-layout">
         <div class="container">
             <h3 class="mb-4 mb-md-6 mb-lg-7"><?= $arResult['PROPERTIES']['BENEFITS_TILE_HEADER']['~VALUE'] ?? '' ?></h3>
-            <div class="row row-gap-4 row-gap-md-5 row-gap-lg-6 gx-md-2 gx-lg-2">
+            <div class="row cards-gutter">
                 <? global $benefitsTileFilter;
                 $benefitsTileFilter = [
                     'ACTIVE' => 'Y',

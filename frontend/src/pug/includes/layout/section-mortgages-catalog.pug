@@ -3,6 +3,7 @@
         {
             link: '#1',
             linkText: 'Все программы',
+            isActive: true
         },
         {
             link: '#2',
@@ -41,6 +42,14 @@
             conditions: [
                 {
                     startText: '',
+                    beforeText: 'от',
+                    text: '17,8%',
+                    afterText: '',
+                    currency: '',
+                    description: 'Процентная ставка'
+                },
+                {
+                    startText: '',
                     beforeText: 'до',
                     text: '30 000 000',
                     afterText: '',
@@ -49,16 +58,8 @@
                 },
                 {
                     startText: '',
-                    beforeText: 'от',
-                    text: '16,3%',
-                    afterText: '',
-                    currency: '',
-                    description: 'Процентная ставка'
-                },
-                {
-                    startText: '',
                     beforeText: '',
-                    text: '17,290 - 20,615%',
+                    text: '2.482 - 10.677%',
                     afterText: '',
                     currency: '',
                     description: 'Диапазон полной стоимости кредита'
@@ -335,7 +336,7 @@ include ../../components/ui/tabs
 section.section-catalog__tabs
         .container
             .row
-                .col-12
+                .col-12.px-xl-2
                     +tabs(
                         tabsList,
                         "section-catalog__tab-list",
@@ -345,6 +346,6 @@ section.section-catalog__tabs
 section.section-catalog__list
         .container
             .row
-                .col-12.position-relative.z-1.d-flex.flex-column.align-items-start.gap-5.gap-md-7
+                .col-12.px-xl-2.position-relative.z-1.d-flex.flex-column.align-items-start.gap-5.gap-md-7
                     each item in allMortgages
                         +card-product-list(item)

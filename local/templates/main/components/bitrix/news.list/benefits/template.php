@@ -13,7 +13,7 @@
 $this->setFrameMode(true);?>
 
 <? foreach ($arResult['ITEMS'] as $benefit) { ?>
-    <div class="col-12 col-md-6 col-lg-<?= 12 / $arParams['COL_COUNT']?>">
+    <div class="col-12 col-md-6 col-xl-<?= 12 / $arParams['COL_COUNT']?>">
         <div class="benefit d-flex gap-3 flex-column">
             <img class="icon size-xl" src="<?= $benefit['PREVIEW_PICTURE']['SRC'] ?>" alt="<?= $benefit['PREVIEW_PICTURE']['ALT'] ?>" loading="lazy">
             <div class="benefit__content d-flex flex-column gap-3">
@@ -26,7 +26,7 @@ $this->setFrameMode(true);?>
                 if ($arParams['HEADER_TAG'] == 'h4') { ?>
                     <h4 class="benefit__title"><?= $text ?></h4>
                 <? } else { ?>
-                    <div class="benefit__description w-100 text-m rte mt-0"><?= $text ?></div>
+                    <div class="benefit__description w-100 <?= !empty($benefit['~PREVIEW_TEXT']) ? 'text-m' : 'text-l' ?> rte mt-0"><?= $text ?></div>
                 <? } ?>
                 </span>
             </div>

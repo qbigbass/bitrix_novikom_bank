@@ -35,7 +35,9 @@ if (empty($_SESSION['current_page'])) {
 		"DISPLAY_PICTURE" => "Y",
 		"DISPLAY_PREVIEW_TEXT" => "Y",
 		"DISPLAY_TOP_PAGER" => "N",
-		"ELEMENT_CODE" => !empty($_SESSION['current_page']) ? basename($_SESSION['current_page']) : $elements[0]['CODE'],
+		"ELEMENT_CODE" => !empty($_SESSION['section_page']['/payments-and-transfers/office-transfers/'])
+            ? basename($_SESSION['section_page']['/payments-and-transfers/office-transfers/'])
+            : $elements[0]['CODE'],
 		"ELEMENT_ID" => "",
 		"FIELD_CODE" => [
 			0 => "",
