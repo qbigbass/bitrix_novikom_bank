@@ -9,6 +9,8 @@ mixin card-product(data)
                     h4.card-product__title!= data.title
                     if data.description
                         p.card-product__description.m-0.mw-100!= data.description
+                    if block
+                        block
                 div.card-product__footer
                     if data.link
                         span.btn.btn-link.btn-icon.d-none.d-md-inline-flex
@@ -28,6 +30,8 @@ mixin card-product(data)
                             span.text-number-l.fw-bold= data.subtitle.number
                     if data.description
                         p.card-product__description.m-0!= data.description
+                    if block
+                        block
                 if data.img
                     img.card-product__img(src=`img/big-illustrations/${data.img}`, alt="", loading="lazy")
                 if data.button
