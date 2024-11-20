@@ -38,9 +38,12 @@ const defaultSelectOptions = {
 
 function initDatepicker() {
     $(DATEPICKER_CLASSES.root).each(function(index, element) {
+        const root = $(this);
         const options = {...defaultSelectOptions,
             onHide(isFinished) {
-                $(DATEPICKER_CLASSES.root).trigger('hide', [isFinished]);
+                console.log('test-1');
+
+                root.trigger('hide', [isFinished]);
             }
         };
         if ($(this).hasClass(DATEPICKER_CLASSES.isRange)) {

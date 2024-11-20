@@ -32,7 +32,7 @@ $(function () {
     // Смена даты в дейтепикере
     const searchDatepickerValue = searchDatepicker.value;
 
-    searchDatepicker.on('hide', (isFinished) => {
+    searchDatepicker.on('hide', (event, isFinished) => {
         const searchDatepickerNewValue = searchDatepicker.value;
 
         if (isFinished && searchDatepickerNewValue !== searchDatepickerValue) {
