@@ -417,7 +417,7 @@ $APPLICATION->SetTitle('Частным клиентам - Главная НОВ�
                     <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
                 </svg></a>
         </div>
-        <div class="swiper js-slider-cards slider-cards" data-slides-per-view="mobile-s:1,mobile:1,tablet:2,laptop:3,laptop-x:3" data-space-between="mobile-s:8,mobile:8,tablet:8,laptop:8,laptop-x:8">
+        <div class="swiper js-slider-cards slider-cards" data-slides-per-view="mobile-s:1,mobile:1,tablet:2,laptop:3,laptop-x:3" data-space-between="mobile-s:8,mobile:8,tablet:16,laptop:16,laptop-x:16">
             <div class="swiper-wrapper js-swiper-wrapper">
                 <div class="swiper-slide js-swiper-slide"><a class="card-special bg-dark-10 dark-100 h-100 d-flex flex-column row-gap-6 row-gap-lg-9">
                         <div class="card-special__header d-flex align-items-start justify-content-between">

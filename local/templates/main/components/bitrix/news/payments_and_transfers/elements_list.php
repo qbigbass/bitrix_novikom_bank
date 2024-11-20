@@ -28,7 +28,7 @@ $headerView->render(
 
 <section class="section-layout bg-dark-10">
     <div class="container">
-        <div class="row row-gap-3 row-gap-lg-6">
+        <div class="row cards-gutter">
 
             <?$APPLICATION->IncludeComponent(
                 "bitrix:news.list",
