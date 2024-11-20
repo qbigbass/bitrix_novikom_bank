@@ -19,6 +19,18 @@
         padding-bottom: 7.5rem;
     }
 
+    &:not([class*="bg"], .py-0, :has(> .pattern-bg)) + .section-layout:not([class*="bg"]) {
+        padding-top: 0;
+    }
+
+    &:not([class*="bg"], .py-0):has(> .pattern-bg) + .section-layout:not([class*="bg"]):has(> .pattern-bg) {
+        padding-top: 0;
+    }
+
+    &:not([class*="bg"], .py-0, :has(> .pattern-bg)) + .section-layout:not([class*="bg"]) {
+        padding-top: 0;
+    }
+
     &--bg-gray {
         background-color: var(--dark-10);
     }

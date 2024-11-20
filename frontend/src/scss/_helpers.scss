@@ -134,3 +134,21 @@
 .tooltip-inner {
     box-shadow: 0 8px 32px 0 rgba(60, 60, 71, 0.30);
 }
+
+.cards-gutter {
+    --bs-gutter-x: 0.5rem;
+    --bs-gutter-y: 0.5rem;
+
+    @include use-media(tablet) {
+        --bs-gutter-x: 1rem;
+        --bs-gutter-y: 1rem;
+    }
+}
+
+.cards-gap {
+    gap: 0.5rem;
+
+    @include use-media(tablet) {
+        gap: 1rem;
+    }
+}
