@@ -128,4 +128,12 @@
       }
     }
   }
+
+  &--default {
+    & li {
+      &:before {
+        display: none;
+      }
+    }
+  }
 }

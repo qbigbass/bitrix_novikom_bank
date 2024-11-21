@@ -18,6 +18,8 @@ import {initFormFeedback} from "./components/form/formFeedback";
 import {initFormSend} from "./components/form/formSend";
 import {initUploadFile} from "./components/form/uploadFile";
 import {initMask} from "./components/form/mask";
+import initOffices from "./components/offices";
+import initYMap from "./components/yMap";
 
 document.addEventListener('DOMContentLoaded', () => {
     initDropdownMenu();
@@ -41,6 +43,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initFormSend();
     initUploadFile();
     initMask();
+    initOffices();
+    initYMap();
 });
 
 window.onload = function() {

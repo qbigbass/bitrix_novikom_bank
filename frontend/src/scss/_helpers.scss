@@ -130,16 +130,3 @@
 .tooltip-inner {
     box-shadow: 0 8px 32px 0 rgba(60, 60, 71, 0.30);
 }
-
-// TODO: перенести в рамках задачи DNVKBSITE-82 - офисы и банктоматы
-.map-wrapper {
-  background-color: pink;
-  height: 60vh;
-}
-
-.section-office {
-  height: calc(100vh - 72px); // 72px- header height
-  height: calc(var(--vh, 1vh) * 100 - 72px);
-  overflow-y: auto;
-  padding-bottom: 3rem; // mobile-nav-panel
-}

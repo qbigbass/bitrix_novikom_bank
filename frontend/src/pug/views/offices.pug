@@ -5,12 +5,68 @@ block title
     meta(name="description" content="Описание страницы")
 block content
     include ../includes/header/header
-    section.border-top.border-blue10.section-office
-        .map-wrapper
-        .map-content
-            .d-flex.flex-column.row-gap-4
-                .d-flex.gap-3
-                    h5 Офисы и&nbsp;банкоматы
-                    +svg-use('icon-close', 'icon size-m')
+    include ../cards/card-office
 
-                p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi eligendi, magnam maxime mollitia quia quisquam repellat tempore. A accusamus culpa eius facilis fugiat fugit, hic libero maxime natus nemo officia officiis, perferendis quasi quisquam sint soluta sunt ut vero voluptatem voluptates. Aliquid assumenda culpa dolores hic, illo modi nam quasi qui similique? Accusamus consequatur cupiditate debitis delectus deserunt dolore eos eveniet facilis illo iusto magni minima, modi molestias neque nesciunt ratione sed sequi ut velit veritatis voluptas voluptatibus voluptatum? Et impedit molestias quae quia unde vero voluptatem. Ad alias aspernatur, delectus ducimus eum nesciunt, nobis nulla quia, ratione repudiandae sunt!
+    section.border-top.border-blue10.section-office
+            #map.map-wrapper
+            .map-content
+                .map-content__header.d-flex.flex-column.row-gap-4.row-gap-md-6
+                    .d-flex.gap-3.justify-content-between.align-items-center
+                        h1.map-content__title Офисы и&nbsp;банкоматы
+                        +svg-use('icon-close', 'map-content__icon-close js-scroll-to-top')
+
+                    .d-flex.flex-column.row-gap-3
+                        ul.nav.nav-tabs
+                            li.nav-item.w-50
+                                a.nav-link.text-center.active(aria-current="page" href="#") Офисы
+                            li.nav-item.w-50
+                                a.nav-link.text-center(href="/atms") Банкоматы
+
+                        .d-flex.gap-2
+                            form.flex-grow-1
+                                .input-group.input-group--size-small.flex-nowrap
+                                    span#input-search.input-group-icon
+                                        span.icon
+                                            +svg-use('icon-search')
+                                    input.form-control(type="text", placeholder="Поиск по городу или адресу", aria-label="Поиск по городу или адресу", aria-describedby="input-search")
+                            button(type="button" data-bs-toggle="modal" data-bs-target="#modal-offices-filters").btn.btn-outline-primary.btn-icon-alone
+                                +svg-use('icon-filters', 'icon size-m')
+                .map-content__body.d-flex.flex-column.gap-2.gap-md-3
+                    -
+                        var list = [
+                            {
+                                href: '#',
+                                title: 'Удаленная точка обслуживания АО&nbsp;АКБ &laquo;НОВИКОМБАНК&raquo;',
+                                address: 'Москва, наб. Якиманская, д.&nbsp;2'
+                            },
+                            {
+                                href: '#',
+                                title: 'Удаленная точка обслуживания АО&nbsp;АКБ &laquo;НОВИКОМБАНК&raquo;',
+                                address: 'Москва, округ Хамовники, ул. Усачева, д.&nbsp;24'
+                            },
+                            {
+                                href: '#',
+                                title: 'Головной офис АО&nbsp;АКБ &laquo;НОВИКОМБАНК&raquo;',
+                                address: 'Москва, ул. Полянка Большая, д.50/1, стр.1'
+                            },
+                            {
+                                href: '#',
+                                title: 'Дополнительный офис &laquo;Жуковский&raquo; АО&nbsp;АКБ &laquo;НОВИКОМБАНК&raquo;',
+                                address: 'Московская область, Жуковский, ул. Жуковского, д.&nbsp;1, корп.&nbsp;30'
+                            },
+                            {
+                                href: '#',
+                                title: 'Дополнительный офис АО&nbsp;АКБ &laquo;НОВИКОМБАНК&raquo; в&nbsp;г. Фрязино',
+                                address: 'Московская область, Фрязино, ул. Центральная, д.&nbsp;5'
+                            },
+                            {
+                                href: '#',
+                                title: 'Удаленная точка обслуживания АО&nbsp;АКБ &laquo;НОВИКОМБАНК&raquo;',
+                                address: 'Москва, ул. Профсоюзная, д.78, стр.1, помещ. 1А'
+                            },
+                        ]
+                    each office in list
+                        +card-office(office)
+    include ../includes/modals/modal-offices-filters
+
+
