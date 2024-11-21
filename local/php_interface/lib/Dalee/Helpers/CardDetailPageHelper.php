@@ -9,6 +9,12 @@ class CardDetailPageHelper
     readonly string $name;
     readonly string $iconPath;
     private array $linkedSection;
+    public static array $customerCategoriesSort = [
+        'SORT_BY1' => 'SORT',
+        'SORT_BY2' => 'ID',
+        'SORT_ORDER1' => 'ASC',
+        'SORT_ORDER2' => 'DESC',
+    ];
 
     private function __construct(array $sectionData)
     {
@@ -65,7 +71,7 @@ class CardDetailPageHelper
                 'CODE',
                 'IBLOCK_ID',
             ],
-            'order' => ['SORT' => 'ASC'],
+            'order' => $this->getSortOrder(),
             'filter' => [
                 'IBLOCK_SECTION_ID' => $this->linkedSection['section_id'],
             ],
@@ -73,5 +79,13 @@ class CardDetailPageHelper
         ])->fetch();
 
         return (!empty($result)) ? $result : [];
+    }
+
+    private function getSortOrder(): array
+    {
+        return [
+            self::$customerCategoriesSort['SORT_BY1'] => self::$customerCategoriesSort['SORT_ORDER1'],
+            self::$customerCategoriesSort['SORT_BY2'] => self::$customerCategoriesSort['SORT_ORDER2'],
+        ];
     }
 }

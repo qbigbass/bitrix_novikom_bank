@@ -13,7 +13,7 @@
 $this->setFrameMode(true);
 ?>
 <div class="col-12">
-    <div class="swiper slider-cards js-slider-cards" data-slides-per-view="mobile-s:1.5,mobile:1.5,tablet:3,tablet-album:4,laptop:5,laptop-x:5" data-space-between="mobile-s:16,mobile:16,tablet:16,laptop:40,laptop-x:40">
+    <div class="swiper slider-cards js-slider-cards" data-slides-per-view="mobile-s:1.5,mobile:1.5,tablet:3,tablet-album:4,laptop:5,laptop-x:5" data-space-between="mobile-s:16,mobile:16,tablet:32,tablet-album:40,laptop:40,laptop-x:40">
         <div class="swiper-wrapper">
             <?foreach($arResult["ITEMS"] as $arItem):?>
                 <?

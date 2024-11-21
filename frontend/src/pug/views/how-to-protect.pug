@@ -213,9 +213,9 @@ block content
         .container
             h3.mb-4.mb-md-6.mb-lg-7.px-lg-6
                 | Держите в секрете данные
-            .row.row-gap-4.row-gap-md-5.row-gap-lg-7
+            .row.cards-gutter
                 each item in productCards
-                    .col-12.col-md-6.col-xl-3.ps-md-3.ps-lg-3-5
+                    .col-12.col-md-6.col-xl-3
                         +card-product(item).card-product--bg-white
 
     section.section-layout

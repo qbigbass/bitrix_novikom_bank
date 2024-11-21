@@ -17,7 +17,7 @@ $this->setFrameMode(true);?>
         <h3 class="mb-4 mb-md-6 mb-lg-7 px-lg-6">Контакты</h3>
         <div class="row">
             <div class="col-12">
-                <div class="swiper slider-cards js-slider-cards" data-slides-per-view="mobile-s:1,mobile:1,tablet:1,tablet-album:2,laptop:2,laptop-x:2" data-space-between="mobile-s:8,mobile:8,tablet:16,tablet-album:40,laptop:40,laptop-x:40">
+                <div class="swiper slider-cards js-slider-cards" data-slides-per-view="mobile-s:1,mobile:1,tablet:1,tablet-album:2,laptop:2,laptop-x:2" data-space-between="mobile-s:8,mobile:8,tablet:16,tablet-album:16,laptop:16,laptop-x:16">
                     <div class="swiper-wrapper">
                         <? foreach ($arResult['ITEMS'] as $item) { ?>
                             <div class="swiper-slide js-swiper-slide">

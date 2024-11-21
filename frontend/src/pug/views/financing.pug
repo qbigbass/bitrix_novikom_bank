@@ -205,21 +205,22 @@ block content
                         a(href="#").btn.btn-sm.btn-orange.d-md-none
                             | Перейти в интернет-банк
 
-
-                .col-12.col-md-6.col-lg-4.pe-md-3.pe-lg-3-5
-                    +card-product(productCards[0]).card-product--bg-white
-                .col-12.col-md-6.col-lg-4.ps-md-3.ps-lg-3-5
-                    +card-product(productCards[1]).card-product--bg-white
-                .col-12.col-lg-4
-                    +card-product(productCards[2]).card-product--bg-white
-                .col-12.col-md-6.col-xl-3.pe-md-3.pe-lg-3-5
-                    +card-product(productCards[3]).card-product--bg-white
-                .col-12.col-md-6.col-xl-3.ps-md-3.ps-lg-3-5
-                    +card-product(productCards[4]).card-product--bg-white
-                .col-12.col-md-6.col-xl-3.pe-md-3.pe-lg-3-5
-                    +card-product(productCards[5]).card-product--bg-white
-                .col-12.col-md-6.col-xl-3.ps-md-3.ps-lg-3-5
-                    +card-product(productCards[6]).card-product--bg-white
+                .col-12
+                    .row.cards-gutter
+                        .col-12.col-md-6.col-lg-4
+                            +card-product(productCards[0]).card-product--bg-white
+                        .col-12.col-md-6.col-lg-4
+                            +card-product(productCards[1]).card-product--bg-white
+                        .col-12.col-lg-4
+                            +card-product(productCards[2]).card-product--bg-white
+                        .col-12.col-md-6.col-xl-3
+                            +card-product(productCards[3]).card-product--bg-white
+                        .col-12.col-md-6.col-xl-3
+                            +card-product(productCards[4]).card-product--bg-white
+                        .col-12.col-md-6.col-xl-3
+                            +card-product(productCards[5]).card-product--bg-white
+                        .col-12.col-md-6.col-xl-3
+                            +card-product(productCards[6]).card-product--bg-white
     section.section-layout.js-collapsed-mobile
         .container
             h3.d-none.d-md-block.mb-md-6.mb-lg-7.px-lg-6
