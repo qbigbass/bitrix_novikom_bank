@@ -11,9 +11,8 @@
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
-
-$formatter = new IntlDateFormatter('ru_RU', IntlDateFormatter::LONG, IntlDateFormatter::NONE, 'Europe/Moscow', IntlDateFormatter::GREGORIAN, 'LLLL');
 ?>
+
 <div class="d-none d-lg-block w-100">
     <div class="tabs-panel js-tabs-slider overflow-hidden position-relative pe-1 pe-lg-0">
         <div class="tabs-panel__navigation d-none d-lg-block js-tabs-slider-navigation w-100"><span
@@ -64,8 +63,7 @@ $formatter = new IntlDateFormatter('ru_RU', IntlDateFormatter::LONG, IntlDateFor
 
                     $timestamp = strtotime($arItem['PROPERTIES']['DATE']['VALUE']);
                     $dateYear = date('Y', $timestamp);
-                    $dateMonth = $formatter->format($timestamp);
-                    $dateMonthUcFirst = mb_strtoupper(mb_substr($dateMonth, 0, 1)) . mb_substr($dateMonth, 1);
+                    $dateMonth = FormatDate('f', $timestamp);
                     ?>
                     <div class="card-award bg-dark-30 h-auto flex-basis-100 flex-basis-lg-33 flex-grow-1" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
                         <div
@@ -77,7 +75,7 @@ $formatter = new IntlDateFormatter('ru_RU', IntlDateFormatter::LONG, IntlDateFor
                             <? } ?>
                             <div class="card-award__content text-l">
                                 <div class="d-flex w-100 align-items-end justify-content-between mb-4">
-                                    <h4 class="violet-100"><?= $dateMonthUcFirst ?></h4>
+                                    <h4 class="violet-100"><?= $dateMonth ?></h4>
                                     <div class="d-none d-md-inline h2 violet-100-important"><?= $dateYear ?></div>
                                     <div class="d-inline d-md-none h4 violet-100-important"><?= $dateYear ?></div>
                                 </div>

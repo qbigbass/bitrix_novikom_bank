@@ -107,7 +107,7 @@ class HeaderView
         <? foreach ($termsValues as $term) { ?>
             <div class="d-inline-flex flex-column row-gap-2">
                 <div class="d-inline-flex flex-nowrap align-items-baseline text-l fw-semibold green-100">
-                    <span><?= is_numeric($term['VALUE']) ? $term['FROM_TO'] : '' ?></span>
+                    <span><?= preg_match('/\d/', $term['VALUE']) ? $term['FROM_TO'] : '' ?></span>
                     <span class='<?= preg_match('/\d/', $term['VALUE']) ? 'text-number-l' : 'text-number-m' ?> fw-bold text-nowrap'><?= $term['VALUE'] ?></span>
                 </div>
                 <span class='d-block'><?= $term['SIGN'] ?></span>

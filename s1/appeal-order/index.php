@@ -15,7 +15,7 @@ $headerView->render(
 ?>
 
 <?
-$elementIds = getIblockSectionElementsIds('benefits', 'obshchie');
+$elementIds =\Dalee\Helpers\IblockHelper::getIblockSectionElementsIds('benefits', 'obshchie');
 if (!empty($elementIds)) { ?>
 
     <section class="section-layout px-lg-6">
@@ -24,7 +24,7 @@ if (!empty($elementIds)) { ?>
                 <? global $benefitsFilter;
                 $benefitsFilter = [
                     'ACTIVE' => 'Y',
-                    'ID' => getIblockSectionElementsIds('benefits', 'obshchie')
+                    'ID' =>\Dalee\Helpers\IblockHelper::getIblockSectionElementsIds('benefits', 'obshchie')
                 ];
 
                 $APPLICATION->IncludeComponent(
@@ -94,7 +94,7 @@ if (!empty($elementIds)) { ?>
 <? } ?>
 
 <?
-$elementsInfoIds = getIblockSectionElementsIds('benefits', 'informatsiya-dlya-obrashcheniya');
+$elementsInfoIds =\Dalee\Helpers\IblockHelper::getIblockSectionElementsIds('benefits', 'informatsiya-dlya-obrashcheniya');
 if (!empty($elementsInfoIds)) { ?>
     <section class="section-layout px-lg-6">
         <div class="container">
@@ -207,7 +207,7 @@ if (!empty($elementsInfoIds)) { ?>
 </section>
 
 <?
-$elementsTabs = getIblockSectionElementsIds('tabs', 'poryadok-obrashcheniya-v-bank');
+$elementsTabs =\Dalee\Helpers\IblockHelper::getIblockSectionElementsIds('tabs', 'poryadok-obrashcheniya-v-bank');
 if (!empty($elementsInfoIds)) { ?>
 
     <section class="section-layout px-lg-6">

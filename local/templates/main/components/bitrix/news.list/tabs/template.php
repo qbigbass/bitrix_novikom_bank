@@ -447,7 +447,7 @@ $this->setFrameMode(true);
                                                             </div>
                                                         </div>
                                                     <? } ?>
-                                                    <a class="btn btn-link btn-lg d-inline-flex gap-2 align-items-center mt-4 mt-md-6 section-custom-accordion__button-more"
+                                                    <a class="btn btn-link btn-lg-lg d-inline-flex gap-2 align-items-center mt-4 mt-md-6 section-custom-accordion__button-more"
                                                        href="#">
                                                         <span class="text-m">Все вопросы и ответы</span>
                                                         <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg"
@@ -465,7 +465,7 @@ $this->setFrameMode(true);
                                     <? }
 
                                     if ($property['CODE'] == 'DOCUMENTS' && !empty($property['LINK_SECTION_VALUE'])) { ?>
-                                        <div class="row row-gap-6 mt-7 mt-md-7 mt-lg-8">
+                                        <div class="row row-gap-6">
                                             <div class="col-12 col-xxl-8">
                                                 <div class="accordion" id="accordion-<?= $property['ID'] ?>">
                                                     <? foreach ($property['LINK_SECTION_VALUE'] as $key => $section) {

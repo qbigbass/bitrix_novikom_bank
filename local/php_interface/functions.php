@@ -67,14 +67,15 @@ function processTerms(array $terms, array $properties): array
 {
     $result = [];
 
-    foreach ($properties as $key => $term) {
-        if (!$term || !isset($terms[$key])) {
+    foreach ($terms as $key => $termData) {
+        if (!isset($properties[$key]) || !$properties[$key]) {
             continue;
         }
 
-        $sign = $terms[$key]['SIGN'];
-        $fromTo = $terms[$key]['FROM_TO'];
-        $period = $terms[$key]['PERIOD'] ?? 'years';
+        $sign = $termData['SIGN'];
+        $fromTo = $termData['FROM_TO'];
+        $period = $termData['PERIOD'] ?? 'years';
+        $term = $properties[$key];
         $value = '';
 
         if (in_array($key, ['RATE_FROM', 'RATE_TO'])) {
@@ -82,7 +83,7 @@ function processTerms(array $terms, array $properties): array
         } elseif (in_array($key, ['SUM_FROM', 'SUM_TO'])) {
             $value = number_format($term, 0, '', ' ') . ' <span class="currency">₽</span>';
         } elseif (in_array($key, ['PERIOD_FROM', 'PERIOD_TO'])) {
-            $value = is_int($term) ? ($period == 'years' ? floor($term / 12) : $term) . declensionFrom($term, $period) : $term;
+            $value = is_numeric($term) ? ($period === 'years' ? floor($term / 12) : $term) . declensionFrom($term, $period) : $term;
         } elseif ($key === 'DIAPASON') {
             $value = $term;
         }
@@ -96,6 +97,7 @@ function processTerms(array $terms, array $properties): array
 
     return $result;
 }
+
 
 /**
  * @param int $number
@@ -172,63 +174,3 @@ function getStepperIcons(int $stepIndex): string
 
     return $stepperIcons;
 }
-
-/**
- * @param string $iblockCode
- * @param string|null $sectionCode
- * @return array
- * @throws \Bitrix\Main\SystemException
- */
-function getIblockSectionElementsIds(string $iblockCode, ?string $sectionCode = null): array
-{
-    $iblockId = iblock($iblockCode);
-    $filter = [
-        'IBLOCK_ID' => $iblockId
-    ];
-
-    if (!empty($sectionCode)) {
-        $sections = SectionTable::getList([
-            'filter' => [
-                'IBLOCK_ID' => $iblockId,
-            ],
-            'select' => [
-                'ID',
-                'CODE',
-                'IBLOCK_SECTION_ID',
-            ]
-        ])->fetchAll();
-
-        $sectionsById = array_column($sections, null, 'ID');
-        $sectionsByCode = array_column($sections, 'ID', 'CODE');
-
-        if (!isset($sectionsByCode[$sectionCode])) {
-            echo ("Раздел $sectionCode не найден");
-            return [];
-        }
-
-        $parentSectionId = $sectionsByCode[$sectionCode];
-        $ids = [$parentSectionId];
-
-        // Рекурсивная функция для поиска всех потомков
-        $collectDescendants = function ($parentId) use (&$collectDescendants, $sectionsById, &$ids) {
-            foreach ($sectionsById as $section) {
-                if ($section['IBLOCK_SECTION_ID'] == $parentId) {
-                    $ids[] = $section['ID'];
-                    $collectDescendants($section['ID']);
-                }
-            }
-        };
-
-        $collectDescendants($parentSectionId);
-
-        $filter['IBLOCK_SECTION_ID'] = $ids;
-    }
-
-    $elements = ElementTable::getList([
-        'filter' => $filter,
-        'select' => ['ID'],
-    ])->fetchAll();
-
-    return array_column($elements, 'ID');
-}
-

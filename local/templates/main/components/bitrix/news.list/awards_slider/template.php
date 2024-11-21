@@ -11,8 +11,6 @@
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
-
-$formatter = new IntlDateFormatter('ru_RU', IntlDateFormatter::LONG, IntlDateFormatter::NONE, 'Europe/Moscow', IntlDateFormatter::GREGORIAN, 'LLLL');
 ?>
 
 <div class="swiper slider-cards js-slider-cards"
@@ -27,8 +25,7 @@ $formatter = new IntlDateFormatter('ru_RU', IntlDateFormatter::LONG, IntlDateFor
 
             $timestamp = strtotime($arItem['PROPERTIES']['DATE']['VALUE']);
             $dateYear = date('Y', $timestamp);
-            $dateMonth = $formatter->format($timestamp);
-            $dateMonthUcFirst = mb_strtoupper(mb_substr($dateMonth, 0, 1)) . mb_substr($dateMonth, 1);
+            $dateMonth = FormatDate('f', $timestamp);
             ?>
             <div class="swiper-slide js-swiper-slide" id="<?= $this->GetEditAreaId($arItem['ID']); ?>">
                 <div class="card-award bg-dark-30 h-100">
@@ -38,7 +35,7 @@ $formatter = new IntlDateFormatter('ru_RU', IntlDateFormatter::LONG, IntlDateFor
                              src="/frontend/dist/img/awards/individual-certificate.png" alt="" loading="lazy">
                         <div class="card-award__content text-l">
                             <div class="d-flex w-100 align-items-end justify-content-between mb-4">
-                                <h4 class="violet-100"><?= $dateMonthUcFirst ?></h4>
+                                <h4 class="violet-100"><?= $dateMonth ?></h4>
                                 <div class="d-none d-md-inline h2 violet-100-important"><?= $dateYear ?></div>
                                 <div class="d-inline d-md-none h4 violet-100-important"><?= $dateYear ?></div>
                             </div>

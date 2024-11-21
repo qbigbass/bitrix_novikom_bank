@@ -43,7 +43,7 @@ $headerView->render(
 ?>
 
 <?
-$elementIds = getIblockSectionElementsIds('ratings');
+$elementIds = \Dalee\Helpers\IblockHelper::getIblockSectionElementsIds('ratings');
 if (!empty($elementIds)) {
 
     global $ratingsFilter;
@@ -190,7 +190,7 @@ if (!empty($elementIds)) {
 </section>
 
 <?
-$awardsIds = getIblockSectionElementsIds('awards_ru');
+$awardsIds = \Dalee\Helpers\IblockHelper::getIblockSectionElementsIds('awards_ru');
 if (!empty($awardsIds)) { ?>
     <section class="section-layout py-lg-11 mb-6 mb-sm-9 mb-lg-11 mb-xl-16">
         <div class="container">
@@ -266,7 +266,7 @@ if (!empty($awardsIds)) { ?>
 <? } ?>
 
 <?
-$newsIds = getIblockSectionElementsIds('press_center_ru', 'news');
+$newsIds = \Dalee\Helpers\IblockHelper::getIblockSectionElementsIds('press_center_ru', 'news');
 if (!empty($newsIds)) { ?>
     <section class="section-layout pt-0">
         <div class="container">

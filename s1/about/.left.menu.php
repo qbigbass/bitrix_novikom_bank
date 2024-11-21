@@ -2,14 +2,14 @@
 $aMenuLinks = [
     [
         "Новиком сегодня",
-        "/about/",
+        "./",
         [],
         [],
         ""
     ],
     [
         "Пресс-центр",
-        "/about/press-center/",
+        "press-center/",
         [],
         [],
         ""
@@ -23,7 +23,7 @@ $aMenuLinks = [
     ],
     [
         "Закупки",
-        "/about/purchases/",
+        "purchases/",
         [],
         [],
         ""
@@ -37,14 +37,14 @@ $aMenuLinks = [
     ],
     [
         "Карьера",
-        "/about/career/",
+        "career/",
         [],
         [],
         ""
     ],
     [
         "Контактная информация",
-        "/about/contacts/",
+        "contacts/",
         [],
         [],
         ""

@@ -10,7 +10,7 @@ $aMenuLinks = [
     ],
     [
         "Защита от мошенничества",
-        "/fraud-protection/",
+        "fraud-protection/",
         [],
         [],
         ""
@@ -31,7 +31,7 @@ $aMenuLinks = [
     ],
     [
         "Порядок обращения в банк",
-        "/appeal-order/",
+        "appeal-order/",
         [],
         [],
         ""
