@@ -53,6 +53,7 @@ block content
     include ../cards/card-promo
     include ../cards/card-award
     include ../cards/card-about
+    include ../components/anchor-panel
 
     section#typography.section-layout
         .container
@@ -819,7 +820,7 @@ block content
                     each item in allCardsNews
                         .col-12.col-md-6.col-lg-4
                             +card-news(item)
-    
+
     section#card-award.section-layout.pt-0
         -
             var awardList = [
@@ -848,7 +849,7 @@ block content
                     imageSrc: 'img/awards/individual-certificate.png',
                 }
             ]
-        
+
         .container
             .d-flex.flex-column.row-gap-5
                 .d-flex.flex-column.gap-2
@@ -883,7 +884,7 @@ block content
                         a(href="#").btn.btn-outline-primary.btn-lg-lg.btn-icon
                             | Смотреть все награды
                             +svg-use("icon-chevron-right", "icon size-m")
-    
+
     section.section-layout.py-lg-11.bg-dark-30
         -
             var cardAboutBankData = {
@@ -934,7 +935,7 @@ block content
             .row
                 .col-12
                     .swiper.js-slider-cards.slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:1,laptop:2,laptop-x:2" data-space-between="mobile-s:8,mobile:8,tablet:16,laptop:48,laptop-x:48")
-                        .swiper-wrapper.js-swiper-wrapper 
+                        .swiper-wrapper.js-swiper-wrapper
                             .swiper-slide.js-swiper-slide
                                 +card-about(cardAboutBankData)
                             .swiper-slide.js-swiper-slide
@@ -1558,3 +1559,40 @@ block content
                     .alert.d-flex.align-items-center.gap-3.bg-dark-10(role="alert")
                         +svg-use("icon-alert", "icon dark-70 size-m").flex-shrink-0
                         div.text-m.dark-70 Оформление карты для новых клиентов Банка осуществляется при личном присутствии клиента в&nbsp;офисе Банка с&nbsp;документом, удостоверяющим личность
+
+    section#anchor-panel.section-layout.pt-0
+        .container
+            .row.px-lg-6
+                .col-12
+                    h3.mb-4.mb-md-6.mb-lg-7
+                        | Anchor panel
+        +anchor-panel([
+            {
+                href: "#anchor-1",
+                text: "Якорь 1"
+            },
+            {
+                href: "#anchor-2",
+                text: "Якорь 2"
+            },
+            {
+                href: "#anchor-3",
+                text: "Якорь 3"
+            },
+            {
+                href: "#anchor-4",
+                text: "Якорь 4"
+            },
+            {
+                href: "#anchor-5",
+                text: "Якорь 5"
+            },
+            {
+                href: "#anchor-6",
+                text: "Якорь 6"
+            },
+            {
+                href: "#anchor-7",
+                text: "Якорь 7"
+            },
+        ])
