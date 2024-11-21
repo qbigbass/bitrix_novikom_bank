@@ -79,11 +79,8 @@ async function handleFormSubmit(event, modalId) {
 }
 
 async function sendData(action, method, data) {
-    return await fetch(action, {
+    return fetch(action, {
         method: method,
-        headers: {
-            'Content-Type': 'multipart/form-data'
-        },
         body: data,
     })
 }
