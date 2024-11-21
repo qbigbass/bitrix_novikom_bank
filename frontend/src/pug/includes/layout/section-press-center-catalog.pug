@@ -3,6 +3,7 @@
         {
             link: '#1',
             linkText: 'Новости',
+            isActive: true
         },
         {
             link: '#2',
@@ -18,6 +19,7 @@
         {
             link: '#1',
             linkText: 'Все новости',
+            isActive: true
         },
         {
             link: '#2',
@@ -153,9 +155,9 @@ section.section-catalog__tabs
 
 section.section-catalog__list
     .container
-        .row.row-gap-5.row-gap-md-7
+        .row.row-gap-3.row-gap-lg-5.cards-gutter
             each item in allCards
                 .col-12.col-md-6.col-lg-4
                     +card-news(item)
             .col-12
-                +pagination(paginationObject, "center")        
+                +pagination(paginationObject, "center")

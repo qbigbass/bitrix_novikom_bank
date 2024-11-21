@@ -17,16 +17,16 @@ block content
         var bannerPromoData = {
             title: "Меры господдержки",
             subtitle: "Новиком Банк&nbsp;&mdash; Уполномоченный Банк системы мер государственной поддержки",
-            type: "corp",
             imgSrc: "img/big-illustrations/large-corporate/state-support.png",
             bgColor: "heavy-purple",
+            btnType: "btn-orange",
             urlHref: "#",
             buttonText: "Подать заявку",
             benefits: [
                 {
                     colorClass: 'orange-100',
                     title: 'Уменьшение',
-                    description: 'налогооблагаемой база'
+                    description: 'налогооблагаемой<br>база'
                 },
                 {
                     colorClass: 'orange-100',
@@ -213,18 +213,18 @@ block content
 
         ]
 
-    +banner-product(bannerPromoData).banner-product--border-orange.banner-product--type-corp-withimg
+    +banner-product(bannerPromoData).banner-product--border-orange
 
     section.section-layout
         .container
             .row
                 .col-12
                     +polygon-container("orange-100")
-                        +helper("img/restructuring-additional-info_orange.png", "bg-dark-10")
+                        +helper("img/restructuring-additional-info_orange.png", "bg-purple-10")
                             p Новиком Банк является активным участником системы мер государственной поддержки, реализуемых Минпромторгом России, Минцифры России, Минэкономразвития России, ДОМ.РФ и&nbsp;другими.
                             p.mb-0 Статус Уполномоченного Банка позволяет Новикому предоставлять льготное финансирование предпринимателям и&nbsp;организациям разных отраслей экономики, направленное прежде всего на&nbsp;сохранение стабильности и&nbsp;создание условий экономического роста.
 
-    section.section-catalog.section-layout.d-flex.flex-column.bg-dark-10
+    section.section-catalog.section-layout.d-flex.flex-column.bg-purple-10
         .container
             h3.px-lg-6.mb-4.mb-md-6.mb-lg-7
                 | Меры финансирования
@@ -240,7 +240,7 @@ block content
 
         section.section-catalog__list
             .container
-                .row.align-items-stretch.row-gap-4.row-gap-sm-6
+                .row.align-items-stretch.cards-gutter
                     each item, index in tabsListCards
                         .col-12.col-lg-6
                             +card-text(item)
@@ -274,7 +274,7 @@ block content
             h3.mb-4.mb-md-6.mb-lg-7.px-lg-6 Контакты
             .row
                 .col-12
-                    .swiper.slider-cards.js-slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:1,tablet-album:2,laptop:2,laptop-x:2" data-space-between="mobile-s:8,mobile:8,tablet:16,tablet-album:40,laptop:40,laptop-x:40")
+                    .swiper.slider-cards.js-slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:1,tablet-album:2,laptop:2,laptop-x:2" data-space-between="mobile-s:8,mobile:8,tablet:16,tablet-album:16,laptop:16,laptop-x:16")
                         .swiper-wrapper
                             .swiper-slide.js-swiper-slide
                                 +contact-block(contactList[0]).contact-block--bg-heavy-purple

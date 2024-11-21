@@ -347,7 +347,7 @@ $headerView->render(
                         <h3><?= $arResult['PROPERTIES']['QUOTE_HEADER']['~VALUE'] ?></h3>
                     </div>
                     <div class="banner-product-info-alternative__body d-flex flex-column gap-4 gap-md-6">
-                        <p class="m-0 text-l pe-0 col-lg-8"><?= $arResult['PROPERTIES']['QUOTE_TEXT']['VALUE']['TEXT'] ?></p>
+                        <p class="m-0 text-l pe-0 col-lg-8"><?= $arResult['PROPERTIES']['QUOTE_TEXT']['~VALUE']['TEXT'] ?></p>
                     </div>
                 </div>
             </div>

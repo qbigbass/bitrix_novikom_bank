@@ -54,7 +54,7 @@ $headerView->render(
         </div>
 
         <!-- Список элементов -->
-        <div class="row align-items-stretch row-gap-4 row-gap-sm-6">
+        <div class="row align-items-stretch cards-gutter">
 
             <?$APPLICATION->IncludeComponent(
                 "bitrix:news.list",
