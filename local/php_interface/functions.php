@@ -1,5 +1,8 @@
 <?php
 
+use Bitrix\Iblock\ElementTable;
+use Bitrix\Iblock\SectionTable;
+
 function iblock(string $code): int
 {
     try {
@@ -169,3 +172,63 @@ function getStepperIcons(int $stepIndex): string
 
     return $stepperIcons;
 }
+
+/**
+ * @param string $iblockCode
+ * @param string|null $sectionCode
+ * @return array
+ * @throws \Bitrix\Main\SystemException
+ */
+function getIblockSectionElementsIds(string $iblockCode, ?string $sectionCode = null): array
+{
+    $iblockId = iblock($iblockCode);
+    $filter = [
+        'IBLOCK_ID' => $iblockId
+    ];
+
+    if (!empty($sectionCode)) {
+        $sections = SectionTable::getList([
+            'filter' => [
+                'IBLOCK_ID' => $iblockId,
+            ],
+            'select' => [
+                'ID',
+                'CODE',
+                'IBLOCK_SECTION_ID',
+            ]
+        ])->fetchAll();
+
+        $sectionsById = array_column($sections, null, 'ID');
+        $sectionsByCode = array_column($sections, 'ID', 'CODE');
+
+        if (!isset($sectionsByCode[$sectionCode])) {
+            echo ("Раздел $sectionCode не найден");
+            return [];
+        }
+
+        $parentSectionId = $sectionsByCode[$sectionCode];
+        $ids = [$parentSectionId];
+
+        // Рекурсивная функция для поиска всех потомков
+        $collectDescendants = function ($parentId) use (&$collectDescendants, $sectionsById, &$ids) {
+            foreach ($sectionsById as $section) {
+                if ($section['IBLOCK_SECTION_ID'] == $parentId) {
+                    $ids[] = $section['ID'];
+                    $collectDescendants($section['ID']);
+                }
+            }
+        };
+
+        $collectDescendants($parentSectionId);
+
+        $filter['IBLOCK_SECTION_ID'] = $ids;
+    }
+
+    $elements = ElementTable::getList([
+        'filter' => $filter,
+        'select' => ['ID'],
+    ])->fetchAll();
+
+    return array_column($elements, 'ID');
+}
+
