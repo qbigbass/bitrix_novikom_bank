@@ -30,7 +30,9 @@ $this->setFrameMode(true);
                 </button>
             </div>
             <div class="modal-body">
-                <form class="application-form" action="" method="POST" novalidate id="callback-form" data-form enctype="multipart/form-data">
+                <form class="application-form" action="<?= $arResult['ACTION_URL'] ?>" method="POST" novalidate id="callback-form" data-form enctype="multipart/form-data">
+                    <input type="hidden" name="sessid" value="<?= bitrix_sessid(); ?>">
+                    <input type="hidden" name="FORM_CODE" value="<?= $arParams['FORM_CODE'] ?>">
                     <div class="application-form__step" data-form-validate-group>
                         <div class="row g-1 g-md-2 g-lg-2_5">
                             <div class="application-form__col col-12 col-md-6">
@@ -58,22 +60,25 @@ $this->setFrameMode(true);
                                     <div class="invalid-feedback" aria-live="polite"></div>
                                 </div>
                             </div>
-                            <div class="application-form__col col-12">
-                                <div class="d-flex flex-column flex-md-row align-items-start row-gap-2 column-gap-md-3">
-                                    <div class="d-flex flex-column row-gap-2 flex-grow-1 w-100 w-md-auto">
-                                        <input class="form-control form-control-lg-lg" id="callback_captcha" type="text" name="captcha_word" placeholder="Введите код с картинки" maxlength="50" required data-form-input>
-                                        <div class="invalid-feedback" aria-live="polite"></div>
-                                    </div>
-                                    <div class="captcha d-flex align-items-center column-gap-3 flex-shrink-0">
-                                        <img src="/frontend/dist/img/captcha_test.jpg">
-                                        <span class="icon size-m dark-70">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                                <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-audio-on"></use>
-                                            </svg>
-                                        </span>
+                            <?php if ($arResult['USE_CAPTCHA'] === 'Y') : ?>
+                                <div class="application-form__col col-12">
+                                    <div class="d-flex flex-column flex-md-row align-items-start row-gap-2 column-gap-md-3">
+                                        <div class="d-flex flex-column row-gap-2 flex-grow-1 w-100 w-md-auto">
+                                            <input class="form-control form-control-lg-lg" id="callback_captcha" type="text" name="captcha_word" placeholder="Введите код с картинки" maxlength="50" required data-form-input>
+                                            <div class="invalid-feedback" aria-live="polite"></div>
+                                        </div>
+                                        <div class="captcha d-flex align-items-center column-gap-3 flex-shrink-0">
+                                            <input type="hidden" name="captcha_sid" value="<?= htmlspecialchars($arResult['CAPTCHA_CODE']); ?>">
+                                            <img src="/bitrix/tools/captcha.php?captcha_sid=<?= $arResult['CAPTCHA_CODE']; ?>" alt="">
+                                            <span class="icon size-m dark-70">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                                    <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-audio-on"></use>
+                                                </svg>
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            <?php endif;?>
                             <div class="application-form__col col-12">
                                 <div class="form-check">
                                     <input class="form-check-input" id="callback_confirm" type="checkbox" name="request_confirm" value="" required data-form-checkbox data-form-input>
@@ -87,7 +92,14 @@ $this->setFrameMode(true);
                             <div class="text-m orange-100 text-center" data-form-error></div>
                         </div>
                     </div>
-                    <div class="js-message" hidden aria-hidden="true" data-success-title="Ваше обращение успешно отправлено!" data-success-info="Мы ответим на ваше обращение, по выбранному способу связи, как только получим и обработаем его" data-error-title="Не удалось отправить обращение" data-error-info="Проверьте правильно ли указаны все данные и отправьте обращение снова"></div>
+                    <div
+                        class="js-message"
+                        hidden aria-hidden="true"
+                        data-success-title="Ваше обращение успешно отправлено!"
+                        data-success-info="Мы ответим на ваше обращение, по выбранному способу связи, как только получим и обработаем его"
+                        data-error-title="Не удалось отправить обращение"
+                        data-error-info="Проверьте правильно ли указаны все данные и отправьте обращение снова"
+                    ></div>
                 </form>
             </div>
         </div>

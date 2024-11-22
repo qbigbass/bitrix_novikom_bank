@@ -1,13 +1,31 @@
 <?php
 
+use Bitrix\Main\Engine\ActionFilter;
+use Bitrix\Main\Engine\Contract\Controllerable;
+use Bitrix\Main\Error;
+use Bitrix\Main\Errorable;
+use Bitrix\Main\ErrorCollection;
 use Bitrix\Main\Loader;
 use Bitrix\Main\LoaderException;
+use Dalee\Helpers\FormHelper;
 
-class DaleeForm extends \CBitrixComponent
+class DaleeForm extends \CBitrixComponent implements Controllerable, Errorable
 {
     protected CMain $app;
-    protected CDatabase $db;
-    protected int $formId;
+    protected ErrorCollection $errorCollection;
+    protected array $form;
+
+    public function configureActions()
+    {
+        return [
+            'saveLead' => [
+                'prefilters' => [
+                    new ActionFilter\HttpMethod([ActionFilter\HttpMethod::METHOD_POST]),
+                    new ActionFilter\Csrf(true),
+                ],
+            ],
+        ];
+    }
 
     public function onPrepareComponentParams($arParams)
     {
@@ -19,129 +37,75 @@ class DaleeForm extends \CBitrixComponent
             ShowError($e->getMessage());
         }
 
-        $this->formId = $arParams['FORM_ID'];
         $this->app = $GLOBALS['APPLICATION'];
-        $this->db = $GLOBALS['DB'];
+        $this->form = FormHelper::getByCode($arParams['FORM_CODE']);
+        $this->arResult['USE_CAPTCHA'] = $this->form['USE_CAPTCHA'];
+
+        $this->errorCollection = new ErrorCollection();
 
         return $arParams;
     }
 
     public function executeComponent()
     {
-        try {
-            if ($this->request->isPost()) {
-                $input = $this->request->getPostList()->toArray();
-                $data = $this->remapRequestFields($input);
-
-                // validate form
-                $errors = \CForm::Check($this->formId, $data, false, 'Y', 'N');
-                if ($errors) {
-                    throw new \Exception($errors);
-                }
-
-                // save form result
-                $resultId = \CFormResult::Add($this->formId, $data);
-                if (!$resultId) {
-                    throw new \Exception('Не удалось сохранить результат');
-                }
-
-                $result = [
-                    'status' => 'success',
-                ];
-
-
-                $this->app->RestartBuffer();
-                header('Content-Type: application/json');
-                die(json_encode($result, JSON_UNESCAPED_UNICODE));
-
-            } else {
-                $this->includeComponentTemplate();
-            }
-
-        } catch (Exception $e) {
-            $result = [
-                'status' => 'error',
-                'message' => $e->getMessage(),
-            ];
-
-            $this->app->RestartBuffer();
-            header('Content-Type: application/json');
-            die(json_encode($result, JSON_UNESCAPED_UNICODE));
+        if ($this->form['USE_CAPTCHA'] === 'Y') {
+            $this->arResult['CAPTCHA_CODE'] = $this->app->CaptchaGetCode();
         }
+
+        $this->arResult['ACTION_URL'] = '/bitrix/services/main/ajax.php?mode=class&c=dalee:form&action=saveLead';
+
+        $this->includeComponentTemplate();
     }
 
-    /**
-     * Преобразует названия полей вида FIO в form_text_174
-     *
-     * @param array $data
-     * @return array
-     */
-    protected function remapRequestFields($data): array
+    public function saveLeadAction()
     {
-        $newData = [];
+        $input = $this->request->getPostList()->toArray();
+        $formId = $this->form['ID'];
+        $values = FormHelper::remapRequestFields($formId, $input);
 
-        $sql = "SELECT
-                    f.sid,
-                    a.id as answer_id,
-                    a.field_type as field_type,
-                    a.value as value
-                FROM b_form_field AS f
-                LEFT JOIN b_form_answer AS a ON f.id = a.field_id
-                WHERE f.form_id = " . intval($this->formId) . " AND f.active = 'Y'";
-
-        if (isset($data['captcha_sid']) && isset($data['captcha_word'])) {
-            $newData['captcha_sid'] = $data['captcha_sid'];
-            $newData['captcha_word'] = $data['captcha_word'];
+        if ($this->form['USE_CAPTCHA'] === 'Y') {
+            $values['captcha_word'] = $input['captcha_word'];
+            $values['captcha_sid'] = $input['captcha_sid'];
         }
 
-        $res = $this->db->Query($sql);
-        while ($row = $res->Fetch()) {
-            if (!array_key_exists($row['sid'], $data)) {
-                continue;
-            }
-            switch ($row['field_type']) {
-                case 'radio':
-                case 'dropdown':
-                    if ($row['value'] !== '' && $row['value'] !== $data[$row['sid']]) {
-                        continue;
-                    }
-                    if ($row['value'] === '' && $data[$row['sid']] !== 'on') {
-                        continue;
-                    }
-                    $fieldName = 'form_' . $row['field_type'] . '_' . $row['sid'];
-                    $newData[$fieldName] = $row['answer_id'];
-                    break;
-
-                case 'multiselect':
-                case 'checkbox':
-                    $t_f = true;
-                    // Na sluchai, esli vibrano mnogo variantov checkbox i v
-                    // pole s odnim kodom prishel massiv otvetov
-                    if ($row['value'] !== '' && is_array($data[$row['sid']])) {
-                        $t_f = in_array($row['value'], $data[$row['sid']]);
-                    }
-                    if ($row['value'] !== '' && $row['value'] !== $data[$row['sid']] && !is_array($data[$row['sid']])) {
-                        continue;
-                    }
-                    if ($row['value'] === '' && $data[$row['sid']] !== 'on') {
-                        continue;
-                    }
-                    if ($t_f) {
-                        $fieldName = 'form_' . $row['field_type'] . '_' . $row['sid'];
-                        if (!array_key_exists($fieldName, $newData)) {
-                            $newData[$fieldName] = [];
-                        }
-                        $newData[$fieldName][] = $row['answer_id'];
-                    }
-                    break;
-
-                default:
-                    $fieldName = 'form_' . $row['field_type'] . '_' . $row['answer_id'];
-                    $newData[$fieldName] = $data[$row['sid']];
-                    break;
+        $errors = \CForm::Check($formId, $values);
+        if ($errors) {
+            $messages = explode('<br>', $errors);
+            foreach ($messages as $message) {
+                $this->errorCollection[] = new Error($message);
             }
         }
 
-        return $newData;
+        if ($this->errorCollection->isEmpty()) {
+            $resultId = \CFormResult::Add($formId, $values);
+            if (!$resultId) {
+                $this->errorCollection[] = new Error('Не удалось сохранить результат');
+            }
+
+            if ($this->errorCollection->isEmpty()) {
+                $res = \CFormResult::Mail($resultId);
+                if (!$res) {
+                    $this->errorCollection[] = new Error('Не удалось отправить уведомление');
+                }
+            }
+        }
+
+        if (!$this->errorCollection->isEmpty()) {
+            return null;
+        }
+
+        return [
+            'result' => 'OK',
+        ];
+    }
+
+    public function getErrors()
+    {
+        return $this->errorCollection->toArray();
+    }
+
+    public function getErrorByCode($code)
+    {
+        return $this->errorCollection->getErrorByCode($code);
     }
 }
