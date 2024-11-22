@@ -26,7 +26,7 @@ $this->setFrameMode(true);
                 <div class="accordion-body">
                     <div class="d-flex flex-column gap-6 gap-md-7">
                         <? if (!empty($item['DISPLAY_PROPERTIES'])) {
-                            foreach ($item['DISPLAY_PROPERTIES'] as $property) {
+                            foreach ($item['DISPLAY_PROPERTIES'] as $propertyKey => $property) {
                                 if ($property['CODE'] == 'BENEFITS' && !empty($property['VALUE'])) { ?>
                                     <div class="row row-gap-6 gx-xl-6">
                                     <? global $benefitsFilter;
@@ -91,10 +91,13 @@ $this->setFrameMode(true);
                                         $component
                                     ); ?>
                                     </div>
+                                    <? if ($propertyKey != array_key_last($item['DISPLAY_PROPERTIES'])) { ?>
+                                        <span class="border-bottom-dashed" aria-hidden="true"></span>
+                                    <? } ?>
                                 <? }
 
                                 if ($property['CODE'] == 'STEPS' && !empty($property['~VALUE'])) { ?>
-                                    <div class="row row-gap-6 mt-8">
+                                    <div class="row row-gap-6">
                                         <? if (!empty($item['DISPLAY_PROPERTIES']['STEPS_HEADER']['~VALUE'])) { ?>
                                             <h5><?= $item['DISPLAY_PROPERTIES']['STEPS_HEADER']['~VALUE'] ?></h5>
                                         <? } ?>
@@ -117,10 +120,13 @@ $this->setFrameMode(true);
                                             <?}?>
                                         </div>
                                     </div>
+                                    <? if ($propertyKey != array_key_last($item['DISPLAY_PROPERTIES'])) { ?>
+                                        <span class="border-bottom-dashed" aria-hidden="true"></span>
+                                    <? } ?>
                                 <?}
 
                                 if ($property['CODE'] == 'QUOTE' && !empty($property['~VALUE'])) { ?>
-                                    <div class="row mt-8">
+                                    <div class="row">
                                         <div class="col-12">
                                             <div class="polygon-container js-polygon-container">
                                                 <div class="polygon-container__content">
@@ -141,20 +147,35 @@ $this->setFrameMode(true);
                                             </div>
                                         </div>
                                     </div>
+                                    <? if ($propertyKey != array_key_last($item['DISPLAY_PROPERTIES'])) { ?>
+                                        <span class="border-bottom-dashed" aria-hidden="true"></span>
+                                    <? } ?>
                                 <? }
 
                                 if ($property['CODE'] == 'TEXT_FIELD' && !empty($property['~VALUE'])) { ?>
                                     <? foreach ($property['~VALUE'] as $key => $value) { ?>
-                                        <div class="row<?= $key == 0 ? ' mt-8' : '' ?>">
+                                        <div class="row">
                                             <div class="d-flex flex-column gap-3">
                                                 <h4 class="text-l"><?= $property['DESCRIPTION'][$key] ?? '' ?></h4>
                                                 <span><?= $value['TEXT'] ?></span>
                                             </div>
                                         </div>
+                                        <? if ($key != array_key_last($property['~VALUE']) && $propertyKey != array_key_last($item['DISPLAY_PROPERTIES'])) { ?>
+                                            <span class="border-bottom-dashed" aria-hidden="true"></span>
+                                        <? } ?>
                                     <? } ?>
-                                <? }
-                            }
-                        } ?>
+                                <? } ?>
+                            <? } ?>
+                            <? if (!empty($item['DISPLAY_PROPERTIES']['BUTTON_TEXT']['~VALUE']) && !empty($item['DISPLAY_PROPERTIES']['BUTTON_LINK']['~VALUE'])) { ?>
+                                <div class="row">
+                                    <div class="col-12 text-center">
+                                        <a class="btn btn-orange btn-lg-lg d-inline-block" href="<?= $item['DISPLAY_PROPERTIES']['BUTTON_LINK']['~VALUE'] ?>">
+                                            <?= $item['DISPLAY_PROPERTIES']['BUTTON_TEXT']['~VALUE'] ?>
+                                        </a>
+                                    </div>
+                                </div>
+                            <? } ?>
+                        <? } ?>
                     </div>
                 </div>
             </div>

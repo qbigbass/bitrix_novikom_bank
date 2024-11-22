@@ -31,7 +31,7 @@ $this->setFrameMode(true);
                             <? foreach ($arResult["ITEMS"] as $item) { ?>
                                 <div class="swiper-slide js-announcement-slide">
                                     <a class="announcement" href="<?= $item["DETAIL_PAGE_URL"] ?>" tabIndex="-1">
-                                        <span class="dark-70"><?= date('d-m-Y', strtotime($item["TIMESTAMP_X"])) ?></span>
+                                        <span class="dark-70"><?= date('d.m.Y', strtotime($item["TIMESTAMP_X"])) ?></span>
                                         <span class="dark-100"><?= $item["NAME"] ?></span>
                                         <span class="icon size-m d-none d-md-inline-block ms-auto">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">

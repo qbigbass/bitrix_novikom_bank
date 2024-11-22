@@ -59,7 +59,7 @@ $terms = [
                             <div class="card-product-list__condition d-flex flex-column gap-2 w-100 w-sm-50 w-lg-auto justify-content-end">
                                 <div class="d-inline-flex flex-nowrap align-items-baseline">
                                     <span
-                                        class='text-l fw-semibold'><?= is_numeric($term['VALUE']) ? $term['FROM_TO'] : '' ?></span>
+                                        class='text-l fw-semibold'><?= preg_match('/\d/', $term['VALUE']) ? $term['FROM_TO'] : '' ?></span>
                                     <span class='<?= preg_match('/\d/', $term['VALUE']) ? 'text-number-l' : 'text-number-m' ?> fw-bold'><?= $term['VALUE'] ?></span>
                                 </div>
                                 <span class='text-m dark-70'><?= $term['SIGN'] ?></span>
@@ -71,7 +71,7 @@ $terms = [
 
                 <div class="d-flex flex-column flex-sm-row align-items-center gap-5 gap-sm-6 w-100">
                     <? if (!empty($loan['PROPERTIES']['BUTTON_LIST']['VALUE'])) { ?>
-                        <a class="btn btn-tertiary btn-lg card-product-list__button w-100 w-sm-auto"
+                        <a class="btn btn-tertiary btn-lg-lg card-product-list__button w-100 w-sm-auto"
                            href="#"><?= $loan['PROPERTIES']['BUTTON_TEXT_LIST']['VALUE'] ?></a>
                     <? } ?>
                     <a class="btn btn-link btn-lg-lg d-inline-flex gap-2 align-items-center card-product-list__button-more"
