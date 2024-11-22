@@ -2,15 +2,19 @@ include ../components/ui/list-contact
 
 mixin card-about(data, bgColor='bg-linear-blue')
     .card-about&attributes(attributes)(class=bgColor)
-        .card-about__content.d-flex.flex-column.row-gap-5.row-gap-md-6.row-gap-lg-7.h-100
+        .card-about__content.d-flex.flex-column.row-gap-5.row-gap-md-6.row-gap-lg-7.h-100(class=data.additionalContentClass)
             if data.list
                 each item in data.list
                     .d-flex.flex-column.gap-4.dark-0(class=item.additionalClassList class=item.marginClassList ? item.marginClassList : 'mt-auto')
-                        .card-about__title-group.d-flex.flex-column.gap-2
-                            if item.title
-                                h4.card-about__title.dark-0!= item.title
-                            if item.description
-                                p.mb-0.card-about__description.text-white-50!= item.description
-                        +list-contact(item.list, 'row-gap-3')
+                        if item.tag
+                            +tag(item.tag, 'outline-white').card-about__tag.tag--triangle-absolute
+                        if item.title || item.description
+                            .card-about__title-group.d-flex.flex-column.gap-2
+                                if item.title
+                                    h4.card-about__title.dark-0!= item.title
+                                if item.description
+                                    p.mb-0.card-about__description.text-white-50!= item.description
+                        if item.list
+                            +list-contact(item.list, 'row-gap-3')
         if data.pattern
             +pattern-bg('card', 'light', 'pattern-bg--position-top')
