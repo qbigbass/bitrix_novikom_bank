@@ -25,15 +25,15 @@ class Version20241122101231 extends Version
   'EDIT_FILE_AFTER' => '',
   'IN_RSS' => 'N',
   'SORT' => '500',
-  'LANG' => 
+  'LANG' =>
   array (
-    'ru' => 
+    'ru' =>
     array (
       'NAME' => 'Частным клиентам',
       'SECTION_NAME' => '',
       'ELEMENT_NAME' => '',
     ),
-    'en' => 
+    'en' =>
     array (
       'NAME' => 'For private clients',
       'SECTION_NAME' => '',
@@ -43,7 +43,7 @@ class Version20241122101231 extends Version
 ));
         $iblockId = $helper->Iblock()->saveIblock(array (
   'IBLOCK_TYPE_ID' => 'for_private_clients_ru',
-  'LID' => 
+  'LID' =>
   array (
     0 => 's1',
   ),
@@ -87,7 +87,7 @@ class Version20241122101231 extends Version
   'ELEMENT_NAME' => 'Детальная страница',
   'EXTERNAL_ID' => NULL,
   'LANG_DIR' => '/',
-  'IPROPERTY_TEMPLATES' => 
+  'IPROPERTY_TEMPLATES' =>
   array (
   ),
   'ELEMENT_ADD' => 'Добавить страницу',
@@ -98,56 +98,56 @@ class Version20241122101231 extends Version
   'SECTION_DELETE' => 'Удалить карту',
 ));
         $helper->Iblock()->saveIblockFields($iblockId, array (
-  'IBLOCK_SECTION' => 
+  'IBLOCK_SECTION' =>
   array (
     'NAME' => 'Привязка к разделам',
     'IS_REQUIRED' => 'Y',
-    'DEFAULT_VALUE' => 
+    'DEFAULT_VALUE' =>
     array (
       'KEEP_IBLOCK_SECTION_ID' => 'N',
     ),
     'VISIBLE' => 'Y',
   ),
-  'ACTIVE' => 
+  'ACTIVE' =>
   array (
     'NAME' => 'Активность',
     'IS_REQUIRED' => 'Y',
     'DEFAULT_VALUE' => 'Y',
     'VISIBLE' => 'Y',
   ),
-  'ACTIVE_FROM' => 
+  'ACTIVE_FROM' =>
   array (
     'NAME' => 'Начало активности',
     'IS_REQUIRED' => 'N',
     'DEFAULT_VALUE' => '',
     'VISIBLE' => 'Y',
   ),
-  'ACTIVE_TO' => 
+  'ACTIVE_TO' =>
   array (
     'NAME' => 'Окончание активности',
     'IS_REQUIRED' => 'N',
     'DEFAULT_VALUE' => '',
     'VISIBLE' => 'Y',
   ),
-  'SORT' => 
+  'SORT' =>
   array (
     'NAME' => 'Сортировка',
     'IS_REQUIRED' => 'N',
     'DEFAULT_VALUE' => '500',
     'VISIBLE' => 'Y',
   ),
-  'NAME' => 
+  'NAME' =>
   array (
     'NAME' => 'Название',
     'IS_REQUIRED' => 'Y',
     'DEFAULT_VALUE' => '',
     'VISIBLE' => 'Y',
   ),
-  'PREVIEW_PICTURE' => 
+  'PREVIEW_PICTURE' =>
   array (
     'NAME' => 'Картинка для анонса',
     'IS_REQUIRED' => 'N',
-    'DEFAULT_VALUE' => 
+    'DEFAULT_VALUE' =>
     array (
       'FROM_DETAIL' => 'N',
       'UPDATE_WITH_DETAIL' => 'N',
@@ -172,25 +172,25 @@ class Version20241122101231 extends Version
     ),
     'VISIBLE' => 'Y',
   ),
-  'PREVIEW_TEXT_TYPE' => 
+  'PREVIEW_TEXT_TYPE' =>
   array (
     'NAME' => 'Тип описания для анонса',
     'IS_REQUIRED' => 'Y',
     'DEFAULT_VALUE' => 'text',
     'VISIBLE' => 'Y',
   ),
-  'PREVIEW_TEXT' => 
+  'PREVIEW_TEXT' =>
   array (
     'NAME' => 'Описание для анонса',
     'IS_REQUIRED' => 'N',
     'DEFAULT_VALUE' => '',
     'VISIBLE' => 'Y',
   ),
-  'DETAIL_PICTURE' => 
+  'DETAIL_PICTURE' =>
   array (
     'NAME' => 'Детальная картинка',
     'IS_REQUIRED' => 'N',
-    'DEFAULT_VALUE' => 
+    'DEFAULT_VALUE' =>
     array (
       'SCALE' => 'N',
       'WIDTH' => '',
@@ -212,32 +212,32 @@ class Version20241122101231 extends Version
     ),
     'VISIBLE' => 'Y',
   ),
-  'DETAIL_TEXT_TYPE' => 
+  'DETAIL_TEXT_TYPE' =>
   array (
     'NAME' => 'Тип детального описания',
     'IS_REQUIRED' => 'Y',
     'DEFAULT_VALUE' => 'text',
     'VISIBLE' => 'Y',
   ),
-  'DETAIL_TEXT' => 
+  'DETAIL_TEXT' =>
   array (
     'NAME' => 'Детальное описание',
     'IS_REQUIRED' => 'N',
     'DEFAULT_VALUE' => '',
     'VISIBLE' => 'Y',
   ),
-  'XML_ID' => 
+  'XML_ID' =>
   array (
     'NAME' => 'Внешний код',
     'IS_REQUIRED' => 'Y',
     'DEFAULT_VALUE' => '',
     'VISIBLE' => 'Y',
   ),
-  'CODE' => 
+  'CODE' =>
   array (
     'NAME' => 'Символьный код',
     'IS_REQUIRED' => 'Y',
-    'DEFAULT_VALUE' => 
+    'DEFAULT_VALUE' =>
     array (
       'UNIQUE' => 'Y',
       'TRANSLITERATION' => 'Y',
@@ -250,25 +250,25 @@ class Version20241122101231 extends Version
     ),
     'VISIBLE' => 'Y',
   ),
-  'TAGS' => 
+  'TAGS' =>
   array (
     'NAME' => 'Теги',
     'IS_REQUIRED' => 'N',
     'DEFAULT_VALUE' => '',
     'VISIBLE' => 'Y',
   ),
-  'SECTION_NAME' => 
+  'SECTION_NAME' =>
   array (
     'NAME' => 'Название',
     'IS_REQUIRED' => 'Y',
     'DEFAULT_VALUE' => '',
     'VISIBLE' => 'Y',
   ),
-  'SECTION_PICTURE' => 
+  'SECTION_PICTURE' =>
   array (
     'NAME' => 'Картинка для анонса',
     'IS_REQUIRED' => 'N',
-    'DEFAULT_VALUE' => 
+    'DEFAULT_VALUE' =>
     array (
       'FROM_DETAIL' => 'N',
       'UPDATE_WITH_DETAIL' => 'N',
@@ -293,25 +293,25 @@ class Version20241122101231 extends Version
     ),
     'VISIBLE' => 'Y',
   ),
-  'SECTION_DESCRIPTION_TYPE' => 
+  'SECTION_DESCRIPTION_TYPE' =>
   array (
     'NAME' => 'Тип описания',
     'IS_REQUIRED' => 'Y',
     'DEFAULT_VALUE' => 'text',
     'VISIBLE' => 'Y',
   ),
-  'SECTION_DESCRIPTION' => 
+  'SECTION_DESCRIPTION' =>
   array (
     'NAME' => 'Описание',
     'IS_REQUIRED' => 'N',
     'DEFAULT_VALUE' => '',
     'VISIBLE' => 'Y',
   ),
-  'SECTION_DETAIL_PICTURE' => 
+  'SECTION_DETAIL_PICTURE' =>
   array (
     'NAME' => 'Детальная картинка',
     'IS_REQUIRED' => 'N',
-    'DEFAULT_VALUE' => 
+    'DEFAULT_VALUE' =>
     array (
       'SCALE' => 'N',
       'WIDTH' => '',
@@ -333,18 +333,18 @@ class Version20241122101231 extends Version
     ),
     'VISIBLE' => 'Y',
   ),
-  'SECTION_XML_ID' => 
+  'SECTION_XML_ID' =>
   array (
     'NAME' => 'Внешний код',
     'IS_REQUIRED' => 'N',
     'DEFAULT_VALUE' => '',
     'VISIBLE' => 'Y',
   ),
-  'SECTION_CODE' => 
+  'SECTION_CODE' =>
   array (
     'NAME' => 'Символьный код',
     'IS_REQUIRED' => 'N',
-    'DEFAULT_VALUE' => 
+    'DEFAULT_VALUE' =>
     array (
       'UNIQUE' => 'N',
       'TRANSLITERATION' => 'N',
@@ -357,42 +357,42 @@ class Version20241122101231 extends Version
     ),
     'VISIBLE' => 'Y',
   ),
-  'LOG_SECTION_ADD' => 
+  'LOG_SECTION_ADD' =>
   array (
     'NAME' => 'LOG_SECTION_ADD',
     'IS_REQUIRED' => 'Y',
     'DEFAULT_VALUE' => NULL,
     'VISIBLE' => 'Y',
   ),
-  'LOG_SECTION_EDIT' => 
+  'LOG_SECTION_EDIT' =>
   array (
     'NAME' => 'LOG_SECTION_EDIT',
     'IS_REQUIRED' => 'Y',
     'DEFAULT_VALUE' => NULL,
     'VISIBLE' => 'Y',
   ),
-  'LOG_SECTION_DELETE' => 
+  'LOG_SECTION_DELETE' =>
   array (
     'NAME' => 'LOG_SECTION_DELETE',
     'IS_REQUIRED' => 'Y',
     'DEFAULT_VALUE' => NULL,
     'VISIBLE' => 'Y',
   ),
-  'LOG_ELEMENT_ADD' => 
+  'LOG_ELEMENT_ADD' =>
   array (
     'NAME' => 'LOG_ELEMENT_ADD',
     'IS_REQUIRED' => 'Y',
     'DEFAULT_VALUE' => NULL,
     'VISIBLE' => 'Y',
   ),
-  'LOG_ELEMENT_EDIT' => 
+  'LOG_ELEMENT_EDIT' =>
   array (
     'NAME' => 'LOG_ELEMENT_EDIT',
     'IS_REQUIRED' => 'Y',
     'DEFAULT_VALUE' => NULL,
     'VISIBLE' => 'Y',
   ),
-  'LOG_ELEMENT_DELETE' => 
+  'LOG_ELEMENT_DELETE' =>
   array (
     'NAME' => 'LOG_ELEMENT_DELETE',
     'IS_REQUIRED' => 'Y',
@@ -425,10 +425,10 @@ class Version20241122101231 extends Version
   'IS_REQUIRED' => 'N',
   'VERSION' => '1',
   'USER_TYPE' => 'multiple_field',
-  'USER_TYPE_SETTINGS' => 
+  'USER_TYPE_SETTINGS' =>
   array (
     'COUNT' => 3,
-    'DESCR' => 
+    'DESCR' =>
     array (
       1 => 'Наименование',
       2 => 'Текст',
@@ -436,15 +436,15 @@ class Version20241122101231 extends Version
     ),
   ),
   'HINT' => '',
-  'FEATURES' => 
+  'FEATURES' =>
   array (
-    0 => 
+    0 =>
     array (
       'MODULE_ID' => 'iblock',
       'FEATURE_ID' => 'DETAIL_PAGE_SHOW',
       'IS_ENABLED' => 'N',
     ),
-    1 => 
+    1 =>
     array (
       'MODULE_ID' => 'iblock',
       'FEATURE_ID' => 'LIST_PAGE_SHOW',
@@ -477,7 +477,7 @@ class Version20241122101231 extends Version
   'IS_REQUIRED' => 'N',
   'VERSION' => '1',
   'USER_TYPE' => 'EAutocomplete',
-  'USER_TYPE_SETTINGS' => 
+  'USER_TYPE_SETTINGS' =>
   array (
     'VIEW' => 'T',
     'SHOW_ADD' => 'N',
@@ -490,15 +490,15 @@ class Version20241122101231 extends Version
     'IBLOCK_MESS' => 'N',
   ),
   'HINT' => '',
-  'FEATURES' => 
+  'FEATURES' =>
   array (
-    0 => 
+    0 =>
     array (
       'MODULE_ID' => 'iblock',
       'FEATURE_ID' => 'DETAIL_PAGE_SHOW',
       'IS_ENABLED' => 'N',
     ),
-    1 => 
+    1 =>
     array (
       'MODULE_ID' => 'iblock',
       'FEATURE_ID' => 'LIST_PAGE_SHOW',
@@ -531,7 +531,7 @@ class Version20241122101231 extends Version
   'IS_REQUIRED' => 'N',
   'VERSION' => '1',
   'USER_TYPE' => 'EAutocomplete',
-  'USER_TYPE_SETTINGS' => 
+  'USER_TYPE_SETTINGS' =>
   array (
     'VIEW' => 'T',
     'SHOW_ADD' => 'N',
@@ -544,15 +544,15 @@ class Version20241122101231 extends Version
     'IBLOCK_MESS' => 'N',
   ),
   'HINT' => '',
-  'FEATURES' => 
+  'FEATURES' =>
   array (
-    0 => 
+    0 =>
     array (
       'MODULE_ID' => 'iblock',
       'FEATURE_ID' => 'DETAIL_PAGE_SHOW',
       'IS_ENABLED' => 'N',
     ),
-    1 => 
+    1 =>
     array (
       'MODULE_ID' => 'iblock',
       'FEATURE_ID' => 'LIST_PAGE_SHOW',
@@ -699,15 +699,15 @@ class Version20241122101231 extends Version
   'USER_TYPE' => NULL,
   'USER_TYPE_SETTINGS' => 'a:0:{}',
   'HINT' => '',
-  'FEATURES' => 
+  'FEATURES' =>
   array (
-    0 => 
+    0 =>
     array (
       'MODULE_ID' => 'iblock',
       'FEATURE_ID' => 'DETAIL_PAGE_SHOW',
       'IS_ENABLED' => 'N',
     ),
-    1 => 
+    1 =>
     array (
       'MODULE_ID' => 'iblock',
       'FEATURE_ID' => 'LIST_PAGE_SHOW',
@@ -752,7 +752,7 @@ class Version20241122101231 extends Version
   'ACTIVE' => 'Y',
   'SORT' => '500',
   'CODE' => 'BANNER_TEXT',
-  'DEFAULT_VALUE' => 
+  'DEFAULT_VALUE' =>
   array (
     'TEXT' => '',
     'TYPE' => 'HTML',
@@ -772,7 +772,7 @@ class Version20241122101231 extends Version
   'IS_REQUIRED' => 'N',
   'VERSION' => '1',
   'USER_TYPE' => 'HTML',
-  'USER_TYPE_SETTINGS' => 
+  'USER_TYPE_SETTINGS' =>
   array (
     'height' => 200,
   ),
@@ -803,7 +803,7 @@ class Version20241122101231 extends Version
   'IS_REQUIRED' => 'N',
   'VERSION' => '1',
   'USER_TYPE' => 'EAutocomplete',
-  'USER_TYPE_SETTINGS' => 
+  'USER_TYPE_SETTINGS' =>
   array (
     'VIEW' => 'T',
     'SHOW_ADD' => 'N',
@@ -816,15 +816,15 @@ class Version20241122101231 extends Version
     'IBLOCK_MESS' => 'N',
   ),
   'HINT' => '',
-  'FEATURES' => 
+  'FEATURES' =>
   array (
-    0 => 
+    0 =>
     array (
       'MODULE_ID' => 'iblock',
       'FEATURE_ID' => 'DETAIL_PAGE_SHOW',
       'IS_ENABLED' => 'N',
     ),
-    1 => 
+    1 =>
     array (
       'MODULE_ID' => 'iblock',
       'FEATURE_ID' => 'LIST_PAGE_SHOW',
@@ -865,49 +865,6 @@ class Version20241122101231 extends Version
   'FILTER_HINT' => '',
 ));
             $helper->Iblock()->saveProperty($iblockId, array (
-  'NAME' => 'Заголовок блока с вариантами',
-  'ACTIVE' => 'Y',
-  'SORT' => '500',
-  'CODE' => 'OPTIONS_BLOCK_HEADING',
-  'DEFAULT_VALUE' => '',
-  'PROPERTY_TYPE' => 'S',
-  'ROW_COUNT' => '1',
-  'COL_COUNT' => '30',
-  'LIST_TYPE' => 'L',
-  'MULTIPLE' => 'N',
-  'XML_ID' => NULL,
-  'FILE_TYPE' => '',
-  'MULTIPLE_CNT' => '5',
-  'LINK_IBLOCK_ID' => 'additional:become_customer_ru',
-  'WITH_DESCRIPTION' => 'N',
-  'SEARCHABLE' => 'N',
-  'FILTRABLE' => 'N',
-  'IS_REQUIRED' => 'N',
-  'VERSION' => '1',
-  'USER_TYPE' => NULL,
-  'USER_TYPE_SETTINGS' => 'a:0:{}',
-  'HINT' => '',
-  'FEATURES' => 
-  array (
-    0 => 
-    array (
-      'MODULE_ID' => 'iblock',
-      'FEATURE_ID' => 'DETAIL_PAGE_SHOW',
-      'IS_ENABLED' => 'N',
-    ),
-    1 => 
-    array (
-      'MODULE_ID' => 'iblock',
-      'FEATURE_ID' => 'LIST_PAGE_SHOW',
-      'IS_ENABLED' => 'N',
-    ),
-  ),
-  'SMART_FILTER' => NULL,
-  'DISPLAY_TYPE' => 'F',
-  'DISPLAY_EXPANDED' => NULL,
-  'FILTER_HINT' => '',
-));
-            $helper->Iblock()->saveProperty($iblockId, array (
   'NAME' => 'Как оформить карту',
   'ACTIVE' => 'Y',
   'SORT' => '500',
@@ -928,7 +885,7 @@ class Version20241122101231 extends Version
   'IS_REQUIRED' => 'N',
   'VERSION' => '1',
   'USER_TYPE' => 'EAutocomplete',
-  'USER_TYPE_SETTINGS' => 
+  'USER_TYPE_SETTINGS' =>
   array (
     'VIEW' => 'T',
     'SHOW_ADD' => 'N',
@@ -941,15 +898,15 @@ class Version20241122101231 extends Version
     'IBLOCK_MESS' => 'N',
   ),
   'HINT' => '',
-  'FEATURES' => 
+  'FEATURES' =>
   array (
-    0 => 
+    0 =>
     array (
       'MODULE_ID' => 'iblock',
       'FEATURE_ID' => 'DETAIL_PAGE_SHOW',
       'IS_ENABLED' => 'N',
     ),
-    1 => 
+    1 =>
     array (
       'MODULE_ID' => 'iblock',
       'FEATURE_ID' => 'LIST_PAGE_SHOW',
@@ -1010,7 +967,7 @@ class Version20241122101231 extends Version
   'IS_REQUIRED' => 'N',
   'VERSION' => '1',
   'USER_TYPE' => 'EAutocomplete',
-  'USER_TYPE_SETTINGS' => 
+  'USER_TYPE_SETTINGS' =>
   array (
     'VIEW' => 'T',
     'SHOW_ADD' => 'N',
@@ -1023,15 +980,15 @@ class Version20241122101231 extends Version
     'IBLOCK_MESS' => 'N',
   ),
   'HINT' => '',
-  'FEATURES' => 
+  'FEATURES' =>
   array (
-    0 => 
+    0 =>
     array (
       'MODULE_ID' => 'iblock',
       'FEATURE_ID' => 'DETAIL_PAGE_SHOW',
       'IS_ENABLED' => 'N',
     ),
-    1 => 
+    1 =>
     array (
       'MODULE_ID' => 'iblock',
       'FEATURE_ID' => 'LIST_PAGE_SHOW',
@@ -1092,7 +1049,7 @@ class Version20241122101231 extends Version
   'IS_REQUIRED' => 'N',
   'VERSION' => '1',
   'USER_TYPE' => 'EAutocomplete',
-  'USER_TYPE_SETTINGS' => 
+  'USER_TYPE_SETTINGS' =>
   array (
     'VIEW' => 'T',
     'SHOW_ADD' => 'N',
@@ -1105,15 +1062,15 @@ class Version20241122101231 extends Version
     'IBLOCK_MESS' => 'N',
   ),
   'HINT' => '',
-  'FEATURES' => 
+  'FEATURES' =>
   array (
-    0 => 
+    0 =>
     array (
       'MODULE_ID' => 'iblock',
       'FEATURE_ID' => 'DETAIL_PAGE_SHOW',
       'IS_ENABLED' => 'N',
     ),
-    1 => 
+    1 =>
     array (
       'MODULE_ID' => 'iblock',
       'FEATURE_ID' => 'LIST_PAGE_SHOW',
@@ -1174,7 +1131,7 @@ class Version20241122101231 extends Version
   'IS_REQUIRED' => 'N',
   'VERSION' => '1',
   'USER_TYPE' => 'EAutocomplete',
-  'USER_TYPE_SETTINGS' => 
+  'USER_TYPE_SETTINGS' =>
   array (
     'VIEW' => 'T',
     'SHOW_ADD' => 'N',
@@ -1187,15 +1144,15 @@ class Version20241122101231 extends Version
     'IBLOCK_MESS' => 'N',
   ),
   'HINT' => '',
-  'FEATURES' => 
+  'FEATURES' =>
   array (
-    0 => 
+    0 =>
     array (
       'MODULE_ID' => 'iblock',
       'FEATURE_ID' => 'DETAIL_PAGE_SHOW',
       'IS_ENABLED' => 'N',
     ),
-    1 => 
+    1 =>
     array (
       'MODULE_ID' => 'iblock',
       'FEATURE_ID' => 'LIST_PAGE_SHOW',
@@ -1240,7 +1197,7 @@ class Version20241122101231 extends Version
   'ACTIVE' => 'Y',
   'SORT' => '500',
   'CODE' => 'STEPS',
-  'DEFAULT_VALUE' => 
+  'DEFAULT_VALUE' =>
   array (
     'TEXT' => '',
     'TYPE' => 'HTML',
@@ -1260,20 +1217,20 @@ class Version20241122101231 extends Version
   'IS_REQUIRED' => 'N',
   'VERSION' => '1',
   'USER_TYPE' => 'HTML',
-  'USER_TYPE_SETTINGS' => 
+  'USER_TYPE_SETTINGS' =>
   array (
     'height' => 200,
   ),
   'HINT' => '',
-  'FEATURES' => 
+  'FEATURES' =>
   array (
-    0 => 
+    0 =>
     array (
       'MODULE_ID' => 'iblock',
       'FEATURE_ID' => 'DETAIL_PAGE_SHOW',
       'IS_ENABLED' => 'N',
     ),
-    1 => 
+    1 =>
     array (
       'MODULE_ID' => 'iblock',
       'FEATURE_ID' => 'LIST_PAGE_SHOW',
@@ -1290,7 +1247,7 @@ class Version20241122101231 extends Version
   'ACTIVE' => 'Y',
   'SORT' => '500',
   'CODE' => 'ADDITIONAL_INFO',
-  'DEFAULT_VALUE' => 
+  'DEFAULT_VALUE' =>
   array (
     'TEXT' => '',
     'TYPE' => 'HTML',
@@ -1310,7 +1267,7 @@ class Version20241122101231 extends Version
   'IS_REQUIRED' => 'N',
   'VERSION' => '1',
   'USER_TYPE' => 'HTML',
-  'USER_TYPE_SETTINGS' => 
+  'USER_TYPE_SETTINGS' =>
   array (
     'height' => 200,
   ),
@@ -1371,9 +1328,9 @@ class Version20241122101231 extends Version
   'USER_TYPE' => NULL,
   'USER_TYPE_SETTINGS' => NULL,
   'HINT' => '',
-  'VALUES' => 
+  'VALUES' =>
   array (
-    0 => 
+    0 =>
     array (
       'VALUE' => 'Y',
       'DEF' => 'N',
@@ -1381,15 +1338,15 @@ class Version20241122101231 extends Version
       'XML_ID' => '8d91a3236cc6038d4c83856f34bb6a6b',
     ),
   ),
-  'FEATURES' => 
+  'FEATURES' =>
   array (
-    0 => 
+    0 =>
     array (
       'MODULE_ID' => 'iblock',
       'FEATURE_ID' => 'DETAIL_PAGE_SHOW',
       'IS_ENABLED' => 'N',
     ),
-    1 => 
+    1 =>
     array (
       'MODULE_ID' => 'iblock',
       'FEATURE_ID' => 'LIST_PAGE_SHOW',
@@ -1402,7 +1359,7 @@ class Version20241122101231 extends Version
   'FILTER_HINT' => '',
 ));
             $helper->UserOptions()->saveElementForm($iblockId, array (
-  'Параметры|edit1' => 
+  'Параметры|edit1' =>
   array (
     'ID' => 'ID',
     'DATE_CREATE' => 'Создан',
@@ -1415,27 +1372,27 @@ class Version20241122101231 extends Version
     'SORT' => 'Сортировка',
     'SECTIONS' => 'Разделы',
   ),
-  'Описание и краткие условия|cedit1' => 
+  'Описание и краткие условия|cedit1' =>
   array (
     'DETAIL_TEXT' => 'Детальное описание',
     'PROPERTY_SHORT_CONDITIONS' => 'Краткие условия',
   ),
-  'Бенефиты|cedit2' => 
+  'Бенефиты|cedit2' =>
   array (
     'PROPERTY_BENEFITS_HEADING' => 'Заголовок блока бенефитов',
     'PROPERTY_BENEFITS' => 'Бенефиты',
   ),
-  'Бонусные программы|cedit9' => 
+  'Бонусные программы|cedit9' =>
   array (
     'PROPERTY_BONUS_PROGRAMS_HEADING' => 'Заголовок блока бонусных программ',
     'PROPERTY_BONUS_PROGRAMS' => 'Бонусные программы',
   ),
-  'Надежно и удобно|cedit7' => 
+  'Надежно и удобно|cedit7' =>
   array (
     'PROPERTY_CONVENIENCES_HEADING' => 'Заголовок блока удобств',
     'PROPERTY_CONVENIENCES' => 'Удобства',
   ),
-  'Баннер|cedit4' => 
+  'Баннер|cedit4' =>
   array (
     'PROPERTY_BANNER_TAG' => 'Тег баннера',
     'PROPERTY_BANNER_HEADING' => 'Заголовок баннера',
@@ -1445,36 +1402,36 @@ class Version20241122101231 extends Version
     'PROPERTY_BANNER_LINK_TEXT' => 'Текст ссылки',
     'PROPERTY_LINK_IS_BUTTON' => 'Выводить ссылку в виде кнопки',
   ),
-  'Инфоврезка|cedit11' => 
+  'Инфоврезка|cedit11' =>
   array (
     'PROPERTY_ADDITIONAL_INFO' => 'Инфоврезка',
   ),
-  'Скидки|cedit3' => 
+  'Скидки|cedit3' =>
   array (
     'PROPERTY_DISCOUNTS_HEADING' => 'Заголовок блока скидок',
     'PROPERTY_DISCOUNTS' => 'Скидки',
   ),
-  'Блок с табами|cedit8' => 
+  'Блок с табами|cedit8' =>
   array (
     'PROPERTY_TABS_HEADING' => 'Заголовок блока с табами',
     'PROPERTY_TABS' => 'Табы',
   ),
-  'Пошаговая инструкция|cedit10' => 
+  'Пошаговая инструкция|cedit10' =>
   array (
     'PROPERTY_STEPS_HEADING' => 'Название блока с шагами',
     'PROPERTY_STEPS' => 'Пошаговая инструкция',
   ),
-  'Как оформить карту|cedit6' => 
+  'Как оформить карту|cedit6' =>
   array (
     'PROPERTY_OPTIONS_BLOCK_HEADING' => 'Заголовок блока с вариантами',
     'PROPERTY_CARD_RECEIPT_OPTIONS' => 'Как оформить карту',
   ),
-  'Спецпредложения|cedit5' => 
+  'Спецпредложения|cedit5' =>
   array (
     'PROPERTY_SPECIAL_OFFERS_HEADING' => 'Заголовок блока спецпредложений',
     'PROPERTY_SPECIAL_OFFERS' => 'Спецпредложения',
   ),
-  'SEO|edit14' => 
+  'SEO|edit14' =>
   array (
     'IPROPERTY_TEMPLATES_ELEMENT_META_TITLE' => 'Шаблон META TITLE',
     'IPROPERTY_TEMPLATES_ELEMENT_META_KEYWORDS' => 'Шаблон META KEYWORDS',
@@ -1493,7 +1450,7 @@ class Version20241122101231 extends Version
   ),
 ));
         $helper->UserOptions()->saveSectionForm($iblockId, array (
-  'Карта|edit1' => 
+  'Карта|edit1' =>
   array (
     'USER_FIELDS_ADD' => 'Добавить пользовательское свойство',
     'ID' => 'ID',
@@ -1507,30 +1464,30 @@ class Version20241122101231 extends Version
   ),
 ));
     $helper->UserOptions()->saveElementGrid($iblockId, array (
-  'views' => 
+  'views' =>
   array (
-    'default' => 
+    'default' =>
     array (
-      'columns' => 
+      'columns' =>
       array (
         0 => '',
       ),
-      'columns_sizes' => 
+      'columns_sizes' =>
       array (
         'expand' => 1,
-        'columns' => 
+        'columns' =>
         array (
         ),
       ),
-      'sticked_columns' => 
+      'sticked_columns' =>
       array (
       ),
-      'custom_names' => 
+      'custom_names' =>
       array (
       ),
     ),
   ),
-  'filters' => 
+  'filters' =>
   array (
   ),
   'current_view' => 'default',
