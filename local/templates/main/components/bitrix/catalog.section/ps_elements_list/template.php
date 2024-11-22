@@ -49,6 +49,8 @@ if (!empty($arResult['ITEMS'])) {?>
                 </div>
             </div>
         </div>
-        <?=$arResult['NAV_STRING']?>
+        <div class="mt-4 mt-md-6 mt-lg-7">
+            <?=$arResult['NAV_STRING']?>
+        </div>
     </div><?
 }?>
