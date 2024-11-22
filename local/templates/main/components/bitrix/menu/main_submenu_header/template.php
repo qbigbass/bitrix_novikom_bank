@@ -84,7 +84,7 @@
     <? } ?>
     <div class="dropdown-nav js-dropdown-nav" id="search">
         <div class="d-flex flex-column gap-6">
-            <form>
+            <form method="get" id="header-search-form" action="/search/">
                 <div class="input-group flex-nowrap">
                     <span class="input-group-icon" id="input-search">
                         <span class="icon">
@@ -93,8 +93,17 @@
                             </svg>
                         </span>
                     </span>
-                    <input class="form-control" type="text" placeholder="Поиск по сайту" aria-label="Поиск по сайту"
-                           aria-describedby="input-search" tabindex="-1">
+                    <input
+                        id="header-input-search"
+                        name="q"
+                        class="form-control"
+                        type="text"
+                        placeholder="Поиск по сайту"
+                        aria-label="Поиск по сайту"
+                        aria-describedby="input-search"
+                        tabindex="-1"
+                        value="<?= $arResult["REQUEST"]["QUERY"] ?>"
+                    >
                 </div>
             </form>
             <div class="d-flex flex-column gap-4">
