@@ -58,18 +58,21 @@ block content
                 ],
                 img: 'large-business/crediting.png',
                 link: 'Подробнее',
+                bgClass: 'bg-white'
             },
             {
                 title: 'Банковские гарантии',
                 description: 'Все виды банковских гарантий',
                 img: 'large-business/guarantees.png',
                 link: 'Подробнее',
+                bgClass: 'bg-white'
             },
             {
                 title: 'Депозиты',
                 description: 'Надежный инструмент превратить свободные финансовые ресурсы в дополнительный источник дохода вашего бизнеса',
                 img: 'large-business/currency-control.png',
                 link: 'Подробнее',
+                bgClass: 'bg-white'
             },
         ]
 
@@ -80,21 +83,24 @@ block content
                     description: 'Страхование корпоративных рисков',
                     icon: 'icon-a-hands',
                     link: 'Подробнее',
-                    size: 'height-auto'
+                    size: 'height-auto',
+                    bgClass: 'bg-white'
                 },
                 {
                     title: 'ДБО',
                     description: 'Выставление всех видов банковских гарантий',
                     icon: 'icon-a-hands',
                     link: 'Подробнее',
-                    size: 'height-auto'
+                    size: 'height-auto',
+                    bgClass: 'bg-white'
                 },
                 {
                     title: 'Меры господдержки',
                     description: 'Новиком оказывает услуги лизинга через своего партнера — лизинговую компанию «Нацпромлизинг»',
                     icon: 'icon-a-hands',
                     link: 'Подробнее',
-                    size: 'height-auto'
+                    size: 'height-auto',
+                    bgClass: 'bg-white'
                 },
             ],
             [
@@ -103,28 +109,32 @@ block content
                     description: 'Большой объем финансирования в рамках одной сделки',
                     icon: 'icon-a-hands',
                     link: 'Подробнее',
-                    size: 'height-auto'
+                    size: 'height-auto',
+                    bgClass: 'bg-white'
                 },
                 {
                     title: 'Госзакупки',
                     description: 'Льготное финансирование организациям',
                     icon: 'icon-a-hands',
                     link: 'Подробнее',
-                    size: 'height-auto'
+                    size: 'height-auto',
+                    bgClass: 'bg-white'
                 },
                 {
                     title: 'ВЭД',
                     description: 'Карта для совершения операций по счёту юридического лица',
                     icon: 'icon-a-hands',
                     link: 'Подробнее',
-                    size: 'height-auto'
+                    size: 'height-auto',
+                    bgClass: 'bg-white'
                 },
                 {
                     title: 'Конверсионные операции',
                     description: 'Централизованное управление денежными потоками',
                     icon: 'icon-a-hands',
                     link: 'Подробнее',
-                    size: 'height-auto'
+                    size: 'height-auto',
+                    bgClass: 'bg-white'
                 },
             ]
         ]
@@ -180,14 +190,14 @@ block content
             .row
                 .col-12.d-flex.flex-column.flex-xl-row.cards-gap
                     .w-xl-50
-                        +card-product(cardProductList[0]).h-100.flex-grow-1.bg-white
+                        +card-product(cardProductList[0]).h-100.flex-grow-
                             if cardProductList[0].list
                                 ul.list.list--size-l
                                     each item in cardProductList[0].list
                                         li!=item
                     .w-100.w-xl-50.d-flex.flex-column.flex-md-row.flex-xl-column.cards-gap
-                        +card-product(cardProductList[1]).h-auto.w-100.bg-white
-                        +card-product(cardProductList[2]).h-auto.w-100.bg-white
+                        +card-product(cardProductList[1]).h-auto.w-100
+                        +card-product(cardProductList[2]).h-auto.w-100
             .row.my-4.my-md-5.my-lg-7
                 .col-12
                     +card-service-app({
@@ -217,7 +227,7 @@ block content
                     each rowArray, rowIndex in cardProductRowsList
                         .d-flex.flex-wrap.cards-gap
                             each item in rowArray
-                                +card-product(item)(class=rowArray.length>3 ? 'flex-basis-100 flex-basis-md-33 flex-basis-xl-20' : 'flex-basis-100 flex-basis-md-33 flex-basis-lg-25').h-auto.flex-grow-1.bg-white
+                                +card-product(item)(class=rowArray.length>3 ? 'flex-basis-100 flex-basis-md-33 flex-basis-xl-20' : 'flex-basis-100 flex-basis-md-33 flex-basis-lg-25').h-auto.flex-grow-1
 
     section.section-layout.pt-0.bg-dark-10
         .container
