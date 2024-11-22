@@ -93,8 +93,21 @@
     }
 
     &__breadcrumbs {
+        background-color: white;
         & .breadcrumbs__item {
             white-space: nowrap;
+        }
+
+        @include use-media(tablet) {
+            min-width: calc(100vw - 5rem);
+        }
+
+        @include use-media(tablet-album) {
+            min-width: calc(100vw - 12.5rem);
+        }
+
+        @include use-media(laptop-x) {
+            min-width: unset;
         }
     }
 
