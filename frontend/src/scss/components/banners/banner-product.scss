@@ -92,6 +92,12 @@
         }
     }
 
+    &__breadcrumbs {
+        & .breadcrumbs__item {
+            white-space: nowrap;
+        }
+    }
+
     &__footer {
         position: relative;
         z-index: 1;
