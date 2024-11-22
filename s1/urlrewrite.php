@@ -77,4 +77,11 @@ $arUrlRewrite = [
         'PATH' => '/support/products_services/index.php',
         'SORT' => 100,
     ],
+    [
+        'CONDITION' => '#^/support/very_important_information/#',
+        'RULE' => '',
+        'ID' => 'bitrix:catalog',
+        'PATH' => '/support/very_important_information/index.php',
+        'SORT' => 100,
+    ],
 ];

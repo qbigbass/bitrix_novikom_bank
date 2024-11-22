@@ -38,7 +38,7 @@ $sectionListParams = [
 	"SHOW_PARENT_NAME" => $arParams["SECTIONS_SHOW_PARENT_NAME"],
 	"HIDE_SECTION_NAME" => ($arParams["SECTIONS_HIDE_SECTION_NAME"] ?? "N"),
 	"ADD_SECTIONS_CHAIN" => ($arParams["ADD_SECTIONS_CHAIN"] ?? ''),
-    "SECTION_USER_FIELDS" => ["UF_SUPPORT_PRODUCT__ICON"]
+    "SECTION_USER_FIELDS" => ["UF_SUPPORT_PRODUCT__ICON", "UF_SUPPORT_INFO_ICON"]
 ];
 ?>
 <section class="section-layout px-lg-6 bg-dark-10">

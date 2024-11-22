@@ -9,7 +9,7 @@ $aMenuLinks = Array(
 	),
 	Array(
 		"Очень важная информация",
-		"#",
+		"/support/very_important_information/",
 		Array(),
 		Array(),
 		""
