@@ -6,9 +6,14 @@ mixin card-benefit(data)
                     img.card-benefit__image(src= `img/big-illustrations/${data.image}`, alt= data.title, loading="lazy")
                 h4.card-benefit__title!= data.title
                 if data.description
-                    p.card-benefit__description.text-m.m-0!= data.description
+                    p.card-benefit__description.m-0(class=data.descriptionSizeClass ? data.descriptionSizeClass : 'text-m')!= data.description
                 if data.list
-                    != data.list
+                    if data.isBulletList
+                        ul.card-benefit__list.list.list--size-l
+                            each item in data.list
+                                li!=item
+                    else
+                        != data.list
             if data.sprite || data.link
                 .card-benefit__read-more.d-flex.align-items-end.justify-content-between
                     if data.sprite
