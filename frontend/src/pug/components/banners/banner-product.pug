@@ -17,7 +17,7 @@ mixin banner-product(data)
                 if data.imgSrc
                     img(src= data.imgSrc, class="banner-product__image", alt="", loading="lazy")
                 if data.benefits
-                    .banner-product__benefits-list
+                    .banner-product__benefits-list(class=data.benefitsClass)
                         each benefit in data.benefits
                             +benefit-text(benefit, benefit.colorClass)(class=benefit.widthMinContent&&'w-min-content')
                 if data.buttonText
@@ -30,4 +30,4 @@ mixin banner-product(data)
                                 if item.description
                                     p.mb-0.text-m!= item.description
 
-        +pattern-bg("section", "dark", "banner-product__pattern")
+        +pattern-bg("section", "dark", `banner-product__pattern ${data.patternClass}`)
