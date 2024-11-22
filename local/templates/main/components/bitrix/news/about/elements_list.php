@@ -105,7 +105,7 @@ if (!empty($elementIds)) {
             "SORT_ORDER2" => "ASC",
             "STRICT_SECTION_CHECK" => "N",
         ],
-        false,
+        $component,
         ['HIDE_ICONS' => 'Y']
     );
 } ?>
@@ -258,6 +258,8 @@ if (!empty($awardsIds)) { ?>
                             "SORT_ORDER2" => "ASC",
                             "STRICT_SECTION_CHECK" => "N"
                         ],
+                        $component,
+                        ["HIDE_ICONS" => "Y"]
                     );?>
                 </div>
             </div>
@@ -340,6 +342,8 @@ if (!empty($newsIds)) { ?>
                     "SORT_ORDER2" => "ASC",
                     "STRICT_SECTION_CHECK" => "N"
                 ],
+                $component,
+                ["HIDE_ICONS" => "Y"]
             );?>
         </div>
     </section>
