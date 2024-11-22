@@ -43,20 +43,6 @@ $sectionListParams = [
 ?>
 <section class="section-layout px-lg-6 bg-dark-10">
     <div class="container">
-        <form class="w-100 mb-4 mb-md-6 mb-lg-7">
-            <div class="input-group flex-nowrap d-none d-lg-flex"><span class="input-group-icon bg-transparent"><span class="icon violet-100">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                        <use xlink:href="img/svg-sprite.svg#icon-search"></use>
-                      </svg></span></span>
-                <input class="form-control form-control-lg text-l bg-transparent" id="input-search" type="text" placeholder="Поиск по разделу" aria-label="Поиск по разделу" aria-describedby="input-search" tabindex="-1">
-            </div>
-            <div class="input-group flex-nowrap d-flex d-lg-none"><span class="input-group-icon bg-transparent"><span class="icon violet-100">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                        <use xlink:href="img/svg-sprite.svg#icon-search"></use>
-                      </svg></span></span>
-                <input class="form-control ps-0 text-s bg-transparent" id="input-search-mobile" type="text" placeholder="Поиск по разделу" aria-label="Поиск по разделу" aria-describedby="#input-search-mobile" tabindex="-1">
-            </div>
-        </form>
         <div class="row g-1 g-md-2 g-lg-2_5">
             <?
             $APPLICATION->IncludeComponent(
