@@ -4,7 +4,7 @@
 import initPolygonContainer from './components/polygon-container.js'
 import initDropdownMenu from './components/dropDownMenu.js'
 import {setVh} from "./utils";
-import { initSwiperMenu, initHeroBanner, initCardSlider, initAnnouncementSlider, initTabsSlider } from "./components/swiper/swiper";
+import { initSwiperMenu, initHeroBanner, initCardSlider, initAnnouncementSlider, initTabsSlider, initPbSlider } from "./components/swiper/swiper";
 import initButtonNavMobile from './components/nav-panel.js'
 import initMobileSearch from './components/mobile-search.js'
 import initSelect2 from './components/select2.js'
@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initTabsContent();
     initInputSlider();
     showMoreContent();
+	initPbSlider();
 });
 
 window.onload = function() {

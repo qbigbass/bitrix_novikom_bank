@@ -1,0 +1,17 @@
+mixin pb-card-special(data)
+    .pb__card(class=data.large ? "pb__card--large" : "pb__card--small")
+        h3.pb__card-title= data.title
+        .pb__card-body
+            if data.large 
+                if data.description
+                    p.pb__card-text= data.description
+            .pb__card-content
+                if !data.large
+                    if data.description
+                        p.pb__card-text= data.description
+                if data.additionalInfo && data.additionalInfo.length > 0
+                    ul.pb__card-info
+                        each info in data.additionalInfo
+                            li.pb__card-info-item= info
+                .pb__card-image
+                    img(src=data.image, alt=data.title, class=data.large ? "pb__card-image--large" : "pb__card-image--small")

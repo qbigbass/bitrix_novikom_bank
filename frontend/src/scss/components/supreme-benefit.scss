@@ -1,0 +1,33 @@
+.supreme-benefit {
+  display: flex; /* Flexbox для выравнивания */
+  align-items: center; /* Вертикальное центрирование */
+  justify-content: space-between; /* Равномерное распределение */
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: rgba(89, 26, 175, 0.3);
+  min-height: 80px;
+
+  &__icon {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+  }
+
+  &__description {
+    margin: 0;
+    font-size: 24px;
+    color: #b0b7fe;
+    flex: 1;
+    display: flex;
+    align-items: center;
+
+    & br {
+      display: none;
+
+      @include use-media(laptop) {
+        display: inherit;
+      }
+    }
+  }
+}

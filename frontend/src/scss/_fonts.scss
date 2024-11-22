@@ -32,7 +32,7 @@
 	font-weight: 400;
 	font-display: swap;
 	src: url('../fonts/open-sans-v40-cyrillic_latin-italic.woff2') format('woff2');
-  }
+}
 
 @font-face {
 	font-family: 'Roboto Condensed';
@@ -48,4 +48,12 @@
 	font-weight: 400;
 	font-display: swap;
 	src: url('../fonts/RobotoCondensed-Regular.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'TT Hoves';
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url('../fonts/TTHoves-Regular.woff') format('woff');
 }

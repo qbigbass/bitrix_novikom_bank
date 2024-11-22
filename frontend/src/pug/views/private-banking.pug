@@ -1,0 +1,220 @@
+extends ../templates/private-base
+
+block title
+    -
+        const specialPrivilegesCards = [
+            {
+                title: "Персональное сопровождение",
+                description: "Индивидуальный менеджер и команда финансовых консультантов для решения банковских и частных вопросов",
+                image: 'img/bank01.png',
+                additionalInfo: [
+                    "Выезд менеджера в комфортную для переговоров локацию",
+                    "Индивидуальный подход при рассмотрении заявок на кредит любой сложности",
+                    "Круглосуточный Консьерж-сервис Aspire Lifestyles",
+                ],
+                large: true
+            },
+            {
+                title: "Вклады",
+                description: "Повышенная доходость для клиентов с крупным капиталом",
+                image: 'img/safe09.png',
+                large: false
+            },
+            {
+                title: "Кредитование ",
+                description: "Специальная линейка кредитных продуктов. Упрощённое оформление и короткий срок принятия решения",
+                image: 'img/percent03.png',
+                large: false
+            },
+        ];
+
+        const supremeCardBenefits = [
+            {
+                icon: '/img/pb-images/pb-supreme-icons/bank-icon.svg',
+                text: 'Снятие наличных в любых банкоматах без комиссии',
+            },
+            {
+                icon: '/img/pb-images/pb-supreme-icons/airplane-icon.svg',
+                text: 'Доступ в бизнес-залы аэропортов с Mir Pass',
+            },
+            {
+                icon: '/img/pb-images/pb-supreme-icons/percent-icon.svg',
+                text: 'Повышенный кэшбэк до 30% от покупок',
+            },
+            {
+                icon: '/img/pb-images/pb-supreme-icons/wallet-icon.svg',
+                text: 'Дополнительные карты бесплатно',
+            },
+            {
+                icon: '/img/pb-images/pb-supreme-icons/spb-icon.svg',
+                text: 'Переводы по номеру телефона до 1 млн ₽ в другие банки по СБП без комиссии',
+            },
+        ];
+
+        const bankingForYou = [
+            {
+                title: "Привилегии",
+                image: 'img/pb-images/pb-lion.png',
+                additionalInfo: [
+                    "Безлимитный доступ в Бизнес-залы аэропортов и ж/д вокзалов по всему миру с сервисом MileOnAir/OnPass",
+                    "Специальная партнёрская программас SimpleWinePrive, Beluga Boutique, Wheely, Novikov Group и другими",
+                    "Сотрудничество с группой «Михайлов и партнёры» — экспертами в правовых вопросах, налогообложения, наследства, брачно-семейных отношений и прочих",
+                ],
+                large: true
+            },
+            {
+                title: "Наличный оборот",
+                description: "Льготный курс обмена валют и услуги инкассации и доставки наличности",
+                image: 'img/pb-images/pb-coins.png',
+                large: false
+            },
+            {
+                title: "Сделки с недвижимостью ",
+                description: "Особые условия по ипотеке и сопровождение сделок с недвижимостью (аккредитив/ячейки)",
+                image: 'img/pb-images/pb-estate.png',
+                large: false
+            },
+        ];
+
+        const tabsList = [
+            { id: "tab1", linkText: "Векселя" ,isActive: true  },
+            { id: "tab2", linkText: "Перевозка ценностей" ,isActive: false},
+            { id: "tab3", linkText: "Индивидуальные ячейки" ,isActive: false},
+            { id: "tab4", linkText: "Счета в пяти валютах" ,isActive: false},
+            { id: "tab5", linkText: "Консьерж-служба" ,isActive: false},
+            { id: "tab6", linkText: "Конверсионные операции по лучшему курсу" ,isActive: false},
+            { id: "tab7", linkText: "Персональный менеджер" ,isActive: false}
+        ];
+        const financeCards = [
+            {
+                title: "Векселя",
+                description: "Доходный и надёжный инструмент инвестирования временно свободных денежных средств. Предлагаем дисконтные, простые процентные и беспроцентные векселя",
+                image: "/img/pb-images/pb-finance-cards/veksel.png",
+                id: "veksel",
+            },
+            {
+                title: "Перевозка ценностей",
+                description: "Мы располагаем надёжным специализированным транспортом и опытными специалистами: инкассаторами, охраной и кассирами.",
+                image: "/img/pb-images/pb-finance-cards/logistic.png",
+                id: "logistic",
+            },
+            {
+                title: "Индивидуальные ячейки",
+                description: "Мы располагаем надёжным специализированным транспортом и опытными специалистами: инкассаторами, охраной и кассирами.",
+                image: "/img/pb-images/pb-finance-cards/individualСells.png",
+                id: "individualCells",
+            },
+            {
+                title: "Текущие счета в пяти валютах",
+                description: "Мы располагаем надёжным специализированным транспортом и опытными специалистами: инкассаторами, охраной и кассирами.",
+                image: "/img/pb-images/pb-finance-cards/currentAccount.png",
+                id: "currentAccount",
+            },
+            {
+                title: "Конверсионные операции по лучшему курсу",
+                description: "Мы располагаем надёжным специализированным транспортом и опытными специалистами: инкассаторами, охраной и кассирами.",
+                image: "/img/pb-images/pb-finance-cards/conversionOperations.png",
+                id: "conversionOperations",
+            }
+        ];
+        const investmentCards = [
+          {
+                title: "Брокерское обслуживание",
+                description:"Совершение сделок с обеспечением рыночных цен и услуг для достижения ваших целей.",
+                image: "/img/pb-images/pb-investment-cards/pb-investment-broker.png",
+                id: "broker",
+          },
+          {
+                title: "Доверительное управление",
+                description:"Профессиональное управление инвестиционным портфелем для максимальной выгоды.",
+                image: "/img/pb-images/pb-investment-cards/pb-investment-management.png",
+                id: "management",
+          },
+          {
+                title: "Депозитарное обслуживание",
+                description:"Сопровождение сделок и консультации по вопросам управления активами.",
+                image: "/img/pb-images/pb-investment-cards/pb-investment-deposit.png",
+                id: "deposit",
+          },
+          {
+                title: "Инвестиционное консультирование",
+                description:"Персонализированный подход к подбору стратегий и инструментов инвестирования.",
+                image: "/img/pb-images/pb-investment-cards/pb-investment-consulting.png",
+                id: "consulting",
+          },
+        ];
+
+    title= 'Кредиты - Кредит на любые цели'
+    meta(name="description" content="Описание страницы с кредитами")
+
+block content
+    include ../components/pb-card-special
+    include ../components/pb-supreme-benefit
+
+    section.pb__animation.container
+        video#background-video(autoplay='' loop='' muted='' poster='img/video-poster.jpg')
+            source(src='img/video-background.mp4' type='video/mp4')
+        include ../includes/header/pb-header
+        .container
+            h2.dark-10.pb__section-header Лучшие финансовые инструменты <br>для достижения ваших целей
+
+    section.pb__special.container
+        h2.dark-10.pb__section-header Особые условия для важных клиентов
+        .row.g-4
+            .col-lg-6
+                +pb-card-special(specialPrivilegesCards[0])
+            .col-lg-6
+                .row.g-4.justify-content-between
+                    each card in specialPrivilegesCards.slice(1)
+                        .col-12
+                            +pb-card-special(card)
+
+    section.pb__mir-supreme.container
+        .pb__mir-supreme-header-wrapper
+            h2.pb__mir-supreme-header Премиальная карта Мир Supreme
+            h4.pb__mir-supreme-subtitle Дебетовая карта с ежемесячным начислением процентов на остаток средств<br> или кредитная карта с бесплатным снятием наличных.
+        .pb__mir-supreme-images
+            img.pb__mir-supreme-images-supreme(src="/img/pb-images/pb-supreme.png", alt="Supreme Card")
+            img.pb__mir-supreme-images-duo(src="/img/pb-images/pb-mir-supreme-duo-cards.png", alt="Supreme Duo Cards")
+        .pb__mir-supreme-benefits
+            each benefit in supremeCardBenefits
+                +pb-supremeBenefit(benefit.icon, benefit.text)
+        .pb__mir-supreme-button СТАТЬ КЛИЕНТОМ
+
+    section.pb__special.container
+        h2.dark-10.mb-3.pb__section-header Банк для вас
+        .row.g-4
+            .col-lg-6
+                +pb-card-special(bankingForYou[0])
+            .col-lg-6
+                .row.g-4.justify-content-between
+                    each card in bankingForYou.slice(1)
+                        .col-12
+                            +pb-card-special(card)
+
+    section.pb__services.container
+        .pb__services-header
+            h2.pb__services-header-item.active Финансовые услуги
+            h2.pb__services-header-item Инвестиционные услуги
+        .pb__services-tabs
+            .pb__services-tabs-tags
+                ul.tabs
+                  each tab, index in financeCards
+                    li.tabs__item
+                      a.tabs__link(href="#" data-target=`#${tab.id}` class=index === 0 ? "active" : "")= tab.title
+            .pb__services-tabs-cards.js-pb-slider
+              .swiper-wrapper
+                each card in financeCards
+                  .swiper-slide.pb__card
+                    .pb__card-info
+                      h3.pb__card-info-title= card.title
+                      p.pb__card-info-description= card.description
+                    .pb__card-img
+                      img.pb__card-image(src=card.image, alt=card.title)
+            //- .pb__services-tabs-controls
+            //-   button.swiper-button-prev.js-pb-slider-prev
+            //-     img(src="/img/pb-images/pb-prev.svg", alt="Предыдущий")
+            //-   .swiper-pagination.js-pb-slider-pagination
+            //-   button.swiper-button-next.js-pb-slider-next
+            //-     img(src="/img/pb-images/pb-next.svg", alt="Следующий")
+    
