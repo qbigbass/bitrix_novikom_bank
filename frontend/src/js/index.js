@@ -19,6 +19,7 @@ import {initFormSend} from "./components/form/formSend";
 import {initUploadFile} from "./components/form/uploadFile";
 import {initMask} from "./components/form/mask";
 import {initResizePolygonAccordions} from "./components/accordions";
+import initHeaderSearchForm from "./components/headerSearchForm.js";
 
 document.addEventListener('DOMContentLoaded', () => {
     initDropdownMenu();
@@ -43,6 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initUploadFile();
     initMask();
     initResizePolygonAccordions();
+    initHeaderSearchForm();
 });
 
 window.onload = function() {
