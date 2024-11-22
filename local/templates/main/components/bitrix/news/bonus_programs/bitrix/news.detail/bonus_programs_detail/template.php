@@ -266,7 +266,7 @@ use Dalee\Helpers\ComponentHelper;
                                 <div class="card-calculate-result bg-gradient-violet card-calculate-result--type-bonus">
                                     <div class="card-calculate-result__body">
                                         <div class="d-flex flex-column row-gap-2">
-                                            <span class="card-calculate-result__label text-s">За год будет начислено</span>
+                                            <span class="card-calculate-result__label text-l">За год будет начислено</span>
                                             <span class="text-number-ml fw-bold text-nowrap">
                                                 <?$firstCardType = $arResult['CARD_TYPES'][0]['ID'];?>
                                                 <?$firstCardCategory = $arResult['CARD_CATEGORIES'][0]['ID'];?>
@@ -298,13 +298,13 @@ use Dalee\Helpers\ComponentHelper;
     <section class="section-layout js-collapsed-mobile bg-dark-10">
         <div class="container">
             <h3 class="d-none d-md-block mb-md-6 mb-lg-7 px-lg-6"><?=$arResult['DISPLAY_PROPERTIES']['INSTRUCTION_1_HEADING']['~VALUE']?></h3>
-            <a class="h3 d-flex align-items-center justify-content-between dark-100 d-md-none" data-bs-toggle="collapse" href="#how-connect" role="button" aria-expanded="false" aria-controls="how-connect">
+            <a class="h3 d-flex align-items-center justify-content-between dark-100 d-md-none" data-bs-toggle="collapse" href="#instruction-1" role="button" aria-expanded="false" aria-controls="instruction-1">
                 <?=$arResult['DISPLAY_PROPERTIES']['INSTRUCTION_1_HEADING']['~VALUE']?>
                 <svg class="icon size-m violet-100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                     <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-down"></use>
                 </svg>
             </a>
-            <div class="collapse d-md-block mt-4 mt-md-6 mt-lg-7" id="how-connect">
+            <div class="collapse d-md-block mt-4 mt-md-6 mt-lg-7" id="instruction-1">
                 <div class="row px-lg-6 row-gap-6 row-gap-lg-7">
                     <?$GLOBALS['cardReceiptOptionsFilter'] = [
                         'ACTIVE' => 'Y',
@@ -376,86 +376,84 @@ use Dalee\Helpers\ComponentHelper;
     <section class="section-layout js-collapsed-mobile">
         <div class="container">
             <h3 class="d-none d-md-block mb-md-6 mb-lg-7 px-lg-6"><?=$arResult['DISPLAY_PROPERTIES']['TABS_HEADING']['~VALUE']?></h3>
-            <a class="h3 d-flex align-items-center justify-content-between dark-100 d-md-none" data-bs-toggle="collapse" href="#conditions" role="button" aria-expanded="false" aria-controls="conditions">
+            <a class="h3 d-flex align-items-center justify-content-between dark-100 d-md-none" data-bs-toggle="collapse" href="#additional-info-content" role="button" aria-expanded="false" aria-controls="additional-info-content">
                 <?=$arResult['DISPLAY_PROPERTIES']['TABS_HEADING']['~VALUE']?>
                 <svg class="icon size-m violet-100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                     <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-down"></use>
                 </svg>
             </a>
-            <div class="collapse d-md-block mt-4 mt-md-6 mt-lg-7" id="conditions">
-                <?$GLOBALS['tabsFilter'] = [
-                    'ACTIVE' => 'Y',
-                    'ID' => $arResult['DISPLAY_PROPERTIES']['TABS']['VALUE']
-                ];
+            <?$GLOBALS['tabsFilter'] = [
+                'ACTIVE' => 'Y',
+                'ID' => $arResult['DISPLAY_PROPERTIES']['TABS']['VALUE']
+            ];
 
-                $APPLICATION->IncludeComponent(
-                    "bitrix:news.list",
-                    "tabs",
-                    [
-                        "ACTIVE_DATE_FORMAT" => "d.m.Y",
-                        "ADD_SECTIONS_CHAIN" => "N",
-                        "AJAX_MODE" => "N",
-                        "AJAX_OPTION_ADDITIONAL" => "",
-                        "AJAX_OPTION_HISTORY" => "N",
-                        "AJAX_OPTION_JUMP" => "N",
-                        "AJAX_OPTION_STYLE" => "Y",
-                        "CACHE_FILTER" => "N",
-                        "CACHE_GROUPS" => "Y",
-                        "CACHE_TIME" => "36000000",
-                        "CACHE_TYPE" => "A",
-                        "CHECK_DATES" => "Y",
-                        "DETAIL_URL" => "",
-                        "DISPLAY_BOTTOM_PAGER" => "N",
-                        "DISPLAY_TOP_PAGER" => "N",
-                        "FIELD_CODE" => ["CODE","NAME","PREVIEW_TEXT","PREVIEW_PICTURE",""],
-                        "FILTER_NAME" => "tabsFilter",
-                        "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                        "IBLOCK_ID" => iblock('tabs'),
-                        "IBLOCK_TYPE" => "additional",
-                        "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
-                        "INCLUDE_SUBSECTIONS" => "N",
-                        "MESSAGE_404" => "",
-                        "NEWS_COUNT" => "20",
-                        "PAGER_BASE_LINK_ENABLE" => "N",
-                        "PAGER_DESC_NUMBERING" => "N",
-                        "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
-                        "PAGER_SHOW_ALL" => "N",
-                        "PAGER_SHOW_ALWAYS" => "N",
-                        "PAGER_TEMPLATE" => ".default",
-                        "PAGER_TITLE" => "Новости",
-                        "PARENT_SECTION" => "",
-                        "PARENT_SECTION_CODE" => "",
-                        "PREVIEW_TRUNCATE_LEN" => "",
-                        "PROPERTY_CODE" => [
-                            "CONDITIONS_ICONS",
-                            "CONDITIONS",
-                            "RATES_DESCRIPTION",
-                            "TEXT_FIELD",
-                            "HEADING",
-                            "STEPS",
-                            "SHORT_INFO",
-                            "QUOTES",
-                            "QUESTIONS",
-                            "ICONS_WITH_DESCRIPTION",
-                            "ICON_SHORT_INFO",
-                            "DOCUMENTS"
-                        ],
-                        "SET_BROWSER_TITLE" => "N",
-                        "SET_LAST_MODIFIED" => "N",
-                        "SET_META_DESCRIPTION" => "N",
-                        "SET_META_KEYWORDS" => "N",
-                        "SET_STATUS_404" => "N",
-                        "SET_TITLE" => "N",
-                        "SHOW_404" => "N",
-                        "SORT_BY1" => "ACTIVE_FROM",
-                        "SORT_BY2" => "SORT",
-                        "SORT_ORDER1" => "DESC",
-                        "SORT_ORDER2" => "ASC",
-                        "STRICT_SECTION_CHECK" => "N",
+            $APPLICATION->IncludeComponent(
+                "bitrix:news.list",
+                "tabs",
+                [
+                    "ACTIVE_DATE_FORMAT" => "d.m.Y",
+                    "ADD_SECTIONS_CHAIN" => "N",
+                    "AJAX_MODE" => "N",
+                    "AJAX_OPTION_ADDITIONAL" => "",
+                    "AJAX_OPTION_HISTORY" => "N",
+                    "AJAX_OPTION_JUMP" => "N",
+                    "AJAX_OPTION_STYLE" => "Y",
+                    "CACHE_FILTER" => "N",
+                    "CACHE_GROUPS" => "Y",
+                    "CACHE_TIME" => "36000000",
+                    "CACHE_TYPE" => "A",
+                    "CHECK_DATES" => "Y",
+                    "DETAIL_URL" => "",
+                    "DISPLAY_BOTTOM_PAGER" => "N",
+                    "DISPLAY_TOP_PAGER" => "N",
+                    "FIELD_CODE" => ["CODE","NAME","PREVIEW_TEXT","PREVIEW_PICTURE",""],
+                    "FILTER_NAME" => "tabsFilter",
+                    "HIDE_LINK_WHEN_NO_DETAIL" => "N",
+                    "IBLOCK_ID" => iblock('tabs'),
+                    "IBLOCK_TYPE" => "additional",
+                    "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+                    "INCLUDE_SUBSECTIONS" => "N",
+                    "MESSAGE_404" => "",
+                    "NEWS_COUNT" => "20",
+                    "PAGER_BASE_LINK_ENABLE" => "N",
+                    "PAGER_DESC_NUMBERING" => "N",
+                    "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+                    "PAGER_SHOW_ALL" => "N",
+                    "PAGER_SHOW_ALWAYS" => "N",
+                    "PAGER_TEMPLATE" => ".default",
+                    "PAGER_TITLE" => "Новости",
+                    "PARENT_SECTION" => "",
+                    "PARENT_SECTION_CODE" => "",
+                    "PREVIEW_TRUNCATE_LEN" => "",
+                    "PROPERTY_CODE" => [
+                        "CONDITIONS_ICONS",
+                        "CONDITIONS",
+                        "RATES_DESCRIPTION",
+                        "TEXT_FIELD",
+                        "HEADING",
+                        "STEPS",
+                        "SHORT_INFO",
+                        "QUOTES",
+                        "QUESTIONS",
+                        "ICONS_WITH_DESCRIPTION",
+                        "ICON_SHORT_INFO",
+                        "DOCUMENTS"
                     ],
-                    $component
-                );?>
-            </div>
+                    "SET_BROWSER_TITLE" => "N",
+                    "SET_LAST_MODIFIED" => "N",
+                    "SET_META_DESCRIPTION" => "N",
+                    "SET_META_KEYWORDS" => "N",
+                    "SET_STATUS_404" => "N",
+                    "SET_TITLE" => "N",
+                    "SHOW_404" => "N",
+                    "SORT_BY1" => "ACTIVE_FROM",
+                    "SORT_BY2" => "SORT",
+                    "SORT_ORDER1" => "DESC",
+                    "SORT_ORDER2" => "ASC",
+                    "STRICT_SECTION_CHECK" => "N",
+                ],
+                $component
+            );?>
         </div>
         <picture class="pattern-bg pattern-bg--hide-mobile">
             <source srcset="/frontend/dist/img/patterns/section-2/pattern-light-s.svg" media="(max-width: 767px)">
@@ -469,13 +467,13 @@ use Dalee\Helpers\ComponentHelper;
     <section class="section-layout js-collapsed-mobile bg-dark-10">
         <div class="container">
             <h3 class="d-none d-md-block mb-md-6 mb-lg-7 px-lg-6"><?=$arResult['DISPLAY_PROPERTIES']['INSTRUCTION_2_HEADING']['~VALUE']?></h3>
-            <a class="h3 d-flex align-items-center justify-content-between dark-100 d-md-none" data-bs-toggle="collapse" href="#how-connect" role="button" aria-expanded="false" aria-controls="how-connect">
+            <a class="h3 d-flex align-items-center justify-content-between dark-100 d-md-none" data-bs-toggle="collapse" href="#instruction-2" role="button" aria-expanded="false" aria-controls="instruction-2">
                 <?=$arResult['DISPLAY_PROPERTIES']['INSTRUCTION_2_HEADING']['~VALUE']?>
                 <svg class="icon size-m violet-100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                     <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-down"></use>
                 </svg>
             </a>
-            <div class="collapse d-md-block mt-4 mt-md-6 mt-lg-7" id="how-connect">
+            <div class="collapse d-md-block mt-4 mt-md-6 mt-lg-7" id="instruction-2">
                 <div class="row px-lg-6 row-gap-6 row-gap-lg-7">
                     <?$GLOBALS['cardReceiptOptionsFilter'] = [
                         'ACTIVE' => 'Y',
@@ -575,13 +573,13 @@ use Dalee\Helpers\ComponentHelper;
     <section class="section-layout js-collapsed-mobile bg-dark-10">
         <div class="container">
             <h3 class="d-none d-md-block mb-md-6 mb-lg-7 px-lg-6"><?=$arResult['DISPLAY_PROPERTIES']['INSTRUCTION_3_HEADING']['~VALUE']?></h3>
-            <a class="h3 d-flex align-items-center justify-content-between dark-100 d-md-none" data-bs-toggle="collapse" href="#how-connect" role="button" aria-expanded="false" aria-controls="how-connect">
+            <a class="h3 d-flex align-items-center justify-content-between dark-100 d-md-none" data-bs-toggle="collapse" href="#instruction-3" role="button" aria-expanded="false" aria-controls="instruction-3">
                 <?=$arResult['DISPLAY_PROPERTIES']['INSTRUCTION_3_HEADING']['~VALUE']?>
                 <svg class="icon size-m violet-100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                     <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-down"></use>
                 </svg>
             </a>
-            <div class="collapse d-md-block mt-4 mt-md-6 mt-lg-7" id="how-connect">
+            <div class="collapse d-md-block mt-4 mt-md-6 mt-lg-7" id="instruction-3">
                 <div class="row px-lg-6 row-gap-6 row-gap-lg-7">
                     <?$GLOBALS['cardReceiptOptionsFilter'] = [
                         'ACTIVE' => 'Y',
