@@ -1,0 +1,12 @@
+mixin card-rating(data, bgClass="bg-blue-10")
+    .card-rating(class=bgClass class= `${data.additionalClass ? `card-rating--${data.additionalClass}` : ""}`).overflow-hidden.position-relative.mh-100.h-auto
+        div.card-rating__inner.d-flex.flex-column.flex-md-row-reverse.flex-lg-row.align-items-center.h-100.gap-4.gap-md-0.gap-lg-6
+            div.card-rating__image-container.mx-auto
+                img.card-rating__image(src=`img/${data.imgSrc}`, alt="", loading="lazy")
+            div.card-rating__content.flex-column.d-flex.align-items-start
+                .card-rating__title-group.d-flex.flex-column.gap-4.gap-md-6.gap-lg-7
+                    h3.card-rating__title.text-break!= data.title
+                    if block
+                        block
+        if data.pattern
+            +pattern-bg('section-2', 'light', 'pattern-bg--position-sm-top z-1')

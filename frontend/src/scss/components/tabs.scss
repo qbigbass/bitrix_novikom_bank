@@ -64,13 +64,6 @@
     }
 
     &__list-item {
-        padding-right: 0.125rem; // child width border fix
-        
-        @include use-media(0, tablet-album) {
-            &:nth-last-child(1) {
-                padding-right: 0;
-            }
-        }
 
         &-link {
             --bs-nav-tabs-link-hover-border-color: transparent;
@@ -82,6 +75,7 @@
             padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x)!important;
             white-space: nowrap;
             line-height: 1.5;
+            width: 100%!important;
 
             @include use-media(tablet-album) {
                 --bs-nav-link-padding-x: 2.5rem;
@@ -100,6 +94,11 @@
                 --bs-nav-tabs-link-active-color: var(--violet-100);
                 pointer-events: none;
             }
+        }
+
+        &:nth-last-child(1) &-link {
+            margin-right: 0!important;
+            margin-left: auto!important;
         }
     }
 

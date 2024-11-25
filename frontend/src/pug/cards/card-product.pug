@@ -2,13 +2,15 @@ include ../components/ui/tag
 
 mixin card-product(data)
     if data.icon
-        a.card-product(href="#" class= [`card-product--${data.color}`, data.size ? `card-product--size-${data.size}` : ''])&attributes(
+        a.card-product(href="#" class= [`card-product--${data.color}`, data.size ? `card-product--size-${data.size}` : '', data.bgClass ? data.bgClass : 'bg-dark-10'])&attributes(
             attributes)
             div.card-product__inner
                 div.card-product__content.mw-100
                     h4.card-product__title!= data.title
                     if data.description
-                        p.card-product__description.m-0.mw-100!= data.description
+                        p.card-product__description.m-0.mw-100(class=data.descriptionClass)!= data.description
+                    if block
+                        block
                 div.card-product__footer
                     if data.link
                         span.btn.btn-link.btn-icon.d-none.d-md-inline-flex
@@ -17,7 +19,7 @@ mixin card-product(data)
                     img(src=`img/icons/${data.iconImg ? data.iconImg : 'money-orange'}.svg`, alt="", loading="lazy").icon.size-xxl.ms-auto
 
     else
-        .card-product(class= [`card-product--${data.color}`, data.size ? `card-product--size-${data.size}`:''])&attributes(attributes)
+        .card-product(class= [`card-product--${data.color}`, data.size ? `card-product--size-${data.size}`:'', data.bgClass ? data.bgClass : 'bg-dark-10'])&attributes(attributes)
             div.card-product__inner
                 if data.tag
                     +tag(data.tag).card-product__tag
@@ -27,7 +29,9 @@ mixin card-product(data)
                         .d-inline-flex.flex-nowrap.align-items-baseline.text-l.fw-semibold.gap-1.violet-100= data.subtitle.before
                             span.text-number-l.fw-bold= data.subtitle.number
                     if data.description
-                        p.card-product__description.m-0!= data.description
+                        p.card-product__description.m-0(class=data.descriptionClass)!= data.description
+                    if block
+                        block
                 if data.img
                     img.card-product__img(src=`img/big-illustrations/${data.img}`, alt="", loading="lazy")
                 if data.button

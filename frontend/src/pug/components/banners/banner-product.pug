@@ -17,15 +17,17 @@ mixin banner-product(data)
                 if data.imgSrc
                     img(src= data.imgSrc, class="banner-product__image", alt="", loading="lazy")
                 if data.benefits
-                    .banner-product__benefits-list
+                    .banner-product__benefits-list(class=data.benefitsClass)
                         each benefit in data.benefits
                             +benefit-text(benefit, benefit.colorClass)(class=benefit.widthMinContent&&'w-min-content')
                 if data.buttonText
                    a(href= data.urlHref class= data.btnType ? data.btnType : 'btn-tertiary').btn.btn-lg-lg.banner-product__button!= data.buttonText
             if data.footer
-                .banner-product__footer.row.row-gap-4.mt-6.mt-lg-16
+                .banner-product__footer.row.row-gap-4.mt-6.mt-lg-16.mt-xl-26
                     each item in data.footer
                         .col-12.col-md-6(class= data.footer.length === 3 ? 'col-xl-4' : 'col-xl-3')
-                            +benefit(item.spriteData, item.title)
+                            +benefit(item.spriteData, item.title)(class=item.colorClass)
+                                if item.description
+                                    p.mb-0.text-m!= item.description
 
-        +pattern-bg("section", "dark", "banner-product__pattern")
+        +pattern-bg("section", "dark", `banner-product__pattern ${data.patternClass}`)
