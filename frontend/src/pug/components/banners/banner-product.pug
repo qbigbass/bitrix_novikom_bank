@@ -37,4 +37,7 @@ mixin banner-product(data)
                                 if item.description
                                     p.mb-0.text-m!= item.description
 
-        +pattern-bg("section", "dark", `banner-product__pattern ${data.patternClass}`)
+        if data.theme !== "light"
+            +pattern-bg("section", "dark", `banner-product__pattern ${data.patternClass}`)
+        else
+            +pattern-bg("section-heavy", "light", "banner-product__pattern pattern-bg--position-top")

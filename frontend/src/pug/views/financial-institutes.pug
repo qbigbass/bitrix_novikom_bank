@@ -5,6 +5,37 @@ block title
     meta(name="description" content="Описание главной страницы")
 block content
     -
+        var bannerHeroData = {
+            bgClass: null,
+            bgGradient: false,
+            sliders: [
+                {
+                    title: "Кредитным и финансовым организациям",
+                    thumbTitle: "Финансовым<br>организациям",
+                    text: "Новиком нацелен на&nbsp;долгосрочные и&nbsp;доверетельные отношения с&nbsp;российскими и&nbsp;зарубежными финансовыми институтами",
+                    imageSrc: "img/big-illustrations/large-finorg/syndicated-loans-cheap-funding.png",
+                },
+                {
+                    title: "Гарантии и обязательства",
+                    thumbTitle: "Гарантии<br>и обязательства",
+                    text: "Новиком нацелен на&nbsp;долгосрочные и&nbsp;доверетельные отношения с&nbsp;российскими и&nbsp;зарубежными финансовыми институтами",
+                    imageSrc: "img/big-illustrations/large-finorg/syndicated-loans-cheap-funding.png",
+                },
+                {
+                    title: "Межбанковские операции",
+                    thumbTitle: "Межбанковские<br>операции",
+                    text: "Новиком нацелен на&nbsp;долгосрочные и&nbsp;доверетельные отношения с&nbsp;российскими и&nbsp;зарубежными финансовыми институтами",
+                    imageSrc: "img/big-illustrations/large-finorg/syndicated-loans-cheap-funding.png",
+                },
+                {
+                    title: "Депозитарное обслуживание",
+                    thumbTitle: "Депозитарное<br>обслуживание",
+                    text: "Новиком нацелен на&nbsp;долгосрочные и&nbsp;доверетельные отношения с&nbsp;российскими и&nbsp;зарубежными финансовыми институтами",
+                    imageSrc: "img/big-illustrations/large-finorg/syndicated-loans-cheap-funding.png",
+                },
+            ]
+        }
+
         var cardList = [
             {
                 href: "#",
@@ -252,6 +283,7 @@ block content
             }
         ]
 
+    include ../components/banners/banner-hero
     include ../cards/card-product
     include ../cards/card-benefit
     include ../components/document-download
@@ -260,7 +292,7 @@ block content
 
     include ../includes/header/header
 
-    include ../components/banner-hero-financial
+    +banner-hero(bannerHeroData, "light").bg-gradient-graphite
 
     section.section-layout.bg-dark-30
         .container

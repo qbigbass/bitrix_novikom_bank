@@ -6,16 +6,15 @@ mixin banner-hero(data, type)
             .swiper-wrapper
                 each slide in data.sliders
                     .swiper-slide
-                        .banner-hero-content.row
-                            div.col-12.col-md-6.col-lg-9.col-xl-8.col-xxl-6.d-flex.flex-column.flex-md-row.gap-3.gap-md-4.gap-xxl-6.align-items-md-start.p-4
+                        .banner-hero-content.row.gx-0
+                            div.col-12.col-md-6.col-lg-9.col-xl-8.col-xxl-7.d-flex.flex-column.gap-3.gap-md-4.gap-xxl-6.align-items-md-start
                                 div.banner-hero-content__wrapper
                                     h1.banner-hero-content__title!= slide.title
                                     p.text-l.mb-0!= slide.text
                                     if slide.button
                                         a.btn.btn-secondary.btn-lg-lg.d-inline-block(href="#")= slide.button
                                 if slide.imageSrc
-                                    .banner-hero-content__image
-                                        img(src=slide.imageSrc alt=slide.title)
+                                    img(src=slide.imageSrc alt=slide.title).banner-hero-content__image
 
             .banner-hero-pagination
             .banner-hero-controls
@@ -33,3 +32,5 @@ mixin banner-hero(data, type)
                             h5!= thumb.thumbTitle ? thumb.thumbTitle : thumb.title
         if data.bgGradient
             +pattern-bg('section', 'dark', 'pattern-bg--position-sm-top banner-hero__pattern')
+        if type === 'light'
+            +pattern-bg('section-heavy', 'light')
