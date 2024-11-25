@@ -69,5 +69,5 @@ $this->setFrameMode(true);
     $component
 );?>
 
-<?$APPLICATION->IncludeFile('/local/php_interface/include/cross_sale_products_block_corporate.php');?>
+<?$APPLICATION->IncludeFile('/local/php_interface/include/cross_sale_products_block_corporate.php', ['HEADER_TEXT' => 'Другие услуги для корпоративных клиентов']);?>
 

@@ -452,6 +452,7 @@ $headerView->render(
                     "SORT_ORDER1" => "DESC",
                     "SORT_ORDER2" => "ASC",
                     "STRICT_SECTION_CHECK" => "N",
+                    "NO_TABS_PADDING" => "Y",
                 ],
                 $component
             );?>
@@ -513,7 +514,7 @@ $headerView->render(
             "PARENT_SECTION" => "",
             "PARENT_SECTION_CODE" => "",
             "PREVIEW_TRUNCATE_LEN" => "",
-            "PROPERTY_CODE" => [""],
+            "PROPERTY_CODE" => ["EMAIL", "PHONE", "ADDRESS"],
             "SET_BROWSER_TITLE" => "N",
             "SET_LAST_MODIFIED" => "N",
             "SET_META_DESCRIPTION" => "N",

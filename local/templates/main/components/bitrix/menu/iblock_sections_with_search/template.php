@@ -51,22 +51,4 @@ $path = basename($APPLICATION->GetCurPage()); ?>
             </ul>
         </div>
     </div>
-    <div class="d-inline-flex flex-column flex-sm-row w-100 gap-2 gap-md-6">
-        <select class="form-select form-select--size-small js-select" id="select-product"
-                aria-label="Все продукты" data-placeholder="Все продукты">
-            <option></option>
-            <option value="1">Продукт 1</option>
-            <option value="2" disabled>Продукт 2</option>
-            <option value="3">Продукт 3</option>
-            <option value="4">Продукт 4</option>
-        </select>
-        <select class="form-select form-select--size-small js-select" id="select-region"
-                aria-label="Все регионы" data-placeholder="Все регионы">
-            <option></option>
-            <option value="1">Регион 1</option>
-            <option value="2" disabled>Регион 2</option>
-            <option value="3">Регион 3</option>
-            <option value="4">Регион 4</option>
-        </select>
-    </div>
 </div>

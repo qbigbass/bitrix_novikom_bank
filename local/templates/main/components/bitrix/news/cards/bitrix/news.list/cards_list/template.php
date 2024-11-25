@@ -49,7 +49,7 @@ $this->setFrameMode(true);
                                 <?if($arItem['DISPLAY_PROPERTIES']['SHOW_BUTTON']['VALUE'] == 'Y') {?>
                                     <a class="btn btn-tertiary btn-lg-lg card-product-list__button w-100 w-sm-auto" href="#">Оформить заявку</a>
                                 <?}?>
-                                <a class="btn btn-link btn-lg d-inline-flex gap-2 align-items-center card-product-list__button-more" href="<?=$arItem['DETAIL_PAGE_URL']?>">
+                                <a class="btn btn-link btn-lg-lg d-inline-flex gap-2 align-items-center card-product-list__button-more" href="<?=$arItem['DETAIL_PAGE_URL']?>">
                                     <span>Подробнее</span>
                                     <svg class="card-product-list__button-icon" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                                         <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right-small"></use>
