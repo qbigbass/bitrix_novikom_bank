@@ -2,7 +2,7 @@ include ../components/ui/tag
 
 mixin card-product(data)
     if data.icon
-        a.card-product(href="#" class= [`card-product--${data.color}`, data.size ? `card-product--size-${data.size}` : '', data.bgClass ? data.bgClass : 'bg-dark-10'])&attributes(
+        a.card-product(href="#" class= [data.color ? `card-product--${data.color}` : '', data.size ? `card-product--size-${data.size}` : '', data.bgClass ? data.bgClass : 'bg-dark-10'])&attributes(
             attributes)
             div.card-product__inner
                 div.card-product__content.mw-100
@@ -16,7 +16,7 @@ mixin card-product(data)
                         span.btn.btn-link.btn-icon.d-none.d-md-inline-flex
                             span!= data.link
                             +svg-use("icon-chevron-right", "icon size-m")
-                    img(src=`img/icons/${data.iconImg ? data.iconImg : 'money-orange'}.svg`, alt="", loading="lazy").icon.size-xxl.ms-auto
+                    img(src=`img/icons/${data.iconImg ? data.iconImg : 'money-orange'}.svg`, alt="", loading="lazy" class= data.link ? "ms-auto" : "").icon.size-xxl
 
     else
         .card-product(class= [`card-product--${data.color}`, data.size ? `card-product--size-${data.size}`:'', data.bgClass ? data.bgClass : 'bg-dark-10'])&attributes(attributes)

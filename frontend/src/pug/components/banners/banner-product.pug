@@ -11,7 +11,8 @@ mixin banner-product(data)
             .banner-product__content(class= data.imgSrc ? '' : 'w-100 w-lg-60')
                 .banner-product__header
                     if data.breadcrumbsArray
-                        +breadcrumbs(data.breadcrumbsArray).banner-product__breadcrumbs
+                        - var textColorClass= data.theme === "light" ? "dark-70" : "text-white-50"
+                        +breadcrumbs(data.breadcrumbsArray, textColorClass).banner-product__breadcrumbs
                     h1!= data.title
                     p.banner-product__subtitle.text-l(class= data.imgSrc ? '' : 'mw-100')!= data.subtitle
                 if data.imgSrc
@@ -20,6 +21,12 @@ mixin banner-product(data)
                     .banner-product__benefits-list(class=data.benefitsClass)
                         each benefit in data.benefits
                             +benefit-text(benefit, benefit.colorClass)(class=benefit.widthMinContent&&'w-min-content')
+                if data.lists
+                    .banner-product__lists
+                        each list in data.lists
+                            ul.list.list--heavy.list--size-m.violet-100
+                                each item in list
+                                    li!= item
                 if data.buttonText
                    a(href= data.urlHref class= data.btnType ? data.btnType : 'btn-tertiary').btn.btn-lg-lg.banner-product__button!= data.buttonText
             if data.footer
@@ -30,4 +37,7 @@ mixin banner-product(data)
                                 if item.description
                                     p.mb-0.text-m!= item.description
 
-        +pattern-bg("section", "dark", `banner-product__pattern ${data.patternClass}`)
+        if data.theme !== "light"
+            +pattern-bg("section", "dark", `banner-product__pattern ${data.patternClass}`)
+        else
+            +pattern-bg("section-heavy", "light", "banner-product__pattern pattern-bg--position-top")

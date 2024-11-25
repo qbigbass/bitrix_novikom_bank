@@ -9,10 +9,6 @@
     color: var(--blue-100);
   }
 
-  &:last-child {
-    border-bottom: unset;
-  }
-
   &__date-time {
     padding-right: 0.5rem;
     border-right: 1px solid currentColor;

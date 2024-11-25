@@ -1,0 +1,48 @@
+mixin card(data)
+    - var { tag, title, description, conditions, imgSrc, idMoreBlock } = data;
+    .card.overflow-hidden.position-relative
+        .card__inner.d-flex.flex-column.flex-lg-row-reverse.align-items-start.gap-4.gap-md-5.gap-lg-6
+            .card__image-container.flex-shrink-0.mx-auto
+                img.card__image(src=`img/${imgSrc}`, alt="", loading="lazy")
+            .card__content.flex-column.d-flex.align-items-start.gap-4.gap-md-6
+                .card__title-group.d-flex.flex-column.gap-4.gap-lg-6
+                    if tag
+                        +tag(tag, 'outline').card__tag
+                    h2.card__title.text-break!= title
+                    if description
+                        span.text-l.card__description.m-0!= description
+                if conditions.length > 0
+                    .card__condition-list.d-flex.flex-column.flex-md-row.flex-wrap.gap-4.column-gap-md-11.column-gap-lg-16.row-gap-lg-6
+                        each item, index in conditions
+                            .card__condition.violet-100.d-flex.flex-column.gap-2
+                                .d-inline-flex.flex-nowrap.align-items-baseline.gap-1
+                                    if item.startText
+                                        span.text-l.fw-bold!= item.startText
+                                    if item.beforeText
+                                        span.text-l.fw-semibold!= item.beforeText
+                                    if item.text
+                                        if item.smallText
+                                            span.h4!= item.text
+                                        else
+                                            span.text-number-ml.fw-bold!= item.text
+                                    if item.currency
+                                        span.currency.text-number-l.fw-bold!= item.currency
+                                    if item.afterText
+                                        span.text-l.fw-semibold!= item.afterText
+                                if item.description
+                                    span.text-m.dark-70!= item.description
+        if block
+            .collapse(id=idMoreBlock)
+                block
+
+        .d-flex.card__button-wrap.mt-4.mt-md-5.mt-lg-0
+            a(
+                data-bs-toggle="collapse"
+                href=`#${idMoreBlock}`
+                role="button"
+                aria-expanded="false"
+                aria-controls=idMoreBlock
+            ).btn.btn-outline-primary.btn-icon.w-100.w-md-auto.mt-lg-7.card__button-more
+                span Подробнее
+                span Скрыть
+                +svg-use("icon-chevron-down", "icon size-m")
