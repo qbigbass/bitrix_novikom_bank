@@ -1,0 +1,348 @@
+extends ../templates/base
+
+block title
+    title= 'Фин. институтам /  Межбанковские операции'
+    meta(name="description" content="Описание страницы Межбанковские операции")
+block content
+    -
+        var bannerPromoData = {
+            theme: "light",
+            title: "Доверительное управление",
+            subtitle: "Экспертное управление активами для достижения ваших инвестиционных целей",
+            imgSrc: "img/big-illustrations/large-finorg/trust-management.png",
+            bgColor: "graphite",
+            urlHref: "#",
+            lists: [
+                ["Профессиональные управляющие с&nbsp;большим опытом в&nbsp;инвестициях"],
+                ["Диверсифицированный портфель для снижения рыночного риска"],
+                ["Отчеты с&nbsp;результатами работы каждые 3&nbsp;месяца"]
+            ],
+            footer: [
+                {
+                    spriteData: {
+                        icon: 'free-comission',
+                        classList: 'size-xl',
+                    },
+                    title: 'Без комиссии и ограничений',
+                    description: 'На ввод и вывод инвестиционных активов '
+                },
+                {
+                    spriteData: {
+                        icon: 'individual_violet',
+                        classList: 'size-xl',
+                    },
+                    title: 'Персональный подход',
+                    description: 'Управляющий адаптирует стратегию под ваши цели '
+                },
+                {
+                    spriteData: {
+                        icon: 'prices_violet',
+                        classList: 'size-xl',
+                    },
+                    title: 'Выбор стратегии управления',
+                    description: 'Стандартные и персональные планы инвестирования'
+                },
+            ],
+            breadcrumbsArray: [
+                {
+                    link: "#",
+                    linkText: "Финансовым институтам"
+                }
+            ]
+        }
+
+        var announcementList = [
+            {
+                date: '25.04.2024',
+                title: 'Технические работы 30 апреля 2024 года в период с 0:00 до 3:30 (МСК)',
+                link: '#'
+            },
+            {
+                date: '25.04.2024',
+                title: 'Режим работы клиентских офисов в мае',
+                link: '#'
+            },
+            {
+                date: '25.04.2024',
+                title: 'Технические работы 30 апреля 2024 года в период с 0:00 до 3:30 (МСК)',
+                link: '#'
+            },
+            {
+                date: '25.04.2024',
+                title: 'Режим работы клиентских офисов в мае',
+                link: '#'
+            },
+            {
+                date: '25.04.2024',
+                title: 'Технические работы 30 апреля 2024 года в период с 0:00 до 3:30 (МСК)',
+                link: '#'
+            },
+            {
+                date: '25.04.2024',
+                title: 'Режим работы клиентских офисов в мае',
+                link: '#'
+            }
+        ]
+
+        var productCards = [
+            {
+                title: "Заключение договора",
+                description: "Вы&nbsp;заключаете договор с&nbsp;управляющим и&nbsp;прописываете условия управления",
+                icon: true,
+                iconImg: "doc-check_violet",
+            },
+            {
+                title: "Постановка целей",
+                description: "Вы&nbsp;определяете цель и&nbsp;выбираете стратегию инвестирования",
+                icon: true,
+                iconImg: "target",
+            },
+            {
+                title: "Определение риск-профиля",
+                description: "Вы&nbsp;указываете свой уровень риска и&nbsp;предпочтения по&nbsp;инвестициям",
+                icon: true,
+                iconImg: "risks_violet",
+            },
+            {
+                title: "Управление средствами",
+                description: "Эксперт помогает эффективно разместить денежные средства. Вам не&nbsp;придется самостоятельно анализировать рынок и&nbsp;выбирать момент для совершения сделки&nbsp;&mdash; управляющий сам принимает решения по&nbsp;инвестированию в&nbsp;соответствии с&nbsp;целями",
+                icon: true,
+                iconImg: "limits_violet",
+            },
+            {
+                title: "Предоставление отчетности",
+                description: "Управляющий регулярно предоставляет клиенту отчеты о&nbsp;состоянии его инвестиций",
+                icon: true,
+                iconImg: "report",
+            },
+
+        ];
+
+        var bannerProductInfoData = {
+            title: "О доверительном управлении",
+            imageSrc: "img/banners/page-banner-1.png"
+        }
+
+        var tabContentList = [
+            {
+                link: '#standard-strategies',
+                id: 'standard-strategies',
+                linkText: 'Стандартные стратегии',
+                isActive: true
+            },
+            {
+                link: '#individual-strategies',
+                id: 'individual-strategies',
+                linkText: 'Индивидуальные стратегии',
+                isActive: false
+            }
+        ]
+
+        var accordionList = [
+            {
+                id: 1,
+                title: 'Контактные данные банка',
+                isOpen: true
+            },
+            {
+                id: 2,
+                title: 'Информация о лицензиях, членстве банка и органах надзора',
+            },
+            {
+                id: 3,
+                title: 'Информация о способах направления обращений и жалоб',
+            },
+            {
+                id: 4,
+                title: 'Информация о способах защиты прав получателя финансовых услуг и разрешения споров',
+            },
+            {
+                id: 5,
+                title: 'Информация о способах и порядке изменения условия договора о доверительном управлении активами',
+            },
+        ]
+
+    include ../components/banners/banner-product
+    include ../components/banners/banner-product-info
+    include ../components/announcement
+    include ../components/helper
+    include ../components/ui/tabs-simple
+    include ../cards/card-product
+    include ../components/ui/accordion-item
+
+    include ../includes/header/header
+
+    +banner-product(bannerPromoData).banner-product--border-violet.banner-product--size-xl
+
+    section.section-layout
+        .container
+            h3.mb-4.mb-md-6.mb-lg-7.px-lg-6 Как работает доверительное управление
+            .row.cards-gutter
+                .col-12.col-md-6.col-lg-4
+                    +card-product(productCards[0]).bg-dark-30
+                .col-12.col-md-6.col-lg-4
+                    +card-product(productCards[1]).bg-dark-30
+                .col-12.col-lg-4
+                    +card-product(productCards[2]).bg-dark-30
+                .col-12.col-md-6
+                    +card-product(productCards[3]).bg-dark-30
+                .col-12.col-md-6
+                    +card-product(productCards[4]).bg-dark-30
+
+    +banner-product-info(bannerProductInfoData, 'bg-dark-30')
+        p.text-l
+            | Услуга доверительного управления активами представляет собой возможность передать денежные средства и/или ценные бумаги профессиональному управляющему для инвестирования и&nbsp;управления ими в&nbsp;соответствии с&nbsp;заданными параметрами и&nbsp;целями.
+            br
+            br
+            | Управляющий активами принимает решения о&nbsp;распределении средств между различными видами инвестиций с&nbsp;целью достижения максимальной эффективности и&nbsp;доходности инвестирования. Клиент получает регулярные отчеты о&nbsp;состоянии своих активов и&nbsp;результаты их&nbsp;инвестирования.
+
+    section.section-layout.bg-dark-30.pt-0
+        .container
+            .row
+                .col-12
+                    +polygon-container("violet-100")
+                        +helper("img/restructuring-additional-info_gray.png", "bg-white")
+                            h4.mb-3 Информируем Клиентов о&nbsp;необходимости ознакомиться с&nbsp;Декларацией о&nbsp;рисках, являющейся обязательным приложением к&nbsp;Регламенту, до&nbsp;заключения договора о&nbsp;доверительном управлении активами.
+                            p.m-0
+                                | Оказываемые Банком услуги по&nbsp;управлению активами, предусмотренные Регламентом, несут для Клиента риск потери инвестируемых средств в&nbsp;связи с&nbsp;тем, что денежные средства Клиента, передаваемые в&nbsp;Банк в&nbsp;рамках Услуг Банка, не&nbsp;застрахованы в&nbsp;соответствии с&nbsp;Федеральным законом от&nbsp;23.12.2003 года &#8470;&nbsp;177-ФЗ &laquo;О&nbsp;страховании вкладов физических лиц в&nbsp;банках Российской Федерации&raquo;.
+                                br
+                                br
+                                | Оказываемые Банком услуги, предусмотренные Регламентом, не&nbsp;являются услугами по&nbsp;открытию банковских счетов и&nbsp;приему вкладов.
+
+    section.section-layout.bg-dark-10
+        .container
+            h3.mb-4.mb-md-6.mb-lg-7.px-lg-6
+                | Стратегии управления
+            .row
+                .col-12
+                    .px-lg-6
+                        +tabs-simple(tabContentList, false)
+                    .tab-content.mt-4.mt-md-6.mt-lg-7
+                        #standard-strategies.tab-pane.fade.show.active(aria-labelledby="limits" tabindex="0" role="tabpanel")
+                            include ../includes/layout/tabs/standard-strategies
+                        #individual-strategies.tab-pane.fade(aria-labelledby="documents" tabindex="0" role="tabpanel")
+                            include ../includes/layout/tabs/individual-strategies
+        +pattern-bg('section-2', 'light')
+
+    section.section-layout.px-lg-6
+        .container
+            h3.mb-4.mb-md-6.mb-lg-7
+                | Информация для получателей финансовых услуг
+            .accordion.accordion--size-lg.accordion--bg-transparent#accordion-trust-management
+                +accordion-item(accordionList[0], 'accordion-trust-management', 'fw-bold h4')
+                    .d-flex.flex-column.gap-4.gap-md-5.gap-lg-7
+                        .d-flex.flex-column.gap-3
+                            .h5 Как организовать банковское сопровождение коммерческих контрактов?
+                            p.text-l.m-0 Акционерный Коммерческий Банк «НОВИКОМБАНК» акционерное общество АО АКБ «НОВИКОМБАНК»
+                        .d-flex.flex-column.gap-3
+                            .h5 Адрес Банка
+                            p.text-l.m-0
+                        .d-flex.flex-column.gap-3
+                            .h5 Адрес офиса Банка, оказывающего услуги по управлению активами (доверительное управление)
+                            p.text-l.m-0 119180, город Москва, вн.тер.г. муниципальный округ Якиманка, наб. Якиманская, д. 2
+                        .d-flex.flex-column.gap-3
+                            .h5 Адрес электронной почты
+                            p.text-l.m-0
+                                a(href="mailto:office@novikom.ru").link office@novikom.ru
+                        .d-flex.flex-column.gap-3
+                            .h5 Контактные телефоны
+                            p.text-l.m-0 +7 (800) 250-70-07
+                            p.text-l.m-0 +7 (495) 974-71-87
+                        .d-flex.flex-column.gap-3
+                            .h5 Сайт
+                            p.text-l.m-0
+                                a(href="https://novikom.ru/").link novikom.ru
+
+                +accordion-item(accordionList[1], 'accordion-trust-management', 'fw-bold h4')
+                    .d-flex.flex-column.gap-4.gap-md-5.gap-lg-7
+                        .d-flex.flex-column.gap-3
+                            .h5 Лицензия профессионального участника рынка ценных бумаг на осуществление деятельности по управлению ценными бумагами
+                            p.text-l.m-0 № 177-13074-001000, дата выдачи 29.04.2010 года (без ограничения срока действия)
+                        .d-flex.flex-column.gap-3
+                            .h5 Лицензия выдана
+                            p.text-l.m-0 ФСФР России
+                        .d-flex.flex-column.gap-3
+                            .h5 Адрес
+                            p.text-l.m-0 107016, Россия, г. Москва, ул. Неглинная, 12
+                        .d-flex.flex-column.gap-3
+                            .h5 Контактные телефоны
+                            p.text-l.m-0 8 800 300-30-00 (для бесплатных звонков из регионов России)
+                            p.text-l.m-0 +7 499 300-30-00 (круглосуточно, по рабочим дням)
+                            p.text-l.m-0 +7 495 621-64-65 (факс)
+                        span(aria-hidden="true").border-bottom-dashed
+                        .d-flex.flex-column.gap-3
+                            .h5 Информация о членстве в саморегулируемых организациях в сфере финансового рынка, объединяющих управляющих
+                            p.text-l.m-0
+                                | Национальная ассоциация участников фондового рынка (НАУФОР)
+                                br
+                                | Стандарты размещены на сайте НАУФОР и доступны по ссылке
+                                a(href="naufor.ru/tree.asp?n=16042").link naufor.ru/tree.asp?n=16042
+                        .d-flex.flex-column.gap-3
+                            .h5 Сайт
+                            p.text-l.m-0
+                                a(href="https://naufor.ru/").link naufor.ru
+                        span(aria-hidden="true").border-bottom-dashed
+                        .d-flex.flex-column.gap-3
+                            .h5 Информация об органе, осуществляющем полномочия по контролю и надзору
+                            p.text-l.m-0 Банк России
+                        .d-flex.flex-column.gap-3
+                            .h5 Сайт
+                            p.text-l.m-0 www.cbr.ru
+
+                +accordion-item(accordionList[2], 'accordion-trust-management', 'fw-bold h4')
+                    .d-flex.flex-column.gap-4.gap-md-5.gap-lg-7
+                        p.text-l.m-0 Клиент имеет право направить обращение или жалобу
+                        .d-flex.flex-column.gap-3
+                            .h5 В Банк
+                            p.text-l.m-0 почтовым отправлением по Адресу Банка
+                            p.text-l.m-0 на бумажном носителе в офисы Банка, оказывающие услуги по управлению активами
+                        span(aria-hidden="true").border-bottom-dashed
+                        .d-flex.flex-column.gap-3
+                            .h5 В НАУФОР
+                            p.text-l.m-0 почтовым отправлением по адресу: 129090, Москва, 1-й Коптельский пер., д. 18, стр.1
+                            p.text-l.m-0 через сайт НАУФОР:
+                            a(href="https://naufor.ru/").link naufor.ru
+                            | - раздел «Пожаловаться на члена НАУФОР»
+                        span(aria-hidden="true").border-bottom-dashed
+                        .d-flex.flex-column.gap-3
+                            .h5 В Банк России
+                            p.text-l.m-0 почтовым отправлением по адресу: 107016, Москва, ул. Неглинная, д. 12, Банк России;
+                            p.text-l.m-0 иные способы:
+                            a(href="https://www.cbr.ru/contacts/").link www.cbr.ru/contacts/
+
+                +accordion-item(accordionList[3], 'accordion-trust-management', 'fw-bold h4')
+                    .d-flex.flex-column.gap-4.gap-md-5.gap-lg-7
+                        p.text-l.m-0 Банк оказывает услуги в соответствии с Федеральным законом «О защите прав и законных интересов инвесторов на рынке ценных бумаг» от 05 марта 1999 года № 46-ФЗ.
+                        p.text-l.m-0 Все споры и разногласия между Банком и Клиентом разрешаются путем переговоров, а в случае невозможности такого разрешения все споры решается в соответствии с Регламентом.
+                        .d-flex.flex-column.gap-3
+                            .h5 Контактные телефоны
+                            p.text-l.m-0 +7 (495) 974-71-87
+
+
+                +accordion-item(accordionList[4], 'accordion-trust-management', 'fw-bold h4')
+                    .d-flex.flex-column.gap-4.gap-md-5.gap-lg-7
+                        p.text-l.m-0 Внесение изменений и/или дополнений в Регламент и приложения к нему производится Банком в соответствие с условиями Регламента.
+
+        +pattern-bg('section-2', 'light')
+
+    section.section-layout.bg-dark-10
+        .container
+            .row
+                .col-12.col-xxl-6.d-flex.flex-column.gap-6.gap-lg-7
+                    a(href="#").h3.d-flex.align-items-center.ps-lg-6
+                        span Объявления
+                            |
+                            |
+                            span.d-none.d-md-inline для клиентов
+                        span.icon.size-m.violet-100.ms-auto.ms-md-3
+                            +svg-use("icon-chevron-right")
+
+                    div.ps-lg-6.mt-xxl-auto.mw-100
+                        .swiper.js-announcement-slider
+                            .swiper-wrapper
+                                each item in announcementList
+                                    .swiper-slide.js-announcement-slide
+                                        +announcement(item)
+
+                            +slider-controls().mt-3.mt-md-4
+        +pattern-bg('section-2', 'light', 'pattern-bg--hide-mobile')

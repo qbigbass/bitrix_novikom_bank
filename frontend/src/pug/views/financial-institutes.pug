@@ -38,49 +38,42 @@ block content
                 title: "Доверительное управление",
                 icon: true,
                 iconImg: "hands_violet",
-                color: "transparent",
                 link: "Подробнее",
             },
             {
                 title: "Гарантии<br>и обязательства",
                 icon: true,
                 iconImg: "reputation",
-                color: "transparent",
                 link: "Подробнее",
             },
             {
                 title: "Организация<br>облигационных займов",
                 icon: true,
                 iconImg: "doc-money_violet",
-                color: "transparent",
                 link: "Подробнее",
             },
             {
                 title: "Депозитарное обслуживание",
                 icon: true,
                 iconImg: "ticket",
-                color: "transparent",
                 link: "Подробнее",
             },
             {
                 title: "Финансирование экспортно-импортных операций",
                 icon: true,
                 iconImg: "export-money",
-                color: "transparent",
                 link: "Подробнее",
             },
             {
                 title: "Система<br>Банк-клиент",
                 icon: true,
                 iconImg: "account_violet",
-                color: "transparent",
                 link: "Подробнее",
             },
             {
                 title: "Стимулирование экспорта стран СНГ",
                 icon: true,
                 iconImg: "export-up",
-                color: "transparent",
                 link: "Подробнее",
             },
         ];
@@ -319,8 +312,9 @@ block content
             #documents.collapse.d-md-block.mt-6.mt-lg-7
                 .row.row-gap-6
                     .col-12.col-xxl-8.pe-xxl-6
-                        each link in linkDownloadList
-                            +document-download(link)
+                        .ps-3.ps-lg-4
+                            each link in linkDownloadList
+                                +document-download(link)
 
                     .col-12.col-xxl-4
                         +card-benefit(cardBenefitData)

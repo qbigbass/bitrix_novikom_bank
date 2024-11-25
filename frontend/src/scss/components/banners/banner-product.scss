@@ -157,6 +157,27 @@
         }
     }
 
+    &__lists {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        max-width: 18.75rem;
+
+        @include use-media(tablet-album) {
+            grid-template-columns: repeat(2, 18.75rem);
+            max-width: unset;
+        }
+
+        @include use-media(laptop) {
+            grid-template-columns: repeat(3, 18.75rem);
+        }
+
+        @include use-media(desktop) {
+            gap: 3rem;
+            margin-bottom: 2.5rem;
+        }
+    }
+
     &__button {
         width: 100%;
         position: relative;
@@ -322,6 +343,10 @@
         --border-top-color: var(--orange-100);
     }
 
+    &--border-violet {
+        --border-top-color: var(--violet-100);
+    }
+
     &--blue {
         background: linear-gradient(42.24deg, #383a74 20%, #2e1b52 80%);
     }
@@ -332,6 +357,21 @@
 
     &--heavy-violet {
         background: linear-gradient(222.24deg, #101317 20%, #6655a2 80%);
+    }
+
+    &--graphite {
+        background: linear-gradient(60.54deg, #E8EAEF 17.83%, #C5CBCF 101.54%);
+        color: var(--dark-0);
+
+        #{$root}__content {
+            color: var(--dark-100);
+        }
+
+        #{$root}__footer {
+            & .benefit {
+                color: var(--dark-100);
+            }
+        }
     }
 }
 

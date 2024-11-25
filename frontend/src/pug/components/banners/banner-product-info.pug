@@ -8,11 +8,12 @@ mixin banner-product-info(data, bgColor='bg-blue-10')
                 +breadcrumbs(data.breadcrumbsArray, 'dark-70').banner-product-info-breadcrumbs.ps-lg-6.mb-4.mb-sm-6.mb-lg-7
             .banner-product-info.ps-lg-6(class=!data.imageSrc&&'d-flex flex-column')
                 .banner-product-info__header
-                    .d-flex.flex-row.gap-3
-                        if data.tag
-                            +tag(data.tag, 'outline')
-                        if data.date
-                            span.text-s.dark-100.mt-1.mt-md-2= data.date
+                    if data.tag || data.date
+                        .d-flex.flex-row.gap-3
+                            if data.tag
+                                +tag(data.tag, 'outline')
+                            if data.date
+                                span.text-s.dark-100.mt-1.mt-md-2= data.date
                     h3!= data.title
                 .banner-product-info__body
                     block
