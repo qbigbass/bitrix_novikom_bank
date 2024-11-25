@@ -3,7 +3,7 @@
 namespace Sprint\Migration;
 
 
-class Version20241125082942 extends Version
+class Version20241125153543 extends Version
 {
     protected $author = "r.machmutov@astarus.ru";
 
@@ -72,7 +72,7 @@ class Version20241125082942 extends Version
   'WORKFLOW' => 'N',
   'BIZPROC' => 'N',
   'SECTION_CHOOSER' => 'L',
-  'LIST_MODE' => 'C',
+  'LIST_MODE' => '',
   'RIGHTS_MODE' => 'S',
   'SECTION_PROPERTY' => 'Y',
   'PROPERTY_INDEX' => 'I',
@@ -442,7 +442,7 @@ class Version20241125082942 extends Version
       'IS_ENABLED' => 'N',
     ),
   ),
-  'SMART_FILTER' => NULL,
+  'SMART_FILTER' => 'Y',
   'DISPLAY_TYPE' => 'F',
   'DISPLAY_EXPANDED' => NULL,
   'FILTER_HINT' => '',
@@ -521,6 +521,66 @@ class Version20241125082942 extends Version
   'DISPLAY_EXPANDED' => 'N',
   'FILTER_HINT' => '',
 ));
+            $helper->Iblock()->saveProperty($iblockId, array (
+  'NAME' => 'Закрепить объявление',
+  'ACTIVE' => 'Y',
+  'SORT' => '500',
+  'CODE' => 'FIX_AD',
+  'DEFAULT_VALUE' => '',
+  'PROPERTY_TYPE' => 'L',
+  'ROW_COUNT' => '1',
+  'COL_COUNT' => '30',
+  'LIST_TYPE' => 'L',
+  'MULTIPLE' => 'N',
+  'XML_ID' => NULL,
+  'FILE_TYPE' => '',
+  'MULTIPLE_CNT' => '5',
+  'LINK_IBLOCK_ID' => '0',
+  'WITH_DESCRIPTION' => 'N',
+  'SEARCHABLE' => 'N',
+  'FILTRABLE' => 'N',
+  'IS_REQUIRED' => 'N',
+  'VERSION' => '1',
+  'USER_TYPE' => NULL,
+  'USER_TYPE_SETTINGS' => 'a:0:{}',
+  'HINT' => '',
+  'VALUES' => 
+  array (
+    0 => 
+    array (
+      'VALUE' => 'Да',
+      'DEF' => 'N',
+      'SORT' => '500',
+      'XML_ID' => 'yes',
+    ),
+    1 => 
+    array (
+      'VALUE' => 'Нет',
+      'DEF' => 'Y',
+      'SORT' => '500',
+      'XML_ID' => 'no',
+    ),
+  ),
+  'FEATURES' => 
+  array (
+    0 => 
+    array (
+      'MODULE_ID' => 'iblock',
+      'FEATURE_ID' => 'DETAIL_PAGE_SHOW',
+      'IS_ENABLED' => 'N',
+    ),
+    1 => 
+    array (
+      'MODULE_ID' => 'iblock',
+      'FEATURE_ID' => 'LIST_PAGE_SHOW',
+      'IS_ENABLED' => 'N',
+    ),
+  ),
+  'SMART_FILTER' => 'N',
+  'DISPLAY_TYPE' => 'F',
+  'DISPLAY_EXPANDED' => 'N',
+  'FILTER_HINT' => '',
+));
         $helper->UserOptions()->saveElementGrid($iblockId, array (
   'views' => 
   array (
@@ -529,11 +589,11 @@ class Version20241125082942 extends Version
       'columns' => 
       array (
         0 => 'ID',
-        1 => 'NAME',
-        2 => 'ACTIVE',
-        3 => 'SORT',
-        4 => 'PROPERTY_DATE',
-        5 => 'PROPERTY_390',
+        1 => 'PROPERTY_DATE',
+        2 => 'NAME',
+        3 => 'ACTIVE',
+        4 => 'SORT',
+        5 => 'PROPERTY_FIX_AD',
         6 => 'PROPERTY_TYPE_AD',
       ),
       'columns_sizes' => 
@@ -549,8 +609,35 @@ class Version20241125082942 extends Version
       'custom_names' => 
       array (
       ),
-      'last_sort_by' => 'PROPERTY_389',
-      'last_sort_order' => 'asc',
+    ),
+  ),
+  'filters' => 
+  array (
+  ),
+  'current_view' => 'default',
+));
+    $helper->UserOptions()->saveSectionGrid($iblockId, array (
+  'views' => 
+  array (
+    'default' => 
+    array (
+      'columns' => 
+      array (
+        0 => '',
+      ),
+      'columns_sizes' => 
+      array (
+        'expand' => 1,
+        'columns' => 
+        array (
+        ),
+      ),
+      'sticked_columns' => 
+      array (
+      ),
+      'custom_names' => 
+      array (
+      ),
     ),
   ),
   'filters' => 

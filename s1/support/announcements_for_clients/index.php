@@ -53,7 +53,8 @@ $APPLICATION->IncludeComponent(
         "LIST_FIELD_CODE" => [],
         "LIST_PROPERTY_CODE" => [
             "DATE",
-            "TYPE_AD"
+            "TYPE_AD",
+            "FIX_AD"
         ],
         "MESSAGE_404" => "",
         "META_DESCRIPTION" => "-",
@@ -73,8 +74,8 @@ $APPLICATION->IncludeComponent(
         "SET_STATUS_404" => "Y",
         "SET_TITLE" => "Y",
         "SHOW_404" => "Y",
-        "SORT_BY1" => "PROPERTY_DATE",
-        "SORT_BY2" => "SORT",
+        "SORT_BY1" => "PROPERTY_FIX_AD",
+        "SORT_BY2" => "PROPERTY_DATE",
         "SORT_ORDER1" => "DESC",
         "SORT_ORDER2" => "DESC",
         "STRICT_SECTION_CHECK" => "Y",
