@@ -304,8 +304,8 @@ use Dalee\Helpers\ComponentHelper;
                     <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-down"></use>
                 </svg>
             </a>
-            <div class="collapse d-md-block mt-4 mt-md-6 mt-lg-7" id="instruction-1">
-                <div class="row px-lg-6 row-gap-6 row-gap-lg-7">
+            <div class="collapse d-md-block" id="instruction-1">
+                <div class="row px-lg-6 row-gap-6 row-gap-lg-7 mt-4 mt-md-6 mt-lg-7">
                     <?$GLOBALS['cardReceiptOptionsFilter'] = [
                         'ACTIVE' => 'Y',
                         'ID' => $arResult['DISPLAY_PROPERTIES']['INSTRUCTION_1']['VALUE']
@@ -473,8 +473,8 @@ use Dalee\Helpers\ComponentHelper;
                     <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-down"></use>
                 </svg>
             </a>
-            <div class="collapse d-md-block mt-4 mt-md-6 mt-lg-7" id="instruction-2">
-                <div class="row px-lg-6 row-gap-6 row-gap-lg-7">
+            <div class="collapse d-md-block" id="instruction-2">
+                <div class="row px-lg-6 row-gap-6 row-gap-lg-7 mt-4 mt-md-6 mt-lg-7">
                     <?$GLOBALS['cardReceiptOptionsFilter'] = [
                         'ACTIVE' => 'Y',
                         'ID' => $arResult['DISPLAY_PROPERTIES']['INSTRUCTION_2']['VALUE']
@@ -579,8 +579,8 @@ use Dalee\Helpers\ComponentHelper;
                     <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-down"></use>
                 </svg>
             </a>
-            <div class="collapse d-md-block mt-4 mt-md-6 mt-lg-7" id="instruction-3">
-                <div class="row px-lg-6 row-gap-6 row-gap-lg-7">
+            <div class="collapse d-md-block" id="instruction-3">
+                <div class="row px-lg-6 row-gap-6 row-gap-lg-7 mt-4 mt-md-6 mt-lg-7">
                     <?$GLOBALS['cardReceiptOptionsFilter'] = [
                         'ACTIVE' => 'Y',
                         'ID' => $arResult['DISPLAY_PROPERTIES']['INSTRUCTION_3']['VALUE']

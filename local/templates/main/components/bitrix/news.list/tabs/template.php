@@ -13,8 +13,8 @@
 $this->setFrameMode(true);
 ?>
 
-<div class="mt-4 mt-md-6 mt-lg-7" id="additional-info-content">
-    <div class="row">
+<div class="collapse d-md-block" id="additional-info-content">
+    <div class="row px-lg-6 mt-4 mt-md-6 mt-lg-7">
         <div class="col-12">
             <? if (empty($arParams['NO_TABS_PADDING'])) { ?>
                 <div class="ps-lg-6">
