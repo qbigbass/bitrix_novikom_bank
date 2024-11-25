@@ -35,7 +35,7 @@ $APPLICATION->SetTitle("Очень важная информация");
         "SET_LAST_MODIFIED" => "N",
         "SET_TITLE" => "Y",
         "ADD_SECTIONS_CHAIN" => "Y",
-        "ADD_ELEMENT_CHAIN" => "N",
+        "ADD_ELEMENT_CHAIN" => "Y",
         "MAIN_CHAIN_TITLE" => "Поддержка",
         "USE_ELEMENT_COUNTER" => "N",
         "USE_SALE_BESTSELLERS" => "N",
