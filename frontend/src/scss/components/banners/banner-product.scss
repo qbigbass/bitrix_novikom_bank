@@ -52,18 +52,18 @@
         gap: 1.5rem;
 
         @include use-media(tablet) {
-            width: 25rem;
+            width: 42.709vw;
             gap: 2rem;
         }
 
         @include use-media(tablet-album) {
-            width: 45rem; //720px
+            width: 38.75rem; //580px
             gap: 3rem;
             padding-left: 2.5rem;
         }
 
-        @include use-media(laptop) {
-            width: 52rem; //832px
+        @include use-media(laptop-x) {
+            width: 51.5rem; //824px
         }
 
         @include use-media(desktop) {
@@ -83,6 +83,31 @@
         @include use-media(tablet) {
             gap: 1.5rem;
         }
+
+        @include use-media(mobile-s, sm) {
+            h1 {
+                word-break: break-word;
+                hyphens: auto;
+            }
+        }
+    }
+
+    &__breadcrumbs {
+        & .breadcrumbs__item {
+            white-space: nowrap;
+        }
+
+        @include use-media(tablet) {
+            min-width: calc(100vw - 5rem);
+        }
+
+        @include use-media(tablet-album) {
+            min-width: calc(100vw - 12.5rem);
+        }
+
+        @include use-media(laptop-x) {
+            min-width: unset;
+        }
     }
 
     &__footer {
@@ -100,27 +125,40 @@
 
     &__image {
         display: block;
-        width: calc(100% + 2rem);
-        margin: -1rem;
+        min-width: calc(100% + 3rem);
+        margin: -1.5rem;
 
-        @include use-media(mobile) {
-            max-width: 23.75rem; //380px
+        @include use-media(sm) {
+            min-width: unset;
+            width: 100%;
+            max-width: 23.75rem; // 380px
         }
 
         @include use-media(tablet) {
             margin: 0;
             position: absolute;
             z-index: 1;
-            top: 50%;
-            right: -4vw;
-            transform: translateY(-50%);
-            width: 62.5vw;
-            max-width: 45rem; //720px
+            top: 4rem;
+            right: -0.5rem;
+            width: 52.084vw;
+            max-width: 32rem; // 512px
         }
 
         @include use-media(tablet-album) {
+            top: 2.25rem;
             width: 45vw;
+            max-width: 33.75rem; // 540px
+        }
+
+        @include use-media(laptop-x) {
+            top: 50%;
+            transform: translateY(-50%);
             right: 0;
+            max-width: 45rem; // 720px
+        }
+
+        @include use-media(laptop) {
+            right: 6.25rem;
         }
     }
 
@@ -225,7 +263,6 @@
                 width: 46.875vw;
                 max-width: 26.25rem; //420px
                 top: 2.5rem;
-                transform: none;
             }
 
             @include use-media(tablet-album) {
@@ -296,20 +333,23 @@
 
         #{$root}__image {
             @include use-media(tablet) {
+                top: 2.5rem;
                 width: 46.875vw;
                 max-width: 26.25rem; //420px
-                top: 2.5rem;
-                transform: none;
             }
 
             @include use-media(tablet-album) {
+                right: 2.5rem;
                 width: 35vw;
-                max-width: 35em; //560px
+                max-width: 35rem; //560px
             }
 
             @include use-media(laptop-x) {
+                transform: none;
+                top: 2.5rem;
+                right: 4rem;
                 width: 100%;
-                max-width: 35em; //560px
+                max-width: 35rem; //560px
             }
 
             @include use-media(desktop) {
