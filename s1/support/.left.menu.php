@@ -16,7 +16,7 @@ $aMenuLinks = Array(
 	),
 	Array(
 		"Объявления для клиентов",
-		"#",
+		"/support/announcements_for_clients/",
 		Array(),
 		Array(),
 		""
