@@ -159,6 +159,7 @@ $headerView->render(
                 "SORT_ORDER1" => "DESC",
                 "SORT_ORDER2" => "ASC",
                 "STRICT_SECTION_CHECK" => "N",
+                "NO_TABS_PADDING" => "Y",
             ],
             $component
         );?>

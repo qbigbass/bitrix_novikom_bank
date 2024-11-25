@@ -19,14 +19,14 @@ $terms = [
         'SIGN' => 'При ключевой ставке<br>Банка России на ' . date('d.m.Y'),
         'FROM_TO' => 'до&nbsp;',
     ],
-    'SUM_FROM' => [
-        'SIGN' => 'Минимальная сумма вклада',
-        'FROM_TO' => 'от&nbsp;',
-    ],
     'PERIOD_FROM' => [
         'SIGN' => 'Минимальный срок вклада',
         'FROM_TO' => 'от&nbsp;',
         'PERIOD' => 'days'
+    ],
+    'SUM_FROM' => [
+        'SIGN' => 'Минимальная сумма вклада',
+        'FROM_TO' => 'от&nbsp;',
     ],
 ];
 
