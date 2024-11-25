@@ -25,15 +25,15 @@ class Version20241122081147 extends Version
   'EDIT_FILE_AFTER' => '',
   'IN_RSS' => 'N',
   'SORT' => '500',
-  'LANG' => 
+  'LANG' =>
   array (
-    'ru' => 
+    'ru' =>
     array (
       'NAME' => 'Поддержка',
       'SECTION_NAME' => '',
       'ELEMENT_NAME' => '',
     ),
-    'en' => 
+    'en' =>
     array (
       'NAME' => 'Support',
       'SECTION_NAME' => '',
@@ -43,7 +43,7 @@ class Version20241122081147 extends Version
 ));
         $iblockId = $helper->Iblock()->saveIblock(array (
   'IBLOCK_TYPE_ID' => 'support',
-  'LID' => 
+  'LID' =>
   array (
     0 => 's1',
   ),
@@ -67,8 +67,8 @@ class Version20241122081147 extends Version
   'RSS_FILE_DAYS' => NULL,
   'RSS_YANDEX_ACTIVE' => 'N',
   'XML_ID' => NULL,
-  'INDEX_ELEMENT' => 'Y',
-  'INDEX_SECTION' => 'Y',
+  'INDEX_ELEMENT' => 'N',
+  'INDEX_SECTION' => 'N',
   'WORKFLOW' => 'N',
   'BIZPROC' => 'N',
   'SECTION_CHOOSER' => 'L',
@@ -87,7 +87,7 @@ class Version20241122081147 extends Version
   'ELEMENT_NAME' => 'Элемент',
   'EXTERNAL_ID' => NULL,
   'LANG_DIR' => '/',
-  'IPROPERTY_TEMPLATES' => 
+  'IPROPERTY_TEMPLATES' =>
   array (
   ),
   'ELEMENT_ADD' => 'Добавить элемент',
@@ -98,56 +98,56 @@ class Version20241122081147 extends Version
   'SECTION_DELETE' => 'Удалить раздел',
 ));
         $helper->Iblock()->saveIblockFields($iblockId, array (
-  'IBLOCK_SECTION' => 
+  'IBLOCK_SECTION' =>
   array (
     'NAME' => 'Привязка к разделам',
     'IS_REQUIRED' => 'N',
-    'DEFAULT_VALUE' => 
+    'DEFAULT_VALUE' =>
     array (
       'KEEP_IBLOCK_SECTION_ID' => 'N',
     ),
     'VISIBLE' => 'Y',
   ),
-  'ACTIVE' => 
+  'ACTIVE' =>
   array (
     'NAME' => 'Активность',
     'IS_REQUIRED' => 'Y',
     'DEFAULT_VALUE' => 'Y',
     'VISIBLE' => 'Y',
   ),
-  'ACTIVE_FROM' => 
+  'ACTIVE_FROM' =>
   array (
     'NAME' => 'Начало активности',
     'IS_REQUIRED' => 'N',
     'DEFAULT_VALUE' => '',
     'VISIBLE' => 'Y',
   ),
-  'ACTIVE_TO' => 
+  'ACTIVE_TO' =>
   array (
     'NAME' => 'Окончание активности',
     'IS_REQUIRED' => 'N',
     'DEFAULT_VALUE' => '',
     'VISIBLE' => 'Y',
   ),
-  'SORT' => 
+  'SORT' =>
   array (
     'NAME' => 'Сортировка',
     'IS_REQUIRED' => 'N',
     'DEFAULT_VALUE' => '500',
     'VISIBLE' => 'Y',
   ),
-  'NAME' => 
+  'NAME' =>
   array (
     'NAME' => 'Название',
     'IS_REQUIRED' => 'Y',
     'DEFAULT_VALUE' => '',
     'VISIBLE' => 'Y',
   ),
-  'PREVIEW_PICTURE' => 
+  'PREVIEW_PICTURE' =>
   array (
     'NAME' => 'Картинка для анонса',
     'IS_REQUIRED' => 'N',
-    'DEFAULT_VALUE' => 
+    'DEFAULT_VALUE' =>
     array (
       'FROM_DETAIL' => 'N',
       'UPDATE_WITH_DETAIL' => 'N',
@@ -172,25 +172,25 @@ class Version20241122081147 extends Version
     ),
     'VISIBLE' => 'Y',
   ),
-  'PREVIEW_TEXT_TYPE' => 
+  'PREVIEW_TEXT_TYPE' =>
   array (
     'NAME' => 'Тип описания для анонса',
     'IS_REQUIRED' => 'Y',
     'DEFAULT_VALUE' => 'text',
     'VISIBLE' => 'Y',
   ),
-  'PREVIEW_TEXT' => 
+  'PREVIEW_TEXT' =>
   array (
     'NAME' => 'Описание для анонса',
     'IS_REQUIRED' => 'N',
     'DEFAULT_VALUE' => '',
     'VISIBLE' => 'Y',
   ),
-  'DETAIL_PICTURE' => 
+  'DETAIL_PICTURE' =>
   array (
     'NAME' => 'Детальная картинка',
     'IS_REQUIRED' => 'N',
-    'DEFAULT_VALUE' => 
+    'DEFAULT_VALUE' =>
     array (
       'SCALE' => 'N',
       'WIDTH' => '',
@@ -212,32 +212,32 @@ class Version20241122081147 extends Version
     ),
     'VISIBLE' => 'Y',
   ),
-  'DETAIL_TEXT_TYPE' => 
+  'DETAIL_TEXT_TYPE' =>
   array (
     'NAME' => 'Тип детального описания',
     'IS_REQUIRED' => 'Y',
     'DEFAULT_VALUE' => 'text',
     'VISIBLE' => 'Y',
   ),
-  'DETAIL_TEXT' => 
+  'DETAIL_TEXT' =>
   array (
     'NAME' => 'Детальное описание',
     'IS_REQUIRED' => 'N',
     'DEFAULT_VALUE' => '',
     'VISIBLE' => 'Y',
   ),
-  'XML_ID' => 
+  'XML_ID' =>
   array (
     'NAME' => 'Внешний код',
     'IS_REQUIRED' => 'Y',
     'DEFAULT_VALUE' => '',
     'VISIBLE' => 'Y',
   ),
-  'CODE' => 
+  'CODE' =>
   array (
     'NAME' => 'Символьный код',
     'IS_REQUIRED' => 'N',
-    'DEFAULT_VALUE' => 
+    'DEFAULT_VALUE' =>
     array (
       'UNIQUE' => 'N',
       'TRANSLITERATION' => 'N',
@@ -250,25 +250,25 @@ class Version20241122081147 extends Version
     ),
     'VISIBLE' => 'Y',
   ),
-  'TAGS' => 
+  'TAGS' =>
   array (
     'NAME' => 'Теги',
     'IS_REQUIRED' => 'N',
     'DEFAULT_VALUE' => '',
     'VISIBLE' => 'Y',
   ),
-  'SECTION_NAME' => 
+  'SECTION_NAME' =>
   array (
     'NAME' => 'Название',
     'IS_REQUIRED' => 'Y',
     'DEFAULT_VALUE' => '',
     'VISIBLE' => 'Y',
   ),
-  'SECTION_PICTURE' => 
+  'SECTION_PICTURE' =>
   array (
     'NAME' => 'Картинка для анонса',
     'IS_REQUIRED' => 'N',
-    'DEFAULT_VALUE' => 
+    'DEFAULT_VALUE' =>
     array (
       'FROM_DETAIL' => 'N',
       'UPDATE_WITH_DETAIL' => 'N',
@@ -293,25 +293,25 @@ class Version20241122081147 extends Version
     ),
     'VISIBLE' => 'Y',
   ),
-  'SECTION_DESCRIPTION_TYPE' => 
+  'SECTION_DESCRIPTION_TYPE' =>
   array (
     'NAME' => 'Тип описания',
     'IS_REQUIRED' => 'Y',
     'DEFAULT_VALUE' => 'text',
     'VISIBLE' => 'Y',
   ),
-  'SECTION_DESCRIPTION' => 
+  'SECTION_DESCRIPTION' =>
   array (
     'NAME' => 'Описание',
     'IS_REQUIRED' => 'N',
     'DEFAULT_VALUE' => '',
     'VISIBLE' => 'Y',
   ),
-  'SECTION_DETAIL_PICTURE' => 
+  'SECTION_DETAIL_PICTURE' =>
   array (
     'NAME' => 'Детальная картинка',
     'IS_REQUIRED' => 'N',
-    'DEFAULT_VALUE' => 
+    'DEFAULT_VALUE' =>
     array (
       'SCALE' => 'N',
       'WIDTH' => '',
@@ -333,18 +333,18 @@ class Version20241122081147 extends Version
     ),
     'VISIBLE' => 'Y',
   ),
-  'SECTION_XML_ID' => 
+  'SECTION_XML_ID' =>
   array (
     'NAME' => 'Внешний код',
     'IS_REQUIRED' => 'N',
     'DEFAULT_VALUE' => '',
     'VISIBLE' => 'Y',
   ),
-  'SECTION_CODE' => 
+  'SECTION_CODE' =>
   array (
     'NAME' => 'Символьный код',
     'IS_REQUIRED' => 'Y',
-    'DEFAULT_VALUE' => 
+    'DEFAULT_VALUE' =>
     array (
       'UNIQUE' => 'Y',
       'TRANSLITERATION' => 'Y',
@@ -357,42 +357,42 @@ class Version20241122081147 extends Version
     ),
     'VISIBLE' => 'Y',
   ),
-  'LOG_SECTION_ADD' => 
+  'LOG_SECTION_ADD' =>
   array (
     'NAME' => 'LOG_SECTION_ADD',
     'IS_REQUIRED' => 'N',
     'DEFAULT_VALUE' => NULL,
     'VISIBLE' => 'Y',
   ),
-  'LOG_SECTION_EDIT' => 
+  'LOG_SECTION_EDIT' =>
   array (
     'NAME' => 'LOG_SECTION_EDIT',
     'IS_REQUIRED' => 'N',
     'DEFAULT_VALUE' => NULL,
     'VISIBLE' => 'Y',
   ),
-  'LOG_SECTION_DELETE' => 
+  'LOG_SECTION_DELETE' =>
   array (
     'NAME' => 'LOG_SECTION_DELETE',
     'IS_REQUIRED' => 'N',
     'DEFAULT_VALUE' => NULL,
     'VISIBLE' => 'Y',
   ),
-  'LOG_ELEMENT_ADD' => 
+  'LOG_ELEMENT_ADD' =>
   array (
     'NAME' => 'LOG_ELEMENT_ADD',
     'IS_REQUIRED' => 'N',
     'DEFAULT_VALUE' => NULL,
     'VISIBLE' => 'Y',
   ),
-  'LOG_ELEMENT_EDIT' => 
+  'LOG_ELEMENT_EDIT' =>
   array (
     'NAME' => 'LOG_ELEMENT_EDIT',
     'IS_REQUIRED' => 'N',
     'DEFAULT_VALUE' => NULL,
     'VISIBLE' => 'Y',
   ),
-  'LOG_ELEMENT_DELETE' => 
+  'LOG_ELEMENT_DELETE' =>
   array (
     'NAME' => 'LOG_ELEMENT_DELETE',
     'IS_REQUIRED' => 'N',
@@ -405,11 +405,11 @@ class Version20241122081147 extends Version
   'everyone' => 'R',
 ));
     $helper->UserOptions()->saveElementGrid($iblockId, array (
-  'views' => 
+  'views' =>
   array (
-    'default' => 
+    'default' =>
     array (
-      'columns' => 
+      'columns' =>
       array (
         0 => 'ID',
         1 => 'NAME',
@@ -417,32 +417,32 @@ class Version20241122081147 extends Version
         3 => 'SORT',
         4 => 'TIMESTAMP_X',
       ),
-      'columns_sizes' => 
+      'columns_sizes' =>
       array (
         'expand' => 1,
-        'columns' => 
+        'columns' =>
         array (
         ),
       ),
-      'sticked_columns' => 
+      'sticked_columns' =>
       array (
       ),
-      'custom_names' => 
+      'custom_names' =>
       array (
       ),
     ),
   ),
-  'filters' => 
+  'filters' =>
   array (
   ),
   'current_view' => 'default',
 ));
     $helper->UserOptions()->saveSectionGrid($iblockId, array (
-  'views' => 
+  'views' =>
   array (
-    'default' => 
+    'default' =>
     array (
-      'columns' => 
+      'columns' =>
       array (
         0 => 'ID',
         1 => 'UF_SUPPORT_PRODUCT_TYPE',
@@ -452,10 +452,10 @@ class Version20241122081147 extends Version
         5 => 'TIMESTAMP_X',
         6 => 'UF_SUPPORT_PRODUCT__ICON',
       ),
-      'columns_sizes' => 
+      'columns_sizes' =>
       array (
         'expand' => 1.0,
-        'columns' => 
+        'columns' =>
         array (
           'ID' => 124,
           'NAME' => 295,
@@ -465,17 +465,17 @@ class Version20241122081147 extends Version
           'UF_SUPPORT_PRODUCT__ICON' => 194,
         ),
       ),
-      'sticked_columns' => 
+      'sticked_columns' =>
       array (
       ),
-      'custom_names' => 
+      'custom_names' =>
       array (
       ),
       'last_sort_by' => 'id',
       'last_sort_order' => 'desc',
     ),
   ),
-  'filters' => 
+  'filters' =>
   array (
   ),
   'current_view' => 'default',
