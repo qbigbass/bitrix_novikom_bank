@@ -224,8 +224,8 @@ block content
             ).h3.d-flex.align-items-center.justify-content-between.dark-100.d-md-none
                 | Подробнее о&nbsp;программе &laquo;Кешбэк&raquo;
                 +svg-use("icon-chevron-down", "icon size-m violet-100")
-            #conditions.collapse.d-md-block.mt-4.mt-md-6.mt-lg-7
-                .row.px-lg-6
+            #conditions.collapse.d-md-block
+                .row.px-lg-6.mt-4.mt-md-6.mt-lg-7
                     .col-12
                         +tabs-simple(tabContentList, false)
                         .tab-content.mt-4.mt-md-6.mt-lg-7
@@ -252,8 +252,8 @@ block content
             ).h3.d-flex.align-items-center.justify-content-between.dark-100.d-md-none
                 | Как узнать сумму выплаченного кешбэка
                 +svg-use("icon-chevron-down", "icon size-m violet-100")
-            #how-know.collapse.d-md-block.mt-4.mt-md-6.mt-lg-7
-                .row.px-lg-6.row-gap-6.row-gap-lg-7
+            #how-know.collapse.d-md-block
+                .row.px-lg-6.row-gap-6.row-gap-lg-7.mt-4.mt-md-6.mt-lg-7
                     each item in stepList
                         .col-12.col-lg-4
                             +benefit(item.spriteData, "").pe-xxl-11
@@ -280,8 +280,8 @@ block content
             ).h3.d-flex.align-items-center.justify-content-between.dark-100.d-md-none
                 | Как подключить кешбэк
                 +svg-use("icon-chevron-down", "icon size-m violet-100")
-            #how-connect.collapse.d-md-block.mt-4.mt-md-6.mt-lg-7
-                .row.px-lg-6.row-gap-6.row-gap-lg-7
+            #how-connect.collapse.d-md-block
+                .row.px-lg-6.row-gap-6.row-gap-lg-7.mt-4.mt-md-6.mt-lg-7
                     each item in connectList
                         .col-12.col-lg-6
                             +benefit(item.spriteData, "").pe-xxl-11

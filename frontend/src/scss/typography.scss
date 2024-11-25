@@ -118,9 +118,12 @@ h6, .h6 {
     line-height: 130%;
 }
 
-//.text-quote {
-//    font-style: italic;
-//}
+.text-lg-m {
+  @include use-media(tablet-album) {
+    font-size: map-get($font-size-body, base);
+    line-height: 150%;
+  }
+}
 
 .caption-m {
     font-size: map-get($font-size-body, small-x);
