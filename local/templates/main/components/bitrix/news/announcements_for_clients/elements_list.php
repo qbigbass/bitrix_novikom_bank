@@ -13,17 +13,20 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
+use Bitrix\Main\Application;
 
 $headerView = new HeaderView($component);
 $helper = $headerView->helper();
-
 $headerView->render(
     $APPLICATION->GetTitle(),
     '',
     ['bg-linear-blue']
 );
-?>
 
+$context = Application::getInstance()->getContext();
+$request = $context->getRequest();
+$values = $request->getQueryList();
+?>
 <section class="section-layout">
     <div class="container d-flex flex-column row-gap-6 row-gap-lg-7">
         <div class="row row-gap-4 row-gap-md-6 row-gap-lg-7 px-lg-6">
@@ -81,7 +84,16 @@ $headerView->render(
                 ?>
             </div>
         </div>
-
+        <?
+        if ($request["propDateFrom"]) {
+            $dateFrom = $request["propDateFrom"];
+            $GLOBALS['arrAdFilter']['>=PROPERTY_DATE'] = ConvertDateTime($dateFrom, "YYYY-MM-DD")." 00:00:00";
+        }
+        if ($request["propDateTo"]) {
+            $dateTo = $request["propDateTo"];
+            $GLOBALS['arrAdFilter']['<=PROPERTY_DATE'] = ConvertDateTime($dateTo, "YYYY-MM-DD")." 23:59:59";
+        }
+        ?>
         <!-- Список объявлений -->
         <? $APPLICATION->IncludeComponent(
             "bitrix:news.list",

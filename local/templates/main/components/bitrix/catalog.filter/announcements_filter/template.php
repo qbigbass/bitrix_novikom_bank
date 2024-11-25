@@ -64,27 +64,29 @@ if ($delFilter) {
                                     </svg></span></span></div>
             <ul class="swiper-wrapper tabs-panel__list nav nav-tabs d-inline-flex flex-nowrap w-auto p-0 border border-purple rounded">
                 <?foreach ($arResult["ITEMS"] as $item):?>
-                    <li class="swiper-slide w-auto tabs-panel__list-item nav-item z-2">
-                        <a
-                            class="tabs-panel__list-item-link nav-link bg-transparent <?if((int)$typeSelected === 0):?>active<?endif;?>"
-                            aria-current="page"
-                            href="#"
-                            data-filter="<?=$APPLICATION->GetCurPage(false)?>"
-                            data-setFilter="Y"
-                        ><?=Loc::getMessage('FILTER_ALL_TITLE')?></a>
-                    </li>
-                    <?foreach ($item["LIST"] as $xmlId => $value):?>
-                        <?if ((int)$xmlId > 0):?>
-                            <li class="swiper-slide w-auto tabs-panel__list-item nav-item z-2">
-                                <a
-                                    class="tabs-panel__list-item-link nav-link bg-transparent <?if((int)$typeSelected === (int)$xmlId):?>active<?endif;?>"
-                                    href="#"
-                                    data-setFilter="Y"
-                                    data-filter="<?=$APPLICATION->GetCurPage(false)?>?<?= $item["INPUT_NAME"] ?>=<?= $xmlId ?>&set_filter=Y"
-                                ><?= $value ?></a>
-                            </li>
-                        <?endif;?>
-                    <?endforeach;?>
+                    <?if(!empty($item["LIST"])):?>
+                        <li class="swiper-slide w-auto tabs-panel__list-item nav-item z-2">
+                            <a
+                                class="tabs-panel__list-item-link nav-link bg-transparent <?if((int)$typeSelected === 0):?>active<?endif;?>"
+                                aria-current="page"
+                                href="#"
+                                data-filter="<?=$APPLICATION->GetCurPage(false)?>"
+                                data-clearFilter="Y"
+                            ><?=Loc::getMessage('FILTER_ALL_TITLE')?></a>
+                        </li>
+                        <?foreach ($item["LIST"] as $xmlId => $value):?>
+                            <?if ((int)$xmlId > 0):?>
+                                <li class="swiper-slide w-auto tabs-panel__list-item nav-item z-2">
+                                    <a
+                                        class="tabs-panel__list-item-link nav-link bg-transparent <?if((int)$typeSelected === (int)$xmlId):?>active<?endif;?>"
+                                        href="#"
+                                        data-setFilter="Y"
+                                        data-filter="<?=$APPLICATION->GetCurPage(false)?>?<?= $item["INPUT_NAME"] ?>=<?= $xmlId ?>&set_filter=Y"
+                                    ><?= $value ?></a>
+                                </li>
+                            <?endif;?>
+                        <?endforeach;?>
+                    <?endif;?>
                 <?endforeach;?>
             </ul>
         </div>
@@ -100,6 +102,23 @@ if ($delFilter) {
     $(document).ready(function () {
         /* Фильтр по типу объвяления для desktop */
         $(document).on('click', '[data-setFilter=Y]', function(e){
+            e.preventDefault();
+            let link = $(this).data('filter');
+            let dateFilter = $('input[name=date1]').val();
+            let arDateFilter = dateFilter.split(' - ');
+
+            if (arDateFilter.length > 0 && arDateFilter[0] !== "" && link !== "") {
+                let dFrom = arDateFilter[0];
+                link += '&propDateFrom=' + dFrom;
+                if (arDateFilter[1]) {
+                    let dTo = arDateFilter[1];
+                    link += '&propDateTo=' + dTo;
+                }
+            }
+
+            location.href = link;
+        });
+        $(document).on('click', '[data-clearFilter=Y]', function(e){
             e.preventDefault();
             let link = $(this).data('filter');
             location.href = link;
