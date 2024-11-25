@@ -70,4 +70,11 @@ $arUrlRewrite = [
         'PATH' => '/special-offers/index.php',
         'SORT' => 100,
     ],
+    [
+        'CONDITION' => '#^/about/#',
+        'RULE' => '',
+        'ID' => 'bitrix:news',
+        'PATH' => '/about/index.php',
+        'SORT' => 100,
+    ],
 ];
