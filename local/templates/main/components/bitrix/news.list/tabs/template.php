@@ -13,8 +13,8 @@
 $this->setFrameMode(true);
 ?>
 
-<div class="collapse d-md-block mt-4 mt-md-6 mt-lg-7" id="additional-info-content">
-    <div class="row px-lg-6">
+<div class="collapse d-md-block" id="additional-info-content">
+    <div class="row px-lg-6 mt-4 mt-md-6 mt-lg-7">
         <div class="col-12">
             <div class="tabs-panel js-tabs-slider overflow-hidden position-relative px-1">
                 <div class="tabs-panel__navigation d-none d-lg-block js-tabs-slider-navigation w-100"><span class="tabs-panel__navigation-item tabs-panel__navigation-item-reverse js-tabs-slider-navigation-prev h-100 d-flex align-items-center justify-content-start px-1 z-3 position-absolute start-0 top-0"><span class="icon size-m">
