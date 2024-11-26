@@ -1,0 +1,14 @@
+.card-office {
+  border-radius: 0.75rem;
+  padding: 1rem;
+  background-color: var(--dark-10);
+
+  &__title {
+    color: var(--dark-100);
+
+    @include use-media(tablet) {
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+  }
+}

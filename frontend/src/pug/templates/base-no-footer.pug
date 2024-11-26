@@ -1,0 +1,28 @@
+doctype html
+html(lang="ru")
+    head
+        block title
+            title= ''
+            meta(name="description" content="Описание страницы")
+        include ../includes/head
+        block style
+
+    body
+        include ../mixins/svg-use
+        include ../mixins/pattern-bg
+        include ../mixins/slider-controls
+        include ../mixins/polygon-container
+
+        .page-wrapper.js-page-wrapper
+            block content
+
+        include ../includes/mobile-nav/mobile-main-nav
+        block script
+        script(src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=7efdb855-1cca-435d-b8ae-05911155ed2c")
+        script(src="js/jquery.min.js")
+        script(src="js/popover.js")
+        script(src="js/bootstrap.min.js")
+        script(src="js/swiper.min.js")
+        script(src="js/select2.min.js")
+        script(src="js/airdatepicker.js")
+        script(src="js/bundle.js")

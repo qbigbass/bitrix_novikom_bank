@@ -133,6 +133,36 @@ textarea.form-control-lg-lg {
     & .form-control:has(+ .input-group-text) {
         border-right: 0;
     }
+
+    &--size-small {
+      & .input-group-icon {
+        padding-left: .5rem;
+        padding-right: 0;
+
+        @include use-media(tablet) {
+          padding-left: 1rem;
+        }
+
+        @include use-media(tablet-album) {
+          padding-top: .75rem;
+          padding-bottom: .75rem;
+
+          & .icon {
+            width: 1rem;
+            height: 1rem;
+          }
+        }
+      }
+
+      & .form-control {
+        padding-left: .5rem;
+        padding-right: .5rem;
+
+        @include use-media(tablet) {
+          padding-right: 1rem;
+        }
+      }
+    }
 }
 
 .input-group-text {
