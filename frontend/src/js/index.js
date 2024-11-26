@@ -1,8 +1,5 @@
-// import '../scss/style.scss';
-// Import all of Bootstrap's JS
-// import * as bootstrap from 'bootstrap'
 import initPolygonContainer from './components/polygon-container.js'
-import initDropdownMenu from './components/dropDownMenu.js'
+import initDropdownMenu, { hideDropDownMenu } from './components/dropDownMenu.js'
 import {setVh} from "./utils";
 import { initSwiperMenu, initHeroBanner, initCardSlider, initAnnouncementSlider, initTabsSlider } from "./components/swiper/swiper";
 import initButtonNavMobile from './components/nav-panel.js'
@@ -25,7 +22,6 @@ import initYMap from "./components/yMap";
 
 document.addEventListener('DOMContentLoaded', () => {
     initDropdownMenu();
-    // initPolygonContainer();
     setVh();
     initSwiperMenu();
     initButtonNavMobile();
@@ -47,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initMask();
     initResizePolygonAccordions();
     initHeaderSearchForm();
+    hideDropDownMenu();
     initOffices();
     initYMap();
 });
@@ -67,4 +64,5 @@ window.onload = function() {
 window.addEventListener('resize', () => {
     initPolygonContainer(true);
     setVh();
+    hideDropDownMenu();
 });

@@ -3,8 +3,11 @@ import $ from "../vendors/jquery.min";
 const MENU_CLASSES = {
     links: '.js-dropdown-link',
     dropDownNav: '.js-dropdown-nav',
+    dropDownMenu: '.js-dropdown-menu',
+    dropDownLinks: '.dropdown-item',
     activeClass: 'is-active',
     openClass: 'is-open',
+    hideXlClass: 'd-xl-none'
 }
 
 function setTabIndex(elem, value) {
@@ -85,6 +88,29 @@ function initDropdownMenu() {
             hideAllDropDownMenu();
         }
     });
+}
+
+export function hideDropDownMenu() {
+  const dropDown = document.querySelector(MENU_CLASSES.dropDownMenu);
+
+  if (!dropDown) return false;
+
+  const dropDownLinks = dropDown.querySelectorAll(MENU_CLASSES.dropDownLinks);
+  const linksLength = dropDownLinks.length;
+  let hideLinksLength = 0;
+
+  for (let i = 0; i < linksLength; i++) {
+    if (dropDownLinks[i].classList.contains(MENU_CLASSES.hideXlClass)) {
+      hideLinksLength ++;
+    }
+  }
+
+  if (hideLinksLength === linksLength) {
+    dropDown.classList.add(MENU_CLASSES.hideXlClass);
+  } else {
+    dropDown.classList.remove(MENU_CLASSES.hideXlClass);
+  }
+
 }
 
 export default initDropdownMenu;
