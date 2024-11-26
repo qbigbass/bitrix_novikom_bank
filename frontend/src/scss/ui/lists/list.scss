@@ -128,4 +128,24 @@
       }
     }
   }
+
+  &--md-col2 {
+    @include use-media(tablet) {
+      display: block;
+      column-count: 2;
+      column-gap: 2rem;
+
+      & li {
+        margin-bottom: 1.5rem;
+      }
+    }
+
+    @include use-media(tablet-album) {
+      column-gap: 2.5rem;
+    }
+
+    @include use-media(laptop) {
+      column-gap: 7.5rem;
+    }
+  }
 }

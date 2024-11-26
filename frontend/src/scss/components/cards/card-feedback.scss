@@ -1,0 +1,13 @@
+.card-feedback {
+    border-radius: .75rem;
+
+    &__title, &__description {
+        & br {
+            display: none;
+
+            @include use-media(laptop) {
+                display: inherit;
+            }
+        }
+    }
+}

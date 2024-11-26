@@ -1,0 +1,53 @@
+.card-rating {
+    $root: #{&};
+
+    border-radius: 0.75rem;
+
+    &__inner {
+
+        @include use-media(tablet) {
+            min-height: auto;
+        }
+
+        @include use-media(tablet-album) {
+            padding-left: 2.5rem;
+        }
+    }
+
+    &__content {
+        flex: 1;
+        padding: 1.5rem 1rem;
+
+        @include use-media(tablet) {
+            padding: 2rem 0 2rem 2rem;
+            min-height: auto;
+        }
+
+        @include use-media(tablet-album) {
+            padding: 5rem 5rem 5rem 0;
+        }
+    }
+
+    &__image {
+        align-self: center;
+        height: auto;
+        width: 12.5rem;
+        height: 12.5rem;
+
+        svg {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        @include use-media(sm) {
+            height: 15rem;
+            width: 15rem;
+        }
+
+        @include use-media(tablet-album) {
+            height: 17.25rem;
+            width: 17.25rem;
+        }
+    }
+}
