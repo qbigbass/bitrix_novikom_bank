@@ -62,9 +62,9 @@ $terms = [
 
                 <div class="d-flex flex-column flex-sm-row align-items-center gap-5 gap-sm-6 w-100">
                     <? if (!empty($item['PROPERTIES']['BUTTON_LIST']['VALUE'])) { ?>
-                        <a class="btn btn-tertiary btn-lg card-product-list__button w-100 w-sm-auto" href="#"><?= $item['PROPERTIES']['BUTTON_TEXT_LIST']['VALUE'] ?></a>
+                        <a class="btn btn-tertiary btn-lg-lg card-product-list__button w-100 w-sm-auto" href="#"><?= $item['PROPERTIES']['BUTTON_TEXT_LIST']['VALUE'] ?></a>
                     <? } ?>
-                    <a class="btn btn-link btn-lg d-inline-flex gap-2 align-items-center card-product-list__button-more" href="<?= $item['CODE'] == 'restructuring' ? '/loans/restructuring/' : $item['DETAIL_PAGE_URL'] ?>">
+                    <a class="btn btn-link btn-lg-lg d-inline-flex gap-2 align-items-center card-product-list__button-more" href="<?= $item['CODE'] == 'restructuring' ? '/loans/restructuring/' : $item['DETAIL_PAGE_URL'] ?>">
                         <span>Подробнее</span>
                         <svg class="card-product-list__button-icon" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                             <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right-small"></use>

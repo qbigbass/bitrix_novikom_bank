@@ -1,0 +1,6 @@
+mixin anchor-panel(items)
+    .anchor-panel.bg-white&attributes(attributes)
+        .container.d-flex.py-3.overflow-auto
+            .d-flex.flex-nowrap.flex-md-wrap.gap-4.column-gap-md-5.row-gap-md-4.column-gap-lg-6
+                each item in items
+                    a.anchor-item.text-l.text-nowrap(href= item.href)!= item.text

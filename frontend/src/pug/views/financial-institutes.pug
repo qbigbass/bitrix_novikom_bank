@@ -1,0 +1,389 @@
+extends ../templates/base
+
+block title
+    title= 'Финансовым институтам / Главная'
+    meta(name="description" content="Описание главной страницы")
+block content
+    -
+        var bannerHeroData = {
+            bgClass: null,
+            bgGradient: false,
+            sliders: [
+                {
+                    title: "Кредитным и финансовым организациям",
+                    thumbTitle: "Финансовым<br>организациям",
+                    text: "Новиком нацелен на&nbsp;долгосрочные и&nbsp;доверетельные отношения с&nbsp;российскими и&nbsp;зарубежными финансовыми институтами",
+                    imageSrc: "img/big-illustrations/large-finorg/syndicated-loans-cheap-funding.png",
+                },
+                {
+                    title: "Гарантии и обязательства",
+                    thumbTitle: "Гарантии<br>и обязательства",
+                    text: "Новиком нацелен на&nbsp;долгосрочные и&nbsp;доверетельные отношения с&nbsp;российскими и&nbsp;зарубежными финансовыми институтами",
+                    imageSrc: "img/big-illustrations/large-finorg/syndicated-loans-cheap-funding.png",
+                },
+                {
+                    title: "Межбанковские операции",
+                    thumbTitle: "Межбанковские<br>операции",
+                    text: "Новиком нацелен на&nbsp;долгосрочные и&nbsp;доверетельные отношения с&nbsp;российскими и&nbsp;зарубежными финансовыми институтами",
+                    imageSrc: "img/big-illustrations/large-finorg/syndicated-loans-cheap-funding.png",
+                },
+                {
+                    title: "Депозитарное обслуживание",
+                    thumbTitle: "Депозитарное<br>обслуживание",
+                    text: "Новиком нацелен на&nbsp;долгосрочные и&nbsp;доверетельные отношения с&nbsp;российскими и&nbsp;зарубежными финансовыми институтами",
+                    imageSrc: "img/big-illustrations/large-finorg/syndicated-loans-cheap-funding.png",
+                },
+            ]
+        }
+
+        var cardList = [
+            {
+                href: "#",
+                img: "large-finorg/settlement-services.png",
+                title: "Расчетное обслуживание",
+                description: "Корреспондентские счета ЛОРО в российских рублях и иностранной валюте",
+                link: "Подробнее",
+                color: "transparent",
+                size: "large",
+            },
+            {
+                href: "#",
+                img: "large-finorg/interbank-transactions.png",
+                title: "Межбанковские операции",
+                description: "Операции на валютном и денежном рынках, сделки МБК, синдикации",
+                link: "Подробнее",
+                color: "transparent",
+            },
+            {
+                href: "#",
+                img: "large-finorg/brokerage-services.png",
+                title: "Брокерское обслуживание",
+                description: "Услуги профессионального частника рынка ценных бумаг",
+                link: "Подробнее",
+                color: "transparent",
+            },
+        ];
+
+        var productCards = [
+            {
+                title: "Доверительное управление",
+                icon: true,
+                iconImg: "hands_violet",
+                link: "Подробнее",
+            },
+            {
+                title: "Гарантии<br>и обязательства",
+                icon: true,
+                iconImg: "reputation",
+                link: "Подробнее",
+            },
+            {
+                title: "Организация<br>облигационных займов",
+                icon: true,
+                iconImg: "doc-money_violet",
+                link: "Подробнее",
+            },
+            {
+                title: "Депозитарное обслуживание",
+                icon: true,
+                iconImg: "ticket",
+                link: "Подробнее",
+            },
+            {
+                title: "Финансирование экспортно-импортных операций",
+                icon: true,
+                iconImg: "export-money",
+                link: "Подробнее",
+            },
+            {
+                title: "Система<br>Банк-клиент",
+                icon: true,
+                iconImg: "account_violet",
+                link: "Подробнее",
+            },
+            {
+                title: "Стимулирование экспорта стран СНГ",
+                icon: true,
+                iconImg: "export-up",
+                link: "Подробнее",
+            },
+        ];
+
+        var cardBenefitData = {
+            title: 'Защита от мошенников',
+            description: 'Узнайте как уберечь себя и своих близких <br>от финансового мошенничества.',
+            sprite: {
+                name: true,
+                classList: 'size-md-xxl'
+            },
+            link: '#'
+        }
+
+        var linkDownloadList = [
+            {
+                href: "#",
+                text: "Сборник тарифов на обслуживание банковских карт для физических лиц, выпущенных по 21.08.2022 г.",
+                dateTime: "12.12.23 18:56",
+                fileType: "XLS",
+                classSize: 'text-m'
+            },
+            {
+                href: "#",
+                text: "Сборник тарифов на обслуживание банковских карт aМир для физических лиц, выпущенных с 22.08.2022 г.",
+                dateTime: "12.12.23 18:56",
+                fileType: "XLS",
+                classSize: 'text-m'
+            },
+            {
+                href: "#",
+                text: "Сборник тарифов на обслуживание физических лиц",
+                dateTime: "12.12.23 18:56",
+                fileType: "XLS",
+                classSize: 'text-m'
+            },
+        ]
+
+        var contactList = [
+            {
+                tag: {
+                    text: "Межбанковское кредитование (сделки МБК)",
+                    type: "outline",
+                },
+                title: "Департамент организации финансирования на рынке капитала АО АКБ «НОВИКОМ»",
+                list: [
+                    {
+                        href: "tel:+74959747187",
+                        text: "+7 (495) 974-71-87",
+                        icon: "icon-phone",
+                        iconColorClass: "violet-100",
+                        additionalText: "доб. 130",
+                    },
+                    {
+                        href: "emailto:dcm@novikom.ru",
+                        text: "dcm@novikom.ru",
+                        icon: "icon-mail",
+                        iconColorClass: "violet-100",
+                        additionalClass: "text-decoration-underline",
+                    },
+                    {
+                        text: "119180 Москва, ул. Полянка Большая д. 50/1 стр. 1",
+                        icon: "icon-point",
+                        iconColorClass: "violet-100",
+                    },
+                ],
+            },
+            {
+                tag: {
+                    text: "Межбанковское кредитование (сделки МБК)",
+                    type: "outline",
+                },
+                title: "Голованов Валерий",
+                description: "Директор департамента",
+                list: [
+                    {
+                        href: "tel:+74959747189",
+                        text: "+7 (495) 974-71-89",
+                        icon: "icon-phone",
+                        iconColorClass: "violet-100",
+                        additionalText: "доб. 2360",
+                    },
+                    {
+                        href: "emailto:dcm@novikom.ru",
+                        text: "dcm@novikom.ru",
+                        icon: "icon-mail",
+                        iconColorClass: "violet-100",
+                        additionalClass: "text-decoration-underline",
+                    },
+                ],
+            },
+            {
+                tag: {
+                    text: "Межбанковское кредитование (сделки МБК)",
+                    type: "outline",
+                },
+                title: "Департамент организации финансирования на рынке капитала АО АКБ «НОВИКОМ»",
+                list: [
+                    {
+                        href: "tel:+74959747187",
+                        text: "+7 (495) 974-71-87",
+                        icon: "icon-phone",
+                        iconColorClass: "violet-100",
+                        additionalText: "доб. 130",
+                    },
+                    {
+                        href: "emailto:dcm@novikom.ru",
+                        text: "dcm@novikom.ru",
+                        icon: "icon-mail",
+                        iconColorClass: "violet-100",
+                        additionalClass: "text-decoration-underline",
+                    },
+                    {
+                        text: "119180 Москва, ул. Полянка Большая д. 50/1 стр. 1",
+                        icon: "icon-point",
+                        iconColorClass: "violet-100",
+                    },
+                ],
+            },
+            {
+                tag: {
+                    text: "Межбанковское кредитование (сделки МБК)",
+                    type: "outline",
+                },
+                title: "Голованов Валерий",
+                description: "Директор департамента",
+                list: [
+                    {
+                        href: "tel:+74959747189",
+                        text: "+7 (495) 974-71-89",
+                        icon: "icon-phone",
+                        iconColorClass: "violet-100",
+                        additionalText: "доб. 2360",
+                    },
+                    {
+                        href: "emailto:dcm@novikom.ru",
+                        text: "dcm@novikom.ru",
+                        icon: "icon-mail",
+                        iconColorClass: "violet-100",
+                        additionalClass: "text-decoration-underline",
+                    },
+                ],
+            }
+        ]
+
+        var announcementList = [
+            {
+                date: '25.04.2024',
+                title: 'Технические работы 30 апреля 2024 года в период с 0:00 до 3:30 (МСК)',
+                link: '#'
+            },
+            {
+                date: '25.04.2024',
+                title: 'Режим работы клиентских офисов в мае',
+                link: '#'
+            },
+            {
+                date: '25.04.2024',
+                title: 'Технические работы 30 апреля 2024 года в период с 0:00 до 3:30 (МСК)',
+                link: '#'
+            },
+            {
+                date: '25.04.2024',
+                title: 'Режим работы клиентских офисов в мае',
+                link: '#'
+            },
+            {
+                date: '25.04.2024',
+                title: 'Технические работы 30 апреля 2024 года в период с 0:00 до 3:30 (МСК)',
+                link: '#'
+            },
+            {
+                date: '25.04.2024',
+                title: 'Режим работы клиентских офисов в мае',
+                link: '#'
+            }
+        ]
+
+    include ../components/banners/banner-hero
+    include ../cards/card-product
+    include ../cards/card-benefit
+    include ../components/document-download
+    include ../components/contact-block
+    include ../components/announcement
+
+    include ../includes/header/header
+
+    +banner-hero(bannerHeroData, "light").bg-gradient-graphite
+
+    section.section-layout.bg-dark-30
+        .container
+            .row.row-gap-4.row-gap-md-5.row-gap-lg-7
+                .card-offer-grid
+                    each card in cardList
+                        +card-product(card).card-product--bg-white
+                .col-12
+                    .d-flex.flex-column.cards-gap
+                        .row.cards-gutter
+                            .col-12.col-md-6.col-lg-4
+                                +card-product(productCards[0]).card-product--bg-white
+                            .col-12.col-md-6.col-lg-4
+                                +card-product(productCards[1]).card-product--bg-white
+                            .col-12.col-lg-4
+                                +card-product(productCards[2]).card-product--bg-white
+                        #more-finorg.collapse.d-md-block
+                            .row.cards-gutter
+                                each card, index in productCards
+                                    if (index > 2)
+                                        .col-12.col-md-6.col-xl-3
+                                            +card-product(card).card-product--bg-white
+                    .col-12.d-md-none.mt-4
+                        a(
+                            data-bs-toggle="collapse"
+                            href="#more-finorg"
+                            role="button"
+                            aria-expanded="false"
+                            aria-controls="more-finorg"
+                        ).d-flex.gap-2.align-items-center.justify-content-center.violet-100.text-m.fw-bold
+                            | Показать все
+                            +svg-use("icon-chevron-down", "icon size-m")
+
+    section.section-layout.px-lg-6
+        .container
+            .row
+                .d-none.d-md-flex.justify-content-between
+                    h3.h3
+                        | Тарифы и документы
+                a(
+                    data-bs-toggle="collapse"
+                    href="#documents"
+                    role="button"
+                    aria-expanded="false"
+                    aria-controls="documents"
+                ).h3.d-flex.align-items-center.justify-content-between.dark-100.d-md-none
+                    | Тарифы и документы
+                    +svg-use("icon-chevron-down", "icon size-m violet-100")
+            #documents.collapse.d-md-block.mt-6.mt-lg-7
+                .row.row-gap-6
+                    .col-12.col-xxl-8.pe-xxl-6
+                        .ps-3.ps-lg-4
+                            each link in linkDownloadList
+                                +document-download(link)
+
+                    .col-12.col-xxl-4
+                        +card-benefit(cardBenefitData)
+        +pattern-bg('section-2', 'light', 'pattern-bg--position-sm-top pattern-bg--hide-mobile')
+
+    section.section-layout.bg-dark-30
+        .container
+            h3.mb-4.mb-md-6.mb-lg-7.px-lg-6 Контакты
+            .row
+                .col-12
+                    .swiper.slider-cards.js-slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:1,tablet-album:2,laptop:2,laptop-x:2" data-space-between="mobile-s:8,mobile:8,tablet:16,tablet-album:16,laptop:16,laptop-x:16")
+                        .swiper-wrapper
+                            each item in contactList
+                                .swiper-slide.js-swiper-slide
+                                    +contact-block(item).contact-block--bg-white
+
+                        +slider-controls().mt-3.mt-md-4
+
+    section.section-layout.bg-dark-10
+        .container
+            .row
+                .col-12.col-xxl-6.d-flex.flex-column.gap-6.gap-lg-7
+
+                    a(href="#").h3.d-flex.align-items-center.ps-lg-6
+                        span Объявления
+                            |
+                            |
+                            span.d-none.d-md-inline для клиентов
+                        span.icon.size-m.violet-100.ms-auto.ms-md-3
+                            +svg-use("icon-chevron-right")
+
+                    div.ps-lg-6.mt-xxl-auto.mw-100
+                        .swiper.js-announcement-slider
+                            .swiper-wrapper
+                                each item in announcementList
+                                    .swiper-slide.js-announcement-slide
+                                        +announcement(item)
+
+                            +slider-controls().mt-3.mt-md-4
+        +pattern-bg('section-2', 'light', 'pattern-bg--hide-mobile')

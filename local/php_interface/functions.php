@@ -1,5 +1,8 @@
 <?php
 
+use Bitrix\Iblock\ElementTable;
+use Bitrix\Iblock\SectionTable;
+
 function iblock(string $code): int
 {
     try {
@@ -64,14 +67,15 @@ function processTerms(array $terms, array $properties): array
 {
     $result = [];
 
-    foreach ($properties as $key => $term) {
-        if (!$term || !isset($terms[$key])) {
+    foreach ($terms as $key => $termData) {
+        if (!isset($properties[$key]) || !$properties[$key]) {
             continue;
         }
 
-        $sign = $terms[$key]['SIGN'];
-        $fromTo = $terms[$key]['FROM_TO'];
-        $period = $terms[$key]['PERIOD'] ?? 'years';
+        $sign = $termData['SIGN'];
+        $fromTo = $termData['FROM_TO'];
+        $period = $termData['PERIOD'] ?? 'years';
+        $term = $properties[$key];
         $value = '';
 
         if (in_array($key, ['RATE_FROM', 'RATE_TO'])) {
@@ -79,7 +83,7 @@ function processTerms(array $terms, array $properties): array
         } elseif (in_array($key, ['SUM_FROM', 'SUM_TO'])) {
             $value = number_format($term, 0, '', ' ') . ' <span class="currency">₽</span>';
         } elseif (in_array($key, ['PERIOD_FROM', 'PERIOD_TO'])) {
-            $value = is_int($term) ? ($period == 'years' ? floor($term / 12) : $term) . declensionFrom($term, $period) : $term;
+            $value = is_numeric($term) ? ($period === 'years' ? floor($term / 12) : $term) . declensionFrom($term, $period) : $term;
         } elseif ($key === 'DIAPASON') {
             $value = $term;
         }
@@ -93,6 +97,7 @@ function processTerms(array $terms, array $properties): array
 
     return $result;
 }
+
 
 /**
  * @param int $number

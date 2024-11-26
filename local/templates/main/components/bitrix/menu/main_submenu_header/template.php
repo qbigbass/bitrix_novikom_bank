@@ -4,9 +4,9 @@
     <div class="navbar w-100">
         <? foreach ($arResult['FIRST_LEVEL_MENU']['NOT_HIDDEN'] as $notHiddenItem) { ?>
             <? $issetChildren = isset($arResult['SECOND_LEVEL_MENU'][$notHiddenItem['ITEM_INDEX']]) ?>
-            <? $jsDesktopMoveLink = ($notHiddenItem['JS_DESKTOP_MOVE_LINK']) ? ' js-desktop-move-link' : ''; ?>
+            <? $jsDesktopMoveLink = ($notHiddenItem['JS_DESKTOP_MOVE_LINK']) ? ' js-desktop-move-link d-none d-xl-inline-flex' : ''; ?>
             <? if ($issetChildren) { ?>
-                <a class="header__link js-dropdown-link gap-1 align-items-center d-inline-flex"
+                <a class="header__link js-dropdown-link gap-1 align-items-center d-inline-flex<?= $jsDesktopMoveLink ?>"
                    href="#spoiler-<?= $notHiddenItem['ITEM_INDEX'] ?>" role="button" aria-expanded="false"
                    aria-controls="spoiler-<?= $notHiddenItem['ITEM_INDEX'] ?>">
                     <span class="fw-semibold"><?= $notHiddenItem['TEXT'] ?></span>
@@ -17,12 +17,12 @@
                     </span>
                 </a>
             <? } else { ?>
-                <a class="header__link d-inline-flex gap-1 align-items-center" href="<?= $notHiddenItem['LINK'] ?>">
+                <a class="header__link d-inline-flex gap-1 align-items-center<?= $jsDesktopMoveLink ?>" href="<?= $notHiddenItem['LINK'] ?>">
                     <span class="fw-semibold"><?= $notHiddenItem['TEXT'] ?></span>
                 </a>
             <? } ?>
         <? } ?>
-        <? if (!empty($arResult['FIRST_LEVEL_MENU']['HIDDEN'])) { ?>
+        <? if (!empty($arResult['FIRST_LEVEL_MENU']['HIDDEN']) || array_column($arResult['FIRST_LEVEL_MENU']['NOT_HIDDEN'], 'JS_DESKTOP_MOVE_LINK')) { ?>
             <div class="dropdown">
                 <button class="icon size-m dropdown-toggle violet-100" type="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
@@ -31,9 +31,17 @@
                     </svg>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end">
+                    <? foreach ($arResult['FIRST_LEVEL_MENU']['NOT_HIDDEN'] as $notHiddenItem) {
+                        if ($notHiddenItem['JS_DESKTOP_MOVE_LINK']) { ?>
+                            <li><a class="dropdown-item fw-bold d-xl-none"
+                                   href="<?= $notHiddenItem['LINK'] ?>"><?= $notHiddenItem['TEXT'] ?></a>
+                            </li>
+                        <? }
+                    } ?>
                     <? foreach ($arResult['FIRST_LEVEL_MENU']['HIDDEN'] as $hiddenItem) { ?>
                         <li><a class="dropdown-item fw-bold"
-                               href="<?= $hiddenItem['LINK'] ?>"><?= $hiddenItem['TEXT'] ?></a></li>
+                               href="<?= $hiddenItem['LINK'] ?>"><?= $hiddenItem['TEXT'] ?></a>
+                        </li>
                     <? } ?>
                 </ul>
             </div>
@@ -84,7 +92,7 @@
     <? } ?>
     <div class="dropdown-nav js-dropdown-nav" id="search">
         <div class="d-flex flex-column gap-6">
-            <form>
+            <form method="get" id="header-search-form" action="/search/">
                 <div class="input-group flex-nowrap">
                     <span class="input-group-icon" id="input-search">
                         <span class="icon">
@@ -93,8 +101,17 @@
                             </svg>
                         </span>
                     </span>
-                    <input class="form-control" type="text" placeholder="Поиск по сайту" aria-label="Поиск по сайту"
-                           aria-describedby="input-search" tabindex="-1">
+                    <input
+                        id="header-input-search"
+                        name="q"
+                        class="form-control"
+                        type="text"
+                        placeholder="Поиск по сайту"
+                        aria-label="Поиск по сайту"
+                        aria-describedby="input-search"
+                        tabindex="-1"
+                        value="<?= $arResult["REQUEST"]["QUERY"] ?>"
+                    >
                 </div>
             </form>
             <div class="d-flex flex-column gap-4">
