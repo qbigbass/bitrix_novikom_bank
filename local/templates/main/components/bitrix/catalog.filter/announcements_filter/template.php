@@ -24,6 +24,7 @@ $delFilter = $request["del_filter"];
 if ($delFilter) {
     $typeSelected = 0;
 }
+
 ?>
 <form name="<?echo $arResult["FILTER_NAME"]."_form"?>" action="<?echo $arResult["FORM_ACTION"]?>" method="get">
     <?foreach($arResult["ITEMS"] as $arItem):
@@ -33,18 +34,18 @@ if ($delFilter) {
     endforeach;?>
     <div class="d-flex flex-column flex-md-row gap-4 gap-md-3 gap-lg-6 align-items-start align-items-md-center justify-content-lg-between">
         <div class="d-lg-none w-100 w-md-50">
-            <select class="form-select form-select--size-small js-select" id="select1" aria-label="Подсказка">
+            <select class="form-select form-select--size-small js-select" id="select1" aria-label="Подсказка" onchange="setFilter(this)">
                 <?foreach ($arResult["ITEMS"] as $item):?>
                     <option
                         <?if((int)$typeSelected === 0):?>selected<?endif;?>
                         value="#to-all"
-                        data-setFilter="Y"
+                        data-clearFilter="Y"
                         data-filter="<?=$APPLICATION->GetCurPage(false)?>"
                     ><?=Loc::getMessage('FILTER_ALL_TITLE')?></option>
                     <?foreach ($item["LIST"] as $xmlId => $value):?>
                         <?if ((int)$xmlId > 0):?>
                             <option
-                                <?if((int)$typeSelected === (int)$xmlId):?>active<?endif;?>
+                                <?if((int)$typeSelected === (int)$xmlId):?>selected<?endif;?>
                                 value=""
                                 data-setFilter="Y"
                                 data-filter="<?=$APPLICATION->GetCurPage(false)?>?<?= $item["INPUT_NAME"] ?>=<?= $xmlId ?>&set_filter=Y"
@@ -118,11 +119,46 @@ if ($delFilter) {
 
             location.href = link;
         });
+
         $(document).on('click', '[data-clearFilter=Y]', function(e){
             e.preventDefault();
             let link = $(this).data('filter');
             location.href = link;
         });
-        /* Фильтр по типу объвяления для mobile */
     });
+
+    /* Фильтр по типу объявления для mobile */
+    function setFilter(select) {
+        let link = '';
+        let dateFilter = $('input[name=date1]').val();
+        let arDateFilter = dateFilter.split(' - ');
+        let clearFilter = true;
+
+        for (let i = 0; i < select.options.length; i++) {
+            if (select.options[i].selected) {
+                link = $(select.options[i]).data('filter');
+
+                if ($(select.options[i]).data('setfilter')) {
+                    clearFilter = false;
+                }
+            }
+        }
+
+        if (clearFilter) {
+            location.href = link;
+        }
+
+        if (arDateFilter.length > 0 && arDateFilter[0] !== "" && link !== "") {
+            let dFrom = arDateFilter[0];
+            link += '&propDateFrom=' + dFrom;
+
+            if (arDateFilter[1]) {
+                let dTo = arDateFilter[1];
+                link += '&propDateTo=' + dTo;
+            }
+        }
+
+        location.href = link;
+    }
+
 </script>

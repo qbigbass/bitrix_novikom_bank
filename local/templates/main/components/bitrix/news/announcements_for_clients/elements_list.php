@@ -85,10 +85,17 @@ $values = $request->getQueryList();
             </div>
         </div>
         <?
+        /* Фильтр объявлений по дате из календаря */
         if ($request["propDateFrom"]) {
             $dateFrom = $request["propDateFrom"];
-            $GLOBALS['arrAdFilter']['>=PROPERTY_DATE'] = ConvertDateTime($dateFrom, "YYYY-MM-DD")." 00:00:00";
+
+            if ($request["propDateTo"]) {
+                $GLOBALS['arrAdFilter']['>=PROPERTY_DATE'] = ConvertDateTime($dateFrom, "YYYY-MM-DD")." 00:00:00";
+            } else {
+                $GLOBALS['arrAdFilter']['=PROPERTY_DATE'] = ConvertDateTime($dateFrom, "YYYY-MM-DD");
+            }
         }
+
         if ($request["propDateTo"]) {
             $dateTo = $request["propDateTo"];
             $GLOBALS['arrAdFilter']['<=PROPERTY_DATE'] = ConvertDateTime($dateTo, "YYYY-MM-DD")." 23:59:59";
