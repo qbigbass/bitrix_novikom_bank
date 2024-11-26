@@ -261,8 +261,6 @@ function toggleButton(inputList, checkboxElement, buttonElement, formErrorElemen
     const isInvalidInput = hasInvalidInput(inputList, checkboxElement)
     const isEmptyRequiredInput = hasEmptyRequiredInput(inputList)
 
-    // console.log(isInvalidInput, isEmptyRequiredInput)
-
     if (isInvalidInput || isEmptyRequiredInput) {
         buttonElement.disabled = true;
         buttonElement.setAttribute('aria-disabled', 'true')
