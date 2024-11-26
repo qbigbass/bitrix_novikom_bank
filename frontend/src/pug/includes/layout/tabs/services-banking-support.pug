@@ -1,0 +1,73 @@
+-
+    var benefitsList = [
+        {
+            spriteData: {
+                icon: 'hand-money',
+                classList: 'size-xl'
+            },
+            title: 'Открытие и обслуживание',
+            description: 'отдельных счетов (обособленных от основной деятельности поставщика/подрядчика)'
+        },
+        {
+            spriteData: {
+                icon: 'limits',
+                classList: 'size-xl'
+            },
+            title: 'Контроль целевого использования денежных средств',
+            description: 'с отдельных счетов на основании договорных документов до любого уровня кооперации определяет Заказчик)'
+        },
+        {
+            spriteData: {
+                icon: 'arhive',
+                classList: 'size-xl'
+            },
+            title: 'Формирование базы',
+            description: 'расчетных и договорных документов по исполнению контракта'
+        },
+        {
+            spriteData: {
+                icon: 'stock-exchange',
+                classList: 'size-xl'
+            },
+            title: 'Мониторинг',
+            description: 'расходования денежных средств по смете/ведомости затрат, согласованной Заказчиком'
+        },
+        {
+            spriteData: {
+                icon: 'doc-money',
+                classList: 'size-xl'
+            },
+            title: 'Контроль',
+            description: 'соответствия платежа договорным условиям и подтверждающим документам'
+        },
+        {
+            spriteData: {
+                icon: 'purchases',
+                classList: 'size-xl'
+            },
+            title: 'Анализ',
+            description: 'обоснованности затрат, напрямую не относящиеся к исполнению контракта'
+        },
+        {
+            spriteData: {
+                icon: 'info',
+                classList: 'size-xl'
+            },
+            title: 'Оперативное уведомление',
+            description: 'Заказчика в случае выявления несоответствий по счетам поставщика/подрядчика'
+        },
+        {
+            spriteData: {
+                icon: 'doc-certificate',
+                classList: 'size-xl'
+            },
+            title: 'Регулярная отчетность\n',
+            description: 'по формам и в составе, исходя из потребностей Заказчика, в том числе контроль этапов исполнения контракта, включая фото/видео отчеты'
+        },
+    ]
+
+.row.row-gap-6.row-gap-lg-7.gx-xl-6
+    each item, idx in benefitsList
+        .col-12.col-md-6.col-xl-4
+            +benefit(item.spriteData, item.title)
+                span!= item.description

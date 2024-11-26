@@ -30,7 +30,11 @@ $terms = [
 ?>
 
 <? foreach ($arResult['ITEMS'] as $loan) { ?>
-    <div class="card-product-list overflow-hidden position-relative mh-100 h-auto bg-dark-10 w-100 py-6 py-sm-9 py-md-11 px-3 px-sm-4 px-md-6 pe-xxl-11">
+    <?
+    $this->AddEditAction($loan['ID'], $loan['EDIT_LINK'], CIBlock::GetArrayByID($loan["IBLOCK_ID"], "ELEMENT_EDIT"));
+    $this->AddDeleteAction($loan['ID'], $loan['DELETE_LINK'], CIBlock::GetArrayByID($loan["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
+    ?>
+    <div class="card-product-list overflow-hidden position-relative mh-100 h-auto bg-dark-10 w-100 py-6 py-sm-9 py-md-11 px-3 px-sm-4 px-md-6 pe-xxl-11" id="<?=$this->GetEditAreaId($loan['ID']);?>">
         <div class="card-product-list__inner d-flex flex-column flex-lg-row align-items-start h-100 gap-3 gap-md-6 gap-xxl-11">
             <div class="card-product-list__image-container mx-auto">
                 <img class="card-product-list__image" src="<?= $loan['PREVIEW_PICTURE']['SRC'] ?>" alt="<?= $loan['PREVIEW_PICTURE']['ALT'] ?>" loading="lazy">
@@ -60,9 +64,9 @@ $terms = [
 
                 <div class="d-flex flex-column flex-sm-row align-items-center gap-5 gap-sm-6 w-100">
                     <? if (!empty($loan['PROPERTIES']['BUTTON_LIST']['VALUE'])) { ?>
-                        <a class="btn btn-tertiary btn-lg card-product-list__button w-100 w-sm-auto" href="#"><?= $loan['PROPERTIES']['BUTTON_TEXT_LIST']['VALUE'] ?></a>
+                        <a class="btn btn-tertiary btn-lg-lg card-product-list__button w-100 w-sm-auto" href="#"><?= $loan['PROPERTIES']['BUTTON_TEXT_LIST']['VALUE'] ?></a>
                     <? } ?>
-                    <a class="btn btn-link btn-lg d-inline-flex gap-2 align-items-center card-product-list__button-more" href="<?= $loan['CODE'] == 'restructuring' ? '/loans/restructuring/' : $loan['DETAIL_PAGE_URL'] ?>">
+                    <a class="btn btn-link btn-lg-lg d-inline-flex gap-2 align-items-center card-product-list__button-more" href="<?= $loan['CODE'] == 'restructuring' ? '/loans/restructuring/' : $loan['DETAIL_PAGE_URL'] ?>">
                         <span>Подробнее</span>
                         <svg class="card-product-list__button-icon" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                             <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right-small"></use>

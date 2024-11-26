@@ -1,0 +1,463 @@
+extends ../templates/base
+
+block title
+    title= 'Банковское сопровождение контрактов'
+    meta(name="description" content="Описание страницы банковское сопровождение контрактов")
+block content
+    include ../includes/header/header
+    include ../components/banners/banner-product
+    include ../includes/layout/slider-card-benefit-bank
+    include ../components/helper
+    include ../components/benefit
+    include ../components/ui/accordion-item
+    include ../components/stepper
+    include ../components/ui/tabs-simple
+    include ../components/contact-block
+    include ../components/announcement
+    include ../includes/layout/slider-card-product
+
+    -
+        var bannerPromoData = {
+            title: "Банковское сопровождение контрактов",
+            subtitle: "Обеспечение контроля целевого расходования денежных средств в рамках исполнения сопровождаемого договора с использованием отдельных счетов",
+            imgSrc: "img/hero-banner/bank-support.png",
+            bgColor: "heavy-purple",
+            btnType: "btn-orange",
+            breadcrumbsArray: [
+                {
+                    link: "#",
+                    linkText: "Корпоративным клиентам"
+                },
+                {
+                    link: "#",
+                    linkText: "Финансирование"
+                }
+            ],
+            buttonText: "Заявка на консультацию",
+            urlHref: "/"
+        }
+
+        var allBenefits = [
+            {
+                spriteData: {
+                    icon: 'limits',
+                    classList: 'size-xl',
+                },
+                description: 'Минимизация возможных негативных последствий при реализации контракта, оптимизацию затрат и&nbsp;управление расходами',
+            },
+            {
+                spriteData: {
+                    icon: 'doc-search',
+                    classList: 'size-xl',
+                },
+                description: 'Снятие с&nbsp;заказчика обязанности',
+            },
+            {
+                spriteData: {
+                    icon: 'personal-manager',
+                    classList: 'size-xl',
+                },
+                description: 'Контроль расходования денежных средств по&nbsp;государственным контрактам в&nbsp;рамках законов 44&nbsp;&mdash; ФЗ, 223&nbsp;&mdash; ФЗ, по&nbsp;иным, в&nbsp;том числе инвестиционным и&nbsp;коммерческим проектам',
+            },
+            {
+                spriteData: {
+                    icon: 'part-down',
+                    classList: 'size-xl',
+                },
+                description: 'Обособление целевых денежных потоков на&nbsp;отдельных счетах',
+            },
+            {
+                spriteData: {
+                    icon: 'risks',
+                    classList: 'size-xl',
+                },
+                description: 'Снижение рисков неисполнения контракта',
+            },
+            {
+                spriteData: {
+                    icon: 'timer',
+                    classList: 'size-xl',
+                },
+                description: 'Оперативное получение сведений об&nbsp;исполнении контракта',
+            }
+        ]
+
+        var accordionList = [
+            {
+                id: 1,
+                title: 'Банковское сопровождение контракта, заключенного в соответствии с 44-ФЗ',
+                isOpen: true
+            },
+            {
+                id: 2,
+                title: 'Банковское сопровождение коммерческих и инвестиционных проектов',
+            },
+            {
+                id: 3,
+                title: 'Банковское сопровождение в рамках иных нормативных актов',
+            },
+        ]
+
+        var accordionContent = {
+            benefits: [
+                {
+                    spriteData: {
+                        icon: 'doc-check',
+                        classList: 'size-xl',
+                    },
+                    title: "В&nbsp;личном кабинете на&nbsp;сайте программы",
+                    description: "<ul class='list'>" +
+                            "<li>Проведение мониторинга движения денежных средств на отдельном счете, открытом в Новикоме в рамках исполнения сопровождаемого контракта</li>" +
+                            "<li>Проведение мониторинга движения денежных средств на отдельном счете, открытом в Новикоме в рамках исполнения сопровождаемого контракта</li>" +
+                            "<li>Предоставление заказчику сведений о результатах проведенной Новикомом идентификации Головного исполнителя, Соисполнителя при открытии </li>" +
+                            "</ul>"
+                },
+                {
+                    spriteData: {
+                        icon: 'doc-search',
+                        classList: 'size-xl',
+                    },
+                    title: "Расширенное банковское сопровождение",
+                    description: "<ul class='list'>" +
+                            "<li>Проведение мониторинга движения денежных средств на отдельном счете, открытом в Новикоме в рамках исполнения сопровождаемого контракта</li>" +
+                            "<li>Проведение мониторинга движения денежных средств на отдельном счете, открытом в Новикоме в рамках исполнения сопровождаемого контракта</li>" +
+                            "<li>Предоставление заказчику сведений о результатах проведенной Новикомом идентификации Головного исполнителя, Соисполнителя при открытии </li>" +
+                            "<li>Финансовов-экономический анализ документации, на основании которой планируется осуществить платеж</li>" +
+                            "<li>Контроль и акцепт платежей Новикомом по результатам проверки целевого назначения платежа</li>" +
+                            "<li>Контроль фактического исполнения контракта исполнителем, его соисполнителем и поставщиками\n</li>" +
+                            "</ul>"
+                },
+            ],
+            steps: {
+                items: [
+                    {
+                        text: "Обращение в НОВИКОМ за обеспечением по госконтракту"
+                    },
+                    {
+                        text: "Передача проекта контракта для определения вида сопровождения"
+                    },
+                    {
+                        text: "НОВИКОМ предлагает форму договора простого или расширенного сопровождения "
+                    },
+                    {
+                        text: "Определение опций в рамках расширенного сопровождения"
+                    },
+                    {
+                        text: "Передача в НОВИКОМ пакета документов для заключения договора и открытия счета"
+                    },
+                    {
+                        text: "Заключение договора на открытие отдельного счета"
+                    },
+                ],
+                color: "orange"
+            },
+            lists: [
+                {
+                    title: "Уровень кооперации",
+                    list: "<ul class='list list--size-l'>" +
+                            "<li>Устанавливается нижний уровень кооперации, ниже которого Новиком не ведет контроль расходования денежных средств</li>" +
+                            "<li>Устанавливается пороговая сумма при выполнении работ, оказании услуг, поставке материалов, ниже которой контрагент не открывает отдельный банковский счет\n</li>" +
+                            "</ul>"
+                },
+                {
+                    title: "Глубина контроля",
+                    list: "<ul class='list list--size-l'>" +
+                            "<li>Мониторинг расчетов</li>" +
+                            "<li>Контроль сметной документации или установленного бюджета</li>" +
+                            "<li>Контроль целевого расходования денежных средств, проверка соответствия проводимых платежей подтверждающим документам</li>" +
+                            "<li>Согласование платежей Заказчиком</li>" +
+                            "<li>Проведение платежей по заранее согласованному реестру платежей, реестру соисполнителей/контрагентов</li>" +
+                            "<li>Установление режима счета (запрещенные/разрешенные операции)</li>" +
+                            "</ul>"
+                }
+            ],
+        }
+
+        var tabsListAbout = [
+            {
+                link: '#services',
+                id: 'services',
+                linkText: 'Услуги',
+                isActive: true
+            },
+            {
+                link: '#opening-account',
+                id: 'opening-account',
+                linkText: 'Открытие счета',
+                isActive: false
+            },
+            {
+                link: '#closing-account',
+                id: 'closing-account',
+                linkText: 'Закрытие счета',
+                isActive: false
+            },
+            {
+                link: '#instructions',
+                id: 'instructions',
+                linkText: 'Памятки и инстуркции',
+                isActive: false
+            },
+            {
+                link: '#faq',
+                id: 'faq',
+                linkText: 'Вопросы и ответы',
+                isActive: false
+            },
+        ]
+
+        var contactList = [
+            {
+                pattern: false,
+                title: "ООО &laquo;Нацпромлизинг&raquo;",
+                list: [
+                    {
+                        href: "tel:+74959747187",
+                        text: "+7 (495) 974-71-87",
+                        icon: "icon-phone",
+                    },
+                    {
+                        href: "mailto:info@prom-lk.ru",
+                        text: "info@prom-lk.ru",
+                        icon: "icon-mail",
+                        additionalClass: "text-decoration-underline",
+                    },
+                ],
+            },
+            {
+                pattern: true,
+                title: "Остались вопросы",
+                description: "Оставьте свой телефон и мы перезвоним вам, либо задайте вопрос в чате",
+                buttons: [
+                    {
+                        type: "btn-outline-primary",
+                        text: "Открыть чат"
+                    },
+                    {
+                        type: "btn-primary",
+                        text: "Перезвоните мне"
+                    }
+                ]
+            },
+        ]
+
+        var cardProductListCorp = [
+            {
+                color: 'orange',
+                tag: 'Корпоративным клиентам',
+                title: 'Размещение денежных средств',
+                img: 'large-corporate/deposits.png',
+                link: 'Подробнее',
+                description: 'Депозиты для корпоративных клиентов'
+            },
+            {
+                color: 'orange',
+                tag: 'Корпоративным клиентам',
+                title: 'Меры господдержки',
+                img: 'large-corporate/state-support.png',
+                link: 'Подробнее',
+                description: 'Льготное финансирование организациям'
+            },
+            {
+                color: 'orange',
+                tag: 'Корпоративным клиентам',
+                title: 'Программа поощрения «Развитие»',
+                img: 'large-corporate/program-development.png',
+                link: 'Подробнее',
+                description: 'Особые условия обслуживания в&nbsp;банке'
+            },
+            {
+                color: 'orange',
+                tag: 'Корпоративным клиентам',
+                title: 'Размещение денежных средств',
+                img: 'large-corporate/deposits.png',
+                link: 'Подробнее',
+                description: 'Депозиты для корпоративных клиентов'
+            },
+            {
+                color: 'orange',
+                tag: 'Корпоративным клиентам',
+                title: 'Меры господдержки',
+                img: 'large-corporate/state-support.png',
+                link: 'Подробнее',
+                description: 'Льготное финансирование организациям'
+            },
+        ]
+
+        var announcementList = [
+            {
+                date: '25.04.2024',
+                title: 'Технические работы 30 апреля 2024 года в период с 0:00 до 3:30 (МСК)',
+                link: '#'
+            },
+            {
+                date: '25.04.2024',
+                title: 'Режим работы клиентских офисов в мае',
+                link: '#'
+            },
+            {
+                date: '25.04.2024',
+                title: 'Технические работы 30 апреля 2024 года в период с 0:00 до 3:30 (МСК)',
+                link: '#'
+            },
+            {
+                date: '25.04.2024',
+                title: 'Режим работы клиентских офисов в мае',
+                link: '#'
+            },
+            {
+                date: '25.04.2024',
+                title: 'Технические работы 30 апреля 2024 года в период с 0:00 до 3:30 (МСК)',
+                link: '#'
+            },
+            {
+                date: '25.04.2024',
+                title: 'Режим работы клиентских офисов в мае',
+                link: '#'
+            }
+        ]
+
+    +banner-product(bannerPromoData).banner-product--border-orange
+
+    section.section-layout
+        .container
+            h3.px-lg-6.mb-6.mb-lg-7
+                | Преимущества Новикома
+            +slider-card-benefit-bank()
+        +pattern-bg('section', 'light', 'pattern-bg--hide-mobile')
+
+    section.section-layout
+        .container
+            .row
+                .col-12
+                    +polygon-container("orange-100")
+                        +helper("img/restructuring-additional-info_orange.png", "bg-purple-10")
+                            p
+                              | Банк Новиком обеспечивает банковское сопровождение контрактов через открытие и&nbsp;ведение отдельных банковских счетов с&nbsp;бесплатным сопровождением сделки. Другие операции оплачиваются согласно тарифам.
+                              <br><br>
+                              | Банк открывает счета в&nbsp;срок до&nbsp;5&nbsp;рабочих дней #[a(href="#" class="link") при наличии полного пакета корректно оформленных документов].
+
+    section.section-layout.px-lg-6
+        .container
+            h3.mb-4.mb-md-6.mb-lg-7
+                | Возможности
+            #benefits.row.row-gap-6.gx-xl-6
+                each item, index in allBenefits
+                    .col-12.col-md-6.col-lg-4(class=index > 3 && 'd-none d-md-block')
+                        +benefit(item.spriteData, item.title)
+                            span!= item.description
+                .col-12.d-md-none
+                    button(
+                        data-target="benefits"
+                        role="button"
+                    ).js-more-content-link.d-flex.gap-2.align-items-center.justify-content-center.violet-100.text-m.fw-bold
+                        | Ещё преимущества
+                        +svg-use("icon-chevron-down", "icon size-m")
+        +pattern-bg('section', 'light', 'pattern-bg--hide-mobile')
+
+    section.section-layout.bg-dark-10.px-lg-6
+        .container
+            h3.mb-4.mb-md-6.mb-lg-7
+                | Варианты банковского сопровождения
+            .col-12
+                .accordion.accordion--size-lg.accordion--bg-transparent#accordion-option-bank-support
+                    each item in accordionList
+                        +accordion-item(item, 'accordion-option-bank-support', 'fw-bold h4')
+                            .d-flex.flex-column.gap-6.gap-md-7
+                                .row.row-gap-6.gx-xl-6
+                                    each item, index in accordionContent.benefits
+                                        .col-12.col-lg-6
+                                            +benefit(item.spriteData, item.title)
+                                                span!= item.description
+                                span(aria-hidden="true").border-bottom-dashed
+                                .row.row-gap-6
+                                    h4 Как организовать банковское сопровождение коммерческих контрактов?
+                                    +stepper(accordionContent.steps.items, accordionContent.steps.items.length, accordionContent.steps.color )
+                                .row
+                                    .col-12
+                                        +polygon-container("orange-100")
+                                            +helper("img/restructuring-additional-info_orange.png", "bg-white")
+                                                p Договор банковского сопровождения должен быть заключен в срок, установленный государственным контрактом (если такой срок установлен)
+                                each item in accordionContent.lists
+                                    .row
+                                        .d-flex.flex-column.gap-3
+                                            h4.text-l!= item.title
+                                            span!= item.list
+                                .row
+                                    .col-12.text-center
+                                        a.btn.btn-orange.btn-lg-lg.d-inline-block(href="#") Зарезервировать счет онлайн
+
+        +pattern-bg('section-2', 'light', 'pattern-bg--hide-mobile')
+
+    section.section-layout.js-collapsed-mobile
+        .container
+            h3.d-none.d-md-block.mb-md-6.mb-lg-7.px-lg-6
+                | Подробнее о&nbsp;банковском сопровождении
+            a(
+                data-bs-toggle="collapse"
+                href="#about-banking-support"
+                role="button"
+                aria-expanded="false"
+                aria-controls="about-banking-support"
+            ).h3.d-flex.align-items-center.justify-content-between.dark-100.d-md-none
+                | Подробнее о&nbsp;банковском сопровождении
+                +svg-use("icon-chevron-down", "icon size-m violet-100")
+            #about-banking-support.collapse.d-md-block.mt-4.mt-md-6.mt-lg-7
+                .row.px-lg-6
+                    .col-12
+                        +tabs-simple(tabsListAbout, false)
+                        .tab-content.mt-4.mt-md-6.mt-lg-7
+                            #services.tab-pane.fade.show.active(aria-labelledby="services" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/services-banking-support
+                            #opening-account.tab-pane.fade(aria-labelledby="opening-account" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/documents-corp-clients
+                            #closing-account.tab-pane.fade(aria-labelledby="closing-account" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/documents-corp-clients
+                            #instructions.tab-pane.fade(aria-labelledby="instructions" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/documents-corp-clients
+                            #faq.tab-pane.fade(aria-labelledby="faq" tabindex="0" role="tabpanel")
+                                include ../includes/layout/tabs/faq
+        +pattern-bg('section-2', 'light', 'pattern-bg--hide-mobile')
+
+    section.section-layout.bg-purple-10
+        .container
+            h3.mb-4.mb-md-6.mb-lg-7.px-lg-6 Контакты
+            .row
+                .col-12
+                    .swiper.slider-cards.js-slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:1,tablet-album:2,laptop:2,laptop-x:2" data-space-between="mobile-s:8,mobile:8,tablet:16,tablet-album:16,laptop:16,laptop-x:16")
+                        .swiper-wrapper
+                            .swiper-slide.js-swiper-slide
+                                +contact-block(contactList[0]).contact-block--bg-heavy-purple
+                            .swiper-slide.js-swiper-slide
+                                +contact-block(contactList[1]).contact-block--bg-white
+
+                        +slider-controls().mt-3.mt-md-4
+
+    section.section-layout
+        .container
+            .row
+                .col-12.col-xxl-6.d-flex.flex-column.gap-6.gap-lg-7
+
+                    a(href="#").h3.d-flex.align-items-center.ps-lg-6.pt-xxl-6
+                        span Объявления
+                            |
+                            |
+                            span.d-none.d-md-inline для клиентов
+                        span.icon.size-m.violet-100.ms-auto.ms-md-3
+                            +svg-use("icon-chevron-right")
+
+                    div.ps-lg-6.mt-xxl-auto.mw-100
+                        .swiper.js-announcement-slider
+                            .swiper-wrapper
+                                each item in announcementList
+                                    .swiper-slide.js-announcement-slide
+                                        +announcement(item)
+
+                            +slider-controls().mt-3.mt-md-4
+        +pattern-bg('section-2', 'light', 'pattern-bg--hide-mobile')
+
+    section.section-layout
+        .container
+            h3.px-lg-6.mb-4.mb-md-6.mb-lg-7
+                | Другие услуги для корпоративных клиентов
+            +slider-card-product(cardProductListCorp)

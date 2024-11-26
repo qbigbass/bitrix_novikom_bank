@@ -1,5 +1,6 @@
 .card-benefit {
     $root: &;
+    position: relative;
     border-radius: .75rem;
 
     &__title,
@@ -33,8 +34,28 @@
         }
     }
 
+    &--size-lg-large {
+        @include use-media(tablet-album, laptop) {
+            #{$root}__description, #{$root}__list {
+                max-width: 60%;
+            }
+        }
+
+        @include use-media(tablet-album) {
+            #{$root}__image {
+                position: absolute;
+                width: 17.5rem;
+                height: 17.5rem;
+                right: -1.5rem;
+                bottom: -1.5rem;
+            }
+        }
+    }
+
     &--type-img {
         position: relative;
+        overflow: hidden;
+        height: 100%;
 
         @include use-media(laptop) {
             min-height: 19rem; //304px

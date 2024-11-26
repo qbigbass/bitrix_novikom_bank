@@ -68,19 +68,15 @@ include ../../../cards/card-calculate-result
                             | Особенности
                         select#select1(aria-label="Подсказка").form-select.js-select
                             option(selected value="1") С поручительством физического лица
-                            option(value="2") Без поручительством физического лица
-                            option(value="3") Список 3
-                            option(value="4") Список 4
+                            option(value="2") Без обеспечения
+                            option(value="3") На рефинансирование
 
                     .d-flex.flex-column.row-gap-2
                         label(for="select2").form-label.mb-0
                             | Тип платежей
                         select#select2(aria-label="Подсказка").form-select.js-select
-                            option(selected value="1") Аннуитетные
-                            option(value="2") Список 2
-                            option(value="3") Список 3
-                            option(value="4") Список 4
-
+                            option(selected value="1") Аннуитетные платежи
+                            option(value="2") Дифференцированные платежи
 
     .col-12.col-lg-6.mt-4.mt-md-6.mt-lg-0
         .ps-xxl-6

@@ -24,7 +24,7 @@ for($index = 0; $index < $itemSize; $index++)
 	if($arResult[$index]["LINK"] <> "" && $index != $itemSize-1)
 	{
         $strReturn .= '
-            <a class="breadcrumbs__item d-md-inline-flex align-items-center gap-2 text-s text-white-50 d-inline-flex" href="' . $arResult[$index]["LINK"] . '">
+            <a class="breadcrumbs__item d-md-inline-flex align-items-center gap-2 text-s text-white-50 d-inline-flex d-none" href="' . $arResult[$index]["LINK"] . '">
                 ' . $arrow . '
                 <span>' . $title . '</span>
             </a>';

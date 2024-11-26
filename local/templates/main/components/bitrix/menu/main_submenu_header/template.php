@@ -1,95 +1,98 @@
-<?if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
+<? if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die(); ?>
 
-<?if (!empty($arResult)) {?>
+<? if (!empty($arResult)) { ?>
     <div class="navbar w-100">
-        <?foreach($arResult['FIRST_LEVEL_MENU']['NOT_HIDDEN'] as $notHiddenItem) {?>
-            <?$issetChildren = isset($arResult['SECOND_LEVEL_MENU'][$notHiddenItem['ITEM_INDEX']])?>
-            <?$jsDesktopMoveLink = ($notHiddenItem['JS_DESKTOP_MOVE_LINK']) ? ' js-desktop-move-link' : '';?>
-            <?if($issetChildren) {?>
-                <a class="header__link js-dropdown-link gap-1 align-items-center d-inline-flex" href="#spoiler-<?=$notHiddenItem['ITEM_INDEX']?>" role="button" aria-expanded="false" aria-controls="spoiler-<?=$notHiddenItem['ITEM_INDEX']?>">
-                    <span class="fw-semibold"><?=$notHiddenItem['TEXT']?></span>
+        <? foreach ($arResult['FIRST_LEVEL_MENU']['NOT_HIDDEN'] as $notHiddenItem) { ?>
+            <? $issetChildren = isset($arResult['SECOND_LEVEL_MENU'][$notHiddenItem['ITEM_INDEX']]) ?>
+            <? $jsDesktopMoveLink = ($notHiddenItem['JS_DESKTOP_MOVE_LINK']) ? ' js-desktop-move-link d-none d-xl-inline-flex' : ''; ?>
+            <? if ($issetChildren) { ?>
+                <a class="header__link js-dropdown-link gap-1 align-items-center d-inline-flex<?= $jsDesktopMoveLink ?>"
+                   href="#spoiler-<?= $notHiddenItem['ITEM_INDEX'] ?>" role="button" aria-expanded="false"
+                   aria-controls="spoiler-<?= $notHiddenItem['ITEM_INDEX'] ?>">
+                    <span class="fw-semibold"><?= $notHiddenItem['TEXT'] ?></span>
                     <span class="icon size-s" slot="icon-after">
                         <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                             <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-down-small"></use>
                         </svg>
                     </span>
                 </a>
-            <?} else {?>
-                <a class="header__link d-inline-flex gap-1 align-items-center" href="<?=$notHiddenItem['LINK']?>">
-                    <span class="fw-semibold"><?=$notHiddenItem['TEXT']?></span>
+            <? } else { ?>
+                <a class="header__link d-inline-flex gap-1 align-items-center<?= $jsDesktopMoveLink ?>" href="<?= $notHiddenItem['LINK'] ?>">
+                    <span class="fw-semibold"><?= $notHiddenItem['TEXT'] ?></span>
                 </a>
-            <?}?>
-        <?}?>
-        <?if(!empty($arResult['HIDDEN'])) {?>
+            <? } ?>
+        <? } ?>
+        <? if (!empty($arResult['FIRST_LEVEL_MENU']['HIDDEN']) || array_column($arResult['FIRST_LEVEL_MENU']['NOT_HIDDEN'], 'JS_DESKTOP_MOVE_LINK')) { ?>
             <div class="dropdown">
-                <button class="icon size-m dropdown-toggle violet-100" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <button class="icon size-m dropdown-toggle violet-100" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                         <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-more"></use>
                     </svg>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end">
-                    <?foreach ($arResult['FIRST_LEVEL_MENU']['HIDDEN'] as $hiddenItem) {?>
-                        <?$issetChildren = isset($arResult['SECOND_LEVEL_MENU'][$hiddenItem['ITEM_INDEX']])?>
-                        <?if($issetChildren) {?>
-                            <li>
-                                <a class="dropdown-item fw-bold d-inline-flex align-items-center justify-content-between d-xl-none js-dropdown-link" href="#spoiler-<?=$hiddenItem['ITEM_INDEX']?>" role="button" aria-expanded="false" aria-controls="spoiler-<?=$hiddenItem['ITEM_INDEX']?>" data-bs-toggle="collapse">
-                                    <?=$hiddenItem['TEXT']?>
-                                    <span class="icon size-m" slot="icon-after">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                            <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
-                                        </svg>
-                                    </span>
-                                </a>
+                    <? foreach ($arResult['FIRST_LEVEL_MENU']['NOT_HIDDEN'] as $notHiddenItem) {
+                        if ($notHiddenItem['JS_DESKTOP_MOVE_LINK']) { ?>
+                            <li><a class="dropdown-item fw-bold d-xl-none"
+                                   href="<?= $notHiddenItem['LINK'] ?>"><?= $notHiddenItem['TEXT'] ?></a>
                             </li>
-                        <?} else {?>
-                            <li><a class="dropdown-item fw-bold" href="<?=$hiddenItem['LINK']?>"><?=$hiddenItem['TEXT']?></a></li>
-                        <?}?>
-                    <?}?>
+                        <? }
+                    } ?>
+                    <? foreach ($arResult['FIRST_LEVEL_MENU']['HIDDEN'] as $hiddenItem) { ?>
+                        <li><a class="dropdown-item fw-bold"
+                               href="<?= $hiddenItem['LINK'] ?>"><?= $hiddenItem['TEXT'] ?></a>
+                        </li>
+                    <? } ?>
                 </ul>
             </div>
-        <?}?>
+        <? } ?>
         <div class="dropdown">
-            <button class="icon size-m dropdown-toggle violet-100 js-dropdown-link" type="button" data-target="#search" aria-expanded="false" aria-controls="search">
+            <button class="icon size-m dropdown-toggle violet-100 js-dropdown-link" type="button" data-target="#search"
+                    aria-expanded="false" aria-controls="search">
                 <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                     <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-search"></use>
                 </svg>
             </button>
         </div>
     </div>
-    <?foreach ($arResult['SECOND_LEVEL_MENU'] as $indexItem => $secondLevelItems) {?>
-        <div class="dropdown-nav js-dropdown-nav" id="spoiler-<?=$indexItem?>" role="menu">
+    <? foreach ($arResult['SECOND_LEVEL_MENU'] as $indexItem => $secondLevelItems) { ?>
+        <div class="dropdown-nav js-dropdown-nav" id="spoiler-<?= $indexItem ?>" role="menu">
             <div class="row">
                 <div class="col-6 col-xxl-8">
                     <div class="row row-gap-4">
-                        <?foreach ($secondLevelItems as $item) {?>
+                        <? foreach ($secondLevelItems as $item) { ?>
                             <div class="col-6 violet-100">
-                                <a class="header__link fw-semibold" href="<?=$item['LINK']?>" tabindex="-1"><?=$item['TEXT']?></a>
+                                <a class="header__link fw-semibold" href="<?= $item['LINK'] ?>"
+                                   tabindex="-1"><?= $item['TEXT'] ?></a>
                             </div>
-                        <?}?>
+                        <? } ?>
                     </div>
                 </div>
                 <div class="col-6 col-xxl-4">
                     <a class="polygon-container js-polygon-container" href="#" tabindex="-1">
                         <div class="polygon-container__content">
                             <div class="card-menu">
-                                <img class="card-menu__image" src="/frontend/dist/img/card-menu-image.png" alt="" loading="lazy">
+                                <img class="card-menu__image" src="/frontend/dist/img/card-menu-image.png" alt=""
+                                     loading="lazy">
                                 <h5>Зарплатная карта «Мир»</h5>
-                                <p class="text-s mb-0">Карта с&nbsp;полным набором<br>операций в&nbsp;торговых точках<br>и&nbsp;интернете</p>
+                                <p class="text-s mb-0">Карта с&nbsp;полным набором<br>операций в&nbsp;торговых
+                                    точках<br>и&nbsp;интернете</p>
                             </div>
                         </div>
                         <div class="polygon-container__polygon js-polygon-container-polygon green-100">
                             <svg class="js-polygon-container-svg" xmlns="http://www.w3.org/2000/svg">
-                                <polygon points="2,2 335,2 335,394 295,434 2,434" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="10"></polygon>
+                                <polygon points="2,2 335,2 335,394 295,434 2,434" fill="none" stroke="currentColor"
+                                         stroke-width="2" stroke-dasharray="10"></polygon>
                             </svg>
                         </div>
                     </a>
                 </div>
             </div>
         </div>
-    <?}?>
+    <? } ?>
     <div class="dropdown-nav js-dropdown-nav" id="search">
         <div class="d-flex flex-column gap-6">
-            <form>
+            <form method="get" id="header-search-form" action="/search/">
                 <div class="input-group flex-nowrap">
                     <span class="input-group-icon" id="input-search">
                         <span class="icon">
@@ -98,7 +101,17 @@
                             </svg>
                         </span>
                     </span>
-                    <input class="form-control" type="text" placeholder="Поиск по сайту" aria-label="Поиск по сайту" aria-describedby="input-search" tabindex="-1">
+                    <input
+                        id="header-input-search"
+                        name="q"
+                        class="form-control"
+                        type="text"
+                        placeholder="Поиск по сайту"
+                        aria-label="Поиск по сайту"
+                        aria-describedby="input-search"
+                        tabindex="-1"
+                        value="<?= $arResult["REQUEST"]["QUERY"] ?>"
+                    >
                 </div>
             </form>
             <div class="d-flex flex-column gap-4">
@@ -117,4 +130,4 @@
             </div>
         </div>
     </div>
-<?}?>
+<? } ?>

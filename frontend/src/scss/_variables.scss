@@ -6,9 +6,11 @@ $gutters: (
         0: 0,
         1: 1.5rem,
         2: 2rem,
+        "2_5": 2.5rem,
         3: 3rem,
         4: 4rem,
         5: 5rem,
+        6: 7.5rem,
 );
 
 $grid-breakpoints: (
@@ -95,6 +97,7 @@ $body-tertiary-bg: #e8eaef; // dark-30
 $primary: #55246A; // violet-100
 $secondary: #4F52A4; // blue-100
 $blue10: #e3e3f9; // blue-10
+$blue30: #c6c7e2; // blue-30
 //$tertiary: #4F52A4; // blue-100
 $success: #76B82A; // green-100
 $info: #ffffff; // dark-0
@@ -116,6 +119,9 @@ $yellow: #fdd400;
 $custom-colors: (
         "tertiary": $green,
         "blue10": $blue10,
+        "blue30": $blue30,
+        "orange": $orange,
+        "yellow": $yellow
 );
 
 
@@ -170,6 +176,7 @@ $form-invalid-border-color: var(--alert);
 $form-feedback-margin-top: 0;
 $form-feedback-font-size: .75rem;
 $form-feedback-icon-invalid: none;
+$form-feedback-icon-valid: none;
 
 // Select
 $form-select-padding-y: 1rem;
@@ -218,7 +225,6 @@ $form-range-thumb-box-shadow: none;
 $form-range-thumb-active-bg: var(--blue-100);
 
 
-
 // Links
 $link-decoration: none;
 
@@ -240,6 +246,7 @@ $spacers: (
         12: $spacer * 5.5,
         14: $spacer * 6.5,
         16: $spacer * 7.5,
+        26: $spacer * 12.5,
 );
 
 // DropDown
@@ -267,6 +274,8 @@ $input-btn-line-height: 1.5;
 $input-btn-font-size-lg: 1rem;
 $input-btn-padding-x-lg: .9375rem;
 $input-btn-padding-y-lg: .9375rem;
+$input-group-addon-bg: transparent;
+$input-group-addon-color: var(--dark-70);
 
 // Accordion
 $accordion-button-padding-y: 1rem;
@@ -295,3 +304,23 @@ $tooltip-padding-x: 1rem;
 $tooltip-arrow-width: 0;
 $tooltip-arrow-height: 0;
 $tooltip-opacity: 1;
+
+// Modals
+$modal-inner-padding: 1.5rem 1rem;
+$modal-content-border-radius: .75rem;
+$modal-backdrop-bg: $dark;
+$modal-header-padding-y: 1rem;
+$modal-header-border-width: 0;
+$modal-md: 48.75rem;
+$modal-xl: 65.875rem;
+$zindex-modal-backdrop: 1052;
+
+// Alert
+$alert-padding-y: 1rem;
+$alert-padding-x: 1rem;
+$alert-margin-bottom: 0;
+$alert-border-width: 0;
+
+// Cards
+$card-border-width: 0;
+$card-border-radius: 0.75rem;

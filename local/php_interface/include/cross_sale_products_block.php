@@ -2,6 +2,11 @@
 /** @var array $arParams */
 /** @global CMain $APPLICATION */
 
+global $crossSaleFilter;
+$crossSaleFilter = [
+    'SECTION_CODE' => 'private',
+];
+
 $APPLICATION->IncludeComponent(
     "bitrix:news.list",
     "cross_sale_block",
@@ -26,7 +31,7 @@ $APPLICATION->IncludeComponent(
         "DISPLAY_PREVIEW_TEXT" => "N",
         "DISPLAY_TOP_PAGER" => "N",
         "FIELD_CODE" => ["ID", "NAME", ""],
-        "FILTER_NAME" => "",
+        "FILTER_NAME" => "crossSaleFilter",
         "HIDE_LINK_WHEN_NO_DETAIL" => "N",
         "HEADER_TEXT" => $arParams['HEADER_TEXT'] ?: "Смотрите также",
         "IBLOCK_ID" => iblock('cross_sale'),
@@ -45,7 +50,7 @@ $APPLICATION->IncludeComponent(
         "PARENT_SECTION" => "",
         "PARENT_SECTION_CODE" => "",
         "PREVIEW_TRUNCATE_LEN" => "",
-        "PROPERTY_CODE" => ["BUTTON_LINK", "BUTTON_TEXT", "TEXT", ""],
+        "PROPERTY_CODE" => ["TAG", "CONDITION", "BTN_TEXT", "LINK", "BTN_TYPE", "LINE_COLOR"],
         "SET_BROWSER_TITLE" => "N",
         "SET_LAST_MODIFIED" => "N",
         "SET_META_DESCRIPTION" => "N",

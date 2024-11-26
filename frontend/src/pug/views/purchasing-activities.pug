@@ -1,0 +1,166 @@
+extends ../templates/base
+
+block title
+    title= 'Страница Закупочная деятельность'
+    meta(name="description" content="Описание страницы с закупочной деятельностью")
+block content
+    -
+        var bannerTextData = {
+            title: "Закупочная деятельность",
+            breadcrumbsArray: [
+                {linkText: "О банке", link: "/"}
+            ],
+            description: "",
+        }
+
+        var cardProductList = [
+            {
+                title: 'Документы',
+                img: 'large-individual/individual-documents.png',
+                link: 'Подробнее',
+            },
+            {
+                title: 'Закупки <br>у субъектов МСП',
+                img: 'large-business/membership-club.png',
+                link: 'Подробнее',
+            },
+            {
+                title: 'Реестр <br>недобросовестных поставщиков',
+                img: 'large-individual/evolution.png',
+                link: 'Подробнее',
+            },
+        ]
+
+        var announcementList = [
+            {
+                date: "08.04.2019",
+                title: "Заключенные договоры Банка",
+                link: "#"
+            },
+            {
+                date: "04.04.2018",
+                title: "Открытый запрос котировок на оказание услуг по оценке рыночной стоимости ставки арендной платы нежилых помещений в административном здании по адресу ул. Профсоюзная, д.78, стр.1.",
+                link: "#"
+            },
+            {
+                date: "07.03.2018",
+                title: "Открытый запрос котировок на оказание услуг по оценке рыночной стоимости, ставки арендной платы нежилых помещений в административных зданиях ул. Стромынка, д. 27 и ул. Усачева, д. 24.",
+                link: "#"
+            },
+            {
+                date: "16.01.2018",
+                title: "Уважаемые участники! Объявляется открытый запрос котировок на оказание услуг по организации и проведению выездного ресторанного обслуживания.",
+                link: "#"
+            },
+            {
+                date: "27.12.2017",
+                title: "Открытый запрос котировок на оказание услуг по перемещению имущества Банка (новая закупка)",
+                link: "#"
+            },
+            {
+                date: "27.11.2017",
+                title: "Открытый запрос котировок на оказание услуг по перемещению имущества Банка (новая закупка)",
+                link: "#"
+            },
+            {
+                date: "27.11.2017",
+                title: "Открытый запрос котировок на поставку упаковочных материалов и перевозка грузов (новая закупка)",
+                link: "#"
+            },
+            {
+                date: "17.11.2017",
+                title: "Открытый запрос котировок на поставку упаковочных материалов и перевозка грузов",
+                link: "#"
+            },
+            {
+                date: "17.11.2017",
+                title: "Открытый запрос котировок на оказание услуг по перемещению имущества Банка",
+                link: "#"
+            },
+            {
+                date: "23.10.2017",
+                title: "Открытый запрос котировок на оказание услуг грузовых перевозок АО АКБ «НОВИКОМБАНК» (повторная закупка)",
+                link: "#"
+            }
+        ]
+
+        var paginationObject = {
+            prevLink: "",
+            nextLink: "#2",
+            lastLink: {
+                link: "#9",
+                linkText: "9",
+            },
+            list: [
+                {
+                    link: "#1",
+                    linkText: "1",
+                    isActive: true,
+                },
+                {
+                    link: "#2",
+                    linkText: "2"
+                },
+                {
+                    link: "#3",
+                    linkText: "3"
+                },
+                {
+                    link: "#4",
+                    linkText: "4"
+                }
+            ]
+        }
+
+    include ../cards/card-product
+    include ../components/banners/banner-text
+    include ../includes/header/header
+    include ../components/ui/tabs
+    include ../components/ui/pagination
+    include ../components/announcement
+    include ../components/helper
+
+    +banner-text(
+        bannerTextData,
+        "green"
+    )
+
+    section.section-layout.py-lg-11.px-lg-6
+        .container
+            .row
+                .col-12
+                    p.text-l.mb-4.mb-md-6.mb-lg-7 Закупочная деятельность АО АКБ «НОВИКОМБАНК» регулируется Федеральным законом РФ <br class="d-none d-lg-block">от 18.07.2011 №223 «О закупках товаров, работ, услуг отдельными видами юридических лиц».
+                    +polygon-container("violet-100")
+                        +helper("img/restructuring-additional-info.png", "bg-dark-10")
+                            p.text-l.mb-3 АО АКБ «НОВИКОМБАНК» размещает информацию о проведении закупочных процедур на следующих интернет-ресурсах:
+                            ul.list.list--size-l
+                                li
+                                    span <a href="www.zakupki.gov.ru" class="link">www.zakupki.gov.ru</a> — официальный сайт Единой&nbsp;информационной системы в сфере закупок Российской Федерации,
+                                li
+                                    span <a href="www.astgoz.ru" class="link">www.astgoz.ru</a> — электронная торговая площадка ООО «АСТ ГОЗ»
+
+    section.section-layout.bg-dark-30
+        .container
+            .row
+                .col-12
+                    .swiper.slider-cards.js-slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:2,tablet-album:2,laptop:3,laptop-x:3" data-space-between="mobile-s:8,mobile:8,tablet:16,tablet-album:16,laptop:16,laptop-x:16")
+                        .swiper-wrapper
+                            each item in cardProductList
+                                .swiper-slide.js-swiper-slide
+                                    +card-product(item).h-100.bg-white
+                        +slider-controls().mt-3.mt-md-4
+    section.section-announcement-list.section-layout.py-lg-11
+        .container.d-flex.flex-column.row-gap-6.row-gap-lg-7
+            .row.row-gap-4.row-gap-md-6.row-gap-lg-7.px-lg-6
+                p.mb-0.text-l.fw-bold Уважаемые участники закупки!
+                .col-12.col-lg-9
+                    p.text-l.mb-0 Уведомляем, что с 01.07.2021 для участия в закупках, проводимых в соответствии с применяемым Банком положением о закупке, требуется прохождение процедуры аккредитации. <br><br> Подробные разъяснения и порядок аккредитации размещены <a class="blue-100" href="#">здесь</a>.
+            .row.px-lg-6
+                .col-12.col-lg-9.col-xl-8
+                    .d-flex.flex-column.gap-4.gap-md-6
+                        each item in announcementList
+                            +announcement(item)
+            .row
+                .col-12
+                    .section-announcement-list__pagination
+                        +pagination(paginationObject, "start")

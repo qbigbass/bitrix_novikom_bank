@@ -1,0 +1,16 @@
+mixin card-feedback(data, bgClass='bg-white')
+    .card-feedback.position-relative.overflow-hidden.d-inline-flex.p-3.p-sm-5.p-lg-6.w-100&attributes(attributes)(class=bgClass)
+        div.card-feedback__inner.d-flex.flex-column.row-gap-7.h-100.w-100.z-2
+            div.card-feedback__title-group.d-flex.flex-column.gap-3.gap-md-4
+                if data.title
+                    h4.card-feedback__title!= data.title
+                if data.description
+                    p.card-feedback__description.text-l.m-0!= data.description
+            .d-flex.flex-column.flex-md-row.p-0.gap-3.gap-md-4
+                if data.chatButtonIsVisible
+                    button.btn.btn-outline-primary.btn-lg-lg.text-ls.overflow-visible.w-100.w-md-auto(type="button")
+                        | Открыть чат
+                button.btn.btn-primary.btn-lg-lg.text-ls.overflow-visible.w-100.w-md-auto(type="button")
+                    | Перезвоните мне
+        if data.pattern
+            +pattern-bg('card', 'light', 'pattern-bg--position-top z-1')

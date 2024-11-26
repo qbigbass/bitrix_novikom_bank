@@ -12,6 +12,15 @@ import { initTabsContent } from './components/tabs.js'
 import initInputSlider from "./components/inputSlider";
 import showMoreContent from "./components/showMoreContent";
 import initCalculatorDeposit from "./components/calculator-deposit";
+import initDatepicker from './components/datepicker.js'
+import setPage from "./components/setPage";
+import {initFormSteps} from "./components/form/formSteps";
+import {initFormFeedback} from "./components/form/formFeedback";
+import {initFormSend} from "./components/form/formSend";
+import {initUploadFile} from "./components/form/uploadFile";
+import {initMask} from "./components/form/mask";
+import {initResizePolygonAccordions} from "./components/accordions";
+import initHeaderSearchForm from "./components/headerSearchForm.js";
 
 document.addEventListener('DOMContentLoaded', () => {
     initDropdownMenu();
@@ -27,6 +36,15 @@ document.addEventListener('DOMContentLoaded', () => {
     initSelect2();
     initTabsContent();
     showMoreContent();
+    initDatepicker();
+    setPage();
+    initFormSteps();
+    initFormFeedback();
+    initFormSend();
+    initUploadFile();
+    initMask();
+    initResizePolygonAccordions();
+    initHeaderSearchForm();
     initInputSlider();
     initCalculatorDeposit();
 

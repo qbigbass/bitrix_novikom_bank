@@ -13,8 +13,12 @@
 $this->setFrameMode(true);
 ?>
 
-<? foreach ($arResult['ITEMS'] as $key => $item) { ?>
-    <div class="col-12 col-md-6 pe-md-2 pe-lg-3-5">
+<? foreach ($arResult['ITEMS'] as $item) { ?>
+    <?
+    $this->AddEditAction($item['ID'], $item['EDIT_LINK'], CIBlock::GetArrayByID($item["IBLOCK_ID"], "ELEMENT_EDIT"));
+    $this->AddDeleteAction($item['ID'], $item['DELETE_LINK'], CIBlock::GetArrayByID($item["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
+    ?>
+    <div class="col-12 col-md-6" id="<?=$this->GetEditAreaId($item['ID']);?>">
         <div class="card-product card-product--transparent card-product--bg-white">
             <div class="card-product__inner">
                 <div class="card-product__content">

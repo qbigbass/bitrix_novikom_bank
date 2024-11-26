@@ -3,6 +3,7 @@
         {
             link: '#1',
             linkText: 'Все кредиты',
+            isActive: true
         },
         {
             link: '#2',
@@ -272,9 +273,9 @@
 
     var allLoans = [
         ...consumerLoans,
+        ...refinancingLoans,
         ...educationLoans,
         ...overdraftLoans,
-        ...refinancingLoans,
         ...restructuringLoans
     ]
 
