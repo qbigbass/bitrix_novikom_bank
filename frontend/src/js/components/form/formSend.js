@@ -226,13 +226,13 @@ function checkLengthMismatch(inputElement) {
 
 function hasInvalidInput(inputList, checkboxElement) {
     return (
-        inputList.some(inputElement => !inputElement.validity.valid && !inputElement.closest('[hidden]'))
+        inputList.some(inputElement => !inputElement.validity.valid && !inputElement.closest('.application-form__col[hidden]'))
         || (checkboxElement && !checkboxElement.validity.valid)
     )
 }
 
 function hasEmptyRequiredInput(inputList) {
-    const emptyRequiredInputs = inputList.filter(inputElement => !inputElement.closest(FORM_ELEMS.checkbox) && !inputElement.closest('[hidden]') && inputElement.required && inputElement.value.trim() === '')
+    const emptyRequiredInputs = inputList.filter(inputElement => !inputElement.closest(FORM_ELEMS.checkbox) && !inputElement.closest('.application-form__col[hidden]') && inputElement.required && inputElement.value.trim() === '')
     return !!emptyRequiredInputs.length;
 }
 
@@ -258,8 +258,10 @@ function toggleErrorSpan(inputElement, errorMessage) {
 }
 
 function toggleButton(inputList, checkboxElement, buttonElement, formErrorElement) {
-    const isInvalidInput = hasInvalidInput(inputList, checkboxElement);
-    const isEmptyRequiredInput = hasEmptyRequiredInput(inputList);
+    const isInvalidInput = hasInvalidInput(inputList, checkboxElement)
+    const isEmptyRequiredInput = hasEmptyRequiredInput(inputList)
+
+    // console.log(isInvalidInput, isEmptyRequiredInput)
 
     if (isInvalidInput || isEmptyRequiredInput) {
         buttonElement.disabled = true;

@@ -1,15 +1,21 @@
 export const STEPS_ELEMS = {
     step: '[data-form-step]',
     buttonNext: '[data-form-step-button-next]',
+    buttonPrev: '[data-form-step-button-prev]',
 }
 
 export function initFormSteps() {
     const buttonNextStep = document.querySelectorAll(STEPS_ELEMS.buttonNext)
+    const buttonPrevStep = document.querySelectorAll(STEPS_ELEMS.buttonPrev)
 
-    if (!buttonNextStep.length) return
+    if (!buttonNextStep.length && !buttonPrevStep.length) return
 
     buttonNextStep.forEach((button) => {
         button.addEventListener('click', handlerClickNextStep)
+    })
+
+    buttonPrevStep.forEach((button) => {
+        button.addEventListener('click', handlerClickPrevStep)
     })
 }
 
@@ -18,6 +24,17 @@ function handlerClickNextStep(e) {
 
     thisStep.hidden = true
     thisStep.nextElementSibling.hidden = false
+
+    if (thisStep.closest('.modal-body')) {
+        thisStep.closest('.modal-body').scrollTo(0, 0)
+    }
+}
+
+function handlerClickPrevStep(e) {
+    const thisStep = e.target.closest(STEPS_ELEMS.step)
+
+    thisStep.hidden = true
+    thisStep.previousElementSibling.hidden = false
 
     if (thisStep.closest('.modal-body')) {
         thisStep.closest('.modal-body').scrollTo(0, 0)
