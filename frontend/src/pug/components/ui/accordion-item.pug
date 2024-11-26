@@ -2,7 +2,12 @@ mixin accordion-item(data, parentId, titleClassList)
     .accordion-item&attributes(attributes)
         .accordion-header
             button.accordion-button(type="button", class= data.isOpen ? '' : 'collapsed', data-bs-toggle="collapse", data-bs-target= `#${data.id}`, aria-expanded= !!data.isOpen, aria-controls= data.id)
-                span(class=titleClassList)!= data.title
+                if data.tag
+                    .d-flex.flex-column.gap-4.gap-md-5.gap-lg-6
+                        +tag(data.tag, 'outline tag--triangle-absolute')
+                        span(class=titleClassList)!= data.title
+                else
+                    span(class=titleClassList)!= data.title
         .accordion-collapse.collapse(id= data.id, class= data.isOpen ? 'show' : '', data-bs-parent= `#${parentId}`)
             .accordion-body
                 block
