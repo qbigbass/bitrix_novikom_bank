@@ -1,0 +1,29 @@
+form()
+    .d-flex.flex-column.row-gap-6
+        .d-flex.flex-column.row-gap-4
+            h5 Обслуживание
+            .form-check
+                input#individuals(type="checkbox" value="").form-check-input
+                label(for="individuals").form-check-label
+                    | Физические лица
+            .form-check
+                input#legal(type="checkbox" value="").form-check-input
+                label(for="legal").form-check-label
+                    | Юридические лица
+        .d-flex.flex-column.row-gap-4
+            h5 Услуги
+            .form-check
+                input#limited-mobility(type="checkbox" value="").form-check-input
+                label(for="limited-mobility").form-check-label
+                    | Доступно для маломобильных граждан
+            .form-check
+                input#brokerage(type="checkbox" value="").form-check-input
+                label(for="brokerage").form-check-label
+                    | Услуги по&nbsp;брокерскому обслуживанию и&nbsp;доверительному управлению активами
+            .form-check
+                input#biometrics(type="checkbox" value="").form-check-input
+                label(for="biometrics").form-check-label
+                    | Можно сдавать биометрию
+        .d-flex.flex-column.flex-md-row.gap-3.gap-md-6.mt-md-2
+            button.btn.btn-primary.btn-md-lg(type="button" data-bs-dismiss='modal') Применить
+            button.btn.btn-outline-primary.btn-md-lg(type="button" data-bs-dismiss='modal') Сбросить

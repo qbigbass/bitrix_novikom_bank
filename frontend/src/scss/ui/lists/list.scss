@@ -148,4 +148,12 @@
       column-gap: 7.5rem;
     }
   }
+
+  &--default {
+    & li {
+      &:before {
+        display: none;
+      }
+    }
+  }
 }

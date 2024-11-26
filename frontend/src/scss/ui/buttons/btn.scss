@@ -71,6 +71,13 @@ button {
     }
 }
 
+.btn-icon-alone {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: .5rem;
+}
+
 .btn-lg-lg {
     @include use-media(tablet-album) {
         --bs-btn-padding-y: 0.9375rem;
@@ -79,6 +86,16 @@ button {
         line-height: 1.35;
         height: auto;
     }
+}
+
+.btn-md-lg {
+  @include use-media(tablet) {
+    --bs-btn-padding-y: 0.9375rem;
+    --bs-btn-padding-x: 2rem;
+    --bs-btn-font-size: 1.125rem;
+    line-height: 1.35;
+    height: auto;
+  }
 }
 
 .btn-md-md {
