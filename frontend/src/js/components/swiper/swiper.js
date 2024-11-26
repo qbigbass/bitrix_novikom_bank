@@ -1,300 +1,348 @@
-import Swiper from 'swiper';
-import {Autoplay, Thumbs, Pagination, Navigation, Grid} from 'swiper/modules';
-import {VARIABLES, MEDIA_QUERIES, DEFAULT_SEPARATORS, DEFAULT_SLIDER_DATA_ATTRS} from './constants';
+import Swiper from "swiper";
+import { Autoplay, Thumbs, Pagination, Navigation, Grid } from "swiper/modules";
+import {
+  VARIABLES,
+  MEDIA_QUERIES,
+  DEFAULT_SEPARATORS,
+  DEFAULT_SLIDER_DATA_ATTRS
+} from "./constants";
 
 const CLASS_NAME = {
-    mobileMenu: '.js-swiper-mobile-menu',
-    bannerHero: '.js-banner-hero',
-    thumbsHero: '.js-banner-hero-thumbs',
-    cardsSlider: '.js-slider-cards',
-    announcementsSlider: '.js-announcement-slider',
-    tabsSlider: '.js-tabs-slider',
-    slide: '.js-swiper-slide',
-    prevEl: '.js-swiper-prev',
-    nextEl: '.js-swiper-next',
-    pagination: '.js-swiper-pagination',
-}
+  mobileMenu: ".js-swiper-mobile-menu",
+  bannerHero: ".js-banner-hero",
+  thumbsHero: ".js-banner-hero-thumbs",
+  cardsSlider: ".js-slider-cards",
+  announcementsSlider: ".js-announcement-slider",
+  tabsSlider: ".js-tabs-slider",
+  slide: ".js-swiper-slide",
+  prevEl: ".js-swiper-prev",
+  nextEl: ".js-swiper-next",
+  pagination: ".js-swiper-pagination"
+};
 
 const DEFAULT_SLIDER_OPTIONS = {
-    modules: [Navigation, Pagination],
-    slidesPerView: 'auto',
-    spaceBetween: 8,
-    watchSlidesProgress: true,
-    navigation: {
-        prevEl: CLASS_NAME.prevEl,
-        nextEl: CLASS_NAME.nextEl,
-        navigationDisabledClass: 'swiper-navigation-disabled',
-    },
-    pagination: {
-        el: CLASS_NAME.pagination,
-        paginationDisabledClass: 'swiper-pagination-disabled',
-        type: 'bullets',
-        clickable: true
-    },
-    breakpoints: {},
-}
+  modules: [Navigation, Pagination],
+  slidesPerView: "auto",
+  spaceBetween: 8,
+  watchSlidesProgress: true,
+  navigation: {
+    prevEl: CLASS_NAME.prevEl,
+    nextEl: CLASS_NAME.nextEl,
+    navigationDisabledClass: "swiper-navigation-disabled"
+  },
+  pagination: {
+    el: CLASS_NAME.pagination,
+    paginationDisabledClass: "swiper-pagination-disabled",
+    type: "bullets",
+    clickable: true
+  },
+  breakpoints: {}
+};
 
 const createSliderOptionsByAttrs = (dataAttrs, slidesLength) => {
-    if (dataAttrs) {
-        const options = {...DEFAULT_SLIDER_OPTIONS};
+  if (dataAttrs) {
+    const options = { ...DEFAULT_SLIDER_OPTIONS };
 
-        for (const attrKey in dataAttrs) {
-            const attrValue = dataAttrs[attrKey];
-            const breakpointItems = attrValue.split(DEFAULT_SEPARATORS.mediaItem);
+    for (const attrKey in dataAttrs) {
+      const attrValue = dataAttrs[attrKey];
+      const breakpointItems = attrValue.split(DEFAULT_SEPARATORS.mediaItem);
 
-            breakpointItems.forEach((breakpoint) => {
-                const [mqKey, mqValue] = breakpoint.split(DEFAULT_SEPARATORS.mediaQuery);
+      breakpointItems.forEach(breakpoint => {
+        const [mqKey, mqValue] = breakpoint.split(
+          DEFAULT_SEPARATORS.mediaQuery
+        );
 
-                if (MEDIA_QUERIES[mqKey]) {
-                    const optionBreakpointKey = Number.parseInt(MEDIA_QUERIES[mqKey]);
+        if (MEDIA_QUERIES[mqKey]) {
+          const optionBreakpointKey = Number.parseInt(MEDIA_QUERIES[mqKey]);
 
-                    const optionBreakpointValue = {
-                        [attrKey]: mqValue
-                    }
+          const optionBreakpointValue = {
+            [attrKey]: mqValue
+          };
 
-                    if (!options?.breakpoints) {
-                        options.breakpoints = {};
-                    }
+          if (!options?.breakpoints) {
+            options.breakpoints = {};
+          }
 
-                    let payload = {
-                        ...options.breakpoints[optionBreakpointKey] = {
-                            ...options.breakpoints[optionBreakpointKey],
-                            ...optionBreakpointValue,
-                        }
-                    }
+          let payload = {
+            ...(options.breakpoints[optionBreakpointKey] = {
+              ...options.breakpoints[optionBreakpointKey],
+              ...optionBreakpointValue
+            })
+          };
 
-                    if (attrKey === 'slidesPerView') {
-                        payload = {
-                            ...payload,
-                            navigation: {
-                                enabled: slidesLength > Number(mqValue)
-                            },
-                            pagination: {
-                                enabled: slidesLength > Number(mqValue)
-                            }
-                        }
-                    }
+          if (attrKey === "slidesPerView") {
+            payload = {
+              ...payload,
+              navigation: {
+                enabled: slidesLength > Number(mqValue)
+              },
+              pagination: {
+                enabled: slidesLength > Number(mqValue)
+              }
+            };
+          }
 
-                    options.breakpoints[optionBreakpointKey] = payload;
-                }
-            });
+          options.breakpoints[optionBreakpointKey] = payload;
         }
-
-        return options;
-    } else {
-        return DEFAULT_SLIDER_OPTIONS;
+      });
     }
-}
+
+    return options;
+  } else {
+    return DEFAULT_SLIDER_OPTIONS;
+  }
+};
 
 export function initSwiperMenu() {
-    const swiper = new Swiper(CLASS_NAME.mobileMenu, {
-        init: false,
-        slidesPerView: 'auto',
-        spaceBetween: 16,
-    });
+  const swiper = new Swiper(CLASS_NAME.mobileMenu, {
+    init: false,
+    slidesPerView: "auto",
+    spaceBetween: 16
+  });
 
-    swiper.on('init', function () {
-        const slides = swiper.slides;
-        for (let i = 0; i < slides.length; i++) {
-            const slide = slides[i];
-            const activeLink = slide.querySelector('.is-active');
-            if (activeLink) {
-                swiper.slideTo(i, 0, false);
-                break;
-            }
-        }
-    });
+  swiper.on("init", function () {
+    const slides = swiper.slides;
+    for (let i = 0; i < slides.length; i++) {
+      const slide = slides[i];
+      const activeLink = slide.querySelector(".is-active");
+      if (activeLink) {
+        swiper.slideTo(i, 0, false);
+        break;
+      }
+    }
+  });
 
-    // init SwiperMin
-    swiper.init();
+  // init SwiperMin
+  swiper.init();
 }
 
 export function initHeroBanner() {
-    const thumbs = new Swiper(CLASS_NAME.thumbsHero, {
-        spaceBetween: 0,
-        slidesPerView: 4,
-        freeMode: false,
-        watchSlidesProgress: true,
-    });
+  const thumbs = new Swiper(CLASS_NAME.thumbsHero, {
+    spaceBetween: 0,
+    slidesPerView: 4,
+    freeMode: false,
+    watchSlidesProgress: true
+  });
 
-    new Swiper(CLASS_NAME.bannerHero, {
+  new Swiper(CLASS_NAME.bannerHero, {
+    autoplay: {
+      enabled: false
+    },
+    loop: true,
+    freeMode: false,
+    modules: [Autoplay, Thumbs, Pagination, Navigation],
+    thumbs: {
+      swiper: thumbs
+    },
+    controller: {
+      control: thumbs
+    },
+    pagination: {
+      el: ".banner-hero-pagination",
+      type: "bullets",
+      clickable: true
+    },
+    navigation: {
+      prevEl: ".banner-hero-control__prev",
+      nextEl: ".banner-hero-control__next"
+    },
+    breakpoints: {
+      1200: {
+        pagination: false,
         autoplay: {
-            enabled: false,
-        },
-        loop: true,
-        freeMode: false,
-        modules: [Autoplay, Thumbs, Pagination, Navigation],
-        thumbs: {
-            swiper: thumbs,
-        },
-        controller: {
-            control: thumbs,
-        },
-        pagination: {
-            el: ".banner-hero-pagination",
-            type: "bullets",
-            clickable: true,
-        },
-        navigation: {
-            prevEl: ".banner-hero-control__prev",
-            nextEl: ".banner-hero-control__next",
-        },
-        breakpoints: {
-            1200: {
-                pagination: false,
-                autoplay: {
-                    enabled: true,
-                    delay: VARIABLES.delay,
-                },
-            },
-        },
-        on: {
-            slideChange: function () {
-                const activeSlide = this.slides[this.activeIndex];
-                const links = activeSlide.querySelectorAll('a');
+          enabled: true,
+          delay: VARIABLES.delay
+        }
+      }
+    },
+    on: {
+      slideChange: function () {
+        const activeSlide = this.slides[this.activeIndex];
+        const links = activeSlide.querySelectorAll("a");
 
-                // Установить tabindex="-1" для всех ссылок в неактивных слайдах
-                this.slides.forEach((slide, index) => {
-                    if (index !== this.activeIndex) {
-                        const links = slide.querySelectorAll('a');
-                        links.forEach((link) => {
-                            link.setAttribute('tabindex', '-1');
-                        });
-                    }
-                });
+        // Установить tabindex="-1" для всех ссылок в неактивных слайдах
+        this.slides.forEach((slide, index) => {
+          if (index !== this.activeIndex) {
+            const links = slide.querySelectorAll("a");
+            links.forEach(link => {
+              link.setAttribute("tabindex", "-1");
+            });
+          }
+        });
 
-                // Установить tabindex="0" для ссылок в активном слайде
-                links.forEach((link) => {
-                    link.setAttribute('tabindex', '0');
-                });
-            },
-        },
-    });
+        // Установить tabindex="0" для ссылок в активном слайде
+        links.forEach(link => {
+          link.setAttribute("tabindex", "0");
+        });
+      }
+    }
+  });
 }
 
 function setTabIndex(slides) {
-    slides.forEach((slide) => {
-        const links = slide.querySelectorAll('a');
-        if (slide.classList.contains('swiper-slide-visible')) {
-            links.forEach((link) => {
-                link.setAttribute('tabindex', '0');
-            });
-        } else {
-            links.forEach((link) => {
-                link.setAttribute('tabindex', '-1');
-            });
-        }
-    });
+  slides.forEach(slide => {
+    const links = slide.querySelectorAll("a");
+    if (slide.classList.contains("swiper-slide-visible")) {
+      links.forEach(link => {
+        link.setAttribute("tabindex", "0");
+      });
+    } else {
+      links.forEach(link => {
+        link.setAttribute("tabindex", "-1");
+      });
+    }
+  });
 }
 
 export function initCardSlider() {
-    const sliders = document.querySelectorAll(CLASS_NAME.cardsSlider);
+  const sliders = document.querySelectorAll(CLASS_NAME.cardsSlider);
 
-    sliders.forEach((slider) => {
-        const dataAttrs = slider.dataset;
-        const sliderDataAttrs = Object.assign(DEFAULT_SLIDER_DATA_ATTRS, dataAttrs);
-        const slides = slider.querySelectorAll(CLASS_NAME.slide);
-        const slidesLength = slides.length;
-        const options = createSliderOptionsByAttrs(sliderDataAttrs, slidesLength);
+  sliders.forEach(slider => {
+    const dataAttrs = slider.dataset;
+    const sliderDataAttrs = Object.assign(DEFAULT_SLIDER_DATA_ATTRS, dataAttrs);
+    const slides = slider.querySelectorAll(CLASS_NAME.slide);
+    const slidesLength = slides.length;
+    const options = createSliderOptionsByAttrs(sliderDataAttrs, slidesLength);
 
-        options.on = {
-            init: function () {
-                setTabIndex(this.slides);
-            },
-            slideChange: function () {
-                setTabIndex(this.slides);
-            },
-        };
+    options.on = {
+      init: function () {
+        setTabIndex(this.slides);
+      },
+      slideChange: function () {
+        setTabIndex(this.slides);
+      }
+    };
 
-        new Swiper(slider, options);
-    })
+    new Swiper(slider, options);
+  });
 }
 
 export function initAnnouncementSlider() {
-    new Swiper(CLASS_NAME.announcementsSlider, {
-        modules: [Pagination, Navigation, Grid],
-        slidesPerView: 1,
+  new Swiper(CLASS_NAME.announcementsSlider, {
+    modules: [Pagination, Navigation, Grid],
+    slidesPerView: 1,
+    spaceBetween: 40,
+    grid: {
+      fill: "row"
+    },
+    navigation: {
+      prevEl: CLASS_NAME.prevEl,
+      nextEl: CLASS_NAME.nextEl,
+      navigationDisabledClass: "swiper-navigation-disabled"
+    },
+    pagination: {
+      el: CLASS_NAME.pagination,
+      paginationDisabledClass: "swiper-pagination-disabled",
+      type: "bullets",
+      clickable: true
+    },
+    breakpoints: {
+      375: {
+        spaceBetween: 8,
+        grid: {
+          rows: 1
+        }
+      },
+      768: {
         spaceBetween: 40,
         grid: {
-            fill: 'row',
-        },
-        navigation: {
-            prevEl: CLASS_NAME.prevEl,
-            nextEl: CLASS_NAME.nextEl,
-            navigationDisabledClass: 'swiper-navigation-disabled',
-        },
-        pagination: {
-            el: CLASS_NAME.pagination,
-            paginationDisabledClass: 'swiper-pagination-disabled',
-            type: 'bullets',
-            clickable: true
-        },
-        breakpoints: {
-            375: {
-                spaceBetween: 8,
-                grid: {
-                    rows: 1,
-                },
-            },
-            768: {
-                spaceBetween: 40,
-                grid: {
-                    rows: 2,
-                },
-            }
+          rows: 2
         }
-    });
+      }
+    }
+  });
 }
 
 export function initTabsSlider() {
-    new Swiper(CLASS_NAME.tabsSlider, {
-        slidesPerView: "auto",
-        loop: false,
-        freeMode: true,
-        pagination: false,
-        slideToClickedSlide: true,
-        modules: [Navigation],
-        navigation: {
-            prevEl: ".js-tabs-slider-navigation-prev",
-            nextEl: ".js-tabs-slider-navigation-next",
-        },
-    });
+  new Swiper(CLASS_NAME.tabsSlider, {
+    slidesPerView: "auto",
+    loop: false,
+    freeMode: true,
+    pagination: false,
+    slideToClickedSlide: true,
+    modules: [Navigation],
+    navigation: {
+      prevEl: ".js-tabs-slider-navigation-prev",
+      nextEl: ".js-tabs-slider-navigation-next"
+    }
+  });
 }
 
 export function initPbSlider() {
-    const slider = document.querySelector(".js-pb-slider");
-    const tabs = document.querySelectorAll(".tabs__link");
-  
-    if (slider) {
-      const swiper = new Swiper(slider, {
-        modules: [Navigation, Pagination],
-        slidesPerView: 2,
-        spaceBetween: 16,
-        loop: true,
-        navigation: {
-          prevEl: ".js-pb-slider-prev",
-          nextEl: ".js-pb-slider-next"
-        },
-        pagination: {
-          el: ".js-pb-slider-pagination",
-          clickable: true
-        },
-        on: {
-          slideChange: function () {
-            const activeIndex = this.realIndex;
-            tabs.forEach(tab => tab.classList.remove("active"));
-            if (tabs[activeIndex]) {
-              tabs[activeIndex].classList.add("active");
-            }
+  const financeSlider = document.querySelector(
+    "[data-order='1'] .js-pb-slider"
+  );
+  const investmentSlider = document.querySelector(
+    "[data-order='2'] .js-pb-slider"
+  );
+
+  const financeTabs = document.querySelectorAll("[data-order='1'] .tabs__link");
+  const investmentTabs = document.querySelectorAll(
+    "[data-order='2'] .tabs__link"
+  );
+
+  if (financeSlider && investmentSlider) {
+    const financeSwiper = new Swiper(financeSlider, {
+      modules: [Navigation, Pagination],
+      slidesPerView: 2,
+      spaceBetween: 40,
+      grabCursor: true,
+      speed: 700,
+      loop: true
+    });
+
+    const investmentSwiper = new Swiper(investmentSlider, {
+      modules: [Navigation, Pagination],
+      slidesPerView: 2,
+      spaceBetween: 40,
+      grabCursor: true,
+      speed: 700,
+      loop: true
+    });
+
+    // Ппреключение по вкладкам финуслуг
+    financeTabs.forEach((tab, index) => {
+      tab.addEventListener("click", event => {
+        event.preventDefault();
+        // удаляем активный класс у всех вкладок
+        financeTabs.forEach(t => t.classList.remove("active"));
+        // Добавляем активкласс к текущей вкладке
+        tab.classList.add("active");
+        // Переключаем слайд
+        financeSwiper.slideToLoop(index);
+      });
+    });
+
+    // переключение по вкладкам инвестиционных услуг
+    investmentTabs.forEach((tab, index) => {
+      tab.addEventListener("click", event => {
+        event.preventDefault();
+        // удаляем активный класс у всех вкладок
+        investmentTabs.forEach(t => t.classList.remove("active"));
+        // добавляем активный класс к текущей вкладке
+        tab.classList.add("active");
+        // ппереключаем слайд
+        investmentSwiper.slideToLoop(index);
+      });
+    });
+
+    //финансовые и инвестиционные услуги
+    const tabs = document.querySelectorAll(".pb__services-header-item");
+    tabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        tabs.forEach(t => t.classList.remove("tab-active"));
+        tab.classList.add("tab-active");
+
+        const activeTabOrder = tab.dataset.order;
+        document.querySelectorAll(".pb__services-tab").forEach(section => {
+          section.classList.remove("tab-active");
+          if (section.dataset.order === activeTabOrder) {
+            section.classList.add("tab-active");
           }
-        }
-      });
-      tabs.forEach((tab, index) => {
-        tab.addEventListener("click", event => {
-          event.preventDefault();
-          swiper.slideToLoop(index);
         });
+        financeSwiper.update();
+        investmentSwiper.update();
       });
-    }
+    });
   }
-  
+}

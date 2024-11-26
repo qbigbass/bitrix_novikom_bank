@@ -27,7 +27,6 @@ block title
                 large: false
             },
         ];
-
         const supremeCardBenefits = [
             {
                 icon: '/img/pb-images/pb-supreme-icons/bank-icon.svg',
@@ -150,71 +149,80 @@ block title
 block content
     include ../components/pb-card-special
     include ../components/pb-supreme-benefit
-
+    video#background-video(autoplay='' loop='' muted='' poster='img/video-poster.jpg')
+                source(src='img/video-background.mp4' type='video/mp4')
     section.pb__animation.container
-        video#background-video(autoplay='' loop='' muted='' poster='img/video-poster.jpg')
-            source(src='img/video-background.mp4' type='video/mp4')
         include ../includes/header/pb-header
-        .container
-            h2.dark-10.pb__section-header Лучшие финансовые инструменты <br>для достижения ваших целей
+        h2.dark-10.pb__section-header Лучшие финансовые инструменты <br>для достижения ваших целей
 
     section.pb__special.container
-        h2.dark-10.pb__section-header Особые условия для важных клиентов
-        .row.g-4
+        h2.dark-10.pb__section-header Особые условия<br> для важных клиентов
+        .row.g-1.g-md-2
             .col-lg-6
                 +pb-card-special(specialPrivilegesCards[0])
             .col-lg-6
-                .row.g-4.justify-content-between
+                .row.justify-content-between.g-1.g-md-2
                     each card in specialPrivilegesCards.slice(1)
                         .col-12
                             +pb-card-special(card)
 
-    section.pb__mir-supreme.container
-        .pb__mir-supreme-header-wrapper
-            h2.pb__mir-supreme-header Премиальная карта Мир Supreme
-            h4.pb__mir-supreme-subtitle Дебетовая карта с ежемесячным начислением процентов на остаток средств<br> или кредитная карта с бесплатным снятием наличных.
-        .pb__mir-supreme-images
-            img.pb__mir-supreme-images-supreme(src="/img/pb-images/pb-supreme.png", alt="Supreme Card")
-            img.pb__mir-supreme-images-duo(src="/img/pb-images/pb-mir-supreme-duo-cards.png", alt="Supreme Duo Cards")
-        .pb__mir-supreme-benefits
-            each benefit in supremeCardBenefits
-                +pb-supremeBenefit(benefit.icon, benefit.text)
-        .pb__mir-supreme-button СТАТЬ КЛИЕНТОМ
+    //- section.pb__mir-supreme.container
+    //-     .pb__mir-supreme-header-wrapper
+    //-         h2.pb__mir-supreme-header Премиальная карта Мир Supreme
+    //-         h4.pb__mir-supreme-subtitle Дебетовая карта с ежемесячным начислением процентов на остаток средств<br> или кредитная карта с бесплатным снятием наличных.
+    //-     .pb__mir-supreme-images
+    //-         img.pb__mir-supreme-images-supreme(src="/img/pb-images/pb-supreme.png", alt="Supreme Card")
+    //-         img.pb__mir-supreme-images-duo(src="/img/pb-images/pb-mir-supreme-duo-cards.png", alt="Supreme Duo Cards")
+    //-     .pb__mir-supreme-benefits
+    //-         each benefit in supremeCardBenefits
+    //-             +pb-supremeBenefit(benefit.icon, benefit.text)
+    //-     .pb__mir-supreme-button СТАТЬ КЛИЕНТОМ
 
     section.pb__special.container
         h2.dark-10.mb-3.pb__section-header Банк для вас
-        .row.g-4
+        .row.g-1.g-md-2
             .col-lg-6
                 +pb-card-special(bankingForYou[0])
             .col-lg-6
-                .row.g-4.justify-content-between
+                .row.g-1.g-md-2.justify-content-between
                     each card in bankingForYou.slice(1)
                         .col-12
                             +pb-card-special(card)
 
-    section.pb__services.container
+    section.pb__services
+        .pb__services-premium Премиум-услуги
         .pb__services-header
-            h2.pb__services-header-item.active Финансовые услуги
-            h2.pb__services-header-item Инвестиционные услуги
+            h2.pb__services-header-item.tab-active(data-order=1) Финансовые услуги
+            h2.pb__services-header-item(data-order=2) Инвестиционные услуги
         .pb__services-tabs
-            .pb__services-tabs-tags
-                ul.tabs
-                  each tab, index in financeCards
-                    li.tabs__item
-                      a.tabs__link(href="#" data-target=`#${tab.id}` class=index === 0 ? "active" : "")= tab.title
-            .pb__services-tabs-cards.js-pb-slider
-              .swiper-wrapper
-                each card in financeCards
-                  .swiper-slide.pb__card
-                    .pb__card-info
-                      h3.pb__card-info-title= card.title
-                      p.pb__card-info-description= card.description
-                    .pb__card-img
-                      img.pb__card-image(src=card.image, alt=card.title)
-            //- .pb__services-tabs-controls
-            //-   button.swiper-button-prev.js-pb-slider-prev
-            //-     img(src="/img/pb-images/pb-prev.svg", alt="Предыдущий")
-            //-   .swiper-pagination.js-pb-slider-pagination
-            //-   button.swiper-button-next.js-pb-slider-next
-            //-     img(src="/img/pb-images/pb-next.svg", alt="Следующий")
-    
+            .pb__services-tab.tab-active(data-order=1)
+                .pb__services-tabs-tags
+                    ul.tabs
+                        each tab, index in financeCards
+                            li.tabs__item
+                                a.tabs__link(href="#" data-target=index class=index === 0 ? "active" : "")= tab.title
+                .pb__services-tabs-cards.js-pb-slider.swiper-container
+                    .swiper-wrapper
+                        each card in financeCards
+                            .swiper-slide.pb__card
+                                .pb__card-info
+                                    h3.pb__card-info-title= card.title
+                                    p.pb__card-info-description= card.description
+                                .pb__card-img
+                                    img.pb__card-image(src=card.image, alt=card.title)
+            .pb__services-tab(data-order=2)
+                .pb__services-tabs-tags
+                    ul.tabs
+                        each tab, index in investmentCards
+                            li.tabs__item
+                                a.tabs__link(href="#" data-target=index class=index === 0 ? "active" : "")= tab.title
+                .pb__services-tabs-cards.js-pb-slider
+                    .swiper-wrapper
+                        each card in investmentCards
+                            .swiper-slide.pb__card
+                                .pb__card-info
+                                    h3.pb__card-info-title= card.title
+                                    p.pb__card-info-description= card.description
+                                .pb__card-img
+                                    img.pb__card-image(src=card.image, alt=card.title)
+

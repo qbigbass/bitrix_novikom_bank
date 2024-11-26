@@ -12,7 +12,10 @@
 
         &-phone p {
             color: #B0B7FE;
-            text-align: end;
+
+            @include use-media(desktop) {
+                text-align: end;
+            }
         }
     }
 }
