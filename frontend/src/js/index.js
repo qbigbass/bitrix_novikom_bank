@@ -20,6 +20,8 @@ import {initUploadFile} from "./components/form/uploadFile";
 import {initMask} from "./components/form/mask";
 import {initResizePolygonAccordions} from "./components/accordions";
 import initHeaderSearchForm from "./components/headerSearchForm.js";
+import initOffices from "./components/offices";
+import initYMap from "./components/yMap";
 
 document.addEventListener('DOMContentLoaded', () => {
     initDropdownMenu();
@@ -45,6 +47,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initMask();
     initResizePolygonAccordions();
     initHeaderSearchForm();
+    initOffices();
+    initYMap();
 });
 
 window.onload = function() {
