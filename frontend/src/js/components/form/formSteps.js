@@ -8,15 +8,17 @@ export function initFormSteps() {
     const buttonNextStep = document.querySelectorAll(STEPS_ELEMS.buttonNext)
     const buttonPrevStep = document.querySelectorAll(STEPS_ELEMS.buttonPrev)
 
-    if (!buttonNextStep.length && !buttonPrevStep.length) return
+    if (buttonNextStep.length) {
+        buttonNextStep.forEach((button) => {
+            button.addEventListener('click', handlerClickNextStep)
+        })
+    }
 
-    buttonNextStep.forEach((button) => {
-        button.addEventListener('click', handlerClickNextStep)
-    })
-
-    buttonPrevStep.forEach((button) => {
-        button.addEventListener('click', handlerClickPrevStep)
-    })
+    if (buttonPrevStep.length) {
+        buttonPrevStep.forEach((button) => {
+            button.addEventListener('click', handlerClickPrevStep)
+        })
+    }
 }
 
 function handlerClickNextStep(e) {
