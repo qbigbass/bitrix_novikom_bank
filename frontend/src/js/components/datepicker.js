@@ -32,6 +32,12 @@ const defaultSelectOptions = {
         return {
             html: `<div class="air-datepicker-cell-text">${cellText}</div>`
         }
+    },
+    onHide(isFinished) {
+        const hideCustomEvent = new CustomEvent('hide');
+        hideCustomEvent.isFinished = isFinished;
+
+        document.querySelector(DATEPICKER_CLASSES.root).dispatchEvent(hideCustomEvent);
     }
 }
 

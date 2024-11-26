@@ -6,7 +6,7 @@
         </div>
         <div class="card-benefit__read-more d-flex align-items-end justify-content-between">
             <div class="card-benefit__icon">
-                <svg class="icon green-100 size-md-xxl" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                <svg class="icon <?= $APPLICATION->GetCurDir() == '/for-corporate-clients/' ? 'orange' : 'green' ?>-100 size-md-xxl" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                     <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-a-protection"></use>
                 </svg>
             </div><a class="text-m btn btn-link btn-lg d-inline-flex gap-2 align-items-center" href="#"><span class="fw-bold">Подробнее</span>

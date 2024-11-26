@@ -21,7 +21,7 @@ $this->setFrameMode(true);
                 $this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
                 $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
                 ?>
-                <div class="card-product-list card-product-list--gap-smal overflow-hidden position-relative mh-100 h-auto bg-dark-10 w-100 py-6 py-sm-9 py-md-11 px-3 px-sm-4 px-md-6 pe-xxl-11" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
+                <div class="card-product-list card-product-list--gap-small overflow-hidden position-relative mh-100 h-auto bg-dark-10 w-100 py-6 py-sm-9 py-md-11 px-3 px-sm-4 px-md-6 pe-xxl-11" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
                     <div class="card-product-list__inner d-flex flex-column flex-lg-row align-items-start h-100 gap-3 gap-md-6 gap-xxl-11">
                         <div class="card-product-list__image-container mx-auto">
                             <img class="card-product-list__image" src="<?=$arItem['DISPLAY_PROPERTIES']['ICON_PREVIEW']['FILE_VALUE']['SRC']?>" alt="" loading="lazy">
@@ -49,7 +49,7 @@ $this->setFrameMode(true);
                                 <?if($arItem['DISPLAY_PROPERTIES']['SHOW_BUTTON']['VALUE'] == 'Y') {?>
                                     <a class="btn btn-tertiary btn-lg-lg card-product-list__button w-100 w-sm-auto" href="#">Оформить заявку</a>
                                 <?}?>
-                                <a class="btn btn-link btn-lg d-inline-flex gap-2 align-items-center card-product-list__button-more" href="<?=$arItem['DETAIL_PAGE_URL']?>">
+                                <a class="btn btn-link btn-lg-lg d-inline-flex gap-2 align-items-center card-product-list__button-more" href="<?=$arItem['DETAIL_PAGE_URL']?>">
                                     <span>Подробнее</span>
                                     <svg class="card-product-list__button-icon" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                                         <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right-small"></use>

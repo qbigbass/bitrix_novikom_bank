@@ -89,6 +89,12 @@ $arUrlRewrite = [
         'RULE' => '',
         'ID' => 'bitrix:news',
         'PATH' => '/support/announcements_for_clients/index.php',
+    ],
+    [
+        'CONDITION' => '#^/about/#',
+        'RULE' => '',
+        'ID' => 'bitrix:news',
+        'PATH' => '/about/index.php',
         'SORT' => 100,
     ],
 ];

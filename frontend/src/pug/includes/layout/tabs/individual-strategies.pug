@@ -1,0 +1,41 @@
+-
+    var allBenefits = [
+        {
+            spriteData: {
+                icon: 'stability_violet',
+                classList: 'size-xl',
+            },
+            title: 'Ликвидность',
+        },
+        {
+            spriteData: {
+                icon: 'stock-exchange_violet',
+                classList: 'size-xl',
+            },
+            title: 'Горизонт инвестирования',
+        },
+        {
+            spriteData: {
+                icon: 'risks_violet',
+                classList: 'size-xl',
+            },
+            title: 'Риски',
+        },
+        {
+            spriteData: {
+                icon: 'money-up_violet',
+                classList: 'size-xl',
+            },
+            title: 'Доходность',
+        },
+    ]
+
+.card
+    .d-flex.flex-column.gap-5.gap-lg-7
+        .d-flex.flex-column.gap-4
+            .h2 Индивидуальные стратегии
+            p.text-l.m-0 Уникальные инвестиционные предложения от управляющих экспертов на основе следующих критериев
+        .row.row-gap-6.gx-xl-6
+            each item, index in allBenefits
+                .col-12.col-lg-6
+                    +benefit(item.spriteData, item.title).flex-column.flex-md-row.align-items-md-center.gap-md-4.gap-lg-6

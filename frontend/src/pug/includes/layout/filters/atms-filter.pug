@@ -1,0 +1,37 @@
+form()
+    .d-flex.flex-column.row-gap-6
+        .d-flex.flex-column.row-gap-4
+            h5 Вход
+            .form-check
+                input#free(type="checkbox" value="").form-check-input
+                label(for="free").form-check-label
+                    | Свободный доступ
+            .form-check
+                input#employees(type="checkbox" value="").form-check-input
+                label(for="employees").form-check-label
+                    | Для сотрудников организаций
+        .d-flex.flex-column.row-gap-4
+            h5 Услуги
+            .form-check
+                input#limited-mobility(type="checkbox" value="").form-check-input
+                label(for="limited-mobility").form-check-label
+                    | Доступно для маломобильных граждан
+            .form-check
+                input#biometrics(type="checkbox" value="").form-check-input
+                label(for="biometrics").form-check-label
+                    | Можно сдавать биометрию
+        .d-flex.flex-column.row-gap-4
+            h5 Валюта приема
+            .form-check
+                input#reception-currency(type="checkbox" value="").form-check-input
+                label(for="reception-currency").form-check-label
+                    | Рубли, <span class="currency">₽</span>
+        .d-flex.flex-column.row-gap-4
+            h5 Валюта выдачи
+            .form-check
+                input#issue-currency(type="checkbox" value="").form-check-input
+                label(for="issue-currency").form-check-label
+                    | Рубли, <span class="currency">₽</span>
+        .d-flex.flex-column.flex-md-row.gap-3.gap-md-6.mt-md-2
+            button.btn.btn-primary.btn-md-lg(type="button" data-bs-dismiss='modal') Применить
+            button.btn.btn-outline-primary.btn-md-lg(type="button" data-bs-dismiss='modal') Сбросить

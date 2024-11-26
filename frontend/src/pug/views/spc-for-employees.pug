@@ -18,6 +18,7 @@ block content
     include ../components/benefit
     include ../components/banners/banner-product
     include ../includes/layout/slider-card-product
+    include ../includes/layout/slider-cards-benefit
 
     -
         var allBenefits = [
@@ -265,7 +266,7 @@ block content
         .container
             h3.px-lg-6.mb-6.mb-lg-7
                 | Надёжно и&nbsp;удобно
-            include ../includes/layout/slider-cards-benefit
+            +slider-cards-benefit
 
     +banner-product-info({
         title: "Льготные процентные ставки по&nbsp;потребительским кредитам и&nbsp;ипотеке",
