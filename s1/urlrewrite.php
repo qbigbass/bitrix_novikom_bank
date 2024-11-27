@@ -77,4 +77,12 @@ $arUrlRewrite = [
         'PATH' => '/about/index.php',
         'SORT' => 100,
     ],
+    [
+        'CONDITION' => '#^/financial-institutions/#',
+        'RULE' => '',
+        'ID' => 'bitrix:catalog',
+        'PATH' => '/financial-institutions/index.php',
+        'SORT' => 100,
+    ],
+
 ];
