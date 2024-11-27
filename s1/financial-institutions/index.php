@@ -5,7 +5,7 @@ $APPLICATION->SetTitle('Финансовым институтам');
 ?>
 <?$APPLICATION->IncludeComponent(
     "bitrix:catalog",
-    "fl_catalog",
+    "fi_catalog",
     [
         "TEMPLATE_THEME" => "blue",
         "IBLOCK_TYPE" => "for_financial_institutes",
@@ -27,7 +27,7 @@ $APPLICATION->SetTitle('Финансовым институтам');
         "AJAX_OPTION_JUMP" => "N",
         "AJAX_OPTION_STYLE" => "Y",
         "AJAX_OPTION_HISTORY" => "N",
-        "CACHE_TYPE" => "N",
+        "CACHE_TYPE" => "A",
         "CACHE_TIME" => "36000000",
         "CACHE_FILTER" => "N",
         "CACHE_GROUPS" => "Y",
