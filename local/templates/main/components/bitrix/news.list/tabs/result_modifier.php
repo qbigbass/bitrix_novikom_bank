@@ -1,6 +1,7 @@
 <?php
 foreach ($arResult['ITEMS'] as &$tab) {
     if (!empty($tab['DISPLAY_PROPERTIES'])) {
+        $tab['DISPLAY_PROPERTIES']['SHORT_INFO']['IMG'] = $tab['DISPLAY_PROPERTIES']['ICON_SHORT_INFO']['FILE_VALUE']['SRC'];
 
         foreach ($tab['DISPLAY_PROPERTIES'] as &$property) {
             if ($property['PROPERTY_TYPE'] == 'E' && !empty($property['VALUE'])) {
@@ -66,3 +67,4 @@ foreach ($arResult['ITEMS'] as &$tab) {
         }
     }
 }
+unset($tab);
