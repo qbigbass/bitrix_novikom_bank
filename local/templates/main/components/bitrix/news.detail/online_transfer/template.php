@@ -24,9 +24,11 @@ $headerView->render(
 );
 ?>
 
-<section class="section-layout pb-0 pt-8">
+<section class="section-layout pt-8">
     <div class="container">
-        <iframe class="widget" src="https://widget3.intervale.ru/payment/card2card?portal_id=P2PNOVIKOMWIDGET4DF12944A7853E0D" id="ifm" width="100%" height="900px;"></iframe>
+        <div class="iframe-wrapper">
+            <iframe class="widget" src="https://widget3.intervale.ru/payment/card2card?portal_id=P2PNOVIKOMWIDGET4DF12944A7853E0D" id="ifm" width="100%" height="900px;"></iframe>
+        </div>
     </div>
 </section>
 
