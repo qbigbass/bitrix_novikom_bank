@@ -11,7 +11,6 @@
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 
-//echo "<pre>"; print_r($arResult); echo "</pre>";
 use Dalee\Helpers\ComponentHelper;
 ?>
 <section class="pt-6 pb-6 pb-md-9 pb-lg-11 px-lg-6 border-top border-tertiary border-4 border-lg-8">

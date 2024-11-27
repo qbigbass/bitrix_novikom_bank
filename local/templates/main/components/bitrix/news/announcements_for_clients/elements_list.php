@@ -13,6 +13,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
+
 use Bitrix\Main\Application;
 
 $headerView = new HeaderView($component);
@@ -25,7 +26,12 @@ $headerView->render(
 
 $context = Application::getInstance()->getContext();
 $request = $context->getRequest();
-$values = $request->getQueryList();
+$typeSelected = $request["arrAdFilter_pf"]["TYPE_AD"];
+$delFilter = $request["del_filter"];
+
+if ($delFilter) {
+    $typeSelected = 0;
+}
 ?>
 <section class="section-layout">
     <div class="container d-flex flex-column row-gap-6 row-gap-lg-7">
@@ -77,9 +83,10 @@ $values = $request->getQueryList();
                         "NUMBER_WIDTH" => "5",
                         "SAVE_IN_SESSION" => "N",
                         "PREFILTER_NAME" => "preFilter",
-                        "PAGER_PARAMS_NAME" => "arrPager"
+                        "PAGER_PARAMS_NAME" => "arrPager",
+                        "PARAMS_TYPE_SELECTED" => $typeSelected
                     ],
-                    false
+                    $component
                 );
                 ?>
             </div>

@@ -17,7 +17,7 @@ $currentPage = $arResult['NavPageNomer'];
 ?>
 <nav>
     <ul class="pagination d-none d-md-flex justify-content-start">
-        <? if ($currentPage > 1) { ?>
+        <? if ($currentPage > 1) : ?>
             <li class="page-item">
                 <a class="page-link"
                    href="<?= $arResult['sUrlPath'] ?>?PAGEN_<?= $arResult['NavNum'] ?>=<?= $currentPage - 1 ?>">
@@ -27,16 +27,16 @@ $currentPage = $arResult['NavPageNomer'];
                     </svg>
                 </a>
             </li>
-        <? }
+        <? endif; ?>
 
-        for ($i = 1; $i <= $pageCount; $i++) {
-            // Показываем первую, последнюю, текущую и 2 соседние страницы
-            if ($i == 1 || $i == $pageCount || ($i >= $currentPage - 1 && $i <= $currentPage + 3)) { ?>
+        <? for ($i = 1; $i <= $pageCount; $i++) : ?>
+            <!-- Показываем первую, последнюю, текущую и 2 соседние страницы -->
+            <? if ($i == 1 || $i == $pageCount || ($i >= $currentPage - 1 && $i <= $currentPage + 3)) : ?>
                 <li class="page-item <?= ($i == $currentPage) ? 'active page-item--disabled' : '' ?>" <?= ($i == $currentPage) ? 'aria-current="page"' : '' ?>>
                     <a class="page-link"
                        href="<?= $arResult['sUrlPath'] ?>?PAGEN_<?= $arResult['NavNum'] ?>=<?= $i ?>"><?= $i ?></a>
                 </li>
-            <? } elseif ($i == 2 && $currentPage > 3 || $i == $pageCount - 1 && $currentPage < $pageCount - 2) { ?>
+            <? elseif ($i == 2 && $currentPage > 3 || $i == $pageCount - 1 && $currentPage < $pageCount - 2) : ?>
                 <!-- Многоточие -->
                 <li class="page-item">
                     <div class="page-link">
@@ -45,10 +45,10 @@ $currentPage = $arResult['NavPageNomer'];
                         </svg>
                     </div>
                 </li>
-            <? }
-        }
+            <? endif; ?>
+        <? endfor;?>
 
-        if ($currentPage < $pageCount) { ?>
+        <? if ($currentPage < $pageCount) : ?>
             <li class="page-item">
                 <a class="page-link"
                    href="<?= $arResult['sUrlPath'] ?>?PAGEN_<?= $arResult['NavNum'] ?>=<?= $currentPage + 1 ?>">
@@ -57,63 +57,64 @@ $currentPage = $arResult['NavPageNomer'];
                     </svg>
                 </a>
             </li>
-        <? } ?>
+        <? endif; ?>
     </ul>
 
     <!-- Мобильная версия -->
     <ul class="pagination d-flex d-md-none justify-content-between">
-        <? if ($currentPage > 1) { ?>
-        <li class="page-item">
-            <a class="page-link"
-               href="<?= $arResult['sUrlPath'] ?>?PAGEN_<?= $arResult['NavNum'] ?>=<?= $currentPage - 1 ?>">
-                <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                    <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-left"></use>
-                </svg>
-            </a>
-        </li>
-        <? } else { ?>
-        <li class="page-item page-item--disabled">
-            <span class="page-link">
-                <svg class="icon size-m dark-50" xmlns="http://www.w3.org/2000/svg" width="100%"
-                     height="100%">
-                    <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-left"></use>
-                </svg>
-            </span>
-        </li>
-        <? } ?>
-        <li class="min-w-50">
-            <form>
-                <div class="position-relative w-100">
-                    <select class="form-select form-select--size-small js-select" id="pagination-select"
+        <? if ($currentPage > 1) : ?>
+            <li class="page-item">
+                <a class="page-link"
+                   href="<?= $arResult['sUrlPath'] ?>?PAGEN_<?= $arResult['NavNum'] ?>=<?= $currentPage - 1 ?>">
+                    <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-left"></use>
+                    </svg>
+                </a>
+            </li>
+        <? else : ?>
+            <li class="page-item page-item--disabled">
+                <span class="page-link">
+                    <svg class="icon size-m dark-50" xmlns="http://www.w3.org/2000/svg" width="100%"
+                         height="100%">
+                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-left"></use>
+                    </svg>
+                </span>
+            </li>
+        <? endif; ?>
+            <li class="min-w-50">
+                <form>
+                    <div class="position-relative w-100">
+                        <select
+                            class="form-select form-select--size-small js-select"
+                            id="pagination-select"
                             aria-label="Выбрать страницу"
-                            data-placeholder="<?= $currentPage ?>/<?= $pageCount ?>">
-                        <? for ($i = 1; $i <= $pageCount; $i++) { ?>
-                            <option value="<?= $i ?>" <?= ($i == $currentPage) ? 'selected' : '' ?>>
-                                <?= $i ?>
-                            </option>
-                        <? } ?>
-                    </select>
-                </div>
-            </form>
-        </li>
-        <? if ($currentPage < $pageCount) { ?>
-        <li class="page-item">
-            <a class="page-link"
-               href="<?= $arResult['sUrlPath'] ?>?PAGEN_<?= $arResult['NavNum'] ?>=<?= $currentPage + 1 ?>">
-                <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                    <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
-                </svg>
-            </a>
-        </li>
-        <? } else { ?>
-        <li class="page-item page-item--disabled">
-            <span class="page-link">
-                <svg class="icon size-m dark-50" xmlns="http://www.w3.org/2000/svg" width="100%"
-                     height="100%">
-                    <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
-                </svg>
-            </span>
-        </li>
-        <? } ?>
+                            data-placeholder="<?= $currentPage ?>/<?= $pageCount ?>"
+                        >
+                            <? for ($i = 1; $i <= $pageCount; $i++) : ?>
+                                <option value="<?= $i ?>" <?= ($i == $currentPage) ? 'selected' : '' ?>>
+                                    <?= $i ?>
+                                </option>
+                            <? endfor; ?>
+                        </select>
+                    </div>
+                </form>
+            </li>
+        <? if ($currentPage < $pageCount) : ?>
+            <li class="page-item">
+                <a class="page-link" href="<?= $arResult['sUrlPath'] ?>?PAGEN_<?= $arResult['NavNum'] ?>=<?= $currentPage + 1 ?>">
+                    <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
+                    </svg>
+                </a>
+            </li>
+        <?  else : ?>
+            <li class="page-item page-item--disabled">
+                <span class="page-link">
+                    <svg class="icon size-m dark-50" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
+                    </svg>
+                </span>
+            </li>
+        <? endif; ?>
     </ul>
 </nav>

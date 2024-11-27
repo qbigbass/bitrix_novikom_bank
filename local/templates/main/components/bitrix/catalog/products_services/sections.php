@@ -24,22 +24,6 @@ $headerView->render(
     '',
     ['bg-linear-blue']
 );
-
-$sectionListParams = [
-	"IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
-	"IBLOCK_ID" => $arParams["IBLOCK_ID"],
-	"CACHE_TYPE" => $arParams["CACHE_TYPE"],
-	"CACHE_TIME" => $arParams["CACHE_TIME"],
-	"CACHE_GROUPS" => $arParams["CACHE_GROUPS"],
-	"COUNT_ELEMENTS" => $arParams["SECTION_COUNT_ELEMENTS"],
-	"TOP_DEPTH" => $arParams["SECTION_TOP_DEPTH"],
-	"SECTION_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["section"],
-	"VIEW_MODE" => $arParams["SECTIONS_VIEW_MODE"],
-	"SHOW_PARENT_NAME" => $arParams["SECTIONS_SHOW_PARENT_NAME"],
-	"HIDE_SECTION_NAME" => ($arParams["SECTIONS_HIDE_SECTION_NAME"] ?? "N"),
-	"ADD_SECTIONS_CHAIN" => ($arParams["ADD_SECTIONS_CHAIN"] ?? ''),
-    "SECTION_USER_FIELDS" => ["UF_SUPPORT_PRODUCT__ICON", "UF_SUPPORT_INFO_ICON"]
-];
 ?>
 <section class="section-layout px-lg-6 bg-dark-10">
     <div class="container">
@@ -48,14 +32,26 @@ $sectionListParams = [
             $APPLICATION->IncludeComponent(
                 "bitrix:catalog.section.list",
                 "products_services",
-                $sectionListParams,
+                [
+                    "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
+                    "IBLOCK_ID" => $arParams["IBLOCK_ID"],
+                    "CACHE_TYPE" => $arParams["CACHE_TYPE"],
+                    "CACHE_TIME" => $arParams["CACHE_TIME"],
+                    "CACHE_GROUPS" => $arParams["CACHE_GROUPS"],
+                    "COUNT_ELEMENTS" => $arParams["SECTION_COUNT_ELEMENTS"],
+                    "TOP_DEPTH" => $arParams["SECTION_TOP_DEPTH"],
+                    "SECTION_URL" => $arResult["FOLDER"] . $arResult["URL_TEMPLATES"]["section"],
+                    "VIEW_MODE" => $arParams["SECTIONS_VIEW_MODE"],
+                    "SHOW_PARENT_NAME" => $arParams["SECTIONS_SHOW_PARENT_NAME"],
+                    "HIDE_SECTION_NAME" => ($arParams["SECTIONS_HIDE_SECTION_NAME"] ?? "N"),
+                    "ADD_SECTIONS_CHAIN" => ($arParams["ADD_SECTIONS_CHAIN"] ?? ''),
+                    "SECTION_USER_FIELDS" => ["UF_SUPPORT_PRODUCT__ICON", "UF_SUPPORT_INFO_ICON"]
+                ],
                 $component,
                 ($arParams["SHOW_TOP_ELEMENTS"] !== "N" ? array("HIDE_ICONS" => "Y") : array())
             );
-            unset($sectionListParams);
             ?>
         </div>
     </div>
 </section>
-
 <? $helper->saveCache(); ?>
