@@ -2,7 +2,8 @@
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 global $APPLICATION;
 $APPLICATION->SetTitle("Кредиты");
-?><? $APPLICATION->IncludeComponent(
+?>
+<? $APPLICATION->IncludeComponent(
     "bitrix:news",
     "loans",
     [
@@ -23,26 +24,23 @@ $APPLICATION->SetTitle("Кредиты");
         "DETAIL_DISPLAY_BOTTOM_PAGER" => "Y",
         "DETAIL_DISPLAY_TOP_PAGER" => "N",
         "DETAIL_FIELD_CODE" => [
-            0 => "NAME",
-            1 => "PREVIEW_TEXT",
-            2 => "DETAIL_PICTURE",
-            3 => "",
+            "NAME",
+            "PREVIEW_TEXT",
+            "DETAIL_PICTURE",
         ],
         "DETAIL_PAGER_SHOW_ALL" => "Y",
         "DETAIL_PAGER_TEMPLATE" => "",
         "DETAIL_PAGER_TITLE" => "Страница",
         "DETAIL_PROPERTY_CODE" => [
-            0 => "DETAIL_TERMS",
-            1 => "QUESTIONS",
-            2 => "BUTTON_DETAIL",
-            3 => "DOCUMENTS",
-            4 => "BENEFITS",
-            5 => "CONDITIONS",
-            6 => "SERVICE",
-            7 => "BUTTON_TEXT_DETAIL",
-            8 => "HEADER_TEMPLATE",
-            9 => "",
-            10 => "",
+            "DETAIL_TERMS",
+            "QUESTIONS",
+            "BUTTON_DETAIL",
+            "DOCUMENTS",
+            "BENEFITS",
+            "CONDITIONS",
+            "SERVICE",
+            "BUTTON_TEXT_DETAIL",
+            "HEADER_TEMPLATE",
         ],
         "DETAIL_SET_CANONICAL_URL" => "N",
         "DISPLAY_BOTTOM_PAGER" => "Y",
@@ -58,18 +56,14 @@ $APPLICATION->SetTitle("Кредиты");
         "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
         "LIST_ACTIVE_DATE_FORMAT" => "d.m.Y",
         "LIST_FIELD_CODE" => [
-            0 => "NAME",
-            1 => "PREVIEW_TEXT",
-            2 => "PREVIEW_PICTURE",
-            3 => "",
+            "NAME",
+            "PREVIEW_TEXT",
+            "PREVIEW_PICTURE",
         ],
         "LIST_PROPERTY_CODE" => [
-            0 => "LIST_TERMS",
-            1 => "BUTTON_LIST",
-            2 => "BUTTON_TEXT_LIST",
-            3 => "",
-            4 => "",
-            5 => "",
+            "LIST_TERMS",
+            "BUTTON_LIST",
+            "BUTTON_TEXT_LIST",
         ],
         "MESSAGE_404" => "",
         "META_DESCRIPTION" => "-",
