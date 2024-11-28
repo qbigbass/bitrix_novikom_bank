@@ -71,6 +71,26 @@ $arUrlRewrite = [
         'SORT' => 100,
     ],
     [
+        'CONDITION' => '#^/support/products_services/#',
+        'RULE' => '',
+        'ID' => 'bitrix:catalog',
+        'PATH' => '/support/products_services/index.php',
+        'SORT' => 100,
+    ],
+    [
+        'CONDITION' => '#^/support/very_important_information/#',
+        'RULE' => '',
+        'ID' => 'bitrix:catalog',
+        'PATH' => '/support/very_important_information/index.php',
+        'SORT' => 100,
+    ],
+    [
+        'CONDITION' => '#^/support/announcements_for_clients/#',
+        'RULE' => '',
+        'ID' => 'bitrix:news',
+        'PATH' => '/support/announcements_for_clients/index.php',
+    ],
+    [
         'CONDITION' => '#^/about/#',
         'RULE' => '',
         'ID' => 'bitrix:news',
