@@ -5,6 +5,7 @@ use Bitrix\Main\Engine\Contract\Controllerable;
 use Bitrix\Main\Error;
 use Bitrix\Main\Errorable;
 use Bitrix\Main\ErrorCollection;
+use Dalee\Entities\CaptchaTable;
 
 class DaleeCaptcha extends \CBitrixComponent implements Controllerable, Errorable
 {
@@ -31,7 +32,7 @@ class DaleeCaptcha extends \CBitrixComponent implements Controllerable, Errorabl
         ];
     }
 
-    public function onPrepareComponentParams($arParams)
+    public function onPrepareComponentParams($arParams): array
     {
         $this->app = $GLOBALS['APPLICATION'];
         $this->db = $GLOBALS['DB'];
@@ -40,14 +41,14 @@ class DaleeCaptcha extends \CBitrixComponent implements Controllerable, Errorabl
         return $arParams;
     }
 
-    public function executeComponent()
+    public function executeComponent(): void
     {
         $this->arResult['CAPTCHA_CODE'] = $this->app->CaptchaGetCode();
 
         $this->includeComponentTemplate();
     }
 
-    public function updateAction()
+    public function updateAction(): ?array
     {
         if (!$this->errorCollection->isEmpty()) {
             return null;
@@ -60,7 +61,7 @@ class DaleeCaptcha extends \CBitrixComponent implements Controllerable, Errorabl
         ];
     }
 
-    public function audioAction()
+    public function audioAction(): ?array
     {
         $input = json_decode($this->request->getInput(), true);
 
@@ -80,7 +81,7 @@ class DaleeCaptcha extends \CBitrixComponent implements Controllerable, Errorabl
         ];
     }
 
-    public function getErrors()
+    public function getErrors(): array
     {
         return $this->errorCollection->toArray();
     }
@@ -92,24 +93,25 @@ class DaleeCaptcha extends \CBitrixComponent implements Controllerable, Errorabl
 
     protected function findWordBySid($sid): string
     {
-        try {
-            $sql = "SELECT CODE FROM b_captcha WHERE ID = '" . $this->db->ForSql($sid) . "'";
-            $row = $this->db->Query($sql)->Fetch();
-            if (empty($row['CODE'])) {
-                throw new Exception('Not found code');
-            }
-            return $row['CODE'];
-        } catch (Exception $e) {
-            return '';
+        $result = CaptchaTable::query()
+            ->setSelect(['CODE'])
+            ->where('ID', $sid)
+            ->exec()
+            ->fetchObject();
+
+        if ($result && $code = $result->getCode()) {
+            return $code;
         }
+
+        return '';
     }
 
-    protected function makeAudioByWord($word)
+    protected function makeAudioByWord($word): array
     {
         $symbols = str_split(mb_strtolower($word));
         $chunks = [];
         foreach ($symbols as $symbol) {
-            $chunks[] = base64_encode(file_get_contents(__DIR__ . '/audio/' . $symbol . '.wav'));
+            $chunks[] = base64_encode(file_get_contents(__DIR__ . '/audio/' . $symbol . '.mp3'));
         }
         return $chunks;
     }

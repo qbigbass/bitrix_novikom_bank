@@ -1,6 +1,6 @@
 $(function () {
 
-    let sounds = [];
+    const sounds = [];
 
     $('.captcha-image').on('click', async () => {
         const res = await fetch('/bitrix/services/main/ajax.php?mode=class&c=dalee:captcha&action=update', {
@@ -10,9 +10,8 @@ $(function () {
         const imageUrl = '/bitrix/tools/captcha.php?captcha_sid=' + result.data.captcha_sid;
         $('.captcha-sid').val(result.data.captcha_sid)
         $('.captcha-image').prop('src', imageUrl)
-        sounds = []
+        sounds.length = 0
     })
-
 
     $('.captcha-audio-btn').on('click', async () => {
         if (!sounds.length) {
@@ -28,14 +27,15 @@ $(function () {
             const result = await res.json()
 
             result.data.word.forEach(s => {
-                sounds.push(new Audio('data:audio/wav;base64,' + s))
+                sounds.push(new Audio('data:audio/mp3;base64,' + s))
             })
         }
 
-        let currentIndex = 0
         sounds.forEach(function (sound) {
             sound.onended = onEnded
         });
+
+        let currentIndex = 0
 
         function onEnded(e) {
             currentIndex++
