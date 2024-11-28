@@ -8,27 +8,29 @@
         "Храните часть с&nbsp;реквизитами в&nbsp;недоступном третьим лицам месте"
     ]
 
-h4.mb-4.mb-md-5.mb-lg-6 Подготовьте свои устройства к&nbsp;использованию платежного стикера
-.content-negative-wrapper
-    .row.row-gap-4.mb-6.mb-md-9.mb-lg-11
-        .col-12.col-lg-6
-            .card-how-use.d-flex.flex-column.flex-md-row.align-items-start
-                img.card-how-use__image(src="img/payment-sticker/how-use-ios.png" alt="" loading="lazy")
-                .card-how-use__content.d-flex.flex-column.align-items-start.gap-2.gap-md-3
-                    h4 На платформе iOS
-                    p.mb-0 нужно удалить все банковские карты из&nbsp;AppleWallet
-                    p.mb-0.text-s.dark-70 Это связано с&nbsp;настройками IPhone: при оплате в&nbsp;первую очередь используются карты, добавленные в&nbsp;Wallet
-        .col-12.col-lg-6
-            .card-how-use.d-flex.flex-column.flex-md-row.align-items-start
-                img.card-how-use__image(src="img/payment-sticker/how-use-android.png" alt="" loading="lazy")
-                .card-how-use__content.d-flex.flex-column.align-items-start.gap-2.gap-md-3
-                    h4 На платформе Android
-                    p.mb-0 нужно удалить все банковские карты из&nbsp;AppleWallet
+div.col-12
+    h4.mb-4.mb-md-5.mb-lg-6 Подготовьте свои устройства к&nbsp;использованию платежного стикера
+    .content-negative-wrapper
+        .row.row-gap-4.mb-6.mb-md-9.mb-lg-11
+            .col-12.col-lg-6
+                .card-how-use.d-flex.flex-column.flex-md-row.align-items-start
+                    img.card-how-use__image(src="img/payment-sticker/how-use-ios.png" alt="" loading="lazy")
+                    .card-how-use__content.d-flex.flex-column.align-items-start.gap-2.gap-md-3
+                        h4 На платформе iOS
+                        p.mb-0 нужно удалить все банковские карты из&nbsp;AppleWallet
+                        p.mb-0.text-s.dark-70 Это связано с&nbsp;настройками IPhone: при оплате в&nbsp;первую очередь используются карты, добавленные в&nbsp;Wallet
+            .col-12.col-lg-6
+                .card-how-use.d-flex.flex-column.flex-md-row.align-items-start
+                    img.card-how-use__image(src="img/payment-sticker/how-use-android.png" alt="" loading="lazy")
+                    .card-how-use__content.d-flex.flex-column.align-items-start.gap-2.gap-md-3
+                        h4 На платформе Android
+                        p.mb-0 нужно удалить все банковские карты из&nbsp;AppleWallet
 
-h4.mb-4.mb-md-5.mb-lg-6 Советы по&nbsp;использованию стикера
-.row
-    .col-12.col-xl-8
-        ul.list.list--size-l
-            each tip in tipsList
-                li!= tip
+.div
+    h4.mb-4.mb-md-5.mb-lg-6 Советы по&nbsp;использованию стикера
+    .row
+        .col-12.col-xl-8
+            ul.list.list--size-l
+                each tip in tipsList
+                    li!= tip
 
