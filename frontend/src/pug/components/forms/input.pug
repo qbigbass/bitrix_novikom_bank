@@ -1,12 +1,12 @@
 mixin input(data, formName)
-    - var { id, label, placeholder, type, required, datepicker, groupText, hint, mask } = data;
+    - var { id, label, placeholder, type, required, datepicker, groupText, hint, mask, min } = data;
     .d-flex.flex-column.row-gap-2&attributes(attributes)
         label(for=`${formName}_${id}`).form-label.mb-0
             != label
             if required
                 span.orange-100.ms-1 *
         if !datepicker && !groupText
-            input(id=`${formName}_${id}` type=`${type || "text"}` name=id placeholder=placeholder required=required autocomplete="off" data-form-input class=[mask ? `js-mask-${mask}` : ""]).form-control.form-control-lg-lg
+            input(id=`${formName}_${id}` type=`${type || "text"}` name=id placeholder=placeholder required=required autocomplete="off" data-form-input class=[mask ? `js-mask-${mask}` : ""] min=min).form-control.form-control-lg-lg
             if hint
                 span.caption-m.dark-70.d-block= hint
             .invalid-feedback(aria-live="polite")
@@ -18,6 +18,6 @@ mixin input(data, formName)
                 .invalid-feedback(aria-live="polite")
         if groupText
             .input-group.row-gap-2.has-validation
-                input(id=`${formName}_${id}` type=`${type || "text"}` name=id placeholder=placeholder required=required autocomplete="off" aria-describedby=`${formName}_${id}-suffix` data-form-input class=[mask ? `js-mask-${mask}` : ""]).form-control.form-control-lg-lg
+                input(id=`${formName}_${id}` type=`${type || "text"}` name=id placeholder=placeholder required=required autocomplete="off" aria-describedby=`${formName}_${id}-suffix` data-form-input class=[mask ? `js-mask-${mask}` : ""] min=min).form-control.form-control-lg-lg
                 span(id=`${formName}_${id}-suffix`).input-group-text= groupText
                 .invalid-feedback(aria-live="polite")
