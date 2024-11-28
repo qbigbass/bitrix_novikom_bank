@@ -76,6 +76,8 @@
             white-space: nowrap;
             line-height: 1.5;
             width: 100%!important;
+            margin-top: 0!important;
+            margin-bottom: 0!important;
 
             @include use-media(tablet-album) {
                 --bs-nav-link-padding-x: 2.5rem;
