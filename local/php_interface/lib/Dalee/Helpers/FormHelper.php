@@ -23,7 +23,7 @@ class FormHelper
         if ($result = $cdbres->Fetch()) {
             return $result;
         }
-        return false;
+        return [];
     }
 
     /**

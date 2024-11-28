@@ -134,7 +134,7 @@ $this->setFrameMode(true);
                                 <div class="d-flex flex-column row-gap-2">
                                     <label class="form-label mb-0" for="mortgage_employment-history">Общий трудовой стаж<span class="orange-100 ms-1">*</span></label>
                                     <div class="input-group row-gap-2 has-validation">
-                                        <input class="form-control form-control-lg-lg" id="mortgage_employment-history" type="number" name="EMPLOYMENT_HISTORY" placeholder="Кол-во лет" required autocomplete="off" aria-describedby="mortgage_employment-history-suffix" data-form-input><span class="input-group-text" id="mortgage_employment-history-suffix">лет</span>
+                                        <input class="form-control form-control-lg-lg" id="mortgage_employment-history" type="number" min="0" name="EMPLOYMENT_HISTORY" placeholder="Кол-во лет" required autocomplete="off" aria-describedby="mortgage_employment-history-suffix" data-form-input><span class="input-group-text" id="mortgage_employment-history-suffix">лет</span>
                                         <div class="invalid-feedback" aria-live="polite"></div>
                                     </div>
                                 </div>
@@ -143,7 +143,7 @@ $this->setFrameMode(true);
                                 <div class="d-flex flex-column row-gap-2">
                                     <label class="form-label mb-0" for="mortgage_employment-last-work">Стаж на последнем месте работы<span class="orange-100 ms-1">*</span></label>
                                     <div class="input-group row-gap-2 has-validation">
-                                        <input class="form-control form-control-lg-lg" id="mortgage_employment-last-work" type="number" name="EMPLOYMENT_LAST_WORK" placeholder="Кол-во лет" required autocomplete="off" aria-describedby="mortgage_employment-last-work-suffix" data-form-input><span class="input-group-text" id="mortgage_employment-last-work-suffix">лет</span>
+                                        <input class="form-control form-control-lg-lg" id="mortgage_employment-last-work" type="number" min="0" name="EMPLOYMENT_LAST_WORK" placeholder="Кол-во лет" required autocomplete="off" aria-describedby="mortgage_employment-last-work-suffix" data-form-input><span class="input-group-text" id="mortgage_employment-last-work-suffix">лет</span>
                                         <div class="invalid-feedback" aria-live="polite"></div>
                                     </div>
                                 </div>
@@ -167,6 +167,7 @@ $this->setFrameMode(true);
                         </div>
                         <div class="d-flex flex-column align-items-center flex-md-row row-gap-3 column-gap-6 mt-6 mt-lg-7">
                             <button class="btn btn-primary btn-lg-lg w-100 w-md-auto" type="button" disabled aria-disabled="true" data-form-button data-form-step-button-next>Продолжить</button>
+                            <button class="btn btn-outline-primary btn-lg-lg w-100 w-md-auto" type="button" data-form-step-button-prev="">Назад</button>
                             <div class="text-m orange-100 text-center" data-form-error></div>
                         </div>
                     </div>
@@ -225,7 +226,7 @@ $this->setFrameMode(true);
                                 <div class="d-flex flex-column row-gap-2">
                                     <label class="form-label mb-0" for="mortgage_mortgage-term">Срок ипотеки<span class="orange-100 ms-1">*</span></label>
                                     <div class="input-group row-gap-2 has-validation">
-                                        <input class="form-control form-control-lg-lg" id="mortgage_mortgage-term" type="number" name="MORTGAGE_TERM" placeholder="Срок" required autocomplete="off" aria-describedby="mortgage_mortgage-term-suffix" data-form-input><span class="input-group-text" id="mortgage_mortgage-term-suffix">мес.</span>
+                                        <input class="form-control form-control-lg-lg" id="mortgage_mortgage-term" type="number" min="0" name="MORTGAGE_TERM" placeholder="Срок" required autocomplete="off" aria-describedby="mortgage_mortgage-term-suffix" data-form-input><span class="input-group-text" id="mortgage_mortgage-term-suffix">мес.</span>
                                         <div class="invalid-feedback" aria-live="polite"></div>
                                     </div>
                                 </div>
@@ -256,23 +257,14 @@ $this->setFrameMode(true);
                                 </div>
                             </div>
                             <?php if ($arResult['USE_CAPTCHA'] === 'Y') : ?>
-                                <div class="application-form__col col-12">
-                                    <div class="d-flex flex-column flex-md-row align-items-start row-gap-2 column-gap-md-3">
-                                        <div class="d-flex flex-column row-gap-2 flex-grow-1 w-100 w-md-auto">
-                                            <input class="form-control form-control-lg-lg" id="consultation_captcha" type="text" name="captcha_word" placeholder="Введите код с картинки" maxlength="50" required data-form-input>
-                                            <div class="invalid-feedback" aria-live="polite"></div>
-                                        </div>
-                                        <div class="captcha d-flex align-items-center column-gap-3 flex-shrink-0">
-                                            <input type="hidden" name="captcha_sid" value="<?= htmlspecialchars($arResult['CAPTCHA_CODE']); ?>">
-                                            <img src="/bitrix/tools/captcha.php?captcha_sid=<?= $arResult['CAPTCHA_CODE']; ?>" alt="">
-                                            <span class="icon size-m dark-70">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                                    <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-audio-on"></use>
-                                                </svg>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
+                                <?php $APPLICATION->IncludeComponent(
+                                    "dalee:captcha",
+                                    ".default",
+                                    [
+                                        "FORM_CODE" => $arParams['FORM_CODE'],
+                                    ],
+                                    $component
+                                ); ?>
                             <?php endif;?>
                             <div class="application-form__col col-12">
                                 <div class="form-check">
@@ -284,6 +276,7 @@ $this->setFrameMode(true);
                         </div>
                         <div class="d-flex flex-column align-items-center flex-md-row row-gap-3 column-gap-6 mt-6 mt-lg-7">
                             <button class="btn btn-primary btn-lg-lg w-100 w-md-auto" type="submit" disabled aria-disabled="true" data-form-button>Отправить заявку</button>
+                            <button class="btn btn-outline-primary btn-lg-lg w-100 w-md-auto" type="button" data-form-step-button-prev="">Назад</button>
                             <div class="text-m orange-100 text-center" data-form-error></div>
                         </div>
                     </div>

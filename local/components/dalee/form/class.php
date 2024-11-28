@@ -38,9 +38,6 @@ class DaleeForm extends \CBitrixComponent implements Controllerable, Errorable
         }
 
         $this->app = $GLOBALS['APPLICATION'];
-        $this->form = FormHelper::getByCode($arParams['FORM_CODE']);
-        $this->arResult['USE_CAPTCHA'] = $this->form['USE_CAPTCHA'];
-
         $this->errorCollection = new ErrorCollection();
 
         return $arParams;
@@ -48,10 +45,9 @@ class DaleeForm extends \CBitrixComponent implements Controllerable, Errorable
 
     public function executeComponent()
     {
-        if ($this->form['USE_CAPTCHA'] === 'Y') {
-            $this->arResult['CAPTCHA_CODE'] = $this->app->CaptchaGetCode();
-        }
-
+        $form = FormHelper::getByCode($this->arParams['FORM_CODE']);
+        $this->arResult['FORM_CODE'] = $this->arParams['FORM_CODE'];
+        $this->arResult['USE_CAPTCHA'] = $form['USE_CAPTCHA'];
         $this->arResult['ACTION_URL'] = '/bitrix/services/main/ajax.php?mode=class&c=dalee:form&action=saveLead';
 
         $this->includeComponentTemplate();
@@ -60,10 +56,13 @@ class DaleeForm extends \CBitrixComponent implements Controllerable, Errorable
     public function saveLeadAction()
     {
         $input = $this->request->getPostList()->toArray();
-        $formId = $this->form['ID'];
+
+        $form = FormHelper::getByCode($input['FORM_CODE']);
+        $formId = $form['ID'];
+
         $values = FormHelper::remapRequestFields($formId, $input);
 
-        if ($this->form['USE_CAPTCHA'] === 'Y') {
+        if ($form['USE_CAPTCHA'] === 'Y') {
             $values['captcha_word'] = $input['captcha_word'];
             $values['captcha_sid'] = $input['captcha_sid'];
         }
