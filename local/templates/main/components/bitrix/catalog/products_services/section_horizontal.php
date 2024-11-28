@@ -29,11 +29,11 @@
                             <svg class="icon size-s text-white-50 d-inline-block d-md-none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                                 <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-left"></use>
                             </svg>
-                            <span><?= $APPLICATION->ShowProperty("ps_section_title") ?></span>
+                            <span><? $APPLICATION->ShowProperty("ps_section_title") ?></span>
                         </div>
                     </div>
-                    <h1 class="banner-text__title dark-0 text-break"><?= $APPLICATION->ShowProperty("ps_section_title") ?></h1>
-                    <div class="banner-text__description text-l dark-0"><?= $APPLICATION->ShowProperty("ps_section_description") ?></div>
+                    <h1 class="banner-text__title dark-0 text-break"><? $APPLICATION->ShowProperty("ps_section_title") ?></h1>
+                    <div class="banner-text__description text-l dark-0"><? $APPLICATION->ShowProperty("ps_section_description") ?></div>
                 </div>
             </div>
         </div>
