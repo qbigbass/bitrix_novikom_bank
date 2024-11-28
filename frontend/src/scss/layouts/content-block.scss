@@ -1,0 +1,95 @@
+.content-block {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2.5rem;
+
+    @include use-media(tablet-album) {
+        gap: 3rem;
+    }
+
+    > div:not([class]) {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1.5rem;
+    }
+
+    > p,
+    > div:not([class]) > p {
+        @extend .text-l;
+        margin: 0;
+    }
+
+    > ul,
+    > div:not([class]) > ul {
+        @extend .list;
+        @extend .list--size-l;
+    }
+
+    b, strong {
+        font-weight: 600;
+    }
+
+    > img,
+    > div > img {
+        @extend .mobile-element-full-width;
+
+        @include use-media(tablet) {
+            border-radius: 0.5rem;
+        }
+
+        @include use-media(tablet-album) {
+            border-radius: 0.75rem;
+        }
+
+        @include use-media(laptop) {
+            width: 66.645% !important;
+        }
+    }
+
+    > p,
+    > ul,
+    > div:not([class]) > p,
+    > div:not([class]) > ul {
+        @include use-media(laptop) {
+            width: 66.645%;
+        }
+    }
+
+    table:not([class]),
+    div:not([class]) > table:not([class]) {
+        caption-side: bottom;
+        border-collapse: collapse;
+        width: 100%;
+        vertical-align: top;
+        color: var(--dark-100);
+
+        & caption {
+            @extend .text-s;
+            padding-top: 1.5rem;
+            color: var(--dark-70);
+        }
+
+        & tr {
+            border-bottom: 1px dashed var(--blue-30);
+        }
+
+        & th,
+        & td {
+            min-width: 140px;
+            padding: 1.5rem 0;
+        }
+
+        & th {
+            white-space: nowrap;
+            line-height: 1.5;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        & td {
+            @extend .text-l;
+        }
+    }
+}

@@ -3,7 +3,8 @@
         {
             text: "Карты",
             target: "dropMenu1",
-            additionalClass: "d-inline-flex"
+            additionalClass: "d-inline-flex",
+            isSelected: true
         },
         {
             text: "Вклады",
@@ -249,7 +250,7 @@ div.header__bottom-row
         each item in menuList
             if item.target
                 a.header__link.js-dropdown-link.gap-1.align-items-center(
-                    class= item.additionalClass,
+                    class= [item.additionalClass, item.isSelected && "is-selected"],
                     href= `#${item.target}`,
                     role="button",
                     aria-expanded="false",
