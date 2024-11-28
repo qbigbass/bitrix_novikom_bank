@@ -78,15 +78,14 @@ include ../../../cards/card-benefit
         link: '#'
     }
 
-.row.row-gap-6
-    .col-12.col-xxl-8
-        .accordion#accordion-contributions-documents
-            each item in accordionList
-                +accordion-item(item, 'accordion-contributions-documents')
-                    p.text-m.mb-0.dark-70!= item.content
-                    if item.linkList
-                        .mt-4
-                            each link in item.linkList
-                                +document-download(link)
-    .col-12.col-xxl-4
-        +card-benefit(cardBenefitData)
+.col-12.col-xxl-8
+    .accordion#accordion-contributions-documents
+        each item in accordionList
+            +accordion-item(item, 'accordion-contributions-documents')
+                p.text-m.mb-0.dark-70!= item.content
+                if item.linkList
+                    .mt-4
+                        each link in item.linkList
+                            +document-download(link)
+.col-12.col-xxl-4
+    +card-benefit(cardBenefitData)

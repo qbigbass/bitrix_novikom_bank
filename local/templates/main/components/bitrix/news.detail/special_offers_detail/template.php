@@ -15,7 +15,6 @@ $this->setFrameMode(true);
 use Dalee\Helpers\ComponentHelper;
 
 $helper = new ComponentHelper($component);
-//pre($arResult['PROPERTIES']['BUTTON_DETAIL']);
 ?>
 
 <section

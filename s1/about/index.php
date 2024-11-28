@@ -33,8 +33,14 @@ $APPLICATION->SetTitle('Новиком сегодня');
         "DETAIL_PAGER_TEMPLATE" => "",
         "DETAIL_PAGER_TITLE" => "Страница",
         "DETAIL_PROPERTY_CODE" => [
-            "PUBLICATION_DATE",
-            "TAG"
+            "IMAGES",
+            "QUOTE",
+            "EXCLAMATION",
+            "TABS",
+            "BENEFITS",
+            "TABS_HEADER",
+            "NEWS_SHOW",
+            "NEWS_LIST",
         ],
         "DETAIL_SET_CANONICAL_URL" => "N",
         "DISPLAY_BOTTOM_PAGER" => "Y",
@@ -93,8 +99,8 @@ $APPLICATION->SetTitle('Новиком сегодня');
         "COMPONENT_TEMPLATE" => "about",
         "SEF_URL_TEMPLATES" => [
             "news" => "",
-            "section" => "#SECTION_CODE#/",
-            "detail" => "#SECTION_CODE#/#ELEMENT_CODE#/",
+            "section" => "",
+            "detail" => "#ELEMENT_CODE#/",
         ]
     ],
     false

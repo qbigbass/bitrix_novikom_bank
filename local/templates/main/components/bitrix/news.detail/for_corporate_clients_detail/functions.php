@@ -71,7 +71,7 @@ function renderBenefitsTop(CMain $APPLICATION, array $ids): string
 function renderQuote(string $text, bool $invert = false): void
 {
     ob_start(); ?>
-    <section class="section-layout<?= $invert ? ' py-lg-11 bg-purple-10' : '' ?>">
+    <section class="section-layout py-lg-11<?= $invert ? ' bg-purple-10' : '' ?>">
         <div class="container">
             <div class="row">
                 <div class="col-12">

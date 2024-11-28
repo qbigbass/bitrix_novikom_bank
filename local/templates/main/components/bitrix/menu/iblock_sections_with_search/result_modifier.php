@@ -5,24 +5,40 @@
 use Bitrix\Iblock\Iblock;
 
 $sectionCodes = [];
+
 foreach ($arResult as $key => $item) {
-    if (!empty($item['PARAMS']['FROM_IBLOCK'])) {
-        $sectionCodes[$key] = basename($item['LINK']);
+    if (empty($item['PARAMS']['FROM_IBLOCK'])) {
+        $parentSection = basename($item['LINK']);
     }
 }
 
-$iblockId = iblock('special_offers_ru');
+foreach ($arResult as $key => $item) {
+    if (!empty($item['PARAMS']['FROM_IBLOCK']) && !empty($parentSection)) {
+        $sectionCodes[$key] = basename(explode($parentSection, $item['LINK'])[1]);
+    }
+}
+
+$sectionCodes = array_filter($sectionCodes);
+
+$iblockId = $arParams['IBLOCK_ID'];
 $dataClass = Iblock::wakeUp($iblockId)->getEntityDataClass();
-$condition = !empty($_SESSION['section_page']['/special-offers/']) && $_SESSION['section_page']['/special-offers/'] == '/ended/'
-    ? '<=END_DATE.VALUE'
-    : '>=END_DATE.VALUE';
+
+$filter = [
+    'IBLOCK_ID' => $iblockId,
+    'IBLOCK_SECTION.CODE' => $sectionCodes
+];
+
+if (!empty($arParams['FILTER_END_DATE'])) {
+    $condition = !empty($_SESSION['section_page'][$arParams['MENU_DIR']]) && $_SESSION['section_page'][$arParams['MENU_DIR']] == '/ended/'
+        ? '<=END_DATE.VALUE'
+        : '>=END_DATE.VALUE';
+
+    $filter[$condition] = date('Y-m-d H:i:s');
+}
 
 $data = [
     'order' => ['SORT' => 'ASC'],
-    'filter' => [
-        $condition => date('Y-m-d H:i:s'),
-        'IBLOCK_SECTION.CODE' => $sectionCodes
-    ],
+    'filter' => $filter,
     'select' => [
         'SECTION_CODE' => 'IBLOCK_SECTION.CODE',
     ],
@@ -30,9 +46,17 @@ $data = [
 
 $res = array_unique(array_column($dataClass::getList($data)->fetchAll(), 'SECTION_CODE'));
 
-foreach ($sectionCodes as $key => $sectionCode) {
-    if (!in_array($sectionCode, $res)) {
-        unset($arResult[$key]);
+if (!empty($sectionCodes)) {
+    foreach ($sectionCodes as $key => $sectionCode) {
+        if (!in_array($sectionCode, $res)) {
+            unset($arResult[$key]);
+        }
     }
+} else {
+    $arResult = array_reduce($arResult, function ($result, $item) {
+        if ($item['DEPTH_LEVEL'] == 1) {
+            $result[] = $item;
+        }
+        return $result;
+    });
 }
-

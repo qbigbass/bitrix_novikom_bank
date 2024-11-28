@@ -1,27 +1,4 @@
 .rte {
-    &:not(:last-child) {
-        margin-bottom: 2.5rem;
-
-        @include use-media(tablet) {
-            margin-bottom: 4rem;
-        }
-
-        @include use-media(laptop) {
-            margin-bottom: 5rem;
-        }
-    }
-
-    &:not(:first-child) {
-        margin-top: 2.5rem;
-
-        @include use-media(tablet) {
-            margin-top: 4rem;
-        }
-
-        @include use-media(laptop) {
-            margin-top: 5rem;
-        }
-    }
 
     h2 {
         @extend .h3;
@@ -205,10 +182,4 @@
             }
         }
     }
-
-    //& > *:not(.table) {
-    //    @include use-media(tablet-album) {
-    //        max-width: 63.375rem; //1014px
-    //    }
-    //}
 }
