@@ -1,50 +1,23 @@
 .rte {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2.5rem;
 
-    h2 {
-        @extend .h3;
-
-        &:not(:first-child) {
-            margin-top: 2.5rem;
-
-            @include use-media(tablet-album) {
-                margin-top: 3rem;
-            }
-        }
-
-        &:not(:last-child) {
-            margin-bottom: 1.5rem;
-        }
+    @include use-media(tablet-album) {
+        gap: 3rem;
     }
 
-    h3 {
-        @extend .h4;
-
-        &:not(:last-child) {
-            margin-bottom: 1.5rem;
-        }
-    }
-
-    h4 {
-        @extend .h5;
-
-        &:not(:last-child) {
-            margin-bottom: 1.5rem;
-        }
+    > div {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1.5rem;
     }
 
     p {
-        font-size: 1rem;
-        line-height: 1.5;
-
-        margin-bottom: 1.5rem;
-
-        &:last-child {
-            margin-bottom: 0;
-        }
-
-        & strong {
-            font-weight: 600;
-        }
+        @extend .text-l;
+        margin: 0;
 
         & .text-tiny {
             @extend .caption-m;
@@ -64,104 +37,31 @@
     }
 
     ul {
-        @extend .text-l;
+        @extend .list;
+        @extend .list--size-l;
 
-        margin: 1.5rem 0;
-        padding: 0;
-        padding-inline-start: 2rem;
-        list-style: none;
+        & ul {
+            @extend .list--inner-list;
+        }
+    }
+
+    b, strong {
         font-weight: 600;
-
-        @include use-media(tablet-album) {
-            margin-bottom: 3rem;
-        }
-
-        li {
-            position: relative;
-            margin-bottom: 1rem;
-
-            @include use-media(tablet-album) {
-                margin-bottom: 1.5rem;
-            }
-
-            &:last-child {
-                margin-bottom: 0;
-            }
-
-            &:before {
-                position: absolute;
-                content: " ";
-                left: -2rem;
-                top: .5rem;
-                width: 1rem;
-                height: 1rem;
-                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Crect x='4.5' y='4.5' width='11' height='11' stroke='%23806EA2' stroke-dasharray='2 2'/%3E%3Crect width='12' height='12' fill='%2355246A'/%3E%3C/svg%3E");
-                background-size: contain;
-                background-repeat: no-repeat;
-            }
-
-            & ul {
-                margin-top: 1.5rem;
-                font-weight: 400;
-                padding-inline-start: 1rem;
-
-                &:first-child {
-                    margin-top: 1.5rem;
-                }
-
-                & li {
-                    &:before {
-                        content: "";
-                        width: 0.25rem;
-                        height: 0.25rem;
-                        border-radius: 50%;
-                        background-color: currentColor;
-                        left: -1rem;
-                        top: 0.75rem;
-                    }
-                }
-            }
-        }
-
-        &:first-child {
-            margin-top: 0;
-        }
-
-        &:last-child {
-            margin-bottom: 0;
-        }
     }
 
-    a {
-        font-size: inherit;
-        font-weight: inherit;
-        line-height: inherit;
-        text-decoration: none;
-        color: var(--blue-100);
-
-        &:hover {
-            color: var(--violet-100);
-        }
-    }
-
-    img {
-        margin-left: -1.5rem;
-        margin-right: -1.5rem;
-        width: calc(100% + 3rem);
+    > img {
+        @extend .mobile-element-full-width;
 
         @include use-media(tablet) {
-            margin-left: 0;
-            margin-right: 0;
-            width: 100%;
             border-radius: 0.5rem;
         }
 
-        &:not(:last-child) {
-            margin-bottom: 2.5rem;
+        @include use-media(tablet-album) {
+            border-radius: 0.75rem;
+        }
 
-            @include use-media(tablet-album) {
-                margin-bottom: 3rem;
-            }
+        @include use-media(laptop-x) {
+            width: 66.645% !important;
         }
     }
 
@@ -169,17 +69,61 @@
         font-size: 0.625em;
     }
 
-    .table {
-        &:not(:first-child) {
-            margin-top: 1.5rem;
+    table {
+        caption-side: bottom;
+        border-collapse: collapse;
+        width: 100%;
+        vertical-align: top;
+        color: var(--dark-100);
+
+        & caption {
+            @extend .text-s;
+            padding-top: 1.5rem;
+            color: var(--dark-70);
         }
 
-        &:not(:last-child) {
-            margin-bottom: 2.5rem;
+        & tr {
+            border-bottom: 1px dashed var(--blue-30);
+        }
 
-            @include use-media(tablet-album) {
-                margin-bottom: 3rem;
+        & th,
+        & td {
+            min-width: 140px;
+            padding: 1.5rem 0;
+        }
+
+        & th {
+            white-space: nowrap;
+            line-height: 1.5;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        & td {
+            @extend .text-l;
+        }
+    }
+
+    .btn {
+        align-self: flex-start;
+    }
+
+    &--w-xxl-60 {
+        @include use-media(laptop-x) {
+            > p,
+            > ul,
+            > img,
+            > div > p,
+            > div > ul,
+            > div > img, {
+                max-width: 66.645% ;
             }
+        }
+    }
+
+    &--accordion {
+        > div {
+            gap: 1rem;
         }
     }
 }
