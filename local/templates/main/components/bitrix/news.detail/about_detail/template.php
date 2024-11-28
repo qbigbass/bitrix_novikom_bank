@@ -1,4 +1,6 @@
-<? use Dalee\Helpers\HeaderView;
+<?
+use Dalee\Helpers\ComponentRenderer\Renderer;
+use Dalee\Helpers\HeaderView;
 
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /** @var array $arParams */
@@ -15,6 +17,8 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 $this->setFrameMode(true);
 
 $headerView = new HeaderView($component);
+$renderer = new Renderer($APPLICATION, $component);
+
 $helper = $headerView->helper();
 $placeholderManager = $arResult['PLACEHOLDER_CLASS'];
 
@@ -39,67 +43,9 @@ if (!empty($arResult['DISPLAY_PROPERTIES']['TABS']['VALUE'])): ?>
                     </svg>
                 </a>
             <? endif; ?>
-            <? global $tabsFilter;
-            $tabsFilter = [
-                'ACTIVE' => 'Y',
-                'ID' => $arResult['PROPERTIES']['TABS']['VALUE']
-            ];
 
-            $APPLICATION->IncludeComponent(
-                "bitrix:news.list",
-                "tabs",
-                [
-                    "ACTIVE_DATE_FORMAT" => "d.m.Y",
-                    "ADD_SECTIONS_CHAIN" => "N",
-                    "AJAX_MODE" => "N",
-                    "AJAX_OPTION_ADDITIONAL" => "",
-                    "AJAX_OPTION_HISTORY" => "N",
-                    "AJAX_OPTION_JUMP" => "N",
-                    "AJAX_OPTION_STYLE" => "Y",
-                    "CACHE_FILTER" => "Y",
-                    "CACHE_GROUPS" => "Y",
-                    "CACHE_TIME" => "36000000",
-                    "CACHE_TYPE" => "A",
-                    "CHECK_DATES" => "Y",
-                    "DETAIL_URL" => "",
-                    "DISPLAY_BOTTOM_PAGER" => "N",
-                    "DISPLAY_TOP_PAGER" => "N",
-                    "FIELD_CODE" => ["CODE", "NAME", "PREVIEW_TEXT", "PREVIEW_PICTURE", ""],
-                    "FILTER_NAME" => "tabsFilter",
-                    "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                    "IBLOCK_ID" => iblock('tabs'),
-                    "IBLOCK_TYPE" => "additional",
-                    "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
-                    "INCLUDE_SUBSECTIONS" => "N",
-                    "MESSAGE_404" => "",
-                    "NEWS_COUNT" => "20",
-                    "PAGER_BASE_LINK_ENABLE" => "N",
-                    "PAGER_DESC_NUMBERING" => "N",
-                    "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
-                    "PAGER_SHOW_ALL" => "N",
-                    "PAGER_SHOW_ALWAYS" => "N",
-                    "PAGER_TEMPLATE" => ".default",
-                    "PAGER_TITLE" => "Новости",
-                    "PARENT_SECTION" => "",
-                    "PARENT_SECTION_CODE" => "",
-                    "PREVIEW_TRUNCATE_LEN" => "",
-                    "PROPERTY_CODE" => ["CONDITIONS_ICONS","CONDITIONS","CONDITIONS_TABS","TEXT_FIELD","SHORT_INFO","QUOTES","QUESTIONS","DOCUMENTS", "BENEFITS", "TEXT_BLOCK_DESCRIPTION", "COMPLEX_PROP"],
-                    "SET_BROWSER_TITLE" => "N",
-                    "SET_LAST_MODIFIED" => "N",
-                    "SET_META_DESCRIPTION" => "N",
-                    "SET_META_KEYWORDS" => "N",
-                    "SET_STATUS_404" => "N",
-                    "SET_TITLE" => "N",
-                    "SHOW_404" => "N",
-                    "SORT_BY1" => "ACTIVE_FROM",
-                    "SORT_BY2" => "SORT",
-                    "SORT_ORDER1" => "DESC",
-                    "SORT_ORDER2" => "ASC",
-                    "STRICT_SECTION_CHECK" => "N",
-                    "NO_TABS_PADDING" => "Y"
-                ],
-                $component
-            ); ?>
+            <? $renderer->render('Tabs', $arResult['DISPLAY_PROPERTIES']['TABS']['VALUE']); ?>
+
         </div>
     </section>
 <? endif;
@@ -109,68 +55,8 @@ if (!empty($arResult['DISPLAY_PROPERTIES']['NEWS_SHOW']['VALUE'])): ?>
     <section class="section-layout py-lg-11 d-none d-lg-block">
         <div class="container">
 
-            <? global $newsFilter;
-            $newsFilter['ACTIVE'] = 'Y';
+            <? $renderer->render('NewsList', $arResult['DISPLAY_PROPERTIES']['NEWS_LIST']['VALUE']); ?>
 
-            if (!empty($arResult['DISPLAY_PROPERTIES']['NEWS_LIST']['VALUE'])) {
-                $newsFilter['ID'] = $arResult['DISPLAY_PROPERTIES']['NEWS_LIST']['VALUE'];
-            }
-
-            $APPLICATION->IncludeComponent(
-                "bitrix:news.list",
-                "news_list",
-                [
-                    "ACTIVE_DATE_FORMAT" => "d.m.Y",
-                    "ADD_SECTIONS_CHAIN" => "N",
-                    "AJAX_MODE" => "N",
-                    "AJAX_OPTION_ADDITIONAL" => "",
-                    "AJAX_OPTION_HISTORY" => "N",
-                    "AJAX_OPTION_JUMP" => "N",
-                    "AJAX_OPTION_STYLE" => "Y",
-                    "CACHE_FILTER" => "Y",
-                    "CACHE_GROUPS" => "Y",
-                    "CACHE_TIME" => "36000000",
-                    "CACHE_TYPE" => "A",
-                    "CHECK_DATES" => "Y",
-                    "DETAIL_URL" => "",
-                    "DISPLAY_BOTTOM_PAGER" => "Y",
-                    "DISPLAY_TOP_PAGER" => "N",
-                    "FIELD_CODE" => ["CODE", "NAME", "PREVIEW_TEXT", "PREVIEW_PICTURE", ""],
-                    "FILTER_NAME" => "newsFilter",
-                    "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                    "IBLOCK_ID" => iblock('press_center_ru'),
-                    "IBLOCK_TYPE" => "about_ru",
-                    "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
-                    "INCLUDE_SUBSECTIONS" => "N",
-                    "MESSAGE_404" => "",
-                    "NEWS_COUNT" => "20",
-                    "PAGER_BASE_LINK_ENABLE" => "N",
-                    "PAGER_DESC_NUMBERING" => "N",
-                    "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
-                    "PAGER_SHOW_ALL" => "N",
-                    "PAGER_SHOW_ALWAYS" => "N",
-                    "PAGER_TEMPLATE" => "square",
-                    "PAGER_TITLE" => "Новости",
-                    "PARENT_SECTION" => "",
-                    "PARENT_SECTION_CODE" => "",
-                    "PREVIEW_TRUNCATE_LEN" => "",
-                    "PROPERTY_CODE" => ["PUBLICATION_DATE"],
-                    "SET_BROWSER_TITLE" => "N",
-                    "SET_LAST_MODIFIED" => "N",
-                    "SET_META_DESCRIPTION" => "N",
-                    "SET_META_KEYWORDS" => "N",
-                    "SET_STATUS_404" => "N",
-                    "SET_TITLE" => "N",
-                    "SHOW_404" => "N",
-                    "SORT_BY1" => "ACTIVE_FROM",
-                    "SORT_BY2" => "SORT",
-                    "SORT_ORDER1" => "DESC",
-                    "SORT_ORDER2" => "ASC",
-                    "STRICT_SECTION_CHECK" => "N",
-                    "NO_TABS_PADDING" => "Y"
-                ],
-                $component
-            ); ?>
         </div>
     </section>
 

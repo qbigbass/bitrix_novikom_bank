@@ -12,6 +12,9 @@
 /** @var CBitrixComponent $component */
 
 use Dalee\Helpers\ComponentHelper;
+use Dalee\Helpers\ComponentRenderer\Renderer;
+
+$renderer = new Renderer($APPLICATION, $component);
 
 $parentTemplateFolder = $component->GetParent()->getTemplate()->GetFolder();
 $helper = new ComponentHelper($component);
