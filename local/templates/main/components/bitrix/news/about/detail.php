@@ -15,7 +15,7 @@ $this->setFrameMode(true);
 
 <?$APPLICATION->IncludeComponent(
     "bitrix:news.detail",
-    "payments_and_transfers_detail",
+    "about_detail",
     [
         "DISPLAY_DATE" => $arParams["DISPLAY_DATE"],
         "DISPLAY_NAME" => $arParams["DISPLAY_NAME"],

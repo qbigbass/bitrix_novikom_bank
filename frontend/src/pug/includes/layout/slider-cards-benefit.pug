@@ -1,61 +1,39 @@
 -
     var cardsListBenefit = [
         {
-            title: 'Оплата в&nbsp;одно касание',
-            description: 'Бесконтактная технология оплаты покупок MirPay',
-            sprite: {
-                name: 'icon-a-mir-payment',
-                classList: 'size-md-xxl'
-            },
+            bgColor: 'bg-dark-30',
+            title: 'Узкий спрэд котировок',
+            description: 'Оперативное рассмотрение вопроса об&nbsp;открытии линий на&nbsp;проведение конверсионных операций',
+            image: 'large-finorg/conversion-operations-quote-spread.png',
         },
         {
-            title: 'Оплата с&nbsp;помощью смартфона',
-            description: 'MirPay и&nbsp;СБПей для смартфонов на&nbsp;ОС&nbsp;Android',
-            sprite: {
-                name: 'icon-a-mobile-payment',
-                classList: 'size-md-xxl'
-            },
+            bgColor: 'bg-dark-30',
+            title: 'Работы под результаты 1, 2, 3&nbsp;рейсов МЦИ для валюты РФ',
+            description: 'Взаимозачет встречных обязательств',
+            image: 'large-finorg/conversion-operations-msi-work.png',
         },
         {
-            title: 'Мир&nbsp;Accept (3D-Secure)',
-            description: 'Современная технология защиты для безопасных покупок в&nbsp;интернете',
-            sprite: {
-                name: 'icon-a-mobile-ready',
-                classList: 'size-md-xxl'
-            },
+            bgColor: 'bg-dark-30',
+            title: 'Отправка срочных кредитовых авизо по&nbsp;иностранным валютам',
+            description: 'Проведение сделок SWAP в&nbsp;китайских юанях',
+            image: 'large-finorg/conversion-operations-sending-credit-notes.png',
         },
         {
-            title: 'Оплата в&nbsp;одно касание',
-            description: 'Бесконтактная технология оплаты покупок MirPay',
-            sprite: {
-                name: 'icon-a-mir-payment',
-                classList: 'size-md-xxl'
-            },
-        },
-        {
-            title: 'Оплата с&nbsp;помощью смартфона',
-            description: 'MirPay и&nbsp;СБПей для смартфонов на&nbsp;ОС&nbsp;Android',
-            sprite: {
-                name: 'icon-a-mobile-payment',
-                classList: 'size-md-xxl'
-            },
-        },
-        {
-            title: 'Мир&nbsp;Accept (3D-Secure)',
-            description: 'Современная технология защиты для безопасных покупок в&nbsp;интернете',
-            sprite: {
-                name: 'icon-a-mobile-ready',
-                classList: 'size-md-xxl'
-            },
+            bgColor: 'bg-dark-30',
+            title: 'Узкий спрэд котировок',
+            description: 'Оперативное рассмотрение вопроса об&nbsp;открытии линий на&nbsp;проведение конверсионных операций',
+            image: 'large-finorg/conversion-operations-quote-spread.png',
         },
     ]
 
 include ../../cards/card-benefit
 
-.swiper.slider-cards.js-slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:2,laptop:2,laptop-x:3" data-space-between="mobile-s:8,mobile:8,tablet:16,laptop:16,laptop-x:16")
-        .swiper-wrapper
-            each item in cardsListBenefit
-                .swiper-slide.js-swiper-slide
-                    +card-benefit(item)
+mixin slider-cards-benefit(data= cardsListBenefit)
+    .swiper.slider-cards.js-slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:2,laptop:2,laptop-x:3" data-space-between="mobile-s:8,mobile:8,tablet:16,laptop:16,laptop-x:16")
+            .swiper-wrapper
+                each item in data
+                    .swiper-slide.js-swiper-slide
+                        +card-benefit(item)(class=[item.type === "image" && "card-benefit--type-img"])
 
-        +slider-controls().mt-3.mt-md-4
+
+            +slider-controls().mt-3.mt-md-4

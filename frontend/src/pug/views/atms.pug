@@ -1,0 +1,92 @@
+extends ../templates/base-no-footer
+
+block title
+    title= 'Офисы и банкоматы'
+    meta(name="description" content="Описание страницы")
+block content
+    include ../includes/header/header
+    include ../cards/card-office
+
+    section.border-top.border-blue10.section-office
+        #map.map-wrapper
+        .map-content
+            .map-content__header.d-flex.flex-column.row-gap-4.row-gap-md-6
+                .d-flex.gap-3.justify-content-between.align-items-center
+                    h1.map-content__title Офисы и&nbsp;банкоматы
+                    +svg-use('icon-close', 'map-content__icon-close js-scroll-to-top')
+
+                .d-flex.flex-column.row-gap-3
+                    ul.nav.nav-tabs
+                        li.nav-item.w-50
+                            a.nav-link.text-center(href="/offices") Офисы
+                        li.nav-item.w-50
+                            a.nav-link.text-center.active(aria-current="page" href="#") Банкоматы
+
+                    .d-flex.gap-2
+                        form.flex-grow-1
+                            .input-group.input-group--size-small.flex-nowrap
+                                span#input-search.input-group-icon
+                                    span.icon
+                                        +svg-use('icon-search')
+                                input.form-control(type="text", placeholder="Поиск по городу или адресу", aria-label="Поиск по городу или адресу", aria-describedby="input-search")
+                        button(type="button" data-bs-toggle="modal" data-bs-target="#modal-atms-filters").btn.btn-outline-primary.btn-icon-alone
+                            +svg-use('icon-filters', 'icon size-m')
+            .map-content__body.d-flex.flex-column.gap-2.gap-md-3
+                -
+                    var list = [
+                        {
+                            href: '#',
+                            title: 'АО Центр Авиационной Медицины',
+                            address: 'Москва, Академика Сахарова пр-кт., д.&nbsp;7'
+                        },
+                        {
+                            href: '#',
+                            title: 'ООО ОДК-Инжиниринг',
+                            address: 'Москва, Волочаевская&nbsp;ул., д. 40г, стр.&nbsp;4'
+                        },
+                        {
+                            href: '#',
+                            title: 'ГК Ростех',
+                            address: 'Москва, Усачева&nbsp;ул., д.&nbsp;24'
+                        },
+                        {
+                            href: '#',
+                            title: 'Дополнительный офис &laquo;Якиманка&raquo; АО&nbsp;АКБ &laquo;НОВИКОМБАНК&raquo;',
+                            address: 'Москва, Якиманская наб., д.&nbsp;2'
+                        },
+                        {
+                            href: '#',
+                            title: 'Дополнительный офис АО&nbsp;АКБ &laquo;НОВИКОМБАНК&raquo; в&nbsp;г. Фрязино',
+                            address: 'Московская область, Фрязино, ул. Центральная, д.&nbsp;5'
+                        },
+                        {
+                            href: '#',
+                            title: 'Удаленная точка обслуживания АО&nbsp;АКБ &laquo;НОВИКОМБАНК&raquo;',
+                            address: 'Москва, ул. Профсоюзная, д.78, стр.1, помещ. 1А'
+                        },
+                        {
+                            href: '#',
+                            title: 'АО Центр Авиационной Медицины',
+                            address: 'Москва, Академика Сахарова пр-кт., д.&nbsp;7'
+                        },
+                        {
+                            href: '#',
+                            title: 'ООО ОДК-Инжиниринг',
+                            address: 'Москва, Волочаевская&nbsp;ул., д. 40г, стр.&nbsp;4'
+                        },
+                        {
+                            href: '#',
+                            title: 'ГК Ростех',
+                            address: 'Москва, Усачева&nbsp;ул., д.&nbsp;24'
+                        },
+                        {
+                            href: '#',
+                            title: 'Дополнительный офис &laquo;Якиманка&raquo; АО&nbsp;АКБ &laquo;НОВИКОМБАНК&raquo;',
+                            address: 'Москва, Якиманская наб., д.&nbsp;2'
+                        },
+                    ]
+                each office in list
+                    +card-office(office)
+    include ../includes/modals/modal-atms-filters
+
+

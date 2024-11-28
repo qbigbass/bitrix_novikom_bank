@@ -78,6 +78,8 @@ $activeFilter = [
                             "MENU_CACHE_GET_VARS" => [
                             ],
                             "COMPONENT_TEMPLATE" => "iblock_sections_with_search",
+                            "IBLOCK_ID" => iblock('special_offers_ru'),
+                            "FILTER_END_DATE" => true
                         ],
                         $component
                     );

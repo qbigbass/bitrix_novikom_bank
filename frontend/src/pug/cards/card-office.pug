@@ -1,0 +1,6 @@
+mixin card-office(data)
+    a(href= data.href).card-office.d-flex.col-gap-2.align-items-center
+        .card-office__body.d-flex.flex-grow-1.flex-column.row-gap-2.row-gap-md-3
+            p.card-office__title.fw-semibold.text-l.m-0!= data.title
+            p.card-office__address.text-s.m-0.dark-70!= data.address
+        +svg-use('icon-chevron-right', 'icon size-m d-none d-md-block')

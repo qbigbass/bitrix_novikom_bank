@@ -53,6 +53,8 @@ block content
     include ../cards/card-promo
     include ../cards/card-award
     include ../cards/card-about
+    include ../cards/card
+    include ../components/anchor-panel
 
     section#typography.section-layout
         .container
@@ -589,7 +591,7 @@ block content
 
                         },
                         {
-                            href: "emailto:corp@novikom.ru",
+                            href: "mailto:corp@novikom.ru",
                             text: "corp@novikom.ru",
                             icon: "icon-mail",
                             additionalClass: "text-decoration-underline",
@@ -652,7 +654,7 @@ block content
 
                         },
                         {
-                            href: "emailto:corp@novikom.ru",
+                            href: "mailto:corp@novikom.ru",
                             text: "corp@novikom.ru",
                             icon: "icon-mail",
                             additionalClass: "text-decoration-underline",
@@ -819,7 +821,7 @@ block content
                     each item in allCardsNews
                         .col-12.col-md-6.col-lg-4
                             +card-news(item)
-    
+
     section#card-award.section-layout.pt-0
         -
             var awardList = [
@@ -848,7 +850,7 @@ block content
                     imageSrc: 'img/awards/individual-certificate.png',
                 }
             ]
-        
+
         .container
             .d-flex.flex-column.row-gap-5
                 .d-flex.flex-column.gap-2
@@ -883,7 +885,7 @@ block content
                         a(href="#").btn.btn-outline-primary.btn-lg-lg.btn-icon
                             | Смотреть все награды
                             +svg-use("icon-chevron-right", "icon size-m")
-    
+
     section.section-layout.py-lg-11.bg-dark-30
         -
             var cardAboutBankData = {
@@ -934,13 +936,147 @@ block content
             .row
                 .col-12
                     .swiper.js-slider-cards.slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:1,laptop:2,laptop-x:2" data-space-between="mobile-s:8,mobile:8,tablet:16,laptop:48,laptop-x:48")
-                        .swiper-wrapper.js-swiper-wrapper 
+                        .swiper-wrapper.js-swiper-wrapper
                             .swiper-slide.js-swiper-slide
                                 +card-about(cardAboutBankData)
                             .swiper-slide.js-swiper-slide
                                 +card-about(cardAboutBankData)
 
                         +slider-controls().mt-3.mt-md-4
+
+
+    section#card.section-layout.bg-dark-10
+        -
+            var cardDefaultData = {
+                idMoreBlock: "card-1",
+                tag: null,
+                title: "Облигации",
+                description: null,
+                conditions: [
+                    {
+                        startText: '',
+                        beforeText: '',
+                        text: 'Низкий',
+                        afterText: '',
+                        currency: '',
+                        description: 'Риск',
+                        smallText: true
+                    },
+                    {
+                        startText: '',
+                        beforeText: '',
+                        text: '1',
+                        afterText: 'год',
+                        currency: '',
+                        description: 'Срок <br>инвестирования'
+                    },
+                    {
+                        startText: '',
+                        beforeText: 'до',
+                        text: '20%',
+                        afterText: 'в год',
+                        currency: '',
+                        description: 'Ожидаемая <br>доходность'
+                    },
+                ],
+                imgSrc: "big-illustrations/large-finorg/trust-management-bonds.png"
+            }
+
+            var cardDefaultAccordionContent = {
+                tables: [
+                    {
+                        title: null,
+                        rows: [
+                            {
+                                label: "Цель",
+                                value: ["Сохранить средства и получить доход на уровне или выше банковских депозитов с наименьшим риском снижения стоимости активов."]
+                            },
+                            {
+                                label: "Способ управления",
+                                value: ["Активный"]
+                            },
+                        ]
+                    },
+                    {
+                        title: "Требования к инвестору",
+                        rows: [
+                            {
+                                label: "Предполагаемый возраст(для физических лиц)",
+                                value: "от 18 лет и старше"
+                            },
+                            {
+                                label: "Минимальная сумма инвестиций",
+                                value: "1 миллион рублей"
+                            },
+                            {
+                                label: "Примерные среднемесячные доходы за последние 12 месяцев",
+                                value: "более 200 000 рублей"
+                            },
+                            {
+                                label: "Расходы",
+                                value: "более 120 000 рублей"
+                            },
+                        ]
+                    },
+                    {
+                        title: "Ставки комиссий",
+                        rows: [
+                            {
+                                label: "Ставка комиссии за управление",
+                                value: "1% годовых"
+                            },
+                            {
+                                label: "Ставка комиссии за успех",
+                                value: "10%"
+                            },
+                        ]
+                    },
+                    {
+                        title: null,
+                        rows: [
+                            {
+                                label: "Прочие расходы",
+                                value: "<ul class='list list--size-l'>" +
+                                        "<li>Вознаграждение управляющего</li>" +
+                                        "<li>Регистрационные и иные сборы(при перерегистрации прав на ценные бумаги)</li>" +
+                                        "<li>Комиссионные сборы торговых систем, биржевых площадок</li>" +
+                                        "<li>Иные подтвержденные расходы, понесенные управляющим при осуществлении доверительного управления</li>" +
+                                        "</ul>"
+                            },
+                        ]
+                    },
+                ],
+                linkList: [
+                    {
+                        href: '#',
+                        text: 'Динамика среднемесячной доходности',
+                        dateTime: '12.12.23 18:56',
+                        fileType: 'XLS',
+                        classSize: 'text-m'
+                    },
+                ],
+            }
+        .container
+            h3.mb-5.mb-lg-7
+                | Card
+            .row
+                .col-12
+                    +card(cardDefaultData)
+                        .d-flex.flex-column.gap-4.gap-md-6.gap-lg-7.mt-4.mt-md-6.mt-lg-7
+                            each table in cardDefaultAccordionContent.tables
+                                .d-flex.flex-column.gap-4
+                                    if table.title
+                                        .h4= table.title
+                                    .table-tab.cell-2
+                                        .table-tab__body
+                                            each row in table.rows
+                                                .table-tab__row
+                                                    .table-tab__cell.text-l.fw-semibold.dark-70!= row.label
+                                                    .table-tab__cell.text-l!= row.value
+                            .d-flex.flex-column.gap-4
+                                .h4 Инвестиционная стратегия "Облигации"
+                                .link-list
+                                    +document-download(cardDefaultAccordionContent.linkList[0])
 
     section#pagination.section-layout
         -
@@ -1558,3 +1694,40 @@ block content
                     .alert.d-flex.align-items-center.gap-3.bg-dark-10(role="alert")
                         +svg-use("icon-alert", "icon dark-70 size-m").flex-shrink-0
                         div.text-m.dark-70 Оформление карты для новых клиентов Банка осуществляется при личном присутствии клиента в&nbsp;офисе Банка с&nbsp;документом, удостоверяющим личность
+
+    section#anchor-panel.section-layout.pt-0
+        .container
+            .row.px-lg-6
+                .col-12
+                    h3.mb-4.mb-md-6.mb-lg-7
+                        | Anchor panel
+        +anchor-panel([
+            {
+                href: "#anchor-1",
+                text: "Якорь 1"
+            },
+            {
+                href: "#anchor-2",
+                text: "Якорь 2"
+            },
+            {
+                href: "#anchor-3",
+                text: "Якорь 3"
+            },
+            {
+                href: "#anchor-4",
+                text: "Якорь 4"
+            },
+            {
+                href: "#anchor-5",
+                text: "Якорь 5"
+            },
+            {
+                href: "#anchor-6",
+                text: "Якорь 6"
+            },
+            {
+                href: "#anchor-7",
+                text: "Якорь 7"
+            },
+        ])

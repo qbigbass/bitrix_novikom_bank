@@ -1,0 +1,44 @@
+extends ../templates/base-no-footer
+
+block title
+    title= 'Банкомат АО АКБ НОВИКОМБАНК'
+    meta(name="description" content="Описание страницы")
+block content
+    include ../includes/header/header
+
+    section.border-top.border-blue10.section-office
+        #map.map-wrapper
+        .map-content
+            .map-content__header.map-content__header--type-back.d-flex.flex-column.row-gap-4.row-gap-md-6
+                .d-flex.gap-3.justify-content-between.align-items-center
+                    a(href="#").btn.btn-link.btn-lg.btn-icon
+                        +svg-use('icon-arrow-left', 'icon size-m')
+                        | Назад
+                .d-flex.flex-column.row-gap-3
+                    h4 АО АКБ НОВИКОМБАНК
+                    p.m-0.dark-70 ATM06802
+                    p.m-0 117393, Москва, Профсоюзная&nbsp;ул., д.&nbsp;78
+            .map-content__body.d-flex.flex-column.gap-4.gap-md-6
+                .d-flex.flex-column.row-gap-3
+                    .d-inline-flex.gap-3.align-items-center
+                        +svg-use('icon-metro', 'icon size-m')(style="color: #FF9800")
+                        span.fw-semibold Калужская
+                    .d-inline-flex.gap-3.align-items-center
+                        +svg-use('icon-metro', 'icon size-m')(style="color: #A0BEDC")
+                        span.fw-semibold Воронцовская
+                .d-flex.flex-column.row-gap-3
+                    h5.fw-semibold Вход
+                    p.mb-0 Свободный
+                .d-flex.flex-column.row-gap-3
+                    h5.fw-semibold Режим обслуживания
+                    ul.list-contact.d-flex.flex-column.row-gap-3
+                        li пн-чт: 09:00-18:00
+                        li пт:	09:00-16:45
+                        li сб-вс: выходной
+                .d-flex.flex-column.row-gap-3
+                    h5.fw-semibold Валюта приема
+                    p.mb-0 RUB
+                .d-flex.flex-column.row-gap-3
+                    h5.fw-semibold Валюта выдачи
+                    p.mb-0 RUB
+

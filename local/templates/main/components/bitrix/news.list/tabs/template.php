@@ -13,8 +13,8 @@
 $this->setFrameMode(true);
 ?>
 
-<div class="mt-4 mt-md-6 mt-lg-7" id="additional-info-content">
-    <div class="row">
+<div class="collapse d-md-block" id="additional-info-content">
+    <div class="row px-lg-6">
         <div class="col-12">
             <? if (empty($arParams['NO_TABS_PADDING'])) { ?>
                 <div class="ps-lg-6">
@@ -70,15 +70,7 @@ $this->setFrameMode(true);
                          aria-labelledby="additional-info-<?= $tab['ID'] ?>"
                          tabindex="0"
                          role="tabpanel">
-                        <div class="row row-gap-6" id="<?=$this->GetEditAreaId($tab['ID']);?>">
-
-                            <? if (
-                                !empty($tab['CODE']) && ($tab['CODE'] == 'protsentnye-stavki' || $tab['CODE'] == 'stavki')
-                                || ($tab['NAME'] == 'Процентные ставки' || $tab['NAME'] == 'Ставки')
-                                && !empty($component->__parent->arResult['RATES_TABLE_HTML'])
-                            ) {
-                                echo($component->__parent->arResult['RATES_TABLE_HTML']);
-                            } ?>
+                        <div class="row row-gap-6 row-gap-md-9 row-gap-lg-11" id="<?=$this->GetEditAreaId($tab['ID']);?>">
 
                             <? if (!empty($tab['DISPLAY_PROPERTIES'])) {
                                 foreach ($tab['DISPLAY_PROPERTIES'] as $property) {
@@ -357,27 +349,25 @@ $this->setFrameMode(true);
                                     <? }
 
                                     if ($property['CODE'] == 'STEPS' && !empty($property['~VALUE'])) { ?>
-                                        <div class="row row-gap-6 mb-6 mb-md-9 mb-lg-11">
-                                            <div class="stepper steps-2">
-                                                <? foreach ($property['~VALUE'] as $index => $value) { ?>
-                                                    <div class="stepper-item stepper-item--color-green">
-                                                        <div class="stepper-item__header">
-                                                            <div class="stepper-item__number">
-                                                                <div
-                                                                    class="stepper-item__number-value"><?= $index + 1 ?></div>
-                                                                <div class="stepper-item__number-icon">
-                                                                    <?= getStepperIcons($index) ?>
-                                                                </div>
+                                        <div class="stepper steps-2">
+                                            <? foreach ($property['~VALUE'] as $index => $value) { ?>
+                                                <div class="stepper-item stepper-item--color-green">
+                                                    <div class="stepper-item__header">
+                                                        <div class="stepper-item__number">
+                                                            <div
+                                                                class="stepper-item__number-value"><?= $index + 1 ?></div>
+                                                            <div class="stepper-item__number-icon">
+                                                                <?= getStepperIcons($index) ?>
                                                             </div>
-                                                            <div class="stepper-item__arrow"></div>
                                                         </div>
-                                                        <div class="stepper-item__content">
-                                                            <p class="text-l mb-0"><?= $value['TEXT'] ?></p>
-                                                        </div>
+                                                        <div class="stepper-item__arrow"></div>
                                                     </div>
-                                                <?
-                                                } ?>
-                                            </div>
+                                                    <div class="stepper-item__content">
+                                                        <p class="text-l mb-0"><?= $value['TEXT'] ?></p>
+                                                    </div>
+                                                </div>
+                                            <?
+                                            } ?>
                                         </div>
                                     <?
                                     }
@@ -423,113 +413,109 @@ $this->setFrameMode(true);
                                     <? }
 
                                     if ($property['CODE'] == 'QUESTIONS' && !empty($property['LINK_ELEMENT_VALUE'])) { ?>
-                                        <div class="row row-gap-6 mt-7 mt-md-7 mt-lg-8">
-                                            <div class="col-12 col-xxl-8">
-                                                <div class="accordion" id="accordion-<?= $property['ID'] ?>">
-                                                    <? foreach ($property['LINK_ELEMENT_VALUE'] as $question) { ?>
-                                                        <div class="accordion-item">
-                                                            <div class="accordion-header">
-                                                                <button class="accordion-button collapsed" type="button"
-                                                                        data-bs-toggle="collapse"
-                                                                        data-bs-target="#<?= $question['ID'] ?>"
-                                                                        aria-controls="<?= $question['ID'] ?>">
-                                                                    <?= $question['NAME'] ?>
-                                                                </button>
-                                                            </div>
-                                                            <div class="accordion-collapse collapse"
-                                                                 id="<?= $question['ID'] ?>"
-                                                                 data-bs-parent="#accordion-<?= $property['ID'] ?>">
-                                                                <div class="accordion-body">
-                                                                    <p class="text-m mb-0 dark-70">
-                                                                        <?= $question['PREVIEW_TEXT'] ?>
-                                                                    </p>
-                                                                </div>
+                                        <div class="col-12 col-xxl-8">
+                                            <div class="accordion" id="accordion-<?= $property['ID'] ?>">
+                                                <? foreach ($property['LINK_ELEMENT_VALUE'] as $question) { ?>
+                                                    <div class="accordion-item">
+                                                        <div class="accordion-header">
+                                                            <button class="accordion-button collapsed" type="button"
+                                                                    data-bs-toggle="collapse"
+                                                                    data-bs-target="#<?= $question['ID'] ?>"
+                                                                    aria-controls="<?= $question['ID'] ?>">
+                                                                <?= $question['NAME'] ?>
+                                                            </button>
+                                                        </div>
+                                                        <div class="accordion-collapse collapse"
+                                                             id="<?= $question['ID'] ?>"
+                                                             data-bs-parent="#accordion-<?= $property['ID'] ?>">
+                                                            <div class="accordion-body">
+                                                                <p class="text-m mb-0 dark-70">
+                                                                    <?= $question['PREVIEW_TEXT'] ?>
+                                                                </p>
                                                             </div>
                                                         </div>
-                                                    <? } ?>
-                                                    <a class="btn btn-link btn-lg-lg d-inline-flex gap-2 align-items-center mt-4 mt-md-6 section-custom-accordion__button-more"
-                                                       href="#">
-                                                        <span class="text-m">Все вопросы и ответы</span>
-                                                        <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg"
-                                                             width="100%" height="100%">
-                                                            <use
-                                                                xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right-small"></use>
-                                                        </svg>
-                                                    </a>
-                                                </div>
+                                                    </div>
+                                                <? } ?>
+                                                <a class="btn btn-link btn-lg-lg d-inline-flex gap-2 align-items-center mt-4 mt-md-6 section-custom-accordion__button-more"
+                                                   href="#">
+                                                    <span class="text-m">Все вопросы и ответы</span>
+                                                    <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg"
+                                                         width="100%" height="100%">
+                                                        <use
+                                                            xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right-small"></use>
+                                                    </svg>
+                                                </a>
                                             </div>
-                                            <div class="col-12 col-xxl-4">
-                                                <? $APPLICATION->IncludeFile('/local/php_interface/include/request_call_form.php'); ?>
-                                            </div>
+                                        </div>
+                                        <div class="col-12 col-xxl-4">
+                                            <? $APPLICATION->IncludeFile('/local/php_interface/include/request_call_form.php', ['BACKGROUND_COLOR' => 'blue-10']); ?>
                                         </div>
                                     <? }
 
                                     if ($property['CODE'] == 'DOCUMENTS' && !empty($property['LINK_SECTION_VALUE'])) { ?>
-                                        <div class="row row-gap-6">
-                                            <div class="col-12 col-xxl-8">
-                                                <div class="accordion" id="accordion-<?= $property['ID'] ?>">
-                                                    <? foreach ($property['LINK_SECTION_VALUE'] as $key => $section) {
-                                                        if (!empty($section['ELEMENTS'])) { ?>
-                                                            <div class="accordion-item">
-                                                                <div class="accordion-header">
-                                                                    <button
-                                                                        class="accordion-button <?= $key == array_key_first($property['LINK_SECTION_VALUE']) ? 'show' : 'collapsed' ?>"
-                                                                        type="button"
-                                                                        data-bs-toggle="collapse"
-                                                                        data-bs-target="#<?= $section['ID'] ?>"
-                                                                        aria-controls="<?= $section['ID'] ?>"
-                                                                        <?= $key == array_key_first($property['LINK_SECTION_VALUE']) ? 'aria-expanded="true"' : '' ?>
-                                                                    >
-                                                                        <?= $section['NAME'] ?>
-                                                                    </button>
-                                                                </div>
-                                                                <div
-                                                                    class="accordion-collapse collapse <?= $key == array_key_first($property['LINK_SECTION_VALUE']) ? 'show' : '' ?>"
-                                                                    id="<?= $section['ID'] ?>"
-                                                                    data-bs-parent="#accordion-<?= $property['ID'] ?>">
-                                                                    <div class="accordion-body">
-                                                                        <p class="text-m mb-0 dark-70">
-                                                                            <?= $section['DESCRIPTION'] ?>
-                                                                        </p>
-                                                                        <div class="mt-4">
-                                                                            <? foreach ($section['ELEMENTS'] as $element) {
-                                                                                $file = CFile::GetFileArray($element['PROPERTIES']['FILE']['VALUE']);
-                                                                                ?>
-                                                                                <a class="d-flex flex-column gap-1 py-3 document-download text-m"
-                                                                                   href="<?= $file['SRC'] ?>"
-                                                                                   download="<?= $file['NAME'] ?>"><?= $element ['NAME'] ?>
+                                        <div class="col-12 col-xxl-8">
+                                            <div class="accordion" id="accordion-<?= $property['ID'] ?>">
+                                                <? foreach ($property['LINK_SECTION_VALUE'] as $key => $section) {
+                                                    if (!empty($section['ELEMENTS'])) { ?>
+                                                        <div class="accordion-item">
+                                                            <div class="accordion-header">
+                                                                <button
+                                                                    class="accordion-button <?= $key == array_key_first($property['LINK_SECTION_VALUE']) ? 'show' : 'collapsed' ?>"
+                                                                    type="button"
+                                                                    data-bs-toggle="collapse"
+                                                                    data-bs-target="#<?= $section['ID'] ?>"
+                                                                    aria-controls="<?= $section['ID'] ?>"
+                                                                    <?= $key == array_key_first($property['LINK_SECTION_VALUE']) ? 'aria-expanded="true"' : '' ?>
+                                                                >
+                                                                    <?= $section['NAME'] ?>
+                                                                </button>
+                                                            </div>
+                                                            <div
+                                                                class="accordion-collapse collapse <?= $key == array_key_first($property['LINK_SECTION_VALUE']) ? 'show' : '' ?>"
+                                                                id="<?= $section['ID'] ?>"
+                                                                data-bs-parent="#accordion-<?= $property['ID'] ?>">
+                                                                <div class="accordion-body">
+                                                                    <p class="text-m mb-0 dark-70">
+                                                                        <?= $section['DESCRIPTION'] ?>
+                                                                    </p>
+                                                                    <div class="mt-4">
+                                                                        <? foreach ($section['ELEMENTS'] as $element) {
+                                                                            $file = CFile::GetFileArray($element['PROPERTIES']['FILE']['VALUE']);
+                                                                            ?>
+                                                                            <a class="d-flex flex-column gap-1 py-3 document-download text-m"
+                                                                               href="<?= $file['SRC'] ?>"
+                                                                               download="<?= $file['NAME'] ?>"><?= $element ['NAME'] ?>
+                                                                                <div
+                                                                                    class="d-flex gap-1 align-items-center">
                                                                                     <div
-                                                                                        class="d-flex gap-1 align-items-center">
-                                                                                        <div
-                                                                                            class="document-download__file caption-m dark-70">
-                                                                                            <span
-                                                                                                class="document-download__date-time"><?= !empty($element['ACTIVE_FROM']) ? $element['ACTIVE_FROM']->format('d.m.y H:i') : '' ?></span>
-                                                                                            <span
-                                                                                                class="document-download__file-type"><?= explode('.', $file['ORIGINAL_NAME'])[1] ?></span>
-                                                                                        </div>
+                                                                                        class="document-download__file caption-m dark-70">
                                                                                         <span
-                                                                                            class="icon size-s text-primary">
-                                                                                    <svg
-                                                                                        xmlns="http://www.w3.org/2000/svg"
-                                                                                        width="100%" height="100%">
-                                                                                        <use
-                                                                                            xlink:href="/frontend/dist/img/svg-sprite.svg#icon-download-small"></use>
-                                                                                    </svg>
-                                                                                </span>
+                                                                                            class="document-download__date-time"><?= !empty($element['ACTIVE_FROM']) ? $element['ACTIVE_FROM']->format('d.m.y H:i') : '' ?></span>
+                                                                                        <span
+                                                                                            class="document-download__file-type"><?= explode('.', $file['ORIGINAL_NAME'])[1] ?></span>
                                                                                     </div>
-                                                                                </a>
-                                                                            <? } ?>
-                                                                        </div>
+                                                                                    <span
+                                                                                        class="icon size-s text-primary">
+                                                                                <svg
+                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                    width="100%" height="100%">
+                                                                                    <use
+                                                                                        xlink:href="/frontend/dist/img/svg-sprite.svg#icon-download-small"></use>
+                                                                                </svg>
+                                                                            </span>
+                                                                                </div>
+                                                                            </a>
+                                                                        <? } ?>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        <? } ?>
+                                                        </div>
                                                     <? } ?>
-                                                </div>
+                                                <? } ?>
                                             </div>
-                                            <div class="col-12 col-xxl-4">
-                                                <? $APPLICATION->IncludeFile('/local/php_interface/include/protection_from_scammers.php'); ?>
-                                            </div>
+                                        </div>
+                                        <div class="col-12 col-xxl-4">
+                                            <? $APPLICATION->IncludeFile('/local/php_interface/include/protection_from_scammers.php'); ?>
                                         </div>
                                     <? }
                                 }

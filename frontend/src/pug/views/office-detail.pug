@@ -1,0 +1,121 @@
+extends ../templates/base-no-footer
+
+block title
+    title= 'Офис обслуживания'
+    meta(name="description" content="Описание страницы")
+block content
+    include ../includes/header/header
+    include ../components/ui/accordion-item
+
+    -
+        var accordionList = [
+            {
+                id: 1,
+                title: 'Продолжительность обслуживания физических лиц. Режим работы операционных касс по&nbsp;обслуживанию клиентов',
+            },
+            {
+                id: 2,
+                title: 'Продолжительность операционного дня для юридических лиц и&nbsp;индивидуальных предпринимателей',
+            },
+            {
+                id: 3,
+                title: 'Реквизиты',
+                content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, non!',
+            },
+        ]
+
+    section.border-top.border-blue10.section-office
+        #map.map-wrapper
+        .map-content
+            .map-content__header.map-content__header--type-back.d-flex.flex-column.row-gap-4.row-gap-md-6
+                .d-flex.gap-3.justify-content-between.align-items-center
+                    a(href="#").btn.btn-link.btn-lg.btn-icon
+                        +svg-use('icon-arrow-left', 'icon size-m')
+                        | Назад
+                .d-flex.flex-column.row-gap-3
+                    h4 Удаленная точка обслуживания АО&nbsp;АКБ &laquo;НОВИКОМБАНК&raquo;
+                    p.m-0 119048, город Москва, вн. тер.&nbsp;г. муниципальный округ Хамовники, ул. Усачева, д.&nbsp;24
+            .map-content__body.d-flex.flex-column.gap-4.gap-md-6
+                .d-flex.flex-column.row-gap-3
+                    .d-inline-flex.gap-3.align-items-center
+                        +svg-use('icon-metro', 'icon size-m')(style="color: #EF1E25")
+                        span.fw-semibold Фрунзенская
+                    .d-inline-flex.gap-3.align-items-center
+                        +svg-use('icon-metro', 'icon size-m')(style="color: #EF1E25")
+                        span.fw-semibold Спортивная
+                .d-flex.flex-column.row-gap-3
+                    h5.fw-semibold Режим обслуживания
+                    ul.list-contact.d-flex.flex-column.row-gap-3
+                        li пн-чт: 10:00-20:00
+                        li пт: 10:00-19:00
+                        li сб-вс: выходной
+                .d-flex.flex-column.row-gap-3
+                    h5.fw-semibold Юридические лица
+                    ul.list-contact.d-flex.flex-column.row-gap-3
+                        li пн-чт: 10:00-17:00
+                        li пт: 10:00-16:00
+                .d-flex.flex-column.row-gap-3
+                    h5.fw-semibold Операционная касса
+                    ul.list-contact.d-flex.flex-column.row-gap-3
+                        li пн-чт: 10:00-20:00
+                        li пт: 10:00-19:00
+                .d-flex.flex-column.row-gap-3
+                    h5.fw-semibold Услуги
+                    ul.list
+                        li
+                            span Обслуживание физических лиц
+                        li
+                            span Обслуживание юридических лиц и&nbsp;индивидуальных предпринимателей
+                        li
+                            span Здесь можно сдать <a href="#" class="text-decoration-none">биометрические данные</a>
+                .d-flex.flex-column.row-gap-3
+                    h5.fw-semibold Контакты
+                    ul.list-contact.d-flex.flex-column.row-gap-3
+                        li.d-flex.column-gap-3
+                            span.icon.size-m.violet-100
+                                +svg-use("icon-phone")
+                            a(href="tel:+78002507007").list-contact__link +7 (800) 250-70-07
+                        li.d-flex.column-gap-3
+                            span.icon.size-m.violet-100
+                                +svg-use("icon-phone")
+                            a(href="tel:+74959747187").list-contact__link +7 (495) 974-71-87
+                .accordion.accordion--size-sm#accordion-office
+                    +accordion-item(accordionList[0], 'accordion-office', 'text-l fw-semibold')
+                        .d-flex.flex-column.row-gap-5
+                            .d-flex.flex-column.row-gap-3
+                                p.text-m.mb-0.fw-semibold Для внешних платежей в&nbsp;рублях
+                                ul.list-contact.d-flex.flex-column.row-gap-3
+                                    li пн-чт: 10:00-17:00
+                                    li пт: 10:00-15:00
+                                    li сб-вс: выходной
+                            .d-flex.flex-column.row-gap-3
+                                p.text-m.mb-0.fw-semibold Для внешних платежей в&nbsp;иностранной валюте
+                                ul.list-contact.d-flex.flex-column.row-gap-3
+                                    li пн-чт: 10:00-14:00
+                                    li пт: 10:00-13:00
+                                    li сб-вс: выходной
+                            .d-flex.flex-column.row-gap-3
+                                p.text-m.mb-0.fw-semibold Для внутрибанковских платежей
+                                ul.list-contact.d-flex.flex-column.row-gap-3
+                                    li пн-чт: 10:00-17:00
+                                    li пт: 10:00-15:00
+                                    li сб-вс: выходной
+
+                    +accordion-item(accordionList[1], 'accordion-office', 'text-l fw-semibold')
+                        .d-flex.flex-column.row-gap-5
+                            .d-flex.flex-column.row-gap-3
+                                p.text-m.mb-0.fw-semibold Для внешних платежей в&nbsp;рублях
+                                ul.list-contact.d-flex.flex-column.row-gap-3
+                                    li пн-чт: 10:00-17:00
+                                    li пт: 10:00-15:00
+                                    li сб-вс: выходной
+                            .d-flex.flex-column.row-gap-3
+                                p.text-m.mb-0.fw-semibold Для внешних платежей в&nbsp;иностранной валюте
+                                ul.list-contact.d-flex.flex-column.row-gap-3
+                                    li пн-чт: 10:00-14:00
+                                    li пт: 10:00-13:00
+                                    li сб-вс: выходной
+
+                    +accordion-item(accordionList[2], 'accordion-office', 'text-l fw-semibold')
+                        p.text-m.mb-0!= accordionList[2].content
+

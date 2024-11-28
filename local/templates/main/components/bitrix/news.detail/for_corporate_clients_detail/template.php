@@ -161,7 +161,7 @@ $headerView->render(
 } ?>
 
 <? if (!empty($arResult['PROPERTIES']['BENEFITS_ICONS']['VALUE'])) { ?>
-    <section class="section-benefits px-0 px-lg-6 py-6 py-sm-9 py-md-11 py-xl-16 position-relative overflow-hidden">
+    <section class="section-layout px-lg-6">
         <div class="container">
             <div class="row mb-6 mb-lg-7">
                 <h3><?= $arResult['PROPERTIES']['BENEFITS_ICONS_HEADER']['~VALUE'] ?? '' ?></h3>
@@ -458,6 +458,11 @@ $headerView->render(
             );?>
 
         </div>
+        <picture class="pattern-bg pattern-bg--hide-mobile">
+            <source srcset="/frontend/dist/img/patterns/section-2/pattern-light-s.svg" media="(max-width: 767px)">
+            <source srcset="/frontend/dist/img/patterns/section-2/pattern-light-m.svg" media="(max-width: 1199px)">
+            <img src="/frontend/dist/img/patterns/section-2/pattern-light-l.svg" alt="bg pattern" loading="lazy">
+        </picture>
     </section>
 <? } ?>
 

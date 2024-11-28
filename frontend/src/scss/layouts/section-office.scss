@@ -1,0 +1,143 @@
+.section-office {
+  height: calc(100vh - 72px); // 72px- header height
+  height: calc(var(--vh, 1vh) * 100 - 72px);
+  overflow-y: auto;
+  padding-bottom: 4rem; // mobile-nav-panel
+
+  @include use-media(tablet) {
+    padding-bottom: 5.5rem;
+    height: calc(100vh - 80px); // 80px- header height
+    height: calc(var(--vh, 1vh) * 100 - 80px);
+  }
+
+  @include use-media(tablet-album) {
+    padding-bottom: 0;
+    position: relative;
+    overflow-y: hidden;
+    height: calc(100vh - 110px); // 110px- header height
+    height: calc(var(--vh, 1vh) * 100 - 110px);
+    display: flex;
+    padding-left: 5rem;
+  }
+
+  @include use-media(laptop-x) {
+    height: calc(100vh - 114px); // 114px- header height
+    height: calc(var(--vh, 1vh) * 100 - 114px);
+  }
+
+  @include use-media(desktop) {
+    padding-left: 10rem;
+    max-width: 1920px;
+    margin: 0 auto;
+  }
+}
+
+.map-wrapper {
+  background-color: var(--dark-10);
+  width: 100%;
+  height: 60vh;
+
+  @include use-media(tablet) {
+    height: 53vh;
+  }
+
+  @include use-media(tablet-album) {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: calc(100% - 30rem - 5rem); // 5rem - padding-left
+  }
+
+  @include use-media(desktop) {
+    width: calc(100% - 34.25rem - 10rem); // 10rem - padding-left
+  }
+}
+
+.map-content {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+
+  @include use-media(tablet) {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+
+  @include use-media(tablet-album) {
+    overflow-y: auto;
+    flex: 0 0 30rem;
+    padding-left: 0;
+    padding-bottom: 2.5rem;
+
+    &::-webkit-scrollbar {
+      height: .25rem;
+      width: .25rem;
+    }
+
+    &::-webkit-scrollbar-track {
+      border-radius: .5rem;
+      background-color: var(--dark-0);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: .5rem;
+      background-color: var(--violet-30);
+    }
+  }
+
+  @include use-media(desktop) {
+    flex-basis: 34.25rem;
+  }
+
+  &__title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: 135%;
+
+    @include use-media(tablet) {
+      font-size: 2rem;
+      line-height: 125%;
+    }
+  }
+
+  &__icon-close {
+    width: 1.5rem;
+    height: 1.5rem;
+    flex-shrink: 0;
+    display: none;
+
+    @include use-media(tablet) {
+      width: 2rem;
+      height: 2rem;
+    }
+
+    &.is-show {
+      display: inline-block;
+
+      @include use-media(tablet-album) {
+        display: none
+      }
+    }
+  }
+
+  &__header {
+    background-color: var(--dark-0);
+    position: sticky;
+    top: 0;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    z-index: 1;
+
+    @include use-media(tablet) {
+      padding-top: 2.5rem;
+      padding-bottom: 2.5rem;
+    }
+
+    &--type-back {
+      @include use-media(tablet-album) {
+        padding-top: 1.5rem;
+      }
+    }
+  }
+}

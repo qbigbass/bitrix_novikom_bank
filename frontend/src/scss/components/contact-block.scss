@@ -50,17 +50,19 @@
         color: var(--dark-100);
 
         #{$root}__description {
-            color: var(--dark-100);
+            color: var(--dark-70);
         }
 
-        &::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, rgba(245, 244, 246, 0.9) 0%, rgba(173, 173, 212, 0) 100%);
+        &:has(> .pattern-bg) {
+            &::after {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, rgba(245, 244, 246, 0.9) 0%, rgba(173, 173, 212, 0) 100%);
+            }
         }
     }
 

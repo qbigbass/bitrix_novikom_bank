@@ -64,6 +64,34 @@
         }
     }
 
+    &--size-md {
+      & #{$root}-button {
+        padding: 1.5rem 0;
+
+        @include use-media(tablet) {
+          padding: 2rem 0;
+        }
+      }
+
+      & #{$root}-body {
+        padding: 0 0 1.5rem;
+
+        @include use-media(tablet) {
+          padding: 0 0 2rem;
+        }
+      }
+    }
+
+    &--size-sm {
+      & #{$root}-button {
+        padding: 1.5rem 0;
+      }
+
+      & #{$root}-body {
+        padding: 0 0 1.5rem;
+      }
+    }
+
     &--bg-transparent &-item, &--bg-transparent &-button {
         background: transparent;
     }
