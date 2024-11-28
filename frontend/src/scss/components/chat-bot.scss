@@ -1,0 +1,128 @@
+.chat-bot {
+    position: fixed;
+    right: .5rem;
+    bottom: 3.5rem;
+    z-index: 1052;
+
+    @include use-media(tablet) {
+        right: 1.625rem;
+        bottom: 6.25rem;
+    }
+
+    @include use-media(tablet-album) {
+        right: 2.75rem;
+        bottom: 3.688rem;
+    }
+
+    &__button {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.5rem;
+        height: 2.5rem;
+        background: linear-gradient(220.58deg, #DAE0E7 0%, #D0C3EA 100%);
+        box-shadow: 0 .5rem 1rem 0 #3C3C4726;
+        border-radius: .25rem;
+
+        @include use-media(tablet) {
+            width: 3rem;
+            height: 2.5rem;
+            border-radius: 0;
+        }
+
+        @include use-media(tablet-album) {
+            width: 4.25rem;
+            height: 3.25rem;
+        }
+    }
+
+    &__popover {
+        width: calc(100vw - 1rem);
+
+        @include use-media(sm) {
+            width: 18.75rem;
+        }
+
+        @include use-media(tablet) {
+            border-radius: 0;
+        }
+
+        @include use-media(tablet-album) {
+            width: 20rem;
+        }
+    }
+
+    &__popover-content {
+        width: 100%;
+        padding: 3rem 1.5rem;
+        border-radius: .5rem;
+
+        @include use-media(tablet) {
+            border-radius: 0;
+            padding-bottom: 5rem;
+        }
+
+        @include use-media(tablet-album) {
+            border-radius: 0;
+            padding-bottom: 5.375rem;
+        }
+    }
+
+    &__btn-close {
+        position: absolute;
+        right: .5rem;
+        bottom: .5rem;
+    }
+
+    &__button-polygone {
+        position: absolute;
+        z-index: -1;
+
+        @include use-media(tablet) {
+            height: auto;
+            bottom: -0.938rem;
+            right: -.25rem;
+        }
+
+        @include use-media(tablet-album) {
+            width: 4.25rem;
+            bottom: -1.563rem;
+            right: -.625rem;
+        }
+    }
+
+    &__button-polygone {
+        @include use-media(tablet) {
+            width: 3rem;
+        }
+
+        @include use-media(tablet-album) {
+            width: 4.25rem;
+        }
+    }
+}
+
+.chatbot-polygon {
+    display: block;
+    position: relative;
+
+    &__content {
+        position: relative;
+        z-index: 1;
+    }
+
+    &__polygon {
+        position: absolute;
+        top: 4px;
+        left: 4px;
+        width: 100%;
+        height: calc(100% + 1rem);
+        z-index: 0;
+
+        @include use-media(tablet-album) {
+            top: 10px;
+            left: 10px;
+        }
+    }
+}
