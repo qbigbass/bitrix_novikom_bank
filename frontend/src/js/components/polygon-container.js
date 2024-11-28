@@ -41,6 +41,7 @@ const initState = (polygonContainer) => {
 const resizeSVGElement = (STATE) => {
     const $polygon = STATE.elements.polygon;
     const polygonRect = $polygon.get(0).getClientRects();
+
     if (polygonRect.length) {
         const isChatBot = !!$polygon.closest(".chat-bot").length;
         const {height, width} = polygonRect[0];
