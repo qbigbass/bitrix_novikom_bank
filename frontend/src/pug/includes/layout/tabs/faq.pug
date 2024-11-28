@@ -42,14 +42,13 @@ include ../../../cards/card-help
         link: '#'
     }
 
-.row.row-gap-6
-    .col-12.col-xxl-8
-        .accordion#accordion-faq
-            each item in accordionList
-                +accordion-item(item, 'accordion-faq')
-                    p.text-m.mb-0.dark-70!= item.content
-        a(href="#").btn.btn-link.btn-lg.d-inline-flex.gap-2.align-items-center.mt-4.mt-md-6.section-custom-accordion__button-more
-            span.text-m Все вопросы и ответы
-            +svg-use('icon-chevron-right-small', 'icon size-m')
-    .col-12.col-xxl-4
-        +card-help(cardHelpData)
+.col-12.col-xxl-8
+    .accordion#accordion-faq
+        each item in accordionList
+            +accordion-item(item, 'accordion-faq')
+                p.text-m.mb-0.dark-70!= item.content
+    a(href="#").btn.btn-link.btn-lg.d-inline-flex.gap-2.align-items-center.mt-4.mt-md-6.section-custom-accordion__button-more
+        span.text-m Все вопросы и ответы
+        +svg-use('icon-chevron-right-small', 'icon size-m')
+.col-12.col-xxl-4
+    +card-help(cardHelpData)
