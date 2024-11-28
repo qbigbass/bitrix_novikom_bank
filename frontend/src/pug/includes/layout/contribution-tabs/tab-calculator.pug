@@ -26,22 +26,24 @@
         {
             label: 'Сумма вклада',
             id: 'deposit-amount',
-            maxValue: 30000000,
-            minValue: 10000,
+            // maxValue: 30000000,
+            // minValue: 10000,
             startValue: 1000000,
             stepSize: 5000,
             type: "price",
             editable: true,
-            additionalClass: "js-input-amount"
+            additionalClass: "js-input-amount",
+            isCalculator: true
         },
         {
             label: 'Срок вклада',
             id: 'deposit-period',
-            startValue: 550,
-            steps: '250, 550, 1100',
+            // startValue: 550,
+            // steps: '250, 550, 1100',
             type: "day",
             editable: false,
-            additionalClass: "js-input-period"
+            additionalClass: "js-input-period",
+            isCalculator: true
         }
     ]
 

@@ -1,5 +1,6 @@
 import {generateStepsFromAttrs, getFormatedTextByType} from "./inputSlider";
 import {fetchDepositCalcData} from "../api/depositCalculator";
+import initInputSlider from "./inputSlider";
 
 const ELEMS = {
   root: '.js-calculator-deposit',
@@ -9,7 +10,7 @@ const ELEMS = {
   income: '.js-calculator-deposit-income',
   inputAmount: '.js-input-amount',
   inputPeriod: '.js-input-period',
-  inputSlider: '.js-input-slider',
+  inputSlider: '.input-slider',
 }
 
 const ClASSES = {
@@ -22,6 +23,7 @@ const toggleVisibility = (target, checked) => {
   checked ? target.classList.remove(ClASSES.hide) : target.classList.add(ClASSES.hide)
 }
 
+// пополнение
 const initReplenishment = (calculator) => {
   const replenishmentTrigger = calculator.querySelector(ELEMS.replenishment);
 
@@ -64,6 +66,8 @@ const initElements = (root) => {
 async function initState(calculator){
   const { data } = await fetchDepositCalcData(URL);
 
+  if (!data) { return false; }
+
   const elements = initElements(calculator);
   const calculatorId = calculator.dataset.id;
   const calculatorData = data.find(item => item.id === Number(calculatorId));
@@ -78,7 +82,6 @@ async function initState(calculator){
 const getPeriodValue = (input) => {
   const inputSlider = input.closest(ELEMS.inputSlider);
   const steps = generateStepsFromAttrs(inputSlider.getAttribute('data-steps') ?? '');
-
   if (steps.length > 0) {
     return steps[Number(input.value)];
   }
@@ -104,7 +107,7 @@ const getStepsPeriod = (data) => {
   return sortedValues.join(', ');
 }
 
-const getDefaultValues = (STATE) => {
+const getStartValues = (STATE) => {
   STATE.minPeriod = findMinValue('periodMin', STATE.calculatorData.values);
   STATE.maxPeriod = findMaxValue('periodMax', STATE.calculatorData.values);
   STATE.minAmount = findMinValue('amountMin', STATE.calculatorData.values);
@@ -113,7 +116,7 @@ const getDefaultValues = (STATE) => {
   STATE.amount = Number(STATE.minAmount);
 }
 
-const setValue = (STATE) => {
+const setStartValues = (STATE) => {
   console.log('minPeriod', STATE.minPeriod)
   console.log('maxPeriod', STATE.maxPeriod)
   console.log('minAmount', STATE.minAmount)
@@ -121,9 +124,12 @@ const setValue = (STATE) => {
   console.log('steps', STATE.steps)
 
   STATE.elements.inputPeriodWrapper.setAttribute('data-steps', STATE.steps);
-
+  STATE.elements.inputPeriodWrapper.setAttribute('data-start-value', STATE.maxPeriod);
+  STATE.elements.inputAmountWrapper.setAttribute('data-min-value', STATE.minAmount);
+  STATE.elements.inputAmountWrapper.setAttribute('data-max-value', STATE.maxAmount);
+  initInputSlider([STATE.elements.inputPeriodWrapper, STATE.elements.inputAmountWrapper]);
   STATE.period = getPeriodValue(STATE.elements.inputPeriod);
-  // STATE.elements.displayPeriod.innerHTML = getFormatedTextByType(STATE.period, 'day');
+  STATE.elements.displayPeriod.innerHTML = getFormatedTextByType(STATE.period, 'day');
 
   // TODO: поиск процентной ставки и рассчеты
   console.log('amount', STATE.amount);
@@ -134,16 +140,19 @@ async function initCalculatorDeposit() {
 
   for (const calculator of calculatorsDeposit) {
     const STATE = await initState(calculator);
-    getDefaultValues(STATE);
-    setValue(STATE);
+
+    if (!STATE) { return false; }
+
+    getStartValues(STATE);
+    setStartValues(STATE);
     initReplenishment(calculator);
 
-    STATE.elements.inputAmount.addEventListener('input', (event) => {
-      setValue(STATE);
-    })
-    STATE.elements.inputPeriod.addEventListener('input', (event) => {
-      setValue(STATE);
-    })
+    // STATE.elements.inputAmount.addEventListener('input', (event) => {
+    //   setValue(STATE);
+    // })
+    // STATE.elements.inputPeriod.addEventListener('input', (event) => {
+    //   setValue(STATE);
+    // })
   }
 }
 

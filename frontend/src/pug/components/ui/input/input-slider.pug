@@ -1,13 +1,14 @@
 include input-slider-text
 
 mixin input-slider(data)
-    .input-slider.js-input-slider(
+    .input-slider(
         data-type= data.type
         data-steps= data.steps
         data-start-value= data.startValue
         data-max-value= data.maxValue
         data-min-value= data.minValue
         data-step-size= data.stepSize
+        class= data.isCalculator ? '' : 'js-input-slider'
     )
         if data.label
             label(for= data.id).text-s.dark-70.ps-3.mb-2= data.label

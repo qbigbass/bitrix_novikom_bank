@@ -274,8 +274,11 @@ const initDisplaySteps = (STATE) => {
     }
 }
 
-function initInputSlider() {
-    const sliderInputs= document.querySelectorAll(JS_CLASSES.root);
+function initInputSlider(sliderInputs) {
+
+    if (!sliderInputs) {
+        sliderInputs= document.querySelectorAll(JS_CLASSES.root);
+    }
 
     sliderInputs.forEach((sliderInput) => {
         const STATE = initState(sliderInput);
