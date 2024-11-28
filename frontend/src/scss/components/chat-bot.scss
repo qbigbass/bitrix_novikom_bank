@@ -39,9 +39,6 @@
 
     &__popover {
         width: calc(100vw - 1rem);
-        position: absolute;
-        right: 0;
-        bottom: 0;
 
         @include use-media(sm) {
             width: 18.75rem;
