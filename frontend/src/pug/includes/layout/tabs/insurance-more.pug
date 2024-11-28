@@ -49,18 +49,19 @@ include ../../../components/document-download
         .accordion.accordion--size-lg.accordion--bg-transparent#accordion-insurance-more
             each item in accordionList
                 +accordion-item(item, 'accordion-insurance-more', 'h4')
-                    .d-flex.flex-column.gap-4.gap-md-5.gap-lg-7
-                        p.text-l.mb-0.dark-100!= item.content
+                    .content-block.content-block--accordion
+                        p!= item.content
                         if item.programDetail
                             div
-                                .text-l.fw-semibold.mb-3!= item.programDetail.title
-                                ul.list.list--size-l
+                                p
+                                    b!= item.programDetail.title
+                                ul
                                     each listItem in item.programDetail.list
                                         li!=listItem
                         if item.linkList
                             div
                                 if item.linkListTitle
-                                    .text-l.fw-bold.mb-3!= item.linkListTitle
+                                    h5!= item.linkListTitle
                                 .link-list
                                     each link in item.linkList
                                         +document-download(link)
