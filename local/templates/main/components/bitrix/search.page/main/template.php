@@ -91,11 +91,11 @@ $resultsDeclension = new Declension('результат', 'результата'
                             placeholder="Показать за период"
                             value="<?= htmlspecialchars($arParams['REQUEST_DATE']); ?>"
                         >
-                        <span class="position-absolute top-0 end-0 violet-70 text-m p-2 px-3 pe-none">
-                            <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-calendar"></use>
-                            </svg>
-                        </span>
+                        <label class="cursor-pointer position-absolute top-0 end-0 violet-70 text-m p-2 px-3" for="search-datepicker">
+                          <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                            <use xlink:href="img/svg-sprite.svg#icon-calendar"></use>
+                          </svg>
+                        </label>
                     </div>
                     <div class="tabs-panel js-tabs-slider overflow-hidden position-relative pe-1 pe-lg-0 tabs-panel--small w-auto">
                         <div class="tabs-panel__navigation d-none d-lg-block js-tabs-slider-navigation w-100">
