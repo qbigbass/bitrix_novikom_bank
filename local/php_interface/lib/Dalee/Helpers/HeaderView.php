@@ -30,7 +30,7 @@ class HeaderView
         $headerTemplate = empty($arResult['PROPERTIES']['HEADER_TEMPLATE']['VALUE_XML_ID']) ? 'compact' : $this->getHeaderTemplate($arResult);
 
         echo match ($headerTemplate) {
-            'compact' => $this->compact($headerData, $chainDepth),
+            'compact' => $this->compact($headerData, $chainDepth, $termsHtml),
             default => $this->detailed($headerData, $chainDepth, $termsHtml),
         };
     }
@@ -129,7 +129,7 @@ class HeaderView
         ob_start(); ?>
         <div class="banner-product <?= $headerData['bgColorClass'] ?> <?= implode(' ', $headerData['additionalClasses']) ?>">
             <div class="banner-product__wrapper">
-                <div class="banner-product__content w-100 w-lg-60">
+                <div class="banner-product__content <?= empty($headerData['picture']) ? 'w-100 w-lg-60' : '' ?>">
                     <div class="banner-product__header">
 
                         <? if (!empty($this->helper)) {
@@ -173,7 +173,7 @@ class HeaderView
         <? return ob_get_clean();
     }
 
-    private function compact(array $headerData, int $chainDepth)
+    private function compact(array $headerData, int $chainDepth, ?string $termsHtml)
     {
         ob_start(); ?>
         <section class="banner-text <?= $headerData['bgColorClass'] ?> <?= implode(' ', $headerData['additionalClasses']) ?>">
@@ -192,6 +192,9 @@ class HeaderView
                             <? } ?>
 
                         </div>
+                        <? if (!empty($termsHtml)) { ?>
+                            <?= $termsHtml ?>
+                        <? } ?>
                     </div>
 
                     <? if (!empty($headerData['picture'])) { ?>

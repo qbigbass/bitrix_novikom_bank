@@ -13,13 +13,13 @@
 $this->setFrameMode(true);
 
 $terms = [
-    'SUM_TO' => [
-        'SIGN' => 'Сумма',
-        'FROM_TO' => 'до&nbsp;',
-    ],
     'RATE_FROM' => [
         'SIGN' => 'Процентная ставка',
         'FROM_TO' => 'от&nbsp;',
+    ],
+    'SUM_TO' => [
+        'SIGN' => 'Сумма',
+        'FROM_TO' => 'до&nbsp;',
     ],
     'DIAPASON' => [
         'SIGN' => 'Диапазон полной стоимости кредита',

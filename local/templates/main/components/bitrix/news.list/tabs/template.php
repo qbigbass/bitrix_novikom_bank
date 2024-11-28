@@ -17,11 +17,11 @@ $this->setFrameMode(true);
 ?>
 
 <div class="collapse d-md-block" id="additional-info-content">
-    <div class="row px-lg-6 mt-4 mt-md-6 mt-lg-7">
+    <div class="row px-lg-6">
         <div class="col-12">
-            <?if(empty($arParams['NO_TABS_PADDING'])): ?>
+            <? if ($arParams['TABS_PADDING']) { ?>
                 <div class="ps-lg-6">
-            <?endif;?>
+            <? } ?>
                 <div class="tabs-panel js-tabs-slider overflow-hidden position-relative pe-1 pe-lg-0">
                     <div class="tabs-panel__navigation d-none d-lg-block js-tabs-slider-navigation w-100">
                         <span class="tabs-panel__navigation-item tabs-panel__navigation-item-reverse js-tabs-slider-navigation-prev d-flex align-items-center justify-content-start px-1 z-3 position-absolute swiper-button-disabled">
@@ -56,9 +56,9 @@ $this->setFrameMode(true);
                         <?endforeach;?>
                     </ul>
                 </div>
-            <?if(empty($arParams['NO_TABS_PADDING'])): ?>
+            <? if ($arParams['TABS_PADDING']) { ?>
                 </div>
-            <?endif;?>
+            <? } ?>
             <div class="tab-content mt-4 mt-md-6 mt-lg-7">
                 <?foreach ($arResult['ITEMS'] as $key => $tab): ?>
                     <?
