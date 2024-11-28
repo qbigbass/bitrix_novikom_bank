@@ -91,6 +91,20 @@ $arUrlRewrite = [
         'PATH' => '/support/announcements_for_clients/index.php',
     ],
     [
+        'CONDITION' => '#^/about/press-center/#',
+        'RULE' => '',
+        'ID' => 'bitrix:news',
+        'PATH' => '/about/press-center/index.php',
+        'SORT' => 100,
+    ],
+    [
+        'CONDITION' => '#^/about/career/#',
+        'RULE' => '',
+        'ID' => 'bitrix:news',
+        'PATH' => '/about/career/index.php',
+        'SORT' => 100,
+    ],
+    [
         'CONDITION' => '#^/about/#',
         'RULE' => '',
         'ID' => 'bitrix:news',
