@@ -1,0 +1,9 @@
+mixin textarea(data, formName)
+    - var { id, label, required, placeholder } = data;
+    .d-flex.flex-column.row-gap-2
+        label(for=`${formName}_${id}`).form-label.mb-0
+            != label
+            if required
+                span.orange-100.ms-1 *
+        textarea(id=`${formName}_${id}` name=id placeholder=placeholder required=required autocomplete="off" data-form-input).form-control.form-control-lg-lg
+        .invalid-feedback(aria-live="polite")

@@ -5,6 +5,11 @@ button {
     cursor: pointer;
 }
 
+.btn {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .btn-lg {
     line-height: 1.35;
 }
@@ -15,27 +20,27 @@ button {
     height: 1.75rem;
 }
 
+.btn:disabled,
+.btn.disabled {
+    color: var(--dark-50);
+    pointer-events: none;
+    background-color: var(--dark-30);
+    border-color: var(--dark-30);
+    opacity: 1;
+}
+
 .btn-primary {
     &:hover {
         background-color: var(--violet-150);
     }
 }
 
-.btn-tertiary {
-    color: var(--dark-0);
-
-    &:hover {
-        color: var(--dark-0);
-    }
-}
-
+.btn-tertiary,
 .btn-orange {
-    background-color: var(--orange-100);
-    color: var(--dark-0);
-
-    &:hover {
-       background-color: var(--orange-150);
-    }
+    --bs-btn-color: var(--dark-0);
+    --bs-btn-hover-color: var(--dark-0);
+    --bs-btn-active-color: var(--dark-0);
+    --bs-btn-disabled-color: var(--dark-0);
 }
 
 .btn-link {
@@ -66,6 +71,13 @@ button {
     }
 }
 
+.btn-icon-alone {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: .5rem;
+}
+
 .btn-lg-lg {
     @include use-media(tablet-album) {
         --bs-btn-padding-y: 0.9375rem;
@@ -74,6 +86,16 @@ button {
         line-height: 1.35;
         height: auto;
     }
+}
+
+.btn-md-lg {
+  @include use-media(tablet) {
+    --bs-btn-padding-y: 0.9375rem;
+    --bs-btn-padding-x: 2rem;
+    --bs-btn-font-size: 1.125rem;
+    line-height: 1.35;
+    height: auto;
+  }
 }
 
 .btn-md-md {

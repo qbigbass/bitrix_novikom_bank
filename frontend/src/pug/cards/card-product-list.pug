@@ -11,9 +11,9 @@ mixin card-product-list(data)
                     if data.description
                         span.text-l.card-product-list__description.m-0!= data.description
                 if data.conditions.length > 0
-                    .card-product-list__condition-list.w-100.w-lg-auto.d-flex.justify-content-between.justify-content-lg-start.flex-column.flex-sm-row.flex-wrap.row-gap-4.row-gap-sm-6.row-gap-lg-6.row-gap-xxl-6.gap-lg-12.gap-xxl-16
+                    .card-product-list__condition-list.w-100.w-lg-auto.d-flex.justify-content-between.justify-content-lg-start.flex-column.flex-sm-row.flex-wrap.row-gap-4.row-gap-sm-6.row-gap-lg-6.row-gap-xxl-6.gap-xl-12.gap-xxl-16
                         each item, index in data.conditions
-                            .card-product-list__condition.d-flex.flex-column.gap-2.w-100.w-sm-50.w-lg-auto(class= `${item.smallText ? 'align-self-end' : ''}`)
+                            .card-product-list__condition.d-flex.flex-column.gap-2.w-100.w-sm-50.w-xl-auto(class= `${item.smallText ? 'align-self-end' : ''}`)
                                 .d-inline-flex.flex-nowrap.align-items-baseline.gap-1
                                     if item.startText
                                         span.text-l.fw-bold= item.startText
@@ -33,7 +33,7 @@ mixin card-product-list(data)
 
                 .d-flex.flex-column.flex-sm-row.align-items-center.gap-5.gap-sm-6.w-100
                     if data.textButton
-                        a(href="#").btn.btn-tertiary.btn-lg.card-product-list__button.w-100.w-sm-auto= data.textButton
-                    a(href="#").btn.btn-link.btn-lg.d-inline-flex.gap-2.align-items-center.card-product-list__button-more
+                        a(href="#").btn.btn-tertiary.btn-lg-lg.card-product-list__button.w-100.w-sm-auto= data.textButton
+                    a(href="#").btn.btn-link.btn-lg-lg.d-inline-flex.gap-2.align-items-center.card-product-list__button-more
                         span Подробнее
-                        +svg-use('icon-chevron-right-small', 'card-product-list__button-icon')
+                        +svg-use('icon-chevron-right', 'card-product-list__button-icon')

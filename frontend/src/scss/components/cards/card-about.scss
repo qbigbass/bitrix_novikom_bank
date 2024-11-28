@@ -1,0 +1,23 @@
+.card-about {
+    position: relative;
+    padding: 1.5rem 1rem;
+    border-radius: 0.75rem;
+    overflow: hidden;
+
+    @include use-media(tablet) {
+        padding: 2rem;
+    }
+
+    @include use-media(tablet-album) {
+        padding: 2.5rem;
+    }
+
+    &__content {
+        position: relative;
+        z-index: 1;
+    }
+
+    &__description {
+        text-wrap: balance;
+    }
+}

@@ -1,0 +1,66 @@
+include ../../../components/ui/accordion-item
+include ../../../components/document-download
+
+-
+    var accordionList = [
+        {
+            id: 11,
+            title: 'Перечень рекомендуемых страховщиков',
+            content: 'Компания «Абсолют Страхование» предоставляет возможность застраховаться от укуса клеща или укуса клеща и иных животных (кроме насекомых) самому и застраховать детей. Возможно приобрести полис, гарантирующий организацию и оплату амбулаторно-поликлинических и стационарных медицинских услуг Застрахованному лицу.',
+            linkList: [
+                {
+                    href: '#',
+                    text: 'Страхование от укуса клеща «Антиклещ»',
+                    dateTime: '12.12.23 18:56',
+                    fileType: 'PDF',
+                    classSize: 'text-m'
+                },
+            ],
+            linkListTitle: 'Подробнее о программе',
+            programDetail: {
+                title: 'Основные параметры программы:',
+                list: [
+                    'сумма страховой защиты: от 100 000 до 200 000 рублей',
+                    'срок страхования: 1 год',
+                    'стоимость полиса: от 336 до 480 рублей',
+                    'можно застраховать до 4 человек в одном полисе'
+                ]
+            },
+        },
+        {
+            id: 12,
+            title: 'Риски, от которых должно быть застраховано залоговое имущество',
+            content: '',
+        },
+        {
+            id: 13,
+            title: 'Перечень документов для страховых компаний',
+            content: '',
+        },
+        {
+            id: 14,
+            title: 'Требования к страховым компаниям и условиям предоставления страховой услуги',
+            content: '',
+        },
+    ]
+
+.col-12
+    .accordion.accordion--size-lg.accordion--bg-transparent#accordion-insurance-more
+        each item in accordionList
+            +accordion-item(item, 'accordion-insurance-more', 'h4')
+                .content-block.content-block--accordion
+                    p!= item.content
+                    if item.programDetail
+                        div
+                            p
+                                b!= item.programDetail.title
+                            ul
+                                each listItem in item.programDetail.list
+                                    li!=listItem
+                    if item.linkList
+                        div
+                            if item.linkListTitle
+                                h5!= item.linkListTitle
+                            .link-list
+                                each link in item.linkList
+                                    +document-download(link)

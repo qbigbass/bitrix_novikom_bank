@@ -1,0 +1,65 @@
+.card {
+    padding: 3rem 1rem;
+
+    @include use-media(tablet) {
+        padding: 2.5rem 2.5rem 2.5rem 2rem;
+    }
+
+    @include use-media(tablet-album) {
+        padding: 2.5rem;
+    }
+
+    &__content {
+        flex: 1;
+
+        @include use-media(laptop) {
+            padding-bottom: 5.25rem;
+        }
+    }
+
+    &__image {
+        width: calc(100% + 1rem);
+        max-width: 20rem;
+        margin-inline: -0.5rem;
+
+        @include use-media(mobile-s) {
+            width: 100%;
+            margin-inline: 0;
+        }
+    }
+
+    &__button-wrap {
+
+    }
+
+    &__button-more {
+        &[aria-expanded="false"] {
+            span:nth-child(2) {
+                display: none;
+            }
+        }
+
+        &[aria-expanded="true"] {
+            span:nth-child(1) {
+                display: none;
+            }
+        }
+
+        @include use-media(laptop) {
+            position: absolute;
+            bottom: 2.5rem;
+
+            &[aria-expanded="true"] {
+                position: static;
+            }
+        }
+    }
+
+    &__condition {
+        @include use-media(tablet-album) {
+            br {
+                display: none;
+            }
+        }
+    }
+}

@@ -6,13 +6,45 @@ block title
 block content
     include ../includes/header/accessibility-panel
     include ../includes/header/header
-    include ../components/banner-hero
+    include ../components/banners/banner-hero
     include ../cards/card-service
     include ../cards/card-service-app
     include ../components/announcement
     include ../cards/card-special
     include ../components/ui/tabs
     include ../includes/layout/slider-card-product
+
+    -
+        var bannerHeroData = {
+            bgClass: "",
+            bgImageSrc: "img/slides/hero_banner_bg_desktop.png",
+            sliders: [
+                {
+                    title: "Банк российских <br>инженеров",
+                    text: "Мы&nbsp;укрепляем технологический суверенитет России и&nbsp;помогаем занять лидерские позиции в&nbsp;экономике будущего",
+                    button: "Больше о банке",
+                    thumbBorderColor: "green",
+                },
+                {
+                    title: "Банку Новиком <br>30 лет",
+                    text: "Мы&nbsp;укрепляем технологический суверенитет России и&nbsp;помогаем занять лидерские позиции в&nbsp;экономике будущего",
+                    thumbBorderColor: "green",
+                },
+                {
+                    title: "Ваша финансовая <br>безопасность",
+                    text: "Мы&nbsp;укрепляем технологический суверенитет России и&nbsp;помогаем занять лидерские позиции в&nbsp;экономике будущего",
+                    button: "Больше о банке",
+                    thumbBorderColor: "green",
+                },
+                {
+                    title: "Годовой <br>отчет",
+                    text: "Мы&nbsp;укрепляем технологический суверенитет России и&nbsp;помогаем занять лидерские позиции в&nbsp;экономике будущего",
+                    thumbBorderColor: "green",
+                },
+            ]
+        }
+
+    +banner-hero(bannerHeroData)
 
     section.section-layout
         .container
@@ -190,3 +222,4 @@ block content
     include ../includes/layout/section-news-cards
     include ../includes/layout/section-feedback
     include ../includes/layout/section-currency-exchange
+

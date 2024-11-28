@@ -1,6 +1,10 @@
 <?php
 
-function iblock(string $code) : int {
+use Bitrix\Iblock\ElementTable;
+use Bitrix\Iblock\SectionTable;
+
+function iblock(string $code): int
+{
     try {
         \Bitrix\Main\Loader::IncludeModule('iblock');
         $iblock = Bitrix\Iblock\IblockTable::getList(['select' => ['ID'], 'filter' => ['CODE' => $code]])->Fetch();
@@ -10,11 +14,13 @@ function iblock(string $code) : int {
     }
 }
 
-function printIntoFile($text, string $filePath = '/logger.txt') {
+function printIntoFile($text, string $filePath = '/logger.txt')
+{
     file_put_contents($_SERVER['DOCUMENT_ROOT'] . $filePath, print_r($text, true), FILE_APPEND);
 }
 
-function modifyMainSubmenuResult(array $arResult) : array {
+function modifyMainSubmenuResult(array $arResult): array
+{
     $modifiedResult = [
         'FIRST_LEVEL_MENU' => [],
         'SECOND_LEVEL_MENU' => [],
@@ -25,7 +31,7 @@ function modifyMainSubmenuResult(array $arResult) : array {
             $lastParentElement = end($modifiedResult['FIRST_LEVEL_MENU']);
             $itemIndex = $lastParentElement['ITEM_INDEX'];
 
-            if(!empty($item['PARAMS']['alternative_name'])) {
+            if (!empty($item['PARAMS']['alternative_name'])) {
                 $item["TEXT"] = $item['PARAMS']['alternative_name'];
             }
 
@@ -40,7 +46,8 @@ function modifyMainSubmenuResult(array $arResult) : array {
     return $modifiedResult;
 }
 
-function clearPhoneNumber(string $phoneNumber) : string {
+function clearPhoneNumber(string $phoneNumber): string
+{
     return preg_replace('/[^0-9\+]+/', '', $phoneNumber);
 }
 
@@ -60,14 +67,15 @@ function processTerms(array $terms, array $properties): array
 {
     $result = [];
 
-    foreach ($properties as $key => $term) {
-        if (!$term || !isset($terms[$key])) {
+    foreach ($terms as $key => $termData) {
+        if (!isset($properties[$key]) || !$properties[$key]) {
             continue;
         }
 
-        $sign = $terms[$key]['SIGN'];
-        $fromTo = $terms[$key]['FROM_TO'];
-        $period = $terms[$key]['PERIOD'] ?? 'years';
+        $sign = $termData['SIGN'];
+        $fromTo = $termData['FROM_TO'];
+        $period = $termData['PERIOD'] ?? 'years';
+        $term = $properties[$key];
         $value = '';
 
         if (in_array($key, ['RATE_FROM', 'RATE_TO'])) {
@@ -75,7 +83,7 @@ function processTerms(array $terms, array $properties): array
         } elseif (in_array($key, ['SUM_FROM', 'SUM_TO'])) {
             $value = number_format($term, 0, '', ' ') . ' <span class="currency">₽</span>';
         } elseif (in_array($key, ['PERIOD_FROM', 'PERIOD_TO'])) {
-            $value = ($period == 'years' ? floor($term / 12) : $term) . declensionFrom($term, $period);
+            $value = is_numeric($term) ? ($period === 'years' ? floor($term / 12) : $term) . declensionFrom($term, $period) : $term;
         } elseif ($key === 'DIAPASON') {
             $value = $term;
         }
@@ -89,6 +97,7 @@ function processTerms(array $terms, array $properties): array
 
     return $result;
 }
+
 
 /**
  * @param int $number
@@ -109,18 +118,19 @@ function declensionFrom(int $number, string $period = 'years'): string
 
 /**
  * @param string $template
+ * @param int $depth
  * @return void
  */
-function showNavChain(string $template = '.default'): void
+function showNavChain(string $template = '.default', int $depth = 0): void
 {
     global $APPLICATION;
     $APPLICATION->IncludeComponent(
         "bitrix:breadcrumb",
-        "",
+        "$template",
         [
             "PATH" => "",
             "SITE_ID" => "s1",
-            "START_FROM" => "0"
+            "START_FROM" => $depth
         ]
     );
 }
@@ -132,4 +142,35 @@ function getHlBlockEntries(string $hlBlockName): array
     $strEntityDataClass = '\\' . $hlBlockName . 'Table';
 
     return $strEntityDataClass::getList()->fetchAll();
+}
+
+function getIBlockElements(int $IBlockId): array
+{
+    \Bitrix\Main\Loader::IncludeModule('iblock');
+    return Bitrix\Iblock\ElementTable::getList([
+        'order' => ['SORT' => 'ASC'],
+        'select' => ['ID', 'NAME', 'CODE'],
+        'filter' => ['IBLOCK_ID' => $IBlockId]
+    ])->fetchAll();
+}
+
+function getStepperIcons(int $stepIndex): string
+{
+    $stepperIcons =
+        '<div class="stepper-item__icon-border" data-level="1">
+            <svg width="76" height="44" viewBox="0 0 76 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M36.0723 1.06022C37.2727 0.400039 38.7273 0.400039 39.9277 1.06022L74.8138 20.2476C76.1953 21.0074 76.1953 22.9926 74.8138 23.7524L39.9277 42.9398C38.7273 43.6 37.2727 43.6 36.0723 42.9398L1.18624 23.7524C-0.195312 22.9926 -0.19531 21.0074 1.18624 20.2476L36.0723 1.06022Z" fill="currentColor"></path>
+            </svg>
+        </div>';
+
+    for ($i = 0; $i < $stepIndex; $i++) {
+        $stepperIcons .=
+            '<div class="stepper-item__icon-border" data-level="' . $i + 2 . '">
+                <svg width="80" height="46" viewBox="0 0 80 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M39.5181 1.26505C39.8182 1.10001 40.1818 1.10001 40.4819 1.26506L78.4069 22.1238C79.0977 22.5037 79.0977 23.4963 78.4069 23.8762L40.4819 44.7349C40.1818 44.9 39.8182 44.9 39.5181 44.7349L1.59312 23.8762C0.902343 23.4963 0.902345 22.5037 1.59312 22.1238L39.5181 1.26505Z" stroke="currentColor" stroke-linecap="round" stroke-dasharray="4 4"></path>
+                </svg>
+            </div>';
+    }
+
+    return $stepperIcons;
 }

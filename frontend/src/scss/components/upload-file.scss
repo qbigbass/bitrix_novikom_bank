@@ -1,0 +1,14 @@
+.upload-file {
+    &__box {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        border: 1px dashed var(--purple-30);
+        border-radius: 4px;
+    }
+
+    &__item,
+    &__item + &__box {
+        margin-top: 0.5rem;
+    }
+}

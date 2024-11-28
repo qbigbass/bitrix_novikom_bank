@@ -1,0 +1,93 @@
+extends ../templates/base
+
+block title
+    title= 'О банке - Контакты банка Новиком'
+    meta(name="description" content="Описание страницы с контактами")
+block content
+    -
+        var bannerTextData = {
+            title: "Контакты банка Новиком",
+            breadcrumbsArray: [
+                {linkText: "О банке", link: "/"}
+            ],
+            description: "",
+            imageSrc: "img/big-illustrations/large-individual/contact.png",
+            additionalClassList: 'justify-content-center justify-content-lg-start h-100'
+        }
+
+        var cardAboutBankData = {
+            pattern: false,
+            list: [
+                {
+                    title: "Единая справочная система",
+                    list: [
+                        {
+                            href: "tel:+78002507007",
+                            text: "+7 (800) 250-70-07",
+                            icon: "icon-phone",
+                        },
+                    ],
+                },
+                {
+                    title: "Круглосуточно, звонки по России бесплатно",
+                    description: "Круглосуточно, для звонков из Москвы и заграницы",
+                    list: [
+                        {
+                            href: "tel:+74959747187",
+                            text: "+7 (495) 974-71-87",
+                            icon: "icon-phone",
+
+                        },
+                    ],
+                },
+                {
+                    title: "Срочная блокировка карт",
+                    list: [
+                        {
+                            href: "tel:+78002507007",
+                            text: "+7 (800) 250-70-07",
+                            icon: "icon-phone",
+                        },
+                        {
+                            href: "tel:+74959747187",
+                            text: "+7 (495) 974-71-87",
+                            icon: "icon-phone",
+                        },
+                    ],
+                },
+            ]
+        }
+
+        var cardHelpData = {
+            title: 'Остались вопросы?',
+            description: 'Оставьте свой телефон и мы перезвоним вам, либо задайте вопрос в чате',
+            agreementText: 'Нажимая кнопку «Перезвоните мне», вы соглашаетесь с условиями предоставления информации',
+            chatButtonIsVisible: true,
+            sprite: {
+                name: 'icon-a-protection',
+                classList: 'size-md-xxl'
+            },
+            link: '#'
+        }
+
+    include ../includes/header/header
+    include ../components/banners/banner-text
+    include ../cards/card-about
+    include ../cards/card-help
+
+    +banner-text(
+        bannerTextData
+    )
+
+    section.section-layout.bg-dark-30
+        .container
+            .row
+                .col-12
+                    .swiper.js-slider-cards.slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:1,laptop:2,laptop-x:2" data-space-between="mobile-s:8,mobile:8,tablet:16,laptop:16,laptop-x:16")
+                        .swiper-wrapper.js-swiper-wrapper
+                            .swiper-slide.js-swiper-slide
+                                +card-about(cardAboutBankData)
+                            .swiper-slide.js-swiper-slide
+                                +card-help(cardHelpData, 'bg-white').h-100
+
+                        +slider-controls().mt-3.mt-md-4

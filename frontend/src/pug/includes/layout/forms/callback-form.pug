@@ -1,0 +1,54 @@
+include ../../../components/forms/input
+include ../../../components/forms/select
+include ../../../components/forms/captcha
+include ../../../components/forms/confirm
+
+-
+    var callbackForm = {
+        formName: "callback",
+        inputs: [
+            {
+                id: "first-name",
+                label: "Имя",
+                placeholder: "Введите имя",
+                required: true,
+            },
+            {
+                id: "phone",
+                label: "Телефон",
+                placeholder: "+7",
+                required: true,
+                mask: "phone",
+            },
+        ],
+        select: {
+            id: "time-call",
+            label: "Удобное время для звонка",
+            options: ["Любое", "09:00 - 12:00", "12:00 - 15:00"],
+            required: false,
+        }
+    }
+
+form(action="/" method="POST" novalidate id="callback-form" data-form).application-form
+    .application-form__step(data-form-validate-group)
+        .row.g-1.g-md-2.g-lg-2_5
+            each item in callbackForm.inputs
+                .application-form__col.col-12(class= item.id !== "organization" ? "col-md-6" : "" hidden= item.hidden)
+                    +input(item, callbackForm.formName)
+            .application-form__col.col-12
+                +select(callbackForm.select, callbackForm.formName)
+            .application-form__col.col-12
+                +captcha(callbackForm.formName)
+            .application-form__col.col-12
+                +confirm(callbackForm.formName)
+        .d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-5.column-gap-lg-6.mt-6.mt-lg-7
+            button.btn.btn-primary.btn-lg-lg.w-100.w-md-auto(type="submit" disabled aria-disabled="true" data-form-button) Отправить
+            div.text-m.orange-100.text-center(data-form-error)
+    div(
+        hidden
+        aria-hidden="true"
+        data-success-title="Ваше обращение успешно отправлено!"
+        data-success-info="Мы ответим на ваше обращение, по выбранному способу связи, как только получим и обработаем его"
+        data-error-title="Не удалось отправить обращение"
+        data-error-info="Проверьте правильно ли указаны все данные и отправьте обращение снова"
+    ).js-message

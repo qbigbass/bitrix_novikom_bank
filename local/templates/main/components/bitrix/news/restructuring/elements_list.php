@@ -13,36 +13,20 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
+
+use Dalee\Helpers\HeaderView;
+
+$headerView = new HeaderView($component);
+$helper = $headerView->helper();
+
+$headerView->render(
+    $APPLICATION->GetTitle(),
+    $APPLICATION->GetProperty("description"),
+    ['bg-linear-blue', 'banner-text--border-green'],
+    0,
+    $arResult
+);
 ?>
-
-<!-- Баннер в шапке -->
-
-<section class="banner-text banner-text--border-green bg-linear-blue">
-    <div class="container banner-text__container position-relative z-2">
-        <div class="row ps-lg-6">
-            <div class="col-12 col-sm-6 col-md-8 position-relative z-1 mb-5 mb-md-0 pt-6">
-                <div class="d-flex flex-column align-items-start gap-3 gap-md-4">
-
-                    <?
-                    $helper = new ComponentHelper($component);
-                    $helper->deferredCall('showNavChain', ['.default']);
-                    ?>
-
-                    <h1 class="banner-text__title dark-0 text-break"><?=$APPLICATION->GetTitle()?></h1>
-                    <div class="banner-text__description text-l dark-0"><?=$APPLICATION->GetProperty("description")?></div>
-                </div>
-            </div>
-            <div class="d-none d-sm-block col-12 col-sm-6 col-md-4">
-                <img class="banner-text__image position-relative w-auto float-end" src="/frontend/dist/img/big-illustrations/large-individual/restructuring.png" alt="">
-            </div>
-        </div>
-    </div>
-    <picture class="pattern-bg pattern-bg--position-sm-top banner-text__pattern">
-        <source srcset="/frontend/dist/img/patterns/section/pattern-light-s.svg" media="(max-width: 767px)">
-        <source srcset="/frontend/dist/img/patterns/section/pattern-light-m.svg" media="(max-width: 1199px)">
-        <img src="/frontend/dist/img/patterns/section/pattern-light-l.svg" alt="bg pattern" loading="lazy">
-    </picture>
-</section>
 
 <section class="restructuring-ramification section-layout d-flex flex-column gap-7 bg-dark-10">
     <div class="container">
@@ -70,7 +54,7 @@ $this->setFrameMode(true);
         </div>
 
         <!-- Список элементов -->
-        <div class="row align-items-stretch row-gap-4 row-gap-sm-6">
+        <div class="row align-items-stretch cards-gutter">
 
             <?$APPLICATION->IncludeComponent(
                 "bitrix:news.list",
@@ -127,7 +111,8 @@ $this->setFrameMode(true);
                     "IBLOCK_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["news"],
                     "IBLOCK_SECTIONS" => $arResult["IBLOCK_SECTIONS"],
                 ],
-                $component
+                $component,
+                ["HIDE_ICONS" => "Y"]
             );?>
 
         </div>

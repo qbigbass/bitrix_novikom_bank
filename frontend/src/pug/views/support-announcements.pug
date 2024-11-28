@@ -1,0 +1,205 @@
+extends ../templates/base
+
+block title
+    title= "Поддержка / Объявления для клиентов"
+    meta(name="description" content="Описание страницы Объявления для клиентов")
+block content
+
+    include ../includes/header/header
+    include ../components/banners/banner-text
+    include ../components/ui/tabs-simple
+    include ../cards/card-promo
+    include ../components/ui/pagination
+    include ../components/ui/tabs
+    include ../components/search-item
+
+    -
+        var bannerTextData = {
+            title: "Объявления для клиентов",
+        }
+
+        var tabsListAbout = [
+            {
+                link: '#private-clients',
+                linkText: 'Частным клиентам',
+                // isActive: true
+            },
+            {
+                link: '#corporate-clients',
+                linkText: 'Корпоративным клиентам',
+                // isActive: false
+            },
+            {
+                link: '#msb',
+                linkText: 'МСБ',
+                // isActive: false
+            },
+            {
+                link: '#financial-institutions',
+                linkText: 'Финансовым институтам',
+                // isActive: false
+            },
+        ]
+
+        var cardPromo = {
+            title: "Финансовая грамотность",
+            text: "Финансовая грамотность позволит достичь гармонии с&nbsp;деньгами. <br>Они перестанут быть причиной переживаний или самоцелью и&nbsp;превратятся в&nbsp;инструмент достижения ваших целей. И&nbsp;вот каким будет путь к&nbsp;этому",
+            image: "big-illustrations/large-individual/faq-fin-competition.png",
+        }
+
+        var fiterTabsList = [
+            {
+                link: '#to-all',
+                linkText: 'Все объявления',
+            },
+            {
+                link: '#to-technical-works',
+                linkText: 'Технические работы',
+            },
+            {
+                link: '#to-changes',
+                linkText: 'Изменения',
+            },
+            {
+                link: '#to-work-schedule',
+                linkText: 'График работы',
+            },
+            {
+                link: '#to-other',
+                linkText: 'Прочее',
+            },
+        ]
+
+        var searchList = [
+
+            {
+                tag: "Технические работы",
+                date: "07.08.2024",
+                name: "Технические работы 10 августа 2024 г. в период с 02:00 до 06:30 (МСК)",
+                link: "#",
+                pin: true
+            },
+            {
+                tag: "Изменения",
+                date: "05.08.2024",
+                name: "20.08.2024 года вступает в силу Регламент депозитарного обслуживания депонентов АО АКБ «НОВИКОМ»",
+                link: "#"
+            },
+            {
+                tag: "Технические работы",
+                date: "29.07.2024",
+                name: "Технические работы 31 июля 2024 г. в период с 00:00 до 04:20 (МСК)",
+                link: "#"
+            },
+            {
+                tag: "Изменения",
+                date: "26.07.2024",
+                name: "О вступлении в силу новой версии Регламента доверительного управления активами в АО АКБ «НОВИКОМ»",
+                link: "#"
+            },
+            {
+                tag: "Технические работы",
+                date: "23.07.2024",
+                name: "Технические работы по сервису СБП 24 июля 2024 г. в период с 01:00 до 04:30 (МСК)",
+                link: "#"
+            },
+            {
+                tag: "Технические работы",
+                date: "22.07.2024",
+                name: "Технические работы 23 июля 2024 в период с 00:00 до 02:10 (МСК)",
+                link: "#"
+            },
+            {
+                tag: "Изменения",
+                date: "10.07.2024",
+                name: "О вступлении в действие новой редакции Сборника тарифов для физических лиц",
+                link: "#"
+            },
+            {
+                tag: "Технические работы",
+                date: "28.06.2024",
+                name: "Технические работы по сервису СБП 29 июня 2024 г. в период с 0:00 до 05:00 (МСК)",
+                link: "#"
+            },
+            {
+                tag: "Прочее",
+                date: "11.06.2024<br>14:58:00",
+                name: "Информация для физического лица, признанного АО АКБ «НОВИКОМ» квалифицированным инвестором, о праве подать заявление об исключении из реестра лиц, признанных квалифицированными инвесторами",
+                link: "#"
+            },
+            {
+                tag: "Изменения",
+                date: "11.06.2024",
+                name: "О вступлении в силу новой версии Регламента оказания услуг инвестиционного консультирования ",
+                link: "#"
+            },
+        ]
+
+        var paginationObject = {
+            prevLink: "",
+            nextLink: "#2",
+            lastLink: {
+                link: "#123",
+                linkText: "123",
+            },
+            list: [
+                {
+                    link: "#1",
+                    linkText: "1",
+                    isActive: true,
+                },
+                {
+                    link: "#2",
+                    linkText: "2"
+                },
+                {
+                    link: "#3",
+                    linkText: "3"
+                },
+                {
+                    link: "#4",
+                    linkText: "4"
+                }
+            ]
+        }
+
+    +banner-text(
+        bannerTextData
+    )
+
+    section.section-layout
+        .container.d-flex.flex-column.row-gap-6.row-gap-lg-7
+            .row.row-gap-4.row-gap-md-6.row-gap-lg-7.px-lg-6
+                .col-12
+                    +tabs(tabsListAbout, "", "", false)
+                .col-12
+                    form
+                        .d-flex.flex-column.flex-md-row.gap-4.gap-md-3.gap-lg-6.align-items-start.align-items-md-center.justify-content-lg-between
+                            .d-lg-none.w-100.w-md-50
+                                select#select1(aria-label="Подсказка").form-select.form-select--size-small.js-select
+                                    each option, index in fiterTabsList
+                                        option(selected= index === 0 value=option.link)= option.linkText
+                            +tabs(fiterTabsList, "", "", true).w-auto.d-none.d-lg-flex
+                            .position-relative.w-100.w-md-50.w-lg-240w
+                                input#date1(type="text" name="date1" placeholder="Показать за период").js-date.js-date--range.js-date--today-max.w-100.form-control
+                                span.position-absolute.top-0.end-0.violet-70.text-m.p-2.px-3.pe-none
+                                    +svg-use("icon-calendar", "icon size-m")
+
+            .row.px-lg-6
+                .col-12.col-lg-8.col-xl-7
+                    .d-flex.flex-column.gap-4
+                        each item in searchList
+                            +search-item(item)
+            .row
+                .col-12
+                    .section-search-result__pagination
+                        +pagination(paginationObject, "start")
+
+    section.section-layout.bg-dark-10
+        .container
+            .row
+                .col-12
+                    +card-promo(cardPromo).card-promo--heavy-blue
+                        a(href="#").btn.btn-info.btn-lg-lg.w-100.w-md-auto Подробнее
+
+    include ../includes/layout/section-feedback

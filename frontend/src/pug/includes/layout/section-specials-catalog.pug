@@ -3,6 +3,7 @@
         {
             link: '#1',
             linkText: 'Все',
+            isActive: true
         },
         {
             link: '#2',
@@ -146,9 +147,9 @@ section.section-catalog__tabs
 
 section.section-catalog__list
     .container
-        .row.row-gap-5.row-gap-md-7
+        .row.cards-gutter
             each item in allCards
                 .col-12.col-md-6.col-lg-4
                     +card-news(item)
-            .col-12
-                +pagination(paginationObject)        
+            .col-12.mt-4.mt-md-6.mt-lg-7
+                +pagination(paginationObject)

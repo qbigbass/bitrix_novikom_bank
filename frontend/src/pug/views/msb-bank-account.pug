@@ -1,0 +1,182 @@
+extends ../templates/base
+
+block title
+    title= 'Бизнесу - Расчетный счет'
+    meta(name="description" content="Описание страницы Расчетный счет раздела Бизнес")
+block content
+    include ../includes/header/header
+    include ../components/banners/banner-product
+    include ../cards/card-about
+    include ../components/stepper
+    include ../components/helper
+    include ../cards/card-tariff
+    include ../cards/card-special
+    include ../components/ui/tabs
+    include ../components/ui/tabs-simple
+    include ../includes/layout/slider-card-product
+    
+
+    -
+        var additionalTabsList = [
+            {
+                linkText: "Описание",
+                link: "#1",
+                id: "additional-info-1"
+            },
+            {
+                linkText: "Тарифы",
+                link: "#2",
+                id: "additional-info-2",
+                isActive: true
+            },
+            {
+                linkText: "Вопросы и ответы",
+                link: "#3",
+                id: "additional-info-3"
+            }
+        ]
+
+        var allTariffs = [
+            {
+                title: "Пакет Доступный",
+                bgClass: "bg-dark-10",
+                link: '#',
+                linkText: 'Подключить',
+                list: [
+                    {
+                        title: "Подключение",
+                        text: "Бесплатно"
+                    },
+                    {
+                        title: "Обслуживание",
+                        text: "Бесплатно"
+                    },
+                    {
+                        title: "Платежки",
+                        text: "5 платежей бесплатно"
+                    },
+                    {
+                        title: "Дистанционное подключение",
+                        text: "Бесплатно"
+                    },
+                    {
+                        title: "Абонентская плата",
+                        text: "500 руб. в месяц"
+                    }
+                ]
+            },
+            {
+                title: "Пакет Выгодный",
+                bgClass: "bg-dark-10",
+                link: '#',
+                linkText: 'Подключить',
+                list: [
+                    {
+                        title: "Подключение",
+                        text: "Бесплатно"
+                    },
+                    {
+                        title: "Обслуживание",
+                        text: "Бесплатно"
+                    },
+                    {
+                        title: "Платежки",
+                        text: "10 платежей бесплатно"
+                    },
+                    {
+                        title: "Дистанционное подключение",
+                        text: "Бесплатно"
+                    },
+                    {
+                        title: "Абонентская плата",
+                        text: "1 000 руб. в месяц"
+                    }
+                ]
+            },
+            {
+                title: "Пакет Премиум",
+                bgClass: "bg-dark-10",
+                link: '#',
+                linkText: 'Подключить',
+                list: [
+                    {
+                        title: "Подключение",
+                        text: "Бесплатно"
+                    },
+                    {
+                        title: "Обслуживание",
+                        text: "Бесплатно"
+                    },
+                    {
+                        title: "Платежки",
+                        text: "15 платежей бесплатно"
+                    },
+                    {
+                        title: "Дистанционное подключение",
+                        text: "Бесплатно"
+                    },
+                    {
+                        title: "Абонентская плата",
+                        text: "1 500 руб. в месяц"
+                    }
+                ]
+            },
+            {
+                title: "Пакет Премиум +",
+                bgClass: "bg-dark-10",
+                link: '#',
+                linkText: 'Подключить',
+                list: [
+                    {
+                        title: "Подключение",
+                        text: "Бесплатно"
+                    },
+                    {
+                        title: "Обслуживание",
+                        text: "Бесплатно"
+                    },
+                    {
+                        title: "Платежки",
+                        text: "150 платежей бесплатно"
+                    },
+                    {
+                        title: "Дистанционное подключение",
+                        text: "Бесплатно"
+                    },
+                    {
+                        title: "Абонентская плата",
+                        text: "4 050 руб. в месяц"
+                    }
+                ]
+            }
+        ]
+
+    section.section-layout.border-top.border-blue10
+        .container
+            h3.mb-4.mb-md-6.mb-lg-7.px-lg-6
+                | Подробнее об услуге
+            .row
+                .col-12
+                    .ps-lg-6
+                        +tabs-simple(additionalTabsList, false)
+                    .tab-content.mt-4.mt-md-6.mt-lg-7.ps-lg-6
+                        #additional-info-1.tab-pane.fade(aria-labelledby="additional-info-1" tabindex="0" role="tabpanel")
+                            p Описание
+                        #additional-info-2.tab-pane.fade.show.active(aria-labelledby="additional-info-2" tabindex="0" role="tabpanel")
+                            .row.row-gap-6.row-gap-lg-7
+                                .col-12
+                                    .swiper.js-slider-cards.w-100(data-slides-per-view="mobile-s:1,mobile:1,tablet:2,laptop:3,laptop-x:4", data-space-between="mobile-s:8,mobile:8,tablet:16,laptop:16,laptop-x:16")
+                                        .swiper-wrapper.js-swiper-wrapper
+                                            each tariff in allTariffs
+                                                .swiper-slide.js-swiper-slide
+                                                    +card-tariff(tariff, tariff.bgClass).w-100
+                                                        if tariff.link
+                                                            a(href=tariff.link).btn.btn-yellow.w-100
+                                                                !=tariff.linkText
+                                .col-12
+                                    +polygon-container("yellow-100")
+                                        +helper("img/business-additional-info.png", "bg-blue-10")
+                                            p.text-l.mb-0 При открытии расчетного счета, в том числе в рамках пакетных программ, открытие и ведение специального счета участника закупки по 44-ФЗ и 223-ФЗ - Бесплатно
+                        #additional-info-3.tab-pane.fade(aria-labelledby="additional-info-3" tabindex="0" role="tabpanel")
+                            include ../includes/layout/tabs/faq
+        +pattern-bg('section-2', 'light', 'pattern-bg--hide-mobile')

@@ -43,16 +43,25 @@ const resizeSVGElement = (STATE) => {
     const polygonRect = $polygon.get(0).getClientRects();
 
     if (polygonRect.length) {
-        const { height, width } = polygonRect[0];
-        const startPosition = 2;
+        const isChatBot = !!$polygon.closest(".chat-bot").length;
+        const {height, width} = polygonRect[0];
+        const startPosition = isChatBot ? 1 : 2;
         const pointBevelSize = getSizeBevelByCssVariable(STATE);
+        const pointPinSize = 15;
+
+        let points;
 
         STATE.elements.svg.attr('height', height);
         STATE.elements.svg.attr('width', width);
 
         const svgPolygonWidth = Math.round(width - startPosition);
         const svgPolygonHeight = Math.round(height - startPosition);
-        const points = `${startPosition},${startPosition} ${svgPolygonWidth},${startPosition} ${svgPolygonWidth},${svgPolygonHeight - pointBevelSize} ${svgPolygonWidth - pointBevelSize},${svgPolygonHeight} ${startPosition},${svgPolygonHeight}`;
+
+        if (!isChatBot) {
+            points = `${startPosition},${startPosition} ${svgPolygonWidth},${startPosition} ${svgPolygonWidth},${svgPolygonHeight - pointBevelSize} ${svgPolygonWidth - pointBevelSize},${svgPolygonHeight} ${startPosition},${svgPolygonHeight}`;
+        } else {
+            points = `${startPosition} ${startPosition}, ${startPosition} ${svgPolygonHeight - pointPinSize}, ${svgPolygonWidth - pointPinSize} ${svgPolygonHeight - pointPinSize}, ${svgPolygonWidth} ${svgPolygonHeight}, ${svgPolygonWidth} ${startPosition}`;
+        }
 
         STATE.elements.svgPolygon.attr('points', points);
     }

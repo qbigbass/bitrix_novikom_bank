@@ -1,0 +1,96 @@
+.modal {
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+
+    @include use-media(tablet) {
+        --bs-modal-width: 43rem;
+    }
+
+    @include use-media(tablet-album) {
+        --bs-modal-width: 48.75rem;
+    }
+}
+
+.modal-xl {
+    @include use-media(tablet-album) {
+        --bs-modal-width: 65rem;
+    }
+
+    @include use-media(desktop) {
+        --bs-modal-width: 65.875rem;
+    }
+}
+
+.modal-dialog {
+    @include use-media(sm) {
+        --bs-modal-margin: 2.5rem;
+    }
+
+    @include use-media(tablet) {
+        margin-inline: auto;
+    }
+}
+
+.modal-header {
+    --bs-modal-header-padding: 1rem;
+
+    @include use-media(tablet) {
+        --bs-modal-header-padding: 2rem 2rem 1rem 2rem;
+    }
+
+    @include use-media(tablet-album) {
+        --bs-modal-header-padding: 2.5rem 5rem 1.5rem 5rem;
+    }
+
+    & .btn-close {
+        width: auto;
+        height: auto;
+        margin-left: auto;
+        flex-shrink: 0;
+        background: unset;
+        color: var(--dark-70);
+        opacity: 1;
+    }
+}
+
+.modal-body {
+    @include use-media(tablet) {
+        --bs-modal-padding: 1.5rem 2rem 2rem 2rem ;
+    }
+
+    @include use-media(tablet-album) {
+        --bs-modal-padding: 1.5rem 5rem 2.5rem 5rem;
+    }
+
+    &:has(+ .modal-footer) {
+        @include use-media(tablet) {
+            --bs-modal-padding: 1.5rem 2rem 1rem 2rem;
+        }
+
+        @include use-media(tablet-album) {
+            --bs-modal-padding: 2.5rem 5rem 1.5rem 5rem;
+        }
+    }
+}
+
+.modal-footer {
+    padding: 1rem;
+
+    @include use-media(tablet) {
+        padding: 1rem 2.5rem 2rem 2.5rem;
+    }
+
+    @include use-media(tablet-album) {
+        padding: 1.5rem 5rem 2.5rem 5rem;
+    }
+}
+
+.modal-img {
+    width: 7.5rem;
+    margin-inline: auto;
+
+    @include use-media(tablet) {
+        width: 10rem;
+    }
+}
+

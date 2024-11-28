@@ -1,0 +1,282 @@
+include ../../../components/forms/form-step
+include ../../../components/forms/input
+include ../../../components/forms/select
+include ../../../components/forms/captcha
+include ../../../components/forms/confirm
+
+-
+    var creditCardForm = {
+        formName: "credit-card",
+        step1: {
+            inputs1: [
+                {
+                    id: "last-name",
+                    label: "Фамилия",
+                    placeholder: "Введите фамилию",
+                    required: true,
+                },
+                {
+                    id: "first-name",
+                    label: "Имя",
+                    placeholder: "Введите имя",
+                    required: true,
+                },
+                {
+                    id: "middle-name",
+                    label: "Отчество",
+                    placeholder: "Введите отчество",
+                    required: false,
+                },
+                {
+                    id: "birthday",
+                    label: "Дата рождения",
+                    placeholder: "",
+                    required: false,
+                    datepicker: true,
+                },
+                {
+                    id: "first-name_latin",
+                    label: "Имя в латинской транскрипции",
+                    placeholder: "Введите имя",
+                    required: true,
+                    hint: "Как в заграничном паспорте",
+                    mask: "latin",
+                },
+                {
+                    id: "last-name_latin",
+                    label: "Фамилия в латинской транскрипции",
+                    placeholder: "Введите фамилию",
+                    required: true,
+                    hint: "Как в заграничном паспорте",
+                    mask: "latin",
+                },
+                {
+                    id: "phone",
+                    label: "Телефон",
+                    placeholder: "+7",
+                    required: true,
+                    mask: "phone"
+                },
+                {
+                    id: "e-mail",
+                    label: "E-mail",
+                    placeholder: "Введите почту",
+                    type: "email",
+                    required: true,
+                },
+            ],
+            radios1: [
+                {
+                    id: "person-male-sex",
+                    name: "person-sex",
+                    value: "male",
+                    text: "Мужской"
+                },
+                {
+                    id: "person-female-sex",
+                    name: "person-sex",
+                    value: "female",
+                    text: "Женский"
+                },
+            ],
+            radios2: [
+                {
+                    id: "person-citizenship_RU",
+                    name: "citizenship",
+                    value: "RU",
+                    text: "РФ"
+                },
+                {
+                    id: "person-citizenship_other",
+                    name: "citizenship",
+                    value: "other",
+                    text: "Другое"
+                },
+            ],
+            inputs2: [
+                {
+                    id: "passport-series",
+                    label: "Серия паспорта",
+                    placeholder: "",
+                    required: false,
+                },
+                {
+                    id: "passport-number",
+                    label: "Номер паспорта",
+                    placeholder: "",
+                    required: true,
+                },
+            ]
+        },
+        step2: {
+            inputs1: [
+                {
+                    id: "employment-history",
+                    label: "Общий трудовой стаж",
+                    placeholder: "Кол-во лет",
+                    type: "number",
+                    min: "0",
+                    required: true,
+                    groupText: "лет",
+                },
+                {
+                    id: "employment-last-work",
+                    label: "Стаж на последнем месте работы",
+                    placeholder: "Кол-во лет",
+                    type: "number",
+                    min: "0",
+                    required: true,
+                    groupText: "лет",
+                },
+                {
+                    id: "monthly-income",
+                    label: "Ежемесячный доход",
+                    placeholder: "Сумма",
+                    required: false,
+                    groupText: "₽",
+                    mask: "money"
+                },
+            ],
+            inputs2: [
+                {
+                    id: "employer-name",
+                    label: "Наименование организации-работодателя",
+                    placeholder: "",
+                    required: true,
+                },
+            ]
+        },
+        step3: {
+            selects: [
+                {
+                    id: "card",
+                    label: "Карта",
+                    options: ["МИР Премиальная", "МИР Премиальная", "МИР Премиальная"],
+                    required: true,
+                },
+                {
+                    id: "currency",
+                    label: "Валюта",
+                    options: ["Рубли", "Рубли", "Рубли"],
+                    required: true,
+                },
+                {
+                    id: "receipt-office",
+                    label: "Офис получения карты",
+                    options: ["Москва", "Москва", "Москва"],
+                    required: true,
+                }
+            ],
+            radios: [
+                {
+                    id: "borrower-bank-account",
+                    name: "type-borrower",
+                    value: "bank-account",
+                    text: "Получаю зарплату на&nbsp;счет в&nbsp;Банке"
+                },
+                {
+                    id: "borrower-corporate",
+                    name: "type-borrower",
+                    value: "corporate",
+                    text: "Являюсь сотрудником организации — корпоративного клиента Банка"
+                },
+            ],
+            inputs: [
+                {
+                    id: "credit-limit",
+                    label: "Кредитный лимит по карте",
+                    placeholder: "Сумма",
+                    groupText: "₽",
+                    required: false,
+                    mask: "money"
+                },
+            ]
+        }
+    }
+
+form(action="/" method="POST" novalidate id="credit-card-form" data-form).application-form
+    .application-form__step(data-form-step data-form-validate-group)
+        - var step1 = creditCardForm.step1;
+        .row.g-1.g-md-2.g-lg-2_5
+            .application-form__col.col-12
+                +form-step({
+                    current: "1",
+                    total: "3",
+                    text: "Личные данные"
+                })
+            each item in step1.inputs1
+                .application-form__col.col-12.col-md-6
+                    +input(item, creditCardForm.formName)
+            fieldset.application-form__col.col-12.col-md-6
+                legend.form-label.mb-3 Пол
+                .d-flex.flex-column.flex-md-row.flex-wrap.row-gap-3.row-gap-lg-4.column-gap-md-5.column-gap-lg-6
+                    each item, index in step1.radios1
+                        +radio(item, index, creditCardForm.formName)
+            fieldset.application-form__col.col-12.col-md-6
+                legend.form-label.mb-3 Гражданство
+                .d-flex.flex-column.flex-md-row.flex-wrap.row-gap-3.row-gap-lg-4.column-gap-md-5.column-gap-lg-6
+                    each item, index in step1.radios2
+                        +radio(item, index, creditCardForm.formName)
+        .d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-5.column-gap-lg-6.mt-6.mt-lg-7
+            button.btn.btn-primary.btn-lg-lg.w-100.w-md-auto(type="button" disabled aria-disabled="true" data-form-button data-form-step-button-next) Продолжить
+            div.text-m.orange-100.text-center(data-form-error)
+    .application-form__step(data-form-step data-form-validate-group hidden)
+        - var step2 = creditCardForm.step2;
+        .row.g-1.g-md-2.g-lg-2_5
+            .application-form__col.col-12
+                +form-step({
+                    current: "2",
+                    total: "3",
+                    text: "Данные о работе"
+                })
+            each item in step2.inputs1
+                .application-form__col.col-12.col-md-4
+                    +input(item, creditCardForm.formName)
+            .application-form__col.col-12
+                +input(step2.inputs2[0], creditCardForm.formName)
+        .d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-5.column-gap-lg-6.mt-6.mt-lg-7
+            button.btn.btn-primary.btn-lg-lg.w-100.w-md-auto(type="button" disabled aria-disabled="true" data-form-button data-form-step-button-next) Продолжить
+            button.btn.btn-outline-primary.btn-lg-lg.w-100.w-md-auto(type="button" data-form-step-button-prev) Назад
+            div.text-m.orange-100.text-center(data-form-error)
+    .application-form__step(data-form-step data-form-validate-group hidden)
+        - var step3 = creditCardForm.step3;
+        .row.g-1.g-md-2.g-lg-2_5
+            .application-form__col.col-12
+                +form-step({
+                    current: "3",
+                    total: "3",
+                    text: "Настройка карты"
+                })
+            .application-form__col.col-12
+                .alert.d-flex.align-items-center.gap-3.bg-dark-10(role="alert")
+                    +svg-use("icon-alert", "icon dark-70 size-m").flex-shrink-0
+                    div.text-m.dark-70 Оформление карты для новых клиентов Банка осуществляется при личном присутствии клиента в&nbsp;офисе Банка с&nbsp;документом, удостоверяющим личность
+            .application-form__col.col-12.col-md-8
+                +select(step3.selects[0], creditCardForm.formName)
+            .application-form__col.col-12.col-md-4
+                +select(step3.selects[1], creditCardForm.formName)
+            fieldset.application-form__col.col-12
+                legend.form-label.mb-3 Тип заемщика
+                .d-flex.flex-column.flex-md-row.row-gap-3.row-gap-lg-4.column-gap-md-5.column-gap-lg-6
+                    each item, index in step3.radios
+                        +radio(item, index, creditCardForm.formName)
+            .application-form__col.col-12.col-md-6
+                +select(step3.selects[2], creditCardForm.formName)
+            .application-form__col.col-12.col-md-6
+                +input(step3.inputs[0], creditCardForm.formName)
+            .application-form__col.col-12
+                +captcha(creditCardForm.formName)
+            .application-form__col.col-12
+                +confirm(creditCardForm.formName)
+        .d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-5.column-gap-lg-6.mt-6.mt-lg-7
+            button.btn.btn-primary.btn-lg-lg.w-100.w-md-auto(type="submit" disabled aria-disabled="true" data-form-button) Отправить заявку
+            button.btn.btn-outline-primary.btn-lg-lg.w-100.w-md-auto(type="button" data-form-step-button-prev) Назад
+            div.text-m.orange-100.text-center(data-form-error)
+    div(
+        hidden
+        aria-hidden="true"
+        data-success-title="Ваша заявка успешно отправлена!"
+        data-success-info="Мы ответим на вашу заявку, по выбранному способу связи, как только получим и обработаем её"
+        data-error-title="Не удалось отправить заявку"
+        data-error-info="Проверьте правильно ли указаны все данные и отправьте обращение снова"
+    ).js-message

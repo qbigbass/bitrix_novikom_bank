@@ -5,19 +5,19 @@
 // isSmallTabs - bool
 
 mixin tabs-simple(tabsList, isSmallTabs=false)
-    .tabs-panel.js-tabs-slider.overflow-hidden.position-relative.px-1(class=isSmallTabs && 'tabs-panel--small')
+    .tabs-panel.js-tabs-slider.overflow-hidden.position-relative.pe-1.pe-lg-0(class=isSmallTabs && 'tabs-panel--small')
         .tabs-panel__navigation.d-none.d-lg-block.js-tabs-slider-navigation.w-100
-            span.tabs-panel__navigation-item.tabs-panel__navigation-item-reverse.js-tabs-slider-navigation-prev.h-100.d-flex.align-items-center.justify-content-start.px-1.z-3.position-absolute.start-0.top-0
-                span.icon.size-m
+            span.tabs-panel__navigation-item.tabs-panel__navigation-item-reverse.js-tabs-slider-navigation-prev.d-flex.align-items-center.justify-content-start.px-1.z-3.position-absolute.swiper-button-disabled
+                span.icon.size-s
                     +svg-use("icon-chevron-left")
-            span.tabs-panel__navigation-item.js-tabs-slider-navigation-next.h-100.d-flex.align-items-center.justify-content-end.px-1.z-3.position-absolute.end-0.top-0
-                span.icon.size-m
+            span.tabs-panel__navigation-item.js-tabs-slider-navigation-next.d-flex.align-items-center.justify-content-end.px-1.z-3.position-absolute.swiper-button-disabled
+                span.icon.size-s
                     +svg-use("icon-chevron-right")
 
         ul.swiper-wrapper.tabs-panel__list.nav.nav-tabs.d-inline-flex.flex-nowrap.w-auto.p-0.border.border-purple.rounded
             each tab, index in tabsList
                 li.swiper-slide.w-auto.tabs-panel__list-item.nav-item.z-2
-                    if index === 0
+                    if tab.isActive
                         button.tabs-panel__list-item-link.nav-link.bg-transparent.active(data-bs-toggle="tab" data-bs-target=tab.id && '#'+tab.id type="button" role="tab" aria-controls= tab.id aria-selected="true")= tab.linkText
                     else
                         button.tabs-panel__list-item-link.nav-link.bg-transparent(data-bs-toggle="tab" data-bs-target=tab.id && '#'+tab.id type="button" role="tab" aria-controls= tab.id aria-selected="false")= tab.linkText

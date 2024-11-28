@@ -65,7 +65,8 @@
         color: var(--violet-100);
 
         &:hover,
-        &.is-active {
+        &.is-active,
+        &.is-selected {
             color: var(--blue-100);
 
             & .icon {

@@ -1,0 +1,201 @@
+include ../../../components/forms/form-step
+include ../../../components/forms/upload-file
+include ../../../components/forms/input
+include ../../../components/forms/captcha
+include ../../../components/forms/confirm
+include ../../../components/forms/radio
+include ../../../components/forms/textarea
+
+-
+    var feedbackForm = {
+        formName: "feedback",
+        step1: {
+            radiosTop: [
+                {
+                    id: "physical-person",
+                    name: "person",
+                    value: "physical",
+                    text: "Физическое лицо"
+                },
+                {
+                    id: "legal-person",
+                    name: "person",
+                    value: "legal",
+                    text: "Юридическое лицо или ИП"
+                },
+            ],
+            inputs: [
+                {
+                    id: "last-name",
+                    label: "Фамилия",
+                    placeholder: "Введите фамилию",
+                    required: true,
+                },
+                {
+                    id: "first-name",
+                    label: "Имя",
+                    placeholder: "Введите имя",
+                    required: true,
+                },
+                {
+                    id: "middle-name",
+                    label: "Отчество",
+                    placeholder: "Введите отчество",
+                    required: false,
+                },
+                {
+                    id: "birthday",
+                    label: "Дата рождения",
+                    placeholder: "Укажите дату",
+                    required: false,
+                    datepicker: true,
+                },
+                {
+                    id: "inn",
+                    label: "ИНН",
+                    placeholder: "Введите ИНН",
+                    required: false,
+                    hidden: true,
+                },
+                {
+                    id: "organization",
+                    label: "Наименование организации",
+                    placeholder: "Укажите организацию",
+                    required: true,
+                    hidden: true,
+                },
+                {
+                    id: "e-mail",
+                    label: "E-mail",
+                    placeholder: "Введите почту",
+                    type: "email",
+                    required: true,
+                },
+                {
+                    id: "phone",
+                    label: "Телефон",
+                    placeholder: "+7",
+                    required: false,
+                    mask: "phone"
+                },
+            ],
+            radiosBottom: [
+                {
+                    id: "other-email-false",
+                    name: "other-email",
+                    value: "false",
+                    text: "Да"
+                },
+                {
+                    id: "other-email-true",
+                    name: "other-email",
+                    value: "true",
+                    text: "Нет, на иной адрес"
+                },
+            ],
+            inputReplyEmail: {
+                id: "reply-email",
+                label: "Адрес, по которому должен быть направлен ответ (например, адрес электронной почты)",
+                placeholder: "Введите адрес",
+                type: "email",
+                required: true,
+            },
+        },
+        step2: {
+            radiosTop: [
+                {
+                    id: "topic-claim",
+                    name: "topic",
+                    value: "claim",
+                    text: "Направить претензию"
+                },
+                {
+                    id: "topic-question",
+                    name: "topic",
+                    value: "question",
+                    text: "Задать вопрос"
+                },
+                {
+                    id: "topic-gratitude",
+                    name: "topic",
+                    value: "gratitude",
+                    text: "Выразить благодарность"
+                },
+            ],
+            textarea: {
+                id: "message",
+                label: "Ваше сообщение",
+                placeholder: "Введите сообщение",
+                required: true,
+            },
+            checkbox: {
+
+            }
+        }
+    }
+
+form(action="/" method="POST" novalidate id="feedback-form" data-form data-form-feedback).application-form
+    .application-form__step(data-form-step data-form-validate-group)
+        - var step1 = feedbackForm.step1;
+        .row.g-1.g-md-2.g-lg-2_5
+            .application-form__col.col-12
+                +form-step({
+                    current: "1",
+                    total: "2",
+                    text: "Личные данные"
+                })
+            fieldset.application-form__col.col-12
+                legend.form-label.mb-3 Вы обращаетесь как
+                .d-flex.flex-column.flex-md-row.flex-wrap.row-gap-3.row-gap-lg-4.column-gap-md-5.column-gap-lg-6
+                    each item, index in step1.radiosTop
+                        +radio(item, index, feedbackForm.formName)
+            each item in step1.inputs
+                .application-form__col.col-12(class= item.id !== "organization" ? "col-md-6" : "" hidden= item.hidden)
+                    +input(item, feedbackForm.formName)
+            fieldset.application-form__col.col-12
+                legend.form-label.mb-3 Получить ответ на E-mail
+                .d-flex.flex-column.flex-md-row.flex-wrap.row-gap-3.row-gap-lg-4.column-gap-md-5.column-gap-lg-6
+                    each item, index in step1.radiosBottom
+                        +radio(item, index, feedbackForm.formName)
+            .application-form__col.col-12(hidden)
+                +input(step1.inputReplyEmail, feedbackForm.formName)
+        .d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-5.column-gap-lg-6.mt-6.mt-lg-7
+            button.btn.btn-primary.btn-lg-lg.w-100.w-md-auto(type="button" disabled aria-disabled="true" data-form-button data-form-step-button-next) Продолжить
+            div.text-m.orange-100.text-center(data-form-error)
+    .application-form__step(data-form-step data-form-validate-group hidden)
+        - var step2 = feedbackForm.step2;
+        .row.g-1.g-md-2.g-lg-2_5
+            .application-form__col.col-12
+                +form-step({
+                    current: "2",
+                    total: "2",
+                    text: "Обращение"
+                })
+            fieldset.application-form__col.col-12
+                legend.visually-hidden Причина обращения
+                .d-flex.flex-column.flex-md-row.flex-wrap.row-gap-3.row-gap-lg-4.column-gap-md-5.column-gap-lg-6
+                    each item, index in step2.radiosTop
+                        +radio(item, index, feedbackForm.formName)
+            .application-form__col.col-12
+                p.text-m.m-0
+                    | Спасибо, что обратились в&nbsp;Новиком! Повышение качества обслуживания для нас очень важно. С&nbsp;информацией о&nbsp;порядке и&nbsp;сроках рассмотрения обращения&nbsp;Вы можете ознакомиться по&nbsp;#[a(href="#") ссылке].
+            .application-form__col.col-12
+                +textarea(step2.textarea, feedbackForm.formName)
+            .application-form__col.col-12
+                +upload-file(feedbackForm.formName)
+            .application-form__col.col-12
+                +captcha(feedbackForm.formName)
+            .application-form__col.col-12
+                +confirm(feedbackForm.formName)
+        .d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-5.column-gap-lg-6.mt-6.mt-lg-7
+            button.btn.btn-primary.btn-lg-lg.w-100.w-md-auto(type="submit" disabled aria-disabled="true" data-form-button) Отправить
+            button.btn.btn-outline-primary.btn-lg-lg.w-100.w-md-auto(type="button" data-form-step-button-prev) Назад
+            div.text-m.orange-100.text-center(data-form-error)
+    div(
+        hidden
+        aria-hidden="true"
+        data-success-title="Ваше обращение успешно отправлено!"
+        data-success-info="Мы ответим на ваше обращение, по выбранному способу связи, как только получим и обработаем его"
+        data-error-title="Не удалось отправить обращение"
+        data-error-info="Проверьте правильно ли указаны все данные и отправьте обращение снова"
+    ).js-message
