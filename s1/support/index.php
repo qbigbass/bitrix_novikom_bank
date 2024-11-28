@@ -1,10 +1,7 @@
 <?php
 require($_SERVER['DOCUMENT_ROOT'].'/bitrix/header.php');
-use Galago\Frontend\Asset;
 global $APPLICATION;
-
-$APPLICATION->SetTitle('Помощь');
-Asset::getInstance()->addJsAndCss('index');
+$APPLICATION->SetTitle('Поддержка');
 ?>
 
 <?require($_SERVER['DOCUMENT_ROOT'].'/bitrix/footer.php');?>
