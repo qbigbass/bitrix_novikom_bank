@@ -29,6 +29,9 @@ function initMap() {
 }
 
 function initYMap() {
+  const map = document.getElementById("map");
+  if (!map) return false;
+
   ymaps.ready(initMap);
 }
 

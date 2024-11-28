@@ -16,8 +16,7 @@
         },
     ]
 
-.row.row-gap-6.row-gap-lg-7
-    each item, idx in benefitsList
-        .col-12.col-md-6
-            +benefit(item.spriteName, item.title, true)
-                span!= item.description
+each item, idx in benefitsList
+    .col-12.col-md-6
+        +benefit(item.spriteName, item.title, true)
+            span!= item.description
