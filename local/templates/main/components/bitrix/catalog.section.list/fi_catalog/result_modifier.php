@@ -19,7 +19,7 @@ if (!empty($arResult['SECTIONS'])) {
 
         $cntSectionsUpPosition = count($arSectionUpPosition);
 
-        if ((int)$section["UF_FL_POS"] > 0 && $cntSectionsUpPosition < $cntSectionsUp) {
+        if ((int)$section["UF_FI_POS"] > 0 && $cntSectionsUpPosition < $cntSectionsUp) {
             $arSectionUpPosition[] = $section;
         } else {
             $arSectionDownPosition[] = $section;

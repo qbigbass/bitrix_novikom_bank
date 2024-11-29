@@ -95,7 +95,7 @@ $APPLICATION->IncludeComponent(
         "SHOW_PARENT_NAME" => $arParams["SECTIONS_SHOW_PARENT_NAME"],
         "HIDE_SECTION_NAME" => ($arParams["SECTIONS_HIDE_SECTION_NAME"] ?? "N"),
         "ADD_SECTIONS_CHAIN" => ($arParams["ADD_SECTIONS_CHAIN"] ?? ''),
-        "SECTION_USER_FIELDS" => ["UF_FI_ICON", "UF_FL_POS"]
+        "SECTION_USER_FIELDS" => ["UF_FI_ICON", "UF_FI_POS"]
     ],
     $component,
     ($arParams["SHOW_TOP_ELEMENTS"] !== "N" ? array("HIDE_ICONS" => "Y") : array())
