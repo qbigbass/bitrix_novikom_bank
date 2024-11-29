@@ -1,0 +1,28 @@
+-
+    var partnersData = [
+        {
+            imgSrc: "img/en/partner-1.png",
+        },
+        {
+            imgSrc: "img/en/partner-2.png",
+        },
+        {
+            imgSrc: "img/en/partner-3.png",
+        },
+        {
+            imgSrc: "img/en/partner-4.png",
+        }
+    ]
+
+include ../../cards/card-partner
+
+section.section-layout.bg-blue-10
+    .container
+        h3.ps-lg-6.mb-6.mb-lg-7.px-lg-6
+            | Our partners
+        .swiper.js-slider-cards.slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:2,tablet-album:3,laptop:4,laptop-x:4" data-space-between="mobile-s:8,mobile:8,tablet:16,tablet-album:16,laptop:16,laptop-x:16")
+            .swiper-wrapper.js-swiper-wrapper
+                each item in partnersData
+                    .swiper-slide.js-swiper-slide
+                        +card-partner(item)
+            +slider-controls().mt-3.mt-md-4

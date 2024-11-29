@@ -1,0 +1,61 @@
+.card-statistic {
+    border-radius: 0.75rem;
+    padding: 1.5rem 1rem;
+
+    @include use-media(tablet) {
+        padding: 2rem;
+    }
+
+    @include use-media(tablet-album) {
+        padding: 2.5rem;
+    }
+
+    @include use-media(laptop) {
+        padding-right: 1rem;
+    }
+
+    &__content {
+        height: 100%;
+        position: relative;
+        z-index: 1;
+    }
+
+    &__title-box {
+        margin-top: .25rem;
+    }
+
+    &__num {
+        color: var(--dark-0);
+        font-size: 5rem;
+        line-height: 1;
+        font-weight: 700;
+    }
+
+    &__caption {
+        color: var(--purple-100);
+    }
+
+    &__description {
+        margin-block: 1.5rem 0;
+        padding-top: 0.5rem;
+        border-top: 1px dashed var(--violet-100);
+    }
+
+    &__info {
+        @include use-media(laptop) {
+            flex: 1;
+            max-width: 29.375rem;
+        }
+    }
+
+    &__chart {
+        margin-top: auto;
+        flex-shrink: 0;
+        flex-basis: 14.125rem;
+    }
+
+    &__pattern {
+        top: 2.5rem;
+        bottom: auto;
+    }
+}

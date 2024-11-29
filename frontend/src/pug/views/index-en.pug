@@ -1,8 +1,8 @@
 extends ../templates/base-en
 
 block title
-    title= 'Частные клиенты'
-    meta(name="description" content="Описание главной страницы")
+    title= 'Information About the Bank'
+    meta(name="description" content="About the Bank")
 block content
     include ../includes/header/header-en
     include ../components/banners/banner-hero
@@ -10,33 +10,23 @@ block content
     -
         var bannerHeroData = {
             bgClass: "",
-            bgImageSrc: "img/slides/hero_banner_bg_desktop.png",
-            sliders: [
-                {
-                    title: "Банк российских <br>инженеров",
-                    text: "Мы&nbsp;укрепляем технологический суверенитет России и&nbsp;помогаем занять лидерские позиции в&nbsp;экономике будущего",
-                    button: "Больше о банке",
-                    thumbBorderColor: "green",
-                },
-                {
-                    title: "Банку Новиком <br>30 лет",
-                    text: "Мы&nbsp;укрепляем технологический суверенитет России и&nbsp;помогаем занять лидерские позиции в&nbsp;экономике будущего",
-                    thumbBorderColor: "green",
-                },
-                {
-                    title: "Ваша финансовая <br>безопасность",
-                    text: "Мы&nbsp;укрепляем технологический суверенитет России и&nbsp;помогаем занять лидерские позиции в&nbsp;экономике будущего",
-                    button: "Больше о банке",
-                    thumbBorderColor: "green",
-                },
-                {
-                    title: "Годовой <br>отчет",
-                    text: "Мы&nbsp;укрепляем технологический суверенитет России и&nbsp;помогаем занять лидерские позиции в&nbsp;экономике будущего",
-                    thumbBorderColor: "green",
-                },
-            ]
+            bgImageSrc: "img/slides/hero_banner_en.png",
+            banner: {
+                title: "The Bank of the Russian industry and high technologies",
+                text: "Мы укрепляем технологический суверенитет России <br>и помогаем занять лидерские позиции в экономике будущего",
+                button: "About the Bank",
+            }
         }
 
-    +banner-hero(bannerHeroData)
+    +banner-hero(bannerHeroData, "static")
+
+    include ../includes/layout/section-statistics
+
+    include ../includes/layout/section-ratings
+
+    include ../includes/layout/section-partners
+
+
+
 
 

@@ -74,7 +74,6 @@
 
         @include use-media(tablet-album) {
             display: flex;
-            align-items: center;
             width: 100%;
         }
     }
@@ -182,6 +181,19 @@
 
         & .banner-hero-pagination .swiper-pagination-bullet-active {
             background-color: var(--blue-100);
+        }
+    }
+
+    &--type-static {
+        &::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: #00000033;
+        }
+
+        #{$root}__bg {
+            z-index: -1;
         }
     }
 }
@@ -376,6 +388,7 @@
     will-change: background, color, box-shadow;
     position: relative;
     transition: background .33s ease-in-out;
+    flex: 1;
 
     &:not(:first-child) {
         border-left: 1px solid var(--violet-70);
@@ -386,7 +399,9 @@
         color: currentColor;
     }
 
-    &.swiper-slide-thumb-active {
+    &.swiper-slide-thumb-active,
+    &:not(.swiper-slide):hover,
+    &.is-active {
         background: rgba(#fff, .1);
 
         &:after {
@@ -396,6 +411,13 @@
             right: 0;
             bottom: 0;
             height: .25rem;
+        }
+    }
+
+    &:not(.swiper-slide):hover,
+    &.is-active {
+        &:after {
+            background-color: var(--green-100);
         }
     }
 }

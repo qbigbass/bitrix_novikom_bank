@@ -1,0 +1,30 @@
+-
+    var statisticsData = [
+        {
+            tag: "Bank assets",
+            num: "530,5",
+            caption: "Billion roubles",
+            description: "Novikom is&nbsp;among top 20&nbsp;Russian banks and provides services to&nbsp;its customers in&nbsp;all segments of&nbsp;the financial market",
+            chart: true,
+        },
+        {
+            tag: "Credit portfolio of the Bank",
+            num: "362",
+            caption: "Billion roubles",
+            description: "Credits issued to&nbsp;machine-building and hi-tech companies account for 85,6% of&nbsp;the loan portfolio of&nbsp;the Bank",
+            chart: true,
+        },
+    ]
+
+include ../../cards/card-statistic
+
+section#statistics.section-layout
+    .container
+        h3.ps-lg-6.mb-6.mb-lg-7.px-lg-6
+            | Statistics for December 1st
+        .swiper.js-slider-cards.slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:2,laptop:2,laptop-x:2" data-space-between="mobile-s:8,mobile:8,tablet:16,laptop:16,laptop-x:16")
+            .swiper-wrapper.js-swiper-wrapper
+                each item in statisticsData
+                    .swiper-slide.js-swiper-slide
+                        +card-statistic(item, "bg-blue-10")
+            +slider-controls().mt-3.mt-md-4

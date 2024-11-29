@@ -1,0 +1,17 @@
+include ../components/ui/tag
+
+mixin card-statistic(data, bgColor="bg-blue-10")
+    - var { tag, num, caption, description, chart } = data;
+    .card-statistic.overflow-hidden.position-relative.h-100(class=bgColor)
+        .card-statistic__content.d-flex.flex-column.flex-xl-row.align-items-xl-end.gap-4.gap-xl-6
+            .card-statistic__info.d-flex.flex-column.align-items-start
+                if tag
+                    +tag(tag).card-statistic__tag
+                .card-statistic__title-box
+                    .card-statistic__num.h1!= num
+                    .card-statistic__caption.h3!= caption
+                if description
+                    p.text-m.card-statistic__description!= description
+            if data.chart
+                .card-statistic__chart
+        +pattern-bg('card', 'light', 'pattern-bg--hide-mobile card-statistic__pattern')
