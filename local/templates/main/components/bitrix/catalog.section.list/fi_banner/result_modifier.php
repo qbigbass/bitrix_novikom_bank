@@ -1,4 +1,5 @@
 <?php
+/** @var array $arResult */
 
 if (!empty($arResult["SECTION"]) && $arResult["SECTION"]["PICTURE"] > 0 ) {
     $filePath = CFile::GetPath($arResult["SECTION"]["PICTURE"]);
