@@ -1,0 +1,42 @@
+extends ../templates/base-en
+
+block title
+    title= 'Частные клиенты'
+    meta(name="description" content="Описание главной страницы")
+block content
+    include ../includes/header/header-en
+    include ../components/banners/banner-hero
+
+    -
+        var bannerHeroData = {
+            bgClass: "",
+            bgImageSrc: "img/slides/hero_banner_bg_desktop.png",
+            sliders: [
+                {
+                    title: "Банк российских <br>инженеров",
+                    text: "Мы&nbsp;укрепляем технологический суверенитет России и&nbsp;помогаем занять лидерские позиции в&nbsp;экономике будущего",
+                    button: "Больше о банке",
+                    thumbBorderColor: "green",
+                },
+                {
+                    title: "Банку Новиком <br>30 лет",
+                    text: "Мы&nbsp;укрепляем технологический суверенитет России и&nbsp;помогаем занять лидерские позиции в&nbsp;экономике будущего",
+                    thumbBorderColor: "green",
+                },
+                {
+                    title: "Ваша финансовая <br>безопасность",
+                    text: "Мы&nbsp;укрепляем технологический суверенитет России и&nbsp;помогаем занять лидерские позиции в&nbsp;экономике будущего",
+                    button: "Больше о банке",
+                    thumbBorderColor: "green",
+                },
+                {
+                    title: "Годовой <br>отчет",
+                    text: "Мы&nbsp;укрепляем технологический суверенитет России и&nbsp;помогаем занять лидерские позиции в&nbsp;экономике будущего",
+                    thumbBorderColor: "green",
+                },
+            ]
+        }
+
+    +banner-hero(bannerHeroData)
+
+
