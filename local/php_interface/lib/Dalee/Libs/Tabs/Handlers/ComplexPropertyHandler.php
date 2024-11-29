@@ -34,7 +34,7 @@ class ComplexPropertyHandler implements PropertyHandlerInterface
                     </div>
                     <div class="accordion-collapse collapse" id="' . $key . '" data-bs-parent="#accordion-insurance-more">
                         <div class="accordion-body">
-                            <div class="d-flex flex-column gap-4 gap-md-5 gap-lg-7">'
+                            <div class="rte rte--accordion">'
                                 . $this->getSubValuesHtml($value) .
                             '</div>
                         </div>
@@ -70,8 +70,8 @@ class ComplexPropertyHandler implements PropertyHandlerInterface
     private function getTextFieldHtml(array $value): string
     {
         $textFieldHtml = '';
-        if (!empty($subValue['~VALUE']['TEXT'])) {
-            $textFieldHtml = '<p class="text-l mb-0 dark-100">' . $value['~VALUE']['TEXT'] . '</p>';
+        if (!empty($value['~VALUE']['TEXT'])) {
+            $textFieldHtml = $value['~VALUE']['TEXT'];
         }
 
         return $textFieldHtml;
@@ -104,7 +104,7 @@ class ComplexPropertyHandler implements PropertyHandlerInterface
 
             $fileHtml =
                 '<div>
-                    <div class="text-l fw-bold mb-3">' . $complexFileHeader . '</div>
+                    <h5>' . $complexFileHeader . '</h5>
                     <div class="link-list">
                         <a class="d-flex flex-column gap-1 py-3 document-download text-m" href="' . $file['SRC'] . '" download="'. $fileName .'">'
                             . $fileName .

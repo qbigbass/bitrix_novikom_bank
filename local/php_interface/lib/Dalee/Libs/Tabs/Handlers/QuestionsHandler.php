@@ -58,6 +58,7 @@ class QuestionsHandler implements PropertyHandlerInterface
     private function getRequestCallFormHtml(): string
     {
         ob_start();
+        $arParams['BACKGROUND_COLOR'] = 'blue-10';
         include $_SERVER['DOCUMENT_ROOT'] . '/local/php_interface/include/request_call_form.php';
         $displayValue = ob_get_contents();
         ob_end_clean();

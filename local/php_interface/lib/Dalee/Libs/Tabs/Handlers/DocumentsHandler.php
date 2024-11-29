@@ -18,16 +18,14 @@ class DocumentsHandler implements PropertyHandlerInterface
     public function render(): string
     {
         return '
-            <div class="row row-gap-6">
-                <div class="col-12 col-xxl-8">
-                    <div class="accordion" id="accordion-' . $this->property['ID'] . '">'
-                        . $this->getSectionsHtml() .
-                    '</div>
-                </div>
-                <div class="col-12 col-xxl-4">'
-                    . $this->getProtectionFromScammersHtml() .
+            <div class="col-12 col-xxl-8">
+                <div class="accordion" id="accordion-' . $this->property['ID'] . '">'
+                    . $this->getSectionsHtml() .
                 '</div>
-            </div>';
+            </div>
+            <div class="col-12 col-xxl-4">'
+                . $this->getProtectionFromScammersHtml() .
+            '</div>';
     }
 
     private function getSectionsHtml(): string

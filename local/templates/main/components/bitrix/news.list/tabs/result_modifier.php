@@ -2,6 +2,7 @@
 foreach ($arResult['ITEMS'] as &$tab) {
     if (!empty($tab['DISPLAY_PROPERTIES'])) {
         $tab['DISPLAY_PROPERTIES']['SHORT_INFO']['IMG'] = $tab['DISPLAY_PROPERTIES']['ICON_SHORT_INFO']['FILE_VALUE']['SRC'];
+        $tab['DISPLAY_PROPERTIES']['ICONS_WITH_DESCRIPTION']['SHOW_TWO_ICONS_IN_ROW'] = $tab['DISPLAY_PROPERTIES']['SHOW_TWO_ICONS_IN_ROW']['VALUE'];
 
         foreach ($tab['DISPLAY_PROPERTIES'] as &$property) {
             if ($property['PROPERTY_TYPE'] == 'E' && !empty($property['VALUE'])) {

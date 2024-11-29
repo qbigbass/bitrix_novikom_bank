@@ -17,11 +17,9 @@ $this->setFrameMode(true);
 ?>
 
 <div class="collapse d-md-block" id="additional-info-content">
-    <div class="row px-lg-6">
+    <div class="row mt-4 mt-md-6 mt-lg-7">
         <div class="col-12">
-            <? if ($arParams['TABS_PADDING']) { ?>
-                <div class="ps-lg-6">
-            <? } ?>
+            <div class="ps-lg-6">
                 <div class="tabs-panel js-tabs-slider overflow-hidden position-relative pe-1 pe-lg-0">
                     <div class="tabs-panel__navigation d-none d-lg-block js-tabs-slider-navigation w-100">
                         <span class="tabs-panel__navigation-item tabs-panel__navigation-item-reverse js-tabs-slider-navigation-prev d-flex align-items-center justify-content-start px-1 z-3 position-absolute swiper-button-disabled">
@@ -56,10 +54,8 @@ $this->setFrameMode(true);
                         <?endforeach;?>
                     </ul>
                 </div>
-            <? if ($arParams['TABS_PADDING']) { ?>
-                </div>
-            <? } ?>
-            <div class="tab-content mt-4 mt-md-6 mt-lg-7">
+            </div>
+            <div class="tab-content mt-4 mt-md-6 mt-lg-7 px-lg-6">
                 <?foreach ($arResult['ITEMS'] as $key => $tab): ?>
                     <?
                     $this->AddEditAction($tab['ID'], $tab['EDIT_LINK'], CIBlock::GetArrayByID($tab["IBLOCK_ID"], "ELEMENT_EDIT"));
@@ -70,7 +66,7 @@ $this->setFrameMode(true);
                          aria-labelledby="additional-info-<?= $tab['ID'] ?>"
                          tabindex="0"
                          role="tabpanel">
-                        <div class="row row-gap-6 ps-lg-6" id="<?=$this->GetEditAreaId($tab['ID']);?>">
+                        <div class="row row-gap-6 row-gap-lg-7" id="<?=$this->GetEditAreaId($tab['ID']);?>">
                             <?=TabContent::render(
                                 $tab['~DETAIL_TEXT'],
                                 $tab['DISPLAY_PROPERTIES']

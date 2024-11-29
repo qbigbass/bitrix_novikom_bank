@@ -5,7 +5,7 @@ use Dalee\Libs\Tabs\Interfaces\PropertyHandlerInterface;
 
 class TabContent
 {
-    private static string $openedRteTag = '<div class="content-block">';
+    private static string $openedRteTag = '<div class="rte">';
     private static string $closedRteTag = '</div>';
 
     public static function render(string $detailText, array $displayProperties): string
@@ -33,7 +33,10 @@ class TabContent
         $blockHtml = self::$closedRteTag . $handler->render() . self::$openedRteTag;
 
         return str_replace(
-            $placeHolder,
+            [
+                $placeHolder . '<br>',
+                $placeHolder,
+            ],
             $blockHtml,
             $tabContent
         );
