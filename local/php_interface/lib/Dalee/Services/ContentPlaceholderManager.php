@@ -8,6 +8,8 @@ class ContentPlaceholderManager
     private array $placeholdersMatches = [];
     private array $properties;
     private array $templates;
+    private string $openTag = '<div class="rte rte--w-xxl-60 px-lg-6 mb-6 mb-lg-7">';
+    private string $closeTag = '</div>';
 
     public function __construct(array $templates)
     {
@@ -76,6 +78,7 @@ class ContentPlaceholderManager
     {
         preg_match_all('/#([a-zA-Z0-9_-]+)#/', $text, $matches);
         $placeholders = $matches[0];
+        $lastPlaceholder = end($placeholders);
 
         foreach ($placeholders as $placeholder) {
             $propertyCode = $this->placeholdersMatches[$placeholder] ?? null;
@@ -85,10 +88,12 @@ class ContentPlaceholderManager
                 continue;
             }
 
+            $replaceHtml = $this->templates[$propertyCode]($this->placeholdersValues[$propertyCode][$placeholder] ?? '');
+
             $text = str_replace(
                 $placeholder,
                 // заменяем плейсхолдер на замыкание или на пустую строку, если код не найден
-                $this->templates[$propertyCode]($this->placeholdersValues[$propertyCode][$placeholder] ?? '') ?? '',
+                !empty($replaceHtml) ? $this->closeTag . $replaceHtml . ($placeholder != $lastPlaceholder ? $this->openTag : '') : '',
                 $text
             );
         }
