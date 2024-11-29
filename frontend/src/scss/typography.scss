@@ -108,6 +108,16 @@ h6, .h6 {
     }
 }
 
+.text-ls {
+    font-size: map-get($font-size-body, base);
+    line-height: 150%;
+
+    @include use-media(tablet) {
+        font-size: map-get($font-size-body, medium-xs);
+        line-height: 145%;
+    }
+}
+
 .text-m {
     font-size: map-get($font-size-body, base);
     line-height: 150%;
@@ -118,9 +128,12 @@ h6, .h6 {
     line-height: 130%;
 }
 
-//.text-quote {
-//    font-style: italic;
-//}
+.text-lg-m {
+  @include use-media(tablet-album) {
+    font-size: map-get($font-size-body, base);
+    line-height: 150%;
+  }
+}
 
 .caption-m {
     font-size: map-get($font-size-body, small-x);

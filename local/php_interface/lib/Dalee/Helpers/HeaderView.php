@@ -3,15 +3,16 @@
 namespace Dalee\Helpers;
 
 use CBitrixComponent;
-use Dalee\Helpers\ComponentHelper;
 
 class HeaderView
 {
-    private ComponentHelper $helper;
+    private ?ComponentHelper $helper;
 
-    public function __construct(CBitrixComponent $component)
+    public function __construct(?CBitrixComponent $component = null)
     {
-        $this->helper = new ComponentHelper($component);
+        if (!empty($component)) {
+            $this->helper = new ComponentHelper($component);
+        }
     }
 
     public function render(
@@ -29,7 +30,7 @@ class HeaderView
         $headerTemplate = empty($arResult['PROPERTIES']['HEADER_TEMPLATE']['VALUE_XML_ID']) ? 'compact' : $this->getHeaderTemplate($arResult);
 
         echo match ($headerTemplate) {
-            'compact' => $this->compact($headerData, $chainDepth),
+            'compact' => $this->compact($headerData, $chainDepth, $termsHtml),
             default => $this->detailed($headerData, $chainDepth, $termsHtml),
         };
     }
@@ -106,7 +107,7 @@ class HeaderView
         <? foreach ($termsValues as $term) { ?>
             <div class="d-inline-flex flex-column row-gap-2">
                 <div class="d-inline-flex flex-nowrap align-items-baseline text-l fw-semibold green-100">
-                    <span><?= is_numeric($term['VALUE']) ? $term['FROM_TO'] : '' ?></span>
+                    <span><?= preg_match('/\d/', $term['VALUE']) ? $term['FROM_TO'] : '' ?></span>
                     <span class='<?= preg_match('/\d/', $term['VALUE']) ? 'text-number-l' : 'text-number-m' ?> fw-bold text-nowrap'><?= $term['VALUE'] ?></span>
                 </div>
                 <span class='d-block'><?= $term['SIGN'] ?></span>
@@ -128,10 +129,13 @@ class HeaderView
         ob_start(); ?>
         <div class="banner-product <?= $headerData['bgColorClass'] ?> <?= implode(' ', $headerData['additionalClasses']) ?>">
             <div class="banner-product__wrapper">
-                <div class="banner-product__content w-100 w-lg-60">
+                <div class="banner-product__content <?= empty($headerData['picture']) ? 'w-100 w-lg-60' : '' ?>">
                     <div class="banner-product__header">
 
-                        <? $this->helper->deferredCall('showNavChain', ['.default', $chainDepth]); ?>
+                        <? if (!empty($this->helper)) {
+                            $this->helper->deferredCall('showNavChain', ['.default', $chainDepth]);
+                        } ?>
+
                         <h1><?= $headerData['title'] ?></h1>
                         <? if (!empty($headerData['description'])) { ?>
                             <p class="banner-product__subtitle text-l mw-100"><?= $headerData['description'] ?></p>
@@ -169,7 +173,7 @@ class HeaderView
         <? return ob_get_clean();
     }
 
-    private function compact(array $headerData, int $chainDepth)
+    private function compact(array $headerData, int $chainDepth, ?string $termsHtml)
     {
         ob_start(); ?>
         <section class="banner-text <?= $headerData['bgColorClass'] ?> <?= implode(' ', $headerData['additionalClasses']) ?>">
@@ -178,13 +182,19 @@ class HeaderView
                     <div class="col-12 col-sm-6 col-md-8 position-relative z-1 mb-5 mb-md-0 pt-6">
                         <div class="d-flex flex-column align-items-start gap-3 gap-md-4">
 
-                            <? $this->helper->deferredCall('showNavChain', ['.default', $chainDepth]); ?>
+                            <? if (!empty($this->helper)) {
+                                $this->helper->deferredCall('showNavChain', ['.default', $chainDepth]);
+                            } ?>
+
                             <h1 class="banner-text__title dark-0 text-break"><?= $headerData['title'] ?></h1>
                             <? if (!empty($headerData['description'])) { ?>
                                 <div class="banner-text__description text-l dark-0"><?= $headerData['description'] ?></div>
                             <? } ?>
 
                         </div>
+                        <? if (!empty($termsHtml)) { ?>
+                            <?= $termsHtml ?>
+                        <? } ?>
                     </div>
 
                     <? if (!empty($headerData['picture'])) { ?>

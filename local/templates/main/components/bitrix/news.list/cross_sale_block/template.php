@@ -16,7 +16,7 @@ $this->setFrameMode(true);
 <section class="section-layout">
     <div class="container">
         <h3 class="px-lg-6 mb-4 mb-md-6 mb-lg-7"><?= $arParams['HEADER_TEXT'] ?></h3>
-        <div class="swiper slider-cards js-slider-cards" data-slides-per-view="mobile-s:1,mobile:1,tablet:2,laptop:2,laptop-x:3" data-space-between="mobile-s:8,mobile:8,tablet:16,laptop:16,laptop-x:40">
+        <div class="swiper slider-cards js-slider-cards" data-slides-per-view="mobile-s:1,mobile:1,tablet:2,laptop:2,laptop-x:3" data-space-between="mobile-s:8,mobile:8,tablet:16,laptop:16,laptop-x:16">
             <div class="swiper-wrapper">
                 <? foreach ($arResult['ITEMS'] as $item) { ?>
                     <?
@@ -24,7 +24,7 @@ $this->setFrameMode(true);
                     $this->AddDeleteAction($item['ID'], $item['DELETE_LINK'], CIBlock::GetArrayByID($item["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
                     ?>
                     <div class="swiper-slide js-swiper-slide" id="<?=$this->GetEditAreaId($item['ID']);?>">
-                        <div class="card-product card-product--<?= $item['PROPERTIES']['LINE_COLOR']['VALUE_XML_ID'] ?>">
+                        <div class="card-product card-product--<?= $item['PROPERTIES']['LINE_COLOR']['VALUE_XML_ID'] ?> bg-dark-10">
                             <div class="card-product__inner">
                                 <div class="tag card-product__tag">
                                     <span class="tag__content text-s fw-semibold"><?= $item['PROPERTIES']['TAG']['VALUE'] ?></span>

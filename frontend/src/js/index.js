@@ -1,8 +1,5 @@
-// import '../scss/style.scss';
-// Import all of Bootstrap's JS
-// import * as bootstrap from 'bootstrap'
 import initPolygonContainer from './components/polygon-container.js'
-import initDropdownMenu from './components/dropDownMenu.js'
+import initDropdownMenu, { hideDropDownMenu } from './components/dropDownMenu.js'
 import {setVh} from "./utils";
 import { initSwiperMenu, initHeroBanner, initCardSlider, initAnnouncementSlider, initTabsSlider } from "./components/swiper/swiper";
 import initButtonNavMobile from './components/nav-panel.js'
@@ -18,10 +15,14 @@ import {initFormFeedback} from "./components/form/formFeedback";
 import {initFormSend} from "./components/form/formSend";
 import {initUploadFile} from "./components/form/uploadFile";
 import {initMask} from "./components/form/mask";
+import {initResizePolygonAccordions} from "./components/accordions";
+import initHeaderSearchForm from "./components/headerSearchForm.js";
+import initOffices from "./components/offices";
+import initYMap from "./components/yMap";
+import {initChatBot} from "./components/chatBot";
 
 document.addEventListener('DOMContentLoaded', () => {
     initDropdownMenu();
-    // initPolygonContainer();
     setVh();
     initSwiperMenu();
     initButtonNavMobile();
@@ -41,6 +42,12 @@ document.addEventListener('DOMContentLoaded', () => {
     initFormSend();
     initUploadFile();
     initMask();
+    initResizePolygonAccordions();
+    initHeaderSearchForm();
+    hideDropDownMenu();
+    initOffices();
+    initChatBot();
+    initYMap();
 });
 
 window.onload = function() {
@@ -59,4 +66,5 @@ window.onload = function() {
 window.addEventListener('resize', () => {
     initPolygonContainer(true);
     setVh();
+    hideDropDownMenu();
 });

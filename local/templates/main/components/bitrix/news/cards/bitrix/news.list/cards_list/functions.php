@@ -4,7 +4,7 @@ function getStylizedCardCondition(array $cardConditionData): string
 {
     if ($formattedConditionValue = getFormattedConditionValue($cardConditionData[2])) {
         $result =
-            '<div class="card-product-list__condition d-flex flex-column gap-2 w-100 w-sm-50 w-lg-auto">
+            '<div class="card-product-list__condition d-flex flex-column gap-2 w-100 w-sm-50 w-xl-auto">
                 <div class="d-inline-flex flex-nowrap align-items-baseline gap-1">
                     ' . getConditionHtml($formattedConditionValue) . '
                 </div>
@@ -12,7 +12,7 @@ function getStylizedCardCondition(array $cardConditionData): string
             </div>';
     } else {
         $result =
-            '<div class="card-product-list__condition d-flex flex-column gap-2 w-100 w-sm-50 w-lg-auto align-self-end">
+            '<div class="card-product-list__condition d-flex flex-column gap-2 w-100 w-sm-50 w-xl-auto align-self-end">
                 <div class="d-inline-flex flex-nowrap align-items-baseline gap-1">
                     <span class="h4">' . $cardConditionData[2] . '</span>
                 </div>

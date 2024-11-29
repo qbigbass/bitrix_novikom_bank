@@ -3,11 +3,13 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.ph
 
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['action']) && $_POST['action'] === 'set_page') {
 
-    $_SESSION['current_page'] = $_POST['page'];
+    $_SESSION['section_page'] = !empty($_SESSION['section_page']) && is_array($_SESSION['section_page']) ? $_SESSION['section_page'] : [];
+    $_SESSION['section_page'][$_POST['section']] = $_POST['element'];
 
     $response = [
         'status' => 'success',
-        'currentPage' => $_POST['page'],
+        'currentSection' => $_POST['section'],
+        'currentElement' => $_POST['element'],
     ];
 
     echo json_encode($response);

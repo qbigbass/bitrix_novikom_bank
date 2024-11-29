@@ -133,27 +133,16 @@ block content
         .container
             .row.mb-6.mb-lg-7
                 h3 Преимущества
-            .row.row-gap-6
+            #benefits.row.row-gap-6
                 each item, index in allBenefits
                     .col-12.col-md-6.col-lg-4(class=index > 3 && 'd-none d-md-block')
                         +benefit(item.spriteData, item.title)
                             span!= item.description
-            #biometric-more-benefits.collapse.d-md-none
-                .row.row-gap-6.mt-6
-                    each item, index in allBenefits
-                        if index > 3
-                            .col-12
-                                +benefit(item.spriteData, item.title)
-                                    span!= item.description
-            .row.d-md-none.mt-6
-                .col-12
-                    a(
-                        data-bs-toggle="collapse"
-                        href="#biometric-more-benefits"
+                .col-12.d-md-none
+                    button(
+                        data-target="benefits"
                         role="button"
-                        aria-expanded="false"
-                        aria-controls="biometric-more-benefits"
-                    ).d-flex.gap-2.align-items-center.justify-content-center.violet-100.text-m.fw-bold
+                    ).js-more-content-link.d-flex.gap-2.align-items-center.justify-content-center.violet-100.text-m.fw-bold
                         | Ещё преимущества
                         +svg-use("icon-chevron-down", "icon size-m")
 

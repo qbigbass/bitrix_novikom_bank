@@ -1,15 +1,11 @@
 .card-offer-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.5rem;
+  gap: 0.5rem;
 
   @include use-media(tablet) {
     grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-  }
-
-  @include use-media(tablet-album) {
-    gap: 2.5rem;
+    gap: 1rem;
   }
 
   @include use-media(laptop-x) {

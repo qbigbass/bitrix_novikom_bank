@@ -5,7 +5,7 @@
                 <div class="d-flex flex-column align-items-start gap-3 gap-md-4">
                     <h3>Остались вопросы</h3>
                     <p class="text-l mb-0">Оставьте свой телефон и&nbsp;мы&nbsp;перезвоним вам, либо задайте вопрос в&nbsp;чате</p>
-                    <button class="btn btn-info" type="button">Отркыть чат</button>
+                    <button class="btn btn-info w-100 w-lg-auto" type="button">Открыть чат</button>
                     <p class="text-s dark-70 mb-0">Нажимая кнопку &laquo;Перезвоните мне&raquo;, вы&nbsp;соглашаетесь с&nbsp;условиями предоставления информации</p>
                 </div>
             </div>

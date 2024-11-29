@@ -24,8 +24,8 @@ $this->setFrameMode(true);?>
                     $helper = new ComponentHelper($component);
                     $helper->deferredCall('showNavChain', ['.default']);
                     ?>
-                    <h1 class="banner-text__title dark-0 text-break">Банковские карты</h1>
-                    <div class="banner-text__description text-l dark-0">Карты с&nbsp;оптимальными условиями и&nbsp;приятными бонусами</div>
+                    <h1 class="banner-text__title dark-0 text-break"><?=$arResult['IBLOCK_NAME']?></h1>
+                    <div class="banner-text__description text-l dark-0"><?=$arResult['IBLOCK_DESCRIPTION']?></div>
                 </div>
             </div>
         </div>

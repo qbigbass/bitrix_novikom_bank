@@ -1,0 +1,223 @@
+extends ../templates/base
+
+block title
+    title= 'Бизнесу - Интернет-банк'
+    meta(name="description" content="Описание страницы Интернет-банк в разделе Бизнес")
+block content
+    include ../includes/header/header
+    include ../components/banners/banner-product
+    include ../cards/card-about
+    include ../components/stepper
+    include ../components/helper
+    include ../cards/card-promo
+    include ../cards/card-special
+    include ../components/ui/tabs
+    include ../components/ui/tabs-simple
+    include ../includes/layout/slider-card-product
+
+    -
+        var bannerProductData = {
+            title: "Интернет-банк",
+            subtitle: "Системы дистанционного банковского обслуживания",
+            type: "msb",
+            imgSrc: "img/big-illustrations/large-business/internet-bank.png",
+            bgColor: "heavy-violet",
+            patternClass: "pattern-bg--position-top",
+            benefitsClass: "d-flex flex-wrap gap-lg-11",
+            breadcrumbsArray: [
+                {
+                    link: "#",
+                    linkText: "Малому и среднему бизнесу"
+                },
+                {
+                    link: "#",
+                    linkText: "ДБО"
+                },
+                {
+                    link: "#",
+                    linkText: "Интернет-банк"
+                }
+            ],
+            benefits: [
+                {
+                    title: 'Интеграция <br>с Клиент-Банк',
+                    description: 'при наличии <br>электронной печати',
+                    colorClass: 'yellow-100'
+                },
+                {
+                    title: 'Криптозащита',
+                    colorClass: 'yellow-100',
+                    widthMinContent: true
+                },
+                {
+                    title: 'Аналитика',
+                    colorClass: 'yellow-100',
+                    widthMinContent: true
+                }
+            ],
+            footer: [
+                {
+                    title: 'Удаленный <br>документооборот',
+                    colorClass: 'dark-0',
+                    spriteData: {
+                        icon: 'limits',
+                        classList: 'size-xl'
+                    },
+                },
+                {
+                    title: 'Проведение <br>платежей',
+                    colorClass: 'dark-0',
+                    spriteData: {
+                        icon: 'limits',
+                        classList: 'size-xl'
+                    },
+                },
+                {
+                    title: 'Управление <br>расчетными счетами',
+                    colorClass: 'dark-0',
+                    spriteData: {
+                        icon: 'limits',
+                        classList: 'size-xl'
+                    },
+                }
+            ]
+        }
+
+        var additionalTabsList = [
+            {
+                linkText: "Описание",
+                link: "#1",
+                id: "additional-info-1"
+            },
+            {
+                linkText: "Условия",
+                link: "#2",
+                id: "additional-info-2",
+                isActive: true
+            },
+            {
+                linkText: "Памятка",
+                link: "#3",
+                id: "additional-info-3"
+            }
+        ]
+
+        var allSteps = [
+            {
+                imageSrc: "step-indicator-1.svg",
+                text: "Иметь усиленную квалифицированную <br class='d-none d-lg-block'>электронную подпись (УКЭП)"
+            },
+            {
+                imageSrc: "step-indicator-2.svg",
+                text: "Связаться со специалистом Новикома для регистрации <br class='d-none d-lg-block'>и подключения к системе Клиент-Банк."
+            },
+        ]
+
+        var allContacts = [
+            {
+                pattern: false,
+                list: [
+                    {
+                        marginClassList: "mt-0",
+                        tag: "Подключение и оформление документов"
+                    },
+                    {
+                        marginClassList: "mt-0",
+                        title: "Отдел сопровождения банковских операций, продуктов и услуг"
+                    },
+                    {
+                        marginClassList: "mt-0",
+                        list: [
+                            {
+                                href: "tel:+74959747187#983",
+                                text: "+7 (495) 974-71-87",
+                                additionalText: "доб. 983",
+                                icon: "icon-phone",
+                            },
+                            {
+                                href: "mailto:ocbopu@novikom.ru",
+                                text: "ocbopu@novikom.ru",
+                                icon: "icon-mail",
+                                additionalClass: "text-decoration-underline",
+                            },
+                        ],
+                    },
+                ]
+            },
+            {
+                pattern: false,
+                list: [
+                    {
+                        marginClassList: "mt-0",
+                        tag: "Подключение и оформление документов"
+                    },
+                    {
+                        marginClassList: "mt-0",
+                        title: "Людмила Белозерцева"
+                    },
+                    {
+                        marginClassList: "mt-auto mb-0",
+                        list: [
+                            {
+                                href: "tel:+74959747187#148",
+                                text: "+7 (495) 974-71-87",
+                                additionalText: "доб. 148",
+                                icon: "icon-phone",
+                            },
+                            {
+                                href: "mailto:belozertseva_li@novikom.ru",
+                                text: "belozertseva_li@novikom.ru",
+                                icon: "icon-mail",
+                                additionalClass: "text-decoration-underline",
+                            },
+                        ],
+                    },
+                ]
+            }
+        ]
+
+    +banner-product(bannerProductData).banner-product--border-yellow.banner-product--size-xl
+
+    section.section-layout
+        .container
+            h3.mb-4.mb-md-6.mb-lg-7.px-lg-6
+                | Подробнее об услуге
+            .row
+                .col-12
+                    .ps-lg-6
+                        +tabs-simple(additionalTabsList, false)
+                    .tab-content.mt-4.mt-md-6.mt-lg-7.ps-lg-6
+                        #additional-info-1.tab-pane.fade(aria-labelledby="additional-info-1" tabindex="0" role="tabpanel")
+                            p Описание
+                        #additional-info-2.tab-pane.fade.show.active(aria-labelledby="additional-info-2" tabindex="0" role="tabpanel")
+                            .row.row-gap-6.row-gap-lg-7
+                                .col-12.col-xl-10
+                                    h4.fw-bold.mb-4 Для начала работы с системой «Клиент-Банк» необходимо:
+                                    +stepper(allSteps, allSteps.length, "yellow")
+                                .col-12
+                                    +polygon-container("yellow-100")
+                                        +helper("img/business-additional-info.png", "bg-blue-10")
+                                            p.text-l.mb-0 В случае если УКЭП нет, необходимо воспользоваться услугами удостоверяющего центра СКБ «Контур», оформив соответствующий запрос на сайте УЦ «Контур» или по телефону 8 800 500-50-80.
+                        #additional-info-3.tab-pane.fade(aria-labelledby="additional-info-3" tabindex="0" role="tabpanel")
+                            p Памятка
+        +pattern-bg('section-2', 'light', 'pattern-bg--hide-mobile')
+
+    section.section-layout.bg-blue-10
+        .container
+            h3.px-lg-6.mb-4.mb-md-6.mb-lg-7
+                | Контакты
+            .row
+                .col-12
+                    .swiper.js-slider-cards.slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:1,tablet-album:2,laptop:2,laptop-x:2" data-space-between="mobile-s:8,mobile:8,tablet:16,laptop:16,laptop-x:16")
+                        .swiper-wrapper.js-swiper-wrapper
+                            each item in allContacts
+                                .swiper-slide.js-swiper-slide
+                                    +card-about(item, 'bg-heavy-violet').h-100
+
+                        +slider-controls().mt-3.mt-md-4
+
+    section.section-layout
+        .container
+            .row
+                .col-12
+                    +slider-card-product(offersList, 'mobile-s:1,mobile:1,tablet:2,laptop:3,laptop-x:3', 'mobile-s:8,mobile:8,tablet:16,laptop:16,laptop-x:16')

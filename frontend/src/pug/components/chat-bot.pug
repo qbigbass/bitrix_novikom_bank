@@ -1,0 +1,22 @@
+mixin chatbot-polygon
+    .chatbot-polygon__polygon.violet-100.js-polygon-container-polygon.d-none.d-md-block
+        svg.js-polygon-container-svg(xmlns="http://www.w3.org/2000/svg")
+            polygon(points="1 1, 1 52, 52 52, 67 67, 67 1" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-dasharray="8 8")
+
+.chat-bot.js-chatbot
+    .chat-bot__button-box.chatbot-polygon.js-polygon-container
+        button(type="button").chat-bot__button.chatbot-polygon__content.js-chatbot-btn
+            +svg-use("icon-more", "icon size-m")
+        +chatbot-polygon
+
+    .chat-bot__popover.chatbot-polygon.js-chatbot-popover.js-polygon-container(hidden)
+        .chatbot-polygon__content.chat-bot__popover-content.bg-blue-10.d-flex.flex-column.gap-3.gap-lg-4
+            button(type="button" data-bs-toggle="modal" data-bs-target="#modal-callback-form").d-flex.gap-2.align-items-center.text-l
+                +svg-use("icon-phone", "icon size-m")
+                span Заказать звонок
+            button(type="button" data-bs-toggle="modal" data-bs-target="#modal-feedback-form").d-flex.gap-2.align-items-center.text-l
+                +svg-use("icon-mail", "icon size-m")
+                span Направить обращение
+            button(type="button").chat-bot__btn-close.js-chatbot-close
+                +svg-use("icon-close", "icon dark-100 size-m")
+        +chatbot-polygon

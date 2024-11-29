@@ -20,9 +20,9 @@ block content
         var bannerPromoData = {
             title: "Банковское сопровождение контрактов",
             subtitle: "Обеспечение контроля целевого расходования денежных средств в рамках исполнения сопровождаемого договора с использованием отдельных счетов",
-            type: "corp",
             imgSrc: "img/hero-banner/bank-support.png",
             bgColor: "heavy-purple",
+            btnType: "btn-orange",
             breadcrumbsArray: [
                 {
                     link: "#",
@@ -217,7 +217,7 @@ block content
                         icon: "icon-phone",
                     },
                     {
-                        href: "emailto:info@prom-lk.ru",
+                        href: "mailto:info@prom-lk.ru",
                         text: "info@prom-lk.ru",
                         icon: "icon-mail",
                         additionalClass: "text-decoration-underline",
@@ -317,7 +317,7 @@ block content
             }
         ]
 
-    +banner-product(bannerPromoData).banner-product--border-orange.banner-product--type-corp-withimg
+    +banner-product(bannerPromoData).banner-product--border-orange
 
     section.section-layout
         .container
@@ -326,7 +326,7 @@ block content
             +slider-card-benefit-bank()
         +pattern-bg('section', 'light', 'pattern-bg--hide-mobile')
 
-    section.section-layout
+    section.section-layout.py-lg-11
         .container
             .row
                 .col-12
@@ -341,27 +341,16 @@ block content
         .container
             h3.mb-4.mb-md-6.mb-lg-7
                 | Возможности
-            .row.row-gap-6.gx-xl-6
+            #benefits.row.row-gap-6.gx-xl-6
                 each item, index in allBenefits
                     .col-12.col-md-6.col-lg-4(class=index > 3 && 'd-none d-md-block')
                         +benefit(item.spriteData, item.title)
                             span!= item.description
-            #banking-support-benefits.collapse.d-md-none
-                .row.row-gap-6.mt-6
-                    each item, index in allBenefits
-                        if index > 3
-                            .col-12
-                                +benefit(item.spriteData, item.title)
-                                    span!= item.description
-            .row.d-md-none.mt-6
-                .col-12
-                    a(
-                        data-bs-toggle="collapse"
-                        href="#banking-support-benefits"
+                .col-12.d-md-none
+                    button(
+                        data-target="benefits"
                         role="button"
-                        aria-expanded="false"
-                        aria-controls="banking-support-benefits"
-                    ).d-flex.gap-2.align-items-center.justify-content-center.violet-100.text-m.fw-bold
+                    ).js-more-content-link.d-flex.gap-2.align-items-center.justify-content-center.violet-100.text-m.fw-bold
                         | Ещё преимущества
                         +svg-use("icon-chevron-down", "icon size-m")
         +pattern-bg('section', 'light', 'pattern-bg--hide-mobile')
@@ -380,6 +369,7 @@ block content
                                         .col-12.col-lg-6
                                             +benefit(item.spriteData, item.title)
                                                 span!= item.description
+                                span(aria-hidden="true").border-bottom-dashed
                                 .row.row-gap-6
                                     h4 Как организовать банковское сопровождение коммерческих контрактов?
                                     +stepper(accordionContent.steps.items, accordionContent.steps.items.length, accordionContent.steps.color )
@@ -434,7 +424,7 @@ block content
             h3.mb-4.mb-md-6.mb-lg-7.px-lg-6 Контакты
             .row
                 .col-12
-                    .swiper.slider-cards.js-slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:1,tablet-album:2,laptop:2,laptop-x:2" data-space-between="mobile-s:8,mobile:8,tablet:16,tablet-album:40,laptop:40,laptop-x:40")
+                    .swiper.slider-cards.js-slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:1,tablet-album:2,laptop:2,laptop-x:2" data-space-between="mobile-s:8,mobile:8,tablet:16,tablet-album:16,laptop:16,laptop-x:16")
                         .swiper-wrapper
                             .swiper-slide.js-swiper-slide
                                 +contact-block(contactList[0]).contact-block--bg-heavy-purple

@@ -1,4 +1,6 @@
 .banner-text {
+    $root: #{&};
+
     --border-thickness: 0.25rem;
     position: relative;
     min-height: calc(20rem + var(--border-thickness));
@@ -44,5 +46,13 @@
 
     &--border-orange {
         border-top: var(--border-thickness) solid var(--orange-100);
+    }
+
+    &--border-violet {
+        border-top: var(--border-thickness) solid var(--violet-100);
+
+        #{$root}__pattern {
+            opacity: 1;
+        }
     }
 }

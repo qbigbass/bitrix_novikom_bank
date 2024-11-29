@@ -10,17 +10,21 @@
 /** @var string $templateFolder */
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
-$this->setFrameMode(true);?>
+$this->setFrameMode(true); ?>
 
 <section class="section-layout bg-purple-10">
     <div class="container">
         <h3 class="mb-4 mb-md-6 mb-lg-7 px-lg-6">Контакты</h3>
         <div class="row">
             <div class="col-12">
-                <div class="swiper slider-cards js-slider-cards" data-slides-per-view="mobile-s:1,mobile:1,tablet:1,tablet-album:2,laptop:2,laptop-x:2" data-space-between="mobile-s:8,mobile:8,tablet:16,tablet-album:40,laptop:40,laptop-x:40">
+                <div class="swiper slider-cards js-slider-cards" data-slides-per-view="mobile-s:1,mobile:1,tablet:1,tablet-album:2,laptop:2,laptop-x:2" data-space-between="mobile-s:8,mobile:8,tablet:16,tablet-album:16,laptop:16,laptop-x:16">
                     <div class="swiper-wrapper">
                         <? foreach ($arResult['ITEMS'] as $item) { ?>
-                            <div class="swiper-slide js-swiper-slide">
+                            <?
+                            $this->AddEditAction($item['ID'], $item['EDIT_LINK'], CIBlock::GetArrayByID($item["IBLOCK_ID"], "ELEMENT_EDIT"));
+                            $this->AddDeleteAction($item['ID'], $item['DELETE_LINK'], CIBlock::GetArrayByID($item["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
+                            ?>
+                            <div class="swiper-slide js-swiper-slide" id="<?=$this->GetEditAreaId($item['ID']);?>">
                                 <div class="contact-block contact-block--bg-heavy-purple">
                                     <div class="d-flex flex-column row-gap-5 row-gap-md-6 row-gap-lg-7 h-100">
                                         <div class="d-flex flex-column row-gap-2">
@@ -28,30 +32,50 @@ $this->setFrameMode(true);?>
                                         </div>
                                         <div class="mt-auto">
                                             <ul class="list-contact d-flex flex-column row-gap-4">
-                                                <li class="d-flex column-gap-3">
-                                                    <span class="icon size-m flex-shrink-0 dark-0">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                                            <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-phone"></use>
-                                                        </svg>
-                                                    </span>
-                                                    <div class="list-contact__text d-flex flex-wrap gap-2">
-                                                        <a class="list-contact__link" href="tel:+74959747187">
-                                                            <span class="text-l">+7 (495) 974-71-87</span>
-                                                        </a>
-                                                    </div>
-                                                </li>
-                                                <li class="d-flex column-gap-3">
-                                                    <span class="icon size-m flex-shrink-0 dark-0">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                                            <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-mail"></use>
-                                                        </svg>
-                                                    </span>
-                                                    <div class="list-contact__text d-flex flex-wrap gap-2">
-                                                        <a class="text-decoration-underline list-contact__link" href="emailto:corp@novikom.ru">
-                                                            <span class="text-l">corp@novikom.ru</span>
-                                                        </a>
-                                                    </div>
-                                                </li>
+                                                <? if (!empty($item['PROPERTIES']['PHONE']['VALUE'])) { ?>
+                                                    <li class="d-flex flex-column column-gap-3 row-gap-2">
+                                                        <? foreach ($item['PROPERTIES']['PHONE']['VALUE'] as $phone) { ?>
+                                                            <div class="d-flex column-gap-3">
+                                                                <span class="icon size-m flex-shrink-0 dark-0">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                                                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-phone"></use>
+                                                                    </svg>
+                                                                </span>
+                                                                <div class="list-contact__text d-flex flex-wrap gap-2">
+                                                                    <a class="list-contact__link" href="tel:<?= preg_replace('/[^\d+]/', '', $phone) ?>">
+                                                                        <span class="text-l"><?= $phone ?></span>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        <? } ?>
+                                                    </li>
+                                                <? } ?>
+                                                <? if (!empty($item['PROPERTIES']['EMAIL']['VALUE'])) { ?>
+                                                    <li class="d-flex column-gap-3">
+                                                        <span class="icon size-m flex-shrink-0 dark-0">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                                                <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-mail"></use>
+                                                            </svg>
+                                                        </span>
+                                                        <div class="list-contact__text d-flex flex-wrap gap-2">
+                                                            <a class="text-decoration-underline list-contact__link" href="emailto:<?= $item['PROPERTIES']['EMAIL']['VALUE'] ?>">
+                                                                <span class="text-l"><?= $item['PROPERTIES']['EMAIL']['VALUE'] ?></span>
+                                                            </a>
+                                                        </div>
+                                                    </li>
+                                                <? } ?>
+                                                <? if (!empty($item['PROPERTIES']['ADDRESS']['VALUE'])) { ?>
+                                                    <li class="d-flex column-gap-3">
+                                                        <span class="icon size-m flex-shrink-0 dark-0">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                                              <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-point"></use>
+                                                            </svg>
+                                                        </span>
+                                                        <div class="list-contact__text d-flex flex-wrap gap-2">
+                                                            <span class="text-l"><?= $item['PROPERTIES']['ADDRESS']['VALUE'] ?></span>
+                                                        </div>
+                                                    </li>
+                                                <? } ?>
                                             </ul>
                                         </div>
                                     </div>

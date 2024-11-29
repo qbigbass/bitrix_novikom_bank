@@ -1,4 +1,8 @@
-<?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
+<?
+use Dalee\Helpers\ComponentRenderer\Renderer;
+use Dalee\Helpers\HeaderView;
+
+if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 /** @var array $arParams */
 /** @var array $arResult */
 /** @global CMain $APPLICATION */
@@ -12,19 +16,19 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 
-use Dalee\Helpers\HeaderView;
-
 $headerView = new HeaderView($component);
+$renderer = new Renderer($APPLICATION, $component);
+
 $helper = $headerView->helper();
 
 $headerView->render(
     $arResult['~NAME'],
     $arResult['~PREVIEW_TEXT'],
     [
-        'banner-product--type-corp',
         'banner-product--border-orange',
-        !empty($arResult['DETAIL_PICTURE']) ? 'banner-product--type-corp-withimg' : 'banner-product--size-xl',
-        $arResult['PROPERTIES']['HEADER_TEMPLATE']['VALUE_XML_ID'] == 'compact' ? 'banner-text--border-orange' : ''
+        !empty($arResult['PROPERTIES']['BENEFITS_TOP']['VALUE']) ? 'banner-product-size--xl' : '',
+        $arResult['PROPERTIES']['HEADER_TEMPLATE']['VALUE_XML_ID'] == 'compact' || empty($arResult['PROPERTIES']['HEADER_TEMPLATE']['VALUE_XML_ID'])
+            ? 'banner-text--border-orange banner-product--heavy-purple' : ''
     ],
     1,
     $arResult,
@@ -161,73 +165,15 @@ $headerView->render(
 } ?>
 
 <? if (!empty($arResult['PROPERTIES']['BENEFITS_ICONS']['VALUE'])) { ?>
-    <section class="section-benefits px-0 px-lg-6 py-6 py-sm-9 py-md-11 py-xl-16 position-relative overflow-hidden">
+    <section class="section-layout px-lg-6">
         <div class="container">
             <div class="row mb-6 mb-lg-7">
                 <h3><?= $arResult['PROPERTIES']['BENEFITS_ICONS_HEADER']['~VALUE'] ?? '' ?></h3>
             </div>
             <div class="row row-gap-6">
-                <? global $benefitsFilter;
-                $benefitsFilter = [
-                    'ACTIVE' => 'Y',
-                    'ID' => $arResult['PROPERTIES']['BENEFITS_ICONS']['VALUE']
-                ];
 
-                $APPLICATION->IncludeComponent(
-                    "bitrix:news.list",
-                    "benefits",
-                    [
-                        "ACTIVE_DATE_FORMAT" => "d.m.Y",
-                        "ADD_SECTIONS_CHAIN" => "N",
-                        "AJAX_MODE" => "N",
-                        "AJAX_OPTION_ADDITIONAL" => "",
-                        "AJAX_OPTION_HISTORY" => "N",
-                        "AJAX_OPTION_JUMP" => "N",
-                        "AJAX_OPTION_STYLE" => "Y",
-                        "CACHE_FILTER" => "Y",
-                        "CACHE_GROUPS" => "Y",
-                        "CACHE_TIME" => "36000000",
-                        "CACHE_TYPE" => "A",
-                        "CHECK_DATES" => "Y",
-                        "COL_COUNT" => "3",
-                        "DETAIL_URL" => "",
-                        "DISPLAY_BOTTOM_PAGER" => "N",
-                        "DISPLAY_TOP_PAGER" => "N",
-                        "FIELD_CODE" => ["CODE","NAME","PREVIEW_TEXT","PREVIEW_PICTURE",""],
-                        "FILTER_NAME" => "benefitsFilter",
-                        "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                        "IBLOCK_ID" => iblock('benefits'),
-                        "IBLOCK_TYPE" => "additional",
-                        "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
-                        "INCLUDE_SUBSECTIONS" => "N",
-                        "MESSAGE_404" => "",
-                        "NEWS_COUNT" => "20",
-                        "PAGER_BASE_LINK_ENABLE" => "N",
-                        "PAGER_DESC_NUMBERING" => "N",
-                        "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
-                        "PAGER_SHOW_ALL" => "N",
-                        "PAGER_SHOW_ALWAYS" => "N",
-                        "PAGER_TEMPLATE" => ".default",
-                        "PAGER_TITLE" => "Новости",
-                        "PARENT_SECTION" => "",
-                        "PARENT_SECTION_CODE" => "",
-                        "PREVIEW_TRUNCATE_LEN" => "",
-                        "PROPERTY_CODE" => ["",""],
-                        "SET_BROWSER_TITLE" => "N",
-                        "SET_LAST_MODIFIED" => "N",
-                        "SET_META_DESCRIPTION" => "N",
-                        "SET_META_KEYWORDS" => "N",
-                        "SET_STATUS_404" => "N",
-                        "SET_TITLE" => "N",
-                        "SHOW_404" => "N",
-                        "SORT_BY1" => "ACTIVE_FROM",
-                        "SORT_BY2" => "SORT",
-                        "SORT_ORDER1" => "DESC",
-                        "SORT_ORDER2" => "ASC",
-                        "STRICT_SECTION_CHECK" => "N",
-                    ],
-                    $component
-                ); ?>
+                <? $renderer->render('Benefits', $arResult['PROPERTIES']['BENEFITS_ICONS']['VALUE']); ?>
+
             </div>
         </div>
         <picture class="pattern-bg pattern-bg--position-sm-bottom section-restructuring-benefits__pattern">
@@ -241,7 +187,7 @@ $headerView->render(
     <section class="section-layout">
         <div class="container">
             <h3 class="mb-4 mb-md-6 mb-lg-7"><?= $arResult['PROPERTIES']['BENEFITS_TILE_HEADER']['~VALUE'] ?? '' ?></h3>
-            <div class="row row-gap-4 row-gap-md-5 row-gap-lg-6 gx-md-2 gx-lg-2">
+            <div class="row cards-gutter">
                 <? global $benefitsTileFilter;
                 $benefitsTileFilter = [
                     'ACTIVE' => 'Y',
@@ -395,68 +341,14 @@ $headerView->render(
                 </svg>
             </a>
 
-            <? global $tabsFilter;
-            $tabsFilter = [
-                'ACTIVE' => 'Y',
-                'ID' => $arResult['PROPERTIES']['TABS']['VALUE']
-            ];
-
-            $APPLICATION->IncludeComponent(
-                "bitrix:news.list",
-                "tabs",
-                [
-                    "ACTIVE_DATE_FORMAT" => "d.m.Y",
-                    "ADD_SECTIONS_CHAIN" => "N",
-                    "AJAX_MODE" => "N",
-                    "AJAX_OPTION_ADDITIONAL" => "",
-                    "AJAX_OPTION_HISTORY" => "N",
-                    "AJAX_OPTION_JUMP" => "N",
-                    "AJAX_OPTION_STYLE" => "Y",
-                    "CACHE_FILTER" => "Y",
-                    "CACHE_GROUPS" => "Y",
-                    "CACHE_TIME" => "36000000",
-                    "CACHE_TYPE" => "A",
-                    "CHECK_DATES" => "Y",
-                    "DETAIL_URL" => "",
-                    "DISPLAY_BOTTOM_PAGER" => "N",
-                    "DISPLAY_TOP_PAGER" => "N",
-                    "FIELD_CODE" => ["CODE","NAME","PREVIEW_TEXT","PREVIEW_PICTURE",""],
-                    "FILTER_NAME" => "tabsFilter",
-                    "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                    "IBLOCK_ID" => iblock('tabs'),
-                    "IBLOCK_TYPE" => "additional",
-                    "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
-                    "INCLUDE_SUBSECTIONS" => "N",
-                    "MESSAGE_404" => "",
-                    "NEWS_COUNT" => "20",
-                    "PAGER_BASE_LINK_ENABLE" => "N",
-                    "PAGER_DESC_NUMBERING" => "N",
-                    "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
-                    "PAGER_SHOW_ALL" => "N",
-                    "PAGER_SHOW_ALWAYS" => "N",
-                    "PAGER_TEMPLATE" => ".default",
-                    "PAGER_TITLE" => "Новости",
-                    "PARENT_SECTION" => "",
-                    "PARENT_SECTION_CODE" => "",
-                    "PREVIEW_TRUNCATE_LEN" => "",
-                    "PROPERTY_CODE" => ["CONDITIONS_ICONS","CONDITIONS","CONDITIONS_TABS","TEXT_FIELD","SHORT_INFO","QUOTES","QUESTIONS","DOCUMENTS", "BENEFITS", "TEXT_BLOCK_DESCRIPTION", "COMPLEX_PROP"],
-                    "SET_BROWSER_TITLE" => "N",
-                    "SET_LAST_MODIFIED" => "N",
-                    "SET_META_DESCRIPTION" => "N",
-                    "SET_META_KEYWORDS" => "N",
-                    "SET_STATUS_404" => "N",
-                    "SET_TITLE" => "N",
-                    "SHOW_404" => "N",
-                    "SORT_BY1" => "ACTIVE_FROM",
-                    "SORT_BY2" => "SORT",
-                    "SORT_ORDER1" => "DESC",
-                    "SORT_ORDER2" => "ASC",
-                    "STRICT_SECTION_CHECK" => "N",
-                ],
-                $component
-            );?>
+            <? $renderer->render('Tabs', $arResult['PROPERTIES']['TABS']['VALUE']); ?>
 
         </div>
+        <picture class="pattern-bg pattern-bg--hide-mobile">
+            <source srcset="/frontend/dist/img/patterns/section-2/pattern-light-s.svg" media="(max-width: 767px)">
+            <source srcset="/frontend/dist/img/patterns/section-2/pattern-light-m.svg" media="(max-width: 1199px)">
+            <img src="/frontend/dist/img/patterns/section-2/pattern-light-l.svg" alt="bg pattern" loading="lazy">
+        </picture>
     </section>
 <? } ?>
 
@@ -513,7 +405,7 @@ $headerView->render(
             "PARENT_SECTION" => "",
             "PARENT_SECTION_CODE" => "",
             "PREVIEW_TRUNCATE_LEN" => "",
-            "PROPERTY_CODE" => [""],
+            "PROPERTY_CODE" => ["EMAIL", "PHONE", "ADDRESS"],
             "SET_BROWSER_TITLE" => "N",
             "SET_LAST_MODIFIED" => "N",
             "SET_META_DESCRIPTION" => "N",

@@ -17,7 +17,7 @@ $this->setFrameMode(true);
     <div class="container">
         <div class="row">
             <div class="col-12 col-xxl-6 d-flex flex-column gap-6 gap-lg-7">
-                <a class="h3 d-flex align-items-center ps-lg-6 pt-xxl-6" href="/for-corporate-clients/customer-announcements/">
+                <a class="h3 d-flex align-items-center ps-lg-6" href="/for-corporate-clients/customer-announcements/">
                     <span><?= $arResult["NAME"] ?></span>
                     <span class="icon size-m violet-100 ms-auto ms-md-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
@@ -31,7 +31,7 @@ $this->setFrameMode(true);
                             <? foreach ($arResult["ITEMS"] as $item) { ?>
                                 <div class="swiper-slide js-announcement-slide">
                                     <a class="announcement" href="<?= $item["DETAIL_PAGE_URL"] ?>" tabIndex="-1">
-                                        <span class="dark-70"><?= date('d-m-Y', strtotime($item["TIMESTAMP_X"])) ?></span>
+                                        <span class="dark-70"><?= date('d.m.Y', strtotime($item["TIMESTAMP_X"])) ?></span>
                                         <span class="dark-100"><?= $item["NAME"] ?></span>
                                         <span class="icon size-m d-none d-md-inline-block ms-auto">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
