@@ -1,11 +1,11 @@
 <?php
 /** @var array $arResult */
+/** @var CMain $APPLICATION */
 
 use Dalee\Services\ContentPlaceholderManager;
 use Dalee\Helpers\ComponentRenderer\Renderer;
 
 $properties = [
-    'IMAGES' => fn($value) => '<img src="' . $value . '" class="mobile-element-full-width" alt="" loading="lazy">',
     'QUOTE' => fn($value) => '
         <div class="polygon-container js-polygon-container quote-polygon-container">
             <div class="polygon-container__content quote-polygon-container__content">
@@ -46,9 +46,12 @@ $properties = [
 
         ob_start();
 
+        echo '<div class="row row-gap-6 px-lg-6">';
         $renderer->render('Benefits', $value);
+        echo '</div>';
 
         return ob_get_clean();
+
     }
 ];
 

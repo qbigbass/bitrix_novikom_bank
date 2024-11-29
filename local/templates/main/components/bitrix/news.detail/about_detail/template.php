@@ -28,9 +28,15 @@ $headerView->render(
     ['bg-linear-blue', 'banner-text--border-green'],
     1
 );
-
-$placeholderManager->renderHtml($arResult['~DETAIL_TEXT']);
-
+?>
+<section class="section-layout py-lg-11">
+    <div class="container">
+        <div class="rte rte--w-xxl-60 px-lg-6 mb-6 mb-lg-7">
+            <? $placeholderManager->renderHtml($arResult['~DETAIL_TEXT']); ?>
+        </div>
+    </div>
+</section>
+<?
 if (!empty($arResult['DISPLAY_PROPERTIES']['TABS']['VALUE'])): ?>
     <section class="section-layout py-md-11 js-collapsed-mobile">
         <div class="container">
@@ -45,7 +51,6 @@ if (!empty($arResult['DISPLAY_PROPERTIES']['TABS']['VALUE'])): ?>
             <? endif; ?>
 
             <? $renderer->render('Tabs', $arResult['DISPLAY_PROPERTIES']['TABS']['VALUE']); ?>
-
         </div>
     </section>
 <? endif;
