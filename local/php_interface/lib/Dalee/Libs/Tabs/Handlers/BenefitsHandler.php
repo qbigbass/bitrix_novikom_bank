@@ -1,25 +1,28 @@
 <?php
+namespace Dalee\Libs\Tabs\Handlers;
 
-namespace Dalee\Helpers\ComponentRenderer\Components;
+use Dalee\Libs\Tabs\Interfaces\PropertyHandlerInterface;
 
-use CBitrixComponent;
-use CMain;
-use Dalee\Helpers\ComponentRenderer\Interface\ComponentInterface;
-
-class Tabs implements ComponentInterface
+class BenefitsHandler implements PropertyHandlerInterface
 {
-    public static function render(CMain $application, CBitrixComponent|bool $component, string $filter, ?array $params = []): void
+    private array $property;
+
+    public function __construct(array $property)
     {
-        $padding = false;
-        if (!empty($params['padding'])) {
-            $padding = $params['padding'];
-        }
+        $this->property = $property;
+    }
+
+    public function render(): string
+    {
+        $GLOBALS['benefitsFilter'] = [
+            'ACTIVE' => 'Y',
+            'ID' => $this->property['VALUE']
+        ];
 
         ob_start();
-
-        $application->IncludeComponent(
+        $GLOBALS['APPLICATION']->IncludeComponent(
             "bitrix:news.list",
-            "tabs",
+            "benefits",
             [
                 "ACTIVE_DATE_FORMAT" => "d.m.Y",
                 "ADD_SECTIONS_CHAIN" => "N",
@@ -33,18 +36,14 @@ class Tabs implements ComponentInterface
                 "CACHE_TIME" => "36000000",
                 "CACHE_TYPE" => "A",
                 "CHECK_DATES" => "Y",
+                "COL_COUNT" => "3",
                 "DETAIL_URL" => "",
                 "DISPLAY_BOTTOM_PAGER" => "N",
                 "DISPLAY_TOP_PAGER" => "N",
-                "FIELD_CODE" => [
-                    "CODE",
-                    "NAME",
-                    "PREVIEW_TEXT",
-                    "PREVIEW_PICTURE"
-                ],
-                "FILTER_NAME" => $filter,
+                "FIELD_CODE" => ["CODE","NAME","PREVIEW_TEXT","PREVIEW_PICTURE",""],
+                "FILTER_NAME" => "benefitsFilter",
                 "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                "IBLOCK_ID" => iblock('tabs'),
+                "IBLOCK_ID" => iblock('benefits'),
                 "IBLOCK_TYPE" => "additional",
                 "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
                 "INCLUDE_SUBSECTIONS" => "N",
@@ -60,31 +59,7 @@ class Tabs implements ComponentInterface
                 "PARENT_SECTION" => "",
                 "PARENT_SECTION_CODE" => "",
                 "PREVIEW_TRUNCATE_LEN" => "",
-                "PROPERTY_CODE" => [
-                    "CONDITIONS_ICONS",
-                    "CONDITIONS",
-                    "TEXT_FIELD",
-                    "CONDITIONS_TABS",
-                    "STEPS",
-                    "SHORT_INFO",
-                    "QUOTES",
-                    "ICONS_WITH_DESCRIPTION",
-                    "TWO_COLS",
-                    "COLS_NAME",
-                    "ICON_SHORT_INFO",
-                    "HEADING",
-                    "RATES_DESCRIPTION",
-                    "ICONS_WITH_DESCRIPTION_HEADER",
-                    "TEXT_FIELD_HEADER",
-                    "BENEFITS",
-                    "TEXT_BLOCK_DESCRIPTION",
-                    "COMPLEX_PROP",
-                    "HTML",
-                    "QUESTIONS",
-                    "DOCUMENTS",
-                    "SHOW_TWO_ICONS_IN_ROW",
-                    "TARIFFS",
-                ],
+                "PROPERTY_CODE" => ["",""],
                 "SET_BROWSER_TITLE" => "N",
                 "SET_LAST_MODIFIED" => "N",
                 "SET_META_DESCRIPTION" => "N",
@@ -97,12 +72,11 @@ class Tabs implements ComponentInterface
                 "SORT_ORDER1" => "DESC",
                 "SORT_ORDER2" => "ASC",
                 "STRICT_SECTION_CHECK" => "N",
-                "TABS_PADDING" => $padding
-            ],
-            $component,
-            ["HIDE_ICONS" => "Y"]
+            ]
         );
+        $displayValue = ob_get_contents();
+        ob_end_clean();
 
-        echo ob_get_clean();
+        return $displayValue;
     }
 }
