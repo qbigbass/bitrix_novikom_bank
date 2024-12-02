@@ -57,6 +57,7 @@
         --bs-border-radius: 0.25rem;
         --bs-border-color: var(--purple-30);
         min-width: max-content;
+        height: min-content;
 
         @include use-media(tablet-album) {
             border: var(--border-nav-width) solid transparent!important;
