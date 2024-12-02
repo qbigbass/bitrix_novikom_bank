@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
     hideDropDownMenu();
     initOffices();
     initChatBot();
-    initYMap();
+    // initYMap();
 });
 
 window.onload = function() {

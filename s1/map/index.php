@@ -6,7 +6,7 @@ require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 $APPLICATION->SetTitle("Офисы и банкоматы");
 ?>
 
-<?$APPLICATION->IncludeComponent(
+<?php $APPLICATION->IncludeComponent(
     "bitrix:news",
     "offices",
     [
@@ -30,7 +30,20 @@ $APPLICATION->SetTitle("Офисы и банкоматы");
         "DETAIL_PAGER_SHOW_ALL" => "Y",
         "DETAIL_PAGER_TEMPLATE" => "",
         "DETAIL_PAGER_TITLE" => "Страница",
-        "DETAIL_PROPERTY_CODE" => ["", ""],
+        "DETAIL_PROPERTY_CODE" => [
+            "ADDRESS",
+            "METRO",
+            "SERVICES",
+            "PHONE",
+            "WORKTIME",
+            "WORKTIME_INDIVIDUAL_RUB",
+            "WORKTIME_INDIVIDUAL_FOREIGN",
+            "WORKTIME_INDIVIDUAL_INTERNAL",
+            "WORKTIME_CORPORATE_RUB",
+            "WORKTIME_CORPORATE_FOREIGN",
+            "WORKTIME_CORPORATE_INTERNAL",
+            "BANK_DETAILS",
+        ],
         "DETAIL_SET_CANONICAL_URL" => "N",
         "DISPLAY_BOTTOM_PAGER" => "Y",
         "DISPLAY_DATE" => "Y",
@@ -59,19 +72,20 @@ $APPLICATION->SetTitle("Офисы и банкоматы");
         "PAGER_TEMPLATE" => ".default",
         "PAGER_TITLE" => "Новости",
         "PREVIEW_TRUNCATE_LEN" => "",
-        "SEF_FOLDER" => "/offices-atm/",
+        "SEF_FOLDER" => "/map/",
         "SEF_MODE" => "Y",
         "SEF_URL_TEMPLATES" => [
-            "detail" => "#ELEMENT_ID#/",
             "news" => "",
+            "section" => "#SECTION_CODE#/",
+            "detail" => "#SECTION_CODE#/#ELEMENT_ID#/",
         ],
         "SET_LAST_MODIFIED" => "N",
         "SET_STATUS_404" => "Y",
         "SET_TITLE" => "Y",
         "SHOW_404" => "N",
-        "SORT_BY1" => "ACTIVE_FROM",
+        "SORT_BY1" => "NAME",
         "SORT_BY2" => "SORT",
-        "SORT_ORDER1" => "DESC",
+        "SORT_ORDER1" => "ASC",
         "SORT_ORDER2" => "ASC",
         "STRICT_SECTION_CHECK" => "N",
         "USE_CATEGORIES" => "N",

@@ -14,7 +14,10 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
  * @var CBitrixComponent $component
  * @var CBitrixComponentTemplate $this
  */
-$this->setFrameMode(true);
 
-LocalRedirect('./offices/');
-
+$placemarkCoords = array_map('floatval', explode(',', $arResult["PROPERTIES"]["COORDS"]["VALUE"]));
+$arResult['PARAMS'] = [
+    'coords' => $placemarkCoords,
+    'center' => $placemarkCoords,
+    'zoom' => 17,
+];

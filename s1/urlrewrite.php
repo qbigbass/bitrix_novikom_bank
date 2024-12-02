@@ -112,10 +112,10 @@ $arUrlRewrite = [
         'SORT' => 100,
     ],
     [
-        'CONDITION' => '#^/offices-atm/#',
+        'CONDITION' => '#^/map/#',
         'RULE' => '',
         'ID' => 'bitrix:news',
-        'PATH' => '/offices-atm/index.php',
+        'PATH' => '/map/index.php',
         'SORT' => 100,
     ],
 ];
