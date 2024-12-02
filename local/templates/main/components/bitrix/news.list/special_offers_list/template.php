@@ -29,7 +29,8 @@ foreach ($arResult['ITEMS'] as $key => $item) { ?>
                             <?= $item['PROPERTIES']['TAG']['VALUE'] ?>
                         </span>
                         <span class="tag__triangle">
-                            <svg width="14" height="21" viewBox="0 0 14 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg width="14" height="21" viewBox="0 0 14 21" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
                                 <path d="M13.5 19.3486L0.934259 0.5H13.5V19.3486Z"></path>
                             </svg>
                         </span>
@@ -44,20 +45,23 @@ foreach ($arResult['ITEMS'] as $key => $item) { ?>
             </div>
             <div class="card-news__image-container position-relative z-1 h-100">
                 <? if (!empty($item['PREVIEW_PICTURE']['SRC'])) { ?>
-                    <img class="card-news__img position-relative z-2" src="/frontend/dist/img/news-cards/card-image-1.png" alt=""
+                    <img class="card-news__img position-relative z-2" src="<?= $item['PREVIEW_PICTURE']['SRC'] ?>"
+                         alt=""
                          loading="lazy">
                     <div class="card-news__top-blackout z-3 position-absolute top-0 start-0 w-100"></div>
                 <? } else { ?>
                     <picture class="pattern-bg pattern-bg--position-sm-top z-1">
-                        <source srcset="/frontend/dist/img/patterns/card/pattern-light-s.svg" media="(max-width: 767px)">
-                        <source srcset="/frontend/dist/img/patterns/card/pattern-light-m.svg" media="(max-width: 1199px)">
+                        <source srcset="/frontend/dist/img/patterns/card/pattern-light-s.svg"
+                                media="(max-width: 767px)">
+                        <source srcset="/frontend/dist/img/patterns/card/pattern-light-m.svg"
+                                media="(max-width: 1199px)">
                         <img src="/frontend/dist/img/patterns/card/pattern-light-l.svg" alt="bg pattern" loading="lazy">
                     </picture>
                 <? } ?>
             </div>
             <div class="card-news__body d-flex flex-column gap-2 gap-sm-3 z-3">
                 <span class="text-m dark-70">
-                    <?= $item['PROPERTIES']['END_DATE']['VALUE'] ?>
+                    <?= $item['PROPERTIES']['PUBLICATION_DATE']['VALUE'] ?>
                 </span>
                 <h5 class="fw-bold"><?= $item['NAME'] ?></h5>
             </div>
@@ -65,6 +69,6 @@ foreach ($arResult['ITEMS'] as $key => $item) { ?>
     </div>
 <? }
 
-if ($arParams["DISPLAY_BOTTOM_PAGER"]) {?>
-	<br /><?=$arResult["NAV_STRING"]?>
+if ($arParams["DISPLAY_BOTTOM_PAGER"]) { ?>
+    <br/><?= $arResult["NAV_STRING"] ?>
 <? } ?>

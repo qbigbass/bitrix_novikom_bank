@@ -12,7 +12,12 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 
-$path = basename($APPLICATION->GetCurPage()); ?>
+if (empty($arParams['PARENT_DEPTH'])) {
+    $path = basename($APPLICATION->GetCurPage());
+} else {
+    $path = explode('/', $APPLICATION->GetCurPage())[$arParams['PARENT_DEPTH']];
+}
+?>
 
 <div class="tabs-panel js-tabs-slider overflow-hidden position-relative pe-1 pe-lg-0">
     <? if (count($arResult) >= 4) { ?>
@@ -35,7 +40,6 @@ $path = basename($APPLICATION->GetCurPage()); ?>
     <? } ?>
     <ul class="swiper-wrapper tabs-panel__list nav nav-tabs d-inline-flex flex-nowrap w-auto p-0 border border-purple rounded section-catalog__tab-list">
         <? foreach ($arResult as $key => $menuItem) { ?>
-
             <? $class = basename($menuItem['LINK']) == $path ? ' active' : ''; ?>
 
             <li class="swiper-slide w-auto tabs-panel__list-item nav-item z-2">

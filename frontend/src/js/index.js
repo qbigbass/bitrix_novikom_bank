@@ -19,6 +19,7 @@ import {initResizePolygonAccordions} from "./components/accordions";
 import initHeaderSearchForm from "./components/headerSearchForm.js";
 import initOffices from "./components/offices";
 import initYMap from "./components/yMap";
+import {initChatBot} from "./components/chatBot";
 
 document.addEventListener('DOMContentLoaded', () => {
     initDropdownMenu();
@@ -45,6 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initHeaderSearchForm();
     hideDropDownMenu();
     initOffices();
+    initChatBot();
     initYMap();
 });
 
