@@ -213,7 +213,7 @@ use Dalee\Helpers\ComponentHelper;
                     <div class="pe-xl-6">
                         <div class="d-flex flex-column row-gap-4 row-gap-md-6 row-gap-lg-7">
                             <div class="input-slider js-input-slider" data-type="price" data-start-value="2000" data-max-value="100000" data-min-value="2000" data-step-size="1000">
-                                <label class="text-s dark-70 ps-3 mb-2" for="amount-bonus">Ваши покупки по карте в месяц</label>
+                                <label class="text-s dark-70 ps-3 mb-2 text-lg-m" for="amount-bonus">Ваши покупки по карте в месяц</label>
                                 <div class="input-slider-text js-input-slider-text">
                                     <input class="input-slider-text__input h4 js-input-slider-text-input">
                                     <button class="input-slider-text__button input-slider-text__button--edit js-input-slider-text-edit" type="button">
