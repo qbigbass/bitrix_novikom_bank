@@ -27,7 +27,7 @@ $APPLICATION->SetTitle('Финансовым институтам');
         "AJAX_OPTION_JUMP" => "N",
         "AJAX_OPTION_STYLE" => "Y",
         "AJAX_OPTION_HISTORY" => "N",
-        "CACHE_TYPE" => "N",
+        "CACHE_TYPE" => "A",
         "CACHE_TIME" => "36000000",
         "CACHE_FILTER" => "N",
         "CACHE_GROUPS" => "Y",
@@ -88,7 +88,11 @@ $APPLICATION->SetTitle('Финансовым институтам');
         "ELEMENT_SORT_ORDER2" => "desc",
         "LIST_PROPERTY_CODE" => [
             "NAME_MENU",
+            "COLOR_BG",
             "QUOTES",
+            "TEXT_LIST",
+            "SLIDER",
+            "TEXT_ACCORDION"
         ],
         "INCLUDE_SUBSECTIONS" => "Y",
         "LIST_META_KEYWORDS" => "UF_KEYWORDS",
