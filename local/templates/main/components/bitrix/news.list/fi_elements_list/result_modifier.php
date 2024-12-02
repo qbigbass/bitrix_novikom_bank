@@ -32,7 +32,7 @@ if ($arResult["SHOW_UP_MENU"]) {
     foreach ($arResult["ITEMS"] as $item) {
         $title = $item["NAME"];
 
-        if (!empty($item["PROPERTIES"]["NAME_MENU"])) {
+        if (!empty($item["PROPERTIES"]["NAME_MENU"]) && $item["PROPERTIES"]["NAME_MENU"]["VALUE"] !== "") {
             $title = $item["PROPERTIES"]["NAME_MENU"]["VALUE"];
         }
 
