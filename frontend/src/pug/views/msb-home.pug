@@ -141,26 +141,27 @@ block content
 
         var cardPromo = {
             title: "Откройте счёт в Новиком",
-            text: "Бесплатное дистанционное обслуживание и бесплатное сопровождение сделки при открытии счёта в банке Новиком",
+            text: "Бесплатное дистанционное обслуживание и бесплатное сопровождение сделки при открытии&nbsp;счёта&nbsp;в банке Новиком",
+            textClass: "w-md-75 w-lg-100",
             image: "big-illustrations/large-business/account-reservation.png",
             benefits: [
                 {
                     num: '0',
                     currency: '₽',
-                    description: 'Открытие и обслуживание счёта',
+                    description: 'Открытие <br>и обслуживание счёта',
                     colorClass: 'yellow-100',
                 },
                 {
                     beforeNum: 'от',
                     num: '500',
                     currency: '₽',
-                    description: 'Ежемесячная плата за счёт',
+                    description: 'Ежемесячная плата <br class="d-none d-md-block">за счёт',
                     colorClass: 'yellow-100',
                 },
                 {
                     beforeNum: 'до',
                     num: '150',
-                    description: 'Бесплатных платежей',
+                    description: 'Бесплатных <br class="d-none d-md-block">платежей',
                     colorClass: 'yellow-100',
                 },
             ]
@@ -218,7 +219,7 @@ block content
                             }
                         ]
                     })
-                        a(href="#").btn.btn-yellow.d-none.d-md-inline-flex
+                        a(href="#").btn.btn-yellow.d-none.d-md-inline-flex.mt-lg-3
                             | Перейти в интернет-банк
                         a(href="#").btn.btn-sm.btn-yellow.d-md-none
                             | Перейти в интернет-банк
