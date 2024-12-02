@@ -145,6 +145,23 @@
     }
 
     &--accordion {
+        gap: 1.5rem;
+        margin-block: 1.5rem;
+
+        @include use-media(tablet) {
+            gap: 2rem;
+            margin-block: 2rem;
+        }
+
+        @include use-media(tablet-album) {
+            gap: 3rem;
+            margin-block: 3rem;
+        }
+
+        a {
+            @extend .link;
+        }
+
         > div {
             gap: 1rem;
         }
