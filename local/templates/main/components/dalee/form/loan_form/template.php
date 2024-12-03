@@ -119,7 +119,6 @@ $this->setFrameMode(true);
                         </div>
                         <div class="d-flex flex-column align-items-center flex-md-row row-gap-3 column-gap-6 mt-6 mt-lg-7">
                             <button class="btn btn-primary btn-lg-lg w-100 w-md-auto" type="button" disabled aria-disabled="true" data-form-button data-form-step-button-next>Продолжить</button>
-                            <button class="btn btn-outline-primary btn-lg-lg w-100 w-md-auto" type="button" data-form-step-button-prev="">Назад</button>
                             <div class="text-m orange-100 text-center" data-form-error></div>
                         </div>
                     </div>
