@@ -73,6 +73,15 @@
         position: absolute;
         right: .5rem;
         bottom: .5rem;
+
+        @include use-media(tablet) {
+            bottom: .75rem;
+        }
+
+        @include use-media(tablet-album) {
+            right: 1.375rem;
+            bottom: .875rem;
+        }
     }
 
     &__button-polygone {

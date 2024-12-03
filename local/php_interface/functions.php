@@ -2,16 +2,48 @@
 
 use Bitrix\Iblock\ElementTable;
 use Bitrix\Iblock\SectionTable;
+use Bitrix\Main\Application;
+use Bitrix\Main\Loader;
+use Bitrix\Main\LoaderException;
 
 function iblock(string $code): int
 {
     try {
-        \Bitrix\Main\Loader::IncludeModule('iblock');
-        $iblock = Bitrix\Iblock\IblockTable::getList(['select' => ['ID'], 'filter' => ['CODE' => $code]])->Fetch();
-        return $iblock['ID'] ?? 0;
-    } catch (Exception $e) {
-        return 0;
+        Loader::includeModule('iblock');
+        $app = Application::getInstance();
+    } catch (LoaderException $e) {
+        ShowError($e->getMessage());
     }
+
+    $cache = $app->getCache();
+    $taggedCache = $app->getTaggedCache();
+
+    if ($cache->initCache(36000000, 'sections_codes', '/iblock')) {
+        $result = $cache->getVars();
+    } elseif ($cache->startDataCache()) {
+        $result = [];
+        $res = \CIBlock::GetList([], ['CHECK_PERMISSIONS' => 'N']);
+
+        while ($row = $res->Fetch()) {
+            $result[$row['CODE']] = (int)$row['ID'];
+        }
+
+        if (empty($result)) {
+            $cache->abortDataCache();
+        }
+
+        $taggedCache->startTagCache('/iblocks');
+        $taggedCache->registerTag('iblock_id_new');
+        $taggedCache->endTagCache();
+
+        $cache->endDataCache($result);
+    }
+
+    if (!empty($result[$code])) {
+        return $result[$code];
+    }
+
+    return 0;
 }
 
 function printIntoFile($text, string $filePath = '/logger.txt')
@@ -79,7 +111,7 @@ function processTerms(array $terms, array $properties): array
         $value = '';
 
         if (in_array($key, ['RATE_FROM', 'RATE_TO'])) {
-            $value = $term . ' %';
+            $value = $term . '%';
         } elseif (in_array($key, ['SUM_FROM', 'SUM_TO'])) {
             $value = number_format($term, 0, '', ' ') . ' <span class="currency">₽</span>';
         } elseif (in_array($key, ['PERIOD_FROM', 'PERIOD_TO'])) {

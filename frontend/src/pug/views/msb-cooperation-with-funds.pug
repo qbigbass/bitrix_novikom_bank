@@ -19,14 +19,14 @@ block content
 
     -
         var bannerTextData = {
-            title: "Сотрудничество с фондами <br class='d-none d-lg-block'>поддержки малого бизнеса",
+            title: "Сотрудничество с фондами <br class='d-none d-lg-block'>поддержки малого&nbsp;бизнеса",
             isSmallTitle: true,
             imageSrc: "img/big-illustrations/large-business/cooperation-with-funds.png",
             breadcrumbsArray: [
                 {linkText: "Малому и среднему бизнесу", link: "/"},
                 {linkText: "Меры господдержки", link: "/"}
             ],
-            description: "Поручительство гарантийных региональных фондов поддержки малого бизнеса"
+            description: "Поручительство гарантийных региональных фондов поддержки&nbsp;малого бизнеса"
         }
 
         var cardBenefitList = [
@@ -77,7 +77,7 @@ block content
 
         var allSteps = [
             {
-                text: "Заявка на кредит или&nbsp;банковскую&nbsp;гарантию"
+                text: "Заявка на кредит <br>или&nbsp;банковскую гарантию"
             },
             {
                 text: "Подготовка и направление документов&nbsp;в&nbsp;Фонд"
@@ -86,7 +86,7 @@ block content
                 text: "Рассмотрение заявки <br class='d-none d-xl-block'>Фондом"
             },
             {
-                text: "Подписание <a href='#' class='link'>трехстороннего&nbsp;договора</a>"
+                text: "Подписание <a href='#' class='link d-block'>трехстороннего договора</a>"
             },
         ]
 
@@ -191,7 +191,7 @@ block content
             {
                 id: 15,
                 tag: 'Алтайский край',
-                title: 'Некоммерческая организация «Алтайский фонд развития малого и среднего предпринимательства»',
+                title: 'Некоммерческая организация «Алтайский фонд развития малого <br class="d-none d-md-block">и среднего предпринимательства»',
                 table: [
                     {
                         title: 'Поручительство фонда предоставляется',
@@ -279,16 +279,20 @@ block content
                 h3.h3.mb-4.mb-md-6.mb-lg-7
                     | Подробнее об услуге
                 .d-none.d-lg-flex
-                    +tabs-simple(serviceTabsList)
+                    +tabs-simple(
+                        serviceTabsList, false
+                    )
                 .d-flex.d-lg-none
-                    +tabs-simple(serviceTabsList, true)
+                    +tabs-simple(
+                        serviceTabsList, true, 'min-w-100 min-w-sm-auto', 'text-center'
+                    ).tabs-panel--full-width-items.tabs-panel--auto-width-md
                 .tab-content.mt-6.mt-lg-7
                     #terms.tab-pane.fade(role="tabpanel" aria-labelledby="terms" tabindex="0")
-                        .row.row-gap-6
+                        .row.row-gap-6.row-gap-lg-7
                             .col-12
                                 | Условия контент
                     #funds.tab-pane.fade.show.active(role="tabpanel" aria-labelledby="funds" tabindex="0")
-                        .row.row-gap-6
+                        .row.row-gap-6.row-gap-lg-7
                             .col-12
                                 form.w-100
                                     .input-group.flex-nowrap.d-none.d-lg-flex
@@ -306,7 +310,7 @@ block content
                                     each item in accordionList
                                         +accordion-item(item, 'accordion-funds-tab', 'fw-bold h4')
                                             if item.table
-                                                table.table
+                                                table.table.table--mobile-row-is-column
                                                     tbody
                                                         each tableItem in item.table
                                                             tr
@@ -315,7 +319,7 @@ block content
                                                                 td
                                                                     .text-l!=tableItem.text
                                             if item.link
-                                                a.mt-6.btn.btn-link.btn-lg.btn-icon(type="button" href=item.link)
+                                                a.mt-2.mt-md-4.mt-lg-5.btn.btn-link.btn-lg.btn-icon(type="button" href=item.link)
                                                     !=item.linkText
                                                     +svg-use("icon-download", "icon size-m")
         +pattern-bg('section-2', 'light', 'pattern-bg--position-sm-top')
@@ -326,7 +330,7 @@ block content
                 | Контакты
             .row
                 .col-12
-                    .swiper.js-slider-cards.slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:1,tablet-album:2,laptop:2,laptop-x:2" data-space-between="mobile-s:8,mobile:8,tablet:16,laptop:16,laptop-x:16")
+                    .swiper.js-slider-cards.slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:1,tablet-album:2,laptop:2,laptop-x:2" data-space-between="mobile-s:8,mobile:8,tablet-album:16,tablet:16,laptop:16,laptop-x:16")
                         .swiper-wrapper.js-swiper-wrapper 
                             .swiper-slide.js-swiper-slide
                                 +card-about(cardAboutBankData, 'bg-heavy-violet').h-100
