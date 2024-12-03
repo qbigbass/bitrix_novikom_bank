@@ -49,6 +49,7 @@ class DaleeForm extends \CBitrixComponent implements Controllerable, Errorable
         $this->arResult['FORM_CODE'] = $this->arParams['FORM_CODE'];
         $this->arResult['USE_CAPTCHA'] = $form['USE_CAPTCHA'];
         $this->arResult['ACTION_URL'] = '/bitrix/services/main/ajax.php?mode=class&c=dalee:form&action=saveLead';
+        $this->arResult['PRIVACY_POLICY_LINK'] = \COption::GetOptionString("novikom.settings", "UF_PRIVACY_POLICY_LINK");
 
         $this->includeComponentTemplate();
     }

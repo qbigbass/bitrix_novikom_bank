@@ -241,7 +241,7 @@ $this->setFrameMode(true);
                             <div class="application-form__col col-12">
                                 <div class="form-check">
                                     <input class="form-check-input" id="loan_confirm" type="checkbox" name="request_confirm" value="" required data-form-checkbox data-form-input>
-                                    <label class="form-check-label" for="loan_confirm">Подтверждаю согласие на <a href="#">обработку персональных данных</a></label>
+                                    <label class="form-check-label" for="loan_confirm">Подтверждаю согласие на <a href="<?= $arResult['PRIVACY_POLICY_LINK'] ?>" target="_blank">обработку персональных данных</a></label>
                                     <div class="invalid-feedback w-100" aria-live="polite"></div>
                                 </div>
                             </div>
