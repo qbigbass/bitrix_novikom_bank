@@ -89,7 +89,7 @@ include ../../../components/forms/confirm
                     id: "passport-number",
                     label: "Номер паспорта",
                     placeholder: "",
-                    required: true,
+                    required: false,
                 },
             ]
         },
@@ -191,14 +191,17 @@ form(action="/" method="POST" novalidate id="loan-form" data-form).application-f
                     +input(item, loanForm.formName)
             fieldset.application-form__col.col-12.col-md-6
                 legend.form-label.mb-3 Пол
-                .d-flex.flex-column.flex-md-row.flex-wrap.row-gap-3.row-gap-lg-4.column-gap-md-5.column-gap-lg-6
+                .d-flex.flex-wrap.row-gap-3.row-gap-lg-4.column-gap-6.column-gap-md-5.column-gap-lg-6
                     each item, index in step1.radios1
                         +radio(item, index, loanForm.formName)
             fieldset.application-form__col.col-12.col-md-6
                 legend.form-label.mb-3 Гражданство
-                .d-flex.flex-column.flex-md-row.flex-wrap.row-gap-3.row-gap-lg-4.column-gap-md-5.column-gap-lg-6
+                .d-flex.flex-wrap.row-gap-3.row-gap-lg-4.column-gap-6.column-gap-md-5.column-gap-lg-6
                     each item, index in step1.radios2
                         +radio(item, index, loanForm.formName)
+            each item in step1.inputs2
+                .application-form__col.col-12.col-md-6
+                    +input(item, loanForm.formName)
         .d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-5.column-gap-lg-6.mt-6.mt-lg-7
             button.btn.btn-primary.btn-lg-lg.w-100.w-md-auto(type="button" disabled aria-disabled="true" data-form-button data-form-step-button-next) Продолжить
             div.text-m.orange-100.text-center(data-form-error)

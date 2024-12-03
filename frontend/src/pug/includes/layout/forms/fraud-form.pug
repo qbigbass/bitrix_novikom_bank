@@ -71,7 +71,7 @@ form(action="/" method="POST" novalidate id="fraud-form" data-form).application-
                 fieldset
                     legend.form-label.mb-3 Вы&nbsp;являетесь клиентом банка НОВИКОМ?
                         span.orange-100.ms-1 *
-                    .d-flex.flex-column.flex-md-row.flex-wrap.row-gap-3.row-gap-lg-4.column-gap-md-5.column-gap-lg-6
+                    .d-flex.flex-wrap.row-gap-3.row-gap-lg-4.column-gap-6.column-gap-md-5.column-gap-lg-6
                         each item, index in fraudForm.radios1
                             +radio(item, index, feedbackForm.formName)
             .application-form__col.col-12.col-md-6
@@ -82,7 +82,7 @@ form(action="/" method="POST" novalidate id="fraud-form" data-form).application-
                 fieldset
                     legend.form-label.mb-3 Мошенникам озвучивались коды из&nbsp;СМС, пароли или&nbsp;были несанкционированные списания по&nbsp;картам?
                         span.orange-100.ms-1 *
-                    .d-flex.flex-column.flex-md-row.flex-wrap.row-gap-3.row-gap-lg-4.column-gap-md-5.column-gap-lg-6
+                    .d-flex.flex-wrap.row-gap-3.row-gap-lg-4.column-gap-6.column-gap-md-5.column-gap-lg-6
                         each item, index in fraudForm.radios2
                             +radio(item, index, feedbackForm.formName)
             .application-form__col.col-12.col-md-6

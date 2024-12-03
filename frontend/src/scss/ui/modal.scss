@@ -64,11 +64,11 @@
 
     &:has(+ .modal-footer) {
         @include use-media(tablet) {
-            --bs-modal-padding: 1.5rem 2rem 1rem 2rem;
+            --bs-modal-padding: 2rem;
         }
 
         @include use-media(tablet-album) {
-            --bs-modal-padding: 2.5rem 5rem 1.5rem 5rem;
+            --bs-modal-padding: 2.5rem 5rem;
         }
     }
 }

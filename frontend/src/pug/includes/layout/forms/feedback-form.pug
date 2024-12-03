@@ -146,7 +146,7 @@ form(action="/" method="POST" novalidate id="feedback-form" data-form data-form-
                 })
             fieldset.application-form__col.col-12
                 legend.form-label.mb-3 Вы обращаетесь как
-                .d-flex.flex-column.flex-md-row.flex-wrap.row-gap-3.row-gap-lg-4.column-gap-md-5.column-gap-lg-6
+                .d-flex.flex-wrap.row-gap-3.row-gap-lg-4.column-gap-6.column-gap-md-5.column-gap-lg-6
                     each item, index in step1.radiosTop
                         +radio(item, index, feedbackForm.formName)
             each item in step1.inputs
@@ -154,7 +154,7 @@ form(action="/" method="POST" novalidate id="feedback-form" data-form data-form-
                     +input(item, feedbackForm.formName)
             fieldset.application-form__col.col-12
                 legend.form-label.mb-3 Получить ответ на E-mail
-                .d-flex.flex-column.flex-md-row.flex-wrap.row-gap-3.row-gap-lg-4.column-gap-md-5.column-gap-lg-6
+                .d-flex.flex-wrap.row-gap-3.row-gap-lg-4.column-gap-6.column-gap-md-5.column-gap-lg-6
                     each item, index in step1.radiosBottom
                         +radio(item, index, feedbackForm.formName)
             .application-form__col.col-12(hidden)
@@ -173,7 +173,7 @@ form(action="/" method="POST" novalidate id="feedback-form" data-form data-form-
                 })
             fieldset.application-form__col.col-12
                 legend.visually-hidden Причина обращения
-                .d-flex.flex-column.flex-md-row.flex-wrap.row-gap-3.row-gap-lg-4.column-gap-md-5.column-gap-lg-6
+                .d-flex.flex-wrap.row-gap-3.row-gap-lg-4.column-gap-6.column-gap-md-5.column-gap-lg-6
                     each item, index in step2.radiosTop
                         +radio(item, index, feedbackForm.formName)
             .application-form__col.col-12
