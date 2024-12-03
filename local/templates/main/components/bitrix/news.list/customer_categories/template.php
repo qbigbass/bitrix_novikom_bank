@@ -15,16 +15,16 @@ $this->setFrameMode(true);
 <?if(count($arResult['ITEMS']) > 1) : ?>
     <div class="row mb-6 mb-lg-7 px-lg-6">
         <div class="col-12">
-            <div class="tabs-panel js-tabs-slider overflow-hidden position-relative px-1">
+            <div class="tabs-panel js-tabs-slider overflow-hidden position-relative pe-1 pe-lg-0">
                 <div class="tabs-panel__navigation d-none d-lg-block js-tabs-slider-navigation w-100">
-                    <span class="tabs-panel__navigation-item tabs-panel__navigation-item-reverse js-tabs-slider-navigation-prev h-100 d-flex align-items-center justify-content-start px-1 z-3 position-absolute start-0 top-0">
+                    <span class="tabs-panel__navigation-item tabs-panel__navigation-item-reverse js-tabs-slider-navigation-prev d-flex align-items-center justify-content-start px-1 z-3 position-absolute swiper-button-disabled">
                         <span class="icon size-m">
                             <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                                 <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-left"></use>
                             </svg>
                         </span>
                     </span>
-                    <span class="tabs-panel__navigation-item js-tabs-slider-navigation-next h-100 d-flex align-items-center justify-content-end px-1 z-3 position-absolute end-0 top-0">
+                    <span class="tabs-panel__navigation-item js-tabs-slider-navigation-next d-flex align-items-center justify-content-end px-1 z-3 position-absolute swiper-button-disabled">
                         <span class="icon size-m">
                             <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                                 <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
