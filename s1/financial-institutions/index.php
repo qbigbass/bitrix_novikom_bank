@@ -84,15 +84,12 @@ $APPLICATION->SetTitle('Финансовым институтам');
         "LINE_ELEMENT_COUNT" => "3",
         "ELEMENT_SORT_FIELD" => "sort",
         "ELEMENT_SORT_ORDER" => "asc",
-        "ELEMENT_SORT_FIELD2" => "id",
+        "ELEMENT_SORT_FIELD2" => "sort",
         "ELEMENT_SORT_ORDER2" => "desc",
         "LIST_PROPERTY_CODE" => [
             "NAME_MENU",
             "COLOR_BG",
-            "QUOTES",
             "TEXT_LIST",
-            "SLIDER",
-            "TEXT_ACCORDION"
         ],
         "INCLUDE_SUBSECTIONS" => "Y",
         "LIST_META_KEYWORDS" => "UF_KEYWORDS",

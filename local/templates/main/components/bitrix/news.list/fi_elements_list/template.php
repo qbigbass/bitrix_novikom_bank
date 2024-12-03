@@ -58,6 +58,26 @@ $this->setFrameMode(true);
                                 <p class="text-l px-lg-6 m-0"><?= $item['PREVIEW_TEXT']?></p>
                             </div>
                         <?endif;?>
+                        <!-- Карточки продуктов -->
+                        <?if(!empty($item["CARD_PRODUCTS"])):?>
+                            <div class="row cards-gutter">
+                                <?foreach ($item["CARD_PRODUCTS"] as $product):?>
+                                    <div class="col-12 col-md-6 col-lg-4">
+                                    <a class="card-product bg-dark-10 bg-dark-30" href="#">
+                                        <div class="card-product__inner">
+                                            <div class="card-product__content mw-100">
+                                                <h4 class="card-product__title"><?= $product["TITLE"]?></h4>
+                                                <p class="card-product__description m-0 mw-100"><?= $product["TEXT"]?></p>
+                                            </div>
+                                            <div class="card-product__footer">
+                                                <img class="icon size-xxl" src="<?= $product["PICTURE"]?>" alt="" loading="lazy">
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <?endforeach;?>
+                            </div>
+                        <?endif;?>
                         <!-- Слайдер с карточками -->
                         <?if(!empty($item["SLIDERS"])):?>
                             <div class="col-12">
@@ -125,6 +145,50 @@ $this->setFrameMode(true);
                                                             <h4 class="mb-3"><?= $item["QUOTES"]["POS_0"]["TITLE"] ?></h4>
                                                         <?endif;?>
                                                         <p class="m-0"><?= $item["QUOTES"]["POS_0"]["TEXT"] ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="polygon-container__polygon js-polygon-container-polygon violet-100">
+                                            <svg class="js-polygon-container-svg" xmlns="http://www.w3.org/2000/svg" height="208.0001220703125" width="1345.5999755859375">
+                                                <polygon points="2,2 1344,2 1344,166 1304,206 2,206" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="10"></polygon>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <?endif;?>
+                        <!-- Блок с бенефитами -->
+                        <?if(!empty($item["BENEFITS"])):?>
+                            <div class="col-12">
+                                <div class="row row-gap-6 gx-xl-6 px-lg-6">
+                                    <?foreach ($item["BENEFITS"] as $benefit):?>
+                                        <div class="col-12 col-md-6 col-lg-4">
+                                            <div class="benefit d-flex gap-3 flex-column">
+                                                <img class="icon size-xxl" src="<?= $benefit["PICTURE"]?>" alt="icon" loading="lazy">
+                                                <div class="benefit__content d-flex flex-column gap-3">
+                                                    <h4 class="benefit__title"><?= $benefit["TITLE"]?></h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?endforeach;?>
+                                </div>
+                            </div>
+                        <?endif;?>
+                        <!-- Блок со второй цитатой -->
+                        <?if(!empty($item["QUOTES"]["POS_1"])):?>
+                            <div class="col-12">
+                                <div class="col-12">
+                                    <div class="polygon-container js-polygon-container">
+                                        <div class="polygon-container__content">
+                                            <div class="helper <?if(preg_match('/bg-dark/', $item["SECTION_CLASS_STYLE"])):?>bg-white<?else:?>bg-dark-30<?endif;?>">
+                                                <div class="helper__wrapper d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-4 gap-lg-6">
+                                                    <img class="helper__image w-auto float-end" src="<?= $item["QUOTES"]["POS_0"]["PICTURE"] ?>" alt="Обратите внимание" loading="lazy">
+                                                    <div class="helper__content text-l">
+                                                        <?if($item["QUOTES"]["POS_1"]["TITLE"]):?>
+                                                            <h4 class="mb-3"><?= $item["QUOTES"]["POS_1"]["TITLE"] ?></h4>
+                                                        <?endif;?>
+                                                        <p class="m-0"><?= $item["QUOTES"]["POS_1"]["TEXT"] ?></p>
                                                     </div>
                                                 </div>
                                             </div>

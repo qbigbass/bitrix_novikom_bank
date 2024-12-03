@@ -3,8 +3,9 @@
 
 use Bitrix\Iblock\Model\Section;
 use Bitrix\Iblock\Elements\ElementFiQuotesApiTable;
-use Bitrix\Iblock\Elements\ElementFiSlidersApiTable;
+use Bitrix\Iblock\Elements\ElementFiSlidersProductsApiTable;
 use Bitrix\Iblock\Elements\ElementFiAccordionApiTable;
+use Bitrix\Iblock\Elements\ElementFiProductsApiTable;
 
 $sectionId = 0;
 $arResult["SHOW_UP_MENU"] = false;
@@ -54,32 +55,36 @@ if (!empty($arResult["UP_MENU"])) {
 
 /* Цитаты для каждого элемента получим из ИБ "Цитаты для элементов" */
 /* Слайдер для каждого элемента получим из ИБ "Слайдер для элементов" */
-/* Тексты для аккордиона для каждого элемента получим из ИБ "Контент для аккордиона" */
+/* Карточки для аккордиона для каждого элемента получим из ИБ "Слайдер с продуктами для каталога услуг" */
+/* Карточки с продуктами для каждого элемента получим из ИБ "Продукты для каталога услуг" */
+
 $arQuoteIds = [];
 $arSliderIds = [];
 $arAccordionIds = [];
-$arQuotesPictures = [];
-$arAccordionNames = [];
+$arProductIds = [];
 
 foreach ($arResult["ITEMS"] as $item) {
-    if (!empty($item["DISPLAY_PROPERTIES"]["QUOTES"]["LINK_ELEMENT_VALUE"])) {
-        foreach ($item["DISPLAY_PROPERTIES"]["QUOTES"]["LINK_ELEMENT_VALUE"] as $arQuote) {
-            $arQuoteIds[$arQuote["ID"]] = $arQuote["ID"];
-            $arQuotesPictures[$arQuote["ID"]] = $arQuote["PREVIEW_PICTURE"];
-            $arElemQuotes[$item["ID"]] = $item["PROPERTIES"]["QUOTES"]["VALUE"];
+    if (!empty($item["PROPERTIES"]["QUOTES"]["VALUE"])) {
+        foreach ($item["PROPERTIES"]["QUOTES"]["VALUE"] as $value) {
+            $arQuoteIds[$value] = $value;
         }
     }
 
-    if (!empty($item["DISPLAY_PROPERTIES"]["SLIDER"]["LINK_ELEMENT_VALUE"])) {
-        foreach ($item["DISPLAY_PROPERTIES"]["SLIDER"]["LINK_ELEMENT_VALUE"] as $arSlider) {
-            $arSliderIds[$arSlider["ID"]] = $arSlider["ID"];
+    if (!empty($item["PROPERTIES"]["SLIDER"]["VALUE"])) {
+        foreach ($item["PROPERTIES"]["SLIDER"]["VALUE"] as $value) {
+            $arSliderIds[$value] = $value;
         }
     }
 
-    if (!empty($item["DISPLAY_PROPERTIES"]["TEXT_ACCORDION"]["LINK_ELEMENT_VALUE"])) {
-        foreach ($item["DISPLAY_PROPERTIES"]["TEXT_ACCORDION"]["LINK_ELEMENT_VALUE"] as $arAccordion) {
-            $arAccordionIds[$arAccordion["ID"]] = $arAccordion["ID"];
-            $arAccordionNames[$arAccordion["ID"]] = $arAccordion["NAME"];
+    if (!empty($item["PROPERTIES"]["TEXT_ACCORDION"]["VALUE"])) {
+        foreach ($item["PROPERTIES"]["TEXT_ACCORDION"]["VALUE"] as $value) {
+            $arAccordionIds[$value] = $value;
+        }
+    }
+
+    if (!empty($item["PROPERTIES"]["CARD_PRODUCTS"]["VALUE"])) {
+        foreach ($item["PROPERTIES"]["CARD_PRODUCTS"]["VALUE"] as $value) {
+            $arProductIds[$value] = $value;
         }
     }
 }
@@ -87,10 +92,11 @@ foreach ($arResult["ITEMS"] as $item) {
 $arQuotes = [];
 $arSliders = [];
 $arAccordions = [];
+$arProducts = [];
 
 if (!empty($arQuoteIds)) {
     $elementsQuotes = ElementFiQuotesApiTable::getList([
-        "select" => ["ID", "PREVIEW_TEXT", "DETAIL_TEXT"],
+        "select" => ["ID", "PREVIEW_TEXT", "DETAIL_TEXT", "PREVIEW_PICTURE"],
         "filter" => ["ID" => $arQuoteIds],
     ])->fetchAll();
 
@@ -98,8 +104,8 @@ if (!empty($arQuoteIds)) {
         foreach ($elementsQuotes as $arData) {
             $filePath = '';
 
-            if ($arQuotesPictures[$arData["ID"]] > 0) {
-                $filePath = CFile::GetPath($arQuotesPictures[$arData["ID"]]);
+            if ($arData["PREVIEW_PICTURE"] > 0) {
+                $filePath = CFile::GetPath($arData["PREVIEW_PICTURE"]);
             }
 
             $arQuotes[$arData["ID"]]["TITLE"] = $arData["PREVIEW_TEXT"];
@@ -110,66 +116,105 @@ if (!empty($arQuoteIds)) {
 }
 
 if (!empty($arSliderIds)) {
-    $elementsSliders = ElementFiSlidersApiTable::getList([
-        "select" => ["ID", "PREVIEW_TEXT"],
+    $elementsSliders = ElementFiSlidersProductsApiTable::getList([
+        "select" => ["ID", "NAME", "PREVIEW_TEXT", "PREVIEW_PICTURE"],
         "filter" => ["ID" => $arSliderIds],
     ])->fetchAll();
 
     if (!empty($elementsSliders)) {
         foreach ($elementsSliders as $arData) {
+            $iconPath = '';
+
+            if ($arData["PREVIEW_PICTURE"] > 0) {
+                $iconPath = CFile::GetPath($arData["PREVIEW_PICTURE"]);
+            }
+
+            $arSliders[$arData["ID"]]["NAME"] = $arData["NAME"];
             $arSliders[$arData["ID"]]["TEXT"] = $arData["PREVIEW_TEXT"];
+            $arSliders[$arData["ID"]]["PICTURE"] = $iconPath;
         }
     }
 }
 
 if (!empty($arAccordionIds)) {
     $elementsAccordions = ElementFiAccordionApiTable::getList([
-        "select" => ["ID", "PREVIEW_TEXT"],
+        "select" => ["ID", "NAME", "PREVIEW_TEXT"],
         "filter" => ["ID" => $arAccordionIds],
     ])->fetchAll();
 
     if (!empty($elementsAccordions)) {
         foreach ($elementsAccordions as $arData) {
+            $arAccordions[$arData["ID"]]["TITLE"] = $arData["NAME"];
             $arAccordions[$arData["ID"]]["TEXT"] = $arData["PREVIEW_TEXT"];
+        }
+    }
+}
+
+if (!empty($arProductIds)) {
+    $elementsProducts = ElementFiProductsApiTable::getList([
+        "select" => ["ID", "NAME", "PREVIEW_TEXT", "ICON"],
+        "filter" => ["ID" => $arProductIds],
+    ])->fetchAll();
+
+    if (!empty($elementsProducts)) {
+        foreach ($elementsProducts as $arData) {
+            $iconPath = '';
+
+            if ($arData["IBLOCK_ELEMENTS_ELEMENT_FI_PRODUCTS_API_ICON_VALUE"] > 0) {
+                $iconPath = CFile::GetPath($arData["IBLOCK_ELEMENTS_ELEMENT_FI_PRODUCTS_API_ICON_VALUE"]);
+            }
+
+            $arProducts[$arData["ID"]]["NAME"] = $arData["NAME"];
+            $arProducts[$arData["ID"]]["TEXT"] = $arData["PREVIEW_TEXT"];
+            $arProducts[$arData["ID"]]["PICTURE"] = $iconPath;
         }
     }
 }
 
 /* Заполним недостающие данные по цитатам и слайдерам для элементов */
 foreach ($arResult["ITEMS"] as $index => $item) {
-    $arResult["ITEMS"][$index]["SECTION_CLASS_STYLE"] = ''; // класс для <section>
+    $arResult["ITEMS"][$index]["SECTION_CLASS_STYLE"] = ''; // класс для тега <section>
     $itemId = $item["ID"];
 
-    if (!empty($arQuotes) && !empty($arElemQuotes[$itemId])) {
-        foreach ($arElemQuotes[$itemId] as $key => $elemQuoteId) {
-            $arResult["ITEMS"][$index]["QUOTES"]["POS_" . $key] = $arQuotes[$elemQuoteId];
+    if (!empty($item["PROPERTIES"]["QUOTES"]["VALUE"]) && !empty($arQuotes)) {
+        foreach ($item["PROPERTIES"]["QUOTES"]["VALUE"] as $kValue => $vValue) {
+            $arResult["ITEMS"][$index]["QUOTES"]["POS_" . $kValue] = $arQuotes[$vValue];
         }
     }
 
-    if (!empty($item["DISPLAY_PROPERTIES"]["SLIDER"]["LINK_ELEMENT_VALUE"])) {
-        foreach ($item["DISPLAY_PROPERTIES"]["SLIDER"]["LINK_ELEMENT_VALUE"] as $arSlider) {
-            $filePath = '';
-
-            if ($arSlider["PREVIEW_PICTURE"] > 0) {
-                $filePath = CFile::GetPath($arSlider["PREVIEW_PICTURE"]);
-            }
-
-            $arResult["ITEMS"][$index]["SLIDERS"][$arSlider["ID"]]["TITLE"] = $arSlider["NAME"];
-            $arResult["ITEMS"][$index]["SLIDERS"][$arSlider["ID"]]["PICTURE"] = $filePath;
-
-            if (!empty($arSliders[$arSlider["ID"]])) {
-                $arResult["ITEMS"][$index]["SLIDERS"][$arSlider["ID"]]["TEXT"] = $arSliders[$arSlider["ID"]]["TEXT"];
-            }
+    if (!empty($item["PROPERTIES"]["SLIDER"]["VALUE"]) && !empty($arSliders)) {
+        foreach ($item["PROPERTIES"]["SLIDER"]["VALUE"] as $kValue => $vValue) {
+            $arResult["ITEMS"][$index]["SLIDERS"][$kValue]["TITLE"] = $arSliders[$vValue]["NAME"];
+            $arResult["ITEMS"][$index]["SLIDERS"][$kValue]["TEXT"] = $arSliders[$vValue]["TEXT"];
+            $arResult["ITEMS"][$index]["SLIDERS"][$kValue]["PICTURE"] = $arSliders[$vValue]["PICTURE"];
         }
     }
 
-    if (!empty($item["DISPLAY_PROPERTIES"]["TEXT_ACCORDION"]["LINK_ELEMENT_VALUE"])) {
-        foreach ($item["DISPLAY_PROPERTIES"]["TEXT_ACCORDION"]["LINK_ELEMENT_VALUE"] as $arAccordion) {
-            $arResult["ITEMS"][$index]["TEXT_ACCORDION"][$arAccordion["ID"]]["TITLE"] = $arAccordion["NAME"];
+    if (!empty($item["PROPERTIES"]["TEXT_ACCORDION"]["VALUE"]) && !empty($arAccordions)) {
+        foreach ($item["PROPERTIES"]["TEXT_ACCORDION"]["VALUE"] as $kValue => $vValue) {
+            $arResult["ITEMS"][$index]["TEXT_ACCORDION"][$kValue]["TITLE"] = $arAccordions[$vValue]["TITLE"];
+            $arResult["ITEMS"][$index]["TEXT_ACCORDION"][$kValue]["TEXT"] = $arAccordions[$vValue]["TEXT"];
+        }
+    }
 
-            if (!empty($arAccordions[$arAccordion["ID"]])) {
-                $arResult["ITEMS"][$index]["TEXT_ACCORDION"][$arAccordion["ID"]]["TEXT"] = $arAccordions[$arAccordion["ID"]]["TEXT"];
+    if (!empty($item["PROPERTIES"]["BENEFITS"]["VALUE"])) {
+        foreach ($item["PROPERTIES"]["BENEFITS"]["VALUE"] as $kValue => $vValue) {
+            $iconPath = '';
+
+            if ($vValue > 0) {
+                $iconPath = CFile::GetPath($vValue);
             }
+
+            $arResult["ITEMS"][$index]["BENEFITS"][$kValue]["TITLE"] = $item["PROPERTIES"]["BENEFITS"]["DESCRIPTION"][$kValue] ?? '';
+            $arResult["ITEMS"][$index]["BENEFITS"][$kValue]["PICTURE"] = $iconPath;
+        }
+    }
+
+    if (!empty($item["PROPERTIES"]["CARD_PRODUCTS"]["VALUE"]) && !empty($arProducts)) {
+        foreach ($item["PROPERTIES"]["CARD_PRODUCTS"]["VALUE"] as $kValue => $vValue) {
+            $arResult["ITEMS"][$index]["CARD_PRODUCTS"][$kValue]["TITLE"] = $arProducts[$vValue]["NAME"];
+            $arResult["ITEMS"][$index]["CARD_PRODUCTS"][$kValue]["TEXT"] = $arProducts[$vValue]["TEXT"];
+            $arResult["ITEMS"][$index]["CARD_PRODUCTS"][$kValue]["PICTURE"] = $arProducts[$vValue]["PICTURE"];
         }
     }
 
@@ -177,4 +222,3 @@ foreach ($arResult["ITEMS"] as $index => $item) {
         $arResult["ITEMS"][$index]["SECTION_CLASS_STYLE"] = $item["PROPERTIES"]["COLOR_BG"]["VALUE"];
     }
 }
-/* END */
