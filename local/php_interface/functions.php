@@ -115,7 +115,7 @@ function processTerms(array $terms, array $properties): array
         } elseif (in_array($key, ['SUM_FROM', 'SUM_TO'])) {
             $value = number_format($term, 0, '', ' ') . ' <span class="currency">₽</span>';
         } elseif (in_array($key, ['PERIOD_FROM', 'PERIOD_TO'])) {
-            $value = is_numeric($term) ? ($period === 'years' ? floor($term / 12) : $term) . declensionFrom($term, $period) : $term;
+            $value = is_numeric($term) ? ($period === 'years' ? floor($term / 12) : $term) . '<span class="text-l fw-semibold">' . declensionFrom($term, $period) . '</span>' : $term;
         } elseif ($key === 'DIAPASON') {
             $value = $term;
         }
