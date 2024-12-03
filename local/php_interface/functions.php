@@ -111,7 +111,7 @@ function processTerms(array $terms, array $properties): array
         $value = '';
 
         if (in_array($key, ['RATE_FROM', 'RATE_TO'])) {
-            $value = $term . ' %';
+            $value = $term . '%';
         } elseif (in_array($key, ['SUM_FROM', 'SUM_TO'])) {
             $value = number_format($term, 0, '', ' ') . ' <span class="currency">₽</span>';
         } elseif (in_array($key, ['PERIOD_FROM', 'PERIOD_TO'])) {

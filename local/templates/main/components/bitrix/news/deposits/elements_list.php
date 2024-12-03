@@ -28,7 +28,7 @@ $headerView->render(
 );
 ?>
 
-<section class="section-catalog d-flex flex-column gap-7 py-6 py-sm-9 py-md-11">
+<section class="section-catalog d-flex flex-column gap-7 py-6 py-sm-9 py-md-11" id="catalog-tabs">
 
     <!-- Табы -->
     <section class="section-catalog__tabs">
@@ -164,7 +164,7 @@ if (!empty($arItems)) {
                     <div class="banner-product-info-alternative__header">
                         <h3><?= $arItem['UF_HEADER'] ?? '' ?></h3>
                     </div>
-                    <div class="banner-product-info-alternative__body d-flex flex-column gap-4 gap-md-6">
+                    <div class="banner-product-info-alternative__body d-flex flex-column gap-4 gap-md-6 text-l">
                         <?= $arItem['UF_TEXT'] ?? '' ?>
                     </div>
                 </div>
