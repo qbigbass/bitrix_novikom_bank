@@ -47,7 +47,10 @@ const config = {
         rules: [
             {
                 test: /\.pug$/,
-                use: ['pug-loader?pretty=true']
+                use: [
+                    'thread-loader',
+                    'pug-loader?pretty=true'
+                ]
             },
             {
                 test: /\.css$/,
@@ -71,7 +74,13 @@ const config = {
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                use: ['babel-loader']
+                use: [
+                    'thread-loader',
+                    {
+                        loader: 'babel-loader',
+                        options: { cacheDirectory: true }
+                    }
+                ]
             }
         ]
     },
