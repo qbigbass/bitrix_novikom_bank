@@ -136,9 +136,7 @@
             > p,
             > ul,
             > img,
-            > div > p,
-            > div > ul,
-            > div > img, {
+            > div:not(.mw-100) {
                 max-width: 66.645%;
             }
         }
