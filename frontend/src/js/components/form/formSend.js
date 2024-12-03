@@ -78,6 +78,11 @@ async function handleFormSubmit(event, modalId) {
         if (data.status === 'success') {
             modalInstance.hide()
             onSuccess(event.target)
+        } else {
+            const messagesBox = event.target.querySelector(MESSAGE_ELEMS.messageBox)
+            const errorMessage = data.errors.map(item => item.message).join()
+            messagesBox.setAttribute('data-error-info', errorMessage)
+            throw new Error(errorMessage)
         }
     } catch (error) {
         console.error('Error:', error)

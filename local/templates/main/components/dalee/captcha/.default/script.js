@@ -2,12 +2,17 @@ $(function () {
 
     const sounds = [];
 
+    $('.modal').on('openFormModal', e => {
+        $(e.target).find('.captcha-image').click()
+    })
+
     $('.captcha-image').on('click', async () => {
         const res = await fetch('/bitrix/services/main/ajax.php?mode=class&c=dalee:captcha&action=update', {
             method: 'POST'
         })
         const result = await res.json()
         const imageUrl = '/bitrix/tools/captcha.php?captcha_sid=' + result.data.captcha_sid;
+        $('[name=captcha_word]').val('')
         $('.captcha-sid').val(result.data.captcha_sid)
         $('.captcha-image').prop('src', imageUrl)
         sounds.length = 0

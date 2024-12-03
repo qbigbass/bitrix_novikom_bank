@@ -38,7 +38,7 @@ $this->setFrameMode(true);
                             <div class="application-form__col col-12 col-md-6">
                                 <div class="d-flex flex-column row-gap-2">
                                     <label class="form-label mb-0" for="callback_first-name">Имя<span class="orange-100 ms-1">*</span></label>
-                                    <input class="form-control form-control-lg-lg" id="callback_first-name" type="text" name="FULL_NAME" placeholder="Введите имя" required autocomplete="off" data-form-input>
+                                    <input class="form-control form-control-lg-lg" id="callback_first-name" type="text" name="FIRST_NAME" placeholder="Введите имя" required autocomplete="off" data-form-input>
                                     <div class="invalid-feedback" aria-live="polite"></div>
                                 </div>
                             </div>

@@ -15,7 +15,7 @@ class DaleeForm extends \CBitrixComponent implements Controllerable, Errorable
     protected ErrorCollection $errorCollection;
     protected array $form;
 
-    public function configureActions()
+    public function configureActions(): array
     {
         return [
             'saveLead' => [
@@ -27,11 +27,11 @@ class DaleeForm extends \CBitrixComponent implements Controllerable, Errorable
         ];
     }
 
-    public function onPrepareComponentParams($arParams)
+    public function onPrepareComponentParams($arParams): array
     {
         try {
             if (!Loader::includeModule('form')) {
-                throw new LoaderException('Module "form" not installed');
+                throw new LoaderException('Module "form" is not installed');
             }
         } catch (LoaderException $e) {
             ShowError($e->getMessage());
@@ -43,7 +43,7 @@ class DaleeForm extends \CBitrixComponent implements Controllerable, Errorable
         return $arParams;
     }
 
-    public function executeComponent()
+    public function executeComponent(): void
     {
         $form = FormHelper::getByCode($this->arParams['FORM_CODE']);
         $this->arResult['FORM_CODE'] = $this->arParams['FORM_CODE'];
@@ -54,12 +54,16 @@ class DaleeForm extends \CBitrixComponent implements Controllerable, Errorable
         $this->includeComponentTemplate();
     }
 
-    public function saveLeadAction()
+    public function saveLeadAction(): ?array
     {
         $input = $this->request->getPostList()->toArray();
 
         $form = FormHelper::getByCode($input['FORM_CODE']);
         $formId = $form['ID'];
+
+        if (!empty($input['PHONE'])) {
+            $input['PHONE'] = preg_replace('/[^0-9\+]/', '', $input['PHONE']);
+        }
 
         $values = FormHelper::remapRequestFields($formId, $input);
 
@@ -99,12 +103,12 @@ class DaleeForm extends \CBitrixComponent implements Controllerable, Errorable
         ];
     }
 
-    public function getErrors()
+    public function getErrors(): array
     {
         return $this->errorCollection->toArray();
     }
 
-    public function getErrorByCode($code)
+    public function getErrorByCode($code): ?Error
     {
         return $this->errorCollection->getErrorByCode($code);
     }
