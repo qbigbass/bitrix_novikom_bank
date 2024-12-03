@@ -38,7 +38,11 @@ export async function initFormSend() {
 
     forms.forEach(form => {
         const validateGroup = form.querySelectorAll(FORM_ELEMS.validateGroup)
-        const modalId = form.closest('.modal').getAttribute('id');
+        const modalEl = form.closest('.modal')
+        const modalId = modalEl.getAttribute('id')
+        const customEvent = new CustomEvent('openFormModal', {
+            bubbles: true,
+        })
 
         if (validateGroup.length) {
             validateGroup.forEach(formGroup => {
@@ -50,6 +54,10 @@ export async function initFormSend() {
 
         form.addEventListener('submit', (event) => {
             handleFormSubmit(event, modalId)
+        })
+
+        modalEl.addEventListener('show.bs.modal', (event) => {
+            modalEl.dispatchEvent(customEvent);
         })
     })
 }
