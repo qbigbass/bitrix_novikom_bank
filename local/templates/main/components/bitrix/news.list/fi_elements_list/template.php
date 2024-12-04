@@ -90,7 +90,7 @@ $this->setFrameMode(true);
                                                         <div class="card-benefit__content d-flex flex-column gap-4">
                                                             <img class="card-benefit__image" src="<?= $slider["PICTURE"]?>" alt="<?= $slider["TITLE"]?>" loading="lazy">
                                                             <h4 class="card-benefit__title"><?= $slider["TITLE"]?></h4>
-                                                            <?if($slider["TEXT"] !== ""):?>
+                                                            <?if($slider["TEXT"] != ""):?>
                                                                 <p class="card-benefit__description m-0 text-m"><?= $slider["TEXT"]?></p>
                                                             <?endif;?>
                                                         </div>
@@ -222,6 +222,231 @@ $this->setFrameMode(true);
                                 <?$i++;?>
                             <?endforeach;?>
                         </div>
+                        <?endif;?>
+                        <!-- Блок со стратегиями -->
+                        <?if(!empty($item["STRATEGY_TABS"]) && !empty($item["STRATEGY_ITEMS"])):?>
+                            <div class="col-12">
+                                <div class="tabs-panel js-tabs-slider overflow-hidden position-relative pe-1 pe-lg-0">
+                                    <div class="tabs-panel__navigation d-none d-lg-block js-tabs-slider-navigation w-100">
+                                        <span class="tabs-panel__navigation-item tabs-panel__navigation-item-reverse js-tabs-slider-navigation-prev d-flex align-items-center justify-content-start px-1 z-3 position-absolute swiper-button-disabled">
+                                            <span class="icon size-s">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                                    <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-left"></use>
+                                                </svg>
+                                            </span>
+                                        </span>
+                                        <span class="tabs-panel__navigation-item js-tabs-slider-navigation-next d-flex align-items-center justify-content-end px-1 z-3 position-absolute swiper-button-disabled">
+                                            <span class="icon size-s">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                                    <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
+                                                </svg>
+                                            </span>
+                                        </span>
+                                    </div>
+                                    <ul class="swiper-wrapper tabs-panel__list nav nav-tabs d-inline-flex flex-nowrap w-auto p-0 border border-purple rounded">
+                                        <?foreach ($item["STRATEGY_TABS"] as $propId => $data):?>
+                                            <li class="swiper-slide w-auto tabs-panel__list-item nav-item z-2">
+                                                <button
+                                                    class="tabs-panel__list-item-link nav-link bg-transparent <?if($data["ACTIVE"] === "Y"):?>active<?endif;?>"
+                                                    data-bs-toggle="tab"
+                                                    data-bs-target="#<?= $propId ?>"
+                                                    type="button"
+                                                    role="tab"
+                                                    aria-controls="<?= $propId ?>"
+                                                    aria-selected="true"><?= $data["TITLE"] ?>
+                                                </button>
+                                            </li>
+                                        <?endforeach;?>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="tab-content mt-4 mt-md-6 mt-lg-7">
+                                <?foreach ($item["STRATEGY_ITEMS"] as $propListId => $arStrategies):?>
+                                    <div class="tab-pane fade show <?if($item["STRATEGY_TABS"][$propListId]["ACTIVE"] === "Y"):?>active<?endif;?>"
+                                         id="<?= $propListId?>"
+                                         aria-labelledby="limits"
+                                         tabindex="0"
+                                         role="tabpanel"
+                                    >
+                                        <div class="d-flex flex-column gap-4 gap-md-5 gap-lg-7">
+                                            <?foreach ($arStrategies as $elemId => $arStrategy):?>
+                                                <div class="card overflow-hidden position-relative">
+                                                    <div class="card__inner d-flex flex-column flex-lg-row-reverse align-items-start gap-4 gap-md-5 gap-lg-6">
+                                                        <?if($arStrategy["PICTURE"] !== ""):?>
+                                                            <div class="card__image-container flex-shrink-0 mx-auto">
+                                                                <img class="card__image" src="<?= $arStrategy["PICTURE"]?>" alt="" loading="lazy">
+                                                            </div>
+                                                        <?endif;?>
+                                                        <div class="card__content flex-column d-flex align-items-start gap-4 gap-md-6">
+                                                            <?if($arStrategy["NAME"] !== "" || $arStrategy["PREVIEW_TEXT"] !== ""):?>
+                                                                <div class="card__title-group d-flex flex-column gap-4 gap-lg-6">
+                                                                    <h2 class="card__title text-break"><?= $arStrategy["NAME"]?></h2>
+                                                                    <p class="text-l m-0"><?= $arStrategy["PREVIEW_TEXT"]?></p>
+                                                                </div>
+                                                            <?endif;?>
+                                                            <?if($arStrategy["RISK"] !== "" || $arStrategy["PERIOD"] !== "" || $arStrategy["PROFIT"] !== ""):?>
+                                                                <div class="card__condition-list d-flex flex-column flex-md-row flex-wrap gap-4 column-gap-md-11 column-gap-lg-16 row-gap-lg-6">
+                                                                    <?if($arStrategy["RISK"] !== ""):?>
+                                                                        <div class="card__condition violet-100 d-flex flex-column gap-2">
+                                                                            <div class="d-inline-flex flex-nowrap align-items-baseline gap-1">
+                                                                                <span class="h4"><?= $arStrategy["RISK"]?></span>
+                                                                            </div>
+                                                                            <span class="text-m dark-70">Риск</span>
+                                                                        </div>
+                                                                    <?endif;?>
+                                                                    <?if($arStrategy["PERIOD"] !== ""):?>
+                                                                        <div class="card__condition violet-100 d-flex flex-column gap-2">
+                                                                            <div class="d-inline-flex flex-nowrap align-items-baseline gap-1">
+                                                                                <span class="text-number-ml fw-bold"><?= $arStrategy["PERIOD"]?></span>
+                                                                            </div>
+                                                                            <span class="text-m dark-70">Срок <br>инвестирования</span>
+                                                                        </div>
+                                                                    <?endif;?>
+                                                                    <?if($arStrategy["PROFIT"] !== ""):?>
+                                                                        <div class="card__condition violet-100 d-flex flex-column gap-2">
+                                                                            <div class="d-inline-flex flex-nowrap align-items-baseline gap-1">
+                                                                                <span class="text-l fw-semibold">до</span>
+                                                                                <span class="text-number-ml fw-bold"><?= $arStrategy["PROFIT"]?></span>
+                                                                                <span class="text-l fw-semibold">в год</span>
+                                                                            </div>
+                                                                            <span class="text-m dark-70">Ожидаемая <br>доходность</span>
+                                                                        </div>
+                                                                    <?endif;?>
+                                                                </div>
+                                                            <?endif;?>
+                                                        </div>
+                                                    </div>
+                                                    <?if(!empty($arStrategy["REQUIREMENTS"]) || !empty($arStrategy["RATES"]) || !empty($arStrategy["OTHERS"]) || !empty($arStrategy["FILE"])):?>
+                                                        <div class="collapse" id="<?= $elemId?>">
+                                                            <div class="d-flex flex-column gap-4 gap-md-6 gap-lg-7 mt-4 mt-md-6 mt-lg-7">
+                                                                <div class="d-flex flex-column gap-4">
+                                                                    <div class="table-tab cell-2">
+                                                                        <div class="table-tab__body">
+                                                                            <div class="table-tab__row">
+                                                                                <div class="table-tab__cell text-l fw-semibold dark-70">Цель</div>
+                                                                                <div class="table-tab__cell text-l"><?= $arStrategy["TARGET"]?></div>
+                                                                            </div>
+                                                                            <div class="table-tab__row">
+                                                                                <div class="table-tab__cell text-l fw-semibold dark-70">Способ управления</div>
+                                                                                <div class="table-tab__cell text-l"><?= $arStrategy["CONTROL_METHOD"]?></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <?if(!empty($arStrategy["REQUIREMENTS"])):?>
+                                                                    <div class="d-flex flex-column gap-4">
+                                                                        <div class="h4">Требования к инвестору</div>
+                                                                        <div class="table-tab cell-2">
+                                                                            <div class="table-tab__body">
+                                                                                <?foreach ($arStrategy["REQUIREMENTS"] as $item):?>
+                                                                                    <?foreach ($item as $k => $v):?>
+                                                                                        <div class="table-tab__row">
+                                                                                            <div class="table-tab__cell text-l fw-semibold dark-70"><?= $k?></div>
+                                                                                            <div class="table-tab__cell text-l"><?= $v?></div>
+                                                                                        </div>
+                                                                                    <?endforeach;?>
+                                                                                <?endforeach;?>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                <?endif;?>
+                                                                <?if(!empty($arStrategy["RATES"])):?>
+                                                                    <div class="d-flex flex-column gap-4">
+                                                                        <div class="h4">Требования к инвестору</div>
+                                                                        <div class="table-tab cell-2">
+                                                                            <div class="table-tab__body">
+                                                                                <?foreach ($arStrategy["RATES"] as $item):?>
+                                                                                    <?foreach ($item as $k => $v):?>
+                                                                                        <div class="table-tab__row">
+                                                                                            <div class="table-tab__cell text-l fw-semibold dark-70"><?= $k?></div>
+                                                                                            <div class="table-tab__cell text-l"><?= $v?></div>
+                                                                                        </div>
+                                                                                    <?endforeach;?>
+                                                                                <?endforeach;?>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                <?endif;?>
+                                                                <?if(!empty($arStrategy["OTHERS"])):?>
+                                                                    <div class="d-flex flex-column gap-4">
+                                                                        <div class="table-tab cell-2">
+                                                                            <div class="table-tab__body">
+                                                                                <div class="table-tab__row">
+                                                                                    <div class="table-tab__cell text-l fw-semibold dark-70">Прочие расходы</div>
+                                                                                    <div class="table-tab__cell text-l">
+                                                                                        <ul class='list list--size-l'>
+                                                                                            <?foreach ($arStrategy["OTHERS"] as $enumId => $value):?>
+                                                                                                <li><?= $value?></li>
+                                                                                            <?endforeach;?>
+                                                                                        </ul>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                <?endif;?>
+                                                                <?if(!empty($arStrategy["FILE"])):?>
+                                                                    <div class="d-flex flex-column gap-4">
+                                                                        <div class="h4">Инвестиционная стратегия "Облигации"</div>
+                                                                        <div class="link-list">
+                                                                            <a class="d-flex flex-column gap-1 py-3 document-download text-m" href="<?= $arStrategy["FILE"]?>" download="">Динамика среднемесячной доходности
+                                                                                <div class="d-flex gap-1 align-items-center">
+                                                                                    <div class="document-download__file caption-m dark-70">
+                                                                                        <span class="document-download__date-time">
+                                                                                            <?= $arStrategy["DATE_MODIFIED"]?>
+                                                                                        </span>
+                                                                                        <span class="document-download__file-type"><?= explode('.', $arStrategy["FILE"])[1] ?></span>
+                                                                                    </div>
+                                                                                    <span class="icon size-s text-primary">
+                                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                                                                            <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-download-small"></use>
+                                                                                        </svg>
+                                                                                    </span>
+                                                                                </div>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                <?endif;?>
+                                                            </div>
+                                                        </div>
+                                                        <div class="d-flex card__button-wrap mt-4 mt-md-5 mt-lg-0">
+                                                            <a class="btn btn-outline-primary btn-icon w-100 w-md-auto mt-lg-7 card__button-more"
+                                                               data-bs-toggle="collapse"
+                                                               href="#<?= $elemId?>"
+                                                               role="button"
+                                                               aria-expanded="false"
+                                                               aria-controls="<?= $elemId?>"
+                                                            >
+                                                                <span>Подробнее</span>
+                                                                <span>Скрыть</span>
+                                                                <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                                                    <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-down"></use>
+                                                                </svg>
+                                                            </a>
+                                                        </div>
+                                                    <?endif;?>
+                                                    <?if(!empty($arStrategy["BENEFITS"])):?>
+                                                        <div class="row row-gap-6 gx-xl-6">
+                                                            <?foreach ($arStrategy["BENEFITS"] as $propValueId => $arData):?>
+                                                                <div class="col-12 col-lg-6">
+                                                                    <div class="benefit d-flex gap-3 flex-column flex-column flex-md-row align-items-md-center gap-md-4 gap-lg-6">
+                                                                        <?foreach ($arData as $title => $filePath):?>
+                                                                            <img class="icon size-xl" src="<?= $filePath?>" alt="icon" loading="lazy">
+                                                                            <div class="benefit__content d-flex flex-column gap-3">
+                                                                                <h4 class="benefit__title"><?= $title?></h4>
+                                                                            </div>
+                                                                        <?endforeach;?>
+                                                                    </div>
+                                                                </div>
+                                                            <?endforeach;?>
+                                                        </div>
+                                                    <?endif;?>
+                                                </div>
+                                            <?endforeach;?>
+                                        </div>
+                                    </div>
+                                <?endforeach;?>
+                            </div>
                         <?endif;?>
                     </div>
                 <?endif;?>

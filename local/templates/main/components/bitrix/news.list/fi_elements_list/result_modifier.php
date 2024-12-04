@@ -1,11 +1,14 @@
 <?php
 /** @var array $arResult */
+/** @var CBitrixComponent $component */
 
 use Bitrix\Iblock\Model\Section;
 use Bitrix\Iblock\Elements\ElementFiQuotesApiTable;
 use Bitrix\Iblock\Elements\ElementFiSlidersProductsApiTable;
 use Bitrix\Iblock\Elements\ElementFiAccordionApiTable;
 use Bitrix\Iblock\Elements\ElementFiProductsApiTable;
+use Bitrix\Iblock\Elements\ElementFiStrategiesApiTable;
+use Dalee\Helpers\PropertyListHelper;
 
 $sectionId = 0;
 $arResult["SHOW_UP_MENU"] = false;
@@ -57,11 +60,13 @@ if (!empty($arResult["UP_MENU"])) {
 /* Слайдер для каждого элемента получим из ИБ "Слайдер для элементов" */
 /* Карточки для аккордиона для каждого элемента получим из ИБ "Слайдер с продуктами для каталога услуг" */
 /* Карточки с продуктами для каждого элемента получим из ИБ "Продукты для каталога услуг" */
+/* Стратегии управления для каждого элемента получим из ИБ "Стратегии для каталога услуг" */
 
 $arQuoteIds = [];
 $arSliderIds = [];
 $arAccordionIds = [];
 $arProductIds = [];
+$arStrategyIds = [];
 
 foreach ($arResult["ITEMS"] as $item) {
     if (!empty($item["PROPERTIES"]["QUOTES"]["VALUE"])) {
@@ -87,12 +92,19 @@ foreach ($arResult["ITEMS"] as $item) {
             $arProductIds[$value] = $value;
         }
     }
+
+    if (!empty($item["PROPERTIES"]["STRATEGY"]["VALUE"])) {
+        foreach ($item["PROPERTIES"]["STRATEGY"]["VALUE"] as $value) {
+            $arStrategyIds[$value] = $value;
+        }
+    }
 }
 
 $arQuotes = [];
 $arSliders = [];
 $arAccordions = [];
 $arProducts = [];
+$arStrategies = [];
 
 if (!empty($arQuoteIds)) {
     $elementsQuotes = ElementFiQuotesApiTable::getList([
@@ -171,6 +183,107 @@ if (!empty($arProductIds)) {
     }
 }
 
+if (!empty($arStrategyIds)) {
+    $elementsStrategies = ElementFiStrategiesApiTable::getList([
+        "select" => [
+            "ID",
+            "TIMESTAMP_X",
+            "NAME",
+            "PREVIEW_TEXT",
+            "PREVIEW_PICTURE",
+            "TYPE",
+            "FILE",
+            "RISK",
+            "PERIOD",
+            "PROFIT",
+            "TARGET",
+            "CONTROL_METHOD",
+            "REQUIREMENTS",
+            "RATES",
+            "OTHERS",
+            "BENEFITS",
+        ],
+        "filter" => ["ID" => $arStrategyIds],
+    ])->fetchAll();
+
+    $typeStrategyIds = [];
+    $arRequirements = [];
+    $arRates = [];
+    $arOthers = [];
+    $arBenefits = [];
+
+    if (!empty($elementsStrategies)) {
+        foreach ($elementsStrategies as $arData) {
+            $iconPath = '';
+            $filePath = '';
+            $benefitIcon = '';
+
+            if ($arData["PREVIEW_PICTURE"] > 0) {
+                $iconPath = CFile::GetPath($arData["PREVIEW_PICTURE"]);
+            }
+
+            if ($arData["IBLOCK_ELEMENTS_ELEMENT_FI_STRATEGIES_API_FILE_VALUE"] > 0) {
+                $filePath = CFile::GetPath($arData["IBLOCK_ELEMENTS_ELEMENT_FI_STRATEGIES_API_FILE_VALUE"]);
+            }
+
+            if ($arData["IBLOCK_ELEMENTS_ELEMENT_FI_STRATEGIES_API_BENEFITS_VALUE"] > 0) {
+                $benefitIcon = CFile::GetPath($arData["IBLOCK_ELEMENTS_ELEMENT_FI_STRATEGIES_API_BENEFITS_VALUE"]);
+            }
+
+            $typeId = $arData["IBLOCK_ELEMENTS_ELEMENT_FI_STRATEGIES_API_TYPE_VALUE"];
+            $typeStrategyIds[$typeId] = $typeId;
+            $dateModified = $arData["TIMESTAMP_X"]->format('d.m.y H:i');
+            $arStrategies[$arData["ID"]] = [
+                "NAME" => $arData["NAME"],
+                "DATE_MODIFIED" => $dateModified,
+                "PREVIEW_TEXT" => $arData["PREVIEW_TEXT"] ?? "",
+                "TYPE_ID" => $typeId,
+                "PICTURE" => $iconPath ?? "",
+                "RISK" => $arData["IBLOCK_ELEMENTS_ELEMENT_FI_STRATEGIES_API_RISK_VALUE"] ?? "",
+                "PERIOD" => $arData["IBLOCK_ELEMENTS_ELEMENT_FI_STRATEGIES_API_PERIOD_VALUE"] ?? "",
+                "PROFIT" => $arData["IBLOCK_ELEMENTS_ELEMENT_FI_STRATEGIES_API_PROFIT_VALUE"] ?? "",
+                "TARGET" => $arData["IBLOCK_ELEMENTS_ELEMENT_FI_STRATEGIES_API_TARGET_VALUE"] ?? "",
+                "CONTROL_METHOD" => $arData["IBLOCK_ELEMENTS_ELEMENT_FI_STRATEGIES_API_CONTROL_METHOD_VALUE"],
+                "FILE" => $filePath
+            ];
+
+            if ($arData["IBLOCK_ELEMENTS_ELEMENT_FI_STRATEGIES_API_REQUIREMENTS_ID"] > 0) {
+                $arRequirements[$arData["ID"]][$arData["IBLOCK_ELEMENTS_ELEMENT_FI_STRATEGIES_API_REQUIREMENTS_ID"]] = [
+                    $arData["IBLOCK_ELEMENTS_ELEMENT_FI_STRATEGIES_API_REQUIREMENTS_DESCRIPTION"] => $arData["IBLOCK_ELEMENTS_ELEMENT_FI_STRATEGIES_API_REQUIREMENTS_VALUE"]
+                ];
+            }
+
+            if ($arData["IBLOCK_ELEMENTS_ELEMENT_FI_STRATEGIES_API_RATES_ID"] > 0) {
+                $arRates[$arData["ID"]][$arData["IBLOCK_ELEMENTS_ELEMENT_FI_STRATEGIES_API_RATES_ID"]] = [
+                    $arData["IBLOCK_ELEMENTS_ELEMENT_FI_STRATEGIES_API_RATES_DESCRIPTION"] => $arData["IBLOCK_ELEMENTS_ELEMENT_FI_STRATEGIES_API_RATES_VALUE"]
+                ];
+            }
+
+            if ($arData["IBLOCK_ELEMENTS_ELEMENT_FI_STRATEGIES_API_OTHERS_ID"] > 0) {
+                $arOthers[$arData["ID"]][$arData["IBLOCK_ELEMENTS_ELEMENT_FI_STRATEGIES_API_OTHERS_ID"]] = $arData["IBLOCK_ELEMENTS_ELEMENT_FI_STRATEGIES_API_OTHERS_VALUE"];
+            }
+
+            if ($arData["IBLOCK_ELEMENTS_ELEMENT_FI_STRATEGIES_API_BENEFITS_ID"] > 0) {
+                $arBenefits[$arData["ID"]][$arData["IBLOCK_ELEMENTS_ELEMENT_FI_STRATEGIES_API_BENEFITS_ID"]] = [
+                    $arData["IBLOCK_ELEMENTS_ELEMENT_FI_STRATEGIES_API_BENEFITS_DESCRIPTION"] => $benefitIcon
+                ];
+            }
+        }
+    }
+}
+
+$iblockStrategyId = iblock("fi_strategies");
+$propHelper = new PropertyListHelper();
+$propertyTypeList = $propHelper->getPropertyListValues($iblockStrategyId, 'TYPE');
+$tabsStrategy = [];
+
+if (!empty($propertyTypeList)) {
+    foreach ($propertyTypeList as $kType => $type) {
+        $tabsStrategy[$type["ID"]]["ACTIVE"] = $type["XML_ID"] === "standart" ? "Y" : "N";
+        $tabsStrategy[$type["ID"]]["TITLE"] = $type["VALUE"];
+    }
+}
+
 /* Заполним недостающие данные по цитатам и слайдерам для элементов */
 foreach ($arResult["ITEMS"] as $index => $item) {
     $arResult["ITEMS"][$index]["SECTION_CLASS_STYLE"] = ''; // класс для тега <section>
@@ -215,6 +328,36 @@ foreach ($arResult["ITEMS"] as $index => $item) {
             $arResult["ITEMS"][$index]["CARD_PRODUCTS"][$kValue]["TITLE"] = $arProducts[$vValue]["NAME"];
             $arResult["ITEMS"][$index]["CARD_PRODUCTS"][$kValue]["TEXT"] = $arProducts[$vValue]["TEXT"];
             $arResult["ITEMS"][$index]["CARD_PRODUCTS"][$kValue]["PICTURE"] = $arProducts[$vValue]["PICTURE"];
+        }
+    }
+
+    if (!empty($item["PROPERTIES"]["STRATEGY"]["VALUE"]) && !empty($arStrategies)) {
+        foreach ($item["PROPERTIES"]["STRATEGY"]["VALUE"] as $kValue => $vValue) {
+            if (!empty($arRequirements[$vValue])) {
+                $arStrategies[$vValue]["REQUIREMENTS"] = $arRequirements[$vValue];
+            }
+
+            if (!empty($arRates[$vValue])) {
+                $arStrategies[$vValue]["RATES"] = $arRates[$vValue];
+            }
+
+            if (!empty($arOthers[$vValue])) {
+                $arStrategies[$vValue]["OTHERS"] = $arOthers[$vValue];
+            }
+
+            if (!empty($arBenefits[$vValue])) {
+                $arStrategies[$vValue]["BENEFITS"] = $arBenefits[$vValue];
+            }
+
+            $arResult["ITEMS"][$index]["STRATEGY"][$vValue] = $arStrategies[$vValue];
+        }
+    }
+
+    if (!empty($arResult["ITEMS"][$index]["STRATEGY"]) && !empty($tabsStrategy)) {
+        $arResult["ITEMS"][$index]["STRATEGY_TABS"] = $tabsStrategy;
+
+        foreach ($arResult["ITEMS"][$index]["STRATEGY"] as $propId => $arData) {
+            $arResult["ITEMS"][$index]["STRATEGY_ITEMS"][$arData["TYPE_ID"]][$propId] = $arData;
         }
     }
 
