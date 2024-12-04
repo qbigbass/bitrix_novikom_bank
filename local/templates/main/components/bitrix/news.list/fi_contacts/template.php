@@ -16,6 +16,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 $this->setFrameMode(true);
 
 use Bitrix\Main\Localization\Loc;
+
 ?>
 <section class="section-layout bg-dark-30">
     <div class="container">
@@ -31,17 +32,22 @@ use Bitrix\Main\Localization\Loc;
                             <div class="swiper-slide js-swiper-slide">
                                 <div class="contact-block contact-block--bg-white">
                                     <div class="contact-block__content d-flex flex-column justify-content-between row-gap-5 row-gap-md-6 row-gap-lg-7 h-100">
-                                        <div class="tag tag--outline contact-block__tag">
-                                            <span class="tag__content text-s fw-semibold w-100 w-sm-auto"><?= $item["PROPERTIES"]["DEPARTMENT"]["VALUE"] ?></span>
-                                            <span class="tag__triangle">
-                                                <svg width="14" height="21" viewBox="0 0 14 21" fill="none"
-                                                     xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M13.5 19.3486L0.934259 0.5H13.5V19.3486Z"></path>
-                                                </svg>
-                                            </span>
-                                        </div>
+                                        <?if($item["PROPERTIES"]["DEPARTMENT"]["VALUE"] !== ""):?>
+                                            <div class="tag tag--outline contact-block__tag">
+                                                <?foreach ($item["DISPLAY_PROPERTIES"]["DEPARTMENT"]["LINK_ELEMENT_VALUE"] as $elemId => $arData):?>
+                                                    <span class="tag__content text-s fw-semibold w-100 w-sm-auto"><?= $arData["NAME"] ?></span>
+                                                <? endforeach; ?>
+                                                <span class="tag__triangle">
+                                                    <svg width="14" height="21" viewBox="0 0 14 21" fill="none"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M13.5 19.3486L0.934259 0.5H13.5V19.3486Z"></path>
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                        <?endif;?>
                                         <div class="d-flex flex-column row-gap-2">
                                             <h4 class="contact-block__title"><?= $item["NAME"] ?></h4>
+                                            <p class="mb-0 contact-block__description"><?= $item["PREVIEW_TEXT"] ?></p>
                                         </div>
                                         <div class="mt-auto">
                                             <ul class="list-contact d-flex flex-column row-gap-4">
