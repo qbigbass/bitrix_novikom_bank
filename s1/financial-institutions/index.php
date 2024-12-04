@@ -88,8 +88,6 @@ $APPLICATION->SetTitle('Финансовым институтам');
         "ELEMENT_SORT_ORDER2" => "desc",
         "LIST_PROPERTY_CODE" => [
             "NAME_MENU",
-            "COLOR_BG",
-            "TEXT_LIST",
         ],
         "INCLUDE_SUBSECTIONS" => "Y",
         "LIST_META_KEYWORDS" => "UF_KEYWORDS",

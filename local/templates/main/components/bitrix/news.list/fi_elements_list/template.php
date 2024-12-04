@@ -26,7 +26,10 @@ $this->setFrameMode(true);
         </div>
     <?endif;?>
     <?foreach ($arResult["ITEMS"] as $item):?>
-        <section class="section-layout <?= $item["SECTION_CLASS_STYLE"]?>" id="<?= $item['CODE']?>">
+        <section
+            class="section-layout <?= $item["SECTION_BACKGROUND_CLASS_STYLE"]?> <?= $item["SECTION_BORDER_CLASS_STYLE"]?>"
+            id="<?= $item['CODE']?>"
+        >
             <div class="container">
                 <?if($item['DETAIL_TEXT'] !== "" && $item["PREVIEW_PICTURE"]["SRC"] !== ""): ?>
                     <!-- Блок анонса и детальной картинки -->
@@ -163,7 +166,7 @@ $this->setFrameMode(true);
                             <div class="col-12">
                                 <div class="row row-gap-6 gx-xl-6 px-lg-6">
                                     <?foreach ($item["BENEFITS"] as $benefit):?>
-                                        <div class="col-12 col-md-6 col-lg-4">
+                                        <div class="col-12 col-md-6">
                                             <div class="benefit d-flex gap-3 flex-column">
                                                 <img class="icon size-xxl" src="<?= $benefit["PICTURE"]?>" alt="icon" loading="lazy">
                                                 <div class="benefit__content d-flex flex-column gap-3">

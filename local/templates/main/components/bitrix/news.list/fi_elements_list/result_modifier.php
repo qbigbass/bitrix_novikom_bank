@@ -286,7 +286,8 @@ if (!empty($propertyTypeList)) {
 
 /* Заполним недостающие данные по цитатам и слайдерам для элементов */
 foreach ($arResult["ITEMS"] as $index => $item) {
-    $arResult["ITEMS"][$index]["SECTION_CLASS_STYLE"] = ''; // класс для тега <section>
+    $arResult["ITEMS"][$index]["SECTION_BACKGROUND_CLASS_STYLE"] = ''; // класс для тега <section>
+    $arResult["ITEMS"][$index]["SECTION_BORDER_CLASS_STYLE"] = ''; // класс для тега <section>
     $itemId = $item["ID"];
 
     if (!empty($item["PROPERTIES"]["QUOTES"]["VALUE"]) && !empty($arQuotes)) {
@@ -362,6 +363,10 @@ foreach ($arResult["ITEMS"] as $index => $item) {
     }
 
     if ($item["PROPERTIES"]["COLOR_BG"]["VALUE"] !== "") {
-        $arResult["ITEMS"][$index]["SECTION_CLASS_STYLE"] = $item["PROPERTIES"]["COLOR_BG"]["VALUE"];
+        $arResult["ITEMS"][$index]["SECTION_BACKGROUND_CLASS_STYLE"] = $item["PROPERTIES"]["COLOR_BG"]["VALUE"];
+    }
+
+    if ($item["PROPERTIES"]["COLOR_BORDER"]["VALUE"] !== "") {
+        $arResult["ITEMS"][$index]["SECTION_BORDER_CLASS_STYLE"] = "border-top border-".$item["PROPERTIES"]["COLOR_BORDER"]["VALUE"];
     }
 }
