@@ -206,7 +206,6 @@ function checkValidity(form) {
 }
 
 function checkInputValidity(inputElement) {
-    console.log(inputElement.pattern)
     if (inputElement.validity.patternMismatch) {
         inputElement.setCustomValidity(inputElement.dataset.errorMessage)
     } else {
