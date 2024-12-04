@@ -1,12 +1,12 @@
 <?php
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 global $APPLICATION;
-$APPLICATION->SetTitle('Закупочная деятельность');
+$APPLICATION->SetTitle('Объявления для клиентов');
 ?>
 
 <? $APPLICATION->IncludeComponent(
     "bitrix:news",
-    "purchases",
+    "announcements",
     [
         "ADD_ELEMENT_CHAIN" => "N",
         "ADD_SECTIONS_CHAIN" => "N",
@@ -46,7 +46,7 @@ $APPLICATION->SetTitle('Закупочная деятельность');
         "DISPLAY_TOP_PAGER" => "N",
         "FILE_404" => "",
         "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-        "IBLOCK_ID" => iblock("purchases_ru"),
+        "IBLOCK_ID" => iblock("сustomer-announcements"),
         "IBLOCK_TYPE" => "about_ru",
         "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
         "LIST_ACTIVE_DATE_FORMAT" => "d.m.Y",
@@ -72,7 +72,7 @@ $APPLICATION->SetTitle('Закупочная деятельность');
         "PAGER_TEMPLATE" => "square_left",
         "PAGER_TITLE" => "Новости",
         "PREVIEW_TRUNCATE_LEN" => "",
-        "SEF_FOLDER" => "/about/purchases/",
+        "SEF_FOLDER" => "/for-corporate-clients/customer-announcements/",
         "SEF_MODE" => "Y",
         "SET_LAST_MODIFIED" => "N",
         "SET_STATUS_404" => "Y",

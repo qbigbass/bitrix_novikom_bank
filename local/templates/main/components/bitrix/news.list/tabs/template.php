@@ -18,7 +18,7 @@ $this->setFrameMode(true);
 ?>
 
 <div class="collapse d-md-block" id="additional-info-content">
-    <div class="row">
+    <div class="row mt-4">
         <div class="col-12">
             <div class="ps-lg-6">
                 <div class="tabs-panel js-tabs-slider overflow-hidden position-relative pe-1 pe-lg-0">
