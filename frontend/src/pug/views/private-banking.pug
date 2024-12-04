@@ -1,8 +1,14 @@
 extends ../templates/private-base
 
 block title
+    title= 'Кредиты - Кредит на любые цели'
+    meta(name="description" content="Описание страницы с кредитами")
+
+block content
+    include ../components/pb-card-special
+    include ../components/pb-supreme-benefit
     -
-        const specialPrivilegesCards = [
+        var specialPrivilegesCards = [
             {
                 title: "Персональное сопровождение",
                 description: "Индивидуальный менеджер и команда финансовых консультантов для решения банковских и частных вопросов",
@@ -27,7 +33,7 @@ block title
                 large: false
             },
         ];
-        const supremeCardBenefits = [
+        var supremeCardBenefits = [
             {
                 icon: '/img/pb-images/pb-supreme-icons/bank-icon.svg',
                 text: 'Снятие наличных в любых банкоматах без комиссии',
@@ -49,8 +55,7 @@ block title
                 text: 'Переводы по номеру телефона до 1 млн ₽ в другие банки по СБП без комиссии',
             },
         ];
-
-        const bankingForYou = [
+        var bankingForYou = [
             {
                 title: "Привилегии",
                 image: 'img/pb-images/pb-lion.png',
@@ -74,17 +79,16 @@ block title
                 large: false
             },
         ];
-
-        const tabsList = [
-            { id: "tab1", linkText: "Векселя" ,isActive: true  },
-            { id: "tab2", linkText: "Перевозка ценностей" ,isActive: false},
-            { id: "tab3", linkText: "Индивидуальные ячейки" ,isActive: false},
-            { id: "tab4", linkText: "Счета в пяти валютах" ,isActive: false},
-            { id: "tab5", linkText: "Консьерж-служба" ,isActive: false},
-            { id: "tab6", linkText: "Конверсионные операции по лучшему курсу" ,isActive: false},
-            { id: "tab7", linkText: "Персональный менеджер" ,isActive: false}
+        var tabsList = [
+            {id: "tab1", linkText: "Векселя", isActive: true},
+            {id: "tab2", linkText: "Перевозка ценностей", isActive: false},
+            {id: "tab3", linkText: "Индивидуальные ячейки", isActive: false},
+            {id: "tab4", linkText: "Счета в пяти валютах", isActive: false},
+            {id: "tab5", linkText: "Консьерж-служба", isActive: false},
+            {id: "tab6", linkText: "Конверсионные операции по лучшему курсу", isActive: false},
+            {id: "tab7", linkText: "Персональный менеджер", isActive: false}
         ];
-        const financeCards = [
+        var financeCards = [
             {
                 title: "Векселя",
                 description: "Доходный и надёжный инструмент инвестирования временно свободных денежных средств. Предлагаем дисконтные, простые процентные и беспроцентные векселя",
@@ -116,55 +120,54 @@ block title
                 id: "conversionOperations",
             }
         ];
-        const investmentCards = [
-          {
+        var investmentCards = [
+            {
                 title: "Брокерское обслуживание",
-                description:"Совершение сделок с обеспечением рыночных цен и услуг для достижения ваших целей.",
+                description: "Совершение сделок с обеспечением рыночных цен и услуг для достижения ваших целей.",
                 image: "/img/pb-images/pb-investment-cards/pb-investment-broker.png",
                 id: "broker",
-          },
-          {
+            },
+            {
                 title: "Доверительное управление",
-                description:"Профессиональное управление инвестиционным портфелем для максимальной выгоды.",
+                description: "Профессиональное управление инвестиционным портфелем для максимальной выгоды.",
                 image: "/img/pb-images/pb-investment-cards/pb-investment-management.png",
                 id: "management",
-          },
-          {
+            },
+            {
                 title: "Депозитарное обслуживание",
-                description:"Сопровождение сделок и консультации по вопросам управления активами.",
+                description: "Сопровождение сделок и консультации по вопросам управления активами.",
                 image: "/img/pb-images/pb-investment-cards/pb-investment-deposit.png",
                 id: "deposit",
-          },
-          {
+            },
+            {
                 title: "Инвестиционное консультирование",
-                description:"Персонализированный подход к подбору стратегий и инструментов инвестирования.",
+                description: "Персонализированный подход к подбору стратегий и инструментов инвестирования.",
                 image: "/img/pb-images/pb-investment-cards/pb-investment-consulting.png",
                 id: "consulting",
-          },
+            },
         ];
 
-    title= 'Кредиты - Кредит на любые цели'
-    meta(name="description" content="Описание страницы с кредитами")
 
-block content
-    include ../components/pb-card-special
-    include ../components/pb-supreme-benefit
-    video#background-video(autoplay='' loop='' muted='' poster='img/video-poster.jpg')
-                source(src='img/video-background.mp4' type='video/mp4')
-    section.pb__animation.container
+    section.pb-section-hero-layout
+        .pb-overlay
         include ../includes/header/pb-header
-        h2.dark-10.pb__section-header Лучшие финансовые инструменты <br>для достижения ваших целей
+        .container
+            h1.pb-section-hero-layout__title.dark-0.text-center Лучшие финансовые инструменты <br>для&nbsp;достижения ваших целей
+        video.pb-hero-video(autoplay='' loop='' muted='' poster='img/video-poster.jpg')
+                    source(src='img/video-background.mp4' type='video/mp4')
 
-    section.pb__special.container
-        h2.dark-10.pb__section-header Особые условия<br> для важных клиентов
-        .row.g-1.g-md-2
-            .col-lg-6
-                +pb-card-special(specialPrivilegesCards[0])
-            .col-lg-6
-                .row.justify-content-between.g-1.g-md-2
-                    each card in specialPrivilegesCards.slice(1)
-                        .col-12
-                            +pb-card-special(card)
+    section.pb-section.pb-section--gradient
+        .container
+            .d-flex.flex-column.row-gap-6.row-gap-lg-11
+                h2.dark-10.text-center Особые условия для&nbsp;важных клиентов
+                .row.g-1.g-md-2
+                    .col-12.col-lg-6
+                        +pb-card-special(specialPrivilegesCards[0])
+                    .col-12.col-lg-6
+                        .row.justify-content-between.g-1.g-md-2
+                            each card in specialPrivilegesCards.slice(1)
+                                .col-12
+                                    +pb-card-special(card)
 
     //- section.pb__mir-supreme.container
     //-     .pb__mir-supreme-header-wrapper

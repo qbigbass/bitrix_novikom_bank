@@ -1,17 +1,18 @@
 mixin pb-card-special(data)
-    .pb__card(class=data.large ? "pb__card--large" : "pb__card--small")
-        h3.pb__card-title= data.title
-        .pb__card-body
-            if data.large 
-                if data.description
-                    p.pb__card-text= data.description
-            .pb__card-content
-                if !data.large
+    .pb-card-special(class=data.large ? "pb-card-special--large" : "pb-card-special--small")
+        .d-flex.flex-column.gap-4
+            h3.pb-card-special__title= data.title
+            .d-flex.flex-column.row-gap-4
+                if data.large
                     if data.description
-                        p.pb__card-text= data.description
-                if data.additionalInfo && data.additionalInfo.length > 0
-                    ul.pb__card-info
-                        each info in data.additionalInfo
-                            li.pb__card-info-item= info
-                .pb__card-image
-                    img(src=data.image, alt=data.title, class=data.large ? "pb__card-image--large" : "pb__card-image--small")
+                        p.pb-card-special__text= data.description
+                .d-flex.flex-column.flex-md-row.flex-grow-1.align-items-start.row-gap-2
+                    if !data.large
+                        if data.description
+                            p.pb-card-special__text= data.description
+                    if data.additionalInfo && data.additionalInfo.length > 0
+                        ul.pb-list
+                            each info in data.additionalInfo
+                                li= info
+                    .pb-card-special__image
+                        img(src=data.image, alt=data.title, loading="lazy")

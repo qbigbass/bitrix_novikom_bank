@@ -1,0 +1,9 @@
+.pb-header {
+  padding: 1rem 0;
+  position: relative;
+  z-index: 11;
+
+  @include use-media(tablet-album) {
+    padding: 1.5rem 0;
+  }
+}

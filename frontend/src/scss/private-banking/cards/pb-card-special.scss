@@ -1,0 +1,83 @@
+.pb-card-special {
+  $root: #{&};
+
+  background: radial-gradient(100% 141.69% at 0% 50%, rgba(55, 17, 106, 0.7) 0%, rgba(0, 0, 0, 0.7) 100%);
+  box-shadow: 0 20px 40px 0 rgba(0, 0, 0, 0.5),
+  -1px -1px 1px 0px rgba(142, 92, 209, 0.2) inset;
+  backdrop-filter: blur(1rem);
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  color: var(--dark-0);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  @include use-media(tablet) {
+    padding: 2.5rem;
+  }
+
+  &__title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.35;
+
+    @include use-media(tablet) {
+      font-size: 2rem;
+      line-height: 1.25;
+    }
+  }
+
+  &__text {
+    font-size: 1rem;
+    line-height: 1.4;
+    margin: 0;
+
+    @include use-media(tablet) {
+      font-size: 1.25rem;
+    }
+
+    @include use-media(tablet-album) {
+      font-size: 1.5rem;
+      line-height: 1.35;
+    }
+  }
+
+  &__image {
+    flex-shrink: 0;
+    width: 6rem;
+    height: 6rem;
+    align-self: flex-end;
+
+    @include use-media(tablet) {
+      &--large {
+        max-width: 256px;
+      }
+
+      &--small {
+        max-width: 120px;
+      }
+    }
+  }
+
+  &--large {
+    min-height: 25rem;
+
+    #{$root}__image {
+      @include use-media(tablet) {
+        width: 16rem;
+        height: 16rem;
+      }
+    }
+  }
+
+  &--small {
+    min-height: 12.5rem;
+
+    #{$root}__image {
+      @include use-media(tablet) {
+        width: 10rem;
+        height: 10rem;
+      }
+    }
+  }
+}

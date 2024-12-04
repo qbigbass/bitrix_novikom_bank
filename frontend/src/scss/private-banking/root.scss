@@ -1,26 +1,8 @@
 .pb {
   font-family: "TT Hoves", sans-serif;
   -webkit-font-smoothing: antialiased;
-  background: rgba(0, 0, 0, 1);
+  background-color: #000;
   position: relative;
-
-  #background-video {
-    width: 100vw;
-    max-width: 120rem;
-    object-fit: cover;
-    position: absolute;
-    top: 340px;
-    left: 0;
-    z-index: -1;
-
-    @include use-media(tablet) {
-      top: 226px;
-    }
-
-    @include use-media(desktop) {
-      top: 328px;
-    }
-  }
 
   h1,
   h2,
@@ -28,10 +10,10 @@
     font-weight: 500;
   }
 
-  .container {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
+  //.container {
+  //  padding-left: 1rem;
+  //  padding-right: 1rem;
+  //}
 
   &__section {
     &-header {
@@ -158,7 +140,6 @@
       padding: 1rem 2.5rem;
       font-size: 1rem;
       font-weight: 600;
-      letter-spacing: 0.063rem;
       background-color: #591aaf;
       color: #fff;
       border-radius: 0.25rem;
