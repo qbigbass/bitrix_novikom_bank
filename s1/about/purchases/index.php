@@ -1,11 +1,12 @@
 <?php
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 global $APPLICATION;
-$APPLICATION->SetTitle('Новиком сегодня');
+$APPLICATION->SetTitle('Закупочная деятельность');
 ?>
+
 <? $APPLICATION->IncludeComponent(
     "bitrix:news",
-    "about",
+    "purchases",
     [
         "ADD_ELEMENT_CHAIN" => "N",
         "ADD_SECTIONS_CHAIN" => "N",
@@ -34,7 +35,7 @@ $APPLICATION->SetTitle('Новиком сегодня');
         "DETAIL_PAGER_TITLE" => "Страница",
         "DETAIL_PROPERTY_CODE" => [
             "PUBLICATION_DATE",
-            "TAG"
+            "DOCUMENTS",
         ],
         "DETAIL_SET_CANONICAL_URL" => "N",
         "DISPLAY_BOTTOM_PAGER" => "Y",
@@ -45,34 +46,33 @@ $APPLICATION->SetTitle('Новиком сегодня');
         "DISPLAY_TOP_PAGER" => "N",
         "FILE_404" => "",
         "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-        "IBLOCK_ID" => iblock("novikom_today_ru"),
+        "IBLOCK_ID" => iblock("purchases_ru"),
         "IBLOCK_TYPE" => "about_ru",
         "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
         "LIST_ACTIVE_DATE_FORMAT" => "d.m.Y",
         "LIST_FIELD_CODE" => [
             "NAME",
             "PREVIEW_TEXT",
+            "DETAIL_TEXT",
             "PREVIEW_PICTURE",
             "DETAIL_PICTURE",
         ],
         "LIST_PROPERTY_CODE" => [
             "PUBLICATION_DATE",
-            "END_DATE",
-            "TAG"
         ],
         "MESSAGE_404" => "",
         "META_DESCRIPTION" => "-",
         "META_KEYWORDS" => "-",
-        "NEWS_COUNT" => "12",
+        "NEWS_COUNT" => "9",
         "PAGER_BASE_LINK_ENABLE" => "N",
         "PAGER_DESC_NUMBERING" => "N",
         "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
         "PAGER_SHOW_ALL" => "N",
         "PAGER_SHOW_ALWAYS" => "N",
-        "PAGER_TEMPLATE" => "square",
+        "PAGER_TEMPLATE" => "square_left",
         "PAGER_TITLE" => "Новости",
         "PREVIEW_TRUNCATE_LEN" => "",
-        "SEF_FOLDER" => "/about/",
+        "SEF_FOLDER" => "/about/purchases/",
         "SEF_MODE" => "Y",
         "SET_LAST_MODIFIED" => "N",
         "SET_STATUS_404" => "Y",
@@ -90,13 +90,16 @@ $APPLICATION->SetTitle('Новиком сегодня');
         "USE_RSS" => "N",
         "USE_SEARCH" => "N",
         "USE_SHARE" => "N",
-        "COMPONENT_TEMPLATE" => "about",
+        "COMPONENT_TEMPLATE" => "purchases",
         "SEF_URL_TEMPLATES" => [
             "news" => "",
-            "section" => "#SECTION_CODE#/",
-            "detail" => "#SECTION_CODE#/#ELEMENT_CODE#/",
+            "section" => "",
+            "detail" => "#ELEMENT_CODE#/",
         ]
     ],
-    false
+    false,
+    ["HIDE_ICONS" => "Y"]
 ); ?>
+
+
 <? require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php'); ?>

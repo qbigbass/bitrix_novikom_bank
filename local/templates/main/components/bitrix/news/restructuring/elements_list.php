@@ -1,6 +1,6 @@
-<? use Dalee\Helpers\ComponentHelper;
+<? use Dalee\Helpers\HeaderView;
 
-if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();
+if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /** @var array $arParams */
 /** @var array $arResult */
 /** @global CMain $APPLICATION */
@@ -14,8 +14,6 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 
-use Dalee\Helpers\HeaderView;
-
 $headerView = new HeaderView($component);
 $helper = $headerView->helper();
 
@@ -28,7 +26,7 @@ $headerView->render(
 );
 ?>
 
-<section class="restructuring-ramification section-layout d-flex flex-column gap-7 bg-dark-10">
+<section class="restructuring-ramification section-layout d-flex flex-column gap-7 bg-dark-10" id="catalog-tabs">
     <div class="container">
         <h3 class="px-lg-6 mb-4 mb-md-6 mb-lg-7">Варианты реструктуризации</h3>
         <div class="restructuring-ramification__tabs px-lg-6 mb-4 mb-md-6 mb-lg-7">
@@ -56,7 +54,7 @@ $headerView->render(
         <!-- Список элементов -->
         <div class="row align-items-stretch cards-gutter">
 
-            <?$APPLICATION->IncludeComponent(
+            <? $APPLICATION->IncludeComponent(
                 "bitrix:news.list",
                 "restructuring_list",
                 [
@@ -106,20 +104,20 @@ $headerView->render(
                     "STRICT_SECTION_CHECK" => $arParams["STRICT_SECTION_CHECK"],
                     "PARENT_SECTION" => $arResult["VARIABLES"]["SECTION_ID"],
                     "PARENT_SECTION_CODE" => $arResult["VARIABLES"]["SECTION_CODE"],
-                    "DETAIL_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["detail"],
-                    "SECTION_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["section"],
-                    "IBLOCK_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["news"],
+                    "DETAIL_URL" => $arResult["FOLDER"] . $arResult["URL_TEMPLATES"]["detail"],
+                    "SECTION_URL" => $arResult["FOLDER"] . $arResult["URL_TEMPLATES"]["section"],
+                    "IBLOCK_URL" => $arResult["FOLDER"] . $arResult["URL_TEMPLATES"]["news"],
                     "IBLOCK_SECTIONS" => $arResult["IBLOCK_SECTIONS"],
                 ],
                 $component,
                 ["HIDE_ICONS" => "Y"]
-            );?>
+            ); ?>
 
         </div>
     </div>
 </section>
 
-<?$APPLICATION->IncludeComponent(
+<? $APPLICATION->IncludeComponent(
     "bitrix:news.detail",
     "restructuring",
     [
@@ -171,9 +169,9 @@ $headerView->render(
         "USE_SHARE" => "N"
     ],
     $component
-);?>
+); ?>
 
-<?$APPLICATION->IncludeFile('/local/php_interface/include/cross_sale_products_block.php', ['HEADER_TEXT' => 'Смотрите также']);?>
-<?$APPLICATION->IncludeFile('/local/php_interface/include/request_call.php');?>
+<? $APPLICATION->IncludeFile('/local/php_interface/include/cross_sale_products_block.php', ['HEADER_TEXT' => 'Смотрите также']); ?>
+<? $APPLICATION->IncludeFile('/local/php_interface/include/request_call.php'); ?>
 
 <? $helper->saveCache(); ?>
