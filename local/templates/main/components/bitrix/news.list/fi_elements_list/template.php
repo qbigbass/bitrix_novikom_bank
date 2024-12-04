@@ -209,13 +209,22 @@ $this->setFrameMode(true);
                             <?foreach ($item["TEXT_ACCORDION"] as $elemId => $item):?>
                                 <div class="accordion-item">
                                     <div class="accordion-header">
-                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#<?= $elemId?>" aria-expanded aria-controls="1">
+                                        <button
+                                            class="accordion-button"
+                                            type="button"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target="#<?= $elemId?>"
+                                            aria-expanded
+                                            aria-controls="<?= $elemId?>"
+                                        >
                                             <span class="fw-bold h4"><?= $item["TITLE"]?></span>
                                         </button>
                                     </div>
                                     <div class="accordion-collapse collapse <?if($i === 0):?>show<?endif?>" id="<?= $elemId?>" data-bs-parent="#accordion-trust-management">
                                         <div class="accordion-body">
-                                            <?= $item["TEXT"]?>
+                                            <div class="rte rte--accordion">
+                                                <?= $item["TEXT"]?>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
