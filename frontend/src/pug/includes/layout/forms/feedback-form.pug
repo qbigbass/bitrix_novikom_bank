@@ -70,13 +70,18 @@ include ../../../components/forms/textarea
                     placeholder: "Введите почту",
                     type: "email",
                     required: true,
+                    pattern: "[a-zA-Z0-9._%\\+\\-]+@[a-zA-Z0-9.\\-]+\\.[a-zA-Z]{2,}",
+                    errorMessage: "Введите корректный адрес электронной почты",
                 },
                 {
                     id: "phone",
                     label: "Телефон",
                     placeholder: "+7",
+                    type: "tel",
                     required: false,
-                    mask: "phone"
+                    mask: "phone",
+                    pattern: "\\+7\\s\\(\\d{3}\\)\\s\\d{3}-\\d{2}-\\d{2}",
+                    errorMessage: "Введите корректный номер телефона",
                 },
             ],
             radiosBottom: [
@@ -99,6 +104,8 @@ include ../../../components/forms/textarea
                 placeholder: "Введите адрес",
                 type: "email",
                 required: true,
+                pattern: "[a-zA-Z0-9._%\\+\\-]+@[a-zA-Z0-9.\\-]+\\.[a-zA-Z]{2,}",
+                errorMessage: "Введите корректный адрес электронной почты",
             },
         },
         step2: {
@@ -128,9 +135,6 @@ include ../../../components/forms/textarea
                 placeholder: "Введите сообщение",
                 required: true,
             },
-            checkbox: {
-
-            }
         }
     }
 

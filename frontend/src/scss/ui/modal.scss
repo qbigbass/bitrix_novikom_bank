@@ -16,7 +16,7 @@
         --bs-modal-width: 65rem;
     }
 
-    @include use-media(desktop) {
+    @include use-media(laptop) {
         --bs-modal-width: 65.875rem;
     }
 }

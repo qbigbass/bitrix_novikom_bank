@@ -206,6 +206,7 @@ function checkValidity(form) {
 }
 
 function checkInputValidity(inputElement) {
+    console.log(inputElement.pattern)
     if (inputElement.validity.patternMismatch) {
         inputElement.setCustomValidity(inputElement.dataset.errorMessage)
     } else {
@@ -254,12 +255,15 @@ function toggleInputError(inputElement) {
 
 function toggleErrorSpan(inputElement, errorMessage) {
     const errorElement = inputElement.parentElement.querySelector('.invalid-feedback')
+
     if (errorMessage) {
         inputElement.classList.add('is-invalid')
+        inputElement.setAttribute('aria-invalid', 'true')
         inputElement.classList.remove('is-required')
         errorElement.textContent = errorMessage
     } else {
         inputElement.classList.remove('is-invalid')
+        inputElement.setAttribute('aria-invalid', 'false')
         inputElement.classList.remove('is-required')
         errorElement.textContent = ''
     }
