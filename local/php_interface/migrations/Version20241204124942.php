@@ -3,11 +3,11 @@
 namespace Sprint\Migration;
 
 
-class Version20241204092940 extends Version
+class Version20241204124942 extends Version
 {
     protected $author = "r.machmutov@astarus.ru";
 
-    protected $description = "ИБ Финансовым институтам / Каталог услуг";
+    protected $description = "Элементы ИБ Финансовым институтам / Каталог услуг";
 
     protected $moduleVersion = "4.15.1";
 
@@ -742,6 +742,55 @@ class Version20241204092940 extends Version
     ),
   ),
 ));
+            $helper->Iblock()->saveProperty($iblockId, array (
+  'NAME' => 'Цвет бордера у блока',
+  'ACTIVE' => 'Y',
+  'SORT' => '5000',
+  'CODE' => 'COLOR_BORDER',
+  'DEFAULT_VALUE' => '',
+  'PROPERTY_TYPE' => 'L',
+  'ROW_COUNT' => '1',
+  'COL_COUNT' => '30',
+  'LIST_TYPE' => 'L',
+  'MULTIPLE' => 'N',
+  'XML_ID' => NULL,
+  'FILE_TYPE' => '',
+  'MULTIPLE_CNT' => '5',
+  'LINK_IBLOCK_ID' => '0',
+  'WITH_DESCRIPTION' => 'N',
+  'SEARCHABLE' => 'N',
+  'FILTRABLE' => 'N',
+  'IS_REQUIRED' => 'N',
+  'VERSION' => '1',
+  'USER_TYPE' => NULL,
+  'USER_TYPE_SETTINGS' => 'a:0:{}',
+  'HINT' => '',
+  'VALUES' => 
+  array (
+    0 => 
+    array (
+      'VALUE' => 'blue30',
+      'DEF' => 'N',
+      'SORT' => '500',
+      'XML_ID' => 'blue30',
+    ),
+  ),
+  'FEATURES' => 
+  array (
+    0 => 
+    array (
+      'MODULE_ID' => 'iblock',
+      'FEATURE_ID' => 'DETAIL_PAGE_SHOW',
+      'IS_ENABLED' => 'N',
+    ),
+    1 => 
+    array (
+      'MODULE_ID' => 'iblock',
+      'FEATURE_ID' => 'LIST_PAGE_SHOW',
+      'IS_ENABLED' => 'N',
+    ),
+  ),
+));
             $helper->UserOptions()->saveElementForm($iblockId, array (
   'Параметры|edit1' => 
   array (
@@ -764,6 +813,7 @@ class Version20241204092940 extends Version
     'PROPERTY_BENEFITS' => 'Блок с бенефитами (иконка и текст)',
     'PROPERTY_STRATEGY' => 'Блок со стратегиями управления',
     'PROPERTY_COLOR_BG' => 'Цвет блока',
+    'PROPERTY_COLOR_BORDER' => 'Цвет бордера у блока',
   ),
   'Анонс|edit5' => 
   array (
