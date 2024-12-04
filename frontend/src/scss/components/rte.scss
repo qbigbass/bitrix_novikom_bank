@@ -3,9 +3,32 @@
     flex-direction: column;
     align-items: stretch;
     gap: 2.5rem;
+    margin-block: 2.5rem;
+
+    @include use-media(tablet) {
+        gap: 4rem;
+        margin-block: 4rem;
+    }
 
     @include use-media(tablet-album) {
-        gap: 3rem;
+        gap: 5rem;
+        margin-block: 5rem;
+    }
+
+    &:first-child {
+        margin-top: 0;
+    }
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    &:has(+ .row) {
+        margin-bottom: 0;
+    }
+
+    .col-12 + & {
+        margin-top: 0;
     }
 
     > div {
@@ -116,12 +139,29 @@
             > div > p,
             > div > ul,
             > div > img, {
-                max-width: 66.645% ;
+                max-width: 66.645%;
             }
         }
     }
 
     &--accordion {
+        gap: 1.5rem;
+        margin-block: 1.5rem;
+
+        @include use-media(tablet) {
+            gap: 2rem;
+            margin-block: 2rem;
+        }
+
+        @include use-media(tablet-album) {
+            gap: 3rem;
+            margin-block: 3rem;
+        }
+
+        a {
+            @extend .link;
+        }
+
         > div {
             gap: 1rem;
         }

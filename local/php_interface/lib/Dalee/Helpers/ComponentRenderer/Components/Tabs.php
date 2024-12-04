@@ -82,6 +82,8 @@ class Tabs implements ComponentInterface
                     "HTML",
                     "QUESTIONS",
                     "DOCUMENTS",
+                    "SHOW_TWO_ICONS_IN_ROW",
+                    "TARIFFS",
                 ],
                 "SET_BROWSER_TITLE" => "N",
                 "SET_LAST_MODIFIED" => "N",
