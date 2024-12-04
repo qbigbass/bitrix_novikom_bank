@@ -25,7 +25,7 @@ const resizePolygonChatbotPopover = (el) => {
     }
 }
 
-export function initChatBot() {
+function initChatBot() {
     const chatBotEl = document.querySelector(CHATBOT_ELEMS.root);
 
     if (!chatBotEl) return;

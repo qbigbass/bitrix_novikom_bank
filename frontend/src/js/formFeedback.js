@@ -10,7 +10,7 @@ const FEEDBACK_ELEMS = {
     inputReplyEmail: 'input[name="reply-email"]',
 }
 
-export function initFormFeedback() {
+function initFormFeedback() {
     const formFeedback = document.querySelector(FEEDBACK_ELEMS.formFeedback)
 
     if (!formFeedback) return

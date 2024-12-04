@@ -1,5 +1,3 @@
-import $ from "../vendors/jquery.min";
-
 const MENU_CLASSES = {
     links: '.js-dropdown-link',
     dropDownNav: '.js-dropdown-nav',
@@ -10,7 +8,7 @@ const MENU_CLASSES = {
     hideXlClass: 'd-xl-none'
 }
 
-function setTabIndex(elem, value) {
+function setTabIdx(elem, value) {
     const inputs = $(elem).find('input');
     const links = $(elem).find('a');
 
@@ -36,7 +34,7 @@ function hideAllDropDownMenu() {
         $allDropDownNav.removeClass(MENU_CLASSES.openClass);
         closeAllLinks();
         for (let i = 0; i < $allDropDownNav.length; i++) {
-            setTabIndex($allDropDownNav[i], "-1")
+            setTabIdx($allDropDownNav[i], "-1")
         }
     }
 }
@@ -47,10 +45,10 @@ function toggleDropDownMenu(id, open) {
 
     if (open) {
         dropDownNav.addClass(MENU_CLASSES.openClass);
-        setTabIndex(dropDownNav, "0")
+        setTabIdx(dropDownNav, "0")
     } else {
         dropDownNav.removeClass(MENU_CLASSES.openClass);
-        setTabIndex(dropDownNav, "-1")
+        setTabIdx(dropDownNav, "-1")
     }
 }
 
@@ -90,7 +88,7 @@ function initDropdownMenu() {
     });
 }
 
-export function hideDropDownMenu() {
+function hideDropDownMenu() {
   const dropDown = document.querySelector(MENU_CLASSES.dropDownMenu);
 
   if (!dropDown) return false;
@@ -110,7 +108,4 @@ export function hideDropDownMenu() {
   } else {
     dropDown.classList.remove(MENU_CLASSES.hideXlClass);
   }
-
 }
-
-export default initDropdownMenu;

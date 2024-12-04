@@ -1,6 +1,3 @@
-import $ from "jquery";
-import AirDatepicker from '../vendors/airdatepicker';
-
 const DATEPICKER_CLASSES = {
     root: '.js-date',
     todayIsMaxDate: 'js-date--today-max',
@@ -11,7 +8,7 @@ const DATEPICKER_CLASSES = {
 const datepickerPrevButton = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"> <path stroke="#55246A" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m14.5 6-5 6 5 6"/> </svg>';
 const datepickerNextButton = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"> <path stroke="#55246A" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m9.5 6 5 6-5 6"/> </svg>';
 
-const defaultSelectOptions = {
+const defaultDatepickerOptions = {
     multipleDatesSeparator: ' - ',
     prevHtml: datepickerPrevButton,
     nextHtml: datepickerNextButton,
@@ -44,7 +41,7 @@ const defaultSelectOptions = {
 
 function initDatepicker() {
     $(DATEPICKER_CLASSES.root).each(function(index, element) {
-        const options = {...defaultSelectOptions};
+        const options = {...defaultDatepickerOptions};
         if ($(this).hasClass(DATEPICKER_CLASSES.isRange)) {
             options.range = true;
         }
@@ -58,5 +55,3 @@ function initDatepicker() {
         new AirDatepicker(element, options);
     });
 }
-
-export default initDatepicker;

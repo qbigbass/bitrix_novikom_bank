@@ -13,7 +13,7 @@ const UPLOAD_ATTR = {
     maxSize: 'data-max-size',
 }
 
-export function initUploadFile() {
+function initUploadFile() {
     const uploads = document.querySelectorAll(UPLOAD_ELEMS.root)
 
     if (!uploads.length) return

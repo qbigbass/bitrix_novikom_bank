@@ -1,10 +1,10 @@
-export const STEPS_ELEMS = {
+const STEPS_ELEMS = {
     step: '[data-form-step]',
     buttonNext: '[data-form-step-button-next]',
     buttonPrev: '[data-form-step-button-prev]',
 }
 
-export function initFormSteps() {
+function initFormSteps() {
     const buttonNextStep = document.querySelectorAll(STEPS_ELEMS.buttonNext)
     const buttonPrevStep = document.querySelectorAll(STEPS_ELEMS.buttonPrev)
 

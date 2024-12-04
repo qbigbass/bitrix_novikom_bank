@@ -1,6 +1,4 @@
-import {MEDIA_QUERIES} from "../constants";
-
-const ELEMENTS = {
+const ELEMENTS_TAB = {
     collapsedSection: '.js-collapsed-mobile',
     collapse: '.collapse',
     polygonContainer: '.js-polygon-container-polygon',
@@ -10,7 +8,7 @@ const ELEMENTS = {
 
 const updatePolygonInTabContent = (el) => {
     const event = new Event("resize", { bubbles: true, composed: true });
-    el.querySelectorAll(ELEMENTS.polygonContainer).forEach((polygon) => polygon.dispatchEvent(event));
+    el.querySelectorAll(ELEMENTS_TAB.polygonContainer).forEach((polygon) => polygon.dispatchEvent(event));
 };
 
 let tabContentIsVisible = (el) => el.clientHeight !== 0;
@@ -29,7 +27,7 @@ const resizePolygonInTabContent = (el) => {
     }
 }
 
-export function initTabsContent() {
+function initTabsContent() {
     const tabsCollapseArray = document.querySelectorAll('.tabs-with-content .collapse');
 
     tabsCollapseArray.forEach((el) => {
@@ -47,8 +45,8 @@ export function initTabsContent() {
         el.addEventListener('hide.bs.collapse', (event) => linkEl.classList.remove('active'));
     });
 
-    const collapsedSections = document.querySelectorAll(ELEMENTS.collapsedSection);
-    const tabsSections = document.querySelectorAll(ELEMENTS.tabContent);
+    const collapsedSections = document.querySelectorAll(ELEMENTS_TAB.collapsedSection);
+    const tabsSections = document.querySelectorAll(ELEMENTS_TAB.tabContent);
     tabsSections.forEach(tab => {
         resizePolygonInTabContent(tab);
     });
@@ -56,7 +54,7 @@ export function initTabsContent() {
     if (!isTabletOrSmaller) {return false;}
 
     collapsedSections.forEach((el) => {
-        const collapsedContent = el.querySelector(ELEMENTS.collapse);
+        const collapsedContent = el.querySelector(ELEMENTS_TAB.collapse);
         resizePolygonInTabContent(collapsedContent);
     });
 }
