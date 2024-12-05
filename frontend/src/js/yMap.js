@@ -34,5 +34,3 @@ function initYMap() {
 
   ymaps.ready(initMap);
 }
-
-export default initYMap;

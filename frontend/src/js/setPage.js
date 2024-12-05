@@ -1,5 +1,3 @@
-import $ from "../vendors/jquery.min";
-
 const TABS_DATA = {
     buttons: '[data-tab-button-page]',
 }
@@ -36,5 +34,3 @@ async function setPage() {
         }
     });
 }
-
-export default setPage;

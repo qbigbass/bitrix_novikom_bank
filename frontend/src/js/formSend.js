@@ -1,6 +1,4 @@
-import {STEPS_ELEMS} from './formSteps';
-
-export const FORM_ELEMS = {
+const FORM_ELEMS = {
     form: '[data-form]',
     validateGroup: '[data-form-validate-group]',
     button: '[data-form-button]',
@@ -33,7 +31,7 @@ const MESSAGE_ATTR = {
     infoErrorContent: 'data-error-info',
 }
 
-export async function initFormSend() {
+async function initFormSend() {
     const forms = document.querySelectorAll(FORM_ELEMS.form)
 
     if (!forms.length) return;
