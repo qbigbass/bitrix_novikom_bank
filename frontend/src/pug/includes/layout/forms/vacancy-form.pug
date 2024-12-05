@@ -28,13 +28,18 @@ include ../../../components/forms/upload-file
                 placeholder: "Введите почту",
                 type: "email",
                 required: true,
+                pattern: "[a-zA-Z0-9._%\\+\\-]+@[a-zA-Z0-9.\\-]+\\.[a-zA-Z]{2,}",
+                errorMessage: "Введите корректный адрес электронной почты",
             },
             {
                 id: "phone",
                 label: "Телефон",
                 placeholder: "+7",
+                type: "tel",
                 required: true,
-                mask: "phone"
+                mask: "phone",
+                pattern: "\\+7\\s\\(\\d{3}\\)\\s\\d{3}-\\d{2}-\\d{2}",
+                errorMessage: "Введите корректный номер телефона",
             },
             {
                 id: "cvLink",
