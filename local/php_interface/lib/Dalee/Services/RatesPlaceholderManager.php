@@ -11,20 +11,20 @@ use COption;
  * Менеджер плейсхолдеров для замены в контенте.<br><br>
  *
  * Паттерн создания плейсхолдеров для значений:<br><br>
- * #{product}&lowbar;{range}&lowbar;{property}|{name}|{currency}#<br><br>
+ * #{product}&lowbar;{range}&lowbar;{property}|{code}|{currency}#<br><br>
  * {product} - loan, mortgage, deposit<br>
  * {range} - min, max<br>
  * {property} - sum, rate, term<br>
- * {name} - Название продукта, к которому привязан элемент с данными из ИБ ставок<br>
+ * {code} - Символьный код продукта, к которому привязан элемент с данными из ИБ ставок<br>
  * {currency} - rub, usd, eur, cny<br><br>
  * Примеры:<br>
- * #loan_max_term|Кредит на рефинансирование для зарплатных клиентов#<br>
- * #deposit_min_sum|До востребования|rub#<br><br>
+ * #loan_max_term|kredit-na-lyubye-tseli-dlya-strategicheskikh-klientov#<br>
+ * #deposit_min_sum|do-vostrebovaniya|rub#<br><br>
  * Паттерн создания плейсхолдеров для таблиц:<br><br>
- * #{product}_table|{name}|{currency1},{currency2}...#<br><br>
+ * #{product}_table|{code}|{currency1},{currency2}...#<br><br>
  * Примеры для вывода таблицы по вкладам:<br>
- * #deposit_table|Рантье|rub,eur,usd#<br>
- * #deposit_table|До востребования|rub#<br><br>
+ * #deposit_table|rante|rub,eur,usd#<br>
+ * #deposit_table|do-vostrebovaniya|rub#<br><br>
  *
  * Используемые инфоблоки:
  * - loans_rates: Для работы с данными по кредитам.
