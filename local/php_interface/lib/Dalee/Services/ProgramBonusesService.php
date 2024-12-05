@@ -12,7 +12,7 @@ class ProgramBonusesService
 
     private function __construct(PropertyListHelper $helper)
     {
-        $iblockId = iblock('program_bonuses_rates_ru');
+        $iblockId = iblock('program_bonuses_rates');
         $this->propertyCardTypeList = $helper->getPropertyListValues($iblockId, 'CARD_TYPE');
         $this->propertyCardCategoryList = $helper->getPropertyListValues($iblockId, 'CARD_CATEGORY');
         $this->bonusesRates = $this->getBonusesRatesByGroup($iblockId);

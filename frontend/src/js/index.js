@@ -309,7 +309,6 @@ function initMask() {
 
 document.addEventListener('DOMContentLoaded', () => {
     initDropdownMenu();
-    initDatepicker();
     setVh();
     initSwiperMenu();
     initButtonNavMobile();
@@ -322,10 +321,12 @@ document.addEventListener('DOMContentLoaded', () => {
     initTabsContent();
     initInputSlider();
     showMoreContent();
+    initDatepicker();
     setPage();
     initFormSteps();
     initFormFeedback();
     initFormSend();
+    initCaptcha();
     initUploadFile();
     initMask();
     initResizePolygonAccordions();

@@ -27,36 +27,43 @@ function initUploadFile() {
         const maxFiles = Number(input.getAttribute(UPLOAD_ATTR.maxFiles))
         const maxSize = Number(input.getAttribute(UPLOAD_ATTR.maxSize))
 
+        const dataTransfer = new DataTransfer();
+
         uploadButton.onclick = () => {
             input.click()
         }
 
         input.addEventListener('change', function (e) {
-            const files = e.target.files
+            const file = e.target.files[0]
 
-            if (files.length > maxFiles) {
-                input.classList.add('is-invalid')
-                errorElement.textContent = `Вы превысили лимит выбора файлов: можно выбрать не более ${maxFiles} файлов.`
+            if (!file) return
+
+            const fileName = file.name
+            if (file.size > maxSize) {
+                errorElement.textContent = `Размер файла ${fileName} превышен, выберите файл меньше ${bytesToMegabytes(maxSize)} МБ.`
                 !errorElement.classList.contains('d-block') && errorElement.classList.add('d-block')
+                e.preventDefault()
                 return
             }
 
-            [...files].forEach(file => {
-                const fileName = file.name
+            dataTransfer.items.add(file)
+            uploadBox.insertAdjacentHTML('beforebegin', renderFile(fileName))
 
-                if (file.size > maxSize) {
-                    errorElement.textContent = `Размер файла ${fileName} превышен, выберите файл меньше ${bytesToMegabytes(maxSize)} МБ.`
-                    !errorElement.classList.contains('d-block') && errorElement.classList.add('d-block')
-                    return
-                }
-
-                errorElement.classList.contains('d-block') && errorElement.classList.remove('d-block')
-
-                uploadBox.insertAdjacentHTML('beforebegin', renderFile(fileName))
-            })
+            updateFileList(input, dataTransfer, uploadButton, maxFiles, errorElement)
         })
 
-        initRemoveFile(upload)
+        upload.addEventListener('click', (e) => {
+            if (e.target.closest('[data-upload-delete]')) {
+                const items = [...upload.querySelectorAll('[data-upload-file]')]
+                const targetItem = e.target.closest('[data-upload-file]')
+                const indexTargetItem = items.indexOf(targetItem)
+
+                targetItem.remove()
+                dataTransfer.items.remove(dataTransfer.items[indexTargetItem])
+
+                updateFileList(input, dataTransfer, uploadButton, maxFiles, errorElement)
+            }
+        })
     })
 }
 
@@ -64,22 +71,19 @@ function renderFile(fileName) {
     return (
         `
             <div class="upload-file__item btn btn-link btn-icon" data-upload-file>
-                <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><use xlink:href="img/svg-sprite.svg#icon-doc"></use></svg>
+                <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-doc"></use></svg>
                 ${fileName}
                 <button type="button" class="icon size-m violet-100" data-upload-delete>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><use xlink:href="img/svg-sprite.svg#icon-close"></use></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-close"></use></svg>
                 </button>
             </div>`
     )
 }
 
-function initRemoveFile(upload) {
-    upload.addEventListener('click', (e) => {
-        if (e.target.closest('[data-upload-delete]')) {
-            const item = e.target.closest('[data-upload-file]')
-            item.remove()
-        }
-    })
+function updateFileList(input, dataTransfer, uploadButton, maxFiles, errorElement) {
+    errorElement.classList.contains('d-block') && errorElement.classList.remove('d-block')
+    input.files = dataTransfer.files
+    uploadButton.disabled = dataTransfer.files.length === maxFiles
 }
 
 function bytesToMegabytes(bytes) {

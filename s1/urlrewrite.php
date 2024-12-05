@@ -120,6 +120,13 @@ $arUrlRewrite = [
         'SORT' => 100,
     ],
     [
+        'CONDITION' => '#^/financial-institutions/#',
+        'RULE' => '',
+        'ID' => 'bitrix:catalog',
+        'PATH' => '/financial-institutions/index.php',
+        'SORT' => 100,
+    ],
+    [
         'CONDITION' => '#^/loans/#',
         'RULE' => '',
         'ID' => 'bitrix:news',
