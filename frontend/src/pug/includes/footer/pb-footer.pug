@@ -1,10 +1,11 @@
 footer.pb-footer
     .container
-        .row.pb-footer__content.g-4.align-items-center
-            .col-lg-6
-                .row.g-4.justify-content-center
-                    img(src="img/logo-pb-footer.svg", alt="Logo" width="196" height="56")
-                    span.text-s.dark-50 Генеральная лицензия № 2546 от 20 ноября 2014 года <br>© 2009 – 2024 АО АКБ «НОВИКОМБАНК»
-            .col-lg-6.pb-footer__content-phone     
-                p.text-l +7 (800) 250-70-07
-                p.text-m 119180 Москва,ул. Большая Полянка д. 50/1 стр. 1                 
+        .row.row-gap-5
+            .col-12.col-md-6
+                .d-flex.flex-column.row-gap-5.flex-lg-row.gap-lg-6.align-items-lg-center
+                    img(src="img/logo-pb-footer.svg", alt="Новиком" width="196" height="56" loading="lazy")
+                    p.pb-footer__copyright.m-0 Генеральная лицензия № 2546 от 20 ноября 2014 года <br>© 2009 – 2024 АО АКБ «НОВИКОМБАНК»
+            .col-12.col-md-6
+                .d-flex.flex-column.row-gap-2.align-items-start.align-items-lg-end
+                    a(href="+78002507007").pb-footer__text.pb-footer__text--phone +7 (800) 250-70-07
+                    p.m-0.pb-footer__text 119180 Москва,ул. Большая Полянка д. 50/1 стр. 1
