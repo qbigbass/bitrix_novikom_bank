@@ -30,7 +30,7 @@ export function initMask() {
 
     $inputInn.mask('000000000000');
 
-    $inputLatin.on('input', function() {
+    $inputLatin.on('input', function () {
         this.value = this.value.replace(/[^a-zA-Z\s]/g, '');
     });
 }

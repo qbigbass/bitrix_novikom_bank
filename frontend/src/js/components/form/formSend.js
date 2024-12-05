@@ -8,6 +8,8 @@ export const FORM_ELEMS = {
     checkbox: '[data-form-checkbox]',
     error: '[data-form-error]',
     radio: 'input[type="radio"]',
+    upload: '[data-upload]',
+    uploadFile: '[data-upload-file]'
 }
 
 const MODALS_ID = {
@@ -38,7 +40,11 @@ export async function initFormSend() {
 
     forms.forEach(form => {
         const validateGroup = form.querySelectorAll(FORM_ELEMS.validateGroup)
-        const modalId = form.closest('.modal').getAttribute('id');
+        const modalEl = form.closest('.modal')
+        const modalId = modalEl.getAttribute('id')
+        const customEvent = new CustomEvent('openFormModal', {
+            bubbles: true,
+        })
 
         if (validateGroup.length) {
             validateGroup.forEach(formGroup => {
@@ -50,6 +56,10 @@ export async function initFormSend() {
 
         form.addEventListener('submit', (event) => {
             handleFormSubmit(event, modalId)
+        })
+
+        modalEl.addEventListener('show.bs.modal', (event) => {
+            modalEl.dispatchEvent(customEvent);
         })
     })
 }
@@ -129,14 +139,22 @@ function onError(form, modalId) {
 }
 
 function resetForm(form) {
-    const inputList = Array.from(form.querySelectorAll(FORM_ELEMS.input))
-    const checkboxElement = form.querySelector(FORM_ELEMS.checkbox)
+    form.reset()
 
-    inputList.forEach((inputElement) => {
-        inputElement.value = ''
-    });
+    const buttons = form.querySelectorAll(FORM_ELEMS.button)
+    const uploadEl = form.querySelector(FORM_ELEMS.upload)
 
-    if (checkboxElement) checkboxElement.checked = false
+    buttons.forEach(button => {
+        button.disabled = true
+    })
+
+    if (uploadEl) {
+        const uploadFiles = uploadEl.querySelectorAll(FORM_ELEMS.uploadFile);
+
+        uploadFiles.forEach(file => {
+            file.remove()
+        })
+    }
 }
 
 function resetStep(form) {
@@ -246,12 +264,15 @@ function toggleInputError(inputElement) {
 
 function toggleErrorSpan(inputElement, errorMessage) {
     const errorElement = inputElement.parentElement.querySelector('.invalid-feedback')
+
     if (errorMessage) {
         inputElement.classList.add('is-invalid')
+        inputElement.setAttribute('aria-invalid', 'true')
         inputElement.classList.remove('is-required')
         errorElement.textContent = errorMessage
     } else {
         inputElement.classList.remove('is-invalid')
+        inputElement.setAttribute('aria-invalid', 'false')
         inputElement.classList.remove('is-required')
         errorElement.textContent = ''
     }

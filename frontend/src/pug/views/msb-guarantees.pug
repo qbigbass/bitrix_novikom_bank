@@ -60,7 +60,7 @@ block content
             ],
             footer: [
                 {
-                    title: 'Индивидуальный <br>подход',
+                    title: 'Индивидуальный <br class="d-block">подход',
                     description: 'Банк готов согласовать любую форму гарантии, предложенную заказчиком',
                     colorClass: 'dark-0',
                     spriteData: {
@@ -69,7 +69,7 @@ block content
                     },
                 },
                 {
-                    title: 'Гарантии в пользу <br>госкорпораций',
+                    title: 'Гарантии в пользу <br class="d-block">госкорпораций',
                     description: 'Упрощенное рассмотрение заявок на гарантии в пользу государственных корпораций',
                     colorClass: 'dark-0',
                     spriteData: {
@@ -78,7 +78,7 @@ block content
                     },
                 },
                 {
-                    title: 'Минимальный <br>пакет документов',
+                    title: 'Минимальный <br class="d-block">пакет документов',
                     description: 'Всего 8 документов для принятия решения',
                     colorClass: 'dark-0',
                     spriteData: {
@@ -201,11 +201,11 @@ block content
                         +nav-tabs(stepsTabsList)
                 .tab-content
                     #online.tab-pane.fade.show.active(role="tabpanel" aria-labelledby="loan" tabindex="0")
-                        .row.row-gap-6.px-lg-6
+                        .row.row-gap-6.row-gap-lg-7.gx-xl-6
                             +stepper(allSteps, allSteps.length, "yellow")
 
                     #in-bank.tab-pane.fade(role="tabpanel" aria-labelledby="refinance" tabindex="0")
-                        .row.row-gap-6.px-lg-6
+                        .row.row-gap-6.row-gap-lg-7.gx-xl-6
                             +stepper(allSteps, allSteps.length, "yellow")
 
     section.section-layout.bg-blue-10

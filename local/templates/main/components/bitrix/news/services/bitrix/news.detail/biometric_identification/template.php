@@ -26,7 +26,7 @@ $helper = new ComponentHelper($component);
 )?>
 
 <?if(!empty($arResult['DISPLAY_PROPERTIES']['TEXT_BLOCK_1']['~VALUE']['TEXT'])): ?>
-    <section class="section-layout pb-0 px-lg-6">
+    <section class="section-layout px-lg-6">
         <div class="container">
             <div class="row row-gap-5 row-gap-md-6 row-gap-lg-7">
                 <?if(!empty($arResult['DISPLAY_PROPERTIES']['TEXT_BLOCK_HEADING_1']['~VALUE'])): ?>

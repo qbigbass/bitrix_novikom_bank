@@ -27,7 +27,7 @@ $headerView->render(
 ?>
 
 
-<section class="section-catalog d-flex flex-column gap-7 py-6 py-sm-9 py-md-11">
+<section class="section-catalog d-flex flex-column gap-7 py-6 py-sm-9 py-md-11" id="catalog-tabs">
 
     <!-- Табы -->
     <section class="section-catalog__tabs">

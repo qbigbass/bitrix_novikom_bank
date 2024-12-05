@@ -20,6 +20,7 @@ import initHeaderSearchForm from "./components/headerSearchForm.js";
 import initOffices from "./components/offices";
 import initYMap from "./components/yMap";
 import {initChatBot} from "./components/chatBot";
+import {initCaptcha} from "./components/form/captcha";
 
 document.addEventListener('DOMContentLoaded', () => {
     initDropdownMenu();
@@ -40,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initFormSteps();
     initFormFeedback();
     initFormSend();
+    initCaptcha();
     initUploadFile();
     initMask();
     initResizePolygonAccordions();
