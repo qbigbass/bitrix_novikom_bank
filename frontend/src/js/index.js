@@ -302,9 +302,29 @@ function initMask() {
 
     $inputInn.mask('000000000000');
 
-    $inputLatin.on('input', function() {
+    $inputLatin.on('input', function () {
         this.value = this.value.replace(/[^a-zA-Z\s]/g, '');
     });
+}
+
+const CAPTCHA_ELEMS = {
+    audioButton: ".captcha-audio-btn"
+}
+
+function initCaptcha() {
+    const captchaAudioButtons = document.querySelectorAll(CAPTCHA_ELEMS.audioButton)
+
+    if (!captchaAudioButtons.length) return
+
+    captchaAudioButtons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+            btn.classList.add('is-active')
+
+            setTimeout(() => {
+                btn.classList.remove('is-active')
+            }, 5500)
+        })
+    })
 }
 
 document.addEventListener('DOMContentLoaded', () => {
