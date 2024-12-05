@@ -3,40 +3,39 @@
 $aMenuLinks = [
     [
         'SMS-информирование',
-        '/services/sms-informirovanie/',
+        'sms-informirovanie/',
         [],
         []
     ],
     [
         'Биометрическая идентификация',
-        '/services/biometricheskaya-identifikatsiya/',
+        'biometricheskaya-identifikatsiya/',
         [],
         []
     ],
     [
         'Интернет-банк и Мобильное приложение',
-        '/services/internet-bank-i-mobilnoe-prilozhenie/',
+        'internet-bank-i-mobilnoe-prilozhenie/',
         [],
         []
     ],
     [
         'Перечень страховых компаний',
-        '/services/perechen-strakhovykh-kompaniy/',
+        'perechen-strakhovykh-kompaniy/',
         [],
         []
     ],
     [
         'Программы страхования',
-        '/services/programmy-strakhovaniya/',
+        'programmy-strakhovaniya/',
         [],
         []
     ],
     [
         'Прочие сервисы',
-        '/services/prochie-servisy/',
+        'prochie-servisy/',
         [],
         []
     ],
 ];
-
 ?>
