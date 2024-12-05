@@ -8,6 +8,8 @@ export const FORM_ELEMS = {
     checkbox: '[data-form-checkbox]',
     error: '[data-form-error]',
     radio: 'input[type="radio"]',
+    upload: '[data-upload]',
+    uploadFile: '[data-upload-file]'
 }
 
 const MODALS_ID = {
@@ -137,14 +139,22 @@ function onError(form, modalId) {
 }
 
 function resetForm(form) {
-    const inputList = Array.from(form.querySelectorAll(FORM_ELEMS.input))
-    const checkboxElement = form.querySelector(FORM_ELEMS.checkbox)
+    form.reset()
 
-    inputList.forEach((inputElement) => {
-        inputElement.value = ''
-    });
+    const buttons = form.querySelectorAll(FORM_ELEMS.button)
+    const uploadEl = form.querySelector(FORM_ELEMS.upload)
 
-    if (checkboxElement) checkboxElement.checked = false
+    buttons.forEach(button => {
+        button.disabled = true
+    })
+
+    if (uploadEl) {
+        const uploadFiles = uploadEl.querySelectorAll(FORM_ELEMS.uploadFile);
+
+        uploadFiles.forEach(file => {
+            file.remove()
+        })
+    }
 }
 
 function resetStep(form) {
@@ -254,12 +264,15 @@ function toggleInputError(inputElement) {
 
 function toggleErrorSpan(inputElement, errorMessage) {
     const errorElement = inputElement.parentElement.querySelector('.invalid-feedback')
+
     if (errorMessage) {
         inputElement.classList.add('is-invalid')
+        inputElement.setAttribute('aria-invalid', 'true')
         inputElement.classList.remove('is-required')
         errorElement.textContent = errorMessage
     } else {
         inputElement.classList.remove('is-invalid')
+        inputElement.setAttribute('aria-invalid', 'false')
         inputElement.classList.remove('is-required')
         errorElement.textContent = ''
     }

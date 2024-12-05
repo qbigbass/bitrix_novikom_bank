@@ -31,9 +31,7 @@ $headerView->render(
 ?>
 <section class="section-layout py-lg-11">
     <div class="container">
-        <div class="rte rte--w-xxl-60 px-lg-6 mb-6 mb-lg-7">
-            <? $placeholderManager->renderHtml($arResult['~DETAIL_TEXT']); ?>
-        </div>
+        <? $placeholderManager->renderHtml($arResult['~DETAIL_TEXT']); ?>
     </div>
 </section>
 <?

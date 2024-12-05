@@ -4,7 +4,6 @@
 use Dalee\Services\ContentPlaceholderManager;
 
 $properties = [
-    'IMAGES' => fn($value) => '<img src="' . $value . '" class="mobile-element-full-width" alt="" loading="lazy">',
     'QUOTE' => fn($value) => '
         <div class="polygon-container js-polygon-container quote-polygon-container">
             <div class="polygon-container__content quote-polygon-container__content">

@@ -186,20 +186,26 @@ block content
                 .col-12
                     .ps-lg-6
                         +tabs-simple(additionalTabsList, false)
-                    .tab-content.mt-4.mt-md-6.mt-lg-7.ps-lg-6
+                    .tab-content.mt-4.mt-md-6.mt-lg-7
                         #additional-info-1.tab-pane.fade(aria-labelledby="additional-info-1" tabindex="0" role="tabpanel")
-                            p Описание
+                            .row.rte.rte--accordion
+                                .col-12
+                                    p Описание
                         #additional-info-2.tab-pane.fade.show.active(aria-labelledby="additional-info-2" tabindex="0" role="tabpanel")
-                            .row.row-gap-6.row-gap-lg-7
+                            .row.rte.rte--accordion
                                 .col-12
-                                    h4.fw-bold.mb-4 Для начала работы с системой «Клиент-Банк» необходимо:
-                                    +stepper(allSteps, allSteps.length, "yellow")
-                                .col-12
+                                    .px-lg-6
+                                        h4.fw-bold Для начала работы с системой «Клиент-Банк» необходимо:
+                                    .px-lg-6
+                                        +stepper(allSteps, allSteps.length, "yellow")
+                                .col-12.mw-100
                                     +polygon-container("yellow-100")
                                         +helper("img/business-additional-info.png", "bg-blue-10")
                                             p.text-l.mb-0 В случае если УКЭП нет, необходимо воспользоваться услугами удостоверяющего центра СКБ «Контур», оформив соответствующий запрос на сайте УЦ «Контур» или по телефону 8 800 500-50-80.
                         #additional-info-3.tab-pane.fade(aria-labelledby="additional-info-3" tabindex="0" role="tabpanel")
-                            p Памятка
+                            .row.rte.rte--accordion
+                                .col-12
+                                    p Памятка
         +pattern-bg('section-2', 'light', 'pattern-bg--hide-mobile')
 
     section.section-layout.bg-blue-10

@@ -70,13 +70,18 @@ include ../../../components/forms/textarea
                     placeholder: "Введите почту",
                     type: "email",
                     required: true,
+                    pattern: "[a-zA-Z0-9._%\\+\\-]+@[a-zA-Z0-9.\\-]+\\.[a-zA-Z]{2,}",
+                    errorMessage: "Введите корректный адрес электронной почты",
                 },
                 {
                     id: "phone",
                     label: "Телефон",
                     placeholder: "+7",
+                    type: "tel",
                     required: false,
-                    mask: "phone"
+                    mask: "phone",
+                    pattern: "\\+7\\s\\(\\d{3}\\)\\s\\d{3}-\\d{2}-\\d{2}",
+                    errorMessage: "Введите корректный номер телефона",
                 },
             ],
             radiosBottom: [
@@ -99,6 +104,8 @@ include ../../../components/forms/textarea
                 placeholder: "Введите адрес",
                 type: "email",
                 required: true,
+                pattern: "[a-zA-Z0-9._%\\+\\-]+@[a-zA-Z0-9.\\-]+\\.[a-zA-Z]{2,}",
+                errorMessage: "Введите корректный адрес электронной почты",
             },
         },
         step2: {
@@ -128,9 +135,6 @@ include ../../../components/forms/textarea
                 placeholder: "Введите сообщение",
                 required: true,
             },
-            checkbox: {
-
-            }
         }
     }
 
@@ -146,7 +150,7 @@ form(action="/" method="POST" novalidate id="feedback-form" data-form data-form-
                 })
             fieldset.application-form__col.col-12
                 legend.form-label.mb-3 Вы обращаетесь как
-                .d-flex.flex-column.flex-md-row.flex-wrap.row-gap-3.row-gap-lg-4.column-gap-md-5.column-gap-lg-6
+                .d-flex.flex-wrap.row-gap-3.row-gap-lg-4.column-gap-6.column-gap-md-5.column-gap-lg-6
                     each item, index in step1.radiosTop
                         +radio(item, index, feedbackForm.formName)
             each item in step1.inputs
@@ -154,7 +158,7 @@ form(action="/" method="POST" novalidate id="feedback-form" data-form data-form-
                     +input(item, feedbackForm.formName)
             fieldset.application-form__col.col-12
                 legend.form-label.mb-3 Получить ответ на E-mail
-                .d-flex.flex-column.flex-md-row.flex-wrap.row-gap-3.row-gap-lg-4.column-gap-md-5.column-gap-lg-6
+                .d-flex.flex-wrap.row-gap-3.row-gap-lg-4.column-gap-6.column-gap-md-5.column-gap-lg-6
                     each item, index in step1.radiosBottom
                         +radio(item, index, feedbackForm.formName)
             .application-form__col.col-12(hidden)
@@ -173,7 +177,7 @@ form(action="/" method="POST" novalidate id="feedback-form" data-form data-form-
                 })
             fieldset.application-form__col.col-12
                 legend.visually-hidden Причина обращения
-                .d-flex.flex-column.flex-md-row.flex-wrap.row-gap-3.row-gap-lg-4.column-gap-md-5.column-gap-lg-6
+                .d-flex.flex-wrap.row-gap-3.row-gap-lg-4.column-gap-6.column-gap-md-5.column-gap-lg-6
                     each item, index in step2.radiosTop
                         +radio(item, index, feedbackForm.formName)
             .application-form__col.col-12
