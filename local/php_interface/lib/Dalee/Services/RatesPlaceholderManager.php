@@ -141,7 +141,7 @@ class RatesPlaceholderManager
                 'filter' => [
                     'IBLOCK_ID' => $iblockId,
                 ],
-                'select' => ['ID', 'NAME'],
+                'select' => ['ID', 'CODE'],
             ])->fetchAll();
 
             $elementsWithProps = array_combine(
@@ -169,10 +169,10 @@ class RatesPlaceholderManager
             'filter' => [
                 'IBLOCK_ID' => iblock($iblockCode),
             ],
-            'select' => ['ID', 'NAME'],
+            'select' => ['ID', 'CODE'],
         ])->fetchAll();
 
-        return array_column($elements, 'NAME', 'ID');
+        return array_column($elements, 'CODE', 'ID');
     }
 
     /**
@@ -181,8 +181,8 @@ class RatesPlaceholderManager
      */
     private function fetchContentPlaceholders(string $content): array
     {
-        preg_match_all('/#(?<product>\w+)_(?<range>min|max)_(?<property>rate|sum|term)\|(?<name>[^#|]*)\|?(?<currency>\w+)?#/', $content, $matches, PREG_SET_ORDER);
-        preg_match_all('/#(?<product>\w+)_table\|(?<name>[^|]+)\|(?<currencies>[^#]+)#/', $content, $matchesTable, PREG_SET_ORDER);
+        preg_match_all('/#(?<product>\w+)_(?<range>min|max)_(?<property>rate|sum|term)\|(?<code>[^#|]*)\|?(?<currency>\w+)?#/', $content, $matches, PREG_SET_ORDER);
+        preg_match_all('/#(?<product>\w+)_table\|(?<code>[^|]+)\|(?<currencies>[^#]+)#/', $content, $matchesTable, PREG_SET_ORDER);
 
         if (!empty($matchesTable)) {
             foreach ($matchesTable as &$match) {
@@ -210,9 +210,9 @@ class RatesPlaceholderManager
      */
     private function replacePlaceholders(string &$content, array $replacements): void
     {
-        foreach ($replacements as $key => [$placeholder, $product, $range, $property, $name, $currency]) {
+        foreach ($replacements as $key => [$placeholder, $product, $range, $property, $code, $currency]) {
             if ($key != 'tables') {
-                $value = $this->calculatedValues[$this->entriesToProcess[$product]][$name] ?? null;
+                $value = $this->calculatedValues[$this->entriesToProcess[$product]][$code] ?? null;
                 if (!empty($value)) {
                     $content = !empty($currency)
                         ? str_replace($placeholder, $value[$currency][$range . '_' . $property], $content)
@@ -220,7 +220,7 @@ class RatesPlaceholderManager
                 }
             }
         }
-        foreach ($replacements['tables'] as [$placeholder, $product, $name, $currencies, $table]) {
+        foreach ($replacements['tables'] as [$placeholder, $product, $code, $currencies, $table]) {
             if (!empty($table)) {
                 $content = str_replace($placeholder, $table, $content);
             }
@@ -238,12 +238,12 @@ class RatesPlaceholderManager
         $calculated = [];
 
         foreach ($elements as $item) {
-            $name = strip_tags($linkedElements[$item['PROPERTIES']['LINK']['VALUE']]) ?? $item['NAME'];
+            $code = strip_tags($linkedElements[$item['PROPERTIES']['LINK']['VALUE']]) ?? $item['CODE'];
             foreach ($properties as $property) {
                 $value = $item['PROPERTIES'][$property]['VALUE'] ?? 0;
                 $currency = !empty($item['PROPERTIES']['CURRENCY']['VALUE']) ? $this->currencyCode($item['PROPERTIES']['CURRENCY']['VALUE']) : null;
 
-                $this->calculateValues($property, $value, $name, $currency, $calculated);
+                $this->calculateValues($property, $value, $code, $currency, $calculated);
             }
         }
 
@@ -253,12 +253,12 @@ class RatesPlaceholderManager
     /**
      * @param string $property
      * @param string $value
-     * @param string $name
+     * @param string $code
      * @param string|null $currencyProperty
      * @param $calculated
      * @return void
      */
-    private function calculateValues(string $property, string $value, string $name, ?string $currencyProperty, &$calculated): void
+    private function calculateValues(string $property, string $value, string $code, ?string $currencyProperty, &$calculated): void
     {
         $mapping = [
             'PERIOD_FROM' => 'min_term',
@@ -277,13 +277,13 @@ class RatesPlaceholderManager
             if (is_array($mappedKeys)) {
                 foreach ($mappedKeys as $index => $key) {
                     $operation = $index === 0 ? 'min' : 'max'; // Первый ключ — min, второй — max
-                    $this->calculatedValue($currencyProperty, $key, $name, $value, $operation, $calculated);
+                    $this->calculatedValue($currencyProperty, $key, $code, $value, $operation, $calculated);
 
                 }
             } else {
                 $key = $mappedKeys;
                 $operation = str_contains($property, '_FROM') ? 'min' : 'max';
-                $this->calculatedValue($currencyProperty, $key, $name, $value, $operation, $calculated);
+                $this->calculatedValue($currencyProperty, $key, $code, $value, $operation, $calculated);
             }
         }
     }
@@ -291,24 +291,24 @@ class RatesPlaceholderManager
     /**
      * @param string|null $currencyProperty
      * @param string $key
-     * @param string $name
+     * @param string $code
      * @param string $value
      * @param string $operation
      * @param $calculated
      * @return void
      */
-    private function calculatedValue(?string $currencyProperty, string $key, string $name, string $value, string $operation, &$calculated): void
+    private function calculatedValue(?string $currencyProperty, string $key, string $code, string $value, string $operation, &$calculated): void
     {
         $currentValue = $currencyProperty
-            ? ($calculated[$name][$currencyProperty][$key] ?? $value)
-            : ($calculated[$name][$key] ?? $value);
+            ? ($calculated[$code][$currencyProperty][$key] ?? $value)
+            : ($calculated[$code][$key] ?? $value);
 
         $newValue = $operation === 'min' ? min($currentValue, $value) : max($currentValue, $value);
 
         if ($currencyProperty) {
-            $calculated[$name][$currencyProperty][$key] = $newValue;
+            $calculated[$code][$currencyProperty][$key] = $newValue;
         } else {
-            $calculated[$name][$key] = $newValue;
+            $calculated[$code][$key] = $newValue;
         }
     }
 
@@ -325,7 +325,7 @@ class RatesPlaceholderManager
                 $match['product'],
                 $match['range'],
                 $match['property'],
-                $match['name'] ?? null,
+                $match['code'] ?? null,
                 $match['currency'] ?? null,
             ];
         }, $matches));
@@ -342,7 +342,7 @@ class RatesPlaceholderManager
         $result['tables'] = array_merge($result['tables'], array_map(function ($match) {
             $elements = [];
             foreach ($this->calculatedValues['deposits_rates']['allElements'] as $element) {
-                if ($element['PROPERTIES']['LINK']['VALUE'] == array_flip($this->linkedElements)[$match['name']]) {
+                if (!empty($element['PROPERTIES']['LINK']['VALUE']) && $element['PROPERTIES']['LINK']['VALUE'] == array_flip($this->linkedElements)[$match['code']]) {
                     $elements[] = $element;
                 }
             }
@@ -353,7 +353,7 @@ class RatesPlaceholderManager
             return [
                 $match[0],
                 $match['product'],
-                $match['name'] ?? null,
+                $match['code'] ?? null,
                 $match['currencies'] ?? null,
                 $table,
             ];
