@@ -2,6 +2,7 @@ class OfficesMap {
     constructor(params) {
         this.params = params
         this.offices = []
+        this.services = []
         this.filteredOffices = []
         this.myMap = {}
         this.geoObjects = []
@@ -21,6 +22,7 @@ class OfficesMap {
         await this.loadOffices()
         this.filterOffices()
         this.initOfficesSearchFilter()
+        this.initOfficesServicesFilter()
         this.renderOfficesPlacemarks()
     }
 
@@ -60,42 +62,69 @@ class OfficesMap {
         const result = await response.json()
         this.offices = result.data.items
         this.filteredOffices = result.data.items
+        this.services = result.data.services
     }
 
     filterOffices() {
-        this.getFilterFormValues()
+        this.updateFilterFormValues()
+
+        this.filteredOffices = this.offices
 
         if (this.term.length) {
-            this.filteredOffices = this.offices.filter(item => (item.name + item.address).toLowerCase().includes(this.term.toLowerCase()))
+            this.filteredOffices = this.filteredOffices.filter(
+                item => (item.name + item.address).toLowerCase().includes(this.term.toLowerCase())
+            )
         }
-        if (this.filterFormValues.limitedMobility) {
-            this.filteredOffices = this.filteredOffices.filter(item => item.services.includes('mgn'))
-        }
+
         if (this.filterFormValues.individuals) {
-            this.filteredOffices = this.filteredOffices.filter(item => item.services.includes('mgn'))
+            this.filteredOffices = this.filteredOffices.filter(item => item.individual)
+        }
+
+        if (this.filterFormValues.legal) {
+            this.filteredOffices = this.filteredOffices.filter(item => item.corporate)
+        }
+
+        const servicesFilter = {...this.filterFormValues}
+        delete servicesFilter.individuals
+        delete servicesFilter.legal
+        if (Object.values(servicesFilter).some(item => item === true)) {
+            console.log('filter services')
+            for (const [key, value] of Object.entries(servicesFilter)) {
+                if (servicesFilter[key]) {
+                    this.filteredOffices = this.filteredOffices.filter(item => item.services.includes(key))
+                }
+            }
         }
 
         this.renderOfficesList()
+        this.renderOfficesPlacemarks()
+    }
+
+    clearOfficesPlacemarks() {
+        this.myMap.geoObjects.removeAll()
     }
 
     renderOfficesPlacemarks() {
+        this.clearOfficesPlacemarks()
+
         let iconDefaultSize = [40, 48]; // Размер иконки
         let iconDefaultPath = '/frontend/dist/img/office-pin.svg'; // Путь к иконке офиса
         let iconDefaultOffset = [-20, -24] // Смещение иконки
 
         this.filteredOffices.forEach(item => {
-            // Создаем метку с кастомной иконкой
             let myPlacemark = new ymaps.Placemark(item.coords, {}, {
                 iconLayout: 'default#image',
                 iconImageHref: iconDefaultPath,
                 iconImageSize: iconDefaultSize,
                 iconImageOffset: iconDefaultOffset,
             });
-
-            this.geoObjects.push(myPlacemark)
+            this.myMap.geoObjects.add(myPlacemark);
         })
-        this.clusterer.add(this.geoObjects);
-        this.myMap.geoObjects.add(this.clusterer);
+
+        // this.myMap.setBounds(this.myMap.geoObjects.getBounds())
+
+        // this.clusterer.add(this.geoObjects);
+        // this.myMap.geoObjects.add(this.clusterer);
     }
 
     renderOfficesList() {
@@ -107,7 +136,10 @@ class OfficesMap {
                     <div class="card-office__body d-flex flex-grow-1 flex-column row-gap-2 row-gap-md-3">
                         <p class="card-office__title fw-semibold text-l m-0">${item.name}</p>
                         <p class="card-office__address text-s m-0 dark-70">${item.address}</p>
+                        <!--
                         <div>services: ${item.services.join(', ')}</div>
+                        <div>individual: ${item.individual}, corporate: ${item.corporate}</div>
+                        -->
                     </div>
                     <svg class="icon size-m d-none d-md-block" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                         <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
@@ -126,16 +158,40 @@ class OfficesMap {
         $('#filters-submit-button').on('click', () => {
             this.filterOffices()
         })
+
+        $('#filters-reset-button').on('click', () => {
+            $('#individuals').prop('checked', false)
+            $('#legal').prop('checked', false)
+
+            for (const [key, value] of Object.entries(this.services)) {
+                $('#filter-service-' + key).prop('checked', false)
+            }
+
+            this.filterOffices()
+        })
     }
 
-    getFilterFormValues() {
+    initOfficesServicesFilter() {
+        const servicesContainer = $('#offices-services-filter').html('<h5>Услуги</h5>')
+        for (const [key, value] of Object.entries(this.services)) {
+            servicesContainer.append(`
+                <div class="form-check">
+                    <input class="form-check-input" id="filter-service-${key}" type="checkbox" value="">
+                    <label class="form-check-label" for="filter-service-${key}">${value} (${key}}</label>
+                </div>`
+            )
+        }
+    }
+
+    updateFilterFormValues() {
         this.filterFormValues = {
             individuals: $('#individuals').is(':checked'),
             legal: $('#legal').is(':checked'),
-            limitedMobility: $('#limited-mobility').is(':checked'),
-            brokerage: $('#brokerage').is(':checked'),
-            biometrics: $('#biometrics').is(':checked'),
         }
+        for (const [key, value] of Object.entries(this.services)) {
+            this.filterFormValues[key] = $('#filter-service-' + key).is(':checked')
+        }
+        console.log('updateFilterFormValues:', this.filterFormValues)
     }
 }
 

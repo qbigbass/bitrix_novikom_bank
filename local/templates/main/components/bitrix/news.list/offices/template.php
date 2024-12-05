@@ -111,7 +111,8 @@ $asset->addJs('https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=' . COption::Ge
                                 <label class="form-check-label" for="legal">Юридические лица</label>
                             </div>
                         </div>
-                        <div class="d-flex flex-column row-gap-4">
+                        <div class="d-flex flex-column row-gap-4" id="offices-services-filter">
+                            <!--
                             <h5>Услуги</h5>
                             <div class="form-check">
                                 <input class="form-check-input" id="limited-mobility" type="checkbox" value="">
@@ -125,10 +126,11 @@ $asset->addJs('https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=' . COption::Ge
                                 <input class="form-check-input" id="biometrics" type="checkbox" value="">
                                 <label class="form-check-label" for="biometrics">Можно сдавать биометрию</label>
                             </div>
+                            -->
                         </div>
                         <div class="d-flex flex-column flex-md-row gap-3 gap-md-6 mt-md-2">
                             <button class="btn btn-primary btn-md-lg" type="button" data-bs-dismiss="modal" id="filters-submit-button">Применить</button>
-                            <button class="btn btn-outline-primary btn-md-lg" type="button" data-bs-dismiss="modal">Сбросить</button>
+                            <button class="btn btn-outline-primary btn-md-lg" type="button" data-bs-dismiss="modal" id="filters-reset-button">Сбросить</button>
                         </div>
                     </div>
                 </div>
