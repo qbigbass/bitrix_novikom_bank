@@ -71,10 +71,10 @@ function renderFile(fileName) {
     return (
         `
             <div class="upload-file__item btn btn-link btn-icon" data-upload-file>
-                <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><use xlink:href="img/svg-sprite.svg#icon-doc"></use></svg>
+                <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-doc"></use></svg>
                 ${fileName}
                 <button type="button" class="icon size-m violet-100" data-upload-delete>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><use xlink:href="img/svg-sprite.svg#icon-close"></use></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-close"></use></svg>
                 </button>
             </div>`
     )
