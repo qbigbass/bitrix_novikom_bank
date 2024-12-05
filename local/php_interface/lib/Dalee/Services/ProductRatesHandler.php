@@ -19,9 +19,9 @@ class ProductRatesHandler
      * - 'mortgage' — ипотека
      * - 'program_bonuses' — бонусные программы
      *
-     * @var ?string
+     * @var string
      */
-    private ?string $table;
+    private string $table;
 
     /**
      * ID продукта для фильтрации данных (если указан).
@@ -40,9 +40,9 @@ class ProductRatesHandler
     /**
      * Объект для получения данных ставок.
      *
-     * @var ?RatesFetcher
+     * @var RatesFetcher
      */
-    private ?RatesFetcher $ratesFetcher = null;
+    private RatesFetcher $ratesFetcher;
 
     /**
      * Элементы, полученные после обработки данных.
@@ -58,21 +58,14 @@ class ProductRatesHandler
      */
     private array $response = [];
 
-    public function __construct(?string $table, ?int $elementId = null, ?string $name = null)
+    public function __construct(string $table, ?int $elementId = null, ?string $name = null)
     {
         $this->table = $table;
         $this->elementId = $elementId;
         $this->name = $name;
 
-        if (empty($table)) {
-            $this->addError('Не указана таблица');
-            return;
-        }
-
         $iblockId = $this->getIblockId();
-        if ($iblockId) {
-            $this->ratesFetcher = new RatesFetcher($iblockId);
-        }
+        $this->ratesFetcher = new RatesFetcher($iblockId);
     }
 
     /**
@@ -103,10 +96,6 @@ class ProductRatesHandler
      */
     private function fetchRates(): void
     {
-        if (!$this->ratesFetcher) {
-            return;
-        }
-
         $this->ratesFetcher->fetchRates($this->elementId);
         $this->elements = $this->ratesFetcher->getElements() ?: $this->retryFetch();
     }
@@ -128,7 +117,7 @@ class ProductRatesHandler
         $iblock = iblock($this->table . '_rates');
         if (!$iblock) {
             $this->addError('Не удалось получить ID инфоблока');
-            return null;
+            $this->getJson();
         }
         return $iblock;
     }
@@ -191,7 +180,6 @@ class ProductRatesHandler
      */
     public function getJson(): void
     {
-        header('Content-Type: application/json');
         echo json_encode($this->response, JSON_UNESCAPED_UNICODE);
         exit;
     }
