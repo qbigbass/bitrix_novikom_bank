@@ -135,14 +135,14 @@ $this->setFrameMode(true);
                             <div class="application-form__col col-12 col-md-6">
                                 <div class="d-flex flex-column row-gap-2">
                                     <label class="form-label mb-0" for="credit-card_passport-series">Серия паспорта</label>
-                                    <input class="form-control form-control-lg-lg" id="credit-card_passport-series" type="text" name="passport-series" placeholder="" autocomplete="off" data-form-input>
+                                    <input class="form-control form-control-lg-lg" id="credit-card_passport-series" type="text" name="PASSPORT_SERIES" placeholder="" autocomplete="off" data-form-input>
                                     <div class="invalid-feedback" aria-live="polite"></div>
                                 </div>
                             </div>
                             <div class="application-form__col col-12 col-md-6">
                                 <div class="d-flex flex-column row-gap-2">
                                     <label class="form-label mb-0" for="credit-card_passport-number">Номер паспорта</label>
-                                    <input class="form-control form-control-lg-lg" id="credit-card_passport-number" type="text" name="passport-number" placeholder="" autocomplete="off" data-form-input>
+                                    <input class="form-control form-control-lg-lg" id="credit-card_passport-number" type="text" name="PASSPORT_NUMBER" placeholder="" autocomplete="off" data-form-input>
                                     <div class="invalid-feedback" aria-live="polite"></div>
                                 </div>
                             </div>
