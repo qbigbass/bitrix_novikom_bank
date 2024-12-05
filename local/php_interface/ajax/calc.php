@@ -4,9 +4,10 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.ph
 
 $data = $_POST;
 
-$table = $data['table'];
+$table = $data['table'] ?? null;
 $elementId = $data['elementId'] ?? null;
 $name = $data['name'] ?? null;
 
 $handler = new ProductRatesHandler($table, $elementId, $name);
-$handler->json();
+$handler->handle();
+$handler->getJson();
