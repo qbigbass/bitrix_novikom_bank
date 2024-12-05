@@ -321,6 +321,30 @@ export function initTabsSlider() {
             },
         },
     });
+}
+
+export function initPbSlider() {
+    const financeSlider = document.querySelector(
+        "[data-order='1'] .js-pb-slider"
+    );
+    const investmentSlider = document.querySelector(
+        "[data-order='2'] .js-pb-slider"
+    );
+
+    const financeTabs = document.querySelectorAll("[data-order='1'] .tabs__link");
+    const investmentTabs = document.querySelectorAll(
+        "[data-order='2'] .tabs__link"
+    );
+
+    if (financeSlider && investmentSlider) {
+        const financeSwiper = new Swiper(financeSlider, {
+            modules: [Navigation, Pagination],
+            slidesPerView: 2,
+            spaceBetween: 40,
+            grabCursor: true,
+            speed: 700,
+            loop: true
+        });
 
     const investmentSwiper = new Swiper(investmentSlider, {
       modules: [Navigation, Pagination],

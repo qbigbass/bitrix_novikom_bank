@@ -47,11 +47,11 @@
                 a.btn.btn-pb.btn-pb--primary(href="#") Стать клиентом
 
             .mt-auto.pt-7.pt-lg-0.mt-lg-0
-                .pb-card-contact.d-flex.flex-column.row-gap-4
-                    ul.list-pb-contact.d-flex.flex-column.row-gap-4
+                .pb-card-contact.d-flex.flex-column.row-gap-4.row-gap-lg-5.align-items-lg-center
+                    ul.list-pb-contact.d-flex.flex-column.flex-lg-row.justify-content-xl-between.flex-wrap.gap-4
                         each item in contactList
                             li.d-flex.align-items-center
-                                span.icon.size-m.flex-shrink-0(class=item.iconColorClass ? item.iconColorClass : "dark-0")
+                                span.icon.size-m.flex-shrink-0(class=item.iconColorClass ? item.iconColorClass: "dark-0")
                                     +svg-use(item.icon)
                                 if item.href
                                     a(href=item.href).list-pb-contact__link!= item.text
