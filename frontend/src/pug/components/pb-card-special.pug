@@ -1,6 +1,6 @@
 mixin pb-card-special(data)
-    .pb-card-special(class=data.large ? "pb-card-special--large" : "pb-card-special--small")
-        .d-flex.flex-column.gap-4
+    .pb-card-special(class=data.large ? "pb-card-special--large": "")
+        .d-flex.flex-column.row-gap-4
             h3.pb-card-special__title= data.title
             .d-flex.flex-column.row-gap-4
                 if data.large

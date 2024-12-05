@@ -1,0 +1,26 @@
+.pb-main-nav {
+  margin-top: 4.5rem;
+}
+
+.pb-nav {
+  padding: 2.5rem 0;
+
+  &__link {
+    color: var(--dark-0);
+    text-decoration: none;
+    font-size: 1.375rem;
+    line-height: 1.2;
+  }
+}
+
+.pb-overlay {
+  position: fixed;
+  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+  width: 100vw;
+  top: 0;
+  left: 0;
+  z-index: 11;
+  background: radial-gradient(84.42% 84.42% at 50% 15.58%, rgba(55, 17, 106, 0.70) 0%, rgba(0, 0, 0, 0.70) 100%);
+  backdrop-filter: blur(1.25rem);
+}

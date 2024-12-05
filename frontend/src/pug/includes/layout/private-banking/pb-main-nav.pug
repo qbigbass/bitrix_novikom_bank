@@ -1,0 +1,28 @@
+-
+    var navList = [
+        {
+            href: '#',
+            title: 'Финансовые услуги'
+        },
+        {
+            href: '#',
+            title: 'Инвестиционные услуги'
+        },
+        {
+            href: '#',
+            title: 'Премиальные сервисы'
+        },
+        {
+            href: '#',
+            title: 'Карта Мир Supreme'
+        }
+    ]
+
+.pb-overlay
+    .pb-main-nav.d-flex.flex-column
+        nav.pb-nav.d-flex.flex-column.align-items-center.row-gap-4
+            each item in navList
+                a.pb-nav__link(href=item.href)= item.title
+        .text-center.mt-4
+            a.btn.btn-pb.btn-pb--primary(href="#") Стать клиентом
+

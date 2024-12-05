@@ -1,15 +1,15 @@
 .pb-card-special {
   $root: #{&};
 
-  background: radial-gradient(100% 141.69% at 0% 50%, rgba(55, 17, 106, 0.7) 0%, rgba(0, 0, 0, 0.7) 100%);
-  box-shadow: 0 20px 40px 0 rgba(0, 0, 0, 0.5),
-  -1px -1px 1px 0px rgba(142, 92, 209, 0.2) inset;
-  backdrop-filter: blur(1rem);
+  background: radial-gradient(141.69% 100% at 0% 50%, rgba(55, 17, 106, 0.70) 0%, rgba(0, 0, 0, 0.70) 100%);
+  box-shadow: -1px -1px 1px 0px rgba(142, 92, 209, 0.20) inset, 0px 20px 40px 0px rgba(0, 0, 0, 0.50);
+  backdrop-filter: blur(0.5rem);
   border-radius: 1.5rem;
   padding: 1.5rem;
   color: var(--dark-0);
   display: flex;
   flex-direction: column;
+  min-height: 12.5rem;
   height: 100%;
 
   @include use-media(tablet) {
@@ -49,13 +49,8 @@
     align-self: flex-end;
 
     @include use-media(tablet) {
-      &--large {
-        max-width: 256px;
-      }
-
-      &--small {
-        max-width: 120px;
-      }
+      width: 10rem;
+      height: 10rem;
     }
   }
 
@@ -66,17 +61,6 @@
       @include use-media(tablet) {
         width: 16rem;
         height: 16rem;
-      }
-    }
-  }
-
-  &--small {
-    min-height: 12.5rem;
-
-    #{$root}__image {
-      @include use-media(tablet) {
-        width: 10rem;
-        height: 10rem;
       }
     }
   }

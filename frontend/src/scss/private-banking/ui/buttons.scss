@@ -12,12 +12,21 @@
   }
 
   &--primary {
-    background-color: $pr-primary;
-    color: $pr-white;
+    background-color: var(--pr-primary);
+    color: var(--dark-0);
 
     &:hover {
-      background-color: rgba($pr-primary, .8);
-      color: $pr-white;
+      background-color: var(--pr-hover);
+      color: var(--dark-0);
+    }
+  }
+
+  &--outline {
+    background-color: transparent;
+    color: var(--pr-l-purple);
+
+    &:hover {
+      color: var(--dark-0);
     }
   }
 }
@@ -27,7 +36,7 @@
 
   width: 2.5rem;
   height: 2.5rem;
-  border: 1px solid rgba($pr-white, .3);
+  border: 1px solid rgba(#fff, .3);
   border-radius: .25rem;
   padding: calc(.5rem - 1px);
 
