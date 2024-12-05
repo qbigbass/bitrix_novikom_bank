@@ -3,6 +3,7 @@
   font-size: .875rem;
   line-height: 1.15;
   letter-spacing: .1em;
+  font-weight: 600;
   transition: .3s ease;
   border-radius: .25rem;
   padding: .75rem 1rem;
@@ -24,6 +25,7 @@
   &--outline {
     background-color: transparent;
     color: var(--pr-l-purple);
+    border: 1px solid rgba(#fff ,.3);
 
     &:hover {
       color: var(--dark-0);
@@ -48,9 +50,10 @@
 
   &:hover,
   &:active {
-
-    #{$root}__icon span {
-      opacity: .5;
+    @include use-media(tablet-album) {
+      #{$root}__icon span {
+        opacity: .5;
+      }
     }
   }
 

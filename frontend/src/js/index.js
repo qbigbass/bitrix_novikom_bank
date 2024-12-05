@@ -11,6 +11,7 @@ import initSelect2 from './components/select2.js'
 import { initTabsContent } from './components/tabs.js'
 import initInputSlider from "./components/inputSlider";
 import showMoreContent from "./components/showMoreContent";
+import pbNavMenu from "./components/pb-nav-menu";
 
 document.addEventListener('DOMContentLoaded', () => {
     initDropdownMenu();
@@ -27,7 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initTabsContent();
     initInputSlider();
     showMoreContent();
-	initPbSlider();
+	  initPbSlider();
+    pbNavMenu();
 });
 
 window.onload = function() {
