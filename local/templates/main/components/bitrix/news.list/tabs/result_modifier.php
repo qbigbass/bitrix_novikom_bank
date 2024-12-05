@@ -1,12 +1,14 @@
 <?php
 foreach ($arResult['ITEMS'] as &$tab) {
     if (!empty($tab['DISPLAY_PROPERTIES'])) {
+        $tab['DISPLAY_PROPERTIES']['SHORT_INFO']['IMG'] = $tab['DISPLAY_PROPERTIES']['ICON_SHORT_INFO']['FILE_VALUE']['SRC'];
+        $tab['DISPLAY_PROPERTIES']['ICONS_WITH_DESCRIPTION']['SHOW_TWO_ICONS_IN_ROW'] = $tab['DISPLAY_PROPERTIES']['SHOW_TWO_ICONS_IN_ROW']['VALUE'];
 
         foreach ($tab['DISPLAY_PROPERTIES'] as &$property) {
-            if ($property['PROPERTY_TYPE'] == 'E' && !empty($property['LINK_ELEMENT_VALUE'])) {
+            if ($property['PROPERTY_TYPE'] == 'E' && !empty($property['VALUE'])) {
 
                 $elements = \Bitrix\Iblock\ElementTable::GetList([
-                    'select' => ['ID', 'PREVIEW_TEXT', 'DETAIL_TEXT'],
+                    'select' => ['ID', 'NAME', 'PREVIEW_TEXT', 'DETAIL_TEXT', 'PREVIEW_PICTURE', 'DETAIL_PICTURE'],
                     'filter' => [
                         'IBLOCK_ID' => $property['LINK_IBLOCK_ID'],
                         'ID' => $property['VALUE']
@@ -16,10 +18,20 @@ foreach ($arResult['ITEMS'] as &$tab) {
                 foreach ($elements as $element) {
                     $property['LINK_ELEMENT_VALUE'][$element['ID']]['PREVIEW_TEXT'] = $element['PREVIEW_TEXT'];
                     $property['LINK_ELEMENT_VALUE'][$element['ID']]['DETAIL_TEXT'] = $element['DETAIL_TEXT'];
+                    $property['LINK_ELEMENT_VALUE'][$element['ID']]['ID'] = $element['ID'];
+                    $property['LINK_ELEMENT_VALUE'][$element['ID']]['NAME'] = $element['NAME'];
+
+                    if (!empty($element['PREVIEW_PICTURE'])) {
+                        $property['LINK_ELEMENT_VALUE'][$element['ID']]['PREVIEW_PICTURE'] = CFile::GetPath($element['PREVIEW_PICTURE']);
+                    }
+
+                    if (!empty($element['DETAIL_PICTURE'])) {
+                        $property['LINK_ELEMENT_VALUE'][$element['ID']]['DETAIL_PICTURE'] = CFile::GetPath($element['DETAIL_PICTURE']);
+                    }
                 }
             }
 
-            if ($property['PROPERTY_TYPE'] == 'G' && !empty($property['LINK_SECTION_VALUE'])) {
+            if ($property['PROPERTY_TYPE'] == 'G' && !empty($property['VALUE'])) {
 
                 $filter = [
                     'IBLOCK_ID' => $property['LINK_IBLOCK_ID'],
@@ -45,6 +57,8 @@ foreach ($arResult['ITEMS'] as &$tab) {
 
                 foreach ($sections as $section) {
                     $property['LINK_SECTION_VALUE'][$section['ID']]['DESCRIPTION'] = $section['DESCRIPTION'];
+                    $property['LINK_SECTION_VALUE'][$section['ID']]['NAME'] = $section['NAME'];
+                    $property['LINK_SECTION_VALUE'][$section['ID']]['ID'] = $section['ID'];
                 }
 
                 foreach ($elementsWithProps as $element) {
@@ -54,3 +68,4 @@ foreach ($arResult['ITEMS'] as &$tab) {
         }
     }
 }
+unset($tab);

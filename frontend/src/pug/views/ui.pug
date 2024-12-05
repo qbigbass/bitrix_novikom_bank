@@ -51,6 +51,10 @@ block content
     include ../cards/card-step
     include ../cards/card-news
     include ../cards/card-promo
+    include ../cards/card-award
+    include ../cards/card-about
+    include ../cards/card
+    include ../components/anchor-panel
 
     section#typography.section-layout
         .container
@@ -141,6 +145,11 @@ block content
                         button.btn.btn-tertiary.btn-lg(type="button") Кнопка Tertiary
                         button.btn.btn-tertiary(type="button") Кнопка Tertiary
                         button.btn.btn-tertiary.btn-sm(type="button") Кнопка Tertiary
+                    .col-12.col-md-6.col-xl-3.d-flex.flex-column.row-gap-3.p-3
+                        button.btn.btn-orange.btn-lg-lg(type="button") Кнопка Orange
+                        button.btn.btn-orange.btn-lg(type="button") Кнопка Orange
+                        button.btn.btn-orange(type="button") Кнопка Orange
+                        button.btn.btn-orange.btn-sm(type="button") Кнопка Orange
                     .col-12.col-md-6.col-xl-3.bg-body-tertiary.p-3.d-flex.flex-column.row-gap-3
                         button.btn.btn-info.btn-lg-lg(type="button") Кнопка Info
                         button.btn.btn-info.btn-lg(type="button") Кнопка Info
@@ -241,6 +250,7 @@ block content
                 {
                     link: '#',
                     linkText: 'Кнопка',
+                    isActive: true
                 },
                 {
                     link: '#',
@@ -558,8 +568,8 @@ block content
                 h2 Card Promo
                 .row.row-gap-6
                     +card-promo(cardPromo).card-promo--heavy-purple
-                        a(href="#").btn.btn-info.w-100.w-md-auto Кнопка
-                        a(href="#").btn.btn-link.btn-icon.text-info.m-auto.m-md-0
+                        a(href="#").btn.btn-info.btn-lg-lg.w-100.w-md-auto Кнопка
+                        a(href="#").btn.btn-link.btn-lg-lg.btn-icon.text-info.m-auto.m-md-0
                             | Кнопка
                             +svg-use("icon-download", "icon size-m")
     section#card-contact.section-layout.section-layout--padding-top-0
@@ -581,7 +591,7 @@ block content
 
                         },
                         {
-                            href: "emailto:corp@novikom.ru",
+                            href: "mailto:corp@novikom.ru",
                             text: "corp@novikom.ru",
                             icon: "icon-mail",
                             additionalClass: "text-decoration-underline",
@@ -644,7 +654,7 @@ block content
 
                         },
                         {
-                            href: "emailto:corp@novikom.ru",
+                            href: "mailto:corp@novikom.ru",
                             text: "corp@novikom.ru",
                             icon: "icon-mail",
                             additionalClass: "text-decoration-underline",
@@ -702,6 +712,18 @@ block content
                                     href: "#",
                                     text: "Оформить карту",
                                 },
+                                colorClassName: "violet-100"
+                            },
+                            {
+                                imageSrc: "step-indicator-2.svg",
+                                title: "Банк проанализирует вашу <br>ситуацию и примет решение",
+                                text: "Срок рассмотрения заявок на реструктуризацию составляет до 10 рабочих дней с даты предоставления полного пакета необходимых документов.",
+                                colorClassName: "violet-100"
+                            },
+                            {
+                                imageSrc: "step-indicator-3.svg",
+                                title: "Одобрение <br>реструктуризации",
+                                text: "Если реструктуризация одобрена, подписать дополнительное соглашение к кредитному договору и прочей кредитно-обеспечительной документации (при наличии).",
                                 colorClassName: "violet-100"
                             },
                             {
@@ -800,7 +822,263 @@ block content
                         .col-12.col-md-6.col-lg-4
                             +card-news(item)
 
-    section#pagination.section-layout.pt-0
+    section#card-award.section-layout.pt-0
+        -
+            var awardList = [
+                {
+                    title: 'Август',
+                    year: '2024',
+                    text: 'НОВИКОМ отмечен в номинации «За вклад в организацию и проведение международного военно-технического форума «Армия»',
+                    imageSrc: 'img/awards/individual-certificate.png',
+                },
+                {
+                    title: 'Май',
+                    year: '2024',
+                    text: 'Банк НОВИКОМ стал лауреатом Всероссийского конкурса образовательных программ и просветительских проектов кредитных организаций в интересах субъектов малого и среднего предпринимательства. Организаторы конкурса – Ассоциация развития финансовой грамотности и Ассоциация банков России – высоко оценили курс финансовой грамотности для МСП дочернего банка Госкорпорации Ростех',
+                    imageSrc: 'img/awards/individual-cup.png',
+                },
+                {
+                    title: 'Май',
+                    year: '2024',
+                    text: 'НОВИКОМ получил две награды премии FINAWARD. Дочерний банк Ростеха стал лауреатом ежегодной премии в области инноваций и достижений финансовой отрасли FINAWARD 2024. НОВИКОМ победил в специальной номинации за организацию первого в стране выпуска ЦФА для предприятия оборонно-промышленного комплекса. Отдельного диплома удостоились инновационные решения банка, нацеленные на улучшение клиентского опыта.',
+                    imageSrc: 'img/awards/individual-medal.png',
+                },
+                {
+                    title: 'Май',
+                    year: '2024',
+                    text: 'Торгово-промышленная палата РФ присудила НОВИКОМу победу в дополнительной номинации конкурса «Лучшая банковская программа для МСП – 2024». Экспертный совет назвал банк лучшим в развитии и продвижении инвестиционных возможностей для бизнеса. Помимо победы в дополнительной номинации, НОВИКОМ вошел в ТОП-3 лучших региональных банков с универсальной и базовой лицензией по итогам голосования предпринимателей.',
+                    imageSrc: 'img/awards/individual-certificate.png',
+                }
+            ]
+
+        .container
+            .d-flex.flex-column.row-gap-5
+                .d-flex.flex-column.gap-2
+                    h2 Card Award
+                .d-flex.flex-wrap.gap-4.gap-md-5.gap-xl-6
+                    each award in awardList
+                        +card-award(award.imageSrc).h-auto.flex-basis-100.flex-basis-lg-33.flex-grow-1
+                            .d-flex.w-100.align-items-end.justify-content-between.mb-4
+                                h4.violet-100!= award.title
+                                .d-none.d-md-inline.h2.violet-100-important!= award.year
+                                .d-inline.d-md-none.h4.violet-100-important!= award.year
+                            p.mb-0!= award.text
+
+    section.section-layout.py-lg-11.mb-6.mb-sm-9.mb-lg-11.mb-xl-16
+        .container
+            h3.mb-5.mb-lg-7
+                | Card Award Slider
+            .row
+                .col-12
+                    .swiper.slider-cards.js-slider-cards(data-auto-height="mobile-s:true,mobile:true,tablet:true" data-slides-per-view="mobile-s:1,mobile:1,tablet:1,tablet-album:2,laptop:2,laptop-x:2" data-space-between="mobile-s:24,mobile:24,tablet:48,laptop:40,laptop-x:40")
+                        .swiper-wrapper
+                            each award in awardList
+                                .swiper-slide.js-swiper-slide
+                                    +card-award(award.imageSrc).h-100
+                                        .d-flex.w-100.align-items-end.justify-content-between.mb-4
+                                            h4.violet-100!= award.title
+                                            .d-none.d-md-inline.h2.violet-100-important!= award.year
+                                            .d-inline.d-md-none.h4.violet-100-important!= award.year
+                                        p.mb-0!= award.text
+                        +slider-controls().mt-3.mt-md-4
+                    .d-block.w-100.mt-5.mt-lg-7.text-center
+                        a(href="#").btn.btn-outline-primary.btn-lg-lg.btn-icon
+                            | Смотреть все награды
+                            +svg-use("icon-chevron-right", "icon size-m")
+
+    section.section-layout.py-lg-11.bg-dark-30
+        -
+            var cardAboutBankData = {
+                pattern: false,
+                list: [
+                    {
+                        title: "Единая справочная система",
+                        list: [
+                            {
+                                href: "tel:+78002507007",
+                                text: "+7 (800) 250-70-07",
+                                icon: "icon-phone",
+                            },
+                        ],
+                    },
+                    {
+                        title: "Круглосуточно, звонки по России бесплатно",
+                        description: "Круглосуточно, для звонков из Москвы и заграницы",
+                        list: [
+                            {
+                                href: "tel:+74959747187",
+                                text: "+7 (495) 974-71-87",
+                                icon: "icon-phone",
+
+                            },
+                        ],
+                    },
+                    {
+                        title: "Срочная блокировка карт",
+                        list: [
+                            {
+                                href: "tel:+78002507007",
+                                text: "+7 (800) 250-70-07",
+                                icon: "icon-phone",
+                            },
+                            {
+                                href: "tel:+74959747187",
+                                text: "+7 (495) 974-71-87",
+                                icon: "icon-phone",
+                            },
+                        ],
+                    },
+                ]
+            }
+        .container
+            h3.mb-5.mb-lg-7
+                | Card About
+            .row
+                .col-12
+                    .swiper.js-slider-cards.slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:1,laptop:2,laptop-x:2" data-space-between="mobile-s:8,mobile:8,tablet:16,laptop:48,laptop-x:48")
+                        .swiper-wrapper.js-swiper-wrapper
+                            .swiper-slide.js-swiper-slide
+                                +card-about(cardAboutBankData)
+                            .swiper-slide.js-swiper-slide
+                                +card-about(cardAboutBankData)
+
+                        +slider-controls().mt-3.mt-md-4
+
+
+    section#card.section-layout.bg-dark-10
+        -
+            var cardDefaultData = {
+                idMoreBlock: "card-1",
+                tag: null,
+                title: "Облигации",
+                description: null,
+                conditions: [
+                    {
+                        startText: '',
+                        beforeText: '',
+                        text: 'Низкий',
+                        afterText: '',
+                        currency: '',
+                        description: 'Риск',
+                        smallText: true
+                    },
+                    {
+                        startText: '',
+                        beforeText: '',
+                        text: '1',
+                        afterText: 'год',
+                        currency: '',
+                        description: 'Срок <br>инвестирования'
+                    },
+                    {
+                        startText: '',
+                        beforeText: 'до',
+                        text: '20%',
+                        afterText: 'в год',
+                        currency: '',
+                        description: 'Ожидаемая <br>доходность'
+                    },
+                ],
+                imgSrc: "big-illustrations/large-finorg/trust-management-bonds.png"
+            }
+
+            var cardDefaultAccordionContent = {
+                tables: [
+                    {
+                        title: null,
+                        rows: [
+                            {
+                                label: "Цель",
+                                value: ["Сохранить средства и получить доход на уровне или выше банковских депозитов с наименьшим риском снижения стоимости активов."]
+                            },
+                            {
+                                label: "Способ управления",
+                                value: ["Активный"]
+                            },
+                        ]
+                    },
+                    {
+                        title: "Требования к инвестору",
+                        rows: [
+                            {
+                                label: "Предполагаемый возраст(для физических лиц)",
+                                value: "от 18 лет и старше"
+                            },
+                            {
+                                label: "Минимальная сумма инвестиций",
+                                value: "1 миллион рублей"
+                            },
+                            {
+                                label: "Примерные среднемесячные доходы за последние 12 месяцев",
+                                value: "более 200 000 рублей"
+                            },
+                            {
+                                label: "Расходы",
+                                value: "более 120 000 рублей"
+                            },
+                        ]
+                    },
+                    {
+                        title: "Ставки комиссий",
+                        rows: [
+                            {
+                                label: "Ставка комиссии за управление",
+                                value: "1% годовых"
+                            },
+                            {
+                                label: "Ставка комиссии за успех",
+                                value: "10%"
+                            },
+                        ]
+                    },
+                    {
+                        title: null,
+                        rows: [
+                            {
+                                label: "Прочие расходы",
+                                value: "<ul class='list list--size-l'>" +
+                                        "<li>Вознаграждение управляющего</li>" +
+                                        "<li>Регистрационные и иные сборы(при перерегистрации прав на ценные бумаги)</li>" +
+                                        "<li>Комиссионные сборы торговых систем, биржевых площадок</li>" +
+                                        "<li>Иные подтвержденные расходы, понесенные управляющим при осуществлении доверительного управления</li>" +
+                                        "</ul>"
+                            },
+                        ]
+                    },
+                ],
+                linkList: [
+                    {
+                        href: '#',
+                        text: 'Динамика среднемесячной доходности',
+                        dateTime: '12.12.23 18:56',
+                        fileType: 'XLS',
+                        classSize: 'text-m'
+                    },
+                ],
+            }
+        .container
+            h3.mb-5.mb-lg-7
+                | Card
+            .row
+                .col-12
+                    +card(cardDefaultData)
+                        .d-flex.flex-column.gap-4.gap-md-6.gap-lg-7.mt-4.mt-md-6.mt-lg-7
+                            each table in cardDefaultAccordionContent.tables
+                                .d-flex.flex-column.gap-4
+                                    if table.title
+                                        .h4= table.title
+                                    .table-tab.cell-2
+                                        .table-tab__body
+                                            each row in table.rows
+                                                .table-tab__row
+                                                    .table-tab__cell.text-l.fw-semibold.dark-70!= row.label
+                                                    .table-tab__cell.text-l!= row.value
+                            .d-flex.flex-column.gap-4
+                                .h4 Инвестиционная стратегия "Облигации"
+                                .link-list
+                                    +document-download(cardDefaultAccordionContent.linkList[0])
+
+    section#pagination.section-layout
         -
             var paginationObject = {
                 prevLink: "",
@@ -871,6 +1149,24 @@ block content
         .container
             .d-flex.flex-column.row-gap-5
                 h2 Input / Select
+
+                .row
+                    .col-12.col-md-6.col-xl-3
+                        .d-flex.flex-column.row-gap-2
+                            label(for="inp20").form-label.mb-0
+                                | textarea
+                                span.orange-100.ms-1 *
+                            textarea#inp20(type="text" name="name5" placeholder="Введите текст").form-control.form-control-lg-lg
+                            span.caption-m.dark-70.d-block Подсказка
+
+                .row
+                    .col-12.col-md-6.col-xl-3
+                        .d-flex.flex-column.row-gap-2
+                            label(for="inp19").form-label.mb-0
+                                | form-control-lg-lg
+                                span.orange-100.ms-1 *
+                            input#inp19(type="text" name="name5" placeholder="Введите текст").form-control.form-control-lg-lg
+                            span.caption-m.dark-70.d-block Подсказка
 
                 .row
                     .col-12.col-md-6.col-xl-3
@@ -1387,4 +1683,51 @@ block content
                                 td(colspan="2") Larry the Bird
                                 td @twitter
 
+    section#alert.section-layout.pt-0
+        .container
+            .row.px-lg-6
+                .col-12
+                    h3.mb-4.mb-md-6.mb-lg-7
+                        | Alerts
+            .row.px-lg-6
+                .col-12
+                    .alert.d-flex.align-items-center.gap-3.bg-dark-10(role="alert")
+                        +svg-use("icon-alert", "icon dark-70 size-m").flex-shrink-0
+                        div.text-m.dark-70 Оформление карты для новых клиентов Банка осуществляется при личном присутствии клиента в&nbsp;офисе Банка с&nbsp;документом, удостоверяющим личность
 
+    section#anchor-panel.section-layout.pt-0
+        .container
+            .row.px-lg-6
+                .col-12
+                    h3.mb-4.mb-md-6.mb-lg-7
+                        | Anchor panel
+        +anchor-panel([
+            {
+                href: "#anchor-1",
+                text: "Якорь 1"
+            },
+            {
+                href: "#anchor-2",
+                text: "Якорь 2"
+            },
+            {
+                href: "#anchor-3",
+                text: "Якорь 3"
+            },
+            {
+                href: "#anchor-4",
+                text: "Якорь 4"
+            },
+            {
+                href: "#anchor-5",
+                text: "Якорь 5"
+            },
+            {
+                href: "#anchor-6",
+                text: "Якорь 6"
+            },
+            {
+                href: "#anchor-7",
+                text: "Якорь 7"
+            },
+        ])

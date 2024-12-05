@@ -1,0 +1,347 @@
+extends ../templates/base
+
+block title
+    title= 'Бизнесу - Сотрудничество с фондами'
+    meta(name="description" content="Описание страницы Сотрудничество с фондами раздела Бизнес")
+block content
+    include ../includes/header/header
+    include ../components/banners/banner-text
+    include ../cards/card-about
+    include ../cards/card-feedback
+    include ../components/stepper
+    include ../components/helper
+    include ../cards/card-tariff
+    include ../cards/card-benefit
+    include ../components/ui/tabs
+    include ../components/ui/tabs-simple
+    include ../components/ui/accordion-item
+    include ../includes/layout/slider-card-product
+
+    -
+        var bannerTextData = {
+            title: "Сотрудничество с фондами <br class='d-none d-lg-block'>поддержки малого&nbsp;бизнеса",
+            isSmallTitle: true,
+            imageSrc: "img/big-illustrations/large-business/cooperation-with-funds.png",
+            breadcrumbsArray: [
+                {linkText: "Малому и среднему бизнесу", link: "/"},
+                {linkText: "Меры господдержки", link: "/"}
+            ],
+            description: "Поручительство гарантийных региональных фондов поддержки&nbsp;малого бизнеса"
+        }
+
+        var cardBenefitList = [
+            {
+                title: 'Принимаем поручительства фондов поддержки малого бизнеса',
+                sprite: {
+                    name: 'icon-a-protection',
+                    classList: 'yellow-100 size-md-xxl'
+                },
+                bgColor: 'bg-white'
+            },
+            {
+                title: 'Готовим документы для получения поручительства',
+                sprite: {
+                    name: 'icon-a-protection',
+                    classList: 'yellow-100 size-md-xxl'
+                },
+                bgColor: 'bg-white'
+            },
+            {
+                title: 'Выдаем кредит, который может быть выдан только с обеспечением',
+                sprite: {
+                    name: 'icon-a-protection',
+                    classList: 'yellow-100 size-md-xxl'
+                },
+                bgColor: 'bg-white'
+            },
+        ]
+
+        var cardAboutBankData = {
+            pattern: false,
+            list: [
+                {
+                    title: "Обратиться к своему персональному менеджеру НОВИКОМ, который рассматривает заявку на кредит",
+                    additionalClassList: "justify-content-between h-100 w-xl-75",
+                    marginClassList: "mt-0",
+                },
+            ]
+        }
+
+        var cardFeedbackData = {
+            title: 'Остались вопросы?',
+            description: 'Оставьте свой телефон и мы перезвоним вам, <br class="d-none d-md-block d-lg-none d-xl-block">либо задайте вопрос в чате',
+            chatButtonIsVisible: true,
+            link: '#',
+            pattern: true,
+        }
+
+        var allSteps = [
+            {
+                text: "Заявка на кредит <br>или&nbsp;банковскую гарантию"
+            },
+            {
+                text: "Подготовка и направление документов&nbsp;в&nbsp;Фонд"
+            },
+            {
+                text: "Рассмотрение заявки <br class='d-none d-xl-block'>Фондом"
+            },
+            {
+                text: "Подписание <a href='#' class='link d-block'>трехстороннего договора</a>"
+            },
+        ]
+
+        var serviceTabsList = [
+            {
+                id: 'terms',
+                linkText: 'Условия',
+                isActive: false
+            },
+            {
+                id: 'funds',
+                linkText: 'Фонды',
+                isActive: true
+            },
+        ]
+
+         var accordionList = [
+            {
+                id: 11,
+                tag: 'Москва',
+                title: 'Фонд содействия кредитованию малого бизнеса Москвы',
+                table: [
+                    {
+                        title: 'Поручительство фонда предоставляется',
+                        text: 'По кредитным договорам'
+                    },
+                    {
+                        title: 'Размер поручительства',
+                        text: 'До 50 млн.рублей'
+                    },
+                    {
+                        title: 'Максимальный процент ответственности',
+                        text: 'До 70 % от суммы обязательства'
+                    }
+                ],
+                link: '#',
+                linkText: 'Перейти на сайт фонда'
+            },
+            {
+                id: 12,
+                tag: 'Владимирская область',
+                title: 'Гарантийный фонд Владимирской области',
+                table: [
+                    {
+                        title: 'Поручительство фонда предоставляется',
+                        text: 'По кредитным договорам'
+                    },
+                    {
+                        title: 'Размер поручительства',
+                        text: 'До 50 млн.рублей'
+                    },
+                    {
+                        title: 'Максимальный процент ответственности',
+                        text: 'До 70 % от суммы обязательства'
+                    }
+                ],
+                link: '#',
+                linkText: 'Перейти на сайт фонда'
+            },
+            {
+                id: 13,
+                tag: 'Воронежская область',
+                title: 'Гарантийный фонд Воронежской области',
+                table: [
+                    {
+                        title: 'Поручительство фонда предоставляется',
+                        text: 'По кредитным договорам'
+                    },
+                    {
+                        title: 'Размер поручительства',
+                        text: 'До 50 млн.рублей'
+                    },
+                    {
+                        title: 'Максимальный процент ответственности',
+                        text: 'До 70 % от суммы обязательства'
+                    }
+                ],
+                link: '#',
+                linkText: 'Перейти на сайт фонда'
+            },
+            {
+                id: 14,
+                tag: 'Забайкальский край',
+                title: 'Общество с ограниченной ответственностью «Гарантийный фонд Забайкальского края»',
+                table: [
+                    {
+                        title: 'Поручительство фонда предоставляется',
+                        text: 'По кредитным договорам'
+                    },
+                    {
+                        title: 'Размер поручительства',
+                        text: 'До 50 млн.рублей'
+                    },
+                    {
+                        title: 'Максимальный процент ответственности',
+                        text: 'До 70 % от суммы обязательства'
+                    }
+                ],
+                link: '#',
+                linkText: 'Перейти на сайт фонда'
+            },
+            {
+                id: 15,
+                tag: 'Алтайский край',
+                title: 'Некоммерческая организация «Алтайский фонд развития малого <br class="d-none d-md-block">и среднего предпринимательства»',
+                table: [
+                    {
+                        title: 'Поручительство фонда предоставляется',
+                        text: 'По кредитным договорам'
+                    },
+                    {
+                        title: 'Размер поручительства',
+                        text: 'До 50 млн.рублей'
+                    },
+                    {
+                        title: 'Максимальный процент ответственности',
+                        text: 'До 70 % от суммы обязательства'
+                    }
+                ],
+                link: '#',
+                linkText: 'Перейти на сайт фонда',
+                isOpen: true
+            },
+            {
+                id: 16,
+                tag: 'Иркутская область',
+                title: 'Фонд поддержки и развития предпринимательства Иркутской области Центр «Мой бизнес»',
+                table: [
+                    {
+                        title: 'Поручительство фонда предоставляется',
+                        text: 'По кредитным договорам'
+                    },
+                    {
+                        title: 'Размер поручительства',
+                        text: 'До 50 млн.рублей'
+                    },
+                    {
+                        title: 'Максимальный процент ответственности',
+                        text: 'До 70 % от суммы обязательства'
+                    }
+                ],
+                link: '#',
+                linkText: 'Перейти на сайт фонда'
+            },
+        ]
+
+    +banner-text(
+        bannerTextData,
+        "",
+        "bg-heavy-violet"
+    )
+
+    section.section-layout.bg-dark-10
+        .container
+            .row
+                .col-12.mb-4.mb-md-6.mb-lg-7
+                    +polygon-container("yellow-100")
+                        +helper("img/business-additional-info.png", "bg-white")
+                            p.text-l.mb-0 Поручительство гарантийного фонда представляет возможность предприятиям малого и среднего бизнеса, у которых нет залога для получения финансирования, оформить кредит под поручительство регионального Фонда.
+                .col-12
+                    .swiper.slider-cards.js-slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:2,tablet-album:3,laptop:3,laptop-x:3" data-space-between="mobile-s:8,mobile:8,tablet:16,laptop:16,laptop-x:16")
+                        .swiper-wrapper
+                            each item in cardBenefitList
+                                .swiper-slide.js-swiper-slide
+                                    +card-benefit(item)
+                        +slider-controls().mt-3.mt-md-4
+
+    section.section-layout
+        .container
+            .row.px-lg-6
+                .d-none.d-md-flex.justify-content-between
+                    h3.h3
+                        | Этапы получения услуги
+                a(
+                    data-bs-toggle="collapse"
+                    href="#cooperation-steps-content"
+                    role="button"
+                    aria-expanded="false"
+                    aria-controls="cooperation-steps-content"
+                ).h3.d-flex.align-items-center.justify-content-between.dark-100.d-md-none
+                    | Этапы получения услуги
+                    +svg-use("icon-chevron-down", "icon size-m violet-100")
+            #cooperation-steps-content.collapse.d-md-block.mt-6.mt-lg-7.px-lg-6
+                .col-12
+                    +stepper(allSteps, allSteps.length, "yellow")
+
+    section.section-layout.pt-0
+        .container
+            .row.px-lg-6
+                h3.h3.mb-4.mb-md-6.mb-lg-7
+                    | Подробнее об услуге
+                .d-none.d-lg-flex
+                    +tabs-simple(
+                        serviceTabsList, false
+                    )
+                .d-flex.d-lg-none
+                    +tabs-simple(
+                        serviceTabsList, true, 'min-w-100 min-w-sm-auto', 'text-center'
+                    ).tabs-panel--full-width-items.tabs-panel--auto-width-md
+                .tab-content.mt-6.mt-lg-7
+                    #terms.tab-pane.fade(role="tabpanel" aria-labelledby="terms" tabindex="0")
+                        .row.row-gap-6.row-gap-lg-7
+                            .col-12
+                                | Условия контент
+                    #funds.tab-pane.fade.show.active(role="tabpanel" aria-labelledby="funds" tabindex="0")
+                        .row.row-gap-6.row-gap-lg-7
+                            .col-12
+                                form.w-100
+                                    .input-group.flex-nowrap.d-none.d-lg-flex
+                                        span.input-group-icon.bg-transparent
+                                            span.icon.violet-100
+                                                +svg-use("icon-search")
+                                        input#input-search.form-control.form-control-lg.text-l.bg-transparent(type="text", placeholder="Поиск по регионам или названию фонда", aria-label="Поиск по регионам или названию фонда", aria-describedby="input-search" tabindex="-1")
+                                    .input-group.flex-nowrap.d-flex.d-lg-none
+                                        span.input-group-icon.bg-transparent
+                                            span.icon.violet-100
+                                                +svg-use("icon-search")
+                                        input#input-search-mobile.form-control.ps-0.text-s.bg-transparent(type="text", placeholder="Поиск по регионам или названию фонда", aria-label="Поиск по регионам или названию фонда", aria-describedby="#input-search-mobile" tabindex="-1")
+                            .col-12
+                                .accordion.accordion--size-lg.accordion--bg-transparent#accordion-funds-tab
+                                    each item in accordionList
+                                        +accordion-item(item, 'accordion-funds-tab', 'fw-bold h4')
+                                            .rte.rte--accordion
+                                                if item.table
+                                                    table.table.table--mobile-row-is-column.mb-0
+                                                        tbody
+                                                            each tableItem in item.table
+                                                                tr
+                                                                    td
+                                                                        .text-l.dark-70.fw-semibold!=tableItem.title
+                                                                    td
+                                                                        .text-l!=tableItem.text
+                                                if item.link
+                                                    a.btn.btn-link.btn-lg.btn-icon(type="button" href=item.link)
+                                                        !=item.linkText
+                                                        +svg-use("icon-download", "icon size-m")
+        +pattern-bg('section-2', 'light', 'pattern-bg--position-sm-top')
+
+    section.section-layout.bg-blue-10
+        .container
+            h3.px-lg-6.mb-4.mb-md-6.mb-lg-7
+                | Контакты
+            .row
+                .col-12
+                    .swiper.js-slider-cards.slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:1,tablet-album:2,laptop:2,laptop-x:2" data-space-between="mobile-s:8,mobile:8,tablet-album:16,tablet:16,laptop:16,laptop-x:16")
+                        .swiper-wrapper.js-swiper-wrapper 
+                            .swiper-slide.js-swiper-slide
+                                +card-about(cardAboutBankData, 'bg-heavy-violet').h-100
+                            .swiper-slide.js-swiper-slide
+                                +card-feedback(cardFeedbackData, 'bg-white').h-100
+
+                        +slider-controls().mt-3.mt-md-4
+                        
+    section.section-layout
+        .container
+            h3.px-lg-6.mb-4.mb-md-6.mb-lg-7
+                | Другие услуги для бизнеса
+            +slider-card-product()

@@ -1,4 +1,7 @@
 .search-item {
+    &__header {
+        position: relative;
+    }
 
     mark {
         color: var(--violet-100);

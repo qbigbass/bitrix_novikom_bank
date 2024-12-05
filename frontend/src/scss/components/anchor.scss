@@ -1,0 +1,16 @@
+.anchor-item {
+    color: var(--purple-70);
+    text-decoration-line: underline;
+    text-decoration-style: dashed;
+    text-decoration-color: currentColor;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.5rem;
+    transition: ease .33s;
+
+    &:hover,
+    &:focus,
+    &:focus-visible {
+        color: var(--blue-100);
+        text-decoration-color: transparent;
+    }
+}

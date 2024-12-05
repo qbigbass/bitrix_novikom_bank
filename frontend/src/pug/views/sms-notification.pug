@@ -111,7 +111,7 @@ block content
                 | Преимущества
             .row.px-lg-6
                 .col-12
-                    .swiper.slider-cards.js-slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:2,laptop:2,laptop-x:3" data-space-between="mobile-s:8,mobile:8,tablet:16,laptop:40,laptop-x:40")
+                    .swiper.slider-cards.js-slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:2,laptop:2,laptop-x:3" data-space-between="mobile-s:8,mobile:8,tablet:16,laptop:16,laptop-x:16")
                         .swiper-wrapper
                             each item in cardsListBenefit
                                 .swiper-slide.js-swiper-slide
@@ -125,27 +125,16 @@ block content
         .container
             h3.mb-4.mb-md-6.mb-lg-7
                 | Возможности
-            .row.row-gap-6
+            #benefits.row.row-gap-6
                 each item, index in allBenefits
                     .col-12.col-md-6.col-lg-4(class=index > 3 && 'd-none d-md-block')
                         +benefit(item.spriteData, item.title)
                             span!= item.description
-            #sms-more-benefits.collapse.d-md-none
-                .row.row-gap-6.mt-6
-                    each item, index in allBenefits
-                        if index > 3
-                            .col-12
-                                +benefit(item.spriteData, item.title)
-                                    span!= item.description
-            .row.d-md-none.mt-6
-                .col-12
-                    a(
-                        data-bs-toggle="collapse"
-                        href="#sms-more-benefits"
+                .col-12.d-md-none
+                    button(
+                        data-target="benefits"
                         role="button"
-                        aria-expanded="false"
-                        aria-controls="sms-more-benefits"
-                    ).d-flex.gap-2.align-items-center.justify-content-center.violet-100.text-m.fw-bold
+                    ).js-more-content-link.d-flex.gap-2.align-items-center.justify-content-center.violet-100.text-m.fw-bold
                         | Ещё преимущества
                         +svg-use("icon-chevron-down", "icon size-m")
 

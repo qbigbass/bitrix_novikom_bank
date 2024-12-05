@@ -1,0 +1,191 @@
+extends ../templates/base
+
+block title
+    title= 'О банке - Карьера'
+    meta(name="description" content="Описание страницы с карьерой")
+block content
+
+    -
+        var jobsList = [
+            {
+                date: "1.",
+                name: "Руководитель направления по развитию микробизнеса в регионах",
+                link: "#",
+                breadcrumbsArray: [
+                    {
+                        link: "#",
+                        linkText: "Москва",
+                    },
+                    {
+                        link: "#",
+                        linkText: "Развитие бизнеса",
+                    }
+                ]
+            },
+            {
+                date: "2.",
+                name: "Руководитель направления по развитию микробизнеса в регионах",
+                link: "#",
+                breadcrumbsArray: [
+                    {
+                        link: "#",
+                        linkText: "Москва",
+                    },
+                    {
+                        link: "#",
+                        linkText: "Корпоративный сектор",
+                    }
+                ]
+            },
+            {
+                date: "3.",
+                name: "Руководитель по продвижению продуктов и сервисов ВЭД",
+                link: "#",
+                breadcrumbsArray: [
+                    {
+                        link: "#",
+                        linkText: "Москва",
+                    },
+                    {
+                        link: "#",
+                        linkText: "Развитие бизнеса",
+                    }
+                ]
+            },
+            {
+                date: "4.",
+                name: "Главный менеджер по работе с клиентами среднего бизнеса",
+                link: "#",
+                breadcrumbsArray: [
+                    {
+                        link: "#",
+                        linkText: "Новосибирск",
+                    },
+                    {
+                        link: "#",
+                        linkText: "Корпоративный сектор",
+                    }
+                ]
+            },
+            {
+                date: "5.",
+                name: "Руководитель департамента продаж и развития малого и микробизнеса",
+                link: "#",
+                breadcrumbsArray: [
+                    {
+                        link: "#",
+                        linkText: "Москва",
+                    },
+                    {
+                        link: "#",
+                        linkText: "Менеджмент",
+                    }
+                ]
+            },
+            {
+                date: "6.",
+                name: "Руководитель департамента продаж и развития малого и микробизнеса",
+                link: "#",
+                breadcrumbsArray: [
+                    {
+                        link: "#",
+                        linkText: "Казань",
+                    },
+                    {
+                        link: "#",
+                        linkText: "Корпоративный сектор",
+                    }
+                ]
+            },
+        ]
+
+        var paginationObject = {
+            prevLink: "",
+            nextLink: "#3",
+            lastLink: {
+                link: "#3",
+                linkText: "3",
+            },
+            list: [
+                {
+                    link: "#1",
+                    linkText: "1",
+                    isActive: true,
+                },
+                {
+                    link: "#2",
+                    linkText: "2"
+                },
+                {
+                    link: "#3",
+                    linkText: "3"
+                },
+            ]
+        }
+
+        var bannerTextData = {
+            title: "Карьера в НОВИКОМЕ",
+            breadcrumbsArray: [
+                {linkText: "О банке", link: "/"}
+            ],
+            description: "Работа мечты",
+            button: {
+                text: 'Откликнуться',
+                isModalTrigger: true,
+                modalSelector: '#modal-vacancy-form'
+            }
+        }
+        
+    include ../cards/card-news
+    include ../includes/header/header
+    include ../components/banners/banner-text
+    include ../components/ui/tabs
+    include ../components/ui/pagination
+    include ../components/search-item
+
+    +banner-text(
+        bannerTextData
+    )
+
+    section.section-career-list.section-layout.py-lg-11.border-top.border-blue10
+        .container.d-flex.flex-column.row-gap-4.row-gap-md-6.row-gap-lg-7
+            .row.row-gap-4.row-gap-md-6.row-gap-lg-7.px-lg-6
+                .col-12
+                    h3 Вакансии НОВИКОМА
+                .col-12
+                    form.d-flex.flex-wrap.flex-xl-nowrap.justify-content-between.gap-3.gap-md-4.gap-xl-6
+                        .w-100
+                            .input-group.flex-nowrap.d-none.d-lg-flex
+                                span.input-group-icon
+                                    span.icon.violet-100
+                                        +svg-use("icon-search")
+                                input#input-search.form-control.form-control-lg.text-l(type="text", placeholder="Поиск по вакансиям", aria-label="Поиск по вакансиям", aria-describedby="input-search" tabindex="-1")
+                            .input-group.flex-nowrap.d-flex.d-lg-none
+                                span.input-group-icon
+                                    span.icon.violet-100
+                                        +svg-use("icon-search")
+                                input#input-search-mobile.form-control.ps-0.text-s(type="text", placeholder="Поиск по вакансиям", aria-label="Поиск по вакансиям", aria-describedby="#input-search-mobile" tabindex="-1")
+                        .d-flex.flex-column.flex-md-row.w-100.gap-3.gap-lg-4.gap-xl-6
+                            div.w-100.w-md-50.w-xxl-400w.flex-shrink-lg-0
+                                select#selectCity(aria-label="Выбор города" data-placeholder="Все города").form-select.form-select--size-small.form-select--size-lg-large.js-select
+                                    option(selected value="Москва") Москва
+                                    option(value="Новосибирск") Новосибирск
+                                    option(value="Казань") Казань
+                            div.w-100.w-md-50.w-xxl-400w.flex-shrink-lg-0
+                                select#selectSpecialization(aria-label="Выбор специализации" data-placeholder="Все специализации").form-select.form-select--size-small.form-select--size-lg-large.js-select
+                                    option
+                                    option(value="1") 1
+                                    option(value="2") 2
+                                    option(value="3") 3
+            .row.px-lg-6
+                .col-12.col-lg-8
+                    .d-flex.flex-column.gap-4
+                        each item in jobsList
+                            +search-item(item)
+            .row.px-lg-6
+                .col-12
+                    .section-career-list__pagination
+                        +pagination(paginationObject, "start")
+        +pattern-bg('section', 'light', 'd-none d-md-block pattern-bg--position-sm-top')
+
+    include ../includes/modals/modal-vacancy-form

@@ -51,7 +51,7 @@
 	--yellow-10: #fffde6;
 	--yellow-30: #fff9b1;
 	--yellow-70: #fff355;
-	--yellow-100: #ffed00;
+	--yellow-100: #fdd400;
 	--yellow-150: #debd10;
 	--yellow-200: #6b6401;
 
@@ -91,6 +91,7 @@
 .violet-30 { color: var(--violet-30); }
 .violet-70 { color: var(--violet-70); }
 .violet-100 { color: var(--violet-100); }
+.violet-100-important { color: var(--violet-100)!important; }
 .violet-150 { color: var(--violet-150); }
 .violet-200 { color: var(--violet-200); }
 
@@ -130,9 +131,12 @@
 	background: linear-gradient(222.24deg, #101317 20%, #6655A2 80%);
 }
 
-
 .bg-gradient-violet {
 	background: linear-gradient(42deg, #6655A2 20%, #55246A 80%);;
+}
+
+.bg-gradient-graphite {
+    background: linear-gradient(60.54deg, #E8EAEF 17.83%, #C5CBCF 101.54%);
 }
 
 

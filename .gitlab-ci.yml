@@ -1,5 +1,5 @@
 variables:
-  AUTODEPLOY_BASE_DOMAIN: main.novikombank.z55.dev.dalee.ru
+  AUTODEPLOY_BASE_DOMAIN: s1.main.novikombank.z55.dev.dalee.ru
   GIT_DEPTH: 20
 
 ##

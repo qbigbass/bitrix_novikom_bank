@@ -1,0 +1,10 @@
+include ../../cards/card-product
+
+mixin slider-card-fraud(data, perView = 'mobile-s:1,mobile:1', spaceBetween = 'mobile-s:8,mobile:8', breakpointDestroy = 'tablet')
+    .swiper.slider-cards.js-slider-cards(data-slides-per-view= perView, data-space-between= spaceBetween data-slider-breakpoint-destroy= breakpointDestroy)
+        .swiper-wrapper.js-swiper-wrapper.cards-gutter
+            each item in data
+                .swiper-slide.js-swiper-slide.col-md-6.col-xl-4
+                    +card-benefit(item).card-benefit--type-img
+
+        +slider-controls().mt-3.mt-md-4

@@ -57,9 +57,9 @@ block content
                 },
             ]
         .container
-            .row.row-gap-3.row-gap-lg-6
+            .row.cards-gutter
                 each card, idx in cardList
-                    .col-12.col-md-6(class= idx % 2 === 0 ? 'pe-md-2 pe-lg-3-5' : 'ps-md-2 ps-lg-3-5')
+                    .col-12.col-md-6
                         +card-product(card).card-product--bg-white
 
     +banner-product-info({

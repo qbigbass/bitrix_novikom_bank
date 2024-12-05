@@ -2,7 +2,7 @@
 
 mixin tag(text, type)
     .tag(class= type ? `tag--${type}` : "")&attributes(attributes)
-        span.tag__content.text-s.fw-semibold= text
+        span.tag__content.text-s.fw-semibold.mw-100.w-sm-auto= text
         span.tag__triangle
             svg(width="14", height="21", viewBox="0 0 14 21", fill="none", xmlns="http://www.w3.org/2000/svg")
                 path(d="M13.5 19.3486L0.934259 0.5H13.5V19.3486Z")

@@ -34,20 +34,26 @@ class RatesFetcher
     }
 
     /**
-     * @param int|array $elementIds
+     * @param int|array|null $elementIds
      * @return void
      */
-    public function fetchRates(int|array $elementIds): void
+    public function fetchRates(int|array|null $elementIds): void
     {
         try {
             $dataClass = $this->getDataClass($this->iblockId);
             $properties = $this->getProperties($this->iblockId);
+            $properties[] = 'NAME';
 
             $data = [
                 'order' => ['SORT' => 'ASC'],
-                'filter' => ['LINK.ELEMENT.ID' => $elementIds],
                 'select' => $properties
             ];
+
+            if (!empty($elementIds) && isset($properties['LINK_'])) {
+                $data['filter'] = [
+                    'LINK.ELEMENT.ID' => $elementIds
+                ];
+            }
 
             $this->loadedElements = $dataClass::getList($data)->fetchAll();
 
@@ -138,10 +144,20 @@ class RatesFetcher
             if ($item['SUM_TO_'] != 0) {
                 $carry['SUM_TO'] = isset($carry['SUM_TO']) ? max($carry['SUM_TO'], $item['SUM_TO_']) : $item['SUM_TO_'];
             }
-            if ($item['PERIOD_FROM_'] != 0) {
+
+            if (isset($carry['PERIOD_FROM']) && !is_numeric($carry['PERIOD_FROM'])) {
+                // Если в PERIOD_FROM уже текст, ничего не менять
+            } elseif (!is_numeric($item['PERIOD_FROM_'])) {
+                $carry['PERIOD_FROM'] = $item['PERIOD_FROM_'];
+            } elseif ($item['PERIOD_FROM_'] != 0) {
                 $carry['PERIOD_FROM'] = isset($carry['PERIOD_FROM']) ? min($carry['PERIOD_FROM'], $item['PERIOD_FROM_']) : $item['PERIOD_FROM_'];
             }
-            if ($item['PERIOD_TO_'] != 0) {
+
+            if (isset($carry['PERIOD_TO']) && !is_numeric($carry['PERIOD_TO'])) {
+                // Если в PERIOD_TO уже текст, ничего не менять
+            } elseif (!is_numeric($item['PERIOD_TO_'])) {
+                $carry['PERIOD_TO'] = $item['PERIOD_TO_'];
+            } elseif ($item['PERIOD_TO_'] != 0) {
                 $carry['PERIOD_TO'] = isset($carry['PERIOD_TO']) ? max($carry['PERIOD_TO'], $item['PERIOD_TO_']) : $item['PERIOD_TO_'];
             }
 

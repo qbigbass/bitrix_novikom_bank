@@ -1,0 +1,145 @@
+extends ../templates/base
+
+block title
+    title= 'Карьера - страница Вакансии'
+    meta(name="description" content="Описание страницы с вакансией")
+block content
+
+    include ../cards/card-contact
+    include ../includes/header/header
+    include ../components/ui/breadcrumbs
+    include ../components/ui/tag
+    include ../components/helper
+    include ../components/quote
+
+    -
+        var vacancyData = {
+            date: '25.09.2024',
+            title: 'Руководитель направления по развитию микробизнеса в регионах',
+            description: 'В роли Главного менеджера по работе с клиентами среднего бизнеса вы станете ключевым звеном в развитии корпоративного сегмента банка. Ваша миссия — выстраивать и укреплять долгосрочные партнёрские отношения с крупными компаниями. Вы будете не просто продавать банковские продукты, а станете доверенным финансовым консультантом для руководителей бизнеса, помогая им развивать свои предприятия с помощью эффективных банковских решений. Ваш успех будет измеряться ростом клиентской базы, увеличением объёмов продаж банковских продуктов и высоким уровнем удовлетворённости клиентов.',
+            imageSrc: '',
+            tags: [
+                {
+                    text: 'Москва',
+                    type: 'outline tag--triangle-absolute',
+                },
+                {
+                    text: 'Развитие бизнеса',
+                    type: 'outline tag--triangle-absolute',
+                }
+            ]
+        }
+
+        var breadcrumbsArray = [
+            {linkText: "О банке", link: "/"},
+            {linkText: "Карьера", link: "/"}
+        ]
+
+        var cardContactData = {
+            topTitle: "Контакты для соискателей",
+            title: "Департамент HR",
+            imageSrc: "big-illustrations/large-individual/contact.png",
+            contactDetail: {
+                email: "personal@novikom.ru",
+                phone: "+7 (495) 974-71-87",
+                phoneChip: "доб. 1597",
+            }
+        }
+
+        var similarVacancies = [
+            {
+                tag: "Развитие бизнеса",
+                date: "25.04.2024",
+                title: "Руководитель по продвижению продуктов и сервисов ВЭД",
+                titleIsSmall: true
+            },
+            {
+                tag: "Развитие бизнеса",
+                date: "25.04.2024",
+                title: "Руководитель направления по развитию микробизнеса в регионах",
+                titleIsSmall: true
+            },
+            {
+                tag: "Развитие бизнеса",
+                date: "25.04.2024",
+                title: "Главный менеджер по работе с клиентами среднего бизнеса",
+                titleIsSmall: true
+            },
+            {
+                tag: "Развитие бизнеса",
+                date: "25.04.2024",
+                title: "Главный менеджер по работе с клиентами среднего бизнеса",
+                titleIsSmall: true
+            },
+        ]
+
+    section.pt-6.border-top.border-blue10
+        .container
+            .row.row-gap-6.row-gap-lg-7.px-lg-6
+                .col-12
+                    +breadcrumbs(breadcrumbsArray, 'dark-70')
+                .col-12
+                    h1.h2.mb-5.mb-lg-6!= vacancyData.title
+                    .d-flex.gap-4.align-items-center.flex-wrap
+                        if vacancyData.tags
+                            each tag in vacancyData.tags
+                                +tag(tag.text, tag.type)
+                        if vacancyData.date
+                            span.text-m.dark-100!= vacancyData.date
+
+                .rte.rte--w-xxl-60
+                    if vacancyData.imageSrc
+                        img(src=vacancyData.imageSrc, alt="", loading="lazy").mobile-element-full-width
+                    if vacancyData.description
+                        p
+                            b!= vacancyData.description
+                    button.btn.btn-secondary.btn-lg-lg.d-inline-block.w-100.w-md-auto(data-bs-toggle="modal" data-bs-target="#modal-vacancy-form") Откликнуться<span class="d-none d-md-inline"> на вакансию</span>
+                    div
+                        h4 Обязанности в НОВИКОМЕ
+                        ul
+                            li Развивать клиентов среднего корпоративного бизнеса (выручка от 350 млн до 10 млрд).
+                            li Основной фокус РКО и кредитование
+                            li Проводить выездные встречи и переговоры с руководителями организаций с целью презентации и продажи продуктов банка
+                            li Выполнять показатели подразделения
+                            li Взаимодействовать с подразделениями банка по вопросам оформления банковских продуктов для бизнеса
+                            li Анализировать рынок конкурентов
+                    div
+                        h4 Требования к кандидату
+                        ul
+                            li Высшее образование
+                            li Опыт тёплого привлечения и развития клиентов, продаж банковских продуктов
+                            li Умение проводить переговоры на уровне первых лиц компании
+                            li Знание продуктов малого и среднего бизнеса
+                    div
+                        h4 Условия
+                        ul
+                            li Пятидневная рабочая неделя с 9:00 до 18:00
+                            li Стабильный доход: конкурентный базовый оклад + квартальные премии
+                            li Мощная поддержка в первые месяцы: с тобой будет работать наставник, который поможет во всем
+                            li Свобода действий: у нас нет жёстких скриптов — ты можешь сам выбирать подход к клиентам
+                            li Среда для твоего неизбежного развития: у нас регулярно проходят тренинги, вебинары, бизнес-игры, у тебя будет доступ к бесплатным корпоративным библиотекам Альпины, МИФа и бизнес — изданий, скидки на курсы иностранных языков
+                            li Карьерный рост: ты будешь понимать, что нужно сделать для перехода на другой уровень
+                            li Чувство локтя: у нас дружелюбная атмосфера, мы приветствуем юмор (без него в нашем деле никак), неформальные весёлые вечеринки
+                            li Забота о твоём здоровье: программа ДМС, куда входит стоматология и обслуживание в лучших клиниках города, скидки на абонементы в фитнес-клубы, неформальные спортивные сообщества
+                            li Возможности для разнообразного досуга: скидки на услуги туристических агентств, продукты питания, в рестораны и бары, в магазины и салоны красоты
+                    button.btn.btn-secondary.btn-lg-lg.d-inline-block.w-100.w-md-auto(data-bs-toggle="modal" data-bs-target="#modal-vacancy-form") Откликнуться<span class="d-none d-md-inline"> на вакансию</span>
+
+    section.pb-6.pb-md-9.pb-lg-11.pt-6.pt-lg-7
+        .container
+            .row
+                .col-12
+                    +card-contact(cardContactData)
+                        .d-flex.flex-column.gap-4
+                            h5.card-contact__title.text-white-50!= cardContactData.title
+                            .card-contact__contacts.d-flex.flex-column.flex-lg-row.flex-lg-wrap.gap-4
+                                a.card-contact__link.dark-0.gap-3.h5.fw-normal.text-white(href=`mailto:${cardContactData.contactDetail.email}`)
+                                    +svg-use("icon-mail", "icon size-m")
+                                    u!= cardContactData.contactDetail.email
+                                p.card-contact__link.dark-0.mb-0.gap-3(href=`mailto:${cardContactData.contactDetail.email}`)
+                                    +svg-use("icon-phone", "icon size-m")
+                                    span.d-flex.flex-wrap.justify-content-start.gap-2
+                                        span!= cardContactData.contactDetail.phone
+                                        span.chip.chip--outlined.caption-m.text-white-50!= cardContactData.contactDetail.phoneChip
+
+    include ../includes/layout/section-career-similar-vacancies
+    include ../includes/modals/modal-vacancy-form

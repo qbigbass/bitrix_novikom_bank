@@ -1,0 +1,10 @@
+.modal.modal-xl.fade(id="modal-atms-filters" tabindex='-1' aria-hidden='true')
+    .modal-dialog.modal-dialog-scrollable
+        .modal-content
+            .modal-header
+                h4.modal-title Фильтры
+                button.btn-close(type="button" data-bs-dismiss='modal' aria-label='Close')
+                    span.icon.size-m
+                        +svg-use("icon-close")
+            .modal-body
+                include ../layout/filters/atms-filter

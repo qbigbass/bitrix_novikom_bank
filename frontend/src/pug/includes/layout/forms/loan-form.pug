@@ -1,0 +1,262 @@
+include ../../../components/forms/form-step
+include ../../../components/forms/input
+include ../../../components/forms/select
+include ../../../components/forms/captcha
+include ../../../components/forms/radio
+include ../../../components/forms/confirm
+
+-
+    var loanForm = {
+        formName: "loan",
+        step1: {
+            inputs1: [
+                {
+                    id: "last-name",
+                    label: "Фамилия",
+                    placeholder: "Введите фамилию",
+                    required: true,
+                },
+                {
+                    id: "first-name",
+                    label: "Имя",
+                    placeholder: "Введите имя",
+                    required: true,
+                },
+                {
+                    id: "middle-name",
+                    label: "Отчество",
+                    placeholder: "Введите отчество",
+                    required: false,
+                },
+                {
+                    id: "birthday",
+                    label: "Дата рождения",
+                    placeholder: "Укажите дату",
+                    required: false,
+                    datepicker: true,
+                },
+                {
+                    id: "phone",
+                    label: "Телефон",
+                    placeholder: "+7",
+                    type: "tel",
+                    required: true,
+                    mask: "phone",
+                    pattern: "\\+7\\s\\(\\d{3}\\)\\s\\d{3}-\\d{2}-\\d{2}",
+                    errorMessage: "Введите корректный номер телефона",
+                },
+                {
+                    id: "e-mail",
+                    label: "E-mail",
+                    placeholder: "Введите почту",
+                    type: "email",
+                    required: true,
+                    pattern: "[a-zA-Z0-9._%\\+\\-]+@[a-zA-Z0-9.\\-]+\\.[a-zA-Z]{2,}",
+                    errorMessage: "Введите корректный адрес электронной почты",
+                },
+            ],
+            radios1: [
+                {
+                    id: "person-male-sex",
+                    name: "person-sex",
+                    value: "male",
+                    text: "Мужской"
+                },
+                {
+                    id: "person-female-sex",
+                    name: "person-sex",
+                    value: "female",
+                    text: "Женский"
+                },
+            ],
+            radios2: [
+                {
+                    id: "person-citizenship_RU",
+                    name: "citizenship",
+                    value: "RU",
+                    text: "РФ"
+                },
+                {
+                    id: "person-citizenship_other",
+                    name: "citizenship",
+                    value: "other",
+                    text: "Другое"
+                },
+            ],
+            inputs2: [
+                {
+                    id: "passport-series",
+                    label: "Серия паспорта",
+                    placeholder: "",
+                    required: false,
+                },
+                {
+                    id: "passport-number",
+                    label: "Номер паспорта",
+                    placeholder: "",
+                    required: false,
+                },
+            ]
+        },
+        step2: {
+            inputs1: [
+                {
+                    id: "employment-history",
+                    label: "Общий трудовой стаж",
+                    placeholder: "Кол-во лет",
+                    type: "number",
+                    min: "0",
+                    required: true,
+                    groupText: "лет",
+                },
+                {
+                    id: "employment-last-work",
+                    label: "Стаж на последнем месте работы",
+                    placeholder: "Кол-во лет",
+                    type: "number",
+                    min: "0",
+                    required: true,
+                    groupText: "лет",
+                },
+                {
+                    id: "monthly-income",
+                    label: "Ежемесячный доход",
+                    placeholder: "Сумма",
+                    required: false,
+                    groupText: "₽",
+                    mask: "money"
+                },
+            ],
+            inputs2: [
+                {
+                    id: "employer-name",
+                    label: "Наименование организации-работодателя",
+                    placeholder: "",
+                    required: true,
+                },
+            ]
+        },
+        step3: {
+            inputs: [
+                {
+                    id: "loan-amount",
+                    label: "Сумма кредита",
+                    placeholder: "Сумма",
+                    required: true,
+                    groupText: "₽",
+                    mask: "money"
+                },
+                {
+                    id: "loan-term",
+                    label: "Срок кредита",
+                    placeholder: "Срок",
+                    type: "number",
+                    min: "0",
+                    required: true,
+                    groupText: "мес.",
+                },
+            ],
+            selects: [
+                {
+                    id: "office-obtaining",
+                    label: "Офис получения кредита",
+                    options: ["Москва", "Санкт-Петербург", "Казань", "Самара"],
+                    required: true,
+                },
+                {
+                    id: "loan-program",
+                    label: "Кредитная программа",
+                    options: ["С поручительством физического лица", "С поручительством физического лица", "С поручительством физического лица"],
+                    required: true,
+                }
+            ],
+            inputs2: [
+                {
+                    id: "employer-name",
+                    label: "Наименование организации-работодателя",
+                    placeholder: "",
+                    required: true,
+                },
+            ]
+        }
+    }
+
+form(action="/" method="POST" novalidate id="loan-form" data-form).application-form
+    .application-form__step(data-form-step data-form-validate-group)
+        - var step1 = loanForm.step1;
+        .row.g-1.g-md-2.g-lg-2_5
+            .application-form__col.col-12
+                +form-step({
+                    current: "1",
+                    total: "3",
+                    text: "Личные данные"
+                })
+            each item in step1.inputs1
+                .application-form__col.col-12.col-md-6
+                    +input(item, loanForm.formName)
+            fieldset.application-form__col.col-12.col-md-6
+                legend.form-label.mb-3 Пол
+                .d-flex.flex-wrap.row-gap-3.row-gap-lg-4.column-gap-6.column-gap-md-5.column-gap-lg-6
+                    each item, index in step1.radios1
+                        +radio(item, index, loanForm.formName)
+            fieldset.application-form__col.col-12.col-md-6
+                legend.form-label.mb-3 Гражданство
+                .d-flex.flex-wrap.row-gap-3.row-gap-lg-4.column-gap-6.column-gap-md-5.column-gap-lg-6
+                    each item, index in step1.radios2
+                        +radio(item, index, loanForm.formName)
+            each item in step1.inputs2
+                .application-form__col.col-12.col-md-6
+                    +input(item, loanForm.formName)
+        .d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-5.column-gap-lg-6.mt-6.mt-lg-7
+            button.btn.btn-primary.btn-lg-lg.w-100.w-md-auto(type="button" disabled aria-disabled="true" data-form-button data-form-step-button-next) Продолжить
+            div.text-m.orange-100.text-center(data-form-error)
+    .application-form__step(data-form-step data-form-validate-group hidden)
+        - var step2 = loanForm.step2;
+        .row.g-1.g-md-2.g-lg-2_5
+            .application-form__col.col-12
+                +form-step({
+                    current: "2",
+                    total: "3",
+                    text: "Данные о работе"
+                })
+            .row.g-1.g-md-2.g-lg-2_5
+                each item in step2.inputs1
+                    .application-form__col.col-12.col-md-4
+                        +input(item, loanForm.formName)
+                .application-form__col.col-12
+                    +input(step2.inputs2[0], loanForm.formName)
+        .d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-5.column-gap-lg-6.mt-6.mt-lg-7
+            button.btn.btn-primary.btn-lg-lg.w-100.w-md-auto(type="button" disabled aria-disabled="true" data-form-button data-form-step-button-next) Продолжить
+            button.btn.btn-outline-primary.btn-lg-lg.w-100.w-md-auto(type="button" data-form-step-button-prev) Назад
+            div.text-m.orange-100.text-center(data-form-error)
+    .application-form__step(data-form-step data-form-validate-group hidden)
+        - var step3 = loanForm.step3;
+        .row.g-1.g-md-2.g-lg-2_5
+            .application-form__col.col-12
+                +form-step({
+                    current: "3",
+                    total: "3",
+                    text: "Настройка кредита"
+                })
+            each item in step3.inputs
+                .application-form__col.col-12.col-md-6
+                    +input(item, loanForm.formName)
+            each item in step3.selects
+                .application-form__col.col-12.col-md-6
+                    +select(item, loanForm.formName)
+            .application-form__col.col-12
+                +captcha(loanForm.formName)
+            .application-form__col.col-12
+                +confirm(loanForm.formName)
+        .d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-5.column-gap-lg-6.mt-6.mt-lg-7
+            button.btn.btn-primary.btn-lg-lg.w-100.w-md-auto(type="submit" disabled aria-disabled="true" data-form-button) Отправить заявку
+            button.btn.btn-outline-primary.btn-lg-lg.w-100.w-md-auto(type="button" data-form-step-button-prev) Назад
+            div.text-m.orange-100.text-center(data-form-error)
+    div(
+        hidden
+        aria-hidden="true"
+        data-success-title="Ваша заявка успешно отправлена!"
+        data-success-info="Мы ответим на вашу заявку, по выбранному способу связи, как только получим и обработаем её"
+        data-error-title="Не удалось отправить заявку"
+        data-error-info="Проверьте правильно ли указаны все данные и отправьте обращение снова"
+    ).js-message

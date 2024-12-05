@@ -1,0 +1,357 @@
+extends ../templates/base
+
+block title
+    title= 'Синдицированное кредитование'
+    meta(name="description" content="Описание страницы Синдицированное кредитование")
+block content
+    include ../includes/header/header
+    include ../components/banners/banner-product
+    include ../components/helper
+    include ../cards/card-text
+    include ../cards/card-benefit
+    include ../components/contact-block
+    include ../components/announcement
+    include ../includes/layout/slider-card-product
+
+    -
+        var bannerPromoData = {
+            title: "Синдицированное кредитование",
+            subtitle: "Предоставление заемщику кредитных средств синдикатом банков на&nbsp;одинаковых условиях в&nbsp;рамках одного кредитного соглашения",
+            imgSrc: "img/big-illustrations/large-corporate/syndicated-lending.png",
+            bgColor: "heavy-purple",
+            footer: [
+                {
+                    spriteData: {
+                        icon: 'prices',
+                        classList: 'size-xl',
+                    },
+                    title: 'Привлечение больших объемов финансирования'
+                },
+                {
+                    spriteData: {
+                        icon: 'limits',
+                        classList: 'size-xl',
+                    },
+                    title: 'Расширение лимитной <br>емкости'
+                },
+                {
+                    spriteData: {
+                        icon: 'individual',
+                        classList: 'size-xl',
+                    },
+                    title: 'Обеспечение наиболее выгодных&nbsp;условий'
+                },
+            ],
+            breadcrumbsArray: [
+                {
+                    link: "#",
+                    linkText: "Корпоративным клиентам"
+                },
+                {
+                    link: "#",
+                    linkText: "Финансирование"
+                }
+            ],
+        }
+
+        var allBenefits = [
+            {
+                spriteData: {
+                    icon: 'money-up',
+                    classList: 'size-xl',
+                },
+                description: 'Большой объем финансирования в рамках одной сделки',
+            },
+            {
+                spriteData: {
+                    icon: 'free-service',
+                    classList: 'size-xl',
+                },
+                description: 'Диверсификация кредитного портфеля при минимизации затрат на его администрирование',
+            },
+            {
+                spriteData: {
+                    icon: 'stability',
+                    classList: 'size-xl',
+                },
+                description: 'Доступ к финансовым ресурсампо рыночной цене',
+            },
+            {
+                spriteData: {
+                    icon: 'doc-percent',
+                    classList: 'size-xl',
+                },
+                description: 'Стандартизированные условия кредитования (в рамках Федерального закона "О синдицированном кредите (займе)" №486-ФЗ)\n',
+            },
+            {
+                spriteData: {
+                    icon: 'briefcase-check',
+                    classList: 'size-xl',
+                },
+                description: 'Привлечение новых инвесторов',
+            },
+            {
+                spriteData: {
+                    icon: 'credit-rating',
+                    classList: 'size-xl',
+                },
+                description: 'Не требуется road-show и присвоение рейтинга сделке или Заемщику',
+            }
+            ,
+            {
+                spriteData: {
+                    icon: 'flexibility',
+                    classList: 'size-xl',
+                },
+                description: 'Гибкая структура займа, отвечающая потребностям Заемщика',
+            }
+            ,
+            {
+                spriteData: {
+                    icon: 'easily',
+                    classList: 'size-xl',
+                },
+                description: 'Простота сопровождения (взаимодействие через «единое окно» - Кредитного управляющего)',
+            }
+            ,
+            {
+                spriteData: {
+                    icon: 'hands',
+                    classList: 'size-xl',
+                },
+                description: 'Принятие неделимого обеспечения в пользу всех кредиторов синдиката',
+            }
+        ]
+
+        var cardServicesList = [
+            {
+                bgColor: 'bg-purple-10',
+                title: 'Структурирование',
+                image: 'large-corporate/structuring.png',
+                list: '<ul class="list">' +
+                        '<li>позиционирование предстоящего займа с&nbsp;целью определения наилучших условий сделки</li>' +
+                        '<li>подготовка предложений по&nbsp;структуре и&nbsp;параметрам кредита</li>' +
+                        '<li>согласование с&nbsp;Заёмщиком основных условий и&nbsp;параметров кредита, отвечающих интересам как Заёмщика так и&nbsp;потенциальных кредиторов</li>' +
+                        '<li>подготовка кредитной и&nbsp;обеспечительной документации</li>' +
+                        '<li>согласование кредитной и&nbsp;обеспечительной документации с&nbsp;Заёмщиком и&nbsp;потенциальными кредиторами</li>' +
+                        '<li>организация денежных потоков</li>' +
+                        '</ul>'
+            },
+            {
+                bgColor: 'bg-purple-10',
+                title: 'Продажа и Синдикация',
+                image: 'large-corporate/syndicated-lending.png',
+                list: '<ul class="list">' +
+                        '<li>проведение комплекса мероприятий по&nbsp;открытию лимитов у&nbsp;кредиторов</li>' +
+                        '<li>формирование синдиката кредиторов</li>' +
+                        '<li>участие в&nbsp;синдикате в&nbsp;качестве кредитора с&nbsp;существенной долей собственных средств</li>' +
+                        '</ul>'
+            },
+            {
+                bgColor: 'bg-purple-10',
+                title: 'Аналитика',
+                image: 'large-corporate/analytics.png',
+                list: '<ul class="list">' +
+                        '<li>качественный аналитический материал для кредиторов о&nbsp;заемщике</li>' +
+                        '</ul>'
+            },
+            {
+                bgColor: 'bg-purple-10',
+                title: 'Бридж-финансирование',
+                image: 'large-corporate/finance.png',
+                list: '<ul class="list">' +
+                        '<li>предоставление на&nbsp;период подготовки кредитной и&nbsp;обеспечительной документации бридж-финансирования в&nbsp;необходимом объеме</li>' +
+                        '</ul>'
+            },
+        ]
+
+        var contactList = [
+            {
+                pattern: false,
+                title: "ООО &laquo;Нацпромлизинг&raquo;",
+                list: [
+                    {
+                        href: "tel:+74959747187",
+                        text: "+7 (495) 974-71-87",
+                        icon: "icon-phone",
+                    },
+                    {
+                        href: "mailto:corp@novikom.ru",
+                        text: "corp@novikom.ru",
+                        icon: "icon-mail",
+                        additionalClass: "text-decoration-underline",
+                    },
+                ],
+            },
+            {
+                pattern: true,
+                title: "Остались вопросы",
+                description: "Оставьте свой телефон и мы перезвоним вам, либо задайте вопрос в чате",
+                buttons: [
+                    {
+                        type: "btn-outline-primary",
+                        text: "Открыть чат"
+                    },
+                    {
+                        type: "btn-primary",
+                        text: "Перезвоните мне"
+                    }
+                ]
+            },
+        ]
+
+        var announcementList = [
+            {
+                date: '25.04.2024',
+                title: 'Технические работы 30 апреля 2024 года в период с 0:00 до 3:30 (МСК)',
+                link: '#'
+            },
+            {
+                date: '25.04.2024',
+                title: 'Режим работы клиентских офисов в мае',
+                link: '#'
+            },
+            {
+                date: '25.04.2024',
+                title: 'Технические работы 30 апреля 2024 года в период с 0:00 до 3:30 (МСК)',
+                link: '#'
+            },
+            {
+                date: '25.04.2024',
+                title: 'Режим работы клиентских офисов в мае',
+                link: '#'
+            },
+            {
+                date: '25.04.2024',
+                title: 'Технические работы 30 апреля 2024 года в период с 0:00 до 3:30 (МСК)',
+                link: '#'
+            },
+            {
+                date: '25.04.2024',
+                title: 'Режим работы клиентских офисов в мае',
+                link: '#'
+            }
+        ]
+
+        var cardProductListCorp = [
+            {
+                color: 'orange',
+                tag: 'Корпоративным клиентам',
+                title: 'Размещение денежных средств',
+                img: 'large-corporate/deposits.png',
+                link: 'Подробнее',
+                description: 'Депозиты для корпоративных клиентов'
+            },
+            {
+                color: 'orange',
+                tag: 'Корпоративным клиентам',
+                title: 'Меры господдержки',
+                img: 'large-corporate/state-support.png',
+                link: 'Подробнее',
+                description: 'Льготное финансирование организациям'
+            },
+            {
+                color: 'orange',
+                tag: 'Корпоративным клиентам',
+                title: 'Программа поощрения «Развитие»',
+                img: 'large-corporate/program-development.png',
+                link: 'Подробнее',
+                description: 'Особые условия обслуживания в&nbsp;банке'
+            },
+            {
+                color: 'orange',
+                tag: 'Корпоративным клиентам',
+                title: 'Размещение денежных средств',
+                img: 'large-corporate/deposits.png',
+                link: 'Подробнее',
+                description: 'Депозиты для корпоративных клиентов'
+            },
+            {
+                color: 'orange',
+                tag: 'Корпоративным клиентам',
+                title: 'Меры господдержки',
+                img: 'large-corporate/state-support.png',
+                link: 'Подробнее',
+                description: 'Льготное финансирование организациям'
+            },
+
+        ]
+
+    +banner-product(bannerPromoData).banner-product--border-orange.banner-product--size-xl
+
+    section.section-layout.py-lg-11
+        .container
+            .row
+                .col-12
+                    +polygon-container('orange-100')
+                        +helper("img/restructuring-additional-info_orange.png", "bg-dark-10")
+                            p.fw-bold Банк Новиком может выступать Организатором, Кредитным управляющим (Платежным агентом) и&nbsp;Управляющим залогом по&nbsp;синдицированному кредиту
+
+    section.section-layout.px-lg-6
+        .container
+            h3.mb-4.mb-md-6.mb-lg-7
+                | Выгоды и преимущества синдицированного финансирования
+            #benefits.row.row-gap-6.gx-xl-6
+                each item, index in allBenefits
+                    .col-12.col-md-6.col-lg-4(class=index > 3 && 'd-none d-md-block')
+                        +benefit(item.spriteData, item.title)
+                            span!= item.description
+                .col-12.d-md-none
+                    button(
+                        data-target="benefits"
+                        role="button"
+                    ).js-more-content-link.d-flex.gap-2.align-items-center.justify-content-center.violet-100.text-m.fw-bold
+                        | Ещё преимущества
+                        +svg-use("icon-chevron-down", "icon size-m")
+        +pattern-bg('section', 'light', 'pattern-bg--hide-mobile')
+
+    section.section-layout
+        .container
+            h3.mb-4.mb-md-6.mb-lg-7.px-lg-6 Услуги Новикома в рамках синдицированного кредитования
+            .row.cards-gutter
+                each item in cardServicesList
+                    .col-12.col-md-6
+                        +card-benefit(item).card-benefit--type-img.h-100
+
+    section.section-layout.bg-purple-10
+        .container
+            h3.mb-4.mb-md-6.mb-lg-7.px-lg-6 Контакты
+            .row
+                .col-12
+                    .swiper.slider-cards.js-slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:1,tablet-album:2,laptop:2,laptop-x:2" data-space-between="mobile-s:8,mobile:8,tablet:16,tablet-album:16,laptop:16,laptop-x:16")
+                        .swiper-wrapper
+                            .swiper-slide.js-swiper-slide
+                                +contact-block(contactList[0]).contact-block--bg-heavy-purple
+                            .swiper-slide.js-swiper-slide
+                                +contact-block(contactList[1]).contact-block--bg-white
+
+                        +slider-controls().mt-3.mt-md-4
+
+    section.section-layout
+        .container
+            .row
+                .col-12.col-xxl-6.d-flex.flex-column.gap-6.gap-lg-7
+
+                    a(href="#").h3.d-flex.align-items-center.ps-lg-6.pt-xxl-6
+                        span Объявления
+                            |
+                            |
+                            span.d-none.d-md-inline для клиентов
+                        span.icon.size-m.violet-100.ms-auto.ms-md-3
+                            +svg-use("icon-chevron-right")
+
+                    div.ps-lg-6.mt-xxl-auto.mw-100
+                        .swiper.js-announcement-slider
+                            .swiper-wrapper
+                                each item in announcementList
+                                    .swiper-slide.js-announcement-slide
+                                        +announcement(item)
+
+                            +slider-controls().mt-3.mt-md-4
+        +pattern-bg('section-2', 'light', 'pattern-bg--hide-mobile')
+
+    section.section-layout
+        .container
+            h3.px-lg-6.mb-4.mb-md-6.mb-lg-7
+                | Другие услуги для корпоративных клиентов
+            +slider-card-product(cardProductListCorp)

@@ -1,0 +1,303 @@
+extends ../templates/base
+
+block title
+    title= 'Бизнесу - главная'
+    meta(name="description" content="Описание главной страницы раздела Бизнес")
+block content
+    include ../includes/header/header
+    include ../components/banners/banner-hero
+    include ../cards/card-service
+    include ../cards/card-service-app
+    include ../components/announcement
+    include ../cards/card-promo
+    include ../cards/card-special
+    include ../components/ui/tabs
+    include ../includes/layout/slider-card-product
+
+    -
+        var bannerHeroData = {
+            bgClass: "heavy-violet",
+            bgGradient: true,
+            sliders: [
+                {
+                    title: "Страхование вкладов",
+                    text: "Новиком является участником государственной системы обязательного страхования вкладов",
+                    imageSrc: "img/big-illustrations/large-business/deposit-insurance.png",
+                    thumbTitle: "Страхование",
+                },
+                {
+                    title: "Страхование вкладов",
+                    text: "Новиком является участником государственной системы обязательного страхования вкладов",
+                    imageSrc: "img/big-illustrations/large-business/deposit-insurance.png",
+                    thumbTitle: "Депозиты",
+                },
+                {
+                    title: "Страхование вкладов",
+                    text: "Новиком является участником государственной системы обязательного страхования вкладов",
+                    imageSrc: "img/big-illustrations/large-business/deposit-insurance.png",
+                    thumbTitle: "Интернет-банк",
+                },
+                {
+                    title: "Страхование вкладов",
+                    text: "Новиком является участником государственной системы обязательного страхования вкладов",
+                    imageSrc: "img/big-illustrations/large-business/deposit-insurance.png",
+                    thumbTitle: "Кредитование",
+                },
+            ]
+        }
+
+        var cardProductList = [
+            {
+                size: 'large',
+                title: 'Кредитование',
+                description: 'Поддержка производственных предприятий малого&nbsp;и&nbsp;среднего бизнеса:',
+                list: [
+                    "кредитные и гарантийные продукты",
+                    "персональный менеджер",
+                    "быстрые кредитные решения."
+                ],
+                img: 'large-business/crediting.png',
+                link: 'Подробнее',
+                bgClass: 'bg-white'
+            },
+            {
+                title: 'Банковские гарантии',
+                description: 'Все виды банковских гарантий',
+                img: 'large-business/guarantees.png',
+                link: 'Подробнее',
+                bgClass: 'bg-white'
+            },
+            {
+                title: 'Депозиты',
+                description: 'Надежный инструмент превратить свободные финансовые ресурсы в дополнительный источник дохода вашего бизнеса',
+                img: 'large-business/currency-control.png',
+                link: 'Подробнее',
+                bgClass: 'bg-white'
+            },
+        ]
+
+        var cardProductRowsList = [
+            [
+                {
+                    title: 'Страхование вкладов',
+                    description: 'Страхование корпоративных рисков',
+                    icon: 'icon-a-hands',
+                    link: 'Подробнее',
+                    size: 'height-auto',
+                    bgClass: 'bg-white'
+                },
+                {
+                    title: 'ДБО',
+                    description: 'Выставление всех видов банковских гарантий',
+                    icon: 'icon-a-hands',
+                    link: 'Подробнее',
+                    size: 'height-auto',
+                    bgClass: 'bg-white'
+                },
+                {
+                    title: 'Меры господдержки',
+                    description: 'Новиком оказывает услуги лизинга через своего партнера — лизинговую компанию «Нацпромлизинг»',
+                    icon: 'icon-a-hands',
+                    link: 'Подробнее',
+                    size: 'height-auto',
+                    bgClass: 'bg-white'
+                },
+            ],
+            [
+                {
+                    title: 'Расчетный счет',
+                    description: 'Большой объем финансирования в рамках одной сделки',
+                    icon: 'icon-a-hands',
+                    link: 'Подробнее',
+                    size: 'height-auto',
+                    bgClass: 'bg-white'
+                },
+                {
+                    title: 'Госзакупки',
+                    description: 'Льготное финансирование организациям',
+                    icon: 'icon-a-hands',
+                    link: 'Подробнее',
+                    size: 'height-auto',
+                    bgClass: 'bg-white'
+                },
+                {
+                    title: 'ВЭД',
+                    description: 'Карта для совершения операций по счёту юридического лица',
+                    icon: 'icon-a-hands',
+                    link: 'Подробнее',
+                    size: 'height-auto',
+                    bgClass: 'bg-white'
+                },
+                {
+                    title: 'Конверсионные операции',
+                    description: 'Централизованное управление денежными потоками',
+                    icon: 'icon-a-hands',
+                    link: 'Подробнее',
+                    size: 'height-auto',
+                    bgClass: 'bg-white'
+                },
+            ]
+        ]
+
+        var cardPromo = {
+            title: "Откройте счёт в Новиком",
+            text: "Бесплатное дистанционное обслуживание и бесплатное сопровождение сделки при открытии&nbsp;счёта&nbsp;в банке Новиком",
+            textClass: "w-md-75 w-lg-100",
+            image: "big-illustrations/large-business/account-reservation.png",
+            benefits: [
+                {
+                    num: '0',
+                    currency: '₽',
+                    description: 'Открытие <br>и обслуживание счёта',
+                    colorClass: 'yellow-100',
+                },
+                {
+                    beforeNum: 'от',
+                    num: '500',
+                    currency: '₽',
+                    description: 'Ежемесячная плата <br class="d-none d-md-block">за счёт',
+                    colorClass: 'yellow-100',
+                },
+                {
+                    beforeNum: 'до',
+                    num: '150',
+                    description: 'Бесплатных <br class="d-none d-md-block">платежей',
+                    colorClass: 'yellow-100',
+                },
+            ]
+        }
+
+        var offersList = [
+            {
+                color: 'yellow',
+                title: 'Кредиты для малого бизнеса',
+                img: 'large-business/crediting.png',
+                link: 'Узнать больше',
+                description: 'Новиком предоставляет услуги консультирования на каждом этапе реализации сделки, индивидуальное структурирование сделки по запросу и конкурентные ставки.'
+            },
+            {
+                color: 'yellow',
+                title: 'Меры господдержки',
+                img: 'large-business/state-support.png',
+                link: 'Узнать больше',
+                description: 'Возможность оформить кредит без комиссии под поручительство АО «Корпорация МСП». Поручительство предоставляется мгновенно вместе с кредитом, исключая дополнительное обращение в Корпорацию МСП.'
+            },
+        ]
+
+    +banner-hero(bannerHeroData, "msb")
+
+    section.section-layout.bg-dark-10
+        .container
+            .row
+                .col-12.d-flex.flex-column.flex-xl-row.cards-gap
+                    .w-xl-50
+                        +card-product(cardProductList[0]).h-100.flex-grow-
+                            if cardProductList[0].list
+                                ul.list.list--size-l
+                                    each item in cardProductList[0].list
+                                        li!=item
+                    .w-100.w-xl-50.d-flex.flex-column.flex-md-row.flex-xl-column.cards-gap
+                        +card-product(cardProductList[1]).h-auto.w-100
+                        +card-product(cardProductList[2]).h-auto.w-100
+            .row.my-4.my-md-5.my-lg-7
+                .col-12
+                    +card-service-app({
+                        bgColor: 'heavy-violet',
+                        title: "Интернет-банк для бизнеса",
+                        benefits: [
+                            {
+                                icon: "icon-doc",
+                                text: "Удаленный <br class='d-none d-lg-block'>документооборот"
+                            },
+                            {
+                                icon: "icon-cash",
+                                text: "Проведение <br>платежей"
+                            },
+                            {
+                                icon: "icon-wallet",
+                                text: "Управление <br class='d-none d-lg-block'>расчетными счетами"
+                            }
+                        ]
+                    })
+                        a(href="#").btn.btn-yellow.d-none.d-md-inline-flex.mt-lg-3
+                            | Перейти в интернет-банк
+                        a(href="#").btn.btn-sm.btn-yellow.d-md-none
+                            | Перейти в интернет-банк
+            .row
+                .col-12.d-flex.flex-column.cards-gap
+                    each rowArray, rowIndex in cardProductRowsList
+                        .d-flex.flex-wrap.cards-gap
+                            each item in rowArray
+                                +card-product(item)(class=rowArray.length>3 ? 'flex-basis-100 flex-basis-md-33 flex-basis-xl-20' : 'flex-basis-100 flex-basis-md-33 flex-basis-lg-25').h-auto.flex-grow-1
+
+    section.section-layout.pt-0.bg-dark-10
+        .container
+            .row
+                .col-12
+                    +card-promo(cardPromo).card-promo--heavy-violet
+                        a(href="#").btn.btn-lg-lg.btn-yellow.btn-info.w-100.w-md-auto Открыть счет
+                        a(href="#").btn.btn-link.btn-lg-lg.btn-icon.text-info.m-auto.m-md-0
+                            | Подробнее
+                            +svg-use("icon-chevron-right", "icon size-m")
+
+    section.section-layout
+        .container
+            .row
+                .col-12
+                    +slider-card-product(offersList, 'mobile-s:1,mobile:1,tablet:2,laptop:2,laptop-x:2', 'mobile-s:8,mobile:8,tablet:16,laptop:16,laptop-x:16')
+
+    section.section-layout.bg-dark-10
+        .container
+            .row
+                .col-12.col-xxl-6.d-flex.flex-column.gap-6.gap-lg-7
+
+                    a(href="#").h3.d-flex.align-items-center.ps-lg-6.pt-xxl-6
+                        span Объявления
+                            |
+                            |
+                            span.d-none.d-md-inline для клиентов
+                        span.icon.size-m.violet-100.ms-auto.ms-md-3
+                            +svg-use("icon-chevron-right")
+
+                    div.ps-lg-6.mt-xxl-auto.mw-100
+                        .swiper.js-announcement-slider
+                            -
+                                var announcementList = [
+                                    {
+                                        date: '25.04.2024',
+                                        title: 'Технические работы 30 апреля 2024 года в период с 0:00 до 3:30 (МСК)',
+                                        link: '#'
+                                    },
+                                    {
+                                        date: '25.04.2024',
+                                        title: 'Режим работы клиентских офисов в мае',
+                                        link: '#'
+                                    },
+                                    {
+                                        date: '25.04.2024',
+                                        title: 'Технические работы 30 апреля 2024 года в период с 0:00 до 3:30 (МСК)',
+                                        link: '#'
+                                    },
+                                    {
+                                        date: '25.04.2024',
+                                        title: 'Режим работы клиентских офисов в мае',
+                                        link: '#'
+                                    },
+                                    {
+                                        date: '25.04.2024',
+                                        title: 'Технические работы 30 апреля 2024 года в период с 0:00 до 3:30 (МСК)',
+                                        link: '#'
+                                    },
+                                    {
+                                        date: '25.04.2024',
+                                        title: 'Режим работы клиентских офисов в мае',
+                                        link: '#'
+                                    }
+                                ]
+                            .swiper-wrapper
+                                each item in announcementList
+                                    .swiper-slide.js-announcement-slide
+                                        +announcement(item)
+
+                            +slider-controls().mt-3.mt-md-4
+        +pattern-bg('section-2', 'light', 'pattern-bg--hide-mobile')

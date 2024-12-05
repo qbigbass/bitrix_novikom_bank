@@ -6,7 +6,7 @@ mixin card-promo(data)
             .card-promo__header.d-flex.flex-column.row-gap-3.row-gap-md-4
                 h2!= data.title
                 if data.text
-                    p.text-l.mb-0.w-md-70.w-lg-100!= data.text
+                    p.text-l.mb-0(class=data.textClass ? data.textClass : 'w-md-60 w-lg-100' )!= data.text
             if data.image
                 img.card-promo__image(src=`img/${data.image}`, alt="", loading="lazy")
             if data.benefits
@@ -14,6 +14,6 @@ mixin card-promo(data)
                     each benefit in data.benefits
                         +benefit-text(benefit, benefit.colorClass)
             if block
-                .d-flex.flex-column.flex-md-row.align-items-md-center.mt-md-auto.gap-3.gap-md-6
+                .d-flex.flex-column.flex-md-row.align-items-md-center.gap-3.gap-md-6
                     block
         +pattern-bg('section-2', 'dark')

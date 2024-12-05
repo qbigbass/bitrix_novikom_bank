@@ -4,7 +4,6 @@
     display: block;
     position: relative;
     padding: 1.5rem 1rem;
-    background-color: var(--dark-10);
     overflow: hidden;
     border-radius: 0.75rem;
     height: 100%;
@@ -64,7 +63,7 @@
         color: var(--dark-100);
 
         @include use-media(tablet-album) {
-            max-width: 75%;
+            max-width: 70%;
         }
     }
 
@@ -124,21 +123,21 @@
         }
     }
 
-  &__footer {
-    flex-shrink: 0;
-    display: flex;
-    align-items: flex-end;
-    width: 100%;
-    margin-top: .5rem;
+    &__footer {
+        flex-shrink: 0;
+        display: flex;
+        align-items: flex-end;
+        width: 100%;
+        margin-top: .5rem;
 
-    @include use-media(tablet) {
-      margin-top: 1rem;
-    }
+        @include use-media(tablet) {
+            margin-top: 1rem;
+        }
 
-    @include use-media(tablet-album) {
-      margin-top: -.5rem;
+        @include use-media(tablet-album) {
+            margin-top: -.5rem;
+        }
     }
-  }
 
     &--green {
         &:before {
@@ -161,6 +160,12 @@
     &--transparent {
         &:before {
             display: none;
+        }
+
+        #{$root}__description {
+          @include use-media(tablet-album) {
+            max-width: 80%;
+          }
         }
     }
 
@@ -245,5 +250,9 @@
                 max-width: unset;
             }
         }
+    }
+
+    &--size-height-auto {
+        min-height: 0;
     }
 }

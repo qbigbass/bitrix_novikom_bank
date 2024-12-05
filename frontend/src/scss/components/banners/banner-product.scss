@@ -9,20 +9,22 @@
     border-top: var(--border-top-width) solid var(--border-top-color);
     overflow: hidden;
     position: relative;
+    display: flex;
 
     @include use-media(tablet-album) {
+        min-height: calc(var(--banner-height) + var(--border-top-width));
         --border-top-width: 0.5rem;
     }
 
     @include use-media(laptop) {
-        height: calc(var(--banner-height) + var(--border-top-width));
         overflow: hidden;
     }
 
     &__wrapper {
         padding: 2.5rem 1.5rem;
         position: relative;
-        height: 100%;
+        height: auto;
+        width: 100%;
         z-index: 1;
 
         @include use-media(tablet) {
@@ -31,7 +33,7 @@
         }
 
         @include use-media(tablet-album) {
-            padding: 2.5rem 5rem;
+            padding: 2.5rem 5rem 7.5rem 5rem;
         }
 
         @include use-media(desktop) {
@@ -47,21 +49,21 @@
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        gap: 1.5rem;
+        gap: 1rem;
 
         @include use-media(tablet) {
-            width: 25rem;
-            gap: 2rem;
+            width: 42.709vw;
+            gap: 1.5rem;
         }
 
         @include use-media(tablet-album) {
-            width: 45rem; //720px
+            width: 38.75rem; //580px
             gap: 3rem;
             padding-left: 2.5rem;
         }
 
-        @include use-media(laptop) {
-            width: 52rem; //832px
+        @include use-media(laptop-x) {
+            width: 51.5rem; //824px
         }
 
         @include use-media(desktop) {
@@ -76,13 +78,49 @@
         gap: 1rem;
         position: relative;
         z-index: 1;
+        width: 100%;
 
         @include use-media(tablet) {
+            gap: 1rem;
+        }
+
+        @include use-media(tablet-album) {
             gap: 1.5rem;
+        }
+
+        h1 {
+            @include use-media(mobile-s, tablet-album) {
+                font-weight: 600;
+            }
+
+            @include use-media(mobile-s, sm) {
+                word-break: break-word;
+                hyphens: auto;
+            }
+        }
+    }
+
+    &__breadcrumbs {
+        & .breadcrumbs__item {
+            white-space: nowrap;
+        }
+
+        @include use-media(tablet) {
+            min-width: calc(100vw - 5rem);
+        }
+
+        @include use-media(tablet-album) {
+            min-width: calc(100vw - 12.5rem);
+        }
+
+        @include use-media(laptop-x) {
+            min-width: unset;
         }
     }
 
     &__footer {
+        position: relative;
+        z-index: 1;
 
         @include use-media(tablet-album) {
             padding-left: 2.5rem;
@@ -95,27 +133,44 @@
 
     &__image {
         display: block;
-        width: calc(100% + 2rem);
-        margin: -1rem;
+        min-width: calc(100% + 3rem);
+        margin: -1.5rem;
 
-        @include use-media(mobile) {
-            max-width: 23.75rem; //380px
+        @include use-media(sm) {
+            min-width: unset;
+            width: 100%;
+            max-width: 23.75rem; // 380px
         }
 
         @include use-media(tablet) {
             margin: 0;
             position: absolute;
             z-index: 1;
-            top: 50%;
-            right: -4vw;
-            transform: translateY(-50%);
-            width: 62.5vw;
-            max-width: 45rem; //720px
+            top: 4rem;
+            right: -0.5rem;
+            width: 52.084vw;
+            max-width: 32rem; // 512px
         }
 
         @include use-media(tablet-album) {
+            top: 2.25rem;
             width: 45vw;
+            max-width: 33.75rem; // 540px
+        }
+
+        @include use-media(laptop-x) {
+            top: 50%;
+            transform: translateY(-50%);
             right: 0;
+            max-width: 45rem; // 720px
+        }
+
+        @include use-media(laptop) {
+            right: 6.25rem;
+        }
+
+        @include use-media(laptop-x) {
+            right: 5rem;
         }
     }
 
@@ -149,6 +204,27 @@
         @include use-media(desktop) {
             max-width: 55rem; //880px
             gap: 5rem;
+        }
+    }
+
+    &__lists {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        max-width: 18.75rem;
+
+        @include use-media(tablet-album) {
+            grid-template-columns: repeat(2, 18.75rem);
+            max-width: unset;
+        }
+
+        @include use-media(laptop) {
+            grid-template-columns: repeat(3, 18.75rem);
+        }
+
+        @include use-media(desktop) {
+            gap: 3rem;
+            margin-bottom: 2.5rem;
         }
     }
 
@@ -200,174 +276,7 @@
         }
     }
 
-    &--type-msb {
-        border-top-color: var(--yellow-100);
-
-        @include use-media(tablet-album) {
-            height: auto;
-        }
-
-        #{$root}__wrapper {
-            @include use-media(tablet-album) {
-                padding-bottom: 7.5rem;
-            }
-        }
-
-        #{$root}__image {
-            max-width: 22.5rem; //360px
-
-            @include use-media(tablet) {
-                width: 46.875vw;
-                max-width: 26.25rem; //420px
-                top: 2.5rem;
-                transform: none;
-            }
-
-            @include use-media(tablet-album) {
-                width: 35vw;
-                max-width: 35em; //560px
-            }
-
-            @include use-media(laptop-x) {
-                width: 100%;
-                max-width: 35em; //560px
-            }
-
-            @include use-media(desktop) {
-                right: 8rem;
-            }
-        }
-
-        #{$root}__subtitle {
-            max-width: unset;
-        }
-
-        #{$root}__benefits-list {
-            @include use-media(tablet-album) {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
-                max-width: unset;
-                width: 100%;
-            }
-
-            @include use-media(laptop) {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 3rem;
-            }
-        }
-
-        #{$root}__benefit-item {
-            color: var(--yellow-100);
-        }
-
-        #{$root}__footer {
-            & .benefit-text-card {
-                color: var(--dark-0);
-
-                &__title {
-                    color: var(--dark-0);
-                }
-
-                &__icon {
-                    color: var(--yellow-100);
-                }
-            }
-        }
-
-        & .benefit-text-card__title {
-            color: var(--yellow-100);
-        }
-    }
-
-    &--border-orange {
-        --border-top-color: var(--orange-100);
-    }
-
-    &--type-corp {
-        #{$root}__wrapper {
-            @include use-media(tablet-album) {
-                padding-bottom: 7.5rem;
-            }
-        }
-
-        #{$root}__benefit-item {
-            color: var(--orange-100);
-        }
-
-        #{$root}__footer {
-            & .benefit-text-card {
-                color: var(--dark-0);
-
-                &__title {
-                    color: var(--dark-0);
-                }
-
-                &__icon {
-                    color: var(--orange-100);
-                }
-            }
-        }
-
-        & .benefit-text-card__title {
-            color: var(--orange-100);
-        }
-    }
-
-    &--type-corp-withimg {
-        #{$root}__wrapper {
-            @include use-media(tablet-album) {
-                padding-bottom: 2.875rem;
-            }
-        }
-
-        #{$root}__content {
-            @include use-media(tablet, tablet-album) {
-                width: 20.5rem; //328px
-            }
-
-            @include use-media(tablet-album, laptop) {
-                width: 36.25rem; //580px
-            }
-        }
-
-        #{$root}__image {
-            width: 100vw;
-            margin: -1.5rem;
-            max-width: unset;
-
-            @include use-media(mobile) {
-                max-width: 23.75rem; //380px
-            }
-
-            @include use-media(tablet) {
-                margin: 0;
-            }
-
-            @include use-media(tablet, tablet-album) {
-                top: 4rem;
-                right: 0;
-                transform: none;
-            }
-
-            @include use-media(tablet-album) {
-                max-width: 45rem;
-                width: 45vw;
-            }
-        }
-
-        #{$root}__benefits-list {
-            @include use-media(tablet-album) {
-                max-width: 35.313rem; // 565px
-                margin-right: -1.563rem;
-            }
-        }
-    }
-
     &--size-xl {
-        @include use-media(tablet-album) {
-            height: auto;
-        }
-
         #{$root}__pattern {
             top: 12.5rem; //200px
             bottom: auto;
@@ -376,6 +285,54 @@
                 top: 0;
             }
         }
+
+        #{$root}__content {
+            @include use-media(tablet, tablet-album) {
+                width: 58vw;
+            }
+        }
+
+        #{$root}__subtitle {
+            max-width: unset;
+        }
+
+        #{$root}__image {
+            @include use-media(tablet) {
+                top: 2.5rem;
+                width: 46.875vw;
+                max-width: 26.25rem; //420px
+            }
+
+            @include use-media(tablet-album) {
+                right: 2.5rem;
+                width: 35vw;
+                max-width: 35rem; //560px
+            }
+
+            @include use-media(laptop-x) {
+                transform: none;
+                top: 2.5rem;
+                right: 4rem;
+                width: 100%;
+                max-width: 35rem; //560px
+            }
+
+            @include use-media(desktop) {
+                right: 8rem;
+            }
+        }
+    }
+
+    &--border-orange {
+        --border-top-color: var(--orange-100);
+    }
+
+    &--border-violet {
+        --border-top-color: var(--violet-100);
+    }
+
+    &--border-yellow {
+        --border-top-color: var(--yellow-100);
     }
 
     &--blue {
@@ -388,6 +345,21 @@
 
     &--heavy-violet {
         background: linear-gradient(222.24deg, #101317 20%, #6655a2 80%);
+    }
+
+    &--graphite {
+        background: linear-gradient(60.54deg, #E8EAEF 17.83%, #C5CBCF 101.54%);
+        color: var(--dark-0);
+
+        #{$root}__content {
+            color: var(--dark-100);
+        }
+
+        #{$root}__footer {
+            & .benefit {
+                color: var(--dark-100);
+            }
+        }
     }
 }
 

@@ -1,0 +1,9 @@
+mixin captcha(formName)
+    .d-flex.flex-column.flex-md-row.align-items-start.row-gap-2.column-gap-md-3&attributes(attributes)
+        .d-flex.flex-column.row-gap-2.flex-grow-1.w-100.w-md-auto
+            input(id=`${formName}_captcha` type="text" name="captcha_word" placeholder="Введите код с картинки" maxlength="50" required data-form-input).form-control.form-control-lg-lg
+            .invalid-feedback(aria-live="polite")
+        .captcha.d-flex.align-items-center.column-gap-3.flex-shrink-0
+            img(src="img/captcha_test.jpg")
+            button.icon.size-m.dark-70.captcha-audio-btn(type="button" aria-label="Нажмите, чтобы проговорить код с картинки")
+                +svg-use("icon-audio-on")

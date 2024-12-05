@@ -10,7 +10,23 @@ $utilities: (
             85: 85%,
             90: 90%,
             100: 100%,
+            120w: 120px,
             240w: 240px,
+            auto: auto,
+            min-content: min-content
+        )
+    ),
+    "height": (
+        responsive: true,
+        property: height,
+        class: h,
+        values: (
+            25: 25%,
+            50: 50%,
+            75: 75%,
+            85: 85%,
+            90: 90%,
+            100: 100%,
             auto: auto
         )
     ),
@@ -20,6 +36,32 @@ $utilities: (
         class: min-w,
         values: (
             25: 25%,
+            50: 50%,
+            75: 75%,
+            100: 100%,
+            auto: auto
+        )
+    ),
+    "max-width": (
+        responsive: true,
+        property: max-width,
+        class: mw,
+        values: (
+            25: 25%,
+            50: 50%,
+            75: 75%,
+            100: 100%,
+            auto: auto
+        )
+    ),
+    "flex-basis": (
+        responsive: true,
+        property: flex-basis,
+        class: flex-basis,
+        values: (
+            20: 20%,
+            25: 25%,
+            33: 33%,
             50: 50%,
             75: 75%,
             100: 100%,

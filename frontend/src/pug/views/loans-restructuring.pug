@@ -31,7 +31,8 @@ block content
         var ramificationTabsList = [
             {
                 linkText: "Все варианты",
-                link: "#1"
+                link: "#1",
+                isActive: true
             },
             {
                 linkText: "Реструктуризация",
@@ -63,6 +64,7 @@ block content
                     color: "green"
                 },
                 caption: "¹ Период подтверждения доходов должен заканчиваться не ранее двух календарных месяцев, предшествующих месяцу предоставления документа, подтверждающего финансовое состояние <br><br> ² При отсутствии у Банка документа, подтверждающего стаж на последнем месте работы менее 12 месяцев, расчетная сумма среднемесячного дохода клиента может быть ниже фактического значения, что может негативно повлиять на условия кредитования. <br><br> ³ Форма СТД-Р предоставляется на бумажном носителе и заверяется работодателем, форма СТД–ПФР предоставляется на бумажном носителе и заверяется работодателем или ПФР, либо формируется из личного кабинета на портале государственных услуг (gosuslugi.ru), документ подписывается усиленной квалифицированной электронной подписью уполномоченного должностного лица ПФР.",
+                isActive: true
             },
             {
                 linkText: "Требования к кредитам",
@@ -81,6 +83,36 @@ block content
                 link: "#4",
                 id: "additional-info-4",
                 content: additionalInfoTabContent[0],
+            },
+            {
+                linkText: "Документы",
+                link: "#5",
+                id: "additional-info-5",
+            },
+            {
+                linkText: "Таблица ставок",
+                link: "#6",
+                id: "additional-info-6",
+            },
+            {
+                linkText: "Как получить",
+                link: "#7",
+                id: "additional-info-7",
+            },
+            {
+                linkText: "Как использовать",
+                link: "#8",
+                id: "additional-info-8",
+            },
+            {
+                linkText: "Страхование",
+                link: "#9",
+                id: "additional-info-9",
+            },
+            {
+                linkText: "Возможности",
+                link: "#10",
+                id: "additional-info-10",
             },
         ]
 
@@ -125,7 +157,7 @@ block content
 
         section.section-catalog__list
             .container
-                .row.align-items-stretch.row-gap-4.row-gap-sm-6
+                .row.align-items-stretch.cards-gutter
                     each item, index in allVariants
                         if index === allVariants.length - 1
                             .col-12
@@ -160,19 +192,42 @@ block content
             ).h3.d-flex.align-items-center.justify-content-between.dark-100.d-md-none
                 | Подробнее
                 +svg-use("icon-chevron-down", "icon size-m violet-100")
-            #additional-info-content.collapse.d-md-block.mt-4.mt-md-6.mt-lg-7
-                .row.px-lg-6
+            #additional-info-content.collapse.d-md-block
+                .row.mt-4.mt-md-6.mt-lg-7
                     .col-12
-                        +tabs-simple(additionalTabsList, false)
-                        .tab-content.mt-4.mt-md-6.mt-lg-7
+                        .ps-lg-6
+                            +tabs-simple(additionalTabsList, false)
+                        .tab-content.mt-4.mt-md-6.mt-lg-7.px-lg-6
                             #additional-info-1.tab-pane.fade.show.active(aria-labelledby="additional-info-1" tabindex="0" role="tabpanel")
-                                include ../includes/layout/tabs/necessary-documents
+                                .row.row-gap-6.row-gap-lg-7
+                                    include ../includes/layout/tabs/necessary-documents
                             #additional-info-2.tab-pane.fade(aria-labelledby="additional-info-2" tabindex="0" role="tabpanel")
-                                p Требования
+                                .row.row-gap-6.row-gap-lg-7
+                                    include ../includes/layout/tabs/commissions-premium
                             #additional-info-3.tab-pane.fade(aria-labelledby="additional-info-3" tabindex="0" role="tabpanel")
-                                p Тарифы и документы
+                                .row.row-gap-6.row-gap-lg-7
+                                    include ../includes/layout/tabs/conditions-for-borrower
                             #additional-info-4.tab-pane.fade(aria-labelledby="additional-info-4" tabindex="0" role="tabpanel")
-                                include ../includes/layout/tabs/faq
+                                .row.row-gap-6.row-gap-lg-7
+                                    include ../includes/layout/tabs/faq
+                            #additional-info-5.tab-pane.fade(aria-labelledby="additional-info-5" tabindex="0" role="tabpanel")
+                                .row.row-gap-6.row-gap-lg-7
+                                    include ../includes/layout/tabs/contributions-documents
+                            #additional-info-6.tab-pane.fade(aria-labelledby="additional-info-6" tabindex="0" role="tabpanel")
+                                .row.row-gap-6.row-gap-lg-7
+                                    include ../includes/layout/tabs/cost-always-plus
+                            #additional-info-7.tab-pane.fade(aria-labelledby="additional-info-7" tabindex="0" role="tabpanel")
+                                .row.row-gap-6.row-gap-lg-7
+                                    include ../includes/layout/tabs/how-get
+                            #additional-info-8.tab-pane.fade(aria-labelledby="additional-info-8" tabindex="0" role="tabpanel")
+                                .row.row-gap-6.row-gap-lg-7
+                                    include ../includes/layout/tabs/how-use
+                            #additional-info-9.tab-pane.fade(aria-labelledby="additional-info-9" tabindex="0" role="tabpanel")
+                                .row.row-gap-6.row-gap-lg-7
+                                    include ../includes/layout/tabs/insurance-more
+                            #additional-info-10.tab-pane.fade(aria-labelledby="additional-info-10" tabindex="0" role="tabpanel")
+                                .row.row-gap-6.row-gap-lg-7
+                                    include ../includes/layout/tabs/possibilities
 
     include ../includes/layout/section-restructuring-steps
 
