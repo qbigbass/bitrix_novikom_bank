@@ -24,7 +24,9 @@ use Bitrix\Main\Localization\Loc;
                             <div class="card-product__inner">
                                 <div class="card-product__content">
                                     <h4 class="card-product__title"><?= $item["NAME"]?></h4>
-                                    <p class="card-product__description m-0"><?= $item["DESCRIPTION"]?></p>
+                                    <div class="rte m-0 gap-3 gap-lg-4">
+                                        <?= $item["DESCRIPTION"]?>
+                                    </div>
                                 </div>
                                 <?if (!empty($item["PICTURE"])) :?>
                                     <img class="card-product__img" src="<?= $item["PICTURE"]["SRC"]?>" alt="" loading="lazy">
@@ -39,6 +41,9 @@ use Bitrix\Main\Localization\Loc;
                         </div>
                     <?endforeach;?>
                 </div>
+            <?endif;?>
+            <?if ($arParams["SHOW_AD_INTERNET_BANK"] === "Y"):?>
+                <? $APPLICATION->IncludeFile('/local/php_interface/include/internet_bank_for_business.php'); ?>
             <?endif;?>
             <?if(!empty($arResult["SECTIONS_DOWN_POSITION_1"]) || !empty($arResult["SECTIONS_DOWN_POSITION_2"])):?>
                 <div class="col-12">
@@ -58,7 +63,9 @@ use Bitrix\Main\Localization\Loc;
                                                         <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
                                                     </svg>
                                                 </span>
-                                                <img class="ms-auto icon size-xxl" src="<?= $item["ICON_PATH"]?>" alt="" loading="lazy">
+                                                <?if(!empty($item["ICON_PATH"])):?>
+                                                    <img class="ms-auto icon size-xxl" src="<?= $item["ICON_PATH"]?>" alt="" loading="lazy">
+                                                <?endif;?>
                                             </div>
                                         </div>
                                     </a>
@@ -82,7 +89,9 @@ use Bitrix\Main\Localization\Loc;
                                                               <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
                                                             </svg>
                                                         </span>
-                                                        <img class="ms-auto icon size-xxl" src="<?= $item["ICON_PATH"]?>" alt="" loading="lazy">
+                                                        <?if(!empty($item["ICON_PATH"])):?>
+                                                            <img class="ms-auto icon size-xxl" src="<?= $item["ICON_PATH"]?>" alt="" loading="lazy">
+                                                        <?endif;?>
                                                     </div>
                                                 </div>
                                             </a>
@@ -97,3 +106,6 @@ use Bitrix\Main\Localization\Loc;
         </div>
     </div>
 </section>
+<?if ($arParams["SHOW_AD_OPEN_ACC_NOVIKOM"] === "Y"):?>
+    <? $APPLICATION->IncludeFile('/local/php_interface/include/open_account_novikom.php'); ?>
+<?endif;?>

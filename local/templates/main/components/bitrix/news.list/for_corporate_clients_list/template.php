@@ -45,7 +45,7 @@ $this->setFrameMode(true);
     } ?>
 </div>
 
-<? $APPLICATION->IncludeFile($APPLICATION->GetCurDir() . 'internet_bank_for_business.php'); ?>
+<? $APPLICATION->IncludeFile('/local/php_interface/include/internet_bank_for_business.php'); ?>
 
 <div class="col-12">
     <div class="row cards-gutter">
