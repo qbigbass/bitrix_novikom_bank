@@ -203,7 +203,6 @@ $APPLICATION->SetTitle('Финансовым институтам');
             "element" => "#SECTION_CODE#/#ELEMENT_CODE#/",
             "compare" => "compare/",
         ],
-        "MAIN_CHAIN_TITLE" => "Финансовым институтам",
     ],
     false
 );?>
