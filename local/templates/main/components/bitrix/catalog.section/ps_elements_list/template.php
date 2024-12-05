@@ -46,12 +46,12 @@ $this->setFrameMode(true);
                                                     <a
                                                         class="d-flex flex-column gap-1 py-3 document-download text-m"
                                                         href="<?= $item["DISPLAY_PROPERTIES"]["FILE"]["FILE_VALUE"]["SRC"]?>"
-                                                        download
+                                                        download="<?= $item["DISPLAY_PROPERTIES"]["FILE"]["FILE_VALUE"]["ORIGINAL_NAME"]?>"
                                                     ><?= $item["DISPLAY_PROPERTIES"]["FILE"]["DESCRIPTION"] ?>
                                                         <div class="d-flex gap-1 align-items-center">
                                                             <div class="document-download__file caption-m dark-70">
                                                                 <span class="document-download__date-time"><?= $item["TIMESTAMP_X"] ?></span>
-                                                                <span class="document-download__file-type"><?= explode('.', $item["DISPLAY_PROPERTIES"]["FILE"]["FILE_VALUE"]["ORIGINAL_NAME"])[1] ?></span>
+                                                                <span class="document-download__file-type"><?= pathinfo($item["DISPLAY_PROPERTIES"]["FILE"]["FILE_VALUE"]["SRC"], PATHINFO_EXTENSION )?></span>
                                                             </div>
                                                             <span class="icon size-s text-primary">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
