@@ -1,12 +1,16 @@
 <?php
 use Dalee\Helpers\ComponentRenderer\Renderer;
 
-function renderBenefitsTop(CMain $APPLICATION, array $ids): string
+function renderBenefitsTop(CMain $APPLICATION, array $ids, bool $hasPicture = true): string
 {
     $renderer = new Renderer($APPLICATION);
+    $colCount = $hasPicture ? 3 : 4;
 
     ob_start();
-    $renderer->render('Benefits', $ids, null, ['colCount' => 4, 'headerTag' => 'h4']);
+    $renderer->render('Benefits', $ids, null, [
+        'colCount' => $colCount,
+        'headerTag' => 'h4'
+    ]);
 
     return ob_get_clean();
 }

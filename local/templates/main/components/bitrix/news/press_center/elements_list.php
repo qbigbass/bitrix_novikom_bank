@@ -44,7 +44,7 @@ $activeFilter = [
     </div>
 </section>
 
-<section class="section-catalog d-flex flex-column gap-7 py-6 pb-sm-9 pb-md-11 pt-md-5 pt-lg-7">
+<section class="section-catalog d-flex flex-column gap-7 py-6 pb-sm-9 pb-md-11 pt-md-5 pt-lg-7" id="catalog-tabs">
 
 <!-- Табы -->
     <section class="section-catalog__tabs">
