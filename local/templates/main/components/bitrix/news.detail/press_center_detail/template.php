@@ -38,26 +38,13 @@ $placeholderManager = $arResult['PLACEHOLDER_CLASS'];
                     <span class="text-m dark-70"><?= $arResult['PROPERTIES']['PUBLICATION_DATE']['VALUE'] ?></span>
                 </div>
             </div>
-
-            <?
-            if (!empty($arResult['DISPLAY_PROPERTIES']['PARAGRAPH']['VALUE'])):
-                foreach ($arResult['DISPLAY_PROPERTIES']['PARAGRAPH']['VALUE'] as $key => $value):
-                    $text = $value['SUB_VALUES']['PARAGRAPH_TEXT']['~VALUE']['TEXT'];
-                    ?>
-                    <div class="col-12 <?= $value['SUB_VALUES']['PARAGRAPH_CLASSES']['VALUE'] ?? '' ?>">
-                        <? if (!empty($value['SUB_VALUES']['PARAGRAPH_HEADER']['VALUE'])): ?>
-                            <h3><?= $value['SUB_VALUES']['PARAGRAPH_HEADER']['VALUE'] ?></h3>
-                        <? endif;
-
-                        $placeholderManager->renderHtml($text);
-
-                        ?>
-                    </div>
-                <? endforeach;
-            endif;
-            ?>
-
         </div>
+    </div>
+</section>
+
+<section class="section-layout py-lg-11">
+    <div class="container">
+        <? $placeholderManager->renderHtml($arResult['~DETAIL_TEXT']); ?>
     </div>
 </section>
 

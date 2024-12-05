@@ -11,3 +11,10 @@
         }
     }
 }
+
+.captcha-audio-btn {
+    &.is-active {
+        color: var(--violet-100);
+    }
+}
+

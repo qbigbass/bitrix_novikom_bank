@@ -309,19 +309,20 @@ block content
                                 .accordion.accordion--size-lg.accordion--bg-transparent#accordion-funds-tab
                                     each item in accordionList
                                         +accordion-item(item, 'accordion-funds-tab', 'fw-bold h4')
-                                            if item.table
-                                                table.table.table--mobile-row-is-column
-                                                    tbody
-                                                        each tableItem in item.table
-                                                            tr
-                                                                td
-                                                                    .text-l.dark-70.fw-semibold!=tableItem.title
-                                                                td
-                                                                    .text-l!=tableItem.text
-                                            if item.link
-                                                a.mt-2.mt-md-4.mt-lg-5.btn.btn-link.btn-lg.btn-icon(type="button" href=item.link)
-                                                    !=item.linkText
-                                                    +svg-use("icon-download", "icon size-m")
+                                            .rte.rte--accordion
+                                                if item.table
+                                                    table.table.table--mobile-row-is-column.mb-0
+                                                        tbody
+                                                            each tableItem in item.table
+                                                                tr
+                                                                    td
+                                                                        .text-l.dark-70.fw-semibold!=tableItem.title
+                                                                    td
+                                                                        .text-l!=tableItem.text
+                                                if item.link
+                                                    a.btn.btn-link.btn-lg.btn-icon(type="button" href=item.link)
+                                                        !=item.linkText
+                                                        +svg-use("icon-download", "icon size-m")
         +pattern-bg('section-2', 'light', 'pattern-bg--position-sm-top')
 
     section.section-layout.bg-blue-10

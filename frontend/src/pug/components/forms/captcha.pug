@@ -5,5 +5,5 @@ mixin captcha(formName)
             .invalid-feedback(aria-live="polite")
         .captcha.d-flex.align-items-center.column-gap-3.flex-shrink-0
             img(src="img/captcha_test.jpg")
-            span.icon.size-m.dark-70
+            button.icon.size-m.dark-70.captcha-audio-btn(type="button" aria-label="Нажмите, чтобы проговорить код с картинки")
                 +svg-use("icon-audio-on")
