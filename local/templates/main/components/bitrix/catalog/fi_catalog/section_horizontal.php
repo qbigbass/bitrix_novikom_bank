@@ -65,7 +65,7 @@ $APPLICATION->IncludeComponent(
         "ADD_SECTIONS_CHAIN" => $arParams["ADD_SECTIONS_CHAIN"],
         "CACHE_TYPE" => $arParams["CACHE_TYPE"],
         "CACHE_TIME" => $arParams["CACHE_TIME"],
-        "CACHE_FILTER" => $arParams["CACHE_FILTER"],
+        "CACHE_FILTER" => "A",
         "CACHE_GROUPS" => $arParams["CACHE_GROUPS"],
         "DISPLAY_TOP_PAGER" => $arParams["DISPLAY_TOP_PAGER"],
         "DISPLAY_BOTTOM_PAGER" => $arParams["DISPLAY_BOTTOM_PAGER"],

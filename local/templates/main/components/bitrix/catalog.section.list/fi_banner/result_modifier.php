@@ -1,10 +1,10 @@
 <?php
 /** @var array $arResult */
 
-if (!empty($arResult["SECTION"]) && $arResult["SECTION"]["PICTURE"] > 0 ) {
+if (!empty($arResult["SECTION"]["PICTURE"])) {
     $filePath = CFile::GetPath($arResult["SECTION"]["PICTURE"]);
 
-    if ($filePath !== '') {
+    if (!empty($filePath)) {
         $arResult["SECTION"]["PICTURE_PATH"] = $filePath;
     }
 }
@@ -44,11 +44,11 @@ while ($arElement = $rsElements->GetNext()) {
         $arResult["SECTION"]["BANNER_CONTENT"]["FOOTER"][$arElement["ID"]]["DESC"] = $arElement["PREVIEW_TEXT"];
         $filePath = '';
 
-        if ($arElement["PROPERTY_ICON_VALUE"] > 0) {
+        if (!empty($arElement["PROPERTY_ICON_VALUE"])) {
             $filePath = CFile::GetPath($arElement["PROPERTY_ICON_VALUE"]);
         }
 
-        if ($filePath !== '') {
+        if (!empty($filePath)) {
             $arResult["SECTION"]["BANNER_CONTENT"]["FOOTER"][$arElement["ID"]]["ICON"] = $filePath;
         }
     } else {

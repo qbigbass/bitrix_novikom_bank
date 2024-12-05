@@ -14,7 +14,7 @@ $sectionId = 0;
 $arResult["SHOW_UP_MENU"] = false;
 $arResult["SHOW_BLOCK_CONTACT"] = false;
 
-if ($arResult["SECTION"]["PATH"][0]["ID"] > 0) {
+if (!empty($arResult["SECTION"]["PATH"][0]["ID"])) {
     $sectionId = $arResult["SECTION"]["PATH"][0]["ID"];
 }
 
@@ -40,7 +40,7 @@ if ($arResult["SHOW_UP_MENU"]) {
     foreach ($arResult["ITEMS"] as $item) {
         $title = $item["NAME"];
 
-        if (!empty($item["PROPERTIES"]["NAME_MENU"]) && $item["PROPERTIES"]["NAME_MENU"]["VALUE"] !== "") {
+        if (!empty($item["PROPERTIES"]["NAME_MENU"]["VALUE"])) {
             $title = $item["PROPERTIES"]["NAME_MENU"]["VALUE"];
         }
 
@@ -50,10 +50,6 @@ if ($arResult["SHOW_UP_MENU"]) {
             "SORT" => $item["SORT"]
         ];
     }
-}
-
-if (!empty($arResult["UP_MENU"])) {
-    usort($arResult["UP_MENU"], "sortBySort");
 }
 
 /* Цитаты для каждого элемента получим из ИБ "Цитаты для элементов" */
@@ -116,7 +112,7 @@ if (!empty($arQuoteIds)) {
         foreach ($elementsQuotes as $arData) {
             $filePath = '';
 
-            if ($arData["PREVIEW_PICTURE"] > 0) {
+            if (!empty($arData["PREVIEW_PICTURE"])) {
                 $filePath = CFile::GetPath($arData["PREVIEW_PICTURE"]);
             }
 
@@ -137,7 +133,7 @@ if (!empty($arSliderIds)) {
         foreach ($elementsSliders as $arData) {
             $iconPath = '';
 
-            if ($arData["PREVIEW_PICTURE"] > 0) {
+            if (!empty($arData["PREVIEW_PICTURE"])) {
                 $iconPath = CFile::GetPath($arData["PREVIEW_PICTURE"]);
             }
 
@@ -172,7 +168,7 @@ if (!empty($arProductIds)) {
         foreach ($elementsProducts as $arData) {
             $iconPath = '';
 
-            if ($arData["IBLOCK_ELEMENTS_ELEMENT_FI_PRODUCTS_API_ICON_VALUE"] > 0) {
+            if (!empty($arData["IBLOCK_ELEMENTS_ELEMENT_FI_PRODUCTS_API_ICON_VALUE"])) {
                 $iconPath = CFile::GetPath($arData["IBLOCK_ELEMENTS_ELEMENT_FI_PRODUCTS_API_ICON_VALUE"]);
             }
 
@@ -216,17 +212,22 @@ if (!empty($arStrategyIds)) {
         foreach ($elementsStrategies as $arData) {
             $iconPath = '';
             $filePath = '';
+            $fileDesc = '';
             $benefitIcon = '';
 
-            if ($arData["PREVIEW_PICTURE"] > 0) {
+            if (!empty($arData["PREVIEW_PICTURE"])) {
                 $iconPath = CFile::GetPath($arData["PREVIEW_PICTURE"]);
             }
 
-            if ($arData["IBLOCK_ELEMENTS_ELEMENT_FI_STRATEGIES_API_FILE_VALUE"] > 0) {
+            if (!empty($arData["IBLOCK_ELEMENTS_ELEMENT_FI_STRATEGIES_API_FILE_VALUE"])) {
                 $filePath = CFile::GetPath($arData["IBLOCK_ELEMENTS_ELEMENT_FI_STRATEGIES_API_FILE_VALUE"]);
             }
 
-            if ($arData["IBLOCK_ELEMENTS_ELEMENT_FI_STRATEGIES_API_BENEFITS_VALUE"] > 0) {
+            if (!empty($arData["IBLOCK_ELEMENTS_ELEMENT_FI_STRATEGIES_API_FILE_DESCRIPTION"])) {
+                $fileDesc = $arData["IBLOCK_ELEMENTS_ELEMENT_FI_STRATEGIES_API_FILE_DESCRIPTION"];
+            }
+
+            if (!empty($arData["IBLOCK_ELEMENTS_ELEMENT_FI_STRATEGIES_API_BENEFITS_VALUE"])) {
                 $benefitIcon = CFile::GetPath($arData["IBLOCK_ELEMENTS_ELEMENT_FI_STRATEGIES_API_BENEFITS_VALUE"]);
             }
 
@@ -243,27 +244,34 @@ if (!empty($arStrategyIds)) {
                 "PERIOD" => $arData["IBLOCK_ELEMENTS_ELEMENT_FI_STRATEGIES_API_PERIOD_VALUE"] ?? "",
                 "PROFIT" => $arData["IBLOCK_ELEMENTS_ELEMENT_FI_STRATEGIES_API_PROFIT_VALUE"] ?? "",
                 "TARGET" => $arData["IBLOCK_ELEMENTS_ELEMENT_FI_STRATEGIES_API_TARGET_VALUE"] ?? "",
-                "CONTROL_METHOD" => $arData["IBLOCK_ELEMENTS_ELEMENT_FI_STRATEGIES_API_CONTROL_METHOD_VALUE"],
-                "FILE" => $filePath
+                "CONTROL_METHOD" => $arData["IBLOCK_ELEMENTS_ELEMENT_FI_STRATEGIES_API_CONTROL_METHOD_VALUE"]
             ];
 
-            if ($arData["IBLOCK_ELEMENTS_ELEMENT_FI_STRATEGIES_API_REQUIREMENTS_ID"] > 0) {
+            if (!empty($filePath)) {
+                $arStrategies[$arData["ID"]]["FILE"] = [
+                    "PATH" => $filePath,
+                    "EXTENSION" => pathinfo($filePath, PATHINFO_EXTENSION),
+                    "NAME" => $fileDesc
+                ];
+            }
+
+            if (!empty($arData["IBLOCK_ELEMENTS_ELEMENT_FI_STRATEGIES_API_REQUIREMENTS_ID"])) {
                 $arRequirements[$arData["ID"]][$arData["IBLOCK_ELEMENTS_ELEMENT_FI_STRATEGIES_API_REQUIREMENTS_ID"]] = [
                     $arData["IBLOCK_ELEMENTS_ELEMENT_FI_STRATEGIES_API_REQUIREMENTS_DESCRIPTION"] => $arData["IBLOCK_ELEMENTS_ELEMENT_FI_STRATEGIES_API_REQUIREMENTS_VALUE"]
                 ];
             }
 
-            if ($arData["IBLOCK_ELEMENTS_ELEMENT_FI_STRATEGIES_API_RATES_ID"] > 0) {
+            if (!empty($arData["IBLOCK_ELEMENTS_ELEMENT_FI_STRATEGIES_API_RATES_ID"])) {
                 $arRates[$arData["ID"]][$arData["IBLOCK_ELEMENTS_ELEMENT_FI_STRATEGIES_API_RATES_ID"]] = [
                     $arData["IBLOCK_ELEMENTS_ELEMENT_FI_STRATEGIES_API_RATES_DESCRIPTION"] => $arData["IBLOCK_ELEMENTS_ELEMENT_FI_STRATEGIES_API_RATES_VALUE"]
                 ];
             }
 
-            if ($arData["IBLOCK_ELEMENTS_ELEMENT_FI_STRATEGIES_API_OTHERS_ID"] > 0) {
+            if (!empty($arData["IBLOCK_ELEMENTS_ELEMENT_FI_STRATEGIES_API_OTHERS_ID"])) {
                 $arOthers[$arData["ID"]][$arData["IBLOCK_ELEMENTS_ELEMENT_FI_STRATEGIES_API_OTHERS_ID"]] = $arData["IBLOCK_ELEMENTS_ELEMENT_FI_STRATEGIES_API_OTHERS_VALUE"];
             }
 
-            if ($arData["IBLOCK_ELEMENTS_ELEMENT_FI_STRATEGIES_API_BENEFITS_ID"] > 0) {
+            if (!empty($arData["IBLOCK_ELEMENTS_ELEMENT_FI_STRATEGIES_API_BENEFITS_ID"])) {
                 $arBenefits[$arData["ID"]][$arData["IBLOCK_ELEMENTS_ELEMENT_FI_STRATEGIES_API_BENEFITS_ID"]] = [
                     $arData["IBLOCK_ELEMENTS_ELEMENT_FI_STRATEGIES_API_BENEFITS_DESCRIPTION"] => $benefitIcon
                 ];
@@ -315,7 +323,7 @@ foreach ($arResult["ITEMS"] as $index => $item) {
         foreach ($item["PROPERTIES"]["BENEFITS"]["VALUE"] as $kValue => $vValue) {
             $iconPath = '';
 
-            if ($vValue > 0) {
+            if (!empty($vValue)) {
                 $iconPath = CFile::GetPath($vValue);
             }
 
@@ -362,11 +370,11 @@ foreach ($arResult["ITEMS"] as $index => $item) {
         }
     }
 
-    if ($item["PROPERTIES"]["COLOR_BG"]["VALUE"] !== "") {
+    if (!empty($item["PROPERTIES"]["COLOR_BG"]["VALUE"])) {
         $arResult["ITEMS"][$index]["SECTION_BACKGROUND_CLASS_STYLE"] = $item["PROPERTIES"]["COLOR_BG"]["VALUE"];
     }
 
-    if ($item["PROPERTIES"]["COLOR_BORDER"]["VALUE"] !== "") {
+    if (!empty($item["PROPERTIES"]["COLOR_BORDER"]["VALUE"])) {
         $arResult["ITEMS"][$index]["SECTION_BORDER_CLASS_STYLE"] = "border-top border-".$item["PROPERTIES"]["COLOR_BORDER"]["VALUE"];
     }
 }

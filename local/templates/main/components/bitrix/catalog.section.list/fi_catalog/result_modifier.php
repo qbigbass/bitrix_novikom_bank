@@ -8,18 +8,18 @@ $cntSectionsUp = 3;
 
 if (!empty($arResult['SECTIONS'])) {
     foreach ($arResult['SECTIONS'] as &$section) {
-        if ($section['UF_FI_ICON'] > 0) {
+        if (!empty($section['UF_FI_ICON'])) {
             $fieldIcon = $section['UF_FI_ICON'];
             $filePath = CFile::GetPath($fieldIcon);
 
-            if ($filePath !== '') {
+            if (!empty($filePath)) {
                 $section["ICON_PATH"] = $filePath;
             }
         }
 
         $cntSectionsUpPosition = count($arSectionUpPosition);
 
-        if ((int)$section["UF_FI_POS"] > 0 && $cntSectionsUpPosition < $cntSectionsUp) {
+        if (!empty($section["UF_FI_POS"]) && $cntSectionsUpPosition < $cntSectionsUp) {
             $arSectionUpPosition[] = $section;
         } else {
             $arSectionDownPosition[] = $section;

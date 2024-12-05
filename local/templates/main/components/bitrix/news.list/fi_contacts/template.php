@@ -32,7 +32,7 @@ use Bitrix\Main\Localization\Loc;
                             <div class="swiper-slide js-swiper-slide">
                                 <div class="contact-block contact-block--bg-white">
                                     <div class="contact-block__content d-flex flex-column justify-content-between row-gap-5 row-gap-md-6 row-gap-lg-7 h-100">
-                                        <?if($item["PROPERTIES"]["DEPARTMENT"]["VALUE"] !== ""):?>
+                                        <?if(!empty($item["PROPERTIES"]["DEPARTMENT"]["VALUE"])):?>
                                             <div class="tag tag--outline contact-block__tag">
                                                 <?foreach ($item["DISPLAY_PROPERTIES"]["DEPARTMENT"]["LINK_ELEMENT_VALUE"] as $elemId => $arData):?>
                                                     <span class="tag__content text-s fw-semibold w-100 w-sm-auto"><?= $arData["NAME"] ?></span>
@@ -51,7 +51,7 @@ use Bitrix\Main\Localization\Loc;
                                         </div>
                                         <div class="mt-auto">
                                             <ul class="list-contact d-flex flex-column row-gap-4">
-                                                <?if ($item["PROPERTIES"]["PHONE"]["VALUE"]):?>
+                                                <?if (!empty($item["PROPERTIES"]["PHONE"]["VALUE"])):?>
                                                     <li class="d-flex column-gap-3">
                                                         <span class="icon size-m flex-shrink-0 violet-100">
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
@@ -62,13 +62,13 @@ use Bitrix\Main\Localization\Loc;
                                                             <a class="list-contact__link" href="tel:+74959747187">
                                                                 <span class="text-l"><?= $item["PROPERTIES"]["PHONE"]["VALUE"] ?></span>
                                                             </a>
-                                                            <?if($item["PROPERTIES"]["PHONE_EXT"]["VALUE"]):?>
+                                                            <?if(!empty($item["PROPERTIES"]["PHONE_EXT"]["VALUE"])):?>
                                                                 <span class="caption-m chip chip--outlined">доб. <?= $item["PROPERTIES"]["PHONE_EXT"]["VALUE"] ?></span>
                                                             <?endif;?>
                                                         </div>
                                                     </li>
                                                 <?endif;?>
-                                                <?if ($item["PROPERTIES"]["EMAIL"]["VALUE"]):?>
+                                                <?if (!empty($item["PROPERTIES"]["EMAIL"]["VALUE"])):?>
                                                     <li class="d-flex column-gap-3">
                                                         <span class="icon size-m flex-shrink-0 violet-100">
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
@@ -82,7 +82,7 @@ use Bitrix\Main\Localization\Loc;
                                                         </div>
                                                     </li>
                                                 <?endif;?>
-                                                <?if ($item["PROPERTIES"]["ADDRESS"]["VALUE"]):?>
+                                                <?if (!empty($item["PROPERTIES"]["ADDRESS"]["VALUE"])):?>
                                                 <li class="d-flex column-gap-3">
                                                     <span class="icon size-m flex-shrink-0 violet-100">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">

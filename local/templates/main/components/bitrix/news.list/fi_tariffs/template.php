@@ -36,24 +36,29 @@ use Bitrix\Main\Localization\Loc;
                 <div class="col-12 col-xxl-8 pe-xxl-6">
                     <div class="ps-3 ps-lg-4">
                         <?foreach ($arResult["ITEMS"] as $item):?>
-                            <?$file = $item['DISPLAY_PROPERTIES']['FILE']['FILE_VALUE'];?>
-                            <a
-                                class="d-flex flex-column gap-1 py-3 document-download text-m"
-                                href="<?= $file['SRC']?>"
-                                download="<?= $file['FILE_NAME']?>"
-                            ><?= $item["NAME"] ?>
-                                <div class="d-flex gap-1 align-items-center">
-                                    <div class="document-download__file caption-m dark-70">
-                                        <span class="document-download__date-time"><?= $item["TIMESTAMP_X"] ?></span>
-                                        <span class="document-download__file-type"><?= explode('.', $file['ORIGINAL_NAME'])[1]?></span>
+                            <?if(!empty($item["DISPLAY_PROPERTIES"]["FILE"]["FILE_VALUE"]['SRC'])):?>
+                                <?
+                                $arFile = $item['DISPLAY_PROPERTIES']['FILE']['FILE_VALUE'];
+                                $fileType = pathinfo($arFile['SRC'], PATHINFO_EXTENSION);
+                                ?>
+                                <a
+                                    class="d-flex flex-column gap-1 py-3 document-download text-m"
+                                    href="<?= $arFile['SRC']?>"
+                                    download="<?= $arFile['FILE_NAME']?>"
+                                ><?= $item["NAME"] ?>
+                                    <div class="d-flex gap-1 align-items-center">
+                                        <div class="document-download__file caption-m dark-70">
+                                            <span class="document-download__date-time"><?= $item["TIMESTAMP_X"] ?></span>
+                                            <span class="document-download__file-type"><?= $fileType?></span>
+                                        </div>
+                                        <span class="icon size-s text-primary">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                                <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-download-small"></use>
+                                            </svg>
+                                        </span>
                                     </div>
-                                    <span class="icon size-s text-primary">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                            <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-download-small"></use>
-                                        </svg>
-                                    </span>
-                                </div>
-                            </a>
+                                </a>
+                            <?endif;?>
                         <?endforeach;?>
                     </div>
                 </div>

@@ -3,6 +3,7 @@ require($_SERVER['DOCUMENT_ROOT'].'/bitrix/header.php');
 global $APPLICATION;
 $APPLICATION->SetTitle('Финансовым институтам');
 ?>
+<?$APPLICATION->IncludeFile('/local/php_interface/include/fi_block_contacts.php')?>
 <?$APPLICATION->IncludeComponent(
     "bitrix:catalog",
     "fi_catalog",
@@ -223,7 +224,7 @@ $APPLICATION->IncludeComponent(
         "AJAX_OPTION_HISTORY" => "N",
         "AJAX_OPTION_JUMP" => "N",
         "AJAX_OPTION_STYLE" => "Y",
-        "CACHE_TYPE" => "N",
+        "CACHE_TYPE" => "A",
         "CACHE_TIME" => "36000000",
         "CACHE_FILTER" => "N",
         "CACHE_GROUPS" => "Y",

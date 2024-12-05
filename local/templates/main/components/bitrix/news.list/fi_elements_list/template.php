@@ -11,6 +11,7 @@
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
+use Bitrix\Main\Localization\Loc;
 ?>
 
 <?if(!empty($arResult["ITEMS"])):?>
@@ -31,7 +32,7 @@ $this->setFrameMode(true);
             id="<?= $item['CODE']?>"
         >
             <div class="container">
-                <?if($item['DETAIL_TEXT'] !== "" && $item["PREVIEW_PICTURE"]["SRC"] !== ""): ?>
+                <?if(!empty($item['DETAIL_TEXT']) && !empty($item["PREVIEW_PICTURE"]["SRC"])): ?>
                     <!-- Блок анонса и детальной картинки -->
                     <div class="banner-product-info ps-lg-6">
                         <div class="banner-product-info__header">
@@ -93,7 +94,7 @@ $this->setFrameMode(true);
                                                         <div class="card-benefit__content d-flex flex-column gap-4">
                                                             <img class="card-benefit__image" src="<?= $slider["PICTURE"]?>" alt="<?= $slider["TITLE"]?>" loading="lazy">
                                                             <h4 class="card-benefit__title"><?= $slider["TITLE"]?></h4>
-                                                            <?if($slider["TEXT"] != ""):?>
+                                                            <?if(!empty($slider["TEXT"])):?>
                                                                 <p class="card-benefit__description m-0 text-m"><?= $slider["TEXT"]?></p>
                                                             <?endif;?>
                                                         </div>
@@ -144,7 +145,7 @@ $this->setFrameMode(true);
                                                 <div class="helper__wrapper d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-4 gap-lg-6">
                                                     <img class="helper__image w-auto float-end" src="<?= $item["QUOTES"]["POS_0"]["PICTURE"] ?>" alt="Обратите внимание" loading="lazy">
                                                     <div class="helper__content text-l">
-                                                        <?if($item["QUOTES"]["POS_0"]["TITLE"]):?>
+                                                        <?if(!empty($item["QUOTES"]["POS_0"]["TITLE"])):?>
                                                             <h4 class="mb-3"><?= $item["QUOTES"]["POS_0"]["TITLE"] ?></h4>
                                                         <?endif;?>
                                                         <p class="m-0"><?= $item["QUOTES"]["POS_0"]["TEXT"] ?></p>
@@ -188,7 +189,7 @@ $this->setFrameMode(true);
                                                 <div class="helper__wrapper d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-4 gap-lg-6">
                                                     <img class="helper__image w-auto float-end" src="<?= $item["QUOTES"]["POS_0"]["PICTURE"] ?>" alt="Обратите внимание" loading="lazy">
                                                     <div class="helper__content text-l">
-                                                        <?if($item["QUOTES"]["POS_1"]["TITLE"]):?>
+                                                        <?if(!empty($item["QUOTES"]["POS_1"]["TITLE"])):?>
                                                             <h4 class="mb-3"><?= $item["QUOTES"]["POS_1"]["TITLE"] ?></h4>
                                                         <?endif;?>
                                                         <p class="m-0"><?= $item["QUOTES"]["POS_1"]["TEXT"] ?></p>
@@ -209,7 +210,7 @@ $this->setFrameMode(true);
                         <?if(!empty($item["TEXT_ACCORDION"])):?>
                             <div class="accordion accordion--size-lg accordion--bg-transparent" id="accordion-trust-management">
                             <?$i = 0;?>
-                            <?foreach ($item["TEXT_ACCORDION"] as $elemId => $item):?>
+                            <?foreach ($item["TEXT_ACCORDION"] as $elemId => $arData):?>
                                 <div class="accordion-item">
                                     <div class="accordion-header">
                                         <button
@@ -220,13 +221,13 @@ $this->setFrameMode(true);
                                             aria-expanded
                                             aria-controls="<?= $elemId?>"
                                         >
-                                            <span class="fw-bold h4"><?= $item["TITLE"]?></span>
+                                            <span class="fw-bold h4"><?= $arData["TITLE"]?></span>
                                         </button>
                                     </div>
                                     <div class="accordion-collapse collapse <?if($i === 0):?>show<?endif?>" id="<?= $elemId?>" data-bs-parent="#accordion-trust-management">
                                         <div class="accordion-body">
                                             <div class="rte rte--accordion">
-                                                <?= $item["TEXT"]?>
+                                                <?= $arData["TEXT"]?>
                                             </div>
                                         </div>
                                     </div>
@@ -284,62 +285,67 @@ $this->setFrameMode(true);
                                             <?foreach ($arStrategies as $elemId => $arStrategy):?>
                                                 <div class="card overflow-hidden position-relative">
                                                     <div class="card__inner d-flex flex-column flex-lg-row-reverse align-items-start gap-4 gap-md-5 gap-lg-6">
-                                                        <?if($arStrategy["PICTURE"] !== ""):?>
+                                                        <?if(!empty($arStrategy["PICTURE"])):?>
                                                             <div class="card__image-container flex-shrink-0 mx-auto">
                                                                 <img class="card__image" src="<?= $arStrategy["PICTURE"]?>" alt="" loading="lazy">
                                                             </div>
                                                         <?endif;?>
                                                         <div class="card__content flex-column d-flex align-items-start gap-4 gap-md-6">
-                                                            <?if($arStrategy["NAME"] !== "" || $arStrategy["PREVIEW_TEXT"] !== ""):?>
+                                                            <?if(!empty($arStrategy["NAME"]) || !empty($arStrategy["PREVIEW_TEXT"])):?>
                                                                 <div class="card__title-group d-flex flex-column gap-4 gap-lg-6">
                                                                     <h2 class="card__title text-break"><?= $arStrategy["NAME"]?></h2>
                                                                     <p class="text-l m-0"><?= $arStrategy["PREVIEW_TEXT"]?></p>
                                                                 </div>
                                                             <?endif;?>
-                                                            <?if($arStrategy["RISK"] !== "" || $arStrategy["PERIOD"] !== "" || $arStrategy["PROFIT"] !== ""):?>
+                                                            <?if(!empty($arStrategy["RISK"]) || !empty($arStrategy["PERIOD"]) || !empty($arStrategy["PROFIT"])):?>
                                                                 <div class="card__condition-list d-flex flex-column flex-md-row flex-wrap gap-4 column-gap-md-11 column-gap-lg-16 row-gap-lg-6">
-                                                                    <?if($arStrategy["RISK"] !== ""):?>
+                                                                    <?if(!empty($arStrategy["RISK"])):?>
                                                                         <div class="card__condition violet-100 d-flex flex-column gap-2">
                                                                             <div class="d-inline-flex flex-nowrap align-items-baseline gap-1">
                                                                                 <span class="h4"><?= $arStrategy["RISK"]?></span>
                                                                             </div>
-                                                                            <span class="text-m dark-70">Риск</span>
+                                                                            <span class="text-m dark-70"><?= Loc::getMessage("STRATEGY_ITEM_RISK")?></span>
                                                                         </div>
                                                                     <?endif;?>
-                                                                    <?if($arStrategy["PERIOD"] !== ""):?>
+                                                                    <?if(!empty($arStrategy["PERIOD"])):?>
                                                                         <div class="card__condition violet-100 d-flex flex-column gap-2">
                                                                             <div class="d-inline-flex flex-nowrap align-items-baseline gap-1">
                                                                                 <span class="text-number-ml fw-bold"><?= $arStrategy["PERIOD"]?></span>
                                                                             </div>
-                                                                            <span class="text-m dark-70">Срок <br>инвестирования</span>
+                                                                            <span class="text-m dark-70"><?= Loc::getMessage("PERIOD")?></span>
                                                                         </div>
                                                                     <?endif;?>
-                                                                    <?if($arStrategy["PROFIT"] !== ""):?>
+                                                                    <?if(!empty($arStrategy["PROFIT"])):?>
                                                                         <div class="card__condition violet-100 d-flex flex-column gap-2">
                                                                             <div class="d-inline-flex flex-nowrap align-items-baseline gap-1">
                                                                                 <span class="text-l fw-semibold">до</span>
                                                                                 <span class="text-number-ml fw-bold"><?= $arStrategy["PROFIT"]?></span>
                                                                                 <span class="text-l fw-semibold">в год</span>
                                                                             </div>
-                                                                            <span class="text-m dark-70">Ожидаемая <br>доходность</span>
+                                                                            <span class="text-m dark-70"><?= Loc::getMessage("STRATEGY_ITEM_PROFIT")?></span>
                                                                         </div>
                                                                     <?endif;?>
                                                                 </div>
                                                             <?endif;?>
                                                         </div>
                                                     </div>
-                                                    <?if(!empty($arStrategy["REQUIREMENTS"]) || !empty($arStrategy["RATES"]) || !empty($arStrategy["OTHERS"]) || !empty($arStrategy["FILE"])):?>
+                                                    <?if(!empty($arStrategy["REQUIREMENTS"]) ||
+                                                        !empty($arStrategy["RATES"]) ||
+                                                        !empty($arStrategy["OTHERS"]) ||
+                                                        !empty($arStrategy["FILE"])
+                                                    ):
+                                                        ?>
                                                         <div class="collapse" id="<?= $elemId?>">
                                                             <div class="d-flex flex-column gap-4 gap-md-6 gap-lg-7 mt-4 mt-md-6 mt-lg-7">
                                                                 <div class="d-flex flex-column gap-4">
                                                                     <div class="table-tab cell-2">
                                                                         <div class="table-tab__body">
                                                                             <div class="table-tab__row">
-                                                                                <div class="table-tab__cell text-l fw-semibold dark-70">Цель</div>
+                                                                                <div class="table-tab__cell text-l fw-semibold dark-70"><?= Loc::getMessage("STRATEGY_ITEM_TARGET")?></div>
                                                                                 <div class="table-tab__cell text-l"><?= $arStrategy["TARGET"]?></div>
                                                                             </div>
                                                                             <div class="table-tab__row">
-                                                                                <div class="table-tab__cell text-l fw-semibold dark-70">Способ управления</div>
+                                                                                <div class="table-tab__cell text-l fw-semibold dark-70"><?= Loc::getMessage("STRATEGY_ITEM_CONTROL_METHOD")?></div>
                                                                                 <div class="table-tab__cell text-l"><?= $arStrategy["CONTROL_METHOD"]?></div>
                                                                             </div>
                                                                         </div>
@@ -347,7 +353,7 @@ $this->setFrameMode(true);
                                                                 </div>
                                                                 <?if(!empty($arStrategy["REQUIREMENTS"])):?>
                                                                     <div class="d-flex flex-column gap-4">
-                                                                        <div class="h4">Требования к инвестору</div>
+                                                                        <div class="h4"><?= Loc::getMessage("STRATEGY_ITEM_TITLE_REQUIREMENTS")?></div>
                                                                         <div class="table-tab cell-2">
                                                                             <div class="table-tab__body">
                                                                                 <?foreach ($arStrategy["REQUIREMENTS"] as $item):?>
@@ -364,7 +370,7 @@ $this->setFrameMode(true);
                                                                 <?endif;?>
                                                                 <?if(!empty($arStrategy["RATES"])):?>
                                                                     <div class="d-flex flex-column gap-4">
-                                                                        <div class="h4">Требования к инвестору</div>
+                                                                        <div class="h4"><?= Loc::getMessage("STRATEGY_ITEM_TITLE_RATES")?></div>
                                                                         <div class="table-tab cell-2">
                                                                             <div class="table-tab__body">
                                                                                 <?foreach ($arStrategy["RATES"] as $item):?>
@@ -384,7 +390,7 @@ $this->setFrameMode(true);
                                                                         <div class="table-tab cell-2">
                                                                             <div class="table-tab__body">
                                                                                 <div class="table-tab__row">
-                                                                                    <div class="table-tab__cell text-l fw-semibold dark-70">Прочие расходы</div>
+                                                                                    <div class="table-tab__cell text-l fw-semibold dark-70"><?= Loc::getMessage("STRATEGY_ITEM_TITLE_OTHERS")?></div>
                                                                                     <div class="table-tab__cell text-l">
                                                                                         <ul class='list list--size-l'>
                                                                                             <?foreach ($arStrategy["OTHERS"] as $enumId => $value):?>
@@ -399,15 +405,19 @@ $this->setFrameMode(true);
                                                                 <?endif;?>
                                                                 <?if(!empty($arStrategy["FILE"])):?>
                                                                     <div class="d-flex flex-column gap-4">
-                                                                        <div class="h4">Инвестиционная стратегия "Облигации"</div>
+                                                                        <div class="h4"><?= Loc::getMessage("STRATEGY_ITEM_TITLE_FILE")?></div>
                                                                         <div class="link-list">
-                                                                            <a class="d-flex flex-column gap-1 py-3 document-download text-m" href="<?= $arStrategy["FILE"]?>" download="">Динамика среднемесячной доходности
+                                                                            <a
+                                                                                class="d-flex flex-column gap-1 py-3 document-download text-m"
+                                                                                href="<?= $arStrategy["FILE"]["PATH"]?>"
+                                                                                download="<?= $arStrategy["FILE"]["NAME"]?>"
+                                                                            ><?= $arStrategy["FILE"]["NAME"]?>
                                                                                 <div class="d-flex gap-1 align-items-center">
                                                                                     <div class="document-download__file caption-m dark-70">
                                                                                         <span class="document-download__date-time">
                                                                                             <?= $arStrategy["DATE_MODIFIED"]?>
                                                                                         </span>
-                                                                                        <span class="document-download__file-type"><?= explode('.', $arStrategy["FILE"])[1] ?></span>
+                                                                                        <span class="document-download__file-type"><?= $arStrategy["FILE"]["EXTENSION"]?></span>
                                                                                     </div>
                                                                                     <span class="icon size-s text-primary">
                                                                                         <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
@@ -429,8 +439,8 @@ $this->setFrameMode(true);
                                                                aria-expanded="false"
                                                                aria-controls="<?= $elemId?>"
                                                             >
-                                                                <span>Подробнее</span>
-                                                                <span>Скрыть</span>
+                                                                <span><?= Loc::getMessage("STRATEGY_TITLE_MORE_DETAILS")?></span>
+                                                                <span><?= Loc::getMessage("STRATEGY_TITLE_HIDE_DETAILS")?></span>
                                                                 <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                                                                     <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-down"></use>
                                                                 </svg>
