@@ -79,20 +79,20 @@ $this->setFrameMode(true);
                             <div class="application-form__col col-12 col-md-6">
                                 <div class="d-flex flex-column row-gap-2">
                                     <label class="form-label mb-0" for="mortgage_phone">Телефон<span class="orange-100 ms-1">*</span></label>
-                                    <input class="js-mask-phone form-control form-control-lg-lg" id="mortgage_phone" type="text" name="PHONE" placeholder="+7" required autocomplete="off" data-form-input>
+                                    <input class="js-mask-phone form-control form-control-lg-lg" id="mortgage_phone" type="tel" name="PHONE" placeholder="+7" required autocomplete="off" data-form-input pattern="\+7\s\(\d{3}\)\s\d{3}-\d{2}-\d{2}" data-error-message="Введите корректный номер телефона">
                                     <div class="invalid-feedback" aria-live="polite"></div>
                                 </div>
                             </div>
                             <div class="application-form__col col-12 col-md-6">
                                 <div class="d-flex flex-column row-gap-2">
                                     <label class="form-label mb-0" for="mortgage_e-mail">E-mail<span class="orange-100 ms-1">*</span></label>
-                                    <input class="form-control form-control-lg-lg" id="mortgage_e-mail" type="email" name="EMAIL" placeholder="Введите почту" required autocomplete="off" data-form-input>
+                                    <input class="form-control form-control-lg-lg" id="mortgage_e-mail" type="email" name="EMAIL" placeholder="Введите почту" required autocomplete="off" data-form-input pattern="[a-zA-Z0-9._%\+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}" data-error-message="Введите корректный адрес электронной почты">
                                     <div class="invalid-feedback" aria-live="polite"></div>
                                 </div>
                             </div>
                             <fieldset class="application-form__col col-12 col-md-6">
                                 <legend class="form-label mb-3">Пол</legend>
-                                <div class="d-flex flex-column flex-md-row flex-wrap row-gap-3 row-gap-lg-4 column-gap-md-5 column-gap-lg-6">
+                                <div class="d-flex flex-wrap row-gap-3 row-gap-lg-4 column-gap-6 column-gap-md-5 column-gap-lg-6">
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" id="mortgage_person-male-sex" name="PERSON_SEX" value="male" checked>
                                         <label class="form-check-label" for="mortgage_person-male-sex">Мужской</label>
@@ -105,7 +105,7 @@ $this->setFrameMode(true);
                             </fieldset>
                             <fieldset class="application-form__col col-12 col-md-6">
                                 <legend class="form-label mb-3">Гражданство</legend>
-                                <div class="d-flex flex-column flex-md-row flex-wrap row-gap-3 row-gap-lg-4 column-gap-md-5 column-gap-lg-6">
+                                <div class="d-flex flex-wrap row-gap-3 row-gap-lg-4 column-gap-6 column-gap-md-5 column-gap-lg-6">
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" id="mortgage_person-citizenship_RU" name="CITIZENSHIP" value="RU" checked>
                                         <label class="form-check-label" for="mortgage_person-citizenship_RU">РФ</label>
@@ -116,6 +116,20 @@ $this->setFrameMode(true);
                                     </div>
                                 </div>
                             </fieldset>
+                            <div class="application-form__col col-12 col-md-6">
+                                <div class="d-flex flex-column row-gap-2">
+                                    <label class="form-label mb-0" for="mortgage_passport-series">Серия паспорта</label>
+                                    <input class="form-control form-control-lg-lg" id="mortgage_passport-series" type="text" name="passport-series" placeholder="" autocomplete="off" data-form-input>
+                                    <div class="invalid-feedback" aria-live="polite"></div>
+                                </div>
+                            </div>
+                            <div class="application-form__col col-12 col-md-6">
+                                <div class="d-flex flex-column row-gap-2">
+                                    <label class="form-label mb-0" for="mortgage_passport-number">Номер паспорта</label>
+                                    <input class="form-control form-control-lg-lg" id="mortgage_passport-number" type="text" name="passport-number" placeholder="" autocomplete="off" data-form-input>
+                                    <div class="invalid-feedback" aria-live="polite"></div>
+                                </div>
+                            </div>
                         </div>
                         <div class="d-flex flex-column align-items-center flex-md-row row-gap-3 column-gap-6 mt-6 mt-lg-7">
                             <button class="btn btn-primary btn-lg-lg w-100 w-md-auto" type="button" disabled aria-disabled="true" data-form-button data-form-step-button-next>Продолжить</button>

@@ -51,6 +51,7 @@ $this->setFrameMode(true);
                                 <div class="d-flex flex-column row-gap-2">
                                     <label class="form-label mb-0" for="consultation_organization">Наименование организации<span class="orange-100 ms-1">*</span></label>
                                     <input class="form-control form-control-lg-lg" id="consultation_organization" type="text" name="ORGANIZATION" placeholder="Укажите организацию" required autocomplete="off" data-form-input>
+                                    <span class="caption-m dark-70 d-block">Полное или краткое согласно учредительным документам</span>
                                     <div class="invalid-feedback" aria-live="polite"></div>
                                 </div>
                             </div>
@@ -64,14 +65,14 @@ $this->setFrameMode(true);
                             <div class="application-form__col col-12 col-md-6">
                                 <div class="d-flex flex-column row-gap-2">
                                     <label class="form-label mb-0" for="consultation_phone">Телефон<span class="orange-100 ms-1">*</span></label>
-                                    <input class="js-mask-phone form-control form-control-lg-lg" id="consultation_phone" type="text" name="PHONE" placeholder="+7" required autocomplete="off" data-form-input>
+                                    <input class="js-mask-phone form-control form-control-lg-lg" id="consultation_phone" type="tel" name="PHONE" placeholder="+7" required autocomplete="off" data-form-input pattern="\+7\s\(\d{3}\)\s\d{3}-\d{2}-\d{2}" data-error-message="Введите корректный номер телефона">
                                     <div class="invalid-feedback" aria-live="polite"></div>
                                 </div>
                             </div>
                             <div class="application-form__col col-12 col-md-6">
                                 <div class="d-flex flex-column row-gap-2">
                                     <label class="form-label mb-0" for="consultation_e-mail">E-mail<span class="orange-100 ms-1">*</span></label>
-                                    <input class="form-control form-control-lg-lg" id="consultation_e-mail" type="email" name="EMAIL" placeholder="Введите почту" required autocomplete="off" data-form-input>
+                                    <input class="form-control form-control-lg-lg" id="consultation_e-mail" type="email" name="EMAIL" placeholder="Введите почту" required autocomplete="off" data-form-input pattern="[a-zA-Z0-9._%\+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}" data-error-message="Введите корректный адрес электронной почты">
                                     <div class="invalid-feedback" aria-live="polite"></div>
                                 </div>
                             </div>

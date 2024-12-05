@@ -53,14 +53,14 @@ $this->setFrameMode(true);
                                 <div class="application-form__col col-12 col-md-6">
                                     <div class="d-flex flex-column row-gap-2">
                                         <label class="form-label mb-0" for="vacancy_email">E-mail<span class="orange-100 ms-1">*</span></label>
-                                        <input class="form-control form-control-lg-lg" id="vacancy_email" type="email" name="EMAIL" placeholder="Введите почту" required autocomplete="off" data-form-input>
+                                        <input class="form-control form-control-lg-lg" id="vacancy_email" type="email" name="EMAIL" placeholder="Введите почту" required autocomplete="off" data-form-input pattern="[a-zA-Z0-9._%\+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}" data-error-message="Введите корректный адрес электронной почты">
                                         <div class="invalid-feedback" aria-live="polite"></div>
                                     </div>
                                 </div>
                                 <div class="application-form__col col-12 col-md-6">
                                     <div class="d-flex flex-column row-gap-2">
                                         <label class="form-label mb-0" for="vacancy_phone">Телефон<span class="orange-100 ms-1">*</span></label>
-                                        <input class="js-mask-phone form-control form-control-lg-lg" id="vacancy_phone" type="text" name="PHONE" placeholder="+7" required autocomplete="off" data-form-input>
+                                        <input class="js-mask-phone form-control form-control-lg-lg" id="vacancy_phone" type="tel" name="PHONE" placeholder="+7" required autocomplete="off" data-form-input pattern="\+7\s\(\d{3}\)\s\d{3}-\d{2}-\d{2}" data-error-message="Введите корректный номер телефона">
                                         <div class="invalid-feedback" aria-live="polite"></div>
                                     </div>
                                 </div>
@@ -69,7 +69,7 @@ $this->setFrameMode(true);
                                         <label class="form-label mb-0" for="vacancy_upload-file">Прикрепить файлы</label>
                                         <div class="upload-file__box p-3 p-md-4" data-upload-box>
                                             <p class="text-m text-center">Вы&nbsp;можете прикрепить файлы размером не&nbsp;более 3&nbsp;мб, всего не&nbsp;более 5&nbsp;файлов.</p>
-                                            <input class="d-none" id="vacancy_upload-file" type="file" name="ATTACH_FILE[]" multiple data-max-files="5" data-max-size="3145728" data-form-input data-upload-input>
+                                            <input class="d-none" id="vacancy_upload-file" type="file" name="ATTACH_FILE[]" data-max-files="5" data-max-size="3145728" data-form-input data-upload-input>
                                             <button class="btn btn-link btn-icon" type="button" data-upload-button>
                                                 <svg class="icon size-m violet-100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                                                     <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-attach"></use>

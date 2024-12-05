@@ -33,11 +33,11 @@ $this->setFrameMode(true);
         <div class="captcha d-flex align-items-center column-gap-3 flex-shrink-0">
             <input type="hidden" name="captcha_sid" class="captcha-sid" value="<?= htmlspecialchars($arResult['CAPTCHA_CODE']); ?>">
             <img src="/bitrix/tools/captcha.php?captcha_sid=<?= $arResult['CAPTCHA_CODE']; ?>" class="captcha-image" alt="" title="Нажмите чтобы обновить картинку" style="height: 56px;">
-            <span class="icon size-m dark-70 captcha-audio-btn" title="Нажмите чтобы проговорить код с картинки">
+            <button class="icon size-m dark-70 captcha-audio-btn" type="button" aria-label="Нажмите чтобы проговорить код с картинки" title="Нажмите чтобы обновить картинку">
                 <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                     <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-audio-on"></use>
                 </svg>
-            </span>
+            </button>
         </div>
     </div>
 </div>

@@ -38,7 +38,7 @@ $this->setFrameMode(true);
                             <div class="application-form__col col-12 col-md-6">
                                 <fieldset>
                                     <legend class="form-label mb-3">Вы&nbsp;являетесь клиентом банка НОВИКОМ?<span class="orange-100 ms-1">*</span></legend>
-                                    <div class="d-flex flex-column flex-md-row flex-wrap row-gap-3 row-gap-lg-4 column-gap-md-5 column-gap-lg-6">
+                                    <div class="d-flex flex-wrap row-gap-3 row-gap-lg-4 column-gap-6 column-gap-md-5 column-gap-lg-6">
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" id="feedback_bank-client-true" name="BANK_CLIENT" value="true" checked>
                                             <label class="form-check-label" for="feedback_bank-client-true">Клиент Банка</label>
@@ -53,7 +53,7 @@ $this->setFrameMode(true);
                             <div class="application-form__col col-12 col-md-6">
                                 <div class="d-flex flex-column row-gap-2">
                                     <label class="form-label mb-0" for="fraud_phone">Укажите ваш номер телефона<span class="orange-100 ms-1">*</span></label>
-                                    <input class="js-mask-phone form-control form-control-lg-lg" id="fraud_phone" type="text" name="PHONE" placeholder="+7" required autocomplete="off" data-form-input>
+                                    <input class="js-mask-phone form-control form-control-lg-lg" id="fraud_phone" type="tel" name="PHONE" placeholder="+7" required autocomplete="off" data-form-input pattern="\+7\s\(\d{3}\)\s\d{3}-\d{2}-\d{2}" data-error-message="Введите корректный номер телефона">
                                     <div class="invalid-feedback" aria-live="polite"></div>
                                 </div>
                             </div>
@@ -67,7 +67,7 @@ $this->setFrameMode(true);
                             <div class="application-form__col col-12 col-md-6">
                                 <fieldset>
                                     <legend class="form-label mb-3">Мошенникам озвучивались коды из&nbsp;СМС, пароли или&nbsp;были несанкционированные списания по&nbsp;картам?<span class="orange-100 ms-1">*</span></legend>
-                                    <div class="d-flex flex-column flex-md-row flex-wrap row-gap-3 row-gap-lg-4 column-gap-md-5 column-gap-lg-6">
+                                    <div class="d-flex flex-wrap row-gap-3 row-gap-lg-4 column-gap-6 column-gap-md-5 column-gap-lg-6">
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" id="feedback_fraud-interaction-true" name="FRAUD_INTERACTION" value="true" checked>
                                             <label class="form-check-label" for="feedback_fraud-interaction-true">Да</label>
