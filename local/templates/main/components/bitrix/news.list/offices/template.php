@@ -15,10 +15,6 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
  * @var CBitrixComponentTemplate $this
  */
 $this->setFrameMode(true);
-
-$asset = \Bitrix\Main\Page\Asset::getInstance();
-$asset->addJs('https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=' . COption::GetOptionString('fileman', 'yandex_map_api_key'));
-
 ?>
 <section class="border-top border-blue10 section-office">
     <div
@@ -63,7 +59,7 @@ $asset->addJs('https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=' . COption::Ge
                     </div>
                     <button class="btn btn-outline-primary btn-icon-alone" type="button" data-bs-toggle="modal" data-bs-target="#modal-offices-filters">
                         <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                            <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-filters"></use>
+                            <use xlink:href="/frontend/dist/img/svg-sprite.svg?v=2#icon-filters"></use>
                         </svg>
                     </button>
                 </div>
