@@ -26,9 +26,13 @@
 
     &__num {
         color: var(--dark-0);
-        font-size: 5rem;
+        font-size: 3.5rem;
         line-height: 1;
         font-weight: 700;
+
+        @include use-media(laptop) {
+            font-size: 5rem;
+        }
     }
 
     &__caption {
@@ -48,10 +52,15 @@
         }
     }
 
-    &__chart {
+    &__chart-box {
         margin-top: auto;
         flex-shrink: 0;
         flex-basis: 14.125rem;
+    }
+
+    &__chart {
+        width: 14.125rem;
+        height: 14.125rem;
     }
 
     &__pattern {

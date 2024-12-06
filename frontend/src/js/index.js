@@ -354,6 +354,7 @@ document.addEventListener('DOMContentLoaded', () => {
     hideDropDownMenu();
     initOffices();
     initChatBot();
+    initCharts();
     initYMap();
 });
 

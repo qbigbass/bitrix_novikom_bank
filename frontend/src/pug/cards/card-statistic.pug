@@ -1,7 +1,7 @@
 include ../components/ui/tag
 
 mixin card-statistic(data, bgColor="bg-blue-10")
-    - var { tag, num, caption, description, chart } = data;
+    - var { id, tag, num, caption, description, dataChart } = data;
     .card-statistic.overflow-hidden.position-relative.h-100(class=bgColor)
         .card-statistic__content.d-flex.flex-column.flex-xl-row.align-items-xl-end.gap-4.gap-xl-6
             .card-statistic__info.d-flex.flex-column.align-items-start
@@ -13,5 +13,6 @@ mixin card-statistic(data, bgColor="bg-blue-10")
                 if description
                     p.text-m.card-statistic__description!= description
             if data.chart
-                .card-statistic__chart
-        +pattern-bg('card', 'light', 'pattern-bg--hide-mobile card-statistic__pattern')
+                .card-statistic__chart-box
+                    .card-statistic__chart.mx-auto(id=id data-chart=dataChart)
+        +pattern-bg('card', 'light', 'card-statistic__pattern')
