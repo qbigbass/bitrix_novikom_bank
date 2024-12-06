@@ -17,7 +17,7 @@
     }
 
     @include use-media(laptop-x) {
-        min-height: 280px;
+        min-height: 17.5rem;
     }
 
     &:before {
@@ -49,6 +49,10 @@
         }
 
         @include use-media(tablet-album) {
+            gap: 3rem;
+        }
+
+        @include use-media(laptop) {
             gap: 3rem;
         }
     }
@@ -135,7 +139,7 @@
         }
 
         @include use-media(tablet-album) {
-            margin-top: -.5rem;
+            margin-top: 0;
         }
     }
 
@@ -249,6 +253,12 @@
                 line-height: 1.4;
                 max-width: unset;
             }
+        }
+    }
+
+    &--size-xl {
+        @include use-media(laptop) {
+            min-height: 19.5rem;
         }
     }
 
