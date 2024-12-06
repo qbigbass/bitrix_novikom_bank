@@ -1,5 +1,5 @@
 // import $ from "../vendors/jquery.min";
-import $ from "jquery";
+// import $ from "jquery";
 // import "select2/dist/css/select2.css";
 import select2 from "../vendors/select2.min";
 
