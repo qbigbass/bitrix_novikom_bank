@@ -8,7 +8,7 @@ import initSelect2 from './components/select2.js'
 import { initTabsContent } from './components/tabs.js'
 import initInputSlider from "./components/inputSlider";
 import showMoreContent from "./components/showMoreContent";
-import initCalculator from "./components/calculator-deposit";
+import initCalculator, {initReplenishment} from "./components/calculator-deposit";
 import initDatepicker from './components/datepicker.js'
 import setPage from "./components/setPage";
 import {initFormSteps} from "./components/form/formSteps";
@@ -46,9 +46,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initResizePolygonAccordions();
     initHeaderSearchForm();
     hideDropDownMenu();
-    initInputSlider();
     initCalculator();
-
+    initReplenishment();
     initOffices();
     initChatBot();
     initYMap();

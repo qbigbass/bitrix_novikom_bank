@@ -152,3 +152,15 @@
         gap: 1rem;
     }
 }
+
+.btn-remove-replenishment {
+  position: relative;
+  top: 2rem;
+  color: var(--violet-70);
+  width: 1.5rem;
+  height: 1.5rem;
+
+  @include use-media(tablet-album) {
+    top: 2.5rem;
+  }
+}

@@ -4,22 +4,25 @@
             {
                 title: 'Процентная ставка',
                 value: '16,5%',
+                additionalClass: 'js-calculator-display-rate',
             },
             {
                 title: 'Ежемесячный платеж',
                 value: '35 404,38',
                 currency: true,
-                link: 'График платежей'
+                link: 'График платежей',
+                additionalClass: 'js-calculator-display-payment',
             },
-            {
-                title: 'Необходимый ежемесячный доход, от',
-                value: '35 404,38',
-                currency: true,
-                mask: 'money'
-            },
+            // {
+            //     title: 'Необходимый ежемесячный доход, от',
+            //     value: '35 404,38',
+            //     currency: true,
+            //     mask: 'money'
+            // },
             {
                 title: 'Диапазон полной стоимости кредита',
                 value: '16,464 – 20,474 %',
+                additionalClass: 'js-calculator-display-full-cost',
             }
         ],
         btnText: 'Оформить заявку',
@@ -48,7 +51,8 @@
             startValue: 1000000,
             stepSize: 5000,
             type: "price",
-            editable: true
+            editable: true,
+            additionalClass: "js-input-amount",
         },
         {
             label: 'Срок выплаты',
@@ -57,13 +61,14 @@
             minValue: 6,
             startValue: 36,
             type: "month",
-            editable: true
+            editable: true,
+            additionalClass: "js-input-period",
         }
     ]
 
 include ../../../components/ui/input/input-slider
 
-.row
+.row.js-calculator-loan(data-id="967")
     .col-12.col-lg-6
         .d-none.d-lg-inline-flex
             +nav-tabs(tabsList)
@@ -88,6 +93,26 @@ include ../../../components/ui/input/input-slider
                             input#inp2(type="checkbox" value="").form-check-input
                             label(for="inp2").form-check-label
                                 | Страхование
+                        .d-flex.flex-column.row-gap-4.row-gap-lg-6
+                            .d-flex.flex-column.row-gap-2
+                                label(for="select1").form-label.mb-0
+                                    | Особенности
+                                select#select1(aria-label="Подсказка").form-select.js-select
+                                    option(selected value="1") С поручительством физического лица
+                                    option(value="2") Без обеспечения
+                                    option(value="3") На рефинансирование
+
+                            .d-flex.flex-column.row-gap-2
+                                label(for="select2").form-label.mb-0
+                                    | Тип платежей
+                                select#select2(aria-label="Подсказка").form-select.js-select
+                                    option(selected value="1") Аннуитетные платежи
+                                    option(value="2") Дифференцированные платежи
+
+                        button.btn.btn-link.btn-sm.btn-icon.js-add-replenishment(type="button")
+                            +svg-use("icon-plus", "icon size-s")
+                            | Добавить пополнение
+
             #refinance.tab-pane.fade(role="tabpanel" aria-labelledby="refinance" tabindex="0")
                 p refinance
 

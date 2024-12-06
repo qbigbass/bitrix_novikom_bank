@@ -25,4 +25,15 @@
             border: var(--border-nav-width) solid transparent;
         }
     }
+
+  &--type-currency {
+
+    @include use-media(tablet) {
+      width: 10rem;
+    }
+
+    & .nav-link {
+      padding: .5rem 1.25rem;
+    }
+  }
 }

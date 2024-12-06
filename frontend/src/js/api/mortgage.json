@@ -1,0 +1,362 @@
+{
+  "data": [
+    {
+      "id": 119685,
+      "name": "Ипотека по программе «Первичный рынок»",
+      "values": [
+        {
+          "rate": 18,
+          "objects": ["Квартира"],
+          "periodMin": 36,
+          "periodMax": 360,
+          "amountMin": 500000,
+          "amountMax": 15000000,
+          "minPropertyValue": 0,
+          "maxPropertyValue": 999999999,
+          "firstPaymentPercent": 20,
+          "minCreditPercent": 20,
+          "maxCreditPercent": 0,
+          "salaryCard": true,
+          "insurance": true,
+          "strategicClient": false,
+          "totalCost": "22,423 - 25,758 %",
+          "regions": [
+            "Прочие",
+            "Дальневосточный федеральный округ",
+            "Ленинградская область"
+          ]
+        },
+        {
+          "rate": 19,
+          "objects": ["Квартира"],
+          "periodMin": 36,
+          "periodMax": 360,
+          "amountMin": 500000,
+          "amountMax": 15000000,
+          "minPropertyValue": 0,
+          "maxPropertyValue": 999999999,
+          "firstPaymentPercent": 20,
+          "minCreditPercent": 20,
+          "maxCreditPercent": 0,
+          "salaryCard": true,
+          "insurance": false,
+          "strategicClient": false,
+          "totalCost": "22,423 - 25,758 %",
+          "regions": [
+            "Прочие",
+            "Дальневосточный федеральный округ",
+            "Ленинградская область"
+          ]
+        },
+        {
+          "rate": 17,
+          "objects": ["Квартира"],
+          "periodMin": 36,
+          "periodMax": 360,
+          "amountMin": 500000,
+          "amountMax": 15000000,
+          "minPropertyValue": 0,
+          "maxPropertyValue": 999999999,
+          "firstPaymentPercent": 20,
+          "minCreditPercent": 20,
+          "maxCreditPercent": 0,
+          "salaryCard": false,
+          "insurance": true,
+          "strategicClient": false,
+          "totalCost": "22,423 - 25,758 %",
+          "regions": [
+            "Прочие",
+            "Дальневосточный федеральный округ",
+            "Ленинградская область"
+          ]
+        },
+        {
+          "rate": 18,
+          "objects": ["Квартира"],
+          "periodMin": 36,
+          "periodMax": 360,
+          "amountMin": 500000,
+          "amountMax": 15000000,
+          "minPropertyValue": 0,
+          "maxPropertyValue": 999999999,
+          "firstPaymentPercent": 20,
+          "minCreditPercent": 20,
+          "maxCreditPercent": 0,
+          "salaryCard": false,
+          "insurance": false,
+          "strategicClient": false,
+          "totalCost": "22,423 - 25,758 %",
+          "regions": [
+            "Прочие",
+            "Дальневосточный федеральный округ",
+            "Ленинградская область"
+          ]
+        },
+        {
+          "rate": 17,
+          "objects": ["Квартира"],
+          "periodMin": 36,
+          "periodMax": 360,
+          "amountMin": 500000,
+          "amountMax": 15000000,
+          "minPropertyValue": 0,
+          "maxPropertyValue": 999999999,
+          "firstPaymentPercent": 20,
+          "minCreditPercent": 20,
+          "maxCreditPercent": 0,
+          "salaryCard": false,
+          "insurance": true,
+          "strategicClient": true,
+          "totalCost": "22,423 - 25,758 %",
+          "regions": [
+            "Прочие",
+            "Дальневосточный федеральный округ",
+            "Ленинградская область"
+          ]
+        },
+        {
+          "rate": 18,
+          "objects": ["Квартира"],
+          "periodMin": 36,
+          "periodMax": 360,
+          "amountMin": 500000,
+          "amountMax": 15000000,
+          "minPropertyValue": 0,
+          "maxPropertyValue": 999999999,
+          "firstPaymentPercent": 20,
+          "minCreditPercent": 20,
+          "maxCreditPercent": 0,
+          "salaryCard": false,
+          "insurance": false,
+          "strategicClient": true,
+          "totalCost": "22,423 - 25,758 %",
+          "regions": [
+            "Прочие",
+            "Дальневосточный федеральный округ",
+            "Ленинградская область"
+          ]
+        },
+        {
+          "rate": 16,
+          "objects": ["Квартира"],
+          "periodMin": 36,
+          "periodMax": 360,
+          "amountMin": 500000,
+          "amountMax": 15000000,
+          "minPropertyValue": 0,
+          "maxPropertyValue": 999999999,
+          "firstPaymentPercent": 20,
+          "minCreditPercent": 20,
+          "maxCreditPercent": 0,
+          "salaryCard": true,
+          "insurance": true,
+          "strategicClient": true,
+          "totalCost": "22,423 - 25,758 %",
+          "regions": [
+            "Прочие",
+            "Дальневосточный федеральный округ",
+            "Ленинградская область"
+          ]
+        },
+        {
+          "rate": 17,
+          "objects": ["Квартира"],
+          "periodMin": 36,
+          "periodMax": 360,
+          "amountMin": 500000,
+          "amountMax": 15000000,
+          "minPropertyValue": 0,
+          "maxPropertyValue": 999999999,
+          "firstPaymentPercent": 20,
+          "minCreditPercent": 20,
+          "maxCreditPercent": 0,
+          "salaryCard": true,
+          "insurance": false,
+          "strategicClient": true,
+          "totalCost": "22,423 - 25,758 %",
+          "regions": [
+            "Прочие",
+            "Дальневосточный федеральный округ",
+            "Ленинградская область"
+          ]
+        },
+        {
+          "rate": 18,
+          "objects": ["Квартира"],
+          "periodMin": 36,
+          "periodMax": 360,
+          "amountMin": 500000,
+          "amountMax": 30000000,
+          "minPropertyValue": 0,
+          "maxPropertyValue": 999999999,
+          "firstPaymentPercent": 20,
+          "minCreditPercent": 20,
+          "maxCreditPercent": 0,
+          "salaryCard": false,
+          "insurance": true,
+          "strategicClient": false,
+          "totalCost": "22,423 - 25,758 %",
+          "regions": [
+            "Москва",
+            "Московская область",
+            "Санкт-Петербург"
+          ]
+        },
+        {
+          "rate": 19,
+          "objects": ["Квартира"],
+          "periodMin": 36,
+          "periodMax": 360,
+          "amountMin": 500000,
+          "amountMax": 30000000,
+          "minPropertyValue": 0,
+          "maxPropertyValue": 999999999,
+          "firstPaymentPercent": 20,
+          "minCreditPercent": 20,
+          "maxCreditPercent": 0,
+          "salaryCard": false,
+          "insurance": true,
+          "strategicClient": false,
+          "totalCost": "22,423 - 25,758 %",
+          "regions": [
+            "Москва",
+            "Московская область",
+            "Санкт-Петербург"
+          ]
+        },
+        {
+          "rate": 17,
+          "objects": ["Квартира"],
+          "periodMin": 36,
+          "periodMax": 360,
+          "amountMin": 500000,
+          "amountMax": 30000000,
+          "minPropertyValue": 0,
+          "maxPropertyValue": 999999999,
+          "firstPaymentPercent": 20,
+          "minCreditPercent": 20,
+          "maxCreditPercent": 0,
+          "salaryCard": true,
+          "insurance": true,
+          "strategicClient": false,
+          "totalCost": "22,423 - 25,758 %",
+          "regions": [
+            "Москва",
+            "Московская область",
+            "Санкт-Петербург"
+          ]
+        },
+        {
+          "rate": 18,
+          "objects": ["Квартира"],
+          "periodMin": 36,
+          "periodMax": 360,
+          "amountMin": 500000,
+          "amountMax": 30000000,
+          "minPropertyValue": 0,
+          "maxPropertyValue": 999999999,
+          "firstPaymentPercent": 20,
+          "minCreditPercent": 20,
+          "maxCreditPercent": 0,
+          "salaryCard": true,
+          "insurance": false,
+          "strategicClient": false,
+          "totalCost": "22,423 - 25,758 %",
+          "regions": [
+            "Москва",
+            "Московская область",
+            "Санкт-Петербург"
+          ]
+        },
+        {
+          "rate": 17,
+          "objects": ["Квартира"],
+          "periodMin": 36,
+          "periodMax": 360,
+          "amountMin": 500000,
+          "amountMax": 30000000,
+          "minPropertyValue": 0,
+          "maxPropertyValue": 999999999,
+          "firstPaymentPercent": 20,
+          "minCreditPercent": 20,
+          "maxCreditPercent": 0,
+          "salaryCard": false,
+          "insurance": true,
+          "strategicClient": true,
+          "totalCost": "22,423 - 25,758 %",
+          "regions": [
+            "Москва",
+            "Московская область",
+            "Санкт-Петербург"
+          ]
+        },
+        {
+          "rate": 18,
+          "objects": ["Квартира"],
+          "periodMin": 36,
+          "periodMax": 360,
+          "amountMin": 500000,
+          "amountMax": 30000000,
+          "minPropertyValue": 0,
+          "maxPropertyValue": 999999999,
+          "firstPaymentPercent": 20,
+          "minCreditPercent": 20,
+          "maxCreditPercent": 0,
+          "salaryCard": false,
+          "insurance": false,
+          "strategicClient": true,
+          "totalCost": "22,423 - 25,758 %",
+          "regions": [
+            "Москва",
+            "Московская область",
+            "Санкт-Петербург"
+          ]
+        },
+        {
+          "rate": 16,
+          "objects": ["Квартира"],
+          "periodMin": 36,
+          "periodMax": 360,
+          "amountMin": 500000,
+          "amountMax": 30000000,
+          "minPropertyValue": 0,
+          "maxPropertyValue": 999999999,
+          "firstPaymentPercent": 20,
+          "minCreditPercent": 20,
+          "maxCreditPercent": 0,
+          "salaryCard": true,
+          "insurance": true,
+          "strategicClient": true,
+          "totalCost": "22,423 - 25,758 %",
+          "regions": [
+            "Москва",
+            "Московская область",
+            "Санкт-Петербург"
+          ]
+        },
+        {
+          "rate": 17,
+          "objects": ["Квартира"],
+          "periodMin": 36,
+          "periodMax": 360,
+          "amountMin": 500000,
+          "amountMax": 30000000,
+          "minPropertyValue": 0,
+          "maxPropertyValue": 999999999,
+          "firstPaymentPercent": 20,
+          "minCreditPercent": 20,
+          "maxCreditPercent": 0,
+          "salaryCard": true,
+          "insurance": false,
+          "strategicClient": true,
+          "totalCost": "22,423 - 25,758 %",
+          "regions": [
+            "Москва",
+            "Московская область",
+            "Санкт-Петербург"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -6,99 +6,123 @@
       "values": [
         {
           "currency": "Рубли",
-          "rate": "17.2",
+          "rate": 17.2,
           "periodMin": 250,
           "periodMax": 250,
           "amountMin": 10000,
-          "amountMax": 1499999
+          "amountMax": 1499999,
+          "effectiveRate": null,
+          "minBalance": null
         },
         {
           "currency": "Рубли",
-          "rate": "18",
+          "rate": 18,
           "periodMin": 550,
           "periodMax": 550,
           "amountMin": 10000,
-          "amountMax": 1499999
+          "amountMax": 1499999,
+          "effectiveRate": null,
+          "minBalance": null
         },
         {
           "currency": "Рубли",
-          "rate": "18",
+          "rate": 18,
           "periodMin": 1100,
           "periodMax": 1100,
           "amountMin": 10000,
-          "amountMax": 1499999
+          "amountMax": 1499999,
+          "effectiveRate": null,
+          "minBalance": null
         },
         {
           "currency": "Рубли",
-          "rate": "17.4",
+          "rate": 17.4,
           "periodMin": 250,
           "periodMax": 250,
           "amountMin": 1500000,
-          "amountMax": 4999999
+          "amountMax": 4999999,
+          "effectiveRate": null,
+          "minBalance": null
         },
         {
           "currency": "Рубли",
-          "rate": "18",
+          "rate": 18,
           "periodMin": 550,
           "periodMax": 550,
           "amountMin": 1500000,
-          "amountMax": 4999999
+          "amountMax": 4999999,
+          "effectiveRate": null,
+          "minBalance": null
         },
         {
           "currency": "Рубли",
-          "rate": "18.2",
+          "rate": 18.2,
           "periodMin": 1100,
           "periodMax": 1100,
           "amountMin": 1500000,
-          "amountMax": 4999999
+          "amountMax": 4999999,
+          "effectiveRate": null,
+          "minBalance": null
         },
         {
           "currency": "Рубли",
-          "rate": "17.5",
+          "rate": 17.5,
           "periodMin": 250,
           "periodMax": 250,
           "amountMin": 5000000,
-          "amountMax": 29999999
+          "amountMax": 29999999,
+          "effectiveRate": null,
+          "minBalance": null
         },
         {
           "currency": "Рубли",
-          "rate": "18.1",
+          "rate": 18.1,
           "periodMin": 550,
           "periodMax": 550,
           "amountMin": 5000000,
-          "amountMax": 29999999
+          "amountMax": 29999999,
+          "effectiveRate": null,
+          "minBalance": null
         },
         {
           "currency": "Рубли",
-          "rate": "18.3",
+          "rate": 18.3,
           "periodMin": 1100,
           "periodMax": 1100,
           "amountMin": 5000000,
-          "amountMax": 29999999
+          "amountMax": 29999999,
+          "effectiveRate": null,
+          "minBalance": null
         },
         {
           "currency": "Рубли",
-          "rate": "17.6",
+          "rate": 17.6,
           "periodMin": 250,
           "periodMax": 250,
           "amountMin": 30000000,
-          "amountMax": 100000000
+          "amountMax": 100000000,
+          "effectiveRate": null,
+          "minBalance": null
         },
         {
           "currency": "Рубли",
-          "rate": "18.2",
+          "rate": 18.2,
           "periodMin": 550,
           "periodMax": 550,
           "amountMin": 30000000,
-          "amountMax": 100000000
+          "amountMax": 100000000,
+          "effectiveRate": null,
+          "minBalance": null
         },
         {
           "currency": "Рубли",
-          "rate": "18.5",
+          "rate": 18.5,
           "periodMin": 1100,
           "periodMax": 1100,
           "amountMin": 30000000,
-          "amountMax": 100000000
+          "amountMax": 100000000,
+          "effectiveRate": null,
+          "minBalance": null
         }
       ]
     }

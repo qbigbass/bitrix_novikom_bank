@@ -1,0 +1,96 @@
+{
+  "data": [
+    {
+      "name": "Bonus",
+      "maxBonus": 5000,
+      "welcomeBonusClassic": 300,
+      "welcomeBonusPremium": 500,
+      "values": [
+        {
+          "rate": 0.5,
+          "amountMin": 5000,
+          "amountMax": 149999,
+          "type": "debet",
+          "category": "classic"
+        },
+        {
+          "rate": 1,
+          "amountMin": 15000,
+          "amountMax": 9999999,
+          "type": "debet",
+          "category": "classic"
+        },
+        {
+          "rate": 1,
+          "amountMin": 5000,
+          "amountMax": 14999,
+          "type": "debet",
+          "category": "premium"
+        },
+        {
+          "rate": 1.5,
+          "amountMin": 15000,
+          "amountMax": 74999,
+          "type": "debet",
+          "category": "premium"
+        },
+        {
+          "rate": 2,
+          "amountMin": 75000,
+          "amountMax": 999999,
+          "type": "debet",
+          "category": "premium"
+        },
+        {
+          "rate": 0.5,
+          "amountMin": 5000,
+          "amountMax": 149999,
+          "type": "credit",
+          "category": "classic"
+        },
+        {
+          "rate": 1.5,
+          "amountMin": 15000,
+          "amountMax": 9999999,
+          "type": "credit",
+          "category": "classic"
+        },
+        {
+          "rate": 1,
+          "amountMin": 5000,
+          "amountMax": 14999,
+          "type": "credit",
+          "category": "premium"
+        },
+        {
+          "rate": 2,
+          "amountMin": 15000,
+          "amountMax": 74999,
+          "type": "credit",
+          "category": "premium"
+        },
+        {
+          "rate": 2.5,
+          "amountMin": 75000,
+          "amountMax": 999999,
+          "type": "credit",
+          "category": "premium"
+        },
+        {
+          "rate": 1.5,
+          "amountMin": 15000,
+          "amountMax": 74999,
+          "type": "plus",
+          "category": "premium"
+        },
+        {
+          "rate": 2,
+          "amountMin": 75000,
+          "amountMax": 999999,
+          "type": "plus",
+          "category": "premium"
+        }
+      ]
+    }
+  ]
+}

@@ -4,18 +4,18 @@
             {
                 title: 'Срок вклада',
                 value: '',
-                additionalClass: 'js-calculator-deposit-period',
+                additionalClass: 'js-calculator-display-period',
             },
             {
                 title: 'Процентная ставка',
                 value: '21 %',
-                additionalClass: 'js-calculator-deposit-rate',
+                additionalClass: 'js-calculator-display-rate',
             },
             {
                 title: 'Ваш доход составит',
                 value: '6 238',
                 currency: true,
-                additionalClass: 'js-calculator-deposit-income',
+                additionalClass: 'js-calculator-display-income',
             },
         ],
         btnText: 'Оформить заявку',
@@ -30,7 +30,7 @@ include ../../../cards/card-calculate-result
         .pe-xl-6
             .d-flex.flex-column.row-gap-4.row-gap-md-6.row-gap-lg-7
                 .d-flex.flex-column.flex-md-row-reverse.align-items-md-center.gap-3
-                    ul.nav.nav-tabs.nav-tabs--type-currency
+                    ul.nav.nav-tabs.nav-tabs--type-currency.js-tabs-currency
                         li.nav-item.flex-grow-1
                             button(type="button").nav-link.text-center.currency.active ₽
                         li.nav-item.flex-grow-1
@@ -110,4 +110,4 @@ include ../../../cards/card-calculate-result
     .col-12.col-lg-6.mt-4.mt-md-6.mt-lg-0
         .ps-xxl-6
             +polygon-container()
-                +card-calculate-result(calculatorData, 'bg-dark-10')
+                +card-calculate-result(calculatorData, 'bg-dark-0')

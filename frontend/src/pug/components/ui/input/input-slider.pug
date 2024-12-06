@@ -9,7 +9,7 @@ mixin input-slider(data)
         data-min-value= data.minValue
         data-step-size= data.stepSize
         class= data.isCalculator ? '' : 'js-input-slider'
-    )
+    )&attributes(attributes)
         if data.label
             label(for= data.id).text-s.dark-70.ps-3.mb-2= data.label
         if data.editable

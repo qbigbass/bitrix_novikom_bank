@@ -1,0 +1,88 @@
+{
+  "data": [
+    {
+      "id": 22339,
+      "name": "Кредит на рефинансирование для зарплатных клиентов",
+      "values": [
+        {
+          "rate": 21,
+          "periodMin": 6,
+          "periodMax": 60,
+          "amountMin": 20000,
+          "amountMax": 5000000,
+          "refinancing": true,
+          "strategicClient": false,
+          "totalCost": "23,864 - 27,482 %"
+        }
+      ]
+    },
+    {
+      "id": 990,
+      "name": "Кредит на любые цели для зарплатных клиентов",
+      "values": [
+        {
+          "rate": 21,
+          "periodMin": 6,
+          "periodMax": 60,
+          "amountMin": 20000,
+          "amountMax": 5000000,
+          "surety": true,
+          "strategicClient": false,
+          "totalCost": "23,864 - 27,482 %"
+        },
+        {
+          "rate": 21,
+          "periodMin": 6,
+          "periodMax": 60,
+          "amountMin": 20000,
+          "amountMax": 5000000,
+          "noProvision": true,
+          "strategicClient": false,
+          "totalCost": "23,864 - 27,482 %"
+        }
+      ]
+    },
+    {
+      "id": 991,
+      "name": "Кредит на любые цели для стратегических клиентов",
+      "values": [
+        {
+          "rate": 20,
+          "periodMin": 6,
+          "periodMax": 60,
+          "amountMin": 20000,
+          "amountMax": 5000000,
+          "surety": true,
+          "strategicClient": true,
+          "totalCost": "23,864 - 27,482 %"
+        },
+        {
+          "rate": 20,
+          "periodMin": 6,
+          "periodMax": 60,
+          "amountMin": 20000,
+          "amountMax": 5000000,
+          "noProvision": true,
+          "strategicClient": true,
+          "totalCost": "23,864 - 27,482 %"
+        }
+      ]
+    },
+    {
+      "id": 154436,
+      "name": "Кредит на рефинансирование для стратегических клиентов",
+      "values": [
+        {
+          "rate": 20,
+          "periodMin": 6,
+          "periodMax": 60,
+          "amountMin": 20000,
+          "amountMax": 5000000,
+          "refinancing": true,
+          "strategicClient": true,
+          "totalCost": "23,864 - 27,482 %"
+        }
+      ]
+    }
+  ]
+}

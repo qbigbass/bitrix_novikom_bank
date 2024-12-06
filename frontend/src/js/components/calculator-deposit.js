@@ -2,15 +2,19 @@ import {generateStepsFromAttrs, getFormatedTextByType} from "./inputSlider";
 import {fetchDepositCalcData} from "../api/depositCalculator";
 import initInputSlider from "./inputSlider";
 
-const ELEMS = {
+const ELEMS_DEPOSIT = {
   root: '.js-calculator-deposit',
   replenishment: '.js-replenishment',
-  period: '.js-calculator-deposit-period',
-  rate: '.js-calculator-deposit-rate',
-  income: '.js-calculator-deposit-income',
+  period: '.js-calculator-display-period',
+  rate: '.js-calculator-display-rate',
+  income: '.js-calculator-display-income',
   inputAmount: '.js-input-amount',
   inputPeriod: '.js-input-period',
   inputSlider: '.input-slider',
+  buttonAddReplenishment: '.js-add-replenishment',
+  buttonRemoveReplenishment: '.js-remove-replenishment',
+  replenishmentItem: '.js-replenishment-item',
+  replenishmentTemplate: '#replenishment-template',
 }
 
 const ClASSES = {
@@ -23,9 +27,32 @@ const toggleVisibility = (target, checked) => {
   checked ? target.classList.remove(ClASSES.hide) : target.classList.add(ClASSES.hide)
 }
 
+function setReplenishmentAttr(templateClone, replenishmentCounter) {
+
+    const inputDate = templateClone.querySelector('input[name="date"]');
+    const inputSum = templateClone.querySelector('input[name="sum"]');
+    const labelDate = templateClone.querySelector('label[for="date"]');
+    const labelSum = templateClone.querySelector('label[for="sum"]');
+
+    inputDate.setAttribute('id', `date-${replenishmentCounter}`);
+    inputDate.setAttribute('name', `date-${replenishmentCounter}`);
+    labelDate.setAttribute('for', `date-${replenishmentCounter}`);
+    inputSum.setAttribute('id', `sum-${replenishmentCounter}`);
+    inputSum.setAttribute('name', `sum-${replenishmentCounter}`);
+    labelSum.setAttribute('for', `sum-${replenishmentCounter}`);
+}
+
+function removeReplenishment(event) {
+    const buttonRemoveReplenishment = event.target;
+    const wrapper = buttonRemoveReplenishment.closest(ELEMS_DEPOSIT.replenishmentItem);
+    wrapper.remove();
+}
+
 // пополнение
-const initReplenishment = (calculator) => {
-  const replenishmentTrigger = calculator.querySelector(ELEMS.replenishment);
+export const initReplenishment = () => {
+  const replenishmentTrigger = document.querySelector(ELEMS_DEPOSIT.replenishment);
+  const buttonAddReplenishment = document.querySelectorAll(ELEMS_DEPOSIT.buttonAddReplenishment);
+  let replenishmentCounter = 1;
 
   if (!replenishmentTrigger) return;
 
@@ -40,16 +67,37 @@ const initReplenishment = (calculator) => {
   replenishmentTrigger.addEventListener('click', (event) => {
     toggleVisibility(replenishmentBlock, event.target.checked)
   })
+
+
+    buttonAddReplenishment.forEach(button => {
+        button.addEventListener('click', () => {
+            const template = replenishmentBlock.querySelector(ELEMS_DEPOSIT.replenishmentTemplate);
+
+            if (!template) {
+                throw new Error(`Не найден template: ${ELEMS_DEPOSIT.replenishmentTemplate}`);
+            }
+
+            const templateClone = replenishmentBlock.querySelector(ELEMS_DEPOSIT.replenishmentTemplate).content.cloneNode(true);
+            setReplenishmentAttr(templateClone, replenishmentCounter);
+            const buttonRemoveReplenishment = templateClone.querySelector(ELEMS_DEPOSIT.buttonRemoveReplenishment);
+            replenishmentCounter++;
+
+            button.before(templateClone);
+            console.log('buttonRemoveReplenishment', buttonRemoveReplenishment)
+            buttonRemoveReplenishment.addEventListener('click', removeReplenishment);
+        })
+    })
+
 }
 
 const initElements = (root) => {
-  const displayPeriod = root.querySelector(ELEMS.period);
-  const displayRate = root.querySelector(ELEMS.rate);
-  const displayIncome = root.querySelector(ELEMS.income);
-  const inputAmount = root.querySelector(ELEMS.inputAmount);
-  const inputPeriod = root.querySelector(ELEMS.inputPeriod);
-  const inputPeriodWrapper = inputPeriod.closest(ELEMS.inputSlider);
-  const inputAmountWrapper = inputAmount.closest(ELEMS.inputSlider);
+  const displayPeriod = root.querySelector(ELEMS_DEPOSIT.period);
+  const displayRate = root.querySelector(ELEMS_DEPOSIT.rate);
+  const displayIncome = root.querySelector(ELEMS_DEPOSIT.income);
+  const inputAmount = root.querySelector(ELEMS_DEPOSIT.inputAmount);
+  const inputPeriod = root.querySelector(ELEMS_DEPOSIT.inputPeriod);
+  const inputPeriodWrapper = inputPeriod.closest(ELEMS_DEPOSIT.inputSlider);
+  const inputAmountWrapper = inputAmount.closest(ELEMS_DEPOSIT.inputSlider);
 
   return {
     root,
@@ -80,7 +128,7 @@ async function initState(calculator){
 }
 
 const getPeriodValue = (input) => {
-  const inputSlider = input.closest(ELEMS.inputSlider);
+  const inputSlider = input.closest(ELEMS_DEPOSIT.inputSlider);
   const steps = generateStepsFromAttrs(inputSlider.getAttribute('data-steps') ?? '');
   if (steps.length > 0) {
     return steps[Number(input.value)];
@@ -136,7 +184,7 @@ const setStartValues = (STATE) => {
 }
 
 async function initCalculatorDeposit() {
-  const calculatorsDeposit = document.querySelectorAll(ELEMS.root);
+  const calculatorsDeposit = document.querySelectorAll(ELEMS_DEPOSIT.root);
 
   for (const calculator of calculatorsDeposit) {
     const STATE = await initState(calculator);
@@ -145,7 +193,7 @@ async function initCalculatorDeposit() {
 
     getStartValues(STATE);
     setStartValues(STATE);
-    initReplenishment(calculator);
+    // initReplenishment(calculator);
 
     // STATE.elements.inputAmount.addEventListener('input', (event) => {
     //   setValue(STATE);
