@@ -74,7 +74,7 @@ include ../../../components/ui/input/input-slider
             +nav-tabs(tabsList)
 
         .d-lg-none
-            select.form-select.form-select--size-small.js-select
+            select.form-select.form-select--size-small.js-select.js-select-loan-type
                 option(selected value="loan") Потребительский кредит
                 option(value="refinance") Рефинансирование
         .tab-content.pt-4.pt-md-6.pt-lg-7.pe-xl-6
@@ -85,27 +85,27 @@ include ../../../components/ui/input/input-slider
 
                     .d-flex.flex-column.row-gap-4
                         .form-check
-                            input#inp1(type="checkbox" value="" checked).form-check-input
-                            label(for="inp1").form-check-label
+                            input#inp-loan-card(type="checkbox" value="" checked).form-check-input.js-inp-loan-card
+                            label(for="inp-loan-card").form-check-label
                                 a(href="#") Получаю зарплату на&nbsp;карту Новиком
 
                         .form-check
-                            input#inp2(type="checkbox" value="").form-check-input
-                            label(for="inp2").form-check-label
+                            input#inp-loan-insurance(type="checkbox" value="").form-check-input.js-loan-insurance
+                            label(for="inp-loan-insurance").form-check-label
                                 | Страхование
                         .d-flex.flex-column.row-gap-4.row-gap-lg-6
                             .d-flex.flex-column.row-gap-2
-                                label(for="select1").form-label.mb-0
+                                label(for="select-loan-properties").form-label.mb-0
                                     | Особенности
-                                select#select1(aria-label="Подсказка").form-select.js-select
+                                select#select-loan-properties(aria-label="Подсказка").form-select.js-select.js-select-loan-properties
                                     option(selected value="1") С поручительством физического лица
                                     option(value="2") Без обеспечения
                                     option(value="3") На рефинансирование
 
                             .d-flex.flex-column.row-gap-2
-                                label(for="select2").form-label.mb-0
+                                label(for="select-loan-payment-type").form-label.mb-0
                                     | Тип платежей
-                                select#select2(aria-label="Подсказка").form-select.js-select
+                                select#select-loan-payment-type(aria-label="Подсказка").form-select.js-select.js-select-loan-payment-type
                                     option(selected value="1") Аннуитетные платежи
                                     option(value="2") Дифференцированные платежи
 

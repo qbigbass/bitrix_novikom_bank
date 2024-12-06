@@ -53,7 +53,6 @@ export const initReplenishment = () => {
   const replenishmentTrigger = document.querySelector(ELEMS_DEPOSIT.replenishment);
   const buttonAddReplenishment = document.querySelectorAll(ELEMS_DEPOSIT.buttonAddReplenishment);
   let replenishmentCounter = 1;
-
   if (!replenishmentTrigger) return;
 
   const replenishmentBlock = document.querySelector(`#${replenishmentTrigger.dataset.target}`);
@@ -83,7 +82,6 @@ export const initReplenishment = () => {
             replenishmentCounter++;
 
             button.before(templateClone);
-            console.log('buttonRemoveReplenishment', buttonRemoveReplenishment)
             buttonRemoveReplenishment.addEventListener('click', removeReplenishment);
         })
     })
