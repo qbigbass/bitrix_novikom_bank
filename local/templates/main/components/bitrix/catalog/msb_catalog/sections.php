@@ -96,7 +96,7 @@ $APPLICATION->IncludeComponent(
         "SHOW_PARENT_NAME" => $arParams["SECTIONS_SHOW_PARENT_NAME"],
         "HIDE_SECTION_NAME" => ($arParams["SECTIONS_HIDE_SECTION_NAME"] ?? "N"),
         "ADD_SECTIONS_CHAIN" => ($arParams["ADD_SECTIONS_CHAIN"] ?? ''),
-        "SECTION_USER_FIELDS" => ["UF_FI_ICON", "UF_FI_POS"],
+        "SECTION_USER_FIELDS" => ["UF_FI_ICON", "UF_FI_POS", "UF_TITLE_MAIN"],
         "SHOW_AD_INTERNET_BANK" => "Y",
         "SHOW_AD_OPEN_ACC_NOVIKOM" => "Y"
     ],

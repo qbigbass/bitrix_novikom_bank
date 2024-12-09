@@ -17,6 +17,10 @@ if (!empty($arResult['SECTIONS'])) {
             }
         }
 
+        if (!empty($section['UF_TITLE_MAIN'])) {
+            $section["NAME"] = $section['UF_TITLE_MAIN'];
+        }
+
         $cntSectionsUpPosition = count($arSectionUpPosition);
 
         if (!empty($section["UF_FI_POS"]) && $cntSectionsUpPosition < $cntSectionsUp) {
