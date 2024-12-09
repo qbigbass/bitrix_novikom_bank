@@ -13,7 +13,7 @@
 $this->setFrameMode(true);
 ?>
 <? if (!empty($arResult['SECTIONS'])) : ?>
-<div class="tabs-panel js-tabs-slider overflow-hidden position-relative px-1 tabs-panel--small">
+<div class="tabs-panel js-tabs-slider overflow-hidden position-relative tabs-panel--small">
     <div class="tabs-panel__navigation d-none d-lg-block js-tabs-slider-navigation w-100"><span class="tabs-panel__navigation-item tabs-panel__navigation-item-reverse js-tabs-slider-navigation-prev h-100 d-flex align-items-center justify-content-start px-1 z-3 position-absolute start-0 top-0"><span class="icon size-m">
                 <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                   <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-left"></use>

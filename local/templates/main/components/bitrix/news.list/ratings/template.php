@@ -18,7 +18,7 @@ $this->setFrameMode(true); ?>
         <div class="row">
             <div class="col-12">
                 <div class="d-none d-lg-flex w-100">
-                    <div class="tabs-panel js-tabs-slider overflow-hidden position-relative pe-1 pe-lg-0">
+                    <div class="tabs-panel js-tabs-slider overflow-hidden position-relative">
                         <div class="tabs-panel__navigation d-none d-lg-block js-tabs-slider-navigation w-100">
                             <span
                                 class="tabs-panel__navigation-item tabs-panel__navigation-item-reverse js-tabs-slider-navigation-prev d-flex align-items-center justify-content-start px-1 z-3 position-absolute swiper-button-disabled">
@@ -55,7 +55,7 @@ $this->setFrameMode(true); ?>
                 </div>
                 <div class="d-block d-lg-none w-100">
                     <div
-                        class="tabs-panel js-tabs-slider overflow-hidden position-relative pe-1 pe-lg-0 tabs-panel--small">
+                        class="tabs-panel js-tabs-slider overflow-hidden position-relative tabs-panel--small">
                         <div class="tabs-panel__navigation d-none d-lg-block js-tabs-slider-navigation w-100">
                             <span
                                 class="tabs-panel__navigation-item tabs-panel__navigation-item-reverse js-tabs-slider-navigation-prev d-flex align-items-center justify-content-start px-1 z-3 position-absolute swiper-button-disabled">
