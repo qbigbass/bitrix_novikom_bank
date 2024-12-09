@@ -2,6 +2,7 @@
 /** @var array $arResult */
 
 use Bitrix\Iblock\Model\Section;
+use Bitrix\Iblock\Iblock as BitrixIblock;
 
 $iBlockCatalog = $arResult["SECTION"]["IBLOCK_ID"];
 $entity = Section::compileEntityByIblock($iBlockCatalog);
@@ -34,53 +35,56 @@ if ($arResult["SHOW_BANNER"]) {
 
     /* Получим контент для баннера */
     $arBannerContent = [];
-    $rsElements = CIBlockElement::GetList(
-        [],
-        [
+    $iblockBannerContent = iblock("msb_banner_content");
+    $classBannerContent = BitrixIblock::wakeUp($iblockBannerContent)->getEntityDataClass();
+    $elementsBannerContent = $classBannerContent::getList([
+        "select" => ["ID", "NAME", "PREVIEW_TEXT", "DETAIL_TEXT", "ELEM_POS_LIST.ITEM", "ICON.FILE"],
+        "filter" => [
             "ACTIVE" => "Y",
-            "IBLOCK_ID" => iblock("msb_banner_content"),
-            "PROPERTY_LINK_SECTION" => $arResult["SECTION"]["ID"]
+            "=LINK_SECTION.VALUE" => $arResult["SECTION"]["ID"]
         ],
-        false,
-        false,
-        ["ID", "IBLOCK_ID", "NAME", "PREVIEW_TEXT", "PROPERTY_ELEM_POS_LIST", "PROPERTY_ICON", "DETAIL_TEXT"]
-    );
+    ])->fetchCollection();
 
-    $propElemPosList = CIBlockPropertyEnum::GetList(
-        [],
-        [
-            "IBLOCK_ID" => iblock("msb_banner_content"),
-            "CODE" => "ELEM_POS_LIST"
-        ]
-    );
-    $propElemPosListDownId = 0;
+    if (!empty($elementsBannerContent)) {
+        foreach ($elementsBannerContent as $element) {
+            $id = $element->getId();
+            $name = $element->getName();
+            $previewText = '';
+            $detailText = '';
+            $icon = '';
+            $posXmlId = '';
 
-    while ($enumFields = $propElemPosList->GetNext()) {
-        if ($enumFields["XML_ID"] === "down") {
-            $propElemPosListDownId = $enumFields["ID"];
-        }
-    }
-
-    while ($arElement = $rsElements->GetNext()) {
-        if ($arElement["PROPERTY_ELEM_POS_LIST_ENUM_ID"] === $propElemPosListDownId) {
-            $arResult["SECTION"]["BANNER_CONTENT"]["FOOTER"][$arElement["ID"]]["NAME"] = $arElement["NAME"];
-            $arResult["SECTION"]["BANNER_CONTENT"]["FOOTER"][$arElement["ID"]]["DESC"] = $arElement["PREVIEW_TEXT"];
-            $filePath = '';
-
-            if (!empty($arElement["PROPERTY_ICON_VALUE"])) {
-                $filePath = CFile::GetPath($arElement["PROPERTY_ICON_VALUE"]);
+            if (!empty($element->getPreviewText())) {
+                $previewText = $element->getPreviewText();
             }
 
-            if (!empty($filePath)) {
-                $arResult["SECTION"]["BANNER_CONTENT"]["FOOTER"][$arElement["ID"]]["ICON"] = $filePath;
+            if (!empty($element->getDetailText())) {
+                $detailText = $element->getDetailText();
             }
-        } else {
-            if (!empty($arElement["DETAIL_TEXT"])) {
-                $arResult["SECTION"]["BANNER_CONTENT"]["HEADER"][$arElement["ID"]]["DESC"] = $arElement["PREVIEW_TEXT"];
-                $arResult["SECTION"]["BANNER_CONTENT"]["HEADER"][$arElement["ID"]]["DETAIL"] = $arElement["DETAIL_TEXT"];
+
+            if (!empty($element->getIcon())) {
+                $icon = '/upload/' . $element->getIcon()->getFile()->getSubdir() . '/' . $element->getIcon()->getFile()->getFileName();
+            }
+
+            if ($element->getElemPosList()->getItem()) {
+                $posXmlId = $element->getElemPosList()->getItem()->getXmlId();
+            }
+
+            if ($posXmlId === "down") {
+                $arResult["SECTION"]["BANNER_CONTENT"]["FOOTER"][$id]["NAME"] = $name;
+                $arResult["SECTION"]["BANNER_CONTENT"]["FOOTER"][$id]["DESC"] = $previewText;
+
+                if (!empty($icon)) {
+                    $arResult["SECTION"]["BANNER_CONTENT"]["FOOTER"][$id]["ICON"] = $icon;
+                }
             } else {
-                $arResult["SECTION"]["BANNER_CONTENT"]["HEADER"][$arElement["ID"]]["NAME"] = $arElement["NAME"];
-                $arResult["SECTION"]["BANNER_CONTENT"]["HEADER"][$arElement["ID"]]["DESC"] = $arElement["PREVIEW_TEXT"];
+                if (!empty($detailText)) {
+                    $arResult["SECTION"]["BANNER_CONTENT"]["HEADER"][$id]["DESC"] = $previewText;
+                    $arResult["SECTION"]["BANNER_CONTENT"]["HEADER"][$id]["DETAIL"] = $detailText;
+                } else {
+                    $arResult["SECTION"]["BANNER_CONTENT"]["HEADER"][$id]["NAME"] = $name;
+                    $arResult["SECTION"]["BANNER_CONTENT"]["HEADER"][$id]["DESC"] = $previewText;
+                }
             }
         }
     }
