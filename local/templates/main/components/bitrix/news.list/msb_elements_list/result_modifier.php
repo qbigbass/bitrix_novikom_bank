@@ -12,6 +12,8 @@ $blockOtherServicesIds = [];
 $blockOtherServicesElements = [];
 $blockContactsIds = [];
 $blockContactsElements = [];
+$blockGuaranteesIds = [];
+$blockGuaranteesElements = [];
 
 if (!empty($arResult["ITEMS"])) {
     foreach ($arResult["ITEMS"] as $item) {
@@ -29,6 +31,10 @@ if (!empty($arResult["ITEMS"])) {
 
         if (!empty($item["PROPERTIES"]["BLOCK_CONTACTS"]["VALUE"])) {
             $blockContactsIds = $item["PROPERTIES"]["BLOCK_CONTACTS"]["VALUE"];
+        }
+
+        if (!empty($item["PROPERTIES"]["BLOCK_GUARANTEES"]["VALUE"])) {
+            $blockGuaranteesIds = $item["PROPERTIES"]["BLOCK_GUARANTEES"]["VALUE"];
         }
     }
 }
@@ -132,7 +138,7 @@ if (!empty($blockOtherServicesIds)) {
                 $picture = CFile::GetPath($previewPicture);
             }
 
-            if ($element->getTag()->getItem()) {
+            if (!empty($element->getTag())) {
                 $tag = $element->getTag()->getItem()->getValue();
             }
 
@@ -149,7 +155,7 @@ if (!empty($blockOtherServicesIds)) {
                 $link = $element->getLink()->getValue();
             }
 
-            if ($element->getLineColor()->getItem()) {
+            if (!empty($element->getLineColor())) {
                 $lineColorXml = $element->getLineColor()->getItem()->getXmlId();
             }
 
@@ -209,6 +215,37 @@ if (!empty($blockContactsIds)) {
     }
 }
 
+if (!empty($blockGuaranteesIds)) {
+    // Получим полную информацию для блока "Оформление гарантии" из ИБ "Оформление гарантии для каталога услуг"
+    $iblockGuarantees = iblock('msb_guarantees');
+    $classGuarantees = BitrixIblock::wakeUp($iblockGuarantees)->getEntityDataClass();
+    $elementsGuarantees = $classGuarantees::getList([
+        "select" => ["ID", "NAME", "PLACE.ITEM"],
+        "filter" => ["ACTIVE" => "Y", "ID" => $blockGuaranteesIds],
+    ])->fetchCollection();
+
+    if (!empty($elementsGuarantees)) {
+        foreach ($elementsGuarantees as $element) {
+            $id = $element->getId();
+            $name = $element->getName();
+            $placeXmlId = '';
+            $placeValue = '';
+
+            if (!empty($element->getPlace())) {
+                $placeValue = $element->getPlace()->getItem()->getValue();
+                $placeXmlId = $element->getPlace()->getItem()->getXmlId();
+            }
+
+            if (!empty($placeXmlId) && !empty($placeValue)) {
+                $blockGuaranteesElements["TABS"][$placeXmlId] = $placeValue;
+                $blockGuaranteesElements["ITEMS"][$placeXmlId][$id] = [
+                    "TITLE" => $name
+                ];
+            }
+        }
+    }
+}
+
 if (!empty($arResult["ITEMS"])) {
     foreach ($arResult["ITEMS"] as $index => $item) {
         if (!empty($item["PROPERTIES"]["BLOCK_POSSIBILITIES"]["VALUE"]) && !empty($blockPossibilitiesElements)) {
@@ -225,6 +262,10 @@ if (!empty($arResult["ITEMS"])) {
 
         if (!empty($item["PROPERTIES"]["BLOCK_CONTACTS"]["VALUE"]) && !empty($blockContactsElements)) {
             $arResult["ITEMS"][$index]["BLOCK_CONTACTS"] = $blockContactsElements;
+        }
+
+        if (!empty($item["PROPERTIES"]["BLOCK_GUARANTEES"]["VALUE"]) && !empty($blockGuaranteesElements)) {
+            $arResult["ITEMS"][$index]["BLOCK_GUARANTEES"] = $blockGuaranteesElements;
         }
     }
 }

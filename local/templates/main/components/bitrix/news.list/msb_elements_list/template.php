@@ -76,6 +76,172 @@ use Bitrix\Main\Localization\Loc;
                 </div>
             </section>
         <?endif;?>
+        <?if(!empty($item["BLOCK_GUARANTEES"])):?>
+            <!-- Блок "Оформление гарантии" -->
+            <section class="section-layout pt-0">
+                <div class="container">
+                    <div class="row px-lg-6">
+                        <div class="d-none d-md-flex justify-content-between">
+                            <h3 class="h3">Оформление гарантии</h3>
+                            <?if(!empty($item["BLOCK_GUARANTEES"]["TABS"])):?>
+                                <div class="d-inline-flex">
+                                    <ul class="nav nav-tabs" role="tablist">
+                                        <?$t = 0;?>
+                                        <?foreach ($item["BLOCK_GUARANTEES"]["TABS"] as $tabXml => $tabValue):?>
+                                            <li class="nav-item" role="presentation">
+                                                <button
+                                                    class="nav-link <?if($t < 1):?>active<?endif;?>"
+                                                    data-bs-toggle="tab"
+                                                    data-bs-target="#<?= $tabXml ?>"
+                                                    type="button"
+                                                    role="tab"
+                                                    aria-controls="<?= $tabXml ?>"
+                                                    aria-selected
+                                                ><?= $tabValue ?>
+                                                </button>
+                                            </li>
+                                            <?$t++;?>
+                                        <?endforeach;?>
+                                    </ul>
+                                </div>
+                            <?endif;?>
+                        </div>
+                        <a
+                            class="h3 d-flex align-items-center justify-content-between dark-100 d-md-none"
+                            data-bs-toggle="collapse"
+                            href="#restructuring-steps-content"
+                            role="button"
+                            aria-expanded="false"
+                            aria-controls="restructuring-steps-content"
+                        >Оформление гарантии
+                            <svg class="icon size-m violet-100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-down"></use>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="collapse d-md-block mt-6 mt-lg-7" id="restructuring-steps-content">
+                        <?if(!empty($item["BLOCK_GUARANTEES"]["TABS"])):?>
+                            <div class="d-inline-flex d-md-none w-100 mb-6">
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <?$s = 0;?>
+                                    <?foreach ($item["BLOCK_GUARANTEES"]["TABS"] as $tabXml => $tabValue):?>
+                                        <li class="nav-item" role="presentation">
+                                            <button
+                                                class="nav-link <?if($s < 1):?>active<?endif;?>"
+                                                data-bs-toggle="tab"
+                                                data-bs-target="#<?= $tabXml ?>"
+                                                type="button"
+                                                role="tab"
+                                                aria-controls="<?= $tabXml ?>"
+                                                aria-selected
+                                            ><?= $tabValue ?></button>
+                                        </li>
+                                        <?$s++;?>
+                                    <?endforeach;?>
+                                </ul>
+                            </div>
+                        <?endif;?>
+                        <?if(!empty($item["BLOCK_GUARANTEES"]["ITEMS"])):?>
+                            <div class="tab-content">
+                                <?$g = 0; ?>
+                                <?foreach ($item["BLOCK_GUARANTEES"]["ITEMS"] as $xmlType => $arGuarantees):?>
+                                    <div class="tab-pane fade show <?if($g < 1):?>active<?endif;?>" id="<?= $xmlType?>" role="tabpanel" aria-labelledby="loan" tabindex="0">
+                                        <div class="row row-gap-6 row-gap-lg-7 gx-xl-6">
+                                        <div class="stepper steps-4">
+                                            <?$i = 1;?>
+                                            <?foreach ($arGuarantees as $guarantee):?>
+                                                <div class="stepper-item stepper-item--color-yellow">
+                                                    <div class="stepper-item__header">
+                                                        <div class="stepper-item__number">
+                                                            <?if($i === 1) :?>
+                                                                <div class="stepper-item__number-value"><?= $i ?></div>
+                                                                <div class="stepper-item__number-icon">
+                                                                    <div class="stepper-item__icon-border" data-level="1">
+                                                                        <svg width="76" height="44" viewBox="0 0 76 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                            <path d="M36.0723 1.06022C37.2727 0.400039 38.7273 0.400039 39.9277 1.06022L74.8138 20.2476C76.1953 21.0074 76.1953 22.9926 74.8138 23.7524L39.9277 42.9398C38.7273 43.6 37.2727 43.6 36.0723 42.9398L1.18624 23.7524C-0.195312 22.9926 -0.19531 21.0074 1.18624 20.2476L36.0723 1.06022Z" fill="currentColor"></path>
+                                                                        </svg>
+                                                                    </div>
+                                                                </div>
+                                                            <?elseif ($i === 2):?>
+                                                                <div class="stepper-item__number-value"><?= $i ?></div>
+                                                                <div class="stepper-item__number-icon">
+                                                                    <div class="stepper-item__icon-border" data-level="1">
+                                                                        <svg width="76" height="44" viewBox="0 0 76 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                            <path d="M36.0723 1.06022C37.2727 0.400039 38.7273 0.400039 39.9277 1.06022L74.8138 20.2476C76.1953 21.0074 76.1953 22.9926 74.8138 23.7524L39.9277 42.9398C38.7273 43.6 37.2727 43.6 36.0723 42.9398L1.18624 23.7524C-0.195312 22.9926 -0.19531 21.0074 1.18624 20.2476L36.0723 1.06022Z" fill="currentColor"></path>
+                                                                        </svg>
+                                                                    </div>
+                                                                    <div class="stepper-item__icon-border" data-level="2">
+                                                                        <svg width="80" height="46" viewBox="0 0 80 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                            <path d="M39.5181 1.26505C39.8182 1.10001 40.1818 1.10001 40.4819 1.26506L78.4069 22.1238C79.0977 22.5037 79.0977 23.4963 78.4069 23.8762L40.4819 44.7349C40.1818 44.9 39.8182 44.9 39.5181 44.7349L1.59312 23.8762C0.902343 23.4963 0.902345 22.5037 1.59312 22.1238L39.5181 1.26505Z" stroke="currentColor" stroke-linecap="round" stroke-dasharray="4 4"></path>
+                                                                        </svg>
+                                                                    </div>
+                                                                </div>
+                                                            <?elseif ($i === 3):?>
+                                                                <div class="stepper-item__number-value"><?= $i ?></div>
+                                                                <div class="stepper-item__number-icon">
+                                                                    <div class="stepper-item__icon-border" data-level="1">
+                                                                        <svg width="76" height="44" viewBox="0 0 76 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                            <path d="M36.0723 1.06022C37.2727 0.400039 38.7273 0.400039 39.9277 1.06022L74.8138 20.2476C76.1953 21.0074 76.1953 22.9926 74.8138 23.7524L39.9277 42.9398C38.7273 43.6 37.2727 43.6 36.0723 42.9398L1.18624 23.7524C-0.195312 22.9926 -0.19531 21.0074 1.18624 20.2476L36.0723 1.06022Z" fill="currentColor"></path>
+                                                                        </svg>
+                                                                    </div>
+                                                                    <div class="stepper-item__icon-border" data-level="2">
+                                                                        <svg width="80" height="46" viewBox="0 0 80 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                            <path d="M39.5181 1.26505C39.8182 1.10001 40.1818 1.10001 40.4819 1.26506L78.4069 22.1238C79.0977 22.5037 79.0977 23.4963 78.4069 23.8762L40.4819 44.7349C40.1818 44.9 39.8182 44.9 39.5181 44.7349L1.59312 23.8762C0.902343 23.4963 0.902345 22.5037 1.59312 22.1238L39.5181 1.26505Z" stroke="currentColor" stroke-linecap="round" stroke-dasharray="4 4"></path>
+                                                                        </svg>
+                                                                    </div>
+                                                                    <div class="stepper-item__icon-border" data-level="3">
+                                                                        <svg width="80" height="46" viewBox="0 0 80 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                            <path opacity="0.5" d="M39.5181 1.26505C39.8182 1.10001 40.1818 1.10001 40.4819 1.26506L78.4069 22.1238C79.0977 22.5037 79.0977 23.4963 78.4069 23.8762L40.4819 44.7349C40.1818 44.9 39.8182 44.9 39.5181 44.7349L1.59312 23.8762C0.902343 23.4963 0.902345 22.5037 1.59312 22.1238L39.5181 1.26505Z" stroke="currentColor" stroke-linecap="round" stroke-dasharray="4 4"></path>
+                                                                        </svg>
+                                                                    </div>
+                                                                </div>
+                                                            <?elseif ($i === 4):?>
+                                                                <div class="stepper-item__number-value"><?= $i ?></div>
+                                                                <div class="stepper-item__number-icon">
+                                                                    <div class="stepper-item__icon-border" data-level="1">
+                                                                        <svg width="76" height="44" viewBox="0 0 76 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                            <path d="M36.0723 1.06022C37.2727 0.400039 38.7273 0.400039 39.9277 1.06022L74.8138 20.2476C76.1953 21.0074 76.1953 22.9926 74.8138 23.7524L39.9277 42.9398C38.7273 43.6 37.2727 43.6 36.0723 42.9398L1.18624 23.7524C-0.195312 22.9926 -0.19531 21.0074 1.18624 20.2476L36.0723 1.06022Z" fill="currentColor"></path>
+                                                                        </svg>
+                                                                    </div>
+                                                                    <div class="stepper-item__icon-border" data-level="2">
+                                                                        <svg width="80" height="46" viewBox="0 0 80 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                            <path d="M39.5181 1.26505C39.8182 1.10001 40.1818 1.10001 40.4819 1.26506L78.4069 22.1238C79.0977 22.5037 79.0977 23.4963 78.4069 23.8762L40.4819 44.7349C40.1818 44.9 39.8182 44.9 39.5181 44.7349L1.59312 23.8762C0.902343 23.4963 0.902345 22.5037 1.59312 22.1238L39.5181 1.26505Z" stroke="currentColor" stroke-linecap="round" stroke-dasharray="4 4"></path>
+                                                                        </svg>
+                                                                    </div>
+                                                                    <div class="stepper-item__icon-border" data-level="3">
+                                                                        <svg width="80" height="46" viewBox="0 0 80 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                            <path opacity="0.5" d="M39.5181 1.26505C39.8182 1.10001 40.1818 1.10001 40.4819 1.26506L78.4069 22.1238C79.0977 22.5037 79.0977 23.4963 78.4069 23.8762L40.4819 44.7349C40.1818 44.9 39.8182 44.9 39.5181 44.7349L1.59312 23.8762C0.902343 23.4963 0.902345 22.5037 1.59312 22.1238L39.5181 1.26505Z" stroke="currentColor" stroke-linecap="round" stroke-dasharray="4 4"></path>
+                                                                        </svg>
+                                                                    </div>
+                                                                    <div class="stepper-item__icon-border" data-level="4">
+                                                                        <svg width="80" height="46" viewBox="0 0 80 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                            <path opacity="0.3" d="M39.5181 1.26505C39.8182 1.10001 40.1818 1.10001 40.4819 1.26506L78.4069 22.1238C79.0977 22.5037 79.0977 23.4963 78.4069 23.8762L40.4819 44.7349C40.1818 44.9 39.8182 44.9 39.5181 44.7349L1.59312 23.8762C0.902343 23.4963 0.902345 22.5037 1.59312 22.1238L39.5181 1.26505Z" stroke="currentColor" stroke-linecap="round" stroke-dasharray="4 4"></path>
+                                                                        </svg>
+                                                                    </div>
+                                                                </div>
+                                                            <?endif;?>
+                                                        </div>
+                                                        <div class="stepper-item__arrow">
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="stepper-item__content">
+                                                        <p class="text-l mb-0"><?= $guarantee["TITLE"] ?></p>
+                                                    </div>
+                                                </div>
+                                            <?$i++;?>
+                                            <?endforeach;?>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <?$g++;?>
+                                <?endforeach;?>
+                            </div>
+                        <?endif;?>
+                    </div>
+                </div>
+            </section>
+        <?endif;?>
         <?if(!empty($item["BLOCK_CONTACTS"])):?>
             <!-- Блок "Контакты" -->
             <section class="section-layout bg-blue-10">
