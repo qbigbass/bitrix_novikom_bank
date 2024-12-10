@@ -55,9 +55,9 @@ block content
         bannerTextData
     )
 
-    section.section-layout.px-lg-6
+    section.section-layout.py-lg-11
         .container
-            .row.row-gap-4.row-gap-md-6.row-gap-lg-7
+            .row.row-gap-4.row-gap-md-6.row-gap-lg-7.px-lg-6
                 .col-12
                     form.w-100
                         .input-group.flex-nowrap.d-none.d-lg-flex
@@ -70,8 +70,7 @@ block content
                                 span.icon.violet-100
                                     +svg-use("icon-search")
                             input#input-search-mobile.form-control.ps-0.text-s.bg-transparent(type="text", placeholder="Поиск по разделу", aria-label="Поиск по разделу", aria-describedby="#input-search-mobile" tabindex="-1")
-                .col-12
-                    include ../includes/layout/tabs/insurance-more
+                include ../includes/layout/tabs/insurance-more
 
     section.section-layout.bg-dark-10
         .container

@@ -25,7 +25,7 @@ $headerView->render(
     ['bg-linear-blue']
 );
 ?>
-<section class="section-layout px-lg-6 bg-dark-10">
+<section class="section-layout pt-lg-11 bg-dark-10">
     <div class="container">
         <div class="row g-1 g-md-2 g-lg-2_5">
             <?

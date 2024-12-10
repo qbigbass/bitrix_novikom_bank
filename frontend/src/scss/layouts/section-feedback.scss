@@ -1,0 +1,38 @@
+.section-feedback {
+    &__content {
+        @include use-media(tablet) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include use-media(laptop-x) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        & > :nth-child(1) {
+            @include use-media(tablet, tablet-album) {
+                grid-column: 1 / 3;
+            }
+
+            @include use-media(laptop-x) {
+                grid-column: 1 / 3;
+            }
+        }
+
+        & > :nth-child(2) {
+            @include use-media(laptop-x) {
+                grid-column: 1 / 3;
+            }
+        }
+
+        & > :nth-child(3) {
+            @include use-media(tablet-album) {
+                grid-row: 1 / 3;
+                grid-column-start: 2;
+            }
+
+            @include use-media(laptop-x) {
+                grid-column-start: 3;
+            }
+        }
+    }
+}

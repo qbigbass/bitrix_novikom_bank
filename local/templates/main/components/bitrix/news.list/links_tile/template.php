@@ -21,7 +21,7 @@ $this->setFrameMode(true);
     ?>
 
     <div class="swiper-slide js-swiper-slide" id="<?=$this->GetEditAreaId($item['ID']);?>">
-        <div class="card-product card-product--undefined bg-dark-10 h-100 bg-white">
+        <div class="card-product card-product--transparent bg-dark-10 h-100 bg-white">
             <div class="card-product__inner">
                 <div class="card-product__content">
                     <h4 class="card-product__title"><?= $item['~NAME'] ?></h4>
