@@ -239,7 +239,7 @@ use Bitrix\Main\Localization\Loc;
                         <!-- Блок со стратегиями -->
                         <?if(!empty($item["STRATEGY_TABS"]) && !empty($item["STRATEGY_ITEMS"])):?>
                             <div class="col-12">
-                                <div class="tabs-panel js-tabs-slider overflow-hidden position-relative pe-1 pe-lg-0">
+                                <div class="tabs-panel js-tabs-slider overflow-hidden position-relative">
                                     <div class="tabs-panel__navigation d-none d-lg-block js-tabs-slider-navigation w-100">
                                         <span class="tabs-panel__navigation-item tabs-panel__navigation-item-reverse js-tabs-slider-navigation-prev d-flex align-items-center justify-content-start px-1 z-3 position-absolute swiper-button-disabled">
                                             <span class="icon size-s">

@@ -24,7 +24,7 @@ $path = basename($APPLICATION->GetCurPage()); ?>
 <div class="collapse show d-md-block mt-4 mt-sm-5 mt-md-0" id="filters-content">
     <div class="w-100 d-flex align-items-center flex-column flex-xl-row gap-4 gap-xl-6">
         <div class="w-100 w-xl-auto">
-            <div class="tabs-panel js-tabs-slider overflow-hidden position-relative pe-1 pe-lg-0 tabs-panel--small">
+            <div class="tabs-panel js-tabs-slider overflow-hidden position-relative tabs-panel--small">
                 <div class="tabs-panel__navigation d-none d-lg-block js-tabs-slider-navigation w-100">
                     <span
                         class="tabs-panel__navigation-item tabs-panel__navigation-item-reverse js-tabs-slider-navigation-prev d-flex align-items-center justify-content-start px-1 z-3 position-absolute swiper-button-disabled">

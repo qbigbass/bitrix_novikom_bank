@@ -1,0 +1,32 @@
+extends ../templates/base-en
+
+block title
+    title= 'Information About the Bank'
+    meta(name="description" content="About the Bank")
+block content
+    include ../includes/header/header-en
+    include ../components/banners/banner-hero
+
+    -
+        var bannerHeroData = {
+            bgClass: "",
+            bgImageSrc: "img/slides/hero_banner_en.png",
+            banner: {
+                title: "The Bank of the Russian industry and high technologies",
+                text: "Мы укрепляем технологический суверенитет России <br>и помогаем занять лидерские позиции в экономике будущего",
+                button: "About the Bank",
+            }
+        }
+
+    +banner-hero(bannerHeroData, "static")
+
+    include ../includes/layout/section-statistics
+
+    include ../includes/layout/section-ratings
+
+    include ../includes/layout/section-partners
+
+
+
+
+

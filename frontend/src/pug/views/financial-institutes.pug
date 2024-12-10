@@ -43,6 +43,7 @@ block content
                 title: "Расчетное обслуживание",
                 description: "Корреспондентские счета ЛОРО в российских рублях и иностранной валюте",
                 link: "Подробнее",
+                bgClass: 'bg-white',
                 color: "transparent",
                 size: "large",
             },
@@ -52,6 +53,7 @@ block content
                 title: "Межбанковские операции",
                 description: "Операции на валютном и денежном рынках, сделки МБК, синдикации",
                 link: "Подробнее",
+                bgClass: 'bg-white',
                 color: "transparent",
             },
             {
@@ -60,6 +62,7 @@ block content
                 title: "Брокерское обслуживание",
                 description: "Услуги профессионального частника рынка ценных бумаг",
                 link: "Подробнее",
+                bgClass: 'bg-white',
                 color: "transparent",
             },
         ];
@@ -70,42 +73,49 @@ block content
                 icon: true,
                 iconImg: "hands_violet",
                 link: "Подробнее",
+                bgClass: 'bg-white',
             },
             {
                 title: "Гарантии<br>и обязательства",
                 icon: true,
                 iconImg: "reputation",
                 link: "Подробнее",
+                bgClass: 'bg-white',
             },
             {
                 title: "Организация<br>облигационных займов",
                 icon: true,
                 iconImg: "doc-money_violet",
                 link: "Подробнее",
+                bgClass: 'bg-white',
             },
             {
                 title: "Депозитарное обслуживание",
                 icon: true,
                 iconImg: "ticket",
                 link: "Подробнее",
+                bgClass: 'bg-white',
             },
             {
                 title: "Финансирование экспортно-импортных операций",
                 icon: true,
                 iconImg: "export-money",
                 link: "Подробнее",
+                bgClass: 'bg-white',
             },
             {
                 title: "Система<br>Банк-клиент",
                 icon: true,
                 iconImg: "account_violet",
                 link: "Подробнее",
+                bgClass: 'bg-white',
             },
             {
                 title: "Стимулирование экспорта стран СНГ",
                 icon: true,
                 iconImg: "export-up",
                 link: "Подробнее",
+                bgClass: 'bg-white',
             },
         ];
 
@@ -299,22 +309,22 @@ block content
             .row.row-gap-4.row-gap-md-5.row-gap-lg-7
                 .card-offer-grid
                     each card in cardList
-                        +card-product(card).card-product--bg-white
+                        +card-product(card)
                 .col-12
                     .d-flex.flex-column.cards-gap
                         .row.cards-gutter
                             .col-12.col-md-6.col-lg-4
-                                +card-product(productCards[0]).card-product--bg-white
+                                +card-product(productCards[0])
                             .col-12.col-md-6.col-lg-4
-                                +card-product(productCards[1]).card-product--bg-white
+                                +card-product(productCards[1])
                             .col-12.col-lg-4
-                                +card-product(productCards[2]).card-product--bg-white
+                                +card-product(productCards[2])
                         #more-finorg.collapse.d-md-block
                             .row.cards-gutter
                                 each card, index in productCards
                                     if (index > 2)
                                         .col-12.col-md-6.col-xl-3
-                                            +card-product(card).card-product--bg-white
+                                            +card-product(card)
                     .col-12.d-md-none.mt-4
                         a(
                             data-bs-toggle="collapse"

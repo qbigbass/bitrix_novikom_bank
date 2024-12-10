@@ -192,7 +192,7 @@ if (!empty($elementIds)) {
 <?
 $awardsIds = \Dalee\Helpers\IblockHelper::getIblockSectionElementsIds('awards_ru');
 if (!empty($awardsIds)) { ?>
-    <section class="section-layout py-lg-11 mb-6 mb-sm-9 mb-lg-11 mb-xl-16">
+    <section class="section-layout py-lg-11 mb-xxl-6">
         <div class="container">
             <h3 class="mb-5 mb-lg-7">Награды</h3>
             <div class="row">

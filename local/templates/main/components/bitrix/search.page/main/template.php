@@ -93,11 +93,11 @@ $resultsDeclension = new Declension('результат', 'результата'
                         >
                         <label class="cursor-pointer position-absolute top-0 end-0 violet-70 text-m p-2 px-3" for="search-datepicker">
                           <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                            <use xlink:href="img/svg-sprite.svg#icon-calendar"></use>
+                            <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-calendar"></use>
                           </svg>
                         </label>
                     </div>
-                    <div class="tabs-panel js-tabs-slider overflow-hidden position-relative pe-1 pe-lg-0 tabs-panel--small w-auto">
+                    <div class="tabs-panel js-tabs-slider overflow-hidden position-relative tabs-panel--small w-auto">
                         <div class="tabs-panel__navigation d-none d-lg-block js-tabs-slider-navigation w-100">
                             <span class="tabs-panel__navigation-item tabs-panel__navigation-item-reverse js-tabs-slider-navigation-prev d-flex align-items-center justify-content-start px-1 z-3 position-absolute swiper-button-disabled">
                                 <span class="icon size-m">

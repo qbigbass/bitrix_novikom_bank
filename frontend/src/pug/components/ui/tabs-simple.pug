@@ -5,7 +5,7 @@
 // isSmallTabs - bool
 
 mixin tabs-simple(tabsList, isSmallTabs=false, tabsClassName, tabItemClassName)
-    .tabs-panel.js-tabs-slider.overflow-hidden.position-relative.pe-1.pe-lg-0(class=isSmallTabs && 'tabs-panel--small')&attributes(attributes)
+    .tabs-panel.js-tabs-slider.overflow-hidden.position-relative(class=isSmallTabs && 'tabs-panel--small')&attributes(attributes)
         .tabs-panel__navigation.d-none.d-lg-block.js-tabs-slider-navigation.w-100
             span.tabs-panel__navigation-item.tabs-panel__navigation-item-reverse.js-tabs-slider-navigation-prev.d-flex.align-items-center.justify-content-start.px-1.z-3.position-absolute.swiper-button-disabled
                 span.icon.size-s
