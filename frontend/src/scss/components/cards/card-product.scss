@@ -74,6 +74,12 @@
         }
     }
 
+    &__title,
+    &__description {
+        word-wrap: break-word;
+        word-break: break-word;
+    }
+
     &__description {
 
         @include use-media(laptop-x) {
@@ -170,9 +176,9 @@
         }
 
         #{$root}__description {
-          @include use-media(tablet-album) {
-            max-width: 80%;
-          }
+            @include use-media(tablet-album) {
+                max-width: 80%;
+            }
         }
     }
 

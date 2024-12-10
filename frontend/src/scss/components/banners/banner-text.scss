@@ -18,6 +18,10 @@
             hyphens: unset;
         }
 
+        @include use-media(mobile-s, tablet-album) {
+            font-weight: 600;
+        }
+
         & br {
             display: none;
 
@@ -34,9 +38,13 @@
             right: -3rem;
         }
 
+        @include use-media(tablet) {
+            right: -5rem;
+        }
+
         @include use-media(tablet-album) {
             max-width: 25rem;
-            //right: 0;
+            right: -2.5rem;
         }
     }
 
