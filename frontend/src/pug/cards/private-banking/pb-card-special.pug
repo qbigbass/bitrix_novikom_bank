@@ -1,18 +1,18 @@
 mixin pb-card-special(data)
-    .pb-card-special(class=data.large ? "pb-card-special--large": "")
+    .pb-card-special(class=data.large ? "pb-card-special--large": "")&attributes(attributes)
         .d-flex.flex-column.row-gap-4(class=data.large ? "": "row-gap-md-3")
-            h3.pb-card-special__title= data.title
+            h3.pb-card-special__title!= data.title
             .d-flex.flex-column.row-gap-4
                 if data.large
                     if data.description
-                        p.pb-card-special__text= data.description
+                            p.pb-card-special__text!= data.description
                 .d-flex.flex-column.flex-md-row.flex-grow-1.align-items-start.row-gap-2
                     if !data.large
                         if data.description
-                            p.pb-card-special__text= data.description
+                            p.pb-card-special__text!= data.description
                     if data.additionalInfo && data.additionalInfo.length > 0
                         ul.pb-list.d-flex.flex-column.gap-3
                             each info in data.additionalInfo
-                                li= info
+                                li!= info
                     .pb-card-special__image
                         img(src=data.image, alt=data.title, loading="lazy")

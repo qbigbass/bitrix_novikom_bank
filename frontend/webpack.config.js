@@ -57,10 +57,10 @@ const config = {
                 test: /\.scss$/,
                 use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
             },
-            {
-                test: /\.(png|svg|jpg|jpeg|gif)$/i,
-                use: ['file-loader']
-            },
+            // {
+            //     test: /\.(png|svg|jpg|jpeg|gif)$/i,
+            //     use: ['file-loader']
+            // },
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/i,
                 type: 'asset/resource',
