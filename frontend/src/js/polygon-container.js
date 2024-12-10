@@ -1,5 +1,3 @@
-import $ from "../vendors/jquery.min";
-
 const POLYGON_CLASSES = {
     root: '.js-polygon-container',
     polygon: '.js-polygon-container-polygon',
@@ -11,7 +9,7 @@ const initPolygonContainer = () => {
 
     for (let i = 0; i < polygonContainers.length; i++) {
         const polygonContainer = polygonContainers[i];
-        const STATE = initState(polygonContainer);
+        const STATE = initPolygonState(polygonContainer);
         setTimeout(() => {
             resizeSVGElement(STATE);
         }, 400)
@@ -19,7 +17,7 @@ const initPolygonContainer = () => {
     }
 };
 
-const initState = (polygonContainer) => {
+const initPolygonState = (polygonContainer) => {
     const $polygon = $(polygonContainer).find(POLYGON_CLASSES.polygon);
     const $svg = $(polygonContainer).find(POLYGON_CLASSES.svg);
     const $svgPolygon = $svg.find('polygon');
@@ -87,6 +85,3 @@ const initResizeObservableOnPolygonElement = (STATE) => {
         }, 800)
     });
 };
-
-
-export default initPolygonContainer;

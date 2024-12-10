@@ -1,6 +1,21 @@
-import Swiper from 'swiper';
-import {Autoplay, Thumbs, Pagination, Navigation, Grid} from 'swiper/modules';
-import {VARIABLES, MEDIA_QUERIES, DEFAULT_SEPARATORS, DEFAULT_SLIDER_DATA_ATTRS, SLIDER_ATTR} from './constants';
+const VARIABLES = {
+  delay: 5000,
+};
+
+const DEFAULT_SEPARATORS = {
+  mediaQuery: ':',
+  mediaItem: ','
+}
+
+const DEFAULT_SLIDER_DATA_ATTRS = {
+  spaceBetween: 'mobile-s:8,mobile:8,tablet:16,laptop:16',
+  slidesPerView: 'mobile-s:1,mobile:1,tablet:2,laptop:3',
+  autoHeight: 'false',
+}
+
+const SLIDER_ATTR = {
+  destroyBreakpoint: 'data-slider-breakpoint-destroy',
+}
 
 const CLASS_NAME = {
     mobileMenu: '.js-swiper-mobile-menu',
@@ -18,7 +33,6 @@ const CLASS_NAME = {
 }
 
 const DEFAULT_SLIDER_OPTIONS = {
-    modules: [Navigation, Pagination],
     slidesPerView: 'auto',
     spaceBetween: 8,
     watchSlidesProgress: true,
@@ -88,7 +102,7 @@ const createSliderOptionsByAttrs = (dataAttrs, slidesLength) => {
     }
 }
 
-export function initSwiperMenu() {
+function initSwiperMenu() {
     const swiper = new Swiper(CLASS_NAME.mobileMenu, {
         init: false,
         slidesPerView: 'auto',
@@ -111,7 +125,7 @@ export function initSwiperMenu() {
     swiper.init();
 }
 
-export function initHeroBanner() {
+function initHeroBanner() {
     const thumbs = new Swiper(CLASS_NAME.thumbsHero, {
         spaceBetween: 0,
         slidesPerView: 4,
@@ -125,12 +139,8 @@ export function initHeroBanner() {
         },
         loop: true,
         freeMode: false,
-        modules: [Autoplay, Thumbs, Pagination, Navigation],
         thumbs: {
             swiper: thumbs,
-        },
-        controller: {
-            control: thumbs,
         },
         pagination: {
             el: ".banner-hero-pagination",
@@ -190,7 +200,7 @@ function setTabIndex(slides) {
 }
 
 let mySlider;
-export function initCardSlider() {
+function initCardSlider() {
     const sliders = document.querySelectorAll(CLASS_NAME.cardsSlider);
 
     sliders.forEach((slider) => {
@@ -259,9 +269,8 @@ function cardSliderMode(slider, options, destroyBreakpoints, wrapper, slides, co
     }
 }
 
-export function initAnnouncementSlider() {
+function initAnnouncementSlider() {
     new Swiper(CLASS_NAME.announcementsSlider, {
-        modules: [Pagination, Navigation, Grid],
         slidesPerView: 1,
         spaceBetween: 40,
         grid: {
@@ -295,14 +304,13 @@ export function initAnnouncementSlider() {
     });
 }
 
-export function initTabsSlider() {
+function initTabsSlider() {
     new Swiper(CLASS_NAME.tabsSlider, {
         slidesPerView: "auto",
         loop: false,
         freeMode: true,
         pagination: false,
         slideToClickedSlide: true,
-        modules: [Navigation],
         navigation: {
             prevEl: ".js-tabs-slider-navigation-prev",
             nextEl: ".js-tabs-slider-navigation-next",
