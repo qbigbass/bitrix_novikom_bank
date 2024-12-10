@@ -48,7 +48,7 @@
                                         </label>
                                         <input class="form-control form-control-lg-lg" id="vacancy_email"
                                                type="email" name="email" placeholder="Введите почту" required
-                                               autocomplete="off" data-form-input>
+                                               autocomplete="off" data-form-input pattern="[a-zA-Z0-9._%\+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}" data-error-message="Введите корректный адрес электронной почты">
                                         <div class="invalid-feedback" aria-live="polite"></div>
                                     </div>
                                 </div>
@@ -59,8 +59,8 @@
                                             <span class="orange-100 ms-1">*</span>
                                         </label>
                                         <input class="js-mask-phone form-control form-control-lg-lg"
-                                               id="vacancy_phone" type="text" name="phone" placeholder="+7" required
-                                               autocomplete="off" data-form-input>
+                                               id="vacancy_phone" type="tel" name="phone" placeholder="+7" required
+                                               autocomplete="off" data-form-input pattern="\+7\s\(\d{3}\)\s\d{3}-\d{2}-\d{2}" data-error-message="Введите корректный номер телефона">
                                         <div class="invalid-feedback" aria-live="polite"></div>
                                     </div>
                                 </div>
@@ -73,7 +73,7 @@
                                             <p class="text-m text-center">Вы&nbsp;можете прикрепить файлы размером
                                                 не&nbsp;более 3&nbsp;мб, всего не&nbsp;более 5&nbsp;файлов.</p>
                                             <input class="d-none" id="vacancy_upload-file" type="file"
-                                                   name="attach-file" multiple data-max-files="5"
+                                                   name="attach-file" data-max-files="5"
                                                    data-max-size="3145728" data-form-input data-upload-input>
                                             <button class="btn btn-link btn-icon" type="button" data-upload-button>
                                                 <svg class="icon size-m violet-100"

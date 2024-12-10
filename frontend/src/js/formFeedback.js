@@ -1,13 +1,13 @@
 const FEEDBACK_ELEMS = {
     formFeedback: '[data-form-feedback]',
 
-    radiosPerson: 'input[name="person"]',
-    radiosOtherEmail: 'input[name="other-email"]',
+    radiosPerson: 'input[name="PERSON"]',
+    radiosOtherEmail: 'input[name="OTHER_EMAIL"]',
 
-    inputBirthday: 'input[name="birthday"]',
-    inputInn: 'input[name="inn"]',
-    inputOrganization: 'input[name="organization"]',
-    inputReplyEmail: 'input[name="reply-email"]',
+    inputBirthday: 'input[name="BIRTHDAY"]',
+    inputInn: 'input[name="INN"]',
+    inputOrganization: 'input[name="ORGANIZATION"]',
+    inputReplyEmail: 'input[name="REPLY_EMAIL"]',
 }
 
 function initFormFeedback() {
