@@ -15,7 +15,7 @@
             z-index: 2;
         }
 
-        @include use-media(tabletm) {
+        @include use-media(tablet) {
             padding: 2rem;
         }
 

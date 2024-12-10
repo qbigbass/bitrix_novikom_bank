@@ -14,13 +14,28 @@ $asset->addCss('/frontend/dist/css/select2.css');
 $asset->addCss('/frontend/dist/css/air-datepicker.css');
 $asset->addCss('/frontend/dist/css/all.css');
 
-$asset->addJs('/frontend/dist/js/jquery.min.js');
-$asset->addJs('/frontend/dist/js/popover.js');
-$asset->addJs('/frontend/dist/js/bootstrap.min.js');
-$asset->addJs('/frontend/dist/js/swiper.min.js');
-$asset->addJs('/frontend/dist/js/select2.min.js');
-$asset->addJs('/frontend/dist/js/airdatepicker.js');
-$asset->addJs('/frontend/dist/js/bundle.js');
+$asset->addJs('/frontend/dist/js/vendors/jquery.min.js');
+$asset->addJs('/frontend/dist/js/vendors/popover.js');
+$asset->addJs('/frontend/dist/js/vendors/bootstrap.min.js');
+$asset->addJs('/frontend/dist/js/vendors/swiper.min.js');
+$asset->addJs('/frontend/dist/js/vendors/select2.min.js');
+$asset->addJs('/frontend/dist/js/vendors/airdatepicker.js');
+$asset->addJs('/frontend/dist/js/vendors/jquery.mask.min.js');
+
+$asset->addJs('/frontend/dist/js/chatBot.js');
+$asset->addJs('/frontend/dist/js/datepicker.js');
+$asset->addJs('/frontend/dist/js/dropDownMenu.js');
+$asset->addJs('/frontend/dist/js/formFeedback.js');
+$asset->addJs('/frontend/dist/js/formSend.js');
+$asset->addJs('/frontend/dist/js/formSteps.js');
+$asset->addJs('/frontend/dist/js/inputSlider.js');
+$asset->addJs('/frontend/dist/js/uploadFile.js');
+$asset->addJs('/frontend/dist/js/polygon-container.js');
+$asset->addJs('/frontend/dist/js/setPage.js');
+$asset->addJs('/frontend/dist/js/sliders.js');
+$asset->addJs('/frontend/dist/js/tabs.js');
+$asset->addJs('/frontend/dist/js/yMap.js');
+$asset->addJs('/frontend/dist/js/index.js');
 ?>
 
 <!DOCTYPE html>

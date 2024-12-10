@@ -16,9 +16,12 @@ html(lang="ru")
         .page-wrapper.js-page-wrapper
             block content
 
+            include ../includes/footer/footer-en
+
         include ../includes/mobile-nav/mobile-main-nav
+        include ../components/chat-bot
+
         block script
-        script(src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=7efdb855-1cca-435d-b8ae-05911155ed2c")
         script(src="js/vendors/jquery.min.js")
         script(src="js/vendors/popover.js")
         script(src="js/vendors/bootstrap.min.js")
@@ -26,6 +29,7 @@ html(lang="ru")
         script(src="js/vendors/select2.min.js")
         script(src="js/vendors/airdatepicker.js")
         script(src="js/vendors/jquery.mask.min.js")
+        script(src="js/vendors/highcharts.js")
         script(src="js/chatBot.js")
         script(src="js/datepicker.js")
         script(src="js/dropDownMenu.js")
@@ -38,5 +42,6 @@ html(lang="ru")
         script(src="js/setPage.js")
         script(src="js/sliders.js")
         script(src="js/tabs.js")
+        script(src="js/charts.js")
         script(src="js/yMap.js")
         script(src="js/index.js")
