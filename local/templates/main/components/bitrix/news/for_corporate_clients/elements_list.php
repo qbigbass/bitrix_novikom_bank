@@ -135,8 +135,8 @@ $headerView->render(
         "FIELD_CODE" => ["CODE","NAME","PREVIEW_TEXT","PREVIEW_PICTURE",""],
         "FILTER_NAME" => "",
         "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-        "IBLOCK_ID" => iblock('сustomer-announcements'),
-        "IBLOCK_TYPE" => "for_corporate_clients_ru",
+        "IBLOCK_ID" => iblock('ads_for_customers_ru'),
+        "IBLOCK_TYPE" => "support",
         "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
         "INCLUDE_SUBSECTIONS" => "N",
         "MESSAGE_404" => "",
@@ -165,7 +165,8 @@ $headerView->render(
         "SORT_ORDER2" => "ASC",
         "STRICT_SECTION_CHECK" => "N",
     ],
-    $component
+    $component,
+    ["HIDE_ICONS" => "Y"]
 );?>
 
 <?$APPLICATION->IncludeFile('/local/php_interface/include/cross_sale_products_block_corporate.php', ['HEADER_TEXT' => 'Другие услуги для корпоративных клиентов']);?>

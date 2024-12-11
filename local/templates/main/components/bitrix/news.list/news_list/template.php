@@ -13,9 +13,6 @@
 $this->setFrameMode(true);
 ?>
 
-
-
-
 <div class="swiper js-slider-cards slider-cards" data-slides-per-view="mobile-s:1,mobile:1,tablet:2,laptop:3,laptop-x:3"
      data-space-between="mobile-s:8,mobile:8,tablet:16,laptop:16,laptop-x:16">
     <div class="swiper-wrapper js-swiper-wrapper">

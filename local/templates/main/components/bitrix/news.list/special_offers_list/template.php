@@ -13,8 +13,28 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 
-foreach ($arResult['ITEMS'] as $key => $item) { ?>
-    <?
+$currentDir = $APPLICATION->GetCurDir();
+$pinnedIds = $_SESSION['PINS'][$currentDir] ?? [];
+$pinnedIds = array_reverse($pinnedIds);
+
+if (!empty($pinnedIds)) {
+    $pinnedItems = [];
+    $otherItems = [];
+
+    foreach ($arResult['ITEMS'] as $item) {
+        if (in_array($item['ID'], $pinnedIds)) {
+            $pinnedItems[array_search($item['ID'], $pinnedIds)] = $item;
+        } else {
+            $otherItems[] = $item;
+        }
+    }
+    ksort($pinnedItems);
+    $arResult['ITEMS'] = array_merge($pinnedItems, $otherItems);
+}
+
+foreach ($arResult['ITEMS'] as $key => $item) {
+    $active = in_array($item['ID'], $pinnedIds);
+
     $this->AddEditAction($item['ID'], $item['EDIT_LINK'], CIBlock::GetArrayByID($item["IBLOCK_ID"], "ELEMENT_EDIT"));
     $this->AddDeleteAction($item['ID'], $item['DELETE_LINK'], CIBlock::GetArrayByID($item["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
     ?>
@@ -36,7 +56,9 @@ foreach ($arResult['ITEMS'] as $key => $item) { ?>
                         </span>
                     </div>
                 <? } ?>
-                <span class="card-news__sticky-icon btn btn-info p-0 d-flex">
+                <span
+                    class="card-news__sticky-icon btn btn-info p-0 d-flex <?= $active ? 'active' : '' ?>"
+                    data-id="<?= $item['ID'] ?>">
                     <svg class="icon size-m blue-100 m-auto" xmlns="http://www.w3.org/2000/svg" width="100%"
                          height="100%">
                         <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-pin"></use>
