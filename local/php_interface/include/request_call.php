@@ -12,14 +12,13 @@
                 <button class="btn btn-info w-100 w-lg-auto" type="button">Открыть чат</button>
                 <p class="text-s dark-70 mb-0">Нажимая кнопку «Перезвоните мне», вы&nbsp;соглашаетесь с&nbsp;условиями предоставления информации</p>
             </div>
-            <form class="form-feedback bg-white" action="/" method="POST">
-                <div>
-                    <label class="form-label" for="mobile-phone">Мобильный телефон</label>
-                    <input class="form-control form-control-lg-lg js-mask-phone" id="mobile-phone" type="text"
-                           aria-describedby="mobile-phone-hint" placeholder="+7">
-                </div>
-                <button class="btn btn-primary btn-lg-lg w-100" type="button">Перезвоните мне</button>
-            </form>
+            <?php $APPLICATION->IncludeComponent(
+                "dalee:form",
+                "simple_callback_form",
+                [
+                    "FORM_CODE" => "simple_callback_form",
+                ]
+            ); ?>
         </div>
     </div>
     <picture class="pattern-bg pattern-bg--position-top">

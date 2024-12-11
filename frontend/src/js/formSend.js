@@ -78,6 +78,11 @@ async function handleFormSubmit(event, modalId) {
         if (data.status === 'success') {
             modalInstance.hide()
             onSuccess(event.target)
+        } else {
+            const messagesBox = event.target.querySelector(MESSAGE_ELEMS.messageBox)
+            const errorMessage = data.errors.map(item => item.message).join()
+            messagesBox.setAttribute('data-error-info', errorMessage)
+            throw new Error(errorMessage)
         }
     } catch (error) {
         console.error('Error:', error)
@@ -87,11 +92,8 @@ async function handleFormSubmit(event, modalId) {
 }
 
 async function sendData(action, method, data) {
-    return await fetch(action, {
+    return fetch(action, {
         method: method,
-        headers: {
-            'Content-Type': 'multipart/form-data'
-        },
         body: data,
     })
 }
