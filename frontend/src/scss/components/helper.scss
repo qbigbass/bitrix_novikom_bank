@@ -10,11 +10,12 @@
         z-index: 1;
 
         @include use-media(tablet) {
-            padding: 1.5rem;
+            padding: 1.5rem 2rem 2rem 1.5rem;
         }
 
         @include use-media(laptop) {
             padding-right: 0;
+            padding-bottom: 1.5rem;
         }
     }
 

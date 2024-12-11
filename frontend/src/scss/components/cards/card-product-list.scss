@@ -47,6 +47,12 @@
         }
     }
 
+    &__condition {
+        @include use-media(tablet-album, laptop) {
+            min-width: 17.5rem;
+        }
+    }
+
     &__link {
         position: relative;
         z-index: 1;
