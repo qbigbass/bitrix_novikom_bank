@@ -13,9 +13,9 @@
 $this->setFrameMode(true);
 use Bitrix\Main\Localization\Loc;
 ?>
-<? if(!empty($arResult["ITEMS"])): ?>
-    <? foreach ($arResult["ITEMS"] as $item): ?>
-        <? if(!empty($item["BLOCK_RATINGS"])): ?>
+<? if(!empty($arResult["ITEMS"])) : ?>
+    <? foreach ($arResult["ITEMS"] as $item) : ?>
+        <? if(!empty($item["BLOCK_RATINGS"])) : ?>
             <!-- Блок "Рейтинг" -->
             <section class="section-layout pt-lg-11 bg-<?= $item["COLOR_BLOCK"] ?>">
                 <div class="container">
@@ -29,7 +29,7 @@ use Bitrix\Main\Localization\Loc;
                 </div>
             </section>
         <? endif; ?>
-        <? if(!empty($item["BLOCK_POSSIBILITIES"])): ?>
+        <? if(!empty($item["BLOCK_POSSIBILITIES"])) : ?>
             <!-- Блок "Возможности" -->
             <section class="section-layout bg-<?= $item["COLOR_BLOCK"] ?>">
                 <div class="container">
@@ -148,7 +148,7 @@ use Bitrix\Main\Localization\Loc;
                 </div>
             </section>
         <? endif; ?>
-        <? if(!empty($item["BLOCK_GUARANTEES"])): ?>
+        <? if(!empty($item["BLOCK_GUARANTEES"])) : ?>
             <!-- Блок "Оформление гарантии" -->
             <section class="section-layout pt-0 bg-<?= $item["COLOR_BLOCK"] ?>">
                 <div class="container">
@@ -418,6 +418,245 @@ use Bitrix\Main\Localization\Loc;
                         </div>
                     </div>
                 </div>
+            </section>
+        <? endif; ?>
+
+        <? if(!empty($item["BLOCK_DETAIL_SERVICE"])) : ?>
+            <!-- Блок "Подробнее об услуге" -->
+            <section class="section-layout border-top border-blue10">
+                <div class="container">
+                    <h3 class="mb-4 mb-md-6 mb-lg-7 px-lg-6">Подробнее об услуге</h3>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="ps-lg-6">
+                                <div class="tabs-panel js-tabs-slider overflow-hidden position-relative pe-1 pe-lg-0">
+                                    <div class="tabs-panel__navigation d-none d-lg-block js-tabs-slider-navigation w-100">
+                                        <span class="tabs-panel__navigation-item tabs-panel__navigation-item-reverse js-tabs-slider-navigation-prev d-flex align-items-center justify-content-start px-1 z-3 position-absolute swiper-button-disabled">
+                                            <span class="icon size-s">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                                    <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-left"></use>
+                                                </svg>
+                                            </span>
+                                        </span>
+                                        <span class="tabs-panel__navigation-item js-tabs-slider-navigation-next d-flex align-items-center justify-content-end px-1 z-3 position-absolute swiper-button-disabled">
+                                            <span class="icon size-s">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                                    <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
+                                                </svg>
+                                            </span>
+                                        </span>
+                                    </div>
+                                    <? if(!empty($item["BLOCK_DETAIL_SERVICE"]["TABS"])) : ?>
+                                        <ul class="swiper-wrapper tabs-panel__list nav nav-tabs d-inline-flex flex-nowrap w-auto p-0 border border-purple rounded">
+                                            <? $tabIndex = 0; ?>
+                                            <? foreach ($item["BLOCK_DETAIL_SERVICE"]["TABS"] as $tabId => $arData) : ?>
+                                                <li class="swiper-slide w-auto tabs-panel__list-item nav-item z-2">
+                                                    <button
+                                                        class="tabs-panel__list-item-link nav-link bg-transparent <? if(!$tabIndex) :?>active<? endif; ?>"
+                                                        data-bs-toggle="tab"
+                                                        data-bs-target="#<?= $arData["CODE"] ?>"
+                                                        type="button"
+                                                        role="tab"
+                                                        aria-controls="<?= $arData["CODE"] ?>"
+                                                        aria-selected="<? if(!$tabIndex) : ?>true<? else : ?>false<? endif; ?>"
+                                                    ><?= $arData["NAME"] ?></button>
+                                                </li>
+                                                <? $tabIndex++; ?>
+                                            <? endforeach; ?>
+                                        </ul>
+                                    <? endif; ?>
+                                </div>
+                            </div>
+                            <? if(!empty($item["BLOCK_DETAIL_SERVICE"]["ELEMENTS"])) : ?>
+                                <div class="tab-content mt-4 mt-md-6 mt-lg-7">
+                                    <? $tabIndex = 0; ?>
+                                    <? foreach ($item["BLOCK_DETAIL_SERVICE"]["ELEMENTS"] as $tabCode => $arTabs) : ?>
+                                        <div
+                                            class="tab-pane fade <? if(!$tabIndex) :?>show active<? endif; ?>"
+                                            id="<?= $tabCode ?>"
+                                            aria-labelledby="<?= $tabCode ?>"
+                                            tabindex="0"
+                                            role="tabpanel"
+                                        >
+                                            <? if($tabCode === "voprosy-i-otvety") : ?>
+                                                <!-- ТАБ "Вопросы и ответы" -->
+                                                <div class="row row-gap-6 row-gap-lg-7">
+                                                    <div class="col-12 col-xxl-8">
+                                                        <div class="accordion" id="accordion-faq">
+                                                            <? foreach ($arTabs["ITEMS"] as $elemId => $arElements) : ?>
+                                                                <div class="accordion-item">
+                                                                    <div class="accordion-header">
+                                                                        <button
+                                                                            class="accordion-button collapsed"
+                                                                            type="button"
+                                                                            data-bs-toggle="collapse"
+                                                                            data-bs-target="#<?= $elemId ?>"
+                                                                            aria-controls="<?= $elemId ?>">
+                                                                            <span><?= $arElements["QUESTION"] ?></span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="accordion-collapse collapse" id="<?= $elemId ?>" data-bs-parent="#accordion-faq">
+                                                                        <div class="accordion-body">
+                                                                            <p class="text-m mb-0 dark-70"><?= $arElements["ANSWER"] ?></p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            <? endforeach; ?>
+                                                        </div>
+                                                        <a class="btn btn-link btn-lg d-inline-flex gap-2 align-items-center mt-4 mt-md-6 section-custom-accordion__button-more" href="#">
+                                                            <span class="text-m">Все вопросы и ответы</span>
+                                                            <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                                                <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right-small"></use>
+                                                            </svg>
+                                                        </a>
+                                                    </div>
+                                                    <div class="col-12 col-xxl-4">
+                                                        <div class="card-help d-inline-flex p-3 p-sm-5 p-lg-6 w-100 bg-blue-10">
+                                                            <div class="card-help__inner d-flex flex-column gap-4 gap-md-6 h-100 w-100">
+                                                                <div class="card-help__title-group d-flex flex-column gap-3 gap-md-4">
+                                                                    <h4 class="card-help__title">Остались вопросы?</h4>
+                                                                    <p class="card-help__description text-m m-0">Оставьте свой телефон и мы перезвоним вам, либо задайте вопрос в чате</p>
+                                                                </div>
+                                                                <form class="form-feedback p-0 gap-3 gap-md-4" action="/" method="POST">
+                                                                    <div>
+                                                                        <label class="form-label" for="mobile-phone-help">Мобильный телефон</label>
+                                                                        <input class="card-help__input form-control form-control-lg bg-transparent" id="mobile-phone-help" type="text" aria-describedby="mobile-phone-hint" placeholder="+7">
+                                                                    </div>
+                                                                    <button class="btn btn-primary btn-lg text-m w-100" type="button">Перезвоните мне</button>
+                                                                </form>
+                                                                <button class="card-help__button btn btn-link btn-lg btn-icon mx-auto gap-2" type="button">
+                                                                    <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                                                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chat"></use>
+                                                                    </svg>Написать в чат
+                                                                </button>
+                                                                <p class="card-help__agreement-text m-0 dark-70 fs-4 lh-sm">Нажимая кнопку «Перезвоните мне», вы соглашаетесь с условиями предоставления информации</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <? if (!empty($arTabs["QUOTES"])) : ?>
+                                                        <div class="col-12">
+                                                            <? foreach ($arTabs["QUOTES"] as $elemId => $arElements) : ?>
+                                                                <div class="polygon-container js-polygon-container">
+                                                                    <div class="polygon-container__content">
+                                                                        <div class="helper bg-blue-10">
+                                                                            <div class="helper__wrapper d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-4 gap-lg-6">
+                                                                                <img class="helper__image w-auto float-end" src="<?= $arElements["PICTURE"] ?>" alt="" loading="lazy">
+                                                                                <div class="helper__content text-l">
+                                                                                    <p class="text-l mb-0"><?= $arElements["TEXT"] ?></p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="polygon-container__polygon js-polygon-container-polygon yellow-100">
+                                                                        <svg class="js-polygon-container-svg" xmlns="http://www.w3.org/2000/svg">
+                                                                            <polygon points="2,2 335,2 335,394 295,434 2,434" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="10"></polygon>
+                                                                        </svg>
+                                                                    </div>
+                                                                </div>
+                                                            <? endforeach; ?>
+                                                        </div>
+                                                    <? endif; ?>
+                                                </div>
+                                            <? endif; ?>
+                                            <? if($tabCode === "opisanie") : ?>
+                                                <!-- ТАБ "Описание" -->
+                                                <div class="row rte rte--accordion">
+                                                    <? foreach ($arTabs["ITEMS"] as $elemId => $arElements) : ?>
+                                                        <div class="col-12">
+                                                            <?= $arElements["TEXT"] ?>
+                                                        </div>
+                                                    <? endforeach; ?>
+                                                    <? if (!empty($arTabs["QUOTES"])) : ?>
+                                                        <div class="col-12">
+                                                            <? foreach ($arTabs["QUOTES"] as $elemId => $arElements) : ?>
+                                                                <div class="polygon-container js-polygon-container">
+                                                                    <div class="polygon-container__content">
+                                                                        <div class="helper bg-blue-10">
+                                                                            <div class="helper__wrapper d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-4 gap-lg-6">
+                                                                                <img class="helper__image w-auto float-end" src="<?= $arElements["PICTURE"] ?>" alt="" loading="lazy">
+                                                                                <div class="helper__content text-l">
+                                                                                    <p class="text-l mb-0"><?= $arElements["TEXT"] ?></p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="polygon-container__polygon js-polygon-container-polygon yellow-100">
+                                                                        <svg class="js-polygon-container-svg" xmlns="http://www.w3.org/2000/svg">
+                                                                            <polygon points="2,2 335,2 335,394 295,434 2,434" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="10"></polygon>
+                                                                        </svg>
+                                                                    </div>
+                                                                </div>
+                                                            <? endforeach; ?>
+                                                        </div>
+                                                    <? endif; ?>
+                                                </div>
+                                            <? endif; ?>
+                                            <? if($tabCode === "tarify") : ?>
+                                                <!-- ТАБ "Тарифы" -->
+                                                <div class="row rte rte--accordion">
+                                                    <div class="col-12">
+                                                        <div class="swiper js-slider-cards w-100" data-slides-per-view="mobile-s:1,mobile:1,tablet:2,laptop:3,laptop-x:4" data-space-between="mobile-s:8,mobile:8,tablet:16,laptop:16,laptop-x:16">
+                                                            <div class="swiper-wrapper js-swiper-wrapper">
+                                                                <? foreach ($arTabs["ITEMS"] as $elemId => $arElements) : ?>
+                                                                    <div class="swiper-slide js-swiper-slide">
+                                                                        <div class="card-tariff d-flex flex-column gap-5 bg-dark-10 w-100">
+                                                                            <div class="card-tariff__header border-bottom-dashed pb-4">
+                                                                                <h4 class="card-tariff__title"><?= $arElements["NAME"] ?></h4>
+                                                                            </div>
+                                                                            <div class="card-tariff__content d-flex flex-column gap-4">
+                                                                                <? if (!empty($arElements["TARIFS"])) : ?>
+                                                                                    <? foreach ($arElements["TARIFS"] as $desc => $value) : ?>
+                                                                                        <div class="d-flex flex-column gap-2">
+                                                                                            <span class="text-s dark-70"><?= $desc ?></span>
+                                                                                            <span class="text-m fb-semibold dark-100"><?= $value ?></span>
+                                                                                        </div>
+                                                                                    <? endforeach; ?>
+                                                                                    <a class="btn btn-yellow w-100" href="#">Подключить</a>
+                                                                                <? endif; ?>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                <? endforeach; ?>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <? if (!empty($arTabs["QUOTES"])) : ?>
+                                                        <div class="col-12">
+                                                            <? foreach ($arTabs["QUOTES"] as $elemId => $arElements) : ?>
+                                                                <div class="polygon-container js-polygon-container">
+                                                                    <div class="polygon-container__content">
+                                                                        <div class="helper bg-blue-10">
+                                                                            <div class="helper__wrapper d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-4 gap-lg-6">
+                                                                                <img class="helper__image w-auto float-end" src="<?= $arElements["PICTURE"] ?>" alt="" loading="lazy">
+                                                                                <div class="helper__content text-l">
+                                                                                    <p class="text-l mb-0"><?= $arElements["TEXT"] ?></p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="polygon-container__polygon js-polygon-container-polygon yellow-100">
+                                                                        <svg class="js-polygon-container-svg" xmlns="http://www.w3.org/2000/svg">
+                                                                            <polygon points="2,2 335,2 335,394 295,434 2,434" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="10"></polygon>
+                                                                        </svg>
+                                                                    </div>
+                                                                </div>
+                                                            <? endforeach; ?>
+                                                        </div>
+                                                    <? endif; ?>
+                                                </div>
+                                            <? endif; ?>
+                                        </div>
+                                        <? $tabIndex++; ?>
+                                    <? endforeach; ?>
+                                </div>
+                            <? endif; ?>
+                        </div>
+                    </div>
+                </div>
+                <picture class="pattern-bg pattern-bg--hide-mobile">
+                    <source srcset="/frontend/dist/img/patterns/section-2/pattern-light-s.svg" media="(max-width: 767px)">
+                    <source srcset="/frontend/dist/img/patterns/section-2/pattern-light-m.svg" media="(max-width: 1199px)"><img src="/frontend/dist/img/patterns/section-2/pattern-light-l.svg" alt="bg pattern" loading="lazy">
+                </picture>
             </section>
         <? endif; ?>
         <? if(!empty($item["BLOCK_OTHER_SERVICES"])) : ?>

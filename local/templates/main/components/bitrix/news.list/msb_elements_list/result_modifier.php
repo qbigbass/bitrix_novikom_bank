@@ -1,9 +1,12 @@
 <?php
 /** @var array $arResult */
+/** @var array $arParams */
 /** @var CBitrixComponent $component */
 
 use Bitrix\Iblock\Iblock as BitrixIblock;
+use Bitrix\Iblock\Model\Section;
 
+$mainSectionId = $arParams["PARENT_SECTION"];
 $blockRatingIds = [];
 $blockRatingElements = [];
 $blockPossibilitiesIds = [];
@@ -18,6 +21,10 @@ $blockContactsIds = [];
 $blockContactsElements = [];
 $blockGuaranteesIds = [];
 $blockGuaranteesElements = [];
+$blockDetailServiceSectionIds = [];
+$blockDetailServiceTabs = [];
+$blockDetailServiceElements = [];
+$blockDetailServiceTabsQuotes = [];
 $colorsBlocks = [];
 $blockWithColor = '';
 
@@ -58,9 +65,14 @@ if (!empty($arResult["ITEMS"])) {
             $blockWithColor = "BLOCK_GUARANTEES";
         }
 
+        if (!empty($item["PROPERTIES"]["BLOCK_DETAIL_SERVICE"]["VALUE"])) {
+            $blockDetailServiceSectionIds = $item["PROPERTIES"]["BLOCK_DETAIL_SERVICE"]["VALUE"];
+            $blockWithColor = "BLOCK_DETAIL_SERVICE";
+        }
+
         if (!empty($item["PROPERTIES"]["COLOR_BLOCK"]["VALUE"])) {
             $color = $item["PROPERTIES"]["COLOR_BLOCK"]["VALUE"];
-            
+
             if (!empty($blockWithColor)) {
                 $colorsBlocks[$blockWithColor] = $color;
             }
@@ -333,6 +345,149 @@ if (!empty($blockGuaranteesIds)) {
     }
 }
 
+if (!empty($blockDetailServiceSectionIds)) {
+    // Получим полную информацию для блока "Подробнее об услугах" из ИБ "Подробная информация об услугах для каталога услуг"
+    $iblockDetailServices = iblock('msb_full_info_services');
+    $entity = Section::compileEntityByIblock($iblockDetailServices);
+    $rsSections = $entity::getList([
+        "select" => ["ID", "NAME", "CODE", "UF_TAB_QUOTES"],
+        "filter" => [
+            "ID" => $blockDetailServiceSectionIds
+        ],
+        "order" => ["SORT" => "ASC"],
+    ])->fetchAll();
+
+    $tabQuoteIds = [];
+    $tabQuoteSectionIds = [];
+    $tabQuotesElements = [];
+
+    foreach ($rsSections as $section) {
+        if (!empty($section["UF_TAB_QUOTES"])) {
+            $tabQuoteIds[$section["UF_TAB_QUOTES"]] = $section["UF_TAB_QUOTES"];
+            $tabQuoteSectionIds[$section["CODE"]][$section["UF_TAB_QUOTES"]] = $section["UF_TAB_QUOTES"];
+        }
+
+        $blockDetailServiceTabs[$section['ID']] = [
+            "NAME" => $section["NAME"],
+            "CODE" => $section["CODE"],
+        ];
+    }
+
+    if (!empty($tabQuoteIds)) {
+        // Получим подробные данные для цитаты из ИБ "Цитаты для каталога услуг"
+        $iblockQuotes = iblock('msb_quotes');
+        $classQuotes = BitrixIblock::wakeUp($iblockQuotes)->getEntityDataClass();
+        $elementsQuotes = $classQuotes::getList([
+            "select" => ["ID", "NAME", "PREVIEW_PICTURE", "PREVIEW_TEXT"],
+            "filter" => ["ACTIVE" => "Y", "ID" => $tabQuoteIds],
+        ])->fetchCollection();
+
+        if (!empty($elementsQuotes)) {
+            foreach ($elementsQuotes as $element) {
+                $id = $element->getId();
+                $name = $element->getName();
+                $previewPicture = $element->getPreviewPicture();
+                $previewText = '';
+                $picture = '';
+
+                if (!empty($element->getPreviewText())) {
+                    $previewText = $element->getPreviewText();
+                }
+
+                if (empty($previewText)) {
+                    $previewText = $name;
+                    $name = '';
+                }
+
+                if (!empty($previewPicture)) {
+                    $picture = CFile::GetPath($previewPicture);
+                }
+
+                $tabQuotesElements[$id] = [
+                    "TITLE" => $name,
+                    "TEXT" => $previewText,
+                    "PICTURE" => $picture
+                ];
+            }
+        }
+    }
+
+    if (!empty($tabQuotesElements)) {
+        foreach ($tabQuoteSectionIds as $sectionCode => $arQuotes) {
+            foreach ($arQuotes as $quotesId) {
+                $blockDetailServiceTabsQuotes[$sectionCode][$quotesId] = $tabQuotesElements[$quotesId];
+            }
+        }
+
+    }
+
+    $classDetailServices = BitrixIblock::wakeUp($iblockDetailServices)->getEntityDataClass();
+    $elementsDetailServices = $classDetailServices::getList([
+        "select" => [
+            "ID",
+            "IBLOCK_SECTION_ID",
+            "NAME",
+            "PREVIEW_TEXT",
+            "TAB_TARIF"
+        ],
+        "filter" => [
+            "ACTIVE" => "Y",
+            "IBLOCK_SECTION_ID" => $blockDetailServiceSectionIds,
+            "RELATION_CATALOG.VALUE" => $mainSectionId
+        ],
+    ])->fetchCollection();
+
+    if (!empty($elementsDetailServices)) {
+        foreach ($elementsDetailServices as $element) {
+            $id = $element->getId();
+            $name = $element->getName();
+            $sectionId = $element->getIblockSectionId();
+            $sectionCode = $blockDetailServiceTabs[$sectionId]["CODE"];
+            $previewText = '';
+
+            if (!empty($element->getPreviewText())) {
+                $previewText = $element->getPreviewText();
+            }
+
+            if ($sectionCode === "opisanie") {
+                $blockDetailServiceElements[$sectionCode]["ITEMS"][$id] = [
+                    "TEXT" => $previewText,
+                ];
+            }
+
+            if ($sectionCode === "voprosy-i-otvety") {
+                $blockDetailServiceElements[$sectionCode]["ITEMS"][$id] = [
+                    "QUESTION" => $name,
+                    "ANSWER" => $previewText
+                ];
+            }
+
+            if ($sectionCode === "tarify") {
+                $tarifs = [];
+
+                if (!empty($element->getTabTarif())) {
+                    foreach ($element->getTabTarif()->getAll() as $tarif) {
+                        $tarifs[$tarif->getDescription()] = $tarif->getValue() ?? '';
+                    }
+                }
+
+                $blockDetailServiceElements[$sectionCode]["ITEMS"][$id] = [
+                    "NAME" => $name,
+                    "TARIFS" => $tarifs
+                ];
+            }
+        }
+
+        if (!empty($blockDetailServiceElements)) {
+            foreach ($blockDetailServiceElements as $sectionCode => $arItems) {
+                if (!empty($blockDetailServiceTabsQuotes[$sectionCode])) {
+                    $blockDetailServiceElements[$sectionCode]["QUOTES"] = $blockDetailServiceTabsQuotes[$sectionCode];
+                }
+            }
+        }
+    }
+}
+
 if (!empty($arResult["ITEMS"])) {
     foreach ($arResult["ITEMS"] as $index => $item) {
         if (!empty($item["PROPERTIES"]["BLOCK_RATINGS"]["VALUE"]) && !empty($blockRatingElements)) {
@@ -390,7 +545,17 @@ if (!empty($arResult["ITEMS"])) {
                 $arResult["ITEMS"][$index]["COLOR_BLOCK"] = $colorsBlocks["BLOCK_GUARANTEES"];
             }
         }
+
+        if (!empty($item["PROPERTIES"]["BLOCK_DETAIL_SERVICE"]["VALUE"]) &&
+            !empty($blockDetailServiceElements) &&
+            !empty($blockDetailServiceTabs)
+        ) {
+            $arResult["ITEMS"][$index]["BLOCK_DETAIL_SERVICE"]["TABS"] = $blockDetailServiceTabs;
+            $arResult["ITEMS"][$index]["BLOCK_DETAIL_SERVICE"]["ELEMENTS"] = $blockDetailServiceElements;
+
+            if (!empty($colorsBlocks["BLOCK_DETAIL_SERVICE"])) {
+                $arResult["ITEMS"][$index]["COLOR_BLOCK"] = $colorsBlocks["BLOCK_DETAIL_SERVICE"];
+            }
+        }
     }
 }
-
-//echo "<pre>"; print_r($arResult["ITEMS"][0]["BLOCK_RATINGS"]); echo "</pre>";
