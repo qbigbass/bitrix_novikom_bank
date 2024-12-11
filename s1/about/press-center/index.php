@@ -58,6 +58,7 @@ $APPLICATION->SetTitle('Пресс-центр');
             "PREVIEW_TEXT",
             "PREVIEW_PICTURE",
             "DETAIL_PICTURE",
+            "SORT"
         ],
         "LIST_PROPERTY_CODE" => [
             "PUBLICATION_DATE",

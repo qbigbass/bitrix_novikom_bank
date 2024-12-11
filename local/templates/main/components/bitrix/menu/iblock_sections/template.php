@@ -43,7 +43,7 @@ if (empty($arParams['PARENT_DEPTH'])) {
             <? $class = basename($menuItem['LINK']) == $path ? ' active' : ''; ?>
 
             <li class="swiper-slide w-auto tabs-panel__list-item nav-item z-2">
-                <a class="tabs-panel__list-item-link nav-link bg-transparent section-catalog__tab-list-item<?= $class ?>" href="<?= $menuItem['LINK'] ?>#catalog-tabs">
+                <a class="tabs-panel__list-item-link nav-link bg-transparent section-catalog__tab-list-item<?= $class ?>" href="<?= $menuItem['LINK'] ?>">
                     <?= $menuItem['TEXT'] ?>
                 </a>
             </li>
