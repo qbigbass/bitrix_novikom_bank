@@ -6,8 +6,10 @@ const CHART_ELEMS = {
 function initCharts() {
     const charts = document.querySelectorAll(CHART_ELEMS.el);
 
+    if (!charts.length) return;
+
     charts.forEach(chart => {
-        const id = chart.getAttribute('id');
+        const id = chart.getAttribute('id').toString();
         const data = chart.getAttribute(CHART_ELEMS.data);
 
         Highcharts.chart(id, {

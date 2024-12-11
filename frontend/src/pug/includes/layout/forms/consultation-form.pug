@@ -24,6 +24,7 @@ include ../../../components/forms/confirm
         inputs: [
             {
                 id: "organization",
+                name: "ORGANIZATION",
                 label: "Наименование организации",
                 placeholder: "Укажите организацию",
                 required: true,
@@ -32,6 +33,7 @@ include ../../../components/forms/confirm
             },
             {
                 id: "inn",
+                name: "INN",
                 label: "ИНН",
                 placeholder: "Введите ИНН",
                 required: false,
@@ -79,7 +81,7 @@ form(action="/" method="POST" novalidate id="callback-form" data-form).applicati
                 +captcha(consultationForm.formName)
             .application-form__col.col-12
                 +confirm(consultationForm.formName)
-        .d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-5.column-gap-lg-6.mt-6.mt-lg-7
+        .d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-5.column-gap-lg-6.mt-6.mt-lg-7.px-md-2.px-lg-0
             button.btn.btn-primary.btn-lg-lg.w-100.w-md-auto(type="submit" disabled aria-disabled="true" data-form-button) Отправить
             div.text-m.orange-100.text-center(data-form-error)
     div(

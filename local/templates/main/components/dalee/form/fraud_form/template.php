@@ -114,7 +114,7 @@ $this->setFrameMode(true);
                                 <p class="text-m m-0">В&nbsp;ближайшее время для уточнения с&nbsp;Вами свяжется специалист Банка</p>
                             </div>
                         </div>
-                        <div class="d-flex flex-column align-items-center flex-md-row row-gap-3 column-gap-6 mt-6 mt-lg-7">
+                        <div class="d-flex flex-column align-items-center flex-md-row row-gap-3 column-gap-6 mt-6 mt-lg-7 px-md-2 px-lg-0">
                             <button class="btn btn-primary btn-lg-lg w-100 w-md-auto" type="submit" disabled aria-disabled="true" data-form-button>Отправить</button>
                             <button class="btn btn-outline-primary btn-lg-lg w-100 w-md-auto" type="button" data-bs-dismiss="modal">Отменить</button>
                             <div class="text-m orange-100 text-center" data-form-error></div>

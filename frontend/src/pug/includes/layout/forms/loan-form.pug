@@ -30,6 +30,7 @@ include ../../../components/forms/confirm
                 },
                 {
                     id: "birthday",
+                    name: "BIRTHDAY",
                     label: "Дата рождения",
                     placeholder: "Укажите дату",
                     required: false,
@@ -207,7 +208,7 @@ form(action="/" method="POST" novalidate id="loan-form" data-form).application-f
             each item in step1.inputs2
                 .application-form__col.col-12.col-md-6
                     +input(item, loanForm.formName)
-        .d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-5.column-gap-lg-6.mt-6.mt-lg-7
+        .d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-5.column-gap-lg-6.mt-6.mt-lg-7.px-md-2.px-lg-0
             button.btn.btn-primary.btn-lg-lg.w-100.w-md-auto(type="button" disabled aria-disabled="true" data-form-button data-form-step-button-next) Продолжить
             div.text-m.orange-100.text-center(data-form-error)
     .application-form__step(data-form-step data-form-validate-group hidden)
@@ -225,7 +226,7 @@ form(action="/" method="POST" novalidate id="loan-form" data-form).application-f
                         +input(item, loanForm.formName)
                 .application-form__col.col-12
                     +input(step2.inputs2[0], loanForm.formName)
-        .d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-5.column-gap-lg-6.mt-6.mt-lg-7
+        .d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-5.column-gap-lg-6.mt-6.mt-lg-7.px-md-2.px-lg-0
             button.btn.btn-primary.btn-lg-lg.w-100.w-md-auto(type="button" disabled aria-disabled="true" data-form-button data-form-step-button-next) Продолжить
             button.btn.btn-outline-primary.btn-lg-lg.w-100.w-md-auto(type="button" data-form-step-button-prev) Назад
             div.text-m.orange-100.text-center(data-form-error)
@@ -248,7 +249,7 @@ form(action="/" method="POST" novalidate id="loan-form" data-form).application-f
                 +captcha(loanForm.formName)
             .application-form__col.col-12
                 +confirm(loanForm.formName)
-        .d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-5.column-gap-lg-6.mt-6.mt-lg-7
+        .d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-5.column-gap-lg-6.mt-6.mt-lg-7.px-md-2.px-lg-0
             button.btn.btn-primary.btn-lg-lg.w-100.w-md-auto(type="submit" disabled aria-disabled="true" data-form-button) Отправить заявку
             button.btn.btn-outline-primary.btn-lg-lg.w-100.w-md-auto(type="button" data-form-step-button-prev) Назад
             div.text-m.orange-100.text-center(data-form-error)
