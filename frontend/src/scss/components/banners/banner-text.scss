@@ -52,6 +52,14 @@
         opacity: 0.3;
     }
 
+    &[class*="--border"] {
+        min-height: calc(20rem + var(--border-thickness));
+
+        @include use-media(tablet-album) {
+            min-height: calc(25rem + var(--border-thickness));
+        }
+    }
+
     &--border-green {
         border-top: var(--border-thickness) solid var(--green-100);
     }
