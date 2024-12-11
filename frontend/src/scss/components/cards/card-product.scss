@@ -269,6 +269,12 @@
         @include use-media(laptop) {
             min-height: 19.5rem;
         }
+
+        .btn-link {
+            @include use-media(mobile-s, laptop) {
+                padding-block: 0.5rem;
+            }
+        }
     }
 
     &--size-height-auto {
