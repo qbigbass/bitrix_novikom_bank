@@ -5,6 +5,21 @@
     flex-direction: row;
   }
 
+
+  &.animate {
+    opacity: 0;
+    transform: translateY(50%);
+    transition: opacity .8s ease-in-out, transform .8s ease-in-out;
+    will-change: transform, opacity;
+
+    &.animate-show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+
+
   &__content {
     background: radial-gradient(141.69% 100% at 0% 50%, rgba(55, 17, 106, 0.70) 0%, rgba(0, 0, 0, 0.70) 100%);
     padding: 2.5rem 1.5rem;
@@ -49,7 +64,7 @@
     margin: 0;
 
     & li a {
-      color: var(--pr-text-color);
+      color: var(--pb-text-color);
       text-decoration: none;
       font-size: 1.25rem;
       line-height: 1.4;

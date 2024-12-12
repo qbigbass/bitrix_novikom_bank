@@ -1,4 +1,6 @@
 footer.pb-footer
+    button(type="button" aria-label="Наверх").btn-pb-up.js-scroll-to-top
+        +svg-use("arrow-up")
     .container
         .row.row-gap-5
             .col-12.col-md-6
@@ -7,5 +9,5 @@ footer.pb-footer
                     p.pb-footer__copyright.m-0 Генеральная лицензия № 2546 от 20 ноября 2014 года <br>© 2009 – 2024 АО АКБ «НОВИКОМБАНК»
             .col-12.col-md-6
                 .d-flex.flex-column.row-gap-2.align-items-start.align-items-lg-end
-                    a(href="+78002507007").pb-footer__text.pb-footer__text--phone +7 (800) 250-70-07
+                    a(href="tel:+78002507007").pb-footer__text.pb-footer__text--phone +7 (800) 250-70-07
                     p.m-0.pb-footer__text 119180 Москва,ул. Большая Полянка д. 50/1 стр. 1

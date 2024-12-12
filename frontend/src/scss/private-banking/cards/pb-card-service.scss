@@ -1,0 +1,118 @@
+.pb-card-service {
+  $root: #{&};
+
+  background: radial-gradient(141.69% 100% at 0% 50%, rgba(55, 17, 106, 0.70) 0%, rgba(0, 0, 0, 0.70) 100%);
+  box-shadow: -1px -1px 1px 0px rgba(142, 92, 209, 0.20) inset, 0px 20px 40px 0px rgba(0, 0, 0, 0.50);
+  backdrop-filter: blur(0.5rem);
+  border-radius: 1rem;
+  padding: 1.5rem 1.5rem 1rem;
+  color: var(--dark-0);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  height: 100%;
+  transition: box-shadow ease-in-out .6s;
+  position: relative;
+  overflow: hidden;
+
+  @include use-media(tablet) {
+    padding: 2rem 2.5rem 3rem;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+  }
+
+
+  @include use-media(tablet-album) {
+    padding: 2.5rem;
+    min-height: 18.125rem;
+    gap: 3.5rem;
+  }
+
+  &:hover {
+    box-shadow: -1px -1px 1px 0px rgba(142, 92, 209, 0.40) inset, 0px 20px 40px 0px rgba(0, 0, 0, 0.50);
+
+    &:after {
+      opacity: 1;
+    }
+
+    #{$root}__image {
+      transform: scale(1.05);
+
+      @include use-media(tablet-album) {
+        transform: scale(1.05) translate(1rem, 1rem);
+      }
+    }
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity ease-in-out .6s;
+    background: radial-gradient(141.69% 100% at 0% 50%, rgba(55, 17, 106, 0.70) 33.34%, rgba(0, 0, 0, 0.70) 100%);
+    z-index: -1;
+  }
+
+  &__title {
+    font-size: 1.375rem;
+    line-height: 1.2;
+    color: var(--dark-0);
+
+    @include use-media(tablet) {
+      font-size: 1.5rem;
+      line-height: 1.3;
+    }
+
+    @include use-media(tablet-album) {
+      font-size: 1.75rem;
+      line-height: 1.3;
+    }
+
+    @include use-media(laptop-x) {
+      font-size: 2rem;
+    }
+  }
+
+  &__text {
+    font-size: 1rem;
+    line-height: 1.4;
+    color: var(--dark-0);
+    margin: 0;
+
+    @include use-media(tablet-album) {
+      font-size: 1.125rem;
+      line-height: 1.4;
+    }
+
+    @include use-media(laptop-x) {
+      font-size: 1.25rem;
+    }
+  }
+
+  &__image {
+    flex-shrink: 0;
+    width: 6rem;
+    height: 6rem;
+    align-self: flex-end;
+    transform-origin: center;
+    transition: transform ease-in-out .6s;
+
+    @include use-media(tablet) {
+      width: 9rem;
+      height: 9rem;
+      align-self: center;
+    }
+
+    @include use-media(tablet-album) {
+      width: 15rem;
+      height: 15rem;
+      align-self: end;
+      transform: translate(1rem, 1rem);
+    }
+  }
+}

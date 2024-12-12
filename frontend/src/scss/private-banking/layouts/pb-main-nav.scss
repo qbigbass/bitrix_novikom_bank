@@ -37,6 +37,7 @@
     font-size: 1.375rem;
     line-height: 1.2;
     font-weight: 500;
+    transition: color ease .33s;
 
     @include use-media(tablet) {
       font-size: 1.5rem;
@@ -45,6 +46,10 @@
 
     @include use-media(tablet-album) {
       font-size: 2rem;
+    }
+
+    &:hover {
+      color: var(--pb-text-color);
     }
   }
 }

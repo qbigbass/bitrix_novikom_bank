@@ -148,22 +148,24 @@ block content
         ];
 
 
-    section.pb-section-hero-layout
+    section.pb-section-hero
         include ../includes/header/pb-header
         include ../includes/layout/private-banking/pb-main-nav
         .container
-            h1.pb-section-hero-layout__title.dark-0.text-center Лучшие финансовые инструменты <br>для&nbsp;достижения ваших целей
-        video.pb-hero-video(autoplay='' loop='' muted='' poster='img/video-poster.jpg')
+            h1.pb-section-hero__title.dark-0.text-center.animate.js-animation-start Лучшие финансовые инструменты <br>для&nbsp;достижения ваших целей
+        video.pb-section-hero__video.animate.js-animation-start(autoplay='' loop='' muted='' poster='img/video-poster.jpg')
                     source(src='img/video-background.mp4' type='video/mp4')
+        .pb-section-hero__overlay
 
-    section.pb-section.pb-section--gradient
+
+    section.pb-section.pb-section--gradient.position-relative.z-1
         .container
             .d-flex.flex-column.row-gap-6.row-gap-lg-11
-                h2.pb-section__title.dark-0.text-center Особые условия для&nbsp;важных клиентов
+                h2.pb-section__title.dark-0.text-center.animate.js-animation Особые условия для&nbsp;важных клиентов
                 .pb-cards-grid
-                    +pb-card-special(specialPrivilegesCards[0]).pb-cards-grid__item
+                    +pb-card-special(specialPrivilegesCards[0]).pb-cards-grid__item.animate.js-animation
                     each card in specialPrivilegesCards.slice(1)
-                        .pb-card-special.pb-cards-grid__item
+                        .pb-card-special.pb-cards-grid__item.animate.js-animation
                             .d-flex.flex-column.flex-md-row.row-gap-2.col-gap-md-3
                                 .d-flex.flex-column.align-items-start.row-gap-4.row-md-gap-3
                                     h3.pb-card-special__title!= card.title
@@ -171,38 +173,45 @@ block content
                                 .pb-card-special__image
                                     img(src=card.image, alt=card.title, loading="lazy")
 
-    section.pb-section
+    section.pb-section.py-lg-11
         .container
-            h3.pb-section__title.dark-0.text-center.mb-4 Премиальная карта Мир&nbsp;Supreme
-            p.dark-0.text-center.m-0 Дебетовая карта с&nbsp;ежемесячным начислением процентов на&nbsp;остаток средств или кредитная карта с&nbsp;бесплатным снятием наличных.
+            h3.pb-section__title.dark-0.text-center.mb-4.mb-md-6.animate.js-animation Премиальная карта Мир&nbsp;Supreme
+            p.pb-section__subtitle.dark-0.text-center.m-0.px-xl-6.animate.js-animation Дебетовая карта с&nbsp;ежемесячным начислением процентов на&nbsp;остаток средств или кредитная карта с&nbsp;бесплатным снятием наличных.
             .pb-card-wrapper.my-6.position-relative
-                img(src="/img/pb-images/pb-supreme-dark-mobile.png", alt="Supreme Card").pb-card-image.pb-card-image--type-dark
-                img(src="/img/pb-images/pb-supreme-light-mobile.png", alt="Supreme Card").pb-card-image.pb-card-image--type-light
+                .pb-card-image.pb-card-image--type-dark.animate.js-animation
+                    //.pb-card-image__mask
+                    img(src="img/pb-images/pb-card-supreme-dark.png", alt="Supreme Card")
+                .pb-card-image.pb-card-image--type-light.animate.js-animation
+                    //.pb-card-image__mask
+                    //    .pb-card-image__blick
+
+
+                    img(src="img/pb-images/pb-card-supreme-light.png", alt="Supreme Card")
             .pb-benefits.d-flex.flex-column.flex-lg-row.flex-wrap.gap-4.align-items-md-start.justify-content-lg-center
                 each benefit in supremeCardBenefits
-                    +pb-card-benefit(benefit.icon, benefit.text)
+                    +pb-card-benefit(benefit.icon, benefit.text).animate.js-animation
             .mt-6.text-center
-                a(href="#").btn.btn-pb.btn-pb--primary.btn-pb--size-lg.w-100.w-md-auto Стать клиентом
+                a(href="#").btn.btn-pb.btn-pb--primary.btn-pb--size-lg.w-100.w-md-auto.animate.js-animation Стать клиентом
     section.pb-section.pb-section--gradient.pb-section--bg-lines
         .container
             .d-flex.flex-column.row-gap-6.row-gap-lg-11
-                h3.pb-section__title.dark-0.text-center Банк для вас
+                h3.pb-section__title.dark-0.text-center.animate.js-animation Банк для вас
                 .pb-cards-grid
-                    +pb-card-special(bankingForYou[0]).pb-cards-grid__item
+                    +pb-card-special(bankingForYou[0]).pb-cards-grid__item.animate.js-animation
                     each card in bankingForYou.slice(1)
-                        .pb-card-special.pb-cards-grid__item
+                        .pb-card-special.pb-cards-grid__item.animate.js-animation
                             .d-flex.flex-column.flex-md-row.row-gap-2.col-gap-md-3
-                                .d-flex.flex-column.align-items-start.row-gap-4.row-md-gap-3
+                                .d-flex.flex-column.row-gap-4.row-md-gap-3
                                     h3.pb-card-special__title!= card.title
                                     p.pb-card-special__text!= card.description
                                 .pb-card-special__image
-                                    img(src=card.image, alt=card.title, loading="lazy")
+                                    img(src=card.image, alt=card.title)
 
     section.pb-section.pb-section--gradient-linear
         .container
-            h3.pb-section__title.dark-0.text-center.mb-4.d-md-none Премиум-услуги
-            .pb-services.d-flex.flex-column.align-items-start.row-gap-4.row-gap-md-5.row-gap-lg-9
-                ul.pb-services__header.nav.nav-tabs.flex-nowrap.justify-content-center.w-100(role="tablist")
+            h3.pb-section__title.dark-0.text-center.mb-4.d-md-none.animate.js-animation Премиум-услуги
+            .pb-services.d-flex.flex-column.row-gap-4.row-gap-md-5.row-gap-lg-9
+                ul.pb-services__header.nav.nav-tabs.flex-nowrap.justify-content-center.w-100.animate.js-animation(role="tablist")
                     li.nav-item(role="presentation")
                         button.nav-link.active#finance-tab(data-bs-toggle="tab" data-bs-target="#finance" type="button" role="tab" aria-controls="finance" aria-selected="true")
                             | Финансовые <span class="d-none d-md-inline">услуги</span>
@@ -211,41 +220,84 @@ block content
                             | Инвестиционные <span class="d-none d-md-inline">услуги</span>
                 .tab-content
                     .tab-pane.fade.active.show#finance(role="tabpanel" aria-labelledby="finance-tab" tabindex="0")
-                        ul.pb-tags.d-flex.flex-wrap.gap-2
-                            each tag, index in financeCards
-                                li(data-target=index class=index === 0 ? "active" : "")= tag.title
-                        .pb-services__slider.js-pb-slider.swiper-container
+                        .js-pb-tags-thumbs.swiper.mb-4.pb-tags-wrapper.animate.js-animation
+                            .swiper-wrapper.d-flex.flex-wrap.row-gap-2
+                                each tag in financeCards
+                                    .swiper-slide.pb-tags(role="button")
+                                        span= tag.title
+
+                        .pb-services__slider.js-pb-slider.swiper.animate.js-animation
                             .swiper-wrapper
                                 each card in financeCards
                                     .swiper-slide
-                                        .pb-card-special
-                                            .d-flex.flex-column.flex-md-row.row-gap-2.col-gap-md-3
-                                                .d-flex.flex-column.align-items-start.row-gap-4.row-md-gap-3
-                                                    h3.pb-card-special__title!= card.title
-                                                    p.pb-card-special__text!= card.description
-                                                .pb-card-special__image
-                                                    img(src=card.image, alt=card.title, loading="lazy")
-                            .pb-services__pagination
+                                        .pb-card-service
+                                            .d-flex.flex-column.row-gap-3
+                                                h3.pb-card-service__title!= card.title
+                                                p.pb-card-service__text!= card.description
+                                            .pb-card-service__image.mt-auto.mt-md-0
+                                                img(src=card.image, alt=card.title)
+                            .pb-services__pagination.d-flex.gap-2.justify-content-center.mt-4
                     .tab-pane.fade#investment(role="tabpanel" aria-labelledby="investment-tab" tabindex="0")
-                        .pb__services-tabs-tags
-                            ul.pb-tags.d-flex.flex-wrap.gap-2
-                                each tag, index in investmentCards
-                                    li(data-target=index class=index === 0 ? "active" : "")= tag.title
-                        .pb-services__slider.js-pb-slider.swiper-container
-                            //.swiper-wrapper
-                            //    each card in investmentCards
-                            //        .swiper-slide
-                            //            .pb-card-special
-                            //                .d-flex.flex-column.flex-md-row.row-gap-2.col-gap-md-3
-                            //                    .d-flex.flex-column.align-items-start.row-gap-4.row-md-gap-3
-                            //                        h3.pb-card-special__title!= card.title
-                            //                        p.pb-card-special__text!= card.description
-                            //                    .pb-card-special__image
-                            //                        img(src=card.image, alt=card.title, loading="lazy")
+                        .js-pb-tags-thumbs.swiper.mb-4.pb-tags-wrapper.animate.js-animation
+                            .swiper-wrapper.d-flex.flex-wrap.row-gap-2
+                                each tag in investmentCards
+                                    .swiper-slide.pb-tags(role="button")
+                                        span= tag.title
+                        .pb-services__slider.js-pb-slider.swiper.animate.js-animation
+                            .swiper-wrapper
+                                each card in investmentCards
+                                    .swiper-slide
+                                        .pb-card-service
+                                            .d-flex.flex-column.row-gap-3
+                                                h3.pb-card-service__title!= card.title
+                                                p.pb-card-service__text!= card.description
+                                            .pb-card-service__image.mt-auto.mt-md-0
+                                                img(src=card.image, alt=card.title)
+                            .pb-services__pagination.d-flex.gap-2.justify-content-center.mt-4
 
+    section.pb-section.pb-section--gradient.pb-section--bg-lines
+        .container
+            form(action="#").pb-form.d-flex.flex-column.row-gap-4.row-gap-lg-5
+                h4.pb-form__title.dark-0.text-center Стать клиентом
+                .row.g-1
+                    .col-12.col-md-6
+                        .d-flex.flex-column.row-gap-1.row-gap-lg-2
+                            label(for="name").form-label.form-label--pb.mb-0
+                                | Имя
+                            input#name(type="text" name="name" placeholder="Введите имя").form-control.form-control--pb
+                    .col-12.col-md-6
+                        .d-flex.flex-column.row-gap-1.row-gap-lg-2
+                            label(for="phone").form-label.form-label--pb.mb-0
+                                | Телефон
+                            input#phone(type="text" name="phone" aria-describedby="mobile-phone-hint" placeholder="+7").js-mask-phone.form-control.form-control--pb
+                .row.g-1
+                    .col-12.col-md-8
+                        .d-flex.flex-column.row-gap-1.row-gap-lg-2
+                            label(for="select-date").form-label.form-label--pb.mb-0
+                                | Удобное время для звонка
+                            select#select-date(aria-label="Выберите дату").form-select.js-select
+                                option(selected value="1") Сегодня
+                                option(value="2") Список 2
+                                option(value="3") Список 3
+                                option(value="4") Список 4
+                                option(value="5") Список 5
+                                option(value="6") Список 6
+                                option(value="7") Список 7
+                                option(value="8") Список 8
+                    .col-12.col-md-4
+                        .form-control-time
+                            input#hours(type="number" name="hours" min="1" max="24" placeholder="19").form-control.form-control--pb
+                            input#minutes(type="number" name="minutes" min="0" max="59" placeholder="00").form-control.form-control--pb
+
+                .form-check.form-check--pb
+                    input#personal(type="checkbox" checked).form-check-input
+                    label(for="personal").form-check-label
+                        | Я&nbsp;согласен с&nbsp;условиями использования банком моих персональных данных для обработки данного обращения
+                .pb-form__footer.d-flex.justify-content-center
+                    button(type="submit").btn.btn-pb.btn-pb--primary.w-100.w-md-auto Отправить
     section.pb-section.pb-section--bg-black
         .container
-            .pb-card-office
+            .pb-card-office.animate.js-animation
                 .pb-card-office__content.d-flex.flex-column.align-items-start
                     h3.pb-card-office__title.mb-3.mb-lg-4 Контакты
                     p.pb-card-office__text.pr-text-color.mb-0 119180 Москва,ул. Большая Полянка д.&nbsp;50/1&nbsp;стр.&nbsp;1

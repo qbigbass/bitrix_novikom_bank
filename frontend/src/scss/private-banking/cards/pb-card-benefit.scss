@@ -10,6 +10,39 @@
     gap: 1rem;
   }
 
+  &.animate {
+    opacity: 0;
+    transform: translateY(100%);
+    transition: opacity .8s ease-in-out, transform .8s ease-in-out;
+
+    &.animate-show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    &:nth-child(1),
+    &:nth-child(3) {
+      @include use-media(laptop) {
+        transform: translateX(-2.5rem);
+
+        &.animate-show {
+          transform: translateX(0);
+        }
+      }
+    }
+
+    &:nth-child(2),
+    &:nth-child(4) {
+      @include use-media(laptop) {
+        transform: translateX(2.5rem);
+
+        &.animate-show {
+          transform: translateX(0);
+        }
+      }
+    }
+  }
+
   &__icon {
     width: 1.5rem;
     height: 1.5rem;

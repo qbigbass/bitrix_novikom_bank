@@ -1,6 +1,7 @@
 .pb-footer {
-  background-color: var(--pr-dark-bg);
+  background-color: var(--pb-dark-bg);
   padding: 2rem 0;
+  position: relative;
 
   @include use-media(tablet-album) {
     padding: 2.5rem 0;
@@ -17,7 +18,7 @@
   }
 
   &__text {
-    color: var(--pr-text-color);
+    color: var(--pb-text-color);
     font-size: .875rem;
     line-height: 1.4;
 

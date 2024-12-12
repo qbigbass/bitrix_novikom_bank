@@ -358,6 +358,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initChatBot();
     initCharts();
     initYMap();
+    pbScrollToTop();
 });
 
 window.onload = function() {
@@ -371,6 +372,8 @@ window.onload = function() {
     const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
         return new bootstrap.Tooltip(tooltipTriggerEl)
     })
+
+    pbAnimation();
 };
 
 window.addEventListener('resize', () => {

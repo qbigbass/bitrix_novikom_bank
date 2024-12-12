@@ -20,6 +20,8 @@ const SLIDER_ATTR = {
 const CLASS_NAME = {
     mobileMenu: '.js-swiper-mobile-menu',
     bannerHero: '.js-banner-hero',
+    pbCardSlider: '.js-pb-slider',
+    pbCardThumbs: '.js-pb-tags-thumbs',
     thumbsHero: '.js-banner-hero-thumbs',
     cardsSlider: '.js-slider-cards',
     announcementsSlider: '.js-announcement-slider',
@@ -331,81 +333,44 @@ function initTabsSlider() {
     });
 }
 
-export function initPbSlider() {
-    const financeSlider = document.querySelector(
-        "[data-order='1'] .js-pb-slider"
-    );
-    const investmentSlider = document.querySelector(
-        "[data-order='2'] .js-pb-slider"
-    );
-
-    const financeTabs = document.querySelectorAll("[data-order='1'] .tabs__link");
-    const investmentTabs = document.querySelectorAll(
-        "[data-order='2'] .tabs__link"
-    );
-
-    if (financeSlider && investmentSlider) {
-        const financeSwiper = new Swiper(financeSlider, {
-            modules: [Navigation, Pagination],
-            slidesPerView: 2,
-            spaceBetween: 40,
-            grabCursor: true,
-            speed: 700,
-            loop: true
+function initPbSlider() {
+    const thumbWrappers = document.querySelectorAll(CLASS_NAME.pbCardThumbs);
+    thumbWrappers.forEach((thumbWrapper) => {
+        const thumbsLength = thumbWrapper.querySelectorAll('.swiper-slide').length;
+        const cardsSlider = thumbWrapper.nextElementSibling;
+        const pbThumbsSlider = new Swiper(thumbWrapper, {
+            freeMode: false,
+            watchSlidesProgress: true,
+            slidesPerView: thumbsLength,
+            spaceBetween: 8,
         });
 
-    const investmentSwiper = new Swiper(investmentSlider, {
-      modules: [Navigation, Pagination],
-      slidesPerView: 2,
-      spaceBetween: 40,
-      grabCursor: true,
-      speed: 700,
-      loop: true
-    });
-
-    // Ппреключение по вкладкам финуслуг
-    financeTabs.forEach((tab, index) => {
-      tab.addEventListener("click", event => {
-        event.preventDefault();
-        // удаляем активный класс у всех вкладок
-        financeTabs.forEach(t => t.classList.remove("active"));
-        // Добавляем активкласс к текущей вкладке
-        tab.classList.add("active");
-        // Переключаем слайд
-        financeSwiper.slideToLoop(index);
-      });
-    });
-
-    // переключение по вкладкам инвестиционных услуг
-    investmentTabs.forEach((tab, index) => {
-      tab.addEventListener("click", event => {
-        event.preventDefault();
-        // удаляем активный класс у всех вкладок
-        investmentTabs.forEach(t => t.classList.remove("active"));
-        // добавляем активный класс к текущей вкладке
-        tab.classList.add("active");
-        // ппереключаем слайд
-        investmentSwiper.slideToLoop(index);
-      });
-    });
-
-    //финансовые и инвестиционные услуги
-    const tabs = document.querySelectorAll(".pb__services-header-item");
-    tabs.forEach(tab => {
-      tab.addEventListener("click", () => {
-        tabs.forEach(t => t.classList.remove("tab-active"));
-        tab.classList.add("tab-active");
-
-        const activeTabOrder = tab.dataset.order;
-        document.querySelectorAll(".pb__services-tab").forEach(section => {
-          section.classList.remove("tab-active");
-          if (section.dataset.order === activeTabOrder) {
-            section.classList.add("tab-active");
-          }
-        });
-        financeSwiper.update();
-        investmentSwiper.update();
-      });
-    });
-  }
+        new Swiper(cardsSlider, {
+            freeMode: false,
+            thumbs: {
+                swiper: pbThumbsSlider,
+            },
+            spaceBetween: 16,
+            slidesPerView: 1,
+            pagination: {
+                el: ".pb-services__pagination",
+                type: "bullets",
+                clickable: true,
+            },
+            breakpoints: {
+                768: {
+                    spaceBetween: 40,
+                    slidesPerView: 1.32,
+                },
+                1440: {
+                    spaceBetween: 40,
+                    slidesPerView: 1.5,
+                },
+                1600: {
+                    spaceBetween: 40,
+                    slidesPerView: 1.75,
+                }
+            }
+        })
+    })
 }
