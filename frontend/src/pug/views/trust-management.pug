@@ -21,7 +21,7 @@ block content
                 {
                     spriteData: {
                         icon: 'free-comission',
-                        classList: 'size-xl',
+                        classList: 'size-xxl',
                     },
                     title: 'Без комиссии и ограничений',
                     description: 'На ввод и вывод инвестиционных активов '
@@ -29,7 +29,7 @@ block content
                 {
                     spriteData: {
                         icon: 'individual_violet',
-                        classList: 'size-xl',
+                        classList: 'size-xxl',
                     },
                     title: 'Персональный подход',
                     description: 'Управляющий адаптирует стратегию под ваши цели '
@@ -37,7 +37,7 @@ block content
                 {
                     spriteData: {
                         icon: 'prices_violet',
-                        classList: 'size-xl',
+                        classList: 'size-xxl',
                     },
                     title: 'Выбор стратегии управления',
                     description: 'Стандартные и персональные планы инвестирования'
@@ -84,36 +84,51 @@ block content
             }
         ]
 
-        var productCards = [
+        var cardsListBenefit = [
             {
                 title: "Заключение договора",
                 description: "Вы&nbsp;заключаете договор с&nbsp;управляющим и&nbsp;прописываете условия управления",
-                icon: true,
-                iconImg: "doc-check_violet",
+                sprite: {
+                    iconImg: "doc-check_violet",
+                    classList: "size-xxl"
+                },
+                bgColor: "bg-dark-30",
             },
             {
                 title: "Постановка целей",
                 description: "Вы&nbsp;определяете цель и&nbsp;выбираете стратегию инвестирования",
-                icon: true,
-                iconImg: "target",
+                sprite: {
+                    iconImg: "target",
+                    classList: "size-xxl"
+                },
+                bgColor: "bg-dark-30",
             },
             {
                 title: "Определение риск-профиля",
                 description: "Вы&nbsp;указываете свой уровень риска и&nbsp;предпочтения по&nbsp;инвестициям",
-                icon: true,
-                iconImg: "risks_violet",
+                sprite: {
+                    iconImg: "risks_violet",
+                    classList: "size-xxl"
+                },
+                bgColor: "bg-dark-30",
             },
             {
                 title: "Управление средствами",
                 description: "Эксперт помогает эффективно разместить денежные средства. Вам не&nbsp;придется самостоятельно анализировать рынок и&nbsp;выбирать момент для совершения сделки&nbsp;&mdash; управляющий сам принимает решения по&nbsp;инвестированию в&nbsp;соответствии с&nbsp;целями",
-                icon: true,
-                iconImg: "limits_violet",
+                sprite: {
+                    iconImg: "limits_violet",
+                    classList: "size-xxl"
+                },
+                bgColor: "bg-dark-30",
             },
             {
                 title: "Предоставление отчетности",
                 description: "Управляющий регулярно предоставляет клиенту отчеты о&nbsp;состоянии его инвестиций",
-                icon: true,
-                iconImg: "report",
+                sprite: {
+                    iconImg: "report",
+                    classList: "size-xxl"
+                },
+                bgColor: "bg-dark-30",
             },
 
         ];
@@ -167,7 +182,7 @@ block content
     include ../components/announcement
     include ../components/helper
     include ../components/ui/tabs-simple
-    include ../cards/card-product
+    include ../cards/card-benefit
     include ../components/ui/accordion-item
 
     include ../includes/header/header
@@ -176,18 +191,20 @@ block content
 
     section.section-layout
         .container
-            h3.mb-4.mb-md-6.mb-lg-7.px-lg-6 Как работает доверительное управление
+            .row
+                .col-12
+                    h2.h3.mb-6.mb-lg-7.px-md-6 Как работает доверительное управление
             .row.cards-gutter
                 .col-12.col-md-6.col-lg-4
-                    +card-product(productCards[0]).bg-dark-30
+                    +card-benefit(cardsListBenefit[0]).h-100
                 .col-12.col-md-6.col-lg-4
-                    +card-product(productCards[1]).bg-dark-30
+                    +card-benefit(cardsListBenefit[1]).h-100
                 .col-12.col-lg-4
-                    +card-product(productCards[2]).bg-dark-30
+                    +card-benefit(cardsListBenefit[2]).h-100
                 .col-12.col-md-6
-                    +card-product(productCards[3]).bg-dark-30
+                    +card-benefit(cardsListBenefit[3]).h-100
                 .col-12.col-md-6
-                    +card-product(productCards[4]).bg-dark-30
+                    +card-benefit(cardsListBenefit[4]).h-100
 
     +banner-product-info(bannerProductInfoData, 'bg-dark-30')
         p.text-l

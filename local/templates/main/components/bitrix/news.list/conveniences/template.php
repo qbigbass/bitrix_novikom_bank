@@ -21,8 +21,8 @@ $this->setFrameMode(true);
             ?>
             <div class="swiper-slide js-swiper-slide" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
                 <div class="card-benefit d-inline-flex px-3 px-sm-5 px-lg-6 p-4 p-sm-5 p-lg-6 bg-dark-10 w-100">
-                    <div class="card-benefit__inner d-flex flex-column gap-3 gap-md-4 justify-content-between h-100 w-100">
-                        <div class="card-benefit__content d-flex flex-column gap-3 gap-md-4">
+                    <div class="card-benefit__inner d-flex flex-column gap-6 gap-lg-7 justify-content-between h-100 w-100">
+                        <div class="card-benefit__content d-flex flex-column gap-4">
                             <h4 class="card-benefit__title"><?=$arItem['~NAME']?></h4>
                             <p class="card-benefit__description text-m m-0"><?=$arItem['~PREVIEW_TEXT']?></p>
                         </div>
