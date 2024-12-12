@@ -21,6 +21,7 @@ $asset->addJs('/frontend/dist/js/vendors/swiper.min.js');
 $asset->addJs('/frontend/dist/js/vendors/select2.min.js');
 $asset->addJs('/frontend/dist/js/vendors/airdatepicker.js');
 $asset->addJs('/frontend/dist/js/vendors/jquery.mask.min.js');
+$asset->addJs('/frontend/dist/js/vendors/highcharts.js');
 
 $asset->addJs('/frontend/dist/js/chatBot.js');
 $asset->addJs('/frontend/dist/js/datepicker.js');
@@ -34,6 +35,7 @@ $asset->addJs('/frontend/dist/js/polygon-container.js');
 $asset->addJs('/frontend/dist/js/setPage.js');
 $asset->addJs('/frontend/dist/js/sliders.js');
 $asset->addJs('/frontend/dist/js/tabs.js');
+$asset->addJs('/frontend/dist/js/charts.js');
 $asset->addJs('/frontend/dist/js/yMap.js');
 $asset->addJs('/frontend/dist/js/index.js');
 ?>
