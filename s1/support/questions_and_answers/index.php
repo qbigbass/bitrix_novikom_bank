@@ -1,12 +1,12 @@
 <?php
-require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
+require($_SERVER['DOCUMENT_ROOT'].'/bitrix/header.php');
 global $APPLICATION;
-$APPLICATION->SetTitle("Объявления для клиентов");
+$APPLICATION->SetTitle("Вопросы и ответы");
 ?>
 <?
 $APPLICATION->IncludeComponent(
     "bitrix:news",
-    "announcements_for_clients",
+    "questions_and_answers",
     [
         "ADD_ELEMENT_CHAIN" => "N",
         "ADD_SECTIONS_CHAIN" => "N",
@@ -46,16 +46,17 @@ $APPLICATION->IncludeComponent(
         "DISPLAY_TOP_PAGER" => "N",
         "FILE_404" => "",
         "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-        "IBLOCK_ID" => iblock("ads_for_customers_ru"),
+        "IBLOCK_ID" => iblock("qa"),
         "IBLOCK_TYPE" => "support",
         "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
         "LIST_ACTIVE_DATE_FORMAT" => "d.m.Y",
-        "LIST_FIELD_CODE" => [],
-        "LIST_PROPERTY_CODE" => [
-            "DATE",
-            "TYPE_AD",
-            "FIX_AD"
+        "LIST_FIELD_CODE" => [
+            'NAME',
+            'PREVIEW_TEXT',
+            'PREVIEW_PICTURE',
+            'DETAIL_PICTURE',
         ],
+        "LIST_PROPERTY_CODE" => [],
         "MESSAGE_404" => "",
         "META_DESCRIPTION" => "-",
         "META_KEYWORDS" => "-",
@@ -68,7 +69,7 @@ $APPLICATION->IncludeComponent(
         "PAGER_TEMPLATE" => "products_services",
         "PAGER_TITLE" => "Новости",
         "PREVIEW_TRUNCATE_LEN" => "",
-        "SEF_FOLDER" => "/support/announcements_for_clients/",
+        "SEF_FOLDER" => "/support/questions_and_answers/",
         "SEF_MODE" => "Y",
         "SET_LAST_MODIFIED" => "N",
         "SET_STATUS_404" => "Y",
@@ -81,7 +82,7 @@ $APPLICATION->IncludeComponent(
         "STRICT_SECTION_CHECK" => "Y",
         "USE_CATEGORIES" => "N",
         "USE_FILTER" => "Y",
-        "FILTER_NAME" => "arrAdFilter",
+        "FILTER_NAME" => "",
         "FILTER_FIELD_CODE" => [],
         "FILTER_PROPERTY_CODE" => ["TYPE_AD"],
         "USE_PERMISSIONS" => "N",
@@ -89,16 +90,15 @@ $APPLICATION->IncludeComponent(
         "USE_RSS" => "N",
         "USE_SEARCH" => "N",
         "USE_SHARE" => "N",
-        "COMPONENT_TEMPLATE" => "announcements_for_clients",
+        "COMPONENT_TEMPLATE" => "questions_and_answers",
         "SEF_URL_TEMPLATES" => [
             "news" => "",
             "section" => "#SECTION_CODE#/",
-            "detail" => "#SECTION_CODE#/#ELEMENT_CODE#/",
+            "detail" => "",
         ],
     ],
     false
 ); ?>
-<?$APPLICATION->IncludeFile('/local/php_interface/include/financial_literacy.php')?>
-<?$APPLICATION->IncludeFile('/local/php_interface/include/request_call.php')?>
-<? require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php'); ?>
 
+<?$APPLICATION->IncludeFile('/local/php_interface/include/request_call.php')?>
+<?require($_SERVER['DOCUMENT_ROOT'].'/bitrix/footer.php');?>

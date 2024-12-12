@@ -21,9 +21,7 @@ require_once __DIR__ . '/functions.php';
     ?>
 
     <?= renderStartTags($key); ?>
-    <? $classes = !empty($item['DETAIL_PICTURE']['SRC'])
-        ? 'card-product card-product--transparent h-auto flex-basis-100 flex-basis-md-25 flex-grow-1 bg-white'
-        : 'card-product card-product--transparent card-product--size-height-auto flex-basis-100 flex-basis-md-25 h-auto flex-grow-1 bg-white'; ?>
+    <? $classes = renderClasses($key, $item['DETAIL_PICTURE']); ?>
 
     <? if (!empty($item['DETAIL_PICTURE']['SRC'])) { ?>
         <div class="<?= $classes ?>" id="<?= $this->GetEditAreaId($item['ID']); ?>">

@@ -18,7 +18,7 @@ class QuestionsHandler implements PropertyHandlerInterface
             '<div class="col-12 col-xxl-8">
                 <div class="accordion" id="accordion-' . $this->property['ID'] . '">'
                     . $this->getQuestionsHtml() .
-                    '<a class="btn btn-link btn-lg-lg d-inline-flex gap-2 align-items-center mt-4 mt-md-6 section-custom-accordion__button-more" href="#">
+                    '<a class="btn btn-link btn-lg-lg d-inline-flex gap-2 align-items-center mt-4 mt-md-6 section-custom-accordion__button-more" href="/support/questions_and_answers/">
                         <span class="text-m">Все вопросы и ответы</span>
                         <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                             <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right-small"></use>
@@ -38,7 +38,7 @@ class QuestionsHandler implements PropertyHandlerInterface
             $questionsHtml .=
                 '<div class="accordion-item">
                     <div class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"data-bs-target="#' . $question['ID'] . '" aria-controls="' . $question['ID'] . '">'
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#' . $question['ID'] . '" aria-controls="' . $question['ID'] . '">'
                              . $question['NAME'] .
                         '</button>
                     </div>

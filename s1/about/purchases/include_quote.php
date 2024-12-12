@@ -4,13 +4,13 @@
     <ul class="list list--size-l">
         <li>
             <span>
-                <a href="www.zakupki.gov.ru" class="link">www.zakupki.gov.ru</a>
+                <a href="https://www.zakupki.gov.ru" class="link">www.zakupki.gov.ru</a>
                 — официальный сайт Единой&nbsp;информационной системы в сфере закупок Российской Федерации,
             </span>
         </li>
         <li>
             <span>
-                <a href="www.astgoz.ru" class="link">www.astgoz.ru</a>
+                <a href="https://www.astgoz.ru" class="link">www.astgoz.ru</a>
                 — электронная торговая площадка ООО «АСТ ГОЗ»
             </span>
         </li>

@@ -1,25 +1,32 @@
 <?
-$aMenuLinks = array(
-    array(
-        "Продукты и услуги",
-        "products_services/",
-        array(),
-        array(),
-        ""
-    ),
-    array(
-        "Очень важная информация",
-        "very_important_information/",
-        array(),
-        array(),
-        ""
-    ),
-    array(
-        "Объявления для клиентов",
-        "announcements_for_clients/",
-        array(),
-        array(),
-        ""
-    ),
+$aMenuLinks = Array(
+	Array(
+		"Продукты и услуги", 
+		"products_services/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Очень важная информация", 
+		"very_important_information/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Объявления для клиентов", 
+		"announcements_for_clients/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Вопросы и ответы", 
+		"questions_and_answers", 
+		Array(), 
+		Array(), 
+		"" 
+	)
 );
 ?>
