@@ -572,7 +572,7 @@ if (!empty($blockDetailServiceSectionIds)) {
                 ];
             }
         }
-        
+
         if (!empty($blockDetailServiceElements)) {
             foreach ($blockDetailServiceElements as $sectionCode => $arItems) {
                 if (!empty($blockDetailServiceTabsQuotes[$sectionCode])) {
