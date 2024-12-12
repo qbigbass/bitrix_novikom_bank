@@ -679,6 +679,216 @@ use Bitrix\Main\Localization\Loc;
                                                     <? endif; ?>
                                                 </div>
                                             <? endif; ?>
+                                            <? if($tabCode === "vidy") : ?>
+                                                <!-- ТАБ "Виды" -->
+                                                <div class="row rte rte--accordion">
+                                                    <? foreach ($arTabs["ITEMS"] as $elemId => $arElements) : ?>
+                                                        <div class="col-12">
+                                                            <h4 class="fw-bold"><?= $arElements["TITLE"] ?></h4>
+                                                            <?= $arElements["TEXT"] ?>
+                                                        </div>
+                                                        <div class="col-12"><span class="border-bottom-dashed" aria-hidden="true"></span></div>
+                                                    <? endforeach; ?>
+                                                    <? if (!empty($arTabs["QUOTES"])) : ?>
+                                                        <div class="col-12">
+                                                            <? foreach ($arTabs["QUOTES"] as $elemId => $arElements) : ?>
+                                                                <div class="polygon-container js-polygon-container">
+                                                                    <div class="polygon-container__content">
+                                                                        <div class="helper bg-blue-10">
+                                                                            <div class="helper__wrapper d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-4 gap-lg-6">
+                                                                                <img class="helper__image w-auto float-end" src="<?= $arElements["PICTURE"] ?>" alt="" loading="lazy">
+                                                                                <div class="helper__content text-l">
+                                                                                    <p class="text-l mb-0"><?= $arElements["TEXT"] ?></p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="polygon-container__polygon js-polygon-container-polygon yellow-100">
+                                                                        <svg class="js-polygon-container-svg" xmlns="http://www.w3.org/2000/svg">
+                                                                            <polygon points="2,2 335,2 335,394 295,434 2,434" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="10"></polygon>
+                                                                        </svg>
+                                                                    </div>
+                                                                </div>
+                                                            <? endforeach; ?>
+                                                        </div>
+                                                    <? endif; ?>
+                                                </div>
+                                            <? endif; ?>
+                                            <? if($tabCode === "otvetstvennost") : ?>
+                                                <!-- ТАБ "Ответственность" -->
+                                                <div class="row rte rte--accordion">
+                                                    <? foreach ($arTabs["ITEMS"] as $elemId => $arElements) : ?>
+                                                        <div class="col-12">
+                                                            <h4 class="fw-bold"><?= $arElements["TITLE"] ?></h4>
+                                                            <?= $arElements["TEXT"] ?>
+                                                        </div>
+                                                        <div class="col-12"><span class="border-bottom-dashed" aria-hidden="true"></span></div>
+                                                    <? endforeach; ?>
+                                                    <? if (!empty($arTabs["QUOTES"])) : ?>
+                                                        <div class="col-12">
+                                                            <? foreach ($arTabs["QUOTES"] as $elemId => $arElements) : ?>
+                                                                <div class="polygon-container js-polygon-container">
+                                                                    <div class="polygon-container__content">
+                                                                        <div class="helper bg-blue-10">
+                                                                            <div class="helper__wrapper d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-4 gap-lg-6">
+                                                                                <img class="helper__image w-auto float-end" src="<?= $arElements["PICTURE"] ?>" alt="" loading="lazy">
+                                                                                <div class="helper__content text-l">
+                                                                                    <p class="text-l mb-0"><?= $arElements["TEXT"] ?></p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="polygon-container__polygon js-polygon-container-polygon yellow-100">
+                                                                        <svg class="js-polygon-container-svg" xmlns="http://www.w3.org/2000/svg">
+                                                                            <polygon points="2,2 335,2 335,394 295,434 2,434" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="10"></polygon>
+                                                                        </svg>
+                                                                    </div>
+                                                                </div>
+                                                            <? endforeach; ?>
+                                                        </div>
+                                                    <? endif; ?>
+                                                </div>
+                                            <? endif; ?>
+                                            <? if($tabCode === "pamyatka") : ?>
+                                                <!-- ТАБ "Памятка" -->
+                                                <div class="row rte rte--accordion">
+                                                    <? foreach ($arTabs["ITEMS"] as $elemId => $arElements) : ?>
+                                                        <div class="col-12">
+                                                            <h4 class="fw-bold"><?= $arElements["TITLE"] ?></h4>
+                                                            <?= $arElements["TEXT"] ?>
+                                                        </div>
+                                                    <? endforeach; ?>
+                                                    <? if (!empty($arTabs["QUOTES"])) : ?>
+                                                        <div class="col-12">
+                                                            <? foreach ($arTabs["QUOTES"] as $elemId => $arElements) : ?>
+                                                                <div class="polygon-container js-polygon-container">
+                                                                    <div class="polygon-container__content">
+                                                                        <div class="helper bg-blue-10">
+                                                                            <div class="helper__wrapper d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-4 gap-lg-6">
+                                                                                <img class="helper__image w-auto float-end" src="<?= $arElements["PICTURE"] ?>" alt="" loading="lazy">
+                                                                                <div class="helper__content text-l">
+                                                                                    <p class="text-l mb-0"><?= $arElements["TEXT"] ?></p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="polygon-container__polygon js-polygon-container-polygon yellow-100">
+                                                                        <svg class="js-polygon-container-svg" xmlns="http://www.w3.org/2000/svg">
+                                                                            <polygon points="2,2 335,2 335,394 295,434 2,434" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="10"></polygon>
+                                                                        </svg>
+                                                                    </div>
+                                                                </div>
+                                                            <? endforeach; ?>
+                                                        </div>
+                                                    <? endif; ?>
+                                                </div>
+                                            <? endif; ?>
+                                            <? if($tabCode === "usloviya") : ?>
+                                                <!-- ТАБ "Условия" -->
+                                                <div class="row rte rte--accordion">
+                                                    <? foreach ($arTabs["ITEMS"] as $elemId => $arElements) : ?>
+                                                        <div class="col-12">
+                                                            <h4 class="fw-bold"><?= $arElements["TITLE"] ?></h4>
+                                                            <?= $arElements["TEXT"] ?>
+                                                        </div>
+                                                    <? endforeach; ?>
+                                                    <? if (!empty($arTabs["QUOTES"])) : ?>
+                                                        <div class="col-12">
+                                                            <? foreach ($arTabs["QUOTES"] as $elemId => $arElements) : ?>
+                                                                <div class="polygon-container js-polygon-container">
+                                                                    <div class="polygon-container__content">
+                                                                        <div class="helper bg-blue-10">
+                                                                            <div class="helper__wrapper d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-4 gap-lg-6">
+                                                                                <img class="helper__image w-auto float-end" src="<?= $arElements["PICTURE"] ?>" alt="" loading="lazy">
+                                                                                <div class="helper__content text-l">
+                                                                                    <p class="text-l mb-0"><?= $arElements["TEXT"] ?></p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="polygon-container__polygon js-polygon-container-polygon yellow-100">
+                                                                        <svg class="js-polygon-container-svg" xmlns="http://www.w3.org/2000/svg">
+                                                                            <polygon points="2,2 335,2 335,394 295,434 2,434" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="10"></polygon>
+                                                                        </svg>
+                                                                    </div>
+                                                                </div>
+                                                            <? endforeach; ?>
+                                                        </div>
+                                                    <? endif; ?>
+                                                </div>
+                                            <? endif; ?>
+                                            <? if($tabCode === "dokumenty-i-tarify") : ?>
+                                                <!-- ТАБ "Документы и тарифы" -->
+                                                <div class="row rte rte--accordion">
+                                                    <div class="accordion" id="accordion-193">
+                                                        <? foreach ($arTabs["ITEMS"] as $elemId => $arElements) : ?>
+                                                            <div class="accordion-item">
+                                                                <div class="accordion-header">
+                                                                    <button
+                                                                        class="accordion-button show collapsed"
+                                                                        type="button"
+                                                                        data-bs-toggle="collapse"
+                                                                        data-bs-target="#<?= $elemId ?>"
+                                                                        aria-controls="<?= $elemId ?>"
+                                                                        aria-expanded="false"
+                                                                    ><?= $arElements["NAME"] ?>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="accordion-collapse collapse" id="<?= $elemId ?>" data-bs-parent="#accordion-193" style="">
+                                                                    <div class="accordion-body">
+                                                                        <div class="mt-4">
+                                                                            <? if(!empty($arElements["DOCUMENTS"])):?>
+                                                                                <? foreach ($arElements["DOCUMENTS"] as $doc) : ?>
+                                                                                    <a
+                                                                                        class="d-flex flex-column gap-1 py-3 document-download text-m"
+                                                                                        href="<?= $doc["SRC"] ?>"
+                                                                                        download=""
+                                                                                    ><?= $doc["DESC"] ?>
+                                                                                        <div class="d-flex gap-1 align-items-center">
+                                                                                            <div class="document-download__file caption-m dark-70">
+                                                                                                <span class="document-download__date-time"><?= $doc["TIME"] ?></span>
+                                                                                                <span class="document-download__file-type"><?= $doc["EXT"] ?></span>
+                                                                                            </div>
+                                                                                            <span class="icon size-s text-primary">
+                                                                                                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                                                                                    <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-download-small"></use>
+                                                                                                </svg>
+                                                                                            </span>
+                                                                                        </div>
+                                                                                    </a>
+                                                                                <? endforeach; ?>
+                                                                            <? endif;?>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        <? endforeach; ?>
+                                                    </div>
+                                                    <? if (!empty($arTabs["QUOTES"])) : ?>
+                                                        <div class="col-12">
+                                                            <? foreach ($arTabs["QUOTES"] as $elemId => $arElements) : ?>
+                                                                <div class="polygon-container js-polygon-container">
+                                                                    <div class="polygon-container__content">
+                                                                        <div class="helper bg-blue-10">
+                                                                            <div class="helper__wrapper d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-4 gap-lg-6">
+                                                                                <img class="helper__image w-auto float-end" src="<?= $arElements["PICTURE"] ?>" alt="" loading="lazy">
+                                                                                <div class="helper__content text-l">
+                                                                                    <p class="text-l mb-0"><?= $arElements["TEXT"] ?></p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="polygon-container__polygon js-polygon-container-polygon yellow-100">
+                                                                        <svg class="js-polygon-container-svg" xmlns="http://www.w3.org/2000/svg">
+                                                                            <polygon points="2,2 335,2 335,394 295,434 2,434" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="10"></polygon>
+                                                                        </svg>
+                                                                    </div>
+                                                                </div>
+                                                            <? endforeach; ?>
+                                                        </div>
+                                                    <? endif; ?>
+                                                </div>
+                                            <? endif; ?>
                                         </div>
                                     <? endforeach; ?>
                                 </div>

@@ -421,9 +421,8 @@ if (!empty($blockDetailServiceSectionIds)) {
                 $blockDetailServiceTabsQuotes[$sectionCode][$quotesId] = $tabQuotesElements[$quotesId];
             }
         }
-
     }
-
+    
     $classDetailServices = BitrixIblock::wakeUp($iblockDetailServices)->getEntityDataClass();
     $elementsDetailServices = $classDetailServices::getList([
         "select" => [
@@ -431,7 +430,8 @@ if (!empty($blockDetailServiceSectionIds)) {
             "IBLOCK_SECTION_ID",
             "NAME",
             "PREVIEW_TEXT",
-            "TAB_TARIF"
+            "TAB_TARIF",
+            "DOCUMENTS.FILE"
         ],
         "filter" => [
             "ACTIVE" => "Y",
@@ -484,6 +484,62 @@ if (!empty($blockDetailServiceSectionIds)) {
                 $blockDetailServiceElements[$sectionCode]["ITEMS"][$id] = [
                     "TEXT" => $previewText,
                 ];
+            }
+
+            if ($sectionCode === "vidy") {
+                $blockDetailServiceElements[$sectionCode]["ITEMS"][$id] = [
+                    "TITLE" => $name,
+                    "TEXT" => $previewText,
+                ];
+            }
+
+            if ($sectionCode === "otvetstvennost") {
+                $blockDetailServiceElements[$sectionCode]["ITEMS"][$id] = [
+                    "TITLE" => $name,
+                    "TEXT" => $previewText,
+                ];
+            }
+
+            if ($sectionCode === "pamyatka") {
+                $blockDetailServiceElements[$sectionCode]["ITEMS"][$id] = [
+                    "TEXT" => $previewText,
+                ];
+            }
+
+            if ($sectionCode === "usloviya") {
+                $blockDetailServiceElements[$sectionCode]["ITEMS"][$id] = [
+                    "TEXT" => $previewText,
+                ];
+            }
+
+            if ($sectionCode === "dokumenty-i-tarify") {
+                $documents = [];
+
+                if (!empty($element->getDocuments())) {
+                    foreach ($element->getDocuments() as $doc) {
+                        $fileId = $doc->getFile()->getId();
+                        $fileSrc = '/upload/' . $doc->getFile()->getSubdir() . '/' . $doc->getFile()->getFileName();
+                        $fileDesc = $doc->getFile()->getDescription();
+                        $fileTime = date('d.m.y H:i', strtotime($doc->getFile()->getTimestampX()));
+                        $fileType = pathinfo($fileSrc, PATHINFO_EXTENSION);
+
+                        if (!empty($fileDesc) && !empty($fileSrc)) {
+                            $documents[$fileId] = [
+                                "DESC" => $fileDesc,
+                                "SRC" => $fileSrc,
+                                "EXT" => $fileType,
+                                "TIME" => $fileTime
+                            ];
+                        }
+                    }
+
+                    if (!empty($documents)) {
+                        $blockDetailServiceElements[$sectionCode]["ITEMS"][$id] = [
+                            "NAME" => $name,
+                            "DOCUMENTS" => $documents
+                        ];
+                    }
+                }
             }
         }
 
