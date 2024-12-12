@@ -360,6 +360,7 @@ if (!empty($blockDetailServiceSectionIds)) {
     $tabQuoteIds = [];
     $tabQuoteSectionIds = [];
     $tabQuotesElements = [];
+    $tabSectionCode = [];
 
     foreach ($rsSections as $section) {
         if (!empty($section["UF_TAB_QUOTES"])) {
@@ -371,6 +372,8 @@ if (!empty($blockDetailServiceSectionIds)) {
             "NAME" => $section["NAME"],
             "CODE" => $section["CODE"],
         ];
+
+        $tabSectionCode[$section["CODE"]] = $section["ID"];
     }
 
     if (!empty($tabQuoteIds)) {
@@ -476,12 +479,24 @@ if (!empty($blockDetailServiceSectionIds)) {
                     "TARIFS" => $tarifs
                 ];
             }
+
+            if ($sectionCode === "svedeniya") {
+                $blockDetailServiceElements[$sectionCode]["ITEMS"][$id] = [
+                    "TEXT" => $previewText,
+                ];
+            }
         }
 
         if (!empty($blockDetailServiceElements)) {
             foreach ($blockDetailServiceElements as $sectionCode => $arItems) {
                 if (!empty($blockDetailServiceTabsQuotes[$sectionCode])) {
                     $blockDetailServiceElements[$sectionCode]["QUOTES"] = $blockDetailServiceTabsQuotes[$sectionCode];
+                }
+            }
+
+            foreach ($tabSectionCode as $code => $id) {
+                if (empty($blockDetailServiceElements[$code])) {
+                    unset($blockDetailServiceTabs[$id]);
                 }
             }
         }

@@ -423,6 +423,7 @@ use Bitrix\Main\Localization\Loc;
 
         <? if(!empty($item["BLOCK_DETAIL_SERVICE"])) : ?>
             <!-- Блок "Подробнее об услуге" -->
+            <? $activeTabCode = ''; ?>
             <section class="section-layout border-top border-blue10">
                 <div class="container">
                     <h3 class="mb-4 mb-md-6 mb-lg-7 px-lg-6">Подробнее об услуге</h3>
@@ -461,6 +462,7 @@ use Bitrix\Main\Localization\Loc;
                                                         aria-selected="<? if(!$tabIndex) : ?>true<? else : ?>false<? endif; ?>"
                                                     ><?= $arData["NAME"] ?></button>
                                                 </li>
+                                                <? if(!$tabIndex) : $activeTabCode = $arData["CODE"]; ?><? endif; ?>
                                                 <? $tabIndex++; ?>
                                             <? endforeach; ?>
                                         </ul>
@@ -469,10 +471,9 @@ use Bitrix\Main\Localization\Loc;
                             </div>
                             <? if(!empty($item["BLOCK_DETAIL_SERVICE"]["ELEMENTS"])) : ?>
                                 <div class="tab-content mt-4 mt-md-6 mt-lg-7">
-                                    <? $tabIndex = 0; ?>
                                     <? foreach ($item["BLOCK_DETAIL_SERVICE"]["ELEMENTS"] as $tabCode => $arTabs) : ?>
                                         <div
-                                            class="tab-pane fade <? if(!$tabIndex) :?>show active<? endif; ?>"
+                                            class="tab-pane fade <? if($activeTabCode === $tabCode) :?>show active<? endif; ?>"
                                             id="<?= $tabCode ?>"
                                             aria-labelledby="<?= $tabCode ?>"
                                             tabindex="0"
@@ -645,8 +646,40 @@ use Bitrix\Main\Localization\Loc;
                                                     <? endif; ?>
                                                 </div>
                                             <? endif; ?>
+                                            <? if($tabCode === "svedeniya") : ?>
+                                                <!-- ТАБ "Сведения" -->
+                                                <div class="row rte rte--accordion">
+                                                    <? foreach ($arTabs["ITEMS"] as $elemId => $arElements) : ?>
+                                                        <div class="col-12">
+                                                            <?= $arElements["TEXT"] ?>
+                                                        </div>
+                                                    <? endforeach; ?>
+                                                    <? if (!empty($arTabs["QUOTES"])) : ?>
+                                                        <div class="col-12">
+                                                            <? foreach ($arTabs["QUOTES"] as $elemId => $arElements) : ?>
+                                                                <div class="polygon-container js-polygon-container">
+                                                                    <div class="polygon-container__content">
+                                                                        <div class="helper bg-blue-10">
+                                                                            <div class="helper__wrapper d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-4 gap-lg-6">
+                                                                                <img class="helper__image w-auto float-end" src="<?= $arElements["PICTURE"] ?>" alt="" loading="lazy">
+                                                                                <div class="helper__content text-l">
+                                                                                    <p class="text-l mb-0"><?= $arElements["TEXT"] ?></p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="polygon-container__polygon js-polygon-container-polygon yellow-100">
+                                                                        <svg class="js-polygon-container-svg" xmlns="http://www.w3.org/2000/svg">
+                                                                            <polygon points="2,2 335,2 335,394 295,434 2,434" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="10"></polygon>
+                                                                        </svg>
+                                                                    </div>
+                                                                </div>
+                                                            <? endforeach; ?>
+                                                        </div>
+                                                    <? endif; ?>
+                                                </div>
+                                            <? endif; ?>
                                         </div>
-                                        <? $tabIndex++; ?>
                                     <? endforeach; ?>
                                 </div>
                             <? endif; ?>
