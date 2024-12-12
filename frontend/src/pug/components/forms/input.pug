@@ -1,23 +1,23 @@
 mixin input(data, formName)
-    - var { id, label, placeholder, type, required, datepicker, groupText, hint, mask, min } = data;
+    - var { id, label, placeholder, type, required, datepicker, groupText, hint, mask, min, pattern, errorMessage, name } = data;
     .d-flex.flex-column.row-gap-2&attributes(attributes)
         label(for=`${formName}_${id}`).form-label.mb-0
             != label
             if required
                 span.orange-100.ms-1 *
         if !datepicker && !groupText
-            input(id=`${formName}_${id}` type=`${type || "text"}` name=id placeholder=placeholder required=required autocomplete="off" data-form-input class=[mask ? `js-mask-${mask}` : ""] min=min).form-control.form-control-lg-lg
+            input(id=`${formName}_${id}` type=`${type || "text"}` name=name ? name : id placeholder=placeholder required=required autocomplete="off" data-form-input class=[mask ? `js-mask-${mask}` : ""] min=min pattern=pattern data-error-message=errorMessage).form-control.form-control-lg-lg
             if hint
                 span.caption-m.dark-70.d-block= hint
             .invalid-feedback(aria-live="polite")
         if datepicker
             .position-relative
-                input(id=`${formName}_${id}` type="text" name=id placeholder=placeholder required=required autocomplete="off" data-form-input).js-mask-date.form-control.form-control-lg-lg.js-date.js-date--today-max
+                input(id=`${formName}_${id}` type="text" name=name ? name : id placeholder=placeholder required=required autocomplete="off" data-form-input).js-mask-date.form-control.form-control-lg-lg.js-date.js-date--today-max
                 span.position-absolute.top-50.end-0.translate-middle-y.violet-70.text-m.p-2.px-3.pe-none
                     +svg-use("icon-calendar", "icon size-m")
                 .invalid-feedback(aria-live="polite")
         if groupText
             .input-group.row-gap-2.has-validation
-                input(id=`${formName}_${id}` type=`${type || "text"}` name=id placeholder=placeholder required=required autocomplete="off" aria-describedby=`${formName}_${id}-suffix` data-form-input class=[mask ? `js-mask-${mask}` : ""] min=min).form-control.form-control-lg-lg
+                input(id=`${formName}_${id}` type=`${type || "text"}` name=name ? name : id placeholder=placeholder required=required autocomplete="off" aria-describedby=`${formName}_${id}-suffix` data-form-input class=[mask ? `js-mask-${mask}` : ""] min=min).form-control.form-control-lg-lg
                 span(id=`${formName}_${id}-suffix`).input-group-text= groupText
                 .invalid-feedback(aria-live="polite")

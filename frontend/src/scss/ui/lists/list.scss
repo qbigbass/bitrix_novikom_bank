@@ -69,13 +69,17 @@
   }
 
   &--size-l {
+    @include use-media(tablet-album) {
+      gap: 1.5em;
+    }
+
     & li {
       padding-left: 2rem;
       line-height: 1.5;
 
       @include use-media(tablet) {
         font-size: 1.125rem;
-        line-height: 1.4;
+        line-height: 1.45;
       }
 
       @include use-media(tablet-album) {
@@ -108,7 +112,7 @@
 
       @include use-media(tablet-album) {
         font-size: 1.25rem;
-        line-height: 1.4;
+        line-height: 1.45;
         padding-left: 2.5rem;
       }
 

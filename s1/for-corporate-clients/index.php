@@ -107,7 +107,8 @@ $APPLICATION->SetTitle('Корпоративным клиентам');
             "detail" => "#ELEMENT_CODE#/",
         ]
     ],
-    false
+    false,
+    ["HIDE_ICONS" => "Y"]
 );?>
 
 <?require($_SERVER['DOCUMENT_ROOT'].'/bitrix/footer.php');?>

@@ -17,8 +17,8 @@ $this->setFrameMode(true); ?>
         <h3 class="mb-5 mb-lg-7"><?= $arResult['NAME'] ?></h3>
         <div class="row">
             <div class="col-12">
-                <div class="d-none d-lg-block w-100">
-                    <div class="tabs-panel js-tabs-slider overflow-hidden position-relative pe-1 pe-lg-0">
+                <div class="d-none d-lg-flex w-100">
+                    <div class="tabs-panel js-tabs-slider overflow-hidden position-relative">
                         <div class="tabs-panel__navigation d-none d-lg-block js-tabs-slider-navigation w-100">
                             <span
                                 class="tabs-panel__navigation-item tabs-panel__navigation-item-reverse js-tabs-slider-navigation-prev d-flex align-items-center justify-content-start px-1 z-3 position-absolute swiper-button-disabled">
@@ -55,7 +55,7 @@ $this->setFrameMode(true); ?>
                 </div>
                 <div class="d-block d-lg-none w-100">
                     <div
-                        class="tabs-panel js-tabs-slider overflow-hidden position-relative pe-1 pe-lg-0 tabs-panel--small">
+                        class="tabs-panel js-tabs-slider overflow-hidden position-relative tabs-panel--small">
                         <div class="tabs-panel__navigation d-none d-lg-block js-tabs-slider-navigation w-100">
                             <span
                                 class="tabs-panel__navigation-item tabs-panel__navigation-item-reverse js-tabs-slider-navigation-prev d-flex align-items-center justify-content-start px-1 z-3 position-absolute swiper-button-disabled">
@@ -110,8 +110,8 @@ $this->setFrameMode(true); ?>
                                             <div class="card-top-list__col bg-blue-10 h-100 overflow-hidden">
                                                 <div class="d-flex flex-column gap-4">
                                                     <div class="d-flex flex-column">
-                                                        <img src="/frontend/dist/img/top.svg" alt="Топ" width="138"
-                                                             height="54"
+                                                        <img src="/frontend/dist/img/top-sm.svg" alt="Топ" width="138"
+                                                             height="40"
                                                              loading="lazy">
                                                         <? if (!empty($arItem['DISPLAY_PROPERTIES']['IMAGE']['FILE_VALUE']['SRC'])) { ?>
                                                             <img

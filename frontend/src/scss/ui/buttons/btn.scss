@@ -6,8 +6,8 @@ button {
 }
 
 .btn {
-  overflow: hidden;
-  text-overflow: ellipsis;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .btn-lg {
@@ -54,6 +54,16 @@ button {
     &.btn-icon.btn-lg {
         gap: .5rem;
     }
+
+    &:disabled {
+        background-color: transparent;
+        border-color: transparent;
+        color: var(--dark-50);
+
+        .icon {
+            color: currentColor;
+        }
+    }
 }
 
 .btn-icon {
@@ -72,10 +82,10 @@ button {
 }
 
 .btn-icon-alone {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: .5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: .5rem;
 }
 
 .btn-lg-lg {
@@ -89,13 +99,13 @@ button {
 }
 
 .btn-md-lg {
-  @include use-media(tablet) {
-    --bs-btn-padding-y: 0.9375rem;
-    --bs-btn-padding-x: 2rem;
-    --bs-btn-font-size: 1.125rem;
-    line-height: 1.35;
-    height: auto;
-  }
+    @include use-media(tablet) {
+        --bs-btn-padding-y: 0.9375rem;
+        --bs-btn-padding-x: 2rem;
+        --bs-btn-font-size: 1.125rem;
+        line-height: 1.35;
+        height: auto;
+    }
 }
 
 .btn-md-md {

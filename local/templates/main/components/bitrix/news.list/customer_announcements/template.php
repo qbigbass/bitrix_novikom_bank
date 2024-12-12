@@ -29,7 +29,11 @@ $this->setFrameMode(true);
                     <div class="swiper js-announcement-slider">
                         <div class="swiper-wrapper">
                             <? foreach ($arResult["ITEMS"] as $item) { ?>
-                                <div class="swiper-slide js-announcement-slide">
+                                <?
+                                $this->AddEditAction($item['ID'], $item['EDIT_LINK'], CIBlock::GetArrayByID($item["IBLOCK_ID"], "ELEMENT_EDIT"));
+                                $this->AddDeleteAction($item['ID'], $item['DELETE_LINK'], CIBlock::GetArrayByID($item["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
+                                ?>
+                                <div class="swiper-slide js-announcement-slide" id="<?=$this->GetEditAreaId($item['ID']);?>">
                                     <a class="announcement" href="<?= $item["DETAIL_PAGE_URL"] ?>" tabIndex="-1">
                                         <span class="dark-70"><?= date('d.m.Y', strtotime($item["TIMESTAMP_X"])) ?></span>
                                         <span class="dark-100"><?= $item["NAME"] ?></span>

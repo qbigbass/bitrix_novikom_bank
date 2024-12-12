@@ -2,8 +2,6 @@
 
 namespace Dalee\Services;
 
-use JetBrains\PhpStorm\NoReturn;
-
 /**
  * Класс для обработки и преобразования данных ставок продуктов.
  *
@@ -53,6 +51,13 @@ class ProductRatesHandler
      */
     private array $elements = [];
 
+    /**
+     * Тело ответа.
+     *
+     * @var array
+     */
+    private array $response = [];
+
     public function __construct(string $table, ?int $elementId = null, ?string $name = null)
     {
         $this->table = $table;
@@ -64,31 +69,26 @@ class ProductRatesHandler
     }
 
     /**
-     * @return array[]|string[]
+     * @return void
      */
-    public function handle(): array
+    public function handle(): void
     {
+        if ($this->hasError()) {
+            return;
+        }
+
         $this->fetchRates();
 
         if (empty($this->elements)) {
-            return ['error' => 'Нет данных'];
+            $this->addError('Нет данных');
+            return;
         }
 
-        if (!empty($this->name)) {
+        if ($this->name) {
             $this->elements = $this->filterByName($this->elements, $this->name);
         }
 
-        return ['data' => $this->transformKeys($this->elements)];
-    }
-
-    /**
-     * @return void
-     */
-    #[NoReturn] public function json(): void
-    {
-        $response = $this->handle();
-        header('Content-Type: application/json');
-        die(json_encode($response));
+        $this->response = ['data' => $this->transformKeys($this->elements)];
     }
 
     /**
@@ -97,26 +97,28 @@ class ProductRatesHandler
     private function fetchRates(): void
     {
         $this->ratesFetcher->fetchRates($this->elementId);
-        $this->elements = $this->ratesFetcher->getElements();
-
-        if (empty($this->elements)) {
-            $this->ratesFetcher->fetchRates(null);
-            $this->elements = $this->ratesFetcher->getElements();
-        }
+        $this->elements = $this->ratesFetcher->getElements() ?: $this->retryFetch();
     }
 
     /**
-     * @return string
+     * @return array
      */
-    private function getIblockId(): string
+    private function retryFetch(): array
+    {
+        $this->ratesFetcher->fetchRates(null);
+        return $this->ratesFetcher->getElements();
+    }
+
+    /**
+     * @return int|null
+     */
+    private function getIblockId(): ?int
     {
         $iblock = iblock($this->table . '_rates');
-
         if (!$iblock) {
-            echo json_encode(['error' => 'Не удалось получить ID инфоблока']);
-            exit;
+            $this->addError('Не удалось получить ID инфоблока');
+            $this->getJson();
         }
-
         return $iblock;
     }
 
@@ -136,29 +138,49 @@ class ProductRatesHandler
      */
     private function transformKeys(array $data): array
     {
-        $result = [];
-        foreach ($data as $item) {
+        return array_map(function ($item) {
             $newItem = [];
             foreach ($item as $key => $value) {
-                if ($key == "LINK_" || $key == "NAME") continue;
-
-                $key = rtrim($key, '_');
-                $parts = explode('_', strtolower($key));
-                $camelCaseKey = array_shift($parts);
-
-                foreach ($parts as $part) {
-                    $camelCaseKey .= ucfirst($part);
+                if ($key === 'LINK_' || $key === 'NAME') {
+                    continue;
                 }
+
+                $key = strtolower(rtrim($key, '_'));
+                $key = preg_replace_callback('/_([a-z])/', fn($matches) => strtoupper($matches[1]), $key);
 
                 if (is_string($value)) {
-                    $value = preg_replace('/\s*\[.*?]/', '', $value);
-                    $value = trim($value);
+                    $value = trim(preg_replace('/\s*\[.*?]/', '', $value));
                 }
 
-                $newItem[$camelCaseKey] = $value;
+                $newItem[$key] = $value;
             }
-            $result[] = $newItem;
-        }
-        return $result;
+            return $newItem;
+        }, $data);
+    }
+
+    /**
+     * @param string $message
+     * @return void
+     */
+    private function addError(string $message): void
+    {
+        $this->response['error'] = $message;
+    }
+
+    /**
+     * @return bool
+     */
+    private function hasError(): bool
+    {
+        return !empty($this->response['error']);
+    }
+
+    /**
+     * @return void
+     */
+    public function getJson(): void
+    {
+        echo json_encode($this->response, JSON_UNESCAPED_UNICODE);
+        exit;
     }
 }

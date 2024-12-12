@@ -8,7 +8,7 @@
  * @var array $arCurSection
  */
 ?>
-<section class="banner-text banner-text--border-undefined bg-linear-blue">
+<section class="banner-text bg-linear-blue">
     <div class="container banner-text__container position-relative z-2">
         <div class="row ps-lg-6">
             <div class="col-12 col-xl-6 position-relative z-1 mb-5 mb-md-0 pt-6">
@@ -43,9 +43,9 @@
         <source srcset="/frontend/dist/img/patterns/section/pattern-light-m.svg" media="(max-width: 1199px)"><img src="/frontend/dist/img/patterns/section/pattern-light-l.svg" alt="bg pattern" loading="lazy">
     </picture>
 </section>
-<section class="section-layout px-lg-6">
+<section class="section-layout py-lg-11">
     <div class="container">
-        <div class="row row-gap-4 row-gap-md-6 row-gap-lg-7">
+        <div class="row px-lg-6">
             <div class="col-12">
                 <?
                 $APPLICATION->IncludeComponent(

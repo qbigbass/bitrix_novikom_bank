@@ -85,11 +85,13 @@ block content
                     title: 'Пресс-центр',
                     img: 'large-individual/press-center.png',
                     link: 'Подробнее',
+                    color: 'transparent',
                 },
                 {
                     title: 'Карьера',
                     img: 'large-individual/career.png',
                     link: 'Подробнее',
+                    color: 'transparent',
                 },
             ],
             [
@@ -97,11 +99,13 @@ block content
                     title: 'Устав и документы',
                     img: 'large-individual/documents.png',
                     link: 'Подробнее',
+                    color: 'transparent',
                 },
                 {
                     title: 'Контактная информация',
                     img: 'large-individual/contact.png',
                     link: 'Подробнее',
+                    color: 'transparent',
                 },
             ],
             [
@@ -109,16 +113,19 @@ block content
                     title: 'Членство <br>в&nbsp;организации',
                     img: 'large-individual/membership-club.png',
                     link: 'Подробнее',
+                    color: 'transparent',
                 },
                 {
                     title: 'Реквизиты',
                     img: 'large-individual/details.png',
                     link: 'Подробнее',
+                    color: 'transparent',
                 },
                 {
                     title: 'Устойчивое <br>развитие',
                     img: 'large-individual/evolution.png',
                     link: 'Подробнее',
+                    color: 'transparent',
                 },
             ],
             [
@@ -126,18 +133,21 @@ block content
                     title: 'Противодействие коррупции',
                     icon: 'icon-a-hands',
                     link: 'Подробнее',
+                    color: 'transparent',
                     size: 'height-auto'
                 },
                 {
                     title: 'Закупки',
                     icon: 'icon-a-hands',
                     link: 'Подробнее',
+                    color: 'transparent',
                     size: 'height-auto'
                 },
                 {
-                    title: 'Сотрудничество с Союзмаша',
+                    title: 'Сотрудничество с Союзмаш',
                     icon: 'icon-a-hands',
                     link: 'Подробнее',
+                    color: 'transparent',
                     size: 'height-auto'
                 },
             ]
@@ -195,7 +205,7 @@ block content
                 | Рейтинги&nbsp;Банка НОВИКОМ
             .row
                 .col-12
-                    .d-none.d-lg-block.w-100
+                    .d-none.d-lg-flex.w-100
                         +tabs-simple(tabsList, false)
                     .d-block.d-lg-none.w-100
                         +tabs-simple(tabsList, true)
@@ -208,7 +218,7 @@ block content
                                             .card-top-list__col.bg-blue-10.h-100.overflow-hidden
                                                 .d-flex.flex-column.gap-4
                                                     .d-flex.flex-column
-                                                        img(src="img/top.svg" alt="Топ" width="138" height="54" loading="lazy")
+                                                        img(src="img/top-sm.svg" alt="Топ" width="138" height="40" loading="lazy")
                                                         img(src=item.imageSrc alt=item.imageAlt width="138" height="86" loading="lazy")
 
                                                     p.card-top-list__description.dark-100.text-m.mt-auto.mb-0
@@ -241,7 +251,7 @@ block content
                     if rowIndex < 2
                         .d-flex.flex-wrap(class=gapRowClassList)
                             each item in rowArray
-                                +card-product(item).h-auto.flex-basis-100.flex-basis-md-25.flex-grow-1.bg-white
+                                +card-product(item).card-product--size-xl.h-auto.flex-basis-100.flex-basis-md-25.flex-grow-1.bg-white
                 if cardProductRowsList.length > 2
                     #more-ratifications.collapse.d-md-block
                         .d-flex.flex-column(class=gapBetweenRowsClassList)
@@ -265,7 +275,7 @@ block content
                         | Показать все
                         +svg-use("icon-chevron-down", "icon size-m")
 
-    section.section-layout.py-lg-11.mb-6.mb-sm-9.mb-lg-11.mb-xl-16
+    section.section-layout.py-lg-11.mb-xxl-6
         .container
             h3.mb-5.mb-lg-7
                 | Награды

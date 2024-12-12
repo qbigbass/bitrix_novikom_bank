@@ -7,17 +7,20 @@
     overflow: hidden;
     border-radius: 0.75rem;
     height: 100%;
+    min-height: 17.5rem;
 
     @include use-media(tablet) {
         padding: 2rem;
+        min-height: 17.5rem;
     }
 
     @include use-media(tablet-album) {
         padding: 2.5rem;
+        min-height: 15rem;
     }
 
     @include use-media(laptop-x) {
-        min-height: 280px;
+        min-height: 18rem;
     }
 
     &:before {
@@ -51,6 +54,10 @@
         @include use-media(tablet-album) {
             gap: 3rem;
         }
+
+        @include use-media(laptop) {
+            gap: 3rem;
+        }
     }
 
     &__content {
@@ -65,6 +72,12 @@
         @include use-media(tablet-album) {
             max-width: 70%;
         }
+    }
+
+    &__title,
+    &__description {
+        word-wrap: break-word;
+        word-break: break-word;
     }
 
     &__description {
@@ -135,7 +148,7 @@
         }
 
         @include use-media(tablet-album) {
-            margin-top: -.5rem;
+            margin-top: 0;
         }
     }
 
@@ -163,9 +176,9 @@
         }
 
         #{$root}__description {
-          @include use-media(tablet-album) {
-            max-width: 80%;
-          }
+            @include use-media(tablet-album) {
+                max-width: 80%;
+            }
         }
     }
 
@@ -248,6 +261,18 @@
                 font-size: 1.25rem;
                 line-height: 1.4;
                 max-width: unset;
+            }
+        }
+    }
+
+    &--size-xl {
+        @include use-media(laptop) {
+            min-height: 19.5rem;
+        }
+
+        .btn-link {
+            @include use-media(mobile-s, laptop) {
+                padding-block: 0.5rem;
             }
         }
     }

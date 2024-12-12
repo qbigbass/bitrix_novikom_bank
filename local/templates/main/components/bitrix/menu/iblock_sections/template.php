@@ -19,7 +19,7 @@ if (empty($arParams['PARENT_DEPTH'])) {
 }
 ?>
 
-<div class="tabs-panel js-tabs-slider overflow-hidden position-relative pe-1 pe-lg-0">
+<div class="tabs-panel js-tabs-slider overflow-hidden position-relative">
     <? if (count($arResult) >= 4) { ?>
         <div class="tabs-panel__navigation d-none d-lg-block js-tabs-slider-navigation w-100">
             <span class="tabs-panel__navigation-item tabs-panel__navigation-item-reverse js-tabs-slider-navigation-prev d-flex align-items-center justify-content-start px-1 z-3 position-absolute swiper-button-disabled">
@@ -43,7 +43,7 @@ if (empty($arParams['PARENT_DEPTH'])) {
             <? $class = basename($menuItem['LINK']) == $path ? ' active' : ''; ?>
 
             <li class="swiper-slide w-auto tabs-panel__list-item nav-item z-2">
-                <a class="tabs-panel__list-item-link nav-link bg-transparent section-catalog__tab-list-item<?= $class ?>" href="<?= $menuItem['LINK'] ?>#catalog-tabs">
+                <a class="tabs-panel__list-item-link nav-link bg-transparent section-catalog__tab-list-item<?= $class ?>" href="<?= $menuItem['LINK'] ?>">
                     <?= $menuItem['TEXT'] ?>
                 </a>
             </li>
