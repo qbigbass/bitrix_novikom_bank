@@ -422,7 +422,7 @@ if (!empty($blockDetailServiceSectionIds)) {
             }
         }
     }
-    
+
     $classDetailServices = BitrixIblock::wakeUp($iblockDetailServices)->getEntityDataClass();
     $elementsDetailServices = $classDetailServices::getList([
         "select" => [
@@ -431,7 +431,10 @@ if (!empty($blockDetailServiceSectionIds)) {
             "NAME",
             "PREVIEW_TEXT",
             "TAB_TARIF",
-            "DOCUMENTS.FILE"
+            "DOCUMENTS.FILE",
+            "TAB_FUNDS_DESC",
+            "TAB_FUNDS_CITY",
+            "TAB_FUNDS_LINK"
         ],
         "filter" => [
             "ACTIVE" => "Y",
@@ -541,8 +544,35 @@ if (!empty($blockDetailServiceSectionIds)) {
                     }
                 }
             }
-        }
 
+            if ($sectionCode === "fondy") {
+                $fundsDesc = [];
+                $fundsLink = '';
+                $fundsCity = '';
+
+                if (!empty($element->getTabFundsDesc())) {
+                    foreach ($element->getTabFundsDesc()->getAll() as $funds) {
+                        $fundsDesc[$funds->getDescription()] = $funds->getValue() ?? '';
+                    }
+                }
+
+                if (!empty($element->getTabFundsLink())) {
+                    $fundsLink = $element->getTabFundsLink()->getValue();
+                }
+
+                if (!empty($element->getTabFundsCity())) {
+                    $fundsCity = $element->getTabFundsCity()->getValue();
+                }
+
+                $blockDetailServiceElements[$sectionCode]["ITEMS"][$id] = [
+                    "TITLE" => $name,
+                    "DESC" => $fundsDesc,
+                    "LINK" => $fundsLink,
+                    "CITY" => $fundsCity
+                ];
+            }
+        }
+        
         if (!empty($blockDetailServiceElements)) {
             foreach ($blockDetailServiceElements as $sectionCode => $arItems) {
                 if (!empty($blockDetailServiceTabsQuotes[$sectionCode])) {

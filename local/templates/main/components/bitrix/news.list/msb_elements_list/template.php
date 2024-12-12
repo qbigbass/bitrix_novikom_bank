@@ -889,6 +889,93 @@ use Bitrix\Main\Localization\Loc;
                                                     <? endif; ?>
                                                 </div>
                                             <? endif; ?>
+                                            <? if($tabCode === "fondy") : ?>
+                                                <!-- ТАБ "Фонды" -->
+                                                <div class="row row-gap-6 row-gap-lg-7">
+                                                    <div class="col-12">
+                                                        <form class="w-100">
+                                                            <div class="input-group flex-nowrap d-none d-lg-flex">
+                                                                <span class="input-group-icon bg-transparent">
+                                                                    <span class="icon violet-100">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                                                            <use xlink:href="img/svg-sprite.svg#icon-search"></use>
+                                                                        </svg>
+                                                                    </span>
+                                                                </span>
+                                                                <input class="form-control form-control-lg text-l bg-transparent" id="input-search" type="text" placeholder="Поиск по регионам или названию фонда" aria-label="Поиск по регионам или названию фонда" aria-describedby="input-search" tabindex="-1">
+                                                            </div>
+                                                            <div class="input-group flex-nowrap d-flex d-lg-none">
+                                                                <span class="input-group-icon bg-transparent">
+                                                                    <span class="icon violet-100">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                                                            <use xlink:href="img/svg-sprite.svg#icon-search"></use>
+                                                                        </svg>
+                                                                    </span>
+                                                                </span>
+                                                                <input class="form-control ps-0 text-s bg-transparent" id="input-search-mobile" type="text" placeholder="Поиск по регионам или названию фонда" aria-label="Поиск по регионам или названию фонда" aria-describedby="#input-search-mobile" tabindex="-1">
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="accordion accordion--size-lg accordion--bg-transparent" id="accordion-funds-tab">
+                                                            <? foreach ($arTabs["ITEMS"] as $elemId => $arElements) : ?>
+                                                                <div class="accordion-item">
+                                                                    <div class="accordion-header">
+                                                                        <button
+                                                                            class="accordion-button collapsed"
+                                                                            type="button"
+                                                                            data-bs-toggle="collapse"
+                                                                            data-bs-target="#<?= $elemId ?>"
+                                                                            aria-controls="<?= $elemId ?>"
+                                                                        >
+                                                                            <div class="d-flex flex-column gap-4 gap-md-5 gap-lg-6">
+                                                                                <? if (!empty($arElements["CITY"])) : ?>
+                                                                                    <div class="tag tag--outline tag--triangle-absolute">
+                                                                                        <span class="tag__content text-s fw-semibold mw-100 w-sm-auto"><?= $arElements["CITY"] ?></span>
+                                                                                        <span class="tag__triangle">
+                                                                                            <svg width="14" height="21" viewBox="0 0 14 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                                                <path d="M13.5 19.3486L0.934259 0.5H13.5V19.3486Z"></path>
+                                                                                            </svg>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                <? endif;?>
+                                                                                <span class="fw-bold h4"><?= $arElements["TITLE"] ?></span>
+                                                                            </div>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="accordion-collapse collapse" id="<?= $elemId ?>" data-bs-parent="#accordion-funds-tab">
+                                                                        <div class="accordion-body">
+                                                                            <div class="rte rte--accordion">
+                                                                                <table class="table table--mobile-row-is-column mb-0">
+                                                                                    <tbody>
+                                                                                        <? foreach ($arElements["DESC"] as $desc => $value) : ?>
+                                                                                            <tr>
+                                                                                                <td>
+                                                                                                    <div class="text-l dark-70 fw-semibold"><?= $desc ?></div>
+                                                                                                </td>
+                                                                                                <td>
+                                                                                                    <div class="text-l"><?= $value ?></div>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        <? endforeach; ?>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                                <? if(!empty($arElements["LINK"])) : ?>
+                                                                                    <a class="btn btn-link btn-lg btn-icon" type="button" href="<?= $arElements["LINK"] ?>">Перейти на сайт фонда
+                                                                                        <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                                                                            <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-download"></use>
+                                                                                        </svg>
+                                                                                    </a>
+                                                                                <? endif; ?>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            <? endforeach; ?>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            <? endif; ?>
                                         </div>
                                     <? endforeach; ?>
                                 </div>
