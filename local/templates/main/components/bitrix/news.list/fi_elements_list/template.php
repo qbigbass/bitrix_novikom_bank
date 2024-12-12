@@ -315,14 +315,13 @@ use Bitrix\Main\Localization\Loc;
                                                         <?if(!empty($arStrategy["NAME"]) || !empty($arStrategy["PREVIEW_TEXT"])):?>
                                                             <div class="card__title-group d-flex flex-column gap-4 gap-lg-6">
                                                                 <h2 class="card__title text-break"><?= $arStrategy["NAME"]?></h2>
-                                                                <p class="text-l m-0"><?= $arStrategy["PREVIEW_TEXT"]?></p>
                                                             </div>
                                                         <?endif;?>
                                                         <?if(!empty($arStrategy["RISK"]) || !empty($arStrategy["PERIOD"]) || !empty($arStrategy["PROFIT"])):?>
                                                             <div class="card__condition-list d-flex flex-column flex-md-row flex-wrap gap-4 column-gap-md-11 column-gap-lg-16 row-gap-lg-6">
                                                                 <?if(!empty($arStrategy["RISK"])):?>
                                                                     <div class="card__condition violet-100 d-flex flex-column gap-2">
-                                                                        <div class="d-inline-flex flex-nowrap align-items-baseline gap-1">
+                                                                        <div class="card__condition-title d-inline-flex flex-nowrap align-items-baseline gap-1">
                                                                             <span class="h4"><?= $arStrategy["RISK"]?></span>
                                                                         </div>
                                                                         <span class="text-m dark-70"><?= Loc::getMessage("STRATEGY_ITEM_RISK")?></span>
@@ -330,7 +329,7 @@ use Bitrix\Main\Localization\Loc;
                                                                 <?endif;?>
                                                                 <?if(!empty($arStrategy["PERIOD"])):?>
                                                                     <div class="card__condition violet-100 d-flex flex-column gap-2">
-                                                                        <div class="d-inline-flex flex-nowrap align-items-baseline gap-1">
+                                                                        <div class="card__condition-title d-inline-flex flex-nowrap align-items-baseline gap-1">
                                                                             <span class="text-number-ml fw-bold"><?= $arStrategy["PERIOD"]?></span>
                                                                         </div>
                                                                         <span class="text-m dark-70"><?= Loc::getMessage("PERIOD")?></span>
@@ -338,7 +337,7 @@ use Bitrix\Main\Localization\Loc;
                                                                 <?endif;?>
                                                                 <?if(!empty($arStrategy["PROFIT"])):?>
                                                                     <div class="card__condition violet-100 d-flex flex-column gap-2">
-                                                                        <div class="d-inline-flex flex-nowrap align-items-baseline gap-1">
+                                                                        <div class="card__condition-title d-inline-flex flex-nowrap align-items-baseline gap-1">
                                                                             <span class="text-l fw-semibold">до</span>
                                                                             <span class="text-number-ml fw-bold"><?= $arStrategy["PROFIT"]?></span>
                                                                             <span class="text-l fw-semibold">в год</span>

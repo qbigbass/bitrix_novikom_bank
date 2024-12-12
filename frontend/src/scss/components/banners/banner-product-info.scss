@@ -69,11 +69,6 @@
     }
 
     &__image {
-        margin-top: 1rem;
         grid-area: image;
-
-        @include use-media(tablet) {
-            margin-top: 0;
-        }
     }
 }
