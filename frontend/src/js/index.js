@@ -1,26 +1,3 @@
-import initPolygonContainer from './components/polygon-container.js'
-import initDropdownMenu, { hideDropDownMenu } from './components/dropDownMenu.js'
-import {setVh} from "./utils";
-import { initSwiperMenu, initHeroBanner, initCardSlider, initAnnouncementSlider, initTabsSlider } from "./components/swiper/swiper";
-import initButtonNavMobile from './components/nav-panel.js'
-import initMobileSearch from './components/mobile-search.js'
-import initSelect2 from './components/select2.js'
-import { initTabsContent } from './components/tabs.js'
-import initInputSlider from "./components/inputSlider";
-import showMoreContent from "./components/showMoreContent";
-import './components/accessibility-panel.js'
-import initDatepicker from './components/datepicker.js'
-import setPage from "./components/setPage";
-import {initFormSteps} from "./components/form/formSteps";
-import {initFormFeedback} from "./components/form/formFeedback";
-import {initFormSend} from "./components/form/formSend";
-import {initUploadFile} from "./components/form/uploadFile";
-import {initMask} from "./components/form/mask";
-import {initResizePolygonAccordions} from "./components/accordions";
-import initHeaderSearchForm from "./components/headerSearchForm.js";
-import initOffices from "./components/offices";
-import initYMap from "./components/yMap";
-import {initChatBot} from "./components/chatBot";
 const MEDIA_QUERIES = {
     'mobile-s': '320px',
     mobile: '375px',
