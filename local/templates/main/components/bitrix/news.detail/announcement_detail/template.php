@@ -19,7 +19,7 @@ use Dalee\Helpers\ComponentHelper;
             <div class="col-12">
                 <?
                 $helper = new ComponentHelper($component);
-                $helper->deferredCall('showNavChain', ['ad_detail']);
+                $helper->deferredCall('showNavChain', ['ad_detail', 1]);
                 ?>
             </div>
             <div class="col-12">

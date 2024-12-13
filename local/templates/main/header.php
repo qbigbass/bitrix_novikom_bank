@@ -22,7 +22,6 @@ $asset->addJs('/frontend/dist/js/vendors/select2.min.js');
 $asset->addJs('/frontend/dist/js/vendors/airdatepicker.js');
 $asset->addJs('/frontend/dist/js/vendors/jquery.mask.min.js');
 $asset->addJs('/frontend/dist/js/vendors/highcharts.js');
-
 $asset->addJs('/frontend/dist/js/chatBot.js');
 $asset->addJs('/frontend/dist/js/datepicker.js');
 $asset->addJs('/frontend/dist/js/dropDownMenu.js');
