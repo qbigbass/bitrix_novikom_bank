@@ -282,5 +282,32 @@ use Bitrix\Main\Localization\Loc;
         </div>
     </div>
 </div>
+<?
+/* ChatBot */
+$APPLICATION->IncludeComponent(
+    "dalee:chatbot",
+    "",
+    [
+        "FORM_TITLES" => ["Заказать звонок", "Направить обращение"],
+        "FORM_CODES" => ["modal-callback-form", "modal-feedback-form"],
+        "FORM_ICONS" => ["img/svg-sprite.svg#icon-phone", "img/svg-sprite.svg#icon-mail"],
+    ]
+);
+?>
+<?php $APPLICATION->IncludeComponent(
+    "dalee:form",
+    "callback_form",
+    [
+        "FORM_CODE" => "callback_form",
+    ]
+); ?>
+
+<?php $APPLICATION->IncludeComponent(
+    "dalee:form",
+    "feedback_form",
+    [
+        "FORM_CODE" => "feedback_form",
+    ]
+); ?>
 </body>
 </html>
