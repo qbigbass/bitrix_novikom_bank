@@ -99,7 +99,7 @@ use Bitrix\Main\Localization\Loc;
                     </a>
                     <button class="btn btn-primary btn-lg-lg mt-4 mt-md-0" type="button"><?=Loc::getMessage('FEEDBACK_BUTTON_TITLE')?></button>
                     <div class="d-flex flex-column row-gap-3 pt-md-3 pt-lg-5">
-                        <a class="btn btn-lg-lg btn-outline-primary d-flex gap-2 gap-lg-3 align-items-center justify-content-center" href="#">
+                        <a class="btn btn-lg-lg btn-outline-primary d-flex gap-2 gap-lg-3 align-items-center justify-content-center" id='#accessibilityPanel' href="#">
                             <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                                 <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-glasses"></use>
                             </svg>
