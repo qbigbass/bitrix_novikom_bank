@@ -1,5 +1,5 @@
 .card {
-    padding: 3rem 1rem;
+    padding: 2.5rem 1rem;
 
     @include use-media(tablet) {
         padding: 2.5rem 2.5rem 2.5rem 2rem;
@@ -22,7 +22,7 @@
         max-width: 20rem;
         margin-inline: -0.5rem;
 
-        @include use-media(mobile-s) {
+        @include use-media(mobile) {
             width: 100%;
             margin-inline: 0;
         }
@@ -55,6 +55,18 @@
         @include use-media(tablet-album) {
             br {
                 display: none;
+            }
+        }
+    }
+
+    &__condition-title {
+        & > .h4 {
+            line-height: 3rem;
+            margin-bottom: -0.5rem;
+
+            @include use-media(tablet-album) {
+                line-height: 4rem;
+                margin-bottom: -1rem;
             }
         }
     }

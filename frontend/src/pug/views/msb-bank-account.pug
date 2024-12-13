@@ -14,7 +14,7 @@ block content
     include ../components/ui/tabs
     include ../components/ui/tabs-simple
     include ../includes/layout/slider-card-product
-    
+
 
     -
         var additionalTabsList = [
@@ -155,31 +155,30 @@ block content
         .container
             h3.mb-4.mb-md-6.mb-lg-7.px-lg-6
                 | Подробнее об услуге
-            .row
+            .row.px-lg-6
                 .col-12
-                    .ps-lg-6
-                        +tabs-simple(additionalTabsList, false)
+                    +tabs-simple(additionalTabsList, false)
                     .tab-content.mt-4.mt-md-6.mt-lg-7
                         #additional-info-1.tab-pane.fade(aria-labelledby="additional-info-1" tabindex="0" role="tabpanel")
-                            .row.rte.rte--accordion
-                                .col-12
-                                    p Описание
+                            .rte.rte--accordion
+                                p Описание
                         #additional-info-2.tab-pane.fade.show.active(aria-labelledby="additional-info-2" tabindex="0" role="tabpanel")
                             .row.rte.rte--accordion
                                 .col-12
-                                    .swiper.js-slider-cards.w-100(data-slides-per-view="mobile-s:1,mobile:1,tablet:2,laptop:3,laptop-x:4", data-space-between="mobile-s:8,mobile:8,tablet:16,laptop:16,laptop-x:16")
-                                        .swiper-wrapper.js-swiper-wrapper
-                                            each tariff in allTariffs
-                                                .swiper-slide.js-swiper-slide
-                                                    +card-tariff(tariff, tariff.bgClass).w-100
-                                                        if tariff.link
-                                                            a(href=tariff.link).btn.btn-yellow.w-100
-                                                                !=tariff.linkText
+                                    .mx-lg-n6
+                                        .swiper.js-slider-cards.w-100(data-slides-per-view="mobile-s:1,mobile:1,tablet:2,laptop:3,laptop-x:4", data-space-between="mobile-s:8,mobile:8,tablet:16,laptop:16,laptop-x:16")
+                                            .swiper-wrapper.js-swiper-wrapper
+                                                each tariff in allTariffs
+                                                    .swiper-slide.js-swiper-slide
+                                                        +card-tariff(tariff, tariff.bgClass).w-100
+                                                            if tariff.link
+                                                                a(href=tariff.link).btn.btn-yellow.w-100
+                                                                    !=tariff.linkText
                                 .col-12
-                                    +polygon-container("yellow-100")
-                                        +helper("img/business-additional-info.png", "bg-blue-10")
-                                            p.text-l.mb-0 При открытии расчетного счета, в том числе в рамках пакетных программ, открытие и ведение специального счета участника закупки по 44-ФЗ и 223-ФЗ - Бесплатно
+                                    .mx-lg-n6
+                                        +polygon-container("yellow-100")
+                                            +helper("img/business-additional-info.png", "bg-blue-10")
+                                                p.text-l.mb-0 При открытии расчетного счета, в том числе в рамках пакетных программ, открытие и ведение специального счета участника закупки по 44-ФЗ и 223-ФЗ - Бесплатно
                         #additional-info-3.tab-pane.fade(aria-labelledby="additional-info-3" tabindex="0" role="tabpanel")
-                            .row.row-gap-6.row-gap-lg-7
-                                include ../includes/layout/tabs/faq
+                            include ../includes/layout/tabs/faq
         +pattern-bg('section-2', 'light', 'pattern-bg--hide-mobile')

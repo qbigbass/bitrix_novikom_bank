@@ -17,8 +17,8 @@ $this->setFrameMode(true);?>
         <?foreach($arResult['ITEMS'] as $benefit): ?>
             <div class="swiper-slide js-swiper-slide">
             <div class="card-benefit d-inline-flex px-3 px-sm-5 px-lg-6 p-4 p-sm-5 p-lg-6 bg-dark-10 w-100 card-benefit--type-img">
-                <div class="card-benefit__inner d-flex flex-column gap-3 gap-md-4 justify-content-between h-100 w-100">
-                    <div class="card-benefit__content d-flex flex-column gap-3 gap-md-4">
+                <div class="card-benefit__inner d-flex flex-column gap-6 gap-lg-7 justify-content-between h-100 w-100">
+                    <div class="card-benefit__content d-flex flex-column gap-4">
                         <img class="card-benefit__image" src="<?=$benefit['PREVIEW_PICTURE']['SRC']?>" alt="<?=$benefit['PREVIEW_PICTURE']['ALT']?>" loading="lazy">
                         <h4 class="card-benefit__title"><?=$benefit['~NAME']?></h4>
                         <p class="card-benefit__description text-m m-0"><?=$benefit['~PREVIEW_TEXT']?></p>

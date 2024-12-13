@@ -295,6 +295,12 @@ function initAnnouncementSlider() {
                 },
             },
             768: {
+                spaceBetween: 24,
+                grid: {
+                    rows: 2,
+                },
+            },
+            768: {
                 spaceBetween: 40,
                 grid: {
                     rows: 2,
