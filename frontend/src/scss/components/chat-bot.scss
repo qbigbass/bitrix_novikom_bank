@@ -10,8 +10,34 @@
     }
 
     @include use-media(tablet-album) {
-        right: 2.75rem;
-        bottom: 3.688rem;
+        right: 1.75rem;
+        bottom: 2.688rem;
+    }
+
+    &::after {
+        @include use-media(tablet) {
+            --ellipse-size: 3.75rem;
+
+            content: "";
+            position: absolute;
+            right: -0.625rem;
+            bottom: -1.25rem;
+            width: var(--ellipse-size);
+            height: var(--ellipse-size);
+            background-color: var(--blue-30);
+            filter: blur(1.875rem);
+            border-radius: 100%;
+            opacity: 0.8;
+            z-index: -1;
+        }
+
+        @include use-media(tablet-album) {
+            --ellipse-size: 6.25rem;
+
+            right: -1.75rem;
+            bottom: -2.688rem;
+            filter: blur(2.5rem);
+        }
     }
 
     &__button {
@@ -22,7 +48,6 @@
         width: 2.5rem;
         height: 2.5rem;
         background: linear-gradient(220.58deg, #DAE0E7 0%, #D0C3EA 100%);
-        box-shadow: 0 .5rem 1rem 0 #3C3C4726;
         border-radius: .25rem;
 
         @include use-media(tablet) {
@@ -35,6 +60,11 @@
             width: 4.25rem;
             height: 3.25rem;
         }
+    }
+
+    &__button,
+    &__popover-content {
+        box-shadow: 0 .5rem 1rem 0 #3C3C4726;
     }
 
     &__popover {
