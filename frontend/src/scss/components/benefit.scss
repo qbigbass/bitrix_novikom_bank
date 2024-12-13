@@ -1,7 +1,8 @@
 .benefit {
-
     &__title, &__description {
-        
+        word-wrap: break-word;
+        word-break: break-word;
+
         & br {
             display: none;
 

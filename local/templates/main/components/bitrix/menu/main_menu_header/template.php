@@ -3,14 +3,9 @@
 <? if (!empty($arResult)) { ?>
     <nav class="main-menu">
         <? foreach ($arResult['NOT_HIDDEN'] as $key => $notHiddenItem) { ?>
-            <? $isActive = ($notHiddenItem['SELECTED']) ? ' is-active' : '' ?>
-            <? if ($key == 0) { ?>
-                <a class="main-menu__link text-s<?= $isActive ?>"
-                   href="<?= $notHiddenItem['LINK'] ?>"><?= $notHiddenItem['TEXT'] ?></a>
-            <? } else { ?>
-                <a class="main-menu__link text-s d-none d-xl-block<?= $isActive ?>"
-                   href="<?= $notHiddenItem['LINK'] ?>"><?= $notHiddenItem['TEXT'] ?></a>
-            <? } ?>
+            <? $isActive = $notHiddenItem['SELECTED']; ?>
+            <a class="main-menu__link text-s<?= $isActive ? ' is-active' : ' d-none d-xl-block' ?>"
+               href="<?= $notHiddenItem['LINK'] ?>"><?= $notHiddenItem['TEXT'] ?></a>
         <? } ?>
 
         <? if (!empty($arResult['HIDDEN'])) { ?>
@@ -22,8 +17,16 @@
                     </svg>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end">
+                    <? foreach ($arResult['NOT_HIDDEN'] as $key => $notHiddenItem) {
+                        $isActive = $notHiddenItem['SELECTED'];
+                        if (!$isActive) { ?>
+                            <li><a class="dropdown-item fw-bold d-xl-none"
+                                   href="<?= $notHiddenItem['LINK'] ?>"><?= $notHiddenItem['TEXT'] ?></a>
+                            </li>
+                        <? }
+                    } ?>
                     <? foreach ($arResult['HIDDEN'] as $hiddenItem) { ?>
-                        <? $isActive = ($hiddenItem['SELECTED']) ? ' is-active' : '' ?>
+                        <? $isActive = $hiddenItem['SELECTED'] ? ' is-active' : '' ?>
                         <li><a class="dropdown-item fw-bold<?= $isActive ?>"
                                href="<?= $hiddenItem['LINK'] ?>"><?= $hiddenItem['TEXT'] ?></a></li>
                     <? } ?>

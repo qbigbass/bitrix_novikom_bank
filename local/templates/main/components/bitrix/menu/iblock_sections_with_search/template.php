@@ -24,20 +24,19 @@ $path = basename($APPLICATION->GetCurPage()); ?>
 <div class="collapse show d-md-block mt-4 mt-sm-5 mt-md-0" id="filters-content">
     <div class="w-100 d-flex align-items-center flex-column flex-xl-row gap-4 gap-xl-6">
         <div class="w-100 w-xl-auto">
-            <div
-                class="tabs-panel js-tabs-slider overflow-hidden position-relative px-1 tabs-panel--small">
+            <div class="tabs-panel js-tabs-slider overflow-hidden position-relative tabs-panel--small">
                 <div class="tabs-panel__navigation d-none d-lg-block js-tabs-slider-navigation w-100">
                     <span
-                        class="tabs-panel__navigation-item tabs-panel__navigation-item-reverse js-tabs-slider-navigation-prev h-100 d-flex align-items-center justify-content-start px-1 z-3 position-absolute start-0 top-0">
-                        <span class="icon size-m">
+                        class="tabs-panel__navigation-item tabs-panel__navigation-item-reverse js-tabs-slider-navigation-prev d-flex align-items-center justify-content-start px-1 z-3 position-absolute swiper-button-disabled">
+                        <span class="icon size-s">
                             <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                                 <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-left"></use>
                             </svg>
                         </span>
                     </span>
                     <span
-                        class="tabs-panel__navigation-item js-tabs-slider-navigation-next h-100 d-flex align-items-center justify-content-end px-1 z-3 position-absolute end-0 top-0">
-                        <span class="icon size-m">
+                        class="tabs-panel__navigation-item js-tabs-slider-navigation-next d-flex align-items-center justify-content-end px-1 z-3 position-absolute swiper-button-disabled">
+                        <span class="icon size-s">
                             <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                                 <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
                             </svg>

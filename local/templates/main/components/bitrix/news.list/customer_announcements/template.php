@@ -16,8 +16,8 @@ $this->setFrameMode(true);
 <section class="section-layout bg-dark-10">
     <div class="container">
         <div class="row">
-            <div class="col-12 col-xxl-6 d-flex flex-column gap-6 gap-lg-7">
-                <a class="h3 d-flex align-items-center ps-lg-6" href="/for-corporate-clients/customer-announcements/">
+            <div class="col-12 col-xxl-6 d-flex flex-column gap-4 gap-md-6 gap-lg-7">
+                <a class="h3 d-flex align-items-center ps-lg-6 pt-lg-6 pt-xxl-0" href="/for-corporate-clients/customer-announcements/">
                     <span><?= $arResult["NAME"] ?></span>
                     <span class="icon size-m violet-100 ms-auto ms-md-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
@@ -29,7 +29,11 @@ $this->setFrameMode(true);
                     <div class="swiper js-announcement-slider">
                         <div class="swiper-wrapper">
                             <? foreach ($arResult["ITEMS"] as $item) { ?>
-                                <div class="swiper-slide js-announcement-slide">
+                                <?
+                                $this->AddEditAction($item['ID'], $item['EDIT_LINK'], CIBlock::GetArrayByID($item["IBLOCK_ID"], "ELEMENT_EDIT"));
+                                $this->AddDeleteAction($item['ID'], $item['DELETE_LINK'], CIBlock::GetArrayByID($item["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
+                                ?>
+                                <div class="swiper-slide js-announcement-slide" id="<?=$this->GetEditAreaId($item['ID']);?>">
                                     <a class="announcement" href="<?= $item["DETAIL_PAGE_URL"] ?>" tabIndex="-1">
                                         <span class="dark-70"><?= date('d.m.Y', strtotime($item["TIMESTAMP_X"])) ?></span>
                                         <span class="dark-100"><?= $item["NAME"] ?></span>

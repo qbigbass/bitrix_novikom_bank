@@ -48,7 +48,7 @@ include ../../../components/document-download
     .accordion.accordion--size-lg.accordion--bg-transparent#accordion-insurance-more
         each item in accordionList
             +accordion-item(item, 'accordion-insurance-more', 'h4')
-                .content-block.content-block--accordion
+                .rte.rte--accordion
                     p!= item.content
                     if item.programDetail
                         div

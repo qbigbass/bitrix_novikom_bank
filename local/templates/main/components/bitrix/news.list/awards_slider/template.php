@@ -32,7 +32,7 @@ $this->setFrameMode(true);
                     <div
                         class="card-award__wrapper d-flex flex-column flex-md-row align-items-center align-items-md-start gap-4 gap-lg-6">
                         <img class="card-award__image w-auto float-end"
-                             src="/frontend/dist/img/awards/individual-certificate.png" alt="" loading="lazy">
+                             src="<?= $arItem['PREVIEW_PICTURE']['SRC'] ?>" alt="" loading="lazy">
                         <div class="card-award__content text-l">
                             <div class="d-flex w-100 align-items-end justify-content-between mb-4">
                                 <h4 class="violet-100"><?= $dateMonth ?></h4>

@@ -2,10 +2,15 @@ include ../components/ui/tag
 
 mixin card-special(data)
     a(href= data.href).card-special.bg-dark-10.dark-100.h-100.d-flex.flex-column.row-gap-6.row-gap-lg-9
-        .card-special__header.d-flex.align-items-start.justify-content-between
-            +tag(data.tag, 'outline')
-            span.text-s.dark-70.my-auto.mb-0= data.date
+        if data.tag || data.date
+            .card-special__header.d-flex.align-items-start.justify-content-between
+                if data.tag
+                    +tag(data.tag, 'outline')
+                if data.date
+                    span.text-s.dark-70.my-auto.mb-0= data.date
         .card-special__body
+            if data.imgSrc
+                img(src= data.imgSrc alt="" loading="lazy").card-special__image.mb-3
             if data.titleIsSmall
                 span.dark-100!= data.title
             else

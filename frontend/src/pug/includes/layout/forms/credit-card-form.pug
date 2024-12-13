@@ -29,6 +29,7 @@ include ../../../components/forms/confirm
                 },
                 {
                     id: "birthday",
+                    name: "BIRTHDAY",
                     label: "Дата рождения",
                     placeholder: "",
                     required: false,
@@ -54,8 +55,11 @@ include ../../../components/forms/confirm
                     id: "phone",
                     label: "Телефон",
                     placeholder: "+7",
+                    type: "tel",
                     required: true,
-                    mask: "phone"
+                    mask: "phone",
+                    pattern: "\\+7\\s\\(\\d{3}\\)\\s\\d{3}-\\d{2}-\\d{2}",
+                    errorMessage: "Введите корректный номер телефона",
                 },
                 {
                     id: "e-mail",
@@ -63,6 +67,8 @@ include ../../../components/forms/confirm
                     placeholder: "Введите почту",
                     type: "email",
                     required: true,
+                    pattern: "[a-zA-Z0-9._%\\+\\-]+@[a-zA-Z0-9.\\-]+\\.[a-zA-Z]{2,}",
+                    errorMessage: "Введите корректный адрес электронной почты",
                 },
             ],
             radios1: [
@@ -104,7 +110,7 @@ include ../../../components/forms/confirm
                     id: "passport-number",
                     label: "Номер паспорта",
                     placeholder: "",
-                    required: true,
+                    required: false,
                 },
             ]
         },
@@ -178,7 +184,7 @@ include ../../../components/forms/confirm
                     id: "borrower-corporate",
                     name: "type-borrower",
                     value: "corporate",
-                    text: "Являюсь сотрудником организации — корпоративного клиента Банка"
+                    text: "Являюсь сотрудником организации — корпоративного клиента&nbsp;Банка"
                 },
             ],
             inputs: [
@@ -209,15 +215,18 @@ form(action="/" method="POST" novalidate id="credit-card-form" data-form).applic
                     +input(item, creditCardForm.formName)
             fieldset.application-form__col.col-12.col-md-6
                 legend.form-label.mb-3 Пол
-                .d-flex.flex-column.flex-md-row.flex-wrap.row-gap-3.row-gap-lg-4.column-gap-md-5.column-gap-lg-6
+                .d-flex.flex-wrap.row-gap-3.row-gap-lg-4.column-gap-6.column-gap-md-5.column-gap-lg-6
                     each item, index in step1.radios1
                         +radio(item, index, creditCardForm.formName)
             fieldset.application-form__col.col-12.col-md-6
                 legend.form-label.mb-3 Гражданство
-                .d-flex.flex-column.flex-md-row.flex-wrap.row-gap-3.row-gap-lg-4.column-gap-md-5.column-gap-lg-6
+                .d-flex.flex-wrap.row-gap-3.row-gap-lg-4.column-gap-6.column-gap-md-5.column-gap-lg-6
                     each item, index in step1.radios2
                         +radio(item, index, creditCardForm.formName)
-        .d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-5.column-gap-lg-6.mt-6.mt-lg-7
+            each item in step1.inputs2
+                .application-form__col.col-12.col-md-6
+                    +input(item, creditCardForm.formName)
+        .d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-5.column-gap-lg-6.mt-6.mt-lg-7.px-md-2.px-lg-0
             button.btn.btn-primary.btn-lg-lg.w-100.w-md-auto(type="button" disabled aria-disabled="true" data-form-button data-form-step-button-next) Продолжить
             div.text-m.orange-100.text-center(data-form-error)
     .application-form__step(data-form-step data-form-validate-group hidden)
@@ -234,7 +243,7 @@ form(action="/" method="POST" novalidate id="credit-card-form" data-form).applic
                     +input(item, creditCardForm.formName)
             .application-form__col.col-12
                 +input(step2.inputs2[0], creditCardForm.formName)
-        .d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-5.column-gap-lg-6.mt-6.mt-lg-7
+        .d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-5.column-gap-lg-6.mt-6.mt-lg-7.px-md-2.px-lg-0
             button.btn.btn-primary.btn-lg-lg.w-100.w-md-auto(type="button" disabled aria-disabled="true" data-form-button data-form-step-button-next) Продолжить
             button.btn.btn-outline-primary.btn-lg-lg.w-100.w-md-auto(type="button" data-form-step-button-prev) Назад
             div.text-m.orange-100.text-center(data-form-error)
@@ -258,8 +267,8 @@ form(action="/" method="POST" novalidate id="credit-card-form" data-form).applic
             fieldset.application-form__col.col-12
                 legend.form-label.mb-3 Тип заемщика
                 .d-flex.flex-column.flex-md-row.row-gap-3.row-gap-lg-4.column-gap-md-5.column-gap-lg-6
-                    each item, index in step3.radios
-                        +radio(item, index, creditCardForm.formName)
+                    +radio(step3.radios[0], 0, creditCardForm.formName).flex-shrink-0
+                    +radio(step3.radios[1], 1, creditCardForm.formName)
             .application-form__col.col-12.col-md-6
                 +select(step3.selects[2], creditCardForm.formName)
             .application-form__col.col-12.col-md-6
@@ -268,7 +277,7 @@ form(action="/" method="POST" novalidate id="credit-card-form" data-form).applic
                 +captcha(creditCardForm.formName)
             .application-form__col.col-12
                 +confirm(creditCardForm.formName)
-        .d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-5.column-gap-lg-6.mt-6.mt-lg-7
+        .d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-5.column-gap-lg-6.mt-6.mt-lg-7.px-md-2.px-lg-0
             button.btn.btn-primary.btn-lg-lg.w-100.w-md-auto(type="submit" disabled aria-disabled="true" data-form-button) Отправить заявку
             button.btn.btn-outline-primary.btn-lg-lg.w-100.w-md-auto(type="button" data-form-step-button-prev) Назад
             div.text-m.orange-100.text-center(data-form-error)

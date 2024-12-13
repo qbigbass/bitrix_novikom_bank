@@ -1,5 +1,5 @@
 -
-    list = [
+    var list = [
         'В&nbsp;соответствии с&nbsp;законодательством (ст.&nbsp;28&nbsp;Федерального Закона &laquo;О&nbsp;финансовой аренде&raquo;) лизинговые платежи относятся к&nbsp;расходам, связанным с&nbsp;производством и&nbsp;реализацией, уменьшая налогооблагаемую базу по&nbsp;налогу на&nbsp;прибыль',
         'Согласно ст.&nbsp;259.3. Налогового кодекса применение коэффициента ускоренной амортизации в&nbsp;лизинге позволяет в&nbsp;три раза сократить расходы по&nbsp;налогу на&nbsp;имущество и&nbsp;быстрее окупить приобретенное оборудование',
         'Согласно гл.&nbsp;21&nbsp;Налогового кодекса в&nbsp;составе лизинговых платежей выделяется НДС, что позволяет лизингополучателю производить зачет НДС со&nbsp;всей суммы договора, а&nbsp;не&nbsp;только со&nbsp;стоимости предмета лизинга по&nbsp;договору купли-продажи',
@@ -10,17 +10,30 @@
         'Лизинг является эффективным инструментом формирования позитивного имиджа и&nbsp;кредитной истории компании на&nbsp;финансовом рынке',
     ]
 
+    var benefitsList = [
+        {
+            spriteName: {
+                name: 'leasing-finance.svg',
+                classList: 'size-xl'
+            },
+            title: 'Финансовый лизинг'
+        },
+        {
+            spriteName: {
+                name: 'leasing-returnable.svg',
+                classList: 'size-xl'
+            },
+            title: 'Возвратный лизинг'
+        },
+    ]
+
 .col-12.col-xl-8
     h4.mb-4.mb-md-6 Виды сделок
     .row.row-gap-6
-        .col-12.col-md-6
-            .d-flex.flex-column.flex-md-row.gap-3.gap-md-4.gap-lg-6.align-items-md-center
-                img(src="img/icons/leasing-finance.svg" alt="" loading="lazy").icon.size-xl
-                p.mb-0.text-l.fw-semibold Финансовый лизинг
-        .col-12.col-md-6
-            .d-flex.flex-column.flex-md-row.gap-3.gap-md-4.gap-lg-6.align-items-md-center
-                img(src="img/icons/leasing-returnable.svg" alt="" loading="lazy").icon.size-xl
-                p.mb-0.text-l.fw-semibold Возвратный лизинг
+        each item, idx in benefitsList
+            .col-12.col-md-6
+                +benefit(item.spriteName, item.title, true)
+
 .col-12.col-xl-8.mt-md-3.mt-lg-4
     h4.mb-3.mb-md-4 Возможности
     ul.list.list--size-l

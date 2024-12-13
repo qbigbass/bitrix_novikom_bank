@@ -47,7 +47,7 @@ $helper = new ComponentHelper($component);
                                 <div class="accordion-body">
                                     <div class="d-flex flex-column gap-4 gap-md-5 gap-lg-7">
                                         <?if(!empty($properties['PROGRAM_DESCRIPTION']['~VALUE']['TEXT'])): ?>
-                                            <div class="rte mb-0">
+                                            <div class="rte rte--accordion">
                                                 <?=$properties['PROGRAM_DESCRIPTION']['~VALUE']['TEXT']?>
                                             </div>
                                         <?endif;?>

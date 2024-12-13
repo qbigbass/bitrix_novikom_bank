@@ -11,8 +11,12 @@ class Tabs implements ComponentInterface
     public static function render(CMain $application, CBitrixComponent|bool $component, string $filter, ?array $params = []): void
     {
         $padding = false;
+        $elementId = false;
         if (!empty($params['padding'])) {
             $padding = $params['padding'];
+        }
+        if (!empty($params['elementId'])) {
+            $elementId = $params['elementId'];
         }
 
         ob_start();
@@ -36,6 +40,7 @@ class Tabs implements ComponentInterface
                 "DETAIL_URL" => "",
                 "DISPLAY_BOTTOM_PAGER" => "N",
                 "DISPLAY_TOP_PAGER" => "N",
+                "ELEMENT_ID" => $elementId,
                 "FIELD_CODE" => [
                     "CODE",
                     "NAME",
@@ -61,6 +66,7 @@ class Tabs implements ComponentInterface
                 "PARENT_SECTION_CODE" => "",
                 "PREVIEW_TRUNCATE_LEN" => "",
                 "PROPERTY_CODE" => [
+                    "CALCULATOR",
                     "CONDITIONS_ICONS",
                     "CONDITIONS",
                     "TEXT_FIELD",
@@ -82,6 +88,8 @@ class Tabs implements ComponentInterface
                     "HTML",
                     "QUESTIONS",
                     "DOCUMENTS",
+                    "SHOW_TWO_ICONS_IN_ROW",
+                    "TARIFFS",
                 ],
                 "SET_BROWSER_TITLE" => "N",
                 "SET_LAST_MODIFIED" => "N",

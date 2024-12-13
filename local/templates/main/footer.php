@@ -5,9 +5,37 @@ use Bitrix\Main\Localization\Loc;
 ?>
 
 <!-- /#WORK_AREA# -------------------------------------------------------------------------------------------------- -->
+
+    <div class="modal fade" id="modal-success" tabindex="-1" data-bs-backdrop="static" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable align-items-end align-items-md-center">
+            <div class="modal-content">
+                <div class="modal-body d-flex flex-column row-gap-4 row-gap-md-5 row-gap-lg-6"><img class="modal-img" src="/frontend/dist/img/modals/success.png" alt="">
+                    <div class="modal-title h4 text-center js-success-title"></div>
+                    <p class="text-l text-center m-0 js-success-info"></p>
+                </div>
+                <div class="modal-footer border-0 justify-content-md-center">
+                    <button class="btn btn-primary btn-lg-lg m-0 w-100 w-md-auto" type="button" data-bs-dismiss="modal">Ок, спасибо!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modal-error" tabindex="-1" data-bs-backdrop="static" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable align-items-end align-items-md-center">
+            <div class="modal-content">
+                <div class="modal-body d-flex flex-column row-gap-4 row-gap-md-5 row-gap-lg-6"><img class="modal-img" src="/frontend/dist/img/modals/error.png" alt="">
+                    <div class="modal-title h4 text-center js-error-title"></div>
+                    <p class="text-l text-center m-0 js-error-info"></p>
+                </div>
+                <div class="modal-footer border-0 justify-content-md-center">
+                    <button class="btn btn-primary btn-lg-lg m-0 w-100 w-md-auto js-error-btn" type="button">Вернуться</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <footer class="footer">
         <div class="container">
-            <div class="row row-gap-5 footer__content">
+            <div class="row row-gap-6 row-gap-lg-7 gx-md-2 gx-lg-2_5 footer__content">
                 <?php $APPLICATION->IncludeComponent(
                     "bitrix:menu",
                     "main_menu_footer",
@@ -38,7 +66,7 @@ use Bitrix\Main\Localization\Loc;
                                 <a class="btn-app btn d-inline-flex justify-content-center align-items-center bg-white" href="<?=NASH_STORE_APP_LINK?>" target="_blank">
                                     <img src="/frontend/dist/img/app-logos/nash-store.svg" alt="nash-store" loading="lazy">
                                 </a>
-                                <a class="btn-app btn btn-primary d-flex align-items-center gap-3 justify-content-center" href="<?=MOBIL_APP_LINK?>">
+                                <a class="btn-app btn btn-primary d-flex align-items-center gap-2 gap-lg-3 justify-content-center" href="<?=MOBIL_APP_LINK?>">
                                     <?=Loc::getMessage('DOWNLOAD_MOBIL_APP_BUTTON_TITLE_IN_FOOTER')?>
                                     <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                                         <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-download"></use>
@@ -54,24 +82,24 @@ use Bitrix\Main\Localization\Loc;
                     </div>
                 </div>
                 <div class="col-12 col-md-6 col-xl-3 d-flex flex-column row-gap-3">
-                    <a class="h3" href="tel:<?=clearPhoneNumber(MOBIL_PHONE_CONTACT_NUMBER)?>"><?=MOBIL_PHONE_CONTACT_NUMBER?></a>
-                    <a class="h3" href="tel:<?=clearPhoneNumber(MOBIL_PHONE_CONTACT_NUMBER_2)?>"><?=MOBIL_PHONE_CONTACT_NUMBER_2?></a>
+                    <a class="h4" href="tel:<?=clearPhoneNumber(MOBIL_PHONE_CONTACT_NUMBER)?>"><?=MOBIL_PHONE_CONTACT_NUMBER?></a>
+                    <a class="h4" href="tel:<?=clearPhoneNumber(MOBIL_PHONE_CONTACT_NUMBER_2)?>"><?=MOBIL_PHONE_CONTACT_NUMBER_2?></a>
                     <span class="dark-70"><?=Loc::getMessage('ADDRESS')?></span>
-                    <a class="btn btn-link d-inline-flex gap-2 align-items-center" href="<?=OFFICES_AND_ATMS_LINK?>">
+                    <a class="btn btn-link d-inline-flex gap-2 align-items-center border-0" href="<?=OFFICES_AND_ATMS_LINK?>">
                         <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                             <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-point"></use>
                         </svg>
                         <?=Loc::getMessage('OFFICES_AND_ATMS_BUTTON_TITLE')?>
                     </a>
-                    <a class="btn btn-link d-inline-flex gap-2 align-items-center" href="<?=TELEGRAM_LINK?>">
+                    <a class="btn btn-link d-inline-flex gap-2 align-items-center border-0" href="<?=TELEGRAM_LINK?>">
                         <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                             <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-circle-telegram"></use>
                         </svg>
                         <?=Loc::getMessage('TELEGRAM_BUTTON_TITLE')?>
                     </a>
-                    <button class="btn btn-primary btn-lg-lg" type="button"><?=Loc::getMessage('FEEDBACK_BUTTON_TITLE')?></button>
-                    <div class="d-flex flex-column row-gap-3 pt-md-3">
-                        <a class="btn btn-lg-lg btn-outline-primary d-flex gap-2 align-items-center justify-content-center" href="#">
+                    <button class="btn btn-primary btn-lg-lg mt-4 mt-md-0" type="button"><?=Loc::getMessage('FEEDBACK_BUTTON_TITLE')?></button>
+                    <div class="d-flex flex-column row-gap-3 pt-md-3 pt-lg-5">
+                        <a class="btn btn-lg-lg btn-outline-primary d-flex gap-2 gap-lg-3 align-items-center justify-content-center" href="#">
                             <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                                 <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-glasses"></use>
                             </svg>
@@ -85,7 +113,7 @@ use Bitrix\Main\Localization\Loc;
         </div>
         <div class="footer__info">
             <div class="container">
-                <div class="row row-gap-3 row-gap-md-5">
+                <div class="row row-gap-3 row-gap-md-6">
                     <?php $APPLICATION->IncludeComponent(
                         "bitrix:menu",
                         "additional_menu_footer",

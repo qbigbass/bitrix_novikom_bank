@@ -39,7 +39,7 @@ block content
             ],
             benefits: [
                 {
-                    title: 'Бесплатные консультации',
+                    title: 'Бесплатные <br class="d-block">консультации',
                     colorClass: 'yellow-100 w-lg-min-content w-100'
                 },
                 {
@@ -169,7 +169,7 @@ block content
                         +card-benefit(item).card-benefit--type-img.card-benefit--size-lg-large.overflow-visible.h-auto.flex-grow-1.flex-basis-100.flex-basis-md-33
         +pattern-bg("section", "dark")
 
-    section.section-layout.pt-md-0
+    section.section-layout.pt-md-5.pt-lg-6
         .container
             .row
                 .col-12
@@ -200,61 +200,66 @@ block content
                             +tabs-simple(additionalTabsList, false)
                         .tab-content.mt-4.mt-md-6.mt-lg-7.ps-lg-6
                             #additional-info-1.tab-pane.fade.show.active(aria-labelledby="additional-info-1" tabindex="0" role="tabpanel")
-                                .row.row-gap-6.row-gap-lg-7
-                                    .col-12.col-xl-8
-                                        h4.fw-bold.mb-4 Предварительный вид валютного контроля осуществляется до проведения операции.
-                                        p.text-l.mb-4 Банк проверяет
+                                .row.rte.rte--accordion.rte--w-xxl-60
+                                    .col-12
+                                        h4.fw-bold Предварительный вид валютного контроля осуществляется до проведения операции.
+                                        p.text-l Банк проверяет
                                         ul.list.list--size-l
                                             li представленные участником внешнеэкономической деятельности документы: контракт/договор;
                                             li юридическую составляющую: правильность оформления контракта и описания его обязательных условий.
-                                    .col-12.col-xl-8
-                                        .border-bottom-dashed.w-100
-                                    .col-12.col-xl-8
-                                        h4.fw-bold.mb-4 Текущий вид валютного контроля производится непосредственно при реализации контракта и осуществлении валютных расчетов.
-                                        p.text-l.mb-0 Контроль проводится путём проверки наличия в ВБК информации о произведенных отгрузках/ввозе товаров, оказании услуг.
-                                    .col-12.col-xl-8
-                                        .border-bottom-dashed.w-100
-                                    .col-12.col-xl-8
-                                        h4.fw-bold.mb-4 Последующий вид валютного контроля проводится после завершения сделки.
-                                        p.text-l.mb-0 Банк сопоставляет все документы и информацию, которые подтверждают, что сделки совершены законно, а обязательства по контрактам выполнены.
+                                    .col-12
+                                        span(aria-hidden="true").border-bottom-dashed
+                                    .col-12
+                                        h4.fw-bold Текущий вид валютного контроля производится непосредственно при реализации контракта и осуществлении валютных расчетов.
+                                        p.text-l Контроль проводится путём проверки наличия в ВБК информации о произведенных отгрузках/ввозе товаров, оказании услуг.
+                                    .col-12
+                                        span(aria-hidden="true").border-bottom-dashed
+                                    .col-12
+                                        h4.fw-bold Последующий вид валютного контроля проводится после завершения сделки.
+                                        p.text-l Банк сопоставляет все документы и информацию, которые подтверждают, что сделки совершены законно, а обязательства по контрактам выполнены.
 
                             #additional-info-2.tab-pane.fade(aria-labelledby="additional-info-2" tabindex="0" role="tabpanel")
-                                p Виды
-                            #additional-info-3.tab-pane.fade(aria-labelledby="additional-info-3" tabindex="0" role="tabpanel")
-                                .row.row-gap-6.row-gap-lg-7
+                                .row.rte.rte--accordion.rte--w-xxl-60
                                     .col-12
+                                        p Виды
+                            #additional-info-3.tab-pane.fade(aria-labelledby="additional-info-3" tabindex="0" role="tabpanel")
+                                .row.rte.rte--accordion.rte--w-xxl-60
+                                    .col-12.mw-100
                                         +polygon-container("yellow-100")
                                             +helper("img/business-additional-info.png", "bg-blue-10")
                                                 h4.h4.fw-bold Строгость и сроки наказания зависят от тяжести нарушений <br class="d-none d-xl-block">и количества соучастников.
-                                    .col-12.col-xl-8
+                                    .col-12
                                         h4.fw-bold Нарушения в сфере валютного законодательства и санкции за них регулируются КоАП РФ (ст.15.25 «Штрафы за нарушение валютного контроля») и УК РФ (вплоть до принудительных работ и ограничения свободы)
-                                    .col-12.col-xl-8
-                                        p.text-l.fw-bold.mb-4 Проведение неоформленной сделки:
+                                    .col-12
+                                        p.text-l.fw-bold Проведение неоформленной сделки:
                                         ul.list.list--size-l
                                             li штраф организации — в сумме сделки
                                             li штраф должностного лица — до 30 тыс. руб.
-                                    .col-12.col-xl-8
-                                        p.text-l.fw-bold.mb-4 Несвоевременное уведомление о зарубежном счете компании:
+                                    .col-12
+                                        p.text-l.fw-bold Несвоевременное уведомление о зарубежном счете компании:
                                         ul.list.list--size-l
                                             li штраф организации — от 100 тыс. до 1 млн. руб.
-                                    .col-12.col-xl-8
-                                        p.text-l.fw-bold.mb-4 Последующий вид валютного контроля проводится после завершения сделки.
+                                    .col-12
+                                        p.text-l.fw-bold Последующий вид валютного контроля проводится после завершения сделки.
                                         ul.list.list--size-l
                                             li штраф организации - от 40 тыс. до 50 тыс. руб.
                                             li штраф должностного лица — от 4 тыс. до 5 тыс. руб.
-                                    .col-12.col-xl-8
-                                        .border-bottom-dashed.w-100
-                                    .col-12.col-xl-8
+                                    .col-12
+                                        span(aria-hidden="true").border-bottom-dashed
+                                    .col-12
                                         h4.fw-bold По статье 193 УК РФ предусмотрена уголовная ответственность за нарушение валютного законодательства в крупном размере (от 9 млн. руб. и 45 млн. руб.).
-                                    .col-12.col-xl-8
-                                        p.text-l.fw-bold.mb-4 Наказанием по этой статье служит:
+                                    .col-12
+                                        p.text-l.fw-bold Наказанием по этой статье служит:
                                         ul.list.list--size-l
                                             li лишение свободы до 3-х лет
                                             li штраф в размере заработной платы за период от года до трех лет или принудительные работы сроком до 3-х лет.
                             #additional-info-4.tab-pane.fade(aria-labelledby="additional-info-4" tabindex="0" role="tabpanel")
-                                p Документы и тарифы
+                                .row.rte.rte--accordion.rte--w-xxl-60
+                                    .col-12
+                                        p Документы и тарифы
                             #additional-info-5.tab-pane.fade(aria-labelledby="additional-info-5" tabindex="0" role="tabpanel")
-                                include ../includes/layout/tabs/faq
+                                .row.row-gap-6.row-gap-lg-7
+                                    include ../includes/layout/tabs/faq
         +pattern-bg('section-2', 'light', 'pattern-bg--hide-mobile')
 
     section.section-layout

@@ -158,7 +158,7 @@ class HeaderView
                 </div>
 
                 <? if (!empty($headerData['footerHtml'])) { ?>
-                    <div class="banner-product__footer row row-gap-4 mt-6 mt-lg-16">
+                    <div class="banner-product__footer row gx-md-2 gx-lg-0 row-gap-4 row-gap-lg-6 mt-6 mt-lg-16 mt-xl-26">
                         <?= $headerData['footerHtml'] ?>
                     </div>
                 <? } ?>
@@ -179,7 +179,7 @@ class HeaderView
         <section class="banner-text <?= $headerData['bgColorClass'] ?> <?= implode(' ', $headerData['additionalClasses']) ?>">
             <div class="container banner-text__container position-relative z-2">
                 <div class="row ps-lg-6">
-                    <div class="col-12 col-sm-6 col-md-8 position-relative z-1 mb-5 mb-md-0 pt-6">
+                    <div class="col-12 position-relative z-1 mb-5 mb-md-0 pt-6<? if (!empty($headerData['picture'])) { ?> col-sm-6 col-md-8<? } ?><? if (empty($headerData['picture'])) { ?> col-xxl-8<? } ?>">
                         <div class="d-flex flex-column align-items-start gap-3 gap-md-4">
 
                             <? if (!empty($this->helper)) {
