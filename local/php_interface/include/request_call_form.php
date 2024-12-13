@@ -10,17 +10,17 @@
                 <label class="form-label" for="mobile-phone-help">Мобильный
                     телефон</label>
                 <input
-                    class="card-help__input form-control form-control-lg bg-transparent" id="mobile-phone-help"
+                    class="card-help__input form-control form-control-lg bg-transparent js-mask-phone" id="mobile-phone-help"
                     type="text"
-                    aria-describedby="mobile-phone-hint" placeholder="+7">
+                    aria-describedby="mobile-phone-hint" placeholder="+7" data-input-call>
             </div>
-            <button class="btn btn-primary btn-lg text-m w-100" type="button">Перезвоните мне</button>
+            <button class="btn btn-primary btn-lg text-m w-100" type="button" data-bs-toggle="modal" data-bs-target="#modal-callback-form">Перезвоните мне</button>
         </form>
-        <button class="card-help__button btn btn-link btn-lg btn-icon mx-auto gap-2" type="button">
+        <button class="card-help__button btn btn-link btn-lg btn-icon mx-auto gap-2" type="button" data-bs-toggle="modal" data-bs-target="#modal-feedback-form">
             <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                 <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chat"></use>
             </svg>
-            Написать в чат
+            Направить обращение
         </button>
         <p class="card-help__agreement-text m-0 dark-70 fs-4 lh-sm">Нажимая кнопку
             «Перезвоните мне», вы соглашаетесь с условиями предоставления информации</p>

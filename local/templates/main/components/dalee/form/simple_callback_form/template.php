@@ -16,13 +16,13 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
  */
 $this->setFrameMode(true);
 ?>
-<form class="form-feedback bg-white simple-callback-form" action="<?= $arResult['ACTION_URL'] ?>" method="POST">
+<form class="form-feedback bg-white simple-callback-form">
     <input type="hidden" name="sessid" value="<?= bitrix_sessid(); ?>">
     <input type="hidden" name="FORM_CODE" value="<?= $arParams['FORM_CODE'] ?>">
     <div>
         <label class="form-label" for="mobile-phone">Мобильный телефон</label>
-        <input class="form-control form-control-lg-lg js-mask-phone" type="text" name="PHONE" id="mobile-phone" aria-describedby="mobile-phone-hint" placeholder="+7">
+        <input class="form-control form-control-lg-lg js-mask-phone" type="text" name="PHONE" id="mobile-phone" aria-describedby="mobile-phone-hint" placeholder="+7" data-input-call>
     </div>
-    <button class="btn btn-primary btn-lg-lg w-100" type="submit">Перезвоните мне</button>
+    <button class="btn btn-primary btn-lg-lg w-100" type="button" data-bs-toggle="modal" data-bs-target="#modal-callback-form">Перезвоните мне</button>
 </form>
 

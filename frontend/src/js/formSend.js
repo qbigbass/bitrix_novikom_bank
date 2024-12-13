@@ -7,7 +7,8 @@ const FORM_ELEMS = {
     error: '[data-form-error]',
     radio: 'input[type="radio"]',
     upload: '[data-upload]',
-    uploadFile: '[data-upload-file]'
+    uploadFile: '[data-upload-file]',
+    inputCall: '[data-input-call]',
 }
 
 const MODALS_ID = {
@@ -59,6 +60,24 @@ async function initFormSend() {
         modalEl.addEventListener('show.bs.modal', (event) => {
             modalEl.dispatchEvent(customEvent);
         })
+    })
+
+    const inputsPhoneCall = document.querySelectorAll(FORM_ELEMS.inputCall);
+
+    if (!inputsPhoneCall.length) return
+
+    syncInputs(inputsPhoneCall)
+}
+
+function syncInputs(inputs) {
+    inputs[0].addEventListener('input', () => {
+        inputs[1].value = inputs[0].value;
+        inputs[1].dispatchEvent(new Event('input'))
+    });
+
+    inputs[0].addEventListener('blur', () => {
+        inputs[1].value = inputs[0].value;
+        inputs[1].dispatchEvent(new Event('blur'))
     })
 }
 

@@ -1,12 +1,12 @@
 mixin input(data, formName)
-    - var { id, label, placeholder, type, required, datepicker, groupText, hint, mask, min, pattern, errorMessage, name } = data;
+    - var { id, label, placeholder, type, required, datepicker, groupText, hint, mask, min, pattern, errorMessage, name, inputCall } = data;
     .d-flex.flex-column.row-gap-2&attributes(attributes)
         label(for=`${formName}_${id}`).form-label.mb-0
             != label
             if required
                 span.orange-100.ms-1 *
         if !datepicker && !groupText
-            input(id=`${formName}_${id}` type=`${type || "text"}` name=name ? name : id placeholder=placeholder required=required autocomplete="off" data-form-input class=[mask ? `js-mask-${mask}` : ""] min=min pattern=pattern data-error-message=errorMessage).form-control.form-control-lg-lg
+            input(id=`${formName}_${id}` type=`${type || "text"}` name=name ? name : id placeholder=placeholder required=required autocomplete="off" data-form-input class=[mask ? `js-mask-${mask}` : ""] min=min pattern=pattern data-error-message=errorMessage data-input-call=inputCall).form-control.form-control-lg-lg
             if hint
                 span.caption-m.dark-70.d-block= hint
             .invalid-feedback(aria-live="polite")
