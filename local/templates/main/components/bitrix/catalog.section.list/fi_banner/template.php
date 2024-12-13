@@ -47,11 +47,11 @@ $this->setFrameMode(true);
                 <?endif;?>
             </div>
             <?if(!empty($arResult["SECTION"]["BANNER_CONTENT"]["FOOTER"])):?>
-                <div class="banner-product__footer row row-gap-4 mt-6 mt-lg-16 mt-xl-26">
+                <div class="banner-product__footer row gx-md-2 gx-lg-0 row-gap-4 row-gap-lg-6 mt-6 mt-lg-16 mt-xl-26">
                     <?foreach ($arResult["SECTION"]["BANNER_CONTENT"]["FOOTER"] as $item):?>
                         <div class="col-12 col-md-6 col-xl-4">
                             <div class="benefit d-flex gap-3 flex-column">
-                                <img class="icon size-xl" src="<?= $item["ICON"]?>" alt="icon" loading="lazy">
+                                <img class="icon size-xxl" src="<?= $item["ICON"]?>" alt="icon" loading="lazy">
                                 <div class="benefit__content d-flex flex-column gap-3">
                                     <h4 class="benefit__title"><?= $item["NAME"]?></h4>
                                     <div class="benefit__description w-100 text-m">
