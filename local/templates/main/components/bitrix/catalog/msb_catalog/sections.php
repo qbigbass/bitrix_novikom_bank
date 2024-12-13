@@ -123,7 +123,7 @@ $APPLICATION->IncludeComponent(
         "AJAX_OPTION_STYLE" => "Y",
         "CACHE_TYPE" => "A",
         "CACHE_TIME" => "36000000",
-        "CACHE_FILTER" => "N",
+        "CACHE_FILTER" => "Y",
         "CACHE_GROUPS" => "Y",
         "CHECK_DATES" => "Y",
         "DETAIL_URL" => "",
