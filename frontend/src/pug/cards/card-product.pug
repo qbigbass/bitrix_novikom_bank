@@ -2,7 +2,7 @@ include ../components/ui/tag
 
 mixin card-product(data)
     if data.icon
-        a.card-product(href="#" class= [data.color ? `card-product--${data.color}` : '', data.size ? `card-product--size-${data.size}` : '', data.bgClass ? data.bgClass : 'bg-dark-10'])&attributes(
+        .card-product(href="#" class= [data.color ? `card-product--${data.color}` : '', data.size ? `card-product--size-${data.size}` : '', data.bgClass ? data.bgClass : 'bg-dark-10'])&attributes(
             attributes)
             div.card-product__inner
                 div.card-product__content.mw-100
@@ -13,7 +13,7 @@ mixin card-product(data)
                         block
                 div.card-product__footer
                     if data.link
-                        span.btn.btn-link.btn-icon.d-none.d-md-inline-flex
+                        span.btn.btn-link.btn-icon.d-none.d-md-inline-flex(role="button",tabindex="0",aria-label="Подробнее")
                             span!= data.link
                             +svg-use("icon-chevron-right", "icon size-m")
                     img(src=`img/icons/${data.iconImg ? data.iconImg : 'money-orange'}.svg`, alt="", loading="lazy" class= data.link ? "ms-auto" : "").icon.size-xxl
