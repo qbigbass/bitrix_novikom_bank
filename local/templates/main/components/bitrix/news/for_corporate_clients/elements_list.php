@@ -114,9 +114,7 @@ $headerView->render(
 </section>
 <?
 global $announcementsFilter;
-$announcementsFilter = [
-    'ACTIVE' => 'Y',
-];
+$announcementsFilter = [];
 if (!empty($component->arParams['SEF_FOLDER'])) {
     $announcementsFilter['SECTION_CODE'] = basename($component->arParams['SEF_FOLDER']);
 }
@@ -135,7 +133,7 @@ if (!empty($component->arParams['SEF_FOLDER'])) {
                     "AJAX_OPTION_HISTORY" => "N",
                     "AJAX_OPTION_JUMP" => "N",
                     "AJAX_OPTION_STYLE" => "Y",
-                    "CACHE_FILTER" => "N",
+                    "CACHE_FILTER" => "Y",
                     "CACHE_GROUPS" => "Y",
                     "CACHE_TIME" => "36000000",
                     "CACHE_TYPE" => "A",

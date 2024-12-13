@@ -452,7 +452,7 @@ if (!empty($arResult['PROPERTIES']['SHOW_ANNOUNCEMENTS']['VALUE'])): ?>
                     "AJAX_OPTION_HISTORY" => "N",
                     "AJAX_OPTION_JUMP" => "N",
                     "AJAX_OPTION_STYLE" => "Y",
-                    "CACHE_FILTER" => "N",
+                    "CACHE_FILTER" => "Y",
                     "CACHE_GROUPS" => "Y",
                     "CACHE_TIME" => "36000000",
                     "CACHE_TYPE" => "A",
