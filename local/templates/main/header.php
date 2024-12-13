@@ -38,6 +38,7 @@ $asset->addJs('/frontend/dist/js/tabs.js');
 $asset->addJs('/frontend/dist/js/charts.js');
 $asset->addJs('/frontend/dist/js/yMap.js');
 $asset->addJs('/frontend/dist/js/index.js');
+$asset->addJs('/frontend/dist/js/accessibility-panel.js');
 ?>
 
 <!DOCTYPE html>
