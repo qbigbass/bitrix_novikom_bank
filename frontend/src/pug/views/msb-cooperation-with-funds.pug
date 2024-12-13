@@ -286,7 +286,7 @@ block content
                     +tabs-simple(
                         serviceTabsList, true, 'min-w-100 min-w-sm-auto', 'text-center'
                     ).tabs-panel--full-width-items.tabs-panel--auto-width-md
-                .tab-content.mt-6.mt-lg-7
+                .tab-content.mt-4.mt-md-6.mt-lg-7
                     #terms.tab-pane.fade(role="tabpanel" aria-labelledby="terms" tabindex="0")
                         .row.row-gap-6.row-gap-lg-7
                             .col-12
@@ -332,14 +332,14 @@ block content
             .row
                 .col-12
                     .swiper.js-slider-cards.slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:1,tablet-album:2,laptop:2,laptop-x:2" data-space-between="mobile-s:8,mobile:8,tablet-album:16,tablet:16,laptop:16,laptop-x:16")
-                        .swiper-wrapper.js-swiper-wrapper 
+                        .swiper-wrapper.js-swiper-wrapper
                             .swiper-slide.js-swiper-slide
                                 +card-about(cardAboutBankData, 'bg-heavy-violet').h-100
                             .swiper-slide.js-swiper-slide
                                 +card-feedback(cardFeedbackData, 'bg-white').h-100
 
                         +slider-controls().mt-3.mt-md-4
-                        
+
     section.section-layout
         .container
             h3.px-lg-6.mb-4.mb-md-6.mb-lg-7
