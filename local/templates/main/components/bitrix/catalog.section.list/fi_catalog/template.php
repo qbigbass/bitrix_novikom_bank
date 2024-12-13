@@ -29,7 +29,7 @@ use Bitrix\Main\Localization\Loc;
                                 <?if (!empty($item["PICTURE"])) :?>
                                     <img class="card-product__img" src="<?= $item["PICTURE"]["SRC"]?>" alt="" loading="lazy">
                                 <?endif;?>
-                                <a class="btn btn-link btn-icon m-auto m-lg-0" href="<?= $item["SECTION_PAGE_URL"] ?>">
+                                <a class="btn btn-link btn-icon m-auto m-lg-0 py-2 py-lg-0" href="<?= $item["SECTION_PAGE_URL"] ?>">
                                     <span><?= Loc::getMessage("FL_CATALOG_LINK_DETAIL_TITLE")?></span>
                                     <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                                         <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>

@@ -251,6 +251,11 @@
         line-height: 1.25;
         font-weight: 700;
 
+        @include use-media(mobile-s, tablet) {
+            font-size: 1.75rem;
+            line-height: 1.3;
+        }
+
         @include use-media(tablet) {
             font-size: 2.25rem; //36px
             line-height: 1.32;
