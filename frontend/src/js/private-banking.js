@@ -16,6 +16,10 @@ const ELEMS_PB_BUTTON = {
     btnTop: '.js-scroll-to-top',
 }
 
+const ELEMS_PB_SELECT = {
+    select: ".js-select-date",
+}
+
 const pbNavMenu = () => {
     const menu = document.querySelector(ELEMS_PB_NAV.navMenu);
     const button = document.querySelector(ELEMS_PB_NAV.button);
@@ -66,6 +70,43 @@ function pbScrollToTop() {
     if (!button) return false;
 
     button.addEventListener('click', () => {
-        $("html").animate({ scrollTop: 0 }, "slow");
+        $("html, body").animate({ scrollTop: 0 }, 1000, "swing");
     })
+}
+
+function addSelectDateOptions() {
+    const select = document.querySelector(ELEMS_PB_SELECT.select);
+
+    if (!select) return false;
+
+    let today = new Date();
+
+    const formatDate = (date) => {
+        const day = date.getDate();
+        const month = ['Января', 'Февраля', 'Марта', 'Апреля', 'Мая', 'Июня', 'Июля', 'Августа', 'Сентября', 'Октября', 'Ноября', 'Декабря'][date.getMonth()];
+        const year = date.getFullYear();
+        const daysDiff = Math.round((date - today) / (1000 * 60 * 60 * 24));
+        if (daysDiff === 0) {
+            return `Сегодня, ${day} ${month} ${year}`;
+        } else if (daysDiff === 1) {
+            return `Завтра, ${day} ${month} ${year}`;
+        } else {
+            const daysOfWeek = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
+            const dayOfWeek = daysOfWeek[date.getDay()];
+            return `${dayOfWeek}, ${day} ${month} ${year}`;
+        }
+    }
+
+    const optionToday = document.createElement('option');
+    optionToday.value = formatDate(today);
+    optionToday.text = formatDate(today);
+    select.appendChild(optionToday);
+
+    for (let i = 1; i <= 14; i++) {
+        const date = new Date(today.getTime() + i * 24 * 60 * 60 * 1000);
+        const option = document.createElement('option');
+        option.value = formatDate(date);
+        option.text = formatDate(date);
+        select.appendChild(option);
+    }
 }

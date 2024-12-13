@@ -337,6 +337,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initCardSlider();
     initAnnouncementSlider();
     initTabsSlider();
+    addSelectDateOptions();
     initSelect2();
     initTabsContent();
     initInputSlider();
