@@ -76,7 +76,6 @@ function syncInputs(inputs) {
     });
 
     inputs[0].addEventListener('blur', () => {
-        inputs[1].value = inputs[0].value;
         inputs[1].dispatchEvent(new Event('blur'))
     })
 }
