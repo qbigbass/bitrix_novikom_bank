@@ -19,7 +19,7 @@ $(document).ready(function () {
   const savedFontSize = localStorage.getItem("accessibilityFontSize");
   const savedContrast = localStorage.getItem("accessibilityContrast");
   const isPanelOpen = localStorage.getItem("accessibilityPanelOpen") === "true";
-  
+   
   if (isPanelOpen) {
     openAccessibilityPanel();
   } else {
