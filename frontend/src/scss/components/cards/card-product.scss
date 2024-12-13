@@ -52,11 +52,7 @@
         }
 
         @include use-media(tablet-album) {
-            gap: 3rem;
-        }
-
-        @include use-media(laptop) {
-            gap: 3rem;
+            gap: 2.5rem;
         }
     }
 
@@ -279,5 +275,17 @@
 
     &--size-height-auto {
         min-height: 0;
+
+        #{$root}__inner {
+            @include use-media(mobile-s, tablet-album) {
+                gap: 0;
+            }
+        }
+
+        #{$root}__footer {
+            @include use-media(mobile-s, laptop) {
+                margin-top: 0;
+            }
+        }
     }
 }

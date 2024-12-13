@@ -21,7 +21,8 @@ $helper = $headerView->helper();
 $headerView->render(
     $APPLICATION->GetTitle(),
     '',
-    ['bg-linear-blue']
+    ['bg-linear-blue'],
+    1
 );
 
 $context = Application::getInstance()->getContext();

@@ -1,6 +1,13 @@
 <?php
 $arUrlRewrite = [
     [
+        'CONDITION' => '#^/for-corporate-clients/customer-announcements/#',
+        'RULE' => '',
+        'ID' => 'bitrix:news',
+        'PATH' => '/for-corporate-clients/customer-announcements/index.php',
+        'SORT' => 100,
+    ],
+    [
         'CONDITION' => '#^/support/very_important_information/#',
         'RULE' => '',
         'ID' => 'bitrix:catalog',
@@ -12,6 +19,13 @@ $arUrlRewrite = [
         'RULE' => '',
         'ID' => 'bitrix:news',
         'PATH' => '/support/announcements_for_clients/index.php',
+        'SORT' => 100,
+    ],
+    [
+        'CONDITION' => '#^/support/questions_and_answers/#',
+        'RULE' => '',
+        'ID' => 'bitrix:news',
+        'PATH' => '/support/questions_and_answers/index.php',
         'SORT' => 100,
     ],
     [
@@ -29,10 +43,10 @@ $arUrlRewrite = [
         'SORT' => 100,
     ],
     [
-        'CONDITION' => '#^/for-corporate-clients/customer-announcements/#',
+        'CONDITION' => '#^/financial-institutions/#',
         'RULE' => '',
-        'ID' => 'bitrix:news',
-        'PATH' => '/for-corporate-clients/customer-announcements/index.php',
+        'ID' => 'bitrix:catalog',
+        'PATH' => '/financial-institutions/index.php',
         'SORT' => 100,
     ],
     [
@@ -57,6 +71,13 @@ $arUrlRewrite = [
         'SORT' => 100,
     ],
     [
+        'CONDITION' => '#^/about/purchases/#',
+        'RULE' => '',
+        'ID' => 'bitrix:news',
+        'PATH' => '/about/purchases/index.php',
+        'SORT' => 100,
+    ],
+    [
         'CONDITION' => '#^/bonus-programs/#',
         'RULE' => '',
         'ID' => 'bitrix:news',
@@ -75,13 +96,6 @@ $arUrlRewrite = [
         'RULE' => '',
         'ID' => 'bitrix:news',
         'PATH' => '/about/career/index.php',
-        'SORT' => 100,
-    ],
-    [
-        'CONDITION' => '#^/about/purchases/#',
-        'RULE' => '',
-        'ID' => 'bitrix:news',
-        'PATH' => '/about/purchases/index.php',
         'SORT' => 100,
     ],
     [
@@ -117,13 +131,6 @@ $arUrlRewrite = [
         'RULE' => '',
         'ID' => 'bitrix:news',
         'PATH' => '/about/index.php',
-        'SORT' => 100,
-    ],
-    [
-        'CONDITION' => '#^/financial-institutions/#',
-        'RULE' => '',
-        'ID' => 'bitrix:catalog',
-        'PATH' => '/financial-institutions/index.php',
         'SORT' => 100,
     ],
     [

@@ -74,6 +74,7 @@ block content
                 iconImg: "hands_violet",
                 link: "Подробнее",
                 bgClass: 'bg-white',
+                size: 'height-auto'
             },
             {
                 title: "Гарантии<br>и обязательства",
@@ -81,6 +82,7 @@ block content
                 iconImg: "reputation",
                 link: "Подробнее",
                 bgClass: 'bg-white',
+                size: 'height-auto'
             },
             {
                 title: "Организация<br>облигационных займов",
@@ -88,6 +90,7 @@ block content
                 iconImg: "doc-money_violet",
                 link: "Подробнее",
                 bgClass: 'bg-white',
+                size: 'height-auto'
             },
             {
                 title: "Депозитарное обслуживание",
@@ -95,6 +98,7 @@ block content
                 iconImg: "ticket",
                 link: "Подробнее",
                 bgClass: 'bg-white',
+                size: 'height-auto'
             },
             {
                 title: "Финансирование экспортно-импортных операций",
@@ -102,6 +106,7 @@ block content
                 iconImg: "export-money",
                 link: "Подробнее",
                 bgClass: 'bg-white',
+                size: 'height-auto'
             },
             {
                 title: "Система<br>Банк-клиент",
@@ -109,6 +114,7 @@ block content
                 iconImg: "account_violet",
                 link: "Подробнее",
                 bgClass: 'bg-white',
+                size: 'height-auto'
             },
             {
                 title: "Стимулирование экспорта стран СНГ",
@@ -116,6 +122,7 @@ block content
                 iconImg: "export-up",
                 link: "Подробнее",
                 bgClass: 'bg-white',
+                size: 'height-auto'
             },
         ];
 
@@ -375,25 +382,4 @@ block content
 
                         +slider-controls().mt-3.mt-md-4
 
-    section.section-layout.bg-dark-10
-        .container
-            .row
-                .col-12.col-xxl-6.d-flex.flex-column.gap-6.gap-lg-7
-
-                    a(href="#").h3.d-flex.align-items-center.ps-lg-6
-                        span Объявления
-                            |
-                            |
-                            span.d-none.d-md-inline для клиентов
-                        span.icon.size-m.violet-100.ms-auto.ms-md-3
-                            +svg-use("icon-chevron-right")
-
-                    div.ps-lg-6.mt-xxl-auto.mw-100
-                        .swiper.js-announcement-slider
-                            .swiper-wrapper
-                                each item in announcementList
-                                    .swiper-slide.js-announcement-slide
-                                        +announcement(item)
-
-                            +slider-controls().mt-3.mt-md-4
-        +pattern-bg('section-2', 'light', 'pattern-bg--hide-mobile')
+    include ../includes/layout/section-announcement
