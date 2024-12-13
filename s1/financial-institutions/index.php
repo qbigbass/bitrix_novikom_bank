@@ -203,7 +203,6 @@ $APPLICATION->SetTitle('Финансовым институтам');
             "element" => "#SECTION_CODE#/#ELEMENT_CODE#/",
             "compare" => "compare/",
         ],
-        "MAIN_CHAIN_TITLE" => "Финансовым институтам",
     ],
     false
 );?>
@@ -226,7 +225,7 @@ $APPLICATION->IncludeComponent(
         "AJAX_OPTION_STYLE" => "Y",
         "CACHE_TYPE" => "A",
         "CACHE_TIME" => "36000000",
-        "CACHE_FILTER" => "N",
+        "CACHE_FILTER" => "Y",
         "CACHE_GROUPS" => "Y",
         "CHECK_DATES" => "Y",
         "DETAIL_URL" => "",
@@ -240,7 +239,7 @@ $APPLICATION->IncludeComponent(
         "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
         "INCLUDE_SUBSECTIONS" => "N",
         "MESSAGE_404" => "",
-        "NEWS_COUNT" => "2",
+        "NEWS_COUNT" => "20",
         "PAGER_BASE_LINK_ENABLE" => "N",
         "PAGER_DESC_NUMBERING" => "N",
         "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",

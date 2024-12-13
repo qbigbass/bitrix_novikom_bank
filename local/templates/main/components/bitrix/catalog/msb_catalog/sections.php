@@ -45,8 +45,8 @@ $APPLICATION->IncludeComponent(
         "FIELD_CODE" => ["ID", "NAME", "PREVIEW_TEXT", "DETAIL_PICTURE"],
         "FILTER_NAME" => "",
         "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-        "IBLOCK_ID" => iblock('fi_main_slider'),
-        "IBLOCK_TYPE" => "for_financial_institutes",
+        "IBLOCK_ID" => iblock('msb_main_slider'),
+        "IBLOCK_TYPE" => "for_msb",
         "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
         "INCLUDE_SUBSECTIONS" => "N",
         "MESSAGE_404" => "",
@@ -74,12 +74,12 @@ $APPLICATION->IncludeComponent(
         "SORT_ORDER1" => "DESC",
         "SORT_ORDER2" => "ASC",
         "STRICT_SECTION_CHECK" => "N",
-        "CLASS_SECTION" => "banner-hero--type-light bg-gradient-graphite",
+        "CLASS_SECTION" => "banner-hero--heavy-violet banner-hero--type-msb",
     ],
     $component
 );
 
-/* Карточки разделов ИБ "Финансовым институтам / Каталог услуг" */
+/* Карточки разделов ИБ "МСБ / Каталог услуг" */
 $APPLICATION->IncludeComponent(
     "bitrix:catalog.section.list",
     "fi_catalog",
@@ -96,17 +96,23 @@ $APPLICATION->IncludeComponent(
         "SHOW_PARENT_NAME" => $arParams["SECTIONS_SHOW_PARENT_NAME"],
         "HIDE_SECTION_NAME" => ($arParams["SECTIONS_HIDE_SECTION_NAME"] ?? "N"),
         "ADD_SECTIONS_CHAIN" => ($arParams["ADD_SECTIONS_CHAIN"] ?? ''),
-        "SECTION_USER_FIELDS" => ["UF_FI_ICON", "UF_FI_POS"],
-        "CLASS_SECTION_POS_1" => "bg-dark-30"
+        "SECTION_USER_FIELDS" => ["UF_FI_ICON", "UF_FI_POS", "UF_TITLE_MAIN"],
+        "SHOW_AD_INTERNET_BANK" => "Y",
+        "SHOW_AD_OPEN_ACC_NOVIKOM" => "Y",
+        "CLASS_SECTION_POS_1" => "bg-dark-10"
     ],
     $component,
     ($arParams["SHOW_TOP_ELEMENTS"] !== "N" ? array("HIDE_ICONS" => "Y") : array())
 );
 
-/* Блок "Тарифы и документы" */
+/* Блок "Объявления для клиентов" */
+$GLOBALS["adsFilter"] = [
+    "ACTIVE" => "Y",
+    "SECTION_CODE" => "msb"
+];
 $APPLICATION->IncludeComponent(
     "bitrix:news.list",
-    "fi_tariffs",
+    "fi_ads_clients",
     [
         "ACTIVE_DATE_FORMAT" => "d.m.Y",
         "ADD_SECTIONS_CHAIN" => "N",
@@ -115,19 +121,19 @@ $APPLICATION->IncludeComponent(
         "AJAX_OPTION_HISTORY" => "N",
         "AJAX_OPTION_JUMP" => "N",
         "AJAX_OPTION_STYLE" => "Y",
-        "CACHE_FILTER" => $arParams["CACHE_FILTER"],
-        "CACHE_GROUPS" => $arParams["CACHE_GROUPS"],
-        "CACHE_TIME" => $arParams["CACHE_TIME"],
-        "CACHE_TYPE" => $arParams["CACHE_TYPE"],
+        "CACHE_TYPE" => "A",
+        "CACHE_TIME" => "36000000",
+        "CACHE_FILTER" => "Y",
+        "CACHE_GROUPS" => "Y",
         "CHECK_DATES" => "Y",
         "DETAIL_URL" => "",
         "DISPLAY_BOTTOM_PAGER" => "N",
         "DISPLAY_TOP_PAGER" => "N",
-        "FIELD_CODE" => ["NAME"],
-        "FILTER_NAME" => "",
+        "FIELD_CODE" => ["NAME", "DETAIL_PAGE_URL"],
+        "FILTER_NAME" => "adsFilter",
         "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-        "IBLOCK_ID" => iblock('fi_tariffs_documents'),
-        "IBLOCK_TYPE" => "for_financial_institutes",
+        "IBLOCK_ID" => iblock('ads_for_customers_ru'),
+        "IBLOCK_TYPE" => "support",
         "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
         "INCLUDE_SUBSECTIONS" => "N",
         "MESSAGE_404" => "",
@@ -142,7 +148,7 @@ $APPLICATION->IncludeComponent(
         "PARENT_SECTION" => "",
         "PARENT_SECTION_CODE" => "",
         "PREVIEW_TRUNCATE_LEN" => "",
-        "PROPERTY_CODE" => ["FILE"],
+        "PROPERTY_CODE" => ["NAME_MENU"],
         "SET_BROWSER_TITLE" => "N",
         "SET_LAST_MODIFIED" => "N",
         "SET_META_DESCRIPTION" => "N",
@@ -150,18 +156,11 @@ $APPLICATION->IncludeComponent(
         "SET_STATUS_404" => "N",
         "SET_TITLE" => "N",
         "SHOW_404" => "N",
-        "SORT_BY1" => "ACTIVE_FROM",
+        "SORT_BY1" => "PROPERTY_DATE",
         "SORT_BY2" => "SORT",
         "SORT_ORDER1" => "DESC",
         "SORT_ORDER2" => "ASC",
         "STRICT_SECTION_CHECK" => "N",
-        "NO_TABS_PADDING" => "Y",
     ],
-    $component
+    false
 );
-
-/* Блок "Контакты" */
-echo showBlockContact();
-echo $GLOBALS["BLOCK_CONTACT"];
-?>
-

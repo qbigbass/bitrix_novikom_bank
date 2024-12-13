@@ -140,4 +140,11 @@ $arUrlRewrite = [
         'PATH' => '/loans/index.php',
         'SORT' => 100,
     ],
+    [
+        'CONDITION' => '#^/msb/#',
+        'RULE' => '',
+        'ID' => 'bitrix:catalog',
+        'PATH' => '/msb/index.php',
+        'SORT' => 100,
+    ],
 ];
