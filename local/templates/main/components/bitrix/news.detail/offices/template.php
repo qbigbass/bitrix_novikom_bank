@@ -16,9 +16,6 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
  */
 $this->setFrameMode(true);
 
-$asset = \Bitrix\Main\Page\Asset::getInstance();
-$asset->addJs('https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=' . COption::GetOptionString('fileman', 'yandex_map_api_key'));
-
 $arItem = $arResult;
 
 ?>
@@ -31,7 +28,7 @@ $arItem = $arResult;
     <div class="map-content">
         <div class="map-content__header map-content__header--type-back d-flex flex-column row-gap-4 row-gap-md-6">
             <div class="d-flex gap-3 justify-content-between align-items-center">
-                <a class="btn btn-link btn-lg btn-icon" href="/offices-atm/">
+                <a class="btn btn-link btn-lg btn-icon" href="<?= $arItem['SECTION_URL'] ?>">
                     <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                         <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-arrow-left"></use>
                     </svg>

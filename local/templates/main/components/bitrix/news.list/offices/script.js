@@ -107,8 +107,8 @@ class OfficesMap {
     renderOfficesPlacemarks() {
         this.clearOfficesPlacemarks()
 
-        let iconDefaultSize = [40, 48]; // Размер иконки
-        let iconDefaultPath = '/frontend/dist/img/office-pin.svg'; // Путь к иконке офиса
+        let iconDefaultSize = [40, 48] // Размер иконки
+        let iconDefaultPath = '/frontend/dist/img/office-pin.svg' // Путь к иконке офиса
         let iconDefaultOffset = [-20, -24] // Смещение иконки
 
         this.filteredOffices.forEach(item => {
@@ -118,13 +118,24 @@ class OfficesMap {
                 iconImageSize: iconDefaultSize,
                 iconImageOffset: iconDefaultOffset,
             });
-            this.myMap.geoObjects.add(myPlacemark);
+
+            myPlacemark.events.add(['click'],  (e) => {
+                location.href = item.url
+            })
+
+            this.myMap.geoObjects.add(myPlacemark)
         })
 
-        // this.myMap.setBounds(this.myMap.geoObjects.getBounds())
+        this.myMap.setBounds(this.myMap.geoObjects.getBounds(), {
+            checkZoomRange: true
+        }).then(() => {
+            if (this.myMap.getZoom() > 14) {
+                this.myMap.setZoom(14)
+            }
+        })
 
-        // this.clusterer.add(this.geoObjects);
-        // this.myMap.geoObjects.add(this.clusterer);
+        // this.clusterer.add(this.geoObjects)
+        // this.myMap.geoObjects.add(this.clusterer)
     }
 
     renderOfficesList() {
