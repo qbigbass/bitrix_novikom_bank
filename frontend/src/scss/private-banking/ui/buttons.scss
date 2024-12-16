@@ -201,7 +201,7 @@
 .btn-pb-up {
   position: fixed;
   right: 1.5rem;
-  bottom: 1rem;
+  bottom: 2.5rem;
   border-radius: .25rem;
   background-color: rgba(19, 19, 22, 0.75);
   border: 1px solid rgba(19, 19, 22, 0.75);
@@ -213,7 +213,7 @@
 
   @include use-media(tablet-album) {
     right: 2.5rem;
-    bottom: 2.5rem;
+    //bottom: 2.5rem;
     padding: .75rem;
     background-color: rgba(19, 19, 22, 0.6);
     border: 1px solid rgba(19, 19, 22, 0.6);
@@ -222,6 +222,11 @@
   &:hover {
     color: var(--dark-0);
     border-color: rgba(#fff, .5);
+  }
+
+  &--absolute {
+    position: absolute;
+    bottom: calc(100% + 1.25rem);
   }
 
   & svg {

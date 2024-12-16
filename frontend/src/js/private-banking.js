@@ -83,11 +83,24 @@ function pbScrollTo() {
         }, 1000);
     })
 
-    $(window).scroll(function() {
-        if ($(this).scrollTop() > window.innerHeight) {
-            $('#scrollToTop').fadeIn();
+    const $scrollToTopButton = $('#scrollToTop');
+    const $footer = $('footer');
+
+    $(window).on('scroll', function() {
+        const windowHeight = $(window).height();
+        const scrollY = $(this).scrollTop();
+        const footerTop = $footer.offset().top;
+
+        if (scrollY > windowHeight) {
+            $scrollToTopButton.fadeIn();
         } else {
-            $('#scrollToTop').fadeOut();
+            $scrollToTopButton.fadeOut();
+        }
+
+        if (footerTop < windowHeight + scrollY - 20) { // 20px- отступ от футера
+            $scrollToTopButton.addClass('btn-pb-up--absolute')
+        } else {
+            $scrollToTopButton.removeClass('btn-pb-up--absolute')
         }
     });
 }
