@@ -71,5 +71,6 @@
   left: 0;
   z-index: 11;
   background: radial-gradient(84.42% 84.42% at 50% 15.58%, rgba(55, 17, 106, 0.70) 0%, rgba(0, 0, 0, 0.70) 100%);
+  -webkit-backdrop-filter: blur(1.25rem);
   backdrop-filter: blur(1.25rem);
 }

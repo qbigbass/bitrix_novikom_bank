@@ -240,7 +240,6 @@
   $root: #{&};
 
   position: absolute;
-  overflow: hidden;
 
   &__blink {
     position: absolute;
@@ -431,26 +430,11 @@
 @keyframes blink-move-right {
   0% {
     transform: translate(-5%, -6rem);
-    opacity: 0;
-  }
-  20% {
-    opacity: 1;
-  }
-  35% {
-    opacity: 1;
   }
   50% {
-    opacity: 0;
-    transform: translate(95%, -6rem);
-  }
-  65% {
-    opacity: 1;
-  }
-  85% {
-    opacity: 1;
+    transform: translate(100%, -6rem);
   }
   100% {
-    opacity: 0;
     transform: translate(-5%, -6rem);
   }
 }

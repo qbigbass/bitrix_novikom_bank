@@ -6,6 +6,7 @@
   line-height: 1.4;
   border-radius: .5rem;
   background: rgba(63, 37, 100, 0.80);
+  -webkit-backdrop-filter: blur(.625rem);
   backdrop-filter: blur(.625rem);
   white-space: nowrap;
   width: auto !important;
