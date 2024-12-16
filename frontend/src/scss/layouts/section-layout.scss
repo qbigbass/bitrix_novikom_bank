@@ -53,6 +53,10 @@
         z-index: 1;
     }
 
+    &:has(.modal) .container {
+        z-index: 2;
+    }
+
     @at-root .scrollspy & {
         overflow: unset;
         scroll-margin-top: 8rem;
