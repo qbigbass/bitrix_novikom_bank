@@ -429,13 +429,28 @@
 
 @keyframes blink-move-right {
   0% {
-    transform: translate(-5%, -6rem);
+    transform: translate(0%, -6rem);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 1;
   }
   50% {
-    transform: translate(100%, -6rem);
+    transform: translate(90%, -6rem);
+    opacity: 0;
+  }
+  60% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
   }
   100% {
-    transform: translate(-5%, -6rem);
+    opacity: 0;
+    transform: translate(0%, -6rem);
   }
 }
 
