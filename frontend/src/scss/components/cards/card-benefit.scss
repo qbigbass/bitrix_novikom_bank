@@ -11,7 +11,7 @@
         & br {
             display: none;
 
-            @include use-media(laptop) {
+            @include use-media(tablet-album) {
                 display: inherit;
             }
         }
@@ -28,7 +28,7 @@
             height: 12.5rem;
         }
 
-        @include use-media(laptop) {
+        @include use-media(tablet-album) {
             position: absolute;
             width: 17.5rem;
             height: 17.5rem;
@@ -60,7 +60,7 @@
         overflow: hidden;
         height: 100%;
 
-        @include use-media(laptop) {
+        @include use-media(tablet-album) {
             min-height: 19rem; //304px
 
             & #{$root}__content {

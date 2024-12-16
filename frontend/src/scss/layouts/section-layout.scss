@@ -2,6 +2,7 @@
     padding-top: 2.5rem;
     padding-bottom: 2.5rem;
     position: relative;
+    overflow: hidden;
 
     @include use-media(tablet) {
         padding-top: 4rem;
@@ -55,6 +56,6 @@
 
     @at-root .scrollspy & {
         overflow: unset;
-        scroll-margin-top: 8rem;
+        scroll-margin-top: 5rem;
     }
 }

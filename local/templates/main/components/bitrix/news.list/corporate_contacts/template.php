@@ -58,7 +58,7 @@ $this->setFrameMode(true); ?>
                                                             </svg>
                                                         </span>
                                                         <div class="list-contact__text d-flex flex-wrap gap-2">
-                                                            <a class="text-decoration-underline list-contact__link" href="emailto:<?= $item['PROPERTIES']['EMAIL']['VALUE'] ?>">
+                                                            <a class="text-decoration-underline list-contact__link" href="mailto:<?= $item['PROPERTIES']['EMAIL']['VALUE'] ?>">
                                                                 <span class="text-l"><?= $item['PROPERTIES']['EMAIL']['VALUE'] ?></span>
                                                             </a>
                                                         </div>
@@ -102,7 +102,7 @@ $this->setFrameMode(true); ?>
                             </div>
                         </div>
                     </div>
-                    <div class="slider-controls js-swiper-controls mt-3 mt-md-4">
+                    <div class="slider-controls js-swiper-controls mt-3">
                         <div class="slider-controls__pagination js-swiper-pagination"></div>
                         <div class="slider-controls__navigation js-swiper-nav">
                             <button class="swiper-button-prev js-swiper-prev" type="button">

@@ -131,6 +131,8 @@
   }
 
   &--md-col2 {
+    row-gap: 1.5rem;
+
     @include use-media(tablet) {
       display: block;
       column-count: 2;

@@ -19,7 +19,7 @@ $this->setFrameMode(true);?>
     <div class="container banner-text__container position-relative z-2">
         <div class="row ps-lg-6">
             <div class="col-12 col-xxl-8 position-relative z-1 mb-5 mb-md-0 pt-6">
-                <div class="d-flex flex-column align-items-start gap-3 gap-md-4">
+                <div class="d-flex flex-column align-items-start gap-3 gap-lg-4">
                     <?
                     $helper = new ComponentHelper($component);
                     $helper->deferredCall('showNavChain', ['.default']);

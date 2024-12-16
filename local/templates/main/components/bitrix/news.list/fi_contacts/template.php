@@ -20,7 +20,7 @@ use Bitrix\Main\Localization\Loc;
 ?>
 <section class="section-layout bg-dark-30">
     <div class="container">
-        <h3 class="mb-4 mb-md-6 mb-lg-7 px-lg-6"><?= Loc::getMessage("CONTACT_BLOCK_TITLE") ?></h3>
+        <h3 class="mb-6 mb-lg-7 px-lg-6"><?= Loc::getMessage("CONTACT_BLOCK_TITLE") ?></h3>
         <div class="row">
             <div class="col-12">
                 <div class="swiper slider-cards js-slider-cards"
@@ -33,7 +33,7 @@ use Bitrix\Main\Localization\Loc;
                                 <div class="contact-block contact-block--bg-white">
                                     <div class="contact-block__content d-flex flex-column justify-content-between row-gap-5 row-gap-md-6 row-gap-lg-7 h-100">
                                         <?if(!empty($item["PROPERTIES"]["DEPARTMENT"]["VALUE"])):?>
-                                            <div class="tag tag--outline contact-block__tag">
+                                            <div class="tag tag--outline tag--triangle-absolute contact-block__tag">
                                                 <?foreach ($item["DISPLAY_PROPERTIES"]["DEPARTMENT"]["LINK_ELEMENT_VALUE"] as $elemId => $arData):?>
                                                     <span class="tag__content text-s fw-semibold w-100 w-sm-auto"><?= $arData["NAME"] ?></span>
                                                 <? endforeach; ?>
@@ -50,7 +50,7 @@ use Bitrix\Main\Localization\Loc;
                                             <p class="mb-0 contact-block__description"><?= $item["PREVIEW_TEXT"] ?></p>
                                         </div>
                                         <div class="mt-auto">
-                                            <ul class="list-contact d-flex flex-column row-gap-4">
+                                            <ul class="list-contact d-flex flex-column row-gap-3">
                                                 <?if (!empty($item["PROPERTIES"]["PHONE"]["VALUE"])):?>
                                                     <li class="d-flex column-gap-3">
                                                         <span class="icon size-m flex-shrink-0 violet-100">
@@ -59,7 +59,7 @@ use Bitrix\Main\Localization\Loc;
                                                             </svg>
                                                         </span>
                                                         <div class="list-contact__text d-flex flex-wrap gap-2">
-                                                            <a class="list-contact__link" href="tel:+74959747187">
+                                                            <a class="list-contact__link" href="tel:<?= $item["PROPERTIES"]["PHONE"]["VALUE"] ?>">
                                                                 <span class="text-l"><?= $item["PROPERTIES"]["PHONE"]["VALUE"] ?></span>
                                                             </a>
                                                             <?if(!empty($item["PROPERTIES"]["PHONE_EXT"]["VALUE"])):?>
@@ -76,7 +76,7 @@ use Bitrix\Main\Localization\Loc;
                                                             </svg>
                                                         </span>
                                                         <div class="list-contact__text d-flex flex-wrap gap-2">
-                                                            <a class="text-decoration-underline list-contact__link" href="emailto:<?= $item["PROPERTIES"]["EMAIL"]["VALUE"] ?>">
+                                                            <a class="text-decoration-underline list-contact__link" href="mailto:<?= $item["PROPERTIES"]["EMAIL"]["VALUE"] ?>">
                                                                 <span class="text-l"><?= $item["PROPERTIES"]["EMAIL"]["VALUE"] ?></span>
                                                             </a>
                                                         </div>
@@ -101,7 +101,7 @@ use Bitrix\Main\Localization\Loc;
                             </div>
                         <? endforeach; ?>
                     </div>
-                    <div class="slider-controls js-swiper-controls mt-3 mt-md-4">
+                    <div class="slider-controls js-swiper-controls mt-3">
                         <div class="slider-controls__pagination js-swiper-pagination"></div>
                         <div class="slider-controls__navigation js-swiper-nav">
                             <button class="swiper-button-prev js-swiper-prev" type="button">
