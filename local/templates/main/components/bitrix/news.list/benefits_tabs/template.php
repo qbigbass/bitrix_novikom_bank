@@ -36,7 +36,7 @@ $this->setFrameMode(true);
                                                 </div>
                                                 <div class="card-benefit__read-more d-flex align-items-end justify-content-between">
                                                     <div class="card-benefit__icon">
-                                                        <img class="size-md-xxl icon" src="<?= $benefit['PREVIEW_PICTURE']['SRC'] ?? '' ?>" alt="<?= $benefit['PREVIEW_PICTURE']['ALT'] ?? '' ?>" loading="lazy"></div>
+                                                        <img class="size-xxl icon" src="<?= $benefit['PREVIEW_PICTURE']['SRC'] ?? '' ?>" alt="<?= $benefit['PREVIEW_PICTURE']['ALT'] ?? '' ?>" loading="lazy"></div>
                                                 </div>
                                             </div>
                                         </div>

@@ -69,6 +69,14 @@
         }
     }
 
+    &--lg-n6 {
+        @include use-media(tablet-album, laptop-x) {
+            margin-right: -2.5rem;
+            margin-left: -2.5rem;
+            min-width: calc(100% + 5rem);
+        }
+    }
+
     @at-root .swiper-slide & {
         height: 100%;
     }

@@ -115,7 +115,7 @@ use Bitrix\Main\Localization\Loc;
                                                 </div>
                                                 <div class="card-benefit__read-more d-flex align-items-end justify-content-between">
                                                     <div class="card-benefit__icon">
-                                                        <img class="yellow-100 size-md-xxl icon" src="<?= $card["PICTURE"] ?>" alt="" loading="lazy">
+                                                        <img class="yellow-100 size-xxl icon" src="<?= $card["PICTURE"] ?>" alt="" loading="lazy">
                                                     </div>
                                                 </div>
                                             </div>
@@ -840,7 +840,7 @@ use Bitrix\Main\Localization\Loc;
                                                                             <? if(!empty($arElements["DOCUMENTS"])):?>
                                                                                 <? foreach ($arElements["DOCUMENTS"] as $doc) : ?>
                                                                                     <a
-                                                                                        class="d-flex flex-column gap-1 py-3 document-download text-m"
+                                                                                        class="d-flex flex-column gap-2 py-3 document-download text-m"
                                                                                         href="<?= $doc["SRC"] ?>"
                                                                                         download=""
                                                                                     ><?= $doc["DESC"] ?>

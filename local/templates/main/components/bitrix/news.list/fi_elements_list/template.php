@@ -430,7 +430,7 @@ use Bitrix\Main\Localization\Loc;
                                                                             <div class="h4"><?= Loc::getMessage("STRATEGY_ITEM_TITLE_FILE")?></div>
                                                                             <div class="link-list">
                                                                                 <a
-                                                                                    class="d-flex flex-column gap-1 py-3 document-download text-m"
+                                                                                    class="d-flex flex-column gap-2 py-3 document-download text-m"
                                                                                     href="<?= $arStrategy["FILE"]["PATH"]?>"
                                                                                     download="<?= $arStrategy["FILE"]["NAME"]?>"
                                                                                 ><?= $arStrategy["FILE"]["NAME"]?>
