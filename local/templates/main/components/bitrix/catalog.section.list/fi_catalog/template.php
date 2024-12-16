@@ -101,6 +101,19 @@ use Bitrix\Main\Localization\Loc;
                             </div>
                         <?endif;?>
                     </div>
+                    <div class="col-12 d-md-none mt-4">
+                        <a
+                            class="d-flex gap-2 align-items-center justify-content-center violet-100 text-m fw-bold"
+                            data-bs-toggle="collapse"
+                            href="#more-finorg"
+                            role="button"
+                            aria-expanded="false"
+                            aria-controls="more-finorg"><?= Loc::getMessage("FL_CATALOG_SHOW_ALL_TITLE")?>
+                            <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-down"></use>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
             <? endif; ?>
         </div>
