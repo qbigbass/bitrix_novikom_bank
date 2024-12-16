@@ -35,7 +35,10 @@ const config = {
         rules: [
             {
                 test: /\.pug$/,
-                use: ['pug-loader?pretty=true']
+                use: [
+                    'thread-loader',
+                    'pug-loader?pretty=true'
+                ]
             },
             {
                 test: /\.css$/,

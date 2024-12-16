@@ -1,0 +1,1690 @@
+.accessibility {
+  &.yellow-contrast {
+    --yellow-contrast-bg: #f7f3d6;
+    --yellow-contrast-medium: #95a050;
+    --yellow-contrast-bg-dark: #546300;
+    --yellow-contrast-light: #4b5352;
+    --yellow-contrast-light-1: #d7ff6b;
+    --yellow-contrast-white: #4b5352;
+    --yellow-contrast-hover-link: #ccc900;
+    --blue-100: #63720c;
+    --blue-30: #ccc900;
+    --bs-white-rgb: #d7ff6b;
+    --purple-10: #d7ff6b;
+    --violet-100: #4b5352;
+    --dark-100: #f7f3d6;
+
+    //index.html
+
+    background-color: var(--yellow-contrast-bg);
+    color: var(--yellow-contrast-light);
+
+    h1.banner-hero-content__title {
+      color: var(--yellow-contrast-light);
+    }
+    .text-l.mb-0 {
+      color: var(--yellow-contrast-light);
+    }
+    .banner-hero {
+      background: none;
+
+      img {
+        display: none;
+      }
+    }
+    .icon > img,
+    .icon svg {
+      color: var(--yellow-contrast-light);
+    }
+    .main-menu__link {
+      color: var(--yellow-contrast-light);
+    }
+
+    .header__link {
+      color: var(--yellow-contrast-light);
+
+      &:hover {
+        color: var(--yellow-contrast-hover-link);
+      }
+    }
+
+    .header-contact-link__text {
+      color: var(--yellow-contrast-light);
+    }
+
+    .btn {
+      --bs-btn-color: var(--yellow-contrast-light-1);
+      --bs-btn-border-color: var(--yellow-contrast-light);
+      --bs-btn-bg: var(--yellow-contrast-light);
+
+      --bs-btn-hover-color: var(--yellow-contrast-light);
+      --bs-btn-hover-border-color: var(--yellow-contrast-light-1);
+      --bs-btn-hover-bg: var(--yellow-contrast-light-1);
+
+      --bs-btn-active-color: var(--yellow-contrast-light-1);
+      --bs-btn-active-border-color: var(--yellow-contrast-bg-dark);
+      --bs-btn-active-bg: var(--yellow-contrast-bg-dark);
+    }
+    .btn.btn-sm.btn-primary {
+      --bs-btn-color: var(--yellow-contrast-light-1);
+      --bs-btn-bg: var(--yellow-contrast-light);
+      --bs-btn-border-color: var(--yellow-contrast-light);
+
+      --bs-btn-hover-color: var(--yellow-contrast-light);
+
+      --bs-btn-active-bg: var(--yellow-contrast-medium);
+      --bs-btn-active-border-color: var(--yellow-contrast-medium);
+
+      &:hover {
+        background-color: var(--yellow-contrast-light-1);
+      }
+      &:active {
+        color: var(--yellow-contrast-light-1);
+        background-color: var(--yellow-contrast-bg-dark);
+      }
+      &:focus {
+        background-color: var(--yellow-contrast-light);
+        color: var(--yellow-contrast-light-1);
+      }
+    }
+
+    .dropdown-menu {
+      --bs-dropdown-link-color: var(--yellow-contrast-light);
+      --bs-dropdown-bg: var(--yellow-contrast-medium);
+      --bs-dropdown-link-active-bg: var(--yellow-contrast-light-1);
+    }
+
+    .dropdown-nav {
+      background-color: var(--yellow-contrast-medium);
+    }
+
+    .dropdown-item:hover {
+      color: var(--yellow-contrast-light-1);
+    }
+
+    .banner-hero-thumb {
+      background-color: var(--yellow-contrast-medium);
+      border-top: 1px solid #fff;
+
+      &::after {
+        background-color: var(--yellow-contrast-light);
+      }
+    }
+    .banner-hero-thumb:not(:first-child) {
+      border-left: 1px solid var(--yellow-contrast-light);
+    }
+
+    .dark-70 {
+      color: var(--yellow-contrast-medium);
+    }
+
+    .chip.text-s {
+      color: var(--yellow-contrast-medium);
+      background-color: var(--yellow-contrast-light);
+
+      &:hover {
+        transition: all 0.2s linear;
+        color: var(--yellow-contrast-light);
+        background-color: var(--yellow-contrast-light-1);
+      }
+    }
+
+    .section-layout .container h3.ps-lg-6.mb-6.mb-lg-7 {
+      color: var(--yellow-contrast-light);
+    }
+    .card-product.card-product--yellow::before,
+    .card-product.card-product--green::before,
+    .card-product.card-product--orange::before {
+      background-color: var(--yellow-contrast-hover-link);
+    }
+    .card-product.card-product--yellow,
+    .card-product.card-product--green,
+    .card-product.card-product--orange {
+      background-color: var(--yellow-contrast-medium);
+    }
+
+    .tag__content.text-s {
+      background-color: var(--yellow-contrast-hover-link);
+      color: var(--yellow-contrast-light);
+    }
+
+    .swiper-pagination-bullet {
+      background-color: var(--yellow-contrast-light);
+      height: 10px;
+      &-active {
+        background-color: var(--yellow-contrast-medium);
+      }
+    }
+    .card-service {
+      border-radius: 4px;
+      background-color: var(--yellow-contrast-medium);
+      &::after {
+        background: linear-gradient(
+          270deg,
+          rgb(149, 160, 80) 23.5%,
+          rgba(176, 207, 0, 0.171) 100%
+        );
+      }
+
+      & h4 {
+        color: var(--yellow-contrast-light);
+      }
+      &-salary {
+        background-color: var(--yellow-contrast-light);
+        border: none;
+        &-content {
+          .d-flex.flex-wrap.column-gap-6.row-gap-4.column-gap-md-7 {
+            .icon.size-m {
+              color: #fff;
+              transition: color 0.3s ease;
+            }
+
+            &:hover {
+              .icon.size-m {
+                color: var(--yellow-contrast-light);
+              }
+            }
+          }
+        }
+
+        &::after {
+          background: linear-gradient(
+            270deg,
+            rgb(149, 160, 80) 23.5%,
+            rgba(176, 207, 0, 0.171) 100%
+          );
+        }
+      }
+    }
+    .card-product {
+      border-radius: 5px;
+      &__content {
+        .d-inline-flex.flex-nowrap.align-items-baseline.text-l.fw-semibold.gap-1.violet-100 {
+          color: var(--yellow-contrast-medium);
+        }
+      }
+      &__title {
+        color: var(--yellow-contrast-medium);
+      }
+
+      &__button {
+        background-color: var(--yellow-contrast-light);
+        color: var(--yellow-contrast-light-1);
+        border: 1px solid var(--yellow-contrast-light);
+
+        &:hover {
+          background-color: var(--yellow-contrast-light-1);
+          color: var(--yellow-contrast-light);
+          border: 1px solid var(--yellow-contrast-light-1);
+        }
+      }
+      &__img {
+        display: none;
+      }
+    }
+
+    span.fw-semibold.text-s {
+      color: var(--yellow-contrast-bg);
+    }
+
+    .btn.btn-link.btn-lg-lg.text-info.btn-icon {
+      padding: 5px 12px;
+      border: none;
+      background-color: var(--yellow-contrast-light);
+
+      &:hover {
+        background-color: var(--yellow-contrast-light-1);
+        border: none;
+        color: var(--yellow-contrast-light) !important;
+        box-shadow: none;
+      }
+    }
+
+    .card-service-app {
+      background-color: var(--yellow-contrast-medium);
+
+      &::after {
+        content: "";
+
+        background: linear-gradient(
+          270deg,
+          rgb(149, 160, 80) 23.5%,
+          rgba(176, 207, 0, 0.171) 100%
+        );
+        z-index: -1;
+      }
+
+      & h3 {
+        color: var(--yellow-contrast-light);
+      }
+
+      & .btn {
+        border: none;
+        background-color: var(--yellow-contrast-light);
+        color: var(--yellow-contrast-light-1);
+
+        &:hover {
+          background-color: var(--yellow-contrast-light-1);
+          color: var(--yellow-contrast-light);
+          box-shadow: none;
+        }
+      }
+
+      .icon svg {
+        fill: var(--yellow-contrast-medium);
+      }
+    }
+
+    .section-layout {
+      background-color: var(--yellow-contrast-bg);
+      color: var(--yellow-contrast-light);
+      & h3 {
+        color: var(--yellow-contrast-light);
+      }
+      .announcement {
+        color: white;
+
+        span {
+          color: white;
+        }
+      }
+
+      .icon {
+        fill: white;
+      }
+    }
+
+    .nav-tabs {
+      .nav-link {
+        background-color: var(--yellow-contrast-bg);
+        color: var(--yellow-contrast-light);
+        border-color: var(--yellow-contrast-light);
+        &.active {
+          background-color: var(--yellow-contrast-light);
+          color: var(--yellow-contrast-bg);
+          border-color: var(--yellow-contrast-bg);
+        }
+      }
+    }
+
+    .tab-content {
+      color: var(--yellow-contrast-light);
+    }
+    .dark-70 {
+      color: var(--yellow-contrast-light);
+    }
+    #loan-consumer label,
+    #loan-consumer span,
+    #loan-consumer p {
+      color: var(--yellow-contrast-light);
+    }
+    .form-check-label a {
+      color: var(--yellow-contrast-light);
+    }
+
+    .card-calculate-result {
+      background-color: var(--yellow-contrast-medium);
+      &__label,
+      &__body {
+        color: var(--yellow-contrast-light);
+
+        .btn.btn-link.btn-sm.btn-icon.mt-2.mt-md-0 {
+          padding: 5px 16px;
+          color: var(--yellow-contrast-light-1);
+          background-color: var(--yellow-contrast-light);
+
+          &:hover {
+            background-color: var(--yellow-contrast-light-1);
+            color: var(--yellow-contrast-light);
+          }
+        }
+      }
+    }
+
+    .green-100 {
+      color: red;
+    }
+
+    .form-feedback.bg-white {
+      background: var(--yellow-contrast-bg);
+    }
+
+    form .btn.btn-primary.btn-lg-lg.w-100 {
+      background-color: var(--yellow-contrast-light);
+      color: var(--yellow-contrast-light-1);
+      border: none;
+      transition: background-color 0.25s ease;
+      &:hover {
+        background-color: var(--yellow-contrast-light-1);
+        border: none;
+        color: var(--yellow-contrast-light);
+      }
+    }
+
+    .section-layout .announcement span {
+      color: var(--yellow-contrast-light);
+    }
+
+    .card-about-bank__col:first-child:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background: linear-gradient(
+        270deg,
+        rgba(152, 188, 0, 0.9) 0%,
+        rgba(245, 244, 246, 0) 100%
+      );
+      transform: rotate(180deg);
+      z-index: 1;
+    }
+
+    .card-about-bank__col.d-flex.flex-column {
+      background-color: var(--yellow-contrast-medium);
+    }
+
+    .violet-100.fw-semibold.text-number-m.fw-bold {
+      color: var(--yellow-contrast-light);
+    }
+
+    .bg-dark-10 {
+      background-color: var(--yellow-contrast-light-1);
+    }
+    .dark-100 {
+      color: var(--yellow-contrast-light);
+    }
+
+    // .btn.btn-info.w-100.w-lg-auto {
+    //   background-color: red;
+    //   color: var(--yellow-contrast-white);
+    //   border: none;
+    //   &:hover {
+    //     background-color: var(--yellow-contrast-white);
+    //     color: var(--yellow-contrast-light);
+    //     border: none;
+    //   }
+    // }
+
+    .btn.btn-primary.btn-lg-lg.w-100 {
+      background-color: var(--yellow-contrast-light);
+      color: var(--yellow-contrast-light-1);
+      border: none;
+      &:hover {
+        background-color: var(--yellow-contrast-light-1);
+        color: var(--yellow-contrast-white);
+        border: none;
+      }
+    }
+
+    .section-currency-exchange__wrapper.collapse {
+      background-color: var(--yellow-contrast-medium);
+
+      h4,
+      .caption-m.dark-70.mt-2.d-block {
+        color: var(--yellow-contrast-light);
+      }
+    }
+
+    .d-flex.flex-column.row-gap-4.px-3.py-4.p-md-5.p-lg-6.bg-blue-10 {
+      background-color: var(--yellow-contrast-hover-link);
+    }
+
+    .purple-70 {
+      color: var(--yellow-contrast-white);
+    }
+
+    h5 {
+      color: var(--yellow-contrast-white);
+    }
+
+    .card-special.bg-dark-10.dark-100.h-100.d-flex.flex-column.row-gap-6.row-gap-lg-9 {
+      background-color: var(--yellow-contrast-medium);
+      border-radius: 5px;
+    }
+    .btn-app.btn.btn-primary.d-flex.align-items-center.gap-3.justify-content-center {
+      background-color: var(--yellow-contrast-white);
+      color: var(--yellow-contrast-light-1);
+      border: none;
+      & svg {
+        color: var(--yellow-contrast-light-1);
+      }
+      &:hover {
+        background-color: var(--yellow-contrast-light-1);
+        color: var(--yellow-contrast-light);
+        border: none;
+        & svg {
+          color: var(--yellow-contrast-light);
+        }
+      }
+    }
+    .d-flex.flex-column.row-gap-4.px-3.py-4.p-md-5.p-lg-6.bg-blue-10 {
+      background-color: var(--yellow-contrast-medium);
+    }
+    .btn.btn-link.d-inline-flex.gap-2.align-items-center {
+      background: transparent;
+      color: var(--yellow-contrast-light);
+      border: none;
+      &:hover {
+        background: none;
+        color: var(--yellow-contrast-medium);
+      }
+    }
+
+    .btn.btn-primary.btn-lg-lg {
+      background-color: var(--yellow-contrast-white);
+      color: var(--yellow-contrast-light-1);
+      border: none;
+      &:hover {
+        background-color: var(--yellow-contrast-light-1);
+        color: var(--yellow-contrast-white);
+        border: none;
+      }
+    }
+
+    .btn.btn-lg-lg.btn-outline-primary.d-flex.gap-2.align-items-center.justify-content-center {
+      background-color: var(--yellow-contrast-white);
+      color: var(--yellow-contrast-light-1);
+      border: none;
+      &:hover {
+        background-color: var(--yellow-contrast-light-1);
+        color: var(--yellow-contrast-white);
+        border: none;
+      }
+    }
+
+    a.btn-app.btn.d-inline-flex.justify-content-center.align-items-center.bg-white {
+      border: 1px solid var(--yellow-contrast-light);
+    }
+
+    .footer__info {
+      background-color: var(--yellow-contrast-medium);
+    }
+
+    .bg-blue-10 {
+      background-color: var(--yellow-contrast-bg);
+      color: var(--yellow-contrast-light);
+      border: 1px solid var(--yellow-contrast-medium);
+    }
+
+    .d-flex.gap-2.align-items-center {
+      color: var(--yellow-contrast-light);
+
+      &:hover {
+        color: var(--yellow-contrast-hover-link);
+        font-weight: 800;
+      }
+    }
+
+    .js-polygon-container-svg {
+      color: var(--yellow-contrast-medium);
+    }
+
+    //TRUST MANAGEMENT PAGE
+
+    .banner-product {
+      &--border-violet {
+        --border-top-color: var(--yellow-contrast-white);
+      }
+      &__wrapper {
+        background-color: var(--yellow-contrast-bg);
+      }
+
+      h1 {
+        color: var(--yellow-contrast-white);
+      }
+      &__subtitle.text-l {
+        color: var(--yellow-contrast-white);
+      }
+
+      .list.list--heavy.list--size-m.violet-100 {
+        color: var(--yellow-contrast-white);
+      }
+      & li::before {
+        background: var(--yellow-contrast-light);
+      }
+      &__image {
+        display: none;
+      }
+    }
+
+    .benefit__content.d-flex.flex-column.gap-3 {
+      color: var(--yellow-contrast-white);
+    }
+    .icon.size-xl {
+      filter: brightness(0) saturate(100%) invert(47%) sepia(9%) saturate(230%)
+        hue-rotate(158deg) brightness(90%) contrast(88%);
+    }
+    .icon.size-xxl {
+      filter: brightness(0) saturate(100%) invert(47%) sepia(9%) saturate(230%)
+        hue-rotate(158deg) brightness(90%) contrast(88%);
+    }
+
+    .js-polygon-container-svg {
+      display: block;
+    }
+
+    .helper__wrapper {
+      background-color: var(--yellow-contrast-light);
+    }
+
+    .helper__image.w-auto.float-end {
+      display: none;
+    }
+    .btn-app.btn.d-inline-flex.justify-content-center.align-items-center.bg-white {
+      background-color: var(--yellow-contrast-light);
+    }
+
+    .section-layout.bg-dark-10 {
+      background-color: var(--yellow-contrast-bg);
+    }
+
+    .card.overflow-hidden.position-relative {
+      background-color: var(--yellow-contrast-bg);
+      border: 1px solid var(--yellow-contrast-light);
+    }
+
+    .card__image-container.flex-shrink-0.mx-auto {
+      display: none;
+    }
+    .card-product.bg-dark-10.bg-dark-30 {
+      border: 1px solid var(--yellow-contrast-light);
+    }
+    .card__title.text-break {
+      color: var(--yellow-contrast-white);
+    }
+    .banner-product--graphite {
+      background: var(--yellow-contrast-medium);
+    }
+
+    .card__condition-list.d-flex.flex-column.flex-md-row.flex-wrap.gap-4.column-gap-md-11.column-gap-lg-16.row-gap-lg-6 {
+      color: var(--yellow-contrast-white);
+      & span {
+        color: var(--yellow-contrast-white);
+      }
+    }
+
+    .d-flex.flex-column.gap-4 {
+      color: var(--yellow-contrast-white);
+      border: none;
+    }
+
+    .list.list--size-l li:before {
+      background: var(--yellow-contrast-bg);
+    }
+
+    .accordion-button.collapsed {
+      color: var(--yellow-contrast-light);
+    }
+
+    //404/503 pages
+    .d-flex.flex-column.flex-xl-row.column-gap-xl-6 img {
+      display: none;
+    }
+
+    .map-content__header.map-content__header--type-back.d-flex.flex-column.row-gap-4.row-gap-md-6 {
+      background-color: var(--yellow-contrast-bg);
+    }
+
+    //atm-detail.html
+    .btn.btn-link.btn-lg.btn-icon {
+      border: none;
+      padding: 5px 10px;
+      transition: 0.1s all linear;
+      background-color: var(--yellow-contrast-light-1);
+
+      &:hover {
+        color: #fff;
+        background-color: var(--yellow-contrast-light-1) !important;
+        & svg {
+          color: var(--yellow-contrast-light);
+          padding: 0;
+          border: none;
+        }
+      }
+
+      & svg {
+        color: var(--yellow-contrast-light-1);
+      }
+    }
+
+    //atms.html
+    .map-content__header {
+      background-color: var(--yellow-contrast-bg);
+    }
+
+    .card-office {
+      background-color: var(--yellow-contrast-light);
+      & p {
+        color: var(--yellow-contrast-bg);
+      }
+      &:hover {
+        background-color: var(--yellow-contrast-light-1);
+        & p {
+          color: var(--yellow-contrast-light);
+        }
+      }
+    }
+
+    .btn.btn-outline-primary.btn-icon-alone {
+      background-color: var(--yellow-contrast-bg);
+      &:hover {
+        border-color: var(--yellow-contrast-light);
+        background-color: var(--yellow-contrast-light-1);
+      }
+    }
+
+    .modal {
+      &-header {
+        background-color: var(--yellow-contrast-bg);
+      }
+
+      &-body {
+        background-color: var(--yellow-contrast-bg);
+      }
+    }
+
+    .btn.btn-primary.btn-md-lg {
+      background-color: var(--yellow-contrast-light);
+      color: var(--yellow-contrast-light-1);
+      border: none;
+      &:hover {
+        color: var(--yellow-contrast-light);
+        background-color: var(--yellow-contrast-light-1);
+        border: none;
+      }
+    }
+
+    .btn.btn-outline-primary.btn-md-lg {
+      background-color: var(--yellow-contrast-light);
+      color: var(--yellow-contrast-light-1);
+      border: none;
+      &:hover {
+        color: var(--yellow-contrast-light);
+        background-color: var(--yellow-contrast-light-1);
+        border: none;
+      }
+    }
+
+    .form-check-input:checked {
+      background-color: var(--yellow-100);
+      border-color: var(--yellow-100);
+    }
+
+    //AWARDS page
+    .banner-text.banner-text--border-undefined.bg-linear-blue {
+      background: linear-gradient(
+        270deg,
+        rgb(62 75 3) 100%,
+        rgb(136 142 3 / 100%) 100%
+      );
+    }
+
+    .card-award {
+      background-color: var(--yellow-contrast-bg);
+      border: none;
+    }
+
+    .swiper-slide-active .nav-link {
+      background-color: var(--yellow-contrast-bg);
+      color: var(--yellow-contrast-light);
+      &.active {
+        background-color: var(--yellow-contrast-light);
+        color: var(--yellow-contrast-bg);
+      }
+    }
+    .tabs-panel__list-item-link.nav-link.bg-transparent {
+      background-color: var(--yellow-contrast-bg) !important;
+      color: var(--yellow-contrast-light);
+      border-color: var(--yellow-contrast-light);
+      &.active {
+        background-color: var(--yellow-contrast-light) !important;
+        color: var(--yellow-contrast-bg);
+        border-color: var(--yellow-contrast-light);
+      }
+    }
+
+    .swiper-slide-next .nav-link {
+      background-color: var(--yellow-contrast-bg);
+      color: var(--yellow-contrast-light);
+      &.active {
+        background-color: var(--yellow-contrast-light);
+        color: var(--yellow-contrast-bg);
+      }
+    }
+    d-none.d-md-inline.h2.violet-100-important {
+      color: var(--yellow-contrast-light) !important;
+    }
+
+    .card-award__wrapper img {
+      opacity: 0;
+    }
+
+    //banking-support.html
+
+    .btn-orange {
+      background-color: var(--yellow-contrast-light);
+      color: var(--yellow-contrast-light-1);
+      border: 1px solid var(--yellow-contrast-light);
+      transition: 0.25s all ease;
+      &:hover {
+        color: var(--yellow-contrast-light);
+        background-color: var(--yellow-contrast-light-1);
+        border: 1px solid var(--yellow-contrast-light);
+      }
+    }
+    .banner-product--heavy-purple {
+      background: none;
+    }
+
+    .card-benefit {
+      background-color: var(--yellow-contrast-medium);
+      color: var(--yellow-contrast-white);
+      border: none;
+      border-radius: 5px;
+    }
+    .card-benefit__image {
+      display: none;
+    }
+
+    .helper.card-benefit__image {
+      background-color: var(--yellow-contrast-medium);
+    }
+
+    .helper__wrapper {
+      background-color: var(--yellow-contrast-medium);
+    }
+    .helper__content.text-l {
+      color: var(--yellow-contrast-light);
+
+      & .link {
+        color: var(--yellow-contrast-light);
+        &:hover {
+          color: var(--yellow-contrast-bg);
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .benefit__description.w-100.text-m {
+      color: var(--yellow-contrast-light);
+    }
+
+    .list li:before {
+      background: var(--yellow-contrast-medium);
+    }
+
+    .row.row-gap-6 h4 {
+      color: var(--yellow-contrast-white);
+    }
+
+    .stepper-item {
+      &__number-icon path {
+        fill: var(--yellow-contrast-light);
+      }
+
+      &__icon-border path {
+        stroke: var(--yellow-contrast-light);
+      }
+
+      &__arrow {
+        color: var(--yellow-contrast-light);
+      }
+
+      &__content {
+        color: var(--yellow-contrast-white);
+      }
+    }
+    .js-polygon-container-svg {
+      display: none;
+    }
+
+    .bg-purple-10 {
+      background: var(--yellow-contrast-bg);
+    }
+    .text-l {
+      color: var(--yellow-contrast-white);
+    }
+
+    .list.list--size-l li {
+      color: var(--yellow-contrast-white);
+      &:before {
+        background: var(--yellow-contrast-light);
+      }
+    }
+
+    .contact-block {
+      &__content {
+        color: var(--yellow-contrast-white);
+      }
+      &__description {
+        color: var(--yellow-contrast-white);
+      }
+      &.contact-block {
+        &--bg-heavy-purple {
+          border-radius: 5px;
+          background: var(--yellow-contrast-bg);
+          border: 1px solid var(--yellow-contrast-light);
+        }
+        &--bg-white {
+          border-radius: 5px;
+          background: var(--yellow-contrast-bg);
+          border: 1px solid var(--yellow-contrast-light);
+        }
+      }
+    }
+
+    .contact-block--bg-white:has(> .pattern-bg)::after {
+      background: linear-gradient(
+        90deg,
+        var(--yellow-contrast-medium),
+        0.9,
+        0%,
+        rgba(173, 173, 212, 0) 100%
+      );
+    }
+
+    .btn.btn-lg-lg.btn-outline-primary {
+      background-color: var(--yellow-contrast-light);
+      color: var(--yellow-contrast-light-1);
+      border: none;
+      &:hover {
+        background-color: var(--yellow-contrast-light-1);
+        color: var(--yellow-contrast-light);
+      }
+    }
+
+    //	biometric-identification.html
+
+    .bg-linear-blue {
+      color: var(--yellow-contrast-light);
+      background: var(--yellow-contrast-bg);
+      border-bottom: 1px solid var(--yellow-contrast-light);
+    }
+    .banner-text--border-green {
+      border-top: 8px solid var(--yellow-contrast-light);
+    }
+
+    .card-benefit.d-inline-flex.px-3.px-sm-5.px-lg-6.p-4.p-sm-5.p-lg-6.w-100.bg-dark-10 {
+      background: var(--yellow-contrast-bg) !important;
+      border: 1px solid var(--yellow-contrast-light);
+    }
+    .col-12.col-xl-6.position-relative.z-1.mb-5.mb-md-0.pt-6 {
+      color: var(--yellow-contrast-light);
+    }
+
+    .text-m.btn.btn-link.btn-lg.d-inline-flex.gap-2.align-items-center {
+      background: var(--yellow-contrast-light);
+      color: var(--yellow-contrast-light-1);
+      padding: 5px 12px;
+    }
+    .link.text-decoration-underline {
+      color: var(--yellow-contrast-white);
+      &:hover {
+        color: var(--yellow-contrast-light);
+      }
+    }
+
+    .size-md-xxl.icon {
+      filter: brightness(0) saturate(100%) invert(47%) sepia(9%) saturate(230%)
+        hue-rotate(158deg) brightness(90%) contrast(88%);
+    }
+
+    //bonus-moneybox.html
+
+    .banner-text__title.text-break.dark-0 {
+      color: var(--yellow-contrast-bg);
+    }
+    .banner-text__image {
+      display: none;
+    }
+
+    .text-l .link {
+      text-decoration: underline;
+      color: var(--yellow-contrast-light);
+      &:hover {
+        color: var(--yellow-contrast-white);
+      }
+    }
+
+    //bonuses.html
+    .bg-dark-10 {
+      background-color: var(--yellow-contrast-bg);
+    }
+    .bg-heavy-purple {
+      border-bottom: 1px solid var(--yellow-contrast-light);
+      background: none;
+    }
+
+    .bg-gradient-violet {
+      background: var(--yellow-contrast-medium);
+    }
+
+    .select2-selection__rendered {
+      color: var(--yellow-contrast-white) !important;
+      &:focus {
+        color: var(--yellow-contrast-white);
+      }
+    }
+
+    .select2-dropdown.select2-dropdown--below {
+      background-color: var(--yellow-contrast-medium);
+    }
+
+    //cards.html
+    .btn.btn-tertiary.btn-lg-lg.card-product-list__button.w-100.w-sm-auto {
+      color: var(--yellow-contrast-light-1);
+      background-color: var(--yellow-contrast-light);
+      border: 1px solid var(--yellow-contrast-light);
+      padding: 15px 32px;
+      &:hover {
+        background-color: var(--yellow-contrast-light-1);
+        color: var(--yellow-contrast-light);
+      }
+    }
+
+    .card-product-list.overflow-hidden.position-relative.mh-100.h-auto.bg-dark-10.w-100.py-6.py-sm-9.py-md-11.px-3.px-sm-4.px-md-6.pe-xxl-11 {
+      background-color: var(--yellow-contrast-bg);
+      border: 1px solid var(--yellow-contrast-light);
+    }
+    //career-vacancy.html
+    .btn.btn-link.btn-lg-lg.d-inline-flex.gap-2.align-items-center.card-product-list__button-more {
+      color: var(--yellow-contrast-light-1);
+      background-color: var(--yellow-contrast-light);
+      border: 1px solid var(--yellow-contrast-light);
+      padding: 15px 32px;
+      &:hover {
+        background-color: var(--yellow-contrast-light-1);
+        color: var(--yellow-contrast-light);
+      }
+    }
+
+    .dark-0.card-contact__top-title {
+      color: var(--yellow-contrast-light);
+    }
+    .card-contact.overflow-hidden.position-relative.bg-linear-blue {
+      background-color: var(--yellow-contrast-medium);
+      border: none;
+    }
+    .btn.btn-secondary.btn-lg-lg.d-inline-block.w-100.w-md-auto {
+      color: var(--yellow-contrast-light-1);
+      background-color: var(--yellow-contrast-light);
+      border: 1px solid var(--yellow-contrast-light);
+      padding: 15px 32px;
+      &:hover {
+        background-color: var(--yellow-contrast-light-1);
+        color: var(--yellow-contrast-light);
+      }
+    }
+
+    //career.html
+    .mt-7.w-100.w-sm-auto.btn.btn-secondary.btn-lg-lg.d-inline-block {
+      background-color: var(--yellow-contrast-light);
+      border: none;
+      &:hover {
+        background-color: var(--yellow-contrast-white);
+        color: var(--yellow-contrast-light);
+      }
+    }
+
+    .d-flex.flex-column.align-items-start.gap-3.gap-md-4 h1,
+    .banner-text__description.text-l.dark-0 {
+      color: var(--yellow-contrast-bg);
+    }
+
+    .mt-7.w-100.w-sm-auto.btn.btn-secondary.btn-lg-lg.d-inline-block {
+      color: var(--yellow-contrast-light-1);
+      background-color: var(--yellow-contrast-light);
+      border: 1px solid var(--yellow-contrast-light);
+      padding: 15px 32px;
+      &:hover {
+        background-color: var(--yellow-contrast-light-1);
+        color: var(--yellow-contrast-light);
+      }
+    }
+
+    .page-item {
+      --bs-pagination-border-radius: none;
+      --bs-pagination-active-bg: var(--yellow-contrast-light);
+      --bs-pagination-active-border-color: var(--yellow-contrast-bg);
+      --bs-pagination-border-radius: 4px;
+
+      &:hover {
+        --bs-pagination-border-radius: none;
+        --bs-pagination-hover-bg: var(--yellow-contrast-light-1);
+        --bs-pagination-active-bg: var(--yellow-contrast-light-1);
+        --bs-pagination-active-border-color: var(--yellow-contrast-light);
+        --bs-pagination-border-radius: 4px;
+      }
+      &.active {
+        --bs-pagination-border-radius: none;
+        --bs-pagination-active-bg: var(--yellow-contrast-light);
+        --bs-pagination-active-border-color: var(--yellow-contrast-white);
+        --bs-pagination-border-radius: 4px;
+      }
+    }
+
+    //cashback.html
+
+    .section-layout.bg-blue-10 {
+      background: var(--yellow-contrast-bg);
+    }
+
+    .banner-text--border-green.bg-linear-blue {
+      background: linear-gradient(
+        270deg,
+        rgb(62 75 3) 100%,
+        rgb(136 142 3 / 100%) 100%
+      );
+    }
+    .card-sale__image {
+      display: none;
+    }
+
+    .btn.btn-lg.btn-link.btn-icon {
+      background-color: var(--yellow-contrast-light);
+      border: none;
+      padding: 15px 32px;
+      &:hover {
+        background-color: var(--yellow-contrast-light-1);
+        color: var(--yellow-contrast-light);
+      }
+    }
+
+    //contacts.html
+
+    .card-help__input.form-control.form-control-lg.bg-transparent {
+      color: var(--yellow-contrast-light);
+    }
+    .card-about.bg-linear-blue {
+      background-color: var(--yellow-contrast-medium);
+      border: none;
+      & h4 {
+        color: var(--yellow-contrast-light);
+      }
+    }
+
+    //contribution-detail.html
+
+    .banner-product {
+      --border-top-color: var(--yellow-contrast-light);
+      &__wrapper {
+        background-color: var(--yellow-contrast-medium);
+      }
+    }
+    .d-block {
+      color: var(--yellow-contrast-light);
+    }
+    .btn-tertiary.btn.btn-lg-lg.banner-product__button {
+      color: var(--yellow-contrast-light-1);
+      background-color: var(--yellow-contrast-light);
+      border: 1px solid var(--yellow-contrast-light);
+      padding: 15px 32px;
+      &:hover {
+        background-color: var(--yellow-contrast-light-1);
+        color: var(--yellow-contrast-light);
+      }
+    }
+    .input-slider__item.js-input-slider-input {
+      background: linear-gradient(
+        270deg,
+        rgb(62 75 3) 100%,
+        rgb(136 142 3 / 100%) 100%
+      );
+    }
+
+    //contributions.html
+    .card-product-list__condition.d-flex.flex-column.gap-2.w-100.w-sm-50.w-xl-auto {
+      .text-number-l.fw-bold {
+        color: var(--yellow-contrast-white);
+      }
+    }
+
+    .card-benefit.d-inline-flex.px-3.px-sm-5.px-lg-6.p-4.p-sm-5.p-lg-6.w-100.bg-dark-10 {
+      background-color: var(--yellow-contrast-light);
+      border: none;
+    }
+
+    .accordion-header .accordion-button {
+      color: var(--yellow-contrast-white);
+      background-color: var(--yellow-contrast-bg);
+    }
+
+    .accordion {
+      background-color: var(--yellow-contrast-light);
+      &-body {
+        color: var(--yellow-contrast-bg);
+        background-color: var(--yellow-contrast-light-1);
+      }
+    }
+
+    //customer-requests.html
+    .list.list--size-l .link {
+      color: var(--yellow-contrast-light);
+      &:hover {
+        color: var(--yellow-contrast-medium);
+      }
+    }
+
+    //financial-institutes.html
+    .banner-hero-content__title {
+      color: var(--yellow-contrast-white);
+    }
+
+    .card-product__inner {
+      .btn.btn-link.btn-icon.m-auto.m-lg-0 {
+        padding: 5px 12px;
+        color: var(--yellow-contrast-light-1);
+        background-color: var(--yellow-contrast-light);
+        .icon.size-m {
+          color: var(--yellow-contrast-light-1);
+        }
+        &:hover {
+          color: var(--yellow-contrast-bg);
+          background-color: var(--yellow-contrast-white);
+          .icon.size-m {
+            color: var(--yellow-contrast-light);
+          }
+        }
+      }
+    }
+
+    .card-benefit__icon {
+      .size-md-xxl.icon {
+        filter: brightness(0) saturate(100%) invert(47%) sepia(9%)
+          saturate(230%) hue-rotate(158deg) brightness(90%) contrast(88%);
+      }
+    }
+
+    .text-m.btn.btn-link.btn-lg.d-inline-flex.gap-2.align-items-center {
+      color: var(--yellow-contrast-light-1);
+      background-color: var(--yellow-contrast-light);
+      padding: 5px 12px;
+      .icon.size-m {
+        color: var(--yellow-contrast-light-1);
+      }
+      &:hover {
+        color: var(--yellow-contrast-light);
+        background-color: var(--yellow-contrast-light-1);
+        .icon.size-m {
+          color: var(--yellow-contrast-light);
+        }
+      }
+    }
+
+    .card-product.bg-dark-10.card-product--bg-white {
+      border: 1px solid var(--yellow-contrast-light);
+    }
+
+    //financing.html
+    .banner-text--border-orange {
+      border-top: var(--border-thickness) solid var(--yellow-contrast-light);
+    }
+
+    .d-flex.flex-column.align-items-start.gap-3.gap-md-4 h1 {
+      color: var(--yellow-contrast-light);
+    }
+    .text-white-50 {
+      color: var(--yellow-contrast-light) !important;
+    }
+
+    .card-service-app--bg-purple {
+      background: linear-gradient(
+        270deg,
+        rgb(62 75 3) 100%,
+        rgb(136 142 3 / 100%) 100%
+      );
+    }
+
+    .card-service-app__inner h3 {
+      color: var(--yellow-contrast-bg);
+    }
+
+    .btn.btn-orange.d-none.d-md-inline-flex {
+      color: var(--yellow-contrast-light-1);
+      background-color: var(--yellow-contrast-light);
+      padding: 5px 12px;
+      border: 1px;
+      &:hover {
+        color: var(--yellow-contrast-light);
+        background-color: var(--yellow-contrast-light-1);
+      }
+    }
+
+    //how-to-protect.html
+    .card-promo.card-promo--heavy-blue {
+      background: linear-gradient(
+        270deg,
+        rgb(82, 100, 0) 100%,
+        rgb(136 142 3 / 100%) 100%
+      );
+    }
+
+    .d-flex.flex-column.align-items-start.gap-3.gap-md-4 h1,
+    .text-l.mb-0.w-md-60.w-lg-100 {
+      color: var(--yellow-contrast-bg);
+    }
+
+    .btn.btn-info.btn-lg-lg.w-100.w-md-auto {
+      color: var(--yellow-contrast-light-1);
+      background-color: var(--yellow-contrast-light);
+      border: 1px;
+      &:hover {
+        color: var(--yellow-contrast-light);
+        background-color: var(--yellow-contrast-light-1);
+      }
+    }
+
+    .d-flex.flex-column.align-items-start.gap-3.gap-md-4.ps-lg-6 {
+      .btn.btn-info.w-100.w-lg-auto {
+        color: var(--yellow-contrast-light-1);
+        background-color: var(--yellow-contrast-light);
+        border: none;
+        &:hover {
+          color: var(--yellow-contrast-light);
+          background-color: var(--yellow-contrast-light-1);
+        }
+      }
+    }
+
+    //insurance-companies.html
+    .banner-text.banner-text--border-green.bg-heavy-violet {
+      background: linear-gradient(
+        270deg,
+        rgb(62 75 3) 100%,
+        rgb(136 142 3 / 100%) 100%
+      );
+    }
+    .breadcrumbs__item.d-md-inline-flex.align-items-center.gap-2.text-s.text-white-50.d-none
+      span,
+    .breadcrumbs__item.d-md-inline-flex.align-items-center.gap-2.text-s.text-white-50.d-inline-flex
+      span {
+      color: var(--yellow-contrast-bg);
+    }
+
+    //insurance-property.html
+    .helper.bg-dark-0 {
+      background-color: var(--yellow-contrast-medium);
+    }
+    .bg-heavy-purple {
+      background: linear-gradient(
+        270deg,
+        rgb(62 75 3) 100%,
+        rgb(136 142 3 / 100%) 100%
+      );
+    }
+    .swiper-slide.js-swiper-slide.swiper-slide-visible.swiper-slide-fully-visible.swiper-slide-active
+	//interbank-transactions.html
+	.bg-gradient-graphite {
+      background: var(--yellow-contrast-bg);
+    }
+    .d-flex.flex-column.align-items-start.gap-3.gap-md-4 h1 {
+      color: var(--yellow-contrast-light);
+    }
+    .banner-text--border-violet {
+      border-top: var(--border-thickness) solid var(--yellow-contrast-white);
+    }
+
+    .helper.bg-dark-30 {
+      background-color: var(--yellow-contrast-medium);
+    }
+
+    .bg-white {
+      background-color: var(--yellow-contrast-light);
+    }
+
+    //leasing.html
+    .card-promo.card-promo--heavy-purple {
+      background: linear-gradient(
+        270deg,
+        rgb(62 75 3) 100%,
+        rgb(136 142 3 / 100%) 100%
+      );
+    }
+    .banner-text__title.text-break.dark-0 .card-promo__image {
+      display: none;
+    }
+
+    .form-feedback.p-0.gap-3.gap-md-4 {
+      .btn.btn-primary.btn-lg.text-m.w-100 {
+        color: var(--yellow-contrast-light-1);
+        background-color: var(--yellow-contrast-light);
+        border: 1px solid var(--yellow-contrast-light);
+        &:hover {
+          color: var(--yellow-contrast-light);
+          background-color: var(--yellow-contrast-light-1);
+        }
+      }
+    }
+
+    .card-help__button.btn.btn-link.btn-lg.btn-icon.mx-auto.gap-2 {
+      color: var(--yellow-contrast-light-1);
+      background-color: var(--yellow-contrast-light);
+      border: 1px solid var(--yellow-contrast-light);
+      &:hover {
+        color: var(--yellow-contrast-light);
+        background-color: var(--yellow-contrast-light-1);
+      }
+    }
+
+    .section-restructuring-steps.bg-dark-10.py-6.py-sm-9.py-md-11.py-xl-16 {
+      background-color: var(--yellow-contrast-bg);
+    }
+
+    .benefit.d-flex.gap-3.flex-column {
+      filter: none;
+      color: #4b5352;
+    }
+
+    .icon.size-lxl {
+      filter: brightness(0) saturate(100%) invert(47%) sepia(9%) saturate(230%)
+        hue-rotate(158deg) brightness(90%) contrast(88%);
+    }
+
+    .d-flex.flex-column.align-items-start.gap-3.gap-md-4 h1 {
+      color: var(--yellow-contrast-bg);
+    }
+
+    //loans-restructuring.html
+    .rte li::before {
+      background: var(--yellow-contrast-light);
+    }
+
+    .card-how-use {
+      background-color: var(--yellow-contrast-medium);
+    }
+
+    //measures-state-supports.html
+
+    .btn.btn-link.btn-lg.d-inline-flex.gap-2.align-items-center.card-text__button-more {
+      padding: 15px 32px;
+      width: 200px;
+      color: var(--yellow-contrast-light-1);
+      background-color: var(--yellow-contrast-light);
+      &:hover {
+        color: var(--yellow-contrast-light);
+        background-color: var(--yellow-contrast-light-1);
+      }
+    }
+
+    .card-text.d-inline-flex.px-3.px-md-4.p-4.p-sm-5.p-lg-6.bg-white.w-100.h-100 {
+      background: var(--yellow-contrast-light);
+    }
+
+    .btn.btn-sm.btn-link.btn-icon.d-none.d-md-inline-flex {
+      color: var(--yellow-contrast-light);
+      background-color: var(--yellow-contrast-white);
+      border: none;
+      padding: 5px 12px;
+      &:hover {
+        color: var(--yellow-contrast-white);
+        background-color: var(--yellow-contrast-light);
+      }
+    }
+
+    //mir-always-plus.html
+    .btn.btn-sm.btn-link.btn-icon.d-none.d-md-inline-flex {
+      color: var(--yellow-contrast-light-1);
+      background-color: var(--yellow-contrast-light);
+      &:hover {
+        color: var(--yellow-contrast-light);
+        background-color: var(--yellow-contrast-light-1);
+      }
+    }
+
+    //mobile-app.html
+    .card-regal.d-flex.flex-column.flex-md-row.row-gap-3.column-gap-md-6.bg-dark-30 {
+      background-color: var(--yellow-contrast-medium);
+    }
+
+    .stepper-item.stepper-item--color-violet {
+      .btn.btn-primary.btn-icon {
+        color: var(--yellow-contrast-light-1);
+        background-color: var(--yellow-contrast-light);
+        border: 1px solid var(--yellow-contrast-light);
+        &:hover {
+          color: var(--yellow-contrast-light);
+          background-color: var(--yellow-contrast-light-1);
+        }
+      }
+    }
+
+    .btn.btn-primary.align-items-center {
+      background-color: var(--yellow-contrast-light);
+      border: 1px solid var(--yellow-contrast-light);
+      &:hover {
+        color: var(--yellow-contrast-light);
+        background-color: var(--yellow-contrast-bg-dark);
+      }
+    }
+
+    //mortgage-primary.html
+    .btn.btn-link.btn-sm.btn-icon.mt-2.mt-md-0 {
+      color: var(--yellow-contrast-light);
+      background-color: var(--yellow-contrast-white);
+      padding: 5px 12px;
+      border: none;
+      &:hover {
+        color: var(--yellow-contrast-white);
+        background-color: var(--yellow-contrast-bg);
+      }
+    }
+
+    //msb-bank-account.html
+
+    .btn.btn-yellow.w-100 {
+      color: var(--yellow-contrast-light-1);
+      background-color: var(--yellow-contrast-light);
+      padding: 5px 12px;
+      border: 1px solid var(--yellow-contrast-light);
+      &:hover {
+        color: var(--yellow-contrast-light);
+        background-color: var(--yellow-contrast-light-1);
+      }
+    }
+
+    .helper.bg-blue-10 {
+      border: none;
+    }
+
+    //msb-cooperation-with-funds.html
+    .banner-text.banner-text--border-.bg-heavy-violet {
+      background: linear-gradient(
+        270deg,
+        rgb(62 75 3) 100%,
+        rgb(136 142 3 / 100%) 100%
+      );
+    }
+    .banner-text__title.text-break.h2.text-white.dark-0 {
+      color: var(--yellow-contrast-bg);
+    }
+
+    .d-flex.flex-column.align-items-start.gap-3.gap-md-4 {
+      color: var(--yellow-contrast-bg);
+    }
+
+    .stepper-item--color-yellow.stepper-item__number-value {
+      color: var(--yellow-contrast-bg);
+    }
+
+    .swiper-wrapper {
+      .swiper-slide.js-swiper-slide.swiper-slide-visible.swiper-slide-fully-visible.swiper-slide-active,
+      .swiper-slide.js-swiper-slide.swiper-slide-visible.swiper-slide-fully-visible.swiper-slide-next,
+      .swiper-slide.js-swiper-slide.swiper-slide-visible.swiper-slide-fully-visible,
+      .swiper-slide.js-swiper-slide.swiper-slide-visible {
+        background-color: var(--yellow-contrast-bg);
+        border: 1px solid var(--yellow-contrast-light);
+
+        border-radius: 5px;
+      }
+    }
+
+    #accordion-funds-tab .table td {
+      background-color: var(--yellow-contrast-light);
+    }
+
+    .table {
+      --bs-table-bg-type: var(--yellow-contrast-bg);
+    }
+
+    .accordion-body {
+      color: var(--yellow-contrast-white);
+      background-color: var(--yellow-contrast-bg);
+    }
+
+    .card-about.bg-heavy-violet.h-100 {
+      background: none;
+    }
+
+    .card-about__title.dark-0 {
+      color: var(--yellow-contrast-light);
+    }
+    .btn.btn-outline-primary.btn-lg-lg.text-ls.overflow-visible.w-100.w-md-auto,
+    .btn.btn-primary.btn-lg-lg.text-ls.overflow-visible.w-100.w-md-auto {
+      color: var(--yellow-contrast-light-1);
+      background-color: var(--yellow-contrast-light);
+      &:hover {
+        color: var(--yellow-contrast-light);
+        background-color: var(--yellow-contrast-light-1);
+      }
+    }
+
+    //msb-currency-control.html
+    .card-benefit__list.list.list--size-l li:before {
+      background-color: var(--yellow-contrast-bg);
+    }
+
+    //msb-home.html
+
+    .banner-hero--type-msb {
+      border-top: 0.25rem solid var(--yellow-contrast-white);
+    }
+
+    .card-service-app--bg-heavy-violet {
+      background: linear-gradient(
+        270deg,
+        rgb(62 75 3) 100%,
+        rgb(136 142 3 / 100%) 100%
+      );
+    }
+
+    .card-product {
+      &__description {
+        color: var(--yellow-contrast-white);
+      }
+      &__title {
+        color: var(--yellow-contrast-white);
+      }
+
+      &__inner {
+        .btn.btn-link.btn-icon.m-auto.m-lg-0 {
+          color: var(--yellow-contrast-light-1);
+          background-color: var(--yellow-contrast-light);
+          &:hover {
+            color: var(--yellow-contrast-light);
+            background-color: var(--yellow-contrast-light-1);
+          }
+        }
+      }
+    }
+
+    .card-service-app::after {
+      background: linear-gradient(
+        270deg,
+        rgba(40, 91, 202, 0.9) 23.5%,
+        rgba(38, 70, 138, 0) 100%
+      );
+    }
+    .btn.btn-yellow.d-none.d-md-inline-flex {
+      color: var(--yellow-contrast-bg);
+      background-color: var(--yellow-contrast-white);
+      &:hover {
+        color: var(--yellow-contrast-white);
+        background-color: var(--yellow-contrast-bg);
+      }
+    }
+
+    .card-promo--heavy-violet {
+      background: linear-gradient(
+        270deg,
+        rgb(62 75 3) 100%,
+        rgb(136 142 3 / 100%) 100%
+      );
+      color: var(--dark-0);
+    }
+
+    .d-inline-flex.flex-column.row-gap-2 span {
+      color: var(--yellow-contrast-bg);
+    }
+
+    .d-flex.flex-column.flex-md-row.align-items-md-center.gap-3.gap-md-6 {
+      .btn.btn-lg-lg.btn-yellow.btn-info.w-100.w-md-auto {
+        color: var(--yellow-contrast-light-1);
+        background-color: var(--yellow-contrast-light);
+
+        &:hover {
+          color: var(--yellow-contrast-light);
+          background-color: var(--yellow-contrast-light-1);
+        }
+      }
+      .btn.btn-link.btn-lg-lg.btn-icon.text-info.m-auto.m-md-0 {
+        color: var(--yellow-contrast-light-1);
+        background-color: var(--yellow-contrast-light);
+        &:hover {
+          color: var(--yellow-contrast-light);
+          background-color: var(--yellow-contrast-light-1);
+        }
+      }
+    }
+
+    .card-product.card-product {
+      &--undefined.bg-dark-10.h-auto.flex-basis-100.flex-basis-md-25.flex-grow-1.bg-white,
+      &--undefined.bg-dark-10.w-100.w-xl-auto.flex-basis-100.flex-basis-xl-25.h-auto.flex-grow-1.bg-white,
+      &--size-height-auto.bg-dark-10.flex-basis-100.flex-basis-md-25.h-auto.flex-grow-1.bg-white,
+      &--size-height-auto.bg-dark-10.w-100.w-xl-auto.flex-basis-100.flex-basis-xl-25.h-auto.flex-grow-1.bg-white {
+        background-color: var(--yellow-contrast-bg) !important;
+        border: 1px solid var(--yellow-contrast-light);
+      }
+    }
+
+    .card-product__footer {
+      .btn.btn-link.btn-icon.d-none.d-md-inline-flex {
+        color: var(--yellow-contrast-light-1);
+        background-color: var(--yellow-contrast-light);
+        padding: 5px 12px;
+        &:hover {
+          color: var(--yellow-contrast-light);
+          background-color: var(--yellow-contrast-light-1);
+        }
+      }
+    }
+    .card-top-list__col {
+      border: none;
+    }
+
+    .content-block a {
+      color: var(--yellow-contrast-light);
+      text-decoration: underline;
+      &:hover {
+        color: var(--yellow-contrast-light-1);
+      }
+    }
+
+    .overflow-auto.custom-overflow-scrollbar > table > thead > tr > th {
+      font-size: 1.5rem;
+      color: var(--yellow-contrast-white);
+    }
+
+    //press-center.html
+    .card-news__image-container.position-relative.z-1.h-100 {
+      .card-news__img.position-relative.z-2 {
+        display: none;
+      }
+    }
+
+    .card-contact__image {
+      display: none;
+    }
+  }
+}
