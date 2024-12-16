@@ -1,14 +1,18 @@
 <? if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die(); ?>
-
+<? global $APPLICATION; ?>
 <? if (!empty($arResult)) { ?>
     <div class="navbar w-100">
         <? foreach ($arResult['FIRST_LEVEL_MENU']['NOT_HIDDEN'] as $notHiddenItem) { ?>
             <? $issetChildren = isset($arResult['SECOND_LEVEL_MENU'][$notHiddenItem['ITEM_INDEX']]) ?>
             <? $jsDesktopMoveLink = ($notHiddenItem['JS_DESKTOP_MOVE_LINK']) ? ' js-desktop-move-link d-none d-xl-inline-flex' : ''; ?>
             <?
+            if ($issetChildren) {
                 $path = array_filter(explode('/', $APPLICATION->GetCurDir()));
                 $parentDir = reset($path);
-                $isActive = $parentDir == basename($notHiddenItem['LINK']);
+                $isActive = $parentDir === basename($notHiddenItem['LINK']);
+            } else {
+                $isActive = $notHiddenItem['LINK'] === $APPLICATION->GetCurDir();
+            }
             ?>
             <? if ($issetChildren) { ?>
                 <a class="header__link <?= $isActive ? 'is-selected' : '' ?> js-dropdown-link gap-1 align-items-center d-inline-flex<?= $jsDesktopMoveLink ?>"
@@ -22,7 +26,10 @@
                     </span>
                 </a>
             <? } else { ?>
-                <a class="header__link d-inline-flex gap-1 align-items-center<?= $jsDesktopMoveLink ?>" href="<?= $notHiddenItem['LINK'] ?>">
+                <a
+                    class="header__link <?= $isActive ? 'is-selected' : '' ?> d-inline-flex gap-1 align-items-center<?= $jsDesktopMoveLink ?>"
+                    href="<?= $notHiddenItem['LINK'] ?>"
+                >
                     <span class="fw-semibold"><?= $notHiddenItem['TEXT'] ?></span>
                 </a>
             <? } ?>
@@ -38,14 +45,20 @@
                 <ul class="dropdown-menu dropdown-menu-end">
                     <? foreach ($arResult['FIRST_LEVEL_MENU']['NOT_HIDDEN'] as $notHiddenItem) {
                         if ($notHiddenItem['JS_DESKTOP_MOVE_LINK']) { ?>
-                            <li><a class="dropdown-item fw-bold d-xl-none"
-                                   href="<?= $notHiddenItem['LINK'] ?>"><?= $notHiddenItem['TEXT'] ?></a>
+                            <li>
+                                <a
+                                    class="dropdown-item fw-bold d-xl-none"
+                                    href="<?= $notHiddenItem['LINK'] ?>"
+                                ><?= $notHiddenItem['TEXT'] ?></a>
                             </li>
                         <? }
                     } ?>
                     <? foreach ($arResult['FIRST_LEVEL_MENU']['HIDDEN'] as $hiddenItem) { ?>
-                        <li><a class="dropdown-item fw-bold"
-                               href="<?= $hiddenItem['LINK'] ?>"><?= $hiddenItem['TEXT'] ?></a>
+                        <li>
+                            <a
+                                class="dropdown-item fw-bold"
+                                href="<?= $hiddenItem['LINK'] ?>"
+                            ><?= $hiddenItem['TEXT'] ?></a>
                         </li>
                     <? } ?>
                 </ul>
