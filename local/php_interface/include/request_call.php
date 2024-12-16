@@ -8,7 +8,7 @@
                 </div>
             </div>
             <div class="d-flex flex-column align-items-start gap-5 gap-md-6 ps-lg-6">
-                <button class="btn btn-info w-100 w-lg-auto" type="button">Направить обращение</button>
+                <button class="btn btn-info w-100 w-lg-auto" type="button" data-bs-toggle="modal" data-bs-target="#modal-feedback-form">Направить обращение</button>
                 <p class="text-s dark-70 mb-0">Нажимая кнопку «Перезвоните мне», вы&nbsp;соглашаетесь с&nbsp;условиями предоставления информации</p>
             </div>
             <?php $APPLICATION->IncludeComponent(
