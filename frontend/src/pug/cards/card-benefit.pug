@@ -18,7 +18,7 @@ mixin card-benefit(data)
                 .card-benefit__read-more.d-flex.align-items-end.justify-content-between
                     if data.sprite
                         .card-benefit__icon
-                            img(src="img/icons/icon-money.svg", alt="", loading="lazy" class= data.sprite.classList).icon
+                            img(src=`img/icons/${data.sprite.iconImg ? data.sprite.iconImg : 'icon-money'}.svg`, alt="", loading="lazy" class= data.sprite.classList).icon
                     if data.link
                         a(href=data.link).text-m.btn.btn-link.btn-lg.d-inline-flex.gap-2.align-items-center
                             span.fw-bold!= data.linkText ? data.linkText : 'Подробнее'

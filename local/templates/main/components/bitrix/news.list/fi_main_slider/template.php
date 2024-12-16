@@ -12,10 +12,10 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 ?>
-<div class="banner-hero banner-hero--type-light bg-gradient-graphite">
+<div class="banner-hero <?= $arParams["CLASS_SECTION"] ?>">
     <div class="banner-hero__container swiper js-banner-hero">
         <div class="swiper-wrapper">
-            <?foreach ($arResult['ITEMS'] as $item) {?>
+            <?foreach($arResult['ITEMS'] as $item):?>
                 <div class="swiper-slide">
                     <div class="banner-hero-content row gx-0">
                         <div class="col-12 col-md-6 col-lg-9 col-xl-8 col-xxl-7 d-flex flex-column gap-3 gap-md-4 gap-xxl-6 align-items-md-start">
@@ -27,7 +27,7 @@ $this->setFrameMode(true);
                         </div>
                     </div>
                 </div>
-            <?}?>
+            <?endforeach;?>
         </div>
         <div class="banner-hero-pagination"></div>
         <div class="banner-hero-controls">
@@ -50,11 +50,11 @@ $this->setFrameMode(true);
     <div class="banner-hero__thumbs d-none d-lg-block">
         <div class="swiper js-banner-hero-thumbs">
             <div class="banner-hero__thumbs-wrapper swiper-wrapper">
-                <?foreach ($arResult['ITEMS'] as $item) {?>
+                <?foreach ($arResult['ITEMS'] as $item):?>
                     <div class="swiper-slide banner-hero-thumb" role="button">
                         <h5><?=$item['NAME']?></h5>
                     </div>
-                <?}?>
+                <?endforeach;?>
             </div>
         </div>
     </div>

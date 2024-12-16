@@ -167,7 +167,7 @@ $headerView->render(
                 </svg>
             </a>
 
-            <? $renderer->render('Tabs', $arResult['PROPERTIES']['TABS']['VALUE']); ?>
+            <? $renderer->render('Tabs', $arResult['PROPERTIES']['TABS']['VALUE'], null, ['elementId' => $arResult['ID']]); ?>
 
         </div>
     </section>

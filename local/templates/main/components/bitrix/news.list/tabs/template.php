@@ -72,7 +72,8 @@ $this->setFrameMode(true);
                         <div class="row row-gap-6 row-gap-lg-7" id="<?= $this->GetEditAreaId($tab['ID']); ?>">
                             <?= TabContent::render(
                                 $tab['~DETAIL_TEXT'],
-                                $tab['DISPLAY_PROPERTIES']
+                                $tab['DISPLAY_PROPERTIES'],
+                                $arParams['ELEMENT_ID'] ?? null
                             ); ?>
                         </div>
                     </div>

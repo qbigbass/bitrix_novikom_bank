@@ -44,6 +44,14 @@ $APPLICATION->SetTitle('Карьера в НОВИКОМЕ');
         "DISPLAY_PREVIEW_TEXT" => "Y",
         "DISPLAY_TOP_PAGER" => "N",
         "FILE_404" => "",
+        "FILTER_NAME" => "careerFilter",
+        "FILTER_FIELD_CODE" => [
+            "NAME",
+        ],
+        "FILTER_PROPERTY_CODE" => [
+            "REGION",
+            "SPECIALIZATION",
+        ],
         "HIDE_LINK_WHEN_NO_DETAIL" => "N",
         "IBLOCK_ID" => iblock("career_ru"),
         "IBLOCK_TYPE" => "about_ru",
@@ -84,7 +92,7 @@ $APPLICATION->SetTitle('Карьера в НОВИКОМЕ');
         "SORT_ORDER2" => "ASC",
         "STRICT_SECTION_CHECK" => "Y",
         "USE_CATEGORIES" => "N",
-        "USE_FILTER" => "N",
+        "USE_FILTER" => "Y",
         "USE_PERMISSIONS" => "N",
         "USE_RATING" => "N",
         "USE_RSS" => "N",

@@ -27,7 +27,7 @@ $this->setFrameMode(true);
                     <h4 class="card-product__title"><?= $item['~NAME'] ?></h4>
                 </div>
                 <img class="card-product__img" src="<?= $item['PREVIEW_PICTURE']['SRC'] ?>" alt="<?= $item['PREVIEW_PICTURE']['ALT'] ?>" loading="lazy">
-                <a class="btn btn-link btn-icon m-auto m-lg-0" href="<?= $link ?>">
+                <a class="btn btn-link btn-icon m-auto m-lg-0 py-2 py-lg-0" href="<?= $link ?>">
                     <span>Подробнее</span>
                     <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%"
                          height="100%">

@@ -1,4 +1,4 @@
-<section class="section-layout bg-dark-10 pt-0">
+<section class="section-layout bg-dark-10">
     <div class="container">
         <div class="row">
             <div class="col-12">

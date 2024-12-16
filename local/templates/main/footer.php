@@ -5,6 +5,34 @@ use Bitrix\Main\Localization\Loc;
 ?>
 
 <!-- /#WORK_AREA# -------------------------------------------------------------------------------------------------- -->
+
+    <div class="modal fade" id="modal-success" tabindex="-1" data-bs-backdrop="static" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable align-items-end align-items-md-center">
+            <div class="modal-content">
+                <div class="modal-body d-flex flex-column row-gap-4 row-gap-md-5 row-gap-lg-6"><img class="modal-img" src="/frontend/dist/img/modals/success.png" alt="">
+                    <div class="modal-title h4 text-center js-success-title"></div>
+                    <p class="text-l text-center m-0 js-success-info"></p>
+                </div>
+                <div class="modal-footer border-0 justify-content-md-center">
+                    <button class="btn btn-primary btn-lg-lg m-0 w-100 w-md-auto" type="button" data-bs-dismiss="modal">Ок, спасибо!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modal-error" tabindex="-1" data-bs-backdrop="static" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable align-items-end align-items-md-center">
+            <div class="modal-content">
+                <div class="modal-body d-flex flex-column row-gap-4 row-gap-md-5 row-gap-lg-6"><img class="modal-img" src="/frontend/dist/img/modals/error.png" alt="">
+                    <div class="modal-title h4 text-center js-error-title"></div>
+                    <p class="text-l text-center m-0 js-error-info"></p>
+                </div>
+                <div class="modal-footer border-0 justify-content-md-center">
+                    <button class="btn btn-primary btn-lg-lg m-0 w-100 w-md-auto js-error-btn" type="button">Вернуться</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <footer class="footer">
         <div class="container">
             <div class="row row-gap-6 row-gap-lg-7 gx-md-2 gx-lg-2_5 footer__content">
@@ -71,7 +99,7 @@ use Bitrix\Main\Localization\Loc;
                     </a>
                     <button class="btn btn-primary btn-lg-lg mt-4 mt-md-0" type="button"><?=Loc::getMessage('FEEDBACK_BUTTON_TITLE')?></button>
                     <div class="d-flex flex-column row-gap-3 pt-md-3 pt-lg-5">
-                        <a class="btn btn-lg-lg btn-outline-primary d-flex gap-2 gap-lg-3 align-items-center justify-content-center" href="#">
+                        <a class="btn btn-lg-lg btn-outline-primary d-flex gap-2 gap-lg-3 align-items-center justify-content-center" id='showAccessibilityPanel' href="#">
                             <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                                 <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-glasses"></use>
                             </svg>
@@ -254,5 +282,32 @@ use Bitrix\Main\Localization\Loc;
         </div>
     </div>
 </div>
+<?
+/* ChatBot */
+$APPLICATION->IncludeComponent(
+    "dalee:chatbot",
+    "",
+    [
+        "FORM_TITLES" => ["Заказать звонок", "Направить обращение"],
+        "FORM_CODES" => ["modal-callback-form", "modal-feedback-form"],
+        "FORM_ICONS" => ["img/svg-sprite.svg#icon-phone", "img/svg-sprite.svg#icon-mail"],
+    ]
+);
+?>
+<?php $APPLICATION->IncludeComponent(
+    "dalee:form",
+    "callback_form",
+    [
+        "FORM_CODE" => "callback_form",
+    ]
+); ?>
+
+<?php $APPLICATION->IncludeComponent(
+    "dalee:form",
+    "feedback_form",
+    [
+        "FORM_CODE" => "feedback_form",
+    ]
+); ?>
 </body>
 </html>

@@ -1,12 +1,12 @@
 mixin card-product-list(data)
-    .card-product-list(class= `${data.additionalClass ? `card-product-list--${data.additionalClass}` : ""}`).overflow-hidden.position-relative.mh-100.h-auto.bg-dark-10.w-100.py-6.py-sm-9.py-md-11.px-3.px-sm-4.px-md-6.pe-xxl-11
+   .card-product-list(class= `${data.additionalClass ? `card-product-list--${data.additionalClass}` : ""}`).overflow-hidden.position-relative.mh-100.h-auto.bg-dark-10.w-100.pt-7.pb-6.py-sm-9.py-md-9.py-lg-11.px-3.px-sm-4.px-md-5.px-lg-6.pe-xxl-11
         div.card-product-list__inner.d-flex.flex-column.flex-lg-row.align-items-start.h-100.gap-3.gap-md-6.gap-xxl-11
             div.card-product-list__image-container.mx-auto
                 img.card-product-list__image(src=`img/${data.imgSrc}`, alt="", loading="lazy")
             div.card-product-list__content.flex-column.d-flex.align-items-start.gap-6.gap-xxl-9.w-100
                 .card-product-list__title-group.d-flex.flex-column.gap-4.gap-lg-6
                     if data.tag
-                        +tag(data.tag).card-product-list__tag
+                        +tag(data.tag).tag--triangle-absolute.card-product-list__tag
                     h2.card-product-list__title.text-break!= data.title
                     if data.description
                         span.text-l.card-product-list__description.m-0!= data.description

@@ -1,7 +1,7 @@
 mixin input-slider-text(data)
     .input-slider-text.js-input-slider-text
         input.input-slider-text__input.h4.js-input-slider-text-input
-        button(type="button").input-slider-text__button.input-slider-text__button--edit.js-input-slider-text-edit
+        button(type="button" aria-label="Редактировать значение").input-slider-text__button.input-slider-text__button--edit.js-input-slider-text-edit
             +svg-use("icon-edit", "icon dark-70 size-m")
         button(type="button").input-slider-text__button.input-slider-text__button--close.js-input-slider-text-close
             +svg-use("icon-close", "icon dark-70 size-m")

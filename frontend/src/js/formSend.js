@@ -7,7 +7,8 @@ const FORM_ELEMS = {
     error: '[data-form-error]',
     radio: 'input[type="radio"]',
     upload: '[data-upload]',
-    uploadFile: '[data-upload-file]'
+    uploadFile: '[data-upload-file]',
+    inputCall: '[data-input-call]',
 }
 
 const MODALS_ID = {
@@ -60,6 +61,23 @@ async function initFormSend() {
             modalEl.dispatchEvent(customEvent);
         })
     })
+
+    const inputsPhoneCall = document.querySelectorAll(FORM_ELEMS.inputCall);
+
+    if (!inputsPhoneCall.length) return
+
+    syncInputs(inputsPhoneCall)
+}
+
+function syncInputs(inputs) {
+    inputs[0].addEventListener('input', () => {
+        inputs[1].value = inputs[0].value;
+        inputs[1].dispatchEvent(new Event('input'))
+    });
+
+    inputs[0].addEventListener('blur', () => {
+        inputs[1].dispatchEvent(new Event('blur'))
+    })
 }
 
 
@@ -78,6 +96,11 @@ async function handleFormSubmit(event, modalId) {
         if (data.status === 'success') {
             modalInstance.hide()
             onSuccess(event.target)
+        } else {
+            const messagesBox = event.target.querySelector(MESSAGE_ELEMS.messageBox)
+            const errorMessage = data.errors.map(item => item.message).join()
+            messagesBox.setAttribute('data-error-info', errorMessage)
+            throw new Error(errorMessage)
         }
     } catch (error) {
         console.error('Error:', error)
@@ -87,11 +110,8 @@ async function handleFormSubmit(event, modalId) {
 }
 
 async function sendData(action, method, data) {
-    return await fetch(action, {
+    return fetch(action, {
         method: method,
-        headers: {
-            'Content-Type': 'multipart/form-data'
-        },
         body: data,
     })
 }

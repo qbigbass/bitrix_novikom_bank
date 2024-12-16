@@ -2,7 +2,6 @@
     padding-top: 2.5rem;
     padding-bottom: 2.5rem;
     position: relative;
-    overflow: hidden;
 
     @include use-media(tablet) {
         padding-top: 4rem;
@@ -52,5 +51,14 @@
     & .container {
         position: relative;
         z-index: 1;
+    }
+
+    &:has(.modal) .container {
+        z-index: 2;
+    }
+
+    @at-root .scrollspy & {
+        overflow: unset;
+        scroll-margin-top: 8rem;
     }
 }
