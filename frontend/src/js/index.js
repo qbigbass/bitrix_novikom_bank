@@ -359,7 +359,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initChatBot();
     initCharts();
     initYMap();
-    pbScrollToTop();
+    pbScrollTo();
 });
 
 window.onload = function() {

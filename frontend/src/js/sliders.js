@@ -350,6 +350,7 @@ function initPbSlider() {
             thumbs: {
                 swiper: pbThumbsSlider,
             },
+            speed: 2000,
             spaceBetween: 16,
             slidesPerView: 1,
             pagination: {

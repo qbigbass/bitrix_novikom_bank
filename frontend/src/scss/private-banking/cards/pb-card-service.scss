@@ -18,7 +18,6 @@
   @include use-media(tablet) {
     padding: 2rem 2.5rem 3rem;
     flex-direction: row;
-    align-items: center;
     gap: 1rem;
   }
 
@@ -115,4 +114,15 @@
       transform: translate(1rem, 1rem);
     }
   }
+
+  &__button {
+    position: absolute;
+    bottom: 1.5rem;
+
+    @include use-media(tablet) {
+      position: relative;
+      bottom: auto;
+    }
+  }
+
 }

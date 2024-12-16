@@ -267,7 +267,7 @@ block content
                 each benefit in supremeCardBenefits
                     +pb-card-benefit(benefit.icon, benefit.text).animate.js-animation
             .mt-6.text-center
-                a(href="#").btn.btn-pb.btn-pb--primary.btn-pb--size-lg.w-100.w-md-auto.animate.js-animation Стать клиентом
+                a(href="#become-client").btn.btn-pb.btn-pb--primary.btn-pb--size-lg.w-100.w-md-auto.animate.js-animation.js-scroll-to Стать клиентом
     section.pb-section.pb-section--gradient.pb-section--bg-lines
         .container
             .d-flex.flex-column.row-gap-6.row-gap-lg-11
@@ -324,14 +324,16 @@ block content
                                 each card in investmentCards
                                     .swiper-slide
                                         .pb-card-service
-                                            .d-flex.flex-column.row-gap-3
+                                            .d-flex.flex-column.row-gap-3.align-items-start
                                                 h3.pb-card-service__title!= card.title
                                                 p.pb-card-service__text!= card.description
+                                                a(href="#").pb-card-service__button.btn-pb.btn-pb--size-m.btn-pb--secondary.mt-auto
+                                                    | Подробнее
                                             .pb-card-service__image.mt-auto.mt-md-0
                                                 img(src=card.image, alt=card.title)
                             .pb-services__pagination.d-flex.gap-2.justify-content-center.mt-4
 
-    section.pb-section.pb-section--gradient.pb-section--bg-lines
+    section#become-client.pb-section.pb-section--gradient.pb-section--bg-lines
         .container
             form(action="#").pb-form.d-flex.flex-column.row-gap-4.row-gap-lg-5
                 h4.pb-form__title.dark-0.text-center Стать клиентом

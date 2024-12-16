@@ -13,7 +13,7 @@ const ELEMS_PB_ANIMATION = {
 }
 
 const ELEMS_PB_BUTTON = {
-    btnTop: '.js-scroll-to-top',
+    btnAnchor: '.js-scroll-to',
 }
 
 const ELEMS_PB_SELECT = {
@@ -64,14 +64,32 @@ function pbAnimation() {
     });
 }
 
-function pbScrollToTop() {
-    const button = document.querySelector(ELEMS_PB_BUTTON.btnTop);
+function pbScrollTo() {
+    $(ELEMS_PB_BUTTON.btnAnchor).on('click', function(event) {
+        event.preventDefault();
 
-    if (!button) return false;
+        const menu = document.querySelector(ELEMS_PB_NAV.navMenu);
+        const button = document.querySelector(ELEMS_PB_NAV.button);
 
-    button.addEventListener('click', () => {
-        $("html, body").animate({ scrollTop: 0 }, 1000, "swing");
+        if (!menu.classList.contains(ELEMS_PB_NAV.hideClass)) {
+            button.click();
+        }
+
+        const target = this.hash;
+        const $target = $(target);
+
+        $('html, body').animate({
+            scrollTop: $target.offset().top
+        }, 1000);
     })
+
+    $(window).scroll(function() {
+        if ($(this).scrollTop() > window.innerHeight) {
+            $('#scrollToTop').fadeIn();
+        } else {
+            $('#scrollToTop').fadeOut();
+        }
+    });
 }
 
 function addSelectDateOptions() {

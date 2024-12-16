@@ -2,15 +2,11 @@
     var navList = [
         {
             href: '#',
-            title: 'Финансовые услуги'
+            title: 'Главная'
         },
         {
             href: '#',
             title: 'Инвестиционные услуги'
-        },
-        {
-            href: '#',
-            title: 'Премиальные сервисы'
         },
         {
             href: '#',
@@ -32,8 +28,8 @@
         },
         {
             text: "Москва, округ Якиманка, наб. Якиманская, д.&nbsp;2",
-            icon: "icon-bank",
-        },
+            icon: "icon-bank"
+        }
     ]
 
 .pb-overlay.js-pb-nav-menu.d-none
@@ -42,11 +38,11 @@
             nav.pb-nav.d-flex.flex-column.align-items-center.row-gap-4.row-gap-lg-6
                 each item in navList
                     a.pb-nav__link(href=item.href)= item.title
-                a.btn.btn-pb.btn-pb--outline.d-none.d-lg-inline-block(href="#") Онлайл-банк
+                a.btn.btn-pb.btn-pb--outline.d-none.d-lg-inline-block(href="#") Онлайн-банк
             .text-center.d-lg-none
-                a.btn.btn-pb.btn-pb--primary(href="#") Стать клиентом
+                a.btn.btn-pb.btn-pb--primary.js-scroll-to(href="#become-client") Стать клиентом
 
-            .mt-auto.pt-7.pt-lg-0.mt-lg-0
+            .mt-auto.pt-7.pt-lg-0
                 .pb-card-contact.d-flex.flex-column.row-gap-4.row-gap-lg-5.align-items-lg-center
                     ul.list-pb-contact.d-flex.flex-column.flex-lg-row.justify-content-xl-between.flex-wrap.gap-4
                         each item in contactList
