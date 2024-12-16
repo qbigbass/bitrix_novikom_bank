@@ -2,10 +2,10 @@ mixin slider-controls()
     .slider-controls.js-swiper-controls&attributes(attributes)
         div.slider-controls__pagination.js-swiper-pagination
         div.slider-controls__navigation.js-swiper-nav
-            button.swiper-button-prev.js-swiper-prev(type="button")
+            button.swiper-button-prev.js-swiper-prev(type="button" , aria-label="Листать влево")
                 span.icon.size-m
                     +svg-use("icon-chevron-left")
 
-            button.swiper-button-next.js-swiper-next(type="button")
+            button.swiper-button-next.js-swiper-next(type="button" , aria-label="Листать вправо")
                 span.icon.size-m
                     +svg-use("icon-chevron-right")

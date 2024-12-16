@@ -1,0 +1,1707 @@
+.accessibility {
+  &.black-contrast {
+    --black-contrast-white-0: #ffffff;
+    --black-contrast-white-100: #f5f5f5;
+    --black-contrast-white-200: #e6e6e6;
+    --black-contrast-black-0: #000000;
+    --black-contrast-black-100: #1a1a1a;
+    --black-contrast-black-200: #222222;
+    --black-contrast-black-300: #333333;
+    --black-contrast-black-400: #252525;
+    --black-contrast-gray-100: #808080;
+    --black-contrast-gray-200: #b3b3b3;
+    --black-contrast-gray-300: #a0a0a0;
+    --blue-100: #000;
+    --blue-30: #fff;
+    --bs-white-rgb: #339ffd;
+    --purple-10: #000;
+		--green-100:#333333;
+
+    background-color: var(--black-contrast-gray-300);
+    color: var(--black-contrast-black-100);
+
+    //Главная страница
+
+    .text-l.mb-0 {
+      color: var(--black-contrast-black-0);
+    }
+    & .bg-heavy-purple {
+      background: none;
+    }
+    .banner-product {
+      &--blue {
+        background: none;
+        background-color: var(--black-contrast-gray-100);
+      }
+
+      &--graphite {
+        background: none;
+      }
+    }
+
+    .banner-hero {
+      border-top: 8px solid var(--black-contrast-gray-100);
+      background: none;
+
+      &__thumbs-wrapper {
+        background-color: var(--black-contrast-black-300);
+      }
+      img {
+        display: none;
+      }
+    }
+    .icon > img,
+    .icon svg {
+      color: var(--black-contrast-black-100);
+    }
+    .main-menu__link {
+      color: var(--black-contrast-white-0);
+    }
+
+    .header__link {
+      color: var(--black-contrast-white-0);
+
+      &:hover {
+        color: var(--black-contrast-black-0);
+      }
+    }
+
+    .card-menu h5 {
+      color: var(--black-contrast-white-0);
+    }
+    .header-contact-link__text {
+      color: var(--black-contrast-white);
+    }
+    .btn.btn-secondary.btn-lg-lg.d-inline-block {
+      color: var(--black-contrast-white-200);
+      background-color: var(--black-contrast-black-300);
+      border: 1px solid var(--black-contrast-white-200);
+      &:hover {
+        color: var(--black-contrast-black-300);
+        background-color: var(--black-contrast-white-200);
+      }
+    }
+    .btn {
+      --bs-btn-color: var(--black-contrast-white-0);
+      --bs-btn-border-color: var(--black-contrast-white-0);
+      --bs-btn-bg: var(--black-contrast-black-300);
+
+      --bs-btn-hover-color: var(--black-contrast-black-0);
+      --bs-btn-hover-border-color: var(--black-contrast-black-0);
+      --bs-btn-hover-bg: var(--black-contrast-white-200);
+
+      --bs-btn-active-bg: var(--black-contrast-black-200);
+      --bs-btn-active-border-color: var(--black-contrast-white-200);
+      --bs-btn-active-color: var(--black-contrast-white-200);
+    }
+    .btn.btn-sm.btn-primary {
+      --bs-btn-color: var(--black-contrast-white-0);
+      --bs-btn-border-color: var(--black-contrast-white-0);
+      --bs-btn-bg: var(--black-contrast-black-300);
+
+      --bs-btn-hover-color: var(--black-contrast-black-0);
+
+      --bs-btn-active-bg: var(--black-contrast-medium);
+      --bs-btn-active-border-color: var(--black-contrast-medium);
+
+      &:hover {
+        border-color: 1px solid var(--black-contrast-black-0);
+        background-color: var(--black-contrast-white-200);
+      }
+      &:active {
+        color: var(--black-contrast-white-200);
+        border: 1px solid var(--black-contrast-white-200);
+        background-color: var(--black-contrast-black-200);
+      }
+      &:focus {
+        border: 1px solid var(--black-contrast-black-200);
+        background-color: var(--black-contrast-white-200);
+        color: var(--black-contrast-black-0);
+      }
+    }
+
+    .dropdown-menu {
+      --bs-dropdown-link-color: var(--black-contrast-gray-300);
+      --bs-dropdown-bg: var(--black-contrast-black-300);
+      --bs-dropdown-link-active-bg: var(--black-contrast-gray-200);
+    }
+
+    .dropdown-nav {
+      background-color: var(--black-contrast-black-300);
+    }
+
+    .dropdown-item:hover {
+      color: var(--black-contrast-white-0);
+    }
+
+    .banner-hero-thumb {
+      background-color: var(--black-contrast-gray-100);
+      border-top: 1px solid var(--black-contrast-white-0);
+
+      &::after {
+        height: 5px;
+        background-color: var(--black-contrast-white-0);
+      }
+    }
+    .banner-hero-thumb:not(:first-child) {
+      border-left: 1px solid var(--black-contrast-white-0);
+    }
+
+    span.dark-70 {
+      color: var(--black-contrast-black-300);
+    }
+
+    .chip.text-s {
+      color: var(--black-contrast-white-0);
+      background-color: var(--black-contrast-gray-100);
+
+      &:hover {
+        transition: all 0.2s linear;
+        color: var(--black-contrast-black-0);
+        background-color: var(--black-contrast-white-100);
+      }
+    }
+
+    .section-layout .container h3.ps-lg-6.mb-6.mb-lg-7 {
+      color: var(--black-contrast-black-0);
+    }
+    .card-product.card-product--yellow::before,
+    .card-product.card-product--green::before,
+    .card-product.card-product--orange::before {
+      background-color: var(--black-contrast-black-300);
+    }
+    .card-product.card-product--yellow,
+    .card-product.card-product--green,
+    .card-product.card-product--orange {
+      background-color: var(--black-contrast-gray-100);
+      border: 1px solid var(--black-contrast-black-200);
+    }
+
+    .tag__triangle {
+      display: none;
+    }
+    .tag__content.text-s {
+      background-color: var(--black-contrast-gray-100);
+      border: 1px solid var(--black-contrast-black-200);
+      color: var(--black-contrast-black-0);
+    }
+    .card-product {
+      &__content {
+        .d-inline-flex.flex-nowrap.align-items-baseline.text-l.fw-semibold.gap-1.violet-100 {
+          color: var(--black-contrast-black-0);
+        }
+      }
+
+      &__button {
+        background-color: var(--black-contrast-black-300);
+        color: var(--black-contrast-white-0);
+        border: 1px solid var(--black-contrast-black-300);
+
+        &:hover {
+          background-color: var(--black-contrast-gray-100);
+          color: var(--black-contrast-black-0);
+        }
+      }
+      &__img {
+        display: none;
+      }
+    }
+
+    .swiper-pagination-bullet {
+      height: 10px;
+      background-color: var(--black-contrast-black-0);
+      &-active {
+        background-color: var(--black-contrast-white-0);
+      }
+    }
+
+    .card-service {
+      background: var(--black-contrast-gray-100);
+
+      & h4 {
+        color: var(--black-contrast-black-0);
+      }
+      &-salary {
+        background-color: var(--black-contrast-black-300);
+        border-radius: 8px;
+        &__content {
+          color: var(--black-contrast-black-0);
+        }
+        &::after {
+          background: var(--black-contrast-gray-300);
+          box-shadow: none;
+          border: 1px solid var(--black-contrast-black-0);
+          border-radius: 8px;
+        }
+      }
+    }
+    a.card-service {
+      border-radius: 8px;
+      background: var(--black-contrast-gray-300);
+      border: 1px solid var(--black-contrast-black-0);
+      &::after {
+        background: none;
+      }
+    }
+
+    .btn.btn-link.btn-lg-lg.text-info.btn-icon {
+      padding: 5px 12px;
+      border: 1px solid var(--black-contrast-black-0);
+      background-color: var(--black-contrast-black-300);
+      color: var(--black-contrast-white-0);
+      transition: 0.25s all linear;
+      .icon.size-m {
+        color: var(--black-contrast-white-0);
+        transition: 0.25s all linear;
+      }
+      &:hover {
+        background-color: var(--black-contrast-gray-300);
+        color: var(--black-contrast-black-0) !important;
+        .icon.size-m {
+          color: var(--black-contrast-black-0);
+        }
+      }
+    }
+    .pattern-bg.pattern-bg--position-sm-top {
+      display: none;
+    }
+
+    .card-service-app {
+      background-color: var(--black-contrast-light);
+      border: 1px solid var(--black-contrast-black-0);
+
+      &__inner {
+        color: var(--black-contrast-black-0);
+      }
+      &::after {
+        background: var(--black-contrast-gray-300);
+      }
+
+      & .btn {
+        border: 1px solid var(--black-contrast-black-0);
+        background-color: var(--black-contrast-gray-300);
+        color: var(--black-contrast-black-300);
+
+        &:hover {
+          background-color: var(--black-contrast-white-200);
+          color: var(--black-contrast-black-0);
+          box-shadow: none;
+        }
+      }
+
+      .icon svg {
+        fill: var(--black-contrast-black-0);
+      }
+    }
+
+    .section-layout {
+      background-color: var(--black-contrast-gray-300);
+      color: var(--black-contrast-black-100);
+      & h3 {
+        color: var(--black-contrast-black-100);
+      }
+      .announcement {
+        color: var(--black-contrast-black-100);
+
+        span {
+          color: var(--black-contrast-black-100);
+        }
+      }
+
+      .icon {
+        color: var(--black-contrast-black-100);
+      }
+    }
+
+    .nav-tabs {
+      .nav-link {
+        background-color: var(--black-contrast-gray-300);
+        color: var(--black-contrast-black-0);
+        border-color: var(--black-contrast-black-0);
+        &.active {
+          background-color: var(--black-contrast-black-300) !important;
+          color: var(--black-contrast-white-200);
+          border-color: var(--black-contrast-black-0);
+        }
+      }
+    }
+
+    .tab-content {
+      color: var(--black-contrast-black-300);
+    }
+    .dark-70 {
+      color: var(--black-contrast-black-300);
+    }
+    #loan-consumer label,
+    #loan-consumer span,
+    #loan-consumer p {
+      color: var(--black-contrast-black-300);
+    }
+    .form-check-label a {
+      color: var(--black-contrast-white);
+    }
+
+    .card-calculate-result {
+      background-color: var(--black-contrast-gray-200);
+      &__label,
+      &__body {
+        color: var(--black-contrast-black-0);
+      }
+    }
+
+    .green-100 {
+      color: var(--black-contrast-white);
+    }
+
+    .form-feedback.bg-white {
+      background: var(--black-contrast-black-0);
+    }
+
+    form .btn.btn-primary.btn-lg-lg.w-100 {
+      background-color: var(--black-contrast-black-300);
+      color: var(--black-contrast-gray-200);
+      border: none;
+      transition: background-color 0.25s ease;
+      &:hover {
+        background-color: var(--black-contrast-gray-200);
+        border: none;
+        color: var(--black-contrast-black-300);
+      }
+    }
+    button .btn.btn-info.w-100.w-lg-auto {
+      background-color: var(--black-contrast-black-300);
+      color: var(--black-contrast-gray-200);
+      border: 1px solid var(--black-contrast-black-0);
+      transition: background-color 0.25s ease;
+      &:hover {
+        background-color: var(--black-contrast-gray-200);
+        border: none;
+        color: var(--black-contrast-black-300);
+      }
+    }
+
+    .card-about-bank {
+      border: 1px solid var(--black-contrast-black-0);
+    }
+    .card-about-bank__col:first-child:after {
+      background: var(--black-contrast-gray-100);
+    }
+
+    .card-about-bank__col.d-flex.flex-column {
+      background-color: var(--black-contrast-gray-100);
+    }
+
+    .violet-100.fw-semibold.text-number-m.fw-bold {
+      color: var(--black-contrast-black-0);
+    }
+
+    .dark-100 {
+      color: var(--black-contrast-black-0);
+    }
+
+    .section-currency-exchange__wrapper.collapse {
+      background-color: var(--black-contrast-gray-100);
+      .form-label,
+      h4,
+      .caption-m.dark-70.mt-2.d-block {
+        color: var(--black-contrast-black-300);
+      }
+    }
+
+    .d-flex.flex-column.gap-4.gap-lg-5.gap-xl-4.bg-dark-0.rounded-3.px-3.py-4.p-md-5.px-lg-6.p-xl-6 {
+      background-color: var(--black-contrast-gray-200);
+    }
+
+    .d-flex.flex-column.row-gap-4.px-3.py-4.p-md-5.p-lg-6.bg-blue-10 {
+      background-color: var(--black-contrast-gray-100);
+      border: none;
+      border-radius: 0;
+    }
+
+    .purple-70 {
+      color: red;
+    }
+
+    h5 {
+      color: var(--black-contrast-black-0);
+    }
+
+    .btn-app.btn.btn-primary.d-flex.align-items-center.gap-3.justify-content-center {
+      background-color: var(--black-contrast-black-300);
+      color: var(--black-contrast-white-200);
+      border: 1px solid var(--black-contrast-white-200);
+      &:hover {
+        background-color: var(--black-contrast-gray-200);
+        color: var(--black-contrast-black-0);
+      }
+    }
+
+    .btn.btn-link.d-inline-flex.gap-2.align-items-center {
+      background: transparent;
+      color: var(--black-contrast-black-0);
+      border: none;
+      &:hover {
+        background: transparent;
+        color: var(--black-contrast-white-0);
+      }
+    }
+
+    .btn.btn-primary.btn-lg-lg {
+      background-color: var(--black-contrast-black-300);
+      color: var(--black-contrast-white-200);
+      border: 1px solid var(--black-contrast-white-200);
+      &:hover {
+        background-color: var(--black-contrast-gray-300);
+        color: var(--black-contrast-black-0);
+      }
+    }
+
+    .btn.btn-lg-lg.btn-outline-primary.d-flex.gap-2.align-items-center.justify-content-center {
+      background-color: var(--black-contrast-black-400);
+      color: var(--black-contrast-white-0);
+      border: 1px solid var(--black-contrast-black-0);
+      &:hover {
+        background-color: var(--black-contrast-gray-200);
+        color: var(--black-contrast-black-0);
+      }
+    }
+
+    .btn-app.btn.d-inline-flex.justify-content-center.align-items-center.bg-white {
+      border: 1px solid var(--black-contrast-black-0);
+      &:hover {
+        border-color: var(--black-contrast-white-0);
+      }
+    }
+
+    .footer__info {
+      background-color: var(--black-contrast-gray-200);
+    }
+
+    .bg-blue-10 {
+      background-color: var(--black-contrast-gray-100);
+      color: var(--black-contrast-white-200);
+      border: none;
+      border-radius: 0;
+    }
+
+    .d-flex.gap-2.align-items-center {
+      color: var(--black-contrast-white-0);
+
+      &:hover {
+        color: var(--black-contrast-black-0);
+      }
+    }
+
+    .chat-bot__btn-close.js-chatbot-close svg {
+      color: var(--black-contrast-white-0);
+      &:hover {
+        color: var(--black-contrast-black-0);
+      }
+    }
+
+    //TRUST MANAGEMENT PAGE
+
+    .banner-product {
+      &--border-violet {
+        --border-top-color: var(--black-contrast-black-300);
+      }
+      &__wrapper {
+        background-color: var(--black-contrast-white-200);
+      }
+
+      h1 {
+        color: var(--black-contrast-black-0);
+      }
+      &__subtitle.text-l {
+        color:var(--black-contrast-black-0);
+      }
+
+      .list.list--heavy.list--size-m.violet-100 {
+        color: var(--black-contrast-black-0);
+      }
+      & li::before {
+        background-color: var(--black-contrast-white-200);
+      }
+      &__image {
+        display: none;
+      }
+    }
+
+    .benefit__content.d-flex.flex-column.gap-3 {
+      color: var(--black-contrast-white);
+    }
+    .icon.size-xl {
+      filter: brightness(0) contrast(100%) !important;
+    }
+    .icon.size-xxl {
+      filter: brightness(0) contrast(100%);
+    }
+    .icon.size-lxl {
+      filter: brightness(0) contrast(100%);
+    }
+
+    .js-polygon-container-svg {
+      display: block;
+    }
+    .bg-purple-10 {
+      background-color: var(--black-contrast-gray-100);
+    }
+    .helper__wrapper {
+      background-color: var(--black-contrast-gray-100);
+    }
+
+    .helper__image.w-auto.float-end {
+      display: none;
+    }
+    .btn-app.btn.d-inline-flex.justify-content-center.align-items-center.bg-white {
+      background-color: var(--black-contrast-gray-300);
+    }
+
+    .section-layout.bg-dark-10 {
+      background-color: var(--black-contrast-gray-100);
+    }
+
+    // .tabs-panel__list-item.swiper-slide-active {
+    //   &-active {
+    //     background-color: var(--black-contrast-white);
+    //     color: var(--black-contrast-light);
+    //     border-color: var(--black-contrast-white);
+    //   }
+    //   background-color: var(--black-contrast-light);
+    //   color: var(--black-contrast-white);
+    //   border-color: var(--black-contrast-white);
+    //   &:hover {
+    //     background-color: var(--black-contrast-light-1);
+    //   }
+    // }
+
+    // .tabs-panel__list-item:not(.swiper-slide-active) {
+    //   background-color: var(--black-contrast-light);
+    //   color: var(--black-contrast-white);
+    //   border-color: var(--black-contrast-white);
+    //   &:hover {
+    //     background-color: var(--black-contrast-light-1);
+    //   }
+    // }
+
+    .card.overflow-hidden.position-relative {
+      background-color: var(--black-contrast-gray-300);
+    }
+
+		.card{
+			background-color: var(--black-contrast-gray-300);
+		}
+    .card__image-container.flex-shrink-0.mx-auto {
+      display: none;
+    }
+
+    .card__title.text-break {
+      color: var(--black-contrast-black-0);
+    }
+
+    .card__condition-list.d-flex.flex-column.flex-md-row.flex-wrap.gap-4.column-gap-md-11.column-gap-lg-16.row-gap-lg-6 {
+      color: red
+      & span {
+        color: var(--black-contrast-black-0);
+      }
+    }
+
+    .d-flex.flex-column.gap-4 {
+      color: var(--black-contrast-white);
+    }
+
+    .list.list--size-l li:before {
+      background:var(--black-contrast-black-0);
+    }
+
+    .accordion-button.collapsed {
+      color: var(--black-contrast-black-300);
+    }
+
+    //404/503 pages
+    .d-flex.flex-column.flex-xl-row.column-gap-xl-6 img {
+      display: none;
+    }
+
+    .map-content__header.map-content__header--type-back.d-flex.flex-column.row-gap-4.row-gap-md-6 {
+      background-color: var(--black-contrast-gray-300);
+    }
+
+    //atms.html
+    .map-content__header {
+      background-color: var(--black-contrast-gray-300);
+    }
+
+    .card-office {
+      background-color: var(--black-contrast-gray-100);
+
+      &__title.fw-semibold.text-l.m-0 {
+        color: var(--black-contrast-black-0);
+      }
+
+      &__address.text-s.m-0.dark-70 {
+        color: var(--black-contrast-black-0);
+      }
+    }
+
+    .modal {
+      &-header {
+        background-color: var(--black-contrast-gray-100);
+      }
+
+      &-body {
+        background-color: var(--black-contrast-gray-100);
+      }
+    }
+
+    .btn.btn-primary.btn-md-lg {
+      background-color: var(--black-contrast-gray-100);
+      color: var(--black-contrast-black-0);
+      border: 1px solid var(--black-contrast-black-0);
+      &:hover {
+        color: var(--black-contrast-white-0);
+        background-color: var(--black-contrast-black-300);
+      }
+    }
+
+    .btn.btn-outline-primary.btn-md-lg {
+      background-color: var(--black-contrast-gray-100);
+      color: var(--black-contrast-black-0);
+      border: 1px solid var(--black-contrast-black-0);
+      &:hover {
+        color: var(--black-contrast-white-0);
+        background-color: var(--black-contrast-black-300);
+      }
+    }
+
+    //AWARDS page
+    .bg-linear-blue {
+      background: none;
+      background-color: var(--black-contrast-gray-100);
+    }
+    .banner-text__title.text-break.dark-0 {
+      color: var(--black-contrast-black-0);
+    }
+
+    .breadcrumbs__item.d-md-inline-flex.align-items-center.gap-2.text-s.text-white-50.d-inline-flex
+      span {
+      color: var(--black-contrast-black-0);
+      &:hover {
+        color: var(--black-contrast-white-0);
+      }
+    }
+
+    .card-award {
+      background-color: var(--black-contrast-gray-300);
+      border: 1px solid var(--black-contrast-black-0);
+      color: var(--black-contrast-black-0);
+    }
+    .violet-100 {
+      color: var(--black-contrast-black-0);
+    }
+    .violet-100-important {
+      color: var(--black-contrast-black-0) !important;
+    }
+
+    .card-award__wrapper img {
+      opacity: 0;
+    }
+
+    //banking-support.html
+    .banner-product--border-orange {
+      --border-top-color: var(--black-contrast-black-300);
+    }
+
+    .banner-product {
+      &__wrapper {
+        background-color: var(--black-contrast-gray-100);
+      }
+
+      &__header h1 {
+        color: var(--black-contrast-black-0);
+      }
+
+      &__subtitle.text-l {
+        color: var(--black-contrast-black-0);
+      }
+    }
+
+    .banner-product.btn-orange {
+      color: var(--black-contrast-white-200);
+      background-color: var(--black-contrast-black-300);
+      border: 1px solid var(--black-contrast-white-200);
+      &:hover {
+        color: var(--black-contrast-black-300);
+        background-color: var(--black-contrast-white-200);
+      }
+    }
+    .banner-product--heavy-purple {
+      background: none;
+      background-color: var(--black-contrast-gray-100);
+    }
+    .breadcrumbs__item.d-md-inline-flex.align-items-center.gap-2.text-s.text-white-50.d-none
+      span {
+      color: var(--black-contrast-black-0);
+    }
+
+    .card-benefit {
+      background-color: var(--black-contrast-gray-300);
+      color: var(--black-contrast-black-0);
+      border: 1px solid var(--black-contrast-black-0);
+    }
+    .card-benefit__image {
+      display: none;
+    }
+
+    .benefit__description.w-100.text-m span {
+      color: var(--black-contrast-black-0);
+    }
+
+    .helper__wrapper.d-flex.flex-column.flex-sm-row.align-items-start.align-items-sm-center.gap-4.gap-lg-6
+      .helper.card-benefit__image {
+      background-color: var(--black-contrast-black-0);
+    }
+
+    .helper__content.text-l .link {
+      color: var(--black-contrast-black-0);
+      &:hover {
+        color: var(--black-contrast-white-200);
+        text-decoration: underline;
+      }
+    }
+
+    .list li:before {
+      background: var(--black-contrast-black-0);
+    }
+
+    .row.row-gap-6 h4 {
+      color: var(--black-contrast-black-0);
+    }
+
+    .stepper-item {
+      &__number-icon path {
+        fill: var(--black-contrast-black-0);
+      }
+
+      &__icon-border path {
+        stroke: var(--black-contrast-black-0);
+      }
+
+      &__arrow {
+        color: var(--black-contrast-black-0);
+      }
+
+      &__content {
+        color: var(--black-contrast-black-0);
+      }
+    }
+    .js-polygon-container-svg {
+      display: none;
+    }
+
+    .text-l {
+      color: var(--black-contrast-black-0);
+    }
+
+    .list.list--size-l li {
+      color: var(--black-contrast-black-0);
+      &:before {
+        background: var(--black-contrast-white-200);
+      }
+    }
+
+    .contact-block {
+      &__content {
+        color: var(--black-contrast-black-0);
+      }
+      &__description {
+        color: var(--black-contrast-black-0);
+      }
+      &.contact-block {
+        &--bg-heavy-purple {
+          background: var(--black-contrast-gray-300);
+        }
+        &--bg-white {
+          border: 1px solid var(--black-contrast-black-0);
+          background: var(--black-contrast-gray-100);
+        }
+      }
+    }
+    .caption-m.chip.chip--outlined {
+      color: var(--black-contrast-black-0);
+      background-color: var(--black-contrast-white-200);
+    }
+
+    .contact-block--bg-white:has(> .pattern-bg)::after {
+      background: linear-gradient(
+        90deg,
+        var(--black-contrast-gray-100),
+        0.9,
+        0%,
+        rgba(0, 0, 192, 0) 100%
+      );
+    }
+
+    .btn.btn-lg-lg.btn-outline-primary {
+      background-color: var(--black-contrast-black-300);
+      border: 1px solid var(--black-contrast-white-200);
+      &:hover {
+        background-color: var(--black-contrast-gray-300);
+        color: var(--black-contrast-black-0);
+      }
+    }
+
+    .btn.btn-link.btn-icon.m-auto.m-lg-0 {
+      border: none;
+      padding: 5px 12px;
+      color: red;
+      &:hover {
+        color: var(--black-contrast-white);
+        background-color: var(--black-contrast-light);
+        border: none;
+      }
+    }
+
+    //	biometric-identification.html
+    .banner-text--border-green {
+      border-top: 8px solid var(--black-contrast-black-300);
+    }
+
+    .col-12.col-xl-6.position-relative.z-1.mb-5.mb-md-0.pt-6 {
+      color: var(--black-contrast-white);
+    }
+
+    .link.text-decoration-underline {
+      color: var(--black-contrast-white);
+      &:hover {
+        color: var(--black-contrast-light);
+      }
+    }
+
+    .green-100.size-md-xxl.icon {
+      filter: brightness(0) invert(1);
+    }
+
+    //bonus-moneybox.html
+
+    .banner-text__image {
+      display: none;
+    }
+
+    .text-l .link {
+      text-decoration: underline;
+      color: var(--black-contrast-black-0);
+      &:hover {
+        color: var(--black-contrast-white-200);
+      }
+    }
+    .d-flex.flex-column.flex-md-row.flex-lg-column.gap-2.gap-md-4.gap-lg-3.align-items-start.align-items-md-center.align-items-lg-start.pe-xxl-11 {
+      border: 1px solid #000;
+      border-radius: 8px;
+      padding: 5px 12px;
+    }
+
+    //bonuses.html
+
+    .bg-gradient-violet {
+      background: none;
+      background-color: var(--black-contrast-gray-100);
+    }
+
+    .select2-selection__rendered {
+      color: var(--black-contrast-black-0) !important;
+      &:focus {
+        color: var(--black-contrast-white-200);
+      }
+    }
+    .select2-results__option.select2-results__option--selectable {
+      color: var(--black-contrast-white-200);
+    }
+    .select2-container--default.select2-results__option--highlighted.select2-results__option--selectable {
+      color: var(--black-contrast-white-200);
+      &:hover {
+        color: var(--black-contrast-white-0);
+      }
+    }
+
+    .select2-dropdown.select2-dropdown--below {
+      background-color: var(--black-contrast-gray-300);
+    }
+
+    //cards.html
+    .btn.btn-tertiary.btn-lg-lg.card-product-list__button.w-100.w-sm-auto {
+      background-color: var(--black-contrast-black-300);
+      color: var(--black-contrast-white-0);
+
+      border: none;
+      &:hover {
+        background-color: var(--black-contrast-white-200);
+        color: var(--black-contrast-black-0);
+      }
+    }
+
+    //career-vacancy.html
+    .btn.btn-link.btn-lg-lg.d-inline-flex.gap-2.align-items-center.card-product-list__button-more {
+      background-color: var(--black-contrast-black-300);
+      color: var(--black-contrast-white-0);
+      border: none;
+      padding: 15px 32px;
+      &:hover {
+        background-color: var(--black-contrast-white-200);
+        color: var(--black-contrast-black-0);
+      }
+    }
+
+    .btn.btn-secondary.btn-lg-lg.d-inline-block.w-100.w-md-auto {
+      background-color: var(--black-contrast-black-300);
+      color: var(--black-contrast-white-0);
+      border: 1px solid var(--black-contrast-gray-300);
+      &:hover {
+        background-color: var(--black-contrast-white-200);
+        color: var(--black-contrast-black-0);
+      }
+    }
+
+    //career.html
+    .mt-7.w-100.w-sm-auto.btn.btn-secondary.btn-lg-lg.d-inline-block {
+      background-color: var(--black-contrast-black-300);
+      color: var(--black-contrast-white-0);
+      border: 1px solid var(--black-contrast-gray-300);
+      &:hover {
+        background-color: var(--black-contrast-white-200);
+        color: var(--black-contrast-black-0);
+      }
+    }
+
+    .page-item {
+      --bs-pagination-border-radius: none;
+      --bs-pagination-active-bg: var(--black-contrast-light);
+      --bs-pagination-active-border-color: var(--black-contrast-bg);
+      --bs-pagination-border-radius: 4px;
+
+      &:hover {
+        --bs-pagination-border-radius: none;
+        --bs-pagination-hover-bg: var(--black-contrast-light-1);
+        --bs-pagination-active-bg: var(--black-contrast-light-1);
+        --bs-pagination-active-border-color: var(--black-contrast-light);
+        --bs-pagination-border-radius: 4px;
+      }
+      &.active {
+        --bs-pagination-border-radius: none;
+        --bs-pagination-active-bg: var(--black-contrast-light);
+        --bs-pagination-active-border-color: var(--black-contrast-white);
+        --bs-pagination-border-radius: 4px;
+      }
+    }
+
+    //cashback.html
+
+    .section-layout.bg-blue-10 {
+      background: var(--black-contrast-gray-100);
+      border: none;
+      border-radius: 0;
+    }
+    .card-sale__image {
+      display: none;
+    }
+
+    .btn.btn-lg.btn-link.btn-icon {
+      color: var(--black-contrast-black-0);
+      background-color: transparent;
+      border: 1px solid var(--black-contrast-black-0);
+      padding: 15px 32px;
+      &:hover {
+        background-color: var(--black-contrast-black-200);
+        color: var(--black-contrast-white-0);
+      }
+    }
+
+    //contacts.html
+
+    form .btn.btn-primary.btn-lg.text-m.w-100 {
+      background-color: var(--black-contrast-light);
+      border: none;
+      padding: 15px 32px;
+      &:hover {
+        background-color: var(--black-contrast-white);
+        color: var(--black-contrast-light);
+      }
+    }
+
+    .card-help__input.form-control.form-control-lg.bg-transparent {
+      color: var(--black-contrast-black-0);
+    }
+
+    //contribution-detail.html
+
+    .banner-product {
+      --border-top-color: var(--black-contrast-black-300);
+    }
+    .btn-tertiary.btn.btn-lg-lg.banner-product__button {
+      background-color: var(--black-contrast-black-300);
+      color: var(--black-contrast-white-0);
+      border: 1px solid var(--black-contrast-gray-300);
+      padding: 15px 32px;
+      &:hover {
+        background-color: var(--black-contrast-white-200);
+        color: var(--black-contrast-black-0);
+      }
+    }
+
+    .card-calculate-result__footer {
+      .btn.btn-primary.btn-lg-lg.w-100 {
+        color: var(--black-contrast-white-0);
+        background-color: var(--black-contrast-black-300);
+        border: 1px solid var(--black-contrast-black-300);
+        transition: 0.25s linear all;
+        &:hover {
+          background-color: transparent;
+          color: var(--black-contrast-black-0);
+          border: 1px solid var(--black-contrast-black-300);
+        }
+      }
+    }
+
+    .d-block {
+      color: var(--black-contrast-black-0);
+    }
+    .table {
+      --bs-table-bg-type: var(--black-contrast-gray-100);
+
+      td {
+        border-style: solid;
+        border-color: var(--black-contrast-black-300);
+      }
+    }
+    //contributions.html
+    .card-product-list__condition.d-flex.flex-column.gap-2.w-100.w-sm-50.w-xl-auto {
+      .text-number-l.fw-bold {
+        color: var(--black-contrast-white);
+      }
+    }
+
+    .card-benefit.d-inline-flex.px-3.px-sm-5.px-lg-6.p-4.p-sm-5.p-lg-6.w-100.bg-dark-10 {
+      background-color: var(--black-contrast-gray-100);
+    }
+
+    .accordion-header .accordion-button {
+      color: var(--black-contrast-black-0);
+      background-color: var(--black-contrast-gray-300);
+    }
+
+    .accordion {
+      background-color: var(--black-contrast-gray-300);
+      &-body {
+        color: var(--black-contrast-black-0);
+        background-color: var(--black-contrast-gray-300);
+      }
+    }
+
+    //customer-requests.html
+    .list.list--size-l .link {
+      color: var(--black-contrast-black-0);
+      &:hover {
+        color: var(--black-contrast-white-200);
+      }
+    }
+
+    //financial-institutes.html
+    .banner-hero-content__title {
+      color: var(--black-contrast-black-0);
+    }
+
+    .card-product__inner {
+      .btn.btn-link.btn-icon.m-auto.m-lg-0 {
+        color: var(--black-contrast-white);
+        background-color: var(--black-contrast-bg);
+
+        &:hover {
+          color: var(--black-contrast-bg);
+          background-color: var(--black-contrast-white);
+        }
+      }
+
+      .btn.btn-link.btn-icon.d-none.d-md-inline-flex {
+        color: red;
+        background-color: var(--black-contrast-bg);
+        padding: 5px 10px;
+        border: none;
+        &:hover {
+          color: var(--black-contrast-bg);
+          background-color: var(--black-contrast-white);
+        }
+      }
+    }
+
+    .card-benefit__icon {
+      .size-md-xxl.icon {
+        filter: brightness(0) contrast(100%);
+      }
+    }
+    .text-m.btn.btn-link.btn-lg.d-inline-flex.gap-2.align-items-center {
+      color: var(--black-contrast-white-200);
+      background-color: var(--black-contrast-black-300);
+      border: 1px solid var(--black-contrast-black-300);
+      padding: 5px 12px;
+      .icon.size-m {
+        color: var(--black-contrast-white-200);
+      }
+      &:hover {
+        color: var(--black-contrast-black-0);
+        background-color: var(--black-contrast-white-200);
+        border-color: var(--black-contrast-white-200);
+        .icon.size-m {
+          color: var(--black-contrast-black-0);
+        }
+      }
+    }
+
+    //financing.html
+    .banner-text--border-orange {
+      border-top: var(--border-thickness) solid var(--black-contrast-black-300);
+    }
+
+    .btn.btn-orange.d-none.d-md-inline-flex {
+      color: var(--black-contrast-white-200);
+      background-color: var(--black-contrast-black-300);
+      padding: 5px 12px;
+      &:hover {
+        color: var(--black-contrast-black-0);
+        background-color: var(--black-contrast-white-200);
+      }
+    }
+
+    //how-to-protect.html
+    .card-promo.card-promo--heavy-blue {
+      background: none;
+      background-color: var(--black-contrast-gray-100);
+    }
+    .card-promo__header.d-flex.flex-column.row-gap-3.row-gap-md-4 {
+      color: var(--black-contrast-black-0);
+    }
+
+    .btn.btn-info.btn-lg-lg.w-100.w-md-auto {
+      color: var(--black-contrast-white-200);
+      background-color: var(--black-contrast-black-300);
+      padding: 15px 32px;
+      border: none;
+      &:hover {
+        color: var(--black-contrast-black-0);
+        background-color: var(--black-contrast-white-200);
+      }
+    }
+
+    .d-flex.flex-column.align-items-start.gap-3.gap-md-4.ps-lg-6 {
+      .btn.btn-info.w-100.w-lg-auto {
+        color: var(--black-contrast-white-0);
+        background-color: var(--black-contrast-black-300);
+        border: 1px solid var(--black-contrast-black-300);
+        &:hover {
+          color: var(--black-contrast-black-0);
+          background-color: transparent;
+        }
+      }
+    }
+
+    .form-feedback.bg-white {
+      .form-label {
+        color: var(--black-contrast-black-0);
+      }
+      .btn.btn-primary.btn-lg-lg.w-100 {
+        color: var(--black-contrast-white-0);
+        background-color: var(--black-contrast-black-300);
+        &:hover {
+          color: var(--black-contrast-black-0);
+          background-color: var(--black-contrast-white-200);
+        }
+      }
+    }
+
+    //insurance-companies.html
+    .banner-text.banner-text--border-green.bg-heavy-violet {
+      background: none;
+      background-color: var(--black-contrast-gray-100);
+    }
+
+    //insurance-property.html
+    .helper.bg-dark-0 {
+      background-color: var(--black-contrast-gray-100);
+    }
+
+    //interbank-transactions.html
+    .bg-gradient-graphite {
+      background: var(--black-contrast-gray-100);
+    }
+
+    .banner-text--border-violet {
+      border-top: var(--border-thickness) solid var(--black-contrast-black-300);
+    }
+
+    .helper.bg-dark-30 {
+      background-color: var(--black-contrast-gray-100);
+    }
+
+    .bg-white {
+      background-color: var(--black-contrast-gray-100);
+    }
+    .banner-product--heavy-violet {
+      background: none;
+      background-color: var(--black-contrast-gray-100);
+    }
+    //leasing.html
+    .card-promo.card-promo--heavy-purple {
+      background: none;
+      background-color: var(--black-contrast-gray-100);
+    }
+
+    .card-promo__image {
+      display: none;
+    }
+    .benefit__title {
+      color: var(--black-contrast-black-0);
+    }
+
+    .form-feedback.p-0.gap-3.gap-md-4 {
+      .btn.btn-primary.btn-lg.text-m.w-100 {
+        color: var(--black-contrast-white-200);
+        background-color: var(--black-contrast-black-300);
+        border: 1px solid var(--black-contrast-white-200);
+        &:hover {
+          color: var(--black-contrast-black-0);
+          background-color: var(--black-contrast-gray-300);
+        }
+      }
+    }
+
+    .card-help__button.btn.btn-link.btn-lg.btn-icon.mx-auto.gap-2 {
+      color: var(--black-contrast-white-200);
+      background-color: var(--black-contrast-black-300);
+      border: 1px solid var(--black-contrast-white-200);
+      .icon.size-m {
+        color: var(--black-contrast-white-200);
+      }
+      &:hover {
+        color: var(--black-contrast-black-0);
+        background-color: var(--black-contrast-gray-300);
+        .icon.size-m {
+          color: var(--black-contrast-black-0);
+        }
+      }
+    }
+
+    .section-restructuring-steps.bg-dark-10.py-6.py-sm-9.py-md-11.py-xl-16 {
+      background-color: var(--black-contrast-gray-100);
+    }
+
+    //loans-restructuring.html
+    .rte li::before {
+      background: var(--black-contrast-white-200);
+    }
+
+    .table-adaptive__cell.text-s {
+      color: var(--black-contrast-black-0);
+    }
+    //measures-detail.html
+
+    .btn.btn-link.btn-lg.d-inline-flex.gap-2.align-items-center.card-text__button-more {
+      padding: 15px 32px;
+      width: 200px;
+      color: var(--black-contrast-white-200);
+      background-color: var(--black-contrast-black-300);
+      &:hover {
+        color: var(--black-contrast-black-0);
+        background-color: var(--black-contrast-white-200);
+      }
+    }
+
+    .card-text.d-inline-flex.px-3.px-md-4.p-4.p-sm-5.p-lg-6.bg-white.w-100.h-100 {
+      background-color: var(--black-contrast-gray-100) !important;
+    }
+
+    .btn.btn-sm.btn-link.btn-icon.d-none.d-md-inline-flex {
+      color: var(--black-contrast-white-200);
+      background-color: var(--black-contrast-black-300);
+      border: none;
+      padding: 5px 12px;
+      &:hover {
+        color: var(--black-contrast-black-0);
+        background-color: var(--black-contrast-white-200);
+      }
+    }
+    .btn.btn-link.d-inline-flex.gap-2.align-items-center.mt-md-2 {
+      padding: 5px;
+      color: var(--black-contrast-white-200);
+      background-color: var(--black-contrast-black-300);
+      &:hover {
+        color: var(--black-contrast-black-0);
+        background-color: var(--black-contrast-white-200);
+      }
+    }
+
+    .bg-dark-10 {
+      background-color: var(--black-contrast-gray-300);
+    }
+
+    //mobile-app.html
+    .card-regal.d-flex.flex-column.flex-md-row.row-gap-3.column-gap-md-6.bg-dark-30 {
+      background-color: var(--black-contrast-gray-100);
+    }
+
+    .stepper-item.stepper-item--color-violet {
+      .btn.btn-primary.btn-icon {
+        color: var(--black-contrast-white-200);
+        background-color: var(--black-contrast-black-300);
+        border: none;
+        .icon.size-m {
+          color: var(--black-contrast-white-200);
+        }
+        &:hover {
+          color: var(--black-contrast-black-0);
+          background-color: var(--black-contrast-white-200);
+          .icon.size-m {
+            color: var(--black-contrast-black-0);
+          }
+        }
+      }
+    }
+
+    .btn.btn-primary.align-items-center {
+      background-color: var(--black-contrast-gray-100);
+      border: 1px solid var(--black-contrast-gray-100);
+      &:hover {
+        background-color: var(--black-contrast-black-300);
+      }
+    }
+
+    //mortgage-primary.html
+
+    .select2-container .select2-selection--single {
+      border-color: var(--black-contrast-black-0) !important;
+    }
+
+    .input-slider-text__input:focus {
+      border: 1px solid var(--black-contrast-black-0);
+    }
+
+    .btn.btn-link.btn-sm.btn-icon.mt-2.mt-md-0 {
+      color: var(--black-contrast-white-0);
+      background-color: var(--black-contrast-black-300);
+      padding: 5px 12px;
+      border: 1px solid var(--black-contrast-black-300);
+      &:hover {
+        color: var(--black-contrast-black-0);
+        background-color: transparent;
+      }
+    }
+    .form-check-input[type="checkbox"]:not(:checked) {
+      border: 2px solid var(--black-contrast-white-0);
+      background-color: transparent;
+      appearance: none;
+    }
+
+    .form-label.mb-0 {
+      color: var(--black-contrast-black-0);
+    }
+
+    .card-product-list {
+      border: 1px solid var(--black-contrast-black-300);
+    }
+
+    //msb-bank-account.html
+
+    .card-tariff {
+      border: 1px solid var(--black-contrast-black-300);
+    }
+    .btn.btn-yellow.w-100 {
+      color: var(--black-contrast-white-200);
+      background-color: var(--black-contrast-black-300);
+      padding: 5px 12px;
+      border: none;
+      &:hover {
+        color: var(--black-contrast-black-0);
+        background-color: var(--black-contrast-white-200);
+      }
+    }
+
+    //msb-cooperation-with-funds.html
+    .banner-text.banner-text--border-.bg-heavy-violet {
+      background: none;
+      background-color: var(--black-contrast-gray-100);
+    }
+    .d-flex.flex-column.align-items-start.gap-3.gap-md-4 {
+      color: var(--black-contrast-black-0);
+    }
+
+    .swiper-wrapper {
+      .swiper-slide.js-swiper-slide.swiper-slide-visible.swiper-slide-fully-visible.swiper-slide-active,
+      .swiper-slide.js-swiper-slide.swiper-slide-visible.swiper-slide-fully-visible.swiper-slide-next,
+      .swiper-slide.js-swiper-slide.swiper-slide-visible.swiper-slide-fully-visible,
+      .swiper-slide.js-swiper-slide.swiper-slide-visible {
+        background-color: var(--black-contrast-gray-100);
+        border-radius: 5px;
+      }
+    }
+
+    .stepper-item--color-yellow .stepper-item__number-value {
+      color: var(--black-contrast-white-0) !important;
+    }
+    #accordion-funds-tab .table td {
+      background-color: red;
+    }
+
+    .accordion-body {
+      color: var(--black-contrast-black-0);
+      background-color: var(--black-contrast-gray-300);
+    }
+
+    .card-about__title.dark-0 {
+      color: var(--black-contrast-black-0);
+    }
+
+    .card-about.bg-heavy-violet.h-100 {
+      background: none;
+      background-color: var(--black-contrast-gray-300);
+    }
+    .card-feedback.position-relative.overflow-hidden.d-inline-flex.p-3.p-sm-5.p-lg-6.w-100.bg-white.h-100 {
+      background-color: var(--black-contrast-gray-300) !important;
+    }
+
+    .card-feedback__title {
+      color: var(--black-contrast-black-0);
+    }
+
+    .btn.btn-outline-primary.btn-lg-lg.text-ls.overflow-visible.w-100.w-md-auto,
+    .btn.btn-primary.btn-lg-lg.text-ls.overflow-visible.w-100.w-md-auto {
+      color: var(--black-contrast-white-200);
+      background-color: var(--black-contrast-black-300);
+      border: none;
+      &:hover {
+        color: var(--black-contrast-black-0);
+        background-color: var(--black-contrast-white-200);
+      }
+    }
+
+    //msb-currency-control.html
+    .card-benefit__list.list.list--size-l li:before {
+      background-color: var(--black-contrast-white-200);
+    }
+
+    .mb-0.text-m {
+      color: var(--black-contrast-black-0);
+    }
+
+    //msb-home.html
+
+    .banner-hero--type-msb {
+      border-top: 0.25rem solid var(--black-contrast-white);
+    }
+
+    .card-product {
+      border: 1px solid #000;
+      &__description {
+        color: var(--black-contrast-black-0);
+      }
+      &__title {
+        color: var(--black-contrast-black-0);
+      }
+
+      &__inner {
+        .btn.btn-link.btn-icon.m-auto.m-lg-0 {
+          color: var(--black-contrast-white-200);
+          background-color: var(--black-contrast-black-300);
+          .icon.size-m {
+            color: var(--black-contrast-white-200);
+          }
+          &:hover {
+            color: var(--black-contrast-black-0);
+            background-color: var(--black-contrast-white-200);
+            .icon.size-m {
+              color: var(--black-contrast-black-0);
+            }
+          }
+        }
+      }
+    }
+
+    .btn.btn-yellow.d-none.d-md-inline-flex {
+      color: var(--black-contrast-white-200);
+      background-color: var(--black-contrast-black-300);
+      border: none;
+      &:hover {
+        color: var(--black-contrast-black-0);
+        background-color: var(--black-contrast-white-200);
+      }
+    }
+
+    .card-product__footer {
+      .btn.btn-link.btn-icon.d-none.d-md-inline-flex {
+        color: var(--black-contrast-light);
+        background-color: red;
+        &:hover {
+          color: var(--black-contrast-white);
+          background-color: var(--black-contrast-light);
+        }
+      }
+    }
+
+    .card-promo--heavy-violet {
+      background: none;
+      background-color: var(--black-contrast-gray-100);
+      color: var(--black-contrast-black-0);
+    }
+
+    .d-flex.flex-column.flex-md-row.align-items-md-center.gap-3.gap-md-6 {
+      .btn.btn-lg-lg.btn-yellow.btn-info.w-100.w-md-auto {
+        color: var(--black-contrast-white-200);
+        background-color: var(--black-contrast-black-300);
+        &:hover {
+          color: var(--black-contrast-black-0);
+          background-color: var(--black-contrast-white-200);
+        }
+      }
+      .btn.btn-link.btn-lg-lg.btn-icon.text-info.m-auto.m-md-0 {
+        padding: 15px 32px;
+        color: var(--black-contrast-white-200);
+        background-color: var(--black-contrast-black-300);
+        border: none;
+        &:hover {
+          color: var(--black-contrast-black-0);
+          background-color: var(--black-contrast-white-200);
+        }
+      }
+    }
+
+    .card-product.card-product {
+      &--undefined.bg-dark-10.h-auto.flex-basis-100.flex-basis-md-25.flex-grow-1.bg-white,
+      &--undefined.bg-dark-10.w-100.w-xl-auto.flex-basis-100.flex-basis-xl-25.h-auto.flex-grow-1.bg-white,
+      &--size-height-auto.bg-dark-10.flex-basis-100.flex-basis-md-25.h-auto.flex-grow-1.bg-white,
+      &--size-height-auto.bg-dark-10.w-100.w-xl-auto.flex-basis-100.flex-basis-xl-25.h-auto.flex-grow-1.bg-white {
+        background-color: var(--black-contrast-gray-300) !important;
+      }
+    }
+
+    .card-product__footer {
+      .btn.btn-link.btn-icon.d-none.d-md-inline-flex {
+        color: var(--black-contrast-white-200);
+        background-color: var(--black-contrast-black-300);
+        .icon.size-m {
+          color: var(--black-contrast-white-200);
+        }
+        &:hover {
+          color: var(--black-contrast-black-0);
+          background-color: var(--black-contrast-white-200);
+          .icon.size-m {
+            color: var(--black-contrast-black-0);
+          }
+        }
+      }
+    }
+
+    .content-block a {
+      color: var(--black-contrast-black-0);
+      text-decoration: underline;
+      &:hover {
+        color: var(--black-contrast-white-200);
+      }
+    }
+
+    .overflow-auto.custom-overflow-scrollbar > table > thead > tr > th {
+      font-size: 1.5rem;
+      color: var(--black-contrast-black-0);
+    }
+
+    //novikom-today.html
+    .card-special.bg-dark-10.dark-100.h-100.d-flex.flex-column.row-gap-6.row-gap-lg-9 {
+      background-color: var(--black-contrast-gray-100);
+    }
+
+    //office-detail.html
+    .map-content__header.map-content__header--type-back.d-flex.flex-column.row-gap-4.row-gap-md-6 {
+      background-color: var(--black-contrast-gray-300);
+    }
+
+    .card-contact__image {
+      display: none;
+    }
+
+    .card-tariff {
+      background-color: var(--black-contrast-gray-300);
+      border-radius: 8px;
+    }
+    .card-tariff__title {
+      color: var(--black-contrast-black-0);
+    }
+
+    .card-how-use {
+      background-color: var(--black-contrast-gray-100);
+    }
+
+    .card-special.bg-dark-10.dark-100.h-100.d-flex.flex-column.row-gap-6.row-gap-lg-9 {
+      background-color: var(--black-contrast-gray-300);
+    }
+
+    .dark-0.card-contact__top-title,
+    .card-contact__link.dark-0.gap-3 {
+      color: var(--black-contrast-black-0);
+    }
+
+    .text-white-50 {
+      color: var(--black-contrast-black-0) !important;
+    }
+
+    //press-center.html
+    .card-news__image-container.position-relative.z-1.h-100 {
+      .card-news__img.position-relative.z-2 {
+        display: none;
+      }
+
+      .card-news.position-relative.bg-dark-10.dark-100.h-100.d-flex.flex-column.overflow-hidden {
+        border: 1px solid red;
+        background-color: var(--black-contrast-gray-100);
+      }
+      .col-12.col-md-6.col-lg-4 {
+        border: 1px solid red;
+        background-color: var(--black-contrast-gray-100);
+      }
+    }
+
+    .card-news__sticky-icon.btn.btn-info.p-0.d-flex {
+      background-color: var(--black-contrast-white-200);
+      color: var(--black-contrast-black-0);
+
+      &:hover {
+        background-color: var(--black-contrast-black-300);
+        color: var(--black-contrast-white-200);
+      }
+    }
+
+    .bg-dark-10 {
+      background-color: var(--black-contrast-gray-100);
+    }
+
+
+
+
+    .page-item {
+      --bs-pagination-active-bg: var(--black-contrast-black-300);
+      --bs-pagination-active-border-color: var(--black-contrast-black-300);
+			--bs-pagination-border-color:var(--black-contrast-black-0)
+      --bs-pagination-hover-bg: var(--black-contrast-white-200);
+      --bs-pagination-focus-bg: var(--black-contrast-gray-100);
+      &.active {
+        --bs-pagination-active-bg: var(--black-contrast-black-0);
+        --bs-pagination-active-border-color: var(--black-contrast-black-300);
+				--bs-pagination-border-color:var(--black-contrast-black-0)
+      }
+    }
+
+
+		.search-item mark{
+			color: var(--black-contrast-black-0) !important;
+			background:none;
+		}
+
+
+		
+  }
+}
