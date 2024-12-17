@@ -23,28 +23,28 @@ block content
                 {
                     spriteData: {
                         name: 'icon-a-bank',
-                        classList: 'size-xl',
+                        classList: 'size-xxl',
                     },
                     title: 'Уменьшение налогооблагаемой базы'
                 },
                 {
                     spriteData: {
                         name: 'icon-a-bank',
-                        classList: 'size-xl',
+                        classList: 'size-xxl',
                     },
                     title: 'Зачёт НДС&nbsp;с&nbsp;суммы <br>договора'
                 },
                 {
                     spriteData: {
                         name: 'icon-a-bank',
-                        classList: 'size-xl',
+                        classList: 'size-xxl',
                     },
                     title: 'Сокращение <br>расходов'
                 },
                 {
                     spriteData: {
                         name: 'icon-a-bank',
-                        classList: 'size-xl',
+                        classList: 'size-xxl',
                     },
                     title: 'Повышение кредитоспособности'
                 },
@@ -299,61 +299,8 @@ block content
 
                         +slider-controls().mt-3.mt-md-4
 
-    section.section-layout.bg-dark-10
-        .container
-            .row
-                .col-12.col-xxl-6.d-flex.flex-column.gap-6.gap-lg-7
+    include ../includes/layout/section-announcement
 
-                    a(href="#").h3.d-flex.align-items-center.ps-lg-6.pt-xxl-6
-                        span Объявления
-                            |
-                            |
-                            span.d-none.d-md-inline для клиентов
-                        span.icon.size-m.violet-100.ms-auto.ms-md-3
-                            +svg-use("icon-chevron-right")
-
-                    div.ps-lg-6.mt-xxl-auto.mw-100
-                        .swiper.js-announcement-slider
-                            -
-                                var announcementList = [
-                                    {
-                                        date: '25.04.2024',
-                                        title: 'Технические работы 30 апреля 2024 года в период с 0:00 до 3:30 (МСК)',
-                                        link: '#'
-                                    },
-                                    {
-                                        date: '25.04.2024',
-                                        title: 'Режим работы клиентских офисов в мае',
-                                        link: '#'
-                                    },
-                                    {
-                                        date: '25.04.2024',
-                                        title: 'Технические работы 30 апреля 2024 года в период с 0:00 до 3:30 (МСК)',
-                                        link: '#'
-                                    },
-                                    {
-                                        date: '25.04.2024',
-                                        title: 'Режим работы клиентских офисов в мае',
-                                        link: '#'
-                                    },
-                                    {
-                                        date: '25.04.2024',
-                                        title: 'Технические работы 30 апреля 2024 года в период с 0:00 до 3:30 (МСК)',
-                                        link: '#'
-                                    },
-                                    {
-                                        date: '25.04.2024',
-                                        title: 'Режим работы клиентских офисов в мае',
-                                        link: '#'
-                                    }
-                                ]
-                            .swiper-wrapper
-                                each item in announcementList
-                                    .swiper-slide.js-announcement-slide
-                                        +announcement(item)
-
-                            +slider-controls().mt-3.mt-md-4
-        +pattern-bg('section-2', 'light', 'pattern-bg--hide-mobile')
     section.section-layout
         .container
             h3.px-lg-6.mb-4.mb-md-6.mb-lg-7

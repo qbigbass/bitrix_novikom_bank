@@ -1,0 +1,245 @@
+extends ../templates/base-en
+
+block title
+    title= 'Частные клиенты'
+    meta(name="description" content="Описание главной страницы")
+block content
+    include ../includes/header/header-en
+    include ../components/banners/banner-hero
+    include ../components/ui/accordion-item
+    include ../components/document-download
+
+    -
+        var bannerHeroData = {
+            bgClass: "",
+            bgImageSrc: "img/slides/hero_banner_en-about.png",
+            banner: {
+                title: "Information <br>About the Bank",
+            },
+            navigation: [
+                {
+                    href: "#today",
+                    title: "Novikom today",
+                },
+                {
+                    href: "#persons",
+                    title: "Management",
+                },
+                {
+                    href: "#statistics",
+                    title: "Statistics <br>for December 1st	",
+                },
+                {
+                    href: "#charter-and-regulations",
+                    title: "The Bank's Charter <br>and regulations",
+                },
+                {
+                    href: "#requisites",
+                    title: "Requisites",
+                },
+            ]
+        }
+
+        var accordionList = [
+            {
+                id: 1,
+                title: 'Charter and regulations',
+                isOpen: true
+            },
+            {
+                id: 2,
+                title: 'FATCA',
+            },
+            {
+                id: 3,
+                title: 'Requisites',
+            },
+            {
+                id: 4,
+                title: 'Licences',
+            },
+        ]
+
+    +banner-hero(bannerHeroData)
+
+    section#today.section-layout
+        .container
+            .row.g-2_5
+                .col-12.col-lg-6
+                    h2.mb-4.mb-md-5.mb-lg-6 Novikom today
+                    p.w-lg-85.text-m.m-0 Since its foundation in&nbsp;1993, Novikom has been financing strategic high-tech industries of&nbsp;the real sector of&nbsp;the Russian economy, facilitating implementation of&nbsp;ambitious national-wide projects, investing in&nbsp;the future of&nbsp;the country.
+                .col-12.col-lg-6
+                    h2.mb-4.mb-md-5.mb-lg-6 Our benefits
+                    .h4.mb-2
+                        span.purple-100.border-bottom-dashed Bank of the Russian industry and high technologies
+                    p.w-lg-85.text-s.m-0 Novikom offers efficient financial instruments for leading national enterprises and is&nbsp;a&nbsp;reliable partner in&nbsp;addressing challenges facing the Russian industry.
+
+    section#persons.section-layout.pb-0
+        .container
+            h3.ps-lg-6.mb-6.mb-lg-7.px-lg-6
+                | Statistics for December 1st
+            .row
+                .col-12
+                    figure
+                        img(src="img/person.png" alt="Elena Georgieva" loading="lazy").rounded-2
+                        figcaption.h3.mt-3.px-lg-6 Elena Georgieva
+        +pattern-bg('section', 'light')
+
+    include ../includes/layout/section-statistics
+
+    include ../includes/layout/section-ratings
+
+    section.section-layout.px-lg-6
+        .container
+            .row.mb-4.mb-md-6.mb-lg-7
+                .col-12.col-lg-6
+                    h3.mb-3
+                        | KYC documents
+                    p.m-0 In&nbsp;accordance with the international standards of&nbsp;corporate governance, Novikom discloses information about the charter and other by-laws regulating the Bank&rsquo;s operations and its management bodies, and also documents regulating relations with the Bank&rsquo;s  customers and partners.
+            .row
+                .accordion.accordion--size-lg.accordion--bg-transparent#accordion-documents
+                    +accordion-item(accordionList[0], 'accordion-documents', 'fw-bold h4')#charter-and-regulations
+                        .d-flex.flex-column.gap-4.gap-md-5.gap-lg-7
+                            div
+                                div.h5.mb-3 KYC Documents
+                                +document-download({
+                                    href: "#",
+                                    text: "Archive with all documents",
+                                    dateTime: "12.12.23 18:56",
+                                    fileType: "PDF",
+                                    classSize: 'text-m'
+                                },)
+                    +accordion-item(accordionList[1], 'accordion-documents', 'fw-bold h4')
+                        .d-flex.flex-column.gap-4.gap-md-5.gap-lg-7
+                            .table-tab.cell-2.px-lg-6
+                                .table-tab__body
+                                    .table-tab__row
+                                        .table-tab__cell.text-l FATCA status
+                                        .table-tab__cell
+                                            p.text-l.fw-semibold Participating FFI
+                                    .table-tab__row
+                                        .table-tab__cell.text-l.fw-semibold.dark-70 GIIN
+                                        .table-tab__cell
+                                            p.text-l QA0AHM.00000.LE.643
+                            div
+                                div.h5.mb-3 FATCA
+                                +document-download({
+                                    href: "#",
+                                    text: "Form W-8BEN-E",
+                                    dateTime: "12.12.23 18:56",
+                                    fileType: "PDF",
+                                    classSize: 'text-m'
+                                },)
+                    +accordion-item(accordionList[2], 'accordion-documents', 'fw-bold h4')#requisites
+                        -
+                            var tableData = [
+                                {
+                                    label: "The Bank’s full trade name",
+                                    value: ["Joint-Stock Commercial Bank «NOVIKOMBANK»"]
+                                },
+                                {
+                                    label: "Contracted name",
+                                    value: ["JSCB “NOVIKOMBANK”"]
+                                },
+                                {
+                                    label: "Date of state registration",
+                                    value: ["October 25, 1993"]
+                                },
+                                {
+                                    label: "Authorised capital",
+                                    value: ["11 750 822 000 roubles"]
+                                },
+                                {
+                                    label: "Legal address",
+                                    value: ["Russia, 119180, Moscow, 50/1, bld.1, Polyanka Bolshaya str."]
+                                },
+                                {
+                                    label: "Actual address",
+                                    value: ["Russia, 119180, Moscow, 50/1, bld.1, Polyanka Bolshaya str."]
+                                },
+                                {
+                                    label: "Telephone",
+                                    value: ["+7 (800) 250-70-07, +7 (495) 974-71-87"]
+                                },
+                                {
+                                    label: "Telex",
+                                    value: ["611691 NVKOM"]
+                                },
+                                {
+                                    label: "SWIFT",
+                                    value: ["CNOVRUMMXXX"]
+                                },
+                                {
+                                    label: "Reuters Dealing",
+                                    value: ["NOVM"]
+                                },
+                                {
+                                    label: "Код Reuters Dealing",
+                                    value: ["NOVM"]
+                                },
+                                {
+                                    label: "E-mail",
+                                    value: ["office@novikom.ru"]
+                                },
+                                {
+                                    label: "Web-site",
+                                    value: ["https://novikom.ru/"]
+                                },
+                                {
+                                    label: "Requisites",
+                                    value: [
+                                        "Correspondent account",
+                                        "30101810245250000162 with GU of the Bank of Russia",
+                                        "in CFO",
+                                        "BIK 044525162",
+                                        "INN 7706196340",
+                                        "KPP 770601001",
+                                        "OGRN 1027739075891"
+                                    ]
+                                },
+                                {
+                                    label: "Statistic codes",
+                                    value: [
+                                        "OKPO 17541272",
+                                        "OKOGU 1500010",
+                                        "OKATO 45286596000",
+                                        "OKTMO 45384000",
+                                        "OKFS 16",
+                                        "OKOPF 67",
+                                        "OKVED 64.19"
+                                    ]
+                                },
+                                {
+                                    label: "Date of registration",
+                                    value: ["August 15, 2002"]
+                                }
+                            ]
+                        .d-flex.flex-column.gap-4.gap-md-5.gap-lg-7
+                            .table-tab.cell-2.px-lg-6
+                                .table-tab__body
+                                    each row in tableData
+                                        .table-tab__row
+                                            .table-tab__cell.text-l.fw-semibold.dark-70!= row.label
+                                            .table-tab__cell
+                                                each item in row.value
+                                                    p.text-l!= item
+                    +accordion-item(accordionList[3], 'accordion-documents', 'fw-bold h4')
+                        .d-flex.flex-column.gap-4.gap-md-5.gap-lg-7
+                            div.px-lg-6
+                                .h5.mb-3 General licence to conduct banking operations
+                                p.mb-0
+                                    | Licence place of issue: Moscow
+                                    br
+                                    | Name of the licensing authority: Central Bank of the Russian Federation
+                                    br
+                                    | Licence No.: 2546
+                            div
+                                .h5.mb-3 Licence issue date and validity: 20 November 2014, valid indefinitely
+                                +document-download({
+                                    href: "#",
+                                    text: "PDF",
+                                    dateTime: "12.12.23 18:56",
+                                    fileType: "PDF",
+                                    classSize: 'text-m'
+                                },)
+        +pattern-bg('section-2', 'light')

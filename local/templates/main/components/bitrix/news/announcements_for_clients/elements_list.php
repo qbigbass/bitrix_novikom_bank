@@ -21,7 +21,8 @@ $helper = $headerView->helper();
 $headerView->render(
     $APPLICATION->GetTitle(),
     '',
-    ['bg-linear-blue']
+    ['bg-linear-blue'],
+    1
 );
 
 $context = Application::getInstance()->getContext();
@@ -33,7 +34,7 @@ if ($delFilter) {
     $typeSelected = 0;
 }
 ?>
-<section class="section-layout" id="catalog-tabs">
+<section class="section-layout py-lg-11" id="catalog-tabs">
     <div class="container d-flex flex-column row-gap-6 row-gap-lg-7">
         <div class="row row-gap-4 row-gap-md-6 row-gap-lg-7 px-lg-6">
             <!-- Табы по разделам -->

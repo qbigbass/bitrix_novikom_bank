@@ -43,6 +43,7 @@ block content
                 title: "Расчетное обслуживание",
                 description: "Корреспондентские счета ЛОРО в российских рублях и иностранной валюте",
                 link: "Подробнее",
+                bgClass: 'bg-white',
                 color: "transparent",
                 size: "large",
             },
@@ -52,6 +53,7 @@ block content
                 title: "Межбанковские операции",
                 description: "Операции на валютном и денежном рынках, сделки МБК, синдикации",
                 link: "Подробнее",
+                bgClass: 'bg-white',
                 color: "transparent",
             },
             {
@@ -60,6 +62,7 @@ block content
                 title: "Брокерское обслуживание",
                 description: "Услуги профессионального частника рынка ценных бумаг",
                 link: "Подробнее",
+                bgClass: 'bg-white',
                 color: "transparent",
             },
         ];
@@ -70,42 +73,56 @@ block content
                 icon: true,
                 iconImg: "hands_violet",
                 link: "Подробнее",
+                bgClass: 'bg-white',
+                size: 'height-auto'
             },
             {
                 title: "Гарантии<br>и обязательства",
                 icon: true,
                 iconImg: "reputation",
                 link: "Подробнее",
+                bgClass: 'bg-white',
+                size: 'height-auto'
             },
             {
                 title: "Организация<br>облигационных займов",
                 icon: true,
                 iconImg: "doc-money_violet",
                 link: "Подробнее",
+                bgClass: 'bg-white',
+                size: 'height-auto'
             },
             {
                 title: "Депозитарное обслуживание",
                 icon: true,
                 iconImg: "ticket",
                 link: "Подробнее",
+                bgClass: 'bg-white',
+                size: 'height-auto'
             },
             {
                 title: "Финансирование экспортно-импортных операций",
                 icon: true,
                 iconImg: "export-money",
                 link: "Подробнее",
+                bgClass: 'bg-white',
+                size: 'height-auto'
             },
             {
                 title: "Система<br>Банк-клиент",
                 icon: true,
                 iconImg: "account_violet",
                 link: "Подробнее",
+                bgClass: 'bg-white',
+                size: 'height-auto'
             },
             {
                 title: "Стимулирование экспорта стран СНГ",
                 icon: true,
                 iconImg: "export-up",
                 link: "Подробнее",
+                bgClass: 'bg-white',
+                size: 'height-auto'
             },
         ];
 
@@ -299,22 +316,22 @@ block content
             .row.row-gap-4.row-gap-md-5.row-gap-lg-7
                 .card-offer-grid
                     each card in cardList
-                        +card-product(card).card-product--bg-white
+                        +card-product(card)
                 .col-12
                     .d-flex.flex-column.cards-gap
                         .row.cards-gutter
                             .col-12.col-md-6.col-lg-4
-                                +card-product(productCards[0]).card-product--bg-white
+                                +card-product(productCards[0])
                             .col-12.col-md-6.col-lg-4
-                                +card-product(productCards[1]).card-product--bg-white
+                                +card-product(productCards[1])
                             .col-12.col-lg-4
-                                +card-product(productCards[2]).card-product--bg-white
+                                +card-product(productCards[2])
                         #more-finorg.collapse.d-md-block
                             .row.cards-gutter
                                 each card, index in productCards
                                     if (index > 2)
                                         .col-12.col-md-6.col-xl-3
-                                            +card-product(card).card-product--bg-white
+                                            +card-product(card)
                     .col-12.d-md-none.mt-4
                         a(
                             data-bs-toggle="collapse"
@@ -365,25 +382,4 @@ block content
 
                         +slider-controls().mt-3.mt-md-4
 
-    section.section-layout.bg-dark-10
-        .container
-            .row
-                .col-12.col-xxl-6.d-flex.flex-column.gap-6.gap-lg-7
-
-                    a(href="#").h3.d-flex.align-items-center.ps-lg-6
-                        span Объявления
-                            |
-                            |
-                            span.d-none.d-md-inline для клиентов
-                        span.icon.size-m.violet-100.ms-auto.ms-md-3
-                            +svg-use("icon-chevron-right")
-
-                    div.ps-lg-6.mt-xxl-auto.mw-100
-                        .swiper.js-announcement-slider
-                            .swiper-wrapper
-                                each item in announcementList
-                                    .swiper-slide.js-announcement-slide
-                                        +announcement(item)
-
-                            +slider-controls().mt-3.mt-md-4
-        +pattern-bg('section-2', 'light', 'pattern-bg--hide-mobile')
+    include ../includes/layout/section-announcement

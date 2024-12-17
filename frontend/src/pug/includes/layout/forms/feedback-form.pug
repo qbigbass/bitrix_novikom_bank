@@ -13,13 +13,13 @@ include ../../../components/forms/textarea
             radiosTop: [
                 {
                     id: "physical-person",
-                    name: "person",
+                    name: "PERSON",
                     value: "physical",
                     text: "Физическое лицо"
                 },
                 {
                     id: "legal-person",
-                    name: "person",
+                    name: "PERSON",
                     value: "legal",
                     text: "Юридическое лицо или ИП"
                 },
@@ -45,6 +45,7 @@ include ../../../components/forms/textarea
                 },
                 {
                     id: "birthday",
+                    name: "BIRTHDAY",
                     label: "Дата рождения",
                     placeholder: "Укажите дату",
                     required: false,
@@ -52,6 +53,7 @@ include ../../../components/forms/textarea
                 },
                 {
                     id: "inn",
+                    name: "INN",
                     label: "ИНН",
                     placeholder: "Введите ИНН",
                     required: false,
@@ -59,6 +61,7 @@ include ../../../components/forms/textarea
                 },
                 {
                     id: "organization",
+                    name: "ORGANIZATION",
                     label: "Наименование организации",
                     placeholder: "Укажите организацию",
                     required: true,
@@ -87,19 +90,20 @@ include ../../../components/forms/textarea
             radiosBottom: [
                 {
                     id: "other-email-false",
-                    name: "other-email",
+                    name: "OTHER-EMAIL",
                     value: "false",
                     text: "Да"
                 },
                 {
                     id: "other-email-true",
-                    name: "other-email",
+                    name: "OTHER-EMAIL",
                     value: "true",
                     text: "Нет, на иной адрес"
                 },
             ],
             inputReplyEmail: {
                 id: "reply-email",
+                name: "REPLY-EMAIL",
                 label: "Адрес, по которому должен быть направлен ответ (например, адрес электронной почты)",
                 placeholder: "Введите адрес",
                 type: "email",
@@ -163,7 +167,7 @@ form(action="/" method="POST" novalidate id="feedback-form" data-form data-form-
                         +radio(item, index, feedbackForm.formName)
             .application-form__col.col-12(hidden)
                 +input(step1.inputReplyEmail, feedbackForm.formName)
-        .d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-5.column-gap-lg-6.mt-6.mt-lg-7
+        .d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-5.column-gap-lg-6.mt-6.mt-lg-7.px-md-2.px-lg-0
             button.btn.btn-primary.btn-lg-lg.w-100.w-md-auto(type="button" disabled aria-disabled="true" data-form-button data-form-step-button-next) Продолжить
             div.text-m.orange-100.text-center(data-form-error)
     .application-form__step(data-form-step data-form-validate-group hidden)
@@ -191,7 +195,7 @@ form(action="/" method="POST" novalidate id="feedback-form" data-form data-form-
                 +captcha(feedbackForm.formName)
             .application-form__col.col-12
                 +confirm(feedbackForm.formName)
-        .d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-5.column-gap-lg-6.mt-6.mt-lg-7
+        .d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-5.column-gap-lg-6.mt-6.mt-lg-7.px-md-2.px-lg-0
             button.btn.btn-primary.btn-lg-lg.w-100.w-md-auto(type="submit" disabled aria-disabled="true" data-form-button) Отправить
             button.btn.btn-outline-primary.btn-lg-lg.w-100.w-md-auto(type="button" data-form-step-button-prev) Назад
             div.text-m.orange-100.text-center(data-form-error)

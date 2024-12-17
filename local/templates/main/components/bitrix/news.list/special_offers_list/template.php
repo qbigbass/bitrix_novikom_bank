@@ -13,8 +13,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 
-foreach ($arResult['ITEMS'] as $key => $item) { ?>
-    <?
+foreach ($arResult['ITEMS'] as $key => $item) {
     $this->AddEditAction($item['ID'], $item['EDIT_LINK'], CIBlock::GetArrayByID($item["IBLOCK_ID"], "ELEMENT_EDIT"));
     $this->AddDeleteAction($item['ID'], $item['DELETE_LINK'], CIBlock::GetArrayByID($item["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
     ?>
@@ -36,12 +35,14 @@ foreach ($arResult['ITEMS'] as $key => $item) { ?>
                         </span>
                     </div>
                 <? } ?>
-                <span class="card-news__sticky-icon btn btn-info p-0 d-flex">
-                    <svg class="icon size-m blue-100 m-auto" xmlns="http://www.w3.org/2000/svg" width="100%"
-                         height="100%">
-                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-pin"></use>
-                    </svg>
-                </span>
+                <? if (!empty($item['PROPERTIES']['PIN']['VALUE']) && $item['PROPERTIES']['PIN']['VALUE'] == 'Y'): ?>
+                    <span class="card-news__sticky-icon btn btn-info p-0 d-flex">
+                        <svg class="icon size-m blue-100 m-auto" xmlns="http://www.w3.org/2000/svg" width="100%"
+                             height="100%">
+                            <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-pin"></use>
+                        </svg>
+                    </span>
+                <? endif; ?>
             </div>
             <div class="card-news__image-container position-relative z-1 h-100">
                 <? if (!empty($item['PREVIEW_PICTURE']['SRC'])) { ?>

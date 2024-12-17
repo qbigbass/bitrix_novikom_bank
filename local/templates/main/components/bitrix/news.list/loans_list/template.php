@@ -34,7 +34,7 @@ $terms = [
     $this->AddEditAction($loan['ID'], $loan['EDIT_LINK'], CIBlock::GetArrayByID($loan["IBLOCK_ID"], "ELEMENT_EDIT"));
     $this->AddDeleteAction($loan['ID'], $loan['DELETE_LINK'], CIBlock::GetArrayByID($loan["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
     ?>
-    <div class="card-product-list overflow-hidden position-relative mh-100 h-auto bg-dark-10 w-100 py-6 py-sm-9 py-md-11 px-3 px-sm-4 px-md-6 pe-xxl-11" id="<?=$this->GetEditAreaId($loan['ID']);?>">
+    <div class="card-product-list overflow-hidden position-relative mh-100 h-auto bg-dark-10 w-100 pt-7 pb-6 py-sm-9 py-md-9 py-lg-11 px-3 px-sm-4 px-md-5 px-lg-6 pe-xxl-11" id="<?=$this->GetEditAreaId($loan['ID']);?>">
         <div class="card-product-list__inner d-flex flex-column flex-lg-row align-items-start h-100 gap-3 gap-md-6 gap-xxl-11">
             <div class="card-product-list__image-container mx-auto">
                 <img class="card-product-list__image" src="<?= $loan['PREVIEW_PICTURE']['SRC'] ?>" alt="<?= $loan['PREVIEW_PICTURE']['ALT'] ?>" loading="lazy">

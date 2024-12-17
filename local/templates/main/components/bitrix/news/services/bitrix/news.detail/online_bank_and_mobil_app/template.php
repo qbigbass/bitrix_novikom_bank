@@ -217,8 +217,8 @@ $helper = new ComponentHelper($component);
     <section class="section-layout bg-dark-10">
         <div class="container">
             <div class="row">
-                <div class="col-12 col-xxl-6 d-flex flex-column gap-6 gap-lg-7">
-                    <a class="h3 d-flex align-items-center ps-lg-6 pt-xxl-6" href="#">
+                <div class="col-12 col-xxl-6 d-flex flex-column gap-4 gap-md-6 gap-lg-7">
+                    <a class="h3 d-flex align-items-center ps-lg-6 pt-lg-6 pt-xxl-0" href="#">
                         <span>
                             Объявления
                             <span class="d-none d-md-inline">для клиентов</span>

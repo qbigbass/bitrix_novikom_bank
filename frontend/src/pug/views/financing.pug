@@ -87,6 +87,7 @@ block content
                 description:
                         "Новиком предлагает кредитные продукты <br>специально под формат бизнеса",
                 link: "Подробнее",
+                bgClass: 'bg-white',
                 color: "transparent",
                 size: "large",
             },
@@ -96,6 +97,7 @@ block content
                 title: "Расчетный счет",
                 description: "Открытие и&nbsp;ведение специального счета участника закупки по&nbsp;44-ФфЗ и&nbsp;223-ФЗ осуществляется бесплатно",
                 link: "Подробнее",
+                bgClass: 'bg-white',
                 color: "transparent",
             },
             {
@@ -105,6 +107,7 @@ block content
                 description:
                         "Обеспечение банковского сопровождения контрактов через открытие и&nbsp;ведение отдельных банковских счетов с&nbsp;бесплатным сопровождением сделки",
                 link: "Подробнее",
+                bgClass: 'bg-white',
                 color: "transparent",
             },
         ];
@@ -114,7 +117,7 @@ block content
                 title: "Страхование и&nbsp;оценка",
                 description: "Страхование корпоративных рисков",
                 icon: "icon-doc-certificate",
-                iconColor: "orange-100",
+                bgClass: 'bg-white',
                 color: "transparent",
                 link: "Подробнее",
             },
@@ -122,7 +125,7 @@ block content
                 title: "Гарантии",
                 description: "Выставление всех видов банковских гарантий",
                 icon: "icon-a-reputation",
-                iconColor: "orange-100",
+                bgClass: 'bg-white',
                 color: "transparent",
                 link: "Подробнее",
             },
@@ -130,7 +133,7 @@ block content
                 title: "Лизинг",
                 description: "Новиком оказывает услуги лизинга через своего партнера&nbsp;&mdash; лизинговую компанию &laquo;Нацпромлизинг&raquo;",
                 icon: "icon-a-car",
-                iconColor: "orange-100",
+                bgClass: 'bg-white',
                 color: "transparent",
                 link: "Подробнее",
             },
@@ -138,7 +141,7 @@ block content
                 title: "Синдицированное кредитование",
                 description: "Большой объем финансирования в&nbsp;рамках одной сделки",
                 icon: "icon-a-money",
-                iconColor: "orange-100",
+                bgClass: 'bg-white',
                 color: "transparent",
                 link: "Подробнее",
             },
@@ -146,7 +149,7 @@ block content
                 title: "Меры господдержки",
                 description: "Льготное финансирование организациям",
                 icon: "icon-a-bank",
-                iconColor: "orange-100",
+                bgClass: 'bg-white',
                 color: "transparent",
                 link: "Подробнее",
             },
@@ -154,7 +157,7 @@ block content
                 title: "Карты",
                 description: "Карта для совершения операций по&nbsp;счёту юридического лица",
                 icon: "icon-a-cards",
-                iconColor: "orange-100",
+                bgClass: 'bg-white',
                 color: "transparent",
                 link: "Подробнее",
             },
@@ -162,7 +165,7 @@ block content
                 title: "Cash Pooling",
                 description: "Централизованное управление денежными потоками",
                 icon: "icon-a-limits",
-                iconColor: "orange-100",
+                bgClass: 'bg-white',
                 color: "transparent",
                 link: "Подробнее",
             },
@@ -179,7 +182,7 @@ block content
             .row.row-gap-4.row-gap-md-5.row-gap-lg-7
                 .card-offer-grid
                     each card in cardList
-                        +card-product(card).card-product--bg-white
+                        +card-product(card)
 
                 .col-12
                     +card-service-app({
@@ -208,19 +211,19 @@ block content
                 .col-12
                     .row.cards-gutter
                         .col-12.col-md-6.col-lg-4
-                            +card-product(productCards[0]).card-product--bg-white
+                            +card-product(productCards[0])
                         .col-12.col-md-6.col-lg-4
-                            +card-product(productCards[1]).card-product--bg-white
+                            +card-product(productCards[1])
                         .col-12.col-lg-4
-                            +card-product(productCards[2]).card-product--bg-white
+                            +card-product(productCards[2])
                         .col-12.col-md-6.col-xl-3
-                            +card-product(productCards[3]).card-product--bg-white
+                            +card-product(productCards[3])
                         .col-12.col-md-6.col-xl-3
-                            +card-product(productCards[4]).card-product--bg-white
+                            +card-product(productCards[4])
                         .col-12.col-md-6.col-xl-3
-                            +card-product(productCards[5]).card-product--bg-white
+                            +card-product(productCards[5])
                         .col-12.col-md-6.col-xl-3
-                            +card-product(productCards[6]).card-product--bg-white
+                            +card-product(productCards[6])
     section.section-layout.js-collapsed-mobile
         .container
             h3.d-none.d-md-block.mb-md-6.mb-lg-7.px-lg-6
@@ -244,61 +247,9 @@ block content
                             #faq.tab-pane.fade(aria-labelledby="faq" tabindex="0" role="tabpanel")
                                 include ../includes/layout/tabs/faq
         +pattern-bg('section-2', 'light', 'pattern-bg--hide-mobile')
-    section.section-layout.bg-dark-10
-        .container
-            .row
-                .col-12.col-xxl-6.d-flex.flex-column.gap-6.gap-lg-7
 
-                    a(href="#").h3.d-flex.align-items-center.ps-lg-6.pt-xxl-6
-                        span Объявления
-                            |
-                            |
-                            span.d-none.d-md-inline для клиентов
-                        span.icon.size-m.violet-100.ms-auto.ms-md-3
-                            +svg-use("icon-chevron-right")
+    include ../includes/layout/section-announcement
 
-                    div.ps-lg-6.mt-xxl-auto.mw-100
-                        .swiper.js-announcement-slider
-                            -
-                                var announcementList = [
-                                    {
-                                        date: '25.04.2024',
-                                        title: 'Технические работы 30 апреля 2024 года в период с 0:00 до 3:30 (МСК)',
-                                        link: '#'
-                                    },
-                                    {
-                                        date: '25.04.2024',
-                                        title: 'Режим работы клиентских офисов в мае',
-                                        link: '#'
-                                    },
-                                    {
-                                        date: '25.04.2024',
-                                        title: 'Технические работы 30 апреля 2024 года в период с 0:00 до 3:30 (МСК)',
-                                        link: '#'
-                                    },
-                                    {
-                                        date: '25.04.2024',
-                                        title: 'Режим работы клиентских офисов в мае',
-                                        link: '#'
-                                    },
-                                    {
-                                        date: '25.04.2024',
-                                        title: 'Технические работы 30 апреля 2024 года в период с 0:00 до 3:30 (МСК)',
-                                        link: '#'
-                                    },
-                                    {
-                                        date: '25.04.2024',
-                                        title: 'Режим работы клиентских офисов в мае',
-                                        link: '#'
-                                    }
-                                ]
-                            .swiper-wrapper
-                                each item in announcementList
-                                    .swiper-slide.js-announcement-slide
-                                        +announcement(item)
-
-                            +slider-controls().mt-3.mt-md-4
-        +pattern-bg('section-2', 'light', 'pattern-bg--hide-mobile')
     section.section-layout
         .container
             h3.px-lg-6.mb-4.mb-md-6.mb-lg-7

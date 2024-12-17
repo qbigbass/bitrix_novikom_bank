@@ -38,7 +38,7 @@ $page = $_SESSION['section_page'][$arParams['MENU_DIR']] ?? '';
             .catch(error => console.error('Error:', error));
     }
 </script>
-<div class="tabs-panel js-tabs-slider overflow-hidden position-relative pe-1 pe-lg-0">
+<div class="tabs-panel js-tabs-slider overflow-hidden position-relative">
     <? if (count($arResult) >= 4) { ?>
         <div class="tabs-panel__navigation d-none d-lg-block js-tabs-slider-navigation w-100">
             <span

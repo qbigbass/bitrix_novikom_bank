@@ -32,7 +32,7 @@ $this->setFrameMode(true);
                         <img class="card-product__img" src="<?= $item['DETAIL_PICTURE']['SRC'] ?>"
                              alt="<?= $item['DETAIL_PICTURE']['ALT'] ?>" loading="lazy">
                     <? } ?>
-                    <a class="btn btn-link btn-icon m-auto m-lg-0" href="<?= $item['DETAIL_PAGE_URL'] ?>">
+                    <a class="btn btn-link btn-icon m-auto m-lg-0 py-2 py-lg-0" href="<?= $item['DETAIL_PAGE_URL'] ?>">
                         <span>Подробнее</span>
                         <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                             <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
@@ -45,7 +45,7 @@ $this->setFrameMode(true);
     } ?>
 </div>
 
-<? $APPLICATION->IncludeFile($APPLICATION->GetCurDir() . 'internet_bank_for_business.php'); ?>
+<? $APPLICATION->IncludeFile('/local/php_interface/include/internet_bank_for_business.php'); ?>
 
 <div class="col-12">
     <div class="row cards-gutter">

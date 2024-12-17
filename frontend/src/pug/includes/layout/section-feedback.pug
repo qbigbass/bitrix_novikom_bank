@@ -1,19 +1,28 @@
-section.section-layout.bg-blue-10
+include ../../components/forms/input
+
+section.section-layout.section-feedback.bg-blue-10
     .container
-        .row
-            .col-12.col-md-6.col-xl-8.position-relative.z-1.mb-5.mb-md-0.d-flex.flex-column.align-items-start.gap-5.gap-lg-6
-                .d-flex.flex-column.align-items-start.gap-3.gap-md-4.ps-lg-6
+        .section-feedback__content.d-grid.align-items-start.gap-5.row-gap-md-6.column-gap-md-5.column-gap-lg-6
+            .d-flex.flex-column.align-items-start.gap-5.gap-md-6.ps-lg-6
+                .d-flex.flex-column.gap-3.gap-lg-4
                     h3 Остались вопросы
                     p.text-l.mb-0
-                        | Оставьте свой телефон и&nbsp;мы&nbsp;перезвоним вам, либо задайте вопрос в&nbsp;чате
-                    button.btn.btn-info.w-100.w-lg-auto(type="button") Открыть чат
-                    p.text-s.dark-70.mb-0
-                        | Нажимая кнопку &laquo;Перезвоните мне&raquo;, вы&nbsp;соглашаетесь с&nbsp;условиями предоставления информации
-            .col-12.col-md-6.col-xl-4.position-relative.z-1
-                form.form-feedback.bg-white(action="/", method="POST")
-                    div
-                        label.form-label(for="mobile-phone") Мобильный телефон
-                        input#mobile-phone.form-control.form-control-lg(type="text", aria-describedby="mobile-phone-hint", placeholder="+7")
-                    button.btn.btn-primary.btn-lg-lg.w-100(type="button")
-                        | Перезвоните мне
+                        | Оставьте свой телефон, и&nbsp;мы&nbsp;перезвоним вам, либо направьте обращение
+            .d-flex.flex-column.align-items-start.gap-5.gap-md-6.ps-lg-6
+                button.btn.btn-info.w-100.w-lg-auto(type="button" data-bs-toggle="modal" data-bs-target="#modal-feedback-form") Направить обращение
+                p.text-s.dark-70.mb-0
+                    | Нажимая кнопку &laquo;Перезвоните мне&raquo;, вы&nbsp;соглашаетесь с&nbsp;условиями предоставления информации
+            form.form-feedback.bg-white
+                +input({
+                    id: "phone",
+                    label: "Мобильный телефон",
+                    placeholder: "+7",
+                    type: "tel",
+                    mask: "phone",
+                    inputCall: true
+                }, 'call')
+                button.btn.btn-primary.btn-lg-lg.w-100(type="button" data-bs-toggle="modal" data-bs-target="#modal-callback-form")
+                    | Перезвоните мне
     +pattern-bg('section-heavy', 'light', 'pattern-bg--position-top')
+
+include ../../includes/modals/modal-callback-form

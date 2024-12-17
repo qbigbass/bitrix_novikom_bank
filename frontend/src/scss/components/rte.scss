@@ -133,10 +133,15 @@
 
     &--w-xxl-60 {
         @include use-media(laptop-x) {
+            > h2,
+            > h3,
+            > h4,
+            > h5,
             > p,
             > ul,
             > img,
-            > div:not(.mw-100) {
+            > div:not(.mw-100),
+            > .border-bottom-dashed {
                 max-width: 66.645%;
             }
         }

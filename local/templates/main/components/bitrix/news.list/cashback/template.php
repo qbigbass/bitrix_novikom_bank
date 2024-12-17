@@ -20,7 +20,7 @@ $this->setFrameMode(true);
     <h3 class="mb-6 mb-lg-7 px-lg-6">Перечень избранных категорий</h3>
     <div class="row px-lg-6 mb-6 mb-lg-7">
         <div class="col-12">
-            <div class="tabs-panel js-tabs-slider overflow-hidden position-relative pe-1 pe-lg-0">
+            <div class="tabs-panel js-tabs-slider overflow-hidden position-relative">
                 <div class="tabs-panel__navigation d-none d-lg-block js-tabs-slider-navigation w-100">
                     <span class="tabs-panel__navigation-item tabs-panel__navigation-item-reverse js-tabs-slider-navigation-prev d-flex align-items-center justify-content-start px-1 z-3 position-absolute swiper-button-disabled">
                         <span class="icon size-m">

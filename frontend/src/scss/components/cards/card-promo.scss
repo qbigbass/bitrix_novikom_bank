@@ -18,6 +18,12 @@
   }
 
   &__header {
+    @include use-media(mobile-s, tablet) {
+      h2 {
+        font-size: map-get($font-size-body, medium);
+      }
+    }
+
     @include use-media(tablet-album) {
       max-width: 38.75rem; //620px
     }
@@ -40,7 +46,7 @@
 
     @include use-media(laptop-x) {
       max-width: 30rem; //480px;
-      right: 3%;
+      right: 5rem;
     }
   }
 

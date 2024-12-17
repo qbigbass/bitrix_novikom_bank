@@ -46,8 +46,8 @@ $APPLICATION->SetTitle('Объявления для клиентов');
         "DISPLAY_TOP_PAGER" => "N",
         "FILE_404" => "",
         "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-        "IBLOCK_ID" => iblock("сustomer-announcements"),
-        "IBLOCK_TYPE" => "about_ru",
+        "IBLOCK_ID" => iblock("ads_for_customers_ru"),
+        "IBLOCK_TYPE" => "support",
         "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
         "LIST_ACTIVE_DATE_FORMAT" => "d.m.Y",
         "LIST_FIELD_CODE" => [

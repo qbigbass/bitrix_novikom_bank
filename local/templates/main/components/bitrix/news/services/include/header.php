@@ -6,7 +6,7 @@
 <section class="banner-text banner-text--border-green bg-linear-blue">
     <div class="container banner-text__container position-relative z-2">
         <div class="row ps-lg-6">
-            <div class="col-12 col-xl-7 position-relative z-1 mb-5 mb-md-0 pt-6">
+            <div class="col-12 col-xxl-8 position-relative z-1 mb-5 mb-md-0 pt-6">
                 <div class="d-flex flex-column align-items-start gap-3 gap-md-4">
                     <?
                     $helper->deferredCall('showNavChain', ['.default']);

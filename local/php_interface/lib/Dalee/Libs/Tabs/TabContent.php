@@ -8,7 +8,7 @@ class TabContent
     private static string $openedRteTag = '<div class="rte">';
     private static string $closedRteTag = '</div>';
 
-    public static function render(string $detailText, array $displayProperties): string
+    public static function render(string $detailText, array $displayProperties, ?int $elementId = null): string
     {
         $tab = new TabContent();
         $conf = require 'config/handlers.php';
@@ -20,7 +20,7 @@ class TabContent
             $placeHolder = '#' . $propertyCode . '#';
 
             if(!empty($class) && str_contains($detailText, $placeHolder)) {
-                $handler = new $class($property);
+                $handler = new $class($property, $elementId);
                 $tabContent = $tab->renderDetailTextWithBlockHtml($handler, $tabContent, $placeHolder);
             }
         }

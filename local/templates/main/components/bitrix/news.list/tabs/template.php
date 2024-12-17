@@ -21,7 +21,7 @@ $this->setFrameMode(true);
     <div class="row mt-4">
         <div class="col-12">
             <div class="ps-lg-6">
-                <div class="tabs-panel js-tabs-slider overflow-hidden position-relative pe-1 pe-lg-0">
+                <div class="tabs-panel js-tabs-slider overflow-hidden position-relative">
                     <div class="tabs-panel__navigation d-none d-lg-block js-tabs-slider-navigation w-100">
                         <span
                             class="tabs-panel__navigation-item tabs-panel__navigation-item-reverse js-tabs-slider-navigation-prev d-flex align-items-center justify-content-start px-1 z-3 position-absolute swiper-button-disabled">
@@ -72,7 +72,8 @@ $this->setFrameMode(true);
                         <div class="row row-gap-6 row-gap-lg-7" id="<?= $this->GetEditAreaId($tab['ID']); ?>">
                             <?= TabContent::render(
                                 $tab['~DETAIL_TEXT'],
-                                $tab['DISPLAY_PROPERTIES']
+                                $tab['DISPLAY_PROPERTIES'],
+                                $arParams['ELEMENT_ID'] ?? null
                             ); ?>
                         </div>
                     </div>

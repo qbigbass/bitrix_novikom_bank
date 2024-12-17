@@ -29,6 +29,7 @@ include ../../../components/forms/confirm
                 },
                 {
                     id: "birthday",
+                    name: "BIRTHDAY",
                     label: "Дата рождения",
                     placeholder: "",
                     required: false,
@@ -225,7 +226,7 @@ form(action="/" method="POST" novalidate id="credit-card-form" data-form).applic
             each item in step1.inputs2
                 .application-form__col.col-12.col-md-6
                     +input(item, creditCardForm.formName)
-        .d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-5.column-gap-lg-6.mt-6.mt-lg-7
+        .d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-5.column-gap-lg-6.mt-6.mt-lg-7.px-md-2.px-lg-0
             button.btn.btn-primary.btn-lg-lg.w-100.w-md-auto(type="button" disabled aria-disabled="true" data-form-button data-form-step-button-next) Продолжить
             div.text-m.orange-100.text-center(data-form-error)
     .application-form__step(data-form-step data-form-validate-group hidden)
@@ -242,7 +243,7 @@ form(action="/" method="POST" novalidate id="credit-card-form" data-form).applic
                     +input(item, creditCardForm.formName)
             .application-form__col.col-12
                 +input(step2.inputs2[0], creditCardForm.formName)
-        .d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-5.column-gap-lg-6.mt-6.mt-lg-7
+        .d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-5.column-gap-lg-6.mt-6.mt-lg-7.px-md-2.px-lg-0
             button.btn.btn-primary.btn-lg-lg.w-100.w-md-auto(type="button" disabled aria-disabled="true" data-form-button data-form-step-button-next) Продолжить
             button.btn.btn-outline-primary.btn-lg-lg.w-100.w-md-auto(type="button" data-form-step-button-prev) Назад
             div.text-m.orange-100.text-center(data-form-error)
@@ -276,7 +277,7 @@ form(action="/" method="POST" novalidate id="credit-card-form" data-form).applic
                 +captcha(creditCardForm.formName)
             .application-form__col.col-12
                 +confirm(creditCardForm.formName)
-        .d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-5.column-gap-lg-6.mt-6.mt-lg-7
+        .d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-5.column-gap-lg-6.mt-6.mt-lg-7.px-md-2.px-lg-0
             button.btn.btn-primary.btn-lg-lg.w-100.w-md-auto(type="submit" disabled aria-disabled="true" data-form-button) Отправить заявку
             button.btn.btn-outline-primary.btn-lg-lg.w-100.w-md-auto(type="button" data-form-step-button-prev) Назад
             div.text-m.orange-100.text-center(data-form-error)
