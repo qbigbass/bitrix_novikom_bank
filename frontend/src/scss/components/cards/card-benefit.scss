@@ -5,8 +5,7 @@
 
     &__title,
     &__description {
-        word-wrap: break-word;
-        word-break: break-word;
+        @extend .text-break;
 
         & br {
             display: none;

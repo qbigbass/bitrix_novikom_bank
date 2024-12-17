@@ -208,6 +208,11 @@
         @include use-media(tablet-album) {
             flex-grow: 1;
         }
+
+        a {
+            @extend .link;
+            text-decoration: underline;
+        }
     }
 
     &__footer {

@@ -10,6 +10,8 @@
   align-items: flex-start;
   gap: 1em;
 
+  @extend .text-break;
+
   & li {
     position: relative;
     padding-left: 1.75rem;
