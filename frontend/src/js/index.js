@@ -337,10 +337,13 @@ document.addEventListener('DOMContentLoaded', () => {
     initCardSlider();
     initAnnouncementSlider();
     initTabsSlider();
+    addSelectDateOptions();
     initSelect2();
     initTabsContent();
     initInputSlider();
     showMoreContent();
+    initPbSlider();
+    pbNavMenu();
     initDatepicker();
     setPage();
     initFormSteps();
@@ -355,7 +358,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initOffices();
     initChatBot();
     initCharts();
-    initYMap();
+    // initYMap();
+    pbScrollTo();
 });
 
 window.onload = function() {
@@ -369,6 +373,8 @@ window.onload = function() {
     const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
         return new bootstrap.Tooltip(tooltipTriggerEl)
     })
+
+    pbAnimation();
 };
 
 window.addEventListener('resize', () => {

@@ -147,4 +147,11 @@ $arUrlRewrite = [
         'PATH' => '/msb/index.php',
         'SORT' => 100,
     ],
+    [
+        'CONDITION' => '#^/map/#',
+        'RULE' => '',
+        'ID' => 'bitrix:news',
+        'PATH' => '/map/index.php',
+        'SORT' => 100,
+    ],
 ];

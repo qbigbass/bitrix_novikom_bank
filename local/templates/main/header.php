@@ -73,7 +73,7 @@ $asset->addJs('/frontend/dist/js/accessibility-panel.js');
           <button class="contrastColorsYellow" aria-label="Жёлтый цвет сайта. Нажмите для выбора" tabindex="0">A</button>
         </div>
       </div>
-      <button class="btnReset" id="hideAccessibilityPanel" aria-label="Обычная версия сайта" tabindex="0">Обычная версия сайта<img class="icon" src="/img/eye.svg" tabindex="0" alt="Иконка глаза"></button>
+      <button class="btnReset" id="hideAccessibilityPanel" aria-label="Обычная версия сайта" tabindex="0">Обычная версия сайта<img class="icon" src="/frontend/dist/img/eye.svg" tabindex="0" alt="Иконка глаза"></button>
     </div>
   </div>
 </header>
@@ -107,7 +107,7 @@ $asset->addJs('/frontend/dist/js/accessibility-panel.js');
                     </div>
                     <div class="d-flex align-items-center gap-4 column-gap-xxl-3 column-gap-xxxl-6">
                         <div class="d-none d-lg-flex gap-4 column-gap-xxl-3 column-gap-xxxl-6">
-                            <a class="text-s d-inline-flex gap-1 align-items-center dark-100" href="#">
+                            <a class="text-s d-inline-flex gap-1 align-items-center dark-100" href="/map/offices/">
                                 <span class="icon size-s d-none d-xxl-inline-block violet-70">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                                         <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-point-small"></use>

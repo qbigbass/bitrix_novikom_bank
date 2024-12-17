@@ -1,0 +1,30 @@
+.pb__menu-overlay.d-flex.flex-column.justify-content-between
+    .pb__menu
+        .pb__menu-header.d-flex.align-items-center.justify-content-between
+            img.pb__menu-logo(src="/path/to/logo.svg", alt="Новиком")
+            button.pb__menu-close.btn.btn-link(type="button", aria-label="Закрыть меню")
+                +svg-use("icon-close")
+        .pb__menu-body.mt-4
+            ul.pb__menu-list.list-unstyled
+                li.pb__menu-item.mb-3
+                    a.pb__menu-link.text-white.text-decoration-none.fs-5(href="#") Финансовые услуги
+                li.pb__menu-item.mb-3
+                    a.pb__menu-link.text-white.text-decoration-none.fs-5(href="#") Инвестиционные услуги
+                li.pb__menu-item.mb-3
+                    a.pb__menu-link.text-white.text-decoration-none.fs-5(href="#") Премиальные сервисы
+                li.pb__menu-item.mb-3
+                    a.pb__menu-link.text-white.text-decoration-none.fs-5(href="#") Карта Мир Supreme
+            .text-center.mt-4
+                a.pb__menu-btn.btn.btn-primary.btn-lg(href="#") Стать клиентом
+    .pb__menu-footer.mt-auto.py-4
+        .pb__menu-contact.text-white.text-center
+            div.mb-3
+                +svg-use("icon-phone")
+                span.ms-2 +7 (800) 250-70-07
+            div.mb-3
+                +svg-use("icon-mail")
+                span.ms-2 vip@novikom.ru
+            div.mb-3
+                +svg-use("icon-location")
+                span.ms-2 Москва, округ Якиманка, наб. Якиманская, д. 2
+            a.pb__menu-footer-btn.btn.btn-outline-light.mt-3(href="#") Основной сайт Новиком
