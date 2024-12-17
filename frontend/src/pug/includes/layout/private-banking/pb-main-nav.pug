@@ -1,0 +1,57 @@
+-
+    var navList = [
+        {
+            href: '#',
+            title: 'Главная'
+        },
+        {
+            href: '#',
+            title: 'Инвестиционные услуги'
+        },
+        {
+            href: '#',
+            title: 'Карта Мир Supreme'
+        }
+    ]
+
+    var contactList = [
+        {
+            href: "tel:+78002507007",
+            text: "+7 (800) 250-70-07",
+            icon: "icon-phone",
+        },
+        {
+            href: "emailto:vip@novikom.ru",
+            text: "vip@novikom.ru",
+            icon: "icon-mail",
+            additionalClass: "",
+        },
+        {
+            text: "Москва, округ Якиманка, наб. Якиманская, д.&nbsp;2",
+            icon: "icon-bank"
+        }
+    ]
+
+.pb-overlay.js-pb-nav-menu.d-none
+    .pb-main-nav
+        .pb-main-nav__wrapper.container.d-flex.flex-column
+            nav.pb-nav.d-flex.flex-column.align-items-center.row-gap-4.row-gap-lg-6
+                each item in navList
+                    a.pb-nav__link(href=item.href)= item.title
+                a.btn.btn-pb.btn-pb--outline.d-none.d-lg-inline-block(href="#") Онлайн-банк
+            .text-center.d-lg-none
+                a.btn.btn-pb.btn-pb--primary.js-scroll-to(href="#become-client") Стать клиентом
+
+            .mt-auto.pt-7.pt-lg-0
+                .pb-card-contact.d-flex.flex-column.row-gap-4.row-gap-lg-5.align-items-lg-center
+                    ul.list-pb-contact.d-flex.flex-column.flex-lg-row.justify-content-xl-between.flex-wrap.gap-4
+                        each item in contactList
+                            li.d-flex.align-items-center
+                                span.icon.size-m.flex-shrink-0(class=item.iconColorClass ? item.iconColorClass: "dark-0")
+                                    +svg-use(item.icon)
+                                if item.href
+                                    a(href=item.href).list-pb-contact__link!= item.text
+                                else
+                                    span!= item.text
+
+                    a(href="/").btn.btn-pb.btn-pb--outline Основной сайт Новиком

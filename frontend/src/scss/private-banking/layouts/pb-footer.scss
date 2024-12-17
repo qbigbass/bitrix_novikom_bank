@@ -1,0 +1,57 @@
+.pb-footer {
+  background-color: var(--pb-dark-bg);
+  padding: 2rem 0;
+  position: relative;
+
+  @include use-media(tablet-album) {
+    padding: 2.5rem 0;
+  }
+
+  &__copyright {
+    font-size: .75rem;
+    line-height: 1.4;
+    color: rgba(#fff ,.5);
+
+    @include use-media(tablet-album) {
+      font-size: .875rem;
+    }
+  }
+
+  &__text {
+    color: var(--pb-text-color);
+    font-size: .875rem;
+    line-height: 1.4;
+
+    @include use-media(tablet-album) {
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    &--phone {
+      font-size: 1rem;
+
+      @include use-media(tablet-album) {
+        font-size: 1.25rem;
+        line-height: 1.4;
+      }
+    }
+  }
+
+    &__content {
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
+
+        @include use-media(tablet-album) {
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+        }
+
+        &-phone p {
+            color: #B0B7FE;
+
+            @include use-media(desktop) {
+                text-align: end;
+            }
+        }
+    }
+}

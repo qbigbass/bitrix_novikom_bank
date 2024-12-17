@@ -1,0 +1,481 @@
+.pb-section-hero {
+  position: relative;
+
+  @include use-media(tablet) {
+    padding-bottom: 0;
+  }
+
+  &__overlay {
+    background: radial-gradient(84.42% 84.42% at 50% 15.58%, rgba(55, 17, 106, 0.7) 0%, rgba(0, 0, 0, 0) 100%);
+    mix-blend-mode: screen;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  &__title {
+    padding: 4rem 0;
+    font-size: 1.75rem;
+    line-height: 1.25;
+    position: relative;
+    z-index: 1;
+
+    @include use-media(tablet) {
+      font-size: 2.5rem;
+      line-height: 1.2;
+      padding-bottom: 0;
+    }
+
+    @include use-media(tablet-album) {
+      font-size: 3.5rem;
+      line-height: 1.25;
+      padding-top: 5rem;
+    }
+
+    &.animate {
+      opacity: 0;
+      transform: translateY(2rem);
+      transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+      will-change: transform, opacity;
+
+      &.animate-show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+
+  &__video {
+    width: 100%;
+    margin-top: -10%;
+    margin-bottom: -10%;
+    object-fit: cover;
+
+    &.animate {
+      opacity: 0;
+      transform: translateY(20%);
+      transition: opacity .8s ease-in-out, transform .8s ease-in-out;
+      will-change: transform, opacity;
+
+      &.animate-show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+}
+
+.pb-section {
+  padding: 2.5rem 0;
+  overflow: hidden;
+
+  @include use-media(tablet) {
+    padding: 4rem 0;
+  }
+
+  @include use-media(tablet-album) {
+    padding: 3.75rem 0;
+  }
+
+  &__title {
+    font-size: 2rem;
+    line-height: 1.25;
+    font-weight: 500;
+
+    @include use-media(tablet) {
+      font-size: 2.5rem;
+      line-height: 1.2;
+    }
+
+    @include use-media(tablet-album) {
+      font-size: 3.5rem;
+      line-height: 1.25;
+    }
+
+    &.animate {
+      opacity: 0;
+      transform: translateY(2rem);
+      transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+      will-change: transform, opacity;
+
+      &.animate-show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+
+  &__subtitle {
+    font-size: 1rem;
+    line-height: 1.4;
+
+    @include use-media(tablet) {
+      font-size: 1.5rem;
+      line-height: 1.35;
+      font-weight: 500;
+    }
+
+    @include use-media(tablet-album) {
+      font-size: 2rem;
+      line-height: 1.3;
+    }
+
+    &.animate {
+      opacity: 0;
+      transform: translateY(2rem);
+      transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+      will-change: transform, opacity;
+
+      &.animate-show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+
+  &--gradient {
+    background: radial-gradient(50% 50% at 50% 50%, rgba(55, 17, 106, 0.7) 0%, rgba(0, 0, 0, 0.7) 100%);
+  }
+
+  &--gradient-linear {
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.70) 0%, rgba(55, 17, 106, 0.70) 50%, rgba(0, 0, 0, 0.70) 100%);
+  }
+
+  &--bg-black {
+    background-color: var(--pb-black);
+  }
+
+  &--bg-lines {
+    position: relative;
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("../img/pb-images/pb-lines-bg-mobile.png")  50% 60px / contain no-repeat;
+
+      @include use-media(tablet) {
+        background: url("../img/pb-images/pb-lines-bg-tablet.png")  50% 0 / contain no-repeat;
+      }
+
+      @include use-media(tablet-album) {
+        background: url("../img/pb-images/pb-lines-bg.png")  50% / contain no-repeat;
+      }
+
+      @include use-media(laptop-x) {
+        background-size: cover;
+      }
+    }
+  }
+
+  & .container {
+    max-width: 100rem;
+
+    @include use-media(desktop) {
+      max-width: 110rem;
+    }
+  }
+}
+
+.pb-cards-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+
+  @include use-media(tablet) {
+    gap: 2.5rem;
+  }
+
+  @include use-media(laptop) {
+    gap: 2.5rem;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+
+  &__item {
+    &:nth-child(1) {
+      @include use-media(laptop) {
+        grid-column: 1;
+        grid-row: 1 / 3
+      }
+    }
+
+    &:nth-child(2) {
+      @include use-media(laptop) {
+        grid-column: 2;
+        grid-row: 1 / 2;
+      }
+    }
+
+    &:nth-child(3) {
+      @include use-media(laptop) {
+        grid-column: 2;
+        grid-row: 2 / 3;
+      }
+    }
+  }
+}
+
+.pb-card-wrapper {
+  height: 25rem;
+  max-width: 18rem;
+  margin: 0 auto;
+
+  @include use-media(tablet) {
+    max-width: 43rem;
+    height: 35rem;
+  }
+
+  @include use-media(tablet-album) {
+    max-width: 100%;
+  }
+}
+
+.pb-card-image {
+  $root: #{&};
+
+  position: absolute;
+
+  &__blink {
+    position: absolute;
+    z-index: 10;
+  }
+
+  &--type-dark {
+    right: -3.5rem;
+    top: -10%;
+    width: 21rem;
+    transform: rotate(-5deg);
+
+    @include use-media(tablet) {
+      top: -10%;
+      left: 30%;
+      width: 35.5rem;
+    }
+
+    @include use-media(tablet-album) {
+      right: auto;
+      top: -20%;
+      left: 36%;
+      width: 52.5rem;
+      max-width: unset;
+    }
+
+    @include use-media(laptop) {
+      left: 39%;
+    }
+
+    @at-root .animate & {
+      opacity: 0;
+      transform: translate(5.5rem, -2.5rem) scale(1.2);
+      transition: opacity .8s ease-in-out, transform .8s ease-in-out;
+      will-change: transform, opacity;
+
+      @include use-media(tablet-album) {
+        transform: translate(5.5rem, -2.5rem) rotate(18deg);
+      }
+    }
+
+    @at-root .animate.animate-show & {
+      opacity: 1;
+      transform: translate(0) rotate(-5deg);
+      animation: card-move-left ease-in-out 16s infinite;
+      animation-delay: 1s;
+
+      @include use-media(tablet) {
+        transform: rotate(-5deg);
+      }
+    }
+
+    #{$root}__blink {
+      left: auto;
+      right: 40px;
+      top: -54px;
+      width: 222px;
+
+      @include use-media(tablet) {
+        right: 69px;
+        top: 40px;
+        width: 373px;
+      }
+
+      @include use-media(tablet-album) {
+        left: auto;
+        right: 102px;
+        top: 153px;
+        width: auto;
+      }
+    }
+  }
+
+  &--type-light {
+    left: -1rem;
+    top: 34%;
+    width: 15.7rem;
+
+    @include use-media(tablet) {
+      left: -2rem;
+      top: 20%;
+      width: 28rem;
+    }
+
+    @include use-media(tablet-album) {
+      left: auto;
+      right: 43%;
+      top: 15%;
+      width: 36.4rem;
+    }
+
+    @at-root .animate & {
+      opacity: 0;
+      transform: translate(-5.5rem, 2.5rem);
+      transition: opacity .8s ease-in-out, transform .8s ease-in-out;
+      will-change: transform, opacity;
+
+      @include use-media(tablet-album) {
+        transform: translate(-5.5rem, 2.5rem) rotate(-4deg);
+      }
+    }
+
+    @at-root .animate.animate-show & {
+      opacity: 1;
+      transform: translate(0);
+      animation: card-move-right ease-in-out 16s infinite;
+      animation-delay: 1s;
+
+      @include use-media(tablet-album) {
+        transform: translate(0) rotate(0);
+      }
+
+      & img {
+        position: relative;
+        top: 5px;
+        left: 3px;
+        z-index: -1;
+      }
+    }
+
+    #{$root}__blink {
+      width: 258px;
+      height: 197px;
+      top: 3px;
+      left: 0;
+
+      @include use-media(tablet) {
+        width: 510px;
+        height: 346px;
+        top: 3px;
+        left: -28px;
+      }
+
+      @include use-media(tablet-album) {
+        left: 0;
+        top: 0;
+        width: auto;
+        height: auto;
+      }
+    }
+  }
+}
+
+.blink-light-animate {
+  transform: translate(-5%, -6rem);
+  will-change: transform;
+
+  @at-root .animate.animate-show & {
+    animation: blink-move-right ease-in-out 16s infinite;
+    animation-delay: 1s;
+  }
+}
+
+.blink-dark-animate {
+  transform: translate(5%);
+  will-change: transform;
+
+  @at-root .animate.animate-show & {
+    animation: blink-move-left ease-in-out 16s infinite;
+    animation-delay: 1s;
+  }
+}
+
+@keyframes card-move-left {
+  0% {
+    transform: translateX(0) rotate(-5deg);
+  }
+  50% {
+    transform: translateX(-5%) rotate(-5deg);
+  }
+  100% {
+    transform: translateX(0) rotate(-5deg);
+  }
+}
+
+@keyframes card-move-right {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(5%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes blink-move-right {
+  0% {
+    transform: translate(0%, -6rem);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 1;
+  }
+  50% {
+    transform: translate(90%, -6rem);
+    opacity: 0;
+  }
+  60% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(0%, -6rem);
+  }
+}
+
+@keyframes blink-move-left {
+  0% {
+    transform: translate(5%);
+  }
+  50% {
+    transform: translate(-115%);
+  }
+  100% {
+    transform: translate(5%);
+  }
+}
+
+@media (min-width: 1200px) {
+  @keyframes card-move-right {
+    0% {
+      transform: translateX(0) rotate(0);
+    }
+    50% {
+      transform: translateX(5%) rotate(0);
+    }
+    100% {
+      transform: translateX(0) rotate(0);
+    }
+  }
+}
