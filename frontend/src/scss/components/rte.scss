@@ -57,6 +57,12 @@
         & .text-huge {
             @extend .text-number-l;
         }
+
+        a {
+            @extend .link;
+            display: inline;
+            text-decoration: underline;
+        }
     }
 
     ul {
@@ -163,6 +169,10 @@
 
         a {
             @extend .link;
+        }
+
+        div {
+            gap: 1rem;
         }
     }
 }
