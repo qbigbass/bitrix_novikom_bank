@@ -188,7 +188,7 @@ class OfficesMap {
             servicesContainer.append(`
                 <div class="form-check">
                     <input class="form-check-input" id="filter-service-${key}" type="checkbox" value="">
-                    <label class="form-check-label" for="filter-service-${key}">${value} (${key}}</label>
+                    <label class="form-check-label" for="filter-service-${key}">${value}</label>
                 </div>`
             )
         }
