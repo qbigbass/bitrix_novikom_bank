@@ -388,156 +388,136 @@ block content
 
     +anchor-panel(anchorPanelList).sticky-lg-top
 
-    section#conversion-operations.section-layout.border-top.border-blue30
-        .container
-            .row.row-gap-6.row-gap-lg-11
-                .col-12
-                    h2.mb-3.mb-md-4.px-lg-6 Конверсионные операции
-                    p.text-l.px-lg-6.m-0 Безналичные операции по покупке и продаже иностранной валюты
-                .col-12
-                    +slider-cards-benefit(cardsBenefitList)
-                .col-12.px-lg-6
-                    ul.list.list--md-col2.list--size-l
-                        li Покупка или продажа иностранной валюты за российские рубли
-                        li Покупка или продажа одной иностранной валюты за другую
-                        li Узкий спрэд котировок
-                        li Отсутствие требований по минимальному объему сделки
-                        li При отсутствии лимита — возможность работы под результаты 1, 2, 3 рейсов МЦИ для валюты РФ и отправка срочных кредитовых авизо по иностранным валютам
-                .col-12
-                    div(aria-hidden="true").border-bottom.border-blue30
-                .col-12.col-lg-8.px-lg-6
-                    ul.list.list--size-l
-                        li Заключение конверсионных сделок производится в рамках подписанного с контрагентами Генерального соглашения об общих условиях проведения операций на валютном и денежном рынках
-                .col-12
+    .scrollspy(data-bs-spy="scroll" data-bs-target="#navigation" tabindex="0" data-bs-root-margin="0px 0px -5%")
+        section#conversion-operations.section-layout.border-top.border-blue30
+            .container
+                .row.row-gap-6.row-gap-lg-11
+                    .col-12
+                        h2.mb-3.mb-md-4.px-lg-6 Конверсионные операции
+                        p.text-l.px-lg-6.m-0 Безналичные операции по покупке и продаже иностранной валюты
+                    .col-12
+                        +slider-cards-benefit(cardsBenefitList)
+                    .col-12.px-lg-6
+                        ul.list.list--md-col2.list--size-l
+                            li Покупка или продажа иностранной валюты за российские рубли
+                            li Покупка или продажа одной иностранной валюты за другую
+                            li Узкий спрэд котировок
+                            li Отсутствие требований по минимальному объему сделки
+                            li При отсутствии лимита — возможность работы под результаты 1, 2, 3 рейсов МЦИ для валюты РФ и отправка срочных кредитовых авизо по иностранным валютам
+                    .col-12
+                        div(aria-hidden="true").border-bottom.border-blue30
+                    .col-12.col-lg-8.px-lg-6
+                        ul.list.list--size-l
+                            li Заключение конверсионных сделок производится в рамках подписанного с контрагентами Генерального соглашения об общих условиях проведения операций на валютном и денежном рынках
+                    .col-12
+                        .col-12
+                            +polygon-container("violet-100")
+                                +helper("img/restructuring-additional-info_gray.png", "bg-dark-30")
+                                    p.m-0 Заключение конверсионных сделок производится в&nbsp;рамках подписанного с&nbsp;контрагентами Генерального соглашения об&nbsp;общих условиях проведения операций на&nbsp;валютном и&nbsp;денежном рынках.
+            +pattern-bg('section-2', 'light', 'pattern-bg--position-top')
+
+        section#mbk-transactions.section-layout.bg-dark-10
+            .container
+                .row.row-gap-6.row-gap-lg-11
+                    .col-12
+                        h2.mb-3.mb-md-4.px-lg-6 Межбанковское кредитование (сделки МБК)
+                        p.text-l.px-lg-6.m-0 Заключение сделок межбанковского кредитования
+                    .col-12
+                        +slider-cards-benefit(cardsBenefitList1)
+                    .col-12
+                        h3.mb-4.mb-md-5.mb-lg-6.px-lg-6 Удобство заключения сделок по&nbsp;различным каналам связи
+                        .row.row-gap-6.gx-xl-6.px-lg-6
+                            each item in benefitList
+                                .col-12.col-md-6
+                                    +benefit(item.spriteData, item.title)
                     .col-12
                         +polygon-container("violet-100")
-                            +helper("img/restructuring-additional-info_gray.png", "bg-dark-30")
-                                p.m-0 Заключение конверсионных сделок производится в&nbsp;рамках подписанного с&nbsp;контрагентами Генерального соглашения об&nbsp;общих условиях проведения операций на&nbsp;валютном и&nbsp;денежном рынках.
-        +pattern-bg('section-2', 'light', 'pattern-bg--position-top')
+                            +helper("img/restructuring-additional-info_gray.png", "bg-white")
+                                p.m-0 Заключение сделок МБК производится в&nbsp;рамках подписанного с&nbsp;контрагентами Генерального соглашения об&nbsp;общих условиях проведения операций на&nbsp;валютном и&nbsp;денежном рынках.
+            +pattern-bg('section', 'light', 'pattern-bg--position-top')
 
-    section#mbk-transactions.section-layout.bg-dark-10
-        .container
-            .row.row-gap-6.row-gap-lg-11
-                .col-12
-                    h2.mb-3.mb-md-4.px-lg-6 Межбанковское кредитование (сделки МБК)
-                    p.text-l.px-lg-6.m-0 Заключение сделок межбанковского кредитования
-                .col-12
-                    +slider-cards-benefit(cardsBenefitList1)
-                .col-12
-                    h3.mb-4.mb-md-5.mb-lg-6.px-lg-6 Удобство заключения сделок по&nbsp;различным каналам связи
-                    .row.row-gap-6.gx-xl-6.px-lg-6
-                        each item in benefitList
-                            .col-12.col-md-6
-                                +benefit(item.spriteData, item.title)
-                .col-12
-                    +polygon-container("violet-100")
-                        +helper("img/restructuring-additional-info_gray.png", "bg-white")
-                            p.m-0 Заключение сделок МБК производится в&nbsp;рамках подписанного с&nbsp;контрагентами Генерального соглашения об&nbsp;общих условиях проведения операций на&nbsp;валютном и&nbsp;денежном рынках.
-        +pattern-bg('section', 'light', 'pattern-bg--position-top')
+        section#banknote-transactions.section-layout
+            .container
+                .row.row-gap-6.row-gap-lg-11
+                    .col-12
+                        h2.mb-3.mb-md-4.px-lg-6 Банкнотные операции
+                        p.text-l.px-lg-6.m-0 НОВИКОМ предлагает широкий спектр услуг по&nbsp;проведению банкнотных операций
+                    .col-12
+                        +slider-cards-benefit(cardsBenefitList2)
+                    .col-12
+                        .row.row-gap-6.gx-xl-6.px-lg-6
+                            each item, index in benefitList1
+                                if item.description
+                                    .col-12.col-md-6.col-lg-4
+                                        +benefit(item.spriteData, item.title)
+                                            span.text-m!= item.description
+                                else
+                                    .col-12.col-md-6.col-lg-4
+                                        +benefit(item.spriteData, item.title)
+                    .col-12
+                        div(aria-hidden="true").border-bottom.border-blue30
+                    .col-12.col-lg-8
+                        p.text-l.px-lg-6.m-0 Продажа и&nbsp;покупка наличной иностранной валюты качества «Brand New» и&nbsp;«Fed Fit» за&nbsp;безналичные рубли или иностранную валюту в&nbsp;пределах установленных лимитов, остатков на&nbsp;корреспондентских счетах или под приход денежных средств (early payment)
+                    .col-12
+                        +polygon-container("violet-100")
+                            +helper("img/restructuring-additional-info_gray.png", "bg-dark-10")
+                                p.m-0 Заключение конверсионных сделок производится в&nbsp;рамках подписанного с&nbsp;контрагентами Договора об&nbsp;осуществлении межбанковских банкнотных операций.
+            +pattern-bg('section-2', 'light', 'pattern-bg--position-top')
 
-    section#banknote-transactions.section-layout
-        .container
-            .row.row-gap-6.row-gap-lg-11
-                .col-12
-                    h2.mb-3.mb-md-4.px-lg-6 Банкнотные операции
-                    p.text-l.px-lg-6.m-0 НОВИКОМ предлагает широкий спектр услуг по&nbsp;проведению банкнотных операций
-                .col-12
-                    +slider-cards-benefit(cardsBenefitList2)
-                .col-12
-                    .row.row-gap-6.gx-xl-6.px-lg-6
-                        each item, index in benefitList1
-                            if item.description
+        section#novikom-fx.section-layout.bg-dark-10
+            .container
+                .row.row-gap-6.row-gap-lg-11
+                    .col-12
+                        h2.mb-3.mb-md-4.px-lg-6 Электронная торговая платформа Novikom FX
+                        p.text-l.px-lg-6.m-0 Конверсионные операции в&nbsp;режиме реального времени для банков&nbsp;&mdash; контрагентов
+                    .col-12
+                        +polygon-container("violet-100")
+                            +helper("img/restructuring-additional-info_gray.png", "bg-white")
+                                p.m-0 Условия использования системы определены в&nbsp;Регламенте использования системы Novikom FX&nbsp;для финансовых институтов.
+                    .col-12
+                        .row.row-gap-6.gx-xl-6.px-lg-6
+                            each item in benefitList2
                                 .col-12.col-md-6.col-lg-4
                                     +benefit(item.spriteData, item.title)
-                                        span.text-m!= item.description
-                            else
-                                .col-12.col-md-6.col-lg-4
-                                    +benefit(item.spriteData, item.title)
-                .col-12
-                    div(aria-hidden="true").border-bottom.border-blue30
-                .col-12.col-lg-8
-                    p.text-l.px-lg-6.m-0 Продажа и&nbsp;покупка наличной иностранной валюты качества «Brand New» и&nbsp;«Fed Fit» за&nbsp;безналичные рубли или иностранную валюту в&nbsp;пределах установленных лимитов, остатков на&nbsp;корреспондентских счетах или под приход денежных средств (early payment)
-                .col-12
-                    +polygon-container("violet-100")
-                        +helper("img/restructuring-additional-info_gray.png", "bg-dark-10")
-                            p.m-0 Заключение конверсионных сделок производится в&nbsp;рамках подписанного с&nbsp;контрагентами Договора об&nbsp;осуществлении межбанковских банкнотных операций.
-        +pattern-bg('section-2', 'light', 'pattern-bg--position-top')
+                    .col-12
+                        +polygon-container("violet-100")
+                            +helper("img/restructuring-additional-info_gray.png", "bg-white")
+                                p.m-0 Система электронной торговли Novikom FX&nbsp;позволяет заключать сделки, предусмотренные заключенными Генеральными соглашениями, порядком предоставления и&nbsp;прекращения доступа к&nbsp;Системе, порядка заключения Сделок, а&nbsp;также порядка подачи Заявок с&nbsp;использованием Системы.
+            +pattern-bg('section', 'light', 'pattern-bg--position-top')
 
-    section#novikom-fx.section-layout.bg-dark-10
-        .container
-            .row.row-gap-6.row-gap-lg-11
-                .col-12
-                    h2.mb-3.mb-md-4.px-lg-6 Электронная торговая платформа Novikom FX
-                    p.text-l.px-lg-6.m-0 Конверсионные операции в&nbsp;режиме реального времени для банков&nbsp;&mdash; контрагентов
-                .col-12
-                    +polygon-container("violet-100")
-                        +helper("img/restructuring-additional-info_gray.png", "bg-white")
-                            p.m-0 Условия использования системы определены в&nbsp;Регламенте использования системы Novikom FX&nbsp;для финансовых институтов.
-                .col-12
-                    .row.row-gap-6.gx-xl-6.px-lg-6
-                        each item in benefitList2
-                            .col-12.col-md-6.col-lg-4
-                                +benefit(item.spriteData, item.title)
-                .col-12
-                    +polygon-container("violet-100")
-                        +helper("img/restructuring-additional-info_gray.png", "bg-white")
-                            p.m-0 Система электронной торговли Novikom FX&nbsp;позволяет заключать сделки, предусмотренные заключенными Генеральными соглашениями, порядком предоставления и&nbsp;прекращения доступа к&nbsp;Системе, порядка заключения Сделок, а&nbsp;также порядка подачи Заявок с&nbsp;использованием Системы.
-        +pattern-bg('section', 'light', 'pattern-bg--position-top')
+        section#syndicated-loans.section-layout
+            .container
+                .row.row-gap-6.row-gap-lg-11
+                    .col-12
+                        h2.mb-3.mb-md-4.px-lg-6 Синдицированные кредиты
+                        p.text-l.px-lg-6.m-0 Организация синдицированного кредитования
+                    .col-12
+                        +slider-cards-benefit(cardsBenefitList3)
+                    .col-12
+                        h3.mb-3.mb-md-4.px-lg-6 Условия
+                        p.text-l.px-lg-6.mb-6 При принятии решения об участии в синдицированном кредите НОВИКОМ учитывает:
+                        ul.list.list--md-col2.list--size-l.px-lg-6
+                            li Кредитное качество заемщика
+                            li Условия и параметры кредита
+                            li Актуальность пакета ковенант
+                            li Опыт и репутация Банка-агента по документации
+                    .col-12
+                        +polygon-container("violet-100")
+                            +helper("img/restructuring-additional-info_gray.png", "bg-dark-10")
+                                p.m-0 В&nbsp;2023 году НОВИКОМ стал одним из&nbsp;участников сделки по&nbsp;организации синдицированного кредита АО&nbsp;«Росгеология»
+            +pattern-bg('section-2', 'light', 'pattern-bg--position-top')
 
-    section#syndicated-loans.section-layout
-        .container
-            .row.row-gap-6.row-gap-lg-11
-                .col-12
-                    h2.mb-3.mb-md-4.px-lg-6 Синдицированные кредиты
-                    p.text-l.px-lg-6.m-0 Организация синдицированного кредитования
-                .col-12
-                    +slider-cards-benefit(cardsBenefitList3)
-                .col-12
-                    h3.mb-3.mb-md-4.px-lg-6 Условия
-                    p.text-l.px-lg-6.mb-6 При принятии решения об участии в синдицированном кредите НОВИКОМ учитывает:
-                    ul.list.list--md-col2.list--size-l.px-lg-6
-                        li Кредитное качество заемщика
-                        li Условия и параметры кредита
-                        li Актуальность пакета ковенант
-                        li Опыт и репутация Банка-агента по документации
-                .col-12
-                    +polygon-container("violet-100")
-                        +helper("img/restructuring-additional-info_gray.png", "bg-dark-10")
-                            p.m-0 В&nbsp;2023 году НОВИКОМ стал одним из&nbsp;участников сделки по&nbsp;организации синдицированного кредита АО&nbsp;«Росгеология»
-        +pattern-bg('section-2', 'light', 'pattern-bg--position-top')
-
-    section#contacts.section-layout.bg-dark-30
-        .container
-            h3.mb-4.mb-md-6.mb-lg-7.px-lg-6 Контакты
-            .row
-                .col-12
-                    .swiper.slider-cards.js-slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:1,tablet-album:2,laptop:2,laptop-x:2" data-space-between="mobile-s:8,mobile:8,tablet:16,tablet-album:16,laptop:16,laptop-x:16")
-                        .swiper-wrapper
-                            each item in contactList
-                                .swiper-slide.js-swiper-slide
-                                    +contact-block(item).contact-block--bg-white
-
-                        +slider-controls().mt-3.mt-md-4
-
-    section.section-layout.bg-dark-10
-        .container
-            .row
-                .col-12.col-xxl-6.d-flex.flex-column.gap-6.gap-lg-7
-
-                    a(href="#").h3.d-flex.align-items-center.ps-lg-6
-                        span Объявления
-                            |
-                            |
-                            span.d-none.d-md-inline для клиентов
-                        span.icon.size-m.violet-100.ms-auto.ms-md-3
-                            +svg-use("icon-chevron-right")
-
-                    div.ps-lg-6.mt-xxl-auto.mw-100
-                        .swiper.js-announcement-slider
+        section#contacts.section-layout.bg-dark-30
+            .container
+                h3.mb-4.mb-md-6.mb-lg-7.px-lg-6 Контакты
+                .row
+                    .col-12
+                        .swiper.slider-cards.js-slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:1,tablet-album:2,laptop:2,laptop-x:2" data-space-between="mobile-s:8,mobile:8,tablet:16,tablet-album:16,laptop:16,laptop-x:16")
                             .swiper-wrapper
-                                each item in announcementList
-                                    .swiper-slide.js-announcement-slide
-                                        +announcement(item)
+                                each item in contactList
+                                    .swiper-slide.js-swiper-slide
+                                        +contact-block(item).contact-block--bg-white
 
                             +slider-controls().mt-3.mt-md-4
-        +pattern-bg('section-2', 'light', 'pattern-bg--hide-mobile')
+
+        include ../includes/layout/section-announcement

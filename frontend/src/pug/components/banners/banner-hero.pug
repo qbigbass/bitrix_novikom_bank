@@ -2,34 +2,50 @@ mixin banner-hero(data, type)
     .banner-hero(class=data.bgClass&&`banner-hero--${data.bgClass}` class=type&&`banner-hero--type-${type}`)&attributes(attributes)
         if data.bgImageSrc
             img(src=data.bgImageSrc, class="banner-hero__bg", alt="")
-        div.banner-hero__container.swiper.js-banner-hero
-            .swiper-wrapper
-                each slide in data.sliders
-                    .swiper-slide
-                        .banner-hero-content.row.gx-0
-                            div.col-12.col-md-6.col-lg-9.col-xl-8.col-xxl-7.d-flex.flex-column.gap-3.gap-md-4.gap-xxl-6.align-items-md-start
-                                div.banner-hero-content__wrapper
-                                    h1.banner-hero-content__title!= slide.title
-                                    p.text-l.mb-0!= slide.text
-                                    if slide.button
-                                        a.btn.btn-secondary.btn-lg-lg.d-inline-block(href="#")= slide.button
-                                if slide.imageSrc
-                                    img(src=slide.imageSrc alt=slide.title).banner-hero-content__image
+        if data.banner
+            .banner-hero__container
+                .banner-hero-content.row.gx-0
+                    div.col-12.col-md-6.col-lg-9.col-xl-8.col-xxl-7.d-flex.flex-column.gap-3.gap-md-4.gap-xxl-6.align-items-md-start
+                        div.banner-hero-content__wrapper
+                            h1.banner-hero-content__title!= data.banner.title
+                            p.text-l.mb-0!= data.banner.text
+                            if data.banner.button
+                                a.btn.btn-secondary.btn-lg-lg.d-inline-block(href="#", tabindex="0", aria-label=data.banner.title)= data.banner.button
+        if data.sliders
+            div.banner-hero__container.swiper.js-banner-hero
+                .swiper-wrapper
+                    each slide in data.sliders
+                        .swiper-slide
+                            .banner-hero-content.row.gx-0
+                                div.col-12.col-md-6.col-lg-9.col-xl-8.col-xxl-7.d-flex.flex-column.gap-3.gap-md-4.gap-xxl-6.align-items-md-start
+                                    div.banner-hero-content__wrapper
+                                        h1.banner-hero-content__title!= slide.title
+                                        p.text-l.mb-0!= slide.text
+                                        if slide.button
+                                            a.btn.btn-secondary.btn-lg-lg.d-inline-block(href="#", tabindex="0", aria-label=slide.button)= slide.button
+                                    if slide.imageSrc
+                                        img(src=slide.imageSrc alt=slide.title).banner-hero-content__image
 
-            .banner-hero-pagination
-            .banner-hero-controls
-                button(type="button").banner-hero-control.banner-hero-control__prev
-                    span.icon.size-m
-                        +svg-use("icon-chevron-left")
-                button(type="button").banner-hero-control.banner-hero-control__next
-                    span.icon.size-m
-                        +svg-use("icon-chevron-right")
-        div.banner-hero__thumbs.d-none.d-lg-block
-            .swiper.js-banner-hero-thumbs
-                div.banner-hero__thumbs-wrapper.swiper-wrapper
-                    each thumb in data.sliders
-                        .swiper-slide.banner-hero-thumb(role="button")
-                            h5!= thumb.thumbTitle ? thumb.thumbTitle : thumb.title
+                .banner-hero-pagination
+                .banner-hero-controls
+                    button(type="button" aria-label="Перейти на предыдущий слайд").banner-hero-control.banner-hero-control__prev
+                        span.icon.size-m
+                            +svg-use("icon-chevron-left")
+                    button(type="button" aria-label="Перейти на следующий слайд").banner-hero-control.banner-hero-control__next
+                        span.icon.size-m
+                            +svg-use("icon-chevron-right")
+            div.banner-hero__thumbs.d-none.d-lg-block
+                .swiper.js-banner-hero-thumbs
+                    div.banner-hero__thumbs-wrapper.swiper-wrapper
+                        each thumb in data.sliders
+                            .swiper-slide.banner-hero-thumb(role="button")
+                                h5!= thumb.thumbTitle ? thumb.thumbTitle : thumb.title
+        if data.navigation
+            .banner-hero__thumbs.d-none.d-lg-block
+                div.banner-hero__thumbs-wrapper
+                    each item in data.navigation
+                        a.banner-hero-thumb(href=item.href)
+                            h5!= item.title
         if data.bgGradient
             +pattern-bg('section', 'dark', 'pattern-bg--position-sm-top banner-hero__pattern')
         if type === 'light'

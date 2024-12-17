@@ -34,20 +34,26 @@ class RatesFetcher
     }
 
     /**
-     * @param int|array $elementIds
+     * @param int|array|null $elementIds
      * @return void
      */
-    public function fetchRates(int|array $elementIds): void
+    public function fetchRates(int|array|null $elementIds): void
     {
         try {
             $dataClass = $this->getDataClass($this->iblockId);
             $properties = $this->getProperties($this->iblockId);
+            $properties[] = 'NAME';
 
             $data = [
                 'order' => ['SORT' => 'ASC'],
-                'filter' => ['LINK.ELEMENT.ID' => $elementIds],
                 'select' => $properties
             ];
+
+            if (!empty($elementIds) && isset($properties['LINK_'])) {
+                $data['filter'] = [
+                    'LINK.ELEMENT.ID' => $elementIds
+                ];
+            }
 
             $this->loadedElements = $dataClass::getList($data)->fetchAll();
 

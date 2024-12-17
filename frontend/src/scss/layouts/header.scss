@@ -44,6 +44,7 @@
         z-index: 11;
 
         @include use-media(tablet-album) {
+            min-height: 3rem;
             border-bottom: 1px solid var(--blue-30, #C6C7E2);
             justify-content: space-between;
         }

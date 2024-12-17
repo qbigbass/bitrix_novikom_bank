@@ -14,13 +14,30 @@ $asset->addCss('/frontend/dist/css/select2.css');
 $asset->addCss('/frontend/dist/css/air-datepicker.css');
 $asset->addCss('/frontend/dist/css/all.css');
 
-$asset->addJs('/frontend/dist/js/jquery.min.js');
-$asset->addJs('/frontend/dist/js/popover.js');
-$asset->addJs('/frontend/dist/js/bootstrap.min.js');
-$asset->addJs('/frontend/dist/js/swiper.min.js');
-$asset->addJs('/frontend/dist/js/select2.min.js');
-$asset->addJs('/frontend/dist/js/airdatepicker.js');
-$asset->addJs('/frontend/dist/js/bundle.js');
+$asset->addJs('/frontend/dist/js/vendors/jquery.min.js');
+$asset->addJs('/frontend/dist/js/vendors/popover.js');
+$asset->addJs('/frontend/dist/js/vendors/bootstrap.min.js');
+$asset->addJs('/frontend/dist/js/vendors/swiper.min.js');
+$asset->addJs('/frontend/dist/js/vendors/select2.min.js');
+$asset->addJs('/frontend/dist/js/vendors/airdatepicker.js');
+$asset->addJs('/frontend/dist/js/vendors/jquery.mask.min.js');
+$asset->addJs('/frontend/dist/js/vendors/highcharts.js');
+$asset->addJs('/frontend/dist/js/chatBot.js');
+$asset->addJs('/frontend/dist/js/datepicker.js');
+$asset->addJs('/frontend/dist/js/dropDownMenu.js');
+$asset->addJs('/frontend/dist/js/formFeedback.js');
+$asset->addJs('/frontend/dist/js/formSend.js');
+$asset->addJs('/frontend/dist/js/formSteps.js');
+$asset->addJs('/frontend/dist/js/inputSlider.js');
+$asset->addJs('/frontend/dist/js/uploadFile.js');
+$asset->addJs('/frontend/dist/js/polygon-container.js');
+$asset->addJs('/frontend/dist/js/setPage.js');
+$asset->addJs('/frontend/dist/js/sliders.js');
+$asset->addJs('/frontend/dist/js/tabs.js');
+$asset->addJs('/frontend/dist/js/charts.js');
+$asset->addJs('/frontend/dist/js/yMap.js');
+$asset->addJs('/frontend/dist/js/index.js');
+$asset->addJs('/frontend/dist/js/accessibility-panel.js');
 ?>
 
 <!DOCTYPE html>
@@ -37,7 +54,29 @@ $asset->addJs('/frontend/dist/js/bundle.js');
 <div id="panel">
     <?php $APPLICATION->ShowPanel(); ?>
 </div>
-
+<header class="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="accessibilityPanel" style="display:none">
+  <div class="container d-flex justify-content-center align-items-center">
+    <div class="settings">
+      <div class="fontSizeSettings">
+        <div class="title">Размер шрифта</div>
+        <div class="fontSizes">
+          <button class="fontDefault selected" aria-label="Обычный шрифт. Нажмите для выбора" tabindex="0">A</button>
+          <button class="fontMedium" aria-label="Средний шрифт. Нажмите для выбора" tabindex="0">A</button>
+          <button class="fontLarge" aria-label="Крупный шрифт. Нажмите для выбора" tabindex="0">A</button>
+        </div>
+      </div>
+      <div class="contrastColorSettings">
+        <div class="title">Цвет сайта</div>
+        <div class="contrastColors">
+          <button class="contrastColorsBlue" aria-label="Синий цвет сайта. Нажмите для выбора" tabindex="0">A</button>
+          <button class="contrastColorsBlack" aria-label="Чёрный цвет сайта. Нажмите для выбора" tabindex="0">A</button>
+          <button class="contrastColorsYellow" aria-label="Жёлтый цвет сайта. Нажмите для выбора" tabindex="0">A</button>
+        </div>
+      </div>
+      <button class="btnReset" id="hideAccessibilityPanel" aria-label="Обычная версия сайта" tabindex="0">Обычная версия сайта<img class="icon" src="/img/eye.svg" tabindex="0" alt="Иконка глаза"></button>
+    </div>
+  </div>
+</header>
 <div class="page-wrapper js-page-wrapper">
     <header class="header">
         <div class="container d-flex align-items-center">

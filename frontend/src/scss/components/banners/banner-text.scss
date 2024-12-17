@@ -3,16 +3,24 @@
 
     --border-thickness: 0.25rem;
     position: relative;
-    min-height: calc(20rem + var(--border-thickness));
+    min-height: 20rem;
     overflow: hidden;
 
     @include use-media(tablet-album) {
         --border-thickness: 0.5rem;
-        min-height: calc(25.5rem + var(--border-thickness));
+        min-height: 25rem;
     }
 
     &__title {
         hyphens: auto;
+
+        @include use-media(mobile) {
+            hyphens: unset;
+        }
+
+        @include use-media(mobile-s, tablet-album) {
+            font-weight: 600;
+        }
 
         & br {
             display: none;
@@ -30,14 +38,26 @@
             right: -3rem;
         }
 
+        @include use-media(tablet) {
+            right: -5rem;
+        }
+
         @include use-media(tablet-album) {
             max-width: 25rem;
-            //right: 0;
+            right: -2.5rem;
         }
     }
 
     &__pattern {
         opacity: 0.3;
+    }
+
+    &[class*="--border"] {
+        min-height: calc(20rem + var(--border-thickness));
+
+        @include use-media(tablet-album) {
+            min-height: calc(25rem + var(--border-thickness));
+        }
     }
 
     &--border-green {

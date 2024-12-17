@@ -29,7 +29,7 @@ block content
                                     span.icon
                                         +svg-use('icon-search')
                                 input.form-control(type="text", placeholder="Поиск по городу или адресу", aria-label="Поиск по городу или адресу", aria-describedby="input-search")
-                        button(type="button" data-bs-toggle="modal" data-bs-target="#modal-atms-filters").btn.btn-outline-primary.btn-icon-alone
+                        button(type="button" data-bs-toggle="modal" data-bs-target="#modal-atms-filters" aria-label="Фильтры по офисам и банкоматам").btn.btn-outline-primary.btn-icon-alone
                             +svg-use('icon-filters', 'icon size-m')
             .map-content__body.d-flex.flex-column.gap-2.gap-md-3
                 -

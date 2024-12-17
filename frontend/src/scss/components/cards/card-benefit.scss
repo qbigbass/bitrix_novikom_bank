@@ -5,6 +5,9 @@
 
     &__title,
     &__description {
+        word-wrap: break-word;
+        word-break: break-word;
+
         & br {
             display: none;
 
@@ -37,7 +40,7 @@
     &--size-lg-large {
         @include use-media(tablet-album, laptop) {
             #{$root}__description, #{$root}__list {
-                max-width: 60%;
+                max-width: 63%;
             }
         }
 
@@ -61,7 +64,7 @@
             min-height: 19rem; //304px
 
             & #{$root}__content {
-                max-width: 60%;
+                max-width: 63%;
             }
         }
     }

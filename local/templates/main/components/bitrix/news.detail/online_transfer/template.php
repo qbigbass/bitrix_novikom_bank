@@ -1,4 +1,4 @@
-<?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
+<? if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /** @var array $arParams */
 /** @var array $arResult */
 /** @global CMain $APPLICATION */
@@ -27,7 +27,9 @@ $headerView->render(
 <section class="section-layout pt-8">
     <div class="container">
         <div class="iframe-wrapper">
-            <iframe class="widget" src="https://widget3.intervale.ru/payment/card2card?portal_id=P2PNOVIKOMWIDGET4DF12944A7853E0D" id="ifm" width="100%" height="900px;"></iframe>
+            <iframe class="widget"
+                    src="https://widget3.intervale.ru/payment/card2card?portal_id=P2PNOVIKOMWIDGET4DF12944A7853E0D"
+                    id="ifm" width="100%" height="900px;"></iframe>
         </div>
     </div>
 </section>

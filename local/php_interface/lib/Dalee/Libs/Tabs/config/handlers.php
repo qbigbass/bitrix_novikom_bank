@@ -7,6 +7,7 @@
  */
 
 return [
+    'CALCULATOR' => Dalee\Libs\Tabs\Handlers\CalculatorHandler::class,
     'BENEFITS' => Dalee\Libs\Tabs\Handlers\BenefitsHandler::class,
     'CONDITIONS' => Dalee\Libs\Tabs\Handlers\ConditionsHandler::class,
     'STEPS' => Dalee\Libs\Tabs\Handlers\StepsHandler::class,

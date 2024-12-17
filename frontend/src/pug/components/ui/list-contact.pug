@@ -12,7 +12,7 @@ mixin list-contact(data, gapClass='row-gap-4')
                         span.text-l= item.text
 
                     if item.additionalText
-                        span.caption-m.chip.chip--outlined= item.additionalText
+                        span.caption-m.chip.chip--outlined(role="button" tabindex="0" aria-label="Добавочный номер")= item.additionalText
                     if item.description
                         span.list-contact__notes!= item.description
 

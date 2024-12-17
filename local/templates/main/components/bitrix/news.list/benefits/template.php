@@ -17,7 +17,7 @@ $this->setFrameMode(true); ?>
     $this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
     $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
     ?>
-    <div class="col-12 col-md-6 col-xl-<?= 12 / $arParams['COL_COUNT'] ?>" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
+    <div class="col-12 col-md-6 col-lg-<?= 12 / $arParams['COL_COUNT'] ?>" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
         <div class="benefit d-flex gap-3 flex-column">
             <img class="icon size-xl" src="<?= $arItem['PREVIEW_PICTURE']['SRC'] ?>"
                  alt="<?= $arItem['PREVIEW_PICTURE']['ALT'] ?>" loading="lazy">

@@ -11,78 +11,11 @@
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
-
-$regionProperty = [];
-$specProperty = [];
-
-foreach ($arResult['ITEMS'] as $item) {
-    $regionProperty[] = $item['PROPERTIES']['REGION']['VALUE'];
-    $specProperty[] = $item['PROPERTIES']['SPECIALIZATION']['VALUE'];
-}
 ?>
-
-<div class="row row-gap-4 row-gap-md-6 row-gap-lg-7 px-lg-6">
-    <div class="col-12">
-        <h3><? $APPLICATION->IncludeFile('/about/career/list_header.php'); ?></h3>
-    </div>
-    <div class="col-12">
-        <div class="d-flex flex-wrap flex-xl-nowrap justify-content-between gap-3 gap-md-4 gap-xl-6">
-            <form class="w-100">
-                <div class="input-group flex-nowrap d-none d-lg-flex">
-                    <span class="input-group-icon">
-                        <span class="icon violet-100">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-search"></use>
-                            </svg>
-                        </span>
-                    </span>
-                    <input class="form-control form-control-lg text-l" id="input-search" type="text"
-                           placeholder="Поиск по вакансиям" aria-label="Поиск по вакансиям"
-                           aria-describedby="input-search" tabindex="-1">
-                </div>
-                <div class="input-group flex-nowrap d-flex d-lg-none">
-                    <span class="input-group-icon">
-                        <span class="icon violet-100">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-search"></use>
-                            </svg>
-                        </span>
-                    </span>
-                    <input class="form-control ps-0 text-s" id="input-search-mobile" type="text"
-                           placeholder="Поиск по вакансиям" aria-label="Поиск по вакансиям"
-                           aria-describedby="#input-search-mobile" tabindex="-1">
-                </div>
-            </form>
-            <form class="w-100">
-                <div class="d-flex flex-column flex-md-row w-100 gap-3 gap-lg-4 gap-xl-6">
-                    <div class="w-100 w-md-50 w-xxl-400w flex-shrink-lg-0">
-                        <select class="form-select form-select--size-small form-select--size-lg-large js-select"
-                                id="selectCity" aria-label="Выбор города" data-placeholder="Все города">
-                            <? foreach (array_unique($regionProperty) as $key => $value): ?>
-                                <option <?= $value == 'Москва' ? 'selected' : '' ?> value="<?= $value ?>"><?= $value ?></option>
-                            <? endforeach; ?>
-                        </select>
-                    </div>
-                    <div class="w-100 w-md-50 w-xxl-400w flex-shrink-lg-0">
-                        <select class="form-select form-select--size-small form-select--size-lg-large js-select"
-                                id="selectSpecialization" aria-label="Выбор специализации"
-                                data-placeholder="Все специализации">
-                            <option></option>
-                            <? foreach (array_unique($specProperty) as $key => $value): ?>
-                                <option value="<?= $value ?>"><?= $value ?></option>
-                            <? endforeach; ?>
-                        </select>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
 
 <div class="row px-lg-6">
     <div class="col-12 col-lg-8">
         <div class="d-flex flex-column gap-4">
-
             <? foreach ($arResult['ITEMS'] as $key => $item): ?>
                 <?
                 $this->AddEditAction($item['ID'], $item['EDIT_LINK'], CIBlock::GetArrayByID($item["IBLOCK_ID"], "ELEMENT_EDIT"));

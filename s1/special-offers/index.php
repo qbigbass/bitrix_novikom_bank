@@ -54,6 +54,7 @@ $APPLICATION->SetTitle("Спецпредложения");
             "NAME",
             "PREVIEW_TEXT",
             "PREVIEW_PICTURE",
+            "SORT",
         ],
         "LIST_PROPERTY_CODE" => [
             "PUBLICATION_DATE",

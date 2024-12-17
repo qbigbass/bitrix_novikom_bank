@@ -17,7 +17,7 @@
     &__body {
         padding: 1.5rem 1rem;
     }
-    
+
     &__tag {
         max-width: 80%;
 
@@ -40,7 +40,7 @@
         }
 
         &__image-container {
-            min-height: none;
+            min-height: 10rem;
         }
 
         &__top-blackout {
@@ -67,6 +67,10 @@
 
         &__header {
             padding-left: 2.5rem;
+        }
+
+        &__image-container {
+            min-height: 15rem;
         }
 
         &__body {

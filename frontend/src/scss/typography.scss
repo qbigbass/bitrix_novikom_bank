@@ -128,6 +128,11 @@ h6, .h6 {
     line-height: 130%;
 }
 
+.text-lg {
+    font-size: map-get($font-size-body, medium-x);
+    line-height: 140%;
+}
+
 .text-lg-m {
   @include use-media(tablet-album) {
     font-size: map-get($font-size-body, base);
@@ -146,7 +151,7 @@ h6, .h6 {
 }
 
 .text-number-l {
-    font-size: map-get($font-size-body, large-xs);
+    font-size: map-get($font-size-body, medium);
     line-height: 130%;
 
     @include use-media(tablet) {
@@ -216,6 +221,7 @@ h6, .h6 {
     --bs-link-color-rgb: var(--blue-100);
     --bs-link-hover-color-rgb: var(--purple-100);
     text-decoration-line: underline;
+    text-decoration-thickness: 0.6px;
 }
 
 .link-hint {

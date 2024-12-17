@@ -16,7 +16,7 @@ block content
 
     -
         var bannerTextData = {
-            title: "Защита<br>от&nbsp;мошенничества",
+            title: "Защита <br>от мошенничества",
             description: "Узнайте как уберечь себе и&nbsp;своих близких<br>от&nbsp;финансового мошенничества",
             imageSrc: "img/big-illustrations/large-individual/fraud-protection.png"
         }
@@ -25,42 +25,42 @@ block content
             {
                 spriteData: {
                     icon: 'spam',
-                    classList: 'size-xl',
+                    classList: 'size-xxl',
                 },
                 description: 'Не&nbsp;отвечайте на&nbsp;незнакомые звонки, тем более если они идут через мессенджеры. <br class="d-block"><br class="d-block">Сбросьте звонок, если вас просят назвать персональные данные, данные банковских карт, коды из&nbsp;СМС и&nbsp;пуш-уведомлений, включить трансляцию экрана, установить какую-либо программу.',
             },
             {
                 spriteData: {
                     icon: 'message-alert',
-                    classList: 'size-xl',
+                    classList: 'size-xxl',
                 },
                 description: 'Не&nbsp;доверяйте незнакомцам, кем&nbsp;бы они не&nbsp;представились по&nbsp;телефону. <br class="d-block"><br class="d-block">При общении через мессенджеры (WhatsApp, Telegram и&nbsp;т.д.) не&nbsp;включайте трансляцию экрана.',
             },
             {
                 spriteData: {
                     icon: 'deposit-security',
-                    classList: 'size-xl',
+                    classList: 'size-xxl',
                 },
                 description: 'Храните свои банковские карты, мобильный телефон, привязанный к&nbsp;личному кабинету Банка, и&nbsp;устройства с&nbsp;установленным приложением Банка в&nbsp;месте, исключающем несанкционированный доступ к&nbsp;ним.',
             },
             {
                 spriteData: {
                     icon: 'protection_green',
-                    classList: 'size-xl',
+                    classList: 'size-xxl',
                 },
                 description: 'Не&nbsp;скачивайте программы с&nbsp;неизвестных сайтов, из&nbsp;неофициальных магазинов приложений или по&nbsp;ссылкам, которые вам прислали незнакомцы. <br class="d-block"><br class="d-block">Используете на&nbsp;устройствах антивирусное программное обеспечение.',
             },
             {
                 spriteData: {
                     icon: 'pin-code',
-                    classList: 'size-xl',
+                    classList: 'size-xxl',
                 },
                 description: 'Не&nbsp;сообщайте коды, которые отображают программы удаленного доступа (RustDesk, Zoom и&nbsp;т.д.) для подключения к&nbsp;вашим устройствам. <br class="d-block"><br class="d-block">Не&nbsp;выполняйте никакие действия на&nbsp;своих устройствах по&nbsp;указаниям третьих лиц.',
             },
             {
                 spriteData: {
                     icon: 'card-attention',
-                    classList: 'size-xl',
+                    classList: 'size-xxl',
                 },
                 description: 'Никогда и&nbsp;никому не&nbsp;сообщайте данные ваших банковских карт, коды из&nbsp;СМС или пуш-уведомлений присылаемые Банком.',
             }
@@ -177,19 +177,18 @@ block content
         ]
 
         var cardPromo = {
-            title: "Сообщите о&nbsp;факте<br>мошенничества",
+            title: "Сообщите <br class='d-md-none'>о&nbsp;факте<br>мошенничества",
             text: "Сообщите нам, если вам или вашим близким звонили или писали мошенники. Так вы&nbsp;поможете бороться с&nbsp;киберпреступниками.",
             image: "big-illustrations/large-individual/send-message.png",
         }
 
     +banner-text(
         bannerTextData,
-        "green",
     )
 
     section.section-layout.px-lg-6
         .container
-            h3.mb-4.mb-md-6.mb-lg-7 Правила безопасности
+            h3.mb-6.mb-lg-7 Правила безопасности
             .row.row-gap-6.gx-xl-6
                 each item, index in allBenefits
                     .col-12.col-md-6.col-lg-4
@@ -198,7 +197,7 @@ block content
 
     section.section-layout.px-lg-6
         .container
-            h3.mb-4.mb-md-6.mb-lg-7 Признаки мошеннического звонка
+            h3.mb-6.mb-lg-7 Признаки мошеннического звонка
             .table-tab.cell-2
                 .table-tab__body
                     each row in tableData
@@ -211,7 +210,7 @@ block content
 
     section.section-layout.bg-dark-10
         .container
-            h3.mb-4.mb-md-6.mb-lg-7.px-lg-6
+            h3.mb-6.mb-md-7.px-md-6
                 | Держите в секрете данные
             .row.cards-gutter
                 each item in productCards
@@ -220,13 +219,13 @@ block content
 
     section.section-layout
         .container
-            h3.mb-4.mb-md-6.mb-lg-7.px-lg-6
+            h3.mb-6.mb-lg-7.px-lg-6
                 | Самые распространенные способы мошенничества
             +slider-card-fraud(cardBenefits)
 
     section.section-layout.px-lg-6
         .container
-            .row.row-gap-5.row-gap-md-6.row-gap-lg-7
+            .row.row-gap-6
                 .col-12
                     h3 Срочно звоните +7 (800) 250-70-07, если:
                 .col-12
@@ -248,12 +247,12 @@ block content
                     +polygon-container("green-100")
                         +helper("img/restructuring-additional-info.png", "bg-dark-10")
                             h3.h4.mb-3 Важная информация от Банка России
-                            ul.list-unstyled.m-0.text-l.d-flex.flex-column.row-gap-3
-                                li
-                                    a(href="https://cbr.ru/faq/information_security/").fw-semibold.link.link-underline Вопросы и ответы
-                                li
-                                    a(href="https://cbr.ru/information_security/").fw-semibold.link.link-underline Информационная безопасность
-                                li
-                                    a(href="https://fincult.info/rake").fw-semibold.link.link-underline Истории о мошенничестве — грабли, на которые лучше не наступать
+                            a(href="https://cbr.ru/faq/information_security/").text-lg.fw-semibold.link.link-underline Вопросы и ответы
+                            br
+                            br
+                            a(href="https://cbr.ru/information_security/").text-lg.fw-semibold.link.link-underline Информационная безопасность
+                            br
+                            br
+                            a(href="https://fincult.info/rake").text-lg.fw-semibold.link.link-underline Истории о мошенничестве — грабли, на которые лучше не наступать
 
     include ../includes/layout/section-feedback

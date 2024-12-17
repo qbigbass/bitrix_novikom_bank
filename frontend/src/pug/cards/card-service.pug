@@ -2,6 +2,6 @@ mixin card-service(data)
     a.card-service(href= data.href)
         .card-service__content.d-flex.flex-column
             h4.dark-100= data.title
-            span.icon.card-service__icon
+            span.icon.card-service__icon(class=data.icon aria-label=data.description tabindex="0")
                 +svg-use(data.icon)
         +pattern-bg('card', 'light', 'pattern-bg--position-sm-top')

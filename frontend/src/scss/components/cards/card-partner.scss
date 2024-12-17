@@ -1,0 +1,13 @@
+.card-partner {
+    min-height: 13.5rem;
+
+    &__image-wrap {
+        min-height: 64px;
+
+        img {
+            object-fit: contain;
+            height: 100%;
+            width: 100%;
+        }
+    }
+}

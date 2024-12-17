@@ -14,6 +14,7 @@ if (!$arResult["NavShowAlways"]) {
 
 $pageCount = $arResult['NavPageCount'];
 $currentPage = $arResult['NavPageNomer'];
+$queryParams = $_GET;
 ?>
 
 <div class="col-12">
@@ -22,7 +23,7 @@ $currentPage = $arResult['NavPageNomer'];
             <? if ($currentPage > 1) { ?>
                 <li class="page-item">
                     <a class="page-link"
-                       href="<?= $arResult['sUrlPath'] ?>?PAGEN_<?= $arResult['NavNum'] ?>=<?= $currentPage - 1 ?>">
+                       href="<?= $arResult['sUrlPath'] ?>?<?= http_build_query(array_merge($queryParams, ['PAGEN_' . $arResult['NavNum'] => $currentPage - 1])) ?>">
                         <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%"
                              height="100%">
                             <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-left"></use>
@@ -36,7 +37,7 @@ $currentPage = $arResult['NavPageNomer'];
                 if ($i == 1 || $i == $pageCount || ($i >= $currentPage - 1 && $i <= $currentPage + 3)) { ?>
                     <li class="page-item <?= ($i == $currentPage) ? 'active page-item--disabled' : '' ?>" <?= ($i == $currentPage) ? 'aria-current="page"' : '' ?>>
                         <a class="page-link"
-                           href="<?= $arResult['sUrlPath'] ?>?PAGEN_<?= $arResult['NavNum'] ?>=<?= $i ?>"><?= $i ?></a>
+                           href="<?= $arResult['sUrlPath'] ?>?<?= http_build_query(array_merge($queryParams, ['PAGEN_' . $arResult['NavNum'] => $i])) ?>"><?= $i ?></a>
                     </li>
                 <? } elseif ($i == 2 && $currentPage > 3 || $i == $pageCount - 1 && $currentPage < $pageCount - 2) { ?>
                     <!-- Многоточие -->
@@ -53,7 +54,7 @@ $currentPage = $arResult['NavPageNomer'];
             if ($currentPage < $pageCount) { ?>
                 <li class="page-item">
                     <a class="page-link"
-                       href="<?= $arResult['sUrlPath'] ?>?PAGEN_<?= $arResult['NavNum'] ?>=<?= $currentPage + 1 ?>">
+                       href="<?= $arResult['sUrlPath'] ?>?<?= http_build_query(array_merge($queryParams, ['PAGEN_' . $arResult['NavNum'] => $currentPage + 1])) ?>">
                         <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                             <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
                         </svg>
@@ -67,7 +68,7 @@ $currentPage = $arResult['NavPageNomer'];
             <? if ($currentPage > 1) { ?>
             <li class="page-item">
                 <a class="page-link"
-                   href="<?= $arResult['sUrlPath'] ?>?PAGEN_<?= $arResult['NavNum'] ?>=<?= $currentPage - 1 ?>">
+                   href="<?= $arResult['sUrlPath'] ?>?<?= http_build_query(array_merge($queryParams, ['PAGEN_' . $arResult['NavNum'] => $currentPage - 1])) ?>">
                     <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                         <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-left"></use>
                     </svg>
@@ -101,7 +102,7 @@ $currentPage = $arResult['NavPageNomer'];
             <? if ($currentPage < $pageCount) { ?>
             <li class="page-item">
                 <a class="page-link"
-                   href="<?= $arResult['sUrlPath'] ?>?PAGEN_<?= $arResult['NavNum'] ?>=<?= $currentPage + 1 ?>">
+                   href="<?= $arResult['sUrlPath'] ?>?<?= http_build_query(array_merge($queryParams, ['PAGEN_' . $arResult['NavNum'] => $currentPage + 1])) ?>">
                     <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                         <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
                     </svg>

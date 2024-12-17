@@ -12,7 +12,7 @@
     display: flex;
 
     @include use-media(tablet-album) {
-        min-height: calc(var(--banner-height) + var(--border-top-width));
+        min-height: var(--banner-height);
         --border-top-width: 0.5rem;
     }
 
@@ -49,11 +49,11 @@
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        gap: 1.5rem;
+        gap: 1rem;
 
         @include use-media(tablet) {
             width: 42.709vw;
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
         @include use-media(tablet-album) {
@@ -75,17 +75,21 @@
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        gap: 1rem;
+        gap: 1.5rem;
         position: relative;
         z-index: 1;
         width: 100%;
 
-        @include use-media(tablet) {
+        @include use-media(tablet-album) {
             gap: 1.5rem;
         }
 
-        @include use-media(mobile-s, sm) {
-            h1 {
+        h1 {
+            @include use-media(mobile-s, tablet-album) {
+                font-weight: 600;
+            }
+
+            @include use-media(mobile-s, sm) {
                 word-break: break-word;
                 hyphens: auto;
             }
@@ -160,6 +164,10 @@
         @include use-media(laptop) {
             right: 6.25rem;
         }
+
+        @include use-media(laptop-x) {
+            right: 5rem;
+        }
     }
 
     &__subtitle {
@@ -207,12 +215,8 @@
         }
 
         @include use-media(laptop) {
-            grid-template-columns: repeat(3, 18.75rem);
-        }
-
-        @include use-media(desktop) {
+            grid-template-columns: repeat(3, 15rem);
             gap: 3rem;
-            margin-bottom: 2.5rem;
         }
     }
 
@@ -285,10 +289,14 @@
         }
 
         #{$root}__image {
+            margin: -1rem -1.5rem;
+
             @include use-media(tablet) {
                 top: 2.5rem;
+                right: 0;
                 width: 46.875vw;
                 max-width: 26.25rem; //420px
+                margin: 0;
             }
 
             @include use-media(tablet-album) {
@@ -306,7 +314,7 @@
             }
 
             @include use-media(desktop) {
-                right: 8rem;
+                right: 10rem;
             }
         }
     }

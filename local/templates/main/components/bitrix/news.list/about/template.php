@@ -21,9 +21,7 @@ require_once __DIR__ . '/functions.php';
     ?>
 
     <?= renderStartTags($key); ?>
-    <? $classes = !empty($item['DETAIL_PICTURE']['SRC'])
-        ? 'card-product card-product--undefined h-auto flex-basis-100 flex-basis-md-25 flex-grow-1 bg-white'
-        : 'card-product card-product--undefined card-product--size-height-auto flex-basis-100 flex-basis-md-25 h-auto flex-grow-1 bg-white'; ?>
+    <? $classes = renderClasses($key, $item['DETAIL_PICTURE']); ?>
 
     <? if (!empty($item['DETAIL_PICTURE']['SRC'])) { ?>
         <div class="<?= $classes ?>" id="<?= $this->GetEditAreaId($item['ID']); ?>">
@@ -37,7 +35,7 @@ require_once __DIR__ . '/functions.php';
                 </div>
                     <img class="card-product__img" src="<?= $item['DETAIL_PICTURE']['SRC'] ?>"
                          alt="<?= $item['DETAIL_PICTURE']['ALT'] ?>" loading="lazy">
-                <a class="btn btn-link btn-icon m-auto m-lg-0" href="<?= $item['DETAIL_PAGE_URL'] ?>">
+                <a class="btn btn-link btn-icon m-auto m-lg-0 py-2 py-lg-0" href="<?= $item['DETAIL_PAGE_URL'] ?>">
                     <span>Подробнее</span>
                     <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                         <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>

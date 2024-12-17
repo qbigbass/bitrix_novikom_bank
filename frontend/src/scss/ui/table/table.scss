@@ -15,4 +15,31 @@
       padding-left: 0;
     }
   }
+
+  &--mobile-row-is-column {
+
+    @include use-media(0, sm) {
+      thead, tbody {
+        display: inline-block;
+      }
+  
+      tr {
+        display: flex;
+        flex-direction: column;
+      }
+
+      td {
+        padding: .5rem;
+        padding-left: 0;
+      }
+
+      td:first-child {
+        border: none;
+      }
+
+      td:last-child {
+        padding-bottom: 1.5rem;
+      }
+    }
+  }
 }

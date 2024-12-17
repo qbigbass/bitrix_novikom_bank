@@ -1,6 +1,7 @@
 .modal {
     -webkit-backdrop-filter: blur(20px);
     backdrop-filter: blur(20px);
+    background-color: rgba(18, 17, 18, 0.5);
 
     @include use-media(tablet) {
         --bs-modal-width: 43rem;
@@ -16,7 +17,7 @@
         --bs-modal-width: 65rem;
     }
 
-    @include use-media(desktop) {
+    @include use-media(laptop) {
         --bs-modal-width: 65.875rem;
     }
 }
@@ -64,11 +65,11 @@
 
     &:has(+ .modal-footer) {
         @include use-media(tablet) {
-            --bs-modal-padding: 1.5rem 2rem 1rem 2rem;
+            --bs-modal-padding: 2rem;
         }
 
         @include use-media(tablet-album) {
-            --bs-modal-padding: 2.5rem 5rem 1.5rem 5rem;
+            --bs-modal-padding: 2.5rem 5rem;
         }
     }
 }
@@ -94,3 +95,6 @@
     }
 }
 
+.modal-backdrop {
+    visibility: hidden;
+}

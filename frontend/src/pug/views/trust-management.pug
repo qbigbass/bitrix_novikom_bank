@@ -21,7 +21,7 @@ block content
                 {
                     spriteData: {
                         icon: 'free-comission',
-                        classList: 'size-xl',
+                        classList: 'size-xxl',
                     },
                     title: 'Без комиссии и ограничений',
                     description: 'На ввод и вывод инвестиционных активов '
@@ -29,7 +29,7 @@ block content
                 {
                     spriteData: {
                         icon: 'individual_violet',
-                        classList: 'size-xl',
+                        classList: 'size-xxl',
                     },
                     title: 'Персональный подход',
                     description: 'Управляющий адаптирует стратегию под ваши цели '
@@ -37,7 +37,7 @@ block content
                 {
                     spriteData: {
                         icon: 'prices_violet',
-                        classList: 'size-xl',
+                        classList: 'size-xxl',
                     },
                     title: 'Выбор стратегии управления',
                     description: 'Стандартные и персональные планы инвестирования'
@@ -51,69 +51,51 @@ block content
             ]
         }
 
-        var announcementList = [
-            {
-                date: '25.04.2024',
-                title: 'Технические работы 30 апреля 2024 года в период с 0:00 до 3:30 (МСК)',
-                link: '#'
-            },
-            {
-                date: '25.04.2024',
-                title: 'Режим работы клиентских офисов в мае',
-                link: '#'
-            },
-            {
-                date: '25.04.2024',
-                title: 'Технические работы 30 апреля 2024 года в период с 0:00 до 3:30 (МСК)',
-                link: '#'
-            },
-            {
-                date: '25.04.2024',
-                title: 'Режим работы клиентских офисов в мае',
-                link: '#'
-            },
-            {
-                date: '25.04.2024',
-                title: 'Технические работы 30 апреля 2024 года в период с 0:00 до 3:30 (МСК)',
-                link: '#'
-            },
-            {
-                date: '25.04.2024',
-                title: 'Режим работы клиентских офисов в мае',
-                link: '#'
-            }
-        ]
-
-        var productCards = [
+        var cardsListBenefit = [
             {
                 title: "Заключение договора",
                 description: "Вы&nbsp;заключаете договор с&nbsp;управляющим и&nbsp;прописываете условия управления",
-                icon: true,
-                iconImg: "doc-check_violet",
+                sprite: {
+                    iconImg: "doc-check_violet",
+                    classList: "size-xxl"
+                },
+                bgColor: "bg-dark-30",
             },
             {
                 title: "Постановка целей",
                 description: "Вы&nbsp;определяете цель и&nbsp;выбираете стратегию инвестирования",
-                icon: true,
-                iconImg: "target",
+                sprite: {
+                    iconImg: "target",
+                    classList: "size-xxl"
+                },
+                bgColor: "bg-dark-30",
             },
             {
                 title: "Определение риск-профиля",
                 description: "Вы&nbsp;указываете свой уровень риска и&nbsp;предпочтения по&nbsp;инвестициям",
-                icon: true,
-                iconImg: "risks_violet",
+                sprite: {
+                    iconImg: "risks_violet",
+                    classList: "size-xxl"
+                },
+                bgColor: "bg-dark-30",
             },
             {
                 title: "Управление средствами",
                 description: "Эксперт помогает эффективно разместить денежные средства. Вам не&nbsp;придется самостоятельно анализировать рынок и&nbsp;выбирать момент для совершения сделки&nbsp;&mdash; управляющий сам принимает решения по&nbsp;инвестированию в&nbsp;соответствии с&nbsp;целями",
-                icon: true,
-                iconImg: "limits_violet",
+                sprite: {
+                    iconImg: "limits_violet",
+                    classList: "size-xxl"
+                },
+                bgColor: "bg-dark-30",
             },
             {
                 title: "Предоставление отчетности",
                 description: "Управляющий регулярно предоставляет клиенту отчеты о&nbsp;состоянии его инвестиций",
-                icon: true,
-                iconImg: "report",
+                sprite: {
+                    iconImg: "report",
+                    classList: "size-xxl"
+                },
+                bgColor: "bg-dark-30",
             },
 
         ];
@@ -167,7 +149,7 @@ block content
     include ../components/announcement
     include ../components/helper
     include ../components/ui/tabs-simple
-    include ../cards/card-product
+    include ../cards/card-benefit
     include ../components/ui/accordion-item
 
     include ../includes/header/header
@@ -176,18 +158,20 @@ block content
 
     section.section-layout
         .container
-            h3.mb-4.mb-md-6.mb-lg-7.px-lg-6 Как работает доверительное управление
+            .row
+                .col-12
+                    h2.h3.mb-6.mb-lg-7.px-md-6 Как работает доверительное управление
             .row.cards-gutter
                 .col-12.col-md-6.col-lg-4
-                    +card-product(productCards[0]).bg-dark-30
+                    +card-benefit(cardsListBenefit[0]).h-100
                 .col-12.col-md-6.col-lg-4
-                    +card-product(productCards[1]).bg-dark-30
+                    +card-benefit(cardsListBenefit[1]).h-100
                 .col-12.col-lg-4
-                    +card-product(productCards[2]).bg-dark-30
+                    +card-benefit(cardsListBenefit[2]).h-100
                 .col-12.col-md-6
-                    +card-product(productCards[3]).bg-dark-30
+                    +card-benefit(cardsListBenefit[3]).h-100
                 .col-12.col-md-6
-                    +card-product(productCards[4]).bg-dark-30
+                    +card-benefit(cardsListBenefit[4]).h-100
 
     +banner-product-info(bannerProductInfoData, 'bg-dark-30')
         p.text-l
@@ -230,119 +214,102 @@ block content
                 | Информация для получателей финансовых услуг
             .accordion.accordion--size-lg.accordion--bg-transparent#accordion-trust-management
                 +accordion-item(accordionList[0], 'accordion-trust-management', 'fw-bold h4')
-                    .d-flex.flex-column.gap-4.gap-md-5.gap-lg-7
-                        .d-flex.flex-column.gap-3
-                            .h5 Как организовать банковское сопровождение коммерческих контрактов?
-                            p.text-l.m-0 Акционерный Коммерческий Банк «НОВИКОМБАНК» акционерное общество АО АКБ «НОВИКОМБАНК»
-                        .d-flex.flex-column.gap-3
-                            .h5 Адрес Банка
-                            p.text-l.m-0
-                        .d-flex.flex-column.gap-3
-                            .h5 Адрес офиса Банка, оказывающего услуги по управлению активами (доверительное управление)
-                            p.text-l.m-0 119180, город Москва, вн.тер.г. муниципальный округ Якиманка, наб. Якиманская, д. 2
-                        .d-flex.flex-column.gap-3
-                            .h5 Адрес электронной почты
-                            p.text-l.m-0
-                                a(href="mailto:office@novikom.ru").link office@novikom.ru
-                        .d-flex.flex-column.gap-3
-                            .h5 Контактные телефоны
-                            p.text-l.m-0 +7 (800) 250-70-07
-                            p.text-l.m-0 +7 (495) 974-71-87
-                        .d-flex.flex-column.gap-3
-                            .h5 Сайт
-                            p.text-l.m-0
-                                a(href="https://novikom.ru/").link novikom.ru
+                    .rte.rte--accordion
+                        div
+                            h5 Как организовать банковское сопровождение коммерческих контрактов?
+                            p Акционерный Коммерческий Банк «НОВИКОМБАНК» акционерное общество АО АКБ «НОВИКОМБАНК»
+                        div
+                            h5 Как организовать банковское сопровождение коммерческих контрактов?
+                            p Акционерный Коммерческий Банк «НОВИКОМБАНК» акционерное общество АО АКБ «НОВИКОМБАНК»
+                        div
+                            h5 Адрес Банка
+                            p 119180, г. Москва, ул. Полянка Большая, д. 50/1, стр. 1
+                        div
+                            h5 Адрес офиса Банка, оказывающего услуги по управлению активами (доверительное управление)
+                            p 119180, город Москва, вн.тер.г. муниципальный округ Якиманка, наб. Якиманская, д. 2
+                        div
+                            h5 Адрес электронной почты
+                            p
+                                a(href="mailto:office@novikom.ru") office@novikom.ru
+                        div
+                            h5 Контактные телефоны
+                            p +7 (800) 250-70-07
+                            p +7 (495) 974-71-87
+                        div
+                            h5 Сайт
+                            p
+                                a(href="https://novikom.ru/") novikom.ru
 
                 +accordion-item(accordionList[1], 'accordion-trust-management', 'fw-bold h4')
-                    .d-flex.flex-column.gap-4.gap-md-5.gap-lg-7
-                        .d-flex.flex-column.gap-3
-                            .h5 Лицензия профессионального участника рынка ценных бумаг на осуществление деятельности по управлению ценными бумагами
-                            p.text-l.m-0 № 177-13074-001000, дата выдачи 29.04.2010 года (без ограничения срока действия)
-                        .d-flex.flex-column.gap-3
-                            .h5 Лицензия выдана
-                            p.text-l.m-0 ФСФР России
-                        .d-flex.flex-column.gap-3
-                            .h5 Адрес
-                            p.text-l.m-0 107016, Россия, г. Москва, ул. Неглинная, 12
-                        .d-flex.flex-column.gap-3
-                            .h5 Контактные телефоны
-                            p.text-l.m-0 8 800 300-30-00 (для бесплатных звонков из регионов России)
-                            p.text-l.m-0 +7 499 300-30-00 (круглосуточно, по рабочим дням)
-                            p.text-l.m-0 +7 495 621-64-65 (факс)
+                    .rte.rte--accordion
+                        div
+                            h5 Лицензия профессионального участника рынка ценных бумаг на осуществление деятельности по управлению ценными бумагами
+                            p № 177-13074-001000, дата выдачи 29.04.2010 года (без ограничения срока действия)
+                        div
+                            h5 Лицензия выдана
+                            p ФСФР России
+                        div
+                            h5 Адрес
+                            p 107016, Россия, г. Москва, ул. Неглинная, 12
+                        div
+                            h5 Контактные телефоны
+                            p 8 800 300-30-00 (для бесплатных звонков из регионов России)
+                            p +7 499 300-30-00 (круглосуточно, по рабочим дням)
+                            p +7 495 621-64-65 (факс)
                         span(aria-hidden="true").border-bottom-dashed
-                        .d-flex.flex-column.gap-3
-                            .h5 Информация о членстве в саморегулируемых организациях в сфере финансового рынка, объединяющих управляющих
-                            p.text-l.m-0
+                        div
+                            h5 Информация о членстве в саморегулируемых организациях в сфере финансового рынка, объединяющих управляющих
+                            p
                                 | Национальная ассоциация участников фондового рынка (НАУФОР)
                                 br
                                 | Стандарты размещены на сайте НАУФОР и доступны по ссылке
-                                a(href="naufor.ru/tree.asp?n=16042").link naufor.ru/tree.asp?n=16042
-                        .d-flex.flex-column.gap-3
-                            .h5 Сайт
-                            p.text-l.m-0
-                                a(href="https://naufor.ru/").link naufor.ru
+                                a(href="naufor.ru/tree.asp?n=16042") naufor.ru/tree.asp?n=16042
+                        div
+                            h5 Сайт
+                            p
+                                a(href="https://naufor.ru/") naufor.ru
                         span(aria-hidden="true").border-bottom-dashed
-                        .d-flex.flex-column.gap-3
-                            .h5 Информация об органе, осуществляющем полномочия по контролю и надзору
-                            p.text-l.m-0 Банк России
-                        .d-flex.flex-column.gap-3
-                            .h5 Сайт
-                            p.text-l.m-0 www.cbr.ru
+                        div
+                            h5 Информация об органе, осуществляющем полномочия по контролю и надзору
+                            p Банк России
+                        div
+                            h5 Сайт
+                            a(href="#" aria-label="Сайт Банка России") www.cbr.ru
 
                 +accordion-item(accordionList[2], 'accordion-trust-management', 'fw-bold h4')
-                    .d-flex.flex-column.gap-4.gap-md-5.gap-lg-7
-                        p.text-l.m-0 Клиент имеет право направить обращение или жалобу
-                        .d-flex.flex-column.gap-3
-                            .h5 В Банк
-                            p.text-l.m-0 почтовым отправлением по Адресу Банка
-                            p.text-l.m-0 на бумажном носителе в офисы Банка, оказывающие услуги по управлению активами
+                    .rte.rte--accordion
+                        p Клиент имеет право направить обращение или жалобу
+                        div
+                            h5 В Банк
+                            p почтовым отправлением по Адресу Банка
+                            p на бумажном носителе в офисы Банка, оказывающие услуги по управлению активами
                         span(aria-hidden="true").border-bottom-dashed
-                        .d-flex.flex-column.gap-3
-                            .h5 В НАУФОР
-                            p.text-l.m-0 почтовым отправлением по адресу: 129090, Москва, 1-й Коптельский пер., д. 18, стр.1
-                            p.text-l.m-0 через сайт НАУФОР:
-                            a(href="https://naufor.ru/").link naufor.ru
+                        div
+                            h5 В НАУФОР
+                            p почтовым отправлением по адресу: 129090, Москва, 1-й Коптельский пер., д. 18, стр.1
+                            p через сайт НАУФОР:
+                            a(href="https://naufor.ru/") naufor.ru
                             | - раздел «Пожаловаться на члена НАУФОР»
                         span(aria-hidden="true").border-bottom-dashed
-                        .d-flex.flex-column.gap-3
-                            .h5 В Банк России
-                            p.text-l.m-0 почтовым отправлением по адресу: 107016, Москва, ул. Неглинная, д. 12, Банк России;
-                            p.text-l.m-0 иные способы:
-                            a(href="https://www.cbr.ru/contacts/").link www.cbr.ru/contacts/
+                        div
+                            h5 В Банк России
+                            p почтовым отправлением по адресу: 107016, Москва, ул. Неглинная, д. 12, Банк России;
+                            p иные способы:
+                            a(href="https://www.cbr.ru/contacts/") www.cbr.ru/contacts/
 
                 +accordion-item(accordionList[3], 'accordion-trust-management', 'fw-bold h4')
-                    .d-flex.flex-column.gap-4.gap-md-5.gap-lg-7
-                        p.text-l.m-0 Банк оказывает услуги в соответствии с Федеральным законом «О защите прав и законных интересов инвесторов на рынке ценных бумаг» от 05 марта 1999 года № 46-ФЗ.
-                        p.text-l.m-0 Все споры и разногласия между Банком и Клиентом разрешаются путем переговоров, а в случае невозможности такого разрешения все споры решается в соответствии с Регламентом.
-                        .d-flex.flex-column.gap-3
-                            .h5 Контактные телефоны
-                            p.text-l.m-0 +7 (495) 974-71-87
+                    .rte.rte--accordion
+                        p Банк оказывает услуги в соответствии с Федеральным законом «О защите прав и законных интересов инвесторов на рынке ценных бумаг» от 05 марта 1999 года № 46-ФЗ.
+                        p Все споры и разногласия между Банком и Клиентом разрешаются путем переговоров, а в случае невозможности такого разрешения все споры решается в соответствии с Регламентом.
+                        div
+                            h5 Контактные телефоны
+                            p +7 (495) 974-71-87
 
 
                 +accordion-item(accordionList[4], 'accordion-trust-management', 'fw-bold h4')
-                    .d-flex.flex-column.gap-4.gap-md-5.gap-lg-7
-                        p.text-l.m-0 Внесение изменений и/или дополнений в Регламент и приложения к нему производится Банком в соответствие с условиями Регламента.
+                    .rte.rte--accordion
+                        p Внесение изменений и/или дополнений в Регламент и приложения к нему производится Банком в соответствие с условиями Регламента.
 
         +pattern-bg('section-2', 'light')
 
-    section.section-layout.bg-dark-10
-        .container
-            .row
-                .col-12.col-xxl-6.d-flex.flex-column.gap-6.gap-lg-7
-                    a(href="#").h3.d-flex.align-items-center.ps-lg-6
-                        span Объявления
-                            |
-                            |
-                            span.d-none.d-md-inline для клиентов
-                        span.icon.size-m.violet-100.ms-auto.ms-md-3
-                            +svg-use("icon-chevron-right")
-
-                    div.ps-lg-6.mt-xxl-auto.mw-100
-                        .swiper.js-announcement-slider
-                            .swiper-wrapper
-                                each item in announcementList
-                                    .swiper-slide.js-announcement-slide
-                                        +announcement(item)
-
-                            +slider-controls().mt-3.mt-md-4
-        +pattern-bg('section-2', 'light', 'pattern-bg--hide-mobile')
+    include ../includes/layout/section-announcement
