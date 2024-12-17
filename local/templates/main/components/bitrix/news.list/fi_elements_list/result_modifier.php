@@ -304,7 +304,8 @@ foreach ($arResult["ITEMS"] as $index => $item) {
         "udobstvo-zaklyucheniya-sdelok-po-razlichnym-kanalam-svyazi",
         "banknotnye-operatsii",
         "elektronnaya-torgovaya-platforma-novikom-fx",
-        "sinditsirovannye-kredity"
+        "sinditsirovannye-kredity",
+        "usloviya"
     ])) {
         $arResult["ITEMS"][$index]["ROW_ADD_CLASS"] = "row-gap-6 row-gap-lg-11";
     }

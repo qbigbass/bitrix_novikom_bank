@@ -59,7 +59,7 @@ use Bitrix\Main\Localization\Loc;
                         <div class="row <?= $item["ROW_ADD_CLASS"] ?>">
                             <div class="col-12">
                                 <h2 class="<?= $item["H2_ADD_CLASS"] ?>"><?= $item['NAME']?></h2>
-                                <p class="text-l px-lg-6 m-0"><?= $item['PREVIEW_TEXT']?></p>
+                                <?= $item['PREVIEW_TEXT']?>
                             </div>
                             <? if (!empty($item["SORT_ITEMS"])) : ?>
                                 <? foreach ($item["SORT_ITEMS"] as $index => $arBlocks) : ?>
@@ -114,18 +114,18 @@ use Bitrix\Main\Localization\Loc;
                                                     <div class="slider-controls__pagination js-swiper-pagination"></div>
                                                     <div class="slider-controls__navigation js-swiper-nav">
                                                         <button class="swiper-button-prev js-swiper-prev" type="button">
-                                            <span class="icon size-m">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                                    <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-left"></use>
-                                                </svg>
-                                            </span>
+                                                            <span class="icon size-m">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                                                    <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-left"></use>
+                                                                </svg>
+                                                            </span>
                                                         </button>
                                                         <button class="swiper-button-next js-swiper-next" type="button">
-                                            <span class="icon size-m">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                                    <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
-                                                </svg>
-                                            </span>
+                                                            <span class="icon size-m">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                                                    <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
+                                                                </svg>
+                                                            </span>
                                                         </button>
                                                     </div>
                                                 </div>
