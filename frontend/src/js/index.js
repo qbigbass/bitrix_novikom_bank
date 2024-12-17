@@ -355,12 +355,11 @@ document.addEventListener('DOMContentLoaded', () => {
     initResizePolygonAccordions();
     initHeaderSearchForm();
     hideDropDownMenu();
-    initCalculator();
+    initCalculatorDeposit();
     initReplenishment();
     initOffices();
     initChatBot();
     initCharts();
-    // initYMap();
     pbScrollTo();
 });
 

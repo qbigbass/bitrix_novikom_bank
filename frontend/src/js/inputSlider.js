@@ -64,7 +64,7 @@ const initElements = (root) => {
     }
 }
 
-export const generateStepsFromAttrs = (attr) => {
+const generateStepsFromAttrs = (attr) => {
     if (attr.length > 0) {
         return attr.split(',')?.map((step) => Number(step)) ?? [];
     } else {
