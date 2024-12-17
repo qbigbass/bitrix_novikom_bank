@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "thread-loader": "^4.0.4"
+  }
+}

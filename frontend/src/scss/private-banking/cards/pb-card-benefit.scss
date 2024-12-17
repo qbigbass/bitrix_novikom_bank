@@ -1,0 +1,70 @@
+.pb-card-benefit {
+  gap: .75rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  border-top: 1px solid rgba(151, 71, 255, 0.20);
+  border-left: 1px solid rgba(151, 71, 255, 0.20);
+  background: radial-gradient(482.43% 100% at 0% 55.36%, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.00) 100%), rgba(89, 26, 175, 0.40);
+
+  @include use-media(tablet) {
+    gap: 1rem;
+  }
+
+  &.animate {
+    opacity: 0;
+    transform: translateY(100%);
+    transition: opacity .8s ease-in-out, transform .8s ease-in-out;
+
+    &.animate-show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    &:nth-child(1),
+    &:nth-child(3) {
+      @include use-media(laptop) {
+        transform: translateX(-2.5rem);
+
+        &.animate-show {
+          transform: translateX(0);
+        }
+      }
+    }
+
+    &:nth-child(2),
+    &:nth-child(4) {
+      @include use-media(laptop) {
+        transform: translateX(2.5rem);
+
+        &.animate-show {
+          transform: translateX(0);
+        }
+      }
+    }
+  }
+
+  &__icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    flex-shrink: 0;
+
+    @include use-media(tablet-album) {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+
+  &__description {
+    font-size: 1rem;
+    line-height: 1.4;
+
+    @include use-media(tablet) {
+      font-size: 1.25rem;
+    }
+
+    @include use-media(tablet-album) {
+      font-size: 1.5rem;
+      line-height: 1.35;
+    }
+  }
+}
