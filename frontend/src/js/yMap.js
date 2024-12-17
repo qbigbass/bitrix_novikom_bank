@@ -1,7 +1,7 @@
 function initMap() {
   let maxZoom = 17;
   let iconDefaultSize = [40, 48]; // Размер иконки
-  let iconDefaultPath = '../img/office-pin.svg'; // Путь к иконке офиса
+  let iconDefaultPath = '/frontend/dist/img/office-pin.svg'; // Путь к иконке офиса
   let iconDefaultOffset = [-20, -24] // Смещение иконки
 
   const myMap = new ymaps.Map("map", {

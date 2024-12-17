@@ -107,7 +107,7 @@ $asset->addJs('/frontend/dist/js/accessibility-panel.js');
                     </div>
                     <div class="d-flex align-items-center gap-4 column-gap-xxl-3 column-gap-xxxl-6">
                         <div class="d-none d-lg-flex gap-4 column-gap-xxl-3 column-gap-xxxl-6">
-                            <a class="text-s d-inline-flex gap-1 align-items-center dark-100" href="#">
+                            <a class="text-s d-inline-flex gap-1 align-items-center dark-100" href="/offices-atm/">
                                 <span class="icon size-s d-none d-xxl-inline-block violet-70">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                                         <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-point-small"></use>
