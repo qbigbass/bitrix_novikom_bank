@@ -157,7 +157,7 @@ use Bitrix\Main\Localization\Loc;
                                             <div class="col-12">
                                                 <div class="polygon-container js-polygon-container">
                                                     <div class="polygon-container__content">
-                                                        <div class="helper <?if(preg_match('/bg-dark/', $item["SECTION_CLASS_STYLE"])):?>bg-white<?else:?>bg-dark-30<?endif;?>">
+                                                        <div class="helper <?if(preg_match('/bg-dark/', $item["SECTION_BACKGROUND_CLASS_STYLE"])):?>bg-white<?else:?>bg-dark-30<?endif;?>">
                                                             <div class="helper__wrapper d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-4 gap-lg-6">
                                                                 <img class="helper__image w-auto float-end" src="<?= $arBlocks["QUOTES"]["POS_0"]["PICTURE"] ?>" alt="Обратите внимание" loading="lazy">
                                                                 <div class="helper__content text-l">
@@ -180,34 +180,36 @@ use Bitrix\Main\Localization\Loc;
                                     <?endif;?>
                                     <?if(!empty($arBlocks["BENEFITS"])):?>
                                         <!-- Блок с бенефитами -->
-                                        <div class="row row-gap-6 gx-xl-6 px-lg-6">
-                                            <?
-                                            $colLg4 = '';
-                                            $cntBenefits = count($arBlocks["BENEFITS"]);
+                                        <div class="col-12">
+                                            <div class="row row-gap-6 gx-xl-6 px-lg-6">
+                                                <?
+                                                $colLg4 = '';
+                                                $cntBenefits = count($arBlocks["BENEFITS"]);
 
-                                            if ($cntBenefits % 2 !== 0) {
-                                                $colLg4 = 'col-lg-4';
-                                            }
-                                            ?>
-                                            <?foreach ($arBlocks["BENEFITS"] as $benefit):?>
-                                                <div class="col-12 col-md-6 <?= $colLg4 ?>">
-                                                    <div class="benefit d-flex gap-3 flex-column">
-                                                        <? if(!empty($benefit["PICTURE"])) : ?>
-                                                            <img class="icon size-xxl" src="<?= $benefit["PICTURE"]?>" alt="icon" loading="lazy">
-                                                        <? endif; ?>
-                                                        <div class="benefit__content d-flex flex-column gap-3">
-                                                            <h4 class="benefit__title"><?= html_entity_decode($benefit["TITLE"]) ?></h4>
+                                                if ($cntBenefits % 2 !== 0) {
+                                                    $colLg4 = 'col-lg-4';
+                                                }
+                                                ?>
+                                                <?foreach ($arBlocks["BENEFITS"] as $benefit):?>
+                                                    <div class="col-12 col-md-6 <?= $colLg4 ?>">
+                                                        <div class="benefit d-flex gap-3 flex-column">
+                                                            <? if(!empty($benefit["PICTURE"])) : ?>
+                                                                <img class="icon size-xxl" src="<?= $benefit["PICTURE"]?>" alt="icon" loading="lazy">
+                                                            <? endif; ?>
+                                                            <div class="benefit__content d-flex flex-column gap-3">
+                                                                <h4 class="benefit__title"><?= html_entity_decode($benefit["TITLE"]) ?></h4>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            <?endforeach;?>
+                                                <?endforeach;?>
+                                            </div>
                                         </div>
                                     <?endif;?>
                                     <?if(!empty($arBlocks["QUOTES"]["POS_1"])):?>
                                         <!-- Блок со второй цитатой -->
                                         <div class="polygon-container js-polygon-container">
                                             <div class="polygon-container__content">
-                                                <div class="helper <?if(preg_match('/bg-dark/', $item["SECTION_CLASS_STYLE"])):?>bg-white<?else:?>bg-dark-30<?endif;?>">
+                                                <div class="helper <?if(preg_match('/bg-dark/', $item["SECTION_BACKGROUND_CLASS_STYLE"])):?>bg-white<?else:?>bg-dark-30<?endif;?>">
                                                     <div class="helper__wrapper d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-4 gap-lg-6">
                                                         <img class="helper__image w-auto float-end" src="<?= $arBlocks["QUOTES"]["POS_1"]["PICTURE"] ?>" alt="Обратите внимание" loading="lazy">
                                                         <div class="helper__content text-l">

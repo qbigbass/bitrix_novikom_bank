@@ -301,6 +301,7 @@ foreach ($arResult["ITEMS"] as $index => $item) {
     if (in_array($item["CODE"], [
         "konversionnye-operatsii",
         "mezhbankovskoe-kreditovanie-sdelki-mbk",
+        "udobstvo-zaklyucheniya-sdelok-po-razlichnym-kanalam-svyazi",
         "banknotnye-operatsii",
         "elektronnaya-torgovaya-platforma-novikom-fx",
         "sinditsirovannye-kredity"
