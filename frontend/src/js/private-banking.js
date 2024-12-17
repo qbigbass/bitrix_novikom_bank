@@ -20,6 +20,8 @@ const ELEMS_PB_SELECT = {
     select: ".js-select-date",
 }
 
+const FOOTER_MARGIN = 20;
+
 const pbNavMenu = () => {
     const menu = document.querySelector(ELEMS_PB_NAV.navMenu);
     const button = document.querySelector(ELEMS_PB_NAV.button);
@@ -97,7 +99,7 @@ function pbScrollTo() {
             $scrollToTopButton.fadeOut();
         }
 
-        if (footerTop < windowHeight + scrollY - 20) { // 20px- отступ от футера
+        if (footerTop < windowHeight + scrollY - FOOTER_MARGIN) {
             $scrollToTopButton.addClass('btn-pb-up--absolute')
         } else {
             $scrollToTopButton.removeClass('btn-pb-up--absolute')
