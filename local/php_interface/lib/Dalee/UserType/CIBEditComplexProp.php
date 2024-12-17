@@ -10,9 +10,9 @@ class CIBEditComplexProp
 {
     static function OnBeforePrologHandler()
     {
-        $GLOBALS['SCP_IN_LIST'] = ($_REQUEST['mode'] == 'frame' || $_SERVER['PHP_SELF'] == '/bitrix/admin/iblock_element_admin.php');
+        $GLOBALS['SCP_IN_LIST'] = (($_REQUEST['mode'] ?? '') == 'frame' || $_SERVER['PHP_SELF'] == '/bitrix/admin/iblock_element_admin.php');
 
-        if ((is_array($_POST["SPROP"]) || is_array($_FILES["SPROP"])) && !$GLOBALS['SCP_IN_LIST']) {
+        if (!empty($_POST["SPROP"]) && (is_array($_POST["SPROP"]) || is_array($_FILES["SPROP"])) && !$GLOBALS['SCP_IN_LIST']) {
             foreach ($_POST["SPROP"] as $pid => $parr) {
                 $_POST["PROP"][$pid] = $parr;
             }
