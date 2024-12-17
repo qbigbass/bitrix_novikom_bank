@@ -209,9 +209,17 @@
             flex-grow: 1;
         }
 
-        a {
+        a:not([class]) {
             @extend .link;
             text-decoration: underline;
+        }
+
+        img {
+            max-height: 4.5rem;
+
+            @include use-media(tablet-album) {
+                max-height: 8rem;
+            }
         }
     }
 

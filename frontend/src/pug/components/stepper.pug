@@ -39,7 +39,7 @@ mixin stepper(allSteps, steps, color="green")
                         p.text-l.mb-0!= item.text
                     if item.button
                         if item.button.icon
-                            a(href= item.button.href).btn.btn-primary.btn-icon= item.button.text
+                            a(href= item.button.href class= item.button.classList).btn.btn-primary.btn-icon= item.button.text
                                 +svg-use(item.button.icon, 'icon size-m')
                         else
                             a(href= item.button.href).btn.btn-primary= item.button.text

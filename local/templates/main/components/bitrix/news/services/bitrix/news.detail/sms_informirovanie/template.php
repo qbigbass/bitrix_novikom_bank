@@ -315,7 +315,7 @@ $helper = new ComponentHelper($component);
 <?if(!empty($arResult['DISPLAY_PROPERTIES']['TABS']['VALUE'])) : ?>
     <section class="section-layout js-collapsed-mobile">
         <div class="container">
-            <h3 class="d-none d-md-block mb-md-6 mb-lg-7 px-lg-6">Подобнее</h3>
+            <h3 class="d-none d-md-block mb-md-6 mb-lg-7 px-lg-6">Подробнее</h3>
             <a class="h3 d-flex align-items-center justify-content-between dark-100 d-md-none" data-bs-toggle="collapse" href="#more" role="button" aria-expanded="false" aria-controls="more">
                 Подробнее
                 <svg class="icon size-m violet-100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
