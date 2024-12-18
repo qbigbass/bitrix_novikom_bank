@@ -1,5 +1,5 @@
 mixin document-download(data)
-    a.d-flex.flex-column.gap-1.py-3.document-download(class=data.classSize ? data.classSize : 'text-l', href= data.href, download="")!= data.text
+    a.d-flex.flex-column.gap-2.py-3.document-download(class=data.classSize ? data.classSize : 'text-l', href= data.href, download="")!= data.text
         .d-flex.gap-1.align-items-center
             .document-download__file.caption-m.dark-70
                 span.document-download__date-time= data.dateTime

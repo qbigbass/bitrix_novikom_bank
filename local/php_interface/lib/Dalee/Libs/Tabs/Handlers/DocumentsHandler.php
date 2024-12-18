@@ -70,7 +70,7 @@ class DocumentsHandler implements PropertyHandlerInterface
             $fileType = explode('.', $file['ORIGINAL_NAME'])[1];
 
             $elementsHtml .=
-                '<a class="d-flex flex-column gap-1 py-3 document-download text-m" href="' . $file['SRC'] . '" download="' . $file['NAME'] . '">'
+                '<a class="d-flex flex-column gap-2 py-3 document-download text-m" href="' . $file['SRC'] . '" download="' . $file['NAME'] . '">'
                     . $element ['NAME'] .
                     '<div class="d-flex gap-1 align-items-center">
                         <div class="document-download__file caption-m dark-70">

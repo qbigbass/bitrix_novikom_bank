@@ -12,6 +12,7 @@ html(lang="ru")
         include ../mixins/pattern-bg
         include ../mixins/slider-controls
         include ../mixins/polygon-container
+        include ../includes/header/accessibility-panel
 
         .page-wrapper.js-page-wrapper
             block content
@@ -22,25 +23,4 @@ html(lang="ru")
         include ../components/chat-bot
 
         block script
-        script(src="js/vendors/jquery.min.js")
-        script(src="js/vendors/popover.js")
-        script(src="js/vendors/bootstrap.min.js")
-        script(src="js/vendors/swiper.min.js")
-        script(src="js/vendors/select2.min.js")
-        script(src="js/vendors/airdatepicker.js")
-        script(src="js/vendors/jquery.mask.min.js")
-        script(src="js/chatBot.js")
-        script(src="js/datepicker.js")
-        script(src="js/dropDownMenu.js")
-        script(src="js/formFeedback.js")
-        script(src="js/formSend.js")
-        script(src="js/formSteps.js")
-        script(src="js/inputSlider.js")
-        script(src="js/uploadFile.js")
-        script(src="js/polygon-container.js")
-        script(src="js/setPage.js")
-        script(src="js/sliders.js")
-        script(src="js/tabs.js")
-        script(src="js/charts.js")
-        script(src="js/yMap.js")
-        script(src="js/index.js")
+        include ../includes/footer-scripts

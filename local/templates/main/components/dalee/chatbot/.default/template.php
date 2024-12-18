@@ -24,7 +24,7 @@ $this->setFrameMode(true);
                     <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-more"></use>
                 </svg>
             </button>
-            <div class="chatbot-polygon__polygon violet-100 js-polygon-container-polygon d-none d-md-block">
+            <div class="chatbot-polygon__polygon green-100 js-polygon-container-polygon d-none d-md-block">
                 <svg class="js-polygon-container-svg" xmlns="http://www.w3.org/2000/svg">
                     <polygon points="1 1, 1 52, 52 52, 67 67, 67 1" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-dasharray="8 8"></polygon>
                 </svg>
@@ -46,7 +46,7 @@ $this->setFrameMode(true);
                     </svg>
                 </button>
             </div>
-            <div class="chatbot-polygon__polygon violet-100 js-polygon-container-polygon d-none d-md-block">
+            <div class="chatbot-polygon__polygon green-100 js-polygon-container-polygon d-none d-md-block">
                 <svg class="js-polygon-container-svg" xmlns="http://www.w3.org/2000/svg">
                     <polygon points="1 1, 1 52, 52 52, 67 67, 67 1" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-dasharray="8 8"></polygon>
                 </svg>

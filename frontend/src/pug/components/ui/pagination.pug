@@ -5,7 +5,7 @@ mixin pagination(data, position='center', size)
         ul.pagination.d-none.d-lg-flex(class=`justify-content-${position}`, class=size && `pagination-${size}`)
             if data.prevLink
                 li.page-item
-                    a.page-link(href=data.prevLink)
+                    a.page-link(href=data.prevLink aria-label="Перейти на предыдущую страницу")
                         +svg-use("icon-chevron-left", "icon size-m")
             if data.firstLink
                 li.page-item
@@ -18,7 +18,7 @@ mixin pagination(data, position='center', size)
                     if (item.isActive)
                         activeIndex = index + 1
                 li.page-item(class=item.isActive && "active", aria-current=item.isActive && "page")
-                    a.page-link(href=item.link)!= item.linkText
+                    a.page-link(href=item.link )!= item.linkText
             if data.lastLink && data.lastLink.linkText !== data.list.at(-1).linkText
                 li.page-item
                     .page-link
@@ -27,12 +27,12 @@ mixin pagination(data, position='center', size)
                     a.page-link(href=data.lastLink.link)!= data.lastLink.linkText
             if data.nextLink
                 li.page-item
-                    a.page-link(href=data.nextLink)
+                    a.page-link(href=data.nextLink aria-label="Перейти на следующую страницу" )
                         +svg-use("icon-chevron-right", "icon size-m")
         ul.pagination.d-flex.d-lg-none.justify-content-between
             if data.prevLink
                 li.page-item
-                    a.page-link(href=data.prevLink)
+                    a.page-link(href=data.prevLink aria-label="Перейти на предыдущую страницу")
                         +svg-use("icon-chevron-left", "icon size-m")
             else
                 li.page-item.page-item--disabled
@@ -51,5 +51,5 @@ mixin pagination(data, position='center', size)
                                 option(value=n)!= n
             if data.nextLink
                 li.page-item
-                    a.page-link(href=data.nextLink)
+                    a.page-link(href=data.nextLink  aria-label="Перейти на следующую страницу")
                         +svg-use("icon-chevron-right", "icon size-m")

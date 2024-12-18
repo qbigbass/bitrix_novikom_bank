@@ -18,7 +18,7 @@ $this->setFrameMode(true);
 use Bitrix\Main\Localization\Loc;
 
 ?>
-<section class="section-layout px-lg-6">
+<section class="section-layout px-lg-6 px-xxl-0">
     <div class="container">
         <div class="row">
             <div class="d-none d-md-flex justify-content-between">
@@ -34,7 +34,7 @@ use Bitrix\Main\Localization\Loc;
         <div class="collapse d-md-block mt-6 mt-lg-7" id="documents">
             <div class="row row-gap-6">
                 <div class="col-12 col-xxl-8 pe-xxl-6">
-                    <div class="ps-3 ps-lg-4">
+                    <div class="ps-3 ps-lg-0 py-lg-4">
                         <?foreach ($arResult["ITEMS"] as $item):?>
                             <?if(!empty($item["DISPLAY_PROPERTIES"]["FILE"]["FILE_VALUE"]['SRC'])):?>
                                 <?
@@ -42,7 +42,7 @@ use Bitrix\Main\Localization\Loc;
                                 $fileType = pathinfo($arFile['SRC'], PATHINFO_EXTENSION);
                                 ?>
                                 <a
-                                    class="d-flex flex-column gap-1 py-3 document-download text-m"
+                                    class="d-flex flex-column gap-2 py-3 document-download text-m"
                                     href="<?= $arFile['SRC']?>"
                                     download="<?= $arFile['FILE_NAME']?>"
                                 ><?= $item["NAME"] ?>

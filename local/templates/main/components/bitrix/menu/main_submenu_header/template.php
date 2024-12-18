@@ -128,7 +128,7 @@
                         aria-label="Поиск по сайту"
                         aria-describedby="input-search"
                         tabindex="-1"
-                        value="<?= $arResult["REQUEST"]["QUERY"] ?>"
+                        value="<?= htmlspecialchars($_GET['q'] ?? ''); ?>"
                     >
                 </div>
             </form>

@@ -1,0 +1,13 @@
+:root {
+  // Private Banking colors
+  --pb-primary: #591aaf;
+  --pb-hover: #6D3EBD;
+  --pb-text-color: #B0B7FE;
+  --pb-black: #000;
+  --pb-dark-bg: #131316;
+  --pb-main-80: #3F2564CC;
+}
+
+.pr-text-color {
+  color: var(--pb-text-color);
+}

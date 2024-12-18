@@ -74,7 +74,7 @@ $this->setFrameMode(true);
         <div class="container banner-text__container position-relative z-2">
             <div class="row ps-lg-6">
                 <div class="col-12 col-sm-6 col-md-8 position-relative z-1 mb-5 mb-md-0 pt-6">
-                    <div class="d-flex flex-column align-items-start gap-3 gap-md-4">
+                    <div class="d-flex flex-column align-items-start gap-3 gap-lg-4">
                         <div class="breadcrumbs d-flex flex-wrap gap-2">
                             <a class="breadcrumbs__item d-md-inline-flex align-items-center gap-2 text-s dark-70 d-inline-flex" href="<?= $arResult["SECTION"]["LIST_PAGE_URL"]?>">
                                 <svg class="icon size-s d-inline-block d-md-none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
