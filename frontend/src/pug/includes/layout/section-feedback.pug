@@ -12,7 +12,7 @@ section.section-layout.section-feedback.bg-blue-10
                 button.btn.btn-info.w-100.w-lg-auto(type="button" data-bs-toggle="modal" data-bs-target="#modal-feedback-form") Направить обращение
                 p.text-s.dark-70.mb-0
                     | Нажимая кнопку &laquo;Перезвоните мне&raquo;, вы&nbsp;соглашаетесь с&nbsp;условиями предоставления информации
-            form.form-feedback.bg-white
+            form.form-feedback.bg-white(data-simple-callback-form)
                 +input({
                     id: "phone",
                     label: "Мобильный телефон",
