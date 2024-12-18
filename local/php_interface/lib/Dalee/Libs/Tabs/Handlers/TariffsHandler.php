@@ -38,7 +38,7 @@ class TariffsHandler implements PropertyHandlerInterface
         foreach ($this->tariffs as $tariff) {
             $cardsHtml .=
                 '<div class="swiper-slide js-swiper-slide">
-                    <div class="card-tariff d-flex flex-column gap-5 bg-dark-10">
+                    <div class="card-tariff d-flex flex-column gap-5 bg-dark-10 text-break">
                         <div class="card-tariff__header border-bottom-dashed pb-4">
                             <h4 class="card-tariff__title">' . $tariff['TAB'] . '</h4>
                         </div>

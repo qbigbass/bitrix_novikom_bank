@@ -115,7 +115,7 @@ use Bitrix\Main\Localization\Loc;
                                                 </div>
                                                 <div class="card-benefit__read-more d-flex align-items-end justify-content-between">
                                                     <div class="card-benefit__icon">
-                                                        <img class="yellow-100 size-md-xxl icon" src="<?= $card["PICTURE"] ?>" alt="" loading="lazy">
+                                                        <img class="yellow-100 size-xxl icon" src="<?= $card["PICTURE"] ?>" alt="" loading="lazy">
                                                     </div>
                                                 </div>
                                             </div>
@@ -514,18 +514,18 @@ use Bitrix\Main\Localization\Loc;
                                                     <div class="col-12 col-xxl-4">
                                                         <div class="card-help d-inline-flex p-3 p-sm-5 p-lg-6 w-100 bg-blue-10">
                                                             <div class="card-help__inner d-flex flex-column gap-4 gap-md-6 h-100 w-100">
-                                                                <div class="card-help__title-group d-flex flex-column gap-3 gap-md-4">
+                                                                <div class="card-help__title-group d-flex flex-column gap-3">
                                                                     <h4 class="card-help__title">Остались вопросы?</h4>
-                                                                    <p class="card-help__description text-m m-0">Оставьте свой телефон и мы перезвоним вам, либо задайте вопрос в чате</p>
+                                                                    <p class="card-help__description text-s m-0">Оставьте свой телефон и мы перезвоним вам, либо задайте вопрос в чате</p>
                                                                 </div>
-                                                                <form class="form-feedback p-0 gap-3 gap-md-4" action="/" method="POST">
+                                                                <form class="form-feedback p-0 gap-3" action="/" method="POST">
                                                                     <div>
                                                                         <label class="form-label" for="mobile-phone-help">Мобильный телефон</label>
-                                                                        <input class="card-help__input form-control form-control-lg bg-transparent" id="mobile-phone-help" type="text" aria-describedby="mobile-phone-hint" placeholder="+7">
+                                                                        <input class="card-help__input form-control form-control-lg-lg bg-transparent" id="mobile-phone-help" type="text" aria-describedby="mobile-phone-hint" placeholder="+7">
                                                                     </div>
-                                                                    <button class="btn btn-primary btn-lg text-m w-100" type="button">Перезвоните мне</button>
+                                                                    <button class="btn btn-primary btn-lg-lg text-m w-100" type="button">Перезвоните мне</button>
                                                                 </form>
-                                                                <button class="card-help__button btn btn-link btn-lg btn-icon mx-auto gap-2" type="button">
+                                                                <button class="card-help__button btn btn-link btn-lg-lg btn-icon mx-auto gap-2" type="button">
                                                                     <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                                                                         <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chat"></use>
                                                                     </svg>Написать в чат
@@ -840,7 +840,7 @@ use Bitrix\Main\Localization\Loc;
                                                                             <? if(!empty($arElements["DOCUMENTS"])):?>
                                                                                 <? foreach ($arElements["DOCUMENTS"] as $doc) : ?>
                                                                                     <a
-                                                                                        class="d-flex flex-column gap-1 py-3 document-download text-m"
+                                                                                        class="d-flex flex-column gap-2 py-3 document-download text-m"
                                                                                         href="<?= $doc["SRC"] ?>"
                                                                                         download=""
                                                                                     ><?= $doc["DESC"] ?>
@@ -994,7 +994,7 @@ use Bitrix\Main\Localization\Loc;
             <section class="section-layout bg-<?= $item["COLOR_BLOCK"] ?>">
                 <div class="container">
                     <h3 class="px-lg-6 mb-4 mb-md-6 mb-lg-7">Другие услуги для бизнеса</h3>
-                    <div class="swiper slider-cards js-slider-cards" data-slides-per-view="mobile-s:1,mobile:1,tablet:2,laptop:2,laptop-x:3" data-space-between="mobile-s:8,mobile:8,tablet:16,laptop:16,laptop-x:16">
+                    <div class="swiper slider-cards js-slider-cards" data-slides-per-view="mobile-s:1,mobile:1,tablet:2,tablet-album:2,laptop:2,laptop-x:3" data-space-between="mobile-s:8,mobile:8,tablet:16,tablet-album:16,laptop:16,laptop-x:16">
                         <div class="swiper-wrapper">
                             <? foreach ($item["BLOCK_OTHER_SERVICES"] as $service) : ?>
                                 <div class="swiper-slide js-swiper-slide">

@@ -2,6 +2,7 @@
     padding-top: 2.5rem;
     padding-bottom: 2.5rem;
     position: relative;
+    overflow: hidden;
 
     @include use-media(tablet) {
         padding-top: 4rem;
@@ -27,6 +28,12 @@
     }
 
     &:not([class*="bg"], .py-0, :has(> .pattern-bg)) + .section-layout:not([class*="bg"]):has(> .pattern-bg) {
+        padding-top: 1rem;
+
+        @include use-media(tablet) {
+            padding-top: 1.5rem;
+        }
+
         @include use-media(tablet-album) {
             padding-top: 2.5rem;
         }
@@ -59,6 +66,6 @@
 
     @at-root .scrollspy & {
         overflow: unset;
-        scroll-margin-top: 8rem;
+        scroll-margin-top: 5rem;
     }
 }

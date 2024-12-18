@@ -62,7 +62,7 @@ $helper = new ComponentHelper($component);
                                             <div>
                                                 <div class="text-l fw-bold mb-3">Подробнее о программе</div>
                                                 <div class="link-list">
-                                                    <a class="d-flex flex-column gap-1 py-3 document-download text-m" href="<?=$file['SRC']?>" download="<?=$file['FILE_NAME']?>">
+                                                    <a class="d-flex flex-column gap-2 py-3 document-download text-m" href="<?=$file['SRC']?>" download="<?=$file['FILE_NAME']?>">
                                                         <?=$fileName?>
                                                         <div class="d-flex gap-1 align-items-center">
                                                             <div class="document-download__file caption-m dark-70">

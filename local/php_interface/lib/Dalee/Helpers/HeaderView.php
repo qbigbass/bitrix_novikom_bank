@@ -180,7 +180,7 @@ class HeaderView
             <div class="container banner-text__container position-relative z-2">
                 <div class="row ps-lg-6">
                     <div class="col-12 position-relative z-1 mb-5 mb-md-0 pt-6<? if (!empty($headerData['picture'])) { ?> col-sm-6 col-md-8<? } ?><? if (empty($headerData['picture'])) { ?> col-xxl-8<? } ?>">
-                        <div class="d-flex flex-column align-items-start gap-3 gap-md-4">
+                        <div class="d-flex flex-column align-items-start gap-3 gap-lg-4">
 
                             <? if (!empty($this->helper)) {
                                 $this->helper->deferredCall('showNavChain', ['.default', $chainDepth]);

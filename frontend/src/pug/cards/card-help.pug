@@ -1,16 +1,16 @@
 mixin card-help(data, bgClass='bg-blue-10')
     .card-help.d-inline-flex.p-3.p-sm-5.p-lg-6.w-100&attributes(attributes)(class=bgClass)
         div.card-help__inner.d-flex.flex-column.gap-4.gap-md-6.h-100.w-100
-            div.card-help__title-group.d-flex.flex-column.gap-3.gap-md-4
+            div.card-help__title-group.d-flex.flex-column.gap-3
                 if data.title
                     h4.card-help__title!= data.title
                 if data.description
-                    p.card-help__description.text-m.m-0!= data.description
+                    p.card-help__description.text-s-m.m-0!= data.description
             form.form-feedback.p-0.gap-3.gap-md-4
                 div
                     label.form-label(for="mobile-phone-help") Мобильный телефон
-                    input#mobile-phone-help.card-help__input.form-control.form-control-lg.bg-transparent.js-mask-phone(type="text", aria-describedby="mobile-phone-hint", placeholder="+7" data-input-call)
-                button.btn.btn-primary.btn-lg.text-m.w-100(type="button" data-bs-toggle="modal" data-bs-target="#modal-callback-form")
+                    input#mobile-phone-help.card-help__input.form-control.form-control-lg-lg.bg-transparent.js-mask-phone(type="text", aria-describedby="mobile-phone-hint", placeholder="+7" data-input-call)
+                button.btn.btn-primary.btn-lg-lg.text-m.w-100(type="button" data-bs-toggle="modal" data-bs-target="#modal-callback-form")
                     | Перезвоните мне
             if data.chatButtonIsVisible
                 button.card-help__button.btn.btn-link.btn-lg.btn-icon.mx-auto.gap-2(type="button" data-bs-toggle="modal" data-bs-target="#modal-feedback-form")

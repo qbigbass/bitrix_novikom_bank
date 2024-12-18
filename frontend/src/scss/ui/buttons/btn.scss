@@ -108,6 +108,23 @@ button {
     }
 }
 
+.btn-sm-lg {
+    @include use-media(mobile-s, tablet-album) {
+        &.btn-icon .icon {
+            width: 1rem;
+            height: 1rem;
+        }
+    }
+
+    @include use-media(tablet-album) {
+        --bs-btn-padding-x: 1.5rem;
+        --bs-btn-padding-y: 0.4375rem;
+        --bs-btn-font-size: 1rem;
+        --bs-btn-line-height: 1.5;
+        height: auto;
+    }
+}
+
 .btn-md-md {
     @include use-media(tablet) {
         --bs-btn-padding-y: 0.4375rem;

@@ -19,7 +19,7 @@ $this->setFrameMode(true); ?>
     ?>
     <div class="col-12 col-md-6 col-lg-<?= 12 / $arParams['COL_COUNT'] ?>" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
         <div class="benefit d-flex gap-3 flex-column">
-            <img class="icon size-xl" src="<?= $arItem['PREVIEW_PICTURE']['SRC'] ?>"
+            <img class="icon size-xxl" src="<?= $arItem['PREVIEW_PICTURE']['SRC'] ?>"
                  alt="<?= $arItem['PREVIEW_PICTURE']['ALT'] ?>" loading="lazy">
             <div class="benefit__content d-flex flex-column gap-3">
                 <? if (!empty($arItem['~PREVIEW_TEXT'])) { ?>
