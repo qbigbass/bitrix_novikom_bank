@@ -290,35 +290,13 @@ if (!empty($propertyTypeList)) {
         $tabsStrategy[$type["ID"]]["ACTIVE"] = $type["XML_ID"] === "standart" ? "Y" : "N";
         $tabsStrategy[$type["ID"]]["TITLE"] = $type["VALUE"];
     }
+    ksort($tabsStrategy);
 }
 
 /* Заполним недостающие данные по цитатам и слайдерам для элементов */
 foreach ($arResult["ITEMS"] as $index => $item) {
     $arResult["ITEMS"][$index]["SECTION_BACKGROUND_CLASS_STYLE"] = ''; // класс для тега <section>
-    $arResult["ITEMS"][$index]["SECTION_BORDER_CLASS_STYLE"] = ''; // класс для тега <section>
     $itemId = $item["ID"];
-
-    if (in_array($item["CODE"], [
-        "konversionnye-operatsii",
-        "mezhbankovskoe-kreditovanie-sdelki-mbk",
-        "udobstvo-zaklyucheniya-sdelok-po-razlichnym-kanalam-svyazi",
-        "banknotnye-operatsii",
-        "elektronnaya-torgovaya-platforma-novikom-fx",
-        "sinditsirovannye-kredity",
-        "usloviya"
-    ])) {
-        $arResult["ITEMS"][$index]["ROW_ADD_CLASS"] = "row-gap-6 row-gap-lg-11";
-    }
-    if (in_array($item["CODE"], [
-        "konversionnye-operatsii",
-        "mezhbankovskoe-kreditovanie-sdelki-mbk",
-        "banknotnye-operatsii",
-        "elektronnaya-torgovaya-platforma-novikom-fx",
-        "sinditsirovannye-kredity",
-        "usloviya"
-    ])) {
-        $arResult["ITEMS"][$index]["H2_ADD_CLASS"] = "mb-3 mb-md-4 px-lg-6";
-    }
 
     if (!empty($item["PROPERTIES"]["QUOTES"]["VALUE"]) && !empty($arQuotes)) {
         foreach ($item["PROPERTIES"]["QUOTES"]["VALUE"] as $kValue => $vValue) {
@@ -402,12 +380,16 @@ foreach ($arResult["ITEMS"] as $index => $item) {
         }
     }
 
-    if (!empty($item["PROPERTIES"]["COLOR_BG"]["VALUE"])) {
-        $arResult["ITEMS"][$index]["SECTION_BACKGROUND_CLASS_STYLE"] = $item["PROPERTIES"]["COLOR_BG"]["VALUE"];
+    if (!empty($item["PROPERTIES"]["CLASS_SECTION"]["VALUE"])) {
+        $arResult["ITEMS"][$index]["SECTION_BACKGROUND_CLASS_STYLE"] = $item["PROPERTIES"]["CLASS_SECTION"]["VALUE"];
     }
 
-    if (!empty($item["PROPERTIES"]["COLOR_BORDER"]["VALUE"])) {
-        $arResult["ITEMS"][$index]["SECTION_BORDER_CLASS_STYLE"] = "border-top border-".$item["PROPERTIES"]["COLOR_BORDER"]["VALUE"];
+    if (!empty($item["PROPERTIES"]["CLASS_ROW"]["VALUE"])) {
+        $arResult["ITEMS"][$index]["ROW_ADD_CLASS"] = $item["PROPERTIES"]["CLASS_ROW"]["VALUE"];
+    }
+
+    if (!empty($item["PROPERTIES"]["CLASS_H2"]["VALUE"])) {
+        $arResult["ITEMS"][$index]["H2_ADD_CLASS"] = $item["PROPERTIES"]["CLASS_H2"]["VALUE"];
     }
 
     if (!empty($item["PROPERTIES"]["COLOR_CARDS_SLIDER"]["VALUE"])) {
@@ -467,8 +449,11 @@ foreach ($arResult["ITEMS"] as $index => $item) {
                     }
                     break;
                 case 7 :
-                    if (!empty($arResult["ITEMS"][$index]["STRATEGY"])) {
-                        $arResult["ITEMS"][$index]["SORT_ITEMS"][$k]["STRATEGY"] = $arResult["ITEMS"][$index]["STRATEGY"];
+                    if (!empty($arResult["ITEMS"][$index]["STRATEGY_TABS"])) {
+                        $arResult["ITEMS"][$index]["SORT_ITEMS"][$k]["STRATEGY_TABS"] = $arResult["ITEMS"][$index]["STRATEGY_TABS"];
+                    }
+                    if (!empty($arResult["ITEMS"][$index]["STRATEGY_ITEMS"])) {
+                        $arResult["ITEMS"][$index]["SORT_ITEMS"][$k]["STRATEGY_ITEMS"] = $arResult["ITEMS"][$index]["STRATEGY_ITEMS"];
                     }
                     break;
                 case 8 :
