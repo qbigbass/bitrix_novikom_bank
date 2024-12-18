@@ -8,6 +8,10 @@
         border-bottom: var(--blue-30) dashed 1px;
     }
 
+    & .accordion-collapse {
+        scroll-margin-top: 20vh;
+    }
+
     & .accordion-button {
         gap: 1rem;
 
