@@ -337,14 +337,13 @@ foreach ($arResult["ITEMS"] as $index => $item) {
                 }
 
                 $fullDesc = $item["PROPERTIES"]["BENEFITS"]["DESCRIPTION"][$kValue];
-                $arDesc = array_filter(explode(";", $fullDesc));
+                $arDesc = array_filter(explode("; ", $fullDesc));
                 $title = $fullDesc;
                 $text = '';
 
                 if (!empty($arDesc[1])) {
                     [$title, $text] = $arDesc;
                 }
-
 
                 $arResult["ITEMS"][$index]["BENEFITS"][$kValue]["TITLE"] = $title;
                 $arResult["ITEMS"][$index]["BENEFITS"][$kValue]["PICTURE"] = $iconSrc;
