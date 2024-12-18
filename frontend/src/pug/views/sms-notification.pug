@@ -125,7 +125,7 @@ block content
         .container
             h3.mb-4.mb-md-6.mb-lg-7
                 | Возможности
-            #benefits.row.row-gap-6
+            #benefits.row.row-gap-6.gx-xl-6
                 each item, index in allBenefits
                     .col-12.col-md-6.col-lg-4(class=index > 3 && 'd-none d-md-block')
                         +benefit(item.spriteData, item.title)

@@ -109,7 +109,7 @@ $helper = new ComponentHelper($component);
     <section class="section-layout px-lg-6">
         <div class="container">
             <h3 class="mb-4 mb-md-6 mb-lg-7">Возможности</h3>
-            <div class="row row-gap-6">
+            <div class="row row-gap-6 gx-xl-6">
                 <?$GLOBALS['opportunityFilter'] = [
                     'ACTIVE' => 'Y',
                     'ID' => $arResult['DISPLAY_PROPERTIES']['OPPORTUNITY']['VALUE']
@@ -220,7 +220,7 @@ $helper = new ComponentHelper($component);
                 </svg>
             </a>
             <div class="collapse d-md-block mt-6 mt-lg-7" id="how-connect">
-                <div class="row px-lg-6">
+                <div class="row row-gap-6 gx-xl-6 px-lg-6">
                     <?$GLOBALS['instructionsFilter'] = [
                         'ACTIVE' => 'Y',
                         'ID' => $arResult['DISPLAY_PROPERTIES']['INSTRUCTIONS']['VALUE']
@@ -313,89 +313,87 @@ $helper = new ComponentHelper($component);
 <?endif;?>
 
 <?if(!empty($arResult['DISPLAY_PROPERTIES']['TABS']['VALUE'])) : ?>
-    <section class="section-layout js-collapsed-mobile">
+    <section class="section-layout js-collapsed-mobile pb-0">
         <div class="container">
             <h3 class="d-none d-md-block mb-md-6 mb-lg-7 px-lg-6">Подробнее</h3>
-            <a class="h3 d-flex align-items-center justify-content-between dark-100 d-md-none" data-bs-toggle="collapse" href="#more" role="button" aria-expanded="false" aria-controls="more">
+            <a class="h3 d-flex align-items-center justify-content-between dark-100 d-md-none" data-bs-toggle="collapse" href="#additional-info-content" role="button" aria-expanded="false" aria-controls="additional-info-content">
                 Подробнее
                 <svg class="icon size-m violet-100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                     <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-down"></use>
                 </svg>
             </a>
-            <div class="collapse d-md-block mt-4 mt-md-6 mt-lg-7" id="more">
-                <?$GLOBALS['tabsFilter'] = [
-                    'ACTIVE' => 'Y',
-                    'ID' => $arResult['DISPLAY_PROPERTIES']['TABS']['VALUE']
-                ];?>
+            <?$GLOBALS['tabsFilter'] = [
+                'ACTIVE' => 'Y',
+                'ID' => $arResult['DISPLAY_PROPERTIES']['TABS']['VALUE']
+            ];?>
 
-                <?$APPLICATION->IncludeComponent(
-                    "bitrix:news.list",
-                    "tabs",
-                    [
-                        "ACTIVE_DATE_FORMAT" => "d.m.Y",
-                        "ADD_SECTIONS_CHAIN" => "N",
-                        "AJAX_MODE" => "N",
-                        "AJAX_OPTION_ADDITIONAL" => "",
-                        "AJAX_OPTION_HISTORY" => "N",
-                        "AJAX_OPTION_JUMP" => "N",
-                        "AJAX_OPTION_STYLE" => "Y",
-                        "CACHE_FILTER" => "N",
-                        "CACHE_GROUPS" => "Y",
-                        "CACHE_TIME" => "36000000",
-                        "CACHE_TYPE" => "A",
-                        "CHECK_DATES" => "Y",
-                        "DETAIL_URL" => "",
-                        "DISPLAY_BOTTOM_PAGER" => "N",
-                        "DISPLAY_TOP_PAGER" => "N",
-                        "FIELD_CODE" => ["CODE","NAME","PREVIEW_TEXT","PREVIEW_PICTURE",""],
-                        "FILTER_NAME" => "tabsFilter",
-                        "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                        "IBLOCK_ID" => iblock('tabs'),
-                        "IBLOCK_TYPE" => "additional",
-                        "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
-                        "INCLUDE_SUBSECTIONS" => "N",
-                        "MESSAGE_404" => "",
-                        "NEWS_COUNT" => "20",
-                        "PAGER_BASE_LINK_ENABLE" => "N",
-                        "PAGER_DESC_NUMBERING" => "N",
-                        "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
-                        "PAGER_SHOW_ALL" => "N",
-                        "PAGER_SHOW_ALWAYS" => "N",
-                        "PAGER_TEMPLATE" => ".default",
-                        "PAGER_TITLE" => "Новости",
-                        "PARENT_SECTION" => "",
-                        "PARENT_SECTION_CODE" => "",
-                        "PREVIEW_TRUNCATE_LEN" => "",
-                        "PROPERTY_CODE" => [
-                            "CONDITIONS_ICONS",
-                            "CONDITIONS",
-                            "RATES_DESCRIPTION",
-                            "TEXT_FIELD",
-                            "HEADING",
-                            "STEPS",
-                            "SHORT_INFO",
-                            "QUOTES",
-                            "QUESTIONS",
-                            "ICONS_WITH_DESCRIPTION",
-                            "ICON_SHORT_INFO",
-                            "DOCUMENTS"
-                        ],
-                        "SET_BROWSER_TITLE" => "N",
-                        "SET_LAST_MODIFIED" => "N",
-                        "SET_META_DESCRIPTION" => "N",
-                        "SET_META_KEYWORDS" => "N",
-                        "SET_STATUS_404" => "N",
-                        "SET_TITLE" => "N",
-                        "SHOW_404" => "N",
-                        "SORT_BY1" => "ACTIVE_FROM",
-                        "SORT_BY2" => "SORT",
-                        "SORT_ORDER1" => "DESC",
-                        "SORT_ORDER2" => "ASC",
-                        "STRICT_SECTION_CHECK" => "N",
+            <?$APPLICATION->IncludeComponent(
+                "bitrix:news.list",
+                "tabs",
+                [
+                    "ACTIVE_DATE_FORMAT" => "d.m.Y",
+                    "ADD_SECTIONS_CHAIN" => "N",
+                    "AJAX_MODE" => "N",
+                    "AJAX_OPTION_ADDITIONAL" => "",
+                    "AJAX_OPTION_HISTORY" => "N",
+                    "AJAX_OPTION_JUMP" => "N",
+                    "AJAX_OPTION_STYLE" => "Y",
+                    "CACHE_FILTER" => "N",
+                    "CACHE_GROUPS" => "Y",
+                    "CACHE_TIME" => "36000000",
+                    "CACHE_TYPE" => "A",
+                    "CHECK_DATES" => "Y",
+                    "DETAIL_URL" => "",
+                    "DISPLAY_BOTTOM_PAGER" => "N",
+                    "DISPLAY_TOP_PAGER" => "N",
+                    "FIELD_CODE" => ["CODE","NAME","PREVIEW_TEXT","PREVIEW_PICTURE",""],
+                    "FILTER_NAME" => "tabsFilter",
+                    "HIDE_LINK_WHEN_NO_DETAIL" => "N",
+                    "IBLOCK_ID" => iblock('tabs'),
+                    "IBLOCK_TYPE" => "additional",
+                    "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+                    "INCLUDE_SUBSECTIONS" => "N",
+                    "MESSAGE_404" => "",
+                    "NEWS_COUNT" => "20",
+                    "PAGER_BASE_LINK_ENABLE" => "N",
+                    "PAGER_DESC_NUMBERING" => "N",
+                    "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+                    "PAGER_SHOW_ALL" => "N",
+                    "PAGER_SHOW_ALWAYS" => "N",
+                    "PAGER_TEMPLATE" => ".default",
+                    "PAGER_TITLE" => "Новости",
+                    "PARENT_SECTION" => "",
+                    "PARENT_SECTION_CODE" => "",
+                    "PREVIEW_TRUNCATE_LEN" => "",
+                    "PROPERTY_CODE" => [
+                        "CONDITIONS_ICONS",
+                        "CONDITIONS",
+                        "RATES_DESCRIPTION",
+                        "TEXT_FIELD",
+                        "HEADING",
+                        "STEPS",
+                        "SHORT_INFO",
+                        "QUOTES",
+                        "QUESTIONS",
+                        "ICONS_WITH_DESCRIPTION",
+                        "ICON_SHORT_INFO",
+                        "DOCUMENTS"
                     ],
-                    $component
-                );?>
-            </div>
+                    "SET_BROWSER_TITLE" => "N",
+                    "SET_LAST_MODIFIED" => "N",
+                    "SET_META_DESCRIPTION" => "N",
+                    "SET_META_KEYWORDS" => "N",
+                    "SET_STATUS_404" => "N",
+                    "SET_TITLE" => "N",
+                    "SHOW_404" => "N",
+                    "SORT_BY1" => "ACTIVE_FROM",
+                    "SORT_BY2" => "SORT",
+                    "SORT_ORDER1" => "DESC",
+                    "SORT_ORDER2" => "ASC",
+                    "STRICT_SECTION_CHECK" => "N",
+                ],
+                $component
+            );?>
         </div>
         <picture class="pattern-bg pattern-bg--hide-mobile">
             <source srcset="/frontend/dist/img/patterns/section-2/pattern-light-s.svg" media="(max-width: 767px)">
