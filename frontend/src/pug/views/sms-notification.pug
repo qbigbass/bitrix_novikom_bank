@@ -152,21 +152,19 @@ block content
                 | Как подключить
                 +svg-use("icon-chevron-down", "icon size-m violet-100")
             #how-connect.collapse.d-md-block.mt-6.mt-lg-7
-                .row.px-lg-6
+                .row.row-gap-6.gx-xl-6
                     .col-12.col-lg-6
-                        +benefit(
-                            {
-                                name: 'icon-a-date',
-                                classList: 'size-xl'
-                            }, "Онлайн")
-                            span.text-l Через интернет-банк
+                        .d-flex.flex-column.flex-md-row.flex-lg-column.gap-2.gap-md-4.gap-lg-3.align-items-start.align-items-md-center.align-items-lg-start.pe-xxl-11
+                            img.icon.size-xl(src=`img/icons/icon-money.svg` alt="icon" loading="lazy")
+                            .d-flex.flex-column.gap-2.align-items-start
+                                h4 Онлайн
+                                span.text-l Через интернет-банк
                     .col-12.col-lg-6
-                        +benefit(
-                            {
-                                name: 'icon-a-date',
-                                classList: 'size-xl'
-                            }, "В&nbsp;офисе банка")
-                            span.text-l При предъявлении паспорта
+                        .d-flex.flex-column.flex-md-row.flex-lg-column.gap-2.gap-md-4.gap-lg-3.align-items-start.align-items-md-center.align-items-lg-start.pe-xxl-11
+                            img.icon.size-xl(src=`img/icons/icon-money.svg` alt="icon" loading="lazy")
+                            .d-flex.flex-column.gap-2.align-items-start
+                                h4 В&nbsp;офисе банка
+                                span.text-l При предъявлении паспорта
     section.section-layout.py-lg-11
         .container
             .col-12
