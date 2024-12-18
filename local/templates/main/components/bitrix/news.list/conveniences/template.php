@@ -12,7 +12,7 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 ?>
-<div class="swiper slider-cards js-slider-cards" data-slides-per-view="mobile-s:1,mobile:1,tablet:2,laptop:2,laptop-x:3" data-space-between="mobile-s:8,mobile:8,tablet:8,laptop:8,laptop-x:8">
+<div class="swiper slider-cards js-slider-cards" data-slides-per-view="mobile-s:1,mobile:1,tablet:2,tablet-album:2,laptop:2,laptop-x:3" data-space-between="mobile-s:8,mobile:8,tablet:8,tablet-album:8,laptop:8,laptop-x:8">
     <div class="swiper-wrapper">
         <?foreach($arResult["ITEMS"] as $arItem) : ?>
             <?

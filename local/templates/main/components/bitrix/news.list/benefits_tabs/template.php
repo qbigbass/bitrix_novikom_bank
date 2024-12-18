@@ -22,7 +22,7 @@ $this->setFrameMode(true);
             <div class="row">
                 <div class="col-12">
         <? } ?>
-                    <div class="swiper slider-cards js-slider-cards" data-slides-per-view="mobile-s:1,mobile:1,tablet:2,laptop:2,laptop-x:3" data-space-between="mobile-s:8,mobile:8,tablet:16,laptop:16,laptop-x:16">
+                    <div class="swiper slider-cards js-slider-cards" data-slides-per-view="mobile-s:1,mobile:1,tablet:2,tablet-album:2,laptop:2,laptop-x:3" data-space-between="mobile-s:8,mobile:8,tablet:16,tablet-album:16,laptop:16,laptop-x:16">
                         <div class="swiper-wrapper">
 
                             <? foreach ($arResult['ITEMS'] as $benefit) {
