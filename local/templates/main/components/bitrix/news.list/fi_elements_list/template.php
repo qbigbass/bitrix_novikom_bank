@@ -199,6 +199,11 @@ use Bitrix\Main\Localization\Loc;
                                                         <? endif; ?>
                                                         <div class="benefit__content d-flex flex-column gap-3">
                                                             <h4 class="benefit__title"><?= html_entity_decode($benefit["TITLE"]) ?></h4>
+                                                            <? if (!empty($benefit["TEXT"])) : ?>
+                                                                <div class="benefit__description w-100 text-m">
+                                                                    <span class="text-m"><?= $benefit["TEXT"] ?></span>
+                                                                </div>
+                                                            <? endif; ?>
                                                         </div>
                                                     </div>
                                                 </div>
