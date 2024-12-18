@@ -358,7 +358,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initOffices();
     initChatBot();
     initCharts();
-    // initYMap();
     pbScrollTo();
 });
 

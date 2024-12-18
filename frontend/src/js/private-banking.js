@@ -88,6 +88,8 @@ function pbScrollTo() {
     const $scrollToTopButton = $('#scrollToTop');
     const $footer = $('footer');
 
+    if (!$scrollToTopButton) { return false }
+
     $(window).on('scroll', function() {
         const windowHeight = $(window).height();
         const scrollY = $(this).scrollTop();
