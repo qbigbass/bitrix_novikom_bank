@@ -3,8 +3,9 @@
     --blue-contrast-bg: #063462;
     --blue-contrast-medium: #002950;
     --blue-contrast-bg-dark: #001e3b;
+    --blue-contrast-bg-dark-100: #000d1a;
     --blue-contrast-light: #339ffd;
-    --blue-contrast-light-1: #7ac1ff;
+    --blue-contrast-light-1: #8ac8ff;
     --blue-contrast-white: #fff;
     --blue-100: #349ffd;
     --blue-30: #fff;
@@ -28,19 +29,48 @@
         display: none;
       }
     }
+
+    .header-contact-link__text.d-none.d-xxl-inline-block {
+      color: var(--blue-contrast-white);
+      &:hover {
+        color: var(--blue-contrast-light-1);
+      }
+    }
     .icon > img,
     .icon svg {
       color: var(--blue-contrast-white);
     }
     .main-menu__link {
       color: var(--blue-contrast-white);
+
+      &.is-active {
+        color: var(--blue-contrast-light-1);
+        &:after {
+          background-color: var(--blue-100);
+        }
+      }
+      &:hover {
+        color: var(--blue-contrast-light);
+      }
+    }
+
+    .card-menu {
+      background: none;
+      background-color: var(--blue-contrast-bg);
     }
 
     .header__link {
       color: var(--blue-contrast-white);
 
       &:hover {
-        color: var(--blue-contrast-light);
+        color: var(--blue-contrast-light-1);
+      }
+    }
+
+    span.fw-semibold {
+      color: var(--blue-contrast-white);
+      &:hover {
+        color: var(--blue-contrast-light-1);
       }
     }
 
@@ -86,16 +116,16 @@
 
     .dropdown-menu {
       --bs-dropdown-link-color: var(--blue-contrast-white);
-      --bs-dropdown-bg: var(--blue-contrast-light);
+      --bs-dropdown-bg: var(--blue-contrast-bg-dark);
       --bs-dropdown-link-active-bg: var(--blue-contrast-light-1);
     }
 
     .dropdown-nav {
-      background-color: var(--blue-contrast-light);
+      background-color: var(--blue-contrast-bg-dark);
     }
 
     .dropdown-item:hover {
-      color: var(--blue-contrast-medium);
+      color: var(--blue-contrast-light-1);
     }
 
     .banner-hero-thumb {
@@ -115,13 +145,20 @@
     }
 
     .chip.text-s {
-      color: var(--blue-contrast-white);
-      background-color: var(--blue-contrast-medium);
+      color: var(--blue-contrast-bg-dark-100);
+      background-color: var(--blue-contrast-light);
 
       &:hover {
         transition: all 0.3s linear;
-        color: var(--blue-contrast-medium);
+        color: var(--blue-contrast-bg-dark);
         background-color: var(--blue-contrast-white);
+      }
+      &:focus {
+        outline: 2px solid var(--blue-contrast-bg);
+        outline-offset: 2px;
+        box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.25);
+        background-color: var(--blue-contrast-white);
+        color: var(--blue-contrast-bg-dark);
       }
     }
 
@@ -142,6 +179,10 @@
     .tag__content.text-s {
       background-color: var(--blue-contrast-light);
       color: var(--blue-contrast-white);
+    }
+
+    .tag__triangle svg {
+      display: none;
     }
     .card-product {
       &__content {
@@ -168,7 +209,26 @@
       }
     }
 
+    .btn.btn-primary.card-product__button {
+      background-color: var(--blue-contrast-light);
+      color: var(--blue-contrast-bg-dark-100);
+
+      &:hover {
+        background-color: var(--blue-contrast-white);
+        color: var(--blue-contrast-bg-dark-100);
+      }
+
+      &:focus {
+        outline: 2px solid var(--blue-contrast-bg);
+        outline-offset: 2px;
+        box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.25);
+        background-color: var(--blue-contrast-white);
+        color: var(--blue-contrast-bg-dark-100);
+      }
+    }
+
     .swiper-pagination-bullet {
+      height: 10px;
       background-color: var(--blue-contrast-white);
       &-active {
         background-color: var(--blue-contrast-light);
@@ -256,15 +316,43 @@
       }
     }
 
+    .card-about-bank.d-none.d-lg-flex {
+      color: var(--blue-contrast-bg);
+    }
+    span.violet-100.fw-semibold.text-number-m.fw-bold {
+      color: var(--blue-contrast-bg);
+    }
+
     .nav-tabs {
+      border: none;
       .nav-link {
         background-color: var(--blue-contrast-bg);
         color: var(--blue-contrast-white);
         border-color: var(--blue-contrast-white);
-        &.active {
+        transition: all 0.2s ease;
+        white-space: nowrap;
+
+        &:hover {
+          background-color: var(--blue-contrast-light-1);
+          color: var(--blue-contrast-white);
+        }
+
+        &:focus {
+          outline: 2px solid var(--blue-contrast-light-1);
+          outline-offset: 4px;
           background-color: var(--blue-contrast-light);
           color: var(--blue-contrast-white);
-          border-color: var(--blue-contrast-white);
+        }
+
+        &.active {
+          background-color: var(--blue-contrast-light);
+          color: var(--blue-contrast-bg-dark);
+          border-color: var(--blue-contrast-light-1);
+
+          &:focus {
+            outline: 2px solid var(--blue-contrast-light-1);
+            outline-offset: 4px;
+          }
         }
       }
     }
@@ -285,10 +373,10 @@
     }
 
     .card-calculate-result {
-      background-color: var(--blue-contrast-light-1);
+      background-color: var(--blue-contrast-light);
       &__label,
       &__body {
-        color: var(--blue-contrast-white);
+        color: var(--blue-contrast-bg-dark);
       }
     }
 
@@ -311,15 +399,33 @@
         color: var(--blue-contrast-light);
       }
     }
+
+    .card-product.card-product--green.bg-dark-10
+      .form-control.form-control-lg-lg.js-mask-phone:focus {
+      outline: 2px solid var(--blue-contrast-light);
+      outline-offset: 2px;
+      box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.25);
+      border-color: var(--blue-contrast-light);
+      transition: box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
     button.btn.btn-info.w-100.w-lg-auto {
-      background-color: var(--blue-contrast-white);
-      color: var(--blue-contrast-light);
-      border: none;
-      transition: background-color 0.25s ease;
+      color: var(--blue-contrast-bg-dark);
+      background-color: var(--blue-contrast-light);
+      transition: box-shadow 0.25s ease, background-color 0.25s ease,
+        color 0.25s ease;
+
       &:hover {
-        background-color: var(--blue-contrast-bg);
-        border: none;
-        color: var(--blue-contrast-light);
+        background-color: var(--blue-contrast-white);
+        color: var(--blue-contrast-bg-dark);
+      }
+
+      &:focus {
+        outline: 2px solid var(--blue-contrast-white);
+        outline-offset: 2px;
+        box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.25);
+        background-color: var(--blue-contrast-white);
+        color: var(--blue-contrast-bg-dark);
       }
     }
 
@@ -330,6 +436,14 @@
 
     .card-about-bank__col.d-flex.flex-column {
       background-color: var(--blue-contrast-light);
+      & img {
+        filter: brightness(0) saturate(100%) invert(10%) sepia(91%)
+          saturate(1802%) hue-rotate(172deg) brightness(95%) contrast(106%);
+      }
+    }
+
+    .icon.size-m.blue-100 {
+      color: var(--blue-contrast-bg-dark);
     }
 
     .violet-100.fw-semibold.text-number-m.fw-bold {
@@ -339,8 +453,16 @@
     .bg-dark-10 {
       background-color: var(--blue-contrast-light-1);
     }
-    .dark-100 {
-      color: var(--blue-contrast-white);
+    h4.dark-100 {
+      color: var(--blue-contrast-bg);
+    }
+
+    .icon.card-service__icon svg {
+      color: var(--blue-contrast-bg);
+    }
+
+    .text-s.dark-70.my-auto.mb-0 {
+      color: var(--blue-contrast-bg);
     }
 
     .btn.btn-info.w-100.w-lg-auto {
@@ -350,17 +472,6 @@
       &:hover {
         background-color: var(--blue-contrast-white);
         color: var(--blue-contrast-light);
-        border: none;
-      }
-    }
-
-    .btn.btn-primary.btn-lg-lg.w-100 {
-      background-color: var(--blue-contrast-light);
-      color: var(--blue-contrast-white);
-      border: none;
-      &:hover {
-        background-color: var(--blue-contrast-bg);
-        color: var(--blue-contrast-white);
         border: none;
       }
     }
@@ -375,7 +486,10 @@
     }
 
     .d-flex.flex-column.row-gap-4.px-3.py-4.p-md-5.p-lg-6.bg-blue-10 {
-      background-color: var(--blue-contrast-bg-dark);
+      background-color: var(--blue-contrast-white);
+      & h5 {
+        color: var(--blue-contrast-bg-dark);
+      }
     }
 
     .purple-70 {
@@ -388,12 +502,20 @@
 
     .btn-app.btn.btn-primary.d-flex.align-items-center.gap-3.justify-content-center {
       background-color: var(--blue-contrast-light);
-      color: var(--blue-contrast-white);
-      border: none;
+      color: var(--blue-contrast-bg-dark);
+      border: 1px solid var(--blue-contrast-white);
       &:hover {
         background-color: var(--blue-contrast-white);
-        color: var(--blue-contrast-light);
-        border: none;
+        color: var(--blue-contrast-bg-dark);
+        border-color: var(--blue-contrast-light-1);
+      }
+      &:focus {
+        outline: 2px solid var(--blue-contrast-bg);
+        border-color: var(--blue-contrast-light-1);
+        outline-offset: 2px;
+        box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.25);
+        background-color: var(--blue-contrast-white);
+        color: var(--blue-contrast-bg-dark);
       }
     }
 
@@ -402,38 +524,104 @@
       border: none;
       &:hover {
         background: none;
-        color: var(--blue-contrast-white);
+        color: var(--blue-contrast-light-1);
+      }
+      &:focus {
+        background: none;
+        color: var(--blue-contrast-light-1);
+        outline: 2px solid var(--blue-contrast-bg);
+        outline-offset: 2px;
+        box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.25);
+      }
+    }
+
+    .btn-app.btn.btn-primary.d-flex.align-items-center.gap-2.gap-lg-3.justify-content-center {
+      background-color: var(--blue-contrast-light);
+      color: var(--blue-contrast-bg-dark);
+      border: none;
+      white-space: normal;
+      text-align: center;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      &:hover {
+        background-color: var(--blue-contrast-bg-dark);
+        color: var(--blue-contrast-light-1);
+        border: none;
+      }
+      &:focus {
+        outline: 2px solid var(--blue-contrast-bg);
+        outline-offset: 2px;
+        box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.25);
+        background-color: var(--blue-contrast-bg-dark);
+        color: var(--blue-contrast-light-1);
       }
     }
 
     .btn.btn-primary.btn-lg-lg {
       background-color: var(--blue-contrast-light);
-      color: var(--blue-contrast-white);
+      color: var(--blue-contrast-bg-dark);
       border: none;
       &:hover {
         background-color: var(--blue-contrast-white);
-        color: var(--blue-contrast-light);
+        color: var(--blue-contrast-bg-dark);
         border: none;
+      }
+      &:focus {
+        outline: 2px solid var(--blue-contrast-bg);
+        outline-offset: 2px;
+        box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.25);
+        background-color: var(--blue-contrast-white);
+        color: var(--blue-contrast-bg-dark);
       }
     }
 
     .btn.btn-lg-lg.btn-outline-primary.d-flex.gap-2.align-items-center.justify-content-center {
       background-color: var(--blue-contrast-light);
-      color: var(--blue-contrast-white);
+      color: var(--blue-contrast-bg-dark);
       border: none;
       &:hover {
         background-color: var(--blue-contrast-white);
-        color: var(--blue-contrast-light);
+        color: var(--blue-contrast-bg-dark);
         border: none;
+      }
+      &:focus {
+        outline: 2px solid var(--blue-contrast-bg);
+        outline-offset: 2px;
+        box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.25);
+        background-color: var(--blue-contrast-white);
+        color: var(--blue-contrast-bg-dark);
       }
     }
 
-    a.btn-app.btn.d-inline-flex.justify-content-center.align-items-center.bg-white {
-      border: 1px solid var(--blue-contrast-light);
+    a.btn-app {
+      transition: all 0.3s ease;
+      border: 1px solid var(--blue-contrast-bg-dark);
+
+      &:hover {
+        border-color: var(--blue-contrast-light);
+      }
+
+      &:focus {
+        outline: 2px solid var(--blue-contrast-bg);
+        outline-offset: 2px;
+        border-color: var(--blue-contrast-light);
+        box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.25);
+      }
     }
 
     .footer__info {
       background-color: var(--blue-contrast-bg-dark);
+    }
+
+    .fw-semibold.dark-100 {
+      color: var(--blue-contrast-white);
+      &:hover {
+        color: var(--blue-contrast-light-1);
+      }
+
+      &:focus {
+        color: var(--blue-contrast-light);
+      }
     }
 
     .bg-blue-10 {
@@ -441,16 +629,45 @@
       color: var(--blue-contrast-white);
     }
 
+    a.h4 {
+      color: var(--blue-contrast-white);
+      &:hover {
+        color: var(--blue-contrast-light-1);
+      }
+    }
+
+    #linkToList {
+      color: var(--blue-contrast-light);
+      text-decoration: underline;
+      &:hover {
+        color: var(--blue-contrast-light-1);
+      }
+    }
+
     .d-flex.gap-2.align-items-center {
       color: var(--blue-contrast-white);
 
       &:hover {
-        color: var(--blue-contrast-bg-dark);
+        color: var(--blue-contrast-light-1);
+      }
+      &:focus {
+        color: var(--blue-contrast-light);
       }
     }
 
-    .js-polygon-container-svg {
-      color: var(--blue-contrast-light);
+    .icon.dark-100.size-m {
+      color: var(--blue-contrast-white);
+
+      &:hover {
+        color: var(--blue-contrast-light-1);
+      }
+      &:focus {
+        color: var(--blue-contrast-light);
+      }
+    }
+
+    .chatbot-polygon__content.chat-bot__popover-content.bg-blue-10.d-flex.flex-column.gap-3.gap-lg-4 {
+      background-color: var(--blue-contrast-bg-dark-100);
     }
 
     //TRUST MANAGEMENT PAGE
@@ -489,10 +706,6 @@
     }
     .icon.size-xxl {
       filter: brightness(0) invert(1);
-    }
-
-    .js-polygon-container-svg {
-      display: block;
     }
 
     .helper__wrapper {
@@ -710,7 +923,8 @@
       }
     }
     .js-polygon-container-svg {
-      display: none;
+      display: block;
+      color: var(--blue-contrast-white);
     }
 
     .text-l {
@@ -941,12 +1155,20 @@
 
     .card-calculate-result__footer {
       .btn.btn-primary.btn-lg-lg.w-100 {
-        background-color: var(--blue-contrast-white);
-        color: var(--blue-contrast-light);
-        transition: 0.25s linear all;
+        background-color: var(--blue-contrast-bg-dark);
+        color: var(--blue-contrast-white);
+        border: none;
         &:hover {
-          background-color: var(--blue-contrast-bg);
-          color: var(--blue-contrast-white);
+          background-color: var(--blue-contrast-white);
+          color: var(--blue-contrast-bg-dark);
+          border: none;
+        }
+        &:focus {
+          outline: 2px solid var(--blue-contrast-bg);
+          outline-offset: 2px;
+          box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.25);
+          background-color: var(--blue-contrast-white);
+          color: var(--blue-contrast-bg-dark);
         }
       }
     }
@@ -1081,11 +1303,22 @@
 
     .form-feedback.bg-white {
       .btn.btn-primary.btn-lg-lg.w-100 {
-        color: var(--blue-contrast-white);
+        color: var(--blue-contrast-bg-dark);
         background-color: var(--blue-contrast-light);
+        transition: box-shadow 0.25s ease, background-color 0.25s ease,
+          color 0.25s ease;
+
         &:hover {
-          color: var(--blue-contrast-light);
           background-color: var(--blue-contrast-white);
+          color: var(--blue-contrast-bg-dark);
+        }
+
+        &:focus {
+          outline: 2px solid var(--blue-contrast-white);
+          outline-offset: 2px;
+          box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.25);
+          background-color: var(--blue-contrast-white);
+          color: var(--blue-contrast-bg-dark);
         }
       }
     }
@@ -1218,13 +1451,20 @@
 
     //mortgage-primary.html
     .btn.btn-link.btn-sm.btn-icon.mt-2.mt-md-0 {
-      color: var(--blue-contrast-light);
-      background-color: var(--blue-contrast-white);
-      padding: 5px 12px;
+      background-color: var(--blue-contrast-bg-dark);
+      color: var(--blue-contrast-white);
       border: none;
       &:hover {
-        color: var(--blue-contrast-white);
-        background-color: var(--blue-contrast-bg);
+        background-color: var(--blue-contrast-white);
+        color: var(--blue-contrast-bg-dark);
+        border: none;
+      }
+      &:focus {
+        outline: 2px solid var(--blue-contrast-bg);
+        outline-offset: 2px;
+        box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.25);
+        background-color: var(--blue-contrast-white);
+        color: var(--blue-contrast-bg-dark);
       }
     }
 
@@ -1301,12 +1541,16 @@
       border-top: 0.25rem solid var(--blue-contrast-white);
     }
 
+    span.tag__content.text-s.fw-semibold.mw-100.w-sm-auto {
+      color: var(--blue-contrast-bg-dark);
+    }
+
     .card-product {
       &__description {
-        color: var(--blue-contrast-white);
+        color: var(--blue-contrast-bg-dark);
       }
       &__title {
-        color: var(--blue-contrast-white);
+        color: var(--blue-contrast-bg-dark);
       }
 
       &__inner {

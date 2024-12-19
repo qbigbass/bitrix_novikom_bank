@@ -74,7 +74,7 @@ $asset->addJs('/frontend/dist/js/accessibility-panel.js');
           <button class="contrastColorsYellow" aria-label="Жёлтый цвет сайта. Нажмите для выбора" tabindex="0">A</button>
         </div>
       </div>
-      <button class="btnReset" id="hideAccessibilityPanel" aria-label="Обычная версия сайта" tabindex="0">Обычная версия сайта<img class="icon" src="/img/eye.svg" tabindex="0" alt="Иконка глаза"></button>
+      <button class="btnReset" id="hideAccessibilityPanel" aria-label="Обычная версия сайта" tabindex="0">Обычная версия сайта<img class="icon" src="/frontend/dist/img/eye.svg" tabindex="0" alt="Иконка глаза"></button>
     </div>
   </div>
 </header>
