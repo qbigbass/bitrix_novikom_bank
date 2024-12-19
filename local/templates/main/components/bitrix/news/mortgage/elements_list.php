@@ -64,7 +64,7 @@ $headerView->render(
     <section class="section-catalog__list">
         <div class="container">
             <div class="row">
-                <div class="col-12 position-relative z-1 d-flex flex-column align-items-start gap-5 gap-md-7">
+                <div class="col-12 position-relative z-1 d-flex flex-column align-items-start gap-4 gap-md-6 gap-lg-7">
                     <?$APPLICATION->IncludeComponent(
                         "bitrix:news.list",
                         "mortgage_list",

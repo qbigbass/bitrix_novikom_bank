@@ -36,7 +36,7 @@ $headerView->render(
 );
 ?>
 
-<section class="section-layout pb-0 pt-xl-11">
+<section class="section-layout pt-xl-11">
     <div class="container">
         <div class="row px-lg-6">
             <div class="col-12">
