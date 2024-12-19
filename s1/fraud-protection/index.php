@@ -1,7 +1,7 @@
 <?
 require($_SERVER['DOCUMENT_ROOT'].'/bitrix/header.php');
 global $APPLICATION;
-$APPLICATION->SetTitle("Защита от мошенничества");
+$APPLICATION->SetTitle("Защита<br> от мошенничества");
 
 global $fraudProtectionFilter;
 $fraudProtectionFilter = [
