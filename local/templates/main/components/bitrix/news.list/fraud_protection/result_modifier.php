@@ -10,7 +10,10 @@ if (!empty($arResult['ITEMS'])) {
         $arSectionIds[$item['IBLOCK_SECTION_ID']] = $item['IBLOCK_SECTION_ID'];
         $arItems[$item['IBLOCK_SECTION_ID']]['ITEMS'][$item['ID']]['NAME'] =  $item['NAME'];
         $arItems[$item['IBLOCK_SECTION_ID']]['ITEMS'][$item['ID']]['PREVIEW_TEXT'] =  $item['PREVIEW_TEXT'];
-        $arItems[$item['IBLOCK_SECTION_ID']]['ITEMS'][$item['ID']]['ICON'] = $item['DISPLAY_PROPERTIES']['ICON']['FILE_VALUE']['SRC'];
+
+        if (file_exists($_SERVER["DOCUMENT_ROOT"] . $item['DISPLAY_PROPERTIES']['ICON']['FILE_VALUE']['SRC'])) {
+            $arItems[$item['IBLOCK_SECTION_ID']]['ITEMS'][$item['ID']]['ICON'] = $item['DISPLAY_PROPERTIES']['ICON']['FILE_VALUE']['SRC'];
+        }
     }
 
     if (!empty($arSectionIds)) {

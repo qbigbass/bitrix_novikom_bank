@@ -29,10 +29,10 @@ $this->setFrameMode(true);
                             <svg class="icon size-s text-white-50 d-inline-block d-md-none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                                 <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-left"></use>
                             </svg>
-                            <span><?= $arResult["SECTION"]["NAME"]?></span>
+                            <span><?= strip_tags($arResult["SECTION"]["~NAME"])?></span>
                         </div>
                     </div>
-                    <h1><?= $arResult["SECTION"]["NAME"]?></h1>
+                    <h1><?= $arResult["SECTION"]["~NAME"]?></h1>
                     <p class="banner-product__subtitle text-l"><?= $arResult["SECTION"]["DESCRIPTION"]?></p>
                 </div>
                 <img class="banner-product__image" src="<?= $arResult["SECTION"]["PICTURE_PATH"]?>" alt="" loading="lazy">
@@ -86,10 +86,10 @@ $this->setFrameMode(true);
                                 <svg class="icon size-s text-white-50 d-inline-block d-md-none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                                     <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-left"></use>
                                 </svg>
-                                <span><?= $arResult["SECTION"]["NAME"]?></span>
+                                <span><?= strip_tags($arResult["SECTION"]["~NAME"])?></span>
                             </div>
                         </div>
-                        <h1 class="banner-text__title text-break dark-100"><?= $arResult["SECTION"]["NAME"]?></h1>
+                        <h1 class="banner-text__title text-break dark-100"><?= $arResult["SECTION"]["~NAME"]?></h1>
                     </div>
                 </div>
                 <div class="d-none d-sm-block col-12 col-sm-6 col-md-4">

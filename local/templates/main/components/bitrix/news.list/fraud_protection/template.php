@@ -34,9 +34,17 @@ if (!empty($arResult['SECTIONS_FRAUD_PROTECTION'])) {
                     <div class="row row-gap-6 gx-xl-6"><?
                         foreach ($section['ITEMS'] as $item) {?>
                             <div class="col-12 col-md-6 col-lg-4">
-                                <div class="benefit d-flex gap-3 flex-column"><img class="icon size-xxl" src="<?= $item['ICON'] ?>" alt="icon" loading="lazy">
+                                <div class="benefit d-flex gap-3 flex-column">
+                                    <? if (!empty($item['ICON'])) : ?>
+                                        <img class="icon size-xxl" src="<?= $item['ICON'] ?>" alt="icon" loading="lazy">
+                                    <? endif; ?>
                                     <div class="benefit__content d-flex flex-column gap-3">
-                                        <div class="benefit__description w-100 text-m"><span><?= $item['NAME'] ?><br class="d-block"><br class="d-block"><?= $item['PREVIEW_TEXT'] ?></span>
+                                        <div class="benefit__description w-100 text-m">
+                                            <span>
+                                                <?= $item['NAME'] ?>
+                                                <br class="d-block">
+                                                <br class="d-block"><?= $item['PREVIEW_TEXT'] ?>
+                                            </span>
                                         </div>
                                     </div>
                                 </div>

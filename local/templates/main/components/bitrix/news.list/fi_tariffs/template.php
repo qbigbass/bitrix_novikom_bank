@@ -48,7 +48,7 @@ use Bitrix\Main\Localization\Loc;
                                 ><?= $item["NAME"] ?>
                                     <div class="d-flex gap-1 align-items-center">
                                         <div class="document-download__file caption-m dark-70">
-                                            <span class="document-download__date-time"><?= $item["TIMESTAMP_X"] ?></span>
+                                            <span class="document-download__date-time"><?= date('d.m.Y H:m', strtotime($item["TIMESTAMP_X"])) ?></span>
                                             <span class="document-download__file-type"><?= $fileType?></span>
                                         </div>
                                         <span class="icon size-s text-primary">
