@@ -242,6 +242,7 @@ $helper = new ComponentHelper($component);
                             "CACHE_TIME" => "36000000",
                             "CACHE_TYPE" => "A",
                             "CHECK_DATES" => "Y",
+                            "COL_COUNT" => "2",
                             "DETAIL_URL" => "",
                             "DISPLAY_BOTTOM_PAGER" => "N",
                             "DISPLAY_TOP_PAGER" => "N",
@@ -402,5 +403,6 @@ $helper = new ComponentHelper($component);
         </picture>
     </section>
 <?endif;?>
+<?$APPLICATION->IncludeFile('/local/php_interface/include/cross_sale_products_block.php')?>
 
 <?$helper->saveCache();?>

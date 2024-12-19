@@ -154,4 +154,18 @@ $arUrlRewrite = [
         'PATH' => '/map/index.php',
         'SORT' => 100,
     ],
+    [
+        'CONDITION' => '#^/en/about/#',
+        'RULE' => '',
+        'ID' => '',
+        'PATH' => '/en/about/index.php',
+        'SORT' => 100,
+    ],
+    [
+        'CONDITION' => '#^/en/#',
+        'RULE' => '',
+        'ID' => 'bitrix:news',
+        'PATH' => '/en/index.php',
+        'SORT' => 100,
+    ]
 ];
