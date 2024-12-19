@@ -53,6 +53,7 @@ if (!empty($arResult["SECTIONS"])) {
             $section["NAME"] = $section["UF_TITLE_MAIN"];
         }
 
+        $section["NAME"] = preg_replace("/&lt;br&gt;|&lt;br\s+\/&gt;/i", "", $section["NAME"]);
         $cntSectionsUpPosition = count($arSectionUpPosition);
 
         if ($arUfFiPosData[$section["UF_FI_POS"]] === "down") {
