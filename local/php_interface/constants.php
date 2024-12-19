@@ -8,4 +8,5 @@ const RU_STORE_APP_LINK = '#';
 const RU_MARKET_APP_LINK = '#';
 const NASH_STORE_APP_LINK = '#';
 const TELEGRAM_LINK = '#';
-const ENGLISH_VERSION_LINK = '#';
+const ENGLISH_VERSION_LINK = 'en/';
+const RUSSIAN_VERSION_LINK = '/';
