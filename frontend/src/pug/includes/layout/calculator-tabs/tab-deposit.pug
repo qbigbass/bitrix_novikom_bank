@@ -29,14 +29,9 @@ include ../../../cards/card-calculate-result
     .col-12.col-lg-6
         .pe-xl-6
             .d-flex.flex-column.row-gap-4.row-gap-md-6.row-gap-lg-7
-                .d-flex.flex-column.flex-md-row-reverse.align-items-md-center.gap-3
+                .d-flex.flex-column.flex-md-row-reverse.align-items-md-center.gap-3.js-input-slider-wrapper
                     ul.nav.nav-tabs.nav-tabs--type-currency.js-tabs-currency
-                        li.nav-item.flex-grow-1
-                            button(type="button").nav-link.text-center.currency.active ₽
-                        li.nav-item.flex-grow-1
-                            button(type="button").nav-link.text-center.currency $
-                        li.nav-item.flex-grow-1
-                            button(type="button").nav-link.text-center.currency ¥
+
                     +input-slider({
                         label: 'Сумма вклада',
                         id: 'deposit-amount',
@@ -57,23 +52,23 @@ include ../../../cards/card-calculate-result
                     isCalculator: true
                 })
 
-                .d-flex.flex-column.row-gap-4
+                .d-flex.flex-column.align-items-start.row-gap-4
                     .form-check
-                        input#input-deposit-capitalization(type="checkbox" value="").form-check-input.js-input-deposit-capitalizatioin
+                        input#input-deposit-capitalization(type="checkbox" value="").form-check-input.js-input-deposit-capitalization
                         label(for="input-deposit-capitalization").form-check-label
                             | Капитализация процентов на счет вклада
 
                     .form-check
-                        input#input-deposit-replenishment(type="checkbox" value="" data-target="replenishment" checked).form-check-input.js-replenishment
+                        input#input-deposit-replenishment(type="checkbox" value="" data-target="replenishment").form-check-input.js-replenishment
                         label(for="input-deposit-replenishment").form-check-label
                             | Планируются пополнения суммы вклада
-                #replenishment.d-flex.flex-column.row-gap-4.row-gap-md-6
-                    .d-flex.flex-column.flex-md-row.gap-4.gap-lg-6
+                #replenishment.d-flex.flex-column.align-items-start.row-gap-4.row-gap-md-6
+                    .d-flex.flex-column.flex-md-row.gap-4.gap-lg-6.js-replenishment-item(data-id="0")
                         .d-flex.flex-column.row-gap-2.w-100
                             label(for="date").form-label.mb-0
                                 | Дата пополнения
                             .position-relative.w-100
-                                input#date(type="text" name="date" placeholder="дд.мм.гг").form-control.form-control-lg-lg.js-date
+                                input#date(type="text" name="date" placeholder="дд.мм.гг").form-control.form-control-lg-lg.js-date.js-date--today-min
                                 span.cursor-pointer.position-absolute.top-0.end-0.violet-70.text-m.py-2.px-3.p-lg-3
                                     +svg-use("icon-calendar", "icon size-m")
 
@@ -94,7 +89,7 @@ include ../../../cards/card-calculate-result
                                     label(for="date").form-label.mb-0
                                         | Дата пополнения
                                     .position-relative.w-100
-                                        input(type="text" name="date" placeholder="дд.мм.гг").form-control.form-control-lg-lg.js-date
+                                        input(type="text" name="date" placeholder="дд.мм.гг").form-control.form-control-lg-lg.js-date.js-date--today-min
                                         span.cursor-pointer.position-absolute.top-0.end-0.violet-70.text-m.py-2.px-3.p-lg-3
                                             +svg-use("icon-calendar", "icon size-m")
 

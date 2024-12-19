@@ -67,11 +67,6 @@ $color-white-30: rgba(#fff, .3);
 // checkbox
 .form-check {
 
-  &:hover {
-    & .form-check-input:not(:disabled) {
-      border-color: var(--dark-0);
-    }
-  }
   &--pb {
     align-items: flex-start;
 
@@ -92,6 +87,11 @@ $color-white-30: rgba(#fff, .3);
 
       &:checked[type=checkbox] {
         --bs-form-check-bg-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='12' viewBox='0 0 16 12' fill='none'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M0.292969 6.85367L1.70718 5.43945L6.00008 8.73235L14.293 0.439453L15.7072 1.85367L6.00008 11.5608L0.292969 6.85367Z' fill='%23B0B7FE'/%3E%3C/svg%3E");
+      }
+    }
+    &:hover {
+      & .form-check-input:not(:disabled) {
+        border-color: var(--dark-0);
       }
     }
   }

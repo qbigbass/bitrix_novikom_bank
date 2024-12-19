@@ -1,88 +1,52 @@
 {
   "data": [
     {
-      "id": 22339,
-      "name": "Кредит на рефинансирование для зарплатных клиентов",
-      "values": [
-        {
-          "rate": 21,
-          "periodMin": 6,
-          "periodMax": 60,
-          "amountMin": 20000,
-          "amountMax": 5000000,
-          "refinancing": true,
-          "strategicClient": false,
-          "totalCost": "23,864 - 27,482 %"
-        }
-      ]
+      "loanType": "На рефинансирование",
+      "rate": "20.9",
+      "periodFrom": "6",
+      "periodTo": "60",
+      "sumFrom": "20000",
+      "sumTo": "5000000"
     },
     {
-      "id": 990,
-      "name": "Кредит на любые цели для зарплатных клиентов",
-      "values": [
-        {
-          "rate": 21,
-          "periodMin": 6,
-          "periodMax": 60,
-          "amountMin": 20000,
-          "amountMax": 5000000,
-          "surety": true,
-          "strategicClient": false,
-          "totalCost": "23,864 - 27,482 %"
-        },
-        {
-          "rate": 21,
-          "periodMin": 6,
-          "periodMax": 60,
-          "amountMin": 20000,
-          "amountMax": 5000000,
-          "noProvision": true,
-          "strategicClient": false,
-          "totalCost": "23,864 - 27,482 %"
-        }
-      ]
+      "loanType": "С поручительством физического лица",
+      "rate": "20.96",
+      "periodFrom": "66",
+      "periodTo": "606",
+      "sumFrom": "200006",
+      "sumTo": "50000006"
     },
     {
-      "id": 991,
-      "name": "Кредит на любые цели для стратегических клиентов",
-      "values": [
-        {
-          "rate": 20,
-          "periodMin": 6,
-          "periodMax": 60,
-          "amountMin": 20000,
-          "amountMax": 5000000,
-          "surety": true,
-          "strategicClient": true,
-          "totalCost": "23,864 - 27,482 %"
-        },
-        {
-          "rate": 20,
-          "periodMin": 6,
-          "periodMax": 60,
-          "amountMin": 20000,
-          "amountMax": 5000000,
-          "noProvision": true,
-          "strategicClient": true,
-          "totalCost": "23,864 - 27,482 %"
-        }
-      ]
+      "loanType": "Без обеспечения",
+      "rate": "16.5311",
+      "periodFrom": "0",
+      "periodTo": "7",
+      "sumFrom": "2000011",
+      "sumTo": "500000099"
     },
     {
-      "id": 154436,
-      "name": "Кредит на рефинансирование для стратегических клиентов",
-      "values": [
-        {
-          "rate": 20,
-          "periodMin": 6,
-          "periodMax": 60,
-          "amountMin": 20000,
-          "amountMax": 5000000,
-          "refinancing": true,
-          "strategicClient": true,
-          "totalCost": "23,864 - 27,482 %"
-        }
-      ]
+      "loanType": "На рефинансирование",
+      "rate": "19.9",
+      "periodFrom": "6",
+      "periodTo": "60",
+      "sumFrom": "20000",
+      "sumTo": "5000000"
+    },
+    {
+      "loanType": "С поручительством физического лица",
+      "rate": "19.9",
+      "periodFrom": "6",
+      "periodTo": "60",
+      "sumFrom": "20000",
+      "sumTo": "5000000"
+    },
+    {
+      "loanType": "Без обеспечения",
+      "rate": "19.9",
+      "periodFrom": "6",
+      "periodTo": "7",
+      "sumFrom": "20000",
+      "sumTo": "5000000"
     }
   ]
 }

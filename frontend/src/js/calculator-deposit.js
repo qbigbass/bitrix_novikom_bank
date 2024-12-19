@@ -1,4 +1,5 @@
-const dataTemp = {
+// TODO: удалить перед пушем
+const dataTemp1 = {
     "data": [
         {
             "currency": "Рубли",
@@ -22,7 +23,7 @@ const dataTemp = {
         },
         {
             "currency": "Рубли",
-            "rate": "17.2",
+            "rate": "20.2",
             "effectiveRate": null,
             "periodFrom": "250",
             "periodTo": "250",
@@ -32,7 +33,7 @@ const dataTemp = {
         },
         {
             "currency": "Рубли",
-            "rate": "18",
+            "rate": "21",
             "effectiveRate": null,
             "periodFrom": "550",
             "periodTo": "550",
@@ -42,7 +43,7 @@ const dataTemp = {
         },
         {
             "currency": "Рубли",
-            "rate": "18",
+            "rate": "21",
             "effectiveRate": null,
             "periodFrom": "1100",
             "periodTo": "1100",
@@ -122,6 +123,102 @@ const dataTemp = {
         }
     ]
 }
+const dataTemp2 = {
+    "data": [
+        {
+            "currency": "Рубли",
+            "rate": "0.1",
+            "effectiveRate": null,
+            "periodFrom": "365",
+            "periodTo": "365",
+            "sumFrom": "не ограничен",
+            "sumTo": "999999999",
+            "minimumBalance": null
+        },
+        {
+            "currency": "Доллары",
+            "rate": "0.01",
+            "effectiveRate": null,
+            "periodFrom": "365",
+            "periodTo": "365",
+            "sumFrom": "5",
+            "sumTo": "999999999",
+            "minimumBalance": null
+        },
+        {
+            "currency": "Евро",
+            "rate": "0.01",
+            "effectiveRate": null,
+            "periodFrom": "365",
+            "periodTo": "365",
+            "sumFrom": "5",
+            "sumTo": "999999999",
+            "minimumBalance": null
+        },
+        {
+            "currency": "Юань",
+            "rate": "0.01",
+            "effectiveRate": null,
+            "periodFrom": "365",
+            "periodTo": "365",
+            "sumFrom": "5",
+            "sumTo": "999999999",
+            "minimumBalance": null
+        }
+    ]
+}
+const dataTemp = {
+    "data": [
+        {
+            "loanType": "На рефинансирование",
+            "rate": "20.9",
+            "periodFrom": "6",
+            "periodTo": "60",
+            "sumFrom": "20000",
+            "sumTo": "5000000"
+        },
+        {
+            "loanType": "С поручительством физического лица",
+            "rate": "20.96",
+            "periodFrom": "66",
+            "periodTo": "606",
+            "sumFrom": "200006",
+            "sumTo": "50000006"
+        },
+        {
+            "loanType": "Без обеспечения",
+            "rate": "16.5311",
+            "periodFrom": "0",
+            "periodTo": "7",
+            "sumFrom": "2000011",
+            "sumTo": "500000099"
+        },
+        {
+            "loanType": "На рефинансирование",
+            "rate": "19.9",
+            "periodFrom": "6",
+            "periodTo": "60",
+            "sumFrom": "20000",
+            "sumTo": "5000000"
+        },
+        {
+            "loanType": "С поручительством физического лица",
+            "rate": "19.9",
+            "periodFrom": "6",
+            "periodTo": "60",
+            "sumFrom": "20000",
+            "sumTo": "5000000"
+        },
+        {
+            "loanType": "Без обеспечения",
+            "rate": "19.9",
+            "periodFrom": "6",
+            "periodTo": "7",
+            "sumFrom": "20000",
+            "sumTo": "5000000"
+        }
+    ]
+}
 
 const ELEMS_DEPOSIT = {
     root: '.js-calculator-deposit',
@@ -137,10 +234,22 @@ const ELEMS_DEPOSIT = {
     replenishmentItem: '.js-replenishment-item',
     replenishmentTemplate: '#replenishment-template',
     currencyList: '.js-tabs-currency',
+    currencyButton: '.nav-link',
+    inputCapitalization: '.js-input-deposit-capitalization',
 }
 
-const ClASSES = {
+const CLASSES_DEPOSIT = {
     hide: 'd-none',
+    active: 'active',
+}
+
+const MIN_DEPOSIT_VALUE = 50;
+
+const CURRENCIES = {
+    "Рубли": "₽",
+    "Доллары": "$",
+    "Юань": "¥",
+    "Евро": "€",
 }
 
 const URL = '/local/php_interface/ajax/calc.php';
@@ -173,21 +282,189 @@ async function getRates(table = null, elementId = null, name = null) {
     //     })
 }
 
+function handlerClickTabCurrency(event, STATE) {
+    const target = event.target;
+    if (target.classList.contains(CLASSES_DEPOSIT.active)) return false;
+    const buttons = STATE.elements.currencyList.querySelectorAll(ELEMS_DEPOSIT.currencyButton);
+    buttons.forEach(button => {
+        button.classList.remove(CLASSES_DEPOSIT.active)
+    })
+    target.classList.add(CLASSES_DEPOSIT.active);
+    STATE.currency = target.dataset.name;
+    getDepositValues(STATE);
+    setDepositValues(STATE, true);
+}
+function createCurrencyTab(currency, STATE) {
+    let activeClass = "";
+    if (currency === STATE.currency) {
+        activeClass = CLASSES_DEPOSIT.active;
+    }
+    const tab = document.createElement('li');
+    tab.classList.add("nav-item", "flex-grow-1");
+    tab.innerHTML = `
+        <button type="button" data-name="${currency}" class="nav-link text-center currency ${activeClass}">${CURRENCIES[currency]}</button>
+    `;
+    return tab;
+}
+function createCurrencyList(STATE) {
+    const tabs = STATE.elements.currencyList.querySelectorAll(ELEMS_DEPOSIT.currencyButton);
+    if (tabs.length) return false;
+
+    const uniqueCurrencies = [];
+    STATE.calculatorData.forEach(item => {
+        if (!uniqueCurrencies.includes(item.currency)) {
+            uniqueCurrencies.push(item.currency);
+        }
+    });
+    uniqueCurrencies.forEach(currency => {
+        const tab = createCurrencyTab(currency, STATE);
+        STATE.elements.currencyList.append(tab);
+        tab.addEventListener('click', (event) => {
+            handlerClickTabCurrency(event, STATE);
+        })
+    });
+}
+
+function showDepositResult(STATE) {
+    STATE.elements.displayPeriod.innerHTML = getFormatedTextByType({value: STATE.period, type: 'day'});
+    STATE.elements.displayRate.innerHTML = `${STATE.rate} %`;
+    STATE.elements.displayIncome.innerHTML = `${formatNumberWithSpaces(STATE.income.toFixed(0))} <span class="currency">${CURRENCIES[STATE.currency]}</span>`;
+}
+
+function handlerInputDeposit(STATE) {
+    STATE.rate = findDepositRate({data: STATE.filteredData, amount: STATE.amount, period: STATE.period});
+    STATE.income = calculateDepositIncome(STATE);
+    showDepositResult(STATE)
+}
+
+function parseDate(dateString) {
+    // Разделяем строку на день, месяц и год
+    const parts = dateString.split('.');
+    const day = parseInt(parts[0], 10);
+    const month = parseInt(parts[1], 10) - 1; // Месяцы в JavaScript начинаются с 0
+    const year = parseInt(parts[2], 10);
+
+    // Создаем объект Date
+    return new Date(year, month, day);
+}
+
+function calculateDepositIncome({amount, period, rate, capitalization, filteredData, additionalDeposits, hideAdditional = false}) {
+    let totalAmount = amount; // Общая сумма вклада, начиная с первоначальной
+    let totalIncome = 0; // Переменная для хранения общего дохода
+    const dailyInitialRate = (rate / 100) / 365;
+
+    if (capitalization) {
+        // рассчеты с капитализацией
+        const n = 12; // Количество периодов капитализации в год (ежемесячно)
+        const t = period / 365; // Количество лет
+
+        // Расчет итоговой суммы с учетом капитализации
+        const A = amount * Math.pow(1 + (rate / 100) / n, n * t);
+
+        // Расчет дохода
+        totalIncome += A - amount;
+    } else {
+        totalIncome += amount * dailyInitialRate * period;
+    }
+    if (!hideAdditional) {
+        // Обработка каждого пополнения
+        additionalDeposits.forEach(deposit => {
+            const { amountItem, date } = deposit;
+            const depositDate = parseDate(date);
+            const endDate = new Date();
+            endDate.setDate(endDate.getDate() + period);
+
+            // Обновляем общую сумму
+            totalAmount += Number(amountItem);
+
+            // Получаем новую процентную ставку в зависимости от общей суммы
+            let newRate = findDepositRate({data: filteredData, amount: totalAmount, period});
+            // Если новая процентная ставка не определена, используем текущую
+            if (!newRate) {newRate = rate}
+            const dailyNewRate = (newRate / 100) / 365;
+
+            // Количество дней, на которые вкладывается пополнение
+            const daysOnDeposit = Math.max(0, (endDate - depositDate) / (1000 * 60 * 60 * 24));
+
+            // Расчет дохода от пополнения
+            if (capitalization) {
+                const n = 12; // Количество периодов капитализации в год (ежемесячно)
+                const t = daysOnDeposit / 365; // Количество лет
+
+                // Расчет итоговой суммы с учетом капитализации
+                const A = Number(amountItem) * Math.pow(1 + (newRate / 100) / n, n * t);
+
+                // Расчет дохода
+                totalIncome += A - Number(amountItem);
+
+            } else {
+                totalIncome += Number(amountItem) * dailyNewRate * daysOnDeposit;
+            }
+        });
+    }
+
+    return totalIncome;
+}
+function findDepositRate({data, amount, period}) {
+    const findAmount = data.filter(item => item.sumFrom <= amount && item.sumTo >= amount);
+    const findPeriod = findAmount.find(item => item.periodFrom <= period && item.periodTo >= period);
+    return findPeriod?.rate;
+}
+
 function isShowCurrency(data) {
     return data.some(item => item.currency !== "Рубли")
 }
 
 const toggleVisibility = (target, checked) => {
-    checked ? target.classList.remove(ClASSES.hide) : target.classList.add(ClASSES.hide)
+    checked ? target.classList.remove(CLASSES_DEPOSIT.hide) : target.classList.add(CLASSES_DEPOSIT.hide)
+}
+
+function handlerInputReplenishmentSum(input, STATE) {
+    const wrapper = input.closest(ELEMS_DEPOSIT.replenishmentItem);
+    const inputDate = wrapper.querySelector(DATEPICKER_CLASSES.root);
+    let id = wrapper.dataset.id;
+
+    if (!id) {
+        throw new Error(`Не найден data-id у: ${wrapper}`);
+    }
+
+    const newItem = {
+        id,
+        amountItem: input.value,
+        date: inputDate.value
+    }
+    // Находим индекс объекта с нужным id
+    const index = STATE.additionalDeposits.findIndex(item => item.id === id);
+
+    if (!input.value || !inputDate.value) {
+        if (index !== -1) {
+            STATE.additionalDeposits.splice(index, 1);
+        } else {
+            return false;
+        }
+    }
+
+    if (index !== -1) {
+        STATE.additionalDeposits[index] = newItem;
+    } else {
+        STATE.additionalDeposits.push(newItem)
+    }
+
+    STATE.income = calculateDepositIncome(STATE);
+
+    // выводим результаты
+    showDepositResult(STATE);
 }
 
 function setReplenishmentAttr(templateClone, replenishmentCounter) {
 
+    const itemReplenishment = templateClone.querySelector(ELEMS_DEPOSIT.replenishmentItem);
     const inputDate = templateClone.querySelector('input[name="date"]');
     const inputSum = templateClone.querySelector('input[name="sum"]');
     const labelDate = templateClone.querySelector('label[for="date"]');
     const labelSum = templateClone.querySelector('label[for="sum"]');
 
+    itemReplenishment.dataset.id = replenishmentCounter;
     inputDate.setAttribute('id', `date-${replenishmentCounter}`);
     inputDate.setAttribute('name', `date-${replenishmentCounter}`);
     labelDate.setAttribute('for', `date-${replenishmentCounter}`);
@@ -196,53 +473,97 @@ function setReplenishmentAttr(templateClone, replenishmentCounter) {
     labelSum.setAttribute('for', `sum-${replenishmentCounter}`);
 }
 
-function removeReplenishment(event) {
-    const buttonRemoveReplenishment = event.target;
-    const wrapper = buttonRemoveReplenishment.closest(ELEMS_DEPOSIT.replenishmentItem);
-    wrapper.remove();
+function removeReplenishment(id, STATE) {
+    // Находим индекс объекта с нужным id
+    const index = STATE.additionalDeposits.findIndex(item => item.id === id);
+
+    if (index !== -1) {
+        STATE.additionalDeposits.splice(index, 1);
+    } else {
+        return false;
+    }
+    STATE.income = calculateDepositIncome(STATE);
+
+    // выводим результаты
+    showDepositResult(STATE);
 }
 
-// пополнение
-const initReplenishment = () => {
-    const replenishmentTrigger = document.querySelector(ELEMS_DEPOSIT.replenishment);
-    const buttonAddReplenishment = document.querySelectorAll(ELEMS_DEPOSIT.buttonAddReplenishment);
-    let replenishmentCounter = 1;
-    if (!replenishmentTrigger) return;
+function addReplenishment({buttonAddReplenishment, replenishmentBlock}, STATE) {
+    const template = replenishmentBlock.querySelector(ELEMS_DEPOSIT.replenishmentTemplate);
 
-    const replenishmentBlock = document.querySelector(`#${replenishmentTrigger.dataset.target}`);
+    if (!template) {
+        throw new Error(`Не найден template: ${ELEMS_DEPOSIT.replenishmentTemplate}`);
+    }
+
+    const templateClone = replenishmentBlock.querySelector(ELEMS_DEPOSIT.replenishmentTemplate).content.cloneNode(true);
+    const buttonRemoveReplenishment = templateClone.querySelector(ELEMS_DEPOSIT.buttonRemoveReplenishment);
+    const inputDate = templateClone.querySelector(DATEPICKER_CLASSES.root);
+    const inputSum = templateClone.querySelector('input[name="sum"]');
+    setReplenishmentAttr(templateClone, STATE.replenishmentCounter);
+    STATE.replenishmentCounter++;
+
+    buttonAddReplenishment.before(templateClone);
+    buttonRemoveReplenishment.addEventListener('click', () => {
+        const wrapper = buttonRemoveReplenishment.closest(ELEMS_DEPOSIT.replenishmentItem);
+        let id = wrapper.dataset.id;
+
+        if (!id) {
+            throw new Error(`Не найден data-id у: ${wrapper}`);
+        }
+        wrapper.remove();
+        removeReplenishment(id, STATE);
+    });
+    initDatepicker([inputDate]);
+    inputSum.addEventListener('input', () => {
+        handlerInputReplenishmentSum(inputSum, STATE);
+    });
+    inputDate.addEventListener('hide', () => {
+        handlerInputReplenishmentSum(inputSum, STATE);
+    });
+}
+
+const initReplenishment = (root, STATE) => {
+    const replenishmentTrigger = root.querySelector(ELEMS_DEPOSIT.replenishment);
+    const buttonAddReplenishment = root.querySelector(ELEMS_DEPOSIT.buttonAddReplenishment);
+    STATE.replenishmentCounter = 1;
+    STATE.additionalDeposits = [];
+    if (!replenishmentTrigger || !buttonAddReplenishment) return;
+
+    const replenishmentBlock = root.querySelector(`#${replenishmentTrigger.dataset.target}`);
 
     if (!replenishmentBlock) {
         throw new Error(`Не найден блок с пополнением: #${replenishmentTrigger.dataset.target}`);
     }
 
+    const inputReplenishmentSum = replenishmentBlock.querySelector('input[name="sum"]');
+    const inputReplenishmentDate = replenishmentBlock.querySelector(DATEPICKER_CLASSES.root);
+
     toggleVisibility(replenishmentBlock, replenishmentTrigger.checked)
 
     replenishmentTrigger.addEventListener('click', (event) => {
         toggleVisibility(replenishmentBlock, event.target.checked)
+        STATE.hideAdditional = !event.target.checked
+
+        STATE.income = calculateDepositIncome(STATE);
+
+        // выводим результаты
+        showDepositResult(STATE);
     })
 
-
-    buttonAddReplenishment.forEach(button => {
-        button.addEventListener('click', () => {
-            const template = replenishmentBlock.querySelector(ELEMS_DEPOSIT.replenishmentTemplate);
-
-            if (!template) {
-                throw new Error(`Не найден template: ${ELEMS_DEPOSIT.replenishmentTemplate}`);
-            }
-
-            const templateClone = replenishmentBlock.querySelector(ELEMS_DEPOSIT.replenishmentTemplate).content.cloneNode(true);
-            setReplenishmentAttr(templateClone, replenishmentCounter);
-            const buttonRemoveReplenishment = templateClone.querySelector(ELEMS_DEPOSIT.buttonRemoveReplenishment);
-            replenishmentCounter++;
-
-            button.before(templateClone);
-            buttonRemoveReplenishment.addEventListener('click', removeReplenishment);
-        })
+    buttonAddReplenishment.addEventListener('click', () =>{
+        addReplenishment({buttonAddReplenishment, replenishmentBlock}, STATE)
     })
 
+    inputReplenishmentSum.addEventListener('input', () => {
+        handlerInputReplenishmentSum(inputReplenishmentSum, STATE);
+    });
+
+    inputReplenishmentDate.addEventListener('hide', () => {
+        handlerInputReplenishmentSum(inputReplenishmentSum, STATE);
+    });
 }
 
-const initElementsCalculator = (root) => {
+const initElementsDepositCalculator = (root) => {
     const displayPeriod = root.querySelector(ELEMS_DEPOSIT.period);
     const displayRate = root.querySelector(ELEMS_DEPOSIT.rate);
     const displayIncome = root.querySelector(ELEMS_DEPOSIT.income);
@@ -251,6 +572,7 @@ const initElementsCalculator = (root) => {
     const inputPeriodWrapper = inputPeriod.closest(ELEMS_DEPOSIT.inputSlider);
     const inputAmountWrapper = inputAmount.closest(ELEMS_DEPOSIT.inputSlider);
     const currencyList = root.querySelector(ELEMS_DEPOSIT.currencyList);
+    const inputCapitalization = root.querySelector(ELEMS_DEPOSIT.inputCapitalization);
 
     return {
         root,
@@ -261,18 +583,26 @@ const initElementsCalculator = (root) => {
         inputPeriod,
         inputPeriodWrapper,
         inputAmountWrapper,
-        currencyList
+        currencyList,
+        inputCapitalization,
     }
 }
 
-async function initStateCalculator(calculator) {
+async function initStateDepositCalculator(calculator) {
     const {table, id, name } = calculator.dataset;
 
     const calculatorData = await getRates(table, id, name);
 
     if (!calculatorData) { return false }
 
-    const elements = initElementsCalculator(calculator);
+    // обработка поля sumFrom, когда значение не задано
+    calculatorData.forEach((elem) => {
+        if (elem.sumFrom === "не ограничен") {
+            elem.sumFrom = MIN_DEPOSIT_VALUE;
+        }
+    })
+
+    const elements = initElementsDepositCalculator(calculator);
 
     return {
         elements,
@@ -308,54 +638,96 @@ const getStepsPeriod = (data) => {
     return sortedValues.join(', ');
 }
 
-const getStartValues = (STATE) => {
-    STATE.minPeriod = findMinValue('periodFrom', STATE.calculatorData);
-    STATE.maxPeriod = findMaxValue('periodTo', STATE.calculatorData);
-    STATE.minAmount = findMinValue('sumFrom', STATE.calculatorData);
-    STATE.maxAmount = findMaxValue('sumTo', STATE.calculatorData);
-    STATE.steps = getStepsPeriod(STATE.calculatorData);
+const getDepositValues = (STATE) => {
+    STATE.showCurrency = isShowCurrency(STATE.calculatorData);
+
+    if (!STATE.currency) {
+        STATE.currency = "Рубли";
+    }
+    // делаем выборку по валюте
+    STATE.filteredData = STATE.calculatorData.filter(item => item.currency === STATE.currency);
+
+    STATE.minPeriod = findMinValue('periodFrom', STATE.filteredData);
+    STATE.maxPeriod = findMaxValue('periodTo', STATE.filteredData);
+    STATE.minAmount = findMinValue('sumFrom', STATE.filteredData);
+    STATE.maxAmount = findMaxValue('sumTo', STATE.filteredData);
+
+    if (STATE.minPeriod !== STATE.maxPeriod) {
+        STATE.steps = getStepsPeriod(STATE.filteredData);
+    }
     STATE.amount = Number(STATE.minAmount);
-    STATE.showCurrency = isShowCurrency(STATE.calculatorData)
+    STATE.period = STATE.maxPeriod;
+
+
+    STATE.capitalization = STATE.elements.inputCapitalization.checked;
 }
 
-const setStartValues = (STATE) => {
-    STATE.elements.inputPeriodWrapper.setAttribute('data-steps', STATE.steps);
-    STATE.elements.inputPeriodWrapper.setAttribute('data-start-value', STATE.maxPeriod);
+const setDepositValues = (STATE, currencyTrigger) => {
+    if (STATE.steps) {
+        STATE.elements.inputPeriodWrapper.setAttribute('data-steps', STATE.steps);
+        STATE.elements.inputPeriodWrapper.setAttribute('data-start-value', STATE.maxPeriod);
+        initInputSlider([STATE.elements.inputPeriodWrapper]);
+    } else { // если период вклада не меняется
+        STATE.elements.inputPeriodWrapper.remove();
+    }
+
+    if (currencyTrigger) {
+        const cloneInputAmount = STATE.elements.inputAmountWrapper.cloneNode(true);
+        // Добавляем клонированный элемент перед оригинальным
+        STATE.elements.inputAmountWrapper.insertAdjacentElement('beforebegin', cloneInputAmount);
+        STATE.elements.inputAmountWrapper.remove();
+        const steps = cloneInputAmount.querySelector(JS_CLASSES.textSteps);
+        steps.innerHTML = '';
+        STATE.elements.inputAmountWrapper = cloneInputAmount;
+    }
     STATE.elements.inputAmountWrapper.setAttribute('data-min-value', STATE.minAmount);
     STATE.elements.inputAmountWrapper.setAttribute('data-max-value', STATE.maxAmount);
     STATE.elements.inputAmountWrapper.setAttribute('data-start-value', STATE.amount);
-    initInputSlider([STATE.elements.inputPeriodWrapper, STATE.elements.inputAmountWrapper]);
     // показываем или нет валюту
     if (!STATE.showCurrency) {
         STATE.elements.currencyList.remove();
+    } else {
+        createCurrencyList(STATE);
     }
+    initInputSlider([STATE.elements.inputAmountWrapper]);
 
-    STATE.period = getPeriodValue(STATE.elements.inputPeriod);
-    STATE.elements.displayPeriod.innerHTML = getFormatedTextByType(STATE.period, 'day');
+    // поиск процентной ставки
+    STATE.rate = findDepositRate({data: STATE.filteredData, amount: STATE.amount, period: STATE.period});
 
-    // TODO: поиск процентной ставки и рассчеты
-    console.log('amount', STATE.amount);
+    // расчеты дохода
+    STATE.income = calculateDepositIncome(STATE);
+
+    // выводим результаты
+    showDepositResult(STATE);
+
+    STATE.elements.inputPeriodWrapper.addEventListener('input', (event) => {
+        STATE.period = getPeriodValue(STATE.elements.inputPeriod);
+        handlerInputDeposit(STATE);
+    })
+
+    STATE.elements.inputAmountWrapper.addEventListener('input', (event) => {
+        STATE.amount = event.detail.value;
+        handlerInputDeposit(STATE);
+    })
+
+    STATE.elements.inputCapitalization.addEventListener('change', (event) => {
+        STATE.capitalization = event.target.checked;
+        handlerInputDeposit(STATE);
+    })
 }
 
 async function initCalculatorDeposit() {
     const calculatorsDeposit = document.querySelectorAll(ELEMS_DEPOSIT.root);
 
     for (const calculator of calculatorsDeposit) {
-        const STATE = await initStateCalculator(calculator);
+        const STATE = await initStateDepositCalculator(calculator);
 
         if (!STATE) {
             return false;
         }
 
-        getStartValues(STATE);
-        setStartValues(STATE);
-        // initReplenishment(calculator);
-
-        // STATE.elements.inputAmount.addEventListener('input', (event) => {
-        //   setValue(STATE);
-        // })
-        // STATE.elements.inputPeriod.addEventListener('input', (event) => {
-        //   setValue(STATE);
-        // })
+        getDepositValues(STATE);
+        initReplenishment(calculator, STATE);
+        setDepositValues(STATE);
     }
 }

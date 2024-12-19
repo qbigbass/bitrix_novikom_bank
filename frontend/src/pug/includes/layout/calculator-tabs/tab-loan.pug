@@ -10,15 +10,9 @@
                 title: 'Ежемесячный платеж',
                 value: '35 404,38',
                 currency: true,
-                link: 'График платежей',
+                // link: 'График платежей',
                 additionalClass: 'js-calculator-display-payment',
             },
-            // {
-            //     title: 'Необходимый ежемесячный доход, от',
-            //     value: '35 404,38',
-            //     currency: true,
-            //     mask: 'money'
-            // },
             {
                 title: 'Диапазон полной стоимости кредита',
                 value: '16,464 – 20,474 %',
@@ -68,7 +62,7 @@
 
 include ../../../components/ui/input/input-slider
 
-.row.js-calculator-loan(data-id="967")
+.row.js-calculator-loan(data-table="loan")
     .col-12.col-lg-6
         .d-none.d-lg-inline-flex
             +nav-tabs(tabsList)
