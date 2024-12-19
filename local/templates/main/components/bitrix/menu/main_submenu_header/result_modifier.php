@@ -8,6 +8,6 @@ $arResult = $modifiedResult;
 
 if (!empty($arResult["FIRST_LEVEL_MENU"]["NOT_HIDDEN"])) {
     foreach ($arResult["FIRST_LEVEL_MENU"]["NOT_HIDDEN"] as &$item) {
-        $item["TEXT"] = preg_replace("/&lt;br&gt;/", "", $item["TEXT"]);
+        $item["TEXT"] = preg_replace("/&lt;br&gt;|&lt;br\s+\/&gt;/i", "", $item["TEXT"]);
     }
 }
