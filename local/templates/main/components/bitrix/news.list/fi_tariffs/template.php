@@ -20,7 +20,7 @@ use Bitrix\Main\Localization\Loc;
 ?>
 <section class="section-layout px-lg-6 px-xxl-0">
     <div class="container">
-        <div class="row">
+        <div class="row ps-xxl-6">
             <div class="d-none d-md-flex justify-content-between">
                 <h3 class="h3"><?= Loc::getMessage("BLOCK_TITLE") ?></h3>
             </div>
@@ -34,7 +34,7 @@ use Bitrix\Main\Localization\Loc;
         <div class="collapse d-md-block mt-6 mt-lg-7" id="documents">
             <div class="row row-gap-6">
                 <div class="col-12 col-xxl-8 pe-xxl-6">
-                    <div class="ps-3 ps-lg-0 py-lg-4">
+                    <div class="ps-3 ps-lg-0 ps-xxl-6 py-lg-4">
                         <?foreach ($arResult["ITEMS"] as $item):?>
                             <?if(!empty($item["DISPLAY_PROPERTIES"]["FILE"]["FILE_VALUE"]['SRC'])):?>
                                 <?

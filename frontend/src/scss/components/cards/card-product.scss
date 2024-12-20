@@ -260,6 +260,12 @@
         }
     }
 
+    @at-root .card-offer-grid #{$root}--size-large {
+        @include use-media(laptop-x) {
+            min-height: 40rem;
+        }
+    }
+
     &--size-xl {
         @include use-media(laptop) {
             min-height: 19.5rem;
