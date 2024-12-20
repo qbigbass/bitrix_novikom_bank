@@ -25,7 +25,7 @@ $helper = new ComponentHelper($component);
     ]
 )?>
 
-<section class="section-layout px-lg-6">
+<section class="section-layout py-4 py-md-7 py-lg-11 px-lg-6">
     <div class="container">
         <div class="row row-gap-5 row-gap-md-6 row-gap-lg-7">
             <div class="col-12">
