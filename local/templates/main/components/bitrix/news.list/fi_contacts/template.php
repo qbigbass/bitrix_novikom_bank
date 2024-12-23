@@ -47,7 +47,9 @@ use Bitrix\Main\Localization\Loc;
                                         <?endif;?>
                                         <div class="d-flex flex-column row-gap-2">
                                             <h4 class="contact-block__title"><?= $item["NAME"] ?></h4>
-                                            <p class="mb-0 contact-block__description"><?= $item["PREVIEW_TEXT"] ?></p>
+                                            <?if (!empty($item["PREVIEW_TEXT"])):?>
+                                                <p class="mb-0 contact-block__description"><?= $item["PREVIEW_TEXT"] ?></p>
+                                            <?endif;?>
                                         </div>
                                         <div class="mt-auto">
                                             <ul class="list-contact d-flex flex-column row-gap-3">

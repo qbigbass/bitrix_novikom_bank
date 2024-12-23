@@ -9,6 +9,7 @@ const FORM_ELEMS = {
     upload: '[data-upload]',
     uploadFile: '[data-upload-file]',
     inputCall: '[data-input-call]',
+    simpleCallbackForm: '[data-simple-callback-form]',
 }
 
 const MODALS_ID = {
@@ -35,7 +36,7 @@ const MESSAGE_ATTR = {
 async function initFormSend() {
     const forms = document.querySelectorAll(FORM_ELEMS.form)
 
-    if (!forms.length) return;
+    if (!forms.length) return
 
     forms.forEach(form => {
         const validateGroup = form.querySelectorAll(FORM_ELEMS.validateGroup)
@@ -58,13 +59,15 @@ async function initFormSend() {
         })
 
         modalEl.addEventListener('show.bs.modal', (event) => {
-            modalEl.dispatchEvent(customEvent);
+            modalEl.dispatchEvent(customEvent)
         })
     })
 
-    const inputsPhoneCall = document.querySelectorAll(FORM_ELEMS.inputCall);
+    const simpleCallbackForm = document.querySelectorAll(FORM_ELEMS.simpleCallbackForm)
 
-    if (!inputsPhoneCall.length) return
+    if (!simpleCallbackForm.length) return
+
+    const inputsPhoneCall = document.querySelectorAll(FORM_ELEMS.inputCall)
 
     syncInputs(inputsPhoneCall)
 }
@@ -211,6 +214,7 @@ function checkValidity(form) {
             toggleButton(inputList, checkboxElement, buttonElement, formErrorElement)
         })
         inputElement.addEventListener('blur', () => {
+            checkInputValidity(inputElement)
             toggleInputError(inputElement)
             checkEmptyRequiredInput(inputElement)
         })
