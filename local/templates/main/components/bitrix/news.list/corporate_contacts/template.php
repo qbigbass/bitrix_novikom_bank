@@ -58,7 +58,7 @@ $this->setFrameMode(true); ?>
                                                             </svg>
                                                         </span>
                                                         <div class="list-contact__text d-flex flex-wrap gap-2">
-                                                            <a class="text-decoration-underline list-contact__link" href="emailto:<?= $item['PROPERTIES']['EMAIL']['VALUE'] ?>">
+                                                            <a class="text-decoration-underline list-contact__link" href="mailto:<?= $item['PROPERTIES']['EMAIL']['VALUE'] ?>">
                                                                 <span class="text-l"><?= $item['PROPERTIES']['EMAIL']['VALUE'] ?></span>
                                                             </a>
                                                         </div>
@@ -83,26 +83,25 @@ $this->setFrameMode(true); ?>
                             </div>
                         <? } ?>
                         <div class="swiper-slide js-swiper-slide">
-                            <div class="contact-block contact-block--bg-white">
-                                <div class="contact-block__content d-flex flex-column justify-content-between row-gap-5 row-gap-md-6 row-gap-lg-7 h-100">
-                                    <div class="d-flex flex-column row-gap-2">
-                                        <h4 class="contact-block__title">Остались вопросы</h4>
-                                        <p class="mb-0 contact-block__description">Оставьте свой телефон и мы перезвоним вам, либо задайте вопрос в чате</p>
+                            <div class="card-feedback position-relative overflow-hidden d-inline-flex px-3 py-4 p-sm-5 p-lg-6 w-100 bg-white h-100">
+                                <div class="card-feedback__inner d-flex flex-column row-gap-6 row-gap-lg-7 h-100 w-100 z-2">
+                                    <div class="card-feedback__title-group d-flex flex-column gap-3 gap-md-4">
+                                        <h4 class="card-feedback__title">Остались вопросы?</h4>
+                                        <p class="card-feedback__description text-l m-0">Оставьте свой телефон и мы перезвоним вам, <br class="d-none d-md-block d-lg-none d-xl-block">либо направьте обращение</p>
                                     </div>
-                                    <div class="contact-block__buttons d-flex flex-column flex-sm-row gap-4">
-                                        <a class="btn btn-lg-lg btn-outline-primary" href="#">Открыть чат</a>
-                                        <a class="btn btn-lg-lg btn-primary" href="#">Перезвоните мне</a>
+                                    <div class="d-flex flex-column flex-md-row p-0 gap-3 gap-md-4">
+                                        <button class="btn btn-outline-primary btn-lg-lg text-ls overflow-visible w-100 w-md-auto" type="button" data-bs-toggle="modal" data-bs-target="#modal-feedback-form">Открыть чат</button>
+                                        <button class="btn btn-primary btn-lg-lg text-ls overflow-visible w-100 w-md-auto" type="button" data-bs-toggle="modal" data-bs-target="#modal-callback-form">Перезвоните мне</button>
                                     </div>
                                 </div>
-                                <picture class="pattern-bg pattern-bg--position-top">
+                                <picture class="pattern-bg pattern-bg--position-top z-1">
                                     <source srcset="/frontend/dist/img/patterns/card/pattern-light-s.svg" media="(max-width: 767px)">
-                                    <source srcset="/frontend/dist/img/patterns/card/pattern-light-m.svg" media="(max-width: 1199px)">
-                                    <img src="/frontend/dist/img/patterns/card/pattern-light-l.svg" alt="bg pattern" loading="lazy">
+                                    <source srcset="/frontend/dist/img/patterns/card/pattern-light-m.svg" media="(max-width: 1199px)"><img src="/frontend/dist/img/patterns/card/pattern-light-l.svg" alt="bg pattern" loading="lazy">
                                 </picture>
                             </div>
                         </div>
                     </div>
-                    <div class="slider-controls js-swiper-controls mt-3 mt-md-4">
+                    <div class="slider-controls js-swiper-controls mt-3">
                         <div class="slider-controls__pagination js-swiper-pagination"></div>
                         <div class="slider-controls__navigation js-swiper-nav">
                             <button class="swiper-button-prev js-swiper-prev" type="button">

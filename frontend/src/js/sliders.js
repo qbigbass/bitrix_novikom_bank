@@ -20,6 +20,8 @@ const SLIDER_ATTR = {
 const CLASS_NAME = {
     mobileMenu: '.js-swiper-mobile-menu',
     bannerHero: '.js-banner-hero',
+    pbCardSlider: '.js-pb-slider',
+    pbCardThumbs: '.js-pb-tags-thumbs',
     thumbsHero: '.js-banner-hero-thumbs',
     cardsSlider: '.js-slider-cards',
     announcementsSlider: '.js-announcement-slider',
@@ -199,7 +201,6 @@ function setTabIndex(slides) {
     });
 }
 
-let mySlider;
 function initCardSlider() {
     const sliders = document.querySelectorAll(CLASS_NAME.cardsSlider);
 
@@ -335,4 +336,47 @@ function initTabsSlider() {
             },
         },
     });
+}
+
+function initPbSlider() {
+    const thumbWrappers = document.querySelectorAll(CLASS_NAME.pbCardThumbs);
+    thumbWrappers.forEach((thumbWrapper) => {
+        const thumbsLength = thumbWrapper.querySelectorAll('.swiper-slide').length;
+        const cardsSlider = thumbWrapper.nextElementSibling;
+        const pbThumbsSlider = new Swiper(thumbWrapper, {
+            freeMode: false,
+            watchSlidesProgress: true,
+            slidesPerView: thumbsLength,
+            spaceBetween: 8,
+        });
+
+        new Swiper(cardsSlider, {
+            freeMode: false,
+            thumbs: {
+                swiper: pbThumbsSlider,
+            },
+            speed: 2000,
+            spaceBetween: 16,
+            slidesPerView: 1,
+            pagination: {
+                el: ".pb-services__pagination",
+                type: "bullets",
+                clickable: true,
+            },
+            breakpoints: {
+                768: {
+                    spaceBetween: 40,
+                    slidesPerView: 1.32,
+                },
+                1440: {
+                    spaceBetween: 40,
+                    slidesPerView: 1.5,
+                },
+                1600: {
+                    spaceBetween: 40,
+                    slidesPerView: 1.75,
+                }
+            }
+        })
+    })
 }

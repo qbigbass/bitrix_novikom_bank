@@ -123,3 +123,7 @@
         }
     }
 }
+
+.tab-content {
+    @extend .text-break;
+}

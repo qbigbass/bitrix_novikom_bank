@@ -16,12 +16,15 @@
 
     background-color: var(--blue-contrast-bg);
     color: var(--blue-contrast-light);
+
     & .bg-heavy-purple {
       background: none;
     }
+
     .banner-product--graphite {
       background: none;
     }
+
     .banner-hero {
       background: none;
 
@@ -32,23 +35,28 @@
 
     .header-contact-link__text.d-none.d-xxl-inline-block {
       color: var(--blue-contrast-white);
+
       &:hover {
         color: var(--blue-contrast-light-1);
       }
     }
-    .icon > img,
+
+    .icon>img,
     .icon svg {
       color: var(--blue-contrast-white);
     }
+
     .main-menu__link {
       color: var(--blue-contrast-white);
 
       &.is-active {
         color: var(--blue-contrast-light-1);
+
         &:after {
           background-color: var(--blue-100);
         }
       }
+
       &:hover {
         color: var(--blue-contrast-light);
       }
@@ -69,6 +77,7 @@
 
     span.fw-semibold {
       color: var(--blue-contrast-white);
+
       &:hover {
         color: var(--blue-contrast-light-1);
       }
@@ -77,6 +86,7 @@
     .header-contact-link__text {
       color: var(--blue-contrast-white);
     }
+
     .banner-hero-content__wrapper a {
       background-color: var(--blue-contrast-light);
       color: var(--blue-contrast-bg-dark-100);
@@ -94,6 +104,7 @@
         color: var(--blue-contrast-bg-dark-100);
       }
     }
+
     .btn {
       --bs-btn-color: var(--blue-contrast-bg-dark);
       --bs-btn-border-color: var(--blue-contrast-white);
@@ -107,6 +118,7 @@
       --bs-btn-active-border-color: var(--blue-contrast-medium);
       --bs-btn-active-color: var(--blue-contrast-medium);
     }
+
     .btn.btn-sm.btn-primary {
       --bs-btn-color: var(--blue-contrast-bg-dark);
       --bs-btn-bg: var(--blue-contrast-light);
@@ -120,10 +132,12 @@
       &:hover {
         background-color: var(--blue-contrast-white);
       }
+
       &:active {
         color: var(--blue-contrast-medium);
         background-color: var(--blue-contrast-white);
       }
+
       &:focus {
         background-color: var(--blue-contrast-white);
         color: var(--blue-contrast-bg-dark);
@@ -139,6 +153,7 @@
         }
       }
     }
+
     .btn.btn-outline-primary.btn-sm.d-none.d-md-inline-flex.gap-2.align-items-center.justify-content-center {
       color: var(--blue-contrast-white);
 
@@ -169,6 +184,7 @@
         background-color: var(--blue-contrast-white);
       }
     }
+
     .banner-hero-thumb:not(:first-child) {
       border-left: 1px solid var(--blue-contrast-white);
     }
@@ -186,6 +202,7 @@
         color: var(--blue-contrast-bg-dark);
         background-color: var(--blue-contrast-white);
       }
+
       &:focus {
         outline: 2px solid var(--blue-contrast-bg);
         outline-offset: 2px;
@@ -198,11 +215,13 @@
     .section-layout .container h3.ps-lg-6.mb-6.mb-lg-7 {
       color: var(--blue-contrast-white);
     }
+
     .card-product.card-product--yellow::before,
     .card-product.card-product--green::before,
     .card-product.card-product--orange::before {
       background-color: var(--blue-contrast-light);
     }
+
     .card-product.card-product--yellow,
     .card-product.card-product--green,
     .card-product.card-product--orange {
@@ -217,12 +236,14 @@
     .tag__triangle svg {
       display: none;
     }
+
     .card-product {
       &__content {
         .d-inline-flex.flex-nowrap.align-items-baseline.text-l.fw-semibold.gap-1.violet-100 {
           color: var(--blue-contrast-medium);
         }
       }
+
       &__title {
         color: var(--blue-contrast-medium);
       }
@@ -237,6 +258,7 @@
           color: var(--blue-contrast-white);
         }
       }
+
       &__img {
         display: none;
       }
@@ -263,25 +285,26 @@
     .swiper-pagination-bullet {
       height: 10px;
       background-color: var(--blue-contrast-white);
+
       &-active {
         background-color: var(--blue-contrast-light);
       }
     }
+
     .card-service {
       background-color: var(--blue-contrast-light);
 
       & h4 {
         color: var(--blue-contrast-white);
       }
+
       &-salary {
         background-color: var(--blue-contrast-light);
 
         &::after {
-          background: linear-gradient(
-            270deg,
-            rgba(38, 70, 138, 0.9) 23.5%,
-            rgba(38, 70, 138, 0) 100%
-          );
+          background: linear-gradient(270deg,
+              rgba(38, 70, 138, 0.9) 23.5%,
+              rgba(38, 70, 138, 0) 100%);
         }
       }
     }
@@ -309,11 +332,9 @@
       background-color: var(--blue-contrast-light);
 
       &::after {
-        background: linear-gradient(
-          270deg,
-          rgba(38, 70, 138, 0.9) 23.5%,
-          rgba(38, 70, 138, 0) 100%
-        );
+        background: linear-gradient(270deg,
+            rgba(38, 70, 138, 0.9) 23.5%,
+            rgba(38, 70, 138, 0) 100%);
       }
 
       & h4 {
@@ -340,9 +361,11 @@
     .section-layout {
       background-color: var(--blue-contrast-bg);
       color: var(--blue-contrast-white);
+
       & h3 {
         color: var(--blue-contrast-white);
       }
+
       .announcement {
         color: white;
 
@@ -363,12 +386,14 @@
     .card-about-bank.d-none.d-lg-flex {
       color: var(--blue-contrast-bg);
     }
+
     span.violet-100.fw-semibold.text-number-m.fw-bold {
       color: var(--blue-contrast-bg);
     }
 
     .nav-tabs {
       border: none;
+
       .nav-link {
         background-color: var(--blue-contrast-bg);
         color: var(--blue-contrast-white);
@@ -400,6 +425,7 @@
         }
       }
     }
+
     .d-flex.flex-column.gap-4.gap-lg-5.gap-xl-4.bg-dark-0.rounded-3.px-3.py-4.p-md-5.px-lg-6.p-xl-6 {
       width: fit-content;
       padding-right: 30px !important;
@@ -413,20 +439,24 @@
     .tab-content {
       color: var(--blue-contrast-white);
     }
+
     .dark-70 {
       color: var(--blue-contrast-white);
     }
+
     #loan-consumer label,
     #loan-consumer span,
     #loan-consumer p {
       color: var(--blue-contrast-white);
     }
+
     .form-check-label a {
       color: var(--blue-contrast-white);
     }
 
     .card-calculate-result {
       background-color: var(--blue-contrast-light);
+
       &__label,
       &__body {
         color: var(--blue-contrast-bg-dark);
@@ -446,6 +476,7 @@
       color: var(--blue-contrast-light);
       border: none;
       transition: background-color 0.25s ease;
+
       &:hover {
         background-color: var(--blue-contrast-bg);
         border: none;
@@ -453,8 +484,7 @@
       }
     }
 
-    .card-product.card-product--green.bg-dark-10
-      .form-control.form-control-lg-lg.js-mask-phone:focus {
+    .card-product.card-product--green.bg-dark-10 .form-control.form-control-lg-lg.js-mask-phone:focus {
       outline: 2px solid var(--blue-contrast-light);
       outline-offset: 2px;
       box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.25);
@@ -489,9 +519,9 @@
 
     .card-about-bank__col.d-flex.flex-column {
       background-color: var(--blue-contrast-light);
+
       & img {
-        filter: brightness(0) saturate(100%) invert(10%) sepia(91%)
-          saturate(1802%) hue-rotate(172deg) brightness(95%) contrast(106%);
+        filter: brightness(0) saturate(100%) invert(10%) sepia(91%) saturate(1802%) hue-rotate(172deg) brightness(95%) contrast(106%);
       }
     }
 
@@ -506,6 +536,7 @@
     .bg-dark-10 {
       background-color: var(--blue-contrast-light-1);
     }
+
     h4.dark-100 {
       color: var(--blue-contrast-bg);
     }
@@ -522,6 +553,7 @@
       background-color: var(--blue-contrast-light);
       color: var(--blue-contrast-white);
       border: none;
+
       &:hover {
         background-color: var(--blue-contrast-white);
         color: var(--blue-contrast-light);
@@ -531,6 +563,7 @@
 
     .section-currency-exchange__wrapper.collapse {
       background-color: var(--blue-contrast-bg-dark);
+
       .form-label,
       h4,
       .caption-m.dark-70.mt-2.d-block {
@@ -540,6 +573,7 @@
 
     .d-flex.flex-column.row-gap-4.px-3.py-4.p-md-5.p-lg-6.bg-blue-10 {
       background-color: var(--blue-contrast-white);
+
       & h5 {
         color: var(--blue-contrast-bg-dark);
       }
@@ -579,11 +613,13 @@
       background-color: var(--blue-contrast-light);
       color: var(--blue-contrast-bg-dark);
       border: 1px solid var(--blue-contrast-white);
+
       &:hover {
         background-color: var(--blue-contrast-white);
         color: var(--blue-contrast-bg-dark);
         border-color: var(--blue-contrast-light-1);
       }
+
       &:focus {
         outline: 2px solid var(--blue-contrast-bg);
         border-color: var(--blue-contrast-light-1);
@@ -597,10 +633,12 @@
     .btn.btn-link.d-inline-flex.gap-2.align-items-center {
       color: var(--blue-contrast-white);
       border: none;
+
       &:hover {
         background: none;
         color: var(--blue-contrast-light-1);
       }
+
       &:focus {
         background: none;
         color: var(--blue-contrast-light-1);
@@ -609,6 +647,7 @@
         box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.25);
       }
     }
+
     //скачать
     .btn-app.btn.btn-primary.d-flex.align-items-center.gap-2.gap-lg-3.justify-content-center {
       background-color: var(--blue-contrast-light);
@@ -618,11 +657,13 @@
       text-align: center;
       word-wrap: break-word;
       overflow-wrap: break-word;
+
       &:hover {
         background-color: var(--blue-contrast-bg-dark);
         color: var(--blue-contrast-light-1);
         border: none;
       }
+
       &:focus {
         outline: 2px solid var(--blue-contrast-bg);
         outline-offset: 2px;
@@ -638,11 +679,13 @@
       width: 100%;
       color: var(--blue-contrast-bg-dark);
       border: none;
+
       &:hover {
         background-color: var(--blue-contrast-white);
         color: var(--blue-contrast-bg-dark);
         border: none;
       }
+
       &:focus {
         outline: 2px solid var(--blue-contrast-bg);
         outline-offset: 2px;
@@ -662,6 +705,7 @@
         color: var(--blue-contrast-bg-dark);
         border: none;
       }
+
       &:focus {
         outline: 2px solid var(--blue-contrast-bg);
         outline-offset: 2px;
@@ -693,6 +737,7 @@
 
     .fw-semibold.dark-100 {
       color: var(--blue-contrast-white);
+
       &:hover {
         color: var(--blue-contrast-light-1);
       }
@@ -709,6 +754,7 @@
 
     a.h4 {
       color: var(--blue-contrast-white);
+
       &:hover {
         color: var(--blue-contrast-light-1);
       }
@@ -717,6 +763,7 @@
     #linkToList {
       color: var(--blue-contrast-light);
       text-decoration: underline;
+
       &:hover {
         color: var(--blue-contrast-light-1);
       }
@@ -728,6 +775,7 @@
       &:hover {
         color: var(--blue-contrast-light-1);
       }
+
       &:focus {
         color: var(--blue-contrast-light);
       }
@@ -739,6 +787,7 @@
       &:hover {
         color: var(--blue-contrast-light-1);
       }
+
       &:focus {
         color: var(--blue-contrast-light);
       }
@@ -763,6 +812,7 @@
       padding: 5px 12px;
       color: var(--blue-contrast-white);
       background-color: var(--blue-contrast-bg-dark);
+
       &:hover {
         color: var(--blue-contrast-bg-dark);
         background-color: var(--blue-contrast-white);
@@ -792,6 +842,7 @@
       background-color: var(--blue-contrast-light);
       color: var(--blue-contrast-white);
       border: none;
+
       &:hover {
         color: var(--blue-contrast-light);
         background-color: var(--blue-contrast-white);
@@ -803,6 +854,7 @@
       background-color: var(--blue-contrast-light);
       color: var(--blue-contrast-white);
       border: none;
+
       &:hover {
         color: var(--blue-contrast-light);
         background-color: var(--blue-contrast-white);
@@ -812,18 +864,18 @@
 
     //AWARDS page
     .bg-linear-blue {
-      background: linear-gradient(
-        270deg,
-        rgba(38, 70, 138, 0.9) 23.5%,
-        rgba(38, 70, 138, 0) 100%
-      );
+      background: linear-gradient(270deg,
+          rgba(38, 70, 138, 0.9) 23.5%,
+          rgba(38, 70, 138, 0) 100%);
     }
 
     .breadcrumbs.d-flex.flex-wrap.gap-2 span {
       color: var(--blue-contrast-light);
+
       &:hover {
         color: var(--blue-contrast-white);
       }
+
       &:focus {
         text-decoration: underline;
         color: var(--blue-contrast-white);
@@ -837,6 +889,7 @@
     .violet-100 {
       color: var(--blue-contrast-light);
     }
+
     .violet-100-important {
       color: var(--blue-contrast-light) !important;
     }
@@ -851,6 +904,7 @@
 
     .tabs-panel__list-item-link.nav-link.bg-transparent {
       background-color: var(--blue-contrast-bg-dark) !important;
+
       &.active {
         background-color: var(--blue-contrast-light) !important;
       }
@@ -865,10 +919,12 @@
       background-color: var(--blue-contrast-light);
       color: var(--blue-contrast-bg-dark);
       border: 1px solid var(--blue-contrast-white);
+
       &:hover {
         color: var(--blue-contrast-bg-dark);
         background-color: var(--blue-contrast-white);
       }
+
       &:focus {
         color: var(--blue-contrast-bg-dark);
         background-color: var(--blue-contrast-white);
@@ -883,13 +939,16 @@
       background-color: var(--blue-contrast-light);
 
       border: none;
+
       &__title {
         color: var(--blue-contrast-bg-dark);
       }
+
       &__description {
         color: var(--blue-contrast-bg-dark);
       }
     }
+
     .card-benefit__image {
       display: none;
     }
@@ -900,8 +959,10 @@
 
     .helper__content.text-l {
       color: var(--blue-contrast-bg-dark);
+
       & .link {
         color: var(--blue-contrast-medium);
+
         &:hover {
           color: var(--blue-contrast-white);
           text-decoration: underline;
@@ -929,6 +990,7 @@
       &__arrow {
         color: var(--blue-contrast-light);
       }
+
       &__number-value {
         color: var(--blue-contrast-bg-dark-100);
       }
@@ -937,6 +999,7 @@
         color: var(--blue-contrast-white);
       }
     }
+
     .js-polygon-container-svg {
       display: none;
     }
@@ -947,6 +1010,7 @@
 
     .list.list--size-l li {
       color: var(--blue-contrast-white);
+
       &:before {
         background: var(--blue-contrast-light);
       }
@@ -956,14 +1020,17 @@
       &__content {
         color: var(--blue-contrast-white);
       }
+
       &__description {
         color: var(--blue-contrast-white);
       }
+
       &.contact-block {
         &--bg-heavy-purple {
           background: var(--blue-contrast-bg-dark);
           border-radius: 2px;
         }
+
         &--bg-white {
           border-radius: 2px;
           background: var(--blue-contrast-bg-dark);
@@ -979,6 +1046,7 @@
     .btn.btn-lg-lg.btn-outline-primary {
       background-color: var(--blue-contrast-light);
       border: none;
+
       &:hover {
         background-color: var(--blue-contrast-white);
         color: var(--blue-contrast-light);
@@ -990,10 +1058,12 @@
       background-color: var(--blue-contrast-light);
       color: var(--blue-contrast-bg-dark);
       border: none;
+
       &:hover {
         background-color: var(--blue-contrast-white);
         color: var(--blue-contrast-bg-dark);
       }
+
       &:focus {
         background-color: var(--blue-contrast-white);
         color: var(--blue-contrast-bg-dark);
@@ -1020,6 +1090,7 @@
 
     .link.text-decoration-underline {
       color: var(--blue-contrast-white);
+
       &:hover {
         color: var(--blue-contrast-light);
       }
@@ -1038,6 +1109,7 @@
     .text-l .link {
       text-decoration: underline;
       color: var(--blue-contrast-light);
+
       &:hover {
         color: var(--blue-contrast-white);
       }
@@ -1049,15 +1121,14 @@
     }
 
     .bg-gradient-violet {
-      background: linear-gradient(
-        42deg,
-        var(--blue-contrast-light) 20%,
-        var(--blue-contrast-white) 80%
-      );
+      background: linear-gradient(42deg,
+          var(--blue-contrast-light) 20%,
+          var(--blue-contrast-white) 80%);
     }
 
     .select2-selection__rendered {
       color: var(--blue-contrast-white) !important;
+
       &:focus {
         color: var(--blue-contrast-white);
       }
@@ -1072,15 +1143,19 @@
     .bg-dark-10 {
       background-color: var(--blue-contrast-light-1);
     }
+
     .card-product-list__title.text-break {
       color: var(--blue-contrast-bg-dark);
     }
+
     .card-product-list__condition.d-flex.flex-column.gap-2.w-100.w-sm-50.w-xl-auto {
       color: var(--blue-contrast-bg-dark);
     }
+
     .d-inline-flex.flex-nowrap.align-items-baseline.gap-1 span {
       color: var(--blue-contrast-bg-dark) !important;
     }
+
     .text-m.dark-70 {
       color: var(--blue-contrast-bg-dark);
     }
@@ -1089,10 +1164,12 @@
       background-color: var(--blue-contrast-bg);
       color: var(--blue-contrast-white);
       border: none;
+
       &:hover {
         background-color: var(--blue-contrast-white);
         color: var(--blue-contrast-bg);
       }
+
       &:focus {
         background-color: var(--blue-contrast-white);
         color: var(--blue-contrast-bg);
@@ -1103,6 +1180,7 @@
     .h2.mb-5.mb-lg-6 {
       color: var(--blue-contrast-white);
     }
+
     .d-flex.gap-4.align-items-center.flex-wrap {
       .text-m.dark-100 {
         color: var(--blue-contrast-white);
@@ -1113,10 +1191,12 @@
       background-color: var(--blue-contrast-bg);
       border: none;
       padding: 15px 32px;
+
       &:hover {
         background-color: var(--blue-contrast-white);
         color: var(--blue-contrast-bg);
       }
+
       &:focus {
         background-color: var(--blue-contrast-white);
         color: var(--blue-contrast-bg);
@@ -1127,6 +1207,7 @@
       background-color: var(--blue-contrast-light);
       color: var(--blue-contrast-bg-dark);
       border: none;
+
       &:hover,
       &:focus {
         background-color: var(--blue-contrast-white);
@@ -1139,6 +1220,7 @@
       background-color: var(--blue-contrast-light);
       color: var(--blue-contrast-bg-dark);
       border: none;
+
       &:hover,
       &:focus {
         background-color: var(--blue-contrast-white);
@@ -1165,6 +1247,7 @@
         --bs-pagination-active-border-color: var(--blue-contrast-light);
         --bs-pagination-border-radius: 4px;
       }
+
       &.active {
         --bs-pagination-border-radius: none;
         --bs-pagination-active-bg: var(--blue-contrast-bg-dark);
@@ -1179,9 +1262,11 @@
     .section-layout.bg-blue-10 {
       background: var(--blue-contrast-bg);
     }
+
     .card-sale__image {
       display: none;
     }
+
     .card-sale.d-flex.flex-column.align-items-start.gap-2.gap-lg-3 {
       .dark-100 {
         margin: 5px auto;
@@ -1194,6 +1279,7 @@
       color: var(--blue-contrast-bg-dark);
       padding: 15px 32px;
       border: none;
+
       &:hover,
       &:focus {
         background-color: var(--blue-contrast-white);
@@ -1210,12 +1296,15 @@
     .card-about.bg-linear-blue {
       background: none;
     }
+
     .card-about__title.dark-0 {
       color: var(--blue-contrast-bg-dark);
     }
+
     .list-contact__link span {
       color: var(--blue-contrast-bg-dark);
     }
+
     .mb-0.card-about__description.text-white-50 {
       color: var(--blue-contrast-bg-dark) !important;
     }
@@ -1242,19 +1331,20 @@
 
     //contribution-detail.html
 
-    .d-inline-flex.flex-nowrap.align-items-baseline.text-l.fw-semibold.gap-1.green-100
-      span {
+    .d-inline-flex.flex-nowrap.align-items-baseline.text-l.fw-semibold.gap-1.green-100 span {
       color: var(--blue-contrast-white) !important;
     }
 
     .banner-product {
       --border-top-color: var(--blue-contrast-white);
     }
+
     .btn-tertiary.btn.btn-lg-lg.banner-product__button {
       background-color: var(--blue-contrast-light);
       color: var(--blue-contrast-bg-dark);
       padding: 15px 32px;
       border: none;
+
       &:hover,
       &:focus {
         background-color: var(--blue-contrast-white);
@@ -1271,11 +1361,13 @@
         background-color: var(--blue-contrast-bg-dark);
         color: var(--blue-contrast-white);
         border: none;
+
         &:hover {
           background-color: var(--blue-contrast-white);
           color: var(--blue-contrast-bg-dark);
           border: none;
         }
+
         &:focus {
           outline: 2px solid var(--blue-contrast-bg);
           outline-offset: 2px;
@@ -1289,6 +1381,7 @@
     .form-label.mb-0 {
       color: var(--blue-contrast-white);
     }
+
     .dark-70.caption-m {
       color: var(--blue-contrast-bg-dark);
     }
@@ -1309,6 +1402,7 @@
     .text-l.card-product-list__description.m-0 {
       color: var(--blue-contrast-bg-dark);
     }
+
     .card-benefit.d-inline-flex.px-3.px-sm-5.px-lg-6.p-4.p-sm-5.p-lg-6.w-100.bg-dark-10 {
       margin-top: 20px;
       background-color: var(--blue-contrast-light);
@@ -1317,6 +1411,7 @@
     .accordion-header .accordion-button {
       color: var(--blue-contrast-white);
       background-color: var(--blue-contrast-bg);
+
       .fw-bold.h4 {
         color: var(--blue-contrast-light-1);
       }
@@ -1324,6 +1419,7 @@
 
     .accordion {
       background-color: var(--blue-contrast-light);
+
       &-body {
         color: var(--blue-contrast-bg);
         background-color: var(--blue-contrast-light-1);
@@ -1331,8 +1427,9 @@
     }
 
     //customer-requests.html
-    .list.list--size-l > li > span > a {
+    .list.list--size-l>li>span>a {
       color: var(--blue-contrast-white);
+
       &:hover {
         color: var(--blue-contrast-bg);
       }
@@ -1350,6 +1447,7 @@
     .card-product.card-product--transparent.card-product--size-large.bg-white {
       background-color: var(--blue-contrast-light-1) !important;
     }
+
     .card-product.card-product--transparent.bg-white,
     .card-product.card-product--size-height-auto.bg-white {
       background-color: var(--blue-contrast-light-1) !important;
@@ -1359,6 +1457,7 @@
       .btn.btn-link.btn-icon.m-auto.m-lg-0 {
         color: var(--blue-contrast-white);
         background-color: var(--blue-contrast-bg);
+
         &:hover {
           color: var(--blue-contrast-bg);
           background-color: var(--blue-contrast-white);
@@ -1370,12 +1469,14 @@
         background-color: var(--blue-contrast-light);
         padding: 5px 12px;
         border: none;
+
         &:hover {
           color: var(--blue-contrast-bg-dark);
           background-color: var(--blue-contrast-white);
         }
       }
     }
+
     .card-benefit__icon {
       .size-md-xxl.icon {
         filter: brightness(0) invert(1);
@@ -1397,6 +1498,7 @@
       color: var(--blue-contrast-bg-dark);
       background-color: var(--blue-contrast-white);
       padding: 5px 10px;
+
       &:hover {
         color: var(--blue-contrast-bg-dark);
         background-color: var(--blue-contrast-light-1);
@@ -1412,6 +1514,7 @@
       background: none;
       background-color: var(--blue-contrast-bg-dark);
     }
+
     .card-service-app--bg-purple {
       background: none;
       background-color: var(--blue-contrast-bg-dark);
@@ -1421,11 +1524,13 @@
       background-color: var(--blue-contrast-bg-dark);
       color: var(--blue-contrast-white);
       border: none;
+
       &:hover {
         background-color: var(--blue-contrast-white);
         color: var(--blue-contrast-bg-dark);
         border: none;
       }
+
       &:focus {
         outline: 2px solid var(--blue-contrast-bg);
         outline-offset: 2px;
@@ -1434,29 +1539,29 @@
         color: var(--blue-contrast-bg-dark);
       }
     }
+
     .icon.size-xxl {
-      filter: brightness(0) saturate(100%) invert(16%) sepia(32%) saturate(457%)
-        hue-rotate(196deg) brightness(93%) contrast(88%);
+      filter: brightness(0) saturate(100%) invert(16%) sepia(32%) saturate(457%) hue-rotate(196deg) brightness(93%) contrast(88%);
     }
 
     //how-to-protect.html
     .card-promo.card-promo--heavy-blue {
-      background: linear-gradient(
-        270deg,
-        rgba(40, 91, 202, 0.9) 23.5%,
-        rgba(38, 70, 138, 0) 100%
-      );
+      background: linear-gradient(270deg,
+          rgba(40, 91, 202, 0.9) 23.5%,
+          rgba(38, 70, 138, 0) 100%);
     }
 
     .btn.btn-info.btn-lg-lg.w-100.w-md-auto {
       background-color: var(--blue-contrast-bg-dark);
       color: var(--blue-contrast-white);
       border: none;
+
       &:hover {
         background-color: var(--blue-contrast-white);
         color: var(--blue-contrast-bg-dark);
         border: none;
       }
+
       &:focus {
         outline: 2px solid var(--blue-contrast-bg);
         outline-offset: 2px;
@@ -1470,6 +1575,7 @@
       .btn.btn-info.w-100.w-lg-auto {
         color: var(--blue-contrast-light-1);
         background-color: var(--blue-contrast-light);
+
         &:hover {
           color: var(--blue-contrast-light);
           background-color: var(--blue-contrast-light-1);
@@ -1505,11 +1611,9 @@
 
     //insurance-companies.html
     .banner-text.banner-text--border-green.bg-heavy-violet {
-      background: linear-gradient(
-        270deg,
-        rgba(40, 91, 202, 0.9) 23.5%,
-        rgba(38, 70, 138, 0) 100%
-      );
+      background: linear-gradient(270deg,
+          rgba(40, 91, 202, 0.9) 23.5%,
+          rgba(38, 70, 138, 0) 100%);
     }
 
     //insurance-property.html
@@ -1521,12 +1625,14 @@
     .banner-text__title.text-break.dark-100 {
       color: var(--blue-contrast-white);
     }
+
     .anchor-item.text-l.text-nowrap {
       color: var(--blue-contrast-white);
 
       &:hover {
         color: var(--blue-contrast-light-1);
       }
+
       &.active {
         color: var(--blue-contrast-light);
       }
@@ -1541,6 +1647,7 @@
         color: var(--blue-contrast-bg-dark);
       }
     }
+
     .banner-text--border-violet {
       border-top: var(--border-thickness) solid var(--blue-contrast-white);
     }
@@ -1557,12 +1664,14 @@
     .banner-product__footer {
       display: flex;
       justify-content: space-between;
+
       .col-12.col-md-6.col-xl-3 {
         border: 1px solid var(--blue-contrast-white);
         border-radius: 8px;
         padding: 15px 32px;
       }
     }
+
     .benefit__title {
       word-wrap: break-word;
     }
@@ -1589,6 +1698,7 @@
         color: var(--blue-contrast-white);
         background-color: var(--blue-contrast-bg);
         border: none;
+
         &:hover {
           color: var(--blue-contrast-bg);
           background-color: var(--blue-contrast-white);
@@ -1601,6 +1711,7 @@
       padding: 5px 10px;
       color: var(--blue-contrast-white);
       background-color: var(--blue-contrast-bg-dark);
+
       &:hover {
         color: var(--blue-contrast-bg-dark);
         background-color: var(--blue-contrast-white);
@@ -1711,6 +1822,7 @@
 
     .btn.btn-primary.align-items-center {
       border: 1px solid var(--blue-contrast-light);
+
       &:hover {
         background-color: var(--blue-contrast-bg-dark-100);
         border: 1px solid var(--blue-contrast-white);
@@ -1722,11 +1834,13 @@
       background-color: var(--blue-contrast-bg-dark);
       color: var(--blue-contrast-white);
       border: none;
+
       &:hover {
         background-color: var(--blue-contrast-white);
         color: var(--blue-contrast-bg-dark);
         border: none;
       }
+
       &:focus {
         outline: 2px solid var(--blue-contrast-bg);
         outline-offset: 2px;
@@ -1741,11 +1855,13 @@
     .card-tariff__title {
       color: var(--blue-contrast-bg-dark);
     }
+
     .d-flex.flex-column.gap-2 {
       .text-s.dark-70 {
         color: var(--blue-contrast-bg-dark);
       }
     }
+
     .helper__content.text-l {
       .text-l.mb-0 {
         color: var(--blue-contrast-bg-dark);
@@ -1756,11 +1872,13 @@
       background-color: var(--blue-contrast-bg-dark);
       color: var(--blue-contrast-white);
       border: none;
+
       &:hover {
         background-color: var(--blue-contrast-white);
         color: var(--blue-contrast-bg-dark);
         border: none;
       }
+
       &:focus {
         outline: 2px solid var(--blue-contrast-bg);
         outline-offset: 2px;
@@ -1774,11 +1892,13 @@
     .bg-heavy-violet {
       background: none;
     }
+
     .d-flex.flex-column.align-items-start.gap-3.gap-md-4 {
       color: var(--blue-contrast-white);
     }
 
     .swiper-wrapper {
+
       .swiper-slide.js-swiper-slide.swiper-slide-visible.swiper-slide-fully-visible.swiper-slide-active,
       .swiper-slide.js-swiper-slide.swiper-slide-visible.swiper-slide-fully-visible.swiper-slide-next,
       .swiper-slide.js-swiper-slide.swiper-slide-visible.swiper-slide-fully-visible,
@@ -1806,11 +1926,13 @@
       background-color: var(--blue-contrast-bg-dark);
       color: var(--blue-contrast-white);
       border: none;
+
       &:hover {
         background-color: var(--blue-contrast-white);
         color: var(--blue-contrast-bg-dark);
         border: none;
       }
+
       &:focus {
         outline: 2px solid var(--blue-contrast-bg);
         outline-offset: 2px;
@@ -1819,6 +1941,7 @@
         color: var(--blue-contrast-bg-dark);
       }
     }
+
     .card-feedback__title,
     .card-feedback__description.text-l.m-0 {
       color: var(--blue-contrast-bg-dark);
@@ -1828,6 +1951,7 @@
     .card-benefit__list.list.list--size-l li:before {
       background-color: var(--blue-contrast-bg);
     }
+
     .card-benefit__list.list.list--size-l li,
     .card-benefit__description.m-0.text-l {
       color: var(--blue-contrast-bg-dark);
@@ -1849,10 +1973,10 @@
     }
 
     //msb-guarantees.html
-    .d-inline-flex.flex-nowrap.align-items-baseline.text-l.fw-semibold.gap-1.yellow-100
-      span {
+    .d-inline-flex.flex-nowrap.align-items-baseline.text-l.fw-semibold.gap-1.yellow-100 span {
       color: var(--blue-contrast-white) !important;
     }
+
     .card-rating__inner.d-flex.flex-column.flex-md-row-reverse.flex-lg-row.align-items-center.h-100.gap-4.gap-md-0.gap-lg-6 {
       background-color: var(--blue-contrast-bg-dark);
     }
@@ -1882,6 +2006,7 @@
       &__description {
         color: var(--blue-contrast-bg-dark);
       }
+
       &__title {
         color: var(--blue-contrast-bg-dark);
       }
@@ -1890,6 +2015,7 @@
         .btn.btn-link.btn-icon.m-auto.m-lg-0 {
           color: var(--blue-contrast-light);
           background-color: var(--blue-contrast-white);
+
           &:hover,
           &:focus {
             color: var(--blue-contrast-white);
@@ -1903,16 +2029,18 @@
       color: var(--blue-contrast-bg-dark);
     }
 
-    .rte.m-0.gap-3.gap-lg-4 > ul > li {
+    .rte.m-0.gap-3.gap-lg-4>ul>li {
       color: var(--blue-contrast-bg-dark);
     }
 
     .card-service-app::after {
       background-color: var(--blue-contrast-medium);
     }
+
     .btn.btn-yellow.d-none.d-md-inline-flex {
       color: var(--blue-contrast-bg);
       background-color: var(--blue-contrast-light);
+
       &:hover,
       &:focus {
         color: var(--blue-contrast-bg);
@@ -1926,6 +2054,7 @@
         background-color: var(--blue-contrast-light);
         padding: 5px 12px;
         border: none;
+
         &:hover,
         &:focus {
           color: var(--blue-contrast-bg-dark);
@@ -1944,6 +2073,7 @@
       .btn.btn-lg-lg.btn-yellow.btn-info.w-100.w-md-auto {
         color: var(--blue-contrast-bg-dark);
         background-color: var(--blue-contrast-light);
+
         &:hover,
         &:focus {
           color: var(--blue-contrast-bg-dark);
@@ -1956,6 +2086,7 @@
         color: var(--blue-contrast-bg-dark);
         background-color: var(--blue-contrast-light);
         border: none;
+
         &:hover {
           color: var(--blue-contrast-bg-dark) !important;
           background-color: var(--blue-contrast-white);
@@ -1964,6 +2095,7 @@
     }
 
     .card-product.card-product {
+
       &--undefined.bg-dark-10.h-auto.flex-basis-100.flex-basis-md-25.flex-grow-1.bg-white,
       &--undefined.bg-dark-10.w-100.w-xl-auto.flex-basis-100.flex-basis-xl-25.h-auto.flex-grow-1.bg-white,
       &--size-height-auto.bg-dark-10.flex-basis-100.flex-basis-md-25.h-auto.flex-grow-1.bg-white,
@@ -1971,12 +2103,14 @@
         background-color: var(--blue-contrast-light);
       }
     }
+
     .card-product__footer {
       .btn.btn-link.btn-icon.d-none.d-md-inline-flex {
         color: var(--blue-contrast-bg-dark);
         background-color: var(--blue-contrast-light);
         padding: 5px 12px;
         border: none;
+
         &:hover {
           color: var(--blue-contrast-bg-dark);
           background-color: var(--blue-contrast-white);
@@ -1987,15 +2121,17 @@
     .content-block a {
       color: var(--blue-contrast-light);
       text-decoration: underline;
+
       &:hover {
         color: var(--blue-contrast-light-1);
       }
     }
 
-    .overflow-auto.custom-overflow-scrollbar > table > thead > tr > th {
+    .overflow-auto.custom-overflow-scrollbar>table>thead>tr>th {
       font-size: 1.5rem;
       color: var(--blue-contrast-white);
     }
+
     //novikom-today.html
     .banner-product--blue {
       background: none;
@@ -2005,6 +2141,7 @@
       .btn.btn-outline-primary.btn-lg-lg.btn-icon {
         color: var(--blue-contrast-bg-dark);
         background-color: var(--blue-contrast-light);
+
         &:hover,
         &:focus {
           color: var(--blue-contrast-bg-dark);
@@ -2024,11 +2161,13 @@
         }
       }
     }
+
     //payment-sticker.html
     .card-how-use__content.d-flex.flex-column.align-items-start.gap-2.gap-md-3 {
       h4 {
         color: var(--blue-contrast-bg-dark);
       }
+
       .mb-0 {
         color: var(--blue-contrast-bg-dark);
       }
@@ -2039,6 +2178,7 @@
       .btn.btn-lg-lg.btn-outline-primary.fw-bold.w-100.w-md-auto.mt-6.mt-lg-7 {
         color: var(--blue-contrast-bg-dark);
         background-color: var(--blue-contrast-light);
+
         &:hover,
         &:focus {
           color: var(--blue-contrast-bg-dark);
@@ -2046,35 +2186,41 @@
         }
       }
     }
+
     //press-center-news-2.html
     .d-flex.gap-3.gap-md-4.align-items-center {
       .text-m.dark-70 {
         color: var(--blue-contrast-white);
       }
     }
+
     .card-contact__link.dark-0.gap-3 {
       color: var(--blue-contrast-white);
+
       &:hover {
         color: var(--blue-contrast-light-1);
       }
     }
 
     //press-center-news.html
-    .rte.rte--w-xxl-60 > p > b > a {
+    .rte.rte--w-xxl-60>p>b>a {
       color: var(--blue-contrast-white);
       text-decoration: underline;
+
       &:hover {
         color: var(--blue-contrast-light-1);
       }
     }
-    p > a,
-    li > a {
+
+    p>a,
+    li>a {
       color: var(--blue-contrast-white);
 
       &:hover {
         color: var(--blue-contrast-light-1);
       }
     }
+
     .helper__content.text-l {
       .mb-3 {
         color: var(--blue-contrast-bg-dark);
@@ -2096,8 +2242,10 @@
     .fw-bold {
       color: var(--blue-contrast-bg-dark);
     }
+
     .pagination {
       --bs-pagination-bg: var(--blue-contrast-medium);
+
       &:hover {
         --bs-pagination-hover-color: var(--blue-contrast-bg-dark);
         --bs-pagination-hover-bg: var(--blue-contrast-light-1);
@@ -2135,6 +2283,7 @@
         color: var(--blue-contrast-white);
       }
     }
+
     .form-label {
       color: var(--blue-contrast-white);
     }
@@ -2147,6 +2296,7 @@
     i.text-l {
       color: var(--blue-contrast-bg-dark);
     }
+
     i {
       color: var(--blue-contrast-bg-dark);
     }
@@ -2155,6 +2305,7 @@
       .list li {
         color: var(--blue-contrast-bg-dark);
       }
+
       .list li::before {
         background-color: var(--blue-contrast-bg-dark);
       }
@@ -2164,19 +2315,24 @@
 
     .btn.btn-info.d-none.d-md-inline-flex.align-items-center {
       background-color: var(--blue-contrast-white);
+
       &:hover {
         background-color: var(--blue-contrast-light);
       }
+
       &:focus {
         background-color: var(--blue-contrast-light);
       }
     }
+
     .btn.btn-info.btn-icon.d-none.d-md-inline-flex {
       background-color: var(--blue-contrast-white);
       color: var(--blue-contrast-bg-dark);
+
       &:hover {
         background-color: var(--blue-contrast-light);
       }
+
       &:focus {
         background-color: var(--blue-contrast-light);
       }
@@ -2192,6 +2348,7 @@
       &--border-violet {
         --border-top-color: var(--blue-contrast-white);
       }
+
       &__wrapper {
         background-color: var(--blue-contrast-bg);
       }
@@ -2199,6 +2356,7 @@
       h1 {
         color: var(--blue-contrast-white);
       }
+
       &__subtitle.text-l {
         color: var(--blue-contrast-white);
       }
@@ -2206,25 +2364,28 @@
       .list.list--heavy.list--size-m.violet-100 {
         color: var(--blue-contrast-white);
       }
+
       & li::before {
         background: var(--blue-contrast-light);
       }
+
       &__image {
         display: none;
       }
     }
 
-    .card__condition-title.d-inline-flex.flex-nowrap.align-items-baseline.gap-1
-      span {
+    .card__condition-title.d-inline-flex.flex-nowrap.align-items-baseline.gap-1 span {
       color: var(--blue-contrast-bg-dark) !important;
     }
 
     .benefit__content.d-flex.flex-column.gap-3 {
       color: var(--blue-contrast-white);
     }
+
     .icon.size-xl {
       filter: brightness(0) invert(1);
     }
+
     .icon.size-xxl {
       filter: brightness(0) invert(1);
     }
@@ -2236,6 +2397,7 @@
     .helper__image.w-auto.float-end {
       display: none;
     }
+
     .btn-app.btn.d-inline-flex.justify-content-center.align-items-center.bg-white {
       background-color: var(--blue-contrast-light);
     }
@@ -2250,9 +2412,11 @@
         color: var(--blue-contrast-light);
         border-color: var(--blue-contrast-white);
       }
+
       background-color: var(--blue-contrast-light);
       color: var(--blue-contrast-white);
       border-color: var(--blue-contrast-white);
+
       &:hover {
         background-color: var(--blue-contrast-light-1);
       }
@@ -2262,6 +2426,7 @@
       background-color: var(--blue-contrast-light);
       color: var(--blue-contrast-white);
       border-color: var(--blue-contrast-white);
+
       &:hover {
         background-color: var(--blue-contrast-light-1);
       }
@@ -2281,6 +2446,7 @@
 
     .card__condition-list.d-flex.flex-column.flex-md-row.flex-wrap.gap-4.column-gap-md-11.column-gap-lg-16.row-gap-lg-6 {
       color: var(--blue-contrast-white);
+
       & span {
         color: var(--blue-contrast-white);
       }
@@ -2312,11 +2478,13 @@
 
     .card-special.bg-dark-10.dark-100.h-100.d-flex.flex-column.row-gap-6.row-gap-lg-9 {
       border-radius: 5px;
+
       .card-special__body {
         .dark-100 {
           color: var(--blue-contrast-white);
         }
       }
+
       .card-special__header.d-flex.align-items-start.justify-content-between {
         .text-s.dark-70.my-auto.mb-0 {
           color: var(--blue-contrast-white);
@@ -2326,7 +2494,8 @@
 
     .table-tab__cell.text-l {
       color: var(--blue-contrast-bg-dark);
-      ul > li {
+
+      ul>li {
         color: var(--blue-contrast-bg-dark);
       }
     }
@@ -2334,6 +2503,7 @@
     .d-flex.flex-column.gap-4 .h4 {
       text-decoration: underline;
       color: var(--blue-contrast-bg-dark);
+
       &:hover {
         color: var(--blue-contrast-bg);
       }

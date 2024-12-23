@@ -57,6 +57,12 @@
         & .text-huge {
             @extend .text-number-l;
         }
+
+        a {
+            @extend .link;
+            display: inline;
+            text-decoration: underline;
+        }
     }
 
     ul {
@@ -133,10 +139,15 @@
 
     &--w-xxl-60 {
         @include use-media(laptop-x) {
+            > h2,
+            > h3,
+            > h4,
+            > h5,
             > p,
             > ul,
             > img,
-            > div:not(.mw-100) {
+            > div:not(.mw-100),
+            > .border-bottom-dashed {
                 max-width: 66.645%;
             }
         }
@@ -160,7 +171,7 @@
             @extend .link;
         }
 
-        > div {
+        div {
             gap: 1rem;
         }
     }

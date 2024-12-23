@@ -146,7 +146,7 @@ use Bitrix\Main\Localization\Loc;
 </div>
 <div class="mobile-main-nav js-mobile-main-nav">
     <div class="nav-panel">
-        <a class="btn-nav-panel" href="/for-private-clients/cards/">
+        <a class="btn-nav-panel" href="/cards/">
             <span class="icon size-s">
                 <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                     <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-card"></use>
@@ -154,7 +154,7 @@ use Bitrix\Main\Localization\Loc;
             </span>
             <span class="btn-nav-panel__text"><?=Loc::getMessage('CARD_BUTTON_TITLE')?></span>
         </a>
-        <a class="btn-nav-panel" href="/for-private-clients/deposits/">
+        <a class="btn-nav-panel" href="/deposits/">
             <span class="icon size-s">
                 <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                     <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-deposit"></use>
@@ -173,7 +173,7 @@ use Bitrix\Main\Localization\Loc;
             </span>
             <span class="btn-nav-panel__text js-btn-nav-panel-text"><?=Loc::getMessage('MENU_BUTTON_TITLE')?></span>
         </button>
-        <a class="btn-nav-panel" href="/for-private-clients/loans/">
+        <a class="btn-nav-panel" href="/loans/">
             <span class="icon size-s">
                 <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                     <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-wallet"></use>
@@ -181,7 +181,7 @@ use Bitrix\Main\Localization\Loc;
             </span>
             <span class="btn-nav-panel__text"><?=Loc::getMessage('CREDITS_BUTTON_TITLE')?></span>
         </a>
-        <a class="btn-nav-panel" href="/for-private-clients/mortgage/">
+        <a class="btn-nav-panel" href="/mortgage/">
             <span class="icon size-s">
                 <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                     <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-house"></use>
@@ -282,5 +282,32 @@ use Bitrix\Main\Localization\Loc;
         </div>
     </div>
 </div>
+<?
+/* ChatBot */
+$APPLICATION->IncludeComponent(
+    "dalee:chatbot",
+    "",
+    [
+        "FORM_TITLES" => ["Заказать звонок", "Направить обращение"],
+        "FORM_CODES" => ["modal-callback-form", "modal-feedback-form"],
+        "FORM_ICONS" => ["img/svg-sprite.svg#icon-phone", "img/svg-sprite.svg#icon-mail"],
+    ]
+);
+?>
+<?php $APPLICATION->IncludeComponent(
+    "dalee:form",
+    "callback_form",
+    [
+        "FORM_CODE" => "callback_form",
+    ]
+); ?>
+
+<?php $APPLICATION->IncludeComponent(
+    "dalee:form",
+    "feedback_form",
+    [
+        "FORM_CODE" => "feedback_form",
+    ]
+); ?>
 </body>
 </html>

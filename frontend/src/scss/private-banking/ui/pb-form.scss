@@ -1,0 +1,28 @@
+.pb-form {
+  padding: 2rem 1.5rem;
+  border-radius: 1rem;
+  background: radial-gradient(49.86% 49.86% at 50% 15.49%, rgba(55, 17, 106, 0.70) 0%, rgba(0, 0, 0, 0.70) 100%);
+  -webkit-backdrop-filter: blur(1.25rem);
+  backdrop-filter: blur(1.25rem);
+  position: relative;
+
+  @include use-media(tablet) {
+    padding: 2rem 2.5rem;
+  }
+
+  @include use-media(tablet-album) {
+    padding: 2.5rem;
+    width: 40rem;
+    margin: 0 auto
+  }
+
+  &__title {
+    font-size: 2rem;
+    line-height: 1.25;
+    font-weight: 500;
+
+    @include use-media(tablet-album) {
+      font-size: 3rem;
+    }
+  }
+}

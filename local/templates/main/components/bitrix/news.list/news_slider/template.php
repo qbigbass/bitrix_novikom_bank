@@ -25,7 +25,7 @@ $this->setFrameMode(true);
                 <a class="card-special bg-dark-10 dark-100 h-100 d-flex flex-column row-gap-6 row-gap-lg-9"
                    href="<?= $arItem['DETAIL_PAGE_URL'] ?>">
                     <div class="card-special__header d-flex align-items-start justify-content-between">
-                        <div class="tag tag--outline">
+                        <div class="tag tag--outline tag--triangle-absolute">
                             <span class="tag__content text-s fw-semibold"><?= $arItem['SECTION']['NAME'] ?></span>
                             <span class="tag__triangle">
                                 <svg width="14" height="21" viewBox="0 0 14 21" fill="none"

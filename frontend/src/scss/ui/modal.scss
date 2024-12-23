@@ -1,6 +1,7 @@
 .modal {
     -webkit-backdrop-filter: blur(20px);
     backdrop-filter: blur(20px);
+    background-color: rgba(18, 17, 18, 0.5);
 
     @include use-media(tablet) {
         --bs-modal-width: 43rem;
@@ -94,3 +95,6 @@
     }
 }
 
+.modal-backdrop {
+    visibility: hidden;
+}

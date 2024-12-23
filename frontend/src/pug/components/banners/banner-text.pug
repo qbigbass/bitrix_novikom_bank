@@ -8,7 +8,7 @@
 include ../ui/breadcrumbs
 
 mixin banner-text-content(title, breadcrumbsArray, description, button, isSmallTitle, additionalClassList, type)
-    .d-flex.flex-column.align-items-start.gap-3.gap-md-4(class=additionalClassList)
+    .d-flex.flex-column.align-items-start.gap-3.gap-lg-4(class=additionalClassList)
         if breadcrumbsArray
             - var textColorClass= type === "light" ? "dark-70" : "text-white-50"
             +breadcrumbs(breadcrumbsArray, textColorClass)

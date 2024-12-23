@@ -12,6 +12,7 @@ foreach ($arResult as &$item) {
         2 => false
     };
 
+    $item["TEXT"] = preg_replace("/&lt;br&gt;|&lt;br\s+\/&gt;/i", "", $item["TEXT"]);
     $modifiedResult[$colNumber][] = $item;
     $prevDepthLevel = $item['DEPTH_LEVEL'];
 }

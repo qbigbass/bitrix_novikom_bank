@@ -1,67 +1,26 @@
 <?
-$aMenuLinks = Array(
-	Array(
-		"Расчетный счет",
-		"#",
-		Array(),
-		Array(),
-		""
-	),
-	Array(
-		"Кредитование",
-		"#",
-		Array(),
-		Array(),
-		""
-	),
-	Array(
-		"ДБО",
-		"#",
-		Array(),
-		Array(),
-		""
-	),
-	Array(
-		"Гарантии",
-		"#",
-		Array(),
-		Array(),
-		""
-	),
-	Array(
-		"Депозиты",
-		"#",
-		Array(),
-		Array(),
-		""
-	),
-	Array(
-		"Меры господдержки",
-		"#",
-		Array(),
-		Array(),
-		""
-	),
-	Array(
-		"ВЭД",
-		"#",
-		Array(),
-		Array(),
-		""
-	),
-	Array(
-		"Услуги",
-		"#",
-		Array(),
-		Array(),
-		""
-	),
-	Array(
-		"Онлайн-банк для бизнеса",
-		"#",
-		Array(),
-		Array(),
-		""
-	),
+if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
+    die();
+}
+
+global $APPLICATION;
+
+$aMenuLinksExt = $APPLICATION->IncludeComponent(
+    "bitrix:menu.sections",
+    "",
+    [
+        "IS_SEF" => "Y",
+        "SEF_BASE_URL" => "",
+        "SECTION_PAGE_URL" => "#SECTION_CODE#/",
+        "DETAIL_PAGE_URL" => "#SECTION_CODE#/#ELEMENT_CODE#/",
+        "IBLOCK_TYPE" => "for_msb",
+        "IBLOCK_ID" => iblock('msb_catalog'),
+        "DEPTH_LEVEL" => "1",
+        "CACHE_TYPE" => "N",
+        "CACHE_TIME" => "36000000"
+    ],
+    false
 );
+
+$aMenuLinks = array_merge($aMenuLinks, $aMenuLinksExt);
 ?>

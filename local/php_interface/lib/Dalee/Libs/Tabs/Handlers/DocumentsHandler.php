@@ -1,6 +1,7 @@
 <?php
 namespace Dalee\Libs\Tabs\Handlers;
 
+use Bitrix\Iblock\ElementTable;
 use CFile;
 use Dalee\Libs\Tabs\Interfaces\PropertyHandlerInterface;
 
@@ -64,13 +65,33 @@ class DocumentsHandler implements PropertyHandlerInterface
     private function getElementsHtml(array $elements): string
     {
         $elementsHtml = '';
+        $elementIds = array_column($elements, 'ID');
+        $elementsSort = ElementTable::getList([
+            'filter' => [
+                'ID' => $elementIds
+            ],
+            'select' => [
+                'ID',
+                'SORT'
+            ],
+        ])->fetchAll();
+        foreach ($elementsSort as $elementSort) {
+            foreach ($elements as $key => $element) {
+                if ($elementSort['ID'] == $element['ID']) {
+                    $elements[$key]['SORT'] = $elementSort['SORT'];
+                }
+            }
+        }
+        usort($elements, function ($a, $b) {
+            return $a['SORT'] <=> $b['SORT'];
+        });
         foreach ($elements as $element) {
             $file = CFile::GetFileArray($element['PROPERTIES']['FILE']['VALUE']);
             $date = (!empty($element['ACTIVE_FROM'])) ? $element['ACTIVE_FROM']->format('d.m.y H:i') : '';
             $fileType = explode('.', $file['ORIGINAL_NAME'])[1];
 
             $elementsHtml .=
-                '<a class="d-flex flex-column gap-1 py-3 document-download text-m" href="' . $file['SRC'] . '" download="' . $file['NAME'] . '">'
+                '<a class="d-flex flex-column gap-2 py-3 document-download text-m" href="' . $file['SRC'] . '" download="' . $file['NAME'] . '">'
                     . $element ['NAME'] .
                     '<div class="d-flex gap-1 align-items-center">
                         <div class="document-download__file caption-m dark-70">

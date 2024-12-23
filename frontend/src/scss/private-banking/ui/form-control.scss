@@ -1,0 +1,197 @@
+$padding-mobile: calc(.75rem - 1px); // 1px - border width
+$padding-desktop: calc(1rem - 1px); // 1px - border width
+$color-white-30: rgba(#fff, .3);
+
+// inputs
+.form-control {
+
+  &--pb {
+    background-color: transparent;
+    border: 1px solid $color-white-30;
+    font-size: 1rem;
+    line-height: 1.5;
+    padding: $padding-mobile;
+    transition: border-color ease .4s;
+    color: var(--dark-0);
+
+    @include use-media(tablet-album) {
+      padding: $padding-desktop;
+    }
+
+    &:hover,
+    &:focus {
+      border-color: var(--dark-0);
+      background-color: transparent;
+      color: var(--dark-0);
+    }
+
+    &::placeholder {
+      color: $color-white-30;
+    }
+  }
+}
+
+.form-label {
+  &--pb {
+    font-size: .875rem;
+    line-height: 1.4;
+    color: var(--pb-text-color);
+    font-weight: 400;
+  }
+}
+
+.form-control-time {
+  display: flex;
+  gap: 1.25rem;
+  height: 100%;
+  align-items: flex-end;
+  position: relative;
+
+  &:before {
+    content: ':';
+    position: absolute;
+    left: calc(50% - 2px);
+    bottom: .75rem;
+    color: $color-white-30;
+
+    @include use-media(tablet-album) {
+      bottom: 1rem;
+    }
+  }
+
+  & > * {
+    flex-grow: 1;
+  }
+}
+
+// checkbox
+.form-check {
+
+  &--pb {
+    align-items: flex-start;
+
+    & .form-check-label {
+      color: var(--pb-text-color);
+      line-height: 1.4;
+    }
+
+    & .form-check-input {
+      border-radius: .25rem;
+      background-color: transparent;
+      border: 1px solid $color-white-30;
+
+      @include use-media(tablet-album) {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+
+      &:checked[type=checkbox] {
+        --bs-form-check-bg-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='12' viewBox='0 0 16 12' fill='none'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M0.292969 6.85367L1.70718 5.43945L6.00008 8.73235L14.293 0.439453L15.7072 1.85367L6.00008 11.5608L0.292969 6.85367Z' fill='%23B0B7FE'/%3E%3C/svg%3E");
+      }
+    }
+
+    &:hover {
+      & .form-check-input:not(:disabled) {
+        border-color: var(--dark-0);
+      }
+    }
+  }
+}
+
+// select
+.pb {
+
+  & .select2-container {
+    // dropDown options
+    & .select2-dropdown {
+      border-radius: .5rem !important;
+      background-color: rgba(0, 0, 0, 0.90);
+      box-shadow: 0 .5rem 2rem 0 rgba(176, 183, 254, 0.20);
+      padding: 0;
+    }
+
+    &--default {
+
+      & .select2-results {
+
+        &__option {
+          color: var(--dark-0) !important;
+
+          &--selected {
+            background-color: transparent !important;
+            color: var(--pb-text-color) !important;
+          }
+
+          &--highlighted {
+            &.select2-results__option--selectable {
+              background-color: transparent !important;
+              color: var(--blue-100) !important;
+
+              &.select2-results__option--selected {
+                background-color: transparent !important;
+                color: var(--pb-text-color) !important;
+              }
+            }
+          }
+        }
+
+        &__options {
+
+          @include use-media(laptop) {
+            max-height: 20rem !important;
+          }
+
+          &::-webkit-scrollbar {
+            width: .375rem;
+            background-color: transparent;
+          }
+
+          &::-webkit-scrollbar-thumb {
+            border-radius: .5rem;
+            background-color: $color-white-30;
+          }
+        }
+      }
+    }
+
+    // appearance
+    & .select2-selection {
+      &--single {
+        height: 3rem !important;
+        border-color: $color-white-30 !important;
+
+        @include use-media(tablet-album) {
+          height: 3.5rem !important;
+        }
+
+        &:hover {
+          border-color: var(--dark-0) !important;
+        }
+
+        & .select2-selection {
+          &__rendered {
+            color: var(--dark-0) !important;
+            padding: $padding-mobile 2.75rem $padding-mobile $padding-mobile !important;
+
+            @include use-media(tablet-album) {
+              padding: $padding-desktop 2.75rem $padding-desktop $padding-desktop !important;
+            }
+          }
+
+          &__arrow {
+            top: calc(50% - .75rem) !important;
+            right: .75remrem !important;
+            width: 1.5rem !important;
+            height: 1.5rem !important;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M3.29297 8.70718L4.70718 7.29297L12.0001 14.5859L19.293 7.29297L20.7072 8.70718L12.0001 17.4143L3.29297 8.70718Z' fill='%23B0B7FE'/%3E%3C/svg%3E");
+          }
+
+          &__placeholder {
+            color: $color-white-30 !important;
+          }
+        }
+      }
+
+    }
+  }
+}

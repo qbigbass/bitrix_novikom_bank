@@ -11,7 +11,7 @@ $properties = [
             $date = date('d.m.y H:i', strtotime($document['TIMESTAMP_X']));
             $fileType = pathinfo($file, PATHINFO_EXTENSION);
             ?>
-            <a class="d-flex flex-column gap-1 py-3 document-download text-m" href="<?= $file ?>" download="<?= $document['ORIGINAL_NAME'] ?>">
+            <a class="d-flex flex-column gap-2 py-3 document-download text-m" href="<?= $file ?>" download="<?= $document['ORIGINAL_NAME'] ?>">
                 <?= pathinfo($file, PATHINFO_FILENAME) ?>
                 <div class="d-flex gap-1 align-items-center">
                     <div class="document-download__file caption-m dark-70">

@@ -321,17 +321,17 @@ block content
                     .d-flex.flex-column.cards-gap
                         .row.cards-gutter
                             .col-12.col-md-6.col-lg-4
-                                +card-product(productCards[0])
+                                +card-product(productCards[0]).card-product--transparent
                             .col-12.col-md-6.col-lg-4
-                                +card-product(productCards[1])
+                                +card-product(productCards[1]).card-product--transparent
                             .col-12.col-lg-4
-                                +card-product(productCards[2])
+                                +card-product(productCards[2]).card-product--transparent
                         #more-finorg.collapse.d-md-block
                             .row.cards-gutter
                                 each card, index in productCards
                                     if (index > 2)
                                         .col-12.col-md-6.col-xl-3
-                                            +card-product(card)
+                                            +card-product(card).card-product--transparent
                     .col-12.d-md-none.mt-4
                         a(
                             data-bs-toggle="collapse"
@@ -343,10 +343,10 @@ block content
                             | Показать все
                             +svg-use("icon-chevron-down", "icon size-m")
 
-    section.section-layout.px-lg-6
+    section.section-layout.px-lg-6.px-xxl-0
         .container
             .row
-                .d-none.d-md-flex.justify-content-between
+                .d-none.d-md-flex.justify-content-between.ps-xxl-9
                     h3.h3
                         | Тарифы и документы
                 a(
@@ -360,18 +360,18 @@ block content
                     +svg-use("icon-chevron-down", "icon size-m violet-100")
             #documents.collapse.d-md-block.mt-6.mt-lg-7
                 .row.row-gap-6
-                    .col-12.col-xxl-8.pe-xxl-6
-                        .ps-3.ps-lg-4
+                    .col-12.col-xxl-8.ps-xxl-9.pe-xxl-2_5
+                        .ps-3.ps-lg-0.py-lg-4
                             each link in linkDownloadList
                                 +document-download(link)
 
                     .col-12.col-xxl-4
-                        +card-benefit(cardBenefitData)
+                        +card-benefit(cardBenefitData).card-benefit--lg-n6
         +pattern-bg('section-2', 'light', 'pattern-bg--position-sm-top pattern-bg--hide-mobile')
 
     section.section-layout.bg-dark-30
         .container
-            h3.mb-4.mb-md-6.mb-lg-7.px-lg-6 Контакты
+            h3.mb-6.mb-lg-7.px-lg-6 Контакты
             .row
                 .col-12
                     .swiper.slider-cards.js-slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:1,tablet-album:2,laptop:2,laptop-x:2" data-space-between="mobile-s:8,mobile:8,tablet:16,tablet-album:16,laptop:16,laptop-x:16")
@@ -380,6 +380,6 @@ block content
                                 .swiper-slide.js-swiper-slide
                                     +contact-block(item).contact-block--bg-white
 
-                        +slider-controls().mt-3.mt-md-4
+                        +slider-controls().mt-3
 
     include ../includes/layout/section-announcement

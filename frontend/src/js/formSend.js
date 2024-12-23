@@ -7,7 +7,9 @@ const FORM_ELEMS = {
     error: '[data-form-error]',
     radio: 'input[type="radio"]',
     upload: '[data-upload]',
-    uploadFile: '[data-upload-file]'
+    uploadFile: '[data-upload-file]',
+    inputCall: '[data-input-call]',
+    simpleCallbackForm: '[data-simple-callback-form]',
 }
 
 const MODALS_ID = {
@@ -34,7 +36,7 @@ const MESSAGE_ATTR = {
 async function initFormSend() {
     const forms = document.querySelectorAll(FORM_ELEMS.form)
 
-    if (!forms.length) return;
+    if (!forms.length) return
 
     forms.forEach(form => {
         const validateGroup = form.querySelectorAll(FORM_ELEMS.validateGroup)
@@ -57,8 +59,27 @@ async function initFormSend() {
         })
 
         modalEl.addEventListener('show.bs.modal', (event) => {
-            modalEl.dispatchEvent(customEvent);
+            modalEl.dispatchEvent(customEvent)
         })
+    })
+
+    const simpleCallbackForm = document.querySelectorAll(FORM_ELEMS.simpleCallbackForm)
+
+    if (!simpleCallbackForm.length) return
+
+    const inputsPhoneCall = document.querySelectorAll(FORM_ELEMS.inputCall)
+
+    syncInputs(inputsPhoneCall)
+}
+
+function syncInputs(inputs) {
+    inputs[0].addEventListener('input', () => {
+        inputs[1].value = inputs[0].value;
+        inputs[1].dispatchEvent(new Event('input'))
+    });
+
+    inputs[0].addEventListener('blur', () => {
+        inputs[1].dispatchEvent(new Event('blur'))
     })
 }
 
@@ -193,6 +214,7 @@ function checkValidity(form) {
             toggleButton(inputList, checkboxElement, buttonElement, formErrorElement)
         })
         inputElement.addEventListener('blur', () => {
+            checkInputValidity(inputElement)
             toggleInputError(inputElement)
             checkEmptyRequiredInput(inputElement)
         })

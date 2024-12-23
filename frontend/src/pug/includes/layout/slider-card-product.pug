@@ -47,7 +47,7 @@
 
 include ../../cards/card-product
 
-mixin slider-card-product(data = cardProductList, perView = 'mobile-s:1,mobile:1,tablet:2,laptop:2,laptop-x:3', spaceBetween = 'mobile-s:8,mobile:8,tablet:16,laptop:16,laptop-x:16')
+mixin slider-card-product(data = cardProductList, perView = 'mobile-s:1,mobile:1,tablet:2,tablet-album:2,laptop:2,laptop-x:3', spaceBetween = 'mobile-s:8,mobile:8,tablet:16,tablet-album:16,laptop:16,laptop-x:16')
     .swiper.slider-cards.js-slider-cards(data-slides-per-view= perView, data-space-between= spaceBetween)
         .swiper-wrapper
             each item in data

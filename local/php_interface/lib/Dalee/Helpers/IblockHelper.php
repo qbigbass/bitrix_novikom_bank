@@ -5,6 +5,8 @@ use Bitrix\Iblock\ElementTable;
 use Bitrix\Iblock\IblockTable;
 use Bitrix\Iblock\PropertyTable;
 use Bitrix\Iblock\SectionTable;
+use CIBlockElement;
+use CIBlockFormatProperties;
 
 class IblockHelper
 {
@@ -164,5 +166,75 @@ class IblockHelper
                 }
             }
         }
+    }
+
+    /**
+     * Возвращает список элементов инфоблока с DISPLAY_PROPERTIES
+     *
+     * @param $order
+     * @param $filter
+     * @param array|bool $groupBy
+     * @param array|bool $nav
+     * @param array $propertyFilter
+     * @param array $options
+     * @return array
+     */
+    public static function getElementsWithProperties($order, $filter, $groupBy = false, $nav = false, $propertyFilter = [], $options = [])
+    {
+        $elements = [];
+
+        $res = CIBlockElement::GetList($order, $filter, $groupBy, $nav);
+
+        $res->NavStart();
+
+        while ($row = $res->GetNext()) {
+            $row['PROPERTIES'] = [];
+            $elements[$row['ID']] =& $row;
+            unset($row);
+        }
+
+        $total = intval($res->NavRecordCount);
+
+        CIBlockElement::GetPropertyValuesArray($elements, $filter['IBLOCK_ID'], $filter, $propertyFilter, $options);
+
+        $items = array_values($elements);
+
+        foreach ($items as &$item) {
+            foreach ($propertyFilter["CODE"] as $pid) {
+                $prop = &$item["PROPERTIES"][$pid];
+                if ((is_array($prop["VALUE"]) && count($prop["VALUE"]) > 0) || (!is_array($prop["VALUE"]) && $prop["VALUE"] <> '')) {
+                    $prop = $item['PROPERTIES'][$pid];
+                    $item['DISPLAY_PROPERTIES'][$pid] = CIBlockFormatProperties::GetDisplayValue($item, $prop);
+                }
+            }
+        }
+
+        return [
+            'items' => $items,
+            'total' => $total,
+        ];
+    }
+
+    /**
+     * Возвращает список вариантов значений свойства типа "список"
+     *
+     * @param $iblockId
+     * @param $propertyCode
+     * @return array
+     */
+    public static function getPropertyEnumList($iblockId, $propertyCode)
+    {
+        $enumList = [];
+
+        $res = \CIBlockPropertyEnum::GetList(
+            ['SORT' => 'ASC'],
+            ['IBLOCK_ID' => $iblockId, 'CODE' => $propertyCode]
+        );
+
+        while ($row = $res->GetNext()) {
+            $enumList[] = $row;
+        }
+
+        return $enumList;
     }
 }

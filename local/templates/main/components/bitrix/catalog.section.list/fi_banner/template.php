@@ -29,10 +29,10 @@ $this->setFrameMode(true);
                             <svg class="icon size-s text-white-50 d-inline-block d-md-none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                                 <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-left"></use>
                             </svg>
-                            <span><?= $arResult["SECTION"]["NAME"]?></span>
+                            <span><?= strip_tags($arResult["SECTION"]["~NAME"])?></span>
                         </div>
                     </div>
-                    <h1><?= $arResult["SECTION"]["NAME"]?></h1>
+                    <h1><?= $arResult["SECTION"]["~NAME"]?></h1>
                     <p class="banner-product__subtitle text-l"><?= $arResult["SECTION"]["DESCRIPTION"]?></p>
                 </div>
                 <img class="banner-product__image" src="<?= $arResult["SECTION"]["PICTURE_PATH"]?>" alt="" loading="lazy">
@@ -74,7 +74,7 @@ $this->setFrameMode(true);
         <div class="container banner-text__container position-relative z-2">
             <div class="row ps-lg-6">
                 <div class="col-12 col-sm-6 col-md-8 position-relative z-1 mb-5 mb-md-0 pt-6">
-                    <div class="d-flex flex-column align-items-start gap-3 gap-md-4">
+                    <div class="d-flex flex-column align-items-start gap-3 gap-lg-4">
                         <div class="breadcrumbs d-flex flex-wrap gap-2">
                             <a class="breadcrumbs__item d-md-inline-flex align-items-center gap-2 text-s dark-70 d-inline-flex" href="<?= $arResult["SECTION"]["LIST_PAGE_URL"]?>">
                                 <svg class="icon size-s d-inline-block d-md-none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
@@ -82,14 +82,11 @@ $this->setFrameMode(true);
                                 </svg>
                                 <span><?= $arParams["MAIN_CHAIN_TITLE"] ?></span>
                             </a>
-                            <div class="breadcrumbs__item d-md-inline-flex align-items-center gap-2 text-s dark-70 d-inline-flex">
-                                <svg class="icon size-s text-white-50 d-inline-block d-md-none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                    <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-left"></use>
-                                </svg>
-                                <span><?= $arResult["SECTION"]["NAME"]?></span>
+                            <div class="breadcrumbs__item d-md-inline-flex align-items-center gap-2 text-s dark-70 d-none">
+                                <span><?= strip_tags($arResult["SECTION"]["~NAME"])?></span>
                             </div>
                         </div>
-                        <h1 class="banner-text__title text-break dark-100"><?= $arResult["SECTION"]["NAME"]?></h1>
+                        <h1 class="banner-text__title text-break dark-100"><?= $arResult["SECTION"]["~NAME"]?></h1>
                     </div>
                 </div>
                 <div class="d-none d-sm-block col-12 col-sm-6 col-md-4">

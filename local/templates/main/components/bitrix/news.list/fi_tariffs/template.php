@@ -18,9 +18,9 @@ $this->setFrameMode(true);
 use Bitrix\Main\Localization\Loc;
 
 ?>
-<section class="section-layout px-lg-6">
+<section class="section-layout px-lg-6 px-xxl-0">
     <div class="container">
-        <div class="row">
+        <div class="row ps-xxl-6">
             <div class="d-none d-md-flex justify-content-between">
                 <h3 class="h3"><?= Loc::getMessage("BLOCK_TITLE") ?></h3>
             </div>
@@ -34,7 +34,7 @@ use Bitrix\Main\Localization\Loc;
         <div class="collapse d-md-block mt-6 mt-lg-7" id="documents">
             <div class="row row-gap-6">
                 <div class="col-12 col-xxl-8 pe-xxl-6">
-                    <div class="ps-3 ps-lg-4">
+                    <div class="ps-3 ps-lg-0 ps-xxl-6 py-lg-4">
                         <?foreach ($arResult["ITEMS"] as $item):?>
                             <?if(!empty($item["DISPLAY_PROPERTIES"]["FILE"]["FILE_VALUE"]['SRC'])):?>
                                 <?
@@ -42,13 +42,13 @@ use Bitrix\Main\Localization\Loc;
                                 $fileType = pathinfo($arFile['SRC'], PATHINFO_EXTENSION);
                                 ?>
                                 <a
-                                    class="d-flex flex-column gap-1 py-3 document-download text-m"
+                                    class="d-flex flex-column gap-2 py-3 document-download text-m"
                                     href="<?= $arFile['SRC']?>"
                                     download="<?= $arFile['FILE_NAME']?>"
                                 ><?= $item["NAME"] ?>
                                     <div class="d-flex gap-1 align-items-center">
                                         <div class="document-download__file caption-m dark-70">
-                                            <span class="document-download__date-time"><?= $item["TIMESTAMP_X"] ?></span>
+                                            <span class="document-download__date-time"><?= date('d.m.Y H:m', strtotime($item["TIMESTAMP_X"])) ?></span>
                                             <span class="document-download__file-type"><?= $fileType?></span>
                                         </div>
                                         <span class="icon size-s text-primary">

@@ -1,0 +1,235 @@
+.btn-pb {
+  text-transform: uppercase;
+  font-size: .75rem;
+  letter-spacing: .1em;
+  line-height: 1.15;
+  font-weight: 600;
+  transition: all .6s ease;
+  border-radius: .25rem;
+  padding: .75rem 1rem;
+
+  @include use-media(mobile) {
+    font-size: .875rem;
+    letter-spacing: .1em;
+  }
+
+  @include use-media(tablet-album) {
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  &.animate {
+    opacity: 0;
+    transform: translateY(100%);
+    transition: opacity .8s ease-in-out, transform .8s ease-in-out;
+
+    &.animate-show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  &--primary {
+    border: none;
+    background-color: var(--pb-primary);
+    color: var(--dark-0);
+
+    &:hover {
+      background-color: var(--pb-hover);
+      color: var(--dark-0);
+    }
+  }
+
+  &--secondary {
+    color: var(--pb-text-color);
+    background-color: var(--pb-black);
+    opacity: .6;
+
+    &:hover {
+      color: var(--pb-text-color);
+      background-color: var(--pb-dark-bg);
+    }
+  }
+
+  &--outline {
+    background-color: transparent;
+    color: var(--pb-text-color);
+    border: 1px solid rgba(#fff ,.3);
+
+    &:hover {
+      color: var(--dark-0);
+      border: 1px solid var(--dark-0);
+    }
+  }
+
+  &--size-m {
+    @include use-media(tablet-album) {
+      font-size: .875rem;
+      line-height: 1.15;
+    }
+  }
+
+  &--size-lg {
+    font-size: 1rem;
+    line-height: 1.5;
+    padding: 1rem 2.5rem;
+
+    @include use-media(tablet-album) {
+      font-size: 1rem;
+      line-height: 1.5;
+      padding: 1.5rem 2.5rem;
+      height: 4.5rem;
+    }
+  }
+}
+
+.pb-menu-btn {
+  $root: #{&};
+
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid rgba(#fff, .3);
+  border-radius: .25rem;
+  padding: calc(.5rem - 1px);
+
+  @include use-media(tablet-album) {
+    width: 3rem;
+    height: 3rem;
+    padding: calc(.75rem - 1px);
+  }
+
+  &:hover,
+  &:active {
+    @include use-media(tablet-album) {
+      #{$root}__icon span {
+        opacity: .5;
+      }
+    }
+  }
+
+  &__icon {
+    display: block;
+    width: 1.5rem;
+    height: 1.5rem;
+    position: relative;
+    transform: rotate(0deg);
+    transition: .5s ease-in-out;
+
+    span {
+      display: block;
+      position: absolute;
+      height: 2px;
+      width: 50%;
+      background-color: var(--dark-0);
+      opacity: 1;
+      transition: .25s ease-in-out;
+
+      &:nth-child(even) {
+        left: 50%;
+      }
+
+      &:nth-child(odd) {
+        left: 0;
+      }
+
+      &:nth-child(1),
+      &:nth-child(2) {
+        top: 3px;
+      }
+
+      &:nth-child(3),
+      &:nth-child(4) {
+        top: 11px;
+      }
+
+      &:nth-child(5),
+      &:nth-child(6) {
+        top: 19px;
+      }
+    }
+  }
+
+  &.is-open {
+    #{$root}__icon {
+      span {
+
+        &:nth-child(1),
+        &:nth-child(6) {
+          transform: rotate(45deg);
+        }
+
+        &:nth-child(2),
+        &:nth-child(5) {
+          transform: rotate(-45deg);
+        }
+
+        &:nth-child(1) {
+          left: 2px;
+          top: 7px;
+        }
+
+        &:nth-child(2) {
+          left: calc(50% - 1px);
+          top: 7px;
+        }
+
+        &:nth-child(3) {
+          left: -50%;
+          opacity: 0;
+        }
+
+        &:nth-child(4) {
+          left: 100%;
+          opacity: 0;
+        }
+
+        &:nth-child(5) {
+          left: 2px;
+          top: 15px;
+        }
+
+        &:nth-child(6) {
+          left: calc(50% - 1px);
+          top: 15px;
+        }
+      }
+    }
+  }
+}
+
+.btn-pb-up {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 2.5rem;
+  border-radius: .25rem;
+  background-color: rgba(19, 19, 22, 0.75);
+  border: 1px solid rgba(19, 19, 22, 0.75);
+  padding: .5rem;
+  color: var(--pb-text-color);
+  transition: color .33s ease, border-color .33s ease;
+  z-index: 11;
+  display: none;
+
+  @include use-media(tablet-album) {
+    right: 2.5rem;
+    padding: .75rem;
+    background-color: rgba(19, 19, 22, 0.6);
+    border: 1px solid rgba(19, 19, 22, 0.6);
+  }
+
+  &:hover {
+    color: var(--dark-0);
+    border-color: rgba(#fff, .5);
+  }
+
+  &--absolute {
+    position: absolute;
+    bottom: calc(100% + 1.25rem);
+  }
+
+  & svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
