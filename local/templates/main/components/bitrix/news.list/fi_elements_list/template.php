@@ -136,8 +136,8 @@ use Bitrix\Main\Localization\Loc;
                                     <?endif;?>
                                     <?if(!empty($arBlocks["TEXT_LIST"])):?>
                                         <!-- Блок с текстом в виде списка -->
-                                        <div class="col-12 px-lg-6">
-                                            <ul class="list list--md-col2 list--size-l">
+                                        <div class="col-12">
+                                            <ul class="list list--md-col2 list--size-l px-lg-6">
                                                 <?foreach ($arBlocks["TEXT_LIST"] as $value):?>
                                                     <li><?= $value ?></li>
                                                 <?endforeach;?>
@@ -149,33 +149,33 @@ use Bitrix\Main\Localization\Loc;
                                         <div class="col-12">
                                             <div class="border-bottom border-blue30" aria-hidden="true"></div>
                                         </div>
-                                        <div class="col-12 col-lg-8 px-lg-6">
-                                            <?= $arBlocks["DETAIL_TEXT"] ?>
+                                        <div class="col-12 col-lg-8">
+                                            <div class="px-lg-6">
+                                                <?= $arBlocks["DETAIL_TEXT"] ?>
+                                            </div>
                                         </div>
                                     <?endif;?>
                                     <?if(!empty($arBlocks["QUOTES"]["POS_0"])):?>
                                         <!-- Блок с первой цитатой -->
                                         <div class="col-12">
-                                            <div class="col-12">
-                                                <div class="polygon-container js-polygon-container">
-                                                    <div class="polygon-container__content">
-                                                        <div class="helper <?if(preg_match('/bg-dark/', $item["SECTION_BACKGROUND_CLASS_STYLE"])):?>bg-white<?else:?>bg-dark-30<?endif;?>">
-                                                            <div class="helper__wrapper d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-4 gap-lg-6">
-                                                                <img class="helper__image w-auto float-end" src="<?= $arBlocks["QUOTES"]["POS_0"]["PICTURE"] ?>" alt="Обратите внимание" loading="lazy">
-                                                                <div class="helper__content text-l">
-                                                                    <?if(!empty($arBlocks["QUOTES"]["POS_0"]["TITLE"])):?>
-                                                                        <h4 class="mb-3"><?= $arBlocks["QUOTES"]["POS_0"]["TITLE"] ?></h4>
-                                                                    <?endif;?>
-                                                                    <p class="m-0"><?= $arBlocks["QUOTES"]["POS_0"]["TEXT"] ?></p>
-                                                                </div>
+                                            <div class="polygon-container js-polygon-container">
+                                                <div class="polygon-container__content">
+                                                    <div class="helper <?if(preg_match('/bg-dark/', $item["SECTION_BACKGROUND_CLASS_STYLE"])):?>bg-white<?else:?>bg-dark-30<?endif;?>">
+                                                        <div class="helper__wrapper d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-4 gap-lg-6">
+                                                            <img class="helper__image w-auto float-end" src="<?= $arBlocks["QUOTES"]["POS_0"]["PICTURE"] ?>" alt="Обратите внимание" loading="lazy">
+                                                            <div class="helper__content text-l">
+                                                                <?if(!empty($arBlocks["QUOTES"]["POS_0"]["TITLE"])):?>
+                                                                    <h4 class="mb-3"><?= $arBlocks["QUOTES"]["POS_0"]["TITLE"] ?></h4>
+                                                                <?endif;?>
+                                                                <p class="m-0"><?= $arBlocks["QUOTES"]["POS_0"]["TEXT"] ?></p>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="polygon-container__polygon js-polygon-container-polygon violet-100">
-                                                        <svg class="js-polygon-container-svg" xmlns="http://www.w3.org/2000/svg" height="208.0001220703125" width="1345.5999755859375">
-                                                            <polygon points="2,2 1344,2 1344,166 1304,206 2,206" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="10"></polygon>
-                                                        </svg>
-                                                    </div>
+                                                </div>
+                                                <div class="polygon-container__polygon js-polygon-container-polygon violet-100">
+                                                    <svg class="js-polygon-container-svg" xmlns="http://www.w3.org/2000/svg" height="208.0001220703125" width="1345.5999755859375">
+                                                        <polygon points="2,2 1344,2 1344,166 1304,206 2,206" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="10"></polygon>
+                                                    </svg>
                                                 </div>
                                             </div>
                                         </div>
@@ -514,7 +514,7 @@ use Bitrix\Main\Localization\Loc;
                 <? if (!empty($item["PATH_IMG_SECTION"])) : ?>
                     <picture class="pattern-bg <?= $item["CLASS_PICTURE"] ?>">
                         <source srcset="/frontend/dist/<?= $item["PATH_IMG_SECTION"] ?>s.svg" media="(max-width: 767px)">
-                        <source srcset="/frontend/dist/<?= $item["PATH_IMG_SECTION"] ?>-m.svg" media="(max-width: 1199px)">
+                        <source srcset="/frontend/dist/<?= $item["PATH_IMG_SECTION"] ?>m.svg" media="(max-width: 1199px)">
                         <img src="/frontend/dist/<?= $item["PATH_IMG_SECTION"] ?>l.svg" alt="bg pattern" loading="lazy">
                     </picture>
                 <?endif;?>
