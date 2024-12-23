@@ -15,7 +15,7 @@ $this->setFrameMode(true);
 
 <div class="container">
     <div class="row">
-        <div class="col-12 position-relative z-1 d-flex flex-column align-items-start gap-5 gap-md-7">
+        <div class="col-12 position-relative z-1 d-flex flex-column align-items-start gap-4 gap-md-6 gap-lg-7">
             <?foreach($arResult['ITEMS'] as $arItem) {?>
                 <?
                 $this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));

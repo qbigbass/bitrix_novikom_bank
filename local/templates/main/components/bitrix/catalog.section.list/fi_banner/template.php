@@ -82,10 +82,7 @@ $this->setFrameMode(true);
                                 </svg>
                                 <span><?= $arParams["MAIN_CHAIN_TITLE"] ?></span>
                             </a>
-                            <div class="breadcrumbs__item d-md-inline-flex align-items-center gap-2 text-s dark-70 d-inline-flex">
-                                <svg class="icon size-s text-white-50 d-inline-block d-md-none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                    <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-left"></use>
-                                </svg>
+                            <div class="breadcrumbs__item d-md-inline-flex align-items-center gap-2 text-s dark-70 d-none">
                                 <span><?= strip_tags($arResult["SECTION"]["~NAME"])?></span>
                             </div>
                         </div>

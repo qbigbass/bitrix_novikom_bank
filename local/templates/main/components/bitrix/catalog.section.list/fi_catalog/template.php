@@ -53,7 +53,7 @@ use Bitrix\Main\Localization\Loc;
                         <div class="row cards-gutter">
                             <? foreach ($arResult["SECTIONS_CENTER_POSITION_1"] as $key => $item): ?>
                                 <div class="col-12 <? if($key <= 1) : ?>col-md-6<? endif; ?> col-lg-4">
-                                    <a class="card-product card-product--transparent bg-white" href="<?= $item["SECTION_PAGE_URL"] ?>">
+                                    <a class="card-product card-product--size-height-auto card-product--transparent bg-white" href="<?= $item["SECTION_PAGE_URL"] ?>">
                                         <div class="card-product__inner">
                                             <div class="card-product__content mw-100">
                                                 <h4 class="card-product__title"><?= $item["NAME"]?></h4>

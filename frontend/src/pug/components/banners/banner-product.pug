@@ -14,7 +14,8 @@ mixin banner-product(data)
                         - var textColorClass= data.theme === "light" ? "dark-70" : "text-white-50"
                         +breadcrumbs(data.breadcrumbsArray, textColorClass).banner-product__breadcrumbs
                     h1!= data.title
-                    p.banner-product__subtitle.text-l(class= data.imgSrc ? '' : 'mw-100')!= data.subtitle
+                    if data.subtitle
+                        p.banner-product__subtitle.text-l(class= data.imgSrc ? '' : 'mw-100')!= data.subtitle
                 if data.imgSrc
                     img(src= data.imgSrc, class="banner-product__image", alt="", loading="lazy")
                 if data.benefits
