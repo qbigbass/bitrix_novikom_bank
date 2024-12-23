@@ -24,9 +24,11 @@ use Bitrix\Main\Localization\Loc;
                             <div class="card-product__inner">
                                 <div class="card-product__content">
                                     <h4 class="card-product__title"><?= $item["NAME"]?></h4>
-                                    <div class="rte m-0 gap-3 gap-lg-4">
-                                        <?= $item["DESCRIPTION"]?>
-                                    </div>
+                                    <? if (!empty($item["DESCRIPTION"])) : ?>
+                                        <div class="rte m-0 gap-3 gap-lg-4">
+                                            <p><?= $item["DESCRIPTION"] ?></p>
+                                        </div>
+                                    <? endif; ?>
                                 </div>
                                 <?if (!empty($item["PICTURE"])) :?>
                                     <img class="card-product__img" src="<?= $item["PICTURE"]["SRC"]?>" alt="" loading="lazy">

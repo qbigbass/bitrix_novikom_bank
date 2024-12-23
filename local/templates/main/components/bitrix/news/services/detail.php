@@ -72,4 +72,10 @@ $componentTemplate = str_replace('_ru', '', $iblock->getCode());
     $component
 );?>
 
-
+<? if (!in_array($iblock->getCode(), [
+    "biometric_identification_ru",
+    "insurance_ru",
+    "other_services_ru"
+])) : ?>
+    <? $APPLICATION->IncludeFile('/local/php_interface/include/cross_sale_products_block.php')?>
+<? endif; ?>

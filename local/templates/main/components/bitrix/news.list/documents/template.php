@@ -26,7 +26,7 @@ $this->setFrameMode(true);
                 <?=$arItem['NAME']?>
                 <div class="d-flex gap-1 align-items-center">
                     <div class="document-download__file caption-m dark-70">
-                        <span class="document-download__date-time"><?=!empty($arItem['ACTIVE_FROM']) ? $arItem['ACTIVE_FROM'] : ''?></span>
+                        <span class="document-download__date-time"><?=!empty($arItem['ACTIVE_FROM']) ? date('d.m.Y H:m', strtotime($arItem['ACTIVE_FROM'])) : ''?></span>
                         <span class="document-download__file-type"><?=explode('.', $file['ORIGINAL_NAME'])[1]?></span>
                     </div>
                     <span class="icon size-s text-primary">
