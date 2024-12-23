@@ -39,9 +39,8 @@ $asset->addJs('/frontend/dist/js/yMap.js');
 $asset->addJs('/frontend/dist/js/index.js');
 $asset->addJs('/frontend/dist/js/accessibility-panel.js');
 ?>
-
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="<?= LANGUAGE_ID ?>">
 <head>
     <meta charset="UTF-8">
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
