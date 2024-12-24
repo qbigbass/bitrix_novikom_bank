@@ -23,6 +23,10 @@
         }
     }
 
+    @at-root .col-12:has(&) {
+        line-height: 0;
+    }
+
     &__navigation {
 
         &-item {

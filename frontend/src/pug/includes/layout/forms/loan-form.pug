@@ -220,12 +220,11 @@ form(action="/" method="POST" novalidate id="loan-form" data-form).application-f
                     total: "3",
                     text: "Данные о работе"
                 })
-            .row.g-1.g-md-2.g-lg-2_5
-                each item in step2.inputs1
-                    .application-form__col.col-12.col-md-4
-                        +input(item, loanForm.formName)
-                .application-form__col.col-12
-                    +input(step2.inputs2[0], loanForm.formName)
+            each item in step2.inputs1
+                .application-form__col.col-12.col-md-4
+                    +input(item, loanForm.formName)
+            .application-form__col.col-12
+                +input(step2.inputs2[0], loanForm.formName)
         .d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-5.column-gap-lg-6.mt-6.mt-lg-7.px-md-2.px-lg-0
             button.btn.btn-primary.btn-lg-lg.w-100.w-md-auto(type="button" disabled aria-disabled="true" data-form-button data-form-step-button-next) Продолжить
             button.btn.btn-outline-primary.btn-lg-lg.w-100.w-md-auto(type="button" data-form-step-button-prev) Назад
