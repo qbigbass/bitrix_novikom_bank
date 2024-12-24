@@ -59,13 +59,13 @@ include ../../../cards/card-calculate-result
 
                 .d-flex.flex-column.row-gap-4
                     .form-check
-                        input#inp1(type="checkbox" value="").form-check-input
-                        label(for="inp1").form-check-label
+                        input#inp1(type="checkbox" value="" tabindex="0").form-check-input
+                        label(for="inp1" tabindex="0").form-check-label
                             | Капитализация процентов на счет вклада
 
                     .form-check
-                        input#inp2(type="checkbox" value="" data-target="replenishment" checked).form-check-input.js-replenishment
-                        label(for="inp2").form-check-label
+                        input#inp2(type="checkbox" value="" data-target="replenishment" checked tabindex="0").form-check-input.js-replenishment
+                        label(for="inp2" tabindex="0").form-check-label
                             | Планируются пополнения суммы вклада
                 #replenishment.d-flex.flex-column.row-gap-4.row-gap-md-6
                     .d-flex.flex-column.flex-md-row.gap-4.gap-lg-6

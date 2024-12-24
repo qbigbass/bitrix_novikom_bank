@@ -22,11 +22,11 @@ $this->setFrameMode(true);
             $this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
             $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
             ?>
-            <a class="d-flex flex-column gap-1 py-3 document-download text-m" href="<?=$file['SRC']?>" download="<?=$file['NAME']?>" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
+            <a class="d-flex flex-column gap-2 py-3 document-download text-m" href="<?=$file['SRC']?>" download="<?=$file['NAME']?>" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
                 <?=$arItem['NAME']?>
                 <div class="d-flex gap-1 align-items-center">
                     <div class="document-download__file caption-m dark-70">
-                        <span class="document-download__date-time"><?=!empty($arItem['ACTIVE_FROM']) ? $arItem['ACTIVE_FROM'] : ''?></span>
+                        <span class="document-download__date-time"><?=!empty($arItem['ACTIVE_FROM']) ? date('d.m.Y H:m', strtotime($arItem['ACTIVE_FROM'])) : ''?></span>
                         <span class="document-download__file-type"><?=explode('.', $file['ORIGINAL_NAME'])[1]?></span>
                     </div>
                     <span class="icon size-s text-primary">

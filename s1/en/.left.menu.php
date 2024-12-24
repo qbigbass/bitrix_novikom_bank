@@ -1,8 +1,8 @@
 <?
 $aMenuLinks = [
     [
-        "Все",
-        "/support/announcements_for_clients/",
+        "About the Bank",
+        "about/",
         [],
         [],
         ""

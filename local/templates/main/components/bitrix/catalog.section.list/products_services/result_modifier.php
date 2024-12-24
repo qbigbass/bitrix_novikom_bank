@@ -7,7 +7,7 @@ if (!empty($arResult['SECTIONS'])) {
             $fieldIcon = $section['UF_SUPPORT_PRODUCT__ICON'] ?? $section['UF_SUPPORT_INFO_ICON'];
             $filePath = CFile::GetPath($fieldIcon);
 
-            if (!empty($filePath)) {
+            if (!empty($filePath) && file_exists($_SERVER["DOCUMENT_ROOT"] . $filePath)) {
                 $section["ICON_PATH"] = $filePath;
             }
         }

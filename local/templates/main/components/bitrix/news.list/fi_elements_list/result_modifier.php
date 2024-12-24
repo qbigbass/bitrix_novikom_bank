@@ -290,12 +290,12 @@ if (!empty($propertyTypeList)) {
         $tabsStrategy[$type["ID"]]["ACTIVE"] = $type["XML_ID"] === "standart" ? "Y" : "N";
         $tabsStrategy[$type["ID"]]["TITLE"] = $type["VALUE"];
     }
+    ksort($tabsStrategy);
 }
 
 /* Заполним недостающие данные по цитатам и слайдерам для элементов */
 foreach ($arResult["ITEMS"] as $index => $item) {
     $arResult["ITEMS"][$index]["SECTION_BACKGROUND_CLASS_STYLE"] = ''; // класс для тега <section>
-    $arResult["ITEMS"][$index]["SECTION_BORDER_CLASS_STYLE"] = ''; // класс для тега <section>
     $itemId = $item["ID"];
 
     if (!empty($item["PROPERTIES"]["QUOTES"]["VALUE"]) && !empty($arQuotes)) {
@@ -319,16 +319,39 @@ foreach ($arResult["ITEMS"] as $index => $item) {
         }
     }
 
+    if (!empty($item["PROPERTIES"]["TEXT_LIST"]["VALUE"])) {
+        $arResult["ITEMS"][$index]["TEXT_LIST"] = $item["PROPERTIES"]["TEXT_LIST"]["VALUE"];
+    }
+
     if (!empty($item["PROPERTIES"]["BENEFITS"]["VALUE"])) {
         foreach ($item["PROPERTIES"]["BENEFITS"]["VALUE"] as $kValue => $vValue) {
-            $iconPath = '';
+            $iconSrc = '';
 
-            if (!empty($vValue)) {
-                $iconPath = CFile::GetPath($vValue);
+            if (!empty($item["PROPERTIES"]["BENEFITS"]["DESCRIPTION"][$kValue])) {
+                if (!empty($vValue)) {
+                    $iconPath = CFile::GetPath($vValue);
+
+                    if (file_exists($_SERVER["DOCUMENT_ROOT"] . $iconPath)) {
+                        $iconSrc = $iconPath;
+                    }
+                }
+
+                $fullDesc = $item["PROPERTIES"]["BENEFITS"]["DESCRIPTION"][$kValue];
+                $arDesc = array_filter(explode("; ", $fullDesc));
+                $title = $fullDesc;
+                $text = '';
+
+                if (!empty($arDesc[1])) {
+                    [$title, $text] = $arDesc;
+                }
+
+                $arResult["ITEMS"][$index]["BENEFITS"][$kValue]["TITLE"] = $title;
+                $arResult["ITEMS"][$index]["BENEFITS"][$kValue]["PICTURE"] = $iconSrc;
+
+                if (!empty($text)) {
+                    $arResult["ITEMS"][$index]["BENEFITS"][$kValue]["TEXT"] = $text;
+                }
             }
-
-            $arResult["ITEMS"][$index]["BENEFITS"][$kValue]["TITLE"] = $item["PROPERTIES"]["BENEFITS"]["DESCRIPTION"][$kValue] ?? '';
-            $arResult["ITEMS"][$index]["BENEFITS"][$kValue]["PICTURE"] = $iconPath;
         }
     }
 
@@ -370,11 +393,88 @@ foreach ($arResult["ITEMS"] as $index => $item) {
         }
     }
 
-    if (!empty($item["PROPERTIES"]["COLOR_BG"]["VALUE"])) {
-        $arResult["ITEMS"][$index]["SECTION_BACKGROUND_CLASS_STYLE"] = $item["PROPERTIES"]["COLOR_BG"]["VALUE"];
+    if (!empty($item["PROPERTIES"]["CLASS_SECTION"]["VALUE"])) {
+        $arResult["ITEMS"][$index]["SECTION_BACKGROUND_CLASS_STYLE"] = $item["PROPERTIES"]["CLASS_SECTION"]["VALUE"];
     }
 
-    if (!empty($item["PROPERTIES"]["COLOR_BORDER"]["VALUE"])) {
-        $arResult["ITEMS"][$index]["SECTION_BORDER_CLASS_STYLE"] = "border-top border-".$item["PROPERTIES"]["COLOR_BORDER"]["VALUE"];
+    if (!empty($item["PROPERTIES"]["CLASS_ROW"]["VALUE"])) {
+        $arResult["ITEMS"][$index]["ROW_ADD_CLASS"] = $item["PROPERTIES"]["CLASS_ROW"]["VALUE"];
+    }
+
+    if (!empty($item["PROPERTIES"]["CLASS_H2"]["VALUE"])) {
+        $arResult["ITEMS"][$index]["H2_ADD_CLASS"] = $item["PROPERTIES"]["CLASS_H2"]["VALUE"];
+    }
+
+    if (!empty($item["PROPERTIES"]["COLOR_CARDS_SLIDER"]["VALUE"])) {
+        $arResult["ITEMS"][$index]["CARDS_BACKGROUND_CLASS_STYLE"] = $item["PROPERTIES"]["COLOR_CARDS_SLIDER"]["VALUE"];
+    }
+
+    if (!empty($item["PROPERTIES"]["PATH_IMG_SECTION"]["VALUE"])) {
+        $arResult["ITEMS"][$index]["PATH_IMG_SECTION"] = $item["PROPERTIES"]["PATH_IMG_SECTION"]["VALUE"];
+    }
+
+    if (!empty($item["PROPERTIES"]["CLASS_PICTURE"]["VALUE"])) {
+        $arResult["ITEMS"][$index]["CLASS_PICTURE"] = $item["PROPERTIES"]["CLASS_PICTURE"]["VALUE"];
+    }
+
+    if (!empty($item["PROPERTIES"]["SORT_BLOCKS"]["VALUE"])) {
+        $arResult["ITEMS"][$index]["SORT_BLOCKS"] = explode(",", $item["PROPERTIES"]["SORT_BLOCKS"]["VALUE"]);
+    }
+}
+
+/* Отсортируем блоки в разделе <section> */
+foreach ($arResult["ITEMS"] as $index => $item) {
+    if (!empty($item["SORT_BLOCKS"])) {
+        foreach ($item["SORT_BLOCKS"] as $k => $indexBlock) {
+            switch ($indexBlock) {
+                case 1 :
+                    if (!empty($arResult["ITEMS"][$index]["QUOTES"])) {
+                        foreach ($arResult["ITEMS"][$index]["QUOTES"] as $pos => $quote) {
+                            $arResult["ITEMS"][$index]["SORT_ITEMS"][$k]["QUOTES"][$pos] = $quote;
+                            unset($arResult["ITEMS"][$index]["QUOTES"][$pos]);
+                            break;
+                        }
+                    }
+                    break;
+                case 2 :
+                    if (!empty($arResult["ITEMS"][$index]["SLIDERS"])) {
+                        $arResult["ITEMS"][$index]["SORT_ITEMS"][$k]["SLIDERS"] = $arResult["ITEMS"][$index]["SLIDERS"];
+                    }
+                    break;
+                case 3 :
+                    if (!empty($arResult["ITEMS"][$index]["CARD_PRODUCTS"])) {
+                        $arResult["ITEMS"][$index]["SORT_ITEMS"][$k]["CARD_PRODUCTS"] = $arResult["ITEMS"][$index]["CARD_PRODUCTS"];
+                    }
+                    break;
+                case 4 :
+                    if (!empty($arResult["ITEMS"][$index]["TEXT_LIST"])) {
+                        $arResult["ITEMS"][$index]["SORT_ITEMS"][$k]["TEXT_LIST"] = $arResult["ITEMS"][$index]["TEXT_LIST"];
+                    }
+                    break;
+                case 5 :
+                    if (!empty($arResult["ITEMS"][$index]["TEXT_ACCORDION"])) {
+                        $arResult["ITEMS"][$index]["SORT_ITEMS"][$k]["TEXT_ACCORDION"] = $arResult["ITEMS"][$index]["TEXT_ACCORDION"];
+                    }
+                    break;
+                case 6 :
+                    if (!empty($arResult["ITEMS"][$index]["BENEFITS"])) {
+                        $arResult["ITEMS"][$index]["SORT_ITEMS"][$k]["BENEFITS"] = $arResult["ITEMS"][$index]["BENEFITS"];
+                    }
+                    break;
+                case 7 :
+                    if (!empty($arResult["ITEMS"][$index]["STRATEGY_TABS"])) {
+                        $arResult["ITEMS"][$index]["SORT_ITEMS"][$k]["STRATEGY_TABS"] = $arResult["ITEMS"][$index]["STRATEGY_TABS"];
+                    }
+                    if (!empty($arResult["ITEMS"][$index]["STRATEGY_ITEMS"])) {
+                        $arResult["ITEMS"][$index]["SORT_ITEMS"][$k]["STRATEGY_ITEMS"] = $arResult["ITEMS"][$index]["STRATEGY_ITEMS"];
+                    }
+                    break;
+                case 8 :
+                    if (!empty($arResult["ITEMS"][$index]["DETAIL_TEXT"])) {
+                        $arResult["ITEMS"][$index]["SORT_ITEMS"][$k]["DETAIL_TEXT"] = $arResult["ITEMS"][$index]["DETAIL_TEXT"];
+                    }
+                    break;
+            }
+        }
     }
 }

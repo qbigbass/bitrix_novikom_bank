@@ -1,0 +1,6 @@
+.search-item b {
+  color: var(--violet-100);
+  background-color: var(--purple-10);
+  padding: 0.1875em;
+  font-weight: normal;
+}

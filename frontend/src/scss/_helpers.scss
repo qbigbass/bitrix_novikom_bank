@@ -153,6 +153,11 @@
     }
 }
 
+.text-break {
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
 .btn-remove-replenishment {
   position: relative;
   top: 2rem;

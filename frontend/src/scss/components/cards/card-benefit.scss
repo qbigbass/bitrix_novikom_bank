@@ -5,13 +5,12 @@
 
     &__title,
     &__description {
-        word-wrap: break-word;
-        word-break: break-word;
+        @extend .text-break;
 
         & br {
             display: none;
 
-            @include use-media(laptop) {
+            @include use-media(tablet-album) {
                 display: inherit;
             }
         }
@@ -28,7 +27,7 @@
             height: 12.5rem;
         }
 
-        @include use-media(laptop) {
+        @include use-media(tablet-album) {
             position: absolute;
             width: 17.5rem;
             height: 17.5rem;
@@ -60,12 +59,20 @@
         overflow: hidden;
         height: 100%;
 
-        @include use-media(laptop) {
+        @include use-media(tablet-album) {
             min-height: 19rem; //304px
 
             & #{$root}__content {
                 max-width: 63%;
             }
+        }
+    }
+
+    &--lg-n6 {
+        @include use-media(tablet-album, laptop-x) {
+            margin-right: -2.5rem;
+            margin-left: -2.5rem;
+            min-width: calc(100% + 5rem);
         }
     }
 

@@ -327,6 +327,24 @@ function initCaptcha() {
     })
 }
 
+const ACCORDION_ELEMS = {
+    collapse: '.accordion-collapse'
+}
+
+function initFixScrollAccordions() {
+    const accordionsCollapse = document.querySelectorAll(ACCORDION_ELEMS.collapse)
+
+    if (!accordionsCollapse.length) return;
+
+    accordionsCollapse.forEach(accordion => {
+        accordion.addEventListener('shown.bs.collapse', (e) => {
+            accordion.scrollIntoView({
+                behavior: 'auto'
+            })
+        })
+    })
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     initDropdownMenu();
     setVh();
@@ -363,6 +381,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initChatBot();
     initCharts();
     pbScrollTo();
+    initFixScrollAccordions();
 });
 
 window.onload = function() {

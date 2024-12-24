@@ -388,7 +388,7 @@ block content
 
     +anchor-panel(anchorPanelList).sticky-lg-top
 
-    .scrollspy(data-bs-spy="scroll" data-bs-target="#navigation" tabindex="0" data-bs-root-margin="0px 0px -5%")
+    .scrollspy(data-bs-spy="scroll" data-bs-target="#navigation" tabindex="0")
         section#conversion-operations.section-layout.border-top.border-blue30
             .container
                 .row.row-gap-6.row-gap-lg-11
@@ -477,7 +477,7 @@ block content
                     .col-12
                         .row.row-gap-6.gx-xl-6.px-lg-6
                             each item in benefitList2
-                                .col-12.col-md-6.col-lg-4
+                                .col-12.col-md-6.col-xl-4
                                     +benefit(item.spriteData, item.title)
                     .col-12
                         +polygon-container("violet-100")
@@ -509,7 +509,7 @@ block content
 
         section#contacts.section-layout.bg-dark-30
             .container
-                h3.mb-4.mb-md-6.mb-lg-7.px-lg-6 Контакты
+                h3.mb-6.mb-lg-7.px-lg-6 Контакты
                 .row
                     .col-12
                         .swiper.slider-cards.js-slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:1,tablet-album:2,laptop:2,laptop-x:2" data-space-between="mobile-s:8,mobile:8,tablet:16,tablet-album:16,laptop:16,laptop-x:16")
@@ -518,6 +518,6 @@ block content
                                     .swiper-slide.js-swiper-slide
                                         +contact-block(item).contact-block--bg-white
 
-                            +slider-controls().mt-3.mt-md-4
+                            +slider-controls().mt-3
 
         include ../includes/layout/section-announcement

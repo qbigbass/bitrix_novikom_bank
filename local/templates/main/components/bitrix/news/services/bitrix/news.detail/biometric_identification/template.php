@@ -184,7 +184,7 @@ $helper = new ComponentHelper($component);
                                 <?if ($arResult['DISPLAY_PROPERTIES']['STEPS']['~DESCRIPTION'][$key]) : ?>
                                     <h4><?=$arResult['DISPLAY_PROPERTIES']['STEPS']['~DESCRIPTION'][$key]?></h4>
                                 <?endif;?>
-                                <p class="text-l no-mb rte"><?=$step['TEXT']?></p>
+                                <p class="text-l mb-0"><?=$step['TEXT']?></p>
                             </div>
                         </div>
                     <?endforeach;?>
@@ -204,7 +204,9 @@ $helper = new ComponentHelper($component);
                     </div>
                 <?endif;?>
                 <div class="col-12 m-0 rte">
-                    <?=$arResult['DISPLAY_PROPERTIES']['TEXT_BLOCK_2']['~VALUE']['TEXT']?>
+                    <div>
+                        <?=$arResult['DISPLAY_PROPERTIES']['TEXT_BLOCK_2']['~VALUE']['TEXT']?>
+                    </div>
                 </div>
             </div>
         </div>

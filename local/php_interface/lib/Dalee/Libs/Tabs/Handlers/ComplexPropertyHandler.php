@@ -106,7 +106,7 @@ class ComplexPropertyHandler implements PropertyHandlerInterface
                 '<div>
                     <h5>' . $complexFileHeader . '</h5>
                     <div class="link-list">
-                        <a class="d-flex flex-column gap-1 py-3 document-download text-m" href="' . $file['SRC'] . '" download="'. $fileName .'">'
+                        <a class="d-flex flex-column gap-2 py-3 document-download text-m" href="' . $file['SRC'] . '" download="'. $fileName .'">'
                             . $fileName .
                             '<div class="d-flex gap-1 align-items-center">
                                 <div class="document-download__file caption-m dark-70">

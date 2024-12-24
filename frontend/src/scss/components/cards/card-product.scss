@@ -72,8 +72,7 @@
 
     &__title,
     &__description {
-        word-wrap: break-word;
-        word-break: break-word;
+        @extend .text-break;
     }
 
     &__description {
@@ -258,6 +257,12 @@
                 line-height: 1.4;
                 max-width: unset;
             }
+        }
+    }
+
+    @at-root .card-offer-grid #{$root}--size-large {
+        @include use-media(laptop-x) {
+            min-height: 40rem;
         }
     }
 

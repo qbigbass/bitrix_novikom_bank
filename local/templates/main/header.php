@@ -35,7 +35,7 @@ $asset->addJs('/frontend/dist/js/setPage.js');
 $asset->addJs('/frontend/dist/js/sliders.js');
 $asset->addJs('/frontend/dist/js/tabs.js');
 $asset->addJs('/frontend/dist/js/charts.js');
-$asset->addJs('/frontend/dist/js/yMap.js');
+$asset->addJs('/frontend/dist/js/private-banking.js');
 $asset->addJs('/frontend/dist/js/index.js');
 $asset->addJs('/frontend/dist/js/accessibility-panel.js');
 ?>
