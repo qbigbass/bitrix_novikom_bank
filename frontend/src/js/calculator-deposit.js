@@ -175,23 +175,26 @@ const dataTemp = {
             "periodFrom": "6",
             "periodTo": "60",
             "sumFrom": "20000",
-            "sumTo": "5000000"
+            "sumTo": "5000000",
+            "strategicClient": null
         },
         {
             "loanType": "С поручительством физического лица",
-            "rate": "20.96",
-            "periodFrom": "66",
-            "periodTo": "606",
+            "rate": "24.50",
+            "periodFrom": "6",
+            "periodTo": "60",
             "sumFrom": "200006",
-            "sumTo": "50000006"
+            "sumTo": "50000006",
+            "strategicClient": null
         },
         {
             "loanType": "Без обеспечения",
             "rate": "16.5311",
-            "periodFrom": "0",
-            "periodTo": "7",
+            "periodFrom": "6",
+            "periodTo": "60",
             "sumFrom": "2000011",
-            "sumTo": "500000099"
+            "sumTo": "500000099",
+            "strategicClient": "Y"
         },
         {
             "loanType": "На рефинансирование",
@@ -199,7 +202,8 @@ const dataTemp = {
             "periodFrom": "6",
             "periodTo": "60",
             "sumFrom": "20000",
-            "sumTo": "5000000"
+            "sumTo": "5000000",
+            "strategicClient": "Y"
         },
         {
             "loanType": "С поручительством физического лица",
@@ -207,15 +211,17 @@ const dataTemp = {
             "periodFrom": "6",
             "periodTo": "60",
             "sumFrom": "20000",
-            "sumTo": "5000000"
+            "sumTo": "5000000",
+            "strategicClient": "Y"
         },
         {
             "loanType": "Без обеспечения",
             "rate": "19.9",
             "periodFrom": "6",
-            "periodTo": "7",
+            "periodTo": "60",
             "sumFrom": "20000",
-            "sumTo": "5000000"
+            "sumTo": "5000000",
+            "strategicClient": null
         }
     ]
 }
@@ -327,7 +333,7 @@ function createCurrencyList(STATE) {
 
 function showDepositResult(STATE) {
     STATE.elements.displayPeriod.innerHTML = getFormatedTextByType({value: STATE.period, type: 'day'});
-    STATE.elements.displayRate.innerHTML = `${STATE.rate} %`;
+    STATE.elements.displayRate.innerHTML = `${formatNumber(STATE.rate)} %`;
     STATE.elements.displayIncome.innerHTML = `${formatNumberWithSpaces(STATE.income.toFixed(0))} <span class="currency">${CURRENCIES[STATE.currency]}</span>`;
 }
 
@@ -646,26 +652,27 @@ const getDepositValues = (STATE) => {
     }
     // делаем выборку по валюте
     STATE.filteredData = STATE.calculatorData.filter(item => item.currency === STATE.currency);
+    if (STATE.filteredData.length === 0) {
+        console.error(`Не удалось найти данные по типу валюты ${STATE.currency}`);
+        STATE.filteredData = STATE.calculatorData[0];
+    }
 
     STATE.minPeriod = findMinValue('periodFrom', STATE.filteredData);
     STATE.maxPeriod = findMaxValue('periodTo', STATE.filteredData);
     STATE.minAmount = findMinValue('sumFrom', STATE.filteredData);
     STATE.maxAmount = findMaxValue('sumTo', STATE.filteredData);
+    STATE.capitalization = STATE.elements.inputCapitalization.checked;
 
     if (STATE.minPeriod !== STATE.maxPeriod) {
         STATE.steps = getStepsPeriod(STATE.filteredData);
     }
-    STATE.amount = Number(STATE.minAmount);
-    STATE.period = STATE.maxPeriod;
 
-
-    STATE.capitalization = STATE.elements.inputCapitalization.checked;
+    setStartValues(STATE);
 }
 
 const setDepositValues = (STATE, currencyTrigger) => {
     if (STATE.steps) {
         STATE.elements.inputPeriodWrapper.setAttribute('data-steps', STATE.steps);
-        STATE.elements.inputPeriodWrapper.setAttribute('data-start-value', STATE.maxPeriod);
         initInputSlider([STATE.elements.inputPeriodWrapper]);
     } else { // если период вклада не меняется
         STATE.elements.inputPeriodWrapper.remove();

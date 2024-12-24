@@ -4,24 +4,24 @@ mixin card-calculate-result(data, bgColor = 'bg-dark-0')
             each item in data.rows
                 .d-flex.flex-column.row-gap-2
                     span.card-calculate-result__label.text-s= item.title
-                    if item.link
-                        .d-flex.flex-column.flex-md-row.justify-content-md-between.flex-wrap.align-items-md-end
-                            span.text-number-ml.fw-bold.text-nowrap(class= item.additionalClass ? item.additionalClass : '')= item.value
-                                if item.currency
-                                    | &nbsp;
-                                    span.currency ₽
-                            button.btn.btn-link.btn-sm.btn-icon.mt-2.mt-md-0(type="button")
-                                span= item.link
-                                +svg-use("icon-chevron-right-small", "icon size-s")
-                    else
-                        span.text-number-ml.fw-bold.text-nowrap(class= item.additionalClass ? item.additionalClass : '')= item.value
-                            if item.currency
-                                | &nbsp;
-                                span.currency ₽
 
-        if data.btnText || data.notes
+                    span.text-number-ml.fw-bold.text-nowrap(class= item.additionalClass ? item.additionalClass : '')= item.value
+                        if item.currency
+                            | &nbsp;
+                            span.currency ₽
+
+        if data.btnText || data.notes || data.link
             .card-calculate-result__footer
                 if data.btnText
                     button(type="button").btn.btn-primary.btn-lg-lg.w-100= data.btnText
                 if data.notes
-                    p.dark-70.caption-m!= data.notes
+                    p.dark-70.caption-m.mb-0!= data.notes
+                if data.link
+                    a.btn.btn-link.btn-sm.btn-icon.mt-md-2.mt-lg-4.align-self-center(
+                        data-bs-toggle="collapse"
+                        href="#payment-loan-schedule"
+                        role="button"
+                        aria-expanded="false"
+                        aria-controls="payment-loan-schedule")
+                        span= data.link
+                        +svg-use("icon-chevron-down-small", "icon size-s")

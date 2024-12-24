@@ -39,13 +39,24 @@ function formatNumberWithSpaces(number) {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
 }
 
+function formatNumber(number) {
+    // Преобразуем число в строку
+    const parts = number.toString().split('.'); // Разделяем целую и дробную части
+    // Форматируем целую часть с разделителями
+    const integerPart = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+    // Форматируем дробную часть, если она существует
+    const decimalPart = parts.length > 1 ? ',' + parts[1] : '';
+    // Объединяем целую и дробную части
+    return integerPart + decimalPart;
+}
+
 function findActiveCurrency(elem) {
     const wrapper = elem.closest(JS_CLASSES.inputSliderWrapper);
     let activeCurrency = '₽';
 
     const currencyList = wrapper?.querySelector(ELEMS_DEPOSIT.currencyList);
     if (currencyList) {
-        activeCurrency = currencyList.querySelector(`${ELEMS_DEPOSIT.currencyButton}.${CLASSES_DEPOSIT.active}`).textContent;
+        activeCurrency = currencyList.querySelector(`${ELEMS_DEPOSIT.currencyButton}.${CLASSES_DEPOSIT.active}`)?.textContent;
     }
     return activeCurrency
 }

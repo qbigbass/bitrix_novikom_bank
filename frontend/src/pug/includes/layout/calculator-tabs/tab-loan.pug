@@ -10,7 +10,6 @@
                 title: 'Ежемесячный платеж',
                 value: '35 404,38',
                 currency: true,
-                // link: 'График платежей',
                 additionalClass: 'js-calculator-display-payment',
             },
             {
@@ -20,7 +19,8 @@
             }
         ],
         btnText: 'Оформить заявку',
-        notes: 'Калькулятор не&nbsp;гарантирует точность расчетов. Окончательные параметры кредита определяются по&nbsp;итогам рассмотрения заявки.'
+        notes: 'Калькулятор не&nbsp;гарантирует точность расчетов. Окончательные параметры кредита определяются по&nbsp;итогам рассмотрения заявки.',
+        link: 'График платежей'
     }
 
     var tabsList = [
@@ -40,23 +40,21 @@
         {
             label: 'Сумма кредита',
             id: 'amount-credit',
-            maxValue: 5000000,
-            minValue: 20000,
             startValue: 1000000,
             stepSize: 5000,
             type: "price",
             editable: true,
             additionalClass: "js-input-amount",
+            isCalculator: true
         },
         {
             label: 'Срок выплаты',
             id: 'payment-term',
-            maxValue: 60,
-            minValue: 6,
             startValue: 36,
             type: "month",
             editable: true,
             additionalClass: "js-input-period",
+            isCalculator: true
         }
     ]
 
@@ -64,53 +62,57 @@ include ../../../components/ui/input/input-slider
 
 .row.js-calculator-loan(data-table="loan")
     .col-12.col-lg-6
-        .d-none.d-lg-inline-flex
-            +nav-tabs(tabsList)
+        // TODO: пока закоментирован не понятно нужен ли этот функционал, т.к. дублируется ниже
+        //.d-none.d-lg-inline-flex
+        //    +nav-tabs(tabsList)
+        //
+        //.d-lg-none
+        //    select.form-select.form-select--size-small.js-select.js-select-loan-type
+        //        option(selected value="loan") Потребительский кредит
+        //        option(value="refinance") Рефинансирование
+        //.pt-4.pt-md-6.pt-lg-7.pe-xl-6
+        .d-flex.flex-column.row-gap-4.row-gap-md-6.row-gap-lg-7
+            each input in inputSliderList
+                +input-slider(input)
 
-        .d-lg-none
-            select.form-select.form-select--size-small.js-select.js-select-loan-type
-                option(selected value="loan") Потребительский кредит
-                option(value="refinance") Рефинансирование
-        .tab-content.pt-4.pt-md-6.pt-lg-7.pe-xl-6
-            #loan-consumer.tab-pane.fade.show.active(role="tabpanel" aria-labelledby="loan" tabindex="0")
-                .d-flex.flex-column.row-gap-4.row-gap-md-6.row-gap-lg-7
-                    each input in inputSliderList
-                        +input-slider(input)
+            .d-flex.flex-column.row-gap-4
+                .form-check
+                    input#inp-loan-card(type="checkbox" value="" checked).form-check-input.js-inp-loan-card
+                    label(for="inp-loan-card").form-check-label
+                        a(href="#") Получаю зарплату на&nbsp;карту Новиком
 
-                    .d-flex.flex-column.row-gap-4
-                        .form-check
-                            input#inp-loan-card(type="checkbox" value="" checked).form-check-input.js-inp-loan-card
-                            label(for="inp-loan-card").form-check-label
-                                a(href="#") Получаю зарплату на&nbsp;карту Новиком
+                .form-check
+                    input#inp-loan-insurance(type="checkbox" value="").form-check-input.js-loan-insurance
+                    label(for="inp-loan-insurance").form-check-label
+                        | Страхование
+                .d-flex.flex-column.row-gap-4.row-gap-lg-6
+                    .d-flex.flex-column.row-gap-2
+                        label(for="select-loan-properties").form-label.mb-0
+                            | Особенности
+                        select#select-loan-properties(aria-label="Подсказка").form-select.js-select.js-select-loan-properties
+                            option(selected value="С поручительством физического лица") С поручительством физического лица
+                            option(value="Без обеспечения") Без обеспечения
+                            option(value="На рефинансирование") На рефинансирование
 
-                        .form-check
-                            input#inp-loan-insurance(type="checkbox" value="").form-check-input.js-loan-insurance
-                            label(for="inp-loan-insurance").form-check-label
-                                | Страхование
-                        .d-flex.flex-column.row-gap-4.row-gap-lg-6
-                            .d-flex.flex-column.row-gap-2
-                                label(for="select-loan-properties").form-label.mb-0
-                                    | Особенности
-                                select#select-loan-properties(aria-label="Подсказка").form-select.js-select.js-select-loan-properties
-                                    option(selected value="1") С поручительством физического лица
-                                    option(value="2") Без обеспечения
-                                    option(value="3") На рефинансирование
-
-                            .d-flex.flex-column.row-gap-2
-                                label(for="select-loan-payment-type").form-label.mb-0
-                                    | Тип платежей
-                                select#select-loan-payment-type(aria-label="Подсказка").form-select.js-select.js-select-loan-payment-type
-                                    option(selected value="1") Аннуитетные платежи
-                                    option(value="2") Дифференцированные платежи
-
-                        button.btn.btn-link.btn-sm.btn-icon.js-add-replenishment(type="button")
-                            +svg-use("icon-plus", "icon size-s")
-                            | Добавить пополнение
-
-            #refinance.tab-pane.fade(role="tabpanel" aria-labelledby="refinance" tabindex="0")
-                p refinance
+                    .d-flex.flex-column.row-gap-2
+                        label(for="select-loan-payment-type").form-label.mb-0
+                            | Тип платежей
+                        select#select-loan-payment-type(aria-label="Подсказка").form-select.js-select.js-select-loan-payment-type
+                            option(selected value="annuity") Аннуитетные платежи
+                            option(value="differentiated") Дифференцированные платежи
 
     .col-12.col-lg-6.mt-4.mt-md-6.mt-lg-0
         .ps-xxl-6
             +polygon-container()
                 +card-calculate-result(calculatorData)
+    #payment-loan-schedule.col-12.collapse
+        .payment-schedule.mt-6.pt-6.mt-md-7.pt-md-7.mt-lg-9.pt-lg-9.custom-overflow-scrollbar
+            table.table.table--bg-transparent.text-center
+                thead
+                    tr
+                        th(scope="col") Месяц
+                        th(scope="col") Оплата процентов
+                        th(scope="col") Оплата основного долга
+                        th(scope="col") Ежемесячный платеж
+                        th(scope="col") Остаток погашения
+                tbody#payment-loan-table-body
