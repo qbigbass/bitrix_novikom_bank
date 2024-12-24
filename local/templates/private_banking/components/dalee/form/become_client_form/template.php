@@ -49,7 +49,7 @@ $this->setFrameMode(true);
         </div>
     </div>
     <div class="form-check form-check--pb">
-        <input class="form-check-input" id="personal" type="checkbox" checked>
+        <input class="form-check-input" id="personal" type="checkbox">
         <label class="form-check-label" for="personal">Я&nbsp;согласен с&nbsp;условиями использования банком моих персональных данных для обработки данного обращения</label>
     </div>
     <div class="pb-form__footer d-flex justify-content-center">
