@@ -114,6 +114,4 @@ $helper = new ComponentHelper($component);
         </picture>
     </section>
 <?endif;?>
-<?$APPLICATION->IncludeFile('/local/php_interface/include/cross_sale_products_block.php')?>
-
 <?$helper->saveCache();?>
