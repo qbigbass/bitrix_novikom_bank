@@ -15,9 +15,6 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
  * @var CBitrixComponentTemplate $this
  */
 $this->setFrameMode(true);
-
-AddMessage2Log('here');
-
 ?>
 <form class="pb-form d-flex flex-column row-gap-4 row-gap-lg-5" action="#">
     <h4 class="pb-form__title dark-0 text-center">Стать клиентом</h4>
@@ -50,7 +47,7 @@ AddMessage2Log('here');
         </div>
     </div>
     <div class="form-check form-check--pb">
-        <input class="form-check-input" id="personal" type="checkbox" checked>
+        <input class="form-check-input" id="personal" type="checkbox">
         <label class="form-check-label" for="personal">Я&nbsp;согласен с&nbsp;условиями использования банком моих персональных данных для обработки данного обращения</label>
     </div>
     <div class="pb-form__footer d-flex justify-content-center">

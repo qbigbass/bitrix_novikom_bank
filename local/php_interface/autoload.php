@@ -10,5 +10,5 @@ use Bitrix\Main\Loader;
 //]);
 
 Loader::registerNamespace('Dalee', __DIR__ . '/lib/Dalee');
-Loader::registerNamespace('Dalee\\Jsoneditor\\', $_SERVER['DOCUMENT_ROOT'] . '/local/modules/dalee.jsoneditor/lib');
-Loader::registerNamespace('Dalee\\Jsonschema\\', $_SERVER['DOCUMENT_ROOT'] . '/local/modules/dalee.jsonschema/lib');
+//Loader::registerNamespace('Dalee\\Jsoneditor\\', $_SERVER['DOCUMENT_ROOT'] . '/local/modules/dalee.jsoneditor/lib');
+//Loader::registerNamespace('Dalee\\Jsonschema\\', $_SERVER['DOCUMENT_ROOT'] . '/local/modules/dalee.jsonschema/lib');

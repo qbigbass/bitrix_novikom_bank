@@ -65,10 +65,10 @@ const data = {
     }
 }
 
-const ajv = new window.ajv7();
-const validate = ajv.compile(schema)
-const valid = validate(data)
-if (!valid) {
-    console.log(validate.errors)
-}
-console.log({valid})
+// const ajv = new window.ajv7();
+// const validate = ajv.compile(schema)
+// const valid = validate(data)
+// if (!valid) {
+//     console.log(validate.errors)
+// }
+// console.log({valid})
