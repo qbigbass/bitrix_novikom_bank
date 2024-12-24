@@ -349,42 +349,44 @@ use Bitrix\Main\Localization\Loc;
                                                     </div>
                                                 </div>
                                                 <? if(!empty($contact["PHONES"]) || !empty($contact["EMAIL"])): ?>
-                                                    <div class="d-flex flex-column gap-4 dark-0 mt-0">
-                                                        <ul class="list-contact d-flex flex-column row-gap-3">
-                                                            <? if(!empty($contact["PHONES"])) : ?>
-                                                                <? foreach ($contact["PHONES"] as $phone => $additional): ?>
+                                                    <div class="mt-auto">
+                                                        <div class="d-flex flex-column gap-4 dark-0 mt-0">
+                                                            <ul class="list-contact d-flex flex-column row-gap-3">
+                                                                <? if(!empty($contact["PHONES"])) : ?>
+                                                                    <? foreach ($contact["PHONES"] as $phone => $additional): ?>
+                                                                        <li class="d-flex column-gap-3">
+                                                                            <span class="icon size-m flex-shrink-0 dark-0">
+                                                                                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                                                                    <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-phone"></use>
+                                                                                </svg>
+                                                                            </span>
+                                                                            <div class="list-contact__text d-flex flex-wrap gap-2">
+                                                                                <a class="list-contact__link" href="tel:<?= $phone ?>">
+                                                                                    <span class="text-l"><?= $phone ?></span>
+                                                                                </a>
+                                                                                <? if(!empty($additional)): ?>
+                                                                                    <span class="caption-m chip chip--outlined">доб. <?= $additional ?></span>
+                                                                                <? endif; ?>
+                                                                            </div>
+                                                                        </li>
+                                                                    <? endforeach; ?>
+                                                                <? endif; ?>
+                                                                <? if(!empty($contact["EMAIL"])):?>
                                                                     <li class="d-flex column-gap-3">
                                                                         <span class="icon size-m flex-shrink-0 dark-0">
                                                                             <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                                                                <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-phone"></use>
+                                                                                <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-mail"></use>
                                                                             </svg>
                                                                         </span>
                                                                         <div class="list-contact__text d-flex flex-wrap gap-2">
-                                                                            <a class="list-contact__link" href="tel:<?= $phone ?>">
-                                                                                <span class="text-l"><?= $phone ?></span>
+                                                                            <a class="text-decoration-underline list-contact__link" href="mailto:<?= $contact["EMAIL"] ?>">
+                                                                                <span class="text-l"><?= $contact["EMAIL"] ?></span>
                                                                             </a>
-                                                                            <? if(!empty($additional)): ?>
-                                                                                <span class="caption-m chip chip--outlined">доб. <?= $additional ?></span>
-                                                                            <? endif; ?>
                                                                         </div>
                                                                     </li>
-                                                                <? endforeach; ?>
-                                                            <? endif; ?>
-                                                            <? if(!empty($contact["EMAIL"])):?>
-                                                                <li class="d-flex column-gap-3">
-                                                                    <span class="icon size-m flex-shrink-0 dark-0">
-                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                                                            <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-mail"></use>
-                                                                        </svg>
-                                                                    </span>
-                                                                    <div class="list-contact__text d-flex flex-wrap gap-2">
-                                                                        <a class="text-decoration-underline list-contact__link" href="mailto:<?= $contact["EMAIL"] ?>">
-                                                                            <span class="text-l"><?= $contact["EMAIL"] ?></span>
-                                                                        </a>
-                                                                    </div>
-                                                                </li>
-                                                            <?endif;?>
-                                                        </ul>
+                                                                <?endif;?>
+                                                            </ul>
+                                                        </div>
                                                     </div>
                                                 <? endif; ?>
                                             </div>

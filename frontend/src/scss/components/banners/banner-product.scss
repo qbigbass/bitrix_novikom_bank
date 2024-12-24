@@ -296,6 +296,14 @@
             max-width: unset;
         }
 
+        #{$root}__benefits-list {
+            gap: 1.5rem;
+
+            @include use-media(tablet-album) {
+                gap: 3rem;
+            }
+        }
+
         #{$root}__image {
             margin: -1rem -1.5rem;
 
