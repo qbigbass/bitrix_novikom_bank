@@ -133,7 +133,7 @@ function addSelectDateOptions() {
     }
 
     const optionToday = document.createElement('option');
-    optionToday.value = formatDate(today);
+    optionToday.value = today;
     optionToday.text = formatDate(today);
     select.appendChild(optionToday);
 
