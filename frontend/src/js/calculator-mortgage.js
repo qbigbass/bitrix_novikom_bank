@@ -50,35 +50,33 @@ function initElementsMortgageCalculator(root) {
     }
 }
 
-async function initStateMortgageCalculator(calculator) {
-    const { table } = calculator.dataset;
+function initStateMortgageCalculator(calculator) {
+    return getRates(calculator.dataset)
+        .then(calculatorData => {
+            const elements = initElementsMortgageCalculator(calculator);
 
-    const calculatorData = await getRates(table);
-
-    if (!calculatorData) {
-        console.log('initStateMortgageCalculator error', initStateMortgageCalculator)
-        return false
-    }
-
-    const elements = initElementsMortgageCalculator(calculator);
-
-    return {
-        elements,
-        calculatorData
-    }
+            return {
+                elements,
+                calculatorData
+            }
+        })
+        .catch((error) => {
+            console.error('error initStateMortgageCalculator', error);
+        })
 }
 
 async function initCalculatorMortgage() {
     const calculatorsMortgage = document.querySelectorAll(ELEMS_MORTGAGE.root);
 
     for (const calculator of calculatorsMortgage) {
-        const STATE = await initStateMortgageCalculator(calculator);
-
-        if (!STATE) {
-            return false;
-        }
-
-        // getLoanValues(STATE);
-        // setLoanValues(STATE);
+        initStateMortgageCalculator(calculator)
+            .then(STATE => {
+                console.log('STATE', STATE);
+                // getMortgageValues(STATE);
+                // setMortgageValues(STATE);
+            })
+            .catch((error) => {
+                console.error('error initCalculatorMortgage', error);
+            })
     }
 }

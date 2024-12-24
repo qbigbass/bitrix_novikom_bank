@@ -124,7 +124,7 @@ function initElementsBonusCalculator(root) {
 }
 
 function initStateBonusCalculator(calculator) {
-    getRates(calculator.dataset)
+    return getRates(calculator.dataset)
         .then(calculatorData => {
             const elements = initElementsBonusCalculator(calculator);
 

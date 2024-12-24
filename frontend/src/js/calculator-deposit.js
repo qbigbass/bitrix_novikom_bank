@@ -38,7 +38,7 @@ function getRates({table = null, elementId = null, name = null}) {
     if (elementId !== null) params.append('elementId', elementId);
     if (name !== null) params.append('name', name);
 
-    fetch(URL, {
+    return fetch(URL, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
@@ -366,7 +366,7 @@ const initElementsDepositCalculator = (root) => {
 }
 
 function initStateDepositCalculator(calculator) {
-    getRates(calculator.dataset)
+    return getRates(calculator.dataset)
         .then(calculatorData => {
 
             // обработка поля sumFrom, когда значение не задано

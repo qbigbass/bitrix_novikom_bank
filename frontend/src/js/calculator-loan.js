@@ -227,9 +227,7 @@ function initElementsLoanCalculator(root) {
 }
 
 function initStateLoanCalculator(calculator) {
-    const { table } = calculator.dataset;
-
-    getRates(calculator.dataset)
+    return getRates(calculator.dataset)
         .then(calculatorData => {
             console.log('initStateLoanCalculator', calculatorData);
 
