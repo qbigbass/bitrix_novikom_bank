@@ -23,7 +23,6 @@ $eventManager->addEventHandler('iblock', 'OnAfterIBlockElementAdd', [CIBEditComp
 $eventManager->addEventHandler('iblock', 'OnAfterIBlockElementUpdate', [CIBEditComplexProp::class, 'OnAfterIBlockElementUpdateHandler']);
 
 $eventManager->addEventHandler('main', 'OnBeforeProlog', [CIBEditComplexProp::class, 'OnBeforePrologHandler']);
-
 $eventManager->addEventHandler("main", "OnEndBufferContent", [RatesPlaceholderManager::class, 'handle']);
 
 $eventManager->addEventHandler('form', 'OnBeforeResultAdd', [FormHelper::class, 'onBeforeResultAdd']);
