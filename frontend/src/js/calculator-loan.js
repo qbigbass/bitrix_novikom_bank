@@ -92,7 +92,7 @@ function calculateMonthlyPayment({amount, rate, period, paymentType}) {
 function showLoanResult(STATE) {
     STATE.elements.displayRate.textContent = `${formatNumber(STATE.rate)} %`;
     STATE.elements.displayPayment.innerHTML = `${formatNumber(STATE.payment.toFixed(2))} <span class="currency">₽</span>`;
-    STATE.elements.fullCost.innerHTML = `${STATE.fullCost} %`;
+    STATE.elements.displayFullCost.innerHTML = `${STATE.fullCost} %`;
 
     // Рассчитываем платежи
     const paymentSchedule = STATE.paymentType === 'differentiated' ? calculateDifferentiatedPayments(STATE) : calculatePayments(STATE);
