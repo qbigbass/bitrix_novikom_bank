@@ -357,6 +357,8 @@ document.addEventListener('DOMContentLoaded', () => {
     hideDropDownMenu();
     initCalculatorDeposit();
     initCalculatorLoan();
+    initCalculatorMortgage();
+    initCalculatorBonus();
     initOffices();
     initChatBot();
     initCharts();

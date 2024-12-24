@@ -92,6 +92,7 @@ function calculateMonthlyPayment({amount, rate, period, paymentType}) {
 function showLoanResult(STATE) {
     STATE.elements.displayRate.textContent = `${formatNumber(STATE.rate)} %`;
     STATE.elements.displayPayment.innerHTML = `${formatNumber(STATE.payment.toFixed(2))} <span class="currency">₽</span>`;
+    STATE.elements.fullCost.innerHTML = `${STATE.fullCost} %`;
 
     // Рассчитываем платежи
     const paymentSchedule = STATE.paymentType === 'differentiated' ? calculateDifferentiatedPayments(STATE) : calculatePayments(STATE);
@@ -186,12 +187,15 @@ const getLoanValues = (STATE) => {
     STATE.minAmount = STATE.filteredData.sumFrom;
     STATE.maxAmount = STATE.filteredData.sumTo;
     STATE.rate = STATE.filteredData.rate;
+    // TODO: переделать, когда будут данные fullCost в апи
+    // STATE.fullCost = STATE.filteredData.fullCost;
+    STATE.fullCost = "16,464 – 20,474";
 
     setStartValues(STATE);
     STATE.payment = calculateMonthlyPayment(STATE);
 }
 
-function initElementsCalculator(root) {
+function initElementsLoanCalculator(root) {
     const displayRate = root.querySelector(ELEMS_DEPOSIT.rate);
     const displayPayment = root.querySelector(ELEMS_LOAN.payment);
     const displayFullCost = root.querySelector(ELEMS_LOAN.fullCost);
@@ -222,14 +226,14 @@ function initElementsCalculator(root) {
     }
 }
 
-async function initStateCalculator(calculator) {
-    const {table } = calculator.dataset;
+async function initStateLoanCalculator(calculator) {
+    const { table } = calculator.dataset;
 
     const calculatorData = await getRates(table);
 
     if (!calculatorData) { return false }
 
-    const elements = initElementsCalculator(calculator);
+    const elements = initElementsLoanCalculator(calculator);
 
     return {
         elements,
@@ -241,7 +245,7 @@ async function initCalculatorLoan() {
     const calculatorsLoan = document.querySelectorAll(ELEMS_LOAN.root);
 
     for (const calculator of calculatorsLoan) {
-        const STATE = await initStateCalculator(calculator);
+        const STATE = await initStateLoanCalculator(calculator);
 
         if (!STATE) {
             return false;

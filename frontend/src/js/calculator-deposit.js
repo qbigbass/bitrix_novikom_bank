@@ -1,231 +1,3 @@
-// TODO: удалить перед пушем
-const dataTemp1 = {
-    "data": [
-        {
-            "currency": "Рубли",
-            "rate": "18.5",
-            "effectiveRate": null,
-            "periodFrom": "1100",
-            "periodTo": "1100",
-            "sumFrom": "30000000",
-            "sumTo": "100000000",
-            "minimumBalance": null
-        },
-        {
-            "currency": "Рубли",
-            "rate": "18.2",
-            "effectiveRate": null,
-            "periodFrom": "550",
-            "periodTo": "550",
-            "sumFrom": "30000000",
-            "sumTo": "100000000",
-            "minimumBalance": null
-        },
-        {
-            "currency": "Рубли",
-            "rate": "20.2",
-            "effectiveRate": null,
-            "periodFrom": "250",
-            "periodTo": "250",
-            "sumFrom": "10000",
-            "sumTo": "1499999",
-            "minimumBalance": null
-        },
-        {
-            "currency": "Рубли",
-            "rate": "21",
-            "effectiveRate": null,
-            "periodFrom": "550",
-            "periodTo": "550",
-            "sumFrom": "10000",
-            "sumTo": "1499999",
-            "minimumBalance": null
-        },
-        {
-            "currency": "Рубли",
-            "rate": "21",
-            "effectiveRate": null,
-            "periodFrom": "1100",
-            "periodTo": "1100",
-            "sumFrom": "10000",
-            "sumTo": "1499999",
-            "minimumBalance": null
-        },
-        {
-            "currency": "Рубли",
-            "rate": "17.4",
-            "effectiveRate": null,
-            "periodFrom": "250",
-            "periodTo": "250",
-            "sumFrom": "1500000",
-            "sumTo": "4999999",
-            "minimumBalance": null
-        },
-        {
-            "currency": "Рубли",
-            "rate": "18",
-            "effectiveRate": null,
-            "periodFrom": "550",
-            "periodTo": "550",
-            "sumFrom": "1500000",
-            "sumTo": "4999999",
-            "minimumBalance": null
-        },
-        {
-            "currency": "Рубли",
-            "rate": "18.2",
-            "effectiveRate": null,
-            "periodFrom": "1100",
-            "periodTo": "1100",
-            "sumFrom": "1500000",
-            "sumTo": "4999999",
-            "minimumBalance": null
-        },
-        {
-            "currency": "Рубли",
-            "rate": "17.5",
-            "effectiveRate": null,
-            "periodFrom": "250",
-            "periodTo": "250",
-            "sumFrom": "5000000",
-            "sumTo": "29999999",
-            "minimumBalance": null
-        },
-        {
-            "currency": "Рубли",
-            "rate": "18.1",
-            "effectiveRate": null,
-            "periodFrom": "550",
-            "periodTo": "550",
-            "sumFrom": "5000000",
-            "sumTo": "29999999",
-            "minimumBalance": null
-        },
-        {
-            "currency": "Рубли",
-            "rate": "18.3",
-            "effectiveRate": null,
-            "periodFrom": "1100",
-            "periodTo": "1100",
-            "sumFrom": "5000000",
-            "sumTo": "29999999",
-            "minimumBalance": null
-        },
-        {
-            "currency": "Рубли",
-            "rate": "17.6",
-            "effectiveRate": null,
-            "periodFrom": "250",
-            "periodTo": "250",
-            "sumFrom": "30000000",
-            "sumTo": "100000000",
-            "minimumBalance": null
-        }
-    ]
-}
-const dataTemp2 = {
-    "data": [
-        {
-            "currency": "Рубли",
-            "rate": "0.1",
-            "effectiveRate": null,
-            "periodFrom": "365",
-            "periodTo": "365",
-            "sumFrom": "не ограничен",
-            "sumTo": "999999999",
-            "minimumBalance": null
-        },
-        {
-            "currency": "Доллары",
-            "rate": "0.01",
-            "effectiveRate": null,
-            "periodFrom": "365",
-            "periodTo": "365",
-            "sumFrom": "5",
-            "sumTo": "999999999",
-            "minimumBalance": null
-        },
-        {
-            "currency": "Евро",
-            "rate": "0.01",
-            "effectiveRate": null,
-            "periodFrom": "365",
-            "periodTo": "365",
-            "sumFrom": "5",
-            "sumTo": "999999999",
-            "minimumBalance": null
-        },
-        {
-            "currency": "Юань",
-            "rate": "0.01",
-            "effectiveRate": null,
-            "periodFrom": "365",
-            "periodTo": "365",
-            "sumFrom": "5",
-            "sumTo": "999999999",
-            "minimumBalance": null
-        }
-    ]
-}
-const dataTemp = {
-    "data": [
-        {
-            "loanType": "На рефинансирование",
-            "rate": "20.9",
-            "periodFrom": "6",
-            "periodTo": "60",
-            "sumFrom": "20000",
-            "sumTo": "5000000",
-            "strategicClient": null
-        },
-        {
-            "loanType": "С поручительством физического лица",
-            "rate": "24.50",
-            "periodFrom": "6",
-            "periodTo": "60",
-            "sumFrom": "200006",
-            "sumTo": "50000006",
-            "strategicClient": null
-        },
-        {
-            "loanType": "Без обеспечения",
-            "rate": "16.5311",
-            "periodFrom": "6",
-            "periodTo": "60",
-            "sumFrom": "2000011",
-            "sumTo": "500000099",
-            "strategicClient": "Y"
-        },
-        {
-            "loanType": "На рефинансирование",
-            "rate": "19.9",
-            "periodFrom": "6",
-            "periodTo": "60",
-            "sumFrom": "20000",
-            "sumTo": "5000000",
-            "strategicClient": "Y"
-        },
-        {
-            "loanType": "С поручительством физического лица",
-            "rate": "19.9",
-            "periodFrom": "6",
-            "periodTo": "60",
-            "sumFrom": "20000",
-            "sumTo": "5000000",
-            "strategicClient": "Y"
-        },
-        {
-            "loanType": "Без обеспечения",
-            "rate": "19.9",
-            "periodFrom": "6",
-            "periodTo": "60",
-            "sumFrom": "20000",
-            "sumTo": "5000000",
-            "strategicClient": null
-        }
-    ]
-}
-
 const ELEMS_DEPOSIT = {
     root: '.js-calculator-deposit',
     replenishment: '.js-replenishment',
@@ -265,27 +37,26 @@ async function getRates(table = null, elementId = null, name = null) {
     if (table !== null) params.append('table', table);
     if (elementId !== null) params.append('elementId', elementId);
     if (name !== null) params.append('name', name);
-    return dataTemp.data;
-    // TODO: заменить перед пушем
-    // fetch(URL, {
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-Type': 'application/x-www-form-urlencoded'
-    //     },
-    //     body: params
-    // })
-    //     .then(response => response.json())
-    //     .then(data => {
-    //         if (data.error) {
-    //             console.error('Ошибка:', data.error);
-    //         } else if (data.data) {
-    //             console.log(data.data);
-    //             return data.data;
-    //         }
-    //     })
-    //     .catch(error => {
-    //         console.error('Error:', error);
-    //     })
+
+    fetch(URL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: params
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                console.error('Ошибка:', data.error);
+            } else if (data.data) {
+                console.log(data.data);
+                return data.data;
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        })
 }
 
 function handlerClickTabCurrency(event, STATE) {
