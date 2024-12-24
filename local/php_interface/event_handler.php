@@ -27,5 +27,4 @@ $eventManager->addEventHandler("main", "OnEndBufferContent", [RatesPlaceholderMa
 
 $eventManager->addEventHandler('form', 'OnBeforeResultAdd', [FormHelper::class, 'onBeforeResultAdd']);
 
-$eventManager->addEventHandler("iblock", "OnAfterIBlockElementUpdate", [CacheHandler::class, "clearCache"]);
-$eventManager->addEventHandler("iblock", "OnAfterIBlockElementAdd", [CacheHandler::class, "clearCache"]);
+$eventManager->addEventHandler("iblock", "OnAfterIBlockElementUpdate", [CacheHandler::class, "onAfterIBlockElementUpdateHandler"]);
