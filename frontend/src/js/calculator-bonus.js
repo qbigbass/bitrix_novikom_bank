@@ -123,32 +123,33 @@ function initElementsBonusCalculator(root) {
 
 }
 
-async function initStateBonusCalculator(calculator) {
-    const { table } = calculator.dataset;
+function initStateBonusCalculator(calculator) {
+    getRates(calculator.dataset)
+        .then(calculatorData => {
+            const elements = initElementsBonusCalculator(calculator);
 
-    const calculatorData = await getRates(table);
-
-    if (!calculatorData) { return false }
-
-    const elements = initElementsBonusCalculator(calculator);
-
-    return {
-        elements,
-        calculatorData
-    }
+            return {
+                elements,
+                calculatorData
+            }
+        })
+        .catch(error => {
+            console.error('Ошибка при получении данных:', error);
+        });
 }
 
-async function initCalculatorBonus() {
+function initCalculatorBonus() {
     const calculatorsBonus = document.querySelectorAll(ELEMS_BONUS.root);
 
     for (const calculator of calculatorsBonus) {
-        const STATE = await initStateBonusCalculator(calculator);
+        initStateBonusCalculator(calculator)
+            .then(STATE => {
+                getBonusValues(STATE);
+                setBonusValues(STATE);
+            })
+            .catch(error => {
+                console.error('Ошибка в initCalculatorBonus функции:', error);
+            });
 
-        if (!STATE) {
-            return false;
-        }
-
-        getBonusValues(STATE);
-        setBonusValues(STATE);
     }
 }

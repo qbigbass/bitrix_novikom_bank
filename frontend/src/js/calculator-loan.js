@@ -226,34 +226,36 @@ function initElementsLoanCalculator(root) {
     }
 }
 
-async function initStateLoanCalculator(calculator) {
+function initStateLoanCalculator(calculator) {
     const { table } = calculator.dataset;
 
-    const calculatorData = await getRates(table);
+    getRates(calculator.dataset)
+        .then(calculatorData => {
+            console.log('initStateLoanCalculator', calculatorData);
 
-    console.log('initStateLoanCalculator', calculatorData)
+            const elements = initElementsLoanCalculator(calculator);
 
-    if (!calculatorData) { return false }
-
-    const elements = initElementsLoanCalculator(calculator);
-
-    return {
-        elements,
-        calculatorData
-    }
+            return {
+                elements,
+                calculatorData
+            }
+        })
+        .catch((error) => {
+            console.error('error initStateLoanCalculator', error);
+        })
 }
 
-async function initCalculatorLoan() {
+function initCalculatorLoan() {
     const calculatorsLoan = document.querySelectorAll(ELEMS_LOAN.root);
 
     for (const calculator of calculatorsLoan) {
-        const STATE = await initStateLoanCalculator(calculator);
-
-        if (!STATE) {
-            return false;
-        }
-
-        getLoanValues(STATE);
-        setLoanValues(STATE);
+        initStateLoanCalculator(calculator)
+            .then(STATE => {
+                getLoanValues(STATE);
+                setLoanValues(STATE);
+            })
+            .catch((error) => {
+                console.error('error initCalculatorLoan', error);
+            })
     }
 }

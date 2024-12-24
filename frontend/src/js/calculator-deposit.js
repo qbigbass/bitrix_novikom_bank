@@ -32,7 +32,7 @@ const CURRENCIES = {
 
 const URL = '/local/php_interface/ajax/calc.php';
 
-async function getRates(table = null, elementId = null, name = null) {
+function getRates({table = null, elementId = null, name = null}) {
     const params = new URLSearchParams();
     if (table !== null) params.append('table', table);
     if (elementId !== null) params.append('elementId', elementId);
@@ -365,29 +365,27 @@ const initElementsDepositCalculator = (root) => {
     }
 }
 
-async function initStateDepositCalculator(calculator) {
-    const {table, id, name } = calculator.dataset;
+function initStateDepositCalculator(calculator) {
+    getRates(calculator.dataset)
+        .then(calculatorData => {
 
-    const calculatorData = await getRates(table, id, name);
+            // обработка поля sumFrom, когда значение не задано
+            calculatorData.forEach((elem) => {
+                if (elem.sumFrom === "не ограничен") {
+                    elem.sumFrom = MIN_DEPOSIT_VALUE;
+                }
+            })
 
-    if (!calculatorData) {
-        console.log('error initStateDepositCalculator')
-        return false
-    }
+            const elements = initElementsDepositCalculator(calculator);
 
-    // обработка поля sumFrom, когда значение не задано
-    calculatorData.forEach((elem) => {
-        if (elem.sumFrom === "не ограничен") {
-            elem.sumFrom = MIN_DEPOSIT_VALUE;
-        }
-    })
-
-    const elements = initElementsDepositCalculator(calculator);
-
-    return {
-        elements,
-        calculatorData
-    }
+            return {
+                elements,
+                calculatorData
+            }
+        })
+        .catch(error => {
+            console.error('error initStateDepositCalculator', error);
+        });
 }
 
 const getPeriodValue = (input) => {
@@ -497,18 +495,18 @@ const setDepositValues = (STATE, currencyTrigger) => {
     })
 }
 
-async function initCalculatorDeposit() {
+function initCalculatorDeposit() {
     const calculatorsDeposit = document.querySelectorAll(ELEMS_DEPOSIT.root);
 
     for (const calculator of calculatorsDeposit) {
-        const STATE = await initStateDepositCalculator(calculator);
-
-        if (!STATE) {
-            return false;
-        }
-
-        getDepositValues(STATE);
-        initReplenishment(calculator, STATE);
-        setDepositValues(STATE);
+        initStateDepositCalculator(calculator)
+            .then(STATE => {
+                getDepositValues(STATE);
+                initReplenishment(calculator, STATE);
+                setDepositValues(STATE);
+            })
+            .catch(error => {
+                console.error('Ошибка в initCalculatorDeposit функции:', error);
+            });
     }
 }
