@@ -55,7 +55,10 @@ async function initStateMortgageCalculator(calculator) {
 
     const calculatorData = await getRates(table);
 
-    if (!calculatorData) { return false }
+    if (!calculatorData) {
+        console.log('initStateMortgageCalculator error', initStateMortgageCalculator)
+        return false
+    }
 
     const elements = initElementsMortgageCalculator(calculator);
 

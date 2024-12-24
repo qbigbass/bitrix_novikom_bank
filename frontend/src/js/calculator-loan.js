@@ -231,6 +231,8 @@ async function initStateLoanCalculator(calculator) {
 
     const calculatorData = await getRates(table);
 
+    console.log('initStateLoanCalculator', calculatorData)
+
     if (!calculatorData) { return false }
 
     const elements = initElementsLoanCalculator(calculator);

@@ -370,7 +370,10 @@ async function initStateDepositCalculator(calculator) {
 
     const calculatorData = await getRates(table, id, name);
 
-    if (!calculatorData) { return false }
+    if (!calculatorData) {
+        console.log('error initStateDepositCalculator')
+        return false
+    }
 
     // обработка поля sumFrom, когда значение не задано
     calculatorData.forEach((elem) => {
