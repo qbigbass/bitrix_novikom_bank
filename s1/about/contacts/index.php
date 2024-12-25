@@ -41,7 +41,13 @@ $APPLICATION->SetTitle('Контакты банка Новиком');
                 <div class="swiper js-slider-cards slider-cards"
                      data-slides-per-view="mobile-s:1,mobile:1,tablet:1,laptop:2,laptop-x:2"
                      data-space-between="mobile-s:8,mobile:8,tablet:16,laptop:16,laptop-x:16">
-                    <? $APPLICATION->IncludeComponent(
+                    <?
+                    global $contactsFilter;
+                    $contactsFilter = [
+                        'SECTION_CODE' => 'o-banke',
+                    ];
+
+                    $APPLICATION->IncludeComponent(
                         "bitrix:news.list",
                         "contacts",
                         [
@@ -62,10 +68,10 @@ $APPLICATION->SetTitle('Контакты банка Новиком');
                             "DISPLAY_BOTTOM_PAGER" => "N",
                             "DISPLAY_TOP_PAGER" => "N",
                             "FIELD_CODE" => ["CODE", "NAME", "PREVIEW_TEXT", "PREVIEW_PICTURE", ""],
-                            "FILTER_NAME" => "",
+                            "FILTER_NAME" => "contactsFilter",
                             "HIDE_LINK_WHEN_NO_DETAIL" => "N",
                             "IBLOCK_ID" => iblock('contacts_ru'),
-                            "IBLOCK_TYPE" => "about_ru",
+                            "IBLOCK_TYPE" => "additional",
                             "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
                             "INCLUDE_SUBSECTIONS" => "N",
                             "MESSAGE_404" => "",

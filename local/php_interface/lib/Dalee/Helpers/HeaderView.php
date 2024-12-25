@@ -3,6 +3,7 @@
 namespace Dalee\Helpers;
 
 use CBitrixComponent;
+use CFile;
 
 class HeaderView
 {
@@ -73,6 +74,7 @@ class HeaderView
         $result = [
             'bgColorClass' => !empty($arResult["PROPERTIES"]["HEADER_COLOR_CLASS"]["VALUE"]) ? $arResult["PROPERTIES"]["HEADER_COLOR_CLASS"]["VALUE"] : 'bg-linear-blue',
             'picture' => $arResult["DETAIL_PICTURE"] ?? null,
+            'background' => $arResult["PROPERTIES"]["BANNER_BACKGROUND"]["VALUE"] ?? null,
             'termsProperty' => $arResult["PROPERTIES"]["TERMS"] ?? [],
             'showButton' => $arResult['PROPERTIES']['BUTTON_DETAIL']['VALUE'] ?? false,
             'buttonText' => $arResult['PROPERTIES']['BUTTON_TEXT_DETAIL']['VALUE'] ?? '',
@@ -127,7 +129,9 @@ class HeaderView
     private function detailed(array $headerData, int $chainDepth, ?string $termsHtml): string
     {
         ob_start(); ?>
-        <div class="banner-product <?= $headerData['bgColorClass'] ?> <?= implode(' ', $headerData['additionalClasses']) ?>">
+        <div class="banner-product <?= $headerData['bgColorClass'] ?> <?= implode(' ', $headerData['additionalClasses']) ?>"
+            <?= !empty($headerData['background']) ? 'style="background: url(' . CFile::getPath($headerData['background']) . ') no-repeat center center / cover;"' : '' ?>>
+
             <div class="banner-product__wrapper">
                 <div class="banner-product__content <?= empty($headerData['picture']) ? 'w-100 w-lg-60' : '' ?>">
                     <div class="banner-product__header">
