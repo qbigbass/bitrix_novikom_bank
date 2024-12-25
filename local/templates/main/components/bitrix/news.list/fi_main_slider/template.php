@@ -20,7 +20,11 @@ $this->setFrameMode(true);
                     <div class="banner-hero-content row gx-0">
                         <div class="col-12 col-md-6 col-lg-9 col-xl-8 col-xxl-7 d-flex flex-column gap-3 gap-md-4 gap-xxl-6 align-items-md-start">
                             <div class="banner-hero-content__wrapper">
-                                <h1 class="banner-hero-content__title"><?=$item['NAME']?></h1>
+                                <h1 class="banner-hero-content__title">
+                                    <? if ($item['DETAIL_TEXT']) : ?><?= $item['DETAIL_TEXT'] ?>
+                                    <? else : ?><?= $item['NAME'] ?>
+                                    <? endif; ?>
+                                </h1>
                                 <p class="text-l mb-0"><?=$item['PREVIEW_TEXT']?></p>
                             </div>
                             <img class="banner-hero-content__image" src="<?=$item['DETAIL_PICTURE']['SRC']?>" alt="<?=$item['PROPERTIES']['TEXT']['~VALUE']?>">
