@@ -157,3 +157,11 @@
     word-wrap: break-word;
     word-break: break-word;
 }
+
+.person-img {
+    max-height: 25rem;
+
+    @include use-media(laptop) {
+        max-height: 37.5rem;
+    }
+}

@@ -8,6 +8,15 @@
         border-bottom: var(--blue-30) dashed 1px;
     }
 
+    & .accordion-header {
+        position: sticky;
+        top: 0;
+        background: grey;
+        &:has(> .accordion-collapse.show) {
+
+        }
+    }
+
     & .accordion-collapse {
         scroll-margin-top: 20vh;
     }
