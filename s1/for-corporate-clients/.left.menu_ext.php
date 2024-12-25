@@ -4,7 +4,7 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 global $APPLICATION;
 
 $filter = [
-    'IBLOCK_SECTION.CODE' => 'finansirovanie'
+    'IBLOCK_SECTION.CODE' => false
 ];
 
 $elements = getIBlockElements(iblock('corporate_clients'), $filter);

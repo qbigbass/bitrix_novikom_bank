@@ -270,7 +270,6 @@ $headerView->render(
             <?
             global $supportOptionsFilter;
             $supportOptionsFilter = [
-                'ACTIVE' => 'Y',
                 'ID' => $arResult['PROPERTIES']['SUPPORT_OPTIONS']['VALUE']
             ];
 

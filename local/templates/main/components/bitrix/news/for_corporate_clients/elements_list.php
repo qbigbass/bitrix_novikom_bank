@@ -1,8 +1,9 @@
 <?
+
 use Dalee\Helpers\ComponentRenderer\Renderer;
 use Dalee\Helpers\HeaderView;
 
-if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();
+if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /** @var array $arParams */
 /** @var array $arResult */
 /** @global CMain $APPLICATION */
@@ -32,7 +33,12 @@ $headerView->render(
 <section class="section-layout bg-dark-10">
     <div class="container">
         <div class="row row-gap-4 row-gap-md-5 row-gap-lg-7">
-            <?$APPLICATION->IncludeComponent(
+            <?
+            global $financingListFilter;
+            $financingListFilter = [
+                'SECTION_CODE' => 'finansirovanie'
+            ];
+            $APPLICATION->IncludeComponent(
                 "bitrix:news.list",
                 "for_corporate_clients_list",
                 [
@@ -76,20 +82,20 @@ $headerView->render(
                     "ACTIVE_DATE_FORMAT" => $arParams["LIST_ACTIVE_DATE_FORMAT"],
                     "USE_PERMISSIONS" => $arParams["USE_PERMISSIONS"],
                     "GROUP_PERMISSIONS" => $arParams["GROUP_PERMISSIONS"],
-                    "FILTER_NAME" => $arParams["FILTER_NAME"],
+                    "FILTER_NAME" => 'financingListFilter',
                     "HIDE_LINK_WHEN_NO_DETAIL" => $arParams["HIDE_LINK_WHEN_NO_DETAIL"],
                     "CHECK_DATES" => $arParams["CHECK_DATES"],
                     "STRICT_SECTION_CHECK" => $arParams["STRICT_SECTION_CHECK"],
                     "PARENT_SECTION" => $arResult["VARIABLES"]["SECTION_ID"],
                     "PARENT_SECTION_CODE" => $arResult["VARIABLES"]["SECTION_CODE"],
-                    "DETAIL_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["detail"],
-                    "SECTION_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["section"],
-                    "IBLOCK_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["news"],
+                    "DETAIL_URL" => $arResult["FOLDER"] . $arResult["URL_TEMPLATES"]["detail"],
+                    "SECTION_URL" => $arResult["FOLDER"] . $arResult["URL_TEMPLATES"]["section"],
+                    "IBLOCK_URL" => $arResult["FOLDER"] . $arResult["URL_TEMPLATES"]["news"],
                     "IBLOCK_SECTIONS" => $arResult["IBLOCK_SECTIONS"],
                 ],
                 $component,
                 ["HIDE_ICONS" => "Y"]
-            );?>
+            ); ?>
         </div>
     </div>
 </section>
@@ -97,7 +103,8 @@ $headerView->render(
 <section class="section-layout js-collapsed-mobile">
     <div class="container">
         <h3 class="d-none d-md-flex mb-md-6 mb-lg-7 px-lg-6">Подробнее о услугах</h3>
-        <a class="h3 d-flex align-items-center justify-content-between dark-100 d-md-none" data-bs-toggle="collapse" href="#additional-info-content" role="button" aria-expanded="false" aria-controls="additional-info-content">
+        <a class="h3 d-flex align-items-center justify-content-between dark-100 d-md-none" data-bs-toggle="collapse"
+           href="#additional-info-content" role="button" aria-expanded="false" aria-controls="additional-info-content">
             Подробнее о услугах
             <svg class="icon size-m violet-100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                 <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-down"></use>
@@ -109,7 +116,8 @@ $headerView->render(
     </div>
     <picture class="pattern-bg pattern-bg--hide-mobile">
         <source srcset="/frontend/dist/img/patterns/section-2/pattern-light-s.svg" media="(max-width: 767px)">
-        <source srcset="/frontend/dist/img/patterns/section-2/pattern-light-m.svg" media="(max-width: 1199px)"><img src="/frontend/dist/img/patterns/section-2/pattern-light-l.svg" alt="bg pattern" loading="lazy">
+        <source srcset="/frontend/dist/img/patterns/section-2/pattern-light-m.svg" media="(max-width: 1199px)">
+        <img src="/frontend/dist/img/patterns/section-2/pattern-light-l.svg" alt="bg pattern" loading="lazy">
     </picture>
 </section>
 <?
@@ -122,7 +130,7 @@ if (!empty($component->arParams['SEF_FOLDER'])) {
 <section class="section-layout bg-dark-10">
     <div class="container">
         <div class="row">
-            <?$APPLICATION->IncludeComponent(
+            <? $APPLICATION->IncludeComponent(
                 "bitrix:news.list",
                 "customer_announcements",
                 [
@@ -141,7 +149,7 @@ if (!empty($component->arParams['SEF_FOLDER'])) {
                     "DETAIL_URL" => "/support/announcements_for_clients/#SECTION_CODE#/#ELEMENT_CODE#/",
                     "DISPLAY_BOTTOM_PAGER" => "N",
                     "DISPLAY_TOP_PAGER" => "N",
-                    "FIELD_CODE" => ["CODE","NAME","PREVIEW_TEXT","PREVIEW_PICTURE",""],
+                    "FIELD_CODE" => ["CODE", "NAME", "PREVIEW_TEXT", "PREVIEW_PICTURE", ""],
                     "FILTER_NAME" => "announcementsFilter",
                     "HIDE_LINK_WHEN_NO_DETAIL" => "N",
                     "IBLOCK_ID" => iblock('ads_for_customers_ru'),
@@ -176,15 +184,16 @@ if (!empty($component->arParams['SEF_FOLDER'])) {
                 ],
                 $component,
                 ["HIDE_ICONS" => "Y"]
-            );?>
+            ); ?>
         </div>
     </div>
     <picture class="pattern-bg pattern-bg--hide-mobile">
         <source srcset="/frontend/dist/img/patterns/section-2/pattern-light-s.svg" media="(max-width: 767px)">
-        <source srcset="/frontend/dist/img/patterns/section-2/pattern-light-m.svg" media="(max-width: 1199px)"><img src="/frontend/dist/img/patterns/section-2/pattern-light-l.svg" alt="bg pattern" loading="lazy">
+        <source srcset="/frontend/dist/img/patterns/section-2/pattern-light-m.svg" media="(max-width: 1199px)">
+        <img src="/frontend/dist/img/patterns/section-2/pattern-light-l.svg" alt="bg pattern" loading="lazy">
     </picture>
 </section>
 
-<?$APPLICATION->IncludeFile('/local/php_interface/include/cross_sale_products_block_corporate.php', ['HEADER_TEXT' => 'Другие услуги для корпоративных клиентов']);?>
+<? $APPLICATION->IncludeFile('/local/php_interface/include/cross_sale_products_block_corporate.php', ['HEADER_TEXT' => 'Другие услуги для корпоративных клиентов']); ?>
 
 <? $helper->saveCache(); ?>
