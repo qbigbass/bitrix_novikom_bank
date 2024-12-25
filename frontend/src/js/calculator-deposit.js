@@ -50,7 +50,6 @@ function getRates({table = null, elementId = null, name = null}) {
             if (data.error) {
                 console.error('Ошибка:', data.error);
             } else if (data.data) {
-                console.log(data.data);
                 return data.data;
             }
         })

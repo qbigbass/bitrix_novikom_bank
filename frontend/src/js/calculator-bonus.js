@@ -55,28 +55,14 @@ function findCategoryCard(STATE) {
     const filterType = STATE.calculatorData.filter(item => item.cardType === STATE.cardType);
 
     STATE.cardCategoryOptions = collectSelectOptions(filterType, 'cardCategory');
-    STATE.elements.selectCardCategory.innerHTML = '';
-
-    STATE.cardCategoryOptions.forEach(category => {
-        const option = document.createElement('option');
-        option.value = category;
-        option.textContent = category;
-        STATE.elements.selectCardCategory.appendChild(option);
-    });
+    setSelectOptions('selectCardCategory', STATE.cardCategoryOptions, STATE);
 
     STATE.cardCategory = STATE.elements.selectCardCategory.value;
 }
 
 function getBonusValues(STATE) {
     STATE.cardTypeOptions = collectSelectOptions(STATE.calculatorData, 'cardType');
-
-
-    STATE.cardTypeOptions.forEach(type => {
-        const option = document.createElement('option');
-        option.value = type;
-        option.textContent = type;
-        STATE.elements.selectCardType.appendChild(option);
-    });
+    setSelectOptions('selectCardType', STATE.cardTypeOptions, STATE);
 
     STATE.cardType = STATE.elements.selectCardType.value;
 

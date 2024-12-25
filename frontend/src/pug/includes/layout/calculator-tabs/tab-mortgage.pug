@@ -30,17 +30,15 @@
 
     var inputSliderList = [
         {
-            label: 'Сумма кредита',
-            id: 'amount-credit',
-            maxValue: 5000000,
-            minValue: 20000,
-            startValue: 1000000,
-            stepSize: 5000,
+            label: 'Стоимость недвижимости',
+            id: 'property-value',
+            stepSize: 10000,
             type: "price",
             editable: true,
-            additionalClass: "js-input-amount",
+            additionalClass: "js-input-property",
             isCalculator: true
         },
+
         {
             label: 'Срок выплаты',
             id: 'payment-term',
@@ -53,27 +51,21 @@
             isCalculator: true
         },
         {
-            label: 'Стоимость недвижимости',
-            id: 'property-value',
-            maxValue: 5000000,
-            minValue: 20000,
-            startValue: 3534321,
-            stepSize: 10000,
-            type: "price",
-            editable: true,
-            additionalClass: "js-input-property",
-            isCalculator: true
-        },
-        {
             label: 'Первоначальный взнос',
             id: 'down-payment',
-            maxValue: 3000000,
-            minValue: 20000,
-            startValue: 120000,
             stepSize: 10000,
             type: "price",
             editable: true,
             additionalClass: "js-input-initial-payment",
+            isCalculator: true
+        },
+        {
+            label: 'Сумма кредита',
+            id: 'amount-credit',
+            stepSize: 5000,
+            type: "price",
+            editable: true,
+            additionalClass: "js-input-amount",
             isCalculator: true
         },
     ]
@@ -81,7 +73,7 @@
 include ../../../components/ui/input/input-slider
 include ../../../cards/card-calculate-result
 
-.row.js-calculator-mortgage(data-table="mortgage")
+.row.js-calculator-mortgage(data-table="mortgage" data-expense-ratio="60")
     .col-12.col-lg-6
         .tab-content.pe-xl-6
             .d-flex.flex-column.row-gap-4.row-gap-md-6.row-gap-lg-7
@@ -93,28 +85,18 @@ include ../../../cards/card-calculate-result
                         label(for="select-mort-region").form-label.mb-0
                             | Регион
                         select#select-mort-region(aria-label="Подсказка").form-select.js-select.js-mort-region
-                            option(selected value="1") Дальневосточный федеральный округ
-                            option(value="2") Список 2
-                            option(value="3") Список 3
-                            option(value="4") Список 4
 
                     .d-flex.flex-column.row-gap-2
                         label(for="select-mort-program").form-label.mb-0
                             | Программа кредитования
                         select#select-mort-program(aria-label="Подсказка").form-select.js-select.js-mort-program
-                            option(selected value="1") Ипотека по программе «Первичный рынок»
-                            option(value="2") Список 2
-                            option(value="3") Список 3
-                            option(value="4") Список 4
+
 
                     .d-flex.flex-column.row-gap-2
                         label(for="select-mort-object").form-label.mb-0
                             | Объект залога
                         select#select-mort-object(aria-label="Подсказка").form-select.js-select.js-mort-object
-                            option(selected value="1") Квартира
-                            option(value="2") Список 2
-                            option(value="3") Список 3
-                            option(value="4") Список 4
+
 
                 .d-flex.flex-column.row-gap-4
                     .form-check

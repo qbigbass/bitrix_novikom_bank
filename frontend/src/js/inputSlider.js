@@ -255,6 +255,7 @@ const setValue = (STATE, value) => {
 
 const setBackgroundSliderInputElement = (STATE) => {
     const percentage = calculatePercent(STATE, STATE.value);
+    if (isNaN(percentage)) return false;
     STATE.elements.sliderInput.style.background = `linear-gradient(to right, var(--blue-100) ${percentage}%, var(--blue-30) ${percentage}%)`;
 }
 
