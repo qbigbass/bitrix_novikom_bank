@@ -246,7 +246,7 @@
                 width: 55vw;
                 max-width: 31.25rem; //500px
                 top: 100%;
-                transform: translateY(-100%);
+                transform: tr   anslateY(-100%);
             }
 
             @include use-media(tablet-album) {
@@ -271,9 +271,7 @@
 
     &--size-xl {
         #{$root}__header {
-            @include use-media(mobile-s, tablet) {
-                gap: 1.5rem;
-            }
+            gap: 1.5rem;
         }
 
         #{$root}__pattern {
@@ -297,13 +295,21 @@
         }
 
         #{$root}__benefits-list {
-            gap: 1.5rem;
+            width: 100%;
+            max-width: none;
+
+            @include use-media(mobile-s, tablet-album) {
+                gap: 1.5rem;
+            }
 
             @include use-media(tablet-album, laptop) {
-                width: 100%;
-                max-width: none;
                 grid-template-columns: auto auto;
                 gap: 1.5rem;
+            }
+
+            @include use-media(laptop) {
+                width: auto;
+                gap: 3rem;
             }
         }
 
@@ -335,6 +341,12 @@
             @include use-media(desktop) {
                 right: 10rem;
             }
+        }
+    }
+
+    &--type-msb {
+        #{$root}__footer {
+            margin-top: 15.875rem;
         }
     }
 

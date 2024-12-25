@@ -38,7 +38,7 @@ $this->setFrameMode(true);
                         <div class="banner-product__benefits-list">
                             <?foreach ($arResult["SECTION"]["BANNER_CONTENT"]["HEADER"] as $item):?>
                                 <div class="d-inline-flex flex-column row-gap-2">
-                                    <div class="d-inline-flex flex-nowrap align-items-baseline text-l fw-semibold gap-1 yellow-100 w-lg-min-content w-100">
+                                    <div class="d-inline-flex flex-nowrap align-items-baseline text-l fw-semibold gap-1 yellow-100">
                                         <?if(!empty($item["NAME"])):?>
                                             <span class="h4"><?= $item["NAME"] ?></span>
                                         <?elseif(!empty($item["DETAIL"])):?>
