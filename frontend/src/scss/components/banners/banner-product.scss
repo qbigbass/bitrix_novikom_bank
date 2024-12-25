@@ -299,8 +299,11 @@
         #{$root}__benefits-list {
             gap: 1.5rem;
 
-            @include use-media(tablet-album) {
-                gap: 3rem;
+            @include use-media(tablet-album, laptop) {
+                width: 100%;
+                max-width: none;
+                grid-template-columns: auto auto;
+                gap: 1.5rem;
             }
         }
 

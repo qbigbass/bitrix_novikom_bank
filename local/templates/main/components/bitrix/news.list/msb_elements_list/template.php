@@ -194,10 +194,10 @@ use Bitrix\Main\Localization\Loc;
                     <div class="collapse d-md-block mt-6 mt-lg-7" id="restructuring-steps-content">
                         <? if(!empty($item["BLOCK_GUARANTEES"]["TABS"])): ?>
                             <div class="d-inline-flex d-md-none w-100 mb-6">
-                                <ul class="nav nav-tabs" role="tablist">
+                                <ul class="nav nav-tabs w-100 w-md-auto" role="tablist">
                                     <? $s = 0; ?>
                                     <? foreach ($item["BLOCK_GUARANTEES"]["TABS"] as $tabXml => $tabValue): ?>
-                                        <li class="nav-item" role="presentation">
+                                        <li class="nav-item flex-grow-1" role="presentation">
                                             <button
                                                 class="nav-link <? if($s < 1): ?>active<? endif; ?>"
                                                 data-bs-toggle="tab"
@@ -224,7 +224,7 @@ use Bitrix\Main\Localization\Loc;
                                         aria-labelledby="loan"
                                         tabindex="0"
                                     >
-                                        <div class="row row-gap-6 row-gap-lg-7 gx-xl-6">
+                                        <div class="row row-gap-6 row-gap-lg-7 gx-xl-6 px-lg-6">
                                             <div class="stepper steps-4">
                                             <? $i = 1; ?>
                                             <? foreach ($arGuarantees as $guarantee): ?>
