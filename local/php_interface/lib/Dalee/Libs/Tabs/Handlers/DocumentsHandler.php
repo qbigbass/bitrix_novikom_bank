@@ -72,13 +72,17 @@ class DocumentsHandler implements PropertyHandlerInterface
             ],
             'select' => [
                 'ID',
-                'SORT'
+                'SORT',
+                'ACTIVE'
             ],
         ])->fetchAll();
         foreach ($elementsSort as $elementSort) {
             foreach ($elements as $key => $element) {
                 if ($elementSort['ID'] == $element['ID']) {
                     $elements[$key]['SORT'] = $elementSort['SORT'];
+                }
+                if ($elementSort['ACTIVE'] == 'N') {
+                    unset($elements[$elementSort['ID']]);
                 }
             }
         }
