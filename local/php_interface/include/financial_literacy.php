@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="card-promo card-promo--heavy-blue">
-                    <div class="card-promo__wrapper d-flex flex-column h-100 row-gap-4 row-gap-md-6 row-gap-lg-7">
+                    <div class="card-promo__wrapper">
                         <div class="card-promo__header d-flex flex-column row-gap-3 row-gap-md-4">
                             <h2>Финансовая грамотность</h2>
                             <p class="text-l mb-0 w-md-60 w-lg-100">Финансовая грамотность позволит достичь гармонии с&nbsp;деньгами. <br>Они перестанут быть причиной переживаний или самоцелью и&nbsp;превратятся в&nbsp;инструмент достижения ваших целей. И&nbsp;вот каким будет путь к&nbsp;этому</p>
