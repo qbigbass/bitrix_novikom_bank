@@ -12,7 +12,7 @@ class BenefitsHandler implements PropertyHandlerInterface
         $this->property = $property;
     }
 
-    public function render(): string
+    public function render(string $template = 'benefits'): string
     {
         $GLOBALS['benefitsFilter'] = [
             'ACTIVE' => 'Y',
@@ -22,7 +22,7 @@ class BenefitsHandler implements PropertyHandlerInterface
         ob_start();
         $GLOBALS['APPLICATION']->IncludeComponent(
             "bitrix:news.list",
-            "benefits",
+            $template,
             [
                 "ACTIVE_DATE_FORMAT" => "d.m.Y",
                 "ADD_SECTIONS_CHAIN" => "N",

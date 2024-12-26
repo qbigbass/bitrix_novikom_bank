@@ -17,6 +17,8 @@ if (empty($arParams['PARENT_DEPTH'])) {
 } else {
     $path = explode('/', $APPLICATION->GetCurPage())[$arParams['PARENT_DEPTH']];
 }
+
+$targetLink = $arParams["TARGET_LINK"] ?? "";
 ?>
 
 <div class="tabs-panel js-tabs-slider overflow-hidden position-relative">
@@ -43,7 +45,7 @@ if (empty($arParams['PARENT_DEPTH'])) {
             <? $class = basename($menuItem['LINK']) == $path ? ' active' : ''; ?>
 
             <li class="swiper-slide w-auto tabs-panel__list-item nav-item z-2">
-                <a class="tabs-panel__list-item-link nav-link bg-transparent section-catalog__tab-list-item<?= $class ?>" href="<?= $menuItem['LINK'] ?>">
+                <a class="tabs-panel__list-item-link nav-link bg-transparent section-catalog__tab-list-item<?= $class ?>" href="<?= $menuItem['LINK']. $targetLink ?>">
                     <?= $menuItem['TEXT'] ?>
                 </a>
             </li>

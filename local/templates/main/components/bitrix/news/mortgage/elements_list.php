@@ -51,7 +51,8 @@ $headerView->render(
                             ],
                             "COMPONENT_TEMPLATE" => "iblock_sections",
                             "ALL_LINK" => "Y",
-                            "ALL_LINK_TEXT" => "Все " . mb_strtolower($APPLICATION->GetTitle())
+                            "ALL_LINK_TEXT" => "Все " . mb_strtolower($APPLICATION->GetTitle()),
+                            "TARGET_LINK" => "#catalog-tabs"
                         ],
                         $component
                     ); ?>

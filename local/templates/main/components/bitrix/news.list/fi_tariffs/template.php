@@ -63,7 +63,10 @@ use Bitrix\Main\Localization\Loc;
                     </div>
                 </div>
                 <div class="col-12 col-xxl-4">
-                    <?$APPLICATION->IncludeFile('/local/php_interface/include/protection_from_scammers.php');?>
+                    <?$APPLICATION->IncludeFile(
+                        '/local/php_interface/include/protection_from_scammers.php',
+                        ['COLOR_ICON' => 'violet']
+                    );?>
                 </div>
             </div>
         </div>

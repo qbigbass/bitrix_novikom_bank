@@ -2,6 +2,8 @@
 
 namespace Dalee\Services;
 
+use Bitrix\Iblock\ElementTable;
+
 /**
  * Класс для обработки и преобразования данных ставок продуктов.
  *
@@ -10,6 +12,9 @@ namespace Dalee\Services;
 
 class ProductRatesHandler
 {
+    private array $iblockLinks;
+    private array $linkedIblockElements;
+
     /**
      * Таблица данных для обработки.
      *
@@ -63,6 +68,15 @@ class ProductRatesHandler
         $this->table = $table;
         $this->elementId = $elementId;
         $this->name = $name;
+
+        $this->iblockLinks = [
+            'deposits' => iblock('deposits'),
+            'loans' => iblock('loans'),
+            'mortgage' => iblock('mortgage'),
+            'program_bonuses' => iblock('bonus_programs_ru')
+        ];
+
+        $this->linkedIblockElements = $this->getElementNames();
 
         $iblockId = $this->getIblockId();
         $this->ratesFetcher = new RatesFetcher($iblockId);
@@ -140,6 +154,7 @@ class ProductRatesHandler
     {
         return array_map(function ($item) {
             $newItem = [];
+            $newItem['name'] = $this->linkedIblockElements[$item['LINK_']];
             foreach ($item as $key => $value) {
                 if ($key === 'LINK_' || $key === 'NAME') {
                     continue;
@@ -156,6 +171,18 @@ class ProductRatesHandler
             }
             return $newItem;
         }, $data);
+    }
+
+    private function getElementNames()
+    {
+        $elements = ElementTable::getList([
+            'select' => ['ID', 'NAME'],
+            'filter' => [
+                'IBLOCK_ID' => $this->iblockLinks[$this->table],
+            ]
+        ])->fetchAll();
+
+        return array_column($elements, 'NAME', 'ID');
     }
 
     /**

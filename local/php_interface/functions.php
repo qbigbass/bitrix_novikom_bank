@@ -176,13 +176,22 @@ function getHlBlockEntries(string $hlBlockName): array
     return $strEntityDataClass::getList()->fetchAll();
 }
 
-function getIBlockElements(int $IBlockId): array
+function getIBlockElements(int $IBlockId, ?array $filter = null): array
 {
+    $arFilter = [
+        'IBLOCK_ID' => $IBlockId,
+        'ACTIVE' => 'Y',
+    ];
+
+    if (!empty($filter)) {
+        $arFilter = array_merge($arFilter, $filter);
+    }
+
     \Bitrix\Main\Loader::IncludeModule('iblock');
     return Bitrix\Iblock\ElementTable::getList([
         'order' => ['SORT' => 'ASC'],
         'select' => ['ID', 'NAME', 'CODE'],
-        'filter' => ['IBLOCK_ID' => $IBlockId]
+        'filter' => $arFilter
     ])->fetchAll();
 }
 
