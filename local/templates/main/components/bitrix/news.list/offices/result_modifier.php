@@ -35,3 +35,16 @@ while ($arSection = $res->GetNext()) {
     ];
 }
 $arResult['MAP_MENU'] = $mapMenu;
+
+$arResult['CURRENCY'] = [
+    'IN' => [
+        ['id' => 'rub', 'name' => 'Рубли, ₽'],
+        ['id' => 'usd', 'name' => 'Доллары США, $'],
+        ['id' => 'eur', 'name' => 'Евро, €'],
+    ],
+    'OUT' => [
+        ['id' => 'rub', 'name' => 'Рубли, ₽'],
+        ['id' => 'usd', 'name' => 'Доллары США, $'],
+        ['id' => 'eur', 'name' => 'Евро, €'],
+    ],
+];
