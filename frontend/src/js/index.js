@@ -379,6 +379,10 @@ document.addEventListener('DOMContentLoaded', () => {
     initResizePolygonAccordions();
     initHeaderSearchForm();
     hideDropDownMenu();
+    initCalculatorDeposit();
+    initCalculatorLoan();
+    initCalculatorMortgage();
+    initCalculatorBonus();
     initOffices();
     initChatBot();
     initCharts();
