@@ -1,14 +1,15 @@
 include input-slider-text
 
 mixin input-slider(data)
-    .input-slider.js-input-slider(
+    .input-slider(
         data-type= data.type
         data-steps= data.steps
         data-start-value= data.startValue
         data-max-value= data.maxValue
         data-min-value= data.minValue
         data-step-size= data.stepSize
-    )
+        class= data.isCalculator ? '' : 'js-input-slider'
+    )&attributes(attributes)
         if data.label
             label(for= data.id).text-s.dark-70.ps-3.mb-2= data.label
         if data.editable
@@ -17,5 +18,5 @@ mixin input-slider(data)
             .input-slider__display-value.js-input-slider-display-value.h4
 
         .input-slider__inner.js-input-slider-inner
-            input(id= data.id type="range" step="1" min="0" max="1" value="0").input-slider__item.js-input-slider-input
+            input(id= data.id type="range" step="1" min="0" max="1" value="0" class= data.additionalClass ? data.additionalClass: '').input-slider__item.js-input-slider-input
         .input-slider-text-steps.js-input-slider-text-steps

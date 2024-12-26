@@ -49,7 +49,7 @@ $headerView->render(
                         <div class="card-promo__wrapper d-flex flex-column h-100 row-gap-4 row-gap-md-6 row-gap-lg-7">
                             <div class="card-promo__header d-flex flex-column row-gap-3 row-gap-md-4">
                                 <h2><?= $arResult['PROPERTIES']['BANNER_HEADER']['VALUE'] ?></h2>
-                                <p class="text-l mb-0 w-md-70 w-lg-100"><?= $arResult['PROPERTIES']['BANNER_TEXT']['VALUE']['TEXT'] ?></p>
+                                <p class="text-l mb-0 w-md-50 w-lg-100"><?= $arResult['PROPERTIES']['BANNER_TEXT']['VALUE']['TEXT'] ?></p>
                             </div>
                             <? if (!empty($arResult['PROPERTIES']['BANNER_IMG']['VALUE'])) { ?>
                                 <img class="card-promo__image" src="<?= CFile::GetPath($arResult['PROPERTIES']['BANNER_IMG']['VALUE']) ?>" alt="" loading="lazy">
@@ -392,8 +392,8 @@ $headerView->render(
             "FIELD_CODE" => ["CODE","NAME","PREVIEW_TEXT","PREVIEW_PICTURE",""],
             "FILTER_NAME" => "contactsFilter",
             "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-            "IBLOCK_ID" => iblock('corporate_contacts'),
-            "IBLOCK_TYPE" => "for_corporate_clients_ru",
+            "IBLOCK_ID" => iblock('contacts_ru'),
+            "IBLOCK_TYPE" => "additional",
             "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
             "INCLUDE_SUBSECTIONS" => "N",
             "MESSAGE_404" => "",

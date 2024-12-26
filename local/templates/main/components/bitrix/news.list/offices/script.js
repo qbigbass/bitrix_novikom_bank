@@ -14,6 +14,8 @@ class OfficesMap {
             limitedMobility: false,
             brokerage: false,
             biometrics: false,
+            currencyIn: [],
+            currencyOut: [],
         }
     }
 
@@ -76,6 +78,15 @@ class OfficesMap {
             )
         }
 
+        if (this.filterFormValues.accessFree || this.filterFormValues.accessEmployee) {
+            if (this.filterFormValues.accessFree) {
+                this.filteredOffices = this.filteredOffices.filter(item => item.freeAccess)
+            }
+            if (this.filterFormValues.accessEmployee) {
+                this.filteredOffices = this.filteredOffices.filter(item => !item.freeAccess)
+            }
+        }
+
         if (this.filterFormValues.individuals) {
             this.filteredOffices = this.filteredOffices.filter(item => item.individual)
         }
@@ -84,9 +95,26 @@ class OfficesMap {
             this.filteredOffices = this.filteredOffices.filter(item => item.corporate)
         }
 
+        if (this.filterFormValues.currencyIn.length) {
+            this.filteredOffices = this.filteredOffices.filter(item => {
+                return (new Set(item.currency.in)).intersection(new Set(this.filterFormValues.currencyIn)).size > 0
+            })
+        }
+
+        if (this.filterFormValues.currencyOut.length) {
+            this.filteredOffices = this.filteredOffices.filter(item => {
+                return (new Set(item.currency.out)).intersection(new Set(this.filterFormValues.currencyOut)).size > 0
+            })
+        }
+
         const servicesFilter = {...this.filterFormValues}
         delete servicesFilter.individuals
         delete servicesFilter.legal
+        delete servicesFilter.accessFree
+        delete servicesFilter.accessEmployee
+        delete servicesFilter.currencyIn
+        delete servicesFilter.currencyOut
+
         if (Object.values(servicesFilter).some(item => item === true)) {
             console.log('filter services')
             for (const [key, value] of Object.entries(servicesFilter)) {
@@ -126,13 +154,15 @@ class OfficesMap {
             this.myMap.geoObjects.add(myPlacemark)
         })
 
-        this.myMap.setBounds(this.myMap.geoObjects.getBounds(), {
-            checkZoomRange: true
-        }).then(() => {
-            if (this.myMap.getZoom() > 14) {
-                this.myMap.setZoom(14)
-            }
-        })
+        if (this.myMap.geoObjects.length) {
+            this.myMap.setBounds(this.myMap.geoObjects.getBounds(), {
+                checkZoomRange: true
+            }).then(() => {
+                if (this.myMap.getZoom() > 14) {
+                    this.myMap.setZoom(14)
+                }
+            })
+        }
 
         // this.clusterer.add(this.geoObjects)
         // this.myMap.geoObjects.add(this.clusterer)
@@ -147,10 +177,6 @@ class OfficesMap {
                     <div class="card-office__body d-flex flex-grow-1 flex-column row-gap-2 row-gap-md-3">
                         <p class="card-office__title fw-semibold text-l m-0">${item.name}</p>
                         <p class="card-office__address text-s m-0 dark-70">${item.address}</p>
-                        <!--
-                        <div>services: ${item.services.join(', ')}</div>
-                        <div>individual: ${item.individual}, corporate: ${item.corporate}</div>
-                        -->
                     </div>
                     <svg class="icon size-m d-none d-md-block" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                         <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
@@ -195,14 +221,28 @@ class OfficesMap {
     }
 
     updateFilterFormValues() {
+        const currencyIn = []
+        $('[name="currency_in[]"]:checked').each((index, item) => {
+            currencyIn.push(item.value)
+        })
+
+        const currencyOut = []
+        $('[name="currency_out[]"]:checked').each((index, item) => {
+            currencyOut.push(item.value)
+        })
+
         this.filterFormValues = {
             individuals: $('#individuals').is(':checked'),
             legal: $('#legal').is(':checked'),
+            currencyIn: currencyIn,
+            currencyOut: currencyOut,
+            accessFree: $('#access-free').is(':checked'),
+            accessEmployee: $('#access-employee').is(':checked'),
         }
         for (const [key, value] of Object.entries(this.services)) {
             this.filterFormValues[key] = $('#filter-service-' + key).is(':checked')
         }
-        console.log('updateFilterFormValues:', this.filterFormValues)
+        // console.log('updateFilterFormValues:', this.filterFormValues)
     }
 }
 

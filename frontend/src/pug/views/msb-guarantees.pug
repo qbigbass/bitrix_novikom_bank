@@ -186,7 +186,7 @@ block content
                         | Оформление гарантии
 
                     .d-inline-flex
-                        +nav-tabs(stepsTabsList)
+                        +nav-tabs(stepsTabsList).w-100.w-md-auto
                 a(
                     data-bs-toggle="collapse"
                     href="#restructuring-steps-content"
@@ -198,7 +198,7 @@ block content
                     +svg-use("icon-chevron-down", "icon size-m violet-100")
             #restructuring-steps-content.collapse.d-md-block.mt-6.mt-lg-7
                 .d-inline-flex.d-md-none.w-100.mb-6
-                        +nav-tabs(stepsTabsList)
+                        +nav-tabs(stepsTabsList).w-100.w-md-auto
                 .tab-content
                     #online.tab-pane.fade.show.active(role="tabpanel" aria-labelledby="loan" tabindex="0")
                         .row.row-gap-6.row-gap-lg-7.gx-xl-6

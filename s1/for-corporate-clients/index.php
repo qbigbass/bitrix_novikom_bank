@@ -1,7 +1,7 @@
 <?php
 require($_SERVER['DOCUMENT_ROOT'].'/bitrix/header.php');
 global $APPLICATION;
-$APPLICATION->SetTitle('Финансирование');
+$APPLICATION->SetTitle('Корпоративным клиентам');
 ?>
 
 <?$APPLICATION->IncludeComponent(
@@ -9,7 +9,7 @@ $APPLICATION->SetTitle('Финансирование');
     "for_corporate_clients",
     [
         "ADD_ELEMENT_CHAIN" => "N",
-        "ADD_SECTIONS_CHAIN" => "Y",
+        "ADD_SECTIONS_CHAIN" => "N",
         "AJAX_MODE" => "N",
         "AJAX_OPTION_ADDITIONAL" => "",
         "AJAX_OPTION_HISTORY" => "N",

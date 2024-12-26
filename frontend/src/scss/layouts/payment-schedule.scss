@@ -1,0 +1,66 @@
+.payment-schedule {
+  overflow: auto;
+  margin-left: -1.5rem;
+  margin-right: -1.5rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  width: calc(100% + 3rem);
+  max-height: 21.5rem;
+
+  @include use-media(tablet) {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+    max-height: 35rem;
+  }
+
+  @include use-media(tablet-album) {
+    max-height: 52rem;
+  }
+
+  & .table {
+    min-width: 43rem;
+
+    @include use-media(tablet) {
+      min-width: 100%;
+    }
+
+    & th, td {
+      padding: .5rem;
+
+      @include use-media(tablet) {
+        padding: 1rem .5rem;
+      }
+
+      @include use-media(tablet-album) {
+        padding: 1.5rem .5rem;
+      }
+    }
+
+    & th {
+      vertical-align: top;
+      font-weight: 600;
+      font-size: .875rem;
+
+      @include use-media(tablet) {
+        font-size: 1rem;
+      }
+    }
+
+    & td {
+      @include use-media(tablet) {
+        font-size: 1.125rem;
+      }
+
+      @include use-media(tablet-album) {
+        font-size: 1.25rem;
+      }
+    }
+
+    & td:first-child {
+      font-weight: 600;
+    }
+  }
+}
