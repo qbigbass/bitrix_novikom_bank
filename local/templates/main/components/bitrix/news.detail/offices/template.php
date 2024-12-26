@@ -92,20 +92,48 @@ $arItem = $arResult;
                     </ul>
                 </div>
             <?php endif;?>
-            <?php if (!empty($arItem['DISPLAY_PROPERTIES']['PHONE']['VALUE'])) : ?>
+            <?php if (
+                !empty($arItem['DISPLAY_PROPERTIES']['PHONE']['VALUE'])
+                || !empty($arItem['DISPLAY_PROPERTIES']['EMAIL']['VALUE'])
+                || !empty($arItem['DISPLAY_PROPERTIES']['FAX']['VALUE'])
+            ): ?>
                 <div class="d-flex flex-column row-gap-3">
                     <h5 class="fw-semibold">Контакты</h5>
                     <ul class="list-contact d-flex flex-column row-gap-3">
-                        <?php foreach ($arItem['DISPLAY_PROPERTIES']['PHONE']['VALUE'] as $phone) : ?>
+                        <?php if (!empty($arItem['DISPLAY_PROPERTIES']['PHONE']['VALUE'])) : ?>
+                            <?php foreach ($arItem['DISPLAY_PROPERTIES']['PHONE']['VALUE'] as $phone) : ?>
+                                <li class="d-flex column-gap-3">
+                                    <span class="icon size-m violet-100">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                            <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-phone"></use>
+                                        </svg>
+                                    </span>
+                                    <a class="list-contact__link" href="tel:<?= preg_replace('/[^\d\+]/', '', $phone); ?>"><?= $phone ?></a>
+                                </li>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                        <?php if (!empty($arItem['DISPLAY_PROPERTIES']['EMAIL']['VALUE'])) : ?>
+                            <?php foreach ($arItem['DISPLAY_PROPERTIES']['EMAIL']['VALUE'] as $email) : ?>
+                                <li class="d-flex column-gap-3">
+                                    <span class="icon size-m violet-100">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                            <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-mail"></use>
+                                        </svg>
+                                    </span>
+                                    <a class="list-contact__link" href="mailto:<?= $email ?>"><?= $email ?></a>
+                                </li>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                        <?php if (!empty($arItem['DISPLAY_PROPERTIES']['FAX']['VALUE'])) : ?>
                             <li class="d-flex column-gap-3">
                                 <span class="icon size-m violet-100">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-phone"></use>
+                                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-fax"></use>
                                     </svg>
                                 </span>
-                                <a class="list-contact__link" href="tel:<?= preg_replace('/[^\d\+]/', '', $phone); ?>"><?= $phone ?></a>
+                                <a class="list-contact__link" href="tel:<?= preg_replace('/[^\d\+]/', '', $arItem['DISPLAY_PROPERTIES']['FAX']['VALUE']); ?>"><?= $arItem['DISPLAY_PROPERTIES']['FAX']['VALUE'] ?></a>
                             </li>
-                        <?php endforeach; ?>
+                        <?php endif; ?>
                     </ul>
                 </div>
             <?php endif;?>

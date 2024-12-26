@@ -35,6 +35,8 @@ $APPLICATION->SetTitle("Офисы и банкоматы");
             "METRO",
             "SERVICES",
             "PHONE",
+            "EMAIL",
+            "FAX",
             "WORKTIME",
             "WORKTIME_INDIVIDUAL_RUB",
             "WORKTIME_INDIVIDUAL_FOREIGN",
