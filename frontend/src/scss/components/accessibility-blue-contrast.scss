@@ -41,7 +41,7 @@
       }
     }
 
-    .icon>img,
+    .icon > img,
     .icon svg {
       color: var(--blue-contrast-white);
     }
@@ -302,9 +302,11 @@
         background-color: var(--blue-contrast-light);
 
         &::after {
-          background: linear-gradient(270deg,
-              rgba(38, 70, 138, 0.9) 23.5%,
-              rgba(38, 70, 138, 0) 100%);
+          background: linear-gradient(
+            270deg,
+            rgba(38, 70, 138, 0.9) 23.5%,
+            rgba(38, 70, 138, 0) 100%
+          );
         }
       }
     }
@@ -332,9 +334,11 @@
       background-color: var(--blue-contrast-light);
 
       &::after {
-        background: linear-gradient(270deg,
-            rgba(38, 70, 138, 0.9) 23.5%,
-            rgba(38, 70, 138, 0) 100%);
+        background: linear-gradient(
+          270deg,
+          rgba(38, 70, 138, 0.9) 23.5%,
+          rgba(38, 70, 138, 0) 100%
+        );
       }
 
       & h4 {
@@ -484,7 +488,8 @@
       }
     }
 
-    .card-product.card-product--green.bg-dark-10 .form-control.form-control-lg-lg.js-mask-phone:focus {
+    .card-product.card-product--green.bg-dark-10
+      .form-control.form-control-lg-lg.js-mask-phone:focus {
       outline: 2px solid var(--blue-contrast-light);
       outline-offset: 2px;
       box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.25);
@@ -521,7 +526,8 @@
       background-color: var(--blue-contrast-light);
 
       & img {
-        filter: brightness(0) saturate(100%) invert(10%) sepia(91%) saturate(1802%) hue-rotate(172deg) brightness(95%) contrast(106%);
+        filter: brightness(0) saturate(100%) invert(10%) sepia(91%)
+          saturate(1802%) hue-rotate(172deg) brightness(95%) contrast(106%);
       }
     }
 
@@ -537,6 +543,9 @@
       background-color: var(--blue-contrast-light-1);
     }
 
+    h5.dark-100 {
+      text-align: center;
+    }
     h4.dark-100 {
       color: var(--blue-contrast-bg);
     }
@@ -571,7 +580,8 @@
       }
     }
 
-    .d-flex.flex-column.row-gap-4.px-3.py-4.p-md-5.p-lg-6.bg-blue-10 {
+    .tabs-panel__list-item-link.nav-link.bg-transparent
+      .d-flex.flex-column.row-gap-4.px-3.py-4.p-md-5.p-lg-6.bg-blue-10 {
       background-color: var(--blue-contrast-white);
 
       & h5 {
@@ -864,9 +874,11 @@
 
     //AWARDS page
     .bg-linear-blue {
-      background: linear-gradient(270deg,
-          rgba(38, 70, 138, 0.9) 23.5%,
-          rgba(38, 70, 138, 0) 100%);
+      background: linear-gradient(
+        270deg,
+        rgba(38, 70, 138, 0.9) 23.5%,
+        rgba(38, 70, 138, 0) 100%
+      );
     }
 
     .breadcrumbs.d-flex.flex-wrap.gap-2 span {
@@ -904,6 +916,10 @@
 
     .tabs-panel__list-item-link.nav-link.bg-transparent {
       background-color: var(--blue-contrast-bg-dark) !important;
+      &:hover,
+      &:focus {
+        background-color: var(--blue-contrast-white);
+      }
 
       &.active {
         background-color: var(--blue-contrast-light) !important;
@@ -1121,9 +1137,11 @@
     }
 
     .bg-gradient-violet {
-      background: linear-gradient(42deg,
-          var(--blue-contrast-light) 20%,
-          var(--blue-contrast-white) 80%);
+      background: linear-gradient(
+        42deg,
+        var(--blue-contrast-light) 20%,
+        var(--blue-contrast-white) 80%
+      );
     }
 
     .select2-selection__rendered {
@@ -1139,6 +1157,32 @@
     }
 
     //cards.html
+
+    .tabs-panel__navigation-item-reverse,
+    .tabs-panel__navigation-item {
+      background: none;
+    }
+    .tabs-panel__navigation.d-none.d-lg-block.js-tabs-slider-navigation.w-100
+      span
+      > svg {
+      color: var(--blue-contrast-white);
+    }
+
+    .card-product-list.overflow-hidden.position-relative.mh-100.h-auto.bg-dark-10.w-100.pt-7.pb-6.py-sm-9.py-md-9.py-lg-11.px-3.px-sm-4.px-md-5.px-lg-6.pe-xxl-11 {
+      background-color: var(--blue-contrast-light-1);
+    }
+
+    .card-product-list__condition-list.w-100.w-lg-auto.d-flex.justify-content-between.justify-content-lg-start.flex-column.flex-sm-row.flex-wrap.row-gap-4.row-gap-sm-6.row-gap-lg-6.row-gap-xxl-6.gap-xl-12.gap-xxl-16 {
+      .card-product-list__condition.d-flex.flex-column.gap-2.w-100.w-sm-50.w-xl-auto {
+        .text-m.dark-70 {
+          color: var(--blue-contrast-bg-dark);
+        }
+      }
+    }
+
+    .row.px-lg-6 {
+      background-color: var(--blue-contrast-bg);
+    }
 
     .bg-dark-10 {
       background-color: var(--blue-contrast-light-1);
@@ -1331,7 +1375,8 @@
 
     //contribution-detail.html
 
-    .d-inline-flex.flex-nowrap.align-items-baseline.text-l.fw-semibold.gap-1.green-100 span {
+    .d-inline-flex.flex-nowrap.align-items-baseline.text-l.fw-semibold.gap-1.green-100
+      span {
       color: var(--blue-contrast-white) !important;
     }
 
@@ -1426,8 +1471,12 @@
       }
     }
 
+    .card-benefit.d-inline-flex.px-3.px-sm-5.px-lg-6.p-4.p-sm-5.p-lg-6.w-100.bg-dark-10 {
+      margin-top: 25px;
+    }
+
     //customer-requests.html
-    .list.list--size-l>li>span>a {
+    .list.list--size-l > li > span > a {
       color: var(--blue-contrast-white);
 
       &:hover {
@@ -1541,14 +1590,17 @@
     }
 
     .icon.size-xxl {
-      filter: brightness(0) saturate(100%) invert(16%) sepia(32%) saturate(457%) hue-rotate(196deg) brightness(93%) contrast(88%);
+      filter: brightness(0) saturate(100%) invert(16%) sepia(32%) saturate(457%)
+        hue-rotate(196deg) brightness(93%) contrast(88%);
     }
 
     //how-to-protect.html
     .card-promo.card-promo--heavy-blue {
-      background: linear-gradient(270deg,
-          rgba(40, 91, 202, 0.9) 23.5%,
-          rgba(38, 70, 138, 0) 100%);
+      background: linear-gradient(
+        270deg,
+        rgba(40, 91, 202, 0.9) 23.5%,
+        rgba(38, 70, 138, 0) 100%
+      );
     }
 
     .btn.btn-info.btn-lg-lg.w-100.w-md-auto {
@@ -1611,9 +1663,11 @@
 
     //insurance-companies.html
     .banner-text.banner-text--border-green.bg-heavy-violet {
-      background: linear-gradient(270deg,
-          rgba(40, 91, 202, 0.9) 23.5%,
-          rgba(38, 70, 138, 0) 100%);
+      background: linear-gradient(
+        270deg,
+        rgba(40, 91, 202, 0.9) 23.5%,
+        rgba(38, 70, 138, 0) 100%
+      );
     }
 
     //insurance-property.html
@@ -1898,7 +1952,6 @@
     }
 
     .swiper-wrapper {
-
       .swiper-slide.js-swiper-slide.swiper-slide-visible.swiper-slide-fully-visible.swiper-slide-active,
       .swiper-slide.js-swiper-slide.swiper-slide-visible.swiper-slide-fully-visible.swiper-slide-next,
       .swiper-slide.js-swiper-slide.swiper-slide-visible.swiper-slide-fully-visible,
@@ -1973,7 +2026,8 @@
     }
 
     //msb-guarantees.html
-    .d-inline-flex.flex-nowrap.align-items-baseline.text-l.fw-semibold.gap-1.yellow-100 span {
+    .d-inline-flex.flex-nowrap.align-items-baseline.text-l.fw-semibold.gap-1.yellow-100
+      span {
       color: var(--blue-contrast-white) !important;
     }
 
@@ -2029,7 +2083,7 @@
       color: var(--blue-contrast-bg-dark);
     }
 
-    .rte.m-0.gap-3.gap-lg-4>ul>li {
+    .rte.m-0.gap-3.gap-lg-4 > ul > li {
       color: var(--blue-contrast-bg-dark);
     }
 
@@ -2095,7 +2149,6 @@
     }
 
     .card-product.card-product {
-
       &--undefined.bg-dark-10.h-auto.flex-basis-100.flex-basis-md-25.flex-grow-1.bg-white,
       &--undefined.bg-dark-10.w-100.w-xl-auto.flex-basis-100.flex-basis-xl-25.h-auto.flex-grow-1.bg-white,
       &--size-height-auto.bg-dark-10.flex-basis-100.flex-basis-md-25.h-auto.flex-grow-1.bg-white,
@@ -2127,7 +2180,7 @@
       }
     }
 
-    .overflow-auto.custom-overflow-scrollbar>table>thead>tr>th {
+    .overflow-auto.custom-overflow-scrollbar > table > thead > tr > th {
       font-size: 1.5rem;
       color: var(--blue-contrast-white);
     }
@@ -2203,7 +2256,7 @@
     }
 
     //press-center-news.html
-    .rte.rte--w-xxl-60>p>b>a {
+    .rte.rte--w-xxl-60 > p > b > a {
       color: var(--blue-contrast-white);
       text-decoration: underline;
 
@@ -2212,8 +2265,8 @@
       }
     }
 
-    p>a,
-    li>a {
+    p > a,
+    li > a {
       color: var(--blue-contrast-white);
 
       &:hover {
@@ -2374,7 +2427,8 @@
       }
     }
 
-    .card__condition-title.d-inline-flex.flex-nowrap.align-items-baseline.gap-1 span {
+    .card__condition-title.d-inline-flex.flex-nowrap.align-items-baseline.gap-1
+      span {
       color: var(--blue-contrast-bg-dark) !important;
     }
 
@@ -2495,7 +2549,7 @@
     .table-tab__cell.text-l {
       color: var(--blue-contrast-bg-dark);
 
-      ul>li {
+      ul > li {
         color: var(--blue-contrast-bg-dark);
       }
     }
