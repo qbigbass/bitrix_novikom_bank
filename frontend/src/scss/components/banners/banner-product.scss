@@ -275,11 +275,13 @@
         }
 
         #{$root}__pattern {
-            top: 12.5rem; //200px
-            bottom: auto;
+            & img {
+                top: 12.5rem; //200px
+                bottom: auto;
 
-            @include use-media(tablet) {
-                top: 0;
+                @include use-media(tablet) {
+                    top: 0;
+                }
             }
         }
 

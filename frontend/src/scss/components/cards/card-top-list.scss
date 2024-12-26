@@ -31,10 +31,11 @@
     }
 
     &__pattern {
-
-        @include use-media(tablet-album) {
-            top: 2.5rem;
-            bottom: auto;
+        & img {
+            @include use-media(tablet-album) {
+                top: 2.5rem;
+                bottom: auto;
+            }
         }
     }
 }
