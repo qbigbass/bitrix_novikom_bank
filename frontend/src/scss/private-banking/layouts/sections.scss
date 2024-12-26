@@ -190,18 +190,18 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: url("../img/pb-images/pb-lines-bg-mobile.png")  50% 60px / contain no-repeat;
+      background: url("../img/pb-images/pb-lines-bg-mobile.png")  50% 60px / 100% 100% no-repeat;
 
       @include use-media(tablet) {
-        background: url("../img/pb-images/pb-lines-bg-tablet.png")  50% 0 / contain no-repeat;
+        background: url("../img/pb-images/pb-lines-bg-tablet.png")  50% 0 / 100% 100% no-repeat;
       }
 
       @include use-media(tablet-album) {
-        background: url("../img/pb-images/pb-lines-bg.png")  50% / contain no-repeat;
+        background: url("../img/pb-images/pb-lines-bg.png")  50% / 100% 100% no-repeat;
       }
 
-      @include use-media(laptop-x) {
-        background-size: cover;
+      @include use-media(laptop) {
+        background-size: 100% auto;
       }
     }
   }

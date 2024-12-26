@@ -9,6 +9,8 @@ block content
     include ../cards/private-banking/pb-card-benefit
     include ../components/ui/accordion-item
     include ../components/pb-document-download
+    include ../includes/header/pb-header
+    include ../includes/layout/private-banking/pb-main-nav
     -
         var supremeCardBenefits = [
             {
@@ -69,8 +71,8 @@ block content
         ]
 
     section.pb-section-hero
-        include ../includes/header/pb-header
-        include ../includes/layout/private-banking/pb-main-nav
+        +pb-header(true)
+        +pb-main-nav(true)
 
         .container
             h3.pb-section__title.dark-0.text-center.my-4.my-md-6.mt-lg-0.animate.js-animation
@@ -167,7 +169,8 @@ block content
                 each benefit in supremeCardBenefits
                     +pb-card-benefit(benefit.icon, benefit.text).animate.js-animation
             .mt-6.mb-4.text-center
-                a(href="#become-client").btn.btn-pb.btn-pb--primary.btn-pb--size-lg.w-100.w-md-auto.animate.js-animation Стать клиентом
+                button(type="button" data-bs-toggle="modal" data-bs-target="#modal-become-client" aria-label="Стать клиентом").btn.btn-pb.btn-pb--primary.btn-pb--size-lg.w-100.w-md-auto.animate.js-animation
+                    | Стать клиентом
         .pb-section-hero__overlay.pb-section-hero__overlay--size-small
 
     section.pb-section.pb-section--gradient-raial
@@ -202,8 +205,11 @@ block content
 
                     .col-12.pb-section__footer.animate.js-animation
                         .d-flex.flex-column.row-gap-4.align-items-center.py-4
-                            a(href="#become-client").btn.btn-pb.btn-pb--primary.w-100.w-md-auto
+                            button(type="button" data-bs-toggle="modal" data-bs-target="#modal-become-client" aria-label="Стать клиентом").btn.btn-pb.btn-pb--primary.w-100.w-md-auto
                                 | Заказать карту
+
                             p.pb-text-notes.mb-0.pr-text-color.text-center
                                 | Время изготовления карты <br class="d-md-none">до&nbsp;10 рабочих дней
+
+    include ../includes/modals/modal-pb-become-client
 

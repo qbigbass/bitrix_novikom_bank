@@ -1,0 +1,8 @@
+.modal.modal-pb.fade(id="modal-become-client" tabindex='-1' aria-hidden='true')
+    .container.modal-pb__container
+        button.btn-close(type="button" data-bs-dismiss='modal' aria-label='Close')
+            span.icon
+                +svg-use("icon-close-small")
+        .modal-dialog
+            .modal-content
+                include ../../includes/forms/pb-form
