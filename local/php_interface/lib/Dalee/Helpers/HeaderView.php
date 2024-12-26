@@ -158,7 +158,7 @@ class HeaderView
                 </div>
 
                 <? if (!empty($headerData['footerHtml'])) { ?>
-                    <div class="banner-product__footer row gx-md-2 gx-lg-0 row-gap-4 row-gap-lg-6 mt-6 mt-lg-16 mt-xl-26">
+                    <div class="banner-product__footer row gx-md-2 gx-lg-2_5 row-gap-4 row-gap-lg-6 mt-6 mt-lg-16">
                         <?= $headerData['footerHtml'] ?>
                     </div>
                 <? } ?>

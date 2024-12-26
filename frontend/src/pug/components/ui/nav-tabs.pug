@@ -1,7 +1,7 @@
 mixin nav-tabs(tabsList)
-    ul.nav.nav-tabs(role="tablist")
+    ul.nav.nav-tabs(role="tablist")&attributes(attributes)
         each item in tabsList
-            li.nav-item(role="presentation")
+            li.nav-item.flex-grow-1(role="presentation")
                 button.nav-link(
                     class= item.isActive ? 'active' : '',
                     data-bs-toggle="tab"

@@ -169,3 +169,11 @@
     top: 2.5rem;
   }
 }
+
+.person-img {
+    max-height: 25rem;
+
+    @include use-media(laptop) {
+        max-height: 37.5rem;
+    }
+}
