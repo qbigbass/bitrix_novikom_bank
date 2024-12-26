@@ -154,4 +154,11 @@ $arUrlRewrite = [
         'PATH' => '/map/index.php',
         'SORT' => 100,
     ],
+    [
+        'CONDITION' => '#^/private-banking/#',
+        'RULE' => '',
+        'ID' => 'bitrix:news',
+        'PATH' => '/private-banking/index.php',
+        'SORT' => 100,
+    ],
 ];
