@@ -21,61 +21,44 @@ $blockContactsIds = [];
 $blockContactsElements = [];
 $blockGuaranteesIds = [];
 $blockGuaranteesElements = [];
+$blockStagesElements = [];
 $blockDetailServiceSectionIds = [];
 $blockDetailServiceTabs = [];
 $blockDetailServiceElements = [];
 $blockDetailServiceTabsQuotes = [];
-$colorsBlocks = [];
-$blockWithColor = '';
 
 if (!empty($arResult["ITEMS"])) {
     foreach ($arResult["ITEMS"] as $item) {
         if (!empty($item["PROPERTIES"]["BLOCK_RATINGS"]["VALUE"])) {
             $blockRatingsIds = $item["PROPERTIES"]["BLOCK_RATINGS"]["VALUE"];
-            $blockWithColor = "BLOCK_RATINGS";
         }
 
         if (!empty($item["PROPERTIES"]["BLOCK_POSSIBILITIES"]["VALUE"])) {
             $blockPossibilitiesIds = $item["PROPERTIES"]["BLOCK_POSSIBILITIES"]["VALUE"];
-            $blockWithColor = "BLOCK_POSSIBILITIES";
         }
 
         if (!empty($item["PROPERTIES"]["BLOCK_QUOTES"]["VALUE"])) {
             $blockQuotesIds = $item["PROPERTIES"]["BLOCK_QUOTES"]["VALUE"];
-            $blockWithColor = "BLOCK_QUOTES";
         }
 
         if (!empty($item["PROPERTIES"]["BLOCK_CARDS"]["VALUE"])) {
             $blockCardsIds = $item["PROPERTIES"]["BLOCK_CARDS"]["VALUE"];
-            $blockWithColor = "BLOCK_CARDS";
         }
 
         if (!empty($item["PROPERTIES"]["BLOCK_OTHER_SERVICES"]["VALUE"])) {
             $blockOtherServicesIds = $item["PROPERTIES"]["BLOCK_OTHER_SERVICES"]["VALUE"];
-            $blockWithColor = "BLOCK_OTHER_SERVICES";
         }
 
         if (!empty($item["PROPERTIES"]["BLOCK_CONTACTS"]["VALUE"])) {
             $blockContactsIds = $item["PROPERTIES"]["BLOCK_CONTACTS"]["VALUE"];
-            $blockWithColor = "BLOCK_CONTACTS";
         }
 
         if (!empty($item["PROPERTIES"]["BLOCK_GUARANTEES"]["VALUE"])) {
             $blockGuaranteesIds = $item["PROPERTIES"]["BLOCK_GUARANTEES"]["VALUE"];
-            $blockWithColor = "BLOCK_GUARANTEES";
         }
 
         if (!empty($item["PROPERTIES"]["BLOCK_DETAIL_SERVICE"]["VALUE"])) {
             $blockDetailServiceSectionIds = $item["PROPERTIES"]["BLOCK_DETAIL_SERVICE"]["VALUE"];
-            $blockWithColor = "BLOCK_DETAIL_SERVICE";
-        }
-
-        if (!empty($item["PROPERTIES"]["COLOR_BLOCK"]["VALUE"])) {
-            $color = $item["PROPERTIES"]["COLOR_BLOCK"]["VALUE"];
-
-            if (!empty($blockWithColor)) {
-                $colorsBlocks[$blockWithColor] = $color;
-            }
         }
     }
 }
@@ -340,6 +323,10 @@ if (!empty($blockGuaranteesIds)) {
                 $blockGuaranteesElements["ITEMS"][$placeXmlId][$id] = [
                     "TITLE" => $name
                 ];
+            } else {
+                $blockStagesElements[$id] = [
+                    "TITLE" => $name
+                ];
             }
         }
     }
@@ -350,7 +337,7 @@ if (!empty($blockDetailServiceSectionIds)) {
     $iblockDetailServices = iblock('msb_full_info_services');
     $entity = Section::compileEntityByIblock($iblockDetailServices);
     $rsSections = $entity::getList([
-        "select" => ["ID", "NAME", "CODE", "UF_TAB_QUOTES"],
+        "select" => ["ID", "NAME", "CODE"],
         "filter" => [
             "ID" => $blockDetailServiceSectionIds
         ],
@@ -363,64 +350,12 @@ if (!empty($blockDetailServiceSectionIds)) {
     $tabSectionCode = [];
 
     foreach ($rsSections as $section) {
-        if (!empty($section["UF_TAB_QUOTES"])) {
-            $tabQuoteIds[$section["UF_TAB_QUOTES"]] = $section["UF_TAB_QUOTES"];
-            $tabQuoteSectionIds[$section["CODE"]][$section["UF_TAB_QUOTES"]] = $section["UF_TAB_QUOTES"];
-        }
-
         $blockDetailServiceTabs[$section['ID']] = [
             "NAME" => $section["NAME"],
             "CODE" => $section["CODE"],
         ];
 
         $tabSectionCode[$section["CODE"]] = $section["ID"];
-    }
-
-    if (!empty($tabQuoteIds)) {
-        // Получим подробные данные для цитаты из ИБ "Цитаты для каталога услуг"
-        $iblockQuotes = iblock('msb_quotes');
-        $classQuotes = BitrixIblock::wakeUp($iblockQuotes)->getEntityDataClass();
-        $elementsQuotes = $classQuotes::getList([
-            "select" => ["ID", "NAME", "PREVIEW_PICTURE", "PREVIEW_TEXT"],
-            "filter" => ["ACTIVE" => "Y", "ID" => $tabQuoteIds],
-        ])->fetchCollection();
-
-        if (!empty($elementsQuotes)) {
-            foreach ($elementsQuotes as $element) {
-                $id = $element->getId();
-                $name = $element->getName();
-                $previewPicture = $element->getPreviewPicture();
-                $previewText = '';
-                $picture = '';
-
-                if (!empty($element->getPreviewText())) {
-                    $previewText = $element->getPreviewText();
-                }
-
-                if (empty($previewText)) {
-                    $previewText = $name;
-                    $name = '';
-                }
-
-                if (!empty($previewPicture)) {
-                    $picture = CFile::GetPath($previewPicture);
-                }
-
-                $tabQuotesElements[$id] = [
-                    "TITLE" => $name,
-                    "TEXT" => $previewText,
-                    "PICTURE" => $picture
-                ];
-            }
-        }
-    }
-
-    if (!empty($tabQuotesElements)) {
-        foreach ($tabQuoteSectionIds as $sectionCode => $arQuotes) {
-            foreach ($arQuotes as $quotesId) {
-                $blockDetailServiceTabsQuotes[$sectionCode][$quotesId] = $tabQuotesElements[$quotesId];
-            }
-        }
     }
 
     $classDetailServices = BitrixIblock::wakeUp($iblockDetailServices)->getEntityDataClass();
@@ -434,7 +369,8 @@ if (!empty($blockDetailServiceSectionIds)) {
             "DOCUMENTS.FILE",
             "TAB_FUNDS_DESC",
             "TAB_FUNDS_CITY",
-            "TAB_FUNDS_LINK"
+            "TAB_FUNDS_LINK",
+            "TAB_QUOTES"
         ],
         "filter" => [
             "ACTIVE" => "Y",
@@ -571,6 +507,59 @@ if (!empty($blockDetailServiceSectionIds)) {
                     "CITY" => $fundsCity
                 ];
             }
+
+            if (!empty($element->getTabQuotes())) {
+                $quoteId = $element->getTabQuotes()->getValue();
+                $tabQuoteIds[$quoteId] = $quoteId;
+                $tabQuoteSectionIds[$sectionCode][$quoteId] = $quoteId;
+            }
+        }
+
+        if (!empty($tabQuoteIds)) {
+            // Получим подробные данные для цитаты из ИБ "Цитаты для каталога услуг"
+            $iblockQuotes = iblock('msb_quotes');
+            $classQuotes = BitrixIblock::wakeUp($iblockQuotes)->getEntityDataClass();
+            $elementsQuotes = $classQuotes::getList([
+                "select" => ["ID", "NAME", "PREVIEW_PICTURE", "PREVIEW_TEXT"],
+                "filter" => ["ACTIVE" => "Y", "ID" => $tabQuoteIds],
+            ])->fetchCollection();
+
+            if (!empty($elementsQuotes)) {
+                foreach ($elementsQuotes as $element) {
+                    $id = $element->getId();
+                    $name = $element->getName();
+                    $previewPicture = $element->getPreviewPicture();
+                    $previewText = '';
+                    $picture = '';
+
+                    if (!empty($element->getPreviewText())) {
+                        $previewText = $element->getPreviewText();
+                    }
+
+                    if (empty($previewText)) {
+                        $previewText = $name;
+                        $name = '';
+                    }
+
+                    if (!empty($previewPicture)) {
+                        $picture = CFile::GetPath($previewPicture);
+                    }
+
+                    $tabQuotesElements[$id] = [
+                        "TITLE" => $name,
+                        "TEXT" => $previewText,
+                        "PICTURE" => $picture
+                    ];
+                }
+            }
+        }
+
+        if (!empty($tabQuotesElements)) {
+            foreach ($tabQuoteSectionIds as $sectionCode => $arQuotes) {
+                foreach ($arQuotes as $quotesId) {
+                    $blockDetailServiceTabsQuotes[$sectionCode][$quotesId] = $tabQuotesElements[$quotesId];
+                }
+            }
         }
 
         if (!empty($blockDetailServiceElements)) {
@@ -593,58 +582,34 @@ if (!empty($arResult["ITEMS"])) {
     foreach ($arResult["ITEMS"] as $index => $item) {
         if (!empty($item["PROPERTIES"]["BLOCK_RATINGS"]["VALUE"]) && !empty($blockRatingElements)) {
             $arResult["ITEMS"][$index]["BLOCK_RATINGS"] = $blockRatingElements;
-
-            if (!empty($colorsBlocks["BLOCK_RATINGS"])) {
-                $arResult["ITEMS"][$index]["COLOR_BLOCK"] = $colorsBlocks["BLOCK_RATINGS"];
-            }
         }
 
         if (!empty($item["PROPERTIES"]["BLOCK_POSSIBILITIES"]["VALUE"]) && !empty($blockPossibilitiesElements)) {
             $arResult["ITEMS"][$index]["BLOCK_POSSIBILITIES"] = $blockPossibilitiesElements;
-
-            if (!empty($colorsBlocks["BLOCK_POSSIBILITIES"])) {
-                $arResult["ITEMS"][$index]["COLOR_BLOCK"] = $colorsBlocks["BLOCK_POSSIBILITIES"];
-            }
         }
 
         if (!empty($item["PROPERTIES"]["BLOCK_QUOTES"]["VALUE"]) && !empty($blockQuotesElements)) {
             $arResult["ITEMS"][$index]["BLOCK_QUOTES"] = $blockQuotesElements;
-
-            if (!empty($colorsBlocks["BLOCK_QUOTES"])) {
-                $arResult["ITEMS"][$index]["COLOR_BLOCK"] = $colorsBlocks["BLOCK_QUOTES"];
-            }
         }
 
         if (!empty($item["PROPERTIES"]["BLOCK_CARDS"]["VALUE"]) && !empty($blockCardsElements)) {
             $arResult["ITEMS"][$index]["BLOCK_CARDS"] = $blockCardsElements;
-
-            if (!empty($colorsBlocks["BLOCK_CARDS"])) {
-                $arResult["ITEMS"][$index]["COLOR_BLOCK"] = $colorsBlocks["BLOCK_CARDS"];
-            }
         }
 
         if (!empty($item["PROPERTIES"]["BLOCK_OTHER_SERVICES"]["VALUE"]) && !empty($blockOtherServicesElements)) {
             $arResult["ITEMS"][$index]["BLOCK_OTHER_SERVICES"] = $blockOtherServicesElements;
-
-            if (!empty($colorsBlocks["BLOCK_OTHER_SERVICES"])) {
-                $arResult["ITEMS"][$index]["COLOR_BLOCK"] = $colorsBlocks["BLOCK_OTHER_SERVICES"];
-            }
         }
 
         if (!empty($item["PROPERTIES"]["BLOCK_CONTACTS"]["VALUE"]) && !empty($blockContactsElements)) {
             $arResult["ITEMS"][$index]["BLOCK_CONTACTS"] = $blockContactsElements;
-
-            if (!empty($colorsBlocks["BLOCK_CONTACTS"])) {
-                $arResult["ITEMS"][$index]["COLOR_BLOCK"] = $colorsBlocks["BLOCK_CONTACTS"];
-            }
         }
 
         if (!empty($item["PROPERTIES"]["BLOCK_GUARANTEES"]["VALUE"]) && !empty($blockGuaranteesElements)) {
             $arResult["ITEMS"][$index]["BLOCK_GUARANTEES"] = $blockGuaranteesElements;
+        }
 
-            if (!empty($colorsBlocks["BLOCK_GUARANTEES"])) {
-                $arResult["ITEMS"][$index]["COLOR_BLOCK"] = $colorsBlocks["BLOCK_GUARANTEES"];
-            }
+        if (!empty($item["PROPERTIES"]["BLOCK_GUARANTEES"]["VALUE"]) && !empty($blockStagesElements)) {
+            $arResult["ITEMS"][$index]["BLOCK_STAGES"] = $blockStagesElements;
         }
 
         if (!empty($item["PROPERTIES"]["BLOCK_DETAIL_SERVICE"]["VALUE"]) &&
@@ -653,10 +618,10 @@ if (!empty($arResult["ITEMS"])) {
         ) {
             $arResult["ITEMS"][$index]["BLOCK_DETAIL_SERVICE"]["TABS"] = $blockDetailServiceTabs;
             $arResult["ITEMS"][$index]["BLOCK_DETAIL_SERVICE"]["ELEMENTS"] = $blockDetailServiceElements;
+        }
 
-            if (!empty($colorsBlocks["BLOCK_DETAIL_SERVICE"])) {
-                $arResult["ITEMS"][$index]["COLOR_BLOCK"] = $colorsBlocks["BLOCK_DETAIL_SERVICE"];
-            }
+        if (!empty($item["PROPERTIES"]["CLASS_SECTION"]["VALUE"])) {
+            $arResult["ITEMS"][$index]["SECTION_BACKGROUND_CLASS_STYLE"] = $item["PROPERTIES"]["CLASS_SECTION"]["VALUE"];
         }
     }
 }
