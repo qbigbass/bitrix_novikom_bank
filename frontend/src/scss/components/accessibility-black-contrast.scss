@@ -51,7 +51,7 @@
         background: var(--black-contrast-black-300);
       }
     }
-		
+
 
     .banner-hero {
       border-top: 8px solid var(--black-contrast-gray-100);
@@ -115,14 +115,15 @@
       color: var(--black-contrast-white);
     }
 
-		//больше о банке
+    //больше о банке
     .btn.btn-secondary.btn-lg-lg.d-inline-block {
       color: var(--black-contrast-white-0);
       background-color: var(--black-contrast-black-0);
       border: 1px solid var(--black-contrast-white-200);
 
-      &:hover , &:focus{
-				border: 1px solid var(--black-contrast-black-0);
+      &:hover,
+      &:focus {
+        border: 1px solid var(--black-contrast-black-0);
         color: var(--black-contrast-black-0);
         background-color: var(--black-contrast-white-0);
       }
@@ -169,39 +170,45 @@
         color: var(--black-contrast-black-0);
       }
     }
-//мобильное приложение 
-		.btn.btn-outline-primary.btn-sm.d-none.d-md-inline-flex.gap-2.align-items-center.justify-content-center{
-			border: 1px solid var(--black-contrast-white-0);
+
+    //мобильное приложение 
+    .btn.btn-outline-primary.btn-sm.d-none.d-md-inline-flex.gap-2.align-items-center.justify-content-center {
+      border: 1px solid var(--black-contrast-white-0);
       background-color: var(--black-contrast-black-0);
       color: var(--black-contrast-white-0);
-			.icon.size-m {
+
+      .icon.size-m {
         color: var(--black-contrast-white-0);
         transition: 0.2 all linear;
       }
-      &:hover, &:focus  {
-				background-color: var(--black-contrast-white-0);
-        color: var(--black-contrast-black-0) ;
-				.icon.size-m {
+
+      &:hover,
+      &:focus {
+        background-color: var(--black-contrast-white-0);
+        color: var(--black-contrast-black-0);
+
+        .icon.size-m {
           color: var(--black-contrast-black-0);
         }
       }
-		}
+    }
 
-		//онлайн банк
-		.btn.btn-sm.btn-primary.dropdown-toggle {
-			border: 1px solid var(--black-contrast-white-0);
+    //онлайн банк
+    .btn.btn-sm.btn-primary.dropdown-toggle {
+      border: 1px solid var(--black-contrast-white-0);
       background-color: var(--black-contrast-black-0);
       color: var(--black-contrast-white-0);
-	
-      &:hover, &:focus  {
-				background-color: var(--black-contrast-white-0);
-        color: var(--black-contrast-black-0) ;
-			
-      }
-		}
 
-		
-		
+      &:hover,
+      &:focus {
+        background-color: var(--black-contrast-white-0);
+        color: var(--black-contrast-black-0);
+
+      }
+    }
+
+
+
 
     .dropdown-menu {
       --bs-dropdown-link-color: var(--black-contrast-black-0);
@@ -227,15 +234,17 @@
       }
     }
 
-		.col-6.violet-100{
-			.header__link.fw-semibold{
-				color: var(--black-contrast-black-0);
-				&:hover , &:focus {
-					color: var(--black-contrast-white-0);
-				}
-			}
-			
-		}
+    .col-6.violet-100 {
+      .header__link.fw-semibold {
+        color: var(--black-contrast-black-0);
+
+        &:hover,
+        &:focus {
+          color: var(--black-contrast-white-0);
+        }
+      }
+
+    }
 
     .banner-hero-thumb:not(:first-child) {
       border-left: 1px solid var(--black-contrast-white-0);
@@ -286,7 +295,7 @@
     }
 
 
-		
+
 
     .card-product {
       border-radius: 5px;
@@ -353,7 +362,7 @@
       }
     }
 
-		
+
 
 
 
@@ -368,19 +377,21 @@
     }
 
 
-		//кнопки rustore nashstore
+    //кнопки rustore nashstore
     .d-flex.gap-3 {
-			.btn.btn-info.d-none.d-md-inline-flex.align-items-center{
-background-color:var(--black-contrast-white-200);
-     &:focus, &:hover {
-        background-color: var(--black-contrast-white-0);
+      .btn.btn-info.d-none.d-md-inline-flex.align-items-center {
+        background-color: var(--black-contrast-white-200);
+
+        &:focus,
+        &:hover {
+          background-color: var(--black-contrast-white-0);
+        }
       }
-		}
     }
-		
-		
-		
-//направить сообщение кнопка
+
+
+
+    //направить сообщение кнопка
     .d-flex.flex-column.align-items-start.gap-5.gap-md-6.ps-lg-6 {
       .btn.btn-info.w-100.w-lg-auto {
         background-color: var(--black-contrast-black-0);
@@ -395,35 +406,39 @@ background-color:var(--black-contrast-white-200);
         }
       }
     }
-		
-		.section-layout.section-feedback.bg-blue-10 {
-			background-color: var(--black-contrast-black-300);
-		}
-		
+
+    .section-layout.section-feedback.bg-blue-10 {
+      background-color: var(--black-contrast-black-300);
+    }
+
 
 
     .form-control.form-control-lg-lg.js-mask-phone:focus {
       border-color: var(--black-contrast-black-0);
     }
 
-//кнопка скачать  в карточке мобильное приложение
+    //кнопка скачать  в карточке мобильное приложение
     .btn.btn-info.btn-icon.d-none.d-md-inline-flex {
       border: 1px solid var(--black-contrast-white-0);
       background-color: var(--black-contrast-black-0);
       color: var(--black-contrast-white-0);
-			.icon.size-m {
+
+      .icon.size-m {
         color: var(--black-contrast-white-0);
       }
 
-      &:hover, &:focus  {
-				background-color: var(--black-contrast-white-0);
-        color: var(--black-contrast-black-0) ;
-				.icon.size-m {
+      &:hover,
+      &:focus {
+        background-color: var(--black-contrast-white-0);
+        color: var(--black-contrast-black-0);
+
+        .icon.size-m {
           color: var(--black-contrast-black-0);
         }
       }
     }
-//кнопки  кешбэк бонусы и акции
+
+    //кнопки  кешбэк бонусы и акции
     .btn.btn-link.btn-lg-lg.text-info.btn-icon {
       padding: 5px 12px;
       border: 1px solid var(--black-contrast-white-0);
@@ -480,12 +495,14 @@ background-color:var(--black-contrast-white-200);
       }
     }
 
-		.d-none.d-md-inline.text-s.fw-semibold {
-			color:var(--black-contrast-black-0);
-			&:hover , &:focus {
-				color: var(--black-contrast-black-300);
-			}
-		}
+    .d-none.d-md-inline.text-s.fw-semibold {
+      color: var(--black-contrast-black-0);
+
+      &:hover,
+      &:focus {
+        color: var(--black-contrast-black-300);
+      }
+    }
 
 
 
@@ -518,7 +535,7 @@ background-color:var(--black-contrast-white-200);
       .nav-link {
         background-color: var(--black-contrast-black-0);
         color: var(--black-contrast-white-0);
-        border-color:var(--black-contrast-black-0);
+        border-color: var(--black-contrast-black-0);
         white-space: nowrap;
 
         &.active {
@@ -545,34 +562,41 @@ background-color:var(--black-contrast-white-200);
 
     .form-check-label a {
       color: var(--black-contrast-black-0);
-			&:hover , &:focus {
-				color: var(--black-contrast-black-400);
-			}
-    }
-		.form-check-label {
-			color: var(--black-contrast-black-0);
-			&:hover , &:focus {
-				color: var(--black-contrast-black-400);
-				text-decoration: underline;
-			}
-		}
 
-		.dark-70 {
+      &:hover,
+      &:focus {
+        color: var(--black-contrast-black-400);
+      }
+    }
+
+    .form-check-label {
+      color: var(--black-contrast-black-0);
+
+      &:hover,
+      &:focus {
+        color: var(--black-contrast-black-400);
+        text-decoration: underline;
+      }
+    }
+
+    .dark-70 {
       color: var(--black-contrast-black-0);
     }
 
 
-		.card-special.bg-dark-10.dark-100.h-100.d-flex.flex-column.row-gap-6.row-gap-lg-9 {
-			background: var(--black-contrast-gray-200);
-		}
-		.text-s.dark-70.my-auto.mb-0 {
-			color: var(--black-contrast-black-0);
-		}
-		.text-s.dark-70 {
-			color: var(--black-contrast-black-0);
-		}
-		
-		
+    .card-special.bg-dark-10.dark-100.h-100.d-flex.flex-column.row-gap-6.row-gap-lg-9 {
+      background: var(--black-contrast-gray-200);
+    }
+
+    .text-s.dark-70.my-auto.mb-0 {
+      color: var(--black-contrast-black-0);
+    }
+
+    .text-s.dark-70 {
+      color: var(--black-contrast-black-0);
+    }
+
+
     .card-calculate-result {
       background-color: var(--black-contrast-black-300);
 
@@ -590,12 +614,12 @@ background-color:var(--black-contrast-white-200);
       background: var(--black-contrast-black-0);
     }
 
-//перезвоните мне
+    //перезвоните мне
     form .btn.btn-primary.btn-lg-lg.w-100 {
-			background-color: var(--black-contrast-black-200);
+      background-color: var(--black-contrast-black-200);
       color: var(--black-contrast-white-0);
       border: 1px solid var(--black-contrast-black-0);
-	
+
 
       &:hover,
       &:focus {
@@ -603,8 +627,8 @@ background-color:var(--black-contrast-white-200);
         color: var(--black-contrast-white-0);
       }
     }
-		
-		
+
+
 
 
     button .btn.btn-info.w-100.w-lg-auto {
@@ -668,17 +692,18 @@ background-color:var(--black-contrast-white-200);
 
 
     }
-//предварительный расчет
+
+    //предварительный расчет
     .d-flex.flex-column.gap-4.gap-lg-5.gap-xl-4.bg-dark-0.rounded-3.px-3.py-4.p-md-5.px-lg-6.p-xl-6 {
       background-color: var(--black-contrast-black-300);
-			border:1px solid  var(--black-contrast-black-0);
+      border: 1px solid var(--black-contrast-black-0);
     }
 
-		.form-label,
-		h4,
-		.caption-m.dark-70.mt-2.d-block {
-			color:  var(--black-contrast-black-0);
-		}
+    .form-label,
+    h4,
+    .caption-m.dark-70.mt-2.d-block {
+      color: var(--black-contrast-black-0);
+    }
 
     .form-control.form-control-lg {
       border-color: var(--black-contrast-black-0)
@@ -691,7 +716,7 @@ background-color:var(--black-contrast-white-200);
     }
 
     .purple-70 {
-      color:  var(--black-contrast-black-0)
+      color: var(--black-contrast-black-0)
     }
 
     h5 {
@@ -722,7 +747,7 @@ background-color:var(--black-contrast-white-200);
         color: var(--black-contrast-white-0);
       }
     }
-		
+
 
     .col-12.col-md-6.col-xl-3.d-flex.flex-column.row-gap-3 {
       width: auto;
@@ -755,7 +780,7 @@ background-color:var(--black-contrast-white-200);
       background-color: var(--black-contrast-black-200);
       color: var(--black-contrast-white-0);
       border: 1px solid var(--black-contrast-black-0);
-			min-width: 100%;
+      min-width: 100%;
 
       &:hover,
       &:focus {
@@ -766,7 +791,7 @@ background-color:var(--black-contrast-white-200);
 
     //версии 2 кнопки
     .btn.btn-lg-lg.btn-outline-primary.d-flex.gap-2.align-items-center.justify-content-center {
-      background-color:var(--black-contrast-black-200);
+      background-color: var(--black-contrast-black-200);
       color: var(--black-contrast-white-0);
       border: 1px solid var(--black-contrast-black-0);
 
@@ -777,7 +802,7 @@ background-color:var(--black-contrast-white-200);
       }
     }
 
-		
+
 
     //rustore  rumarket  nashstore
     .btn-app.btn.d-inline-flex.justify-content-center.align-items-center.bg-white {
@@ -785,15 +810,15 @@ background-color:var(--black-contrast-white-200);
 
       &:hover,
       &:focus {
-        border:4px solid var(--black-contrast-white-0);
+        border: 4px solid var(--black-contrast-white-0);
       }
     }
 
 
-		//скачать
+    //скачать
     .btn-app.btn.btn-primary.d-flex.align-items-center.gap-2.gap-lg-3.justify-content-center {
       background-color: var(--black-contrast-black-0);
-      color:var(--black-contrast-white-0);
+      color: var(--black-contrast-white-0);
       border: 2px solid var(--black-contrast-black-0);
 
       &:hover,
@@ -808,7 +833,7 @@ background-color:var(--black-contrast-white-200);
     .footer__info {
       background-color: var(--black-contrast-gray-200);
 
-			.text-s.dark-70 {
+      .text-s.dark-70 {
         color: var(--black-contrast-black-0);
 
         &:hover,
@@ -819,17 +844,17 @@ background-color:var(--black-contrast-white-200);
       }
     }
 
-		.row.row-gap-7 {
-			.text-s.dark-70{
-				color: var(--black-contrast-black-0);
+    .row.row-gap-7 {
+      .text-s.dark-70 {
+        color: var(--black-contrast-black-0);
 
         &:hover,
         &:focus {
           text-decoration: underline;
           color: var(--black-contrast-black-100);
         }
-			}
-		}
+      }
+    }
 
     .bg-blue-10 {
       background-color: var(--black-contrast-gray-100);
@@ -869,41 +894,44 @@ background-color:var(--black-contrast-white-200);
     }
 
 
-		
+
     //atms.html
 
-		.map-content__header.d-flex.flex-column.row-gap-4.row-gap-md-6{
-			background-color: var(--black-contrast-gray-100);
-		}
+    .map-content__header.d-flex.flex-column.row-gap-4.row-gap-md-6 {
+      background-color: var(--black-contrast-gray-100);
+    }
 
 
     .card-office.d-flex.col-gap-2.align-items-center {
       background-color: var(--black-contrast-black-300);
-			.card-office__body.d-flex.flex-grow-1.flex-column.row-gap-2.row-gap-md-3{
-				color:var(--black-contrast-black-0)
-			}
+
+      .card-office__body.d-flex.flex-grow-1.flex-column.row-gap-2.row-gap-md-3 {
+        color: var(--black-contrast-black-0)
+      }
 
 
-			&:hover {
+      &:hover {
 
-				background-color: var(--black-contrast-black-0);
-				.card-office__body.d-flex.flex-grow-1.flex-column.row-gap-2.row-gap-md-3{
-					.card-office__title.fw-semibold.text-l.m-0,
-					.card-office__address.text-s.m-0.dark-70{
-						color:var(--black-contrast-white-0);
-					}
+        background-color: var(--black-contrast-black-0);
 
-				}
-			}
+        .card-office__body.d-flex.flex-grow-1.flex-column.row-gap-2.row-gap-md-3 {
+
+          .card-office__title.fw-semibold.text-l.m-0,
+          .card-office__address.text-s.m-0.dark-70 {
+            color: var(--black-contrast-white-0);
+          }
+
+        }
+      }
     }
 
 
-		.card-tariff.d-flex.flex-column.gap-5.bg-blue-10 {
-			background-color: var(--black-contrast-gray-100);
-		}
-	
+    .card-tariff.d-flex.flex-column.gap-5.bg-blue-10 {
+      background-color: var(--black-contrast-gray-100);
+    }
 
-		
+
+
 
     .modal {
       &-header {
@@ -914,9 +942,10 @@ background-color:var(--black-contrast-white-200);
         background-color: var(--black-contrast-gray-100);
       }
     }
-//применить
+
+    //применить
     .btn.btn-primary.btn-md-lg {
-			background-color:var(--black-contrast-black-200);
+      background-color: var(--black-contrast-black-200);
       color: var(--black-contrast-white-0);
       border: 1px solid var(--black-contrast-black-0);
 
@@ -926,9 +955,10 @@ background-color:var(--black-contrast-white-200);
         color: var(--black-contrast-white-0);
       }
     }
-//сбросить
+
+    //сбросить
     .btn.btn-outline-primary.btn-md-lg {
-			background-color:var(--black-contrast-black-200);
+      background-color: var(--black-contrast-black-200);
       color: var(--black-contrast-white-0);
       border: 1px solid var(--black-contrast-black-0);
 
@@ -941,7 +971,7 @@ background-color:var(--black-contrast-white-200);
 
     //AWARDS page
 
-		
+
     .bg-linear-blue {
       background: none;
       background-color: var(--black-contrast-black-300);
@@ -951,14 +981,14 @@ background-color:var(--black-contrast-white-200);
       color: var(--black-contrast-black-0);
     }
 
-		.breadcrumbs__item.d-md-inline-flex.align-items-center.gap-2.text-s.text-white-50.d-none span,
-    .breadcrumbs__item.d-md-inline-flex.align-items-center.gap-2.text-s.text-white-50.d-inline-flex span ,
-		.breadcrumbs__item.d-md-inline-flex.align-items-center.gap-2.text-s.dark-70.d-inline-flex span {
+    .breadcrumbs__item.d-md-inline-flex.align-items-center.gap-2.text-s.text-white-50.d-none span,
+    .breadcrumbs__item.d-md-inline-flex.align-items-center.gap-2.text-s.text-white-50.d-inline-flex span,
+    .breadcrumbs__item.d-md-inline-flex.align-items-center.gap-2.text-s.dark-70.d-inline-flex span {
       color: var(--black-contrast-black-0);
 
       &:hover {
         color: var(--black-contrast-white-200);
-				text-decoration: underline;
+        text-decoration: underline;
       }
     }
 
@@ -980,7 +1010,7 @@ background-color:var(--black-contrast-white-200);
       opacity: 0;
     }
 
-		.tabs-panel__list-item-link.nav-link.bg-transparent {
+    .tabs-panel__list-item-link.nav-link.bg-transparent {
       background-color: var(--black-contrast-black-200) !important;
       color: var(--black-contrast-white-0);
       border-color: var(--black-contrast-black-0);
@@ -990,9 +1020,11 @@ background-color:var(--black-contrast-white-200);
         color: var(--black-contrast-white-0);
         border-color: var(--black-contrast-black-0);
       }
-			&:hover,&:focus {
-				background-color: var(--black-contrast-black-300) 
-			}
+
+      &:hover,
+      &:focus {
+        background-color: var(--black-contrast-black-300)
+      }
     }
 
     .tabs-panel::before {
@@ -1017,11 +1049,12 @@ background-color:var(--black-contrast-white-200);
         color: var(--black-contrast-black-0);
       }
     }
-		
-	
-		.banner-product.banner-product--heavy-purple.banner-product--border-orange{
-			background-color: var(--black-contrast-black-300);
-		}
+
+
+    .banner-product.banner-product--heavy-purple.banner-product--border-orange {
+      background-color: var(--black-contrast-black-300);
+    }
+
     .banner-product.btn-orange {
       color: var(--black-contrast-white-200);
       background-color: var(--black-contrast-black-300);
@@ -1051,7 +1084,7 @@ background-color:var(--black-contrast-white-200);
     .card-benefit__image {
       display: none;
     }
-		
+
 
 
     .benefit__description.w-100.text-m span {
@@ -1062,9 +1095,9 @@ background-color:var(--black-contrast-white-200);
       background-color: var(--black-contrast-black-0);
     }
 
-		.card-help__description.text-s-m.m-0 {
-			color: var(--black-contrast-black-0);
-		}
+    .card-help__description.text-s-m.m-0 {
+      color: var(--black-contrast-black-0);
+    }
 
     .helper__content.text-l .link {
       color: var(--black-contrast-black-0);
@@ -1075,12 +1108,13 @@ background-color:var(--black-contrast-white-200);
       }
     }
 
-		.card-help__input.form-control.form-control-lg-lg.bg-transparent.js-mask-phone{
-			border:1px solid var(--black-contrast-black-0);
-			&:focus  {
-				border-color: var(--black-contrast-black-200);
-			}
-		}
+    .card-help__input.form-control.form-control-lg-lg.bg-transparent.js-mask-phone {
+      border: 1px solid var(--black-contrast-black-0);
+
+      &:focus {
+        border-color: var(--black-contrast-black-200);
+      }
+    }
 
     .list li:before {
       background: var(--black-contrast-black-0);
@@ -1145,27 +1179,28 @@ background-color:var(--black-contrast-white-200);
       }
     }
 
-		.list-contact__link{
-			.text-l{
-				color: var(--black-contrast-black-0);
+    .list-contact__link {
+      .text-l {
+        color: var(--black-contrast-black-0);
 
-				&:hover , &:focus {
-					color: var(--black-contrast-black-200);
-					text-decoration: underline;
-				}
-			}
-		}
-
-		
-	
+        &:hover,
+        &:focus {
+          color: var(--black-contrast-black-200);
+          text-decoration: underline;
+        }
+      }
+    }
 
 
 
-		
-		.card-feedback__inner::after {
-			background:none;
-			background-color: var(--black-contrast-black-300);
-		}
+
+
+
+
+    .card-feedback__inner::after {
+      background: none;
+      background-color: var(--black-contrast-black-300);
+    }
 
     .caption-m.chip.chip--outlined {
       color: var(--black-contrast-black-0);
@@ -1177,69 +1212,74 @@ background-color:var(--black-contrast-white-200);
     }
 
 
-		.d-flex.flex-column.flex-md-row.p-0.gap-3.gap-md-4 {
-			gap: 1rem; 
-			button {
-				flex: 1; 
-				min-width: 150px; 
-				text-align: center;
-				white-space: normal;
+    .d-flex.flex-column.flex-md-row.p-0.gap-3.gap-md-4 {
+      gap: 1rem;
 
-				text-align: center; 
-				overflow: hidden; 
-			}
-		}
+      button {
+        flex: 1;
+        min-width: 150px;
+        text-align: center;
+        white-space: normal;
 
-
-		//кнопка перзвоните мне
-		.d-flex.flex-column.flex-md-row.p-0.gap-3.gap-md-4{
-.btn.btn-primary.btn-lg-lg.text-ls.overflow-visible.w-100.w-md-auto{
-	background-color:var(--black-contrast-black-0);
-	border:1px solid var(--black-contrast-black-0);
-	color: var(--black-contrast-white-200);
-
-	&:hover , &:focus {
-		background-color:var(--black-contrast-white-0);
-	color: var(--black-contrast-black-0);
-	}
-
-}
+        text-align: center;
+        overflow: hidden;
+      }
+    }
 
 
-//открыть чат
-.btn.btn-outline-primary.btn-lg-lg.text-ls.overflow-visible.w-100.w-md-auto{
-	padding: 15px 32px !important;
-	max-width: auto;
-	background-color:var(--black-contrast-black-0);
-	border:1px solid var(--black-contrast-black-0);
-	color: var(--black-contrast-white-200);
+    //кнопка перзвоните мне
+    .d-flex.flex-column.flex-md-row.p-0.gap-3.gap-md-4 {
+      .btn.btn-primary.btn-lg-lg.text-ls.overflow-visible.w-100.w-md-auto {
+        background-color: var(--black-contrast-black-0);
+        border: 1px solid var(--black-contrast-black-0);
+        color: var(--black-contrast-white-200);
 
-	&:hover , &:focus {
-		background-color:var(--black-contrast-white-0);
-	color: var(--black-contrast-black-0);
-	}
-}
-		}
+        &:hover,
+        &:focus {
+          background-color: var(--black-contrast-white-0);
+          color: var(--black-contrast-black-0);
+        }
 
-
+      }
 
 
+      //открыть чат
+      .btn.btn-outline-primary.btn-lg-lg.text-ls.overflow-visible.w-100.w-md-auto {
+        padding: 15px 32px !important;
+        max-width: auto;
+        background-color: var(--black-contrast-black-0);
+        border: 1px solid var(--black-contrast-black-0);
+        color: var(--black-contrast-white-200);
+
+        &:hover,
+        &:focus {
+          background-color: var(--black-contrast-white-0);
+          color: var(--black-contrast-black-0);
+        }
+      }
+    }
 
 
-//подробнее
-		.btn.btn-link.btn-icon.m-auto.m-lg-0.py-2.py-lg-0 {
-			background-color:var(--black-contrast-black-0);
-			border:1px solid var(--black-contrast-white-0);
-			color: var(--black-contrast-white-0);
-		padding: 5px 12px !important;
-			&:hover , &:focus {
-				background-color:var(--black-contrast-white-0);
-			color: var(--black-contrast-black-0);
-			}
-		}
- 
-  
-   
+
+
+
+
+    //подробнее
+    .btn.btn-link.btn-icon.m-auto.m-lg-0.py-2.py-lg-0 {
+      background-color: var(--black-contrast-black-0);
+      border: 1px solid var(--black-contrast-white-0);
+      color: var(--black-contrast-white-0);
+      padding: 5px 12px !important;
+
+      &:hover,
+      &:focus {
+        background-color: var(--black-contrast-white-0);
+        color: var(--black-contrast-black-0);
+      }
+    }
+
+
+
 
     //	biometric-identification.html
     .banner-text--border-green {
@@ -1250,13 +1290,16 @@ background-color:var(--black-contrast-white-200);
       color: var(--black-contrast-white-0);
     }
 
-		.list.list--size-l{
-    .link.text-decoration-underline {
-      color: var(--black-contrast-black-0);
-      &:hover , &:focus{
-        color: var(--black-contrast-black-200);
+    .list.list--size-l {
+      .link.text-decoration-underline {
+        color: var(--black-contrast-black-0);
+
+        &:hover,
+        &:focus {
+          color: var(--black-contrast-black-200);
+        }
       }
-    }}
+    }
 
     .green-100.size-md-xxl.icon {
       filter: brightness(0) invert(1);
@@ -1283,15 +1326,16 @@ background-color:var(--black-contrast-white-200);
       padding: 5px 12px;
     }
 
-		
-		.document-download{
-			border-bottom:1px dashed var(--black-contrast-black-0)
-		}
+
+    .document-download {
+      border-bottom: 1px dashed var(--black-contrast-black-0)
+    }
+
     //bonuses.html
 
-		.banner-text.banner-text--border-green.bg-heavy-purple{
-			background-color: var(--black-contrast-black-300);
-		}
+    .banner-text.banner-text--border-green.bg-heavy-purple {
+      background-color: var(--black-contrast-black-300);
+    }
 
     .bg-gradient-violet {
       background: none;
@@ -1318,18 +1362,18 @@ background-color:var(--black-contrast-white-200);
       }
     }
 
-		.d-flex.flex-column.gap-2.align-items-start{
-			.text-l{
-				.link{
-					color: var(--black-contrast-black-0);
+    .d-flex.flex-column.gap-2.align-items-start {
+      .text-l {
+        .link {
+          color: var(--black-contrast-black-0);
 
-					&:hover {
-						color: var(--black-contrast-black-200);
-						text-decoration:underline;
-					}
-				}
-			}
-		}
+          &:hover {
+            color: var(--black-contrast-black-200);
+            text-decoration: underline;
+          }
+        }
+      }
+    }
 
     .select2-dropdown.select2-dropdown--below {
       background-color: var(--black-contrast-gray-300);
@@ -1337,48 +1381,51 @@ background-color:var(--black-contrast-white-200);
 
     //cards.html
 
-.card-product-list.overflow-hidden.position-relative.mh-100.h-auto.bg-dark-10.w-100.pt-7.pb-6.py-sm-9.py-md-9.py-lg-11.px-3.px-sm-4.px-md-5.px-lg-6.pe-xxl-11{
-	background-color: var(--black-contrast-black-300);
-}
+    .card-product-list.overflow-hidden.position-relative.mh-100.h-auto.bg-dark-10.w-100.pt-7.pb-6.py-sm-9.py-md-9.py-lg-11.px-3.px-sm-4.px-md-5.px-lg-6.pe-xxl-11 {
+      background-color: var(--black-contrast-black-300);
+    }
 
-.tabs-panel__navigation-item-reverse ,.tabs-panel__navigation-item {
-	background:none;
-}
-.tabs-panel__navigation.d-none.d-lg-block.js-tabs-slider-navigation.w-100 span>svg{
-	
-		color: var(--black-contrast-white-0);
-}
+    .tabs-panel__navigation-item-reverse,
+    .tabs-panel__navigation-item {
+      background: none;
+    }
 
-//оформить заявку
+    .tabs-panel__navigation.d-none.d-lg-block.js-tabs-slider-navigation.w-100 span>svg {
+
+      color: var(--black-contrast-white-0);
+    }
+
+    //оформить заявку
     .btn.btn-tertiary.btn-lg-lg.card-product-list__button.w-100.w-sm-auto {
       background-color: var(--black-contrast-black-0);
       color: var(--black-contrast-white-0);
-      border:1px solid  var(--black-contrast-white-0);
+      border: 1px solid var(--black-contrast-white-0);
 
       &:hover {
         background-color: var(--black-contrast-white-0);
         color: var(--black-contrast-black-0);
       }
     }
-//подробнее
-.btn.btn-link.btn-lg-lg.d-inline-flex.gap-2.align-items-center.card-product-list__button-more {
-	background-color: var(--black-contrast-black-0);
-	color: var(--black-contrast-white-0);
-	border:1px solid  var(--black-contrast-white-0);
-	padding: 15px 32px;
 
-	&:hover {
-		background-color: var(--black-contrast-white-0);
-		color: var(--black-contrast-black-0);
-	}
-}
-	
+    //подробнее
+    .btn.btn-link.btn-lg-lg.d-inline-flex.gap-2.align-items-center.card-product-list__button-more {
+      background-color: var(--black-contrast-black-0);
+      color: var(--black-contrast-white-0);
+      border: 1px solid var(--black-contrast-white-0);
+      padding: 15px 32px;
+
+      &:hover {
+        background-color: var(--black-contrast-white-0);
+        color: var(--black-contrast-black-0);
+      }
+    }
+
 
     //career-vacancy.html
 
-//откликнуться на вакансию
+    //откликнуться на вакансию
     .btn.btn-secondary.btn-lg-lg.d-inline-block.w-100.w-md-auto {
-      background-color:var(--black-contrast-black-200);
+      background-color: var(--black-contrast-black-200);
       color: var(--black-contrast-white-0);
       border: 1px solid var(--black-contrast-black-0);
 
@@ -1389,27 +1436,28 @@ background-color:var(--black-contrast-white-200);
       }
     }
 
-		.card-contact__contacts.d-flex.flex-column.flex-lg-row.flex-lg-wrap.gap-4 {
-			.card-contact__link.dark-0.gap-3.h5.fw-normal.text-white{
-			u {
-				color: var(--black-contrast-black-0);
+    .card-contact__contacts.d-flex.flex-column.flex-lg-row.flex-lg-wrap.gap-4 {
+      .card-contact__link.dark-0.gap-3.h5.fw-normal.text-white {
+        u {
+          color: var(--black-contrast-black-0);
 
-				&:hover {
-					color:var(--black-contrast-black-200);
-					text-decoration: underline;
-				}
-			}
-		}}
+          &:hover {
+            color: var(--black-contrast-black-200);
+            text-decoration: underline;
+          }
+        }
+      }
+    }
 
-		.d-flex.flex-wrap.justify-content-start.gap-2 span {
-			
-				color: var(--black-contrast-black-0);
+    .d-flex.flex-wrap.justify-content-start.gap-2 span {
 
-				&:hover {
-					color:var(--black-contrast-black-200);
-					text-decoration: underline;
-				}
-		}
+      color: var(--black-contrast-black-0);
+
+      &:hover {
+        color: var(--black-contrast-black-200);
+        text-decoration: underline;
+      }
+    }
 
     //career.html
     .mt-7.w-100.w-sm-auto.btn.btn-secondary.btn-lg-lg.d-inline-block {
@@ -1417,44 +1465,44 @@ background-color:var(--black-contrast-white-200);
       color: var(--black-contrast-white-0);
       border: 1px solid var(--black-contrast-white-0);
 
-      &:hover , &:focus{
+      &:hover,
+      &:focus {
         background-color: var(--black-contrast-white-0);
         color: var(--black-contrast-black-0);
       }
     }
 
-		span .select2-selection__placeholder {
-			color: var(--black-contrast-black-0) !important;
-		}
+    span .select2-selection__placeholder {
+      color: var(--black-contrast-black-0) !important;
+    }
 
-		.border-bottom-dashed{
-			border-bottom : 1px dashed var(--black-contrast-black-0) ;
-		}
-		.form-control.form-control-lg.text-l:focus {
-border-color:var(--black-contrast-black-200);
-		}
-		.input-group-icon {
-			border:1px solid var(--black-contrast-black-0);
-		}
+    .border-bottom-dashed {
+      border-bottom: 1px dashed var(--black-contrast-black-0);
+    }
+
+    .form-control.form-control-lg.text-l:focus {
+      border-color: var(--black-contrast-black-200);
+    }
+
+    .input-group-icon {
+      border: 1px solid var(--black-contrast-black-0);
+    }
 
     .page-item {
-  
-      --bs-pagination-active-bg:var(--black-contrast-black-0) 
-      --bs-pagination-active-border-color: var(--black-contrast-white-200);
+
+      --bs-pagination-active-bg: var(--black-contrast-black-0) --bs-pagination-active-border-color: var(--black-contrast-white-200);
       --bs-pagination-border-radius: 4px;
 
-      &:hover , &:focus {
-      
-        --bs-pagination-hover-bg: var(--black-contrast-black-200) 
-        --bs-pagination-active-bg: var(--black-contrast-black-300) 
-        --bs-pagination-active-border-color: var(--black-contrast-white-200);
+      &:hover,
+      &:focus {
+
+        --bs-pagination-hover-bg: var(--black-contrast-black-200) --bs-pagination-active-bg: var(--black-contrast-black-300) --bs-pagination-active-border-color: var(--black-contrast-white-200);
         --bs-pagination-border-radius: 4px;
       }
 
       &.active {
-       
-        --bs-pagination-active-bg:var(--black-contrast-black-0) 
-        --bs-pagination-active-border-color: var(--black-contrast-white-200);
+
+        --bs-pagination-active-bg: var(--black-contrast-black-0) --bs-pagination-active-border-color: var(--black-contrast-white-200);
         --bs-pagination-border-radius: 4px;
       }
     }
@@ -1471,73 +1519,78 @@ border-color:var(--black-contrast-black-200);
       display: none;
     }
 
-		.card-sale.d-flex.flex-column.align-items-start.gap-2.gap-lg-3{
-			display: flex;
-			flex-direction: column;
-			align-items: center; 
-			justify-content: center; 
-			text-align: center;
-			height: 100%; 
-			border:1px solid var(--black-contrast-black-0) ;
-			padding: 25px;
-			border-radius:8px;
-			.dark-100{
-				margin: 0 auto;
-				text-align:center;
-			}
+    .card-sale.d-flex.flex-column.align-items-start.gap-2.gap-lg-3 {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 100%;
+      border: 1px solid var(--black-contrast-black-0);
+      padding: 25px;
+      border-radius: 8px;
 
-		}
+      .dark-100 {
+        margin: 0 auto;
+        text-align: center;
+      }
 
-		.row.px-lg-6{
-			.col-12{
-				.swiper-slide {
-					display: flex;
-					flex-direction: column;
-					width: 100%;
-					align-items: center; 
-					justify-content: center;
-					text-align: center; 
-					height: 100%; 
-			}
-			}}
-	
+    }
+
+    .row.px-lg-6 {
+      .col-12 {
+        .swiper-slide {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          height: 100%;
+        }
+      }
+    }
 
 
-			.table-adaptive__row{
-				border-bottom: 1px dashed var(--black-contrast-black-0) ;
-			}
+
+    .table-adaptive__row {
+      border-bottom: 1px dashed var(--black-contrast-black-0);
+    }
 
     .btn.btn-lg.btn-link.btn-icon {
-			background-color: var(--black-contrast-black-200);
+      background-color: var(--black-contrast-black-200);
       color: var(--black-contrast-white-0);
       border: 1px solid var(--black-contrast-black-0);
-			padding : 15px 32px;
-			.icon.size-m{
-				color: var(--black-contrast-white-0);
-			}
+      padding: 15px 32px;
+
+      .icon.size-m {
+        color: var(--black-contrast-white-0);
+      }
+
       &:hover,
       &:focus {
         background-color: var(--black-contrast-black-0);
         color: var(--black-contrast-white-0);
-				.icon.size-m{
-					color: var(--black-contrast-white-0);
-				}
+
+        .icon.size-m {
+          color: var(--black-contrast-white-0);
+        }
       }
-  
+
     }
 
-		.benefit__description.w-100.text-m {
-			.text-l{
-				.link{
-					color: var(--black-contrast-black-0);
+    .benefit__description.w-100.text-m {
+      .text-l {
+        .link {
+          color: var(--black-contrast-black-0);
 
-					&:hover {
-						color: var(--black-contrast-black-200);
-						text-decoration: underline;
-					}
-				}
-			}
-		}
+          &:hover {
+            color: var(--black-contrast-black-200);
+            text-decoration: underline;
+          }
+        }
+      }
+    }
 
 
     //contacts.html
@@ -1563,8 +1616,8 @@ border-color:var(--black-contrast-black-200);
       --border-top-color: var(--black-contrast-black-300);
     }
 
-   
-//оформить заявку
+
+    //оформить заявку
     .card-calculate-result__footer {
       .btn.btn-primary.btn-lg-lg.w-100 {
         color: var(--black-contrast-white-0);
@@ -1575,7 +1628,7 @@ border-color:var(--black-contrast-black-200);
         &:hover,
         &:focus {
           color: var(--black-contrast-black-0);
-          background-color:  var(--black-contrast-white-0);
+          background-color: var(--black-contrast-white-0);
         }
       }
     }
@@ -1602,21 +1655,22 @@ border-color:var(--black-contrast-black-200);
       }
     }
 
-		//открыть вклад
-		.btn-tertiary.btn.btn-lg-lg.banner-product__button {
+    //открыть вклад
+    .btn-tertiary.btn.btn-lg-lg.banner-product__button {
       color: var(--black-contrast-white-0);
-        background-color: var(--black-contrast-black-0);
-        border: 1px solid var(--black-contrast-white-0);
-        &:hover,
-        &:focus {
-          color: var(--black-contrast-black-0);
-          background-color:  var(--black-contrast-white-0);
-        }
+      background-color: var(--black-contrast-black-0);
+      border: 1px solid var(--black-contrast-white-0);
+
+      &:hover,
+      &:focus {
+        color: var(--black-contrast-black-0);
+        background-color: var(--black-contrast-white-0);
+      }
     }
 
-		.card-calculate-result.bg-dark-10 {
-			background-color: var(--black-contrast-black-300);
-		}
+    .card-calculate-result.bg-dark-10 {
+      background-color: var(--black-contrast-black-300);
+    }
 
     .card-benefit.d-inline-flex.px-3.px-sm-5.px-lg-6.p-4.p-sm-5.p-lg-6.w-100.bg-dark-10 {
       background-color: var(--black-contrast-gray-100);
@@ -1627,8 +1681,8 @@ border-color:var(--black-contrast-black-200);
       background-color: var(--black-contrast-gray-100);
     }
 
-    .accordion{
-			color: var(--black-contrast-black-0);
+    .accordion {
+      color: var(--black-contrast-black-0);
       background-color: var(--black-contrast-gray-100);
 
       &-body {
@@ -1637,52 +1691,58 @@ border-color:var(--black-contrast-black-200);
       }
     }
 
-		.accordion-button.collapsed span {
-			color: var(--black-contrast-black-0);
-		}
+    .accordion-button.collapsed span {
+      color: var(--black-contrast-black-0);
+    }
 
 
-		.card-benefit.d-inline-flex.px-3.px-sm-5.px-lg-6.p-4.p-sm-5.p-lg-6.w-100.bg-dark-10{
-			margin-top: 25px;
-		}
-.m-0.col-lg-6{
-	color: var(--black-contrast-black-0);
-	a {
-		color: var(--black-contrast-black-0);
-		text-decoration: underline;
-		&:hover , &:focus {
-			color: var(--black-contrast-black-200);
-		}
-	}
-}
+    .card-benefit.d-inline-flex.px-3.px-sm-5.px-lg-6.p-4.p-sm-5.p-lg-6.w-100.bg-dark-10 {
+      margin-top: 25px;
+    }
 
-	
+    .m-0.col-lg-6 {
+      color: var(--black-contrast-black-0);
+
+      a {
+        color: var(--black-contrast-black-0);
+        text-decoration: underline;
+
+        &:hover,
+        &:focus {
+          color: var(--black-contrast-black-200);
+        }
+      }
+    }
+
+
     //customer-requests.html
     .list.list--size-l .link {
       color: var(--black-contrast-black-0);
 
       &:hover {
-				text-decoration: underline;
+        text-decoration: underline;
         color: var(--black-contrast-black-200);
       }
     }
-.helper__wrapper.d-flex.flex-column.flex-sm-row.align-items-start.align-items-sm-center.gap-4.gap-lg-6{
-	background-color: var(--black-contrast-black-300);
-}
+
+    .helper__wrapper.d-flex.flex-column.flex-sm-row.align-items-start.align-items-sm-center.gap-4.gap-lg-6 {
+      background-color: var(--black-contrast-black-300);
+    }
 
 
 
 
-.card-benefit__description.m-0.text-m {
-	color: var(--black-contrast-black-0);
-}
+    .card-benefit__description.m-0.text-m {
+      color: var(--black-contrast-black-0);
+    }
 
 
 
     //financial-institutes.html
-		.card-product.card-product--transparent.card-product--size-large.bg-white , .card-product.card-product--transparent.bg-white{
-			background-color:var(--black-contrast-black-300) !important;
-		}
+    .card-product.card-product--transparent.card-product--size-large.bg-white,
+    .card-product.card-product--transparent.bg-white {
+      background-color: var(--black-contrast-black-300) !important;
+    }
 
 
 
@@ -1690,8 +1750,8 @@ border-color:var(--black-contrast-black-200);
     .banner-hero-content__title {
       color: var(--black-contrast-black-0);
     }
-	
-		
+
+
 
 
     .card-benefit__icon {
@@ -1700,23 +1760,24 @@ border-color:var(--black-contrast-black-200);
       }
     }
 
-		
 
-		
+
+
 
     .text-m.btn.btn-link.btn-lg.d-inline-flex.gap-2.align-items-center {
-    	background-color:var(--black-contrast-black-0);
-		color:var(--black-contrast-white-0);
-		border:1px solid var(--black-contrast-black-0);
+      background-color: var(--black-contrast-black-0);
+      color: var(--black-contrast-white-0);
+      border: 1px solid var(--black-contrast-black-0);
       padding: 5px 12px !important;
 
       .icon.size-m {
         color: var(--black-contrast-white-0);
       }
 
-      &:hover,&:focus{
-        background-color:var(--black-contrast-black-200);
-		color:var(--black-contrast-white-0);
+      &:hover,
+      &:focus {
+        background-color: var(--black-contrast-black-200);
+        color: var(--black-contrast-white-0);
 
         .icon.size-m {
           color: var(--black-contrast-white-0);
@@ -1732,14 +1793,16 @@ border-color:var(--black-contrast-black-200);
     }
 
     .btn.btn-orange.d-none.d-md-inline-flex {
-			background-color:var(--black-contrast-black-0);
-			color:var(--black-contrast-white-0);
-			border:1px solid var(--black-contrast-white-0);
-			padding: 15px 32px;
-				&:hover,&:focus{
-					background-color:var(--black-contrast-white-0);
-			color:var(--black-contrast-black-0);
-				}
+      background-color: var(--black-contrast-black-0);
+      color: var(--black-contrast-white-0);
+      border: 1px solid var(--black-contrast-white-0);
+      padding: 15px 32px;
+
+      &:hover,
+      &:focus {
+        background-color: var(--black-contrast-white-0);
+        color: var(--black-contrast-black-0);
+      }
     }
 
     //how-to-protect.html
@@ -1748,40 +1811,43 @@ border-color:var(--black-contrast-black-200);
       background-color: var(--black-contrast-gray-100);
     }
 
-		.table-tab__row {
-			border-bottom:1px dashed var(--black-contrast-black-0);
-		}
+    .table-tab__row {
+      border-bottom: 1px dashed var(--black-contrast-black-0);
+    }
 
-		.text-m.btn.btn-link.btn-lg.d-inline-flex.gap-2.align-items-center{
-			background-color:var(--black-contrast-black-0);
-			color:var(--black-contrast-white-0);
-			border:1px solid var(--black-contrast-black-0);
-				padding: 5px 12px !important;
-	
-				.icon.size-s {
-					color: var(--black-contrast-white-0);
-				}
-	
-				&:hover,&:focus{
-					background-color:var(--black-contrast-black-200);
-			color:var(--black-contrast-white-0);
-	
-					.icon.size-s {
-						color: var(--black-contrast-white-0);
-					}
-				}
-		}
+    .text-m.btn.btn-link.btn-lg.d-inline-flex.gap-2.align-items-center {
+      background-color: var(--black-contrast-black-0);
+      color: var(--black-contrast-white-0);
+      border: 1px solid var(--black-contrast-black-0);
+      padding: 5px 12px !important;
+
+      .icon.size-s {
+        color: var(--black-contrast-white-0);
+      }
+
+      &:hover,
+      &:focus {
+        background-color: var(--black-contrast-black-200);
+        color: var(--black-contrast-white-0);
+
+        .icon.size-s {
+          color: var(--black-contrast-white-0);
+        }
+      }
+    }
 
 
-		.helper__content.text-l{
-			.text-lg.fw-semibold.link.link-underline{
-				color:var(--black-contrast-black-0);
-				&:hover {
-					text-decoration: underline;
-					color:var(--black-contrast-white-0);
-				}
-		}}
-		
+    .helper__content.text-l {
+      .text-lg.fw-semibold.link.link-underline {
+        color: var(--black-contrast-black-0);
+
+        &:hover {
+          text-decoration: underline;
+          color: var(--black-contrast-white-0);
+        }
+      }
+    }
+
     .card-promo__header.d-flex.flex-column.row-gap-3.row-gap-md-4 {
       color: var(--black-contrast-black-0);
     }
@@ -1792,9 +1858,10 @@ border-color:var(--black-contrast-black-200);
       padding: 15px 32px;
       border: 1px solid var(--black-contrast-white-0);
 
-      &:hover,&:focus {
-        color:var(--black-contrast-white-0);
-        background-color:  var(--black-contrast-black-0);
+      &:hover,
+      &:focus {
+        color: var(--black-contrast-white-0);
+        background-color: var(--black-contrast-black-0);
       }
     }
 
@@ -1809,7 +1876,8 @@ border-color:var(--black-contrast-black-200);
       .form-label {
         color: var(--black-contrast-black-0);
       }
-//перезвоните мне
+
+      //перезвоните мне
       .btn.btn-primary.btn-lg-lg.w-100 {
         color: var(--black-contrast-white-0);
         background-color: var(--black-contrast-black-0);
@@ -1817,23 +1885,25 @@ border-color:var(--black-contrast-black-200);
 
         &:hover,
         &:focus {
-          color:  var(--black-contrast-black-0);
-          background-color:var(--black-contrast-white-0);
+          color: var(--black-contrast-black-0);
+          background-color: var(--black-contrast-white-0);
         }
       }
     }
-//отправить кнопка
-		.btn.btn-primary.btn-lg-lg.w-100.w-md-auto {
-			color: var(--black-contrast-white-0);
-			background-color: var(--black-contrast-black-0);
-			border: 1px solid var(--black-contrast-white-0);
-			&:hover,
-			&:focus {
-				color:  var(--black-contrast-black-0);
-				background-color:var(--black-contrast-white-0);
-				border: 1px solid var(--black-contrast-white-0);
-			} 	
-		}
+
+    //отправить кнопка
+    .btn.btn-primary.btn-lg-lg.w-100.w-md-auto {
+      color: var(--black-contrast-white-0);
+      background-color: var(--black-contrast-black-0);
+      border: 1px solid var(--black-contrast-white-0);
+
+      &:hover,
+      &:focus {
+        color: var(--black-contrast-black-0);
+        background-color: var(--black-contrast-white-0);
+        border: 1px solid var(--black-contrast-white-0);
+      }
+    }
 
     //insurance-companies.html
     .banner-text.banner-text--border-green.bg-heavy-violet {
@@ -1846,52 +1916,53 @@ border-color:var(--black-contrast-black-200);
       background-color: var(--black-contrast-gray-100);
     }
 
-		.list.list--size-l {
-			a {
-				color:  var(--black-contrast-black-0);
+    .list.list--size-l {
+      a {
+        color: var(--black-contrast-black-0);
 
-				&:hover {
-					color:  var(--black-contrast-black-200);
-				}
-			}
-		}
+        &:hover {
+          color: var(--black-contrast-black-200);
+        }
+      }
+    }
 
-		.d-flex.flex-column.gap-2.py-3.document-download.text-m{
-			color:  var(--black-contrast-black-0);
+    .d-flex.flex-column.gap-2.py-3.document-download.text-m {
+      color: var(--black-contrast-black-0);
 
-				&:hover {
-					color:  var(--black-contrast-black-200);
-				}
-		}
+      &:hover {
+        color: var(--black-contrast-black-200);
+      }
+    }
 
     //interbank-transactions.html
     .bg-gradient-graphite {
       background: var(--black-contrast-black-300);
     }
 
-		.container.d-flex.py-3.overflow-auto{
-			background-color: var(--black-contrast-black-300);
-			border-top:1px solid var(--black-contrast-black-0);
-			border-bottom:1px solid var(--black-contrast-black-0);
+    .container.d-flex.py-3.overflow-auto {
+      background-color: var(--black-contrast-black-300);
+      border-top: 1px solid var(--black-contrast-black-0);
+      border-bottom: 1px solid var(--black-contrast-black-0);
 
-		}
+    }
 
-		.anchor-item.text-l.text-nowrap {
-			color:  var(--black-contrast-black-0);
-			text-decoration: none;
+    .anchor-item.text-l.text-nowrap {
+      color: var(--black-contrast-black-0);
+      text-decoration: none;
 
-			&:hover {
-				color:  var(--black-contrast-white-200);
-			}
+      &:hover {
+        color: var(--black-contrast-white-200);
+      }
 
-			&.active {
-				color:  var(--black-contrast-white-0);
-				text-decoration: underline;
-				&:hover {
-					color:  var(--black-contrast-white-200);
-				}
-			}
-		}
+      &.active {
+        color: var(--black-contrast-white-0);
+        text-decoration: underline;
+
+        &:hover {
+          color: var(--black-contrast-white-200);
+        }
+      }
+    }
 
     .banner-text--border-violet {
       border-top: var(--border-thickness) solid var(--black-contrast-black-300);
@@ -1916,9 +1987,9 @@ border-color:var(--black-contrast-black-200);
       background-color: var(--black-contrast-gray-100);
     }
 
-		.slider-controls.js-swiper-controls.mt-3.mt-md-4 {
-			padding-top: 25px;
-		}
+    .slider-controls.js-swiper-controls.mt-3.mt-md-4 {
+      padding-top: 25px;
+    }
 
     .card-promo__image {
       display: none;
@@ -1934,37 +2005,43 @@ border-color:var(--black-contrast-black-200);
         background-color: var(--black-contrast-black-300);
         border: 1px solid var(--black-contrast-white-200);
 
-        &:hover,&:focus {
+        &:hover,
+        &:focus {
           color: var(--black-contrast-black-0);
           background-color: var(--black-contrast-gray-300);
         }
       }
     }
-//написать в чат
+
+    //написать в чат
     .card-help__button.btn.btn-link.btn-lg.btn-icon.mx-auto.gap-2 {
-			background-color: var(--black-contrast-black-200);
+      background-color: var(--black-contrast-black-200);
       color: var(--black-contrast-white-0);
       border: 1px solid var(--black-contrast-black-0);
-			.icon.size-m {
+
+      .icon.size-m {
         color: var(--black-contrast-white-200);
       }
+
       &:hover,
       &:focus {
         background-color: var(--black-contrast-black-0);
         color: var(--black-contrast-white-0);
-				.icon.size-m {
+
+        .icon.size-m {
           color: var(--black-contrast-white-0);
         }
       }
-			    }
+    }
 
     .section-restructuring-steps.bg-dark-10.py-6.py-sm-9.py-md-11.py-xl-16 {
       background-color: var(--black-contrast-gray-100);
     }
 
-		.card-benefit__list.list.list--size-l li:before {
-			background: var(--black-contrast-black-0) !important;
-		}
+    .card-benefit__list.list.list--size-l li:before {
+      background: var(--black-contrast-black-0) !important;
+    }
+
     //loans-restructuring.html
     .rte li::before {
       background: var(--black-contrast-black-0);
@@ -1975,17 +2052,18 @@ border-color:var(--black-contrast-black-200);
     }
 
 
-		.section-layout.section-banner-product-info.py-lg-11.bg-blue-10{
-			background-color: var(--black-contrast-gray-100);
-		}
+    .section-layout.section-banner-product-info.py-lg-11.bg-blue-10 {
+      background-color: var(--black-contrast-gray-100);
+    }
 
-		.text-l.fw-semibold , .text-number-l.fw-bold {
-			color: var(--black-contrast-black-0) ;
-		}
-		
+    .text-l.fw-semibold,
+    .text-number-l.fw-bold {
+      color: var(--black-contrast-black-0);
+    }
 
-	
-		
+
+
+
     //measures-detail.html
 
     .btn.btn-link.btn-lg.d-inline-flex.gap-2.align-items-center.card-text__button-more {
@@ -1994,55 +2072,64 @@ border-color:var(--black-contrast-black-200);
       color: var(--black-contrast-white-0);
       background-color: var(--black-contrast-black-200);
 
-      &:hover ,&:focus{
+      &:hover,
+      &:focus {
         color: var(--black-contrast-white-0);
-        background-color:var(--black-contrast-black-0);
+        background-color: var(--black-contrast-black-0);
       }
     }
 
-		
+
 
 
 
     .card-text.d-inline-flex.px-3.px-md-4.p-4.p-sm-5.p-lg-6.bg-white.w-100.h-100 {
       background-color: var(--black-contrast-gray-300);
-			border:1px solid  var(--black-contrast-black-0);
+      border: 1px solid var(--black-contrast-black-0);
     }
-//смотреть все
+
+    //смотреть все
     .btn.btn-sm.btn-link.btn-icon.d-none.d-md-inline-flex {
       color: var(--black-contrast-black-0);
       border: none;
       padding: 5px 12px;
-background:none;
-      &:hover ,&:focus{
+      background: none;
+
+      &:hover,
+      &:focus {
         color: var(--black-contrast-black-200);
-				background:none;
+        background: none;
       }
     }
-//найти на карте
+
+    //найти на карте
     .btn.btn-link.d-inline-flex.gap-2.align-items-center.mt-md-2 {
       padding: 5px 12px !important;
       color: var(--black-contrast-black-0);
       background-color: var(--black-contrast-black-300);
-			.icon.size-m{
-				color: var(--black-contrast-black-0);
-			}
-      &:hover ,&:focus{
+
+      .icon.size-m {
+        color: var(--black-contrast-black-0);
+      }
+
+      &:hover,
+      &:focus {
         color: var(--black-contrast-white-0);
         background-color: var(--black-contrast-black-0);
-				.icon.size-m{
-					color:  var(--black-contrast-white-0);
-				}
+
+        .icon.size-m {
+          color: var(--black-contrast-white-0);
+        }
       }
     }
 
-		
+
 
     .bg-dark-10 {
       background-color: var(--black-contrast-gray-300);
     }
 
-		 
+
 
     //mobile-app.html
     .card-regal.d-flex.flex-column.flex-md-row.row-gap-3.column-gap-md-6.bg-dark-30 {
@@ -2056,10 +2143,11 @@ background:none;
         border: none;
 
         .icon.size-m {
-          color:var(--black-contrast-white-0);
+          color: var(--black-contrast-white-0);
         }
 
-        &:hover,&:focus {
+        &:hover,
+        &:focus {
           color: var(--black-contrast-white-0);
           background-color: var(--black-contrast-black-300);
 
@@ -2074,7 +2162,8 @@ background:none;
       background-color: var(--black-contrast-black-0);
       border: 1px solid var(--black-contrast-gray-100);
 
-      &:hover,&:focus {
+      &:hover,
+      &:focus {
         background-color: var(--black-contrast-black-300);
       }
     }
@@ -2088,24 +2177,27 @@ background:none;
     .input-slider-text__input:focus {
       border: 1px solid var(--black-contrast-black-0);
     }
-//график платежей
+
+    //график платежей
     .btn.btn-link.btn-sm.btn-icon.mt-2.mt-md-0 {
       color: var(--black-contrast-white-0);
       background-color: var(--black-contrast-black-0);
       padding: 5px 12px !important;
       border: 1px solid var(--black-contrast-white-0);
-			.icon.size-s{
-					color: var(--black-contrast-white-0);
-					transition: 0.2 all linear;
-			}
+
+      .icon.size-s {
+        color: var(--black-contrast-white-0);
+        transition: 0.2 all linear;
+      }
 
       &:hover,
       &:focus {
         color: var(--black-contrast-black-0);
         background-color: var(--black-contrast-white-0);
-				.icon.size-s{
-					color: var(--black-contrast-black-0);
-			}
+
+        .icon.size-s {
+          color: var(--black-contrast-black-0);
+        }
       }
     }
 
@@ -2135,19 +2227,20 @@ background:none;
       padding: 5px 12px;
       border: 1px solid var(--black-contrast-white-0);
 
-      &:hover,&:focus {
+      &:hover,
+      &:focus {
         color: var(--black-contrast-white-0);
-        background-color:var(--black-contrast-black-300);
+        background-color: var(--black-contrast-black-300);
       }
     }
 
     //msb-cooperation-with-funds.html
 
 
-		.bg-heavy-violet{
-			background: none;
-			background-color: var(--black-contrast-black-300);
-		}
+    .bg-heavy-violet {
+      background: none;
+      background-color: var(--black-contrast-black-300);
+    }
 
     .d-flex.flex-column.align-items-start.gap-3.gap-md-4 {
       color: var(--black-contrast-black-0);
@@ -2168,11 +2261,11 @@ background:none;
       color: var(--black-contrast-white-0) !important;
     }
 
-		.tag.tag--outline.tag--triangle-absolute{
-			.tag__content.text-s.fw-semibold.mw-100.w-sm-auto{
-				color: var(--black-contrast-white-0);
-			}
-		}
+    .tag.tag--outline.tag--triangle-absolute {
+      .tag__content.text-s.fw-semibold.mw-100.w-sm-auto {
+        color: var(--black-contrast-white-0);
+      }
+    }
 
     #accordion-funds-tab .table td {
       background-color: var(--black-contrast-gray-100);
@@ -2181,7 +2274,7 @@ background:none;
     .accordion-body {
       color: var(--black-contrast-black-0);
       background-color: var(--black-contrast-gray-100);
-			padding: 25px;
+      padding: 25px;
     }
 
     .card-about__title.dark-0 {
@@ -2203,7 +2296,7 @@ background:none;
 
 
 
- 
+
 
     //msb-currency-control.html
     .card-benefit__list.list.list--size-l li:before {
@@ -2240,7 +2333,8 @@ background:none;
             color: var(--black-contrast-white-200);
           }
 
-          &:hover,&:focus {
+          &:hover,
+          &:focus {
             color: var(--black-contrast-black-0);
             background-color: var(--black-contrast-white-200);
 
@@ -2253,14 +2347,15 @@ background:none;
     }
 
 
-		
-//перейти в интернет банк
+
+    //перейти в интернет банк
     .btn.btn-yellow.d-none.d-md-inline-flex {
       color: var(--black-contrast-white-0);
       background-color: var(--black-contrast-black-0);
-      border:1px solid var(--black-contrast-white-0);
+      border: 1px solid var(--black-contrast-white-0);
 
-      &:hover,&:focus {
+      &:hover,
+      &:focus {
         color: var(--black-contrast-black-0);
         background-color: var(--black-contrast-white-0)
       }
@@ -2268,12 +2363,14 @@ background:none;
 
     .card-product__footer {
       .btn.btn-link.btn-icon.d-none.d-md-inline-flex {
-				color: var(--black-contrast-white-0);
+        color: var(--black-contrast-white-0);
         background-color: var(--black-contrast-black-0);
         padding: 5px 12px !important;
-        border: 1px solid var(--black-contrast-white-0);;
+        border: 1px solid var(--black-contrast-white-0);
+        ;
 
-        &:hover , &:focus {
+        &:hover,
+        &:focus {
           color: var(--black-contrast-black-0);
           background-color: var(--black-contrast-white-0);
         }
@@ -2285,32 +2382,37 @@ background:none;
       background-color: var(--black-contrast-gray-100);
       color: var(--black-contrast-black-0);
     }
-//открыть счет
+
+    //открыть счет
     .d-flex.flex-column.flex-md-row.align-items-md-center.gap-3.gap-md-6 {
       .btn.btn-lg-lg.btn-yellow.btn-info.w-100.w-md-auto {
         color: var(--black-contrast-white-200);
         background-color: var(--black-contrast-black-0);
 
-        &:hover ,&:focus{
+        &:hover,
+        &:focus {
           color: var(--black-contrast-white-0);
           background-color: var(--black-contrast-black-200);
         }
       }
 
       .btn.btn-link.btn-lg-lg.btn-icon.text-info.m-auto.m-md-0 {
-				color: var(--black-contrast-white-200);
+        color: var(--black-contrast-white-200);
         background-color: var(--black-contrast-black-0);
-				padding: 15px 32px;
-				.icon.size-m {
-					color: var(--black-contrast-white-200);
-				}
+        padding: 15px 32px;
 
-        &:hover ,&:focus{
+        .icon.size-m {
+          color: var(--black-contrast-white-200);
+        }
+
+        &:hover,
+        &:focus {
           color: var(--black-contrast-white-0) !important;
           background-color: var(--black-contrast-black-200);
-					.icon.size-m {
-						color: var(--black-contrast-white-0);
-					}
+
+          .icon.size-m {
+            color: var(--black-contrast-white-0);
+          }
         }
       }
     }
@@ -2327,19 +2429,24 @@ background:none;
 
     .card-product__footer {
       .btn.btn-link.btn-icon.d-none.d-md-inline-flex {
-				color: var(--black-contrast-white-0);
+        color: var(--black-contrast-white-0);
         background-color: var(--black-contrast-black-0);
         padding: 5px 12px !important;
-        border: 1px solid var(--black-contrast-white-0);;
-				.icon.size-m {
+        border: 1px solid var(--black-contrast-white-0);
+        ;
+
+        .icon.size-m {
           color: var(--black-contrast-white-200);
         }
-        &:hover , &:focus {
+
+        &:hover,
+        &:focus {
           color: var(--black-contrast-black-0);
           background-color: var(--black-contrast-white-0);
-					.icon.size-m {
-						color: var(--black-contrast-black-0);
-					}
+
+          .icon.size-m {
+            color: var(--black-contrast-black-0);
+          }
         }
       }
     }
@@ -2348,7 +2455,8 @@ background:none;
       color: var(--black-contrast-black-0);
       text-decoration: underline;
 
-      &:hover,&:focus {
+      &:hover,
+      &:focus {
         color: var(--black-contrast-white-200);
       }
     }
@@ -2360,23 +2468,25 @@ background:none;
 
     //novikom-today.html
 
-		.card-top-list__col.bg-blue-10.h-100.overflow-hidden {
-			border:1px solid var(--black-contrast-black-0);
-			.d-flex.flex-column.gap-4{
-				.d-flex.flex-column img{
-					filter: invert(1) brightness(0);
-				}
-			}
-		}
+    .card-top-list__col.bg-blue-10.h-100.overflow-hidden {
+      border: 1px solid var(--black-contrast-black-0);
+
+      .d-flex.flex-column.gap-4 {
+        .d-flex.flex-column img {
+          filter: invert(1) brightness(0);
+        }
+      }
+    }
 
 
     //office-detail.html
     .map-content__header.map-content__header--type-back.d-flex.flex-column.row-gap-4.row-gap-md-6 {
       background-color: var(--black-contrast-gray-100);
     }
-		.map-content__body.d-flex.flex-column.gap-4.gap-md-6{
-			color: var(--black-contrast-black-0);
-		}
+
+    .map-content__body.d-flex.flex-column.gap-4.gap-md-6 {
+      color: var(--black-contrast-black-0);
+    }
 
 
     .card-contact__image {
@@ -2396,7 +2506,7 @@ background:none;
       background-color: var(--black-contrast-gray-100);
     }
 
-     .card-special.bg-dark-10.dark-100.h-100.d-flex.flex-column.row-gap-6.row-gap-lg-9 {
+    .card-special.bg-dark-10.dark-100.h-100.d-flex.flex-column.row-gap-6.row-gap-lg-9 {
       background-color: var(--black-contrast-gray-100);
 
       &:focus {
@@ -2413,7 +2523,7 @@ background:none;
       color: var(--black-contrast-black-0) !important;
     }
 
-		
+
 
 
     //press-center.html
@@ -2422,10 +2532,10 @@ background:none;
         display: none;
       }
 
-      
+
 
       .col-12.col-md-6.col-lg-4 {
-        border: 1px solid  var(--black-contrast-black-0);
+        border: 1px solid var(--black-contrast-black-0);
         background-color: var(--black-contrast-gray-100);
       }
     }
@@ -2434,7 +2544,8 @@ background:none;
       background-color: var(--black-contrast-white-200);
       color: var(--black-contrast-black-0);
 
-      &:hover ,&:focus{
+      &:hover,
+      &:focus {
         background-color: var(--black-contrast-black-300);
         color: var(--black-contrast-white-200);
       }
@@ -2450,8 +2561,7 @@ background:none;
     .page-item {
       --bs-pagination-active-bg: var(--black-contrast-black-300);
       --bs-pagination-active-border-color: var(--black-contrast-black-300);
-      --bs-pagination-border-color: var(--black-contrast-black-0) 
-			--bs-pagination-hover-bg: var(--black-contrast-white-300);
+      --bs-pagination-border-color: var(--black-contrast-black-0) --bs-pagination-hover-bg: var(--black-contrast-white-300);
       --bs-pagination-focus-bg: var(--black-contrast-gray-100);
 
       &.active {
@@ -2470,19 +2580,20 @@ background:none;
     }
 
 
-		.border-tertiary {
-			border-color:var(--black-contrast-black-300) !important;
-		}
+    .border-tertiary {
+      border-color: var(--black-contrast-black-300) !important;
+    }
 
-		.card-benefit.d-inline-flex.px-3.px-sm-5.px-lg-6.p-4.p-sm-5.p-lg-6.w-100.bg-purple-10.card-benefit--type-img.h-100{
-			background-color:var(--black-contrast-black-300);
-			.list{
-				color: var(--black-contrast-black-0);
-			}
-		}
+    .card-benefit.d-inline-flex.px-3.px-sm-5.px-lg-6.p-4.p-sm-5.p-lg-6.w-100.bg-purple-10.card-benefit--type-img.h-100 {
+      background-color: var(--black-contrast-black-300);
+
+      .list {
+        color: var(--black-contrast-black-0);
+      }
+    }
 
 
-		
+
 
     //TRUST MANAGEMENT PAGE
 
@@ -2492,7 +2603,7 @@ background:none;
       }
 
       &__wrapper {
-        background-color:var(--black-contrast-black-300);
+        background-color: var(--black-contrast-black-300);
       }
 
       h1 {
@@ -2515,9 +2626,10 @@ background:none;
         display: none;
       }
     }
-		.card-news.position-relative.bg-dark-10.dark-100.h-100.d-flex.flex-column.overflow-hidden{
-			background-color: var(--black-contrast-black-300) ;
-		}
+
+    .card-news.position-relative.bg-dark-10.dark-100.h-100.d-flex.flex-column.overflow-hidden {
+      background-color: var(--black-contrast-black-300);
+    }
 
 
     .benefit__content.d-flex.flex-column.gap-3 {
@@ -2559,7 +2671,7 @@ background:none;
     .section-layout.bg-dark-10 {
       background-color: var(--black-contrast-gray-100);
     }
-		
+
 
 
     .card.overflow-hidden.position-relative {
@@ -2580,7 +2692,8 @@ background:none;
 
     .card__condition-list.d-flex.flex-column.flex-md-row.flex-wrap.gap-4.column-gap-md-11.column-gap-lg-16.row-gap-lg-6 {
       color: var(--black-contrast-black-0);
-			 & span {
+
+      & span {
         color: var(--black-contrast-black-0);
       }
     }
@@ -2596,17 +2709,17 @@ background:none;
     .accordion-button.collapsed {
       color: var(--black-contrast-black-300);
     }
-		
-		.rte.rte--accordion{
-			a {
-				color: var(--black-contrast-black-0);
-				text-decoration: underline;
 
-				&:hover {
-					color: var(--black-contrast-black-200);
-				}
-			}
-		}
+    .rte.rte--accordion {
+      a {
+        color: var(--black-contrast-black-0);
+        text-decoration: underline;
+
+        &:hover {
+          color: var(--black-contrast-black-200);
+        }
+      }
+    }
 
 
   }

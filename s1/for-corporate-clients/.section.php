@@ -1,5 +1,5 @@
 <?
-$sSectionName = "Финансирование";
+$sSectionName = "Корпоративным клиентам";
 $arDirProperties = Array(
     "description" => ""
 );

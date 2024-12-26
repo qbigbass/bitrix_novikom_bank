@@ -16,8 +16,11 @@ $aMenuLinksExt = $APPLICATION->IncludeComponent(
         "IBLOCK_TYPE" => "for_msb",
         "IBLOCK_ID" => iblock('msb_catalog'),
         "DEPTH_LEVEL" => "1",
-        "CACHE_TYPE" => "N",
-        "CACHE_TIME" => "36000000"
+        "CACHE_TYPE" => "A",
+        "CACHE_TIME" => "36000000",
+        "SECTION_SORT_FIELD" => "UF_SORT_MENU",
+        "SECTION_SORT_ORDER" => "ASC",
+        "ADDITIONAL_FIELDS" => ["UF_TITLE_MENU"]
     ],
     false
 );

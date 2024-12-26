@@ -28,7 +28,6 @@ $asset->addJs('/frontend/dist/js/dropDownMenu.js');
 $asset->addJs('/frontend/dist/js/formFeedback.js');
 $asset->addJs('/frontend/dist/js/formSend.js');
 $asset->addJs('/frontend/dist/js/formSteps.js');
-$asset->addJs('/frontend/dist/js/inputSlider.js');
 $asset->addJs('/frontend/dist/js/uploadFile.js');
 $asset->addJs('/frontend/dist/js/polygon-container.js');
 $asset->addJs('/frontend/dist/js/setPage.js');
@@ -36,12 +35,16 @@ $asset->addJs('/frontend/dist/js/sliders.js');
 $asset->addJs('/frontend/dist/js/tabs.js');
 $asset->addJs('/frontend/dist/js/charts.js');
 $asset->addJs('/frontend/dist/js/private-banking.js');
+$asset->addJs('/frontend/dist/js/calculator-deposit.js');
+$asset->addJs('/frontend/dist/js/calculator-loan.js');
+$asset->addJs('/frontend/dist/js/calculator-mortgage.js');
+$asset->addJs('/frontend/dist/js/calculator-bonus.js');
+$asset->addJs('/frontend/dist/js/inputSlider.js');
 $asset->addJs('/frontend/dist/js/index.js');
 $asset->addJs('/frontend/dist/js/accessibility-panel.js');
 ?>
-
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="<?= LANGUAGE_ID ?>">
 <head>
     <meta charset="UTF-8">
     <meta content="IE=edge" http-equiv="X-UA-Compatible">

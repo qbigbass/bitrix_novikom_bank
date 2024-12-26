@@ -1146,9 +1146,9 @@
       background: none;
     }
 
-		.banner-product.banner-product--heavy-violet.banner-product--type-msb.banner-product--border-yellow.banner-product--size-xl{
-			background:none;
-		}
+    .banner-product.banner-product--heavy-violet.banner-product--type-msb.banner-product--border-yellow.banner-product--size-xl {
+      background: none;
+    }
 
     .card-benefit {
       background-color: var(--yellow-contrast-bg-dark);
@@ -1421,13 +1421,15 @@
 
     //cards.html
 
-		.tabs-panel__navigation-item-reverse ,.tabs-panel__navigation-item {
-			background:none;
-		}
-		.tabs-panel__navigation.d-none.d-lg-block.js-tabs-slider-navigation.w-100 span>svg{
-			
-				color:  var(--yellow-contrast-black-0)
-		}
+    .tabs-panel__navigation-item-reverse,
+    .tabs-panel__navigation-item {
+      background: none;
+    }
+
+    .tabs-panel__navigation.d-none.d-lg-block.js-tabs-slider-navigation.w-100 span>svg {
+
+      color: var(--yellow-contrast-black-0)
+    }
 
     //оформить заявку
     .btn.btn-tertiary.btn-lg-lg.card-product-list__button.w-100.w-sm-auto {
@@ -1685,9 +1687,9 @@
       }
     }
 
-		.card-benefit.d-inline-flex.px-3.px-sm-5.px-lg-6.p-4.p-sm-5.p-lg-6.w-100.bg-dark-10{
-			margin-top: 25px;
-		}
+    .card-benefit.d-inline-flex.px-3.px-sm-5.px-lg-6.p-4.p-sm-5.p-lg-6.w-100.bg-dark-10 {
+      margin-top: 25px;
+    }
 
     //customer-requests.html
     .list.list--size-l .link {
@@ -2513,7 +2515,7 @@
       color: var(--yellow-contrast-black-100);
     }
 
-		
+
 
   }
 }

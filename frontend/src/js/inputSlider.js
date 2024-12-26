@@ -7,6 +7,7 @@ const JS_CLASSES = {
     innerInput: '.js-input-slider-inner',
     textInput: ROOT_JS_CLASS,
     sliderInput: '.js-input-slider-input',
+    inputSliderWrapper: '.js-input-slider-wrapper',
 }
 
 const DATA_ATTRS = {
@@ -38,6 +39,28 @@ function formatNumberWithSpaces(number) {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
 }
 
+function formatNumber(number) {
+    // Преобразуем число в строку
+    const parts = number.toString().split('.'); // Разделяем целую и дробную части
+    // Форматируем целую часть с разделителями
+    const integerPart = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+    // Форматируем дробную часть, если она существует
+    const decimalPart = parts.length > 1 ? ',' + parts[1] : '';
+    // Объединяем целую и дробную части
+    return integerPart + decimalPart;
+}
+
+function findActiveCurrency(elem) {
+    const wrapper = elem.closest(JS_CLASSES.inputSliderWrapper);
+    let activeCurrency = '₽';
+
+    const currencyList = wrapper?.querySelector(ELEMS_DEPOSIT.currencyList);
+    if (currencyList) {
+        activeCurrency = currencyList.querySelector(`${ELEMS_DEPOSIT.currencyButton}.${CLASSES_DEPOSIT.active}`)?.textContent;
+    }
+    return activeCurrency
+}
+
 const initElements = (root) => {
     const sliderInput = root.querySelector(JS_CLASSES.sliderInput);
     const innerInput = root.querySelector(JS_CLASSES.innerInput);
@@ -46,6 +69,7 @@ const initElements = (root) => {
         throw new Error(`Не найдены следующие элементы: ${JS_CLASSES.innerInput} или ${JS_CLASSES.sliderInput}`);
     }
 
+    const activeCurrency = findActiveCurrency(root);
     const displayValue = root.querySelector(JS_CLASSES.displayValue);
     const textInput = root.querySelector(JS_CLASSES.textInput);
     const textStepsContainer = root.querySelector(JS_CLASSES.textSteps)
@@ -60,7 +84,8 @@ const initElements = (root) => {
         textInput,
         steps,
         textSteps,
-        textStepsContainer
+        textStepsContainer,
+        activeCurrency
     }
 }
 
@@ -143,16 +168,16 @@ const setTextContentToDisplayValueElement = (STATE) => {
     let value = STATE.useSteps ? STATE.steps[STATE.value] : STATE.value;
 
     if (STATE.elements.displayValue) {
-        STATE.elements.displayValue.innerHTML = getFormatedTextByType(value, STATE.type);
+        STATE.elements.displayValue.innerHTML = getFormatedTextByType({value, type: STATE.type, currency: STATE.elements.activeCurrency});
     }
 }
 
-const getFormatedTextByType = (value, type, isFocus = false) => {
+const getFormatedTextByType = ({value, type, currency = false}, isFocus = false) => {
     let result = '';
 
     switch (type) {
         case 'price':
-            result = `${formatNumberWithSpaces(value)} ₽`;
+            result = `${formatNumberWithSpaces(value)} ${currency}`;
             break;
         case 'month':
             if (isFocus) {
@@ -230,6 +255,7 @@ const setValue = (STATE, value) => {
 
 const setBackgroundSliderInputElement = (STATE) => {
     const percentage = calculatePercent(STATE, STATE.value);
+    if (isNaN(percentage)) return false;
     STATE.elements.sliderInput.style.background = `linear-gradient(to right, var(--blue-100) ${percentage}%, var(--blue-30) ${percentage}%)`;
 }
 
@@ -265,7 +291,7 @@ const createStepElement = (leftPercent) => {
 const initDisplaySteps = (STATE) => {
     if (STATE.useSteps) {
         STATE.steps.forEach((step, index) => {
-            const textStepContent = getFormatedTextByType(step, STATE.type);
+            const textStepContent = getFormatedTextByType({value: step, type: STATE.type, currency: STATE.elements.activeCurrency});
             const textStepElement = createTextStepElement(textStepContent);
             STATE.elements.textStepsContainer?.append(textStepElement);
             STATE.elements.textSteps.push(textStepElement);
@@ -283,7 +309,7 @@ const initDisplaySteps = (STATE) => {
         const values = [STATE.minValue, STATE.maxValue];
 
         values.forEach((value) => {
-            const textStepContent = getFormatedTextByType(value, STATE.type);
+            const textStepContent = getFormatedTextByType({value, type: STATE.type, currency: STATE.elements.activeCurrency});
             const textStepElement = createTextStepElement(textStepContent);
 
             STATE.elements.textStepsContainer?.append(textStepElement);
@@ -292,8 +318,11 @@ const initDisplaySteps = (STATE) => {
     }
 }
 
-function initInputSlider() {
-    const sliderInputs= document.querySelectorAll(JS_CLASSES.root);
+function initInputSlider(sliderInputs) {
+
+    if (!sliderInputs) {
+        sliderInputs= document.querySelectorAll(JS_CLASSES.root);
+    }
 
     sliderInputs.forEach((sliderInput) => {
         const STATE = initState(sliderInput);
@@ -353,13 +382,14 @@ const setValueInputText = (state, value, {outsideCall = false, isFocus = false} 
 
     const currentValue = state.useSteps ? state.steps[state.value] : state.value;
     state.elements.inputText.setAttribute('value', currentValue);
-    state.elements.inputText.value = getFormatedTextByType(currentValue, state.type, isFocus);
+    state.elements.inputText.value = getFormatedTextByType({value: currentValue, type: state.type, currency: state.elements.activeCurrency}, isFocus);
 }
 
 const initInputTextElements = (root, defaultValues) => {
     const inputText = root.querySelector(INPUT_SLIDER_TEXT.inputText);
     const editButton = root.querySelector(INPUT_SLIDER_TEXT.editButton);
     const closeButton = root.querySelector(INPUT_SLIDER_TEXT.closeButton);
+    const activeCurrency = findActiveCurrency(root);
 
     if (!inputText || !editButton || !closeButton) {
         throw new Error(`Не найдены следующие элементы: ${INPUT_SLIDER_TEXT.inputText}, ${INPUT_SLIDER_TEXT.editButton} или ${INPUT_SLIDER_TEXT.closeButton}`);
@@ -374,25 +404,26 @@ const initInputTextElements = (root, defaultValues) => {
         root,
         inputText,
         editButton,
-        closeButton
+        closeButton,
+        activeCurrency
     }
 }
 
-const formatInputValue = (value, type) => {
+const formatInputValue = (value, type, currency) => {
     // Удалить все пробелы из значения
     value = String(value).replace(/\s/g, '');
 
     // Преобразовать значение в число
     value = parseFloat(value);
 
-    return getFormatedTextByType(value, type);
+    return getFormatedTextByType({value, type, currency});
 }
 
 const initMaskInput = (elements, defaultValues) => {
     const currentValue = defaultValues.useSteps ? defaultValues.steps[defaultValues.value] : defaultValues.value;
-    elements.inputText.value = formatInputValue(currentValue, defaultValues.type);
+    elements.inputText.value = formatInputValue(currentValue, defaultValues.type, elements.activeCurrency);
 
-    return {value: formatInputValue(currentValue, defaultValues.type)};
+    return {value: formatInputValue(currentValue, defaultValues.type, elements.activeCurrency)};
 }
 
 const initInputTextState = (root, defaultValues) => {

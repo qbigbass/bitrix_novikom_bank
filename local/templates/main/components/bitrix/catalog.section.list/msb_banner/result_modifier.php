@@ -43,6 +43,7 @@ if ($arResult["SHOW_BANNER"]) {
             "ACTIVE" => "Y",
             "=LINK_SECTION.VALUE" => $arResult["SECTION"]["ID"]
         ],
+        "order" => ["SORT" => "ASC"],
     ])->fetchCollection();
 
     if (!empty($elementsBannerContent)) {

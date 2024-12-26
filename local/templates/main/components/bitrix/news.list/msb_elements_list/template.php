@@ -902,7 +902,16 @@ use Bitrix\Main\Localization\Loc;
                                                                         </svg>
                                                                     </span>
                                                                 </span>
-                                                                <input class="form-control form-control-lg text-l bg-transparent" id="input-search" type="text" placeholder="Поиск по регионам или названию фонда" aria-label="Поиск по регионам или названию фонда" aria-describedby="input-search" tabindex="-1">
+                                                                <input
+                                                                    class="form-control form-control-lg text-l bg-transparent"
+                                                                    id="input-search"
+                                                                    type="text"
+                                                                    placeholder="Поиск по регионам или названию фонда"
+                                                                    aria-label="Поиск по регионам или названию фонда"
+                                                                    aria-describedby="input-search"
+                                                                    tabindex="-1"
+                                                                    data-type="search-fondy"
+                                                                >
                                                             </div>
                                                             <div class="input-group flex-nowrap d-flex d-lg-none">
                                                                 <span class="input-group-icon bg-transparent">
@@ -912,7 +921,16 @@ use Bitrix\Main\Localization\Loc;
                                                                         </svg>
                                                                     </span>
                                                                 </span>
-                                                                <input class="form-control ps-0 text-s bg-transparent" id="input-search-mobile" type="text" placeholder="Поиск по регионам или названию фонда" aria-label="Поиск по регионам или названию фонда" aria-describedby="#input-search-mobile" tabindex="-1">
+                                                                <input
+                                                                    class="form-control ps-0 text-s bg-transparent"
+                                                                    id="input-search-mobile"
+                                                                    type="text"
+                                                                    placeholder="Поиск по регионам или названию фонда"
+                                                                    aria-label="Поиск по регионам или названию фонда"
+                                                                    aria-describedby="#input-search-mobile"
+                                                                    tabindex="-1"
+                                                                    data-type="search-fondy"
+                                                                >
                                                             </div>
                                                         </form>
                                                     </div>
@@ -927,6 +945,7 @@ use Bitrix\Main\Localization\Loc;
                                                                             data-bs-toggle="collapse"
                                                                             data-bs-target="#<?= $elemId ?>"
                                                                             aria-controls="<?= $elemId ?>"
+                                                                            data-elem="<?= $elemId ?>"
                                                                         >
                                                                             <div class="d-flex flex-column gap-4 gap-md-5 gap-lg-6">
                                                                                 <? if (!empty($arElements["CITY"])) : ?>

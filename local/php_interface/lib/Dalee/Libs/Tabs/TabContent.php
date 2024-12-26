@@ -8,11 +8,16 @@ class TabContent
     private static string $openedRteTag = '<div class="rte">';
     private static string $closedRteTag = '</div>';
 
-    public static function render(string $detailText, array $displayProperties, ?int $elementId = null): string
+    public static function render(string $detailText, array $displayProperties, ?int $elementId = null, bool $useRteTag = true): string
     {
         $tab = new TabContent();
         $conf = require 'config/handlers.php';
-        $tabContent = self::$openedRteTag . $detailText . self::$closedRteTag;
+
+        if (!$useRteTag) {
+            $tabContent = $detailText;
+        } else {
+            $tabContent = self::$openedRteTag . $detailText . self::$closedRteTag;
+        }
 
         foreach ($displayProperties as $property) {
             $propertyCode = $property['CODE'];
@@ -21,16 +26,20 @@ class TabContent
 
             if(!empty($class) && str_contains($detailText, $placeHolder)) {
                 $handler = new $class($property, $elementId);
-                $tabContent = $tab->renderDetailTextWithBlockHtml($handler, $tabContent, $placeHolder);
+                $tabContent = $tab->renderDetailTextWithBlockHtml($handler, $tabContent, $placeHolder, $useRteTag);
             }
         }
 
         return $tab->prepareTabContent($tabContent);
     }
 
-    private function renderDetailTextWithBlockHtml(PropertyHandlerInterface $handler, string $tabContent, string $placeHolder): string
+    private function renderDetailTextWithBlockHtml(PropertyHandlerInterface $handler, string $tabContent, string $placeHolder, bool $useRteTag = true): string
     {
-        $blockHtml = self::$closedRteTag . $handler->render() . self::$openedRteTag;
+        if (!$useRteTag) {
+            $blockHtml = $handler->render('benefits_other_services');
+        } else {
+            $blockHtml = self::$closedRteTag . $handler->render('benefits_other_services') . self::$openedRteTag;
+        }
 
         return str_replace(
             [
