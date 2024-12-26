@@ -342,6 +342,12 @@ function initFixScrollAccordions() {
                 behavior: 'auto'
             })
         })
+
+        accordion.addEventListener('hide.bs.collapse', (e) => {
+            accordion.scrollIntoView({
+                behavior: 'auto'
+            })
+        })
     })
 }
 
