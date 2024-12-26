@@ -5,18 +5,18 @@ include ../../components/ui/nav-tabs
         {
             link: 'loan',
             linkText: 'Кредит',
-            isActive: true
+            isActive: false
         },
         {
             link: 'mortgage',
             linkText: 'Ипотека',
-            isActive: false
+            isActive: true
         },
         {
             link: 'deposit',
             linkText: 'Вклад',
             isActive: false
-        },
+        }
     ]
 
 
@@ -35,6 +35,10 @@ section.section-layout.section-layout--bg-gray.section-calculator
             .section-calculator__header.d-flex.flex-md-column.flex-lg-row.gap-md-6.align-items-lg-end.py-4.p-md-0.mb-md-6.mb-lg-7.justify-content-lg-between.ps-lg-6
                 h3.d-none.d-md-inline Рассчитайте выгоду
                 +nav-tabs(calcList)
-            .tab-content
-                #loan.ps-lg-6
+            .tab-content.ps-lg-6
+                #loan.tab-pane.fade(role="tabpanel" aria-labelledby="loan" tabindex="0")
                     include calculator-tabs/tab-loan
+                #mortgage.tab-pane.fade.show.active(role="tabpanel" aria-labelledby="mortgage" tabindex="0")
+                    include calculator-tabs/tab-mortgage
+                #deposit.tab-pane.fade(role="tabpanel" aria-labelledby="mortgage" tabindex="0")
+                    include calculator-tabs/tab-deposit
