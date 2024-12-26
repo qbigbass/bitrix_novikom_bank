@@ -72,8 +72,6 @@ if (!empty($arResult['SECTIONS_FRAUD_PROTECTION'])) {
                     </div>
                 </div>
                 <picture class="pattern-bg">
-                    <source srcset="/frontend/dist/img/patterns/section-2/pattern-light-s.svg" media="(max-width: 767px)">
-                    <source srcset="/frontend/dist/img/patterns/section-2/pattern-light-m.svg" media="(max-width: 1199px)">
                     <img src="/frontend/dist/img/patterns/section-2/pattern-light-l.svg" alt="bg pattern" loading="lazy">
                 </picture>
             </section>

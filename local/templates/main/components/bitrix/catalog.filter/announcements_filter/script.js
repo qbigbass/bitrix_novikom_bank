@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    /* Фильтр по типу объвяления для desktop */
+    /* Фильтр по типу объявления для desktop */
     $(document).on('click', '[data-setFilter=Y]', function(e){
         e.preventDefault();
         let link = $(this).data('filter');

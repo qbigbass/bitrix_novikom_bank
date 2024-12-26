@@ -57,6 +57,7 @@
     }
 
     @include use-media(tablet-album) {
+      gap: 3rem;
       margin-top: auto;
       max-width: 43.75rem; // 700px;
     }

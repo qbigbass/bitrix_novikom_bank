@@ -1,7 +1,7 @@
 .tabs-panel {
     width: 100vw;
     margin-left: calc((100vw - 100%) / -2);
-    padding-inline: calc((100vw - 100%) / 2)!important;
+    padding-inline: calc((100vw - 100%) / 2);
 
     @include use-media(tablet-album) {
         max-width: 100%;
@@ -21,6 +21,10 @@
             top: 0;
             left: 0;
         }
+    }
+
+    @at-root .col-12:has(&) {
+        line-height: 0;
     }
 
     &__navigation {

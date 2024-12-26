@@ -144,43 +144,41 @@ $this->setFrameMode(true);
                                     <progress class="form-step__progress" value="2" max="3"></progress>
                                 </div>
                             </div>
-                            <div class="row g-1 g-md-2 g-lg-2_5">
-                                <div class="application-form__col col-12 col-md-4">
-                                    <div class="d-flex flex-column row-gap-2">
-                                        <label class="form-label mb-0" for="loan_employment-history">Общий трудовой стаж<span class="orange-100 ms-1">*</span></label>
-                                        <div class="input-group row-gap-2 has-validation">
-                                            <input class="form-control form-control-lg-lg" id="loan_employment-history" type="number" min="0" name="EMPLOYMENT_HISTORY" placeholder="Кол-во лет" required autocomplete="off" aria-describedby="loan_employment-history-suffix" data-form-input>
-                                            <span class="input-group-text" id="loan_employment-history-suffix">лет</span>
-                                            <div class="invalid-feedback" aria-live="polite"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="application-form__col col-12 col-md-4">
-                                    <div class="d-flex flex-column row-gap-2">
-                                        <label class="form-label mb-0" for="loan_employment-last-work">Стаж на последнем месте работы<span class="orange-100 ms-1">*</span></label>
-                                        <div class="input-group row-gap-2 has-validation">
-                                            <input class="form-control form-control-lg-lg" id="loan_employment-last-work" type="number" min="0" name="EMPLOYMENT_LAST_WORK" placeholder="Кол-во лет" required autocomplete="off" aria-describedby="loan_employment-last-work-suffix" data-form-input>
-                                            <span class="input-group-text" id="loan_employment-last-work-suffix">лет</span>
-                                            <div class="invalid-feedback" aria-live="polite"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="application-form__col col-12 col-md-4">
-                                    <div class="d-flex flex-column row-gap-2">
-                                        <label class="form-label mb-0" for="loan_monthly-income">Ежемесячный доход</label>
-                                        <div class="input-group row-gap-2 has-validation">
-                                            <input class="js-mask-money form-control form-control-lg-lg" id="loan_monthly-income" type="text" name="MONTHLY_INCOME" placeholder="Сумма" autocomplete="off" aria-describedby="loan_monthly-income-suffix" data-form-input>
-                                            <span class="input-group-text" id="loan_monthly-income-suffix">₽</span>
-                                            <div class="invalid-feedback" aria-live="polite"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="application-form__col col-12">
-                                    <div class="d-flex flex-column row-gap-2">
-                                        <label class="form-label mb-0" for="loan_employer-name">Наименование организации-работодателя<span class="orange-100 ms-1">*</span></label>
-                                        <input class="form-control form-control-lg-lg" id="loan_employer-name" type="text" name="EMPLOYER_NAME" placeholder="" required autocomplete="off" data-form-input>
+                            <div class="application-form__col col-12 col-md-4">
+                                <div class="d-flex flex-column row-gap-2">
+                                    <label class="form-label mb-0" for="loan_employment-history">Общий трудовой стаж<span class="orange-100 ms-1">*</span></label>
+                                    <div class="input-group row-gap-2 has-validation">
+                                        <input class="form-control form-control-lg-lg" id="loan_employment-history" type="number" min="0" name="EMPLOYMENT_HISTORY" placeholder="Кол-во лет" required autocomplete="off" aria-describedby="loan_employment-history-suffix" data-form-input>
+                                        <span class="input-group-text" id="loan_employment-history-suffix">лет</span>
                                         <div class="invalid-feedback" aria-live="polite"></div>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="application-form__col col-12 col-md-4">
+                                <div class="d-flex flex-column row-gap-2">
+                                    <label class="form-label mb-0" for="loan_employment-last-work">Стаж на последнем месте работы<span class="orange-100 ms-1">*</span></label>
+                                    <div class="input-group row-gap-2 has-validation">
+                                        <input class="form-control form-control-lg-lg" id="loan_employment-last-work" type="number" min="0" name="EMPLOYMENT_LAST_WORK" placeholder="Кол-во лет" required autocomplete="off" aria-describedby="loan_employment-last-work-suffix" data-form-input>
+                                        <span class="input-group-text" id="loan_employment-last-work-suffix">лет</span>
+                                        <div class="invalid-feedback" aria-live="polite"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="application-form__col col-12 col-md-4">
+                                <div class="d-flex flex-column row-gap-2">
+                                    <label class="form-label mb-0" for="loan_monthly-income">Ежемесячный доход</label>
+                                    <div class="input-group row-gap-2 has-validation">
+                                        <input class="js-mask-money form-control form-control-lg-lg" id="loan_monthly-income" type="text" name="MONTHLY_INCOME" placeholder="Сумма" autocomplete="off" aria-describedby="loan_monthly-income-suffix" data-form-input>
+                                        <span class="input-group-text" id="loan_monthly-income-suffix">₽</span>
+                                        <div class="invalid-feedback" aria-live="polite"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="application-form__col col-12">
+                                <div class="d-flex flex-column row-gap-2">
+                                    <label class="form-label mb-0" for="loan_employer-name">Наименование организации-работодателя<span class="orange-100 ms-1">*</span></label>
+                                    <input class="form-control form-control-lg-lg" id="loan_employer-name" type="text" name="EMPLOYER_NAME" placeholder="" required autocomplete="off" data-form-input>
+                                    <div class="invalid-feedback" aria-live="polite"></div>
                                 </div>
                             </div>
                         </div>

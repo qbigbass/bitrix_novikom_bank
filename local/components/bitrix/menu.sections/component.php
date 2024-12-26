@@ -34,16 +34,34 @@ if ($this->StartResultCache()) {
             "IBLOCK_ACTIVE" => "Y",
             "<=" . "DEPTH_LEVEL" => $arParams["DEPTH_LEVEL"],
         );
-        $arOrder = array(
-            "left_margin" => "asc",
-        );
 
-        $rsSections = CIBlockSection::GetList($arOrder, $arFilter, true, array(
+        if (!empty($arParams["SECTION_SORT_FIELD"]) && !empty($arParams["SECTION_SORT_ORDER"])) {
+            $arOrder = [
+                $arParams["SECTION_SORT_FIELD"] => $arParams["SECTION_SORT_ORDER"],
+            ];
+        } else {
+            $arOrder = array(
+                "left_margin" => "asc",
+            );
+        }
+
+        $arSelect = [
             "ID",
             "DEPTH_LEVEL",
             "NAME",
             "SECTION_PAGE_URL",
-        ));
+        ];
+
+        if (!empty($arParams["ADDITIONAL_FIELDS"])) {
+            $arSelect = array_merge($arSelect, $arParams["ADDITIONAL_FIELDS"]);
+        }
+        
+        $rsSections = CIBlockSection::GetList(
+            $arOrder,
+            $arFilter,
+            true,
+            $arSelect
+        );
         if ($arParams["IS_SEF"] !== "Y")
             $rsSections->SetUrlTemplates("", $arParams["SECTION_URL"]);
         else
@@ -53,7 +71,7 @@ if ($this->StartResultCache()) {
             $arResult["SECTIONS"][] = array(
                 "ID" => $arSection["ID"],
                 "DEPTH_LEVEL" => $arSection["DEPTH_LEVEL"],
-                "~NAME" => $arSection["~NAME"],
+                "~NAME" => $arSection["UF_TITLE_MENU"] ?? $arSection["~NAME"],
                 "~SECTION_PAGE_URL" => $arSection["~SECTION_PAGE_URL"],
             );
             $arResult["ELEMENT_LINKS"][$arSection["ID"]] = array();

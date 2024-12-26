@@ -5,7 +5,6 @@
     border-color: var(--blue-30);
     border-bottom-width: 1px;
 
-
     @include use-media(tablet) {
       padding-left: 1.25rem;
       padding-right: 1.25rem;
@@ -22,7 +21,7 @@
       thead, tbody {
         display: inline-block;
       }
-  
+
       tr {
         display: flex;
         flex-direction: column;
@@ -40,6 +39,12 @@
       td:last-child {
         padding-bottom: 1.5rem;
       }
+    }
+  }
+
+  &--bg-transparent {
+    & th, td {
+      background-color: transparent;
     }
   }
 }

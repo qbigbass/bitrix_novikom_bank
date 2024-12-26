@@ -81,7 +81,7 @@ $resultsDeclension = new Declension('результат', 'результата'
                 </div>
             <?endif;?>
             <div class="col-12 col-lg-8 col-xl-7">
-                <div class="d-flex flex-column flex-md-row gap-4 gap-md-7 align-items-start align-items-md-center">
+                <div class="d-flex flex-column flex-md-row gap-4 gap-md-6 align-items-start align-items-md-center">
                     <div class="position-relative w-100 w-md-50 w-lg-240w">
                         <input
                             class="js-date js-date--range js-date--today-max w-100 form-control"
@@ -97,7 +97,7 @@ $resultsDeclension = new Declension('результат', 'результата'
                           </svg>
                         </label>
                     </div>
-                    <div class="tabs-panel js-tabs-slider overflow-hidden position-relative tabs-panel--small w-auto">
+                    <div class="tabs-panel js-tabs-slider overflow-hidden position-relative tabs-panel--small w-auto px-0 ms-0">
                         <div class="tabs-panel__navigation d-none d-lg-block js-tabs-slider-navigation w-100">
                             <span class="tabs-panel__navigation-item tabs-panel__navigation-item-reverse js-tabs-slider-navigation-prev d-flex align-items-center justify-content-start px-1 z-3 position-absolute swiper-button-disabled">
                                 <span class="icon size-m">

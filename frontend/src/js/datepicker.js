@@ -39,8 +39,12 @@ const defaultDatepickerOptions = {
 }
 
 
-function initDatepicker() {
-    $(DATEPICKER_CLASSES.root).each(function(index, element) {
+function initDatepicker(elements) {
+    if (!elements || !elements.length) {
+        elements = $(DATEPICKER_CLASSES.root);
+    }
+
+    $(elements).each(function(index, element) {
         const options = {...defaultDatepickerOptions};
         if ($(this).hasClass(DATEPICKER_CLASSES.isRange)) {
             options.range = true;

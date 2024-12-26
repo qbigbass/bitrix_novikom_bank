@@ -3,12 +3,13 @@
         {
             label: 'Ваши покупки по карте в месяц',
             id: 'amount-bonus',
-            maxValue: 100000,
-            minValue: 2000,
-            startValue: 10000,
+            maxValue: 500000,
+            minValue: 5000,
+            startValue: 5000,
             stepSize: 1000,
             type: "price",
-            editable: true
+            editable: true,
+            isCalculator: true
         },
     ]
 
@@ -17,6 +18,7 @@
             {
                 title: 'За год будет начислено',
                 value: '600 бонусов',
+                additionalClass: 'js-calculator-display-bonus',
             },
         ]
     }
@@ -24,31 +26,26 @@
 include ../../components/ui/input/input-slider
 include ../../cards/card-calculate-result
 
-.row.px-lg-6
+.row.px-lg-6.js-calculator-bonus(data-table="program_bonuses")
     .col-12.col-lg-6
         .pe-xl-6
-            .d-flex.flex-column.row-gap-4.row-gap-md-6.row-gap-lg-7
+            .d-flex.flex-column.row-gap-4.row-gap-md-6.row-gap-lg-7.js-input-bonus-wrapper
                 each input in inputSliderList
                     +input-slider(input)
 
                 .row.row-gap-4.row-gap-lg-6
                     .col-12.col-md-6
                         .d-flex.flex-column.row-gap-2
-                            label(for="select1").form-label.mb-0
+                            label(for="select-type").form-label.mb-0
                                 | Тип карты
-                            select#select1(aria-label="Тип карты").form-select.js-select
-                                option(selected value="1") Дебетовая
-                                option(value="2") Кредитная
+                            select#select-type(aria-label="Тип карты").form-select.js-select.js-card-type
 
                     .col-12.col-md-6
                         .d-flex.flex-column.row-gap-2
-                            label(for="select2").form-label.mb-0
+                            label(for="select-category").form-label.mb-0
                                 | Категория основной карты
-                            select#select2(aria-label="Категория основной карты").form-select.js-select
-                                option(selected value="1") Standart
-                                option(value="2") Список 2
-                                option(value="3") Список 3
-                                option(value="4") Список 4
+                            select#select-category(aria-label="Категория основной карты").form-select.js-select.js-card-category
+
 
     .col-12.col-lg-6.mt-4.mt-md-6.mt-lg-0
         .ps-xxl-6
