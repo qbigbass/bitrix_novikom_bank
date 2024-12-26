@@ -337,7 +337,7 @@ if (!empty($blockDetailServiceSectionIds)) {
     $iblockDetailServices = iblock('msb_full_info_services');
     $entity = Section::compileEntityByIblock($iblockDetailServices);
     $rsSections = $entity::getList([
-        "select" => ["ID", "NAME", "CODE", "UF_TAB_QUOTES"],
+        "select" => ["ID", "NAME", "CODE"],
         "filter" => [
             "ID" => $blockDetailServiceSectionIds
         ],
@@ -350,64 +350,12 @@ if (!empty($blockDetailServiceSectionIds)) {
     $tabSectionCode = [];
 
     foreach ($rsSections as $section) {
-        if (!empty($section["UF_TAB_QUOTES"])) {
-            $tabQuoteIds[$section["UF_TAB_QUOTES"]] = $section["UF_TAB_QUOTES"];
-            $tabQuoteSectionIds[$section["CODE"]][$section["UF_TAB_QUOTES"]] = $section["UF_TAB_QUOTES"];
-        }
-
         $blockDetailServiceTabs[$section['ID']] = [
             "NAME" => $section["NAME"],
             "CODE" => $section["CODE"],
         ];
 
         $tabSectionCode[$section["CODE"]] = $section["ID"];
-    }
-
-    if (!empty($tabQuoteIds)) {
-        // Получим подробные данные для цитаты из ИБ "Цитаты для каталога услуг"
-        $iblockQuotes = iblock('msb_quotes');
-        $classQuotes = BitrixIblock::wakeUp($iblockQuotes)->getEntityDataClass();
-        $elementsQuotes = $classQuotes::getList([
-            "select" => ["ID", "NAME", "PREVIEW_PICTURE", "PREVIEW_TEXT"],
-            "filter" => ["ACTIVE" => "Y", "ID" => $tabQuoteIds],
-        ])->fetchCollection();
-
-        if (!empty($elementsQuotes)) {
-            foreach ($elementsQuotes as $element) {
-                $id = $element->getId();
-                $name = $element->getName();
-                $previewPicture = $element->getPreviewPicture();
-                $previewText = '';
-                $picture = '';
-
-                if (!empty($element->getPreviewText())) {
-                    $previewText = $element->getPreviewText();
-                }
-
-                if (empty($previewText)) {
-                    $previewText = $name;
-                    $name = '';
-                }
-
-                if (!empty($previewPicture)) {
-                    $picture = CFile::GetPath($previewPicture);
-                }
-
-                $tabQuotesElements[$id] = [
-                    "TITLE" => $name,
-                    "TEXT" => $previewText,
-                    "PICTURE" => $picture
-                ];
-            }
-        }
-    }
-
-    if (!empty($tabQuotesElements)) {
-        foreach ($tabQuoteSectionIds as $sectionCode => $arQuotes) {
-            foreach ($arQuotes as $quotesId) {
-                $blockDetailServiceTabsQuotes[$sectionCode][$quotesId] = $tabQuotesElements[$quotesId];
-            }
-        }
     }
 
     $classDetailServices = BitrixIblock::wakeUp($iblockDetailServices)->getEntityDataClass();
@@ -421,7 +369,8 @@ if (!empty($blockDetailServiceSectionIds)) {
             "DOCUMENTS.FILE",
             "TAB_FUNDS_DESC",
             "TAB_FUNDS_CITY",
-            "TAB_FUNDS_LINK"
+            "TAB_FUNDS_LINK",
+            "TAB_QUOTES"
         ],
         "filter" => [
             "ACTIVE" => "Y",
@@ -557,6 +506,59 @@ if (!empty($blockDetailServiceSectionIds)) {
                     "LINK" => $fundsLink,
                     "CITY" => $fundsCity
                 ];
+            }
+
+            if (!empty($element->getTabQuotes())) {
+                $quoteId = $element->getTabQuotes()->getValue();
+                $tabQuoteIds[$quoteId] = $quoteId;
+                $tabQuoteSectionIds[$sectionCode][$quoteId] = $quoteId;
+            }
+        }
+
+        if (!empty($tabQuoteIds)) {
+            // Получим подробные данные для цитаты из ИБ "Цитаты для каталога услуг"
+            $iblockQuotes = iblock('msb_quotes');
+            $classQuotes = BitrixIblock::wakeUp($iblockQuotes)->getEntityDataClass();
+            $elementsQuotes = $classQuotes::getList([
+                "select" => ["ID", "NAME", "PREVIEW_PICTURE", "PREVIEW_TEXT"],
+                "filter" => ["ACTIVE" => "Y", "ID" => $tabQuoteIds],
+            ])->fetchCollection();
+
+            if (!empty($elementsQuotes)) {
+                foreach ($elementsQuotes as $element) {
+                    $id = $element->getId();
+                    $name = $element->getName();
+                    $previewPicture = $element->getPreviewPicture();
+                    $previewText = '';
+                    $picture = '';
+
+                    if (!empty($element->getPreviewText())) {
+                        $previewText = $element->getPreviewText();
+                    }
+
+                    if (empty($previewText)) {
+                        $previewText = $name;
+                        $name = '';
+                    }
+
+                    if (!empty($previewPicture)) {
+                        $picture = CFile::GetPath($previewPicture);
+                    }
+
+                    $tabQuotesElements[$id] = [
+                        "TITLE" => $name,
+                        "TEXT" => $previewText,
+                        "PICTURE" => $picture
+                    ];
+                }
+            }
+        }
+
+        if (!empty($tabQuotesElements)) {
+            foreach ($tabQuoteSectionIds as $sectionCode => $arQuotes) {
+                foreach ($arQuotes as $quotesId) {
+                    $blockDetailServiceTabsQuotes[$sectionCode][$quotesId] = $tabQuotesElements[$quotesId];
+                }
             }
         }
 
