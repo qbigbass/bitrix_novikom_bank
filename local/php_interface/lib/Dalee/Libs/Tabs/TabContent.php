@@ -38,7 +38,7 @@ class TabContent
         if (!$useRteTag) {
             $blockHtml = $handler->render('benefits_other_services');
         } else {
-            $blockHtml = self::$closedRteTag . $handler->render('benefits_other_services') . self::$openedRteTag;
+            $blockHtml = self::$closedRteTag . $handler->render('benefits') . self::$openedRteTag;
         }
 
         return str_replace(
