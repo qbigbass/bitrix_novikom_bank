@@ -1,5 +1,6 @@
 .pb-section-hero {
   position: relative;
+  overflow: hidden;
 
   @include use-media(tablet) {
     padding-bottom: 0;
@@ -13,6 +14,20 @@
     bottom: 0;
     left: 0;
     right: 0;
+
+    &--size-small {
+      background: radial-gradient(100% 100% at 50% 0%, rgba(55, 17, 106, 0.70) 0%, rgba(0, 0, 0, 0.00) 100%);
+      bottom: auto;
+      height: 12.5rem;
+
+      @include use-media(tablet) {
+        height: 17rem;
+      }
+
+      @include use-media(tablet-album) {
+        height: 20rem;
+      }
+    }
   }
 
   &__title {
@@ -80,7 +95,7 @@
   }
 
   &__title {
-    font-size: 2rem;
+    font-size: 1.75rem;
     line-height: 1.25;
     font-weight: 500;
 
@@ -135,8 +150,26 @@
     }
   }
 
+  &__footer {
+    &.animate {
+      opacity: 0;
+      transform: translateY(2rem);
+      transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+      will-change: transform, opacity;
+
+      &.animate-show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+
   &--gradient {
     background: radial-gradient(50% 50% at 50% 50%, rgba(55, 17, 106, 0.7) 0%, rgba(0, 0, 0, 0.7) 100%);
+  }
+
+  &--gradient-raial {
+    background: radial-gradient(83.47% 59.86% at 50% 100%, rgba(55, 17, 106, 0.70) 0%, rgba(0, 0, 0, 0.70) 100%);
   }
 
   &--gradient-linear {

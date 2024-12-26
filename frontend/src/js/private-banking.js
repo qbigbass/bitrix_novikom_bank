@@ -73,12 +73,15 @@ function pbScrollTo() {
         const menu = document.querySelector(ELEMS_PB_NAV.navMenu);
         const button = document.querySelector(ELEMS_PB_NAV.button);
 
+
         if (!menu.classList.contains(ELEMS_PB_NAV.hideClass)) {
             button.click();
         }
 
         const target = this.hash;
         const $target = $(target);
+
+        if ($target.length === 0) return false;
 
         $('html, body').animate({
             scrollTop: $target.offset().top

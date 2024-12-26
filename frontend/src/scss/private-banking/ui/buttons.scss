@@ -13,7 +13,7 @@
     letter-spacing: .1em;
   }
 
-  @include use-media(tablet-album) {
+  @include use-media(tablet) {
     padding: 1rem 1.5rem;
     font-size: 1rem;
     line-height: 1.5;

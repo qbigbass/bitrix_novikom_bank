@@ -8,3 +8,17 @@
     font-weight: 500;
   }
 }
+
+.pb-text-notes {
+  font-size: 1rem;
+  line-height: 1.4;
+
+  @include use-media(tablet) {
+    font-size: 1.25rem;
+  }
+
+  @include use-media(tablet-album) {
+    font-size: 1.5rem;
+    line-height: 1.35;
+  }
+}
