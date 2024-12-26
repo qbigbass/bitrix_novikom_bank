@@ -27,25 +27,29 @@ $data = [
         'PIN_PROP' => 'PIN.VALUE',
         'DATE' => 'PUBLICATION_DATE.VALUE',
         'SECTION_CODE' => 'IBLOCK_SECTION.CODE',
+        'SECTION_PARENT' => 'IBLOCK_SECTION.IBLOCK_SECTION_ID',
     ],
     'filter' => $filter
 ];
+
+$arSections = \Bitrix\Iblock\SectionTable::getList([
+    'select' => [
+        'ID',
+        'IBLOCK_SECTION_ID',
+        'CODE',
+    ]
+])->fetchAll();
 
 if (!empty($arResult['SECTION'])) {
     $section = $arResult['SECTION']['PATH'][array_key_last($arResult['SECTION']['PATH'])];
     $data['filter']['IBLOCK_SECTION_ID'] = [$section['ID']];
 
-    $arSections = \Bitrix\Iblock\SectionTable::getList([
-        'filter' => [
-            'IBLOCK_SECTION_ID' => $section['ID']
-        ],
-        'select' => [
-            'ID',
-        ]
-    ])->fetchAll();
+    $sections = array_filter($arSections, function ($item) use ($section) {
+        return $item['IBLOCK_SECTION_ID'] == $section['ID'];
+    });
 
-    if (!empty($arSections)) {
-        $data['filter']['IBLOCK_SECTION_ID'] = array_merge($data['filter']['IBLOCK_SECTION_ID'], array_column($arSections, 'ID'));
+    if (!empty($sections)) {
+        $data['filter']['IBLOCK_SECTION_ID'] = array_merge($data['filter']['IBLOCK_SECTION_ID'], array_column($sections, 'ID'));
     }
 }
 
@@ -56,10 +60,19 @@ if (!empty($items)) {
     $otherItems = [];
 
     foreach ($items as &$item) {
+        if (!empty($item['SECTION_PARENT'])) {
+            $parentSection = array_filter($arSections, function ($section) use ($item) {
+                return $section['ID'] == $item['SECTION_PARENT'];
+            });
+
+            $item['DETAIL_PAGE_URL'] = $iblockUrl . reset($parentSection)['CODE'] . '/' . $item['SECTION_CODE'] . '/' . $item['CODE'] . '/';
+        } else {
+            $item['DETAIL_PAGE_URL'] = $iblockUrl . $item['SECTION_CODE'] . '/' . $item['CODE'] . '/';
+        }
+
         $item['PROPERTIES'] = [];
         $item['EDIT_LINK'] = CIBlock::GetPanelButtons($item["IBLOCK_ID"], $item["ID"], 0, ["SECTION_BUTTONS" => false, "SESSID" => false])["edit"]["edit_element"]["ACTION_URL"];
         $item['DELETE_LINK'] = CIBlock::GetPanelButtons($item["IBLOCK_ID"], $item["ID"], 0, ["SECTION_BUTTONS" => false, "SESSID" => false])["edit"]["delete_element"]["ACTION_URL"];
-        $item['DETAIL_PAGE_URL'] = $iblockUrl . $item['SECTION_CODE'] . '/' . $item['CODE'] . '/';
 
         if (!empty($item['PREVIEW_PICTURE'])) {
             $item['PREVIEW_PICTURE'] = ['SRC' => CFile::GetPath($item['PREVIEW_PICTURE'])];

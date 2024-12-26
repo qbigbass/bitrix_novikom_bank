@@ -2,82 +2,111 @@
     var calculatorData = {
         rows: [
             {
-                title: 'Процентная ставка',
-                value: '56 343,98',
-                currency: true,
-            },
-            {
-                title: 'Ставка по вкладу',
-                value: '15 %',
-            },
-            {
                 title: 'Срок вклада',
-                value: '550 дней',
-            }
+                value: '',
+                additionalClass: 'js-calculator-deposit-period',
+            },
+            {
+                title: 'Процентная ставка',
+                value: '21 %',
+                additionalClass: 'js-calculator-deposit-rate',
+            },
+            {
+                title: 'Ваш доход составит',
+                value: '6 238',
+                currency: true,
+                additionalClass: 'js-calculator-deposit-income',
+            },
         ],
         btnText: 'Оформить заявку',
         notes: 'Калькулятор не&nbsp;гарантирует точность расчетов. Окончательные параметры вклада определяются по&nbsp;итогам рассмотрения заявки.'
     }
 
-    var inputSliderList = [
-        {
-            label: 'Сумма вклада',
-            id: 'amount-credit',
-            maxValue: 5000000,
-            minValue: 20000,
-            startValue: 1000000,
-            stepSize: 5000,
-            type: "price",
-            editable: true
-        },
-        {
-            label: 'Срок выплаты',
-            id: 'payment-term',
-            maxValue: 60,
-            minValue: 6,
-            startValue: 36,
-            type: "month",
-            editable: true
-        }
-    ]
-
 include ../../../components/ui/input/input-slider
 include ../../../cards/card-calculate-result
 
-.row
+.row.js-calculator-deposit(data-id="171511")
     .col-12.col-lg-6
-        .tab-content.pe-xl-6
+        .pe-xl-6
             .d-flex.flex-column.row-gap-4.row-gap-md-6.row-gap-lg-7
-                each input in inputSliderList
-                    +input-slider(input)
+                .d-flex.flex-column.flex-md-row-reverse.align-items-md-center.gap-3
+                    ul.nav.nav-tabs.nav-tabs--type-currency
+                        li.nav-item.flex-grow-1
+                            button(type="button").nav-link.text-center.currency.active ₽
+                        li.nav-item.flex-grow-1
+                            button(type="button").nav-link.text-center.currency $
+                        li.nav-item.flex-grow-1
+                            button(type="button").nav-link.text-center.currency ¥
+                    +input-slider({
+                        label: 'Сумма вклада',
+                        id: 'deposit-amount',
+                        startValue: 1000000,
+                        stepSize: 5000,
+                        type: "price",
+                        editable: true,
+                        additionalClass: "js-input-amount",
+                        isCalculator: true
+                    }).flex-grow-1
+
+                +input-slider({
+                    label: 'Срок вклада',
+                    id: 'deposit-period',
+                    type: "day",
+                    editable: false,
+                    additionalClass: "js-input-period",
+                    isCalculator: true
+                })
 
                 .d-flex.flex-column.row-gap-4
                     .form-check
-                        input#inp1(type="checkbox" value="").form-check-input
-                        label(for="inp1").form-check-label
+                        input#inp1(type="checkbox" value="" tabindex="0").form-check-input
+                        label(for="inp1" tabindex="0").form-check-label
                             | Капитализация процентов на счет вклада
 
                     .form-check
-                        input#inp2(type="checkbox" value="" checked).form-check-input
-                        label(for="inp2").form-check-label
+                        input#inp2(type="checkbox" value="" data-target="replenishment" checked tabindex="0").form-check-input.js-replenishment
+                        label(for="inp2" tabindex="0").form-check-label
                             | Планируются пополнения суммы вклада
-                .d-flex.flex-column.flex-md-row.gap-4.gap-lg-6
-                    .d-flex.flex-column.row-gap-2.w-100
-                        label(for="date1").form-label.mb-0
-                            | Дата пополнения
-                        .position-relative.w-100
-                            input#date1(type="text" name="date1" placeholder="дд.мм.гг").js-date.js-date--today-min.form-control.form-control-lg
-                            label(for="date1").cursor-pointer.position-absolute.top-0.end-0.violet-70.text-m.p-3.px-3
-                                +svg-use("icon-calendar", "icon size-m")
+                #replenishment.d-flex.flex-column.row-gap-4.row-gap-md-6
+                    .d-flex.flex-column.flex-md-row.gap-4.gap-lg-6
+                        .d-flex.flex-column.row-gap-2.w-100
+                            label(for="date").form-label.mb-0
+                                | Дата пополнения
+                            .position-relative.w-100
+                                input#date(type="text" name="date" placeholder="дд.мм.гг").form-control.form-control-lg-lg.js-date
+                                span.cursor-pointer.position-absolute.top-0.end-0.violet-70.text-m.py-2.px-3.p-lg-3
+                                    +svg-use("icon-calendar", "icon size-m")
 
-                    .d-flex.flex-column.row-gap-2.w-100
-                        label(for="sum1").form-label.mb-0
-                            | Сумма пополнения
-                        .position-relative.w-100
-                            input#sum1(type="number" name="sum1").form-control.form-control-lg
-                            span.currency.position-absolute.top-0.end-0.dark-70.text-m.p-3
-                                | ₽
+                        .d-flex.flex-column.row-gap-2.w-100
+                            label(for="sum").form-label.mb-0
+                                | Сумма пополнения
+                            .position-relative.w-100
+                                input#sum(type="number" name="sum").form-control.form-control-lg-lg
+                                span.currency.position-absolute.top-0.end-0.dark-70.text-m.py-2.px-3.p-lg-3
+                                    | ₽
+                    button.btn.btn-link.btn-sm.btn-icon.js-add-replenishment(type="button")
+                        +svg-use("icon-plus", "icon size-s")
+                        | Добавить пополнение
+                    template#replenishment-template
+                        .d-flex.gap-2.gap-md-4.position-relative.js-replenishment-item
+                            .d-flex.flex-column.flex-md-row.gap-4.gap-lg-6.flex-grow-1
+                                .d-flex.flex-column.row-gap-2.w-100
+                                    label(for="date").form-label.mb-0
+                                        | Дата пополнения
+                                    .position-relative.w-100
+                                        input(type="text" name="date" placeholder="дд.мм.гг").form-control.form-control-lg-lg.js-date
+                                        span.cursor-pointer.position-absolute.top-0.end-0.violet-70.text-m.py-2.px-3.p-lg-3
+                                            +svg-use("icon-calendar", "icon size-m")
 
+                                .d-flex.flex-column.row-gap-2.w-100
+                                    label(for="sum").form-label.mb-0
+                                        | Сумма пополнения
+                                    .position-relative.w-100
+                                        input(type="number" name="sum").form-control.form-control-lg-lg
+                                        span.currency.position-absolute.top-0.end-0.dark-70.text-m.py-2.px-3.p-lg-3
+                                            | ₽
+                            button(type="button").btn-remove-replenishment.js-remove-replenishment
+                                +svg-use("icon-close", "icon size-m")
     .col-12.col-lg-6.mt-4.mt-md-6.mt-lg-0
         .ps-xxl-6
             +polygon-container()

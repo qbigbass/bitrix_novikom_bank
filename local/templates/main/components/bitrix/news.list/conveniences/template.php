@@ -12,7 +12,7 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 ?>
-<div class="swiper slider-cards js-slider-cards" data-slides-per-view="mobile-s:1,mobile:1,tablet:2,laptop:2,laptop-x:3" data-space-between="mobile-s:8,mobile:8,tablet:8,laptop:8,laptop-x:8">
+<div class="swiper slider-cards js-slider-cards" data-slides-per-view="mobile-s:1,mobile:1,tablet:2,tablet-album:2,laptop:2,laptop-x:3" data-space-between="mobile-s:8,mobile:8,tablet:8,tablet-album:8,laptop:8,laptop-x:8">
     <div class="swiper-wrapper">
         <?foreach($arResult["ITEMS"] as $arItem) : ?>
             <?
@@ -28,7 +28,7 @@ $this->setFrameMode(true);
                         </div>
                         <div class="card-benefit__read-more d-flex align-items-end justify-content-between">
                             <div class="card-benefit__icon">
-                                <img class="icon size-md-xxl" src="<?=$arItem['DISPLAY_PROPERTIES']['ICON']['FILE_VALUE']['SRC']?>" alt="" loading="lazy">
+                                <img class="icon size-xxl" src="<?=$arItem['DISPLAY_PROPERTIES']['ICON']['FILE_VALUE']['SRC']?>" alt="" loading="lazy">
                             </div>
                         </div>
                     </div>

@@ -201,7 +201,6 @@ function setTabIndex(slides) {
     });
 }
 
-let mySlider;
 function initCardSlider() {
     const sliders = document.querySelectorAll(CLASS_NAME.cardsSlider);
 

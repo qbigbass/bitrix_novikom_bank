@@ -44,7 +44,7 @@ $this->setFrameMode(true);
                                                 <h5>Подробнее о программе</h5>
                                                 <div class="link-list">
                                                     <a
-                                                        class="d-flex flex-column gap-1 py-3 document-download text-m"
+                                                        class="d-flex flex-column gap-2 py-3 document-download text-m"
                                                         href="<?= $item["DISPLAY_PROPERTIES"]["FILE"]["FILE_VALUE"]["SRC"]?>"
                                                         download="<?= $item["DISPLAY_PROPERTIES"]["FILE"]["FILE_VALUE"]["ORIGINAL_NAME"]?>"
                                                     ><?= $item["DISPLAY_PROPERTIES"]["FILE"]["DESCRIPTION"] ?>

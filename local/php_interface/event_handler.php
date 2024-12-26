@@ -2,6 +2,7 @@
 
 use Bitrix\Main;
 use Dalee\Helpers\FormHelper;
+use Dalee\Services\CacheHandler;
 use Dalee\Services\RatesPlaceholderManager;
 use Dalee\UserType\CUserTypeStringDescr;
 use Dalee\UserType\CUserTypeStringWithTabs;
@@ -25,3 +26,5 @@ $eventManager->addEventHandler('main', 'OnBeforeProlog', [CIBEditComplexProp::cl
 $eventManager->addEventHandler("main", "OnEndBufferContent", [RatesPlaceholderManager::class, 'handle']);
 
 $eventManager->addEventHandler('form', 'OnBeforeResultAdd', [FormHelper::class, 'onBeforeResultAdd']);
+
+$eventManager->addEventHandler("iblock", "OnAfterIBlockElementUpdate", [CacheHandler::class, "onAfterIBlockElementUpdateHandler"]);

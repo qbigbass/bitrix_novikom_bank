@@ -53,7 +53,7 @@
 
         @include use-media(tablet) {
             width: 42.709vw;
-            gap: 2.5rem;
+            gap: 1.5rem;
         }
 
         @include use-media(tablet-album) {
@@ -75,7 +75,7 @@
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        gap: 1.5rem;
+        gap: 1rem;
         position: relative;
         z-index: 1;
         width: 100%;
@@ -150,6 +150,7 @@
 
         @include use-media(tablet-album) {
             top: 2.25rem;
+            right: 0;
             width: 45vw;
             max-width: 33.75rem; // 540px
         }
@@ -245,7 +246,7 @@
                 width: 55vw;
                 max-width: 31.25rem; //500px
                 top: 100%;
-                transform: translateY(-100%);
+                transform: tr   anslateY(-100%);
             }
 
             @include use-media(tablet-album) {
@@ -269,23 +270,49 @@
     }
 
     &--size-xl {
-        #{$root}__pattern {
-            top: 12.5rem; //200px
-            bottom: auto;
+        #{$root}__header {
+            gap: 1.5rem;
+        }
 
-            @include use-media(tablet) {
-                top: 0;
+        #{$root}__pattern {
+            & img {
+                top: 12.5rem; //200px
+                bottom: auto;
+
+                @include use-media(tablet) {
+                    top: 0;
+                }
             }
         }
 
         #{$root}__content {
             @include use-media(tablet, tablet-album) {
                 width: 58vw;
+                gap: 2.5rem;
             }
         }
 
         #{$root}__subtitle {
             max-width: unset;
+        }
+
+        #{$root}__benefits-list {
+            width: 100%;
+            max-width: none;
+
+            @include use-media(mobile-s, tablet-album) {
+                gap: 1.5rem;
+            }
+
+            @include use-media(tablet-album, laptop) {
+                grid-template-columns: auto auto;
+                gap: 1.5rem;
+            }
+
+            @include use-media(laptop) {
+                width: auto;
+                gap: 3rem;
+            }
         }
 
         #{$root}__image {
@@ -316,6 +343,12 @@
             @include use-media(desktop) {
                 right: 10rem;
             }
+        }
+    }
+
+    &--type-msb {
+        #{$root}__footer {
+            margin-top: 15.875rem;
         }
     }
 

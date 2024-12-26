@@ -1,5 +1,16 @@
-<?global $APPLICATION?>
-<div class="card-benefit d-inline-flex px-3 px-sm-5 px-lg-6 p-4 p-sm-5 p-lg-6 bg-dark-10 w-100">
+<?
+global $APPLICATION;
+$iconColor = 'green';
+
+if ($APPLICATION->GetCurDir() == '/for-corporate-clients/') {
+    $iconColor = 'orange';
+}
+
+if (!empty($arParams['COLOR_ICON'])) {
+    $iconColor = $arParams['COLOR_ICON'];
+}
+?>
+<div class="card-benefit card-benefit--lg-n6 d-inline-flex px-3 px-sm-5 px-lg-6 p-4 p-sm-5 p-lg-6 bg-dark-10 w-100">
     <div class="card-benefit__inner d-flex flex-column gap-6 gap-lg-7 justify-content-between h-100 w-100">
         <div class="card-benefit__content d-flex flex-column gap-4">
             <h4 class="card-benefit__title">Защита от мошенников</h4>
@@ -7,13 +18,21 @@
         </div>
         <div class="card-benefit__read-more d-flex align-items-end justify-content-between">
             <div class="card-benefit__icon">
-                <svg class="icon <?= $APPLICATION->GetCurDir() == '/for-corporate-clients/' ? 'orange' : 'green' ?>-100 size-md-xxl" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                <svg
+                    class="icon <?= $iconColor ?>-100 size-xxl"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="100%"
+                    height="100%"
+                >
                     <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-a-protection"></use>
                 </svg>
-            </div><a class="text-m btn btn-link btn-lg d-inline-flex gap-2 align-items-center" href="#"><span class="fw-bold">Подробнее</span>
+            </div>
+            <a class="text-m btn btn-link btn-lg d-inline-flex gap-2 align-items-center" href="#">
+                <span class="fw-bold">Подробнее</span>
                 <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                     <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right-small"></use>
-                </svg></a>
+                </svg>
+            </a>
         </div>
     </div>
 </div>

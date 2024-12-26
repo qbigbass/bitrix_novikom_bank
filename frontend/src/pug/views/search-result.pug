@@ -194,12 +194,12 @@ block content
                     .text-l.fw-bold Найдено 360 результатов
                 .col-12.col-lg-8.col-xl-7
                     form
-                        .d-flex.flex-column.flex-md-row.gap-4.gap-md-7.align-items-start.align-items-md-center
+                        .d-flex.flex-column.flex-md-row.gap-4.gap-md-6.align-items-start.align-items-md-center
                             .position-relative.w-100.w-md-50.w-lg-240w
                                 input#search-datepicker(type="text" name="date" placeholder="Показать за период").js-date.js-date--range.js-date--today-max.w-100.form-control
                                 label(for="search-datepicker").cursor-pointer.position-absolute.top-0.end-0.violet-70.text-m.p-2.px-3
                                     +svg-use("icon-calendar", "icon size-m")
-                            +tabs(fiterTabsList, "", "", true).w-auto
+                            +tabs(fiterTabsList, "", "", true).w-auto.px-0.ms-0
             .row.px-lg-6
                 .col-12.col-lg-8.col-xl-7
                     .d-flex.flex-column.gap-4

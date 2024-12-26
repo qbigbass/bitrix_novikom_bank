@@ -51,6 +51,7 @@
 }
 
 .form-label {
+    display: block;
     font-weight: 600;
     color: var(--dark-70);
     font-size: .875rem;
@@ -200,4 +201,11 @@ textarea.form-control-lg-lg {
     &::placeholder {
         color: var(--dark-50);
     }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 }

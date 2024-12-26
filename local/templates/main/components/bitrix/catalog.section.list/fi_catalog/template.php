@@ -24,14 +24,20 @@ use Bitrix\Main\Localization\Loc;
                             <div class="card-product__inner">
                                 <div class="card-product__content">
                                     <h4 class="card-product__title"><?= $item["NAME"]?></h4>
-                                    <div class="rte m-0 gap-3 gap-lg-4">
-                                        <?= $item["DESCRIPTION"]?>
-                                    </div>
+                                    <? if (!empty($item["DESCRIPTION"])) : ?>
+                                        <div class="rte m-0 gap-3 gap-lg-4">
+                                            <? if ($item["DESCRIPTION_TYPE"] === "text") : ?>
+                                                <p><?= $item["DESCRIPTION"] ?></p>
+                                            <? else : ?>
+                                                <?= $item["DESCRIPTION"] ?>
+                                            <? endif; ?>
+                                        </div>
+                                    <? endif; ?>
                                 </div>
                                 <?if (!empty($item["PICTURE"])) :?>
                                     <img class="card-product__img" src="<?= $item["PICTURE"]["SRC"]?>" alt="" loading="lazy">
                                 <?endif;?>
-                                <a class="btn btn-link btn-icon m-auto m-lg-0 py-2 py-lg-0" href="<?= $item["SECTION_PAGE_URL"] ?>">
+                                <a class="btn btn-link btn-icon m-auto m-lg-0 py-2 py-lg-0<?if($key === 0):?> m-md-0<?endif;?>" href="<?= $item["SECTION_PAGE_URL"] ?>">
                                     <span><?= Loc::getMessage("FL_CATALOG_LINK_DETAIL_TITLE")?></span>
                                     <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                                         <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
@@ -43,7 +49,13 @@ use Bitrix\Main\Localization\Loc;
                 </div>
             <? endif; ?>
             <? if ($arParams["SHOW_AD_INTERNET_BANK"] === "Y") : ?>
-                <? $APPLICATION->IncludeFile('/local/php_interface/include/internet_bank_for_business.php'); ?>
+                <? $APPLICATION->IncludeFile(
+                    '/local/php_interface/include/internet_bank_for_business.php',
+                    [
+                        'CLASS_COLOR_BTN' => 'btn-yellow',
+                        'CLASS_COLOR_CARD' => 'card-service-app--bg-heavy-violet'
+                    ]
+                );?>
             <? endif; ?>
             <? if(!empty($arResult["SECTIONS_CENTER_POSITION_1"]) || !empty($arResult["SECTIONS_CENTER_POSITION_2"])) : ?>
                 <div class="col-12">
@@ -51,10 +63,13 @@ use Bitrix\Main\Localization\Loc;
                         <div class="row cards-gutter">
                             <? foreach ($arResult["SECTIONS_CENTER_POSITION_1"] as $key => $item): ?>
                                 <div class="col-12 <? if($key <= 1) : ?>col-md-6<? endif; ?> col-lg-4">
-                                    <a class="card-product bg-dark-10 card-product--bg-white" href="<?= $item["SECTION_PAGE_URL"] ?>">
+                                    <a class="card-product card-product--size-height-auto card-product--transparent bg-white" href="<?= $item["SECTION_PAGE_URL"] ?>">
                                         <div class="card-product__inner">
                                             <div class="card-product__content mw-100">
                                                 <h4 class="card-product__title"><?= $item["NAME"]?></h4>
+                                                <? if (!empty($item["DESCRIPTION"])) : ?>
+                                                    <p class="card-product__description m-0 mw-100"><?= $item["DESCRIPTION"] ?></p>
+                                                <? endif; ?>
                                             </div>
                                             <div class="card-product__footer">
                                                 <span class="btn btn-link btn-icon d-none d-md-inline-flex">
@@ -77,10 +92,13 @@ use Bitrix\Main\Localization\Loc;
                                 <div class="row cards-gutter">
                                     <?foreach ($arResult["SECTIONS_CENTER_POSITION_2"] as $key => $item):?>
                                         <div class="col-12 col-md-6 col-xl-3">
-                                            <a class="card-product bg-dark-10 card-product--bg-white" href="<?= $item["SECTION_PAGE_URL"] ?>">
+                                            <a class="card-product card-product--transparent card-product--size-height-auto bg-white" href="<?= $item["SECTION_PAGE_URL"] ?>">
                                                 <div class="card-product__inner">
                                                     <div class="card-product__content mw-100">
                                                         <h4 class="card-product__title"><?= $item["NAME"]?></h4>
+                                                        <? if (!empty($item["DESCRIPTION"])) : ?>
+                                                            <p class="card-product__description m-0 mw-100"><?= $item["DESCRIPTION"] ?></p>
+                                                        <? endif; ?>
                                                     </div>
                                                     <div class="card-product__footer">
                                                         <span class="btn btn-link btn-icon d-none d-md-inline-flex">
@@ -100,6 +118,19 @@ use Bitrix\Main\Localization\Loc;
                                 </div>
                             </div>
                         <?endif;?>
+                    </div>
+                    <div class="col-12 d-md-none mt-4">
+                        <a
+                            class="d-flex gap-2 align-items-center justify-content-center violet-100 text-m fw-bold"
+                            data-bs-toggle="collapse"
+                            href="#more-finorg"
+                            role="button"
+                            aria-expanded="false"
+                            aria-controls="more-finorg"><?= Loc::getMessage("FL_CATALOG_SHOW_ALL_TITLE")?>
+                            <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-down"></use>
+                            </svg>
+                        </a>
                     </div>
                 </div>
             <? endif; ?>

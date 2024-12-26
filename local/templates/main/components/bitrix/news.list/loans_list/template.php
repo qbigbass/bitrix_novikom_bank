@@ -39,7 +39,7 @@ $terms = [
             <div class="card-product-list__image-container mx-auto">
                 <img class="card-product-list__image" src="<?= $loan['PREVIEW_PICTURE']['SRC'] ?>" alt="<?= $loan['PREVIEW_PICTURE']['ALT'] ?>" loading="lazy">
             </div>
-            <div class="card-product-list__content flex-column d-flex align-items-start gap-6 gap-xxl-9 w-100">
+            <div class="card-product-list__content flex-column d-flex align-items-start gap-6 gap-lg-9 w-100">
                 <div class="card-product-list__title-group d-flex flex-column gap-4 gap-lg-6">
                     <h2 class="card-product-list__title text-break"><?= $loan['~NAME'] ?></h2>
                     <span class="text-l card-product-list__description m-0"><?= $loan['~PREVIEW_TEXT'] ?></span>

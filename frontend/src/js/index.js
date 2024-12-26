@@ -327,6 +327,30 @@ function initCaptcha() {
     })
 }
 
+const ACCORDION_ELEMS = {
+    collapse: '.accordion-collapse'
+}
+
+function initFixScrollAccordions() {
+    const accordionsCollapse = document.querySelectorAll(ACCORDION_ELEMS.collapse)
+
+    if (!accordionsCollapse.length) return;
+
+    accordionsCollapse.forEach(accordion => {
+        accordion.addEventListener('shown.bs.collapse', (e) => {
+            accordion.scrollIntoView({
+                behavior: 'auto'
+            })
+        })
+
+        accordion.addEventListener('hide.bs.collapse', (e) => {
+            accordion.scrollIntoView({
+                behavior: 'auto'
+            })
+        })
+    })
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     initDropdownMenu();
     setVh();
@@ -355,11 +379,15 @@ document.addEventListener('DOMContentLoaded', () => {
     initResizePolygonAccordions();
     initHeaderSearchForm();
     hideDropDownMenu();
+    initCalculatorDeposit();
+    initCalculatorLoan();
+    initCalculatorMortgage();
+    initCalculatorBonus();
     initOffices();
     initChatBot();
     initCharts();
-    // initYMap();
     pbScrollTo();
+    initFixScrollAccordions();
 });
 
 window.onload = function() {

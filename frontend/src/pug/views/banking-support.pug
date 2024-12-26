@@ -15,6 +15,7 @@ block content
     include ../components/contact-block
     include ../components/announcement
     include ../includes/layout/slider-card-product
+    include ../cards/card-feedback
 
     -
         var bannerPromoData = {
@@ -34,7 +35,45 @@ block content
                 }
             ],
             buttonText: "Заявка на консультацию",
-            urlHref: "/"
+            urlHref: "/",
+            footer: [
+                {
+                    title: 'В валюте',
+                    description: 'Расчеты между резидентами РФ',
+                    colorClass: 'dark-0',
+                    spriteData: {
+                        icon: 'limits',
+                        classList: 'size-xxl'
+                    },
+                },
+                {
+                    title: 'В рублях',
+                    description: 'Расчеты между резидентами',
+                    colorClass: 'dark-0',
+                    spriteData: {
+                        icon: 'limits',
+                        classList: 'size-xxl'
+                    },
+                },
+                {
+                    title: 'В рублях или валюте',
+                    description: 'Расчеты между резидентом РФ и нерезидентом',
+                    colorClass: 'dark-0',
+                    spriteData: {
+                        icon: 'limits',
+                        classList: 'size-xxl'
+                    },
+                },
+                {
+                    title: 'Операции с ценными <br>бумагами',
+                    description: 'Российские и зарубежные',
+                    colorClass: 'dark-0',
+                    spriteData: {
+                        icon: 'limits',
+                        classList: 'size-xxl'
+                    },
+                }
+            ]
         }
 
         var allBenefits = [
@@ -317,7 +356,7 @@ block content
             }
         ]
 
-    +banner-product(bannerPromoData).banner-product--border-orange
+    +banner-product(bannerPromoData).banner-product--border-orange.banner-product--size-xl
 
     section.section-layout
         .container
@@ -429,9 +468,9 @@ block content
                             .swiper-slide.js-swiper-slide
                                 +contact-block(contactList[0]).contact-block--bg-heavy-purple
                             .swiper-slide.js-swiper-slide
-                                +contact-block(contactList[1]).contact-block--bg-white
+                                +card-feedback().h-100
 
-                        +slider-controls().mt-3.mt-md-4
+                        +slider-controls().mt-3
 
     include ../includes/layout/section-announcement
 

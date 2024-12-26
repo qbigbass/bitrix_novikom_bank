@@ -3,7 +3,7 @@ mixin card-product-list(data)
         div.card-product-list__inner.d-flex.flex-column.flex-lg-row.align-items-start.h-100.gap-3.gap-md-6.gap-xxl-11
             div.card-product-list__image-container.mx-auto
                 img.card-product-list__image(src=`img/${data.imgSrc}`, alt="", loading="lazy")
-            div.card-product-list__content.flex-column.d-flex.align-items-start.gap-6.gap-xxl-9.w-100
+            div.card-product-list__content.flex-column.d-flex.align-items-start.gap-6.gap-lg-9.w-100
                 .card-product-list__title-group.d-flex.flex-column.gap-4.gap-lg-6
                     if data.tag
                         +tag(data.tag).tag--triangle-absolute.card-product-list__tag

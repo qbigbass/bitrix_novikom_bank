@@ -14,7 +14,8 @@ mixin banner-product(data)
                         - var textColorClass= data.theme === "light" ? "dark-70" : "text-white-50"
                         +breadcrumbs(data.breadcrumbsArray, textColorClass).banner-product__breadcrumbs
                     h1!= data.title
-                    p.banner-product__subtitle.text-l(class= data.imgSrc ? '' : 'mw-100')!= data.subtitle
+                    if data.subtitle
+                        p.banner-product__subtitle.text-l(class= data.imgSrc ? '' : 'mw-100')!= data.subtitle
                 if data.imgSrc
                     img(src= data.imgSrc, class="banner-product__image", alt="", loading="lazy")
                 if data.benefits
@@ -30,7 +31,7 @@ mixin banner-product(data)
                 if data.buttonText
                    a(href= data.urlHref class= data.btnType ? data.btnType : 'btn-tertiary').btn.btn-lg-lg.banner-product__button!= data.buttonText
             if data.footer
-                .banner-product__footer.row.gx-md-2.gx-lg-0.row-gap-4.row-gap-lg-6.mt-6.mt-lg-16.mt-xl-26
+                .banner-product__footer.row.gx-md-2.gx-lg-2_5.row-gap-4.row-gap-lg-6.mt-6.mt-lg-16
                     each item in data.footer
                         .col-12.col-md-6(class= data.footer.length === 3 ? 'col-xl-4' : 'col-xl-3')
                             +benefit(item.spriteData, item.title)(class=item.colorClass)

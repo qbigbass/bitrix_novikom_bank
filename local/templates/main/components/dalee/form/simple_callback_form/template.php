@@ -16,7 +16,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
  */
 $this->setFrameMode(true);
 ?>
-<form class="form-feedback bg-white simple-callback-form">
+<form class="form-feedback bg-white simple-callback-form" data-simple-callback-form>
     <input type="hidden" name="sessid" value="<?= bitrix_sessid(); ?>">
     <input type="hidden" name="FORM_CODE" value="<?= $arParams['FORM_CODE'] ?>">
     <div>

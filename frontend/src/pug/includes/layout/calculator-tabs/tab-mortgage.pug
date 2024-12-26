@@ -1,0 +1,115 @@
+-
+    var calculatorData = {
+        rows: [
+            {
+                title: 'Процентная ставка',
+                value: '16,5%',
+                additionalClass: 'js-calculator-display-rate'
+            },
+            {
+                title: 'Ежемесячный платеж',
+                value: '24 404,38',
+                currency: true,
+                additionalClass: 'js-calculator-display-payment'
+            },
+            {
+                title: 'Необходимый ежемесячный доход, от',
+                value: '35 404,38',
+                currency: true,
+                additionalClass: 'js-calculator-display-income'
+            },
+            {
+                title: 'Диапазон полной стоимости кредита',
+                value: '16,464 – 20,474 %',
+                additionalClass: 'js-calculator-display-full-cost'
+            }
+        ],
+        btnText: 'Оформить заявку',
+        notes: 'Калькулятор не&nbsp;гарантирует точность расчетов. Окончательные параметры кредита определяются по&nbsp;итогам рассмотрения заявки.'
+    }
+
+    var inputSliderList = [
+        {
+            label: 'Стоимость недвижимости',
+            id: 'property-value',
+            stepSize: 10000,
+            type: "price",
+            editable: true,
+            additionalClass: "js-input-property",
+            isCalculator: true
+        },
+
+        {
+            label: 'Срок выплаты',
+            id: 'payment-term',
+            maxValue: 60,
+            minValue: 6,
+            startValue: 36,
+            type: "month",
+            editable: true,
+            additionalClass: "js-input-period",
+            isCalculator: true
+        },
+        {
+            label: 'Первоначальный взнос',
+            id: 'down-payment',
+            stepSize: 10000,
+            type: "price",
+            editable: true,
+            additionalClass: "js-input-initial-payment",
+            isCalculator: true
+        },
+        {
+            label: 'Сумма кредита',
+            id: 'amount-credit',
+            stepSize: 5000,
+            type: "price",
+            editable: true,
+            additionalClass: "js-input-amount",
+            isCalculator: true
+        },
+    ]
+
+include ../../../components/ui/input/input-slider
+include ../../../cards/card-calculate-result
+
+.row.js-calculator-mortgage(data-table="mortgage" data-expense-ratio="60")
+    .col-12.col-lg-6
+        .tab-content.pe-xl-6
+            .d-flex.flex-column.row-gap-4.row-gap-md-6.row-gap-lg-7
+                each input in inputSliderList
+                    +input-slider(input)
+
+                .d-flex.flex-column.row-gap-4.row-gap-lg-6
+                    .d-flex.flex-column.row-gap-2
+                        label(for="select-mort-region").form-label.mb-0
+                            | Регион
+                        select#select-mort-region(aria-label="Подсказка").form-select.js-select.js-mort-region
+
+                    .d-flex.flex-column.row-gap-2
+                        label(for="select-mort-program").form-label.mb-0
+                            | Программа кредитования
+                        select#select-mort-program(aria-label="Подсказка").form-select.js-select.js-mort-program
+
+
+                    .d-flex.flex-column.row-gap-2
+                        label(for="select-mort-object").form-label.mb-0
+                            | Объект залога
+                        select#select-mort-object(aria-label="Подсказка").form-select.js-select.js-mort-object
+
+
+                .d-flex.flex-column.row-gap-4
+                    .form-check
+                        input#input-mort-card(type="checkbox" value="" checked).form-check-input.js-mort-card
+                        label(for="input-mort-card").form-check-label
+                            | Получаю зарплату на&nbsp;карту Новиком
+
+                    .form-check
+                        input#input-mort-insurance(type="checkbox" value="").form-check-input.js-mort-insurance
+                        label(for="input-mort-insurance").form-check-label
+                            | Страхование
+
+    .col-12.col-lg-6.mt-4.mt-md-6.mt-lg-0
+        .ps-xxl-6
+            +polygon-container()
+                +card-calculate-result(calculatorData, 'bg-dark-0')

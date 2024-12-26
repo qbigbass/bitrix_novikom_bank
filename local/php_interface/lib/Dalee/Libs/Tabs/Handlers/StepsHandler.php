@@ -26,6 +26,12 @@ class StepsHandler implements PropertyHandlerInterface
     {
         $result = '';
         foreach ($this->property['~VALUE'] as $index => $value) {
+            $desc = '';
+
+            if (!empty($this->property['~DESCRIPTION'][$index])) {
+                $desc = '<p class="text-l mb-0">' . $this->property['~DESCRIPTION'][$index] . '</p>';
+            }
+
             $result .=
                 '<div class="stepper-item stepper-item--color-green">
                     <div class="stepper-item__header">
@@ -39,6 +45,7 @@ class StepsHandler implements PropertyHandlerInterface
                     </div>
                     <div class="stepper-item__content">
                         <p class="text-l mb-0">' . $value['TEXT'] . '</p>
+                        ' . $desc . '
                     </div>
                 </div>';
         }

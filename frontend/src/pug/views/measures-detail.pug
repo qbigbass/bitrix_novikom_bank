@@ -9,6 +9,7 @@ block content
     include ../components/ui/tabs-simple
     include ../components/contact-block
     include ../includes/layout/slider-card-product
+    include ../cards/card-feedback
 
     -
         var bannerTextData = {
@@ -172,9 +173,9 @@ block content
                             .swiper-slide.js-swiper-slide
                                 +contact-block(contactList[0]).contact-block--bg-heavy-purple
                             .swiper-slide.js-swiper-slide
-                                +contact-block(contactList[1]).contact-block--bg-white
+                                +card-feedback().h-100
 
-                        +slider-controls().mt-3.mt-md-4
+                        +slider-controls().mt-3
 
     section.section-layout
         .container

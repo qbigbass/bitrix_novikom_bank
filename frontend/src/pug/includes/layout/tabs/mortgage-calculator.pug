@@ -70,7 +70,7 @@
 include ../../../components/ui/input/input-slider
 include ../../../cards/card-calculate-result
 
-.row
+.row.js-calculator-mortgage(data-id="119685")
     .col-12.col-lg-6
         .tab-content.pe-xl-6
             .d-flex.flex-column.row-gap-4.row-gap-md-6.row-gap-lg-7
@@ -79,27 +79,27 @@ include ../../../cards/card-calculate-result
 
                 .d-flex.flex-column.row-gap-4.row-gap-lg-6
                     .d-flex.flex-column.row-gap-2
-                        label(for="select1").form-label.mb-0
+                        label(for="select-mort-region").form-label.mb-0
                             | Регион
-                        select#select1(aria-label="Подсказка").form-select.js-select
+                        select#select-mort-region(aria-label="Подсказка").form-select.js-select.js-mort-region
                             option(selected value="1") Дальневосточный федеральный округ
                             option(value="2") Список 2
                             option(value="3") Список 3
                             option(value="4") Список 4
 
                     .d-flex.flex-column.row-gap-2
-                        label(for="select2").form-label.mb-0
+                        label(for="select-mort-program").form-label.mb-0
                             | Программа кредитования
-                        select#select2(aria-label="Подсказка").form-select.js-select
+                        select#select-mort-program(aria-label="Подсказка").form-select.js-select.js-mort-program
                             option(selected value="1") Ипотека по программе «Первичный рынок»
                             option(value="2") Список 2
                             option(value="3") Список 3
                             option(value="4") Список 4
 
                     .d-flex.flex-column.row-gap-2
-                        label(for="select2").form-label.mb-0
+                        label(for="select-mort-object").form-label.mb-0
                             | Объект залога
-                        select#select3(aria-label="Подсказка").form-select.js-select
+                        select#select-mort-object(aria-label="Подсказка").form-select.js-select.js-mort-object
                             option(selected value="1") Квартира
                             option(value="2") Список 2
                             option(value="3") Список 3
@@ -107,13 +107,13 @@ include ../../../cards/card-calculate-result
 
                 .d-flex.flex-column.row-gap-4
                     .form-check
-                        input#inp1(type="checkbox" value="" checked).form-check-input
-                        label(for="inp1").form-check-label
+                        input#input-mort-card(type="checkbox" value="" checked tabindex="0").form-check-input.js-mort-card
+                        label(for="input-mort-card" tabindex="0").form-check-label
                             | Получаю зарплату на&nbsp;карту Новиком
 
                     .form-check
-                        input#inp2(type="checkbox" value="").form-check-input
-                        label(for="inp2").form-check-label
+                        input#input-mort-insurance(type="checkbox" value="" tabindex="0").form-check-input.js-mort-insurance
+                        label(for="input-mort-insurance" tabindex="0").form-check-label
                             | Страхование
 
     .col-12.col-lg-6.mt-4.mt-md-6.mt-lg-0

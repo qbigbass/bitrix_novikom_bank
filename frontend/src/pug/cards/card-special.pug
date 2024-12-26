@@ -5,7 +5,7 @@ mixin card-special(data)
         if data.tag || data.date
             .card-special__header.d-flex.align-items-start.justify-content-between
                 if data.tag
-                    +tag(data.tag, 'outline')
+                    +tag(data.tag, 'outline').tag--triangle-absolute
                 if data.date
                     span.text-s.dark-70.my-auto.mb-0= data.date
         .card-special__body

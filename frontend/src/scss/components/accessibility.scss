@@ -31,6 +31,7 @@ header#accessibilityPanel {
     justify-content: center;
     gap: 25px;
     align-items: center;
+
     .fontSizeSettings,
     .contrastColorSettings {
       height: 100%;
@@ -62,11 +63,13 @@ header#accessibilityPanel {
         cursor: pointer;
         font-weight: 500;
       }
+
       .fontMedium {
         font-size: 1.25rem;
         cursor: pointer;
         font-weight: 600;
       }
+
       .fontLarge {
         font-size: 1.5rem;
         cursor: pointer;
@@ -141,6 +144,7 @@ header#accessibilityPanel {
     }
   }
 }
+
 .fontSizes div {
   cursor: pointer;
   position: relative;
@@ -161,5 +165,35 @@ header#accessibilityPanel {
 .fontSizes div.selected {
   &::after {
     background-color: #00772e;
+  }
+}
+
+.accessibility {
+  .polygon-container.js-polygon-container {
+    width: fit-content;
+  }
+
+  .d-flex.flex-column.gap-4.gap-lg-5.gap-xl-4.bg-dark-0.rounded-3.px-3.py-4.p-md-5.px-lg-6.p-xl-6 {
+    width: fit-content;
+    padding-right: 30px !important;
+    padding-left: 30px !important;
+  }
+
+  .btn.btn-primary.btn-lg-lg {
+    width: 100%;
+  }
+
+  .col-12.col-md-6.col-xl-3.d-flex.flex-column.row-gap-3 {
+    width: auto;
+    align-items: flex-start;
+  }
+
+  .card-benefit.d-inline-flex.px-3.px-sm-5.px-lg-6.p-4.p-sm-5.p-lg-6.w-100.bg-dark-10 {
+    margin-top: 25px;
+  }
+
+  .card-benefit.d-inline-flex.px-3.px-sm-5.px-lg-6.p-4.p-sm-5.p-lg-6.w-100.bg-dark-10.card-benefit--type-img {
+    padding: 0;
+    margin: 0;
   }
 }

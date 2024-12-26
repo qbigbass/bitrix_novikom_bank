@@ -22,7 +22,7 @@ $this->setFrameMode(true);
             <div class="row">
                 <div class="col-12">
         <? } ?>
-                    <div class="swiper slider-cards js-slider-cards" data-slides-per-view="mobile-s:1,mobile:1,tablet:2,laptop:2,laptop-x:3" data-space-between="mobile-s:8,mobile:8,tablet:16,laptop:16,laptop-x:16">
+                    <div class="swiper slider-cards js-slider-cards" data-slides-per-view="mobile-s:1,mobile:1,tablet:2,tablet-album:2,laptop:2,laptop-x:3" data-space-between="mobile-s:8,mobile:8,tablet:16,tablet-album:16,laptop:16,laptop-x:16">
                         <div class="swiper-wrapper">
 
                             <? foreach ($arResult['ITEMS'] as $benefit) {
@@ -36,7 +36,7 @@ $this->setFrameMode(true);
                                                 </div>
                                                 <div class="card-benefit__read-more d-flex align-items-end justify-content-between">
                                                     <div class="card-benefit__icon">
-                                                        <img class="size-md-xxl icon" src="<?= $benefit['PREVIEW_PICTURE']['SRC'] ?? '' ?>" alt="<?= $benefit['PREVIEW_PICTURE']['ALT'] ?? '' ?>" loading="lazy"></div>
+                                                        <img class="size-xxl icon" src="<?= $benefit['PREVIEW_PICTURE']['SRC'] ?? '' ?>" alt="<?= $benefit['PREVIEW_PICTURE']['ALT'] ?? '' ?>" loading="lazy"></div>
                                                 </div>
                                             </div>
                                         </div>

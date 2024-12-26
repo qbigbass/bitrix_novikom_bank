@@ -15,7 +15,7 @@ $this->setFrameMode(true);
 
 <div class="container">
     <div class="row">
-        <div class="col-12 position-relative z-1 d-flex flex-column align-items-start gap-5 gap-md-7">
+        <div class="col-12 position-relative z-1 d-flex flex-column align-items-start gap-4 gap-md-6 gap-lg-7">
             <?foreach($arResult['ITEMS'] as $arItem) {?>
                 <?
                 $this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
@@ -26,7 +26,7 @@ $this->setFrameMode(true);
                         <div class="card-product-list__image-container mx-auto">
                             <img class="card-product-list__image" src="<?=$arItem['DISPLAY_PROPERTIES']['ICON_PREVIEW']['FILE_VALUE']['SRC']?>" alt="" loading="lazy">
                         </div>
-                        <div class="card-product-list__content flex-column d-flex align-items-start gap-6 gap-xxl-9 w-100">
+                        <div class="card-product-list__content flex-column d-flex align-items-start gap-6 gap-lg-9 w-100">
                             <div class="card-product-list__title-group d-flex flex-column gap-4 gap-lg-6">
                                 <div class="tag tag--triangle-absolute card-product-list__tag">
                                     <?$section = $arResult['SECTIONS'][$arItem['IBLOCK_SECTION_ID']];?>

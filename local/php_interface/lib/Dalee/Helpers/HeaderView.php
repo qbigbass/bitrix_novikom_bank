@@ -3,6 +3,7 @@
 namespace Dalee\Helpers;
 
 use CBitrixComponent;
+use CFile;
 
 class HeaderView
 {
@@ -73,6 +74,7 @@ class HeaderView
         $result = [
             'bgColorClass' => !empty($arResult["PROPERTIES"]["HEADER_COLOR_CLASS"]["VALUE"]) ? $arResult["PROPERTIES"]["HEADER_COLOR_CLASS"]["VALUE"] : 'bg-linear-blue',
             'picture' => $arResult["DETAIL_PICTURE"] ?? null,
+            'background' => $arResult["PROPERTIES"]["BANNER_BACKGROUND"]["VALUE"] ?? null,
             'termsProperty' => $arResult["PROPERTIES"]["TERMS"] ?? [],
             'showButton' => $arResult['PROPERTIES']['BUTTON_DETAIL']['VALUE'] ?? false,
             'buttonText' => $arResult['PROPERTIES']['BUTTON_TEXT_DETAIL']['VALUE'] ?? '',
@@ -127,7 +129,9 @@ class HeaderView
     private function detailed(array $headerData, int $chainDepth, ?string $termsHtml): string
     {
         ob_start(); ?>
-        <div class="banner-product <?= $headerData['bgColorClass'] ?> <?= implode(' ', $headerData['additionalClasses']) ?>">
+        <div class="banner-product <?= $headerData['bgColorClass'] ?> <?= implode(' ', $headerData['additionalClasses']) ?>"
+            <?= !empty($headerData['background']) ? 'style="background: url(' . CFile::getPath($headerData['background']) . ') no-repeat center center / cover;"' : '' ?>>
+
             <div class="banner-product__wrapper">
                 <div class="banner-product__content <?= empty($headerData['picture']) ? 'w-100 w-lg-60' : '' ?>">
                     <div class="banner-product__header">
@@ -158,7 +162,7 @@ class HeaderView
                 </div>
 
                 <? if (!empty($headerData['footerHtml'])) { ?>
-                    <div class="banner-product__footer row gx-md-2 gx-lg-0 row-gap-4 row-gap-lg-6 mt-6 mt-lg-16 mt-xl-26">
+                    <div class="banner-product__footer row gx-md-2 gx-lg-2_5 row-gap-4 row-gap-lg-6 mt-6 mt-lg-16">
                         <?= $headerData['footerHtml'] ?>
                     </div>
                 <? } ?>
@@ -180,7 +184,7 @@ class HeaderView
             <div class="container banner-text__container position-relative z-2">
                 <div class="row ps-lg-6">
                     <div class="col-12 position-relative z-1 mb-5 mb-md-0 pt-6<? if (!empty($headerData['picture'])) { ?> col-sm-6 col-md-8<? } ?><? if (empty($headerData['picture'])) { ?> col-xxl-8<? } ?>">
-                        <div class="d-flex flex-column align-items-start gap-3 gap-md-4">
+                        <div class="d-flex flex-column align-items-start gap-3 gap-lg-4">
 
                             <? if (!empty($this->helper)) {
                                 $this->helper->deferredCall('showNavChain', ['.default', $chainDepth]);

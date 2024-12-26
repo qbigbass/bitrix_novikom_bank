@@ -155,6 +155,20 @@ $arUrlRewrite = [
         'SORT' => 100,
     ],
     [
+        'CONDITION' => '#^/en/about/#',
+        'RULE' => '',
+        'ID' => '',
+        'PATH' => '/en/about/index.php',
+        'SORT' => 100,
+    ],
+    [
+        'CONDITION' => '#^/en/#',
+        'RULE' => '',
+        'ID' => 'bitrix:news',
+        'PATH' => '/en/index.php',
+        'SORT' => 100,
+    ],
+    [
         'CONDITION' => '#^/private-banking/#',
         'RULE' => '',
         'ID' => 'bitrix:news',

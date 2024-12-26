@@ -623,6 +623,7 @@ use Dalee\Helpers\ComponentHelper;
                         "TEXT_FIELD",
                         "HEADING",
                         "STEPS",
+                        "HTML",
                         "SHORT_INFO",
                         "QUOTES",
                         "QUESTIONS",
@@ -799,8 +800,7 @@ use Dalee\Helpers\ComponentHelper;
                     </svg>
                 </a>
             </div>
-            <!-- type: outline | color-white-->
-            <div class="row px-lg-6">
+            <div class="row">
                 <?global $specialOffersFilter;?>
                 <?$specialOffersFilter = [
                     'ACTIVE' => 'Y',

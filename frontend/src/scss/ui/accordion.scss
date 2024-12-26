@@ -8,6 +8,35 @@
         border-bottom: var(--blue-30) dashed 1px;
     }
 
+    & .accordion-collapse {
+        scroll-margin-top: 20vh;
+    }
+
+    & .accordion-header {
+        &:has(+ .accordion-collapse.show) {
+            position: sticky;
+            top: 0;
+            background-color: var(--dark-0);
+            z-index: 2;
+
+            @at-root .section-layout.bg-dark-10 & {
+                background-color: var(--dark-10);
+            }
+
+            @at-root .section-layout.bg-dark-30 {
+                background-color: var(--dark-30);
+            }
+
+            @at-root .section-layout.bg-blue-10 {
+                background-color: var(--blue-10);
+            }
+
+            @at-root .section-layout.bg-purple-10 {
+                background-color: var(--purple-10);
+            }
+        }
+    }
+
     & .accordion-button {
         gap: 1rem;
 
