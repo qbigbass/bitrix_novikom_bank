@@ -106,7 +106,7 @@ block content
     +banner-text(bannerTextData, 'green')
 
     section.section-layout
-        .container
+        .container(tabindex="0")
             h3.px-lg-6.mb-4.mb-md-6.mb-lg-7
                 | Преимущества
             .row.px-lg-6
@@ -122,7 +122,7 @@ block content
         +pattern-bg('section', 'light', 'pattern-bg--position-sm-bottom')
 
     section.section-layout.px-lg-6
-        .container
+        .container(tabindex="0")
             h3.mb-4.mb-md-6.mb-lg-7
                 | Возможности
             #benefits.row.row-gap-6.gx-xl-6
@@ -139,7 +139,7 @@ block content
                         +svg-use("icon-chevron-down", "icon size-m")
 
     section.section-layout.bg-dark-10
-        .container
+        .container(tabindex="0")
             h3.d-none.d-md-block.mb-md-6.mb-lg-7.px-lg-6
                 | Как подключить
             a(
