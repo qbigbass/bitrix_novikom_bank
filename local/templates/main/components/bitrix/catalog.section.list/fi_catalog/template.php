@@ -26,7 +26,11 @@ use Bitrix\Main\Localization\Loc;
                                     <h4 class="card-product__title"><?= $item["NAME"]?></h4>
                                     <? if (!empty($item["DESCRIPTION"])) : ?>
                                         <div class="rte m-0 gap-3 gap-lg-4">
-                                            <p><?= $item["DESCRIPTION"] ?></p>
+                                            <? if ($item["DESCRIPTION_TYPE"] === "text") : ?>
+                                                <p><?= $item["DESCRIPTION"] ?></p>
+                                            <? else : ?>
+                                                <?= $item["DESCRIPTION"] ?>
+                                            <? endif; ?>
                                         </div>
                                     <? endif; ?>
                                 </div>
