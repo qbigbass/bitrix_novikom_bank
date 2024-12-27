@@ -75,11 +75,31 @@
       align-self: center;
       transform: translateX(1rem);
     }
+
+    &--size-medium {
+      @include use-media(laptop) {
+        width: 11.25rem;
+        height: 11.25rem;
+      }
+    }
+
+    &--size-large {
+      @include use-media(laptop) {
+        width: 20rem;
+        height: 20rem;
+      }
+    }
   }
 
   &--wide {
     @include use-media(laptop) {
       align-items: center;
+    }
+
+    #{$root}__text {
+      @include use-media(laptop) {
+        max-width: 53.75rem;
+      }
     }
   }
 

@@ -14,6 +14,7 @@ const ELEMS_PB_ANIMATION = {
 
 const ELEMS_PB_BUTTON = {
     btnAnchor: '.js-scroll-to',
+    tabButton: '#pills-tab button',
 }
 
 const ELEMS_PB_SELECT = {
@@ -147,4 +148,23 @@ function addSelectDateOptions() {
         option.text = formatDate(date);
         select.appendChild(option);
     }
+}
+
+function triggerPbTab() {
+    const triggerTabList = document.querySelectorAll(ELEMS_PB_BUTTON.tabButton);
+    let idContent = [];
+    triggerTabList.forEach(triggerEl => {
+        const id = triggerEl.getAttribute('data-bs-target');
+        idContent.push(id);
+        triggerEl.addEventListener('click', event => {
+            const id = triggerEl.getAttribute('data-bs-target');
+            const filteredId = idContent.filter(item => item !== id);
+            filteredId.forEach((id) => {
+                const content = document.querySelector(id);
+                content.querySelectorAll(`.${ELEMS_PB_ANIMATION.animateClass}`).forEach((elem) => {
+                    elem.classList.remove(ELEMS_PB_ANIMATION.animateClass);
+                })
+            })
+        })
+    })
 }

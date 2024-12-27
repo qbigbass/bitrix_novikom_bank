@@ -387,6 +387,7 @@ document.addEventListener('DOMContentLoaded', () => {
     pbScrollTo();
     initFixScrollAccordions();
     checkWidth();
+    triggerPbTab();
 });
 
 window.onload = function() {
