@@ -36,7 +36,7 @@ $APPLICATION->SetTitle('Малому и среднему бизнесу');
         "SET_TITLE" => "N",
         "ADD_SECTIONS_CHAIN" => "Y",
         "ADD_ELEMENT_CHAIN" => "Y",
-        "MAIN_CHAIN_TITLE" => "МСБ",
+        "MAIN_CHAIN_TITLE" => "Малому и среднему бизнесу",
         "USE_ELEMENT_COUNTER" => "N",
         "USE_SALE_BESTSELLERS" => "N",
         "COMPARE_POSITION_FIXED" => "Y",
