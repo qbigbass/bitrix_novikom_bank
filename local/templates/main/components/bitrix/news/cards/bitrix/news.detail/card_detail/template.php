@@ -793,7 +793,7 @@ use Dalee\Helpers\ComponentHelper;
         <div class="container">
             <div class="d-flex align-items-center justify-content-between px-lg-6 mb-6 mb-lg-7">
                 <h3><?=$arResult['DISPLAY_PROPERTIES']['SPECIAL_OFFERS_HEADING']['~VALUE']?></h3>
-                <a class="btn btn-sm btn-link btn-icon d-none d-md-inline-flex" href="#">
+                <a class="btn btn-sm btn-link btn-icon d-none d-md-inline-flex" href="/special-offers/">
                     <?=Loc::getMessage("WATCH_ALL");?>
                     <svg class="icon size-s" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                         <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right-small"></use>
