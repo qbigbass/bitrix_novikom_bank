@@ -33,7 +33,7 @@ $APPLICATION->SetTitle('Малому и среднему бизнесу');
         "CACHE_GROUPS" => "Y",
         "USE_MAIN_ELEMENT_SECTION" => "Y",
         "SET_LAST_MODIFIED" => "N",
-        "SET_TITLE" => "Y",
+        "SET_TITLE" => "N",
         "ADD_SECTIONS_CHAIN" => "Y",
         "ADD_ELEMENT_CHAIN" => "Y",
         "MAIN_CHAIN_TITLE" => "МСБ",
