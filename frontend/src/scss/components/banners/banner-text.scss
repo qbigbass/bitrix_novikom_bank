@@ -74,4 +74,10 @@
             opacity: 1;
         }
     }
+
+    &--mh-mobile-unset {
+        @include use-media(0, tablet) {
+            min-height: unset !important;
+        }
+    }
 }
