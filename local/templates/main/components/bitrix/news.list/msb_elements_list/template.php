@@ -433,7 +433,7 @@ use Bitrix\Main\Localization\Loc;
             <!-- Блок "Контакты" -->
             <section class="section-layout <?= $item["SECTION_BACKGROUND_CLASS_STYLE"]?>">
                 <div class="container">
-                    <h3 class="px-lg-6 mb-4 mb-md-6 mb-lg-7">Контакты</h3>
+                    <h3 class="px-lg-6 mb-6 mb-lg-7">Контакты</h3>
                     <div class="row">
                         <div class="col-12">
                             <div class="swiper js-slider-cards slider-cards" data-slides-per-view="mobile-s:1,mobile:1,tablet:1,tablet-album:2,laptop:2,laptop-x:2" data-space-between="mobile-s:8,mobile:8,tablet:16,laptop:16,laptop-x:16">
@@ -633,17 +633,22 @@ use Bitrix\Main\Localization\Loc;
                                                                     </div>
                                                                     <form class="form-feedback p-0 gap-3" action="/" method="POST">
                                                                         <div>
-                                                                            <label class="form-label" for="mobile-phone-help">Мобильный телефон</label>
-                                                                            <input class="card-help__input form-control form-control-lg-lg bg-transparent" id="mobile-phone-help" type="text" aria-describedby="mobile-phone-hint" placeholder="+7">
+                                                                            <label class="form-label" for="mobile-phone-help">Мобильный </label>
+                                                                            <input
+                                                                                class="card-help__input form-control form-control-lg-lg bg-transparent js-mask-phone" id="mobile-phone-help"
+                                                                                type="text"
+                                                                                aria-describedby="mobile-phone-hint" placeholder="+7" data-input-call>
                                                                         </div>
-                                                                        <button class="btn btn-primary btn-lg-lg text-m w-100" type="button">Перезвоните мне</button>
+                                                                        <button class="btn btn-primary btn-lg-lg text-m w-100" type="button" data-bs-toggle="modal" data-bs-target="#modal-callback-form">Перезвоните мне</button>
                                                                     </form>
-                                                                    <button class="card-help__button btn btn-link btn-lg-lg btn-icon mx-auto gap-2" type="button">
+                                                                    <button class="card-help__button btn btn-link btn-lg-lg btn-icon mx-auto gap-2" type="button" data-bs-toggle="modal" data-bs-target="#modal-feedback-form">
                                                                         <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                                                                             <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chat"></use>
-                                                                        </svg>Написать в чат
+                                                                        </svg>
+                                                                        Направить обращение
                                                                     </button>
-                                                                    <p class="card-help__agreement-text m-0 dark-70 fs-4 lh-sm">Нажимая кнопку «Перезвоните мне», вы соглашаетесь с условиями предоставления информации</p>
+                                                                    <p class="card-help__agreement-text m-0 dark-70 fs-4 lh-sm">Нажимая кнопку
+                                                                        «Перезвоните мне», вы соглашаетесь с условиями предоставления информации</p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1004,14 +1009,14 @@ use Bitrix\Main\Localization\Loc;
                                                 <? endif; ?>
                                                 <? if($tabCode === "fondy") : ?>
                                                     <!-- ТАБ "Фонды" -->
-                                                    <div class="row row-gap-6 row-gap-lg-7">
+                                                    <div class="row row-gap-4 row-gap-md-6 row-gap-lg-7">
                                                         <div class="col-12">
                                                             <form class="w-100">
                                                                 <div class="input-group flex-nowrap d-none d-lg-flex">
                                                                     <span class="input-group-icon bg-transparent">
                                                                         <span class="icon violet-100">
                                                                             <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                                                                <use xlink:href="img/svg-sprite.svg#icon-search"></use>
+                                                                                <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-search"></use>
                                                                             </svg>
                                                                         </span>
                                                                     </span>
@@ -1030,7 +1035,7 @@ use Bitrix\Main\Localization\Loc;
                                                                     <span class="input-group-icon bg-transparent">
                                                                         <span class="icon violet-100">
                                                                             <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                                                                <use xlink:href="img/svg-sprite.svg#icon-search"></use>
+                                                                                <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-search"></use>
                                                                             </svg>
                                                                         </span>
                                                                     </span>
@@ -1095,7 +1100,7 @@ use Bitrix\Main\Localization\Loc;
                                                                                     <? if(!empty($arElements["LINK"])) : ?>
                                                                                         <a class="btn btn-link btn-lg btn-icon" type="button" href="<?= $arElements["LINK"] ?>">Перейти на сайт фонда
                                                                                             <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                                                                                <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-download"></use>
+                                                                                                <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-new-tab"></use>
                                                                                             </svg>
                                                                                         </a>
                                                                                     <? endif; ?>

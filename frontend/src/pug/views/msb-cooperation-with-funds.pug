@@ -292,7 +292,7 @@ block content
                             .col-12
                                 | Условия контент
                     #funds.tab-pane.fade.show.active(role="tabpanel" aria-labelledby="funds" tabindex="0")
-                        .row.row-gap-6.row-gap-lg-7
+                        .row.row-gap-4.row-gap-md-6.row-gap-lg-7
                             .col-12
                                 form.w-100
                                     .input-group.flex-nowrap.d-none.d-lg-flex
@@ -322,12 +322,12 @@ block content
                                                 if item.link
                                                     a.btn.btn-link.btn-lg.btn-icon(type="button" href=item.link)
                                                         !=item.linkText
-                                                        +svg-use("icon-download", "icon size-m")
+                                                        +svg-use("icon-new-tab", "icon size-m")
         +pattern-bg('section-2', 'light', 'pattern-bg--position-sm-top')
 
     section.section-layout.bg-blue-10
         .container
-            h3.px-lg-6.mb-4.mb-md-6.mb-lg-7
+            h3.px-lg-6.mb-6.mb-lg-7
                 | Контакты
             .row
                 .col-12
