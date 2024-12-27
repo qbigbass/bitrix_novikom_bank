@@ -346,12 +346,6 @@
         }
     }
 
-    &--type-msb {
-        #{$root}__footer {
-            margin-top: 15.875rem !important;
-        }
-    }
-
     &--border-orange {
         --border-top-color: var(--orange-100);
     }
