@@ -1,0 +1,8 @@
+mixin pb-panel-info(data)
+    .pb-panel-info.d-flex.flex-column.flex-md-row.gap-3.gap-md-4.gap-xl-6.align-items-start.align-items-md-center.animate.js-animation
+        img.pb-panel-info__image.flex-shrink-0(src=`img/pb-images/${data.image}` alt="иконка информации")
+        .pb-panel-info__content
+            if data.title
+                h3.pb-panel-info__title!= data.title
+            if data.text
+                p.pb-panel-info__text!= data.text

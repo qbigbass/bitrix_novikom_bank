@@ -120,6 +120,20 @@
         transform: translateY(0);
       }
     }
+
+    &--size-small {
+      font-size: 26px;
+      line-height: 1.25;
+
+      @include use-media(tablet) {
+        font-size: 2rem;
+        line-height: 1.25;
+      }
+
+      @include use-media(tablet-album) {
+        font-size: 3rem;
+      }
+    }
   }
 
   &__subtitle {
@@ -182,6 +196,7 @@
 
   &--bg-lines {
     position: relative;
+    z-index: 1;
 
     &:before {
       content: "";
@@ -190,14 +205,20 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: url("../img/pb-images/pb-lines-bg-mobile.png")  50% 60px / 100% 100% no-repeat;
+      z-index: -1;
+      background: url("../img/pb-images/pb-lines-bg-mobile.png")  50% 60px / contain no-repeat;
+
+      @include use-media(mobile) {
+        background: url("../img/pb-images/pb-lines-bg-tablet.png")  50% 60px / contain no-repeat;
+      }
 
       @include use-media(tablet) {
-        background: url("../img/pb-images/pb-lines-bg-tablet.png")  50% 0 / 100% 100% no-repeat;
+        background-size: 100% 540px;
+        background-position: 50% 0;
       }
 
       @include use-media(tablet-album) {
-        background: url("../img/pb-images/pb-lines-bg.png")  50% / 100% 100% no-repeat;
+        background: url("../img/pb-images/pb-lines-bg.png")  50% 0 / contain no-repeat;
       }
 
       @include use-media(laptop) {

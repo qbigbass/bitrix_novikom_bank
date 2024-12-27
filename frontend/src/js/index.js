@@ -345,6 +345,14 @@ function initFixScrollAccordions() {
     })
 }
 
+function checkWidth() {
+    if (window.innerWidth < 768) {
+        initPbTabsSlider();
+    } else {
+        destroyPbTabSwiper();
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     initDropdownMenu();
     setVh();
@@ -378,6 +386,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initCharts();
     pbScrollTo();
     initFixScrollAccordions();
+    checkWidth();
 });
 
 window.onload = function() {
@@ -399,4 +408,5 @@ window.addEventListener('resize', () => {
     initPolygonContainer(true);
     setVh();
     hideDropDownMenu();
+    checkWidth();
 });
