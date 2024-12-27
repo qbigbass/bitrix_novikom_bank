@@ -223,7 +223,7 @@ $headerView->render(
 <? } ?>
 
 <? if (!empty($arResult['PROPERTIES']['QUOTE_TEXT']['VALUE']) && !empty($arResult['PROPERTIES']['QUOTE_HEADER']['VALUE'])) { ?>
-    <section class="section-layout py-lg-11 bg-blue-10">
+    <section class="section-layout py-lg-11 px-lg-6 bg-blue-10">
         <div class="container">
             <div class="d-flex flex-column flex-md-row align-items-start gap-4 gap-sm-5 gap-md-6">
                 <div class="banner-product-info-alternative__image flex-shrink-0">
@@ -241,7 +241,8 @@ $headerView->render(
         </div>
         <picture class="pattern-bg pattern-bg--position-top">
             <source srcset="/frontend/dist/img/patterns/section-heavy/pattern-light-s.svg" media="(max-width: 767px)">
-            <source srcset="/frontend/dist/img/patterns/section-heavy/pattern-light-m.svg" media="(max-width: 1199px)"><img src="/frontend/dist/img/patterns/section-heavy/pattern-light-l.svg" alt="bg pattern" loading="lazy">
+            <source srcset="/frontend/dist/img/patterns/section-heavy/pattern-light-m.svg" media="(max-width: 1199px)">
+            <img src="/frontend/dist/img/patterns/section-heavy/pattern-light-l.svg" alt="bg pattern" loading="lazy">
         </picture>
     </section>
 <? } ?>
