@@ -35,7 +35,45 @@ block content
                 }
             ],
             buttonText: "Заявка на консультацию",
-            urlHref: "/"
+            urlHref: "/",
+            footer: [
+                {
+                    title: 'В валюте',
+                    description: 'Расчеты между резидентами РФ',
+                    colorClass: 'dark-0',
+                    spriteData: {
+                        icon: 'limits',
+                        classList: 'size-xxl'
+                    },
+                },
+                {
+                    title: 'В рублях',
+                    description: 'Расчеты между резидентами',
+                    colorClass: 'dark-0',
+                    spriteData: {
+                        icon: 'limits',
+                        classList: 'size-xxl'
+                    },
+                },
+                {
+                    title: 'В рублях или валюте',
+                    description: 'Расчеты между резидентом РФ и нерезидентом',
+                    colorClass: 'dark-0',
+                    spriteData: {
+                        icon: 'limits',
+                        classList: 'size-xxl'
+                    },
+                },
+                {
+                    title: 'Операции с ценными <br>бумагами',
+                    description: 'Российские и зарубежные',
+                    colorClass: 'dark-0',
+                    spriteData: {
+                        icon: 'limits',
+                        classList: 'size-xxl'
+                    },
+                }
+            ]
         }
 
         var allBenefits = [
@@ -318,7 +356,7 @@ block content
             }
         ]
 
-    +banner-product(bannerPromoData).banner-product--border-orange
+    +banner-product(bannerPromoData).banner-product--border-orange.banner-product--size-xl
 
     section.section-layout
         .container

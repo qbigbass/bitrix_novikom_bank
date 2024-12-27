@@ -342,6 +342,12 @@ function initFixScrollAccordions() {
                 behavior: 'auto'
             })
         })
+
+        accordion.addEventListener('hide.bs.collapse', (e) => {
+            accordion.scrollIntoView({
+                behavior: 'auto'
+            })
+        })
     })
 }
 
@@ -381,6 +387,10 @@ document.addEventListener('DOMContentLoaded', () => {
     initResizePolygonAccordions();
     initHeaderSearchForm();
     hideDropDownMenu();
+    initCalculatorDeposit();
+    initCalculatorLoan();
+    initCalculatorMortgage();
+    initCalculatorBonus();
     initOffices();
     initChatBot();
     initCharts();

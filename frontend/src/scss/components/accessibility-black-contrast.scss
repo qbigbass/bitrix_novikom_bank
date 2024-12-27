@@ -7,8 +7,8 @@
 
     --black-contrast-black-0: #000000;
     --black-contrast-black-100: #1C1C1C;
-    --black-contrast-black-200: #33333;
-    --black-contrast-black-300: #4D4D4D;
+    --black-contrast-black-200: #333333;
+    --black-contrast-black-300: #757575;
     --black-contrast-black-400: #3B3B3B;
 
 
@@ -48,13 +48,14 @@
       }
 
       &--graphite {
-        background: none;
+        background: var(--black-contrast-black-300);
       }
     }
 
+
     .banner-hero {
       border-top: 8px solid var(--black-contrast-gray-100);
-      background: none;
+      background: var(--black-contrast-black-300);
 
       &__thumbs-wrapper {
         background-color: var(--black-contrast-black-300);
@@ -71,7 +72,7 @@
     }
 
     .main-menu__link {
-      color: var(--black-contrast-black-300);
+      color: var(--black-contrast-black-200);
 
       &.is-active {
         color: var(--black-contrast-black-0);
@@ -90,7 +91,7 @@
 
     .navbar.w-100 {
       .header__link {
-        color: var(--black-contrast-black-300);
+        color: var(--black-contrast-black-200);
 
         &:hover {
           color: var(--black-contrast-black-0);
@@ -114,27 +115,30 @@
       color: var(--black-contrast-white);
     }
 
+    //больше о банке
     .btn.btn-secondary.btn-lg-lg.d-inline-block {
-      color: var(--black-contrast-white-200);
-      background-color: var(--black-contrast-black-300);
+      color: var(--black-contrast-white-0);
+      background-color: var(--black-contrast-black-0);
       border: 1px solid var(--black-contrast-white-200);
 
-      &:hover {
-        color: var(--black-contrast-black-300);
-        background-color: var(--black-contrast-white-200);
+      &:hover,
+      &:focus {
+        border: 1px solid var(--black-contrast-black-0);
+        color: var(--black-contrast-black-0);
+        background-color: var(--black-contrast-white-0);
       }
     }
 
     .btn {
       --bs-btn-color: var(--black-contrast-white-0);
       --bs-btn-border-color: var(--black-contrast-white-0);
-      --bs-btn-bg: var(--black-contrast-black-300);
+      --bs-btn-bg: var(--black-contrast-black-0);
 
       --bs-btn-hover-color: var(--black-contrast-black-0);
-      --bs-btn-hover-border-color: var(--black-contrast-black-0);
-      --bs-btn-hover-bg: var(--black-contrast-white-200);
+      --bs-btn-hover-border-color: var(--black-contrast-white-0);
+      --bs-btn-hover-bg: var(--black-contrast-white-0);
 
-      --bs-btn-active-bg: var(--black-contrast-black-200);
+      --bs-btn-active-bg: var(--black-contrast-black-0);
       --bs-btn-active-border-color: var(--black-contrast-white-200);
       --bs-btn-active-color: var(--black-contrast-white-200);
     }
@@ -142,16 +146,16 @@
     .btn.btn-sm.btn-primary {
       --bs-btn-color: var(--black-contrast-white-0);
       --bs-btn-border-color: var(--black-contrast-white-0);
-      --bs-btn-bg: var(--black-contrast-black-300);
+      --bs-btn-bg: var(--black-contrast-black-0);
 
       --bs-btn-hover-color: var(--black-contrast-black-0);
 
-      --bs-btn-active-bg: var(--black-contrast-medium);
-      --bs-btn-active-border-color: var(--black-contrast-medium);
+      --bs-btn-active-bg: var(--black-contrast-white-0);
+      --bs-btn-active-border-color: var(--black-contrast-white-0);
 
       &:hover {
-        border-color: 1px solid var(--black-contrast-black-0);
-        background-color: var(--black-contrast-white-200);
+        border-color: var(--black-contrast-white-0);
+        background-color: var(--black-contrast-white-0);
       }
 
       &:active {
@@ -161,16 +165,55 @@
       }
 
       &:focus {
-        border: 1px solid var(--black-contrast-black-200);
-        background-color: var(--black-contrast-white-200);
+        border: 1px solid var(--black-contrast-white-0);
+        background-color: var(--black-contrast-white-0);
         color: var(--black-contrast-black-0);
       }
     }
 
+    //мобильное приложение 
+    .btn.btn-outline-primary.btn-sm.d-none.d-md-inline-flex.gap-2.align-items-center.justify-content-center {
+      border: 1px solid var(--black-contrast-white-0);
+      background-color: var(--black-contrast-black-0);
+      color: var(--black-contrast-white-0);
+
+      .icon.size-m {
+        color: var(--black-contrast-white-0);
+        transition: 0.2 all linear;
+      }
+
+      &:hover,
+      &:focus {
+        background-color: var(--black-contrast-white-0);
+        color: var(--black-contrast-black-0);
+
+        .icon.size-m {
+          color: var(--black-contrast-black-0);
+        }
+      }
+    }
+
+    //онлайн банк
+    .btn.btn-sm.btn-primary.dropdown-toggle {
+      border: 1px solid var(--black-contrast-white-0);
+      background-color: var(--black-contrast-black-0);
+      color: var(--black-contrast-white-0);
+
+      &:hover,
+      &:focus {
+        background-color: var(--black-contrast-white-0);
+        color: var(--black-contrast-black-0);
+
+      }
+    }
+
+
+
+
     .dropdown-menu {
-      --bs-dropdown-link-color: var(--black-contrast-gray-400);
+      --bs-dropdown-link-color: var(--black-contrast-black-0);
       --bs-dropdown-bg: var(--black-contrast-black-300);
-      --bs-dropdown-link-active-bg: var(--black-contrast-white-0);
+      --bs-dropdown-link-active-bg: var(--black-contrast-black-200)
     }
 
     .dropdown-nav {
@@ -182,7 +225,7 @@
     }
 
     .banner-hero-thumb {
-      background-color: var(--black-contrast-gray-100);
+      background-color: var(--black-contrast-black-300);
       border-top: 1px solid var(--black-contrast-white-0);
 
       &::after {
@@ -191,12 +234,24 @@
       }
     }
 
+    .col-6.violet-100 {
+      .header__link.fw-semibold {
+        color: var(--black-contrast-black-0);
+
+        &:hover,
+        &:focus {
+          color: var(--black-contrast-white-0);
+        }
+      }
+
+    }
+
     .banner-hero-thumb:not(:first-child) {
       border-left: 1px solid var(--black-contrast-white-0);
     }
 
     span.dark-70 {
-      color: var(--black-contrast-black-300);
+      color: var(--black-contrast-black-0);
     }
 
     .chip.text-s {
@@ -225,7 +280,7 @@
     .card-product.card-product--yellow,
     .card-product.card-product--green,
     .card-product.card-product--orange {
-      background-color: var(--black-contrast-gray-100);
+      background-color: var(--black-contrast-black-300);
       border: 1px solid var(--black-contrast-black-200);
     }
 
@@ -234,10 +289,13 @@
     }
 
     .tag__content.text-s {
-      background-color: var(--black-contrast-gray-300);
+      background-color: var(--black-contrast-black-0);
       border: 1px solid var(--black-contrast-black-200);
-      color: var(--black-contrast-black-0);
+      color: var(--black-contrast-white-0);
     }
+
+
+
 
     .card-product {
       border-radius: 5px;
@@ -249,14 +307,14 @@
       }
 
       &__button {
-        background-color: var(--black-contrast-black-400);
-        color: var(--black-contrast-white-100);
-        border: 1px solid var(--black-contrast-black-300);
+        background-color: var(--black-contrast-black-0);
+        color: var(--black-contrast-white-0);
+        border: 1px solid var(--black-contrast-white-0);
 
         &:hover,
         &:focus {
-          background-color: var(--black-contrast-black-100);
-          color: var(--black-contrast-white-0);
+          background-color: var(--black-contrast-white-0);
+          color: var(--black-contrast-black-0);
         }
       }
 
@@ -274,8 +332,10 @@
       }
     }
 
+
+
     .card-service {
-      background: var(--black-contrast-gray-100);
+      background: var(--black-contrast-black-300);
 
       &:focus {
         background: var(--black-contrast-gray-200);
@@ -286,7 +346,7 @@
       }
 
       &-salary {
-        background-color: var(--black-contrast-black-300);
+        background-color: var(--black-contrast-gray-100);
         border-radius: 8px;
 
         &__content {
@@ -294,7 +354,7 @@
         }
 
         &::after {
-          background: var(--black-contrast-gray-300);
+          background: var(--black-contrast-black-300);
           box-shadow: none;
           border: 1px solid var(--black-contrast-black-0);
           border-radius: 8px;
@@ -302,9 +362,13 @@
       }
     }
 
+
+
+
+
     a.card-service {
       border-radius: 8px;
-      background: var(--black-contrast-gray-300);
+      background: var(--black-contrast-black-300);
       border: 1px solid var(--black-contrast-black-0);
 
       &::after {
@@ -312,51 +376,79 @@
       }
     }
 
+
+    //кнопки rustore nashstore
     .d-flex.gap-3 {
-      .btn.btn-info.d-none.d-md-inline-flex.align-items-center:focus {
-        background-color: var(--black-contrast-white-0);
+      .btn.btn-info.d-none.d-md-inline-flex.align-items-center {
+        background-color: var(--black-contrast-white-200);
+
+        &:focus,
+        &:hover {
+          background-color: var(--black-contrast-white-0);
+        }
       }
     }
 
 
+
+    //направить сообщение кнопка
     .d-flex.flex-column.align-items-start.gap-5.gap-md-6.ps-lg-6 {
       .btn.btn-info.w-100.w-lg-auto {
-        background-color: var(--black-contrast-gray-200);
-        color: var(--black-contrast-black-0);
-        border: 1px solid var(--black-contrast-black-0);
+        background-color: var(--black-contrast-black-0);
+        color: var(--black-contrast-white-0);
+        border: 1px solid var(--black-contrast-white-0);
 
         &:hover,
         &:focus {
-          background-color: var(--black-contrast-black-0);
-          color: var(--black-contrast-white-0);
+          background-color: var(--black-contrast-white-0);
+          color: var(--black-contrast-black-0);
 
         }
       }
     }
 
+    .section-layout.section-feedback.bg-blue-10 {
+      background-color: var(--black-contrast-black-300);
+    }
+
+
+
     .form-control.form-control-lg-lg.js-mask-phone:focus {
       border-color: var(--black-contrast-black-0);
     }
 
-
+    //кнопка скачать  в карточке мобильное приложение
     .btn.btn-info.btn-icon.d-none.d-md-inline-flex {
-      color: var(--black-contrast-black-0);
-
-      &:focus {
-        background-color: var(--black-contrast-white-0);
-      }
-    }
-
-    .btn.btn-link.btn-lg-lg.text-info.btn-icon {
-      padding: 5px 12px;
-      border: 1px solid var(--black-contrast-black-0);
-      background-color: var(--black-contrast-black-300);
+      border: 1px solid var(--black-contrast-white-0);
+      background-color: var(--black-contrast-black-0);
       color: var(--black-contrast-white-0);
-      transition: 0.25s all linear;
 
       .icon.size-m {
         color: var(--black-contrast-white-0);
-        transition: 0.25s all linear;
+      }
+
+      &:hover,
+      &:focus {
+        background-color: var(--black-contrast-white-0);
+        color: var(--black-contrast-black-0);
+
+        .icon.size-m {
+          color: var(--black-contrast-black-0);
+        }
+      }
+    }
+
+    //кнопки  кешбэк бонусы и акции
+    .btn.btn-link.btn-lg-lg.text-info.btn-icon {
+      padding: 5px 12px;
+      border: 1px solid var(--black-contrast-white-0);
+      background-color: var(--black-contrast-black-0);
+      color: var(--black-contrast-white-0);
+      transition: 0.2s all linear;
+
+      .icon.size-m {
+        color: var(--black-contrast-white-0);
+        transition: 0.2s all linear;
       }
 
       &:hover,
@@ -383,7 +475,7 @@
       }
 
       &::after {
-        background: var(--black-contrast-gray-300);
+        background: var(--black-contrast-black-300);
       }
 
       & .btn {
@@ -403,10 +495,19 @@
       }
     }
 
+    .d-none.d-md-inline.text-s.fw-semibold {
+      color: var(--black-contrast-black-0);
+
+      &:hover,
+      &:focus {
+        color: var(--black-contrast-black-300);
+      }
+    }
+
 
 
     .section-layout {
-      background-color: var(--black-contrast-gray-300);
+      background-color: var(--black-contrast-gray-100);
       color: var(--black-contrast-black-0);
 
       & h3 {
@@ -432,15 +533,14 @@
       border: none;
 
       .nav-link {
-        background-color: var(--black-contrast-gray-300);
-        color: var(--black-contrast-black-0);
+        background-color: var(--black-contrast-black-0);
+        color: var(--black-contrast-white-0);
         border-color: var(--black-contrast-black-0);
         white-space: nowrap;
 
         &.active {
-          background-color: var(--black-contrast-white-200);
+          background-color: var(--black-contrast-black-300);
           color: var(--black-contrast-black-0);
-          border-color: var(--black-contrast-black-0);
         }
       }
     }
@@ -453,9 +553,6 @@
       color: var(--black-contrast-black-0);
     }
 
-    .dark-70 {
-      color: var(--black-contrast-black-0);
-    }
 
     #loan-consumer label,
     #loan-consumer span,
@@ -464,11 +561,44 @@
     }
 
     .form-check-label a {
-      color: var(--black-contrast-white-0);
+      color: var(--black-contrast-black-0);
+
+      &:hover,
+      &:focus {
+        color: var(--black-contrast-black-400);
+      }
     }
 
+    .form-check-label {
+      color: var(--black-contrast-black-0);
+
+      &:hover,
+      &:focus {
+        color: var(--black-contrast-black-400);
+        text-decoration: underline;
+      }
+    }
+
+    .dark-70 {
+      color: var(--black-contrast-black-0);
+    }
+
+
+    .card-special.bg-dark-10.dark-100.h-100.d-flex.flex-column.row-gap-6.row-gap-lg-9 {
+      background: var(--black-contrast-gray-200);
+    }
+
+    .text-s.dark-70.my-auto.mb-0 {
+      color: var(--black-contrast-black-0);
+    }
+
+    .text-s.dark-70 {
+      color: var(--black-contrast-black-0);
+    }
+
+
     .card-calculate-result {
-      background-color: var(--black-contrast-gray-200);
+      background-color: var(--black-contrast-black-300);
 
       &__label,
       &__body {
@@ -484,24 +614,28 @@
       background: var(--black-contrast-black-0);
     }
 
+    //перезвоните мне
     form .btn.btn-primary.btn-lg-lg.w-100 {
-      background-color: var(--black-contrast-black-300);
-      color: var(--black-contrast-gray-200);
-      border: none;
-      transition: background-color 0.25s ease;
+      background-color: var(--black-contrast-black-200);
+      color: var(--black-contrast-white-0);
+      border: 1px solid var(--black-contrast-black-0);
 
-      &:hover {
-        background-color: var(--black-contrast-gray-200);
-        border: none;
-        color: var(--black-contrast-black-300);
+
+      &:hover,
+      &:focus {
+        background-color: var(--black-contrast-black-0);
+        color: var(--black-contrast-white-0);
       }
     }
 
+
+
+
     button .btn.btn-info.w-100.w-lg-auto {
-      background-color: var(--black-contrast-black-300);
+      background-color: var(--black-contrast-black-0);
       color: var(--black-contrast-gray-200);
       border: 1px solid var(--black-contrast-black-0);
-      transition: background-color 0.25s ease;
+      transition: background-color 0.2s ease;
 
       &:hover {
         background-color: var(--black-contrast-gray-200);
@@ -526,7 +660,7 @@
 
 
     #linkToList {
-      color: var(--black-contrast-black-100);
+      color: var(--black-contrast-black-200);
       text-decoration: underline;
 
       &:hover {
@@ -556,15 +690,19 @@
     .section-currency-exchange__wrapper.collapse {
       background-color: var(--black-contrast-gray-100);
 
-      .form-label,
-      h4,
-      .caption-m.dark-70.mt-2.d-block {
-        color: var(--black-contrast-black-300);
-      }
+
     }
 
+    //предварительный расчет
     .d-flex.flex-column.gap-4.gap-lg-5.gap-xl-4.bg-dark-0.rounded-3.px-3.py-4.p-md-5.px-lg-6.p-xl-6 {
-      background-color: var(--black-contrast-white-300);
+      background-color: var(--black-contrast-black-300);
+      border: 1px solid var(--black-contrast-black-0);
+    }
+
+    .form-label,
+    h4,
+    .caption-m.dark-70.mt-2.d-block {
+      color: var(--black-contrast-black-0);
     }
 
     .form-control.form-control-lg {
@@ -572,13 +710,13 @@
     }
 
     .d-flex.flex-column.row-gap-4.px-3.py-4.p-md-5.p-lg-6.bg-blue-10 {
-      background-color: var(--black-contrast-gray-200);
+      background-color: var(--black-contrast-black-300);
       border: none;
       border-radius: 0;
     }
 
     .purple-70 {
-      color: red;
+      color: var(--black-contrast-black-0)
     }
 
     h5 {
@@ -610,6 +748,7 @@
       }
     }
 
+
     .col-12.col-md-6.col-xl-3.d-flex.flex-column.row-gap-3 {
       width: auto;
       align-items: flex-start;
@@ -638,9 +777,10 @@
 
     //обратная связь кнопка
     .btn.btn-primary.btn-lg-lg {
-      background-color: var(--black-contrast-gray-300);
-      color: var(--black-contrast-black-0);
+      background-color: var(--black-contrast-black-200);
+      color: var(--black-contrast-white-0);
       border: 1px solid var(--black-contrast-black-0);
+      min-width: 100%;
 
       &:hover,
       &:focus {
@@ -651,8 +791,8 @@
 
     //версии 2 кнопки
     .btn.btn-lg-lg.btn-outline-primary.d-flex.gap-2.align-items-center.justify-content-center {
-      background-color: var(--black-contrast-gray-300);
-      color: var(--black-contrast-black-0);
+      background-color: var(--black-contrast-black-200);
+      color: var(--black-contrast-white-0);
       border: 1px solid var(--black-contrast-black-0);
 
       &:hover,
@@ -662,25 +802,29 @@
       }
     }
 
+
+
     //rustore  rumarket  nashstore
     .btn-app.btn.d-inline-flex.justify-content-center.align-items-center.bg-white {
       border: 2px solid var(--black-contrast-black-0);
 
       &:hover,
       &:focus {
-        border-color: var(--black-contrast-white-0);
+        border: 4px solid var(--black-contrast-white-0);
       }
     }
 
+
+    //скачать
     .btn-app.btn.btn-primary.d-flex.align-items-center.gap-2.gap-lg-3.justify-content-center {
-      background-color: var(--black-contrast-gray-300);
-      color: var(--black-contrast-black-0);
+      background-color: var(--black-contrast-black-0);
+      color: var(--black-contrast-white-0);
       border: 2px solid var(--black-contrast-black-0);
 
       &:hover,
       &:focus {
-        background-color: var(--black-contrast-black-0);
-        color: var(--black-contrast-white-0);
+        background-color: var(--black-contrast-white-0);
+        color: var(--black-contrast-black-0);
       }
     }
 
@@ -688,6 +832,28 @@
 
     .footer__info {
       background-color: var(--black-contrast-gray-200);
+
+      .text-s.dark-70 {
+        color: var(--black-contrast-black-0);
+
+        &:hover,
+        &:focus {
+          text-decoration: underline;
+          color: var(--black-contrast-black-100);
+        }
+      }
+    }
+
+    .row.row-gap-7 {
+      .text-s.dark-70 {
+        color: var(--black-contrast-black-0);
+
+        &:hover,
+        &:focus {
+          text-decoration: underline;
+          color: var(--black-contrast-black-100);
+        }
+      }
     }
 
     .bg-blue-10 {
@@ -715,7 +881,7 @@
 
     .chatbot-polygon__content.chat-bot__popover-content.bg-blue-10.d-flex.flex-column.gap-3.gap-lg-4 {
       border: 1px solid var(--black-contrast-black-0);
-      background-color: var(--black-contrast-gray-300);
+      background-color: var(--black-contrast-black-300);
       color: var(--black-contrast-white-200);
     }
 
@@ -727,26 +893,45 @@
       display: none;
     }
 
-    .map-content__header.map-content__header--type-back.d-flex.flex-column.row-gap-4.row-gap-md-6 {
-      background-color: var(--black-contrast-gray-300);
-    }
+
 
     //atms.html
-    .map-content__header {
-      background-color: var(--black-contrast-gray-300);
-    }
 
-    .card-office {
+    .map-content__header.d-flex.flex-column.row-gap-4.row-gap-md-6 {
       background-color: var(--black-contrast-gray-100);
+    }
 
-      &__title.fw-semibold.text-l.m-0 {
-        color: var(--black-contrast-black-0);
+
+    .card-office.d-flex.col-gap-2.align-items-center {
+      background-color: var(--black-contrast-black-300);
+
+      .card-office__body.d-flex.flex-grow-1.flex-column.row-gap-2.row-gap-md-3 {
+        color: var(--black-contrast-black-0)
       }
 
-      &__address.text-s.m-0.dark-70 {
-        color: var(--black-contrast-black-0);
+
+      &:hover {
+
+        background-color: var(--black-contrast-black-0);
+
+        .card-office__body.d-flex.flex-grow-1.flex-column.row-gap-2.row-gap-md-3 {
+
+          .card-office__title.fw-semibold.text-l.m-0,
+          .card-office__address.text-s.m-0.dark-70 {
+            color: var(--black-contrast-white-0);
+          }
+
+        }
       }
     }
+
+
+    .card-tariff.d-flex.flex-column.gap-5.bg-blue-10 {
+      background-color: var(--black-contrast-gray-100);
+    }
+
+
+
 
     .modal {
       &-header {
@@ -758,43 +943,52 @@
       }
     }
 
+    //применить
     .btn.btn-primary.btn-md-lg {
-      background-color: var(--black-contrast-gray-100);
-      color: var(--black-contrast-black-0);
+      background-color: var(--black-contrast-black-200);
+      color: var(--black-contrast-white-0);
       border: 1px solid var(--black-contrast-black-0);
 
-      &:hover {
+      &:hover,
+      &:focus {
+        background-color: var(--black-contrast-black-0);
         color: var(--black-contrast-white-0);
-        background-color: var(--black-contrast-black-300);
       }
     }
 
+    //сбросить
     .btn.btn-outline-primary.btn-md-lg {
-      background-color: var(--black-contrast-gray-100);
-      color: var(--black-contrast-black-0);
+      background-color: var(--black-contrast-black-200);
+      color: var(--black-contrast-white-0);
       border: 1px solid var(--black-contrast-black-0);
 
-      &:hover {
+      &:hover,
+      &:focus {
+        background-color: var(--black-contrast-black-0);
         color: var(--black-contrast-white-0);
-        background-color: var(--black-contrast-black-300);
       }
     }
 
     //AWARDS page
+
+
     .bg-linear-blue {
       background: none;
-      background-color: var(--black-contrast-gray-100);
+      background-color: var(--black-contrast-black-300);
     }
 
     .banner-text__title.text-break.dark-0 {
       color: var(--black-contrast-black-0);
     }
 
-    .breadcrumbs__item.d-md-inline-flex.align-items-center.gap-2.text-s.text-white-50.d-inline-flex span {
+    .breadcrumbs__item.d-md-inline-flex.align-items-center.gap-2.text-s.text-white-50.d-none span,
+    .breadcrumbs__item.d-md-inline-flex.align-items-center.gap-2.text-s.text-white-50.d-inline-flex span,
+    .breadcrumbs__item.d-md-inline-flex.align-items-center.gap-2.text-s.dark-70.d-inline-flex span {
       color: var(--black-contrast-black-0);
 
       &:hover {
-        color: var(--black-contrast-white-0);
+        color: var(--black-contrast-white-200);
+        text-decoration: underline;
       }
     }
 
@@ -816,6 +1010,23 @@
       opacity: 0;
     }
 
+    .tabs-panel__list-item-link.nav-link.bg-transparent {
+      background-color: var(--black-contrast-black-200) !important;
+      color: var(--black-contrast-white-0);
+      border-color: var(--black-contrast-black-0);
+
+      &.active {
+        background-color: var(--black-contrast-black-0) !important;
+        color: var(--black-contrast-white-0);
+        border-color: var(--black-contrast-black-0);
+      }
+
+      &:hover,
+      &:focus {
+        background-color: var(--black-contrast-black-300)
+      }
+    }
+
     .tabs-panel::before {
       border: none;
     }
@@ -827,7 +1038,7 @@
 
     .banner-product {
       &__wrapper {
-        background-color: var(--black-contrast-gray-100);
+        background-color: var(--black-contrast-black-300);
       }
 
       &__header h1 {
@@ -837,6 +1048,11 @@
       &__subtitle.text-l {
         color: var(--black-contrast-black-0);
       }
+    }
+
+
+    .banner-product.banner-product--heavy-purple.banner-product--border-orange {
+      background-color: var(--black-contrast-black-300);
     }
 
     .banner-product.btn-orange {
@@ -860,7 +1076,7 @@
     }
 
     .card-benefit {
-      background-color: var(--black-contrast-gray-300);
+      background-color: var(--black-contrast-black-300);
       color: var(--black-contrast-black-0);
       border: 1px solid var(--black-contrast-black-0);
     }
@@ -868,6 +1084,8 @@
     .card-benefit__image {
       display: none;
     }
+
+
 
     .benefit__description.w-100.text-m span {
       color: var(--black-contrast-black-0);
@@ -877,12 +1095,24 @@
       background-color: var(--black-contrast-black-0);
     }
 
+    .card-help__description.text-s-m.m-0 {
+      color: var(--black-contrast-black-0);
+    }
+
     .helper__content.text-l .link {
       color: var(--black-contrast-black-0);
 
       &:hover {
-        color: var(--black-contrast-white-200);
+        color: var(--black-contrast-black-200);
         text-decoration: underline;
+      }
+    }
+
+    .card-help__input.form-control.form-control-lg-lg.bg-transparent.js-mask-phone {
+      border: 1px solid var(--black-contrast-black-0);
+
+      &:focus {
+        border-color: var(--black-contrast-black-200);
       }
     }
 
@@ -939,7 +1169,7 @@
 
       &.contact-block {
         &--bg-heavy-purple {
-          background: var(--black-contrast-gray-300);
+          background: var(--black-contrast-black-300);
         }
 
         &--bg-white {
@@ -949,59 +1179,125 @@
       }
     }
 
+    .list-contact__link {
+      .text-l {
+        color: var(--black-contrast-black-0);
+
+        &:hover,
+        &:focus {
+          color: var(--black-contrast-black-200);
+          text-decoration: underline;
+        }
+      }
+    }
+
+
+
+
+
+
+
+    .card-feedback__inner::after {
+      background: none;
+      background-color: var(--black-contrast-black-300);
+    }
+
     .caption-m.chip.chip--outlined {
       color: var(--black-contrast-black-0);
       background-color: var(--black-contrast-white-200);
     }
 
     .contact-block--bg-white:has(> .pattern-bg)::after {
-      background: linear-gradient(90deg,
-          var(--black-contrast-gray-100),
-          0.9,
-          0%,
-          rgba(0, 0, 192, 0) 100%);
+      background: none;
     }
 
-    .btn.btn-lg-lg.btn-outline-primary {
-      background-color: var(--black-contrast-black-300);
-      border: 1px solid var(--black-contrast-white-200);
 
-      &:hover {
-        background-color: var(--black-contrast-gray-300);
+    .d-flex.flex-column.flex-md-row.p-0.gap-3.gap-md-4 {
+      gap: 1rem;
+
+      button {
+        flex: 1;
+        min-width: 150px;
+        text-align: center;
+        white-space: normal;
+
+        text-align: center;
+        overflow: hidden;
+      }
+    }
+
+
+    //кнопка перзвоните мне
+    .d-flex.flex-column.flex-md-row.p-0.gap-3.gap-md-4 {
+      .btn.btn-primary.btn-lg-lg.text-ls.overflow-visible.w-100.w-md-auto {
+        background-color: var(--black-contrast-black-0);
+        border: 1px solid var(--black-contrast-black-0);
+        color: var(--black-contrast-white-200);
+
+        &:hover,
+        &:focus {
+          background-color: var(--black-contrast-white-0);
+          color: var(--black-contrast-black-0);
+        }
+
+      }
+
+
+      //открыть чат
+      .btn.btn-outline-primary.btn-lg-lg.text-ls.overflow-visible.w-100.w-md-auto {
+        padding: 15px 32px !important;
+        max-width: auto;
+        background-color: var(--black-contrast-black-0);
+        border: 1px solid var(--black-contrast-black-0);
+        color: var(--black-contrast-white-200);
+
+        &:hover,
+        &:focus {
+          background-color: var(--black-contrast-white-0);
+          color: var(--black-contrast-black-0);
+        }
+      }
+    }
+
+
+
+
+
+
+    //подробнее
+    .btn.btn-link.btn-icon.m-auto.m-lg-0.py-2.py-lg-0 {
+      background-color: var(--black-contrast-black-0);
+      border: 1px solid var(--black-contrast-white-0);
+      color: var(--black-contrast-white-0);
+      padding: 5px 12px !important;
+
+      &:hover,
+      &:focus {
+        background-color: var(--black-contrast-white-0);
         color: var(--black-contrast-black-0);
       }
     }
 
-    .btn.btn-link.btn-icon.m-auto.m-lg-0 {
-      border: none;
-      padding: 5px 12px;
-      color: var(--black-contrast-black-0);
 
-      &:hover {
-        color: var(--black-contrast-white);
-        background-color: var(--black-contrast-light);
-        border: none;
-      }
-    }
 
-    .btn.btn-lg-lg.btn-primary {
-      max-width: 300px;
-    }
 
     //	biometric-identification.html
     .banner-text--border-green {
-      border-top: 8px solid var(--black-contrast-black-300);
+      border-top: 8px solid var(--black-contrast-black-100);
     }
 
     .col-12.col-xl-6.position-relative.z-1.mb-5.mb-md-0.pt-6 {
-      color: var(--black-contrast-white);
+      color: var(--black-contrast-white-0);
     }
 
-    .link.text-decoration-underline {
-      color: var(--black-contrast-white);
+    .list.list--size-l {
+      .link.text-decoration-underline {
+        color: var(--black-contrast-black-0);
 
-      &:hover {
-        color: var(--black-contrast-light);
+        &:hover,
+        &:focus {
+          color: var(--black-contrast-black-200);
+        }
       }
     }
 
@@ -1025,12 +1321,21 @@
     }
 
     .d-flex.flex-column.flex-md-row.flex-lg-column.gap-2.gap-md-4.gap-lg-3.align-items-start.align-items-md-center.align-items-lg-start.pe-xxl-11 {
-      border: 1px solid #000;
+      border: 1px solid var(--black-contrast-black-0);
       border-radius: 8px;
       padding: 5px 12px;
     }
 
+
+    .document-download {
+      border-bottom: 1px dashed var(--black-contrast-black-0)
+    }
+
     //bonuses.html
+
+    .banner-text.banner-text--border-green.bg-heavy-purple {
+      background-color: var(--black-contrast-black-300);
+    }
 
     .bg-gradient-violet {
       background: none;
@@ -1057,77 +1362,147 @@
       }
     }
 
+    .d-flex.flex-column.gap-2.align-items-start {
+      .text-l {
+        .link {
+          color: var(--black-contrast-black-0);
+
+          &:hover {
+            color: var(--black-contrast-black-200);
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+
     .select2-dropdown.select2-dropdown--below {
       background-color: var(--black-contrast-gray-300);
     }
 
     //cards.html
-    .btn.btn-tertiary.btn-lg-lg.card-product-list__button.w-100.w-sm-auto {
-      background-color: var(--black-contrast-black-300);
-      color: var(--black-contrast-white-0);
 
-      border: none;
+    .card-product-list.overflow-hidden.position-relative.mh-100.h-auto.bg-dark-10.w-100.pt-7.pb-6.py-sm-9.py-md-9.py-lg-11.px-3.px-sm-4.px-md-5.px-lg-6.pe-xxl-11 {
+      background-color: var(--black-contrast-black-300);
+    }
+
+    .tabs-panel__navigation-item-reverse,
+    .tabs-panel__navigation-item {
+      background: none;
+    }
+
+    .tabs-panel__navigation.d-none.d-lg-block.js-tabs-slider-navigation.w-100 span>svg {
+
+      color: var(--black-contrast-white-0);
+    }
+
+    //оформить заявку
+    .btn.btn-tertiary.btn-lg-lg.card-product-list__button.w-100.w-sm-auto {
+      background-color: var(--black-contrast-black-0);
+      color: var(--black-contrast-white-0);
+      border: 1px solid var(--black-contrast-white-0);
 
       &:hover {
-        background-color: var(--black-contrast-white-200);
+        background-color: var(--black-contrast-white-0);
         color: var(--black-contrast-black-0);
       }
     }
 
-    //career-vacancy.html
+    //подробнее
     .btn.btn-link.btn-lg-lg.d-inline-flex.gap-2.align-items-center.card-product-list__button-more {
-      background-color: var(--black-contrast-black-300);
+      background-color: var(--black-contrast-black-0);
       color: var(--black-contrast-white-0);
-      border: none;
+      border: 1px solid var(--black-contrast-white-0);
       padding: 15px 32px;
 
       &:hover {
-        background-color: var(--black-contrast-white-200);
+        background-color: var(--black-contrast-white-0);
         color: var(--black-contrast-black-0);
       }
     }
 
+
+    //career-vacancy.html
+
+    //откликнуться на вакансию
     .btn.btn-secondary.btn-lg-lg.d-inline-block.w-100.w-md-auto {
-      background-color: var(--black-contrast-black-300);
+      background-color: var(--black-contrast-black-200);
       color: var(--black-contrast-white-0);
-      border: 1px solid var(--black-contrast-gray-300);
+      border: 1px solid var(--black-contrast-black-0);
+
+      &:hover,
+      &:focus {
+        background-color: var(--black-contrast-black-0);
+        color: var(--black-contrast-white-0);
+      }
+    }
+
+    .card-contact__contacts.d-flex.flex-column.flex-lg-row.flex-lg-wrap.gap-4 {
+      .card-contact__link.dark-0.gap-3.h5.fw-normal.text-white {
+        u {
+          color: var(--black-contrast-black-0);
+
+          &:hover {
+            color: var(--black-contrast-black-200);
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+
+    .d-flex.flex-wrap.justify-content-start.gap-2 span {
+
+      color: var(--black-contrast-black-0);
 
       &:hover {
-        background-color: var(--black-contrast-white-200);
-        color: var(--black-contrast-black-0);
+        color: var(--black-contrast-black-200);
+        text-decoration: underline;
       }
     }
 
     //career.html
     .mt-7.w-100.w-sm-auto.btn.btn-secondary.btn-lg-lg.d-inline-block {
-      background-color: var(--black-contrast-black-300);
+      background-color: var(--black-contrast-black-0);
       color: var(--black-contrast-white-0);
-      border: 1px solid var(--black-contrast-gray-300);
+      border: 1px solid var(--black-contrast-white-0);
 
-      &:hover {
-        background-color: var(--black-contrast-white-200);
+      &:hover,
+      &:focus {
+        background-color: var(--black-contrast-white-0);
         color: var(--black-contrast-black-0);
       }
     }
 
+    span .select2-selection__placeholder {
+      color: var(--black-contrast-black-0) !important;
+    }
+
+    .border-bottom-dashed {
+      border-bottom: 1px dashed var(--black-contrast-black-0);
+    }
+
+    .form-control.form-control-lg.text-l:focus {
+      border-color: var(--black-contrast-black-200);
+    }
+
+    .input-group-icon {
+      border: 1px solid var(--black-contrast-black-0);
+    }
+
     .page-item {
-      --bs-pagination-border-radius: none;
-      --bs-pagination-active-bg: var(--black-contrast-light);
-      --bs-pagination-active-border-color: var(--black-contrast-bg);
+
+      --bs-pagination-active-bg: var(--black-contrast-black-0) --bs-pagination-active-border-color: var(--black-contrast-white-200);
       --bs-pagination-border-radius: 4px;
 
-      &:hover {
-        --bs-pagination-border-radius: none;
-        --bs-pagination-hover-bg: var(--black-contrast-light-1);
-        --bs-pagination-active-bg: var(--black-contrast-light-1);
-        --bs-pagination-active-border-color: var(--black-contrast-light);
+      &:hover,
+      &:focus {
+
+        --bs-pagination-hover-bg: var(--black-contrast-black-200) --bs-pagination-active-bg: var(--black-contrast-black-300) --bs-pagination-active-border-color: var(--black-contrast-white-200);
         --bs-pagination-border-radius: 4px;
       }
 
       &.active {
-        --bs-pagination-border-radius: none;
-        --bs-pagination-active-bg: var(--black-contrast-light);
-        --bs-pagination-active-border-color: var(--black-contrast-white);
+
+        --bs-pagination-active-bg: var(--black-contrast-black-0) --bs-pagination-active-border-color: var(--black-contrast-white-200);
         --bs-pagination-border-radius: 4px;
       }
     }
@@ -1144,34 +1519,96 @@
       display: none;
     }
 
+    .card-sale.d-flex.flex-column.align-items-start.gap-2.gap-lg-3 {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 100%;
+      border: 1px solid var(--black-contrast-black-0);
+      padding: 25px;
+      border-radius: 8px;
+
+      .dark-100 {
+        margin: 0 auto;
+        text-align: center;
+      }
+
+    }
+
+    .row.px-lg-6 {
+      .col-12 {
+        .swiper-slide {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          height: 100%;
+        }
+      }
+    }
+
+
+
+    .table-adaptive__row {
+      border-bottom: 1px dashed var(--black-contrast-black-0);
+    }
+
     .btn.btn-lg.btn-link.btn-icon {
-      color: var(--black-contrast-black-0);
-      background-color: transparent;
+      background-color: var(--black-contrast-black-200);
+      color: var(--black-contrast-white-0);
       border: 1px solid var(--black-contrast-black-0);
       padding: 15px 32px;
 
-      &:hover {
-        background-color: var(--black-contrast-black-200);
+      .icon.size-m {
         color: var(--black-contrast-white-0);
       }
+
+      &:hover,
+      &:focus {
+        background-color: var(--black-contrast-black-0);
+        color: var(--black-contrast-white-0);
+
+        .icon.size-m {
+          color: var(--black-contrast-white-0);
+        }
+      }
+
     }
+
+    .benefit__description.w-100.text-m {
+      .text-l {
+        .link {
+          color: var(--black-contrast-black-0);
+
+          &:hover {
+            color: var(--black-contrast-black-200);
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+
 
     //contacts.html
 
-    form .btn.btn-primary.btn-lg.text-m.w-100 {
-      background-color: var(--black-contrast-light);
-      border: none;
-      padding: 15px 32px;
+    // form .btn.btn-primary.btn-lg.text-m.w-100 {
+    //   background-color: var(--black-contrast-black-0);
+    //   border: none;
+    //   padding: 15px 32px;
 
-      &:hover {
-        background-color: var(--black-contrast-white);
-        color: var(--black-contrast-light);
-      }
-    }
+    //   &:hover {
+    //     background-color: var(--black-contrast-white-0);
+    //     color: var(--black-contrast-black-0);
+    //   }
+    // }
 
-    .card-help__input.form-control.form-control-lg.bg-transparent {
-      color: var(--black-contrast-black-0);
-    }
+    // .card-help__input.form-control.form-control-lg.bg-transparent {
+    //   color: var(--black-contrast-black-0);
+    // }
 
     //contribution-detail.html
 
@@ -1179,29 +1616,19 @@
       --border-top-color: var(--black-contrast-black-300);
     }
 
-    .btn-tertiary.btn.btn-lg-lg.banner-product__button {
-      background-color: var(--black-contrast-black-300);
-      color: var(--black-contrast-white-0);
-      border: 1px solid var(--black-contrast-gray-300);
-      padding: 15px 32px;
 
-      &:hover {
-        background-color: var(--black-contrast-white-200);
-        color: var(--black-contrast-black-0);
-      }
-    }
-
+    //оформить заявку
     .card-calculate-result__footer {
       .btn.btn-primary.btn-lg-lg.w-100 {
         color: var(--black-contrast-white-0);
         background-color: var(--black-contrast-black-0);
 
-        border: 1px solid var(--black-contrast-black-0);
+        border: 1px solid var(--black-contrast-white-0);
 
         &:hover,
         &:focus {
-          color: var(--black-contrast-white-0);
-          background-color: var(--black-contrast-black-300);
+          color: var(--black-contrast-black-0);
+          background-color: var(--black-contrast-white-0);
         }
       }
     }
@@ -1219,11 +1646,30 @@
       }
     }
 
+
+
     //contributions.html
     .card-product-list__condition.d-flex.flex-column.gap-2.w-100.w-sm-50.w-xl-auto {
       .text-number-l.fw-bold {
         color: var(--black-contrast-white);
       }
+    }
+
+    //открыть вклад
+    .btn-tertiary.btn.btn-lg-lg.banner-product__button {
+      color: var(--black-contrast-white-0);
+      background-color: var(--black-contrast-black-0);
+      border: 1px solid var(--black-contrast-white-0);
+
+      &:hover,
+      &:focus {
+        color: var(--black-contrast-black-0);
+        background-color: var(--black-contrast-white-0);
+      }
+    }
+
+    .card-calculate-result.bg-dark-10 {
+      background-color: var(--black-contrast-black-300);
     }
 
     .card-benefit.d-inline-flex.px-3.px-sm-5.px-lg-6.p-4.p-sm-5.p-lg-6.w-100.bg-dark-10 {
@@ -1232,55 +1678,81 @@
 
     .accordion-header .accordion-button {
       color: var(--black-contrast-black-0);
-      background-color: var(--black-contrast-gray-300);
+      background-color: var(--black-contrast-gray-100);
     }
 
     .accordion {
-      background-color: var(--black-contrast-gray-300);
+      color: var(--black-contrast-black-0);
+      background-color: var(--black-contrast-gray-100);
 
       &-body {
         color: var(--black-contrast-black-0);
-        background-color: var(--black-contrast-gray-300);
+        background-color: var(--black-contrast-gray-100);
       }
     }
+
+    .accordion-button.collapsed span {
+      color: var(--black-contrast-black-0);
+    }
+
+
+    .card-benefit.d-inline-flex.px-3.px-sm-5.px-lg-6.p-4.p-sm-5.p-lg-6.w-100.bg-dark-10 {
+      margin-top: 25px;
+    }
+
+    .m-0.col-lg-6 {
+      color: var(--black-contrast-black-0);
+
+      a {
+        color: var(--black-contrast-black-0);
+        text-decoration: underline;
+
+        &:hover,
+        &:focus {
+          color: var(--black-contrast-black-200);
+        }
+      }
+    }
+
 
     //customer-requests.html
     .list.list--size-l .link {
       color: var(--black-contrast-black-0);
 
       &:hover {
-        color: var(--black-contrast-white-200);
+        text-decoration: underline;
+        color: var(--black-contrast-black-200);
       }
     }
 
+    .helper__wrapper.d-flex.flex-column.flex-sm-row.align-items-start.align-items-sm-center.gap-4.gap-lg-6 {
+      background-color: var(--black-contrast-black-300);
+    }
+
+
+
+
+    .card-benefit__description.m-0.text-m {
+      color: var(--black-contrast-black-0);
+    }
+
+
+
     //financial-institutes.html
+    .card-product.card-product--transparent.card-product--size-large.bg-white,
+    .card-product.card-product--transparent.bg-white {
+      background-color: var(--black-contrast-black-300) !important;
+    }
+
+
+
+
     .banner-hero-content__title {
       color: var(--black-contrast-black-0);
     }
 
-    .card-product__inner {
-      .btn.btn-link.btn-icon.m-auto.m-lg-0 {
-        color: var(--black-contrast-white);
-        background-color: var(--black-contrast-bg);
 
-        &:hover {
-          color: var(--black-contrast-bg);
-          background-color: var(--black-contrast-white);
-        }
-      }
 
-      .btn.btn-link.btn-icon.d-none.d-md-inline-flex {
-        color: red;
-        background-color: var(--black-contrast-bg);
-        padding: 5px 10px;
-        border: none;
-
-        &:hover {
-          color: var(--black-contrast-bg);
-          background-color: var(--black-contrast-white);
-        }
-      }
-    }
 
     .card-benefit__icon {
       .size-md-xxl.icon {
@@ -1288,26 +1760,32 @@
       }
     }
 
+
+
+
+
     .text-m.btn.btn-link.btn-lg.d-inline-flex.gap-2.align-items-center {
-      color: var(--black-contrast-white-200);
-      background-color: var(--black-contrast-black-300);
-      border: 1px solid var(--black-contrast-black-300);
-      padding: 5px 12px;
+      background-color: var(--black-contrast-black-0);
+      color: var(--black-contrast-white-0);
+      border: 1px solid var(--black-contrast-black-0);
+      padding: 5px 12px !important;
 
       .icon.size-m {
-        color: var(--black-contrast-white-200);
+        color: var(--black-contrast-white-0);
       }
 
-      &:hover {
-        color: var(--black-contrast-black-0);
-        background-color: var(--black-contrast-white-200);
-        border-color: var(--black-contrast-white-200);
+      &:hover,
+      &:focus {
+        background-color: var(--black-contrast-black-200);
+        color: var(--black-contrast-white-0);
 
         .icon.size-m {
-          color: var(--black-contrast-black-0);
+          color: var(--black-contrast-white-0);
         }
       }
     }
+
+
 
     //financing.html
     .banner-text--border-orange {
@@ -1315,13 +1793,15 @@
     }
 
     .btn.btn-orange.d-none.d-md-inline-flex {
-      color: var(--black-contrast-white-200);
-      background-color: var(--black-contrast-black-300);
-      padding: 5px 12px;
+      background-color: var(--black-contrast-black-0);
+      color: var(--black-contrast-white-0);
+      border: 1px solid var(--black-contrast-white-0);
+      padding: 15px 32px;
 
-      &:hover {
+      &:hover,
+      &:focus {
+        background-color: var(--black-contrast-white-0);
         color: var(--black-contrast-black-0);
-        background-color: var(--black-contrast-white-200);
       }
     }
 
@@ -1331,34 +1811,64 @@
       background-color: var(--black-contrast-gray-100);
     }
 
+    .table-tab__row {
+      border-bottom: 1px dashed var(--black-contrast-black-0);
+    }
+
+    .text-m.btn.btn-link.btn-lg.d-inline-flex.gap-2.align-items-center {
+      background-color: var(--black-contrast-black-0);
+      color: var(--black-contrast-white-0);
+      border: 1px solid var(--black-contrast-black-0);
+      padding: 5px 12px !important;
+
+      .icon.size-s {
+        color: var(--black-contrast-white-0);
+      }
+
+      &:hover,
+      &:focus {
+        background-color: var(--black-contrast-black-200);
+        color: var(--black-contrast-white-0);
+
+        .icon.size-s {
+          color: var(--black-contrast-white-0);
+        }
+      }
+    }
+
+
+    .helper__content.text-l {
+      .text-lg.fw-semibold.link.link-underline {
+        color: var(--black-contrast-black-0);
+
+        &:hover {
+          text-decoration: underline;
+          color: var(--black-contrast-white-0);
+        }
+      }
+    }
+
     .card-promo__header.d-flex.flex-column.row-gap-3.row-gap-md-4 {
       color: var(--black-contrast-black-0);
     }
 
     .btn.btn-info.btn-lg-lg.w-100.w-md-auto {
-      color: var(--black-contrast-white-200);
-      background-color: var(--black-contrast-black-300);
+      color: var(--black-contrast-white-0);
+      background-color: var(--black-contrast-black-200);
       padding: 15px 32px;
-      border: none;
+      border: 1px solid var(--black-contrast-white-0);
 
-      &:hover {
-        color: var(--black-contrast-black-0);
-        background-color: var(--black-contrast-white-200);
-      }
-    }
-
-    .d-flex.flex-column.align-items-start.gap-3.gap-md-4.ps-lg-6 {
-      .btn.btn-info.w-100.w-lg-auto {
+      &:hover,
+      &:focus {
         color: var(--black-contrast-white-0);
-        background-color: var(--black-contrast-black-300);
-        border: 1px solid var(--black-contrast-black-300);
-
-        &:hover {
-          color: var(--black-contrast-black-0);
-          background-color: transparent;
-        }
+        background-color: var(--black-contrast-black-0);
       }
     }
+
+
+
+
+
 
 
 
@@ -1367,24 +1877,38 @@
         color: var(--black-contrast-black-0);
       }
 
+      //перезвоните мне
       .btn.btn-primary.btn-lg-lg.w-100 {
-        color: var(--black-contrast-black-0);
-        ;
-        background-color: var(--black-contrast-gray-200);
-        border: 1px solid var(--black-contrast-black-0);
+        color: var(--black-contrast-white-0);
+        background-color: var(--black-contrast-black-0);
+        border: 1px solid var(--black-contrast-white-0);
 
         &:hover,
         &:focus {
-          color: var(--black-contrast-white-0);
-          background-color: var(--black-contrast-black-0);
+          color: var(--black-contrast-black-0);
+          background-color: var(--black-contrast-white-0);
         }
+      }
+    }
+
+    //отправить кнопка
+    .btn.btn-primary.btn-lg-lg.w-100.w-md-auto {
+      color: var(--black-contrast-white-0);
+      background-color: var(--black-contrast-black-0);
+      border: 1px solid var(--black-contrast-white-0);
+
+      &:hover,
+      &:focus {
+        color: var(--black-contrast-black-0);
+        background-color: var(--black-contrast-white-0);
+        border: 1px solid var(--black-contrast-white-0);
       }
     }
 
     //insurance-companies.html
     .banner-text.banner-text--border-green.bg-heavy-violet {
       background: none;
-      background-color: var(--black-contrast-gray-100);
+      background-color: var(--black-contrast-black-300);
     }
 
     //insurance-property.html
@@ -1392,9 +1916,52 @@
       background-color: var(--black-contrast-gray-100);
     }
 
+    .list.list--size-l {
+      a {
+        color: var(--black-contrast-black-0);
+
+        &:hover {
+          color: var(--black-contrast-black-200);
+        }
+      }
+    }
+
+    .d-flex.flex-column.gap-2.py-3.document-download.text-m {
+      color: var(--black-contrast-black-0);
+
+      &:hover {
+        color: var(--black-contrast-black-200);
+      }
+    }
+
     //interbank-transactions.html
     .bg-gradient-graphite {
-      background: var(--black-contrast-gray-100);
+      background: var(--black-contrast-black-300);
+    }
+
+    .container.d-flex.py-3.overflow-auto {
+      background-color: var(--black-contrast-black-300);
+      border-top: 1px solid var(--black-contrast-black-0);
+      border-bottom: 1px solid var(--black-contrast-black-0);
+
+    }
+
+    .anchor-item.text-l.text-nowrap {
+      color: var(--black-contrast-black-0);
+      text-decoration: none;
+
+      &:hover {
+        color: var(--black-contrast-white-200);
+      }
+
+      &.active {
+        color: var(--black-contrast-white-0);
+        text-decoration: underline;
+
+        &:hover {
+          color: var(--black-contrast-white-200);
+        }
+      }
     }
 
     .banner-text--border-violet {
@@ -1406,7 +1973,7 @@
     }
 
     .bg-white {
-      background-color: var(--black-contrast-gray-100);
+      background-color: var(--black-contrast-black-300);
     }
 
     .banner-product--heavy-violet {
@@ -1418,6 +1985,10 @@
     .card-promo.card-promo--heavy-purple {
       background: none;
       background-color: var(--black-contrast-gray-100);
+    }
+
+    .slider-controls.js-swiper-controls.mt-3.mt-md-4 {
+      padding-top: 25px;
     }
 
     .card-promo__image {
@@ -1434,28 +2005,31 @@
         background-color: var(--black-contrast-black-300);
         border: 1px solid var(--black-contrast-white-200);
 
-        &:hover {
+        &:hover,
+        &:focus {
           color: var(--black-contrast-black-0);
           background-color: var(--black-contrast-gray-300);
         }
       }
     }
 
+    //написать в чат
     .card-help__button.btn.btn-link.btn-lg.btn-icon.mx-auto.gap-2 {
-      color: var(--black-contrast-white-200);
-      background-color: var(--black-contrast-black-300);
-      border: 1px solid var(--black-contrast-white-200);
+      background-color: var(--black-contrast-black-200);
+      color: var(--black-contrast-white-0);
+      border: 1px solid var(--black-contrast-black-0);
 
       .icon.size-m {
         color: var(--black-contrast-white-200);
       }
 
-      &:hover {
-        color: var(--black-contrast-black-0);
-        background-color: var(--black-contrast-gray-300);
+      &:hover,
+      &:focus {
+        background-color: var(--black-contrast-black-0);
+        color: var(--black-contrast-white-0);
 
         .icon.size-m {
-          color: var(--black-contrast-black-0);
+          color: var(--black-contrast-white-0);
         }
       }
     }
@@ -1464,91 +2038,132 @@
       background-color: var(--black-contrast-gray-100);
     }
 
+    .card-benefit__list.list.list--size-l li:before {
+      background: var(--black-contrast-black-0) !important;
+    }
+
     //loans-restructuring.html
     .rte li::before {
-      background: var(--black-contrast-white-200);
+      background: var(--black-contrast-black-0);
     }
 
     .table-adaptive__cell.text-s {
       color: var(--black-contrast-black-0);
     }
 
+
+    .section-layout.section-banner-product-info.py-lg-11.bg-blue-10 {
+      background-color: var(--black-contrast-gray-100);
+    }
+
+    .text-l.fw-semibold,
+    .text-number-l.fw-bold {
+      color: var(--black-contrast-black-0);
+    }
+
+
+
+
     //measures-detail.html
 
     .btn.btn-link.btn-lg.d-inline-flex.gap-2.align-items-center.card-text__button-more {
       padding: 15px 32px;
       width: 200px;
-      color: var(--black-contrast-white-200);
-      background-color: var(--black-contrast-black-300);
+      color: var(--black-contrast-white-0);
+      background-color: var(--black-contrast-black-200);
 
-      &:hover {
-        color: var(--black-contrast-black-0);
-        background-color: var(--black-contrast-white-200);
+      &:hover,
+      &:focus {
+        color: var(--black-contrast-white-0);
+        background-color: var(--black-contrast-black-0);
       }
     }
+
+
+
+
 
     .card-text.d-inline-flex.px-3.px-md-4.p-4.p-sm-5.p-lg-6.bg-white.w-100.h-100 {
-      background-color: var(--black-contrast-gray-100) !important;
+      background-color: var(--black-contrast-gray-300);
+      border: 1px solid var(--black-contrast-black-0);
     }
 
+    //смотреть все
     .btn.btn-sm.btn-link.btn-icon.d-none.d-md-inline-flex {
-      color: var(--black-contrast-white-200);
-      background-color: var(--black-contrast-black-300);
+      color: var(--black-contrast-black-0);
       border: none;
       padding: 5px 12px;
+      background: none;
 
-      &:hover {
-        color: var(--black-contrast-black-0);
-        background-color: var(--black-contrast-white-200);
+      &:hover,
+      &:focus {
+        color: var(--black-contrast-black-200);
+        background: none;
       }
     }
 
+    //найти на карте
     .btn.btn-link.d-inline-flex.gap-2.align-items-center.mt-md-2 {
-      padding: 5px;
-      color: var(--black-contrast-white-200);
+      padding: 5px 12px !important;
+      color: var(--black-contrast-black-0);
       background-color: var(--black-contrast-black-300);
 
-      &:hover {
+      .icon.size-m {
         color: var(--black-contrast-black-0);
-        background-color: var(--black-contrast-white-200);
+      }
+
+      &:hover,
+      &:focus {
+        color: var(--black-contrast-white-0);
+        background-color: var(--black-contrast-black-0);
+
+        .icon.size-m {
+          color: var(--black-contrast-white-0);
+        }
       }
     }
+
+
 
     .bg-dark-10 {
       background-color: var(--black-contrast-gray-300);
     }
 
+
+
     //mobile-app.html
     .card-regal.d-flex.flex-column.flex-md-row.row-gap-3.column-gap-md-6.bg-dark-30 {
-      background-color: var(--black-contrast-gray-100);
+      background-color: var(--black-contrast-black-300);
     }
 
     .stepper-item.stepper-item--color-violet {
       .btn.btn-primary.btn-icon {
-        color: var(--black-contrast-white-200);
-        background-color: var(--black-contrast-black-300);
+        color: var(--black-contrast-white-0);
+        background-color: var(--black-contrast-black-0);
         border: none;
 
         .icon.size-m {
-          color: var(--black-contrast-white-200);
+          color: var(--black-contrast-white-0);
         }
 
-        &:hover {
-          color: var(--black-contrast-black-0);
-          background-color: var(--black-contrast-white-200);
+        &:hover,
+        &:focus {
+          color: var(--black-contrast-white-0);
+          background-color: var(--black-contrast-black-300);
 
           .icon.size-m {
-            color: var(--black-contrast-black-0);
+            color: var(--black-contrast-white-0);
           }
         }
       }
     }
 
     .btn.btn-primary.align-items-center {
-      background-color: var(--black-contrast-gray-100);
+      background-color: var(--black-contrast-black-0);
       border: 1px solid var(--black-contrast-gray-100);
 
-      &:hover {
+      &:hover,
+      &:focus {
         background-color: var(--black-contrast-black-300);
       }
     }
@@ -1563,16 +2178,26 @@
       border: 1px solid var(--black-contrast-black-0);
     }
 
+    //график платежей
     .btn.btn-link.btn-sm.btn-icon.mt-2.mt-md-0 {
       color: var(--black-contrast-white-0);
       background-color: var(--black-contrast-black-0);
-      padding: 5px 12px;
-      border: 1px solid var(--black-contrast-black-0);
+      padding: 5px 12px !important;
+      border: 1px solid var(--black-contrast-white-0);
+
+      .icon.size-s {
+        color: var(--black-contrast-white-0);
+        transition: 0.2 all linear;
+      }
 
       &:hover,
       &:focus {
-        color: var(--black-contrast-white-0);
-        background-color: var(--black-contrast-black-300);
+        color: var(--black-contrast-black-0);
+        background-color: var(--black-contrast-white-0);
+
+        .icon.size-s {
+          color: var(--black-contrast-black-0);
+        }
       }
     }
 
@@ -1597,21 +2222,24 @@
     }
 
     .btn.btn-yellow.w-100 {
-      color: var(--black-contrast-white-200);
-      background-color: var(--black-contrast-black-300);
+      color: var(--black-contrast-white-0);
+      background-color: var(--black-contrast-black-0);
       padding: 5px 12px;
-      border: none;
+      border: 1px solid var(--black-contrast-white-0);
 
-      &:hover {
-        color: var(--black-contrast-black-0);
-        background-color: var(--black-contrast-white-200);
+      &:hover,
+      &:focus {
+        color: var(--black-contrast-white-0);
+        background-color: var(--black-contrast-black-300);
       }
     }
 
     //msb-cooperation-with-funds.html
-    .banner-text.banner-text--border-.bg-heavy-violet {
+
+
+    .bg-heavy-violet {
       background: none;
-      background-color: var(--black-contrast-gray-100);
+      background-color: var(--black-contrast-black-300);
     }
 
     .d-flex.flex-column.align-items-start.gap-3.gap-md-4 {
@@ -1633,13 +2261,20 @@
       color: var(--black-contrast-white-0) !important;
     }
 
+    .tag.tag--outline.tag--triangle-absolute {
+      .tag__content.text-s.fw-semibold.mw-100.w-sm-auto {
+        color: var(--black-contrast-white-0);
+      }
+    }
+
     #accordion-funds-tab .table td {
-      background-color: red;
+      background-color: var(--black-contrast-gray-100);
     }
 
     .accordion-body {
       color: var(--black-contrast-black-0);
-      background-color: var(--black-contrast-gray-300);
+      background-color: var(--black-contrast-gray-100);
+      padding: 25px;
     }
 
     .card-about__title.dark-0 {
@@ -1659,17 +2294,9 @@
       color: var(--black-contrast-black-0);
     }
 
-    .btn.btn-outline-primary.btn-lg-lg.text-ls.overflow-visible.w-100.w-md-auto,
-    .btn.btn-primary.btn-lg-lg.text-ls.overflow-visible.w-100.w-md-auto {
-      color: var(--black-contrast-white-200);
-      background-color: var(--black-contrast-black-300);
-      border: none;
 
-      &:hover {
-        color: var(--black-contrast-black-0);
-        background-color: var(--black-contrast-white-200);
-      }
-    }
+
+
 
     //msb-currency-control.html
     .card-benefit__list.list.list--size-l li:before {
@@ -1706,7 +2333,8 @@
             color: var(--black-contrast-white-200);
           }
 
-          &:hover {
+          &:hover,
+          &:focus {
             color: var(--black-contrast-black-0);
             background-color: var(--black-contrast-white-200);
 
@@ -1718,25 +2346,33 @@
       }
     }
 
-    .btn.btn-yellow.d-none.d-md-inline-flex {
-      color: var(--black-contrast-white-200);
-      background-color: var(--black-contrast-black-300);
-      border: none;
 
-      &:hover {
+
+    //перейти в интернет банк
+    .btn.btn-yellow.d-none.d-md-inline-flex {
+      color: var(--black-contrast-white-0);
+      background-color: var(--black-contrast-black-0);
+      border: 1px solid var(--black-contrast-white-0);
+
+      &:hover,
+      &:focus {
         color: var(--black-contrast-black-0);
-        background-color: var(--black-contrast-white-200);
+        background-color: var(--black-contrast-white-0)
       }
     }
 
     .card-product__footer {
       .btn.btn-link.btn-icon.d-none.d-md-inline-flex {
-        color: var(--black-contrast-light);
-        background-color: red;
+        color: var(--black-contrast-white-0);
+        background-color: var(--black-contrast-black-0);
+        padding: 5px 12px !important;
+        border: 1px solid var(--black-contrast-white-0);
+        ;
 
-        &:hover {
-          color: var(--black-contrast-white);
-          background-color: var(--black-contrast-light);
+        &:hover,
+        &:focus {
+          color: var(--black-contrast-black-0);
+          background-color: var(--black-contrast-white-0);
         }
       }
     }
@@ -1747,26 +2383,36 @@
       color: var(--black-contrast-black-0);
     }
 
+    //открыть счет
     .d-flex.flex-column.flex-md-row.align-items-md-center.gap-3.gap-md-6 {
       .btn.btn-lg-lg.btn-yellow.btn-info.w-100.w-md-auto {
         color: var(--black-contrast-white-200);
-        background-color: var(--black-contrast-black-300);
+        background-color: var(--black-contrast-black-0);
 
-        &:hover {
-          color: var(--black-contrast-black-0);
-          background-color: var(--black-contrast-white-200);
+        &:hover,
+        &:focus {
+          color: var(--black-contrast-white-0);
+          background-color: var(--black-contrast-black-200);
         }
       }
 
       .btn.btn-link.btn-lg-lg.btn-icon.text-info.m-auto.m-md-0 {
-        padding: 15px 32px;
         color: var(--black-contrast-white-200);
-        background-color: var(--black-contrast-black-300);
-        border: none;
+        background-color: var(--black-contrast-black-0);
+        padding: 15px 32px;
 
-        &:hover {
-          color: var(--black-contrast-black-0);
-          background-color: var(--black-contrast-white-200);
+        .icon.size-m {
+          color: var(--black-contrast-white-200);
+        }
+
+        &:hover,
+        &:focus {
+          color: var(--black-contrast-white-0) !important;
+          background-color: var(--black-contrast-black-200);
+
+          .icon.size-m {
+            color: var(--black-contrast-white-0);
+          }
         }
       }
     }
@@ -1783,16 +2429,20 @@
 
     .card-product__footer {
       .btn.btn-link.btn-icon.d-none.d-md-inline-flex {
-        color: var(--black-contrast-white-200);
-        background-color: var(--black-contrast-black-300);
+        color: var(--black-contrast-white-0);
+        background-color: var(--black-contrast-black-0);
+        padding: 5px 12px !important;
+        border: 1px solid var(--black-contrast-white-0);
+        ;
 
         .icon.size-m {
           color: var(--black-contrast-white-200);
         }
 
-        &:hover {
+        &:hover,
+        &:focus {
           color: var(--black-contrast-black-0);
-          background-color: var(--black-contrast-white-200);
+          background-color: var(--black-contrast-white-0);
 
           .icon.size-m {
             color: var(--black-contrast-black-0);
@@ -1805,7 +2455,8 @@
       color: var(--black-contrast-black-0);
       text-decoration: underline;
 
-      &:hover {
+      &:hover,
+      &:focus {
         color: var(--black-contrast-white-200);
       }
     }
@@ -1817,11 +2468,26 @@
 
     //novikom-today.html
 
+    .card-top-list__col.bg-blue-10.h-100.overflow-hidden {
+      border: 1px solid var(--black-contrast-black-0);
+
+      .d-flex.flex-column.gap-4 {
+        .d-flex.flex-column img {
+          filter: invert(1) brightness(0);
+        }
+      }
+    }
+
 
     //office-detail.html
     .map-content__header.map-content__header--type-back.d-flex.flex-column.row-gap-4.row-gap-md-6 {
-      background-color: var(--black-contrast-gray-300);
+      background-color: var(--black-contrast-gray-100);
     }
+
+    .map-content__body.d-flex.flex-column.gap-4.gap-md-6 {
+      color: var(--black-contrast-black-0);
+    }
+
 
     .card-contact__image {
       display: none;
@@ -1840,7 +2506,7 @@
       background-color: var(--black-contrast-gray-100);
     }
 
-    t .card-special.bg-dark-10.dark-100.h-100.d-flex.flex-column.row-gap-6.row-gap-lg-9 {
+    .card-special.bg-dark-10.dark-100.h-100.d-flex.flex-column.row-gap-6.row-gap-lg-9 {
       background-color: var(--black-contrast-gray-100);
 
       &:focus {
@@ -1857,19 +2523,19 @@
       color: var(--black-contrast-black-0) !important;
     }
 
+
+
+
     //press-center.html
     .card-news__image-container.position-relative.z-1.h-100 {
       .card-news__img.position-relative.z-2 {
         display: none;
       }
 
-      .card-news.position-relative.bg-dark-10.dark-100.h-100.d-flex.flex-column.overflow-hidden {
-        border: 1px solid red;
-        background-color: var(--black-contrast-gray-100);
-      }
+
 
       .col-12.col-md-6.col-lg-4 {
-        border: 1px solid red;
+        border: 1px solid var(--black-contrast-black-0);
         background-color: var(--black-contrast-gray-100);
       }
     }
@@ -1878,7 +2544,8 @@
       background-color: var(--black-contrast-white-200);
       color: var(--black-contrast-black-0);
 
-      &:hover {
+      &:hover,
+      &:focus {
         background-color: var(--black-contrast-black-300);
         color: var(--black-contrast-white-200);
       }
@@ -1894,7 +2561,7 @@
     .page-item {
       --bs-pagination-active-bg: var(--black-contrast-black-300);
       --bs-pagination-active-border-color: var(--black-contrast-black-300);
-      --bs-pagination-border-color: var(--black-contrast-black-0) --bs-pagination-hover-bg: var(--black-contrast-white-200);
+      --bs-pagination-border-color: var(--black-contrast-black-0) --bs-pagination-hover-bg: var(--black-contrast-white-300);
       --bs-pagination-focus-bg: var(--black-contrast-gray-100);
 
       &.active {
@@ -1905,10 +2572,28 @@
     }
 
 
+
+
     .search-item mark {
-      color: var(--black-contrast-black-0) !important;
-      background: none;
+      color: var(--black-contrast-white-0) !important;
+      background: var(--black-contrast-hover);
     }
+
+
+    .border-tertiary {
+      border-color: var(--black-contrast-black-300) !important;
+    }
+
+    .card-benefit.d-inline-flex.px-3.px-sm-5.px-lg-6.p-4.p-sm-5.p-lg-6.w-100.bg-purple-10.card-benefit--type-img.h-100 {
+      background-color: var(--black-contrast-black-300);
+
+      .list {
+        color: var(--black-contrast-black-0);
+      }
+    }
+
+
+
 
     //TRUST MANAGEMENT PAGE
 
@@ -1918,7 +2603,7 @@
       }
 
       &__wrapper {
-        background-color: var(--black-contrast-white-200);
+        background-color: var(--black-contrast-black-300);
       }
 
       h1 {
@@ -1934,13 +2619,18 @@
       }
 
       & li::before {
-        background-color: var(--black-contrast-white-200);
+        background-color: var(--black-contrast-black-0);
       }
 
       &__image {
         display: none;
       }
     }
+
+    .card-news.position-relative.bg-dark-10.dark-100.h-100.d-flex.flex-column.overflow-hidden {
+      background-color: var(--black-contrast-black-300);
+    }
+
 
     .benefit__content.d-flex.flex-column.gap-3 {
       color: var(--black-contrast-white);
@@ -1975,7 +2665,7 @@
     }
 
     .btn-app.btn.d-inline-flex.justify-content-center.align-items-center.bg-white {
-      background-color: var(--black-contrast-gray-300);
+      background-color: var(--black-contrast-black-300);
     }
 
     .section-layout.bg-dark-10 {
@@ -1985,11 +2675,11 @@
 
 
     .card.overflow-hidden.position-relative {
-      background-color: var(--black-contrast-gray-300);
+      background-color: var(--black-contrast-black-300);
     }
 
     .card {
-      background-color: var(--black-contrast-gray-300);
+      background-color: var(--black-contrast-black-300);
     }
 
     .card__image-container.flex-shrink-0.mx-auto {
@@ -2001,13 +2691,15 @@
     }
 
     .card__condition-list.d-flex.flex-column.flex-md-row.flex-wrap.gap-4.column-gap-md-11.column-gap-lg-16.row-gap-lg-6 {
-      color: green & span {
+      color: var(--black-contrast-black-0);
+
+      & span {
         color: var(--black-contrast-black-0);
       }
     }
 
     .d-flex.flex-column.gap-4 {
-      color: var(--black-contrast-white);
+      color: var(--black-contrast-black-0);
     }
 
     .list.list--size-l li:before {
@@ -2018,7 +2710,16 @@
       color: var(--black-contrast-black-300);
     }
 
+    .rte.rte--accordion {
+      a {
+        color: var(--black-contrast-black-0);
+        text-decoration: underline;
 
+        &:hover {
+          color: var(--black-contrast-black-200);
+        }
+      }
+    }
 
 
   }

@@ -47,10 +47,12 @@
     }
 
     &__pattern {
-        bottom: 5.5rem;
+        & img {
+            bottom: 5.5rem;
 
-        @include use-media(tablet) {
-            bottom: 0;
+            @include use-media(tablet) {
+                bottom: 0;
+            }
         }
     }
 }

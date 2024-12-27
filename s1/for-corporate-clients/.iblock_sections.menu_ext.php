@@ -3,7 +3,11 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 
 global $APPLICATION;
 
-$elements = getIBlockElements(iblock('corporate_clients'));
+$filter = [
+    'IBLOCK_SECTION.CODE' => 'finansirovanie'
+];
+
+$elements = getIBlockElements(iblock('corporate_clients'), $filter);
 
 $aMenuLinksExt = array_map(function ($element) {
     return [
