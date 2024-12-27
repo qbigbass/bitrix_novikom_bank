@@ -196,9 +196,10 @@ $APPLICATION->SetTitle('Частным клиентам - Главная НОВ�
     </div>
 </section>
 <section class="section-layout section-layout--bg-gray section-calculator">
-    <div class="container"><a class="h3 d-flex align-items-center justify-content-between dark-100 d-md-none"
-                              data-bs-toggle="collapse" href="#calculator" role="button" aria-expanded="false"
-                              aria-controls="calculator">Рассчитайте выгоду
+    <div class="container">
+        <a class="h3 d-flex align-items-center justify-content-between dark-100 d-md-none"
+           data-bs-toggle="collapse" href="#calculator" role="button" aria-expanded="false"
+           aria-controls="calculator">Рассчитайте выгоду
             <svg class="icon size-m violet-100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                 <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-down"></use>
             </svg>
@@ -225,177 +226,33 @@ $APPLICATION->SetTitle('Частным клиентам - Главная НОВ�
                     </li>
                 </ul>
             </div>
-            <div class="tab-content">
-                <div class="ps-lg-6" id="loan">
-                    <div class="row">
-                        <div class="col-12 col-lg-6">
-                            <div class="d-none d-lg-inline-flex">
-                                <ul class="nav nav-tabs" role="tablist">
-                                    <li class="nav-item" role="presentation">
-                                        <button class="nav-link active" data-bs-toggle="tab"
-                                                data-bs-target="#loan-consumer" type="button" role="tab"
-                                                aria-controls="loan-consumer" aria-selected>Потребительский кредит
-                                        </button>
-                                    </li>
-                                    <li class="nav-item" role="presentation">
-                                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#refinance"
-                                                type="button" role="tab" aria-controls="refinance">Рефинансирование
-                                        </button>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="d-lg-none">
-                                <select class="form-select form-select--size-small js-select">
-                                    <option selected value="loan">Потребительский кредит</option>
-                                    <option value="refinance">Рефинансирование</option>
-                                </select>
-                            </div>
-                            <div class="tab-content pt-4 pt-md-6 pt-lg-7 pe-xl-6">
-                                <div class="tab-pane fade show active" id="loan-consumer" role="tabpanel"
-                                     aria-labelledby="loan" tabindex="0">
-                                    <div class="d-flex flex-column row-gap-4 row-gap-md-6 row-gap-lg-7">
-                                        <div class="input-slider js-input-slider" data-type="price"
-                                             data-start-value="1000000" data-max-value="5000000" data-min-value="20000"
-                                             data-step-size="5000">
-                                            <label class="text-s dark-70 ps-3 mb-2" for="amount-credit">Сумма
-                                                кредита</label>
-                                            <div class="input-slider-text js-input-slider-text">
-                                                <input class="input-slider-text__input h4 js-input-slider-text-input">
-                                                <button
-                                                    class="input-slider-text__button input-slider-text__button--edit js-input-slider-text-edit"
-                                                    type="button">
-                                                    <svg class="icon dark-70 size-m" xmlns="http://www.w3.org/2000/svg"
-                                                         width="100%" height="100%">
-                                                        <use
-                                                            xlink:href="/frontend/dist/img/svg-sprite.svg#icon-edit"></use>
-                                                    </svg>
-                                                </button>
-                                                <button
-                                                    class="input-slider-text__button input-slider-text__button--close js-input-slider-text-close"
-                                                    type="button">
-                                                    <svg class="icon dark-70 size-m" xmlns="http://www.w3.org/2000/svg"
-                                                         width="100%" height="100%">
-                                                        <use
-                                                            xlink:href="/frontend/dist/img/svg-sprite.svg#icon-close"></use>
-                                                    </svg>
-                                                </button>
-                                            </div>
-                                            <div class="input-slider__inner js-input-slider-inner">
-                                                <input class="input-slider__item js-input-slider-input"
-                                                       id="amount-credit" type="range" step="1" min="0" max="1"
-                                                       value="0">
-                                            </div>
-                                            <div class="input-slider-text-steps js-input-slider-text-steps"></div>
-                                        </div>
-                                        <div class="input-slider js-input-slider" data-type="month"
-                                             data-start-value="36" data-max-value="60" data-min-value="6">
-                                            <label class="text-s dark-70 ps-3 mb-2" for="payment-term">Срок
-                                                выплаты</label>
-                                            <div class="input-slider-text js-input-slider-text">
-                                                <input class="input-slider-text__input h4 js-input-slider-text-input">
-                                                <button
-                                                    class="input-slider-text__button input-slider-text__button--edit js-input-slider-text-edit"
-                                                    type="button">
-                                                    <svg class="icon dark-70 size-m" xmlns="http://www.w3.org/2000/svg"
-                                                         width="100%" height="100%">
-                                                        <use
-                                                            xlink:href="/frontend/dist/img/svg-sprite.svg#icon-edit"></use>
-                                                    </svg>
-                                                </button>
-                                                <button
-                                                    class="input-slider-text__button input-slider-text__button--close js-input-slider-text-close"
-                                                    type="button">
-                                                    <svg class="icon dark-70 size-m" xmlns="http://www.w3.org/2000/svg"
-                                                         width="100%" height="100%">
-                                                        <use
-                                                            xlink:href="/frontend/dist/img/svg-sprite.svg#icon-close"></use>
-                                                    </svg>
-                                                </button>
-                                            </div>
-                                            <div class="input-slider__inner js-input-slider-inner">
-                                                <input class="input-slider__item js-input-slider-input"
-                                                       id="payment-term" type="range" step="1" min="0" max="1"
-                                                       value="0">
-                                            </div>
-                                            <div class="input-slider-text-steps js-input-slider-text-steps"></div>
-                                        </div>
-                                        <div class="d-flex flex-column row-gap-4">
-                                            <div class="form-check">
-                                                <input class="form-check-input" id="inp1" type="checkbox" value=""
-                                                       checked>
-                                                <label class="form-check-label" for="inp1"><a href="#">Получаю зарплату
-                                                        на&nbsp;карту Новиком</a></label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" id="inp2" type="checkbox" value="">
-                                                <label class="form-check-label" for="inp2">Страхование</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="refinance" role="tabpanel" aria-labelledby="refinance"
-                                     tabindex="0">
-                                    <p>refinance</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-6 mt-4 mt-md-6 mt-lg-0">
-                            <div class="ps-xxl-6">
-                                <div class="polygon-container js-polygon-container">
-                                    <div class="polygon-container__content">
-                                        <div class="card-calculate-result bg-dark-0">
-                                            <div class="card-calculate-result__body">
-                                                <div class="d-flex flex-column row-gap-2"><span
-                                                        class="card-calculate-result__label text-s">Процентная ставка</span><span
-                                                        class="text-number-ml fw-bold text-nowrap">16,5%</span>
-                                                </div>
-                                                <div class="d-flex flex-column row-gap-2"><span
-                                                        class="card-calculate-result__label text-s">Ежемесячный платеж</span>
-                                                    <div
-                                                        class="d-flex flex-column flex-md-row justify-content-md-between flex-wrap align-items-md-end">
-                                                        <span class="text-number-ml fw-bold text-nowrap">35 404,38&nbsp;<span
-                                                                class="currency">₽</span></span>
-                                                        <button class="btn btn-link btn-sm btn-icon mt-2 mt-md-0"
-                                                                type="button"><span>График платежей</span>
-                                                            <svg class="icon size-s" xmlns="http://www.w3.org/2000/svg"
-                                                                 width="100%" height="100%">
-                                                                <use
-                                                                    xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right-small"></use>
-                                                            </svg>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                                <div class="d-flex flex-column row-gap-2"><span
-                                                        class="card-calculate-result__label text-s">Необходимый ежемесячный доход, от</span><span
-                                                        class="text-number-ml fw-bold text-nowrap">35 404,38&nbsp;<span
-                                                            class="currency">₽</span></span>
-                                                </div>
-                                                <div class="d-flex flex-column row-gap-2"><span
-                                                        class="card-calculate-result__label text-s">Диапазон полной стоимости кредита</span><span
-                                                        class="text-number-ml fw-bold text-nowrap">16,464 – 20,474 %</span>
-                                                </div>
-                                            </div>
-                                            <div class="card-calculate-result__footer">
-                                                <button class="btn btn-primary btn-lg-lg w-100" type="button">Оформить
-                                                    заявку
-                                                </button>
-                                                <p class="dark-70 caption-m">Калькулятор не&nbsp;гарантирует точность
-                                                    расчетов. Окончательные параметры кредита определяются по&nbsp;итогам
-                                                    рассмотрения заявки.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="polygon-container__polygon js-polygon-container-polygon green-100">
-                                        <svg class="js-polygon-container-svg" xmlns="http://www.w3.org/2000/svg">
-                                            <polygon points="2,2 335,2 335,394 295,434 2,434" fill="none"
-                                                     stroke="currentColor" stroke-width="2"
-                                                     stroke-dasharray="10"></polygon>
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="tab-content ps-lg-6">
+                <div class="tab-pane fade show active" id="loan" role="tabpanel" aria-labelledby="loan" tabindex="0">
+                    <? $APPLICATION->IncludeComponent(
+                        "dalee:calculator",
+                        "loans",
+                        array(
+                            "CALCULATOR_ELEMENT_ID" => ""
+                        )
+                    ); ?>
+                </div>
+                <div class="tab-pane fade" id="mortgage" role="tabpanel" aria-labelledby="mortgage" tabindex="0">
+                    <? $APPLICATION->IncludeComponent(
+                        "dalee:calculator",
+                        "mortgage",
+                        array(
+                            "CALCULATOR_ELEMENT_ID" => ""
+                        )
+                    ); ?>
+                </div>
+                <div class="tab-pane fade" id="deposit" role="tabpanel" aria-labelledby="deposit" tabindex="0">
+                    <? $APPLICATION->IncludeComponent(
+                        "dalee:calculator",
+                        "deposits",
+                        array(
+                            "CALCULATOR_ELEMENT_ID" => ""
+                        )
+                    ); ?>
                 </div>
             </div>
         </div>
@@ -404,7 +261,7 @@ $APPLICATION->SetTitle('Частным клиентам - Главная НОВ�
 <section class="section-layout">
     <div class="container">
         <div class="row">
-            <?$APPLICATION->IncludeComponent(
+            <? $APPLICATION->IncludeComponent(
                 "bitrix:news.list",
                 "customer_announcements",
                 [
@@ -423,7 +280,7 @@ $APPLICATION->SetTitle('Частным клиентам - Главная НОВ�
                     "DETAIL_URL" => "/support/announcements_for_clients/#SECTION_CODE#/#ELEMENT_CODE#/",
                     "DISPLAY_BOTTOM_PAGER" => "N",
                     "DISPLAY_TOP_PAGER" => "N",
-                    "FIELD_CODE" => ["CODE","NAME","PREVIEW_TEXT","PREVIEW_PICTURE",""],
+                    "FIELD_CODE" => ["CODE", "NAME", "PREVIEW_TEXT", "PREVIEW_PICTURE", ""],
                     "FILTER_NAME" => "",
                     "HIDE_LINK_WHEN_NO_DETAIL" => "N",
                     "IBLOCK_ID" => iblock('ads_for_customers_ru'),
@@ -458,7 +315,7 @@ $APPLICATION->SetTitle('Частным клиентам - Главная НОВ�
                 ],
                 false,
                 ["HIDE_ICONS" => "Y"]
-            );?>
+            ); ?>
             <div class="col-12 col-xxl-6 mt-6 mt-xxl-0"><a class="card-link h3 d-lg-none" href="#">О банке
                     <svg class="icon size-m blue-100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                         <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
