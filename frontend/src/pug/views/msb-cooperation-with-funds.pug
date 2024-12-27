@@ -239,13 +239,18 @@ block content
         "bg-heavy-violet"
     )
 
-    section.section-layout.bg-dark-10
+    section.section-layout.pb-md-7.bg-dark-10
         .container
             .row
-                .col-12.mb-4.mb-md-6.mb-lg-7
+                .col-12
                     +polygon-container("yellow-100")
                         +helper("img/business-additional-info.png", "bg-white")
                             p.text-l.mb-0 Поручительство гарантийного фонда представляет возможность предприятиям малого и среднего бизнеса, у которых нет залога для получения финансирования, оформить кредит под поручительство регионального Фонда.
+
+
+    section.section-layout.pt-0.bg-dark-10
+        .container
+            .row
                 .col-12
                     .swiper.slider-cards.js-slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:2,tablet-album:3,laptop:3,laptop-x:3" data-space-between="mobile-s:8,mobile:8,tablet:16,laptop:16,laptop-x:16")
                         .swiper-wrapper
