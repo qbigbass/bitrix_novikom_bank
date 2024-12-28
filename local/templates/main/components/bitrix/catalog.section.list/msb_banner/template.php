@@ -54,7 +54,7 @@ $this->setFrameMode(true);
                     <?endif;?>
                 </div>
                 <?if(!empty($arResult["SECTION"]["BANNER_CONTENT"]["FOOTER"])):?>
-                    <div class="banner-product__footer row gx-md-2 gx-lg-2_5 row-gap-4 row-gap-lg-6 mt-6 mt-lg-16">
+                    <div class="banner-product__footer row gx-md-2 gx-lg-2_5 row-gap-4 row-gap-lg-6 mt-6 mt-lg-16 mt-xl-26">
                         <?$colXl = $arResult["UF_CNT_ELEM_F"];?>
                         <?foreach ($arResult["SECTION"]["BANNER_CONTENT"]["FOOTER"] as $item):?>
                             <div class="col-12 col-md-6 col-xl-<?= $colXl ?>">
@@ -85,13 +85,10 @@ $this->setFrameMode(true);
                     <div class="col-12 col-sm-6 col-md-8 position-relative z-1 mb-5 mb-md-0 pt-6">
                         <div class="d-flex flex-column align-items-start gap-3 gap-lg-4">
                             <div class="breadcrumbs d-flex flex-wrap gap-2">
-                                <a class="breadcrumbs__item d-md-inline-flex align-items-center gap-2 text-s dark-70 d-inline-flex" href="<?= $arResult["SECTION"]["LIST_PAGE_URL"]?>">
-                                    <svg class="icon size-s d-inline-block d-md-none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-left"></use>
-                                    </svg>
+                                <a class="breadcrumbs__item d-md-inline-flex align-items-center gap-2 text-s text-white-50 d-none" href="<?= $arResult["SECTION"]["LIST_PAGE_URL"]?>">
                                     <span><?= $arParams["MAIN_CHAIN_TITLE"] ?></span>
                                 </a>
-                                <div class="breadcrumbs__item d-md-inline-flex align-items-center gap-2 text-s dark-70 d-inline-flex">
+                                <div class="breadcrumbs__item d-md-inline-flex align-items-center gap-2 text-s text-white-50 d-inline-flex">
                                     <svg class="icon size-s text-white-50 d-inline-block d-md-none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                                         <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-left"></use>
                                     </svg>

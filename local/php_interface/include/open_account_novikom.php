@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="card-promo card-promo--heavy-violet">
-                    <div class="card-promo__wrapper d-flex flex-column h-100 row-gap-4 row-gap-md-6 row-gap-lg-7">
+                    <div class="card-promo__wrapper">
                         <div class="card-promo__header d-flex flex-column row-gap-3 row-gap-md-4">
                             <h2>Откройте счёт в Новиком</h2>
                             <p class="text-l mb-0 w-md-75 w-lg-100">Бесплатное дистанционное обслуживание и бесплатное сопровождение сделки при открытии&nbsp;счёта&nbsp;в банке Новиком</p>

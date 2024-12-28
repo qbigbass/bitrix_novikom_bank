@@ -1,5 +1,5 @@
 mixin card-benefit(data)
-    .card-benefit.d-inline-flex.px-3.px-sm-5.px-lg-6.p-4.p-sm-5.p-lg-6.w-100(class= `${data.bgColor ? data.bgColor : "bg-dark-10"}`)&attributes(attributes)
+    #{data.link ? 'a href="#"' : 'div'}.card-benefit.d-inline-flex.px-3.px-sm-5.px-lg-6.p-4.p-sm-5.p-lg-6.w-100(class= `${data.bgColor ? data.bgColor : "bg-dark-10"}`)&attributes(attributes)
         div.card-benefit__inner.d-flex.flex-column.gap-6.gap-lg-7.justify-content-between.h-100.w-100
             div.card-benefit__content.d-flex.flex-column.gap-4
                 if data.image
@@ -20,6 +20,6 @@ mixin card-benefit(data)
                         .card-benefit__icon
                             img(src=`img/icons/${data.sprite.iconImg ? data.sprite.iconImg : 'icon-money'}.svg`, alt="", loading="lazy" class= data.sprite.classList).icon
                     if data.link
-                        a(href=data.link).text-m.btn.btn-link.btn-lg.d-inline-flex.gap-2.align-items-center
+                        .text-m.btn.btn-link.btn-lg.d-inline-flex.gap-2.align-items-center
                             span.fw-bold!= data.linkText ? data.linkText : 'Подробнее'
                             +svg-use('icon-chevron-right-small', `icon ${data.image ? 'size-s' : 'size-m'}`)

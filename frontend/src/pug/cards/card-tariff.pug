@@ -1,11 +1,11 @@
 mixin card-tariff(data, bgColor='bg-dark-10')
-    .card-tariff.d-flex.flex-column.gap-5(class=bgColor)&attributes(attributes)
+    .card-tariff.d-flex.flex-column.gap-4(class=bgColor)&attributes(attributes)
         .card-tariff__header.border-bottom-dashed.pb-4
             h4.card-tariff__title!= data.title
         .card-tariff__content.d-flex.flex-column.gap-4
             each item in data.list
                 .d-flex.flex-column.gap-2
                     span.text-s.dark-70!= item.title
-                    span.text-m.fb-semibold.dark-100!= item.text
+                    span.text-m.fw-semibold.dark-100!= item.text
             if block
                 block

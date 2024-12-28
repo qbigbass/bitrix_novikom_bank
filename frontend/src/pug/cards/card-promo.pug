@@ -2,11 +2,11 @@ include ../components/benefit-text
 
 mixin card-promo(data)
     .card-promo&attributes(attributes)
-        .card-promo__wrapper.d-flex.flex-column.h-100.row-gap-4.row-gap-md-6.row-gap-lg-7
+        .card-promo__wrapper
             .card-promo__header.d-flex.flex-column.row-gap-3.row-gap-md-4
                 h2!= data.title
                 if data.text
-                    p.text-l.mb-0(class=data.textClass ? data.textClass : 'w-md-50 w-lg-100' )!= data.text
+                    p.text-l.mb-0(class=data.textClass ? data.textClass : '' )!= data.text
             if data.image
                 img.card-promo__image(src=`img/${data.image}`, alt="", loading="lazy")
             if data.benefits

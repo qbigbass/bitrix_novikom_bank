@@ -51,11 +51,11 @@ $terms = [
 
                 <? if (!empty($loan['PROPERTIES']['TERMS'])) { ?>
                     <div
-                        class="card-product-list__condition-list w-100 w-lg-auto d-flex justify-content-between justify-content-lg-start flex-column flex-sm-row flex-wrap row-gap-4 row-gap-sm-6 row-gap-lg-6 row-gap-xxl-6 gap-lg-12 gap-xxl-16">
+                        class="card-product-list__condition-list w-100 w-lg-auto d-flex justify-content-between justify-content-lg-start flex-column flex-sm-row flex-wrap row-gap-4 row-gap-sm-6 row-gap-lg-6 row-gap-xxl-6 gap-xl-12 gap-xxl-16">
 
                         <? $termsValues = processTerms($terms, $loan['PROPERTIES']['TERMS']);
                         foreach ($termsValues as $term) { ?>
-                            <div class="card-product-list__condition d-flex flex-column gap-2 w-100 w-sm-50 w-lg-auto">
+                            <div class="card-product-list__condition d-flex flex-column gap-2 w-100 w-sm-50 w-xl-auto">
                                 <div class="d-inline-flex flex-nowrap align-items-baseline gap-1">
                                     <span class='text-l fw-semibold'><?= $term['FROM_TO'] ?></span>
                                     <span class='text-number-l fw-bold'><?= $term['VALUE'] ?></span>
