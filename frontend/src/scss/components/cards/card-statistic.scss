@@ -64,7 +64,9 @@
     }
 
     &__pattern {
-        top: 2.5rem;
-        bottom: auto;
+        & img {
+            top: 2.5rem;
+            bottom: auto;
+        }
     }
 }

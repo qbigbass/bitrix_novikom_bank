@@ -537,6 +537,10 @@
       background-color: var(--blue-contrast-light-1);
     }
 
+    h5.dark-100 {
+      text-align: center;
+    }
+
     h4.dark-100 {
       color: var(--blue-contrast-bg);
     }
@@ -571,7 +575,7 @@
       }
     }
 
-    .d-flex.flex-column.row-gap-4.px-3.py-4.p-md-5.p-lg-6.bg-blue-10 {
+    .tabs-panel__list-item-link.nav-link.bg-transparent .d-flex.flex-column.row-gap-4.px-3.py-4.p-md-5.p-lg-6.bg-blue-10 {
       background-color: var(--blue-contrast-white);
 
       & h5 {
@@ -905,6 +909,11 @@
     .tabs-panel__list-item-link.nav-link.bg-transparent {
       background-color: var(--blue-contrast-bg-dark) !important;
 
+      &:hover,
+      &:focus {
+        background-color: var(--blue-contrast-white);
+      }
+
       &.active {
         background-color: var(--blue-contrast-light) !important;
       }
@@ -1139,6 +1148,31 @@
     }
 
     //cards.html
+
+    .tabs-panel__navigation-item-reverse,
+    .tabs-panel__navigation-item {
+      background: none;
+    }
+
+    .tabs-panel__navigation.d-none.d-lg-block.js-tabs-slider-navigation.w-100 span>svg {
+      color: var(--blue-contrast-white);
+    }
+
+    .card-product-list.overflow-hidden.position-relative.mh-100.h-auto.bg-dark-10.w-100.pt-7.pb-6.py-sm-9.py-md-9.py-lg-11.px-3.px-sm-4.px-md-5.px-lg-6.pe-xxl-11 {
+      background-color: var(--blue-contrast-light-1);
+    }
+
+    .card-product-list__condition-list.w-100.w-lg-auto.d-flex.justify-content-between.justify-content-lg-start.flex-column.flex-sm-row.flex-wrap.row-gap-4.row-gap-sm-6.row-gap-lg-6.row-gap-xxl-6.gap-xl-12.gap-xxl-16 {
+      .card-product-list__condition.d-flex.flex-column.gap-2.w-100.w-sm-50.w-xl-auto {
+        .text-m.dark-70 {
+          color: var(--blue-contrast-bg-dark);
+        }
+      }
+    }
+
+    .row.px-lg-6 {
+      background-color: var(--blue-contrast-bg);
+    }
 
     .bg-dark-10 {
       background-color: var(--blue-contrast-light-1);
@@ -1424,6 +1458,10 @@
         color: var(--blue-contrast-bg);
         background-color: var(--blue-contrast-light-1);
       }
+    }
+
+    .card-benefit.d-inline-flex.px-3.px-sm-5.px-lg-6.p-4.p-sm-5.p-lg-6.w-100.bg-dark-10 {
+      margin-top: 25px;
     }
 
     //customer-requests.html

@@ -96,34 +96,54 @@ $this->setFrameMode(true);
             <div class="modal-body">
                 <div>
                     <div class="d-flex flex-column row-gap-6">
-                        <div class="d-flex flex-column row-gap-4">
-                            <h5>Обслуживание</h5>
-                            <div class="form-check">
-                                <input class="form-check-input" id="individuals" type="checkbox" value="">
-                                <label class="form-check-label" for="individuals">Физические лица</label>
+                        <?php if ($arParams['PARENT_SECTION_CODE'] === 'offices') : ?>
+                            <div class="d-flex flex-column row-gap-4">
+                                <h5>Обслуживание</h5>
+                                <div class="form-check">
+                                    <input class="form-check-input" id="individuals" type="checkbox" value="">
+                                    <label class="form-check-label" for="individuals">Физические лица</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" id="legal" type="checkbox" value="">
+                                    <label class="form-check-label" for="legal">Юридические лица</label>
+                                </div>
                             </div>
-                            <div class="form-check">
-                                <input class="form-check-input" id="legal" type="checkbox" value="">
-                                <label class="form-check-label" for="legal">Юридические лица</label>
+                        <?php else : ?>
+                            <div class="d-flex flex-column row-gap-4">
+                                <h5>Вход</h5>
+                                <div class="form-check">
+                                    <input class="form-check-input" id="access-free" type="checkbox" value="">
+                                    <label class="form-check-label" for="access-free">Свободный доступ</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" id="access-employee" type="checkbox" value="">
+                                    <label class="form-check-label" for="access-employee">Для сотрудников организаций</label>
+                                </div>
                             </div>
-                        </div>
-                        <div class="d-flex flex-column row-gap-4" id="offices-services-filter">
-                            <!--
-                            <h5>Услуги</h5>
-                            <div class="form-check">
-                                <input class="form-check-input" id="limited-mobility" type="checkbox" value="">
-                                <label class="form-check-label" for="limited-mobility">Доступно для маломобильных граждан</label>
+
+                            <div class="d-flex flex-column row-gap-4">
+                                <h5>Валюта приема</h5>
+                                <?php foreach ($arResult['CURRENCY']['IN'] as $currency) : ?>
+                                    <div class="form-check">
+                                        <input class="form-check-input" id="currency-in-<?= $currency['id'] ?>" name="currency_in[]" type="checkbox" value="<?= $currency['id'] ?>">
+                                        <label class="form-check-label" for="currency-in-<?= $currency['id'] ?>"><?= $currency['name'] ?></label>
+                                    </div>
+                                <?php endforeach; ?>
                             </div>
-                            <div class="form-check">
-                                <input class="form-check-input" id="brokerage" type="checkbox" value="">
-                                <label class="form-check-label" for="brokerage">Услуги по&nbsp;брокерскому обслуживанию и&nbsp;доверительному управлению активами</label>
+
+                            <div class="d-flex flex-column row-gap-4">
+                                <h5>Валюта выдачи</h5>
+                                <?php foreach ($arResult['CURRENCY']['OUT'] as $currency) : ?>
+                                    <div class="form-check">
+                                        <input class="form-check-input" id="currency-out-<?= $currency['id'] ?>" name="currency_out[]" type="checkbox" value="<?= $currency['id'] ?>">
+                                        <label class="form-check-label" for="currency-out-<?= $currency['id'] ?>"><?= $currency['name'] ?></label>
+                                    </div>
+                                <?php endforeach; ?>
                             </div>
-                            <div class="form-check">
-                                <input class="form-check-input" id="biometrics" type="checkbox" value="">
-                                <label class="form-check-label" for="biometrics">Можно сдавать биометрию</label>
-                            </div>
-                            -->
-                        </div>
+                        <?php endif;?>
+
+                        <div class="d-flex flex-column row-gap-4" id="offices-services-filter"></div>
+
                         <div class="d-flex flex-column flex-md-row gap-3 gap-md-6 mt-md-2">
                             <button class="btn btn-primary btn-md-lg" type="button" data-bs-dismiss="modal" id="filters-submit-button">Применить</button>
                             <button class="btn btn-outline-primary btn-md-lg" type="button" data-bs-dismiss="modal" id="filters-reset-button">Сбросить</button>

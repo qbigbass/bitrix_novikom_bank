@@ -26,7 +26,11 @@ use Bitrix\Main\Localization\Loc;
                                     <h4 class="card-product__title"><?= $item["NAME"]?></h4>
                                     <? if (!empty($item["DESCRIPTION"])) : ?>
                                         <div class="rte m-0 gap-3 gap-lg-4">
-                                            <p><?= $item["DESCRIPTION"] ?></p>
+                                            <? if ($item["DESCRIPTION_TYPE"] === "text") : ?>
+                                                <p><?= $item["DESCRIPTION"] ?></p>
+                                            <? else : ?>
+                                                <?= $item["DESCRIPTION"] ?>
+                                            <? endif; ?>
                                         </div>
                                     <? endif; ?>
                                 </div>
@@ -45,7 +49,13 @@ use Bitrix\Main\Localization\Loc;
                 </div>
             <? endif; ?>
             <? if ($arParams["SHOW_AD_INTERNET_BANK"] === "Y") : ?>
-                <? $APPLICATION->IncludeFile('/local/php_interface/include/internet_bank_for_business.php'); ?>
+                <? $APPLICATION->IncludeFile(
+                    '/local/php_interface/include/internet_bank_for_business.php',
+                    [
+                        'CLASS_COLOR_BTN' => 'btn-yellow',
+                        'CLASS_COLOR_CARD' => 'card-service-app--bg-heavy-violet'
+                    ]
+                );?>
             <? endif; ?>
             <? if(!empty($arResult["SECTIONS_CENTER_POSITION_1"]) || !empty($arResult["SECTIONS_CENTER_POSITION_2"])) : ?>
                 <div class="col-12">
@@ -57,6 +67,9 @@ use Bitrix\Main\Localization\Loc;
                                         <div class="card-product__inner">
                                             <div class="card-product__content mw-100">
                                                 <h4 class="card-product__title"><?= $item["NAME"]?></h4>
+                                                <? if (!empty($item["DESCRIPTION"])) : ?>
+                                                    <p class="card-product__description m-0 mw-100"><?= $item["DESCRIPTION"] ?></p>
+                                                <? endif; ?>
                                             </div>
                                             <div class="card-product__footer">
                                                 <span class="btn btn-link btn-icon d-none d-md-inline-flex">
@@ -83,6 +96,9 @@ use Bitrix\Main\Localization\Loc;
                                                 <div class="card-product__inner">
                                                     <div class="card-product__content mw-100">
                                                         <h4 class="card-product__title"><?= $item["NAME"]?></h4>
+                                                        <? if (!empty($item["DESCRIPTION"])) : ?>
+                                                            <p class="card-product__description m-0 mw-100"><?= $item["DESCRIPTION"] ?></p>
+                                                        <? endif; ?>
                                                     </div>
                                                     <div class="card-product__footer">
                                                         <span class="btn btn-link btn-icon d-none d-md-inline-flex">

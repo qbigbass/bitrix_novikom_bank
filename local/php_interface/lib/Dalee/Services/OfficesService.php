@@ -31,7 +31,7 @@ class OfficesService
             ],
             false,
             [
-                'nPageSize' => 1000,
+                'nPageSize' => 3000,
             ]
         );
 
@@ -47,6 +47,11 @@ class OfficesService
                 'services'      => !empty($item['PROPERTIES']['SERVICES']['VALUE_XML_ID']) ? $item['PROPERTIES']['SERVICES']['VALUE_XML_ID'] : [],
                 'corporate'     => $item['PROPERTIES']['CORPORATE']['VALUE_XML_ID'] === 'Y',
                 'individual'    => $item['PROPERTIES']['INDIVIDUAL']['VALUE_XML_ID'] === 'Y',
+                'freeAccess'    => $item['PROPERTIES']['FREE_ACCESS']['VALUE_XML_ID'] === 'Y',
+                'currency' => [
+                    'in'        => $item['PROPERTIES']['CURRENCY_IN']['VALUE_XML_ID'] ?: [],
+                    'out'       => $item['PROPERTIES']['CURRENCY_OUT']['VALUE_XML_ID'] ?: [],
+                ],
             ];
         }
 

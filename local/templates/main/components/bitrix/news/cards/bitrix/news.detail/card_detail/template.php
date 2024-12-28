@@ -623,6 +623,7 @@ use Dalee\Helpers\ComponentHelper;
                         "TEXT_FIELD",
                         "HEADING",
                         "STEPS",
+                        "HTML",
                         "SHORT_INFO",
                         "QUOTES",
                         "QUESTIONS",

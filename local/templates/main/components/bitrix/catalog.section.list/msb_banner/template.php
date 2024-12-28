@@ -20,14 +20,11 @@ $this->setFrameMode(true);
                 <div class="banner-product__content">
                     <div class="banner-product__header">
                         <div class="breadcrumbs d-flex flex-wrap gap-2 banner-product__breadcrumbs">
-                            <a class="breadcrumbs__item d-md-inline-flex align-items-center gap-2 text-s dark-70 d-inline-flex" href="<?= $arResult["SECTION"]["LIST_PAGE_URL"]?>">
-                                <svg class="icon size-s d-inline-block d-md-none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                    <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-left"></use>
-                                </svg>
+                            <a class="breadcrumbs__item d-md-inline-flex align-items-center gap-2 text-s text-white-50 d-none" href="<?= $arResult["SECTION"]["LIST_PAGE_URL"]?>">
                                 <span><?= $arParams["MAIN_CHAIN_TITLE"] ?></span>
                             </a>
-                            <div class="breadcrumbs__item d-md-inline-flex align-items-center gap-2 text-s dark-70 d-inline-flex">
-                                <svg class="icon size-s text-white-50 d-inline-block d-md-none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                            <div class="breadcrumbs__item d-md-inline-flex align-items-center gap-2 text-s text-white-50 d-inline-flex">
+                                <svg class="icon size-s d-inline-block d-md-none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                                     <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-left"></use>
                                 </svg>
                                 <span><?= $arResult["SECTION"]["NAME"]?></span>
@@ -38,10 +35,10 @@ $this->setFrameMode(true);
                     </div>
                     <img class="banner-product__image" src="<?= $arResult["SECTION"]["PICTURE_PATH"]?>" alt="" loading="lazy">
                     <?if(!empty($arResult["SECTION"]["BANNER_CONTENT"]["HEADER"])):?>
-                        <div class="banner-product__benefits-list d-flex flex-wrap mw-100 gap-lg-11">
+                        <div class="banner-product__benefits-list">
                             <?foreach ($arResult["SECTION"]["BANNER_CONTENT"]["HEADER"] as $item):?>
                                 <div class="d-inline-flex flex-column row-gap-2">
-                                    <div class="d-inline-flex flex-nowrap align-items-baseline text-l fw-semibold gap-1 yellow-100 w-lg-min-content w-100">
+                                    <div class="d-inline-flex flex-nowrap align-items-baseline text-l fw-semibold gap-1 yellow-100">
                                         <?if(!empty($item["NAME"])):?>
                                             <span class="h4"><?= $item["NAME"] ?></span>
                                         <?elseif(!empty($item["DETAIL"])):?>
@@ -57,12 +54,12 @@ $this->setFrameMode(true);
                     <?endif;?>
                 </div>
                 <?if(!empty($arResult["SECTION"]["BANNER_CONTENT"]["FOOTER"])):?>
-                    <div class="banner-product__footer row row-gap-4 mt-6 mt-lg-16 mt-xl-26">
+                    <div class="banner-product__footer row gx-md-2 gx-lg-2_5 row-gap-4 row-gap-lg-6 mt-6 mt-lg-16">
                         <?$colXl = $arResult["UF_CNT_ELEM_F"];?>
                         <?foreach ($arResult["SECTION"]["BANNER_CONTENT"]["FOOTER"] as $item):?>
                             <div class="col-12 col-md-6 col-xl-<?= $colXl ?>">
                                 <div class="benefit d-flex gap-3 flex-column">
-                                    <img class="icon size-xl" src="<?= $item["ICON"]?>" alt="icon" loading="lazy">
+                                    <img class="icon size-xxl" src="<?= $item["ICON"]?>" alt="icon" loading="lazy">
                                     <div class="benefit__content d-flex flex-column gap-3">
                                         <h4 class="benefit__title"><?= $item["NAME"]?></h4>
                                         <div class="benefit__description w-100 text-m">

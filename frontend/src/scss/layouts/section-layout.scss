@@ -2,7 +2,6 @@
     padding-top: 2.5rem;
     padding-bottom: 2.5rem;
     position: relative;
-    overflow: hidden;
 
     @include use-media(tablet) {
         padding-top: 4rem;
@@ -71,7 +70,12 @@
         }
     }
 
-    @at-root .scrollspy .section-layout:not([class*=bg], .py-0):has(> .pattern-bg) + .section-layout:not([class*=bg]):has(> .pattern-bg) {
-        scroll-margin-top: 9rem;
+    @at-root .scrollspy .section-layout:not([class*=bg], .py-0):has(> .pattern-bg) + .section-layout:not([class*=bg]):has(> .pattern-bg),
+    .scrollspy .section-layout.pt-0 {
+        scroll-margin-top: 2.5rem;
+
+        @include use-media(tablet-album) {
+            scroll-margin-top: 9rem;
+        }
     }
 }
