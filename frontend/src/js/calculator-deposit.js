@@ -32,10 +32,10 @@ const CURRENCIES = {
 
 const URL = '/local/php_interface/ajax/calc.php';
 
-function getRates({table = null, elementId = null, name = null}) {
+function getRates({table = null, id = null, name = null}) {
     const params = new URLSearchParams();
     if (table !== null) params.append('table', table);
-    if (elementId !== null) params.append('elementId', elementId);
+    if (id !== null) params.append('id', id);
     if (name !== null) params.append('name', name);
 
     return fetch(URL, {
@@ -365,6 +365,7 @@ const initElementsDepositCalculator = (root) => {
 }
 
 function initStateDepositCalculator(calculator) {
+    console.log('calculator', calculator.dataset)
     return getRates(calculator.dataset)
         .then(calculatorData => {
 
