@@ -151,83 +151,13 @@ $renderer = new Renderer($APPLICATION, $component);
     <section class="section-layout">
         <div class="container">
             <h3 class="px-lg-6 mb-6 mb-lg-7">Калькулятор бонусов</h3>
-            <div class="row px-lg-6">
-                <div class="col-12 col-lg-6">
-                    <div class="pe-xl-6">
-                        <div class="d-flex flex-column row-gap-4 row-gap-md-6 row-gap-lg-7">
-                            <div class="input-slider js-input-slider" data-type="price" data-start-value="2000" data-max-value="100000" data-min-value="2000" data-step-size="1000">
-                                <label class="text-s dark-70 ps-3 mb-2 text-lg-m" for="amount-bonus">Ваши покупки по карте в месяц</label>
-                                <div class="input-slider-text js-input-slider-text">
-                                    <input class="input-slider-text__input h4 js-input-slider-text-input">
-                                    <button class="input-slider-text__button input-slider-text__button--edit js-input-slider-text-edit" type="button">
-                                        <svg class="icon dark-70 size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                            <use xlink:href="img/svg-sprite.svg#icon-edit"></use>
-                                        </svg>
-                                    </button>
-                                    <button class="input-slider-text__button input-slider-text__button--close js-input-slider-text-close" type="button">
-                                        <svg class="icon dark-70 size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                            <use xlink:href="img/svg-sprite.svg#icon-close"></use>
-                                        </svg>
-                                    </button>
-                                </div>
-                                <div class="input-slider__inner js-input-slider-inner">
-                                    <input class="input-slider__item js-input-slider-input" id="amount-bonus" type="range" step="1" min="0" max="1" value="0">
-                                </div>
-                                <div class="input-slider-text-steps js-input-slider-text-steps"></div>
-                            </div>
-                            <div class="row row-gap-4 row-gap-lg-6">
-                                <div class="col-12 col-md-6">
-                                    <div class="d-flex flex-column row-gap-2">
-                                        <label class="form-label mb-0" for="select1">Тип карты</label>
-                                        <select class="form-select js-select" id="select1" aria-label="Тип карты">
-                                            <?foreach ($arResult['CARD_TYPES'] as $key => $type): ?>
-                                                <?$isSelected = ($key == 0) ? 'selected' : '';?>
-                                                <option <?=$isSelected?> value="<?=$type['ID']?>"><?=$type['VALUE']?></option>
-                                            <?endforeach;?>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-6">
-                                    <div class="d-flex flex-column row-gap-2">
-                                        <label class="form-label mb-0" for="select2">Категория основной карты</label>
-                                        <select class="form-select js-select" id="select2" aria-label="Категория основной карты">
-                                            <?foreach ($arResult['CARD_CATEGORIES'] as $key => $category): ?>
-                                                <?$isSelected = ($key == 0) ? 'selected' : '';?>
-                                                <option <?=$isSelected?> value="<?=$category['ID']?>"><?=$category['VALUE']?></option>
-                                            <?endforeach;?>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-lg-6 mt-4 mt-md-6 mt-lg-0">
-                    <div class="ps-xxl-6">
-                        <div class="polygon-container js-polygon-container">
-                            <div class="polygon-container__content">
-                                <div class="card-calculate-result bg-gradient-violet card-calculate-result--type-bonus">
-                                    <div class="card-calculate-result__body">
-                                        <div class="d-flex flex-column row-gap-2">
-                                            <span class="card-calculate-result__label text-l">За год будет начислено</span>
-                                            <span class="text-number-ml fw-bold text-nowrap">
-                                                <?$firstCardType = $arResult['CARD_TYPES'][0]['ID'];?>
-                                                <?$firstCardCategory = $arResult['CARD_CATEGORIES'][0]['ID'];?>
-                                                <?=$arResult['BONUS_RATES'][$firstCardType][$firstCardCategory]['HELLO_BONUS_VALUE']?> бонусов
-                                                </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="polygon-container__polygon js-polygon-container-polygon green-100">
-                                <svg class="js-polygon-container-svg" xmlns="http://www.w3.org/2000/svg">
-                                    <polygon points="2,2 335,2 335,394 295,434 2,434" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="10"></polygon>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <? $APPLICATION->IncludeComponent(
+                "dalee:calculator",
+                "bonuses",
+                array(
+                    "CALCULATOR_ELEMENT_ID" => $arResult['ID'],
+                )
+            ); ?>
         </div>
         <picture class="pattern-bg pattern-bg--position-sm-bottom">
             <source srcset="/frontend/dist/img/patterns/section-2/pattern-light-s.svg" media="(max-width: 767px)">
