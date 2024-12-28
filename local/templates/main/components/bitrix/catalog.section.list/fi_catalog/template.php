@@ -20,7 +20,7 @@ use Bitrix\Main\Localization\Loc;
             <? if(!empty($arResult["SECTIONS_UP_POSITION"])) : ?>
                 <div class="card-offer-grid">
                     <? foreach ($arResult["SECTIONS_UP_POSITION"] as $key => $item) : ?>
-                        <div class="card-product card-product--transparent <?if($key === 0):?>card-product--size-large<?endif;?> bg-dark-10 card-product--bg-white">
+                        <a href="<?= $item["SECTION_PAGE_URL"] ?>" class="card-product card-product--transparent <?if($key === 0):?>card-product--size-large<?endif;?> bg-dark-10 card-product--bg-white">
                             <div class="card-product__inner">
                                 <div class="card-product__content">
                                     <h4 class="card-product__title"><?= $item["NAME"]?></h4>
@@ -37,14 +37,14 @@ use Bitrix\Main\Localization\Loc;
                                 <?if (!empty($item["PICTURE"])) :?>
                                     <img class="card-product__img" src="<?= $item["PICTURE"]["SRC"]?>" alt="" loading="lazy">
                                 <?endif;?>
-                                <a class="btn btn-link btn-icon m-auto m-lg-0 py-2 py-lg-0<?if($key === 0):?> m-md-0<?endif;?>" href="<?= $item["SECTION_PAGE_URL"] ?>">
+                                <span class="btn btn-link btn-icon m-auto m-lg-0 py-2 py-lg-0<?if($key === 0):?> m-md-0<?endif;?>">
                                     <span><?= Loc::getMessage("FL_CATALOG_LINK_DETAIL_TITLE")?></span>
                                     <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                                         <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
                                     </svg>
-                                </a>
+                                </span>
                             </div>
-                        </div>
+                        </a>
                     <? endforeach; ?>
                 </div>
             <? endif; ?>
@@ -149,24 +149,24 @@ use Bitrix\Main\Localization\Loc;
                         <div class="swiper-wrapper">
                             <? foreach ($arResult["SECTIONS_DOWN_POSITION"] as $key => $item) : ?>
                                 <div class="swiper-slide js-swiper-slide">
-                                <div class="card-product card-product--yellow bg-dark-10">
-                                    <div class="card-product__inner">
-                                        <div class="card-product__content">
-                                            <h4 class="card-product__title"><?= $item["NAME"]?></h4>
-                                            <p class="card-product__description m-0"><?= $item["DESCRIPTION"]?></p>
+                                    <a class="card-product card-product--yellow bg-dark-10" href="<?= $item["SECTION_PAGE_URL"] ?>">
+                                        <div class="card-product__inner">
+                                            <div class="card-product__content">
+                                                <h4 class="card-product__title"><?= $item["NAME"]?></h4>
+                                                <p class="card-product__description m-0"><?= $item["DESCRIPTION"]?></p>
+                                            </div>
+                                            <?if (!empty($item["PICTURE"])) :?>
+                                                <img class="card-product__img" src="<?= $item["PICTURE"]["SRC"]?>" alt="" loading="lazy">
+                                            <?endif;?>
+                                            <span class="btn btn-link btn-icon m-auto m-lg-0">
+                                                <span><?= Loc::getMessage("FL_CATALOG_LINK_DETAIL_TITLE_DOWN")?></span>
+                                                <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                                    <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
+                                                </svg>
+                                            </span>
                                         </div>
-                                        <?if (!empty($item["PICTURE"])) :?>
-                                            <img class="card-product__img" src="<?= $item["PICTURE"]["SRC"]?>" alt="" loading="lazy">
-                                        <?endif;?>
-                                        <a class="btn btn-link btn-icon m-auto m-lg-0" href="<?= $item["SECTION_PAGE_URL"] ?>">
-                                            <span><?= Loc::getMessage("FL_CATALOG_LINK_DETAIL_TITLE_DOWN")?></span>
-                                            <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                                <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
-                                            </svg>
-                                        </a>
-                                    </div>
+                                    </a>
                                 </div>
-                            </div>
                             <? endforeach; ?>
                         </div>
                         <div class="slider-controls js-swiper-controls mt-3 mt-md-4">
