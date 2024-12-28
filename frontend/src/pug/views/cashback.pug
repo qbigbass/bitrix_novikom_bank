@@ -193,7 +193,7 @@ block content
                             span!= item.description
         +pattern-bg('section', 'light', 'pattern-bg--position-sm-bottom')
 
-    section.section-layout.bg-blue-10
+    section.section-layout.bg-blue-10(tabindex="0")
         .container
             h3.mb-6.mb-lg-7.px-lg-6
                 | Перечень избранных категорий
@@ -207,11 +207,11 @@ block content
                     include ../includes/layout/slider-cards-sales
             .row.px-lg-6.mt-6.mt-lg-7
                 .col-12
-                    a(href="#").btn.btn-lg.btn-link.btn-icon
+                    a(href="#" tabindex="0").btn.btn-lg.btn-link.btn-icon
                         | Перечень МСС кодов по&nbsp;избранным категориям
                         +svg-use("icon-chevron-right", "icon size-m")
 
-    section.section-layout.js-collapsed-mobile
+    section.section-layout.js-collapsed-mobile(tabindex="0")
         .container
             h3.d-none.d-md-block.mb-md-6.mb-lg-7.px-lg-6
                 | Подробнее о&nbsp;программе &laquo;Кешбэк&raquo;
@@ -239,7 +239,7 @@ block content
                                 include ../includes/layout/tabs/faq
         +pattern-bg('section-2', 'light', 'pattern-bg--hide-mobile')
 
-    section.section-layout.js-collapsed-mobile.bg-dark-10
+    section.section-layout.js-collapsed-mobile.bg-dark-10(tabindex="0")
         .container
             h3.d-none.d-md-block.mb-md-6.mb-lg-7.px-lg-6
                 | Как узнать сумму выплаченного кешбэка
@@ -259,7 +259,7 @@ block content
                             +benefit(item.spriteData, "").pe-xxl-11
                                 span.text-l!= item.text
 
-    section.section-layout
+    section.section-layout(tabindex="0")
         .container
             .row
                 .col-12
@@ -287,7 +287,7 @@ block content
                             +benefit(item.spriteData, "").pe-xxl-11
                                 span.text-l!= item.text
 
-    section.section-layout
+    section.section-layout(tabindex="0")
         .container
             h3.px-lg-6.mb-6.mb-lg-7
                 | Смотрите также
