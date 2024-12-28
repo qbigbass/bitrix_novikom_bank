@@ -19,7 +19,7 @@ mixin card-product(data)
                     img(src=`img/icons/${data.iconImg ? data.iconImg : 'money-orange'}.svg`, alt="", loading="lazy" class= data.link ? "ms-auto" : "").icon.size-xxl
 
     else
-        #{(data.link || data.button) ? 'a(href="#")' : 'div'}.card-product(class= [`card-product--${data.color}`, data.size ? `card-product--size-${data.size}`:'', data.bgClass ? data.bgClass : 'bg-dark-10'])&attributes(attributes)
+        #{(data.link || data.button) ? 'a href="#"' : 'div'}.card-product(class= [`card-product--${data.color}`, data.size ? `card-product--size-${data.size}`:'', data.bgClass ? data.bgClass : 'bg-dark-10'])&attributes(attributes)
             div.card-product__inner
                 if data.tag
                     +tag(data.tag).card-product__tag
