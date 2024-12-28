@@ -34,7 +34,10 @@
                 </a>
             <? } ?>
         <? } ?>
-        <? if (!empty($arResult['FIRST_LEVEL_MENU']['HIDDEN']) || array_column($arResult['FIRST_LEVEL_MENU']['NOT_HIDDEN'], 'JS_DESKTOP_MOVE_LINK')) { ?>
+        <? if (
+            !empty($arResult['FIRST_LEVEL_MENU']['HIDDEN'])
+            || is_array($arResult['FIRST_LEVEL_MENU']['NOT_HIDDEN']) && array_column($arResult['FIRST_LEVEL_MENU']['NOT_HIDDEN'], 'JS_DESKTOP_MOVE_LINK')
+        ) { ?>
             <div class="dropdown js-dropdown-menu">
                 <button class="icon size-m dropdown-toggle violet-100" type="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
