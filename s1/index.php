@@ -250,7 +250,7 @@ $APPLICATION->SetTitle('Частным клиентам - Главная НОВ�
                         "dalee:calculator",
                         "deposits",
                         array(
-                            "CALCULATOR_ELEMENT_ID" => ""
+                            "CALCULATOR_ELEMENT_ID" => "474"
                         )
                     ); ?>
                 </div>

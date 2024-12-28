@@ -66,9 +66,9 @@ $terms = [
                 <? } ?>
 
                 <div class="d-flex flex-column flex-sm-row align-items-center gap-5 gap-sm-6 w-100">
-                    <? if (!empty($item['PROPERTIES']['BUTTON_LIST']['VALUE'])) { ?>
+                    <? if (!empty($item['PROPERTIES']['BUTTON_DETAIL']['VALUE'])) { ?>
                         <a class="btn btn-tertiary btn-lg-lg card-product-list__button w-100 w-sm-auto"
-                           href="#"><?= $item['PROPERTIES']['BUTTON_TEXT_LIST']['VALUE'] ?></a>
+                           href="<?= $item['PROPERTIES']['BUTTON_HREF_DETAIL']['VALUE'] ?>"><?= $item['PROPERTIES']['BUTTON_TEXT_DETAIL']['VALUE'] ?></a>
                     <? } ?>
                     <a class="btn btn-link btn-lg-lg d-inline-flex gap-2 align-items-center card-product-list__button-more"
                        href="<?= $item['CODE'] == 'restructuring' ? '/loans/restructuring/' : $item['DETAIL_PAGE_URL'] ?>">

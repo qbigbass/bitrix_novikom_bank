@@ -12,6 +12,9 @@
 /** @var CBitrixComponent $component */
 
 use Dalee\Helpers\ComponentHelper;
+use Dalee\Helpers\ComponentRenderer\Renderer;
+$renderer = new Renderer($APPLICATION, $component);
+
 ?>
 <section class="banner-text banner-text--border-green <?=$arResult['DISPLAY_PROPERTIES']['BANNER_STYLE']['VALUE_XML_ID']?>">
     <div class="container banner-text__container position-relative z-2">
@@ -37,71 +40,11 @@ use Dalee\Helpers\ComponentHelper;
         <img src="/frontend/dist/img/patterns/section/pattern-light-l.svg" alt="bg pattern" loading="lazy">
     </picture>
 </section>
-
 <?if(!empty($arResult['DISPLAY_PROPERTIES']['BENEFITS']['VALUE'])) : ?>
     <section class="section-layout">
         <div class="container">
             <div class="row row-gap-6 row-gap-md-7 px-lg-6">
-                <?$GLOBALS['benefitsFilter'] = [
-                    'ACTIVE' => 'Y',
-                    'ID' => $arResult['DISPLAY_PROPERTIES']['BENEFITS']['VALUE']
-                ];?>
-
-                <?$APPLICATION->IncludeComponent(
-                    "bitrix:news.list",
-                    "benefits",
-                    [
-                        "ACTIVE_DATE_FORMAT" => "d.m.Y",
-                        "ADD_SECTIONS_CHAIN" => "N",
-                        "AJAX_MODE" => "N",
-                        "AJAX_OPTION_ADDITIONAL" => "",
-                        "AJAX_OPTION_HISTORY" => "N",
-                        "AJAX_OPTION_JUMP" => "N",
-                        "AJAX_OPTION_STYLE" => "Y",
-                        "CACHE_FILTER" => "N",
-                        "CACHE_GROUPS" => "Y",
-                        "CACHE_TIME" => "36000000",
-                        "CACHE_TYPE" => "A",
-                        "CHECK_DATES" => "Y",
-                        "COL_COUNT" => !empty($arResult['DISPLAY_PROPERTIES']['BENEFITS_COL']['VALUE']) ? $arResult['DISPLAY_PROPERTIES']['BENEFITS_COL']['VALUE'] : '3',
-                        "DETAIL_URL" => "",
-                        "DISPLAY_BOTTOM_PAGER" => "N",
-                        "DISPLAY_TOP_PAGER" => "N",
-                        "FIELD_CODE" => ["CODE","NAME","PREVIEW_TEXT","PREVIEW_PICTURE",""],
-                        "FILTER_NAME" => "benefitsFilter",
-                        "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                        "IBLOCK_ID" => iblock('benefits'),
-                        "IBLOCK_TYPE" => "additional",
-                        "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
-                        "INCLUDE_SUBSECTIONS" => "N",
-                        "MESSAGE_404" => "",
-                        "NEWS_COUNT" => "20",
-                        "PAGER_BASE_LINK_ENABLE" => "N",
-                        "PAGER_DESC_NUMBERING" => "N",
-                        "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
-                        "PAGER_SHOW_ALL" => "N",
-                        "PAGER_SHOW_ALWAYS" => "N",
-                        "PAGER_TEMPLATE" => ".default",
-                        "PAGER_TITLE" => "Новости",
-                        "PARENT_SECTION" => "",
-                        "PARENT_SECTION_CODE" => "",
-                        "PREVIEW_TRUNCATE_LEN" => "",
-                        "PROPERTY_CODE" => ["",""],
-                        "SET_BROWSER_TITLE" => "N",
-                        "SET_LAST_MODIFIED" => "N",
-                        "SET_META_DESCRIPTION" => "N",
-                        "SET_META_KEYWORDS" => "N",
-                        "SET_STATUS_404" => "N",
-                        "SET_TITLE" => "N",
-                        "SHOW_404" => "N",
-                        "SORT_BY1" => "ACTIVE_FROM",
-                        "SORT_BY2" => "SORT",
-                        "SORT_ORDER1" => "DESC",
-                        "SORT_ORDER2" => "ASC",
-                        "STRICT_SECTION_CHECK" => "N",
-                    ],
-                    $component
-                ); ?>
+                <? $renderer->render('Benefits', $arResult['PROPERTIES']['BENEFITS']['VALUE'], null, ['colCount' => $arResult['DISPLAY_PROPERTIES']['BENEFITS_COL']['VALUE'] ?? 3]); ?>
             </div>
         </div>
         <picture class="pattern-bg pattern-bg--position-sm-bottom">
@@ -382,78 +325,7 @@ use Dalee\Helpers\ComponentHelper;
                     <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-down"></use>
                 </svg>
             </a>
-            <?$GLOBALS['tabsFilter'] = [
-                'ACTIVE' => 'Y',
-                'ID' => $arResult['DISPLAY_PROPERTIES']['TABS']['VALUE']
-            ];
-
-            $APPLICATION->IncludeComponent(
-                "bitrix:news.list",
-                "tabs",
-                [
-                    "ACTIVE_DATE_FORMAT" => "d.m.Y",
-                    "ADD_SECTIONS_CHAIN" => "N",
-                    "AJAX_MODE" => "N",
-                    "AJAX_OPTION_ADDITIONAL" => "",
-                    "AJAX_OPTION_HISTORY" => "N",
-                    "AJAX_OPTION_JUMP" => "N",
-                    "AJAX_OPTION_STYLE" => "Y",
-                    "CACHE_FILTER" => "N",
-                    "CACHE_GROUPS" => "Y",
-                    "CACHE_TIME" => "36000000",
-                    "CACHE_TYPE" => "A",
-                    "CHECK_DATES" => "Y",
-                    "DETAIL_URL" => "",
-                    "DISPLAY_BOTTOM_PAGER" => "N",
-                    "DISPLAY_TOP_PAGER" => "N",
-                    "FIELD_CODE" => ["CODE","NAME","PREVIEW_TEXT","PREVIEW_PICTURE",""],
-                    "FILTER_NAME" => "tabsFilter",
-                    "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                    "IBLOCK_ID" => iblock('tabs'),
-                    "IBLOCK_TYPE" => "additional",
-                    "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
-                    "INCLUDE_SUBSECTIONS" => "N",
-                    "MESSAGE_404" => "",
-                    "NEWS_COUNT" => "20",
-                    "PAGER_BASE_LINK_ENABLE" => "N",
-                    "PAGER_DESC_NUMBERING" => "N",
-                    "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
-                    "PAGER_SHOW_ALL" => "N",
-                    "PAGER_SHOW_ALWAYS" => "N",
-                    "PAGER_TEMPLATE" => ".default",
-                    "PAGER_TITLE" => "Новости",
-                    "PARENT_SECTION" => "",
-                    "PARENT_SECTION_CODE" => "",
-                    "PREVIEW_TRUNCATE_LEN" => "",
-                    "PROPERTY_CODE" => [
-                        "CONDITIONS_ICONS",
-                        "CONDITIONS",
-                        "RATES_DESCRIPTION",
-                        "TEXT_FIELD",
-                        "HEADING",
-                        "STEPS",
-                        "SHORT_INFO",
-                        "QUOTES",
-                        "QUESTIONS",
-                        "ICONS_WITH_DESCRIPTION",
-                        "ICON_SHORT_INFO",
-                        "DOCUMENTS"
-                    ],
-                    "SET_BROWSER_TITLE" => "N",
-                    "SET_LAST_MODIFIED" => "N",
-                    "SET_META_DESCRIPTION" => "N",
-                    "SET_META_KEYWORDS" => "N",
-                    "SET_STATUS_404" => "N",
-                    "SET_TITLE" => "N",
-                    "SHOW_404" => "N",
-                    "SORT_BY1" => "ACTIVE_FROM",
-                    "SORT_BY2" => "SORT",
-                    "SORT_ORDER1" => "DESC",
-                    "SORT_ORDER2" => "ASC",
-                    "STRICT_SECTION_CHECK" => "N",
-                ],
-                $component
-            );?>
+            <? $renderer->render('Tabs', $arResult['PROPERTIES']['TABS']['VALUE'], null, ['elementId' => $arResult['ID']]); ?>
         </div>
         <picture class="pattern-bg pattern-bg--hide-mobile">
             <source srcset="/frontend/dist/img/patterns/section-2/pattern-light-s.svg" media="(max-width: 767px)">

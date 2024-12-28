@@ -64,27 +64,26 @@ use Bitrix\Main\Localization\Loc;
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
+                            <? foreach ($item["BLOCK_QUOTES"] as $quote): ?>
                             <div class="polygon-container js-polygon-container">
                                 <div class="polygon-container__content">
-                                    <div class="helper bg-blue-10">
-                                        <? foreach ($item["BLOCK_QUOTES"] as $quote): ?>
-                                            <div class="helper__wrapper d-flex flex-column flex-sm-row align-items-start align-items-sm-center align-items-md-start align-items-xl-center gap-4 gap-lg-6">
-                                                <img
-                                                    class="helper__image w-auto float-end"
-                                                    src="<?= $quote["PICTURE"] ?>"
-                                                    alt="<?= $quote["TITLE"] ?>"
-                                                    loading="lazy"
-                                                >
-                                                <div class="helper__content text-l">
-                                                    <? if(!empty($quote["TITLE"])): ?>
-                                                        <h3 class="h4 mb-3"><?= $quote["TITLE"] ?></h3>
-                                                    <? endif; ?>
-                                                    <div class="rte m-0 gap-3 gap-lg-4">
-                                                        <?= $quote["TEXT"] ?>
-                                                    </div>
+                                    <div class="helper <?= $quote["COLOR_BG"] ?>">
+                                        <div class="helper__wrapper d-flex flex-column flex-sm-row align-items-start align-items-sm-center align-items-md-start align-items-xl-center gap-4 gap-lg-6">
+                                            <img
+                                                class="helper__image w-auto float-end"
+                                                src="<?= $quote["PICTURE"] ?>"
+                                                alt="<?= $quote["TITLE"] ?>"
+                                                loading="lazy"
+                                            >
+                                            <div class="helper__content text-l">
+                                                <? if(!empty($quote["TITLE"])): ?>
+                                                    <h3 class="h4 mb-3"><?= $quote["TITLE"] ?></h3>
+                                                <? endif; ?>
+                                                <div class="rte m-0 gap-3 gap-lg-4">
+                                                    <?= $quote["TEXT"] ?>
                                                 </div>
                                             </div>
-                                        <? endforeach; ?>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="polygon-container__polygon js-polygon-container-polygon yellow-100">
@@ -94,6 +93,7 @@ use Bitrix\Main\Localization\Loc;
                                 </div>
                             </div>
                         </div>
+                        <? endforeach; ?>
                     </div>
                 </div>
             </section>
