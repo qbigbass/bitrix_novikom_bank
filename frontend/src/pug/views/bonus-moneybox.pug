@@ -170,7 +170,7 @@ block content
     )
 
 
-    section.section-layout
+    section.section-layout(tabindex="0")
         .container
             .row.row-gap-6.row-gap-md-7.px-lg-6
                 each item, index in allBenefits
@@ -179,7 +179,7 @@ block content
                             span!= item.description
         +pattern-bg('section', 'light', 'pattern-bg--position-sm-bottom')
 
-    section.section-layout.pt-0
+    section.section-layout.pt-0(tabindex="0")
         .container
             .row
                 .col-12
@@ -188,7 +188,7 @@ block content
                             p.mb-0 В&nbsp;2023&nbsp;г. программа лояльности банка Новиком была награждена премией &laquo;Финансовая элита России&raquo; в&nbsp;номинации &laquo;Программа лояльности с&nbsp;максимальной выгодой&raquo;.
 
 
-    section.section-layout.js-collapsed-mobile.bg-dark-10
+    section.section-layout.js-collapsed-mobile.bg-dark-10(tabindex="0")
         .container
             h3.d-none.d-md-block.mb-md-6.mb-lg-7.px-lg-6
                 | Где узнать о&nbsp;сумме начисленных бонусов
@@ -207,7 +207,7 @@ block content
                         .col-12.col-md-6
                             +card-step(item).pe-xxl-11
 
-    section.section-layout.js-collapsed-mobile
+    section.section-layout.js-collapsed-mobile(tabindex="0")
         .container
             h3.d-none.d-md-block.mb-md-6.mb-lg-7.px-lg-6
                 | Подробнее о&nbsp;программе &laquo;Бонусная копилка&raquo;
@@ -236,8 +236,8 @@ block content
         +pattern-bg('section-2', 'light', 'pattern-bg--hide-mobile')
 
 
-    section.section-layout.js-collapsed-mobile.bg-dark-10
-        .container(tabindex="0") 
+    section.section-layout.js-collapsed-mobile.bg-dark-10(tabindex="0")
+        .container 
             h3.d-none.d-md-block.mb-md-6.mb-lg-7.px-lg-6
                 | Как подключить
             a(
@@ -255,7 +255,7 @@ block content
                         .col-12.col-md-6.col-lg-4
                            +card-step(item).pe-xxl-11
 
-    section.section-layout
+    section.section-layout(tabindex="0")
         .container
             h3.px-lg-6.mb-6.mb-lg-7
                 | Смотрите также

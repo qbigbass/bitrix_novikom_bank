@@ -515,7 +515,8 @@
     }
 
     .polygon-container.js-polygon-container {
-      width: fit-content;
+			width: fit-content;
+			min-width: 310px;
     }
 
     .tab-content {
@@ -576,6 +577,9 @@
 
 
 
+.card-feedback__inner::after{
+	background:none;
+}
     .form-feedback.bg-white {
       background: var(--yellow-contrast-bg-100);
     }
@@ -746,10 +750,7 @@
       background-color: var(--yellow-contrast-bg-dark);
       color: var(--yellow-contrast-bg-200);
       border: 1px solid var(--yellow-contrast-black-0);
-      white-space: normal;
-      text-align: center;
-      word-wrap: break-word;
-      overflow-wrap: break-word;
+ 
 
       &:hover {
         background-color: var(--yellow-contrast-black-0);
@@ -765,7 +766,7 @@
       }
     }
 
-
+		
 
     .btn.btn-link.d-inline-flex.gap-2.align-items-center {
       background: transparent;
@@ -1146,9 +1147,9 @@
       background: none;
     }
 
-    .banner-product.banner-product--heavy-violet.banner-product--type-msb.banner-product--border-yellow.banner-product--size-xl {
-      background: none;
-    }
+		.banner-product.banner-product--heavy-violet.banner-product--type-msb.banner-product--border-yellow.banner-product--size-xl{
+			background:none;
+		}
 
     .card-benefit {
       background-color: var(--yellow-contrast-bg-dark);
@@ -1273,7 +1274,7 @@
         &--bg-heavy-purple {
           border-radius: 5px;
           background: var(--yellow-contrast-bg-100);
-          border: 1px solid var(--yellow-contrast-black-100);
+
         }
 
         &--bg-white {
@@ -1352,6 +1353,8 @@
       background: var(--yellow-contrast-black-100);
       color: var(--yellow-contrast-bg-200);
       padding: 5px 12px !important;
+			min-width: 150px;
+			max-width: 100%;
       ;
     }
 
@@ -1421,15 +1424,13 @@
 
     //cards.html
 
-    .tabs-panel__navigation-item-reverse,
-    .tabs-panel__navigation-item {
-      background: none;
-    }
-
-    .tabs-panel__navigation.d-none.d-lg-block.js-tabs-slider-navigation.w-100 span>svg {
-
-      color: var(--yellow-contrast-black-0)
-    }
+		.tabs-panel__navigation-item-reverse ,.tabs-panel__navigation-item {
+			background:none;
+		}
+		.tabs-panel__navigation.d-none.d-lg-block.js-tabs-slider-navigation.w-100 span>svg{
+			
+				color:  var(--yellow-contrast-black-0)
+		}
 
     //оформить заявку
     .btn.btn-tertiary.btn-lg-lg.card-product-list__button.w-100.w-sm-auto {
@@ -1564,8 +1565,19 @@
     //cashback.html
 
     .card-sale.d-flex.flex-column.align-items-start.gap-2.gap-lg-3 {
-      padding: 25px;
-      margin: 0 auto;
+    display: flex;
+			flex-direction: column;
+			align-items: center; 
+			justify-content: center; 
+			text-align: center;
+			height: 100%; 
+	
+			padding: 25px;
+			border-radius:5px;
+
+			&:focus , &:hover{
+				background-color: var(--yellow-contrast-bg-300);
+			}
     }
 
     .section-layout.bg-blue-10 {
@@ -1573,7 +1585,8 @@
     }
 
     .dark-100 {
-      text-align: center;
+			margin: 0 auto;
+			text-align:center;
     }
 
     .banner-text--border-green.bg-linear-blue {
@@ -1676,6 +1689,10 @@
     .accordion-header .accordion-button {
       color: var(--yellow-contrast-gray-200);
       background-color: var(--yellow-contrast-bg-100);
+
+			&::after {
+				filter: invert(0) brightness(0)
+			}
     }
 
     .accordion {
@@ -1687,9 +1704,9 @@
       }
     }
 
-    .card-benefit.d-inline-flex.px-3.px-sm-5.px-lg-6.p-4.p-sm-5.p-lg-6.w-100.bg-dark-10 {
-      margin-top: 25px;
-    }
+		.card-benefit.d-inline-flex.px-3.px-sm-5.px-lg-6.p-4.p-sm-5.p-lg-6.w-100.bg-dark-10{
+			margin-top: 25px;
+		}
 
     //customer-requests.html
     .list.list--size-l .link {
@@ -1943,6 +1960,10 @@
       ;
     }
 
+		.card-promo__image{
+			display: none;
+		}
+
     .banner-text__title.text-break.dark-0.card-promo__image {
       display: none;
     }
@@ -2034,7 +2055,7 @@
     }
 
 
-
+		
     //mir-always-plus.html
     .btn.btn-sm.btn-link.btn-icon.d-none.d-md-inline-flex {
 
@@ -2169,9 +2190,7 @@
       .swiper-slide.js-swiper-slide.swiper-slide-visible.swiper-slide-fully-visible,
       .swiper-slide.js-swiper-slide.swiper-slide-visible {
         background-color: var(--yellow-contrast-bg-100);
-        border: 1px solid var(--yellow-contrast-black-100);
 
-        border-radius: 5px;
       }
     }
 
@@ -2324,7 +2343,24 @@
 
     //кнопка подробнее на странице  financial-institutes.html
     .card-product__footer {
+			position: relative; 
+			display: flex; 
+			gap:25px;
+			align-items: center;
+			justify-content: space-between;
+			overflow: hidden;
       .btn.btn-link.btn-icon.d-none.d-md-inline-flex {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				gap: 0.5em; 
+				min-width: fit-content; 
+				max-width: 100%; 
+				width: auto;
+				white-space: normal; 
+				text-align: center;
+
+
         padding: 5px 12px;
         color: var(--yellow-contrast-bg-200);
         background-color: var(--yellow-contrast-bg-dark);
@@ -2357,6 +2393,16 @@
         color: var(--yellow-contrast-bg-200);
       }
     }
+
+		.btn.btn-link.btn-lg.d-inline-flex.gap-2.align-items-center.mt-4.mt-md-6.section-custom-accordion__button-more {
+			color: var(--yellow-contrast-bg-200);
+			background-color: var(--yellow-contrast-bg-dark);
+			padding:15px 32px;
+			&:hover, &:focus {
+				color: var(--yellow-contrast-bg-200);
+			background-color: var(--yellow-contrast-black-0);
+			}
+		}
 
     .overflow-auto.custom-overflow-scrollbar>table>thead>tr>th {
       font-size: 1.5rem;
@@ -2508,13 +2554,184 @@
     }
 
     .list.list--size-l li:before {
-      background: var(--yellow-contrast-bg-100);
+      background:var(--yellow-contrast-black-0);
     }
+
+
 
     .accordion-button.collapsed {
       color: var(--yellow-contrast-black-100);
+			&:hover , &:focus {
+				background-color:var(--yellow-contrast-bg-300);
+			}
     }
 
+		
+		//mobile
+
+		.mobile-menu {
+			background-color:var(--yellow-contrast-bg-300);
+		}
+
+		.mobile-menu__header{
+			color:var(--yellow-contrast-black-0);
+			.text-s{
+				color:var(--yellow-contrast-black-0);
+				&:hover {
+					text-decoration: underline;
+					color:var(--yellow-contrast-black-300);
+				}
+				&.is-active{
+					color: var(--yellow-contrast-black-0);
+
+					&::after {
+						height: 3px;
+						background-color:var(--yellow-contrast-black-0);
+					}
+				}
+			}
+		}
+
+		.mobile-menu__bank-apps{
+			.btn.btn-primary.w-100.dropdown-toggle,
+			.btn.btn-outline-primary.d-inline-flex.gap-2.align-items-center.justify-content-center{
+				background-color:var(--yellow-contrast-black-0);
+				color:var(--yellow-contrast-white-0);
+				&:hover {
+					background-color:var(--yellow-contrast-bg-dark);
+					color:var(--yellow-contrast-white-0);
+				}
+			}
+		}
+
+
+		.mobile-menu__bank-contact {
+
+			.d-flex.align-items-center.gap-2{
+				color:var(--yellow-contrast-black-0);
+
+				&:hover {
+					text-decoration: underline;
+					color:var(--yellow-contrast-black-300);
+
+				 }
+				}
+		}
+
+		.mobile-main-nav.js-mobile-main-nav{
+			.nav-panel{
+				background-color:var(--yellow-contrast-bg-dark);
+				.btn-nav-panel{
+					color:var(--yellow-contrast-black-0);
+					svg{
+						color:var(--yellow-contrast-black-0);
+					}
+
+					&:hover , &:focus{
+						color:var(--yellow-contrast-white-0);
+						svg{
+							color:var(--yellow-contrast-white-0);
+						}
+					}
+			}
+		}}
+		
+.mobile-menu__nav{
+	.accordion.accordion-flush{
+		.accordion-body{
+			.row.row-gap-4{
+				.col-12.col-md-6 a{
+					color:var(--yellow-contrast-black-0);
+
+					&:hover, &:focus {
+						color:var(--yellow-contrast-hover-link);
+					}
+				}
+			}
+		}
+	}
+}
+
+
+		
+//modals.html
+.modal-footer.border-0.justify-content-md-center{
+	.btn.btn-primary.btn-lg-lg.m-0.w-100.w-md-auto{
+		background-color:var(--yellow-contrast-black-0);
+		color:var(--yellow-contrast-white-0);
+		&:hover , &:focus{
+			background-color:var(--yellow-contrast-hover-link);
+			color:var(--yellow-contrast-black-0);
+		}
+	}
+}
+
+.upload-file__box.p-3.p-md-4{
+	.btn.btn-link.btn-icon{
+		border:none;
+		background:none;
+		color:var(--yellow-contrast-black-0);
+
+		&:hover, &:focus {
+			color:var(--yellow-contrast-black-300);
+		}
+	}
+}
+
+legend.form-label.mb-3 {
+	color:var(--yellow-contrast-black-0);
+}
+
+.d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-5.column-gap-lg-6.mt-6.mt-lg-7.px-md-2.px-lg-0 {
+display: flex;
+justify-content: center;
+flex-wrap: wrap; 
+max-width: 100%;
+
+.btn.btn-primary.btn-lg-lg.w-100.w-md-auto,
+.btn.btn-outline-primary.btn-lg-lg.w-100.w-md-auto{
+	max-width: 500px; 
+	width: 100%; 
+	text-align: center; 
+		background-color:var(--yellow-contrast-black-0);
+		color:var(--yellow-contrast-hover-link);
+		&:hover , &:focus{
+			background-color:var(--yellow-contrast-hover-link);
+			color:var(--yellow-contrast-black-0);
+		}
+	}
+}
+
+
+.d-flex.flex-column.align-items-start.row-gap-3{
+	.btn.btn-primary{
+		background-color:var(--yellow-contrast-black-0);
+		color:var(--yellow-contrast-hover-link);
+		&:hover , &:focus{
+			background-color:var(--yellow-contrast-hover-link);
+			color:var(--yellow-contrast-black-0);
+		}
+	}
+}
+
+.modal-footer.border-0.justify-content-md-center{
+	background-color:var(--yellow-contrast-bg-100);
+}
+
+
+.btn-nav-panel--primary{
+	background:none;
+	background-color:var(--yellow-contrast-bg-300);
+	.btn-nav-panel__icon{
+		color:var(--yellow-contrast-black-0);
+	}
+
+	&:hover {
+		.btn-nav-panel__icon{
+			color:var(--yellow-contrast-black-0);
+		}
+	}
+}
 
 
   }
