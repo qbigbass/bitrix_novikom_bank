@@ -128,7 +128,7 @@ if (!empty($blockQuotesIds)) {
     $iblockQuotes = iblock('msb_quotes');
     $classQuotes = BitrixIblock::wakeUp($iblockQuotes)->getEntityDataClass();
     $elementsQuotes = $classQuotes::getList([
-        "select" => ["ID", "NAME", "PREVIEW_PICTURE", "PREVIEW_TEXT"],
+        "select" => ["ID", "NAME", "PREVIEW_PICTURE", "PREVIEW_TEXT", "COLOR_BG"],
         "filter" => ["ACTIVE" => "Y", "ID" => $blockQuotesIds],
     ])->fetchCollection();
 
@@ -139,6 +139,7 @@ if (!empty($blockQuotesIds)) {
             $previewPicture = $element->getPreviewPicture();
             $previewText = '';
             $picture = '';
+            $colorBg = 'bg-blue-10';
 
             if (!empty($element->getPreviewText())) {
                 $previewText = $element->getPreviewText();
@@ -153,10 +154,15 @@ if (!empty($blockQuotesIds)) {
                 $picture = CFile::GetPath($previewPicture);
             }
 
+            if (!empty($element->getColorBg())) {
+                $colorBg = $element->getColorBg()->getValue();
+            }
+
             $blockQuotesElements[$id] = [
                 "TITLE" => $name,
                 "TEXT" => $previewText,
-                "PICTURE" => $picture
+                "PICTURE" => $picture,
+                "COLOR_BG" => $colorBg
             ];
         }
     }
@@ -625,3 +631,5 @@ if (!empty($arResult["ITEMS"])) {
         }
     }
 }
+
+//echo "<pre>"; print_r($arResult); echo "</pre>"; //exit();

@@ -27,7 +27,7 @@ $this->setFrameMode(true);
                                 <svg class="icon size-s d-inline-block d-md-none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                                     <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-left"></use>
                                 </svg>
-                                <span><?= $arResult["SECTION"]["NAME"]?></span>
+                                <span><?= $arResult["SECTION_TITLE_BREADCRUMBS"]?></span>
                             </div>
                         </div>
                         <h1><?= $arResult["SECTION"]["NAME"]?></h1>
@@ -95,7 +95,7 @@ $this->setFrameMode(true);
                                     <svg class="icon size-s text-white-50 d-inline-block d-md-none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                                         <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-left"></use>
                                     </svg>
-                                    <span><?= $arResult["SECTION"]["NAME"]?></span>
+                                    <span><?= $arResult["SECTION_TITLE_BREADCRUMBS"]?></span>
                                 </div>
                             </div>
                             <h1 class="banner-text__title text-break h2 text-white dark-0"><?= $arResult["SECTION"]["NAME"]?></h1>

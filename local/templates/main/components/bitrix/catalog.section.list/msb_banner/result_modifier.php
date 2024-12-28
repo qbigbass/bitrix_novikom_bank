@@ -7,7 +7,7 @@ use Bitrix\Iblock\Iblock as BitrixIblock;
 $iBlockCatalog = $arResult["SECTION"]["IBLOCK_ID"];
 $entity = Section::compileEntityByIblock($iBlockCatalog);
 $sectionUserFields = $entity::getList([
-    "select" => ["UF_CNT_ELEM_F", "UF_SHOW_BANNER"],
+    "select" => ["UF_CNT_ELEM_F", "UF_SHOW_BANNER", "UF_TITLE_MENU"],
     "filter" => [
         "IBLOCK_ID" => $iBlockCatalog,
         "ID" => $arResult["SECTION"]["ID"]
@@ -22,6 +22,12 @@ if (!empty($sectionUserFields["UF_CNT_ELEM_F"])) {
 
 if (!empty($sectionUserFields["UF_SHOW_BANNER"])) {
     $arResult["SHOW_BANNER"] = true;
+}
+
+if (!empty($sectionUserFields["UF_TITLE_MENU"])) {
+    $arResult["SECTION_TITLE_BREADCRUMBS"] = $sectionUserFields["UF_TITLE_MENU"];
+} else {
+    $arResult["SECTION_TITLE_BREADCRUMBS"] = $arResult["SECTION"]["NAME"];
 }
 
 if ($arResult["SHOW_BANNER"]) {
