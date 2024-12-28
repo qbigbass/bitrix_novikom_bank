@@ -53,6 +53,7 @@ block content
     include ../cards/card-promo
     include ../cards/card-award
     include ../cards/card-about
+    include ../cards/card-feedback
     include ../cards/card
     include ../components/anchor-panel
 
@@ -244,7 +245,7 @@ block content
                             span.chip.chip--outlined.caption-m
                                 | Банковские гарантии
 
-    section#tabs-panel.section-layout.section-layout--padding-top-0
+    section#tabs-panel.section-layout
         -
             const tabsList = [
                 {
@@ -399,7 +400,7 @@ block content
                         each item in consumerLoans
                             +card-product-list(item)
 
-    section#card-product.section-layout.section-layout--padding-top-0
+    section#card-product.section-layout
         -
             var cardProductList = [
                 {
@@ -527,7 +528,7 @@ block content
                         .col-12.col-lg-4
                             +card-step(item).pe-xxl-11
 
-    section#card-promo.section-layout.section-layout--padding-top-0
+    section#card-promo.section-layout
         -
             var cardPromo = {
                 title: "Лизинг от НОВИКОМа",
@@ -572,7 +573,8 @@ block content
                         a(href="#").btn.btn-link.btn-lg-lg.btn-icon.text-info.m-auto.m-md-0
                             | Кнопка
                             +svg-use("icon-download", "icon size-m")
-    section#card-contact.section-layout.section-layout--padding-top-0
+
+    section#card-contact.section-layout
         -
             var contactList = [
                 {
@@ -693,8 +695,20 @@ block content
                         +contact-block(contactList[2]).contact-block--bg-blue
                     .col-12.col-lg-6
                         +contact-block(contactList[3]).contact-block--bg-heavy-purple
+
+    section#card-feedback.section-layout
+        .container
+            .d-flex.flex-column.row-gap-5
+                h2 Card Feedback
+                .row.row-gap-6
                     .col-12.col-lg-6
-                        +contact-block(contactList[4]).contact-block--bg-white
+                        +card-feedback({
+                            title: 'Остались вопросы?',
+                            description: 'Оставьте свой телефон и мы перезвоним вам, <br class="d-none d-md-block d-lg-none d-xl-block">либо задайте вопрос в чате',
+                            chatButtonIsVisible: true,
+                            link: '#',
+                            pattern: true,
+                        }, 'bg-white').h-100
 
     section#steps.section-layout.pt-0
         .container

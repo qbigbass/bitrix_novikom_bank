@@ -32,6 +32,7 @@ const CLASS_NAME = {
     nextEl: '.js-swiper-next',
     controls: '.js-swiper-controls',
     pagination: '.js-swiper-pagination',
+    pbTabsSlider: '.js-pb-tabs-slider',
 }
 
 const DEFAULT_SLIDER_OPTIONS = {
@@ -356,7 +357,7 @@ function initPbSlider() {
                 swiper: pbThumbsSlider,
             },
             speed: 2000,
-            spaceBetween: 16,
+            spaceBetween: 24,
             slidesPerView: 1,
             pagination: {
                 el: ".pb-services__pagination",
@@ -379,4 +380,24 @@ function initPbSlider() {
             }
         })
     })
+}
+
+let tabPbSwiper;
+
+function initPbTabsSlider() {
+    tabPbSwiper = new Swiper(CLASS_NAME.pbTabsSlider, {
+        slidesPerView: "auto",
+        loop: false,
+        freeMode: true,
+        pagination: false,
+        slideToClickedSlide: true,
+        spaceBetween: 16,
+    });
+}
+
+function destroyPbTabSwiper() {
+    if (tabPbSwiper) {
+        tabPbSwiper.destroy(true, true);
+        tabPbSwiper = null;
+    }
 }

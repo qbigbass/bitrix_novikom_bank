@@ -154,7 +154,7 @@ $headerView->render(
 if (!empty($arItems)) {
     $arItem = reset($arItems); ?>
 
-    <section class="section-layout py-lg-11 bg-blue-10">
+    <section class="section-layout py-lg-11 px-lg-6 bg-blue-10">
         <div class="container">
             <div class="d-flex flex-column flex-md-row align-items-start gap-4 gap-sm-5 gap-md-6">
                 <div class="banner-product-info-alternative__image flex-shrink-0">

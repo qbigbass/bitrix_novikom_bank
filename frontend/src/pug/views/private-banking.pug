@@ -7,6 +7,8 @@ block title
 block content
     include ../cards/private-banking/pb-card-special
     include ../cards/private-banking/pb-card-benefit
+    include ../includes/header/pb-header
+    include ../includes/layout/private-banking/pb-main-nav
     -
         var specialPrivilegesCards = [
             {
@@ -149,8 +151,8 @@ block content
 
 
     section.pb-section-hero
-        include ../includes/header/pb-header
-        include ../includes/layout/private-banking/pb-main-nav
+        +pb-header()
+        +pb-main-nav()
         .container
             h1.pb-section-hero__title.dark-0.text-center.animate.js-animation-start Лучшие финансовые инструменты <br>для&nbsp;достижения ваших целей
         video.pb-section-hero__video.animate.js-animation-start(autoplay='' loop='' muted='' poster='img/video-poster.jpg')
@@ -335,37 +337,7 @@ block content
 
     section#become-client.pb-section.pb-section--gradient.pb-section--bg-lines
         .container
-            form(action="#").pb-form.d-flex.flex-column.row-gap-4.row-gap-lg-5
-                h4.pb-form__title.dark-0.text-center Стать клиентом
-                .row.g-1
-                    .col-12.col-md-6
-                        .d-flex.flex-column.row-gap-1.row-gap-lg-2
-                            label(for="name").form-label.form-label--pb.mb-0
-                                | Имя
-                            input#name(type="text" name="name" placeholder="Введите имя").form-control.form-control--pb
-                    .col-12.col-md-6
-                        .d-flex.flex-column.row-gap-1.row-gap-lg-2
-                            label(for="phone").form-label.form-label--pb.mb-0
-                                | Телефон
-                            input#phone(type="text" name="phone" aria-describedby="mobile-phone-hint" placeholder="+7").js-mask-phone.form-control.form-control--pb
-                .row.g-1
-                    .col-12.col-md-8
-                        .d-flex.flex-column.row-gap-1.row-gap-lg-2
-                            label(for="select-date").form-label.form-label--pb.mb-0
-                                | Удобное время для звонка
-                            select#select-date(aria-label="Выберите дату").form-select.js-select.js-select-date
-
-                    .col-12.col-md-4
-                        .form-control-time
-                            input#hours(type="number" name="hours" min="1" max="24" placeholder="19").form-control.form-control--pb
-                            input#minutes(type="number" name="minutes" min="0" max="59" placeholder="00").form-control.form-control--pb
-
-                .form-check.form-check--pb
-                    input#personal(type="checkbox" checked).form-check-input
-                    label(for="personal").form-check-label
-                        | Я&nbsp;согласен с&nbsp;условиями использования банком моих персональных данных для обработки данного обращения
-                .pb-form__footer.d-flex.justify-content-center
-                    button(type="submit").btn.btn-pb.btn-pb--primary.w-100.w-md-auto Отправить
+            include ../includes/forms/pb-form
     section.pb-section.pb-section--bg-black
         .container
             .pb-card-office.animate.js-animation

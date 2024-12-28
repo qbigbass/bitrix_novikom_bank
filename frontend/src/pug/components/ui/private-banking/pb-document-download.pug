@@ -1,0 +1,9 @@
+mixin pb-document-download(data)
+    a.document-download(href= data.href, download="")
+        span.me-2!= data.text
+        .d-inline-flex.gap-2.align-items-center
+            .document-download__file.caption-m.dark-70
+                span.document-download__date-time= data.dateTime
+                span.document-download__file-type= data.fileType
+            span.icon.size-s.pr-text-color
+                +svg-use("icon-download-small")

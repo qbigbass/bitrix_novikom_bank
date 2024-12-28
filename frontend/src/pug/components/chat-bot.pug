@@ -3,9 +3,9 @@ mixin chatbot-polygon
         svg.js-polygon-container-svg(xmlns="http://www.w3.org/2000/svg")
             polygon(points="1 1, 1 52, 52 52, 67 67, 67 1" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-dasharray="8 8")
 
-.chat-bot.js-chatbot
+.chat-bot.js-chatbot(aria-label="Окрыть чат-бот" tabindex="0")
     .chat-bot__button-box.chatbot-polygon.js-polygon-container
-        button(type="button").chat-bot__button.chatbot-polygon__content.js-chatbot-btn
+        button(type="button" aria-label="Окрыть чат-бот" tabindex="0").chat-bot__button.chatbot-polygon__content.js-chatbot-btn
             +svg-use("icon-more", "icon size-m")
         +chatbot-polygon
 

@@ -32,26 +32,32 @@
         }
     ]
 
-.pb-overlay.js-pb-nav-menu.d-none
-    .pb-main-nav
-        .pb-main-nav__wrapper.container.d-flex.flex-column
-            nav.pb-nav.d-flex.flex-column.align-items-center.row-gap-4.row-gap-lg-6
-                each item in navList
-                    a.pb-nav__link(href=item.href)= item.title
-                a.btn.btn-pb.btn-pb--outline.d-none.d-lg-inline-block(href="#") Онлайн-банк
-            .text-center.d-lg-none
-                a.btn.btn-pb.btn-pb--primary.js-scroll-to(href="#become-client") Стать клиентом
 
-            .mt-auto.pt-7.pt-lg-0
-                .pb-card-contact.d-flex.flex-column.row-gap-4.row-gap-lg-5.align-items-lg-center
-                    ul.list-pb-contact.d-flex.flex-column.flex-lg-row.justify-content-xl-between.flex-wrap.gap-4
-                        each item in contactList
-                            li.d-flex.align-items-center
-                                span.icon.size-m.flex-shrink-0(class=item.iconColorClass ? item.iconColorClass: "dark-0")
-                                    +svg-use(item.icon)
-                                if item.href
-                                    a(href=item.href).list-pb-contact__link!= item.text
-                                else
-                                    span!= item.text
+mixin pb-main-nav(isOpenModal = false)
+    .pb-overlay.js-pb-nav-menu.d-none
+        .pb-main-nav
+            .pb-main-nav__wrapper.container.d-flex.flex-column
+                nav.pb-nav.d-flex.flex-column.align-items-center.row-gap-4.row-gap-lg-6
+                    each item in navList
+                        a.pb-nav__link(href=item.href)= item.title
+                    a.btn.btn-pb.btn-pb--outline.d-none.d-lg-inline-block(href="#") Онлайн-банк
+                .text-center.d-lg-none
+                    if isOpenModal
+                        button(type="button" data-bs-toggle="modal" data-bs-target="#modal-become-client" aria-label="Стать клиентом").btn.btn-pb.btn-pb--primary
+                            | Стать клиентом
+                    else
+                        a.btn.btn-pb.btn-pb--primary.js-scroll-to(href="#become-client") Стать клиентом
 
-                    a(href="/").btn.btn-pb.btn-pb--outline Основной сайт Новиком
+                .mt-auto.pt-7.pt-lg-0
+                    .pb-card-contact.d-flex.flex-column.row-gap-4.row-gap-lg-5.align-items-lg-center
+                        ul.list-pb-contact.d-flex.flex-column.flex-lg-row.justify-content-xl-between.flex-wrap.gap-4
+                            each item in contactList
+                                li.d-flex.align-items-center
+                                    span.icon.size-m.flex-shrink-0(class=item.iconColorClass ? item.iconColorClass: "dark-0")
+                                        +svg-use(item.icon)
+                                    if item.href
+                                        a(href=item.href).list-pb-contact__link!= item.text
+                                    else
+                                        span!= item.text
+
+                        a(href="/").btn.btn-pb.btn-pb--outline Основной сайт Новиком

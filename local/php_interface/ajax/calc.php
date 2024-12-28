@@ -6,7 +6,7 @@ header('Content-Type: application/json');
 $data = $_POST;
 
 $table = $data['table'] ?? null;
-$elementId = $data['elementId'] ?? null;
+$elementId = $data['id'] ?? null;
 $name = $data['name'] ?? null;
 
 if (empty($table)) {

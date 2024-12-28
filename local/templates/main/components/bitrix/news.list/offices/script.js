@@ -136,10 +136,12 @@ class OfficesMap {
         this.clearOfficesPlacemarks()
 
         let iconDefaultSize = [40, 48] // Размер иконки
-        let iconDefaultPath = '/frontend/dist/img/office-pin.svg' // Путь к иконке офиса
         let iconDefaultOffset = [-20, -24] // Смещение иконки
 
         this.filteredOffices.forEach(item => {
+            let iconType = item.type ?? 'office'; // Тип иконки
+            let iconDefaultPath = `/frontend/dist/img/${iconType}-pin.svg` // Путь к иконке
+
             let myPlacemark = new ymaps.Placemark(item.coords, {}, {
                 iconLayout: 'default#image',
                 iconImageHref: iconDefaultPath,

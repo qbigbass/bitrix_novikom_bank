@@ -61,6 +61,7 @@ function calculatePayments({amount, rate, period}) {
 }
 
 function handlerInputLoan(STATE) {
+    console.log('STATE.filteredData', STATE.filteredData);
     STATE.rate = STATE.filteredData.rate;
     STATE.payment = calculateMonthlyPayment(STATE);
 
@@ -154,7 +155,7 @@ const setLoanValues = (STATE) => {
 }
 
 function findLoanData({data, type, strategicClient}) {
-    strategicClient ? strategicClient = 'Y' : strategicClient = null;
+    strategicClient = strategicClient ? 'Y' : null
     const resultType = data.filter(item => item.loanType === type);
     const result = resultType.find(item => item.strategicClient === strategicClient);
     if (result !== -1) {

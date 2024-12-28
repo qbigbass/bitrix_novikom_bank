@@ -239,13 +239,18 @@ block content
         "bg-heavy-violet"
     )
 
-    section.section-layout.bg-dark-10
+    section.section-layout.pb-md-7.bg-dark-10
         .container
             .row
-                .col-12.mb-4.mb-md-6.mb-lg-7
+                .col-12
                     +polygon-container("yellow-100")
                         +helper("img/business-additional-info.png", "bg-white")
                             p.text-l.mb-0 Поручительство гарантийного фонда представляет возможность предприятиям малого и среднего бизнеса, у которых нет залога для получения финансирования, оформить кредит под поручительство регионального Фонда.
+
+
+    section.section-layout.pt-0.bg-dark-10
+        .container
+            .row
                 .col-12
                     .swiper.slider-cards.js-slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:2,tablet-album:3,laptop:3,laptop-x:3" data-space-between="mobile-s:8,mobile:8,tablet:16,laptop:16,laptop-x:16")
                         .swiper-wrapper
@@ -292,7 +297,7 @@ block content
                             .col-12
                                 | Условия контент
                     #funds.tab-pane.fade.show.active(role="tabpanel" aria-labelledby="funds" tabindex="0")
-                        .row.row-gap-6.row-gap-lg-7
+                        .row.row-gap-4.row-gap-md-6.row-gap-lg-7
                             .col-12
                                 form.w-100
                                     .input-group.flex-nowrap.d-none.d-lg-flex
@@ -322,12 +327,12 @@ block content
                                                 if item.link
                                                     a.btn.btn-link.btn-lg.btn-icon(type="button" href=item.link)
                                                         !=item.linkText
-                                                        +svg-use("icon-download", "icon size-m")
+                                                        +svg-use("icon-new-tab", "icon size-m")
         +pattern-bg('section-2', 'light', 'pattern-bg--position-sm-top')
 
     section.section-layout.bg-blue-10
         .container
-            h3.px-lg-6.mb-4.mb-md-6.mb-lg-7
+            h3.px-lg-6.mb-6.mb-lg-7
                 | Контакты
             .row
                 .col-12

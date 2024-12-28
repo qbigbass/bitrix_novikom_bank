@@ -49,11 +49,11 @@ $terms = [
 
                 <? if (!empty($item['PROPERTIES']['TERMS'])) { ?>
                     <div
-                        class="card-product-list__condition-list w-100 w-lg-auto d-flex justify-content-between justify-content-lg-start flex-column flex-sm-row flex-wrap row-gap-4 row-gap-sm-6 row-gap-lg-6 row-gap-xxl-6 gap-lg-12 gap-xxl-16">
+                        class="card-product-list__condition-list w-100 w-lg-auto d-flex justify-content-between justify-content-lg-start flex-column flex-sm-row flex-wrap row-gap-4 row-gap-sm-6 row-gap-lg-6 row-gap-xxl-6 gap-xl-12 gap-xxl-16">
 
                         <? $termsValues = processTerms($terms, $item['PROPERTIES']['TERMS']);
                         foreach ($termsValues as $term) { ?>
-                            <div class="card-product-list__condition d-flex flex-column gap-2 w-100 w-sm-50 w-lg-auto">
+                            <div class="card-product-list__condition d-flex flex-column gap-2 w-100 w-sm-50 w-xl-auto">
                                 <div class="d-inline-flex flex-nowrap align-items-baseline gap-1">
                                     <span class='text-l fw-semibold'><?= $term['FROM_TO'] ?></span>
                                     <span class='text-number-l fw-bold'><?= $term['VALUE'] ?></span>
@@ -66,9 +66,9 @@ $terms = [
                 <? } ?>
 
                 <div class="d-flex flex-column flex-sm-row align-items-center gap-5 gap-sm-6 w-100">
-                    <? if (!empty($item['PROPERTIES']['BUTTON_LIST']['VALUE'])) { ?>
+                    <? if (!empty($item['PROPERTIES']['BUTTON_DETAIL']['VALUE'])) { ?>
                         <a class="btn btn-tertiary btn-lg-lg card-product-list__button w-100 w-sm-auto"
-                           href="#"><?= $item['PROPERTIES']['BUTTON_TEXT_LIST']['VALUE'] ?></a>
+                           href="<?= $item['PROPERTIES']['BUTTON_HREF_DETAIL']['VALUE'] ?>"><?= $item['PROPERTIES']['BUTTON_TEXT_DETAIL']['VALUE'] ?></a>
                     <? } ?>
                     <a class="btn btn-link btn-lg-lg d-inline-flex gap-2 align-items-center card-product-list__button-more"
                        href="<?= $item['CODE'] == 'restructuring' ? '/loans/restructuring/' : $item['DETAIL_PAGE_URL'] ?>">

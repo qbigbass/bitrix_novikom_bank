@@ -22,7 +22,7 @@ mixin banner-text-content(title, breadcrumbsArray, description, button, isSmallT
             a.mt-7.w-100.w-sm-auto.btn.btn-secondary.btn-lg-lg.d-inline-block(href=button.link)= button.text
 
 mixin banner-text(data, borderColor, bgGradient='bg-linear-blue', patternType='section')
-    section.banner-text(class=[borderColor && `banner-text--border-${borderColor}`, `${bgGradient}`])
+    section.banner-text(class=[borderColor && `banner-text--border-${borderColor}`, `${bgGradient}`])&attributes(attributes)
         div.container.banner-text__container.position-relative.z-2
             .row.ps-lg-6
                 if data.imageSrc
