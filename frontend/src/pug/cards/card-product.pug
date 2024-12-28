@@ -19,7 +19,7 @@ mixin card-product(data)
                     img(src=`img/icons/${data.iconImg ? data.iconImg : 'money-orange'}.svg`, alt="", loading="lazy" class= data.link ? "ms-auto" : "").icon.size-xxl
 
     else
-        .card-product(class= [`card-product--${data.color}`, data.size ? `card-product--size-${data.size}`:'', data.bgClass ? data.bgClass : 'bg-dark-10'])&attributes(attributes)
+        #{(data.link || data.button) ? 'a(href="#")' : 'div'}.card-product(class= [`card-product--${data.color}`, data.size ? `card-product--size-${data.size}`:'', data.bgClass ? data.bgClass : 'bg-dark-10'])&attributes(attributes)
             div.card-product__inner
                 if data.tag
                     +tag(data.tag).card-product__tag
@@ -35,8 +35,8 @@ mixin card-product(data)
                 if data.img
                     img.card-product__img(src=`img/big-illustrations/${data.img}`, alt="", loading="lazy")
                 if data.button
-                    a(href="#").btn.btn-primary.card-product__button= data.button
+                    span.btn.btn-primary.card-product__button= data.button
                 if data.link
-                    a(href="#").btn.btn-link.btn-icon.m-auto.m-lg-0.py-2.py-lg-0
+                    span.btn.btn-link.btn-icon.m-auto.m-lg-0.py-2.py-lg-0
                         span!= data.link
                         +svg-use("icon-chevron-right", "icon size-m")

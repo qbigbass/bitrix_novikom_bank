@@ -47,7 +47,7 @@ $this->setFrameMode(true);
                 <?endif;?>
             </div>
             <?if(!empty($arResult["SECTION"]["BANNER_CONTENT"]["FOOTER"])):?>
-                <div class="banner-product__footer row gx-md-2 gx-lg-2_5 row-gap-4 row-gap-lg-6 mt-6 mt-lg-16">
+                <div class="banner-product__footer row gx-md-2 gx-lg-2_5 row-gap-4 row-gap-lg-6 mt-6 mt-lg-16 mt-xl-26">
                     <?foreach ($arResult["SECTION"]["BANNER_CONTENT"]["FOOTER"] as $item):?>
                         <div class="col-12 col-md-6 col-xl-4">
                             <div class="benefit d-flex gap-3 flex-column">
