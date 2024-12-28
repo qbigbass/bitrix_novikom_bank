@@ -1,0 +1,106 @@
+extends ../templates/private-base
+
+block title
+    title= 'Private Banking | Услуги'
+    meta(name="description" content="Описание страницы")
+
+block content
+    include ../cards/private-banking/pb-card
+    include ../cards/private-banking/pb-card-benefit
+    include ../components/ui/accordion-item
+    include ../components/ui/private-banking/pb-document-download
+    include ../includes/header/pb-header
+    include ../includes/layout/private-banking/pb-main-nav
+    include ../components/ui/private-banking/pb-panel-info
+    -
+        var tabList = [
+            {
+                target: "brokerage-services",
+                title: "Брокерское обслуживание",
+                isActive: true
+            },
+            {
+                target: "trust-management",
+                title: "Доверительное управление",
+            },
+            {
+                target: "depository-services",
+                title: "Депозитарное обслуживание",
+            },
+            {
+                target: "investment-consulting",
+                title: "Инвестиционное консультирование",
+            }
+        ];
+        var benefitCards = [
+            {
+                title: "Доступный кредит",
+                subtitle: "до 10 млн ₽",
+                icon: "item-1.png"
+            },
+            {
+                title: "Беспроцентный период",
+                subtitle: "56 дней",
+                icon: "item-2.png"
+            },
+            {
+                title: "Круглосуточная поддержка",
+                subtitle: "24 × 7",
+                icon: "item-3.png"
+            },
+            {
+                title: "Повышенный кешбэк",
+                subtitle: "до 30 %",
+                description: "в специальных акциях МИР",
+                icon: "item-4.png"
+            },
+            {
+                title: "Программа «БОНУС»",
+                subtitle: "до 20 %",
+                description: "возврат от суммы покупок",
+                icon: "item-5.png"
+            },
+            {
+                title: "Программа «Кешбэк»",
+                subtitle: "до 7 %",
+                description: "возврат от суммы покупок",
+                icon: "item-6.png"
+            }
+        ]
+
+    section.pb-section-hero
+        +pb-header(true)
+        +pb-main-nav(true)
+
+        .container
+            h3.pb-section__title.dark-0.text-center.my-4.animate.js-animation
+                | Инвестиционные услуги
+
+            .swiper.pb-tags-wrapper.animate.js-animation.js-pb-tabs-slider
+                ul#pills-tab.nav.nav-pills.swiper-wrapper.d-md-flex.flex-md-wrap.flex-md-row.gap-md-3.justify-content-md-center(role="tablist")
+                    each item in tabList
+                        li.nav-item.swiper-slide.w-auto(role="presentation")
+                            button.pb-tags(
+                                class= item.isActive ? 'active' : ''
+                                data-bs-toggle="pill"
+                                data-bs-target=`#${item.target}`
+                                type="button"
+                                role="tab"
+                                aria-controls= item.target
+                                aria-selected= item.isActive)= item.title
+        .pb-section-hero__overlay.pb-section-hero__overlay--size-small
+
+    section.pb-section.pb-section--bg-lines
+        .container
+            .tab-content#pills-tabContent
+                #brokerage-services.tab-pane.fade.show.active(role="tabpanel" aria-labelledby="brokerage-services" tabindex="0")
+                    include ../includes/layout/tabs/private-banking/brokerage-services
+                #trust-management.tab-pane.fade(role="tabpanel" aria-labelledby="trust-management" tabindex="0")
+                    include ../includes/layout/tabs/private-banking/trust-management
+                #depository-services.tab-pane.fade(role="tabpanel" aria-labelledby="depository-services" tabindex="0")
+                    include ../includes/layout/tabs/private-banking/depository-services
+                #investment-consulting.tab-pane.fade(role="tabpanel" aria-labelledby="investment-consulting" tabindex="0")
+                    include ../includes/layout/tabs/private-banking/investment-consulting
+    include ../includes/modals/modal-pb-become-client
+
+

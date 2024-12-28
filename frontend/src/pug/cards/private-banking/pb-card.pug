@@ -1,0 +1,9 @@
+mixin pb-card(data)
+    .pb-card.d-flex.animate.js-animation
+        .pb-card__content.d-flex.flex-column.align-items-start
+            h3.pb-card__title.dark-0!= data.title
+            .pb-card__footer.mt-auto
+                p.pb-card__subtitle.dark-0.mb-0!= data.subtitle
+                if data.description
+                    p.pb-card__description.dark-0.mb-0!= data.description
+        img(src=`img/pb-images/pb-cards/${data.icon}` alt="").pb-card__image

@@ -1,0 +1,58 @@
+.pb-panel-info {
+  padding: 1rem;
+  border-radius: 1.5rem;
+  border: 1px solid var(--pb-primary);
+  background: radial-gradient(141.69% 100% at 0% 50%, rgba(0, 0, 0, 0.70) 0%, rgba(0, 0, 0, 0.70) 100%);
+  box-shadow: -1px -1px 1px 0px rgba(142, 92, 209, 0.20) inset, 0px 20px 40px 0px rgba(0, 0, 0, 0.50);
+
+  @include use-media(tablet) {
+    padding: 1.5rem;
+  }
+
+  @include use-media(tablet-album) {
+    padding: 2.5rem;
+  }
+
+  &__image {
+    width: 5rem;
+    height: 5rem;
+
+    @include use-media(tablet-album) {
+      width: 7.5rem;
+      height: 7.5rem;
+    }
+  }
+
+  &__text {
+    font-size: 13px;
+    line-height: 1.4;
+    color: var(--pb-text-color);
+
+    @include use-media(tablet) {
+      font-size: .875rem;
+    }
+
+    @include use-media(tablet-album) {
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+  }
+
+  &__content {
+    @include use-media(tablet-album) {
+      max-width: 53.75rem;
+    }
+  }
+
+  &.animate {
+    opacity: 0;
+    transform: translateY(2rem);
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+    will-change: transform, opacity;
+
+    &.animate-show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

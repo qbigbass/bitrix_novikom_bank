@@ -14,6 +14,7 @@ const ELEMS_PB_ANIMATION = {
 
 const ELEMS_PB_BUTTON = {
     btnAnchor: '.js-scroll-to',
+    tabButton: '#pills-tab button',
 }
 
 const ELEMS_PB_SELECT = {
@@ -73,12 +74,15 @@ function pbScrollTo() {
         const menu = document.querySelector(ELEMS_PB_NAV.navMenu);
         const button = document.querySelector(ELEMS_PB_NAV.button);
 
+
         if (!menu.classList.contains(ELEMS_PB_NAV.hideClass)) {
             button.click();
         }
 
         const target = this.hash;
         const $target = $(target);
+
+        if ($target.length === 0) return false;
 
         $('html, body').animate({
             scrollTop: $target.offset().top
@@ -144,4 +148,23 @@ function addSelectDateOptions() {
         option.text = formatDate(date);
         select.appendChild(option);
     }
+}
+
+function triggerPbTab() {
+    const triggerTabList = document.querySelectorAll(ELEMS_PB_BUTTON.tabButton);
+    let idContent = [];
+    triggerTabList.forEach(triggerEl => {
+        const id = triggerEl.getAttribute('data-bs-target');
+        idContent.push(id);
+        triggerEl.addEventListener('click', event => {
+            const id = triggerEl.getAttribute('data-bs-target');
+            const filteredId = idContent.filter(item => item !== id);
+            filteredId.forEach((id) => {
+                const content = document.querySelector(id);
+                content.querySelectorAll(`.${ELEMS_PB_ANIMATION.animateClass}`).forEach((elem) => {
+                    elem.classList.remove(ELEMS_PB_ANIMATION.animateClass);
+                })
+            })
+        })
+    })
 }

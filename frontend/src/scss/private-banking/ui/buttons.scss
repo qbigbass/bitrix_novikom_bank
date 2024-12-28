@@ -13,7 +13,7 @@
     letter-spacing: .1em;
   }
 
-  @include use-media(tablet-album) {
+  @include use-media(tablet) {
     padding: 1rem 1.5rem;
     font-size: 1rem;
     line-height: 1.5;
@@ -35,6 +35,9 @@
     background-color: var(--pb-primary);
     color: var(--dark-0);
 
+    --bs-btn-active-bg:var(--pb-hover);
+    --bs-btn-active-color: var(--dark-0);
+
     &:hover {
       background-color: var(--pb-hover);
       color: var(--dark-0);
@@ -46,6 +49,9 @@
     background-color: var(--pb-black);
     opacity: .6;
 
+    --bs-btn-active-bg: var(--pb-dark-bg);
+    --bs-btn-active-color: var(--pb-text-color);
+
     &:hover {
       color: var(--pb-text-color);
       background-color: var(--pb-dark-bg);
@@ -56,6 +62,10 @@
     background-color: transparent;
     color: var(--pb-text-color);
     border: 1px solid rgba(#fff ,.3);
+
+    --bs-btn-active-bg: transparent;
+    --bs-btn-active-color: var(--dark-0);
+    --bs-btn-active-border-color: var(--dark-0);
 
     &:hover {
       color: var(--dark-0);
@@ -71,8 +81,7 @@
   }
 
   &--size-lg {
-    font-size: 1rem;
-    line-height: 1.5;
+    font-size: .875rem;
     padding: 1rem 2.5rem;
 
     @include use-media(tablet-album) {
