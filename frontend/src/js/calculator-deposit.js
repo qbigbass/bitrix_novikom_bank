@@ -38,8 +38,6 @@ function getRates({table = null, id = null, name = null}) {
     if (id) params.append('id', id);
     if (name) params.append('name', name);
 
-    console.log('params', params)
-
     return fetch(URL, {
         method: 'POST',
         headers: {
