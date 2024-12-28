@@ -21,6 +21,7 @@ class OfficesMap {
 
     async init() {
         this.initMap()
+        this.initOffsetCenter()
         await this.loadOffices()
         this.filterOffices()
         this.initOfficesSearchFilter()
@@ -29,10 +30,11 @@ class OfficesMap {
     }
 
     initMap() {
-        let maxZoom = 17;
+        const maxZoom = 17;
+        const coordsCenter = [55.76, 37.64]; // [55.76, 37.64] - Москва
 
         this.myMap = new ymaps.Map('map', {
-            center: [55.76, 37.64], // [55.76, 37.64] - Москва
+            center: coordsCenter,
             zoom: 10,
             controls: [
                 'zoomControl',
@@ -40,7 +42,7 @@ class OfficesMap {
             maxZoom: maxZoom,
             autoFitToViewport: 'none',
         });
-
+        
         this.clusterer = new ymaps.Clusterer({
             preset: 'islands#invertedVioletClusterIcons',
             groupByCoordinates: false,
@@ -51,6 +53,18 @@ class OfficesMap {
 
         // Запрещаем скролить на карте
         this.myMap.behaviors.disable('scrollZoom');
+    }
+
+    initOffsetCenter() {
+        const isDesktop = window.matchMedia(`(min-width: ${MEDIA_QUERIES['tablet-album']})`).matches;
+
+        if (isDesktop) {
+            // Смещение центра карты вправо на 200px
+            const offsetPX = 200;
+            const positions = this.myMap.getGlobalPixelCenter();
+            const offsetPos = this.myMap.options.get('projection').fromGlobalPixels([positions[0] - offsetPX, positions[1]], this.myMap.getZoom());
+            this.myMap.setCenter(offsetPos);
+        }
     }
 
     async loadOffices() {
@@ -149,7 +163,7 @@ class OfficesMap {
                 iconImageOffset: iconDefaultOffset,
             });
 
-            myPlacemark.events.add(['click'],  (e) => {
+            myPlacemark.events.add(['click'], (e) => {
                 location.href = item.url
             })
 

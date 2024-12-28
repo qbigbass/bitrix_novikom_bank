@@ -6,6 +6,7 @@ class OfficesMapDetail {
 
     async init() {
         this.initMap()
+        this.initOffsetCenter()
         this.renderOfficePlacemark()
     }
 
@@ -13,7 +14,7 @@ class OfficesMapDetail {
         let maxZoom = 17;
 
         this.myMap = new ymaps.Map('map', {
-            center: this.params.center, // [55.76, 37.64] - Москва
+            center: this.params.center,
             zoom: this.params.zoom,
             controls: [
                 'zoomControl',
@@ -24,6 +25,18 @@ class OfficesMapDetail {
 
         // Запрещаем скролить на карте
         this.myMap.behaviors.disable('scrollZoom');
+    }
+
+    initOffsetCenter() {
+        const isDesktop = window.matchMedia(`(min-width: ${MEDIA_QUERIES['tablet-album']})`).matches;
+
+        if (isDesktop) {
+            // Смещение центра карты вправо на 200px
+            const offsetPX = 200;
+            const positions = this.myMap.getGlobalPixelCenter();
+            const offsetPos = this.myMap.options.get('projection').fromGlobalPixels([positions[0] - offsetPX, positions[1]], this.myMap.getZoom());
+            this.myMap.setCenter(offsetPos);
+        }
     }
 
     renderOfficePlacemark() {
