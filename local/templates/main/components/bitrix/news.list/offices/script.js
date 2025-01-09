@@ -285,9 +285,15 @@ class OfficesMap {
             $('#individuals').prop('checked', false)
             $('#legal').prop('checked', false)
 
+            $('#access-free').prop('checked', false)
+            $('#access-employee').prop('checked', false)
+
             for (const [key, value] of Object.entries(this.services)) {
                 $('#filter-service-' + key).prop('checked', false)
             }
+
+            $('[name="currency_in[]"]').prop('checked', false)
+            $('[name="currency_out[]"]').prop('checked', false)
 
             this.filterOffices()
         })
