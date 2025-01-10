@@ -22,10 +22,12 @@ $classColsCount = ($arParams['COL_COUNT'] == '2') ? 'col-lg-6' : 'col-lg-4';
         <div class="d-flex flex-column flex-md-row flex-lg-column gap-2 gap-md-4 gap-lg-3 align-items-start align-items-md-center align-items-lg-start pe-xxl-11">
             <img class="icon size-xl" src="<?=$arItem['DISPLAY_PROPERTIES']['ICON']['FILE_VALUE']['SRC']?>" alt="" loading="lazy">
             <div class="d-flex flex-column gap-2 align-items-start">
-                <?if ($arItem['DISPLAY_PROPERTIES']['SHOW_ONLY_DESCRIPTION']['VALUE'] != 'Y'): ?>
+                <? if (!empty($arItem['PREVIEW_TEXT'])) : ?>
                     <h4><?=$arItem['~NAME']?></h4>
-                <?endif;?>
-                <span class="text-l"><?=$arItem['PREVIEW_TEXT']?></span>
+                    <span class="text-l"><?=$arItem['PREVIEW_TEXT']?></span>
+                <? else: ?>
+                    <span class="text-l"><?=$arItem['~NAME']?></span>
+                <? endif; ?>
                 <?if (!empty($arItem['DISPLAY_PROPERTIES']['LINK_TITLE']['~VALUE'])) : ?>
                     <a class="btn btn-link d-inline-flex gap-2 align-items-center mt-md-2" href="<?=$arItem['DISPLAY_PROPERTIES']['LINK']['VALUE']?>">
                         <?=$arItem['DISPLAY_PROPERTIES']['LINK_TITLE']['~VALUE']?>
