@@ -20,7 +20,8 @@ $this->setFrameMode(true);
         $this->AddDeleteAction($item['ID'], $item['DELETE_LINK'], CIBlock::GetArrayByID($item["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
 
         if (!empty($item['DISPLAY_PROPERTIES']['LIST_POSITION']['VALUE']) && $item['DISPLAY_PROPERTIES']['LIST_POSITION']['VALUE'] == 'Сверху') { ?>
-            <div
+            <a
+                href="<?= $item['DETAIL_PAGE_URL'] ?>"
                 class="card-product card-product--transparent <?= $upIndex == 0 ? 'card-product--size-large ' : '' ?>card-product--bg-white"
                 id="<?= $this->GetEditAreaId($item['ID']); ?>">
                 <div class="card-product__inner">
@@ -32,14 +33,14 @@ $this->setFrameMode(true);
                         <img class="card-product__img" src="<?= $item['DETAIL_PICTURE']['SRC'] ?>"
                              alt="<?= $item['DETAIL_PICTURE']['ALT'] ?>" loading="lazy">
                     <? } ?>
-                    <a class="btn btn-link btn-icon m-auto m-lg-0 py-2 py-lg-0" href="<?= $item['DETAIL_PAGE_URL'] ?>">
+                    <span class="btn btn-link btn-icon m-auto m-lg-0 py-2 py-lg-0" >
                         <span>Подробнее</span>
                         <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                             <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
                         </svg>
-                    </a>
+                    </span>
                 </div>
-            </div>
+            </a>
             <? $upIndex++;
         }
     } ?>
