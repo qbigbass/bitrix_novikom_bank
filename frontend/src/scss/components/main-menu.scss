@@ -33,10 +33,6 @@ $border-width: 1px;
         }
 
         &.is-active {
-            pointer-events: none;
-
-            //display: block;
-
             @include use-media(laptop) {
                 color: var(--violet-100);
             }
