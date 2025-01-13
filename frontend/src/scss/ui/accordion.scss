@@ -23,17 +23,22 @@
                 background-color: var(--dark-10);
             }
 
-            @at-root .section-layout.bg-dark-30 {
+            @at-root .section-layout.bg-dark-30 & {
                 background-color: var(--dark-30);
             }
 
-            @at-root .section-layout.bg-blue-10 {
+            @at-root .section-layout.bg-blue-10 & {
                 background-color: var(--blue-10);
             }
 
-            @at-root .section-layout.bg-purple-10 {
+            @at-root .section-layout.bg-purple-10 & {
                 background-color: var(--purple-10);
             }
+
+            @at-root .pb-section & {
+                background-color: rgba(32, 19, 55, 0.95);
+            }
+
         }
     }
 

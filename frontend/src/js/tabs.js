@@ -7,24 +7,22 @@ const ELEMENTS_TAB = {
 }
 
 const updatePolygonInTabContent = (el) => {
-    const event = new Event("resize", { bubbles: true, composed: true });
+    const event = new Event("resize", {bubbles: true, composed: true});
     el.querySelectorAll(ELEMENTS_TAB.polygonContainer).forEach((polygon) => polygon.dispatchEvent(event));
 };
 
 let tabContentIsVisible = (el) => el.clientHeight !== 0;
 
 const resizePolygonInTabContent = (el) => {
-    if (!tabContentIsVisible(el)) {
-        const resizeObserver = new ResizeObserver(entries => {
-            if (tabContentIsVisible(el)) {
-                updatePolygonInTabContent(el);
-                resizeObserver.disconnect();
-            }
-        });
+    const resizeObserver = new ResizeObserver(entries => {
+        if (tabContentIsVisible(el)) {
+            updatePolygonInTabContent(el);
+            resizeObserver.disconnect();
+        }
+    });
 
-        // start observing a DOM node
-        resizeObserver.observe(el);
-    }
+    // start observing a DOM node
+    resizeObserver.observe(el);
 }
 
 function initTabsContent() {
@@ -48,7 +46,11 @@ function initTabsContent() {
     const collapsedSections = document.querySelectorAll(ELEMENTS_TAB.collapsedSection);
     const tabsSections = document.querySelectorAll(ELEMENTS_TAB.tabContent);
     tabsSections.forEach(tab => {
-        resizePolygonInTabContent(tab);
+        if (tab.classList.contains('active')) {
+            setTimeout(() => resizePolygonInTabContent(tab), 600)
+        } else {
+            resizePolygonInTabContent(tab);
+        }
     });
     const isTabletOrSmaller = window.matchMedia(`(max-width: ${MEDIA_QUERIES.tablet})`).matches;
     if (!isTabletOrSmaller) {return false;}
