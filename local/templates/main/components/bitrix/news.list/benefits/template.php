@@ -12,32 +12,19 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true); ?>
 
-<? foreach ($arResult['ITEMS'] as $arItem) { ?>
-    <?
-    $this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
-    $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
-    ?>
-    <div class="col-12 col-md-6 col-lg-<?= 12 / $arParams['COL_COUNT'] ?>" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
+<? foreach ($arResult['ITEMS'] as $arItem) : ?>
+    <div class="col-12 col-md-6 col-lg-<?= 12 / $arParams['COL_COUNT'] ?>">
         <div class="benefit d-flex gap-3 flex-column">
-            <img class="icon size-xxl" src="<?= $arItem['PREVIEW_PICTURE']['SRC'] ?>"
+            <? if (!empty($arItem['PREVIEW_PICTURE'])) : ?>
+                <img class="icon size-xxl" src="<?= $arItem['PREVIEW_PICTURE']['SRC'] ?>"
                  alt="<?= $arItem['PREVIEW_PICTURE']['ALT'] ?>" loading="lazy">
+            <? endif; ?>
             <div class="benefit__content d-flex flex-column gap-3">
-                <? if (!empty($arItem['~PREVIEW_TEXT'])) { ?>
-                    <h4 class="benefit__title"><?= $arItem['~NAME'] ?></h4>
-                <? }
-
-                $text = $arItem['~PREVIEW_TEXT'] ?: $arItem['~NAME'];
-
-                if ($arParams['HEADER_TAG'] == 'h4') { ?>
-                    <h4 class="benefit__title"><?= $text ?></h4>
-                <? } else { ?>
-                    <div
-                        class="benefit__description w-100 <?= !empty($arItem['~PREVIEW_TEXT']) ? 'text-m' : 'text-l' ?>"><?= $text ?></div>
-                <? } ?>
-                </span>
+                <h4 class="benefit__title"><?= $arItem['~NAME'] ?></h4>
+                <? if (!empty($arItem['~PREVIEW_TEXT'])) : ?>
+                    <div class="benefit__description w-100 text-m>"><?= $arItem['~PREVIEW_TEXT'] ?></div>
+                <? endif; ?>
             </div>
         </div>
     </div>
-<? } ?>
-
-
+<? endforeach; ?>

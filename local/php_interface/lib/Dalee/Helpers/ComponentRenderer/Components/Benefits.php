@@ -20,11 +20,17 @@ class Benefits implements ComponentInterface
             $headerTag = $params['headerTag'];
         }
 
+        if (!empty($params['template'])) {
+            $template = $params['template'];
+        } else {
+            $template = 'benefits';
+        }
+
         ob_start();
 
         $application->IncludeComponent(
             "bitrix:news.list",
-            "benefits",
+            $template,
             [
                 "ACTIVE_DATE_FORMAT" => "d.m.Y",
                 "ADD_SECTIONS_CHAIN" => "N",
