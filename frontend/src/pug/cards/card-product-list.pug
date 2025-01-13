@@ -7,7 +7,8 @@ mixin card-product-list(data)
                 .card-product-list__title-group.d-flex.flex-column.gap-4.gap-lg-6
                     if data.tag
                         +tag(data.tag).tag--triangle-absolute.card-product-list__tag
-                    h2.card-product-list__title.text-break!= data.title
+                    a(href="#").card-product-list__title.text-break
+                        h2!= data.title
                     if data.description
                         span.text-l.card-product-list__description.m-0!= data.description
                 if data.conditions.length > 0
