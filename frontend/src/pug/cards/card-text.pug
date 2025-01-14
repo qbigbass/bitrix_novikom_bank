@@ -1,10 +1,10 @@
 mixin card-text(data)
     .card-text.d-inline-flex.px-3.px-md-4.p-4.p-sm-5.p-lg-6.bg-white.w-100.h-100
-        div.card-text__inner.d-flex.flex-column.gap-6.gap-md-7.justify-content-between.h-100
+        a(href=data.link).card-text__inner.d-flex.flex-column.gap-6.gap-md-7.justify-content-between.h-100
             div.card-text__content.d-flex.flex-column.gap-3.gap-md-4
                 h4.card-text__title!= data.title
                 if data.description
                     p.card-text__description.text-l.m-0!= data.description
-            a(href=data.link).btn.btn-link.btn-lg.d-inline-flex.gap-2.align-items-center.card-text__button-more
+            span.btn.btn-link.btn-lg.d-inline-flex.gap-2.align-items-center.card-text__button-more
                 span Подробнее
                 +svg-use('icon-chevron-right-small', 'card-product-list__button-icon')
