@@ -34,9 +34,9 @@ const URL = '/local/php_interface/ajax/calc.php';
 
 function getRates({table = null, id = null, name = null}) {
     const params = new URLSearchParams();
-    if (table !== null) params.append('table', table);
-    if (id !== null) params.append('id', id);
-    if (name !== null) params.append('name', name);
+    if (table) params.append('table', table);
+    if (id) params.append('id', id);
+    if (name) params.append('name', name);
 
     return fetch(URL, {
         method: 'POST',

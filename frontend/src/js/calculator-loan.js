@@ -61,7 +61,6 @@ function calculatePayments({amount, rate, period}) {
 }
 
 function handlerInputLoan(STATE) {
-    console.log('STATE.filteredData', STATE.filteredData);
     STATE.rate = STATE.filteredData.rate;
     STATE.payment = calculateMonthlyPayment(STATE);
 
