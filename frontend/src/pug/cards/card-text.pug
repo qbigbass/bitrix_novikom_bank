@@ -1,6 +1,6 @@
 mixin card-text(data)
-    .card-text.d-inline-flex.px-3.px-md-4.p-4.p-sm-5.p-lg-6.bg-white.w-100.h-100
-        a(href=data.link).card-text__inner.d-flex.flex-column.gap-6.gap-md-7.justify-content-between.h-100
+    a(href=data.link).card-text.d-inline-flex.px-3.px-md-4.p-4.p-sm-5.p-lg-6.bg-white.w-100.h-100
+        .card-text__inner.d-flex.flex-column.gap-6.gap-md-7.justify-content-between.h-100
             div.card-text__content.d-flex.flex-column.gap-3.gap-md-4
                 h4.card-text__title!= data.title
                 if data.description
