@@ -38,7 +38,9 @@ $this->setFrameMode(true);
                                       </svg>
                                     </span>
                                 </div>
-                                <h2 class="card-product-list__title text-break"><?=$arItem['NAME']?></h2>
+                                <a href="<?=$arItem['DETAIL_PAGE_URL']?>">
+                                    <h2 class="card-product-list__title text-break"><?=$arItem['NAME']?></h2>
+                                </a>
                             </div>
                             <div class="card-product-list__condition-list w-100 w-lg-auto d-flex justify-content-between justify-content-lg-start flex-column flex-sm-row flex-wrap row-gap-4 row-gap-sm-6 row-gap-lg-6 row-gap-xxl-6 gap-xl-12 gap-xxl-16">
                                 <?foreach($arItem['DISPLAY_PROPERTIES']['SHORT_CONDITIONS']['VALUE'] as $condition){?>
