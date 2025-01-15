@@ -20,6 +20,11 @@ $headerView = new HeaderView($component);
 $renderer = new Renderer($APPLICATION, $component);
 
 $helper = $headerView->helper();
+$additionalClass = '';
+
+if ($arResult["CODE"] === "mery-gospodderzhki") {
+    $additionalClass = 'banner-product--type-corp'; // Чтобы покрасить кнопку в оранжевый цвет в баннере
+}
 
 $headerView->render(
     $arResult['~NAME'],
@@ -28,7 +33,8 @@ $headerView->render(
         'banner-product--border-orange',
         !empty($arResult['PROPERTIES']['BENEFITS_TOP']['VALUE']) ? 'banner-product--size-xl' : '',
         $arResult['PROPERTIES']['HEADER_TEMPLATE']['VALUE_XML_ID'] == 'compact' || empty($arResult['PROPERTIES']['HEADER_TEMPLATE']['VALUE_XML_ID'])
-            ? 'banner-text--border-orange banner-product--heavy-purple' : ''
+            ? 'banner-text--border-orange banner-product--heavy-purple' : '',
+        $additionalClass
     ],
     1,
     $arResult,
@@ -36,10 +42,10 @@ $headerView->render(
     null,
     !empty($arResult['PROPERTIES']['BENEFITS_TOP']['VALUE'])
         ? renderBenefitsTop($APPLICATION, $arResult['PROPERTIES']['BENEFITS_TOP']['VALUE'], !empty($arResult['PREVIEW_PICTURE']['SRC']))
-        : null
+        : null,
+    !empty($arResult['PROPERTIES']['BENEFITS_TOP_HEADER']['VALUE']) ? renderBenefitsTopHeader($APPLICATION, $arResult['PROPERTIES']['BENEFITS_TOP_HEADER']['VALUE']) : null,
 );
 ?>
-
 <? if (!empty($arResult['PROPERTIES']['BANNER_HEADER']['VALUE']) && !empty($arResult['PROPERTIES']['BANNER_TEXT']['VALUE'])) { ?>
     <section class="section-layout">
         <div class="container">

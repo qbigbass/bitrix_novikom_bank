@@ -15,6 +15,25 @@ function renderBenefitsTop(CMain $APPLICATION, array $ids, bool $hasPicture = tr
     return ob_get_clean();
 }
 
+function renderBenefitsTopHeader(CMain $APPLICATION, array $ids, bool $hasPicture = true): string
+{
+    $renderer = new Renderer($APPLICATION);
+    $colCount = $hasPicture ? 3 : 4;
+
+    ob_start();
+    $renderer->render(
+        'Benefits',
+        $ids,
+        null,
+        [
+            'colCount' => $colCount,
+            'template' => 'benefits_header'
+        ]
+    );
+
+    return ob_get_clean();
+}
+
 function renderQuote(string $text, bool $invert = false): void
 {
     ob_start(); ?>

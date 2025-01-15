@@ -25,9 +25,10 @@ class HeaderView
         ?array $terms = null,
         ?string $termsHtml = null,
         ?string $footerHtml = null,
+        ?string $headerHtml = null,
     ): void
     {
-        $headerData = $this->getHeaderData($title, $description, $arResult, $terms, $footerHtml, $additionalClasses);
+        $headerData = $this->getHeaderData($title, $description, $arResult, $terms, $footerHtml, $additionalClasses, $headerHtml);
         $headerTemplate = empty($arResult['PROPERTIES']['HEADER_TEMPLATE']['VALUE_XML_ID']) ? 'compact' : $this->getHeaderTemplate($arResult);
 
         echo match ($headerTemplate) {
@@ -42,13 +43,14 @@ class HeaderView
         ?array $arResult,
         ?array $termsSettings,
         ?string $footerHtml,
-        ?array $additionalClasses
+        ?array $additionalClasses,
+        ?string $headerHtml
     ): array
     {
         return array_merge(
             $this->getBaseHeaderData($title, $description),
             $this->getHeaderDataFromResult($arResult),
-            $this->getAdditionalHeaderData($termsSettings, $footerHtml, $additionalClasses)
+            $this->getAdditionalHeaderData($termsSettings, $footerHtml, $additionalClasses, $headerHtml)
         );
     }
 
@@ -84,10 +86,11 @@ class HeaderView
         return $result;
     }
 
-    private function getAdditionalHeaderData(?array $terms, ?string $footerHtml, ?array $additionalClasses): array
+    private function getAdditionalHeaderData(?array $terms, ?string $footerHtml, ?array $additionalClasses, ?string $headerHtml): array
     {
         return [
             'termsSettings' => $terms ?? [],
+            'headerHtml' => $headerHtml ?? '',
             'footerHtml' => $footerHtml ?? '',
             'additionalClasses' => $additionalClasses ?? []
         ];
@@ -152,6 +155,10 @@ class HeaderView
                     <? } ?>
 
                     <? echo $this->renderTerms($headerData['termsSettings'], $headerData['termsProperty'], $termsHtml); ?>
+
+                    <? if (!empty($headerData['headerHtml'])) : ?>
+                        <?= $headerData['headerHtml'] ?>
+                    <? endif; ?>
 
                     <? if ($headerData['showButton'] && !empty($headerData['buttonHref'])) { ?>
                         <a class="btn <?= in_array('banner-product--type-corp', $headerData['additionalClasses']) ? 'btn-orange' : 'btn-tertiary' ?> btn-lg-lg banner-product__button"

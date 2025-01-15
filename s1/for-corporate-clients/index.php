@@ -34,6 +34,7 @@ $APPLICATION->SetTitle('Корпоративным клиентам');
         "DETAIL_PAGER_TITLE" => "Страница",
         "DETAIL_PROPERTY_CODE" => [
             "BENEFITS_TOP",
+            "BENEFITS_TOP_HEADER",
             "BENEFITS_PAGE",
             "BENEFITS_HEADER",
             "HEADER_TEMPLATE",
