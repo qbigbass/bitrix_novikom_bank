@@ -231,21 +231,20 @@ block content
                 | Меры финансирования
             .row.px-lg-6
                 .col-12
-                    +tabs-simple(
-                        tabsListMeasures,
-                        false
-                    )
+                    +tabs-simple(tabsListMeasures, false)
                     .tab-content.mt-4.mt-md-6.mt-lg-7
                         each tabContent, index in tabsListMeasures
                             .tab-pane.fade(id= tabContent.id aria-labelledby=tabContent.id tabindex="0" role="tabpanel" class= index === 0 && 'show active')
-                                .row.align-items-stretch.cards-gutter.pt-3.pt-md-0.mx-lg-n7
-                                    if index === 0
-                                        each item, index in tabsListCards
-                                            .col-12.col-lg-6
-                                                +card-text(item)
-                                    else
-                                        .col-12.col-lg-6
-                                            +card-text(tabsListCards[0])
+                                .row.row-gap-6.row-gap-lg-7
+                                    .col-12
+                                        .row.align-items-stretch.cards-gutter.pt-3.pt-md-0.mx-lg-n7
+                                            if index === 0
+                                                each item, index in tabsListCards
+                                                    .col-12.col-lg-6
+                                                        +card-text(item)
+                                            else
+                                                .col-12.col-lg-6
+                                                    +card-text(tabsListCards[0])
 
     section.section-layout.js-collapsed-mobile
         .container
