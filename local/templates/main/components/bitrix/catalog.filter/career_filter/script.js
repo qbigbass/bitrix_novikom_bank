@@ -15,7 +15,7 @@ function saveFilter(element) {
     const property = element.data('property');
     const value = element.val();
 
-    const currentUrl = new URL(window.location.href);
+    const currentUrl = new window.URL(window.location.href);
 
     if (value === 'all' || value === '') {
         currentUrl.searchParams.delete(property);

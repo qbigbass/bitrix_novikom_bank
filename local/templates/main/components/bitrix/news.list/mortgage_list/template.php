@@ -13,13 +13,13 @@
 $this->setFrameMode(true);
 
 $terms = [
-    'RATE_FROM' => [
-        'SIGN' => 'Процентная ставка',
-        'FROM_TO' => 'от&nbsp;',
-    ],
     'SUM_TO' => [
         'SIGN' => 'Сумма',
         'FROM_TO' => 'до&nbsp;',
+    ],
+    'RATE_FROM' => [
+        'SIGN' => 'Процентная ставка',
+        'FROM_TO' => 'от&nbsp;',
     ],
     'DIAPASON' => [
         'SIGN' => 'Диапазон полной стоимости кредита',
@@ -44,7 +44,9 @@ $terms = [
             </div>
             <div class="card-product-list__content flex-column d-flex align-items-start gap-6 gap-lg-9 w-100">
                 <div class="card-product-list__title-group d-flex flex-column gap-4 gap-lg-6">
-                    <h2 class="card-product-list__title text-break"><?= $item['~NAME'] ?></h2>
+                    <a href="<?=$item['DETAIL_PAGE_URL']?>">
+                        <h2 class="card-product-list__title text-break"><?= $item['~NAME'] ?></h2>
+                    </a>
                 </div>
 
                 <? if (!empty($item['PROPERTIES']['TERMS'])) { ?>

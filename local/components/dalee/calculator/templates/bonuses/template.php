@@ -1,6 +1,6 @@
 <?if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
 
-<div class="row js-calculator-bonus" data-id="<?= $arParams['CALCULATOR_ELEMENT_ID'] ?? '' ?>" data-table="program_bonuses">
+<div class="row js-calculator-bonus px-lg-6" data-table="program_bonuses">
     <div class="col-12 col-lg-6">
         <div class="pe-xl-6">
             <div class="d-flex flex-column row-gap-4 row-gap-md-6 row-gap-lg-7 js-input-bonus-wrapper">
