@@ -12,7 +12,7 @@ class Tabs implements ComponentInterface
     {
         $padding = false;
         $elementId = false;
-        $sectionId = 'additional-info-content';
+        $templateComponent = 'tabs';
 
         if (!empty($params['padding'])) {
             $padding = $params['padding'];
@@ -22,15 +22,15 @@ class Tabs implements ComponentInterface
             $elementId = $params['elementId'];
         }
 
-        if (!empty($params['section_id'])) {
-            $sectionId = $params['section_id'];
+        if (!empty($params['template_component'])) {
+            $templateComponent = $params['template_component'];
         }
 
         ob_start();
 
         $application->IncludeComponent(
             "bitrix:news.list",
-            "tabs",
+            $templateComponent,
             [
                 "ACTIVE_DATE_FORMAT" => "d.m.Y",
                 "ADD_SECTIONS_CHAIN" => "N",

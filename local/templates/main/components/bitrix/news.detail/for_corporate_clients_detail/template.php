@@ -342,17 +342,10 @@ $headerView->render(
 <? if (!empty($arResult['PROPERTIES']['TABS_2']['VALUE'])) : ?>
     <section class="section-layout bg-purple-10 js-collapsed-mobile">
         <div class="container">
-            <? $attrHref = 'financing_measures'; ?>
-            <h3 class="d-none d-md-flex mb-md-6 mb-lg-7 px-lg-6"><?= $arResult['PROPERTIES']['TABS_2_HEADER']['~VALUE'] ?></h3>
-            <a class="h3 d-flex align-items-center justify-content-between dark-100 d-md-none" data-bs-toggle="collapse" href="#<?= $attrHref ?>" role="button" aria-expanded="false" aria-controls="additional-info-content">
-                <?= $arResult['PROPERTIES']['TABS_2_HEADER']['~VALUE'] ?>
-                <svg class="icon size-m violet-100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                    <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-down"></use>
-                </svg>
-            </a>
+            <h3 class="px-lg-6 mb-4 mb-md-6 mb-lg-7"><?= $arResult['PROPERTIES']['TABS_2_HEADER']['~VALUE'] ?></h3>
             <div class="row px-lg-6">
                 <div class="col-12">
-                    <? $params['section_id'] = $attrHref; ?>
+                    <? $params['template_component'] = 'tabs_financing_measures'; ?>
                     <? $renderer->render('Tabs', $arResult['PROPERTIES']['TABS_2']['VALUE'], params: $params); ?>
                 </div>
             </div>
