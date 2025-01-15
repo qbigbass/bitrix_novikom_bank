@@ -176,7 +176,7 @@ function triggerPbTab() {
 function scrollPbAccordion() {
     const accordionsHeader = document.querySelectorAll(ELEMS_PB_ACCORDION.header);
 
-    if (!accordionsHeader) return;
+    if (!accordionsHeader.length) return;
 
     accordionsHeader.forEach(accordionHeader => {
         const observer = new IntersectionObserver(
