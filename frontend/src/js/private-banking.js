@@ -21,6 +21,10 @@ const ELEMS_PB_SELECT = {
     select: ".js-select-date",
 }
 
+const ELEMS_PB_ACCORDION = {
+    header: ".accordion-header",
+}
+
 const FOOTER_MARGIN = 20;
 
 const pbNavMenu = () => {
@@ -167,4 +171,20 @@ function triggerPbTab() {
             })
         })
     })
+}
+
+function scrollPbAccordion() {
+    const accordionsHeader = document.querySelectorAll(ELEMS_PB_ACCORDION.header);
+
+    if (!accordionsHeader) return;
+
+    accordionsHeader.forEach(accordionHeader => {
+        const observer = new IntersectionObserver(
+            ([e]) => e.target.classList.toggle("is-pinned", e.intersectionRatio < 1),
+            { threshold: [1] }
+        );
+
+        observer.observe(accordionHeader);
+    })
+
 }
