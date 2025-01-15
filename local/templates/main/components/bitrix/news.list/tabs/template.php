@@ -17,7 +17,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 $this->setFrameMode(true);
 ?>
 
-<div class="collapse d-md-block" id="additional-info-content">
+<div class="collapse d-md-block" id="<?= $arParams["ATTR_SECTION_ID"] ?>">
     <div class="row mt-4">
         <div class="col-12">
             <div class="ps-lg-6">

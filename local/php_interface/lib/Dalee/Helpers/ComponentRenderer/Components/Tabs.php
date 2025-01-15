@@ -12,11 +12,18 @@ class Tabs implements ComponentInterface
     {
         $padding = false;
         $elementId = false;
+        $sectionId = 'additional-info-content';
+
         if (!empty($params['padding'])) {
             $padding = $params['padding'];
         }
+
         if (!empty($params['elementId'])) {
             $elementId = $params['elementId'];
+        }
+
+        if (!empty($params['section_id'])) {
+            $sectionId = $params['section_id'];
         }
 
         ob_start();
@@ -103,7 +110,8 @@ class Tabs implements ComponentInterface
                 "SORT_ORDER1" => "DESC",
                 "SORT_ORDER2" => "ASC",
                 "STRICT_SECTION_CHECK" => "N",
-                "TABS_PADDING" => $padding
+                "TABS_PADDING" => $padding,
+                "ATTR_SECTION_ID" => $sectionId
             ],
             $component,
             ["HIDE_ICONS" => "Y"]
