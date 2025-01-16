@@ -212,19 +212,17 @@
   right: 1.5rem;
   bottom: 2.5rem;
   border-radius: .25rem;
-  background-color: rgba(19, 19, 22, 0.75);
-  border: 1px solid rgba(19, 19, 22, 0.75);
-  padding: .5rem;
+  background-color: var(--pb-main);
+  border: 1px solid transparent;
+  padding: .438rem .5rem;
   color: var(--pb-text-color);
-  transition: color .33s ease, border-color .33s ease;
+  transition: color .6s ease, border-color .6s ease;
   z-index: 11;
   display: none;
 
   @include use-media(tablet-album) {
     right: 2.5rem;
-    padding: .75rem;
-    background-color: rgba(19, 19, 22, 0.6);
-    border: 1px solid rgba(19, 19, 22, 0.6);
+    padding: 0.688rem 0.75rem;
   }
 
   &:hover {
