@@ -47,7 +47,7 @@ function initTabsContent() {
     const tabsSections = document.querySelectorAll(ELEMENTS_TAB.tabContent);
     tabsSections.forEach(tab => {
         if (tab.classList.contains('active')) {
-            setTimeout(() => resizePolygonInTabContent(tab), 600)
+            setTimeout(() => resizePolygonInTabContent(tab), 800)
         } else {
             resizePolygonInTabContent(tab);
         }

@@ -36,9 +36,14 @@
             }
 
             @at-root .pb-section & {
-                background-color: rgba(32, 19, 55, 0.95);
-            }
+                background-color: transparent;
+                margin-right: 1px;
+                top: -1px;
 
+                &.is-pinned {
+                    background-color: rgba(32, 19, 55, 0.95);
+                }
+            }
         }
     }
 
