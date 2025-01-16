@@ -1,5 +1,9 @@
 <?if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
-
+<?
+/**
+ * @global CMain $APPLICATION
+ */
+?>
 <div class="row js-calculator-mortgage" data-id="<?= $arParams['CALCULATOR_ELEMENT_ID'] ?? '' ?>" data-table="mortgage" data-expense-ratio="60">
     <div class="col-12 col-lg-6">
         <div class="tab-content pe-xl-6">
@@ -181,7 +185,12 @@
                             </div>
                         </div>
                         <div class="card-calculate-result__footer">
-                            <button class="btn btn-primary btn-lg-lg w-100" type="button">
+                            <button
+                                class="btn btn-primary btn-lg-lg w-100"
+                                type="button"
+                                data-bs-toggle="modal"
+                                data-bs-target="#modal-mortgage-form"
+                            >
                                 Оформить заявку
                             </button>
                             <p class="dark-70 caption-m mb-0">Калькулятор не&nbsp;гарантирует
@@ -201,3 +210,10 @@
         </div>
     </div>
 </div>
+<?php $APPLICATION->IncludeComponent(
+    "dalee:form",
+    "mortgage_form",
+    [
+        "FORM_CODE" => "mortgage_form",
+    ]
+); ?>

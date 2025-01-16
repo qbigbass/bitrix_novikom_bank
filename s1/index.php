@@ -75,7 +75,7 @@ $APPLICATION->SetTitle('Частным клиентам - Главная НОВ�
                      data-space-between="mobile-s:8,mobile:8,tablet:8,laptop:8,laptop-x:8">
                     <div class="swiper-wrapper js-swiper-wrapper">
                         <div class="swiper-slide js-swiper-slide">
-                            <a class="card-service" href="#">
+                            <a class="card-service" href="/online-services/">
                                 <div class="card-service__content d-flex flex-column">
                                     <h4 class="dark-100">Интернет-банк</h4>
                                     <span class="icon card-service__icon">
