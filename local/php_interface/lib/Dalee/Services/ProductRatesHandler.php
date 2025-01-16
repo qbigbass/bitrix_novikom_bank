@@ -2,7 +2,9 @@
 
 namespace Dalee\Services;
 
+use Bitrix\Highloadblock\HighloadBlockTable;
 use Bitrix\Iblock\ElementTable;
+use Bitrix\Main\Loader;
 
 /**
  * Класс для обработки и преобразования данных ставок продуктов.
@@ -13,6 +15,7 @@ use Bitrix\Iblock\ElementTable;
 class ProductRatesHandler
 {
     private array $iblockLinks;
+    private array $regions = [];
     private array $linkedIblockElements;
 
     /**
@@ -69,6 +72,10 @@ class ProductRatesHandler
         $this->elementId = $elementId;
         $this->name = $name;
 
+        if ($table == 'mortgage') {
+            $this->regions = $this->getRegions();
+        }
+
         $this->iblockLinks = [
             'deposits' => iblock('deposits'),
             'loans' => iblock('loans'),
@@ -80,6 +87,26 @@ class ProductRatesHandler
 
         $iblockId = $this->getIblockId();
         $this->ratesFetcher = new RatesFetcher($iblockId);
+    }
+
+    private function getRegions(): array
+    {
+        Loader::includeModule("highloadblock");
+
+        $hlblock = HighloadBlockTable::getList([
+            "filter" => [
+                '=TABLE_NAME' => 'b_hlbd_regions'
+            ]
+        ])->fetch();
+
+        $entity = HighloadBlockTable::compileEntity($hlblock);
+        $entity_data_class = $entity->getDataClass();
+
+        $res = $entity_data_class::getList([
+            'select' => ['UF_NAME', 'UF_XML_ID'],
+        ])->fetchAll();
+
+        return array_column($res, 'UF_NAME', 'UF_XML_ID');
     }
 
     /**
@@ -158,6 +185,10 @@ class ProductRatesHandler
             foreach ($item as $key => $value) {
                 if ($key === 'LINK_' || $key === 'NAME') {
                     continue;
+                }
+
+                if ($key == 'REGION_' && !empty($this->regions)) {
+                    $value = $this->regions[$value] ?? null;
                 }
 
                 $key = strtolower(rtrim($key, '_'));
