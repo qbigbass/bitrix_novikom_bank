@@ -67,9 +67,8 @@
                 <div class="form-check">
                     <input class="form-check-input js-inp-loan-card" id="inp-loan-card"
                            type="checkbox" value="" checked>
-                    <label class="form-check-label" for="inp-loan-card"><a href="#"
-                                                                           tabindex="0">Получаю
-                            зарплату на&nbsp;карту Новиком</a></label>
+                    <label class="form-check-label" for="inp-loan-card">Получаю
+                            зарплату на&nbsp;карту Новиком</label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input js-loan-insurance" id="inp-loan-insurance"
