@@ -45,6 +45,9 @@ $this->setFrameMode(true); ?>
                                                                     <a class="list-contact__link" href="tel:<?= preg_replace('/[^\d+]/', '', $phone) ?>">
                                                                         <span class="text-l"><?= $phone ?></span>
                                                                     </a>
+                                                                    <? if(!empty($item['PROPERTIES']['PHONE']['DESCRIPTION'])): ?>
+                                                                        <span class="caption-m chip chip--outlined">доб. <?= $item['PROPERTIES']['PHONE']['DESCRIPTION'][0] ?></span>
+                                                                    <? endif; ?>
                                                                 </div>
                                                             </div>
                                                         <? } ?>

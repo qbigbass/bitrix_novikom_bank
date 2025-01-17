@@ -20,6 +20,11 @@ $headerView = new HeaderView($component);
 $renderer = new Renderer($APPLICATION, $component);
 
 $helper = $headerView->helper();
+$additionalClass = '';
+
+if ($arResult["CODE"] === "mery-gospodderzhki") {
+    $additionalClass = 'banner-product--type-corp'; // Чтобы покрасить кнопку в оранжевый цвет в баннере
+}
 
 $headerView->render(
     $arResult['~NAME'],
@@ -28,7 +33,8 @@ $headerView->render(
         'banner-product--border-orange',
         !empty($arResult['PROPERTIES']['BENEFITS_TOP']['VALUE']) ? 'banner-product--size-xl' : '',
         $arResult['PROPERTIES']['HEADER_TEMPLATE']['VALUE_XML_ID'] == 'compact' || empty($arResult['PROPERTIES']['HEADER_TEMPLATE']['VALUE_XML_ID'])
-            ? 'banner-text--border-orange banner-product--heavy-purple' : ''
+            ? 'banner-text--border-orange banner-product--heavy-purple' : '',
+        $additionalClass
     ],
     1,
     $arResult,
@@ -36,10 +42,10 @@ $headerView->render(
     null,
     !empty($arResult['PROPERTIES']['BENEFITS_TOP']['VALUE'])
         ? renderBenefitsTop($APPLICATION, $arResult['PROPERTIES']['BENEFITS_TOP']['VALUE'], !empty($arResult['PREVIEW_PICTURE']['SRC']))
-        : null
+        : null,
+    !empty($arResult['PROPERTIES']['BENEFITS_TOP_HEADER']['VALUE']) ? renderBenefitsTopHeader($APPLICATION, $arResult['PROPERTIES']['BENEFITS_TOP_HEADER']['VALUE']) : null,
 );
 ?>
-
 <? if (!empty($arResult['PROPERTIES']['BANNER_HEADER']['VALUE']) && !empty($arResult['PROPERTIES']['BANNER_TEXT']['VALUE'])) { ?>
     <section class="section-layout">
         <div class="container">
@@ -332,6 +338,20 @@ $headerView->render(
     </div>
 </section>
 <? } ?>
+
+<? if (!empty($arResult['PROPERTIES']['TABS_2']['VALUE'])) : ?>
+    <section class="section-layout bg-purple-10 js-collapsed-mobile">
+        <div class="container">
+            <h3 class="px-lg-6 mb-4 mb-md-6 mb-lg-7"><?= $arResult['PROPERTIES']['TABS_2_HEADER']['~VALUE'] ?></h3>
+            <div class="row px-lg-6">
+                <div class="col-12">
+                    <? $params['template_component'] = 'tabs_financing_measures'; ?>
+                    <? $renderer->render('Tabs', $arResult['PROPERTIES']['TABS_2']['VALUE'], params: $params); ?>
+                </div>
+            </div>
+        </div>
+    </section>
+<? endif; ?>
 
 <? if (!empty($arResult['PROPERTIES']['TABS']['VALUE'])) { ?>
     <section class="section-layout js-collapsed-mobile">

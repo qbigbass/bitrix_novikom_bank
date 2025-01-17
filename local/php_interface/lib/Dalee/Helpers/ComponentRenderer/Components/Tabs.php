@@ -12,18 +12,25 @@ class Tabs implements ComponentInterface
     {
         $padding = false;
         $elementId = false;
+        $templateComponent = 'tabs';
+
         if (!empty($params['padding'])) {
             $padding = $params['padding'];
         }
+
         if (!empty($params['elementId'])) {
             $elementId = $params['elementId'];
+        }
+
+        if (!empty($params['template_component'])) {
+            $templateComponent = $params['template_component'];
         }
 
         ob_start();
 
         $application->IncludeComponent(
             "bitrix:news.list",
-            "tabs",
+            $templateComponent,
             [
                 "ACTIVE_DATE_FORMAT" => "d.m.Y",
                 "ADD_SECTIONS_CHAIN" => "N",
@@ -103,7 +110,8 @@ class Tabs implements ComponentInterface
                 "SORT_ORDER1" => "DESC",
                 "SORT_ORDER2" => "ASC",
                 "STRICT_SECTION_CHECK" => "N",
-                "TABS_PADDING" => $padding
+                "TABS_PADDING" => $padding,
+                "ATTR_SECTION_ID" => $sectionId
             ],
             $component,
             ["HIDE_ICONS" => "Y"]

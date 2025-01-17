@@ -398,6 +398,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initFixScrollAccordions();
     checkWidth();
     triggerPbTab();
+    scrollPbAccordion();
 });
 
 window.onload = function() {
