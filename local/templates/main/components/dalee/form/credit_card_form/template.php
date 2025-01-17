@@ -20,7 +20,7 @@ $this->setFrameMode(true);
     <div class="modal-dialog modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Заявка на кредитную карту</h5>
+                <h5 class="modal-title">Заявка на банковскую карту</h5>
                 <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close">
                     <span class="icon size-m">
                         <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">

@@ -316,13 +316,13 @@ $APPLICATION->SetTitle('Частным клиентам - Главная НОВ�
                 false,
                 ["HIDE_ICONS" => "Y"]
             ); ?>
-            <div class="col-12 col-xxl-6 mt-6 mt-xxl-0"><a class="card-link h3 d-lg-none" href="#">О банке
+            <div class="col-12 col-xxl-6 mt-6 mt-xxl-0"><a class="card-link h3 d-lg-none" href="/about/">О банке
                     <svg class="icon size-m blue-100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                         <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
                     </svg>
                 </a>
                 <div class="card-about-bank d-none d-lg-flex">
-                    <div class="card-about-bank__col d-flex flex-column gap-6"><a class="h3" href="#">О банке
+                    <div class="card-about-bank__col d-flex flex-column gap-6"><a class="h3" href="/about/">О банке
                             <svg class="icon size-m blue-100" xmlns="http://www.w3.org/2000/svg" width="100%"
                                  height="100%">
                                 <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
@@ -363,7 +363,7 @@ $APPLICATION->SetTitle('Частным клиентам - Главная НОВ�
 <section class="section-layout pt-0">
     <div class="container">
         <div class="d-flex align-items-end ps-lg-6 mb-4 mb-md-6 mb-lg-7">
-            <h3>Новости</h3><a class="violet-100 d-flex align-items-center gap-2 ms-auto" href="#"><span
+            <h3>Новости</h3><a class="violet-100 d-flex align-items-center gap-2 ms-auto" href="/about/press-center/"><span
                     class="d-none d-md-inline text-s fw-semibold">Пресс-центр</span>
                 <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                     <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
