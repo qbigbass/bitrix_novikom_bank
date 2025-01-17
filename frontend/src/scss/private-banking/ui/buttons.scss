@@ -223,6 +223,8 @@
   @include use-media(tablet-album) {
     right: 2.5rem;
     padding: 0.688rem 0.75rem;
+    background-color: rgba(19, 19, 22, 0.6);
+    border-color: rgba(19, 19, 22, 0.6);
   }
 
   &:hover {
