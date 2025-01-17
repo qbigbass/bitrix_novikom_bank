@@ -365,7 +365,6 @@ const initElementsDepositCalculator = (root) => {
 }
 
 function initStateDepositCalculator(calculator) {
-    console.log('calculator', calculator.dataset)
     return getRates(calculator.dataset)
         .then(calculatorData => {
 
