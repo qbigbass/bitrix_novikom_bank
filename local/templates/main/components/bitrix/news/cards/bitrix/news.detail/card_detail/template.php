@@ -47,6 +47,9 @@ $renderer = new Renderer($APPLICATION, $component);
                     </div>
                 <?endforeach;?>
             </div>
+            <a class="btn btn-tertiary btn-lg-lg banner-product__button" href="#">
+                Оформить карту
+            </a>
         </div>
     </div>
     <picture class="pattern-bg banner-product__pattern">
