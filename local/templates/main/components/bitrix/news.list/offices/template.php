@@ -108,6 +108,7 @@ $this->setFrameMode(true);
                                     <label class="form-check-label" for="legal">Юридические лица</label>
                                 </div>
                             </div>
+                            <div class="d-flex flex-column row-gap-4" id="offices-services-filter"></div>
                         <?php else : ?>
                             <div class="d-flex flex-column row-gap-4">
                                 <h5>Вход</h5>
@@ -141,8 +142,6 @@ $this->setFrameMode(true);
                                 <?php endforeach; ?>
                             </div>
                         <?php endif;?>
-
-                        <div class="d-flex flex-column row-gap-4" id="offices-services-filter"></div>
 
                         <div class="d-flex flex-column flex-md-row gap-3 gap-md-6 mt-md-2">
                             <button class="btn btn-primary btn-md-lg" type="button" data-bs-dismiss="modal" id="filters-submit-button">Применить</button>
