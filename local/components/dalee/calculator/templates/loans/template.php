@@ -172,10 +172,3 @@
         </div>
     </div>
 </div>
-<?php $APPLICATION->IncludeComponent(
-    "dalee:form",
-    "loan_form",
-    [
-        "FORM_CODE" => "loan_form",
-    ]
-); ?>

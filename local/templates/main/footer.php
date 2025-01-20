@@ -316,5 +316,19 @@ $APPLICATION->IncludeComponent(
         "FORM_CODE" => "feedback_form",
     ]
 ); ?>
+<?php $APPLICATION->IncludeComponent(
+    "dalee:form",
+    "consultation_form",
+    [
+        "FORM_CODE" => "consultation_form",
+    ]
+); ?>
+<?php $APPLICATION->IncludeComponent(
+    "dalee:form",
+    "loan_form",
+    [
+        "FORM_CODE" => "loan_form",
+    ]
+); ?>
 </body>
 </html>
