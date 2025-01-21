@@ -158,7 +158,7 @@ block content
     )
 
 
-    section.section-layout
+    section.section-layout(tabindex="0")
         .container
             .row.mb-6.mb-lg-7.px-lg-6
                 h3 Преимущества
@@ -169,13 +169,13 @@ block content
                             span!= item.description
         +pattern-bg('section', 'light', 'pattern-bg--position-sm-bottom')
 
-    section.section-layout
+    section.section-layout(tabindex="0")
         .container
             h3.px-lg-6.mb-6.mb-lg-7
                 | Подключите выгоду
             +slider-card-product(spcCardProductList, 'mobile-s:1,mobile:1,tablet:2,laptop:2,laptop-x:3')
 
-    section.section-layout.js-collapsed-mobile
+    section.section-layout.js-collapsed-mobile(tabindex="0")
         .container
             h3.d-none.d-md-block.mb-md-6.mb-lg-7.px-lg-6
                 | О&nbsp;карте Мир Премиальная
@@ -205,7 +205,7 @@ block content
                                 include ../includes/layout/tabs/faq
         +pattern-bg('section-2', 'light', 'pattern-bg--hide-mobile')
 
-    section.section-layout.js-collapsed-mobile.bg-dark-10
+    section.section-layout.js-collapsed-mobile.bg-dark-10(tabindex="0")
         .container
             h3.d-none.d-md-block.mb-md-6.mb-lg-7.px-lg-6
                 | Как оформить карту
@@ -223,7 +223,7 @@ block content
                     each item in cardStepList
                         .col-12.col-lg-4
                            +card-step(item).pe-xxl-11
-    section.section-layout.bg-blue-10
+    section.section-layout.bg-blue-10(tabindex="0")
         .container
             .d-flex.align-items-center.justify-content-between.px-lg-6.mb-6.mb-lg-7
                 h3 Спецпредложения
@@ -232,7 +232,7 @@ block content
                     +svg-use("icon-chevron-right-small", "icon size-s")
             include ../includes/layout/slider-cards-special
 
-    section.section-layout
+    section.section-layout(tabindex="0")
         .container
             h3.px-lg-6.mb-6.mb-lg-7
                 | Смотрите также

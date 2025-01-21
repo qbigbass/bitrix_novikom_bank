@@ -246,7 +246,7 @@ block content
                                                 .col-12.col-lg-6
                                                     +card-text(tabsListCards[0])
 
-    section.section-layout.js-collapsed-mobile
+    section.section-layout.js-collapsed-mobile(tabindex="0")
         .container
             h3.d-none.d-md-block.mb-md-6.mb-lg-7.px-lg-6
                 | Об услуге
@@ -270,7 +270,7 @@ block content
                                 include ../includes/layout/tabs/faq
         +pattern-bg('section-2', 'light', 'pattern-bg--hide-mobile')
 
-    section.section-layout.bg-purple-10
+    section.section-layout.bg-purple-10(tabindex="0")
         .container
             h3.mb-4.mb-md-6.mb-lg-7.px-lg-6 Контакты
             .row
@@ -284,7 +284,7 @@ block content
 
                         +slider-controls().mt-3
 
-    section.section-layout
+    section.section-layout(tabindex="0")
         .container
             h3.px-lg-6.mb-4.mb-md-6.mb-lg-7
                 | Другие услуги для корпоративных клиентов
