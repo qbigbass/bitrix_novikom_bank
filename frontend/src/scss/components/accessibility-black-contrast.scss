@@ -51,7 +51,7 @@
         background: var(--black-contrast-black-300);
       }
     }
-		
+
 
     .banner-hero {
       border-top: 8px solid var(--black-contrast-gray-100);
@@ -84,8 +84,14 @@
       }
 
 
-      &:hover {
+      &:hover,
+      &:focus {
         color: var(--black-contrast-black-0);
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
       }
     }
 
@@ -93,30 +99,43 @@
       .header__link {
         color: var(--black-contrast-black-200);
 
-        &:hover {
+        &:hover,
+        &:focus {
           color: var(--black-contrast-black-0);
+        }
+
+        &:focus {
+          outline: 2px solid Highlight;
+          outline-offset: 2px;
         }
       }
     }
-		
+
 
 
     .header__link.fw-semibold {
       color: var(--black-contrast-gray-400);
 
-      &:hover {
+      &:hover,
+      &:focus {
         color: var(--black-contrast-white-0);
       }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
+
     }
 
-		.polygon-container__content{
-	
-			.card-menu{
-				background:none;
-				background-color:var(--black-contrast-black-0);
+    .polygon-container__content {
 
-			}
-		}
+      .card-menu {
+        background: none;
+        background-color: var(--black-contrast-black-0);
+
+      }
+    }
 
     .card-menu h5 {
       color: var(--black-contrast-white-0);
@@ -126,16 +145,22 @@
       color: var(--black-contrast-white);
     }
 
-		//больше о банке
+    //больше о банке
     .btn.btn-secondary.btn-lg-lg.d-inline-block {
       color: var(--black-contrast-white-0);
       background-color: var(--black-contrast-black-0);
       border: 1px solid var(--black-contrast-white-200);
 
-      &:hover , &:focus{
-				border: 1px solid var(--black-contrast-black-0);
+      &:hover,
+      &:focus {
+        border: 1px solid var(--black-contrast-black-0);
         color: var(--black-contrast-black-0);
         background-color: var(--black-contrast-white-0);
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
       }
     }
 
@@ -179,40 +204,64 @@
         background-color: var(--black-contrast-white-0);
         color: var(--black-contrast-black-0);
       }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
     }
-//мобильное приложение 
-		.btn.btn-outline-primary.btn-sm.d-none.d-md-inline-flex.gap-2.align-items-center.justify-content-center{
-			border: 1px solid var(--black-contrast-white-0);
+
+
+
+
+    //мобильное приложение 
+    .btn.btn-outline-primary.btn-sm.d-none.d-md-inline-flex.gap-2.align-items-center.justify-content-center {
+      border: 1px solid var(--black-contrast-white-0);
       background-color: var(--black-contrast-black-0);
       color: var(--black-contrast-white-0);
-			.icon.size-m {
+
+      .icon.size-m {
         color: var(--black-contrast-white-0);
         transition: 0.2 all linear;
       }
-      &:hover, &:focus  {
-				background-color: var(--black-contrast-white-0);
-        color: var(--black-contrast-black-0) ;
-				.icon.size-m {
+
+      &:hover,
+      &:focus {
+        background-color: var(--black-contrast-white-0);
+        color: var(--black-contrast-black-0);
+
+        .icon.size-m {
           color: var(--black-contrast-black-0);
         }
       }
-		}
 
-		//онлайн банк
-		.btn.btn-sm.btn-primary.dropdown-toggle {
-			border: 1px solid var(--black-contrast-white-0);
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
+    }
+
+    //онлайн банк
+    .btn.btn-sm.btn-primary.dropdown-toggle {
+      border: 1px solid var(--black-contrast-white-0);
       background-color: var(--black-contrast-black-0);
       color: var(--black-contrast-white-0);
-	
-      &:hover, &:focus  {
-				background-color: var(--black-contrast-white-0);
-        color: var(--black-contrast-black-0) ;
-			
-      }
-		}
 
-		
-		
+      &:hover,
+      &:focus {
+        background-color: var(--black-contrast-white-0);
+        color: var(--black-contrast-black-0);
+
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
+    }
+
+
+
 
     .dropdown-menu {
       --bs-dropdown-link-color: var(--black-contrast-black-0);
@@ -238,15 +287,22 @@
       }
     }
 
-		.col-6.violet-100{
-			.header__link.fw-semibold{
-				color: var(--black-contrast-black-0);
-				&:hover , &:focus {
-					color: var(--black-contrast-white-0);
-				}
-			}
-			
-		}
+    .col-6.violet-100 {
+      .header__link.fw-semibold {
+        color: var(--black-contrast-black-0);
+
+        &:hover,
+        &:focus {
+          color: var(--black-contrast-white-0);
+        }
+
+        &:focus {
+          outline: 2px solid Highlight;
+          outline-offset: 2px;
+        }
+      }
+
+    }
 
     .banner-hero-thumb:not(:first-child) {
       border-left: 1px solid var(--black-contrast-white-0);
@@ -263,9 +319,14 @@
 
       &:hover,
       &:focus {
-        transition: all 0.2s linear;
+
         color: var(--black-contrast-white-0);
         background-color: var(--black-contrast-black-0);
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
       }
     }
 
@@ -297,7 +358,7 @@
     }
 
 
-		
+
 
     .card-product {
       border-radius: 5px;
@@ -317,6 +378,11 @@
         &:focus {
           background-color: var(--black-contrast-white-0);
           color: var(--black-contrast-black-0);
+        }
+
+        &:focus {
+          outline: 2px solid Highlight;
+          outline-offset: 2px;
         }
       }
 
@@ -343,6 +409,11 @@
         background: var(--black-contrast-gray-200);
       }
 
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
+
       & h4 {
         color: var(--black-contrast-black-0);
       }
@@ -364,7 +435,7 @@
       }
     }
 
-		
+
 
 
 
@@ -379,19 +450,26 @@
     }
 
 
-		//кнопки rustore nashstore
+    //кнопки rustore nashstore
     .d-flex.gap-3 {
-			.btn.btn-info.d-none.d-md-inline-flex.align-items-center{
-background-color:var(--black-contrast-white-200);
-     &:focus, &:hover {
-        background-color: var(--black-contrast-white-0);
+      .btn.btn-info.d-none.d-md-inline-flex.align-items-center {
+        background-color: var(--black-contrast-white-200);
+
+        &:focus,
+        &:hover {
+          background-color: var(--black-contrast-white-0);
+        }
+
+        &:focus {
+          outline: 2px solid Highlight;
+          outline-offset: 2px;
+        }
       }
-		}
     }
-		
-		
-		
-//направить сообщение кнопка
+
+
+
+    //направить сообщение кнопка
     .d-flex.flex-column.align-items-start.gap-5.gap-md-6.ps-lg-6 {
       .btn.btn-info.w-100.w-lg-auto {
         background-color: var(--black-contrast-black-0);
@@ -404,37 +482,51 @@ background-color:var(--black-contrast-white-200);
           color: var(--black-contrast-black-0);
 
         }
+
+        &:focus {
+          outline: 2px solid Highlight;
+          outline-offset: 2px;
+        }
       }
     }
-		
-		.section-layout.section-feedback.bg-blue-10 {
-			background-color: var(--black-contrast-black-300);
-		}
-		
+
+    .section-layout.section-feedback.bg-blue-10 {
+      background-color: var(--black-contrast-black-300);
+    }
+
 
 
     .form-control.form-control-lg-lg.js-mask-phone:focus {
       border-color: var(--black-contrast-black-0);
     }
 
-//кнопка скачать  в карточке мобильное приложение
+    //кнопка скачать  в карточке мобильное приложение
     .btn.btn-info.btn-icon.d-none.d-md-inline-flex {
       border: 1px solid var(--black-contrast-white-0);
       background-color: var(--black-contrast-black-0);
       color: var(--black-contrast-white-0);
-			.icon.size-m {
+
+      .icon.size-m {
         color: var(--black-contrast-white-0);
       }
 
-      &:hover, &:focus  {
-				background-color: var(--black-contrast-white-0);
-        color: var(--black-contrast-black-0) ;
-				.icon.size-m {
+      &:hover,
+      &:focus {
+        background-color: var(--black-contrast-white-0);
+        color: var(--black-contrast-black-0);
+
+        .icon.size-m {
           color: var(--black-contrast-black-0);
         }
       }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
     }
-//кнопки  кешбэк бонусы и акции
+
+    //кнопки  кешбэк бонусы и акции
     .btn.btn-link.btn-lg-lg.text-info.btn-icon {
       padding: 5px 12px;
       border: 1px solid var(--black-contrast-white-0);
@@ -456,9 +548,26 @@ background-color:var(--black-contrast-white-200);
           color: var(--black-contrast-black-0);
         }
       }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
     }
 
     .pattern-bg.pattern-bg--position-sm-top {
+      display: none;
+    }
+
+    .banner-product-info__image {
+      .polygon-container.js-polygon-container {
+        .polygon-container__content {
+          display: none;
+        }
+      }
+    }
+
+    .pattern-bg {
       display: none;
     }
 
@@ -479,10 +588,16 @@ background-color:var(--black-contrast-white-200);
         background-color: var(--black-contrast-gray-300);
         color: var(--black-contrast-black-300);
 
-        &:hover {
+        &:hover,
+        &:focus {
           background-color: var(--black-contrast-white-200);
           color: var(--black-contrast-black-0);
           box-shadow: none;
+        }
+
+        &:focus {
+          outline: 2px solid Highlight;
+          outline-offset: 2px;
         }
       }
 
@@ -491,12 +606,19 @@ background-color:var(--black-contrast-white-200);
       }
     }
 
-		.d-none.d-md-inline.text-s.fw-semibold {
-			color:var(--black-contrast-black-0);
-			&:hover , &:focus {
-				color: var(--black-contrast-black-300);
-			}
-		}
+    .d-none.d-md-inline.text-s.fw-semibold {
+      color: var(--black-contrast-black-0);
+
+      &:hover,
+      &:focus {
+        color: var(--black-contrast-black-300);
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
+    }
 
 
 
@@ -529,7 +651,7 @@ background-color:var(--black-contrast-white-200);
       .nav-link {
         background-color: var(--black-contrast-black-0);
         color: var(--black-contrast-white-0);
-        border-color:var(--black-contrast-black-0);
+        border-color: var(--black-contrast-black-0);
         white-space: nowrap;
 
         &.active {
@@ -540,12 +662,12 @@ background-color:var(--black-contrast-white-200);
     }
 
 
-		
+
 
 
     .polygon-container.js-polygon-container {
       width: fit-content;
-			min-width: 310px;
+      min-width: 310px;
     }
 
     .tab-content {
@@ -561,34 +683,51 @@ background-color:var(--black-contrast-white-200);
 
     .form-check-label a {
       color: var(--black-contrast-black-0);
-			&:hover , &:focus {
-				color: var(--black-contrast-black-400);
-			}
-    }
-		.form-check-label {
-			color: var(--black-contrast-black-0);
-			&:hover , &:focus {
-				color: var(--black-contrast-black-400);
-				text-decoration: underline;
-			}
-		}
 
-		.dark-70 {
+      &:hover,
+      &:focus {
+        color: var(--black-contrast-black-400);
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
+    }
+
+    .form-check-label {
+      color: var(--black-contrast-black-0);
+
+      &:hover,
+      &:focus {
+        color: var(--black-contrast-black-400);
+        text-decoration: underline;
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
+    }
+
+    .dark-70 {
       color: var(--black-contrast-black-0);
     }
 
 
-		.card-special.bg-dark-10.dark-100.h-100.d-flex.flex-column.row-gap-6.row-gap-lg-9 {
-			background: var(--black-contrast-gray-200);
-		}
-		.text-s.dark-70.my-auto.mb-0 {
-			color: var(--black-contrast-black-0);
-		}
-		.text-s.dark-70 {
-			color: var(--black-contrast-black-0);
-		}
-		
-		
+    .card-special.bg-dark-10.dark-100.h-100.d-flex.flex-column.row-gap-6.row-gap-lg-9 {
+      background: var(--black-contrast-gray-200);
+    }
+
+    .text-s.dark-70.my-auto.mb-0 {
+      color: var(--black-contrast-black-0);
+    }
+
+    .text-s.dark-70 {
+      color: var(--black-contrast-black-0);
+    }
+
+
     .card-calculate-result {
       background-color: var(--black-contrast-black-300);
 
@@ -606,21 +745,26 @@ background-color:var(--black-contrast-white-200);
       background: var(--black-contrast-black-0);
     }
 
-//перезвоните мне
+    //перезвоните мне
     form .btn.btn-primary.btn-lg-lg.w-100 {
-			background-color: var(--black-contrast-black-200);
+      background-color: var(--black-contrast-black-200);
       color: var(--black-contrast-white-0);
       border: 1px solid var(--black-contrast-black-0);
-	
+
 
       &:hover,
       &:focus {
         background-color: var(--black-contrast-black-0);
         color: var(--black-contrast-white-0);
       }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
     }
-		
-		
+
+
 
 
     button .btn.btn-info.w-100.w-lg-auto {
@@ -629,10 +773,16 @@ background-color:var(--black-contrast-white-200);
       border: 1px solid var(--black-contrast-black-0);
       transition: background-color 0.2s ease;
 
-      &:hover {
+      &:hover,
+      &:focus {
         background-color: var(--black-contrast-gray-200);
         border: none;
         color: var(--black-contrast-black-300);
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
       }
     }
 
@@ -662,6 +812,11 @@ background-color:var(--black-contrast-white-200);
       &:focus {
         color: var(--black-contrast-white-300);
       }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
     }
 
 
@@ -669,6 +824,10 @@ background-color:var(--black-contrast-white-200);
 
     .card-about-bank__col.d-flex.flex-column {
       background-color: var(--black-contrast-gray-100);
+
+      img {
+        filter: grayscale(1) brightness(0);
+      }
     }
 
     .violet-100.fw-semibold.text-number-m.fw-bold {
@@ -684,17 +843,18 @@ background-color:var(--black-contrast-white-200);
 
 
     }
-//предварительный расчет
+
+    //предварительный расчет
     .d-flex.flex-column.gap-4.gap-lg-5.gap-xl-4.bg-dark-0.rounded-3.px-3.py-4.p-md-5.px-lg-6.p-xl-6 {
       background-color: var(--black-contrast-black-300);
-			border:1px solid  var(--black-contrast-black-0);
+      border: 1px solid var(--black-contrast-black-0);
     }
 
-		.form-label,
-		h4,
-		.caption-m.dark-70.mt-2.d-block {
-			color:  var(--black-contrast-black-0);
-		}
+    .form-label,
+    h4,
+    .caption-m.dark-70.mt-2.d-block {
+      color: var(--black-contrast-black-0);
+    }
 
     .form-control.form-control-lg {
       border-color: var(--black-contrast-black-0)
@@ -707,7 +867,7 @@ background-color:var(--black-contrast-white-200);
     }
 
     .purple-70 {
-      color:  var(--black-contrast-black-0)
+      color: var(--black-contrast-black-0)
     }
 
     h5 {
@@ -722,9 +882,15 @@ background-color:var(--black-contrast-white-200);
       color: var(--black-contrast-white-200);
       border: 1px solid var(--black-contrast-white-200);
 
-      &:hover {
+      &:hover,
+      &:focus {
         background-color: var(--black-contrast-gray-200);
         color: var(--black-contrast-black-0);
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
       }
     }
 
@@ -733,12 +899,18 @@ background-color:var(--black-contrast-white-200);
       color: var(--black-contrast-black-0);
       border: none;
 
-      &:hover {
+      &:hover,
+      &:focus {
         background: transparent;
         color: var(--black-contrast-white-0);
       }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
     }
-		
+
 
     .col-12.col-md-6.col-xl-3.d-flex.flex-column.row-gap-3 {
       width: auto;
@@ -752,6 +924,7 @@ background-color:var(--black-contrast-white-200);
           text-decoration: underline;
           color: var(--black-contrast-black-0);
         }
+
       }
 
       .btn.btn-link.d-inline-flex.gap-2.align-items-center.border-0 {
@@ -771,18 +944,23 @@ background-color:var(--black-contrast-white-200);
       background-color: var(--black-contrast-black-200);
       color: var(--black-contrast-white-0);
       border: 1px solid var(--black-contrast-black-0);
-			min-width: 100%;
+      min-width: 100%;
 
       &:hover,
       &:focus {
         background-color: var(--black-contrast-black-0);
         color: var(--black-contrast-white-0);
       }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
     }
 
     //версии 2 кнопки
     .btn.btn-lg-lg.btn-outline-primary.d-flex.gap-2.align-items-center.justify-content-center {
-      background-color:var(--black-contrast-black-200);
+      background-color: var(--black-contrast-black-200);
       color: var(--black-contrast-white-0);
       border: 1px solid var(--black-contrast-black-0);
 
@@ -791,9 +969,15 @@ background-color:var(--black-contrast-white-200);
         background-color: var(--black-contrast-black-0);
         color: var(--black-contrast-white-0);
       }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
+
     }
 
-		
+
 
     //rustore  rumarket  nashstore
     .btn-app.btn.d-inline-flex.justify-content-center.align-items-center.bg-white {
@@ -801,21 +985,31 @@ background-color:var(--black-contrast-white-200);
 
       &:hover,
       &:focus {
-        border:4px solid var(--black-contrast-white-0);
+        border: 4px solid var(--black-contrast-white-0);
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
       }
     }
 
 
-		//скачать
+    //скачать
     .btn-app.btn.btn-primary.d-flex.align-items-center.gap-2.gap-lg-3.justify-content-center {
       background-color: var(--black-contrast-black-0);
-      color:var(--black-contrast-white-0);
+      color: var(--black-contrast-white-0);
       border: 2px solid var(--black-contrast-black-0);
 
       &:hover,
       &:focus {
         background-color: var(--black-contrast-white-0);
         color: var(--black-contrast-black-0);
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
       }
     }
 
@@ -824,7 +1018,7 @@ background-color:var(--black-contrast-white-200);
     .footer__info {
       background-color: var(--black-contrast-gray-200);
 
-			.text-s.dark-70 {
+      .text-s.dark-70 {
         color: var(--black-contrast-black-0);
 
         &:hover,
@@ -832,20 +1026,26 @@ background-color:var(--black-contrast-white-200);
           text-decoration: underline;
           color: var(--black-contrast-black-100);
         }
+
+        &:focus {
+          outline: 2px solid Highlight;
+          outline-offset: 2px;
+        }
       }
     }
 
-		.row.row-gap-7 {
-			.text-s.dark-70{
-				color: var(--black-contrast-black-0);
+    .row.row-gap-7 {
+      .text-s.dark-70 {
+        color: var(--black-contrast-black-0);
 
         &:hover,
         &:focus {
           text-decoration: underline;
           color: var(--black-contrast-black-100);
         }
-			}
-		}
+
+      }
+    }
 
     .bg-blue-10 {
       background-color: var(--black-contrast-gray-100);
@@ -857,16 +1057,28 @@ background-color:var(--black-contrast-white-200);
     .d-flex.gap-2.align-items-center {
       color: var(--black-contrast-white-0);
 
-      &:hover {
+      &:hover,
+      &:focus {
         color: var(--black-contrast-black-0);
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
       }
     }
 
     .chat-bot__btn-close.js-chatbot-close svg {
       color: var(--black-contrast-white-200);
 
-      &:hover {
+      &:hover,
+      &:focus {
         color: var(--black-contrast-black-0);
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
       }
     }
 
@@ -885,41 +1097,50 @@ background-color:var(--black-contrast-white-200);
     }
 
 
-		
+
     //atms.html
 
-		.map-content__header.d-flex.flex-column.row-gap-4.row-gap-md-6{
-			background-color: var(--black-contrast-gray-100);
-		}
+    .map-content__header.d-flex.flex-column.row-gap-4.row-gap-md-6 {
+      background-color: var(--black-contrast-gray-100);
+    }
 
 
     .card-office.d-flex.col-gap-2.align-items-center {
       background-color: var(--black-contrast-black-300);
-			.card-office__body.d-flex.flex-grow-1.flex-column.row-gap-2.row-gap-md-3{
-				color:var(--black-contrast-black-0)
-			}
+
+      .card-office__body.d-flex.flex-grow-1.flex-column.row-gap-2.row-gap-md-3 {
+        color: var(--black-contrast-black-0)
+      }
 
 
-			&:hover {
+      &:hover,
+      &:focus {
 
-				background-color: var(--black-contrast-black-0);
-				.card-office__body.d-flex.flex-grow-1.flex-column.row-gap-2.row-gap-md-3{
-					.card-office__title.fw-semibold.text-l.m-0,
-					.card-office__address.text-s.m-0.dark-70{
-						color:var(--black-contrast-white-0);
-					}
+        background-color: var(--black-contrast-black-0);
 
-				}
-			}
+        .card-office__body.d-flex.flex-grow-1.flex-column.row-gap-2.row-gap-md-3 {
+
+          .card-office__title.fw-semibold.text-l.m-0,
+          .card-office__address.text-s.m-0.dark-70 {
+            color: var(--black-contrast-white-0);
+          }
+
+        }
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
     }
 
 
-		.card-tariff.d-flex.flex-column.gap-5.bg-blue-10 {
-			background-color: var(--black-contrast-gray-100);
-		}
-	
+    .card-tariff.d-flex.flex-column.gap-5.bg-blue-10 {
+      background-color: var(--black-contrast-gray-100);
+    }
 
-		
+
+
 
     .modal {
       &-header {
@@ -930,9 +1151,10 @@ background-color:var(--black-contrast-white-200);
         background-color: var(--black-contrast-gray-100);
       }
     }
-//применить
+
+    //применить
     .btn.btn-primary.btn-md-lg {
-			background-color:var(--black-contrast-black-200);
+      background-color: var(--black-contrast-black-200);
       color: var(--black-contrast-white-0);
       border: 1px solid var(--black-contrast-black-0);
 
@@ -941,10 +1163,16 @@ background-color:var(--black-contrast-white-200);
         background-color: var(--black-contrast-black-0);
         color: var(--black-contrast-white-0);
       }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
     }
-//сбросить
+
+    //сбросить
     .btn.btn-outline-primary.btn-md-lg {
-			background-color:var(--black-contrast-black-200);
+      background-color: var(--black-contrast-black-200);
       color: var(--black-contrast-white-0);
       border: 1px solid var(--black-contrast-black-0);
 
@@ -952,12 +1180,17 @@ background-color:var(--black-contrast-white-200);
       &:focus {
         background-color: var(--black-contrast-black-0);
         color: var(--black-contrast-white-0);
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
       }
     }
 
     //AWARDS page
 
-		
+
     .bg-linear-blue {
       background: none;
       background-color: var(--black-contrast-black-300);
@@ -967,14 +1200,20 @@ background-color:var(--black-contrast-white-200);
       color: var(--black-contrast-black-0);
     }
 
-		.breadcrumbs__item.d-md-inline-flex.align-items-center.gap-2.text-s.text-white-50.d-none span,
-    .breadcrumbs__item.d-md-inline-flex.align-items-center.gap-2.text-s.text-white-50.d-inline-flex span ,
-		.breadcrumbs__item.d-md-inline-flex.align-items-center.gap-2.text-s.dark-70.d-inline-flex span {
+    .breadcrumbs__item.d-md-inline-flex.align-items-center.gap-2.text-s.text-white-50.d-none span,
+    .breadcrumbs__item.d-md-inline-flex.align-items-center.gap-2.text-s.text-white-50.d-inline-flex span,
+    .breadcrumbs__item.d-md-inline-flex.align-items-center.gap-2.text-s.dark-70.d-inline-flex span {
       color: var(--black-contrast-black-0);
 
-      &:hover {
+      &:hover,
+      &:focus {
         color: var(--black-contrast-white-200);
-				text-decoration: underline;
+        text-decoration: underline;
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
       }
     }
 
@@ -996,7 +1235,7 @@ background-color:var(--black-contrast-white-200);
       opacity: 0;
     }
 
-		.tabs-panel__list-item-link.nav-link.bg-transparent {
+    .tabs-panel__list-item-link.nav-link.bg-transparent {
       background-color: var(--black-contrast-black-200) !important;
       color: var(--black-contrast-white-0);
       border-color: var(--black-contrast-black-0);
@@ -1006,9 +1245,16 @@ background-color:var(--black-contrast-white-200);
         color: var(--black-contrast-white-0);
         border-color: var(--black-contrast-black-0);
       }
-			&:hover,&:focus {
-				background-color: var(--black-contrast-black-300) 
-			}
+
+      &:hover,
+      &:focus {
+        background-color: var(--black-contrast-black-300)
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
     }
 
     .tabs-panel::before {
@@ -1033,19 +1279,26 @@ background-color:var(--black-contrast-white-200);
         color: var(--black-contrast-black-0);
       }
     }
-		
-	
-		.banner-product.banner-product--heavy-purple.banner-product--border-orange{
-			background-color: var(--black-contrast-black-300);
-		}
+
+
+    .banner-product.banner-product--heavy-purple.banner-product--border-orange {
+      background-color: var(--black-contrast-black-300);
+    }
+
     .banner-product.btn-orange {
       color: var(--black-contrast-white-200);
       background-color: var(--black-contrast-black-300);
       border: 1px solid var(--black-contrast-white-200);
 
-      &:hover {
+      &:hover,
+      &:focus {
         color: var(--black-contrast-black-300);
         background-color: var(--black-contrast-white-200);
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
       }
     }
 
@@ -1067,7 +1320,7 @@ background-color:var(--black-contrast-white-200);
     .card-benefit__image {
       display: none;
     }
-		
+
 
 
     .benefit__description.w-100.text-m span {
@@ -1078,25 +1331,33 @@ background-color:var(--black-contrast-white-200);
       background-color: var(--black-contrast-black-0);
     }
 
-		.card-help__description.text-s-m.m-0 {
-			color: var(--black-contrast-black-0);
-		}
+    .card-help__description.text-s-m.m-0 {
+      color: var(--black-contrast-black-0);
+    }
 
     .helper__content.text-l .link {
       color: var(--black-contrast-black-0);
 
-      &:hover {
+      &:hover,
+      &:focus {
         color: var(--black-contrast-black-200);
         text-decoration: underline;
       }
+
     }
 
-		.card-help__input.form-control.form-control-lg-lg.bg-transparent.js-mask-phone{
-			border:1px solid var(--black-contrast-black-0);
-			&:focus  {
-				border-color: var(--black-contrast-black-200);
-			}
-		}
+    .card-help__input.form-control.form-control-lg-lg.bg-transparent.js-mask-phone {
+      border: 1px solid var(--black-contrast-black-0);
+
+      &:focus {
+        border-color: var(--black-contrast-black-200);
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
+    }
 
     .list li:before {
       background: var(--black-contrast-black-0);
@@ -1161,27 +1422,28 @@ background-color:var(--black-contrast-white-200);
       }
     }
 
-		.list-contact__link{
-			.text-l{
-				color: var(--black-contrast-black-0);
+    .list-contact__link {
+      .text-l {
+        color: var(--black-contrast-black-0);
 
-				&:hover , &:focus {
-					color: var(--black-contrast-black-200);
-					text-decoration: underline;
-				}
-			}
-		}
-
-		
-	
+        &:hover,
+        &:focus {
+          color: var(--black-contrast-black-200);
+          text-decoration: underline;
+        }
+      }
+    }
 
 
 
-		
-		.card-feedback__inner::after {
-			background:none;
-			background-color: var(--black-contrast-black-300);
-		}
+
+
+
+
+    .card-feedback__inner::after {
+      background: none;
+      background-color: var(--black-contrast-black-300);
+    }
 
     .caption-m.chip.chip--outlined {
       color: var(--black-contrast-black-0);
@@ -1193,70 +1455,90 @@ background-color:var(--black-contrast-white-200);
     }
 
 
-		.d-flex.flex-column.flex-md-row.p-0.gap-3.gap-md-4 {
-			gap: 1rem; 
-			button {
-				flex: 1; 
-				min-width: 150px; 
-				text-align: center;
-				white-space: normal;
+    .d-flex.flex-column.flex-md-row.p-0.gap-3.gap-md-4 {
+      gap: 1rem;
 
-				text-align: center; 
-				overflow: hidden; 
-			}
-		}
+      button {
+        flex: 1;
+        min-width: 150px;
+        text-align: center;
+        white-space: normal;
 
-
-		//кнопка перзвоните мне
-		.d-flex.flex-column.flex-md-row.p-0.gap-3.gap-md-4{
-.btn.btn-primary.btn-lg-lg.text-ls.overflow-visible.w-100.w-md-auto{
-	background-color:var(--black-contrast-black-0);
-	border:1px solid var(--black-contrast-black-0);
-	color: var(--black-contrast-white-200);
-
-	&:hover , &:focus {
-		background-color:var(--black-contrast-white-0);
-	color: var(--black-contrast-black-0);
-	}
-
-}
+        text-align: center;
+        overflow: hidden;
+      }
+    }
 
 
+    //кнопка перзвоните мне
+    .d-flex.flex-column.flex-md-row.p-0.gap-3.gap-md-4 {
+      .btn.btn-primary.btn-lg-lg.text-ls.overflow-visible.w-100.w-md-auto {
+        background-color: var(--black-contrast-black-0);
+        border: 1px solid var(--black-contrast-black-0);
+        color: var(--black-contrast-white-200);
 
-//открыть чат
-.btn.btn-outline-primary.btn-lg-lg.text-ls.overflow-visible.w-100.w-md-auto{
-	padding: 15px 32px !important;
-	max-width: auto;
-	background-color:var(--black-contrast-black-0);
-	border:1px solid var(--black-contrast-black-0);
-	color: var(--black-contrast-white-200);
+        &:hover,
+        &:focus {
+          background-color: var(--black-contrast-white-0);
+          color: var(--black-contrast-black-0);
+        }
 
-	&:hover , &:focus {
-		background-color:var(--black-contrast-white-0);
-	color: var(--black-contrast-black-0);
-	}
-}
-		}
+        &:focus {
+          outline: 2px solid Highlight;
+          outline-offset: 2px;
+        }
+
+      }
 
 
 
+      //открыть чат
+      .btn.btn-outline-primary.btn-lg-lg.text-ls.overflow-visible.w-100.w-md-auto {
+        padding: 15px 32px !important;
+        max-width: auto;
+        background-color: var(--black-contrast-black-0);
+        border: 1px solid var(--black-contrast-black-0);
+        color: var(--black-contrast-white-200);
+
+        &:hover,
+        &:focus {
+          background-color: var(--black-contrast-white-0);
+          color: var(--black-contrast-black-0);
+        }
+
+        &:focus {
+          outline: 2px solid Highlight;
+          outline-offset: 2px;
+        }
+      }
+    }
 
 
 
-//подробнее
-		.btn.btn-link.btn-icon.m-auto.m-lg-0.py-2.py-lg-0 {
-			background-color:var(--black-contrast-black-0);
-			border:1px solid var(--black-contrast-white-0);
-			color: var(--black-contrast-white-0);
-		padding: 5px 12px !important;
-			&:hover , &:focus {
-				background-color:var(--black-contrast-white-0);
-			color: var(--black-contrast-black-0);
-			}
-		}
- 
-  
-   
+
+
+
+    //подробнее
+    .btn.btn-link.btn-icon.m-auto.m-lg-0.py-2.py-lg-0 {
+      background-color: var(--black-contrast-black-0);
+      border: 1px solid var(--black-contrast-white-0);
+      color: var(--black-contrast-white-0);
+      padding: 5px 12px !important;
+
+      &:hover,
+      &:focus {
+        background-color: var(--black-contrast-white-0);
+        color: var(--black-contrast-black-0);
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
+    }
+
+
+
 
     //	biometric-identification.html
     .banner-text--border-green {
@@ -1267,13 +1549,21 @@ background-color:var(--black-contrast-white-200);
       color: var(--black-contrast-white-0);
     }
 
-		.list.list--size-l{
-    .link.text-decoration-underline {
-      color: var(--black-contrast-black-0);
-      &:hover , &:focus{
-        color: var(--black-contrast-black-200);
+    .list.list--size-l {
+      .link.text-decoration-underline {
+        color: var(--black-contrast-black-0);
+
+        &:hover,
+        &:focus {
+          color: var(--black-contrast-black-200);
+        }
+
+        &:focus {
+          outline: 2px solid Highlight;
+          outline-offset: 2px;
+        }
       }
-    }}
+    }
 
     .green-100.size-md-xxl.icon {
       filter: brightness(0) invert(1);
@@ -1289,8 +1579,14 @@ background-color:var(--black-contrast-white-200);
       text-decoration: underline;
       color: var(--black-contrast-black-0);
 
-      &:hover {
+      &:hover,
+      &:focus {
         color: var(--black-contrast-white-200);
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
       }
     }
 
@@ -1300,15 +1596,16 @@ background-color:var(--black-contrast-white-200);
       padding: 5px 12px;
     }
 
-		
-		.document-download{
-			border-bottom:1px dashed var(--black-contrast-black-0)
-		}
+
+    .document-download {
+      border-bottom: 1px dashed var(--black-contrast-black-0)
+    }
+
     //bonuses.html
 
-		.banner-text.banner-text--border-green.bg-heavy-purple{
-			background-color: var(--black-contrast-black-300);
-		}
+    .banner-text.banner-text--border-green.bg-heavy-purple {
+      background-color: var(--black-contrast-black-300);
+    }
 
     .bg-gradient-violet {
       background: none;
@@ -1321,6 +1618,11 @@ background-color:var(--black-contrast-white-200);
       &:focus {
         color: var(--black-contrast-white-200);
       }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
     }
 
     .select2-results__option.select2-results__option--selectable {
@@ -1330,23 +1632,30 @@ background-color:var(--black-contrast-white-200);
     .select2-container--default.select2-results__option--highlighted.select2-results__option--selectable {
       color: var(--black-contrast-white-200);
 
-      &:hover {
+      &:hover,
+      &:focus {
         color: var(--black-contrast-white-0);
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
       }
     }
 
-		.d-flex.flex-column.gap-2.align-items-start{
-			.text-l{
-				.link{
-					color: var(--black-contrast-black-0);
+    .d-flex.flex-column.gap-2.align-items-start {
+      .text-l {
+        .link {
+          color: var(--black-contrast-black-0);
 
-					&:hover {
-						color: var(--black-contrast-black-200);
-						text-decoration:underline;
-					}
-				}
-			}
-		}
+          &:hover,
+          &:focus {
+            color: var(--black-contrast-black-200);
+            text-decoration: underline;
+          }
+        }
+      }
+    }
 
     .select2-dropdown.select2-dropdown--below {
       background-color: var(--black-contrast-gray-300);
@@ -1354,48 +1663,63 @@ background-color:var(--black-contrast-white-200);
 
     //cards.html
 
-.card-product-list.overflow-hidden.position-relative.mh-100.h-auto.bg-dark-10.w-100.pt-7.pb-6.py-sm-9.py-md-9.py-lg-11.px-3.px-sm-4.px-md-5.px-lg-6.pe-xxl-11{
-	background-color: var(--black-contrast-black-300);
-}
+    .card-product-list.overflow-hidden.position-relative.mh-100.h-auto.bg-dark-10.w-100.pt-7.pb-6.py-sm-9.py-md-9.py-lg-11.px-3.px-sm-4.px-md-5.px-lg-6.pe-xxl-11 {
+      background-color: var(--black-contrast-black-300);
+    }
 
-.tabs-panel__navigation-item-reverse ,.tabs-panel__navigation-item {
-	background:none;
-}
-.tabs-panel__navigation.d-none.d-lg-block.js-tabs-slider-navigation.w-100 span>svg{
-	
-		color: var(--black-contrast-white-0);
-}
+    .tabs-panel__navigation-item-reverse,
+    .tabs-panel__navigation-item {
+      background: none;
+    }
 
-//оформить заявку
+    .tabs-panel__navigation.d-none.d-lg-block.js-tabs-slider-navigation.w-100 span>svg {
+
+      color: var(--black-contrast-white-0);
+    }
+
+    //оформить заявку
     .btn.btn-tertiary.btn-lg-lg.card-product-list__button.w-100.w-sm-auto {
       background-color: var(--black-contrast-black-0);
       color: var(--black-contrast-white-0);
-      border:1px solid  var(--black-contrast-white-0);
+      border: 1px solid var(--black-contrast-white-0);
 
-      &:hover ,&:focus{
+      &:hover,
+      &:focus {
         background-color: var(--black-contrast-white-0);
         color: var(--black-contrast-black-0);
       }
-    }
-//подробнее
-.btn.btn-link.btn-lg-lg.d-inline-flex.gap-2.align-items-center.card-product-list__button-more {
-	background-color: var(--black-contrast-black-0);
-	color: var(--black-contrast-white-0);
-	border:1px solid  var(--black-contrast-white-0);
-	padding: 15px 32px;
 
-	&:hover ,&:focus{
-		background-color: var(--black-contrast-white-0);
-		color: var(--black-contrast-black-0);
-	}
-}
-	
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
+    }
+
+    //подробнее
+    .btn.btn-link.btn-lg-lg.d-inline-flex.gap-2.align-items-center.card-product-list__button-more {
+      background-color: var(--black-contrast-black-0);
+      color: var(--black-contrast-white-0);
+      border: 1px solid var(--black-contrast-white-0);
+      padding: 15px 32px;
+
+      &:hover,
+      &:focus {
+        background-color: var(--black-contrast-white-0);
+        color: var(--black-contrast-black-0);
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
+    }
+
 
     //career-vacancy.html
 
-//откликнуться на вакансию
+    //откликнуться на вакансию
     .btn.btn-secondary.btn-lg-lg.d-inline-block.w-100.w-md-auto {
-      background-color:var(--black-contrast-black-200);
+      background-color: var(--black-contrast-black-200);
       color: var(--black-contrast-white-0);
       border: 1px solid var(--black-contrast-black-0);
 
@@ -1404,29 +1728,38 @@ background-color:var(--black-contrast-white-200);
         background-color: var(--black-contrast-black-0);
         color: var(--black-contrast-white-0);
       }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
     }
 
-		.card-contact__contacts.d-flex.flex-column.flex-lg-row.flex-lg-wrap.gap-4 {
-			.card-contact__link.dark-0.gap-3.h5.fw-normal.text-white{
-			u {
-				color: var(--black-contrast-black-0);
+    .card-contact__contacts.d-flex.flex-column.flex-lg-row.flex-lg-wrap.gap-4 {
+      .card-contact__link.dark-0.gap-3.h5.fw-normal.text-white {
+        u {
+          color: var(--black-contrast-black-0);
 
-				&:hover {
-					color:var(--black-contrast-black-200);
-					text-decoration: underline;
-				}
-			}
-		}}
+          &:hover,
+          &:focus {
+            color: var(--black-contrast-black-200);
+            text-decoration: underline;
+          }
 
-		.d-flex.flex-wrap.justify-content-start.gap-2 span {
-			
-				color: var(--black-contrast-black-0);
+        }
+      }
+    }
 
-				&:hover {
-					color:var(--black-contrast-black-200);
-					text-decoration: underline;
-				}
-		}
+    .d-flex.flex-wrap.justify-content-start.gap-2 span {
+
+      color: var(--black-contrast-black-0);
+
+      &:hover,
+      &:focus {
+        color: var(--black-contrast-black-200);
+        text-decoration: underline;
+      }
+    }
 
     //career.html
     .mt-7.w-100.w-sm-auto.btn.btn-secondary.btn-lg-lg.d-inline-block {
@@ -1434,44 +1767,54 @@ background-color:var(--black-contrast-white-200);
       color: var(--black-contrast-white-0);
       border: 1px solid var(--black-contrast-white-0);
 
-      &:hover , &:focus{
+      &:hover,
+      &:focus {
         background-color: var(--black-contrast-white-0);
         color: var(--black-contrast-black-0);
       }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
     }
 
-		span .select2-selection__placeholder {
-			color: var(--black-contrast-black-0) !important;
-		}
+    span .select2-selection__placeholder {
+      color: var(--black-contrast-black-0) !important;
+    }
 
-		.border-bottom-dashed{
-			border-bottom : 1px dashed var(--black-contrast-black-0) ;
-		}
-		.form-control.form-control-lg.text-l:focus {
-border-color:var(--black-contrast-black-200);
-		}
-		.input-group-icon {
-			border:1px solid var(--black-contrast-black-0);
-		}
+    .border-bottom-dashed {
+      border-bottom: 1px dashed var(--black-contrast-black-0);
+    }
+
+    .form-control.form-control-lg.text-l:focus {
+      border-color: var(--black-contrast-black-200);
+    }
+
+    .input-group-icon {
+      border: 1px solid var(--black-contrast-black-0);
+    }
 
     .page-item {
-  
-      --bs-pagination-active-bg:var(--black-contrast-black-0) 
-      --bs-pagination-active-border-color: var(--black-contrast-white-200);
+
+      --bs-pagination-active-bg: var(--black-contrast-black-0) --bs-pagination-active-border-color: var(--black-contrast-white-200);
       --bs-pagination-border-radius: 4px;
 
-      &:hover , &:focus {
-      
-        --bs-pagination-hover-bg: var(--black-contrast-black-200) 
-        --bs-pagination-active-bg: var(--black-contrast-black-300) 
-        --bs-pagination-active-border-color: var(--black-contrast-white-200);
+      &:hover,
+      &:focus {
+
+        --bs-pagination-hover-bg: var(--black-contrast-black-200) --bs-pagination-active-bg: var(--black-contrast-black-300) --bs-pagination-active-border-color: var(--black-contrast-white-200);
         --bs-pagination-border-radius: 4px;
       }
 
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
+
       &.active {
-       
-        --bs-pagination-active-bg:var(--black-contrast-black-0) 
-        --bs-pagination-active-border-color: var(--black-contrast-white-200);
+
+        --bs-pagination-active-bg: var(--black-contrast-black-0) --bs-pagination-active-border-color: var(--black-contrast-white-200);
         --bs-pagination-border-radius: 4px;
       }
     }
@@ -1488,84 +1831,119 @@ border-color:var(--black-contrast-black-200);
       display: none;
     }
 
-		.card-sale.d-flex.flex-column.align-items-start.gap-2.gap-lg-3{
-			display: flex;
-			flex-direction: column;
-			align-items: center; 
-			justify-content: center; 
-			text-align: center;
-			height: 100%; 
-			border:1px solid var(--black-contrast-black-0) ;
-			padding: 25px;
-			border-radius:8px;
-
-			&:focus , &:hover{
-				background-color:var(--black-contrast-black-0) ;
-				.dark-100{
-					color:var(--black-contrast-white-200);
-					margin: 0 auto;
-					text-align:center;
-				}
-			}
-			.dark-100{
-				margin: 0 auto;
-				text-align:center;
-			}
-
-		}
-
-		.row.px-lg-6{
-			.col-12{
-				.swiper-slide {
-					display: flex;
-					flex-direction: column;
-					width: 100%;
-					align-items: center; 
-					justify-content: center;
-					text-align: center; 
-					height: 100%; 
-			}
-			}}
-	
+    .card-sale.d-flex.flex-column.align-items-start.gap-2.gap-lg-3 {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 100%;
+      padding: 25px;
+      border-radius: 8px;
+      border: 1px solid var(--black-contrast-black-0);
 
 
-			.table-adaptive__row{
-				border-bottom: 1px dashed var(--black-contrast-black-0) ;
-			}
+
+
+
+
+
+      &:focus,
+      &:hover {
+        background-color: var(--black-contrast-black-0);
+
+        .dark-100 {
+          color: var(--black-contrast-white-200);
+        }
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
+
+
+
+    }
+
+
+    .dark-100 {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    // .row.px-lg-6{
+    // 	.col-12{
+    // 		.swiper-slide {
+    // 			display: flex;
+    // 			flex-direction: column;
+    // 			width: 100%;
+    // 			align-items: center; 
+    // 			justify-content: center;
+    // 			text-align: center; 
+    // 			height: 100%; 
+    // 	}
+    // 	}}
+
+
+
+    .table-adaptive__row {
+      border-bottom: 1px dashed var(--black-contrast-black-0);
+    }
 
     .btn.btn-lg.btn-link.btn-icon {
-			background-color: var(--black-contrast-black-200);
+      background-color: var(--black-contrast-black-200);
       color: var(--black-contrast-white-0);
       border: 1px solid var(--black-contrast-black-0);
-			padding : 15px 32px;
-			.icon.size-m{
-				color: var(--black-contrast-white-0);
-			}
+      padding: 15px 32px;
+
+      .icon.size-m {
+        color: var(--black-contrast-white-0);
+      }
+
       &:hover,
       &:focus {
         background-color: var(--black-contrast-black-0);
         color: var(--black-contrast-white-0);
-				.icon.size-m{
-					color: var(--black-contrast-white-0);
-				}
+
+        .icon.size-m {
+          color: var(--black-contrast-white-0);
+        }
       }
-  
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
+
     }
 
-		.benefit__description.w-100.text-m {
-			.text-l{
-				.link{
-					color: var(--black-contrast-black-0);
+    .benefit__description.w-100.text-m {
+      .text-l {
+        .link {
+          color: var(--black-contrast-black-0);
 
-					&:hover {
-						color: var(--black-contrast-black-200);
-						text-decoration: underline;
-					}
-				}
-			}
-		}
+          &:hover,
+          &:focus {
+            color: var(--black-contrast-black-200);
+            text-decoration: underline;
+          }
+
+          &:focus {
+            outline: 2px solid Highlight;
+            outline-offset: 2px;
+          }
+        }
+      }
+    }
 
 
+
+
+
+    #mobile-phone-help::placeholder {
+      color: var(--black-contrast-black-0);
+    }
 
 
     //contribution-detail.html
@@ -1574,8 +1952,8 @@ border-color:var(--black-contrast-black-200);
       --border-top-color: var(--black-contrast-black-300);
     }
 
-   
-//оформить заявку
+
+    //оформить заявку
     .card-calculate-result__footer {
       .btn.btn-primary.btn-lg-lg.w-100 {
         color: var(--black-contrast-white-0);
@@ -1586,7 +1964,12 @@ border-color:var(--black-contrast-black-200);
         &:hover,
         &:focus {
           color: var(--black-contrast-black-0);
-          background-color:  var(--black-contrast-white-0);
+          background-color: var(--black-contrast-white-0);
+        }
+
+        &:focus {
+          outline: 2px solid Highlight;
+          outline-offset: 2px;
         }
       }
     }
@@ -1613,21 +1996,27 @@ border-color:var(--black-contrast-black-200);
       }
     }
 
-		//открыть вклад
-		.btn-tertiary.btn.btn-lg-lg.banner-product__button {
+    //открыть вклад
+    .btn-tertiary.btn.btn-lg-lg.banner-product__button {
       color: var(--black-contrast-white-0);
-        background-color: var(--black-contrast-black-0);
-        border: 1px solid var(--black-contrast-white-0);
-        &:hover,
-        &:focus {
-          color: var(--black-contrast-black-0);
-          background-color:  var(--black-contrast-white-0);
-        }
+      background-color: var(--black-contrast-black-0);
+      border: 1px solid var(--black-contrast-white-0);
+
+      &:hover,
+      &:focus {
+        color: var(--black-contrast-black-0);
+        background-color: var(--black-contrast-white-0);
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
     }
 
-		.card-calculate-result.bg-dark-10 {
-			background-color: var(--black-contrast-black-300);
-		}
+    .card-calculate-result.bg-dark-10 {
+      background-color: var(--black-contrast-black-300);
+    }
 
     .card-benefit.d-inline-flex.px-3.px-sm-5.px-lg-6.p-4.p-sm-5.p-lg-6.w-100.bg-dark-10 {
       background-color: var(--black-contrast-gray-100);
@@ -1637,13 +2026,13 @@ border-color:var(--black-contrast-black-200);
       color: var(--black-contrast-black-0);
       background-color: var(--black-contrast-gray-100);
 
-			&::after {
-				filter: invert(0) brightness(0)
-			}
+      &::after {
+        filter: invert(0) brightness(0)
+      }
     }
 
-    .accordion{
-			color: var(--black-contrast-black-0);
+    .accordion {
+      color: var(--black-contrast-black-0);
       background-color: var(--black-contrast-gray-100);
 
       &-body {
@@ -1652,52 +2041,64 @@ border-color:var(--black-contrast-black-200);
       }
     }
 
-		.accordion-button.collapsed span {
-			color: var(--black-contrast-black-0);
-		}
+    .accordion-button.collapsed span {
+      color: var(--black-contrast-black-0);
+    }
 
 
-		.card-benefit.d-inline-flex.px-3.px-sm-5.px-lg-6.p-4.p-sm-5.p-lg-6.w-100.bg-dark-10{
-			margin-top: 25px;
-		}
-.m-0.col-lg-6{
-	color: var(--black-contrast-black-0);
-	a {
-		color: var(--black-contrast-black-0);
-		text-decoration: underline;
-		&:hover , &:focus {
-			color: var(--black-contrast-black-200);
-		}
-	}
-}
+    .card-benefit.d-inline-flex.px-3.px-sm-5.px-lg-6.p-4.p-sm-5.p-lg-6.w-100.bg-dark-10 {
+      margin-top: 25px;
+    }
 
-	
+    .m-0.col-lg-6 {
+      color: var(--black-contrast-black-0);
+
+      a {
+        color: var(--black-contrast-black-0);
+        text-decoration: underline;
+
+        &:hover,
+        &:focus {
+          color: var(--black-contrast-black-200);
+        }
+
+        &:focus {
+          outline: 2px solid Highlight;
+          outline-offset: 2px;
+        }
+      }
+    }
+
+
     //customer-requests.html
     .list.list--size-l .link {
       color: var(--black-contrast-black-0);
 
-      &:hover {
-				text-decoration: underline;
+      &:hover,
+      &:focus {
+        text-decoration: underline;
         color: var(--black-contrast-black-200);
       }
     }
-.helper__wrapper.d-flex.flex-column.flex-sm-row.align-items-start.align-items-sm-center.gap-4.gap-lg-6{
-	background-color: var(--black-contrast-black-300);
-}
+
+    .helper__wrapper.d-flex.flex-column.flex-sm-row.align-items-start.align-items-sm-center.gap-4.gap-lg-6 {
+      background-color: var(--black-contrast-black-300);
+    }
 
 
 
 
-.card-benefit__description.m-0.text-m {
-	color: var(--black-contrast-black-0);
-}
+    .card-benefit__description.m-0.text-m {
+      color: var(--black-contrast-black-0);
+    }
 
 
 
     //financial-institutes.html
-		.card-product.card-product--transparent.card-product--size-large.bg-white , .card-product.card-product--transparent.bg-white{
-			background-color:var(--black-contrast-black-300) !important;
-		}
+    .card-product.card-product--transparent.card-product--size-large.bg-white,
+    .card-product.card-product--transparent.bg-white {
+      background-color: var(--black-contrast-black-300) !important;
+    }
 
 
 
@@ -1705,8 +2106,8 @@ border-color:var(--black-contrast-black-200);
     .banner-hero-content__title {
       color: var(--black-contrast-black-0);
     }
-	
-		
+
+
 
 
     .card-benefit__icon {
@@ -1715,27 +2116,33 @@ border-color:var(--black-contrast-black-200);
       }
     }
 
-		
 
-		
+
+
 
     .text-m.btn.btn-link.btn-lg.d-inline-flex.gap-2.align-items-center {
-    	background-color:var(--black-contrast-black-0);
-		color:var(--black-contrast-white-0);
-		border:1px solid var(--black-contrast-black-0);
+      background-color: var(--black-contrast-black-0);
+      color: var(--black-contrast-white-0);
+      border: 1px solid var(--black-contrast-black-0);
       padding: 5px 12px !important;
 
       .icon.size-m {
         color: var(--black-contrast-white-0);
       }
 
-      &:hover,&:focus{
-        background-color:var(--black-contrast-black-200);
-		color:var(--black-contrast-white-0);
+      &:hover,
+      &:focus {
+        background-color: var(--black-contrast-black-200);
+        color: var(--black-contrast-white-0);
 
         .icon.size-m {
           color: var(--black-contrast-white-0);
         }
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
       }
     }
 
@@ -1747,14 +2154,21 @@ border-color:var(--black-contrast-black-200);
     }
 
     .btn.btn-orange.d-none.d-md-inline-flex {
-			background-color:var(--black-contrast-black-0);
-			color:var(--black-contrast-white-0);
-			border:1px solid var(--black-contrast-white-0);
-			padding: 15px 32px;
-				&:hover,&:focus{
-					background-color:var(--black-contrast-white-0);
-			color:var(--black-contrast-black-0);
-				}
+      background-color: var(--black-contrast-black-0);
+      color: var(--black-contrast-white-0);
+      border: 1px solid var(--black-contrast-white-0);
+      padding: 15px 32px;
+
+      &:hover,
+      &:focus {
+        background-color: var(--black-contrast-white-0);
+        color: var(--black-contrast-black-0);
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
     }
 
     //how-to-protect.html
@@ -1763,42 +2177,51 @@ border-color:var(--black-contrast-black-200);
       background-color: var(--black-contrast-gray-100);
     }
 
-		.table-tab__row {
-			border-bottom:1px dashed var(--black-contrast-black-0);
-		}
+    .table-tab__row {
+      border-bottom: 1px dashed var(--black-contrast-black-0);
+    }
 
-		.text-m.btn.btn-link.btn-lg.d-inline-flex.gap-2.align-items-center{
-			background-color:var(--black-contrast-black-0);
-			color:var(--black-contrast-white-0);
-			border:1px solid var(--black-contrast-black-0);
-				padding: 5px 12px !important;
-				min-width: 150px;
-				max-width: 100%;
-	
-				.icon.size-s {
-					color: var(--black-contrast-white-0);
-				}
-	
-				&:hover,&:focus{
-					background-color:var(--black-contrast-black-200);
-			color:var(--black-contrast-white-0);
-	
-					.icon.size-s {
-						color: var(--black-contrast-white-0);
-					}
-				}
-		}
+    .text-m.btn.btn-link.btn-lg.d-inline-flex.gap-2.align-items-center {
+      background-color: var(--black-contrast-black-0);
+      color: var(--black-contrast-white-0);
+      border: 1px solid var(--black-contrast-black-0);
+      padding: 5px 12px !important;
+      min-width: 150px;
+      max-width: 100%;
+
+      .icon.size-s {
+        color: var(--black-contrast-white-0);
+      }
+
+      &:hover,
+      &:focus {
+        background-color: var(--black-contrast-black-200);
+        color: var(--black-contrast-white-0);
+
+        .icon.size-s {
+          color: var(--black-contrast-white-0);
+        }
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
+    }
 
 
-		.helper__content.text-l{
-			.text-lg.fw-semibold.link.link-underline{
-				color:var(--black-contrast-black-0);
-				&:hover {
-					text-decoration: underline;
-					color:var(--black-contrast-white-0);
-				}
-		}}
-		
+    .helper__content.text-l {
+      .text-lg.fw-semibold.link.link-underline {
+        color: var(--black-contrast-black-0);
+
+        &:hover,
+        &:focus {
+          text-decoration: underline;
+          color: var(--black-contrast-white-0);
+        }
+      }
+    }
+
     .card-promo__header.d-flex.flex-column.row-gap-3.row-gap-md-4 {
       color: var(--black-contrast-black-0);
     }
@@ -1809,9 +2232,15 @@ border-color:var(--black-contrast-black-200);
       padding: 15px 32px;
       border: 1px solid var(--black-contrast-white-0);
 
-      &:hover,&:focus {
-        color:var(--black-contrast-white-0);
-        background-color:  var(--black-contrast-black-0);
+      &:hover,
+      &:focus {
+        color: var(--black-contrast-white-0);
+        background-color: var(--black-contrast-black-0);
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
       }
     }
 
@@ -1826,7 +2255,8 @@ border-color:var(--black-contrast-black-200);
       .form-label {
         color: var(--black-contrast-black-0);
       }
-//перезвоните мне
+
+      //перезвоните мне
       .btn.btn-primary.btn-lg-lg.w-100 {
         color: var(--black-contrast-white-0);
         background-color: var(--black-contrast-black-0);
@@ -1834,23 +2264,35 @@ border-color:var(--black-contrast-black-200);
 
         &:hover,
         &:focus {
-          color:  var(--black-contrast-black-0);
-          background-color:var(--black-contrast-white-0);
+          color: var(--black-contrast-black-0);
+          background-color: var(--black-contrast-white-0);
+        }
+
+        &:focus {
+          outline: 2px solid Highlight;
+          outline-offset: 2px;
         }
       }
     }
-//отправить кнопка
-		.btn.btn-primary.btn-lg-lg.w-100.w-md-auto {
-			color: var(--black-contrast-white-0);
-			background-color: var(--black-contrast-black-0);
-			border: 1px solid var(--black-contrast-white-0);
-			&:hover,
-			&:focus {
-				color:  var(--black-contrast-black-0);
-				background-color:var(--black-contrast-white-0);
-				border: 1px solid var(--black-contrast-white-0);
-			} 	
-		}
+
+    //отправить кнопка
+    .btn.btn-primary.btn-lg-lg.w-100.w-md-auto {
+      color: var(--black-contrast-white-0);
+      background-color: var(--black-contrast-black-0);
+      border: 1px solid var(--black-contrast-white-0);
+
+      &:hover,
+      &:focus {
+        color: var(--black-contrast-black-0);
+        background-color: var(--black-contrast-white-0);
+        border: 1px solid var(--black-contrast-white-0);
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
+    }
 
     //insurance-companies.html
     .banner-text.banner-text--border-green.bg-heavy-violet {
@@ -1863,52 +2305,77 @@ border-color:var(--black-contrast-black-200);
       background-color: var(--black-contrast-gray-100);
     }
 
-		.list.list--size-l {
-			a {
-				color:  var(--black-contrast-black-0);
+    .list.list--size-l {
+      a {
+        color: var(--black-contrast-black-0);
 
-				&:hover {
-					color:  var(--black-contrast-black-200);
-				}
-			}
-		}
+        &:hover,
+        &:focus {
+          color: var(--black-contrast-black-200);
+        }
 
-		.d-flex.flex-column.gap-2.py-3.document-download.text-m{
-			color:  var(--black-contrast-black-0);
+        &:focus {
+          outline: 2px solid Highlight;
+          outline-offset: 2px;
+        }
+      }
+    }
 
-				&:hover {
-					color:  var(--black-contrast-black-200);
-				}
-		}
+    .d-flex.flex-column.gap-2.py-3.document-download.text-m {
+      color: var(--black-contrast-black-0);
+
+      &:hover,
+      &:focus {
+        color: var(--black-contrast-black-200);
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
+    }
 
     //interbank-transactions.html
     .bg-gradient-graphite {
       background: var(--black-contrast-black-300);
     }
 
-		.container.d-flex.py-3.overflow-auto{
-			background-color: var(--black-contrast-black-300);
-			border-top:1px solid var(--black-contrast-black-0);
-			border-bottom:1px solid var(--black-contrast-black-0);
+    .container.d-flex.py-3.overflow-auto {
+      background-color: var(--black-contrast-black-300);
+      border-top: 1px solid var(--black-contrast-black-0);
+      border-bottom: 1px solid var(--black-contrast-black-0);
 
-		}
+    }
 
-		.anchor-item.text-l.text-nowrap {
-			color:  var(--black-contrast-black-0);
-			text-decoration: none;
+    .anchor-item.text-l.text-nowrap {
+      color: var(--black-contrast-black-0);
+      text-decoration: none;
 
-			&:hover {
-				color:  var(--black-contrast-white-200);
-			}
+      &:hover,
+      &:focus {
+        color: var(--black-contrast-white-200);
+      }
 
-			&.active {
-				color:  var(--black-contrast-white-0);
-				text-decoration: underline;
-				&:hover {
-					color:  var(--black-contrast-white-200);
-				}
-			}
-		}
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
+
+      &.active {
+        color: var(--black-contrast-white-0);
+        text-decoration: underline;
+
+        &:hover,
+        &:focus {
+          color: var(--black-contrast-white-200);
+        }
+
+        &:focus {
+          outline: 2px solid Highlight;
+          outline-offset: 2px;
+        }
+      }
+    }
 
     .banner-text--border-violet {
       border-top: var(--border-thickness) solid var(--black-contrast-black-300);
@@ -1933,9 +2400,9 @@ border-color:var(--black-contrast-black-200);
       background-color: var(--black-contrast-gray-100);
     }
 
-		.slider-controls.js-swiper-controls.mt-3.mt-md-4 {
-			padding-top: 25px;
-		}
+    .slider-controls.js-swiper-controls.mt-3.mt-md-4 {
+      padding-top: 25px;
+    }
 
     .card-promo__image {
       display: none;
@@ -1951,37 +2418,53 @@ border-color:var(--black-contrast-black-200);
         background-color: var(--black-contrast-black-300);
         border: 1px solid var(--black-contrast-white-200);
 
-        &:hover,&:focus {
+        &:hover,
+        &:focus {
           color: var(--black-contrast-black-0);
           background-color: var(--black-contrast-gray-300);
         }
+
+        &:focus {
+          outline: 2px solid Highlight;
+          outline-offset: 2px;
+        }
       }
     }
-//написать в чат
+
+    //написать в чат
     .card-help__button.btn.btn-link.btn-lg.btn-icon.mx-auto.gap-2 {
-			background-color: var(--black-contrast-black-200);
+      background-color: var(--black-contrast-black-200);
       color: var(--black-contrast-white-0);
       border: 1px solid var(--black-contrast-black-0);
-			.icon.size-m {
+
+      .icon.size-m {
         color: var(--black-contrast-white-200);
       }
+
       &:hover,
       &:focus {
         background-color: var(--black-contrast-black-0);
         color: var(--black-contrast-white-0);
-				.icon.size-m {
+
+        .icon.size-m {
           color: var(--black-contrast-white-0);
         }
       }
-			    }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
+    }
 
     .section-restructuring-steps.bg-dark-10.py-6.py-sm-9.py-md-11.py-xl-16 {
       background-color: var(--black-contrast-gray-100);
     }
 
-		.card-benefit__list.list.list--size-l li:before {
-			background: var(--black-contrast-black-0) !important;
-		}
+    .card-benefit__list.list.list--size-l li:before {
+      background: var(--black-contrast-black-0) !important;
+    }
+
     //loans-restructuring.html
     .rte li::before {
       background: var(--black-contrast-black-0);
@@ -1992,17 +2475,18 @@ border-color:var(--black-contrast-black-200);
     }
 
 
-		.section-layout.section-banner-product-info.py-lg-11.bg-blue-10{
-			background-color: var(--black-contrast-gray-100);
-		}
+    .section-layout.section-banner-product-info.py-lg-11.bg-blue-10 {
+      background-color: var(--black-contrast-gray-100);
+    }
 
-		.text-l.fw-semibold , .text-number-l.fw-bold {
-			color: var(--black-contrast-black-0) ;
-		}
-		
+    .text-l.fw-semibold,
+    .text-number-l.fw-bold {
+      color: var(--black-contrast-black-0);
+    }
 
-	
-		
+
+
+
     //measures-detail.html
 
     .btn.btn-link.btn-lg.d-inline-flex.gap-2.align-items-center.card-text__button-more {
@@ -2011,55 +2495,79 @@ border-color:var(--black-contrast-black-200);
       color: var(--black-contrast-white-0);
       background-color: var(--black-contrast-black-200);
 
-      &:hover ,&:focus{
+      &:hover,
+      &:focus {
         color: var(--black-contrast-white-0);
-        background-color:var(--black-contrast-black-0);
+        background-color: var(--black-contrast-black-0);
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
       }
     }
 
-		
+
 
 
 
     .card-text.d-inline-flex.px-3.px-md-4.p-4.p-sm-5.p-lg-6.bg-white.w-100.h-100 {
       background-color: var(--black-contrast-gray-300);
-			border:1px solid  var(--black-contrast-black-0);
+      border: 1px solid var(--black-contrast-black-0);
     }
-//смотреть все
+
+    //смотреть все
     .btn.btn-sm.btn-link.btn-icon.d-none.d-md-inline-flex {
       color: var(--black-contrast-black-0);
       border: none;
       padding: 5px 12px;
-background:none;
-      &:hover ,&:focus{
+      background: none;
+
+      &:hover,
+      &:focus {
         color: var(--black-contrast-black-200);
-				background:none;
+        background: none;
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
       }
     }
-//найти на карте
+
+    //найти на карте
     .btn.btn-link.d-inline-flex.gap-2.align-items-center.mt-md-2 {
       padding: 5px 12px !important;
       color: var(--black-contrast-black-0);
       background-color: var(--black-contrast-black-300);
-			.icon.size-m{
-				color: var(--black-contrast-black-0);
-			}
-      &:hover ,&:focus{
+
+      .icon.size-m {
+        color: var(--black-contrast-black-0);
+      }
+
+      &:hover,
+      &:focus {
         color: var(--black-contrast-white-0);
         background-color: var(--black-contrast-black-0);
-				.icon.size-m{
-					color:  var(--black-contrast-white-0);
-				}
+
+        .icon.size-m {
+          color: var(--black-contrast-white-0);
+        }
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
       }
     }
 
-		
+
 
     .bg-dark-10 {
       background-color: var(--black-contrast-gray-300);
     }
 
-		 
+
 
     //mobile-app.html
     .card-regal.d-flex.flex-column.flex-md-row.row-gap-3.column-gap-md-6.bg-dark-30 {
@@ -2073,16 +2581,22 @@ background:none;
         border: none;
 
         .icon.size-m {
-          color:var(--black-contrast-white-0);
+          color: var(--black-contrast-white-0);
         }
 
-        &:hover,&:focus {
+        &:hover,
+        &:focus {
           color: var(--black-contrast-white-0);
           background-color: var(--black-contrast-black-300);
 
           .icon.size-m {
             color: var(--black-contrast-white-0);
           }
+        }
+
+        &:focus {
+          outline: 2px solid Highlight;
+          outline-offset: 2px;
         }
       }
     }
@@ -2091,8 +2605,14 @@ background:none;
       background-color: var(--black-contrast-black-0);
       border: 1px solid var(--black-contrast-gray-100);
 
-      &:hover,&:focus {
+      &:hover,
+      &:focus {
         background-color: var(--black-contrast-black-300);
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
       }
     }
 
@@ -2105,24 +2625,32 @@ background:none;
     .input-slider-text__input:focus {
       border: 1px solid var(--black-contrast-black-0);
     }
-//график платежей
+
+    //график платежей
     .btn.btn-link.btn-sm.btn-icon.mt-2.mt-md-0 {
       color: var(--black-contrast-white-0);
       background-color: var(--black-contrast-black-0);
       padding: 5px 12px !important;
       border: 1px solid var(--black-contrast-white-0);
-			.icon.size-s{
-					color: var(--black-contrast-white-0);
-					transition: 0.2 all linear;
-			}
+
+      .icon.size-s {
+        color: var(--black-contrast-white-0);
+        transition: 0.2 all linear;
+      }
 
       &:hover,
       &:focus {
         color: var(--black-contrast-black-0);
         background-color: var(--black-contrast-white-0);
-				.icon.size-s{
-					color: var(--black-contrast-black-0);
-			}
+
+        .icon.size-s {
+          color: var(--black-contrast-black-0);
+        }
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
       }
     }
 
@@ -2152,19 +2680,25 @@ background:none;
       padding: 5px 12px;
       border: 1px solid var(--black-contrast-white-0);
 
-      &:hover,&:focus {
+      &:hover,
+      &:focus {
         color: var(--black-contrast-white-0);
-        background-color:var(--black-contrast-black-300);
+        background-color: var(--black-contrast-black-300);
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
       }
     }
 
     //msb-cooperation-with-funds.html
 
 
-		.bg-heavy-violet{
-			background: none;
-			background-color: var(--black-contrast-black-300);
-		}
+    .bg-heavy-violet {
+      background: none;
+      background-color: var(--black-contrast-black-300);
+    }
 
     .d-flex.flex-column.align-items-start.gap-3.gap-md-4 {
       color: var(--black-contrast-black-0);
@@ -2177,7 +2711,6 @@ background:none;
       .swiper-slide.js-swiper-slide.swiper-slide-visible.swiper-slide-fully-visible,
       .swiper-slide.js-swiper-slide.swiper-slide-visible {
         background-color: var(--black-contrast-gray-100);
-        border-radius: 5px;
       }
     }
 
@@ -2185,11 +2718,11 @@ background:none;
       color: var(--black-contrast-white-0) !important;
     }
 
-		.tag.tag--outline.tag--triangle-absolute{
-			.tag__content.text-s.fw-semibold.mw-100.w-sm-auto{
-				color: var(--black-contrast-white-0);
-			}
-		}
+    .tag.tag--outline.tag--triangle-absolute {
+      .tag__content.text-s.fw-semibold.mw-100.w-sm-auto {
+        color: var(--black-contrast-white-0);
+      }
+    }
 
     #accordion-funds-tab .table td {
       background-color: var(--black-contrast-gray-100);
@@ -2198,7 +2731,7 @@ background:none;
     .accordion-body {
       color: var(--black-contrast-black-0);
       background-color: var(--black-contrast-gray-100);
-			padding: 25px;
+      padding: 25px;
     }
 
     .card-about__title.dark-0 {
@@ -2220,7 +2753,7 @@ background:none;
 
 
 
- 
+
 
     //msb-currency-control.html
     .card-benefit__list.list.list--size-l li:before {
@@ -2257,7 +2790,8 @@ background:none;
             color: var(--black-contrast-white-200);
           }
 
-          &:hover,&:focus {
+          &:hover,
+          &:focus {
             color: var(--black-contrast-black-0);
             background-color: var(--black-contrast-white-200);
 
@@ -2265,21 +2799,32 @@ background:none;
               color: var(--black-contrast-black-0);
             }
           }
+
+          &:focus {
+            outline: 2px solid Highlight;
+            outline-offset: 2px;
+          }
         }
       }
     }
 
 
-		
-//перейти в интернет банк
+
+    //перейти в интернет банк
     .btn.btn-yellow.d-none.d-md-inline-flex {
       color: var(--black-contrast-white-0);
       background-color: var(--black-contrast-black-0);
-      border:1px solid var(--black-contrast-white-0);
+      border: 1px solid var(--black-contrast-white-0);
 
-      &:hover,&:focus {
+      &:hover,
+      &:focus {
         color: var(--black-contrast-black-0);
         background-color: var(--black-contrast-white-0)
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
       }
     }
 
@@ -2290,32 +2835,47 @@ background:none;
       background-color: var(--black-contrast-gray-100);
       color: var(--black-contrast-black-0);
     }
-//открыть счет
+
+    //открыть счет
     .d-flex.flex-column.flex-md-row.align-items-md-center.gap-3.gap-md-6 {
       .btn.btn-lg-lg.btn-yellow.btn-info.w-100.w-md-auto {
         color: var(--black-contrast-white-200);
         background-color: var(--black-contrast-black-0);
 
-        &:hover ,&:focus{
+        &:hover,
+        &:focus {
           color: var(--black-contrast-white-0);
           background-color: var(--black-contrast-black-200);
+        }
+
+        &:focus {
+          outline: 2px solid Highlight;
+          outline-offset: 2px;
         }
       }
 
       .btn.btn-link.btn-lg-lg.btn-icon.text-info.m-auto.m-md-0 {
-				color: var(--black-contrast-white-200);
+        color: var(--black-contrast-white-200);
         background-color: var(--black-contrast-black-0);
-				padding: 15px 32px;
-				.icon.size-m {
-					color: var(--black-contrast-white-200);
-				}
+        padding: 15px 32px;
 
-        &:hover ,&:focus{
+        .icon.size-m {
+          color: var(--black-contrast-white-200);
+        }
+
+        &:hover,
+        &:focus {
           color: var(--black-contrast-white-0) !important;
           background-color: var(--black-contrast-black-200);
-					.icon.size-m {
-						color: var(--black-contrast-white-0);
-					}
+
+          .icon.size-m {
+            color: var(--black-contrast-white-0);
+          }
+        }
+
+        &:focus {
+          outline: 2px solid Highlight;
+          outline-offset: 2px;
         }
       }
     }
@@ -2332,39 +2892,49 @@ background:none;
 
     .card-product__footer {
 
-			position: relative; 
-			display: flex; 
-			align-items: center;
-			justify-content: space-between;
-			overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      overflow: hidden;
+
       .btn.btn-link.btn-icon.d-none.d-md-inline-flex {
 
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				gap: 0.5em; 
-				min-width: fit-content; 
-				max-width: 100%; 
-				width: auto;
-				white-space: normal; 
-				text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5em;
+        min-width: fit-content;
+        max-width: 100%;
+        width: auto;
+        white-space: normal;
+        text-align: center;
 
 
-				color: var(--black-contrast-white-0);
+        color: var(--black-contrast-white-0);
         background-color: var(--black-contrast-black-0);
         padding: 5px 12px !important;
-        border: 1px solid var(--black-contrast-white-0);;
+        border: 1px solid var(--black-contrast-white-0);
+        ;
 
 
-				.icon.size-m{
-					color: var(--black-contrast-white-0);
-				}
-        &:hover , &:focus {
+        .icon.size-m {
+          color: var(--black-contrast-white-0);
+        }
+
+        &:hover,
+        &:focus {
           color: var(--black-contrast-black-0);
           background-color: var(--black-contrast-white-0);
-					.icon.size-m{
-						color: var(--black-contrast-black-0);
-					}
+
+          .icon.size-m {
+            color: var(--black-contrast-black-0);
+          }
+        }
+
+        &:focus {
+          outline: 2px solid Highlight;
+          outline-offset: 2px;
         }
       }
     }
@@ -2373,8 +2943,14 @@ background:none;
       color: var(--black-contrast-black-0);
       text-decoration: underline;
 
-      &:hover,&:focus {
+      &:hover,
+      &:focus {
         color: var(--black-contrast-white-200);
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
       }
     }
 
@@ -2385,23 +2961,25 @@ background:none;
 
     //novikom-today.html
 
-		.card-top-list__col.bg-blue-10.h-100.overflow-hidden {
-			border:1px solid var(--black-contrast-black-0);
-			.d-flex.flex-column.gap-4{
-				.d-flex.flex-column img{
-					filter: invert(1) brightness(0);
-				}
-			}
-		}
+    .card-top-list__col.bg-blue-10.h-100.overflow-hidden {
+      border: 1px solid var(--black-contrast-black-0);
+
+      .d-flex.flex-column.gap-4 {
+        .d-flex.flex-column img {
+          filter: invert(1) brightness(0);
+        }
+      }
+    }
 
 
     //office-detail.html
     .map-content__header.map-content__header--type-back.d-flex.flex-column.row-gap-4.row-gap-md-6 {
       background-color: var(--black-contrast-gray-100);
     }
-		.map-content__body.d-flex.flex-column.gap-4.gap-md-6{
-			color: var(--black-contrast-black-0);
-		}
+
+    .map-content__body.d-flex.flex-column.gap-4.gap-md-6 {
+      color: var(--black-contrast-black-0);
+    }
 
 
     .card-contact__image {
@@ -2421,11 +2999,17 @@ background:none;
       background-color: var(--black-contrast-gray-100);
     }
 
-     .card-special.bg-dark-10.dark-100.h-100.d-flex.flex-column.row-gap-6.row-gap-lg-9 {
-      background-color: var(--black-contrast-gray-100);
+    .card-special.bg-dark-10.dark-100.h-100.d-flex.flex-column.row-gap-6.row-gap-lg-9 {
+      background-color: var(--black-contrast-gray-200);
 
       &:focus {
-        background-color: var(--black-contrast-gray-200);
+        border: 1px solid var(--black-contrast-black-0);
+        background-color: var(--black-contrast-gray-100);
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
       }
     }
 
@@ -2438,7 +3022,7 @@ background:none;
       color: var(--black-contrast-black-0) !important;
     }
 
-		
+
 
 
     //press-center.html
@@ -2447,10 +3031,10 @@ background:none;
         display: none;
       }
 
-      
+
 
       .col-12.col-md-6.col-lg-4 {
-        border: 1px solid  var(--black-contrast-black-0);
+        border: 1px solid var(--black-contrast-black-0);
         background-color: var(--black-contrast-gray-100);
       }
     }
@@ -2459,9 +3043,15 @@ background:none;
       background-color: var(--black-contrast-white-200);
       color: var(--black-contrast-black-0);
 
-      &:hover ,&:focus{
+      &:hover,
+      &:focus {
         background-color: var(--black-contrast-black-300);
         color: var(--black-contrast-white-200);
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
       }
     }
 
@@ -2475,8 +3065,7 @@ background:none;
     .page-item {
       --bs-pagination-active-bg: var(--black-contrast-black-300);
       --bs-pagination-active-border-color: var(--black-contrast-black-300);
-      --bs-pagination-border-color: var(--black-contrast-black-0) 
-			--bs-pagination-hover-bg: var(--black-contrast-white-300);
+      --bs-pagination-border-color: var(--black-contrast-black-0) --bs-pagination-hover-bg: var(--black-contrast-white-300);
       --bs-pagination-focus-bg: var(--black-contrast-gray-100);
 
       &.active {
@@ -2495,19 +3084,20 @@ background:none;
     }
 
 
-		.border-tertiary {
-			border-color:var(--black-contrast-black-300) !important;
-		}
+    .border-tertiary {
+      border-color: var(--black-contrast-black-300) !important;
+    }
 
-		.card-benefit.d-inline-flex.px-3.px-sm-5.px-lg-6.p-4.p-sm-5.p-lg-6.w-100.bg-purple-10.card-benefit--type-img.h-100{
-			background-color:var(--black-contrast-black-300);
-			.list{
-				color: var(--black-contrast-black-0);
-			}
-		}
+    .card-benefit.d-inline-flex.px-3.px-sm-5.px-lg-6.p-4.p-sm-5.p-lg-6.w-100.bg-purple-10.card-benefit--type-img.h-100 {
+      background-color: var(--black-contrast-black-300);
+
+      .list {
+        color: var(--black-contrast-black-0);
+      }
+    }
 
 
-		
+
 
     //TRUST MANAGEMENT PAGE
 
@@ -2517,7 +3107,7 @@ background:none;
       }
 
       &__wrapper {
-        background-color:var(--black-contrast-black-300);
+        background-color: var(--black-contrast-black-300);
       }
 
       h1 {
@@ -2540,9 +3130,10 @@ background:none;
         display: none;
       }
     }
-		.card-news.position-relative.bg-dark-10.dark-100.h-100.d-flex.flex-column.overflow-hidden{
-			background-color: var(--black-contrast-black-300) ;
-		}
+
+    .card-news.position-relative.bg-dark-10.dark-100.h-100.d-flex.flex-column.overflow-hidden {
+      background-color: var(--black-contrast-black-300);
+    }
 
 
     .benefit__content.d-flex.flex-column.gap-3 {
@@ -2584,7 +3175,7 @@ background:none;
     .section-layout.bg-dark-10 {
       background-color: var(--black-contrast-gray-100);
     }
-		
+
 
 
     .card.overflow-hidden.position-relative {
@@ -2605,7 +3196,8 @@ background:none;
 
     .card__condition-list.d-flex.flex-column.flex-md-row.flex-wrap.gap-4.column-gap-md-11.column-gap-lg-16.row-gap-lg-6 {
       color: var(--black-contrast-black-0);
-			 & span {
+
+      & span {
         color: var(--black-contrast-black-0);
       }
     }
@@ -2621,208 +3213,329 @@ background:none;
     .accordion-button.collapsed {
       color: var(--black-contrast-black-300);
 
-			& span {
-				color: var(--black-contrast-black-0);
-			}
-			&:hover , &:focus  {
-				background-color:var(--black-contrast-black-0);
-				color:var(--black-contrast-white-0);
+      & span {
+        color: var(--black-contrast-black-0);
+      }
 
-				& span {
-					color:var(--black-contrast-white-0);
-				}
-			}
-    }
-		
-		.rte.rte--accordion{
-			a {
-				color: var(--black-contrast-black-0);
-				text-decoration: underline;
+      &:hover,
+      &:focus {
+        background-color: var(--black-contrast-black-0);
+        color: var(--black-contrast-white-0);
 
-				&:hover {
-					color: var(--black-contrast-black-200);
-				}
-			}
-		}
-		.card-promo__wrapper.d-flex.flex-column.h-100.row-gap-4.row-gap-md-6.row-gap-lg-7 {
-			background-color:var(--black-contrast-gray-300);
-		}
-
-		.btn.btn-link.btn-lg.d-inline-flex.gap-2.align-items-center.mt-4.mt-md-6.section-custom-accordion__button-more{
-			
-			color: var(--black-contrast-white-0);
-        background-color: var(--black-contrast-black-200);
-        padding: 15px 32px ;
-        border: 1px solid var(--black-contrast-white-0);;
-
-
-				.icon.size-m{
-					color: var(--black-contrast-white-0);
-				}
-        &:hover , &:focus {
+        & span {
           color: var(--black-contrast-white-0);
-          background-color: var(--black-contrast-black-0);
-					.icon.size-m{
-						color: var(--black-contrast-white-0);
-					}
         }
-		}
+      }
 
-//mobile
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
+    }
 
-		.mobile-menu {
-			background-color:var(--blue-contrast-bg);
-		}
+    .rte.rte--accordion {
+      a {
+        color: var(--black-contrast-black-0);
+        text-decoration: underline;
 
-		.mobile-menu__header{
-			color:var(--blue-contrast-white);
-			.text-s{
-				color:var(--blue-contrast-white);
-				&:hover {
-					color: var(--blue-contrast-light-1);
-				}
-				&.is-active{
-					color: var(--blue-contrast-light);
+        &:hover,
+        &:focus {
+          color: var(--black-contrast-black-200);
+        }
 
-					&::after {
-						height: 3px;
-						background-color:var(--blue-contrast-light);
-					}
-				}
-			}
-		}
+        &:focus {
+          outline: 2px solid Highlight;
+          outline-offset: 2px;
+        }
+      }
+    }
 
-		.mobile-menu__bank-apps{
-			.btn.btn-primary.w-100.dropdown-toggle,
-			.btn.btn-outline-primary.d-inline-flex.gap-2.align-items-center.justify-content-center{
-				background-color:var(--blue-contrast-light);
-				color:var(--blue-contrast-bg-dark);
-				&:hover {
-					background-color:var(--blue-contrast-white);
-					color:var(--blue-contrast-bg-dark);
-				}
-			}
-		}
+    .card-promo__wrapper.d-flex.flex-column.h-100.row-gap-4.row-gap-md-6.row-gap-lg-7 {
+      background-color: var(--black-contrast-gray-300);
+    }
 
+    .btn.btn-link.btn-lg.d-inline-flex.gap-2.align-items-center.mt-4.mt-md-6.section-custom-accordion__button-more {
 
-		.mobile-menu__bank-contact {
-
-			.d-flex.align-items-center.gap-2{
-				color:var(--blue-contrast-white);
-
-				&:hover {
-					text-decoration: underline;
-					color:var(--blue-contrast-light);
-
-				 }
-				}
-		}
-
-		.mobile-main-nav.js-mobile-main-nav{
-			.nav-panel{
-				background-color:var(--blue-contrast-bg-dark);
-				.btn-nav-panel{
-					color:var(--blue-contrast-white);
-					svg{
-						color:var(--blue-contrast-white);
-					}
-
-					&:hover , &:focus{
-						color: var(--blue-contrast-light);
-						svg{
-							color:var(--blue-contrast-light);
-						}
-					}
-			}
-		}}
-		
-.mobile-menu__nav{
-	.accordion.accordion-flush{
-		.accordion-body{
-			.row.row-gap-4{
-				.col-12.col-md-6 a{
-					color:var(--blue-contrast-white);
-
-					&:hover, &:focus {
-						color:var(--blue-contrast-light-1);
-					}
-				}
-			}
-		}
-	}
-}
+      color: var(--black-contrast-white-0);
+      background-color: var(--black-contrast-black-200);
+      padding: 15px 32px;
+      border: 1px solid var(--black-contrast-white-0);
+      ;
 
 
-		
-//modals.html
-.modal-footer.border-0.justify-content-md-center{
-	.btn.btn-primary.btn-lg-lg.m-0.w-100.w-md-auto{
-		background-color:var(--blue-contrast-light);
-		color:var(--blue-contrast-bg-dark);
-		&:hover , &:focus{
-			background-color:var(--blue-contrast-white);
-			color:var(--blue-contrast-bg-dark);
-		}
-	}
-}
+      .icon.size-m {
+        color: var(--black-contrast-white-0);
+      }
 
-.upload-file__box.p-3.p-md-4{
-	.btn.btn-link.btn-icon{
-		border:none;
-		background:none;
-		color:var(--blue-contrast-white);
+      &:hover,
+      &:focus {
+        color: var(--black-contrast-white-0);
+        background-color: var(--black-contrast-black-0);
 
-		&:hover, &:focus {
-			color:var(--blue-contrast-light);
-		}
-	}
-}
+        .icon.size-m {
+          color: var(--black-contrast-white-0);
+        }
+      }
 
-legend.form-label.mb-3 {
-	color:var(--blue-contrast-white);
-}
-
-.d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-5.column-gap-lg-6.mt-6.mt-lg-7.px-md-2.px-lg-0 {
-display: flex;
-justify-content: center;
-flex-wrap: wrap; 
-max-width: 100%;
-
-.btn.btn-primary.btn-lg-lg.w-100.w-md-auto,
-.btn.btn-outline-primary.btn-lg-lg.w-100.w-md-auto{
-	max-width: 500px; 
-	width: 100%; 
-	text-align: center; 
-		background-color:var(--blue-contrast-light-1);
-		color:var(--blue-contrast-bg-dark);
-		&:hover , &:focus{
-			background-color:var(--blue-contrast-white);
-			color:var(--blue-contrast-bg-dark);
-		}
-	}
-}
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
+    }
 
 
-.d-flex.flex-column.align-items-start.row-gap-3{
-	.btn.btn-primary{
-		background-color:var(--blue-contrast-light-1);
-		color:var(--blue-contrast-bg-dark);
-		&:hover , &:focus {
-			background-color:var(--blue-contrast-white);
-			color:var(--blue-contrast-bg-dark);
-		}
-	}
-}
+    .accordion-button.collapsed.fw-semibold {
+      color: var(--black-contrast-black-0);
 
-.modal-footer.border-0.justify-content-md-center{
-	background-color:var(--blue-contrast-bg-dark);
-}
+      &:hover {
+        color: var(--black-contrast-white-0);
+      }
+
+      &:active {
+        color: var(--black-contrast-white-0);
+      }
+
+      &:focus {
+        background-color: var(--black-contrast-black-200);
+        color: var(--black-contrast-white-0);
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
+    }
+
+    //mobile
+
+    .mobile-menu {
+      background-color: var(--black-contrast-gray-100);
+    }
+
+    .mobile-menu__header {
+      color: var(--black-contrast-black-0);
+
+      .text-s {
+        color: var(--black-contrast-black-200);
+
+        &:hover,
+        &:focus {
+          text-decoration: underline;
+          color: var(--black-contrast-black-0);
+        }
+
+        &:focus {
+          outline: 2px solid Highlight;
+          outline-offset: 2px;
+        }
+
+        &.is-active {
+          color: var(--black-contrast-black-100);
+
+          &::after {
+            height: 3px;
+            background-color: var(--black-contrast-black-0);
+          }
+        }
+      }
+    }
+
+    .mobile-menu__bank-apps {
+
+      .btn.btn-primary.w-100.dropdown-toggle,
+      .btn.btn-outline-primary.d-inline-flex.gap-2.align-items-center.justify-content-center {
+        background-color: var(--black-contrast-black-0);
+        color: var(--black-contrast-white-0);
+
+        &:hover,
+        &:focus {
+          background-color: var(--black-contrast-black-100);
+          color: var(--black-contrast-white-0);
+        }
+
+        &:focus {
+          outline: 2px solid Highlight;
+          outline-offset: 2px;
+        }
+      }
+    }
 
 
-.btn-nav-panel--primary{
-	background:none;
-	background-color: var(--blue-contrast-light);
-}
+    .mobile-menu__bank-contact {
+
+      .d-flex.align-items-center.gap-2 {
+        color: var(--black-contrast-black-0);
+
+        &:hover,
+        &:focus {
+          text-decoration: underline;
+          color: var(--black-contrast-black-100);
+
+        }
+
+        &:focus {
+          outline: 2px solid Highlight;
+          outline-offset: 2px;
+        }
+      }
+    }
+
+    .mobile-main-nav.js-mobile-main-nav {
+      .nav-panel {
+        background-color: var(--black-contrast-black-100);
+
+        .btn-nav-panel {
+          color: var(--black-contrast-white-0);
+
+          svg {
+            color: var(--black-contrast-white-0);
+          }
+
+          &:hover,
+          &:focus {
+            color: var(--black-contrast-gray-300);
+
+            svg {
+              color: var(--black-contrast-gray-300);
+            }
+          }
+
+          &:focus {
+            outline: 2px solid Highlight;
+            outline-offset: 2px;
+          }
+        }
+      }
+    }
+
+    .mobile-menu__nav {
+      .accordion.accordion-flush {
+        .accordion-body {
+          .row.row-gap-4 {
+            .col-12.col-md-6 a {
+              color: var(--black-contrast-black-200);
+
+              &:hover,
+              &:focus {
+                color: var(--black-contrast-black);
+              }
+
+              &:focus {
+                outline: 2px solid Highlight;
+                outline-offset: 2px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+
+
+    //modals.html
+
+    .modal-footer.border-0.justify-content-md-center {
+      background-color: var(--black-contrast-gray-100) !important;
+
+      .btn.btn-primary.btn-lg-lg.m-0.w-100.w-md-auto {
+        background-color: var(--black-contrast-black-100);
+        color: var(--black-contrast-white-0);
+
+        &:hover,
+        &:focus {
+          background-color: var(--black-contrast-black-200);
+          color: var(--black-contrast-white-0);
+        }
+
+        &:focus {
+          outline: 2px solid Highlight;
+          outline-offset: 2px;
+        }
+      }
+    }
+
+
+
+
+
+    .upload-file__box.p-3.p-md-4 {
+      .btn.btn-link.btn-icon {
+        border: none;
+        background: none;
+        color: var(--black-contrast-white-0);
+
+        &:hover,
+        &:focus {
+          background-color: var(--black-contrast-black-100);
+        }
+
+        &:focus {
+          outline: 2px solid Highlight;
+          outline-offset: 2px;
+        }
+      }
+    }
+
+    legend.form-label.mb-3 {
+      color: var(--black-contrast-black-100);
+    }
+
+    .d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-5.column-gap-lg-6.mt-6.mt-lg-7.px-md-2.px-lg-0 {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      max-width: 100%;
+
+      .btn.btn-primary.btn-lg-lg.w-100.w-md-auto,
+      .btn.btn-outline-primary.btn-lg-lg.w-100.w-md-auto {
+        max-width: 500px;
+        width: 100%;
+        text-align: center;
+        background-color: var(--black-contrast-black-100);
+        color: var(--black-contrast-white-0);
+
+        &:hover,
+        &:focus {
+          background-color: var(--black-contrast-black-200);
+          color: var(--black-contrast-white-0);
+        }
+
+        &:focus {
+          outline: 2px solid Highlight;
+          outline-offset: 2px;
+        }
+      }
+    }
+
+
+
+    .d-flex.flex-column.align-items-start.row-gap-3 {
+      .btn.btn-primary {
+        background-color: var(--black-contrast-black-100);
+        color: var(--black-contrast-white-0);
+
+        &:hover,
+        &:focus {
+          background-color: var(--black-contrast-black-200);
+          color: var(--black-contrast-white-0);
+        }
+
+        &:focus {
+          outline: 2px solid Highlight;
+          outline-offset: 2px;
+        }
+      }
+    }
+
+    .modal-footer.border-0.justify-content-md-center {
+      background-color: var(--black-contrast-black-100);
+    }
+
+
+    .btn-nav-panel--primary {
+      background: none;
+      background-color: var(--black-contrast-black-100);
+    }
 
 
   }

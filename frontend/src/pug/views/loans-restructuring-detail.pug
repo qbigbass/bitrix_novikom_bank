@@ -31,7 +31,7 @@ block content
         "green",
     )
 
-    section.section-layout
+    section.section-layout(tabindex="0")
         .container
             .row
                 .col-12
@@ -39,7 +39,7 @@ block content
                         +helper("img/restructuring-additional-info.png", "bg-dark-10")
                             p.mb-0 Основанием для проведения реструктуризации по&nbsp;программе Банка является снижение дохода заемщика (совокупного дохода всех заемщиков), в&nbsp;результате которого среднемесячные выплаты по&nbsp;исполнению обязательств перед Банком превысили&nbsp;60% от&nbsp;текущего ежемесячного дохода заемщика (совокупного дохода всех заемщиков).
 
-    section.section-layout.restructuring-benefits
+    section.section-layout.restructuring-benefits(tabindex="0")
         -
             const allBenefits = [
                 {
@@ -109,7 +109,7 @@ block content
                 },
             ]
 
-        .container
+        .container(tabindex="0")
             .row.px-lg-6
                 h3.d-none.d-md-flex
                     = "Как реструктуризировать задолженность"

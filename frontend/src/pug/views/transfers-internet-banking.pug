@@ -54,7 +54,7 @@ block content
         "green"
     )
 
-    section.section-layout
+    section.section-layout(tabindex="0")
         .container
             h3.px-lg-6.mb-4.mb-md-6.mb-lg-7
                 | Условия по&nbsp;переводам
@@ -74,7 +74,7 @@ block content
                     }, "С&nbsp;кредитных карт банка Новиком")
                         ul.list
                             li При переводе с&nbsp;карты с&nbsp;беспроцентным периодом кредитования дополнительно взимается 2,7&nbsp;% от&nbsp;суммы перевода (минимум 200&nbsp;рублей)
-            .row.mt-6.mt-lg-11.row-gap-2
+            .row.mt-6.mt-lg-11.row-gap-2(tabindex="0")
                 .col-12.col-xl-8.pe-xl-0
                     +card-service-app({
                         title: "Мобильное приложение",
@@ -108,7 +108,7 @@ block content
                 .col-12.col-xl-4.ps-xl-2
                     +card-benefit(cardBenefit).h-100
 
-    section.section-layout.js-collapsed-mobile
+    section.section-layout.js-collapsed-mobile(tabindex="0")
         .container
             h3.d-none.d-md-block.mb-md-6.mb-lg-7.px-lg-6
                 | Подробнее
@@ -132,7 +132,7 @@ block content
                                 include ../includes/layout/tabs/documents
         +pattern-bg('section-2', 'light', 'pattern-bg--hide-mobile')
 
-    section.section-layout
+    section.section-layout(tabindex="0")
         .container
             h3.px-lg-6.mb-4.mb-md-6.mb-lg-7
                 | Смотрите также
