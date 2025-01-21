@@ -330,5 +330,12 @@ $APPLICATION->IncludeComponent(
         "FORM_CODE" => "loan_form",
     ]
 ); ?>
+<?php $APPLICATION->IncludeComponent(
+    "dalee:form",
+    "mortgage_form",
+    [
+        "FORM_CODE" => "mortgage_form",
+    ]
+); ?>
 </body>
 </html>
