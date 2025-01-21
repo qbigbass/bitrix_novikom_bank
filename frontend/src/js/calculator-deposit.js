@@ -457,6 +457,7 @@ const ELEMS_DEPOSIT = {
 const CLASSES_DEPOSIT = {
     hide: 'd-none',
     active: 'active',
+    currency: '.currency',
 }
 
 const MIN_DEPOSIT_VALUE = 50;
@@ -502,6 +503,7 @@ function getRates({table = null, id = null, name = null}) {
 function handlerClickTabCurrency(event, STATE) {
     const target = event.target;
     if (target.classList.contains(CLASSES_DEPOSIT.active)) return false;
+
     const buttons = STATE.elements.currencyList.querySelectorAll(ELEMS_DEPOSIT.currencyButton);
     buttons.forEach(button => {
         button.classList.remove(CLASSES_DEPOSIT.active)
@@ -510,6 +512,13 @@ function handlerClickTabCurrency(event, STATE) {
     STATE.currency = target.dataset.name;
     getDepositValues(STATE);
     setDepositValues(STATE, true);
+
+    const replenishmentBlocks = STATE.elements.root.querySelectorAll(ELEMS_DEPOSIT.replenishmentItem);
+    replenishmentBlocks.forEach(block => {
+        block.querySelectorAll(CLASSES_DEPOSIT.currency).forEach(elem => {
+            elem.textContent = CURRENCIES[STATE.currency];
+        })
+    })
 }
 function createCurrencyTab(currency, STATE) {
     let activeClass = "";
@@ -722,6 +731,7 @@ function addReplenishment({buttonAddReplenishment, replenishmentBlock}, STATE) {
     const inputDate = templateClone.querySelector(DATEPICKER_CLASSES.root);
     const inputSum = templateClone.querySelector('input[name="sum"]');
     setReplenishmentAttr(templateClone, STATE.replenishmentCounter);
+    templateClone.querySelector(CLASSES_DEPOSIT.currency).textContent = CURRENCIES[STATE.currency];
     STATE.replenishmentCounter++;
 
     buttonAddReplenishment.before(templateClone);
@@ -889,6 +899,14 @@ const getDepositValues = (STATE) => {
 
 const setDepositValues = (STATE, currencyTrigger) => {
     if (STATE.steps) {
+        const periodStepsText = STATE.elements.inputPeriodWrapper.querySelector(JS_CLASSES.textSteps);
+        const periodSteps = STATE.elements.inputPeriodWrapper.querySelectorAll(JS_CLASSES.sliderSteps);
+        periodSteps.forEach((step) => {
+            step.remove();
+        })
+        periodStepsText.innerHTML = '';
+
+
         STATE.elements.inputPeriodWrapper.setAttribute('data-steps', STATE.steps);
         initInputSlider([STATE.elements.inputPeriodWrapper]);
     } else { // если период вклада не меняется
