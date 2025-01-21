@@ -46,13 +46,12 @@ class RatesFetcher
 
             $data = [
                 'order' => ['SORT' => 'ASC'],
-                'select' => $properties
+                'select' => $properties,
+                'filter' => ['ACTIVE' => 'Y']
             ];
 
             if (!empty($elementIds) && isset($properties['LINK_'])) {
-                $data['filter'] = [
-                    'LINK.ELEMENT.ID' => $elementIds
-                ];
+                $data['filter']['LINK.ELEMENT.ID'] = $elementIds;
             }
 
             $this->loadedElements = $dataClass::getList($data)->fetchAll();
