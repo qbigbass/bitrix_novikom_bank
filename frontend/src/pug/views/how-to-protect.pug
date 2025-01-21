@@ -186,7 +186,7 @@ block content
         bannerTextData,
     )
 
-    section.section-layout.px-lg-6
+    section.section-layout.px-lg-6(tabindex="0")
         .container
             h3.mb-6.mb-lg-7 Правила безопасности
             .row.row-gap-6.gx-xl-6
@@ -195,7 +195,7 @@ block content
                         +benefit(item.spriteData, item.title)
                             span!= item.description
 
-    section.section-layout.px-lg-6
+    section.section-layout.px-lg-6(tabindex="0")
         .container
             h3.mb-6.mb-lg-7 Признаки мошеннического звонка
             .table-tab.cell-2
@@ -208,7 +208,7 @@ block content
                                     p.text-l!= item
         +pattern-bg('section-2', 'light')
 
-    section.section-layout.bg-dark-10
+    section.section-layout.bg-dark-10(tabindex="0")
         .container
             h3.mb-6.mb-md-7.px-md-6
                 | Держите в секрете данные
@@ -217,13 +217,13 @@ block content
                     .col-12.col-md-6.col-xl-3
                         +card-product(item).card-product--bg-white
 
-    section.section-layout
+    section.section-layout(tabindex="0")
         .container
             h3.mb-6.mb-lg-7.px-lg-6
                 | Самые распространенные способы мошенничества
             +slider-card-fraud(cardBenefits)
 
-    section.section-layout.px-lg-6
+    section.section-layout.px-lg-6(tabindex="0")
         .container
             .row.row-gap-6
                 .col-12
@@ -233,14 +233,14 @@ block content
                         each item in list
                             li!= item
 
-    section.section-layout.bg-dark-10
+    section.section-layout.bg-dark-10(tabindex="0")
         .container
             .row
                 .col-12
                     +card-promo(cardPromo).card-promo--heavy-blue
                         a(href="#").btn.btn-info.btn-lg-lg.w-100.w-md-auto Отправить обращение
 
-    section.section-layout
+    section.section-layout(tabindex="0")
         .container
             .row
                 .col-12
