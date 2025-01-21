@@ -165,7 +165,7 @@
         <div class="ps-xxl-6">
             <div class="polygon-container js-polygon-container">
                 <div class="polygon-container__content">
-                    <div class="card-calculate-result bg-dark-0">
+                    <div class="card-calculate-result <?= $arParams['BACKGROUND'] ? 'bg-dark-10' : 'bg-dark-0' ?>">
                         <div class="card-calculate-result__body">
                             <div class="d-flex flex-column row-gap-2"><span
                                     class="card-calculate-result__label text-s">Процентная ставка</span><span
