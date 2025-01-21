@@ -25,7 +25,8 @@ class CalculatorHandler implements PropertyHandlerInterface
             "dalee:calculator",
             $this->property['VALUE_XML_ID'],
             [
-                "CALCULATOR_ELEMENT_ID" => $this->elementId
+                "CALCULATOR_ELEMENT_ID" => $this->elementId,
+                "BACKGROUND" => true
             ]
         );
         $displayValue = ob_get_contents();
