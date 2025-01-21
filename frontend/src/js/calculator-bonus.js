@@ -39,7 +39,10 @@ function setBonusValues(STATE) {
 }
 
 function collectSelectOptions(data, field) {
-    return [...new Set(data.map(item => item[field]))];
+    return [...new Set(data
+        .map(item => item[field])
+        .filter(value => value !== null && value !== '')
+    )];
 }
 
 function findCategoryCard(STATE) {
