@@ -4,7 +4,7 @@
  */
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 
-$APPLICATION->SetTitle("404 Not Found");
+$APPLICATION->SetTitle("Карта сайта");
 
 $APPLICATION->IncludeComponent(
     "bitrix:main.map",
