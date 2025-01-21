@@ -72,7 +72,7 @@ function pbAnimation() {
 }
 
 function pbScrollTo() {
-    $(ELEMS_PB_BUTTON.btnAnchor).on('click', function(event) {
+    $(ELEMS_PB_BUTTON.btnAnchor).on('click', function (event) {
         event.preventDefault();
 
         const menu = document.querySelector(ELEMS_PB_NAV.navMenu);
@@ -95,18 +95,33 @@ function pbScrollTo() {
 
     const $scrollToTopButton = $('#scrollToTop');
     const $footer = $('footer');
+    const isDesktop = window.matchMedia(`(min-width: ${MEDIA_QUERIES['tablet-album']})`).matches;
 
-    if (!$scrollToTopButton) { return false }
+    if (!$scrollToTopButton) {
+        return false
+    }
 
-    $(window).on('scroll', function() {
+    let lastScroll = 0;
+
+    $(window).on('scroll', function () {
         const windowHeight = $(window).height();
         const scrollY = $(this).scrollTop();
+        let currentScroll = $(this).scrollTop();
         const footerTop = $footer.offset().top;
 
-        if (scrollY > windowHeight) {
-            $scrollToTopButton.fadeIn();
+        if (isDesktop) {
+            if (scrollY > windowHeight) {
+                $scrollToTopButton.fadeIn();
+            } else {
+                $scrollToTopButton.fadeOut();
+            }
         } else {
-            $scrollToTopButton.fadeOut();
+            if (currentScroll > lastScroll || currentScroll === 0) {
+                $scrollToTopButton.fadeOut();
+            } else {
+                $scrollToTopButton.fadeIn();
+            }
+            lastScroll = currentScroll;
         }
 
         if (footerTop < windowHeight + scrollY - FOOTER_MARGIN) {
@@ -181,7 +196,7 @@ function scrollPbAccordion() {
     accordionsHeader.forEach(accordionHeader => {
         const observer = new IntersectionObserver(
             ([e]) => e.target.classList.toggle("is-pinned", e.intersectionRatio < 1),
-            { threshold: [1] }
+            {threshold: [1]}
         );
 
         observer.observe(accordionHeader);
