@@ -1,20 +1,20 @@
 const VARIABLES = {
-  delay: 5000,
+    delay: 5000,
 };
 
 const DEFAULT_SEPARATORS = {
-  mediaQuery: ':',
-  mediaItem: ','
+    mediaQuery: ':',
+    mediaItem: ','
 }
 
 const DEFAULT_SLIDER_DATA_ATTRS = {
-  spaceBetween: 'mobile-s:8,mobile:8,tablet:16,laptop:16',
-  slidesPerView: 'mobile-s:1,mobile:1,tablet:2,laptop:3',
-  autoHeight: 'false',
+    spaceBetween: 'mobile-s:8,mobile:8,tablet:16,laptop:16',
+    slidesPerView: 'mobile-s:1,mobile:1,tablet:2,laptop:3',
+    autoHeight: 'false',
 }
 
 const SLIDER_ATTR = {
-  destroyBreakpoint: 'data-slider-breakpoint-destroy',
+    destroyBreakpoint: 'data-slider-breakpoint-destroy',
 }
 
 const CLASS_NAME = {
@@ -129,6 +129,9 @@ function initSwiperMenu() {
 }
 
 function initHeroBanner() {
+    const banner = document.querySelector(CLASS_NAME.bannerHero);
+    const autoplayDelay = banner.dataset.autoplayDelay;
+
     const thumbs = new Swiper(CLASS_NAME.thumbsHero, {
         spaceBetween: 0,
         slidesPerView: 4,
@@ -158,8 +161,8 @@ function initHeroBanner() {
             1200: {
                 pagination: false,
                 autoplay: {
-                    enabled: true,
-                    delay: VARIABLES.delay,
+                    enabled: false,
+                    delay: autoplayDelay ?? VARIABLES.delay,
                 },
             },
         },
@@ -181,6 +184,24 @@ function initHeroBanner() {
                 // Установить tabindex="0" для ссылок в активном слайде
                 links.forEach((link) => {
                     link.setAttribute('tabindex', '0');
+                });
+
+                // Пауза видео в неактивных слайдах
+                const videos = activeSlide.querySelectorAll('video');
+
+                this.slides.forEach((slide, index) => {
+                    if (index !== this.activeIndex) {
+                        const videos = slide.querySelectorAll('video');
+                        videos.forEach((video) => {
+                            video.pause();
+
+                        });
+                    }
+                });
+
+                // Воспроизведение видео в активном слайде
+                videos.forEach((video) => {
+                    video.play();
                 });
             },
         },
@@ -227,7 +248,7 @@ function initCardSlider() {
 
         if (!destroyBreakpoints) {
             new Swiper(slider, options);
-        } else  {
+        } else {
             cardSliderMode(slider, options, destroyBreakpoints, wrapper, slides, controls);
 
             window.addEventListener('resize', function () {
