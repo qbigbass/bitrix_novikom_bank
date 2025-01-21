@@ -130,6 +130,9 @@ function initSwiperMenu() {
 
 function initHeroBanner() {
     const banner = document.querySelector(CLASS_NAME.bannerHero);
+
+    if (!banner) return;
+
     const autoplayDelay = banner.dataset.autoplayDelay;
 
     const thumbs = new Swiper(CLASS_NAME.thumbsHero, {

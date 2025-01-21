@@ -1,5 +1,7 @@
 mixin banner-hero(data, type)
     .banner-hero(class=data.bgClass&&`banner-hero--${data.bgClass}` class=type&&`banner-hero--type-${type}`)&attributes(attributes)
+        if data.bgImageSrc
+            img(src=data.bgImageSrc, class="banner-hero__bg", alt="")
         if data.banner
             .banner-hero__container
                 .banner-hero-content.row.gx-0
