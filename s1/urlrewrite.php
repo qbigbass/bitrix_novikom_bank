@@ -169,10 +169,10 @@ $arUrlRewrite = [
         'SORT' => 100,
     ],
     [
-        'CONDITION' => '#^/private-banking/#',
+        'CONDITION' => '#^/private-banking/services/#',
         'RULE' => '',
         'ID' => 'bitrix:news',
-        'PATH' => '/private-banking/index.php',
+        'PATH' => '/private-banking/services/index.php',
         'SORT' => 100,
     ],
 ];
