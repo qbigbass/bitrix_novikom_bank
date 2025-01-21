@@ -4,6 +4,7 @@ const JS_CLASSES = {
     root: '.js-input-slider',
     displayValue: '.js-input-slider-display-value',
     textSteps: '.js-input-slider-text-steps',
+    sliderSteps: '.input-slider-step',
     innerInput: '.js-input-slider-inner',
     textInput: ROOT_JS_CLASS,
     sliderInput: '.js-input-slider-input',
