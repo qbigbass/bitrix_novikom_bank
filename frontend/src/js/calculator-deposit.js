@@ -464,10 +464,11 @@ const setDepositValues = (STATE, currencyTrigger) => {
 
         STATE.elements.inputPeriodWrapper.setAttribute('data-steps', STATE.steps);
         initInputSlider([STATE.elements.inputPeriodWrapper]);
+        STATE.period = getPeriodValue(STATE.elements.inputPeriod);
     } else { // если период вклада не меняется
         STATE.elements.inputPeriodWrapper.remove();
+        STATE.period = STATE.minPeriod;
     }
-    STATE.period = getPeriodValue(STATE.elements.inputPeriod);
 
     if (currencyTrigger) {
         const cloneInputAmount = STATE.elements.inputAmountWrapper.cloneNode(true);
@@ -491,6 +492,7 @@ const setDepositValues = (STATE, currencyTrigger) => {
 
     // поиск процентной ставки
     STATE.rate = findDepositRate({data: STATE.filteredData, amount: STATE.amount, period: STATE.period});
+    console.log('STATE.period', STATE.period);
 
     // расчеты дохода
     STATE.income = calculateDepositIncome(STATE);
