@@ -61,6 +61,15 @@ $headerView->render(
     <section class="section-catalog__list">
         <div class="container">
             <div class="row">
+                <div class="col-12">
+                    <?$APPLICATION->IncludeComponent(
+                        "dalee:search.block",
+                        "",
+                        [
+                            "PLACEHOLDER" => "Поиск по вопросам и ответам"
+                        ]
+                    ); ?>
+                </div>
                 <div class="col-12 position-relative z-1 d-flex flex-column align-items-start gap-1 gap-md-1">
                     <?$APPLICATION->IncludeComponent(
                         "bitrix:news.list",
