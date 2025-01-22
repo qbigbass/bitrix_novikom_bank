@@ -48,7 +48,7 @@ function setAttributesInputMortgage(STATE) {
     STATE.elements.inputPeriodWrapper.setAttribute('data-max-value', STATE.filteredData[0].periodTo);
     STATE.elements.inputPeriodWrapper.setAttribute('data-start-value', STATE.filteredData[0].periodFrom);
 
-    const minPropertyValue = (STATE.filteredData[0].sumFrom / ((100 - STATE.filteredData[0].minDownPayment) / 100)).toFixed(0);
+    const minPropertyValue = (STATE.filteredData[0].sumFrom / ((100 - STATE.filteredData[0].sumFromPercent) / 100)).toFixed(0);
     const initialPaymentValue = (minPropertyValue - STATE.filteredData[0].sumFrom).toFixed(0);
 
     STATE.elements.inputInitialPaymentWrapper.setAttribute('data-min-value', initialPaymentValue);
@@ -58,8 +58,9 @@ function setAttributesInputMortgage(STATE) {
     STATE.elements.inputPropertyWrapper.setAttribute('data-start-value', minPropertyValue);
     STATE.elements.inputPropertyWrapper.setAttribute('data-max-value', STATE.filteredData[0].maxPropertyValue);
 
+    const maxAmountMortgage = minPropertyValue - initialPaymentValue;
     STATE.elements.inputAmountWrapper.setAttribute('data-min-value', STATE.filteredData[0].sumFrom);
-    STATE.elements.inputAmountWrapper.setAttribute('data-max-value', STATE.filteredData[0].sumFrom);
+    STATE.elements.inputAmountWrapper.setAttribute('data-max-value', maxAmountMortgage);
 
     initInputSlider([
         STATE.elements.inputPeriodWrapper,
@@ -83,6 +84,7 @@ function getMortgageRegions(STATE) {
 
 function getMortgagePrograms(dataArray, STATE) {
     const programs = collectSelectOptions(dataArray, 'name');
+
     setSelectOptions('selectProgram', programs, STATE);
     STATE.program = STATE.elements.selectProgram.value;
 
@@ -166,9 +168,11 @@ function getMortgageValues(STATE) {
     STATE.insurance = STATE.elements.inputMortgageInsurance.checked ? 'Y' : 'N';
     STATE.card = STATE.elements.inputMortgageCard.checked ? 'Y' : 'N';
 
-    STATE.filteredData = STATE.filteredData.filter(item =>
-        (item.insurance === STATE.insurance) && (item.salaryBankCard === STATE.card)
-    );
+    STATE.filteredData = STATE.filteredData.filter(item => {
+        if (!item.insurance) item.insurance = 'N';
+        if (!item.salaryBankCard) item.salaryBankCard = 'N';
+        return (item.insurance === STATE.insurance) && (item.salaryBankCard === STATE.card)
+    });
 
     STATE.expenseRatio = STATE.elements.root.dataset.expenseRatio;
     STATE.rate = STATE.filteredData[0].rate;

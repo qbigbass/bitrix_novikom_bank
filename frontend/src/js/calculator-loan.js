@@ -167,8 +167,8 @@ function findLoanData({data, type, strategicClient}) {
 function setStartValues(STATE) {
     const startValueAmount = STATE.elements.inputAmountWrapper.getAttribute('data-start-value');
     const startValuePeriod = STATE.elements.inputPeriodWrapper.getAttribute('data-start-value');
-    startValueAmount ? STATE.amount = Number(startValueAmount) : STATE.amount = STATE.minAmount;
-    startValuePeriod ? STATE.period = Number(startValuePeriod) : STATE.period = STATE.maxPeriod;
+    STATE.amount = startValueAmount ? Number(startValueAmount) : STATE.minAmount;
+    STATE.period = startValuePeriod ? Number(startValuePeriod) : STATE.minPeriod;
 }
 
 const getLoanValues = (STATE) => {

@@ -162,7 +162,7 @@ block content
     )
 
 
-    section.section-layout
+    section.section-layout(tabindex="0")
         .container
             .row.mb-6.mb-lg-7.px-lg-6
                 h3 Преимущества
@@ -173,7 +173,7 @@ block content
                             span!= item.description
         +pattern-bg('section', 'light', 'pattern-bg--position-sm-bottom')
 
-    section.section-layout
+    section.section-layout(tabindex="0")
         .container
             h3.px-lg-6.mb-6.mb-lg-7
                 | Подключите выгоду
@@ -188,7 +188,7 @@ block content
             li.text-l Для оплаты товаров и&nbsp;услуг поднесите мобильное устройство с&nbsp;установленным приложением &laquo;Mir Pay&raquo; (только для Android) и&nbsp;привязанной к&nbsp;нему цифровой картой банка Новиком к&nbsp;терминалу.
             li.text-l Для оплаты в&nbsp;интернете воспользуйтесь реквизитами цифровой карты.
 
-    section.section-layout.bg-blue-10.pt-0.pb-lg-11
+    section.section-layout.bg-blue-10.pt-0.pb-lg-11(tabindex="0")
         .container
             .row
                 .col-12
@@ -196,7 +196,7 @@ block content
                         +helper("img/restructuring-additional-info.png", "bg-dark-0")
                             p.mb-0 Обеспечивает повышенную безопасность данных: АО&nbsp;&laquo;НСПК&raquo;, оператор платёжной системы &laquo;Мир&raquo;, на&nbsp;100% принадлежит банку России, что гарантирует наивысшие стандарты безопасности при проведении платежей
 
-    section.section-layout.js-collapsed-mobile
+    section.section-layout.js-collapsed-mobile(tabindex="0")
         .container
             h3.d-none.d-md-block.mb-md-6.mb-lg-7.px-lg-6
                 | О&nbsp;Цифровой карте
@@ -224,7 +224,7 @@ block content
                                 include ../includes/layout/tabs/faq
         +pattern-bg('section-2', 'light', 'pattern-bg--hide-mobile')
 
-    section.section-layout.js-collapsed-mobile.bg-dark-10
+    section.section-layout.js-collapsed-mobile.bg-dark-10(tabindex="0")
         .container
             h3.d-none.d-md-block.mb-md-6.mb-lg-7.px-lg-6
                 | Как оформить карту
@@ -240,7 +240,7 @@ block content
             #how-apply.collapse.d-md-block.mt-4.mt-md-6.mt-lg-7
                 .row.row-gap-6.px-lg-6
                     +stepper(cardStepList, cardStepList.length)
-    section.section-layout.bg-blue-10
+    section.section-layout.bg-blue-10(tabindex="0")
         .container
             .d-flex.align-items-center.justify-content-between.px-lg-6.mb-6.mb-lg-7
                 h3 Спецпредложения
@@ -249,7 +249,7 @@ block content
                     +svg-use("icon-chevron-right-small", "icon size-s")
             include ../includes/layout/slider-cards-special
 
-    section.section-layout
+    section.section-layout(tabindex="0")
         .container
             h3.px-lg-6.mb-6.mb-lg-7
                 | Смотрите также

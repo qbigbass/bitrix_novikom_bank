@@ -177,3 +177,10 @@
         max-height: 37.5rem;
     }
 }
+
+// fix иконка календаря кликабельная
+.form-control.js-date {
+  & + span {
+    pointer-events: none;
+  }
+}

@@ -130,7 +130,7 @@ block content
 
     +banner-text(bannerTextData, 'green')
 
-    section.section-layout.px-lg-6
+    section.section-layout.px-lg-6(tabindex="0")
         .container
             h3.mb-4.mb-md-6.mb-lg-7
                 | Преимущества
@@ -151,7 +151,7 @@ block content
                         +svg-use("icon-chevron-down", "icon size-m")
         +pattern-bg('section', 'light', 'pattern-bg--position-sm-bottom')
 
-    section.section-layout.py-6.py-lg-11
+    section.section-layout.py-6.py-lg-11(tabindex="0")
         .container
             +card-regal({
                 title: "Награды",
@@ -159,7 +159,7 @@ block content
             })
                 p.text-l.mb-0 Банк Новиком стал серебряным лауреатом престижной премии крупнейшего digital-конкурса в&nbsp;Восточной Европе Tagline Awards за&nbsp;&laquo;Лучшее приложение финансовой компании&raquo;.
 
-    section.section-layout.js-collapsed-mobile
+    section.section-layout.js-collapsed-mobile(tabindex="0")
         .container
             h3.d-none.d-md-block.mb-md-6.mb-lg-7.px-lg-6
                 | Установка
@@ -191,7 +191,7 @@ block content
 
     include ../includes/layout/section-announcement
 
-    section.section-layout
+    section.section-layout(tabindex="0")
         .container
             h3.px-lg-6.mb-4.mb-md-6.mb-lg-7
                 | Смотрите также

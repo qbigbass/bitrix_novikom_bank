@@ -64,6 +64,11 @@
         color: var(--yellow-contrast-black-100);
       }
 
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
+
       &.is-active {
         color: var(--yellow-contrast-black-100);
 
@@ -81,6 +86,11 @@
       &:focus {
         color: var(--yellow-contrast-black-0);
       }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
     }
 
     .header__link.fw-semibold {
@@ -90,6 +100,11 @@
       &:focus {
         color: var(--yellow-contrast-black-0);
       }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
     }
 
     .header-contact-link__text {
@@ -98,6 +113,11 @@
       &:hover,
       &:focus {
         color: var(--yellow-contrast-gray-200);
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
       }
     }
 
@@ -158,6 +178,11 @@
         background-color: var(--yellow-contrast-black-100);
         color: var(--yellow-contrast-hover-link);
       }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
     }
 
 
@@ -167,6 +192,11 @@
       &:active {
         color: var(--yellow-contrast-black-100);
         background-color: var(--yellow-contrast-hover-link);
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
       }
     }
 
@@ -184,6 +214,11 @@
         color: var(--yellow-contrast-hover-link);
         border-color: var(--yellow-contrast-black-100);
       }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
     }
 
 
@@ -199,6 +234,11 @@
           background-color: var(--yellow-contrast-black-100);
           color: var(--yellow-contrast-hover-link);
           border-color: var(--yellow-contrast-black-100);
+        }
+
+        &:focus {
+          outline: 2px solid Highlight;
+          outline-offset: 2px;
         }
       }
     }
@@ -219,6 +259,11 @@
       &:focus {
         background-color: var(--yellow-contrast-hover-link);
         color: var(--yellow-contrast-black-0);
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
       }
     }
 
@@ -249,6 +294,11 @@
         transition: all 0.2s linear;
         color: var(--yellow-contrast-hover-link);
         background-color: var(--yellow-contrast-black-100);
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
       }
     }
 
@@ -296,6 +346,11 @@
         background-color: var(--yellow-contrast-black-100);
         color: var(--yellow-contrast-hover-link);
       }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
     }
 
     .pattern-bg {
@@ -319,6 +374,11 @@
       &:focus {
         background-color: var(--yellow-contrast-bg-200);
         border: 1px solid var(--yellow-contrast-bg-dark);
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
       }
 
       &::after {
@@ -347,6 +407,11 @@
               .icon.size-m {
                 color: var(--yellow-contrast-black-100);
               }
+            }
+
+            &:focus {
+              outline: 2px solid Highlight;
+              outline-offset: 2px;
             }
           }
         }
@@ -382,6 +447,11 @@
           color: var(--yellow-contrast-black-100);
           border: 1px solid var(--yellow-contrast-bg-200);
         }
+
+        &:focus {
+          outline: 2px solid Highlight;
+          outline-offset: 2px;
+        }
       }
 
       &__img {
@@ -416,6 +486,11 @@
           color: var(--yellow-contrast-hover-link);
 
         }
+
+        &:focus {
+          outline: 2px solid Highlight;
+          outline-offset: 2px;
+        }
       }
     }
 
@@ -433,6 +508,11 @@
         color: var(--yellow-contrast-hover-link) !important;
 
       }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
     }
 
     .btn.btn-info.d-none.d-md-inline-flex.align-items-center {
@@ -442,6 +522,11 @@
       &:hover,
       &:focus {
         background-color: var(--yellow-contrast-hover-link)
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
       }
     }
 
@@ -468,6 +553,11 @@
           background-color: var(--yellow-contrast-bg-200);
           color: var(--yellow-contrast-black-100);
           box-shadow: none;
+        }
+
+        &:focus {
+          outline: 2px solid Highlight;
+          outline-offset: 2px;
         }
       }
 
@@ -515,8 +605,8 @@
     }
 
     .polygon-container.js-polygon-container {
-			width: fit-content;
-			min-width: 310px;
+      width: fit-content;
+      min-width: 310px;
     }
 
     .tab-content {
@@ -540,6 +630,11 @@
       &:focus {
         color: var(--yellow-contrast-bg-dark);
       }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
     }
 
     label .form-check-label {
@@ -548,6 +643,11 @@
       &:hover,
       &:focus {
         color: var(--yellow-contrast-bg-dark);
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
       }
     }
 
@@ -571,15 +671,21 @@
             background-color: var(--yellow-contrast-black-100);
             color: var(--yellow-contrast-bg-200);
           }
+
+          &:focus {
+            outline: 2px solid Highlight;
+            outline-offset: 2px;
+          }
         }
       }
     }
 
 
 
-.card-feedback__inner::after{
-	background:none;
-}
+    .card-feedback__inner::after {
+      background: none;
+    }
+
     .form-feedback.bg-white {
       background: var(--yellow-contrast-bg-100);
     }
@@ -594,6 +700,11 @@
         background-color: var(--yellow-contrast-black-0);
         color: var(--yellow-contrast-bg-200);
 
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
       }
     }
 
@@ -647,6 +758,11 @@
         color: var(--yellow-contrast-bg-200);
 
       }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
     }
 
     .card-about-bank__col.d-flex.flex-column {
@@ -669,6 +785,11 @@
         &:focus {
           color: var(--yellow-contrast-bg-200);
           background-color: var(--yellow-contrast-black-100);
+        }
+
+        &:focus {
+          outline: 2px solid Highlight;
+          outline-offset: 2px;
         }
       }
     }
@@ -702,6 +823,11 @@
       &:focus {
         color: var(--yellow-contrast-bg-dark);
       }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
     }
 
     .purple-70 {
@@ -729,7 +855,8 @@
         color: var(--yellow-contrast-bg-200);
       }
 
-      &:hover {
+      &:hover,
+      &:focus {
         background-color: var(--yellow-contrast-bg-200);
         color: var(--yellow-contrast-black-100);
         border: none;
@@ -737,6 +864,11 @@
         & svg {
           color: var(--yellow-contrast-black-100);
         }
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
       }
     }
 
@@ -750,7 +882,7 @@
       background-color: var(--yellow-contrast-bg-dark);
       color: var(--yellow-contrast-bg-200);
       border: 1px solid var(--yellow-contrast-black-0);
- 
+
 
       &:hover {
         background-color: var(--yellow-contrast-black-0);
@@ -764,9 +896,14 @@
         background-color: var(--yellow-contrast-black-0);
         color: var(--yellow-contrast-bg-200);
       }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
     }
 
-		
+
 
     .btn.btn-link.d-inline-flex.gap-2.align-items-center {
       background: transparent;
@@ -777,6 +914,11 @@
       &:focus {
         background: none;
         color: var(--yellow-contrast-bg-dark);
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
       }
     }
 
@@ -792,6 +934,11 @@
         background-color: var(--yellow-contrast-black-0);
         color: var(--yellow-contrast-bg-200);
       }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
     }
 
     //кнопки версии
@@ -804,6 +951,11 @@
       &:focus {
         background-color: var(--yellow-contrast-black-0);
         color: var(--yellow-contrast-bg-200);
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
       }
     }
 
@@ -862,6 +1014,11 @@
         color: var(--yellow-contrast-hover-link);
         font-weight: 800;
       }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
     }
 
     .chatbot-polygon__content.chat-bot__popover-content.bg-blue-10.d-flex.flex-column.gap-3.gap-lg-4 {
@@ -882,6 +1039,11 @@
         color: var(--yellow-contrast-black-0);
         font-weight: normal;
       }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
     }
 
     .icon.dark-100.size-m {
@@ -893,6 +1055,11 @@
 
       &:focus {
         color: var(--yellow-contrast-black-0);
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
       }
     }
 
@@ -956,6 +1123,11 @@
         }
       }
 
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
+
       & .icon.size-m {
         color: var(--yellow-contrast-bg-200);
       }
@@ -981,6 +1153,11 @@
           color: var(--yellow-contrast-black-100);
         }
       }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
     }
 
     svg .icon.size-m.d-none.d-md-block {
@@ -998,6 +1175,11 @@
         border-color: var(--yellow-contrast-black-100);
         background-color: var(--yellow-contrast-bg-200);
         color: var(--yellow-contrast-black-100);
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
       }
     }
 
@@ -1023,6 +1205,11 @@
         background-color: var(--yellow-contrast-black-100);
 
       }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
     }
 
     .btn.btn-outline-primary.btn-md-lg {
@@ -1035,6 +1222,11 @@
         color: var(--yellow-contrast-bg-200);
         background-color: var(--yellow-contrast-black-100);
 
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
       }
     }
 
@@ -1137,6 +1329,11 @@
         background-color: var(--yellow-contrast-black-100);
 
       }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
     }
 
     .helper__wrapper.d-flex.flex-column.flex-sm-row.align-items-start.align-items-sm-center.gap-4.gap-lg-6 {
@@ -1147,9 +1344,9 @@
       background: none;
     }
 
-		.banner-product.banner-product--heavy-violet.banner-product--type-msb.banner-product--border-yellow.banner-product--size-xl{
-			background:none;
-		}
+    .banner-product.banner-product--heavy-violet.banner-product--type-msb.banner-product--border-yellow.banner-product--size-xl {
+      background: none;
+    }
 
     .card-benefit {
       background-color: var(--yellow-contrast-bg-dark);
@@ -1181,6 +1378,11 @@
           color: var(--yellow-contrast-bg-dark);
           text-decoration: underline;
         }
+
+        &:focus {
+          outline: 2px solid Highlight;
+          outline-offset: 2px;
+        }
       }
     }
 
@@ -1206,6 +1408,7 @@
           color: var(--yellow-contrast-gray-200);
           text-decoration: underline;
         }
+
       }
 
       .btn.btn-link.d-inline-flex.gap-2.align-items-center.border-0 {
@@ -1273,7 +1476,7 @@
       &.contact-block {
         &--bg-heavy-purple {
           border-radius: 5px;
-          background: var(--yellow-contrast-bg-100);
+          background: var(--yellow-contrast-bg-300);
 
         }
 
@@ -1304,6 +1507,11 @@
         background-color: var(--yellow-contrast-black-100);
         color: var(--yellow-contrast-bg-200);
       }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
     }
 
     //перезвоните мне
@@ -1318,6 +1526,11 @@
         &:focus {
           background-color: var(--yellow-contrast-black-100);
           color: var(--yellow-contrast-bg-200);
+        }
+
+        &:focus {
+          outline: 2px solid Highlight;
+          outline-offset: 2px;
         }
       }
     }
@@ -1353,9 +1566,22 @@
       background: var(--yellow-contrast-black-100);
       color: var(--yellow-contrast-bg-200);
       padding: 5px 12px !important;
-			min-width: 150px;
-			max-width: 100%;
+      min-width: 150px;
+      max-width: 100%;
       ;
+    }
+
+
+    .banner-product-info__image {
+      .polygon-container.js-polygon-container {
+        .polygon-container__content {
+          display: none;
+        }
+      }
+    }
+
+    .section-banner-product-info.section-banner-product-info--border-green {
+      border-top: var(--border-thickness) solid var(--yellow-contrast-black-300);
     }
 
     .link.text-decoration-underline {
@@ -1364,6 +1590,11 @@
       &:hover,
       &:focus {
         color: var(--yellow-contrast-black-100);
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
       }
     }
 
@@ -1389,6 +1620,11 @@
       &:focus {
         color: var(--yellow-contrast-gray-200)
       }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
     }
 
     //bonuses.html
@@ -1412,6 +1648,11 @@
       &:focus {
         color: var(--yellow-contrast-gray-200)
       }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
     }
 
     .select2-dropdown.select2-dropdown--below {
@@ -1424,13 +1665,15 @@
 
     //cards.html
 
-		.tabs-panel__navigation-item-reverse ,.tabs-panel__navigation-item {
-			background:none;
-		}
-		.tabs-panel__navigation.d-none.d-lg-block.js-tabs-slider-navigation.w-100 span>svg{
-			
-				color:  var(--yellow-contrast-black-0)
-		}
+    .tabs-panel__navigation-item-reverse,
+    .tabs-panel__navigation-item {
+      background: none;
+    }
+
+    .tabs-panel__navigation.d-none.d-lg-block.js-tabs-slider-navigation.w-100 span>svg {
+
+      color: var(--yellow-contrast-black-0)
+    }
 
     //оформить заявку
     .btn.btn-tertiary.btn-lg-lg.card-product-list__button.w-100.w-sm-auto {
@@ -1443,6 +1686,11 @@
       &:focus {
         background-color: var(--yellow-contrast-black-100);
         color: var(--yellow-contrast-bg-200);
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
       }
     }
 
@@ -1470,6 +1718,11 @@
         background-color: var(--yellow-contrast-black-100);
         color: var(--yellow-contrast-bg-200);
       }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
     }
 
 
@@ -1492,9 +1745,15 @@
     .d-flex.flex-wrap.justify-content-start.gap-2 span {
       color: var(--yellow-contrast-black-100);
 
-      &:hover {
+      &:hover,
+      &:focus {
         color: var(--yellow-contrast-bg-dark);
         text-decoration: underline;
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
       }
     }
 
@@ -1510,6 +1769,11 @@
         background-color: var(--yellow-contrast-black-100);
         color: var(--yellow-contrast-bg-200);
       }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
     }
 
     //career.html
@@ -1517,9 +1781,15 @@
       background-color: var(--yellow-contrast-black-100);
       border: none;
 
-      &:hover {
+      &:hover,
+      &:focus {
         background-color: var(--yellow-contrast-gray-200);
         color: var(--yellow-contrast-black-100);
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
       }
     }
 
@@ -1539,6 +1809,11 @@
         background-color: var(--yellow-contrast-black-100);
         color: var(--yellow-contrast-bg-200);
       }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
     }
 
     .page-item {
@@ -1547,12 +1822,18 @@
       --bs-pagination-active-border-color: var(--yellow-contrast-bg-100);
       --bs-pagination-border-radius: 4px;
 
-      &:hover {
+      &:hover,
+      &:focus {
         --bs-pagination-border-radius: none;
         --bs-pagination-hover-bg: var(--yellow-contrast-bg-200);
         --bs-pagination-active-bg: var(--yellow-contrast-bg-200);
         --bs-pagination-active-border-color: var(--yellow-contrast-black-100);
         --bs-pagination-border-radius: 4px;
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
       }
 
       &.active {
@@ -1565,28 +1846,37 @@
     //cashback.html
 
     .card-sale.d-flex.flex-column.align-items-start.gap-2.gap-lg-3 {
-    display: flex;
-			flex-direction: column;
-			align-items: center; 
-			justify-content: center; 
-			text-align: center;
-			height: 100%; 
-	
-			padding: 25px;
-			border-radius:5px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 100%;
 
-			&:focus , &:hover{
-				background-color: var(--yellow-contrast-bg-300);
-			}
+      padding: 25px;
+      border-radius: 8px;
+      border: 1px solid var(--yellow-contrast-black-0);
+
+      &:focus,
+      &:hover {
+        background-color: var(--yellow-contrast-bg-300);
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
     }
+
+
 
     .section-layout.bg-blue-10 {
       background: var(--yellow-contrast-bg-100);
     }
 
     .dark-100 {
-			margin: 0 auto;
-			text-align:center;
+      margin: 0 auto;
+      text-align: center;
     }
 
     .banner-text--border-green.bg-linear-blue {
@@ -1609,6 +1899,17 @@
         background-color: var(--yellow-contrast-black-100) !important;
         color: var(--yellow-contrast-bg-200);
       }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
+    }
+
+
+
+    #mobile-phone-help::placeholder {
+      color: var(--yellow-contrast-black-0)
     }
 
     //contacts.html
@@ -1630,10 +1931,12 @@
     .list-contact__link span {
       color: var(--yellow-contrast-black-0);
 
-      &:hover {
+      &:hover,
+      &:focus {
         text-decoration: underline;
         color: var(--yellow-contrast-bg-dark);
       }
+
     }
 
     //contribution-detail.html
@@ -1663,6 +1966,11 @@
         background-color: var(--yellow-contrast-black-100);
         color: var(--yellow-contrast-bg-200);
       }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
     }
 
     #amount-credit {
@@ -1690,9 +1998,9 @@
       color: var(--yellow-contrast-gray-200);
       background-color: var(--yellow-contrast-bg-100);
 
-			&::after {
-				filter: invert(0) brightness(0)
-			}
+      &::after {
+        filter: invert(0) brightness(0)
+      }
     }
 
     .accordion {
@@ -1704,16 +2012,22 @@
       }
     }
 
-		.card-benefit.d-inline-flex.px-3.px-sm-5.px-lg-6.p-4.p-sm-5.p-lg-6.w-100.bg-dark-10{
-			margin-top: 25px;
-		}
+    .card-benefit.d-inline-flex.px-3.px-sm-5.px-lg-6.p-4.p-sm-5.p-lg-6.w-100.bg-dark-10 {
+      margin-top: 25px;
+    }
 
     //customer-requests.html
     .list.list--size-l .link {
       color: var(--yellow-contrast-black-100);
 
-      &:hover {
+      &:hover,
+      &:focus {
         color: var(--yellow-contrast-bg-dark);
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
       }
     }
 
@@ -1733,13 +2047,19 @@
           color: var(--yellow-contrast-bg-200);
         }
 
-        &:hover {
+        &:hover,
+        &:focus {
           color: var(--yellow-contrast-bg-200);
           background-color: var(--yellow-contrast-black-100);
 
           .icon.size-m {
             color: var(--yellow-contrast-bg-200);
           }
+        }
+
+        &:focus {
+          outline: 2px solid Highlight;
+          outline-offset: 2px;
         }
       }
     }
@@ -1758,13 +2078,19 @@
         color: var(--yellow-contrast-bg-200);
       }
 
-      &:hover {
+      &:hover,
+      &:focus {
         color: var(--yellow-contrast-bg-200);
         background-color: var(--yellow-contrast-black-100);
 
         .icon.size-m {
           color: var(--yellow-contrast-bg-200);
         }
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
       }
     }
 
@@ -1787,13 +2113,19 @@
         color: var(--yellow-contrast-bg-200);
       }
 
-      &:hover {
+      &:hover,
+      &:focus {
         color: var(--yellow-contrast-bg-200);
         background-color: var(--yellow-contrast-black-100);
 
         .icon.size-m {
           color: var(--yellow-contrast-bg-200);
         }
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
       }
     }
 
@@ -1827,9 +2159,15 @@
       background-color: var(--yellow-contrast-bg-dark);
       border: 1px solid var(--yellow-contrast-black-100);
 
-      &:hover {
+      &:hover,
+      &:focus {
         color: var(--yellow-contrast-bg-200);
         background-color: var(--yellow-contrast-black-100);
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
       }
     }
 
@@ -1849,9 +2187,15 @@
       background-color: var(--yellow-contrast-bg-dark);
       border: 1px solid var(--yellow-contrast-black-100);
 
-      &:hover {
+      &:hover,
+      &:focus {
         color: var(--yellow-contrast-bg-200);
         background-color: var(--yellow-contrast-black-100);
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
       }
     }
 
@@ -1862,9 +2206,15 @@
         border: 1px solid var(--yellow-contrast-black-100);
         ;
 
-        &:hover {
+        &:hover,
+        &:focus {
           color: var(--yellow-contrast-bg-200);
           background-color: var(--yellow-contrast-black-100);
+        }
+
+        &:focus {
+          outline: 2px solid Highlight;
+          outline-offset: 2px;
         }
       }
     }
@@ -1876,8 +2226,14 @@
     }
 
     .breadcrumbs__item.d-md-inline-flex.align-items-center.gap-2.text-s.text-white-50.d-none span,
-    &:hover {
+    &:hover,
+    &:focus {
       color: var(--yellow-contrast-black-100);
+    }
+
+    &:focus {
+      outline: 2px solid Highlight;
+      outline-offset: 2px;
     }
 
     .banner-text__description.text-l.dark-0 {
@@ -1897,7 +2253,7 @@
       background-color: var(--yellow-contrast-bg-300);
     }
 
-    .swiper-slide.js-swiper-slide.swiper-slide-visible.swiper-slide-fully-visible.swiper-slide-active //interbank-transactions.html
+    // .swiper-slide.js-swiper-slide.swiper-slide-visible.swiper-slide-fully-visible.swiper-slide-active //interbank-transactions.html
 
     .bg-gradient-graphite {
       background: var(--yellow-contrast-bg-100);
@@ -1933,6 +2289,11 @@
         color: var(--yellow-contrast-bg-dark);
       }
 
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
+
       &.active {
         color: var(--yellow-contrast-black-100);
       }
@@ -1960,9 +2321,9 @@
       ;
     }
 
-		.card-promo__image{
-			display: none;
-		}
+    .card-promo__image {
+      display: none;
+    }
 
     .banner-text__title.text-break.dark-0.card-promo__image {
       display: none;
@@ -1980,6 +2341,11 @@
           color: var(--yellow-contrast-bg-300);
           background-color: var(--yellow-contrast-black-100);
         }
+
+        &:focus {
+          outline: 2px solid Highlight;
+          outline-offset: 2px;
+        }
       }
     }
 
@@ -1995,6 +2361,11 @@
       &:focus {
         color: var(--yellow-contrast-bg-300);
         background-color: var(--yellow-contrast-black-100);
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
       }
     }
 
@@ -2036,6 +2407,11 @@
         color: var(--yellow-contrast-bg-300);
         background-color: var(--yellow-contrast-black-100);
       }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
     }
 
     .rte li::before {
@@ -2055,7 +2431,7 @@
     }
 
 
-		
+
     //mir-always-plus.html
     .btn.btn-sm.btn-link.btn-icon.d-none.d-md-inline-flex {
 
@@ -2067,6 +2443,11 @@
       &:focus {
         color: var(--yellow-contrast-bg-300);
         background-color: var(--yellow-contrast-black-100);
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
       }
     }
 
@@ -2082,6 +2463,11 @@
         color: var(--yellow-contrast-bg-300);
         background-color: var(--yellow-contrast-black-100);
       }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
     }
 
     .btn.btn-primary.btn-sm.btn-md-md.mt-md-2 {
@@ -2094,6 +2480,11 @@
       &:focus {
         color: var(--yellow-contrast-bg-300);
         background-color: var(--yellow-contrast-black-100);
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
       }
     }
 
@@ -2117,6 +2508,11 @@
           color: var(--yellow-contrast-bg-300);
           background-color: var(--yellow-contrast-black-100);
         }
+
+        &:focus {
+          outline: 2px solid Highlight;
+          outline-offset: 2px;
+        }
       }
     }
 
@@ -2130,6 +2526,11 @@
         color: var(--yellow-contrast-bg-300);
         background-color: var(--yellow-contrast-black-100);
       }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
     }
 
     //mortgage-primary.html
@@ -2140,9 +2541,15 @@
       ;
       border: none;
 
-      &:hover {
+      &:hover,
+      &:focus {
         color: var(--yellow-contrast-gray-200);
         background-color: var(--yellow-contrast-bg-100);
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
       }
     }
 
@@ -2157,6 +2564,11 @@
       &:focus {
         color: var(--yellow-contrast-bg-300);
         background-color: var(--yellow-contrast-black-100);
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
       }
     }
 
@@ -2227,6 +2639,11 @@
         color: var(--yellow-contrast-bg-200);
         background-color: var(--yellow-contrast-black-0);
       }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
     }
 
     //msb-currency-control.html
@@ -2268,6 +2685,11 @@
         color: var(--yellow-contrast-bg-200);
         background-color: var(--yellow-contrast-black-0);
       }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
     }
 
     .btn.btn-link.btn-icon.m-auto.m-lg-0.py-2.py-lg-0 {
@@ -2278,6 +2700,11 @@
       &:focus {
         color: var(--yellow-contrast-bg-200);
         background-color: var(--yellow-contrast-black-0);
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
       }
     }
 
@@ -2303,6 +2730,11 @@
         color: var(--yellow-contrast-bg-200);
         background-color: var(--yellow-contrast-black-0);
       }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
     }
 
 
@@ -2321,6 +2753,11 @@
         &:focus {
           color: var(--yellow-contrast-bg-200);
           background-color: var(--yellow-contrast-black-0);
+        }
+
+        &:focus {
+          outline: 2px solid Highlight;
+          outline-offset: 2px;
         }
       }
     }
@@ -2343,22 +2780,23 @@
 
     //кнопка подробнее на странице  financial-institutes.html
     .card-product__footer {
-			position: relative; 
-			display: flex; 
-			gap:25px;
-			align-items: center;
-			justify-content: space-between;
-			overflow: hidden;
+      position: relative;
+      display: flex;
+      gap: 25px;
+      align-items: center;
+      justify-content: space-between;
+      overflow: hidden;
+
       .btn.btn-link.btn-icon.d-none.d-md-inline-flex {
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				gap: 0.5em; 
-				min-width: fit-content; 
-				max-width: 100%; 
-				width: auto;
-				white-space: normal; 
-				text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5em;
+        min-width: fit-content;
+        max-width: 100%;
+        width: auto;
+        white-space: normal;
+        text-align: center;
 
 
         padding: 5px 12px;
@@ -2378,6 +2816,11 @@
             color: var(--yellow-contrast-bg-200);
           }
         }
+
+        &:focus {
+          outline: 2px solid Highlight;
+          outline-offset: 2px;
+        }
       }
     }
 
@@ -2389,20 +2832,33 @@
       color: var(--yellow-contrast-black-100);
       text-decoration: underline;
 
-      &:hover {
+      &:hover,
+      &:focus {
         color: var(--yellow-contrast-bg-200);
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
       }
     }
 
-		.btn.btn-link.btn-lg.d-inline-flex.gap-2.align-items-center.mt-4.mt-md-6.section-custom-accordion__button-more {
-			color: var(--yellow-contrast-bg-200);
-			background-color: var(--yellow-contrast-bg-dark);
-			padding:15px 32px;
-			&:hover, &:focus {
-				color: var(--yellow-contrast-bg-200);
-			background-color: var(--yellow-contrast-black-0);
-			}
-		}
+    .btn.btn-link.btn-lg.d-inline-flex.gap-2.align-items-center.mt-4.mt-md-6.section-custom-accordion__button-more {
+      color: var(--yellow-contrast-bg-200);
+      background-color: var(--yellow-contrast-bg-dark);
+      padding: 15px 32px;
+
+      &:hover,
+      &:focus {
+        color: var(--yellow-contrast-bg-200);
+        background-color: var(--yellow-contrast-black-0);
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
+    }
 
     .overflow-auto.custom-overflow-scrollbar>table>thead>tr>th {
       font-size: 1.5rem;
@@ -2434,6 +2890,11 @@
         &:hover,
         &:focus {
           color: var(--yellow-contrast-bg-dark);
+        }
+
+        &:focus {
+          outline: 2px solid Highlight;
+          outline-offset: 2px;
         }
       }
     }
@@ -2512,6 +2973,12 @@
           border: 5px solid var(--yellow-contrast-bg-dark);
 
         }
+
+        &:focus {
+          outline: 2px solid Highlight;
+          outline-offset: 2px;
+        }
+
       }
     }
 
@@ -2554,184 +3021,260 @@
     }
 
     .list.list--size-l li:before {
-      background:var(--yellow-contrast-black-0);
+      background: var(--yellow-contrast-black-0);
     }
 
 
 
     .accordion-button.collapsed {
       color: var(--yellow-contrast-black-100);
-			&:hover , &:focus {
-				background-color:var(--yellow-contrast-bg-300);
-			}
+
+      &:hover,
+      &:focus {
+        background-color: var(--yellow-contrast-bg-300);
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
     }
 
-		
-		//mobile
 
-		.mobile-menu {
-			background-color:var(--yellow-contrast-bg-300);
-		}
+    //mobile
 
-		.mobile-menu__header{
-			color:var(--yellow-contrast-black-0);
-			.text-s{
-				color:var(--yellow-contrast-black-0);
-				&:hover {
-					text-decoration: underline;
-					color:var(--yellow-contrast-black-300);
-				}
-				&.is-active{
-					color: var(--yellow-contrast-black-0);
+    .mobile-menu {
+      background-color: var(--yellow-contrast-bg-300);
+    }
 
-					&::after {
-						height: 3px;
-						background-color:var(--yellow-contrast-black-0);
-					}
-				}
-			}
-		}
+    .mobile-menu__header {
+      color: var(--yellow-contrast-black-0);
 
-		.mobile-menu__bank-apps{
-			.btn.btn-primary.w-100.dropdown-toggle,
-			.btn.btn-outline-primary.d-inline-flex.gap-2.align-items-center.justify-content-center{
-				background-color:var(--yellow-contrast-black-0);
-				color:var(--yellow-contrast-white-0);
-				&:hover {
-					background-color:var(--yellow-contrast-bg-dark);
-					color:var(--yellow-contrast-white-0);
-				}
-			}
-		}
+      .text-s {
+        color: var(--yellow-contrast-black-0);
 
+        &:hover,
+        &:focus {
+          text-decoration: underline;
+          color: var(--yellow-contrast-black-300);
+        }
 
-		.mobile-menu__bank-contact {
+        &:focus {
+          outline: 2px solid Highlight;
+          outline-offset: 2px;
+        }
 
-			.d-flex.align-items-center.gap-2{
-				color:var(--yellow-contrast-black-0);
+        &.is-active {
+          color: var(--yellow-contrast-black-0);
 
-				&:hover {
-					text-decoration: underline;
-					color:var(--yellow-contrast-black-300);
+          &::after {
+            height: 3px;
+            background-color: var(--yellow-contrast-black-0);
+          }
+        }
+      }
+    }
 
-				 }
-				}
-		}
+    .mobile-menu__bank-apps {
 
-		.mobile-main-nav.js-mobile-main-nav{
-			.nav-panel{
-				background-color:var(--yellow-contrast-bg-dark);
-				.btn-nav-panel{
-					color:var(--yellow-contrast-black-0);
-					svg{
-						color:var(--yellow-contrast-black-0);
-					}
+      .btn.btn-primary.w-100.dropdown-toggle,
+      .btn.btn-outline-primary.d-inline-flex.gap-2.align-items-center.justify-content-center {
+        background-color: var(--yellow-contrast-black-0);
+        color: var(--yellow-contrast-white-0);
 
-					&:hover , &:focus{
-						color:var(--yellow-contrast-white-0);
-						svg{
-							color:var(--yellow-contrast-white-0);
-						}
-					}
-			}
-		}}
-		
-.mobile-menu__nav{
-	.accordion.accordion-flush{
-		.accordion-body{
-			.row.row-gap-4{
-				.col-12.col-md-6 a{
-					color:var(--yellow-contrast-black-0);
+        &:hover,
+        &:focus {
+          background-color: var(--yellow-contrast-bg-dark);
+          color: var(--yellow-contrast-white-0);
+        }
 
-					&:hover, &:focus {
-						color:var(--yellow-contrast-hover-link);
-					}
-				}
-			}
-		}
-	}
-}
+        &:focus {
+          outline: 2px solid Highlight;
+          outline-offset: 2px;
+        }
+      }
+    }
 
 
-		
-//modals.html
-.modal-footer.border-0.justify-content-md-center{
-	.btn.btn-primary.btn-lg-lg.m-0.w-100.w-md-auto{
-		background-color:var(--yellow-contrast-black-0);
-		color:var(--yellow-contrast-white-0);
-		&:hover , &:focus{
-			background-color:var(--yellow-contrast-hover-link);
-			color:var(--yellow-contrast-black-0);
-		}
-	}
-}
+    .mobile-menu__bank-contact {
 
-.upload-file__box.p-3.p-md-4{
-	.btn.btn-link.btn-icon{
-		border:none;
-		background:none;
-		color:var(--yellow-contrast-black-0);
+      .d-flex.align-items-center.gap-2 {
+        color: var(--yellow-contrast-black-0);
 
-		&:hover, &:focus {
-			color:var(--yellow-contrast-black-300);
-		}
-	}
-}
+        &:hover,
+        &:focus {
+          text-decoration: underline;
+          color: var(--yellow-contrast-black-300);
 
-legend.form-label.mb-3 {
-	color:var(--yellow-contrast-black-0);
-}
+        }
 
-.d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-5.column-gap-lg-6.mt-6.mt-lg-7.px-md-2.px-lg-0 {
-display: flex;
-justify-content: center;
-flex-wrap: wrap; 
-max-width: 100%;
+      }
+    }
 
-.btn.btn-primary.btn-lg-lg.w-100.w-md-auto,
-.btn.btn-outline-primary.btn-lg-lg.w-100.w-md-auto{
-	max-width: 500px; 
-	width: 100%; 
-	text-align: center; 
-		background-color:var(--yellow-contrast-black-0);
-		color:var(--yellow-contrast-hover-link);
-		&:hover , &:focus{
-			background-color:var(--yellow-contrast-hover-link);
-			color:var(--yellow-contrast-black-0);
-		}
-	}
-}
+    .mobile-main-nav.js-mobile-main-nav {
+      .nav-panel {
+        background-color: var(--yellow-contrast-bg-dark);
+
+        .btn-nav-panel {
+          color: var(--yellow-contrast-black-0);
+
+          svg {
+            color: var(--yellow-contrast-black-0);
+          }
+
+          &:hover,
+          &:focus {
+            color: var(--yellow-contrast-white-0);
+
+            svg {
+              color: var(--yellow-contrast-white-0);
+            }
+          }
+
+          &:focus {
+            outline: 2px solid Highlight;
+            outline-offset: 2px;
+          }
+        }
+      }
+    }
+
+    .mobile-menu__nav {
+      .accordion.accordion-flush {
+        .accordion-body {
+          .row.row-gap-4 {
+            .col-12.col-md-6 a {
+              color: var(--yellow-contrast-black-0);
+
+              &:hover,
+              &:focus {
+                color: var(--yellow-contrast-hover-link);
+              }
+
+              &:focus {
+                outline: 2px solid Highlight;
+                outline-offset: 2px;
+              }
+            }
+          }
+        }
+      }
+    }
 
 
-.d-flex.flex-column.align-items-start.row-gap-3{
-	.btn.btn-primary{
-		background-color:var(--yellow-contrast-black-0);
-		color:var(--yellow-contrast-hover-link);
-		&:hover , &:focus{
-			background-color:var(--yellow-contrast-hover-link);
-			color:var(--yellow-contrast-black-0);
-		}
-	}
-}
 
-.modal-footer.border-0.justify-content-md-center{
-	background-color:var(--yellow-contrast-bg-100);
-}
+    //modals.html
+    .modal-footer.border-0.justify-content-md-center {
+      .btn.btn-primary.btn-lg-lg.m-0.w-100.w-md-auto {
+        background-color: var(--yellow-contrast-black-0);
+        color: var(--yellow-contrast-white-0);
+
+        &:hover,
+        &:focus {
+          background-color: var(--yellow-contrast-hover-link);
+          color: var(--yellow-contrast-black-0);
+        }
+
+        &:focus {
+          outline: 2px solid Highlight;
+          outline-offset: 2px;
+        }
+      }
+    }
+
+    .upload-file__box.p-3.p-md-4 {
+      .btn.btn-link.btn-icon {
+        border: none;
+        background: none;
+        color: var(--yellow-contrast-black-0);
+
+        &:hover,
+        &:focus {
+          color: var(--yellow-contrast-black-300);
+        }
+
+        &:focus {
+          outline: 2px solid Highlight;
+          outline-offset: 2px;
+        }
+      }
+    }
+
+    legend.form-label.mb-3 {
+      color: var(--yellow-contrast-black-0);
+    }
+
+    .d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-5.column-gap-lg-6.mt-6.mt-lg-7.px-md-2.px-lg-0 {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      max-width: 100%;
+
+      .btn.btn-primary.btn-lg-lg.w-100.w-md-auto,
+      .btn.btn-outline-primary.btn-lg-lg.w-100.w-md-auto {
+        max-width: 500px;
+        width: 100%;
+        text-align: center;
+        background-color: var(--yellow-contrast-black-0);
+        color: var(--yellow-contrast-hover-link);
+
+        &:hover,
+        &:focus {
+          background-color: var(--yellow-contrast-hover-link);
+          color: var(--yellow-contrast-black-0);
+        }
+
+        &:focus {
+          outline: 2px solid Highlight;
+          outline-offset: 2px;
+        }
+      }
+    }
 
 
-.btn-nav-panel--primary{
-	background:none;
-	background-color:var(--yellow-contrast-bg-300);
-	.btn-nav-panel__icon{
-		color:var(--yellow-contrast-black-0);
-	}
+    .d-flex.flex-column.align-items-start.row-gap-3 {
+      .btn.btn-primary {
+        background-color: var(--yellow-contrast-black-0);
+        color: var(--yellow-contrast-hover-link);
 
-	&:hover {
-		.btn-nav-panel__icon{
-			color:var(--yellow-contrast-black-0);
-		}
-	}
-}
+        &:hover,
+        &:focus {
+          background-color: var(--yellow-contrast-hover-link);
+          color: var(--yellow-contrast-black-0);
+        }
+
+        &:focus {
+          outline: 2px solid Highlight;
+          outline-offset: 2px;
+        }
+      }
+    }
+
+    .modal-footer.border-0.justify-content-md-center {
+      background-color: var(--yellow-contrast-bg-100);
+    }
+
+
+    .btn-nav-panel--primary {
+      background: none;
+      background-color: var(--yellow-contrast-bg-300);
+
+      .btn-nav-panel__icon {
+        color: var(--yellow-contrast-black-0);
+      }
+
+      &:hover,
+      &:focus {
+        .btn-nav-panel__icon {
+          color: var(--yellow-contrast-black-0);
+        }
+      }
+
+      &:focus {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
+    }
 
 
   }
