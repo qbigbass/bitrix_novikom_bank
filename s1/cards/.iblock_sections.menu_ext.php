@@ -1,6 +1,8 @@
 <?php
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 
+use Bitrix\Iblock\ElementTable;
+
 global $APPLICATION;
 
 $aMenuLinks[] = [
@@ -27,26 +29,63 @@ $aMenuLinksExt = $APPLICATION->IncludeComponent(
     false
 );
 
-$aMenuLinksExt[] = [
-    '«Программа кэшбэк»',
-    '/bonus-programs/programma-keshbek/',
-    Array(),
-    Array('show_only_in_header' => 'Y')
-];
+$elements = ElementTable::GetList([
+    "select" => ["ID", "NAME", "CODE"],
+    "filter" => [
+        "IBLOCK_ID" => iblock("bonus_programs_ru"),
+        "ACTIVE" => "Y"
+    ],
+])->fetchAll();
 
-$aMenuLinksExt[] = [
-    '«Программа бонусы»',
-    '/bonus-programs/programma-bonusy/',
-    Array(),
-    Array('show_only_in_header' => 'Y')
-];
+foreach ($elements as $element) {
+    $aMenuLinksExt[] = [
+        $element["NAME"],
+        "/bonus-programs/" . $element["CODE"] . "/",
+        [],
+        ["show_only_in_header" => "Y"]
+    ];
+}
 
-$aMenuLinksExt[] = [
-    '«Бонусная копилка»',
-    '/bonus-programs/programma-bonusnaya-kopilka/',
-    Array(),
-    Array('show_only_in_header' => 'Y')
-];
+//$aMenuBonusPrograms = $APPLICATION->IncludeComponent(
+//    "bitrix:menu.sections",
+//    "",
+//    [
+//        "IS_SEF" => "Y",
+//        "SEF_BASE_URL" => "",
+//        "SECTION_PAGE_URL" => "",
+//        "DETAIL_PAGE_URL" => "/bonus-programs/#ELEMENT_CODE#/",
+//        "IBLOCK_TYPE" => "for_private_clients_ru",
+//        "IBLOCK_ID" => iblock('bonus_programs_ru'),
+//        "DEPTH_LEVEL" => "1",
+//        "CACHE_TYPE" => "N",
+//        "CACHE_TIME" => "36000000"
+//    ],
+//    false
+//);
+
+
+file_put_contents($_SERVER["DOCUMENT_ROOT"] . "/logs/mindbox_order_status_".date("Y_m_d").".txt", print_r($aMenuLinksExt, true), FILE_APPEND);
+
+//$aMenuLinksExt[] = [
+//    '«Программа кэшбэк»',
+//    '/bonus-programs/programma-keshbek/',
+//    Array(),
+//    Array('show_only_in_header' => 'Y')
+//];
+//
+//$aMenuLinksExt[] = [
+//    '«Программа бонусы»',
+//    '/bonus-programs/programma-bonusy/',
+//    Array(),
+//    Array('show_only_in_header' => 'Y')
+//];
+//
+//$aMenuLinksExt[] = [
+//    '«Бонусная копилка»',
+//    '/bonus-programs/programma-bonusnaya-kopilka/',
+//    Array(),
+//    Array('show_only_in_header' => 'Y')
+//];
 
 
 $aMenuLinks = array_merge($aMenuLinks, $aMenuLinksExt);
