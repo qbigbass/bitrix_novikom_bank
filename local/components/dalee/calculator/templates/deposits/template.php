@@ -92,7 +92,7 @@
                             <label class="form-label mb-0" for="sum">Сумма пополнения</label>
                             <div class="position-relative w-100">
                                 <input class="form-control form-control-lg-lg" id="sum"
-                                       type="number" name="sum"><span
+                                       type="text" name="sum"><span
                                     class="currency position-absolute top-0 end-0 dark-70 text-m py-2 px-3 p-lg-3">₽</span>
                             </div>
                         </div>
@@ -129,7 +129,7 @@
                                         пополнения</label>
                                     <div class="position-relative w-100">
                                         <input class="form-control form-control-lg-lg"
-                                               type="number" name="sum"><span
+                                               type="text" name="sum"><span
                                             class="currency position-absolute top-0 end-0 dark-70 text-m py-2 px-3 p-lg-3">₽</span>
                                     </div>
                                 </div>
