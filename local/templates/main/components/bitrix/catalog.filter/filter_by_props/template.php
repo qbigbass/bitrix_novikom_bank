@@ -88,19 +88,21 @@ use Bitrix\Main\Localization\Loc;
                 <?endforeach;?>
             </ul>
         </div>
-        <div class="position-relative w-100 w-md-50 w-lg-240w">
-            <input
-                class="js-date js-date--range js-date--today-max w-100 form-control"
-                id="date1"
-                type="text"
-                name="date1"
-                placeholder="Показать за период"
-            >
-            <span class="position-absolute top-0 end-0 violet-70 text-m p-2 px-3 pe-none">
-                <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                    <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-calendar"></use>
-                </svg>
-            </span>
-        </div>
+        <? if ($arParams["SHOW_CALENDAR"] === "Y") : ?>
+            <div class="position-relative w-100 w-md-50 w-lg-240w">
+                <input
+                    class="js-date js-date--range js-date--today-max w-100 form-control"
+                    id="date1"
+                    type="text"
+                    name="date1"
+                    placeholder="Показать за период"
+                >
+                <span class="position-absolute top-0 end-0 violet-70 text-m p-2 px-3 pe-none">
+                    <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-calendar"></use>
+                    </svg>
+                </span>
+            </div>
+        <? endif; ?>
     </div>
 </form>
