@@ -35,6 +35,10 @@ const defaultDatepickerOptions = {
         hideCustomEvent.isFinished = isFinished;
 
         document.querySelector(DATEPICKER_CLASSES.root).dispatchEvent(hideCustomEvent);
+    },
+    onSelect({datepicker}) {
+        const hideCustomEvent = new CustomEvent('select');
+        datepicker.$el.dispatchEvent(hideCustomEvent);
     }
 }
 
