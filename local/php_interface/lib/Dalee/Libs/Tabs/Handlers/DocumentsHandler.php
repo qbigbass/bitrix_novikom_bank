@@ -7,11 +7,13 @@ use Dalee\Libs\Tabs\Interfaces\PropertyHandlerInterface;
 
 class DocumentsHandler implements PropertyHandlerInterface
 {
+    private int $iblockId;
     private array $property;
     private int $firstSectionKey;
 
     public function __construct(array $property)
     {
+        $this->iblockId = iblock("documents");
         $this->property = $property;
         $this->firstSectionKey = array_key_first($property['LINK_SECTION_VALUE']);
     }
@@ -90,12 +92,13 @@ class DocumentsHandler implements PropertyHandlerInterface
             return $a['SORT'] <=> $b['SORT'];
         });
         foreach ($elements as $element) {
-            $file = CFile::GetFileArray($element['PROPERTIES']['FILE']['VALUE']);
+            $file = CFile::GetPath($element['PROPERTIES']['FILE']['VALUE']);
             $date = (!empty($element['ACTIVE_FROM'])) ? $element['ACTIVE_FROM']->format('d.m.y H:i') : '';
-            $fileType = explode('.', $file['ORIGINAL_NAME'])[1];
+            $fileType = pathinfo($file, PATHINFO_EXTENSION);
+            $code = $this->getElementCode($element['ID']);
 
             $elementsHtml .=
-                '<a class="d-flex flex-column gap-2 py-3 document-download text-m" href="' . $file['SRC'] . '" download="' . $file['NAME'] . '">'
+                '<a class="d-flex flex-column gap-2 py-3 document-download text-m" href="/documents/' . $code . '.' . $fileType . '">'
                     . $element ['NAME'] .
                     '<div class="d-flex gap-1 align-items-center">
                         <div class="document-download__file caption-m dark-70">
@@ -121,5 +124,20 @@ class DocumentsHandler implements PropertyHandlerInterface
         $displayValue = ob_get_contents();
         ob_end_clean();
         return $displayValue;
+    }
+
+    private function getElementCode(int $id)
+    {
+        $element = ElementTable::getList([
+            'filter' => [
+                'ID' => $id,
+                'IBLOCK_ID' => $this->iblockId
+            ],
+            'select' => [
+                'CODE'
+            ]
+        ])->fetch();
+
+        return $element['CODE'];
     }
 }
