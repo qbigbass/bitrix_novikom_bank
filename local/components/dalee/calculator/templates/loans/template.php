@@ -67,11 +67,6 @@
                                                                            tabindex="0">Получаю
                             зарплату на&nbsp;карту Новиком</a></label>
                 </div>
-                <div class="form-check">
-                    <input class="form-check-input js-loan-insurance" id="inp-loan-insurance"
-                           type="checkbox" value="">
-                    <label class="form-check-label" for="inp-loan-insurance" tabindex="0">Страхование</label>
-                </div>
                 <div class="d-flex flex-column row-gap-4 row-gap-lg-6">
                     <div class="d-flex flex-column row-gap-2">
                         <label class="form-label mb-0"

@@ -4,7 +4,6 @@ const ELEMS_LOAN = {
     fullCost: '.js-calculator-display-full-cost',
     loanType: '.js-select-loan-type',
     inputLoanCard: '.js-inp-loan-card',
-    inputLoanInsurance: '.js-loan-insurance',
     selectLoanProperties: '.js-select-loan-properties',
     selectLoanPaymentType: '.js-select-loan-payment-type',
     tableSchedule: '#payment-loan-table-body',
@@ -204,7 +203,6 @@ function initElementsLoanCalculator(root) {
     const inputPeriodWrapper = inputPeriod.closest(ELEMS_DEPOSIT.inputSlider);
     const inputAmountWrapper = inputAmount.closest(ELEMS_DEPOSIT.inputSlider);
     const inputLoanCard = root.querySelector(ELEMS_LOAN.inputLoanCard);
-    const inputLoanInsurance = root.querySelector(ELEMS_LOAN.inputLoanInsurance);
     const selectLoanProperties = root.querySelector(ELEMS_LOAN.selectLoanProperties);
     const selectLoanPaymentType = root.querySelector(ELEMS_LOAN.selectLoanPaymentType);
     const tableSchedule = root.querySelector(ELEMS_LOAN.tableSchedule);
@@ -217,7 +215,6 @@ function initElementsLoanCalculator(root) {
         inputAmount,
         inputPeriod,
         inputLoanCard,
-        inputLoanInsurance,
         selectLoanProperties,
         selectLoanPaymentType,
         inputPeriodWrapper,
