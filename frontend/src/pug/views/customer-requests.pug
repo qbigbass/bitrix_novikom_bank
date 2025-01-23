@@ -103,7 +103,7 @@ block content
         "green"
     )
 
-    section.section-layout.px-lg-6
+    section.section-layout.px-lg-6(tabindex="0")
         .container
             .row.row-gap-6.gx-xl-6
                 each item, index in allBenefits1
@@ -111,7 +111,7 @@ block content
                         +benefit(item.spriteData, item.title)
                             != item.description
 
-    section.section-layout.px-lg-6
+    section.section-layout.px-lg-6(tabindex="0")
         .container
             h3.mb-4.mb-md-6.mb-lg-7 Какую информацию необходимо указать в обращении
             .row.row-gap-6.gx-xl-6
@@ -120,7 +120,7 @@ block content
                         +benefit(item.spriteData, item.title)
                             span!= item.description
 
-    section.section-layout.bg-dark-10.px-lg-6
+    section.section-layout.bg-dark-10.px-lg-6(tabindex="0")
         .container
             .row
                 .col-12

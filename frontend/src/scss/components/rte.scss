@@ -70,7 +70,25 @@
         @extend .list--size-l;
 
         & ul {
-            @extend .list--inner-list;
+            @extend .list;
+            @extend .list--size-m;
+
+            margin-top: 1rem;
+
+            li {
+                &::before {
+                    width: 0.75rem;
+                    height: 0.75rem;
+                }
+            }
+
+            & ul {
+                @extend .list;
+                @extend .list--size-s;
+
+                margin-top: .5rem;
+                gap: .5rem;
+            }
         }
     }
 
