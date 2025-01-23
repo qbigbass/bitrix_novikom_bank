@@ -47,7 +47,7 @@ $APPLICATION->SetTitle('Частным клиентам - Главная НОВ�
             "PARENT_SECTION" => "",
             "PARENT_SECTION_CODE" => "",
             "PREVIEW_TRUNCATE_LEN" => "",
-            "PROPERTY_CODE" => array("BUTTON_LINK", "BUTTON_TEXT", "TEXT", ""),
+            "PROPERTY_CODE" => array("BUTTON_LINK", "BUTTON_TEXT", "TEXT", "", "FILE_VIDEO"),
             "SET_BROWSER_TITLE" => "N",
             "SET_LAST_MODIFIED" => "N",
             "SET_META_DESCRIPTION" => "N",
