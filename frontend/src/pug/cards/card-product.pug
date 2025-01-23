@@ -35,7 +35,7 @@ mixin card-product(data)
                 if data.img
                     img.card-product__img(src=`img/big-illustrations/${data.img}`, alt="", loading="lazy")
                 if data.button
-                    button(type="button").btn.btn-primary.card-product__button= data.button
+                    button(type="button" tabindex="0").btn.btn-primary.card-product__button= data.button
                 if data.link
                     span.btn.btn-link.btn-icon.m-auto.m-lg-0.py-2.py-lg-0
                         span!= data.link
