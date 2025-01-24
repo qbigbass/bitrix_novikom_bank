@@ -2,6 +2,7 @@
 
 namespace Dalee\Services;
 
+use Bitrix\Iblock\Component\Tools;
 use Bitrix\Main\Loader;
 use Bitrix\Main\LoaderException;
 use Bitrix\Main\Request;
@@ -42,20 +43,20 @@ class DocumentHandler
         $path = $this->request->getQuery("path");
 
         if (empty($path)) {
-            $this->send404();
+            $this->send404('Не указано название файла');
         }
 
         $code = $this->extractCodeFromPath($path);
         $element = $this->getElementByCode($code);
 
         if (empty($element)) {
-            $this->send404();
+            $this->send404('Файл отсутствует');
         }
 
         $filePath = $this->getFilePath($element);
 
         if (empty($filePath)) {
-            $this->send404();
+            $this->send404('Файл отсутствует');
         }
 
         $this->sendFile($filePath, $code);
@@ -119,11 +120,12 @@ class DocumentHandler
     }
 
     /**
+     * @param $message
      * @return void
      */
-    #[NoReturn] private function send404(): void
+    #[NoReturn] private function send404($message): void
     {
-        require($_SERVER["DOCUMENT_ROOT"] . "/404.php");
+        Tools::process404($message, true, true, true);
         exit;
     }
 }
