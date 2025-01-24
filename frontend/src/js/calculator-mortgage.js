@@ -103,7 +103,41 @@ function getMortgageObjects(dataArray, STATE) {
     );
 }
 
+function createNewInputSlider(inputSlider, dataAttr) {
+    // TODO: сделать новый инпут слайдер на основе - element, удалив старый
+    console.log('inputSlider', inputSlider);
+    const cloneInputSlider = inputSlider.cloneNode(true);
+    cloneInputSlider.dataset.minValue = inputSlider.dataset.minValue;
+    Object.entries(dataAttr).forEach(([key, value]) => {
+        cloneInputSlider.dataset[key] = value;
+    })
+    cloneInputSlider.querySelector(JS_CLASSES.textSteps).textContent = '';
+    initInputSlider([cloneInputSlider]);
+    inputSlider.replaceWith(cloneInputSlider);
+    return cloneInputSlider;
+}
+
+function handlerProperty(STATE, value) {
+    const percentage = (100 - STATE.filteredData[0].minDownPayment) / 100;
+    STATE.amount = value * percentage;
+    const dataAttr = {
+        'minValue': Math.round(value - STATE.amount),
+        'maxValue': Math.round(STATE.amount),
+        'startValue' : Math.round(value - STATE.amount)
+    }
+
+    STATE.elements.inputAmountWrapper = createNewInputSlider(STATE.elements.inputAmountWrapper,
+        dataAttr);
+    STATE.payment = calculateMortgage({amount: STATE.amount, rate: STATE.rate, period: STATE.period});
+    STATE.requiredIncome = calculateRequiredIncome(STATE.payment, STATE.expenseRatio);
+    showMortgageResult(STATE);
+}
+
 function setMortgageValues(STATE) {
+    STATE.elements.inputPropertyWrapper.addEventListener('input', (event) => {
+        handlerProperty(STATE, event.detail.value);
+    })
+
     STATE.elements.inputPeriodWrapper.addEventListener('input', (event) => {
         STATE.period = event.detail.value;
         STATE.payment = calculateMortgage({amount: STATE.amount, rate: STATE.rate, period: STATE.period});
@@ -167,15 +201,12 @@ function getMortgageValues(STATE) {
 
     STATE.insurance = STATE.elements.inputMortgageInsurance.checked ? 'Y' : 'N';
     STATE.card = STATE.elements.inputMortgageCard.checked ? 'Y' : 'N';
-
-    console.log('STATE.filteredData1', STATE.filteredData);
     STATE.filteredData = STATE.filteredData.filter(item => {
         if (!item.insurance) item.insurance = 'N';
         if (!item.salaryBankCard) item.salaryBankCard = 'N';
-        return (item.insurance === STATE.insurance) && (item.salaryBankCard === STATE.card)
+        // TODO: при корректно заполненных данных, должно фильтроваться
+        return (item.insurance === STATE.insurance) && (item.salaryBankCard === STATE.card) ? (item) : STATE.filteredData[0];
     });
-
-    console.log('STATE.filteredData2', STATE.filteredData);
 
     STATE.expenseRatio = STATE.elements.root.dataset.expenseRatio;
     STATE.rate = STATE.filteredData[0].rate;
