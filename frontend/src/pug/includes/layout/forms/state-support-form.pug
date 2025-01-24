@@ -10,67 +10,54 @@ include ../../../components/forms/textarea
     var stateSupportForm = {
         formName: "state-support",
         step1: {
-            radiosTop: [
-                {
-                    id: "physical-person",
-                    name: "PERSON",
-                    value: "physical",
-                    text: "Физическое лицо"
-                },
-                {
-                    id: "legal-person",
-                    name: "PERSON",
-                    value: "legal",
-                    text: "Юридическое лицо или ИП"
-                },
-            ],
             inputs: [
                 {
-                    id: "last-name",
-                    label: "Фамилия",
-                    placeholder: "Введите фамилию",
+                    id: "organization",
+                    name: "ORGANIZATION",
+                    label: "Наименование организации",
+                    placeholder: "Введите наименование",
                     required: true,
                 },
                 {
-                    id: "first-name",
-                    label: "Имя",
-                    placeholder: "Введите имя",
+                    id: "subject",
+                    name: "SUBJECT",
+                    label: "Субъект МСП",
+                    placeholder: "Укажите субъект",
                     required: true,
-                },
-                {
-                    id: "middle-name",
-                    label: "Отчество",
-                    placeholder: "Введите отчество",
-                    required: false,
-                },
-                {
-                    id: "birthday",
-                    name: "BIRTHDAY",
-                    label: "Дата рождения",
-                    placeholder: "Укажите дату",
-                    required: false,
-                    datepicker: true,
                 },
                 {
                     id: "inn",
                     name: "INN",
                     label: "ИНН",
-                    placeholder: "Введите ИНН",
-                    required: false,
-                    hidden: true,
+                    placeholder: "Укажите ИНН",
+                    required: true,
                 },
                 {
-                    id: "organization",
-                    name: "ORGANIZATION",
-                    label: "Наименование организации",
-                    placeholder: "Укажите организацию",
+                    id: "okved",
+                    name: "OKVED",
+                    label: "ОКВЭД",
+                    placeholder: "Укажите ОКВЭД",
                     required: true,
-                    hidden: true,
+                },
+                {
+                    id: "location",
+                    name: "LOCATION",
+                    label: "Местоположение компании",
+                    placeholder: "Введите полный адрес компании",
+                    required: true,
+                },
+            ],
+            inputsContact: [
+                {
+                    id: "contact-name",
+                    label: "ФИО",
+                    placeholder: "Введите ФИО",
+                    required: true,
                 },
                 {
                     id: "e-mail",
                     label: "E-mail",
-                    placeholder: "Введите почту",
+                    placeholder: "Введите e-mail",
                     type: "email",
                     required: true,
                     pattern: "[a-zA-Z0-9._%\\+\\-]+@[a-zA-Z0-9.\\-]+\\.[a-zA-Z]{2,}",
@@ -78,67 +65,55 @@ include ../../../components/forms/textarea
                 },
                 {
                     id: "phone",
-                    label: "Телефон",
+                    label: "Номер телефона",
                     placeholder: "+7",
                     type: "tel",
                     required: false,
                     mask: "phone",
                     pattern: "\\+7\\s\\(\\d{3}\\)\\s\\d{3}-\\d{2}-\\d{2}",
                     errorMessage: "Введите корректный номер телефона",
-                },
-            ],
-            radiosBottom: [
-                {
-                    id: "other-email-false",
-                    name: "OTHER-EMAIL",
-                    value: "false",
-                    text: "Да"
+                    required: true,
                 },
                 {
-                    id: "other-email-true",
-                    name: "OTHER-EMAIL",
-                    value: "true",
-                    text: "Нет, на иной адрес"
+                    id: "phone-additional",
+                    label: "Добавочный (при наличии)",
+                    placeholder: "",
+                    type: "number",
                 },
             ],
-            inputReplyEmail: {
-                id: "reply-email",
-                name: "REPLY-EMAIL",
-                label: "Адрес, по которому должен быть направлен ответ (например, адрес электронной почты)",
-                placeholder: "Введите адрес",
-                type: "email",
-                required: true,
-                pattern: "[a-zA-Z0-9._%\\+\\-]+@[a-zA-Z0-9.\\-]+\\.[a-zA-Z]{2,}",
-                errorMessage: "Введите корректный адрес электронной почты",
-            },
         },
         step2: {
-            radiosTop: [
-                {
-                    id: "topic-claim",
-                    name: "topic",
-                    value: "claim",
-                    text: "Направить претензию"
-                },
-                {
-                    id: "topic-question",
-                    name: "topic",
-                    value: "question",
-                    text: "Задать вопрос"
-                },
-                {
-                    id: "topic-gratitude",
-                    name: "topic",
-                    value: "gratitude",
-                    text: "Выразить благодарность"
-                },
-            ],
             textarea: {
                 id: "message",
-                label: "Ваше сообщение",
+                label: "Цель финансирования / Комментарии",
                 placeholder: "Введите сообщение",
                 required: true,
             },
+            inputs: [
+                {
+                    id: "loan-payment",
+                    label: "Сумма кредита",
+                    placeholder: "Сумма",
+                    groupText: "₽",
+                    mask: "money"
+                },
+                {
+                    id: "loan-term",
+                    label: "Срок кредита",
+                    placeholder: "Срок",
+                    type: "number",
+                    min: "0",
+                    groupText: "мес.",
+                },
+            ],
+            selects: [
+                {
+                    id: "support-measure",
+                    label: "Мера поддержки",
+                    options: ["Льготное кредитование проектов, направленных на экспорт продукции (экспортеров и покупателей данной продукции)", "Вариант 2", "Вариант 3", "Вариант 4"],
+                    required: true,
+                },
+            ],
         }
     }
 
@@ -152,21 +127,16 @@ form(action="/" method="POST" novalidate id="state-support-form" data-form data-
                     total: "2",
                     text: "Об организации"
                 })
-            fieldset.application-form__col.col-12
-                legend.form-label.mb-3 Вы обращаетесь как
-                .d-flex.flex-wrap.row-gap-3.row-gap-lg-4.column-gap-6.column-gap-md-5.column-gap-lg-6
-                    each item, index in step1.radiosTop
-                        +radio(item, index, stateSupportForm.formName)
             each item in step1.inputs
-                .application-form__col.col-12(class= item.id !== "organization" ? "col-md-6" : "" hidden= item.hidden)
+                .application-form__col.col-12(class= item.id !== "location" ? "col-md-6" : "" hidden= item.hidden)
                     +input(item, stateSupportForm.formName)
-            fieldset.application-form__col.col-12
-                legend.form-label.mb-3 Получить ответ на E-mail
-                .d-flex.flex-wrap.row-gap-3.row-gap-lg-4.column-gap-6.column-gap-md-5.column-gap-lg-6
-                    each item, index in step1.radiosBottom
-                        +radio(item, index, stateSupportForm.formName)
-            .application-form__col.col-12(hidden)
-                +input(step1.inputReplyEmail, stateSupportForm.formName)
+
+        .row.g-1.g-md-2.gy-lg-1.gx-lg-2_5.mt-2
+            legend.text-m.fw-semibold.dark-100.mb-0 Контактное лицо
+            each item in step1.inputsContact
+                .application-form__col.col-12.col-md-6(hidden= item.hidden)
+                    +input(item, stateSupportForm.formName)
+
         .d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-5.column-gap-lg-6.mt-6.mt-lg-7.px-md-2.px-lg-0
             button.btn.btn-primary.btn-lg-lg.w-100.w-md-auto(type="button" disabled aria-disabled="true" data-form-button data-form-step-button-next) Продолжить
             div.text-m.orange-100.text-center(data-form-error)
@@ -179,24 +149,22 @@ form(action="/" method="POST" novalidate id="state-support-form" data-form data-
                     total: "2",
                     text: "Настройки поддержки"
                 })
-            fieldset.application-form__col.col-12
-                legend.visually-hidden Причина обращения
-                .d-flex.flex-wrap.row-gap-3.row-gap-lg-4.column-gap-6.column-gap-md-5.column-gap-lg-6
-                    each item, index in step2.radiosTop
-                        +radio(item, index, stateSupportForm.formName)
             .application-form__col.col-12
-                p.text-m.m-0
-                    | Спасибо, что обратились в&nbsp;Новиком! Повышение качества обслуживания для нас очень важно. С&nbsp;информацией о&nbsp;порядке и&nbsp;сроках рассмотрения обращения&nbsp;Вы можете ознакомиться по&nbsp;#[a(href="#") ссылке].
+                +select(step2.selects[0], stateSupportForm.formName)
+            each item in step2.inputs
+                .application-form__col.col-12(class= item.id !== "location" ? "col-md-6" : "" hidden= item.hidden)
+                    +input(item, stateSupportForm.formName)
+
+
             .application-form__col.col-12
                 +textarea(step2.textarea, stateSupportForm.formName)
-            .application-form__col.col-12
-                +upload-file(stateSupportForm.formName)
+
             .application-form__col.col-12
                 +captcha(stateSupportForm.formName)
             .application-form__col.col-12
                 +confirm(stateSupportForm.formName)
         .d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-5.column-gap-lg-6.mt-6.mt-lg-7.px-md-2.px-lg-0
-            button.btn.btn-primary.btn-lg-lg.w-100.w-md-auto(type="submit" disabled aria-disabled="true" data-form-button) Отправить
+            button.btn.btn-primary.btn-lg-lg.w-100.w-md-auto(type="submit" disabled aria-disabled="true" data-form-button) Отправить заявку
             button.btn.btn-outline-primary.btn-lg-lg.w-100.w-md-auto(type="button" data-form-step-button-prev) Назад
             div.text-m.orange-100.text-center(data-form-error)
     div(
