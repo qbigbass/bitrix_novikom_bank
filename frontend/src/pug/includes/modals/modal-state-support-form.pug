@@ -1,0 +1,10 @@
+.modal.modal-xl.fade(id="modal-state-support-form" tabindex='-1' aria-hidden='true')
+    .modal-dialog.modal-dialog-scrollable
+        .modal-content
+            .modal-header
+                h5.modal-title Заявка на&nbsp;господдержку
+                button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+                    span.icon.size-m
+                        +svg-use("icon-close")
+            .modal-body
+                include ../layout/forms/state-support-form
