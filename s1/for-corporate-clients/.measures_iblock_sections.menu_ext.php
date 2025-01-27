@@ -1,0 +1,24 @@
+<?php
+if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
+
+global $APPLICATION;
+
+$aMenuLinksExt = $APPLICATION->IncludeComponent(
+    "bitrix:menu.sections",
+    "",
+    [
+        "IS_SEF" => "Y",
+        "SEF_BASE_URL" => "/for-corporate-clients/mery-gospodderzhki/",
+        "SECTION_PAGE_URL" => "#SECTION_CODE#/",
+        "DETAIL_PAGE_URL" => "#SECTION_CODE#/#ELEMENT_CODE#",
+        "IBLOCK_TYPE" => "for_corporate_clients_ru",
+        "IBLOCK_ID" => iblock('financing_measures'),
+        "DEPTH_LEVEL" => "2",
+        "CACHE_TYPE" => "A",
+        "CACHE_TIME" => "36000000"
+    ],
+    false
+);
+
+$aMenuLinks = array_merge($aMenuLinks, $aMenuLinksExt);
+?>
