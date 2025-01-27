@@ -189,4 +189,11 @@ $arUrlRewrite = [
         'PATH' => '/private-banking/services/index.php',
         'SORT' => 100,
     ],
+    [
+        'CONDITION' => '#^/documents/(.+)#',
+        'RULE' => 'path=$1',
+        'ID' => '',
+        'PATH' => '/documents/index.php',
+        'SORT' => 100,
+    ],
 ];
