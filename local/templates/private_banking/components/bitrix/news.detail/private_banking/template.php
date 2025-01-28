@@ -32,10 +32,10 @@ $this->setFrameMode(true);
         <div class="pb-main-nav">
             <div class="pb-main-nav__wrapper container d-flex flex-column">
                 <nav class="pb-nav d-flex flex-column align-items-center row-gap-4 row-gap-lg-6">
-                    <a class="pb-nav__link" href="#">Главная</a>
-                    <a class="pb-nav__link" href="#">Инвестиционные услуги</a>
-                    <a class="pb-nav__link" href="#">Карта Мир Supreme</a>
-                    <a class="btn btn-pb btn-pb--outline d-none d-lg-inline-block" href="#">Онлайн-банк</a>
+                    <a class="pb-nav__link" href="/private-banking/">Главная</a>
+                    <a class="pb-nav__link" href="/private-banking/services/investment/brokerskoe-obsluzhivanie/">Инвестиционные услуги</a>
+                    <a class="pb-nav__link" href="/private-banking/mir-supreme-card/">Карта Мир Supreme</a>
+                    <a class="btn btn-pb btn-pb--outline d-none d-lg-inline-block" href="/online/">Онлайн-банк</a>
                 </nav>
                 <div class="text-center d-lg-none">
                     <button class="btn btn-pb btn-pb--primary" type="button" data-bs-toggle="modal" data-bs-target="#modal-become-client" aria-label="Стать клиентом">Стать клиентом</button>
