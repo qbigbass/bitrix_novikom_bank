@@ -41,7 +41,7 @@ async function initFormSend() {
     forms.forEach(form => {
         const validateGroup = form.querySelectorAll(FORM_ELEMS.validateGroup)
         const modalEl = form.closest('.modal')
-        const modalId = modalEl.getAttribute('id')
+        const modalId = modalEl?.getAttribute('id')
         const customEvent = new CustomEvent('openFormModal', {
             bubbles: true,
         })
@@ -58,7 +58,7 @@ async function initFormSend() {
             handleFormSubmit(event, modalId)
         })
 
-        modalEl.addEventListener('show.bs.modal', (event) => {
+        modalEl?.addEventListener('show.bs.modal', (event) => {
             modalEl.dispatchEvent(customEvent)
         })
     })
@@ -97,7 +97,7 @@ async function handleFormSubmit(event, modalId) {
         const data = await response.json()
 
         if (data.status === 'success') {
-            modalInstance.hide()
+            modalInstance?.hide()
             onSuccess(event.target)
         } else {
             const messagesBox = event.target.querySelector(MESSAGE_ELEMS.messageBox)
@@ -107,7 +107,7 @@ async function handleFormSubmit(event, modalId) {
         }
     } catch (error) {
         console.error('Error:', error)
-        modalInstance.hide()
+        modalInstance?.hide()
         onError(event.target, modalId)
     }
 }
@@ -151,9 +151,11 @@ function onError(form, modalId) {
     titleEl.innerHTML = titleContent
     infoEl.innerHTML = infoContent
 
-    btnEL.removeAttribute('data-bs-dismiss')
-    btnEL.setAttribute('data-bs-toggle', 'modal')
-    btnEL.setAttribute('data-bs-target', `#${modalId}`)
+    if (modalId) {
+        btnEL.removeAttribute('data-bs-dismiss')
+        btnEL.setAttribute('data-bs-toggle', 'modal')
+        btnEL.setAttribute('data-bs-target', `#${modalId}`)
+    }
 
     modalBsError.show()
     resetStep(form)
@@ -217,6 +219,7 @@ function checkValidity(form) {
             checkInputValidity(inputElement)
             toggleInputError(inputElement)
             checkEmptyRequiredInput(inputElement)
+            toggleButton(inputList, checkboxElement, buttonElement, formErrorElement)
         })
         inputElement.addEventListener('focus', () => {
             toggleErrorSpan(inputElement)
