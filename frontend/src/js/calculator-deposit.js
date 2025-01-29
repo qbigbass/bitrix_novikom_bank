@@ -216,7 +216,7 @@ function handlerInputReplenishmentSum(input, STATE) {
 
     const newItem = {
         id,
-        amountItem: input.value,
+        amountItem: Number(input.value.replace(/\s+/g, '')), // Удаляем все пробелы,
         date: inputDate.value
     }
     // Находим индекс объекта с нужным id
@@ -300,13 +300,18 @@ function addReplenishment({buttonAddReplenishment, replenishmentBlock}, STATE) {
         wrapper.remove();
         removeReplenishment(id, STATE);
     });
+
     initDatepicker([inputDate]);
+
     inputSum.addEventListener('input', () => {
+        inputSum.value = formatNumberWithSpaces(inputSum.value.replace(/[^0-9]/g, ''));
         handlerInputReplenishmentSum(inputSum, STATE);
     });
-    inputDate.addEventListener('hide', () => {
+
+    inputDate.addEventListener('select', () => {
         handlerInputReplenishmentSum(inputSum, STATE);
-    });
+    })
+
 }
 
 const initReplenishment = (root, STATE) => {
@@ -342,10 +347,11 @@ const initReplenishment = (root, STATE) => {
     })
 
     inputReplenishmentSum.addEventListener('input', () => {
+        inputReplenishmentSum.value = formatNumberWithSpaces(inputReplenishmentSum.value.replace(/[^0-9]/g, ''));
         handlerInputReplenishmentSum(inputReplenishmentSum, STATE);
     });
 
-    inputReplenishmentDate.addEventListener('hide', () => {
+    inputReplenishmentDate.addEventListener('select', (event) => {
         handlerInputReplenishmentSum(inputReplenishmentSum, STATE);
     });
 }
@@ -492,7 +498,6 @@ const setDepositValues = (STATE, currencyTrigger) => {
 
     // поиск процентной ставки
     STATE.rate = findDepositRate({data: STATE.filteredData, amount: STATE.amount, period: STATE.period});
-    console.log('STATE.period', STATE.period);
 
     // расчеты дохода
     STATE.income = calculateDepositIncome(STATE);

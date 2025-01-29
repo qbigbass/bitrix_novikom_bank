@@ -1,6 +1,6 @@
 include ../../cards/card-product
 
-mixin slider-card-fraud(data, perView = 'mobile-s:1,mobile:1', spaceBetween = 'mobile-s:8,mobile:8', breakpointDestroy = 'tablet')
+mixin slider-card-fraud(data, perView = 'mobile-s:1,mobile:1,tablet:2,tablet-album:2,laptop:2', spaceBetween = 'mobile-s:8,mobile:8,tablet:16,tablet-album:16,laptop:16', breakpointDestroy = 'laptop-x')
     .swiper.slider-cards.js-slider-cards(data-slides-per-view= perView, data-space-between= spaceBetween data-slider-breakpoint-destroy= breakpointDestroy)
         .swiper-wrapper.js-swiper-wrapper.cards-gutter
             each item in data

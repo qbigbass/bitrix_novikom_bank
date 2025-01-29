@@ -101,22 +101,25 @@ if (!empty($arResult['SECTIONS_FRAUD_PROTECTION'])) {
             <section class="section-layout">
                 <div class="container">
                     <h3 class="mb-6 mb-lg-7 px-lg-6"><?= $section['NAME'] ?></h3>
-                    <div class="swiper slider-cards js-slider-cards" data-slides-per-view="mobile-s:1,mobile:1" data-space-between="mobile-s:8,mobile:8" data-slider-breakpoint-destroy="tablet">
+                    <div class="swiper slider-cards js-slider-cards" data-slides-per-view="mobile-s:1,mobile:1,tablet:2,tablet-album:2,laptop:2" data-space-between="mobile-s:8,mobile:8,tablet:16,tablet-album:16,laptop:16" data-slider-breakpoint-destroy="laptop-x">
                         <div class="swiper-wrapper js-swiper-wrapper cards-gutter"><?
                             foreach ($section['ITEMS'] as $item) {?>
                                 <div class="swiper-slide js-swiper-slide col-md-6 col-xl-4">
-                                    <div class="card-benefit d-inline-flex px-3 px-sm-5 px-lg-6 p-4 p-sm-5 p-lg-6 w-100 bg-dark-10 card-benefit--type-img">
+                                    <a href class="card-benefit d-inline-flex px-3 px-sm-5 px-lg-6 p-4 p-sm-5 p-lg-6 w-100 bg-dark-10 card-benefit--type-img">
                                         <div class="card-benefit__inner d-flex flex-column gap-6 gap-lg-7 justify-content-between h-100 w-100">
                                             <div class="card-benefit__content d-flex flex-column gap-4"><img class="card-benefit__image" src="<?= $item['ICON'] ?>" alt="<?= $item['NAME'] ?>" loading="lazy">
                                                 <h4 class="card-benefit__title"><?= $item['NAME'] ?></h4>
                                             </div>
-                                            <div class="card-benefit__read-more d-flex align-items-end justify-content-between"><a class="text-m btn btn-link btn-lg d-inline-flex gap-2 align-items-center" href><span class="fw-bold">Подробнее</span>
+                                            <div class="card-benefit__read-more d-flex align-items-end justify-content-between">
+                                                <span class="text-m btn btn-link btn-lg d-inline-flex gap-2 align-items-center">
+                                                    <span class="fw-bold">Подробнее</span>
                                                     <svg class="icon size-s" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                                                         <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right-small"></use>
-                                                    </svg></a>
+                                                    </svg>
+                                                </span>
                                             </div>
                                         </div>
-                                    </div>
+                                    </a>
                                 </div><?
                             }?>
                         </div>
