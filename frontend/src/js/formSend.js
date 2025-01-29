@@ -10,9 +10,12 @@ const FORM_ELEMS = {
     uploadFile: '[data-upload-file]',
     inputCall: '[data-input-call]',
     simpleCallbackForm: '[data-simple-callback-form]',
-    pbSelectDate: '.js-select-date',
-    pbInputHours: 'input[id="hours"]',
-    pbInputMinutes: 'input[id="minutes"]',
+}
+
+const PB_FORM_ELEMS = {
+    selectDate: '.js-select-date',
+    inputHours: 'input[id="hours"]',
+    inputMinutes: 'input[id="minutes"]',
 }
 
 const MODALS_ID = {
@@ -28,10 +31,13 @@ const MESSAGE_ELEMS = {
     titleError: '.js-error-title',
     infoError: '.js-error-info',
     btnError: '.js-error-btn',
-    pbTitleResponse: '.js-title',
-    pbInfoResponse: '.js-info',
-    pbInfoDate: '.js-info-date',
-    pbBtn: '.js-btn'
+}
+
+const PB_MESSAGE_ELEMS = {
+    titleResponse: '.js-title',
+    infoResponse: '.js-info',
+    infoDate: '.js-info-date',
+    btn: '.js-btn'
 }
 
 const MESSAGE_ATTR = {
@@ -172,15 +178,15 @@ function pbShowResponse(form, response) {
     const modalId = form.closest('.modal-pb')?.getAttribute('id')
     const modalResponseEl = document.getElementById(MODALS_ID.pbResponse)
     const modalBsResponse = new bootstrap.Modal(modalResponseEl)
-    const titleEl = modalResponseEl.querySelector(MESSAGE_ELEMS.pbTitleResponse)
-    const infoEl = modalResponseEl.querySelector(MESSAGE_ELEMS.pbInfoResponse)
-    const infoDateEl = modalResponseEl.querySelector(MESSAGE_ELEMS.pbInfoDate)
-    const btnEL = document.querySelector(MESSAGE_ELEMS.pbBtn)
+    const titleEl = modalResponseEl.querySelector(PB_MESSAGE_ELEMS.titleResponse)
+    const infoEl = modalResponseEl.querySelector(PB_MESSAGE_ELEMS.infoResponse)
+    const infoDateEl = modalResponseEl.querySelector(PB_MESSAGE_ELEMS.infoDate)
+    const btnEL = document.querySelector(PB_MESSAGE_ELEMS.btn)
 
-    const selectDate = form.querySelector(FORM_ELEMS.pbSelectDate)
+    const selectDate = form.querySelector(PB_FORM_ELEMS.selectDate)
     const date = selectDate.options[selectDate.selectedIndex].text
-    const hours = form.querySelector(FORM_ELEMS.pbInputHours).value
-    const minutes = form.querySelector(FORM_ELEMS.pbInputMinutes).value
+    const hours = form.querySelector(PB_FORM_ELEMS.inputHours).value
+    const minutes = form.querySelector(PB_FORM_ELEMS.inputMinutes).value
     const time = hours ? `, ${hours}:${minutes !== '' ? minutes : '00'}` : ''
 
     const messagesBox = form.querySelector(MESSAGE_ELEMS.messageBox)
