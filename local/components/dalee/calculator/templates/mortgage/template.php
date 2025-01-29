@@ -2,6 +2,7 @@
 <?
 /**
  * @global CMain $APPLICATION
+ * @var CBitrixComponent $component
  */
 ?>
 <div class="row js-calculator-mortgage" data-id="<?= $arParams['CALCULATOR_ELEMENT_ID'] ?? '' ?>" data-table="mortgage" data-expense-ratio="60">
@@ -215,5 +216,6 @@
     "mortgage_form",
     [
         "FORM_CODE" => "mortgage_form",
-    ]
+    ],
+    $component
 ); ?>

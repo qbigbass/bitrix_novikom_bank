@@ -132,7 +132,8 @@ $this->setFrameMode(true);?>
             "CACHE_TIME" => "36000000",
             "CACHE_TYPE" => "A",
             "CACHE_KEY" => "cards"
-        ]
+        ],
+        $component
     );
     ?>
 </section>

@@ -27,10 +27,14 @@ $headerView->render(
 );
 $context = Application::getInstance()->getContext();
 $request = $context->getRequest();
-$typeSelected = $request["arrQuestionFilter_pf"]["TYPE_Q"];
-$delFilter = $request["del_filter"];
+$delFilter = "";
 
-if ($delFilter) {
+if (!empty($request["arrQuestionFilter_pf"]["TYPE_Q"])) {
+    $typeSelected = $request["arrQuestionFilter_pf"]["TYPE_Q"];
+    $delFilter = $request["del_filter"];
+}
+
+if (!empty($delFilter)) {
     $typeSelected = 0;
 }
 ?>
@@ -78,7 +82,8 @@ if ($delFilter) {
                         "",
                         [
                             "PLACEHOLDER" => "Поиск по вопросам и ответам"
-                        ]
+                        ],
+                        $component
                     ); ?>
                 </div>
                 <div class="col-12">

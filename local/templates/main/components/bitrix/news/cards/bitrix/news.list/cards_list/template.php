@@ -76,5 +76,6 @@ $this->setFrameMode(true);
     "credit_card_form",
     [
         "FORM_CODE" => "credit_card_form",
-    ]
+    ],
+    $component
 ); ?>

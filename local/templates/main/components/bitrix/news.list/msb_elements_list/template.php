@@ -1037,7 +1037,8 @@ use Bitrix\Main\Localization\Loc;
                                                                 "",
                                                                 [
                                                                     "PLACEHOLDER" => "Поиск по регионам или названию фонда"
-                                                                ]
+                                                                ],
+                                                                $component
                                                             ); ?>
                                                         </div>
                                                         <div class="col-12">
