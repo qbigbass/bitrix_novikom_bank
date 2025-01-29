@@ -45,7 +45,7 @@ $arUrlRewrite = [
     [
         'CONDITION' => '#^/financial-institutions/#',
         'RULE' => '',
-        'ID' => 'bitrix:catalog',
+        'ID' => 'bitrix:news',
         'PATH' => '/financial-institutions/index.php',
         'SORT' => 100,
     ],
@@ -143,7 +143,7 @@ $arUrlRewrite = [
     [
         'CONDITION' => '#^/msb/#',
         'RULE' => '',
-        'ID' => 'bitrix:catalog',
+        'ID' => 'bitrix:news',
         'PATH' => '/msb/index.php',
         'SORT' => 100,
     ],
