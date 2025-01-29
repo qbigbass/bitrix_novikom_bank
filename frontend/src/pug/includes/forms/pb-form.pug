@@ -40,3 +40,11 @@ form(action="#" data-form).pb-form
         .pb-form__footer.d-flex.flex-column.align-items-center.justify-content-center.gap-5
             button(type="submit" data-form-button aria-disabled="true" disabled).btn.btn-pb.btn-pb--primary.w-100.w-md-auto Отправить
             div.text-m.orange-100.text-center(data-form-error)
+    div(
+        hidden
+        aria-hidden="true"
+        data-success-title="Заявка отправлена"
+        data-success-info="Ваша заявка отправлена, наш специалист свяжется с&nbsp;вами в&nbsp;выбранное время"
+        data-error-title="Не удалось отправить заявку"
+        data-error-info="Проверьте, правильно ли указаны все данные и отправьте заявку снова"
+    ).js-message

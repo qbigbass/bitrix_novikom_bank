@@ -10,11 +10,15 @@ const FORM_ELEMS = {
     uploadFile: '[data-upload-file]',
     inputCall: '[data-input-call]',
     simpleCallbackForm: '[data-simple-callback-form]',
+    pbSelectDate: '.js-select-date',
+    pbInputHours: 'input[id="hours"]',
+    pbInputMinutes: 'input[id="minutes"]',
 }
 
 const MODALS_ID = {
     success: 'modal-success',
     error: 'modal-error',
+    pbResponse: 'modal-pb-response'
 }
 
 const MESSAGE_ELEMS = {
@@ -23,7 +27,11 @@ const MESSAGE_ELEMS = {
     infoSuccess: '.js-success-info',
     titleError: '.js-error-title',
     infoError: '.js-error-info',
-    btnError: '.js-error-btn'
+    btnError: '.js-error-btn',
+    pbTitleResponse: '.js-title',
+    pbInfoResponse: '.js-info',
+    pbInfoDate: '.js-info-date',
+    pbBtn: '.js-btn'
 }
 
 const MESSAGE_ATTR = {
@@ -91,6 +99,7 @@ async function handleFormSubmit(event, modalId) {
     const method = event.target.method
     const formData = new FormData(event.target)
     const modalInstance = bootstrap.Modal.getInstance(document.getElementById(modalId))
+    const isPb = event.target.classList.contains('pb-form')
 
     try {
         const response = await sendData(action, method, formData)
@@ -98,7 +107,7 @@ async function handleFormSubmit(event, modalId) {
 
         if (data.status === 'success') {
             modalInstance?.hide()
-            onSuccess(event.target)
+            isPb ? pbShowResponse(event.target, 'success') : onSuccess(event.target)
         } else {
             const messagesBox = event.target.querySelector(MESSAGE_ELEMS.messageBox)
             const errorMessage = data.errors.map(item => item.message).join()
@@ -108,7 +117,7 @@ async function handleFormSubmit(event, modalId) {
     } catch (error) {
         console.error('Error:', error)
         modalInstance?.hide()
-        onError(event.target, modalId)
+        isPb ? pbShowResponse(event.target, 'error') : onError(event.target, modalId)
     }
 }
 
@@ -151,14 +160,58 @@ function onError(form, modalId) {
     titleEl.innerHTML = titleContent
     infoEl.innerHTML = infoContent
 
-    if (modalId) {
-        btnEL.removeAttribute('data-bs-dismiss')
-        btnEL.setAttribute('data-bs-toggle', 'modal')
-        btnEL.setAttribute('data-bs-target', `#${modalId}`)
-    }
+    btnEL.removeAttribute('data-bs-dismiss')
+    btnEL.setAttribute('data-bs-toggle', 'modal')
+    btnEL.setAttribute('data-bs-target', `#${modalId}`)
 
     modalBsError.show()
     resetStep(form)
+}
+
+function pbShowResponse(form, response) {
+    const modalId = form.closest('.modal-pb')?.getAttribute('id')
+    const modalResponseEl = document.getElementById(MODALS_ID.pbResponse)
+    const modalBsResponse = new bootstrap.Modal(modalResponseEl)
+    const titleEl = modalResponseEl.querySelector(MESSAGE_ELEMS.pbTitleResponse)
+    const infoEl = modalResponseEl.querySelector(MESSAGE_ELEMS.pbInfoResponse)
+    const infoDateEl = modalResponseEl.querySelector(MESSAGE_ELEMS.pbInfoDate)
+    const btnEL = document.querySelector(MESSAGE_ELEMS.pbBtn)
+
+    const selectDate = form.querySelector(FORM_ELEMS.pbSelectDate)
+    const date = selectDate.options[selectDate.selectedIndex].text
+    const hours = form.querySelector(FORM_ELEMS.pbInputHours).value
+    const minutes = form.querySelector(FORM_ELEMS.pbInputMinutes).value
+    const time = hours ? `, ${hours}:${minutes !== '' ? minutes : '00'}` : ''
+
+    const messagesBox = form.querySelector(MESSAGE_ELEMS.messageBox)
+    let titleContent = ''
+    let infoContent = ''
+    let infoDateContent = ''
+
+    if (response === 'success') {
+        titleContent = messagesBox.getAttribute(MESSAGE_ATTR.titleSuccessContent)
+        infoContent = messagesBox.getAttribute(MESSAGE_ATTR.infoSuccessContent)
+        infoDateContent = `${date}${time}`
+
+        btnEL.setAttribute('data-bs-dismiss', 'modal')
+        btnEL.removeAttribute('data-bs-toggle')
+        btnEL.removeAttribute('data-bs-target')
+        resetForm(form)
+    } else {
+        titleContent = messagesBox.getAttribute(MESSAGE_ATTR.titleErrorContent)
+        infoContent = messagesBox.getAttribute(MESSAGE_ATTR.infoErrorContent)
+        infoDateContent = ''
+
+        btnEL.removeAttribute('data-bs-dismiss')
+        btnEL.setAttribute('data-bs-toggle', 'modal')
+        if (modalId) btnEL.setAttribute('data-bs-target', `#${modalId}`)
+    }
+
+    titleEl.innerHTML = titleContent
+    infoEl.innerHTML = infoContent
+    infoDateEl.innerHTML = infoDateContent
+
+    modalBsResponse.show()
 }
 
 function resetForm(form) {
