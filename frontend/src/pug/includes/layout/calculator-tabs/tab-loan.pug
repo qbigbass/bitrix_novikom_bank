@@ -62,15 +62,6 @@ include ../../../components/ui/input/input-slider
 
 .row.js-calculator-loan(data-table="loans" data-id)
     .col-12.col-lg-6
-        // TODO: пока закоментирован не понятно нужен ли этот функционал, т.к. дублируется ниже
-        //.d-none.d-lg-inline-flex
-        //    +nav-tabs(tabsList)
-        //
-        //.d-lg-none
-        //    select.form-select.form-select--size-small.js-select.js-select-loan-type
-        //        option(selected value="loan") Потребительский кредит
-        //        option(value="refinance") Рефинансирование
-        //.pt-4.pt-md-6.pt-lg-7.pe-xl-6
         .d-flex.flex-column.row-gap-4.row-gap-md-6.row-gap-lg-7
             each input in inputSliderList
                 +input-slider(input)

@@ -14,6 +14,8 @@ const ELEMS_DEPOSIT = {
     currencyList: '.js-tabs-currency',
     currencyButton: '.nav-link',
     inputCapitalization: '.js-input-deposit-capitalization',
+    selectName: '.js-select-deposit-name',
+    selectNameWrapper: '.js-select-name-wrapper',
 }
 
 const CLASSES_DEPOSIT = {
@@ -95,7 +97,6 @@ function createCurrencyTab(currency, STATE) {
 function createCurrencyList(STATE) {
     const tabs = STATE.elements.currencyList.querySelectorAll(ELEMS_DEPOSIT.currencyButton);
     if (tabs.length) return false;
-
     const uniqueCurrencies = [];
     STATE.calculatorData.forEach(item => {
         if (!uniqueCurrencies.includes(item.currency)) {
@@ -356,6 +357,13 @@ const initReplenishment = (root, STATE) => {
     });
 }
 
+function collectOptionsName(dataArray) {
+    return dataArray
+        .map(item => item.name) // Извлекаем значения name
+        .filter(region => region !== null) // Удаляем null значения
+        .filter((value, index, self) => self.indexOf(value) === index) // Удаляем дубликаты
+}
+
 const initElementsDepositCalculator = (root) => {
     const displayPeriod = root.querySelector(ELEMS_DEPOSIT.period);
     const displayRate = root.querySelector(ELEMS_DEPOSIT.rate);
@@ -366,6 +374,7 @@ const initElementsDepositCalculator = (root) => {
     const inputAmountWrapper = inputAmount.closest(ELEMS_DEPOSIT.inputSlider);
     const currencyList = root.querySelector(ELEMS_DEPOSIT.currencyList);
     const inputCapitalization = root.querySelector(ELEMS_DEPOSIT.inputCapitalization);
+    const selectName = root.querySelector(ELEMS_DEPOSIT.selectName);
 
     return {
         root,
@@ -378,25 +387,40 @@ const initElementsDepositCalculator = (root) => {
         inputAmountWrapper,
         currencyList,
         inputCapitalization,
+        selectName
     }
 }
 
 function initStateDepositCalculator(calculator) {
     return getRates(calculator.dataset)
-        .then(calculatorData => {
+        .then(depositData => {
 
             // обработка поля sumFrom, когда значение не задано
-            calculatorData.forEach((elem) => {
+            depositData.forEach((elem) => {
                 if (elem.sumFrom === "не ограничен") {
                     elem.sumFrom = MIN_DEPOSIT_VALUE;
                 }
             })
-
+            let calculatorData = depositData;
             const elements = initElementsDepositCalculator(calculator);
+            const depositNameOptions = collectOptionsName(calculatorData);
+            if (depositNameOptions.length > 1) {
+                depositNameOptions.forEach(item => {
+                    const option = document.createElement('option');
+                    option.value = item;
+                    option.textContent = item;
+                    elements.selectName.appendChild(option);
+                });
+                calculatorData = calculatorData.filter(item => item.name === depositNameOptions[0]);
+            } else {
+                const selectNameWrapper = elements.selectName.closest(ELEMS_DEPOSIT.selectNameWrapper);
+                selectNameWrapper.remove();
+            }
 
             return {
                 elements,
-                calculatorData
+                calculatorData,
+                depositData
             }
         })
         .catch(error => {
@@ -434,7 +458,6 @@ const getStepsPeriod = (data) => {
 
 const getDepositValues = (STATE) => {
     STATE.showCurrency = isShowCurrency(STATE.calculatorData);
-
     if (!STATE.currency) {
         STATE.currency = "Рубли";
     }
@@ -490,7 +513,7 @@ const setDepositValues = (STATE, currencyTrigger) => {
     STATE.elements.inputAmountWrapper.setAttribute('data-start-value', STATE.amount);
     // показываем или нет валюту
     if (!STATE.showCurrency) {
-        STATE.elements.currencyList.remove();
+        STATE.elements.currencyList.innerHTML = '';
     } else {
         createCurrencyList(STATE);
     }
@@ -519,6 +542,14 @@ const setDepositValues = (STATE, currencyTrigger) => {
         STATE.capitalization = event.target.checked;
         handlerInputDeposit(STATE);
     })
+
+    $(STATE.elements.selectName).on('select2:select', function (event) {
+        STATE.name = event.target.value;
+        STATE.calculatorData = STATE.depositData.filter(item => item.name === STATE.name);
+        STATE.currency = "";
+        getDepositValues(STATE);
+        setDepositValues(STATE, true);
+    });
 }
 
 function initCalculatorDeposit() {
