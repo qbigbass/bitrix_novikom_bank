@@ -22,7 +22,7 @@
                                 </div><span class="d-block">Бесплатных <br class="d-none d-md-block">платежей</span>
                             </div>
                         </div>
-                        <div class="d-flex flex-column flex-md-row align-items-md-center gap-3 gap-md-6"><a class="btn btn-lg-lg btn-yellow btn-info w-100 w-md-auto" href="#">Открыть счет</a><a class="btn btn-link btn-lg-lg btn-icon text-info m-auto m-md-0" href="#">Подробнее
+                        <div class="d-flex flex-column flex-md-row align-items-md-center gap-3 gap-md-6"><a class="btn btn-lg-lg btn-yellow btn-info w-100 w-md-auto" href="https://lk.novikom.ru/">Открыть счет</a><a class="btn btn-link btn-lg-lg btn-icon text-info m-auto m-md-0" href="/msb/raschetnyy-schet/">Подробнее
                                 <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                                     <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
                                 </svg></a>

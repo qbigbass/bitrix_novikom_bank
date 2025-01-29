@@ -12,22 +12,27 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 ?>
-<img class="banner-hero__bg" src="/frontend/dist/img/slides/hero_banner_bg_desktop.png" alt="">
-
-<div class="banner-hero__container swiper js-banner-hero">
+<div class="banner-hero__container swiper js-banner-hero" data-autoplay-delay="<?= \COption::GetOptionString( "novikom.settings", "UF_BANNER_DELAY")?>">
     <div class="swiper-wrapper">
         <?foreach ($arResult['ITEMS'] as $item) {?>
             <div class="swiper-slide">
-                <div class="banner-hero-content row">
-                    <div class="col-12 col-md-6 col-lg-9 col-xl-8 col-xxl-6 d-flex flex-column gap-3 gap-md-4 gap-xxl-6 align-items-md-start">
+                <div class="banner-hero-content row gx-0">
+                    <div class="col-12 col-md-6 col-lg-9 col-xl-8 col-xxl-7 d-flex flex-column gap-3 gap-md-4 gap-xxl-6 align-items-md-start">
                         <div class="banner-hero-content__wrapper">
-                            <h2 class="banner-hero-content__title"><?=$item['NAME']?></h2>
+                            <h1 class="banner-hero-content__title"><?=$item['NAME']?></h1>
                             <p class="text-l mb-0"><?=$item['PROPERTIES']['TEXT']['~VALUE']?></p>
                             <a class="btn btn-secondary btn-lg-lg d-inline-block" href="<?=$item['PROPERTIES']['BUTTON_LINK']['~VALUE']?>">
                                 <?=$item['PROPERTIES']['BUTTON_TEXT']['~VALUE']?>
                             </a>
                         </div>
                     </div>
+                    <? if (!empty($item["PREVIEW_PICTURE"]["SRC"])) : ?>
+                        <img class="banner-hero-content__bg" src="<?= $item["PREVIEW_PICTURE"]["SRC"] ?>" alt="">
+                    <? elseif ($item["DISPLAY_PROPERTIES"]["FILE_VIDEO"]["FILE_VALUE"]["SRC"]) : ?>
+                        <video class="banner-hero-content__bg" autoplay="" loop="" muted="" poster="">
+                            <source src="<?= $item["DISPLAY_PROPERTIES"]["FILE_VIDEO"]["FILE_VALUE"]["SRC"] ?>" type="video/mp4">
+                        </video>
+                    <? endif; ?>
                 </div>
             </div>
         <?}?>

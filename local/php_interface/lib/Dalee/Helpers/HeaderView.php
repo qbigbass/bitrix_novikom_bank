@@ -81,6 +81,7 @@ class HeaderView
             'showButton' => $arResult['PROPERTIES']['BUTTON_DETAIL']['VALUE'] ?? false,
             'buttonText' => $arResult['PROPERTIES']['BUTTON_TEXT_DETAIL']['VALUE'] ?? '',
             'buttonHref' => $arResult['PROPERTIES']['BUTTON_HREF_DETAIL']['VALUE'] ?? '',
+            'buttonCodeForm' => $arResult['PROPERTIES']['BUTTON_CODE_FORM']['VALUE'] ?? '',
         ];
 
         return $result;
@@ -162,9 +163,19 @@ class HeaderView
 
                     <? if ($headerData['showButton'] && !empty($headerData['buttonHref'])) { ?>
                         <a class="btn <?= in_array('banner-product--type-corp', $headerData['additionalClasses']) ? 'btn-orange' : 'btn-tertiary' ?> btn-lg-lg banner-product__button"
-                           href="<?= $headerData['buttonHref'] ?>">
+                           href="<?= $headerData['buttonHref'] ?>"
+                        >
                             <?= $headerData['buttonText'] ?>
                         </a>
+                    <? } elseif ($headerData['showButton'] && !empty($headerData['buttonCodeForm'])) { ?>
+                        <button
+                            class="btn <?= in_array('banner-product--type-corp', $headerData['additionalClasses']) ? 'btn-orange' : 'btn-tertiary' ?> btn-lg-lg banner-product__button"
+                            type="button"
+                            data-bs-toggle="modal"
+                            data-bs-target="#<?= $headerData['buttonCodeForm'] ?>"
+                        >
+                            <?= $headerData['buttonText'] ?>
+                        </button>
                     <? } ?>
                 </div>
 

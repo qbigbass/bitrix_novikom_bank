@@ -20,9 +20,11 @@ $this->setFrameMode(true); ?>
                  alt="<?= $arItem['PREVIEW_PICTURE']['ALT'] ?>" loading="lazy">
             <? endif; ?>
             <div class="benefit__content d-flex flex-column gap-3">
-                <h4 class="benefit__title"><?= $arItem['~NAME'] ?></h4>
                 <? if (!empty($arItem['~PREVIEW_TEXT'])) : ?>
+                    <h4 class="benefit__title"><?= $arItem['~NAME'] ?></h4>
                     <div class="benefit__description w-100 text-m>"><?= $arItem['~PREVIEW_TEXT'] ?></div>
+                <? else: ?>
+                    <div class="benefit__description w-100 text-m>"><?= $arItem['~NAME'] ?></div>
                 <? endif; ?>
             </div>
         </div>

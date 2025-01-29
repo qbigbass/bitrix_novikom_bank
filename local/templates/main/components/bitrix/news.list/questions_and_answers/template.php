@@ -21,7 +21,14 @@ foreach ($arResult['ITEMS'] as $key => $item) {
         <div class="accordion" id="accordion-qa">
             <div class="accordion-item">
                 <div class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#<?= $item['ID'] ?>" aria-controls="<?= $item['ID'] ?>">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#<?= $item['ID'] ?>"
+                        aria-controls="<?= $item['ID'] ?>"
+                        data-item-name="<?= $item['NAME'] ?>"
+                    >
                         <?= $item['NAME'] ?>
                     </button>
                 </div>
