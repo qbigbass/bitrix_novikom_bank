@@ -192,19 +192,19 @@ function pbShowResponse(form, response) {
         titleContent = messagesBox.getAttribute(MESSAGE_ATTR.titleSuccessContent)
         infoContent = messagesBox.getAttribute(MESSAGE_ATTR.infoSuccessContent)
         infoDateContent = `${date}${time}`
-
-        btnEL.setAttribute('data-bs-dismiss', 'modal')
-        btnEL.removeAttribute('data-bs-toggle')
-        btnEL.removeAttribute('data-bs-target')
         resetForm(form)
     } else {
         titleContent = messagesBox.getAttribute(MESSAGE_ATTR.titleErrorContent)
         infoContent = messagesBox.getAttribute(MESSAGE_ATTR.infoErrorContent)
         infoDateContent = ''
+    }
 
+    if (modalId) {
         btnEL.removeAttribute('data-bs-dismiss')
         btnEL.setAttribute('data-bs-toggle', 'modal')
-        if (modalId) btnEL.setAttribute('data-bs-target', `#${modalId}`)
+        btnEL.setAttribute('data-bs-target', `#${modalId}`)
+    } else {
+        btnEL.setAttribute('data-bs-dismiss', 'modal')
     }
 
     titleEl.innerHTML = titleContent
@@ -222,6 +222,7 @@ function resetForm(form) {
 
     buttons.forEach(button => {
         button.disabled = true
+        button.setAttribute('aria-disabled', 'true')
     })
 
     if (uploadEl) {
