@@ -5,6 +5,13 @@
         <div class="col-12 col-lg-6">
             <div class="pe-xl-6">
                 <div class="d-flex flex-column row-gap-4 row-gap-md-6 row-gap-lg-7">
+                    <div class="d-flex flex-column row-gap-2 js-select-name-wrapper">
+                        <label class="form-label mb-0"
+                               for="select-deposit-name">Выберите вклад</label>
+                        <select class="form-select js-select js-select-deposit-name"
+                                id="select-deposit-name" aria-label="Подсказка">
+                        </select>
+                    </div>
                     <div
                         class="d-flex flex-column flex-md-row-reverse align-items-md-center gap-3 js-input-slider-wrapper">
                         <ul class="nav nav-tabs nav-tabs--type-currency js-tabs-currency"></ul>

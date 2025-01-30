@@ -28,6 +28,24 @@ $color-white-30: rgba(#fff, .3);
     &::placeholder {
       color: $color-white-30;
     }
+
+    & + .invalid-feedback {
+      color: var(--alert-pb);
+
+      @include use-media(tablet) {
+        position: absolute;
+        bottom: -1.5rem;
+      }
+    }
+
+    &.is-invalid {
+      border-color: var(--alert-pb);
+      padding-right: $padding-mobile;
+
+      @include use-media(tablet-album) {
+        padding-right: $padding-desktop;
+      }
+    }
   }
 }
 
@@ -43,15 +61,13 @@ $color-white-30: rgba(#fff, .3);
 .form-control-time {
   display: flex;
   gap: 1.25rem;
-  height: 100%;
-  align-items: flex-end;
   position: relative;
 
   &:before {
     content: ':';
     position: absolute;
     left: calc(50% - 2px);
-    bottom: .75rem;
+    top: .75rem;
     color: $color-white-30;
 
     @include use-media(tablet-album) {
@@ -60,7 +76,13 @@ $color-white-30: rgba(#fff, .3);
   }
 
   & > * {
-    flex-grow: 1;
+    flex: 1;
+  }
+
+  .invalid-feedback {
+    @include use-media(tablet) {
+      position: static;
+    }
   }
 }
 
@@ -78,7 +100,7 @@ $color-white-30: rgba(#fff, .3);
     & .form-check-input {
       border-radius: .25rem;
       background-color: transparent;
-      border: 1px solid $color-white-30;
+      border-color: $color-white-30;
 
       @include use-media(tablet-album) {
         width: 1.5rem;
@@ -88,6 +110,18 @@ $color-white-30: rgba(#fff, .3);
       &:checked[type=checkbox] {
         --bs-form-check-bg-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='12' viewBox='0 0 16 12' fill='none'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M0.292969 6.85367L1.70718 5.43945L6.00008 8.73235L14.293 0.439453L15.7072 1.85367L6.00008 11.5608L0.292969 6.85367Z' fill='%23B0B7FE'/%3E%3C/svg%3E");
       }
+
+      &.is-invalid {
+        border-color: var(--alert-pb);
+
+        & ~ .form-check-label {
+          color: var(--pb-text-color);
+        }
+      }
+    }
+
+    & .invalid-feedback {
+      color: var(--alert-pb);
     }
 
     &:hover {
@@ -180,7 +214,7 @@ $color-white-30: rgba(#fff, .3);
 
           &__arrow {
             top: calc(50% - .75rem) !important;
-            right: .75remrem !important;
+            right: .75 remrem !important;
             width: 1.5rem !important;
             height: 1.5rem !important;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M3.29297 8.70718L4.70718 7.29297L12.0001 14.5859L19.293 7.29297L20.7072 8.70718L12.0001 17.4143L3.29297 8.70718Z' fill='%23B0B7FE'/%3E%3C/svg%3E");

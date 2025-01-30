@@ -47,7 +47,7 @@ $APPLICATION->SetTitle('Частным клиентам - Главная НОВ�
             "PARENT_SECTION" => "",
             "PARENT_SECTION_CODE" => "",
             "PREVIEW_TRUNCATE_LEN" => "",
-            "PROPERTY_CODE" => array("BUTTON_LINK", "BUTTON_TEXT", "TEXT", ""),
+            "PROPERTY_CODE" => array("BUTTON_LINK", "BUTTON_TEXT", "TEXT", "", "FILE_VIDEO"),
             "SET_BROWSER_TITLE" => "N",
             "SET_LAST_MODIFIED" => "N",
             "SET_META_DESCRIPTION" => "N",
@@ -55,9 +55,9 @@ $APPLICATION->SetTitle('Частным клиентам - Главная НОВ�
             "SET_STATUS_404" => "N",
             "SET_TITLE" => "N",
             "SHOW_404" => "N",
-            "SORT_BY1" => "ACTIVE_FROM",
-            "SORT_BY2" => "SORT",
-            "SORT_ORDER1" => "DESC",
+            "SORT_BY1" => "SORT",
+            "SORT_BY2" => "ID",
+            "SORT_ORDER1" => "ASC",
             "SORT_ORDER2" => "ASC",
             "STRICT_SECTION_CHECK" => "N"
         )
@@ -75,7 +75,7 @@ $APPLICATION->SetTitle('Частным клиентам - Главная НОВ�
                      data-space-between="mobile-s:8,mobile:8,tablet:8,laptop:8,laptop-x:8">
                     <div class="swiper-wrapper js-swiper-wrapper">
                         <div class="swiper-slide js-swiper-slide">
-                            <a class="card-service" href="#">
+                            <a class="card-service" href="/services/internet-bank-i-mobilnoe-prilozhenie/">
                                 <div class="card-service__content d-flex flex-column">
                                     <h4 class="dark-100">Интернет-банк</h4>
                                     <span class="icon card-service__icon">
@@ -316,13 +316,13 @@ $APPLICATION->SetTitle('Частным клиентам - Главная НОВ�
                 false,
                 ["HIDE_ICONS" => "Y"]
             ); ?>
-            <div class="col-12 col-xxl-6 mt-6 mt-xxl-0"><a class="card-link h3 d-lg-none" href="#">О банке
+            <div class="col-12 col-xxl-6 mt-6 mt-xxl-0"><a class="card-link h3 d-lg-none" href="/about/">О банке
                     <svg class="icon size-m blue-100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                         <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
                     </svg>
                 </a>
                 <div class="card-about-bank d-none d-lg-flex">
-                    <div class="card-about-bank__col d-flex flex-column gap-6"><a class="h3" href="#">О банке
+                    <div class="card-about-bank__col d-flex flex-column gap-6"><a class="h3" href="/about/">О банке
                             <svg class="icon size-m blue-100" xmlns="http://www.w3.org/2000/svg" width="100%"
                                  height="100%">
                                 <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
@@ -363,7 +363,7 @@ $APPLICATION->SetTitle('Частным клиентам - Главная НОВ�
 <section class="section-layout pt-0">
     <div class="container">
         <div class="d-flex align-items-end ps-lg-6 mb-4 mb-md-6 mb-lg-7">
-            <h3>Новости</h3><a class="violet-100 d-flex align-items-center gap-2 ms-auto" href="#"><span
+            <h3>Новости</h3><a class="violet-100 d-flex align-items-center gap-2 ms-auto" href="/about/press-center/"><span
                     class="d-none d-md-inline text-s fw-semibold">Пресс-центр</span>
                 <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                     <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>

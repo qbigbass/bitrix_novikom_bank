@@ -62,15 +62,6 @@ include ../../../components/ui/input/input-slider
 
 .row.js-calculator-loan(data-table="loans" data-id)
     .col-12.col-lg-6
-        // TODO: пока закоментирован не понятно нужен ли этот функционал, т.к. дублируется ниже
-        //.d-none.d-lg-inline-flex
-        //    +nav-tabs(tabsList)
-        //
-        //.d-lg-none
-        //    select.form-select.form-select--size-small.js-select.js-select-loan-type
-        //        option(selected value="loan") Потребительский кредит
-        //        option(value="refinance") Рефинансирование
-        //.pt-4.pt-md-6.pt-lg-7.pe-xl-6
         .d-flex.flex-column.row-gap-4.row-gap-md-6.row-gap-lg-7
             each input in inputSliderList
                 +input-slider(input)
@@ -79,12 +70,8 @@ include ../../../components/ui/input/input-slider
                 .form-check
                     input#inp-loan-card(type="checkbox" value="" checked).form-check-input.js-inp-loan-card
                     label(for="inp-loan-card").form-check-label
-                        a(href="#" tabindex="0") Получаю зарплату на&nbsp;карту Новиком
+                        span(tabindex="0" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="hint" data-bs-title="Таким образом дальнейшее развитие различных форм деятельности влечет за собой процесс внедрения и модернизации модели развития. Не следует, однако забывать, что постоянный количественный рост и сфера нашей активности представляет собой интересный эксперимент проверки форм развития. Повседневная практика показывает, что консультация с широким активом влечет за собой процесс внедрения и модернизации форм развития. Значимость этих проблем настолько очевидна, что постоянное информационно-пропагандистское обеспечение нашей деятельности позволяет оценить значение соответствующий условий активизации. Разнообразный и богатый опыт новая модель организационной деятельности позволяет оценить значение соответствующий условий активизации.").link.link-underline Получаю зарплату на&nbsp;карту Новиком
 
-                .form-check
-                    input#inp-loan-insurance(type="checkbox" value="").form-check-input.js-loan-insurance
-                    label(for="inp-loan-insurance" tabindex="0").form-check-label
-                        | Страхование
                 .d-flex.flex-column.row-gap-4.row-gap-lg-6
                     .d-flex.flex-column.row-gap-2
                         label(for="select-loan-properties").form-label.mb-0

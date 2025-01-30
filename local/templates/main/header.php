@@ -136,23 +136,24 @@ $asset->addJs('/frontend/dist/js/accessibility-panel.js');
                             </a>
                         </div>
                         <div class="d-flex column-gap-md-3 column-gap-lg-4 column-gap-xxl-3">
-                            <button
+                            <a
                                 class="btn btn-outline-primary btn-sm d-none d-md-inline-flex gap-2 align-items-center justify-content-center"
-                                type="button">
+                                type="button" href="/upload/android-v19.apk">
                                 <svg class="icon size-s" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                                     <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-download-small"></use>
                                 </svg>
                                 <?= Loc::getMessage('DOWNLOAD_MOBIL_APP_BUTTON_TITLE') ?>
-                            </button>
+                            </a>
                             <div class="dropdown">
                                 <button class="btn btn-sm btn-primary dropdown-toggle" type="button"
                                         data-bs-toggle="dropdown"
-                                        aria-expanded="false"><?= Loc::getMessage('ONLINE_BUNK_BUTTON_TITLE') ?></button>
+                                        aria-expanded="false"
+                                ><?= Loc::getMessage('ONLINE_BUNK_BUTTON_TITLE') ?></button>
                                 <ul class="dropdown-menu dropdown-menu-end">
                                     <li><a class="dropdown-item fw-bold"
-                                           href="#"><?= Loc::getMessage('FOR_PRIVATE_CLIENTS_BUTTON_TITLE') ?></a></li>
+                                           href="https://online.novikom.ru/"><?= Loc::getMessage('FOR_PRIVATE_CLIENTS_BUTTON_TITLE') ?></a></li>
                                     <li><a class="dropdown-item fw-bold"
-                                           href="#"><?= Loc::getMessage('FOR_ORGANIZATIONS_BUTTON_TITLE') ?></a></li>
+                                           href="https://bk.novikom.ru/"><?= Loc::getMessage('FOR_ORGANIZATIONS_BUTTON_TITLE') ?></a></li>
                                 </ul>
                             </div>
                         </div>

@@ -57,7 +57,12 @@ function findActiveCurrency(elem) {
 
     const currencyList = wrapper?.querySelector(ELEMS_DEPOSIT.currencyList);
     if (currencyList) {
-        activeCurrency = currencyList.querySelector(`${ELEMS_DEPOSIT.currencyButton}.${CLASSES_DEPOSIT.active}`)?.textContent;
+        activeCurrency = currencyList.querySelector(`${ELEMS_DEPOSIT.currencyButton}.${CLASSES_DEPOSIT.active}`);
+        if (activeCurrency) {
+            activeCurrency = activeCurrency.textContent;
+        } else {
+            activeCurrency = '₽';
+        }
     }
     return activeCurrency
 }

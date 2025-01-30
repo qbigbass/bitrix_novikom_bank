@@ -19,7 +19,7 @@ $this->setFrameMode(true);?>
     <div class="container banner-text__container position-relative z-2">
         <div class="row ps-lg-6">
             <div class="col-12 col-xxl-8 position-relative z-1 mb-6 mb-md-0 pt-6">
-                <div class="d-flex flex-column align-items-start gap-3 gap-lg-4">
+                <div class="banner-text__content d-flex flex-column align-items-start gap-3 gap-lg-4">
                     <?
                     $helper = new ComponentHelper($component);
                     $helper->deferredCall('showNavChain', ['.default']);
@@ -58,7 +58,14 @@ $this->setFrameMode(true);?>
         );?>
     </div>
     <div class="section-catalog__list">
-        <?$APPLICATION->IncludeComponent(
+        <?
+        global $arrFilterCardsList;
+
+        $arrFilterCardsList = [
+            "PROPERTY_IS_TAB" => false
+        ];
+
+        $APPLICATION->IncludeComponent(
             "bitrix:news.list",
             "cards_list",
             Array(
@@ -102,7 +109,7 @@ $this->setFrameMode(true);?>
                 "ACTIVE_DATE_FORMAT" => $arParams["LIST_ACTIVE_DATE_FORMAT"],
                 "USE_PERMISSIONS" => $arParams["USE_PERMISSIONS"],
                 "GROUP_PERMISSIONS" => $arParams["GROUP_PERMISSIONS"],
-                "FILTER_NAME" => $arParams["FILTER_NAME"],
+                "FILTER_NAME" => "arrFilterCardsList",
                 "HIDE_LINK_WHEN_NO_DETAIL" => $arParams["HIDE_LINK_WHEN_NO_DETAIL"],
                 "CHECK_DATES" => $arParams["CHECK_DATES"],
                 "STRICT_SECTION_CHECK" => $arParams["STRICT_SECTION_CHECK"],
@@ -115,6 +122,20 @@ $this->setFrameMode(true);?>
             $component
         );?>
     </div>
+    <?
+    $APPLICATION->IncludeComponent(
+        "dalee:tabs.section",
+        "",
+        [
+            "IBLOCK_ID" => iblock("cards_list_ru"),
+            "CACHE_GROUPS" => "Y",
+            "CACHE_TIME" => "36000000",
+            "CACHE_TYPE" => "A",
+            "CACHE_KEY" => "cards"
+        ],
+        $component
+    );
+    ?>
 </section>
 
 <?$APPLICATION->IncludeFile('/local/php_interface/include/cross_sale_products_block.php')?>

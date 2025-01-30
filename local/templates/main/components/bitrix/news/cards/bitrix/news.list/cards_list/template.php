@@ -49,7 +49,13 @@ $this->setFrameMode(true);
                             </div>
                             <div class="d-flex flex-column flex-sm-row align-items-center gap-5 gap-sm-6 w-100">
                                 <?if($arItem['DISPLAY_PROPERTIES']['SHOW_BUTTON']['VALUE'] == 'Y') {?>
-                                    <a class="btn btn-tertiary btn-lg-lg card-product-list__button w-100 w-sm-auto" href="#">Оформить заявку</a>
+                                    <button
+                                        class="btn btn-tertiary btn-lg-lg card-product-list__button w-100 w-sm-auto"
+                                        type="button"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#modal-credit-card-form"
+                                    >Оформить заявку
+                                    </button>
                                 <?}?>
                                 <a class="btn btn-link btn-lg-lg d-inline-flex gap-2 align-items-center card-product-list__button-more" href="<?=$arItem['DETAIL_PAGE_URL']?>">
                                     <span>Подробнее</span>
@@ -65,4 +71,11 @@ $this->setFrameMode(true);
         </div>
     </div>
 </div>
-
+<?php $APPLICATION->IncludeComponent(
+    "dalee:form",
+    "credit_card_form",
+    [
+        "FORM_CODE" => "credit_card_form",
+    ],
+    $component
+); ?>

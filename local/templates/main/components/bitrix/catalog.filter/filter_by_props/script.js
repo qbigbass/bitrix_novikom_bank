@@ -3,8 +3,14 @@ $(document).ready(function () {
     $(document).on('click', '[data-setFilter=Y]', function(e){
         e.preventDefault();
         let link = $(this).data('filter');
-        let dateFilter = $('input[name=date1]').val();
-        let arDateFilter = dateFilter.split(' - ');
+        let dateFilter = '';
+        let arDateFilter = [];
+
+        if ($('input[name=date1]').val()) {
+            dateFilter = $('input[name=date1]').val();
+            arDateFilter = dateFilter.split(' - ');
+        }
+
         link = addFilterLink(arDateFilter, link);
         location.href = link;
     });
@@ -19,8 +25,14 @@ $(document).ready(function () {
 /* Фильтр по типу объявления для mobile */
 function setFilter(select) {
     let link = '';
-    let dateFilter = $('input[name=date1]').val();
-    let arDateFilter = dateFilter.split(' - ');
+    let dateFilter = '';
+    let arDateFilter = [];
+
+    if ($('input[name=date1]').val()) {
+        dateFilter = $('input[name=date1]').val();
+        arDateFilter = dateFilter.split(' - ');
+    }
+
     let clearFilter = true;
 
     for (let i = 0; i < select.options.length; i++) {

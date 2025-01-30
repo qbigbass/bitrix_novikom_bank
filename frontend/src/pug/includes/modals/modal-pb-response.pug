@@ -1,0 +1,20 @@
+.modal.modal-pb.fade(id="modal-pb-response" tabindex='-1' aria-hidden='true')
+    .container.modal-pb__container
+        button.btn-close(type="button" data-bs-dismiss='modal' aria-label='Close')
+            span.icon
+                +svg-use("icon-close-small")
+        .modal-dialog.modal-dialog-centered
+            .modal-content
+                .pb-form.d-flex.flex-column.gap-4.gap-lg-5
+                    .pb-form__title.dark-0.text-center.js-title
+                    p.pb-form__text.text-l.dark-0.text-center.m-0.js-info
+                    p.pb-form__date.text-l.dark-0.text-center.m-0.js-info-date Сегодня, 19:00
+                    .pb-form__footer.d-flex.align-items-center.justify-content-center.gap-5
+                        button(type="button" data-bs-dismiss="modal").btn.btn-pb.btn-pb--primary.w-100.w-md-auto.js-btn Ок, спасибо
+                    img(
+                        src="img/pb-images/pb-sphere-tablet.png"
+                        srcset="img/pb-images/pb-sphere.png 172w, img/pb-images/pb-sphere-tablet.png 224w"
+                        sizes="(max-width: 767px) 172px, 224px"
+                        alt=""
+                        loading="lazy"
+                    ).pb-form__bg-sphere
