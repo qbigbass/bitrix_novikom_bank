@@ -40,9 +40,17 @@ function showBlockFinancingMeasures()
                 <div class="row align-items-stretch cards-gutter">
                     <!-- Список элементов -->
                     <?
+                    /*
+                     * Фильтр по мерам финансирования
+                     */
                     $curPage = $APPLICATION->GetCurPage();
                     $arCurPage = array_filter(explode("/", $curPage));
-                    $sectionCode = $arCurPage[array_key_last($arCurPage)];
+                    $cntCurPages = count($arCurPage);
+                    $sectionCode = "";
+
+                    if ($cntCurPages > 2) {
+                        $sectionCode = $arCurPage[array_key_last($arCurPage)];
+                    }
 
                     if (!empty($sectionCode)) {
                         global $arrFilterSection;
