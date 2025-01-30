@@ -65,7 +65,7 @@ $this->setFrameMode(true);
                             <div class="application-form__col col-12 col-md-6">
                                 <div class="d-flex flex-column row-gap-2">
                                     <label class="form-label mb-0" for="consultation_phone">Телефон<span class="orange-100 ms-1">*</span></label>
-                                    <input class="js-mask-phone form-control form-control-lg-lg" id="consultation_phone" type="tel" name="PHONE" placeholder="+7" required autocomplete="off" data-form-input pattern="\+7\s\(\d{3}\)\s\d{3}-\d{2}-\d{2}" data-error-message="Введите корректный номер телефона">
+                                    <input class="js-mask-phone form-control form-control-lg-lg" id="consultation_phone" type="tel" name="PHONE" placeholder="+7" required autocomplete="off" data-form-input pattern="\+7\s\(\d{3}\)\s\d{3}-\d{2}-\d{2}" data-error-message="Неверный формат">
                                     <div class="invalid-feedback" aria-live="polite"></div>
                                 </div>
                             </div>
