@@ -16,6 +16,7 @@ class Benefits implements ComponentInterface
         if (!empty($params['colCount'])) {
             $colCount = $params['colCount'];
         }
+
         if (!empty($params['headerTag'])) {
             $headerTag = $params['headerTag'];
         }
@@ -52,7 +53,8 @@ class Benefits implements ComponentInterface
                     "CODE",
                     "NAME",
                     "PREVIEW_TEXT",
-                    "PREVIEW_PICTURE"
+                    "PREVIEW_PICTURE",
+                    "DETAIL_TEXT"
                 ],
                 "FILTER_NAME" => $filter,
                 "HIDE_LINK_WHEN_NO_DETAIL" => "N",
@@ -73,7 +75,9 @@ class Benefits implements ComponentInterface
                 "PARENT_SECTION" => "",
                 "PARENT_SECTION_CODE" => "",
                 "PREVIEW_TRUNCATE_LEN" => "",
-                "PROPERTY_CODE" => [],
+                "PROPERTY_CODE" => [
+                    "FILE"
+                ],
                 "SET_BROWSER_TITLE" => "N",
                 "SET_LAST_MODIFIED" => "N",
                 "SET_META_DESCRIPTION" => "N",
@@ -86,6 +90,8 @@ class Benefits implements ComponentInterface
                 "SORT_ORDER1" => "DESC",
                 "SORT_ORDER2" => "ASC",
                 "STRICT_SECTION_CHECK" => "N",
+                "COLOR_TITLE_BENEFITS_TOP" => $params["colorTitleBenefitsTop"] ?? "orange-100",
+                "VIEW_BENEFITS_TOP_HEADER" => $params["viewBenefits"]
             ],
             $component,
             ["HIDE_ICONS" => "Y"]

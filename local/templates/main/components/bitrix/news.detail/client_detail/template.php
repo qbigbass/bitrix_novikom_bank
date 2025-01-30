@@ -35,12 +35,6 @@ if (!empty($arResult['PROPERTIES']['TITLE_HEADER']['VALUE'])) {
     $titleHeader = $arResult['PROPERTIES']['TITLE_HEADER']['VALUE'];
 }
 
-if ($arParams["SECTION_TYPE"] === "corporate_clients") {
-    if ($arResult['PROPERTIES']['HEADER_TEMPLATE']['VALUE_XML_ID'] === 'compact' || empty($arResult['PROPERTIES']['HEADER_TEMPLATE']['VALUE_XML_ID'])) {
-        $additionalClass .= " banner-text--border-orange banner-product--heavy-purple";
-    }
-}
-
 if (!empty($arParams["BANNER_H1_COLOR_CLASS"])) {
     $arResult['PARAMS_CLASS']["H1_COLOR_CLASS"] = $arParams["BANNER_H1_COLOR_CLASS"];
 }
@@ -53,10 +47,8 @@ $headerView->render(
     $titleHeader,
     $arResult['~PREVIEW_TEXT'],
     [
-        $arParams['BANNER_BORDER_COLOR_CLASS'],
         !empty($arResult['PROPERTIES']['BENEFITS_TOP']['VALUE']) ? 'banner-product--size-xl' : '',
         $additionalClass,
-        $arParams['BANNER_BG_COLOR_CLASS']
     ],
     1,
     $arResult,

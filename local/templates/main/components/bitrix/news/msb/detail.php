@@ -15,7 +15,7 @@ $this->setFrameMode(true);
 
 <?$APPLICATION->IncludeComponent(
     "bitrix:news.detail",
-    "for_corporate_clients_detail",
+    "client_detail",
     [
         "DISPLAY_DATE" => $arParams["DISPLAY_DATE"],
         "DISPLAY_NAME" => $arParams["DISPLAY_NAME"],
@@ -64,7 +64,8 @@ $this->setFrameMode(true);
         "SHARE_SHORTEN_URL_LOGIN" => $arParams["SHARE_SHORTEN_URL_LOGIN"],
         "SHARE_SHORTEN_URL_KEY" => $arParams["SHARE_SHORTEN_URL_KEY"],
         "ADD_ELEMENT_CHAIN" => "Y",
-        'STRICT_SECTION_CHECK' => $arParams['STRICT_SECTION_CHECK'],
+        "STRICT_SECTION_CHECK" => $arParams['STRICT_SECTION_CHECK'],
+        "COLOR_TITLE_BENEFITS_TOP" => "yellow-100"
     ],
     $component
 );?>

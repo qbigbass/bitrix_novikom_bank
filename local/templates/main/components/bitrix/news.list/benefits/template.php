@@ -18,11 +18,22 @@ $this->setFrameMode(true); ?>
             <? if (!empty($arItem['PREVIEW_PICTURE'])) : ?>
                 <img class="icon size-xxl" src="<?= $arItem['PREVIEW_PICTURE']['SRC'] ?>"
                  alt="<?= $arItem['PREVIEW_PICTURE']['ALT'] ?>" loading="lazy">
+            <? elseif (!empty($arItem["PROPERTIES"]["ICON"]["VALUE"])) : ?>
+                <?
+                $arFile = CFile::GetByID($arItem["PROPERTIES"]["ICON"]["VALUE"])->Fetch();
+                ?>
+                <? if (!empty($arFile)) : ?>
+                <img
+                    class="icon size-xxl"
+                    src="<?= $arFile["SRC"] ?>"
+                    alt="icon" loading="lazy"
+                >
+                <? endif; ?>
             <? endif; ?>
             <div class="benefit__content d-flex flex-column gap-3">
                 <h4 class="benefit__title"><?= $arItem['~NAME'] ?></h4>
                 <? if (!empty($arItem['~PREVIEW_TEXT'])) : ?>
-                    <div class="benefit__description w-100 text-m>"><?= $arItem['~PREVIEW_TEXT'] ?></div>
+                    <div class="benefit__description w-100 text-m"><?= $arItem['~PREVIEW_TEXT'] ?></div>
                 <? endif; ?>
             </div>
         </div>

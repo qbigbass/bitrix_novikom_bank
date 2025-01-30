@@ -24,16 +24,17 @@ class HeaderView
         ?array $arResult = null,
         ?array $terms = null,
         ?string $termsHtml = null,
-        ?string $footerHtml = null,
         ?string $headerHtml = null,
+        ?string $footerHtml = null,
     ): void
     {
         $headerData = $this->getHeaderData($title, $description, $arResult, $terms, $footerHtml, $additionalClasses, $headerHtml);
-        $headerTemplate = empty($arResult['PROPERTIES']['HEADER_TEMPLATE']['VALUE_XML_ID']) ? 'compact' : $this->getHeaderTemplate($arResult);
+        $headerTemplate = empty($arResult["PROPERTIES"]["HEADER_TEMPLATE"]["VALUE_XML_ID"]) ? "not_show" : $this->getHeaderTemplate($arResult);
 
         echo match ($headerTemplate) {
             'compact' => $this->compact($headerData, $chainDepth, $termsHtml),
-            default => $this->detailed($headerData, $chainDepth, $termsHtml),
+            'detailed' => $this->detailed($headerData, $chainDepth, $termsHtml),
+            default => $this->notShow()
         };
     }
 
@@ -56,7 +57,7 @@ class HeaderView
 
     private function getHeaderTemplate(?array $arResult): string
     {
-        return $arResult['PROPERTIES']['HEADER_TEMPLATE']['VALUE_XML_ID'] ?? 'detailed';
+        return $arResult['PROPERTIES']['HEADER_TEMPLATE']['VALUE_XML_ID'];
     }
 
     private function getBaseHeaderData(string $title, ?string $description): array
@@ -81,6 +82,9 @@ class HeaderView
             'showButton' => $arResult['PROPERTIES']['BUTTON_DETAIL']['VALUE'] ?? false,
             'buttonText' => $arResult['PROPERTIES']['BUTTON_TEXT_DETAIL']['VALUE'] ?? '',
             'buttonHref' => $arResult['PROPERTIES']['BUTTON_HREF_DETAIL']['VALUE'] ?? '',
+            'h1ColorClass' => $arResult["PARAMS_CLASS"]["H1_COLOR_CLASS"] ?? 'dark-0',
+            'breadcrumbsColorClass' => $arResult["PARAMS_CLASS"]["BREADCRUMBS_COLOR_CLASS"] ?? 'text-white-50',
+            'picHeader' => !empty($arResult['PROPERTIES']['HEADER_BG_PICTURE']['VALUE']) ? $arResult['PROPERTIES']['HEADER_BG_PICTURE']['VALUE'] :  'img/patterns/section/pattern-light',
         ];
 
         return $result;
@@ -140,7 +144,7 @@ class HeaderView
                     <div class="banner-product__header">
 
                         <? if (!empty($this->helper)) {
-                            $this->helper->deferredCall('showNavChain', ['.default', $chainDepth]);
+                            $this->helper->deferredCall('showNavChain', ['.default', $chainDepth, $headerData]);
                         } ?>
 
                         <h1><?= $headerData['title'] ?></h1>
@@ -176,15 +180,15 @@ class HeaderView
 
             </div>
             <picture class="pattern-bg banner-product__pattern">
-                <source srcset="/frontend/dist/img/patterns/section/pattern-dark-s.svg" media="(max-width: 767px)">
-                <source srcset="/frontend/dist/img/patterns/section/pattern-dark-m.svg" media="(max-width: 1199px)">
-                <img src="/frontend/dist/img/patterns/section/pattern-dark-l.svg" alt="bg pattern" loading="lazy">
+                <source srcset="/frontend/dist/<?= $headerData['picHeader'] ?>-s.svg" media="(max-width: 767px)">
+                <source srcset="/frontend/dist/<?= $headerData['picHeader'] ?>-m.svg" media="(max-width: 1199px)">
+                <img src="/frontend/dist/<?= $headerData['picHeader'] ?>-l.svg" alt="bg pattern" loading="lazy">
             </picture>
         </div>
         <? return ob_get_clean();
     }
 
-    private function compact(array $headerData, int $chainDepth, ?string $termsHtml)
+    private function compact(array $headerData, int $chainDepth, ?string $termsHtml): bool|string
     {
         ob_start(); ?>
         <section class="banner-text <?= $headerData['bgColorClass'] ?> <?= implode(' ', $headerData['additionalClasses']) ?>">
@@ -194,12 +198,12 @@ class HeaderView
                         <div class="d-flex flex-column align-items-start gap-3 gap-lg-4">
 
                             <? if (!empty($this->helper)) {
-                                $this->helper->deferredCall('showNavChain', ['.default', $chainDepth]);
+                                $this->helper->deferredCall('showNavChain', ['.default', $chainDepth, $headerData]);
                             } ?>
 
-                            <h1 class="banner-text__title dark-0 text-break"><?= $headerData['title'] ?></h1>
+                            <h1 class="banner-text__title <?= $headerData['h1ColorClass'] ?> text-break"><?= $headerData['title'] ?></h1>
                             <? if (!empty($headerData['description'])) { ?>
-                                <div class="banner-text__description text-l dark-0"><?= $headerData['description'] ?></div>
+                                <div class="banner-text__description text-l <?= $headerData['h1ColorClass'] ?>"><?= $headerData['description'] ?></div>
                             <? } ?>
 
                         </div>
@@ -217,11 +221,17 @@ class HeaderView
                 </div>
             </div>
             <picture class="pattern-bg pattern-bg--position-sm-top banner-text__pattern">
-                <source srcset="/frontend/dist/img/patterns/section/pattern-light-s.svg" media="(max-width: 767px)">
-                <source srcset="/frontend/dist/img/patterns/section/pattern-light-m.svg" media="(max-width: 1199px)">
-                <img src="/frontend/dist/img/patterns/section/pattern-light-l.svg" alt="bg pattern" loading="lazy">
+                <source srcset="/frontend/dist/<?= $headerData['picHeader'] ?>-s.svg" media="(max-width: 767px)">
+                <source srcset="/frontend/dist/<?= $headerData['picHeader'] ?>-m.svg" media="(max-width: 1199px)">
+                <img src="/frontend/dist/<?= $headerData['picHeader'] ?>-l.svg" alt="bg pattern" loading="lazy">
             </picture>
         </section>
         <? return ob_get_clean();
+    }
+
+    private function notShow(): bool|string
+    {
+        ob_start();
+        return ob_get_clean();
     }
 }

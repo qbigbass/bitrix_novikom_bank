@@ -21,12 +21,14 @@ $headerView = new HeaderView($component);
 $renderer = new Renderer($APPLICATION, $component);
 
 $helper = $headerView->helper();
+$arResult['PROPERTIES']['HEADER_TEMPLATE']['VALUE_XML_ID'] = "compact";
 
 $headerView->render(
     $APPLICATION->GetTitle(),
     $APPLICATION->GetProperty("description"),
     ['banner-text--border-orange', 'banner-product--heavy-purple'],
-    1
+    1,
+    $arResult
 );
 ?>
 
