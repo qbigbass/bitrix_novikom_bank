@@ -473,36 +473,43 @@ $APPLICATION->SetTitle('Частным клиентам - Главная НОВ�
 <? $APPLICATION->IncludeFile('/local/php_interface/include/request_call.php'); ?>
 
 <section class="section-layout section-currency-exchange">
-    <div class="container"><a class="h3 d-flex align-items-center justify-content-between dark-100 d-md-none"
-                              data-bs-toggle="collapse" href="#currency-exchange" role="button" aria-expanded="false"
-                              aria-controls="currency-exchange">Обмен валют
+    <div class="container">
+        <a class="h3 d-flex align-items-center justify-content-between dark-100 d-md-none"
+           data-bs-toggle="collapse" href="#currency-exchange" role="button" aria-expanded="false"
+           aria-controls="currency-exchange">
+            Обмен валют
             <svg class="icon size-m violet-100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                 <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-down"></use>
             </svg>
         </a>
-        <div class="section-currency-exchange__wrapper collapse" id="currency-exchange">
+        <div class="section-currency-exchange__wrapper collapse js-currency-converter" id="currency-exchange" data-table="currency_exchange" data-id="0" >
             <div class="row">
                 <div class="col-12 col-xl-8">
                     <div
                         class="d-flex flex-column flex-lg-row align-items-lg-end mb-4 mb-md-6 mb-lg-7 pt-4 pt-md-0 gap-md-3">
                         <h3 class="d-none d-md-block">Обмен валют</h3>
-                        <p class="text-s dark-70 mb-0 ms-lg-auto">Курс банка актуален на&nbsp;14:00 по&nbsp;МСК 30&nbsp;апреля
-                            2024&nbsp;г.</p>
+                        <p class="text-s dark-70 mb-0 ms-lg-auto">
+                            Курс банка актуален на&nbsp;
+                            <span class="js-currency-time-update"></span>
+                        </p>
                     </div>
                     <ul class="nav nav-tabs d-md-none" role="tablist">
                         <li class="nav-item flex-grow-1" role="presentation">
                             <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#eur" type="button"
-                                    role="tab" aria-controls="eur" aria-selected>EUR
+                                    role="tab" aria-controls="eur" aria-selected>
+                                EUR
                             </button>
                         </li>
                         <li class="nav-item flex-grow-1" role="presentation">
                             <button class="nav-link" data-bs-toggle="tab" data-bs-target="#usd" type="button" role="tab"
-                                    aria-controls="usd">USD
+                                    aria-controls="usd">
+                                USD
                             </button>
                         </li>
                         <li class="nav-item flex-grow-1" role="presentation">
                             <button class="nav-link" data-bs-toggle="tab" data-bs-target="#cny" type="button" role="tab"
-                                    aria-controls="cny">CNY
+                                    aria-controls="cny">
+                                CNY
                             </button>
                         </li>
                     </ul>
@@ -511,19 +518,28 @@ $APPLICATION->SetTitle('Частным клиентам - Главная НОВ�
                              tabindex="0">
                             <div class="table-currency">
                                 <div class="table-currency__row">
-                                    <div class="table-currency__col"><span class="text-s dark-70">Продать, RUB</span>
+                                    <div class="table-currency__col">
+                                        <span class="text-s dark-70">Продать, RUB</span>
                                     </div>
-                                    <div class="table-currency__col"><span class="text-l dark-100">94,60</span></div>
+                                    <div class="table-currency__col">
+                                        <span class="text-l dark-100">94,60</span>
+                                    </div>
                                 </div>
                                 <div class="table-currency__row">
-                                    <div class="table-currency__col"><span class="text-s dark-70">Купить, RUB</span>
+                                    <div class="table-currency__col">
+                                        <span class="text-s dark-70">Купить, RUB</span>
                                     </div>
-                                    <div class="table-currency__col"><span class="text-l dark-100">99,10</span></div>
+                                    <div class="table-currency__col">
+                                        <span class="text-l dark-100">99,10</span>
+                                    </div>
                                 </div>
                                 <div class="table-currency__row">
-                                    <div class="table-currency__col"><span class="text-s dark-70">ЦБ РФ, RUB</span>
+                                    <div class="table-currency__col">
+                                        <span class="text-s dark-70">ЦБ РФ, RUB</span>
                                     </div>
-                                    <div class="table-currency__col"><span class="text-l dark-100">97,15</span></div>
+                                    <div class="table-currency__col">
+                                        <span class="text-l dark-100">97,15</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -606,32 +622,28 @@ $APPLICATION->SetTitle('Частным клиентам - Главная НОВ�
                             <div class="col-12 col-md-6 col-xl-12">
                                 <label class="form-label" for="have">У вас есть</label>
                                 <div class="input-group">
-                                    <input class="form-control form-control-lg" id="have" type="text" name="you_have"
-                                           placeholder="1500">
+                                    <input class="form-control form-control-lg js-currency-input-have" id="have" type="text" name="you_have" placeholder="0">
                                     <div class="input-group__currency">
-                                        <select class="form-select js-select" aria-label="Выберите валюту">
+                                        <select class="form-select js-select js-currency-select-have" aria-label="Выберите валюту">
                                             <option selected value="RUB">RUB</option>
                                             <option value="USD">USD</option>
                                             <option value="CNY">CNY</option>
                                         </select>
                                     </div>
-                                </div>
-                                <span class="caption-m dark-70 mt-2 d-block">1 RUB = 0,01 USD</span>
+                                </div><span class="caption-m dark-70 mt-2 d-block js-currency-have-get">1 RUB = 0,01 USD</span>
                             </div>
                             <div class="col-12 col-md-6 col-xl-12 mt-4 mt-md-0 mt-xl-4">
                                 <label class="form-label" for="get">Вы получите</label>
                                 <div class="input-group">
-                                    <input class="form-control form-control-lg" id="get" type="text" name="you_get"
-                                           placeholder="9,77">
+                                    <input class="form-control form-control-lg js-currency-input-get" id="get" type="text" name="you_get" placeholder="0">
                                     <div class="input-group__currency">
-                                        <select class="form-select js-select" aria-label="Выберите валюту">
+                                        <select class="form-select js-select js-currency-select-get" aria-label="Выберите валюту">
                                             <option value="RUB">RUB</option>
                                             <option value="USD" selected>USD</option>
                                             <option value="CNY">CNY</option>
                                         </select>
                                     </div>
-                                </div>
-                                <span class="caption-m dark-70 mt-2 d-block">1 USD = 97 RUB</span>
+                                </div><span class="caption-m dark-70 mt-2 d-block js-currency-get-have">1 USD = 97 RUB</span>
                             </div>
                         </div>
                     </div>

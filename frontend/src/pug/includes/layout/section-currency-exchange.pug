@@ -86,7 +86,7 @@
 include ../../components/tables/table-currency
 
 
-section.section-layout.section-currency-exchange.js-currency-converter
+section.section-layout.section-currency-exchange
     .container
         a(
             data-bs-toggle="collapse"
@@ -97,7 +97,7 @@ section.section-layout.section-currency-exchange.js-currency-converter
         ).h3.d-flex.align-items-center.justify-content-between.dark-100.d-md-none
             | Обмен валют
             +svg-use("icon-chevron-down", "icon size-m violet-100")
-        #currency-exchange.section-currency-exchange__wrapper.collapse
+        #currency-exchange.section-currency-exchange__wrapper.collapse.js-currency-converter(data-table="currency")
             .row
                 .col-12.col-xl-8
                         .d-flex.flex-column.flex-lg-row.align-items-lg-end.mb-4.mb-md-6.mb-lg-7.pt-4.pt-md-0.gap-md-3
