@@ -20,6 +20,7 @@ $APPLICATION->SetTitle('Формы');
                 <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#modal-consultation-form">Заявка на консультацию</button>
                 <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#modal-vacancy-form">Заявка на вакансию</button>
                 <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#modal-fraud-form">Отправить обращение о мошенничестве</button>
+                <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#modal-state-support-form">Заявка на господдержку</button>
             </div>
         </div>
     </div>
@@ -86,6 +87,14 @@ $APPLICATION->SetTitle('Формы');
     "fraud_form",
     [
         "FORM_CODE" => "fraud_form",
+    ]
+); ?>
+
+<?php $APPLICATION->IncludeComponent(
+    "dalee:form",
+    "state_support_form",
+    [
+        "FORM_CODE" => "state_support_form",
     ]
 ); ?>
 
