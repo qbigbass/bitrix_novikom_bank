@@ -71,10 +71,9 @@ $this->setFrameMode(true);
         "BLOCK_CONTACT_COLOR_TAG" => "tag--outline",
         "BLOCK_CONTACT_COLOR_H4" => "dark-100",
         "BLOCK_CONTACT_COLOR_SPAN" => "dark-100",
-        "BLOCK_CONTACT_COLOR_ICON" => "dark-100"
+        "BLOCK_CONTACT_COLOR_ICON" => "dark-100",
+        "TITLE_BLOCK_CROSS_SALE" => $arParams["TITLE_BLOCK_CROSS_SALE"],
+        "FILTER_BLOCK_CROSS_SALE" => $arParams["FILTER_BLOCK_CROSS_SALE"],
     ],
     $component
 );?>
-
-<?//$APPLICATION->IncludeFile('/local/php_interface/include/cross_sale_products_block_corporate.php', ['HEADER_TEXT' => 'Другие услуги для корпоративных клиентов']);?>
-

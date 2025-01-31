@@ -3,9 +3,7 @@
 /** @global CMain $APPLICATION */
 
 global $crossSaleFilter;
-$crossSaleFilter = [
-    'SECTION_CODE' => 'corporate',
-];
+$crossSaleFilter = $arParams["FILTER"];
 
 $APPLICATION->IncludeComponent(
     "bitrix:news.list",

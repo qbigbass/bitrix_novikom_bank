@@ -196,6 +196,11 @@ if (!empty($component->arParams['SEF_FOLDER'])) {
     </picture>
 </section>
 
-<? $APPLICATION->IncludeFile('/local/php_interface/include/cross_sale_products_block_corporate.php', ['HEADER_TEXT' => 'Другие услуги для корпоративных клиентов']); ?>
+<?$APPLICATION->IncludeFile('/local/php_interface/include/cross_sale_products_block_corporate.php',
+    [
+        'HEADER_TEXT' => $arParams["TITLE_BLOCK_CROSS_SALE"],
+        'FILTER' => $arParams["FILTER_BLOCK_CROSS_SALE"],
+    ]
+);?>
 
 <? $helper->saveCache(); ?>

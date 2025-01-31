@@ -65,10 +65,9 @@ $this->setFrameMode(true);
         "SHARE_SHORTEN_URL_KEY" => $arParams["SHARE_SHORTEN_URL_KEY"],
         "ADD_ELEMENT_CHAIN" => "Y",
         "STRICT_SECTION_CHECK" => $arParams['STRICT_SECTION_CHECK'],
-        "SECTION_TYPE" => "corporate_clients"
+        "SECTION_TYPE" => "corporate_clients",
+        "TITLE_BLOCK_CROSS_SALE" => $arParams["TITLE_BLOCK_CROSS_SALE"],
+        "FILTER_BLOCK_CROSS_SALE" => $arParams["FILTER_BLOCK_CROSS_SALE"],
     ],
     $component
 );?>
-
-<?$APPLICATION->IncludeFile('/local/php_interface/include/cross_sale_products_block_corporate.php', ['HEADER_TEXT' => 'Другие услуги для корпоративных клиентов']);?>
-
