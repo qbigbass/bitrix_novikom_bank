@@ -66,10 +66,15 @@ $this->setFrameMode(true);
         "ADD_ELEMENT_CHAIN" => "Y",
         "STRICT_SECTION_CHECK" => $arParams["STRICT_SECTION_CHECK"],
         "BANNER_H1_COLOR_CLASS" => "dark-100",
-        "BANNER_BREADCRUMBS_COLOR_CLASS" => "dark-70"
+        "BANNER_BREADCRUMBS_COLOR_CLASS" => "dark-70",
+        "BLOCK_CONTACT_COLOR_CARD" => "contact-block--bg-white",
+        "BLOCK_CONTACT_COLOR_TAG" => "tag--outline",
+        "BLOCK_CONTACT_COLOR_H4" => "dark-100",
+        "BLOCK_CONTACT_COLOR_SPAN" => "dark-100",
+        "BLOCK_CONTACT_COLOR_ICON" => "dark-100"
     ],
     $component
 );?>
 
-<?$APPLICATION->IncludeFile('/local/php_interface/include/cross_sale_products_block_corporate.php', ['HEADER_TEXT' => 'Другие услуги для корпоративных клиентов']);?>
+<?//$APPLICATION->IncludeFile('/local/php_interface/include/cross_sale_products_block_corporate.php', ['HEADER_TEXT' => 'Другие услуги для корпоративных клиентов']);?>
 

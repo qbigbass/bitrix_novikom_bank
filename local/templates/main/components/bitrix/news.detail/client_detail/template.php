@@ -404,6 +404,12 @@ $headerView->render(
         'ID' => $arResult['PROPERTIES']['CONTACTS']['VALUE']
     ];
 
+    $classBlockContacts = "";
+
+    if (!empty($arResult['PROPERTIES']['CLASS_BLOCK_CONTACTS']['VALUE'])) {
+        $classBlockContacts = $arResult['PROPERTIES']['CLASS_BLOCK_CONTACTS']['VALUE'];
+    }
+
     $APPLICATION->IncludeComponent(
         "bitrix:news.list",
         "corporate_contacts",
@@ -455,6 +461,12 @@ $headerView->render(
             "SORT_ORDER1" => "DESC",
             "SORT_ORDER2" => "ASC",
             "STRICT_SECTION_CHECK" => "N",
+            "COLOR_SECTION" => $classBlockContacts,
+            "COLOR_CARD" => $arParams["BLOCK_CONTACT_COLOR_CARD"],
+            "COLOR_TAG" => $arParams["BLOCK_CONTACT_COLOR_TAG"],
+            "COLOR_H4" => $arParams["BLOCK_CONTACT_COLOR_H4"],
+            "COLOR_SPAN" => $arParams["BLOCK_CONTACT_COLOR_SPAN"],
+            "COLOR_ICON" => $arParams["BLOCK_CONTACT_COLOR_ICON"],
         ],
         $component
     );
