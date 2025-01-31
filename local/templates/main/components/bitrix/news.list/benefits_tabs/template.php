@@ -11,7 +11,6 @@
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
-//pre($arParams);
 ?>
 <section class="section-layout<?= $arParams['BACKGROUND_COLOR'] == 'Серый' ? ' bg-dark-10' : '' ?>">
     <div class="container">
