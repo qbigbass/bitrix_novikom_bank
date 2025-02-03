@@ -12,7 +12,7 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 ?>
-
+<?$APPLICATION->IncludeFile('/local/php_interface/include/financing_measures.php')?>
 <?$APPLICATION->IncludeComponent(
     "bitrix:news.detail",
     "client_detail",

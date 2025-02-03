@@ -42,6 +42,12 @@
       background-color: var(--pb-hover);
       color: var(--dark-0);
     }
+
+    &:disabled,
+    &.disabled {
+      background-color: var(--pb-primary);
+      opacity: 0.5;
+    }
   }
 
   &--secondary {

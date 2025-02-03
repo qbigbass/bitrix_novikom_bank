@@ -1,6 +1,8 @@
 <?php
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 
+use Bitrix\Iblock\ElementTable;
+
 global $APPLICATION;
 
 $aMenuLinks[] = [
@@ -27,27 +29,22 @@ $aMenuLinksExt = $APPLICATION->IncludeComponent(
     false
 );
 
-$aMenuLinksExt[] = [
-    '«Программа кэшбэк»',
-    '/bonus-programs/programma-keshbek/',
-    Array(),
-    Array('show_only_in_header' => 'Y')
-];
+$elements = ElementTable::GetList([
+    "select" => ["ID", "NAME", "CODE"],
+    "filter" => [
+        "IBLOCK_ID" => iblock("bonus_programs_ru"),
+        "ACTIVE" => "Y"
+    ],
+])->fetchAll();
 
-$aMenuLinksExt[] = [
-    '«Программа бонусы»',
-    '/bonus-programs/programma-bonusy/',
-    Array(),
-    Array('show_only_in_header' => 'Y')
-];
-
-$aMenuLinksExt[] = [
-    '«Бонусная копилка»',
-    '/bonus-programs/programma-bonusnaya-kopilka/',
-    Array(),
-    Array('show_only_in_header' => 'Y')
-];
-
+foreach ($elements as $element) {
+    $aMenuLinksExt[] = [
+        $element["NAME"],
+        "/bonus-programs/" . $element["CODE"] . "/",
+        [],
+        ["show_only_in_header" => "Y"]
+    ];
+}
 
 $aMenuLinks = array_merge($aMenuLinks, $aMenuLinksExt);
 

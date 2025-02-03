@@ -43,8 +43,8 @@ if (!empty($arParams['CLASS_COLOR_BTN'])) {
                     </div>
                 </div>
                 <div class="d-flex gap-3">
-                    <a class="btn <?= $classColorBtn ?> d-none d-md-inline-flex" href="#">Перейти в интернет-банк</a>
-                    <a class="btn btn-sm <?= $classColorBtn ?> d-md-none" href="#">Перейти в интернет-банк</a>
+                    <a class="btn <?= $classColorBtn ?> d-none d-md-inline-flex" href="https://online.novikom.ru/">Перейти в интернет-банк</a>
+                    <a class="btn btn-sm <?= $classColorBtn ?> d-md-none" href="https://online.novikom.ru/">Перейти в интернет-банк</a>
                 </div>
             </div>
         </div>

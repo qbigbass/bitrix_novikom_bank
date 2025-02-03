@@ -20,7 +20,7 @@ $this->setFrameMode(true);
     <div class="modal-dialog modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Заявка на кредитную карту</h5>
+                <h5 class="modal-title">Заявка на банковскую карту</h5>
                 <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close">
                     <span class="icon size-m">
                         <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
@@ -95,7 +95,7 @@ $this->setFrameMode(true);
                                 <div class="d-flex flex-column row-gap-2">
                                     <label class="form-label mb-0" for="credit-card_phone">Телефон<span class="orange-100 ms-1">*</span>
                                     </label>
-                                    <input class="js-mask-phone form-control form-control-lg-lg" id="credit-card_phone" type="tel" name="PHONE" placeholder="+7" required autocomplete="off" data-form-input pattern="\+7\s\(\d{3}\)\s\d{3}-\d{2}-\d{2}" data-error-message="Введите корректный номер телефона">
+                                    <input class="js-mask-phone form-control form-control-lg-lg" id="credit-card_phone" type="tel" name="PHONE" placeholder="+7" required autocomplete="off" data-form-input pattern="\+7\s\(\d{3}\)\s\d{3}-\d{2}-\d{2}" data-error-message="Неверный формат">
                                     <div class="invalid-feedback" aria-live="polite"></div>
                                 </div>
                             </div>

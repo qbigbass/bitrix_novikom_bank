@@ -168,14 +168,11 @@ function getMortgageValues(STATE) {
     STATE.insurance = STATE.elements.inputMortgageInsurance.checked ? 'Y' : 'N';
     STATE.card = STATE.elements.inputMortgageCard.checked ? 'Y' : 'N';
 
-    console.log('STATE.filteredData1', STATE.filteredData);
     STATE.filteredData = STATE.filteredData.filter(item => {
         if (!item.insurance) item.insurance = 'N';
         if (!item.salaryBankCard) item.salaryBankCard = 'N';
         return (item.insurance === STATE.insurance) && (item.salaryBankCard === STATE.card)
     });
-
-    console.log('STATE.filteredData2', STATE.filteredData);
 
     STATE.expenseRatio = STATE.elements.root.dataset.expenseRatio;
     STATE.rate = STATE.filteredData[0].rate;

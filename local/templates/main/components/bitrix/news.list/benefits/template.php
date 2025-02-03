@@ -31,9 +31,11 @@ $this->setFrameMode(true); ?>
                 <? endif; ?>
             <? endif; ?>
             <div class="benefit__content d-flex flex-column gap-3">
-                <h4 class="benefit__title"><?= $arItem['~NAME'] ?></h4>
                 <? if (!empty($arItem['~PREVIEW_TEXT'])) : ?>
-                    <div class="benefit__description w-100 text-m"><?= $arItem['~PREVIEW_TEXT'] ?></div>
+                    <h4 class="benefit__title"><?= $arItem['~NAME'] ?></h4>
+                    <div class="benefit__description w-100 text-m>"><?= $arItem['~PREVIEW_TEXT'] ?></div>
+                <? else: ?>
+                    <div class="benefit__description w-100 text-m>"><?= $arItem['~NAME'] ?></div>
                 <? endif; ?>
             </div>
         </div>

@@ -1032,46 +1032,14 @@ use Bitrix\Main\Localization\Loc;
                                                     <!-- ТАБ "Фонды" -->
                                                     <div class="row row-gap-4 row-gap-md-6 row-gap-lg-7">
                                                         <div class="col-12">
-                                                            <form class="w-100">
-                                                                <div class="input-group flex-nowrap d-none d-lg-flex">
-                                                                    <span class="input-group-icon bg-transparent">
-                                                                        <span class="icon violet-100">
-                                                                            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                                                                <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-search"></use>
-                                                                            </svg>
-                                                                        </span>
-                                                                    </span>
-                                                                    <input
-                                                                        class="form-control form-control-lg text-l bg-transparent"
-                                                                        id="input-search"
-                                                                        type="text"
-                                                                        placeholder="Поиск по регионам или названию фонда"
-                                                                        aria-label="Поиск по регионам или названию фонда"
-                                                                        aria-describedby="input-search"
-                                                                        tabindex="-1"
-                                                                        data-type="search-fondy"
-                                                                    >
-                                                                </div>
-                                                                <div class="input-group flex-nowrap d-flex d-lg-none">
-                                                                    <span class="input-group-icon bg-transparent">
-                                                                        <span class="icon violet-100">
-                                                                            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                                                                <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-search"></use>
-                                                                            </svg>
-                                                                        </span>
-                                                                    </span>
-                                                                    <input
-                                                                        class="form-control ps-0 text-s bg-transparent"
-                                                                        id="input-search-mobile"
-                                                                        type="text"
-                                                                        placeholder="Поиск по регионам или названию фонда"
-                                                                        aria-label="Поиск по регионам или названию фонда"
-                                                                        aria-describedby="#input-search-mobile"
-                                                                        tabindex="-1"
-                                                                        data-type="search-fondy"
-                                                                    >
-                                                                </div>
-                                                            </form>
+                                                            <?$APPLICATION->IncludeComponent(
+                                                                "dalee:search.block",
+                                                                "",
+                                                                [
+                                                                    "PLACEHOLDER" => "Поиск по регионам или названию фонда"
+                                                                ],
+                                                                $component
+                                                            ); ?>
                                                         </div>
                                                         <div class="col-12">
                                                             <div class="accordion accordion--size-lg accordion--bg-transparent" id="accordion-funds-tab">
@@ -1085,6 +1053,7 @@ use Bitrix\Main\Localization\Loc;
                                                                                 data-bs-target="#<?= $elemId ?>"
                                                                                 aria-controls="<?= $elemId ?>"
                                                                                 data-elem="<?= $elemId ?>"
+                                                                                data-item-name="<?= $arElements["TITLE"] ?>"
                                                                             >
                                                                                 <div class="d-flex flex-column gap-4 gap-md-5 gap-lg-6">
                                                                                     <? if (!empty($arElements["CITY"])) : ?>

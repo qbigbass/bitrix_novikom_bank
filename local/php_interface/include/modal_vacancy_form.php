@@ -60,7 +60,7 @@
                                         </label>
                                         <input class="js-mask-phone form-control form-control-lg-lg"
                                                id="vacancy_phone" type="tel" name="phone" placeholder="+7" required
-                                               autocomplete="off" data-form-input pattern="\+7\s\(\d{3}\)\s\d{3}-\d{2}-\d{2}" data-error-message="Введите корректный номер телефона">
+                                               autocomplete="off" data-form-input pattern="\+7\s\(\d{3}\)\s\d{3}-\d{2}-\d{2}" data-error-message="Неверный формат">
                                         <div class="invalid-feedback" aria-live="polite"></div>
                                     </div>
                                 </div>

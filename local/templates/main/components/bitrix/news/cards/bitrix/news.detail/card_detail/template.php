@@ -18,7 +18,7 @@ use Dalee\Helpers\ComponentRenderer\Renderer;
 $renderer = new Renderer($APPLICATION, $component);
 ?>
 
-<div class="banner-product <?=$arResult['BANNER_STYLE']?>">
+<div class="banner-product is-sticker <?=$arResult['BANNER_STYLE']?>">
     <div class="banner-product__wrapper">
         <div class="banner-product__content">
             <div class="banner-product__header">

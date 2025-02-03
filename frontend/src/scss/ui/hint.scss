@@ -1,0 +1,15 @@
+.hint {
+  --bs-tooltip-max-width: 37.5rem;
+
+  .tooltip-arrow {
+    display: none;
+  }
+
+  .tooltip-inner {
+    text-align: left;
+
+    @include use-media(0, tablet-album) {
+      margin-inline: 1.5rem;
+    }
+  }
+}

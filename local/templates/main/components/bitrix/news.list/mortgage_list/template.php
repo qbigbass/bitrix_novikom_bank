@@ -68,9 +68,19 @@ $terms = [
                 <? } ?>
 
                 <div class="d-flex flex-column flex-sm-row align-items-center gap-5 gap-sm-6 w-100">
-                    <? if (!empty($item['PROPERTIES']['BUTTON_DETAIL']['VALUE'])) { ?>
+                    <? if (!empty($item['PROPERTIES']['BUTTON_DETAIL']['VALUE']) && !empty($item['PROPERTIES']['BUTTON_HREF_DETAIL']['VALUE'])) { ?>
                         <a class="btn btn-tertiary btn-lg-lg card-product-list__button w-100 w-sm-auto"
-                           href="<?= $item['PROPERTIES']['BUTTON_HREF_DETAIL']['VALUE'] ?>"><?= $item['PROPERTIES']['BUTTON_TEXT_DETAIL']['VALUE'] ?></a>
+                           href="<?= $item['PROPERTIES']['BUTTON_HREF_DETAIL']['VALUE'] ?>"
+                        >
+                            <?= $item['PROPERTIES']['BUTTON_TEXT_DETAIL']['VALUE'] ?>
+                        </a>
+                    <? } elseif (!empty($item['PROPERTIES']['BUTTON_DETAIL']['VALUE']) && !empty($item['PROPERTIES']['BUTTON_CODE_FORM']['VALUE'])) { ?>
+                        <a class="btn btn-tertiary btn-lg-lg card-product-list__button w-100 w-sm-auto"
+                           type="button"
+                           data-bs-toggle="modal"
+                           data-bs-target="#<?= $item['PROPERTIES']['BUTTON_CODE_FORM']['VALUE'] ?>"
+                        ><?= $item['PROPERTIES']['BUTTON_TEXT_DETAIL']['VALUE'] ?>
+                        </a>
                     <? } ?>
                     <a class="btn btn-link btn-lg-lg d-inline-flex gap-2 align-items-center card-product-list__button-more"
                        href="<?= $item['CODE'] == 'restructuring' ? '/loans/restructuring/' : $item['DETAIL_PAGE_URL'] ?>">

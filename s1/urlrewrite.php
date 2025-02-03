@@ -1,6 +1,20 @@
 <?php
 $arUrlRewrite = [
     [
+        'CONDITION' => '#^/for-corporate-clients/mery-gospodderzhki/[a-z-]+/[a-z-]+/#',
+        'RULE' => '',
+        'ID' => '',
+        'PATH' => '/for-corporate-clients/financing_measures/detail.php',
+        'SORT' => 1,
+    ],
+    [
+        'CONDITION' => '#^/for-corporate-clients/mery-gospodderzhki/[a-z-]+/#',
+        'RULE' => '',
+        'ID' => '',
+        'PATH' => '/for-corporate-clients/financing_measures/section.php',
+        'SORT' => 2,
+    ],
+    [
         'CONDITION' => '#^/for-corporate-clients/customer-announcements/#',
         'RULE' => '',
         'ID' => 'bitrix:news',

@@ -85,6 +85,7 @@ class HeaderView
             'h1ColorClass' => $arResult["PARAMS_CLASS"]["H1_COLOR_CLASS"] ?? 'dark-0',
             'breadcrumbsColorClass' => $arResult["PARAMS_CLASS"]["BREADCRUMBS_COLOR_CLASS"] ?? 'text-white-50',
             'picHeader' => !empty($arResult['PROPERTIES']['HEADER_BG_PICTURE']['VALUE']) ? $arResult['PROPERTIES']['HEADER_BG_PICTURE']['VALUE'] :  'img/patterns/section/pattern-light',
+            'buttonCodeForm' => $arResult['PROPERTIES']['BUTTON_CODE_FORM']['VALUE'] ?? '',
         ];
 
         return $result;
@@ -166,9 +167,19 @@ class HeaderView
 
                     <? if ($headerData['showButton'] && !empty($headerData['buttonHref'])) { ?>
                         <a class="btn <?= in_array('banner-product--type-corp', $headerData['additionalClasses']) ? 'btn-orange' : 'btn-tertiary' ?> btn-lg-lg banner-product__button"
-                           href="<?= $headerData['buttonHref'] ?>">
+                           href="<?= $headerData['buttonHref'] ?>"
+                        >
                             <?= $headerData['buttonText'] ?>
                         </a>
+                    <? } elseif ($headerData['showButton'] && !empty($headerData['buttonCodeForm'])) { ?>
+                        <button
+                            class="btn <?= in_array('banner-product--type-corp', $headerData['additionalClasses']) ? 'btn-orange' : 'btn-tertiary' ?> btn-lg-lg banner-product__button"
+                            type="button"
+                            data-bs-toggle="modal"
+                            data-bs-target="#<?= $headerData['buttonCodeForm'] ?>"
+                        >
+                            <?= $headerData['buttonText'] ?>
+                        </button>
                     <? } ?>
                 </div>
 
@@ -195,7 +206,7 @@ class HeaderView
             <div class="container banner-text__container position-relative z-2">
                 <div class="row ps-lg-6">
                     <div class="col-12 position-relative z-1 mb-5 mb-md-0 pt-6<? if (!empty($headerData['picture'])) { ?> col-sm-6 col-md-8<? } ?><? if (empty($headerData['picture'])) { ?> col-xxl-8<? } ?>">
-                        <div class="d-flex flex-column align-items-start gap-3 gap-lg-4">
+                        <div class="banner-text__content d-flex flex-column align-items-start gap-3 gap-lg-4">
 
                             <? if (!empty($this->helper)) {
                                 $this->helper->deferredCall('showNavChain', ['.default', $chainDepth, $headerData]);

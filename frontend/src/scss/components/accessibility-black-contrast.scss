@@ -66,7 +66,7 @@
       }
     }
 
-    .icon>img,
+    .icon > img,
     .icon svg {
       color: var(--black-contrast-black-100);
     }
@@ -110,7 +110,6 @@
         }
       }
     }
-
 
 
     .header__link.fw-semibold {
@@ -212,9 +211,7 @@
     }
 
 
-
-
-    //мобильное приложение 
+    //мобильное приложение
     .btn.btn-outline-primary.btn-sm.d-none.d-md-inline-flex.gap-2.align-items-center.justify-content-center {
       border: 1px solid var(--black-contrast-white-0);
       background-color: var(--black-contrast-black-0);
@@ -222,7 +219,7 @@
 
       .icon.size-m {
         color: var(--black-contrast-white-0);
-        transition: 0.2 all linear;
+        transition: all 0.2s linear;
       }
 
       &:hover,
@@ -259,8 +256,6 @@
         outline-offset: 2px;
       }
     }
-
-
 
 
     .dropdown-menu {
@@ -358,8 +353,6 @@
     }
 
 
-
-
     .card-product {
       border-radius: 5px;
 
@@ -401,7 +394,6 @@
     }
 
 
-
     .card-service {
       background: var(--black-contrast-black-300);
 
@@ -436,9 +428,6 @@
     }
 
 
-
-
-
     a.card-service {
       border-radius: 8px;
       background: var(--black-contrast-black-300);
@@ -468,7 +457,6 @@
     }
 
 
-
     //направить сообщение кнопка
     .d-flex.flex-column.align-items-start.gap-5.gap-md-6.ps-lg-6 {
       .btn.btn-info.w-100.w-lg-auto {
@@ -493,7 +481,6 @@
     .section-layout.section-feedback.bg-blue-10 {
       background-color: var(--black-contrast-black-300);
     }
-
 
 
     .form-control.form-control-lg-lg.js-mask-phone:focus {
@@ -621,7 +608,6 @@
     }
 
 
-
     .section-layout {
       background-color: var(--black-contrast-gray-100);
       color: var(--black-contrast-black-0);
@@ -644,7 +630,6 @@
     }
 
 
-
     .nav-tabs {
       border: none;
 
@@ -660,9 +645,6 @@
         }
       }
     }
-
-
-
 
 
     .polygon-container.js-polygon-container {
@@ -765,8 +747,6 @@
     }
 
 
-
-
     button .btn.btn-info.w-100.w-lg-auto {
       background-color: var(--black-contrast-black-0);
       color: var(--black-contrast-gray-200);
@@ -800,7 +780,6 @@
     }
 
 
-
     #linkToList {
       color: var(--black-contrast-black-200);
       text-decoration: underline;
@@ -818,8 +797,6 @@
         outline-offset: 2px;
       }
     }
-
-
 
 
     .card-about-bank__col.d-flex.flex-column {
@@ -873,8 +850,6 @@
     h5 {
       color: var(--black-contrast-black-0);
     }
-
-
 
 
     .btn-app.btn.btn-primary.d-flex.align-items-center.gap-3.justify-content-center {
@@ -978,7 +953,6 @@
     }
 
 
-
     //rustore  rumarket  nashstore
     .btn-app.btn.d-inline-flex.justify-content-center.align-items-center.bg-white {
       border: 2px solid var(--black-contrast-black-0);
@@ -1012,7 +986,6 @@
         outline-offset: 2px;
       }
     }
-
 
 
     .footer__info {
@@ -1089,13 +1062,10 @@
     }
 
 
-
-
     //404/503 pages
     .d-flex.flex-column.flex-xl-row.column-gap-xl-6 img {
       display: none;
     }
-
 
 
     //atms.html
@@ -1109,7 +1079,7 @@
       background-color: var(--black-contrast-gray-100);
     }
 
-    .input-group> :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+    .input-group > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
       border: 1px solid var(--black-contrast-black-0);
       border-left: none;
     }
@@ -1125,7 +1095,6 @@
       .icon.size-m.d-none.d-md-block {
         color: var(--black-contrast-black-0)
       }
-
 
 
       &:hover,
@@ -1157,9 +1126,6 @@
     .card-tariff.d-flex.flex-column.gap-5.bg-blue-10 {
       background-color: var(--black-contrast-gray-100);
     }
-
-
-
 
 
     .modal {
@@ -1342,7 +1308,6 @@
     }
 
 
-
     .benefit__description.w-100.text-m span {
       color: var(--black-contrast-black-0);
     }
@@ -1467,12 +1432,6 @@
     }
 
 
-
-
-
-
-
-
     .card-feedback__inner::after {
       background: none;
       background-color: var(--black-contrast-black-300);
@@ -1496,8 +1455,6 @@
         min-width: 150px;
         text-align: center;
         white-space: normal;
-
-        text-align: center;
         overflow: hidden;
       }
     }
@@ -1524,11 +1481,10 @@
       }
 
 
-
       //открыть чат
       .btn.btn-outline-primary.btn-lg-lg.text-ls.overflow-visible.w-100.w-md-auto {
         padding: 15px 32px !important;
-        max-width: auto;
+        max-width: none;
         background-color: var(--black-contrast-black-0);
         border: 1px solid var(--black-contrast-black-0);
         color: var(--black-contrast-white-200);
@@ -1545,10 +1501,6 @@
         }
       }
     }
-
-
-
-
 
 
     //подробнее
@@ -1569,8 +1521,6 @@
         outline-offset: 2px;
       }
     }
-
-
 
 
     //	biometric-identification.html
@@ -1639,7 +1589,6 @@
             width: 100%;
             display: grid !important;
             place-items: center;
-            text-align: center;
 
             .d-flex.flex-column.gap-2.align-items-start {
 
@@ -1684,7 +1633,6 @@
         }
       }
     }
-
 
 
     .d-flex.flex-column.flex-md-row.flex-lg-column.gap-2.gap-md-4.gap-lg-3.align-items-start.align-items-md-center.align-items-lg-start.pe-xxl-11 {
@@ -1769,7 +1717,7 @@
       background: none;
     }
 
-    .tabs-panel__navigation.d-none.d-lg-block.js-tabs-slider-navigation.w-100 span>svg {
+    .tabs-panel__navigation.d-none.d-lg-block.js-tabs-slider-navigation.w-100 span > svg {
 
       color: var(--black-contrast-white-0);
     }
@@ -1824,7 +1772,6 @@
         }
       }
     }
-
 
 
     //оформить заявку
@@ -1947,13 +1894,16 @@
 
     .page-item {
 
-      --bs-pagination-active-bg: var(--black-contrast-black-0) --bs-pagination-active-border-color: var(--black-contrast-white-200);
+      --bs-pagination-active-bg: var(--black-contrast-black-0);
+      --bs-pagination-active-border-color: var(--black-contrast-white-200);
       --bs-pagination-border-radius: 4px;
 
       &:hover,
       &:focus {
 
-        --bs-pagination-hover-bg: var(--black-contrast-black-200) --bs-pagination-active-bg: var(--black-contrast-black-300) --bs-pagination-active-border-color: var(--black-contrast-white-200);
+        --bs-pagination-hover-bg: var(--black-contrast-black-200);
+        --bs-pagination-active-bg: var(--black-contrast-black-300);
+        --bs-pagination-active-border-color: var(--black-contrast-white-200);
         --bs-pagination-border-radius: 4px;
       }
 
@@ -1964,7 +1914,8 @@
 
       &.active {
 
-        --bs-pagination-active-bg: var(--black-contrast-black-0) --bs-pagination-active-border-color: var(--black-contrast-white-200);
+        --bs-pagination-active-bg: var(--black-contrast-black-0);
+        --bs-pagination-active-border-color: var(--black-contrast-white-200);
         --bs-pagination-border-radius: 4px;
       }
     }
@@ -1993,11 +1944,6 @@
       border: 1px solid var(--black-contrast-black-0);
 
 
-
-
-
-
-
       &:focus,
       &:hover {
         background-color: var(--black-contrast-black-0);
@@ -2012,7 +1958,6 @@
         outline-offset: 2px;
       }
     }
-
 
 
     //карточки
@@ -2099,9 +2044,6 @@
     }
 
 
-
-
-
     //карточки
 
     .row.px-lg-6.row-gap-6.row-gap-lg-7.mt-4.mt-md-6.mt-lg-7 {
@@ -2159,7 +2101,6 @@
             width: 100%;
             display: grid !important;
             place-items: center;
-            text-align: center;
 
             .d-flex.flex-column.gap-2.align-items-start {
               .text-l {
@@ -2268,19 +2209,10 @@
     }
 
 
-
-
-
-
-
-
     .dark-100 {
       margin: 0 auto;
       text-align: center;
     }
-
-
-
 
 
     .table-adaptive__row {
@@ -2334,13 +2266,9 @@
     }
 
 
-
-
-
     #mobile-phone-help::placeholder {
       color: var(--black-contrast-black-0);
     }
-
 
 
     #mobile-phone-help::placeholder {
@@ -2390,7 +2318,6 @@
     }
 
 
-
     //contributions.html
     .card-product-list__condition.d-flex.flex-column.gap-2.w-100.w-sm-50.w-xl-auto {
       .text-number-l.fw-bold {
@@ -2438,8 +2365,6 @@
     }
 
 
-
-
     .card-help.d-inline-flex.p-3.p-sm-5.p-lg-6.w-100.bg-blue-10 {
       border: 1px solid #000;
     }
@@ -2472,8 +2397,6 @@
     .accordion-button.collapsed span {
       color: var(--black-contrast-black-0);
     }
-
-
 
 
     .m-0.col-lg-6 {
@@ -2512,12 +2435,9 @@
     }
 
 
-
-
     .card-benefit__description.m-0.text-m {
       color: var(--black-contrast-black-0);
     }
-
 
 
     //financial-institutes.html
@@ -2527,13 +2447,9 @@
     }
 
 
-
-
     .banner-hero-content__title {
       color: var(--black-contrast-black-0);
     }
-
-
 
 
     .card-benefit__icon {
@@ -2541,9 +2457,6 @@
         filter: brightness(0) contrast(100%);
       }
     }
-
-
-
 
 
     .text-m.btn.btn-link.btn-lg.d-inline-flex.gap-2.align-items-center {
@@ -2571,7 +2484,6 @@
         outline-offset: 2px;
       }
     }
-
 
 
     //financing.html
@@ -2669,12 +2581,6 @@
         outline-offset: 2px;
       }
     }
-
-
-
-
-
-
 
 
     .form-feedback.bg-white {
@@ -2911,8 +2817,6 @@
     }
 
 
-
-
     //measures-detail.html
 
     .btn.btn-link.btn-lg.d-inline-flex.gap-2.align-items-center.card-text__button-more {
@@ -2954,12 +2858,6 @@
         }
       }
     }
-
-
-
-
-
-
 
 
     .card-text.d-inline-flex.px-3.px-md-4.p-4.p-sm-5.p-lg-6.bg-white.w-100.h-100 {
@@ -3013,11 +2911,9 @@
     }
 
 
-
     .bg-dark-10 {
       background-color: var(--black-contrast-gray-300);
     }
-
 
 
     //mobile-app.html
@@ -3030,8 +2926,7 @@
       color: var(--black-contrast-white-0);
       background-color: var(--black-contrast-black-200);
       padding: 15px 32px;
-      border: 1px solid var(--black-contrast-white-0);
-      ;
+      border: 1px solid var(--black-contrast-white-0);;
 
 
       .icon.size-m {
@@ -3104,7 +2999,7 @@
     }
 
 
-    //карточки 
+    //карточки
     .tab-pane.fade.show.active {
       gap: 15px;
 
@@ -3132,9 +3027,6 @@
     }
 
 
-
-
-
     .card-promo.card-promo--heavy-violet {
       background-color: var(--black-contrast-gray-300);
     }
@@ -3144,7 +3036,6 @@
       background-color: var(--black-contrast-gray-300);
       border-radius: 12px
     }
-
 
 
     .stepper-item.stepper-item--color-violet {
@@ -3173,11 +3064,6 @@
         }
       }
     }
-
-
-
-
-
 
 
     .btn.btn-primary.align-items-center {
@@ -3214,7 +3100,7 @@
 
       .icon.size-s {
         color: var(--black-contrast-white-0);
-        transition: 0.2 all linear;
+        transition: all 0.2s linear;
       }
 
       &:hover,
@@ -3299,8 +3185,6 @@
     }
 
 
-
-
     .stepper-item__number-value {
       font-size: 1.5rem !important;
     }
@@ -3337,9 +3221,6 @@
     .card-feedback__title {
       color: var(--black-contrast-black-0);
     }
-
-
-
 
 
     //msb-currency-control.html
@@ -3402,7 +3283,6 @@
     }
 
 
-
     //перейти в интернет банк
     .btn.btn-yellow.d-none.d-md-inline-flex {
       color: var(--black-contrast-white-0);
@@ -3420,7 +3300,6 @@
         outline-offset: 2px;
       }
     }
-
 
 
     .card-promo--heavy-violet {
@@ -3507,8 +3386,7 @@
         color: var(--black-contrast-white-0);
         background-color: var(--black-contrast-black-0);
         padding: 5px 12px !important;
-        border: 1px solid var(--black-contrast-white-0);
-        ;
+        border: 1px solid var(--black-contrast-white-0);;
 
 
         .icon.size-m {
@@ -3547,7 +3425,7 @@
       }
     }
 
-    .overflow-auto.custom-overflow-scrollbar>table>thead>tr>th {
+    .overflow-auto.custom-overflow-scrollbar > table > thead > tr > th {
       font-size: 1.5rem;
       color: var(--black-contrast-black-0);
     }
@@ -3616,14 +3494,11 @@
     }
 
 
-
-
     //press-center.html
     .card-news__image-container.position-relative.z-1.h-100 {
       .card-news__img.position-relative.z-2 {
         display: none;
       }
-
 
 
       .col-12.col-md-6.col-lg-4 {
@@ -3653,12 +3528,11 @@
     }
 
 
-
-
     .page-item {
       --bs-pagination-active-bg: var(--black-contrast-black-300);
       --bs-pagination-active-border-color: var(--black-contrast-black-300);
-      --bs-pagination-border-color: var(--black-contrast-black-0) --bs-pagination-hover-bg: var(--black-contrast-white-300);
+      --bs-pagination-border-color: var(--black-contrast-black-0);
+      --bs-pagination-hover-bg: var(--black-contrast-white-300);
       --bs-pagination-focus-bg: var(--black-contrast-gray-100);
 
       &.active {
@@ -3667,8 +3541,6 @@
         --bs-pagination-border-color: var(--black-contrast-black-0)
       }
     }
-
-
 
 
     .search-item mark {
@@ -3688,8 +3560,6 @@
         color: var(--black-contrast-black-0);
       }
     }
-
-
 
 
     //TRUST MANAGEMENT PAGE
@@ -3773,8 +3643,7 @@
       color: var(--black-contrast-white-0);
       background-color: var(--black-contrast-black-200);
       padding: 15px 32px;
-      border: 1px solid var(--black-contrast-white-0);
-      ;
+      border: 1px solid var(--black-contrast-white-0);;
 
 
       .icon.size-m {
@@ -3882,14 +3751,10 @@
     }
 
     .btn.btn-link.btn-lg.d-inline-flex.gap-2.align-items-center.mt-4.mt-md-6.section-custom-accordion__button-more {
-
-
-
       color: var(--black-contrast-white-0);
       background-color: var(--black-contrast-black-200);
       padding: 15px 32px;
-      border: 1px solid var(--black-contrast-white-0);
-      ;
+      border: 1px solid var(--black-contrast-white-0);;
 
 
       .icon.size-m {
@@ -3911,16 +3776,12 @@
         outline-offset: 2px;
       }
     }
-
-
 
     .btn.btn-link.btn-lg.d-inline-flex.gap-2.align-items-center.mt-4.mt-md-6 {
       color: var(--black-contrast-white-0);
       background-color: var(--black-contrast-black-200);
       padding: 15px 32px;
-      border: 1px solid var(--black-contrast-white-0);
-      ;
-
+      border: 1px solid var(--black-contrast-white-0);;
 
       .icon.size-m {
         color: var(--black-contrast-white-0);
@@ -3941,7 +3802,6 @@
         outline-offset: 2px;
       }
     }
-
 
 
     //карточки
@@ -4110,7 +3970,6 @@
     }
 
 
-
     //modals.html
 
     .modal-footer.border-0.justify-content-md-center {
@@ -4132,9 +3991,6 @@
         }
       }
     }
-
-
-
 
 
     .upload-file__box.p-3.p-md-4 {
@@ -4187,7 +4043,6 @@
     }
 
 
-
     .d-flex.flex-column.align-items-start.row-gap-3 {
       .btn.btn-primary {
         background-color: var(--black-contrast-black-100);
@@ -4215,7 +4070,5 @@
       background: none;
       background-color: var(--black-contrast-black-100);
     }
-
-
   }
 }
