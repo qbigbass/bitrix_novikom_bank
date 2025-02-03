@@ -12,6 +12,7 @@ class Benefits implements ComponentInterface
     {
         $colCount = 3;
         $headerTag = false;
+        $calcCols = 'Y';
 
         if (!empty($params['colCount'])) {
             $colCount = $params['colCount'];
@@ -19,6 +20,10 @@ class Benefits implements ComponentInterface
 
         if (!empty($params['headerTag'])) {
             $headerTag = $params['headerTag'];
+        }
+
+        if ($params['calcCols'] === 'N') {
+            $calcCols = $params['calcCols'];
         }
 
         if (!empty($params['template'])) {
@@ -46,6 +51,7 @@ class Benefits implements ComponentInterface
                 "CACHE_TYPE" => "A",
                 "CHECK_DATES" => "Y",
                 "COL_COUNT" => $colCount,
+                "CALC_COLS" => $calcCols,
                 "DETAIL_URL" => "",
                 "DISPLAY_BOTTOM_PAGER" => "N",
                 "DISPLAY_TOP_PAGER" => "N",

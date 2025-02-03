@@ -11,7 +11,7 @@ $elementCode = $arCurPage[array_key_last($arCurPage)];
 if (!empty($elementCode)) {
     $APPLICATION->IncludeComponent(
         "bitrix:news.detail",
-        "for_corporate_clients_detail",
+        "client_detail",
         [
             "DISPLAY_DATE" => "Y",
             "DISPLAY_NAME" => "Y",

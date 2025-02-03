@@ -43,6 +43,10 @@ if (!empty($arParams["BANNER_BREADCRUMBS_COLOR_CLASS"])) {
     $arResult['PARAMS_CLASS']["BREADCRUMBS_COLOR_CLASS"] = $arParams["BANNER_BREADCRUMBS_COLOR_CLASS"];
 }
 
+if (!empty($arResult['PROPERTIES']['CNT_COL_BENEFITS_TOP']['VALUE'])) {
+    $params["CNT_COL_BENEFITS_TOP"] = $arResult['PROPERTIES']['CNT_COL_BENEFITS_TOP']['VALUE'];
+}
+
 $headerView->render(
     $titleHeader,
     $arResult['~PREVIEW_TEXT'],
@@ -54,10 +58,19 @@ $headerView->render(
     $arResult,
     null,
     null,
-    !empty($arResult['PROPERTIES']['BENEFITS_TOP_HEADER']['VALUE']) ? renderBenefitsHeaderHeader($APPLICATION, $arResult['PROPERTIES']['BENEFITS_TOP_HEADER']['VALUE'], params : $params) : null,
+    !empty($arResult['PROPERTIES']['BENEFITS_TOP_HEADER']['VALUE'])
+        ? renderBenefitsHeaderHeader(
+            $APPLICATION,
+            $arResult['PROPERTIES']['BENEFITS_TOP_HEADER']['VALUE'],
+            params : $params
+        ) : null,
     !empty($arResult['PROPERTIES']['BENEFITS_TOP']['VALUE'])
-        ? renderBenefitsHeaderFooter($APPLICATION, $arResult['PROPERTIES']['BENEFITS_TOP']['VALUE'], !empty($arResult['PREVIEW_PICTURE']['SRC']))
-        : null,
+        ? renderBenefitsHeaderFooter(
+            $APPLICATION,
+            $arResult['PROPERTIES']['BENEFITS_TOP']['VALUE'],
+            !empty($arResult['PREVIEW_PICTURE']['SRC']),
+            params: $params
+        ) : null,
 );
 ?>
 <? if (!empty($arResult['PROPERTIES']['BANNER_HEADER']['VALUE']) && !empty($arResult['PROPERTIES']['BANNER_TEXT']['VALUE'])) { ?>

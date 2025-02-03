@@ -1,20 +1,6 @@
 <?php
 use Dalee\Helpers\ComponentRenderer\Renderer;
 
-function renderBenefitsHeaderFooter(CMain $APPLICATION, array $ids, bool $hasPicture = true): string
-{
-    $renderer = new Renderer($APPLICATION);
-    $colCount = $hasPicture ? 3 : 4;
-
-    ob_start();
-    $renderer->render('Benefits', $ids, null, [
-        'colCount' => $colCount,
-        'headerTag' => 'h4'
-    ]);
-
-    return ob_get_clean();
-}
-
 function renderBenefitsHeaderHeader(CMain $APPLICATION, array $ids, bool $hasPicture = true, array $params = []): string
 {
     $renderer = new Renderer($APPLICATION);
@@ -32,6 +18,27 @@ function renderBenefitsHeaderHeader(CMain $APPLICATION, array $ids, bool $hasPic
             'viewBenefits' => $params['VIEW_BENEFITS_TOP_HEADER'],
         ]
     );
+
+    return ob_get_clean();
+}
+
+function renderBenefitsHeaderFooter(CMain $APPLICATION, array $ids, bool $hasPicture = true, array $params = []): string
+{
+    $renderer = new Renderer($APPLICATION);
+    $colCountBenefitTop = $hasPicture ? 3 : 4;
+    $calcCols = 'Y';
+
+    if (!empty($params['CNT_COL_BENEFITS_TOP'])) {
+        $colCountBenefitTop = $params['CNT_COL_BENEFITS_TOP'];
+        $calcCols = 'N';
+    }
+
+    ob_start();
+    $renderer->render('Benefits', $ids, null, [
+        'colCount' => $colCountBenefitTop,
+        'headerTag' => 'h4',
+        'calcCols' => $calcCols
+    ]);
 
     return ob_get_clean();
 }
