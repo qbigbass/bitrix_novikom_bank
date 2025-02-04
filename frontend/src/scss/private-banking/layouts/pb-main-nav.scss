@@ -32,11 +32,11 @@
   }
 
   @include use-media(tablet-album) {
-    padding: 5rem 0;
+    padding: 5rem 0 0;
   }
 
   @include use-media(laptop) {
-    padding: 7.5rem 0;
+    padding-top: 7.5rem;
   }
 
   &__link {

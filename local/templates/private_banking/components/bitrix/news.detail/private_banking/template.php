@@ -101,7 +101,7 @@ $this->setFrameMode(true);
     <div class="container">
         <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade show active">
-                <h2 class="pb-section__title pb-section__title--size-small dark-0 mb-6 animate js-animation">
+                <h2 class="pb-section__title pb-section__title--size-small dark-0 mb-6 ps-xxl-6 animate js-animation">
                     <?= $arResult['NAME'] ?>
                 </h2>
                 <div class="d-flex flex-column row-gap-6">
@@ -338,7 +338,7 @@ $this->setFrameMode(true);
                             <p class="pb-panel-info__text">Банк информирует Клиентов о необходимости ознакомиться с Декларацией о рисках, являющейся обязательным приложением к Регламенту оказания брокерских услуг на финансовых рынках (далее — Регламент), до заключения договора на брокерское обслуживание. Депозитарные услуги предоставляются банком Клиенту на основании заключённого между ними договора счёта депо в порядке, предусмотренном Регламентом депозитарного обслуживания.</p>
                         </div>
                     </div>
-                    <div class="col-12 col-xxl-9 ps-xxl-6 rte animate js-animation">
+                    <div class="col-12 col-xxl-9 ps-xxl-6 pe-xxl-6 rte animate js-animation">
                         <p>Услуги, оказываемые банком в рамках Регламента, не являются услугами по открытию банковских счётов и приёму вкладов. Денежные средства, передаваемые по договору о брокерском обслуживании, не подлежат страхованию в соответствии с Федеральным законом от 23.12.2003 года № 177-ФЗ «О страховании вкладов физических лиц в банках Российской Федерации».</p>
                     </div>
                     <div class="d-flex flex-column row-gap-6 pt-6 pb-additional-info animate js-animation">
