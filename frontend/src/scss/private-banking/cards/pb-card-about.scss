@@ -101,6 +101,18 @@
         max-width: 53.75rem;
       }
     }
+
+    #{$root}__title {
+      @include use-media(laptop) {
+        font-size: 2.5rem;
+      }
+    }
+
+    & .pb-list {
+      @include use-media(laptop) {
+        max-width: 52.5rem;
+      }
+    }
   }
 
   &--big {
