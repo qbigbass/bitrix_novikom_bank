@@ -1,3 +1,25 @@
+.pb {
+  & .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    @include use-media(tablet) {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+
+    @include use-media(tablet-album) {
+      padding-left: 5rem;
+      padding-right: 5rem;
+    }
+
+    @include use-media(desktop) {
+      padding-left: 7.5rem;
+      padding-right: 7.5rem;
+    }
+  }
+}
+
 .pb-section-hero {
   position: relative;
   overflow: hidden;
@@ -255,7 +277,7 @@
     }
 
     @include use-media(desktop) {
-      max-width: 110rem;
+      max-width: 105rem;
     }
   }
 }
