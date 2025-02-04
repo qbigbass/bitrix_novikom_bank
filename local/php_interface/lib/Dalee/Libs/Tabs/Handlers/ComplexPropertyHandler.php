@@ -25,10 +25,32 @@ class ComplexPropertyHandler implements PropertyHandlerInterface
     {
         $accordionItems = '';
         foreach ($this->property['~VALUE'] as $key => $value) {
+            $tagHtml = '';
+            if (!empty($value['SUB_VALUES']['COMPLEX_TAG']['~VALUE'])) {
+                $tagHtml = '
+                    <div class="tag tag--outline tag--triangle-absolute">
+                        <span class="tag__content text-s fw-semibold mw-100 w-sm-auto">' . $value['SUB_VALUES']['COMPLEX_TAG']['~VALUE'] . '</span>
+                        <span class="tag__triangle">
+                            <svg width="14" height="21" viewBox="0 0 14 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13.5 19.3486L0.934259 0.5H13.5V19.3486Z"></path>
+                            </svg>
+                        </span>
+                    </div>
+                ';
+            }
+
             $accordionItems .=
                 '<div class="accordion-item">
                     <div class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#' . $key . '" aria-controls="' . $key . '">
+                       ' . $tagHtml . '
+                        <button
+                            class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#' . $key . '"
+                            aria-controls="' . $key . '"
+                            data-item-name="' . $value['SUB_VALUES']['COMPLEX_HEADER']['~VALUE'] . '"
+                        >
                             <span class="h4">' . $value['SUB_VALUES']['COMPLEX_HEADER']['~VALUE'] . '</span>
                         </button>
                     </div>

@@ -366,19 +366,11 @@ $headerView->render(
 </section>
 <? } ?>
 
-<? if (!empty($arResult['PROPERTIES']['TABS_2']['VALUE'])) : ?>
-    <section class="section-layout bg-purple-10 js-collapsed-mobile">
-        <div class="container">
-            <h3 class="px-lg-6 mb-4 mb-md-6 mb-lg-7"><?= $arResult['PROPERTIES']['TABS_2_HEADER']['~VALUE'] ?></h3>
-            <div class="row px-lg-6">
-                <div class="col-12">
-                    <? $params['template_component'] = 'tabs_financing_measures'; ?>
-                    <? $renderer->render('Tabs', $arResult['PROPERTIES']['TABS_2']['VALUE'], params: $params); ?>
-                </div>
-            </div>
-        </div>
-    </section>
-<? endif; ?>
+<?if ($arResult["PROPERTIES"]["SHOW_FINANCING_MEASURES"]["VALUE_XML_ID"] === "Y"):?>
+    <!-- Блок "Меры финансирования" -->
+    <? showBlockFinancingMeasures(); ?>
+    <?= $GLOBALS["BLOCK_FINANCING_MEASURES"] ?>
+<?endif;?>
 
 <? if (!empty($arResult['PROPERTIES']['TABS']['VALUE'])) { ?>
     <section class="section-layout js-collapsed-mobile">

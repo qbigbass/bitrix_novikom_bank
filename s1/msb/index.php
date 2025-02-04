@@ -5,6 +5,9 @@ $APPLICATION->SetTitle('Малому и среднему бизнесу');
 ?>
 
 <?
+global $MAIN_SECTION;
+$MAIN_SECTION = "msb";
+
 $APPLICATION->IncludeComponent(
     "bitrix:news",
     "msb",
