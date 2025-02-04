@@ -1,7 +1,7 @@
 .pb-tags {
   display: inline-block;
   padding: .125rem .625rem;
-  color: var(--dark-0);
+  color: var(--pb-text-color);
   font-size: .8125rem;
   line-height: 1.4;
   border-radius: .5rem;
@@ -18,9 +18,16 @@
     line-height: 1.5;
   }
 
-  &.swiper-slide-thumb-active,
-  &.active {
+  &.swiper-slide {
+    color: var(--dark-0);
+  }
+
+  &.swiper-slide-thumb-active {
     color: var(--pb-text-color);
+  }
+
+  &.active {
+    color: var(--dark-0);
   }
 
   & span {

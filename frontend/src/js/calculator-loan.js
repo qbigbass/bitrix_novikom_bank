@@ -7,7 +7,7 @@ const ELEMS_LOAN = {
     selectLoanProperties: '.js-select-loan-properties',
     selectLoanPaymentType: '.js-select-loan-payment-type',
     tableSchedule: '#payment-loan-table-body',
-    loanName: ".js-loan-name",
+    loanName: ".js-program-name",
 }
 
 function calculateDifferentiatedPayments({amount, rate, period}) {
