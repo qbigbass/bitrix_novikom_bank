@@ -57,6 +57,13 @@
       line-height: 1.35;
       font-weight: 500;
     }
+
+    .icon {
+      @include use-media(tablet-album) {
+        width: 2rem;
+        height: 2rem;
+      }
+    }
   }
 
   &__link {

@@ -21,7 +21,7 @@ global $pbModel;
 $pbModel = $arResult['CONTENT_JSON'] ?? null;
 
 ?>
-<section class="pb-section pb-section--gradient-linear">
+<section class="pb-section pb-section--gradient-linear py-xxl-16">
     <div class="container">
         <h3 class="pb-section__title dark-0 text-center mb-4 d-md-none animate js-animation">Премиум-услуги</h3>
         <div class="pb-services d-flex flex-column row-gap-4 row-gap-md-5 row-gap-lg-9">

@@ -19,7 +19,7 @@ $this->setFrameMode(true);
 $pbModel = $arResult['CONTENT_JSON'] ?? null;
 
 ?>
-<section class="pb-section pb-section--gradient position-relative z-1">
+<section class="pb-section pb-section--gradient position-relative z-1 py-xxl-16">
     <div class="container">
         <div class="d-flex flex-column row-gap-6 row-gap-lg-11">
             <h2 class="pb-section__title dark-0 text-center animate js-animation">
