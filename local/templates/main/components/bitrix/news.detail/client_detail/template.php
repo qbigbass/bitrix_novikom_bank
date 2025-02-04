@@ -73,8 +73,11 @@ $headerView->render(
         ) : null,
 );
 ?>
+
+<? file_put_contents($_SERVER["DOCUMENT_ROOT"] . "/logs/mindbox_order_status_".date("Y_m_d").".txt", "BANNER_TEXT:\n" . print_r($arResult['PROPERTIES']['BANNER_TEXT'], true), FILE_APPEND); ?>
+
 <? if (!empty($arResult['PROPERTIES']['BANNER_HEADER']['VALUE']) && !empty($arResult['PROPERTIES']['BANNER_TEXT']['VALUE'])) { ?>
-    <section class="section-layout">
+    <section class="section-layout <?= $arResult['PROPERTIES']['CLASS_BLOCK_BANNER']['VALUE'] ?>">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -98,6 +101,26 @@ $headerView->render(
                 </div>
             </div>
         </div>
+        <? if (!empty($arResult['PROPERTIES']['PATH_IMG_BLOCK_BANNER']['VALUE'])) : ?>
+            <picture class="pattern-bg pattern-bg--position-sm-bottom">
+                <source srcset="/frontend/dist/img<?= $arResult['PROPERTIES']['PATH_IMG_BLOCK_BANNER']['VALUE'] ?>-s.svg" media="(max-width: 767px)">
+                <source srcset="/frontend/dist/img<?= $arResult['PROPERTIES']['PATH_IMG_BLOCK_BANNER']['VALUE'] ?>-m.svg" media="(max-width: 1199px)">
+                <img src="/frontend/dist/img<?= $arResult['PROPERTIES']['PATH_IMG_BLOCK_BANNER']['VALUE'] ?>-l.svg" alt="bg pattern" loading="lazy">
+            </picture>
+        <? endif; ?>
+    </section>
+<? } elseif (!empty($arResult['PROPERTIES']['BANNER_TEXT']['VALUE']) && $arResult['PROPERTIES']['BANNER_TEXT']['USER_TYPE'] === 'HTML')  { ?>
+    <section class="section-layout <?= $arResult['PROPERTIES']['CLASS_BLOCK_BANNER']['VALUE'] ?>">
+        <div class="container">
+            <?= $arResult['PROPERTIES']['BANNER_TEXT']['~VALUE']['TEXT'] ?>
+        </div>
+        <? if (!empty($arResult['PROPERTIES']['PATH_IMG_BLOCK_BANNER']['VALUE'])) : ?>
+            <picture class="pattern-bg pattern-bg--position-sm-bottom">
+                <source srcset="/frontend/dist/img<?= $arResult['PROPERTIES']['PATH_IMG_BLOCK_BANNER']['VALUE'] ?>-s.svg" media="(max-width: 767px)">
+                <source srcset="/frontend/dist/img<?= $arResult['PROPERTIES']['PATH_IMG_BLOCK_BANNER']['VALUE'] ?>-m.svg" media="(max-width: 1199px)">
+                <img src="/frontend/dist/img<?= $arResult['PROPERTIES']['PATH_IMG_BLOCK_BANNER']['VALUE'] ?>-l.svg" alt="bg pattern" loading="lazy">
+            </picture>
+        <? endif; ?>
     </section>
 <? } ?>
 
@@ -271,6 +294,83 @@ $headerView->render(
                         "PARENT_SECTION_CODE" => "",
                         "PREVIEW_TRUNCATE_LEN" => "",
                         "PROPERTY_CODE" => ["",""],
+                        "SET_BROWSER_TITLE" => "N",
+                        "SET_LAST_MODIFIED" => "N",
+                        "SET_META_DESCRIPTION" => "N",
+                        "SET_META_KEYWORDS" => "N",
+                        "SET_STATUS_404" => "N",
+                        "SET_TITLE" => "N",
+                        "SHOW_404" => "N",
+                        "SORT_BY1" => "ACTIVE_FROM",
+                        "SORT_BY2" => "SORT",
+                        "SORT_ORDER1" => "DESC",
+                        "SORT_ORDER2" => "ASC",
+                        "STRICT_SECTION_CHECK" => "N",
+                    ],
+                    $component
+                ); ?>
+            </div>
+        </div>
+        <picture class="pattern-bg pattern-bg--position-sm-bottom section-restructuring-benefits__pattern">
+            <source srcset="/frontend/dist/img/patterns/section/pattern-light-s.svg" media="(max-width: 767px)">
+            <source srcset="/frontend/dist/img/patterns/section/pattern-light-m.svg" media="(max-width: 1199px)"><img src="/frontend/dist/img/patterns/section/pattern-light-l.svg" alt="bg pattern" loading="lazy">
+        </picture>
+    </section>
+<? } ?>
+
+<? if (!empty($arResult['PROPERTIES']['BENEFITS_TILE_ICON']['VALUE'])) { ?>
+    <section class="section-layout">
+        <div class="container">
+            <div class="row mb-6 mb-lg-7 px-lg-6">
+                <h3><?= $arResult['PROPERTIES']['BENEFITS_TILE_ICON_HEADER']['~VALUE'] ?? '' ?></h3>
+            </div>
+            <div class="row cards-gutter">
+                <? global $benefitsTileIconFilter;
+                $benefitsTileIconFilter = [
+                    'ACTIVE' => 'Y',
+                    'ID' => $arResult['PROPERTIES']['BENEFITS_TILE_ICON']['VALUE']
+                ];
+
+                $APPLICATION->IncludeComponent(
+                    "bitrix:news.list",
+                    "benefits_tile_icon",
+                    [
+                        "ACTIVE_DATE_FORMAT" => "d.m.Y",
+                        "ADD_SECTIONS_CHAIN" => "N",
+                        "AJAX_MODE" => "N",
+                        "AJAX_OPTION_ADDITIONAL" => "",
+                        "AJAX_OPTION_HISTORY" => "N",
+                        "AJAX_OPTION_JUMP" => "N",
+                        "AJAX_OPTION_STYLE" => "Y",
+                        "CACHE_FILTER" => "Y",
+                        "CACHE_GROUPS" => "Y",
+                        "CACHE_TIME" => "36000000",
+                        "CACHE_TYPE" => "A",
+                        "CHECK_DATES" => "Y",
+                        "COL_COUNT" => "2",
+                        "DETAIL_URL" => "",
+                        "DISPLAY_BOTTOM_PAGER" => "N",
+                        "DISPLAY_TOP_PAGER" => "N",
+                        "FIELD_CODE" => ["CODE","NAME","PREVIEW_TEXT","PREVIEW_PICTURE",""],
+                        "FILTER_NAME" => "benefitsTileIconFilter",
+                        "HIDE_LINK_WHEN_NO_DETAIL" => "N",
+                        "IBLOCK_ID" => iblock('benefits'),
+                        "IBLOCK_TYPE" => "additional",
+                        "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+                        "INCLUDE_SUBSECTIONS" => "N",
+                        "MESSAGE_404" => "",
+                        "NEWS_COUNT" => "20",
+                        "PAGER_BASE_LINK_ENABLE" => "N",
+                        "PAGER_DESC_NUMBERING" => "N",
+                        "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+                        "PAGER_SHOW_ALL" => "N",
+                        "PAGER_SHOW_ALWAYS" => "N",
+                        "PAGER_TEMPLATE" => ".default",
+                        "PAGER_TITLE" => "Новости",
+                        "PARENT_SECTION" => "",
+                        "PARENT_SECTION_CODE" => "",
+                        "PREVIEW_TRUNCATE_LEN" => "",
+                        "PROPERTY_CODE" => ["ICON",""],
                         "SET_BROWSER_TITLE" => "N",
                         "SET_LAST_MODIFIED" => "N",
                         "SET_META_DESCRIPTION" => "N",

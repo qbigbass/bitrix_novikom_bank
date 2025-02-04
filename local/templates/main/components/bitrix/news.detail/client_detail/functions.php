@@ -55,6 +55,9 @@ function renderQuote(string $text, bool $invert = false): void
         $pathIcon = "/frontend/dist/img/business-additional-info.png";
         $bg = "bg-blue-10";
         $polygonLine = 'yellow-100';
+    } elseif ($MAIN_SECTION === "fi") {
+        $pathIcon = "/frontend/dist/img/restructuring-additional-info_gray.png";
+        $polygonLine = 'violet-100';
     }
     ?>
     <section class="section-layout py-lg-11<?= $invert ? ' bg-purple-10' : '' ?>">

@@ -4,6 +4,9 @@ global $APPLICATION;
 $APPLICATION->SetTitle('Финансовым институтам');
 ?>
 <?
+global $MAIN_SECTION;
+$MAIN_SECTION = "fi";
+
 $APPLICATION->IncludeComponent(
     "bitrix:news",
     "fi",
