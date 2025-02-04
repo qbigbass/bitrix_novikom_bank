@@ -8,7 +8,7 @@ $APPLICATION->SetTitle('Контакты банка Новиком');
     <div class="container banner-text__container position-relative z-2">
         <div class="row ps-lg-6">
             <div class="col-12 col-xxl-8 position-relative z-1 mb-6 mb-md-0 pt-6">
-                <div class="d-flex flex-column align-items-start gap-3 gap-lg-4">
+                <div class="banner-text__content d-flex flex-column align-items-start gap-3 gap-lg-4">
 
                     <?
                     $APPLICATION->IncludeComponent(

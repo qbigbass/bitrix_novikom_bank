@@ -27,7 +27,7 @@ if (!empty($arParams['COLOR_ICON'])) {
                     <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-a-protection"></use>
                 </svg>
             </div>
-            <a class="text-m btn btn-link btn-lg d-inline-flex gap-2 align-items-center" href="#">
+            <a class="text-m btn btn-link btn-lg d-inline-flex gap-2 align-items-center" href="/fraud-protection/">
                 <span class="fw-bold">Подробнее</span>
                 <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                     <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right-small"></use>

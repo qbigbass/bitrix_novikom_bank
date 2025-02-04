@@ -119,6 +119,15 @@ $headerColorClass = 'banner-product--heavy-violet';
                         <a class="btn btn-lg-lg btn-outline-primary fw-bold w-100 w-md-auto mt-6 mt-lg-7" href="<?= $arResult['PROPERTIES']['TEXT_BLOCK_BUTTON_LINK']['VALUE'] ?>">
                             <?= $arResult['PROPERTIES']['TEXT_BLOCK_BUTTON']['VALUE'] ?>
                         </a>
+                    <? } elseif (!empty($arResult['PROPERTIES']['TEXT_BLOCK_BUTTON']['VALUE']) && !empty($arResult['PROPERTIES']['BUTTON_CODE_FORM']['VALUE'])) { ?>
+                        <button
+                            class="btn btn-lg-lg btn-outline-primary fw-bold w-100 w-md-auto mt-6 mt-lg-7"
+                            type="button"
+                            data-bs-toggle="modal"
+                            data-bs-target="#<?= $arResult['PROPERTIES']['BUTTON_CODE_FORM']['VALUE'] ?>"
+                        >
+                            <?= $arResult['PROPERTIES']['TEXT_BLOCK_BUTTON']['VALUE'] ?>
+                        </button>
                     <? } ?>
                 </div>
                 <? if (!empty($arResult['PROPERTIES']['TEXT_BLOCK_IMAGE']['VALUE'])) { ?>

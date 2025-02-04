@@ -48,7 +48,7 @@ $headerView->render(
 ?>
 
 <? if (!empty($arResult['PROPERTIES']['BENEFITS']['VALUE'])) { ?>
-    <section class="section-benefits px-0 px-lg-6 py-6 py-sm-9 py-md-11 py-xl-16 position-relative overflow-hidden">
+    <section class="section-benefits px-0 px-lg-6 pt-6 pt-sm-9 pt-md-11 pt-xl-16 position-relative overflow-hidden">
         <div class="container">
             <div class="row mb-6 mb-lg-7">
                 <h3><?= $arResult['PROPERTIES']['BENEFITS_HEADER']['~VALUE'] ?></h3>

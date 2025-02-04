@@ -1,5 +1,9 @@
 <? if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die(); ?>
-
+<?
+/**
+ * @global CMain $APPLICATION
+ */
+?>
 <div class="row js-calculator-loan" data-id="<?= $arParams['CALCULATOR_ELEMENT_ID'] ?? '' ?>" data-table="loans">
     <div class="col-12 col-lg-6">
         <div class="d-flex flex-column row-gap-4 row-gap-md-6 row-gap-lg-7">
@@ -63,9 +67,8 @@
                 <div class="form-check">
                     <input class="form-check-input js-inp-loan-card" id="inp-loan-card"
                            type="checkbox" value="" checked>
-                    <label class="form-check-label" for="inp-loan-card"><a href="#"
-                                                                           tabindex="0">Получаю
-                            зарплату на&nbsp;карту Новиком</a></label>
+                    <label class="form-check-label" for="inp-loan-card">Получаю
+                            зарплату на&nbsp;карту Новиком</label>
                 </div>
                 <div class="d-flex flex-column row-gap-4 row-gap-lg-6">
                     <div class="d-flex flex-column row-gap-2">
@@ -114,7 +117,12 @@
                             </div>
                         </div>
                         <div class="card-calculate-result__footer">
-                            <button class="btn btn-primary btn-lg-lg w-100" type="button">
+                            <button
+                                class="btn btn-primary btn-lg-lg w-100"
+                                type="button"
+                                data-bs-toggle="modal"
+                                data-bs-target="#modal-loan-form"
+                            >
                                 Оформить заявку
                             </button>
                             <p class="dark-70 caption-m mb-0">Калькулятор не&nbsp;гарантирует
