@@ -505,6 +505,47 @@ $headerView->render(
     }
 } ?>
 
+<? if (!empty($arResult['PROPERTIES']['INFORMATION_LIST']['VALUE']) && !empty($arResult["INFORMATION_LIST"])) : ?>
+    <section class="section-layout px-lg-6">
+        <div class="container">
+            <div class="row ">
+                <div class="col-12">
+                    <? if (!empty($arResult['PROPERTIES']['INFORMATION_TITLE']['VALUE'])) : ?>
+                        <h2 class="h3 mb-4 mb-md-6 mb-lg-7"><?= $arResult['PROPERTIES']['INFORMATION_TITLE']['VALUE'] ?></h2>
+                    <? endif; ?>
+                    <div class="accordion accordion--size-lg accordion--bg-transparent px-lg-6" id="accordion-trust-management">
+                        <? $i = 0;?>
+                        <? foreach ($arResult["INFORMATION_LIST"] as $elemId => $arData) : ?>
+                            <div class="accordion-item">
+                                <div class="accordion-header">
+                                    <button
+                                        class="accordion-button <? if ($i !== 0) : ?> collapsed<? endif ?>"
+                                        type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#<?= $elemId?>"
+                                        aria-expanded
+                                        aria-controls="<?= $elemId?>"
+                                    >
+                                        <span class="fw-bold h4"><?= $arData["TITLE"]?></span>
+                                    </button>
+                                </div>
+                                <div class="accordion-collapse collapse <? if ($i === 0) : ?> show <? endif ?>" id="<?= $elemId ?>" data-bs-parent="#accordion-trust-management">
+                                    <div class="accordion-body">
+                                        <div class="rte rte--accordion">
+                                            <?= $arData["TEXT"]?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <? $i++; ?>
+                        <? endforeach; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<? endif; ?>
+
 <? if (!empty($arResult['PROPERTIES']['CONTACTS']['VALUE'])) {
     global $contactsFilter;
     $contactsFilter = [
