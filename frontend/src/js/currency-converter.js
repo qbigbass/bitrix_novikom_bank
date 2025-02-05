@@ -49,11 +49,11 @@ function findCurrency(currency, STATE) {
 }
 
 function calculateUnitCurrency(STATE) {
-    const have = convertCurrencyToNumber(STATE.currencyHave.base)
-    const get = convertCurrencyToNumber(STATE.currencyGet.base);
+    const valueHave = convertCurrencyToNumber(STATE.currencyHave.base)
+    const valueGet = convertCurrencyToNumber(STATE.currencyGet.base);
 
-    STATE.unitHaveToGet = have / get;
-    STATE.unitGetToHave = get / have;
+    STATE.unitHaveToGet = valueHave / valueGet;
+    STATE.unitGetToHave = valueGet / valueHave;
 
     STATE.elements.unitHaveToGet.innerHTML = `1 ${STATE.currencyHave.currency} = ${convertCurrencyToLocaleString(STATE.unitHaveToGet)} ${STATE.currencyGet.currency}`;
     STATE.elements.unitGetToHave.innerHTML = `1 ${STATE.currencyGet.currency} = ${convertCurrencyToLocaleString(STATE.unitGetToHave)} ${STATE.currencyHave.currency}`;
