@@ -17,5 +17,32 @@ $aMenuLinksExt = $APPLICATION->IncludeComponent("bitrix:menu.sections", "", arra
     false
 );
 
-$aMenuLinks = array_merge($aMenuLinks, $aMenuLinksExt);
+$additionalElements = \Bitrix\Iblock\ElementTable::getList([
+    'filter' => [
+        'IBLOCK_ID' => iblock('loans'),
+        'ACTIVE' => 'Y',
+        'IBLOCK_SECTION_ID' => false,
+    ],
+    'select' => [
+        'NAME',
+        'CODE',
+        'IBLOCK_SECTION_ID'
+    ],
+    'order' => [
+        'SORT' => 'ASC',
+    ]
+])->fetchAll();
+
+$additionalLinks = [];
+foreach ($additionalElements as $element) {
+    $additionalLinks[] = [
+        $element['NAME'],
+        $element['CODE'],
+        [],
+        ['DEPTH_LEVEL' => 0],
+        ""
+    ];
+}
+
+$aMenuLinks = array_merge($aMenuLinks, $aMenuLinksExt, $additionalLinks);
 ?>

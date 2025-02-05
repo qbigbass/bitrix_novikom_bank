@@ -3,24 +3,19 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 
 global $APPLICATION;
 
-$filter = [
-    'IBLOCK_SECTION.CODE' => false
-];
-
-$elements = getIBlockElements(iblock('corporate_clients'), $filter);
-
-$aMenuLinksExt = array_map(function ($element) {
-    return [
-        $element['NAME'],
-        $element['CODE'] . '/',
-        [$element['CODE'] . '/'],
-        [
-            'FROM_IBLOCK' => true,
-            'IS_PARENT' => '',
-            'DEPTH_LEVEL' => 1,
-        ]
-    ];
-}, $elements);
+$aMenuLinksExt = $APPLICATION->IncludeComponent("bitrix:menu.sections", "", array(
+    "IS_SEF" => "Y",
+    "SEF_BASE_URL" => "",
+    "SECTION_PAGE_URL" => "",
+    "DETAIL_PAGE_URL" => "#ELEMENT_CODE#",
+    "IBLOCK_TYPE" => "for_corporate_clients_ru",
+    "IBLOCK_ID" => iblock('corporate_clients'),
+    "DEPTH_LEVEL" => "1",
+    "CACHE_TYPE" => "A",
+    "CACHE_TIME" => "36000000"
+),
+    false
+);
 
 $aMenuLinks = array_merge($aMenuLinks, $aMenuLinksExt);
 ?>
