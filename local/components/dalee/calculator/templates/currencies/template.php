@@ -9,7 +9,7 @@
         <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-down"></use>
     </svg>
 </a>
-<div class="section-currency-exchange__wrapper collapse" id="currency-exchange">
+<div class="section-currency-exchange__wrapper collapse js-currency-converter" id="currency-exchange" data-table="currency-exchange">
     <div class="row">
         <div class="col-12 col-xl-8">
             <div
@@ -116,32 +116,32 @@
                     <div class="col-12 col-md-6 col-xl-12">
                         <label class="form-label" for="have">У вас есть</label>
                         <div class="input-group">
-                            <input class="form-control form-control-lg" id="have" type="text"
-                                   name="you_have" placeholder="1500">
+                            <input class="form-control form-control-lg js-currency-input-have" id="have" type="text"
+                                   name="you_have" placeholder="">
                             <div class="input-group__currency">
-                                <select class="form-select js-select" aria-label="Выберите валюту">
+                                <select class="form-select js-select js-currency-select-have" aria-label="Выберите валюту">
                                     <option selected value="RUB">RUB</option>
                                     <option value="USD">USD</option>
                                     <option value="CNY">CNY</option>
                                 </select>
                             </div>
                         </div>
-                        <span class="caption-m dark-70 mt-2 d-block">1 RUB = 0,01 USD</span>
+                        <span class="caption-m dark-70 mt-2 d-block js-currency-unit-have" >1 RUB = 0,01 USD</span>
                     </div>
                     <div class="col-12 col-md-6 col-xl-12 mt-4 mt-md-0 mt-xl-4">
                         <label class="form-label" for="get">Вы получите</label>
                         <div class="input-group">
-                            <input class="form-control form-control-lg" id="get" type="text" name="you_get"
-                                   placeholder="9,77">
+                            <input class="form-control form-control-lg js-currency-input-get" id="get" type="text" name="you_get"
+                                   placeholder="">
                             <div class="input-group__currency">
-                                <select class="form-select js-select" aria-label="Выберите валюту">
+                                <select class="form-select js-select js-currency-select-get" aria-label="Выберите валюту">
                                     <option value="RUB">RUB</option>
                                     <option value="USD" selected>USD</option>
                                     <option value="CNY">CNY</option>
                                 </select>
                             </div>
                         </div>
-                        <span class="caption-m dark-70 mt-2 d-block">1 USD = 97 RUB</span>
+                        <span class="caption-m dark-70 mt-2 d-block js-currency-unit-get">1 USD = 97 RUB</span>
                     </div>
                 </div>
             </div>

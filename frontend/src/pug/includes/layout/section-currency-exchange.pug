@@ -97,14 +97,12 @@ section.section-layout.section-currency-exchange
         ).h3.d-flex.align-items-center.justify-content-between.dark-100.d-md-none
             | Обмен валют
             +svg-use("icon-chevron-down", "icon size-m violet-100")
-        #currency-exchange.section-currency-exchange__wrapper.collapse.js-currency-converter(data-table="currency")
+        #currency-exchange.section-currency-exchange__wrapper.collapse.js-currency-converter(data-table="currency-exchange")
             .row
                 .col-12.col-xl-8
                         .d-flex.flex-column.flex-lg-row.align-items-lg-end.mb-4.mb-md-6.mb-lg-7.pt-4.pt-md-0.gap-md-3
                             h3.d-none.d-md-block Обмен валют
-                            p.text-s.dark-70.mb-0.ms-lg-auto
-                                | Курс банка актуален на&nbsp;
-                                span.js-currency-time-update
+                            p.text-s.dark-70.mb-0.ms-lg-auto Курс банка актуален на&nbsp;14:00 по&nbsp;МСК 4&nbsp;февраля 2025&nbsp;г.
 
                         ul.nav.nav-tabs.d-md-none(role="tablist")
                             each item in tabsList
@@ -151,7 +149,7 @@ section.section-layout.section-currency-exchange
                                             option(selected value="RUB") RUB
                                             option(value="USD") USD
                                             option(value="CNY") CNY
-                                span.caption-m.dark-70.mt-2.d-block.js-currency-have-get 1 RUB = 0,01 USD
+                                span.caption-m.dark-70.mt-2.d-block.js-currency-unit-have 1 RUB = 0,01 USD
 
 
                             .col-12.col-md-6.col-xl-12.mt-4.mt-md-0.mt-xl-4
@@ -163,4 +161,4 @@ section.section-layout.section-currency-exchange
                                             option(value="RUB") RUB
                                             option(value="USD" selected) USD
                                             option(value="CNY") CNY
-                                span.caption-m.dark-70.mt-2.d-block.js-currency-get-have 1 USD = 97 RUB
+                                span.caption-m.dark-70.mt-2.d-block.js-currency-unit-get 1 USD = 97 RUB

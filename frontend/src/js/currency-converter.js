@@ -1,131 +1,154 @@
-const CURRENCY = {
-    "base": "RUB",
-    "time_last_updated": 1738195201,
-    "rates": {
-        "RUB": 1,
-        "CNY": 0.0733,
-        "USD": 0.0101
-    }
-}
-
 const ELEMS_CURRENCY = {
     root: '.js-currency-converter',
-    timeUpdate: '.js-currency-time-update',
     inputHave: '.js-currency-input-have',
     inputGet: '.js-currency-input-get',
     selectHave: '.js-currency-select-have',
     selectGet: '.js-currency-select-get',
-    unitHaveToGet: '.js-currency-have-get',
-    unitGetToHave: '.js-currency-get-have',
+    unitHaveToGet: '.js-currency-unit-have',
+    unitGetToHave: '.js-currency-unit-get',
 }
 
-async function getResults() {
-    try {
-        // TODO: получение данных по валютам
-        // const response = await fetch(URL_CURRENCY);
-        // const data = await response.json();
-        return CURRENCY;
-    } catch (error) {
-        console.error('Error:', error);
+const RUB = {
+    "buy": "1",
+    "sell": "1",
+    "base": "1",
+    "currency": "RUB",
+    "currencyName": "Российский рубль"
+}
+
+const initElementsCurrencyConverter = (root) => {
+    const inputHave = root.querySelector(ELEMS_CURRENCY.inputHave);
+    const inputGet = root.querySelector(ELEMS_CURRENCY.inputGet);
+    const selectHave = root.querySelector(ELEMS_CURRENCY.selectHave);
+    const selectGet = root.querySelector(ELEMS_CURRENCY.selectGet);
+    const unitHaveToGet = root.querySelector(ELEMS_CURRENCY.unitHaveToGet);
+    const unitGetToHave = root.querySelector(ELEMS_CURRENCY.unitGetToHave);
+
+    return {
+        root,
+        inputHave,
+        inputGet,
+        selectHave,
+        selectGet,
+        unitHaveToGet,
+        unitGetToHave
     }
 }
 
-function calculateConversionResult(
-    value,
-    inputFrom,
-    inputTo,
-    currencyValueFrom,
-    currencyValueTo
-) {
-    if (value === '') {
-        inputTo.value = ''
-    } else {
-        const valueToNumber = Number(value.replace(/\s+/g, '').replaceAll(',', '.'))
-        const result = Number(((currencyValueTo / currencyValueFrom) * valueToNumber).toFixed(2));
-        inputTo.value = result.toLocaleString();
-    }
+function convertCurrencyToNumber(value) {
+    return parseFloat(value.replace(/\s/g, '').replace(/,/g, '.'));
 }
 
-function calculateConversionUnit(
-    currencyValueHave,
-    currencyValueGet,
-    unitGetToHave,
-    unitHaveToGet,
-    currencyHave,
-    currencyGet
-) {
-    const unitHaveToGetResult = Number(((currencyValueGet / currencyValueHave)).toFixed(2));
-    const unitGetToHaveResult = Number(((currencyValueHave / currencyValueGet)).toFixed(2));
-
-    unitHaveToGet.innerHTML = `1 ${currencyHave} = ${unitHaveToGetResult} ${currencyGet}`
-    unitGetToHave.innerHTML = `1 ${currencyGet} = ${unitGetToHaveResult} ${currencyHave}`
+function convertCurrencyToLocaleString(value) {
+    const currency = !isNaN(value) ? value : value.replace(/\s/g, '');
+    return parseFloat(currency).toLocaleString('ru-RU', {maximumFractionDigits: 2});
 }
 
-function displayTimeUpdate(el, currency) {
-    const lastUpd = new Date(currency.time_last_updated * 1000);
-    const date = lastUpd.toLocaleDateString('ru-RU', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-    });
-    const time = lastUpd.toLocaleTimeString('ru-RU', {
-            timeZone: 'Europe/Moscow',
-            hour: '2-digit',
-            minute: '2-digit'
-        }
-    )
-
-    el.innerHTML = `${time} по МСК ${date}`;
+function findCurrency(currency, STATE) {
+    return STATE.currencyData.filter(item => item.currency === currency)[0] ?? RUB;
 }
 
-async function initCurrencyConverter() {
-    const currencyConverter = document.querySelector(ELEMS_CURRENCY.root);
+function calculateUnitCurrency(STATE) {
+    const have = convertCurrencyToNumber(STATE.currencyHave.base)
+    const get = convertCurrencyToNumber(STATE.currencyGet.base);
 
-    if (!currencyConverter) return;
+    STATE.unitHaveToGet = have / get;
+    STATE.unitGetToHave = get / have;
 
-    const currency = await getResults();
+    STATE.elements.unitHaveToGet.innerHTML = `1 ${STATE.currencyHave.currency} = ${convertCurrencyToLocaleString(STATE.unitHaveToGet)} ${STATE.currencyGet.currency}`;
+    STATE.elements.unitGetToHave.innerHTML = `1 ${STATE.currencyGet.currency} = ${convertCurrencyToLocaleString(STATE.unitGetToHave)} ${STATE.currencyHave.currency}`;
+}
 
-    const timeUpdateEl = currencyConverter.querySelector(ELEMS_CURRENCY.timeUpdate);
-    const inputHave = currencyConverter.querySelector(ELEMS_CURRENCY.inputHave);
-    const inputGet = currencyConverter.querySelector(ELEMS_CURRENCY.inputGet);
-    const selectHaveCurrency = currencyConverter.querySelector(ELEMS_CURRENCY.selectHave);
-    const selectGetCurrency = currencyConverter.querySelector(ELEMS_CURRENCY.selectGet);
-    const unitHaveToGet = currencyConverter.querySelector(ELEMS_CURRENCY.unitHaveToGet);
-    const unitGetToHave = currencyConverter.querySelector(ELEMS_CURRENCY.unitGetToHave);
+function calculateResultCurrency({value, resultInput, unit}, STATE) {
+    return STATE.elements[resultInput].value = convertCurrencyToLocaleString(convertCurrencyToNumber(value) * STATE[unit]);
+}
 
-    let currencyHave = `${selectHaveCurrency.value}`;
-    let currencyGet = `${selectGetCurrency.value}`;
-    let currencyValueHave = currency.rates[currencyHave];
-    let currencyValueGet = currency.rates[currencyGet];
+function setSelectsCurrency(STATE) {
+    let currencies = ['RUB'];
+    STATE.currencyData.forEach((currency) => currencies.push(currency.currency));
 
-    displayTimeUpdate(timeUpdateEl, currency);
-    calculateConversionUnit(currencyValueHave, currencyValueGet, unitGetToHave, unitHaveToGet, currencyHave, currencyGet)
+    setSelectOptions('selectHave', currencies, STATE);
+    setSelectOptions('selectGet', currencies, STATE);
+
+    $(ELEMS_CURRENCY.selectGet).val(currencies[1]).trigger('change');
+}
+
+function calculateCurrencyConversion(STATE) {
+    STATE.currencyHave = findCurrency(STATE.elements.selectHave.value, STATE);
+    STATE.currencyGet = findCurrency(STATE.elements.selectGet.value, STATE);
 
     $(ELEMS_CURRENCY.selectHave).on('select2:select', (e) => {
-        currencyHave = `${e.target.value}`;
-        currencyValueHave = currency.rates[currencyHave];
-        const valueHave = inputHave.value;
-
-        calculateConversionResult(valueHave, inputHave, inputGet, currencyValueHave, currencyValueGet)
-        calculateConversionUnit(currencyValueHave, currencyValueGet, unitGetToHave, unitHaveToGet, currencyHave, currencyGet)
+        STATE.currencyHave = findCurrency(e.target.value, STATE);
+        calculateUnitCurrency(STATE);
+        calculateResultCurrency({
+            value: STATE.elements.inputHave.value,
+            resultInput: 'inputGet',
+            unit: 'unitHaveToGet'
+        }, STATE);
     });
 
     $(ELEMS_CURRENCY.selectGet).on('select2:select', (e) => {
-        currencyGet = `${e.target.value}`;
-        currencyValueGet = currency.rates[currencyGet];
-        const valueHave = inputHave.value;
-
-        calculateConversionResult(valueHave, inputHave, inputGet, currencyValueHave, currencyValueGet)
-        calculateConversionUnit(currencyValueHave, currencyValueGet, unitGetToHave, unitHaveToGet, currencyHave, currencyGet)
+        STATE.currencyGet = findCurrency(e.target.value, STATE);
+        calculateUnitCurrency(STATE);
+        calculateResultCurrency({
+            value: STATE.elements.inputGet.value,
+            resultInput: 'inputHave',
+            unit: 'unitGetToHave'
+        }, STATE);
     });
 
-    inputHave.addEventListener('input', (e) => {
-        calculateConversionResult(e.target.value, inputHave, inputGet, currencyValueHave, currencyValueGet)
-        // e.target.value = Number(e.target.value.replace(/[^\d,]/g, '')).toLocaleString('ru-RU');
+    STATE.elements.inputHave.addEventListener('input', (e) => {
+        calculateResultCurrency({
+            value: e.target.value,
+            resultInput: 'inputGet',
+            unit: 'unitHaveToGet'
+        }, STATE);
     });
 
-    inputGet.addEventListener('input', (e) => {
-        calculateConversionResult(e.target.value, inputGet, inputHave, currencyValueGet, currencyValueHave)
-        // e.target.value = Number(e.target.value.replace(/[^\d,]/g, '')).toLocaleString('ru-RU');
+    STATE.elements.inputGet.addEventListener('input', (e) => {
+        calculateResultCurrency({
+            value: e.target.value,
+            resultInput: 'inputHave',
+            unit: 'unitGetToHave'
+        }, STATE);
     });
+
+    STATE.elements.inputHave.addEventListener('blur', (e) => {
+        e.target.value = convertCurrencyToLocaleString(e.target.value);
+    });
+
+    STATE.elements.inputGet.addEventListener('blur', (e) => {
+        e.target.value = convertCurrencyToLocaleString(e.target.value);
+    });
+}
+
+function initStateCurrencyConverter(converter) {
+    return getRates(converter.dataset)
+        .then(currencyData => {
+            const elements = initElementsCurrencyConverter(converter);
+
+            return {
+                elements,
+                currencyData
+            }
+        })
+        .catch(error => {
+            console.error('error initStateCurrencyConverter', error);
+        });
+}
+
+function initCurrencyConverter() {
+    const currencyConverter = document.querySelectorAll(ELEMS_CURRENCY.root);
+
+    for (const converter of currencyConverter) {
+        initStateCurrencyConverter(converter)
+            .then(STATE => {
+                setSelectsCurrency(STATE)
+                calculateCurrencyConversion(STATE)
+                calculateUnitCurrency(STATE)
+            })
+            .catch(error => {
+                console.error('Ошибка в initCurrencyConverter функции:', error);
+            });
+    }
 }
