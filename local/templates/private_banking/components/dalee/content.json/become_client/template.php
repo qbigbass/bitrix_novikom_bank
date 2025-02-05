@@ -21,7 +21,7 @@ global $pbModel;
 $pbModel = $arResult['CONTENT_JSON'] ?? null;
 
 ?>
-<section class="pb-section pb-section--gradient pb-section--bg-lines" id="become_client">
+<section class="pb-section pb-section--gradient-radial-linear pb-section--bg-lines py-xxl-16" id="become_client">
     <div class="container">
         <?php $APPLICATION->IncludeComponent(
             "dalee:form",

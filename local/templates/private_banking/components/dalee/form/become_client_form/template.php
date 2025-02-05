@@ -49,11 +49,11 @@ $this->setFrameMode(true);
                     <div class="form-label form-label--pb mb-0" aria-hidden="true">&nbsp;</div>
                     <div class="form-control-time">
                         <div class="d-flex flex-column row-gap-1 row-gap-lg-2 position-relative">
-                            <input class="form-control form-control--pb" id="hours" type="number" name="hours" min="1" max="24" placeholder="19" data-form-input>
+                            <input class="form-control form-control--pb" id="hours" type="number" name="hours" min="1" max="24" placeholder="19" data-form-input required>
                             <div class="invalid-feedback" aria-live="polite"></div>
                         </div>
                         <div class="d-flex flex-column row-gap-1 row-gap-lg-2 position-relative">
-                            <input class="form-control form-control--pb" id="minutes" type="number" name="minutes" min="0" max="59" placeholder="00" data-form-input>
+                            <input class="form-control form-control--pb" id="minutes" type="number" name="minutes" min="0" max="59" placeholder="00" data-form-input required>
                             <div class="invalid-feedback" aria-live="polite"></div>
                         </div>
                     </div>
@@ -62,7 +62,7 @@ $this->setFrameMode(true);
         </div>
         <div class="form-check form-check--pb">
             <input class="form-check-input" id="personal" type="checkbox" checked required data-form-checkbox data-form-input>
-            <label class="form-check-label" for="personal">Я&nbsp;согласен с&nbsp;условиями использования банком моих персональных данных для обработки данного обращения</label>
+            <label class="form-check-label" for="personal">Я&nbsp;согласен с&nbsp;условиями использования банком моих персональных данных для&nbsp;обработки данного обращения</label>
             <div class="invalid-feedback" aria-live="polite"></div>
         </div>
         <div class="pb-form__footer d-flex flex-column align-items-center justify-content-center gap-5">

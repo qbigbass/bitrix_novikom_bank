@@ -56,6 +56,7 @@
       font-size: 2rem;
     }
 
+    &.is-active,
     &:hover {
       color: var(--pb-text-color);
     }
