@@ -198,6 +198,10 @@ class ProductRatesHandler
                     $value = trim(preg_replace('/\s*\[.*?]/', '', $value));
                 }
 
+                if (is_numeric(str_replace(',', '.', $value))) {
+                    $value = (float) str_replace(',', '.', $value);
+                }
+
                 $newItem[$key] = $value;
             }
             return $newItem;
