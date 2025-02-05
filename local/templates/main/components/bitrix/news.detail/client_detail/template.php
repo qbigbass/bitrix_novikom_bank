@@ -74,8 +74,6 @@ $headerView->render(
 );
 ?>
 
-<? file_put_contents($_SERVER["DOCUMENT_ROOT"] . "/logs/mindbox_order_status_".date("Y_m_d").".txt", "BANNER_TEXT:\n" . print_r($arResult['PROPERTIES']['BANNER_TEXT'], true), FILE_APPEND); ?>
-
 <? if (!empty($arResult['PROPERTIES']['BANNER_HEADER']['VALUE']) && !empty($arResult['PROPERTIES']['BANNER_TEXT']['VALUE'])) { ?>
     <section class="section-layout <?= $arResult['PROPERTIES']['CLASS_BLOCK_BANNER']['VALUE'] ?>">
         <div class="container">
@@ -396,72 +394,72 @@ $headerView->render(
 <? } ?>
 
 <? if (!empty($arResult['PROPERTIES']['SUPPORT_OPTIONS']['VALUE'])) { ?>
-<section class="section-layout bg-dark-10 px-lg-6">
-    <div class="container">
-        <h3 class="mb-4 mb-md-6 mb-lg-7">Варианты банковского сопровождения</h3>
-        <div class="col-12">
-            <?
-            global $supportOptionsFilter;
-            $supportOptionsFilter = [
-                'ID' => $arResult['PROPERTIES']['SUPPORT_OPTIONS']['VALUE']
-            ];
+    <section class="section-layout bg-dark-10 px-lg-6">
+        <div class="container">
+            <h3 class="mb-4 mb-md-6 mb-lg-7">Варианты банковского сопровождения</h3>
+            <div class="col-12">
+                <?
+                global $supportOptionsFilter;
+                $supportOptionsFilter = [
+                    'ID' => $arResult['PROPERTIES']['SUPPORT_OPTIONS']['VALUE']
+                ];
 
-            $APPLICATION->IncludeComponent(
-                "bitrix:news.list",
-                "support_options",
-                [
-                    "ACTIVE_DATE_FORMAT" => "d.m.Y",
-                    "ADD_SECTIONS_CHAIN" => "N",
-                    "AJAX_MODE" => "N",
-                    "AJAX_OPTION_ADDITIONAL" => "",
-                    "AJAX_OPTION_HISTORY" => "N",
-                    "AJAX_OPTION_JUMP" => "N",
-                    "AJAX_OPTION_STYLE" => "Y",
-                    "CACHE_FILTER" => "Y",
-                    "CACHE_GROUPS" => "Y",
-                    "CACHE_TIME" => "36000000",
-                    "CACHE_TYPE" => "A",
-                    "CHECK_DATES" => "Y",
-                    "DETAIL_URL" => "",
-                    "DISPLAY_BOTTOM_PAGER" => "N",
-                    "DISPLAY_TOP_PAGER" => "N",
-                    "FIELD_CODE" => ["CODE","NAME","PREVIEW_TEXT","PREVIEW_PICTURE",""],
-                    "FILTER_NAME" => "supportOptionsFilter",
-                    "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                    "IBLOCK_ID" => iblock('banking_support_options'),
-                    "IBLOCK_TYPE" => "additional",
-                    "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
-                    "INCLUDE_SUBSECTIONS" => "N",
-                    "MESSAGE_404" => "",
-                    "NEWS_COUNT" => "20",
-                    "PAGER_BASE_LINK_ENABLE" => "N",
-                    "PAGER_DESC_NUMBERING" => "N",
-                    "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
-                    "PAGER_SHOW_ALL" => "N",
-                    "PAGER_SHOW_ALWAYS" => "N",
-                    "PAGER_TEMPLATE" => ".default",
-                    "PAGER_TITLE" => "Новости",
-                    "PARENT_SECTION" => "",
-                    "PARENT_SECTION_CODE" => "",
-                    "PREVIEW_TRUNCATE_LEN" => "",
-                    "PROPERTY_CODE" => ["BENEFITS", "STEPS_HEADER", "STEPS", "QUOTE", "TEXT_FIELD", "BUTTON_TEXT", "BUTTON_LINK"],
-                    "SET_BROWSER_TITLE" => "N",
-                    "SET_LAST_MODIFIED" => "N",
-                    "SET_META_DESCRIPTION" => "N",
-                    "SET_META_KEYWORDS" => "N",
-                    "SET_STATUS_404" => "N",
-                    "SET_TITLE" => "N",
-                    "SHOW_404" => "N",
-                    "SORT_BY1" => "ACTIVE_FROM",
-                    "SORT_BY2" => "SORT",
-                    "SORT_ORDER1" => "DESC",
-                    "SORT_ORDER2" => "ASC",
-                    "STRICT_SECTION_CHECK" => "N",
-                ],
-                $component
-            );
-            ?>
-        </div>
+                $APPLICATION->IncludeComponent(
+                    "bitrix:news.list",
+                    "support_options",
+                    [
+                        "ACTIVE_DATE_FORMAT" => "d.m.Y",
+                        "ADD_SECTIONS_CHAIN" => "N",
+                        "AJAX_MODE" => "N",
+                        "AJAX_OPTION_ADDITIONAL" => "",
+                        "AJAX_OPTION_HISTORY" => "N",
+                        "AJAX_OPTION_JUMP" => "N",
+                        "AJAX_OPTION_STYLE" => "Y",
+                        "CACHE_FILTER" => "Y",
+                        "CACHE_GROUPS" => "Y",
+                        "CACHE_TIME" => "36000000",
+                        "CACHE_TYPE" => "A",
+                        "CHECK_DATES" => "Y",
+                        "DETAIL_URL" => "",
+                        "DISPLAY_BOTTOM_PAGER" => "N",
+                        "DISPLAY_TOP_PAGER" => "N",
+                        "FIELD_CODE" => ["CODE","NAME","PREVIEW_TEXT","PREVIEW_PICTURE",""],
+                        "FILTER_NAME" => "supportOptionsFilter",
+                        "HIDE_LINK_WHEN_NO_DETAIL" => "N",
+                        "IBLOCK_ID" => iblock('banking_support_options'),
+                        "IBLOCK_TYPE" => "additional",
+                        "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+                        "INCLUDE_SUBSECTIONS" => "N",
+                        "MESSAGE_404" => "",
+                        "NEWS_COUNT" => "20",
+                        "PAGER_BASE_LINK_ENABLE" => "N",
+                        "PAGER_DESC_NUMBERING" => "N",
+                        "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+                        "PAGER_SHOW_ALL" => "N",
+                        "PAGER_SHOW_ALWAYS" => "N",
+                        "PAGER_TEMPLATE" => ".default",
+                        "PAGER_TITLE" => "Новости",
+                        "PARENT_SECTION" => "",
+                        "PARENT_SECTION_CODE" => "",
+                        "PREVIEW_TRUNCATE_LEN" => "",
+                        "PROPERTY_CODE" => ["BENEFITS", "STEPS_HEADER", "STEPS", "QUOTE", "TEXT_FIELD", "BUTTON_TEXT", "BUTTON_LINK"],
+                        "SET_BROWSER_TITLE" => "N",
+                        "SET_LAST_MODIFIED" => "N",
+                        "SET_META_DESCRIPTION" => "N",
+                        "SET_META_KEYWORDS" => "N",
+                        "SET_STATUS_404" => "N",
+                        "SET_TITLE" => "N",
+                        "SHOW_404" => "N",
+                        "SORT_BY1" => "ACTIVE_FROM",
+                        "SORT_BY2" => "SORT",
+                        "SORT_ORDER1" => "DESC",
+                        "SORT_ORDER2" => "ASC",
+                        "STRICT_SECTION_CHECK" => "N",
+                    ],
+                    $component
+                );
+                ?>
+            </div>
     </div>
 </section>
 <? } ?>
@@ -473,7 +471,7 @@ $headerView->render(
 <?endif;?>
 
 <? if (!empty($arResult['PROPERTIES']['TABS']['VALUE'])) { ?>
-    <section class="section-layout js-collapsed-mobile">
+    <section class="section-layout js-collapsed-mobile <?= $arResult['PROPERTIES']['CLASS_BLOCK_TABS']['VALUE'] ?>">
         <div class="container">
             <h3 class="d-none d-md-flex mb-md-6 mb-lg-7 px-lg-6"><?= $arResult['PROPERTIES']['TABS_HEADER']['~VALUE'] ?></h3>
             <a class="h3 d-flex align-items-center justify-content-between dark-100 d-md-none" data-bs-toggle="collapse" href="#additional-info-content" role="button" aria-expanded="false" aria-controls="additional-info-content">
@@ -482,14 +480,19 @@ $headerView->render(
                     <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-down"></use>
                 </svg>
             </a>
-
             <? $renderer->render('Tabs', $arResult['PROPERTIES']['TABS']['VALUE']); ?>
-
         </div>
+        <?
+        $imgPath ="/patterns/section-2/pattern-light";
+
+        if (!empty($arResult["PROPERTIES"]["PATH_IMG_BLOCK_TABS"]["VALUE"])) {
+            $imgPath = $arResult["PROPERTIES"]["PATH_IMG_BLOCK_TABS"]["VALUE"];
+        }
+        ?>
         <picture class="pattern-bg pattern-bg--hide-mobile">
-            <source srcset="/frontend/dist/img/patterns/section-2/pattern-light-s.svg" media="(max-width: 767px)">
-            <source srcset="/frontend/dist/img/patterns/section-2/pattern-light-m.svg" media="(max-width: 1199px)">
-            <img src="/frontend/dist/img/patterns/section-2/pattern-light-l.svg" alt="bg pattern" loading="lazy">
+            <source srcset="/frontend/dist/img<?= $imgPath ?>-s.svg" media="(max-width: 767px)">
+            <source srcset="/frontend/dist/img<?= $imgPath ?>-m.svg" media="(max-width: 1199px)">
+            <img src="/frontend/dist/img<?= $imgPath ?>-l.svg" alt="bg pattern" loading="lazy">
         </picture>
     </section>
 <? } ?>

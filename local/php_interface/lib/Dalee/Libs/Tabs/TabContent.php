@@ -24,7 +24,7 @@ class TabContent
             $class = $conf[$propertyCode];
             $placeHolder = '#' . $propertyCode . '#';
 
-            if(!empty($class) && str_contains($detailText, $placeHolder)) {
+            if (!empty($class) && str_contains($detailText, $placeHolder)) {
                 $handler = new $class($property, $elementId);
                 $tabContent = $tab->renderDetailTextWithBlockHtml($handler, $tabContent, $placeHolder, $useRteTag);
             }
