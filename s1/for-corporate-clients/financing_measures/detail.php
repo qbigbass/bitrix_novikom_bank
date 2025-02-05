@@ -17,7 +17,7 @@ if (!empty($elementCode)) {
             "DISPLAY_NAME" => "Y",
             "DISPLAY_PICTURE" => "Y",
             "DISPLAY_PREVIEW_TEXT" => "Y",
-            "IBLOCK_TYPE" => "for_corporate_clients_ru",
+            "IBLOCK_TYPE" => "additional",
             "IBLOCK_ID" => iblock("financing_measures"),
             "FIELD_CODE" => [
                 "NAME",

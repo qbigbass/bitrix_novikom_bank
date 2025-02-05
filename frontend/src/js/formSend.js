@@ -187,7 +187,6 @@ function pbShowResponse(form, response) {
     const date = selectDate.options[selectDate.selectedIndex].text
     const hours = form.querySelector(PB_FORM_ELEMS.inputHours).value
     const minutes = form.querySelector(PB_FORM_ELEMS.inputMinutes).value
-    const time = hours ? `, ${hours}:${minutes !== '' ? minutes : '00'}` : ''
 
     const messagesBox = form.querySelector(MESSAGE_ELEMS.messageBox)
     let titleContent = ''
@@ -197,7 +196,7 @@ function pbShowResponse(form, response) {
     if (response === 'success') {
         titleContent = messagesBox.getAttribute(MESSAGE_ATTR.titleSuccessContent)
         infoContent = messagesBox.getAttribute(MESSAGE_ATTR.infoSuccessContent)
-        infoDateContent = `${date}${time}`
+        infoDateContent = `${date}, ${hours}:${minutes}`
         resetForm(form)
     } else {
         titleContent = messagesBox.getAttribute(MESSAGE_ATTR.titleErrorContent)

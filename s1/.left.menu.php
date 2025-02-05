@@ -50,8 +50,15 @@ $aMenuLinks = [
         ""
     ],
     [
-        "Страхование",
-        "/services/programmy-strakhovaniya/",
+        "Программы страхования",
+        "/insurance/programmy-strakhovaniya/",
+        [],
+        [],
+        ""
+    ],
+    [
+        "Перечень страховых компаний",
+        "/insurance/perechen-strakhovykh-kompaniy/",
         [],
         [],
         ""

@@ -248,9 +248,9 @@ $APPLICATION->SetTitle('Частным клиентам - Главная НОВ�
                 <div class="tab-pane fade" id="deposit" role="tabpanel" aria-labelledby="deposit" tabindex="0">
                     <? $APPLICATION->IncludeComponent(
                         "dalee:calculator",
-                        "deposits",
+                        "deposits_index",
                         array(
-                            "CALCULATOR_ELEMENT_ID" => "474"
+                            "CALCULATOR_ELEMENT_ID" => ""
                         )
                     ); ?>
                 </div>
@@ -363,7 +363,8 @@ $APPLICATION->SetTitle('Частным клиентам - Главная НОВ�
 <section class="section-layout pt-0">
     <div class="container">
         <div class="d-flex align-items-end ps-lg-6 mb-4 mb-md-6 mb-lg-7">
-            <h3>Новости</h3><a class="violet-100 d-flex align-items-center gap-2 ms-auto" href="/about/press-center/"><span
+            <h3>Новости</h3><a class="violet-100 d-flex align-items-center gap-2 ms-auto"
+                               href="/about/press-center/"><span
                     class="d-none d-md-inline text-s fw-semibold">Пресс-центр</span>
                 <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                     <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
