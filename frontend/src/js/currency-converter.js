@@ -36,12 +36,11 @@ const initElementsCurrencyConverter = (root) => {
 }
 
 function convertCurrencyToNumber(value) {
-    return parseFloat(value.replace(/\s/g, '').replace(/,/g, '.'));
+    return parseFloat(String(value).replace(/\s/g, '').replace(/,/g, '.'));
 }
 
 function convertCurrencyToLocaleString(value) {
-    const currency = !isNaN(value) ? value : value.replace(/\s/g, '');
-    return parseFloat(currency).toLocaleString('ru-RU', {maximumFractionDigits: 2});
+    return convertCurrencyToNumber(value).toLocaleString('ru-RU', {maximumFractionDigits: 2});
 }
 
 function findCurrency(currency, STATE) {
