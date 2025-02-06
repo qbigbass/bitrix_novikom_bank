@@ -7,6 +7,7 @@ const ELEMS_LOAN = {
     selectLoanProperties: '.js-select-loan-properties',
     selectLoanPaymentType: '.js-select-loan-payment-type',
     tableSchedule: '#payment-loan-table-body',
+    loanName: ".js-program-name",
 }
 
 function calculateDifferentiatedPayments({amount, rate, period}) {
@@ -89,6 +90,7 @@ function calculateMonthlyPayment({amount, rate, period, paymentType}) {
     }
 }
 function showLoanResult(STATE) {
+    STATE.elements.loanName.innerHTML = STATE.filteredData.name;
     STATE.elements.displayRate.textContent = `${formatNumber(STATE.rate)} %`;
     STATE.elements.displayPayment.innerHTML = `${formatNumber(STATE.payment.toFixed(2))} <span class="currency">₽</span>`;
     STATE.elements.displayFullCost.innerHTML = `${STATE.fullCost} %`;
@@ -164,10 +166,14 @@ function findLoanData({data, type, strategicClient}) {
 }
 
 function setStartValues(STATE) {
-    const startValueAmount = STATE.elements.inputAmountWrapper.getAttribute('data-start-value');
-    const startValuePeriod = STATE.elements.inputPeriodWrapper.getAttribute('data-start-value');
-    STATE.amount = startValueAmount ? Number(startValueAmount) : STATE.minAmount;
-    STATE.period = startValuePeriod ? Number(startValuePeriod) : STATE.minPeriod;
+    // TODO: возможно надо будет вернуть, утончить
+    // const startValueAmount = STATE.elements.inputAmountWrapper.getAttribute('data-start-value');
+    // const startValuePeriod = STATE.elements.inputPeriodWrapper.getAttribute('data-start-value');
+    // STATE.amount = startValueAmount ? Number(startValueAmount) : STATE.minAmount;
+    // STATE.period = startValuePeriod ? Number(startValuePeriod) : STATE.minPeriod;
+
+    STATE.amount = STATE.minAmount;
+    STATE.period = STATE.minPeriod;
 }
 
 const getLoanValues = (STATE) => {
@@ -206,6 +212,7 @@ function initElementsLoanCalculator(root) {
     const selectLoanProperties = root.querySelector(ELEMS_LOAN.selectLoanProperties);
     const selectLoanPaymentType = root.querySelector(ELEMS_LOAN.selectLoanPaymentType);
     const tableSchedule = root.querySelector(ELEMS_LOAN.tableSchedule);
+    const loanName = root.querySelector(ELEMS_LOAN.loanName);
 
     return {
         root,
@@ -219,7 +226,8 @@ function initElementsLoanCalculator(root) {
         selectLoanPaymentType,
         inputPeriodWrapper,
         inputAmountWrapper,
-        tableSchedule
+        tableSchedule,
+        loanName
     }
 }
 

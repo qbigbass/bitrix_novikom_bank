@@ -1,5 +1,10 @@
 <?if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
-
+<?
+/**
+ * @global CMain $APPLICATION
+ * @var CBitrixComponent $component
+ */
+?>
 <div class="row js-calculator-mortgage" data-id="<?= $arParams['CALCULATOR_ELEMENT_ID'] ?? '' ?>" data-table="mortgage" data-expense-ratio="60">
     <div class="col-12 col-lg-6">
         <div class="tab-content pe-xl-6">
@@ -163,6 +168,7 @@
                 <div class="polygon-container__content">
                     <div class="card-calculate-result <?= $arParams['BACKGROUND'] ? 'bg-dark-10' : 'bg-dark-0' ?>">
                         <div class="card-calculate-result__body">
+                            <h4 class="dark-70 js-program-name"></h4>
                             <div class="d-flex flex-column row-gap-2"><span
                                     class="card-calculate-result__label text-s">Процентная ставка</span><span
                                     class="text-number-ml fw-bold text-nowrap js-calculator-display-rate">16,5%</span>
@@ -181,7 +187,12 @@
                             </div>
                         </div>
                         <div class="card-calculate-result__footer">
-                            <button class="btn btn-primary btn-lg-lg w-100" type="button">
+                            <button
+                                class="btn btn-primary btn-lg-lg w-100"
+                                type="button"
+                                data-bs-toggle="modal"
+                                data-bs-target="#modal-mortgage-form"
+                            >
                                 Оформить заявку
                             </button>
                             <p class="dark-70 caption-m mb-0">Калькулятор не&nbsp;гарантирует
@@ -201,3 +212,11 @@
         </div>
     </div>
 </div>
+<?php $APPLICATION->IncludeComponent(
+    "dalee:form",
+    "mortgage_form",
+    [
+        "FORM_CODE" => "mortgage_form",
+    ],
+    $component
+); ?>

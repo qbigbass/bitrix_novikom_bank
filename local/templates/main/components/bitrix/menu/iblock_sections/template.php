@@ -41,7 +41,9 @@ $targetLink = $arParams["TARGET_LINK"] ?? "";
         </div>
     <? } ?>
     <ul class="swiper-wrapper tabs-panel__list nav nav-tabs d-inline-flex flex-nowrap w-auto p-0 border border-purple rounded section-catalog__tab-list">
-        <? foreach ($arResult as $key => $menuItem) { ?>
+        <? foreach ($arResult as $key => $menuItem) {
+            if ($menuItem['PARAMS']['DEPTH_LEVEL'] == 0) continue;
+            ?>
             <? $class = basename($menuItem['LINK']) == $path ? ' active' : ''; ?>
 
             <li class="swiper-slide w-auto tabs-panel__list-item nav-item z-2">

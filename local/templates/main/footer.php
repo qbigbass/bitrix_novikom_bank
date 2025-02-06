@@ -49,7 +49,7 @@ use Bitrix\Main\Localization\Loc;
                         "MENU_CACHE_TYPE" => "A",
                         "MENU_CACHE_USE_GROUPS" => "Y",
                         "ROOT_MENU_TYPE" => "top",
-                        "USE_EXT" => "N"
+                        "USE_EXT" => "Y"
                     ]
                 );?>
                 <div class="col-12 col-md-6 col-xl-3">
@@ -97,7 +97,14 @@ use Bitrix\Main\Localization\Loc;
                         </svg>
                         <?=Loc::getMessage('TELEGRAM_BUTTON_TITLE')?>
                     </a>
-                    <button class="btn btn-primary btn-lg-lg mt-4 mt-md-0" type="button"><?=Loc::getMessage('FEEDBACK_BUTTON_TITLE')?></button>
+                    <button
+                        class="btn btn-primary btn-lg-lg mt-4 mt-md-0"
+                        type="button"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modal-feedback-form"
+                    >
+                        <?=Loc::getMessage('FEEDBACK_BUTTON_TITLE')?>
+                    </button>
                     <div class="d-flex flex-column row-gap-3 pt-md-3 pt-lg-5">
                         <a class="btn btn-lg-lg btn-outline-primary d-flex gap-2 gap-lg-3 align-items-center justify-content-center" id='showAccessibilityPanel' href="#">
                             <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
@@ -254,8 +261,8 @@ use Bitrix\Main\Localization\Loc;
                     <div class="dropdown">
                         <a href="<?=ONLINE_BANK_LINK?>" class="btn btn-primary w-100 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"><?=Loc::getMessage('ONLINE_BUNK_BUTTON_TITLE')?></a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item fw-bold" href="#">Для частных лиц</a></li>
-                            <li><a class="dropdown-item fw-bold" href="#">Для организаций</a></li>
+                            <li><a class="dropdown-item fw-bold" href="https://online.novikom.ru/#/registration">Для частных лиц</a></li>
+                            <li><a class="dropdown-item fw-bold" href="https://bk.novikom.ru/ru/html/login.html">Для организаций</a></li>
                         </ul>
                     </div>
                 </div>
@@ -307,6 +314,27 @@ $APPLICATION->IncludeComponent(
     "feedback_form",
     [
         "FORM_CODE" => "feedback_form",
+    ]
+); ?>
+<?php $APPLICATION->IncludeComponent(
+    "dalee:form",
+    "consultation_form",
+    [
+        "FORM_CODE" => "consultation_form",
+    ]
+); ?>
+<?php $APPLICATION->IncludeComponent(
+    "dalee:form",
+    "loan_form",
+    [
+        "FORM_CODE" => "loan_form",
+    ]
+); ?>
+<?php $APPLICATION->IncludeComponent(
+    "dalee:form",
+    "mortgage_form",
+    [
+        "FORM_CODE" => "mortgage_form",
     ]
 ); ?>
 </body>

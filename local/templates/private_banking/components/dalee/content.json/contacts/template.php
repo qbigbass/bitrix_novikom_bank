@@ -35,7 +35,7 @@ $pbModel = $arResult['CONTENT_JSON'] ?? null;
                     <div class="pb-card-office__qr d-none d-xl-block"><img src="<?= $pbModel['image'] ?>" alt="qr-код" loading="lazy" width="80" height="80"></div>
                 </div>
             </div>
-            <div class="pb-card-office__map"><img src="<?= $pbModel['map'] ?>" alt="qr-код" loading="lazy" width="80" height="80">" alt="карта" loading="lazy"></div>
+            <div class="pb-card-office__map"><img src="<?= $pbModel['map'] ?>" alt="qr-код" loading="lazy" width="80" height="80" alt="карта" loading="lazy"></div>
         </div>
     </div>
 </section>

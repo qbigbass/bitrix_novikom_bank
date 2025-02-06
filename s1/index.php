@@ -47,7 +47,7 @@ $APPLICATION->SetTitle('Частным клиентам - Главная НОВ�
             "PARENT_SECTION" => "",
             "PARENT_SECTION_CODE" => "",
             "PREVIEW_TRUNCATE_LEN" => "",
-            "PROPERTY_CODE" => array("BUTTON_LINK", "BUTTON_TEXT", "TEXT", ""),
+            "PROPERTY_CODE" => array("BUTTON_LINK", "BUTTON_TEXT", "TEXT", "", "FILE_VIDEO"),
             "SET_BROWSER_TITLE" => "N",
             "SET_LAST_MODIFIED" => "N",
             "SET_META_DESCRIPTION" => "N",
@@ -55,9 +55,9 @@ $APPLICATION->SetTitle('Частным клиентам - Главная НОВ�
             "SET_STATUS_404" => "N",
             "SET_TITLE" => "N",
             "SHOW_404" => "N",
-            "SORT_BY1" => "ACTIVE_FROM",
-            "SORT_BY2" => "SORT",
-            "SORT_ORDER1" => "DESC",
+            "SORT_BY1" => "SORT",
+            "SORT_BY2" => "ID",
+            "SORT_ORDER1" => "ASC",
             "SORT_ORDER2" => "ASC",
             "STRICT_SECTION_CHECK" => "N"
         )
@@ -75,7 +75,7 @@ $APPLICATION->SetTitle('Частным клиентам - Главная НОВ�
                      data-space-between="mobile-s:8,mobile:8,tablet:8,laptop:8,laptop-x:8">
                     <div class="swiper-wrapper js-swiper-wrapper">
                         <div class="swiper-slide js-swiper-slide">
-                            <a class="card-service" href="#">
+                            <a class="card-service" href="/services/internet-bank-i-mobilnoe-prilozhenie/">
                                 <div class="card-service__content d-flex flex-column">
                                     <h4 class="dark-100">Интернет-банк</h4>
                                     <span class="icon card-service__icon">
@@ -248,9 +248,9 @@ $APPLICATION->SetTitle('Частным клиентам - Главная НОВ�
                 <div class="tab-pane fade" id="deposit" role="tabpanel" aria-labelledby="deposit" tabindex="0">
                     <? $APPLICATION->IncludeComponent(
                         "dalee:calculator",
-                        "deposits",
+                        "deposits_index",
                         array(
-                            "CALCULATOR_ELEMENT_ID" => "474"
+                            "CALCULATOR_ELEMENT_ID" => ""
                         )
                     ); ?>
                 </div>
@@ -316,13 +316,13 @@ $APPLICATION->SetTitle('Частным клиентам - Главная НОВ�
                 false,
                 ["HIDE_ICONS" => "Y"]
             ); ?>
-            <div class="col-12 col-xxl-6 mt-6 mt-xxl-0"><a class="card-link h3 d-lg-none" href="#">О банке
+            <div class="col-12 col-xxl-6 mt-6 mt-xxl-0"><a class="card-link h3 d-lg-none" href="/about/">О банке
                     <svg class="icon size-m blue-100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                         <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
                     </svg>
                 </a>
                 <div class="card-about-bank d-none d-lg-flex">
-                    <div class="card-about-bank__col d-flex flex-column gap-6"><a class="h3" href="#">О банке
+                    <div class="card-about-bank__col d-flex flex-column gap-6"><a class="h3" href="/about/">О банке
                             <svg class="icon size-m blue-100" xmlns="http://www.w3.org/2000/svg" width="100%"
                                  height="100%">
                                 <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
@@ -363,7 +363,8 @@ $APPLICATION->SetTitle('Частным клиентам - Главная НОВ�
 <section class="section-layout pt-0">
     <div class="container">
         <div class="d-flex align-items-end ps-lg-6 mb-4 mb-md-6 mb-lg-7">
-            <h3>Новости</h3><a class="violet-100 d-flex align-items-center gap-2 ms-auto" href="#"><span
+            <h3>Новости</h3><a class="violet-100 d-flex align-items-center gap-2 ms-auto"
+                               href="/about/press-center/"><span
                     class="d-none d-md-inline text-s fw-semibold">Пресс-центр</span>
                 <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                     <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
@@ -473,171 +474,14 @@ $APPLICATION->SetTitle('Частным клиентам - Главная НОВ�
 <? $APPLICATION->IncludeFile('/local/php_interface/include/request_call.php'); ?>
 
 <section class="section-layout section-currency-exchange">
-    <div class="container"><a class="h3 d-flex align-items-center justify-content-between dark-100 d-md-none"
-                              data-bs-toggle="collapse" href="#currency-exchange" role="button" aria-expanded="false"
-                              aria-controls="currency-exchange">Обмен валют
-            <svg class="icon size-m violet-100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-down"></use>
-            </svg>
-        </a>
-        <div class="section-currency-exchange__wrapper collapse" id="currency-exchange">
-            <div class="row">
-                <div class="col-12 col-xl-8">
-                    <div
-                        class="d-flex flex-column flex-lg-row align-items-lg-end mb-4 mb-md-6 mb-lg-7 pt-4 pt-md-0 gap-md-3">
-                        <h3 class="d-none d-md-block">Обмен валют</h3>
-                        <p class="text-s dark-70 mb-0 ms-lg-auto">Курс банка актуален на&nbsp;14:00 по&nbsp;МСК 30&nbsp;апреля
-                            2024&nbsp;г.</p>
-                    </div>
-                    <ul class="nav nav-tabs d-md-none" role="tablist">
-                        <li class="nav-item flex-grow-1" role="presentation">
-                            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#eur" type="button"
-                                    role="tab" aria-controls="eur" aria-selected>EUR
-                            </button>
-                        </li>
-                        <li class="nav-item flex-grow-1" role="presentation">
-                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#usd" type="button" role="tab"
-                                    aria-controls="usd">USD
-                            </button>
-                        </li>
-                        <li class="nav-item flex-grow-1" role="presentation">
-                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#cny" type="button" role="tab"
-                                    aria-controls="cny">CNY
-                            </button>
-                        </li>
-                    </ul>
-                    <div class="tab-content pt-3 d-md-none">
-                        <div class="tab-pane fade show active" id="eur" role="tabpanel" aria-labelledby="eur"
-                             tabindex="0">
-                            <div class="table-currency">
-                                <div class="table-currency__row">
-                                    <div class="table-currency__col"><span class="text-s dark-70">Продать, RUB</span>
-                                    </div>
-                                    <div class="table-currency__col"><span class="text-l dark-100">94,60</span></div>
-                                </div>
-                                <div class="table-currency__row">
-                                    <div class="table-currency__col"><span class="text-s dark-70">Купить, RUB</span>
-                                    </div>
-                                    <div class="table-currency__col"><span class="text-l dark-100">99,10</span></div>
-                                </div>
-                                <div class="table-currency__row">
-                                    <div class="table-currency__col"><span class="text-s dark-70">ЦБ РФ, RUB</span>
-                                    </div>
-                                    <div class="table-currency__col"><span class="text-l dark-100">97,15</span></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="usd" role="tabpanel" aria-labelledby="usd" tabindex="0">
-                            <div class="table-currency">
-                                <div class="table-currency__row">
-                                    <div class="table-currency__col"><span class="text-s dark-70">Продать, RUB</span>
-                                    </div>
-                                    <div class="table-currency__col"><span class="text-l dark-100">86,20</span></div>
-                                </div>
-                                <div class="table-currency__row">
-                                    <div class="table-currency__col"><span class="text-s dark-70">Купить, RUB</span>
-                                    </div>
-                                    <div class="table-currency__col"><span class="text-l dark-100">91,50</span></div>
-                                </div>
-                                <div class="table-currency__row">
-                                    <div class="table-currency__col"><span class="text-s dark-70">ЦБ РФ, RUB</span>
-                                    </div>
-                                    <div class="table-currency__col"><span class="text-l dark-100">91,34</span></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="cny" role="tabpanel" aria-labelledby="cny" tabindex="0">
-                            <div class="table-currency">
-                                <div class="table-currency__row">
-                                    <div class="table-currency__col"><span class="text-s dark-70">Продать, RUB</span>
-                                    </div>
-                                    <div class="table-currency__col"><span class="text-l dark-100">12,25</span></div>
-                                </div>
-                                <div class="table-currency__row">
-                                    <div class="table-currency__col"><span class="text-s dark-70">Купить, RUB</span>
-                                    </div>
-                                    <div class="table-currency__col"><span class="text-l dark-100">12,73</span></div>
-                                </div>
-                                <div class="table-currency__row">
-                                    <div class="table-currency__col"><span class="text-s dark-70">ЦБ РФ, RUB</span>
-                                    </div>
-                                    <div class="table-currency__col"><span class="text-l dark-100">12,38</span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="table-currency d-none d-md-block">
-                        <div class="table-currency__row table-currency__row--header">
-                            <div class="table-currency__col"><span class="text-s dark-70">Валюта</span></div>
-                            <div class="table-currency__col"><span class="text-s dark-70">Продать, RUB</span></div>
-                            <div class="table-currency__col"><span class="text-s dark-70">Купить, RUB</span></div>
-                            <div class="table-currency__col"><span class="text-s dark-70">ЦБ РФ, RUB</span></div>
-                        </div>
-                        <div class="table-currency__row">
-                            <div class="table-currency__col"><span class="fw-semibold">Евро — EUR</span></div>
-                            <div class="table-currency__col"><span class="text-l dark-100">94,60</span></div>
-                            <div class="table-currency__col"><span class="text-l dark-100">99,10</span></div>
-                            <div class="table-currency__col"><span class="text-l dark-100">97,15</span></div>
-                        </div>
-                        <div class="table-currency__row">
-                            <div class="table-currency__col"><span class="fw-semibold">Доллар США — USD</span></div>
-                            <div class="table-currency__col"><span class="text-l dark-100">86,20</span></div>
-                            <div class="table-currency__col"><span class="text-l dark-100">91,50</span></div>
-                            <div class="table-currency__col"><span class="text-l dark-100">91,34</span></div>
-                        </div>
-                        <div class="table-currency__row">
-                            <div class="table-currency__col"><span class="fw-semibold">Китайский юань — CNY</span></div>
-                            <div class="table-currency__col"><span class="text-l dark-100">12,25</span></div>
-                            <div class="table-currency__col"><span class="text-l dark-100">12,73</span></div>
-                            <div class="table-currency__col"><span class="text-l dark-100">12,38</span></div>
-                        </div>
-                    </div>
-                    <p class="dark-70 pt-4 text-s mb-0">Банк оставляет за&nbsp;собой право на&nbsp;изменение курса
-                        купли-продажи иностранной валюты.<br>Действующие на&nbsp;момент совершения операций курсы
-                        уточняйте в&nbsp;отделениях банка.<br>Список отделений доступен по&nbsp;ссылке.</p>
-                    <p class="dark-70 pt-3 text-s mb-0">Покупка и&nbsp;продажа фунтов стерлингов и&nbsp;швейцарских
-                        франков осуществляется только в&nbsp;ДО&nbsp;&laquo;Якиманка&raquo;.</p>
-                </div>
-                <div class="col-12 col-xl-4 mt-4">
-                    <div
-                        class="d-flex flex-column gap-4 gap-lg-5 gap-xl-4 bg-dark-0 rounded-3 px-3 py-4 p-md-5 px-lg-6 p-xl-6">
-                        <h4>Предварительный расчет</h4>
-                        <div class="row">
-                            <div class="col-12 col-md-6 col-xl-12">
-                                <label class="form-label" for="have">У вас есть</label>
-                                <div class="input-group">
-                                    <input class="form-control form-control-lg" id="have" type="text" name="you_have"
-                                           placeholder="1500">
-                                    <div class="input-group__currency">
-                                        <select class="form-select js-select" aria-label="Выберите валюту">
-                                            <option selected value="RUB">RUB</option>
-                                            <option value="USD">USD</option>
-                                            <option value="CNY">CNY</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <span class="caption-m dark-70 mt-2 d-block">1 RUB = 0,01 USD</span>
-                            </div>
-                            <div class="col-12 col-md-6 col-xl-12 mt-4 mt-md-0 mt-xl-4">
-                                <label class="form-label" for="get">Вы получите</label>
-                                <div class="input-group">
-                                    <input class="form-control form-control-lg" id="get" type="text" name="you_get"
-                                           placeholder="9,77">
-                                    <div class="input-group__currency">
-                                        <select class="form-select js-select" aria-label="Выберите валюту">
-                                            <option value="RUB">RUB</option>
-                                            <option value="USD" selected>USD</option>
-                                            <option value="CNY">CNY</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <span class="caption-m dark-70 mt-2 d-block">1 USD = 97 RUB</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="container">
+        <? $APPLICATION->IncludeComponent(
+            "dalee:calculator",
+            "currencies",
+            array(
+                "CALCULATOR_ELEMENT_ID" => ""
+            )
+        ); ?>
     </div>
 </section>
 

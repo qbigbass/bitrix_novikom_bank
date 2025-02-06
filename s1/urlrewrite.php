@@ -1,6 +1,20 @@
 <?php
 $arUrlRewrite = [
     [
+        'CONDITION' => '#^/for-corporate-clients/mery-gospodderzhki/[a-z-]+/[a-z-]+/#',
+        'RULE' => '',
+        'ID' => '',
+        'PATH' => '/for-corporate-clients/financing_measures/detail.php',
+        'SORT' => 1,
+    ],
+    [
+        'CONDITION' => '#^/for-corporate-clients/mery-gospodderzhki/[a-z-]+/#',
+        'RULE' => '',
+        'ID' => '',
+        'PATH' => '/for-corporate-clients/financing_measures/section.php',
+        'SORT' => 2,
+    ],
+    [
         'CONDITION' => '#^/for-corporate-clients/customer-announcements/#',
         'RULE' => '',
         'ID' => 'bitrix:news',
@@ -120,6 +134,13 @@ $arUrlRewrite = [
         'SORT' => 100,
     ],
     [
+        'CONDITION' => '#^/cards/[a-z-]+/[a-z-]+/#',
+        'RULE' => '',
+        'ID' => '',
+        'PATH' => '/cards/detail.php',
+        'SORT' => 100,
+    ],
+    [
         'CONDITION' => '#^/cards/#',
         'RULE' => '',
         'ID' => 'bitrix:news',
@@ -173,6 +194,20 @@ $arUrlRewrite = [
         'RULE' => '',
         'ID' => 'bitrix:news',
         'PATH' => '/private-banking/services/index.php',
+        'SORT' => 100,
+    ],
+    [
+        'CONDITION' => '#^/documents/(.+)#',
+        'RULE' => 'path=$1',
+        'ID' => '',
+        'PATH' => '/documents/index.php',
+        'SORT' => 100,
+    ],
+    [
+        'CONDITION' => '#^/online-services/[a-z-]+/#',
+        'RULE' => '',
+        'ID' => '',
+        'PATH' => '/online-services/index.php',
         'SORT' => 100,
     ],
 ];

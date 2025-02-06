@@ -1,5 +1,10 @@
 .pb-card-contact {
   padding: 2rem 1.5rem;
   border-radius: 1rem;
-  background: radial-gradient(141.69% 100% at 0% 50%, rgba(55, 17, 106, 0.70) 0%, rgba(0, 0, 0, 0.70) 100%);
+  background: radial-gradient(100% 141.69% at 0% 50%, rgba(55, 17, 106, 0.7) 0%, rgba(0, 0, 0, 0.7) 100%);
+
+  @include use-media(tablet-album) {
+    padding: 2.5rem;
+    margin-top: 2.5rem;
+  }
 }

@@ -7,6 +7,7 @@ const ELEMS_MORTGAGE = {
     selectObject: '.js-mort-object',
     inputMortgageCard: '.js-mort-card',
     inputMortgageInsurance: '.js-mort-insurance',
+    name: '.js-program-name',
 }
 
 function calculateMortgage({amount, rate, period}) {
@@ -71,6 +72,7 @@ function setAttributesInputMortgage(STATE) {
 }
 
 function showMortgageResult(STATE) {
+    STATE.elements.displayName.textContent = STATE.filteredData[0].name;
     STATE.elements.displayRate.textContent = `${formatNumber(STATE.rate)} %`;
     STATE.elements.displayPayment.innerHTML = `${formatNumber(STATE.payment.toFixed(2))} <span class="currency">₽</span>`;
     STATE.elements.displayIncome.innerHTML = `${formatNumber(STATE.requiredIncome.toFixed(2))} <span class="currency">₽</span>`;
@@ -223,6 +225,7 @@ function initElementsMortgageCalculator(root) {
     const displayPayment = root.querySelector(ELEMS_LOAN.payment);
     const displayFullCost = root.querySelector(ELEMS_LOAN.fullCost);
     const displayIncome = root.querySelector(ELEMS_DEPOSIT.income);
+    const displayName = root.querySelector(ELEMS_MORTGAGE.name);
     const inputAmount = root.querySelector(ELEMS_DEPOSIT.inputAmount);
     const inputPeriod = root.querySelector(ELEMS_DEPOSIT.inputPeriod);
     const inputPropertyValue = root.querySelector(ELEMS_MORTGAGE.inputProperty);
@@ -243,6 +246,7 @@ function initElementsMortgageCalculator(root) {
         displayPayment,
         displayFullCost,
         displayIncome,
+        displayName,
         inputAmount,
         inputPeriod,
         inputPropertyValue,

@@ -5,6 +5,7 @@
   -webkit-backdrop-filter: blur(1.25rem);
   backdrop-filter: blur(1.25rem);
   position: relative;
+  overflow: hidden;
 
   @include use-media(tablet) {
     padding: 2rem 2.5rem;
@@ -17,12 +18,36 @@
   }
 
   &__title {
-    font-size: 2rem;
+    font-size: 1.625rem;
     line-height: 1.25;
     font-weight: 500;
 
+    @include use-media(tablet) {
+      font-size: 2rem;
+    }
+
     @include use-media(tablet-album) {
       font-size: 3rem;
+    }
+  }
+
+  &__text {
+    text-wrap: balance;
+  }
+
+  &__date {
+    color: #b0b7fe;
+  }
+
+  &__bg-sphere {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 10.75rem;
+
+    @include use-media(tablet) {
+      width: 14rem;
     }
   }
 }

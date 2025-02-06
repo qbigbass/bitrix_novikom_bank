@@ -2983,6 +2983,8 @@ const ELEMS_DEPOSIT = {
     currencyList: '.js-tabs-currency',
     currencyButton: '.nav-link',
     inputCapitalization: '.js-input-deposit-capitalization',
+    selectName: '.js-select-deposit-name',
+    name: '.js-program-name',
 }
 
 const CLASSES_DEPOSIT = {
@@ -3032,6 +3034,15 @@ function getRates({table = null, id = null, name = null}) {
 
 }
 
+function setCurrencyToReplenishment(STATE) {
+    const replenishmentBlocks = STATE.elements.root.querySelectorAll(ELEMS_DEPOSIT.replenishmentItem);
+    replenishmentBlocks.forEach(block => {
+        block.querySelectorAll(CLASSES_DEPOSIT.currency).forEach(elem => {
+            elem.textContent = CURRENCIES[STATE.currency];
+        })
+    })
+}
+
 function handlerClickTabCurrency(event, STATE) {
     const target = event.target;
     if (target.classList.contains(CLASSES_DEPOSIT.active)) return false;
@@ -3044,13 +3055,7 @@ function handlerClickTabCurrency(event, STATE) {
     STATE.currency = target.dataset.name;
     getDepositValues(STATE);
     setDepositValues(STATE, true);
-
-    const replenishmentBlocks = STATE.elements.root.querySelectorAll(ELEMS_DEPOSIT.replenishmentItem);
-    replenishmentBlocks.forEach(block => {
-        block.querySelectorAll(CLASSES_DEPOSIT.currency).forEach(elem => {
-            elem.textContent = CURRENCIES[STATE.currency];
-        })
-    })
+    setCurrencyToReplenishment(STATE);
 }
 function createCurrencyTab(currency, STATE) {
     let activeClass = "";
@@ -3066,9 +3071,9 @@ function createCurrencyTab(currency, STATE) {
 }
 function createCurrencyList(STATE) {
     const tabs = STATE.elements.currencyList.querySelectorAll(ELEMS_DEPOSIT.currencyButton);
-    if (tabs.length) return false;
-
+    tabs.forEach((tab) => tab.remove());
     const uniqueCurrencies = [];
+
     STATE.calculatorData.forEach(item => {
         if (!uniqueCurrencies.includes(item.currency)) {
             uniqueCurrencies.push(item.currency);
@@ -3084,6 +3089,7 @@ function createCurrencyList(STATE) {
 }
 
 function showDepositResult(STATE) {
+    STATE.elements.displayName.textContent = STATE.filteredData[0].name;
     STATE.elements.displayPeriod.innerHTML = getFormatedTextByType({value: STATE.period, type: 'day'});
     STATE.elements.displayRate.innerHTML = `${formatNumber(STATE.rate)} %`;
     STATE.elements.displayIncome.innerHTML = `${formatNumberWithSpaces(STATE.income.toFixed(0))} <span class="currency">${CURRENCIES[STATE.currency]}</span>`;
@@ -3276,13 +3282,26 @@ function addReplenishment({buttonAddReplenishment, replenishmentBlock}, STATE) {
     initDatepicker([inputDate]);
 
     inputSum.addEventListener('input', () => {
-        inputSum.value = formatNumberWithSpaces(inputSum.value.replace(/[^0-9]/g, ''));
+        inputSum.value = formatNumberWithSpaces(validateNumberInput(inputSum));
         handlerInputReplenishmentSum(inputSum, STATE);
     });
 
     inputDate.addEventListener('select', () => {
         handlerInputReplenishmentSum(inputSum, STATE);
     })
+
+}
+
+function validateNumberInput(input) {
+    // Удаляем все символы, кроме цифр
+    input.value = input.value.replace(/[^0-9]/g, '');
+
+    // Проверяем, чтобы строка не начиналась с 0 и содержала хотя бы одну цифру
+    if (input.value.length === 1) {
+        input.value = input.value.replace(/[^1-9]/g, '');
+    }
+
+    return input.value;
 
 }
 
@@ -3319,7 +3338,7 @@ const initReplenishment = (root, STATE) => {
     })
 
     inputReplenishmentSum.addEventListener('input', () => {
-        inputReplenishmentSum.value = formatNumberWithSpaces(inputReplenishmentSum.value.replace(/[^0-9]/g, ''));
+        inputReplenishmentSum.value = formatNumberWithSpaces(validateNumberInput(inputReplenishmentSum));
         handlerInputReplenishmentSum(inputReplenishmentSum, STATE);
     });
 
@@ -3328,47 +3347,69 @@ const initReplenishment = (root, STATE) => {
     });
 }
 
+function collectOptionsName(dataArray) {
+    return dataArray
+        .map(item => item.name) // Извлекаем значения name
+        .filter(region => region !== null) // Удаляем null значения
+        .filter((value, index, self) => self.indexOf(value) === index) // Удаляем дубликаты
+}
+
 const initElementsDepositCalculator = (root) => {
     const displayPeriod = root.querySelector(ELEMS_DEPOSIT.period);
     const displayRate = root.querySelector(ELEMS_DEPOSIT.rate);
     const displayIncome = root.querySelector(ELEMS_DEPOSIT.income);
+    const displayName = root.querySelector(ELEMS_DEPOSIT.name);
     const inputAmount = root.querySelector(ELEMS_DEPOSIT.inputAmount);
     const inputPeriod = root.querySelector(ELEMS_DEPOSIT.inputPeriod);
     const inputPeriodWrapper = inputPeriod.closest(ELEMS_DEPOSIT.inputSlider);
     const inputAmountWrapper = inputAmount.closest(ELEMS_DEPOSIT.inputSlider);
     const currencyList = root.querySelector(ELEMS_DEPOSIT.currencyList);
     const inputCapitalization = root.querySelector(ELEMS_DEPOSIT.inputCapitalization);
+    const selectName = root.querySelector(ELEMS_DEPOSIT.selectName);
 
     return {
         root,
         displayPeriod,
         displayRate,
         displayIncome,
+        displayName,
         inputAmount,
         inputPeriod,
         inputPeriodWrapper,
         inputAmountWrapper,
         currencyList,
         inputCapitalization,
+        selectName
     }
 }
 
 function initStateDepositCalculator(calculator) {
     return getRates(calculator.dataset)
-        .then(calculatorData => {
+        .then(depositData => {
 
             // обработка поля sumFrom, когда значение не задано
-            calculatorData.forEach((elem) => {
+            depositData.forEach((elem) => {
                 if (elem.sumFrom === "не ограничен") {
                     elem.sumFrom = MIN_DEPOSIT_VALUE;
                 }
             })
-
+            let calculatorData = depositData;
             const elements = initElementsDepositCalculator(calculator);
+            const depositNameOptions = collectOptionsName(calculatorData);
+            if (depositNameOptions.length > 1) {
+                depositNameOptions.forEach(item => {
+                    const option = document.createElement('option');
+                    option.value = item;
+                    option.textContent = item;
+                    elements.selectName.appendChild(option);
+                });
+                calculatorData = calculatorData.filter(item => item.name === depositNameOptions[0]);
+            }
 
             return {
                 elements,
-                calculatorData
+                calculatorData,
+                depositData
             }
         })
         .catch(error => {
@@ -3408,10 +3449,14 @@ const getDepositValues = (STATE) => {
     STATE.showCurrency = isShowCurrency(STATE.calculatorData);
 
     if (!STATE.currency) {
-        STATE.currency = "Рубли";
+        STATE.currency = STATE.calculatorData[0].currency ? STATE.calculatorData[0].currency : "Рубли";
+    }
+    if (STATE.showCurrency) {
+        setCurrencyToReplenishment(STATE);
     }
     // делаем выборку по валюте
     STATE.filteredData = STATE.calculatorData.filter(item => item.currency === STATE.currency);
+
     if (STATE.filteredData.length === 0) {
         console.error(`Не удалось найти данные по типу валюты ${STATE.currency}`);
         STATE.filteredData = STATE.calculatorData[0];
@@ -3425,29 +3470,14 @@ const getDepositValues = (STATE) => {
 
     if (STATE.minPeriod !== STATE.maxPeriod) {
         STATE.steps = getStepsPeriod(STATE.filteredData);
+    } else {
+        STATE.steps = '';
     }
 
     setStartValues(STATE);
 }
 
 const setDepositValues = (STATE, currencyTrigger) => {
-    if (STATE.steps) {
-        const periodStepsText = STATE.elements.inputPeriodWrapper.querySelector(JS_CLASSES.textSteps);
-        const periodSteps = STATE.elements.inputPeriodWrapper.querySelectorAll(JS_CLASSES.sliderSteps);
-        periodSteps.forEach((step) => {
-            step.remove();
-        })
-        periodStepsText.innerHTML = '';
-
-
-        STATE.elements.inputPeriodWrapper.setAttribute('data-steps', STATE.steps);
-        initInputSlider([STATE.elements.inputPeriodWrapper]);
-        STATE.period = getPeriodValue(STATE.elements.inputPeriod);
-    } else { // если период вклада не меняется
-        STATE.elements.inputPeriodWrapper.remove();
-        STATE.period = STATE.minPeriod;
-    }
-
     if (currencyTrigger) {
         const cloneInputAmount = STATE.elements.inputAmountWrapper.cloneNode(true);
         // Добавляем клонированный элемент перед оригинальным
@@ -3456,14 +3486,41 @@ const setDepositValues = (STATE, currencyTrigger) => {
         const steps = cloneInputAmount.querySelector(JS_CLASSES.textSteps);
         steps.innerHTML = '';
         STATE.elements.inputAmountWrapper = cloneInputAmount;
+
+        const cloneInputPeriod = STATE.elements.inputPeriodWrapper.cloneNode(true);
+        // Добавляем клонированный элемент перед оригинальным
+        STATE.elements.inputPeriodWrapper.insertAdjacentElement('beforebegin', cloneInputPeriod);
+        STATE.elements.inputPeriodWrapper.remove();
+        STATE.elements.inputPeriodWrapper = cloneInputPeriod;
+        STATE.elements.inputPeriod = STATE.elements.inputPeriodWrapper.querySelector(ELEMS_DEPOSIT.inputPeriod);
     }
+
+    if (STATE.steps) {
+        STATE.elements.inputPeriodWrapper.classList.remove(CLASSES_DEPOSIT.hide);
+        const periodStepsText = STATE.elements.inputPeriodWrapper.querySelector(JS_CLASSES.textSteps);
+        const periodSteps = STATE.elements.inputPeriodWrapper.querySelectorAll(JS_CLASSES.sliderSteps);
+        periodSteps.forEach((step) => {
+            step.remove();
+        })
+        periodStepsText.innerHTML = '';
+
+        STATE.elements.inputPeriodWrapper.setAttribute('data-steps', STATE.steps);
+        initInputSlider([STATE.elements.inputPeriodWrapper]);
+        STATE.period = getPeriodValue(STATE.elements.inputPeriod);
+    } else { // если период вклада не меняется
+        STATE.elements.inputPeriodWrapper.classList.add(CLASSES_DEPOSIT.hide);
+        STATE.period = STATE.minPeriod;
+    }
+
     STATE.elements.inputAmountWrapper.setAttribute('data-min-value', STATE.minAmount);
     STATE.elements.inputAmountWrapper.setAttribute('data-max-value', STATE.maxAmount);
     STATE.elements.inputAmountWrapper.setAttribute('data-start-value', STATE.amount);
     // показываем или нет валюту
     if (!STATE.showCurrency) {
-        STATE.elements.currencyList.remove();
+        STATE.elements.currencyList.innerHTML = '';
+        STATE.elements.currencyList.classList.add(CLASSES_DEPOSIT.hide);
     } else {
+        STATE.elements.currencyList.classList.remove(CLASSES_DEPOSIT.hide);
         createCurrencyList(STATE);
     }
     initInputSlider([STATE.elements.inputAmountWrapper]);
@@ -3477,15 +3534,25 @@ const setDepositValues = (STATE, currencyTrigger) => {
     // выводим результаты
     showDepositResult(STATE);
 
-    STATE.elements.inputPeriodWrapper.addEventListener('input', (event) => {
-        STATE.period = getPeriodValue(STATE.elements.inputPeriod);
-        handlerInputDeposit(STATE);
-    })
-
     STATE.elements.inputAmountWrapper.addEventListener('input', (event) => {
         STATE.amount = event.detail.value;
         handlerInputDeposit(STATE);
     })
+
+    STATE.elements.inputPeriodWrapper.addEventListener('input', () => {
+        STATE.period = getPeriodValue(STATE.elements.inputPeriod);
+        handlerInputDeposit(STATE);
+    })
+}
+
+function setDepositTriggerListener(STATE) {
+    $(STATE.elements.selectName).on('select2:select', function (event) {
+        STATE.name = event.target.value;
+        STATE.calculatorData = STATE.depositData.filter(item => item.name === STATE.name);
+        STATE.currency = "";
+        getDepositValues(STATE);
+        setDepositValues(STATE, true);
+    });
 
     STATE.elements.inputCapitalization.addEventListener('change', (event) => {
         STATE.capitalization = event.target.checked;
@@ -3502,6 +3569,7 @@ function initCalculatorDeposit() {
                 getDepositValues(STATE);
                 initReplenishment(calculator, STATE);
                 setDepositValues(STATE);
+                setDepositTriggerListener(STATE);
             })
             .catch(error => {
                 console.error('Ошибка в initCalculatorDeposit функции:', error);

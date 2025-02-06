@@ -5,7 +5,6 @@
     flex-wrap: wrap;
 
     &:hover {
-
         & .form-check-input:not(:disabled) {
             border-color: var(--blue-100);
         }
@@ -65,6 +64,6 @@
     }
 
     &.is-required {
-        border-color: var(--orange-100);
+        border-color: var(--orange-100) !important;
     }
 }

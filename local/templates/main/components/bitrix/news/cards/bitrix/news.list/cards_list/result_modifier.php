@@ -3,24 +3,30 @@
 
 require_once __DIR__ . '/functions.php';
 
-$sectionEntity = \Bitrix\Iblock\Model\Section::compileEntityByIblock($arResult['ID']);
+$sectionIds = array_unique(array_column($arResult['ITEMS'], 'IBLOCK_SECTION_ID'));
 
-$sectionsId = [];
-foreach ($arResult['ITEMS'] as $item) {
-    if (!in_array($item['IBLOCK_SECTION_ID'], $sectionsId)) {
-        $sectionsId[] = $item['IBLOCK_SECTION_ID'];
+$arSections = [];
+if (!empty($sectionIds)) {
+    $res = CIBlockSection::GetList(
+        ['SORT' => 'ASC'],
+        [
+            'ID' => $sectionIds,
+            'IBLOCK_ID' => $arResult['ID']
+        ],
+        false,
+        [
+            'ID',
+            'NAME',
+            'PICTURE',
+            'IBLOCK_SECTION_ID',
+            'SECTION_PAGE_URL',
+            'UF_*'
+        ]
+    );
+    while ($section = $res->GetNext()) {
+        $section['PARENT_SECTION_NAME'] = CIBlockSection::GetByID($section['IBLOCK_SECTION_ID'])->fetch()['NAME'];
+        $arSections[$section['ID']] = $section;
     }
 }
 
-$arSections = [];
-foreach ($sectionsId as $sectionId) {
-    $arSection = $sectionEntity::getList([
-        'filter' => ['ID' => $sectionId],
-        'select' => ['NAME', 'UF_TAG'],
-        'limit' => 1
-    ])->fetch();
-
-    $arSections[$sectionId] = $arSection;
-}
-
-$arResult['SECTIONS'] = $arSections;
+$arResult['ITEMS'] = $arSections;

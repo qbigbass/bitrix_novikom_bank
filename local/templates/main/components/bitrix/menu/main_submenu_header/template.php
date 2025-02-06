@@ -50,9 +50,17 @@
                         if ($notHiddenItem['JS_DESKTOP_MOVE_LINK']) { ?>
                             <li>
                                 <a
-                                    class="dropdown-item fw-bold d-xl-none"
-                                    href="<?= $notHiddenItem['LINK'] ?>"
-                                ><?= $notHiddenItem['TEXT'] ?></a>
+                                    class="dropdown-item fw-bold d-inline-flex align-items-center justify-content-between d-xl-none js-dropdown-link"
+                                    href="<?= $notHiddenItem['LINK'] ?>" role="button" aria-expanded="false"
+                                    data-bs-toggle="collapse"
+                                    aria-controls="spoiler-<?= $notHiddenItem['ITEM_INDEX'] ?>"
+                                ><?= $notHiddenItem['TEXT'] ?>
+                                    <span class="icon size-m" slot="icon-after">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                            <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
+                                        </svg>
+                                    </span>
+                                </a>
                             </li>
                         <? }
                     } ?>

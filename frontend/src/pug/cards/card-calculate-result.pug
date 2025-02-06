@@ -1,6 +1,7 @@
 mixin card-calculate-result(data, bgColor = 'bg-dark-0')
     .card-calculate-result(class= bgColor)&attributes(attributes)
         .card-calculate-result__body
+            h4.dark-70.js-program-name
             each item in data.rows
                 .d-flex.flex-column.row-gap-2
                     span.card-calculate-result__label.text-s= item.title

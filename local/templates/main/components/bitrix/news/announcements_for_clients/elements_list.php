@@ -62,11 +62,11 @@ if ($delFilter) {
                 ); ?>
             </div>
             <div class="col-12">
-                <!-- Фильтры по типу объявления -->
+                <!-- Фильтры по свойствам -->
                 <?
                 $APPLICATION->IncludeComponent (
                     "bitrix:catalog.filter",
-                    "announcements_filter",
+                    "filter_by_props",
                     [
                         "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
                         "IBLOCK_ID" => $arParams["IBLOCK_ID"],
@@ -85,7 +85,8 @@ if ($delFilter) {
                         "SAVE_IN_SESSION" => "N",
                         "PREFILTER_NAME" => "preFilter",
                         "PAGER_PARAMS_NAME" => "arrPager",
-                        "PARAMS_TYPE_SELECTED" => $typeSelected
+                        "PARAMS_TYPE_SELECTED" => $typeSelected,
+                        "SHOW_CALENDAR" => "Y"
                     ],
                     $component
                 );

@@ -9,7 +9,7 @@
                         class="d-flex flex-column flex-md-row-reverse align-items-md-center gap-3 js-input-slider-wrapper">
                         <ul class="nav nav-tabs nav-tabs--type-currency js-tabs-currency"></ul>
                         <div class="input-slider flex-grow-1" data-type="price"
-                             data-start-value="1000000" data-step-size="5000">
+                             data-start-value="1000000" data-step-size="1000">
                             <label class="text-s dark-70 ps-3 mb-2" for="deposit-amount">Сумма
                                 вклада</label>
                             <div class="input-slider-text js-input-slider-text">
@@ -154,6 +154,7 @@
                     <div class="polygon-container__content">
                         <div class="card-calculate-result <?= $arParams['BACKGROUND'] ? 'bg-dark-10' : 'bg-dark-0' ?>">
                             <div class="card-calculate-result__body">
+                                <h4 class="dark-70 js-program-name"></h4>
                                 <div class="d-flex flex-column row-gap-2"><span
                                         class="card-calculate-result__label text-s">Срок вклада</span><span
                                         class="text-number-ml fw-bold text-nowrap js-calculator-display-period"></span>

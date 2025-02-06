@@ -12,7 +12,7 @@ mixin banner-hero(data, type)
                             if data.banner.button
                                 a.btn.btn-secondary.btn-lg-lg.d-inline-block(href="#", tabindex="0", aria-label=data.banner.title)= data.banner.button
         if data.sliders
-            div.banner-hero__container.swiper.js-banner-hero
+            div.banner-hero__container.swiper.js-banner-hero(data-autoplay-delay='5000')
                 .swiper-wrapper
                     each slide in data.sliders
                         .swiper-slide
@@ -25,6 +25,11 @@ mixin banner-hero(data, type)
                                             a.btn.btn-secondary.btn-lg-lg.d-inline-block(href="#", tabindex="0", aria-label=slide.button)= slide.button
                                     if slide.imageSrc
                                         img(src=slide.imageSrc alt=slide.title).banner-hero-content__image
+                                if slide.bgImageSrc
+                                    img(src=slide.bgImageSrc, class="banner-hero-content__bg", alt="")
+                                if slide.bgVideoSrc
+                                    video.banner-hero-content__bg(autoplay='' loop='' muted='' poster='img/slides/hero_banner_bg_desktop.png')
+                                        source(src=slide.bgVideoSrc type='video/mp4')
 
                 .banner-hero-pagination
                 .banner-hero-controls

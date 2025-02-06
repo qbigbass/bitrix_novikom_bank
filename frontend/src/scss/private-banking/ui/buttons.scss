@@ -42,6 +42,12 @@
       background-color: var(--pb-hover);
       color: var(--dark-0);
     }
+
+    &:disabled,
+    &.disabled {
+      background-color: var(--pb-primary);
+      opacity: 0.5;
+    }
   }
 
   &--secondary {
@@ -81,7 +87,7 @@
   }
 
   &--size-lg {
-    font-size: .875rem;
+    font-size: 1rem;
     padding: 1rem 2.5rem;
 
     @include use-media(tablet-album) {

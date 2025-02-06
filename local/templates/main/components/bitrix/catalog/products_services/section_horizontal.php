@@ -12,7 +12,7 @@
     <div class="container banner-text__container position-relative z-2">
         <div class="row ps-lg-6">
             <div class="col-12 col-xl-6 position-relative z-1 mb-5 mb-md-0 pt-6">
-                <div class="d-flex flex-column align-items-start gap-3 gap-lg-4">
+                <div class="banner-text__content d-flex flex-column align-items-start gap-3 gap-lg-4">
                     <div class="breadcrumbs d-flex flex-wrap gap-2">
                         <a class="breadcrumbs__item d-md-inline-flex align-items-center gap-2 text-s text-white-50 d-inline-flex" href="/support/">
                             <svg class="icon size-s d-inline-block d-md-none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">

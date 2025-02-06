@@ -14,6 +14,8 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 
+use Bitrix\Main\Application;
+
 $headerView = new HeaderView($component);
 $helper = $headerView->helper();
 
@@ -23,6 +25,18 @@ $headerView->render(
     ['border-0', 'bg-linear-blue'],
     1,
 );
+$context = Application::getInstance()->getContext();
+$request = $context->getRequest();
+$delFilter = "";
+
+if (!empty($request["arrQuestionFilter_pf"]["TYPE_Q"])) {
+    $typeSelected = $request["arrQuestionFilter_pf"]["TYPE_Q"];
+    $delFilter = $request["del_filter"];
+}
+
+if (!empty($delFilter)) {
+    $typeSelected = 0;
+}
 ?>
 
 <section class="section-catalog d-flex flex-column py-6 py-sm-9 py-md-11 gap-4 gap-md-6 gap-lg-7" id="catalog-tabs">
@@ -60,7 +74,49 @@ $headerView->render(
 
     <section class="section-catalog__list">
         <div class="container">
-            <div class="row">
+            <div class="row row-gap-4 row-gap-md-6 row-gap-lg-7">
+                <div class="col-12">
+                    <!-- Строка поиска -->
+                    <?$APPLICATION->IncludeComponent(
+                        "dalee:search.block",
+                        "",
+                        [
+                            "PLACEHOLDER" => "Поиск по вопросам и ответам"
+                        ],
+                        $component
+                    ); ?>
+                </div>
+                <div class="col-12">
+                    <!-- Фильтры по свойствам -->
+                    <?
+                    $APPLICATION->IncludeComponent (
+                        "bitrix:catalog.filter",
+                        "filter_by_props",
+                        [
+                            "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
+                            "IBLOCK_ID" => $arParams["IBLOCK_ID"],
+                            "FILTER_NAME" => $arParams["FILTER_NAME"],
+                            "FIELD_CODE" => $arParams["FILTER_FIELD_CODE"],
+                            "PROPERTY_CODE" => $arParams["FILTER_PROPERTY_CODE"],
+                            "OFFERS_FIELD_CODE" => [],
+                            "OFFERS_PROPERTY_CODE" => [],
+                            "PRICE_CODE" => [],
+                            "CACHE_TYPE" => $arParams["CACHE_TYPE"],
+                            "CACHE_TIME" => $arParams["CACHE_TIME"],
+                            "CACHE_GROUPS" => $arParams["CACHE_GROUPS"],
+                            "LIST_HEIGHT" => "5",
+                            "TEXT_WIDTH" => "20",
+                            "NUMBER_WIDTH" => "5",
+                            "SAVE_IN_SESSION" => "N",
+                            "PREFILTER_NAME" => "preFilter",
+                            "PAGER_PARAMS_NAME" => "arrPager",
+                            "PARAMS_TYPE_SELECTED" => $typeSelected,
+                            "SHOW_CALENDAR" => "N"
+                        ],
+                        $component
+                    );
+                    ?>
+                </div>
                 <div class="col-12 position-relative z-1 d-flex flex-column align-items-start gap-1 gap-md-1">
                     <?$APPLICATION->IncludeComponent(
                         "bitrix:news.list",

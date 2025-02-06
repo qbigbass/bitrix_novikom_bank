@@ -11,6 +11,14 @@
         min-height: 25rem;
     }
 
+    &__content {
+        padding-bottom: 2.5rem;
+
+        @include use-media(tablet-album) {
+            padding-bottom: 5.875rem;
+        }
+    }
+
     &__title {
         hyphens: auto;
 

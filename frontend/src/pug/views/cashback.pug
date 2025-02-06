@@ -189,7 +189,7 @@ block content
             .row.row-gap-6.row-gap-md-7.px-lg-6
                 each item, index in allBenefits
                     .col-12.col-md-6
-                        +benefit(item.spriteName, item.title)
+                        +benefit(item.spriteName, item.title)(tabindex="0")
                             span!= item.description
         +pattern-bg('section', 'light', 'pattern-bg--position-sm-bottom')
 

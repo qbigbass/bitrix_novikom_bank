@@ -5,8 +5,6 @@
 
     &__title,
     &__description {
-        @extend .text-break;
-
         & br {
             display: none;
 
@@ -14,6 +12,14 @@
                 display: inherit;
             }
         }
+    }
+
+    &__title {
+        color: var(--dark-100);
+    }
+
+    &__description {
+        @extend .text-break;
     }
 
     &__image {

@@ -1,0 +1,177 @@
+include ../../../components/forms/form-step
+include ../../../components/forms/upload-file
+include ../../../components/forms/input
+include ../../../components/forms/captcha
+include ../../../components/forms/confirm
+include ../../../components/forms/radio
+include ../../../components/forms/textarea
+
+-
+    var stateSupportForm = {
+        formName: "state-support",
+        step1: {
+            inputs: [
+                {
+                    id: "organization",
+                    name: "ORGANIZATION",
+                    label: "Наименование организации",
+                    placeholder: "Введите наименование",
+                    required: true,
+                },
+                {
+                    id: "subject",
+                    name: "SUBJECT",
+                    label: "Субъект МСП",
+                    placeholder: "Укажите субъект",
+                    required: true,
+                },
+                {
+                    id: "inn",
+                    name: "INN",
+                    label: "ИНН",
+                    placeholder: "Укажите ИНН",
+                    required: true,
+                },
+                {
+                    id: "okved",
+                    name: "OKVED",
+                    label: "ОКВЭД",
+                    placeholder: "Укажите ОКВЭД",
+                    required: true,
+                },
+                {
+                    id: "location",
+                    name: "LOCATION",
+                    label: "Местоположение компании",
+                    placeholder: "Введите полный адрес компании",
+                    required: true,
+                },
+            ],
+            inputsContact: [
+                {
+                    id: "contact-name",
+                    label: "ФИО",
+                    placeholder: "Введите ФИО",
+                    required: true,
+                },
+                {
+                    id: "e-mail",
+                    label: "E-mail",
+                    placeholder: "Введите e-mail",
+                    type: "email",
+                    required: true,
+                    pattern: "[a-zA-Z0-9._%\\+\\-]+@[a-zA-Z0-9.\\-]+\\.[a-zA-Z]{2,}",
+                    errorMessage: "Введите корректный адрес электронной почты",
+                },
+                {
+                    id: "phone",
+                    label: "Номер телефона",
+                    placeholder: "+7",
+                    type: "tel",
+                    required: false,
+                    mask: "phone",
+                    pattern: "\\+7\\s\\(\\d{3}\\)\\s\\d{3}-\\d{2}-\\d{2}",
+                    errorMessage: "Неверный формат",
+                    required: true,
+                },
+                {
+                    id: "phone-additional",
+                    label: "Добавочный (при наличии)",
+                    placeholder: "",
+                    type: "number",
+                },
+            ],
+        },
+        step2: {
+            textarea: {
+                id: "message",
+                label: "Цель финансирования / Комментарии",
+                placeholder: "Введите сообщение",
+                required: true,
+            },
+            inputs: [
+                {
+                    id: "loan-payment",
+                    label: "Сумма кредита",
+                    placeholder: "Сумма",
+                    groupText: "₽",
+                    mask: "money"
+                },
+                {
+                    id: "loan-term",
+                    label: "Срок кредита",
+                    placeholder: "Срок",
+                    type: "number",
+                    min: "0",
+                    groupText: "мес.",
+                },
+            ],
+            selects: [
+                {
+                    id: "support-measure",
+                    label: "Мера поддержки",
+                    options: ["Льготное кредитование проектов, направленных на экспорт продукции (экспортеров и покупателей данной продукции)", "Вариант 2", "Вариант 3", "Вариант 4"],
+                    required: true,
+                },
+            ],
+        }
+    }
+
+form(action="/" method="POST" novalidate id="state-support-form" data-form data-form-feedback).application-form
+    .application-form__step(data-form-step data-form-validate-group)
+        - var step1 = stateSupportForm.step1;
+        .row.g-1.g-md-2.g-lg-2_5
+            .application-form__col.col-12
+                +form-step({
+                    current: "1",
+                    total: "2",
+                    text: "Об организации"
+                })
+            each item in step1.inputs
+                .application-form__col.col-12(class= item.id !== "location" ? "col-md-6" : "" hidden= item.hidden)
+                    +input(item, stateSupportForm.formName)
+
+        .row.g-1.g-md-2.gy-lg-1.gx-lg-2_5.mt-2
+            legend.text-m.fw-semibold.dark-100.mb-0 Контактное лицо
+            each item in step1.inputsContact
+                .application-form__col.col-12.col-md-6(hidden= item.hidden)
+                    +input(item, stateSupportForm.formName)
+
+        .d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-5.column-gap-lg-6.mt-6.mt-lg-7.px-md-2.px-lg-0
+            button.btn.btn-primary.btn-lg-lg.w-100.w-md-auto(type="button" disabled aria-disabled="true" data-form-button data-form-step-button-next) Продолжить
+            div.text-m.orange-100.text-center(data-form-error)
+    .application-form__step(data-form-step data-form-validate-group hidden)
+        - var step2 = stateSupportForm.step2;
+        .row.g-1.g-md-2.g-lg-2_5
+            .application-form__col.col-12
+                +form-step({
+                    current: "2",
+                    total: "2",
+                    text: "Настройки поддержки"
+                })
+            .application-form__col.col-12
+                +select(step2.selects[0], stateSupportForm.formName)
+            each item in step2.inputs
+                .application-form__col.col-12(class= item.id !== "location" ? "col-md-6" : "" hidden= item.hidden)
+                    +input(item, stateSupportForm.formName)
+
+
+            .application-form__col.col-12
+                +textarea(step2.textarea, stateSupportForm.formName)
+
+            .application-form__col.col-12
+                +captcha(stateSupportForm.formName)
+            .application-form__col.col-12
+                +confirm(stateSupportForm.formName)
+        .d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-5.column-gap-lg-6.mt-6.mt-lg-7.px-md-2.px-lg-0
+            button.btn.btn-primary.btn-lg-lg.w-100.w-md-auto(type="submit" disabled aria-disabled="true" data-form-button) Отправить заявку
+            button.btn.btn-outline-primary.btn-lg-lg.w-100.w-md-auto(type="button" data-form-step-button-prev) Назад
+            div.text-m.orange-100.text-center(data-form-error)
+    div(
+        hidden
+        aria-hidden="true"
+        data-success-title="Ваше обращение успешно отправлено!"
+        data-success-info="Мы ответим на ваше обращение, по выбранному способу связи, как только получим и обработаем его"
+        data-error-title="Не удалось отправить обращение"
+        data-error-info="Проверьте правильно ли указаны все данные и отправьте обращение снова"
+    ).js-message

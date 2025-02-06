@@ -156,11 +156,11 @@ block content
         .container
             h1.pb-section-hero__title.dark-0.text-center.animate.js-animation-start Лучшие финансовые инструменты <br>для&nbsp;достижения ваших целей
         video.pb-section-hero__video.animate.js-animation-start(autoplay='' loop='' muted='' poster='img/video-poster.jpg')
-                    source(src='img/video-background.mp4' type='video/mp4')
+            source(src='img/video-background.mp4' type='video/mp4')
         .pb-section-hero__overlay
 
 
-    section.pb-section.pb-section--gradient.position-relative.z-1
+    section.pb-section.pb-section--gradient.position-relative.z-1.py-xxl-16
         .container
             .d-flex.flex-column.row-gap-6.row-gap-lg-11
                 h2.pb-section__title.dark-0.text-center.animate.js-animation Особые условия для&nbsp;важных клиентов
@@ -181,6 +181,10 @@ block content
             p.pb-section__subtitle.dark-0.text-center.m-0.px-xl-6.animate.js-animation Дебетовая карта с&nbsp;ежемесячным начислением процентов на&nbsp;остаток средств или кредитная карта с&nbsp;бесплатным снятием наличных.
             .pb-card-wrapper.my-6.position-relative.animate.js-animation
                 .pb-card-image.pb-card-image--type-dark
+                    picture.pb-card-image__bg
+                        source(srcset=`img/pb-images/pb-card-supreme-dark_bg-desktop.png`, media="(min-width: 1200px)")
+                        source(srcset=`img/pb-images/pb-card-supreme-dark_bg-tablet.png`, media="(min-width: 768px)")
+                        img(src=`img/pb-images/pb-card-supreme-dark_bg-mobile.png`, loading="lazy" )
                     img(src="img/pb-images/pb-card-supreme-dark.png", alt="Supreme Card")
                     svg.pb-card-image__blink(width="549" height="389" viewBox="0 0 549 389" fill="none" xmlns="http://www.w3.org/2000/svg")
                         mask(id="mask0_1417_5046" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="27" y="28" width="495" height="318")
@@ -224,6 +228,10 @@ block content
                                 stop(offset="1" stop-color="#CBB9ED" stop-opacity="0")
 
                 .pb-card-image.pb-card-image--type-light
+                    picture.pb-card-image__bg
+                        source(srcset=`img/pb-images/pb-card-supreme-light_bg-desktop.png`, media="(min-width: 1200px)")
+                        source(srcset=`img/pb-images/pb-card-supreme-light_bg-tablet.png`, media="(min-width: 768px)")
+                        img(src=`img/pb-images/pb-card-supreme-light_bg-mobile.png`, loading="lazy" )
                     img(src="img/pb-images/pb-card-supreme-light.png", alt="Supreme Card")
                     svg.pb-card-image__blink(width="589" height="453" viewBox="0 0 589 453" fill="none" xmlns="http://www.w3.org/2000/svg")
                         mask(id="mask0_1417_5056" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="12" y="12" width="562" height="429")
@@ -270,7 +278,7 @@ block content
                     +pb-card-benefit(benefit.icon, benefit.text).animate.js-animation
             .mt-6.text-center
                 a(href="#become-client").btn.btn-pb.btn-pb--primary.btn-pb--size-lg.w-100.w-md-auto.animate.js-animation.js-scroll-to Стать клиентом
-    section.pb-section.pb-section--gradient.pb-section--bg-lines
+    section.pb-section.pb-section--gradient-linear.pb-section--bg-lines.py-xxl-16
         .container
             .d-flex.flex-column.row-gap-6.row-gap-lg-11
                 h3.pb-section__title.dark-0.text-center.animate.js-animation Банк для вас
@@ -285,7 +293,7 @@ block content
                                 .pb-card-special__image
                                     img(src=card.image, alt=card.title)
 
-    section.pb-section.pb-section--gradient-linear
+    section.pb-section.pb-section--gradient-linear.py-xxl-16
         .container
             h3.pb-section__title.dark-0.text-center.mb-4.d-md-none.animate.js-animation Премиум-услуги
             .pb-services.d-flex.flex-column.row-gap-4.row-gap-md-5.row-gap-lg-9
@@ -335,7 +343,7 @@ block content
                                                 img(src=card.image, alt=card.title)
                             .pb-services__pagination.d-flex.gap-2.justify-content-center.mt-4
 
-    section#become-client.pb-section.pb-section--gradient.pb-section--bg-lines
+    section#become-client.pb-section.pb-section--gradient-radial-linear.pb-section--bg-lines.py-xxl-16
         .container
             include ../includes/forms/pb-form
     section.pb-section.pb-section--bg-black
@@ -354,3 +362,5 @@ block content
                             img(src="img/pb-images/pb-contact-qr.png" alt="qr-код" loading="lazy" width="80" height="80")
                 .pb-card-office__map
                     img(src="img/pb-images/pb-contact-map.png" alt="карта" loading="lazy")
+
+    include ../includes/modals/modal-pb-response

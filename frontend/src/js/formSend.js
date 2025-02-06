@@ -12,9 +12,16 @@ const FORM_ELEMS = {
     simpleCallbackForm: '[data-simple-callback-form]',
 }
 
+const PB_FORM_ELEMS = {
+    selectDate: '.js-select-date',
+    inputHours: 'input[id="hours"]',
+    inputMinutes: 'input[id="minutes"]',
+}
+
 const MODALS_ID = {
     success: 'modal-success',
     error: 'modal-error',
+    pbResponse: 'modal-pb-response'
 }
 
 const MESSAGE_ELEMS = {
@@ -23,7 +30,14 @@ const MESSAGE_ELEMS = {
     infoSuccess: '.js-success-info',
     titleError: '.js-error-title',
     infoError: '.js-error-info',
-    btnError: '.js-error-btn'
+    btnError: '.js-error-btn',
+}
+
+const PB_MESSAGE_ELEMS = {
+    titleResponse: '.js-title',
+    infoResponse: '.js-info',
+    infoDate: '.js-info-date',
+    btn: '.js-btn'
 }
 
 const MESSAGE_ATTR = {
@@ -41,7 +55,7 @@ async function initFormSend() {
     forms.forEach(form => {
         const validateGroup = form.querySelectorAll(FORM_ELEMS.validateGroup)
         const modalEl = form.closest('.modal')
-        const modalId = modalEl.getAttribute('id')
+        const modalId = modalEl?.getAttribute('id')
         const customEvent = new CustomEvent('openFormModal', {
             bubbles: true,
         })
@@ -58,7 +72,7 @@ async function initFormSend() {
             handleFormSubmit(event, modalId)
         })
 
-        modalEl.addEventListener('show.bs.modal', (event) => {
+        modalEl?.addEventListener('show.bs.modal', (event) => {
             modalEl.dispatchEvent(customEvent)
         })
     })
@@ -91,14 +105,15 @@ async function handleFormSubmit(event, modalId) {
     const method = event.target.method
     const formData = new FormData(event.target)
     const modalInstance = bootstrap.Modal.getInstance(document.getElementById(modalId))
+    const isPb = event.target.classList.contains('pb-form')
 
     try {
         const response = await sendData(action, method, formData)
         const data = await response.json()
 
         if (data.status === 'success') {
-            modalInstance.hide()
-            onSuccess(event.target)
+            modalInstance?.hide()
+            isPb ? pbShowResponse(event.target, 'success') : onSuccess(event.target)
         } else {
             const messagesBox = event.target.querySelector(MESSAGE_ELEMS.messageBox)
             const errorMessage = data.errors.map(item => item.message).join()
@@ -107,8 +122,8 @@ async function handleFormSubmit(event, modalId) {
         }
     } catch (error) {
         console.error('Error:', error)
-        modalInstance.hide()
-        onError(event.target, modalId)
+        modalInstance?.hide()
+        isPb ? pbShowResponse(event.target, 'error') : onError(event.target, modalId)
     }
 }
 
@@ -159,6 +174,51 @@ function onError(form, modalId) {
     resetStep(form)
 }
 
+function pbShowResponse(form, response) {
+    const modalId = form.closest('.modal-pb')?.getAttribute('id')
+    const modalResponseEl = document.getElementById(MODALS_ID.pbResponse)
+    const modalBsResponse = new bootstrap.Modal(modalResponseEl)
+    const titleEl = modalResponseEl.querySelector(PB_MESSAGE_ELEMS.titleResponse)
+    const infoEl = modalResponseEl.querySelector(PB_MESSAGE_ELEMS.infoResponse)
+    const infoDateEl = modalResponseEl.querySelector(PB_MESSAGE_ELEMS.infoDate)
+    const btnEL = document.querySelector(PB_MESSAGE_ELEMS.btn)
+
+    const selectDate = form.querySelector(PB_FORM_ELEMS.selectDate)
+    const date = selectDate.options[selectDate.selectedIndex].text
+    const hours = form.querySelector(PB_FORM_ELEMS.inputHours).value
+    const minutes = form.querySelector(PB_FORM_ELEMS.inputMinutes).value
+
+    const messagesBox = form.querySelector(MESSAGE_ELEMS.messageBox)
+    let titleContent = ''
+    let infoContent = ''
+    let infoDateContent = ''
+
+    if (response === 'success') {
+        titleContent = messagesBox.getAttribute(MESSAGE_ATTR.titleSuccessContent)
+        infoContent = messagesBox.getAttribute(MESSAGE_ATTR.infoSuccessContent)
+        infoDateContent = `${date}, ${hours}:${minutes}`
+        resetForm(form)
+    } else {
+        titleContent = messagesBox.getAttribute(MESSAGE_ATTR.titleErrorContent)
+        infoContent = messagesBox.getAttribute(MESSAGE_ATTR.infoErrorContent)
+        infoDateContent = ''
+    }
+
+    if (modalId) {
+        btnEL.removeAttribute('data-bs-dismiss')
+        btnEL.setAttribute('data-bs-toggle', 'modal')
+        btnEL.setAttribute('data-bs-target', `#${modalId}`)
+    } else {
+        btnEL.setAttribute('data-bs-dismiss', 'modal')
+    }
+
+    titleEl.innerHTML = titleContent
+    infoEl.innerHTML = infoContent
+    infoDateEl.innerHTML = infoDateContent
+
+    modalBsResponse.show()
+}
+
 function resetForm(form) {
     form.reset()
 
@@ -167,6 +227,7 @@ function resetForm(form) {
 
     buttons.forEach(button => {
         button.disabled = true
+        button.setAttribute('aria-disabled', 'true')
     })
 
     if (uploadEl) {
@@ -217,6 +278,7 @@ function checkValidity(form) {
             checkInputValidity(inputElement)
             toggleInputError(inputElement)
             checkEmptyRequiredInput(inputElement)
+            toggleButton(inputList, checkboxElement, buttonElement, formErrorElement)
         })
         inputElement.addEventListener('focus', () => {
             toggleErrorSpan(inputElement)
