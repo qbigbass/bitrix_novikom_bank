@@ -2,11 +2,11 @@
 
 namespace Sprint\Migration;
 
-class Version20241120103007 extends Version
+class Version20250206041926 extends Version
 {
-    protected $author = "r.machmutov@astarus.ru";
+    protected $author = "vimbatu@gmail.com";
 
-    protected $description   = "Элементы для ИБ \"Бенефиты\"";
+    protected $description   = "Онлайн-сервисы элементы";
 
     protected $moduleVersion = "4.15.1";
 
