@@ -60,6 +60,7 @@ function getRates({table = null, id = null, name = null}) {
             console.error('Error:', error);
         })
 
+
 }
 
 function setCurrencyToReplenishment(STATE) {
@@ -310,13 +311,26 @@ function addReplenishment({buttonAddReplenishment, replenishmentBlock}, STATE) {
     initDatepicker([inputDate]);
 
     inputSum.addEventListener('input', () => {
-        inputSum.value = formatNumberWithSpaces(inputSum.value.replace(/[^0-9]/g, ''));
+        inputSum.value = formatNumberWithSpaces(validateNumberInput(inputSum));
         handlerInputReplenishmentSum(inputSum, STATE);
     });
 
     inputDate.addEventListener('select', () => {
         handlerInputReplenishmentSum(inputSum, STATE);
     })
+
+}
+
+function validateNumberInput(input) {
+    // Удаляем все символы, кроме цифр
+    input.value = input.value.replace(/[^0-9]/g, '');
+
+    // Проверяем, чтобы строка не начиналась с 0 и содержала хотя бы одну цифру
+    if (input.value.length === 1) {
+        input.value = input.value.replace(/[^1-9]/g, '');
+    }
+
+    return input.value;
 
 }
 
@@ -353,7 +367,7 @@ const initReplenishment = (root, STATE) => {
     })
 
     inputReplenishmentSum.addEventListener('input', () => {
-        inputReplenishmentSum.value = formatNumberWithSpaces(inputReplenishmentSum.value.replace(/[^0-9]/g, ''));
+        inputReplenishmentSum.value = formatNumberWithSpaces(validateNumberInput(inputReplenishmentSum));
         handlerInputReplenishmentSum(inputReplenishmentSum, STATE);
     });
 

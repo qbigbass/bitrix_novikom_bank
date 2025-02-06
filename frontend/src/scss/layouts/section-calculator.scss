@@ -11,7 +11,7 @@
             flex-wrap: nowrap;
             width: 100%;
 
-            @include use-media(tablet-album) {
+            @include use-media(tablet) {
                 width: auto;
             }
         }
