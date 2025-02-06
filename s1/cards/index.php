@@ -11,7 +11,7 @@ $APPLICATION->IncludeComponent(
     "cards",
     [
         "ADD_ELEMENT_CHAIN" => "N",
-        "ADD_SECTIONS_CHAIN" => "Y",
+        "ADD_SECTIONS_CHAIN" => "N",
         "AJAX_MODE" => "N",
         "AJAX_OPTION_ADDITIONAL" => "",
         "AJAX_OPTION_HISTORY" => "N",
@@ -66,7 +66,7 @@ $APPLICATION->IncludeComponent(
         "DISPLAY_TOP_PAGER" => "N",
         "FILE_404" => "",
         "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-        "IBLOCK_ID" => iblock("cards_list_ru"),
+        "IBLOCK_ID" => iblock("cards_detail_pages_ru"),
         "IBLOCK_TYPE" => "for_private_clients_ru",
         "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
         "LIST_ACTIVE_DATE_FORMAT" => "d.m.Y",
@@ -109,9 +109,7 @@ $APPLICATION->IncludeComponent(
         "COMPONENT_TEMPLATE" => "cards",
         "SEF_URL_TEMPLATES" => [
             "news" => "",
-            "section" => "#SECTION_CODE#/",
-            "detail" => "#SECTION_CODE#/#ELEMENT_CODE#/",
-            "client_category_detail" => "#SECTION_CODE#/#ELEMENT_CODE#/#CLIENT_CATEGORY_CODE#/",
+            "section" => "#SECTION_CODE_PATH#/",
         ]
     ],
     false

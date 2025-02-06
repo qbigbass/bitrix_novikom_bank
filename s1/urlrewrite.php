@@ -134,6 +134,13 @@ $arUrlRewrite = [
         'SORT' => 100,
     ],
     [
+        'CONDITION' => '#^/cards/[a-z-]+/[a-z-]+/#',
+        'RULE' => '',
+        'ID' => '',
+        'PATH' => '/cards/detail.php',
+        'SORT' => 100,
+    ],
+    [
         'CONDITION' => '#^/cards/#',
         'RULE' => '',
         'ID' => 'bitrix:news',
@@ -194,6 +201,13 @@ $arUrlRewrite = [
         'RULE' => 'path=$1',
         'ID' => '',
         'PATH' => '/documents/index.php',
+        'SORT' => 100,
+    ],
+    [
+        'CONDITION' => '#^/online-services/[a-z-]+/#',
+        'RULE' => '',
+        'ID' => '',
+        'PATH' => '/online-services/index.php',
         'SORT' => 100,
     ],
 ];
