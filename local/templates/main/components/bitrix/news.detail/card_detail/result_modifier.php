@@ -20,6 +20,7 @@ $section = CIBlockSection::GetList(
 $arResult['SECTION_NAME'] = $section['NAME'];
 $arResult['SECTION_ICON'] = CFile::GetPath($section['PICTURE']);
 $arResult['BANNER_STYLE'] = getBannerStyle($section['UF_BANNER_STYLE']);
+$arResult['SHOW_BUTTON'] = $section['UF_SHOW_BUTTON'];
 
 $cp = $this->__component;
 if (is_object($cp)) {

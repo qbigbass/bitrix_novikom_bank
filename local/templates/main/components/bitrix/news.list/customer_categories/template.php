@@ -40,7 +40,7 @@ $this->setFrameMode(true);
                         $active = ($arItem['CODE'] == $arParams['CUSTOMER_CATEGORY_CODE']) ? ' active' : '';
                         ?>
                         <li class="swiper-slide w-auto tabs-panel__list-item nav-item z-2" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
-                            <a class="tabs-panel__list-item-link nav-link bg-transparent<?=$active?>" aria-current="page" href="<?=$arItem['DETAIL_PAGE_URL']?>"><?=$arItem['NAME']?></a>
+                            <a class="tabs-panel__list-item-link nav-link bg-transparent<?=$active?>" aria-current="page" href="<?=$arItem['DETAIL_PAGE_URL']?>#links"><?=$arItem['NAME']?></a>
                         </li>
                     <?endforeach;?>
                 </ul>

@@ -48,9 +48,16 @@ $renderer = new Renderer($APPLICATION, $component);
                     </div>
                 <? endforeach; ?>
             </div>
-            <a class="btn btn-tertiary btn-lg-lg banner-product__button" href="#">
-                Оформить карту
-            </a>
+            <?if($arResult['SHOW_BUTTON']) {?>
+                <button
+                    class="btn btn-tertiary btn-lg-lg banner-product__button"
+                    type="button"
+                    data-bs-toggle="modal"
+                    data-bs-target="#modal-credit-card-form"
+                >
+                    Оформить карту
+                </button>
+            <?}?>
         </div>
     </div>
     <picture class="pattern-bg banner-product__pattern">
@@ -65,7 +72,7 @@ $renderer = new Renderer($APPLICATION, $component);
     'ACTIVE' => 'Y',
     'IBLOCK_SECTION_ID' => $arResult['IBLOCK_SECTION_ID']
 ]; ?>
-
+<div id="links"></div>
 <section class="section-layout">
     <div class="container">
         <? if (!empty($arResult['DISPLAY_PROPERTIES']['BENEFITS']['VALUE'])) : ?>
@@ -703,6 +710,15 @@ $renderer = new Renderer($APPLICATION, $component);
         </div>
     </section>
 <? endif; ?>
+
+<?php $APPLICATION->IncludeComponent(
+    "dalee:form",
+    "credit_card_form",
+    [
+        "FORM_CODE" => "credit_card_form",
+    ],
+    $component
+); ?>
 
 <? $helper->saveCache(); ?>
 
