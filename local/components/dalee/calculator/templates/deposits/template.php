@@ -9,7 +9,7 @@
                         class="d-flex flex-column flex-md-row-reverse align-items-md-center gap-3 js-input-slider-wrapper">
                         <ul class="nav nav-tabs nav-tabs--type-currency js-tabs-currency"></ul>
                         <div class="input-slider flex-grow-1" data-type="price"
-                             data-start-value="1000000" data-step-size="5000">
+                             data-start-value="1000000" data-step-size="1000">
                             <label class="text-s dark-70 ps-3 mb-2" for="deposit-amount">Сумма
                                 вклада</label>
                             <div class="input-slider-text js-input-slider-text">

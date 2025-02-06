@@ -391,6 +391,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initCalculatorLoan();
     initCalculatorMortgage();
     initCalculatorBonus();
+    initCurrencyConverter();
     initOffices();
     initChatBot();
     initCharts();
