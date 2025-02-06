@@ -1,34 +1,26 @@
 <?php
-namespace Dalee\Libs\Tabs\Handlers;
 
-use Dalee\Libs\Tabs\Interfaces\PropertyHandlerInterface;
+namespace Dalee\Helpers\ComponentRenderer\Components;
 
-class BenefitsHandler implements PropertyHandlerInterface
+use CBitrixComponent;
+use CMain;
+use Dalee\Helpers\ComponentRenderer\Interface\ComponentInterface;
+
+class Anchors implements ComponentInterface
 {
-    private array $property;
-
-    public function __construct(array $property)
+    public static function render(CMain $application, CBitrixComponent|bool $component, string $filter, ?array $params = []): void
     {
-        $this->property = $property;
-    }
+        $elementId = false;
 
-    public function render(array $params = []): string
-    {
-        $GLOBALS['benefitsFilter'] = [
-            'ACTIVE' => 'Y',
-            'ID' => $this->property['VALUE']
-        ];
-
-        $template = "benefits";
-
-        if (!empty($params["TEMPLATE"])) {
-            $template = $params["TEMPLATE"];
+        if (!empty($params['elementId'])) {
+            $elementId = $params['elementId'];
         }
 
         ob_start();
-        $GLOBALS['APPLICATION']->IncludeComponent(
+
+        $application->IncludeComponent(
             "bitrix:news.list",
-            $template,
+            "anchor_list",
             [
                 "ACTIVE_DATE_FORMAT" => "d.m.Y",
                 "ADD_SECTIONS_CHAIN" => "N",
@@ -42,20 +34,19 @@ class BenefitsHandler implements PropertyHandlerInterface
                 "CACHE_TIME" => "36000000",
                 "CACHE_TYPE" => "A",
                 "CHECK_DATES" => "Y",
-                "COL_COUNT" => "3",
                 "DETAIL_URL" => "",
                 "DISPLAY_BOTTOM_PAGER" => "N",
                 "DISPLAY_TOP_PAGER" => "N",
+                "ELEMENT_ID" => $elementId,
                 "FIELD_CODE" => [
                     "CODE",
                     "NAME",
                     "PREVIEW_TEXT",
-                    "PREVIEW_PICTURE",
-                    ""
+                    "PREVIEW_PICTURE"
                 ],
-                "FILTER_NAME" => "benefitsFilter",
+                "FILTER_NAME" => $filter,
                 "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                "IBLOCK_ID" => iblock('benefits'),
+                "IBLOCK_ID" => iblock('anchor_links'),
                 "IBLOCK_TYPE" => "additional",
                 "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
                 "INCLUDE_SUBSECTIONS" => "N",
@@ -72,8 +63,35 @@ class BenefitsHandler implements PropertyHandlerInterface
                 "PARENT_SECTION_CODE" => "",
                 "PREVIEW_TRUNCATE_LEN" => "",
                 "PROPERTY_CODE" => [
-                    "ICON",
-                    ""
+                    "CALCULATOR",
+                    "CONDITIONS_ICONS",
+                    "CONDITIONS",
+                    "TEXT_FIELD",
+                    "CONDITIONS_TABS",
+                    "STEPS",
+                    "SHORT_INFO",
+                    "QUOTES",
+                    "ICONS_WITH_DESCRIPTION",
+                    "TWO_COLS",
+                    "COLS_NAME",
+                    "ICON_SHORT_INFO",
+                    "HEADING",
+                    "RATES_DESCRIPTION",
+                    "ICONS_WITH_DESCRIPTION_HEADER",
+                    "TEXT_FIELD_HEADER",
+                    "BENEFITS",
+                    "TEXT_BLOCK_DESCRIPTION",
+                    "COMPLEX_PROP",
+                    "HTML",
+                    "QUESTIONS",
+                    "DOCUMENTS",
+                    "SHOW_TWO_ICONS_IN_ROW",
+                    "TARIFFS",
+                    "STRATEGIES",
+                    "BENEFITS_SLIDER",
+                    "BENEFITS_SLIDER_CLASS_CARDS",
+                    "SHORT_INFO_CLASS_BLOCK",
+                    "SHORT_INFO_CLASS_LINE"
                 ],
                 "SET_BROWSER_TITLE" => "N",
                 "SET_LAST_MODIFIED" => "N",
@@ -82,16 +100,16 @@ class BenefitsHandler implements PropertyHandlerInterface
                 "SET_STATUS_404" => "N",
                 "SET_TITLE" => "N",
                 "SHOW_404" => "N",
-                "SORT_BY1" => "ACTIVE_FROM",
+                "SORT_BY1" => "SORT",
                 "SORT_BY2" => "SORT",
-                "SORT_ORDER1" => "DESC",
+                "SORT_ORDER1" => "ASC",
                 "SORT_ORDER2" => "ASC",
                 "STRICT_SECTION_CHECK" => "N",
-            ]
+            ],
+            $component,
+            ["HIDE_ICONS" => "Y"]
         );
-        $displayValue = ob_get_contents();
-        ob_end_clean();
 
-        return $displayValue;
+        echo ob_get_clean();
     }
 }

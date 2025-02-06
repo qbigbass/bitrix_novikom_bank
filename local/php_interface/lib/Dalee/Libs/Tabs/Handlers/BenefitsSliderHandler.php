@@ -3,7 +3,7 @@ namespace Dalee\Libs\Tabs\Handlers;
 
 use Dalee\Libs\Tabs\Interfaces\PropertyHandlerInterface;
 
-class BenefitsHandler implements PropertyHandlerInterface
+class BenefitsSliderHandler implements PropertyHandlerInterface
 {
     private array $property;
 
@@ -19,16 +19,14 @@ class BenefitsHandler implements PropertyHandlerInterface
             'ID' => $this->property['VALUE']
         ];
 
-        $template = "benefits";
-
-        if (!empty($params["TEMPLATE"])) {
-            $template = $params["TEMPLATE"];
+        if (!empty($params['BENEFITS_SLIDER_CLASS_CARDS'])) {
+            $classCard = $params['BENEFITS_SLIDER_CLASS_CARDS'];
         }
 
         ob_start();
         $GLOBALS['APPLICATION']->IncludeComponent(
             "bitrix:news.list",
-            $template,
+            'benefits_slider',
             [
                 "ACTIVE_DATE_FORMAT" => "d.m.Y",
                 "ADD_SECTIONS_CHAIN" => "N",
@@ -87,6 +85,7 @@ class BenefitsHandler implements PropertyHandlerInterface
                 "SORT_ORDER1" => "DESC",
                 "SORT_ORDER2" => "ASC",
                 "STRICT_SECTION_CHECK" => "N",
+                "CARDS_BACKGROUND_CLASS_STYLE" => $classCard
             ]
         );
         $displayValue = ob_get_contents();

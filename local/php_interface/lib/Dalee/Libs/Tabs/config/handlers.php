@@ -22,4 +22,5 @@ return [
     'CONDITIONS_TABS' => Dalee\Libs\Tabs\Handlers\ConditionTabsHandler::class,
     'TARIFFS' => Dalee\Libs\Tabs\Handlers\TariffsHandler::class,
     'STRATEGIES' => Dalee\Libs\Tabs\Handlers\StrategiesHandler::class,
+    'BENEFITS_SLIDER' => Dalee\Libs\Tabs\Handlers\BenefitsSliderHandler::class,
 ];

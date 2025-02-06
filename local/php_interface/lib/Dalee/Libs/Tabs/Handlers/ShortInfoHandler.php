@@ -14,7 +14,7 @@ class ShortInfoHandler implements PropertyHandlerInterface
         $this->img = (!empty($property['IMG'])) ? $property['IMG'] : '/frontend/dist/img/restructuring-additional-info.png';
     }
 
-    public function render(): string
+    public function render(array $params = []): string
     {
         global $MAIN_SECTION;
         $bg = "bg-dark-10";
@@ -23,7 +23,18 @@ class ShortInfoHandler implements PropertyHandlerInterface
         if ($MAIN_SECTION === "msb") {
             $bg = "bg-blue-10";
             $colorLine = "yellow-100";
+        } elseif ($MAIN_SECTION === "fi") {
+            $colorLine = "violet-100";
         }
+
+        if (!empty($params['SHORT_INFO_CLASS_BLOCK'])) {
+            $bg = $params['SHORT_INFO_CLASS_BLOCK'];
+        }
+
+        if (!empty($params['SHORT_INFO_CLASS_LINE'])) {
+            $colorLine = $params['SHORT_INFO_CLASS_LINE'];
+        }
+
         return
             '<div class="polygon-container js-polygon-container">
                 <div class="polygon-container__content">

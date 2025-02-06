@@ -36,9 +36,10 @@ class TabContent
     private function renderDetailTextWithBlockHtml(PropertyHandlerInterface $handler, string $tabContent, string $placeHolder, bool $useRteTag = true): string
     {
         if (!$useRteTag) {
-            $blockHtml = $handler->render('benefits_other_services');
+            $params['TEMPLATE'] = 'benefits_other_services';
+            $blockHtml = $handler->render($params);
         } else {
-            $blockHtml = self::$closedRteTag . $handler->render('benefits') . self::$openedRteTag;
+            $blockHtml = self::$closedRteTag . $handler->render() . self::$openedRteTag;
         }
 
         return str_replace(
