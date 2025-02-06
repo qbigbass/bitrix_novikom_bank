@@ -39,6 +39,7 @@ $asset->addJs('/frontend/dist/js/calculator-deposit.js');
 $asset->addJs('/frontend/dist/js/calculator-loan.js');
 $asset->addJs('/frontend/dist/js/calculator-mortgage.js');
 $asset->addJs('/frontend/dist/js/calculator-bonus.js');
+$asset->addJs('/frontend/dist/js/currency-converter.js');
 $asset->addJs('/frontend/dist/js/inputSlider.js');
 $asset->addJs('/frontend/dist/js/index.js');
 $asset->addJs('/frontend/dist/js/accessibility-panel.js');
