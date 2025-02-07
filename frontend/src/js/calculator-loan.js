@@ -8,6 +8,10 @@ const ELEMS_LOAN = {
     selectLoanPaymentType: '.js-select-loan-payment-type',
     tableSchedule: '#payment-loan-table-body',
     loanName: ".js-program-name",
+    rate: '.js-calculator-display-rate',
+    inputAmount: '.js-input-amount',
+    inputPeriod: '.js-input-period',
+    inputSlider: '.input-slider',
 }
 
 function calculateDifferentiatedPayments({amount, rate, period}) {
@@ -201,13 +205,13 @@ const getLoanValues = (STATE) => {
 }
 
 function initElementsLoanCalculator(root) {
-    const displayRate = root.querySelector(ELEMS_DEPOSIT.rate);
+    const displayRate = root.querySelector(ELEMS_LOAN.rate);
     const displayPayment = root.querySelector(ELEMS_LOAN.payment);
     const displayFullCost = root.querySelector(ELEMS_LOAN.fullCost);
-    const inputAmount = root.querySelector(ELEMS_DEPOSIT.inputAmount);
-    const inputPeriod = root.querySelector(ELEMS_DEPOSIT.inputPeriod);
-    const inputPeriodWrapper = inputPeriod.closest(ELEMS_DEPOSIT.inputSlider);
-    const inputAmountWrapper = inputAmount.closest(ELEMS_DEPOSIT.inputSlider);
+    const inputAmount = root.querySelector(ELEMS_LOAN.inputAmount);
+    const inputPeriod = root.querySelector(ELEMS_LOAN.inputPeriod);
+    const inputPeriodWrapper = inputPeriod.closest(ELEMS_LOAN.inputSlider);
+    const inputAmountWrapper = inputAmount.closest(ELEMS_LOAN.inputSlider);
     const inputLoanCard = root.querySelector(ELEMS_LOAN.inputLoanCard);
     const selectLoanProperties = root.querySelector(ELEMS_LOAN.selectLoanProperties);
     const selectLoanPaymentType = root.querySelector(ELEMS_LOAN.selectLoanPaymentType);

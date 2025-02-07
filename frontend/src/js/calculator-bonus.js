@@ -6,6 +6,7 @@ const ELEMS_BONUS = {
     cardCategory: ".js-card-category",
     inputBonusWrapper: ".js-input-bonus-wrapper",
     hideClass: "d-none",
+    inputSlider: '.input-slider',
 }
 
 function filterBonusData(STATE) {
@@ -120,7 +121,7 @@ function getBonusValues(STATE) {
 function initElementsBonusCalculator(root) {
     const displayBonus = root.querySelector(ELEMS_BONUS.displayBonus);
     const inputAmount = root.querySelector(ELEMS_BONUS.inputAmount);
-    const inputAmountWrapper = inputAmount.closest(ELEMS_DEPOSIT.inputSlider);
+    const inputAmountWrapper = inputAmount.closest(ELEMS_BONUS.inputSlider);
     const inputAmountClone = inputAmountWrapper.cloneNode(true);
     const selectCardType = root.querySelector(ELEMS_BONUS.cardType);
     const selectCardCategory = root.querySelector(ELEMS_BONUS.cardCategory);
