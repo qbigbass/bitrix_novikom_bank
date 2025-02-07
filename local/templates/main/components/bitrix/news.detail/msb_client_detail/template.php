@@ -193,61 +193,6 @@ $headerView->render(
     );
 } ?>
 
-<!-- Сноска (1-ое поле) -->
-<? if (!empty($arResult['PROPERTIES']['QUOTE_TEXT']['VALUE'])) {
-    foreach ($arResult['PROPERTIES']['QUOTE_TEXT']['~VALUE'] as $key => $value) {
-        if ($key == 0) {
-            renderQuote($value['TEXT']);
-        }
-    }
-} ?>
-
-<!-- Текстовый блок -->
-<? if (!empty($arResult['PROPERTIES']['TEXT_BLOCK']['~VALUE'])) { ?>
-    <section class="section-layout">
-        <div class="container">
-            <h3 class="px-lg-6 mb-4 mb-md-6 mb-lg-7 text-balance"><?= $arResult['PROPERTIES']['TEXT_BLOCK_HEADER']['~VALUE'] ?? '' ?></h3>
-            <div class="px-lg-6">
-                <?= $arResult['PROPERTIES']['TEXT_BLOCK']['~VALUE']['TEXT'] ?>
-            </div>
-        </div>
-        <picture class="pattern-bg pattern-bg--hide-mobile">
-            <source srcset="/frontend/dist/img/patterns/section-2/pattern-light-s.svg" media="(max-width: 767px)">
-            <source srcset="/frontend/dist/img/patterns/section-2/pattern-light-m.svg" media="(max-width: 1199px)">
-            <img src="/frontend/dist/img/patterns/section-2/pattern-light-l.svg" alt="bg pattern" loading="lazy">
-        </picture>
-    </section>
-<? } ?>
-
-<!-- Сноска (2-ое поле) -->
-<? if (!empty($arResult['PROPERTIES']['QUOTE_TEXT']['VALUE'])) {
-    foreach ($arResult['PROPERTIES']['QUOTE_TEXT']['~VALUE'] as $key => $value) {
-        if ($key == 1) {
-            renderQuote($value['TEXT'], true);
-        }
-    }
-} ?>
-
-<!-- Преимущества иконки -->
-<? if (!empty($arResult['PROPERTIES']['BENEFITS_ICONS']['VALUE'])) { ?>
-    <section class="section-layout px-lg-6">
-        <div class="container">
-            <div class="row mb-6 mb-lg-7">
-                <h3><?= $arResult['PROPERTIES']['BENEFITS_ICONS_HEADER']['~VALUE'] ?? '' ?></h3>
-            </div>
-            <div class="row row-gap-6 gx-xl-6">
-
-                <? $renderer->render('Benefits', $arResult['PROPERTIES']['BENEFITS_ICONS']['VALUE']); ?>
-
-            </div>
-        </div>
-        <picture class="pattern-bg pattern-bg--position-sm-bottom section-restructuring-benefits__pattern">
-            <source srcset="/frontend/dist/img/patterns/section/pattern-light-s.svg" media="(max-width: 767px)">
-            <source srcset="/frontend/dist/img/patterns/section/pattern-light-m.svg" media="(max-width: 1199px)"><img src="/frontend/dist/img/patterns/section/pattern-light-l.svg" alt="bg pattern" loading="lazy">
-        </picture>
-    </section>
-<? } ?>
-
 <!-- Преимущества плитка с крупной картинкой -->
 <? if (!empty($arResult['PROPERTIES']['BENEFITS_TILE']['VALUE'])) { ?>
     <section class="section-layout">
@@ -317,6 +262,61 @@ $headerView->render(
                     ],
                     $component
                 ); ?>
+            </div>
+        </div>
+        <picture class="pattern-bg pattern-bg--position-sm-bottom section-restructuring-benefits__pattern">
+            <source srcset="/frontend/dist/img/patterns/section/pattern-light-s.svg" media="(max-width: 767px)">
+            <source srcset="/frontend/dist/img/patterns/section/pattern-light-m.svg" media="(max-width: 1199px)"><img src="/frontend/dist/img/patterns/section/pattern-light-l.svg" alt="bg pattern" loading="lazy">
+        </picture>
+    </section>
+<? } ?>
+
+<!-- Сноска (1-ое поле) -->
+<? if (!empty($arResult['PROPERTIES']['QUOTE_TEXT']['VALUE'])) {
+    foreach ($arResult['PROPERTIES']['QUOTE_TEXT']['~VALUE'] as $key => $value) {
+        if ($key == 0) {
+            renderQuote($value['TEXT']);
+        }
+    }
+} ?>
+
+<!-- Текстовый блок -->
+<? if (!empty($arResult['PROPERTIES']['TEXT_BLOCK']['~VALUE'])) { ?>
+    <section class="section-layout">
+        <div class="container">
+            <h3 class="px-lg-6 mb-4 mb-md-6 mb-lg-7 text-balance"><?= $arResult['PROPERTIES']['TEXT_BLOCK_HEADER']['~VALUE'] ?? '' ?></h3>
+            <div class="px-lg-6">
+                <?= $arResult['PROPERTIES']['TEXT_BLOCK']['~VALUE']['TEXT'] ?>
+            </div>
+        </div>
+        <picture class="pattern-bg pattern-bg--hide-mobile">
+            <source srcset="/frontend/dist/img/patterns/section-2/pattern-light-s.svg" media="(max-width: 767px)">
+            <source srcset="/frontend/dist/img/patterns/section-2/pattern-light-m.svg" media="(max-width: 1199px)">
+            <img src="/frontend/dist/img/patterns/section-2/pattern-light-l.svg" alt="bg pattern" loading="lazy">
+        </picture>
+    </section>
+<? } ?>
+
+<!-- Сноска (2-ое поле) -->
+<? if (!empty($arResult['PROPERTIES']['QUOTE_TEXT']['VALUE'])) {
+    foreach ($arResult['PROPERTIES']['QUOTE_TEXT']['~VALUE'] as $key => $value) {
+        if ($key == 1) {
+            renderQuote($value['TEXT'], true);
+        }
+    }
+} ?>
+
+<!-- Преимущества иконки -->
+<? if (!empty($arResult['PROPERTIES']['BENEFITS_ICONS']['VALUE'])) { ?>
+    <section class="section-layout px-lg-6">
+        <div class="container">
+            <div class="row mb-6 mb-lg-7">
+                <h3><?= $arResult['PROPERTIES']['BENEFITS_ICONS_HEADER']['~VALUE'] ?? '' ?></h3>
+            </div>
+            <div class="row row-gap-6 gx-xl-6">
+
+                <? $renderer->render('Benefits', $arResult['PROPERTIES']['BENEFITS_ICONS']['VALUE']); ?>
+
             </div>
         </div>
         <picture class="pattern-bg pattern-bg--position-sm-bottom section-restructuring-benefits__pattern">
