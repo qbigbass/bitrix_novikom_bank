@@ -54,9 +54,15 @@ $APPLICATION->SetTitle("Карта Мир Supreme");
     </div>
     <div class="container">
         <h3 class="pb-section__title dark-0 text-center my-4 my-md-6 mt-lg-0 animate js-animation">Премиальная карта Мир&nbsp;Supreme</h3>
-        <p class="pb-section__subtitle dark-0 text-center m-0 px-xl-6 animate js-animation">Дебетовая карта с&nbsp;ежемесячным начислением процентов на&nbsp;остаток средств или&nbsp;кредитная карта с&nbsp;бесплатным снятием наличных.</p>
+        <p class="pb-section__subtitle dark-0 text-center m-0 px-xl-11 animate js-animation">Дебетовая карта с&nbsp;ежемесячным начислением процентов на&nbsp;остаток средств <br class="d-none d-xxl-block">или&nbsp;кредитная карта с&nbsp;бесплатным снятием наличных.</p>
         <div class="pb-card-wrapper my-6 position-relative animate js-animation">
-            <div class="pb-card-image pb-card-image--type-dark"><img src="/frontend/dist/img/pb-images/pb-card-supreme-dark.png" alt="Supreme Card">
+            <div class="pb-card-image pb-card-image--type-dark">
+                <picture class="pb-card-image__bg">
+                    <source srcset="/frontend/dist/img/pb-images/pb-card-supreme-dark_bg-desktop.png" media="(min-width: 1200px)">
+                    <source srcset="/frontend/dist/img/pb-images/pb-card-supreme-dark_bg-tablet.png" media="(min-width: 768px)">
+                    <img src="/frontend/dist/img/pb-images/pb-card-supreme-dark_bg-mobile.png" loading="lazy">
+                </picture>
+                <img src="/frontend/dist/img/pb-images/pb-card-supreme-dark.png" alt="Supreme Card">
                 <svg class="pb-card-image__blink" width="549" height="389" viewBox="0 0 549 389" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <mask id="mask0_1417_5046" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="27" y="28" width="495" height="318">
                         <path d="M27.8387 43.7196C27.7371 35.1999 34.7437 28.3064 43.2606 28.5466L486.363 41.0459C495.114 41.2928 502.247 48.145 502.844 56.879L521.26 326.109C521.809 334.139 515.491 340.978 507.442 341.064L48.4255 345.966C39.0455 346.066 31.3571 338.55 31.2452 329.17L27.8387 43.7196Z" fill="#D9D9D9"></path>
@@ -103,7 +109,13 @@ $APPLICATION->SetTitle("Карта Мир Supreme");
                     </defs>
                 </svg>
             </div>
-            <div class="pb-card-image pb-card-image--type-light"><img src="/frontend/dist/img/pb-images/pb-card-supreme-light.png" alt="Supreme Card">
+            <div class="pb-card-image pb-card-image--type-light">
+                <picture class="pb-card-image__bg">
+                    <source srcset="/frontend/dist/img/pb-images/pb-card-supreme-light_bg-desktop.png" media="(min-width: 1200px)">
+                    <source srcset="/frontend/dist/img/pb-images/pb-card-supreme-light_bg-tablet.png" media="(min-width: 768px)">
+                    <img src="/frontend/dist/img/pb-images/pb-card-supreme-light_bg-mobile.png" loading="lazy">
+                </picture>
+                <img src="/frontend/dist/img/pb-images/pb-card-supreme-light.png" alt="Supreme Card">
                 <svg class="pb-card-image__blink" width="589" height="453" viewBox="0 0 589 453" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <mask id="mask0_1417_5056" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="12" y="12" width="562" height="429">
                         <path d="M13.7471 159.361C10.9881 151.305 15.4811 142.571 23.6394 140.131L449.312 12.8053C457.68 10.3022 466.584 14.5483 469.906 22.6267L572.521 272.156C575.587 279.612 571.739 288.11 564.113 290.724L128.864 439.92C119.458 443.144 109.22 438.131 105.998 428.725L13.7471 159.361Z" fill="#D9D9D9"></path>
@@ -281,72 +293,24 @@ $APPLICATION->SetTitle("Карта Мир Supreme");
 </section>
 <div class="modal modal-pb fade" id="modal-become-client" tabindex="-1" aria-hidden="true">
     <div class="container modal-pb__container">
-        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"><span class="icon">
+        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close">
+            <span class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                  <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-close-small"></use>
-                </svg></span></button>
+                    <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-close-small"></use>
+                </svg>
+            </span>
+        </button>
         <div class="modal-dialog">
             <div class="modal-content">
-                <form class="pb-form" action="#" data-form>
-                    <div class="d-flex flex-column row-gap-4 row-gap-lg-5" data-form-validate-group>
-                        <h4 class="pb-form__title dark-0 text-center">Стать клиентом</h4>
-                        <div class="row g-1">
-                            <div class="col-12 col-md-6">
-                                <div class="d-flex flex-column row-gap-1 row-gap-lg-2 position-relative">
-                                    <label class="form-label form-label--pb mb-0" for="name">Имя</label>
-                                    <input class="form-control form-control--pb" id="name" type="text" name="name" placeholder="Введите имя" autocomplete="off" data-form-input required>
-                                    <div class="invalid-feedback" aria-live="polite"></div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6">
-                                <div class="d-flex flex-column row-gap-1 row-gap-lg-2 position-relative">
-                                    <label class="form-label form-label--pb mb-0" for="phone">Телефон</label>
-                                    <input class="js-mask-phone form-control form-control--pb" id="phone" type="tel" name="phone" aria-describedby="mobile-phone-hint" placeholder="+7" required autocomplete="off" data-form-input pattern="\+7\s\(\d{3}\)\s\d{3}-\d{2}-\d{2}" data-error-message="Неверный формат">
-                                    <div class="invalid-feedback" aria-live="polite"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row g-1">
-                            <div class="col-12 col-md-8">
-                                <div class="d-flex flex-column row-gap-1 row-gap-lg-2 position-relative">
-                                    <label class="form-label form-label--pb mb-0" for="select-date">Удобное время для звонка</label>
-                                    <select class="form-select js-select js-select-date" id="select-date" aria-label="Выберите дату"></select>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <div class="d-flex flex-column row-gap-1 row-gap-lg-2 position-relative">
-                                    <div class="form-label form-label--pb mb-0" aria-hidden="true">&nbsp;</div>
-                                    <div class="form-control-time">
-                                        <div class="d-flex flex-column row-gap-1 row-gap-lg-2 position-relative">
-                                            <input class="form-control form-control--pb" id="hours" type="number" name="hours" min="1" max="24" placeholder="19" data-form-input>
-                                            <div class="invalid-feedback" aria-live="polite"></div>
-                                        </div>
-                                        <div class="d-flex flex-column row-gap-1 row-gap-lg-2 position-relative">
-                                            <input class="form-control form-control--pb" id="minutes" type="number" name="minutes" min="0" max="59" placeholder="00" data-form-input>
-                                            <div class="invalid-feedback" aria-live="polite"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-check form-check--pb">
-                            <input class="form-check-input" id="personal" type="checkbox" checked required data-form-checkbox data-form-input>
-                            <label class="form-check-label" for="personal">Я&nbsp;согласен с&nbsp;условиями использования банком моих персональных данных для обработки данного обращения</label>
-                            <div class="invalid-feedback" aria-live="polite"></div>
-                        </div>
-                        <div class="pb-form__footer d-flex flex-column align-items-center justify-content-center gap-5">
-                            <button class="btn btn-pb btn-pb--primary w-100 w-md-auto" type="submit" data-form-button aria-disabled="true" disabled>Отправить</button>
-                            <div class="text-m orange-100 text-center" data-form-error></div>
-                        </div>
-                    </div>
-                    <div class="js-message"
-                         hidden aria-hidden="true"
-                         data-success-title="Заявка отправлена"
-                         data-success-info="Ваша заявка отправлена, наш специалист свяжется с&amp;nbsp;вами в&amp;nbsp;выбранное время"
-                         data-error-title="Не удалось отправить заявку"
-                         data-error-info="Проверьте, правильно ли указаны все данные и отправьте заявку снова">
-                    </div>
-                </form>
+                <?php
+                $APPLICATION->IncludeComponent(
+                    "dalee:form",
+                    "become_client_form",
+                    [
+                        "FORM_CODE" => "become_client_form",
+                    ],
+                    false
+                ); ?>
             </div>
         </div>
     </div>

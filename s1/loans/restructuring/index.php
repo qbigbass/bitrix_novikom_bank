@@ -54,7 +54,7 @@ $APPLICATION->SetTitle("Реструктуризация");
 		"FILE_404" => "",
 		"HIDE_LINK_WHEN_NO_DETAIL" => "N",
 		"IBLOCK_ID" => iblock('restructuring'),
-		"IBLOCK_TYPE" => "for_private_clients_ru",
+		"IBLOCK_TYPE" => "additional",
 		"INCLUDE_IBLOCK_INTO_CHAIN" => "N",
 		"LIST_ACTIVE_DATE_FORMAT" => "d.m.Y",
 		"LIST_FIELD_CODE" => [

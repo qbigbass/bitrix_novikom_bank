@@ -32,11 +32,11 @@
   }
 
   @include use-media(tablet-album) {
-    padding: 5rem 0;
+    padding: 5rem 0 0;
   }
 
   @include use-media(laptop) {
-    padding: 7.5rem 0;
+    padding-top: 4.5rem;
   }
 
   &__link {
@@ -56,6 +56,7 @@
       font-size: 2rem;
     }
 
+    &.is-active,
     &:hover {
       color: var(--pb-text-color);
     }

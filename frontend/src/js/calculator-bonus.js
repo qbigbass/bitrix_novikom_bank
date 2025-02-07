@@ -35,7 +35,7 @@ function setBonusValues(STATE) {
         STATE.totalBonus = limitBonus;
     }
 
-    STATE.elements.displayBonus.textContent = `${formatNumberWithSpaces(STATE.totalBonus)} ${plural(['бонус', 'бонуса', 'бонусов'], STATE.totalBonus)}`;
+    STATE.elements.displayBonus.textContent = `${formatNumberWithSpaces(Math.round(STATE.totalBonus))} ${plural(['бонус', 'бонуса', 'бонусов'], STATE.totalBonus)}`;
 }
 
 function collectSelectOptions(data, field) {

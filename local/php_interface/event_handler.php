@@ -4,6 +4,7 @@ use Bitrix\Main;
 use Dalee\Helpers\FormHelper;
 use Dalee\Services\CacheHandler;
 use Dalee\Services\RatesPlaceholderManager;
+use Dalee\UserType\CUserTypeSectionStringDescr;
 use Dalee\UserType\CUserTypeStringDescr;
 use Dalee\UserType\CUserTypeStringWithTabs;
 use Dalee\UserType\CUserTypeComplexProperty;
@@ -14,6 +15,8 @@ $eventManager = Main\EventManager::getInstance();
 $eventManager->addEventHandler('iblock', 'OnIBlockPropertyBuildList', [CUserTypeStringDescr::class, 'OnIBlockPropertyBuildList']);
 $eventManager->addEventHandler('iblock', 'OnIBlockPropertyBuildList', [CUserTypeStringWithTabs::class, 'OnIBlockPropertyBuildList']);
 $eventManager->addEventHandler('iblock', 'OnIBlockPropertyBuildList', [CUserTypeComplexProperty::class, 'OnIBlockPropertyBuildList']);
+
+$eventManager->addEventHandler('main', 'OnUserTypeBuildList', [CUserTypeSectionStringDescr::class, 'GetUserTypeDescription']);
 
 $eventManager->addEventHandler('iblock', 'OnStartIBlockElementAdd', [CIBEditComplexProp::class, 'OnStartIBlockElementUpdateHandler']);
 $eventManager->addEventHandler('iblock', 'OnStartIBlockElementUpdate', [CIBEditComplexProp::class, 'OnStartIBlockElementUpdateHandler']);
@@ -28,3 +31,5 @@ $eventManager->addEventHandler("main", "OnEndBufferContent", [RatesPlaceholderMa
 $eventManager->addEventHandler('form', 'OnBeforeResultAdd', [FormHelper::class, 'onBeforeResultAdd']);
 
 $eventManager->addEventHandler("iblock", "OnAfterIBlockElementUpdate", [CacheHandler::class, "onAfterIBlockElementUpdateHandler"]);
+
+$eventManager->addEventHandler('main', 'onMainGeoIpHandlersBuildList', [\Dalee\Handlers\SxGeoLocal::class, 'onMainGeoIpHandlersBuildListHandler']);

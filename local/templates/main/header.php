@@ -39,6 +39,7 @@ $asset->addJs('/frontend/dist/js/calculator-deposit.js');
 $asset->addJs('/frontend/dist/js/calculator-loan.js');
 $asset->addJs('/frontend/dist/js/calculator-mortgage.js');
 $asset->addJs('/frontend/dist/js/calculator-bonus.js');
+$asset->addJs('/frontend/dist/js/currency-converter.js');
 $asset->addJs('/frontend/dist/js/inputSlider.js');
 $asset->addJs('/frontend/dist/js/index.js');
 $asset->addJs('/frontend/dist/js/accessibility-panel.js');
@@ -151,18 +152,19 @@ $asset->addJs('/frontend/dist/js/accessibility-panel.js');
                                 ><?= Loc::getMessage('ONLINE_BUNK_BUTTON_TITLE') ?></button>
                                 <ul class="dropdown-menu dropdown-menu-end">
                                     <li><a class="dropdown-item fw-bold"
-                                           href="https://online.novikom.ru/"><?= Loc::getMessage('FOR_PRIVATE_CLIENTS_BUTTON_TITLE') ?></a></li>
+                                           href="https://online.novikom.ru/#/registration"><?= Loc::getMessage('FOR_PRIVATE_CLIENTS_BUTTON_TITLE') ?></a></li>
                                     <li><a class="dropdown-item fw-bold"
-                                           href="https://bk.novikom.ru/"><?= Loc::getMessage('FOR_ORGANIZATIONS_BUTTON_TITLE') ?></a></li>
+                                           href="https://bk.novikom.ru/ru/html/login.html"><?= Loc::getMessage('FOR_ORGANIZATIONS_BUTTON_TITLE') ?></a></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
+                <? $currentSection = explode('/', trim($APPLICATION->GetCurDir(), '/'))[0]; ?>
                 <div class="header__bottom-row">
                     <?php $APPLICATION->IncludeComponent(
                         "bitrix:menu",
-                        "main_submenu_header",
+                        $currentSection === 'for-corporate-clients' ? "corporate_submenu_header" : "main_submenu_header",
                         [
                             "ALLOW_MULTI_SELECT" => "N",
                             "CHILD_MENU_TYPE" => "iblock_sections",

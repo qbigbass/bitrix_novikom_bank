@@ -2,21 +2,21 @@
 
 function getStylizedCardCondition(array $cardConditionData): string
 {
-    if ($formattedConditionValue = getFormattedConditionValue($cardConditionData[2])) {
+    if ($formattedConditionValue = getFormattedConditionValue($cardConditionData['description'])) {
         $result =
             '<div class="card-product-list__condition d-flex flex-column gap-2 w-100 w-sm-50 w-xl-auto">
                 <div class="d-inline-flex flex-nowrap align-items-baseline gap-1">
                     ' . getConditionHtml($formattedConditionValue) . '
                 </div>
-                <span class="text-m dark-70">' . $cardConditionData[1] . '</span>
+                <span class="text-m dark-70">' . $cardConditionData['value'] . '</span>
             </div>';
     } else {
         $result =
             '<div class="card-product-list__condition d-flex flex-column gap-2 w-100 w-sm-50 w-xl-auto align-self-end">
                 <div class="d-inline-flex flex-nowrap align-items-baseline gap-1">
-                    <span class="h4">' . $cardConditionData[2] . '</span>
+                    <span class="h4">' . $cardConditionData['description'] . '</span>
                 </div>
-                <span class="text-m dark-70">'.$cardConditionData[1].'</span>
+                <span class="text-m dark-70">'.$cardConditionData['value'].'</span>
             </div>';
     }
 

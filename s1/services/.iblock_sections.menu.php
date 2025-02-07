@@ -20,18 +20,6 @@ $aMenuLinks = [
         []
     ],
     [
-        'Перечень страховых компаний',
-        'perechen-strakhovykh-kompaniy/',
-        [],
-        []
-    ],
-    [
-        'Программы страхования',
-        'programmy-strakhovaniya/',
-        [],
-        []
-    ],
-    [
         'Прочие сервисы',
         'prochie-servisy/',
         [],

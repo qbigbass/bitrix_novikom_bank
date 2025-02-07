@@ -40,13 +40,14 @@ mixin pb-main-nav(isOpenModal = false)
                 nav.pb-nav.d-flex.flex-column.align-items-center.row-gap-4.row-gap-lg-6
                     each item in navList
                         a.pb-nav__link(href=item.href)= item.title
-                    a.btn.btn-pb.btn-pb--outline.d-none.d-lg-inline-block(href="#") Онлайн-банк
                 .text-center.d-lg-none
                     if isOpenModal
                         button(type="button" data-bs-toggle="modal" data-bs-target="#modal-become-client" aria-label="Стать клиентом").btn.btn-pb.btn-pb--primary
                             | Стать клиентом
                     else
                         a.btn.btn-pb.btn-pb--primary.js-scroll-to(href="#become-client") Стать клиентом
+                .text-center.mt-6
+                    a.btn.btn-pb.btn-pb--outline(href="#") Онлайн-банк
 
                 .mt-auto.pt-7.pt-lg-0
                     .pb-card-contact.d-flex.flex-column.row-gap-4.row-gap-lg-5.align-items-lg-center

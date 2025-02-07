@@ -77,10 +77,16 @@ block content
         .container
             h3.pb-section__title.dark-0.text-center.my-4.my-md-6.mt-lg-0.animate.js-animation
                 | Премиальная карта Мир&nbsp;Supreme
-            p.pb-section__subtitle.dark-0.text-center.m-0.px-xl-6.animate.js-animation
-                | Дебетовая карта с&nbsp;ежемесячным начислением процентов на&nbsp;остаток средств или&nbsp;кредитная карта с&nbsp;бесплатным снятием наличных.
+            p.pb-section__subtitle.dark-0.text-center.m-0.px-xl-11.animate.js-animation
+                | Дебетовая карта с&nbsp;ежемесячным начислением процентов на&nbsp;остаток средств
+                br.d-none.d-xxl-block
+                | или&nbsp;кредитная карта с&nbsp;бесплатным снятием наличных.
             .pb-card-wrapper.my-6.position-relative.animate.js-animation
                 .pb-card-image.pb-card-image--type-dark
+                    picture.pb-card-image__bg
+                        source(srcset=`img/pb-images/pb-card-supreme-dark_bg-desktop.png`, media="(min-width: 1200px)")
+                        source(srcset=`img/pb-images/pb-card-supreme-dark_bg-tablet.png`, media="(min-width: 768px)")
+                        img(src=`img/pb-images/pb-card-supreme-dark_bg-mobile.png`, loading="lazy" )
                     img(src="img/pb-images/pb-card-supreme-dark.png", alt="Supreme Card")
                     svg.pb-card-image__blink(width="549" height="389" viewBox="0 0 549 389" fill="none" xmlns="http://www.w3.org/2000/svg")
                         mask(id="mask0_1417_5046" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="27" y="28" width="495" height="318")
@@ -124,6 +130,10 @@ block content
                                 stop(offset="1" stop-color="#CBB9ED" stop-opacity="0")
 
                 .pb-card-image.pb-card-image--type-light
+                    picture.pb-card-image__bg
+                        source(srcset=`img/pb-images/pb-card-supreme-light_bg-desktop.png`, media="(min-width: 1200px)")
+                        source(srcset=`img/pb-images/pb-card-supreme-light_bg-tablet.png`, media="(min-width: 768px)")
+                        img(src=`img/pb-images/pb-card-supreme-light_bg-mobile.png`, loading="lazy" )
                     img(src="img/pb-images/pb-card-supreme-light.png", alt="Supreme Card")
                     svg.pb-card-image__blink(width="589" height="453" viewBox="0 0 589 453" fill="none" xmlns="http://www.w3.org/2000/svg")
                         mask(id="mask0_1417_5056" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="12" y="12" width="562" height="429")

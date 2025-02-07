@@ -29,7 +29,8 @@
   &--type-currency {
 
     @include use-media(tablet) {
-      width: 10rem;
+      width: auto;
+      flex-wrap: nowrap;
     }
 
     & .nav-link {

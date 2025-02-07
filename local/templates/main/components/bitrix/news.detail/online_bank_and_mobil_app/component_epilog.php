@@ -2,9 +2,4 @@
 
 use Dalee\Helpers\ComponentHelper;
 
-global $APPLICATION;
-if (isset($arResult['SECTION_NAME'])) {
-    $APPLICATION->SetTitle($arResult['SECTION_NAME']);
-}
-
 ComponentHelper::handle($this);

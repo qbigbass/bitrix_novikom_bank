@@ -31,7 +31,7 @@ include ../../../cards/card-calculate-result
         .col-12.col-lg-6
             .pe-xl-6
                 .d-flex.flex-column.row-gap-4.row-gap-md-6.row-gap-lg-7
-                    .d-flex.flex-column.row-gap-2.js-select-name-wrapper
+                    .d-flex.flex-column.row-gap-2
                         label(for="select-deposit-name").form-label.mb-0
                             | Выберите вклад
                         select#select-deposit-name(aria-label="вклад").form-select.js-select.js-select-deposit-name
@@ -42,7 +42,7 @@ include ../../../cards/card-calculate-result
                         +input-slider({
                             label: 'Сумма вклада',
                             id: 'deposit-amount',
-                            stepSize: 5000,
+                            stepSize: 1000,
                             type: "price",
                             editable: true,
                             additionalClass: "js-input-amount",

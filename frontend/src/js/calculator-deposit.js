@@ -15,7 +15,7 @@ const ELEMS_DEPOSIT = {
     currencyButton: '.nav-link',
     inputCapitalization: '.js-input-deposit-capitalization',
     selectName: '.js-select-deposit-name',
-    selectNameWrapper: '.js-select-name-wrapper',
+    name: '.js-program-name',
 }
 
 const CLASSES_DEPOSIT = {
@@ -60,6 +60,7 @@ function getRates({table = null, id = null, name = null}) {
             console.error('Error:', error);
         })
 
+
 }
 
 function setCurrencyToReplenishment(STATE) {
@@ -101,6 +102,7 @@ function createCurrencyList(STATE) {
     const tabs = STATE.elements.currencyList.querySelectorAll(ELEMS_DEPOSIT.currencyButton);
     tabs.forEach((tab) => tab.remove());
     const uniqueCurrencies = [];
+
     STATE.calculatorData.forEach(item => {
         if (!uniqueCurrencies.includes(item.currency)) {
             uniqueCurrencies.push(item.currency);
@@ -116,6 +118,7 @@ function createCurrencyList(STATE) {
 }
 
 function showDepositResult(STATE) {
+    STATE.elements.displayName.textContent = STATE.filteredData[0].name;
     STATE.elements.displayPeriod.innerHTML = getFormatedTextByType({value: STATE.period, type: 'day'});
     STATE.elements.displayRate.innerHTML = `${formatNumber(STATE.rate)} %`;
     STATE.elements.displayIncome.innerHTML = `${formatNumberWithSpaces(STATE.income.toFixed(0))} <span class="currency">${CURRENCIES[STATE.currency]}</span>`;
@@ -308,13 +311,26 @@ function addReplenishment({buttonAddReplenishment, replenishmentBlock}, STATE) {
     initDatepicker([inputDate]);
 
     inputSum.addEventListener('input', () => {
-        inputSum.value = formatNumberWithSpaces(inputSum.value.replace(/[^0-9]/g, ''));
+        inputSum.value = formatNumberWithSpaces(validateNumberInput(inputSum));
         handlerInputReplenishmentSum(inputSum, STATE);
     });
 
     inputDate.addEventListener('select', () => {
         handlerInputReplenishmentSum(inputSum, STATE);
     })
+
+}
+
+function validateNumberInput(input) {
+    // Удаляем все символы, кроме цифр
+    input.value = input.value.replace(/[^0-9]/g, '');
+
+    // Проверяем, чтобы строка не начиналась с 0 и содержала хотя бы одну цифру
+    if (input.value.length === 1) {
+        input.value = input.value.replace(/[^1-9]/g, '');
+    }
+
+    return input.value;
 
 }
 
@@ -351,7 +367,7 @@ const initReplenishment = (root, STATE) => {
     })
 
     inputReplenishmentSum.addEventListener('input', () => {
-        inputReplenishmentSum.value = formatNumberWithSpaces(inputReplenishmentSum.value.replace(/[^0-9]/g, ''));
+        inputReplenishmentSum.value = formatNumberWithSpaces(validateNumberInput(inputReplenishmentSum));
         handlerInputReplenishmentSum(inputReplenishmentSum, STATE);
     });
 
@@ -371,6 +387,7 @@ const initElementsDepositCalculator = (root) => {
     const displayPeriod = root.querySelector(ELEMS_DEPOSIT.period);
     const displayRate = root.querySelector(ELEMS_DEPOSIT.rate);
     const displayIncome = root.querySelector(ELEMS_DEPOSIT.income);
+    const displayName = root.querySelector(ELEMS_DEPOSIT.name);
     const inputAmount = root.querySelector(ELEMS_DEPOSIT.inputAmount);
     const inputPeriod = root.querySelector(ELEMS_DEPOSIT.inputPeriod);
     const inputPeriodWrapper = inputPeriod.closest(ELEMS_DEPOSIT.inputSlider);
@@ -384,6 +401,7 @@ const initElementsDepositCalculator = (root) => {
         displayPeriod,
         displayRate,
         displayIncome,
+        displayName,
         inputAmount,
         inputPeriod,
         inputPeriodWrapper,
@@ -415,9 +433,6 @@ function initStateDepositCalculator(calculator) {
                     elements.selectName.appendChild(option);
                 });
                 calculatorData = calculatorData.filter(item => item.name === depositNameOptions[0]);
-            } else {
-                const selectNameWrapper = elements.selectName.closest(ELEMS_DEPOSIT.selectNameWrapper);
-                selectNameWrapper.remove();
             }
 
             return {
@@ -461,8 +476,9 @@ const getStepsPeriod = (data) => {
 
 const getDepositValues = (STATE) => {
     STATE.showCurrency = isShowCurrency(STATE.calculatorData);
+
     if (!STATE.currency) {
-        STATE.currency = "Рубли";
+        STATE.currency = STATE.calculatorData[0].currency ? STATE.calculatorData[0].currency : "Рубли";
     }
     if (STATE.showCurrency) {
         setCurrencyToReplenishment(STATE);
@@ -483,6 +499,8 @@ const getDepositValues = (STATE) => {
 
     if (STATE.minPeriod !== STATE.maxPeriod) {
         STATE.steps = getStepsPeriod(STATE.filteredData);
+    } else {
+        STATE.steps = '';
     }
 
     setStartValues(STATE);
@@ -507,6 +525,7 @@ const setDepositValues = (STATE, currencyTrigger) => {
     }
 
     if (STATE.steps) {
+        STATE.elements.inputPeriodWrapper.classList.remove(CLASSES_DEPOSIT.hide);
         const periodStepsText = STATE.elements.inputPeriodWrapper.querySelector(JS_CLASSES.textSteps);
         const periodSteps = STATE.elements.inputPeriodWrapper.querySelectorAll(JS_CLASSES.sliderSteps);
         periodSteps.forEach((step) => {
@@ -518,7 +537,7 @@ const setDepositValues = (STATE, currencyTrigger) => {
         initInputSlider([STATE.elements.inputPeriodWrapper]);
         STATE.period = getPeriodValue(STATE.elements.inputPeriod);
     } else { // если период вклада не меняется
-        STATE.elements.inputPeriodWrapper.remove();
+        STATE.elements.inputPeriodWrapper.classList.add(CLASSES_DEPOSIT.hide);
         STATE.period = STATE.minPeriod;
     }
 
@@ -528,7 +547,9 @@ const setDepositValues = (STATE, currencyTrigger) => {
     // показываем или нет валюту
     if (!STATE.showCurrency) {
         STATE.elements.currencyList.innerHTML = '';
+        STATE.elements.currencyList.classList.add(CLASSES_DEPOSIT.hide);
     } else {
+        STATE.elements.currencyList.classList.remove(CLASSES_DEPOSIT.hide);
         createCurrencyList(STATE);
     }
     initInputSlider([STATE.elements.inputAmountWrapper]);
