@@ -8,6 +8,13 @@ const ELEMS_MORTGAGE = {
     inputMortgageCard: '.js-mort-card',
     inputMortgageInsurance: '.js-mort-insurance',
     name: '.js-program-name',
+    inputAmount: '.js-input-amount',
+    rate: '.js-calculator-display-rate',
+    payment: '.js-calculator-display-payment',
+    fullCost: '.js-calculator-display-full-cost',
+    income: '.js-calculator-display-income',
+    inputPeriod: '.js-input-period',
+    inputSlider: '.input-slider',
 }
 
 function calculateMortgage({amount, rate, period}) {
@@ -106,10 +113,8 @@ function getMortgageObjects(dataArray, STATE) {
 }
 
 function createNewInputSlider(inputSlider, dataAttr) {
-    // TODO: сделать новый инпут слайдер на основе - element, удалив старый
-    console.log('inputSlider', inputSlider);
     const cloneInputSlider = inputSlider.cloneNode(true);
-    cloneInputSlider.dataset.minValue = inputSlider.dataset.minValue;
+    cloneInputSlider.dataset.minValue = inputSlider.dataset.minValue; //? нужна ли строчка
     Object.entries(dataAttr).forEach(([key, value]) => {
         cloneInputSlider.dataset[key] = value;
     })
@@ -119,23 +124,115 @@ function createNewInputSlider(inputSlider, dataAttr) {
     return cloneInputSlider;
 }
 
+function handlerInitialPayment(STATE, value) {
+    if (STATE.isDispatchingEvent) return;
+    STATE.isDispatchingEvent = true;
+
+    STATE.initialPayment = value;
+    STATE.amount = STATE.property - STATE.initialPayment;
+    STATE.payment = calculateMortgage({amount: STATE.amount, rate: STATE.rate, period: STATE.period});
+    STATE.requiredIncome = calculateRequiredIncome(STATE.payment, STATE.expenseRatio);
+    showMortgageResult(STATE);
+    STATE.elements.inputAmount.value = (STATE.amount);
+
+    const customEvent = new CustomEvent('input', {
+        bubbles: false
+    });
+
+    STATE.elements.inputAmount.dispatchEvent(customEvent);
+
+    STATE.isDispatchingEvent = false;
+
+}
+
+function handlerAmount(STATE, value) {
+    if (STATE.isDispatchingEvent) return;
+
+    STATE.isDispatchingEvent = true;
+    STATE.amount = value;
+    STATE.payment = calculateMortgage({amount: STATE.amount, rate: STATE.rate, period: STATE.period});
+    STATE.requiredIncome = calculateRequiredIncome(STATE.payment, STATE.expenseRatio);
+    showMortgageResult(STATE);
+    STATE.elements.inputInitialPayment.value = (STATE.property - STATE.amount);
+    const customEvent = new CustomEvent('input', {
+        bubbles: false
+    });
+    STATE.elements.inputInitialPayment.dispatchEvent(customEvent);
+    STATE.isDispatchingEvent = false;
+}
+
 function handlerProperty(STATE, value) {
     const percentage = (100 - STATE.filteredData[0].minDownPayment) / 100;
+    STATE.property = value;
     STATE.amount = value * percentage;
-    const dataAttr = {
+    STATE.initialPayment = STATE.property - STATE.amount;
+
+    const dataAttrInitial = {
+        'minValue': Math.round(STATE.initialPayment),
+        'maxValue': Math.round(value - STATE.initialPayment),
+        'startValue' : Math.round(value - STATE.initialPayment)
+    }
+
+    const dataAttrAmount = {
         'minValue': Math.round(value - STATE.amount),
         'maxValue': Math.round(STATE.amount),
         'startValue' : Math.round(value - STATE.amount)
     }
 
     STATE.elements.inputAmountWrapper = createNewInputSlider(STATE.elements.inputAmountWrapper,
-        dataAttr);
+        dataAttrAmount);
+    STATE.elements.inputAmount = STATE.elements.inputAmountWrapper.querySelector(ELEMS_MORTGAGE.inputAmount);
+
+    STATE.elements.inputInitialPaymentWrapper = createNewInputSlider(STATE.elements.inputInitialPaymentWrapper,
+        dataAttrInitial);
+
+    STATE.elements.inputInitialPayment = STATE.elements.inputInitialPaymentWrapper.querySelector(ELEMS_MORTGAGE.initialPayment);
+
     STATE.payment = calculateMortgage({amount: STATE.amount, rate: STATE.rate, period: STATE.period});
     STATE.requiredIncome = calculateRequiredIncome(STATE.payment, STATE.expenseRatio);
+    showMortgageResult(STATE);
+
+    STATE.elements.inputAmountWrapper.addEventListener('input', (event) => {
+        handlerAmount(STATE, event.detail.value);
+    })
+
+    STATE.elements.inputInitialPaymentWrapper.addEventListener('input', (event) => {
+        handlerInitialPayment(STATE, event.detail.value);
+    })
+}
+
+function handlerMortgageCheckbox(STATE) {
+    STATE.filteredData = getMortgageRegions(STATE);
+    STATE.filteredData = getMortgagePrograms(STATE.filteredData, STATE);
+    STATE.filteredData = getMortgageObjects(STATE.filteredData, STATE);
+
+    STATE.filteredData = STATE.filteredData.filter(item => {
+        if (!item.insurance) item.insurance = 'N';
+        if (!item.salaryBankCard) item.salaryBankCard = 'N';
+        return (item.insurance === STATE.insurance) && (item.salaryBankCard === STATE.card);
+    });
+
+    STATE.rate = STATE.filteredData[0].rate;
     showMortgageResult(STATE);
 }
 
 function setMortgageValues(STATE) {
+    STATE.elements.inputMortgageCard.addEventListener('change', (event) => {
+        STATE.card = event.target.checked ? 'Y' : 'N';
+
+        handlerMortgageCheckbox(STATE);
+    })
+
+    STATE.elements.inputMortgageInsurance.addEventListener('change', (event) => {
+        STATE.insurance = event.target.checked ? 'Y' : 'N';
+
+        handlerMortgageCheckbox(STATE);
+    })
+
+    STATE.elements.inputAmountWrapper.addEventListener('input', (event) => {
+        handlerAmount(STATE, event.detail.value);
+    })
+
     STATE.elements.inputPropertyWrapper.addEventListener('input', (event) => {
         handlerProperty(STATE, event.detail.value);
     })
@@ -206,9 +303,9 @@ function getMortgageValues(STATE) {
     STATE.filteredData = STATE.filteredData.filter(item => {
         if (!item.insurance) item.insurance = 'N';
         if (!item.salaryBankCard) item.salaryBankCard = 'N';
-        // TODO: при корректно заполненных данных, должно фильтроваться
-        return (item.insurance === STATE.insurance) && (item.salaryBankCard === STATE.card) ? (item) : STATE.filteredData[0];
+        return (item.insurance === STATE.insurance) && (item.salaryBankCard === STATE.card);
     });
+
 
     STATE.expenseRatio = STATE.elements.root.dataset.expenseRatio;
     STATE.rate = STATE.filteredData[0].rate;
@@ -221,19 +318,19 @@ function getMortgageValues(STATE) {
 }
 
 function initElementsMortgageCalculator(root) {
-    const displayRate = root.querySelector(ELEMS_DEPOSIT.rate);
-    const displayPayment = root.querySelector(ELEMS_LOAN.payment);
-    const displayFullCost = root.querySelector(ELEMS_LOAN.fullCost);
-    const displayIncome = root.querySelector(ELEMS_DEPOSIT.income);
+    const displayRate = root.querySelector(ELEMS_MORTGAGE.rate);
+    const displayPayment = root.querySelector(ELEMS_MORTGAGE.payment);
+    const displayFullCost = root.querySelector(ELEMS_MORTGAGE.fullCost);
+    const displayIncome = root.querySelector(ELEMS_MORTGAGE.income);
     const displayName = root.querySelector(ELEMS_MORTGAGE.name);
-    const inputAmount = root.querySelector(ELEMS_DEPOSIT.inputAmount);
-    const inputPeriod = root.querySelector(ELEMS_DEPOSIT.inputPeriod);
+    const inputAmount = root.querySelector(ELEMS_MORTGAGE.inputAmount);
+    const inputPeriod = root.querySelector(ELEMS_MORTGAGE.inputPeriod);
     const inputPropertyValue = root.querySelector(ELEMS_MORTGAGE.inputProperty);
     const inputInitialPayment = root.querySelector(ELEMS_MORTGAGE.initialPayment);
-    const inputPeriodWrapper = inputPeriod.closest(ELEMS_DEPOSIT.inputSlider);
-    const inputAmountWrapper = inputAmount.closest(ELEMS_DEPOSIT.inputSlider);
-    const inputPropertyWrapper = inputPropertyValue.closest(ELEMS_DEPOSIT.inputSlider);
-    const inputInitialPaymentWrapper = inputInitialPayment.closest(ELEMS_DEPOSIT.inputSlider);
+    const inputPeriodWrapper = inputPeriod.closest(ELEMS_MORTGAGE.inputSlider);
+    const inputAmountWrapper = inputAmount.closest(ELEMS_MORTGAGE.inputSlider);
+    const inputPropertyWrapper = inputPropertyValue.closest(ELEMS_MORTGAGE.inputSlider);
+    const inputInitialPaymentWrapper = inputInitialPayment.closest(ELEMS_MORTGAGE.inputSlider);
     const selectRegion = root.querySelector(ELEMS_MORTGAGE.selectRegion);
     const selectProgram = root.querySelector(ELEMS_MORTGAGE.selectProgram);
     const selectObject = root.querySelector(ELEMS_MORTGAGE.selectObject);
