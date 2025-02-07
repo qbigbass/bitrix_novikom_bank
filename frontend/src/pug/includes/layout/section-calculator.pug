@@ -10,12 +10,12 @@ include ../../components/ui/nav-tabs
         {
             link: 'mortgage',
             linkText: 'Ипотека',
-            isActive: false
+            isActive: true
         },
         {
             link: 'deposit',
             linkText: 'Вклад',
-            isActive: true
+            isActive: false
         }
     ]
 
@@ -38,7 +38,7 @@ section.section-layout.section-layout--bg-gray.section-calculator
             .tab-content.px-lg-6
                 #loan.tab-pane.fade(role="tabpanel" aria-labelledby="loan" tabindex="0")
                     include calculator-tabs/tab-loan
-                #mortgage.tab-pane.fade(role="tabpanel" aria-labelledby="mortgage" tabindex="0")
+                #mortgage.tab-pane.fade.show.active(role="tabpanel" aria-labelledby="mortgage" tabindex="0")
                     include calculator-tabs/tab-mortgage
-                #deposit.tab-pane.fade.show.active(role="tabpanel" aria-labelledby="mortgage" tabindex="0")
+                #deposit.tab-pane.fade(role="tabpanel" aria-labelledby="mortgage" tabindex="0")
                     include calculator-tabs/tab-deposit
