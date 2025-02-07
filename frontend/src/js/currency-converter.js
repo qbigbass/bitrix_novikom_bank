@@ -142,9 +142,9 @@ function initCurrencyConverter() {
     for (const converter of currencyConverter) {
         initStateCurrencyConverter(converter)
             .then(STATE => {
-                setSelectsCurrency(STATE)
-                calculateCurrencyConversion(STATE)
-                calculateUnitCurrency(STATE)
+                setSelectsCurrency(STATE);
+                calculateCurrencyConversion(STATE);
+                calculateUnitCurrency(STATE);
             })
             .catch(error => {
                 console.error('Ошибка в initCurrencyConverter функции:', error);
