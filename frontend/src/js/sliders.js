@@ -253,10 +253,6 @@ function initCardSlider() {
             new Swiper(slider, options);
         } else {
             cardSliderMode(slider, options, destroyBreakpoints, wrapper, slides, controls);
-
-            window.addEventListener('resize', function () {
-                cardSliderMode(slider, options, destroyBreakpoints, wrapper, slides, controls);
-            });
         }
     })
 }
