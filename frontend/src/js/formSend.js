@@ -69,10 +69,12 @@ async function initFormSend() {
         }
 
         form.addEventListener('submit', (event) => {
-            handleFormSubmit(event, modalId)
+            if (!form.classList.contains('pb-form')) {
+                handleFormSubmit(event, modalId)
+            }
         })
 
-        modalEl?.addEventListener('show.bs.modal', (event) => {
+        modalEl?.addEventListener('show.bs.modal', () => {
             modalEl.dispatchEvent(customEvent)
         })
     })
@@ -105,7 +107,6 @@ async function handleFormSubmit(event, modalId) {
     const method = event.target.method
     const formData = new FormData(event.target)
     const modalInstance = bootstrap.Modal.getInstance(document.getElementById(modalId))
-    const isPb = event.target.classList.contains('pb-form')
 
     try {
         const response = await sendData(action, method, formData)
@@ -113,7 +114,7 @@ async function handleFormSubmit(event, modalId) {
 
         if (data.status === 'success') {
             modalInstance?.hide()
-            isPb ? pbShowResponse(event.target, 'success') : onSuccess(event.target)
+            onSuccess(event.target)
         } else {
             const messagesBox = event.target.querySelector(MESSAGE_ELEMS.messageBox)
             const errorMessage = data.errors.map(item => item.message).join()
@@ -123,7 +124,7 @@ async function handleFormSubmit(event, modalId) {
     } catch (error) {
         console.error('Error:', error)
         modalInstance?.hide()
-        isPb ? pbShowResponse(event.target, 'error') : onError(event.target, modalId)
+        onError(event.target, modalId)
     }
 }
 
@@ -172,51 +173,6 @@ function onError(form, modalId) {
 
     modalBsError.show()
     resetStep(form)
-}
-
-function pbShowResponse(form, response) {
-    const modalId = form.closest('.modal-pb')?.getAttribute('id')
-    const modalResponseEl = document.getElementById(MODALS_ID.pbResponse)
-    const modalBsResponse = new bootstrap.Modal(modalResponseEl)
-    const titleEl = modalResponseEl.querySelector(PB_MESSAGE_ELEMS.titleResponse)
-    const infoEl = modalResponseEl.querySelector(PB_MESSAGE_ELEMS.infoResponse)
-    const infoDateEl = modalResponseEl.querySelector(PB_MESSAGE_ELEMS.infoDate)
-    const btnEL = document.querySelector(PB_MESSAGE_ELEMS.btn)
-
-    const selectDate = form.querySelector(PB_FORM_ELEMS.selectDate)
-    const date = selectDate.options[selectDate.selectedIndex].text
-    const hours = form.querySelector(PB_FORM_ELEMS.inputHours).value
-    const minutes = form.querySelector(PB_FORM_ELEMS.inputMinutes).value
-
-    const messagesBox = form.querySelector(MESSAGE_ELEMS.messageBox)
-    let titleContent = ''
-    let infoContent = ''
-    let infoDateContent = ''
-
-    if (response === 'success') {
-        titleContent = messagesBox.getAttribute(MESSAGE_ATTR.titleSuccessContent)
-        infoContent = messagesBox.getAttribute(MESSAGE_ATTR.infoSuccessContent)
-        infoDateContent = `${date}, ${hours}:${minutes}`
-        resetForm(form)
-    } else {
-        titleContent = messagesBox.getAttribute(MESSAGE_ATTR.titleErrorContent)
-        infoContent = messagesBox.getAttribute(MESSAGE_ATTR.infoErrorContent)
-        infoDateContent = ''
-    }
-
-    if (modalId) {
-        btnEL.removeAttribute('data-bs-dismiss')
-        btnEL.setAttribute('data-bs-toggle', 'modal')
-        btnEL.setAttribute('data-bs-target', `#${modalId}`)
-    } else {
-        btnEL.setAttribute('data-bs-dismiss', 'modal')
-    }
-
-    titleEl.innerHTML = titleContent
-    infoEl.innerHTML = infoContent
-    infoDateEl.innerHTML = infoDateContent
-
-    modalBsResponse.show()
 }
 
 function resetForm(form) {
@@ -374,4 +330,55 @@ function toggleButton(inputList, checkboxElement, buttonElement, formErrorElemen
         buttonElement.setAttribute('aria-disabled', 'false')
         formErrorElement.textContent = ''
     }
+}
+
+function pbShowResponse(form, response) {
+    const modalId = form.closest('.modal-pb')?.getAttribute('id')
+    const modalInstance = bootstrap.Modal.getInstance(document.getElementById(modalId))
+    const modalResponseEl = document.getElementById(MODALS_ID.pbResponse)
+    const modalBsResponse = new bootstrap.Modal(modalResponseEl)
+    const titleEl = modalResponseEl.querySelector(PB_MESSAGE_ELEMS.titleResponse)
+    const infoEl = modalResponseEl.querySelector(PB_MESSAGE_ELEMS.infoResponse)
+    const infoDateEl = modalResponseEl.querySelector(PB_MESSAGE_ELEMS.infoDate)
+    const btnEL = document.querySelector(PB_MESSAGE_ELEMS.btn)
+
+    const selectDate = form.querySelector(PB_FORM_ELEMS.selectDate)
+    const date = selectDate.options[selectDate.selectedIndex].text
+    const hours = form.querySelector(PB_FORM_ELEMS.inputHours).value
+    const minutes = form.querySelector(PB_FORM_ELEMS.inputMinutes).value
+
+    const messagesBox = form.querySelector(MESSAGE_ELEMS.messageBox)
+    let titleContent = ''
+    let infoContent = ''
+    let infoDateContent = ''
+
+    if (response === 'success') {
+        titleContent = messagesBox.getAttribute(MESSAGE_ATTR.titleSuccessContent)
+        infoContent = messagesBox.getAttribute(MESSAGE_ATTR.infoSuccessContent)
+        infoDateContent = `${date}, ${hours}:${minutes}`
+        resetForm(form)
+    } else {
+        titleContent = messagesBox.getAttribute(MESSAGE_ATTR.titleErrorContent)
+        infoContent = messagesBox.getAttribute(MESSAGE_ATTR.infoErrorContent)
+        infoDateContent = ''
+    }
+
+    if (modalId) {
+        if (response === 'success') {
+            btnEL.setAttribute('data-bs-dismiss', 'modal')
+            btnEL.removeAttribute('data-bs-toggle')
+            btnEL.removeAttribute('data-bs-target')
+        } else {
+            btnEL.removeAttribute('data-bs-dismiss')
+            btnEL.setAttribute('data-bs-toggle', 'modal')
+            btnEL.setAttribute('data-bs-target', `#${modalId}`)
+        }
+    }
+
+    titleEl.innerHTML = titleContent
+    infoEl.innerHTML = infoContent
+    infoDateEl.innerHTML = infoDateContent
+
+    modalInstance?.hide()
+    modalBsResponse.show()
 }

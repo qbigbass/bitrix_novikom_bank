@@ -534,7 +534,7 @@ $this->setFrameMode(true);
                             <div class="pb-card-about__image pb-card-about__image--size-large mt-auto mt-md-0"><img src="/frontend/dist/img/pb-images/pb-cards/trust-2.png" alt=""></div>
                         </div>
                     </div>
-                    <div class="col-12 col-xxl-9 ps-xxl-6 rte animate js-animation">
+                    <div class="col-12 col-xxl-9 ps-xxl-6 pe-xxl-6 rte animate js-animation">
                         <p>Наряду с индивидуальными стратегиями доверительного управления банк Новиком предлагает стандартные инвестиционные стратегии.</p>
                     </div>
                     <div class="pb-panel-info d-flex flex-column flex-md-row gap-3 gap-md-4 gap-xl-6 align-items-start align-items-md-center animate js-animation"><img class="pb-panel-info__image flex-shrink-0" src="/frontend/dist/img/pb-images/icon-info.png" alt="иконка информации">
@@ -542,7 +542,7 @@ $this->setFrameMode(true);
                             <p class="pb-panel-info__text">Банк предоставляет Клиентам услуги по управлению ценными бумагами, а также денежными средствами, предназначенными для инвестирования в ценные бумаги, иные услуги за вознаграждение в порядке и на условиях Регламента доверительного управления активами.</p>
                         </div>
                     </div>
-                    <div class="col-12 col-xxl-9 ps-xxl-6 rte animate js-animation">
+                    <div class="col-12 col-xxl-9 ps-xxl-6 pe-xxl-6 rte animate js-animation">
                         <p>Приведённый список услуг банка не&nbsp;является исчерпывающим. В&nbsp;случаях, предусмотренных Законодательством, Правилами Торговых систем, банк осуществляет иные юридические и&nbsp;фактические действия в&nbsp;интересах Клиентов, в&nbsp;том числе путём заключения Дополнительных соглашений.</p>
                         <p>Банк информирует Клиентов о необходимости ознакомиться с Декларацией о рисках, являющейся обязательным приложением к Регламенту, до заключения договора о доверительном управлении активами.</p>
                         <p>Оказываемые банком услуги по управлению активами, предусмотренные Регламентом, несут для Клиента риск потери инвестируемых средств в связи с тем, что денежные средства Клиента, передаваемые в банк в рамках Услуг банка, не застрахованы в соответствии с Федеральным законом от 23.12.2003 года № 177-ФЗ «О страховании вкладов физических лиц в банках Российской Федерации». Поставщиком услуг является Акционерный Коммерческий банк «НОВИКОМБАНК» акционерное общество. Оказываемые банком услуги, предусмотренные Регламентом, не являются услугами по открытию банковских счётов и приёму вкладов.</p>
@@ -744,7 +744,7 @@ $this->setFrameMode(true);
                             <div class="pb-card-about__image pb-card-about__image--size-large mt-auto mt-md-0 align-self-xl-end"><img src="/frontend/dist/img/pb-images/pb-cards/depository-2.png" alt=""></div>
                         </div>
                     </div>
-                    <div class="col-12 col-xxl-9 ps-xxl-6 rte animate js-animation">
+                    <div class="col-12 col-xxl-9 ps-xxl-6 pe-xxl-6 rte animate js-animation">
                         <h3>Банк Новиком располагает счетами в&nbsp;крупнейших депозитариях и&nbsp;регистраторах</h3>
                         <ul>
                             <li>Небанковская кредитная организация акционерное общество «Национальный расчетный депозитарий»</li>
@@ -757,7 +757,7 @@ $this->setFrameMode(true);
                             <p class="pb-panel-info__text">Банк информирует получателей финансовых услуг о необходимости до заключения договора счета депо ознакомиться с Регламентом, являющимся неотъемлемой частью договора счета депо.</p>
                         </div>
                     </div>
-                    <div class="col-12 col-xxl-9 ps-xxl-6 rte animate js-animation">
+                    <div class="col-12 col-xxl-9 ps-xxl-6 pe-xxl-6 rte animate js-animation">
                         <p>В случае возникновения вопросов, ответы на которые не удалось найти на страницах нашего сайта, вы можете обратиться за профессиональной консультацией к сотрудникам банка.</p>
                     </div>
                     <div class="d-flex flex-column row-gap-6 pb-additional-info animate js-animation">
@@ -951,7 +951,7 @@ $this->setFrameMode(true);
                             <div class="pb-card-about__image pb-card-about__image--size-large mt-auto mt-md-0 align-self-xl-end"><img src="/frontend/dist/img/pb-images/pb-cards/investment-2.png" alt=""></div>
                         </div>
                     </div>
-                    <div class="col-12 col-xxl-9 ps-xxl-6 rte animate js-animation">
+                    <div class="col-12 col-xxl-9 ps-xxl-6 pe-xxl-6 rte animate js-animation">
                         <p>Услуги инвестиционного консультирования оказываются физическим лицам — квалифицированным инвесторам на условиях Регламента оказания услуг инвестиционного консультирования (далее — Регламент).</p>
                     </div>
                     <div class="pb-panel-info d-flex flex-column flex-md-row gap-3 gap-md-4 gap-xl-6 align-items-start align-items-md-center animate js-animation"><img class="pb-panel-info__image flex-shrink-0" src="/frontend/dist/img/pb-images/icon-info.png" alt="иконка информации">
@@ -959,7 +959,7 @@ $this->setFrameMode(true);
                             <p class="pb-panel-info__text">Банк информирует Клиентов о необходимости ознакомиться с Декларацией о рисках, связанных с исполнением инвестиционного консультирования, являющейся приложением к Регламенту, до заключения договора инвестиционного консультирования.</p>
                         </div>
                     </div>
-                    <div class="col-12 col-xxl-9 ps-xxl-6 rte animate js-animation">
+                    <div class="col-12 col-xxl-9 ps-xxl-6 pe-xxl-6 rte animate js-animation">
                         <p>Банк внесён 26.04.2022г. в Единый реестр инвестиционных советников банка России в соответствии с требованиями Федерального закона № 397-ФЗ «О внесении изменений в Федеральный закон „О рынке ценных бумаг“ от 20.12.2017 г.</p>
                     </div>
                     <div class="d-flex flex-column row-gap-6 pb-additional-info animate js-animation">
