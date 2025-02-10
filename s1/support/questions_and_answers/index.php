@@ -1,7 +1,47 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+use Bitrix\Main\Context;
+
 require($_SERVER['DOCUMENT_ROOT'].'/bitrix/header.php');
 global $APPLICATION;
 $APPLICATION->SetTitle("Вопросы и ответы");
+$sef = '/support/questions_and_answers/';
+
+$request = Context::getCurrent()->getRequest();
+$section = $request->getQuery('path');
+$path = $APPLICATION->GetCurPage();
+$element = basename($path);
+
+if ($path != $sef) {
+    $filter = [
+        'IBLOCK_ID' => iblock('qa'),
+        'ACTIVE' => 'Y',
+        'CODE' => $element
+    ];
+
+    $sections = \Bitrix\Iblock\SectionTable::getList([
+        'filter' => $filter
+    ])->fetchAll();
+
+    if (empty($sections)) {
+        $filter['CODE'] = $section;
+        $sections = \Bitrix\Iblock\SectionTable::getList([
+            'filter' => $filter
+        ])->fetchAll();
+
+        if (!empty($sections)) {
+            $url = str_replace($element . '/', '', $path);
+            LocalRedirect($url);
+        } else {
+            if (!empty($section)) {
+                LocalRedirect($sef);
+            }
+        }
+    }
+}
 ?>
 <?
 $APPLICATION->IncludeComponent(
@@ -69,7 +109,7 @@ $APPLICATION->IncludeComponent(
         "PAGER_TEMPLATE" => "products_services",
         "PAGER_TITLE" => "Новости",
         "PREVIEW_TRUNCATE_LEN" => "",
-        "SEF_FOLDER" => "/support/questions_and_answers/",
+        "SEF_FOLDER" => $sef,
         "SEF_MODE" => "Y",
         "SET_LAST_MODIFIED" => "N",
         "SET_STATUS_404" => "Y",
@@ -93,12 +133,13 @@ $APPLICATION->IncludeComponent(
         "COMPONENT_TEMPLATE" => "questions_and_answers",
         "SEF_URL_TEMPLATES" => [
             "news" => "",
-            "section" => "#SECTION_CODE#/",
+            "section" => "#SECTION_CODE_PATH#/",
             "detail" => "",
         ],
     ],
     false
-); ?>
+);
+?>
 
 <?$APPLICATION->IncludeFile('/local/php_interface/include/request_call.php')?>
 <?require($_SERVER['DOCUMENT_ROOT'].'/bitrix/footer.php');?>

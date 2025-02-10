@@ -88,34 +88,27 @@ if (!empty($delFilter)) {
                 </div>
                 <div class="col-12">
                     <!-- Фильтры по свойствам -->
-                    <?
-                    $APPLICATION->IncludeComponent (
-                        "bitrix:catalog.filter",
-                        "filter_by_props",
+                    <? $APPLICATION->IncludeComponent(
+                        "bitrix:menu",
+                        "iblock_sections_subsections",
                         [
-                            "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
-                            "IBLOCK_ID" => $arParams["IBLOCK_ID"],
-                            "FILTER_NAME" => $arParams["FILTER_NAME"],
-                            "FIELD_CODE" => $arParams["FILTER_FIELD_CODE"],
-                            "PROPERTY_CODE" => $arParams["FILTER_PROPERTY_CODE"],
-                            "OFFERS_FIELD_CODE" => [],
-                            "OFFERS_PROPERTY_CODE" => [],
-                            "PRICE_CODE" => [],
-                            "CACHE_TYPE" => $arParams["CACHE_TYPE"],
-                            "CACHE_TIME" => $arParams["CACHE_TIME"],
-                            "CACHE_GROUPS" => $arParams["CACHE_GROUPS"],
-                            "LIST_HEIGHT" => "5",
-                            "TEXT_WIDTH" => "20",
-                            "NUMBER_WIDTH" => "5",
-                            "SAVE_IN_SESSION" => "N",
-                            "PREFILTER_NAME" => "preFilter",
-                            "PAGER_PARAMS_NAME" => "arrPager",
-                            "PARAMS_TYPE_SELECTED" => $typeSelected,
-                            "SHOW_CALENDAR" => "N"
+                            "ROOT_MENU_TYPE" => "iblock_subsections",
+                            "MAX_LEVEL" => "1",
+                            "CHILD_MENU_TYPE" => "",
+                            "USE_EXT" => "Y",
+                            "DELAY" => "N",
+                            "ALLOW_MULTI_SELECT" => "Y",
+                            "MENU_CACHE_TYPE" => "N",
+                            "MENU_CACHE_TIME" => "3600",
+                            "MENU_CACHE_USE_GROUPS" => "N",
+                            "MENU_CACHE_GET_VARS" => [
+                            ],
+                            "COMPONENT_TEMPLATE" => "iblock_sections_subsections",
+                            "ALL_LINK" => "Y",
+                            "ALL_LINK_TEXT" => "Все " . mb_strtolower($APPLICATION->GetTitle())
                         ],
                         $component
-                    );
-                    ?>
+                    ); ?>
                 </div>
                 <div class="col-12 position-relative z-1 d-flex flex-column align-items-start gap-1 gap-md-1">
                     <?$APPLICATION->IncludeComponent(
