@@ -12,22 +12,42 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 ?>
-<div class="banner-hero <?= $arParams["CLASS_SECTION"] ?>">
-    <div class="banner-hero__container swiper js-banner-hero">
+<? if (!empty($arResult["ITEMS"])) : ?>
+    <div class="banner-hero <?= $arParams["CLASS_SECTION"] ?>">
+    <div class="banner-hero__container swiper js-banner-hero" data-autoplay-delay="<?= \COption::GetOptionString( "novikom.settings", "UF_BANNER_DELAY")?>">
         <div class="swiper-wrapper">
-            <?foreach($arResult['ITEMS'] as $item):?>
+            <? foreach($arResult["ITEMS"] as $item) : ?>
                 <div class="swiper-slide">
                     <div class="banner-hero-content row gx-0">
                         <div class="col-12 col-md-6 col-lg-9 col-xl-8 col-xxl-7 d-flex flex-column gap-3 gap-md-4 gap-xxl-6 align-items-md-start">
                             <div class="banner-hero-content__wrapper">
                                 <h1 class="banner-hero-content__title">
-                                    <? if ($item['DETAIL_TEXT']) : ?><?= $item['DETAIL_TEXT'] ?>
-                                    <? else : ?><?= $item['NAME'] ?>
+                                    <? if ($item["DETAIL_TEXT"]) : ?>
+                                        <?= $item["DETAIL_TEXT"] ?>
+                                    <? else : ?>
+                                        <?= $item["NAME"] ?>
                                     <? endif; ?>
                                 </h1>
-                                <p class="text-l mb-0"><?=$item['PREVIEW_TEXT']?></p>
+                                <p class="text-l mb-0"><?= $item["PREVIEW_TEXT"] ?></p>
+                                <? if (!empty($item["PROPERTIES"]["BUTTON_LINK"]["~VALUE"]) && !empty($item["PROPERTIES"]["BUTTON_TEXT"]["~VALUE"])) : ?>
+                                    <a class="btn btn-secondary btn-lg-lg d-inline-block" href="<?= $item["PROPERTIES"]["BUTTON_LINK"]["~VALUE"] ?>">
+                                        <?= $item["PROPERTIES"]["BUTTON_TEXT"]["~VALUE"] ?>
+                                    </a>
+                                <? endif; ?>
                             </div>
-                            <img class="banner-hero-content__image" src="<?=$item['DETAIL_PICTURE']['SRC']?>" alt="<?=$item['PROPERTIES']['TEXT']['~VALUE']?>">
+
+                            <? if (!empty($item["DISPLAY_PROPERTIES"]["FILE_VIDEO"]["FILE_VALUE"]["SRC"])) : ?>
+                                <!-- Видео -->
+                                <video class="banner-hero-content__bg" autoplay="" loop="" muted="" poster="">
+                                    <source src="<?= $item["DISPLAY_PROPERTIES"]["FILE_VIDEO"]["FILE_VALUE"]["SRC"] ?>" type="video/mp4">
+                                </video>
+                            <? elseif (!empty($item["PREVIEW_PICTURE"]["SRC"])) : ?>
+                                <!-- Изображение -->
+                                <img class="banner-hero-content__bg" src="<?= $item["PREVIEW_PICTURE"]["SRC"] ?>" alt="">
+                            <? elseif (!empty($item["DETAIL_PICTURE"]["SRC"])) : ?>
+                                <!-- Иконка -->
+                                <img class="banner-hero-content__image" src="<?= $item["DETAIL_PICTURE"]["SRC"] ?>" alt="<?= $item["PROPERTIES"]["TEXT"]["~VALUE"] ?>">
+                            <? endif; ?>
                         </div>
                     </div>
                 </div>
@@ -54,16 +74,20 @@ $this->setFrameMode(true);
     <div class="banner-hero__thumbs d-none d-lg-block">
         <div class="swiper js-banner-hero-thumbs">
             <div class="banner-hero__thumbs-wrapper swiper-wrapper">
-                <?foreach ($arResult['ITEMS'] as $item):?>
+                <? foreach ($arResult["ITEMS"] as $item) : ?>
                     <div class="swiper-slide banner-hero-thumb" role="button">
-                        <h5><?=$item['NAME']?></h5>
+                        <h5><?= $item["NAME"]?></h5>
                     </div>
-                <?endforeach;?>
+                <? endforeach; ?>
             </div>
         </div>
     </div>
-    <picture class="pattern-bg">
-        <source srcset="/frontend/dist/img/patterns/section-heavy/pattern-light-s.svg" media="(max-width: 767px)">
-        <source srcset="/frontend/dist/img/patterns/section-heavy/pattern-light-m.svg" media="(max-width: 1199px)"><img src="/frontend/dist/img/patterns/section-heavy/pattern-light-l.svg" alt="bg pattern" loading="lazy">
-    </picture>
+    <? if (str_contains($APPLICATION->GetCurPage(), "msb") || str_contains($APPLICATION->GetCurPage(), "financial-institutions")) : ?>
+        <picture class="pattern-bg">
+            <source srcset="/frontend/dist/img/patterns/section-heavy/pattern-light-s.svg" media="(max-width: 767px)">
+            <source srcset="/frontend/dist/img/patterns/section-heavy/pattern-light-m.svg" media="(max-width: 1199px)">
+            <img src="/frontend/dist/img/patterns/section-heavy/pattern-light-l.svg" alt="bg pattern" loading="lazy">
+        </picture>
+    <? endif; ?>
 </div>
+<? endif; ?>

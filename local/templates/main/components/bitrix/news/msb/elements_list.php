@@ -25,6 +25,15 @@ $helper = $headerView->helper();
 /*
  * Слайдер на разводящей
  */
+global $sliderFilter;
+$sliderFilter = [
+    "ACTIVE" => "Y",
+];
+
+if (!empty($component->arParams["SEF_FOLDER"])) {
+    $sliderFilter["SECTION_CODE"] = basename($component->arParams["SEF_FOLDER"]);
+}
+
 $APPLICATION->IncludeComponent(
     "bitrix:news.list",
     "slider_spreader_page",
@@ -48,15 +57,20 @@ $APPLICATION->IncludeComponent(
         "DISPLAY_PICTURE" => "N",
         "DISPLAY_PREVIEW_TEXT" => "N",
         "DISPLAY_TOP_PAGER" => "N",
-        "FIELD_CODE" => ["ID", "NAME", "PREVIEW_TEXT", "DETAIL_PICTURE"],
-        "FILTER_NAME" => "",
+        "FIELD_CODE" => [
+            "ID",
+            "NAME",
+            "PREVIEW_TEXT",
+            "DETAIL_PICTURE"
+        ],
+        "FILTER_NAME" => "sliderFilter",
         "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-        "IBLOCK_ID" => iblock('msb_main_slider'),
-        "IBLOCK_TYPE" => "msb",
+        "IBLOCK_ID" => iblock("main_banners"),
+        "IBLOCK_TYPE" => "additional",
         "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
         "INCLUDE_SUBSECTIONS" => "N",
         "MESSAGE_404" => "",
-        "NEWS_COUNT" => "20",
+        "NEWS_COUNT" => "4",
         "PAGER_BASE_LINK_ENABLE" => "N",
         "PAGER_DESC_NUMBERING" => "N",
         "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
@@ -67,7 +81,7 @@ $APPLICATION->IncludeComponent(
         "PARENT_SECTION" => "",
         "PARENT_SECTION_CODE" => "",
         "PREVIEW_TRUNCATE_LEN" => "",
-        "PROPERTY_CODE" => [],
+        "PROPERTY_CODE" => ["BUTTON_LINK", "BUTTON_TEXT", "FILE_VIDEO"],
         "SET_BROWSER_TITLE" => "N",
         "SET_LAST_MODIFIED" => "N",
         "SET_META_DESCRIPTION" => "N",
@@ -75,9 +89,9 @@ $APPLICATION->IncludeComponent(
         "SET_STATUS_404" => "N",
         "SET_TITLE" => "N",
         "SHOW_404" => "N",
-        "SORT_BY1" => "ACTIVE_FROM",
-        "SORT_BY2" => "SORT",
-        "SORT_ORDER1" => "DESC",
+        "SORT_BY1" => "SORT",
+        "SORT_BY2" => "ID",
+        "SORT_ORDER1" => "ASC",
         "SORT_ORDER2" => "ASC",
         "STRICT_SECTION_CHECK" => "N",
         "CLASS_SECTION" => "banner-hero--heavy-violet banner-hero--type-msb",
@@ -133,7 +147,7 @@ $APPLICATION->IncludeComponent(
         "ACTIVE_DATE_FORMAT" => $arParams["LIST_ACTIVE_DATE_FORMAT"],
         "USE_PERMISSIONS" => $arParams["USE_PERMISSIONS"],
         "GROUP_PERMISSIONS" => $arParams["GROUP_PERMISSIONS"],
-        "FILTER_NAME" => '',
+        "FILTER_NAME" => "",
         "HIDE_LINK_WHEN_NO_DETAIL" => $arParams["HIDE_LINK_WHEN_NO_DETAIL"],
         "CHECK_DATES" => $arParams["CHECK_DATES"],
         "STRICT_SECTION_CHECK" => $arParams["STRICT_SECTION_CHECK"],
@@ -156,7 +170,7 @@ $APPLICATION->IncludeComponent(
  * Блок "Объявления для клиентов"
  */
 global $announcementsFilter;
-$announcementsFilter['SECTION_CODE'] = basename("/msb/");
+$announcementsFilter["SECTION_CODE"] = basename("/msb/");
 
 $APPLICATION->IncludeComponent(
     "bitrix:news.list",
@@ -180,7 +194,7 @@ $APPLICATION->IncludeComponent(
         "FIELD_CODE" => ["CODE", "NAME", "PREVIEW_TEXT", "PREVIEW_PICTURE", ""],
         "FILTER_NAME" => "announcementsFilter",
         "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-        "IBLOCK_ID" => iblock('ads_for_customers_ru'),
+        "IBLOCK_ID" => iblock("ads_for_customers_ru"),
         "IBLOCK_TYPE" => "support",
         "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
         "INCLUDE_SUBSECTIONS" => "N",
