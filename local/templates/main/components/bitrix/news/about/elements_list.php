@@ -30,15 +30,6 @@ ob_start(); ?>
 /*
  * Слайдер на разводящей
  */
-global $sliderFilter;
-$sliderFilter = [
-    "ACTIVE" => "Y",
-];
-
-if (!empty($component->arParams["SEF_FOLDER"])) {
-    $sliderFilter["SECTION_CODE"] = basename($component->arParams["SEF_FOLDER"]);
-}
-
 $sliders = $APPLICATION->IncludeComponent(
     "bitrix:news.list",
     "slider_spreader_page",
@@ -68,7 +59,7 @@ $sliders = $APPLICATION->IncludeComponent(
             "PREVIEW_TEXT",
             "DETAIL_PICTURE"
         ],
-        "FILTER_NAME" => "sliderFilter",
+        "FILTER_NAME" => "",
         "HIDE_LINK_WHEN_NO_DETAIL" => "N",
         "IBLOCK_ID" => iblock("main_banners"),
         "IBLOCK_TYPE" => "additional",
@@ -84,7 +75,7 @@ $sliders = $APPLICATION->IncludeComponent(
         "PAGER_TEMPLATE" => ".default",
         "PAGER_TITLE" => "Новости",
         "PARENT_SECTION" => "",
-        "PARENT_SECTION_CODE" => "",
+        "PARENT_SECTION_CODE" => basename($component->arParams["SEF_FOLDER"]),
         "PREVIEW_TRUNCATE_LEN" => "",
         "PROPERTY_CODE" => ["BUTTON_LINK", "BUTTON_TEXT", "FILE_VIDEO"],
         "SET_BROWSER_TITLE" => "N",

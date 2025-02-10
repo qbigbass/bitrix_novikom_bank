@@ -4,15 +4,7 @@ global $APPLICATION;
 
 $APPLICATION->SetTitle('Частным клиентам - Главная НОВИКОМБАНК');
 ?>
-
 <?
-global $sliderFilter;
-$sliderFilter = [
-    'ACTIVE' => 'Y',
-];
-$sliderFilter['SECTION_CODE'] = "private-clients";
-
-
 $APPLICATION->IncludeComponent(
     "bitrix:news.list",
     "slider_spreader_page",
@@ -42,7 +34,7 @@ $APPLICATION->IncludeComponent(
             "PREVIEW_TEXT",
             "DETAIL_PICTURE"
         ],
-        "FILTER_NAME" => "sliderFilter",
+        "FILTER_NAME" => "",
         "HIDE_LINK_WHEN_NO_DETAIL" => "N",
         "IBLOCK_ID" => iblock("main_banners"),
         "IBLOCK_TYPE" => "additional",
@@ -58,7 +50,7 @@ $APPLICATION->IncludeComponent(
         "PAGER_TEMPLATE" => ".default",
         "PAGER_TITLE" => "Новости",
         "PARENT_SECTION" => "",
-        "PARENT_SECTION_CODE" => "",
+        "PARENT_SECTION_CODE" => "private-clients",
         "PREVIEW_TRUNCATE_LEN" => "",
         "PROPERTY_CODE" => ["BUTTON_LINK", "BUTTON_TEXT", "FILE_VIDEO"],
         "SET_BROWSER_TITLE" => "N",
