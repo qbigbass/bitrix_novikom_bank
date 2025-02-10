@@ -567,7 +567,6 @@ class CUserTypeComplexProperty
                     $strResult_ = str_replace('PROP_'.$sprop, 'SPROP_'.$sprop, $strResult_);
                     $strResult_ = str_replace('_prop_'.$sprop, '_sprop_'.$sprop, $strResult_);
                     $strResult_ = str_replace('_'.$sprop, '_s'.$sprop, $strResult_);
-
                     $strResult_ = str_replace('sel_s'.$sprop, 'sel_'.$sprop, $strResult_);
                     $strResult_ = str_replace('map_yandex__s'.$sprop, 'map_yandex__s'.$sprop.'_'.$value_id, $strResult_);
                     $strResult_ = str_replace('complex_add_area_s'.$sprop, 'complex_add_area_'.$sprop, $strResult_);

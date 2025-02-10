@@ -153,16 +153,19 @@ function declensionFrom(int $number, string $period = 'years'): string
  * @param int $depth
  * @return void
  */
-function showNavChain(string $template = '.default', int $depth = 0): void
+function showNavChain(string $template = '.default', int $depth = 0, array $params = []): void
 {
-    global $APPLICATION;
+    global $APPLICATION, $BREADCRUMBS_PARAMS;
+
+    $BREADCRUMBS_PARAMS = $params;
+
     $APPLICATION->IncludeComponent(
         "bitrix:breadcrumb",
         "$template",
         [
             "PATH" => "",
             "SITE_ID" => "s1",
-            "START_FROM" => $depth
+            "START_FROM" => $depth,
         ]
     );
 }

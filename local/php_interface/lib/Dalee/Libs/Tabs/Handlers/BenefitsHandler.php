@@ -12,12 +12,18 @@ class BenefitsHandler implements PropertyHandlerInterface
         $this->property = $property;
     }
 
-    public function render(string $template = 'benefits'): string
+    public function render(array $params = []): string
     {
         $GLOBALS['benefitsFilter'] = [
             'ACTIVE' => 'Y',
             'ID' => $this->property['VALUE']
         ];
+
+        $template = "benefits";
+
+        if (!empty($params["TEMPLATE"])) {
+            $template = $params["TEMPLATE"];
+        }
 
         ob_start();
         $GLOBALS['APPLICATION']->IncludeComponent(
@@ -40,7 +46,13 @@ class BenefitsHandler implements PropertyHandlerInterface
                 "DETAIL_URL" => "",
                 "DISPLAY_BOTTOM_PAGER" => "N",
                 "DISPLAY_TOP_PAGER" => "N",
-                "FIELD_CODE" => ["CODE","NAME","PREVIEW_TEXT","PREVIEW_PICTURE",""],
+                "FIELD_CODE" => [
+                    "CODE",
+                    "NAME",
+                    "PREVIEW_TEXT",
+                    "PREVIEW_PICTURE",
+                    ""
+                ],
                 "FILTER_NAME" => "benefitsFilter",
                 "HIDE_LINK_WHEN_NO_DETAIL" => "N",
                 "IBLOCK_ID" => iblock('benefits'),
@@ -59,7 +71,10 @@ class BenefitsHandler implements PropertyHandlerInterface
                 "PARENT_SECTION" => "",
                 "PARENT_SECTION_CODE" => "",
                 "PREVIEW_TRUNCATE_LEN" => "",
-                "PROPERTY_CODE" => ["",""],
+                "PROPERTY_CODE" => [
+                    "ICON",
+                    ""
+                ],
                 "SET_BROWSER_TITLE" => "N",
                 "SET_LAST_MODIFIED" => "N",
                 "SET_META_DESCRIPTION" => "N",

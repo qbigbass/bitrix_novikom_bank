@@ -5,7 +5,7 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
  * @global CMain $APPLICATION
  */
 
-global $APPLICATION;
+global $APPLICATION, $BREADCRUMBS_PARAMS;
 
 if(empty($arResult))
 	return "";
@@ -24,7 +24,7 @@ for($index = 0; $index < $itemSize; $index++)
 	if($arResult[$index]["LINK"] <> "" && $index != $itemSize-1)
 	{
         $strReturn .= '
-            <a class="breadcrumbs__item d-md-inline-flex align-items-center gap-2 text-s text-white-50 d-inline-flex d-none" href="' . $arResult[$index]["LINK"] . '">
+            <a class="breadcrumbs__item d-md-inline-flex align-items-center gap-2 text-s '. $BREADCRUMBS_PARAMS["breadcrumbsColorClass"] .' d-inline-flex d-none" href="' . $arResult[$index]["LINK"] . '">
                 ' . $arrow . '
                 <span>' . $title . '</span>
             </a>';
@@ -32,7 +32,7 @@ for($index = 0; $index < $itemSize; $index++)
 	else
 	{
 		$strReturn .= '
-			<div class="breadcrumbs__item d-md-inline-flex align-items-center gap-2 text-s text-white-50 d-inline-flex">
+			<div class="breadcrumbs__item d-md-inline-flex align-items-center gap-2 text-s '. $BREADCRUMBS_PARAMS["breadcrumbsColorClass"] .' d-inline-flex">
                 ' . $arrow . '
                 <span>' . $title . '</span>
             </div>';
