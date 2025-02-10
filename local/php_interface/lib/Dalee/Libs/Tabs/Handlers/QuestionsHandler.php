@@ -1,4 +1,5 @@
 <?php
+
 namespace Dalee\Libs\Tabs\Handlers;
 
 use Dalee\Libs\Tabs\Interfaces\PropertyHandlerInterface;
@@ -14,11 +15,17 @@ class QuestionsHandler implements PropertyHandlerInterface
 
     public function render(): string
     {
+        global $APPLICATION;
+        $path = array_values(array_filter(explode('/', $APPLICATION->GetCurPage())));
+        $current = array_pop($path);
+        $parent = reset($path);
+
         return
             '<div class="col-12 col-xxl-8">
                 <div class="accordion" id="accordion-' . $this->property['ID'] . '">'
-                    . $this->getQuestionsHtml() .
-                    '<a class="btn btn-link btn-lg-lg d-inline-flex gap-2 align-items-center mt-4 mt-md-6 section-custom-accordion__button-more" href="/support/questions_and_answers/">
+            . $this->getQuestionsHtml() .
+            '<a class="btn btn-link btn-lg-lg d-inline-flex gap-2 align-items-center mt-4 mt-md-6 section-custom-accordion__button-more"
+                href="/support/questions_and_answers/' . $parent . '/' . (!empty($current) && $current != $parent ? $current . '/' : '') . '">
                         <span class="text-m">Все вопросы и ответы</span>
                         <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                             <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right-small"></use>
@@ -27,7 +34,7 @@ class QuestionsHandler implements PropertyHandlerInterface
                 </div>
             </div>
             <div class="col-12 col-xxl-4">'
-                . $this->getRequestCallFormHtml() .
+            . $this->getRequestCallFormHtml() .
             '</div>';
     }
 
@@ -39,14 +46,14 @@ class QuestionsHandler implements PropertyHandlerInterface
                 '<div class="accordion-item">
                     <div class="accordion-header">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#' . $question['ID'] . '" aria-controls="' . $question['ID'] . '">'
-                             . $question['NAME'] .
-                        '</button>
+                . $question['NAME'] .
+                '</button>
                     </div>
                     <div class="accordion-collapse collapse" id="' . $question['ID'] . '" data-bs-parent="#accordion-' . $this->property['ID'] . '">
                         <div class="accordion-body">
                             <p class="text-m mb-0 dark-70">'
-                                . $question['PREVIEW_TEXT'] .
-                            '</p>
+                . $question['PREVIEW_TEXT'] .
+                '</p>
                         </div>
                     </div>
                 </div>';
