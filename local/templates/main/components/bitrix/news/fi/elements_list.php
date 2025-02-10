@@ -95,6 +95,7 @@ $APPLICATION->IncludeComponent(
         "SORT_ORDER2" => "ASC",
         "STRICT_SECTION_CHECK" => "N",
         "CLASS_SECTION" => "banner-hero--type-light bg-gradient-graphite",
+        "PATH_IMG_BG" => "/frontend/dist/img/patterns/section-heavy/pattern-light"
     ],
     false
 );

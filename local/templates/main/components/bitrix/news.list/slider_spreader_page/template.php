@@ -35,7 +35,6 @@ $this->setFrameMode(true);
                                     </a>
                                 <? endif; ?>
                             </div>
-
                             <? if (!empty($item["DISPLAY_PROPERTIES"]["FILE_VIDEO"]["FILE_VALUE"]["SRC"])) : ?>
                                 <!-- Видео -->
                                 <video class="banner-hero-content__bg" autoplay="" loop="" muted="" poster="">
@@ -82,11 +81,11 @@ $this->setFrameMode(true);
             </div>
         </div>
     </div>
-    <? if (str_contains($APPLICATION->GetCurPage(), "msb") || str_contains($APPLICATION->GetCurPage(), "financial-institutions")) : ?>
+    <? if (!empty(!empty($arParams["PATH_IMG_BG"]))) : ?>
         <picture class="pattern-bg">
-            <source srcset="/frontend/dist/img/patterns/section-heavy/pattern-light-s.svg" media="(max-width: 767px)">
-            <source srcset="/frontend/dist/img/patterns/section-heavy/pattern-light-m.svg" media="(max-width: 1199px)">
-            <img src="/frontend/dist/img/patterns/section-heavy/pattern-light-l.svg" alt="bg pattern" loading="lazy">
+            <source srcset="<?= $arParams["PATH_IMG_BG"] ?>-s.svg" media="(max-width: 767px)">
+            <source srcset="<?= $arParams["PATH_IMG_BG"] ?>-m.svg" media="(max-width: 1199px)">
+            <img src="<?= $arParams["PATH_IMG_BG"] ?>-l.svg" alt="bg pattern" loading="lazy">
         </picture>
     <? endif; ?>
 </div>
