@@ -11,13 +11,30 @@
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true); ?>
+<?
+$cntCol = $arParams['COL_COUNT'];
 
-<? foreach ($arResult['ITEMS'] as $arItem) : ?>
-    <div class="col-12 col-md-6 col-lg-<?= 12 / $arParams['COL_COUNT'] ?>">
+if (empty( $arParams['CALC_COLS']) || $arParams['CALC_COLS'] === 'Y') {
+    $cntCol = 12 / $arParams['COL_COUNT'];
+}
+
+foreach ($arResult['ITEMS'] as $arItem) : ?>
+    <div class="col-12 col-md-6 col-lg-<?= $cntCol ?>">
         <div class="benefit d-flex gap-3 flex-column">
             <? if (!empty($arItem['PREVIEW_PICTURE'])) : ?>
                 <img class="icon size-xxl" src="<?= $arItem['PREVIEW_PICTURE']['SRC'] ?>"
                  alt="<?= $arItem['PREVIEW_PICTURE']['ALT'] ?>" loading="lazy">
+            <? elseif (!empty($arItem["PROPERTIES"]["ICON"]["VALUE"])) : ?>
+                <?
+                $arFile = CFile::GetByID($arItem["PROPERTIES"]["ICON"]["VALUE"])->Fetch();
+                ?>
+                <? if (!empty($arFile)) : ?>
+                    <img
+                        class="icon size-xxl"
+                        src="<?= $arFile["SRC"] ?>"
+                        alt="icon" loading="lazy"
+                    >
+                <? endif; ?>
             <? endif; ?>
             <div class="benefit__content d-flex flex-column gap-3">
                 <? if (!empty($arItem['~PREVIEW_TEXT'])) : ?>

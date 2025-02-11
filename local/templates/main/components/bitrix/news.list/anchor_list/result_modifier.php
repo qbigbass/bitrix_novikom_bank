@@ -1,13 +1,18 @@
 <?php
-foreach ($arResult['ITEMS'] as &$tab) {
-    if (!empty($tab['DISPLAY_PROPERTIES'])) {
-        $tab['DISPLAY_PROPERTIES']['SHORT_INFO']['IMG'] = $tab['DISPLAY_PROPERTIES']['ICON_SHORT_INFO']['FILE_VALUE']['SRC'];
-        $tab['DISPLAY_PROPERTIES']['ICONS_WITH_DESCRIPTION']['SHOW_TWO_ICONS_IN_ROW'] = $tab['DISPLAY_PROPERTIES']['SHOW_TWO_ICONS_IN_ROW']['VALUE'];
+/** @var array $arResult */
+/** @var CBitrixComponent $component */
 
-        foreach ($tab['DISPLAY_PROPERTIES'] as &$property) {
+use Bitrix\Iblock\ElementTable;
+use Bitrix\Iblock\SectionTable;
+
+foreach ($arResult['ITEMS'] as &$anchor) {
+    if (!empty($anchor['DISPLAY_PROPERTIES'])) {
+        $anchor['DISPLAY_PROPERTIES']['SHORT_INFO']['IMG'] = $anchor['DISPLAY_PROPERTIES']['ICON_SHORT_INFO']['FILE_VALUE']['SRC'];
+        $anchor['DISPLAY_PROPERTIES']['ICONS_WITH_DESCRIPTION']['SHOW_TWO_ICONS_IN_ROW'] = $anchor['DISPLAY_PROPERTIES']['SHOW_TWO_ICONS_IN_ROW']['VALUE'];
+
+        foreach ($anchor['DISPLAY_PROPERTIES'] as &$property) {
             if ($property['PROPERTY_TYPE'] == 'E' && !empty($property['VALUE'])) {
-
-                $elements = \Bitrix\Iblock\ElementTable::GetList([
+                $elements = ElementTable::GetList([
                     'select' => ['ID', 'NAME', 'PREVIEW_TEXT', 'DETAIL_TEXT', 'PREVIEW_PICTURE', 'DETAIL_PICTURE'],
                     'filter' => [
                         'IBLOCK_ID' => $property['LINK_IBLOCK_ID'],
@@ -32,18 +37,17 @@ foreach ($arResult['ITEMS'] as &$tab) {
             }
 
             if ($property['PROPERTY_TYPE'] == 'G' && !empty($property['VALUE'])) {
-
                 $filter = [
                     'IBLOCK_ID' => $property['LINK_IBLOCK_ID'],
                     'IBLOCK_SECTION_ID' => $property['VALUE']
                 ];
 
-                $sections = \Bitrix\Iblock\SectionTable::GetList([
+                $sections = SectionTable::GetList([
                     'select' => ['ID', 'NAME', 'DESCRIPTION'],
                     'filter' => ['IBLOCK_ID' => $property['LINK_IBLOCK_ID'], 'ID' => $property['VALUE']],
                 ])->fetchAll();
 
-                $elements = \Bitrix\Iblock\ElementTable::GetList([
+                $elements = ElementTable::GetList([
                     'select' => ['ID', 'NAME', 'IBLOCK_SECTION_ID', 'PREVIEW_TEXT', 'DETAIL_TEXT', 'ACTIVE_FROM'],
                     'filter' => $filter,
                 ])->fetchAll();
@@ -66,6 +70,45 @@ foreach ($arResult['ITEMS'] as &$tab) {
                 }
             }
         }
+
+        unset($property);
     }
+
+    $title = $anchor["PROPERTIES"]["TITLE_MENU"]["VALUE"] ?: $anchor["NAME"];
+    $arResult["MENU"][] = [
+        "CODE" => $anchor["CODE"],
+        "TITLE" => $title,
+        "SORT" => $anchor["SORT"]
+    ];
+
+    $params = [];
+
+    if (!empty($anchor["PROPERTIES"]["BENEFITS_SLIDER_CLASS_CARDS"]["VALUE"])) {
+        $params["BENEFITS_SLIDER_CLASS_CARDS"] = $anchor["PROPERTIES"]["BENEFITS_SLIDER_CLASS_CARDS"]["VALUE"];
+    }
+
+    if (!empty($anchor["PROPERTIES"]["BENEFITS_SLIDER_CLASS_CARDS"]["VALUE"])) {
+        $params["BENEFITS_SLIDER_CLASS_CARDS"] = $anchor["PROPERTIES"]["BENEFITS_SLIDER_CLASS_CARDS"]["VALUE"];
+    }
+
+    if (!empty($anchor["PROPERTIES"]["SHORT_INFO_CLASS_BLOCK"]["VALUE"])) {
+        $params["SHORT_INFO_CLASS_BLOCK"] = $anchor["PROPERTIES"]["SHORT_INFO_CLASS_BLOCK"]["VALUE"];
+    }
+
+    if (!empty($anchor["PROPERTIES"]["SHORT_INFO_CLASS_LINE"]["VALUE"])) {
+        $params["SHORT_INFO_CLASS_LINE"] = $anchor["PROPERTIES"]["SHORT_INFO_CLASS_LINE"]["VALUE"];
+    }
+
+    $arResult["BLOCKS"][] = [
+        "TITLE" => $anchor["NAME"],
+        "CODE" => $anchor["CODE"],
+        "TEXT" => $anchor["~PREVIEW_TEXT"],
+        "CLASS_BLOCK" => $anchor["PROPERTIES"]["CLASS_BLOCK"]["VALUE"],
+        "IMG_PATH" => $anchor["PROPERTIES"]["PATH_IMG_BLOCK"]["VALUE"],
+        "~DETAIL_TEXT" => $anchor["~DETAIL_TEXT"],
+        "DISPLAY_PROPERTIES" => $anchor["DISPLAY_PROPERTIES"],
+        "PARAMS" => $params
+    ];
 }
-unset($tab);
+
+unset($anchor);

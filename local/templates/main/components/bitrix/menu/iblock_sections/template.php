@@ -10,6 +10,9 @@
 /** @var string $templateFolder */
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
+
+use Bitrix\Main\Context;
+
 $this->setFrameMode(true);
 
 if (empty($arParams['PARENT_DEPTH'])) {
@@ -18,10 +21,13 @@ if (empty($arParams['PARENT_DEPTH'])) {
     $path = explode('/', $APPLICATION->GetCurPage())[$arParams['PARENT_DEPTH']];
 }
 
+$request = Context::getCurrent()->getRequest();
+$section = $request->getQuery('path');
+
 $targetLink = $arParams["TARGET_LINK"] ?? "";
 ?>
 
-<div class="tabs-panel js-tabs-slider overflow-hidden position-relative">
+<div class="tabs-panel js-tabs-slider overflow-hidden position-relative" id="links">
     <? if (count($arResult) >= 4) { ?>
         <div class="tabs-panel__navigation d-none d-lg-block js-tabs-slider-navigation w-100">
             <span class="tabs-panel__navigation-item tabs-panel__navigation-item-reverse js-tabs-slider-navigation-prev d-flex align-items-center justify-content-start px-1 z-3 position-absolute swiper-button-disabled">
@@ -42,12 +48,16 @@ $targetLink = $arParams["TARGET_LINK"] ?? "";
     <? } ?>
     <ul class="swiper-wrapper tabs-panel__list nav nav-tabs d-inline-flex flex-nowrap w-auto p-0 border border-purple rounded section-catalog__tab-list">
         <? foreach ($arResult as $key => $menuItem) {
-            if ($menuItem['PARAMS']['DEPTH_LEVEL'] == 0) continue;
+            if ($menuItem['PARAMS']['DEPTH_LEVEL'] === 0) continue;
             ?>
-            <? $class = basename($menuItem['LINK']) == $path ? ' active' : ''; ?>
+            <? if (!empty($section)) {
+                $class = basename($menuItem['LINK']) == $section ? ' active' : '';
+            } else {
+                $class = basename($menuItem['LINK']) == $path ? ' active' : '';
+            } ?>
 
             <li class="swiper-slide w-auto tabs-panel__list-item nav-item z-2">
-                <a class="tabs-panel__list-item-link nav-link bg-transparent section-catalog__tab-list-item<?= $class ?>" href="<?= $menuItem['LINK']. $targetLink ?>">
+                <a class="tabs-panel__list-item-link nav-link bg-transparent section-catalog__tab-list-item<?= $class ?>" href="<?= $menuItem['LINK']. $targetLink . "#links" ?>">
                     <?= $menuItem['TEXT'] ?>
                 </a>
             </li>

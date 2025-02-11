@@ -19,11 +19,82 @@ use Dalee\Helpers\HeaderView;
 
 $headerView = new HeaderView($component);
 $helper = $headerView->helper();
-$headerView->render(
-    $APPLICATION->GetTitle(),
-    '',
-    ['bg-linear-blue']
+
+/*
+ * Слайдер на разводящей
+ */
+$sliders = $APPLICATION->IncludeComponent(
+    "bitrix:news.list",
+    "slider_spreader_page",
+    [
+        "ACTIVE_DATE_FORMAT" => "d.m.Y",
+        "ADD_SECTIONS_CHAIN" => "N",
+        "AJAX_MODE" => "N",
+        "AJAX_OPTION_ADDITIONAL" => "",
+        "AJAX_OPTION_HISTORY" => "N",
+        "AJAX_OPTION_JUMP" => "N",
+        "AJAX_OPTION_STYLE" => "Y",
+        "CACHE_FILTER" => "Y",
+        "CACHE_GROUPS" => "Y",
+        "CACHE_TIME" => "36000000",
+        "CACHE_TYPE" => "A",
+        "CHECK_DATES" => "Y",
+        "DETAIL_URL" => "",
+        "DISPLAY_BOTTOM_PAGER" => "N",
+        "DISPLAY_DATE" => "N",
+        "DISPLAY_NAME" => "Y",
+        "DISPLAY_PICTURE" => "N",
+        "DISPLAY_PREVIEW_TEXT" => "N",
+        "DISPLAY_TOP_PAGER" => "N",
+        "FIELD_CODE" => [
+            "ID",
+            "NAME",
+            "PREVIEW_TEXT",
+            "DETAIL_PICTURE"
+        ],
+        "FILTER_NAME" => "",
+        "HIDE_LINK_WHEN_NO_DETAIL" => "N",
+        "IBLOCK_ID" => iblock("main_banners"),
+        "IBLOCK_TYPE" => "additional",
+        "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+        "INCLUDE_SUBSECTIONS" => "N",
+        "MESSAGE_404" => "",
+        "NEWS_COUNT" => "4",
+        "PAGER_BASE_LINK_ENABLE" => "N",
+        "PAGER_DESC_NUMBERING" => "N",
+        "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+        "PAGER_SHOW_ALL" => "N",
+        "PAGER_SHOW_ALWAYS" => "N",
+        "PAGER_TEMPLATE" => ".default",
+        "PAGER_TITLE" => "Новости",
+        "PARENT_SECTION" => "",
+        "PARENT_SECTION_CODE" => "produkty-i-uslugi",
+        "PREVIEW_TRUNCATE_LEN" => "",
+        "PROPERTY_CODE" => ["BUTTON_LINK", "BUTTON_TEXT", "FILE_VIDEO"],
+        "SET_BROWSER_TITLE" => "N",
+        "SET_LAST_MODIFIED" => "N",
+        "SET_META_DESCRIPTION" => "N",
+        "SET_META_KEYWORDS" => "N",
+        "SET_STATUS_404" => "N",
+        "SET_TITLE" => "N",
+        "SHOW_404" => "N",
+        "SORT_BY1" => "SORT",
+        "SORT_BY2" => "ID",
+        "SORT_ORDER1" => "ASC",
+        "SORT_ORDER2" => "ASC",
+        "STRICT_SECTION_CHECK" => "N",
+        "CLASS_SECTION" => "bg-linear-blue banner-text--border-orange banner-product--heavy-purple",
+    ],
+    false
 );
+
+if (empty($sliders)) {
+    $headerView->render(
+        $APPLICATION->GetTitle(),
+        '',
+        ['bg-linear-blue']
+    );
+}
 ?>
 <section class="section-layout pt-lg-11 pb-0 bg-dark-10">
     <div class="container">

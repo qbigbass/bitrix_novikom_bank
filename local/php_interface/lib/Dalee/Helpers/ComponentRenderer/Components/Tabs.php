@@ -97,6 +97,7 @@ class Tabs implements ComponentInterface
                     "DOCUMENTS",
                     "SHOW_TWO_ICONS_IN_ROW",
                     "TARIFFS",
+                    "STRATEGIES"
                 ],
                 "SET_BROWSER_TITLE" => "N",
                 "SET_LAST_MODIFIED" => "N",

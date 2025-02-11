@@ -106,6 +106,10 @@ $APPLICATION->SetTitle('Корпоративным клиентам');
             "news" => "",
             "section" => "",
             "detail" => "#ELEMENT_CODE#/",
+        ],
+        "TITLE_BLOCK_CROSS_SALE" => "Другие услуги для корпоративных клиентов",
+        "FILTER_BLOCK_CROSS_SALE" => [
+            "SECTION_CODE" => "corporate"
         ]
     ],
     false,

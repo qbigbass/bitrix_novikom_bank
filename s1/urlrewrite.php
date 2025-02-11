@@ -36,8 +36,8 @@ $arUrlRewrite = [
         'SORT' => 100,
     ],
     [
-        'CONDITION' => '#^/support/questions_and_answers/#',
-        'RULE' => '',
+        'CONDITION' => '#^/support/questions_and_answers/([^/]+)(/.*|$)#',
+        'RULE' => 'path=$1',
         'ID' => 'bitrix:news',
         'PATH' => '/support/questions_and_answers/index.php',
         'SORT' => 100,
@@ -59,7 +59,7 @@ $arUrlRewrite = [
     [
         'CONDITION' => '#^/financial-institutions/#',
         'RULE' => '',
-        'ID' => 'bitrix:catalog',
+        'ID' => 'bitrix:news',
         'PATH' => '/financial-institutions/index.php',
         'SORT' => 100,
     ],
@@ -164,7 +164,7 @@ $arUrlRewrite = [
     [
         'CONDITION' => '#^/msb/#',
         'RULE' => '',
-        'ID' => 'bitrix:catalog',
+        'ID' => 'bitrix:news',
         'PATH' => '/msb/index.php',
         'SORT' => 100,
     ],
@@ -194,6 +194,13 @@ $arUrlRewrite = [
         'RULE' => '',
         'ID' => 'bitrix:news',
         'PATH' => '/private-banking/services/index.php',
+        'SORT' => 100,
+    ],
+    [
+        'CONDITION' => '#^/insurance/#',
+        'RULE' => '',
+        'ID' => 'bitrix:news',
+        'PATH' => '/insurance/index.php',
         'SORT' => 100,
     ],
     [
