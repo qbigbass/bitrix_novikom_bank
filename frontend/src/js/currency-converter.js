@@ -6,6 +6,7 @@ const ELEMS_CURRENCY = {
     selectGet: '.js-currency-select-get',
     unitHaveToGet: '.js-currency-unit-have',
     unitGetToHave: '.js-currency-unit-get',
+    radioTypeRate: 'input[name="TYPE_RATE"]',
 }
 
 const RUB = {
@@ -23,6 +24,7 @@ const initElementsCurrencyConverter = (root) => {
     const selectGet = root.querySelector(ELEMS_CURRENCY.selectGet);
     const unitHaveToGet = root.querySelector(ELEMS_CURRENCY.unitHaveToGet);
     const unitGetToHave = root.querySelector(ELEMS_CURRENCY.unitGetToHave);
+    const radioTypeRate = root.querySelectorAll(ELEMS_CURRENCY.radioTypeRate);
 
     return {
         root,
@@ -31,7 +33,8 @@ const initElementsCurrencyConverter = (root) => {
         selectHave,
         selectGet,
         unitHaveToGet,
-        unitGetToHave
+        unitGetToHave,
+        radioTypeRate
     }
 }
 
@@ -42,7 +45,8 @@ function setSelectsCurrency(STATE) {
     setSelectOptions('selectHave', currencies, STATE);
     setSelectOptions('selectGet', currencies, STATE);
 
-    $(ELEMS_CURRENCY.selectGet).val(currencies[1]).trigger('change');
+    const triggerSelect = STATE.typeRate === 'sell' ? 'Have' : 'Get';
+    $(ELEMS_CURRENCY[`select${triggerSelect}`]).val(currencies[1]).trigger('change');
 }
 
 function convertCurrencyToNumber(value) {
@@ -54,13 +58,18 @@ function convertCurrencyToLocaleString(value) {
     return isNaN(valueNum) ? '' : valueNum.toLocaleString('ru-RU', {maximumFractionDigits: 2});
 }
 
-function findCurrency(currency, STATE) {
+function getCurrency(currency, STATE) {
     return STATE.currencyData.filter(item => item.currency === currency)[0] ?? RUB;
 }
 
+function getTypeRate(STATE) {
+    const checkedTypeRate = [...STATE.elements.radioTypeRate].find(typeRate => typeRate.checked);
+    return checkedTypeRate.value;
+}
+
 function calculateUnitCurrency(STATE) {
-    const valueHave = convertCurrencyToNumber(STATE.currencyHave.base);
-    const valueGet = convertCurrencyToNumber(STATE.currencyGet.base);
+    const valueHave = convertCurrencyToNumber(STATE.currencyHave[STATE.typeRate]);
+    const valueGet = convertCurrencyToNumber(STATE.currencyGet[STATE.typeRate]);
 
     STATE.unitHaveToGet = valueHave / valueGet;
     STATE.unitGetToHave = valueGet / valueHave;
@@ -76,15 +85,15 @@ function calculateResultCurrency({value, from, to}, STATE) {
     inputTo.value = convertCurrencyToLocaleString(valueNum * STATE[`unit${from}To${to}`]);
 }
 
-function handleChangeSelect({value, from, to}, STATE) {
+function handlerChangeSelectCurrency({value, from, to}, STATE) {
     if (value === STATE.elements[`select${to}`].value) {
         if ($(ELEMS_CURRENCY[`select${to}`]).find("option[value='" + STATE[`currency${from}`].currency + "']").length) {
             $(ELEMS_CURRENCY[`select${to}`]).val(STATE[`currency${from}`].currency).trigger('change');
         }
     }
 
-    STATE.currencyHave = findCurrency(STATE.elements.selectHave.value, STATE);
-    STATE.currencyGet = findCurrency(STATE.elements.selectGet.value, STATE);
+    STATE.currencyHave = getCurrency(STATE.elements.selectHave.value, STATE);
+    STATE.currencyGet = getCurrency(STATE.elements.selectGet.value, STATE);
 
     calculateUnitCurrency(STATE);
 
@@ -97,24 +106,39 @@ function handleChangeSelect({value, from, to}, STATE) {
     }
 }
 
-function handleFocusInputCurrency(e) {
+function handlerFocusInputCurrency(e) {
     if (e.target.value.trim() !== '') {
         e.target.value = convertCurrencyToNumber(e.target.value);
     }
 }
 
-function handleBlurInputCurrency(e) {
+function handlerBlurInputCurrency(e) {
     if (e.target.value.trim() !== '') {
         e.target.value = convertCurrencyToLocaleString(e.target.value);
     }
 }
 
-function calculateCurrencyConversion(STATE) {
-    STATE.currencyHave = findCurrency(STATE.elements.selectHave.value, STATE);
-    STATE.currencyGet = findCurrency(STATE.elements.selectGet.value, STATE);
+function handlerChangeRadioTypeRate(radio, STATE) {
+    STATE.typeRate = radio.value;
+
+    calculateUnitCurrency(STATE);
+
+    calculateResultCurrency({
+        value: STATE.elements[`inputHave`].value,
+        from: 'Have',
+        to: 'Get',
+    }, STATE);
+}
+
+function registerEventsCurrencyConversion(STATE) {
+    STATE.elements.radioTypeRate.forEach(radio => {
+        radio.addEventListener('change', () => {
+            handlerChangeRadioTypeRate(radio, STATE);
+        });
+    });
 
     $(ELEMS_CURRENCY.selectHave).on('select2:select', (e) => {
-        handleChangeSelect({
+        handlerChangeSelectCurrency({
             value: e.target.value,
             from: 'Have',
             to: 'Get',
@@ -122,7 +146,7 @@ function calculateCurrencyConversion(STATE) {
     });
 
     $(ELEMS_CURRENCY.selectGet).on('select2:select', (e) => {
-        handleChangeSelect({
+        handlerChangeSelectCurrency({
             value: e.target.value,
             from: 'Get',
             to: 'Have',
@@ -145,11 +169,11 @@ function calculateCurrencyConversion(STATE) {
         }, STATE);
     });
 
-    STATE.elements.inputHave.addEventListener('focus', handleFocusInputCurrency);
-    STATE.elements.inputGet.addEventListener('focus', handleFocusInputCurrency);
+    STATE.elements.inputHave.addEventListener('focus', handlerFocusInputCurrency);
+    STATE.elements.inputGet.addEventListener('focus', handlerFocusInputCurrency);
 
-    STATE.elements.inputHave.addEventListener('blur', handleBlurInputCurrency);
-    STATE.elements.inputGet.addEventListener('blur', handleBlurInputCurrency);
+    STATE.elements.inputHave.addEventListener('blur', handlerBlurInputCurrency);
+    STATE.elements.inputGet.addEventListener('blur', handlerBlurInputCurrency);
 }
 
 function initStateCurrencyConverter(converter) {
@@ -173,8 +197,14 @@ function initCurrencyConverter() {
     for (const converter of currencyConverter) {
         initStateCurrencyConverter(converter)
             .then(STATE => {
+                STATE.typeRate = getTypeRate(STATE);
+
+                registerEventsCurrencyConversion(STATE);
                 setSelectsCurrency(STATE);
-                calculateCurrencyConversion(STATE);
+
+                STATE.currencyHave = getCurrency(STATE.elements.selectHave.value, STATE);
+                STATE.currencyGet = getCurrency(STATE.elements.selectGet.value, STATE);
+
                 calculateUnitCurrency(STATE);
             })
             .catch(error => {
