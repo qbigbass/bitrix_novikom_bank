@@ -29,12 +29,12 @@ class HeaderView
     ): void
     {
         $headerData = $this->getHeaderData($title, $description, $arResult, $terms, $footerHtml, $additionalClasses, $headerHtml);
-        $headerTemplate = empty($arResult["PROPERTIES"]["HEADER_TEMPLATE"]["VALUE_XML_ID"]) ? "not_show" : $this->getHeaderTemplate($arResult);
+        $headerTemplate = empty($arResult["PROPERTIES"]["HEADER_TEMPLATE"]["VALUE_XML_ID"]) ? "compact" : $this->getHeaderTemplate($arResult);
 
         echo match ($headerTemplate) {
             'compact' => $this->compact($headerData, $chainDepth, $termsHtml),
-            'detailed' => $this->detailed($headerData, $chainDepth, $termsHtml),
-            default => $this->notShow()
+            'not_show' => $this->notShow(),
+            default => $this->detailed($headerData, $chainDepth, $termsHtml)
         };
     }
 
@@ -212,9 +212,9 @@ class HeaderView
                                 $this->helper->deferredCall('showNavChain', ['.default', $chainDepth, $headerData]);
                             } ?>
 
-                            <h1 class="banner-text__title <?= $headerData['h1ColorClass'] ?> text-break"><?= $headerData['title'] ?></h1>
+                            <h1 class="banner-text__title <?= $headerData['h1ColorClass'] ?? 'dark-0' ?> text-break"><?= $headerData['title'] ?></h1>
                             <? if (!empty($headerData['description'])) { ?>
-                                <div class="banner-text__description text-l <?= $headerData['h1ColorClass'] ?>"><?= $headerData['description'] ?></div>
+                                <div class="banner-text__description text-l <?= $headerData['h1ColorClass'] ?? 'dark-0' ?>"><?= $headerData['description'] ?></div>
                             <? } ?>
 
                         </div>
