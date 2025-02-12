@@ -31,23 +31,11 @@ $renderer = new Renderer($APPLICATION, $component);
                 <h1><?= $arResult['SECTION_NAME'] ?></h1>
                 <p class="banner-product__subtitle text-l"><?= $arResult['~DETAIL_TEXT'] ?></p>
             </div>
-            <div class="banner-product__benefits-list">
-                <? foreach ($arResult['DISPLAY_PROPERTIES']['SHORT_CONDITIONS']['~VALUE'] as $value) : ?>
-                    <div class="d-inline-flex flex-column row-gap-2">
-                        <div class="d-inline-flex flex-nowrap align-items-baseline text-l fw-semibold gap-1 green-100">
-                            <? if (!empty($value[2])) : ?>
-                                <span><?= $value[2] ?></span>
-                            <? endif; ?>
-                            <? if (!empty($value[3])) : ?>
-                                <?= getStylizedValue($value[3]) ?>
-                            <? endif; ?>
-                        </div>
-                        <? if (!empty($value[1])): ?>
-                            <span class="d-block"><?= $value[1] ?></span>
-                        <? endif; ?>
-                    </div>
-                <? endforeach; ?>
-            </div>
+            <? if (!empty($arResult['DISPLAY_PROPERTIES']['SHORT_CONDITIONS']['~VALUE']['TEXT'])) : ?>
+                <div class="banner-product__benefits-list">
+                    <?= $arResult['DISPLAY_PROPERTIES']['SHORT_CONDITIONS']['~VALUE']['TEXT'] ?>
+                </div>
+            <? endif; ?>
             <? if ($arResult['SHOW_BUTTON']) { ?>
                 <button
                     class="btn btn-tertiary btn-lg-lg banner-product__button"
