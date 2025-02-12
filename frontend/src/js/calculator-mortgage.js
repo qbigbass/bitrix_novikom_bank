@@ -5,6 +5,7 @@ const ELEMS_MORTGAGE = {
     selectRegion: '.js-mort-region',
     selectProgram: '.js-mort-program',
     selectObject: '.js-mort-object',
+    selectBorrower: '.js-mort-borrower',
     inputMortgageCard: '.js-mort-card',
     inputMortgageInsurance: '.js-mort-insurance',
     name: '.js-program-name',
@@ -112,6 +113,16 @@ function getMortgageObjects(dataArray, STATE) {
     );
 }
 
+function getMortgageBorrower(dataArray, STATE) {
+    STATE.borrower = collectSelectOptions(dataArray, 'borrowerType');
+    setSelectOptions('selectBorrower', STATE.borrower, STATE);
+    STATE.borrower = STATE.elements.selectBorrower.value;
+
+    return dataArray.filter(item =>
+        item.borrowerType && item.borrowerType === STATE.borrower
+    );
+}
+
 function createNewInputSlider(inputSlider, dataAttr) {
     const cloneInputSlider = inputSlider.cloneNode(true);
     cloneInputSlider.dataset.minValue = inputSlider.dataset.minValue; //? нужна ли строчка
@@ -201,10 +212,17 @@ function handlerProperty(STATE, value) {
     })
 }
 
+function mortgageFilter(STATE) {
+    STATE.filteredData = STATE.calculatorData.filter(item =>
+        item.region && item.region.split(" / ").includes(STATE.region) &&
+        item.name && item.name === STATE.program &&
+        item.object && item.object === STATE.object &&
+        item.borrowerType && item.borrowerType === STATE.borrower
+    );
+}
+
 function handlerMortgageCheckbox(STATE) {
-    STATE.filteredData = getMortgageRegions(STATE);
-    STATE.filteredData = getMortgagePrograms(STATE.filteredData, STATE);
-    STATE.filteredData = getMortgageObjects(STATE.filteredData, STATE);
+    mortgageFilter(STATE);
 
     STATE.filteredData = STATE.filteredData.filter(item => {
         if (!item.insurance) item.insurance = 'N';
@@ -249,6 +267,7 @@ function setMortgageValues(STATE) {
         STATE.filteredData = getMortgageRegions(STATE);
         STATE.filteredData = getMortgagePrograms(STATE.filteredData, STATE);
         STATE.filteredData = getMortgageObjects(STATE.filteredData, STATE);
+        STATE.filteredData = getMortgageBorrower(STATE.filteredData, STATE);
 
         STATE.rate = STATE.filteredData[0].rate;
         STATE.payment = calculateMortgage(STATE);
@@ -263,6 +282,7 @@ function setMortgageValues(STATE) {
             item.name && item.name === STATE.program
         );
         STATE.filteredData = getMortgageObjects(STATE.filteredData, STATE);
+        STATE.filteredData = getMortgageBorrower(STATE.filteredData, STATE);
 
         STATE.rate = STATE.filteredData[0].rate;
         STATE.payment = calculateMortgage(STATE);
@@ -280,6 +300,19 @@ function setMortgageValues(STATE) {
             item.object && item.object === STATE.object
         );
 
+        STATE.filteredData = getMortgageBorrower(STATE.filteredData, STATE);
+
+        STATE.rate = STATE.filteredData[0].rate;
+        STATE.payment = calculateMortgage(STATE);
+        STATE.requiredIncome = calculateRequiredIncome(STATE.payment, STATE.expenseRatio);
+        showMortgageResult(STATE);
+    })
+
+    $(ELEMS_MORTGAGE.selectBorrower).on('select2:select', function (event) {
+        STATE.borrower = event.target.value;
+        // TODO: дописать обрабтку Тип заемщика
+        mortgageFilter(STATE);
+
         STATE.rate = STATE.filteredData[0].rate;
         STATE.payment = calculateMortgage(STATE);
         STATE.requiredIncome = calculateRequiredIncome(STATE.payment, STATE.expenseRatio);
@@ -295,6 +328,7 @@ function getMortgageValues(STATE) {
     STATE.filteredData = getMortgageRegions(STATE);
     STATE.filteredData = getMortgagePrograms(STATE.filteredData, STATE);
     STATE.filteredData = getMortgageObjects(STATE.filteredData, STATE);
+    STATE.filteredData = getMortgageBorrower(STATE.filteredData, STATE);
 
     setAttributesInputMortgage(STATE);
 
@@ -334,6 +368,7 @@ function initElementsMortgageCalculator(root) {
     const selectRegion = root.querySelector(ELEMS_MORTGAGE.selectRegion);
     const selectProgram = root.querySelector(ELEMS_MORTGAGE.selectProgram);
     const selectObject = root.querySelector(ELEMS_MORTGAGE.selectObject);
+    const selectBorrower = root.querySelector(ELEMS_MORTGAGE.selectBorrower);
     const inputMortgageCard = root.querySelector(ELEMS_MORTGAGE.inputMortgageCard);
     const inputMortgageInsurance = root.querySelector(ELEMS_MORTGAGE.inputMortgageInsurance);
 
@@ -355,6 +390,7 @@ function initElementsMortgageCalculator(root) {
         selectRegion,
         selectProgram,
         selectObject,
+        selectBorrower,
         inputMortgageCard,
         inputMortgageInsurance
     }
