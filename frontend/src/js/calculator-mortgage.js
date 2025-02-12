@@ -18,7 +18,7 @@ const ELEMS_MORTGAGE = {
     inputPeriod: '.js-input-period',
     inputSlider: '.input-slider',
     hideClass: 'd-none',
-    inputSlider: '.js-input-slider-input',
+    inputSliderRange: '.js-input-slider-input',
 }
 
 function calculateMortgage({amount, rate, period}) {
@@ -214,12 +214,11 @@ function getMortgageBorrower(dataArray, STATE) {
 
 function createNewInputSlider(inputSlider, dataAttr) {
     const cloneInputSlider = inputSlider.cloneNode(true);
-    // cloneInputSlider.dataset.minValue = inputSlider.dataset.minValue; //? нужна ли строчка
     Object.entries(dataAttr).forEach(([key, value]) => {
         cloneInputSlider.dataset[key] = value;
     })
     cloneInputSlider.querySelector(JS_CLASSES.textSteps).textContent = '';
-    cloneInputSlider.querySelector(ELEMS_MORTGAGE.inputSlider).style = '';
+    cloneInputSlider.querySelector(ELEMS_MORTGAGE.inputSliderRange).style = '';
     initInputSlider([cloneInputSlider]);
     inputSlider.replaceWith(cloneInputSlider);
     return cloneInputSlider;
@@ -333,6 +332,8 @@ function handlerMortgageCheckbox(STATE) {
     });
 
     STATE.rate = STATE.filteredData[0].rate;
+    STATE.payment = calculateMortgage(STATE);
+    STATE.requiredIncome = calculateRequiredIncome(STATE.payment, STATE.expenseRatio);
     showMortgageResult(STATE);
 }
 
