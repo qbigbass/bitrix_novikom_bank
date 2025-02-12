@@ -18,6 +18,7 @@ const ELEMS_MORTGAGE = {
     inputPeriod: '.js-input-period',
     inputSlider: '.input-slider',
     hideClass: 'd-none',
+    inputSlider: '.js-input-slider-input',
 }
 
 function calculateMortgage({amount, rate, period}) {
@@ -218,6 +219,7 @@ function createNewInputSlider(inputSlider, dataAttr) {
         cloneInputSlider.dataset[key] = value;
     })
     cloneInputSlider.querySelector(JS_CLASSES.textSteps).textContent = '';
+    cloneInputSlider.querySelector(ELEMS_MORTGAGE.inputSlider).style = '';
     initInputSlider([cloneInputSlider]);
     inputSlider.replaceWith(cloneInputSlider);
     return cloneInputSlider;
