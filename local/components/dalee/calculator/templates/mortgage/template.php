@@ -138,7 +138,7 @@
                         <select class="form-select js-select js-mort-program"
                                 id="select-mort-program" aria-label="Подсказка"></select>
                     </div>
-                    <div class="d-flex flex-column row-gap-2">
+                    <div class="d-flex flex-column row-gap-2 js-mort-object-wrapper">
                         <label class="form-label mb-0" for="select-mort-object">Объект
                             залога</label>
                         <select class="form-select js-select js-mort-object"

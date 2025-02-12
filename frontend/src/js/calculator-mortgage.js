@@ -5,6 +5,7 @@ const ELEMS_MORTGAGE = {
     selectRegion: '.js-mort-region',
     selectProgram: '.js-mort-program',
     selectObject: '.js-mort-object',
+    selectObjectWrapper: '.js-mort-object-wrapper',
     selectBorrower: '.js-mort-borrower',
     inputMortgageCard: '.js-mort-card',
     inputMortgageInsurance: '.js-mort-insurance',
@@ -16,6 +17,7 @@ const ELEMS_MORTGAGE = {
     income: '.js-calculator-display-income',
     inputPeriod: '.js-input-period',
     inputSlider: '.input-slider',
+    hideClass: 'd-none',
 }
 
 function calculateMortgage({amount, rate, period}) {
@@ -105,8 +107,15 @@ function getMortgagePrograms(dataArray, STATE) {
 
 function getMortgageObjects(dataArray, STATE) {
     STATE.objects = collectSelectOptions(dataArray, 'object');
-    setSelectOptions('selectObject', STATE.objects, STATE);
-    STATE.object = STATE.elements.selectObject.value;
+
+    if (STATE.objects.length > 1) {
+        STATE.elements.selectObjectWrapper.classList.remove(ELEMS_MORTGAGE.hideClass);
+        setSelectOptions('selectObject', STATE.objects, STATE);
+        STATE.object = STATE.elements.selectObject.value;
+    } else {
+        STATE.elements.selectObjectWrapper.classList.add(ELEMS_MORTGAGE.hideClass);
+        STATE.object = STATE.objects[0];
+    }
 
     return dataArray.filter(item =>
         item.object && item.object === STATE.object
@@ -368,6 +377,7 @@ function initElementsMortgageCalculator(root) {
     const selectRegion = root.querySelector(ELEMS_MORTGAGE.selectRegion);
     const selectProgram = root.querySelector(ELEMS_MORTGAGE.selectProgram);
     const selectObject = root.querySelector(ELEMS_MORTGAGE.selectObject);
+    const selectObjectWrapper = selectObject.closest(ELEMS_MORTGAGE.selectObjectWrapper);
     const selectBorrower = root.querySelector(ELEMS_MORTGAGE.selectBorrower);
     const inputMortgageCard = root.querySelector(ELEMS_MORTGAGE.inputMortgageCard);
     const inputMortgageInsurance = root.querySelector(ELEMS_MORTGAGE.inputMortgageInsurance);
@@ -390,6 +400,7 @@ function initElementsMortgageCalculator(root) {
         selectRegion,
         selectProgram,
         selectObject,
+        selectObjectWrapper,
         selectBorrower,
         inputMortgageCard,
         inputMortgageInsurance
