@@ -261,31 +261,47 @@ function handlerAmount(STATE, value) {
 }
 
 function handlerProperty(STATE, value) {
-    const percentage = (100 - STATE.filteredData[0].minDownPayment) / 100;
     STATE.property = value;
-    STATE.amount = value * percentage;
-    STATE.initialPayment = STATE.property - STATE.amount;
+    // TODO: сравнить чтобы не превышало значений из админки
+    let minAmount = Math.round(value * (STATE.filteredData[0].sumFromPercent / 100));
+    let maxAmount = Math.round(value * (STATE.filteredData[0].sumToPercent / 100));
 
-    const dataAttrInitial = {
-        'minValue': Math.round(STATE.initialPayment),
-        'maxValue': Math.round(value - STATE.initialPayment),
-        'startValue' : Math.round(value - STATE.initialPayment)
+    // если есть первоначальный взнос
+    if (!STATE.filteredData[0].minDownPayment && STATE.filteredData[0].minDownPayment !== 0) {
+        const percentage = (100 - STATE.filteredData[0].minDownPayment) / 100;
+        STATE.amount = value * percentage;
+        STATE.initialPayment = STATE.property - STATE.amount;
+
+        const dataAttrInitial = {
+            'minValue': Math.round(STATE.initialPayment),
+            'maxValue': Math.round(value - STATE.initialPayment),
+            'startValue' : Math.round(value - STATE.initialPayment)
+        }
+
+        minAmount = Math.round(value - STATE.amount);
+        maxAmount = Math.round(STATE.amount);
+
+        STATE.elements.inputInitialPaymentWrapper = createNewInputSlider(STATE.elements.inputInitialPaymentWrapper,
+            dataAttrInitial);
+
+        STATE.elements.inputInitialPayment = STATE.elements.inputInitialPaymentWrapper.querySelector(ELEMS_MORTGAGE.initialPayment);
+
+        STATE.elements.inputInitialPaymentWrapper.addEventListener('input', (event) => {
+            handlerInitialPayment(STATE, event.detail.value);
+        })
     }
 
     const dataAttrAmount = {
-        'minValue': Math.round(value - STATE.amount),
-        'maxValue': Math.round(STATE.amount),
-        'startValue' : Math.round(value - STATE.amount)
+        'minValue': minAmount,
+        'maxValue': maxAmount,
+        'startValue' : minAmount
     }
+
+    STATE.amount = minAmount;
 
     STATE.elements.inputAmountWrapper = createNewInputSlider(STATE.elements.inputAmountWrapper,
         dataAttrAmount);
     STATE.elements.inputAmount = STATE.elements.inputAmountWrapper.querySelector(ELEMS_MORTGAGE.inputAmount);
-
-    STATE.elements.inputInitialPaymentWrapper = createNewInputSlider(STATE.elements.inputInitialPaymentWrapper,
-        dataAttrInitial);
-
-    STATE.elements.inputInitialPayment = STATE.elements.inputInitialPaymentWrapper.querySelector(ELEMS_MORTGAGE.initialPayment);
 
     STATE.payment = calculateMortgage({amount: STATE.amount, rate: STATE.rate, period: STATE.period});
     STATE.requiredIncome = calculateRequiredIncome(STATE.payment, STATE.expenseRatio);
@@ -293,10 +309,6 @@ function handlerProperty(STATE, value) {
 
     STATE.elements.inputAmountWrapper.addEventListener('input', (event) => {
         handlerAmount(STATE, event.detail.value);
-    })
-
-    STATE.elements.inputInitialPaymentWrapper.addEventListener('input', (event) => {
-        handlerInitialPayment(STATE, event.detail.value);
     })
 }
 
