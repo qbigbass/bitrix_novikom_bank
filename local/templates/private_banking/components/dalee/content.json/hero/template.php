@@ -42,7 +42,7 @@ $pbModel = $arResult['CONTENT_JSON'] ?? null;
                     <?endforeach;?>
                 </nav>
                 <div class="text-center d-lg-none">
-                    <a class="btn btn-pb btn-pb--primary js-scroll-to" href="#become-client">Стать клиентом</a>
+                    <a class="btn btn-pb btn-pb--size-m-lg btn-pb--primary js-scroll-to" href="#become-client">Стать клиентом</a>
                 </div>
                 <div class="mt-auto pt-7 pt-lg-0">
                     <div class="pb-card-contact d-flex flex-column row-gap-4 row-gap-lg-5 align-items-lg-center">

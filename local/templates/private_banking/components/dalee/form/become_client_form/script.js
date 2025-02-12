@@ -19,10 +19,13 @@ $(function () {
                 body: request
             })
             const data = await resp.json()
-            if (data.status === 'error') {
+            if (data.status === 'success') {
+                pbShowResponse($(form)[0], 'success');
+                $(form).get(0).reset()
+            } else {
+                pbShowResponse($(form)[0], 'error')
                 alert(data.message)
             }
-            $(form).get(0).reset()
         })
     })
 })

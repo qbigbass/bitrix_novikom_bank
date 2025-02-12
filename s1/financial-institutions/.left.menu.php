@@ -1,26 +1,26 @@
-<?
-if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
-    die();
-}
+<?php
+if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 
 global $APPLICATION;
 
-$aMenuLinksExt = $APPLICATION->IncludeComponent(
-    "bitrix:menu.sections",
-    "",
-    [
-        "IS_SEF" => "Y",
-        "SEF_BASE_URL" => "",
-        "SECTION_PAGE_URL" => "#SECTION_CODE#/",
-        "DETAIL_PAGE_URL" => "#SECTION_CODE#/#ELEMENT_CODE#/",
-        "IBLOCK_TYPE" => "for_financial_institutes",
-        "IBLOCK_ID" => iblock('fi_catalog'),
-        "DEPTH_LEVEL" => "1",
-        "CACHE_TYPE" => "N",
-        "CACHE_TIME" => "36000000"
-    ],
-    false
-);
+$filter = [
+    'IBLOCK_SECTION.CODE' => false
+];
+
+$elements = getIBlockElements(iblock('financial_institutions'), $filter);
+
+$aMenuLinksExt = array_map(function ($element) {
+    return [
+        $element['NAME'],
+        $element['CODE'] . '/',
+        [$element['CODE'] . '/'],
+        [
+            'FROM_IBLOCK' => true,
+            'IS_PARENT' => '',
+            'DEPTH_LEVEL' => 1,
+        ]
+    ];
+}, $elements);
 
 $aMenuLinks = array_merge($aMenuLinks, $aMenuLinksExt);
 ?>

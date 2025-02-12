@@ -7,4 +7,8 @@
     padding: 2.5rem;
     margin-top: 2.5rem;
   }
+
+  @include use-media(desktop) {
+    margin-inline: 2.5rem;
+  }
 }
