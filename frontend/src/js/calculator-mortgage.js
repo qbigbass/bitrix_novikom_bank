@@ -53,23 +53,81 @@ function setSelectOptions(select, options, STATE) {
     });
 }
 
-function setAttributesInputMortgage(STATE) {
+function setAttributesInputMortgage(STATE, currentTrigger) {
+    if (currentTrigger) {
+        const cloneInputAmount = STATE.elements.inputAmountWrapper.cloneNode(true);
+        STATE.elements.inputAmountWrapper.insertAdjacentElement('beforebegin', cloneInputAmount);
+        STATE.elements.inputAmountWrapper.remove();
+        const stepsAmount = cloneInputAmount.querySelector(JS_CLASSES.textSteps);
+        stepsAmount.innerHTML = '';
+        STATE.elements.inputAmountWrapper = cloneInputAmount;
+        STATE.elements.inputAmount = STATE.elements.inputAmountWrapper.querySelector(ELEMS_MORTGAGE.inputAmount);
+
+        const cloneInputPeriod = STATE.elements.inputPeriodWrapper.cloneNode(true);
+        STATE.elements.inputPeriodWrapper.insertAdjacentElement('beforebegin', cloneInputPeriod);
+        STATE.elements.inputPeriodWrapper.remove();
+        STATE.elements.inputPeriodWrapper = cloneInputPeriod;
+        const stepsPeriod = cloneInputPeriod.querySelector(JS_CLASSES.textSteps);
+        stepsPeriod.innerHTML = '';
+        STATE.elements.inputPeriod = STATE.elements.inputPeriodWrapper.querySelector(ELEMS_MORTGAGE.inputPeriod);
+
+        const cloneInputProperty = STATE.elements.inputPropertyWrapper.cloneNode(true);
+        STATE.elements.inputPropertyWrapper.insertAdjacentElement('beforebegin', cloneInputProperty);
+        STATE.elements.inputPropertyWrapper.remove();
+        STATE.elements.inputPropertyWrapper = cloneInputProperty;
+        const stepsProperty = cloneInputProperty.querySelector(JS_CLASSES.textSteps);
+        stepsProperty.innerHTML = '';
+        STATE.elements.inputProperty = STATE.elements.inputPropertyWrapper.querySelector(ELEMS_MORTGAGE.inputProperty);
+
+        const cloneInputInitialPayment = STATE.elements.inputInitialPaymentWrapper.cloneNode(true);
+        STATE.elements.inputInitialPaymentWrapper.insertAdjacentElement('beforebegin', cloneInputInitialPayment);
+        STATE.elements.inputInitialPaymentWrapper.remove();
+        STATE.elements.inputInitialPaymentWrapper = cloneInputInitialPayment;
+        const stepsInitialPayment = cloneInputInitialPayment.querySelector(JS_CLASSES.textSteps);
+        stepsInitialPayment.innerHTML = '';
+        STATE.elements.inputInitialPayment = STATE.elements.inputInitialPaymentWrapper.querySelector(ELEMS_MORTGAGE.initialPayment);
+
+
+        STATE.elements.inputAmountWrapper.addEventListener('input', (event) => {
+            handlerAmount(STATE, event.detail.value);
+        })
+
+        STATE.elements.inputPropertyWrapper.addEventListener('input', (event) => {
+            handlerProperty(STATE, event.detail.value);
+        })
+
+        STATE.elements.inputPeriodWrapper.addEventListener('input', (event) => {
+            STATE.period = event.detail.value;
+            STATE.payment = calculateMortgage({amount: STATE.amount, rate: STATE.rate, period: STATE.period});
+            STATE.requiredIncome = calculateRequiredIncome(STATE.payment, STATE.expenseRatio);
+            showMortgageResult(STATE);
+        })
+    }
+
 
     STATE.elements.inputPeriodWrapper.setAttribute('data-min-value', STATE.filteredData[0].periodFrom);
     STATE.elements.inputPeriodWrapper.setAttribute('data-max-value', STATE.filteredData[0].periodTo);
     STATE.elements.inputPeriodWrapper.setAttribute('data-start-value', STATE.filteredData[0].periodFrom);
 
     const minPropertyValue = (STATE.filteredData[0].sumFrom / ((100 - STATE.filteredData[0].sumFromPercent) / 100)).toFixed(0);
-    const initialPaymentValue = (minPropertyValue - STATE.filteredData[0].sumFrom).toFixed(0);
+    let maxAmountMortgage = STATE.filteredData[0].sumFrom;
 
-    STATE.elements.inputInitialPaymentWrapper.setAttribute('data-min-value', initialPaymentValue);
-    STATE.elements.inputInitialPaymentWrapper.setAttribute('data-max-value', initialPaymentValue);
+    if (STATE.filteredData[0].minDownPayment === 0 || !STATE.filteredData[0].minDownPayment) {
+        STATE.elements.inputInitialPaymentWrapper.classList.add(ELEMS_MORTGAGE.hideClass);
+    } else {
+        STATE.elements.inputInitialPaymentWrapper.classList.remove(ELEMS_MORTGAGE.hideClass);
+        const initialPaymentValue = (minPropertyValue - STATE.filteredData[0].sumFrom).toFixed(0);
+        maxAmountMortgage = minPropertyValue - initialPaymentValue;
+
+        STATE.elements.inputInitialPaymentWrapper.setAttribute('data-min-value', initialPaymentValue);
+        STATE.elements.inputInitialPaymentWrapper.setAttribute('data-max-value', initialPaymentValue);
+    }
 
     STATE.elements.inputPropertyWrapper.setAttribute('data-min-value', minPropertyValue);
     STATE.elements.inputPropertyWrapper.setAttribute('data-start-value', minPropertyValue);
     STATE.elements.inputPropertyWrapper.setAttribute('data-max-value', STATE.filteredData[0].maxPropertyValue);
 
-    const maxAmountMortgage = minPropertyValue - initialPaymentValue;
+
     STATE.elements.inputAmountWrapper.setAttribute('data-min-value', STATE.filteredData[0].sumFrom);
     STATE.elements.inputAmountWrapper.setAttribute('data-max-value', maxAmountMortgage);
 
@@ -278,6 +336,8 @@ function setMortgageValues(STATE) {
         STATE.filteredData = getMortgageObjects(STATE.filteredData, STATE);
         STATE.filteredData = getMortgageBorrower(STATE.filteredData, STATE);
 
+        setAttributesInputMortgage(STATE, true);
+
         STATE.rate = STATE.filteredData[0].rate;
         STATE.payment = calculateMortgage(STATE);
         STATE.requiredIncome = calculateRequiredIncome(STATE.payment, STATE.expenseRatio);
@@ -292,6 +352,8 @@ function setMortgageValues(STATE) {
         );
         STATE.filteredData = getMortgageObjects(STATE.filteredData, STATE);
         STATE.filteredData = getMortgageBorrower(STATE.filteredData, STATE);
+
+        setAttributesInputMortgage(STATE, true);
 
         STATE.rate = STATE.filteredData[0].rate;
         STATE.payment = calculateMortgage(STATE);
@@ -311,6 +373,8 @@ function setMortgageValues(STATE) {
 
         STATE.filteredData = getMortgageBorrower(STATE.filteredData, STATE);
 
+        setAttributesInputMortgage(STATE, true);
+
         STATE.rate = STATE.filteredData[0].rate;
         STATE.payment = calculateMortgage(STATE);
         STATE.requiredIncome = calculateRequiredIncome(STATE.payment, STATE.expenseRatio);
@@ -319,7 +383,6 @@ function setMortgageValues(STATE) {
 
     $(ELEMS_MORTGAGE.selectBorrower).on('select2:select', function (event) {
         STATE.borrower = event.target.value;
-        // TODO: дописать обрабтку Тип заемщика
         mortgageFilter(STATE);
 
         STATE.rate = STATE.filteredData[0].rate;
