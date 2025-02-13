@@ -101,12 +101,16 @@ function handlerChangeRadioTypeRate(radio, STATE) {
     STATE.typeRate = radio.value;
 
     if (STATE.typeRate === 'sell') {
-        const setValueHave = STATE.elements.selectGet.value !== 'RUB' ? STATE.elements.selectGet.value : STATE.currencies[1];
-        $(ELEMS_CURRENCY[`selectHave`]).val(setValueHave).trigger('change');
+        if (STATE.elements.selectHave.value === 'RUB') {
+            const setValueHave = STATE.elements.selectGet.value !== 'RUB' ? STATE.elements.selectGet.value : STATE.currencies[1];
+            $(ELEMS_CURRENCY[`selectHave`]).val(setValueHave).trigger('change');
+        }
         $(ELEMS_CURRENCY[`selectGet`]).val(STATE.currencies[0]).trigger('change');
     } else {
-        const setValueGet = STATE.elements.selectHave.value !== 'RUB' ? STATE.elements.selectHave.value : STATE.currencies[1];
-        $(ELEMS_CURRENCY[`selectGet`]).val(setValueGet).trigger('change');
+        if (STATE.elements.selectGet.value === 'RUB') {
+            const setValueGet = STATE.elements.selectHave.value !== 'RUB' ? STATE.elements.selectHave.value : STATE.currencies[1];
+            $(ELEMS_CURRENCY[`selectGet`]).val(setValueGet).trigger('change');
+        }
         $(ELEMS_CURRENCY[`selectHave`]).val(STATE.currencies[0]).trigger('change');
     }
 
