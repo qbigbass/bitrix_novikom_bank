@@ -92,10 +92,15 @@ include ../../../cards/card-calculate-result
                         select#select-mort-program(aria-label="Подсказка").form-select.js-select.js-mort-program
 
 
-                    .d-flex.flex-column.row-gap-2
+                    .d-flex.flex-column.row-gap-2.js-mort-object-wrapper
                         label(for="select-mort-object").form-label.mb-0
                             | Объект залога
                         select#select-mort-object(aria-label="Подсказка").form-select.js-select.js-mort-object
+
+                    .d-flex.flex-column.row-gap-2
+                        label(for="select-mort-borrower").form-label.mb-0
+                            | Тип заемщика
+                        select#select-mort-borrower(aria-label="Подсказка").form-select.js-select.js-mort-borrower
 
 
                 .d-flex.flex-column.row-gap-4

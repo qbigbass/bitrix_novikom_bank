@@ -32,7 +32,7 @@ $params["VIEW_BENEFITS_TOP_HEADER"] = $arResult["PROPERTIES"]["TYPE_BENEFITS_TOP
 $titleHeader = $arResult['~NAME'];
 
 if (!empty($arResult['PROPERTIES']['TITLE_HEADER']['VALUE'])) {
-    $titleHeader = $arResult['PROPERTIES']['TITLE_HEADER']['VALUE'];
+    $titleHeader = $arResult['PROPERTIES']['TITLE_HEADER']['~VALUE'];
 }
 
 if (!empty($arParams["BANNER_H1_COLOR_CLASS"])) {
@@ -86,13 +86,12 @@ $headerView->render(
                     <div class="card-promo card-promo--heavy-purple card-promo--padding-banner-img">
                         <div class="card-promo__wrapper">
                             <div class="card-promo__header d-flex flex-column row-gap-3 row-gap-md-4">
-                                <h2><?= $arResult['PROPERTIES']['BANNER_HEADER']['VALUE'] ?></h2>
-                                <p class="text-l mb-0"><?= $arResult['PROPERTIES']['BANNER_TEXT']['VALUE']['TEXT'] ?></p>
+                                <h2><?= $arResult['PROPERTIES']['BANNER_HEADER']['~VALUE'] ?></h2>
+                                <p class="text-l mb-0"><?= $arResult['PROPERTIES']['BANNER_TEXT']['~VALUE']['TEXT'] ?></p>
                             </div>
                             <? if (!empty($arResult['PROPERTIES']['BANNER_IMG']['VALUE'])) { ?>
                                 <img class="card-promo__image" src="<?= CFile::GetPath($arResult['PROPERTIES']['BANNER_IMG']['VALUE']) ?>" alt="" loading="lazy">
                             <? } ?>
-
                         </div>
                         <picture class="pattern-bg">
                             <source srcset="/frontend/dist/img/patterns/section-2/pattern-dark-s.svg" media="(max-width: 767px)">
@@ -408,7 +407,9 @@ $headerView->render(
 <? if (!empty($arResult['PROPERTIES']['SUPPORT_OPTIONS']['VALUE'])) { ?>
     <section class="section-layout bg-dark-10 px-lg-6">
         <div class="container">
-            <h3 class="mb-4 mb-md-6 mb-lg-7">Варианты банковского сопровождения</h3>
+            <h3 class="mb-4 mb-md-6 mb-lg-7">
+                <?= $arResult['PROPERTIES']['SUPPORT_OPTIONS_HEADER']['~VALUE'] ?? 'Варианты банковского сопровождения' ?>
+            </h3>
             <div class="col-12">
                 <?
                 global $supportOptionsFilter;
@@ -527,7 +528,7 @@ $headerView->render(
             <div class="row ">
                 <div class="col-12">
                     <? if (!empty($arResult['PROPERTIES']['INFORMATION_TITLE']['VALUE'])) : ?>
-                        <h2 class="h3 mb-4 mb-md-6 mb-lg-7"><?= $arResult['PROPERTIES']['INFORMATION_TITLE']['VALUE'] ?></h2>
+                        <h2 class="h3 mb-4 mb-md-6 mb-lg-7"><?= $arResult['PROPERTIES']['INFORMATION_TITLE']['~VALUE'] ?></h2>
                     <? endif; ?>
                     <div class="accordion accordion--size-lg accordion--bg-transparent px-lg-6" id="accordion-trust-management">
                         <? $i = 0;?>

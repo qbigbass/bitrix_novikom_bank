@@ -12,11 +12,10 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 ?>
-<? //echo "<pre>"; print_r($arResult['ITEMS']); echo "</pre>"; ?>
 <section class="section-layout<?= $arParams['BACKGROUND_COLOR'] == 'Серый' ? ' bg-dark-10' : '' ?>">
     <div class="container">
         <h3 class="mb-4 mb-md-6 mb-lg-7 px-lg-6">
-            <?= $arParams['HEADER'] ?>
+            <?= $arParams['~HEADER'] ?>
         </h3>
         <? if ($arParams['BACKGROUND_COLOR'] == 'Серый') : ?>
             <div class="row">
