@@ -1,13 +1,18 @@
 <?php
 
+use Bitrix\Iblock\ElementPropertyTable;
+use Bitrix\Iblock\PropertyEnumerationTable;
+use Bitrix\Iblock\PropertyTable;
+
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 global $APPLICATION;
 $APPLICATION->SetTitle('Банковские карты');
 ?>
 <?
+$iblockId = iblock('cards_detail_pages_ru');
 $elementWithoutSection = \Bitrix\Iblock\ElementTable::getList([
     'filter' => [
-        'IBLOCK_ID' => iblock('cards_detail_pages_ru'),
+        'IBLOCK_ID' => $iblockId,
         'ACTIVE' => 'Y',
         'IBLOCK_SECTION_ID' => false,
         'CODE' => basename($APPLICATION->GetCurPage()),
@@ -24,10 +29,39 @@ $elementWithoutSection = \Bitrix\Iblock\ElementTable::getList([
     ]
 ])->fetch();
 
+//Есть элемент без раздела
+//TODO Засунуть бы это все в комплексный компонент
 if (!empty($elementWithoutSection)) {
-    $element = $elementWithoutSection;
-    include_once 'detail_component.php';
+    //определяем бонусная программа это или карта
+    $isBonusProgram = false;
+    $prop = PropertyTable::getList([
+        'filter' => ['CODE' => 'IS_BONUS', 'IBLOCK_ID' => $iblockId],
+    ])->fetch();
+    if ($prop) {
+        $propEnum = PropertyEnumerationTable::getList([
+            'filter' => ['PROPERTY_ID' => $prop['ID']],
+        ])->fetch();
+        if ($propEnum) {
+            $elemetBonusPropValue = ElementPropertyTable::getList([
+                'filter' => [
+                    'IBLOCK_PROPERTY_ID' => $prop['ID'],
+                    'IBLOCK_ELEMENT_ID' => $elementWithoutSection['ID'],
+                ],
+            ])->fetch();
+            //Там всего одно значение. Сравнение VALUE не требуется
+            if ($elemetBonusPropValue) {
+                $isBonusProgram = true;
+            }
+        }
+    }
+    if ($isBonusProgram) {
+        include_once 'bonus_programs_component.php';
+    } else {
+        $element = $elementWithoutSection;
+        include_once 'detail_component.php';
+    }
 } else {
+    //Карты в разделах
     $APPLICATION->IncludeComponent(
         "bitrix:news",
         "cards",
@@ -88,7 +122,7 @@ if (!empty($elementWithoutSection)) {
             "DISPLAY_TOP_PAGER" => "N",
             "FILE_404" => "",
             "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-            "IBLOCK_ID" => iblock("cards_detail_pages_ru"),
+            "IBLOCK_ID" => $iblockId,
             "IBLOCK_TYPE" => "for_private_clients_ru",
             "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
             "LIST_ACTIVE_DATE_FORMAT" => "d.m.Y",
