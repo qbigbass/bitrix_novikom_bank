@@ -65,7 +65,6 @@ function findMinPropertyValue(data) {
 
 function setInputSliderAttributes(STATE) {
     const minPropertyValue = findMinPropertyValue(STATE.filteredData[0]);
-    console.log('minPropertyValue', minPropertyValue);
     let maxAmountMortgage = STATE.filteredData[0].sumTo;
 
     if (STATE.filteredData[0].minDownPayment === 0 || !STATE.filteredData[0].minDownPayment) {
@@ -78,7 +77,6 @@ function setInputSliderAttributes(STATE) {
         const dataAttrInitialPayment = {
             'minValue': initialPaymentValue,
             'maxValue': initialPaymentValue,
-            // 'startValue' : minPropertyValue
         }
 
         STATE.elements.inputInitialPaymentWrapper = createNewInputSlider(STATE.elements.inputInitialPaymentWrapper,
@@ -105,7 +103,6 @@ function setInputSliderAttributes(STATE) {
     const dataAttrAmount = {
         'minValue': STATE.filteredData[0].sumFrom,
         'maxValue': maxAmountMortgage,
-        // 'startValue' : minPropertyValue
     }
 
     STATE.elements.inputPeriodWrapper = createNewInputSlider(STATE.elements.inputPeriodWrapper,
