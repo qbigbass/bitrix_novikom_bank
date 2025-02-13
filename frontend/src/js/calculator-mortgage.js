@@ -138,7 +138,7 @@ function setStartAttributesInputMortgage(STATE) {
     STATE.elements.inputPeriodWrapper.setAttribute('data-max-value', STATE.filteredData[0].periodTo);
     STATE.elements.inputPeriodWrapper.setAttribute('data-start-value', STATE.filteredData[0].periodFrom);
 
-    const minPropertyValue = (STATE.filteredData[0].sumFrom / ((100 - STATE.filteredData[0].sumFromPercent) / 100)).toFixed(0);
+    const minPropertyValue = findMinPropertyValue(STATE.filteredData[0]);
     let maxAmountMortgage = STATE.filteredData[0].sumFrom;
 
     if (STATE.filteredData[0].minDownPayment === 0 || !STATE.filteredData[0].minDownPayment) {
