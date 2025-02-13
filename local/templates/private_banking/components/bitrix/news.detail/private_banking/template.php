@@ -20,7 +20,10 @@ $this->setFrameMode(true);
     <header class="pb-header animate js-animation-start" id="header">
         <div class="container">
             <div class="d-flex justify-content-between">
-                <div class="col-8"><a class="d-none d-lg-block" href="#"><img src="/frontend/dist/img/logo-pb.svg" width="280" height="80" alt="Новиком"></a><a class="d-lg-none" href="#"><img src="/frontend/dist/img/logo-pb-mob.svg" width="140" height="40" alt="Новиком"></a></div>
+                <div class="col-8">
+                    <a class="d-none d-lg-block" href="/private-banking/"><img src="/frontend/dist/img/logo-pb.svg" width="280" height="80" alt="Новиком"></a>
+                    <a class="d-lg-none" href="/private-banking/"><img src="/frontend/dist/img/logo-pb-mob.svg" width="140" height="40" alt="Новиком"></a>
+                </div>
                 <div class="col-4 d-flex align-items-center justify-content-end gap-4">
                     <button class="d-none d-lg-block btn btn-pb btn-pb--primary btn-pb--size-m" type="button" data-bs-toggle="modal" data-bs-target="#modal-become-client" aria-label="Стать клиентом">Стать клиентом</button>
                     <button class="pb-menu-btn js-pb-menu-btn" type="button"><span class="pb-menu-btn__icon"><span></span><span></span><span></span><span></span><span></span><span></span></span></button>
@@ -34,7 +37,7 @@ $this->setFrameMode(true);
                 <nav class="pb-nav d-flex flex-column align-items-center row-gap-4 row-gap-lg-6">
                     <a class="pb-nav__link" href="/private-banking/">Главная</a>
                     <a class="pb-nav__link" href="/private-banking/services/investment/brokerskoe-obsluzhivanie/">Инвестиционные услуги</a>
-                    <a class="pb-nav__link" href="/private-banking/mir-supreme-card/">Карта Мир Supreme</a>
+                    <a class="pb-nav__link" href="/private-banking/cards/mir-supreme-card/">Карта Мир Supreme</a>
                     <a class="btn btn-pb btn-pb--outline d-none d-lg-inline-block" href="/online/">Онлайн-банк</a>
                 </nav>
                 <div class="text-center d-lg-none">
