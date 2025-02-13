@@ -65,16 +65,12 @@
         z-index: 1;
         color: var(--dark-100);
 
+        @extend .text-break;
+
         @include use-media(tablet-album) {
             max-width: 70%;
         }
     }
-
-    &__title,
-    &__description {
-        @extend .text-break;
-    }
-
     &__description {
 
         @include use-media(laptop-x) {
@@ -227,10 +223,6 @@
             @include use-media(tablet-album) {
                 gap: 1.5rem;
                 max-width: 60%;
-            }
-
-            @include use-media(laptop-x) {
-                max-width: unset;
             }
         }
 
