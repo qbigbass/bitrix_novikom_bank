@@ -54,9 +54,19 @@ function setSelectOptions(select, options, STATE) {
     });
 }
 
+function findMinPropertyValue(data) {
+    if (data.sumFromPercent && data.sumFromPercent !== 0) {
+        return (data.sumFrom / ((100 - data.sumFromPercent) / 100)).toFixed(0);
+    } else if (data.minDownPayment && data.minDownPayment !== 0) {
+        return (data.sumFrom + data.sumFrom * (data.minDownPayment / 100)).toFixed(0);
+    }
+    return data.sumFrom;
+}
+
 function setInputSliderAttributes(STATE) {
-    const minPropertyValue = (STATE.filteredData[0].sumFrom / ((100 - STATE.filteredData[0].sumFromPercent) / 100)).toFixed(0);
-    let maxAmountMortgage = STATE.filteredData[0].sumFrom;
+    const minPropertyValue = findMinPropertyValue(STATE.filteredData[0]);
+    console.log('minPropertyValue', minPropertyValue);
+    let maxAmountMortgage = STATE.filteredData[0].sumTo;
 
     if (STATE.filteredData[0].minDownPayment === 0 || !STATE.filteredData[0].minDownPayment) {
         STATE.elements.inputInitialPaymentWrapper.classList.add(ELEMS_MORTGAGE.hideClass);
@@ -261,26 +271,49 @@ function handlerAmount(STATE, value) {
     STATE.isDispatchingEvent = false;
 }
 
+function findMinAmount(data, value) {
+    let minAmount;
+    if (data.sumFromPercent && data.sumFromPercent !== 0) {
+        minAmount = Math.round(value * (data.sumFromPercent / 100));
+    } else if (data.minDownPayment && data.minDownPayment !== 0) {
+        minAmount = Math.round(value * (data.minDownPayment / 100));
+    }
+    return (minAmount > data.sumTo) ? data.sumTo : minAmount;
+}
+
+function findMaxAmount(data, value) {
+    let maxAmount;
+    if (data.sumToPercent && data.sumToPercent !== 0) {
+        maxAmount = Math.round(value * (data.sumToPercent / 100));
+    } else if (data.minDownPayment && data.minDownPayment !== 0) {
+        maxAmount = Math.round(value - value * (data.minDownPayment / 100));
+    }
+    return (maxAmount > data.sumTo) ? data.sumTo : maxAmount;
+}
+
+function findMinInitialPayment(data, value, maxAmount) {
+    let minInitialPayment = Math.round(value * (data.minDownPayment / 100));
+    return ((value - maxAmount) > minInitialPayment) ? value - maxAmount : minInitialPayment;
+
+}
+
 function handlerProperty(STATE, value) {
     STATE.property = value;
-    // TODO: сравнить чтобы не превышало значений из админки
-    let minAmount = Math.round(value * (STATE.filteredData[0].sumFromPercent / 100));
-    let maxAmount = Math.round(value * (STATE.filteredData[0].sumToPercent / 100));
+    let minAmount = findMinAmount(STATE.filteredData[0], value);
+    let maxAmount = findMaxAmount(STATE.filteredData[0], value);
+    STATE.amount = minAmount;
 
     // если есть первоначальный взнос
-    if (!STATE.filteredData[0].minDownPayment && STATE.filteredData[0].minDownPayment !== 0) {
-        const percentage = (100 - STATE.filteredData[0].minDownPayment) / 100;
-        STATE.amount = value * percentage;
+    if (STATE.filteredData[0].minDownPayment && STATE.filteredData[0].minDownPayment !== 0) {
+        // const minInitialPayment = Math.round(value * (STATE.filteredData[0].minDownPayment / 100));
+        const minInitialPayment = findMinInitialPayment(STATE.filteredData[0], value, maxAmount);
         STATE.initialPayment = STATE.property - STATE.amount;
 
         const dataAttrInitial = {
-            'minValue': Math.round(STATE.initialPayment),
-            'maxValue': Math.round(value - STATE.initialPayment),
-            'startValue' : Math.round(value - STATE.initialPayment)
+            'minValue': minInitialPayment,
+            'maxValue': STATE.initialPayment,
+            'startValue': STATE.initialPayment
         }
-
-        minAmount = Math.round(value - STATE.amount);
-        maxAmount = Math.round(STATE.amount);
 
         STATE.elements.inputInitialPaymentWrapper = createNewInputSlider(STATE.elements.inputInitialPaymentWrapper,
             dataAttrInitial);
@@ -297,8 +330,6 @@ function handlerProperty(STATE, value) {
         'maxValue': maxAmount,
         'startValue' : minAmount
     }
-
-    STATE.amount = minAmount;
 
     STATE.elements.inputAmountWrapper = createNewInputSlider(STATE.elements.inputAmountWrapper,
         dataAttrAmount);
