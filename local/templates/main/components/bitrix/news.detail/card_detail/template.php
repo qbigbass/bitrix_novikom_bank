@@ -68,10 +68,13 @@ $renderer = new Renderer($APPLICATION, $component);
 </div>
 
 <? global $customerCategoriesFilter; ?>
-<? $customerCategoriesFilter = [
+<?
+//$arResult['IBLOCK_SECTION_ID'] = ($arResult['IBLOCK_SECTION_ID'] > 0) ? $arResult['IBLOCK_SECTION_ID'] : false;
+$customerCategoriesFilter = [
     'ACTIVE' => 'Y',
     'IBLOCK_SECTION_ID' => $arResult['IBLOCK_SECTION_ID']
-]; ?>
+];
+?>
 <div id="links"></div>
 <section class="section-layout">
     <div class="container">
@@ -81,61 +84,66 @@ $renderer = new Renderer($APPLICATION, $component);
             </div>
         <? endif; ?>
 
-        <? $APPLICATION->IncludeComponent(
-            "bitrix:news.list",
-            "customer_categories",
-            [
-                "ACTIVE_DATE_FORMAT" => "d.m.Y",
-                "ADD_SECTIONS_CHAIN" => "N",
-                "AJAX_MODE" => "N",
-                "AJAX_OPTION_ADDITIONAL" => "",
-                "AJAX_OPTION_HISTORY" => "N",
-                "AJAX_OPTION_JUMP" => "N",
-                "AJAX_OPTION_STYLE" => "Y",
-                "CACHE_FILTER" => "N",
-                "CACHE_GROUPS" => "Y",
-                "CACHE_TIME" => "36000000",
-                "CACHE_TYPE" => "A",
-                "CHECK_DATES" => "Y",
-                "DETAIL_URL" => $arParams['DETAIL_URL'],
-                "DISPLAY_BOTTOM_PAGER" => "N",
-                "DISPLAY_TOP_PAGER" => "N",
-                "FIELD_CODE" => ["CODE", "NAME"],
-                "FILTER_NAME" => "customerCategoriesFilter",
-                "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                "IBLOCK_ID" => iblock('cards_detail_pages_ru'),
-                "IBLOCK_TYPE" => "for_private_clients_ru",
-                "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
-                "INCLUDE_SUBSECTIONS" => "N",
-                "MESSAGE_404" => "",
-                "NEWS_COUNT" => "20",
-                "PAGER_BASE_LINK_ENABLE" => "N",
-                "PAGER_DESC_NUMBERING" => "N",
-                "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
-                "PAGER_SHOW_ALL" => "N",
-                "PAGER_SHOW_ALWAYS" => "N",
-                "PAGER_TEMPLATE" => ".default",
-                "PAGER_TITLE" => "Новости",
-                "PARENT_SECTION" => "",
-                "PARENT_SECTION_CODE" => "",
-                "PREVIEW_TRUNCATE_LEN" => "",
-                "PROPERTY_CODE" => ["", ""],
-                "SET_BROWSER_TITLE" => "N",
-                "SET_LAST_MODIFIED" => "N",
-                "SET_META_DESCRIPTION" => "N",
-                "SET_META_KEYWORDS" => "N",
-                "SET_STATUS_404" => "N",
-                "SET_TITLE" => "N",
-                "SHOW_404" => "N",
-                "SORT_BY1" => CardDetailPageHelper::$customerCategoriesSort['SORT_BY1'],
-                "SORT_BY2" => CardDetailPageHelper::$customerCategoriesSort['SORT_BY2'],
-                "SORT_ORDER1" => CardDetailPageHelper::$customerCategoriesSort['SORT_ORDER1'],
-                "SORT_ORDER2" => CardDetailPageHelper::$customerCategoriesSort['SORT_ORDER2'],
-                "STRICT_SECTION_CHECK" => "N",
-                "CUSTOMER_CATEGORY_CODE" => $arResult['CODE'],
-            ],
-            $component
-        ); ?>
+        <?
+        /** В корневых элементах не должно быть разводящих */
+        if($arResult['IBLOCK_SECTION_ID']) {
+            $APPLICATION->IncludeComponent(
+                "bitrix:news.list",
+                "customer_categories",
+                [
+                    "ACTIVE_DATE_FORMAT" => "d.m.Y",
+                    "ADD_SECTIONS_CHAIN" => "N",
+                    "AJAX_MODE" => "N",
+                    "AJAX_OPTION_ADDITIONAL" => "",
+                    "AJAX_OPTION_HISTORY" => "N",
+                    "AJAX_OPTION_JUMP" => "N",
+                    "AJAX_OPTION_STYLE" => "Y",
+                    "CACHE_FILTER" => "N",
+                    "CACHE_GROUPS" => "Y",
+                    "CACHE_TIME" => "36000000",
+                    "CACHE_TYPE" => "A",
+                    "CHECK_DATES" => "Y",
+                    "DETAIL_URL" => $arParams['DETAIL_URL'],
+                    "DISPLAY_BOTTOM_PAGER" => "N",
+                    "DISPLAY_TOP_PAGER" => "N",
+                    "FIELD_CODE" => ["CODE", "NAME"],
+                    "FILTER_NAME" => "customerCategoriesFilter",
+                    "HIDE_LINK_WHEN_NO_DETAIL" => "N",
+                    "IBLOCK_ID" => iblock('cards_detail_pages_ru'),
+                    "IBLOCK_TYPE" => "for_private_clients_ru",
+                    "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+                    "INCLUDE_SUBSECTIONS" => "N",
+                    "MESSAGE_404" => "",
+                    "NEWS_COUNT" => "20",
+                    "PAGER_BASE_LINK_ENABLE" => "N",
+                    "PAGER_DESC_NUMBERING" => "N",
+                    "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+                    "PAGER_SHOW_ALL" => "N",
+                    "PAGER_SHOW_ALWAYS" => "N",
+                    "PAGER_TEMPLATE" => ".default",
+                    "PAGER_TITLE" => "Новости",
+                    "PARENT_SECTION" => "",
+                    "PARENT_SECTION_CODE" => "",
+                    "PREVIEW_TRUNCATE_LEN" => "",
+                    "PROPERTY_CODE" => ["", ""],
+                    "SET_BROWSER_TITLE" => "N",
+                    "SET_LAST_MODIFIED" => "N",
+                    "SET_META_DESCRIPTION" => "N",
+                    "SET_META_KEYWORDS" => "N",
+                    "SET_STATUS_404" => "N",
+                    "SET_TITLE" => "N",
+                    "SHOW_404" => "N",
+                    "SORT_BY1" => CardDetailPageHelper::$customerCategoriesSort['SORT_BY1'],
+                    "SORT_BY2" => CardDetailPageHelper::$customerCategoriesSort['SORT_BY2'],
+                    "SORT_ORDER1" => CardDetailPageHelper::$customerCategoriesSort['SORT_ORDER1'],
+                    "SORT_ORDER2" => CardDetailPageHelper::$customerCategoriesSort['SORT_ORDER2'],
+                    "STRICT_SECTION_CHECK" => "N",
+                    "CUSTOMER_CATEGORY_CODE" => $arResult['CODE'],
+                ],
+                $component
+            );
+        }
+        ?>
 
         <? if (!empty($arResult['DISPLAY_PROPERTIES']['BENEFITS']['VALUE'])) : ?>
             <div class="row row-gap-6 px-lg-6">
