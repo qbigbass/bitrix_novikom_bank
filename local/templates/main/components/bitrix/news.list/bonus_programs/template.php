@@ -26,18 +26,9 @@ $itemCols = (count($arResult["ITEMS"]) > 2) ? '3' : '2';
                         <div class="card-product__content">
                             <h4 class="card-product__title"><?=$arItem['~NAME']?></h4>
                             <div class="d-inline-flex flex-nowrap align-items-baseline text-l fw-semibold gap-1 violet-100">
-                                <?$shortConditions = $arItem['DISPLAY_PROPERTIES']['SHORT_CONDITION']['VALUE'];?>
-                                <?if (!empty($shortConditions) && $shortConditions[1] != '') : ?>
-                                    <?=$arItem['DISPLAY_PROPERTIES']['SHORT_CONDITION']['VALUE'][1]?>
-                                <?endif;?>
-
-                                <?if (!empty($shortConditions) && $shortConditions[2] != '') : ?>
-                                    <span class="text-number-l fw-bold"><?=$arItem['DISPLAY_PROPERTIES']['SHORT_CONDITION']['VALUE'][2]?></span>
-                                <?endif;?>
-
-                                <?if (!empty($shortConditions) && $shortConditions[3] != '') : ?>
-                                    <?=$arItem['DISPLAY_PROPERTIES']['SHORT_CONDITION']['VALUE'][3]?>
-                                <?endif;?>
+                                <?if (!empty($arItem['DISPLAY_PROPERTIES']['SHORT_CONDITION']['~VALUE']['TEXT'])) : ?>
+                                    <?= $arItem['DISPLAY_PROPERTIES']['SHORT_CONDITION']['~VALUE']['TEXT'] ?>
+                                <? endif; ?>
                             </div>
                             <p class="card-product__description m-0"><?=$arItem['PREVIEW_TEXT']?></p>
                         </div>
