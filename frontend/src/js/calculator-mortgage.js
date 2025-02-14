@@ -302,7 +302,6 @@ function handlerProperty(STATE, value) {
 
     // если есть первоначальный взнос
     if (STATE.filteredData[0].minDownPayment && STATE.filteredData[0].minDownPayment !== 0) {
-        // const minInitialPayment = Math.round(value * (STATE.filteredData[0].minDownPayment / 100));
         const minInitialPayment = findMinInitialPayment(STATE.filteredData[0], value, maxAmount);
         STATE.initialPayment = STATE.property - STATE.amount;
 
@@ -348,16 +347,16 @@ function mortgageFilter(STATE) {
         item.object && item.object === STATE.object &&
         item.borrowerType && item.borrowerType === STATE.borrower
     );
-}
-
-function handlerMortgageCheckbox(STATE) {
-    mortgageFilter(STATE);
 
     STATE.filteredData = STATE.filteredData.filter(item => {
         if (!item.insurance) item.insurance = 'N';
         if (!item.salaryBankCard) item.salaryBankCard = 'N';
         return (item.insurance === STATE.insurance) && (item.salaryBankCard === STATE.card);
     });
+}
+
+function handlerMortgageCheckbox(STATE) {
+    mortgageFilter(STATE);
 
     STATE.rate = STATE.filteredData[0].rate;
     STATE.payment = calculateMortgage(STATE);
