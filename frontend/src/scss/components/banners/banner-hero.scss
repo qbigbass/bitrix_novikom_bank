@@ -404,7 +404,6 @@
     will-change: background, color, box-shadow;
     position: relative;
     transition: background .33s ease-in-out;
-    flex: 1;
 
     &:not(:first-child) {
         border-left: 1px solid var(--violet-70);
@@ -428,6 +427,10 @@
             bottom: 0;
             height: .25rem;
         }
+    }
+
+    &:not(.swiper-slide) {
+        flex: 1;
     }
 
     &:not(.swiper-slide):hover,
