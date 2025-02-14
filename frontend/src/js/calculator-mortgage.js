@@ -399,6 +399,12 @@ function setMortgageValues(STATE) {
         STATE.filteredData = getMortgageObjects(STATE.filteredData, STATE);
         STATE.filteredData = getMortgageBorrower(STATE.filteredData, STATE);
 
+        STATE.filteredData = STATE.filteredData.filter(item => {
+            if (!item.insurance) item.insurance = 'N';
+            if (!item.salaryBankCard) item.salaryBankCard = 'N';
+            return (item.insurance === STATE.insurance) && (item.salaryBankCard === STATE.card);
+        });
+
         setInputSliderAttributes(STATE);
 
         STATE.rate = STATE.filteredData[0].rate;
@@ -415,6 +421,12 @@ function setMortgageValues(STATE) {
         );
         STATE.filteredData = getMortgageObjects(STATE.filteredData, STATE);
         STATE.filteredData = getMortgageBorrower(STATE.filteredData, STATE);
+
+        STATE.filteredData = STATE.filteredData.filter(item => {
+            if (!item.insurance) item.insurance = 'N';
+            if (!item.salaryBankCard) item.salaryBankCard = 'N';
+            return (item.insurance === STATE.insurance) && (item.salaryBankCard === STATE.card);
+        });
 
         setInputSliderAttributes(STATE);
 
@@ -435,6 +447,12 @@ function setMortgageValues(STATE) {
         );
 
         STATE.filteredData = getMortgageBorrower(STATE.filteredData, STATE);
+
+        STATE.filteredData = STATE.filteredData.filter(item => {
+            if (!item.insurance) item.insurance = 'N';
+            if (!item.salaryBankCard) item.salaryBankCard = 'N';
+            return (item.insurance === STATE.insurance) && (item.salaryBankCard === STATE.card);
+        });
 
         setInputSliderAttributes(STATE);
 
