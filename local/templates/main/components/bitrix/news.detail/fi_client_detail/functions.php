@@ -43,11 +43,11 @@ function renderBenefitsHeaderFooter(CMain $APPLICATION, array $ids, bool $hasPic
     return ob_get_clean();
 }
 
-function renderQuote(string $text, bool $invert = false): void
+function renderQuote(string $text, bool $invert = false, string $classColor = ''): void
 {
     ob_start();
     $pathIcon = "/frontend/dist/img/restructuring-additional-info_gray.png";
-    $bg = "bg-white";
+    $bg = $classColor ?: "bg-white";
     $polygonLine = 'violet-100';
     $sectionClass = "";
     global $APPLICATION;
