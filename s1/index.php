@@ -70,8 +70,6 @@ $APPLICATION->IncludeComponent(
     ]
 ); ?>
 
-<? //$APPLICATION->IncludeFile('/local/php_interface/include/cross_sale_products_block.php', ['HEADER_TEXT' => 'Предложения банка Новиком']); ?>
-
 <?$APPLICATION->IncludeFile('/local/php_interface/include/block_cross_sale_section.php',
     [
         'HEADER_TEXT' => 'Предложения банка Новиком',
@@ -373,19 +371,7 @@ $APPLICATION->IncludeComponent(
     </div>
 </section>
 
-<?
-/*
- * Блок "Новости"
- */
-$sectionCode = 'news';
-$newsIds = IblockHelper::getIblockSectionElementsIds('press_center_ru', $sectionCode);
-
-if (!empty($newsIds)) {
-    $APPLICATION->IncludeFile('/local/php_interface/include/block_news.php',
-        ['IDS' => $newsIds]
-    );
-}
-?>
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_news_section.php');?>
 
 <? $APPLICATION->IncludeFile('/local/php_interface/include/request_call.php'); ?>
 
