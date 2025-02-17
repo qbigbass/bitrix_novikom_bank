@@ -366,8 +366,7 @@ $customerCategoriesFilter = [
                                 <div
                                     class="helper__wrapper d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-4 gap-lg-6">
                                     <img class="helper__image w-auto float-end"
-                                         src="/frontend/dist/img/restructuring-additional-info.png" alt=""
-                                         loading="lazy">
+                                         src="/frontend/dist/img/restructuring-additional-info.png" alt="">
                                     <div class="helper__content text-l">
                                         <p class="mb-0"><?= $arResult['DISPLAY_PROPERTIES']['ADDITIONAL_INFO']['~VALUE']['TEXT'] ?></p>
                                     </div>

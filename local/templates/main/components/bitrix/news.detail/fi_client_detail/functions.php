@@ -64,7 +64,7 @@ function renderQuote(string $text, bool $invert = false): void
                         <div class="polygon-container__content">
                             <div class="helper <?= $bg ?>">
                                 <div class="helper__wrapper d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-4 gap-lg-6">
-                                    <img class="helper__image w-auto float-end" src="<?= $pathIcon ?>" alt="Обратите внимание" loading="lazy">
+                                    <img class="helper__image w-auto float-end" src="<?= $pathIcon ?>" alt="Обратите внимание">
                                     <div class="helper__content text-l">
                                         <p><?= $text ?></p>
                                     </div>
