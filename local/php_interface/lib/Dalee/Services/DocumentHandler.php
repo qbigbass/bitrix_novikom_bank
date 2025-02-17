@@ -80,8 +80,6 @@ class DocumentHandler
         $filter = [
             'IBLOCK_ID' => $this->iblockId,
             'CODE' => $code,
-            '<=PROPERTY_ACTIVE_FROM' => date('Y-m-d H:i:s'),
-            '>=PROPERTY_ACTIVE_TO' => date('Y-m-d H:i:s')
         ];
 
         $select = ['PROPERTY_FILE'];

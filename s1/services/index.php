@@ -1,10 +1,18 @@
 <?php
+
+use Bitrix\Iblock\IblockTable;
+
 require($_SERVER['DOCUMENT_ROOT'].'/bitrix/header.php');
 global $APPLICATION;
 
 $APPLICATION->SetTitle('Услуги');
 ?>
-
+<?
+$IblockRes = IblockTable::getList([
+    'filter' => ['CODE' => 'for_private_clients_ru_sms_services', 'IBLOCK_TYPE_ID' => 'for_private_clients_ru'],
+]);
+$blockId = ($Iblock = $IblockRes->fetch()) ? $Iblock['ID'] : '';
+?>
 <?$APPLICATION->IncludeComponent(
     "bitrix:news",
     "services",
@@ -29,7 +37,23 @@ $APPLICATION->SetTitle('Услуги');
         "DETAIL_PAGER_SHOW_ALL" => "N",
         "DETAIL_PAGER_TEMPLATE" => "",
         "DETAIL_PAGER_TITLE" => "Страница",
-        "DETAIL_PROPERTY_CODE" => array("", ""),
+        "DETAIL_PROPERTY_CODE" => [
+            'OPPORTUNITY',
+            'INSTRUCTIONS',
+            'ADDITIONAL_INFO',
+            'TABS',
+            'BENEFITS',
+            'STEPS',
+            'DOCUMENTS',
+            'STEPS_HEADING',
+            'BENEFITS_HEADING',
+            'DOCUMENTS_HEADING',
+            'TEXT_BLOCK_1',
+            'TEXT_BLOCK_HEADING_1',
+            'TEXT_BLOCK_2',
+            'TEXT_BLOCK_HEADING_2',
+            'HTML',
+        ],
         "DETAIL_SET_CANONICAL_URL" => "N",
         "DISPLAY_BOTTOM_PAGER" => "N",
         "DISPLAY_DATE" => "N",
@@ -39,8 +63,8 @@ $APPLICATION->SetTitle('Услуги');
         "DISPLAY_TOP_PAGER" => "N",
         "FILE_404" => "",
         "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-        "IBLOCK_ID" => "",
-        "IBLOCK_TYPE" => "services_ru",
+        "IBLOCK_ID" => $blockId,
+        "IBLOCK_TYPE" => "for_private_clients_ru",
         "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
         "LIST_ACTIVE_DATE_FORMAT" => "d.m.Y",
         "LIST_FIELD_CODE" => array("", ""),

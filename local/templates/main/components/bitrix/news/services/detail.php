@@ -1,4 +1,10 @@
-<?if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();
+<?
+
+use Dalee\Helpers\IblockHelper;
+
+if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
+    die();
+}
 /** @var array $arParams */
 /** @var array $arResult */
 /** @global CMain $APPLICATION */
@@ -12,11 +18,14 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 
-$iblock = \Dalee\Helpers\IblockHelper::getBy($arResult['VARIABLES']['ELEMENT_CODE'],  $arParams["IBLOCK_TYPE"]);
-$componentTemplate = str_replace('_ru', '', $iblock->getCode());
+$iblock = IblockHelper::getBy($arResult['VARIABLES']['ELEMENT_CODE'], $arParams["IBLOCK_TYPE"]);
+$componentTemplate = str_replace(['_ru', '-'], ['', '_'], $arResult['VARIABLES']['ELEMENT_CODE']);
+$componentTemplatePath = $_SERVER['DOCUMENT_ROOT'] . $this->GetFolder() . '/bitrix/news.detail/' . $componentTemplate;
+$componentTemplate = is_dir($componentTemplatePath) ? $componentTemplate : '.default';
 ?>
 
-<?$APPLICATION->IncludeComponent(
+<?
+$APPLICATION->IncludeComponent(
     "bitrix:news.detail",
     $componentTemplate,
     [
@@ -25,11 +34,11 @@ $componentTemplate = str_replace('_ru', '', $iblock->getCode());
         "DISPLAY_PICTURE" => $arParams["DISPLAY_PICTURE"],
         "DISPLAY_PREVIEW_TEXT" => $arParams["DISPLAY_PREVIEW_TEXT"],
         "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
-        "IBLOCK_ID" => $iblock->getId(),
+        "IBLOCK_ID" => $arParams['IBLOCK_ID'],
         "FIELD_CODE" => $arParams["DETAIL_FIELD_CODE"],
-        "PROPERTY_CODE" => $iblock->getProperties(),
-        "DETAIL_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["detail"],
-        "SECTION_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["section"],
+        "PROPERTY_CODE" => $arParams['DETAIL_PROPERTY_CODE'],
+        "DETAIL_URL" => $arResult["FOLDER"] . $arResult["URL_TEMPLATES"]["detail"],
+        "SECTION_URL" => $arResult["FOLDER"] . $arResult["URL_TEMPLATES"]["section"],
         "META_KEYWORDS" => $arParams["META_KEYWORDS"],
         "META_DESCRIPTION" => $arParams["META_DESCRIPTION"],
         "BROWSER_TITLE" => $arParams["BROWSER_TITLE"],
@@ -59,7 +68,7 @@ $componentTemplate = str_replace('_ru', '', $iblock->getCode());
         "ELEMENT_CODE" => $arResult['VARIABLES']['ELEMENT_CODE'],
         "SECTION_ID" => "",
         "SECTION_CODE" => "",
-        "IBLOCK_URL" => $arResult["FOLDER"].$arResult["FOLDER"],
+        "IBLOCK_URL" => $arResult["FOLDER"] . $arResult["FOLDER"],
         "USE_SHARE" => $arParams["USE_SHARE"],
         "SHARE_HIDE" => $arParams["SHARE_HIDE"],
         "SHARE_TEMPLATE" => $arParams["SHARE_TEMPLATE"],
@@ -70,12 +79,15 @@ $componentTemplate = str_replace('_ru', '', $iblock->getCode());
         'STRICT_SECTION_CHECK' => $arParams['STRICT_SECTION_CHECK'],
     ],
     $component
-);?>
+); ?>
 
-<? if (!in_array($iblock->getCode(), [
+<?
+if (!in_array($iblock->getCode(), [
     "biometric_identification_ru",
     "insurance_ru",
     "other_services_ru"
 ])) : ?>
-    <? $APPLICATION->IncludeFile('/local/php_interface/include/cross_sale_products_block.php')?>
-<? endif; ?>
+    <?
+    $APPLICATION->IncludeFile('/local/php_interface/include/cross_sale_products_block.php') ?>
+<?
+endif; ?>

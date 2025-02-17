@@ -14,12 +14,6 @@ $aMenuLinks = [
         []
     ],
     [
-        'Интернет-банк и Мобильное приложение',
-        'internet-bank-i-mobilnoe-prilozhenie/',
-        [],
-        []
-    ],
-    [
         'Прочие сервисы',
         'prochie-servisy/',
         [],
