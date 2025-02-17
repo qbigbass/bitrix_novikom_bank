@@ -73,7 +73,9 @@ $this->setFrameMode(true);
                             <?= TabContent::render(
                                 $tab['~DETAIL_TEXT'],
                                 $tab['DISPLAY_PROPERTIES'],
-                                $arParams['ELEMENT_ID'] ?? null
+                                $arParams['ELEMENT_ID'] ?? null,
+                                true,
+                                $tab
                             ); ?>
                         </div>
                     </div>

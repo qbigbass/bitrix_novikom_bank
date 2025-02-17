@@ -1,11 +1,6 @@
 <?php
-/** @var string $ELEMENT_CODE */
-
-require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
-global $APPLICATION;
 $APPLICATION->SetTitle('Бонусные программы');
 ?>
-
 <?$APPLICATION->IncludeComponent(
     "bitrix:news",
     "bonus_programs",
@@ -60,7 +55,7 @@ $APPLICATION->SetTitle('Бонусные программы');
         "DISPLAY_TOP_PAGER" => "N",
         "FILE_404" => "",
         "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-        "IBLOCK_ID" => iblock("bonus_programs_ru"),
+        "IBLOCK_ID" => $iblockId,
         "IBLOCK_TYPE" => "additional",
         "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
         "LIST_ACTIVE_DATE_FORMAT" => "d.m.Y",
@@ -78,7 +73,7 @@ $APPLICATION->SetTitle('Бонусные программы');
         "PAGER_TEMPLATE" => ".default",
         "PAGER_TITLE" => "Новости",
         "PREVIEW_TRUNCATE_LEN" => "",
-        "SEF_FOLDER" => "/bonus-programs/",
+        "SEF_FOLDER" => "/cards/",
         "SEF_MODE" => "Y",
         "SEF_URL_TEMPLATES" => [
             "detail" => "#ELEMENT_CODE#/",
@@ -103,5 +98,3 @@ $APPLICATION->SetTitle('Бонусные программы');
         "USE_SHARE" => "N"
     ]
 );?>
-
-<?require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php'); ?>
