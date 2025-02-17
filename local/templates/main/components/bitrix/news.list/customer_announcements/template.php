@@ -12,9 +12,11 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 $parentSection = $component->getParent()?->arParams['SECTION_URL'] ?? ($component->getParent()?->arParams['SEF_FOLDER'] ?? '/');
+$classColorBg = $arParams["CLASS_COLOR_BG"] ?? "bg-dark-10";
+$pathImgBg = $arParams["PATH_IMG_BG"] ?? "/frontend/dist/img/patterns/section-2/pattern-light";
 ?>
 <? if (!empty($arResult["ITEMS"])) : ?>
-    <section class="section-layout bg-dark-10">
+    <section class="section-layout <?= $classColorBg ?>">
         <div class="container">
             <div class="row">
                 <div class="col-12 col-xxl-6 d-flex flex-column gap-6 gap-lg-7">
@@ -69,12 +71,62 @@ $parentSection = $component->getParent()?->arParams['SECTION_URL'] ?? ($componen
                         </div>
                     </div>
                 </div>
+                <? if (!empty($arParams["SHOW_BLOCK_ABOUT_BANK"])) : ?>
+                    <div class="col-12 col-xxl-6 mt-6 mt-xxl-0">
+                    <a class="card-link h3 d-lg-none" href="/about/">О банке
+                        <svg class="icon size-m blue-100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                            <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
+                        </svg>
+                    </a>
+                    <div class="card-about-bank d-none d-lg-flex">
+                        <div class="card-about-bank__col d-flex flex-column gap-6">
+                            <a class="h3" href="/about/">О банке
+                                <svg class="icon size-m blue-100" xmlns="http://www.w3.org/2000/svg" width="100%"
+                                     height="100%">
+                                    <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
+                                </svg>
+                            </a>
+                            <div class="d-flex flex-column">
+                                <span class="violet-100 fw-semibold text-number-m fw-bold">30 лет</span>
+                                <p class="card-about-bank__description text-s fw-semibold">успешной работы в&nbsp;реальном
+                                    секторе российской<br class="d-xxl-none">
+                                    экономики
+                                </p>
+                            </div>
+                            <div class="d-flex flex-column">
+                                <span class="violet-100 fw-semibold text-number-m fw-bold">19,4 млн</span>
+                                <p class="card-about-bank__description text-s fw-semibold">рекордная чистая прибыль<br>за&nbsp;2022&nbsp;г
+                                </p>
+                            </div>
+                        </div>
+                        <div class="card-about-bank__col d-flex flex-column">
+                            <img src="/frontend/dist/img/top.svg" alt="Топ"
+                                 width="138" height="54"
+                                 loading="lazy">
+                            <img src="/frontend/dist/img/top-20.svg" alt="20" width="138" height="144" loading="lazy">
+                            <p class="card-about-bank__description text-s fw-semibold mt-auto">по&nbsp;величине капитала,
+                                объему активов<br class="d-xxl-none">
+                                и&nbsp;корпоративных кредитов
+                            </p>
+                        </div>
+                        <picture class="pattern-bg card-about-bank__pattern">
+                            <source srcset="/frontend/dist/img/patterns/card/pattern-light-s.svg"
+                                    media="(max-width: 767px)">
+                            <source srcset="/frontend/dist/img/patterns/card/pattern-light-m.svg"
+                                    media="(max-width: 1199px)">
+                            <img src="/frontend/dist/img/patterns/card/pattern-light-l.svg" alt="bg pattern" loading="lazy">
+                        </picture>
+                    </div>
+                </div>
+                <? endif; ?>
             </div>
         </div>
-        <picture class="pattern-bg pattern-bg--hide-mobile">
-            <source srcset="/frontend/dist/img/patterns/section-2/pattern-light-s.svg" media="(max-width: 767px)">
-            <source srcset="/frontend/dist/img/patterns/section-2/pattern-light-m.svg" media="(max-width: 1199px)">
-            <img src="/frontend/dist/img/patterns/section-2/pattern-light-l.svg" alt="bg pattern" loading="lazy">
-        </picture>
+        <? if (!empty($pathImgBg)) : ?>
+            <picture class="pattern-bg pattern-bg--hide-mobile">
+                <source srcset="<?= $pathImgBg ?>-s.svg" media="(max-width: 767px)">
+                <source srcset="<?= $pathImgBg ?>-m.svg" media="(max-width: 1199px)">
+                <img src="<?= $pathImgBg ?>-l.svg" alt="bg pattern" loading="lazy">
+            </picture>
+        <? endif; ?>
     </section>
 <? endif; ?>
