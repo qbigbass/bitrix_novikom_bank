@@ -59,4 +59,6 @@ $APPLICATION->SetTitle("Моментальный онлайн-перевод");
 
 <?$APPLICATION->IncludeFile('/local/php_interface/include/cross_sale_products_block.php');?>
 
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_news_section.php');?>
+
 <?require($_SERVER['DOCUMENT_ROOT'].'/bitrix/footer.php');?>
