@@ -73,7 +73,6 @@ $this->setFrameMode(true);
         "BLOCK_CONTACT_COLOR_SPAN" => "dark-100",
         "BLOCK_CONTACT_COLOR_ICON" => "dark-100",
         "TITLE_BLOCK_CROSS_SALE" => $arParams["TITLE_BLOCK_CROSS_SALE"],
-        "FILTER_BLOCK_CROSS_SALE" => $arParams["FILTER_BLOCK_CROSS_SALE"],
     ],
     $component
 );?>

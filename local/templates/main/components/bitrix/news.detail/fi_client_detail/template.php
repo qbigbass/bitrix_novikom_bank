@@ -712,10 +712,11 @@ $headerView->render(
 
 <!-- Блок "Другие услуги" -->
 <? if (!empty($arResult['PROPERTIES']['SHOW_CROSS_SALE']['VALUE'])): ?>
-    <?$APPLICATION->IncludeFile('/local/php_interface/include/cross_sale_products_block_corporate.php', [
-        "HEADER_TEXT" => $arParams["TITLE_BLOCK_CROSS_SALE"],
-        "FILTER" => $arParams["FILTER_BLOCK_CROSS_SALE"],
-    ]);?>
+    <? $APPLICATION->IncludeFile('/local/php_interface/include/block_cross_sale_detail.php',
+        [
+            'HEADER_TEXT' => $arParams["TITLE_BLOCK_CROSS_SALE"],
+        ]
+    ); ?>
 <? endif; ?>
 
 <? $helper->saveCache(); ?>

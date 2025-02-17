@@ -67,7 +67,6 @@ $this->setFrameMode(true);
         "STRICT_SECTION_CHECK" => $arParams['STRICT_SECTION_CHECK'],
         "SECTION_TYPE" => "corporate_clients",
         "TITLE_BLOCK_CROSS_SALE" => $arParams["TITLE_BLOCK_CROSS_SALE"],
-        "FILTER_BLOCK_CROSS_SALE" => $arParams["FILTER_BLOCK_CROSS_SALE"],
     ],
     $component
 );?>
