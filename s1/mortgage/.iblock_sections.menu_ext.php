@@ -1,6 +1,6 @@
 <?php
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
-
+use Dalee\Helpers\IblockHelper;
 global $APPLICATION;
 
 $aMenuLinksExt = $APPLICATION->IncludeComponent("bitrix:menu.sections", "", [
@@ -17,5 +17,7 @@ $aMenuLinksExt = $APPLICATION->IncludeComponent("bitrix:menu.sections", "", [
     false
 );
 
-$aMenuLinks = array_merge($aMenuLinks, $aMenuLinksExt);
+$aMenuLinksElementsExt = IblockHelper::getIblockMenuWithoutSections('mortgage', '/mortgage/');
+
+$aMenuLinks = array_merge($aMenuLinks, $aMenuLinksExt,$aMenuLinksElementsExt);
 ?>

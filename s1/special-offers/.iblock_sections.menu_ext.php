@@ -1,8 +1,7 @@
 <?php
-if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
-
+if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
+use Dalee\Helpers\IblockHelper;
 global $APPLICATION;
-
 $aMenuLinksExt = $APPLICATION->IncludeComponent("bitrix:menu.sections", "", array(
     "IS_SEF" => "Y",
     "SEF_BASE_URL" => "",
@@ -17,5 +16,7 @@ $aMenuLinksExt = $APPLICATION->IncludeComponent("bitrix:menu.sections", "", arra
     false
 );
 
-$aMenuLinks = array_merge($aMenuLinks, $aMenuLinksExt);
+$aMenuLinksElementsExt = IblockHelper::getIblockMenuWithoutSections('special_offers_ru', '/special-offers/');
+
+$aMenuLinks = array_merge($aMenuLinks, $aMenuLinksExt, $aMenuLinksElementsExt);
 ?>

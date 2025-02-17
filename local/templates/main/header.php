@@ -164,7 +164,8 @@ $asset->addJs('/frontend/dist/js/accessibility-panel.js');
                 <div class="header__bottom-row">
                     <?php $APPLICATION->IncludeComponent(
                         "bitrix:menu",
-                        $currentSection === 'for-corporate-clients' ? "corporate_submenu_header" : "main_submenu_header",
+                        ($currentSection === 'for-corporate-clients' || $currentSection == 'msb')
+                            ? "corporate_submenu_header" : "main_submenu_header",
                         [
                             "ALLOW_MULTI_SELECT" => "N",
                             "CHILD_MENU_TYPE" => "iblock_sections",
