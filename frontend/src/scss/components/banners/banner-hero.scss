@@ -84,6 +84,24 @@
         }
     }
 
+    &.banner-text {
+        &--border-orange {
+            & .swiper-slide-thumb-active {
+                &:after {
+                    background-color: var(--orange-100);
+                }
+            }
+        }
+
+        &--border-violet {
+            & .swiper-slide-thumb-active {
+                &:after {
+                    background-color: var(--violet-100);
+                }
+            }
+        }
+    }
+
     &--heavy-violet {
         background: linear-gradient(222.24deg, #101317 20%, #6655A2 80%);
     }
