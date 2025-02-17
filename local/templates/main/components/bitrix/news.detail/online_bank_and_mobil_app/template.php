@@ -169,4 +169,6 @@ $headerView->render(
     </section>
 <? endif; ?>
 
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_news_section.php');?>
+
 <? $helper->saveCache(); ?>

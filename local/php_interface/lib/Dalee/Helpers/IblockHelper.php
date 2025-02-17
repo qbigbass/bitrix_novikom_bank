@@ -7,6 +7,7 @@ use Bitrix\Iblock\PropertyTable;
 use Bitrix\Iblock\SectionTable;
 use CIBlockElement;
 use CIBlockFormatProperties;
+use Bitrix\Iblock\Model\Section;
 
 class IblockHelper
 {
@@ -90,30 +91,28 @@ class IblockHelper
      * @return array
      * @throws \Bitrix\Main\SystemException
      */
-    public static function getIblockSectionElementsIds(string $iblockCode, ?string $sectionCode = null): array
+    public static function getIblockSectionElementsIds(string $iblockCode, ?string $sectionCode = null, ?array $sectionFilter = []): array
     {
         $iblockId = iblock($iblockCode);
-        $filter = [
-            'IBLOCK_ID' => $iblockId
+        $arElementFilter = [
+            'IBLOCK_ID' => $iblockId,
         ];
 
         if (!empty($sectionCode)) {
-            $sections = SectionTable::getList([
-                'filter' => [
-                    'IBLOCK_ID' => $iblockId,
-                ],
-                'select' => [
+            $entity = Section::compileEntityByIblock($iblockId);
+            $sections = $entity::getList([
+                "select" => [
                     'ID',
                     'CODE',
                     'IBLOCK_SECTION_ID',
-                ]
+                ],
+                "filter" => $sectionFilter
             ])->fetchAll();
 
             $sectionsById = array_column($sections, null, 'ID');
             $sectionsByCode = array_column($sections, 'ID', 'CODE');
 
             if (!isset($sectionsByCode[$sectionCode])) {
-                echo ("Раздел $sectionCode не найден");
                 return [];
             }
 
@@ -131,12 +130,11 @@ class IblockHelper
             };
 
             $collectDescendants($parentSectionId);
-
-            $filter['IBLOCK_SECTION_ID'] = $ids;
+            $arElementFilter['IBLOCK_SECTION_ID'] = $ids;
         }
 
         $elements = ElementTable::getList([
-            'filter' => $filter,
+            'filter' => $arElementFilter,
             'select' => ['ID'],
         ])->fetchAll();
 

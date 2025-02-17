@@ -1,5 +1,8 @@
 <?php
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
+
+use Dalee\Helpers\IblockHelper;
+
 global $APPLICATION;
 $APPLICATION->SetTitle("Кредиты");
 ?>
@@ -92,6 +95,8 @@ if (!empty($elementWithoutSection)) {
     );
 
     $APPLICATION->IncludeFile('/local/php_interface/include/cross_sale_products_block.php');
+
+    $APPLICATION->IncludeFile('/local/php_interface/include/block_news_detail.php');
 } else {
     $APPLICATION->IncludeComponent(
         "bitrix:news",

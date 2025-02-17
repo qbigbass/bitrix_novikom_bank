@@ -218,6 +218,9 @@ $APPLICATION->IncludeComponent(
     ],
     false,
     ["HIDE_ICONS" => "Y"]
-); ?>
+);
+?>
+
+<?$APPLICATION->IncludeFile('/local/php_interface/include/block_news_section.php');?>
 
 <? $helper->saveCache(); ?>

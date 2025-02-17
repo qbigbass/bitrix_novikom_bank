@@ -122,5 +122,7 @@ $APPLICATION->IncludeComponent(
 );
 ?>
 
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_news_detail.php');?>
+
 <?
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php'); ?>

@@ -174,4 +174,7 @@ if ($delFilter) {
         ); ?>
     </div>
 </section>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_news_section.php');?>
+
 <? $helper->saveCache(); ?>

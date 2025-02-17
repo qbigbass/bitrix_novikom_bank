@@ -68,3 +68,5 @@ $this->setFrameMode(true);
     ],
     $component
 );?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_news_detail.php');?>

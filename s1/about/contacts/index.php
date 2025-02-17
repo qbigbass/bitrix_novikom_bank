@@ -109,4 +109,6 @@ $APPLICATION->SetTitle('Контакты банка Новиком');
     </div>
 </section>
 
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_news_section.php');?>
+
 <? require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php'); ?>

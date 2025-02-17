@@ -13,7 +13,7 @@
 $this->setFrameMode(true);
 ?>
 
-<?$APPLICATION->IncludeComponent(
+<? $APPLICATION->IncludeComponent(
     "bitrix:news.detail",
     "deposits_detail",
     [
@@ -69,5 +69,6 @@ $this->setFrameMode(true);
     $component
 );?>
 
-<?$APPLICATION->IncludeFile('/local/php_interface/include/cross_sale_products_block.php');?>
+<? $APPLICATION->IncludeFile('/local/php_interface/include/cross_sale_products_block.php');?>
 
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_news_detail.php');?>

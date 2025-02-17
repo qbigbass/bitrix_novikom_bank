@@ -148,4 +148,7 @@ $headerView->render(
 </section>
 
 <? $APPLICATION->IncludeFile('/local/php_interface/include/modal_vacancy_form.php'); ?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_news_section.php');?>
+
 <? $helper->saveCache(); ?>

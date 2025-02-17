@@ -79,3 +79,5 @@ $componentTemplate = str_replace('_ru', '', $iblock->getCode());
 ])) : ?>
     <? $APPLICATION->IncludeFile('/local/php_interface/include/cross_sale_products_block.php')?>
 <? endif; ?>
+
+<?$APPLICATION->IncludeFile('/local/php_interface/include/block_news_section.php');?>
