@@ -78,3 +78,7 @@ $base-transition: .3s ease-in-out;
     color: var(--blue-30);
     cursor: default;
 }
+
+.swiper-button-lock {
+  display: none;
+}

@@ -26,7 +26,7 @@ $properties = [
             <div class="polygon-container__content">
                 <div class="helper bg-dark-10">
                     <div class="helper__wrapper d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-4 gap-lg-6">
-                        <img alt="Обратите внимание" src="/frontend/dist/img/restructuring-additional-info.png" class="helper__image w-auto float-end" loading="lazy">
+                        <img alt="Обратите внимание" src="/frontend/dist/img/restructuring-additional-info.png" class="helper__image w-auto float-end">
                         <div class="helper__content text-l">' . $value['TEXT'] . '</div>
                     </div>
                 </div>

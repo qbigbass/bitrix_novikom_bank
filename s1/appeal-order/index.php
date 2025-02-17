@@ -184,8 +184,7 @@ if (!empty($elementsInfoIds)) { ?>
                             <div
                                 class="helper__wrapper d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-4 gap-lg-6">
                                 <img class="helper__image w-auto float-end"
-                                     src="/frontend/dist/img/restructuring-additional-info.png" alt="Обратите внимание"
-                                     loading="lazy">
+                                     src="/frontend/dist/img/restructuring-additional-info.png" alt="Обратите внимание">
                                 <div class="helper__content text-l">
                                     <p class="mb-0">
                                         <? $APPLICATION->IncludeFile('/appeal-order/quote_info.php'); ?>
