@@ -2,7 +2,7 @@
 
 $code = $arResult['VARIABLES']['SECTION_CODE'];
 $element = Dalee\Helpers\IblockHelper::getIblockElementByFilter([
-    'CODE' => $code,
+    '=CODE' => $code,
     'ACTIVE' => 'Y',
     'IBLOCK_ID' => $arParams['IBLOCK_ID']
 ]);
