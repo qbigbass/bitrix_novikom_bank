@@ -31,23 +31,11 @@ $renderer = new Renderer($APPLICATION, $component);
                 <h1><?= $arResult['SECTION_NAME'] ?></h1>
                 <p class="banner-product__subtitle text-l"><?= $arResult['~DETAIL_TEXT'] ?></p>
             </div>
-            <div class="banner-product__benefits-list">
-                <? foreach ($arResult['DISPLAY_PROPERTIES']['SHORT_CONDITIONS']['~VALUE'] as $value) : ?>
-                    <div class="d-inline-flex flex-column row-gap-2">
-                        <div class="d-inline-flex flex-nowrap align-items-baseline text-l fw-semibold gap-1 green-100">
-                            <? if (!empty($value[2])) : ?>
-                                <span><?= $value[2] ?></span>
-                            <? endif; ?>
-                            <? if (!empty($value[3])) : ?>
-                                <?= getStylizedValue($value[3]) ?>
-                            <? endif; ?>
-                        </div>
-                        <? if (!empty($value[1])): ?>
-                            <span class="d-block"><?= $value[1] ?></span>
-                        <? endif; ?>
-                    </div>
-                <? endforeach; ?>
-            </div>
+            <? if (!empty($arResult['DISPLAY_PROPERTIES']['SHORT_CONDITIONS']['~VALUE']['TEXT'])) : ?>
+                <div class="banner-product__benefits-list">
+                    <?= $arResult['DISPLAY_PROPERTIES']['SHORT_CONDITIONS']['~VALUE']['TEXT'] ?>
+                </div>
+            <? endif; ?>
             <? if ($arResult['SHOW_BUTTON']) { ?>
                 <button
                     class="btn btn-tertiary btn-lg-lg banner-product__button"
@@ -68,10 +56,13 @@ $renderer = new Renderer($APPLICATION, $component);
 </div>
 
 <? global $customerCategoriesFilter; ?>
-<? $customerCategoriesFilter = [
+<?
+//$arResult['IBLOCK_SECTION_ID'] = ($arResult['IBLOCK_SECTION_ID'] > 0) ? $arResult['IBLOCK_SECTION_ID'] : false;
+$customerCategoriesFilter = [
     'ACTIVE' => 'Y',
     'IBLOCK_SECTION_ID' => $arResult['IBLOCK_SECTION_ID']
-]; ?>
+];
+?>
 <div id="links"></div>
 <section class="section-layout">
     <div class="container">
@@ -81,61 +72,66 @@ $renderer = new Renderer($APPLICATION, $component);
             </div>
         <? endif; ?>
 
-        <? $APPLICATION->IncludeComponent(
-            "bitrix:news.list",
-            "customer_categories",
-            [
-                "ACTIVE_DATE_FORMAT" => "d.m.Y",
-                "ADD_SECTIONS_CHAIN" => "N",
-                "AJAX_MODE" => "N",
-                "AJAX_OPTION_ADDITIONAL" => "",
-                "AJAX_OPTION_HISTORY" => "N",
-                "AJAX_OPTION_JUMP" => "N",
-                "AJAX_OPTION_STYLE" => "Y",
-                "CACHE_FILTER" => "N",
-                "CACHE_GROUPS" => "Y",
-                "CACHE_TIME" => "36000000",
-                "CACHE_TYPE" => "A",
-                "CHECK_DATES" => "Y",
-                "DETAIL_URL" => $arParams['DETAIL_URL'],
-                "DISPLAY_BOTTOM_PAGER" => "N",
-                "DISPLAY_TOP_PAGER" => "N",
-                "FIELD_CODE" => ["CODE", "NAME"],
-                "FILTER_NAME" => "customerCategoriesFilter",
-                "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                "IBLOCK_ID" => iblock('cards_detail_pages_ru'),
-                "IBLOCK_TYPE" => "for_private_clients_ru",
-                "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
-                "INCLUDE_SUBSECTIONS" => "N",
-                "MESSAGE_404" => "",
-                "NEWS_COUNT" => "20",
-                "PAGER_BASE_LINK_ENABLE" => "N",
-                "PAGER_DESC_NUMBERING" => "N",
-                "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
-                "PAGER_SHOW_ALL" => "N",
-                "PAGER_SHOW_ALWAYS" => "N",
-                "PAGER_TEMPLATE" => ".default",
-                "PAGER_TITLE" => "Новости",
-                "PARENT_SECTION" => "",
-                "PARENT_SECTION_CODE" => "",
-                "PREVIEW_TRUNCATE_LEN" => "",
-                "PROPERTY_CODE" => ["", ""],
-                "SET_BROWSER_TITLE" => "N",
-                "SET_LAST_MODIFIED" => "N",
-                "SET_META_DESCRIPTION" => "N",
-                "SET_META_KEYWORDS" => "N",
-                "SET_STATUS_404" => "N",
-                "SET_TITLE" => "N",
-                "SHOW_404" => "N",
-                "SORT_BY1" => CardDetailPageHelper::$customerCategoriesSort['SORT_BY1'],
-                "SORT_BY2" => CardDetailPageHelper::$customerCategoriesSort['SORT_BY2'],
-                "SORT_ORDER1" => CardDetailPageHelper::$customerCategoriesSort['SORT_ORDER1'],
-                "SORT_ORDER2" => CardDetailPageHelper::$customerCategoriesSort['SORT_ORDER2'],
-                "STRICT_SECTION_CHECK" => "N",
-                "CUSTOMER_CATEGORY_CODE" => $arResult['CODE'],
-            ],
-            $component
-        ); ?>
+        <?
+        /** В корневых элементах не должно быть разводящих */
+        if($arResult['IBLOCK_SECTION_ID']) {
+            $APPLICATION->IncludeComponent(
+                "bitrix:news.list",
+                "customer_categories",
+                [
+                    "ACTIVE_DATE_FORMAT" => "d.m.Y",
+                    "ADD_SECTIONS_CHAIN" => "N",
+                    "AJAX_MODE" => "N",
+                    "AJAX_OPTION_ADDITIONAL" => "",
+                    "AJAX_OPTION_HISTORY" => "N",
+                    "AJAX_OPTION_JUMP" => "N",
+                    "AJAX_OPTION_STYLE" => "Y",
+                    "CACHE_FILTER" => "N",
+                    "CACHE_GROUPS" => "Y",
+                    "CACHE_TIME" => "36000000",
+                    "CACHE_TYPE" => "A",
+                    "CHECK_DATES" => "Y",
+                    "DETAIL_URL" => $arParams['DETAIL_URL'],
+                    "DISPLAY_BOTTOM_PAGER" => "N",
+                    "DISPLAY_TOP_PAGER" => "N",
+                    "FIELD_CODE" => ["CODE", "NAME"],
+                    "FILTER_NAME" => "customerCategoriesFilter",
+                    "HIDE_LINK_WHEN_NO_DETAIL" => "N",
+                    "IBLOCK_ID" => iblock('cards_detail_pages_ru'),
+                    "IBLOCK_TYPE" => "for_private_clients_ru",
+                    "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+                    "INCLUDE_SUBSECTIONS" => "N",
+                    "MESSAGE_404" => "",
+                    "NEWS_COUNT" => "20",
+                    "PAGER_BASE_LINK_ENABLE" => "N",
+                    "PAGER_DESC_NUMBERING" => "N",
+                    "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+                    "PAGER_SHOW_ALL" => "N",
+                    "PAGER_SHOW_ALWAYS" => "N",
+                    "PAGER_TEMPLATE" => ".default",
+                    "PAGER_TITLE" => "Новости",
+                    "PARENT_SECTION" => "",
+                    "PARENT_SECTION_CODE" => "",
+                    "PREVIEW_TRUNCATE_LEN" => "",
+                    "PROPERTY_CODE" => ["", ""],
+                    "SET_BROWSER_TITLE" => "N",
+                    "SET_LAST_MODIFIED" => "N",
+                    "SET_META_DESCRIPTION" => "N",
+                    "SET_META_KEYWORDS" => "N",
+                    "SET_STATUS_404" => "N",
+                    "SET_TITLE" => "N",
+                    "SHOW_404" => "N",
+                    "SORT_BY1" => CardDetailPageHelper::$customerCategoriesSort['SORT_BY1'],
+                    "SORT_BY2" => CardDetailPageHelper::$customerCategoriesSort['SORT_BY2'],
+                    "SORT_ORDER1" => CardDetailPageHelper::$customerCategoriesSort['SORT_ORDER1'],
+                    "SORT_ORDER2" => CardDetailPageHelper::$customerCategoriesSort['SORT_ORDER2'],
+                    "STRICT_SECTION_CHECK" => "N",
+                    "CUSTOMER_CATEGORY_CODE" => $arResult['CODE'],
+                ],
+                $component
+            );
+        }
+        ?>
 
         <? if (!empty($arResult['DISPLAY_PROPERTIES']['BENEFITS']['VALUE'])) : ?>
             <div class="row row-gap-6 px-lg-6">
@@ -183,7 +179,7 @@ $renderer = new Renderer($APPLICATION, $component);
                     "FIELD_CODE" => ["PREVIEW_TEXT"],
                     "FILTER_NAME" => "bonusProgramsFilter",
                     "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                    "IBLOCK_ID" => iblock('bonus_programs_ru'),
+                    "IBLOCK_ID" => $arParams['IBLOCK_ID'],
                     "IBLOCK_TYPE" => "for_private_clients_ru",
                     "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
                     "INCLUDE_SUBSECTIONS" => "N",
@@ -370,8 +366,7 @@ $renderer = new Renderer($APPLICATION, $component);
                                 <div
                                     class="helper__wrapper d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-4 gap-lg-6">
                                     <img class="helper__image w-auto float-end"
-                                         src="/frontend/dist/img/restructuring-additional-info.png" alt=""
-                                         loading="lazy">
+                                         src="/frontend/dist/img/restructuring-additional-info.png" alt="">
                                     <div class="helper__content text-l">
                                         <p class="mb-0"><?= $arResult['DISPLAY_PROPERTIES']['ADDITIONAL_INFO']['~VALUE']['TEXT'] ?></p>
                                     </div>
@@ -486,70 +481,67 @@ $renderer = new Renderer($APPLICATION, $component);
     </section>
 <? endif; ?>
 
-<? if (
-    !empty($arResult['DISPLAY_PROPERTIES']['STEPS']['VALUE']) ||
-    !empty($arResult['DISPLAY_PROPERTIES']['STEPS']['DESCRIPTION'])
-) : ?>
-    <section class="section-restructuring-steps bg-dark-10 py-6 py-sm-9 py-md-11 py-xl-16">
-        <div class="container">
-            <div class="row px-lg-6">
-                <h3 class="d-none d-md-flex"><?= $arResult['DISPLAY_PROPERTIES']['STEPS_HEADING']['~VALUE'] ?></h3>
-                <a class="h3 d-flex align-items-center justify-content-between dark-100 d-md-none"
-                   data-bs-toggle="collapse" href="#restructuring-steps-content" role="button" aria-expanded="false"
-                   aria-controls="restructuring-steps-content">
-                    <?= $arResult['DISPLAY_PROPERTIES']['STEPS_HEADING']['~VALUE'] ?>
-                    <svg class="icon size-m violet-100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-down"></use>
-                    </svg>
-                </a>
-            </div>
-            <div class="section-restructuring-steps__wrapper collapse d-md-block mt-6 mt-lg-7"
-                 id="restructuring-steps-content">
-                <div class="row row-gap-6 px-lg-6">
-                    <div class="stepper steps-3">
-                        <? foreach ($arResult['DISPLAY_PROPERTIES']['STEPS']['~VALUE'] as $key => $step) : ?>
-                            <div class="stepper-item stepper-item--color-green">
-                                <div class="stepper-item__header">
-                                    <div class="stepper-item__number">
-                                        <div class="stepper-item__number-value"><?= $key + 1 ?></div>
-                                        <div class="stepper-item__number-icon">
-                                            <div class="stepper-item__icon-border" data-level="1">
-                                                <svg width="76" height="44" viewBox="0 0 76 44" fill="none"
-                                                     xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M36.0723 1.06022C37.2727 0.400039 38.7273 0.400039 39.9277 1.06022L74.8138 20.2476C76.1953 21.0074 76.1953 22.9926 74.8138 23.7524L39.9277 42.9398C38.7273 43.6 37.2727 43.6 36.0723 42.9398L1.18624 23.7524C-0.195312 22.9926 -0.19531 21.0074 1.18624 20.2476L36.0723 1.06022Z"
-                                                        fill="currentColor"></path>
-                                                </svg>
-                                            </div>
-                                            <? for ($i = 0; $i < $key; $i++) : ?>
-                                                <div class="stepper-item__icon-border" data-level="<?= $i + 2 ?>">
-                                                    <svg width="80" height="46" viewBox="0 0 80 46" fill="none"
-                                                         xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M39.5181 1.26505C39.8182 1.10001 40.1818 1.10001 40.4819 1.26506L78.4069 22.1238C79.0977 22.5037 79.0977 23.4963 78.4069 23.8762L40.4819 44.7349C40.1818 44.9 39.8182 44.9 39.5181 44.7349L1.59312 23.8762C0.902343 23.4963 0.902345 22.5037 1.59312 22.1238L39.5181 1.26505Z"
-                                                            stroke="currentColor" stroke-linecap="round"
-                                                            stroke-dasharray="4 4"></path>
-                                                    </svg>
-                                                </div>
-                                            <? endfor; ?>
-                                        </div>
-                                    </div>
-                                    <div class="stepper-item__arrow"></div>
-                                </div>
-                                <div class="stepper-item__content">
-                                    <? if ($arResult['DISPLAY_PROPERTIES']['STEPS']['~DESCRIPTION'][$key]) : ?>
-                                        <h4><?= $arResult['DISPLAY_PROPERTIES']['STEPS']['~DESCRIPTION'][$key] ?></h4>
-                                    <? endif; ?>
-                                    <p class="text-l no-mb"><?= $step['TEXT'] ?></p>
-                                </div>
-                            </div>
-                        <? endforeach; ?>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-<? endif; ?>
+<? if (!empty($arResult['DISPLAY_PROPERTIES']['STEPS']['VALUE'])) {
+    $APPLICATION->IncludeComponent(
+        "bitrix:news.list",
+        "steps",
+        [
+            "ACTIVE_DATE_FORMAT" => "d.m.Y",
+            "ADD_SECTIONS_CHAIN" => "N",
+            "AJAX_MODE" => "N",
+            "AJAX_OPTION_ADDITIONAL" => "",
+            "AJAX_OPTION_HISTORY" => "N",
+            "AJAX_OPTION_JUMP" => "N",
+            "AJAX_OPTION_STYLE" => "Y",
+            "CACHE_FILTER" => "Y",
+            "CACHE_GROUPS" => "Y",
+            "CACHE_TIME" => "36000000",
+            "CACHE_TYPE" => "A",
+            "CHECK_DATES" => "Y",
+            "DETAIL_URL" => "",
+            "DISPLAY_BOTTOM_PAGER" => "Y",
+            "DISPLAY_TOP_PAGER" => "N",
+            "FIELD_CODE" => ["CODE", "NAME", "PREVIEW_TEXT", "PREVIEW_PICTURE", ""],
+            "FILTER_NAME" => "",
+            "HIDE_LINK_WHEN_NO_DETAIL" => "N",
+            "IBLOCK_ID" => iblock('steps'),
+            "IBLOCK_TYPE" => "additional",
+            "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+            "INCLUDE_SUBSECTIONS" => "Y",
+            "MESSAGE_404" => "",
+            "NEWS_COUNT" => "20",
+            "PAGER_BASE_LINK_ENABLE" => "N",
+            "PAGER_DESC_NUMBERING" => "N",
+            "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+            "PAGER_SHOW_ALL" => "N",
+            "PAGER_SHOW_ALWAYS" => "N",
+            "PAGER_TEMPLATE" => "square",
+            "PAGER_TITLE" => "Новости",
+            "PARENT_SECTION" => $arResult['PROPERTIES']['STEPS']['VALUE'],
+            "STEPS_HEADER" => $arResult['PROPERTIES']['STEPS_HEADER']['~VALUE'],
+            "WITH_H4" => "Y",
+            "DARK_BG" => "Y",
+            "STEPS_TEMPLATE" => 'column',
+            "PARENT_SECTION_CODE" => "",
+            "PREVIEW_TRUNCATE_LEN" => "",
+            "PROPERTY_CODE" => "",
+            "SET_BROWSER_TITLE" => "N",
+            "SET_LAST_MODIFIED" => "N",
+            "SET_META_DESCRIPTION" => "N",
+            "SET_META_KEYWORDS" => "N",
+            "SET_STATUS_404" => "N",
+            "SET_TITLE" => "N",
+            "SHOW_404" => "N",
+            "SORT_BY1" => "ACTIVE_FROM",
+            "SORT_BY2" => "SORT",
+            "SORT_ORDER1" => "DESC",
+            "SORT_ORDER2" => "ASC",
+            "STRICT_SECTION_CHECK" => "N",
+        ],
+        $component,
+        ["HIDE_ICONS" => "Y"]
+    );
+} ?>
 
 <? if (!empty($arResult['DISPLAY_PROPERTIES']['CARD_RECEIPT_OPTIONS']['VALUE'])) : ?>
     <section class="section-layout js-collapsed-mobile bg-dark-10">

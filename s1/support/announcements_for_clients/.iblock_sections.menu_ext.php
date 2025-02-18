@@ -24,4 +24,4 @@ $aMenuLinksExt = $APPLICATION->IncludeComponent(
 );
 
 $aMenuLinks = array_merge($aMenuLinks, $aMenuLinksExt);
-
+?>

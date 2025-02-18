@@ -1,7 +1,7 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 
 $aMenuLinks = [
-    [
+   /* [
         'SMS-информирование',
         'sms-informirovanie/',
         [],
@@ -14,16 +14,10 @@ $aMenuLinks = [
         []
     ],
     [
-        'Интернет-банк и Мобильное приложение',
-        'internet-bank-i-mobilnoe-prilozhenie/',
-        [],
-        []
-    ],
-    [
         'Прочие сервисы',
         'prochie-servisy/',
         [],
         []
-    ],
+    ],*/
 ];
 ?>

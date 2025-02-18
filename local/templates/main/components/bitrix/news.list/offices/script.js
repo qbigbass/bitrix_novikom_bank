@@ -190,6 +190,15 @@ class OfficesMap {
             })
         }
 
+        for (const [key, value] of Object.entries(this.filterFormValues)) {
+            if (value === true || value.length > 0) {
+                $('#button-filters').removeClass('btn-outline-primary').addClass('btn-primary');
+                break;
+            } else {
+                $('#button-filters').removeClass('btn-primary').addClass('btn-outline-primary');
+            }
+        }
+
         const servicesFilter = {...this.filterFormValues}
         delete servicesFilter.individuals
         delete servicesFilter.legal
