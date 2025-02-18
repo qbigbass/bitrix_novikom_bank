@@ -1,0 +1,100 @@
+<?php
+namespace Dalee\Libs\Tabs\Handlers;
+
+use Bitrix\Iblock\ElementTable;
+use Bitrix\Iblock\SectionTable;
+use CFile;
+use Dalee\Helpers\IblockHelper;
+use Dalee\Libs\Tabs\Interfaces\PropertyHandlerInterface;
+use Dalee\Libs\Tabs\TabContent;
+
+class AccordeonHandler implements PropertyHandlerInterface
+{
+    private array $elements;
+    private int $iblockId;
+
+    public function __construct(array $elementCodes)
+    {
+        $this->iblockId = iblock('tabs');
+        $this->elements = $this->getElements($elementCodes);
+    }
+
+    public function render(): string
+    {
+        return
+            '<div class="accordion accordion--size-lg accordion--bg-transparent" id="accordion-tab">'
+                . $this->getAccordionItemsHtml() .
+            '</div>';
+    }
+
+    private function getAccordionItemsHtml(): string
+    {
+        ob_start();
+
+        foreach ($this->elements as $element) {
+            ?>
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#<?= $element['ID'] ?>"
+                        aria-controls="<?= $element['ID'] ?>"
+                        data-item-name="<?= $element['NAME'] ?>"
+                    >
+                        <span class="h4"><?= $element['NAME'] ?></span>
+                    </button>
+                </div>
+                <div class="accordion-collapse collapse" id="<?= $element['ID'] ?>" data-bs-parent="#accordion-tab">
+                    <div class="accordion-body">
+                        <?= $this->getSubValuesHtml($element) ?>
+                    </div>
+                </div>
+            </div>
+        <? }
+
+        return ob_get_clean();
+    }
+
+    private function getSections(array $sections): array
+    {
+        $result = SectionTable::getList([
+            'filter' => [
+                'IBLOCK_ID' => $this->iblockId,
+                'CODE' => $sections,
+                'ACTIVE' => 'Y'
+            ],
+            'select' => ['ID', 'NAME', 'CODE'],
+            'order' => ['SORT' => 'ASC']
+        ])->fetchAll();
+
+        return $result ?? [];
+    }
+
+    private function getElements(array $elementCodes): array
+    {
+        return IblockHelper::getElementsWithProperties(
+            ['SORT' => 'ASC'],
+            [
+                'CODE' => $elementCodes,
+                'IBLOCK_ID' => $this->iblockId
+            ],
+            false,
+            false,
+            [],
+            [
+                'PROPERTY_FIELDS' => [
+                    'CODE',
+                    'VALUE'
+                ]
+            ]
+        )['items'] ?? [];
+    }
+
+    private function getSubValuesHtml(array $element): string
+    {
+        return TabContent::render($element['DETAIL_TEXT'], $element['PROPERTIES'], $element['ID'], true, $element, true);
+    }
+
+}

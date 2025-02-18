@@ -8,10 +8,14 @@ class TabContent
     private static string $openedRteTag = '<div class="rte">';
     private static string $closedRteTag = '</div>';
 
-    public static function render(string $detailText, array $displayProperties, ?int $elementId = null, bool $useRteTag = true, ?array $element = null): string
+    public static function render(string $detailText, array $displayProperties, ?int $elementId = null, bool $useRteTag = true, ?array $element = null, bool $isAccordeon = false): string
     {
         $tab = new TabContent();
         $conf = require 'config/handlers.php';
+
+        if (preg_match('/#ACCORDEON\|([^#]+)#/', $detailText, $matches) || $isAccordeon) {
+            self::$openedRteTag = '<div class="rte rte--accordion">';
+        }
 
         if (!$useRteTag) {
             $tabContent = $detailText;
@@ -28,6 +32,14 @@ class TabContent
                 $handler = new $class($property, $elementId, $element);
                 $tabContent = $tab->renderDetailTextWithBlockHtml($handler, $tabContent, $placeHolder, $useRteTag);
             }
+        }
+
+        if (!empty($matches)) {
+            $class = $conf['ACCORDEON'];
+            $placeHolder = $matches[0];
+            $elementCodes = explode('|', $matches[1]);
+            $handler = new $class($elementCodes);
+            $tabContent = $tab->renderDetailTextWithBlockHtml($handler, $tabContent, $placeHolder, $useRteTag);
         }
 
         return $tab->prepareTabContent($tabContent);
@@ -54,12 +66,16 @@ class TabContent
 
     private function prepareTabContent(string $tabContent): string
     {
+        $tabContent = preg_replace(
+            sprintf('/%s[\s\r\n]*%s/s', preg_quote(self::$openedRteTag, '/'), preg_quote(self::$closedRteTag, '/')),
+            '',
+            $tabContent
+        );
+
         return str_replace(
             [
                 "\r",
                 "\n",
-                self::$openedRteTag . "<br>" . self::$closedRteTag,
-                self::$openedRteTag . self::$closedRteTag,
             ],
             '',
             $tabContent

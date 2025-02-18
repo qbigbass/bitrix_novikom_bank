@@ -23,4 +23,5 @@ return [
     'TARIFFS' => Dalee\Libs\Tabs\Handlers\TariffsHandler::class,
     'STRATEGIES' => Dalee\Libs\Tabs\Handlers\StrategiesHandler::class,
     'BENEFITS_SLIDER' => Dalee\Libs\Tabs\Handlers\BenefitsSliderHandler::class,
+    'ACCORDEON' => Dalee\Libs\Tabs\Handlers\AccordeonHandler::class,
 ];
