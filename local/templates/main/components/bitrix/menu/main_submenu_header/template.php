@@ -68,18 +68,10 @@
                     } ?>
                     <? foreach ($arResult['FIRST_LEVEL_MENU']['HIDDEN'] as $hiddenItem) {
                         ?>
-                        <? /*
-                        <li>
-                            <a
-                                class="dropdown-item fw-bold"
-                                href="#spoiler-<?= $hiddenItem['ITEM_INDEX'] ?><?//= $hiddenItem['LINK'] ?>"
-                            ><?= $hiddenItem['TEXT'] ?></a>
-                        </li>
-*/ ?>
                         <li>
                             <a
                                 class="dropdown-item fw-bold  js-dropdown-link"
-                                href="#spoiler-<?= $hiddenItem['ITEM_INDEX'] ?><?//= $notHiddenItem['LINK'] ?>" role="button" aria-expanded="false"
+                                href="#spoiler-<?= $hiddenItem['ITEM_INDEX'] ?>" role="button" aria-expanded="false"
                                 data-bs-toggle="collapse"
                                 aria-controls="spoiler-<?= $hiddenItem['ITEM_INDEX'] ?>"
                             ><?= $hiddenItem['TEXT'] ?>
