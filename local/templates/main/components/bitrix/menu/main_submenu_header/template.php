@@ -53,7 +53,7 @@
                             <li>
                                 <a
                                     class="dropdown-item fw-bold d-inline-flex align-items-center justify-content-between d-xl-none js-dropdown-link"
-                                    href="#spoiler-<?= $notHiddenItem['ITEM_INDEX'] ?><?//= $notHiddenItem['LINK'] ?>" role="button" aria-expanded="false"
+                                    href="#spoiler-<?= $notHiddenItem['ITEM_INDEX'] ?>" role="button" aria-expanded="false"
                                     data-bs-toggle="collapse"
                                     aria-controls="spoiler-<?= $notHiddenItem['ITEM_INDEX'] ?>"
                                 ><?= $notHiddenItem['TEXT'] ?>

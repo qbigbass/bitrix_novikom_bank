@@ -1,11 +1,12 @@
 <?
+
 $aMenuLinks = [
-	[
-		"Все платежи и переводы",
-		"/payments-and-transfers/",
-		[],
-		[],
-		""
+    [
+        "Все платежи и переводы",
+        "/payments-and-transfers/",
+        [],
+        [],
+        ""
     ]
 ];
 ?>
