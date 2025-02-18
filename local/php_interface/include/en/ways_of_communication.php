@@ -1,6 +1,6 @@
 <p>Single reference service:<br>
     <a class="link link-underline" href="tel:<?= preg_replace("/[\s-]/", "", UF_PHONE2) ?>">
-        <?= COption::GetOptionString("novikom.settings", "UF_PHONE2"); ?>
+        <?= UF_PHONE2 ?>
     </a>
 </p>
 <p>For calls from abroad:<br>
