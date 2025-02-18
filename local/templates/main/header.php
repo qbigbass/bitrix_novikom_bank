@@ -126,14 +126,14 @@ $asset->addJs('/frontend/dist/js/accessibility-panel.js');
                                     class="header-contact-link__text d-none d-xxl-inline-block"><?= Loc::getMessage('OFFICES_AND_ATMS_BUTTON_TITLE') ?></span>
                             </a>
                             <a class="header-contact-link text-s dark-100"
-                               href="tel:<?= clearPhoneNumber(MOBIL_PHONE_CONTACT_NUMBER) ?>">
+                               href="tel:<?= clearPhoneNumber(UF_PHONE1) ?>">
                                 <span class="icon size-m d-xxl-none violet-100">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                                         <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-phone"></use>
                                     </svg>
                                 </span>
                                 <span
-                                    class="header-contact-link__text d-none d-xxl-inline-block"><?= MOBIL_PHONE_CONTACT_NUMBER ?></span>
+                                    class="header-contact-link__text d-none d-xxl-inline-block"><?= UF_PHONE1 ?></span>
                             </a>
                         </div>
                         <div class="d-flex column-gap-md-3 column-gap-lg-4 column-gap-xxl-3">
