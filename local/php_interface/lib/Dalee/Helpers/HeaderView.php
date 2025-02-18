@@ -71,20 +71,25 @@ class HeaderView
     private function getHeaderDataFromResult(?array $arResult): array
     {
         if (empty($arResult)) {
-            return [];
+            return [
+                'bgColorClass' => 'bg-linear-blue',
+                'h1ColorClass' => 'dark-0',
+                'breadcrumbsColorClass' => 'text-white-50',
+                'picHeader' => 'img/patterns/section/pattern-light',
+            ];
         }
 
         $result = [
-            'bgColorClass' => !empty($arResult["PROPERTIES"]["HEADER_COLOR_CLASS"]["VALUE"]) ? $arResult["PROPERTIES"]["HEADER_COLOR_CLASS"]["VALUE"] : 'bg-linear-blue',
+            'bgColorClass' => $arResult["PROPERTIES"]["HEADER_COLOR_CLASS"]["VALUE"] ?: 'bg-linear-blue',
             'picture' => $arResult["DETAIL_PICTURE"] ?? null,
             'background' => $arResult["PROPERTIES"]["BANNER_BACKGROUND"]["VALUE"] ?? null,
             'termsProperty' => $arResult["PROPERTIES"]["TERMS"] ?? [],
             'showButton' => $arResult['PROPERTIES']['BUTTON_DETAIL']['VALUE'] ?? false,
             'buttonText' => $arResult['PROPERTIES']['BUTTON_TEXT_DETAIL']['VALUE'] ?? '',
             'buttonHref' => $arResult['PROPERTIES']['BUTTON_HREF_DETAIL']['VALUE'] ?? '',
-            'h1ColorClass' => $arResult["PARAMS_CLASS"]["H1_COLOR_CLASS"] ?? 'dark-0',
-            'breadcrumbsColorClass' => $arResult["PARAMS_CLASS"]["BREADCRUMBS_COLOR_CLASS"] ?? 'text-white-50',
-            'picHeader' => !empty($arResult['PROPERTIES']['HEADER_BG_PICTURE']['VALUE']) ? $arResult['PROPERTIES']['HEADER_BG_PICTURE']['VALUE'] :  'img/patterns/section/pattern-light',
+            'h1ColorClass' => $arResult["PARAMS_CLASS"]["H1_COLOR_CLASS"] ?: 'dark-0',
+            'breadcrumbsColorClass' => $arResult["PARAMS_CLASS"]["BREADCRUMBS_COLOR_CLASS"] ?: 'text-white-50',
+            'picHeader' => $arResult['PROPERTIES']['HEADER_BG_PICTURE']['VALUE'] ?: 'img/patterns/section/pattern-light',
             'buttonCodeForm' => $arResult['PROPERTIES']['BUTTON_CODE_FORM']['VALUE'] ?? '',
         ];
 
@@ -190,11 +195,13 @@ class HeaderView
                 <? } ?>
 
             </div>
-            <picture class="pattern-bg banner-product__pattern">
-                <source srcset="/frontend/dist/<?= $headerData['picHeader'] ?>-s.svg" media="(max-width: 767px)">
-                <source srcset="/frontend/dist/<?= $headerData['picHeader'] ?>-m.svg" media="(max-width: 1199px)">
-                <img src="/frontend/dist/<?= $headerData['picHeader'] ?>-l.svg" alt="bg pattern" loading="lazy">
-            </picture>
+            <? if (!empty($headerData['picHeader'])) { ?>
+                <picture class="pattern-bg banner-product__pattern">
+                    <source srcset="/frontend/dist/<?= $headerData['picHeader'] ?>-s.svg" media="(max-width: 767px)">
+                    <source srcset="/frontend/dist/<?= $headerData['picHeader'] ?>-m.svg" media="(max-width: 1199px)">
+                    <img src="/frontend/dist/<?= $headerData['picHeader'] ?>-l.svg" alt="bg pattern" loading="lazy">
+                </picture>
+            <? } ?>
         </div>
         <? return ob_get_clean();
     }
@@ -202,6 +209,11 @@ class HeaderView
     private function compact(array $headerData, int $chainDepth, ?string $termsHtml): bool|string
     {
         ob_start(); ?>
+
+        <?
+        file_put_contents($_SERVER["DOCUMENT_ROOT"] . "/logs/header_".date("Y_m_d").".txt", "headerData:\n" . print_r($headerData, true), FILE_APPEND);
+        ?>
+
         <section class="banner-text <?= $headerData['bgColorClass'] ?> <?= implode(' ', $headerData['additionalClasses']) ?>">
             <div class="container banner-text__container position-relative z-2">
                 <div class="row ps-lg-6">
@@ -231,11 +243,13 @@ class HeaderView
 
                 </div>
             </div>
-            <picture class="pattern-bg pattern-bg--position-sm-top banner-text__pattern">
-                <source srcset="/frontend/dist/<?= $headerData['picHeader'] ?>-s.svg" media="(max-width: 767px)">
-                <source srcset="/frontend/dist/<?= $headerData['picHeader'] ?>-m.svg" media="(max-width: 1199px)">
-                <img src="/frontend/dist/<?= $headerData['picHeader'] ?>-l.svg" alt="bg pattern" loading="lazy">
-            </picture>
+            <? if (!empty($headerData['picHeader'])) { ?>
+                <picture class="pattern-bg pattern-bg--position-sm-top banner-text__pattern">
+                    <source srcset="/frontend/dist/<?= $headerData['picHeader'] ?>-s.svg" media="(max-width: 767px)">
+                    <source srcset="/frontend/dist/<?= $headerData['picHeader'] ?>-m.svg" media="(max-width: 1199px)">
+                    <img src="/frontend/dist/<?= $headerData['picHeader'] ?>-l.svg" alt="bg pattern" loading="lazy">
+                </picture>
+            <? } ?>
         </section>
         <? return ob_get_clean();
     }

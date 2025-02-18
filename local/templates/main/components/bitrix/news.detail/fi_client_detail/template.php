@@ -348,7 +348,8 @@ $headerView->render(
 <? if (!empty($arResult['PROPERTIES']['QUOTE_TEXT']['VALUE'])) {
     foreach ($arResult['PROPERTIES']['QUOTE_TEXT']['~VALUE'] as $key => $value) {
         if ($key == 0) {
-            renderQuote($value['TEXT']);
+            $classColor = $arResult['PROPERTIES']['QUOTE_TEXT']['DESCRIPTION'][$key];
+            renderQuote($value['TEXT'], classColor: $classColor);
         }
     }
 } ?>
@@ -374,7 +375,8 @@ $headerView->render(
 <? if (!empty($arResult['PROPERTIES']['QUOTE_TEXT']['VALUE'])) {
     foreach ($arResult['PROPERTIES']['QUOTE_TEXT']['~VALUE'] as $key => $value) {
         if ($key == 1) {
-            renderQuote($value['TEXT'], true);
+            $classColor = $arResult['PROPERTIES']['QUOTE_TEXT']['DESCRIPTION'][$key];
+            renderQuote($value['TEXT'], true, $classColor);
         }
     }
 } ?>
@@ -512,7 +514,8 @@ $headerView->render(
 <? if (!empty($arResult['PROPERTIES']['QUOTE_TEXT']['VALUE'])) {
     foreach ($arResult['PROPERTIES']['QUOTE_TEXT']['~VALUE'] as $key => $value) {
         if ($key > 1) {
-            renderQuote($value['TEXT'], $key % 2 != 0);
+            $classColor = $arResult['PROPERTIES']['QUOTE_TEXT']['DESCRIPTION'][$key];
+            renderQuote($value['TEXT'], $key % 2 != 0, $classColor);
         }
     }
 } ?>
