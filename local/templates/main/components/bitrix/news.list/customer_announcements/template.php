@@ -73,12 +73,12 @@ $pathImgBg = $arParams["PATH_IMG_BG"] ?? "/frontend/dist/img/patterns/section-2/
                 </div>
                 <? if (!empty($arParams["SHOW_BLOCK_ABOUT_BANK"])) : ?>
                     <div class="col-12 col-xxl-6 mt-6 mt-xxl-0">
-                    <a class="card-link h3 d-lg-none" href="/about/">О банке
-                        <svg class="icon size-m blue-100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                            <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
-                        </svg>
-                    </a>
-                    <div class="card-about-bank d-none d-lg-flex">
+                        <a class="card-link h3 d-lg-none" href="/about/">О банке
+                            <svg class="icon size-m blue-100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
+                            </svg>
+                        </a>
+                        <div class="card-about-bank d-none d-lg-flex">
                         <div class="card-about-bank__col d-flex flex-column gap-6">
                             <a class="h3" href="/about/">О банке
                                 <svg class="icon size-m blue-100" xmlns="http://www.w3.org/2000/svg" width="100%"
@@ -117,12 +117,12 @@ $pathImgBg = $arParams["PATH_IMG_BG"] ?? "/frontend/dist/img/patterns/section-2/
                             <img src="/frontend/dist/img/patterns/card/pattern-light-l.svg" alt="bg pattern" loading="lazy">
                         </picture>
                     </div>
-                </div>
+                    </div>
                 <? endif; ?>
             </div>
         </div>
         <? if (!empty($pathImgBg)) : ?>
-            <picture class="pattern-bg pattern-bg--hide-mobile">
+            <picture class="pattern-bg pattern-bg--hide-tablet">
                 <source srcset="<?= $pathImgBg ?>-s.svg" media="(max-width: 767px)">
                 <source srcset="<?= $pathImgBg ?>-m.svg" media="(max-width: 1199px)">
                 <img src="<?= $pathImgBg ?>-l.svg" alt="bg pattern" loading="lazy">
