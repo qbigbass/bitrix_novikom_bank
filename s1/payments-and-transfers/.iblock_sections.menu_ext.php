@@ -9,7 +9,7 @@ $aMenuLinksExt = $APPLICATION->IncludeComponent("bitrix:menu.sections", "", arra
     "SECTION_PAGE_URL" => "#SECTION_CODE#/",
     "DETAIL_PAGE_URL" => "#SECTION_CODE#/#ELEMENT_CODE#/",
     "IBLOCK_TYPE" => "for_private_clients_ru",
-    "IBLOCK_ID" => iblock('loans'),
+    "IBLOCK_ID" => iblock('payments_and_transfers'),
     "DEPTH_LEVEL" => "1",
     "CACHE_TYPE" => "A",
     "CACHE_TIME" => "36000000"
@@ -17,7 +17,7 @@ $aMenuLinksExt = $APPLICATION->IncludeComponent("bitrix:menu.sections", "", arra
     false
 );
 
-$aMenuLinksElementsExt = IblockHelper::getIblockMenuWithoutSections('loans', '/loans/');
+$aMenuLinksElementsExt = IblockHelper::getIblockMenuWithoutSections('payments_and_transfers', '/payments-and-transfers/');
 
 $aMenuLinks = array_merge($aMenuLinks, $aMenuLinksExt, $aMenuLinksElementsExt);
 ?>

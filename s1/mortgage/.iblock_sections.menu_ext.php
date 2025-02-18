@@ -1,13 +1,13 @@
 <?php
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
-
+use Dalee\Helpers\IblockHelper;
 global $APPLICATION;
 
 $aMenuLinksExt = $APPLICATION->IncludeComponent("bitrix:menu.sections", "", [
     "IS_SEF" => "Y",
     "SEF_BASE_URL" => "",
     "SECTION_PAGE_URL" => "#SECTION_CODE#/",
-    "DETAIL_PAGE_URL" => "#SECTION_CODE#/#ELEMENT_CODE#",
+    "DETAIL_PAGE_URL" => "#SECTION_CODE#/#ELEMENT_CODE#/",
     "IBLOCK_TYPE" => "for_private_clients_ru",
     "IBLOCK_ID" => iblock('mortgage'),
     "DEPTH_LEVEL" => "1",
@@ -17,5 +17,7 @@ $aMenuLinksExt = $APPLICATION->IncludeComponent("bitrix:menu.sections", "", [
     false
 );
 
-$aMenuLinks = array_merge($aMenuLinks, $aMenuLinksExt);
+$aMenuLinksElementsExt = IblockHelper::getIblockMenuWithoutSections('mortgage', '/mortgage/');
+
+$aMenuLinks = array_merge($aMenuLinks, $aMenuLinksExt,$aMenuLinksElementsExt);
 ?>
