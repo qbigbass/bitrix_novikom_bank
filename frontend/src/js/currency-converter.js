@@ -87,7 +87,7 @@ function calculateResultCurrency({value, from, to}, STATE) {
 
 function handlerFocusInputCurrency(e) {
     if (e.target.value.trim() !== '') {
-        e.target.value = convertCurrencyToNumber(e.target.value);
+        e.target.value = e.target.value.replace(/\s/g, '');
     }
 }
 

@@ -97,16 +97,18 @@
                     </div>
                 <? endforeach; ?>
             </div>
-            <p class="dark-70 pt-4 text-s mb-0">Банк оставляет за&nbsp;собой право на&nbsp;изменение курса
-                купли-продажи иностранной валюты.<br>Действующие на&nbsp;момент совершения операций курсы
-                уточняйте в&nbsp;отделениях банка.<br>Список отделений доступен по
-                <a href="/map/offices/"
-                   tabindex="0"
-                   id="linkToList"
-                   aria-label="Перейти к списку отделений">ссылке</a>
-            </p>
-            <p class="dark-70 pt-3 text-s mb-0">Покупка и&nbsp;продажа фунтов стерлингов и&nbsp;швейцарских
-                франков осуществляется только в&nbsp;ДО&nbsp;&laquo;Якиманка&raquo;.</p>
+            <div class="d-none d-xl-block">
+                <p class="dark-70 pt-4 text-s mb-0">Банк оставляет за&nbsp;собой право на&nbsp;изменение курса
+                    купли-продажи иностранной валюты.<br>Действующие на&nbsp;момент совершения операций курсы
+                    уточняйте в&nbsp;отделениях банка.<br>Список отделений доступен по
+                    <a href="/map/offices/"
+                       tabindex="0"
+                       id="linkToList"
+                       aria-label="Перейти к списку отделений">ссылке</a>
+                </p>
+                <p class="dark-70 pt-3 text-s mb-0">Покупка и&nbsp;продажа фунтов стерлингов и&nbsp;швейцарских
+                    франков осуществляется только в&nbsp;ДО&nbsp;&laquo;Якиманка&raquo;.</p>
+            </div>
         </div>
         <div class="col-12 col-xl-4 mt-4">
             <div
@@ -156,6 +158,18 @@
                         <span class="caption-m dark-70 mt-2 d-block js-currency-unit-get" aria-live="polite"></span>
                     </div>
                 </div>
+            </div>
+            <div class="d-xl-none">
+                <p class="dark-70 pt-4 text-s mb-0">Банк оставляет за&nbsp;собой право на&nbsp;изменение курса
+                    купли-продажи иностранной валюты.<br>Действующие на&nbsp;момент совершения операций курсы
+                    уточняйте в&nbsp;отделениях банка.<br>Список отделений доступен по
+                    <a href="/map/offices/"
+                       tabindex="0"
+                       id="linkToList"
+                       aria-label="Перейти к списку отделений">ссылке</a>
+                </p>
+                <p class="dark-70 pt-3 text-s mb-0">Покупка и&nbsp;продажа фунтов стерлингов и&nbsp;швейцарских
+                    франков осуществляется только в&nbsp;ДО&nbsp;&laquo;Якиманка&raquo;.</p>
             </div>
         </div>
     </div>
