@@ -1,14 +1,12 @@
 <?php
 namespace Dalee\Libs\Tabs\Handlers;
 
-use Bitrix\Iblock\ElementTable;
 use Bitrix\Iblock\SectionTable;
-use CFile;
 use Dalee\Helpers\IblockHelper;
 use Dalee\Libs\Tabs\Interfaces\PropertyHandlerInterface;
 use Dalee\Libs\Tabs\TabContent;
 
-class AccordeonHandler implements PropertyHandlerInterface
+class AccordionHandler implements PropertyHandlerInterface
 {
     private array $elements;
     private int $iblockId;
@@ -41,7 +39,7 @@ class AccordeonHandler implements PropertyHandlerInterface
                         data-bs-toggle="collapse"
                         data-bs-target="#<?= $element['ID'] ?>"
                         aria-controls="<?= $element['ID'] ?>"
-                        data-item-name="<?= $element['NAME'] ?>"
+                        data-item-name="<?= htmlspecialchars($element['~NAME']) ?>"
                     >
                         <span class="h4"><?= $element['NAME'] ?></span>
                     </button>
@@ -96,5 +94,4 @@ class AccordeonHandler implements PropertyHandlerInterface
     {
         return TabContent::render($element['DETAIL_TEXT'], $element['PROPERTIES'], $element['ID'], true, $element, true);
     }
-
 }

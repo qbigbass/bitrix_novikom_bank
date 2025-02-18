@@ -8,12 +8,12 @@ class TabContent
     private static string $openedRteTag = '<div class="rte">';
     private static string $closedRteTag = '</div>';
 
-    public static function render(string $detailText, array $displayProperties, ?int $elementId = null, bool $useRteTag = true, ?array $element = null, bool $isAccordeon = false): string
+    public static function render(string $detailText, array $displayProperties, ?int $elementId = null, bool $useRteTag = true, ?array $element = null, bool $isAccordion = false): string
     {
         $tab = new TabContent();
         $conf = require 'config/handlers.php';
 
-        if (preg_match('/#ACCORDEON\|([^#]+)#/', $detailText, $matches) || $isAccordeon) {
+        if (preg_match('/#ACCORDION\|([^#]+)#/', $detailText, $matches) || $isAccordion) {
             self::$openedRteTag = '<div class="rte rte--accordion">';
         }
 
@@ -35,7 +35,7 @@ class TabContent
         }
 
         if (!empty($matches)) {
-            $class = $conf['ACCORDEON'];
+            $class = $conf['ACCORDION'];
             $placeHolder = $matches[0];
             $elementCodes = explode('|', $matches[1]);
             $handler = new $class($elementCodes);
