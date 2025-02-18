@@ -133,14 +133,20 @@ function initHeroBanner() {
 
     if (!banner) return;
 
+    const thumbsHero = document.querySelector(CLASS_NAME.thumbsHero);
+    const numSlides = banner.querySelectorAll('.swiper-slide').length;
     const autoplayDelay = banner.dataset.autoplayDelay;
 
-    const thumbs = new Swiper(CLASS_NAME.thumbsHero, {
-        spaceBetween: 0,
-        slidesPerView: 4,
-        freeMode: false,
-        watchSlidesProgress: true,
-    });
+    if (numSlides <= 1) thumbsHero.hidden = true;
+
+    const thumbs = {
+        swiper: new Swiper(CLASS_NAME.thumbsHero, {
+            spaceBetween: 0,
+            slidesPerView: 4,
+            freeMode: false,
+            watchSlidesProgress: true,
+        })
+    }
 
     new Swiper(CLASS_NAME.bannerHero, {
         autoplay: {
@@ -148,9 +154,7 @@ function initHeroBanner() {
         },
         loop: true,
         freeMode: false,
-        thumbs: {
-            swiper: thumbs,
-        },
+        thumbs: numSlides > 1 ? thumbs : false,
         pagination: {
             el: ".banner-hero-pagination",
             type: "bullets",

@@ -76,7 +76,7 @@ $headerColorClass = 'banner-product--heavy-violet';
                     <div class="polygon-container js-polygon-container">
                         <div class="polygon-container__content">
                             <div class="helper bg-dark-10">
-                                <div class="helper__wrapper d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-4 gap-lg-6"><img class="helper__image w-auto float-end" src="/frontend/dist/img/restructuring-additional-info.png" alt="" loading="lazy">
+                                <div class="helper__wrapper d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-4 gap-lg-6"><img class="helper__image w-auto float-end" src="/frontend/dist/img/restructuring-additional-info.png" alt="">
                                     <div class="helper__content text-l">
                                         <h4 class="mb-3"><?= $arResult['PROPERTIES']['QUOTE_HEADER']['~VALUE'] ?></h4>
                                         <p class="mb-0"><?= $arResult['PROPERTIES']['QUOTE_TEXT']['VALUE']['TEXT'] ?></p>

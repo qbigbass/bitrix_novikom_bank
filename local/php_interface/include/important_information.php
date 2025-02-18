@@ -5,7 +5,7 @@
                 <div class="polygon-container js-polygon-container">
                     <div class="polygon-container__content">
                         <div class="helper bg-dark-10">
-                            <div class="helper__wrapper d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-4 gap-lg-6"><img class="helper__image w-auto float-end" src="/frontend/dist/img/restructuring-additional-info.png" alt="Обратите внимание" loading="lazy">
+                            <div class="helper__wrapper d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-4 gap-lg-6"><img class="helper__image w-auto float-end" src="/frontend/dist/img/restructuring-additional-info.png" alt="Обратите внимание">
                                 <div class="helper__content text-l">
                                     <h3 class="h4 mb-3">Важная информация от Банка России</h3>
                                     <a class="text-lg fw-semibold link link-underline" href="https://cbr.ru/faq/information_security/">Вопросы и ответы</a>
