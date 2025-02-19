@@ -57,7 +57,7 @@ $this->setFrameMode(true);
                             <input class="form-control" type="text" id="offices-search-input" placeholder="Поиск по городу или адресу" aria-label="Поиск по городу или адресу" aria-describedby="input-search">
                         </div>
                     </div>
-                    <button class="btn btn-outline-primary btn-icon-alone" type="button" data-bs-toggle="modal" data-bs-target="#modal-offices-filters">
+                    <button class="btn btn-outline-primary btn-icon-alone" type="button" data-bs-toggle="modal" data-bs-target="#modal-offices-filters" id="button-filters">
                         <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                             <use xlink:href="/frontend/dist/img/svg-sprite.svg?v=2#icon-filters"></use>
                         </svg>

@@ -13,6 +13,7 @@ const ELEMS_DEPOSIT = {
     replenishmentTemplate: '#replenishment-template',
     currencyList: '.js-tabs-currency',
     currencyButton: '.nav-link',
+    currencyButtonWrapper: '.nav-item',
     inputCapitalization: '.js-input-deposit-capitalization',
     selectName: '.js-select-deposit-name',
     name: '.js-program-name',
@@ -99,7 +100,7 @@ function createCurrencyTab(currency, STATE) {
     return tab;
 }
 function createCurrencyList(STATE) {
-    const tabs = STATE.elements.currencyList.querySelectorAll(ELEMS_DEPOSIT.currencyButton);
+    const tabs = STATE.elements.currencyList.querySelectorAll(ELEMS_DEPOSIT.currencyButtonWrapper);
     tabs.forEach((tab) => tab.remove());
     const uniqueCurrencies = [];
 

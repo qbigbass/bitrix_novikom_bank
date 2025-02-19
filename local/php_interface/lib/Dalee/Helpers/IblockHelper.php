@@ -238,6 +238,50 @@ class IblockHelper
         return $enumList;
     }
 
+    /**
+     * Получаем элементы ИБ без разделов, для построения верхнего меню
+     *
+     * @param string $iblockCode
+     * @param string|null $dir
+     * @return array
+     */
+    public static function getIblockMenuWithoutSections(string $iblockCode, ?string $dir): array
+    {
+        $return = [];
+        $elements = ElementTable::GetList([
+            "select" => ["ID", "NAME", "CODE"],
+            "filter" => [
+                "IBLOCK_ID" => iblock($iblockCode),
+                'IBLOCK_SECTION_ID' => false,
+                "ACTIVE" => "Y"
+            ],
+        ])->fetchAll();
+
+        foreach ($elements as $element) {
+            $link = $dir . $element["CODE"] . "/";
+            $return[] = [
+                $element["NAME"],
+                $link,
+                [],
+                ["show_only_in_header" => "Y"]
+            ];
+        }
+        return $return;
+    }
+
+    /**
+     * Получаем Элементы ИБ по фильтру. Используется в комплексным компонентах, для получения элементов по коду
+     *
+     * @param array $filter
+     * @return array
+     */
+    public static function getIblockElementByFilter(array $filter): array
+    {
+        return ElementTable::GetList([
+            "filter" => $filter,
+        ])->fetchAll();
+    }
+
     public static function onAfterIblockElementUpdateHandler(&$arFields)
     {
         global $DB, $CACHE_MANAGER;

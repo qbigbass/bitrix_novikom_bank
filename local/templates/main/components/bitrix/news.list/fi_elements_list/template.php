@@ -162,7 +162,7 @@ use Bitrix\Main\Localization\Loc;
                                                 <div class="polygon-container__content">
                                                     <div class="helper <?if(preg_match('/bg-dark/', $item["SECTION_BACKGROUND_CLASS_STYLE"])):?>bg-white<?else:?>bg-dark-30<?endif;?>">
                                                         <div class="helper__wrapper d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-4 gap-lg-6">
-                                                            <img class="helper__image w-auto float-end" src="<?= $arBlocks["QUOTES"]["POS_0"]["PICTURE"] ?>" alt="Обратите внимание" loading="lazy">
+                                                            <img class="helper__image w-auto float-end" src="<?= $arBlocks["QUOTES"]["POS_0"]["PICTURE"] ?>" alt="Обратите внимание">
                                                             <div class="helper__content text-l">
                                                                 <?if(!empty($arBlocks["QUOTES"]["POS_0"]["TITLE"])):?>
                                                                     <h4 class="mb-3"><?= $arBlocks["QUOTES"]["POS_0"]["TITLE"] ?></h4>
@@ -218,7 +218,7 @@ use Bitrix\Main\Localization\Loc;
                                             <div class="polygon-container__content">
                                                 <div class="helper <?if(preg_match('/bg-dark/', $item["SECTION_BACKGROUND_CLASS_STYLE"])):?>bg-white<?else:?>bg-dark-30<?endif;?>">
                                                     <div class="helper__wrapper d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-4 gap-lg-6">
-                                                        <img class="helper__image w-auto float-end" src="<?= $arBlocks["QUOTES"]["POS_1"]["PICTURE"] ?>" alt="Обратите внимание" loading="lazy">
+                                                        <img class="helper__image w-auto float-end" src="<?= $arBlocks["QUOTES"]["POS_1"]["PICTURE"] ?>" alt="Обратите внимание">
                                                         <div class="helper__content text-l">
                                                             <?if(!empty($arBlocks["QUOTES"]["POS_1"]["TITLE"])):?>
                                                                 <h4 class="mb-3"><?= $arBlocks["QUOTES"]["POS_1"]["TITLE"] ?></h4>

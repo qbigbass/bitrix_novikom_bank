@@ -73,7 +73,6 @@ use Bitrix\Main\Localization\Loc;
                                                 class="helper__image w-auto float-end"
                                                 src="<?= $quote["PICTURE"] ?>"
                                                 alt="<?= $quote["TITLE"] ?>"
-                                                loading="lazy"
                                             >
                                             <div class="helper__content text-l">
                                                 <? if(!empty($quote["TITLE"])): ?>
@@ -659,7 +658,7 @@ use Bitrix\Main\Localization\Loc;
                                                                         <div class="polygon-container__content">
                                                                             <div class="helper bg-blue-10">
                                                                                 <div class="helper__wrapper d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-4 gap-lg-6">
-                                                                                    <img class="helper__image w-auto float-end" src="<?= $arElements["PICTURE"] ?>" alt="" loading="lazy">
+                                                                                    <img class="helper__image w-auto float-end" src="<?= $arElements["PICTURE"] ?>" alt="">
                                                                                     <div class="helper__content text-l">
                                                                                         <p class="text-l mb-0"><?= $arElements["TEXT"] ?></p>
                                                                                     </div>
@@ -692,7 +691,7 @@ use Bitrix\Main\Localization\Loc;
                                                                         <div class="polygon-container__content">
                                                                             <div class="helper bg-blue-10">
                                                                                 <div class="helper__wrapper d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-4 gap-lg-6">
-                                                                                    <img class="helper__image w-auto float-end" src="<?= $arElements["PICTURE"] ?>" alt="" loading="lazy">
+                                                                                    <img class="helper__image w-auto float-end" src="<?= $arElements["PICTURE"] ?>" alt="">
                                                                                     <div class="helper__content text-l">
                                                                                         <p class="text-l mb-0"><?= $arElements["TEXT"] ?></p>
                                                                                     </div>
@@ -766,7 +765,7 @@ use Bitrix\Main\Localization\Loc;
                                                                             <div class="polygon-container__content">
                                                                                 <div class="helper bg-blue-10">
                                                                                     <div class="helper__wrapper d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-4 gap-lg-6">
-                                                                                        <img class="helper__image w-auto float-end" src="<?= $arElements["PICTURE"] ?>" alt="" loading="lazy">
+                                                                                        <img class="helper__image w-auto float-end" src="<?= $arElements["PICTURE"] ?>" alt="">
                                                                                         <div class="helper__content text-l">
                                                                                             <p class="text-l mb-0"><?= $arElements["TEXT"] ?></p>
                                                                                         </div>
@@ -800,7 +799,7 @@ use Bitrix\Main\Localization\Loc;
                                                                         <div class="polygon-container__content">
                                                                             <div class="helper bg-blue-10">
                                                                                 <div class="helper__wrapper d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-4 gap-lg-6">
-                                                                                    <img class="helper__image w-auto float-end" src="<?= $arElements["PICTURE"] ?>" alt="" loading="lazy">
+                                                                                    <img class="helper__image w-auto float-end" src="<?= $arElements["PICTURE"] ?>" alt="">
                                                                                     <div class="helper__content text-l">
                                                                                         <p class="text-l mb-0"><?= $arElements["TEXT"] ?></p>
                                                                                     </div>
@@ -835,7 +834,7 @@ use Bitrix\Main\Localization\Loc;
                                                                         <div class="polygon-container__content">
                                                                             <div class="helper bg-blue-10">
                                                                                 <div class="helper__wrapper d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-4 gap-lg-6">
-                                                                                    <img class="helper__image w-auto float-end" src="<?= $arElements["PICTURE"] ?>" alt="" loading="lazy">
+                                                                                    <img class="helper__image w-auto float-end" src="<?= $arElements["PICTURE"] ?>" alt="">
                                                                                     <div class="helper__content text-l">
                                                                                         <p class="text-l mb-0"><?= $arElements["TEXT"] ?></p>
                                                                                     </div>
@@ -870,7 +869,7 @@ use Bitrix\Main\Localization\Loc;
                                                                         <div class="polygon-container__content">
                                                                             <div class="helper bg-blue-10">
                                                                                 <div class="helper__wrapper d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-4 gap-lg-6">
-                                                                                    <img class="helper__image w-auto float-end" src="<?= $arElements["PICTURE"] ?>" alt="" loading="lazy">
+                                                                                    <img class="helper__image w-auto float-end" src="<?= $arElements["PICTURE"] ?>" alt="">
                                                                                     <div class="helper__content text-l">
                                                                                         <p class="text-l mb-0"><?= $arElements["TEXT"] ?></p>
                                                                                     </div>
@@ -904,7 +903,7 @@ use Bitrix\Main\Localization\Loc;
                                                                         <div class="polygon-container__content">
                                                                             <div class="helper bg-blue-10">
                                                                                 <div class="helper__wrapper d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-4 gap-lg-6">
-                                                                                    <img class="helper__image w-auto float-end" src="<?= $arElements["PICTURE"] ?>" alt="" loading="lazy">
+                                                                                    <img class="helper__image w-auto float-end" src="<?= $arElements["PICTURE"] ?>" alt="">
                                                                                     <div class="helper__content text-l">
                                                                                         <p class="text-l mb-0"><?= $arElements["TEXT"] ?></p>
                                                                                     </div>
@@ -938,7 +937,7 @@ use Bitrix\Main\Localization\Loc;
                                                                         <div class="polygon-container__content">
                                                                             <div class="helper bg-blue-10">
                                                                                 <div class="helper__wrapper d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-4 gap-lg-6">
-                                                                                    <img class="helper__image w-auto float-end" src="<?= $arElements["PICTURE"] ?>" alt="" loading="lazy">
+                                                                                    <img class="helper__image w-auto float-end" src="<?= $arElements["PICTURE"] ?>" alt="">
                                                                                     <div class="helper__content text-l">
                                                                                         <p class="text-l mb-0"><?= $arElements["TEXT"] ?></p>
                                                                                     </div>
@@ -1010,7 +1009,7 @@ use Bitrix\Main\Localization\Loc;
                                                                         <div class="polygon-container__content">
                                                                             <div class="helper bg-blue-10">
                                                                                 <div class="helper__wrapper d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-4 gap-lg-6">
-                                                                                    <img class="helper__image w-auto float-end" src="<?= $arElements["PICTURE"] ?>" alt="" loading="lazy">
+                                                                                    <img class="helper__image w-auto float-end" src="<?= $arElements["PICTURE"] ?>" alt="">
                                                                                     <div class="helper__content text-l">
                                                                                         <p class="text-l mb-0"><?= $arElements["TEXT"] ?></p>
                                                                                     </div>
