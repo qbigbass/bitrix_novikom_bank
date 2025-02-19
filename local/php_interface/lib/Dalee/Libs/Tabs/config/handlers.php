@@ -18,9 +18,9 @@ return [
     'QUESTIONS' => Dalee\Libs\Tabs\Handlers\QuestionsHandler::class,
     'QUOTES' => Dalee\Libs\Tabs\Handlers\QuotesHandler::class,
     'HTML' => Dalee\Libs\Tabs\Handlers\HtmlFieldHandler::class,
-    'COMPLEX_PROP' => Dalee\Libs\Tabs\Handlers\ComplexPropertyHandler::class,
     'CONDITIONS_TABS' => Dalee\Libs\Tabs\Handlers\ConditionTabsHandler::class,
     'TARIFFS' => Dalee\Libs\Tabs\Handlers\TariffsHandler::class,
     'STRATEGIES' => Dalee\Libs\Tabs\Handlers\StrategiesHandler::class,
     'BENEFITS_SLIDER' => Dalee\Libs\Tabs\Handlers\BenefitsSliderHandler::class,
+    'ACCORDION' => Dalee\Libs\Tabs\Handlers\AccordionHandler::class,
 ];

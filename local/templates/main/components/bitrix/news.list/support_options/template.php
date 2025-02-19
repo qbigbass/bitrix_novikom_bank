@@ -96,34 +96,68 @@ $this->setFrameMode(true);
                                     <? } ?>
                                 <? }
 
-                                if ($property['CODE'] == 'STEPS' && !empty($property['~VALUE'])) { ?>
-                                    <div class="row row-gap-6">
-                                        <? if (!empty($item['DISPLAY_PROPERTIES']['STEPS_HEADER']['~VALUE'])) { ?>
-                                            <h5><?= $item['DISPLAY_PROPERTIES']['STEPS_HEADER']['~VALUE'] ?></h5>
-                                        <? } ?>
-                                        <div class="stepper steps-3">
-                                            <?foreach ($property['~VALUE'] as $index => $value) {?>
-                                                <div class="stepper-item stepper-item--color-orange">
-                                                    <div class="stepper-item__header">
-                                                        <div class="stepper-item__number">
-                                                            <div class="stepper-item__number-value"><?=$index + 1?></div>
-                                                            <div class="stepper-item__number-icon">
-                                                                <?=getStepperIcons($index)?>
-                                                            </div>
-                                                        </div>
-                                                        <div class="stepper-item__arrow"></div>
-                                                    </div>
-                                                    <div class="stepper-item__content">
-                                                        <p class="text-l mb-0"><?=$value['TEXT']?></p>
-                                                    </div>
-                                                </div>
-                                            <?}?>
-                                        </div>
-                                    </div>
-                                    <? if ($propertyKey != array_key_last($item['DISPLAY_PROPERTIES'])) { ?>
+                                if ($property['CODE'] == 'STEPS' && !empty($property['~VALUE'])) {
+                                    $APPLICATION->IncludeComponent(
+                                        "bitrix:news.list",
+                                        "steps",
+                                        [
+                                            "ACTIVE_DATE_FORMAT" => "d.m.Y",
+                                            "ADD_SECTIONS_CHAIN" => "N",
+                                            "AJAX_MODE" => "N",
+                                            "AJAX_OPTION_ADDITIONAL" => "",
+                                            "AJAX_OPTION_HISTORY" => "N",
+                                            "AJAX_OPTION_JUMP" => "N",
+                                            "AJAX_OPTION_STYLE" => "Y",
+                                            "CACHE_FILTER" => "Y",
+                                            "CACHE_GROUPS" => "Y",
+                                            "CACHE_TIME" => "36000000",
+                                            "CACHE_TYPE" => "A",
+                                            "CHECK_DATES" => "Y",
+                                            "DETAIL_URL" => "",
+                                            "DISPLAY_BOTTOM_PAGER" => "Y",
+                                            "DISPLAY_TOP_PAGER" => "N",
+                                            "FIELD_CODE" => ["CODE", "NAME", "PREVIEW_TEXT", "PREVIEW_PICTURE", ""],
+                                            "FILTER_NAME" => "",
+                                            "HIDE_LINK_WHEN_NO_DETAIL" => "N",
+                                            "IBLOCK_ID" => iblock('steps'),
+                                            "IBLOCK_TYPE" => "additional",
+                                            "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+                                            "INCLUDE_SUBSECTIONS" => "Y",
+                                            "MESSAGE_404" => "",
+                                            "NEWS_COUNT" => "20",
+                                            "PAGER_BASE_LINK_ENABLE" => "N",
+                                            "PAGER_DESC_NUMBERING" => "N",
+                                            "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+                                            "PAGER_SHOW_ALL" => "N",
+                                            "PAGER_SHOW_ALWAYS" => "N",
+                                            "PAGER_TEMPLATE" => "square",
+                                            "PAGER_TITLE" => "Новости",
+                                            "PARENT_SECTION" => $property['~VALUE'],
+                                            "STEPS_HEADER" => $arResult['PROPERTIES']['STEPS_HEADER']['~VALUE'],
+                                            "STEPS_TEMPLATE" => 'variants',
+                                            "PARENT_SECTION_CODE" => "",
+                                            "PREVIEW_TRUNCATE_LEN" => "",
+                                            "PROPERTY_CODE" => "",
+                                            "SET_BROWSER_TITLE" => "N",
+                                            "SET_LAST_MODIFIED" => "N",
+                                            "SET_META_DESCRIPTION" => "N",
+                                            "SET_META_KEYWORDS" => "N",
+                                            "SET_STATUS_404" => "N",
+                                            "SET_TITLE" => "N",
+                                            "SHOW_404" => "N",
+                                            "SORT_BY1" => "ACTIVE_FROM",
+                                            "SORT_BY2" => "SORT",
+                                            "SORT_ORDER1" => "DESC",
+                                            "SORT_ORDER2" => "ASC",
+                                            "STRICT_SECTION_CHECK" => "N",
+                                        ],
+                                        $component,
+                                        ["HIDE_ICONS" => "Y"]
+                                    );
+                                    if ($propertyKey != array_key_last($item['DISPLAY_PROPERTIES'])) { ?>
                                         <span class="border-bottom-dashed" aria-hidden="true"></span>
-                                    <? } ?>
-                                <?}
+                                    <? }
+                                }
 
                                 if ($property['CODE'] == 'QUOTE' && !empty($property['~VALUE'])) { ?>
                                     <div class="row">
@@ -132,7 +166,7 @@ $this->setFrameMode(true);
                                                 <div class="polygon-container__content">
                                                     <div class="helper bg-white">
                                                         <div class="helper__wrapper d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-4 gap-lg-6">
-                                                            <img class="helper__image w-auto float-end" src="/frontend/dist/img/restructuring-additional-info_orange.png" alt="Обратите внимание" loading="lazy">
+                                                            <img class="helper__image w-auto float-end" src="/frontend/dist/img/restructuring-additional-info_orange.png" alt="Обратите внимание">
                                                             <div class="helper__content text-l">
                                                                 <p><?= $property['~VALUE']['TEXT'] ?></p>
                                                             </div>

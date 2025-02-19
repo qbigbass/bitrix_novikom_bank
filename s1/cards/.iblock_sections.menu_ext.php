@@ -26,7 +26,8 @@ $aMenuLinksExt = $APPLICATION->IncludeComponent(
 $elements = ElementTable::GetList([
     "select" => ["ID", "NAME", "CODE"],
     "filter" => [
-        "IBLOCK_ID" => iblock("bonus_programs_ru"),
+        "IBLOCK_ID" => iblock("cards_detail_pages_ru"),
+        'IBLOCK_SECTION_ID' => false,
         "ACTIVE" => "Y"
     ],
 ])->fetchAll();
@@ -34,7 +35,7 @@ $elements = ElementTable::GetList([
 foreach ($elements as $element) {
     $aMenuLinksExt[] = [
         $element["NAME"],
-        "/bonus-programs/" . $element["CODE"] . "/",
+        "/cards/" . $element["CODE"] . "/",
         [],
         ["show_only_in_header" => "Y"]
     ];

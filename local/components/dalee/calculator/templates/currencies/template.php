@@ -111,7 +111,19 @@
         <div class="col-12 col-xl-4 mt-4">
             <div
                 class="d-flex flex-column gap-4 gap-lg-5 gap-xl-4 bg-dark-0 rounded-3 px-3 py-4 p-md-5 px-lg-6 p-xl-6">
-                <h4>Предварительный расчет</h4>
+                <div class="d-flex flex-column flex-lg-row flex-xl-column gap-4 justify-content-between">
+                    <h4>Предварительный расчет</h4>
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item flex-grow-1 text-center">
+                            <input class="visually-hidden" type="radio" id="sell" name="TYPE_RATE" value="sell" checked>
+                            <label class="nav-link active" for="sell" data-bs-toggle="tab" aria-selected="true">Продать</label>
+                        </li>
+                        <li class="nav-item flex-grow-1 text-center">
+                            <input class="visually-hidden" type="radio" id="buy" name="TYPE_RATE" value="buy">
+                            <label class="nav-link" for="buy" data-bs-toggle="tab" aria-selected="false">Купить</label>
+                        </li>
+                    </ul>
+                </div>
                 <div class="row">
                     <div class="col-12 col-md-6 col-xl-12">
                         <label class="form-label" for="have">У вас есть</label>
@@ -120,13 +132,13 @@
                                    name="you_have" placeholder="">
                             <div class="input-group__currency">
                                 <select class="form-select js-select js-currency-select-have" aria-label="Выберите валюту">
-                                    <option selected value="RUB">RUB</option>
+                                    <option value="RUB">RUB</option>
+                                    <option value="CNY" selected>CNY</option>
                                     <option value="USD">USD</option>
-                                    <option value="CNY">CNY</option>
                                 </select>
                             </div>
                         </div>
-                        <span class="caption-m dark-70 mt-2 d-block js-currency-unit-have" >1 RUB = 0,01 USD</span>
+                        <span class="caption-m dark-70 mt-2 d-block js-currency-unit-have" aria-live="polite"></span>
                     </div>
                     <div class="col-12 col-md-6 col-xl-12 mt-4 mt-md-0 mt-xl-4">
                         <label class="form-label" for="get">Вы получите</label>
@@ -135,13 +147,13 @@
                                    placeholder="">
                             <div class="input-group__currency">
                                 <select class="form-select js-select js-currency-select-get" aria-label="Выберите валюту">
-                                    <option value="RUB">RUB</option>
-                                    <option value="USD" selected>USD</option>
+                                    <option value="RUB" selected>RUB</option>
                                     <option value="CNY">CNY</option>
+                                    <option value="USD">USD</option>
                                 </select>
                             </div>
                         </div>
-                        <span class="caption-m dark-70 mt-2 d-block js-currency-unit-get">1 USD = 97 RUB</span>
+                        <span class="caption-m dark-70 mt-2 d-block js-currency-unit-get" aria-live="polite"></span>
                     </div>
                 </div>
             </div>

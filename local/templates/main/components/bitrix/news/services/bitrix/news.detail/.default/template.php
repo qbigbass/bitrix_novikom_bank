@@ -213,9 +213,10 @@ $helper = new ComponentHelper($component);
     </section>
 <?endif;?>
 
-<?if(!empty($arResult['DISPLAY_PROPERTIES']['HTML']['~VALUE'])): ?>
+<?if(!empty($arResult['DISPLAY_PROPERTIES']['HTML']['~VALUE']['TEXT'])):
+    ?>
     <section class="section-layout bg-dark-10">
-        <?=$arResult['DISPLAY_PROPERTIES']['HTML']['~VALUE']?>
+        <?=$arResult['DISPLAY_PROPERTIES']['HTML']['~VALUE']['TEXT']?>
     </section>
 <?endif;?>
 

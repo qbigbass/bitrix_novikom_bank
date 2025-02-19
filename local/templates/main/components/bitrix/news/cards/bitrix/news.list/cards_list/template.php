@@ -36,11 +36,11 @@ $this->setFrameMode(true);
                                     <h2 class="card-product-list__title text-break"><?=$arItem['NAME']?></h2>
                                 </a>
                             </div>
-                            <div class="card-product-list__condition-list w-100 w-lg-auto d-flex justify-content-between justify-content-lg-start flex-column flex-sm-row flex-wrap row-gap-4 row-gap-sm-6 row-gap-lg-6 row-gap-xxl-6 gap-xl-12 gap-xxl-16">
-                                <?foreach($arItem['UF_SHORT_CONDITIONS'] as $condition){?>
-                                    <?=getStylizedCardCondition($condition)?>
-                                <?}?>
-                            </div>
+                            <? if (!empty($arItem['UF_CARD_SHORT_CONDITIONS'])) : ?>
+                                <div class="card-product-list__condition-list w-100 w-lg-auto d-flex justify-content-between justify-content-lg-start flex-column flex-sm-row flex-wrap row-gap-4 row-gap-sm-6 row-gap-lg-6 row-gap-xxl-6 gap-xl-12 gap-xxl-16">
+                                    <?= htmlspecialchars_decode($arItem['UF_CARD_SHORT_CONDITIONS']) ?>
+                                </div>
+                            <? endif; ?>
                             <div class="d-flex flex-column flex-sm-row align-items-center gap-5 gap-sm-6 w-100">
                                 <?if($arItem['UF_SHOW_BUTTON']) {?>
                                     <button

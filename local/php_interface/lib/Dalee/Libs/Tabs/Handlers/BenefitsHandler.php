@@ -26,6 +26,7 @@ class BenefitsHandler implements PropertyHandlerInterface
         }
 
         ob_start();
+        echo '<span class="row">';
         $GLOBALS['APPLICATION']->IncludeComponent(
             "bitrix:news.list",
             $template,
@@ -89,6 +90,7 @@ class BenefitsHandler implements PropertyHandlerInterface
                 "STRICT_SECTION_CHECK" => "N",
             ]
         );
+        echo '</span>';
         $displayValue = ob_get_contents();
         ob_end_clean();
 

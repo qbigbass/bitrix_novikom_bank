@@ -1,13 +1,13 @@
 <?php
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
-
+use Dalee\Helpers\IblockHelper;
 global $APPLICATION;
 
 $aMenuLinksExt = $APPLICATION->IncludeComponent("bitrix:menu.sections", "", array(
     "IS_SEF" => "Y",
     "SEF_BASE_URL" => "",
     "SECTION_PAGE_URL" => "#SECTION_CODE#/",
-    "DETAIL_PAGE_URL" => "#SECTION_CODE#/#ELEMENT_CODE#",
+    "DETAIL_PAGE_URL" => "#SECTION_CODE#/#ELEMENT_CODE#/",
     "IBLOCK_TYPE" => "for_private_clients_ru",
     "IBLOCK_ID" => iblock('loans'),
     "DEPTH_LEVEL" => "1",
@@ -17,32 +17,7 @@ $aMenuLinksExt = $APPLICATION->IncludeComponent("bitrix:menu.sections", "", arra
     false
 );
 
-$additionalElements = \Bitrix\Iblock\ElementTable::getList([
-    'filter' => [
-        'IBLOCK_ID' => iblock('loans'),
-        'ACTIVE' => 'Y',
-        'IBLOCK_SECTION_ID' => false,
-    ],
-    'select' => [
-        'NAME',
-        'CODE',
-        'IBLOCK_SECTION_ID'
-    ],
-    'order' => [
-        'SORT' => 'ASC',
-    ]
-])->fetchAll();
+$aMenuLinksElementsExt = IblockHelper::getIblockMenuWithoutSections('loans', '/loans/');
 
-$additionalLinks = [];
-foreach ($additionalElements as $element) {
-    $additionalLinks[] = [
-        $element['NAME'],
-        $element['CODE'],
-        [],
-        ['DEPTH_LEVEL' => 0],
-        ""
-    ];
-}
-
-$aMenuLinks = array_merge($aMenuLinks, $aMenuLinksExt, $additionalLinks);
+$aMenuLinks = array_merge($aMenuLinks, $aMenuLinksExt, $aMenuLinksElementsExt);
 ?>

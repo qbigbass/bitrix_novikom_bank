@@ -82,8 +82,8 @@ use Bitrix\Main\Localization\Loc;
                     </div>
                 </div>
                 <div class="col-12 col-md-6 col-xl-3 d-flex flex-column row-gap-3">
-                    <a class="h4" href="tel:<?=clearPhoneNumber(MOBIL_PHONE_CONTACT_NUMBER)?>"><?=MOBIL_PHONE_CONTACT_NUMBER?></a>
-                    <a class="h4" href="tel:<?=clearPhoneNumber(MOBIL_PHONE_CONTACT_NUMBER_2)?>"><?=MOBIL_PHONE_CONTACT_NUMBER_2?></a>
+                    <a class="h4" href="tel:<?= clearPhoneNumber(UF_PHONE1) ?>"><?= UF_PHONE1 ?></a>
+                    <a class="h4" href="tel:<?= clearPhoneNumber(UF_PHONE2) ?>"><?= UF_PHONE2 ?></a>
                     <span class="dark-70"><?=Loc::getMessage('ADDRESS')?></span>
                     <a class="btn btn-link d-inline-flex gap-2 align-items-center border-0" href="<?=OFFICES_AND_ATMS_LINK?>">
                         <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
@@ -276,13 +276,13 @@ use Bitrix\Main\Localization\Loc;
                         </span>
                         <span class="fw-bold"><?=Loc::getMessage('OFFICES_AND_ATMS_BUTTON_TITLE')?></span>
                     </a>
-                    <a class="d-flex align-items-center gap-2" href="tel:<?=clearPhoneNumber(MOBIL_PHONE_CONTACT_NUMBER)?>">
+                    <a class="d-flex align-items-center gap-2" href="tel:<?= clearPhoneNumber(UF_PHONE1) ?>">
                         <span class="icon size-m">
                             <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                                 <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-mobile"></use>
                             </svg>
                         </span>
-                        <span class="fw-bold"><?=MOBIL_PHONE_CONTACT_NUMBER?></span>
+                        <span class="fw-bold"><?= UF_PHONE1 ?></span>
                     </a>
                 </div>
             </div>
