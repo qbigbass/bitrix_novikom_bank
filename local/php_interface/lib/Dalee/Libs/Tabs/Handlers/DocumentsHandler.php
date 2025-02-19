@@ -11,13 +11,15 @@ class DocumentsHandler implements PropertyHandlerInterface
     private int $iblockId;
     private ?array $element;
     private array $property;
-    private int $firstSectionKey;
+    private ?int $firstSectionKey;
 
     public function __construct(array $property, ?int $elementId = null, ?array $element = null)
     {
         $this->iblockId = iblock("documents");
         $this->property = $property;
-        $this->firstSectionKey = array_key_first($property['LINK_SECTION_VALUE']);
+        $this->firstSectionKey = is_array($this->property['LINK_SECTION_VALUE'] ?? null)
+            ? array_key_first($this->property['LINK_SECTION_VALUE'])
+            : null;
         $this->element = $element;
     }
 

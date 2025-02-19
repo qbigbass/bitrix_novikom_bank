@@ -14,7 +14,7 @@ $this->setFrameMode(true);
 ?>
 <? if (!empty($arResult["ITEMS"])) : ?>
     <div class="banner-hero <?= $arParams["CLASS_SECTION"] ?>">
-    <div class="banner-hero__container swiper js-banner-hero" data-autoplay-delay="<?= \COption::GetOptionString( "novikom.settings", "UF_BANNER_DELAY")?>">
+        <div class="banner-hero__container swiper js-banner-hero" data-autoplay-delay="<?= UF_BANNER_DELAY ?>">
         <div class="swiper-wrapper">
             <? foreach($arResult["ITEMS"] as $item) : ?>
                 <div class="swiper-slide">
