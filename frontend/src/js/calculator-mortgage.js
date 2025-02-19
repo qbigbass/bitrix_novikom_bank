@@ -275,7 +275,7 @@ function findMinAmount(data, value) {
     } else if (data.minDownPayment && data.minDownPayment !== 0) {
         minAmount = Math.round(value * (data.minDownPayment / 100));
     }
-    return (minAmount > data.sumTo) ? data.sumTo : minAmount;
+    return (minAmount < data.sumFrom) ? data.sumFrom : minAmount;
 }
 
 function findMaxAmount(data, value) {
@@ -285,7 +285,8 @@ function findMaxAmount(data, value) {
     } else if (data.minDownPayment && data.minDownPayment !== 0) {
         maxAmount = Math.round(value - value * (data.minDownPayment / 100));
     }
-    return (maxAmount > data.sumTo) ? data.sumTo : maxAmount;
+    maxAmount = (maxAmount > data.sumTo) ? data.sumTo : maxAmount;
+    return (maxAmount < data.sumFrom) ? data.sumFrom : maxAmount;
 }
 
 function findMinInitialPayment(data, value, maxAmount) {
