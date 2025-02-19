@@ -108,7 +108,13 @@ $tabControl->Begin();
         echo $USER_FIELD_MANAGER->ShowScript();
     }
     ?>
-
+    <tr>
+        <td colspan="2">
+            <?= BeginNote(); ?>
+            <?= Loc::getMessage('NOVIKOM_SETTINGS_TAB1_DESCRIPTION182') ?>
+            <?= EndNote(); ?>
+        </td>
+    </tr>
     <? if ($USER->IsAdmin()): ?>
         <tr>
             <td colspan="2" align="left">

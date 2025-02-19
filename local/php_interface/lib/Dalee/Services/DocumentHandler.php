@@ -79,7 +79,7 @@ class DocumentHandler
     {
         $filter = [
             'IBLOCK_ID' => $this->iblockId,
-            'CODE' => $code,
+            '=CODE' => $code,
         ];
 
         $select = ['PROPERTY_FILE'];
