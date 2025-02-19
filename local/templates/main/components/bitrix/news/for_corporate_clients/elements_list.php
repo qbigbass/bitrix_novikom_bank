@@ -84,7 +84,7 @@ $sliders = $APPLICATION->IncludeComponent(
         "SORT_ORDER1" => "ASC",
         "SORT_ORDER2" => "ASC",
         "STRICT_SECTION_CHECK" => "N",
-        "CLASS_SECTION" => "bg-linear-blue banner-text--border-orange banner-product--heavy-purple",
+        "CLASS_SECTION" => "bg-linear-blue border-orange banner-product--heavy-purple",
     ],
     false
 );
