@@ -339,12 +339,14 @@ function initFixScrollAccordions() {
     accordionsCollapse.forEach(accordion => {
         accordion.addEventListener('shown.bs.collapse', (e) => {
             accordion.scrollIntoView({
+                block: 'nearest',
                 behavior: 'auto'
             })
         })
 
         accordion.addEventListener('hide.bs.collapse', (e) => {
             accordion.scrollIntoView({
+                block: 'nearest',
                 behavior: 'auto'
             })
         })
