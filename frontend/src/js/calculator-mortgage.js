@@ -268,16 +268,6 @@ function handlerAmount(STATE, value) {
     STATE.isDispatchingEvent = false;
 }
 
-function findMinAmount(data, value) {
-    let minAmount;
-    if (data.sumFromPercent && data.sumFromPercent !== 0) {
-        minAmount = Math.round(value * (data.sumFromPercent / 100));
-    } else if (data.minDownPayment && data.minDownPayment !== 0) {
-        minAmount = Math.round(value * (data.minDownPayment / 100));
-    }
-    return (minAmount < data.sumFrom) ? data.sumFrom : minAmount;
-}
-
 function findMaxAmount(data, value) {
     let maxAmount;
     if (data.sumToPercent && data.sumToPercent !== 0) {
@@ -297,7 +287,7 @@ function findMinInitialPayment(data, value, maxAmount) {
 
 function handlerProperty(STATE, value) {
     STATE.property = value;
-    let minAmount = findMinAmount(STATE.filteredData[0], value);
+    let minAmount = STATE.filteredData[0].sumFrom;
     let maxAmount = findMaxAmount(STATE.filteredData[0], value);
     STATE.amount = minAmount;
 
