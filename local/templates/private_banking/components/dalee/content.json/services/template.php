@@ -47,9 +47,16 @@ $pbModel = $arResult['CONTENT_JSON'] ?? null;
                                 <?foreach ($service['items'] as $itemKey => $item) : ?>
                                     <div class="swiper-slide">
                                         <div class="pb-card-service">
-                                            <div class="d-flex flex-column row-gap-3">
-                                                <h3 class="pb-card-service__title"><?= $item['title'] ?></h3>
-                                                <p class="pb-card-service__text"><?= $item['text'] ?></p>
+                                            <div class="d-flex flex-column row-gap-3 align-items-start">
+                                                <?php if (!empty($item['title'])) : ?>
+                                                    <h3 class="pb-card-service__title"><?= $item['title'] ?></h3>
+                                                <?php endif; ?>
+                                                <?php if (!empty($item['text'])) : ?>
+                                                    <p class="pb-card-service__text"><?= $item['text'] ?></p>
+                                                <?php endif; ?>
+                                                <?php if (!empty($item['url'])) : ?>
+                                                    <a class="pb-card-service__button btn-pb btn-pb--size-m btn-pb--secondary mt-auto" href="<?= $item['url'] ?>">Подробнее</a>
+                                                <?php endif; ?>
                                             </div>
                                             <div class="pb-card-service__image mt-auto mt-md-0"><img src="<?= $item['image'] ?>" alt="<?= $item['title'] ?>"></div>
                                         </div>

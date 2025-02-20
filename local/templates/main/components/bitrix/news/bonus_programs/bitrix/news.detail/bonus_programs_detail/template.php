@@ -25,7 +25,7 @@ $renderer = new Renderer($APPLICATION, $component);
                     $helper = new ComponentHelper($component);
                     $helper->deferredCall('showNavChain', ['.default']);
                     ?>
-                    <h1 class="banner-text__title dark-0 text-break"><?=$arResult['NAME']?></h1>
+                    <h1 class="banner-text__title dark-0 text-break"><?=$arResult['~NAME']?></h1>
                     <div class="banner-text__description text-l dark-0"><?=$arResult['DETAIL_TEXT']?></div>
                 </div>
             </div>

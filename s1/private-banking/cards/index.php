@@ -3,12 +3,12 @@ require($_SERVER['DOCUMENT_ROOT'].'/bitrix/header.php');
 /**
  * @global CMain $APPLICATION
  */
-$APPLICATION->SetTitle('Private banking');
+$APPLICATION->SetTitle('Premium cards');
 ?>
 
 <?$APPLICATION->IncludeComponent(
     "bitrix:news",
-    "pb_services",
+    "pb_cards",
     [
         "ADD_ELEMENT_CHAIN" => "N",
         "ADD_SECTIONS_CHAIN" => "Y",
@@ -31,8 +31,7 @@ $APPLICATION->SetTitle('Private banking');
         "DETAIL_PAGER_TEMPLATE" => "",
         "DETAIL_PAGER_TITLE" => "Страница",
         "DETAIL_PROPERTY_CODE" => [
-            "CURRENCY_IN",
-            "CURRENCY_OUT",
+            "CARD_IMAGES",
         ],
         "DETAIL_SET_CANONICAL_URL" => "N",
         "DISPLAY_BOTTOM_PAGER" => "Y",
@@ -42,7 +41,7 @@ $APPLICATION->SetTitle('Private banking');
         "DISPLAY_PREVIEW_TEXT" => "Y",
         "DISPLAY_TOP_PAGER" => "N",
         "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-        "IBLOCK_ID" => iblock('pb_services'),
+        "IBLOCK_ID" => iblock('pb_cards'),
         "IBLOCK_TYPE" => "private_banking",
         "INCLUDE_IBLOCK_INTO_CHAIN" => "Y",
         "LIST_ACTIVE_DATE_FORMAT" => "d.m.Y",
@@ -60,12 +59,11 @@ $APPLICATION->SetTitle('Private banking');
         "PAGER_TEMPLATE" => ".default",
         "PAGER_TITLE" => "Новости",
         "PREVIEW_TRUNCATE_LEN" => "",
-        "SEF_FOLDER" => "/private-banking/services/",
+        "SEF_FOLDER" => "/private-banking/cards/",
         "SEF_MODE" => "Y",
         "SEF_URL_TEMPLATES" => [
             "news" => "",
-            "section" => "#SECTION_CODE#/",
-            "detail" => "#SECTION_CODE#/#ELEMENT_CODE#/",
+            "detail" => "#ELEMENT_CODE#/",
         ],
         "SET_LAST_MODIFIED" => "N",
         "SET_STATUS_404" => "Y",

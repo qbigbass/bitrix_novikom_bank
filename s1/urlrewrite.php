@@ -197,6 +197,13 @@ $arUrlRewrite = [
         'SORT' => 100,
     ],
     [
+        'CONDITION' => '#^/private-banking/cards/#',
+        'RULE' => '',
+        'ID' => 'bitrix:news',
+        'PATH' => '/private-banking/cards/index.php',
+        'SORT' => 100,
+    ],
+    [
         'CONDITION' => '#^/insurance/#',
         'RULE' => '',
         'ID' => 'bitrix:news',
