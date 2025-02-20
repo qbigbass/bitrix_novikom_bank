@@ -8,7 +8,7 @@ use CFile;
 class HeaderView
 {
     /** @var int Максимальная высота фона баннера */
-    private const BACKGROUND_IMAGE_MAX_HEIGHT = 1200;
+    private const BACKGROUND_IMAGE_MAX_HEIGHT = 2500;
     /** @var int Максимальная ширина фона баннера*/
     private const BACKGROUND_IMAGE_MAX_WIDTH = 1900;
 
