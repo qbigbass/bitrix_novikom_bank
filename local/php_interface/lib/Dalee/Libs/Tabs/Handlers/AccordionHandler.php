@@ -11,16 +11,16 @@ class AccordionHandler implements PropertyHandlerInterface
     private array $elements;
     private int $iblockId;
 
-    public function __construct(array $elementCodes)
+    public function __construct(array $property)
     {
         $this->iblockId = iblock('tabs');
-        $this->elements = $this->getElements($elementCodes);
+        $this->elements = $this->getElements($property['VALUE']);
     }
 
     public function render(): string
     {
         return
-            '<div class="accordion accordion--size-lg accordion--bg-transparent" id="accordion-tab">'
+            '<div class="accordion accordion--bg-transparent" id="accordion-tab">'
                 . $this->getAccordionItemsHtml() .
             '</div>';
     }
@@ -55,27 +55,12 @@ class AccordionHandler implements PropertyHandlerInterface
         return ob_get_clean();
     }
 
-    private function getSections(array $sections): array
-    {
-        $result = SectionTable::getList([
-            'filter' => [
-                'IBLOCK_ID' => $this->iblockId,
-                'CODE' => $sections,
-                'ACTIVE' => 'Y'
-            ],
-            'select' => ['ID', 'NAME', 'CODE'],
-            'order' => ['SORT' => 'ASC']
-        ])->fetchAll();
-
-        return $result ?? [];
-    }
-
-    private function getElements(array $elementCodes): array
+    private function getElements(array $elementIds): array
     {
         return IblockHelper::getElementsWithProperties(
             ['SORT' => 'ASC'],
             [
-                'CODE' => $elementCodes,
+                'ID' => $elementIds,
                 'IBLOCK_ID' => $this->iblockId
             ],
             false,
@@ -83,8 +68,7 @@ class AccordionHandler implements PropertyHandlerInterface
             [],
             [
                 'PROPERTY_FIELDS' => [
-                    'CODE',
-                    'VALUE'
+
                 ]
             ]
         )['items'] ?? [];
