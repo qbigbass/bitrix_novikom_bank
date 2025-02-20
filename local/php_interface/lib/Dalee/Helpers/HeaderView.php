@@ -146,10 +146,10 @@ class HeaderView
 
     private function detailed(array $headerData, int $chainDepth, ?string $termsHtml): string
     {
-        $backgounrdStyle = $this->getBackgroundStyle(intval($headerData['background']));
+        $backgroundStyle = $this->getBackgroundStyle(intval($headerData['background']));
         ob_start(); ?>
         <div class="banner-product <?= $headerData['bgColorClass'] ?> <?= implode(' ', $headerData['additionalClasses']) ?>"
-            <?= $backgounrdStyle ?>>
+            <?= $backgroundStyle ?>>
             <div class="banner-product__wrapper">
                 <div class="banner-product__content <?= empty($headerData['picture']) ? 'w-100 w-lg-60' : '' ?>">
                     <div class="banner-product__header">
