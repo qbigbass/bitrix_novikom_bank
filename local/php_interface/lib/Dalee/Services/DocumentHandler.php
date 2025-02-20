@@ -3,6 +3,7 @@
 namespace Dalee\Services;
 
 use Bitrix\Iblock\Component\Tools;
+use Bitrix\Main\Application;
 use Bitrix\Main\Loader;
 use Bitrix\Main\LoaderException;
 use Bitrix\Main\Request;
@@ -111,9 +112,10 @@ class DocumentHandler
      */
     #[NoReturn] private function sendFile($filePath, $code): void
     {
+        $GLOBALS['APPLICATION']->RestartBuffer();
         $fileData = pathinfo($filePath);
         header("Content-Disposition:attachment;filename=" . $code . "." . $fileData['extension']);
-        readfile($filePath);
+        readfile($_SERVER['DOCUMENT_ROOT'] . $filePath);
         exit;
     }
 
