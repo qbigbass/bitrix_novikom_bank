@@ -85,7 +85,7 @@ class HeaderView
         }
 
         $result = [
-            'bgColorClass' => $arResult["PROPERTIES"]["HEADER_COLOR_CLASS"]["VALUE"] ?: 'bg-linear-blue',
+            'bgColorClass' => $arResult["PARAMS_HEADER_COLOR_CLASS"] ?: 'bg-linear-blue',
             'picture' => $arResult["DETAIL_PICTURE"] ?? null,
             'background' => $arResult["PROPERTIES"]["BANNER_BACKGROUND"]["VALUE"] ?? null,
             'termsProperty' => $arResult["PROPERTIES"]["TERMS"] ?? [],
@@ -149,7 +149,7 @@ class HeaderView
     {
         $backgroundStyle = $this->getBackgroundStyle(intval($headerData['background']));
         ob_start(); ?>
-        <div class="banner-product <?= $headerData['bgColorClass'] ?> <?= implode(' ', $headerData['additionalClasses']) ?>"
+        <div class="<?= $headerData['bgColorClass'] ?> <?= implode(' ', $headerData['additionalClasses']) ?>"
             <?= $backgroundStyle ?>>
             <div class="banner-product__wrapper">
                 <div class="banner-product__content <?= empty($headerData['picture']) ? 'w-100 w-lg-60' : '' ?>">
@@ -159,11 +159,10 @@ class HeaderView
                             $this->helper->deferredCall('showNavChain', ['.default', $chainDepth, $headerData]);
                         } ?>
 
-                        <h1><?= $headerData['title'] ?></h1>
+                        <h1 class="<?= $headerData['h1ColorClass'] ?>"><?= $headerData['title'] ?></h1>
                         <? if (!empty($headerData['description'])) { ?>
-                            <p class="banner-product__subtitle text-l mw-100"><?= $headerData['description'] ?></p>
+                            <p class="banner-product__subtitle text-l mw-100 <?= $headerData['h1ColorClass'] ?>"><?= $headerData['description'] ?></p>
                         <? } ?>
-
                     </div>
 
                     <? if (!empty($headerData['picture'])) { ?>
@@ -239,10 +238,6 @@ class HeaderView
     private function compact(array $headerData, int $chainDepth, ?string $termsHtml): bool|string
     {
         ob_start(); ?>
-
-        <?
-        file_put_contents($_SERVER["DOCUMENT_ROOT"] . "/logs/header_".date("Y_m_d").".txt", "headerData:\n" . print_r($headerData, true), FILE_APPEND);
-        ?>
 
         <section class="banner-text <?= $headerData['bgColorClass'] ?> <?= implode(' ', $headerData['additionalClasses']) ?>">
             <div class="container banner-text__container position-relative z-2">

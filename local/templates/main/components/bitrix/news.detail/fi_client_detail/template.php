@@ -21,6 +21,7 @@ $renderer = new Renderer($APPLICATION, $component);
 $helper = $headerView->helper();
 
 $params["COLOR_TITLE_BENEFITS_TOP"] = $arParams["COLOR_TITLE_BENEFITS_TOP"];
+$params["COLOR_TITLE_BENEFITS_FOOTER"] = $arParams["COLOR_TITLE_BENEFITS_FOOTER"];
 $params["VIEW_BENEFITS_TOP_HEADER"] = $arResult["PROPERTIES"]["TYPE_BENEFITS_TOP_HEADER"]["VALUE_XML_ID"] ?? 'simple';
 
 $titleHeader = $arResult['~NAME'];
@@ -39,6 +40,10 @@ if (!empty($arParams["BANNER_BREADCRUMBS_COLOR_CLASS"])) {
 
 if (!empty($arResult['PROPERTIES']['CNT_COL_BENEFITS_TOP']['VALUE'])) {
     $params["CNT_COL_BENEFITS_TOP"] = $arResult['PROPERTIES']['CNT_COL_BENEFITS_TOP']['VALUE'];
+}
+
+if (!empty($arParams["HEADER_COLOR_CLASS"])) {
+    $arResult["PARAMS_HEADER_COLOR_CLASS"] = $arParams["HEADER_COLOR_CLASS"];
 }
 
 /*
