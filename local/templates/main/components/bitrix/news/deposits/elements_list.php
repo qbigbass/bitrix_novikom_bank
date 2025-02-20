@@ -25,7 +25,7 @@ $helper = $headerView->helper();
 $headerView->render(
     $APPLICATION->GetTitle(),
     $APPLICATION->GetProperty("description"),
-    ['bg-linear-blue', 'banner-text--border-green']
+    ['bg-linear-blue', 'border-green']
 );
 ?>
 

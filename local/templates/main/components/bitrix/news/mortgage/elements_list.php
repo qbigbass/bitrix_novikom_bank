@@ -22,7 +22,7 @@ $helper = $headerView->helper();
 $headerView->render(
     $APPLICATION->GetTitle(),
     null,
-    ['bg-linear-blue', 'banner-text--border-green']
+    ['bg-linear-blue', 'border-green']
 );
 ?>
 
