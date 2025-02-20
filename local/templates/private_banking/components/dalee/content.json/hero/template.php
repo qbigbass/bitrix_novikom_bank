@@ -16,7 +16,15 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
  */
 $this->setFrameMode(true);
 
-$pbModel = $arResult['CONTENT_JSON'] ?? null;
+$model = array_merge(
+    $arResult['CONTENT_JSON'] ?? [],
+    [
+        'contact_phone' => $APPLICATION->GetProperty('contact_phone'),
+        'contact_email' => $APPLICATION->GetProperty('contact_email'),
+        'contact_address' => $APPLICATION->GetProperty('contact_address'),
+        'online_bank_url' => $APPLICATION->GetProperty('online_bank_url'),
+    ]
+);
 ?>
 
 <section class="pb-section-hero">
@@ -37,7 +45,7 @@ $pbModel = $arResult['CONTENT_JSON'] ?? null;
         <div class="pb-main-nav">
             <div class="pb-main-nav__wrapper container d-flex flex-column">
                 <nav class="pb-nav d-flex flex-column align-items-center row-gap-4 row-gap-lg-6">
-                    <?foreach ($pbModel['main_nav'] as $item) : ?>
+                    <?foreach ($model['main_nav'] as $item) : ?>
                         <a class="<?= $item['class'] ?>" href="<?= $item['link'] ?>"><?= $item['title'] ?></a>
                     <?endforeach;?>
                 </nav>
@@ -53,7 +61,7 @@ $pbModel = $arResult['CONTENT_JSON'] ?? null;
                                         <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-phone"></use>
                                     </svg>
                                 </span>
-                                <a class="list-pb-contact__link" href="tel:+<?= preg_replace('/\D+/', '', $pbModel['phone']); ?>" data-phone="<?= $pbModel['phone'] ?>"><?= $pbModel['phone'] ?></a>
+                                <a class="list-pb-contact__link" href="tel:+<?= preg_replace('/\D+/', '', $model['contact_phone']); ?>" data-phone="<?= $model['contact_phone'] ?>"><?= $model['contact_phone'] ?></a>
                             </li>
                             <li class="d-flex align-items-center">
                                 <span class="icon size-m flex-shrink-0 dark-0">
@@ -61,7 +69,7 @@ $pbModel = $arResult['CONTENT_JSON'] ?? null;
                                         <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-mail"></use>
                                     </svg>
                                 </span>
-                                <a class="list-pb-contact__link" href="emailto:<?= $pbModel['email'] ?>"><?= $pbModel['email'] ?></a>
+                                <a class="list-pb-contact__link" href="emailto:<?= $model['contact_email'] ?>"><?= $model['contact_email'] ?></a>
                             </li>
                             <li class="d-flex align-items-center">
                                 <span class="icon size-m flex-shrink-0 dark-0">
@@ -69,7 +77,7 @@ $pbModel = $arResult['CONTENT_JSON'] ?? null;
                                         <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-bank"></use>
                                     </svg>
                                 </span>
-                                <span><?= $pbModel['address'] ?></span>
+                                <span><?= $model['contact_address'] ?></span>
                             </li>
                         </ul>
                         <a class="btn btn-pb btn-pb--outline" href="/">Основной сайт Новиком</a>
@@ -80,7 +88,7 @@ $pbModel = $arResult['CONTENT_JSON'] ?? null;
     </div>
     <div class="container">
         <h1 class="pb-section-hero__title dark-0 text-center animate js-animation-start">
-            <?= $pbModel['title'] ?>
+            <?= $model['title'] ?>
         </h1>
     </div>
     <video class="pb-section-hero__video animate js-animation-start" autoplay="" loop="" muted="" poster="/frontend/dist/img/video-poster.jpg">

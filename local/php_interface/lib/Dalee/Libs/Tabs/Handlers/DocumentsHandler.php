@@ -12,8 +12,9 @@ class DocumentsHandler implements PropertyHandlerInterface
     private ?array $element;
     private array $property;
     private ?int $firstSectionKey;
+    private ?array $params;
 
-    public function __construct(array $property, ?int $elementId = null, ?array $element = null)
+    public function __construct(array $property, ?int $elementId = null, ?array $element = null, array $params = [])
     {
         $this->iblockId = iblock("documents");
         $this->property = $property;
@@ -21,19 +22,47 @@ class DocumentsHandler implements PropertyHandlerInterface
             ? array_key_first($this->property['LINK_SECTION_VALUE'])
             : null;
         $this->element = $element;
+        $this->params = $params;
     }
 
     public function render(): string
     {
-        return '
+        if (!empty($this->params) & $this->params["DOCUMENTS_PLACEHOLDER_TEMPLATE"] === "SIMPLE") {
+            return '
+                <div>
+                    <h5>Подробнее о программе</h5>
+                    <div class="link-list">'
+                        . $this->getSimpleHtml() .
+                    '</div>
+                </div>'
+                ;
+        }
+
+        $sectionHtml = '
             <div class="col-12 col-xxl-8">
-                <div class="accordion" id="accordion-' . $this->property['ID'] . '">'
-                    . $this->getSectionsHtml() .
+                    <div class="accordion" id="accordion-' . $this->property['ID'] . '">'
+                . $this->getSectionsHtml() .
                 '</div>
             </div>
+        ';
+
+        $protectionFromScammers = '
             <div class="col-12 col-xxl-4">'
                 . $this->getProtectionFromScammersHtml() .
-            '</div>';
+            '</div>
+        ';
+        return $sectionHtml . $protectionFromScammers;
+    }
+
+    private function getSimpleHtml(): string
+    {
+        $simpleHtml = '';
+
+        foreach ($this->property['LINK_SECTION_VALUE'] as $key => $section) {
+            $simpleHtml .= $this->getElementsHtml($section['ELEMENTS']);
+        }
+
+        return $simpleHtml;
     }
 
     private function getSectionsHtml(): string
@@ -44,9 +73,7 @@ class DocumentsHandler implements PropertyHandlerInterface
                 $buttonShowClass = ($key == $this->firstSectionKey) ? 'show' : 'collapsed';
                 $ariaExpanded = ($key == $this->firstSectionKey) ? 'aria-expanded="true"' : '';
                 $accordionShowClass = ($key == $this->firstSectionKey) ? 'show' : '';
-
                 $timestampNow = MakeTimeStamp(date('d.m.Y'), 'DD.MM.YYYY');
-
                 $sectionsHtml .=
                     '<div class="accordion-item">
                         <div class="accordion-header">

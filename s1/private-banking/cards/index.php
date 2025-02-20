@@ -1,16 +1,17 @@
 <?php
 require($_SERVER['DOCUMENT_ROOT'].'/bitrix/header.php');
-global $APPLICATION;
-
-$APPLICATION->SetTitle('Страхование');
+/**
+ * @global CMain $APPLICATION
+ */
+$APPLICATION->SetTitle('Premium cards');
 ?>
 
 <?$APPLICATION->IncludeComponent(
     "bitrix:news",
-    "insurance",
+    "pb_cards",
     [
         "ADD_ELEMENT_CHAIN" => "N",
-        "ADD_SECTIONS_CHAIN" => "N",
+        "ADD_SECTIONS_CHAIN" => "Y",
         "AJAX_MODE" => "N",
         "AJAX_OPTION_ADDITIONAL" => "",
         "AJAX_OPTION_HISTORY" => "N",
@@ -23,28 +24,29 @@ $APPLICATION->SetTitle('Страхование');
         "CACHE_TYPE" => "A",
         "CHECK_DATES" => "Y",
         "DETAIL_ACTIVE_DATE_FORMAT" => "d.m.Y",
-        "DETAIL_DISPLAY_BOTTOM_PAGER" => "N",
+        "DETAIL_DISPLAY_BOTTOM_PAGER" => "Y",
         "DETAIL_DISPLAY_TOP_PAGER" => "N",
         "DETAIL_FIELD_CODE" => ["", ""],
-        "DETAIL_PAGER_SHOW_ALL" => "N",
+        "DETAIL_PAGER_SHOW_ALL" => "Y",
         "DETAIL_PAGER_TEMPLATE" => "",
         "DETAIL_PAGER_TITLE" => "Страница",
-        "DETAIL_PROPERTY_CODE" => [],
+        "DETAIL_PROPERTY_CODE" => [
+            "CARD_IMAGES",
+        ],
         "DETAIL_SET_CANONICAL_URL" => "N",
-        "DISPLAY_BOTTOM_PAGER" => "N",
-        "DISPLAY_DATE" => "N",
+        "DISPLAY_BOTTOM_PAGER" => "Y",
+        "DISPLAY_DATE" => "Y",
         "DISPLAY_NAME" => "Y",
-        "DISPLAY_PICTURE" => "N",
-        "DISPLAY_PREVIEW_TEXT" => "N",
+        "DISPLAY_PICTURE" => "Y",
+        "DISPLAY_PREVIEW_TEXT" => "Y",
         "DISPLAY_TOP_PAGER" => "N",
-        "FILE_404" => "",
         "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-        "IBLOCK_ID" => iblock("insurance_ru"),
-        "IBLOCK_TYPE" => "for_private_clients_ru",
-        "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+        "IBLOCK_ID" => iblock('pb_cards'),
+        "IBLOCK_TYPE" => "private_banking",
+        "INCLUDE_IBLOCK_INTO_CHAIN" => "Y",
         "LIST_ACTIVE_DATE_FORMAT" => "d.m.Y",
         "LIST_FIELD_CODE" => ["", ""],
-        "LIST_PROPERTY_CODE" => ["DOCUMENTS", ""],
+        "LIST_PROPERTY_CODE" => ["", ""],
         "MESSAGE_404" => "",
         "META_DESCRIPTION" => "-",
         "META_KEYWORDS" => "-",
@@ -57,17 +59,16 @@ $APPLICATION->SetTitle('Страхование');
         "PAGER_TEMPLATE" => ".default",
         "PAGER_TITLE" => "Новости",
         "PREVIEW_TRUNCATE_LEN" => "",
-        "SEF_FOLDER" => "/insurance/",
+        "SEF_FOLDER" => "/private-banking/cards/",
         "SEF_MODE" => "Y",
         "SEF_URL_TEMPLATES" => [
             "news" => "",
-            "section" => "#SECTION_CODE#/",
-            "detail" => "",
+            "detail" => "#ELEMENT_CODE#/",
         ],
         "SET_LAST_MODIFIED" => "N",
         "SET_STATUS_404" => "Y",
         "SET_TITLE" => "Y",
-        "SHOW_404" => "Y",
+        "SHOW_404" => "N",
         "SORT_BY1" => "ACTIVE_FROM",
         "SORT_BY2" => "SORT",
         "SORT_ORDER1" => "DESC",
@@ -83,4 +84,4 @@ $APPLICATION->SetTitle('Страхование');
     ]
 );?>
 
-<?require($_SERVER['DOCUMENT_ROOT'].'/bitrix/footer.php');?>
+<?php require($_SERVER['DOCUMENT_ROOT'].'/bitrix/footer.php');?>
