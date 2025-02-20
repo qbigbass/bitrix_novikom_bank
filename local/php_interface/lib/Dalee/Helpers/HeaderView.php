@@ -7,6 +7,11 @@ use CFile;
 
 class HeaderView
 {
+    /** @var int Максимальная высота фона баннера */
+    private const BACKGROUND_IMAGE_MAX_HEIGHT = 2500;
+    /** @var int Максимальная ширина фона баннера*/
+    private const BACKGROUND_IMAGE_MAX_WIDTH = 1900;
+
     private ?ComponentHelper $helper;
 
     public function __construct(?CBitrixComponent $component = null)
@@ -141,10 +146,10 @@ class HeaderView
 
     private function detailed(array $headerData, int $chainDepth, ?string $termsHtml): string
     {
+        $backgroundStyle = $this->getBackgroundStyle(intval($headerData['background']));
         ob_start(); ?>
         <div class="banner-product <?= $headerData['bgColorClass'] ?> <?= implode(' ', $headerData['additionalClasses']) ?>"
-            <?= !empty($headerData['background']) ? 'style="background: url(' . CFile::getPath($headerData['background']) . ') no-repeat center center / cover;"' : '' ?>>
-
+            <?= $backgroundStyle ?>>
             <div class="banner-product__wrapper">
                 <div class="banner-product__content <?= empty($headerData['picture']) ? 'w-100 w-lg-60' : '' ?>">
                     <div class="banner-product__header">
@@ -204,6 +209,30 @@ class HeaderView
             <? } ?>
         </div>
         <? return ob_get_clean();
+    }
+
+    /**
+     * Получаем стиль фона
+     *
+     * @param int|null $imageId
+     * @return string
+     */
+    private function getBackgroundStyle(?int $imageId): string
+    {
+        if ($imageId > 0) {
+            $renderImage = CFile::ResizeImageGet(
+                $imageId,
+                [
+                    "width" => self::BACKGROUND_IMAGE_MAX_WIDTH,
+                    "height" => self::BACKGROUND_IMAGE_MAX_HEIGHT
+                ],
+                BX_RESIZE_IMAGE_PROPORTIONAL_ALT
+            );
+            if ($renderImage['src']) {
+                return 'style="background: url(' . $renderImage['src'] . ') no-repeat center center / cover;"';
+            }
+        }
+        return '';
     }
 
     private function compact(array $headerData, int $chainDepth, ?string $termsHtml): bool|string
