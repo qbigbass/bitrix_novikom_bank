@@ -19,13 +19,14 @@ class QuestionsHandler implements PropertyHandlerInterface
         $path = array_values(array_filter(explode('/', $APPLICATION->GetCurPage())));
         $current = array_pop($path);
         $parent = reset($path);
-
+        // К ссылке добавлялось . (!empty($current) && $current != $parent ? $current . '/' : '')
+        // Оставил пока комент (в понедельник придет контент). Может еще понадобится
         return
             '<div class="col-12 col-xxl-8">
                 <div class="accordion" id="accordion-' . $this->property['ID'] . '">'
             . $this->getQuestionsHtml() .
             '<a class="btn btn-link btn-lg-lg d-inline-flex gap-2 align-items-center mt-4 mt-md-6 section-custom-accordion__button-more"
-                href="/support/questions_and_answers/' . $parent . '/' . (!empty($current) && $current != $parent ? $current . '/' : '') . '">
+                href="/support/questions_and_answers/' . $parent . '/' . '">
                         <span class="text-m">Все вопросы и ответы</span>
                         <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                             <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right-small"></use>
