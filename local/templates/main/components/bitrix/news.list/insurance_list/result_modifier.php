@@ -1,0 +1,83 @@
+<?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
+
+/** @var array $arParams */
+/** @var array $arResult */
+/** @global CMain $APPLICATION */
+/** @global CUser $USER */
+/** @global CDatabase $DB */
+/** @var CBitrixComponentTemplate $this */
+/** @var string $templateName */
+/** @var string $templateFile */
+/** @var string $templateFolder */
+/** @var string $componentPath */
+/** @var CBitrixComponent $component */
+
+foreach ($arResult['ITEMS'] as &$tab) {
+    if (!empty($tab['DISPLAY_PROPERTIES'])) {
+        foreach ($tab['DISPLAY_PROPERTIES'] as &$property) {
+            if ($property['PROPERTY_TYPE'] == 'E' && !empty($property['VALUE'])) {
+                $elements = \Bitrix\Iblock\ElementTable::GetList([
+                    'select' => ['ID', 'NAME', 'PREVIEW_TEXT', 'DETAIL_TEXT', 'PREVIEW_PICTURE', 'DETAIL_PICTURE'],
+                    'filter' => [
+                        'IBLOCK_ID' => $property['LINK_IBLOCK_ID'],
+                        'ID' => $property['VALUE']
+                    ],
+                ])->fetchAll();
+
+                foreach ($elements as $element) {
+                    $property['LINK_ELEMENT_VALUE'][$element['ID']]['PREVIEW_TEXT'] = $element['PREVIEW_TEXT'];
+                    $property['LINK_ELEMENT_VALUE'][$element['ID']]['DETAIL_TEXT'] = $element['DETAIL_TEXT'];
+                    $property['LINK_ELEMENT_VALUE'][$element['ID']]['ID'] = $element['ID'];
+                    $property['LINK_ELEMENT_VALUE'][$element['ID']]['NAME'] = $element['NAME'];
+
+                    if (!empty($element['PREVIEW_PICTURE'])) {
+                        $property['LINK_ELEMENT_VALUE'][$element['ID']]['PREVIEW_PICTURE'] = CFile::GetPath(
+                            $element['PREVIEW_PICTURE']
+                        );
+                    }
+
+                    if (!empty($element['DETAIL_PICTURE'])) {
+                        $property['LINK_ELEMENT_VALUE'][$element['ID']]['DETAIL_PICTURE'] = CFile::GetPath(
+                            $element['DETAIL_PICTURE']
+                        );
+                    }
+                }
+            }
+
+            if ($property['PROPERTY_TYPE'] == 'G' && !empty($property['VALUE'])) {
+                $filter = [
+                    'IBLOCK_ID' => $property['LINK_IBLOCK_ID'],
+                    'IBLOCK_SECTION_ID' => $property['VALUE']
+                ];
+
+                $sections = \Bitrix\Iblock\SectionTable::GetList([
+                    'select' => ['ID', 'NAME', 'DESCRIPTION'],
+                    'filter' => ['IBLOCK_ID' => $property['LINK_IBLOCK_ID'], 'ID' => $property['VALUE']],
+                ])->fetchAll();
+
+                $elements = \Bitrix\Iblock\ElementTable::GetList([
+                    'select' => ['ID', 'NAME', 'IBLOCK_SECTION_ID', 'PREVIEW_TEXT', 'DETAIL_TEXT', 'ACTIVE_FROM'],
+                    'filter' => $filter,
+                ])->fetchAll();
+
+                $elementsWithProps = array_combine(
+                    array_column($elements, 'ID'),
+                    array_map(fn($item) => $item + ['PROPERTIES' => []], $elements)
+                );
+
+                CIBlockElement::GetPropertyValuesArray($elementsWithProps, $filter['IBLOCK_ID'], $filter);
+
+                foreach ($sections as $section) {
+                    $property['LINK_SECTION_VALUE'][$section['ID']]['DESCRIPTION'] = $section['DESCRIPTION'];
+                    $property['LINK_SECTION_VALUE'][$section['ID']]['NAME'] = $section['NAME'];
+                    $property['LINK_SECTION_VALUE'][$section['ID']]['ID'] = $section['ID'];
+                }
+
+                foreach ($elementsWithProps as $element) {
+                    $property['LINK_SECTION_VALUE'][$element['IBLOCK_SECTION_ID']]['ELEMENTS'][$element['ID']] = $element;
+                }
+            }
+        }
+    }
+}
+unset($tab);
