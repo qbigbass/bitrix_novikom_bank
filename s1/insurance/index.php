@@ -7,7 +7,7 @@ $APPLICATION->SetTitle('Страхование');
 
 <?$APPLICATION->IncludeComponent(
     "bitrix:news",
-    "services",
+    "insurance",
     [
         "ADD_ELEMENT_CHAIN" => "N",
         "ADD_SECTIONS_CHAIN" => "N",
@@ -29,7 +29,7 @@ $APPLICATION->SetTitle('Страхование');
         "DETAIL_PAGER_SHOW_ALL" => "N",
         "DETAIL_PAGER_TEMPLATE" => "",
         "DETAIL_PAGER_TITLE" => "Страница",
-        "DETAIL_PROPERTY_CODE" => ["", ""],
+        "DETAIL_PROPERTY_CODE" => [],
         "DETAIL_SET_CANONICAL_URL" => "N",
         "DISPLAY_BOTTOM_PAGER" => "N",
         "DISPLAY_DATE" => "N",
@@ -39,12 +39,12 @@ $APPLICATION->SetTitle('Страхование');
         "DISPLAY_TOP_PAGER" => "N",
         "FILE_404" => "",
         "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-        "IBLOCK_ID" => "",
+        "IBLOCK_ID" => iblock("insurance_ru"),
         "IBLOCK_TYPE" => "for_private_clients_ru",
         "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
         "LIST_ACTIVE_DATE_FORMAT" => "d.m.Y",
         "LIST_FIELD_CODE" => ["", ""],
-        "LIST_PROPERTY_CODE" => ["", ""],
+        "LIST_PROPERTY_CODE" => ["DOCUMENTS", ""],
         "MESSAGE_404" => "",
         "META_DESCRIPTION" => "-",
         "META_KEYWORDS" => "-",
@@ -60,9 +60,9 @@ $APPLICATION->SetTitle('Страхование');
         "SEF_FOLDER" => "/insurance/",
         "SEF_MODE" => "Y",
         "SEF_URL_TEMPLATES" => [
-            "detail" => "#ELEMENT_CODE#/",
             "news" => "",
-            "section" => ""
+            "section" => "#SECTION_CODE#/",
+            "detail" => "",
         ],
         "SET_LAST_MODIFIED" => "N",
         "SET_STATUS_404" => "Y",
