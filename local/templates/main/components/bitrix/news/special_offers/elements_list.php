@@ -16,11 +16,10 @@ $this->setFrameMode(true);
 
 $headerView = new HeaderView($component);
 $helper = $headerView->helper();
-
 $headerView->render(
     $APPLICATION->GetTitle(),
     $APPLICATION->GetProperty("description"),
-    ['bg-linear-blue', 'banner-text--border-green']
+    ['border-green']
 );
 
 global $activeFilter;

@@ -4,7 +4,7 @@ global $APPLICATION;
 $APPLICATION->SetTitle('Документы');
 ?>
 
-<section class="banner-text bg-linear-blue banner-text--border-green">
+<section class="banner-text bg-linear-blue border-green">
     <div class="container banner-text__container position-relative z-2">
         <div class="row ps-lg-6">
             <div class="col-12 col-sm-6 col-md-8 position-relative z-1 mb-5 mb-md-0 pt-6">

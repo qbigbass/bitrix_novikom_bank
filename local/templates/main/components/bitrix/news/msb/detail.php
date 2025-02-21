@@ -138,7 +138,11 @@ if ($idRelationSection > 0) {
             "SHARE_SHORTEN_URL_KEY" => "",
             "ADD_ELEMENT_CHAIN" => "Y",
             "STRICT_SECTION_CHECK" => "Y",
-            "SECTION_TYPE" => "corporate_clients"
+            "HEADER_COLOR_CLASS" => "border-orange banner-product--heavy-purple", // Для всех детальных страниц КК
+            "TITLE_BLOCK_CROSS_SALE" => "Другие услуги для корпоративных клиентов",
+            "FILTER_BLOCK_CROSS_SALE" => [
+                "SECTION_CODE" => "corporate"
+            ]
         ],
         $component
     );
@@ -201,6 +205,7 @@ if ($idRelationSection > 0) {
             "BLOCK_CONTACT_COLOR_H4" => "dark-0",
             "BLOCK_CONTACT_COLOR_SPAN" => "dark-0",
             "BLOCK_CONTACT_COLOR_ICON" => "dark-0",
+            "HEADER_COLOR_CLASS" => "bg-heavy-violet border-yellow", // Для всех детальных страниц МСБ
             "TITLE_BLOCK_CROSS_SALE" => $arParams["TITLE_BLOCK_CROSS_SALE"],
             "FILTER_BLOCK_CROSS_SALE" => $arParams["FILTER_BLOCK_CROSS_SALE"],
         ],

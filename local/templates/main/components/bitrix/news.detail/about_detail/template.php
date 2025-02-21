@@ -25,7 +25,7 @@ $placeholderManager = $arResult['PLACEHOLDER_CLASS'];
 $headerView->render(
     $arResult['~PREVIEW_TEXT'] ?? $arResult['NAME'],
     null,
-    ['bg-linear-blue', 'banner-text--border-green'],
+    ['bg-linear-blue', 'border-green'],
     1
 );
 ?>

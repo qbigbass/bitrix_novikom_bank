@@ -20,7 +20,7 @@ $helper = $headerView->helper();
 $headerView->render(
     $APPLICATION->GetTitle(),
     $APPLICATION->GetProperty("description"),
-    ['bg-linear-blue'],
+    ['border-green'],
     1
 );
 

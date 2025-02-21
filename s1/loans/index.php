@@ -87,7 +87,8 @@ if (!empty($elementWithoutSection)) {
             "SHOW_404" => "N",
             "STRICT_SECTION_CHECK" => "N",
             "USE_PERMISSIONS" => "N",
-            "USE_SHARE" => "N"
+            "USE_SHARE" => "N",
+            "HEADER_COLOR_CLASS" => "border-green bg-linear-blue", // Для всех детальных страниц ЧК
         ],
     );
 

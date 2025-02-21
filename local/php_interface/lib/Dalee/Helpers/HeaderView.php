@@ -80,12 +80,12 @@ class HeaderView
                 'bgColorClass' => 'bg-linear-blue',
                 'h1ColorClass' => 'dark-0',
                 'breadcrumbsColorClass' => 'text-white-50',
-                'picHeader' => 'img/patterns/section/pattern-light',
+                'picHeader' => '/patterns/section/pattern-light',
             ];
         }
 
         $result = [
-            'bgColorClass' => $arResult["PROPERTIES"]["HEADER_COLOR_CLASS"]["VALUE"] ?: 'bg-linear-blue',
+            'bgColorClass' => $arResult["PARAMS_HEADER_COLOR_CLASS"] ?: 'bg-linear-blue',
             'picture' => $arResult["DETAIL_PICTURE"] ?? null,
             'background' => $arResult["PROPERTIES"]["BANNER_BACKGROUND"]["VALUE"] ?? null,
             'termsProperty' => $arResult["PROPERTIES"]["TERMS"] ?? [],
@@ -94,8 +94,9 @@ class HeaderView
             'buttonHref' => $arResult['PROPERTIES']['BUTTON_HREF_DETAIL']['VALUE'] ?? '',
             'h1ColorClass' => $arResult["PARAMS_CLASS"]["H1_COLOR_CLASS"] ?: 'dark-0',
             'breadcrumbsColorClass' => $arResult["PARAMS_CLASS"]["BREADCRUMBS_COLOR_CLASS"] ?: 'text-white-50',
-            'picHeader' => $arResult['PROPERTIES']['HEADER_BG_PICTURE']['VALUE'] ?: 'img/patterns/section/pattern-light',
+            'picHeader' => $arResult['PROPERTIES']['HEADER_BG_PICTURE']['VALUE'] ?: '/patterns/section/pattern-light',
             'buttonCodeForm' => $arResult['PROPERTIES']['BUTTON_CODE_FORM']['VALUE'] ?? '',
+            'buttonClassColor' => $arResult['PROPERTIES']['CLASS_BUTTON_TEXT_DETAIL']['VALUE'] ?: 'btn-tertiary',
         ];
 
         return $result;
@@ -148,7 +149,7 @@ class HeaderView
     {
         $backgroundStyle = $this->getBackgroundStyle(intval($headerData['background']));
         ob_start(); ?>
-        <div class="banner-product <?= $headerData['bgColorClass'] ?> <?= implode(' ', $headerData['additionalClasses']) ?>"
+        <div class="<?= $headerData['bgColorClass'] ?> <?= implode(' ', $headerData['additionalClasses']) ?>"
             <?= $backgroundStyle ?>>
             <div class="banner-product__wrapper">
                 <div class="banner-product__content <?= empty($headerData['picture']) ? 'w-100 w-lg-60' : '' ?>">
@@ -158,11 +159,10 @@ class HeaderView
                             $this->helper->deferredCall('showNavChain', ['.default', $chainDepth, $headerData]);
                         } ?>
 
-                        <h1><?= $headerData['title'] ?></h1>
+                        <h1 class="<?= $headerData['h1ColorClass'] ?>"><?= $headerData['title'] ?></h1>
                         <? if (!empty($headerData['description'])) { ?>
-                            <p class="banner-product__subtitle text-l mw-100"><?= $headerData['description'] ?></p>
+                            <p class="banner-product__subtitle text-l mw-100 <?= $headerData['h1ColorClass'] ?>"><?= $headerData['description'] ?></p>
                         <? } ?>
-
                     </div>
 
                     <? if (!empty($headerData['picture'])) { ?>
@@ -176,14 +176,14 @@ class HeaderView
                     <? endif; ?>
 
                     <? if ($headerData['showButton'] && !empty($headerData['buttonHref'])) { ?>
-                        <a class="btn <?= in_array('banner-product--type-corp', $headerData['additionalClasses']) ? 'btn-orange' : 'btn-tertiary' ?> btn-lg-lg banner-product__button"
+                        <a class="btn <?= $headerData['buttonClassColor'] ?> btn-lg-lg banner-product__button"
                            href="<?= $headerData['buttonHref'] ?>"
                         >
                             <?= $headerData['buttonText'] ?>
                         </a>
                     <? } elseif ($headerData['showButton'] && !empty($headerData['buttonCodeForm'])) { ?>
                         <button
-                            class="btn <?= in_array('banner-product--type-corp', $headerData['additionalClasses']) ? 'btn-orange' : 'btn-tertiary' ?> btn-lg-lg banner-product__button"
+                            class="btn <?= $headerData['buttonClassColor'] ?> btn-lg-lg banner-product__button"
                             type="button"
                             data-bs-toggle="modal"
                             data-bs-target="#<?= $headerData['buttonCodeForm'] ?>"
@@ -202,9 +202,9 @@ class HeaderView
             </div>
             <? if (!empty($headerData['picHeader'])) { ?>
                 <picture class="pattern-bg banner-product__pattern">
-                    <source srcset="/frontend/dist/<?= $headerData['picHeader'] ?>-s.svg" media="(max-width: 767px)">
-                    <source srcset="/frontend/dist/<?= $headerData['picHeader'] ?>-m.svg" media="(max-width: 1199px)">
-                    <img src="/frontend/dist/<?= $headerData['picHeader'] ?>-l.svg" alt="bg pattern" loading="lazy">
+                    <source srcset="/frontend/dist/img<?= $headerData['picHeader'] ?>-s.svg" media="(max-width: 767px)">
+                    <source srcset="/frontend/dist/img<?= $headerData['picHeader'] ?>-m.svg" media="(max-width: 1199px)">
+                    <img src="/frontend/dist/img<?= $headerData['picHeader'] ?>-l.svg" alt="bg pattern" loading="lazy">
                 </picture>
             <? } ?>
         </div>
@@ -239,10 +239,6 @@ class HeaderView
     {
         ob_start(); ?>
 
-        <?
-        file_put_contents($_SERVER["DOCUMENT_ROOT"] . "/logs/header_".date("Y_m_d").".txt", "headerData:\n" . print_r($headerData, true), FILE_APPEND);
-        ?>
-
         <section class="banner-text <?= $headerData['bgColorClass'] ?> <?= implode(' ', $headerData['additionalClasses']) ?>">
             <div class="container banner-text__container position-relative z-2">
                 <div class="row ps-lg-6">
@@ -274,9 +270,9 @@ class HeaderView
             </div>
             <? if (!empty($headerData['picHeader'])) { ?>
                 <picture class="pattern-bg pattern-bg--position-sm-top banner-text__pattern">
-                    <source srcset="/frontend/dist/<?= $headerData['picHeader'] ?>-s.svg" media="(max-width: 767px)">
-                    <source srcset="/frontend/dist/<?= $headerData['picHeader'] ?>-m.svg" media="(max-width: 1199px)">
-                    <img src="/frontend/dist/<?= $headerData['picHeader'] ?>-l.svg" alt="bg pattern" loading="lazy">
+                    <source srcset="/frontend/dist/img<?= $headerData['picHeader'] ?>-s.svg" media="(max-width: 767px)">
+                    <source srcset="/frontend/dist/img<?= $headerData['picHeader'] ?>-m.svg" media="(max-width: 1199px)">
+                    <img src="/frontend/dist/img<?= $headerData['picHeader'] ?>-l.svg" alt="bg pattern" loading="lazy">
                 </picture>
             <? } ?>
         </section>

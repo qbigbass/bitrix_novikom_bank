@@ -1,7 +1,9 @@
 <?
 $sSectionName = "Финансовым институтам";
-$arDirProperties = Array(
-    "description" => ""
-);
+$arDirProperties = [
+    "description" => "",
+    "templateSubMenu" => "corporate_submenu_header",
+    "hiddenKey" => 4
+];
 ?>
 

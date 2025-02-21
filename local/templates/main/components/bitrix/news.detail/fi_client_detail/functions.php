@@ -37,7 +37,8 @@ function renderBenefitsHeaderFooter(CMain $APPLICATION, array $ids, bool $hasPic
     $renderer->render('Benefits', $ids, null, [
         'colCount' => $colCountBenefitTop,
         'headerTag' => 'h4',
-        'calcCols' => $calcCols
+        'calcCols' => $calcCols,
+        'colorTitleBenefits' => $params['COLOR_TITLE_BENEFITS_FOOTER']
     ]);
 
     return ob_get_clean();

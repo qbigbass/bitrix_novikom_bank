@@ -22,7 +22,7 @@ $helper = $headerView->helper();
 $headerView->render(
     $APPLICATION->GetTitle(),
     null,
-    ['border-0', 'bg-linear-blue'],
+    ['border-green'],
     1,
 );
 $context = Application::getInstance()->getContext();
