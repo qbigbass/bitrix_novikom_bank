@@ -100,9 +100,9 @@ $headerView->render(
         </div>
         <? if (!empty($arResult['PROPERTIES']['PATH_IMG_BLOCK_BANNER']['VALUE'])) : ?>
             <picture class="pattern-bg pattern-bg--position-sm-bottom">
-                <source srcset="/frontend/dist/img<?= $arResult['PROPERTIES']['PATH_IMG_BLOCK_BANNER']['VALUE'] ?>-s.svg" media="(max-width: 767px)">
-                <source srcset="/frontend/dist/img<?= $arResult['PROPERTIES']['PATH_IMG_BLOCK_BANNER']['VALUE'] ?>-m.svg" media="(max-width: 1199px)">
-                <img src="/frontend/dist/img<?= $arResult['PROPERTIES']['PATH_IMG_BLOCK_BANNER']['VALUE'] ?>-l.svg" alt="bg pattern" loading="lazy">
+                <source srcset="/frontend/dist/<?= $arResult['PROPERTIES']['PATH_IMG_BLOCK_BANNER']['VALUE'] ?>-s.svg" media="(max-width: 767px)">
+                <source srcset="/frontend/dist/<?= $arResult['PROPERTIES']['PATH_IMG_BLOCK_BANNER']['VALUE'] ?>-m.svg" media="(max-width: 1199px)">
+                <img src="/frontend/dist/<?= $arResult['PROPERTIES']['PATH_IMG_BLOCK_BANNER']['VALUE'] ?>-l.svg" alt="bg pattern" loading="lazy">
             </picture>
         <? endif; ?>
     </section>
@@ -113,9 +113,9 @@ $headerView->render(
         </div>
         <? if (!empty($arResult['PROPERTIES']['PATH_IMG_BLOCK_BANNER']['VALUE'])) : ?>
             <picture class="pattern-bg pattern-bg--position-sm-bottom">
-                <source srcset="/frontend/dist/img<?= $arResult['PROPERTIES']['PATH_IMG_BLOCK_BANNER']['VALUE'] ?>-s.svg" media="(max-width: 767px)">
-                <source srcset="/frontend/dist/img<?= $arResult['PROPERTIES']['PATH_IMG_BLOCK_BANNER']['VALUE'] ?>-m.svg" media="(max-width: 1199px)">
-                <img src="/frontend/dist/img<?= $arResult['PROPERTIES']['PATH_IMG_BLOCK_BANNER']['VALUE'] ?>-l.svg" alt="bg pattern" loading="lazy">
+                <source srcset="/frontend/dist/<?= $arResult['PROPERTIES']['PATH_IMG_BLOCK_BANNER']['VALUE'] ?>-s.svg" media="(max-width: 767px)">
+                <source srcset="/frontend/dist/<?= $arResult['PROPERTIES']['PATH_IMG_BLOCK_BANNER']['VALUE'] ?>-m.svg" media="(max-width: 1199px)">
+                <img src="/frontend/dist/<?= $arResult['PROPERTIES']['PATH_IMG_BLOCK_BANNER']['VALUE'] ?>-l.svg" alt="bg pattern" loading="lazy">
             </picture>
         <? endif; ?>
     </section>
@@ -494,16 +494,16 @@ $headerView->render(
             <? $renderer->render('Tabs', $arResult['PROPERTIES']['TABS']['VALUE']); ?>
         </div>
         <?
-        $imgPath ="/patterns/section-2/pattern-light";
+        $imgPath ="img/patterns/section-2/pattern-light";
 
         if (!empty($arResult["PROPERTIES"]["PATH_IMG_BLOCK_TABS"]["VALUE"])) {
             $imgPath = $arResult["PROPERTIES"]["PATH_IMG_BLOCK_TABS"]["VALUE"];
         }
         ?>
         <picture class="pattern-bg pattern-bg--hide-mobile">
-            <source srcset="/frontend/dist/img<?= $imgPath ?>-s.svg" media="(max-width: 767px)">
-            <source srcset="/frontend/dist/img<?= $imgPath ?>-m.svg" media="(max-width: 1199px)">
-            <img src="/frontend/dist/img<?= $imgPath ?>-l.svg" alt="bg pattern" loading="lazy">
+            <source srcset="/frontend/dist/<?= $imgPath ?>-s.svg" media="(max-width: 767px)">
+            <source srcset="/frontend/dist/<?= $imgPath ?>-m.svg" media="(max-width: 1199px)">
+            <img src="/frontend/dist/<?= $imgPath ?>-l.svg" alt="bg pattern" loading="lazy">
         </picture>
     </section>
 <? } ?>
