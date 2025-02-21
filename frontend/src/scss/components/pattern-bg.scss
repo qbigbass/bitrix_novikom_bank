@@ -40,4 +40,12 @@
             display: initial;
         }
     }
+
+    &--hide-tablet {
+        display: none;
+
+        @include use-media(tablet-album) {
+            display: initial;
+        }
+    }
 }

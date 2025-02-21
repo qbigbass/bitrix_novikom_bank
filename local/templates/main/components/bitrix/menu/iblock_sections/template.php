@@ -48,6 +48,9 @@ $targetLink = $arParams["TARGET_LINK"] ?? "";
     <? } ?>
     <ul class="swiper-wrapper tabs-panel__list nav nav-tabs d-inline-flex flex-nowrap w-auto p-0 border border-purple rounded section-catalog__tab-list">
         <? foreach ($arResult as $key => $menuItem) {
+            if ($menuItem['PARAMS']['show_only_in_header'] == 'Y') {
+                continue;
+            }
             if ($menuItem['PARAMS']['DEPTH_LEVEL'] === 0) continue;
             ?>
             <? if (!empty($section)) {

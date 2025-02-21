@@ -8,10 +8,22 @@ class TabContent
     private static string $openedRteTag = '<div class="rte">';
     private static string $closedRteTag = '</div>';
 
-    public static function render(string $detailText, array $displayProperties, ?int $elementId = null, bool $useRteTag = true, ?array $element = null): string
+    public static function render(
+        string $detailText,
+        array $displayProperties,
+        ?int $elementId = null,
+        bool $useRteTag = true,
+        ?array $element = null,
+        bool $isAccordion = false,
+        array $params = []
+    ): string
     {
         $tab = new TabContent();
         $conf = require 'config/handlers.php';
+
+        if ($isAccordion) {
+            self::$openedRteTag = '<div class="rte rte--accordion">';
+        }
 
         if (!$useRteTag) {
             $tabContent = $detailText;
@@ -25,21 +37,21 @@ class TabContent
             $placeHolder = '#' . $propertyCode . '#';
 
             if (!empty($class) && str_contains($detailText, $placeHolder)) {
-                $handler = new $class($property, $elementId, $element);
-                $tabContent = $tab->renderDetailTextWithBlockHtml($handler, $tabContent, $placeHolder, $useRteTag);
+                $handler = new $class($property, $elementId, $element, $params);
+                $tabContent = $tab->renderDetailTextWithBlockHtml($handler, $tabContent, $placeHolder, $useRteTag, $isAccordion);
             }
         }
 
         return $tab->prepareTabContent($tabContent);
     }
 
-    private function renderDetailTextWithBlockHtml(PropertyHandlerInterface $handler, string $tabContent, string $placeHolder, bool $useRteTag = true): string
+    private function renderDetailTextWithBlockHtml(PropertyHandlerInterface $handler, string $tabContent, string $placeHolder, bool $useRteTag = true, bool $isAccordion = false): string
     {
         if (!$useRteTag) {
             $params['TEMPLATE'] = 'benefits_other_services';
             $blockHtml = $handler->render($params);
         } else {
-            $blockHtml = self::$closedRteTag . $handler->render() . self::$openedRteTag;
+            $blockHtml = self::$closedRteTag . $handler->render(['isAccordion' => $isAccordion]) . self::$openedRteTag;
         }
 
         return str_replace(
@@ -54,12 +66,13 @@ class TabContent
 
     private function prepareTabContent(string $tabContent): string
     {
+        $regex = '/<div\s+class="rte(?:\s+rte--accordion)?">\s*<\/div>/';
+        $tabContent = preg_replace($regex, '', $tabContent);
+
         return str_replace(
             [
                 "\r",
                 "\n",
-                self::$openedRteTag . "<br>" . self::$closedRteTag,
-                self::$openedRteTag . self::$closedRteTag,
             ],
             '',
             $tabContent

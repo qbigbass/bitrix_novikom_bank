@@ -22,6 +22,7 @@ $renderer = new Renderer($APPLICATION, $component);
 
 $helper = $headerView->helper();
 
+
 $headerView->render(
     $APPLICATION->GetTitle(),
     $APPLICATION->GetProperty("description"),

@@ -295,7 +295,7 @@ $helper = new ComponentHelper($component);
                     <div class="polygon-container__content">
                         <div class="helper bg-dark-10">
                             <div class="helper__wrapper d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-4 gap-lg-6">
-                                <img class="helper__image w-auto float-end" src="/frontend/dist/img/restructuring-additional-info.png" alt="" loading="lazy">
+                                <img class="helper__image w-auto float-end" src="/frontend/dist/img/restructuring-additional-info.png" alt="">
                                 <div class="helper__content text-l">
                                     <p class="mb-0"><?=$arResult['DISPLAY_PROPERTIES']['ADDITIONAL_INFO']['~VALUE']['TEXT']?></p>
                                 </div>
@@ -378,7 +378,8 @@ $helper = new ComponentHelper($component);
                         "QUESTIONS",
                         "ICONS_WITH_DESCRIPTION",
                         "ICON_SHORT_INFO",
-                        "DOCUMENTS"
+                        "DOCUMENTS",
+                        "ACCORDION"
                     ],
                     "SET_BROWSER_TITLE" => "N",
                     "SET_LAST_MODIFIED" => "N",

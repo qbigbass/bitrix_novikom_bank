@@ -268,108 +268,64 @@ $APPLICATION->IncludeComponent(
         </div>
     </div>
 </section>
-<section class="section-layout">
-    <div class="container">
-        <div class="row">
-            <? $APPLICATION->IncludeComponent(
-                "bitrix:news.list",
-                "customer_announcements",
-                [
-                    "ACTIVE_DATE_FORMAT" => "d.m.Y",
-                    "ADD_SECTIONS_CHAIN" => "N",
-                    "AJAX_MODE" => "N",
-                    "AJAX_OPTION_ADDITIONAL" => "",
-                    "AJAX_OPTION_HISTORY" => "N",
-                    "AJAX_OPTION_JUMP" => "N",
-                    "AJAX_OPTION_STYLE" => "Y",
-                    "CACHE_FILTER" => "N",
-                    "CACHE_GROUPS" => "Y",
-                    "CACHE_TIME" => "36000000",
-                    "CACHE_TYPE" => "A",
-                    "CHECK_DATES" => "Y",
-                    "DETAIL_URL" => "/support/announcements_for_clients/#SECTION_CODE#/#ELEMENT_CODE#/",
-                    "DISPLAY_BOTTOM_PAGER" => "N",
-                    "DISPLAY_TOP_PAGER" => "N",
-                    "FIELD_CODE" => ["CODE", "NAME", "PREVIEW_TEXT", "PREVIEW_PICTURE", ""],
-                    "FILTER_NAME" => "",
-                    "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                    "IBLOCK_ID" => iblock('ads_for_customers_ru'),
-                    "IBLOCK_TYPE" => "support",
-                    "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
-                    "INCLUDE_SUBSECTIONS" => "N",
-                    "MESSAGE_404" => "",
-                    "NEWS_COUNT" => "20",
-                    "PAGER_BASE_LINK_ENABLE" => "N",
-                    "PAGER_DESC_NUMBERING" => "N",
-                    "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
-                    "PAGER_SHOW_ALL" => "N",
-                    "PAGER_SHOW_ALWAYS" => "N",
-                    "PAGER_TEMPLATE" => ".default",
-                    "PAGER_TITLE" => "Новости",
-                    "PARENT_SECTION" => "",
-                    "PARENT_SECTION_CODE" => "",
-                    "PREVIEW_TRUNCATE_LEN" => "",
-                    "PROPERTY_CODE" => [""],
-                    "SET_BROWSER_TITLE" => "N",
-                    "SET_LAST_MODIFIED" => "N",
-                    "SET_META_DESCRIPTION" => "N",
-                    "SET_META_KEYWORDS" => "N",
-                    "SET_STATUS_404" => "N",
-                    "SET_TITLE" => "N",
-                    "SHOW_404" => "N",
-                    "SORT_BY1" => "ACTIVE_FROM",
-                    "SORT_BY2" => "SORT",
-                    "SORT_ORDER1" => "DESC",
-                    "SORT_ORDER2" => "ASC",
-                    "STRICT_SECTION_CHECK" => "N",
-                ],
-                false,
-                ["HIDE_ICONS" => "Y"]
-            ); ?>
-            <div class="col-12 col-xxl-6 mt-6 mt-xxl-0"><a class="card-link h3 d-lg-none" href="/about/">О банке
-                    <svg class="icon size-m blue-100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
-                    </svg>
-                </a>
-                <div class="card-about-bank d-none d-lg-flex">
-                    <div class="card-about-bank__col d-flex flex-column gap-6"><a class="h3" href="/about/">О банке
-                            <svg class="icon size-m blue-100" xmlns="http://www.w3.org/2000/svg" width="100%"
-                                 height="100%">
-                                <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
-                            </svg>
-                        </a>
-                        <div class="d-flex flex-column"><span class="violet-100 fw-semibold text-number-m fw-bold">30 лет</span>
-                            <p class="card-about-bank__description text-s fw-semibold">успешной работы в&nbsp;реальном
-                                секторе российской<br class="d-xxl-none">
-                                экономики
-                            </p>
-                        </div>
-                        <div class="d-flex flex-column"><span class="violet-100 fw-semibold text-number-m fw-bold">19,4 млн</span>
-                            <p class="card-about-bank__description text-s fw-semibold">рекордная чистая прибыль<br>за&nbsp;2022&nbsp;г
-                            </p>
-                        </div>
-                    </div>
-                    <div class="card-about-bank__col d-flex flex-column"><img src="/frontend/dist/img/top.svg" alt="Топ"
-                                                                              width="138" height="54"
-                                                                              loading="lazy"><img
-                            src="/frontend/dist/img/top-20.svg" alt="20" width="138" height="144" loading="lazy">
-                        <p class="card-about-bank__description text-s fw-semibold mt-auto">по&nbsp;величине капитала,
-                            объему активов<br class="d-xxl-none">
-                            и&nbsp;корпоративных кредитов
-                        </p>
-                    </div>
-                    <picture class="pattern-bg card-about-bank__pattern">
-                        <source srcset="/frontend/dist/img/patterns/card/pattern-light-s.svg"
-                                media="(max-width: 767px)">
-                        <source srcset="/frontend/dist/img/patterns/card/pattern-light-m.svg"
-                                media="(max-width: 1199px)">
-                        <img src="/frontend/dist/img/patterns/card/pattern-light-l.svg" alt="bg pattern" loading="lazy">
-                    </picture>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+<? $APPLICATION->IncludeComponent(
+    "bitrix:news.list",
+    "customer_announcements",
+    [
+        "ACTIVE_DATE_FORMAT" => "d.m.Y",
+        "ADD_SECTIONS_CHAIN" => "N",
+        "AJAX_MODE" => "N",
+        "AJAX_OPTION_ADDITIONAL" => "",
+        "AJAX_OPTION_HISTORY" => "N",
+        "AJAX_OPTION_JUMP" => "N",
+        "AJAX_OPTION_STYLE" => "Y",
+        "CACHE_FILTER" => "N",
+        "CACHE_GROUPS" => "Y",
+        "CACHE_TIME" => "36000000",
+        "CACHE_TYPE" => "A",
+        "CHECK_DATES" => "Y",
+        "DETAIL_URL" => "/support/announcements_for_clients/#SECTION_CODE#/#ELEMENT_CODE#/",
+        "DISPLAY_BOTTOM_PAGER" => "N",
+        "DISPLAY_TOP_PAGER" => "N",
+        "FIELD_CODE" => ["CODE", "NAME", "PREVIEW_TEXT", "PREVIEW_PICTURE", ""],
+        "FILTER_NAME" => "",
+        "HIDE_LINK_WHEN_NO_DETAIL" => "N",
+        "IBLOCK_ID" => iblock('ads_for_customers_ru'),
+        "IBLOCK_TYPE" => "support",
+        "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+        "INCLUDE_SUBSECTIONS" => "N",
+        "MESSAGE_404" => "",
+        "NEWS_COUNT" => "20",
+        "PAGER_BASE_LINK_ENABLE" => "N",
+        "PAGER_DESC_NUMBERING" => "N",
+        "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+        "PAGER_SHOW_ALL" => "N",
+        "PAGER_SHOW_ALWAYS" => "N",
+        "PAGER_TEMPLATE" => ".default",
+        "PAGER_TITLE" => "Новости",
+        "PARENT_SECTION" => "",
+        "PARENT_SECTION_CODE" => "",
+        "PREVIEW_TRUNCATE_LEN" => "",
+        "PROPERTY_CODE" => [""],
+        "SET_BROWSER_TITLE" => "N",
+        "SET_LAST_MODIFIED" => "N",
+        "SET_META_DESCRIPTION" => "N",
+        "SET_META_KEYWORDS" => "N",
+        "SET_STATUS_404" => "N",
+        "SET_TITLE" => "N",
+        "SHOW_404" => "N",
+        "SORT_BY1" => "ACTIVE_FROM",
+        "SORT_BY2" => "SORT",
+        "SORT_ORDER1" => "DESC",
+        "SORT_ORDER2" => "ASC",
+        "STRICT_SECTION_CHECK" => "N",
+        "CLASS_COLOR_BG" => "",
+        "PATH_IMG_BG" => "",
+        "SHOW_BLOCK_ABOUT_BANK" => "Y"
+    ],
+    false,
+    ["HIDE_ICONS" => "Y"]
+); ?>
 
 <? $APPLICATION->IncludeFile('/local/php_interface/include/block_news_section.php');?>
 

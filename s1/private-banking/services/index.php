@@ -8,7 +8,7 @@ $APPLICATION->SetTitle('Private banking');
 
 <?$APPLICATION->IncludeComponent(
     "bitrix:news",
-    "private_banking",
+    "pb_services",
     [
         "ADD_ELEMENT_CHAIN" => "N",
         "ADD_SECTIONS_CHAIN" => "Y",

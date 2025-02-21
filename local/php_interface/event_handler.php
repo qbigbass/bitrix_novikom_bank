@@ -2,13 +2,14 @@
 
 use Bitrix\Main;
 use Dalee\Helpers\FormHelper;
+use Dalee\Helpers\IblockHelper;
 use Dalee\Services\CacheHandler;
 use Dalee\Services\RatesPlaceholderManager;
+use Dalee\UserType\CIBEditComplexProp;
+use Dalee\UserType\CUserTypeComplexProperty;
 use Dalee\UserType\CUserTypeSectionStringDescr;
 use Dalee\UserType\CUserTypeStringDescr;
 use Dalee\UserType\CUserTypeStringWithTabs;
-use Dalee\UserType\CUserTypeComplexProperty;
-use Dalee\UserType\CIBEditComplexProp;
 
 $eventManager = Main\EventManager::getInstance();
 
@@ -33,3 +34,8 @@ $eventManager->addEventHandler('form', 'OnBeforeResultAdd', [FormHelper::class, 
 $eventManager->addEventHandler("iblock", "OnAfterIBlockElementUpdate", [CacheHandler::class, "onAfterIBlockElementUpdateHandler"]);
 
 $eventManager->addEventHandler('main', 'onMainGeoIpHandlersBuildList', [\Dalee\Handlers\SxGeoLocal::class, 'onMainGeoIpHandlersBuildListHandler']);
+
+// Сбрасываем тегированный кеш у связанных инфоблоков
+AddEventHandler('iblock', 'OnAfterIBlockElementAdd', [IblockHelper::class, 'onAfterIBlockElementUpdateHandler']);
+AddEventHandler('iblock', 'OnAfterIBlockElementUpdate', [IblockHelper::class, 'onAfterIBlockElementUpdateHandler']);
+AddEventHandler('iblock', 'OnAfterIBlockElementDelete', [IblockHelper::class, 'onAfterIBlockElementUpdateHandler']);

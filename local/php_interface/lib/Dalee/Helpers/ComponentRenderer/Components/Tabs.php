@@ -91,7 +91,7 @@ class Tabs implements ComponentInterface
                     "TEXT_FIELD_HEADER",
                     "BENEFITS",
                     "TEXT_BLOCK_DESCRIPTION",
-                    "COMPLEX_PROP",
+                    "ACCORDION",
                     "HTML",
                     "QUESTIONS",
                     "DOCUMENTS",

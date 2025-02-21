@@ -43,11 +43,11 @@ function renderBenefitsHeaderFooter(CMain $APPLICATION, array $ids, bool $hasPic
     return ob_get_clean();
 }
 
-function renderQuote(string $text, bool $invert = false): void
+function renderQuote(string $text, bool $invert = false, string $classColor = ''): void
 {
     ob_start();
     $pathIcon = "/frontend/dist/img/restructuring-additional-info_gray.png";
-    $bg = "bg-white";
+    $bg = $classColor ?: "bg-white";
     $polygonLine = 'violet-100';
     $sectionClass = "";
     global $APPLICATION;
@@ -64,7 +64,7 @@ function renderQuote(string $text, bool $invert = false): void
                         <div class="polygon-container__content">
                             <div class="helper <?= $bg ?>">
                                 <div class="helper__wrapper d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-4 gap-lg-6">
-                                    <img class="helper__image w-auto float-end" src="<?= $pathIcon ?>" alt="Обратите внимание" loading="lazy">
+                                    <img class="helper__image w-auto float-end" src="<?= $pathIcon ?>" alt="Обратите внимание">
                                     <div class="helper__content text-l">
                                         <p><?= $text ?></p>
                                     </div>

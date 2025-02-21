@@ -6,12 +6,13 @@ const ELEMS_CURRENCY = {
     selectGet: '.js-currency-select-get',
     unitHaveToGet: '.js-currency-unit-have',
     unitGetToHave: '.js-currency-unit-get',
+    radiosTypeRate: 'input[name="TYPE_RATE"]',
 }
 
 const RUB = {
-    "buy": "1",
-    "sell": "1",
-    "base": "1",
+    "buy": 1,
+    "sell": 1,
+    "base": 1,
     "currency": "RUB",
     "currencyName": "Российский рубль"
 }
@@ -23,6 +24,7 @@ const initElementsCurrencyConverter = (root) => {
     const selectGet = root.querySelector(ELEMS_CURRENCY.selectGet);
     const unitHaveToGet = root.querySelector(ELEMS_CURRENCY.unitHaveToGet);
     const unitGetToHave = root.querySelector(ELEMS_CURRENCY.unitGetToHave);
+    const radiosTypeRate = root.querySelectorAll(ELEMS_CURRENCY.radiosTypeRate);
 
     return {
         root,
@@ -31,8 +33,20 @@ const initElementsCurrencyConverter = (root) => {
         selectHave,
         selectGet,
         unitHaveToGet,
-        unitGetToHave
+        unitGetToHave,
+        radiosTypeRate
     }
+}
+
+function setOptionsSelectCurrency(STATE) {
+    STATE.currencies = ['RUB'];
+    STATE.currencyData.forEach((currency) => STATE.currencies.push(currency.currency));
+
+    setSelectOptions('selectHave', STATE.currencies, STATE);
+    setSelectOptions('selectGet', STATE.currencies, STATE);
+
+    const triggerSelect = STATE.typeRate === 'sell' ? 'Get' : 'Have';
+    $(ELEMS_CURRENCY[`select${triggerSelect}`]).val(STATE.currencies[1]).trigger('change');
 }
 
 function convertCurrencyToNumber(value) {
@@ -40,16 +54,22 @@ function convertCurrencyToNumber(value) {
 }
 
 function convertCurrencyToLocaleString(value) {
-    return convertCurrencyToNumber(value).toLocaleString('ru-RU', {maximumFractionDigits: 2});
+    const valueNum = convertCurrencyToNumber(value);
+    return isNaN(valueNum) ? '' : valueNum.toLocaleString('ru-RU', {maximumFractionDigits: 2});
 }
 
-function findCurrency(currency, STATE) {
+function getCurrency(currency, STATE) {
     return STATE.currencyData.filter(item => item.currency === currency)[0] ?? RUB;
 }
 
+function getTypeRate(STATE) {
+    const checkedTypeRate = [...STATE.elements.radiosTypeRate].find(typeRate => typeRate.checked);
+    return checkedTypeRate.value;
+}
+
 function calculateUnitCurrency(STATE) {
-    const valueHave = convertCurrencyToNumber(STATE.currencyHave.base)
-    const valueGet = convertCurrencyToNumber(STATE.currencyGet.base);
+    const valueHave = convertCurrencyToNumber(STATE.currencyHave[STATE.typeRate]);
+    const valueGet = convertCurrencyToNumber(STATE.currencyGet[STATE.typeRate]);
 
     STATE.unitHaveToGet = valueHave / valueGet;
     STATE.unitGetToHave = valueGet / valueHave;
@@ -58,66 +78,145 @@ function calculateUnitCurrency(STATE) {
     STATE.elements.unitGetToHave.innerHTML = `1 ${STATE.currencyGet.currency} = ${convertCurrencyToLocaleString(STATE.unitGetToHave)} ${STATE.currencyHave.currency}`;
 }
 
-function calculateResultCurrency({value, resultInput, unit}, STATE) {
-    return STATE.elements[resultInput].value = convertCurrencyToLocaleString(convertCurrencyToNumber(value) * STATE[unit]);
+function calculateResultCurrency({value, from, to}, STATE) {
+    const inputTo = STATE.elements[`input${to}`];
+    const valueNum = convertCurrencyToNumber(value);
+
+    inputTo.value = convertCurrencyToLocaleString(valueNum * STATE[`unit${from}To${to}`]);
 }
 
-function setSelectsCurrency(STATE) {
-    let currencies = ['RUB'];
-    STATE.currencyData.forEach((currency) => currencies.push(currency.currency));
-
-    setSelectOptions('selectHave', currencies, STATE);
-    setSelectOptions('selectGet', currencies, STATE);
-
-    $(ELEMS_CURRENCY.selectGet).val(currencies[1]).trigger('change');
+function handlerFocusInputCurrency(e) {
+    if (e.target.value.trim() !== '') {
+        e.target.value = convertCurrencyToNumber(e.target.value);
+    }
 }
 
-function calculateCurrencyConversion(STATE) {
-    STATE.currencyHave = findCurrency(STATE.elements.selectHave.value, STATE);
-    STATE.currencyGet = findCurrency(STATE.elements.selectGet.value, STATE);
+function handlerBlurInputCurrency(e) {
+    if (e.target.value.trim() !== '') {
+        e.target.value = convertCurrencyToLocaleString(e.target.value);
+    }
+}
+
+function handlerChangeRadioTypeRate(radio, STATE) {
+    STATE.typeRate = radio.value;
+
+    if (STATE.typeRate === 'sell') {
+        if (STATE.elements.selectHave.value === 'RUB') {
+            const setValueHave = STATE.elements.selectGet.value !== 'RUB' ? STATE.elements.selectGet.value : STATE.currencies[1];
+            $(ELEMS_CURRENCY[`selectHave`]).val(setValueHave).trigger('change');
+        }
+        $(ELEMS_CURRENCY[`selectGet`]).val(STATE.currencies[0]).trigger('change');
+    } else {
+        if (STATE.elements.selectGet.value === 'RUB') {
+            const setValueGet = STATE.elements.selectHave.value !== 'RUB' ? STATE.elements.selectHave.value : STATE.currencies[1];
+            $(ELEMS_CURRENCY[`selectGet`]).val(setValueGet).trigger('change');
+        }
+        $(ELEMS_CURRENCY[`selectHave`]).val(STATE.currencies[0]).trigger('change');
+    }
+
+    STATE.currencyHave = getCurrency(STATE.elements.selectHave.value, STATE);
+    STATE.currencyGet = getCurrency(STATE.elements.selectGet.value, STATE);
+
+    calculateUnitCurrency(STATE);
+
+    calculateResultCurrency({
+        value: STATE.elements[`inputHave`].value,
+        from: 'Have',
+        to: 'Get',
+    }, STATE);
+}
+
+function toggleTypeRate(STATE) {
+    const currentTypeRate = STATE.typeRate;
+    STATE.elements.radiosTypeRate.forEach(radio => {
+        if (radio.value !== currentTypeRate) {
+            radio.checked = true;
+            const tabTrigger = new bootstrap.Tab(radio.nextElementSibling);
+            tabTrigger.show();
+            radio.dispatchEvent(new Event('change'));
+        }
+    });
+}
+
+function handlerChangeSelectCurrency({value, from, to}, STATE) {
+    const isSell = STATE.typeRate === 'sell';
+    const isRUB = value === 'RUB';
+
+    if (value === STATE.elements[`select${to}`].value) {
+        if ($(ELEMS_CURRENCY[`select${to}`]).find("option[value='" + STATE[`currency${from}`].currency + "']").length) {
+            $(ELEMS_CURRENCY[`select${to}`]).val(STATE[`currency${from}`].currency).trigger('change');
+        }
+    }
+
+    if (from === 'Have') {
+        if ((isSell && isRUB) || (!isSell && !isRUB)) {
+            toggleTypeRate(STATE);
+            return;
+        }
+    }
+
+    if (from === 'Get') {
+        if ((isSell && !isRUB) || (!isSell && isRUB)) {
+            toggleTypeRate(STATE);
+            return;
+        }
+    }
+
+    STATE.currencyHave = getCurrency(STATE.elements.selectHave.value, STATE);
+    STATE.currencyGet = getCurrency(STATE.elements.selectGet.value, STATE);
+
+    calculateUnitCurrency(STATE);
+
+    calculateResultCurrency({
+        value: STATE.elements[`input${from}`].value,
+        from: from,
+        to: to,
+    }, STATE);
+}
+
+
+function registerEventsCurrencyConversion(STATE) {
+    STATE.elements.radiosTypeRate.forEach(radio => {
+        radio.addEventListener('change', () => {
+            handlerChangeRadioTypeRate(radio, STATE);
+        });
+    });
 
     $(ELEMS_CURRENCY.selectHave).on('select2:select', (e) => {
-        STATE.currencyHave = findCurrency(e.target.value, STATE);
-        calculateUnitCurrency(STATE);
-        calculateResultCurrency({
-            value: STATE.elements.inputHave.value,
-            resultInput: 'inputGet',
-            unit: 'unitHaveToGet'
+        handlerChangeSelectCurrency({
+            value: e.target.value,
+            from: 'Have',
+            to: 'Get'
         }, STATE);
     });
 
     $(ELEMS_CURRENCY.selectGet).on('select2:select', (e) => {
-        STATE.currencyGet = findCurrency(e.target.value, STATE);
-        calculateUnitCurrency(STATE);
-        calculateResultCurrency({
-            value: STATE.elements.inputGet.value,
-            resultInput: 'inputHave',
-            unit: 'unitGetToHave'
+        handlerChangeSelectCurrency({
+            value: e.target.value,
+            from: 'Get',
+            to: 'Have'
         }, STATE);
     });
 
     STATE.elements.inputHave.addEventListener('input', (e) => {
         calculateResultCurrency({
             value: e.target.value,
-            resultInput: 'inputGet',
-            unit: 'unitHaveToGet'
+            from: 'Have',
+            to: 'Get'
         }, STATE);
     });
 
     STATE.elements.inputGet.addEventListener('input', (e) => {
         calculateResultCurrency({
             value: e.target.value,
-            resultInput: 'inputHave',
-            unit: 'unitGetToHave'
+            from: 'Get',
+            to: 'Have'
         }, STATE);
     });
 
-    STATE.elements.inputHave.addEventListener('blur', (e) => {
-        e.target.value = convertCurrencyToLocaleString(e.target.value);
-    });
-
-    STATE.elements.inputGet.addEventListener('blur', (e) => {
-        e.target.value = convertCurrencyToLocaleString(e.target.value);
+    [STATE.elements.inputHave, STATE.elements.inputGet].forEach(input => {
+        input.addEventListener('focus', handlerFocusInputCurrency);
+        input.addEventListener('blur', handlerBlurInputCurrency);
     });
 }
 
@@ -142,8 +241,13 @@ function initCurrencyConverter() {
     for (const converter of currencyConverter) {
         initStateCurrencyConverter(converter)
             .then(STATE => {
-                setSelectsCurrency(STATE);
-                calculateCurrencyConversion(STATE);
+                registerEventsCurrencyConversion(STATE);
+                setOptionsSelectCurrency(STATE);
+
+                STATE.typeRate = getTypeRate(STATE);
+                STATE.currencyHave = getCurrency(STATE.elements.selectHave.value, STATE);
+                STATE.currencyGet = getCurrency(STATE.elements.selectGet.value, STATE);
+
                 calculateUnitCurrency(STATE);
             })
             .catch(error => {

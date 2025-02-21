@@ -1,32 +1,23 @@
 <?php
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
-
+use Dalee\Helpers\IblockHelper;
 global $APPLICATION;
 
-$elements = \Bitrix\Iblock\ElementTable::getList([
-    'filter' => [
-        'IBLOCK_ID' => iblock('online_services'),
-        'ACTIVE' => 'Y',
-    ],
-    'select' => [
-        'NAME',
-        'CODE',
-    ],
-    'order' => [
-        'SORT' => 'ASC',
-    ]
-])->fetchAll();
+$aMenuLinksExt = $APPLICATION->IncludeComponent("bitrix:menu.sections", "", array(
+    "IS_SEF" => "Y",
+    "SEF_BASE_URL" => "",
+    "SECTION_PAGE_URL" => "#SECTION_CODE#/",
+    "DETAIL_PAGE_URL" => "#SECTION_CODE#/#ELEMENT_CODE#/",
+    "IBLOCK_TYPE" => "for_private_clients_ru",
+    "IBLOCK_ID" => iblock('online_services'),
+    "DEPTH_LEVEL" => "1",
+    "CACHE_TYPE" => "A",
+    "CACHE_TIME" => "36000000"
+),
+    false
+);
 
-$elementsLinks = [];
-foreach ($elements as $element) {
-    $elementsLinks[] = [
-        $element['NAME'],
-        $element['CODE'] . '/',
-        [],
-        [],
-        ""
-    ];
-}
+$aMenuLinksElementsExt = IblockHelper::getIblockMenuWithoutSections('online_services', '/online-services/');
 
-$aMenuLinks = array_merge($elementsLinks, $aMenuLinks);
+$aMenuLinks = array_merge($aMenuLinks, $aMenuLinksExt, $aMenuLinksElementsExt);
 ?>

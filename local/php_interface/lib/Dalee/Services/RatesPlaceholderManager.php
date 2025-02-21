@@ -348,7 +348,7 @@ class RatesPlaceholderManager
             }
             $table = '';
             foreach ($match['currencies'] as $currency) {
-                $table .= $this->generateRatesTableHTML(COption::GetOptionString("novikom.settings", "UF_KEY_RATE"), $elements, $currency);
+                $table .= $this->generateRatesTableHTML(UF_KEY_RATE, $elements, $currency);
             }
             return [
                 $match[0],

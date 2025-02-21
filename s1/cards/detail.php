@@ -8,37 +8,49 @@ require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 global $APPLICATION;
 $APPLICATION->SetTitle('Банковские карты');
 
-$path = basename($APPLICATION->GetCurPage());
-$iblockId = iblock('cards_detail_pages_ru');
+$arPathUrl = array_filter(explode("/", $APPLICATION->GetCurPage()));
+$cntSectionsPath = count($arPathUrl);
 
-$filter = [
-    'IBLOCK_ID' => $iblockId,
-    'ACTIVE' => 'Y',
-];
+if ($cntSectionsPath === 3) {
+    $iblockId = iblock('cards_detail_pages_ru');
+    $parentSection = $arPathUrl[2];
+    $currentSection = $arPathUrl[3];
 
-$section = SectionTable::getList([
-    'filter' => [
+    $filter = [
         'IBLOCK_ID' => $iblockId,
-        'CODE' => $path,
-    ],
-    'select' => ['ID']
-])->fetch();
+        'ACTIVE' => 'Y',
+    ];
 
-$filter[] = !empty($section) ? ['IBLOCK_SECTION.CODE' => $path] : ['CODE' => $path];
+    $section = SectionTable::getList([
+        'filter' => [
+            'IBLOCK_ID' => $iblockId,
+            'PARENT_SECTION.CODE' => $parentSection,
+            'CODE' => $currentSection,
+        ],
+        'select' => [
+            'ID'
+        ]
+    ])->fetch();
 
-$element = ElementTable::getList([
-    'filter' => $filter,
-    'select' => ['ID','IBLOCK_ID'],
-    'order' => ['SORT' => 'ASC'],
-    'limit' => 1
-])->fetch();
+    if (!empty($section['ID'])) {
+        $element = ElementTable::getList([
+            'filter' => ['IBLOCK_SECTION.ID' => $section['ID']],
+            'select' => ['ID','IBLOCK_ID'],
+            'order' => ['SORT' => 'ASC'],
+            'limit' => 1
+        ])->fetch();
 
-if (empty($element)) {
+        if (empty($element)) {
+            Tools::process404('Элемент не найден', true, true, true);
+            die();
+        }
+
+        include_once 'detail_component.php';
+    }
+} else {
     Tools::process404('Элемент не найден', true, true, true);
     die();
 }
-
-include_once 'detail_component.php';
 ?>
 
 <? $APPLICATION->IncludeFile('/local/php_interface/include/block_news_detail.php');?>

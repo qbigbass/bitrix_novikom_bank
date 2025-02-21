@@ -25,7 +25,7 @@ $renderer = new Renderer($APPLICATION, $component);
                     $helper = new ComponentHelper($component);
                     $helper->deferredCall('showNavChain', ['.default']);
                     ?>
-                    <h1 class="banner-text__title dark-0 text-break"><?=$arResult['NAME']?></h1>
+                    <h1 class="banner-text__title dark-0 text-break"><?=$arResult['~NAME']?></h1>
                     <div class="banner-text__description text-l dark-0"><?=$arResult['DETAIL_TEXT']?></div>
                 </div>
             </div>
@@ -64,7 +64,7 @@ $renderer = new Renderer($APPLICATION, $component);
                         <div class="polygon-container__content">
                             <div class="helper bg-dark-10">
                                 <div class="helper__wrapper d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-4 gap-lg-6">
-                                    <img class="helper__image w-auto float-end" src="/frontend/dist/img/restructuring-additional-info.png" alt="" loading="lazy">
+                                    <img class="helper__image w-auto float-end" src="/frontend/dist/img/restructuring-additional-info.png" alt="">
                                     <div class="helper__content text-l">
                                         <p class="mb-0"><?=$arResult['DISPLAY_PROPERTIES']['BENEFITS_INFO_BOX']['~VALUE']['TEXT']?></p>
                                     </div>
@@ -352,7 +352,7 @@ $renderer = new Renderer($APPLICATION, $component);
                         <div class="polygon-container__content">
                             <div class="helper bg-dark-10">
                                 <div class="helper__wrapper d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-4 gap-lg-6">
-                                    <img class="helper__image w-auto float-end" src="/frontend/dist/img/restructuring-additional-info.png" alt="" loading="lazy">
+                                    <img class="helper__image w-auto float-end" src="/frontend/dist/img/restructuring-additional-info.png" alt="">
                                     <div class="helper__content text-l">
                                         <p class="mb-0"><?=$arResult['DISPLAY_PROPERTIES']['INFO_BOX']['~VALUE']['TEXT']?></p>
                                     </div>
