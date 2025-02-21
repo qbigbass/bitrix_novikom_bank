@@ -172,12 +172,6 @@ function findLoanData({data, type, strategicClient}) {
 }
 
 function setStartValues(STATE) {
-    // TODO: возможно надо будет вернуть, утончить
-    // const startValueAmount = STATE.elements.inputAmountWrapper.getAttribute('data-start-value');
-    // const startValuePeriod = STATE.elements.inputPeriodWrapper.getAttribute('data-start-value');
-    // STATE.amount = startValueAmount ? Number(startValueAmount) : STATE.minAmount;
-    // STATE.period = startValuePeriod ? Number(startValuePeriod) : STATE.minPeriod;
-
     STATE.amount = STATE.minAmount;
     STATE.period = STATE.minPeriod;
 }
@@ -200,7 +194,6 @@ const getLoanValues = (STATE) => {
     STATE.paymentType = STATE.elements.selectLoanPaymentType.value;
 
     if (!STATE.filteredData) {
-        console.error(`Не удалось найти данные по ${STATE.loanType}`)
         STATE.filteredData = STATE.calculatorData[0];
     }
 
