@@ -54,6 +54,10 @@ class DocumentHandler
         $code = $pathinfo['filename'];
         $extension = $pathinfo['extension'];
 
+        if (empty($extension)) {
+            $this->send404('Не указано расширение файла');
+        }
+
         $file = $this->getFileByCode($code, $extension);
 
         if (empty($file)) {
