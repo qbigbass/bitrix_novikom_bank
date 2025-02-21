@@ -69,7 +69,7 @@
         }
     }
 
-    &--border-violet {
+    &[class*="border-violet"] {
         #{$root}__pattern {
             opacity: 1;
         }

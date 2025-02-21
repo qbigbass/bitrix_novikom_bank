@@ -1424,7 +1424,7 @@
       border-bottom: 1px solid var(--yellow-contrast-black-0);
     }
 
-    .banner-text.banner-text--border-undefined.bg-linear-blue {
+    .banner-text.border-undefined.bg-linear-blue {
       background: linear-gradient(270deg,
         rgb(62 75 3) 100%,
         rgb(136 142 3 / 100%) 100%);
@@ -1510,7 +1510,7 @@
       background: none;
     }
 
-    .banner-product.banner-product--heavy-violet.banner-product--type-msb.banner-product--border-yellow.banner-product--size-xl {
+    .banner-product.banner-product--heavy-violet.banner-product--type-msb.border-yellow.banner-product--size-xl {
       background: none;
     }
 
@@ -1711,7 +1711,7 @@
       border-bottom: 1px solid var(--yellow-contrast-black-100);
     }
 
-    .banner-text--border-green {
+    .border-green {
       border-top: 8px solid var(--yellow-contrast-black-100);
     }
 
@@ -2305,7 +2305,7 @@
       text-align: center;
     }
 
-    .banner-text--border-green.bg-linear-blue {
+    .border-green.bg-linear-blue {
       background: none;
     }
 
@@ -2554,7 +2554,7 @@
     }
 
     //financing.html
-    .banner-text--border-orange {
+    .border-orange {
       border-top: var(--border-thickness) solid var(--yellow-contrast-black-100);
     }
 
@@ -2641,7 +2641,7 @@
     }
 
     //insurance-companies.html
-    .banner-text.banner-text--border-green.bg-heavy-violet {
+    .banner-text.border-green.bg-heavy-violet {
       background: none;
       background-color: var(--yellow-contrast-bg-100);
     }
@@ -2685,11 +2685,11 @@
       }
     }
 
-    .banner-text.banner-text--border-violet.bg-gradient-graphite {
+    .banner-text.border-violet.bg-gradient-graphite {
       background: var(--yellow-contrast-bg-100);
     }
 
-    .banner-text--border-violet {
+    .border-violet {
       border-top: var(--border-thickness) solid var(--yellow-contrast-gray-200)
     }
 
@@ -3557,7 +3557,7 @@
     //TRUST MANAGEMENT PAGE
 
     .banner-product {
-      &--border-violet {
+      &.border-violet {
         --border-top-color: var(--yellow-contrast-gray-200)
       }
 

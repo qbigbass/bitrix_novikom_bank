@@ -1541,7 +1541,7 @@
     }
 
 
-    .banner-product.banner-product--heavy-purple.banner-product--border-orange {
+    .banner-product.banner-product--heavy-purple.border-orange {
       background-color: var(--blue-contrast-bg);
       --border-top-color: var(--blue-contrast-white);
     }
@@ -2338,7 +2338,7 @@
 
 
     //	biometric-identification.html
-    .banner-text--border-green {
+    .border-green {
       border-top: 8px solid var(--blue-contrast-white)
     }
 
@@ -2418,7 +2418,7 @@
 
     //bonuses.html
 
-    .banner-text.banner-text--border-green.bg-heavy-purple {
+    .banner-text.border-green.bg-heavy-purple {
       background-color: var(--blue-contrast-bg);
     }
 
@@ -3225,7 +3225,7 @@
 
 
       //financing.html
-      .banner-text--border-orange {
+      .border-orange {
         border-top: var(--border-thickness) solid var(--blue-contrast-white);
       }
 
@@ -3422,7 +3422,7 @@
       // }
 
       //insurance-companies.html
-      .banner-text.banner-text--border-green.bg-heavy-violet {
+      .banner-text.border-green.bg-heavy-violet {
         background: none;
         background-color: var(--blue-contrast-bg);
       }
@@ -3556,7 +3556,7 @@
         }
       }
 
-      .banner-text--border-violet {
+      .border-violet {
         border-top: var(--border-thickness) solid var(--blue-contrast-white);
       }
 
@@ -4697,7 +4697,7 @@
         //TRUST MANAGEMENT PAGE
 
         .banner-product {
-          &--border-violet {
+          &.border-violet {
             --border-top-color: var(--blue-contrast-white)
           }
 
