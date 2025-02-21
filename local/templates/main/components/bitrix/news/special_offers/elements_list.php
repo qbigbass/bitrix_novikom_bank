@@ -33,7 +33,6 @@ $activeFilter = [
 ?>
 
 <section class="section-catalog d-flex flex-column gap-7 py-6 py-sm-9 py-md-11">
-
     <!-- Табы -->
     <section class="section-catalog__tabs">
         <div class="container">
@@ -52,8 +51,7 @@ $activeFilter = [
                             "MENU_CACHE_TYPE" => "A",
                             "MENU_CACHE_TIME" => "3600",
                             "MENU_CACHE_USE_GROUPS" => "Y",
-                            "MENU_CACHE_GET_VARS" => [
-                            ],
+                            "MENU_CACHE_GET_VARS" => [],
                             "COMPONENT_TEMPLATE" => "iblock_elements_ajax",
                         ],
                         $component
@@ -74,8 +72,7 @@ $activeFilter = [
                             "MENU_CACHE_TYPE" => "A",
                             "MENU_CACHE_TIME" => "3600",
                             "MENU_CACHE_USE_GROUPS" => "Y",
-                            "MENU_CACHE_GET_VARS" => [
-                            ],
+                            "MENU_CACHE_GET_VARS" => [],
                             "COMPONENT_TEMPLATE" => "iblock_sections_with_search",
                             "IBLOCK_ID" => iblock('special_offers_ru'),
                             "FILTER_END_DATE" => true
@@ -87,7 +84,6 @@ $activeFilter = [
             </div>
         </div>
     </section>
-
     <!-- Список элементов -->
     <section class="section-catalog__list">
         <div class="container">
@@ -153,11 +149,12 @@ $activeFilter = [
             </div>
         </div>
     </section>
-
 </section>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_cross_sale_section.php'); ?>
 
 <? $APPLICATION->IncludeFile('/local/php_interface/include/request_call.php'); ?>
 
-<? $APPLICATION->IncludeFile('/local/php_interface/include/block_news_section.php');?>
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_news_section.php'); ?>
 
 <? $helper->saveCache(); ?>

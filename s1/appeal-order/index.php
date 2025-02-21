@@ -208,11 +208,9 @@ if (!empty($elementsInfoIds)) { ?>
 <?
 $elementsTabs =\Dalee\Helpers\IblockHelper::getIblockSectionElementsIds('tabs', 'poryadok-obrashcheniya-v-bank');
 if (!empty($elementsInfoIds)) { ?>
-
     <section class="section-layout px-lg-6">
         <div class="container">
             <h3 class="mb-md-6 mb-lg-7"><? $APPLICATION->IncludeFile('/appeal-order/tabs_header.php'); ?></h3>
-
             <? global $tabsFilter;
             $tabsFilter = [
                 'ACTIVE' => 'Y',
@@ -275,12 +273,12 @@ if (!empty($elementsInfoIds)) { ?>
                 false,
                 ['HIDE_ICONS' => 'Y']
             ); ?>
-
         </div>
     </section>
-
 <? } ?>
 
-<? $APPLICATION->IncludeFile('/local/php_interface/include/block_news_section.php');?>
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_cross_sale_section.php'); ?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_news_section.php'); ?>
 
 <? require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php'); ?>

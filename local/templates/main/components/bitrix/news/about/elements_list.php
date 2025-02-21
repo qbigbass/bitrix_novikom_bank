@@ -1,6 +1,7 @@
 <?
 use Dalee\Helpers\HeaderView;
 use Dalee\Helpers\IblockHelper;
+use Bitrix\Iblock\IblockTable;
 
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /** @var array $arParams */
@@ -18,8 +19,7 @@ $this->setFrameMode(true);
 
 $headerView = new HeaderView($component);
 $helper = $headerView->helper();
-
-$iblockData = \Bitrix\Iblock\IblockTable::getByPrimary(iblock('novikom_today_ru'))->fetch();
+$iblockData = IblockTable::getByPrimary(iblock('novikom_today_ru'))->fetch();
 $iblockPicture = CFile::GetPath($iblockData['PICTURE']);
 $iblockDescription = $iblockData['DESCRIPTION'];
 
@@ -338,6 +338,8 @@ if (!empty($awardsIds)) { ?>
     </section>
 <? } ?>
 
-<? $APPLICATION->IncludeFile('/local/php_interface/include/block_news_section.php');?>
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_cross_sale_section.php'); ?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_news_section.php'); ?>
 
 <? $helper->saveCache(); ?>

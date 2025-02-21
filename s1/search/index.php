@@ -53,6 +53,8 @@ $APPLICATION->IncludeComponent(
     ]
 );?>
 
-<?php $APPLICATION->IncludeFile('/local/php_interface/include/block_news_section.php');?>
+<?php $APPLICATION->IncludeFile('/local/php_interface/include/block_cross_sale_section.php'); ?>
+
+<?php $APPLICATION->IncludeFile('/local/php_interface/include/block_news_section.php'); ?>
 
 <?php require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>

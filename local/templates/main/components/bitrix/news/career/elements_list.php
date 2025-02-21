@@ -16,7 +16,6 @@ $this->setFrameMode(true);
 
 $headerView = new HeaderView($component);
 $helper = $headerView->helper();
-
 $headerView->render(
     $APPLICATION->GetTitle(),
     $APPLICATION->GetProperty("description"),
@@ -149,6 +148,8 @@ $headerView->render(
 
 <? $APPLICATION->IncludeFile('/local/php_interface/include/modal_vacancy_form.php'); ?>
 
-<? $APPLICATION->IncludeFile('/local/php_interface/include/block_news_section.php');?>
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_cross_sale_section.php'); ?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_news_section.php'); ?>
 
 <? $helper->saveCache(); ?>

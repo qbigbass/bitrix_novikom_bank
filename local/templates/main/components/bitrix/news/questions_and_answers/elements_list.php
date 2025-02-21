@@ -40,7 +40,6 @@ if (!empty($delFilter)) {
 ?>
 
 <section class="section-catalog d-flex flex-column py-6 py-sm-9 py-md-11 gap-4 gap-md-6 gap-lg-7" id="catalog-tabs">
-
     <!-- Табы -->
     <section class="section-catalog__tabs">
         <div class="container">
@@ -59,8 +58,7 @@ if (!empty($delFilter)) {
                             "MENU_CACHE_TYPE" => "A",
                             "MENU_CACHE_TIME" => "3600",
                             "MENU_CACHE_USE_GROUPS" => "Y",
-                            "MENU_CACHE_GET_VARS" => [
-                            ],
+                            "MENU_CACHE_GET_VARS" => [],
                             "COMPONENT_TEMPLATE" => "iblock_sections",
                             "ALL_LINK" => "Y",
                             "ALL_LINK_TEXT" => "Все " . mb_strtolower($APPLICATION->GetTitle())
@@ -71,7 +69,6 @@ if (!empty($delFilter)) {
             </div>
         </div>
     </section>
-
     <section class="section-catalog__list">
         <div class="container">
             <div class="row row-gap-4 row-gap-md-6 row-gap-lg-7">
@@ -101,8 +98,7 @@ if (!empty($delFilter)) {
                             "MENU_CACHE_TYPE" => "N",
                             "MENU_CACHE_TIME" => "3600",
                             "MENU_CACHE_USE_GROUPS" => "N",
-                            "MENU_CACHE_GET_VARS" => [
-                            ],
+                            "MENU_CACHE_GET_VARS" => [],
                             "COMPONENT_TEMPLATE" => "iblock_sections_subsections",
                             "ALL_LINK" => "Y",
                             "ALL_LINK_TEXT" => "Все " . mb_strtolower($APPLICATION->GetTitle())
@@ -173,9 +169,10 @@ if (!empty($delFilter)) {
             </div>
         </div>
     </section>
-
 </section>
 
-<? $APPLICATION->IncludeFile('/local/php_interface/include/block_news_section.php');?>
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_cross_sale_section.php'); ?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_news_section.php'); ?>
 
 <? $helper->saveCache(); ?>

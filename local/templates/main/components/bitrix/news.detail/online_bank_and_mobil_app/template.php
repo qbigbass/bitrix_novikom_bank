@@ -17,7 +17,6 @@ use Dalee\Helpers\HeaderView;
 
 $headerView = new HeaderView($component);
 $renderer = new Renderer($APPLICATION, $component);
-
 $helper = $headerView->helper();
 
 $headerView->render(
@@ -46,7 +45,6 @@ $headerView->render(
         </picture>
     </section>
 <? endif; ?>
-
 
 <? if (!empty($arResult['DISPLAY_PROPERTIES']['ADDITIONAL_INFO']['~VALUE']['TEXT'])) : ?>
     <section class="section-layout py-6 py-lg-11">
@@ -169,6 +167,8 @@ $headerView->render(
     </section>
 <? endif; ?>
 
-<? $APPLICATION->IncludeFile('/local/php_interface/include/block_news_section.php');?>
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_cross_sale_section.php'); ?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_news_section.php'); ?>
 
 <? $helper->saveCache(); ?>
