@@ -18,11 +18,10 @@ use Dalee\Helpers\HeaderView;
 
 $headerView = new HeaderView($component);
 $helper = $headerView->helper();
-
 $headerView->render(
     $APPLICATION->GetTitle(),
     null,
-    ['bg-linear-blue', 'border-green']
+    ['border-green']
 );
 ?>
 

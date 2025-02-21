@@ -92,7 +92,7 @@ if (empty($sliders)) {
     $headerView->render(
         $APPLICATION->GetTitle(),
         '',
-        ['bg-linear-blue']
+        ['border-green']
     );
 }
 ?>

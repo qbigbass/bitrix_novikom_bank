@@ -103,7 +103,7 @@ if (empty($sliders)) {
     $headerView->render(
         $APPLICATION->GetTitle(),
         null,
-        ['border-0'],
+        ['border-green'],
         1,
         $result,
         null,
