@@ -1,9 +1,16 @@
 <?php
 /** @var $arResult array */
 require 'functions.php';
+global $currentSection;
 
+$hiddenKey = 7;
 $modifiedResult = modifyCorporateSubmenuResult($arResult);
-$modifiedResult['FIRST_LEVEL_MENU'] = modifyFirstLevelMainSubmenu($modifiedResult['FIRST_LEVEL_MENU']);
+
+if ($currentSection === 'financial-institutions') {
+    $hiddenKey = 4;
+}
+
+$modifiedResult['FIRST_LEVEL_MENU'] = modifyFirstLevelMainSubmenu($modifiedResult['FIRST_LEVEL_MENU'], $hiddenKey);
 $arResult = $modifiedResult;
 
 if (!empty($arResult["FIRST_LEVEL_MENU"]["NOT_HIDDEN"])) {
