@@ -1,15 +1,10 @@
 <?php
 /** @var $arResult array */
 require 'functions.php';
-global $currentSection;
+global $APPLICATION, $currentSection;
 
-$hiddenKey = 7;
+$hiddenKey = $APPLICATION->GetProperty("hiddenKey") ?: 7;
 $modifiedResult = modifyCorporateSubmenuResult($arResult);
-
-if ($currentSection === 'financial-institutions') {
-    $hiddenKey = 4;
-}
-
 $modifiedResult['FIRST_LEVEL_MENU'] = modifyFirstLevelMainSubmenu($modifiedResult['FIRST_LEVEL_MENU'], $hiddenKey);
 $arResult = $modifiedResult;
 

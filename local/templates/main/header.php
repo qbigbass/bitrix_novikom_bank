@@ -165,15 +165,11 @@ $asset->addJs('/frontend/dist/js/accessibility-panel.js');
                 $currentSection = explode('/', trim($APPLICATION->GetCurDir(), '/'))[0];
                 ?>
                 <div class="header__bottom-row">
-                    <?php $APPLICATION->IncludeComponent(
+                    <?
+                    $templateMenu = $APPLICATION->GetProperty("templateSubMenu") ?: "main_submenu_header";
+                    $APPLICATION->IncludeComponent(
                         "bitrix:menu",
-                        (
-                            $currentSection === 'for-corporate-clients' ||
-                            $currentSection === 'msb' ||
-                            $currentSection === 'financial-institutions'
-                        )
-                            ? "corporate_submenu_header"
-                            : "main_submenu_header",
+                        $templateMenu,
                         [
                             "ALLOW_MULTI_SELECT" => "N",
                             "CHILD_MENU_TYPE" => "iblock_sections",
