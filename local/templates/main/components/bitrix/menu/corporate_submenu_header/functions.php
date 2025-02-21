@@ -1,5 +1,7 @@
 <?php
 
+use Bitrix\Iblock\SectionTable;
+
 function modifyFirstLevelMainSubmenu(array $firstLevelMenu, int $hiddenKey  = 7) : array
 {
     $modifiedFirstLevelMenu = [];
@@ -26,10 +28,39 @@ function modifyCorporateSubmenuResult(array $arResult): array
 
     foreach ($arResult as $key => $item) {
         $modifiedResult['FIRST_LEVEL_MENU'][] = $item;
+        $iblockId = iblock('corporate_clients');
+
+        $sections = SectionTable::getList([
+            'filter' => [
+                'PARENT_SECTION.NAME' => $item['TEXT'],
+                'IBLOCK_ID' => $iblockId,
+                'ACTIVE' => 'Y',
+            ],
+            'select' => [
+                'ID',
+                'NAME',
+                'CODE',
+            ],
+            'order' => [
+                'SORT' => 'ASC',
+            ]
+        ])->fetchAll();
+
+        if (!empty($sections)) {
+            foreach ($sections as $element) {
+                $secondLevelItem = [
+                    'TEXT' => $element['NAME'],
+                    'LINK' => '/for-corporate-clients/' . $element['CODE'] . '/',
+                    'DEPTH_LEVEL' => 2
+                ];
+                $modifiedResult['SECOND_LEVEL_MENU'][$item['ITEM_INDEX']][] = $secondLevelItem;
+            }
+        }
+
         $elements = \Bitrix\Iblock\ElementTable::getList([
             'filter' => [
                 'IBLOCK_SECTION.NAME' => $item['TEXT'],
-                'IBLOCK_ID' => iblock('corporate_clients'),
+                'IBLOCK_ID' => $iblockId,
                 'ACTIVE' => 'Y',
             ],
             'select' => [
