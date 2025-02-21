@@ -18,13 +18,7 @@ $this->setFrameMode(true);
 
 $headerView = new HeaderView($component);
 $renderer = new Renderer($APPLICATION, $component);
-
 $helper = $headerView->helper();
-$additionalClass = '';
-
-if ($arResult["CODE"] === "mery-gospodderzhki") {
-    $additionalClass = 'banner-product--type-corp'; // Чтобы покрасить кнопку в оранжевый цвет в баннере
-}
 
 $params["COLOR_TITLE_BENEFITS_TOP"] = $arParams["COLOR_TITLE_BENEFITS_TOP"];
 $params["VIEW_BENEFITS_TOP_HEADER"] = $arResult["PROPERTIES"]["TYPE_BENEFITS_TOP_HEADER"]["VALUE_XML_ID"] ?? 'simple';
@@ -47,6 +41,10 @@ if (!empty($arResult['PROPERTIES']['CNT_COL_BENEFITS_TOP']['VALUE'])) {
     $params["CNT_COL_BENEFITS_TOP"] = $arResult['PROPERTIES']['CNT_COL_BENEFITS_TOP']['VALUE'];
 }
 
+if (!empty($arParams["HEADER_COLOR_CLASS"])) {
+    $arResult["PARAMS_HEADER_COLOR_CLASS"] = $arParams["HEADER_COLOR_CLASS"];
+}
+
 /*
  * Шапка
  */
@@ -54,8 +52,7 @@ $headerView->render(
     $titleHeader,
     $arResult['~PREVIEW_TEXT'],
     [
-        !empty($arResult['PROPERTIES']['BENEFITS_TOP']['VALUE']) ? 'banner-product--size-xl' : '',
-        $additionalClass,
+        !empty($arResult['PROPERTIES']['BENEFITS_TOP']['VALUE']) ? 'banner-product--size-xl' : ''
     ],
     1,
     $arResult,

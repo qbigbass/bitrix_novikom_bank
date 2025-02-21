@@ -21,7 +21,7 @@ $helper = $headerView->helper();
 $headerView->render(
     $APPLICATION->GetTitle(),
     '',
-    ['bg-linear-blue'],
+    ['border-green'],
     1
 );
 

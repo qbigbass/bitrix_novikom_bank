@@ -4,7 +4,7 @@ global $APPLICATION;
 $APPLICATION->SetTitle('Контакты банка Новиком');
 ?>
 
-<section class="banner-text bg-linear-blue border-0">
+<section class="banner-text bg-linear-blue border-green">
     <div class="container banner-text__container position-relative z-2">
         <div class="row ps-lg-6">
             <div class="col-12 col-xxl-8 position-relative z-1 mb-6 mb-md-0 pt-6">

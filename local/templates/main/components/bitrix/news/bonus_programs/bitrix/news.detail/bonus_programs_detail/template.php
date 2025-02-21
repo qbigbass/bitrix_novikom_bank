@@ -16,7 +16,7 @@ use Dalee\Helpers\ComponentRenderer\Renderer;
 $renderer = new Renderer($APPLICATION, $component);
 
 ?>
-<section class="banner-text banner-text--border-green <?=$arResult['DISPLAY_PROPERTIES']['BANNER_STYLE']['VALUE_XML_ID']?>">
+<section class="banner-text border-green <?=$arResult['DISPLAY_PROPERTIES']['BANNER_STYLE']['VALUE_XML_ID']?>">
     <div class="container banner-text__container position-relative z-2">
         <div class="row ps-lg-6">
             <div class="col-12 col-sm-6 col-md-8 position-relative z-1 mb-5 mb-md-0 pt-6">

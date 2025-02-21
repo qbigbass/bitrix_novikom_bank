@@ -3,7 +3,7 @@
 /** @var Dalee\Helpers\ComponentHelper $helper */
 ?>
 
-<section class="banner-text banner-text--border-green bg-linear-blue banner-text--mh-mobile-unset">
+<section class="banner-text border-green bg-linear-blue banner-text--mh-mobile-unset">
     <div class="container banner-text__container position-relative z-2">
         <div class="row ps-lg-6">
             <div class="col-12 col-xxl-8 position-relative z-1 mb-6 mb-md-0 pt-6">
