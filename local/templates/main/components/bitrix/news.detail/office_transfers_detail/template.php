@@ -26,13 +26,11 @@ $element = \Bitrix\Iblock\ElementTable::getList([
 
 $headerView = new HeaderView($component);
 $renderer = new Renderer($APPLICATION, $component);
-
 $helper = $headerView->helper();
-
 $headerView->render(
     $element['NAME'],
     $element['PREVIEW_TEXT'],
-    ['bg-linear-blue', 'banner-text--border-green'],
+    ['border-green'],
 );
 ?>
 

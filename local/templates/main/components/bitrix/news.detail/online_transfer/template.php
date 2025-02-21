@@ -20,7 +20,7 @@ $helper = $headerView->helper();
 $headerView->render(
     $arResult['~NAME'],
     $arResult['~PREVIEW_TEXT'],
-    ['bg-linear-blue', 'banner-text--border-green'],
+    ['border-green'],
 );
 ?>
 

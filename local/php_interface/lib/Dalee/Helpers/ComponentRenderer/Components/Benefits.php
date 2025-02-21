@@ -97,6 +97,7 @@ class Benefits implements ComponentInterface
                 "SORT_ORDER2" => "ASC",
                 "STRICT_SECTION_CHECK" => "N",
                 "COLOR_TITLE_BENEFITS_TOP" => $params["colorTitleBenefitsTop"] ?? "orange-100",
+                "COLOR_TITLE_BENEFITS" => $params["colorTitleBenefits"] ?? "",
                 "VIEW_BENEFITS_TOP_HEADER" => $params["viewBenefits"]
             ],
             $component,

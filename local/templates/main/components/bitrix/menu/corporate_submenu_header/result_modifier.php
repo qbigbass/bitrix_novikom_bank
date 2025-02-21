@@ -1,9 +1,11 @@
 <?php
 /** @var $arResult array */
 require 'functions.php';
+global $APPLICATION, $currentSection;
 
+$hiddenKey = $APPLICATION->GetProperty("hiddenKey") ?: 7;
 $modifiedResult = modifyCorporateSubmenuResult($arResult);
-$modifiedResult['FIRST_LEVEL_MENU'] = modifyFirstLevelMainSubmenu($modifiedResult['FIRST_LEVEL_MENU']);
+$modifiedResult['FIRST_LEVEL_MENU'] = modifyFirstLevelMainSubmenu($modifiedResult['FIRST_LEVEL_MENU'], $hiddenKey);
 $arResult = $modifiedResult;
 
 if (!empty($arResult["FIRST_LEVEL_MENU"]["NOT_HIDDEN"])) {

@@ -26,7 +26,7 @@ $title = $arResult["SECTION"]["PATH"][0]["~NAME"] ?? '';
 $headerView->render(
     $title,
     "",
-    ["border-green" ,"bg-heavy-violet", "banner-text--mh-mobile-unset"]
+    ["border-green", "banner-text--mh-mobile-unset"]
 );
 ?>
 <? if (!empty($arResult["ITEMS"])) : ?>

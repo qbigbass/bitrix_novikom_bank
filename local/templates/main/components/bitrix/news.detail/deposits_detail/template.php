@@ -33,11 +33,13 @@ $terms = [
     ],
 ];
 
+if (!empty($arParams["HEADER_COLOR_CLASS"])) {
+    $arResult["PARAMS_HEADER_COLOR_CLASS"] = $arParams["HEADER_COLOR_CLASS"];
+}
+
 $headerView = new HeaderView($component);
 $renderer = new Renderer($APPLICATION, $component);
-
 $helper = $headerView->helper();
-
 $headerView->render(
     "Вклад «" . $arResult["~NAME"] . "»",
     $arResult['~PREVIEW_TEXT'],

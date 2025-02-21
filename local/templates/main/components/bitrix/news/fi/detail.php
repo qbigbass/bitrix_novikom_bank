@@ -67,11 +67,13 @@ $this->setFrameMode(true);
         "STRICT_SECTION_CHECK" => $arParams["STRICT_SECTION_CHECK"],
         "BANNER_H1_COLOR_CLASS" => "dark-100",
         "BANNER_BREADCRUMBS_COLOR_CLASS" => "dark-70",
+        "COLOR_TITLE_BENEFITS_FOOTER" => "dark-100",
         "BLOCK_CONTACT_COLOR_CARD" => "contact-block--bg-white",
         "BLOCK_CONTACT_COLOR_TAG" => "tag--outline",
         "BLOCK_CONTACT_COLOR_H4" => "dark-100",
         "BLOCK_CONTACT_COLOR_SPAN" => "dark-100",
         "BLOCK_CONTACT_COLOR_ICON" => "dark-100",
+        "HEADER_COLOR_CLASS" => "border-violet bg-gradient-graphite", // Для всех детальных страниц ФИ
         "TITLE_BLOCK_CROSS_SALE" => $arParams["TITLE_BLOCK_CROSS_SALE"],
         "FILTER_BLOCK_CROSS_SALE" => $arParams["FILTER_BLOCK_CROSS_SALE"],
     ],

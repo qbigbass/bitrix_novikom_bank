@@ -65,7 +65,7 @@ $this->setFrameMode(true);
         "SHARE_SHORTEN_URL_KEY" => $arParams["SHARE_SHORTEN_URL_KEY"],
         "ADD_ELEMENT_CHAIN" => "Y",
         "STRICT_SECTION_CHECK" => $arParams['STRICT_SECTION_CHECK'],
-        "SECTION_TYPE" => "corporate_clients",
+        "HEADER_COLOR_CLASS" => "banner-product border-orange banner-product--heavy-purple", // Для всех детальных страниц КК
         "TITLE_BLOCK_CROSS_SALE" => $arParams["TITLE_BLOCK_CROSS_SALE"],
         "FILTER_BLOCK_CROSS_SALE" => $arParams["FILTER_BLOCK_CROSS_SALE"],
     ],
