@@ -65,7 +65,7 @@ function findMinPropertyValue(data) {
 
 function setInputSliderAttributes(STATE) {
     const minPropertyValue = findMinPropertyValue(STATE.filteredData[0]);
-    let maxAmountMortgage = STATE.filteredData[0].sumTo;
+    let maxAmountMortgage = findMaxAmount(STATE.filteredData[0], minPropertyValue);
 
     if (STATE.filteredData[0].minDownPayment === 0 || !STATE.filteredData[0].minDownPayment) {
         STATE.elements.inputInitialPaymentWrapper.classList.add(ELEMS_MORTGAGE.hideClass);
