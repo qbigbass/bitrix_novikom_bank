@@ -2,6 +2,7 @@
 
 namespace Dalee\Libs\Tabs\Handlers;
 
+use Dalee\Helpers\IblockHelper;
 use Dalee\Libs\Tabs\Interfaces\PropertyHandlerInterface;
 
 class QuestionsHandler implements PropertyHandlerInterface
@@ -11,31 +12,39 @@ class QuestionsHandler implements PropertyHandlerInterface
     public function __construct(array $property)
     {
         $this->property = $property;
+        if (empty($this->property['LINK_ELEMENT_VALUE'])) {
+            $this->property['LINK_ELEMENT_VALUE'] = $this->getElements($this->property['VALUE']);
+        }
     }
 
-    public function render(): string
+    public function render(array $params = []): string
     {
         global $APPLICATION;
         $path = array_values(array_filter(explode('/', $APPLICATION->GetCurPage())));
         $current = array_pop($path);
         $parent = reset($path);
 
-        return
-            '<div class="col-12 col-xxl-8">
-                <div class="accordion" id="accordion-' . $this->property['ID'] . '">'
-            . $this->getQuestionsHtml() .
-            '<a class="btn btn-link btn-lg-lg d-inline-flex gap-2 align-items-center mt-4 mt-md-6 section-custom-accordion__button-more"
-                href="/support/questions_and_answers/' . $parent . '/' . (!empty($current) && $current != $parent ? $current . '/' : '') . '">
-                        <span class="text-m">Все вопросы и ответы</span>
-                        <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                            <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right-small"></use>
-                        </svg>
-                    </a>
-                </div>
+        ob_start(); ?>
+
+        <div class="col-12 col-xxl-8">
+            <div class="accordion" id="accordion-<?= $this->property['ID'] ?>">
+                <?= $this->getQuestionsHtml() ?>
+                <a class="btn btn-link btn-lg-lg d-inline-flex gap-2 align-items-center mt-4 mt-md-6 section-custom-accordion__button-more"
+                    href="/support/questions_and_answers/<?= $parent ?>/<?= !empty($current) && $current != $parent ? $current . '/' : '' ?>">
+                    <span class="text-m">Все вопросы и ответы</span>
+                    <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right-small"></use>
+                    </svg>
+                </a>
             </div>
-            <div class="col-12 col-xxl-4">'
-            . $this->getRequestCallFormHtml() .
-            '</div>';
+        </div>
+        <? if (empty($params['isAccordion'])) { ?>
+            <div class="col-12 col-xxl-4">
+                <?= $this->getRequestCallFormHtml() ?>
+            </div>
+        <? }
+
+        return ob_get_clean();
     }
 
     private function getQuestionsHtml(): string
@@ -70,5 +79,24 @@ class QuestionsHandler implements PropertyHandlerInterface
         $displayValue = ob_get_contents();
         ob_end_clean();
         return $displayValue;
+    }
+
+    private function getElements(array $elementIds): array
+    {
+        return IblockHelper::getElementsWithProperties(
+            ['SORT' => 'ASC'],
+            [
+                'ID' => $elementIds,
+                'IBLOCK_ID' => $this->iblockId
+            ],
+            false,
+            false,
+            [],
+            [
+                'PROPERTY_FIELDS' => [
+
+                ]
+            ]
+        )['items'] ?? [];
     }
 }
