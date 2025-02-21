@@ -1248,8 +1248,8 @@
     }
 
     //banking-support.html
-    .border-orange {
-      --border-top-color: var(--black-contrast-black-300);
+    [class*="border-orange"] {
+      border-top-color: var(--black-contrast-black-300);
     }
 
     .banner-product {
@@ -1267,7 +1267,7 @@
     }
 
 
-    .banner-product.banner-product--heavy-purple.border-orange {
+    .banner-product.banner-product--heavy-purple[class*="border-orange"] {
       background-color: var(--black-contrast-black-300);
     }
 
@@ -1524,7 +1524,7 @@
 
 
     //	biometric-identification.html
-    .border-green {
+    [class*="border-green"] {
       border-top: 8px solid var(--black-contrast-black-100);
     }
 
@@ -1648,7 +1648,7 @@
 
     //bonuses.html
 
-    .banner-text.border-green.bg-heavy-purple {
+    .banner-text[class*="border-green"].bg-heavy-purple {
       background-color: var(--black-contrast-black-300);
     }
 
@@ -2279,7 +2279,7 @@
     //contribution-detail.html
 
     .banner-product {
-      --border-top-color: var(--black-contrast-black-300);
+      border-top-color: var(--black-contrast-black-300);
     }
 
 
@@ -2487,7 +2487,7 @@
 
 
     //financing.html
-    .border-orange {
+    [class*="border-orange"] {
       border-top: var(--border-thickness) solid var(--black-contrast-black-300);
     }
 
@@ -2627,7 +2627,7 @@
     }
 
     //insurance-companies.html
-    .banner-text.border-green.bg-heavy-violet {
+    .banner-text[class*="border-green"].bg-heavy-violet {
       background: none;
       background-color: var(--black-contrast-black-300);
     }
@@ -2709,7 +2709,7 @@
       }
     }
 
-    .border-violet {
+    [class*="border-violet"] {
       border-top: var(--border-thickness) solid var(--black-contrast-black-300);
     }
 
@@ -3565,8 +3565,8 @@
     //TRUST MANAGEMENT PAGE
 
     .banner-product {
-      &.border-violet {
-        --border-top-color: var(--black-contrast-black-300);
+      &[class*="border-violet"] {
+        border-top-color: var(--black-contrast-black-300);
       }
 
       &__wrapper {
