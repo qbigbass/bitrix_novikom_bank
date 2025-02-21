@@ -186,6 +186,7 @@ $helper = new ComponentHelper($component);
                         "ICON_SHORT_INFO",
                         "DOCUMENTS",
                         "HTML",
+                        "ACCORDION"
                     ],
                     "SET_BROWSER_TITLE" => "N",
                     "SET_LAST_MODIFIED" => "N",

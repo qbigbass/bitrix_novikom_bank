@@ -378,7 +378,8 @@ $helper = new ComponentHelper($component);
                         "QUESTIONS",
                         "ICONS_WITH_DESCRIPTION",
                         "ICON_SHORT_INFO",
-                        "DOCUMENTS"
+                        "DOCUMENTS",
+                        "ACCORDION"
                     ],
                     "SET_BROWSER_TITLE" => "N",
                     "SET_LAST_MODIFIED" => "N",

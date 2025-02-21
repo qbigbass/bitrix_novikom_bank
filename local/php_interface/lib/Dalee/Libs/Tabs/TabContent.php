@@ -21,7 +21,7 @@ class TabContent
         $tab = new TabContent();
         $conf = require 'config/handlers.php';
 
-        if (preg_match('/#ACCORDION\|([^#]+)#/', $detailText, $matches) || $isAccordion) {
+        if ($isAccordion) {
             self::$openedRteTag = '<div class="rte rte--accordion">';
         }
 
@@ -38,28 +38,20 @@ class TabContent
 
             if (!empty($class) && str_contains($detailText, $placeHolder)) {
                 $handler = new $class($property, $elementId, $element, $params);
-                $tabContent = $tab->renderDetailTextWithBlockHtml($handler, $tabContent, $placeHolder, $useRteTag);
+                $tabContent = $tab->renderDetailTextWithBlockHtml($handler, $tabContent, $placeHolder, $useRteTag, $isAccordion);
             }
-        }
-
-        if (!empty($matches)) {
-            $class = $conf['ACCORDION'];
-            $placeHolder = $matches[0];
-            $elementCodes = explode('|', $matches[1]);
-            $handler = new $class($elementCodes);
-            $tabContent = $tab->renderDetailTextWithBlockHtml($handler, $tabContent, $placeHolder, $useRteTag);
         }
 
         return $tab->prepareTabContent($tabContent);
     }
 
-    private function renderDetailTextWithBlockHtml(PropertyHandlerInterface $handler, string $tabContent, string $placeHolder, bool $useRteTag = true): string
+    private function renderDetailTextWithBlockHtml(PropertyHandlerInterface $handler, string $tabContent, string $placeHolder, bool $useRteTag = true, bool $isAccordion = false): string
     {
         if (!$useRteTag) {
             $params['TEMPLATE'] = 'benefits_other_services';
             $blockHtml = $handler->render($params);
         } else {
-            $blockHtml = self::$closedRteTag . $handler->render() . self::$openedRteTag;
+            $blockHtml = self::$closedRteTag . $handler->render(['isAccordion' => $isAccordion]) . self::$openedRteTag;
         }
 
         return str_replace(
@@ -74,11 +66,8 @@ class TabContent
 
     private function prepareTabContent(string $tabContent): string
     {
-        $tabContent = preg_replace(
-            sprintf('/%s[\s\r\n]*%s/s', preg_quote(self::$openedRteTag, '/'), preg_quote(self::$closedRteTag, '/')),
-            '',
-            $tabContent
-        );
+        $regex = '/<div\s+class="rte(?:\s+rte--accordion)?">\s*<\/div>/';
+        $tabContent = preg_replace($regex, '', $tabContent);
 
         return str_replace(
             [
