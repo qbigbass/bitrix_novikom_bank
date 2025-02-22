@@ -32,11 +32,11 @@ $headerView->render(
 <? if (!empty($arResult['DISPLAY_PROPERTIES']['BENEFITS']['VALUE'])) : ?>
     <section class="section-layout px-lg-6">
         <div class="container">
-            <h3 class="mb-4 mb-md-6 mb-lg-7">Преимущества</h3>
+            <h3 class="mb-4 mb-md-6 mb-lg-7">
+                <?= $arResult['DISPLAY_PROPERTIES']['BENEFITS_HEADER']['VALUE'] ?? 'Преимущества'; ?>
+            </h3>
             <div class="row row-gap-6">
-
                 <? $renderer->render('Benefits', $arResult['PROPERTIES']['BENEFITS']['VALUE']); ?>
-
             </div>
         </div>
         <picture class="pattern-bg pattern-bg--position-sm-bottom">
@@ -46,7 +46,6 @@ $headerView->render(
         </picture>
     </section>
 <? endif; ?>
-
 
 <? if (!empty($arResult['DISPLAY_PROPERTIES']['ADDITIONAL_INFO']['~VALUE']['TEXT'])) : ?>
     <section class="section-layout py-6 py-lg-11">
@@ -70,7 +69,9 @@ $headerView->render(
 <? if (!empty($arResult['DISPLAY_PROPERTIES']['TABS']['VALUE'])) : ?>
     <section class="section-layout js-collapsed-mobile">
         <div class="container">
-            <h3 class="d-none d-md-block mb-md-6 mb-lg-7 px-lg-6">Установка</h3>
+            <h3 class="d-none d-md-block mb-md-6 mb-lg-7 px-lg-6">
+                <?= $arResult['DISPLAY_PROPERTIES']['TABS_HEADER']['VALUE'] ?? 'Установка'; ?>
+            </h3>
             <a class="h3 d-flex align-items-center justify-content-between dark-100 d-md-none" data-bs-toggle="collapse"
                href="#additional-info-content" role="button" aria-expanded="false"
                aria-controls="additional-info-content">

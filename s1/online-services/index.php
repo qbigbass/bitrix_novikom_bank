@@ -56,9 +56,11 @@ $APPLICATION->IncludeComponent(
         "PAGER_TITLE" => "Страница",
         "PROPERTY_CODE" => [
             'BENEFITS',
+            'BENEFITS_HEADER',
             'ADDITIONAL_INFO_HEADING',
             'ADDITIONAL_INFO',
             'TABS',
+            'TABS_HEADER',
             'ADS_FOR_CUSTOMERS'
         ],
         "SET_BROWSER_TITLE" => "N",

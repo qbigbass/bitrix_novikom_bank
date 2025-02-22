@@ -368,7 +368,14 @@ $customerCategoriesFilter = [
                                     <img class="helper__image w-auto float-end"
                                          src="/frontend/dist/img/restructuring-additional-info.png" alt="">
                                     <div class="helper__content text-l">
-                                        <p class="mb-0"><?= $arResult['DISPLAY_PROPERTIES']['ADDITIONAL_INFO']['~VALUE']['TEXT'] ?></p>
+                                        <? if (!empty($arResult['DISPLAY_PROPERTIES']['ADDITIONAL_INFO_HEADER']['~VALUE'])): ?>
+                                            <h4 class="mb-3">
+                                                <?= $arResult['DISPLAY_PROPERTIES']['ADDITIONAL_INFO_HEADER']['~VALUE']; ?>
+                                            </h4>
+                                        <? endif; ?>
+                                        <p class="mb-0">
+                                            <?= $arResult['DISPLAY_PROPERTIES']['ADDITIONAL_INFO']['~VALUE']['TEXT'] ?>
+                                        </p>
                                     </div>
                                 </div>
                             </div>

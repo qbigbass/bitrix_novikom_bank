@@ -41,6 +41,7 @@ $blockId = ($Iblock = $IblockRes->fetch()) ? $Iblock['ID'] : '';
             'OPPORTUNITY',
             'INSTRUCTIONS',
             'ADDITIONAL_INFO',
+            'ADDITIONAL_INFO_HEADER',
             'TABS',
             'BENEFITS',
             'STEPS',

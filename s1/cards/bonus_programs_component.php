@@ -45,6 +45,7 @@ $APPLICATION->SetTitle('Бонусные программы');
             "INSTRUCTION_3",
             "INSTRUCTION_3_COLS",
             "INFO_BOX",
+            "INFO_BOX_HEADER",
         ],
         "DETAIL_SET_CANONICAL_URL" => "N",
         "DISPLAY_BOTTOM_PAGER" => "N",

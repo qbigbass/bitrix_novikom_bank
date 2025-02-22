@@ -65,6 +65,7 @@ $APPLICATION->IncludeComponent(
             "STEPS_HEADING",
             "STEPS",
             "ADDITIONAL_INFO",
+            "ADDITIONAL_INFO_HEADER",
             "BANNER_LINK_TEXT",
             "LINK_IS_BUTTON",
         ],
