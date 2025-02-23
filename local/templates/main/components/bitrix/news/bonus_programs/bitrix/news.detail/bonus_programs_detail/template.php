@@ -40,11 +40,16 @@ $renderer = new Renderer($APPLICATION, $component);
         <img src="/frontend/dist/img/patterns/section/pattern-light-l.svg" alt="bg pattern" loading="lazy">
     </picture>
 </section>
-<?if(!empty($arResult['DISPLAY_PROPERTIES']['BENEFITS']['VALUE'])) : ?>
+<? if (!empty($arResult['DISPLAY_PROPERTIES']['BONUS_BENEFITS']['VALUE'])): ?>
     <section class="section-layout">
         <div class="container">
             <div class="row row-gap-6 row-gap-md-7 px-lg-6">
-                <? $renderer->render('Benefits', $arResult['PROPERTIES']['BENEFITS']['VALUE'], null, ['colCount' => $arResult['DISPLAY_PROPERTIES']['BENEFITS_COL']['VALUE'] ?? 3]); ?>
+                <? if (!empty($arResult['DISPLAY_PROPERTIES']['BONUS_BENEFITS_HEADING']['~VALUE'])): ?>
+                    <h3>
+                        <?= $arResult['DISPLAY_PROPERTIES']['BONUS_BENEFITS_HEADING']['~VALUE']; ?>
+                    </h3>
+                <? endif; ?>
+                <? $renderer->render('Benefits', $arResult['PROPERTIES']['BONUS_BENEFITS']['VALUE'], null, ['colCount' => $arResult['DISPLAY_PROPERTIES']['BENEFITS_COL']['VALUE'] ?? 3]); ?>
             </div>
         </div>
         <picture class="pattern-bg pattern-bg--position-sm-bottom">
@@ -245,17 +250,19 @@ $renderer = new Renderer($APPLICATION, $component);
     </section>
 <?endif;?>
 
-<?if(!empty($arResult['DISPLAY_PROPERTIES']['TABS']['VALUE'])) : ?>
+<? if (!empty($arResult['DISPLAY_PROPERTIES']['BONUS_TABS']['VALUE'])): ?>
     <section class="section-layout js-collapsed-mobile">
         <div class="container">
-            <h3 class="d-none d-md-block mb-md-6 mb-lg-7 px-lg-6"><?=$arResult['DISPLAY_PROPERTIES']['TABS_HEADING']['~VALUE']?></h3>
+            <h3 class="d-none d-md-block mb-md-6 mb-lg-7 px-lg-6">
+                <?= $arResult['DISPLAY_PROPERTIES']['BONUS_TABS_HEADING']['~VALUE']; ?>
+            </h3>
             <a class="h3 d-flex align-items-center justify-content-between dark-100 d-md-none" data-bs-toggle="collapse" href="#additional-info-content" role="button" aria-expanded="false" aria-controls="additional-info-content">
-                <?=$arResult['DISPLAY_PROPERTIES']['TABS_HEADING']['~VALUE']?>
+                <?= $arResult['DISPLAY_PROPERTIES']['BONUS_TABS_HEADING']['~VALUE']; ?>
                 <svg class="icon size-m violet-100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                     <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-down"></use>
                 </svg>
             </a>
-            <? $renderer->render('Tabs', $arResult['PROPERTIES']['TABS']['VALUE'], null, ['elementId' => $arResult['ID']]); ?>
+            <? $renderer->render('Tabs', $arResult['PROPERTIES']['BONUS_TABS']['VALUE'], null, ['elementId' => $arResult['ID']]); ?>
         </div>
         <picture class="pattern-bg pattern-bg--hide-mobile">
             <source srcset="/frontend/dist/img/patterns/section-2/pattern-light-s.svg" media="(max-width: 767px)">
@@ -263,7 +270,7 @@ $renderer = new Renderer($APPLICATION, $component);
             <img src="/frontend/dist/img/patterns/section-2/pattern-light-l.svg" alt="bg pattern" loading="lazy">
         </picture>
     </section>
-<?endif;?>
+<? endif; ?>
 
 <?if(!empty($arResult['DISPLAY_PROPERTIES']['INSTRUCTION_2']['VALUE'])) : ?>
     <section class="section-layout js-collapsed-mobile bg-dark-10">
