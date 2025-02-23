@@ -360,7 +360,7 @@ $renderer = new Renderer($APPLICATION, $component);
                                             </h4>
                                         <? endif; ?>
                                         <p class="mb-0">
-                                            <?=$arResult['DISPLAY_PROPERTIES']['INFO_BOX']['~VALUE']['TEXT']?>
+                                            <?= $arResult['DISPLAY_PROPERTIES']['INFO_BOX']['~VALUE']['TEXT']; ?>
                                         </p>
                                     </div>
                                 </div>

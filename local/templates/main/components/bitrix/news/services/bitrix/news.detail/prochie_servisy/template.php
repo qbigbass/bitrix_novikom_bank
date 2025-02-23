@@ -25,12 +25,18 @@ $helper = new ComponentHelper($component);
     ]
 )?>
 
-<?if(!empty($arResult['DISPLAY_PROPERTIES']['TABS']['VALUE'])) : ?>
+<? if(!empty($arResult['DISPLAY_PROPERTIES']['TABS']['VALUE'])): ?>
     <section class="section-layout">
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <?$GLOBALS['tabsFilter'] = [
+                    <? if (!empty($arResult['DISPLAY_PROPERTIES']['TABS_HEADING']['~VALUE'])): ?>
+                        <h3 class="px-lg-6 mb-4">
+                            <?= $arResult['DISPLAY_PROPERTIES']['TABS_HEADING']['~VALUE']; ?>
+                        </h3>
+                    <? endif; ?>
+
+                    <? $GLOBALS['tabsFilter'] = [
                         'ACTIVE' => 'Y',
                         'ID' => $arResult['DISPLAY_PROPERTIES']['TABS']['VALUE']
                     ];
