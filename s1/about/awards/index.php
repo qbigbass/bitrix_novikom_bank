@@ -3,13 +3,11 @@ require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 global $APPLICATION;
 $APPLICATION->SetTitle('Награды');
 ?>
-
 <section class="banner-text bg-linear-blue border-0">
     <div class="container banner-text__container position-relative z-2">
         <div class="row ps-lg-6">
             <div class="col-12 col-xxl-8 position-relative z-1 mb-6 mb-md-0 pt-6">
                 <div class="banner-text__content d-flex flex-column align-items-start gap-3 gap-lg-4">
-
                     <?
                     $APPLICATION->IncludeComponent(
                         "bitrix:breadcrumb",
@@ -21,7 +19,6 @@ $APPLICATION->SetTitle('Награды');
                         ]
                     );
                     ?>
-
                     <h1 class="banner-text__title dark-0 text-break"><?= $APPLICATION->GetTitle() ?></h1>
                 </div>
             </div>
@@ -33,13 +30,11 @@ $APPLICATION->SetTitle('Награды');
         <img src="/frontend/dist/img/patterns/section/pattern-light-l.svg" alt="bg pattern" loading="lazy">
     </picture>
 </section>
-
 <section class="section-layout py-lg-11">
     <div class="container">
         <h3 class="mb-5 mb-lg-7"><? $APPLICATION->IncludeFile('/about/awards/header_text.php'); ?></h3>
         <div class="row">
             <div class="col-12">
-
                 <? $APPLICATION->IncludeComponent(
                     "bitrix:news.list",
                     "awards_list",
@@ -96,10 +91,17 @@ $APPLICATION->SetTitle('Награды');
                     false,
                     ['HIDE_ICONS' => 'Y']
                 ); ?>
-
             </div>
         </div>
     </div>
 </section>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_cross_sale_section.php'); ?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_news_section.php'); ?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_special_offers_section.php'); ?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_contacts_section.php'); ?>
 
 <? require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php'); ?>
