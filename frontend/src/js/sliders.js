@@ -139,6 +139,8 @@ function initHeroBanner() {
 
     if (numSlides <= 1) thumbsHero.hidden = true;
 
+    numSlides < 4 ? thumbsHero.classList.add('is-less-4') : thumbsHero.classList.remove('is-less-4');
+
     const thumbs = {
         swiper: new Swiper(CLASS_NAME.thumbsHero, {
             spaceBetween: 0,
