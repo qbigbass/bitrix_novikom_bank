@@ -83,4 +83,6 @@ $this->setFrameMode(true);
 
 <? $APPLICATION->IncludeFile('/local/php_interface/include/block_news_detail.php');?>
 
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_special_offers_detail.php');?>
+
 <? $APPLICATION->IncludeFile('/local/php_interface/include/modal_vacancy_form.php'); ?>
