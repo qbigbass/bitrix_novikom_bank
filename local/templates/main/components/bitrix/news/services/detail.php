@@ -87,7 +87,11 @@ if (!in_array($iblock->getCode(), [
     "insurance_ru",
     "other_services_ru"
 ])) : ?>
-    <?
-    $APPLICATION->IncludeFile('/local/php_interface/include/cross_sale_products_block.php') ?>
-<?
-endif; ?>
+    <?php $APPLICATION->IncludeFile('/local/php_interface/include/block_cross_sale_section.php'); ?>
+<? endif; ?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_news_section.php'); ?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_special_offers_section.php'); ?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_contacts_section.php'); ?>

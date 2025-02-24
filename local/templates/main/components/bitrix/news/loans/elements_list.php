@@ -13,6 +13,7 @@
 $this->setFrameMode(true);
 
 use Dalee\Helpers\HeaderView;
+use Dalee\Helpers\IblockHelper;
 
 $headerView = new HeaderView($component);
 $helper = $headerView->helper();
@@ -125,7 +126,18 @@ $headerView->render(
     </section>
 </section>
 
-<?$APPLICATION->IncludeFile('/local/php_interface/include/cross_sale_products_block.php', ['HEADER_TEXT' => 'Смотрите также']);?>
-<?$APPLICATION->IncludeFile('/local/php_interface/include/request_call.php');?>
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_cross_sale_section.php',
+    [
+        'HEADER_TEXT' => 'Смотрите также'
+    ]
+); ?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/request_call.php'); ?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_news_section.php'); ?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_special_offers_section.php'); ?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_contacts_section.php'); ?>
 
 <? $helper->saveCache(); ?>

@@ -67,7 +67,12 @@ $this->setFrameMode(true);
         "STRICT_SECTION_CHECK" => $arParams['STRICT_SECTION_CHECK'],
         "HEADER_COLOR_CLASS" => "banner-product border-orange banner-product--heavy-purple", // Для всех детальных страниц КК
         "TITLE_BLOCK_CROSS_SALE" => $arParams["TITLE_BLOCK_CROSS_SALE"],
-        "FILTER_BLOCK_CROSS_SALE" => $arParams["FILTER_BLOCK_CROSS_SALE"],
     ],
     $component
 );?>
+
+<?$APPLICATION->IncludeFile('/local/php_interface/include/block_cross_sale_detail.php');?>
+
+<?$APPLICATION->IncludeFile('/local/php_interface/include/block_news_detail.php');?>
+
+<?$APPLICATION->IncludeFile('/local/php_interface/include/block_special_offers_detail.php');?>

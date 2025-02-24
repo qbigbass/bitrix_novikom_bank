@@ -1,6 +1,7 @@
 <?
 use Dalee\Helpers\ComponentRenderer\Renderer;
 use Dalee\Helpers\HeaderView;
+use Dalee\Helpers\IblockHelper;
 
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();
 /** @var array $arParams */
@@ -126,7 +127,6 @@ $headerView->render(
             </div>
         </div>
     </section>
-
 </section>
 
 <section class="section-layout js-collapsed-mobile">
@@ -138,9 +138,7 @@ $headerView->render(
                 <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-down"></use>
             </svg>
         </a>
-
         <? $renderer->render('Tabs', null, 'deposit-list'); ?>
-
     </div>
     <picture class="pattern-bg pattern-bg--hide-mobile">
         <source srcset="/frontend/dist/img/patterns/section-2/pattern-light-s.svg" media="(max-width: 767px)">
@@ -151,7 +149,6 @@ $headerView->render(
 <? $arItems = getHlBlockEntries('DepositsInfo');
 if (!empty($arItems)) {
     $arItem = reset($arItems); ?>
-
     <section class="section-layout py-lg-11 px-lg-6 bg-blue-10">
         <div class="container">
             <div class="d-flex flex-column flex-md-row align-items-start gap-4 gap-sm-5 gap-md-6">
@@ -174,10 +171,20 @@ if (!empty($arItems)) {
             <img src="/frontend/dist/img/patterns/section-heavy/pattern-light-l.svg" alt="bg pattern" loading="lazy">
         </picture>
     </section>
-
 <? } ?>
 
-<?$APPLICATION->IncludeFile('/local/php_interface/include/cross_sale_products_block.php', ['HEADER_TEXT' => 'Смотрите также']);?>
-<?$APPLICATION->IncludeFile('/local/php_interface/include/request_call.php');?>
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_cross_sale_section.php',
+    [
+        'HEADER_TEXT' => 'Смотрите также'
+    ]
+); ?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/request_call.php'); ?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_news_section.php'); ?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_special_offers_section.php'); ?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_contacts_section.php'); ?>
 
 <? $helper->saveCache(); ?>
