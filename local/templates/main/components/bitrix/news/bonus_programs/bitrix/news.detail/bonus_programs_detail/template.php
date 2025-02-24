@@ -16,7 +16,12 @@ use Dalee\Helpers\ComponentRenderer\Renderer;
 $renderer = new Renderer($APPLICATION, $component);
 
 ?>
-<section class="banner-text border-green <?=$arResult['DISPLAY_PROPERTIES']['BANNER_STYLE']['VALUE_XML_ID']?>">
+<section
+    class="banner-text border-green <?=$arResult['DISPLAY_PROPERTIES']['BANNER_STYLE']['VALUE_XML_ID']?>"
+    <? if (!empty($arResult['DISPLAY_PROPERTIES']['BONUS_HEADER_BACKGROUND']['FILE_VALUE']['SRC'])): ?>
+        style="background: url('<?= $arResult['DISPLAY_PROPERTIES']['BONUS_HEADER_BACKGROUND']['FILE_VALUE']['SRC']; ?>') no-repeat center center / cover;"
+    <? endif; ?>
+>
     <div class="container banner-text__container position-relative z-2">
         <div class="row ps-lg-6">
             <div class="col-12 col-sm-6 col-md-8 position-relative z-1 mb-5 mb-md-0 pt-6">
@@ -25,12 +30,35 @@ $renderer = new Renderer($APPLICATION, $component);
                     $helper = new ComponentHelper($component);
                     $helper->deferredCall('showNavChain', ['.default']);
                     ?>
-                    <h1 class="banner-text__title dark-0 text-break"><?=$arResult['~NAME']?></h1>
-                    <div class="banner-text__description text-l dark-0"><?=$arResult['DETAIL_TEXT']?></div>
+                    <h1 class="banner-text__title dark-0 text-break">
+                        <?= $arResult['~NAME']; ?>
+                    </h1>
+                    <? if ($arResult['DISPLAY_PROPERTIES']['BONUS_HEADER_TEMPLATE']['VALUE_XML_ID'] === 'detailed'): ?>
+                        <div class="banner-text__description text-l dark-0">
+                            <?= $arResult['DETAIL_TEXT']; ?>
+                        </div>
+                    <? endif; ?>
+                    <? if (!empty($arResult['DISPLAY_PROPERTIES']['BUTTON_SHOW']['VALUE'])): ?>
+                        <button
+                            class="btn btn-tertiary btn-lg-lg banner-product__button"
+                            type="button"
+                            data-bs-toggle="modal"
+                            data-bs-target="#modal-credit-card-form"
+                        >
+                            <?= $arResult['DISPLAY_PROPERTIES']['BUTTON_TEXT']['VALUE'] ?? 'Оформить заявку'; ?>
+                        </button>
+                    <? endif; ?>
                 </div>
             </div>
             <div class="d-none d-sm-block col-12 col-sm-6 col-md-4">
-                <img class="banner-text__image position-relative w-auto float-end" src="<?=$arResult['DISPLAY_PROPERTIES']['ICON']['FILE_VALUE']['SRC']?>" alt="">
+                <? if (!empty($arResult['DISPLAY_PROPERTIES']['BONUS_HEADER_IMAGE']['FILE_VALUE']['SRC'])): ?>
+                    <img
+                        class="banner-text__image position-relative w-auto float-end"
+                        src="<?= $arResult['DISPLAY_PROPERTIES']['BONUS_HEADER_IMAGE']['FILE_VALUE']['SRC']; ?>"
+                        alt="<?= $arResult['NAME']; ?>"
+                        loading="lazy"
+                    >
+                <? endif; ?>
             </div>
         </div>
     </div>
@@ -99,6 +127,8 @@ $renderer = new Renderer($APPLICATION, $component);
             "bitrix:news.list",
             "cashback",
             [
+                "CASHBACK_HEADER" => $arResult['DISPLAY_PROPERTIES']['CASHBACK_CATEGORIES_HEADER']['~VALUE'],
+
                 "ACTIVE_DATE_FORMAT" => "d.m.Y",
                 "ADD_SECTIONS_CHAIN" => "N",
                 "AJAX_MODE" => "N",
@@ -463,4 +493,13 @@ $renderer = new Renderer($APPLICATION, $component);
     </section>
 <?endif;?>
 
-<?$helper->saveCache();?>
+<?php $APPLICATION->IncludeComponent(
+    "dalee:form",
+    "credit_card_form",
+    [
+        "FORM_CODE" => "credit_card_form",
+    ],
+    $component
+); ?>
+
+<? $helper->saveCache(); ?>

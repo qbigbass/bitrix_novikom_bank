@@ -20,7 +20,12 @@ use Dalee\Helpers\ComponentRenderer\Renderer;
 $renderer = new Renderer($APPLICATION, $component);
 ?>
 
-<div class="banner-product is-sticker <?= $arResult['BANNER_STYLE'] ?>">
+<div
+    class="banner-product is-sticker <?= $arResult['BANNER_STYLE'] ?>"
+    <? if (!empty($arResult['DISPLAY_PROPERTIES']['CARD_HEADER_BACKGROUND']['FILE_VALUE']['SRC'])): ?>
+        style="background: url('<?= $arResult['DISPLAY_PROPERTIES']['CARD_HEADER_BACKGROUND']['FILE_VALUE']['SRC']; ?>') no-repeat center center / cover;"
+    <? endif; ?>
+>
     <div class="banner-product__wrapper">
         <div class="banner-product__content">
             <div class="banner-product__header">
@@ -31,21 +36,32 @@ $renderer = new Renderer($APPLICATION, $component);
                 <h1><?= $arResult['SECTION_NAME'] ?></h1>
                 <p class="banner-product__subtitle text-l"><?= $arResult['~DETAIL_TEXT'] ?></p>
             </div>
-            <? if (!empty($arResult['DISPLAY_PROPERTIES']['SHORT_CONDITIONS']['~VALUE']['TEXT'])) : ?>
+            <? if (
+                !empty($arResult['DISPLAY_PROPERTIES']['SHORT_CONDITIONS']['~VALUE']['TEXT'])
+                && $arResult['DISPLAY_PROPERTIES']['CARD_HEADER_TEMPLATE']['VALUE_XML_ID'] === 'detailed'
+            ): ?>
                 <div class="banner-product__benefits-list">
                     <?= $arResult['DISPLAY_PROPERTIES']['SHORT_CONDITIONS']['~VALUE']['TEXT'] ?>
                 </div>
             <? endif; ?>
-            <? if ($arResult['SHOW_BUTTON']) { ?>
+            <? if (!empty($arResult['DISPLAY_PROPERTIES']['BUTTON_SHOW']['VALUE'])): ?>
                 <button
                     class="btn btn-tertiary btn-lg-lg banner-product__button"
                     type="button"
                     data-bs-toggle="modal"
                     data-bs-target="#modal-credit-card-form"
                 >
-                    Оформить карту
+                    <?= $arResult['DISPLAY_PROPERTIES']['BUTTON_TEXT']['VALUE'] ?? 'Оформить заявку'; ?>
                 </button>
-            <? } ?>
+            <? endif; ?>
+            <? if (!empty($arResult['DISPLAY_PROPERTIES']['CARD_HEADER_IMAGE']['FILE_VALUE']['SRC'])): ?>
+                <img
+                    class="banner-product__image"
+                    src="<?= $arResult['DISPLAY_PROPERTIES']['CARD_HEADER_IMAGE']['FILE_VALUE']['SRC']; ?>"
+                    alt="<?= $arResult['NAME']; ?>"
+                    loading="lazy"
+                >
+            <? endif; ?>
         </div>
     </div>
     <picture class="pattern-bg banner-product__pattern">
