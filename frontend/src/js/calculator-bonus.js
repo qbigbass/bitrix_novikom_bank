@@ -39,14 +39,7 @@ function setBonusValues(STATE) {
     STATE.elements.displayBonus.textContent = `${formatNumberWithSpaces(Math.round(STATE.totalBonus))} ${plural(['бонус', 'бонуса', 'бонусов'], STATE.totalBonus)}`;
 }
 
-function collectSelectOptions(data, field) {
-    return [...new Set(data
-        .map(item => item[field])
-        .filter(value => value !== null && value !== '')
-    )];
-}
-
-function findCategoryCard(STATE) {
+function findBonusCategoryCard(STATE) {
     const filterType = STATE.calculatorData.filter(item => item.cardType === STATE.cardType);
 
     STATE.cardCategoryOptions = collectSelectOptions(filterType, 'cardCategory');
@@ -85,7 +78,7 @@ function getBonusValues(STATE) {
 
     STATE.cardType = STATE.elements.selectCardType.value;
 
-    findCategoryCard(STATE);
+    findBonusCategoryCard(STATE);
 
     STATE.cardCategory = STATE.elements.selectCardCategory.value;
     STATE.amount = STATE.elements.inputAmountWrapper.dataset.startValue;
@@ -104,7 +97,7 @@ function getBonusValues(STATE) {
 
     $(ELEMS_BONUS.cardType).on('select2:select', (event) => {
         STATE.cardType = event.target.value;
-        findCategoryCard(STATE);
+        findBonusCategoryCard(STATE);
         STATE.filteredData = filterBonusData(STATE);
 
         checkBonusRate(STATE);
@@ -171,3 +164,7 @@ function initCalculatorBonus() {
 
     }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    initCalculatorBonus();
+})

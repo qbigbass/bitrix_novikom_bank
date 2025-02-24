@@ -361,6 +361,54 @@ function checkWidth() {
     }
 }
 
+function collectSelectOptions(data, field) {
+    return [...new Set(data
+        .map(item => item[field])
+        .filter(value => value !== null && value !== '')
+    )];
+}
+
+function setSelectOptions(select, options, STATE) {
+    STATE.elements[select].innerHTML = '';
+
+    options.forEach(item => {
+        const option = document.createElement('option');
+        option.value = item;
+        option.textContent = item;
+        STATE.elements[select].appendChild(option);
+    });
+}
+
+const URL = '/local/php_interface/ajax/calc.php';
+
+function getRates({table = null, id = null, name = null}) {
+    const params = new URLSearchParams();
+    if (table) params.append('table', table);
+    if (id) params.append('id', id);
+    if (name) params.append('name', name);
+
+    return fetch(URL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: params
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                console.error('Ошибка:', data.error);
+            } else if (data.data) {
+                return data.data;
+            }
+        })
+        .catch(error => {
+            // console.error('Error:', error);
+            // TODO: убрать перед пушем
+            return dataTemp.data;
+        })
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     initDropdownMenu();
     setVh();
@@ -391,8 +439,6 @@ document.addEventListener('DOMContentLoaded', () => {
     hideDropDownMenu();
     initCalculatorDeposit();
     initCalculatorLoan();
-    initCalculatorMortgage();
-    initCalculatorBonus();
     initCurrencyConverter();
     initOffices();
     initChatBot();

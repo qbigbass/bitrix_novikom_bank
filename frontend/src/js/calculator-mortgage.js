@@ -43,17 +43,6 @@ function collectRegions(dataArray) {
         .sort(); // Сортируем по алфавиту
 }
 
-function setSelectOptions(select, options, STATE) {
-    STATE.elements[select].innerHTML = '';
-
-    options.forEach(item => {
-        const option = document.createElement('option');
-        option.value = item;
-        option.textContent = item;
-        STATE.elements[select].appendChild(option);
-    });
-}
-
 function findMinPropertyValue(data) {
     if (data.sumFromPercent && data.sumFromPercent !== 0) {
         return (data.sumFrom / ((100 - data.sumFromPercent) / 100)).toFixed(0);
@@ -331,6 +320,14 @@ function handlerProperty(STATE, value) {
     })
 }
 
+function filterAdditionalData(STATE) {
+    STATE.filteredData = STATE.filteredData.filter(item => {
+        if (!item.insurance) item.insurance = 'N';
+        if (!item.salaryBankCard) item.salaryBankCard = 'N';
+        return (item.insurance === STATE.insurance) && (item.salaryBankCard === STATE.card);
+    });
+}
+
 function mortgageFilter(STATE) {
     STATE.filteredData = STATE.calculatorData.filter(item =>
         item.region && item.region.split(" / ").includes(STATE.region) &&
@@ -339,11 +336,7 @@ function mortgageFilter(STATE) {
         item.borrowerType && item.borrowerType === STATE.borrower
     );
 
-    STATE.filteredData = STATE.filteredData.filter(item => {
-        if (!item.insurance) item.insurance = 'N';
-        if (!item.salaryBankCard) item.salaryBankCard = 'N';
-        return (item.insurance === STATE.insurance) && (item.salaryBankCard === STATE.card);
-    });
+    filterAdditionalData(STATE);
 }
 
 function handlerMortgageCheckbox(STATE) {
@@ -390,12 +383,7 @@ function setMortgageValues(STATE) {
         STATE.filteredData = getMortgageObjects(STATE.filteredData, STATE);
         STATE.filteredData = getMortgageBorrower(STATE.filteredData, STATE);
 
-        STATE.filteredData = STATE.filteredData.filter(item => {
-            if (!item.insurance) item.insurance = 'N';
-            if (!item.salaryBankCard) item.salaryBankCard = 'N';
-            return (item.insurance === STATE.insurance) && (item.salaryBankCard === STATE.card);
-        });
-
+        filterAdditionalData(STATE);
         setInputSliderAttributes(STATE);
 
         STATE.rate = STATE.filteredData[0].rate;
@@ -413,12 +401,7 @@ function setMortgageValues(STATE) {
         STATE.filteredData = getMortgageObjects(STATE.filteredData, STATE);
         STATE.filteredData = getMortgageBorrower(STATE.filteredData, STATE);
 
-        STATE.filteredData = STATE.filteredData.filter(item => {
-            if (!item.insurance) item.insurance = 'N';
-            if (!item.salaryBankCard) item.salaryBankCard = 'N';
-            return (item.insurance === STATE.insurance) && (item.salaryBankCard === STATE.card);
-        });
-
+        filterAdditionalData(STATE);
         setInputSliderAttributes(STATE);
 
         STATE.rate = STATE.filteredData[0].rate;
@@ -439,12 +422,7 @@ function setMortgageValues(STATE) {
 
         STATE.filteredData = getMortgageBorrower(STATE.filteredData, STATE);
 
-        STATE.filteredData = STATE.filteredData.filter(item => {
-            if (!item.insurance) item.insurance = 'N';
-            if (!item.salaryBankCard) item.salaryBankCard = 'N';
-            return (item.insurance === STATE.insurance) && (item.salaryBankCard === STATE.card);
-        });
-
+        filterAdditionalData(STATE);
         setInputSliderAttributes(STATE);
 
         STATE.rate = STATE.filteredData[0].rate;
@@ -478,12 +456,7 @@ function getMortgageValues(STATE) {
 
     STATE.insurance = STATE.elements.inputMortgageInsurance.checked ? 'Y' : 'N';
     STATE.card = STATE.elements.inputMortgageCard.checked ? 'Y' : 'N';
-    STATE.filteredData = STATE.filteredData.filter(item => {
-        if (!item.insurance) item.insurance = 'N';
-        if (!item.salaryBankCard) item.salaryBankCard = 'N';
-        return (item.insurance === STATE.insurance) && (item.salaryBankCard === STATE.card);
-    });
-
+    filterAdditionalData(STATE);
 
     STATE.expenseRatio = STATE.elements.root.dataset.expenseRatio;
     STATE.rate = STATE.filteredData[0].rate;
@@ -571,3 +544,8 @@ async function initCalculatorMortgage() {
             })
     }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    initCalculatorMortgage();
+})
+
