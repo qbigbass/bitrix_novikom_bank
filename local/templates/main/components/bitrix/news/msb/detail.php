@@ -205,7 +205,7 @@ if ($idRelationSection > 0) {
             "BLOCK_CONTACT_COLOR_H4" => "dark-0",
             "BLOCK_CONTACT_COLOR_SPAN" => "dark-0",
             "BLOCK_CONTACT_COLOR_ICON" => "dark-0",
-            "HEADER_COLOR_CLASS" => "bg-heavy-violet border-yellow", // Для всех детальных страниц МСБ
+            "HEADER_COLOR_CLASS" => "banner-product banner-product--heavy-violet border-yellow", // Для всех детальных страниц МСБ
             "TITLE_BLOCK_CROSS_SALE" => $arParams["TITLE_BLOCK_CROSS_SALE"],
         ],
         $component

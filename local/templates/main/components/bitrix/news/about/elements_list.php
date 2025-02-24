@@ -105,7 +105,7 @@ if (empty($sliders)) {
     $headerView->render(
         $APPLICATION->GetTitle(),
         null,
-        ['border-green'],
+        ['banner-product banner-product--blue border-0'],
         1,
         $result,
         null,
