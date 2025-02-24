@@ -19,8 +19,7 @@ use Dalee\Helpers\ComponentRenderer\Renderer;
 
 $renderer = new Renderer($APPLICATION, $component);
 ?>
-
-<div class="banner-product is-sticker <?= $arResult['BANNER_STYLE'] ?>">
+<div class="banner-product <?= $arResult['BANNER_STYLE'] ?>">
     <div class="banner-product__wrapper">
         <div class="banner-product__content">
             <div class="banner-product__header">
@@ -31,6 +30,9 @@ $renderer = new Renderer($APPLICATION, $component);
                 <h1><?= $arResult['SECTION_NAME'] ?></h1>
                 <p class="banner-product__subtitle text-l"><?= $arResult['~DETAIL_TEXT'] ?></p>
             </div>
+            <? if (!empty($arResult['PREVIEW_PICTURE']['SRC'])) : ?>
+                <img class="banner-product__image" src="<?= $arResult['PREVIEW_PICTURE']['SRC'] ?>" alt="" loading="lazy">
+            <? endif; ?>
             <? if (!empty($arResult['DISPLAY_PROPERTIES']['SHORT_CONDITIONS']['~VALUE']['TEXT'])) : ?>
                 <div class="banner-product__benefits-list">
                     <?= $arResult['DISPLAY_PROPERTIES']['SHORT_CONDITIONS']['~VALUE']['TEXT'] ?>
@@ -57,7 +59,6 @@ $renderer = new Renderer($APPLICATION, $component);
 
 <? global $customerCategoriesFilter; ?>
 <?
-//$arResult['IBLOCK_SECTION_ID'] = ($arResult['IBLOCK_SECTION_ID'] > 0) ? $arResult['IBLOCK_SECTION_ID'] : false;
 $customerCategoriesFilter = [
     'ACTIVE' => 'Y',
     'IBLOCK_SECTION_ID' => $arResult['IBLOCK_SECTION_ID']
