@@ -3,6 +3,7 @@ const ELEMS_CURRENCY = {
     inputHave: '.js-currency-input-have',
     inputGet: '.js-currency-input-get',
     selectHave: '.js-currency-select-have',
+    selectHaveClass: 'js-currency-select-have',
     selectGet: '.js-currency-select-get',
     unitHaveToGet: '.js-currency-unit-have',
     unitGetToHave: '.js-currency-unit-get',
@@ -85,9 +86,46 @@ function calculateResultCurrency({value, from, to}, STATE) {
     inputTo.value = convertCurrencyToLocaleString(valueNum * STATE[`unit${from}To${to}`]);
 }
 
+function toggleTypeRate(STATE) {
+    const currentTypeRate = STATE.typeRate;
+    STATE.elements.radiosTypeRate.forEach(radio => {
+        if (radio.value !== currentTypeRate) {
+            radio.checked = true;
+            const tabTrigger = new bootstrap.Tab(radio.nextElementSibling);
+            tabTrigger.show();
+            radio.dispatchEvent(new Event('change'));
+        }
+    });
+}
+
+function changeSelectCurrency({el, from, to}, STATE) {
+    const isSell = STATE.typeRate === 'sell';
+    const isSelectHave = el.classList.contains(ELEMS_CURRENCY.selectHaveClass);
+    const isRUB = el.value === 'RUB';
+
+    if ((isSell && !isSelectHave)
+        || (!isSell && isSelectHave)
+        || (isSell && isSelectHave && isRUB)
+        || (!isSell && !isSelectHave && isRUB)) {
+        toggleTypeRate(STATE);
+        return;
+    }
+
+    STATE.currencyHave = getCurrency(STATE.elements.selectHave.value, STATE);
+    STATE.currencyGet = getCurrency(STATE.elements.selectGet.value, STATE);
+
+    calculateUnitCurrency(STATE);
+
+    calculateResultCurrency({
+        value: STATE.elements[`input${from}`].value,
+        from: from,
+        to: to,
+    }, STATE);
+}
+
 function handlerFocusInputCurrency(e) {
     if (e.target.value.trim() !== '') {
-        e.target.value = convertCurrencyToNumber(e.target.value);
+        e.target.value = e.target.value.replace(/\s/g, '');
     }
 }
 
@@ -126,54 +164,21 @@ function handlerChangeRadioTypeRate(radio, STATE) {
     }, STATE);
 }
 
-function toggleTypeRate(STATE) {
-    const currentTypeRate = STATE.typeRate;
-    STATE.elements.radiosTypeRate.forEach(radio => {
-        if (radio.value !== currentTypeRate) {
-            radio.checked = true;
-            const tabTrigger = new bootstrap.Tab(radio.nextElementSibling);
-            tabTrigger.show();
-            radio.dispatchEvent(new Event('change'));
-        }
-    });
-}
-
-function handlerChangeSelectCurrency({value, from, to}, STATE) {
-    const isSell = STATE.typeRate === 'sell';
-    const isRUB = value === 'RUB';
-
-    if (value === STATE.elements[`select${to}`].value) {
-        if ($(ELEMS_CURRENCY[`select${to}`]).find("option[value='" + STATE[`currency${from}`].currency + "']").length) {
-            $(ELEMS_CURRENCY[`select${to}`]).val(STATE[`currency${from}`].currency).trigger('change');
-        }
-    }
-
-    if (from === 'Have') {
-        if ((isSell && isRUB) || (!isSell && !isRUB)) {
-            toggleTypeRate(STATE);
-            return;
-        }
-    }
-
-    if (from === 'Get') {
-        if ((isSell && !isRUB) || (!isSell && isRUB)) {
-            toggleTypeRate(STATE);
-            return;
-        }
-    }
-
-    STATE.currencyHave = getCurrency(STATE.elements.selectHave.value, STATE);
-    STATE.currencyGet = getCurrency(STATE.elements.selectGet.value, STATE);
-
-    calculateUnitCurrency(STATE);
-
-    calculateResultCurrency({
-        value: STATE.elements[`input${from}`].value,
-        from: from,
-        to: to,
+function handlerSelectCurrency(e, STATE) {
+    changeSelectCurrency({
+        el: e.target,
+        from: 'Have',
+        to: 'Get'
     }, STATE);
 }
 
+function handlerInputCurrency(e, from, to, STATE) {
+    calculateResultCurrency({
+        value: e.target.value,
+        from: from,
+        to: to
+    }, STATE);
+}
 
 function registerEventsCurrencyConversion(STATE) {
     STATE.elements.radiosTypeRate.forEach(radio => {
@@ -182,37 +187,11 @@ function registerEventsCurrencyConversion(STATE) {
         });
     });
 
-    $(ELEMS_CURRENCY.selectHave).on('select2:select', (e) => {
-        handlerChangeSelectCurrency({
-            value: e.target.value,
-            from: 'Have',
-            to: 'Get'
-        }, STATE);
-    });
+    $(ELEMS_CURRENCY.selectHave).on('select2:select', (e) => handlerSelectCurrency(e, STATE));
+    $(ELEMS_CURRENCY.selectGet).on('select2:select', (e) => handlerSelectCurrency(e, STATE));
 
-    $(ELEMS_CURRENCY.selectGet).on('select2:select', (e) => {
-        handlerChangeSelectCurrency({
-            value: e.target.value,
-            from: 'Get',
-            to: 'Have'
-        }, STATE);
-    });
-
-    STATE.elements.inputHave.addEventListener('input', (e) => {
-        calculateResultCurrency({
-            value: e.target.value,
-            from: 'Have',
-            to: 'Get'
-        }, STATE);
-    });
-
-    STATE.elements.inputGet.addEventListener('input', (e) => {
-        calculateResultCurrency({
-            value: e.target.value,
-            from: 'Get',
-            to: 'Have'
-        }, STATE);
-    });
+    STATE.elements.inputHave.addEventListener('input', (e) => handlerInputCurrency(e, 'Have', 'Get', STATE));
+    STATE.elements.inputGet.addEventListener('input', (e) => handlerInputCurrency(e, 'Get', 'Have', STATE));
 
     [STATE.elements.inputHave, STATE.elements.inputGet].forEach(input => {
         input.addEventListener('focus', handlerFocusInputCurrency);

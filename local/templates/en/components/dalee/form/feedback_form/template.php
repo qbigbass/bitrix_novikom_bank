@@ -169,7 +169,7 @@ $this->setFrameMode(true);
                                 </div>
                             </fieldset>
                             <div class="application-form__col col-12">
-                                <p class="text-m m-0">Thank you for contacting Novikom! Improving the quality of service is very important to us. You can read about the procedure and processing time for requests via <a href="#">this link</a></p>
+                                <p class="text-m m-0">Thank you for contacting Novikom! Improving the quality of service is very important to us. You can read about the procedure and processing time for requests via <a href="/appeal-order/" target="_blank">this link</a></p>
                             </div>
                             <div class="application-form__col col-12">
                                 <div class="d-flex flex-column row-gap-2">

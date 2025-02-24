@@ -49,11 +49,7 @@
     }
 
     &__thumbs {
-        //display: none;
-
         @include use-media(tablet-album) {
-            //z-index: 1;
-            //display: block;
             position: absolute !important;
             bottom: 0;
             left: 0;
@@ -66,6 +62,12 @@
             margin: 0 auto;
             border-left: 1px solid var(--violet-70);
             border-right: 1px solid var(--violet-70);
+        }
+
+        .swiper.is-less-4 {
+            #{$root}-thumb {
+                flex: 1;
+            }
         }
     }
 
@@ -84,24 +86,6 @@
         }
     }
 
-    &.banner-text {
-        &--border-orange {
-            & .swiper-slide-thumb-active {
-                &:after {
-                    background-color: var(--orange-100);
-                }
-            }
-        }
-
-        &--border-violet {
-            & .swiper-slide-thumb-active {
-                &:after {
-                    background-color: var(--violet-100);
-                }
-            }
-        }
-    }
-
     &--heavy-violet {
         background: linear-gradient(222.24deg, #101317 20%, #6655A2 80%);
     }
@@ -110,13 +94,50 @@
         background: linear-gradient(222.24deg, #101317 20%, #5A2375 80%);
     }
 
-    &--type-msb {
-        border-top: .25rem solid var(--yellow-100);
+    &[class*="border"],
+    &--type-msb,
+    &--type-light {
+        border-top-width: .25rem;
+        border-top-style: solid;
 
         @include use-media(tablet-album) {
-            border-width: .5rem;
+            border-top-width: .5rem;
         }
+    }
 
+    &[class*="border-green"] {
+        & .swiper-slide-thumb-active {
+            &:after {
+                background-color: var(--green-100);
+            }
+        }
+    }
+
+    &[class*="border-orange"] {
+        & .swiper-slide-thumb-active {
+            &:after {
+                background-color: var(--orange-100);
+            }
+        }
+    }
+
+    &[class*="border-violet"] {
+        & .swiper-slide-thumb-active {
+            &:after {
+                background-color: var(--violet-100);
+            }
+        }
+    }
+
+    &[class*="border-yellow"] {
+        & .swiper-slide-thumb-active {
+            &:after {
+                background-color: var(--yellow-100);
+            }
+        }
+    }
+
+    &--type-msb {
         #{$root}-content {
 
             @include use-media(tablet-album) {
@@ -137,12 +158,6 @@
     }
 
     &--type-light {
-        border-top: .25rem solid var(--violet-100);
-
-        @include use-media(tablet-album) {
-            border-width: .5rem;
-        }
-
         #{$root}__thumbs {
             border-color: var(--purple-30);
         }

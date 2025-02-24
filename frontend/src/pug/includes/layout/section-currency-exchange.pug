@@ -100,40 +100,41 @@ section.section-layout.section-currency-exchange
         #currency-exchange.section-currency-exchange__wrapper.collapse.js-currency-converter(data-table="currency-exchange")
             .row
                 .col-12.col-xl-8
-                        .d-flex.flex-column.flex-lg-row.align-items-lg-end.mb-4.mb-md-6.mb-lg-7.pt-4.pt-md-0.gap-md-3
-                            h3.d-none.d-md-block Обмен валют
-                            p.text-s.dark-70.mb-0.ms-lg-auto Курс банка актуален на&nbsp;14:00 по&nbsp;МСК 4&nbsp;февраля 2025&nbsp;г.
+                    .d-flex.flex-column.flex-lg-row.align-items-lg-end.mb-4.mb-md-6.mb-lg-7.pt-4.pt-md-0.gap-md-3
+                        h3.d-none.d-md-block Обмен валют
+                        p.text-s.dark-70.mb-0.ms-lg-auto Курс банка актуален на&nbsp;14:00 по&nbsp;МСК 4&nbsp;февраля 2025&nbsp;г.
 
-                        ul.nav.nav-tabs.d-md-none(role="tablist")
-                            each item in tabsList
-                                li.nav-item.flex-grow-1(role="presentation")
-                                    button.nav-link(
-                                        class= item.isActive ? 'active' : '',
-                                        data-bs-toggle="tab"
-                                        data-bs-target= `#${item.link}`
-                                        type="button"
-                                        role="tab"
-                                        aria-controls= item.link
-                                        aria-selected= item.isActive
-                                    )= item.linkText
+                    ul.nav.nav-tabs.d-md-none(role="tablist")
+                        each item in tabsList
+                            li.nav-item.flex-grow-1(role="presentation")
+                                button.nav-link(
+                                    class= item.isActive ? 'active' : '',
+                                    data-bs-toggle="tab"
+                                    data-bs-target= `#${item.link}`
+                                    type="button"
+                                    role="tab"
+                                    aria-controls= item.link
+                                    aria-selected= item.isActive
+                                )= item.linkText
 
-                        .tab-content.pt-3.d-md-none
-                            #eur.tab-pane.fade.show.active(role="tabpanel" aria-labelledby="eur" tabindex="0")
-                                +table-currency(tableDataEur, 'mobile')
-                            #usd.tab-pane.fade(role="tabpanel" aria-labelledby="usd" tabindex="0")
-                                +table-currency(tableDataUsd, 'mobile')
-                            #cny.tab-pane.fade(role="tabpanel" aria-labelledby="cny" tabindex="0")
-                                +table-currency(tableDataCny, 'mobile')
+                    .tab-content.pt-3.d-md-none
+                        #eur.tab-pane.fade.show.active(role="tabpanel" aria-labelledby="eur" tabindex="0")
+                            +table-currency(tableDataEur, 'mobile')
+                        #usd.tab-pane.fade(role="tabpanel" aria-labelledby="usd" tabindex="0")
+                            +table-currency(tableDataUsd, 'mobile')
+                        #cny.tab-pane.fade(role="tabpanel" aria-labelledby="cny" tabindex="0")
+                            +table-currency(tableDataCny, 'mobile')
 
-                        +table-currency(tableCurrency).d-none.d-md-block
+                    +table-currency(tableCurrency).d-none.d-md-block
 
+                    .d-none.d-xl-block
                         p.dark-70.pt-4.text-s.mb-0
                             | Банк оставляет за&nbsp;собой право на&nbsp;изменение курса купли-продажи иностранной валюты.
                             br
                             | Действующие на&nbsp;момент совершения операций курсы уточняйте в&nbsp;отделениях банка.
                             br
                             | Список отделений доступен по&nbsp;
-                            a(href="#", tabindex="0" id="linkToList", aria-label="Перейти к списку отделений") ссылке
+                            a(href="/map/offices/", tabindex="0" id="linkToList", aria-label="Перейти к списку отделений") ссылке
                         p.dark-70.pt-3.text-s.mb-0
                             | Покупка и&nbsp;продажа фунтов стерлингов и&nbsp;швейцарских франков осуществляется только в&nbsp;ДО&nbsp;&laquo;Якиманка&raquo;.
                 .col-12.col-xl-4.mt-4
@@ -172,3 +173,14 @@ section.section-layout.section-currency-exchange
                                             option(value="USD" selected) USD
                                             option(value="CNY") CNY
                                 span.caption-m.dark-70.mt-2.d-block.js-currency-unit-get(aria-live="polite") 1 USD = 97 RUB
+
+                    .d-block.d-xl-none
+                        p.dark-70.pt-4.text-s.mb-0
+                            | Банк оставляет за&nbsp;собой право на&nbsp;изменение курса купли-продажи иностранной валюты.
+                            br
+                            | Действующие на&nbsp;момент совершения операций курсы уточняйте в&nbsp;отделениях банка.
+                            br
+                            | Список отделений доступен по&nbsp;
+                            a(href="/map/offices/", tabindex="0" id="linkToList", aria-label="Перейти к списку отделений") ссылке
+                        p.dark-70.pt-3.text-s.mb-0
+                            | Покупка и&nbsp;продажа фунтов стерлингов и&nbsp;швейцарских франков осуществляется только в&nbsp;ДО&nbsp;&laquo;Якиманка&raquo;.
