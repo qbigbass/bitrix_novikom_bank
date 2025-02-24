@@ -175,4 +175,6 @@ if (!empty($delFilter)) {
 
 <? $APPLICATION->IncludeFile('/local/php_interface/include/block_news_section.php'); ?>
 
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_special_offers_section.php'); ?>
+
 <? $helper->saveCache(); ?>

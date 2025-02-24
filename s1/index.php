@@ -327,7 +327,9 @@ $APPLICATION->IncludeComponent(
     ["HIDE_ICONS" => "Y"]
 ); ?>
 
-<? $APPLICATION->IncludeFile('/local/php_interface/include/block_news_section.php');?>
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_news_section.php'); ?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_special_offers_section.php'); ?>
 
 <? $APPLICATION->IncludeFile('/local/php_interface/include/request_call.php'); ?>
 
