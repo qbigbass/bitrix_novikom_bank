@@ -3,12 +3,12 @@
 namespace Dalee\Services;
 
 use Bitrix\Iblock\Component\Tools;
-use Bitrix\Main\Application;
 use Bitrix\Main\Loader;
 use Bitrix\Main\LoaderException;
 use Bitrix\Main\Request;
 use CFile;
 use CIBlockElement;
+use CIBlockSection;
 use Exception;
 use JetBrains\PhpStorm\NoReturn;
 
@@ -39,7 +39,10 @@ class DocumentHandler
         }
     }
 
-    public function handleRequest()
+    /**
+     * @return void
+     */
+    #[NoReturn] public function handleRequest(): void
     {
         $path = $this->request->getQuery("path");
 
@@ -47,62 +50,131 @@ class DocumentHandler
             $this->send404('Не указано название файла');
         }
 
-        $code = $this->extractCodeFromPath($path);
-        $element = $this->getElementByCode($code);
+        $pathinfo = pathinfo($path);
+        $code = $pathinfo['filename'];
+        $extension = $pathinfo['extension'];
 
-        if (empty($element)) {
+        if (empty($extension)) {
+            $this->send404('Не указано расширение файла');
+        }
+
+        $file = $this->getFileByCode($code, $extension);
+
+        if (empty($file)) {
+            $file = $this->getFileBySectionCode($code, $extension);
+        }
+
+        if (empty($file)) {
             $this->send404('Файл отсутствует');
         }
 
-        $filePath = $this->getFilePath($element);
-
-        if (empty($filePath)) {
-            $this->send404('Файл отсутствует');
-        }
-
-        $this->sendFile($filePath, $code);
+        $this->sendFile($file, $code);
     }
 
     /**
-     * @param $path
-     * @return string
-     */
-    private function extractCodeFromPath($path): string
-    {
-        return explode('.', $path)[0];
-    }
-
-    /**
-     * @param $code
+     * @param string $code
+     * @param string $extensionFromPath
      * @return bool|array
      */
-    private function getElementByCode($code): bool|array
+    private function getFileByCode(string $code, string $extensionFromPath): bool|string
     {
         $filter = [
             'IBLOCK_ID' => $this->iblockId,
+            'ACTIVE' => 'Y',
             '=CODE' => $code,
         ];
 
         $select = ['PROPERTY_FILE'];
 
-        $elements = CIBlockElement::GetList(
+        $element = CIBlockElement::GetList(
             ["SORT" => "ASC"],
             $filter,
             false,
             false,
             $select
-        );
+        )->Fetch();
 
-        return $elements->Fetch();
+        if (empty($element)) {
+            return false;
+        }
+
+        $filePath = CFile::GetPath($element['PROPERTY_FILE_VALUE']);
+        if (empty($filePath)) {
+            return false;
+        }
+
+        $extension = pathinfo($filePath, PATHINFO_EXTENSION);
+        if ($extension !== $extensionFromPath) {
+            return false;
+        }
+
+        return $filePath;
     }
 
     /**
-     * @param $element
-     * @return string|null
+     * @param string $code
+     * @param string $extensionFromPath
+     * @return bool|string
      */
-    private function getFilePath($element): ?string
+    private function getFileBySectionCode(string $code, string $extensionFromPath): bool|string
     {
-        return CFile::GetPath($element['PROPERTY_FILE_VALUE']);
+        $sectionFilter = [
+            'IBLOCK_ID' => $this->iblockId,
+            'ACTIVE' => 'Y',
+            '=CODE' => $code,
+        ];
+
+        $section = CIBlockSection::GetList(
+            ["SORT" => "ASC"],
+            $sectionFilter,
+            false,
+            false,
+            ['ID']
+        )->Fetch();
+
+        if (empty($section)) {
+            return false;
+        }
+
+        $elementsFilter = [
+            'IBLOCK_ID' => $this->iblockId,
+            'ACTIVE' => 'Y',
+            'ACTIVE_DATE' => 'Y',
+            '=SECTION_CODE' => $code,
+            '%CODE' => $code
+        ];
+
+        $elements = CIBlockElement::GetList(
+            ["DATE_ACTIVE_FROM" => "DESC"],
+            $elementsFilter,
+            false,
+            false,
+            ['CODE', 'PROPERTY_FILE']
+        );
+
+        $arElements = [];
+        while ($element = $elements->Fetch()) {
+            $filePath = CFile::GetPath($element['PROPERTY_FILE_VALUE']);
+            if (!empty($filePath)) {
+                $arElements[] = [
+                    'code' => $element['CODE'],
+                    'path' => $filePath,
+                    'extension' => pathinfo($filePath, PATHINFO_EXTENSION),
+                ];
+            }
+        }
+
+        if (empty($arElements)) {
+            return false;
+        }
+
+        $file = $arElements[0];
+
+        if ($file['extension'] !== $extensionFromPath) {
+            return false;
+        }
+
+        return $file['path'];
     }
 
     /**
