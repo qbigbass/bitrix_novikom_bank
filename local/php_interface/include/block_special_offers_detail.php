@@ -10,7 +10,7 @@ use Bitrix\Iblock\Model\Section;
 global $APPLICATION;
 $sectionCode = $GLOBALS["PARENT_SECTION_CODE"] ?: 'private';
 
-$crossSaleFilter = [
+$specialOffersFilter = [
     "!UF_SHOW_SPECIAL_DETAIL" => false,
     "ACTIVE" => "Y",
     "CODE" => $sectionCode
@@ -20,7 +20,7 @@ $iblock = iblock('special_offers_ru');
 $entity = Section::compileEntityByIblock($iblock);
 $rsSections = $entity::getList([
     "select" => ["ID"],
-    "filter" => $crossSaleFilter,
+    "filter" => $specialOffersFilter,
     "order" => ["SORT" => "ASC"],
 ])->fetchAll();
 

@@ -106,4 +106,6 @@ $APPLICATION->SetTitle("Офисы и банкоматы");
 
 <? $APPLICATION->IncludeFile('/local/php_interface/include/block_special_offers_section.php'); ?>
 
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_contacts_section.php'); ?>
+
 <? require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>

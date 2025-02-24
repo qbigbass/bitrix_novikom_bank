@@ -1,4 +1,4 @@
-<?php
+<?
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 /**
  * @global CMain $APPLICATION
@@ -6,7 +6,7 @@ require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 $APPLICATION->SetTitle("Поиск");
 ?>
 
-<?php
+<?
 if (!empty($_REQUEST['date'])) {
     $parts = explode('-', $_REQUEST['date']);
     $searchFrom = $parts[0] ?? null;
@@ -53,10 +53,12 @@ $APPLICATION->IncludeComponent(
     ]
 );?>
 
-<?php $APPLICATION->IncludeFile('/local/php_interface/include/block_cross_sale_section.php'); ?>
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_cross_sale_section.php'); ?>
 
-<?php $APPLICATION->IncludeFile('/local/php_interface/include/block_news_section.php'); ?>
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_news_section.php'); ?>
 
 <? $APPLICATION->IncludeFile('/local/php_interface/include/block_special_offers_section.php'); ?>
 
-<?php require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_contacts_section.php'); ?>
+
+<? require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>

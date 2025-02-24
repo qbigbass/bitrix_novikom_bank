@@ -331,6 +331,8 @@ $APPLICATION->IncludeComponent(
 
 <? $APPLICATION->IncludeFile('/local/php_interface/include/block_special_offers_section.php'); ?>
 
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_contacts_section.php'); ?>
+
 <? $APPLICATION->IncludeFile('/local/php_interface/include/request_call.php'); ?>
 
 <section class="section-layout section-currency-exchange">
