@@ -52,6 +52,7 @@ if ($cntSectionsPath === 3) {
     die();
 }
 ?>
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_cross_sale_detail.php');?>
 
 <? $APPLICATION->IncludeFile('/local/php_interface/include/block_news_detail.php');?>
 
