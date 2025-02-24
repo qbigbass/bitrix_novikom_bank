@@ -9,7 +9,7 @@
     <div class="col-12 col-lg-6">
         <div class="tab-content pe-xl-6">
             <div class="d-flex flex-column row-gap-4 row-gap-md-6 row-gap-lg-7">
-                <div class="input-slider" data-type="price" data-step-size="10000">
+                <div class="input-slider" data-type="price" data-step-size="1">
                     <label class="text-s dark-70 ps-3 mb-2" for="property-value">Стоимость
                         недвижимости</label>
                     <div class="input-slider-text js-input-slider-text">
@@ -68,7 +68,7 @@
                     </div>
                     <div class="input-slider-text-steps js-input-slider-text-steps"></div>
                 </div>
-                <div class="input-slider" data-type="price" data-step-size="10000">
+                <div class="input-slider" data-type="price" data-step-size="1">
                     <label class="text-s dark-70 ps-3 mb-2" for="down-payment">Первоначальный
                         взнос</label>
                     <div class="input-slider-text js-input-slider-text">
@@ -97,7 +97,7 @@
                     </div>
                     <div class="input-slider-text-steps js-input-slider-text-steps"></div>
                 </div>
-                <div class="input-slider" data-type="price" data-step-size="5000">
+                <div class="input-slider" data-type="price" data-step-size="1">
                     <label class="text-s dark-70 ps-3 mb-2" for="amount-credit">Сумма
                         кредита</label>
                     <div class="input-slider-text js-input-slider-text">
