@@ -30,7 +30,10 @@ class Renderer
             throw new InvalidArgumentException("Класс $componentClass должен реализовывать ComponentInterface");
         }
 
-        $filter = empty($sectionCode) ? $this->setFilterIds($componentName, $ids) : $this->setFilterSection($componentName, $sectionCode);
+        $filter = '';
+        if (!empty($ids) || !empty($sectionCode)) {
+            $filter = empty($sectionCode) ? $this->setFilterIds($componentName, $ids) : $this->setFilterSection($componentName, $sectionCode);
+        }
 
         $componentClass::render($this->application, $this->component, $filter, $params);
     }
