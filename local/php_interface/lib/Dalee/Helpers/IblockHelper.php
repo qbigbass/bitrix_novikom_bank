@@ -255,6 +255,7 @@ class IblockHelper
                 'IBLOCK_SECTION_ID' => false,
                 "ACTIVE" => "Y"
             ],
+            'order' => ['SORT' => 'ASC']
         ])->fetchAll();
 
         foreach ($elements as $element) {

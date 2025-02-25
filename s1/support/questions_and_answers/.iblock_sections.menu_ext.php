@@ -16,6 +16,5 @@ $aMenuLinksExt = $APPLICATION->IncludeComponent("bitrix:menu.sections", "", arra
 ),
     false
 );
-
 $aMenuLinks = array_merge($aMenuLinks, $aMenuLinksExt);
 ?>

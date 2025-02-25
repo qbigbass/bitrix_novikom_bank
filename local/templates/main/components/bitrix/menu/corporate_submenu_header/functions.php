@@ -1,6 +1,7 @@
 <?php
 
 use Bitrix\Iblock\SectionTable;
+use Bitrix\Main\Application;
 
 function modifyFirstLevelMainSubmenu(array $firstLevelMenu, int $hiddenKey  = 7) : array
 {
@@ -25,10 +26,15 @@ function modifyCorporateSubmenuResult(array $arResult): array
         'FIRST_LEVEL_MENU' => [],
         'SECOND_LEVEL_MENU' => [],
     ];
+    $request = Application::getInstance()->getContext()->getRequest();
+    $uriString = $request->getRequestUri();
+    $rootUri = explode('/', $uriString)[1];
+    $iblockId = MENU_IBLOCKS[$rootUri] ?? iblock('corporate_clients');
+
 
     foreach ($arResult as $key => $item) {
         $modifiedResult['FIRST_LEVEL_MENU'][] = $item;
-        $iblockId = iblock('corporate_clients');
+
 
         $sections = SectionTable::getList([
             'filter' => [
@@ -50,7 +56,7 @@ function modifyCorporateSubmenuResult(array $arResult): array
             foreach ($sections as $element) {
                 $secondLevelItem = [
                     'TEXT' => $element['NAME'],
-                    'LINK' => '/for-corporate-clients/' . $element['CODE'] . '/',
+                    'LINK' => '/' . $rootUri . '/' . $element['CODE'] . '/',
                     'DEPTH_LEVEL' => 2
                 ];
                 $modifiedResult['SECOND_LEVEL_MENU'][$item['ITEM_INDEX']][] = $secondLevelItem;
@@ -77,7 +83,7 @@ function modifyCorporateSubmenuResult(array $arResult): array
             foreach ($elements as $element) {
                 $secondLevelItem = [
                     'TEXT' => $element['NAME'],
-                    'LINK' => '/for-corporate-clients/' . $element['CODE'] . '/',
+                    'LINK' => '/' . $rootUri . '/' . $element['CODE'] . '/',
                     'DEPTH_LEVEL' => 2
                 ];
                 $modifiedResult['SECOND_LEVEL_MENU'][$item['ITEM_INDEX']][] = $secondLevelItem;
