@@ -61,6 +61,7 @@ function toggleDropMenu($links, currentLink) {
 
     if (currentLink.hasClass(MENU_CLASSES.activeClass)) {
         currentLink.removeClass(MENU_CLASSES.activeClass);
+        currentLink.attr('aria-expanded', 'false');
         toggleDropDownMenu(id, false)
     } else {
         $links.removeClass(MENU_CLASSES.activeClass);
