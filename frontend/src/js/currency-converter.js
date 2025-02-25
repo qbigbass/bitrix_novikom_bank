@@ -234,3 +234,7 @@ function initCurrencyConverter() {
             });
     }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    initCurrencyConverter();
+})

@@ -270,3 +270,7 @@ function initCalculatorLoan() {
             })
     }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    initCalculatorLoan();
+})

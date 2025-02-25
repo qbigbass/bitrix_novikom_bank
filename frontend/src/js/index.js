@@ -403,9 +403,7 @@ function getRates({table = null, id = null, name = null}) {
             }
         })
         .catch(error => {
-            // console.error('Error:', error);
-            // TODO: убрать перед пушем
-            return dataTemp.data;
+            console.error('Error:', error);
         })
 }
 
@@ -419,13 +417,11 @@ document.addEventListener('DOMContentLoaded', () => {
     initCardSlider();
     initAnnouncementSlider();
     initTabsSlider();
-    addSelectDateOptions();
     initSelect2();
     initTabsContent();
     initInputSlider();
     showMoreContent();
     initPbSlider();
-    pbNavMenu();
     initDatepicker();
     setPage();
     initFormSteps();
@@ -437,17 +433,11 @@ document.addEventListener('DOMContentLoaded', () => {
     initResizePolygonAccordions();
     initHeaderSearchForm();
     hideDropDownMenu();
-    initCalculatorDeposit();
-    initCalculatorLoan();
-    initCurrencyConverter();
     initOffices();
     initChatBot();
     initCharts();
-    pbScrollTo();
     initFixScrollAccordions();
     checkWidth();
-    triggerPbTab();
-    scrollPbAccordion();
 });
 
 window.onload = function() {
@@ -461,8 +451,6 @@ window.onload = function() {
     const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
         return new bootstrap.Tooltip(tooltipTriggerEl)
     })
-
-    pbAnimation();
 };
 
 window.addEventListener('resize', () => {
