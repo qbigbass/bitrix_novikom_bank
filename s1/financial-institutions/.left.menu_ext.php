@@ -1,6 +1,6 @@
 <?php
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
-
+use Dalee\Helpers\IblockHelper;
 global $APPLICATION;
 
 $aMenuLinksExt = $APPLICATION->IncludeComponent("bitrix:menu.sections", "", array(
@@ -8,14 +8,14 @@ $aMenuLinksExt = $APPLICATION->IncludeComponent("bitrix:menu.sections", "", arra
     "SEF_BASE_URL" => "",
     "SECTION_PAGE_URL" => "#SECTION_CODE#/",
     "DETAIL_PAGE_URL" => "#ELEMENT_CODE#/",
-    "IBLOCK_TYPE" => "for_corporate_clients_ru",
-    "IBLOCK_ID" => iblock('corporate_clients'),
+    "IBLOCK_TYPE" => "financial_institutes",
+    "IBLOCK_ID" => iblock('financial_institutions'),
     "DEPTH_LEVEL" => "1",
     "CACHE_TYPE" => "A",
     "CACHE_TIME" => "36000000"
 ),
     false
 );
-
-$aMenuLinks = array_merge($aMenuLinks, $aMenuLinksExt);
+$aMenuLinksElementsExt = IblockHelper::getIblockMenuWithoutSections('financial_institutions', '/financial-institutions/');
+$aMenuLinks = array_merge($aMenuLinks, $aMenuLinksExt,$aMenuLinksElementsExt);
 ?>
