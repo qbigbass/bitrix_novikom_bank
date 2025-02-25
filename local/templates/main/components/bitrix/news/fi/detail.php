@@ -73,9 +73,14 @@ $this->setFrameMode(true);
         "BLOCK_CONTACT_COLOR_H4" => "dark-100",
         "BLOCK_CONTACT_COLOR_SPAN" => "dark-100",
         "BLOCK_CONTACT_COLOR_ICON" => "dark-100",
-        "HEADER_COLOR_CLASS" => "border-violet bg-gradient-graphite", // Для всех детальных страниц ФИ
+        "HEADER_COLOR_CLASS" => "banner-product border-violet banner-product--graphite", // Для всех детальных страниц ФИ
         "TITLE_BLOCK_CROSS_SALE" => $arParams["TITLE_BLOCK_CROSS_SALE"],
-        "FILTER_BLOCK_CROSS_SALE" => $arParams["FILTER_BLOCK_CROSS_SALE"],
     ],
     $component
 );?>
+
+<?$APPLICATION->IncludeFile('/local/php_interface/include/block_cross_sale_detail.php');?>
+
+<?$APPLICATION->IncludeFile('/local/php_interface/include/block_news_detail.php');?>
+
+<?$APPLICATION->IncludeFile('/local/php_interface/include/block_special_offers_detail.php');?>

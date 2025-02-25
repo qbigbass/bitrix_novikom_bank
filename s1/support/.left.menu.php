@@ -23,7 +23,7 @@ $aMenuLinks = [
     ],
     [
         "Вопросы и ответы",
-        "questions_and_answers",
+        "questions_and_answers/",
         [],
         [],
         ""

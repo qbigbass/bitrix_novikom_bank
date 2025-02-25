@@ -1,6 +1,7 @@
 <? if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die(); ?>
 <? global $APPLICATION; ?>
-<? if (!empty($arResult)) { ?>
+<? if (!empty($arResult)) {
+    ?>
     <div class="navbar w-100">
         <? foreach ($arResult['FIRST_LEVEL_MENU']['NOT_HIDDEN'] as $notHiddenItem) { ?>
             <? $issetChildren = isset($arResult['SECOND_LEVEL_MENU'][$notHiddenItem['ITEM_INDEX']]) ?>
@@ -11,7 +12,7 @@
                 $parentDir = reset($path);
                 $isActive = $parentDir === basename($notHiddenItem['LINK']);
             } else {
-                $isActive = $notHiddenItem['LINK'] === $APPLICATION->GetCurDir();
+                //$isActive = $notHiddenItem['LINK'] === $APPLICATION->GetCurDir();
             }
             ?>
             <? if ($issetChildren) { ?>
@@ -47,22 +48,81 @@
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end">
                     <? foreach ($arResult['FIRST_LEVEL_MENU']['NOT_HIDDEN'] as $notHiddenItem) {
+                        $issetChildren = isset($arResult['SECOND_LEVEL_MENU'][$notHiddenItem['ITEM_INDEX']]);
+                        if ($issetChildren) {
+                            $path = array_filter(explode('/', $APPLICATION->GetCurDir()));
+                            $parentDir = reset($path);
+                            $isActive = $parentDir === basename($notHiddenItem['LINK']);
+                        } else {
+                            //$isActive = $notHiddenItem['LINK'] === $APPLICATION->GetCurDir();
+                        }
+
                         if ($notHiddenItem['JS_DESKTOP_MOVE_LINK']) { ?>
-                            <li>
-                                <a
-                                    class="dropdown-item fw-bold d-xl-none"
-                                    href="<?= $notHiddenItem['LINK'] ?>"
-                                ><?= $notHiddenItem['TEXT'] ?></a>
-                            </li>
+                            <? if ($issetChildren) { ?>
+                                <li>
+                                    <a
+                                        class="dropdown-item fw-bold d-xl-none js-dropdown-link"
+                                        href="#spoiler-<?= $notHiddenItem['ITEM_INDEX'] ?>">
+                                        <?= $notHiddenItem['TEXT'] ?>
+                                        <span class="icon size-m" slot="icon-after">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                                <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
+                                            </svg>
+                                        </span>
+                                    </a>
+                                </li>
+                                <?
+                            }else{
+                                ?>
+                                <li>
+                                    <a
+                                        class="dropdown-item fw-bold d-xl-none "
+                                        href="<?= $notHiddenItem['LINK'] ?>">
+                                        <?= $notHiddenItem['TEXT'] ?>
+                                    </a>
+                                </li>
+                                <?
+                            }
+                                ?>
                         <? }
                     } ?>
                     <? foreach ($arResult['FIRST_LEVEL_MENU']['HIDDEN'] as $hiddenItem) { ?>
+                        <?
+                        $issetChildren = isset($arResult['SECOND_LEVEL_MENU'][$hiddenItem['ITEM_INDEX']]);
+                        if ($issetChildren) {
+                            $path = array_filter(explode('/', $APPLICATION->GetCurDir()));
+                            $parentDir = reset($path);
+                            $isActive = $parentDir === basename($hiddenItem['LINK']);
+                        } else {
+                            //$isActive = $hiddenItem['LINK'] === $APPLICATION->GetCurDir();
+                        }
+                        ?>
+                        <? if ($issetChildren) { ?>
                         <li>
                             <a
-                                class="dropdown-item fw-bold"
-                                href="<?= $hiddenItem['LINK'] ?>"
-                            ><?= $hiddenItem['TEXT'] ?></a>
+                                class="dropdown-item fw-bold js-dropdown-link"
+                                href="#spoiler-<?= $hiddenItem['ITEM_INDEX'] ?>">
+                                <?= $hiddenItem['TEXT'] ?>
+                                <span class="icon size-m" slot="icon-after">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                            <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
+                                        </svg>
+                                </span>
+                            </a>
                         </li>
+                            <?
+                        }else{
+                            ?>
+                            <li>
+                                <a
+                                    class="dropdown-item fw-bold "
+                                    href="<?= $hiddenItem['LINK'] ?>">
+                                    <?= $hiddenItem['TEXT'] ?>
+                                </a>
+                            </li>
+                            <?
+                        }
+                            ?>
                     <? } ?>
                 </ul>
             </div>

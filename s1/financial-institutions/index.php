@@ -114,9 +114,6 @@ $APPLICATION->IncludeComponent(
         "SHOW_AD_INTERNET_BANK" => "N",
         "SHOW_AD_OPEN_ACC_NOVIKOM" => "N",
         "TITLE_BLOCK_CROSS_SALE" => "Другие услуги для финансовых институтов",
-        "FILTER_BLOCK_CROSS_SALE" => [
-            "SECTION_CODE" => "financial-institutions"
-        ]
     ],
     false,
     ["HIDE_ICONS" => "Y"]
