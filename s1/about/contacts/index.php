@@ -3,13 +3,11 @@ require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 global $APPLICATION;
 $APPLICATION->SetTitle('Контакты банка Новиком');
 ?>
-
 <section class="banner-text bg-linear-blue border-green">
     <div class="container banner-text__container position-relative z-2">
         <div class="row ps-lg-6">
             <div class="col-12 col-xxl-8 position-relative z-1 mb-6 mb-md-0 pt-6">
                 <div class="banner-text__content d-flex flex-column align-items-start gap-3 gap-lg-4">
-
                     <?
                     $APPLICATION->IncludeComponent(
                         "bitrix:breadcrumb",
@@ -21,7 +19,6 @@ $APPLICATION->SetTitle('Контакты банка Новиком');
                         ]
                     );
                     ?>
-
                     <h1 class="banner-text__title dark-0 text-break"><?= $APPLICATION->GetTitle() ?></h1>
                 </div>
             </div>
@@ -33,7 +30,6 @@ $APPLICATION->SetTitle('Контакты банка Новиком');
         <img src="/frontend/dist/img/patterns/section/pattern-light-l.svg" alt="bg pattern" loading="lazy">
     </picture>
 </section>
-
 <section class="section-layout bg-dark-30">
     <div class="container">
         <div class="row">
@@ -108,5 +104,13 @@ $APPLICATION->SetTitle('Контакты банка Новиком');
         </div>
     </div>
 </section>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_cross_sale_section.php'); ?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_news_section.php'); ?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_special_offers_section.php'); ?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_contacts_section.php'); ?>
 
 <? require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php'); ?>

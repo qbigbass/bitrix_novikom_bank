@@ -169,7 +169,7 @@ $this->setFrameMode(true);
                                 </div>
                             </fieldset>
                             <div class="application-form__col col-12">
-                                <p class="text-m m-0">Спасибо, что обратились в&nbsp;Новиком! Повышение качества обслуживания для нас очень важно. С&nbsp;информацией о&nbsp;порядке и&nbsp;сроках рассмотрения обращения&nbsp;Вы можете ознакомиться по&nbsp;<a href="#">ссылке</a>.</p>
+                                <p class="text-m m-0">Спасибо, что обратились в&nbsp;Новиком! Повышение качества обслуживания для нас очень важно. С&nbsp;информацией о&nbsp;порядке и&nbsp;сроках рассмотрения обращения&nbsp;Вы можете ознакомиться по&nbsp;<a href="/appeal-order/" target="_blank">ссылке</a>.</p>
                             </div>
                             <div class="application-form__col col-12">
                                 <div class="d-flex flex-column row-gap-2">

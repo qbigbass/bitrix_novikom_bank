@@ -29,6 +29,7 @@ $APPLICATION->IncludeComponent(
             "NAME",
             "PREVIEW_TEXT",
             "DETAIL_PICTURE",
+            "PREVIEW_PICTURE"
         ],
         "IBLOCK_ID" => $element['IBLOCK_ID'],
         "IBLOCK_TYPE" => "for_private_clients_ru",

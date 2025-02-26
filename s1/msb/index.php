@@ -116,9 +116,6 @@ $APPLICATION->IncludeComponent(
         "SHOW_AD_INTERNET_BANK" => "Y",
         "SHOW_AD_OPEN_ACC_NOVIKOM" => "Y",
         "TITLE_BLOCK_CROSS_SALE" => "Другие услуги для бизнеса",
-        "FILTER_BLOCK_CROSS_SALE" => [
-            "SECTION_CODE" => "msb"
-        ]
     ],
     false,
     ["HIDE_ICONS" => "Y"]

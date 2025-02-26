@@ -2,18 +2,21 @@
     $root: #{&};
 
     --banner-height: 37.5rem; //600px
-    --border-top-width: 0.25rem;
-    --border-top-color: var(--green-100);
 
     background: linear-gradient(222.24deg, #101317 20%, #5a2375 80%);
-    border-top: var(--border-top-width) solid var(--border-top-color);
+    border-top-width: 0.25rem;
+    border-top-style: solid;
     overflow: hidden;
     position: relative;
     display: flex;
 
+    &:not([class*="border"]) {
+        border-top-color: var(--green-100);
+    }
+
     @include use-media(tablet-album) {
         min-height: var(--banner-height);
-        --border-top-width: 0.5rem;
+        border-top-width: 0.5rem;
     }
 
     @include use-media(laptop) {
@@ -344,18 +347,6 @@
                 right: 10rem;
             }
         }
-    }
-
-    &--border-orange {
-        --border-top-color: var(--orange-100);
-    }
-
-    &--border-violet {
-        --border-top-color: var(--violet-100);
-    }
-
-    &--border-yellow {
-        --border-top-color: var(--yellow-100);
     }
 
     &--blue {

@@ -64,14 +64,14 @@
                 <div class="input-slider-text-steps js-input-slider-text-steps"></div>
             </div>
             <div class="d-flex flex-column row-gap-4">
-                <div class="form-check">
+                <div class="form-check js-inp-loan-card-wrapper">
                     <input class="form-check-input js-inp-loan-card" id="inp-loan-card"
                            type="checkbox" value="" checked>
                     <label class="form-check-label" for="inp-loan-card">Получаю
                             зарплату на&nbsp;карту Новиком</label>
                 </div>
                 <div class="d-flex flex-column row-gap-4 row-gap-lg-6">
-                    <div class="d-flex flex-column row-gap-2">
+                    <div class="d-flex flex-column row-gap-2 js-select-loan-properties-wrapper">
                         <label class="form-label mb-0"
                                for="select-loan-properties">Особенности</label>
                         <select class="form-select js-select js-select-loan-properties"

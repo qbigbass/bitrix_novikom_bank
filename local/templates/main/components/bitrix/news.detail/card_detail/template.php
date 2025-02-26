@@ -19,9 +19,8 @@ use Dalee\Helpers\ComponentRenderer\Renderer;
 
 $renderer = new Renderer($APPLICATION, $component);
 ?>
-
 <div
-    class="banner-product is-sticker <?= $arResult['BANNER_STYLE'] ?>"
+    class="banner-product <?= $arResult['BANNER_STYLE'] ?>"
     <? if (!empty($arResult['DISPLAY_PROPERTIES']['CARD_HEADER_BACKGROUND']['FILE_VALUE']['SRC'])): ?>
         style="background: url('<?= $arResult['DISPLAY_PROPERTIES']['CARD_HEADER_BACKGROUND']['FILE_VALUE']['SRC']; ?>') no-repeat center center / cover;"
     <? endif; ?>
@@ -73,7 +72,6 @@ $renderer = new Renderer($APPLICATION, $component);
 
 <? global $customerCategoriesFilter; ?>
 <?
-//$arResult['IBLOCK_SECTION_ID'] = ($arResult['IBLOCK_SECTION_ID'] > 0) ? $arResult['IBLOCK_SECTION_ID'] : false;
 $customerCategoriesFilter = [
     'ACTIVE' => 'Y',
     'IBLOCK_SECTION_ID' => $arResult['IBLOCK_SECTION_ID']

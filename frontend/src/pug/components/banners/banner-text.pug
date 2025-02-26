@@ -15,14 +15,14 @@ mixin banner-text-content(title, breadcrumbsArray, description, button, isSmallT
         h1.banner-text__title.text-break(class=[isSmallTitle && "h2 text-white", type === "light" ? "dark-100" : "dark-0"])!= title
         if description
             .banner-text__description.text-l(class=[type === "light" ? "dark-100" : "dark-0"])!= description
-    if button
-        if button.isModalTrigger && button.modalSelector
-            button.mt-7.w-100.w-sm-auto.btn.btn-secondary.btn-lg-lg.d-inline-block(type="button" data-bs-toggle="modal" data-bs-target=button.modalSelector)= button.text
-        else
-            a.mt-7.w-100.w-sm-auto.btn.btn-secondary.btn-lg-lg.d-inline-block(href=button.link)= button.text
+        if button
+            if button.isModalTrigger && button.modalSelector
+                button.mt-7.w-100.w-sm-auto.btn.btn-secondary.btn-lg-lg.d-inline-block(type="button" data-bs-toggle="modal" data-bs-target=button.modalSelector)= button.text
+            else
+                a.mt-7.w-100.w-sm-auto.btn.btn-secondary.btn-lg-lg.d-inline-block(href=button.link)= button.text
 
 mixin banner-text(data, borderColor, bgGradient='bg-linear-blue', patternType='section')
-    section.banner-text(class=[borderColor && `banner-text--border-${borderColor}`, `${bgGradient}`])&attributes(attributes)
+    section.banner-text(class=[borderColor && `border-${borderColor}`, `${bgGradient}`])&attributes(attributes)
         div.container.banner-text__container.position-relative.z-2
             .row.ps-lg-6
                 if data.imageSrc

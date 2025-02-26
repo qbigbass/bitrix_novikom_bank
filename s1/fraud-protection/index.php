@@ -65,8 +65,12 @@ $APPLICATION->IncludeComponent(
     ],
 );
 ?>
-<?$APPLICATION->IncludeFile('/local/php_interface/include/send_appeal.php')?>
-<?$APPLICATION->IncludeFile('/local/php_interface/include/important_information.php')?>
-<?$APPLICATION->IncludeFile('/local/php_interface/include/request_call.php')?>
+<? $APPLICATION->IncludeFile('/local/php_interface/include/send_appeal.php'); ?>
+<? $APPLICATION->IncludeFile('/local/php_interface/include/important_information.php'); ?>
+<? $APPLICATION->IncludeFile('/local/php_interface/include/request_call.php'); ?>
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_cross_sale_section.php'); ?>
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_news_section.php'); ?>
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_special_offers_section.php'); ?>
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_contacts_section.php'); ?>
 
 <?require($_SERVER['DOCUMENT_ROOT'].'/bitrix/footer.php');?>
