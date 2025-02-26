@@ -81,7 +81,7 @@ class DocumentHandler
         $filter = [
             'IBLOCK_ID' => $this->iblockId,
             'ACTIVE' => 'Y',
-            '=CODE' => $code,
+            'CODE' => $code,
         ];
 
         $select = ['PROPERTY_FILE'];
@@ -121,7 +121,7 @@ class DocumentHandler
         $sectionFilter = [
             'IBLOCK_ID' => $this->iblockId,
             'ACTIVE' => 'Y',
-            '=CODE' => $code,
+            'CODE' => $code,
         ];
 
         $section = CIBlockSection::GetList(
@@ -140,7 +140,7 @@ class DocumentHandler
             'IBLOCK_ID' => $this->iblockId,
             'ACTIVE' => 'Y',
             'ACTIVE_DATE' => 'Y',
-            '=SECTION_CODE' => $code,
+            'SECTION_CODE' => $code,
             '%CODE' => $code
         ];
 
