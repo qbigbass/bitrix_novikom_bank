@@ -4,7 +4,9 @@ const ELEMS_LOAN = {
     fullCost: '.js-calculator-display-full-cost',
     loanType: '.js-select-loan-type',
     inputLoanCard: '.js-inp-loan-card',
+    inputLoanCardWrapper: '.js-inp-loan-card-wrapper',
     selectLoanProperties: '.js-select-loan-properties',
+    selectLoanPropertiesWrapper: '.js-select-loan-properties-wrapper',
     selectLoanPaymentType: '.js-select-loan-payment-type',
     tableSchedule: '#payment-loan-table-body',
     loanName: ".js-program-name",
@@ -159,7 +161,7 @@ const setLoanValues = (STATE) => {
 }
 
 function findLoanData({data, type, strategicClient}) {
-    strategicClient = strategicClient ? 'Y' : null
+    strategicClient = strategicClient ? 'Y' : null;
     const resultType = data.filter(item => item.loanType === type);
     const result = resultType.find(item => item.strategicClient === strategicClient);
     if (result !== -1) {
@@ -170,24 +172,28 @@ function findLoanData({data, type, strategicClient}) {
 }
 
 function setStartValues(STATE) {
-    // TODO: возможно надо будет вернуть, утончить
-    // const startValueAmount = STATE.elements.inputAmountWrapper.getAttribute('data-start-value');
-    // const startValuePeriod = STATE.elements.inputPeriodWrapper.getAttribute('data-start-value');
-    // STATE.amount = startValueAmount ? Number(startValueAmount) : STATE.minAmount;
-    // STATE.period = startValuePeriod ? Number(startValuePeriod) : STATE.minPeriod;
-
     STATE.amount = STATE.minAmount;
     STATE.period = STATE.minPeriod;
 }
 
 const getLoanValues = (STATE) => {
+    const loanType = collectSelectOptions(STATE.calculatorData, 'loanType');
+    setSelectOptions('selectLoanProperties', loanType, STATE);
+    if (loanType.length <= 1) { // когда одна программа кредита
+        const selectProperties = STATE.elements.selectLoanProperties.closest(ELEMS_LOAN.selectLoanPropertiesWrapper);
+        const inputLoanCard = STATE.elements.inputLoanCard.closest(ELEMS_LOAN.inputLoanCardWrapper);
+        selectProperties.remove();
+        inputLoanCard.remove();
+        STATE.filteredData = STATE.calculatorData[0];
+    } else { // несколько программ кредита на Главной стр
+        STATE.filteredData = findLoanData({data: STATE.calculatorData, type: STATE.loanType, strategicClient: STATE.strategicClient});
+        STATE.strategicClient = !STATE.elements.inputLoanCard.checked;
+    }
+
     STATE.loanType = STATE.elements.selectLoanProperties.value;
     STATE.paymentType = STATE.elements.selectLoanPaymentType.value;
-    STATE.strategicClient = !STATE.elements.inputLoanCard.checked;
-    STATE.filteredData = findLoanData({data: STATE.calculatorData, type: STATE.loanType, strategicClient: STATE.strategicClient});
 
     if (!STATE.filteredData) {
-        console.error(`Не удалось найти данные по ${STATE.loanType}`)
         STATE.filteredData = STATE.calculatorData[0];
     }
 

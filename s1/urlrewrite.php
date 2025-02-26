@@ -1,7 +1,7 @@
 <?php
 $arUrlRewrite = [
     [
-        'CONDITION' => '#^/for-corporate-clients/mery-gospodderzhki/[a-z-]+/[a-z-]+/#',
+        'CONDITION' => '#^/for-corporate-clients/mery-gospodderzhki/[a-z-]+/[a-z-\d]+/#',
         'RULE' => '',
         'ID' => '',
         'PATH' => '/for-corporate-clients/financing_measures/detail.php',

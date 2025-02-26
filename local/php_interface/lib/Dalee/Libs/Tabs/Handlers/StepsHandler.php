@@ -25,12 +25,8 @@ class StepsHandler implements PropertyHandlerInterface
     private function getStepsHtml(): string
     {
         $result = '';
-        global $MAIN_SECTION;
-        $colorLine = "stepper-item--color-green";
-
-        if ($MAIN_SECTION === "msb") {
-            $colorLine = "stepper-item--color-yellow";
-        }
+        global $APPLICATION;
+        $stepperColor = $APPLICATION->GetProperty("stepperItemColor") ?: "stepper-item--color-green";
 
         foreach ($this->property['~VALUE'] as $index => $value) {
             $desc = '';
@@ -40,7 +36,7 @@ class StepsHandler implements PropertyHandlerInterface
             }
 
             $result .=
-                '<div class="stepper-item ' . $colorLine . '">
+                '<div class="stepper-item ' . $stepperColor . '">
                     <div class="stepper-item__header">
                         <div class="stepper-item__number">
                             <div class="stepper-item__number-value">' . $index + 1 . '</div>

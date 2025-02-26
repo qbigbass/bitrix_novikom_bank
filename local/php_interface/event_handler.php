@@ -35,6 +35,8 @@ $eventManager->addEventHandler("iblock", "OnAfterIBlockElementUpdate", [CacheHan
 
 $eventManager->addEventHandler('main', 'onMainGeoIpHandlersBuildList', [\Dalee\Handlers\SxGeoLocal::class, 'onMainGeoIpHandlersBuildListHandler']);
 
+$eventManager->addEventHandler('iblock', 'OnBeforeIBlockElementUpdate', [CIBEditComplexProp::class, 'checkTabPlaceholders']);
+
 // Сбрасываем тегированный кеш у связанных инфоблоков
 AddEventHandler('iblock', 'OnAfterIBlockElementAdd', [IblockHelper::class, 'onAfterIBlockElementUpdateHandler']);
 AddEventHandler('iblock', 'OnAfterIBlockElementUpdate', [IblockHelper::class, 'onAfterIBlockElementUpdateHandler']);

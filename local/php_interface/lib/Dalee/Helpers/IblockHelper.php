@@ -253,6 +253,7 @@ class IblockHelper
                 'IBLOCK_SECTION_ID' => false,
                 "ACTIVE" => "Y"
             ],
+            'order' => ['SORT' => 'ASC']
         ])->fetchAll();
 
         foreach ($elements as $element) {
@@ -289,5 +290,25 @@ class IblockHelper
         while ($row = $res->Fetch()) {
             $CACHE_MANAGER->ClearByTag('iblock_id_' . $row['LINK_IBLOCK_ID']);
         }
+    }
+
+    /**
+     * Получаем св-ва ИБ по кодам
+     *
+     * @param int $iblockID
+     * @param array $propCodes
+     * @return array
+     */
+    public static function getPropsByCode(int $iblockID, array $propCodes): array
+    {
+        $result = [];
+        $propRes = PropertyTable::getList([
+            'filter' => ['IBLOCK_ID' => $iblockID, 'CODE' => $propCodes, 'ACTIVE' => 'Y'],
+            'select' => ['ID','CODE','NAME','MULTIPLE','PROPERTY_TYPE','LIST_TYPE','USER_TYPE'],
+        ]);
+        while ($prop = $propRes->fetch()) {
+            $result[$prop['CODE']] = $prop;
+        }
+        return $result;
     }
 }

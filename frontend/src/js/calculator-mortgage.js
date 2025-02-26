@@ -65,7 +65,7 @@ function findMinPropertyValue(data) {
 
 function setInputSliderAttributes(STATE) {
     const minPropertyValue = findMinPropertyValue(STATE.filteredData[0]);
-    let maxAmountMortgage = STATE.filteredData[0].sumTo;
+    let maxAmountMortgage = findMaxAmount(STATE.filteredData[0], minPropertyValue);
 
     if (STATE.filteredData[0].minDownPayment === 0 || !STATE.filteredData[0].minDownPayment) {
         STATE.elements.inputInitialPaymentWrapper.classList.add(ELEMS_MORTGAGE.hideClass);
@@ -268,16 +268,6 @@ function handlerAmount(STATE, value) {
     STATE.isDispatchingEvent = false;
 }
 
-function findMinAmount(data, value) {
-    let minAmount;
-    if (data.sumFromPercent && data.sumFromPercent !== 0) {
-        minAmount = Math.round(value * (data.sumFromPercent / 100));
-    } else if (data.minDownPayment && data.minDownPayment !== 0) {
-        minAmount = Math.round(value * (data.minDownPayment / 100));
-    }
-    return (minAmount > data.sumTo) ? data.sumTo : minAmount;
-}
-
 function findMaxAmount(data, value) {
     let maxAmount;
     if (data.sumToPercent && data.sumToPercent !== 0) {
@@ -285,7 +275,8 @@ function findMaxAmount(data, value) {
     } else if (data.minDownPayment && data.minDownPayment !== 0) {
         maxAmount = Math.round(value - value * (data.minDownPayment / 100));
     }
-    return (maxAmount > data.sumTo) ? data.sumTo : maxAmount;
+    maxAmount = (maxAmount > data.sumTo) ? data.sumTo : maxAmount;
+    return (maxAmount < data.sumFrom) ? data.sumFrom : maxAmount;
 }
 
 function findMinInitialPayment(data, value, maxAmount) {
@@ -296,7 +287,7 @@ function findMinInitialPayment(data, value, maxAmount) {
 
 function handlerProperty(STATE, value) {
     STATE.property = value;
-    let minAmount = findMinAmount(STATE.filteredData[0], value);
+    let minAmount = STATE.filteredData[0].sumFrom;
     let maxAmount = findMaxAmount(STATE.filteredData[0], value);
     STATE.amount = minAmount;
 

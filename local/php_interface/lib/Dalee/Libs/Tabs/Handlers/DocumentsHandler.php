@@ -170,9 +170,11 @@ class DocumentsHandler implements PropertyHandlerInterface
 
         foreach ($elements as $element) {
             $timestampTo = MakeTimeStamp($element['PROPERTIES']['ACTIVE_TO']['VALUE'], 'DD.MM.YYYY');
-            if ($timestampTo < $timestampNow && !$archive) {
+            
+            if ($timestampTo > 0 && ($timestampTo < $timestampNow) && !$archive) {
                 continue;
             }
+
             $timestampFrom = MakeTimeStamp($element['PROPERTIES']['ACTIVE_FROM']['VALUE'], 'DD.MM.YYYY');
             $file = CFile::GetPath($element['PROPERTIES']['FILE']['VALUE']);
             $fileType = pathinfo($file, PATHINFO_EXTENSION);

@@ -64,7 +64,8 @@ $this->setFrameMode(true);
         "SHARE_SHORTEN_URL_LOGIN" => $arParams["SHARE_SHORTEN_URL_LOGIN"],
         "SHARE_SHORTEN_URL_KEY" => $arParams["SHARE_SHORTEN_URL_KEY"],
         "ADD_ELEMENT_CHAIN" => "Y",
-        'STRICT_SECTION_CHECK' => $arParams['STRICT_SECTION_CHECK'],
+        "STRICT_SECTION_CHECK" => $arParams['STRICT_SECTION_CHECK'],
+        "HEADER_COLOR_CLASS" => "banner-product banner-product--heavy-violet border-green", // Для всех детальных страниц ЧК
     ],
     $component
 );?>

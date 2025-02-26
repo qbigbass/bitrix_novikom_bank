@@ -337,5 +337,12 @@ $APPLICATION->IncludeComponent(
         "FORM_CODE" => "mortgage_form",
     ]
 ); ?>
+<?php $APPLICATION->IncludeComponent(
+    "dalee:form",
+    "express_guarantee_form",
+    [
+        "FORM_CODE" => "express_guarantee_form",
+    ]
+); ?>
 </body>
 </html>

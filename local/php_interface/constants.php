@@ -8,6 +8,30 @@ const NASH_STORE_APP_LINK = 'https://store.nashstore.ru/store/65b74fde0a39b29c04
 const TELEGRAM_LINK = 'https://t.me/novikombank_official';
 const ENGLISH_VERSION_LINK = 'en/';
 const RUSSIAN_VERSION_LINK = '/';
+/** @var array Инфоблоки для постороения меню (шаблон corporate_submenu_header) */
+const MENU_IBLOCKS = [
+    'for-corporate-clients' => 150,
+    'msb' => 206,
+    'financial-institutions' => 208,
+];
+/** @var array Соответствие плейсхолдеров и кодов свойств */
+const TABS_PLACEHOLDERS_MATCH = [
+    '#CONDITIONS#' => 'CONDITIONS',
+    '#DOCUMENTS#' => 'DOCUMENTS',
+    '#RATES_DESCRIPTION#' => 'RATES_DESCRIPTION',
+    '#ACCORDION#' => 'ACCORDION',
+    '#TEST_EXCEPTION#' => 'TEST_EXCEPTION',
+    '#CALCULATOR#' => 'CALCULATOR',
+    '#ICONS_WITH_DESCRIPTION#' => 'ICONS_WITH_DESCRIPTION',
+    '#STEPS#' => 'STEPS',
+    '#HTML#' => 'HTML',
+    '#ICON_SHORT_INFO#' => 'ICON_SHORT_INFO',
+    '#QUOTES#' => 'QUOTES',
+    '#QUESTIONS#' => 'QUESTIONS',
+    '#BENEFITS#' => 'BENEFITS',
+    '#TARIFFS#' => 'TARIFFS',
+];
+
 
 /** @var float Ключевая ставка % */
 const UF_KEY_RATE = 18;

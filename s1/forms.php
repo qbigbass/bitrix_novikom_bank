@@ -21,6 +21,7 @@ $APPLICATION->SetTitle('Формы');
                 <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#modal-vacancy-form">Заявка на вакансию</button>
                 <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#modal-fraud-form">Отправить обращение о мошенничестве</button>
                 <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#modal-state-support-form">Заявка на господдержку</button>
+                <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#modal-express-guarantee-form">Заявка на экспресс-гарантию</button>
             </div>
         </div>
     </div>
@@ -95,6 +96,14 @@ $APPLICATION->SetTitle('Формы');
     "state_support_form",
     [
         "FORM_CODE" => "state_support_form",
+    ]
+); ?>
+
+<?php $APPLICATION->IncludeComponent(
+    "dalee:form",
+    "express_guarantee_form",
+    [
+        "FORM_CODE" => "express_guarantee_form",
     ]
 ); ?>
 

@@ -1,0 +1,203 @@
+include ../../../components/forms/form-step
+include ../../../components/forms/upload-file
+include ../../../components/forms/input
+include ../../../components/forms/captcha
+include ../../../components/forms/confirm
+include ../../../components/forms/radio
+include ../../../components/forms/textarea
+
+-
+    var expressGuaranteeForm = {
+        formName: "express-guarantee",
+        step1: {
+            inputs: [
+                {
+                    id: "organization",
+                    name: "ORGANIZATION",
+                    label: "Наименование организации",
+                    placeholder: "Введите наименование",
+                    required: true,
+                },
+                {
+                    id: "inn",
+                    name: "INN",
+                    label: "ИНН",
+                    placeholder: "Укажите ИНН",
+                    required: true,
+                }
+            ],
+            inputsContact: [
+                {
+                    id: "contact-name",
+                    label: "ФИО",
+                    placeholder: "Введите ФИО",
+                    required: true,
+                },
+                {
+                    id: "phone",
+                    label: "Номер телефона",
+                    placeholder: "+7",
+                    type: "tel",
+                    required: false,
+                    mask: "phone",
+                    pattern: "\\+7\\s\\(\\d{3}\\)\\s\\d{3}-\\d{2}-\\d{2}",
+                    errorMessage: "Неверный формат",
+                    required: true,
+                },
+                {
+                    id: "e-mail",
+                    label: "E-mail",
+                    placeholder: "Введите e-mail",
+                    type: "email",
+                    required: true,
+                    pattern: "[a-zA-Z0-9._%\\+\\-]+@[a-zA-Z0-9.\\-]+\\.[a-zA-Z]{2,}",
+                    errorMessage: "Введите корректный адрес электронной почты",
+                },
+            ],
+        },
+        step2: {
+            inputs: [
+                {
+                    id: "guarantee-amount",
+                    label: "Сумма гарантии",
+                    placeholder: "Сумма",
+                    groupText: "₽",
+                    mask: "money",
+                    required: true,
+                },
+                {
+                    id: "advance-amount",
+                    label: "Сумма аванса",
+                    placeholder: "Сумма",
+                    groupText: "₽",
+                    mask: "money",
+                },
+            ],
+            radios1: [
+                {
+                    id: "44-fz",
+                    name: "fz",
+                    value: "true",
+                    text: "44-ФЗ"
+                },
+                {
+                    id: "223-fz",
+                    name: "fz",
+                    value: "false",
+                    text: "223-ФЗ"
+                },
+                {
+                    id: "epoz-commercial",
+                    name: "fz",
+                    value: "false",
+                    text: "ЕПОЗ (коммерческая)"
+                },
+            ],
+            radios2: [
+                {
+                    id: "provided",
+                    name: "advance",
+                    value: "true",
+                    text: "Предусмотрен"
+                },
+                {
+                    id: "not-provided",
+                    name: "advance",
+                    value: "false",
+                    text: "Не предусмотрен"
+                },
+            ],
+            radios3: [
+                {
+                    id: "signed",
+                    name: "contract",
+                    value: "true",
+                    text: "Да"
+                },
+                {
+                    id: "not-signed",
+                    name: "contract",
+                    value: "false",
+                    text: "Нет"
+                },
+            ],
+        }
+    }
+
+form(action="/" method="POST" novalidate id="state-support-form" data-form data-form-feedback).application-form
+    .application-form__step(data-form-step data-form-validate-group)
+        - var step1 = expressGuaranteeForm.step1;
+        .row.g-1.g-md-2.g-lg-2_5
+            .application-form__col.col-12
+                +form-step({
+                    current: "1",
+                    total: "2",
+                    text: "Об организации"
+                })
+            each item in step1.inputs
+                .application-form__col.col-12.col-md-6(hidden= item.hidden)
+                    +input(item, expressGuaranteeForm.formName)
+
+        .row.g-1.g-md-2.gy-lg-1.gx-lg-2_5.mt-2
+            legend.text-m.fw-semibold.dark-100.mb-0 Контактное лицо
+            each item in step1.inputsContact
+                .application-form__col.col-12(class= item.id !== "contact-name" ? "col-md-6": "" hidden= item.hidden)
+                    +input(item, expressGuaranteeForm.formName)
+
+        .d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-5.column-gap-lg-6.mt-6.mt-lg-7.px-md-2.px-lg-0
+            button.btn.btn-primary.btn-lg-lg.w-100.w-md-auto(type="button" disabled aria-disabled="true" data-form-button data-form-step-button-next) Продолжить
+            div.text-m.orange-100.text-center(data-form-error)
+    .application-form__step(data-form-step data-form-validate-group hidden)
+        - var step2 = expressGuaranteeForm.step2;
+        .row.g-1.g-md-2.g-lg-2_5
+            .application-form__col.col-12
+                +form-step({
+                    current: "2",
+                    total: "2",
+                    text: "Параметры гарантии"
+                })
+            .application-form__col.col-12
+                +input(step2.inputs[0], expressGuaranteeForm.formName)
+            .application-form__col.col-12
+                fieldset
+                    legend.form-label.mb-3 ФЗ
+                        span.orange-100.ms-1 *
+                    .d-flex.flex-wrap.row-gap-3.row-gap-lg-4.column-gap-6.column-gap-md-5.column-gap-lg-6
+                        each item, index in expressGuaranteeForm.step2.radios1
+                            +radio(item, index, expressGuaranteeForm.formName)
+
+            .application-form__col.col-12
+                fieldset
+                    legend.form-label.mb-3 Аванс по&nbsp;контракту
+                        span.orange-100.ms-1 *
+                    .d-flex.flex-wrap.row-gap-3.row-gap-lg-4.column-gap-6.column-gap-md-5.column-gap-lg-6
+                        each item, index in expressGuaranteeForm.step2.radios2
+                            +radio(item, index, expressGuaranteeForm.formName)
+
+            .application-form__col.col-12.col-md-6
+                +input(step2.inputs[1], expressGuaranteeForm.formName)
+
+            .application-form__col.col-12
+                fieldset
+                    legend.form-label.mb-3 Контракт уже заключен?
+                        span.orange-100.ms-1 *
+                    .d-flex.flex-wrap.row-gap-3.row-gap-lg-4.column-gap-6.column-gap-md-5.column-gap-lg-6
+                        each item, index in expressGuaranteeForm.step2.radios3
+                            +radio(item, index, expressGuaranteeForm.formName)
+
+            .application-form__col.col-12
+                +captcha(expressGuaranteeForm.formName)
+            .application-form__col.col-12
+                +confirm(expressGuaranteeForm.formName)
+        .d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-5.column-gap-lg-6.mt-6.mt-lg-7.px-md-2.px-lg-0
+            button.btn.btn-primary.btn-lg-lg.w-100.w-md-auto(type="submit" disabled aria-disabled="true" data-form-button) Отправить заявку
+            button.btn.btn-outline-primary.btn-lg-lg.w-100.w-md-auto(type="button" data-form-step-button-prev) Назад
+            div.text-m.orange-100.text-center(data-form-error)
+    div(
+        hidden
+        aria-hidden="true"
+        data-success-title="Ваше обращение успешно отправлено!"
+        data-success-info="Мы ответим на ваше обращение, по выбранному способу связи, как только получим и обработаем его"
+        data-error-title="Не удалось отправить обращение"
+        data-error-info="Проверьте правильно ли указаны все данные и отправьте обращение снова"
+    ).js-message
