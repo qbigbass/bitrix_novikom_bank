@@ -161,12 +161,11 @@
                                 </div>
                                 <div class="d-flex flex-column row-gap-2"><span
                                         class="card-calculate-result__label text-s">Процентная ставка</span><span
-                                        class="text-number-ml fw-bold text-nowrap js-calculator-display-rate">21 %</span>
+                                        class="text-number-ml fw-bold text-nowrap js-calculator-display-rate"></span>
                                 </div>
                                 <div class="d-flex flex-column row-gap-2"><span
                                         class="card-calculate-result__label text-s">Ваш доход составит</span><span
-                                        class="text-number-ml fw-bold text-nowrap js-calculator-display-income">6 238&nbsp;<span
-                                            class="currency">₽</span></span></div>
+                                        class="text-number-ml fw-bold text-nowrap js-calculator-display-income"></span></div>
                             </div>
                             <div class="card-calculate-result__footer">
                                 <button class="btn btn-primary btn-lg-lg w-100" type="button">

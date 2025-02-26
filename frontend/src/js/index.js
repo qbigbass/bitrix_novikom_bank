@@ -379,6 +379,18 @@ function setSelectOptions(select, options, STATE) {
     });
 }
 
+function createNewInputSlider(inputSlider, dataAttr) {
+    const cloneInputSlider = inputSlider.cloneNode(true);
+    Object.entries(dataAttr).forEach(([key, value]) => {
+        cloneInputSlider.dataset[key] = value;
+    })
+    cloneInputSlider.querySelector(JS_CLASSES.textSteps).textContent = '';
+    cloneInputSlider.querySelector(ELEMS_MORTGAGE.inputSliderRange).style = '';
+    initInputSlider([cloneInputSlider]);
+    inputSlider.replaceWith(cloneInputSlider);
+    return cloneInputSlider;
+}
+
 const URL = '/local/php_interface/ajax/calc.php';
 
 function getRates({table = null, id = null, name = null}) {

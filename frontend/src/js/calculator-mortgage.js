@@ -208,18 +208,6 @@ function getMortgageBorrower(dataArray, STATE) {
     );
 }
 
-function createNewInputSlider(inputSlider, dataAttr) {
-    const cloneInputSlider = inputSlider.cloneNode(true);
-    Object.entries(dataAttr).forEach(([key, value]) => {
-        cloneInputSlider.dataset[key] = value;
-    })
-    cloneInputSlider.querySelector(JS_CLASSES.textSteps).textContent = '';
-    cloneInputSlider.querySelector(ELEMS_MORTGAGE.inputSliderRange).style = '';
-    initInputSlider([cloneInputSlider]);
-    inputSlider.replaceWith(cloneInputSlider);
-    return cloneInputSlider;
-}
-
 function handlerInitialPayment(STATE, value) {
     if (STATE.isDispatchingEvent) return;
     STATE.isDispatchingEvent = true;
