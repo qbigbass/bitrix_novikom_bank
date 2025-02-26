@@ -61,7 +61,7 @@ if ($idRelationSection > 0) {
         ],
         "VARIABLES" => [
             "ELEMENT_CODE" => $elementCode,
-            "ELEMENT_ID" => "",
+            "ELEMENT_ID" => $idRelationSection,
             "SECTION_ID" => "",
             "SECTION_CODE" => "",
         ],
