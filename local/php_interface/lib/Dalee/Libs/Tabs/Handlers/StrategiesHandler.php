@@ -12,7 +12,7 @@ class StrategiesHandler implements PropertyHandlerInterface
         $this->property = $property;
     }
 
-    public function render(string $template = ''): string
+    public function render(): string
     {
         $GLOBALS['strategiesFilter'] = [
             'ACTIVE' => 'Y',
