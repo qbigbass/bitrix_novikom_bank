@@ -306,7 +306,10 @@ class DocumentsHandler implements PropertyHandlerInterface
     private function getElements(array $sectionIds): array
     {
         return IblockHelper::getElementsWithProperties(
-            ['SORT' => 'ASC'],
+            [
+                'SORT' => 'ASC',
+                'DATE_ACTIVE_FROM' => 'DESC',
+            ],
             [
                 'IBLOCK_SECTION_ID' => $sectionIds,
                 'IBLOCK_ID' => $this->iblockId,
