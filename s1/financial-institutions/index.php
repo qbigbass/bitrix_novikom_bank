@@ -119,6 +119,8 @@ $APPLICATION->IncludeComponent(
 );
 ?>
 
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_ads_customers.php'); ?>
+
 <?$APPLICATION->IncludeFile('/local/php_interface/include/block_cross_sale.php',
     [
         'HEADER_TEXT' => 'Другие услуги для финансовых институтов',

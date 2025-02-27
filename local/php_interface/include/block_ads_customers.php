@@ -1,30 +1,12 @@
 <?php
-/** @var array $arParams */
-/** @global CMain $APPLICATION */
-
-use Bitrix\Iblock\Model\Section;
-
-/*
- * Блок "Объявления для клиентов" на странице раздела
- */
 global $APPLICATION;
-$sectionCode = $GLOBALS["PARENT_SECTION_CODE"] ?: 'for-private-clients';
+$elementIds = getElementIdsIncludedArea(iblock('ads_for_customers_ru'));
 
-$adsFilter = [
-    "!UF_SHOW_ADS_SECTION" => false,
-    "ACTIVE" => "Y",
-    "CODE" => $sectionCode
-];
-
-$iblock = iblock('ads_for_customers_ru');
-$entity = Section::compileEntityByIblock($iblock);
-$rsSections = $entity::getList([
-    "select" => ["ID"],
-    "filter" => $adsFilter,
-    "order" => ["SORT" => "ASC"],
-])->fetchAll();
-
-if (!empty($rsSections)) {
+if (!empty($elementIds)) {
+    global $adsFilter;
+    $adsFilter = [
+        "ID" => $elementIds
+    ];
     $APPLICATION->IncludeComponent(
         "bitrix:news.list",
         "customer_announcements",
@@ -45,7 +27,7 @@ if (!empty($rsSections)) {
             "DISPLAY_BOTTOM_PAGER" => "N",
             "DISPLAY_TOP_PAGER" => "N",
             "FIELD_CODE" => ["CODE","NAME","PREVIEW_TEXT","PREVIEW_PICTURE",""],
-            "FILTER_NAME" => "",
+            "FILTER_NAME" => "adsFilter",
             "HIDE_LINK_WHEN_NO_DETAIL" => "N",
             "IBLOCK_ID" => iblock('ads_for_customers_ru'),
             "IBLOCK_TYPE" => "support",
@@ -61,7 +43,7 @@ if (!empty($rsSections)) {
             "PAGER_TEMPLATE" => ".default",
             "PAGER_TITLE" => "Новости",
             "PARENT_SECTION" => "",
-            "PARENT_SECTION_CODE" => $sectionCode,
+            "PARENT_SECTION_CODE" => "",
             "PREVIEW_TRUNCATE_LEN" => "",
             "PROPERTY_CODE" => [""],
             "SET_BROWSER_TITLE" => "N",

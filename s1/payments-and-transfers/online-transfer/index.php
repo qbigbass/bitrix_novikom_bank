@@ -57,6 +57,8 @@ $APPLICATION->SetTitle("Моментальный онлайн-перевод");
     ],
 );?>
 
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_ads_customers.php'); ?>
+
 <? $APPLICATION->IncludeFile('/local/php_interface/include/block_cross_sale.php'); ?>
 
 <? $APPLICATION->IncludeFile('/local/php_interface/include/block_special_offers.php'); ?>
