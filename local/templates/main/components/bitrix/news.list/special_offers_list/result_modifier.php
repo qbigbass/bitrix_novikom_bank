@@ -1,4 +1,7 @@
-<?php
+<? if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
+/** @var array $arParams */
+/** @var array $arResult */
+
 use Bitrix\Iblock\Iblock;
 
 $chunkSize = $arParams['NEWS_COUNT'];
@@ -75,7 +78,18 @@ if (!empty($items)) {
         $item['DELETE_LINK'] = CIBlock::GetPanelButtons($item["IBLOCK_ID"], $item["ID"], 0, ["SECTION_BUTTONS" => false, "SESSID" => false])["edit"]["delete_element"]["ACTION_URL"];
 
         if (!empty($item['PREVIEW_PICTURE'])) {
-            $item['PREVIEW_PICTURE'] = ['SRC' => CFile::GetPath($item['PREVIEW_PICTURE'])];
+            $renderImage = CFile::ResizeImageGet(
+                $item['PREVIEW_PICTURE'],
+                [
+                    "width" => 523,
+                    "height" => 240
+                ],
+                BX_RESIZE_IMAGE_PROPORTIONAL_ALT
+            );
+
+            if ($renderImage["src"]) {
+                $item["PICTURE"] = $renderImage["src"];
+            }
         }
         if (!empty($item['TAG_PROP'])) {
             $item['PROPERTIES']['TAG']['VALUE'] = $item['TAG_PROP'];
@@ -103,3 +117,4 @@ if (!empty($items)) {
 } else {
     $arResult['ITEMS'] = [];
 }
+

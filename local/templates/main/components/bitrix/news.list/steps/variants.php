@@ -4,8 +4,8 @@
 
 global $APPLICATION;
 $stepperColor = $APPLICATION->GetProperty("stepperItemColor") ?: "stepper-item--color-orange";
-?>
-<? if (!empty($arResult['SECTIONS'])) : ?>
+
+if (!empty($arResult['SECTIONS'])) : ?>
     <? foreach ($arResult['SECTIONS'] as $key => $section) : ?>
         <div class="row row-gap-6">
             <? if (!empty($arParams['STEPS_HEADER'])) : ?>
