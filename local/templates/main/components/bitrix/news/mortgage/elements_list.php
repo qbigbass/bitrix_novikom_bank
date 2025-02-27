@@ -25,9 +25,7 @@ $headerView->render(
 );
 ?>
 
-
 <section class="section-catalog d-flex flex-column gap-7 py-6 py-sm-9 py-md-11" id="catalog-tabs">
-
     <!-- Табы -->
     <section class="section-catalog__tabs">
         <div class="container">
@@ -59,7 +57,6 @@ $headerView->render(
             </div>
         </div>
     </section>
-
     <!-- Список элементов -->
     <section class="section-catalog__list">
         <div class="container">
@@ -127,21 +124,8 @@ $headerView->render(
             </div>
         </div>
     </section>
-
 </section>
 
-<? $APPLICATION->IncludeFile('/local/php_interface/include/block_cross_sale_section.php',
-    [
-        'HEADER_TEXT' => 'Смотрите также'
-    ]
-); ?>
-
 <? $APPLICATION->IncludeFile('/local/php_interface/include/request_call.php'); ?>
-
-<? $APPLICATION->IncludeFile('/local/php_interface/include/block_news_section.php'); ?>
-
-<? $APPLICATION->IncludeFile('/local/php_interface/include/block_special_offers_section.php'); ?>
-
-<? $APPLICATION->IncludeFile('/local/php_interface/include/block_contacts_section.php'); ?>
 
 <? $helper->saveCache(); ?>

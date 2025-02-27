@@ -16,7 +16,7 @@ $blockId = ($Iblock = $IblockRes->fetch()) ? $Iblock['ID'] : '';
 <?$APPLICATION->IncludeComponent(
     "bitrix:news",
     "services",
-    Array(
+    [
         "ADD_ELEMENT_CHAIN" => "N",
         "ADD_SECTIONS_CHAIN" => "N",
         "AJAX_MODE" => "N",
@@ -109,7 +109,9 @@ $blockId = ($Iblock = $IblockRes->fetch()) ? $Iblock['ID'] : '';
         "USE_RSS" => "N",
         "USE_SEARCH" => "N",
         "USE_SHARE" => "N"
-    )
+    ]
 );?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_contacts.php'); ?>
 
 <?require($_SERVER['DOCUMENT_ROOT'].'/bitrix/footer.php');?>

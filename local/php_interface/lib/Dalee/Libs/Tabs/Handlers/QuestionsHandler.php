@@ -8,6 +8,10 @@ use Dalee\Libs\Tabs\Interfaces\PropertyHandlerInterface;
 class QuestionsHandler implements PropertyHandlerInterface
 {
     private array $property;
+    /** @var array Элемент ИБ Вкладок*/
+    private array $element;
+    /** @var string Ссылка на все вопросы */
+    private string $qaLinlk;
 
     public function __construct(array $property)
     {
@@ -29,13 +33,19 @@ class QuestionsHandler implements PropertyHandlerInterface
         <div class="col-12 col-xxl-8">
             <div class="accordion" id="accordion-<?= $this->property['ID'] ?>">
                 <?= $this->getQuestionsHtml() ?>
-                <a class="btn btn-link btn-lg-lg d-inline-flex gap-2 align-items-center mt-4 mt-md-6 section-custom-accordion__button-more"
-                    href="/support/questions_and_answers/<?= $parent ?>/<?= !empty($current) && $current != $parent ? $current . '/' : '' ?>">
-                    <span class="text-m">Все вопросы и ответы</span>
-                    <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right-small"></use>
-                    </svg>
-                </a>
+                <?
+                if($this->qaLinlk){
+                    ?>
+                    <a class="btn btn-link btn-lg-lg d-inline-flex gap-2 align-items-center mt-4 mt-md-6 section-custom-accordion__button-more"
+                        href="<?=$this->qaLinlk?>#links">
+                        <span class="text-m">Все вопросы и ответы</span>
+                        <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                            <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right-small"></use>
+                        </svg>
+                    </a>
+                    <?
+                }
+                ?>
             </div>
         </div>
         <? if (empty($params['isAccordion'])) { ?>

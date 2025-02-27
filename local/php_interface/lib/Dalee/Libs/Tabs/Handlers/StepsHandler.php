@@ -2,61 +2,35 @@
 namespace Dalee\Libs\Tabs\Handlers;
 
 use Dalee\Libs\Tabs\Interfaces\PropertyHandlerInterface;
+use Dalee\Helpers\ComponentRenderer\Renderer;
 
 class StepsHandler implements PropertyHandlerInterface
 {
     private array $property;
+    private ?array $element;
 
-    public function __construct(array $property)
+    public function __construct(array $property, ?int $elementId = null, ?array $element = null, array $params = [])
     {
         $this->property = $property;
+        $this->element = $element;
     }
 
     public function render(): string
     {
-        return
-            '<div class="row row-gap-6 mb-6 mb-md-9 mb-lg-11">
-                <div class="stepper steps-2">'
-                    . $this->getStepsHtml() .
-                '</div>
-            </div>';
-    }
-
-    private function getStepsHtml(): string
-    {
-        $result = '';
-        global $MAIN_SECTION;
-        $colorLine = "stepper-item--color-green";
-
-        if ($MAIN_SECTION === "msb") {
-            $colorLine = "stepper-item--color-yellow";
+        global $APPLICATION;
+        if (empty($APPLICATION->GetProperty("stepperItemColor"))) {
+            $APPLICATION->SetPageProperty("stepperItemColor", 'stepper-item--color-green');
         }
+        $renderer = new Renderer($APPLICATION);
 
-        foreach ($this->property['~VALUE'] as $index => $value) {
-            $desc = '';
+        ob_start();
 
-            if (!empty($this->property['~DESCRIPTION'][$index])) {
-                $desc = '<p class="text-l mb-0">' . $this->property['~DESCRIPTION'][$index] . '</p>';
-            }
+        $renderer->render('Steps', null, null, [
+            'parentSection' => $this->property['VALUE'],
+            'stepsHeader' => $this->element['PROPERTIES']['STEPS_HEADER']['~VALUE'] ?? 'Этапы',
+            'stepsTemplate' => 'variants',
+        ]);
 
-            $result .=
-                '<div class="stepper-item ' . $colorLine . '">
-                    <div class="stepper-item__header">
-                        <div class="stepper-item__number">
-                            <div class="stepper-item__number-value">' . $index + 1 . '</div>
-                            <div class="stepper-item__number-icon">'
-                                . getStepperIcons($index) .
-                            '</div>
-                        </div>
-                        <div class="stepper-item__arrow"></div>
-                    </div>
-                    <div class="stepper-item__content">
-                        <p class="text-l mb-0">' . $value['TEXT'] . '</p>
-                        ' . $desc . '
-                    </div>
-                </div>';
-        }
-
-        return $result;
+        return ob_get_clean();
     }
 }

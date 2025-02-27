@@ -1,8 +1,4 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 use Bitrix\Main\Context;
 
 require($_SERVER['DOCUMENT_ROOT'].'/bitrix/header.php');
@@ -141,5 +137,8 @@ $APPLICATION->IncludeComponent(
 );
 ?>
 
-<?$APPLICATION->IncludeFile('/local/php_interface/include/request_call.php')?>
+<? $APPLICATION->IncludeFile('/local/php_interface/include/request_call.php'); ?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_contacts.php'); ?>
+
 <?require($_SERVER['DOCUMENT_ROOT'].'/bitrix/footer.php');?>

@@ -3,6 +3,7 @@ require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 global $APPLICATION;
 $APPLICATION->SetTitle('Пресс-центр');
 ?>
+
 <? $APPLICATION->IncludeComponent(
     "bitrix:news",
     "press_center",
@@ -104,4 +105,7 @@ $APPLICATION->SetTitle('Пресс-центр');
     ],
     false
 ); ?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_contacts.php'); ?>
+
 <? require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php'); ?>

@@ -3,6 +3,7 @@ require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 global $APPLICATION;
 $APPLICATION->SetTitle("Объявления для клиентов");
 ?>
+
 <?
 $APPLICATION->IncludeComponent(
     "bitrix:news",
@@ -98,7 +99,12 @@ $APPLICATION->IncludeComponent(
     ],
     false
 ); ?>
+
 <?$APPLICATION->IncludeFile('/local/php_interface/include/financial_literacy.php')?>
+
 <?$APPLICATION->IncludeFile('/local/php_interface/include/request_call.php')?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_contacts.php'); ?>
+
 <? require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php'); ?>
 

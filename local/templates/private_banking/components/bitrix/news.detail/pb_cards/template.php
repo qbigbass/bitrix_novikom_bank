@@ -24,71 +24,8 @@ $model = [
 ];
 
 ?>
-<section class="pb-section-hero">
-    <header class="pb-header animate js-animation-start" id="header">
-        <div class="container">
-            <div class="d-flex justify-content-between">
-                <div class="col-8">
-                    <a class="d-none d-lg-block" href="/private-banking/"><img src="/frontend/dist/img/logo-pb.svg" width="280" height="80" alt="Новиком"></a>
-                    <a class="d-lg-none" href="/private-banking/"><img src="/frontend/dist/img/logo-pb-mob.svg" width="140" height="40" alt="Новиком"></a>
-                </div>
-                <div class="col-4 d-flex align-items-center justify-content-end gap-4">
-                    <button class="d-none d-lg-block btn btn-pb btn-pb--primary btn-pb--size-m" type="button" data-bs-toggle="modal" data-bs-target="#modal-become-client" aria-label="Стать клиентом">Стать клиентом</button>
-                    <button class="pb-menu-btn js-pb-menu-btn" type="button"><span class="pb-menu-btn__icon"><span></span><span></span><span></span><span></span><span></span><span></span></span></button>
-                </div>
-            </div>
-        </div>
-    </header>
-    <div class="pb-overlay js-pb-nav-menu d-none">
-        <div class="pb-main-nav">
-            <div class="pb-main-nav__wrapper container d-flex flex-column">
-                <nav class="pb-nav d-flex flex-column align-items-center row-gap-4 row-gap-lg-6">
-                    <a class="pb-nav__link" href="/private-banking/">Главная</a>
-                    <a class="pb-nav__link" href="/private-banking/services/investment/brokerskoe-obsluzhivanie/">Инвестиционные услуги</a>
-                    <a class="pb-nav__link" href="/private-banking/cards/mir-supreme-card/">Карта Мир Supreme</a>
-                    <a class="btn btn-pb btn-pb--outline d-none d-lg-inline-block" href="<?= $model['online_bank_url'] ?>">Онлайн-банк</a>
-                </nav>
-                <div class="text-center d-lg-none">
-                    <button class="btn btn-pb btn-pb--primary" type="button" data-bs-toggle="modal" data-bs-target="#modal-become-client" aria-label="Стать клиентом">Стать клиентом</button>
-                </div>
-                <div class="mt-auto pt-7 pt-lg-0">
-                    <div class="pb-card-contact d-flex flex-column row-gap-4 row-gap-lg-5 align-items-lg-center">
-                        <ul class="list-pb-contact d-flex flex-column flex-lg-row justify-content-xl-between flex-wrap gap-4">
-                            <li class="d-flex align-items-center">
-                                <span class="icon size-m flex-shrink-0 dark-0">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-phone"></use>
-                                    </svg>
-                                </span>
-                                <a class="list-pb-contact__link" href="tel:<?= preg_replace('/[^\d\+]/', '', $model['contact_phone']); ?>">
-                                    <?= $model['contact_phone'] ?>
-                                </a>
-                            </li>
-                            <li class="d-flex align-items-center">
-                                <span class="icon size-m flex-shrink-0 dark-0">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-mail"></use>
-                                    </svg>
-                                </span>
-                                <a class="list-pb-contact__link" href="emailto:<?= $model['contact_email'] ?>">
-                                    <?= $model['contact_email'] ?>
-                                </a>
-                            </li>
-                            <li class="d-flex align-items-center">
-                                <span class="icon size-m flex-shrink-0 dark-0">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-bank"></use>
-                                    </svg>
-                                </span>
-                                <span><?= $model['contact_address'] ?></span>
-                            </li>
-                        </ul>
-                        <a class="btn btn-pb btn-pb--outline" href="/">Основной сайт Новиком</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
+<?$this->SetViewTarget('PB_HEADER');?>
     <div class="container">
         <?php if (!empty($arResult['NAME'])) : ?>
             <h3 class="pb-section__title dark-0 text-center my-4 my-md-6 mt-lg-0 animate js-animation"><?= $arResult['NAME'] ?></h3>
@@ -166,7 +103,8 @@ $model = [
         </div>
     </div>
     <div class="pb-section-hero__overlay pb-section-hero__overlay--size-small"></div>
-</section>
+<?$this->EndViewTarget();?>
+
 <section class="pb-section pb-section--gradient-raial">
     <div class="container">
         <div class="d-flex flex-column row-gap-6">

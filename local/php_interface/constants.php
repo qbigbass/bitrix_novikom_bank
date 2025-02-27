@@ -14,6 +14,24 @@ const MENU_IBLOCKS = [
     'msb' => 206,
     'financial-institutions' => 208,
 ];
+/** @var array Соответствие плейсхолдеров и кодов свойств */
+const TABS_PLACEHOLDERS_MATCH = [
+    '#CONDITIONS#' => 'CONDITIONS',
+    '#DOCUMENTS#' => 'DOCUMENTS',
+    '#RATES_DESCRIPTION#' => 'RATES_DESCRIPTION',
+    '#ACCORDION#' => 'ACCORDION',
+    '#TEST_EXCEPTION#' => 'TEST_EXCEPTION',
+    '#CALCULATOR#' => 'CALCULATOR',
+    '#ICONS_WITH_DESCRIPTION#' => 'ICONS_WITH_DESCRIPTION',
+    '#STEPS#' => 'STEPS',
+    //'#HTML#' => 'HTML',
+    '#ICON_SHORT_INFO#' => 'ICON_SHORT_INFO',
+    '#QUOTES#' => 'QUOTES',
+    '#QUESTIONS#' => 'QUESTIONS',
+    '#BENEFITS#' => 'BENEFITS',
+    '#TARIFFS#' => 'TARIFFS',
+];
+
 
 /** @var float Ключевая ставка % */
 const UF_KEY_RATE = 18;
@@ -35,3 +53,16 @@ const UF_PHONE1 = '+7 (800) 250-70-07';
 const UF_PHONE2 = '+7 (495) 974-71-87';
 /** @var string Длительность отображения слайда на главной слайдере */
 const UF_BANNER_DELAY = 5000;
+/** @var string Копирайт в футере Private Banking */
+const UF_PB_CPYRIGHT = 'Генеральная лицензия № 2546 от 20 ноября 2014 года<br>© 2009 – #DATE# АО АКБ «НОВИКОМБАНК»';
+/** @var string Адрес в футере Private Banking */
+const UF_PB_FULL_ADDRESS = 'Москва, ул. Усачева, д. 24';
+/** @var string Второй адрес в футере Private Banking */
+const UF_PB_FULL_ADDRESS2 = 'Москва, Якиманская наб. д. 2';
+/** @var string Email Private Banking */
+const UF_PB_EMAIL = 'vip@novikom.ru';
+/** @var string Картинка с QR Private Banking */
+const UF_PB_QR_IMAGE = '/frontend/dist/img/pb-images/pb-contact-qr.png';
+/** @var string Картинка с картой Private Banking */
+const UF_PB_MAP_IMAGE = '/frontend/dist/img/pb-images/pb-contact-map.png';
+

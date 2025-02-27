@@ -124,9 +124,7 @@ $headerView->render(
                 <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-down"></use>
             </svg>
         </a>
-
         <? $renderer->render('Tabs', null, 'cards'); ?>
-
     </div>
     <picture class="pattern-bg pattern-bg--hide-mobile">
         <source srcset="/frontend/dist/img/patterns/section-2/pattern-light-s.svg" media="(max-width: 767px)">
@@ -135,14 +133,6 @@ $headerView->render(
     </picture>
 </section>
 
-<? $APPLICATION->IncludeFile('/local/php_interface/include/block_cross_sale_section.php'); ?>
-
 <? $APPLICATION->IncludeFile('/local/php_interface/include/request_call.php'); ?>
-
-<? $APPLICATION->IncludeFile('/local/php_interface/include/block_news_section.php'); ?>
-
-<? $APPLICATION->IncludeFile('/local/php_interface/include/block_special_offers_section.php'); ?>
-
-<? $APPLICATION->IncludeFile('/local/php_interface/include/block_contacts_section.php'); ?>
 
 <? $helper->saveCache(); ?>
