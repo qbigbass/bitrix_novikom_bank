@@ -2,10 +2,12 @@
 require($_SERVER['DOCUMENT_ROOT'].'/bitrix/header.php');
 global $APPLICATION;
 $APPLICATION->SetTitle("Платежи и переводы");
-?><?$APPLICATION->IncludeComponent(
+?>
+
+<?$APPLICATION->IncludeComponent(
 	"bitrix:news",
 	"payments_and_transfers",
-	array(
+	[
 		"ADD_ELEMENT_CHAIN" => "N",
 		"ADD_SECTIONS_CHAIN" => "N",
 		"AJAX_MODE" => "N",
@@ -102,10 +104,12 @@ $APPLICATION->SetTitle("Платежи и переводы");
 			"section" => "",
 			"detail" => "#ELEMENT_CODE#/",
 		)
-	),
+	],
 	false
 );?>
 
 <?$APPLICATION->IncludeFile('/local/php_interface/include/cross_sale_products_block.php');?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_contacts.php'); ?>
 
 <?require($_SERVER['DOCUMENT_ROOT'].'/bitrix/footer.php');?>

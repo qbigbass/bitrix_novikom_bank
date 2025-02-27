@@ -218,3 +218,92 @@ function getStepperIcons(int $stepIndex): string
 
     return $stepperIcons;
 }
+
+function getElementIdsIncludedArea(int $iblock): array
+{
+    $elementIds = [];
+
+    global $APPLICATION;
+    $arPathPage = array_filter(explode("/", $APPLICATION->GetCurPage()));
+    $startPathUrl = current($arPathPage) ?: 'main';
+    $finalPathUrl = end($arPathPage) ?: 'main';
+    $arFilter = [
+        'IBLOCK_ID' => $iblock,
+        'ACTIVE' => 'Y',
+    ];
+    $parentSectionId = 0;
+
+    if (!empty($startPathUrl)) {
+        // Найдем ID родительского раздела
+        $section = SectionTable::getList([
+            'filter' => [
+                'CODE' => $startPathUrl,
+                'IBLOCK_ID' => $iblock,
+                'ACTIVE' => 'Y',
+            ],
+            'select' => [
+                'ID'
+            ],
+            'order' => [
+                'SORT' => 'ASC',
+            ],
+            'limit' => 1
+        ])->fetchObject();
+
+        if ($section) {
+            $parentSectionId = $section->getId();
+        }
+
+        if ($parentSectionId > 0) {
+            if ($startPathUrl !== $finalPathUrl) {
+                // Найдем ID конечного раздела из URL в ИБ включаемой области
+                $rsParentSection = CIBlockSection::GetByID($parentSectionId);
+                $finalSectionId = 0;
+
+                if ($arParentSection = $rsParentSection->GetNext()) {
+                    $arFilterFindSubSections = [
+                        'IBLOCK_ID' => $arParentSection['IBLOCK_ID'],
+                        '>LEFT_MARGIN' => $arParentSection['LEFT_MARGIN'],
+                        '<RIGHT_MARGIN' => $arParentSection['RIGHT_MARGIN'],
+                        '>DEPTH_LEVEL' => $arParentSection['DEPTH_LEVEL']
+                    ];
+                    $rsSect = CIBlockSection::GetList(
+                        ['left_margin' => 'asc'],
+                        $arFilterFindSubSections
+                    );
+
+                    while ($arSect = $rsSect->GetNext()) {
+                        if ($arSect["CODE"] === $finalPathUrl) {
+                            $finalSectionId = $arSect["ID"];
+                            break;
+                        }
+                    }
+                }
+
+                if ($finalSectionId > 0) {
+                    $arFilter = [
+                        'SECTION_ID' => $finalSectionId,
+                    ];
+                }
+            } else {
+                $arFilter = [
+                    'SECTION_ID' => $parentSectionId,
+                ];
+            }
+
+            $elements = CIBlockElement::GetList(
+                ["SORT"=>"ASC"],
+                $arFilter,
+                false,
+                false,
+                ['ID', 'IBLOCK']
+            );
+
+            while ($element = $elements->Fetch()) {
+                $elementIds[] = $element["ID"];
+            }
+        }
+    }
+
+    return $elementIds;
+}
