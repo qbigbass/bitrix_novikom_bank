@@ -109,6 +109,8 @@ $APPLICATION->SetTitle('Карьера в НОВИКОМЕ');
     false,
 ); ?>
 
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_news.php'); ?>
+
 <? $APPLICATION->IncludeFile('/local/php_interface/include/block_contacts.php'); ?>
 
 <? require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php'); ?>

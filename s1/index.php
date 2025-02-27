@@ -321,6 +321,8 @@ $APPLICATION->IncludeComponent(
     ["HIDE_ICONS" => "Y"]
 ); ?>
 
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_news.php'); ?>
+
 <? $APPLICATION->IncludeFile('/local/php_interface/include/block_contacts.php'); ?>
 
 <? $APPLICATION->IncludeFile('/local/php_interface/include/request_call.php'); ?>
@@ -330,9 +332,9 @@ $APPLICATION->IncludeComponent(
         <? $APPLICATION->IncludeComponent(
             "dalee:calculator",
             "currencies",
-            array(
+            [
                 "CALCULATOR_ELEMENT_ID" => ""
-            )
+            ]
         ); ?>
     </div>
 </section>

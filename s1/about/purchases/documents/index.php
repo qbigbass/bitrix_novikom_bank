@@ -38,7 +38,6 @@ $APPLICATION->SetTitle('Документы');
         <img src="/frontend/dist/img/patterns/section/pattern-light-l.svg" alt="bg pattern" loading="lazy">
     </picture>
 </section>
-
 <section class="section-layout py-lg-11 pb-lg-0 px-lg-6">
     <div class="container">
         <div class="rte rte--w-xxl-60 px-lg-6 mb-6 mb-lg-7">
@@ -76,6 +75,8 @@ $APPLICATION->SetTitle('Документы');
         </div>
     </div>
 </section>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_news.php'); ?>
 
 <? $APPLICATION->IncludeFile('/local/php_interface/include/block_contacts.php'); ?>
 
