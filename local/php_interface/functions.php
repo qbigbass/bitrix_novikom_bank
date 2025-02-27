@@ -284,6 +284,8 @@ function getElementIdsIncludedArea(int $iblock): array
                     $arFilter = [
                         'SECTION_ID' => $finalSectionId,
                     ];
+                } else {
+                    return [];
                 }
             } else {
                 $arFilter = [

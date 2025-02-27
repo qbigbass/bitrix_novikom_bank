@@ -52,7 +52,7 @@ if (!empty($elementIds)) {
             "PAGER_TEMPLATE" => ".default",
             "PAGER_TITLE" => "Новости",
             "PARENT_SECTION" => "",
-            "PARENT_SECTION_CODE" => $sectionCode,
+            "PARENT_SECTION_CODE" => "",
             "PREVIEW_TRUNCATE_LEN" => "",
             "PROPERTY_CODE" => ["TAG", "CONDITION", "BTN_TEXT", "LINK", "BTN_TYPE", "LINE_COLOR"],
             "SET_BROWSER_TITLE" => "N",
