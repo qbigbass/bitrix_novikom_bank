@@ -113,12 +113,17 @@ $APPLICATION->IncludeComponent(
         ],
         "SHOW_AD_INTERNET_BANK" => "N",
         "SHOW_AD_OPEN_ACC_NOVIKOM" => "N",
-        "TITLE_BLOCK_CROSS_SALE" => "Другие услуги для финансовых институтов",
     ],
     false,
     ["HIDE_ICONS" => "Y"]
 );
 ?>
+
+<?$APPLICATION->IncludeFile('/local/php_interface/include/block_cross_sale.php',
+    [
+        'HEADER_TEXT' => 'Другие услуги для финансовых институтов',
+    ]
+);?>
 
 <? $APPLICATION->IncludeFile('/local/php_interface/include/block_news.php'); ?>
 

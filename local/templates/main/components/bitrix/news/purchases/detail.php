@@ -68,9 +68,3 @@ $this->setFrameMode(true);
     ],
     $component
 );?>
-
-<? $APPLICATION->IncludeFile('/local/php_interface/include/block_cross_sale_detail.php'); ?>
-
-<? $APPLICATION->IncludeFile('/local/php_interface/include/block_news_detail.php'); ?>
-
-<? $APPLICATION->IncludeFile('/local/php_interface/include/block_special_offers_detail.php'); ?>

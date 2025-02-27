@@ -107,6 +107,8 @@ $APPLICATION->SetTitle("Вклады Новикома");
     ['HIDE_ICONS' => 'Y']
 ); ?>
 
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_cross_sale.php'); ?>
+
 <? $APPLICATION->IncludeFile('/local/php_interface/include/block_news.php'); ?>
 
 <? $APPLICATION->IncludeFile('/local/php_interface/include/block_contacts.php'); ?>

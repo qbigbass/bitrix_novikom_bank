@@ -75,6 +75,8 @@ $APPLICATION->SetTitle('Закупки <br>у субъектов МСП');
     </div>
 </section>
 
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_cross_sale.php'); ?>
+
 <? $APPLICATION->IncludeFile('/local/php_interface/include/block_news.php'); ?>
 
 <? $APPLICATION->IncludeFile('/local/php_interface/include/block_contacts.php'); ?>
