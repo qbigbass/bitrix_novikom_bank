@@ -270,8 +270,9 @@ function handlerProperty(STATE, value) {
 
     // если есть первоначальный взнос
     if (STATE.filteredData[0].minDownPayment && STATE.filteredData[0].minDownPayment !== 0) {
-        const minInitialPayment = findMinInitialPayment(STATE.filteredData[0], value, maxAmount);
+        let minInitialPayment = findMinInitialPayment(STATE.filteredData[0], value, maxAmount);
         STATE.initialPayment = STATE.property - STATE.amount;
+        minInitialPayment = (STATE.initialPayment < minInitialPayment) ? STATE.initialPayment : minInitialPayment;
 
         const dataAttrInitial = {
             'minValue': minInitialPayment,
