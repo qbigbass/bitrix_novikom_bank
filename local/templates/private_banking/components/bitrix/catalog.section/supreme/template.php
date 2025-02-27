@@ -1,30 +1,13 @@
 <?php
-if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
-/**
- * @global CMain $APPLICATION
- * @global CUser $USER
- * @global CDatabase $DB
- *
- * @var array $arParams
- * @var array $arResult
- * @var string $templateName
- * @var string $templateFile
- * @var string $templateFolder
- * @var string $componentPath
- * @var CBitrixComponent $component
- * @var CBitrixComponentTemplate $this
- */
-$this->setFrameMode(true);
-
-global $pbModel;
-
-$pbModel = $arResult['CONTENT_JSON'] ?? null;
-
+use \Bitrix\Main\Localization\Loc;
+if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
+    die();
+}
 ?>
 <section class="pb-section py-lg-11">
     <div class="container">
-        <h3 class="pb-section__title dark-0 text-center mb-4 mb-md-6 animate js-animation"><?= $pbModel['title'] ?></h3>
-        <p class="pb-section__subtitle dark-0 text-center m-0 px-xl-6 animate js-animation"><?= $pbModel['subtitle'] ?></p>
+        <h3 class="pb-section__title dark-0 text-center mb-4 mb-md-6 animate js-animation"><?= $arResult['NAME'] ?></h3>
+        <p class="pb-section__subtitle dark-0 text-center m-0 px-xl-6 animate js-animation"><?= $arResult['DESCRIPTION'] ?></p>
         <div class="pb-card-wrapper my-6 position-relative animate js-animation">
             <div class="pb-card-image pb-card-image--type-dark">
                 <picture class="pb-card-image__bg">
@@ -135,12 +118,26 @@ $pbModel = $arResult['CONTENT_JSON'] ?? null;
             </div>
         </div>
         <div class="pb-benefits d-flex flex-column flex-lg-row flex-wrap gap-4 align-items-md-start justify-content-lg-center">
-            <?foreach ($pbModel['benefits'] as $key => $item) : ?>
-                <div class="pb-card-benefit d-flex align-items-center animate js-animation"><img class="pb-card-benefit__icon" src="<?= $item['icon'] ?>" alt="benefit-icon">
-                    <div class="m-0 pr-text-color pb-card-benefit__description"><?= $item['description'] ?></div>
+            <?foreach ($arResult['ITEMS'] as $key => $item) : ?>
+                <div class="pb-card-benefit d-flex align-items-center animate js-animation">
+                    <?
+                    if ($item['PROPERTIES']['IMAGE']['VALUE']) {
+                    ?>
+                        <img class="pb-card-benefit__icon" src="<?= \CFile::GetPath($item['PROPERTIES']['IMAGE']['VALUE']) ?>" alt="benefit-icon">
+                    <?
+                    }
+                    ?>
+                    <div class="m-0 pr-text-color pb-card-benefit__description"><?= $item['NAME'] ?>
+                    </div>
                 </div>
             <?endforeach; ?>
         </div>
-        <div class="mt-6 text-center"><a class="btn btn-pb btn-pb--primary btn-pb--size-lg w-100 w-md-auto animate js-animation js-scroll-to" href="#become-client">Стать клиентом</a></div>
+        <div class="mt-6 text-center">
+            <a class="btn btn-pb btn-pb--primary btn-pb--size-lg w-100 w-md-auto animate js-animation js-scroll-to"
+               href="#become-client">
+                <?= Loc::getMessage('HEADER_MENU_BECOME_A_CLIENT') ?>
+            </a>
+        </div>
     </div>
 </section>
+

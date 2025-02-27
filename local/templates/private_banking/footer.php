@@ -42,17 +42,21 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die();
             <use xlink:href="/frontend/dist/img/svg-sprite.svg#arrow-up"></use>
         </svg>
     </a>
-    <?php
-    // footer copyright and contacts
-    $APPLICATION->IncludeComponent(
-        "dalee:content.json", // Компонент достает значение из свойства CONTENT_JSON
-        "footer", // и отрисовывает в шаблоне
-        [
-            'CODE' => 'footer',
-            'PROPERTY_CODE' => 'CONTENT_JSON',
-            'IBLOCK_ID' => iblock('pb_blocks_index'),
-        ]
-    );?>
+    <div class="container">
+        <div class="row row-gap-5">
+            <div class="col-12 col-md-6">
+                <div class="d-flex flex-column row-gap-5 flex-lg-row gap-lg-6 align-items-lg-center"><img src="/frontend/dist/img/logo-pb-footer.svg" alt="Новиком" width="196" height="56" loading="lazy">
+                    <p class="pb-footer__copyright m-0"><?= str_replace('#DATE#', date('Y'), UF_PB_CPYRIGHT) ?></p>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="d-flex flex-column row-gap-2 align-items-start align-items-lg-end">
+                    <a class="pb-footer__text pb-footer__text--phone" href="tel:+<?= preg_replace('/\D+/', '', UF_PHONE1); ?>"><?= UF_PHONE1 ?></a>
+                    <p class="m-0 pb-footer__text"><?= UF_PB_FULL_ADDRESS ?></p>
+                </div>
+            </div>
+        </div>
+    </div>
 </footer>
 </body>
 </html>
