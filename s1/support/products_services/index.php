@@ -3,6 +3,7 @@ require($_SERVER['DOCUMENT_ROOT'].'/bitrix/header.php');
 global $APPLICATION;
 $APPLICATION->SetTitle("Продукты и услуги");
 ?>
+
 <?$APPLICATION->IncludeComponent(
     "bitrix:catalog",
     "products_services",
@@ -203,6 +204,11 @@ $APPLICATION->SetTitle("Продукты и услуги");
     ],
     false
 );?>
-<?$APPLICATION->IncludeFile('/local/php_interface/include/financial_literacy.php')?>
-<?$APPLICATION->IncludeFile('/local/php_interface/include/request_call.php')?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/financial_literacy.php'); ?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/request_call.php'); ?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_contacts.php'); ?>
+
 <?require($_SERVER['DOCUMENT_ROOT'].'/bitrix/footer.php');?>

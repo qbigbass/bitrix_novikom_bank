@@ -5,36 +5,29 @@
 use Bitrix\Iblock\Model\Section;
 
 /*
- * Блок "Контакты" на странице раздела
+ * Блок "Объявления для клиентов" на странице раздела
  */
 global $APPLICATION;
-$sectionCode = $GLOBALS["PARENT_SECTION_CODE"] ?: 'private';
+$sectionCode = $GLOBALS["PARENT_SECTION_CODE"] ?: 'for-private-clients';
 
-$contactsFilter = [
-    "!UF_SHOW_CONTACT_SECTION" => false,
+$adsFilter = [
+    "!UF_SHOW_ADS_SECTION" => false,
     "ACTIVE" => "Y",
     "CODE" => $sectionCode
 ];
 
-$iblock = iblock('contacts_ru');
+$iblock = iblock('ads_for_customers_ru');
 $entity = Section::compileEntityByIblock($iblock);
 $rsSections = $entity::getList([
     "select" => ["ID"],
-    "filter" => $contactsFilter,
+    "filter" => $adsFilter,
     "order" => ["SORT" => "ASC"],
 ])->fetchAll();
 
 if (!empty($rsSections)) {
-    $defaultBgBlockContacts = $APPLICATION->GetProperty("defaultBgBlockContacts") ?: "bg-blue-10";
-    $defaultColorCard = $APPLICATION->GetProperty("defaultColorCard") ?: "bg-heavy-violet";
-    $defaultColorTag = $APPLICATION->GetProperty("defaultColorTag") ?: "tag--outline-white";
-    $defaultColorH4 = $APPLICATION->GetProperty("defaultColorH4") ?: "dark-0";
-    $defaultColorSpan = $APPLICATION->GetProperty("defaultColorSpan") ?: "dark-0";
-    $defaultColorIcon = $APPLICATION->GetProperty("defaultColorIcon") ?: "dark-0";
-
     $APPLICATION->IncludeComponent(
         "bitrix:news.list",
-        "corporate_contacts",
+        "customer_announcements",
         [
             "ACTIVE_DATE_FORMAT" => "d.m.Y",
             "ADD_SECTIONS_CHAIN" => "N",
@@ -43,19 +36,19 @@ if (!empty($rsSections)) {
             "AJAX_OPTION_HISTORY" => "N",
             "AJAX_OPTION_JUMP" => "N",
             "AJAX_OPTION_STYLE" => "Y",
-            "CACHE_FILTER" => "N",
+            "CACHE_FILTER" => "Y",
             "CACHE_GROUPS" => "Y",
             "CACHE_TIME" => "36000000",
             "CACHE_TYPE" => "A",
             "CHECK_DATES" => "Y",
-            "DETAIL_URL" => "",
+            "DETAIL_URL" => "/support/announcements_for_clients/#SECTION_CODE#/#ELEMENT_CODE#/",
             "DISPLAY_BOTTOM_PAGER" => "N",
             "DISPLAY_TOP_PAGER" => "N",
             "FIELD_CODE" => ["CODE","NAME","PREVIEW_TEXT","PREVIEW_PICTURE",""],
-            "FILTER_NAME" => "contactsFilter",
+            "FILTER_NAME" => "",
             "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-            "IBLOCK_ID" => iblock('contacts_ru'),
-            "IBLOCK_TYPE" => "additional",
+            "IBLOCK_ID" => iblock('ads_for_customers_ru'),
+            "IBLOCK_TYPE" => "support",
             "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
             "INCLUDE_SUBSECTIONS" => "N",
             "MESSAGE_404" => "",
@@ -70,7 +63,7 @@ if (!empty($rsSections)) {
             "PARENT_SECTION" => "",
             "PARENT_SECTION_CODE" => $sectionCode,
             "PREVIEW_TRUNCATE_LEN" => "",
-            "PROPERTY_CODE" => ["EMAIL", "PHONE", "ADDRESS"],
+            "PROPERTY_CODE" => [""],
             "SET_BROWSER_TITLE" => "N",
             "SET_LAST_MODIFIED" => "N",
             "SET_META_DESCRIPTION" => "N",
@@ -83,13 +76,8 @@ if (!empty($rsSections)) {
             "SORT_ORDER1" => "DESC",
             "SORT_ORDER2" => "ASC",
             "STRICT_SECTION_CHECK" => "N",
-            "COLOR_SECTION" => $defaultBgBlockContacts,
-            "COLOR_CARD" => $defaultColorCard,
-            "COLOR_TAG" => $defaultColorTag,
-            "COLOR_H4" => $defaultColorH4,
-            "COLOR_SPAN" => $defaultColorSpan,
-            "COLOR_ICON" => $defaultColorIcon,
         ],
-        false
+        false,
+        ["HIDE_ICONS" => "Y"]
     );
 }

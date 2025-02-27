@@ -3,6 +3,7 @@ require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 global $APPLICATION;
 $APPLICATION->SetTitle("Вклады Новикома");
 ?>
+
 <? $APPLICATION->IncludeComponent(
     "bitrix:news",
     "deposits",
@@ -105,5 +106,7 @@ $APPLICATION->SetTitle("Вклады Новикома");
     false,
     ['HIDE_ICONS' => 'Y']
 ); ?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_contacts.php'); ?>
 
 <? require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php'); ?>

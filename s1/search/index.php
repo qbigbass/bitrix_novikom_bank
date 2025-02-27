@@ -59,6 +59,6 @@ $APPLICATION->IncludeComponent(
 
 <? $APPLICATION->IncludeFile('/local/php_interface/include/block_special_offers_section.php'); ?>
 
-<? $APPLICATION->IncludeFile('/local/php_interface/include/block_contacts_section.php'); ?>
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_contacts.php'); ?>
 
 <? require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>
