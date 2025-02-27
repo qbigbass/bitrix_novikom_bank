@@ -2,6 +2,9 @@
 /** @var array $arParams */
 /** @var array $arResult */
 
+global $APPLICATION;
+$stepperColor = $APPLICATION->GetProperty("stepperItemColor") ?: "stepper-item--color-green";
+
 foreach ($arResult['SECTIONS'] as $key => $section) { ?>
 
     <section class="section-layout <?= $key % 2 != 0 || $arParams['DARK_BG'] ? 'bg-dark-10' : '' ?>">
@@ -15,7 +18,7 @@ foreach ($arResult['SECTIONS'] as $key => $section) { ?>
                 <div class="stepper steps-<?= count($elementsFiltered) > 3 ? 4 : 3 ?>">
 
                     <? foreach ($elementsFiltered as $innerKey => $value) { ?>
-                        <div class="stepper-item stepper-item--color-green">
+                        <div class="stepper-item <?= $stepperColor ?>">
                             <div class="stepper-item__header">
                                 <div class="stepper-item__number">
                                     <div class="stepper-item__number-value"><?= $innerKey + 1 ?></div>
