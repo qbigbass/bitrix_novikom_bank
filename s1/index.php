@@ -70,12 +70,6 @@ $APPLICATION->IncludeComponent(
     ]
 ); ?>
 
-<?$APPLICATION->IncludeFile('/local/php_interface/include/block_cross_sale_section.php',
-    [
-        'HEADER_TEXT' => 'Предложения банка Новиком',
-    ]
-);?>
-
 <section class="section-layout bank-service-layout">
     <div class="container">
         <div class="bank-service-layout__wrapper">
@@ -326,10 +320,6 @@ $APPLICATION->IncludeComponent(
     false,
     ["HIDE_ICONS" => "Y"]
 ); ?>
-
-<? $APPLICATION->IncludeFile('/local/php_interface/include/block_news_section.php'); ?>
-
-<? $APPLICATION->IncludeFile('/local/php_interface/include/block_special_offers_section.php'); ?>
 
 <? $APPLICATION->IncludeFile('/local/php_interface/include/block_contacts.php'); ?>
 
