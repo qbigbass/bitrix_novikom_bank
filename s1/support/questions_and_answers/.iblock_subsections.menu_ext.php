@@ -21,7 +21,7 @@ $aMenuLinksExt = $APPLICATION->IncludeComponent("bitrix:menu.sections", "", arra
 );
 
 foreach ($aMenuLinksExt as $key => $value) {
-    if (empty($value[3]) || $value[3]['DEPTH_LEVEL'] < 2) unset($aMenuLinksExt[$key]);
+    if (empty($value[3]) || $value[3]['DEPTH_LEVEL'] < 2 || empty($section)) unset($aMenuLinksExt[$key]);
 }
 
 if (!empty($section)) {
