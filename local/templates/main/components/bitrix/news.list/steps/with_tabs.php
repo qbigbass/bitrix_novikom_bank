@@ -1,6 +1,9 @@
 <?php
 /** @var array $arParams */
 /** @var array $arResult */
+
+global $APPLICATION;
+$stepperColor = $APPLICATION->GetProperty("stepperItemColor") ?: "stepper-item--color-green";
 ?>
 
 <section class="section-restructuring-steps section-layout bg-dark-10">
@@ -84,7 +87,7 @@
                             <div class="stepper steps-<?= count($elementsFiltered) > 3 ? 4 : 3 ?>">
 
                                 <? foreach ($elementsFiltered as $innerKey => $value) { ?>
-                                    <div class="stepper-item stepper-item--color-green">
+                                    <div class="stepper-item <?= $stepperColor ?>">
                                         <div class="stepper-item__header">
                                             <div class="stepper-item__number">
                                                 <div
