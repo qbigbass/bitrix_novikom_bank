@@ -12,9 +12,11 @@
 /** @var CBitrixComponent $component */
 
 use Dalee\Helpers\ComponentHelper;
+use Dalee\Helpers\ComponentRenderer\Renderer;
 
 $parentTemplateFolder = $component->GetParent()->getTemplate()->GetFolder();
 $helper = new ComponentHelper($component);
+$renderer = new Renderer($APPLICATION, $component);
 ?>
 
 <?$APPLICATION->IncludeFile(
@@ -140,59 +142,14 @@ $helper = new ComponentHelper($component);
     </section>
 <?endif;?>
 
-<?if(!empty($arResult['DISPLAY_PROPERTIES']['STEPS']['VALUE'])): ?>
-    <section class="section-layout bg-dark-10 px-lg-6">
-        <div class="container">
-            <?if(!empty($arResult['DISPLAY_PROPERTIES']['STEPS_HEADING']['~VALUE'])): ?>
-                <div class="row">
-                    <div class="d-none d-md-flex justify-content-between">
-                        <h3 class="h3"><?=$arResult['DISPLAY_PROPERTIES']['STEPS_HEADING']['~VALUE']?></h3>
-                    </div>
-                    <a class="h3 d-flex align-items-center justify-content-between dark-100 d-md-none" data-bs-toggle="collapse" href="#biometric-steps-content" role="button" aria-expanded="false" aria-controls="biometric-steps-content">
-                        <?=$arResult['DISPLAY_PROPERTIES']['STEPS_HEADING']['~VALUE']?>
-                        <svg class="icon size-m violet-100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                            <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-down"></use>
-                        </svg>
-                    </a>
-                </div>
-            <?endif;?>
-            <div class="collapse d-md-block mt-6 mt-lg-7" id="biometric-steps-content">
-                <div class="stepper steps-4">
-                    <?foreach($arResult['DISPLAY_PROPERTIES']['STEPS']['~VALUE'] as $key => $step): ?>
-                        <div class="stepper-item stepper-item--color-green">
-                            <div class="stepper-item__header">
-                                <div class="stepper-item__number">
-                                    <div class="stepper-item__number-value"><?= $key + 1 ?></div>
-                                    <div class="stepper-item__number-icon">
-                                        <div class="stepper-item__icon-border" data-level="1">
-                                            <svg width="76" height="44" viewBox="0 0 76 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M36.0723 1.06022C37.2727 0.400039 38.7273 0.400039 39.9277 1.06022L74.8138 20.2476C76.1953 21.0074 76.1953 22.9926 74.8138 23.7524L39.9277 42.9398C38.7273 43.6 37.2727 43.6 36.0723 42.9398L1.18624 23.7524C-0.195312 22.9926 -0.19531 21.0074 1.18624 20.2476L36.0723 1.06022Z" fill="currentColor"></path>
-                                            </svg>
-                                        </div>
-                                        <?for($i = 0; $i < $key; $i++) : ?>
-                                            <div class="stepper-item__icon-border" data-level="<?=$i + 2?>">
-                                                <svg width="80" height="46" viewBox="0 0 80 46" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M39.5181 1.26505C39.8182 1.10001 40.1818 1.10001 40.4819 1.26506L78.4069 22.1238C79.0977 22.5037 79.0977 23.4963 78.4069 23.8762L40.4819 44.7349C40.1818 44.9 39.8182 44.9 39.5181 44.7349L1.59312 23.8762C0.902343 23.4963 0.902345 22.5037 1.59312 22.1238L39.5181 1.26505Z" stroke="currentColor" stroke-linecap="round" stroke-dasharray="4 4"></path>
-                                                </svg>
-                                            </div>
-                                        <?endfor;?>
-                                    </div>
-                                </div>
-                                <div class="stepper-item__arrow"></div>
-                            </div>
-                            <div class="stepper-item__content">
-                                <?if ($arResult['DISPLAY_PROPERTIES']['STEPS']['~DESCRIPTION'][$key]) : ?>
-                                    <h4><?=$arResult['DISPLAY_PROPERTIES']['STEPS']['~DESCRIPTION'][$key]?></h4>
-                                <?endif;?>
-                                <p class="text-l mb-0"><?=$step['TEXT']?></p>
-                            </div>
-                        </div>
-                    <?endforeach;?>
-                </div>
-            </div>
-        </div>
-    </section>
-<?endif;?>
+<? if (!empty($arResult['PROPERTIES']['STEPS']['VALUE'])) {
+
+    $renderer->render('Steps', $arResult['PROPERTIES']['STEPS']['VALUE'], null, [
+        'stepsHeader' => $arResult['PROPERTIES']['STEPS_HEADER']['~VALUE'] ?? 'Этапы',
+        'stepsTemplate' => $arResult['PROPERTIES']['STEPS_TEMPLATE']['VALUE_XML_ID'] ?? '',
+    ]);
+
+} ?>
 
 <?if(!empty($arResult['DISPLAY_PROPERTIES']['TEXT_BLOCK_2']['~VALUE']['TEXT'])): ?>
     <section class="section-layout px-lg-6">
