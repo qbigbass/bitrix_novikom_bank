@@ -96,7 +96,6 @@ $headerView->render(
 <? $arItems = getHlBlockEntries('PaymentsAndTransfersInfo');
 if (!empty($arItems)) {
     $arItem = reset($arItems); ?>
-
     <section class="section-layout py-lg-11 bg-blue-10">
         <div class="container">
             <div class="banner-product-info ps-lg-6">
@@ -142,15 +141,7 @@ if (!empty($arItems)) {
             <source srcset="/frontend/dist/img/patterns/section-heavy/pattern-light-m.svg" media="(max-width: 1199px)"><img src="/frontend/dist/img/patterns/section-heavy/pattern-light-l.svg" alt="bg pattern" loading="lazy">
         </picture>
     </section>
-
 <? } ?>
 
-<? $APPLICATION->IncludeFile('/local/php_interface/include/block_cross_sale_section.php'); ?>
-
-<? $APPLICATION->IncludeFile('/local/php_interface/include/block_news_section.php'); ?>
-
-<? $APPLICATION->IncludeFile('/local/php_interface/include/block_special_offers_section.php'); ?>
-
-<? $APPLICATION->IncludeFile('/local/php_interface/include/block_contacts_section.php'); ?>
 
 <? $helper->saveCache(); ?>

@@ -113,4 +113,6 @@ $APPLICATION->SetTitle('Корпоративным клиентам');
     ["HIDE_ICONS" => "Y"]
 );?>
 
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_contacts.php'); ?>
+
 <?require($_SERVER['DOCUMENT_ROOT'].'/bitrix/footer.php');?>

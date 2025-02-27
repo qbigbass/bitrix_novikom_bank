@@ -3,6 +3,7 @@ require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 global $APPLICATION;
 $APPLICATION->SetTitle('Карьера в НОВИКОМЕ');
 ?>
+
 <? $APPLICATION->IncludeComponent(
     "bitrix:news",
     "career",
@@ -107,4 +108,7 @@ $APPLICATION->SetTitle('Карьера в НОВИКОМЕ');
     ],
     false,
 ); ?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_contacts.php'); ?>
+
 <? require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php'); ?>

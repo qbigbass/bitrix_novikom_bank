@@ -1,30 +1,13 @@
 <?php
-/** @var array $arParams */
-/** @global CMain $APPLICATION */
-
-use Bitrix\Iblock\Model\Section;
-
-/*
- * Блок "Контакты" на странице раздела
- */
 global $APPLICATION;
-$sectionCode = $GLOBALS["PARENT_SECTION_CODE"] ?: 'private';
+$elementIds = getElementIdsIncludedArea(iblock('contacts_ru'));
 
-$contactsFilter = [
-    "!UF_SHOW_CONTACT_DETAIL" => false,
-    "ACTIVE" => "Y",
-    "CODE" => $sectionCode
-];
+if (!empty($elementIds)) {
+    global $contactFilter;
+    $contactFilter = [
+        "ID" => $elementIds
+    ];
 
-$iblock = iblock('contacts_ru');
-$entity = Section::compileEntityByIblock($iblock);
-$rsSections = $entity::getList([
-    "select" => ["ID"],
-    "filter" => $contactsFilter,
-    "order" => ["SORT" => "ASC"],
-])->fetchAll();
-
-if (!empty($rsSections)) {
     $defaultBgBlockContacts = $APPLICATION->GetProperty("defaultBgBlockContacts") ?: "bg-blue-10";
     $defaultColorCard = $APPLICATION->GetProperty("defaultColorCard") ?: "bg-heavy-violet";
     $defaultColorTag = $APPLICATION->GetProperty("defaultColorTag") ?: "tag--outline-white";
@@ -52,7 +35,7 @@ if (!empty($rsSections)) {
             "DISPLAY_BOTTOM_PAGER" => "N",
             "DISPLAY_TOP_PAGER" => "N",
             "FIELD_CODE" => ["CODE","NAME","PREVIEW_TEXT","PREVIEW_PICTURE",""],
-            "FILTER_NAME" => "contactsFilter",
+            "FILTER_NAME" => "contactFilter",
             "HIDE_LINK_WHEN_NO_DETAIL" => "N",
             "IBLOCK_ID" => iblock('contacts_ru'),
             "IBLOCK_TYPE" => "additional",
@@ -68,7 +51,7 @@ if (!empty($rsSections)) {
             "PAGER_TEMPLATE" => ".default",
             "PAGER_TITLE" => "Новости",
             "PARENT_SECTION" => "",
-            "PARENT_SECTION_CODE" => $sectionCode,
+            "PARENT_SECTION_CODE" => "",
             "PREVIEW_TRUNCATE_LEN" => "",
             "PROPERTY_CODE" => ["EMAIL", "PHONE", "ADDRESS"],
             "SET_BROWSER_TITLE" => "N",
