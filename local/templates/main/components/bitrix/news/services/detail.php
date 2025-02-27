@@ -80,16 +80,3 @@ $APPLICATION->IncludeComponent(
     ],
     $component
 ); ?>
-
-<?
-if (!in_array($iblock->getCode(), [
-    "biometric_identification_ru",
-    "insurance_ru",
-    "other_services_ru"
-])) : ?>
-    <?php $APPLICATION->IncludeFile('/local/php_interface/include/block_cross_sale_section.php'); ?>
-<? endif; ?>
-
-<? $APPLICATION->IncludeFile('/local/php_interface/include/block_news_section.php'); ?>
-
-<? $APPLICATION->IncludeFile('/local/php_interface/include/block_special_offers_section.php'); ?>
