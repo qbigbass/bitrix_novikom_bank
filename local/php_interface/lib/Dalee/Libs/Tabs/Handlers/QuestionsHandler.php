@@ -2,6 +2,7 @@
 
 namespace Dalee\Libs\Tabs\Handlers;
 
+use CIBlockSection;
 use Dalee\Helpers\IblockHelper;
 use Dalee\Libs\Tabs\Interfaces\PropertyHandlerInterface;
 
@@ -13,12 +14,33 @@ class QuestionsHandler implements PropertyHandlerInterface
     /** @var string Ссылка на все вопросы */
     private string $qaLinlk;
 
-    public function __construct(array $property)
+    public function __construct(array $property, ?int $elementId = null, ?array $element = null)
     {
         $this->property = $property;
         if (empty($this->property['LINK_ELEMENT_VALUE'])) {
             $this->property['LINK_ELEMENT_VALUE'] = $this->getElements($this->property['VALUE']);
         }
+        $this->qaLinlk = '';
+        if($element){
+            $this->element = $element;
+            $this->qaLinlk = $this->getQALink();
+        }
+
+    }
+
+    /**
+     * Получаем ссылку на все вопросы и ответы
+     *
+     * @return string
+     */
+    private function getQALink(): string
+    {
+        if ($qaSectionID = $this->element['PROPERTIES']['QA_ELEMENT']['VALUE']) {
+            if ($section = CIBlockSection::GetByID($qaSectionID)->GetNext()) {
+                return $section['SECTION_PAGE_URL'];
+            }
+        }
+        return '';
     }
 
     public function render(array $params = []): string
