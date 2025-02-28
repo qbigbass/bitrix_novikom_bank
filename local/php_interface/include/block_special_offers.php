@@ -1,30 +1,17 @@
-<?php
+<?
 /** @var array $arParams */
 /** @global CMain $APPLICATION */
 
-use Bitrix\Iblock\Model\Section;
-
-/*
- * Блок "Спецпредложения" на странице раздела
- */
 global $APPLICATION;
-$sectionCode = $GLOBALS["PARENT_SECTION_CODE"] ?: 'private';
-
-$specialOffersFilter = [
-    "!UF_SHOW_SPECIAL_SECTION" => false,
-    "ACTIVE" => "Y",
-    "CODE" => $sectionCode
-];
-
-$iblock = iblock('special_offers_ru');
-$entity = Section::compileEntityByIblock($iblock);
-$rsSections = $entity::getList([
-    "select" => ["ID"],
-    "filter" => $specialOffersFilter,
-    "order" => ["SORT" => "ASC"],
-])->fetchAll();
-
-if (!empty($rsSections)) : ?>
+$elementIds = getElementIdsIncludedArea(iblock('special_offers_ru'));
+?>
+<? if (!empty($elementIds)) : ?>
+    <?
+    global $specialOffersFilter;
+    $specialOffersFilter = [
+        "ID" => $elementIds
+    ];
+    ?>
     <section class="section-layout bg-blue-10">
         <div class="container">
             <div class="d-flex align-items-center justify-content-between px-lg-6 mb-6 mb-lg-7">
@@ -78,7 +65,7 @@ if (!empty($rsSections)) : ?>
                         "PAGER_TEMPLATE" => ".default",
                         "PAGER_TITLE" => "Новости",
                         "PARENT_SECTION" => "",
-                        "PARENT_SECTION_CODE" => $sectionCode,
+                        "PARENT_SECTION_CODE" => "",
                         "PREVIEW_TRUNCATE_LEN" => "",
                         "PROPERTY_CODE" => ["PUBLICATION_DATE"],
                         "SET_BROWSER_TITLE" => "N",

@@ -2,29 +2,15 @@
 /** @var array $arParams */
 /** @global CMain $APPLICATION */
 
-use Bitrix\Iblock\Model\Section;
-
-/*
- * Блок "Другие услуги" на детальной странице раздела
- */
 global $APPLICATION;
-$sectionCode = $GLOBALS["PARENT_SECTION_CODE"] ?: 'private';
+$elementIds = getElementIdsIncludedArea(iblock('cross_sale'));
 
-$crossSaleFilter = [
-    "!UF_SHOW_CROSS_DETAIL" => false,
-    "ACTIVE" => "Y",
-    "CODE" => $sectionCode
-];
+if (!empty($elementIds)) {
+    global $crossSaleFilter;
+    $crossSaleFilter = [
+        "ID" => $elementIds
+    ];
 
-$iblock = iblock('cross_sale');
-$entity = Section::compileEntityByIblock($iblock);
-$rsSections = $entity::getList([
-    "select" => ["ID"],
-    "filter" => $crossSaleFilter,
-    "order" => ["SORT" => "ASC"],
-])->fetchAll();
-
-if (!empty($rsSections)) {
     $APPLICATION->IncludeComponent(
         "bitrix:news.list",
         "cross_sale_block",
@@ -49,7 +35,7 @@ if (!empty($rsSections)) {
             "DISPLAY_PREVIEW_TEXT" => "N",
             "DISPLAY_TOP_PAGER" => "N",
             "FIELD_CODE" => ["ID", "NAME", ""],
-            "FILTER_NAME" => "",
+            "FILTER_NAME" => "crossSaleFilter",
             "HIDE_LINK_WHEN_NO_DETAIL" => "N",
             "HEADER_TEXT" => $arParams['HEADER_TEXT'] ?: "Смотрите также",
             "IBLOCK_ID" => iblock('cross_sale'),
@@ -66,7 +52,7 @@ if (!empty($rsSections)) {
             "PAGER_TEMPLATE" => ".default",
             "PAGER_TITLE" => "Новости",
             "PARENT_SECTION" => "",
-            "PARENT_SECTION_CODE" => $sectionCode,
+            "PARENT_SECTION_CODE" => "",
             "PREVIEW_TRUNCATE_LEN" => "",
             "PROPERTY_CODE" => ["TAG", "CONDITION", "BTN_TEXT", "LINK", "BTN_TYPE", "LINE_COLOR"],
             "SET_BROWSER_TITLE" => "N",
