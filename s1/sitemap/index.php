@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @global CMain $APPLICATION
  */
@@ -7,14 +8,17 @@ require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 $APPLICATION->SetTitle("Карта сайта");
 
 $APPLICATION->IncludeComponent(
-    "bitrix:main.map",
-    ".default", [
-        "LEVEL" => "3",
-        "COL_NUM" => "2",
-        "SHOW_DESCRIPTION" => "Y",
-        "SET_TITLE" => "Y",
-        "CACHE_TIME" => "36000000"
-    ]
+    "dalee:main.map",
+    ".default",
+    array(
+        "LEVEL" => "3",    // Максимальный уровень вложенности (0 - без вложенности)
+        "COL_NUM" => "2",    // Количество колонок
+        "SHOW_DESCRIPTION" => "Y",    // Показывать описания
+        'THIRD_LEVEL_MENU_TYPE' => 'iblock_sections', // Тип меню для 3-е уровня
+        "SET_TITLE" => "Y",    // Устанавливать заголовок страницы
+        "CACHE_TIME" => "36000000",    // Время кеширования (сек.)
+    ),
+    false
 );
 
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php");
