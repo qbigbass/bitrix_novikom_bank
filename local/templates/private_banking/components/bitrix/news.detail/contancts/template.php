@@ -38,21 +38,17 @@ $map = $arResult['DETAIL_PICTURE']['SRC'] ?? '';
                             <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-phone"></use>
                         </svg>
                     </span>
-                    <a class="list-pb-contact__link"
-                       href="tel:+<?= preg_replace('/\D+/', '', $phone1); ?>"
-                       data-phone="<?= $phone1 ?>"><?= $phone1 ?></a>
+                    <a class="list-pb-contact__link" href="tel:+<?= preg_replace('/\D+/', '', $phone1); ?>" data-phone="<?= $phone1 ?>"><?= $phone1 ?></a>
                 </li>
             <? endif; ?>
-            <?
-            if ($email) : ?>
+            <? if ($email) : ?>
                 <li class="d-flex align-items-center">
                     <span class="icon size-m flex-shrink-0 dark-0">
                         <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                             <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-mail"></use>
                         </svg>
                     </span>
-                    <a class="list-pb-contact__link"
-                       href="emailto:<?= $email ?>"><?= $email ?></a>
+                    <a class="list-pb-contact__link" href="emailto:<?= $email ?>"><?= $email ?></a>
                 </li>
             <? endif; ?>
             <? if ($address2) : ?>
@@ -70,74 +66,69 @@ $map = $arResult['DETAIL_PICTURE']['SRC'] ?? '';
     </div>
 </div>
 
-<?
-$this->SetViewTarget('PB_INDEX_CONTACTS'); ?>
-<section class="pb-section pb-section--bg-black">
-    <div class="container">
-        <div class="pb-card-office animate js-animation">
-            <div class="pb-card-office__content d-flex flex-column align-items-start">
-                <h3 class="pb-card-office__title mb-3 mb-lg-4">Контакты</h3>
-                <? if ($address1) : ?>
-                    <p class="pb-card-office__text pr-text-color mb-0"><?= UF_PB_FULL_ADDRESS ?></p>
+<? $this->SetViewTarget('PB_INDEX_CONTACTS'); ?>
+    <section class="pb-section pb-section--bg-black">
+        <div class="container">
+            <div class="pb-card-office animate js-animation">
+                <div class="pb-card-office__content d-flex flex-column align-items-start">
+                    <h3 class="pb-card-office__title mb-3 mb-lg-4">Контакты</h3>
+                    <? if ($address1) : ?>
+                        <p class="pb-card-office__text pr-text-color mb-0"><?= UF_PB_FULL_ADDRESS ?></p>
+                    <? endif; ?>
+                    <div class="mt-auto d-flex justify-content-between align-items-center w-100">
+                        <ul class="pb-card-office__list d-flex flex-column row-gap-2 row-gap-md-3 align-items-start">
+                            <? if ($email) : ?>
+                                <li><a href="mailto:<?= $email ?>"><?= $email ?></a></li>
+                            <? endif; ?>
+                            <? if ($phone1) : ?>
+                                <li>
+                                    <a href="tel:+<?= preg_replace('/\D+/', '', $phone1); ?>">
+                                        <?= $phone1 ?>
+                                    </a>
+                                </li>
+                            <? endif; ?>
+                        </ul>
+                        <? if ($qr) : ?>
+                            <div class="pb-card-office__qr d-none d-xl-block">
+                                <img src="<?= $qr ?>" alt="qr-код" loading="lazy" width="80" height="80">
+                            </div>
+                        <? endif; ?>
+                    </div>
+                </div>
+                <? if ($map) : ?>
+                    <div class="pb-card-office__map">
+                        <img src="<?= $map ?>" alt="qr-код" loading="lazy" width="80" height="80" alt="карта" loading="lazy">
+                    </div>
                 <? endif; ?>
-                <div class="mt-auto d-flex justify-content-between align-items-center w-100">
-                    <ul class="pb-card-office__list d-flex flex-column row-gap-2 row-gap-md-3 align-items-start">
-                        <? if ($email) : ?>
-                            <li><a href="mailto:<?= $email ?>"><?= $email ?></a></li>
-                        <? endif; ?>
-                        <? if ($phone1) : ?>
-                            <li>
-                                <a href="tel:+<?= preg_replace('/\D+/', '', $phone1); ?>">
-                                    <?= $phone1 ?>
-                                </a>
-                            </li>
-                        <? endif; ?>
-                    </ul>
-                    <? if ($qr) : ?>
-                        <div class="pb-card-office__qr d-none d-xl-block">
-                            <img src="<?= $qr ?>" alt="qr-код" loading="lazy" width="80" height="80">
-                        </div>
+            </div>
+        </div>
+    </section>
+<? $this->EndViewTarget(); ?>
+
+<? $this->SetViewTarget('PB_FOOTER_CONTACTS'); ?>
+    <div class="container">
+        <div class="row row-gap-5">
+            <div class="col-12 col-md-6">
+                <div class="d-flex flex-column row-gap-5 flex-lg-row gap-lg-6 align-items-lg-center">
+                    <img src="/frontend/dist/img/logo-pb-footer.svg" alt="Новиком" width="196" height="56" loading="lazy">
+                    <? if ($copyright) : ?>
+                        <p class="pb-footer__copyright m-0"><?= str_replace('#DATE#', date('Y'), $copyright) ?></p>
                     <? endif; ?>
                 </div>
             </div>
-            <? if ($map) : ?>
-                <div class="pb-card-office__map">
-                    <img src="<?= $map ?>" alt="qr-код" loading="lazy" width="80" height="80" alt="карта"
-                         loading="lazy">
+            <div class="col-12 col-md-6">
+                <div class="d-flex flex-column row-gap-2 align-items-start align-items-lg-end">
+                    <? if ($phone1) : ?>
+                        <a class="pb-footer__text pb-footer__text--phone"
+                           href="tel:+<?= preg_replace('/\D+/', '', UF_PHONE1); ?>">
+                            <?= UF_PHONE1 ?>
+                        </a>
+                    <? endif; ?>
+                    <? if ($address1) : ?>
+                        <p class="m-0 pb-footer__text"><?= UF_PB_FULL_ADDRESS ?></p>
+                    <? endif; ?>
                 </div>
-            <? endif; ?>
-        </div>
-    </div>
-</section>
-<?
-$this->EndViewTarget(); ?>
-
-<?
-$this->SetViewTarget('PB_FOOTER_CONTACTS'); ?>
-<div class="container">
-    <div class="row row-gap-5">
-        <div class="col-12 col-md-6">
-            <div class="d-flex flex-column row-gap-5 flex-lg-row gap-lg-6 align-items-lg-center"><img
-                    src="/frontend/dist/img/logo-pb-footer.svg" alt="Новиком" width="196" height="56" loading="lazy">
-                <? if ($copyright) : ?>
-                    <p class="pb-footer__copyright m-0"><?= str_replace('#DATE#', date('Y'), $copyright) ?></p>
-                <? endif; ?>
-            </div>
-        </div>
-        <div class="col-12 col-md-6">
-            <div class="d-flex flex-column row-gap-2 align-items-start align-items-lg-end">
-                <? if ($phone1) : ?>
-                    <a class="pb-footer__text pb-footer__text--phone"
-                       href="tel:+<?= preg_replace('/\D+/', '', UF_PHONE1); ?>">
-                        <?= UF_PHONE1 ?>
-                    </a>
-                <? endif; ?>
-                <? if ($address1) : ?>
-                    <p class="m-0 pb-footer__text"><?= UF_PB_FULL_ADDRESS ?></p>
-                <? endif; ?>
             </div>
         </div>
     </div>
-</div>
-<?
-$this->EndViewTarget(); ?>
+<? $this->EndViewTarget(); ?>
