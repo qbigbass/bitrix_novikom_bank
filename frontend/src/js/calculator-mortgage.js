@@ -43,17 +43,6 @@ function collectRegions(dataArray) {
         .sort(); // Сортируем по алфавиту
 }
 
-function setSelectOptions(select, options, STATE) {
-    STATE.elements[select].innerHTML = '';
-
-    options.forEach(item => {
-        const option = document.createElement('option');
-        option.value = item;
-        option.textContent = item;
-        STATE.elements[select].appendChild(option);
-    });
-}
-
 function findMinPropertyValue(data) {
     if (data.sumFromPercent && data.sumFromPercent !== 0) {
         return (data.sumFrom / ((100 - data.sumFromPercent) / 100)).toFixed(0);
@@ -219,18 +208,6 @@ function getMortgageBorrower(dataArray, STATE) {
     );
 }
 
-function createNewInputSlider(inputSlider, dataAttr) {
-    const cloneInputSlider = inputSlider.cloneNode(true);
-    Object.entries(dataAttr).forEach(([key, value]) => {
-        cloneInputSlider.dataset[key] = value;
-    })
-    cloneInputSlider.querySelector(JS_CLASSES.textSteps).textContent = '';
-    cloneInputSlider.querySelector(ELEMS_MORTGAGE.inputSliderRange).style = '';
-    initInputSlider([cloneInputSlider]);
-    inputSlider.replaceWith(cloneInputSlider);
-    return cloneInputSlider;
-}
-
 function handlerInitialPayment(STATE, value) {
     if (STATE.isDispatchingEvent) return;
     STATE.isDispatchingEvent = true;
@@ -293,8 +270,9 @@ function handlerProperty(STATE, value) {
 
     // если есть первоначальный взнос
     if (STATE.filteredData[0].minDownPayment && STATE.filteredData[0].minDownPayment !== 0) {
-        const minInitialPayment = findMinInitialPayment(STATE.filteredData[0], value, maxAmount);
+        let minInitialPayment = findMinInitialPayment(STATE.filteredData[0], value, maxAmount);
         STATE.initialPayment = STATE.property - STATE.amount;
+        minInitialPayment = (STATE.initialPayment < minInitialPayment) ? STATE.initialPayment : minInitialPayment;
 
         const dataAttrInitial = {
             'minValue': minInitialPayment,
@@ -331,6 +309,14 @@ function handlerProperty(STATE, value) {
     })
 }
 
+function filterAdditionalData(STATE) {
+    STATE.filteredData = STATE.filteredData.filter(item => {
+        if (!item.insurance) item.insurance = 'N';
+        if (!item.salaryBankCard) item.salaryBankCard = 'N';
+        return (item.insurance === STATE.insurance) && (item.salaryBankCard === STATE.card);
+    });
+}
+
 function mortgageFilter(STATE) {
     STATE.filteredData = STATE.calculatorData.filter(item =>
         item.region && item.region.split(" / ").includes(STATE.region) &&
@@ -339,11 +325,7 @@ function mortgageFilter(STATE) {
         item.borrowerType && item.borrowerType === STATE.borrower
     );
 
-    STATE.filteredData = STATE.filteredData.filter(item => {
-        if (!item.insurance) item.insurance = 'N';
-        if (!item.salaryBankCard) item.salaryBankCard = 'N';
-        return (item.insurance === STATE.insurance) && (item.salaryBankCard === STATE.card);
-    });
+    filterAdditionalData(STATE);
 }
 
 function handlerMortgageCheckbox(STATE) {
@@ -390,12 +372,7 @@ function setMortgageValues(STATE) {
         STATE.filteredData = getMortgageObjects(STATE.filteredData, STATE);
         STATE.filteredData = getMortgageBorrower(STATE.filteredData, STATE);
 
-        STATE.filteredData = STATE.filteredData.filter(item => {
-            if (!item.insurance) item.insurance = 'N';
-            if (!item.salaryBankCard) item.salaryBankCard = 'N';
-            return (item.insurance === STATE.insurance) && (item.salaryBankCard === STATE.card);
-        });
-
+        filterAdditionalData(STATE);
         setInputSliderAttributes(STATE);
 
         STATE.rate = STATE.filteredData[0].rate;
@@ -413,12 +390,7 @@ function setMortgageValues(STATE) {
         STATE.filteredData = getMortgageObjects(STATE.filteredData, STATE);
         STATE.filteredData = getMortgageBorrower(STATE.filteredData, STATE);
 
-        STATE.filteredData = STATE.filteredData.filter(item => {
-            if (!item.insurance) item.insurance = 'N';
-            if (!item.salaryBankCard) item.salaryBankCard = 'N';
-            return (item.insurance === STATE.insurance) && (item.salaryBankCard === STATE.card);
-        });
-
+        filterAdditionalData(STATE);
         setInputSliderAttributes(STATE);
 
         STATE.rate = STATE.filteredData[0].rate;
@@ -439,12 +411,7 @@ function setMortgageValues(STATE) {
 
         STATE.filteredData = getMortgageBorrower(STATE.filteredData, STATE);
 
-        STATE.filteredData = STATE.filteredData.filter(item => {
-            if (!item.insurance) item.insurance = 'N';
-            if (!item.salaryBankCard) item.salaryBankCard = 'N';
-            return (item.insurance === STATE.insurance) && (item.salaryBankCard === STATE.card);
-        });
-
+        filterAdditionalData(STATE);
         setInputSliderAttributes(STATE);
 
         STATE.rate = STATE.filteredData[0].rate;
@@ -478,12 +445,7 @@ function getMortgageValues(STATE) {
 
     STATE.insurance = STATE.elements.inputMortgageInsurance.checked ? 'Y' : 'N';
     STATE.card = STATE.elements.inputMortgageCard.checked ? 'Y' : 'N';
-    STATE.filteredData = STATE.filteredData.filter(item => {
-        if (!item.insurance) item.insurance = 'N';
-        if (!item.salaryBankCard) item.salaryBankCard = 'N';
-        return (item.insurance === STATE.insurance) && (item.salaryBankCard === STATE.card);
-    });
-
+    filterAdditionalData(STATE);
 
     STATE.expenseRatio = STATE.elements.root.dataset.expenseRatio;
     STATE.rate = STATE.filteredData[0].rate;
@@ -571,3 +533,8 @@ async function initCalculatorMortgage() {
             })
     }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    initCalculatorMortgage();
+})
+

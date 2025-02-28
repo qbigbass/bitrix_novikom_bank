@@ -203,3 +203,15 @@ function scrollPbAccordion() {
     })
 
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    addSelectDateOptions();
+    pbNavMenu();
+    pbScrollTo();
+    triggerPbTab();
+    scrollPbAccordion();
+})
+
+window.onload = function() {
+    pbAnimation();
+};

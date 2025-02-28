@@ -78,9 +78,8 @@ function calculateMonthlyPayment({amount, rate, period, paymentType}) {
 
     if (paymentType === 'annuity') {
         // Аннуитетный платеж
-        const monthlyPayment = (amount * monthlyRate * Math.pow(1 + monthlyRate, period)) /
+        return (amount * monthlyRate * Math.pow(1 + monthlyRate, period)) /
             (Math.pow(1 + monthlyRate, period) - 1);
-        return monthlyPayment;
     } else if (paymentType === 'differentiated') {
         // Дифференцированный платеж
         let totalPayment = 0;
@@ -116,7 +115,45 @@ function showLoanResult(STATE) {
     `;
         STATE.elements.tableSchedule.appendChild(row);
     });
+}
 
+function checkInputRangeSlider(STATE) {
+    if ((STATE.minAmount !== STATE.filteredData.sumFrom) || (STATE.maxAmount !== STATE.filteredData.sumTo)) {
+        STATE.minAmount = STATE.filteredData.sumFrom;
+        STATE.maxAmount = STATE.filteredData.sumTo;
+        STATE.amount = STATE.minAmount;
+        const dataAttrAmount = {
+            'minValue': STATE.minAmount,
+            'maxValue': STATE.maxAmount,
+            'startValue': STATE.minAmount
+        }
+        STATE.elements.inputAmountWrapper = createNewInputSlider(STATE.elements.inputAmountWrapper,
+            dataAttrAmount);
+        STATE.elements.inputAmount = STATE.elements.inputAmountWrapper.querySelector(ELEMS_LOAN.inputAmount);
+
+        STATE.elements.inputAmountWrapper.addEventListener('input', (event) => {
+            STATE.amount = event.detail.value;
+            handlerInputLoan(STATE);
+        })
+    }
+    if ((STATE.minPeriod !== STATE.filteredData.periodFrom) || (STATE.maxPeriod !== STATE.filteredData.periodTo)) {
+        STATE.minPeriod = STATE.filteredData.periodFrom;
+        STATE.maxPeriod = STATE.filteredData.periodTo;
+        STATE.period = STATE.minPeriod;
+        const dataAttrPeriod = {
+            'minValue': STATE.minPeriod,
+            'maxValue': STATE.maxPeriod,
+            'startValue': STATE.minPeriod
+        }
+        STATE.elements.inputPeriodWrapper = createNewInputSlider(STATE.elements.inputPeriodWrapper,
+            dataAttrPeriod);
+        STATE.elements.inputPeriod = STATE.elements.inputPeriodWrapper.querySelector(ELEMS_LOAN.inputPeriod);
+
+        STATE.elements.inputPeriodWrapper.addEventListener('input', (event) => {
+            STATE.period = event.detail.value;
+            handlerInputLoan(STATE);
+        })
+    }
 }
 
 const setLoanValues = (STATE) => {
@@ -150,12 +187,14 @@ const setLoanValues = (STATE) => {
     $(ELEMS_LOAN.selectLoanProperties).on('select2:select', (event) => {
         STATE.loanType = event.target.value;
         STATE.filteredData = findLoanData({data: STATE.calculatorData, type: STATE.loanType, strategicClient: STATE.strategicClient});
+        checkInputRangeSlider(STATE);
         handlerInputLoan(STATE);
     });
 
     STATE.elements.inputLoanCard.addEventListener('change', (event) => {
         STATE.strategicClient = !event.target.checked;
         STATE.filteredData = findLoanData({data: STATE.calculatorData, type: STATE.loanType, strategicClient: STATE.strategicClient});
+        checkInputRangeSlider(STATE);
         handlerInputLoan(STATE);
     })
 }
@@ -270,3 +309,7 @@ function initCalculatorLoan() {
             })
     }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    initCalculatorLoan();
+})

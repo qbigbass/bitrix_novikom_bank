@@ -7,8 +7,7 @@
 <div class="row js-calculator-loan" data-id="<?= $arParams['CALCULATOR_ELEMENT_ID'] ?? '' ?>" data-table="loans">
     <div class="col-12 col-lg-6">
         <div class="d-flex flex-column row-gap-4 row-gap-md-6 row-gap-lg-7">
-            <div class="input-slider" data-type="price" data-start-value="1000000"
-                 data-step-size="5000">
+            <div class="input-slider" data-type="price" data-step-size="5000">
                 <label class="text-s dark-70 ps-3 mb-2" for="amount-credit">Сумма
                     кредита</label>
                 <div class="input-slider-text js-input-slider-text">
@@ -36,7 +35,7 @@
                 </div>
                 <div class="input-slider-text-steps js-input-slider-text-steps"></div>
             </div>
-            <div class="input-slider" data-type="month" data-start-value="36">
+            <div class="input-slider" data-type="month">
                 <label class="text-s dark-70 ps-3 mb-2" for="payment-term">Срок выплаты</label>
                 <div class="input-slider-text js-input-slider-text">
                     <input class="input-slider-text__input h4 js-input-slider-text-input">
@@ -105,15 +104,14 @@
                             <h4 class="dark-70 js-program-name"></h4>
                             <div class="d-flex flex-column row-gap-2"><span
                                     class="card-calculate-result__label text-s">Процентная ставка</span><span
-                                    class="text-number-ml fw-bold text-nowrap js-calculator-display-rate">16,5%</span>
+                                    class="text-number-ml fw-bold text-nowrap js-calculator-display-rate"></span>
                             </div>
                             <div class="d-flex flex-column row-gap-2"><span
                                     class="card-calculate-result__label text-s">Ежемесячный платеж</span><span
-                                    class="text-number-ml fw-bold text-nowrap js-calculator-display-payment">35 404,38&nbsp;<span
-                                        class="currency">₽</span></span></div>
+                                    class="text-number-ml fw-bold text-nowrap js-calculator-display-payment"></span></div>
                             <div class="d-flex flex-column row-gap-2"><span
                                     class="card-calculate-result__label text-s">Диапазон полной стоимости кредита</span><span
-                                    class="text-number-ml fw-bold text-nowrap js-calculator-display-full-cost">16,464 – 20,474 %</span>
+                                    class="text-number-ml fw-bold text-nowrap js-calculator-display-full-cost"></span>
                             </div>
                         </div>
                         <div class="card-calculate-result__footer">

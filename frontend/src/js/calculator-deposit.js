@@ -34,36 +34,6 @@ const CURRENCIES = {
     "Евро": "€",
 }
 
-const URL = '/local/php_interface/ajax/calc.php';
-
-function getRates({table = null, id = null, name = null}) {
-    const params = new URLSearchParams();
-    if (table) params.append('table', table);
-    if (id) params.append('id', id);
-    if (name) params.append('name', name);
-
-    return fetch(URL, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: params
-    })
-        .then(response => response.json())
-        .then(data => {
-            if (data.error) {
-                console.error('Ошибка:', data.error);
-            } else if (data.data) {
-                return data.data;
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        })
-
-
-}
-
 function setCurrencyToReplenishment(STATE) {
     const replenishmentBlocks = STATE.elements.root.querySelectorAll(ELEMS_DEPOSIT.replenishmentItem);
     replenishmentBlocks.forEach(block => {
@@ -606,3 +576,7 @@ function initCalculatorDeposit() {
             });
     }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    initCalculatorDeposit();
+})
