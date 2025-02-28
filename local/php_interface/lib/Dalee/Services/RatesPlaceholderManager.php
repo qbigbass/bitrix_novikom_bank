@@ -382,13 +382,13 @@ class RatesPlaceholderManager
                         <caption class="dark-70 pt-4 text-s mb-0">КС – ключевая ставка Банка России</caption>
                         <thead>
                         <tr class="border-bottom-dashed">
-                            <th class="text-nowrap fs-2 lh-base dark-70 fw-semibold py-4 px-0" scope="col" style="min-width: 140px">Срок вклада</th><i></i>
+                            <th class="text-nowrap fs-2 lh-base dark-70 fw-semibold py-4 px-0" scope="col" style="min-width: 140px">Срок вклада</th>
         ';
 
         // Заголовки для сроков
         $periods = array_keys(current($ratesData));
         foreach ($periods as $period) {
-            $html .= '<th class="text-nowrap fs-2 lh-base dark-70 fw-semibold py-4 px-0" scope="col" style="min-width: 140px">' . $period . ' дней</th><i></i>';
+            $html .= '<th class="text-nowrap fs-2 lh-base dark-70 fw-semibold py-4 px-0" scope="col" style="min-width: 140px">' . $period . ' дней</th>';
         }
         $html .= '</tr></thead><tbody>';
 
@@ -431,13 +431,18 @@ class RatesPlaceholderManager
                 $sumFrom = $element['PROPERTIES']['SUM_FROM']['VALUE'];
                 $period = $element['PROPERTIES']['PERIOD_FROM']['VALUE'];
                 $rate = $element['PROPERTIES']['RATE']['VALUE'];
+                $effectiveRate = $element['PROPERTIES']['EFFECTIVE_RATE']['VALUE'];
 
-                // Расчёт надбавки относительно ключевой ставки
-                $rateDiff = $rate - $keyRate;
-                $rateText = $rateDiff ? ($rateDiff > 0 ? '+' : '') . number_format($rateDiff, 1) . '%' : '';
+                if (empty($effectiveRate)) {
+                    // Расчёт надбавки относительно ключевой ставки
+                    $rateDiff = $rate - $keyRate;
+                    $rateText = $rateDiff ? ($rateDiff > 0 ? '+' : '') . number_format($rateDiff, 1) . '%' : '';
 
-                // Группируем по диапазонам сумм и срокам
-                $ratesData[$sumFrom][$period] = 'КС ' . $rateText;
+                    // Группируем по диапазонам сумм и срокам
+                    $ratesData[$sumFrom][$period] = 'КС ' . $rateText;
+                } else {
+                    $ratesData[$sumFrom][$period] = $rate . '/' . $effectiveRate;
+                }
             }
         }
 
