@@ -28,7 +28,6 @@ $headerView->render(
 ?>
 
 <section class="section-catalog d-flex flex-column gap-7 py-6 py-sm-9 py-md-11" id="catalog-tabs">
-
     <!-- Табы -->
     <section class="section-catalog__tabs">
         <div class="container">
@@ -59,7 +58,6 @@ $headerView->render(
             </div>
         </div>
     </section>
-
     <!-- Список элементов -->
     <section class="section-catalog__list">
         <div class="container">
@@ -129,32 +127,17 @@ $headerView->render(
     </section>
 </section>
 
-<section class="section-layout js-collapsed-mobile">
-    <div class="container">
-        <h3 class="d-none d-md-flex mb-md-6 mb-lg-7 px-lg-6"><? $APPLICATION->IncludeFile('/deposits/tabs_title.php') ?></h3>
-        <a class="h3 d-flex align-items-center justify-content-between dark-100 d-md-none" data-bs-toggle="collapse" href="#additional-info-content" role="button" aria-expanded="false" aria-controls="additional-info-content">
-            <? $APPLICATION->IncludeFile('/deposits/tabs_title.php') ?>
-            <svg class="icon size-m violet-100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-down"></use>
-            </svg>
-        </a>
-        <? $renderer->render('Tabs', null, 'deposit-list'); ?>
-    </div>
-    <picture class="pattern-bg pattern-bg--hide-mobile">
-        <source srcset="/frontend/dist/img/patterns/section-2/pattern-light-s.svg" media="(max-width: 767px)">
-        <source srcset="/frontend/dist/img/patterns/section-2/pattern-light-m.svg" media="(max-width: 1199px)"><img src="/frontend/dist/img/patterns/section-2/pattern-light-l.svg" alt="bg pattern" loading="lazy">
-    </picture>
-</section>
-
-<? $arItems = getHlBlockEntries('DepositsInfo');
-if (!empty($arItems)) {
-    $arItem = reset($arItems); ?>
+<? $arItems = getHlBlockEntries('DepositsInfo'); ?>
+<? if (!empty($arItems)) : ?>
+    <? $arItem = reset($arItems); ?>
     <section class="section-layout py-lg-11 px-lg-6 bg-blue-10">
         <div class="container">
             <div class="d-flex flex-column flex-md-row align-items-start gap-4 gap-sm-5 gap-md-6">
-                <div class="banner-product-info-alternative__image flex-shrink-0">
-                    <img src="<?= !empty($arItem['UF_IMG']) ? CFile::GetPath($arItem['UF_IMG']) : '' ?>" width="160" height="160" alt="" loading="lazy">
-                </div>
+                <? if (!empty($arItem['UF_IMG'])) : ?>
+                    <div class="banner-product-info-alternative__image flex-shrink-0">
+                        <img src="<?= CFile::GetPath($arItem['UF_IMG']) ?>" width="160" height="160" alt="" loading="lazy">
+                    </div>
+                <? endif; ?>
                 <div class="banner-product-info-alternative d-flex flex-column gap-4 gap-md-6">
                     <div class="banner-product-info-alternative__header">
                         <h3><?= $arItem['UF_HEADER'] ?? '' ?></h3>
@@ -171,7 +154,24 @@ if (!empty($arItems)) {
             <img src="/frontend/dist/img/patterns/section-heavy/pattern-light-l.svg" alt="bg pattern" loading="lazy">
         </picture>
     </section>
-<? } ?>
+<? endif; ?>
+
+<section class="section-layout js-collapsed-mobile">
+    <div class="container">
+        <h3 class="d-none d-md-flex mb-md-6 mb-lg-7 px-lg-6"><? $APPLICATION->IncludeFile('/deposits/tabs_title.php') ?></h3>
+        <a class="h3 d-flex align-items-center justify-content-between dark-100 d-md-none" data-bs-toggle="collapse" href="#additional-info-content" role="button" aria-expanded="false" aria-controls="additional-info-content">
+            <? $APPLICATION->IncludeFile('/deposits/tabs_title.php') ?>
+            <svg class="icon size-m violet-100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-down"></use>
+            </svg>
+        </a>
+        <? $renderer->render('Tabs', null, 'deposit-list'); ?>
+    </div>
+    <picture class="pattern-bg pattern-bg--hide-mobile">
+        <source srcset="/frontend/dist/img/patterns/section-2/pattern-light-s.svg" media="(max-width: 767px)">
+        <source srcset="/frontend/dist/img/patterns/section-2/pattern-light-m.svg" media="(max-width: 1199px)"><img src="/frontend/dist/img/patterns/section-2/pattern-light-l.svg" alt="bg pattern" loading="lazy">
+    </picture>
+</section>
 
 <? $APPLICATION->IncludeFile('/local/php_interface/include/request_call.php'); ?>
 
