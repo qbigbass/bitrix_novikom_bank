@@ -17,7 +17,7 @@ $stepperColor = $APPLICATION->GetProperty("stepperItemColor") ?: "stepper-item--
                 <? if ($arResult['WITH_TABS']) { ?>
                     <div class="d-inline-flex">
                         <ul class="nav nav-tabs" role="tablist">
-                            <? foreach ($arResult['SECTIONS'] as $key => $section) { ?>
+                            <? foreach ($arResult['ITEMS'] as $key => $section) { ?>
                                 <li class="nav-item" role="presentation">
                                     <button
                                         class="nav-link<?= $key == 0 ? ' active' : '' ?>"
@@ -41,7 +41,7 @@ $stepperColor = $APPLICATION->GetProperty("stepperItemColor") ?: "stepper-item--
                data-bs-toggle="collapse" href="#restructuring-steps-content" role="button" aria-expanded="false"
                aria-controls="restructuring-steps-content">
                 <? if (!empty($arParams['STEPS_HEADER'])) { ?>
-                    <?= $arResult['PROPERTIES']['STEPS_HEADER']['~VALUE'] ?>
+                    <?= $arParams['STEPS_HEADER'] ?>
                 <? } ?>
                 <svg class="icon size-m violet-100" xmlns="http://www.w3.org/2000/svg" width="100%"
                      height="100%">
@@ -55,7 +55,7 @@ $stepperColor = $APPLICATION->GetProperty("stepperItemColor") ?: "stepper-item--
             <? if ($arResult['WITH_TABS']) { ?>
                 <div class="d-inline-flex d-md-none w-100 mb-6">
                     <ul class="nav nav-tabs" role="tablist">
-                        <? foreach ($arResult['SECTIONS'] as $key => $section) { ?>
+                        <? foreach ($arResult['ITEMS'] as $key => $section) { ?>
                             <li class="nav-item" role="presentation">
                                 <button
                                     class="nav-link<?= $key == 0 ? ' active' : '' ?>"
@@ -76,17 +76,13 @@ $stepperColor = $APPLICATION->GetProperty("stepperItemColor") ?: "stepper-item--
 
             <div class="tab-content">
 
-                <? foreach ($arResult['SECTIONS'] as $key => $section) { ?>
+                <? foreach ($arResult['ITEMS'] as $key => $section) { ?>
                     <div class="tab-pane fade<?= $key == 0 ? ' show active' : '' ?>"
                          id="<?= $section['CODE'] ?>" role="tabpanel" aria-labelledby="steps" tabindex="0">
                         <div class="row row-gap-6 px-lg-6">
-                            <? $elementsFiltered = array_values(array_filter($arResult['ITEMS'], function ($item) use ($section) {
-                                return $item['IBLOCK_SECTION_ID'] == $section['ID'];
-                            })); ?>
+                            <div class="stepper steps-<?= count($section['PROPERTIES']['STEPS']['VALUE']) > 3 ? 4 : 3 ?>">
 
-                            <div class="stepper steps-<?= count($elementsFiltered) > 3 ? 4 : 3 ?>">
-
-                                <? foreach ($elementsFiltered as $innerKey => $value) { ?>
+                                <? foreach ($section['PROPERTIES']['STEPS']['~VALUE'] as $innerKey => $value) { ?>
                                     <div class="stepper-item <?= $stepperColor ?>">
                                         <div class="stepper-item__header">
                                             <div class="stepper-item__number">
@@ -99,9 +95,11 @@ $stepperColor = $APPLICATION->GetProperty("stepperItemColor") ?: "stepper-item--
                                             <div class="stepper-item__arrow"></div>
                                         </div>
                                         <div class="stepper-item__content">
-                                            <h4><?= $value['NAME'] ?></h4>
+                                            <? if (!empty($section['PROPERTIES']['STEPS']['~DESCRIPTION'][$innerKey])) { ?>
+                                                <h4><?= $section['PROPERTIES']['STEPS']['~DESCRIPTION'][$innerKey] ?></h4>
+                                            <? } ?>
                                             <p class="text-l no-mb">
-                                                <?= $value['~PREVIEW_TEXT'] ?>
+                                                <?= $value['TEXT'] ?>
                                             </p>
                                         </div>
                                     </div>

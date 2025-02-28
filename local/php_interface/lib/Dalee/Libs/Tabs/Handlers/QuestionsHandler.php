@@ -34,7 +34,7 @@ class QuestionsHandler implements PropertyHandlerInterface
             <div class="accordion" id="accordion-<?= $this->property['ID'] ?>">
                 <?= $this->getQuestionsHtml() ?>
                 <?
-                if($this->qaLinlk){
+                if(!empty($this->qaLinlk)) {
                     ?>
                     <a class="btn btn-link btn-lg-lg d-inline-flex gap-2 align-items-center mt-4 mt-md-6 section-custom-accordion__button-more"
                         href="<?=$this->qaLinlk?>#links">

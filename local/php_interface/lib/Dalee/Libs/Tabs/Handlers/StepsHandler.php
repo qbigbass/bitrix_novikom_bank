@@ -25,8 +25,7 @@ class StepsHandler implements PropertyHandlerInterface
 
         ob_start();
 
-        $renderer->render('Steps', null, null, [
-            'parentSection' => $this->property['VALUE'],
+        $renderer->render('Steps', $this->property['VALUE'], null, [
             'stepsHeader' => $this->element['PROPERTIES']['STEPS_HEADER']['~VALUE'] ?? 'Этапы',
             'stepsTemplate' => 'variants',
         ]);
