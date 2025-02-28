@@ -125,40 +125,58 @@ $arResult['CONTENT_JSON'] ?? [],
                     <a class="btn btn-pb btn-pb--size-m-lg btn-pb--primary js-scroll-to" href="#become-client">
                         <?= Loc::getMessage('HEADER_MENU_BECOME_A_CLIENT') ?></a>
                 </div>
-                <div class="mt-auto pt-7 pt-lg-0">
-                    <div class="pb-card-contact d-flex flex-column row-gap-4 row-gap-lg-5 align-items-lg-center">
-                        <ul class="list-pb-contact d-flex flex-column flex-lg-row justify-content-xl-between flex-wrap gap-4">
-                            <li class="d-flex align-items-center">
-                                <span class="icon size-m flex-shrink-0 dark-0">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-phone"></use>
-                                    </svg>
-                                </span>
-                                <a class="list-pb-contact__link"
-                                   href="tel:+<?= preg_replace('/\D+/', '', UF_PHONE1); ?>"
-                                   data-phone="<?= UF_PHONE1 ?>"><?= UF_PHONE1 ?></a>
-                            </li>
-                            <li class="d-flex align-items-center">
-                                <span class="icon size-m flex-shrink-0 dark-0">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-mail"></use>
-                                    </svg>
-                                </span>
-                                <a class="list-pb-contact__link"
-                                   href="emailto:<?= UF_PB_EMAIL ?>"><?= UF_PB_EMAIL ?></a>
-                            </li>
-                            <li class="d-flex align-items-center">
-                                <span class="icon size-m flex-shrink-0 dark-0">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-bank"></use>
-                                    </svg>
-                                </span>
-                                <span><?= UF_PB_FULL_ADDRESS2 ?></span>
-                            </li>
-                        </ul>
-                        <a class="btn btn-pb btn-pb--outline" href="/"><?=Loc::getMessage('HEADER_MAIN_SITE')?></a>
-                    </div>
-                </div>
+                <?$APPLICATION->IncludeComponent(
+                    "bitrix:news.detail",
+                    "contancts",
+                    Array(
+                        "ACTIVE_DATE_FORMAT" => "d.m.Y",
+                        "ADD_ELEMENT_CHAIN" => "N",
+                        "ADD_SECTIONS_CHAIN" => "N",
+                        "AJAX_MODE" => "N",
+                        "AJAX_OPTION_ADDITIONAL" => "",
+                        "AJAX_OPTION_HISTORY" => "N",
+                        "AJAX_OPTION_JUMP" => "N",
+                        "AJAX_OPTION_STYLE" => "N",
+                        "BROWSER_TITLE" => "-",
+                        "CACHE_GROUPS" => "N",
+                        "CACHE_TIME" => "36000000",
+                        "CACHE_TYPE" => "A",
+                        "CHECK_DATES" => "Y",
+                        "DETAIL_URL" => "",
+                        "DISPLAY_BOTTOM_PAGER" => "N",
+                        "DISPLAY_DATE" => "N",
+                        "DISPLAY_NAME" => "N",
+                        "DISPLAY_PICTURE" => "Y",
+                        "DISPLAY_PREVIEW_TEXT" => "N",
+                        "DISPLAY_TOP_PAGER" => "N",
+                        "ELEMENT_CODE" => "kontakty-v-private-banking",
+                        "ELEMENT_ID" => "",
+                        "FIELD_CODE" => array("ID","NAME",'PREVIEW_PICTURE','DETAIL_PICTURE'),
+                        "IBLOCK_ID" => iblock("contacts_ru"),
+                        "IBLOCK_TYPE" => "additional",
+                        "IBLOCK_URL" => "",
+                        "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+                        "MESSAGE_404" => "",
+                        "META_DESCRIPTION" => "-",
+                        "META_KEYWORDS" => "-",
+                        "PAGER_BASE_LINK_ENABLE" => "N",
+                        "PAGER_SHOW_ALL" => "N",
+                        "PAGER_TEMPLATE" => ".default",
+                        "PAGER_TITLE" => "Страница",
+                        "PROPERTY_CODE" => array("EMAIL","ADDRESS","DEPARTMENT","PHONE",""),
+                        "SET_BROWSER_TITLE" => "N",
+                        "SET_CANONICAL_URL" => "N",
+                        "SET_LAST_MODIFIED" => "N",
+                        "SET_META_DESCRIPTION" => "N",
+                        "SET_META_KEYWORDS" => "N",
+                        "SET_STATUS_404" => "N",
+                        "SET_TITLE" => "N",
+                        "SHOW_404" => "N",
+                        "STRICT_SECTION_CHECK" => "N",
+                        "USE_PERMISSIONS" => "N",
+                        "USE_SHARE" => "N"
+                    )
+                );?>
             </div>
         </div>
     </div>

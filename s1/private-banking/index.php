@@ -419,23 +419,8 @@ $APPLICATION->IncludeComponent(
     ]
 );?>
 
-<section class="pb-section pb-section--bg-black">
-    <div class="container">
-        <div class="pb-card-office animate js-animation">
-            <div class="pb-card-office__content d-flex flex-column align-items-start">
-                <h3 class="pb-card-office__title mb-3 mb-lg-4">Контакты</h3>
-                <p class="pb-card-office__text pr-text-color mb-0"><?= UF_PB_FULL_ADDRESS ?></p>
-                <div class="mt-auto d-flex justify-content-between align-items-center w-100">
-                    <ul class="pb-card-office__list d-flex flex-column row-gap-2 row-gap-md-3 align-items-start">
-                        <li><a href="mailto:<?= UF_PB_EMAIL ?>"><?= UF_PB_EMAIL ?></a></li>
-                        <li><a href="tel:+<?= preg_replace('/\D+/', '', UF_PHONE1); ?>"><?= UF_PHONE1 ?></a></li>
-                    </ul>
-                    <div class="pb-card-office__qr d-none d-xl-block"><img src="<?= UF_PB_QR_IMAGE ?>" alt="qr-код" loading="lazy" width="80" height="80"></div>
-                </div>
-            </div>
-            <div class="pb-card-office__map"><img src="<?= UF_PB_MAP_IMAGE ?>" alt="qr-код" loading="lazy" width="80" height="80" alt="карта" loading="lazy"></div>
-        </div>
-    </div>
-</section>
+<?
+$APPLICATION->ShowViewContent('PB_INDEX_CONTACTS');
+?>
 
 <?php require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>
