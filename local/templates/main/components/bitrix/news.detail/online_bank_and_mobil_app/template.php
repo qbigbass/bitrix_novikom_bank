@@ -50,7 +50,7 @@ $headerView->render(
     <section class="section-layout py-6 py-lg-11">
         <div class="container">
             <div class="card-regal d-flex flex-column flex-md-row row-gap-3 column-gap-md-6 bg-dark-30">
-                <img class="card-regal__image" src="/frontend/dist/img/tagline_awards.png" width="200" height="200"
+                <img class="card-regal__image" src="<?= $arResult['DISPLAY_PROPERTIES']['ADDITIONAL_INFO_IMG']['SRC'] ?>" width="200" height="200"
                      alt="" loading="lazy">
                 <div class="card-regal__content d-flex flex-column row-gap-4">
                     <? if (!empty($arResult['DISPLAY_PROPERTIES']['ADDITIONAL_INFO_HEADING']['~VALUE'])): ?>
