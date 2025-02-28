@@ -42,10 +42,9 @@ $APPLICATION->SetTitle('Закупки <br>у субъектов МСП');
 <section class="section-layout py-lg-11 pb-lg-0 px-lg-6">
     <div class="container">
         <div class="rte rte--w-xxl-60 px-lg-6 mb-6 mb-lg-7">
-
                 <? $APPLICATION->IncludeFile('/about/purchases/documents/include_text.php'); ?>
-
-        </div><br>
+        </div>
+        <br>
         <div class="polygon-container js-polygon-container">
             <div class="polygon-container__content">
                 <div class="helper bg-dark-10">
@@ -55,7 +54,6 @@ $APPLICATION->SetTitle('Закупки <br>у субъектов МСП');
                              src="/frontend/dist/img/restructuring-additional-info.png" alt="Обратите внимание">
 
                         <? $APPLICATION->IncludeFile('/about/purchases/documents/include_quote.php'); ?>
-
                     </div>
                 </div>
             </div>
@@ -76,6 +74,14 @@ $APPLICATION->SetTitle('Закупки <br>у субъектов МСП');
         </div>
     </div>
 </section>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_ads_customers.php'); ?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_cross_sale.php'); ?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_special_offers.php'); ?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_news.php'); ?>
 
 <? $APPLICATION->IncludeFile('/local/php_interface/include/block_contacts.php'); ?>
 

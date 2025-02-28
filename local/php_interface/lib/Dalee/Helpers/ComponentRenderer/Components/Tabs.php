@@ -112,7 +112,6 @@ class Tabs implements ComponentInterface
                 "SORT_ORDER2" => "ASC",
                 "STRICT_SECTION_CHECK" => "N",
                 "TABS_PADDING" => $padding,
-                "ATTR_SECTION_ID" => $sectionId
             ],
             $component,
             ["HIDE_ICONS" => "Y"]

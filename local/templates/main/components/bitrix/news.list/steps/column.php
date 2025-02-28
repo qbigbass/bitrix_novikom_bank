@@ -5,19 +5,15 @@
 global $APPLICATION;
 $stepperColor = $APPLICATION->GetProperty("stepperItemColor") ?: "stepper-item--color-green";
 
-foreach ($arResult['SECTIONS'] as $key => $section) { ?>
+foreach ($arResult['ITEMS'] as $key => $section) { ?>
 
     <section class="section-layout <?= $key % 2 != 0 || $arParams['DARK_BG'] ? 'bg-dark-10' : '' ?>">
         <div class="container">
             <h3 class="px-lg-6 mb-4 mb-md-6 mb-lg-7"><?= $section['NAME'] ?></h3>
             <div class="row px-lg-6">
-                <? $elementsFiltered = array_values(array_filter($arResult['ITEMS'], function ($item) use ($section) {
-                    return $item['IBLOCK_SECTION_ID'] == $section['ID'];
-                }));
-                ?>
-                <div class="stepper steps-<?= count($elementsFiltered) > 3 ? 4 : 3 ?>">
+                <div class="stepper steps-<?= count($section['PROPERTIES']['STEPS']['VALUE']) > 3 ? 4 : 3 ?>">
 
-                    <? foreach ($elementsFiltered as $innerKey => $value) { ?>
+                    <? foreach ($section['PROPERTIES']['STEPS']['~VALUE'] as $innerKey => $value) { ?>
                         <div class="stepper-item <?= $stepperColor ?>">
                             <div class="stepper-item__header">
                                 <div class="stepper-item__number">
@@ -29,10 +25,10 @@ foreach ($arResult['SECTIONS'] as $key => $section) { ?>
                                 <div class="stepper-item__arrow"></div>
                             </div>
                             <div class="stepper-item__content">
-                                <? if(!empty($arParams['WITH_H4'])) { ?>
-                                    <h4><?= $value['~NAME'] ?></h4>
+                                <? if (!empty($section['PROPERTIES']['STEPS']['~DESCRIPTION'][$innerKey])) { ?>
+                                    <h4><?= $section['PROPERTIES']['STEPS']['~DESCRIPTION'][$innerKey] ?></h4>
                                 <? } ?>
-                                <p class="text-l mb-0"><?= $value['~PREVIEW_TEXT'] ?></p>
+                                <p class="text-l mb-0"><?= $value['TEXT'] ?></p>
                             </div>
                         </div>
                     <? } ?>

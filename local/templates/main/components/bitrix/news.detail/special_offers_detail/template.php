@@ -78,50 +78,14 @@ $renderer = new Renderer($APPLICATION, $component);
     </picture>
 </section>
 
-<? if (!empty($arResult['PROPERTIES']['STEPS']['VALUE'])) { ?>
-    <section class="section-restructuring-steps bg-dark-10 py-6 py-sm-9 py-md-11 py-xl-16">
-        <div class="container">
-            <div class="row px-lg-6">
-                <h3 class="d-none d-md-flex"><?= $arResult['PROPERTIES']['STEPS_HEADER']['VALUE'] ?></h3>
-                <a class="h3 d-flex align-items-center justify-content-between dark-100 d-md-none"
-                   data-bs-toggle="collapse" href="#restructuring-steps-content" role="button" aria-expanded="false"
-                   aria-controls="restructuring-steps-content">
-                    <?= $arResult['PROPERTIES']['STEPS_HEADER']['VALUE'] ?></h3>
-                    <svg class="icon size-m violet-100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-down"></use>
-                    </svg>
-                </a>
-            </div>
-            <div class="section-restructuring-steps__wrapper collapse d-md-block mt-6 mt-lg-7"
-                 id="restructuring-steps-content">
-                <div class="row row-gap-6 px-lg-6">
-                    <div class="stepper steps-3">
-                        <? foreach ($arResult['PROPERTIES']['STEPS']['~VALUE'] as $key => $step) { ?>
+<? if (!empty($arResult['PROPERTIES']['STEPS']['VALUE'])) {
 
-                            <div class="stepper-item stepper-item--color-green">
-                                <div class="stepper-item__header">
-                                    <div class="stepper-item__number">
-                                        <div class="stepper-item__number-value"><?= $key + 1 ?></div>
-                                        <div class="stepper-item__number-icon">
-                                            <?= getStepperIcons($key) ?>
-                                        </div>
-                                    </div>
-                                    <div class="stepper-item__arrow"></div>
-                                </div>
-                                <div class="stepper-item__content">
-                                    <? if (!empty($arResult['PROPERTIES']['STEPS']['~DESCRIPTION'][$key])) { ?>
-                                        <h4><?= $arResult['PROPERTIES']['STEPS']['~DESCRIPTION'][$key] ?></h4>
-                                    <? } ?>
-                                    <p class="text-l no-mb"><?= $step ?></p>
-                                </div>
-                            </div>
-                        <? } ?>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-<? } ?>
+    $renderer->render('Steps', $arResult['PROPERTIES']['STEPS']['VALUE'], null, [
+        'stepsHeader' => $arResult['PROPERTIES']['STEPS_HEADER']['~VALUE'] ?? 'Этапы',
+        'stepsTemplate' => $arResult['PROPERTIES']['STEPS_TEMPLATE']['VALUE_XML_ID'] ?? '',
+    ]);
+
+} ?>
 
 <? if (!empty($arResult['PROPERTIES']['SELECTED_CAT']['VALUE'])) { ?>
     <section class="section-layout bg-blue-10 px-lg-6">

@@ -12,9 +12,11 @@
 /** @var CBitrixComponent $component */
 
 use Dalee\Helpers\ComponentHelper;
+use Dalee\Helpers\ComponentRenderer\Renderer;
 
 $parentTemplateFolder = $component->GetParent()->getTemplate()->GetFolder();
 $helper = new ComponentHelper($component);
+$renderer = new Renderer($APPLICATION, $component);
 ?>
 
 <?$APPLICATION->IncludeFile(
@@ -94,5 +96,13 @@ $helper = new ComponentHelper($component);
         <img src="/frontend/dist/img/patterns/section-2/pattern-light-l.svg" alt="bg pattern" loading="lazy">
     </picture>
 </section>
+<? if (!empty($arResult['PROPERTIES']['STEPS']['VALUE'])) {
+
+    $renderer->render('Steps', $arResult['PROPERTIES']['STEPS']['VALUE'], null, [
+        'stepsHeader' => $arResult['PROPERTIES']['STEPS_HEADER']['~VALUE'] ?? 'Этапы',
+        'stepsTemplate' => $arResult['PROPERTIES']['STEPS_TEMPLATE']['VALUE_XML_ID'] ?? '',
+    ]);
+
+} ?>
 
 <?$helper->saveCache();?>
