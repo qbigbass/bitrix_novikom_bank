@@ -90,15 +90,19 @@ $colorIcon = $arParams["COLOR_ICON"] ?? "dark-0";
                                                     </li>
                                                 <? endif; ?>
                                                 <? if (!empty($item['PROPERTIES']['ADDRESS']['VALUE'])) : ?>
-                                                    <li class="d-flex column-gap-3">
-                                                        <span class="icon size-m flex-shrink-0 <?= $colorIcon ?>">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                                              <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-point"></use>
-                                                            </svg>
-                                                        </span>
-                                                        <div class="list-contact__text d-flex flex-wrap gap-2">
-                                                            <span class="<?= $colorSpan ?> text-l"><?= $item['PROPERTIES']['ADDRESS']['VALUE'] ?></span>
-                                                        </div>
+                                                    <li class="d-flex flex-column column-gap-3 row-gap-2">
+                                                        <? foreach ($item['PROPERTIES']['ADDRESS']['VALUE'] as $address) : ?>
+                                                            <div class="d-flex column-gap-3">
+                                                                <span class="icon size-m flex-shrink-0 <?= $colorIcon ?>">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                                                      <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-point"></use>
+                                                                    </svg>
+                                                                </span>
+                                                                <div class="list-contact__text d-flex flex-wrap gap-2">
+                                                                    <span class="<?= $colorSpan ?> text-l"><?= $address ?></span>
+                                                                </div>
+                                                            </div>
+                                                        <? endforeach; ?>
                                                     </li>
                                                 <? endif; ?>
                                             </ul>
