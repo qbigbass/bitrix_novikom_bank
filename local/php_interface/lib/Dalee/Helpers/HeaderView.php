@@ -80,7 +80,6 @@ class HeaderView
                 'bgColorClass' => 'bg-linear-blue',
                 'h1ColorClass' => 'dark-0',
                 'breadcrumbsColorClass' => 'text-white-50',
-                'picHeader' => '/patterns/section/pattern-light',
             ];
         }
 
@@ -94,7 +93,6 @@ class HeaderView
             'buttonHref' => $arResult['PROPERTIES']['BUTTON_HREF_DETAIL']['VALUE'] ?? '',
             'h1ColorClass' => $arResult["PARAMS_CLASS"]["H1_COLOR_CLASS"] ?: 'dark-0',
             'breadcrumbsColorClass' => $arResult["PARAMS_CLASS"]["BREADCRUMBS_COLOR_CLASS"] ?: 'text-white-50',
-            'picHeader' => $arResult['PROPERTIES']['HEADER_BG_PICTURE']['VALUE'] ?: '/patterns/section/pattern-light',
             'buttonCodeForm' => $arResult['PROPERTIES']['BUTTON_CODE_FORM']['VALUE'] ?? '',
             'buttonClassColor' => $arResult['PROPERTIES']['CLASS_BUTTON_TEXT_DETAIL']['VALUE'] ?: 'btn-tertiary',
         ];
@@ -200,13 +198,11 @@ class HeaderView
                 <? } ?>
 
             </div>
-            <? if (!empty($headerData['picHeader'])) { ?>
-                <picture class="pattern-bg banner-product__pattern">
-                    <source srcset="/frontend/dist/img<?= $headerData['picHeader'] ?>-s.svg" media="(max-width: 767px)">
-                    <source srcset="/frontend/dist/img<?= $headerData['picHeader'] ?>-m.svg" media="(max-width: 1199px)">
-                    <img src="/frontend/dist/img<?= $headerData['picHeader'] ?>-l.svg" alt="bg pattern" loading="lazy">
-                </picture>
-            <? } ?>
+            <picture class="pattern-bg banner-product__pattern">
+                <source srcset="/frontend/dist/img/patterns/section/pattern-light-s.svg" media="(max-width: 767px)">
+                <source srcset="/frontend/dist/img/patterns/section/pattern-light-m.svg" media="(max-width: 1199px)">
+                <img src="/frontend/dist/img/patterns/section/pattern-light-l.svg" alt="bg pattern" loading="lazy">
+            </picture>
         </div>
         <? return ob_get_clean();
     }
@@ -268,13 +264,11 @@ class HeaderView
 
                 </div>
             </div>
-            <? if (!empty($headerData['picHeader'])) { ?>
-                <picture class="pattern-bg pattern-bg--position-sm-top banner-text__pattern">
-                    <source srcset="/frontend/dist/img<?= $headerData['picHeader'] ?>-s.svg" media="(max-width: 767px)">
-                    <source srcset="/frontend/dist/img<?= $headerData['picHeader'] ?>-m.svg" media="(max-width: 1199px)">
-                    <img src="/frontend/dist/img<?= $headerData['picHeader'] ?>-l.svg" alt="bg pattern" loading="lazy">
-                </picture>
-            <? } ?>
+            <picture class="pattern-bg pattern-bg--position-sm-top banner-text__pattern">
+                <source srcset="/frontend/dist/img/patterns/section/pattern-light-s.svg" media="(max-width: 767px)">
+                <source srcset="/frontend/dist/img/patterns/section/pattern-light-m.svg" media="(max-width: 1199px)">
+                <img src="/frontend/dist/img/patterns/section/pattern-light-l.svg" alt="bg pattern" loading="lazy">
+            </picture>
         </section>
         <? return ob_get_clean();
     }
