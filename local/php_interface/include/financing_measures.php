@@ -1,9 +1,16 @@
 <?
+use Bitrix\Main\Application;
 function showBlockFinancingMeasures()
 {
-    ob_start();
-    global $APPLICATION; ?>
-    <section class="section-catalog section-layout d-flex flex-column bg-purple-10">
+    $request = Application::getInstance()->getContext()->getRequest();
+    $action = $request->getPost("action");
+
+    global $APPLICATION;
+    if ($action !== 'getAjaxMeasures') {
+        ob_start();
+    }
+    ?>
+    <section class="section-catalog section-layout d-flex flex-column bg-purple-10" id="js-measure-block">
         <div class="container">
             <h3 class="px-lg-6 mb-4 mb-md-6 mb-lg-7">Меры финансирования</h3>
         </div>
@@ -37,7 +44,7 @@ function showBlockFinancingMeasures()
         </section>
         <section class="section-catalog__list">
             <div class="container">
-                <div class="row align-items-stretch cards-gutter">
+                <div class="row align-items-stretch cards-gutter" id="js-measure-block-content">
                     <!-- Список элементов -->
                     <?
                     /*
@@ -58,7 +65,9 @@ function showBlockFinancingMeasures()
                             "SECTION_CODE" => $sectionCode
                         ];
                     }
-
+                    if ($action === 'getAjaxMeasures') {
+                        $APPLICATION->RestartBuffer();
+                    }
                     $APPLICATION->IncludeComponent(
                         "bitrix:news.list",
                         "restructuring_list",
@@ -116,12 +125,19 @@ function showBlockFinancingMeasures()
                             "STRICT_SECTION_CHECK" => "N",
                             "ADD_COL_CLASS" => "col-lg-6"
                         ]
-                    );?>
+                    );
+                    if ($action === 'getAjaxMeasures') {
+                        die();
+                    }
+                    ?>
                 </div>
             </div>
         </section>
     </section>
     <?
-    $GLOBALS["BLOCK_FINANCING_MEASURES"] = ob_get_contents();
-    ob_end_clean();
+    if ($action !== 'getAjaxMeasures') {
+        $APPLICATION->AddHeadScript('/local/php_interface/include/js/financing_measures.js');
+        $GLOBALS["BLOCK_FINANCING_MEASURES"] = ob_get_contents();
+        ob_end_clean();
+    }
 }
