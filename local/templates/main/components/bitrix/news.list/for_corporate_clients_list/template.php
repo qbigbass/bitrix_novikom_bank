@@ -80,9 +80,9 @@ $this->setFrameMode(true);
                                     <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
                                 </svg>
                             </span>
-                                <? if (!empty($item['PREVIEW_PICTURE']['SRC'])) { ?>
-                                    <img class="icon size-xxl ms-auto" src="<?= $item['PREVIEW_PICTURE']['SRC'] ?>"
-                                         alt="<?= $item['PREVIEW_PICTURE']['ALT'] ?>" loading="lazy">
+                                <? if (!empty($item['DISPLAY_PROPERTIES']['PREVIEW_PICTURE']['FILE_VALUE']['SRC'])) { ?>
+                                    <img class="icon size-xxl ms-auto" src="<?= $item['DISPLAY_PROPERTIES']['PREVIEW_PICTURE']['FILE_VALUE']['SRC'] ?>"
+                                         alt="<?= $item['DISPLAY_PROPERTIES']['PREVIEW_PICTURE']['FILE_VALUE']['DESCRIPTION'] ?>" loading="lazy">
                                 <? } ?>
                             </div>
                         </div>
