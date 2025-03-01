@@ -1,9 +1,14 @@
-<?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
+<? use Dalee\Helpers\HeaderView;
+
+if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 /** @var array $arResult */
 /** @var Dalee\Helpers\ComponentHelper $helper */
+
+
+$backgroundStyle = (new HeaderView())->getBackgroundStyle($arResult['PROPERTIES']['BANNER_BACKGROUND']['VALUE'] ?: null);
 ?>
 
-<section class="banner-text border-green bg-linear-blue banner-text--mh-mobile-unset">
+<section class="banner-text border-green bg-linear-blue banner-text--mh-mobile-unset" <?=$backgroundStyle?>>
     <div class="container banner-text__container position-relative z-2">
         <div class="row ps-lg-6">
             <div class="col-12 col-xxl-8 position-relative z-1 mb-6 mb-md-0 pt-6">

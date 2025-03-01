@@ -213,7 +213,7 @@ class HeaderView
      * @param int|null $imageId
      * @return string
      */
-    private function getBackgroundStyle(?int $imageId): string
+    public function getBackgroundStyle(?int $imageId): string
     {
         if ($imageId > 0) {
             $renderImage = CFile::ResizeImageGet(
