@@ -198,11 +198,13 @@ class HeaderView
                 <? } ?>
 
             </div>
-            <picture class="pattern-bg banner-product__pattern">
-                <source srcset="/frontend/dist/img/patterns/section/pattern-light-s.svg" media="(max-width: 767px)">
-                <source srcset="/frontend/dist/img/patterns/section/pattern-light-m.svg" media="(max-width: 1199px)">
-                <img src="/frontend/dist/img/patterns/section/pattern-light-l.svg" alt="bg pattern" loading="lazy">
-            </picture>
+            <?if (empty($backgroundStyle)) {?>
+                <picture class="pattern-bg banner-product__pattern">
+                    <source srcset="/frontend/dist/img/patterns/section/pattern-light-s.svg" media="(max-width: 767px)">
+                    <source srcset="/frontend/dist/img/patterns/section/pattern-light-m.svg" media="(max-width: 1199px)">
+                    <img src="/frontend/dist/img/patterns/section/pattern-light-l.svg" alt="bg pattern" loading="lazy">
+                </picture>
+            <?}?>
         </div>
         <? return ob_get_clean();
     }
@@ -265,11 +267,13 @@ class HeaderView
 
                 </div>
             </div>
-            <picture class="pattern-bg pattern-bg--position-sm-top banner-text__pattern">
-                <source srcset="/frontend/dist/img/patterns/section/pattern-light-s.svg" media="(max-width: 767px)">
-                <source srcset="/frontend/dist/img/patterns/section/pattern-light-m.svg" media="(max-width: 1199px)">
-                <img src="/frontend/dist/img/patterns/section/pattern-light-l.svg" alt="bg pattern" loading="lazy">
-            </picture>
+            <?if (empty($backgroundStyle)) {?>
+                <picture class="pattern-bg pattern-bg--position-sm-top banner-text__pattern">
+                    <source srcset="/frontend/dist/img/patterns/section/pattern-light-s.svg" media="(max-width: 767px)">
+                    <source srcset="/frontend/dist/img/patterns/section/pattern-light-m.svg" media="(max-width: 1199px)">
+                    <img src="/frontend/dist/img/patterns/section/pattern-light-l.svg" alt="bg pattern" loading="lazy">
+                </picture>
+            <?}?>
         </section>
         <? return ob_get_clean();
     }

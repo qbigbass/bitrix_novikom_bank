@@ -3,8 +3,6 @@
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 /** @var array $arResult */
 /** @var Dalee\Helpers\ComponentHelper $helper */
-
-
 $backgroundStyle = (new HeaderView())->getBackgroundStyle($arResult['PROPERTIES']['BANNER_BACKGROUND']['VALUE'] ?: null);
 ?>
 
@@ -22,10 +20,12 @@ $backgroundStyle = (new HeaderView())->getBackgroundStyle($arResult['PROPERTIES'
             </div>
         </div>
     </div>
-    <picture class="pattern-bg pattern-bg--position-sm-top banner-text__pattern">
-        <source srcset="/frontend/dist/img/patterns/section/pattern-light-s.svg" media="(max-width: 767px)">
-        <source srcset="/frontend/dist/img/patterns/section/pattern-light-m.svg" media="(max-width: 1199px)">
-        <img src="/frontend/dist/img/patterns/section/pattern-light-l.svg" alt="bg pattern" loading="lazy">
-    </picture>
+    <?if (empty($backgroundStyle)):?>
+        <picture class="pattern-bg pattern-bg--position-sm-top banner-text__pattern">
+            <source srcset="/frontend/dist/img/patterns/section/pattern-light-s.svg" media="(max-width: 767px)">
+            <source srcset="/frontend/dist/img/patterns/section/pattern-light-m.svg" media="(max-width: 1199px)">
+            <img src="/frontend/dist/img/patterns/section/pattern-light-l.svg" alt="bg pattern" loading="lazy">
+        </picture>
+    <?endif;?>
 </section>
 
