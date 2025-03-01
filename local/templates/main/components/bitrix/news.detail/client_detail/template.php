@@ -68,8 +68,7 @@ $headerView->render(
         ? renderBenefitsHeaderFooter(
             $APPLICATION,
             $arResult['PROPERTIES']['BENEFITS_TOP']['VALUE'],
-            !empty($arResult['PREVIEW_PICTURE']['SRC']),
-            params: $params
+            $params
         ) : null,
 );
 ?>
