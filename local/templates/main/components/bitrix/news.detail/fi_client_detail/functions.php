@@ -26,18 +26,16 @@ function renderBenefitsHeaderFooter(CMain $APPLICATION, array $ids, bool $hasPic
 {
     $renderer = new Renderer($APPLICATION);
     $colCountBenefitTop = $hasPicture ? 3 : 4;
-    $calcCols = 'Y';
 
     if (!empty($params['CNT_COL_BENEFITS_TOP'])) {
         $colCountBenefitTop = $params['CNT_COL_BENEFITS_TOP'];
-        $calcCols = 'N';
     }
 
     ob_start();
     $renderer->render('Benefits', $ids, null, [
         'colCount' => $colCountBenefitTop,
         'headerTag' => 'h4',
-        'calcCols' => $calcCols,
+        'calcCols' => 'Y',
         'colorTitleBenefits' => $params['COLOR_TITLE_BENEFITS_FOOTER']
     ]);
 
