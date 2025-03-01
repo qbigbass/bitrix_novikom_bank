@@ -233,9 +233,10 @@ class HeaderView
 
     private function compact(array $headerData, int $chainDepth, ?string $termsHtml): bool|string
     {
+        $backgroundStyle = $this->getBackgroundStyle(intval($headerData['background']));
         ob_start(); ?>
 
-        <section class="banner-text <?= $headerData['bgColorClass'] ?> <?= implode(' ', $headerData['additionalClasses']) ?>">
+        <section class="banner-text <?= $headerData['bgColorClass'] ?> <?= implode(' ', $headerData['additionalClasses']) ?>" <?=$backgroundStyle?>>
             <div class="container banner-text__container position-relative z-2">
                 <div class="row ps-lg-6">
                     <div class="col-12 position-relative z-1 mb-5 mb-md-0 pt-6<? if (!empty($headerData['picture'])) { ?> col-sm-6 col-md-8<? } ?><? if (empty($headerData['picture'])) { ?> col-xxl-8<? } ?>">
