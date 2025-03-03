@@ -13,6 +13,7 @@ class HeaderView
     private const BACKGROUND_IMAGE_MAX_WIDTH = 1900;
 
     private ?ComponentHelper $helper;
+    private string $btnClasses = 'btn-light';
 
     public function __construct(?CBitrixComponent $component = null)
     {
@@ -43,6 +44,13 @@ class HeaderView
         };
     }
 
+    public function setBtnClasses(string $btnClasses): self
+    {
+        $this->btnClasses = $btnClasses;
+
+        return $this;
+    }
+
     private function getHeaderData(
         string $title,
         ?string $description,
@@ -56,7 +64,8 @@ class HeaderView
         return array_merge(
             $this->getBaseHeaderData($title, $description),
             $this->getHeaderDataFromResult($arResult),
-            $this->getAdditionalHeaderData($termsSettings, $footerHtml, $additionalClasses, $headerHtml)
+            $this->getAdditionalHeaderData($termsSettings, $footerHtml, $additionalClasses, $headerHtml),
+            ['buttonClassColor' => $this->btnClasses]
         );
     }
 
@@ -94,7 +103,6 @@ class HeaderView
             'h1ColorClass' => $arResult["PARAMS_CLASS"]["H1_COLOR_CLASS"] ?: 'dark-0',
             'breadcrumbsColorClass' => $arResult["PARAMS_CLASS"]["BREADCRUMBS_COLOR_CLASS"] ?: 'text-white-50',
             'buttonCodeForm' => $arResult['PROPERTIES']['BUTTON_CODE_FORM']['VALUE'] ?? '',
-            'buttonClassColor' => $arResult['PROPERTIES']['CLASS_BUTTON_TEXT_DETAIL']['VALUE'] ?: 'btn-tertiary',
         ];
 
         return $result;

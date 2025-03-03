@@ -54,7 +54,9 @@ if (!empty($arResult['PROPERTIES']['SHORT_CONDITIONS']['~VALUE']['TEXT'])) {
 /*
  * Шапка
  */
-$headerView->render(
+$headerView
+    ->setBtnClasses('btn-orange')
+    ->render(
     $titleHeader,
     $arResult['~PREVIEW_TEXT'],
     [
