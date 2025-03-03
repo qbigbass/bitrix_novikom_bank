@@ -212,6 +212,6 @@ document.addEventListener('DOMContentLoaded', () => {
     scrollPbAccordion();
 })
 
-window.onload = function() {
+window.addEventListener('load', function() {
     pbAnimation();
-};
+});
