@@ -101,14 +101,19 @@ $arItem = $arResult;
                     <h5 class="fw-semibold">Контакты</h5>
                     <ul class="list-contact d-flex flex-column row-gap-3">
                         <?php if (!empty($arItem['DISPLAY_PROPERTIES']['PHONE']['VALUE'])) : ?>
-                            <?php foreach ($arItem['DISPLAY_PROPERTIES']['PHONE']['VALUE'] as $phone) : ?>
+                            <?php foreach ($arItem['DISPLAY_PROPERTIES']['PHONE']['VALUE'] as $keyP => $phone) : ?>
                                 <li class="d-flex column-gap-3">
                                     <span class="icon size-m violet-100">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                                             <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-phone"></use>
                                         </svg>
                                     </span>
-                                    <a class="list-contact__link" href="tel:<?= preg_replace('/[^\d\+]/', '', $phone); ?>"><?= $phone ?></a>
+                                    <a class="list-contact__link" href="tel:<?= preg_replace('/[^\d\+]/', '', $phone); ?>"
+                                    ><?= $phone ?>
+                                     <?php if (!empty($arItem['DISPLAY_PROPERTIES']['PHONE']['DESCRIPTION'][$keyP])) : ?>
+                                         доб. <?= $arItem['DISPLAY_PROPERTIES']['PHONE']['DESCRIPTION'][$keyP] ?>
+                                     <?php endif; ?>
+                                    </a>
                                 </li>
                             <?php endforeach; ?>
                         <?php endif; ?>
