@@ -1,5 +1,10 @@
 <?php
+
+use Bitrix\Main\Page\Asset;
+
 $APPLICATION->SetTitle('Бонусные программы');
+$asset = Asset::getInstance();
+$asset->addJs('/frontend/dist/js/calculator-bonus.js');
 ?>
 <?$APPLICATION->IncludeComponent(
     "bitrix:news",
