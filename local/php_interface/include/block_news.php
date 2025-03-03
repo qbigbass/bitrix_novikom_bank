@@ -12,7 +12,7 @@ $elementIds = getElementIdsIncludedArea(iblock('press_center_ru'));
         "ID" => $elementIds
     ];
     ?>
-    <section class="section-layout pt-0">
+    <section class="section-layout <?= $arParams['CLASS_SECTION'] ?>">
         <div class="container">
             <div class="d-flex align-items-end ps-lg-6 mb-6 mb-lg-7">
                 <h3>Новости</h3>
