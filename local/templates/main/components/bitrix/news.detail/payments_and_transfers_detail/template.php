@@ -50,7 +50,7 @@ $renderer = new Renderer($APPLICATION, $component);
                 <img
                     class="banner-product__image"
                     src="<?= $arResult['DISPLAY_PROPERTIES']['BANNER_IMAGE']['FILE_VALUE']['SRC']; ?>"
-                    alt="<?= $arResult['~NAME']; ?>"
+                    alt="<?= htmlspecialchars($arResult['~NAME']); ?>"
                     loading="lazy"
                 >
             <? endif; ?>
@@ -122,7 +122,8 @@ $renderer = new Renderer($APPLICATION, $component);
         </div>
         <picture class="pattern-bg pattern-bg--position-sm-bottom section-restructuring-benefits__pattern">
             <source srcset="/frontend/dist/img/patterns/section/pattern-light-s.svg" media="(max-width: 767px)">
-            <source srcset="/frontend/dist/img/patterns/section/pattern-light-m.svg" media="(max-width: 1199px)"><img src="/frontend/dist/img/patterns/section/pattern-light-l.svg" alt="bg pattern" loading="lazy">
+            <source srcset="/frontend/dist/img/patterns/section/pattern-light-m.svg" media="(max-width: 1199px)">
+            <img src="/frontend/dist/img/patterns/section/pattern-light-l.svg" alt="bg pattern" loading="lazy">
         </picture>
     </section>
 <? endif; ?>
