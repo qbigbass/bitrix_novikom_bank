@@ -41,3 +41,8 @@ $eventManager->addEventHandler('iblock', 'OnBeforeIBlockElementUpdate', [CIBEdit
 AddEventHandler('iblock', 'OnAfterIBlockElementAdd', [IblockHelper::class, 'onAfterIBlockElementUpdateHandler']);
 AddEventHandler('iblock', 'OnAfterIBlockElementUpdate', [IblockHelper::class, 'onAfterIBlockElementUpdateHandler']);
 AddEventHandler('iblock', 'OnAfterIBlockElementDelete', [IblockHelper::class, 'onAfterIBlockElementUpdateHandler']);
+
+// Сбрасываем тегированный кеш "bitrix:menu" при изменении раздела в ИБ
+AddEventHandler('iblock', 'OnAfterIBlockSectionAdd', [IblockHelper::class, 'onAfterIBlockSectionUpdateHandler']);
+AddEventHandler('iblock', 'OnAfterIBlockSectionUpdate', [IblockHelper::class, 'onAfterIBlockSectionUpdateHandler']);
+AddEventHandler('iblock', 'OnBeforeIBlockSectionDelete', [IblockHelper::class, 'onAfterIBlockSectionDeleteHandler']);

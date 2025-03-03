@@ -309,3 +309,12 @@ function getElementIdsIncludedArea(int $iblock): array
 
     return $elementIds;
 }
+
+function getIblockIdsClearMenu(): array
+{
+    $iblockDeposits = iblock("deposits"); // Вклады
+    $iblockLoans = iblock("loans"); // Кредиты
+    $iblockMortgage= iblock("mortgage"); // Ипотека
+
+    return [$iblockDeposits, $iblockLoans, $iblockMortgage];
+}
