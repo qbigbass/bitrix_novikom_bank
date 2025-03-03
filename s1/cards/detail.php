@@ -11,7 +11,7 @@ $APPLICATION->SetTitle('Банковские карты');
 $arPathUrl = array_filter(explode("/", $APPLICATION->GetCurPage()));
 $cntSectionsPath = count($arPathUrl);
 
-if ($cntSectionsPath === 3) {
+if ($cntSectionsPath >= 3) {
     $iblockId = iblock('cards_detail_pages_ru');
     $parentSection = $arPathUrl[2];
     $currentSection = $arPathUrl[3];
@@ -33,8 +33,14 @@ if ($cntSectionsPath === 3) {
     ])->fetch();
 
     if (!empty($section['ID'])) {
+        $filter = [
+            'IBLOCK_SECTION.ID' => $section['ID'],
+        ];
+        if (!empty($arPathUrl[4])) {
+            $filter['CODE'] = $arPathUrl[4];
+        }
         $element = ElementTable::getList([
-            'filter' => ['IBLOCK_SECTION.ID' => $section['ID']],
+            'filter' => $filter,
             'select' => ['ID','IBLOCK_ID'],
             'order' => ['SORT' => 'ASC'],
             'limit' => 1
