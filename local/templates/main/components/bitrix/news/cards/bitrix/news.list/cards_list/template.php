@@ -47,9 +47,13 @@ $this->setFrameMode(true);
                                         class="btn btn-tertiary btn-lg-lg card-product-list__button w-100 w-sm-auto"
                                         type="button"
                                         data-bs-toggle="modal"
-                                        data-bs-target="#modal-credit-card-form"
+                                        data-bs-target="#credit_card_form"
                                     >Оформить заявку
                                     </button>
+                                    <?
+                                    global $FORMS;
+                                    $FORMS->includeForm('credit_card_form');
+                                    ?>
                                 <?}?>
                                 <a class="btn btn-link btn-lg-lg d-inline-flex gap-2 align-items-center card-product-list__button-more" href="<?= $arItem['SECTION_PAGE_URL'] ?>">
                                     <span>Подробнее</span>
@@ -65,11 +69,3 @@ $this->setFrameMode(true);
         </div>
     </div>
 </div>
-<?php $APPLICATION->IncludeComponent(
-    "dalee:form",
-    "credit_card_form",
-    [
-        "FORM_CODE" => "credit_card_form",
-    ],
-    $component
-); ?>

@@ -4,6 +4,8 @@
  * @global CMain $APPLICATION
  * @var CBitrixComponent $component
  */
+
+global $FORMS;
 ?>
 <div class="row js-calculator-mortgage" data-id="<?= $arParams['CALCULATOR_ELEMENT_ID'] ?? '' ?>" data-table="mortgage" data-expense-ratio="60">
     <div class="col-12 col-lg-6">
@@ -196,7 +198,7 @@
                                 class="btn btn-primary btn-lg-lg w-100"
                                 type="button"
                                 data-bs-toggle="modal"
-                                data-bs-target="#modal-mortgage-form"
+                                data-bs-target="#mortgage_form"
                             >
                                 Оформить заявку
                             </button>
@@ -217,11 +219,4 @@
         </div>
     </div>
 </div>
-<?php $APPLICATION->IncludeComponent(
-    "dalee:form",
-    "mortgage_form",
-    [
-        "FORM_CODE" => "mortgage_form",
-    ],
-    $component
-); ?>
+<?$FORMS->includeForm('mortgage_form');?>

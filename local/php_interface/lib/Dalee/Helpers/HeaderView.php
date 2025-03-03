@@ -153,6 +153,7 @@ class HeaderView
 
     private function detailed(array $headerData, int $chainDepth, ?string $termsHtml): string
     {
+        global $FORMS;
         $backgroundStyle = $this->getBackgroundStyle(intval($headerData['background']));
         ob_start(); ?>
         <div class="<?= $headerData['bgColorClass'] ?> <?= implode(' ', $headerData['additionalClasses']) ?>"
@@ -196,6 +197,7 @@ class HeaderView
                         >
                             <?= $headerData['buttonText'] ?>
                         </button>
+                        <?$FORMS->includeForm($headerData['buttonCodeForm']);?>
                     <? } ?>
                 </div>
 

@@ -43,10 +43,14 @@ $renderer = new Renderer($APPLICATION, $component);
                     class="btn btn-tertiary btn-lg-lg banner-product__button"
                     type="button"
                     data-bs-toggle="modal"
-                    data-bs-target="#modal-credit-card-form"
+                    data-bs-target="#credit_card_form"
                 >
                     Оформить карту
                 </button>
+                <?
+                global $FORMS;
+                $FORMS->includeForm('credit_card_form');
+                ?>
             <? } ?>
         </div>
     </div>
@@ -569,15 +573,6 @@ $customerCategoriesFilter = [
         </div>
     </section>
 <? endif; ?>
-
-<?php $APPLICATION->IncludeComponent(
-    "dalee:form",
-    "credit_card_form",
-    [
-        "FORM_CODE" => "credit_card_form",
-    ],
-    $component
-); ?>
 
 <? $helper->saveCache(); ?>
 
