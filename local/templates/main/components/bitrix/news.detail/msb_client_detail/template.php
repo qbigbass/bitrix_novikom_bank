@@ -45,35 +45,29 @@ if (!empty($arParams["HEADER_COLOR_CLASS"])) {
     $arResult["PARAMS_HEADER_COLOR_CLASS"] = $arParams["HEADER_COLOR_CLASS"];
 }
 
-if (!empty($arResult['PROPERTIES']['SHORT_CONDITIONS']['~VALUE']['TEXT'])) {
-    $benefitsHeader =
-        '<div class="banner-product__benefits-list">' .
-        $arResult['PROPERTIES']['SHORT_CONDITIONS']['~VALUE']['TEXT'] .
-        '</div>';
-}
 /*
  * Шапка
  */
 $headerView
     ->setBtnClasses('btn-yellow')
     ->render(
-    $titleHeader,
-    $arResult['~PREVIEW_TEXT'],
-    [
-        !empty($arResult['PROPERTIES']['BENEFITS_TOP']['VALUE']) ? 'banner-product--size-xl' : ''
-    ],
-    1,
-    $arResult,
-    null,
-    null,
-    $benefitsHeader ?? null,
-    !empty($arResult['PROPERTIES']['BENEFITS_TOP']['VALUE'])
-        ? renderBenefitsHeaderFooter(
-            $APPLICATION,
-            $arResult['PROPERTIES']['BENEFITS_TOP']['VALUE'],
-            !empty($arResult['PREVIEW_PICTURE']['SRC']),
-            params: $params
-        ) : null,
+        $titleHeader,
+        $arResult['~PREVIEW_TEXT'],
+        [
+            !empty($arResult['PROPERTIES']['BENEFITS_TOP']['VALUE']) ? 'banner-product--size-xl' : ''
+        ],
+        1,
+        $arResult,
+        null,
+        null,
+        $arResult['PROPERTIES']['SHORT_CONDITIONS']['~VALUE']['TEXT'] ?: null,
+        !empty($arResult['PROPERTIES']['BENEFITS_TOP']['VALUE'])
+            ? renderBenefitsHeaderFooter(
+                $APPLICATION,
+                $arResult['PROPERTIES']['BENEFITS_TOP']['VALUE'],
+                !empty($arResult['PREVIEW_PICTURE']['SRC']),
+                params: $params
+            ) : null,
 );
 ?>
 <!-- Баннер -->
