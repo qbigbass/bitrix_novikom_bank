@@ -186,12 +186,13 @@ $headerView
 } ?>
 
 <!-- Сноска (1-ое поле) -->
-<? if (!empty($arResult['PROPERTIES']['QUOTE_TEXT']['VALUE'])) {
-    foreach ($arResult['PROPERTIES']['QUOTE_TEXT']['~VALUE'] as $key => $value) {
-        if ($key == 0) {
-            renderQuote($value['TEXT']);
-        }
-    }
+<? if (!empty($arResult['PROPERTIES']['QUOTE_TEXT_1']['VALUE'])) {
+    $text = $arResult['PROPERTIES']['QUOTE_TEXT_1']['~VALUE']['TEXT'];
+    $header = !empty($arResult['PROPERTIES']['QUOTE_HEADER_1']['VALUE'])
+        ? "<h4 class=\"mb-3\">{$arResult['PROPERTIES']['QUOTE_HEADER_1']['VALUE']}</h4>"
+        : '';
+
+    renderQuote($header . $text);
 } ?>
 
 <!-- Текстовый блок -->
@@ -212,12 +213,13 @@ $headerView
 <? } ?>
 
 <!-- Сноска (2-ое поле) -->
-<? if (!empty($arResult['PROPERTIES']['QUOTE_TEXT']['VALUE'])) {
-    foreach ($arResult['PROPERTIES']['QUOTE_TEXT']['~VALUE'] as $key => $value) {
-        if ($key == 1) {
-            renderQuote($value['TEXT'], true);
-        }
-    }
+<? if (!empty($arResult['PROPERTIES']['QUOTE_TEXT_2']['VALUE'])) {
+    $text = $arResult['PROPERTIES']['QUOTE_TEXT_2']['~VALUE']['TEXT'];
+    $header = !empty($arResult['PROPERTIES']['QUOTE_HEADER_2']['VALUE'])
+        ? "<h4 class=\"mb-3\">{$arResult['PROPERTIES']['QUOTE_HEADER_2']['VALUE']}</h4>"
+        : '';
+
+    renderQuote($header . $text, true);
 } ?>
 
 <!-- Преимущества иконки -->
@@ -515,12 +517,13 @@ $headerView
 <? } ?>
 
 <!-- Сноска (3-ое поле и далее) -->
-<? if (!empty($arResult['PROPERTIES']['QUOTE_TEXT']['VALUE'])) {
-    foreach ($arResult['PROPERTIES']['QUOTE_TEXT']['~VALUE'] as $key => $value) {
-        if ($key > 1) {
-            renderQuote($value['TEXT'], $key % 2 != 0);
-        }
-    }
+<? if (!empty($arResult['PROPERTIES']['QUOTE_TEXT_3']['VALUE'])) {
+    $text = $arResult['PROPERTIES']['QUOTE_TEXT_3']['~VALUE']['TEXT'];
+    $header = !empty($arResult['PROPERTIES']['QUOTE_HEADER_3']['VALUE'])
+        ? "<h4 class=\"mb-3\">{$arResult['PROPERTIES']['QUOTE_HEADER_3']['VALUE']}</h4>"
+        : '';
+
+    renderQuote($header . $text);
 } ?>
 
 <!-- Блок с информацией в виде аккордеона -->

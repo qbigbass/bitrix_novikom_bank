@@ -68,7 +68,7 @@ $colorIcon = $arParams["COLOR_ICON"] ?? "dark-0";
                                                                         <span class="<?= $colorSpan ?> text-l"><?= $phone ?></span>
                                                                     </a>
                                                                     <? if(!empty($item['PROPERTIES']['PHONE']['DESCRIPTION'][0])): ?>
-                                                                        <span class="caption-m chip chip--outlined">доб. <?= $item['PROPERTIES']['PHONE']['DESCRIPTION'][0] ?></span>
+                                                                        <span class="caption-m chip chip--outlined <?= $colorSpan ?>">доб. <?= $item['PROPERTIES']['PHONE']['DESCRIPTION'][0] ?></span>
                                                                     <? endif; ?>
                                                                 </div>
                                                             </div>

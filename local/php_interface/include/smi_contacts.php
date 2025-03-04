@@ -20,7 +20,7 @@
                     </svg>
                     <span>
                         <span class="me-2">+7 (495) 974-71-87</span>
-                        <span class="chip chip--outlined caption-m text-white-50">доб. 1597</span>
+                        <span class="chip chip--outlined caption-m dark-0">доб. 1597</span>
                     </span>
                 </a>
                 <a class="card-contact__link dark-0 mb-0 gap-3" href="tel:+74959692065">
@@ -29,7 +29,7 @@
                     </svg>
                     <span>
                         <span class="me-2">+7 (495) 969-20-65</span>
-                        <span class="chip chip--outlined caption-m text-white-50">факс</span>
+                        <span class="chip chip--outlined caption-m dark-0">факс</span>
                     </span>
                 </a>
                 <a class="card-contact__link w-100 dark-0 gap-3" href="https://t.me/novikombank_official">

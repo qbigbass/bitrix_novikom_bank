@@ -311,4 +311,29 @@ class IblockHelper
         }
         return $result;
     }
+
+    public static function onAfterIBlockSectionUpdateHandler(&$arFields)
+    {
+        global $CACHE_MANAGER;
+        $arIblocks = getIblockIdsClearMenu();
+
+        if (!empty($arFields) && (in_array((int)$arFields["IBLOCK_ID"], $arIblocks, true))) {
+            $CACHE_MANAGER->ClearByTag("bitrix:menu");
+        }
+    }
+
+    public static function onAfterIBlockSectionDeleteHandler($ID)
+    {
+        global $CACHE_MANAGER;
+
+        if ($ID > 0) {
+            $section = SectionTable::getByPrimary($ID)->fetchObject();
+            $iblockId = $section->getIblockId();
+            $arIblocks = getIblockIdsClearMenu();
+
+            if (in_array((int)$iblockId, $arIblocks, true)) {
+                $CACHE_MANAGER->ClearByTag("bitrix:menu");
+            }
+        }
+    }
 }

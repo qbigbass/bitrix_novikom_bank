@@ -31,7 +31,9 @@ $helper = new ComponentHelper($component);
 <?if(!empty($arResult['DISPLAY_PROPERTIES']['BENEFITS']['VALUE'])) : ?>
     <section class="section-layout">
     <div class="container">
-        <h3 class="px-lg-6 mb-4 mb-md-6 mb-lg-7">Преимущества</h3>
+        <h3 class="px-lg-6 mb-4 mb-md-6 mb-lg-7">
+            <?= $arResult['DISPLAY_PROPERTIES']['BENEFITS_HEADING']['~VALUE'] ?? 'Преимущества'; ?>
+        </h3>
         <div class="row px-lg-6">
             <div class="col-12">
                 <?$GLOBALS['benefitsFilter'] = [
@@ -108,7 +110,9 @@ $helper = new ComponentHelper($component);
 <?if(!empty($arResult['DISPLAY_PROPERTIES']['OPPORTUNITY']['VALUE'])) : ?>
     <section class="section-layout px-lg-6">
         <div class="container">
-            <h3 class="mb-4 mb-md-6 mb-lg-7">Возможности</h3>
+            <h3 class="mb-4 mb-md-6 mb-lg-7">
+                <?= $arResult['DISPLAY_PROPERTIES']['OPPORTUNITY_HEADING']['~VALUE'] ?? 'Возможности'; ?>
+            </h3>
             <div class="row row-gap-6 gx-xl-6">
                 <?$GLOBALS['opportunityFilter'] = [
                     'ACTIVE' => 'Y',
@@ -221,9 +225,11 @@ $helper = new ComponentHelper($component);
 <?if(!empty($arResult['DISPLAY_PROPERTIES']['INSTRUCTIONS']['VALUE'])) : ?>
     <section class="section-layout bg-dark-10">
         <div class="container">
-            <h3 class="d-none d-md-block mb-md-6 mb-lg-7 px-lg-6">Как подключить</h3>
+            <h3 class="d-none d-md-block mb-md-6 mb-lg-7 px-lg-6">
+                <?= $arResult['DISPLAY_PROPERTIES']['INSTRUCTIONS_HEADING']['~VALUE'] ?? 'Как подключить'; ?>
+            </h3>
             <a class="h3 d-flex align-items-center justify-content-between dark-100 d-md-none" data-bs-toggle="collapse" href="#how-connect" role="button" aria-expanded="false" aria-controls="how-connect">
-                Как подключить
+                <?= $arResult['DISPLAY_PROPERTIES']['INSTRUCTIONS_HEADING']['~VALUE'] ?? 'Как подключить'; ?>
                 <svg class="icon size-m violet-100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                     <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-down"></use>
                 </svg>
@@ -306,7 +312,14 @@ $helper = new ComponentHelper($component);
                             <div class="helper__wrapper d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-4 gap-lg-6">
                                 <img class="helper__image w-auto float-end" src="/frontend/dist/img/restructuring-additional-info.png" alt="">
                                 <div class="helper__content text-l">
-                                    <p class="mb-0"><?=$arResult['DISPLAY_PROPERTIES']['ADDITIONAL_INFO']['~VALUE']['TEXT']?></p>
+                                    <? if (!empty($arResult['DISPLAY_PROPERTIES']['ADDITIONAL_INFO_HEADER']['~VALUE'])): ?>
+                                        <h4 class="mb-3">
+                                            <?= $arResult['DISPLAY_PROPERTIES']['ADDITIONAL_INFO_HEADER']['~VALUE']; ?>
+                                        </h4>
+                                    <? endif; ?>
+                                    <p class="mb-0">
+                                        <?= $arResult['DISPLAY_PROPERTIES']['ADDITIONAL_INFO']['~VALUE']['TEXT']; ?>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -325,9 +338,11 @@ $helper = new ComponentHelper($component);
 <?if(!empty($arResult['DISPLAY_PROPERTIES']['TABS']['VALUE'])) : ?>
     <section class="section-layout js-collapsed-mobile pb-0">
         <div class="container">
-            <h3 class="d-none d-md-block mb-md-6 mb-lg-7 px-lg-6">Подробнее</h3>
+            <h3 class="d-none d-md-block mb-md-6 mb-lg-7 px-lg-6">
+                <?= $arResult['DISPLAY_PROPERTIES']['TABS_HEADING']['~VALUE'] ?? 'Подробнее'; ?>
+            </h3>
             <a class="h3 d-flex align-items-center justify-content-between dark-100 d-md-none" data-bs-toggle="collapse" href="#additional-info-content" role="button" aria-expanded="false" aria-controls="additional-info-content">
-                Подробнее
+                <?= $arResult['DISPLAY_PROPERTIES']['TABS_HEADING']['~VALUE'] ?? 'Подробнее'; ?>
                 <svg class="icon size-m violet-100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                     <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-down"></use>
                 </svg>

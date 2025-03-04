@@ -28,4 +28,8 @@
             color: currentColor;
         }
     }
+
+    &.dark-0 {
+      color: var(--dark-0);
+    }
 }

@@ -264,12 +264,12 @@ $headerView
 <? } ?>
 
 <!-- Сноска (1-ое поле) -->
-<? if (!empty($arResult['PROPERTIES']['QUOTE_TEXT']['VALUE'])) {
-    foreach ($arResult['PROPERTIES']['QUOTE_TEXT']['~VALUE'] as $key => $value) {
-        if ($key == 0) {
-            renderQuote($value['TEXT']);
-        }
+<? if (!empty($arResult['PROPERTIES']['ADDITIONAL_INFO_1']['~VALUE']['TEXT'])) {
+    $text = $arResult['PROPERTIES']['ADDITIONAL_INFO_1']['~VALUE']['TEXT'];
+    if (!empty($arResult['PROPERTIES']['ADDITIONAL_INFO_1_HEADER']['~VALUE'])) {
+        $text = '<h4 class="mb-3">' . $arResult['PROPERTIES']['ADDITIONAL_INFO_1_HEADER']['~VALUE'] . '</h4>'. $text;
     }
+    renderQuote($text);
 } ?>
 
 <!-- Текстовый блок -->
@@ -290,12 +290,12 @@ $headerView
 <? } ?>
 
 <!-- Сноска (2-ое поле) -->
-<? if (!empty($arResult['PROPERTIES']['QUOTE_TEXT']['VALUE'])) {
-    foreach ($arResult['PROPERTIES']['QUOTE_TEXT']['~VALUE'] as $key => $value) {
-        if ($key == 1) {
-            renderQuote($value['TEXT'], true);
-        }
+<? if (!empty($arResult['PROPERTIES']['ADDITIONAL_INFO_2']['~VALUE']['TEXT'])) {
+    $text = $arResult['PROPERTIES']['ADDITIONAL_INFO_2']['~VALUE']['TEXT'];
+    if (!empty($arResult['PROPERTIES']['ADDITIONAL_INFO_2_HEADER']['~VALUE'])) {
+        $text = '<h4 class="mb-3">' . $arResult['PROPERTIES']['ADDITIONAL_INFO_2_HEADER']['~VALUE'] . '</h4>'. $text;
     }
+    renderQuote($text);
 } ?>
 
 <!-- Преимущества иконки -->
@@ -506,12 +506,12 @@ $headerView
 <? } ?>
 
 <!-- Сноска (3-ое поле и далее) -->
-<? if (!empty($arResult['PROPERTIES']['QUOTE_TEXT']['VALUE'])) {
-    foreach ($arResult['PROPERTIES']['QUOTE_TEXT']['~VALUE'] as $key => $value) {
-        if ($key > 1) {
-            renderQuote($value['TEXT'], $key % 2 != 0);
-        }
+<? if (!empty($arResult['PROPERTIES']['ADDITIONAL_INFO_3']['~VALUE']['TEXT'])) {
+    $text = $arResult['PROPERTIES']['ADDITIONAL_INFO_3']['~VALUE']['TEXT'];
+    if (!empty($arResult['PROPERTIES']['ADDITIONAL_INFO_3_HEADER']['~VALUE'])) {
+        $text = '<h4 class="mb-3">' . $arResult['PROPERTIES']['ADDITIONAL_INFO_3_HEADER']['~VALUE'] . '</h4>'. $text;
     }
+    renderQuote($text);
 } ?>
 
 <!-- Блок с информацией в виде аккордеона -->
