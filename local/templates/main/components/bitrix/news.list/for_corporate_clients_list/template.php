@@ -29,9 +29,9 @@ $this->setFrameMode(true);
                         <h4 class="card-product__title"><?= $item['~NAME'] ?></h4>
                         <p class="card-product__description m-0"><?= $item['~PREVIEW_TEXT'] ?></p>
                     </div>
-                    <? if (!empty($item['DETAIL_PICTURE']['SRC'])) { ?>
-                        <img class="card-product__img" src="<?= $item['DETAIL_PICTURE']['SRC'] ?>"
-                             alt="<?= $item['DETAIL_PICTURE']['ALT'] ?>" loading="lazy">
+                    <? if (!empty($item['DISPLAY_PROPERTIES']['PREVIEW_PICTURE']['FILE_VALUE']['SRC'])) { ?>
+                        <img class="card-product__img" src="<?=$item['DISPLAY_PROPERTIES']['PREVIEW_PICTURE']['FILE_VALUE']['SRC']?>"
+                             alt="<?=$item['DISPLAY_PROPERTIES']['PREVIEW_PICTURE']['FILE_VALUE']['DESCRIPTION']?>" loading="lazy">
                     <? } ?>
                     <span class="btn btn-link btn-icon m-auto m-lg-0 py-2 py-lg-0" >
                         <span>Подробнее</span>
