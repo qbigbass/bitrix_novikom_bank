@@ -1,6 +1,10 @@
 <?php
 /** @var array $arResult */
 
+use Bitrix\Main\Page\Asset;
+$asset = Asset::getInstance();
+$asset->addJs('/frontend/dist/js/currency-converter.js');
+
 $filter = [
     'IBLOCK_ID' => iblock('currency-exchange_rates'),
     'ACTIVE' => 'Y',
