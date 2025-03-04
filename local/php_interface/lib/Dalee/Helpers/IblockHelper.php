@@ -281,17 +281,6 @@ class IblockHelper
         ])->fetchAll();
     }
 
-    public static function onAfterIblockElementUpdateHandler(&$arFields)
-    {
-        global $DB, $CACHE_MANAGER;
-
-        $res = $DB->Query("SELECT LINK_IBLOCK_ID, IBLOCK_ID FROM b_iblock_property WHERE IBLOCK_ID = " . $DB->ForSql($arFields['IBLOCK_ID']));
-
-        while ($row = $res->Fetch()) {
-            $CACHE_MANAGER->ClearByTag('iblock_id_' . $row['LINK_IBLOCK_ID']);
-        }
-    }
-
     /**
      * Получаем св-ва ИБ по кодам
      *
