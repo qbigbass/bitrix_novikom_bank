@@ -35,8 +35,6 @@ $eventManager->addEventHandler('form', 'OnBeforeResultAdd', [FormHelper::class, 
 $eventManager->addEventHandler("iblock", "OnAfterIBlockElementUpdate", [CacheHandler::class, "onAfterIBlockElementUpdateHandler"]);
 $eventManager->addEventHandler("iblock", "OnAfterIBlockElementDelete", [CacheHandler::class, "onAfterIBlockElementUpdateHandler"]);
 
-$eventManager->addEventHandler('main', 'onMainGeoIpHandlersBuildList', [\Dalee\Handlers\SxGeoLocal::class, 'onMainGeoIpHandlersBuildListHandler']);
-
 $eventManager->addEventHandler('iblock', 'OnBeforeIBlockElementUpdate', [CIBEditComplexProp::class, 'checkTabPlaceholders']);
 
 // Сбрасываем тегированный кеш "bitrix:menu" при изменении раздела в ИБ
