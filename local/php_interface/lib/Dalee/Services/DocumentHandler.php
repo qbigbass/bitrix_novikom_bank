@@ -104,7 +104,7 @@ class DocumentHandler
         }
 
         $extension = pathinfo($filePath, PATHINFO_EXTENSION);
-        if ($extension !== $extensionFromPath) {
+        if ($extension !== strtolower($extensionFromPath)) {
             return false;
         }
 
@@ -168,13 +168,23 @@ class DocumentHandler
             return false;
         }
 
-        $file = $arElements[0];
+        return $this->getFilePath($arElements, $extensionFromPath);
+    }
 
-        if ($file['extension'] !== $extensionFromPath) {
-            return false;
+    /**
+     * @param array $arElements
+     * @param string $extensionFromPath
+     * @return bool|string
+     */
+    private function getFilePath(array $arElements, string $extensionFromPath): bool|string
+    {
+        foreach ($arElements as $fileData) {
+            if ($fileData['extension'] == strtolower($extensionFromPath)) {
+                return $fileData['path'];
+            }
         }
 
-        return $file['path'];
+        return false;
     }
 
     /**
