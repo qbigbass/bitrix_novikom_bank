@@ -429,17 +429,11 @@ document.addEventListener('DOMContentLoaded', () => {
     initCardSlider();
     initAnnouncementSlider();
     initTabsSlider();
-    if (typeof addSelectDateOptions === 'function') {
-        addSelectDateOptions();
-    }
     initSelect2();
     initTabsContent();
     initInputSlider();
     showMoreContent();
     initPbSlider();
-    if (typeof pbNavMenu === 'function') {
-        pbNavMenu();
-    }
     initDatepicker();
     setPage();
     initFormSteps();
@@ -451,35 +445,11 @@ document.addEventListener('DOMContentLoaded', () => {
     initResizePolygonAccordions();
     initHeaderSearchForm();
     hideDropDownMenu();
-    if (typeof initCalculatorDeposit === 'function') {
-        initCalculatorDeposit();
-    }
-    if (typeof initCalculatorLoan === 'function') {
-        initCalculatorLoan();
-    }
-    if (typeof initCalculatorMortgage === 'function') {
-        initCalculatorMortgage();
-    }
-    if (typeof initCalculatorBonus === 'function') {
-        initCalculatorBonus();
-    }
-    if (typeof initCurrencyConverter === 'function') {
-        initCurrencyConverter();
-    }
     initOffices();
     initChatBot();
     initCharts();
-    if (typeof pbScrollTo === 'function') {
-        pbScrollTo();
-    }
     initFixScrollAccordions();
     checkWidth();
-    if (typeof triggerPbTab === 'function') {
-        triggerPbTab();
-    }
-    if (typeof scrollPbAccordion === 'function') {
-        scrollPbAccordion();
-    }
 });
 
 window.onload = function() {

@@ -44,10 +44,18 @@ $asset->addJs('/frontend/dist/js/accessibility-panel.js');
 //DNVKBSITE-185  На главную страницу
 if ($dir == '/') {
     $asset->addJs('/frontend/dist/js/calculator-bonus.js');
-    $asset->addJs('/frontend/dist/js/calculator-mortgage.js');
-    $asset->addJs('/frontend/dist/js/calculator-deposit.js');
-    $asset->addJs('/frontend/dist/js/calculator-loan.js');
     $asset->addJs('/frontend/dist/js/currency-converter.js');
+}
+if ($dir == '/' || CSite::InDir('/mortgage/')) {
+    $asset->addJs('/frontend/dist/js/calculator-loan.js');
+    $asset->addJs('/frontend/dist/js/calculator-mortgage.js');
+}
+if ($dir == '/' || CSite::InDir('/deposits/')) {
+    $asset->addJs('/frontend/dist/js/calculator-loan.js');
+    $asset->addJs('/frontend/dist/js/calculator-deposit.js');
+}
+if ($dir == '/' || CSite::InDir('/loans/')) {
+    $asset->addJs('/frontend/dist/js/calculator-loan.js');
 }
 ?>
 <!DOCTYPE html>
