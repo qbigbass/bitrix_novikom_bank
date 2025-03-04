@@ -41,11 +41,11 @@ $this->setFrameMode(true);
                                                 </div>
                                             <? endif; ?>
                                         </div>
-                                        <? if (!empty($item['DETAIL_PICTURE']['SRC'])) : ?>
+                                        <? if (!empty($item['DISPLAY_PROPERTIES']["ICON_TILE"]["FILE_VALUE"]["SRC"])) : ?>
                                             <img
                                                 class="card-product__img"
-                                                src="<?= $item['DETAIL_PICTURE']['SRC'] ?>"
-                                                alt="<?= $item['DETAIL_PICTURE']['ALT'] ?>"
+                                                src="<?=$item['DISPLAY_PROPERTIES']["ICON_TILE"]["FILE_VALUE"]["SRC"]?>"
+                                                alt="<?=$item['DISPLAY_PROPERTIES']["ICON_TILE"]["FILE_VALUE"]["DESCRIPTION"]?>"
                                                 loading="lazy"
                                             >
                                         <? endif; ?>
@@ -105,14 +105,7 @@ $this->setFrameMode(true);
                                         <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
                                     </svg>
                                 </span>
-                                                <? if (!empty($item['PREVIEW_PICTURE']['SRC'])) : ?>
-                                                    <img
-                                                        class="icon size-xxl ms-auto"
-                                                        src="<?= $item['PREVIEW_PICTURE']['SRC'] ?>"
-                                                        alt="<?= $item['PREVIEW_PICTURE']['ALT'] ?>"
-                                                        loading="lazy"
-                                                    >
-                                                <? elseif (!empty($item['DISPLAY_PROPERTIES']["ICON_TILE"]["FILE_VALUE"]["SRC"])) : ?>
+                                                <? if (!empty($item['DISPLAY_PROPERTIES']["ICON_TILE"]["FILE_VALUE"]["SRC"])) : ?>
                                                     <img class="ms-auto icon size-xxl" src="<?= $item['DISPLAY_PROPERTIES']["ICON_TILE"]["FILE_VALUE"]["SRC"] ?>" alt="" loading="lazy">
                                                 <? endif; ?>
                                             </div>
@@ -150,8 +143,8 @@ $this->setFrameMode(true);
                                                 <h4 class="card-product__title"><?= $item["~NAME"]?></h4>
                                                 <p class="card-product__description m-0"><?= $item["~PREVIEW_TEXT"]?></p>
                                             </div>
-                                            <?if (!empty($item['PREVIEW_PICTURE']['SRC'])) :?>
-                                                <img class="card-product__img" src="<?= $item["PREVIEW_PICTURE"]["SRC"]?>" alt="" loading="lazy">
+                                            <?if (!empty($item['DISPLAY_PROPERTIES']["ICON_TILE"]["FILE_VALUE"]["SRC"])) :?>
+                                                <img class="card-product__img" src="<?=$item['DISPLAY_PROPERTIES']["ICON_TILE"]["FILE_VALUE"]["SRC"]?>" alt="" loading="lazy">
                                             <?endif;?>
                                             <span class="btn btn-link btn-icon m-auto m-lg-0">
                                                 <span>Узнать больше</span>

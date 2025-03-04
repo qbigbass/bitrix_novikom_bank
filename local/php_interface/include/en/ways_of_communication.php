@@ -9,13 +9,18 @@
     </a>
 </p>
 <button class="link link-underline" data-bs-toggle="modal"
-        data-bs-target="#modal-callback-form">Request a call
+        data-bs-target="#callback_form">Request a call
 </button>
 <br>
 <button class="link link-underline" data-bs-toggle="modal"
-        data-bs-target="#modal-feedback-form">Ask a Question
+        data-bs-target="#feedback_form">Ask a Question
 </button>
 <br>
 <a class="link link-underline" href="/customer-requests/">
     Procedure for contacting the bank
 </a>
+<?
+global $FORMS;
+$FORMS->includeForm('feedback_form');
+$FORMS->includeForm('callback_form');
+?>

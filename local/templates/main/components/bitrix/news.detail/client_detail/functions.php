@@ -22,22 +22,19 @@ function renderBenefitsHeaderHeader(CMain $APPLICATION, array $ids, bool $hasPic
     return ob_get_clean();
 }
 
-function renderBenefitsHeaderFooter(CMain $APPLICATION, array $ids, bool $hasPicture = true, array $params = []): string
+function renderBenefitsHeaderFooter(CMain $APPLICATION, array $ids, array $params = []): string
 {
     $renderer = new Renderer($APPLICATION);
-    $colCountBenefitTop = $hasPicture ? 3 : 4;
-    $calcCols = 'Y';
 
     if (!empty($params['CNT_COL_BENEFITS_TOP'])) {
         $colCountBenefitTop = $params['CNT_COL_BENEFITS_TOP'];
-        $calcCols = 'N';
     }
 
     ob_start();
     $renderer->render('Benefits', $ids, null, [
         'colCount' => $colCountBenefitTop,
         'headerTag' => 'h4',
-        'calcCols' => $calcCols
+        'calcCols' => 'Y'
     ]);
 
     return ob_get_clean();

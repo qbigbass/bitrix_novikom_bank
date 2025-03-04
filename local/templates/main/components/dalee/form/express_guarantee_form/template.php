@@ -16,7 +16,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
  */
 $this->setFrameMode(true);
 ?>
-<div class="modal modal-xl fade" id="modal-express-guarantee-form" tabindex="-1" aria-hidden="true">
+<div class="modal modal-xl fade" id="<?=$arResult['FORM_CODE']?>" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">

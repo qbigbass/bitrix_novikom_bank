@@ -39,7 +39,9 @@ if (!empty($arParams["HEADER_COLOR_CLASS"])) {
 $headerView = new HeaderView($component);
 $renderer = new Renderer($APPLICATION, $component);
 $helper = $headerView->helper();
-$headerView->render(
+$headerView
+    ->setBtnClasses('btn-tertiary')
+    ->render(
     'Ипотека по программе «' .  $arResult["~NAME"] . '»',
     $arResult['~PREVIEW_TEXT'],
     null,
