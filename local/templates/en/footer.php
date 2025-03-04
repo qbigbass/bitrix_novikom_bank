@@ -252,20 +252,9 @@ $APPLICATION->IncludeComponent(
     ]
 );
 ?>
-<?php $APPLICATION->IncludeComponent(
-    "dalee:form",
-    "callback_form",
-    [
-        "FORM_CODE" => "callback_form",
-    ]
-); ?>
-
-<?php $APPLICATION->IncludeComponent(
-    "dalee:form",
-    "feedback_form",
-    [
-        "FORM_CODE" => "feedback_form",
-    ]
-); ?>
+<?
+global $FORMS;
+$FORMS->showAll();
+?>
 </body>
 </html>

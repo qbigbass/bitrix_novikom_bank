@@ -306,49 +306,6 @@ $APPLICATION->IncludeComponent(
     ]
 );
 ?>
-<?php //$APPLICATION->IncludeComponent(
-//    "dalee:form",
-//    "callback_form",
-//    [
-//        "FORM_CODE" => "callback_form",
-//    ]
-//); ?>
-<!---->
-<?php //$APPLICATION->IncludeComponent(
-//    "dalee:form",
-//    "feedback_form",
-//    [
-//        "FORM_CODE" => "feedback_form",
-//    ]
-//); ?>
-<?php //$APPLICATION->IncludeComponent(
-//    "dalee:form",
-//    "consultation_form",
-//    [
-//        "FORM_CODE" => "consultation_form",
-//    ]
-//); ?>
-<?php //$APPLICATION->IncludeComponent(
-//    "dalee:form",
-//    "loan_form",
-//    [
-//        "FORM_CODE" => "loan_form",
-//    ]
-//); ?>
-<?php //$APPLICATION->IncludeComponent(
-//    "dalee:form",
-//    "mortgage_form",
-//    [
-//        "FORM_CODE" => "mortgage_form",
-//    ]
-//); ?>
-<?php //$APPLICATION->IncludeComponent(
-//    "dalee:form",
-//    "express_guarantee_form",
-//    [
-//        "FORM_CODE" => "express_guarantee_form",
-//    ]
-//); ?>
 
 <?$FORMS->showAll();?>
 </body>
