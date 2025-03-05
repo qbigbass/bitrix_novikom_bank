@@ -18,19 +18,23 @@ $this->setFrameMode(true);
             <?foreach($arResult['ITEMS'] as $arItem) {?>
                 <div class="card-product-list overflow-hidden position-relative mh-100 h-auto bg-dark-10 w-100 pt-7 pb-6 py-sm-9 py-md-9 py-lg-11 px-3 px-sm-4 px-md-5 px-lg-6 pe-xxl-11">
                     <div class="card-product-list__inner d-flex flex-column flex-lg-row align-items-start h-100 gap-3 gap-md-6 gap-xxl-11">
-                        <div class="card-product-list__image-container mx-auto">
-                            <img class="card-product-list__image" src="<?= CFile::GetPath($arItem['PICTURE']) ?>" alt="" loading="lazy">
-                        </div>
+                        <?if (!empty($arItem['PICTURE'])):?>
+                            <div class="card-product-list__image-container mx-auto">
+                                <img class="card-product-list__image" src="<?= CFile::GetPath($arItem['PICTURE']) ?>" alt="" loading="lazy">
+                            </div>
+                        <?endif;?>
                         <div class="card-product-list__content flex-column d-flex align-items-start gap-6 gap-lg-9 w-100">
                             <div class="card-product-list__title-group d-flex flex-column gap-4 gap-lg-6">
-                                <div class="tag tag--triangle-absolute card-product-list__tag">
-                                    <span class="tag__content text-s fw-semibold"><?= $arItem['PARENT_SECTION_NAME'] ?></span>
-                                    <span class="tag__triangle">
-                                      <svg width="14" height="21" viewBox="0 0 14 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M13.5 19.3486L0.934259 0.5H13.5V19.3486Z"></path>
-                                      </svg>
-                                    </span>
-                                </div>
+                                <?if (!empty($arItem['PARENT_SECTION_NAME'])):?>
+                                    <div class="tag tag--triangle-absolute card-product-list__tag">
+                                        <span class="tag__content text-s fw-semibold"><?= $arItem['PARENT_SECTION_NAME'] ?></span>
+                                        <span class="tag__triangle">
+                                            <svg width="14" height="21" viewBox="0 0 14 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M13.5 19.3486L0.934259 0.5H13.5V19.3486Z"></path>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                <?endif;?>
                                 <a href="<?= $arItem['SECTION_PAGE_URL'] ?>">
                                     <h2 class="card-product-list__title text-break"><?=$arItem['NAME']?></h2>
                                 </a>
