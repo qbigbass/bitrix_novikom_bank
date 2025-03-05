@@ -145,7 +145,7 @@ class DocumentHandler
         ];
 
         $elements = CIBlockElement::GetList(
-            ["DATE_ACTIVE_FROM" => "DESC"],
+            ["DATE_ACTIVE_FROM" => "ASC"],
             $elementsFilter,
             false,
             false,

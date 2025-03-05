@@ -40,7 +40,7 @@ $headerView->render(
             <div class="col-12">
                 <? $APPLICATION->IncludeComponent(
                     "bitrix:menu",
-                    "iblock_elements_ajax",
+                    "iblock_sections",
                     [
                         "ROOT_MENU_TYPE" => "iblock_sections",
                         "MAX_LEVEL" => "1",
@@ -53,7 +53,7 @@ $headerView->render(
                         "MENU_CACHE_USE_GROUPS" => "Y",
                         "MENU_CACHE_GET_VARS" => [
                         ],
-                        "COMPONENT_TEMPLATE" => "iblock_elements_ajax",
+                        "COMPONENT_TEMPLATE" => "iblock_sections",
                     ],
                 );
                 ?>

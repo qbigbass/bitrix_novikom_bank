@@ -17,7 +17,7 @@ class QuestionsHandler implements PropertyHandlerInterface
     public function __construct(array $property, ?int $elementId = null, ?array $element = null)
     {
         $this->property = $property;
-        if (empty($this->property['LINK_ELEMENT_VALUE'])) {
+        if (empty($this->property['LINK_ELEMENT_VALUE']) && !empty($this->property['VALUE'])) {
             $this->property['LINK_ELEMENT_VALUE'] = $this->getElements($this->property['VALUE']);
         }
         $this->qaLinlk = '';
