@@ -103,6 +103,8 @@ class HeaderView
             'h1ColorClass' => $arResult["PARAMS_CLASS"]["H1_COLOR_CLASS"] ?: 'dark-0',
             'breadcrumbsColorClass' => $arResult["PARAMS_CLASS"]["BREADCRUMBS_COLOR_CLASS"] ?: 'text-white-50',
             'buttonCodeForm' => $arResult['PROPERTIES']['BUTTON_CODE_FORM']['VALUE'] ?? '',
+            'buttonClassColor' => $arResult['PROPERTIES']['CLASS_BUTTON_TEXT_DETAIL']['VALUE'] ?: 'btn-tertiary',
+            'briefConditions' =>  $arResult['PROPERTIES']['BRIEF_CONDITIONS']['~VALUE']['TEXT'] ?? '',
         ];
 
         return $result;
@@ -146,6 +148,17 @@ class HeaderView
         <? return ob_get_clean();
     }
 
+    public function renderBriefConditions(string $html = null): string
+    {
+        if (empty($html)) {
+            return '';
+        }
+
+        ob_start();
+        echo $html;
+        return ob_get_clean();
+    }
+
     public function helper(): ComponentHelper
     {
         return $this->helper;
@@ -176,7 +189,7 @@ class HeaderView
                         <img class="banner-product__image" src="<?= $headerData['picture']['SRC'] ?? '' ?>" alt="<?= $headerData['picture']['ALT'] ?? '' ?>" loading="lazy">
                     <? } ?>
 
-                    <? echo $this->renderTerms($headerData['termsSettings'], $headerData['termsProperty'], $termsHtml); ?>
+                    <?= $this->renderBriefConditions($headerData['briefConditions']) ?>
 
                     <? if (!empty($headerData['headerHtml'])) : ?>
                         <?= $headerData['headerHtml'] ?>
