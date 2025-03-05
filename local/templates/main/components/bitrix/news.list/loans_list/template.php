@@ -44,12 +44,16 @@ $this->setFrameMode(true);
                         <a class="btn btn-tertiary btn-lg-lg card-product-list__button w-100 w-sm-auto"
                            href="<?= $item['PROPERTIES']['BUTTON_HREF_DETAIL']['VALUE'] ?>"><?= $item['PROPERTIES']['BUTTON_TEXT_DETAIL']['VALUE'] ?></a>
                     <? } elseif (!empty($item['PROPERTIES']['BUTTON_DETAIL']['VALUE']) && !empty($item['PROPERTIES']['BUTTON_CODE_FORM']['VALUE'])) { ?>
-                        <a class="btn btn-tertiary btn-lg-lg card-product-list__button w-100 w-sm-auto"
+                        <button class="btn btn-tertiary btn-lg-lg card-product-list__button w-100 w-sm-auto"
                            type="button"
                            data-bs-toggle="modal"
                            data-bs-target="#<?= $item['PROPERTIES']['BUTTON_CODE_FORM']['VALUE'] ?>"
                         ><?= $item['PROPERTIES']['BUTTON_TEXT_DETAIL']['VALUE'] ?>
-                        </a>
+                        </button>
+                        <?
+                        global $FORMS;
+                        $FORMS->includeForm($item['PROPERTIES']['BUTTON_CODE_FORM']['VALUE']);
+                        ?>
                     <? } ?>
                     <a class="btn btn-link btn-lg-lg d-inline-flex gap-2 align-items-center card-product-list__button-more"
                        href="<?= $item['CODE'] == 'restructuring' ? '/loans/restructuring/' : $item['DETAIL_PAGE_URL'] ?>">

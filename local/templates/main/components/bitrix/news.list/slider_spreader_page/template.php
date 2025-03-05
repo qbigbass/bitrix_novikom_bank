@@ -33,6 +33,14 @@ $this->setFrameMode(true);
                                         <a class="btn btn-secondary btn-lg-lg d-inline-block" href="<?= $item["PROPERTIES"]["BUTTON_LINK"]["~VALUE"] ?>">
                                             <?= $item["PROPERTIES"]["BUTTON_TEXT"]["~VALUE"] ?>
                                         </a>
+                                    <? elseif (!empty($item["PROPERTIES"]["BUTTON_CODE_FORM"]["VALUE"]) && !empty($item["PROPERTIES"]["BUTTON_TEXT"]["~VALUE"])): ?>
+                                        <button class="btn btn-secondary btn-lg-lg d-inline-block" type="button" data-bs-toggle="modal" data-bs-target="#<?= $item['PROPERTIES']['BUTTON_CODE_FORM']['VALUE'] ?>">
+                                            <?= $item["PROPERTIES"]["BUTTON_TEXT"]["~VALUE"] ?>
+                                        </button>
+                                        <?
+                                        global $FORMS;
+                                        $FORMS->includeForm($item['PROPERTIES']['BUTTON_CODE_FORM']['VALUE']);
+                                        ?>
                                     <? endif; ?>
                                 </div>
                                 <? if (!empty($item["DISPLAY_PROPERTIES"]["FILE_VIDEO"]["FILE_VALUE"]["SRC"])) : ?>
