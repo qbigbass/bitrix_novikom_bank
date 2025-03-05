@@ -104,7 +104,7 @@ class DocumentHandler
         }
 
         $extension = pathinfo($filePath, PATHINFO_EXTENSION);
-        if (strtolower($extension) !== strtolower($extensionFromPath)) {
+        if (mb_strtolower($extension) !== mb_strtolower($extensionFromPath)) {
             return false;
         }
 
@@ -179,7 +179,7 @@ class DocumentHandler
     private function getFilePath(array $arElements, string $extensionFromPath): bool|string
     {
         foreach ($arElements as $fileData) {
-            if (strtolower($fileData['extension']) == strtolower($extensionFromPath)) {
+            if (mb_strtolower($fileData['extension']) == mb_strtolower($extensionFromPath)) {
                 return $fileData['path'];
             }
         }
