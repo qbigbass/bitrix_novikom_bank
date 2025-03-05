@@ -31,7 +31,7 @@ if ($arResult['IBLOCK_SECTION_ID']) {
         ->setFilter(['ID' => $section['UF_BUTTON_CODE_FORM']])
         ->exec()
         ->fetchObject();
-    $arResult['BUTTON_CODE_FORM'] = $form->getUfXmlId();
+    $arResult['BUTTON_CODE_FORM'] = $form?->getUfXmlId();
 }else{
     $arResult['SECTION_NAME'] = $arResult['NAME'];
 }
