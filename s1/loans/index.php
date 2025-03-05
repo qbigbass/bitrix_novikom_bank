@@ -79,6 +79,7 @@ if (!empty($elementWithoutSection)) {
                 "SERVICE",
                 "BUTTON_TEXT_DETAIL",
                 "HEADER_TEMPLATE",
+                "BRIEF_CONDITIONS"
             ],
             "SET_BROWSER_TITLE" => "N",
             "SET_CANONICAL_URL" => "N",
@@ -133,6 +134,7 @@ if (!empty($elementWithoutSection)) {
                 "SERVICE",
                 "BUTTON_TEXT_DETAIL",
                 "HEADER_TEMPLATE",
+                "BRIEF_CONDITIONS"
             ],
             "DETAIL_SET_CANONICAL_URL" => "N",
             "DISPLAY_BOTTOM_PAGER" => "Y",

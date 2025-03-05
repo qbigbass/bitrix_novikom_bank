@@ -17,22 +17,6 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 
-$terms = [
-    'RATE_TO' => [
-        'SIGN' => 'При ключевой ставке<br>Банка России на ' . date('d.m.Y'),
-        'FROM_TO' => 'до&nbsp;',
-    ],
-    'PERIOD_FROM' => [
-        'SIGN' => 'Минимальный срок вклада',
-        'FROM_TO' => 'от&nbsp;',
-        'PERIOD' => 'days'
-    ],
-    'SUM_FROM' => [
-        'SIGN' => 'Минимальная сумма вклада',
-        'FROM_TO' => 'от&nbsp;',
-    ],
-];
-
 if (!empty($arParams["HEADER_COLOR_CLASS"])) {
     $arResult["PARAMS_HEADER_COLOR_CLASS"] = $arParams["HEADER_COLOR_CLASS"];
 }
@@ -47,8 +31,7 @@ $headerView
     $arResult['~PREVIEW_TEXT'],
     null,
     0,
-    $arResult,
-    $terms
+    $arResult
 );
 ?>
 

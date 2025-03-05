@@ -43,7 +43,7 @@ $APPLICATION->SetTitle("Ипотечные программы");
 			6 => "SERVICE",
 			7 => "BUTTON_TEXT_DETAIL",
 			8 => "HEADER_TEMPLATE",
-			9 => "",
+			9 => "BRIEF_CONDITIONS",
 			10 => "",
         ],
 		"DETAIL_SET_CANONICAL_URL" => "N",
