@@ -17,7 +17,9 @@ $this->setFrameMode(true);
 ?>
 
 <div class="container">
-    <h3 class="mb-6 mb-lg-7 px-lg-6">Перечень избранных категорий</h3>
+    <h3 class="mb-6 mb-lg-7 px-lg-6">
+        <?= $arParams['CASHBACK_HEADER'] ?? 'Перечень избранных категорий'; ?>
+    </h3>
     <div class="row px-lg-6 mb-6 mb-lg-7">
         <div class="col-12">
             <div class="tabs-panel js-tabs-slider overflow-hidden position-relative">

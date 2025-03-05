@@ -31,7 +31,9 @@ $helper = new ComponentHelper($component);
 <?if(!empty($arResult['DISPLAY_PROPERTIES']['BENEFITS']['VALUE'])) : ?>
     <section class="section-layout">
     <div class="container">
-        <h3 class="px-lg-6 mb-4 mb-md-6 mb-lg-7">Преимущества</h3>
+        <h3 class="px-lg-6 mb-4 mb-md-6 mb-lg-7">
+            <?= $arResult['DISPLAY_PROPERTIES']['BENEFITS_HEADING']['~VALUE'] ?? 'Преимущества'; ?>
+        </h3>
         <div class="row px-lg-6">
             <div class="col-12">
                 <?$GLOBALS['benefitsFilter'] = [
@@ -108,68 +110,13 @@ $helper = new ComponentHelper($component);
 <?if(!empty($arResult['DISPLAY_PROPERTIES']['OPPORTUNITY']['VALUE'])) : ?>
     <section class="section-layout px-lg-6">
         <div class="container">
-            <h3 class="mb-4 mb-md-6 mb-lg-7">Возможности</h3>
+            <h3 class="mb-4 mb-md-6 mb-lg-7">
+                <?= $arResult['DISPLAY_PROPERTIES']['OPPORTUNITY_HEADING']['~VALUE'] ?? 'Возможности'; ?>
+            </h3>
             <div class="row row-gap-6 gx-xl-6">
-                <?$GLOBALS['opportunityFilter'] = [
-                    'ACTIVE' => 'Y',
-                    'ID' => $arResult['DISPLAY_PROPERTIES']['OPPORTUNITY']['VALUE']
-                ];?>
 
-                <?$APPLICATION->IncludeComponent(
-                    "bitrix:news.list",
-                    "benefits",
-                    [
-                        "ACTIVE_DATE_FORMAT" => "d.m.Y",
-                        "ADD_SECTIONS_CHAIN" => "N",
-                        "AJAX_MODE" => "N",
-                        "AJAX_OPTION_ADDITIONAL" => "",
-                        "AJAX_OPTION_HISTORY" => "N",
-                        "AJAX_OPTION_JUMP" => "N",
-                        "AJAX_OPTION_STYLE" => "Y",
-                        "CACHE_FILTER" => "N",
-                        "CACHE_GROUPS" => "Y",
-                        "CACHE_TIME" => "36000000",
-                        "CACHE_TYPE" => "A",
-                        "CHECK_DATES" => "Y",
-                        "COL_COUNT" => "3",
-                        "DETAIL_URL" => "",
-                        "DISPLAY_BOTTOM_PAGER" => "N",
-                        "DISPLAY_TOP_PAGER" => "N",
-                        "FIELD_CODE" => ["CODE","NAME","PREVIEW_TEXT","PREVIEW_PICTURE",""],
-                        "FILTER_NAME" => "opportunityFilter",
-                        "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                        "IBLOCK_ID" => iblock('benefits'),
-                        "IBLOCK_TYPE" => "additional",
-                        "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
-                        "INCLUDE_SUBSECTIONS" => "N",
-                        "MESSAGE_404" => "",
-                        "NEWS_COUNT" => "20",
-                        "PAGER_BASE_LINK_ENABLE" => "N",
-                        "PAGER_DESC_NUMBERING" => "N",
-                        "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
-                        "PAGER_SHOW_ALL" => "N",
-                        "PAGER_SHOW_ALWAYS" => "N",
-                        "PAGER_TEMPLATE" => ".default",
-                        "PAGER_TITLE" => "Новости",
-                        "PARENT_SECTION" => "",
-                        "PARENT_SECTION_CODE" => "",
-                        "PREVIEW_TRUNCATE_LEN" => "",
-                        "PROPERTY_CODE" => ["",""],
-                        "SET_BROWSER_TITLE" => "N",
-                        "SET_LAST_MODIFIED" => "N",
-                        "SET_META_DESCRIPTION" => "N",
-                        "SET_META_KEYWORDS" => "N",
-                        "SET_STATUS_404" => "N",
-                        "SET_TITLE" => "N",
-                        "SHOW_404" => "N",
-                        "SORT_BY1" => "ACTIVE_FROM",
-                        "SORT_BY2" => "SORT",
-                        "SORT_ORDER1" => "DESC",
-                        "SORT_ORDER2" => "ASC",
-                        "STRICT_SECTION_CHECK" => "N",
-                    ],
-                    $component
-                ); ?>
+                <? $renderer->render('Benefits', $arResult['DISPLAY_PROPERTIES']['OPPORTUNITY']['VALUE']); ?>
+
             </div>
             <div class="collapse d-md-none" id="sms-more-benefits">
                 <div class="row row-gap-6 mt-6">
@@ -221,9 +168,11 @@ $helper = new ComponentHelper($component);
 <?if(!empty($arResult['DISPLAY_PROPERTIES']['INSTRUCTIONS']['VALUE'])) : ?>
     <section class="section-layout bg-dark-10">
         <div class="container">
-            <h3 class="d-none d-md-block mb-md-6 mb-lg-7 px-lg-6">Как подключить</h3>
+            <h3 class="d-none d-md-block mb-md-6 mb-lg-7 px-lg-6">
+                <?= $arResult['DISPLAY_PROPERTIES']['INSTRUCTIONS_HEADING']['~VALUE'] ?? 'Как подключить'; ?>
+            </h3>
             <a class="h3 d-flex align-items-center justify-content-between dark-100 d-md-none" data-bs-toggle="collapse" href="#how-connect" role="button" aria-expanded="false" aria-controls="how-connect">
-                Как подключить
+                <?= $arResult['DISPLAY_PROPERTIES']['INSTRUCTIONS_HEADING']['~VALUE'] ?? 'Как подключить'; ?>
                 <svg class="icon size-m violet-100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                     <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-down"></use>
                 </svg>
@@ -306,7 +255,14 @@ $helper = new ComponentHelper($component);
                             <div class="helper__wrapper d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-4 gap-lg-6">
                                 <img class="helper__image w-auto float-end" src="/frontend/dist/img/restructuring-additional-info.png" alt="">
                                 <div class="helper__content text-l">
-                                    <p class="mb-0"><?=$arResult['DISPLAY_PROPERTIES']['ADDITIONAL_INFO']['~VALUE']['TEXT']?></p>
+                                    <? if (!empty($arResult['DISPLAY_PROPERTIES']['ADDITIONAL_INFO_HEADER']['~VALUE'])): ?>
+                                        <h4 class="mb-3">
+                                            <?= $arResult['DISPLAY_PROPERTIES']['ADDITIONAL_INFO_HEADER']['~VALUE']; ?>
+                                        </h4>
+                                    <? endif; ?>
+                                    <p class="mb-0">
+                                        <?= $arResult['DISPLAY_PROPERTIES']['ADDITIONAL_INFO']['~VALUE']['TEXT']; ?>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -322,89 +278,21 @@ $helper = new ComponentHelper($component);
     </section>
 <?endif;?>
 
-<?if(!empty($arResult['DISPLAY_PROPERTIES']['TABS']['VALUE'])) : ?>
-    <section class="section-layout js-collapsed-mobile pb-0">
+<? if (!empty($arResult['DISPLAY_PROPERTIES']['TABS']['VALUE'])) : ?>
+    <section class="section-layout js-collapsed-mobile">
         <div class="container">
-            <h3 class="d-none d-md-block mb-md-6 mb-lg-7 px-lg-6">Подробнее</h3>
-            <a class="h3 d-flex align-items-center justify-content-between dark-100 d-md-none" data-bs-toggle="collapse" href="#additional-info-content" role="button" aria-expanded="false" aria-controls="additional-info-content">
-                Подробнее
+            <h3 class="d-none d-md-block mb-md-6 mb-lg-7 px-lg-6"><?= $arResult['DISPLAY_PROPERTIES']['TABS_HEADING']['~VALUE'] ?></h3>
+            <a class="h3 d-flex align-items-center justify-content-between dark-100 d-md-none" data-bs-toggle="collapse"
+               href="#additional-info-content" role="button" aria-expanded="false"
+               aria-controls="additional-info-content">
+                <?= $arResult['DISPLAY_PROPERTIES']['TABS_HEADING']['~VALUE'] ?>
                 <svg class="icon size-m violet-100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                     <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-down"></use>
                 </svg>
             </a>
-            <?$GLOBALS['tabsFilter'] = [
-                'ACTIVE' => 'Y',
-                'ID' => $arResult['DISPLAY_PROPERTIES']['TABS']['VALUE']
-            ];?>
 
-            <?$APPLICATION->IncludeComponent(
-                "bitrix:news.list",
-                "tabs",
-                [
-                    "ACTIVE_DATE_FORMAT" => "d.m.Y",
-                    "ADD_SECTIONS_CHAIN" => "N",
-                    "AJAX_MODE" => "N",
-                    "AJAX_OPTION_ADDITIONAL" => "",
-                    "AJAX_OPTION_HISTORY" => "N",
-                    "AJAX_OPTION_JUMP" => "N",
-                    "AJAX_OPTION_STYLE" => "Y",
-                    "CACHE_FILTER" => "N",
-                    "CACHE_GROUPS" => "Y",
-                    "CACHE_TIME" => "36000000",
-                    "CACHE_TYPE" => "A",
-                    "CHECK_DATES" => "Y",
-                    "DETAIL_URL" => "",
-                    "DISPLAY_BOTTOM_PAGER" => "N",
-                    "DISPLAY_TOP_PAGER" => "N",
-                    "FIELD_CODE" => ["CODE","NAME","PREVIEW_TEXT","PREVIEW_PICTURE",""],
-                    "FILTER_NAME" => "tabsFilter",
-                    "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                    "IBLOCK_ID" => iblock('tabs'),
-                    "IBLOCK_TYPE" => "additional",
-                    "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
-                    "INCLUDE_SUBSECTIONS" => "N",
-                    "MESSAGE_404" => "",
-                    "NEWS_COUNT" => "20",
-                    "PAGER_BASE_LINK_ENABLE" => "N",
-                    "PAGER_DESC_NUMBERING" => "N",
-                    "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
-                    "PAGER_SHOW_ALL" => "N",
-                    "PAGER_SHOW_ALWAYS" => "N",
-                    "PAGER_TEMPLATE" => ".default",
-                    "PAGER_TITLE" => "Новости",
-                    "PARENT_SECTION" => "",
-                    "PARENT_SECTION_CODE" => "",
-                    "PREVIEW_TRUNCATE_LEN" => "",
-                    "PROPERTY_CODE" => [
-                        "CONDITIONS_ICONS",
-                        "CONDITIONS",
-                        "RATES_DESCRIPTION",
-                        "TEXT_FIELD",
-                        "HEADING",
-                        "STEPS",
-                        "SHORT_INFO",
-                        "QUOTES",
-                        "QUESTIONS",
-                        "ICONS_WITH_DESCRIPTION",
-                        "ICON_SHORT_INFO",
-                        "DOCUMENTS",
-                        "ACCORDION"
-                    ],
-                    "SET_BROWSER_TITLE" => "N",
-                    "SET_LAST_MODIFIED" => "N",
-                    "SET_META_DESCRIPTION" => "N",
-                    "SET_META_KEYWORDS" => "N",
-                    "SET_STATUS_404" => "N",
-                    "SET_TITLE" => "N",
-                    "SHOW_404" => "N",
-                    "SORT_BY1" => "ACTIVE_FROM",
-                    "SORT_BY2" => "SORT",
-                    "SORT_ORDER1" => "DESC",
-                    "SORT_ORDER2" => "ASC",
-                    "STRICT_SECTION_CHECK" => "N",
-                ],
-                $component
-            );?>
+            <? $renderer->render('Tabs', $arResult['PROPERTIES']['TABS']['VALUE'], null, ['elementId' => $arResult['ID']]); ?>
+
         </div>
         <picture class="pattern-bg pattern-bg--hide-mobile">
             <source srcset="/frontend/dist/img/patterns/section-2/pattern-light-s.svg" media="(max-width: 767px)">
@@ -412,5 +300,6 @@ $helper = new ComponentHelper($component);
             <img src="/frontend/dist/img/patterns/section-2/pattern-light-l.svg" alt="bg pattern" loading="lazy">
         </picture>
     </section>
-<?endif;?>
+<? endif; ?>
+
 <?$helper->saveCache();?>

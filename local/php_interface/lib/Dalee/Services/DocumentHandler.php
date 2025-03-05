@@ -104,7 +104,7 @@ class DocumentHandler
         }
 
         $extension = pathinfo($filePath, PATHINFO_EXTENSION);
-        if ($extension !== $extensionFromPath) {
+        if (mb_strtolower($extension) !== mb_strtolower($extensionFromPath)) {
             return false;
         }
 
@@ -145,7 +145,7 @@ class DocumentHandler
         ];
 
         $elements = CIBlockElement::GetList(
-            ["DATE_ACTIVE_FROM" => "DESC"],
+            ["DATE_ACTIVE_FROM" => "ASC"],
             $elementsFilter,
             false,
             false,
@@ -168,13 +168,23 @@ class DocumentHandler
             return false;
         }
 
-        $file = $arElements[0];
+        return $this->getFilePath($arElements, $extensionFromPath);
+    }
 
-        if ($file['extension'] !== $extensionFromPath) {
-            return false;
+    /**
+     * @param array $arElements
+     * @param string $extensionFromPath
+     * @return bool|string
+     */
+    private function getFilePath(array $arElements, string $extensionFromPath): bool|string
+    {
+        foreach ($arElements as $fileData) {
+            if (mb_strtolower($fileData['extension']) == mb_strtolower($extensionFromPath)) {
+                return $fileData['path'];
+            }
         }
 
-        return $file['path'];
+        return false;
     }
 
     /**

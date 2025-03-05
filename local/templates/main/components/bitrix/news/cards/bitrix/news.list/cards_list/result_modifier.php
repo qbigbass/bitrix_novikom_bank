@@ -25,6 +25,15 @@ if (!empty($sectionIds)) {
     );
     while ($section = $res->GetNext()) {
         $section['PARENT_SECTION_NAME'] = CIBlockSection::GetByID($section['IBLOCK_SECTION_ID'])->fetch()['NAME'];
+
+        // Формирование кнопок
+        foreach ($arResult['ITEMS'] as $item) {
+            if ($item['IBLOCK_SECTION_ID'] == $section['ID']) {
+                $section['BUTTON_SHOW'] = $item['DISPLAY_PROPERTIES']['BUTTON_SHOW']['VALUE'];
+                $section['BUTTON_TEXT'] = $item['DISPLAY_PROPERTIES']['BUTTON_TEXT']['VALUE'];
+            }
+        }
+
         $arSections[$section['ID']] = $section;
     }
 }

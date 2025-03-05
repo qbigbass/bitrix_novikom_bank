@@ -49,103 +49,46 @@ if (!empty($arParams["HEADER_COLOR_CLASS"])) {
 /*
  * Шапка
  */
-$headerView->render(
-    $titleHeader,
-    $arResult['~PREVIEW_TEXT'],
-    [
-        !empty($arResult['PROPERTIES']['BENEFITS_TOP']['VALUE']) ? 'banner-product--size-xl' : ''
-    ],
-    1,
-    $arResult,
-    null,
-    null,
-    !empty($arResult['PROPERTIES']['BENEFITS_TOP_HEADER']['VALUE'])
-        ? renderBenefitsHeaderHeader(
-            $APPLICATION,
-            $arResult['PROPERTIES']['BENEFITS_TOP_HEADER']['VALUE'],
-            params : $params
-        ) : null,
-    !empty($arResult['PROPERTIES']['BENEFITS_TOP']['VALUE'])
-        ? renderBenefitsHeaderFooter(
-            $APPLICATION,
-            $arResult['PROPERTIES']['BENEFITS_TOP']['VALUE'],
-            !empty($arResult['PREVIEW_PICTURE']['SRC']),
-            params: $params
-        ) : null,
+$headerView
+    ->setBtnClasses('btn-primary')
+    ->render(
+        $titleHeader,
+        $arResult['~PREVIEW_TEXT'],
+        [
+            !empty($arResult['PROPERTIES']['BENEFITS_TOP']['VALUE']) ? 'banner-product--size-xl' : ''
+        ],
+        1,
+        $arResult,
+        null,
+        null,
+        $arResult['PROPERTIES']['SHORT_CONDITIONS']['~VALUE']['TEXT'] ?? null,
+        !empty($arResult['PROPERTIES']['BENEFITS_TOP']['VALUE'])
+            ? renderBenefitsHeaderFooter(
+                $APPLICATION,
+                $arResult['PROPERTIES']['BENEFITS_TOP']['VALUE'],
+                !empty($arResult['PREVIEW_PICTURE']['SRC']),
+                params: $params
+            ) : null,
 );
 ?>
 
-<!-- Преимущества плитка с иконкой -->
-<? if (!empty($arResult['PROPERTIES']['BENEFITS_TILE_ICON']['VALUE'])) { ?>
-    <section class="section-layout">
+<!-- Преимущества иконки -->
+<? if (!empty($arResult['PROPERTIES']['BENEFITS_ICONS']['VALUE'])) { ?>
+    <section class="section-layout px-lg-6">
         <div class="container">
-            <div class="row mb-6 mb-lg-7 px-lg-6">
-                <h3><?= $arResult['PROPERTIES']['BENEFITS_TILE_ICON_HEADER']['~VALUE'] ?? '' ?></h3>
+            <div class="row mb-6 mb-lg-7">
+                <h3><?= $arResult['PROPERTIES']['BENEFITS_ICONS_HEADER']['~VALUE'] ?? '' ?></h3>
             </div>
-            <div class="row cards-gutter">
-                <? global $benefitsTileIconFilter;
-                $benefitsTileIconFilter = [
-                    'ACTIVE' => 'Y',
-                    'ID' => $arResult['PROPERTIES']['BENEFITS_TILE_ICON']['VALUE']
-                ];
+            <div class="row row-gap-6 gx-xl-6">
 
-                $APPLICATION->IncludeComponent(
-                    "bitrix:news.list",
-                    "benefits_tile_icon",
-                    [
-                        "ACTIVE_DATE_FORMAT" => "d.m.Y",
-                        "ADD_SECTIONS_CHAIN" => "N",
-                        "AJAX_MODE" => "N",
-                        "AJAX_OPTION_ADDITIONAL" => "",
-                        "AJAX_OPTION_HISTORY" => "N",
-                        "AJAX_OPTION_JUMP" => "N",
-                        "AJAX_OPTION_STYLE" => "Y",
-                        "CACHE_FILTER" => "Y",
-                        "CACHE_GROUPS" => "Y",
-                        "CACHE_TIME" => "36000000",
-                        "CACHE_TYPE" => "A",
-                        "CHECK_DATES" => "Y",
-                        "COL_COUNT" => "2",
-                        "DETAIL_URL" => "",
-                        "DISPLAY_BOTTOM_PAGER" => "N",
-                        "DISPLAY_TOP_PAGER" => "N",
-                        "FIELD_CODE" => ["CODE","NAME","PREVIEW_TEXT","PREVIEW_PICTURE",""],
-                        "FILTER_NAME" => "benefitsTileIconFilter",
-                        "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                        "IBLOCK_ID" => iblock('benefits'),
-                        "IBLOCK_TYPE" => "additional",
-                        "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
-                        "INCLUDE_SUBSECTIONS" => "N",
-                        "MESSAGE_404" => "",
-                        "NEWS_COUNT" => "20",
-                        "PAGER_BASE_LINK_ENABLE" => "N",
-                        "PAGER_DESC_NUMBERING" => "N",
-                        "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
-                        "PAGER_SHOW_ALL" => "N",
-                        "PAGER_SHOW_ALWAYS" => "N",
-                        "PAGER_TEMPLATE" => ".default",
-                        "PAGER_TITLE" => "Новости",
-                        "PARENT_SECTION" => "",
-                        "PARENT_SECTION_CODE" => "",
-                        "PREVIEW_TRUNCATE_LEN" => "",
-                        "PROPERTY_CODE" => ["ICON",""],
-                        "SET_BROWSER_TITLE" => "N",
-                        "SET_LAST_MODIFIED" => "N",
-                        "SET_META_DESCRIPTION" => "N",
-                        "SET_META_KEYWORDS" => "N",
-                        "SET_STATUS_404" => "N",
-                        "SET_TITLE" => "N",
-                        "SHOW_404" => "N",
-                        "SORT_BY1" => "ACTIVE_FROM",
-                        "SORT_BY2" => "SORT",
-                        "SORT_ORDER1" => "DESC",
-                        "SORT_ORDER2" => "ASC",
-                        "STRICT_SECTION_CHECK" => "N",
-                    ],
-                    $component
-                ); ?>
+                <? $renderer->render('Benefits', $arResult['PROPERTIES']['BENEFITS_ICONS']['VALUE']); ?>
+
             </div>
         </div>
+        <picture class="pattern-bg pattern-bg--position-sm-bottom section-restructuring-benefits__pattern">
+            <source srcset="/frontend/dist/img/patterns/section/pattern-light-s.svg" media="(max-width: 767px)">
+            <source srcset="/frontend/dist/img/patterns/section/pattern-light-m.svg" media="(max-width: 1199px)"><img src="/frontend/dist/img/patterns/section/pattern-light-l.svg" alt="bg pattern" loading="lazy">
+        </picture>
     </section>
 <? } ?>
 
@@ -343,13 +286,14 @@ $headerView->render(
 <? } ?>
 
 <!-- Сноска (1-ое поле) -->
-<? if (!empty($arResult['PROPERTIES']['QUOTE_TEXT']['VALUE'])) {
-    foreach ($arResult['PROPERTIES']['QUOTE_TEXT']['~VALUE'] as $key => $value) {
-        if ($key == 0) {
-            $classColor = $arResult['PROPERTIES']['QUOTE_TEXT']['DESCRIPTION'][$key];
-            renderQuote($value['TEXT'], classColor: $classColor);
-        }
-    }
+<? if (!empty($arResult['PROPERTIES']['QUOTE_TEXT_1']['VALUE'])) {
+    $text = $arResult['PROPERTIES']['QUOTE_TEXT_1']['~VALUE']['TEXT'];
+    $classColor = $arResult['PROPERTIES']['QUOTE_TEXT_1']['DESCRIPTION'];
+    $header = !empty($arResult['PROPERTIES']['QUOTE_HEADER_1']['VALUE'])
+        ? "<h4 class=\"mb-3\">{$arResult['PROPERTIES']['QUOTE_HEADER_1']['VALUE']}</h4>"
+        : '';
+    renderQuote($header . $text, classColor: $classColor);
+
 } ?>
 
 <!-- Текстовый блок -->
@@ -370,34 +314,15 @@ $headerView->render(
 <? } ?>
 
 <!-- Сноска (2-ое поле) -->
-<? if (!empty($arResult['PROPERTIES']['QUOTE_TEXT']['VALUE'])) {
-    foreach ($arResult['PROPERTIES']['QUOTE_TEXT']['~VALUE'] as $key => $value) {
-        if ($key == 1) {
-            $classColor = $arResult['PROPERTIES']['QUOTE_TEXT']['DESCRIPTION'][$key];
-            renderQuote($value['TEXT'], true, $classColor);
-        }
-    }
+<? if (!empty($arResult['PROPERTIES']['QUOTE_TEXT_2']['VALUE'])) {
+    $text = $arResult['PROPERTIES']['QUOTE_TEXT_2']['~VALUE']['TEXT'];
+    $classColor = $arResult['PROPERTIES']['QUOTE_TEXT_2']['DESCRIPTION'];
+    $header = !empty($arResult['PROPERTIES']['QUOTE_HEADER_2']['VALUE'])
+        ? "<h4 class=\"mb-3\">{$arResult['PROPERTIES']['QUOTE_HEADER_2']['VALUE']}</h4>"
+        : '';
+    renderQuote($header . $text, classColor: $classColor);
+
 } ?>
-
-<!-- Преимущества иконки -->
-<? if (!empty($arResult['PROPERTIES']['BENEFITS_ICONS']['VALUE'])) { ?>
-    <section class="section-layout px-lg-6">
-        <div class="container">
-            <div class="row mb-6 mb-lg-7">
-                <h3><?= $arResult['PROPERTIES']['BENEFITS_ICONS_HEADER']['~VALUE'] ?? '' ?></h3>
-            </div>
-            <div class="row row-gap-6 gx-xl-6">
-
-                <? $renderer->render('Benefits', $arResult['PROPERTIES']['BENEFITS_ICONS']['VALUE']); ?>
-
-            </div>
-        </div>
-        <picture class="pattern-bg pattern-bg--position-sm-bottom section-restructuring-benefits__pattern">
-            <source srcset="/frontend/dist/img/patterns/section/pattern-light-s.svg" media="(max-width: 767px)">
-            <source srcset="/frontend/dist/img/patterns/section/pattern-light-m.svg" media="(max-width: 1199px)"><img src="/frontend/dist/img/patterns/section/pattern-light-l.svg" alt="bg pattern" loading="lazy">
-        </picture>
-    </section>
-<? } ?>
 
 <!-- Варианты банковского сопровождения -->
 <? if (!empty($arResult['PROPERTIES']['SUPPORT_OPTIONS']['VALUE'])) { ?>
@@ -509,13 +434,14 @@ $headerView->render(
 <? } ?>
 
 <!-- Сноска (3-ое поле и далее) -->
-<? if (!empty($arResult['PROPERTIES']['QUOTE_TEXT']['VALUE'])) {
-    foreach ($arResult['PROPERTIES']['QUOTE_TEXT']['~VALUE'] as $key => $value) {
-        if ($key > 1) {
-            $classColor = $arResult['PROPERTIES']['QUOTE_TEXT']['DESCRIPTION'][$key];
-            renderQuote($value['TEXT'], $key % 2 != 0, $classColor);
-        }
-    }
+<? if (!empty($arResult['PROPERTIES']['QUOTE_TEXT_3']['VALUE'])) {
+    $text = $arResult['PROPERTIES']['QUOTE_TEXT_3']['~VALUE']['TEXT'];
+    $classColor = $arResult['PROPERTIES']['QUOTE_TEXT_3']['DESCRIPTION'];
+    $header = !empty($arResult['PROPERTIES']['QUOTE_HEADER_3']['VALUE'])
+        ? "<h4 class=\"mb-3\">{$arResult['PROPERTIES']['QUOTE_HEADER_3']['VALUE']}</h4>"
+        : '';
+    renderQuote($header . $text, classColor: $classColor);
+
 } ?>
 
 <!-- Блок с информацией в виде аккордеона -->

@@ -12,7 +12,6 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 ?>
-
 <div class="container">
     <div class="row">
         <div class="col-12 position-relative z-1 d-flex flex-column align-items-start gap-4 gap-md-6 gap-lg-7">
@@ -42,15 +41,20 @@ $this->setFrameMode(true);
                                 </div>
                             <? endif; ?>
                             <div class="d-flex flex-column flex-sm-row align-items-center gap-5 gap-sm-6 w-100">
-                                <?if($arItem['UF_SHOW_BUTTON']) {?>
+                                <? if ($arItem['BUTTON_SHOW']): ?>
                                     <button
                                         class="btn btn-tertiary btn-lg-lg card-product-list__button w-100 w-sm-auto"
                                         type="button"
                                         data-bs-toggle="modal"
-                                        data-bs-target="#modal-credit-card-form"
-                                    >Оформить заявку
+                                        data-bs-target="#credit_card_form"
+                                    >
+                                        <?= $arItem['BUTTON_TEXT'] ?? 'Оформить заявку'; ?>
                                     </button>
-                                <?}?>
+                                    <?
+                                    global $FORMS;
+                                    $FORMS->includeForm('credit_card_form');
+                                    ?>
+                                <? endif; ?>
                                 <a class="btn btn-link btn-lg-lg d-inline-flex gap-2 align-items-center card-product-list__button-more" href="<?= $arItem['SECTION_PAGE_URL'] ?>">
                                     <span>Подробнее</span>
                                     <svg class="card-product-list__button-icon" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
@@ -65,11 +69,3 @@ $this->setFrameMode(true);
         </div>
     </div>
 </div>
-<?php $APPLICATION->IncludeComponent(
-    "dalee:form",
-    "credit_card_form",
-    [
-        "FORM_CODE" => "credit_card_form",
-    ],
-    $component
-); ?>

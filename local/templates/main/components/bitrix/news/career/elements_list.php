@@ -24,7 +24,7 @@ $headerView->render(
     null,
     null,
     '<button class="mt-7 w-100 w-sm-auto btn btn-secondary btn-lg-lg d-inline-block" type="button"
-        data-bs-toggle="modal" data-bs-target="#modal-vacancy-form">Откликнуться</button>'
+        data-bs-toggle="modal" data-bs-target="#vacancy_form">Откликнуться</button>'
 ); ?>
 
 <section class="section-career-list section-layout py-lg-11 border-top border-blue10">

@@ -79,7 +79,7 @@ $APPLICATION->SetTitle("Офисы и банкоматы");
         "SEF_URL_TEMPLATES" => [
             "news" => "",
             "section" => "#SECTION_CODE#/",
-            "detail" => "#SECTION_CODE#/#ELEMENT_ID#/",
+            "detail" => "#SECTION_CODE#/#ELEMENT_CODE#/",
         ],
         "SET_LAST_MODIFIED" => "N",
         "SET_STATUS_404" => "Y",

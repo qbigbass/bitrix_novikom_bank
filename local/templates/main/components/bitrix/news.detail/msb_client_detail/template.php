@@ -48,29 +48,26 @@ if (!empty($arParams["HEADER_COLOR_CLASS"])) {
 /*
  * Шапка
  */
-$headerView->render(
-    $titleHeader,
-    $arResult['~PREVIEW_TEXT'],
-    [
-        !empty($arResult['PROPERTIES']['BENEFITS_TOP']['VALUE']) ? 'banner-product--size-xl' : ''
-    ],
-    1,
-    $arResult,
-    null,
-    null,
-    !empty($arResult['PROPERTIES']['BENEFITS_TOP_HEADER']['VALUE'])
-        ? renderBenefitsHeaderHeader(
-            $APPLICATION,
-            $arResult['PROPERTIES']['BENEFITS_TOP_HEADER']['VALUE'],
-            params : $params
-        ) : null,
-    !empty($arResult['PROPERTIES']['BENEFITS_TOP']['VALUE'])
-        ? renderBenefitsHeaderFooter(
-            $APPLICATION,
-            $arResult['PROPERTIES']['BENEFITS_TOP']['VALUE'],
-            !empty($arResult['PREVIEW_PICTURE']['SRC']),
-            params: $params
-        ) : null,
+$headerView
+    ->setBtnClasses('btn-yellow')
+    ->render(
+        $titleHeader,
+        $arResult['~PREVIEW_TEXT'],
+        [
+            !empty($arResult['PROPERTIES']['BENEFITS_TOP']['VALUE']) ? 'banner-product--size-xl' : ''
+        ],
+        1,
+        $arResult,
+        null,
+        null,
+        $arResult['PROPERTIES']['SHORT_CONDITIONS']['~VALUE']['TEXT'] ?? null,
+        !empty($arResult['PROPERTIES']['BENEFITS_TOP']['VALUE'])
+            ? renderBenefitsHeaderFooter(
+                $APPLICATION,
+                $arResult['PROPERTIES']['BENEFITS_TOP']['VALUE'],
+                !empty($arResult['PREVIEW_PICTURE']['SRC']),
+                params: $params
+            ) : null,
 );
 ?>
 <!-- Баннер -->
@@ -267,12 +264,12 @@ $headerView->render(
 <? } ?>
 
 <!-- Сноска (1-ое поле) -->
-<? if (!empty($arResult['PROPERTIES']['QUOTE_TEXT']['VALUE'])) {
-    foreach ($arResult['PROPERTIES']['QUOTE_TEXT']['~VALUE'] as $key => $value) {
-        if ($key == 0) {
-            renderQuote($value['TEXT']);
-        }
+<? if (!empty($arResult['PROPERTIES']['ADDITIONAL_INFO_1']['~VALUE']['TEXT'])) {
+    $text = $arResult['PROPERTIES']['ADDITIONAL_INFO_1']['~VALUE']['TEXT'];
+    if (!empty($arResult['PROPERTIES']['ADDITIONAL_INFO_1_HEADER']['~VALUE'])) {
+        $text = '<h4 class="mb-3">' . $arResult['PROPERTIES']['ADDITIONAL_INFO_1_HEADER']['~VALUE'] . '</h4>'. $text;
     }
+    renderQuote($text);
 } ?>
 
 <!-- Текстовый блок -->
@@ -293,12 +290,12 @@ $headerView->render(
 <? } ?>
 
 <!-- Сноска (2-ое поле) -->
-<? if (!empty($arResult['PROPERTIES']['QUOTE_TEXT']['VALUE'])) {
-    foreach ($arResult['PROPERTIES']['QUOTE_TEXT']['~VALUE'] as $key => $value) {
-        if ($key == 1) {
-            renderQuote($value['TEXT'], true);
-        }
+<? if (!empty($arResult['PROPERTIES']['ADDITIONAL_INFO_2']['~VALUE']['TEXT'])) {
+    $text = $arResult['PROPERTIES']['ADDITIONAL_INFO_2']['~VALUE']['TEXT'];
+    if (!empty($arResult['PROPERTIES']['ADDITIONAL_INFO_2_HEADER']['~VALUE'])) {
+        $text = '<h4 class="mb-3">' . $arResult['PROPERTIES']['ADDITIONAL_INFO_2_HEADER']['~VALUE'] . '</h4>'. $text;
     }
+    renderQuote($text);
 } ?>
 
 <!-- Преимущества иконки -->
@@ -509,12 +506,12 @@ $headerView->render(
 <? } ?>
 
 <!-- Сноска (3-ое поле и далее) -->
-<? if (!empty($arResult['PROPERTIES']['QUOTE_TEXT']['VALUE'])) {
-    foreach ($arResult['PROPERTIES']['QUOTE_TEXT']['~VALUE'] as $key => $value) {
-        if ($key > 1) {
-            renderQuote($value['TEXT'], $key % 2 != 0);
-        }
+<? if (!empty($arResult['PROPERTIES']['ADDITIONAL_INFO_3']['~VALUE']['TEXT'])) {
+    $text = $arResult['PROPERTIES']['ADDITIONAL_INFO_3']['~VALUE']['TEXT'];
+    if (!empty($arResult['PROPERTIES']['ADDITIONAL_INFO_3_HEADER']['~VALUE'])) {
+        $text = '<h4 class="mb-3">' . $arResult['PROPERTIES']['ADDITIONAL_INFO_3_HEADER']['~VALUE'] . '</h4>'. $text;
     }
+    renderQuote($text);
 } ?>
 
 <!-- Блок с информацией в виде аккордеона -->

@@ -19,7 +19,12 @@ use Dalee\Helpers\ComponentRenderer\Renderer;
 
 $renderer = new Renderer($APPLICATION, $component);
 ?>
-<div class="banner-product <?= $arResult['BANNER_STYLE'] ?>">
+<div
+    class="banner-product <?= $arResult['BANNER_STYLE'] ?>"
+    <? if (!empty($arResult['DISPLAY_PROPERTIES']['CARD_HEADER_BACKGROUND']['FILE_VALUE']['SRC'])): ?>
+        style="background: url('<?= $arResult['DISPLAY_PROPERTIES']['CARD_HEADER_BACKGROUND']['FILE_VALUE']['SRC']; ?>') no-repeat center center / cover;"
+    <? endif; ?>
+>
     <div class="banner-product__wrapper">
         <div class="banner-product__content">
             <div class="banner-product__header">
@@ -30,24 +35,36 @@ $renderer = new Renderer($APPLICATION, $component);
                 <h1><?= $arResult['SECTION_NAME'] ?></h1>
                 <p class="banner-product__subtitle text-l"><?= $arResult['~DETAIL_TEXT'] ?></p>
             </div>
-            <? if (!empty($arResult['PREVIEW_PICTURE']['SRC'])) : ?>
-                <img class="banner-product__image" src="<?= $arResult['PREVIEW_PICTURE']['SRC'] ?>" alt="" loading="lazy">
-            <? endif; ?>
-            <? if (!empty($arResult['DISPLAY_PROPERTIES']['SHORT_CONDITIONS']['~VALUE']['TEXT'])) : ?>
+            <? if (
+                !empty($arResult['DISPLAY_PROPERTIES']['SHORT_CONDITIONS']['~VALUE']['TEXT'])
+                && $arResult['DISPLAY_PROPERTIES']['CARD_HEADER_TEMPLATE']['VALUE_XML_ID'] === 'detailed'
+            ): ?>
                 <div class="banner-product__benefits-list">
                     <?= $arResult['DISPLAY_PROPERTIES']['SHORT_CONDITIONS']['~VALUE']['TEXT'] ?>
                 </div>
             <? endif; ?>
-            <? if ($arResult['SHOW_BUTTON']) { ?>
+            <? if (!empty($arResult['DISPLAY_PROPERTIES']['BUTTON_SHOW']['VALUE'])): ?>
                 <button
                     class="btn btn-tertiary btn-lg-lg banner-product__button"
                     type="button"
                     data-bs-toggle="modal"
-                    data-bs-target="#modal-credit-card-form"
+                    data-bs-target="#credit_card_form"
                 >
-                    Оформить карту
+                    <?= $arResult['DISPLAY_PROPERTIES']['BUTTON_TEXT']['VALUE'] ?? 'Оформить заявку'; ?>
                 </button>
-            <? } ?>
+                <?
+                global $FORMS;
+                $FORMS->includeForm('credit_card_form');
+                ?>
+            <? endif; ?>
+            <? if (!empty($arResult['DISPLAY_PROPERTIES']['CARD_HEADER_IMAGE']['FILE_VALUE']['SRC'])): ?>
+                <img
+                    class="banner-product__image"
+                    src="<?= $arResult['DISPLAY_PROPERTIES']['CARD_HEADER_IMAGE']['FILE_VALUE']['SRC']; ?>"
+                    alt="<?= $arResult['NAME']; ?>"
+                    loading="lazy"
+                >
+            <? endif; ?>
         </div>
     </div>
     <picture class="pattern-bg banner-product__pattern">
@@ -369,7 +386,14 @@ $customerCategoriesFilter = [
                                     <img class="helper__image w-auto float-end"
                                          src="/frontend/dist/img/restructuring-additional-info.png" alt="">
                                     <div class="helper__content text-l">
-                                        <p class="mb-0"><?= $arResult['DISPLAY_PROPERTIES']['ADDITIONAL_INFO']['~VALUE']['TEXT'] ?></p>
+                                        <? if (!empty($arResult['DISPLAY_PROPERTIES']['ADDITIONAL_INFO_HEADER']['~VALUE'])): ?>
+                                            <h4 class="mb-3">
+                                                <?= $arResult['DISPLAY_PROPERTIES']['ADDITIONAL_INFO_HEADER']['~VALUE']; ?>
+                                            </h4>
+                                        <? endif; ?>
+                                        <p class="mb-0">
+                                            <?= $arResult['DISPLAY_PROPERTIES']['ADDITIONAL_INFO']['~VALUE']['TEXT'] ?>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -569,96 +593,6 @@ $customerCategoriesFilter = [
         </div>
     </section>
 <? endif; ?>
-
-<? if (!empty($arResult['DISPLAY_PROPERTIES']['SPECIAL_OFFERS']['VALUE'])) : ?>
-    <section class="section-layout bg-blue-10">
-        <div class="container">
-            <div class="d-flex align-items-center justify-content-between px-lg-6 mb-6 mb-lg-7">
-                <h3><?= $arResult['DISPLAY_PROPERTIES']['SPECIAL_OFFERS_HEADING']['~VALUE'] ?></h3>
-                <a class="btn btn-sm btn-link btn-icon d-none d-md-inline-flex" href="/special-offers/">
-                    <?= Loc::getMessage("WATCH_ALL"); ?>
-                    <svg class="icon size-s" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right-small"></use>
-                    </svg>
-                </a>
-            </div>
-            <div class="row">
-                <? global $specialOffersFilter; ?>
-                <? $specialOffersFilter = [
-                    'ACTIVE' => 'Y',
-                    'ID' => $arResult['DISPLAY_PROPERTIES']['SPECIAL_OFFERS']['VALUE']
-                ]; ?>
-                <? $APPLICATION->IncludeComponent(
-                    "bitrix:news.list",
-                    "special_offers",
-                    [
-                        "ACTIVE_DATE_FORMAT" => "d.m.Y",
-                        "ADD_SECTIONS_CHAIN" => "N",
-                        "AJAX_MODE" => "N",
-                        "AJAX_OPTION_ADDITIONAL" => "",
-                        "AJAX_OPTION_HISTORY" => "N",
-                        "AJAX_OPTION_JUMP" => "N",
-                        "AJAX_OPTION_STYLE" => "Y",
-                        "CACHE_FILTER" => "Y",
-                        "CACHE_GROUPS" => "Y",
-                        "CACHE_TIME" => "36000000",
-                        "CACHE_TYPE" => "A",
-                        "CHECK_DATES" => "Y",
-                        "DETAIL_URL" => "",
-                        "DISPLAY_BOTTOM_PAGER" => "N",
-                        "DISPLAY_DATE" => "N",
-                        "DISPLAY_NAME" => "N",
-                        "DISPLAY_PICTURE" => "N",
-                        "DISPLAY_PREVIEW_TEXT" => "N",
-                        "DISPLAY_TOP_PAGER" => "N",
-                        "FIELD_CODE" => [],
-                        "FILTER_NAME" => "specialOffersFilter",
-                        "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                        "IBLOCK_ID" => iblock("special_offers_ru"),
-                        "IBLOCK_TYPE" => "for_private_clients_ru",
-                        "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
-                        "INCLUDE_SUBSECTIONS" => "N",
-                        "MESSAGE_404" => "",
-                        "NEWS_COUNT" => "20",
-                        "PAGER_BASE_LINK_ENABLE" => "N",
-                        "PAGER_DESC_NUMBERING" => "N",
-                        "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
-                        "PAGER_SHOW_ALL" => "N",
-                        "PAGER_SHOW_ALWAYS" => "N",
-                        "PAGER_TEMPLATE" => ".default",
-                        "PAGER_TITLE" => "Новости",
-                        "PARENT_SECTION" => "",
-                        "PARENT_SECTION_CODE" => "",
-                        "PREVIEW_TRUNCATE_LEN" => "",
-                        "PROPERTY_CODE" => ["PUBLICATION_DATE"],
-                        "SET_BROWSER_TITLE" => "N",
-                        "SET_LAST_MODIFIED" => "N",
-                        "SET_META_DESCRIPTION" => "N",
-                        "SET_META_KEYWORDS" => "N",
-                        "SET_STATUS_404" => "N",
-                        "SET_TITLE" => "N",
-                        "SHOW_404" => "N",
-                        "SORT_BY1" => "ACTIVE_FROM",
-                        "SORT_BY2" => "SORT",
-                        "SORT_ORDER1" => "DESC",
-                        "SORT_ORDER2" => "ASC",
-                        "STRICT_SECTION_CHECK" => "N"
-                    ],
-                    $component
-                ); ?>
-            </div>
-        </div>
-    </section>
-<? endif; ?>
-
-<?php $APPLICATION->IncludeComponent(
-    "dalee:form",
-    "credit_card_form",
-    [
-        "FORM_CODE" => "credit_card_form",
-    ],
-    $component
-); ?>
 
 <? $helper->saveCache(); ?>
 

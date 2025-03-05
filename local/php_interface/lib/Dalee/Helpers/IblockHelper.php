@@ -281,17 +281,6 @@ class IblockHelper
         ])->fetchAll();
     }
 
-    public static function onAfterIblockElementUpdateHandler(&$arFields)
-    {
-        global $DB, $CACHE_MANAGER;
-
-        $res = $DB->Query("SELECT LINK_IBLOCK_ID, IBLOCK_ID FROM b_iblock_property WHERE IBLOCK_ID = " . $DB->ForSql($arFields['IBLOCK_ID']));
-
-        while ($row = $res->Fetch()) {
-            $CACHE_MANAGER->ClearByTag('iblock_id_' . $row['LINK_IBLOCK_ID']);
-        }
-    }
-
     /**
      * Получаем св-ва ИБ по кодам
      *
@@ -310,5 +299,30 @@ class IblockHelper
             $result[$prop['CODE']] = $prop;
         }
         return $result;
+    }
+
+    public static function onAfterIBlockSectionUpdateHandler(&$arFields)
+    {
+        global $CACHE_MANAGER;
+        $arIblocks = getIblockIdsClearMenu();
+
+        if (!empty($arFields) && (in_array((int)$arFields["IBLOCK_ID"], $arIblocks, true))) {
+            $CACHE_MANAGER->ClearByTag("bitrix:menu");
+        }
+    }
+
+    public static function onAfterIBlockSectionDeleteHandler($ID)
+    {
+        global $CACHE_MANAGER;
+
+        if ($ID > 0) {
+            $section = SectionTable::getByPrimary($ID)->fetchObject();
+            $iblockId = $section->getIblockId();
+            $arIblocks = getIblockIdsClearMenu();
+
+            if (in_array((int)$iblockId, $arIblocks, true)) {
+                $CACHE_MANAGER->ClearByTag("bitrix:menu");
+            }
+        }
     }
 }

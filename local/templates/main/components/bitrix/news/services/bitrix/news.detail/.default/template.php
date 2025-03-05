@@ -213,12 +213,22 @@ $helper = new ComponentHelper($component);
     </section>
 <?endif;?>
 
-<?if(!empty($arResult['DISPLAY_PROPERTIES']['HTML']['~VALUE']['TEXT'])):
-    ?>
+<? if (!empty($arResult['DISPLAY_PROPERTIES']['HTML']['~VALUE']['TEXT'])): ?>
     <section class="section-layout bg-dark-10">
-        <?=$arResult['DISPLAY_PROPERTIES']['HTML']['~VALUE']['TEXT']?>
+        <? if (!empty($arResult['DISPLAY_PROPERTIES']['HTML_HEADING']['~VALUE'])): ?>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h3 class="px-lg-6 mb-4">
+                            <?= $arResult['DISPLAY_PROPERTIES']['HTML_HEADING']['~VALUE']; ?>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        <? endif; ?>
+        <?= $arResult['DISPLAY_PROPERTIES']['HTML']['~VALUE']['TEXT'] ?>
     </section>
-<?endif;?>
+<? endif; ?>
 
 <?if(!empty($arResult['DISPLAY_PROPERTIES']['DOCUMENTS']['VALUE'])): ?>
     <section class="section-layout px-lg-6">
