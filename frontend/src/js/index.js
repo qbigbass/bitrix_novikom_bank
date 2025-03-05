@@ -463,6 +463,9 @@ window.onload = function() {
     const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
         return new bootstrap.Tooltip(tooltipTriggerEl)
     })
+    if (typeof pbAnimation === 'function') {
+        pbAnimation();
+    }
 };
 
 window.addEventListener('resize', () => {

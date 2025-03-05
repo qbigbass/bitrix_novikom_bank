@@ -39,14 +39,9 @@ $asset->addJs('/frontend/dist/js/sliders.js');
 $asset->addJs('/frontend/dist/js/tabs.js');
 $asset->addJs('/frontend/dist/js/yMap.js');
 $asset->addJs('/frontend/dist/js/private-banking.js');
-$asset->addJs('/frontend/dist/js/calculator-deposit.js');
-$asset->addJs('/frontend/dist/js/calculator-loan.js');
-$asset->addJs('/frontend/dist/js/calculator-mortgage.js');
-$asset->addJs('/frontend/dist/js/calculator-bonus.js');
 $asset->addJs('/frontend/dist/js/currency-converter.js');
 $asset->addJs('/frontend/dist/js/charts.js');
 $asset->addJs('/frontend/dist/js/index.js');
-
 ?>
 <!DOCTYPE html>
 <html lang="<?= LANGUAGE_ID ?>">

@@ -60,7 +60,7 @@ $headerView
         $arResult,
         null,
         null,
-        $arResult['PROPERTIES']['SHORT_CONDITIONS']['~VALUE']['TEXT'] ?: null,
+        $arResult['PROPERTIES']['SHORT_CONDITIONS']['~VALUE']['TEXT'] ?? null,
         !empty($arResult['PROPERTIES']['BENEFITS_TOP']['VALUE'])
             ? renderBenefitsHeaderFooter(
                 $APPLICATION,
