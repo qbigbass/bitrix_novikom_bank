@@ -73,6 +73,10 @@
     --bs-btn-active-color: var(--dark-0);
     --bs-btn-active-border-color: var(--dark-0);
 
+    @include use-media(tablet) {
+      height: 3.5rem;
+    }
+
     &:hover {
       color: var(--dark-0);
       border: 1px solid var(--dark-0);
