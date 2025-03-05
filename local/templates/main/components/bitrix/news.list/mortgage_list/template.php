@@ -12,20 +12,6 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 
-$terms = [
-    'SUM_TO' => [
-        'SIGN' => 'Сумма',
-        'FROM_TO' => 'до&nbsp;',
-    ],
-    'RATE_FROM' => [
-        'SIGN' => 'Процентная ставка',
-        'FROM_TO' => 'от&nbsp;',
-    ],
-    'DIAPASON' => [
-        'SIGN' => 'Диапазон полной стоимости кредита',
-    ]
-];
-
 ?>
 
 <? foreach ($arResult['ITEMS'] as $item) { ?>
@@ -49,23 +35,9 @@ $terms = [
                     </a>
                 </div>
 
-                <? if (!empty($item['PROPERTIES']['TERMS'])) { ?>
-                    <div
-                        class="card-product-list__condition-list w-100 w-lg-auto d-flex justify-content-between justify-content-lg-start flex-column flex-sm-row flex-wrap row-gap-4 row-gap-sm-6 row-gap-lg-6 row-gap-xxl-6 gap-xl-12 gap-xxl-16">
-
-                        <? $termsValues = processTerms($terms, $item['PROPERTIES']['TERMS']);
-                        foreach ($termsValues as $term) { ?>
-                            <div class="card-product-list__condition d-flex flex-column gap-2 w-100 w-sm-50 w-xl-auto">
-                                <div class="d-inline-flex flex-nowrap align-items-baseline gap-1">
-                                    <span class='text-l fw-semibold'><?= $term['FROM_TO'] ?></span>
-                                    <span class='text-number-l fw-bold'><?= $term['VALUE'] ?></span>
-                                </div>
-                                <span class='text-m dark-70'><?= $term['SIGN'] ?></span>
-                            </div>
-                        <? } ?>
-
-                    </div>
-                <? } ?>
+                <? if (!empty($item['PROPERTIES']['BRIEF_CONDITIONS_CARD']['~VALUE']['TEXT'])) : ?>
+                    <?= $item['PROPERTIES']['BRIEF_CONDITIONS_CARD']['~VALUE']['TEXT']?>
+                <? endif; ?>
 
                 <div class="d-flex flex-column flex-sm-row align-items-center gap-5 gap-sm-6 w-100">
                     <? if (!empty($item['PROPERTIES']['BUTTON_DETAIL']['VALUE']) && !empty($item['PROPERTIES']['BUTTON_HREF_DETAIL']['VALUE'])) { ?>

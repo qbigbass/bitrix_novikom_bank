@@ -158,6 +158,7 @@ if (!empty($elementWithoutSection)) {
                 "LIST_TERMS",
                 "BUTTON_LIST",
                 "BUTTON_TEXT_LIST",
+                "BRIEF_CONDITIONS_CARD"
             ],
             "MESSAGE_404" => "",
             "META_DESCRIPTION" => "-",

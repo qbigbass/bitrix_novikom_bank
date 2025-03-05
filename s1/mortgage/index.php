@@ -69,7 +69,7 @@ $APPLICATION->SetTitle("Ипотечные программы");
 			0 => "LIST_TERMS",
 			1 => "BUTTON_LIST",
 			2 => "BUTTON_TEXT_LIST",
-			3 => "",
+			3 => "BRIEF_CONDITIONS_CARD",
 			4 => "",
 			5 => "",
         ],
