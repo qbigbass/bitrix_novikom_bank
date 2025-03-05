@@ -111,7 +111,10 @@ function parseDate(dateString) {
     // Создаем объект Date
     return new Date(year, month, day);
 }
-
+function setStartValues(STATE) {
+    STATE.amount = STATE.minAmount;
+    STATE.period = STATE.minPeriod;
+}
 function calculateDepositIncome({amount, period, rate, capitalization, filteredData, additionalDeposits, hideAdditional = false}) {
     let totalAmount = amount; // Общая сумма вклада, начиная с первоначальной
     let totalIncome = 0; // Переменная для хранения общего дохода
