@@ -45,18 +45,22 @@ $this->setFrameMode(true);
                                 </div>
                             <? endif; ?>
                             <div class="d-flex flex-column flex-sm-row align-items-center gap-5 gap-sm-6 w-100">
-                                <? if ($arItem['BUTTON_SHOW']): ?>
+                                <? if ($arItem['UF_SHOW_BUTTON'] && !empty($arItem['UF_BUTTON_LINK'])): ?>
+                                    <a href="<?=$arItem['UF_BUTTON_LINK']?>" class="btn btn-tertiary btn-lg-lg card-product-list__button w-100 w-sm-auto">
+                                        <?=$arItem['UF_BUTTON_TEXT'] ?? 'Оформить заявку';?>
+                                    </a>
+                                <? elseif ($arItem['UF_SHOW_BUTTON'] && !empty($arItem['UF_BUTTON_CODE_FORM'])): ?>
                                     <button
                                         class="btn btn-tertiary btn-lg-lg card-product-list__button w-100 w-sm-auto"
                                         type="button"
                                         data-bs-toggle="modal"
-                                        data-bs-target="#credit_card_form"
+                                        data-bs-target="#<?=$arItem['UF_BUTTON_CODE_FORM']?>"
                                     >
-                                        <?= $arItem['BUTTON_TEXT'] ?? 'Оформить заявку'; ?>
+                                        <?=$arItem['UF_BUTTON_TEXT'] ?? 'Оформить заявку';?>
                                     </button>
                                     <?
                                     global $FORMS;
-                                    $FORMS->includeForm('credit_card_form');
+                                    $FORMS->includeForm($arItem['UF_BUTTON_CODE_FORM']);
                                     ?>
                                 <? endif; ?>
                                 <a class="btn btn-link btn-lg-lg d-inline-flex gap-2 align-items-center card-product-list__button-more" href="<?= $arItem['SECTION_PAGE_URL'] ?>">
