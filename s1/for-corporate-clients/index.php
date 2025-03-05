@@ -70,6 +70,7 @@ $APPLICATION->SetTitle('Корпоративным клиентам');
         ],
         "LIST_PROPERTY_CODE" => [
             "LIST_POSITION",
+            "PREVIEW_PICTURE",
         ],
         "MESSAGE_404" => "",
         "META_DESCRIPTION" => "-",
