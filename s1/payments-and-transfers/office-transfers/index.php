@@ -2,16 +2,16 @@
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 global $APPLICATION;
 $APPLICATION->SetTitle("Банковские переводы в офисе");
-?>
 
-<?
+$page = $APPLICATION->GetCurPage();
 $iblockId = iblock('office_transfers');
-if (empty($_SESSION['current_page'])) {
-    $elements = getIBlockElements($iblockId);
+$elements = getIBlockElements($iblockId);
+$elementCode = basename($page);
+if ($elementCode == 'office-transfers') {
+    LocalRedirect($page . $elements[0]['CODE'] . '/');
 }
-?>
 
-<? $APPLICATION->IncludeComponent(
+$APPLICATION->IncludeComponent(
     "bitrix:news.detail",
     "office_transfers_detail",
     [
@@ -35,9 +35,7 @@ if (empty($_SESSION['current_page'])) {
         "DISPLAY_PICTURE" => "Y",
         "DISPLAY_PREVIEW_TEXT" => "Y",
         "DISPLAY_TOP_PAGER" => "N",
-        "ELEMENT_CODE" => !empty($_SESSION['section_page']['/payments-and-transfers/office-transfers/'])
-            ? basename($_SESSION['section_page']['/payments-and-transfers/office-transfers/'])
-            : $elements[0]['CODE'],
+        "ELEMENT_CODE" => $elementCode,
         "ELEMENT_ID" => "",
         "FIELD_CODE" => [
             0 => "",
@@ -73,7 +71,8 @@ if (empty($_SESSION['current_page'])) {
         "COMPONENT_TEMPLATE" => "office_transfers_detail"
     ],
     false
-); ?>
+);
+?>
 
 <? $APPLICATION->IncludeFile('/local/php_interface/include/block_ads_customers.php'); ?>
 

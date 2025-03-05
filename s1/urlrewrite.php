@@ -50,6 +50,13 @@ $arUrlRewrite = [
         'SORT' => 100,
     ],
     [
+        'CONDITION' => '#^/payments-and-transfers/office-transfers/[a-z-]+/#',
+        'RULE' => '',
+        'ID' => '',
+        'PATH' => '/payments-and-transfers/office-transfers/index.php',
+        'SORT' => 100,
+    ],
+    [
         'CONDITION' => '#^/payments-and-transfers/#',
         'RULE' => '',
         'ID' => 'bitrix:news',

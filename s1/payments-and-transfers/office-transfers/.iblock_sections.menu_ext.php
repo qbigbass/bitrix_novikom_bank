@@ -8,8 +8,8 @@ $elements = getIBlockElements(iblock('office_transfers'));
 $aMenuLinksExt = array_map(function ($element) {
     return [
         $element['NAME'],
-        $element['CODE'] . '/',
-        [$element['CODE'] . '/'],
+        'office-transfers/' . $element['CODE'] . '/',
+        ['office-transfers/' . $element['CODE'] . '/'],
         [
             'FROM_IBLOCK' => true,
             'IS_PARENT' => '',
@@ -18,5 +18,6 @@ $aMenuLinksExt = array_map(function ($element) {
     ];
 }, $elements);
 
+unset($aMenuLinks[0]);
 $aMenuLinks = array_merge($aMenuLinks, $aMenuLinksExt);
 ?>
