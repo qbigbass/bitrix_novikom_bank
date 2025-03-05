@@ -376,7 +376,7 @@ $headerView
                         "PARENT_SECTION" => "",
                         "PARENT_SECTION_CODE" => "",
                         "PREVIEW_TRUNCATE_LEN" => "",
-                        "PROPERTY_CODE" => ["BENEFITS", "STEPS_HEADER", "STEPS", "QUOTE", "TEXT_FIELD", "BUTTON_TEXT", "BUTTON_LINK"],
+                        "PROPERTY_CODE" => ["BENEFITS", "STEPS_HEADER", "STEPS", "QUOTE", "TEXT_FIELD", "BUTTON_TEXT", "BUTTON_LINK", "BUTTON_CODE_FORM"],
                         "SET_BROWSER_TITLE" => "N",
                         "SET_LAST_MODIFIED" => "N",
                         "SET_META_DESCRIPTION" => "N",
