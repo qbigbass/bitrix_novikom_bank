@@ -27,32 +27,38 @@ class AccordionHandler implements PropertyHandlerInterface
 
     private function getAccordionItemsHtml(): string
     {
-        ob_start();
+        $html = '';
 
         foreach ($this->elements as $element) {
-            ?>
-            <div class="accordion-item">
-                <div class="accordion-header">
-                    <button
-                        class="accordion-button collapsed"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#<?= $element['ID'] ?>"
-                        aria-controls="<?= $element['ID'] ?>"
-                        data-item-name="<?= htmlspecialchars($element['~NAME']) ?>"
-                    >
-                        <span class="h4"><?= $element['NAME'] ?></span>
-                    </button>
-                </div>
-                <div class="accordion-collapse collapse" id="<?= $element['ID'] ?>" data-bs-parent="#accordion-tab">
-                    <div class="accordion-body">
-                        <?= $this->getSubValuesHtml($element) ?>
+            $id = htmlspecialchars($element['ID']);
+            $name = htmlspecialchars($element['NAME']);
+            $itemName = htmlspecialchars($element['~NAME']);
+            $subValues = $this->getSubValuesHtml($element);
+
+            $html .= <<<HTML
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <button
+                            class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#$id"
+                            aria-controls="$id"
+                            data-item-name="$itemName"
+                        >
+                            <span class="h4">$name</span>
+                        </button>
+                    </div>
+                    <div class="accordion-collapse collapse" id="$id" data-bs-parent="#accordion-tab">
+                        <div class="accordion-body">
+                            $subValues
+                        </div>
                     </div>
                 </div>
-            </div>
-        <? }
+                HTML;
+        }
 
-        return ob_get_clean();
+        return $html;
     }
 
     private function getElements(array $elementIds): array
