@@ -14,7 +14,7 @@ foreach($arResult["arMap"] as $index => $arItem)
 $allNum = count($arRootNode);
 $colNum = ceil($allNum / $arParams["COL_NUM"]);
 ?>
-<section class="section-layout border-top border-blue10">
+<section class="section-layout py-lg-9 border-top border-blue10">
     <div class="container">
         <table class="map-columns">
             <tr>
