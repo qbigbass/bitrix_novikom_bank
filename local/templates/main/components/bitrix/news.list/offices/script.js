@@ -23,7 +23,7 @@ class OfficesMap {
         this.initMap()
         this.initOffsetCenter()
         await this.loadOffices()
-        this.filterOffices()
+        this.filterOffices(true)
         this.initOfficesSearchFilter()
         this.initOfficesServicesFilter()
         this.renderOfficesPlacemarks()
@@ -150,8 +150,13 @@ class OfficesMap {
         this.services = result.data.services
     }
 
-    filterOffices() {
-        this.updateFilterFormValues()
+    filterOffices(init = false) {
+        //Если фильтрация при инициализации, проверяем localStorage и выставляем нужные галочки и фильтры
+        if (init) {
+
+        } else {
+            this.updateFilterFormValues()
+        }
 
         this.filteredOffices = this.offices
 
@@ -218,6 +223,14 @@ class OfficesMap {
 
         this.renderOfficesList()
         this.renderOfficesPlacemarks()
+        this.saveFilterFormValues();
+    }
+
+    saveFilterFormValues(){
+
+        const officeMapFilter = { term: this.term, filteredOffices: this.filteredOffices };
+        console.log('saveFilterFormValues',officeMapFilter);
+        localStorage.setItem('officeMapFilter', JSON.stringify(officeMapFilter));
     }
 
     clearOfficesPlacemarks() {
