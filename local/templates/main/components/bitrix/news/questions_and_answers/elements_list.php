@@ -76,9 +76,10 @@ if (!empty($delFilter)) {
                     <!-- Строка поиска -->
                     <?$APPLICATION->IncludeComponent(
                         "dalee:search.block",
-                        "",
+                        "questions",
                         [
-                            "PLACEHOLDER" => "Поиск по вопросам и ответам"
+                            "PLACEHOLDER" => "Поиск по вопросам и ответам",
+                            "SEF_FOLDER" => $arParams['SEF_FOLDER'],
                         ],
                         $component
                     ); ?>
