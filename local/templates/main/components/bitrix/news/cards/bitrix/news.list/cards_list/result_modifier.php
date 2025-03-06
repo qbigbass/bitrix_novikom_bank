@@ -1,5 +1,6 @@
 <?php
 /** @var array $arResult */
+use Dalee\Entities\FormListTable;
 
 require_once __DIR__ . '/functions.php';
 
@@ -23,19 +24,18 @@ if (!empty($sectionIds)) {
             'UF_*'
         ]
     );
+
     while ($section = $res->GetNext()) {
         $section['PARENT_SECTION_NAME'] = CIBlockSection::GetByID($section['IBLOCK_SECTION_ID'])->fetch()['NAME'];
+        $form = FormListTable::query()
+            ->setSelect(['UF_XML_ID'])
+            ->setFilter(['ID' => $section['UF_BUTTON_CODE_FORM']])
+            ->exec()
+            ->fetchObject();
 
-        // Формирование кнопок
-        foreach ($arResult['ITEMS'] as $item) {
-            if ($item['IBLOCK_SECTION_ID'] == $section['ID']) {
-                $section['BUTTON_SHOW'] = $item['DISPLAY_PROPERTIES']['BUTTON_SHOW']['VALUE'];
-                $section['BUTTON_TEXT'] = $item['DISPLAY_PROPERTIES']['BUTTON_TEXT']['VALUE'];
-            }
-        }
+        $section['UF_BUTTON_CODE_FORM'] = $form?->getUfXmlId();
 
         $arSections[$section['ID']] = $section;
     }
 }
-
 $arResult['ITEMS'] = $arSections;

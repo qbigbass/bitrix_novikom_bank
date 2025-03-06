@@ -32,7 +32,9 @@ $itemCols = (count($arResult["ITEMS"]) > 2) ? '3' : '2';
                             </div>
                             <p class="card-product__description m-0"><?=$arItem['PREVIEW_TEXT']?></p>
                         </div>
-                        <img class="card-product__img" src="<?=$arItem['DISPLAY_PROPERTIES']['ICON']['FILE_VALUE']['SRC']?>" alt="" loading="lazy">
+                        <?if (!empty($arItem['DISPLAY_PROPERTIES']['ICON']['FILE_VALUE']['SRC'])):?>
+                            <img class="card-product__img" src="<?=$arItem['DISPLAY_PROPERTIES']['ICON']['FILE_VALUE']['SRC']?>" alt="" loading="lazy">
+                        <?endif;?>
                         <a class="btn btn-primary card-product__button" href="<?=$arItem['DETAIL_PAGE_URL']?>">Подробнее</a>
                     </div>
                 </div>

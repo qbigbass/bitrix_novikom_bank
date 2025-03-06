@@ -47,25 +47,33 @@ $this->setFrameMode(true);
                                     <? } ?>
                                 </div>
                                 <img class="card-product__img" src="<?= $item['PREVIEW_PICTURE']['SRC'] ?>" alt="<?= $item['PREVIEW_PICTURE']['ALT'] ?>" loading="lazy">
-                                <? if (!empty($item['PROPERTIES']['LINK']['VALUE'])) { ?>
-                                    <? if (empty($item['PROPERTIES']['BTN_TYPE']['VALUE']) || $item['PROPERTIES']['BTN_TYPE']['VALUE'] == 'С фоном') { ?>
-                                        <a
-                                            class="btn btn-primary card-product__button"
-                                            type="button"
-                                            data-bs-toggle="modal"
-                                            data-bs-target="#<?= $item['PROPERTIES']['LINK']['VALUE'] ?>"
-                                        >
+                                <? if (!empty($item['PROPERTIES']['LINK']['VALUE'])): ?>
+                                    <? if (empty($item['PROPERTIES']['BTN_TYPE']['VALUE']) || $item['PROPERTIES']['BTN_TYPE']['VALUE'] == 'С фоном'): ?>
+                                        <a class="btn btn-primary card-product__button" href="<?= $item['PROPERTIES']['LINK']['VALUE']?>">
                                             <?= $item['PROPERTIES']['BTN_TEXT']['VALUE'] ?>
                                         </a>
-                                    <? } else { ?>
+                                    <? else: ?>
                                         <a class="btn btn-link btn-icon m-auto m-md-0" href="<?= $item['PROPERTIES']['LINK']['VALUE'] ?>">
                                             <span><?= $item['PROPERTIES']['BTN_TEXT']['VALUE'] ?></span>
                                             <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                                                 <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
                                             </svg>
                                         </a>
-                                    <? } ?>
-                                <? } ?>
+                                    <? endif; ?>
+                                <? elseif (!empty($item['PROPERTIES']['BUTTON_CODE_FORM']['VALUE'])): ?>
+                                    <button
+                                        class="btn btn-primary card-product__button"
+                                        type="button"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#<?= $item['PROPERTIES']['BUTTON_CODE_FORM']['VALUE'] ?>"
+                                    >
+                                        <?= $item['PROPERTIES']['BTN_TEXT']['VALUE'] ?>
+                                    </button>
+                                    <?
+                                    global $FORMS;
+                                    $FORMS->includeForm($item['PROPERTIES']['BUTTON_CODE_FORM']['VALUE']);
+                                    ?>
+                                <? endif; ?>
                             </div>
                         </div>
                     </div>
