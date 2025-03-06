@@ -125,7 +125,8 @@ function calculateDaysInYear(year) {
     return isLeapYear(year) ? 366 : 365;
 }
 
-function calculateDepositIncome({amount, period, rate, capitalization, filteredData, additionalDeposits, hideAdditional = false, elements}) {
+function calculateDepositIncome(STATE) {
+    let {amount, period, rate, capitalization, filteredData, additionalDeposits, hideAdditional = false} = STATE;
     let totalAmount = amount; // Общая сумма вклада, начиная с первоначальной
     let totalIncome = 0; // Переменная для хранения общего дохода
     const startDate = new Date(); // Начальная дата
@@ -163,11 +164,11 @@ function calculateDepositIncome({amount, period, rate, capitalization, filteredD
             // Если новая процентная ставка не определена, используем текущую
             if (!newRate) {newRate = rate}
 
+            STATE.rate = newRate;
             const dailyNewRate = (newRate / 100) / calculateDaysInYear(depositDate.getFullYear());
 
             // Расчет дохода от пополнения
             if (capitalization) {
-                // TODO: проверить не ежедневная ли капитализация?
                 const n = 12; // Количество периодов капитализации в год (ежемесячно)
                 const t = daysOnDeposit / calculateDaysInYear(depositDate.getFullYear()); // Количество лет
 
@@ -183,7 +184,7 @@ function calculateDepositIncome({amount, period, rate, capitalization, filteredD
         });
     }
 
-    return {totalIncome, rate};
+    return totalIncome;
 }
 function findDepositRate({data, amount, period}) {
     const findAmount = data.filter(item => item.sumFrom <= amount && item.sumTo >= amount);
