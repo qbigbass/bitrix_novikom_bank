@@ -361,6 +361,64 @@ function checkWidth() {
     }
 }
 
+function collectSelectOptions(data, field) {
+    return [...new Set(data
+        .map(item => item[field])
+        .filter(value => value !== null && value !== '')
+    )];
+}
+
+function setSelectOptions(select, options, STATE) {
+    STATE.elements[select].innerHTML = '';
+
+    options.forEach(item => {
+        const option = document.createElement('option');
+        option.value = item;
+        option.textContent = item;
+        STATE.elements[select].appendChild(option);
+    });
+}
+
+function createNewInputSlider(inputSlider, dataAttr) {
+    const cloneInputSlider = inputSlider.cloneNode(true);
+    Object.entries(dataAttr).forEach(([key, value]) => {
+        cloneInputSlider.dataset[key] = value;
+    })
+    cloneInputSlider.querySelector(JS_CLASSES.textSteps).textContent = '';
+    cloneInputSlider.querySelector(ELEMS_MORTGAGE.inputSliderRange).style = '';
+    initInputSlider([cloneInputSlider]);
+    inputSlider.replaceWith(cloneInputSlider);
+    return cloneInputSlider;
+}
+
+const URL = '/local/php_interface/ajax/calc.php';
+
+function getRates({table = null, id = null, name = null}) {
+    const params = new URLSearchParams();
+    if (table) params.append('table', table);
+    if (id) params.append('id', id);
+    if (name) params.append('name', name);
+
+    return fetch(URL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: params
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                console.error('Ошибка:', data.error);
+            } else if (data.data) {
+                return data.data;
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        })
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     initDropdownMenu();
     setVh();
@@ -371,13 +429,11 @@ document.addEventListener('DOMContentLoaded', () => {
     initCardSlider();
     initAnnouncementSlider();
     initTabsSlider();
-    addSelectDateOptions();
     initSelect2();
     initTabsContent();
     initInputSlider();
     showMoreContent();
     initPbSlider();
-    pbNavMenu();
     initDatepicker();
     setPage();
     initFormSteps();
@@ -389,19 +445,11 @@ document.addEventListener('DOMContentLoaded', () => {
     initResizePolygonAccordions();
     initHeaderSearchForm();
     hideDropDownMenu();
-    initCalculatorDeposit();
-    initCalculatorLoan();
-    initCalculatorMortgage();
-    initCalculatorBonus();
-    initCurrencyConverter();
     initOffices();
     initChatBot();
     initCharts();
-    pbScrollTo();
     initFixScrollAccordions();
     checkWidth();
-    triggerPbTab();
-    scrollPbAccordion();
 });
 
 window.onload = function() {
@@ -415,8 +463,9 @@ window.onload = function() {
     const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
         return new bootstrap.Tooltip(tooltipTriggerEl)
     })
-
-    pbAnimation();
+    if (typeof pbAnimation === 'function') {
+        pbAnimation();
+    }
 };
 
 window.addEventListener('resize', () => {

@@ -48,29 +48,25 @@ if (!empty($arParams["HEADER_COLOR_CLASS"])) {
 /*
  * Шапка
  */
-$headerView->render(
-    $titleHeader,
-    $arResult['~PREVIEW_TEXT'],
-    [
-        !empty($arResult['PROPERTIES']['BENEFITS_TOP']['VALUE']) ? 'banner-product--size-xl' : ''
-    ],
-    1,
-    $arResult,
-    null,
-    null,
-    !empty($arResult['PROPERTIES']['BENEFITS_TOP_HEADER']['VALUE'])
-        ? renderBenefitsHeaderHeader(
-            $APPLICATION,
-            $arResult['PROPERTIES']['BENEFITS_TOP_HEADER']['VALUE'],
-            params : $params
-        ) : null,
-    !empty($arResult['PROPERTIES']['BENEFITS_TOP']['VALUE'])
-        ? renderBenefitsHeaderFooter(
-            $APPLICATION,
-            $arResult['PROPERTIES']['BENEFITS_TOP']['VALUE'],
-            !empty($arResult['PREVIEW_PICTURE']['SRC']),
-            params: $params
-        ) : null,
+$headerView
+    ->setBtnClasses('btn-orange')
+    ->render(
+        $titleHeader,
+        $arResult['~PREVIEW_TEXT'],
+        [
+            !empty($arResult['PROPERTIES']['BENEFITS_TOP']['VALUE']) ? 'banner-product--size-xl' : ''
+        ],
+        1,
+        $arResult,
+        null,
+        null,
+        $arResult['PROPERTIES']['SHORT_CONDITIONS']['~VALUE']['TEXT'] ?? null,
+        !empty($arResult['PROPERTIES']['BENEFITS_TOP']['VALUE'])
+            ? renderBenefitsHeaderFooter(
+                $APPLICATION,
+                $arResult['PROPERTIES']['BENEFITS_TOP']['VALUE'],
+                $params
+            ) : null,
 );
 ?>
 
@@ -190,12 +186,13 @@ $headerView->render(
 } ?>
 
 <!-- Сноска (1-ое поле) -->
-<? if (!empty($arResult['PROPERTIES']['QUOTE_TEXT']['VALUE'])) {
-    foreach ($arResult['PROPERTIES']['QUOTE_TEXT']['~VALUE'] as $key => $value) {
-        if ($key == 0) {
-            renderQuote($value['TEXT']);
-        }
-    }
+<? if (!empty($arResult['PROPERTIES']['QUOTE_TEXT_1']['VALUE'])) {
+    $text = $arResult['PROPERTIES']['QUOTE_TEXT_1']['~VALUE']['TEXT'];
+    $header = !empty($arResult['PROPERTIES']['QUOTE_HEADER_1']['VALUE'])
+        ? "<h4 class=\"mb-3\">{$arResult['PROPERTIES']['QUOTE_HEADER_1']['VALUE']}</h4>"
+        : '';
+
+    renderQuote($header . $text);
 } ?>
 
 <!-- Текстовый блок -->
@@ -216,12 +213,13 @@ $headerView->render(
 <? } ?>
 
 <!-- Сноска (2-ое поле) -->
-<? if (!empty($arResult['PROPERTIES']['QUOTE_TEXT']['VALUE'])) {
-    foreach ($arResult['PROPERTIES']['QUOTE_TEXT']['~VALUE'] as $key => $value) {
-        if ($key == 1) {
-            renderQuote($value['TEXT'], true);
-        }
-    }
+<? if (!empty($arResult['PROPERTIES']['QUOTE_TEXT_2']['VALUE'])) {
+    $text = $arResult['PROPERTIES']['QUOTE_TEXT_2']['~VALUE']['TEXT'];
+    $header = !empty($arResult['PROPERTIES']['QUOTE_HEADER_2']['VALUE'])
+        ? "<h4 class=\"mb-3\">{$arResult['PROPERTIES']['QUOTE_HEADER_2']['VALUE']}</h4>"
+        : '';
+
+    renderQuote($header . $text, true);
 } ?>
 
 <!-- Преимущества иконки -->
@@ -452,7 +450,7 @@ $headerView->render(
                         "PARENT_SECTION" => "",
                         "PARENT_SECTION_CODE" => "",
                         "PREVIEW_TRUNCATE_LEN" => "",
-                        "PROPERTY_CODE" => ["BENEFITS", "STEPS_HEADER", "STEPS", "QUOTE", "TEXT_FIELD", "BUTTON_TEXT", "BUTTON_LINK"],
+                        "PROPERTY_CODE" => ["BENEFITS", "STEPS_HEADER", "STEPS", "QUOTE", "TEXT_FIELD", "BUTTON_TEXT", "BUTTON_LINK", "BUTTON_CODE_FORM"],
                         "SET_BROWSER_TITLE" => "N",
                         "SET_LAST_MODIFIED" => "N",
                         "SET_META_DESCRIPTION" => "N",
@@ -519,12 +517,13 @@ $headerView->render(
 <? } ?>
 
 <!-- Сноска (3-ое поле и далее) -->
-<? if (!empty($arResult['PROPERTIES']['QUOTE_TEXT']['VALUE'])) {
-    foreach ($arResult['PROPERTIES']['QUOTE_TEXT']['~VALUE'] as $key => $value) {
-        if ($key > 1) {
-            renderQuote($value['TEXT'], $key % 2 != 0);
-        }
-    }
+<? if (!empty($arResult['PROPERTIES']['QUOTE_TEXT_3']['VALUE'])) {
+    $text = $arResult['PROPERTIES']['QUOTE_TEXT_3']['~VALUE']['TEXT'];
+    $header = !empty($arResult['PROPERTIES']['QUOTE_HEADER_3']['VALUE'])
+        ? "<h4 class=\"mb-3\">{$arResult['PROPERTIES']['QUOTE_HEADER_3']['VALUE']}</h4>"
+        : '';
+
+    renderQuote($header . $text);
 } ?>
 
 <!-- Блок с информацией в виде аккордеона -->

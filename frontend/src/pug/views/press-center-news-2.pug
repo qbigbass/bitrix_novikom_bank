@@ -64,12 +64,12 @@ block content
                                     +svg-use("icon-phone", "icon size-m")
                                     span
                                         span.me-2!= cardContactData.contactDetail.phone
-                                        span.chip.chip--outlined.caption-m.text-white-50(tabindex="0" aria-label=`Добавочный номер ${cardContactData.contactDetail.phoneChip}`)!=cardContactData.contactDetail.phoneChip
+                                        span.chip.chip--outlined.caption-m.dark-0(tabindex="0" aria-label=`Добавочный номер ${cardContactData.contactDetail.phoneChip}`)!=cardContactData.contactDetail.phoneChip
                                 p.card-contact__link.dark-0.mb-0.gap-3(href=`mailto:${cardContactData.contactDetail.email}`)
                                     +svg-use("icon-fax", "icon size-m")
                                     span
                                         a.me-2.text-white(href=`tel:${cardContactData.contactDetail.fax}` role="button" tabindex="0" aria-label=`Номер факса ${cardContactData.contactDetail.fax}`)!=cardContactData.contactDetail.fax
-                                        span.chip.chip--outlined.caption-m.text-white-50!= cardContactData.contactDetail.faxChip
+                                        span.chip.chip--outlined.caption-m.dark-0!= cardContactData.contactDetail.faxChip
                                 a.card-contact__link.w-100.dark-0.gap-3(href=cardContactData.contactDetail.telegramLink)
                                     +svg-use("icon-telegram", "icon size-m")
                                     span

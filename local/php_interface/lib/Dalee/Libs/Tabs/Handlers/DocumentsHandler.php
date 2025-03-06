@@ -21,8 +21,10 @@ class DocumentsHandler implements PropertyHandlerInterface
         $this->property = $property;
         $this->params = $params;
 
-        $this->property['LINK_SECTION_VALUE'] = $this->getSectionsWithElements($this->property['VALUE']);
-        $this->firstSectionKey = array_key_first($this->property['LINK_SECTION_VALUE']);
+        $this->property['LINK_SECTION_VALUE'] = !empty($this->property['VALUE']) ?
+            $this->getSectionsWithElements($this->property['VALUE']) : [];
+
+        $this->firstSectionKey = array_key_first($this->property['LINK_SECTION_VALUE']) ?? 0;
     }
 
     public function render(array $params = []): string
@@ -296,7 +298,35 @@ class DocumentsHandler implements PropertyHandlerInterface
             }
         }
 
+        $this->sortArchive($result);
+
         return $result;
+    }
+
+    /**
+     * @param array $result
+     * @return void
+     */
+    private function sortArchive(array &$result): void
+    {
+        foreach ($result as &$section) {
+            if (!empty($section['ELEMENTS_ARCHIVE'])) {
+                usort($section['ELEMENTS_ARCHIVE'], function ($a, $b) {
+                    // Сортируем по ACTIVE_FROM
+                    $dateA = !empty($a['ACTIVE_FROM']) ? strtotime($a['ACTIVE_FROM']) : 0;
+                    $dateB = !empty($b['ACTIVE_FROM']) ? strtotime($b['ACTIVE_FROM']) : 0;
+
+                    if ($dateA !== $dateB) {
+                        return $dateB <=> $dateA; // Убывающий порядок
+                    }
+
+                    // Если даты совпадают — сортируем по SORT
+                    return $a['SORT'] <=> $b['SORT']; // Возрастающий порядок
+                });
+            }
+        }
+
+        unset($section);
     }
 
     /**
@@ -308,7 +338,7 @@ class DocumentsHandler implements PropertyHandlerInterface
         return IblockHelper::getElementsWithProperties(
             [
                 'SORT' => 'ASC',
-                'DATE_ACTIVE_FROM' => 'DESC',
+                'DATE_ACTIVE_FROM' => 'ASC',
             ],
             [
                 'IBLOCK_SECTION_ID' => $sectionIds,

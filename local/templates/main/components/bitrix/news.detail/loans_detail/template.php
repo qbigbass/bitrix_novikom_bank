@@ -16,22 +16,6 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 
-$terms = [
-    'RATE_FROM' => [
-        'SIGN' => 'Минимальная ставка',
-        'FROM_TO' => 'от&nbsp;',
-    ],
-    'SUM_TO' => [
-        'SIGN' => 'Максимальная сумма кредита',
-        'FROM_TO' => 'до&nbsp;',
-    ],
-    'PERIOD_TO' => [
-        'SIGN' => 'Максимальный срок выплаты',
-        'FROM_TO' => 'до&nbsp;',
-        'PERIOD' => 'years'
-    ]
-];
-
 if (!empty($arParams["HEADER_COLOR_CLASS"])) {
     $arResult["PARAMS_HEADER_COLOR_CLASS"] = $arParams["HEADER_COLOR_CLASS"];
 }
@@ -39,13 +23,14 @@ if (!empty($arParams["HEADER_COLOR_CLASS"])) {
 $headerView = new HeaderView($component);
 $renderer = new Renderer($APPLICATION, $component);
 $helper = $headerView->helper();
-$headerView->render(
+$headerView
+    ->setBtnClasses('btn-tertiary')
+    ->render(
     $arResult['~NAME'],
     $arResult['~PREVIEW_TEXT'],
     null,
     0,
-    $arResult,
-    $terms
+    $arResult
 );
 ?>
 

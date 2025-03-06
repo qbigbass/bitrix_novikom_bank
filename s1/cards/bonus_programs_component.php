@@ -1,5 +1,10 @@
 <?php
+
+use Bitrix\Main\Page\Asset;
+
 $APPLICATION->SetTitle('Бонусные программы');
+$asset = Asset::getInstance();
+$asset->addJs('/frontend/dist/js/calculator-bonus.js');
 ?>
 <?$APPLICATION->IncludeComponent(
     "bitrix:news",
@@ -29,8 +34,10 @@ $APPLICATION->SetTitle('Бонусные программы');
             "ICON",
             "BANNER_STYLE",
             "BENEFITS_COL",
+            "BENEFITS_HEADING",
             "BENEFITS",
             "CASHBACK_CATEGORIES",
+            "CASHBACK_CATEGORIES_HEADER",
             "SHOW_BONUSES_CALC",
             "BENEFITS_INFO_BOX",
             "TABS_HEADING",
@@ -45,6 +52,17 @@ $APPLICATION->SetTitle('Бонусные программы');
             "INSTRUCTION_3",
             "INSTRUCTION_3_COLS",
             "INFO_BOX",
+            "INFO_BOX_HEADER",
+            "BONUS_BENEFITS",
+            "BONUS_BENEFITS_HEADING",
+            "BONUS_TABS",
+            "BONUS_TABS_HEADING",
+            "BONUS_HEADER_TEMPLATE",
+            "BONUS_HEADER_IMAGE",
+            "BONUS_HEADER_BACKGROUND",
+            "BUTTON_SHOW",
+            "BUTTON_TEXT",
+            "BUTTON_LINK",
         ],
         "DETAIL_SET_CANONICAL_URL" => "N",
         "DISPLAY_BOTTOM_PAGER" => "N",

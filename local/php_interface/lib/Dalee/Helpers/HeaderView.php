@@ -13,6 +13,7 @@ class HeaderView
     private const BACKGROUND_IMAGE_MAX_WIDTH = 1900;
 
     private ?ComponentHelper $helper;
+    private string $btnClasses = 'btn-light';
 
     public function __construct(?CBitrixComponent $component = null)
     {
@@ -43,6 +44,13 @@ class HeaderView
         };
     }
 
+    public function setBtnClasses(string $btnClasses): self
+    {
+        $this->btnClasses = $btnClasses;
+
+        return $this;
+    }
+
     private function getHeaderData(
         string $title,
         ?string $description,
@@ -56,7 +64,8 @@ class HeaderView
         return array_merge(
             $this->getBaseHeaderData($title, $description),
             $this->getHeaderDataFromResult($arResult),
-            $this->getAdditionalHeaderData($termsSettings, $footerHtml, $additionalClasses, $headerHtml)
+            $this->getAdditionalHeaderData($termsSettings, $footerHtml, $additionalClasses, $headerHtml),
+            ['buttonClassColor' => $this->btnClasses]
         );
     }
 
@@ -80,7 +89,6 @@ class HeaderView
                 'bgColorClass' => 'bg-linear-blue',
                 'h1ColorClass' => 'dark-0',
                 'breadcrumbsColorClass' => 'text-white-50',
-                'picHeader' => '/patterns/section/pattern-light',
             ];
         }
 
@@ -94,9 +102,9 @@ class HeaderView
             'buttonHref' => $arResult['PROPERTIES']['BUTTON_HREF_DETAIL']['VALUE'] ?? '',
             'h1ColorClass' => $arResult["PARAMS_CLASS"]["H1_COLOR_CLASS"] ?: 'dark-0',
             'breadcrumbsColorClass' => $arResult["PARAMS_CLASS"]["BREADCRUMBS_COLOR_CLASS"] ?: 'text-white-50',
-            'picHeader' => $arResult['PROPERTIES']['HEADER_BG_PICTURE']['VALUE'] ?: '/patterns/section/pattern-light',
             'buttonCodeForm' => $arResult['PROPERTIES']['BUTTON_CODE_FORM']['VALUE'] ?? '',
             'buttonClassColor' => $arResult['PROPERTIES']['CLASS_BUTTON_TEXT_DETAIL']['VALUE'] ?: 'btn-tertiary',
+            'briefConditions' =>  $arResult['PROPERTIES']['BRIEF_CONDITIONS']['~VALUE']['TEXT'] ?? '',
         ];
 
         return $result;
@@ -140,6 +148,17 @@ class HeaderView
         <? return ob_get_clean();
     }
 
+    public function renderBriefConditions(string $html = null): string
+    {
+        if (empty($html)) {
+            return '';
+        }
+
+        ob_start();
+        echo $html;
+        return ob_get_clean();
+    }
+
     public function helper(): ComponentHelper
     {
         return $this->helper;
@@ -147,6 +166,7 @@ class HeaderView
 
     private function detailed(array $headerData, int $chainDepth, ?string $termsHtml): string
     {
+        global $FORMS;
         $backgroundStyle = $this->getBackgroundStyle(intval($headerData['background']));
         ob_start(); ?>
         <div class="<?= $headerData['bgColorClass'] ?> <?= implode(' ', $headerData['additionalClasses']) ?>"
@@ -169,7 +189,7 @@ class HeaderView
                         <img class="banner-product__image" src="<?= $headerData['picture']['SRC'] ?? '' ?>" alt="<?= $headerData['picture']['ALT'] ?? '' ?>" loading="lazy">
                     <? } ?>
 
-                    <? echo $this->renderTerms($headerData['termsSettings'], $headerData['termsProperty'], $termsHtml); ?>
+                    <?= $this->renderBriefConditions($headerData['briefConditions']) ?>
 
                     <? if (!empty($headerData['headerHtml'])) : ?>
                         <?= $headerData['headerHtml'] ?>
@@ -190,6 +210,7 @@ class HeaderView
                         >
                             <?= $headerData['buttonText'] ?>
                         </button>
+                        <?$FORMS->includeForm($headerData['buttonCodeForm']);?>
                     <? } ?>
                 </div>
 
@@ -200,13 +221,13 @@ class HeaderView
                 <? } ?>
 
             </div>
-            <? if (!empty($headerData['picHeader'])) { ?>
+            <?if (empty($backgroundStyle)) {?>
                 <picture class="pattern-bg banner-product__pattern">
-                    <source srcset="/frontend/dist/img<?= $headerData['picHeader'] ?>-s.svg" media="(max-width: 767px)">
-                    <source srcset="/frontend/dist/img<?= $headerData['picHeader'] ?>-m.svg" media="(max-width: 1199px)">
-                    <img src="/frontend/dist/img<?= $headerData['picHeader'] ?>-l.svg" alt="bg pattern" loading="lazy">
+                    <source srcset="/frontend/dist/img/patterns/section/pattern-light-s.svg" media="(max-width: 767px)">
+                    <source srcset="/frontend/dist/img/patterns/section/pattern-light-m.svg" media="(max-width: 1199px)">
+                    <img src="/frontend/dist/img/patterns/section/pattern-light-l.svg" alt="bg pattern" loading="lazy">
                 </picture>
-            <? } ?>
+            <?}?>
         </div>
         <? return ob_get_clean();
     }
@@ -217,7 +238,7 @@ class HeaderView
      * @param int|null $imageId
      * @return string
      */
-    private function getBackgroundStyle(?int $imageId): string
+    public function getBackgroundStyle(?int $imageId): string
     {
         if ($imageId > 0) {
             $renderImage = CFile::ResizeImageGet(
@@ -237,9 +258,10 @@ class HeaderView
 
     private function compact(array $headerData, int $chainDepth, ?string $termsHtml): bool|string
     {
+        $backgroundStyle = $this->getBackgroundStyle(intval($headerData['background']));
         ob_start(); ?>
 
-        <section class="banner-text <?= $headerData['bgColorClass'] ?> <?= implode(' ', $headerData['additionalClasses']) ?>">
+        <section class="banner-text <?= $headerData['bgColorClass'] ?> <?= implode(' ', $headerData['additionalClasses']) ?>" <?=$backgroundStyle?>>
             <div class="container banner-text__container position-relative z-2">
                 <div class="row ps-lg-6">
                     <div class="col-12 position-relative z-1 mb-5 mb-md-0 pt-6<? if (!empty($headerData['picture'])) { ?> col-sm-6 col-md-8<? } ?><? if (empty($headerData['picture'])) { ?> col-xxl-8<? } ?>">
@@ -268,13 +290,13 @@ class HeaderView
 
                 </div>
             </div>
-            <? if (!empty($headerData['picHeader'])) { ?>
+            <?if (empty($backgroundStyle)) {?>
                 <picture class="pattern-bg pattern-bg--position-sm-top banner-text__pattern">
-                    <source srcset="/frontend/dist/img<?= $headerData['picHeader'] ?>-s.svg" media="(max-width: 767px)">
-                    <source srcset="/frontend/dist/img<?= $headerData['picHeader'] ?>-m.svg" media="(max-width: 1199px)">
-                    <img src="/frontend/dist/img<?= $headerData['picHeader'] ?>-l.svg" alt="bg pattern" loading="lazy">
+                    <source srcset="/frontend/dist/img/patterns/section/pattern-light-s.svg" media="(max-width: 767px)">
+                    <source srcset="/frontend/dist/img/patterns/section/pattern-light-m.svg" media="(max-width: 1199px)">
+                    <img src="/frontend/dist/img/patterns/section/pattern-light-l.svg" alt="bg pattern" loading="lazy">
                 </picture>
-            <? } ?>
+            <?}?>
         </section>
         <? return ob_get_clean();
     }

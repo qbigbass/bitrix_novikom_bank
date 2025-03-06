@@ -16,7 +16,12 @@ use Dalee\Helpers\ComponentRenderer\Renderer;
 $renderer = new Renderer($APPLICATION, $component);
 
 ?>
-<section class="banner-text border-green <?=$arResult['DISPLAY_PROPERTIES']['BANNER_STYLE']['VALUE_XML_ID']?>">
+<section
+    class="banner-text border-green <?=$arResult['DISPLAY_PROPERTIES']['BANNER_STYLE']['VALUE_XML_ID']?>"
+    <? if (!empty($arResult['DISPLAY_PROPERTIES']['BONUS_HEADER_BACKGROUND']['FILE_VALUE']['SRC'])): ?>
+        style="background: url('<?= $arResult['DISPLAY_PROPERTIES']['BONUS_HEADER_BACKGROUND']['FILE_VALUE']['SRC']; ?>') no-repeat center center / cover;"
+    <? endif; ?>
+>
     <div class="container banner-text__container position-relative z-2">
         <div class="row ps-lg-6">
             <div class="col-12 col-sm-6 col-md-8 position-relative z-1 mb-5 mb-md-0 pt-6">
@@ -25,12 +30,35 @@ $renderer = new Renderer($APPLICATION, $component);
                     $helper = new ComponentHelper($component);
                     $helper->deferredCall('showNavChain', ['.default']);
                     ?>
-                    <h1 class="banner-text__title dark-0 text-break"><?=$arResult['~NAME']?></h1>
-                    <div class="banner-text__description text-l dark-0"><?=$arResult['DETAIL_TEXT']?></div>
+                    <h1 class="banner-text__title dark-0 text-break">
+                        <?= $arResult['~NAME']; ?>
+                    </h1>
+                    <? if ($arResult['DISPLAY_PROPERTIES']['BONUS_HEADER_TEMPLATE']['VALUE_XML_ID'] === 'detailed'): ?>
+                        <div class="banner-text__description text-l dark-0">
+                            <?= $arResult['DETAIL_TEXT']; ?>
+                        </div>
+                    <? endif; ?>
+                    <? if (!empty($arResult['DISPLAY_PROPERTIES']['BUTTON_SHOW']['VALUE'])): ?>
+                        <button
+                            class="btn btn-tertiary btn-lg-lg banner-product__button"
+                            type="button"
+                            data-bs-toggle="modal"
+                            data-bs-target="#modal-credit-card-form"
+                        >
+                            <?= $arResult['DISPLAY_PROPERTIES']['BUTTON_TEXT']['VALUE'] ?? 'Оформить заявку'; ?>
+                        </button>
+                    <? endif; ?>
                 </div>
             </div>
             <div class="d-none d-sm-block col-12 col-sm-6 col-md-4">
-                <img class="banner-text__image position-relative w-auto float-end" src="<?=$arResult['DISPLAY_PROPERTIES']['ICON']['FILE_VALUE']['SRC']?>" alt="">
+                <? if (!empty($arResult['DISPLAY_PROPERTIES']['BONUS_HEADER_IMAGE']['FILE_VALUE']['SRC'])): ?>
+                    <img
+                        class="banner-text__image position-relative w-auto float-end"
+                        src="<?= $arResult['DISPLAY_PROPERTIES']['BONUS_HEADER_IMAGE']['FILE_VALUE']['SRC']; ?>"
+                        alt="<?= $arResult['NAME']; ?>"
+                        loading="lazy"
+                    >
+                <? endif; ?>
             </div>
         </div>
     </div>
@@ -40,11 +68,16 @@ $renderer = new Renderer($APPLICATION, $component);
         <img src="/frontend/dist/img/patterns/section/pattern-light-l.svg" alt="bg pattern" loading="lazy">
     </picture>
 </section>
-<?if(!empty($arResult['DISPLAY_PROPERTIES']['BENEFITS']['VALUE'])) : ?>
+<? if (!empty($arResult['DISPLAY_PROPERTIES']['BONUS_BENEFITS']['VALUE'])): ?>
     <section class="section-layout">
         <div class="container">
             <div class="row row-gap-6 row-gap-md-7 px-lg-6">
-                <? $renderer->render('Benefits', $arResult['PROPERTIES']['BENEFITS']['VALUE'], null, ['colCount' => $arResult['DISPLAY_PROPERTIES']['BENEFITS_COL']['VALUE'] ?? 3]); ?>
+                <? if (!empty($arResult['DISPLAY_PROPERTIES']['BONUS_BENEFITS_HEADING']['~VALUE'])): ?>
+                    <h3>
+                        <?= $arResult['DISPLAY_PROPERTIES']['BONUS_BENEFITS_HEADING']['~VALUE']; ?>
+                    </h3>
+                <? endif; ?>
+                <? $renderer->render('Benefits', $arResult['PROPERTIES']['BONUS_BENEFITS']['VALUE'], null, ['colCount' => $arResult['DISPLAY_PROPERTIES']['BENEFITS_COL']['VALUE'] ?? 3]); ?>
             </div>
         </div>
         <picture class="pattern-bg pattern-bg--position-sm-bottom">
@@ -94,6 +127,8 @@ $renderer = new Renderer($APPLICATION, $component);
             "bitrix:news.list",
             "cashback",
             [
+                "CASHBACK_HEADER" => $arResult['DISPLAY_PROPERTIES']['CASHBACK_CATEGORIES_HEADER']['~VALUE'],
+
                 "ACTIVE_DATE_FORMAT" => "d.m.Y",
                 "ADD_SECTIONS_CHAIN" => "N",
                 "AJAX_MODE" => "N",
@@ -245,17 +280,19 @@ $renderer = new Renderer($APPLICATION, $component);
     </section>
 <?endif;?>
 
-<?if(!empty($arResult['DISPLAY_PROPERTIES']['TABS']['VALUE'])) : ?>
+<? if (!empty($arResult['DISPLAY_PROPERTIES']['BONUS_TABS']['VALUE'])): ?>
     <section class="section-layout js-collapsed-mobile">
         <div class="container">
-            <h3 class="d-none d-md-block mb-md-6 mb-lg-7 px-lg-6"><?=$arResult['DISPLAY_PROPERTIES']['TABS_HEADING']['~VALUE']?></h3>
+            <h3 class="d-none d-md-block mb-md-6 mb-lg-7 px-lg-6">
+                <?= $arResult['DISPLAY_PROPERTIES']['BONUS_TABS_HEADING']['~VALUE']; ?>
+            </h3>
             <a class="h3 d-flex align-items-center justify-content-between dark-100 d-md-none" data-bs-toggle="collapse" href="#additional-info-content" role="button" aria-expanded="false" aria-controls="additional-info-content">
-                <?=$arResult['DISPLAY_PROPERTIES']['TABS_HEADING']['~VALUE']?>
+                <?= $arResult['DISPLAY_PROPERTIES']['BONUS_TABS_HEADING']['~VALUE']; ?>
                 <svg class="icon size-m violet-100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                     <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-down"></use>
                 </svg>
             </a>
-            <? $renderer->render('Tabs', $arResult['PROPERTIES']['TABS']['VALUE'], null, ['elementId' => $arResult['ID']]); ?>
+            <? $renderer->render('Tabs', $arResult['PROPERTIES']['BONUS_TABS']['VALUE'], null, ['elementId' => $arResult['ID']]); ?>
         </div>
         <picture class="pattern-bg pattern-bg--hide-mobile">
             <source srcset="/frontend/dist/img/patterns/section-2/pattern-light-s.svg" media="(max-width: 767px)">
@@ -263,7 +300,7 @@ $renderer = new Renderer($APPLICATION, $component);
             <img src="/frontend/dist/img/patterns/section-2/pattern-light-l.svg" alt="bg pattern" loading="lazy">
         </picture>
     </section>
-<?endif;?>
+<? endif; ?>
 
 <?if(!empty($arResult['DISPLAY_PROPERTIES']['INSTRUCTION_2']['VALUE'])) : ?>
     <section class="section-layout js-collapsed-mobile bg-dark-10">
@@ -354,7 +391,14 @@ $renderer = new Renderer($APPLICATION, $component);
                                 <div class="helper__wrapper d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-4 gap-lg-6">
                                     <img class="helper__image w-auto float-end" src="/frontend/dist/img/restructuring-additional-info.png" alt="">
                                     <div class="helper__content text-l">
-                                        <p class="mb-0"><?=$arResult['DISPLAY_PROPERTIES']['INFO_BOX']['~VALUE']['TEXT']?></p>
+                                        <? if (!empty($arResult['DISPLAY_PROPERTIES']['INFO_BOX_HEADER']['~VALUE'])): ?>
+                                            <h4 class="mb-3">
+                                                <?= $arResult['DISPLAY_PROPERTIES']['INFO_BOX_HEADER']['~VALUE']; ?>
+                                            </h4>
+                                        <? endif; ?>
+                                        <p class="mb-0">
+                                            <?= $arResult['DISPLAY_PROPERTIES']['INFO_BOX']['~VALUE']['TEXT']; ?>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -449,4 +493,13 @@ $renderer = new Renderer($APPLICATION, $component);
     </section>
 <?endif;?>
 
-<?$helper->saveCache();?>
+<?php $APPLICATION->IncludeComponent(
+    "dalee:form",
+    "credit_card_form",
+    [
+        "FORM_CODE" => "credit_card_form",
+    ],
+    $component
+); ?>
+
+<? $helper->saveCache(); ?>

@@ -19,7 +19,12 @@ use Dalee\Helpers\ComponentRenderer\Renderer;
 
 $renderer = new Renderer($APPLICATION, $component);
 ?>
-<div class="banner-product <?= $arResult['BANNER_STYLE'] ?>">
+<div
+    class="banner-product <?= $arResult['BANNER_STYLE'] ?>"
+    <? if (!empty($arResult['DISPLAY_PROPERTIES']['CARD_HEADER_BACKGROUND']['FILE_VALUE']['SRC'])): ?>
+        style="background: url('<?= $arResult['DISPLAY_PROPERTIES']['CARD_HEADER_BACKGROUND']['FILE_VALUE']['SRC']; ?>') no-repeat center center / cover;"
+    <? endif; ?>
+>
     <div class="banner-product__wrapper">
         <div class="banner-product__content">
             <div class="banner-product__header">
@@ -30,24 +35,40 @@ $renderer = new Renderer($APPLICATION, $component);
                 <h1><?= $arResult['SECTION_NAME'] ?></h1>
                 <p class="banner-product__subtitle text-l"><?= $arResult['~DETAIL_TEXT'] ?></p>
             </div>
-            <? if (!empty($arResult['PREVIEW_PICTURE']['SRC'])) : ?>
-                <img class="banner-product__image" src="<?= $arResult['PREVIEW_PICTURE']['SRC'] ?>" alt="" loading="lazy">
-            <? endif; ?>
-            <? if (!empty($arResult['DISPLAY_PROPERTIES']['SHORT_CONDITIONS']['~VALUE']['TEXT'])) : ?>
+            <? if (
+                !empty($arResult['DISPLAY_PROPERTIES']['SHORT_CONDITIONS']['~VALUE']['TEXT'])
+                && $arResult['DISPLAY_PROPERTIES']['CARD_HEADER_TEMPLATE']['VALUE_XML_ID'] === 'detailed'
+            ): ?>
                 <div class="banner-product__benefits-list">
                     <?= $arResult['DISPLAY_PROPERTIES']['SHORT_CONDITIONS']['~VALUE']['TEXT'] ?>
                 </div>
             <? endif; ?>
-            <? if ($arResult['SHOW_BUTTON']) { ?>
+            <? if ($arResult['SHOW_BUTTON'] && !empty($arResult['BUTTON_LINK'])): ?>
+                <a href="<?=$arResult['BUTTON_LINK']?>" class="btn btn-tertiary btn-lg-lg banner-product__button">
+                    <?= $arResult['BUTTON_TEXT'] ?? 'Оформить заявку'; ?>
+                </a>
+            <? elseif ($arResult['SHOW_BUTTON'] && !empty($arResult['BUTTON_CODE_FORM'])): ?>
                 <button
                     class="btn btn-tertiary btn-lg-lg banner-product__button"
                     type="button"
                     data-bs-toggle="modal"
-                    data-bs-target="#modal-credit-card-form"
+                    data-bs-target="#<?=$arResult['BUTTON_CODE_FORM']?>"
                 >
-                    Оформить карту
+                    <?= $arResult['BUTTON_TEXT'] ?? 'Оформить заявку'; ?>
                 </button>
-            <? } ?>
+                <?
+                global $FORMS;
+                $FORMS->includeForm($arResult['BUTTON_CODE_FORM']);
+                ?>
+            <? endif; ?>
+            <? if (!empty($arResult['DISPLAY_PROPERTIES']['CARD_HEADER_IMAGE']['FILE_VALUE']['SRC'])): ?>
+                <img
+                    class="banner-product__image"
+                    src="<?= $arResult['DISPLAY_PROPERTIES']['CARD_HEADER_IMAGE']['FILE_VALUE']['SRC']; ?>"
+                    alt="<?= $arResult['NAME']; ?>"
+                    loading="lazy"
+                >
+            <? endif; ?>
         </div>
     </div>
     <picture class="pattern-bg banner-product__pattern">
@@ -369,7 +390,14 @@ $customerCategoriesFilter = [
                                     <img class="helper__image w-auto float-end"
                                          src="/frontend/dist/img/restructuring-additional-info.png" alt="">
                                     <div class="helper__content text-l">
-                                        <p class="mb-0"><?= $arResult['DISPLAY_PROPERTIES']['ADDITIONAL_INFO']['~VALUE']['TEXT'] ?></p>
+                                        <? if (!empty($arResult['DISPLAY_PROPERTIES']['ADDITIONAL_INFO_HEADER']['~VALUE'])): ?>
+                                            <h4 class="mb-3">
+                                                <?= $arResult['DISPLAY_PROPERTIES']['ADDITIONAL_INFO_HEADER']['~VALUE']; ?>
+                                            </h4>
+                                        <? endif; ?>
+                                        <p class="mb-0">
+                                            <?= $arResult['DISPLAY_PROPERTIES']['ADDITIONAL_INFO']['~VALUE']['TEXT'] ?>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -569,15 +597,6 @@ $customerCategoriesFilter = [
         </div>
     </section>
 <? endif; ?>
-
-<?php $APPLICATION->IncludeComponent(
-    "dalee:form",
-    "credit_card_form",
-    [
-        "FORM_CODE" => "credit_card_form",
-    ],
-    $component
-); ?>
 
 <? $helper->saveCache(); ?>
 

@@ -46,12 +46,23 @@ $renderer = new Renderer($APPLICATION, $component);
             </div>
             <div class="banner-product-info__body">
                 <p class="text-m m-0"><?= $arResult['~PREVIEW_TEXT'] ?></p>
-                <? if ($arResult['PROPERTIES']['BUTTON_DETAIL']['VALUE_XML_ID'] == 'Y' && !empty($arResult['PROPERTIES']['BUTTON_TEXT_DETAIL']['VALUE'])) { ?>
+                <? if ($arResult['PROPERTIES']['BUTTON_DETAIL']['VALUE_XML_ID'] == 'Y' && !empty($arResult['PROPERTIES']['BUTTON_HREF_DETAIL']['VALUE'])): ?>
                     <a class="btn btn-lg-lg btn-outline-primary fw-bold w-100 w-md-auto mt-6 mt-lg-7"
                        href="<?= $arResult['PROPERTIES']['BUTTON_HREF_DETAIL']['VALUE'] ?? '#' ?>">
                         <?= $arResult['PROPERTIES']['BUTTON_TEXT_DETAIL']['VALUE'] ?>
                     </a>
-                <? } ?>
+                <? elseif ($arResult['PROPERTIES']['BUTTON_DETAIL']['VALUE_XML_ID'] == 'Y' && !empty($arResult['PROPERTIES']['BUTTON_CODE_FORM']['VALUE'])): ?>
+                    <button class="btn btn-lg-lg btn-outline-primary fw-bold w-100 w-md-auto mt-6 mt-lg-7"
+                            type="button"
+                            data-bs-toggle="modal"
+                            data-bs-target="#<?= $arResult['PROPERTIES']['BUTTON_CODE_FORM']['VALUE'] ?>">
+                        <?= $arResult['PROPERTIES']['BUTTON_TEXT_DETAIL']['VALUE'] ?>
+                    </button>
+                    <?
+                    global $FORMS;
+                    $FORMS->includeForm($arResult['PROPERTIES']['BUTTON_CODE_FORM']['VALUE']);
+                    ?>
+                <? endif; ?>
             </div>
             <? if (!empty($arResult['PREVIEW_PICTURE']['SRC'])) { ?>
                 <div class="banner-product-info__image">

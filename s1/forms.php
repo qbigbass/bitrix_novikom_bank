@@ -12,16 +12,16 @@ $APPLICATION->SetTitle('Формы');
             <div class="d-flex flex-column align-items-start row-gap-3">
                 <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#modal-success">Результаты - успешно</button>
                 <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#modal-error">Результаты - ошибка</button>
-                <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#modal-callback-form">Заказать звонок</button>
-                <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#modal-feedback-form">Направить обращение</button>
-                <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#modal-loan-form">Заявка на кредит</button>
-                <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#modal-credit-card-form">Заявка на кредитную карту</button>
-                <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#modal-mortgage-form">Заявка на ипотеку</button>
-                <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#modal-consultation-form">Заявка на консультацию</button>
-                <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#modal-vacancy-form">Заявка на вакансию</button>
-                <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#modal-fraud-form">Отправить обращение о мошенничестве</button>
-                <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#modal-state-support-form">Заявка на господдержку</button>
-                <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#modal-express-guarantee-form">Заявка на экспресс-гарантию</button>
+                <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#callback_form">Заказать звонок</button>
+                <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#feedback_form">Направить обращение</button>
+                <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#loan_form">Заявка на кредит</button>
+                <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#credit_card_form">Заявка на кредитную карту</button>
+                <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#mortgage_form">Заявка на ипотеку</button>
+                <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#consultation_form">Заявка на консультацию</button>
+                <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#vacancy_form">Заявка на вакансию</button>
+                <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#fraud_form">Отправить обращение о мошенничестве</button>
+                <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#state_support_form">Заявка на господдержку</button>
+                <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#express_guarantee_form">Заявка на экспресс-гарантию</button>
             </div>
         </div>
     </div>

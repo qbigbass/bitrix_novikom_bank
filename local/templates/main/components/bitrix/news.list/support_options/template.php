@@ -150,7 +150,7 @@ $renderer = new Renderer($APPLICATION, $component);
                                     <? } ?>
                                 <? } ?>
                             <? } ?>
-                            <? if (!empty($item['DISPLAY_PROPERTIES']['BUTTON_TEXT']['~VALUE']) && !empty($item['DISPLAY_PROPERTIES']['BUTTON_LINK']['~VALUE'])) { ?>
+                            <? if (!empty($item['DISPLAY_PROPERTIES']['BUTTON_TEXT']['~VALUE']) && !empty($item['DISPLAY_PROPERTIES']['BUTTON_LINK']['~VALUE'])): ?>
                                 <div class="row">
                                     <div class="col-12 text-center">
                                         <a class="btn btn-orange btn-lg-lg d-inline-block" href="<?= $item['DISPLAY_PROPERTIES']['BUTTON_LINK']['~VALUE'] ?>">
@@ -158,7 +158,19 @@ $renderer = new Renderer($APPLICATION, $component);
                                         </a>
                                     </div>
                                 </div>
-                            <? } ?>
+                            <? elseif (!empty($item['DISPLAY_PROPERTIES']['BUTTON_TEXT']['~VALUE']) && !empty($item['DISPLAY_PROPERTIES']['BUTTON_CODE_FORM']['VALUE'])): ?>
+                                <div class="row">
+                                    <div class="col-12 text-center">
+                                        <button class="btn btn-orange btn-lg-lg d-inline-block" type="button" data-bs-toggle="modal" data-bs-target="#<?=$item['PROPERTIES']['BUTTON_CODE_FORM']['VALUE']?>">
+                                            <?= $item['DISPLAY_PROPERTIES']['BUTTON_TEXT']['~VALUE'] ?>
+                                        </button>
+                                    </div>
+                                </div>
+                                <?
+                                global $FORMS;
+                                $FORMS->includeForm($item['DISPLAY_PROPERTIES']['BUTTON_CODE_FORM']['VALUE']);
+                                ?>
+                            <? endif; ?>
                         <? } ?>
                     </div>
                 </div>

@@ -96,6 +96,7 @@ $renderer = new Renderer($APPLICATION, $component);
         <img src="/frontend/dist/img/patterns/section-2/pattern-light-l.svg" alt="bg pattern" loading="lazy">
     </picture>
 </section>
+
 <? if (!empty($arResult['PROPERTIES']['STEPS']['VALUE'])) {
 
     $renderer->render('Steps', $arResult['PROPERTIES']['STEPS']['VALUE'], null, [

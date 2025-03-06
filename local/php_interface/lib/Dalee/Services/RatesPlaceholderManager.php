@@ -6,6 +6,7 @@ use Bitrix\Iblock\ElementTable;
 use Bitrix\Main\SystemException;
 use CIBlockElement;
 use COption;
+use CSite;
 
 /**
  * Менеджер плейсхолдеров для замены в контенте.<br><br>
@@ -95,7 +96,7 @@ class RatesPlaceholderManager
     {
         global $APPLICATION;
 
-        if ((mb_stripos($APPLICATION->GetCurDir(), '/bitrix/') !== false)) {
+        if ((mb_stripos($APPLICATION->GetCurDir(), '/bitrix/') !== false) || CSite::InDir('/local/php_interface/ajax/')) {
             return;
         }
 

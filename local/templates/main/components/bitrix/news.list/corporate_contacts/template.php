@@ -68,7 +68,7 @@ $colorIcon = $arParams["COLOR_ICON"] ?? "dark-0";
                                                                         <span class="<?= $colorSpan ?> text-l"><?= $phone ?></span>
                                                                     </a>
                                                                     <? if(!empty($item['PROPERTIES']['PHONE']['DESCRIPTION'][0])): ?>
-                                                                        <span class="caption-m chip chip--outlined">доб. <?= $item['PROPERTIES']['PHONE']['DESCRIPTION'][0] ?></span>
+                                                                        <span class="caption-m chip chip--outlined <?= $colorSpan ?>">доб. <?= $item['PROPERTIES']['PHONE']['DESCRIPTION'][0] ?></span>
                                                                     <? endif; ?>
                                                                 </div>
                                                             </div>
@@ -119,8 +119,13 @@ $colorIcon = $arParams["COLOR_ICON"] ?? "dark-0";
                                         <p class="card-feedback__description text-l m-0">Оставьте свой телефон и мы перезвоним вам, <br class="d-none d-md-block d-lg-none d-xl-block">либо направьте обращение</p>
                                     </div>
                                     <div class="d-flex flex-column flex-md-row p-0 gap-3 gap-md-4">
-                                        <button class="btn btn-outline-primary btn-lg-lg text-ls overflow-visible w-100 w-md-auto" type="button" data-bs-toggle="modal" data-bs-target="#modal-feedback-form">Открыть чат</button>
-                                        <button class="btn btn-primary btn-lg-lg text-ls overflow-visible w-100 w-md-auto" type="button" data-bs-toggle="modal" data-bs-target="#modal-callback-form">Перезвоните мне</button>
+                                        <button class="btn btn-outline-primary btn-lg-lg text-ls overflow-visible w-100 w-md-auto" type="button" data-bs-toggle="modal" data-bs-target="#feedback_form">Открыть чат</button>
+                                        <button class="btn btn-primary btn-lg-lg text-ls overflow-visible w-100 w-md-auto" type="button" data-bs-toggle="modal" data-bs-target="#callback_form">Перезвоните мне</button>
+                                        <?
+                                        global $FORMS;
+                                        $FORMS->includeForm('feedback_form');
+                                        $FORMS->includeForm('callback_form');
+                                        ?>
                                     </div>
                                 </div>
                                 <picture class="pattern-bg pattern-bg--position-top z-1">
