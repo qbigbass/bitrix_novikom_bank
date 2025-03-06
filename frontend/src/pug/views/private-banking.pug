@@ -169,7 +169,7 @@ block content
                     each card in specialPrivilegesCards.slice(1)
                         .pb-card-special.pb-cards-grid__item.animate.js-animation
                             .d-flex.flex-column.flex-md-row.row-gap-2.col-gap-md-3
-                                .d-flex.flex-column.align-items-start.row-gap-4.row-md-gap-3
+                                .d-flex.flex-column.align-items-start.row-gap-4.row-gap-md-3
                                     h3.pb-card-special__title!= card.title
                                     p.pb-card-special__text!= card.description
                                 .pb-card-special__image
@@ -287,7 +287,7 @@ block content
                     each card in bankingForYou.slice(1)
                         .pb-card-special.pb-cards-grid__item.animate.js-animation
                             .d-flex.flex-column.flex-md-row.row-gap-2.col-gap-md-3
-                                .d-flex.flex-column.row-gap-4.row-md-gap-3
+                                .d-flex.flex-column.row-gap-4.row-gap-md-3
                                     h3.pb-card-special__title!= card.title
                                     p.pb-card-special__text!= card.description
                                 .pb-card-special__image
@@ -296,7 +296,7 @@ block content
     section.pb-section.pb-section--gradient-linear.py-xxl-16
         .container
             h3.pb-section__title.dark-0.text-center.mb-4.d-md-none.animate.js-animation Премиум-услуги
-            .pb-services.d-flex.flex-column.row-gap-4.row-gap-md-5.row-gap-lg-9
+            .pb-services.d-flex.flex-column.row-gap-4.row-gap-md-5.row-gap-lg-11
                 ul.pb-services__header.nav.nav-tabs.flex-nowrap.justify-content-center.w-100.animate.js-animation(role="tablist")
                     li.nav-item(role="presentation")
                         button.nav-link.active#finance-tab(data-bs-toggle="tab" data-bs-target="#finance" type="button" role="tab" aria-controls="finance" aria-selected="true")
@@ -306,7 +306,7 @@ block content
                             | Инвестиционные <span class="d-none d-md-inline">услуги</span>
                 .tab-content
                     .tab-pane.fade.active.show#finance(role="tabpanel" aria-labelledby="finance-tab" tabindex="0")
-                        .js-pb-tags-thumbs.swiper.mb-4.pb-tags-wrapper.animate.js-animation
+                        .js-pb-tags-thumbs.swiper.pb-tags-wrapper.animate.js-animation
                             .swiper-wrapper.d-flex.flex-wrap.row-gap-2
                                 each tag in financeCards
                                     .swiper-slide.pb-tags(role="button")
@@ -324,7 +324,7 @@ block content
                                                 img(src=card.image, alt=card.title)
                             .pb-services__pagination.d-flex.gap-2.justify-content-center.mt-4
                     .tab-pane.fade#investment(role="tabpanel" aria-labelledby="investment-tab" tabindex="0")
-                        .js-pb-tags-thumbs.swiper.mb-4.pb-tags-wrapper.animate.js-animation
+                        .js-pb-tags-thumbs.swiper.pb-tags-wrapper.animate.js-animation
                             .swiper-wrapper.d-flex.flex-wrap.row-gap-2
                                 each tag in investmentCards
                                     .swiper-slide.pb-tags(role="button")

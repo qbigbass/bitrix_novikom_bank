@@ -173,6 +173,8 @@ textarea.form-control-lg-lg {
 }
 
 .form-control {
+  font-size: 1rem;
+
     &::placeholder {
         color: var(--dark-50);
     }

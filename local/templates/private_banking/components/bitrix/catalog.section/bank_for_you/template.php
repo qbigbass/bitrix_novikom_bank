@@ -45,7 +45,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
                     else : ?>
                         <div class="pb-card-special pb-cards-grid__item animate js-animation">
                             <div class="d-flex flex-column flex-md-row row-gap-2 col-gap-md-3">
-                                <div class="d-flex flex-column row-gap-4 row-md-gap-3">
+                                <div class="d-flex flex-column row-gap-4 row-gap-md-3">
                                     <h3 class="pb-card-special__title"><?= $item['NAME'] ?></h3>
                                     <p class="pb-card-special__text"><?= $item['PREVIEW_TEXT'] ?></p>
                                 </div>

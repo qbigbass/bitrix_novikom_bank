@@ -477,7 +477,8 @@ const getDepositValues = (STATE) => {
         STATE.steps = '';
     }
 
-    setStartValues(STATE);
+    STATE.amount = STATE.minAmount;
+    STATE.period = STATE.minPeriod;
 }
 
 const setDepositValues = (STATE, currencyTrigger) => {

@@ -67,7 +67,7 @@
       margin-right: -2.5rem;
       padding-left: 2.5rem;
       padding-right: 2.5rem;
-      width: 100vw;
+      width: calc(100% + 5rem);
     }
 
     @include use-media(tablet-album) {
@@ -75,6 +75,7 @@
       margin-right: -5rem;
       padding-left: 5rem;
       padding-right: 5rem;
+      width: 100vw;
     }
 
     @include use-media(laptop-x) {

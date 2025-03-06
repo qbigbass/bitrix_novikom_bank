@@ -10,6 +10,10 @@
     gap: 1rem;
   }
 
+  @include use-media(laptop) {
+    padding: calc(1.5rem - 1px) 1.5rem 1.5rem;
+  }
+
   &.animate {
     opacity: 0;
     transform: translateY(100%);
@@ -64,7 +68,7 @@
 
     @include use-media(tablet-album) {
       font-size: 1.5rem;
-      line-height: 1.35;
+      line-height: 1.3;
     }
   }
 }
