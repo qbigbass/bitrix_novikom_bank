@@ -14,12 +14,12 @@ $aMenuLinks = Array(
 		Array(),
 		""
 	),
-	Array(
-		"Карта Мир Supreme",
-		"/private-banking/cards/mir-supreme-card/",
-		Array(),
-		Array(),
-		""
-	),
+    array(
+        "Карта Мир Supreme",
+        "/private-banking/cards/mir-supreme-card/",
+        array(),
+        array(),
+        ""
+    ),
 );
 ?>
