@@ -376,11 +376,12 @@ block content
                                     div
                                         h4!= allTabsContent[0].tariffsTitle
                                         .swiper.js-slider-cards.w-100(data-slides-per-view="mobile-s:1,mobile:1,tablet:2,laptop:3,laptop-x:3", data-space-between="mobile-s:8,mobile:8,tablet:16,laptop:40,laptop-x:40")
+                                            +slider-controls().mb-3.mb-md-4
                                             .swiper-wrapper.js-swiper-wrapper
                                                 each tariff in allTabsContent[0].tariffs
                                                     .swiper-slide.js-swiper-slide
                                                         +card-tariff(tariff, tariff.bgClass)
-                                            +slider-controls().mt-3.mt-md-4
+
                                 .rte.rte--accordion.rte--w-xxl-60
                                     div
                                         h4 Как воспользоваться услугами
@@ -418,11 +419,12 @@ block content
                                     div
                                         h4!= allTabsContent[1].tariffsTitle
                                         .swiper.js-slider-cards.w-100(data-slides-per-view="mobile-s:1,mobile:1,tablet:2,laptop:2,laptop-x:2", data-space-between="mobile-s:8,mobile:8,tablet:16,laptop:40,laptop-x:40")
+                                            +slider-controls().mb-3.mb-md-4
                                             .swiper-wrapper.js-swiper-wrapper
                                                 each tariff in allTabsContent[1].tariffs
                                                     .swiper-slide.js-swiper-slide
                                                         +card-tariff(tariff, tariff.bgClass).w-100
-                                            +slider-controls().mt-3.mt-md-4
+
                                 .rte.rte--accordion.rte--w-xxl-60
                                     h4 Виды предоставляемых услуг
                                     div

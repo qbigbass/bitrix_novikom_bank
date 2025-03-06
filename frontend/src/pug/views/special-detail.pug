@@ -136,15 +136,16 @@ block content
                 .col-12
                     .d-flex.flex-row.justify-content-between
                         .swiper.slider-cards.d-flex.flex-column.js-slider-cards(data-slides-per-view="mobile-s:1.5,mobile:1.5,tablet:3,tablet-album:4,laptop:5,laptop-x:5" data-space-between="mobile-s:16,mobile:16,tablet:16,laptop:40,laptop-x:40")
+                            +slider-controls().mb-3.mb-md-4
                             .swiper-wrapper
                                 each item in cardSaleList
                                     .swiper-slide.js-swiper-slide
                                         +card-sale(item)
-                            +slider-controls().mt-3.mt-md-4
+
                     a(href="#").btn.btn-link.btn-lg.d-inline-flex.gap-2.align-items-center.mt-4.mt-md-6
                         span.text-wrap.text-start Список всех избранных категорий
                         +svg-use('icon-chevron-right-small', 'icon size-m')
-    
+
     section.section-special-benefits.bg-dark-10.px-0.px-lg-6.py-6.py-sm-9.py-md-11.py-xl-16.position-relative.overflow-hidden
         .container
             .row.mb-6.mb-lg-7
@@ -166,7 +167,7 @@ block content
                         p.m-0 Выбирайте самостоятельно 4 категории повышенного кешбэка из 7 доступных в мобильном приложении/интернет-банке. Обратите внимание, что в список категорий повышенного кешбэка входит социально-значимая категория «Аптеки», по категории «Топливо» начисляется кешбэк 7%.
                         p.m-0 В июле-августе 2024 года в перечень категорий на выбор включены категории для поездок, спорта, приобретения детских товаров, электроники и техники
         +pattern-bg('section-2', 'light', 'pattern-bg--position-sm-bottom')
-                    
+
     section.section-layout
         .container
             h3.px-lg-6.mb-4.mb-md-6.mb-lg-7
