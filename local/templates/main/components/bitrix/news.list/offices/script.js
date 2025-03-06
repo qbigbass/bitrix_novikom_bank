@@ -26,7 +26,49 @@ class OfficesMap {
         this.filterOffices(true)
         this.initOfficesSearchFilter()
         this.initOfficesServicesFilter()
+        this.setCheckboxesFromFilter();
         this.renderOfficesPlacemarks()
+    }
+
+    setCheckboxesFromFilter() {
+        if (this.term)
+            document.querySelector('#offices-search-input').value = this.term;
+
+        if (!!this.filterFormValues) {
+            Object.entries(this.filterFormValues).forEach(entry => {
+                const [key, value] = entry;
+                // услуги
+                if (!!this.services[key] && value === true) {
+                    let checkbox = document.querySelector('#filter-service-' + key);
+                    if (!!checkbox)
+                        checkbox.checked = true;
+                } else {
+                    //валюты
+                    if (key === 'currencyIn' || key == 'currencyOut') {
+                        let prefix = '#currency-in-';
+                        if (key == 'currencyOut')
+                            prefix = '#currency-out-';
+                        value.forEach(currency => {
+                            let checkbox = document.querySelector(prefix + currency);
+                            if (!!checkbox)
+                                checkbox.checked = true;
+                        })
+                    } else {
+                        if (value === true) {
+                            let checkboxID = key;
+                            if (key == 'accessFree')
+                                checkboxID = 'access-free';
+                            if (key == 'accessEmployee')
+                                checkboxID = 'access-employee';
+                            let checkbox = document.querySelector('#' + checkboxID);
+                            if (!!checkbox)
+                                checkbox.checked = true;
+                        }
+                    }
+
+                }
+            });
+        }
     }
 
     initMap() {
@@ -150,10 +192,21 @@ class OfficesMap {
         this.services = result.data.services
     }
 
+    setPrefilter(){
+        let officeMapFilterJSON = localStorage.getItem("officeMapFilter");
+        if(!officeMapFilterJSON)
+            return;
+        let officeMapFilter = JSON.parse(officeMapFilterJSON);
+        if(!!officeMapFilter.term)
+            this.term = officeMapFilter.term;
+        if(!!officeMapFilter.filterFormValues)
+            this.filterFormValues = officeMapFilter.filterFormValues;
+    }
+
     filterOffices(init = false) {
         //Если фильтрация при инициализации, проверяем localStorage и выставляем нужные галочки и фильтры
         if (init) {
-
+            this.setPrefilter();
         } else {
             this.updateFilterFormValues()
         }
@@ -213,7 +266,6 @@ class OfficesMap {
         delete servicesFilter.currencyOut
 
         if (Object.values(servicesFilter).some(item => item === true)) {
-            console.log('filter services')
             for (const [key, value] of Object.entries(servicesFilter)) {
                 if (servicesFilter[key]) {
                     this.filteredOffices = this.filteredOffices.filter(item => item.services.includes(key))
@@ -228,8 +280,7 @@ class OfficesMap {
 
     saveFilterFormValues(){
 
-        const officeMapFilter = { term: this.term, filteredOffices: this.filteredOffices };
-        console.log('saveFilterFormValues',officeMapFilter);
+        const officeMapFilter = { term: this.term, filterFormValues: this.filterFormValues };
         localStorage.setItem('officeMapFilter', JSON.stringify(officeMapFilter));
     }
 
