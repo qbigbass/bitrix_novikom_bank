@@ -25,7 +25,8 @@ $dataClass = Iblock::wakeUp($iblockId)->getEntityDataClass();
 
 $filter = [
     'IBLOCK_ID' => $iblockId,
-    'IBLOCK_SECTION.CODE' => $sectionCodes
+    'IBLOCK_SECTION.CODE' => $sectionCodes,
+    'ACTIVE' => 'Y',
 ];
 
 if (!empty($arParams['FILTER_END_DATE'])) {
@@ -41,10 +42,34 @@ $data = [
     'filter' => $filter,
     'select' => [
         'SECTION_CODE' => 'IBLOCK_SECTION.CODE',
+        'ID'
     ],
 ];
 
-$res = array_unique(array_column($dataClass::getList($data)->fetchAll(), 'SECTION_CODE'));
+$elements = $dataClass::getList($data)->fetchAll();
+
+if (!empty($elements)) {
+    $elementsIds = array_column($elements, 'ID');
+    $elementsSections = \Bitrix\Iblock\SectionElementTable::getList([
+        'filter' => [
+            'IBLOCK_ELEMENT_ID' => $elementsIds
+        ],
+        'select' => [
+            'IBLOCK_SECTION_ID'
+        ]
+    ])->fetchAll();
+
+    $elements = \Bitrix\Iblock\SectionTable::getList([
+        'filter' => [
+            'ID' => array_unique(array_column($elementsSections, 'IBLOCK_SECTION_ID'))
+        ],
+        'select' => [
+            'SECTION_CODE' => 'CODE'
+        ]
+    ])->fetchAll();
+}
+
+$res = array_column($elements, 'SECTION_CODE');
 
 if (!empty($sectionCodes)) {
     foreach ($sectionCodes as $key => $sectionCode) {
