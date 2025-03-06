@@ -8,6 +8,7 @@ use Bitrix\Iblock\SectionTable;
 use CIBlockElement;
 use CIBlockFormatProperties;
 use Bitrix\Iblock\Model\Section;
+use CIBlockSection;
 
 class IblockHelper
 {
@@ -266,6 +267,52 @@ class IblockHelper
             ];
         }
         return $return;
+    }
+
+    /**
+     * Получает меню с верхними разделами ИБ, в которых есть активные элементы
+     *
+     * @param string $iblockCode
+     * @return array
+     */
+    public static function getMenuSectionsWithActiveElements(string $iblockCode): array
+    {
+        $aMenuLinksExt = [];
+
+        $sections = CIBlockSection::GetList(
+            [
+                'SORT' => 'ASC',
+                'NAME' => 'ASC'
+            ],
+            [
+                'IBLOCK_ID' => iblock($iblockCode),
+                'ACTIVE' => 'Y',
+                'CNT_ACTIVE' => 'Y',
+                'SECTION_ID' => false,
+            ],
+            true,
+            [
+                'ID',
+                'NAME',
+                'SECTION_PAGE_URL',
+                'ELEMENT_CNT'
+            ]
+        );
+
+        while ($section = $sections->GetNext()) {
+            if ($section['ELEMENT_CNT'] == 0) {
+                continue;
+            }
+
+            $aMenuLinksExt[] = [
+                $section['NAME'],
+                $section['SECTION_PAGE_URL'],
+                [],
+                [],
+            ];
+        }
+
+        return $aMenuLinksExt;
     }
 
     /**

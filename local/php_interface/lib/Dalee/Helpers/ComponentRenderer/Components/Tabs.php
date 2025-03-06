@@ -117,6 +117,29 @@ class Tabs implements ComponentInterface
             ["HIDE_ICONS" => "Y"]
         );
 
-        echo ob_get_clean();
+        $content = ob_get_clean();
+
+        if ($params['whole_section'] && strlen(trim($content))) {
+            echo '<section class="section-layout js-collapsed-mobile">
+                <div class="container">
+                    <h3 class="d-none d-md-flex mb-md-6 mb-lg-7 px-lg-6">Подробнее о услугах</h3>
+                    <a class="h3 d-flex align-items-center justify-content-between dark-100 d-md-none" data-bs-toggle="collapse"
+                       href="#additional-info-content" role="button" aria-expanded="false" aria-controls="additional-info-content">
+                        Подробнее о&nbsp;услугах
+                        <svg class="icon size-m violet-100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                            <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-down"></use>
+                        </svg>
+                    </a>' .
+                    $content
+                . '</div>
+                <picture class="pattern-bg pattern-bg--hide-mobile">
+                    <source srcset="/frontend/dist/img/patterns/section-2/pattern-light-s.svg" media="(max-width: 767px)">
+                    <source srcset="/frontend/dist/img/patterns/section-2/pattern-light-m.svg" media="(max-width: 1199px)">
+                    <img src="/frontend/dist/img/patterns/section-2/pattern-light-l.svg" alt="bg pattern" loading="lazy">
+                </picture>
+            </section>';
+        } else {
+            echo $content;
+        }
     }
 }
