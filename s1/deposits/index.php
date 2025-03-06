@@ -42,6 +42,7 @@ $APPLICATION->SetTitle("Вклады Новикома");
             "SERVICE",
             "BUTTON_TEXT_DETAIL",
             "HEADER_TEMPLATE",
+            "BRIEF_CONDITIONS"
         ],
         "DETAIL_SET_CANONICAL_URL" => "N",
         "DISPLAY_BOTTOM_PAGER" => "Y",
@@ -65,6 +66,7 @@ $APPLICATION->SetTitle("Вклады Новикома");
             "LIST_TERMS",
             "BUTTON_LIST",
             "BUTTON_TEXT_LIST",
+            "BRIEF_CONDITIONS_CARD"
         ],
         "MESSAGE_404" => "",
         "META_DESCRIPTION" => "-",
