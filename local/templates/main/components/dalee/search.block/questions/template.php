@@ -18,10 +18,11 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
  * @var CBitrixComponentTemplate $this
  */
 $this->setFrameMode(true);
-$context = Application::getInstance()->getContext();
-$request = $context->getRequest();
+
+$placeholder = $arParams['PLACEHOLDER'] ?? '';
+$searchQuery = $arParams['SEARCH_QUERY'] ?? '';
 ?>
-<form class="w-100">
+<form id="search" action="<?= $arParams['SEF_FOLDER'] ?>" class="w-100">
     <div class="input-group flex-nowrap d-none d-lg-flex">
         <span class="input-group-icon bg-transparent">
             <span class="icon violet-100">
@@ -34,18 +35,17 @@ $request = $context->getRequest();
             class="form-control form-control-lg text-l bg-transparent"
             id="input-search"
             type="text"
-            placeholder="<?= $arParams['PLACEHOLDER'] ?>"
-            aria-label="<?= $arParams['PLACEHOLDER'] ?>"
+            placeholder="<?= $placeholder ?>"
+            aria-label="<?= $placeholder ?>"
             aria-describedby="input-search"
             tabindex="-1"
             data-type="search"
-            value="<?= $request->get('q') ?>">
-        <a
-            class="btn btn-lg-lg btn-outline-primary d-flex gap-2 align-items-center justify-content-center"
-            id="btn-search"
-            href="<?= $arParams['SEF_FOLDER'] . ($request->get('q') ? '?q=' . $request->get('q') : '') . "#links" ?>">
+            value="<?= $searchQuery ?>">
+        <button
+            type="submit"
+            class="btn btn-lg-lg btn-outline-primary d-flex gap-2 align-items-center justify-content-center">
             Искать везде
-        </a>
+        </button>
     </div>
     <div class="input-group flex-nowrap d-flex d-lg-none">
         <span class="input-group-icon bg-transparent">
@@ -59,11 +59,11 @@ $request = $context->getRequest();
             class="form-control ps-0 text-s bg-transparent"
             id="input-search-mobile"
             type="text"
-            placeholder="<?= $arParams['PLACEHOLDER'] ?>"
-            aria-label="<?= $arParams['PLACEHOLDER'] ?>"
+            placeholder="<?= $placeholder ?>"
+            aria-label="<?= $placeholder ?>"
             aria-describedby="#input-search-mobile"
             tabindex="-1"
             data-type="search"
-            value="<?= $request->get('q') ?>">
+            value="<?= $searchQuery ?>">
     </div>
 </form>

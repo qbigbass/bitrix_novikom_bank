@@ -80,6 +80,7 @@ if (!empty($delFilter)) {
                         [
                             "PLACEHOLDER" => "Поиск по вопросам и ответам",
                             "SEF_FOLDER" => $arParams['SEF_FOLDER'],
+                            "SEARCH_QUERY" => htmlspecialchars($request->get('q')),
                         ],
                         $component
                     ); ?>

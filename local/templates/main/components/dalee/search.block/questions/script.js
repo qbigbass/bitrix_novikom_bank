@@ -1,15 +1,21 @@
 $(document).ready(function () {
-    let input = $(document).find('[data-type="search"]');
-    let str = input.val();
+    let input = $('[data-type="search"]');
+    let form = $('form#search');
 
-    if (str.length) {
-        filter(str);
+    if (input.val().length) {
+        filter(input.val());
     }
 
-    $(document).on('input', input, function (e) {
-        let str = e.target.value
-        filter(str);
-        setFilterHref(str, $('#btn-search'));
+    input.on('input', function () {
+        filter($(this).val());
+    });
+
+    form.on('submit', function (e) {
+        e.preventDefault();
+        let str = input.val().trim();
+        let action = $(this).attr('action');
+
+        window.location.href = action + (str ? '?q=' + encodeURIComponent(str) : '') + "#links";
     });
 });
 
@@ -25,12 +31,4 @@ function filter(str) {
             }
         }
     });
-}
-
-function setFilterHref(str, btn) {
-    let baseUrl = btn.attr('href').split('?')[0].split('#')[0];
-    let query = str ? '?q=' + encodeURIComponent(str) : '';
-    let anchor = '#links';
-
-    btn.attr('href', baseUrl + query + anchor);
 }
