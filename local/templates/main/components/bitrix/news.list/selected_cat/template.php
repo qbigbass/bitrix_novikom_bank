@@ -16,6 +16,25 @@ $this->setFrameMode(true); ?>
     <div class="swiper slider-cards d-flex flex-column js-slider-cards"
          data-slides-per-view="mobile-s:1.5,mobile:1.5,tablet:3,tablet-album:4,laptop:5,laptop-x:5"
          data-space-between="mobile-s:16,mobile:16,tablet:16,laptop:40,laptop-x:40">
+        <div class="slider-controls js-swiper-controls mb-3 mb-md-4">
+            <div class="slider-controls__pagination js-swiper-pagination"></div>
+            <div class="slider-controls__navigation js-swiper-nav">
+                <button class="swiper-button-prev js-swiper-prev" type="button">
+                    <span class="icon size-m">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                            <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-left"></use>
+                        </svg>
+                    </span>
+                </button>
+                <button class="swiper-button-next js-swiper-next" type="button">
+                    <span class="icon size-m">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
+                    </svg>
+                    </span>
+                </button>
+            </div>
+        </div>
         <div class="swiper-wrapper">
             <? foreach ($arResult['ITEMS'] as $item) { ?>
                 <?
@@ -35,25 +54,6 @@ $this->setFrameMode(true); ?>
                     </a>
                 </div>
             <? } ?>
-        </div>
-        <div class="slider-controls js-swiper-controls mt-3 mt-md-4">
-            <div class="slider-controls__pagination js-swiper-pagination"></div>
-            <div class="slider-controls__navigation js-swiper-nav">
-                <button class="swiper-button-prev js-swiper-prev" type="button">
-                    <span class="icon size-m">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                            <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-left"></use>
-                        </svg>
-                    </span>
-                </button>
-                <button class="swiper-button-next js-swiper-next" type="button">
-                    <span class="icon size-m">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
-                    </svg>
-                    </span>
-                </button>
-            </div>
         </div>
     </div>
 </div>
