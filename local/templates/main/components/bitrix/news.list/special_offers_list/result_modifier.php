@@ -67,8 +67,7 @@ if (!empty($items)) {
             $parentSection = array_filter($arSections, function ($section) use ($item) {
                 return $section['ID'] == $item['SECTION_PARENT'];
             });
-
-            $item['DETAIL_PAGE_URL'] = $iblockUrl . reset($parentSection)['CODE'] . '/' . $item['SECTION_CODE'] . '/' . $item['CODE'] . '/';
+            $item['DETAIL_PAGE_URL'] = $iblockUrl . reset($parentSection)['CODE'] . '/' . $item['CODE'] . '/';
         } else {
             $item['DETAIL_PAGE_URL'] = $iblockUrl . $item['SECTION_CODE'] . '/' . $item['CODE'] . '/';
         }

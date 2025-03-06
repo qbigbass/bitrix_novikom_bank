@@ -88,7 +88,7 @@ $APPLICATION->SetTitle('Пресс-центр');
         "SORT_BY2" => "SORT",
         "SORT_ORDER1" => "DESC",
         "SORT_ORDER2" => "ASC",
-        "STRICT_SECTION_CHECK" => "Y",
+        "STRICT_SECTION_CHECK" => "N",
         "USE_CATEGORIES" => "N",
         "USE_FILTER" => "N",
         "USE_PERMISSIONS" => "N",
@@ -100,7 +100,7 @@ $APPLICATION->SetTitle('Пресс-центр');
         "SEF_URL_TEMPLATES" => [
             "news" => "",
             "section" => "#SECTION_CODE_PATH#/",
-            "detail" => "#SECTION_CODE_PATH#/#ELEMENT_CODE#/",
+            "detail" => "news/#ELEMENT_CODE#/",
         ]
     ],
     false
