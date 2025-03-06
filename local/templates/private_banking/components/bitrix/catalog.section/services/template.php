@@ -7,7 +7,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
 <section class="pb-section pb-section--gradient-linear py-xxl-16">
     <div class="container">
         <h3 class="pb-section__title dark-0 text-center mb-4 d-md-none animate js-animation">Премиум-услуги</h3>
-        <div class="pb-services d-flex flex-column row-gap-4 row-gap-md-5 row-gap-lg-9">
+        <div class="pb-services d-flex flex-column row-gap-4 row-gap-md-5 row-gap-lg-11">
             <ul class="pb-services__header nav nav-tabs flex-nowrap justify-content-center w-100 animate js-animation" role="tablist">
                 <?foreach ($arResult['SECTIONS'] as $item) :
                     $key = $item['CODE'];
@@ -23,7 +23,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
                     $key = $service['CODE'];
                     ?>
                     <div class="tab-pane fade <?= $i===0 ? 'active show' : ''; ?>" id="<?= $key ?>" role="tabpanel" aria-labelledby="<?= $key ?>-tab" tabindex="<?= $i++ ?>">
-                        <div class="js-pb-tags-thumbs swiper mb-4 pb-tags-wrapper animate js-animation">
+                        <div class="js-pb-tags-thumbs swiper pb-tags-wrapper animate js-animation">
                             <div class="swiper-wrapper d-flex flex-wrap row-gap-2">
                                 <?foreach ($service['ITEMS'] as $li) : ?>
                                     <div class="swiper-slide pb-tags" role="button"><span><?= $li['NAME'] ?></span></div>

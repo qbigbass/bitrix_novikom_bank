@@ -18,6 +18,12 @@ const PB_FORM_ELEMS = {
     inputMinutes: 'input[id="minutes"]',
 }
 
+const FORM_EXPRESS_GUARANTEE = {
+    form: '[data-form-express-guarantee]',
+    radiosAdvance: 'input[name="ADVANCE"]',
+    advanceAmount: '.js-advance-amount',
+}
+
 const MODALS_ID = {
     success: 'modal-success',
     error: 'modal-error',
@@ -219,8 +225,10 @@ function checkValidity(form) {
             checkInputValidity(inputElement)
 
             if (hasEmptyRequiredInput(inputList)) {
+                formErrorElement.classList.remove('d-none');
                 formErrorElement.textContent = 'Не заполнены обязательные поля'
             } else {
+                formErrorElement.classList.add('d-none');
                 formErrorElement.textContent = ''
             }
 
@@ -381,4 +389,28 @@ function pbShowResponse(form, response) {
 
     modalInstance?.hide()
     modalBsResponse.show()
+}
+
+function initFormExpressGuarantee() {
+    const formGuarantee = document.querySelector(FORM_EXPRESS_GUARANTEE.form);
+
+    if (!formGuarantee) return;
+
+    const advanceRadio = formGuarantee.querySelectorAll(FORM_EXPRESS_GUARANTEE.radiosAdvance);
+    const advanceAmount = formGuarantee.querySelector(FORM_EXPRESS_GUARANTEE.advanceAmount);
+    const inputAdvanceAmount = advanceAmount.querySelector('input');
+
+    if (!advanceAmount || !inputAdvanceAmount) return;
+
+    advanceRadio.forEach(radio => {
+        radio.addEventListener('change', () => {
+            if (radio.value === 'true') {
+                advanceAmount.classList.remove('d-none');
+                inputAdvanceAmount.required = true;
+            } else {
+                advanceAmount.classList.add('d-none');
+                inputAdvanceAmount.required = false;
+            }
+        })
+    })
 }
