@@ -89,6 +89,7 @@ function createCurrencyList(STATE) {
 }
 
 function showDepositResult(STATE) {
+    console.log('STATE.rate', STATE.rate);
     STATE.elements.displayName.textContent = STATE.filteredData[0].name;
     STATE.elements.displayPeriod.innerHTML = getFormatedTextByType({value: STATE.period, type: 'day'});
     STATE.elements.displayRate.innerHTML = `${formatNumber(STATE.rate)} %`;
@@ -161,10 +162,12 @@ function calculateDepositIncome({amount, period, rate, capitalization, filteredD
             let newRate = findDepositRate({data: filteredData, amount: totalAmount, period});
             // Если новая процентная ставка не определена, используем текущую
             if (!newRate) {newRate = rate}
+
             const dailyNewRate = (newRate / 100) / calculateDaysInYear(depositDate.getFullYear());
 
             // Расчет дохода от пополнения
             if (capitalization) {
+                // TODO: проверить не ежедневная ли капитализация?
                 const n = 12; // Количество периодов капитализации в год (ежемесячно)
                 const t = daysOnDeposit / calculateDaysInYear(depositDate.getFullYear()); // Количество лет
 
@@ -180,7 +183,7 @@ function calculateDepositIncome({amount, period, rate, capitalization, filteredD
         });
     }
 
-    return totalIncome;
+    return {totalIncome, rate};
 }
 function findDepositRate({data, amount, period}) {
     const findAmount = data.filter(item => item.sumFrom <= amount && item.sumTo >= amount);
