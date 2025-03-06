@@ -81,12 +81,21 @@ class RatesPlaceholderManager
         ]
     ];
 
+    private array $currencyCode = [
+        'rub' => 'Рубли РФ',
+        'usd' => 'Доллары',
+        'eur' => 'Евро',
+        'cny' => 'Китайские юани',
+    ];
+
     private array $currencyLetters = [
         'rub' => ' ₽',
         'usd' => ' $',
         'eur' => ' €',
         'cny' => ' ¥',
     ];
+
+    private array $periodRange = [];
 
     /**
      * @param string $content
@@ -342,15 +351,44 @@ class RatesPlaceholderManager
         $result['tables'] = [];
         $result['tables'] = array_merge($result['tables'], array_map(function ($match) {
             $elements = [];
+            $ratesData = [];
+            $periods = [];
+
             foreach ($this->calculatedValues['deposits_rates']['allElements'] as $element) {
                 if (!empty($element['PROPERTIES']['LINK']['VALUE']) && $element['PROPERTIES']['LINK']['VALUE'] == array_flip($this->linkedElements)[$match['code']]) {
                     $elements[] = $element;
                 }
             }
-            $table = '';
+
             foreach ($match['currencies'] as $currency) {
-                $table .= $this->generateRatesTableHTML(UF_KEY_RATE, $elements, $currency);
+                $ratesData[$currency] = $this->processTableElementsData($elements, $currency);
             }
+
+            $table = '';
+
+            if (!empty($ratesData)) {
+                $table = '<div class="overflow-auto custom-overflow-scrollbar">
+                        <table class="table table-borderless m-0">
+                            <thead>
+                                <tr class="border-bottom-dashed">
+                                    <th class="text-nowrap fs-2 lh-base dark-70 fw-semibold py-4 px-0" scope="col" style="min-width: 140px">Срок вклада</th>';
+
+                // Заголовки для сроков
+                foreach ($ratesData as $currency => $arSum) {
+                    $periods = array_keys(current($arSum));
+                }
+
+                $colspan = count($periods) + 1;
+
+                foreach ($periods as $period) {
+                    $table .= '<th class="text-nowrap fs-2 lh-base dark-70 fw-semibold py-4 px-0" scope="col" style="min-width: 140px">' . $this->periodRange[$period] ?: $period . ' дней</th>';
+                }
+
+                $table .= '</tr></thead><tbody>';
+                $table .= $this->generateRatesTableHTML($ratesData, $periods, $colspan);
+                $table .= '</tbody></table></div>';
+            }
+
             return [
                 $match[0],
                 $match['product'],
@@ -362,58 +400,41 @@ class RatesPlaceholderManager
     }
 
     /**
-     * @param float $keyRate
-     * @param array $loadedElements
-     * @param string $currency
+     * @param array $ratesData
+     * @param array $periods
+     * @param int $colspan
      * @return string
      */
-    public function generateRatesTableHTML(float $keyRate, array $loadedElements, string $currency): string
+    public function generateRatesTableHTML(array $ratesData, array $periods, int $colspan): string
     {
-        $ratesData = $this->processTableElementsData($keyRate, $loadedElements, $currency);
-
-        if (empty($ratesData)) {
-            return '';
-        }
-
-        $currencyLetter = $this->currencyLetter($currency);
-
-        $html = '
-                <div class="overflow-auto custom-overflow-scrollbar">
-                    <table class="table table-borderless m-0">
-                        <caption class="dark-70 pt-4 text-s mb-0">КС – ключевая ставка Банка России</caption>
-                        <thead>
-                        <tr class="border-bottom-dashed">
-                            <th class="text-nowrap fs-2 lh-base dark-70 fw-semibold py-4 px-0" scope="col" style="min-width: 140px">Срок вклада</th>
-        ';
-
-        // Заголовки для сроков
-        $periods = array_keys(current($ratesData));
-        foreach ($periods as $period) {
-            $html .= '<th class="text-nowrap fs-2 lh-base dark-70 fw-semibold py-4 px-0" scope="col" style="min-width: 140px">' . $period . ' дней</th>';
-        }
-        $html .= '</tr></thead><tbody>';
+        $html = '';
 
         // Построение строк таблицы по суммам
-        foreach ($ratesData as $sumFrom => $periodRates) {
-            $html .= '<tr class="border-bottom-dashed">
-                        <td class="w-auto text-l dark-70 py-4 px-0" style="min-width: 140px">от ' . number_format((float)$sumFrom, 0, '', ' ') . $currencyLetter . '</td>';
-            foreach ($periods as $period) {
-                $html .= '<td class="w-auto text-l dark-70 py-4 px-0" style="min-width: 140px">' . ($periodRates[$period] ?? 'КС') . '</td>';
+        foreach ($ratesData as $currency => $arSum) {
+            $currencyLetter = $this->currencyLetter($currency);
+            $currencyCode = $this->currencyCode[$currency];
+            $html .= '<tr><td colspan="'.$colspan.'">'.$currencyCode.'</td></tr>';
+            foreach ($arSum as $sumFrom => $periodRates) {
+                $html .= '<tr class="border-bottom-dashed">
+                            <td class="w-auto text-l dark-70 py-4 px-0" style="min-width: 140px">от ' . number_format((float)$sumFrom, 0, '', ' ') . $currencyLetter . '</td>';
+
+                foreach ($periods as $period) {
+                    $html .= '<td class="w-auto text-l dark-70 py-4 px-0" style="min-width: 140px">' . ($periodRates[$period] ?? 'КС') . '</td>';
+                }
+
+                $html .= '</tr>';
             }
-            $html .= '</tr>';
         }
 
-        $html .= '</tbody></table></div>';
         return $html;
     }
 
     /**
-     * @param float $keyRate
      * @param array $loadedElements
      * @param string $currency
      * @return array
      */
-    private function processTableElementsData(float $keyRate, array $loadedElements, string $currency): array
+    private function processTableElementsData(array $loadedElements, string $currency): array
     {
         $ratesData = [];
 
@@ -431,16 +452,20 @@ class RatesPlaceholderManager
             if (in_array($element['PROPERTIES']['CURRENCY']['VALUE'], $this->currencyCodes[$currency])) {
                 $sumFrom = $element['PROPERTIES']['SUM_FROM']['VALUE'];
                 $period = $element['PROPERTIES']['PERIOD_FROM']['VALUE'];
+
+                if (!empty($element['PROPERTIES']['PERIOD_TO']['VALUE']) &&
+                    ($element['PROPERTIES']['PERIOD_TO']['VALUE'] !== $element['PROPERTIES']['PERIOD_FROM']['VALUE'])
+                ) {
+                    $this->periodRange[$element['PROPERTIES']['PERIOD_FROM']['VALUE']] = $element['PROPERTIES']['PERIOD_FROM']['VALUE'] . '-' . $element['PROPERTIES']['PERIOD_TO']['VALUE'];
+                } else {
+                    $this->periodRange[$element['PROPERTIES']['PERIOD_FROM']['VALUE']] = $element['PROPERTIES']['PERIOD_FROM']['VALUE'];
+                }
+
                 $rate = $element['PROPERTIES']['RATE']['VALUE'];
                 $effectiveRate = $element['PROPERTIES']['EFFECTIVE_RATE']['VALUE'];
 
                 if (empty($effectiveRate)) {
-                    // Расчёт надбавки относительно ключевой ставки
-                    $rateDiff = $rate - $keyRate;
-                    $rateText = $rateDiff ? ($rateDiff > 0 ? '+' : '') . number_format($rateDiff, 1) . '%' : '';
-
-                    // Группируем по диапазонам сумм и срокам
-                    $ratesData[$sumFrom][$period] = 'КС ' . $rateText;
+                    $ratesData[$sumFrom][$period] = $rate;
                 } else {
                     $ratesData[$sumFrom][$period] = $rate . '/' . $effectiveRate;
                 }
