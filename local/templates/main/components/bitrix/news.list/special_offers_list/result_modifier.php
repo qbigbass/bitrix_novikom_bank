@@ -45,14 +45,30 @@ $arSections = \Bitrix\Iblock\SectionTable::getList([
 
 if (!empty($arResult['SECTION'])) {
     $section = $arResult['SECTION']['PATH'][array_key_last($arResult['SECTION']['PATH'])];
-    $data['filter']['IBLOCK_SECTION_ID'] = [$section['ID']];
+    $sectionIds = [$section['ID']];
 
-    $sections = array_filter($arSections, function ($item) use ($section) {
-        return $item['IBLOCK_SECTION_ID'] == $section['ID'];
-    });
+    $sections = array_filter($arSections, fn($item) => $item['IBLOCK_SECTION_ID'] == $section['ID']);
 
     if (!empty($sections)) {
-        $data['filter']['IBLOCK_SECTION_ID'] = array_merge($data['filter']['IBLOCK_SECTION_ID'], array_column($sections, 'ID'));
+        $sectionIds = array_merge($sectionIds, array_column($sections, 'ID'));
+    }
+
+    $elementsRes = \Bitrix\Main\Application::getConnection()->query("
+        SELECT IBLOCK_ELEMENT_ID FROM b_iblock_section_element
+        WHERE IBLOCK_SECTION_ID IN (" . implode(',', $sectionIds) . ")
+    ");
+
+    $elementIds = [];
+    while ($row = $elementsRes->fetch()) {
+        $elementIds[] = $row['IBLOCK_ELEMENT_ID'];
+    }
+
+    if (!empty($elementIds)) {
+        $data['filter'][] = [
+            'LOGIC' => 'OR',
+            'IBLOCK_SECTION_ID' => $sectionIds,
+            'ID' => $elementIds
+        ];
     }
 }
 

@@ -103,7 +103,7 @@ $renderer = new Renderer($APPLICATION, $component);
         <div class="container">
             <? if (!empty($arResult['PROPERTIES']['SELECTED_CAT_HEADER']['VALUE'])) { ?>
                 <div class="row mb-6 mb-lg-7">
-                    <h3><?= $arResult['PROPERTIES']['SELECTED_CAT_HEADER']['VALUE'] ?></h3>
+                    <h3><?= $arResult['PROPERTIES']['SELECTED_CAT_HEADER']['~VALUE'] ?></h3>
                 </div>
             <? } ?>
             <div class="row">

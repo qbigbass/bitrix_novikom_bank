@@ -8,4 +8,5 @@ foreach ($arResult['ITEMS'] as $key => $section) {
     }
 }
 
+$arResult['ITEMS'] = array_values($arResult['ITEMS']);
 $arResult['WITH_TABS'] = count($arResult['ITEMS']) > 1;
