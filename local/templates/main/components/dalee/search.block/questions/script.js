@@ -15,7 +15,7 @@ $(document).ready(function () {
         let str = input.val().trim();
         let action = $(this).attr('action');
 
-        window.location.href = action + (str ? '?q=' + encodeURIComponent(str) : '') + "#links";
+        window.location.href = action + (str ? '?q=' + str : '') + "#links";
     });
 });
 
