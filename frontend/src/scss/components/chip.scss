@@ -27,6 +27,22 @@
         &:hover {
             color: currentColor;
         }
+
+        @at-root .contact-block--bg-blue & {
+            color: var(--dark-0);
+        }
+
+        @at-root .contact-block--bg-gray & {
+            color: var(--dark-100);
+        }
+
+        @at-root .contact-block--bg-white & {
+            color: var(--dark-100);
+        }
+
+        @at-root .contact-block--bg-heavy-purple & {
+            color: var(--dark-0);
+        }
     }
 
     &.dark-0 {
