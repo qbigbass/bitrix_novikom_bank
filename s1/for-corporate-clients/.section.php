@@ -4,6 +4,8 @@ $arDirProperties = [
     "description" => "",
     "templateSubMenu" => "corporate_submenu_header",
     "hiddenKey" => 7,
-    "stepperItemColor" => "stepper-item--color-orange"
+    "stepperItemColor" => "stepper-item--color-orange",
+    "defaultBgBlockContacts" => "",
+    "defaultColorCard" => "contact-block--bg-heavy-purple"
 ];
 ?>

@@ -9,7 +9,7 @@ if (!empty($elementIds)) {
     ];
 
     $defaultBgBlockContacts = $APPLICATION->GetProperty("defaultBgBlockContacts") ?: "bg-blue-10";
-    $defaultColorCard = $APPLICATION->GetProperty("defaultColorCard") ?: "bg-heavy-violet";
+    $defaultColorCard = $APPLICATION->GetProperty("defaultColorCard") ?: "contact-block--bg-blue";
     $defaultColorTag = $APPLICATION->GetProperty("defaultColorTag") ?: "tag--outline-white";
     $defaultColorH4 = $APPLICATION->GetProperty("defaultColorH4") ?: "dark-0";
     $defaultColorSpan = $APPLICATION->GetProperty("defaultColorSpan") ?: "dark-0";
