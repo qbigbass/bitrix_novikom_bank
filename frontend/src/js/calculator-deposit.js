@@ -23,6 +23,7 @@ const CLASSES_DEPOSIT = {
     hide: 'd-none',
     active: 'active',
     currency: '.currency',
+    smallDifference: 'small-difference',
 }
 
 const MIN_DEPOSIT_VALUE = 50;
@@ -468,14 +469,14 @@ function filterStepsArray(arr, STATE) {
 
     // Если найдена разница <= 2, возвращаем только первое и последнее значение
     if (hasSmallDifference) {
-        // STATE.elements.inputPeriodWrapper.setAttribute('data-min-value', arr[0]);
-        // STATE.elements.inputPeriodWrapper.setAttribute('data-start-value', arr[0]);
-        // STATE.elements.inputPeriodWrapper.setAttribute('data-max-value', arr[arr.length - 1]);
-        STATE.elements.inputPeriodWrapper.setAttribute('data-steps', arr[arr.length - 1]);
-
+        STATE.elements.inputPeriodWrapper.classList.add(CLASSES_DEPOSIT.smallDifference);
+        STATE.elements.inputPeriodWrapper.setAttribute('data-start-value', arr[0]);
+        STATE.elements.inputPeriodWrapper.setAttribute('data-min-value', arr[0]);
+        STATE.elements.inputPeriodWrapper.setAttribute('data-max-value', arr[arr.length - 1]);
         return [arr[0], arr[arr.length - 1]];
     }
 
+    STATE.elements.inputPeriodWrapper.classList.remove(CLASSES_DEPOSIT.smallDifference);
     // Если разницы не найдены, возвращаем оригинальный массив
     return arr;
 }
@@ -553,8 +554,12 @@ const setDepositValues = (STATE, currencyTrigger) => {
             step.remove();
         })
         periodStepsText.innerHTML = '';
-
-        STATE.elements.inputPeriodWrapper.setAttribute('data-steps', STATE.steps);
+        // депозиты с нежескими сроками
+        if (STATE.elements.inputPeriodWrapper.classList.contains(CLASSES_DEPOSIT.smallDifference)) {
+            STATE.elements.inputPeriodWrapper.removeAttribute('data-steps');
+        } else { // депозиты с жескими сроками
+            STATE.elements.inputPeriodWrapper.setAttribute('data-steps', STATE.steps);
+        }
         initInputSlider([STATE.elements.inputPeriodWrapper]);
         STATE.period = getPeriodValue(STATE.elements.inputPeriod);
     } else { // если период вклада не меняется
