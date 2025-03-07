@@ -31,43 +31,51 @@ class OfficesMap {
     }
 
     setCheckboxesFromFilter() {
-        if (this.term)
+        if (this.term) {
             document.querySelector('#offices-search-input').value = this.term;
+        }
 
         if (!!this.filterFormValues) {
-            Object.entries(this.filterFormValues).forEach(entry => {
-                const [key, value] = entry;
+            Object.entries(this.filterFormValues).forEach(([key, value]) => {
                 // услуги
                 if (!!this.services[key] && value === true) {
                     let checkbox = document.querySelector('#filter-service-' + key);
-                    if (!!checkbox)
+                    if (!!checkbox) {
                         checkbox.checked = true;
+                    }
                 } else {
                     //валюты
-                    if (key === 'currencyIn' || key == 'currencyOut') {
+                    if (key === 'currencyIn' || key === 'currencyOut') {
                         let prefix = '#currency-in-';
-                        if (key == 'currencyOut')
+                        if (key === 'currencyOut') {
                             prefix = '#currency-out-';
+                        }
                         value.forEach(currency => {
                             let checkbox = document.querySelector(prefix + currency);
-                            if (!!checkbox)
+                            if (!!checkbox) {
                                 checkbox.checked = true;
+                            }
                         })
                     } else {
                         if (value === true) {
-                            let checkboxID = key;
-                            if (key == 'accessFree')
-                                checkboxID = 'access-free';
-                            if (key == 'accessEmployee')
-                                checkboxID = 'access-employee';
+                            const checkboxID = this.getCheckboxIdByKey(key);
                             let checkbox = document.querySelector('#' + checkboxID);
-                            if (!!checkbox)
-                                checkbox.checked = true;
+                            if (!!checkbox) checkbox.checked = true;
                         }
                     }
-
                 }
             });
+        }
+    }
+
+    getCheckboxIdByKey(key) {
+        switch (key) {
+            case 'accessFree':
+                return 'access-free';
+            case 'accessEmployee':
+                return 'access-employee';
+            default:
+                return key;
         }
     }
 
@@ -192,15 +200,18 @@ class OfficesMap {
         this.services = result.data.services
     }
 
-    setPrefilter(){
+    setPrefilter() {
         let officeMapFilterJSON = localStorage.getItem("officeMapFilter");
-        if(!officeMapFilterJSON)
+        if (!officeMapFilterJSON) {
             return;
+        }
         let officeMapFilter = JSON.parse(officeMapFilterJSON);
-        if(!!officeMapFilter.term)
+        if (!!officeMapFilter.term) {
             this.term = officeMapFilter.term;
-        if(!!officeMapFilter.filterFormValues)
+        }
+        if (!!officeMapFilter.filterFormValues) {
             this.filterFormValues = officeMapFilter.filterFormValues;
+        }
     }
 
     filterOffices(init = false) {
@@ -279,7 +290,6 @@ class OfficesMap {
     }
 
     saveFilterFormValues(){
-
         const officeMapFilter = { term: this.term, filterFormValues: this.filterFormValues };
         localStorage.setItem('officeMapFilter', JSON.stringify(officeMapFilter));
     }
