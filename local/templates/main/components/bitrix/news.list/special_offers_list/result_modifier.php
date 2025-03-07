@@ -10,14 +10,18 @@ $currentDate = date("Y-m-d H:i:s");
 $dataClass = Iblock::wakeUp($arParams['IBLOCK_ID'])->getEntityDataClass();
 $filter = ['ACTIVE' => 'Y'];
 
-if ($iblockUrl == '/special-offers/') {
+if ($iblockUrl === '/special-offers/') {
     $condition = !empty($_SESSION['section_page']['/special-offers/']) && $_SESSION['section_page']['/special-offers/'] == '/ended/'
         ? '<=END_DATE.VALUE'
         : '>=END_DATE.VALUE';
     $filter[$condition] = $currentDate;
 } elseif ($iblockUrl === '/about/press-center/') {
     $filter['<=PUBLICATION_DATE.VALUE'] = $currentDate;
-    $filter['>=END_DATE.VALUE'] = $currentDate;
+    $filter[] = [
+        'LOGIC' => 'OR',
+        '>=END_DATE.VALUE' => $currentDate,
+        'END_DATE.VALUE' => false
+    ];
 }
 
 $data = [
