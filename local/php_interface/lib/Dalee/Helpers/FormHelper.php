@@ -201,4 +201,44 @@ class FormHelper
 
         return true;
     }
+
+    /**
+     * Перехватываем событие отправки почты. Блочим лишние отправки для обратной связи
+     *
+     * @param $event
+     * @param $lid
+     * @param $arFields
+     * @param $message_id
+     * @return false|void
+     */
+    public static function sendFeedBack(&$event, &$lid, &$arFields, $message_id)
+    {
+        if ($event === 'FORM_FILLING_feedback_form') {
+            $curTopicCode = self::getTopicCodeByResultId($arFields['RS_FORM_ID'], $arFields['RS_RESULT_ID']);
+            file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/2.txt', print_r([$message_id, FEEDBACK_FORM_MESSAGES[$curTopicCode], FEEDBACK_FORM_MESSAGES, $message_id !== FEEDBACK_FORM_MESSAGES[$curTopicCode]], true), FILE_APPEND);
+            if ((int)$message_id !== FEEDBACK_FORM_MESSAGES[$curTopicCode]) {
+                return false;
+            }
+        }
+    }
+
+    /**
+     * Получаем код ответа, который выбрал пользователь из вопроса "Причина обращения"
+     *
+     * @param int $formId
+     * @param int $resultId
+     * @return string
+     */
+    public static function getTopicCodeByResultId(int $formId, int $resultId): string
+    {
+        CForm::GetResultAnswerArray($formId, $arrColumns, $arrAnswers, $arrAnswersVarname, array("RESULT_ID" => $resultId));
+        $answers = $arrAnswers[$resultId];
+        foreach ($answers as $AnswerSet) {
+            $answer = current($AnswerSet);
+            if ($answer['VARNAME'] === 'TOPIC') {
+                return $answer['ANSWER_VALUE'];
+            }
+        }
+        return '';
+    }
 }
