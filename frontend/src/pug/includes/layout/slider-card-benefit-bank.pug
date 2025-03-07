@@ -30,9 +30,8 @@ include ../../cards/card-benefit
 
 mixin slider-card-benefit-bank(data = cardProductList, perView = 'mobile-s:1,mobile:1,tablet:2,laptop:2,laptop-x:3', spaceBetween = 'mobile-s:8,mobile:8,tablet:16,laptop:16,laptop-x:16')
     .swiper.slider-cards.js-slider-cards(data-slides-per-view= perView, data-space-between= spaceBetween)
+        +slider-controls().mb-3.mb-md-4
         .swiper-wrapper
             each item in cardBenefitsBankList
                 .swiper-slide.js-swiper-slide
                     +card-benefit(item).card-benefit--type-img
-
-        +slider-controls().mt-3.mt-md-4

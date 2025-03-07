@@ -23,10 +23,60 @@ class OfficesMap {
         this.initMap()
         this.initOffsetCenter()
         await this.loadOffices()
-        this.filterOffices()
+        this.filterOffices(true)
         this.initOfficesSearchFilter()
         this.initOfficesServicesFilter()
+        this.setCheckboxesFromFilter();
         this.renderOfficesPlacemarks()
+    }
+
+    setCheckboxesFromFilter() {
+        if (this.term) {
+            document.querySelector('#offices-search-input').value = this.term;
+        }
+
+        if (!!this.filterFormValues) {
+            Object.entries(this.filterFormValues).forEach(([key, value]) => {
+                // услуги
+                if (!!this.services[key] && value === true) {
+                    let checkbox = document.querySelector('#filter-service-' + key);
+                    if (!!checkbox) {
+                        checkbox.checked = true;
+                    }
+                } else {
+                    //валюты
+                    if (key === 'currencyIn' || key === 'currencyOut') {
+                        let prefix = '#currency-in-';
+                        if (key === 'currencyOut') {
+                            prefix = '#currency-out-';
+                        }
+                        value.forEach(currency => {
+                            let checkbox = document.querySelector(prefix + currency);
+                            if (!!checkbox) {
+                                checkbox.checked = true;
+                            }
+                        })
+                    } else {
+                        if (value === true) {
+                            const checkboxID = this.getCheckboxIdByKey(key);
+                            let checkbox = document.querySelector('#' + checkboxID);
+                            if (!!checkbox) checkbox.checked = true;
+                        }
+                    }
+                }
+            });
+        }
+    }
+
+    getCheckboxIdByKey(key) {
+        switch (key) {
+            case 'accessFree':
+                return 'access-free';
+            case 'accessEmployee':
+                return 'access-employee';
+            default:
+                return key;
+        }
     }
 
     initMap() {
@@ -150,8 +200,27 @@ class OfficesMap {
         this.services = result.data.services
     }
 
-    filterOffices() {
-        this.updateFilterFormValues()
+    setPrefilter() {
+        let officeMapFilterJSON = localStorage.getItem("officeMapFilter");
+        if (!officeMapFilterJSON) {
+            return;
+        }
+        let officeMapFilter = JSON.parse(officeMapFilterJSON);
+        if (!!officeMapFilter.term) {
+            this.term = officeMapFilter.term;
+        }
+        if (!!officeMapFilter.filterFormValues) {
+            this.filterFormValues = officeMapFilter.filterFormValues;
+        }
+    }
+
+    filterOffices(init = false) {
+        //Если фильтрация при инициализации, проверяем localStorage и выставляем нужные галочки и фильтры
+        if (init) {
+            this.setPrefilter();
+        } else {
+            this.updateFilterFormValues()
+        }
 
         this.filteredOffices = this.offices
 
@@ -208,7 +277,6 @@ class OfficesMap {
         delete servicesFilter.currencyOut
 
         if (Object.values(servicesFilter).some(item => item === true)) {
-            console.log('filter services')
             for (const [key, value] of Object.entries(servicesFilter)) {
                 if (servicesFilter[key]) {
                     this.filteredOffices = this.filteredOffices.filter(item => item.services.includes(key))
@@ -218,6 +286,12 @@ class OfficesMap {
 
         this.renderOfficesList()
         this.renderOfficesPlacemarks()
+        this.saveFilterFormValues();
+    }
+
+    saveFilterFormValues(){
+        const officeMapFilter = { term: this.term, filterFormValues: this.filterFormValues };
+        localStorage.setItem('officeMapFilter', JSON.stringify(officeMapFilter));
     }
 
     clearOfficesPlacemarks() {

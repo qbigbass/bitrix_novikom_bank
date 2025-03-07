@@ -169,6 +169,7 @@ block content
                                     .row.row-gap-4.row-gap-md-5.row-gap-lg-7
                                         .col-12
                                             .swiper.js-slider-cards.w-100(data-slides-per-view="mobile-s:1,mobile:1,tablet:2,laptop:3,laptop-x:4", data-space-between="mobile-s:8,mobile:8,tablet:16,laptop:16,laptop-x:40")
+                                                +slider-controls().mb-3.mb-md-4
                                                 .swiper-wrapper.js-swiper-wrapper
                                                     each tariff in allTariffs
                                                         .swiper-slide.js-swiper-slide
@@ -176,7 +177,7 @@ block content
                                                                 if tariff.link
                                                                     a(href=tariff.link).btn.btn-yellow.w-100
                                                                         !=tariff.linkText
-                                                +slider-controls().mt-3.mt-md-4
+
                                         .col-12
                                             +polygon-container("yellow-100")
                                                 +helper("img/business-additional-info.png", "bg-blue-10")

@@ -1,0 +1,62 @@
+.map-columns {
+  & tr {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+
+    @include use-media(tablet-album) {
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+    }
+  }
+}
+
+.map-level-0 {
+  @extend .list;
+
+  gap: 2rem;
+
+  & > li a {
+    font-weight: 700;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.map-level-1 {
+  padding-left: 0;
+  list-style: none;
+
+  & li {
+    margin-top: .75rem;
+
+    @include use-media(tablet-album) {
+      margin-top: 1rem;
+    }
+
+    & a {
+      font-weight: 600;
+    }
+  }
+}
+
+.map-level-2 {
+  padding-left: 0;
+  list-style: none;
+  margin-top: .5rem;
+
+  & li {
+    margin-top: .5rem;
+
+    @include use-media(tablet-album) {
+      margin-top: .5rem;
+    }
+
+    & a {
+      font-weight: 400;
+    }
+  }
+}

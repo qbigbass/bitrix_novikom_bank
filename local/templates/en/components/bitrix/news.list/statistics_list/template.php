@@ -20,6 +20,25 @@ $this->setFrameMode(true);
 <div class="swiper js-slider-cards slider-cards"
      data-slides-per-view="mobile-s:1,mobile:1,tablet:2,laptop:2,laptop-x:2"
      data-space-between="mobile-s:8,mobile:8,tablet:16,laptop:16,laptop-x:16">
+    <div class="slider-controls js-swiper-controls mb-3 mb-md-4">
+        <div class="slider-controls__pagination js-swiper-pagination"></div>
+        <div class="slider-controls__navigation js-swiper-nav">
+            <button class="swiper-button-prev js-swiper-prev" type="button" aria-label="Листать влево">
+                <span class="icon size-m">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-left"></use>
+                    </svg>
+                </span>
+            </button>
+            <button class="swiper-button-next js-swiper-next" type="button" aria-label="Листать вправо">
+                <span class="icon size-m">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
+                    </svg>
+                </span>
+            </button>
+        </div>
+    </div>
     <div class="swiper-wrapper js-swiper-wrapper">
         <?
         foreach ($arResult['ITEMS'] as $key => $item):
@@ -65,24 +84,5 @@ $this->setFrameMode(true);
                 </div>
             </div>
         <? endforeach; ?>
-    </div>
-    <div class="slider-controls js-swiper-controls mt-3 mt-md-4">
-        <div class="slider-controls__pagination js-swiper-pagination"></div>
-        <div class="slider-controls__navigation js-swiper-nav">
-            <button class="swiper-button-prev js-swiper-prev" type="button" aria-label="Листать влево">
-                <span class="icon size-m">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-left"></use>
-                    </svg>
-                </span>
-            </button>
-            <button class="swiper-button-next js-swiper-next" type="button" aria-label="Листать вправо">
-                <span class="icon size-m">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
-                    </svg>
-                </span>
-            </button>
-        </div>
     </div>
 </div>

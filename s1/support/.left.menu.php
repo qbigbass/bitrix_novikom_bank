@@ -4,7 +4,7 @@ $aMenuLinks = [
         "Продукты и услуги",
         "products_services/",
         [],
-        [],
+        ['show_only_in_header' => 'Y'],
         ""
     ],
     [

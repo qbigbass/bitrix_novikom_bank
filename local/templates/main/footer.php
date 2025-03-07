@@ -50,7 +50,7 @@ use Bitrix\Main\Localization\Loc;
                         "MENU_CACHE_TYPE" => "A",
                         "MENU_CACHE_USE_GROUPS" => "Y",
                         "ROOT_MENU_TYPE" => "top",
-                        "USE_EXT" => "Y"
+                        "USE_EXT" => "N"
                     ]
                 );?>
                 <div class="col-12 col-md-6 col-xl-3">

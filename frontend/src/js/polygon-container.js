@@ -12,7 +12,7 @@ const initPolygonContainer = () => {
         const STATE = initPolygonState(polygonContainer);
         setTimeout(() => {
             resizeSVGElement(STATE);
-        }, 400)
+        }, 500)
         initResizeObservableOnPolygonElement(STATE);
     }
 };
