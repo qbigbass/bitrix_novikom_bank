@@ -67,7 +67,7 @@ if ($delFilter) {
                 $APPLICATION->IncludeComponent(
                     "bitrix:catalog.smart.filter",
                     "ads_filter",
-                    array(
+                    [
                         "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
                         "IBLOCK_ID" => $arParams["IBLOCK_ID"],
                         "SECTION_CODE" => $arResult["VARIABLES"]["SECTION_CODE"],
@@ -91,9 +91,9 @@ if ($delFilter) {
                         "PAGER_PARAMS_NAME" => $arParams["PAGER_PARAMS_NAME"],
                         "INSTANT_RELOAD" => $arParams["INSTANT_RELOAD"],
                         "SHOW_CALENDAR" => "Y"
-                    ),
+                    ],
                     $component,
-                    array('HIDE_ICONS' => 'Y')
+                    ['HIDE_ICONS' => 'Y']
                 );
                 ?>
             </div>
