@@ -306,7 +306,5 @@ $APPLICATION->IncludeComponent(
     ]
 );
 ?>
-
-<?$FORMS->showAll();?>
 </body>
 </html>
