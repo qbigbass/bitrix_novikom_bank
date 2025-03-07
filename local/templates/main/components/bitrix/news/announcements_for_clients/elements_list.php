@@ -64,31 +64,36 @@ if ($delFilter) {
             <div class="col-12">
                 <!-- Фильтры по свойствам -->
                 <?
-                $APPLICATION->IncludeComponent (
-                    "bitrix:catalog.filter",
-                    "filter_by_props",
-                    [
+                $APPLICATION->IncludeComponent(
+                    "bitrix:catalog.smart.filter",
+                    "ads_filter",
+                    array(
                         "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
                         "IBLOCK_ID" => $arParams["IBLOCK_ID"],
+                        "SECTION_CODE" => $arResult["VARIABLES"]["SECTION_CODE"],
                         "FILTER_NAME" => $arParams["FILTER_NAME"],
-                        "FIELD_CODE" => $arParams["FILTER_FIELD_CODE"],
-                        "PROPERTY_CODE" => $arParams["FILTER_PROPERTY_CODE"],
-                        "OFFERS_FIELD_CODE" => [],
-                        "OFFERS_PROPERTY_CODE" => [],
-                        "PRICE_CODE" => [],
+                        "PRICE_CODE" => $arParams["~PRICE_CODE"],
                         "CACHE_TYPE" => $arParams["CACHE_TYPE"],
                         "CACHE_TIME" => $arParams["CACHE_TIME"],
                         "CACHE_GROUPS" => $arParams["CACHE_GROUPS"],
-                        "LIST_HEIGHT" => "5",
-                        "TEXT_WIDTH" => "20",
-                        "NUMBER_WIDTH" => "5",
                         "SAVE_IN_SESSION" => "N",
-                        "PREFILTER_NAME" => "preFilter",
-                        "PAGER_PARAMS_NAME" => "arrPager",
-                        "PARAMS_TYPE_SELECTED" => $typeSelected,
+                        "FILTER_VIEW_MODE" => $arParams["FILTER_VIEW_MODE"],
+                        "XML_EXPORT" => "N",
+                        "SECTION_TITLE" => "NAME",
+                        "SECTION_DESCRIPTION" => "DESCRIPTION",
+                        'HIDE_NOT_AVAILABLE' => $arParams["HIDE_NOT_AVAILABLE"],
+                        "TEMPLATE_THEME" => $arParams["TEMPLATE_THEME"],
+                        'CONVERT_CURRENCY' => $arParams['CONVERT_CURRENCY'],
+                        'CURRENCY_ID' => $arParams['CURRENCY_ID'],
+                        "SEF_MODE" => $arParams["SEF_MODE"],
+                        "SEF_RULE" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["smart_filter"],
+                        "SMART_FILTER_PATH" => $arResult["VARIABLES"]["SMART_FILTER_PATH"],
+                        "PAGER_PARAMS_NAME" => $arParams["PAGER_PARAMS_NAME"],
+                        "INSTANT_RELOAD" => $arParams["INSTANT_RELOAD"],
                         "SHOW_CALENDAR" => "Y"
-                    ],
-                    $component
+                    ),
+                    $component,
+                    array('HIDE_ICONS' => 'Y')
                 );
                 ?>
             </div>
