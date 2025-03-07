@@ -90,7 +90,8 @@ if ($delFilter) {
                         "SMART_FILTER_PATH" => $arResult["VARIABLES"]["SMART_FILTER_PATH"],
                         "PAGER_PARAMS_NAME" => $arParams["PAGER_PARAMS_NAME"],
                         "INSTANT_RELOAD" => $arParams["INSTANT_RELOAD"],
-                        "SHOW_CALENDAR" => "Y"
+                        "SHOW_CALENDAR" => "Y",
+                        "SET_FILTER" => $_GET["set_filter"]
                     ],
                     $component,
                     ['HIDE_ICONS' => 'Y']

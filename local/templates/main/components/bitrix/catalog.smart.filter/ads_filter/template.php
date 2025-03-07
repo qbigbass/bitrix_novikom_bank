@@ -22,7 +22,7 @@ $url = $APPLICATION->GetCurPage(false);
         <?if (!empty($adTypes['VALUES'])) :?>
             <div class="d-lg-none w-100 w-md-50">
                 <select class="form-select form-select--size-small js-select" id="select1" aria-label="Подсказка" onchange="setFilter(this)">
-                    <option <?=(!isset($_GET['set_filter'])) ? 'selected' : '';?> value="<?=$url?>">
+                    <option <?=(!isset($arParams['SET_FILTER'])) ? 'selected' : '';?> value="<?=$url?>">
                         <?=Loc::getMessage('FILTER_ALL_TITLE')?>
                     </option>
                     <?foreach ($adTypes['VALUES'] as $type):?>
@@ -51,7 +51,7 @@ $url = $APPLICATION->GetCurPage(false);
                 </div>
                 <ul class="swiper-wrapper tabs-panel__list nav nav-tabs d-inline-flex flex-nowrap w-auto p-0 border border-purple rounded">
                     <li class="swiper-slide w-auto tabs-panel__list-item nav-item z-2">
-                        <a class="tabs-panel__list-item-link nav-link bg-transparent <?=(!isset($_GET['set_filter'])) ? 'active' : '';?>" href="<?=$url?>">
+                        <a class="tabs-panel__list-item-link nav-link bg-transparent <?=(!isset($arParams['SET_FILTER'])) ? 'active' : '';?>" href="<?=$url?>">
                             <?=Loc::getMessage('FILTER_ALL_TITLE')?>
                         </a>
                     </li>
@@ -74,7 +74,7 @@ $url = $APPLICATION->GetCurPage(false);
                     type="text"
                     name="date1"
                     placeholder="Показать за период"
-                    value="<?=$_GET['date1']?>"
+                    value=""
                 >
                 <span class="position-absolute top-0 end-0 violet-70 text-m p-2 px-3 pe-none">
                     <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
