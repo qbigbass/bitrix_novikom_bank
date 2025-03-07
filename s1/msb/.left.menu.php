@@ -1,4 +1,74 @@
 <?
-
-$aMenuLinks = array();
+$aMenuLinks = [
+    [
+        "Расчетный счет",
+        "/msb/raschetnyy-schet/",
+        [],
+        [],
+        ""
+    ],
+    [
+        "Кредитование",
+        "/msb/kreditovanie/",
+        [],
+        [],
+        ""
+    ],
+    [
+        "ДБО",
+        "/msb/dbo/",
+        [],
+        [],
+        ""
+    ],
+    [
+        "Гарантии",
+        "/msb/garantii-i-obyazatelstva/",
+        [],
+        [],
+        ""
+    ],
+    [
+        "Депозиты",
+        "/msb/depozity/",
+        [],
+        [],
+        ""
+    ],
+    [
+        "Меры господдержки",
+        "/msb/mery-gospodderzhki/",
+        [],
+        [],
+        ""
+    ],
+    [
+        "Страхование",
+        "/msb/strakhovanie/",
+        [],
+        [],
+        ""
+    ],
+    [
+        "ВЭД",
+        "/msb/valyutnyy-kotrol/",
+        [],
+        [],
+        ""
+    ],
+    [
+        "Услуги",
+        "/msb/dokumentarnye-operatsii/ ",
+        [],
+        [],
+        ""
+    ],
+    [
+        "Онлайн-банк для бизнеса",
+        "/msb/internet-bank/",
+        [],
+        [],
+        ""
+    ],
+];
 ?>
