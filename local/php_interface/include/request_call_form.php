@@ -14,14 +14,14 @@
                     type="text"
                     aria-describedby="mobile-phone-hint" placeholder="+7" data-input-call>
             </div>
-            <button class="btn btn-primary btn-lg-lg text-m w-100" type="button" data-bs-toggle="modal" data-bs-target="#callback_form">Перезвоните мне</button>
+            <a  href="/callback/" class="btn btn-primary btn-lg-lg text-m w-100">Перезвоните мне</a>
         </form>
-        <button class="card-help__button btn btn-link btn-lg-lg btn-icon mx-auto gap-2" type="button" data-bs-toggle="modal" data-bs-target="#feedback_form">
+        <a href="/callback/" class="card-help__button btn btn-link btn-lg-lg btn-icon mx-auto gap-2" >
             <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                 <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chat"></use>
             </svg>
             Направить обращение
-        </button>
+        </a>
         <p class="card-help__agreement-text m-0 dark-70 fs-4 lh-sm">Нажимая кнопку
             «Перезвоните мне», вы соглашаетесь с условиями предоставления информации</p>
     </div>
