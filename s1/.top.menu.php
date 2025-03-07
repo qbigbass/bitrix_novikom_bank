@@ -19,7 +19,7 @@ $aMenuLinks = [
         "МСБ",
         "/msb/",
         [],
-        [],
+        ['alternative_name' => 'Малому и среднему бизнесу'],
         ""
     ],
     [
@@ -46,6 +46,13 @@ $aMenuLinks = [
     [
         "Private banking",
         "/private-banking/",
+        [],
+        [],
+        ""
+    ],
+    [
+        "Устойчивое развитие",
+        "/about/esg/",
         [],
         [],
         ""
