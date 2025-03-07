@@ -89,7 +89,6 @@ function createCurrencyList(STATE) {
 }
 
 function showDepositResult(STATE) {
-    console.log('STATE.rate', STATE.rate);
     STATE.elements.displayName.textContent = STATE.filteredData[0].name;
     STATE.elements.displayPeriod.innerHTML = getFormatedTextByType({value: STATE.period, type: 'day'});
     STATE.elements.displayRate.innerHTML = `${formatNumber(STATE.rate)} %`;
@@ -451,14 +450,47 @@ const findMaxValue = (key, data) => {
     return Math.max(...data.map(obj => obj[key]));
 }
 
-const getStepsPeriod = (data) => {
+// проверка соседних значений периода вклада,
+// если у соседних значений в массиве разница <= 2, то возвращаем только первое и последнее
+// для влкадов с нежескими сроками (<=2 т.к. есть кейс 365 и 367)
+function filterStepsArray(arr, STATE) {
+    if (arr.length === 0) return [];
+
+    let hasSmallDifference = false;
+
+    // Проверяем разницу между соседними элементами
+    for (let i = 1; i < arr.length; i++) {
+        if (Math.abs(arr[i] - arr[i - 1]) <= 2) {
+            hasSmallDifference = true;
+            break; // Прерываем цикл, если нашли такую разницу
+        }
+    }
+
+    // Если найдена разница <= 2, возвращаем только первое и последнее значение
+    if (hasSmallDifference) {
+        // STATE.elements.inputPeriodWrapper.setAttribute('data-min-value', arr[0]);
+        // STATE.elements.inputPeriodWrapper.setAttribute('data-start-value', arr[0]);
+        // STATE.elements.inputPeriodWrapper.setAttribute('data-max-value', arr[arr.length - 1]);
+        STATE.elements.inputPeriodWrapper.setAttribute('data-steps', arr[arr.length - 1]);
+
+        return [arr[0], arr[arr.length - 1]];
+    }
+
+    // Если разницы не найдены, возвращаем оригинальный массив
+    return arr;
+}
+
+const getStepsPeriod = (STATE) => {
+    const data = STATE.filteredData;
     const allValues = [];
     data.forEach(obj => {
         allValues.push(obj.periodFrom);
         allValues.push(obj.periodTo);
     });
     const uniqueValues = [...new Set(allValues)];
-    const sortedValues = uniqueValues.sort((a, b) => a - b);
+    let sortedValues = uniqueValues.sort((a, b) => a - b);
+    sortedValues = filterStepsArray(sortedValues, STATE);
+
     return sortedValues.join(', ');
 }
 
@@ -486,7 +518,7 @@ const getDepositValues = (STATE) => {
     STATE.capitalization = STATE.elements.inputCapitalization.checked;
 
     if (STATE.minPeriod !== STATE.maxPeriod) {
-        STATE.steps = getStepsPeriod(STATE.filteredData);
+        STATE.steps = getStepsPeriod(STATE);
     } else {
         STATE.steps = '';
     }
