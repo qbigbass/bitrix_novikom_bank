@@ -51,7 +51,7 @@ $aMenuLinks = [
     ],
     [
         "ВЭД",
-        "/msb/valyutnyy-kotrol/",
+        "/msb/valyutnyy-kontrol/",
         [],
         [],
         ""
