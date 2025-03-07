@@ -5,7 +5,7 @@
         <?
         foreach ($arResult as $arItem) {
             ?>
-            <a class="<?= $arItem['PARAMS']['CLASS'] ?? 'pb-nav__link' ?>"
+            <a class="<?= $arItem['SELECTED'] === true ? 'is-active' : '' ?> <?= $arItem['PARAMS']['CLASS'] ?? 'pb-nav__link' ?>"
                href="<?= $arItem['LINK'] ?>"><?= $arItem['TEXT'] ?></a>
             <?
         } ?>

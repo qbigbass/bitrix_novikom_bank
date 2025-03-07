@@ -59,22 +59,7 @@ $this->setFrameMode(true);
                 <div class="row px-lg-6">
                     <div class="col-12">
                         <div class="swiper slider-cards js-slider-cards" data-slides-per-view="mobile-s:1.5,mobile:1.5,tablet:3,tablet-album:4,laptop:5,laptop-x:5" data-space-between="mobile-s:16,mobile:16,tablet:16,laptop:40,laptop-x:40">
-                            <div class="swiper-wrapper">
-                                <?foreach ($items as $item): ?>
-                                    <?
-                                    $this->AddEditAction($item['ID'], $item['EDIT_LINK'], CIBlock::GetArrayByID($item["IBLOCK_ID"], "ELEMENT_EDIT"));
-                                    $this->AddDeleteAction($item['ID'], $item['DELETE_LINK'], CIBlock::GetArrayByID($item["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
-                                    ?>
-                                    <div class="swiper-slide js-swiper-slide" id="<?= $this->GetEditAreaId($item['ID']); ?>">
-                                        <a class="card-sale d-flex flex-column align-items-start gap-2 gap-lg-3" href="#">
-                                            <img class="card-sale__image" src="<?=$item['DISPLAY_PROPERTIES']['ICON']['FILE_VALUE']['SRC']?>" alt="" loading="lazy">
-                                            <h5 class="dark-100"><?=$item['~NAME']?></h5>
-                                            <span class="dark-100"><?=$item['~PREVIEW_TEXT']?></span>
-                                        </a>
-                                    </div>
-                                <?endforeach;?>
-                            </div>
-                            <div class="slider-controls js-swiper-controls mt-3 mt-md-4">
+                            <div class="slider-controls js-swiper-controls mb-3 mb-md-4">
                                 <div class="slider-controls__pagination js-swiper-pagination"></div>
                                 <div class="slider-controls__navigation js-swiper-nav">
                                     <button class="swiper-button-prev js-swiper-prev" type="button">
@@ -92,6 +77,21 @@ $this->setFrameMode(true);
                                         </span>
                                     </button>
                                 </div>
+                            </div>
+                            <div class="swiper-wrapper">
+                                <?foreach ($items as $item): ?>
+                                    <?
+                                    $this->AddEditAction($item['ID'], $item['EDIT_LINK'], CIBlock::GetArrayByID($item["IBLOCK_ID"], "ELEMENT_EDIT"));
+                                    $this->AddDeleteAction($item['ID'], $item['DELETE_LINK'], CIBlock::GetArrayByID($item["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
+                                    ?>
+                                    <div class="swiper-slide js-swiper-slide" id="<?= $this->GetEditAreaId($item['ID']); ?>">
+                                        <a class="card-sale d-flex flex-column align-items-start gap-2 gap-lg-3" href="#">
+                                            <img class="card-sale__image" src="<?=$item['DISPLAY_PROPERTIES']['ICON']['FILE_VALUE']['SRC']?>" alt="" loading="lazy">
+                                            <h5 class="dark-100"><?=$item['~NAME']?></h5>
+                                            <span class="dark-100"><?=$item['~PREVIEW_TEXT']?></span>
+                                        </a>
+                                    </div>
+                                <?endforeach;?>
                             </div>
                         </div>
                     </div>

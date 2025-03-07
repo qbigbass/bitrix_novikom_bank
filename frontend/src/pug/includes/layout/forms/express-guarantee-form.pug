@@ -24,6 +24,7 @@ include ../../../components/forms/textarea
                     label: "ИНН",
                     placeholder: "Укажите ИНН",
                     required: true,
+                    mask: "inn"
                 }
             ],
             inputsContact: [
@@ -71,6 +72,7 @@ include ../../../components/forms/textarea
                     placeholder: "Сумма",
                     groupText: "₽",
                     mask: "money",
+                    required: true,
                 },
             ],
             radios1: [
@@ -96,13 +98,13 @@ include ../../../components/forms/textarea
             radios2: [
                 {
                     id: "provided",
-                    name: "advance",
+                    name: "ADVANCE",
                     value: "true",
                     text: "Предусмотрен"
                 },
                 {
                     id: "not-provided",
-                    name: "advance",
+                    name: "ADVANCE",
                     value: "false",
                     text: "Не предусмотрен"
                 },
@@ -124,8 +126,8 @@ include ../../../components/forms/textarea
         }
     }
 
-form(action="/" method="POST" novalidate id="state-support-form" data-form data-form-feedback).application-form
-    .application-form__step(data-form-step data-form-validate-group)
+form(action="/" method="POST" novalidate id="express-guarantee-form" data-form data-form-express-guarantee).application-form
+    .application-form__step(data-form-step data-form-validate-group hidden)
         - var step1 = expressGuaranteeForm.step1;
         .row.g-1.g-md-2.g-lg-2_5
             .application-form__col.col-12
@@ -147,7 +149,7 @@ form(action="/" method="POST" novalidate id="state-support-form" data-form data-
         .d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-5.column-gap-lg-6.mt-6.mt-lg-7.px-md-2.px-lg-0
             button.btn.btn-primary.btn-lg-lg.w-100.w-md-auto(type="button" disabled aria-disabled="true" data-form-button data-form-step-button-next) Продолжить
             div.text-m.orange-100.text-center(data-form-error)
-    .application-form__step(data-form-step data-form-validate-group hidden)
+    .application-form__step(data-form-step data-form-validate-group)
         - var step2 = expressGuaranteeForm.step2;
         .row.g-1.g-md-2.g-lg-2_5
             .application-form__col.col-12
@@ -174,7 +176,7 @@ form(action="/" method="POST" novalidate id="state-support-form" data-form data-
                         each item, index in expressGuaranteeForm.step2.radios2
                             +radio(item, index, expressGuaranteeForm.formName)
 
-            .application-form__col.col-12.col-md-6
+            .application-form__col.col-12.col-md-6.js-advance-amount
                 +input(step2.inputs[1], expressGuaranteeForm.formName)
 
             .application-form__col.col-12

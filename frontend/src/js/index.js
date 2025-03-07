@@ -1926,6 +1926,8 @@ const dataTemp = {
     ]
 }
 
+let isInitialLoad = true;
+
 document.addEventListener('DOMContentLoaded', () => {
     initDropdownMenu();
     setVh();
@@ -1940,11 +1942,11 @@ document.addEventListener('DOMContentLoaded', () => {
     initTabsContent();
     initInputSlider();
     showMoreContent();
-    initPbSlider();
     initDatepicker();
     setPage();
     initFormSteps();
     initFormFeedback();
+    initFormExpressGuarantee();
     initFormSend();
     initCaptcha();
     initUploadFile();
@@ -1959,7 +1961,7 @@ document.addEventListener('DOMContentLoaded', () => {
     checkWidth();
 });
 
-window.onload = function() {
+window.addEventListener('load', function() {
     initPolygonContainer();
 
     const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
@@ -1970,14 +1972,15 @@ window.onload = function() {
     const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
         return new bootstrap.Tooltip(tooltipTriggerEl)
     })
-    if (typeof pbAnimation === 'function') {
-        pbAnimation();
-    }
-};
+});
 
 window.addEventListener('resize', () => {
-    initPolygonContainer(true);
-    setVh();
-    hideDropDownMenu();
-    checkWidth();
+    if (isInitialLoad) {
+        isInitialLoad = false;
+    } else {
+        initPolygonContainer();
+        setVh();
+        hideDropDownMenu();
+        checkWidth();
+    }
 });

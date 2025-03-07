@@ -120,6 +120,13 @@ $arResult['CONTENT_JSON'] ?? [],
                     <a class="btn btn-pb btn-pb--size-m-lg btn-pb--primary js-scroll-to" href="#become-client">
                         <?= Loc::getMessage('HEADER_MENU_BECOME_A_CLIENT') ?></a>
                 </div>
+                <div class="text-center mt-6">
+                    <a
+                        class="btn btn-pb btn-pb--size-m-lg btn-pb--outline"
+                        href="https://online.novikom.ru/#/registration">
+                        Онлайн-банк
+                    </a>
+                </div>
                 <?$APPLICATION->IncludeComponent(
                     "bitrix:news.detail",
                     "contancts",

@@ -2,5 +2,5 @@ mixin confirm(formName)
     .form-check&attributes(attributes)
         input(id=`${formName}_confirm` type="checkbox" name="request_confirm" value="" required data-form-checkbox data-form-input).form-check-input
         label(for=`${formName}_confirm`).form-check-label
-            | Подтверждаю согласие на #[a(href="#" class="text-decoration-none") обработку персональных данных]
+            | Подтверждаю согласие на #[a(href="#" class="text-decoration-none" target="_blank") обработку персональных данных]
         .invalid-feedback.w-100(aria-live="polite")

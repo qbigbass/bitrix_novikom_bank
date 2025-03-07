@@ -254,12 +254,11 @@ block content
             .row
                 .col-12
                     .swiper.slider-cards.js-slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:2,laptop:2,laptop-x:3" data-space-between="mobile-s:8,mobile:8,tablet:16,laptop:16,laptop-x:16")
+                        +slider-controls().mb-3.mb-md-4
                         .swiper-wrapper
                             each item in cardsListBenefit
                                 .swiper-slide.js-swiper-slide
                                     +card-benefit(item).bg-dark-0
-
-                        +slider-controls().mt-3.mt-md-4
 
     section.section-layout.js-collapsed-mobile
         .container
@@ -292,12 +291,11 @@ block content
             .row
                 .col-12
                     .swiper.slider-cards.js-slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:1,tablet-album:2,laptop:2,laptop-x:2" data-space-between="mobile-s:8,mobile:8,tablet:16,tablet-album:16,laptop:16,laptop-x:16")
+                        +slider-controls().mb-3
                         .swiper-wrapper
                             each item in contactList
                                 .swiper-slide.js-swiper-slide
                                     +contact-block(item).contact-block--bg-heavy-purple
-
-                        +slider-controls().mt-3
 
     include ../includes/layout/section-announcement
 

@@ -205,6 +205,7 @@ function scrollPbAccordion() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    initPbSlider();
     addSelectDateOptions();
     pbNavMenu();
     pbScrollTo();
