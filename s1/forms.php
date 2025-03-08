@@ -12,8 +12,8 @@ $APPLICATION->SetTitle('Формы');
             <div class="d-flex flex-column align-items-start row-gap-3">
                 <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#modal-success">Результаты - успешно</button>
                 <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#modal-error">Результаты - ошибка</button>
-                <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#callback_form">Заказать звонок</button>
-                <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#feedback_form">Направить обращение</button>
+                <a class="btn btn-primary" href="/callback/">Заказать звонок</a>
+                <a class="btn btn-primary" href="/feedback/">Направить обращение</a>
                 <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#loan_form">Заявка на кредит</button>
                 <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#credit_card_form">Заявка на кредитную карту</button>
                 <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#mortgage_form">Заявка на ипотеку</button>

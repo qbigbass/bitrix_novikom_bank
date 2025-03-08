@@ -65,4 +65,6 @@ const UF_PB_EMAIL = 'vip@novikom.ru';
 const UF_PB_QR_IMAGE = '/frontend/dist/img/pb-images/pb-contact-qr.png';
 /** @var string Картинка с картой Private Banking */
 const UF_PB_MAP_IMAGE = '/frontend/dist/img/pb-images/pb-contact-map.png';
+/** @var array Соответствие тем формы обратной связи и шаблонов писем */
+const FEEDBACK_FORM_MESSAGES = ['claim' => 90, 'question' => 101, 'gratitude' => 102];
 

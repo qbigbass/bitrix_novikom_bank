@@ -8,13 +8,11 @@
         <?= UF_PHONE1 ?>
     </a>
 </p>
-<button class="link link-underline" data-bs-toggle="modal"
-        data-bs-target="#callback_form">Request a call
-</button>
+<a href="/callback/" class="link link-underline" >Request a call
+</a>
 <br>
-<button class="link link-underline" data-bs-toggle="modal"
-        data-bs-target="#feedback_form">Ask a Question
-</button>
+<a href="/feedback/" class="link link-underline">Ask a Question
+</a>
 <br>
 <a class="link link-underline" href="/customer-requests/">
     Procedure for contacting the bank
