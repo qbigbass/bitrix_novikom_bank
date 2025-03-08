@@ -43,15 +43,23 @@ $renderer = new Renderer($APPLICATION, $component);
                     <?= $arResult['DISPLAY_PROPERTIES']['SHORT_CONDITIONS']['~VALUE']['TEXT'] ?>
                 </div>
             <? endif; ?>
-            <? if (!empty($arResult['DISPLAY_PROPERTIES']['BUTTON_SHOW']['VALUE'])): ?>
+            <? if ($arResult['SHOW_BUTTON'] && !empty($arResult['BUTTON_LINK'])): ?>
+                <a href="<?=$arResult['BUTTON_LINK']?>" class="btn btn-tertiary btn-lg-lg banner-product__button">
+                    <?= $arResult['BUTTON_TEXT'] ?? 'Оформить заявку'; ?>
+                </a>
+            <? elseif ($arResult['SHOW_BUTTON'] && !empty($arResult['BUTTON_CODE_FORM'])): ?>
                 <button
                     class="btn btn-tertiary btn-lg-lg banner-product__button"
                     type="button"
                     data-bs-toggle="modal"
-                    data-bs-target="#modal-credit-card-form"
+                    data-bs-target="#<?=$arResult['BUTTON_CODE_FORM']?>"
                 >
-                    <?= $arResult['DISPLAY_PROPERTIES']['BUTTON_TEXT']['VALUE'] ?? 'Оформить заявку'; ?>
+                    <?= $arResult['BUTTON_TEXT'] ?? 'Оформить заявку'; ?>
                 </button>
+                <?
+                global $FORMS;
+                $FORMS->includeForm($arResult['BUTTON_CODE_FORM']);
+                ?>
             <? endif; ?>
             <? if (!empty($arResult['DISPLAY_PROPERTIES']['CARD_HEADER_IMAGE']['FILE_VALUE']['SRC'])): ?>
                 <img
@@ -589,15 +597,6 @@ $customerCategoriesFilter = [
         </div>
     </section>
 <? endif; ?>
-
-<?php $APPLICATION->IncludeComponent(
-    "dalee:form",
-    "credit_card_form",
-    [
-        "FORM_CODE" => "credit_card_form",
-    ],
-    $component
-); ?>
 
 <? $helper->saveCache(); ?>
 

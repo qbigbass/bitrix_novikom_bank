@@ -27,8 +27,9 @@ section#statistics.section-layout
         h3.ps-lg-6.mb-6.mb-lg-7.px-lg-6
             | Statistics for December 1st
         .swiper.js-slider-cards.slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:2,laptop:2,laptop-x:2" data-space-between="mobile-s:8,mobile:8,tablet:16,laptop:16,laptop-x:16")
+            +slider-controls().mb-3.mb-md-4
             .swiper-wrapper.js-swiper-wrapper
                 each item in statisticsData
                     .swiper-slide.js-swiper-slide
                         +card-statistic(item, "bg-blue-10")
-            +slider-controls().mt-3.mt-md-4
+

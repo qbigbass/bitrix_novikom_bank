@@ -39,14 +39,9 @@ $asset->addJs('/frontend/dist/js/sliders.js');
 $asset->addJs('/frontend/dist/js/tabs.js');
 $asset->addJs('/frontend/dist/js/yMap.js');
 $asset->addJs('/frontend/dist/js/private-banking.js');
-$asset->addJs('/frontend/dist/js/calculator-deposit.js');
-$asset->addJs('/frontend/dist/js/calculator-loan.js');
-$asset->addJs('/frontend/dist/js/calculator-mortgage.js');
-$asset->addJs('/frontend/dist/js/calculator-bonus.js');
 $asset->addJs('/frontend/dist/js/currency-converter.js');
 $asset->addJs('/frontend/dist/js/charts.js');
 $asset->addJs('/frontend/dist/js/index.js');
-
 ?>
 <!DOCTYPE html>
 <html lang="<?= LANGUAGE_ID ?>">
@@ -124,6 +119,13 @@ $arResult['CONTENT_JSON'] ?? [],
                 <div class="text-center d-lg-none">
                     <a class="btn btn-pb btn-pb--size-m-lg btn-pb--primary js-scroll-to" href="#become-client">
                         <?= Loc::getMessage('HEADER_MENU_BECOME_A_CLIENT') ?></a>
+                </div>
+                <div class="text-center mt-6">
+                    <a
+                        class="btn btn-pb btn-pb--size-m-lg btn-pb--outline"
+                        href="https://online.novikom.ru/#/registration">
+                        Онлайн-банк
+                    </a>
                 </div>
                 <?$APPLICATION->IncludeComponent(
                     "bitrix:news.detail",

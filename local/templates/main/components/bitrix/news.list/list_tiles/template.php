@@ -41,11 +41,11 @@ $this->setFrameMode(true);
                                                 </div>
                                             <? endif; ?>
                                         </div>
-                                        <? if (!empty($item['DETAIL_PICTURE']['SRC'])) : ?>
+                                        <? if (!empty($item['DISPLAY_PROPERTIES']["ICON_TILE"]["FILE_VALUE"]["SRC"])) : ?>
                                             <img
                                                 class="card-product__img"
-                                                src="<?= $item['DETAIL_PICTURE']['SRC'] ?>"
-                                                alt="<?= $item['DETAIL_PICTURE']['ALT'] ?>"
+                                                src="<?=$item['DISPLAY_PROPERTIES']["ICON_TILE"]["FILE_VALUE"]["SRC"]?>"
+                                                alt="<?=$item['DISPLAY_PROPERTIES']["ICON_TILE"]["FILE_VALUE"]["DESCRIPTION"]?>"
                                                 loading="lazy"
                                             >
                                         <? endif; ?>
@@ -105,14 +105,7 @@ $this->setFrameMode(true);
                                         <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
                                     </svg>
                                 </span>
-                                                <? if (!empty($item['PREVIEW_PICTURE']['SRC'])) : ?>
-                                                    <img
-                                                        class="icon size-xxl ms-auto"
-                                                        src="<?= $item['PREVIEW_PICTURE']['SRC'] ?>"
-                                                        alt="<?= $item['PREVIEW_PICTURE']['ALT'] ?>"
-                                                        loading="lazy"
-                                                    >
-                                                <? elseif (!empty($item['DISPLAY_PROPERTIES']["ICON_TILE"]["FILE_VALUE"]["SRC"])) : ?>
+                                                <? if (!empty($item['DISPLAY_PROPERTIES']["ICON_TILE"]["FILE_VALUE"]["SRC"])) : ?>
                                                     <img class="ms-auto icon size-xxl" src="<?= $item['DISPLAY_PROPERTIES']["ICON_TILE"]["FILE_VALUE"]["SRC"] ?>" alt="" loading="lazy">
                                                 <? endif; ?>
                                             </div>
@@ -140,32 +133,7 @@ $this->setFrameMode(true);
         <div class="row">
             <div class="col-12">
                 <div class="swiper slider-cards js-slider-cards" data-slides-per-view="mobile-s:1,mobile:1,tablet:2,laptop:2,laptop-x:2" data-space-between="mobile-s:8,mobile:8,tablet:16,laptop:16,laptop-x:16">
-                    <div class="swiper-wrapper">
-                        <? foreach ($arResult['ITEMS'] as $item) : ?>
-                            <? if (!empty($item['DISPLAY_PROPERTIES']['LIST_POSITION']['VALUE']) && $item['DISPLAY_PROPERTIES']['LIST_POSITION']['VALUE'] === 'Снизу') : ?>
-                                <div class="swiper-slide js-swiper-slide">
-                                    <a class="card-product card-product--yellow bg-dark-10" href="<?= $item['DETAIL_PAGE_URL'] ?>">
-                                        <div class="card-product__inner">
-                                            <div class="card-product__content">
-                                                <h4 class="card-product__title"><?= $item["~NAME"]?></h4>
-                                                <p class="card-product__description m-0"><?= $item["~PREVIEW_TEXT"]?></p>
-                                            </div>
-                                            <?if (!empty($item['PREVIEW_PICTURE']['SRC'])) :?>
-                                                <img class="card-product__img" src="<?= $item["PREVIEW_PICTURE"]["SRC"]?>" alt="" loading="lazy">
-                                            <?endif;?>
-                                            <span class="btn btn-link btn-icon m-auto m-lg-0">
-                                                <span>Узнать больше</span>
-                                                <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                                    <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
-                                                </svg>
-                                            </span>
-                                        </div>
-                                    </a>
-                                </div>
-                            <? endif; ?>
-                        <? endforeach;?>
-                    </div>
-                    <div class="slider-controls js-swiper-controls mt-3 mt-md-4">
+                    <div class="slider-controls js-swiper-controls mb-3 mb-md-4">
                         <div class="slider-controls__pagination js-swiper-pagination"></div>
                         <div class="slider-controls__navigation js-swiper-nav">
                             <button class="swiper-button-prev js-swiper-prev" type="button">
@@ -183,6 +151,31 @@ $this->setFrameMode(true);
                                 </span>
                             </button>
                         </div>
+                    </div>
+                    <div class="swiper-wrapper">
+                        <? foreach ($arResult['ITEMS'] as $item) : ?>
+                            <? if (!empty($item['DISPLAY_PROPERTIES']['LIST_POSITION']['VALUE']) && $item['DISPLAY_PROPERTIES']['LIST_POSITION']['VALUE'] === 'Снизу') : ?>
+                                <div class="swiper-slide js-swiper-slide">
+                                    <a class="card-product card-product--yellow bg-dark-10" href="<?= $item['DETAIL_PAGE_URL'] ?>">
+                                        <div class="card-product__inner">
+                                            <div class="card-product__content">
+                                                <h4 class="card-product__title"><?= $item["~NAME"]?></h4>
+                                                <p class="card-product__description m-0"><?= $item["~PREVIEW_TEXT"]?></p>
+                                            </div>
+                                            <?if (!empty($item['DISPLAY_PROPERTIES']["ICON_TILE"]["FILE_VALUE"]["SRC"])) :?>
+                                                <img class="card-product__img" src="<?=$item['DISPLAY_PROPERTIES']["ICON_TILE"]["FILE_VALUE"]["SRC"]?>" alt="" loading="lazy">
+                                            <?endif;?>
+                                            <span class="btn btn-link btn-icon m-auto m-lg-0">
+                                                <span>Узнать больше</span>
+                                                <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                                    <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
+                                                </svg>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </div>
+                            <? endif; ?>
+                        <? endforeach;?>
                     </div>
                 </div>
             </div>

@@ -30,10 +30,11 @@ include ../../cards/card-benefit
 
 mixin slider-cards-benefit(data= cardsListBenefit)
     .swiper.slider-cards.js-slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:2,laptop:2,laptop-x:3" data-space-between="mobile-s:8,mobile:8,tablet:16,laptop:16,laptop-x:16")
-            .swiper-wrapper
-                each item in data
-                    .swiper-slide.js-swiper-slide
-                        +card-benefit(item)(class=[item.type === "image" && "card-benefit--type-img"])
+        +slider-controls().mb-3.mb-md-4
+        .swiper-wrapper
+            each item in data
+                .swiper-slide.js-swiper-slide
+                    +card-benefit(item)(class=[item.type === "image" && "card-benefit--type-img"])
 
 
-            +slider-controls().mt-3.mt-md-4
+

@@ -810,12 +810,11 @@ block content
                     h4 "Card News" and "Card Special" comps without image
                 include ../includes/layout/slider-cards-special
                 .swiper.js-slider-cards.slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:2,laptop:3,laptop-x:3" data-space-between="mobile-s:8,mobile:8,tablet:8,laptop:8,laptop-x:8")
+                    +slider-controls().mb-3.mb-md-4
                     .swiper-wrapper.js-swiper-wrapper
                         each item in pressReleases
                             .swiper-slide.js-swiper-slide
                                 +card-special(item)
-
-                    +slider-controls().mt-3.mt-md-4
 
     section#card-news.section-layout.pt-0
         -
@@ -904,6 +903,7 @@ block content
             .row
                 .col-12
                     .swiper.slider-cards.js-slider-cards(data-auto-height="mobile-s:true,mobile:true,tablet:true" data-slides-per-view="mobile-s:1,mobile:1,tablet:1,tablet-album:2,laptop:2,laptop-x:2" data-space-between="mobile-s:24,mobile:24,tablet:48,laptop:40,laptop-x:40")
+                        +slider-controls().mb-3.mb-md-4
                         .swiper-wrapper
                             each award in awardList
                                 .swiper-slide.js-swiper-slide
@@ -913,7 +913,7 @@ block content
                                             .d-none.d-md-inline.h2.violet-100-important!= award.year
                                             .d-inline.d-md-none.h4.violet-100-important!= award.year
                                         p.mb-0!= award.text
-                        +slider-controls().mt-3.mt-md-4
+
                     .d-block.w-100.mt-5.mt-lg-7.text-center
                         a(href="#").btn.btn-outline-primary.btn-lg-lg.btn-icon
                             | Смотреть все награды
@@ -969,13 +969,12 @@ block content
             .row
                 .col-12
                     .swiper.js-slider-cards.slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:1,laptop:2,laptop-x:2" data-space-between="mobile-s:8,mobile:8,tablet:16,laptop:48,laptop-x:48")
+                        +slider-controls().mb-3.mb-md-4
                         .swiper-wrapper.js-swiper-wrapper
                             .swiper-slide.js-swiper-slide
                                 +card-about(cardAboutBankData)
                             .swiper-slide.js-swiper-slide
                                 +card-about(cardAboutBankData)
-
-                        +slider-controls().mt-3.mt-md-4
 
 
     section#card.section-layout.bg-dark-10

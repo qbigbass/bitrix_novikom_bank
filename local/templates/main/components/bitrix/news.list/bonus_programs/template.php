@@ -14,6 +14,25 @@ $this->setFrameMode(true);
 $itemCols = (count($arResult["ITEMS"]) > 2) ? '3' : '2';
 ?>
 <div class="swiper slider-cards js-slider-cards" data-slides-per-view="mobile-s:1,mobile:1,tablet:2,laptop:2,laptop-x:<?=$itemCols?>" data-space-between="mobile-s:8,mobile:8,tablet:16,laptop:16,laptop-x:40">
+    <div class="slider-controls js-swiper-controls mb-3 mb-md-4">
+        <div class="slider-controls__pagination js-swiper-pagination"></div>
+        <div class="slider-controls__navigation js-swiper-nav">
+            <button class="swiper-button-prev js-swiper-prev" type="button">
+                <span class="icon size-m">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-left"></use>
+                    </svg>
+                </span>
+            </button>
+            <button class="swiper-button-next js-swiper-next" type="button">
+                <span class="icon size-m">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
+                    </svg>
+                </span>
+            </button>
+        </div>
+    </div>
     <div class="swiper-wrapper">
         <?foreach($arResult["ITEMS"] as $arItem) : ?>
             <?
@@ -32,32 +51,13 @@ $itemCols = (count($arResult["ITEMS"]) > 2) ? '3' : '2';
                             </div>
                             <p class="card-product__description m-0"><?=$arItem['PREVIEW_TEXT']?></p>
                         </div>
-                        <?php if (!empty($arItem['DISPLAY_PROPERTIES']['ICON']['FILE_VALUE']['SRC'])): ?>
-                            <img class="card-product__img" src="<?=$arItem['DISPLAY_PROPERTIES']['ICON']['FILE_VALUE']['SRC']?>" alt="" loading="lazy">
-                        <?php endif; ?>
+                        <? if (!empty($arItem['DISPLAY_PROPERTIES']['ICON']['FILE_VALUE']['SRC'])): ?>
+                            <img class="card-product__img" src="<?= $arItem['DISPLAY_PROPERTIES']['ICON']['FILE_VALUE']['SRC']; ?>" alt="" loading="lazy">
+                        <? endif; ?>
                         <a class="btn btn-primary card-product__button" href="<?=$arItem['DETAIL_PAGE_URL']?>">Подробнее</a>
                     </div>
                 </div>
             </div>
         <?endforeach;?>
-    </div>
-    <div class="slider-controls js-swiper-controls mt-3 mt-md-4">
-        <div class="slider-controls__pagination js-swiper-pagination"></div>
-        <div class="slider-controls__navigation js-swiper-nav">
-            <button class="swiper-button-prev js-swiper-prev" type="button">
-                <span class="icon size-m">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-left"></use>
-                    </svg>
-                </span>
-            </button>
-            <button class="swiper-button-next js-swiper-next" type="button">
-                <span class="icon size-m">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
-                    </svg>
-                </span>
-            </button>
-        </div>
     </div>
 </div>

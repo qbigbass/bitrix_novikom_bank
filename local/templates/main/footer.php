@@ -1,6 +1,7 @@
 <?php
 if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die();
 global $APPLICATION;
+global $FORMS;
 use Bitrix\Main\Localization\Loc;
 ?>
 
@@ -49,7 +50,7 @@ use Bitrix\Main\Localization\Loc;
                         "MENU_CACHE_TYPE" => "A",
                         "MENU_CACHE_USE_GROUPS" => "Y",
                         "ROOT_MENU_TYPE" => "top",
-                        "USE_EXT" => "Y"
+                        "USE_EXT" => "N"
                     ]
                 );?>
                 <div class="col-12 col-md-6 col-xl-3">
@@ -101,10 +102,14 @@ use Bitrix\Main\Localization\Loc;
                         class="btn btn-primary btn-lg-lg mt-4 mt-md-0"
                         type="button"
                         data-bs-toggle="modal"
-                        data-bs-target="#modal-feedback-form"
+                        data-bs-target="#feedback_form"
                     >
                         <?=Loc::getMessage('FEEDBACK_BUTTON_TITLE')?>
                     </button>
+                    <?
+                    global $FORMS;
+                    $FORMS->includeForm('feedback_form');
+                    ?>
                     <div class="d-flex flex-column row-gap-3 pt-md-3 pt-lg-5">
                         <a class="btn btn-lg-lg btn-outline-primary d-flex gap-2 gap-lg-3 align-items-center justify-content-center" id='showAccessibilityPanel' href="#">
                             <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
@@ -296,53 +301,12 @@ $APPLICATION->IncludeComponent(
     "",
     [
         "FORM_TITLES" => ["Заказать звонок", "Направить обращение"],
-        "FORM_CODES" => ["modal-callback-form", "modal-feedback-form"],
+        "FORM_CODES" => ["callback_form", "feedback_form"],
         "FORM_ICONS" => ["img/svg-sprite.svg#icon-phone", "img/svg-sprite.svg#icon-mail"],
     ]
 );
 ?>
-<?php $APPLICATION->IncludeComponent(
-    "dalee:form",
-    "callback_form",
-    [
-        "FORM_CODE" => "callback_form",
-    ]
-); ?>
 
-<?php $APPLICATION->IncludeComponent(
-    "dalee:form",
-    "feedback_form",
-    [
-        "FORM_CODE" => "feedback_form",
-    ]
-); ?>
-<?php $APPLICATION->IncludeComponent(
-    "dalee:form",
-    "consultation_form",
-    [
-        "FORM_CODE" => "consultation_form",
-    ]
-); ?>
-<?php $APPLICATION->IncludeComponent(
-    "dalee:form",
-    "loan_form",
-    [
-        "FORM_CODE" => "loan_form",
-    ]
-); ?>
-<?php $APPLICATION->IncludeComponent(
-    "dalee:form",
-    "mortgage_form",
-    [
-        "FORM_CODE" => "mortgage_form",
-    ]
-); ?>
-<?php $APPLICATION->IncludeComponent(
-    "dalee:form",
-    "express_guarantee_form",
-    [
-        "FORM_CODE" => "express_guarantee_form",
-    ]
-); ?>
+<?$FORMS->showAll();?>
 </body>
 </html>

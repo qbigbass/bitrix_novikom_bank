@@ -16,22 +16,6 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 
-$terms = [
-    'RATE_FROM' => [
-        'SIGN' => 'Минимальная ставка',
-        'FROM_TO' => 'от&nbsp;',
-    ],
-    'SUM_TO' => [
-        'SIGN' => 'Максимальная сумма кредита',
-        'FROM_TO' => 'до&nbsp;',
-    ],
-    'PERIOD_TO' => [
-        'SIGN' => 'Максимальный срок выплаты',
-        'FROM_TO' => 'до&nbsp;',
-        'PERIOD' => 'years'
-    ]
-];
-
 if (!empty($arParams["HEADER_COLOR_CLASS"])) {
     $arResult["PARAMS_HEADER_COLOR_CLASS"] = $arParams["HEADER_COLOR_CLASS"];
 }
@@ -39,13 +23,14 @@ if (!empty($arParams["HEADER_COLOR_CLASS"])) {
 $headerView = new HeaderView($component);
 $renderer = new Renderer($APPLICATION, $component);
 $helper = $headerView->helper();
-$headerView->render(
+$headerView
+    ->setBtnClasses('btn-tertiary')
+    ->render(
     $arResult['~NAME'],
     $arResult['~PREVIEW_TEXT'],
     null,
     0,
-    $arResult,
-    $terms
+    $arResult
 );
 ?>
 
@@ -121,7 +106,7 @@ $headerView->render(
                     <h3><?= $arResult['PROPERTIES']['TEXT_BLOCK_HEADER']['~VALUE'] ?></h3>
                 </div>
                 <div class="banner-product-info__body">
-                    <p class="text-l m-0"><?= $arResult['PROPERTIES']['TEXT_BLOCK']['VALUE']['TEXT'] ?></p>
+                    <p class="text-l m-0"><?= $arResult['PROPERTIES']['TEXT_BLOCK']['~VALUE']['TEXT'] ?></p>
                     <? if (!empty($arResult['PROPERTIES']['TEXT_BLOCK_BUTTON']['VALUE']) && !empty($arResult['PROPERTIES']['TEXT_BLOCK_BUTTON_LINK']['VALUE'])) { ?>
                         <a class="btn btn-lg-lg btn-outline-primary fw-bold w-100 w-md-auto mt-6 mt-lg-7"
                            href="<?= $arResult['PROPERTIES']['TEXT_BLOCK_BUTTON_LINK']['VALUE'] ?>">

@@ -11,23 +11,6 @@
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
-
-$terms = [
-    'RATE_TO' => [
-        'SIGN' => 'Процентная ставка',
-        'FROM_TO' => 'до&nbsp;',
-    ],
-    'SUM_FROM' => [
-        'SIGN' => 'Сумма',
-        'FROM_TO' => 'от&nbsp;',
-    ],
-    'PERIOD_FROM' => [
-        'SIGN' => 'Срок',
-        'FROM_TO' => 'от&nbsp;',
-        'PERIOD' => 'days',
-    ]
-];
-
 ?>
 
 <? foreach ($arResult['ITEMS'] as $item) { ?>
@@ -52,30 +35,24 @@ $terms = [
                     <span class="text-l card-product-list__description m-0"><?= $item['~PREVIEW_TEXT'] ?></span>
                 </div>
 
-                <? if (!empty($item['PROPERTIES']['TERMS'])) { ?>
-                    <div
-                        class="card-product-list__condition-list w-100 w-lg-auto d-flex justify-content-between justify-content-lg-start flex-column flex-sm-row flex-wrap row-gap-4 row-gap-sm-6 row-gap-lg-6 row-gap-xxl-6 gap-xl-12 gap-xxl-16">
-
-                        <? $termsValues = processTerms($terms, $item['PROPERTIES']['TERMS'], true);
-                        foreach ($termsValues as $term) { ?>
-                            <div class="card-product-list__condition d-flex flex-column gap-2 w-100 w-sm-50 w-xl-auto justify-content-end">
-                                <div class="d-inline-flex flex-nowrap align-items-baseline">
-                                    <span
-                                        class='text-l fw-semibold'><?= preg_match('/\d/', $term['VALUE']) ? $term['FROM_TO'] : '' ?></span>
-                                    <span class='<?= preg_match('/\d/', $term['VALUE']) ? 'text-number-l' : 'text-number-m' ?> fw-bold'><?= $term['VALUE'] ?></span>
-                                </div>
-                                <span class='text-m dark-70'><?= $term['SIGN'] ?></span>
-                            </div>
-                        <? } ?>
-
-                    </div>
-                <? } ?>
+                <? if (!empty($item['PROPERTIES']['BRIEF_CONDITIONS_CARD']['~VALUE']['TEXT'])) : ?>
+                    <?= $item['PROPERTIES']['BRIEF_CONDITIONS_CARD']['~VALUE']['TEXT']?>
+                <? endif; ?>
 
                 <div class="d-flex flex-column flex-sm-row align-items-center gap-5 gap-sm-6 w-100">
-                    <? if (!empty($item['PROPERTIES']['BUTTON_DETAIL']['VALUE'])) { ?>
-                        <a class="btn btn-tertiary btn-lg-lg card-product-list__button w-100 w-sm-auto"
-                           href="<?= $item['PROPERTIES']['BUTTON_HREF_DETAIL']['VALUE'] ?>"><?= $item['PROPERTIES']['BUTTON_TEXT_DETAIL']['VALUE'] ?></a>
-                    <? } ?>
+                    <? if (!empty($item['PROPERTIES']['BUTTON_DETAIL']['VALUE']) && !empty($item['PROPERTIES']['BUTTON_HREF_DETAIL']['VALUE'])): ?>
+                        <a class="btn btn-tertiary btn-lg-lg card-product-list__button w-100 w-sm-auto" href="<?=$item['PROPERTIES']['BUTTON_HREF_DETAIL']['VALUE']?>">
+                            <?= $item['PROPERTIES']['BUTTON_TEXT_DETAIL']['VALUE'] ?>
+                        </a>
+                    <? elseif (!empty($item['PROPERTIES']['BUTTON_DETAIL']['VALUE']) && !empty($item['PROPERTIES']['BUTTON_CODE_FORM']['VALUE'])): ?>
+                        <button class="btn btn-tertiary btn-lg-lg card-product-list__button w-100 w-sm-auto" type="button" data-bs-toggle="modal" data-bs-target="#<?=$item['PROPERTIES']['BUTTON_CODE_FORM']['VALUE']?>">
+                            <?= $item['PROPERTIES']['BUTTON_TEXT_DETAIL']['VALUE'] ?>
+                        </button>
+                        <?
+                        global $FORMS;
+                        $FORMS->includeForm($item['PROPERTIES']['BUTTON_CODE_FORM']['VALUE']);
+                        ?>
+                    <? endif; ?>
                     <a class="btn btn-link btn-lg-lg d-inline-flex gap-2 align-items-center card-product-list__button-more"
                        href="<?= $item['CODE'] == 'restructuring' ? '/loans/restructuring/' : $item['DETAIL_PAGE_URL'] ?>">
                         <span>Подробнее</span>

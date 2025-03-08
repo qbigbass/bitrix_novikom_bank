@@ -6,15 +6,22 @@ use Bitrix\Iblock\Iblock;
 
 $chunkSize = $arParams['NEWS_COUNT'];
 $iblockUrl = $arParams['IBLOCK_URL'];
-
+$currentDate = date("Y-m-d H:i:s");
 $dataClass = Iblock::wakeUp($arParams['IBLOCK_ID'])->getEntityDataClass();
-
 $filter = ['ACTIVE' => 'Y'];
-if ($iblockUrl == '/special-offers/') {
+
+if ($iblockUrl === '/special-offers/') {
     $condition = !empty($_SESSION['section_page']['/special-offers/']) && $_SESSION['section_page']['/special-offers/'] == '/ended/'
         ? '<=END_DATE.VALUE'
         : '>=END_DATE.VALUE';
-    $filter[$condition] = date('Y-m-d H:i:s');
+    $filter[$condition] = $currentDate;
+} elseif ($iblockUrl === '/about/press-center/') {
+    $filter['<=PUBLICATION_DATE.VALUE'] = $currentDate;
+    $filter[] = [
+        'LOGIC' => 'OR',
+        '>=END_DATE.VALUE' => $currentDate,
+        'END_DATE.VALUE' => false
+    ];
 }
 
 $data = [
@@ -45,14 +52,30 @@ $arSections = \Bitrix\Iblock\SectionTable::getList([
 
 if (!empty($arResult['SECTION'])) {
     $section = $arResult['SECTION']['PATH'][array_key_last($arResult['SECTION']['PATH'])];
-    $data['filter']['IBLOCK_SECTION_ID'] = [$section['ID']];
+    $sectionIds = [$section['ID']];
 
-    $sections = array_filter($arSections, function ($item) use ($section) {
-        return $item['IBLOCK_SECTION_ID'] == $section['ID'];
-    });
+    $sections = array_filter($arSections, fn($item) => $item['IBLOCK_SECTION_ID'] == $section['ID']);
 
     if (!empty($sections)) {
-        $data['filter']['IBLOCK_SECTION_ID'] = array_merge($data['filter']['IBLOCK_SECTION_ID'], array_column($sections, 'ID'));
+        $sectionIds = array_merge($sectionIds, array_column($sections, 'ID'));
+    }
+
+    $elementsRes = \Bitrix\Main\Application::getConnection()->query("
+        SELECT IBLOCK_ELEMENT_ID FROM b_iblock_section_element
+        WHERE IBLOCK_SECTION_ID IN (" . implode(',', $sectionIds) . ")
+    ");
+
+    $elementIds = [];
+    while ($row = $elementsRes->fetch()) {
+        $elementIds[] = $row['IBLOCK_ELEMENT_ID'];
+    }
+
+    if (!empty($elementIds)) {
+        $data['filter'][] = [
+            'LOGIC' => 'OR',
+            'IBLOCK_SECTION_ID' => $sectionIds,
+            'ID' => $elementIds
+        ];
     }
 }
 

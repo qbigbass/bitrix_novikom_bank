@@ -1,4 +1,4 @@
-<div class="modal modal-xl fade" id="modal-vacancy-form" tabindex="-1" aria-hidden="true">
+<div class="modal modal-xl fade" id="vacancy_form" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">

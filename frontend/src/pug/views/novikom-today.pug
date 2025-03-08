@@ -212,6 +212,7 @@ block content
                     .tab-content.mt-5.mt-lg-7
                         #year-2024.tab-pane.fade.show.active(aria-labelledby="year-2024" tabindex="0" role="tabpanel")
                             .swiper.slider-cards.js-slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:2,laptop:3,laptop-x:3" data-space-between="mobile-s:8,mobile:8,tablet:16,laptop:16,laptop-x:16")
+                                +slider-controls().mb-3.mb-md-4
                                 .swiper-wrapper
                                     each item in ratingsList
                                         .swiper-slide.js-swiper-slide
@@ -224,9 +225,10 @@ block content
                                                     p.card-top-list__description.dark-100.text-m.mt-auto.mb-0
                                                         !=item.text
                                                 +pattern-bg('card', 'light', 'z-1 pattern-bg--position-sm-top')
-                                +slider-controls().mt-3.mt-md-4
+
                         #year-2023.tab-pane.fade(aria-labelledby="year-2023" tabindex="0" role="tabpanel")
                             .swiper.slider-cards.js-slider-cards(data-slides-per-view="mobile-s:1,mobile:1,tablet:2,laptop:3,laptop-x:3" data-space-between="mobile-s:8,mobile:8,tablet:16,laptop:16,laptop-x:16")
+                                +slider-controls().mb-3.mb-md-4
                                 .swiper-wrapper
                                     each item in ratingsList
                                         .swiper-slide.js-swiper-slide
@@ -239,7 +241,7 @@ block content
                                                     p.card-top-list__description.dark-100.text-m.mt-auto.mb-0
                                                         !=item.text
                                                 +pattern-bg('card', 'light', 'z-1 pattern-bg--position-sm-top')
-                                +slider-controls().mt-3.mt-md-4
+
 
     section.section-layout.bg-dark-30
         -
@@ -282,6 +284,7 @@ block content
             .row
                 .col-12
                     .swiper.slider-cards.js-slider-cards(data-auto-height="mobile-s:true,mobile:true,tablet:true,tablet-album:false,laptop:false,laptop-x:false" data-slides-per-view="mobile-s:1,mobile:1,tablet:1,tablet-album:2,laptop:2,laptop-x:2" data-space-between="mobile-s:8,mobile:8,tablet:16,laptop:16,laptop-x:16")
+                        +slider-controls().mb-3.mb-md-4
                         .swiper-wrapper
                             each award in awardList
                                 .swiper-slide.js-swiper-slide
@@ -291,7 +294,7 @@ block content
                                             .d-none.d-md-inline.h2.violet-100-important!= award.year
                                             .d-inline.d-md-none.h4.violet-100-important!= award.year
                                         p.mb-0!= award.text
-                        +slider-controls().mt-3.mt-md-4
+
                     .d-block.w-100.mt-5.mt-lg-7.text-center
                         a(href="#").btn.btn-outline-primary.btn-lg-lg.btn-icon
                             | Смотреть все награды

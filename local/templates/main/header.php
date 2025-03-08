@@ -6,6 +6,8 @@ global $APPLICATION;
 use Bitrix\Main\Localization\Loc;
 use Bitrix\Main\Page\Asset;
 
+$dir = $APPLICATION->GetCurDir();
+
 $asset = Asset::getInstance();
 
 $asset->addCss('/frontend/dist/css/bootstrap.css');
@@ -14,6 +16,7 @@ $asset->addCss('/frontend/dist/css/select2.css');
 $asset->addCss('/frontend/dist/css/air-datepicker.css');
 $asset->addCss('/frontend/dist/css/all.css');
 
+//DNVKBSITE-185 Всегда должны быть подключены след файлы
 $asset->addJs('/frontend/dist/js/vendors/jquery.min.js');
 $asset->addJs('/frontend/dist/js/vendors/popover.js');
 $asset->addJs('/frontend/dist/js/vendors/bootstrap.min.js');
@@ -34,15 +37,10 @@ $asset->addJs('/frontend/dist/js/setPage.js');
 $asset->addJs('/frontend/dist/js/sliders.js');
 $asset->addJs('/frontend/dist/js/tabs.js');
 $asset->addJs('/frontend/dist/js/charts.js');
-$asset->addJs('/frontend/dist/js/private-banking.js');
-$asset->addJs('/frontend/dist/js/calculator-deposit.js');
-$asset->addJs('/frontend/dist/js/calculator-loan.js');
-$asset->addJs('/frontend/dist/js/calculator-mortgage.js');
-$asset->addJs('/frontend/dist/js/calculator-bonus.js');
-$asset->addJs('/frontend/dist/js/currency-converter.js');
 $asset->addJs('/frontend/dist/js/inputSlider.js');
 $asset->addJs('/frontend/dist/js/index.js');
 $asset->addJs('/frontend/dist/js/accessibility-panel.js');
+
 ?>
 <!DOCTYPE html>
 <html lang="<?= LANGUAGE_ID ?>">

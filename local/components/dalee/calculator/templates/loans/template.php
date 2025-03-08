@@ -3,6 +3,7 @@
 /**
  * @global CMain $APPLICATION
  */
+global $FORMS;
 ?>
 <div class="row js-calculator-loan" data-id="<?= $arParams['CALCULATOR_ELEMENT_ID'] ?? '' ?>" data-table="loans">
     <div class="col-12 col-lg-6">
@@ -119,7 +120,7 @@
                                 class="btn btn-primary btn-lg-lg w-100"
                                 type="button"
                                 data-bs-toggle="modal"
-                                data-bs-target="#modal-loan-form"
+                                data-bs-target="#loan_form"
                             >
                                 Оформить заявку
                             </button>
@@ -166,3 +167,4 @@
         </div>
     </div>
 </div>
+<?$FORMS->includeForm('loan_form');?>
