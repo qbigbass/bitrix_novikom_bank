@@ -100,8 +100,8 @@ $arItem = $arResult;
                 <div class="d-flex flex-column row-gap-3">
                     <h5 class="fw-semibold">Контакты</h5>
                     <ul class="list-contact d-flex flex-column row-gap-3">
-                        <?php if (!empty($arItem['DISPLAY_PROPERTIES']['PHONE']['VALUE'])) : ?>
-                            <?php foreach ($arItem['DISPLAY_PROPERTIES']['PHONE']['VALUE'] as $keyP => $phone) : ?>
+                        <?php if (!empty($arItem['DISPLAY_PROPERTIES']['PHONE']['~VALUE'])) : ?>
+                            <?php foreach ($arItem['DISPLAY_PROPERTIES']['PHONE']['~VALUE'] as $keyP => $phone) : ?>
                                 <li class="d-flex column-gap-3">
                                     <span class="icon size-m violet-100">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
