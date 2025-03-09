@@ -1,6 +1,7 @@
 <?php
 /** @var array $arResult */
 /** @var array $arParams */
+
 /** @var CBitrixComponent $component */
 
 use Bitrix\Iblock\Iblock as BitrixIblock;
@@ -9,9 +10,6 @@ use Bitrix\Iblock\Iblock as BitrixIblock;
 if (!empty($arResult["ITEMS"])) {
     foreach ($arResult["ITEMS"] as $arData) {
         $iconPath = '';
-        $filePath = '';
-        $fileDesc = '';
-        $fileDateModified = '';
         $benefitIcon = '';
         $requirements = [];
         $rates = [];
@@ -21,18 +19,6 @@ if (!empty($arResult["ITEMS"])) {
 
         if (!empty($arData["PREVIEW_PICTURE"]["SRC"])) {
             $iconPath = $arData["PREVIEW_PICTURE"]["SRC"];
-        }
-
-        if (!empty($arData["DISPLAY_PROPERTIES"]["FILE"]["FILE_VALUE"]["SRC"])) {
-            $filePath = $arData["DISPLAY_PROPERTIES"]["FILE"]["FILE_VALUE"]["SRC"];
-        }
-
-        if (!empty($arData["DISPLAY_PROPERTIES"]["FILE"]["FILE_VALUE"]["DESCRIPTION"])) {
-            $fileDesc = $arData["DISPLAY_PROPERTIES"]["FILE"]["FILE_VALUE"]["DESCRIPTION"];
-        }
-
-        if (!empty($arData["DISPLAY_PROPERTIES"]["FILE"]["FILE_VALUE"]["TIMESTAMP_X"])) {
-            $fileDateModified = $arData["DISPLAY_PROPERTIES"]["FILE"]["FILE_VALUE"]["TIMESTAMP_X"];
         }
 
         if (!empty($arData["PROPERTIES"]["BENEFITS"]["VALUE"])) {
@@ -62,7 +48,7 @@ if (!empty($arResult["ITEMS"])) {
             $block = iblock('benefits');
             $class = BitrixIblock::wakeUp($block)->getEntityDataClass();
             $elements = $class::getList([
-                "select" => ["ID", "NAME", "ICON.FILE"],
+                "select" => ["ID", "NAME", "PREVIEW_PICTURE", "ICON.FILE"],
                 "filter" => ["ACTIVE" => "Y", "ID" => $arBenefitIds],
             ])->fetchCollection();
 
@@ -74,6 +60,8 @@ if (!empty($arResult["ITEMS"])) {
 
                     if (!empty($element->getIcon())) {
                         $icon = '/upload/' . $element->getIcon()->getFile()->getSubdir() . '/' . $element->getIcon()->getFile()->getFileName();
+                    } else if (!empty($element->getPreviewPicture())) {
+                        $icon = CFile::GetPath($element->getPreviewPicture());
                     }
 
                     $arBenefitsData[$id] = [
@@ -86,7 +74,6 @@ if (!empty($arResult["ITEMS"])) {
 
         $arResult["STRATEGIES"][$arData["ID"]] = [
             "NAME" => $arData["NAME"],
-            "DATE_MODIFIED" => $fileDateModified,
             "PREVIEW_TEXT" => $arData["PREVIEW_TEXT"] ?? "",
             "PICTURE" => $iconPath ?? "",
             "RISK" => $arData["PROPERTIES"]["RISK"]["~VALUE"] ?? "",
@@ -100,12 +87,37 @@ if (!empty($arResult["ITEMS"])) {
             "BENEFITS" => $arBenefitsData
         ];
 
-        if (!empty($filePath)) {
-            $arResult["STRATEGIES"][$arData["ID"]]["FILE"] = [
-                "PATH" => $filePath,
-                "EXTENSION" => pathinfo($filePath, PATHINFO_EXTENSION),
-                "NAME" => $fileDesc
-            ];
+        // Формирование списка файлов
+        $files = [];
+        if (!empty($arData["PROPERTIES"]["DOCUMENTS"]['VALUE'])) {
+            $arSelect = array("ID", "NAME", "DATE_ACTIVE_FROM");
+            $arFilter = array("IBLOCK_ID" => IntVal($yvalue), "ACTIVE_DATE" => "Y", "ACTIVE" => "Y");
+            $resultDocuments = CIBlockElement::GetList(
+                [
+                    'SORT' => 'ASC'
+                ],
+                [
+                    'IBLOCK_ID' => iblock('documents'),
+                    'SECTION_ID' => $arData["PROPERTIES"]["DOCUMENTS"]['VALUE']
+                ],
+                false,
+                [],
+                [
+                    'ID', 'NAME', 'PREVIEW_TEXT', 'PROPERTY_FILE'
+                ]
+            );
+            while ($document = $resultDocuments->GetNext()) {
+                if (!empty($document['PROPERTY_FILE_VALUE'])) {
+                    $file = CFile::GetFileArray($document['PROPERTY_FILE_VALUE']);
+                    $files[] = [
+                        'PATH' => $file['SRC'],
+                        'EXTENSION' => pathinfo($file['SRC'], PATHINFO_EXTENSION),
+                        'NAME' => $document['NAME'],
+                        'DATE_MODIFIED' => $file['TIMESTAMP_X'],
+                    ];
+                }
+            }
         }
+        $arResult["STRATEGIES"][$arData["ID"]]["FILES"] = $files;
     }
 }

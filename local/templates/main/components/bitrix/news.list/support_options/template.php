@@ -31,6 +31,15 @@ $renderer = new Renderer($APPLICATION, $component);
                         <? if (!empty($item['DISPLAY_PROPERTIES'])) {
                             foreach ($item['DISPLAY_PROPERTIES'] as $propertyKey => $property) {
                                 if ($property['CODE'] == 'BENEFITS' && !empty($property['VALUE'])) { ?>
+                                    <? if (!empty($item['PROPERTIES']['BENEFITS_HEADER']['~VALUE'])): ?>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <h3>
+                                                    <?= $item['PROPERTIES']['BENEFITS_HEADER']['~VALUE']; ?>
+                                                </h3>
+                                            </div>
+                                        </div>
+                                    <? endif; ?>
                                     <div class="row row-gap-6 gx-xl-6">
                                     <? global $benefitsFilter;
                                     $benefitsFilter = [
@@ -118,6 +127,11 @@ $renderer = new Renderer($APPLICATION, $component);
                                                         <div class="helper__wrapper d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-4 gap-lg-6">
                                                             <img class="helper__image w-auto float-end" src="/frontend/dist/img/restructuring-additional-info_orange.png" alt="Обратите внимание">
                                                             <div class="helper__content text-l">
+                                                                <? if (!empty($item['PROPERTIES']['QUOTE_HEADER']['~VALUE'])): ?>
+                                                                    <h4 class="mb-3">
+                                                                        <?= $item['PROPERTIES']['QUOTE_HEADER']['~VALUE']; ?>
+                                                                    </h4>
+                                                                <? endif; ?>
                                                                 <p><?= $property['~VALUE']['TEXT'] ?></p>
                                                             </div>
                                                         </div>
@@ -137,17 +151,16 @@ $renderer = new Renderer($APPLICATION, $component);
                                 <? }
 
                                 if ($property['CODE'] == 'TEXT_FIELD' && !empty($property['~VALUE'])) { ?>
-                                    <? foreach ($property['~VALUE'] as $key => $value) { ?>
+                                    <? if (!empty($item['PROPERTIES']['TEXT_FIELD_HEADER']['~VALUE'])): ?>
                                         <div class="row">
-                                            <div class="d-flex flex-column gap-3">
-                                                <h4 class="text-l"><?= $property['DESCRIPTION'][$key] ?? '' ?></h4>
-                                                <span><?= $value['TEXT'] ?></span>
+                                            <div class="col-12">
+                                                <h4>
+                                                    <?= $item['PROPERTIES']['TEXT_FIELD_HEADER']['~VALUE']; ?>
+                                                </h4>
                                             </div>
                                         </div>
-                                        <? if ($key != array_key_last($property['~VALUE']) && $propertyKey != array_key_last($item['DISPLAY_PROPERTIES'])) { ?>
-                                            <span class="border-bottom-dashed" aria-hidden="true"></span>
-                                        <? } ?>
-                                    <? } ?>
+                                    <? endif; ?>
+                                    <?= $property['~VALUE']['TEXT']; ?>
                                 <? } ?>
                             <? } ?>
                             <? if (!empty($item['DISPLAY_PROPERTIES']['BUTTON_TEXT']['~VALUE']) && !empty($item['DISPLAY_PROPERTIES']['BUTTON_LINK']['~VALUE'])): ?>
