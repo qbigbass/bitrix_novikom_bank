@@ -4,6 +4,8 @@ const ELEMENTS_TAB = {
     polygonContainer: '.js-polygon-container-polygon',
     tabSlider: '.js-tabs-slider',
     tabContent: '.tab-pane',
+    tabLink: '.tabs-panel__list-item-link',
+    mobileWidth: '767px',
 }
 
 const updatePolygonInTabContent = (el) => {
@@ -61,9 +63,20 @@ function initTabsContent() {
     });
 }
 
+function updateHash(event) {
+    // Получаем хэш из атрибута href
+    const hash = event.currentTarget.getAttribute('href');
+
+    if (hash) {
+        // Изменяем хэш в адресной строке
+        history.pushState(null, null, hash);
+    }
+}
+
 function activateTabFromHash() {
     // Получаем фрагмент URL
     const hash = window.location.hash;
+    const tabLinks = document.querySelectorAll(ELEMENTS_TAB.tabLink);
 
     // Проверяем, есть ли фрагмент
     if (!hash) return false;
@@ -72,7 +85,37 @@ function activateTabFromHash() {
     const tabLink = document.querySelector(`a[href="${hash}"]`);
 
     if (tabLink) {
+        const isMobile = window.matchMedia(`(max-width: ${ELEMENTS_TAB.mobileWidth})`).matches;
+        const tabSlider = document.querySelector(ELEMENTS_TAB.tabSlider);
+
+        if (isMobile) {
+            const collapsedSection = tabLink.closest(ELEMENTS_TAB.collapsedSection);
+            const collapseTrigger = collapsedSection?.querySelector('[data-bs-toggle="collapse"]');
+            collapseTrigger?.click();
+        }
+
         tabLink.click();
-        tabLink.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        tabLinks.forEach((link, index) => {
+            if (link.classList.contains('active') && tabSlider) {
+                setTimeout(() => {
+                    tabSlider.swiper.slideTo(index);
+                }, 400)
+            }
+
+            link.addEventListener('click', (event) => {
+                updateHash(event);
+            });
+
+        });
+
+        // Получаем координаты элемента tabLink
+        const rect = tabLink.getBoundingClientRect();
+        const scrollTop = window.scrollY || window.pageYOffset;
+
+        // Прокручиваем только по вертикали
+        window.scrollTo({
+            top: rect.top + scrollTop,
+            behavior: 'smooth'
+        });
     }
 }
