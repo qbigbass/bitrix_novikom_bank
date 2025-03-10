@@ -23,6 +23,7 @@ const CLASSES_DEPOSIT = {
     hide: 'd-none',
     active: 'active',
     currency: '.currency',
+    smallDifference: 'small-difference',
 }
 
 const MIN_DEPOSIT_VALUE = 50;
@@ -98,7 +99,7 @@ function showDepositResult(STATE) {
 function handlerInputDeposit(STATE) {
     STATE.rate = findDepositRate({data: STATE.filteredData, amount: STATE.amount, period: STATE.period});
     STATE.income = calculateDepositIncome(STATE);
-    showDepositResult(STATE)
+    showDepositResult(STATE);
 }
 
 function parseDate(dateString) {
@@ -115,15 +116,29 @@ function setStartValues(STATE) {
     STATE.amount = STATE.minAmount;
     STATE.period = STATE.minPeriod;
 }
-function calculateDepositIncome({amount, period, rate, capitalization, filteredData, additionalDeposits, hideAdditional = false}) {
+
+function isLeapYear(year) {
+    return (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
+}
+
+function calculateDaysInYear(year) {
+    return isLeapYear(year) ? 366 : 365;
+}
+
+function calculateDepositIncome(STATE) {
+    let {amount, period, rate, capitalization, filteredData, additionalDeposits, hideAdditional = false} = STATE;
     let totalAmount = amount; // Общая сумма вклада, начиная с первоначальной
     let totalIncome = 0; // Переменная для хранения общего дохода
-    const dailyInitialRate = (rate / 100) / 365;
+    const startDate = new Date(); // Начальная дата
+    const endDate = new Date();
+    endDate.setDate(endDate.getDate() + period);
+
+    const dailyInitialRate = (rate / 100) / calculateDaysInYear(startDate.getFullYear());
 
     if (capitalization) {
         // рассчеты с капитализацией
         const n = 12; // Количество периодов капитализации в год (ежемесячно)
-        const t = period / 365; // Количество лет
+        const t = period / calculateDaysInYear(startDate.getFullYear()); // Количество лет
 
         // Расчет итоговой суммы с учетом капитализации
         const A = amount * Math.pow(1 + (rate / 100) / n, n * t);
@@ -138,8 +153,8 @@ function calculateDepositIncome({amount, period, rate, capitalization, filteredD
         additionalDeposits.forEach(deposit => {
             const { amountItem, date } = deposit;
             const depositDate = parseDate(date);
-            const endDate = new Date();
-            endDate.setDate(endDate.getDate() + period);
+            // Количество дней, на которые вкладывается пополнение
+            const daysOnDeposit = Math.max(0, Math.floor((endDate - depositDate) / (1000 * 60 * 60 * 24)));
 
             // Обновляем общую сумму
             totalAmount += Number(amountItem);
@@ -148,15 +163,14 @@ function calculateDepositIncome({amount, period, rate, capitalization, filteredD
             let newRate = findDepositRate({data: filteredData, amount: totalAmount, period});
             // Если новая процентная ставка не определена, используем текущую
             if (!newRate) {newRate = rate}
-            const dailyNewRate = (newRate / 100) / 365;
 
-            // Количество дней, на которые вкладывается пополнение
-            const daysOnDeposit = Math.max(0, (endDate - depositDate) / (1000 * 60 * 60 * 24));
+            STATE.rate = newRate;
+            const dailyNewRate = (newRate / 100) / calculateDaysInYear(depositDate.getFullYear());
 
             // Расчет дохода от пополнения
             if (capitalization) {
                 const n = 12; // Количество периодов капитализации в год (ежемесячно)
-                const t = daysOnDeposit / 365; // Количество лет
+                const t = daysOnDeposit / calculateDaysInYear(depositDate.getFullYear()); // Количество лет
 
                 // Расчет итоговой суммы с учетом капитализации
                 const A = Number(amountItem) * Math.pow(1 + (newRate / 100) / n, n * t);
@@ -437,14 +451,47 @@ const findMaxValue = (key, data) => {
     return Math.max(...data.map(obj => obj[key]));
 }
 
-const getStepsPeriod = (data) => {
+// проверка соседних значений периода вклада,
+// если у соседних значений в массиве разница <= 2, то возвращаем только первое и последнее
+// для влкадов с нежескими сроками (<=2 т.к. есть кейс 365 и 367)
+function filterStepsArray(arr, STATE) {
+    if (arr.length === 0) return [];
+
+    let hasSmallDifference = false;
+
+    // Проверяем разницу между соседними элементами
+    for (let i = 1; i < arr.length; i++) {
+        if (Math.abs(arr[i] - arr[i - 1]) <= 2) {
+            hasSmallDifference = true;
+            break; // Прерываем цикл, если нашли такую разницу
+        }
+    }
+
+    // Если найдена разница <= 2, возвращаем только первое и последнее значение
+    if (hasSmallDifference) {
+        STATE.elements.inputPeriodWrapper.classList.add(CLASSES_DEPOSIT.smallDifference);
+        STATE.elements.inputPeriodWrapper.setAttribute('data-start-value', arr[0]);
+        STATE.elements.inputPeriodWrapper.setAttribute('data-min-value', arr[0]);
+        STATE.elements.inputPeriodWrapper.setAttribute('data-max-value', arr[arr.length - 1]);
+        return [arr[0], arr[arr.length - 1]];
+    }
+
+    STATE.elements.inputPeriodWrapper.classList.remove(CLASSES_DEPOSIT.smallDifference);
+    // Если разницы не найдены, возвращаем оригинальный массив
+    return arr;
+}
+
+const getStepsPeriod = (STATE) => {
+    const data = STATE.filteredData;
     const allValues = [];
     data.forEach(obj => {
         allValues.push(obj.periodFrom);
         allValues.push(obj.periodTo);
     });
     const uniqueValues = [...new Set(allValues)];
-    const sortedValues = uniqueValues.sort((a, b) => a - b);
+    let sortedValues = uniqueValues.sort((a, b) => a - b);
+    sortedValues = filterStepsArray(sortedValues, STATE);
+
     return sortedValues.join(', ');
 }
 
@@ -472,7 +519,7 @@ const getDepositValues = (STATE) => {
     STATE.capitalization = STATE.elements.inputCapitalization.checked;
 
     if (STATE.minPeriod !== STATE.maxPeriod) {
-        STATE.steps = getStepsPeriod(STATE.filteredData);
+        STATE.steps = getStepsPeriod(STATE);
     } else {
         STATE.steps = '';
     }
@@ -507,8 +554,12 @@ const setDepositValues = (STATE, currencyTrigger) => {
             step.remove();
         })
         periodStepsText.innerHTML = '';
-
-        STATE.elements.inputPeriodWrapper.setAttribute('data-steps', STATE.steps);
+        // депозиты с нежескими сроками
+        if (STATE.elements.inputPeriodWrapper.classList.contains(CLASSES_DEPOSIT.smallDifference)) {
+            STATE.elements.inputPeriodWrapper.removeAttribute('data-steps');
+        } else { // депозиты с жескими сроками
+            STATE.elements.inputPeriodWrapper.setAttribute('data-steps', STATE.steps);
+        }
         initInputSlider([STATE.elements.inputPeriodWrapper]);
         STATE.period = getPeriodValue(STATE.elements.inputPeriod);
     } else { // если период вклада не меняется

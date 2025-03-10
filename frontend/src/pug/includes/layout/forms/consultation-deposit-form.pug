@@ -1,0 +1,72 @@
+include ../../../components/forms/input
+include ../../../components/forms/select
+include ../../../components/forms/captcha
+include ../../../components/forms/confirm
+
+-
+    var consultationForm = {
+        formName: "consultation-deposit",
+        selects: [
+            {
+                id: "office",
+                label: "Офис обслуживания",
+                options: ["Москва", "Москва", "Москва"],
+                required: true,
+            },
+
+        ],
+        inputs: [
+            {
+                id: "last-name",
+                label: "Фамилия",
+                placeholder: "Введите фамилию",
+                required: true,
+            },
+            {
+                id: "first-name",
+                label: "Имя",
+                placeholder: "Введите имя",
+                required: true,
+            },
+            {
+                id: "middle-name",
+                label: "Отчество",
+                placeholder: "Введите отчество",
+                required: true,
+            },
+            {
+                id: "phone",
+                label: "Телефон",
+                placeholder: "+7",
+                type: "tel",
+                required: true,
+                mask: "phone",
+                pattern: "\\+7\\s\\(\\d{3}\\)\\s\\d{3}-\\d{2}-\\d{2}",
+                errorMessage: "Неверный формат",
+            },
+        ],
+    }
+
+form(action="/" method="POST" novalidate id="consultation-deposit-form" data-form).application-form
+    .application-form__step(data-form-validate-group)
+        .row.g-1.g-md-2.g-lg-2_5
+            each item in consultationForm.inputs
+                .application-form__col.col-12.col-md-6
+                    +input(item, consultationForm.formName)
+            .application-form__col.col-12
+                +select(consultationForm.selects[0], consultationForm.formName)
+            .application-form__col.col-12
+                +captcha(consultationForm.formName)
+            .application-form__col.col-12
+                +confirm(consultationForm.formName)
+        .d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-5.column-gap-lg-6.mt-6.mt-lg-7.px-md-2.px-lg-0
+            button.btn.btn-primary.btn-lg-lg.w-100.w-md-auto(type="submit" disabled aria-disabled="true" data-form-button) Отправить
+            div.text-m.orange-100.text-center(data-form-error)
+    div(
+        hidden
+        aria-hidden="true"
+        data-success-title="Ваша заявка успешно отправлена!"
+        data-success-info="Мы ответим на вашу заявку, по выбранному способу связи, как только получим и обработаем её"
+        data-error-title="Не удалось отправить заявку"
+        data-error-info="Проверьте правильно ли указаны все данные и отправьте обращение снова"
+    ).js-message

@@ -24,13 +24,13 @@ $this->setFrameMode(true);
                 <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close">
                     <span class="icon size-m">
                         <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                            <use xlink:href="img/svg-sprite.svg#icon-close"></use>
+                            <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-close"></use>
                         </svg>
                     </span>
                 </button>
             </div>
             <div class="modal-body">
-                <form class="application-form" action="<?= $arResult['ACTION_URL'] ?>" method="POST" novalidate id="state-support-form" data-form data-form-feedback enctype="multipart/form-data">
+                <form class="application-form" action="<?= $arResult['ACTION_URL'] ?>" method="POST" novalidate id="express-guarantee-form" data-form data-form-express-guarantee enctype="multipart/form-data">
                     <input type="hidden" name="sessid" value="<?= bitrix_sessid(); ?>">
                     <input type="hidden" name="FORM_CODE" value="<?= $arParams['FORM_CODE'] ?>">
                     <div class="application-form__step" data-form-step data-form-validate-group>
@@ -53,7 +53,7 @@ $this->setFrameMode(true);
                                 <div class="d-flex flex-column row-gap-2">
                                     <label class="form-label mb-0" for="express-guarantee_inn">ИНН<span class="orange-100 ms-1">*</span>
                                     </label>
-                                    <input class="form-control form-control-lg-lg" id="express-guarantee_inn" type="text" name="INN" placeholder="Укажите ИНН" required autocomplete="off" data-form-input>
+                                    <input class="form-control form-control-lg-lg js-mask-inn" id="express-guarantee_inn" type="text" name="INN" placeholder="Укажите ИНН" required autocomplete="off" data-form-input maxlength="12">
                                     <div class="invalid-feedback" aria-live="polite"></div>
                                 </div>
                             </div>
@@ -142,7 +142,7 @@ $this->setFrameMode(true);
                                     </div>
                                 </fieldset>
                             </div>
-                            <div class="application-form__col col-12 col-md-6">
+                            <div class="application-form__col col-12 col-md-6 js-advance-amount">
                                 <div class="d-flex flex-column row-gap-2">
                                     <label class="form-label mb-0" for="express-guarantee_advance-amount">Сумма аванса
                                     </label>

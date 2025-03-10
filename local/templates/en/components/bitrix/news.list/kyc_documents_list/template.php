@@ -26,12 +26,12 @@ require_once __DIR__ . '/functions.php';
         <? foreach ($arResult['ITEMS'] as $key => $item): ?>
             <div class="accordion-item" id="charter-and-regulations">
                 <div class="accordion-header">
-                    <button class="accordion-button<?= $key != 0 ? ' collapsed' : '' ?>" type="button" data-bs-toggle="collapse" data-bs-target="#<?= $key?>"
-                        <?= $key == 0 ? 'aria-expanded' : '' ?> aria-controls="<?= $key?>"><span
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#<?= $key?>"
+                            aria-expanded="false" aria-controls="<?= $key?>"><span
                         class="fw-bold h4"><?= $item['NAME'] ?></span>
                     </button>
                 </div>
-                <div class="accordion-collapse collapse <?= $key == 0 ? 'show' : '' ?>" id="<?= $key?>" data-bs-parent="#accordion-documents">
+                <div class="accordion-collapse collapse" id="<?= $key?>" data-bs-parent="#accordion-documents">
                     <div class="accordion-body">
                         <div class="d-flex flex-column gap-4 gap-md-5 gap-lg-7">
 

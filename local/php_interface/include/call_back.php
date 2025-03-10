@@ -5,8 +5,8 @@
             <p class="card-feedback__description text-l m-0">Оставьте свой телефон и мы перезвоним вам, <br class="d-none d-md-block d-lg-none d-xl-block">либо направьте обращение</p>
         </div>
         <div class="d-flex flex-column flex-md-row p-0 gap-3 gap-md-4">
-            <button class="btn btn-outline-primary btn-lg-lg text-ls overflow-visible w-100 w-md-auto" type="button" data-bs-toggle="modal" data-bs-target="#feedback_form">Открыть чат</button>
-            <button class="btn btn-primary btn-lg-lg text-ls overflow-visible w-100 w-md-auto" type="button" data-bs-toggle="modal" data-bs-target="#callback_form">Перезвоните мне</button>
+            <a href="/feedback/" class="btn btn-outline-primary btn-lg-lg text-ls overflow-visible w-100 w-md-auto">Открыть чат</a>
+            <a href="/callback/" class="btn btn-primary btn-lg-lg text-ls overflow-visible w-100 w-md-auto">Перезвоните мне</a>
         </div>
     </div>
     <picture class="pattern-bg pattern-bg--position-top z-1">
