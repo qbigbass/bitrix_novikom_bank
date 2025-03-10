@@ -5,7 +5,7 @@ global $FORMS;
 use Bitrix\Main\Localization\Loc;
 ?>
 
-<!-- /#WORK_AREA# -------------------------------------------------------------------------------------------------- -->
+<!-- #WORK_AREA# ----------------------------------------------------------------------------------------------------->
 
     <div class="modal fade" id="modal-success" tabindex="-1" data-bs-backdrop="static" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable align-items-end align-items-md-center">
