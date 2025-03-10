@@ -101,26 +101,27 @@ function activateTabFromHash() {
     tabLink.click();
     tabLinks.forEach((link, index) => {
         if (link.classList.contains('active') && tabSlider) {
-            console.log('index', index);
             setTimeout(() => {
-                console.log('tabSlider.swiper', tabSlider.swiper);
                 tabSlider.swiper.slideTo(index);
-            }, 400)
+            }, 800)
         }
 
         link.addEventListener('click', (event) => {
             updateHash(event);
         });
-
     });
 
     // Получаем координаты элемента tabLink
     const rect = tabLink.getBoundingClientRect();
     const scrollTop = window.scrollY || window.pageYOffset;
 
-    // Прокручиваем только по вертикали
-    window.scrollTo({
-        top: rect.top + scrollTop,
-        behavior: 'smooth'
-    });
+    setTimeout(() => {
+        // Прокручиваем только по вертикали
+        window.scrollTo({
+            top: rect.top + scrollTop,
+            behavior: 'smooth'
+        });
+    }, 100)
+
+
 }
