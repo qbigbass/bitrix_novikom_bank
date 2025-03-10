@@ -81,6 +81,7 @@ $headerView->render(
 if (!empty($arResult['PROPERTIES']['STEPS']['VALUE'])) {
     $renderer->render('Steps', $arResult['PROPERTIES']['STEPS']['VALUE'], null, [
         'stepsHeader' => $arResult['PROPERTIES']['STEPS_HEADER']['~VALUE'] ?? 'Этапы',
+        'stepsTemplate' => $arResult['PROPERTIES']['STEPS_TEMPLATE']['VALUE_XML_ID'] ?? '',
     ]);
 }
 ?>

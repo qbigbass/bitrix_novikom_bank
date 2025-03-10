@@ -110,8 +110,8 @@ $renderer = new Renderer($APPLICATION, $component);
 
                                 if ($property['CODE'] == 'STEPS' && !empty($property['VALUE'])) {
                                     $renderer->render('Steps', $property['VALUE'], null, [
-                                        'stepsHeader' => $arResult['PROPERTIES']['STEPS_HEADER']['~VALUE'] ?? 'Этапы',
-                                        'stepsTemplate' => 'variants',
+                                        'stepsHeader' => $item['PROPERTIES']['STEPS_HEADER']['~VALUE'] ?? 'Этапы',
+                                        'stepsTemplate' => $item['PROPERTIES']['STEPS_TEMPLATE']['VALUE_XML_ID'] ?? 'variants',
                                     ]);
                                     if ($propertyKey != array_key_last($item['DISPLAY_PROPERTIES'])) { ?>
                                         <span class="border-bottom-dashed" aria-hidden="true"></span>
