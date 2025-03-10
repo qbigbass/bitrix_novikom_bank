@@ -5,6 +5,7 @@ const ELEMENTS_TAB = {
     tabSlider: '.js-tabs-slider',
     tabContent: '.tab-pane',
     tabLink: '.tabs-panel__list-item-link',
+    tabLinkWrapper: '.tabs-panel__list',
     mobileWidth: '767px',
 }
 
@@ -76,7 +77,6 @@ function updateHash(event) {
 function activateTabFromHash() {
     // Получаем фрагмент URL
     const hash = window.location.hash;
-    const tabLinks = document.querySelectorAll(ELEMENTS_TAB.tabLink);
 
     // Проверяем, есть ли фрагмент
     if (!hash) return false;
@@ -84,40 +84,43 @@ function activateTabFromHash() {
     // Ищем элемент с соответствующим href
     const tabLink = document.querySelector(`a[href="${hash}"]`);
 
-    if (tabLink) {
-        const isMobile = window.matchMedia(`(max-width: ${ELEMENTS_TAB.mobileWidth})`).matches;
-        const tabSlider = document.querySelector(ELEMENTS_TAB.tabSlider);
+    if (!tabLink) return false;
 
-        if (isMobile) {
-            const collapsedSection = tabLink.closest(ELEMENTS_TAB.collapsedSection);
-            const collapseTrigger = collapsedSection?.querySelector('[data-bs-toggle="collapse"]');
-            collapseTrigger?.click();
+    const tabWrapper = tabLink.closest(ELEMENTS_TAB.tabLinkWrapper);
+    const tabLinks = tabWrapper?.querySelectorAll(ELEMENTS_TAB.tabLink);
+
+    const isMobile = window.matchMedia(`(max-width: ${ELEMENTS_TAB.mobileWidth})`).matches;
+    const tabSlider = document.querySelector(ELEMENTS_TAB.tabSlider);
+
+    if (isMobile) {
+        const collapsedSection = tabLink.closest(ELEMENTS_TAB.collapsedSection);
+        const collapseTrigger = collapsedSection?.querySelector('[data-bs-toggle="collapse"]');
+        collapseTrigger?.click();
+    }
+
+    tabLink.click();
+    tabLinks.forEach((link, index) => {
+        if (link.classList.contains('active') && tabSlider) {
+            console.log('index', index);
+            setTimeout(() => {
+                console.log('tabSlider.swiper', tabSlider.swiper);
+                tabSlider.swiper.slideTo(index);
+            }, 400)
         }
 
-        tabLink.click();
-        tabLinks.forEach((link, index) => {
-            if (link.classList.contains('active') && tabSlider) {
-                console.log('index', index);
-                setTimeout(() => {
-                    console.log('tabSlider.swiper', tabSlider.swiper);
-                    tabSlider.swiper.slideTo(index);
-                }, 400)
-            }
-
-            link.addEventListener('click', (event) => {
-                updateHash(event);
-            });
-
+        link.addEventListener('click', (event) => {
+            updateHash(event);
         });
 
-        // Получаем координаты элемента tabLink
-        const rect = tabLink.getBoundingClientRect();
-        const scrollTop = window.scrollY || window.pageYOffset;
+    });
 
-        // Прокручиваем только по вертикали
-        window.scrollTo({
-            top: rect.top + scrollTop,
-            behavior: 'smooth'
-        });
-    }
+    // Получаем координаты элемента tabLink
+    const rect = tabLink.getBoundingClientRect();
+    const scrollTop = window.scrollY || window.pageYOffset;
+
+    // Прокручиваем только по вертикали
+    window.scrollTo({
+        top: rect.top + scrollTop,
+        behavior: 'smooth'
+    });
 }
