@@ -84,11 +84,11 @@ $APPLICATION->SetTitle('Пресс-центр');
         "SET_STATUS_404" => "Y",
         "SET_TITLE" => "Y",
         "SHOW_404" => "Y",
-        "SORT_BY1" => "ACTIVE_FROM",
-        "SORT_BY2" => "SORT",
+        "SORT_BY1" => "PROPERTY_PIN",
+        "SORT_BY2" => "PROPERTY_PUBLICATION_DATE",
         "SORT_ORDER1" => "DESC",
-        "SORT_ORDER2" => "ASC",
-        "STRICT_SECTION_CHECK" => "Y",
+        "SORT_ORDER2" => "DESC",
+        "STRICT_SECTION_CHECK" => "N",
         "USE_CATEGORIES" => "N",
         "USE_FILTER" => "N",
         "USE_PERMISSIONS" => "N",
@@ -100,7 +100,7 @@ $APPLICATION->SetTitle('Пресс-центр');
         "SEF_URL_TEMPLATES" => [
             "news" => "",
             "section" => "#SECTION_CODE_PATH#/",
-            "detail" => "#SECTION_CODE_PATH#/#ELEMENT_CODE#/",
+            "detail" => "#ELEMENT_CODE#/",
         ]
     ],
     false
