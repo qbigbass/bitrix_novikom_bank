@@ -35,16 +35,14 @@ $renderer = new Renderer($APPLICATION, $component);
                     <?foreach ($arResult['DISPLAY_PROPERTIES']['PROGRAMS']['VALUE'] as $index => $value): ?>
                         <?
                             $properties = $value['SUB_VALUES'];
-                            $showClass = ($index == 0) ? 'show' : '';
-                            $collapsedClass = ($index == 0) ? '' : 'collapsed';
                         ?>
                         <div class="accordion-item">
                             <div class="accordion-header">
-                                <button class="accordion-button <?=$collapsedClass?>" type="button" data-bs-toggle="collapse" data-bs-target="#<?=$index?>" aria-expanded aria-controls="<?=$index?>">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#<?=$index?>" aria-expanded aria-controls="<?=$index?>">
                                     <span class="fw-bold h4"><?=$properties['PROGRAM_NAME']['~VALUE']?></span>
                                 </button>
                             </div>
-                            <div class="accordion-collapse collapse <?=$showClass?>" id="<?=$index?>" data-bs-parent="#accordion-insurance-programs">
+                            <div class="accordion-collapse collapse" id="<?=$index?>" data-bs-parent="#accordion-insurance-programs">
                                 <div class="accordion-body">
                                     <? if(!empty($properties['PROGRAM_DESCRIPTION']['~VALUE']['TEXT'])) : ?>
                                         <div class="rte rte--accordion">
