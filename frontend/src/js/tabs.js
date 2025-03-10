@@ -60,3 +60,19 @@ function initTabsContent() {
         resizePolygonInTabContent(collapsedContent);
     });
 }
+
+function activateTabFromHash() {
+    // Получаем фрагмент URL
+    const hash = window.location.hash;
+
+    // Проверяем, есть ли фрагмент
+    if (!hash) return false;
+
+    // Ищем элемент с соответствующим href
+    const tabLink = document.querySelector(`a[href="${hash}"]`);
+
+    if (tabLink) {
+        tabLink.click();
+        tabLink.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+}
