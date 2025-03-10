@@ -375,7 +375,11 @@ class RatesPlaceholderManager
 
                 // Заголовки для сроков
                 foreach ($ratesData as $currency => $arSum) {
-                    $periods = array_keys(current($arSum));
+                    if (!empty($arSum)) {
+                        $periods = array_keys(current($arSum));
+                    } else {
+                        unset($ratesData[$currency]);
+                    }
                 }
 
                 $colspan = count($periods) + 1;
