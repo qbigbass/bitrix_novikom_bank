@@ -18,10 +18,8 @@ $this->setFrameMode(true);
 
 $headerView = new HeaderView($component);
 $renderer = new Renderer($APPLICATION, $component);
-
 $helper = $headerView->helper();
 $placeholderManager = $arResult['PLACEHOLDER_CLASS'];
-
 $headerView->render(
     $arResult['~PREVIEW_TEXT'] ?? $arResult['NAME'],
     null,
@@ -34,8 +32,7 @@ $headerView->render(
         <? $placeholderManager->renderHtml($arResult['~DETAIL_TEXT']); ?>
     </div>
 </section>
-<?
-if (!empty($arResult['DISPLAY_PROPERTIES']['TABS']['VALUE'])): ?>
+<? if (!empty($arResult['DISPLAY_PROPERTIES']['TABS']['VALUE'])): ?>
     <section class="section-layout py-md-11 js-collapsed-mobile">
         <div class="container">
             <? if (!empty($arResult['DISPLAY_PROPERTIES']['TABS_HEADER']['~VALUE'])): ?>
@@ -47,22 +44,9 @@ if (!empty($arResult['DISPLAY_PROPERTIES']['TABS']['VALUE'])): ?>
                     </svg>
                 </a>
             <? endif; ?>
-
             <? $renderer->render('Tabs', $arResult['DISPLAY_PROPERTIES']['TABS']['VALUE']); ?>
         </div>
     </section>
-<? endif;
+<? endif; ?>
 
-if (!empty($arResult['DISPLAY_PROPERTIES']['NEWS_SHOW']['VALUE'])): ?>
-
-    <section class="section-layout py-lg-11 d-none d-lg-block">
-        <div class="container">
-
-            <? $renderer->render('NewsList', $arResult['DISPLAY_PROPERTIES']['NEWS_LIST']['VALUE']); ?>
-
-        </div>
-    </section>
-
-<? endif;
-
-$helper->saveCache();
+<? $helper->saveCache(); ?>

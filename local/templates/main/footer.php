@@ -50,7 +50,7 @@ use Bitrix\Main\Localization\Loc;
                         "MENU_CACHE_TYPE" => "A",
                         "MENU_CACHE_USE_GROUPS" => "Y",
                         "ROOT_MENU_TYPE" => "top",
-                        "USE_EXT" => "Y"
+                        "USE_EXT" => "N"
                     ]
                 );?>
                 <div class="col-12 col-md-6 col-xl-3">
@@ -98,14 +98,12 @@ use Bitrix\Main\Localization\Loc;
                         </svg>
                         <?=Loc::getMessage('TELEGRAM_BUTTON_TITLE')?>
                     </a>
-                    <button
+                    <a
                         class="btn btn-primary btn-lg-lg mt-4 mt-md-0"
-                        type="button"
-                        data-bs-toggle="modal"
-                        data-bs-target="#feedback_form"
+                        href="/feedback/"
                     >
                         <?=Loc::getMessage('FEEDBACK_BUTTON_TITLE')?>
-                    </button>
+                    </a>
                     <?
                     global $FORMS;
                     $FORMS->includeForm('feedback_form');
@@ -301,12 +299,10 @@ $APPLICATION->IncludeComponent(
     "",
     [
         "FORM_TITLES" => ["Заказать звонок", "Направить обращение"],
-        "FORM_CODES" => ["callback_form", "feedback_form"],
+        "FORM_CODES" => ["callback", "feedback"],
         "FORM_ICONS" => ["img/svg-sprite.svg#icon-phone", "img/svg-sprite.svg#icon-mail"],
     ]
 );
 ?>
-
-<?$FORMS->showAll();?>
 </body>
 </html>

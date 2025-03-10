@@ -18,6 +18,7 @@ $eventManager->addEventHandler('iblock', 'OnIBlockPropertyBuildList', [CUserType
 $eventManager->addEventHandler('iblock', 'OnIBlockPropertyBuildList', [CUserTypeComplexProperty::class, 'OnIBlockPropertyBuildList']);
 
 $eventManager->addEventHandler('main', 'OnUserTypeBuildList', [CUserTypeSectionStringDescr::class, 'GetUserTypeDescription']);
+$eventManager->addEventHandler('main', 'OnBeforeEventAdd', [FormHelper::class, 'sendFeedBack']);
 
 $eventManager->addEventHandler('iblock', 'OnStartIBlockElementAdd', [CIBEditComplexProp::class, 'OnStartIBlockElementUpdateHandler']);
 $eventManager->addEventHandler('iblock', 'OnStartIBlockElementUpdate', [CIBEditComplexProp::class, 'OnStartIBlockElementUpdateHandler']);

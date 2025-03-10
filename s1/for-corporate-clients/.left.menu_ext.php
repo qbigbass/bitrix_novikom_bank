@@ -3,7 +3,7 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 
 global $APPLICATION;
 
-$aMenuLinksExt = $APPLICATION->IncludeComponent("bitrix:menu.sections", "", array(
+$aMenuLinks = $APPLICATION->IncludeComponent("bitrix:menu.sections", "", array(
     "IS_SEF" => "Y",
     "SEF_BASE_URL" => "",
     "SECTION_PAGE_URL" => "#SECTION_CODE#/",
@@ -16,6 +16,4 @@ $aMenuLinksExt = $APPLICATION->IncludeComponent("bitrix:menu.sections", "", arra
 ),
     false
 );
-
-$aMenuLinks = array_merge($aMenuLinks, $aMenuLinksExt);
 ?>

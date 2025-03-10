@@ -26,6 +26,25 @@ $colorIcon = $arParams["COLOR_ICON"] ?? "dark-0";
         <div class="row">
             <div class="col-12">
                 <div class="swiper slider-cards js-slider-cards" data-slides-per-view="mobile-s:1,mobile:1,tablet:1,tablet-album:2,laptop:2,laptop-x:2" data-space-between="mobile-s:8,mobile:8,tablet:16,tablet-album:16,laptop:16,laptop-x:16">
+                    <div class="slider-controls js-swiper-controls mb-3">
+                        <div class="slider-controls__pagination js-swiper-pagination"></div>
+                        <div class="slider-controls__navigation js-swiper-nav">
+                            <button class="swiper-button-prev js-swiper-prev" type="button">
+                                <span class="icon size-m">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-left"></use>
+                                    </svg>
+                                </span>
+                            </button>
+                            <button class="swiper-button-next js-swiper-next" type="button">
+                                <span class="icon size-m">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
+                                    </svg>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
                     <div class="swiper-wrapper">
                         <? foreach ($arResult['ITEMS'] as $item) : ?>
                             <?
@@ -119,8 +138,8 @@ $colorIcon = $arParams["COLOR_ICON"] ?? "dark-0";
                                         <p class="card-feedback__description text-l m-0">Оставьте свой телефон и мы перезвоним вам, <br class="d-none d-md-block d-lg-none d-xl-block">либо направьте обращение</p>
                                     </div>
                                     <div class="d-flex flex-column flex-md-row p-0 gap-3 gap-md-4">
-                                        <button class="btn btn-outline-primary btn-lg-lg text-ls overflow-visible w-100 w-md-auto" type="button" data-bs-toggle="modal" data-bs-target="#feedback_form">Открыть чат</button>
-                                        <button class="btn btn-primary btn-lg-lg text-ls overflow-visible w-100 w-md-auto" type="button" data-bs-toggle="modal" data-bs-target="#callback_form">Перезвоните мне</button>
+                                        <button href="/feedback/" class="btn btn-outline-primary btn-lg-lg text-ls overflow-visible w-100 w-md-auto">Открыть чат</button>
+                                        <button href="/callback/" class="btn btn-primary btn-lg-lg text-ls overflow-visible w-100 w-md-auto">Перезвоните мне</button>
                                         <?
                                         global $FORMS;
                                         $FORMS->includeForm('feedback_form');
@@ -133,25 +152,6 @@ $colorIcon = $arParams["COLOR_ICON"] ?? "dark-0";
                                     <source srcset="/frontend/dist/img/patterns/card/pattern-light-m.svg" media="(max-width: 1199px)"><img src="/frontend/dist/img/patterns/card/pattern-light-l.svg" alt="bg pattern" loading="lazy">
                                 </picture>
                             </div>
-                        </div>
-                    </div>
-                    <div class="slider-controls js-swiper-controls mt-3">
-                        <div class="slider-controls__pagination js-swiper-pagination"></div>
-                        <div class="slider-controls__navigation js-swiper-nav">
-                            <button class="swiper-button-prev js-swiper-prev" type="button">
-                                <span class="icon size-m">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-left"></use>
-                                    </svg>
-                                </span>
-                            </button>
-                            <button class="swiper-button-next js-swiper-next" type="button">
-                                <span class="icon size-m">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
-                                    </svg>
-                                </span>
-                            </button>
                         </div>
                     </div>
                 </div>

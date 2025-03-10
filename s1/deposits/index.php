@@ -101,8 +101,8 @@ $APPLICATION->SetTitle("Вклады Новикома");
         "COMPONENT_TEMPLATE" => "deposits",
         "SEF_URL_TEMPLATES" => [
             "news" => "",
-            "section" => "#SECTION_CODE#/",
-            "detail" => "#SECTION_CODE#/#ELEMENT_CODE#/",
+            "section" => "#SECTION_CODE_PATH#/",
+            "detail" => "#ELEMENT_CODE#/",
         ]
     ],
     false,

@@ -104,25 +104,7 @@ use Bitrix\Main\Localization\Loc;
                     <div class="row">
                         <div class="col-12">
                             <div class="swiper slider-cards js-slider-cards swiper-initialized swiper-horizontal swiper-watch-progress swiper-backface-hidden swiper-navigation-disabled swiper-pagination-disabled" data-slides-per-view="mobile-s:1,mobile:1,tablet:2,tablet-album:3,laptop:3,laptop-x:3" data-space-between="mobile-s:8,mobile:8,tablet:16,laptop:16,laptop-x:16">
-                                <div class="swiper-wrapper">
-                                    <? foreach ($item["BLOCK_CARDS"] as $card) : ?>
-                                        <div class="swiper-slide js-swiper-slide swiper-slide-visible swiper-slide-fully-visible swiper-slide-active" style="width: 454px; margin-right: 16px;">
-                                        <div class="card-benefit d-inline-flex px-3 px-sm-5 px-lg-6 p-4 p-sm-5 p-lg-6 w-100 bg-white">
-                                            <div class="card-benefit__inner d-flex flex-column gap-6 gap-lg-7 justify-content-between h-100 w-100">
-                                                <div class="card-benefit__content d-flex flex-column gap-4">
-                                                    <h4 class="card-benefit__title"><?= $card["TITLE"] ?></h4>
-                                                </div>
-                                                <div class="card-benefit__read-more d-flex align-items-end justify-content-between">
-                                                    <div class="card-benefit__icon">
-                                                        <img class="yellow-100 size-xxl icon" src="<?= $card["PICTURE"] ?>" alt="" loading="lazy">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <?endforeach;?>
-                                </div>
-                                <div class="slider-controls js-swiper-controls mt-3 mt-md-4">
+                                <div class="slider-controls js-swiper-controls mb-3 mb-md-4">
                                     <div class="slider-controls__pagination js-swiper-pagination"></div>
                                     <div class="slider-controls__navigation js-swiper-nav">
                                         <button class="swiper-button-prev js-swiper-prev" type="button">
@@ -140,6 +122,24 @@ use Bitrix\Main\Localization\Loc;
                                             </span>
                                         </button>
                                     </div>
+                                </div>
+                                <div class="swiper-wrapper">
+                                    <? foreach ($item["BLOCK_CARDS"] as $card) : ?>
+                                        <div class="swiper-slide js-swiper-slide swiper-slide-visible swiper-slide-fully-visible swiper-slide-active" style="width: 454px; margin-right: 16px;">
+                                        <div class="card-benefit d-inline-flex px-3 px-sm-5 px-lg-6 p-4 p-sm-5 p-lg-6 w-100 bg-white">
+                                            <div class="card-benefit__inner d-flex flex-column gap-6 gap-lg-7 justify-content-between h-100 w-100">
+                                                <div class="card-benefit__content d-flex flex-column gap-4">
+                                                    <h4 class="card-benefit__title"><?= $card["TITLE"] ?></h4>
+                                                </div>
+                                                <div class="card-benefit__read-more d-flex align-items-end justify-content-between">
+                                                    <div class="card-benefit__icon">
+                                                        <img class="yellow-100 size-xxl icon" src="<?= $card["PICTURE"] ?>" alt="" loading="lazy">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <?endforeach;?>
                                 </div>
                             </div>
                         </div>
@@ -436,6 +436,25 @@ use Bitrix\Main\Localization\Loc;
                     <div class="row">
                         <div class="col-12">
                             <div class="swiper js-slider-cards slider-cards" data-slides-per-view="mobile-s:1,mobile:1,tablet:1,tablet-album:2,laptop:2,laptop-x:2" data-space-between="mobile-s:8,mobile:8,tablet:16,laptop:16,laptop-x:16">
+                                <div class="slider-controls js-swiper-controls mb-3 mb-md-4">
+                                    <div class="slider-controls__pagination js-swiper-pagination"></div>
+                                    <div class="slider-controls__navigation js-swiper-nav">
+                                        <button class="swiper-button-prev js-swiper-prev" type="button">
+                                            <span class="icon size-m">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                                    <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-left"></use>
+                                                </svg>
+                                            </span>
+                                        </button>
+                                        <button class="swiper-button-next js-swiper-next" type="button">
+                                            <span class="icon size-m">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                                    <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
+                                                </svg>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
                                 <div class="swiper-wrapper js-swiper-wrapper">
                                     <? foreach ($item["BLOCK_CONTACTS"] as $contact): ?>
                                         <div class="swiper-slide js-swiper-slide">
@@ -505,25 +524,6 @@ use Bitrix\Main\Localization\Loc;
                                     <? endforeach; ?>
                                     <div class="swiper-slide js-swiper-slide">
                                         <?$APPLICATION->IncludeFile('/local/php_interface/include/call_back.php')?>
-                                    </div>
-                                </div>
-                                <div class="slider-controls js-swiper-controls mt-3 mt-md-4">
-                                    <div class="slider-controls__pagination js-swiper-pagination"></div>
-                                    <div class="slider-controls__navigation js-swiper-nav">
-                                        <button class="swiper-button-prev js-swiper-prev" type="button">
-                                            <span class="icon size-m">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                                    <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-left"></use>
-                                                </svg>
-                                            </span>
-                                        </button>
-                                        <button class="swiper-button-next js-swiper-next" type="button">
-                                            <span class="icon size-m">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                                    <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
-                                                </svg>
-                                            </span>
-                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -638,14 +638,14 @@ use Bitrix\Main\Localization\Loc;
                                                                                 type="text"
                                                                                 aria-describedby="mobile-phone-hint" placeholder="+7" data-input-call>
                                                                         </div>
-                                                                        <button class="btn btn-primary btn-lg-lg text-m w-100" type="button" data-bs-toggle="modal" data-bs-target="#callback_form">Перезвоните мне</button>
+                                                                        <a href="/callback/" class="btn btn-primary btn-lg-lg text-m w-100">Перезвоните мне</a>
                                                                     </form>
-                                                                    <button class="card-help__button btn btn-link btn-lg-lg btn-icon mx-auto gap-2" type="button" data-bs-toggle="modal" data-bs-target="#feedback_form">
+                                                                    <a href="/feedback/" class="card-help__button btn btn-link btn-lg-lg btn-icon mx-auto gap-2">
                                                                         <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                                                                             <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chat"></use>
                                                                         </svg>
                                                                         Направить обращение
-                                                                    </button>
+                                                                    </a>
                                                                     <?
                                                                     global $FORMS;
                                                                     $FORMS->includeForm('feedback_form');
@@ -720,6 +720,25 @@ use Bitrix\Main\Localization\Loc;
                                                         <div class="row row-gap-4 row-gap-md-5 row-gap-lg-7">
                                                             <div class="col-12">
                                                                 <div class="swiper js-slider-cards w-100" data-slides-per-view="mobile-s:1,mobile:1,tablet:2,laptop:3,laptop-x:4" data-space-between="mobile-s:8,mobile:8,tablet:16,laptop:40,laptop-x:40">
+                                                                    <div class="slider-controls js-swiper-controls mb-3 mb-md-4">
+                                                                        <div class="slider-controls__pagination js-swiper-pagination"></div>
+                                                                        <div class="slider-controls__navigation js-swiper-nav">
+                                                                            <button class="swiper-button-prev js-swiper-prev" type="button" aria-label="Листать влево">
+                                                                                <span class="icon size-m">
+                                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                                                                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-left"></use>
+                                                                                    </svg>
+                                                                                </span>
+                                                                            </button>
+                                                                            <button class="swiper-button-next js-swiper-next" type="button" aria-label="Листать вправо">
+                                                                                <span class="icon size-m">
+                                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                                                                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
+                                                                                    </svg>
+                                                                                </span>
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
                                                                     <div class="swiper-wrapper js-swiper-wrapper">
                                                                         <? foreach ($arTabs["ITEMS"] as $elemId => $arElements) : ?>
                                                                             <div class="swiper-slide js-swiper-slide">
@@ -741,25 +760,6 @@ use Bitrix\Main\Localization\Loc;
                                                                                 </div>
                                                                             </div>
                                                                         <? endforeach; ?>
-                                                                    </div>
-                                                                    <div class="slider-controls js-swiper-controls mt-3 mt-md-4">
-                                                                        <div class="slider-controls__pagination js-swiper-pagination"></div>
-                                                                        <div class="slider-controls__navigation js-swiper-nav">
-                                                                            <button class="swiper-button-prev js-swiper-prev" type="button" aria-label="Листать влево">
-                                                                                <span class="icon size-m">
-                                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                                                                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-left"></use>
-                                                                                    </svg>
-                                                                                </span>
-                                                                            </button>
-                                                                            <button class="swiper-button-next js-swiper-next" type="button" aria-label="Листать вправо">
-                                                                                <span class="icon size-m">
-                                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                                                                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
-                                                                                    </svg>
-                                                                                </span>
-                                                                            </button>
-                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -1127,6 +1127,25 @@ use Bitrix\Main\Localization\Loc;
                 <div class="container">
                     <h3 class="px-lg-6 mb-4 mb-md-6 mb-lg-7">Другие услуги для бизнеса</h3>
                     <div class="swiper slider-cards js-slider-cards" data-slides-per-view="mobile-s:1,mobile:1,tablet:2,tablet-album:2,laptop:2,laptop-x:3" data-space-between="mobile-s:8,mobile:8,tablet:16,tablet-album:16,laptop:16,laptop-x:16">
+                        <div class="slider-controls js-swiper-controls mb-3 mb-md-4">
+                            <div class="slider-controls__pagination js-swiper-pagination"></div>
+                            <div class="slider-controls__navigation js-swiper-nav">
+                                <button class="swiper-button-prev js-swiper-prev" type="button">
+                                    <span class="icon size-m">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                            <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-left"></use>
+                                        </svg>
+                                    </span>
+                                </button>
+                                <button class="swiper-button-next js-swiper-next" type="button">
+                                    <span class="icon size-m">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                            <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
+                                        </svg>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
                         <div class="swiper-wrapper">
                             <? foreach ($item["BLOCK_OTHER_SERVICES"] as $service) : ?>
                                 <div class="swiper-slide js-swiper-slide">
@@ -1158,25 +1177,6 @@ use Bitrix\Main\Localization\Loc;
                                     </div>
                                 </div>
                             <? endforeach; ?>
-                        </div>
-                        <div class="slider-controls js-swiper-controls mt-3 mt-md-4">
-                            <div class="slider-controls__pagination js-swiper-pagination"></div>
-                            <div class="slider-controls__navigation js-swiper-nav">
-                                <button class="swiper-button-prev js-swiper-prev" type="button">
-                                    <span class="icon size-m">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                            <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-left"></use>
-                                        </svg>
-                                    </span>
-                                </button>
-                                <button class="swiper-button-next js-swiper-next" type="button">
-                                    <span class="icon size-m">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                            <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
-                                        </svg>
-                                    </span>
-                                </button>
-                            </div>
                         </div>
                     </div>
                 </div>

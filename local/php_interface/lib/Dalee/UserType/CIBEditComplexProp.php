@@ -526,15 +526,11 @@ class CIBEditComplexProp
                                         break;
                                     // Файлы
                                     case 'F':
-                                        if ($propInBase['MULTIPLE'] == 'Y') {
-                                            foreach ($currentProp as $value) {
-                                                if ($value['VALUE']['error'] === 0) {
-                                                    $showException = false;
-                                                    continue;
-                                                }
+                                        foreach ($currentProp as $value) {
+                                            if ($value['VALUE']['error'] === 0) {
+                                                $showException = false;
+                                                continue;
                                             }
-                                        } else {// Нет такого примера. Не протестил
-                                            $showException = false;
                                         }
                                         break;
                                     default:

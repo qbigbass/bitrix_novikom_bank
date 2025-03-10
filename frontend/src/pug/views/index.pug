@@ -183,12 +183,13 @@ block content
                                         link: '#'
                                     }
                                 ]
+
+                            +slider-controls().mb-3.mb-md-4
+
                             .swiper-wrapper
                                 each item in announcementList
                                     .swiper-slide.js-announcement-slide
                                         +announcement(item)
-
-                            +slider-controls().mt-3.mt-md-4
 
                 .col-12.col-xxl-6.mt-6.mt-xxl-0
                     a(href="#").card-link.h3.d-lg-none

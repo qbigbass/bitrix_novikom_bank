@@ -23,6 +23,6 @@ $this->setFrameMode(true);
         <label class="form-label" for="mobile-phone">Мобильный телефон</label>
         <input class="form-control form-control-lg-lg js-mask-phone" type="text" name="PHONE" id="mobile-phone" aria-describedby="mobile-phone-hint" placeholder="+7" data-input-call>
     </div>
-    <button class="btn btn-primary btn-lg-lg w-100" type="button" data-bs-toggle="modal" data-bs-target="#callback_form">Перезвоните мне</button>
+    <a href="/callback/" class="btn btn-primary btn-lg-lg w-100">Перезвоните мне</a>
 </form>
 
