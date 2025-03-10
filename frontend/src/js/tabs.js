@@ -97,7 +97,9 @@ function activateTabFromHash() {
         tabLink.click();
         tabLinks.forEach((link, index) => {
             if (link.classList.contains('active') && tabSlider) {
+                console.log('index', index);
                 setTimeout(() => {
+                    console.log('tabSlider.swiper', tabSlider.swiper);
                     tabSlider.swiper.slideTo(index);
                 }, 400)
             }
