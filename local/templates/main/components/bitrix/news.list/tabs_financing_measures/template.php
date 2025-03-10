@@ -46,7 +46,8 @@ $this->setFrameMode(true);
                         <?
                         foreach ($arResult['SECTIONS'] as $key => $tab): ?>
                             <li class="swiper-slide w-auto tabs-panel__list-item nav-item z-2">
-                                <button
+                                <a
+                                    href="#additional-info-<?= $tab['ID'] ?>"
                                     class="tabs-panel__list-item-link nav-link bg-transparent <?= $key == 0 ? 'active' : '' ?>"
                                     data-bs-toggle="tab"
                                     data-bs-target="#additional-info-<?= $tab['ID'] ?>"
@@ -55,7 +56,7 @@ $this->setFrameMode(true);
                                     aria-controls="additional-info-<?= $tab['ID'] ?>"
                                     aria-selected="true">
                                     <?= $tab['NAME'] ?? '' ?>
-                                </button>
+                                </a>
                             </li>
                         <?
                         endforeach; ?>
