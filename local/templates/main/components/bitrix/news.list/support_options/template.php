@@ -21,11 +21,11 @@ $renderer = new Renderer($APPLICATION, $component);
     <? foreach ($arResult['ITEMS'] as $key => $item) { ?>
         <div class="accordion-item">
             <div class="accordion-header">
-                <button class="accordion-button<?= $key != 0 ? ' collapsed' : '' ?>" type="button" data-bs-toggle="collapse" data-bs-target="#<?= $key + 1 ?>" <?= $key == 0 ? 'aria-expanded' : '' ?> aria-controls="<?= $key + 1 ?>">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#<?= $key + 1 ?>" aria-expanded="false" aria-controls="<?= $key + 1 ?>">
                     <span class="fw-bold h4"><?= $item['~NAME'] ?></span>
                 </button>
             </div>
-            <div class="accordion-collapse collapse<?= $key == 0 ? ' show' : '' ?>" id="<?= $key + 1 ?>" data-bs-parent="#accordion-option-bank-support">
+            <div class="accordion-collapse collapse" id="<?= $key + 1 ?>" data-bs-parent="#accordion-option-bank-support">
                 <div class="accordion-body">
                     <div class="d-flex flex-column gap-6 gap-md-7">
                         <? if (!empty($item['DISPLAY_PROPERTIES'])) {

@@ -541,17 +541,17 @@ $headerView
                             <div class="accordion-item">
                                 <div class="accordion-header">
                                     <button
-                                        class="accordion-button <? if ($i !== 0) : ?> collapsed<? endif ?>"
+                                        class="accordion-button collapsed"
                                         type="button"
                                         data-bs-toggle="collapse"
                                         data-bs-target="#<?= $elemId?>"
-                                        aria-expanded
+                                        aria-expanded="false"
                                         aria-controls="<?= $elemId?>"
                                     >
                                         <span class="fw-bold h4"><?= $arData["TITLE"]?></span>
                                     </button>
                                 </div>
-                                <div class="accordion-collapse collapse <? if ($i === 0) : ?> show <? endif ?>" id="<?= $elemId ?>" data-bs-parent="#accordion-trust-management">
+                                <div class="accordion-collapse collapse" id="<?= $elemId ?>" data-bs-parent="#accordion-trust-management">
                                     <div class="accordion-body">
                                         <div class="rte rte--accordion">
                                             <?= $arData["TEXT"]?>
