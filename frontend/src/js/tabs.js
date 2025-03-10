@@ -64,14 +64,20 @@ function initTabsContent() {
     });
 }
 
-function updateHash(event) {
-    // Получаем хэш из атрибута href
-    const hash = event.currentTarget.getAttribute('href');
+function updateHash() {
+    const tabLinks = document.querySelectorAll(ELEMENTS_TAB.tabLink);
 
-    if (hash) {
-        // Изменяем хэш в адресной строке
-        history.pushState(null, null, hash);
-    }
+    tabLinks.forEach((link, index) => {
+        link.addEventListener('click', (event) => {
+            // Получаем хэш из атрибута href
+            const hash = event.currentTarget.getAttribute('href');
+
+            if (hash) {
+                // Изменяем хэш в адресной строке
+                history.pushState(null, null, hash);
+            }
+        });
+    });
 }
 
 function activateTabFromHash() {
@@ -88,9 +94,8 @@ function activateTabFromHash() {
 
     const tabWrapper = tabLink.closest(ELEMENTS_TAB.tabLinkWrapper);
     const tabLinks = tabWrapper?.querySelectorAll(ELEMENTS_TAB.tabLink);
-
     const isMobile = window.matchMedia(`(max-width: ${ELEMENTS_TAB.mobileWidth})`).matches;
-    const tabSlider = document.querySelector(ELEMENTS_TAB.tabSlider);
+    const tabSlider = tabLink.closest(ELEMENTS_TAB.tabSlider);
 
     if (isMobile) {
         const collapsedSection = tabLink.closest(ELEMENTS_TAB.collapsedSection);
@@ -103,12 +108,8 @@ function activateTabFromHash() {
         if (link.classList.contains('active') && tabSlider) {
             setTimeout(() => {
                 tabSlider.swiper.slideTo(index);
-            }, 800)
+            }, 400)
         }
-
-        link.addEventListener('click', (event) => {
-            updateHash(event);
-        });
     });
 
     // Получаем координаты элемента tabLink

@@ -452,6 +452,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initCharts();
     initFixScrollAccordions();
     checkWidth();
+    updateHash();
     activateTabFromHash();
 });
 
