@@ -1,12 +1,9 @@
 <?php
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 
-use Dalee\Helpers\IblockHelper;
-
 global $APPLICATION;
 $APPLICATION->SetTitle("Кредиты");
 ?>
-
 <?
 $elementWithoutSection = \Bitrix\Iblock\ElementTable::getList([
     'filter' => [
@@ -200,6 +197,8 @@ if (!empty($elementWithoutSection)) {
         false
     );
 } ?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_tabs.php'); ?>
 
 <? $APPLICATION->IncludeFile('/local/php_interface/include/block_ads_customers.php'); ?>
 

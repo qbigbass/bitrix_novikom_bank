@@ -44,8 +44,6 @@ $blockId = ($Iblock = $IblockRes->fetch()) ? $Iblock['ID'] : '';
             'INSTRUCTIONS_HEADING',
             'ADDITIONAL_INFO',
             'ADDITIONAL_INFO_HEADER',
-            'TABS',
-            'TABS_HEADING',
             'BENEFITS',
             'STEPS',
             'DOCUMENTS',
@@ -111,6 +109,8 @@ $blockId = ($Iblock = $IblockRes->fetch()) ? $Iblock['ID'] : '';
         "USE_SHARE" => "N"
     ]
 );?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_tabs.php'); ?>
 
 <? $APPLICATION->IncludeFile('/local/php_interface/include/block_ads_customers.php'); ?>
 
