@@ -8,7 +8,7 @@ mixin card-news(data)
             if data.isNeedStickyIcon
                 span.card-news__sticky-icon.btn.btn-info.p-0.d-flex
                     +svg-use("icon-pin", "icon size-m blue-100 m-auto")
-        .card-news__image-container.position-relative.z-1.h-100
+        .card-news__image-container.position-relative.z-1
             if data.imageSrc
                 img.card-news__img.position-relative.z-2(src=data.imageSrc, alt="", loading="lazy")
                 .card-news__top-blackout.z-3.position-absolute.top-0.start-0.w-100
