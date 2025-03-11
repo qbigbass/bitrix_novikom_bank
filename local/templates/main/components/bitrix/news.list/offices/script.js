@@ -298,7 +298,6 @@ class OfficesMap {
     }
 
     renderOfficesPlacemarks(init = false) {
-        console.log('renderOfficesPlacemarks');
         this.clearOfficesPlacemarks();
 
         let iconDefaultSize = [40, 48] // Размер иконки
@@ -324,10 +323,7 @@ class OfficesMap {
             this.myMap.geoObjects.add(myPlacemark);
         })
 
-        if (init) {
-            console.log('this.myMap.geoObjects', this.myMap.geoObjects.length)
-            return false;
-        }
+        if (init) return false; // При первой инициализации не устанавливаем границы
 
         // Устанавливаем границы карты, чтобы все объекты были видны
         if (this.myMap.geoObjects.getLength() > 0) {
@@ -425,7 +421,6 @@ class OfficesMap {
         for (const [key, value] of Object.entries(this.services)) {
             this.filterFormValues[key] = $('#filter-service-' + key).is(':checked')
         }
-        // console.log('updateFilterFormValues:', this.filterFormValues)
     }
 }
 
