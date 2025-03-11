@@ -305,8 +305,6 @@ class OfficesMap {
         let iconDefaultSize = [40, 48] // Размер иконки
         let iconDefaultOffset = [-20, -24] // Смещение иконки
 
-        // Создаем массив для хранения меток
-        let placemarks = [];
 
         this.filteredOffices.forEach(item => {
             let iconType = item.type ?? 'office'; // Тип иконки
@@ -323,15 +321,12 @@ class OfficesMap {
                 location.href = item.url
             });
 
-            // Добавляем метку в массив
-            placemarks.push(myPlacemark);
+            // Добавляем каждую метку на карту
+            this.myMap.geoObjects.add(myPlacemark);
         })
 
-        // Добавляем все метки на карту
-        this.myMap.geoObjects.add(placemarks);
-
         // Устанавливаем границы карты, чтобы все объекты были видны
-        if (placemarks.length) {
+        if (this.myMap.geoObjects.getLength() > 0) {
             this.myMap.setBounds(this.myMap.geoObjects.getBounds(), {
                 checkZoomRange: true
             }).then(() => {
