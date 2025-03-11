@@ -299,14 +299,18 @@ class OfficesMap {
     }
 
     renderOfficesPlacemarks() {
-        this.clearOfficesPlacemarks()
+        console.log('renderOfficesPlacemarks');
+        this.clearOfficesPlacemarks();
 
         let iconDefaultSize = [40, 48] // Размер иконки
         let iconDefaultOffset = [-20, -24] // Смещение иконки
 
+        // Создаем массив для хранения меток
+        let placemarks = [];
+
         this.filteredOffices.forEach(item => {
             let iconType = item.type ?? 'office'; // Тип иконки
-            let iconDefaultPath = `/frontend/dist/img/${iconType}-pin.svg` // Путь к иконке
+            let iconDefaultPath = `/frontend/dist/img/${iconType}-pin.svg`; // Путь к иконке
 
             let myPlacemark = new ymaps.Placemark(item.coords, {}, {
                 iconLayout: 'default#image',
@@ -317,19 +321,25 @@ class OfficesMap {
 
             myPlacemark.events.add(['click'], (e) => {
                 location.href = item.url
-            })
+            });
 
-            this.myMap.geoObjects.add(myPlacemark)
+            // Добавляем метку в массив
+            placemarks.push(myPlacemark);
         })
 
-        if (this.myMap.geoObjects.length) {
+        // Добавляем все метки на карту
+        this.myMap.geoObjects.add(placemarks);
+
+        // Устанавливаем границы карты, чтобы все объекты были видны
+        if (placemarks.length) {
             this.myMap.setBounds(this.myMap.geoObjects.getBounds(), {
                 checkZoomRange: true
             }).then(() => {
+                // Ограничиваем зум, если он больше 14
                 if (this.myMap.getZoom() > 14) {
-                    this.myMap.setZoom(14)
+                    this.myMap.setZoom(14);
                 }
-            })
+            });
         }
 
         // this.clusterer.add(this.geoObjects)

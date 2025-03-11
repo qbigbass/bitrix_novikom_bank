@@ -1,10 +1,9 @@
 $(function () {
     $('.pb-form').each((index, form) => {
         $(form).on('submit',  async (e) => {
-            e.preventDefault()
-            if (!$('#personal').is(':checked')) {
-                alert('You mush agree with rules')
-            }
+            e.preventDefault();
+            const submitButton = $('[data-form-button]');
+            submitButton.prop('disabled', true);
             const callbackTime = $(form).find('[name=callback_time]').val() + ' '
                 + $(form).find('[name=hours]').val() + ':'
                 + $(form).find('[name=minutes]').val()
