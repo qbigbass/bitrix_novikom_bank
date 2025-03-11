@@ -27,7 +27,6 @@ class OfficesMap {
         this.initOfficesSearchFilter()
         this.initOfficesServicesFilter()
         this.setCheckboxesFromFilter();
-        this.renderOfficesPlacemarks()
     }
 
     setCheckboxesFromFilter() {
@@ -285,7 +284,7 @@ class OfficesMap {
         }
 
         this.renderOfficesList()
-        this.renderOfficesPlacemarks()
+        this.renderOfficesPlacemarks(init)
         this.saveFilterFormValues();
     }
 
@@ -298,7 +297,7 @@ class OfficesMap {
         this.myMap.geoObjects.removeAll()
     }
 
-    renderOfficesPlacemarks() {
+    renderOfficesPlacemarks(init = false) {
         console.log('renderOfficesPlacemarks');
         this.clearOfficesPlacemarks();
 
@@ -324,6 +323,11 @@ class OfficesMap {
             // Добавляем каждую метку на карту
             this.myMap.geoObjects.add(myPlacemark);
         })
+
+        if (init) {
+            console.log('this.myMap.geoObjects', this.myMap.geoObjects.length)
+            return false;
+        }
 
         // Устанавливаем границы карты, чтобы все объекты были видны
         if (this.myMap.geoObjects.getLength() > 0) {
