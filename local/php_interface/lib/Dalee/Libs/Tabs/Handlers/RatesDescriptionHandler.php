@@ -7,17 +7,17 @@ class RatesDescriptionHandler implements PropertyHandlerInterface
 {
     private static string $firstColumnName = 'Процент годовых в месяц';
     private static string $secondColumnName = 'Условия';
-    private array $description;
-    private array $values;
+    private string $values;
 
     public function __construct(array $property)
     {
-        $this->description = $property['DESCRIPTION'];
-        $this->values = $property['~VALUE'];
+        $this->values = $property['~VALUE']['TEXT'];
     }
 
     public function render(): string
     {
+        return $this->values;
+
         return
             '<div class="table-adaptive">
                 <div class="table-adaptive__header">
