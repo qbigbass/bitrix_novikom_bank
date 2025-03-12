@@ -331,9 +331,11 @@ class OfficesMap {
             }
         })
 
+        console.log('this.clusterer', this.clusterer);
+
         // Добавляем кластер на карту, если есть метки типа "atm"
-        if (this.clusterer.getObjects().length > 0) {
-            console.log('his.clusterer');
+        if (this.clusterer.getGeoObjects().length > 0) {
+
             this.myMap.geoObjects.add(this.clusterer);
         }
 
