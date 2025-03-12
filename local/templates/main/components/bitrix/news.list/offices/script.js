@@ -319,6 +319,8 @@ class OfficesMap {
                 location.href = item.url
             });
 
+            console.log('item.type', item.type);
+
             // Проверяем тип метки
             if (item.type === 'atm') {
                 // Если тип "atm", добавляем метку в кластер
@@ -328,8 +330,6 @@ class OfficesMap {
                 this.myMap.geoObjects.add(myPlacemark);
             }
         })
-
-        console.log('item.type', item.type);
 
         // Добавляем кластер на карту, если есть метки типа "atm"
         if (this.clusterer.getObjects().length > 0) {
