@@ -283,8 +283,8 @@ class OfficesMap {
             }
         }
 
-        this.renderOfficesList()
-        this.renderOfficesPlacemarks(init)
+        this.renderOfficesList();
+        this.renderOfficesPlacemarks();
         this.saveFilterFormValues();
     }
 
@@ -297,7 +297,7 @@ class OfficesMap {
         this.myMap.geoObjects.removeAll()
     }
 
-    renderOfficesPlacemarks(init = false) {
+    renderOfficesPlacemarks() {
         this.clusterer.removeAll();
         this.clearOfficesPlacemarks();
 
@@ -320,8 +320,6 @@ class OfficesMap {
                 location.href = item.url
             });
 
-            console.log('item.type', item.type);
-
             // Проверяем тип метки
             if (item.type === 'atm') {
                 // Если тип "atm", добавляем метку в кластер
@@ -332,17 +330,9 @@ class OfficesMap {
             }
         })
 
-        console.log('this.clusterer', this.clusterer);
-
         // Добавляем кластер на карту, если есть метки типа "atm"
         if (this.clusterer.getGeoObjects().length > 0) {
-
             this.myMap.geoObjects.add(this.clusterer);
-        }
-
-        if (init) {
-            console.log('first Init')
-            return false; // При первой инициализации не устанавливаем границы
         }
 
         // Устанавливаем границы карты, чтобы все объекты были видны
