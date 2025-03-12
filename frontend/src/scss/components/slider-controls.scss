@@ -12,9 +12,13 @@ $base-transition: .3s ease-in-out;
     }
 
     &__pagination {
-        display: flex;
-        align-items: center;
-        gap: .5rem;
+        & .swiper-pagination-bullet {
+          display: inline-block;
+
+          &:not(:last-child) {
+            margin-right: 0.5rem;
+          }
+        }
     }
 
     &__navigation {
