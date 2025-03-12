@@ -82,7 +82,7 @@ $headerView->render(
     && !empty($arResult['PROPERTIES']['STEPS']['DESCRIPTION'])
     && count($arResult['PROPERTIES']['STEPS']['VALUE']) == count($arResult['PROPERTIES']['STEPS']['DESCRIPTION'])) { ?>
 
-    <section class="section-restructuring-steps bg-dark-10 py-6 py-sm-9 py-md-11 py-xl-16">
+    <section id="section-steps" class="section-restructuring-steps bg-dark-10 py-6 py-sm-9 py-md-11 py-xl-16">
         <div class="container">
             <div class="row px-lg-6">
                 <h3 class="d-none d-md-flex"><?= $arResult['PROPERTIES']['STEPS_HEADER']['VALUE'] ?></h3>
