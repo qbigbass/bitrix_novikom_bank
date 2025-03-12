@@ -142,7 +142,7 @@ use Bitrix\Main\Localization\Loc;
                                             <a
                                                 class="d-flex flex-column gap-1 py-3 document-download text-m"
                                                 href="<?= $file["PATH"]; ?>"
-                                                download="<?= $file["NAME"] ?>"
+                                                download=""
                                             >
                                                 <?= $file["NAME"]?>
                                                 <div class="d-flex gap-1 align-items-center">

@@ -90,8 +90,6 @@ if (!empty($arResult["ITEMS"])) {
         // Формирование списка файлов
         $files = [];
         if (!empty($arData["PROPERTIES"]["DOCUMENTS"]['VALUE'])) {
-            $arSelect = array("ID", "NAME", "DATE_ACTIVE_FROM");
-            $arFilter = array("IBLOCK_ID" => IntVal($yvalue), "ACTIVE_DATE" => "Y", "ACTIVE" => "Y");
             $resultDocuments = CIBlockElement::GetList(
                 [
                     'SORT' => 'ASC'
