@@ -319,9 +319,23 @@ class OfficesMap {
                 location.href = item.url
             });
 
-            // Добавляем каждую метку на карту
-            this.myMap.geoObjects.add(myPlacemark);
+            // Проверяем тип метки
+            if (item.type === 'atm') {
+                // Если тип "atm", добавляем метку в кластер
+                this.clusterer.add(myPlacemark);
+            } else {
+                // Если другой тип, добавляем метку напрямую на карту
+                this.myMap.geoObjects.add(myPlacemark);
+            }
         })
+
+        console.log('item.type', item.type);
+
+        // Добавляем кластер на карту, если есть метки типа "atm"
+        if (this.clusterer.getObjects().length > 0) {
+            console.log('his.clusterer');
+            this.myMap.geoObjects.add(this.clusterer);
+        }
 
         if (init) return false; // При первой инициализации не устанавливаем границы
 
@@ -336,9 +350,6 @@ class OfficesMap {
                 }
             });
         }
-
-        // this.clusterer.add(this.geoObjects)
-        // this.myMap.geoObjects.add(this.clusterer)
     }
 
     renderOfficesList() {
