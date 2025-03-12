@@ -151,16 +151,15 @@ $renderer = new Renderer($APPLICATION, $component);
                                 <? }
 
                                 if ($property['CODE'] == 'TEXT_FIELD' && !empty($property['~VALUE'])) { ?>
-                                    <? if (!empty($item['PROPERTIES']['TEXT_FIELD_HEADER']['~VALUE'])): ?>
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <h4>
-                                                    <?= $item['PROPERTIES']['TEXT_FIELD_HEADER']['~VALUE']; ?>
-                                                </h4>
-                                            </div>
-                                        </div>
-                                    <? endif; ?>
-                                    <?= $property['~VALUE']['TEXT']; ?>
+                                    <?php if (!empty($item['PROPERTIES']['TEXT_FIELD_HEADER']['~VALUE'])): ?>
+                                        <h4 class="text-l">
+                                            <?= $item['PROPERTIES']['TEXT_FIELD_HEADER']['~VALUE']; ?>
+                                        </h4>
+                                    <?php endif; ?>
+                                    <?= $property['~VALUE']['TEXT'] ?>
+                                    <? if ($propertyKey != array_key_last($item['DISPLAY_PROPERTIES'])) { ?>
+                                        <span class="border-bottom-dashed" aria-hidden="true"></span>
+                                    <? } ?>
                                 <? } ?>
                             <? } ?>
                             <? if (!empty($item['DISPLAY_PROPERTIES']['BUTTON_TEXT']['~VALUE']) && !empty($item['DISPLAY_PROPERTIES']['BUTTON_LINK']['~VALUE'])): ?>

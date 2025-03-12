@@ -108,8 +108,8 @@ function modifyCorporateSubmenuResult(array $arResult): array
             ]
         ])->fetchAll();
 
-        if (!empty($elements) /* && count($elements) > 1 */) {
-            if (count($elements) == 1) {
+        if (!empty($elements)) {
+            if (count($elements) == 1 && empty($sections)) {
                 $modifiedResult['FIRST_LEVEL_MENU'][$item['ITEM_INDEX']]['LINK'] = '/' . $rootUri . '/' . $elements[0]['CODE'] . '/';
             } else {
                 foreach ($elements as $element) {
