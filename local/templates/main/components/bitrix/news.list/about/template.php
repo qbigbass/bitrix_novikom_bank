@@ -34,7 +34,7 @@ require_once __DIR__ . '/functions.php';
                     <h4 class="card-product__title"><?= $item['~NAME'] ?></h4>
                 </div>
                     <img class="card-product__img" src="<?= $item['DETAIL_PICTURE']['SRC'] ?>"
-                         alt="<?= $item['DETAIL_PICTURE']['ALT'] ?>" loading="lazy">
+                         alt="<?= $item['DETAIL_PICTURE']['ALT'] ?>">
                 <a class="btn btn-link btn-icon m-auto m-lg-0 py-2 py-lg-0" href="<?= $item['DETAIL_PAGE_URL'] ?>">
                     <span>Подробнее</span>
                     <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
@@ -54,7 +54,7 @@ require_once __DIR__ . '/functions.php';
                     </span>
                     <? if (!empty($item['PREVIEW_PICTURE']['SRC'])) { ?>
                         <img class="icon size-xxl ms-auto" src="<?= $item['PREVIEW_PICTURE']['SRC'] ?>"
-                             alt="<?= $item['PREVIEW_PICTURE']['ALT'] ?>" loading="lazy">
+                             alt="<?= $item['PREVIEW_PICTURE']['ALT'] ?>">
                     <? } ?>
                 </div>
             <? } ?>

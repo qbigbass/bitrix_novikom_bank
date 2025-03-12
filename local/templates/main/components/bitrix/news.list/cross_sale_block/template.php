@@ -65,7 +65,7 @@ $this->setFrameMode(true);
                                         <p class="card-product__description m-0"><?= $item['~PREVIEW_TEXT'] ?></p>
                                     <? } ?>
                                 </div>
-                                <img class="card-product__img" src="<?= $item['PREVIEW_PICTURE']['SRC'] ?>" alt="<?= $item['PREVIEW_PICTURE']['ALT'] ?>" loading="lazy">
+                                <img class="card-product__img" src="<?= $item['PREVIEW_PICTURE']['SRC'] ?>" alt="<?= $item['PREVIEW_PICTURE']['ALT'] ?>">
                                 <? if (!empty($item['PROPERTIES']['LINK']['VALUE'])): ?>
                                     <? if (empty($item['PROPERTIES']['BTN_TYPE']['VALUE']) || $item['PROPERTIES']['BTN_TYPE']['VALUE'] == 'С фоном'): ?>
                                         <a class="btn btn-primary card-product__button" href="<?= $item['PROPERTIES']['LINK']['VALUE']?>">

@@ -32,7 +32,7 @@ $elements = Sprint\Editor\Blocks\IblockElements::getList($block, [
                                     </div>
                                     <p class="offer-card__description body-m-light"><?= htmlspecialchars_decode($element['PREVIEW_TEXT']) ?></p>
                                 </div>
-                                <img class="offer-card__img" src="<?= CFile::GetPath($element['PREVIEW_PICTURE']) ?>" alt="" loading="lazy">
+                                <img class="offer-card__img" src="<?= CFile::GetPath($element['PREVIEW_PICTURE']) ?>" alt="">
                                 <? if ($element['PROPERTY_BUTTON_VALUE'] == 'Да') { ?>
                                     <a class="a-button offer-card__link a-button--m a-button--primary a-button--link">Участвовать</a>
                                 <? } ?>

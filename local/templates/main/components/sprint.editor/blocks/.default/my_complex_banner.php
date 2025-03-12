@@ -36,7 +36,7 @@
             <div class="page-banner__photo">
                 <div class="a-polygon-container js-a-polygon-container">
                     <div class="a-polygon-container__content">
-                        <img class="a-polygon-container__img" src="<?= $block['image']['file']['SRC'] ?>" alt="" loading="lazy">
+                        <img class="a-polygon-container__img" src="<?= $block['image']['file']['SRC'] ?>" alt="">
                     </div>
                     <div class="a-polygon-container__polygon js-a-polygon-container-polygon violet-100">
                         <svg xmlns="http://www.w3.org/2000/svg" class="js-a-polygon-container-svg">

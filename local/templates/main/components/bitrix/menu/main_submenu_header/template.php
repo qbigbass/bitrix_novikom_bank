@@ -113,8 +113,7 @@
                     <a class="polygon-container js-polygon-container" href="#" tabindex="-1">
                         <div class="polygon-container__content">
                             <div class="card-menu">
-                                <img class="card-menu__image" src="/frontend/dist/img/card-menu-image.png" alt=""
-                                     loading="lazy">
+                                <img class="card-menu__image" src="/frontend/dist/img/card-menu-image.png" alt="">
                                 <h5>Зарплатная карта «Мир»</h5>
                                 <p class="text-s mb-0">Карта с&nbsp;полным набором<br>операций в&nbsp;торговых
                                     точках<br>и&nbsp;интернете</p>

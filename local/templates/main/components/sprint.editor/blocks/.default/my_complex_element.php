@@ -30,7 +30,7 @@ foreach ($block['elements'] as $element) {
                             <div class="a-collapsed-item js-a-collapsed-item">
                                 <div class="benefit-text-card">
                                     <div class="benefit-text-card__icon">
-                                        <img src="<?= $element['imgPath'] ?>" class="a-icon size-xxl" alt="<?= $element['title'] ?>" loading="lazy">
+                                        <img src="<?= $element['imgPath'] ?>" class="a-icon size-xxl" alt="<?= $element['title'] ?>">
                                     </div>
                                     <h3 class="benefit-text-card__title headline-3"><?= $element['title'] ?></h3>
                                     <p class="benefit-text-card__description body-m-light"><?= $element['desc'] ?></p>
