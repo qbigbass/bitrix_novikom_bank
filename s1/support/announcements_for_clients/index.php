@@ -100,6 +100,8 @@ $APPLICATION->IncludeComponent(
     false
 ); ?>
 
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_tabs.php'); ?>
+
 <? $APPLICATION->IncludeFile('/local/php_interface/include/financial_literacy.php'); ?>
 
 <? $APPLICATION->IncludeFile('/local/php_interface/include/request_call.php'); ?>

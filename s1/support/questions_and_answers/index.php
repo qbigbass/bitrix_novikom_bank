@@ -137,6 +137,8 @@ $APPLICATION->IncludeComponent(
 );
 ?>
 
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_tabs.php'); ?>
+
 <? $APPLICATION->IncludeFile('/local/php_interface/include/request_call.php'); ?>
 
 <? $APPLICATION->IncludeFile('/local/php_interface/include/block_ads_customers.php'); ?>

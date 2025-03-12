@@ -3,13 +3,11 @@ require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 global $APPLICATION;
 $APPLICATION->SetTitle('Закупки <br>у субъектов МСП');
 ?>
-
 <section class="banner-text bg-linear-blue border-green">
     <div class="container banner-text__container position-relative z-2">
         <div class="row ps-lg-6">
             <div class="col-12 col-sm-6 col-md-8 position-relative z-1 mb-5 mb-md-0 pt-6">
                 <div class="banner-text__content d-flex flex-column align-items-start gap-3 gap-lg-4">
-
                     <?
                     $APPLICATION->IncludeComponent(
                         "bitrix:breadcrumb",
@@ -21,7 +19,6 @@ $APPLICATION->SetTitle('Закупки <br>у субъектов МСП');
                         ]
                     );
                     ?>
-
                     <h1 class="banner-text__title dark-0 text-break"><?= $APPLICATION->GetTitle() ?></h1>
                 </div>
             </div>
@@ -42,7 +39,7 @@ $APPLICATION->SetTitle('Закупки <br>у субъектов МСП');
 <section class="section-layout py-lg-11 pb-lg-0 px-lg-6">
     <div class="container">
         <div class="rte rte--w-xxl-60 px-lg-6 mb-6 mb-lg-7">
-                <? $APPLICATION->IncludeFile('/about/purchases/documents/include_text.php'); ?>
+            <? $APPLICATION->IncludeFile('/about/purchases/documents/include_text.php'); ?>
         </div>
         <br>
         <div class="polygon-container js-polygon-container">
@@ -69,11 +66,11 @@ $APPLICATION->SetTitle('Закупки <br>у субъектов МСП');
 <section class="section-layout py-lg-11 px-lg-6">
     <div class="container">
         <div class="row">
-
-
         </div>
     </div>
 </section>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_tabs.php'); ?>
 
 <? $APPLICATION->IncludeFile('/local/php_interface/include/block_ads_customers.php'); ?>
 

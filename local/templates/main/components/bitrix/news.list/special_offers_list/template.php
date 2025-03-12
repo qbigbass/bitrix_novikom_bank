@@ -44,7 +44,7 @@ foreach ($arResult['ITEMS'] as $key => $item) {
                     </span>
                 <? endif; ?>
             </div>
-            <div class="card-news__image-container position-relative z-1 h-100">
+            <div class="card-news__image-container position-relative z-1">
                 <? if (!empty($item['PICTURE'])) { ?>
                     <img class="card-news__img position-relative z-2" src="<?= $item['PICTURE'] ?>"
                          alt=""
