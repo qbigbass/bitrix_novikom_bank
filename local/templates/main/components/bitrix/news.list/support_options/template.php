@@ -137,16 +137,12 @@ $renderer = new Renderer($APPLICATION, $component);
                                 <? }
 
                                 if ($property['CODE'] == 'TEXT_FIELD' && !empty($property['~VALUE'])) { ?>
-                                    <? foreach ($property['~VALUE'] as $key => $value) { ?>
-                                        <div class="row">
-                                            <div class="d-flex flex-column gap-3">
-                                                <h4 class="text-l"><?= $property['DESCRIPTION'][$key] ?? '' ?></h4>
-                                                <span><?= $value['TEXT'] ?></span>
-                                            </div>
-                                        </div>
-                                        <? if ($key != array_key_last($property['~VALUE']) && $propertyKey != array_key_last($item['DISPLAY_PROPERTIES'])) { ?>
-                                            <span class="border-bottom-dashed" aria-hidden="true"></span>
-                                        <? } ?>
+                                    <?php if (!empty($item['DISPLAY_PROPERTIES']['TEXT_FIELD_HEADER']['~VALUE'])): ?>
+                                        <h4 class="text-l"><?= $item['DISPLAY_PROPERTIES']['TEXT_FIELD_HEADER']['~VALUE'] ?></h4>
+                                    <?php endif; ?>
+                                    <?= $property['~VALUE']['TEXT'] ?>
+                                    <? if ($propertyKey != array_key_last($item['DISPLAY_PROPERTIES'])) { ?>
+                                        <span class="border-bottom-dashed" aria-hidden="true"></span>
                                     <? } ?>
                                 <? } ?>
                             <? } ?>

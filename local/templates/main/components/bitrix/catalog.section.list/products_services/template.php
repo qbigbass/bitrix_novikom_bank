@@ -30,7 +30,7 @@ $this->setFrameMode(true);
                             </svg>
                         </span>
                         <? if (!empty($section['ICON_PATH'])) : ?>
-                            <img class="icon size-xxl ms-auto" src="<?= $section['ICON_PATH'] ?>" alt="" loading="lazy">
+                            <img class="icon size-xxl ms-auto" src="<?= $section['ICON_PATH'] ?>" alt="">
                         <? endif; ?>
                     </div>
                 </div>

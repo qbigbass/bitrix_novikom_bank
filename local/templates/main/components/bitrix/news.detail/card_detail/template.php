@@ -378,7 +378,7 @@ $customerCategoriesFilter = [
 <? endif; ?>
 
 <? if (!empty($arResult['DISPLAY_PROPERTIES']['ADDITIONAL_INFO']['~VALUE']['TEXT'])) : ?>
-    <section class="section-layout bg-blue-10 pt-0 pb-lg-11">
+    <section class="section-layout bg-blue-10 pt-lg-11 pb-lg-11">
         <div class="container">
             <div class="row">
                 <div class="col-12">

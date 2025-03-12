@@ -55,7 +55,7 @@ $renderer = new Renderer($APPLICATION, $component);
     <section class="section-layout py-6 py-lg-11">
         <div class="container">
             <div class="card-regal d-flex flex-column flex-md-row row-gap-3 column-gap-md-6 bg-dark-30">
-                <img class="card-regal__image" src="/frontend/dist/img/tagline_awards.png" width="200" height="200" alt="" loading="lazy">
+                <img class="card-regal__image" src="/frontend/dist/img/tagline_awards.png" width="200" height="200" alt="">
                 <div class="card-regal__content d-flex flex-column row-gap-4">
                     <?if(!empty($arResult['DISPLAY_PROPERTIES']['ADDITIONAL_INFO_HEADING']['~VALUE'])): ?>
                         <div class="d-flex justify-content-between align-items-end violet-100">

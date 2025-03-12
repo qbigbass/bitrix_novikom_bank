@@ -6,7 +6,7 @@
         </div>
         <div class="card-benefit__read-more d-flex align-items-end justify-content-between">
             <div class="card-benefit__icon">
-                <img class="size-xxl icon" src="/frontend/dist/img/icons/icon-money.svg" alt="" loading="lazy">
+                <img class="size-xxl icon" src="/frontend/dist/img/icons/icon-money.svg" alt="">
             </div>
             <a class="text-m btn btn-link btn-lg d-inline-flex gap-2 align-items-center" href="https://online.novikom.ru/">
                 <span class="fw-bold">Войти

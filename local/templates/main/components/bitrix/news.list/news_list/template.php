@@ -47,8 +47,7 @@ $this->setFrameMode(true);
                         class="card-news__header w-100 position-absolute top-0 start-0 d-flex align-items-start justify-content-between z-2">
                     </div>
                     <div class="card-news__image-container position-relative z-1">
-                        <img class="card-news__img position-relative z-2" src="<?= $arItem['PREVIEW_PICTURE']['SRC'] ?>" alt=""
-                             loading="lazy">
+                        <img class="card-news__img position-relative z-2" src="<?= $arItem['PREVIEW_PICTURE']['SRC'] ?>" alt="">
                         <div class="card-news__top-blackout z-3 position-absolute top-0 start-0 w-100"></div>
                     </div>
                     <div class="card-news__body d-flex flex-column gap-2 gap-sm-3 z-3"><span

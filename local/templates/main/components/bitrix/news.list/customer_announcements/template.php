@@ -101,9 +101,8 @@ $pathImgBg = $arParams["PATH_IMG_BG"] ?? "/frontend/dist/img/patterns/section-2/
                         </div>
                         <div class="card-about-bank__col d-flex flex-column">
                             <img src="/frontend/dist/img/top.svg" alt="Топ"
-                                 width="138" height="54"
-                                 loading="lazy">
-                            <img src="/frontend/dist/img/top-20.svg" alt="20" width="138" height="144" loading="lazy">
+                                 width="138" height="54">
+                            <img src="/frontend/dist/img/top-20.svg" alt="20" width="138" height="144">
                             <p class="card-about-bank__description text-s fw-semibold mt-auto">по&nbsp;величине капитала,
                                 объему активов<br class="d-xxl-none">
                                 и&nbsp;корпоративных кредитов

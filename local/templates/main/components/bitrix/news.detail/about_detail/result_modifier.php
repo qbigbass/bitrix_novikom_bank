@@ -12,7 +12,7 @@ $properties = [
                 <div class="polygon-container__content quote-polygon-container__content">
                     <div class="quote bg-blue-10">
                         <div class="quote__wrapper d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-md-2 gap-lg-4">
-                            <img src="/frontend/dist/img/small-quote-sticker.png" class="quote__image my-md-auto mt-md-0 position-relative" alt="" loading="lazy">
+                            <img src="/frontend/dist/img/small-quote-sticker.png" class="quote__image my-md-auto mt-md-0 position-relative" alt="">
                             <div class="quote__content text-l">' . $value['TEXT'] . '</div>
                         </div>
                     </div>
