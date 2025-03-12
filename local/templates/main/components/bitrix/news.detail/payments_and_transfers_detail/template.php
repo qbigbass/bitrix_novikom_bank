@@ -51,7 +51,6 @@ $renderer = new Renderer($APPLICATION, $component);
                     class="banner-product__image"
                     src="<?= $arResult['DISPLAY_PROPERTIES']['BANNER_IMAGE']['FILE_VALUE']['SRC']; ?>"
                     alt="<?= htmlspecialchars($arResult['~NAME']); ?>"
-                    loading="lazy"
                 >
             <? endif; ?>
         </div>
