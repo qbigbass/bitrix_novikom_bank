@@ -360,6 +360,7 @@ function initTabsSlider() {
                 });
 
                 this.activeIndex = indexActive;
+                this.slideTo(this.activeIndex);
             },
         },
     });
