@@ -453,11 +453,11 @@ document.addEventListener('DOMContentLoaded', () => {
     initFixScrollAccordions();
     checkWidth();
     updateHash();
-    activateTabFromHash();
 });
 
 window.addEventListener('load', function() {
     initPolygonContainer();
+    activateTabFromHash();
 
     const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
     const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
