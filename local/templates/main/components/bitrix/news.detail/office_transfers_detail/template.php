@@ -51,8 +51,7 @@ $headerView->render(
                         "MENU_CACHE_TYPE" => "A",
                         "MENU_CACHE_TIME" => "3600",
                         "MENU_CACHE_USE_GROUPS" => "Y",
-                        "MENU_CACHE_GET_VARS" => [
-                        ],
+                        "MENU_CACHE_GET_VARS" => [],
                         "COMPONENT_TEMPLATE" => "iblock_sections",
                     ],
                 );
@@ -63,30 +62,10 @@ $headerView->render(
 </section>
 
 <? if (!empty($arResult['PROPERTIES']['STEPS']['VALUE'])) {
-
     $renderer->render('Steps', $arResult['PROPERTIES']['STEPS']['VALUE'], null, [
         'stepsHeader' => $arResult['PROPERTIES']['STEPS_HEADER']['~VALUE'] ?? 'Этапы',
         'stepsTemplate' => $arResult['PROPERTIES']['STEPS_TEMPLATE']['VALUE_XML_ID'] ?? '',
     ]);
-
 } ?>
-
-<? if (!empty($arResult['PROPERTIES']['TABS']['VALUE'])) { ?>
-    <section class="section-layout js-collapsed-mobile">
-        <div class="container">
-            <h3 class="d-none d-md-flex mb-md-6 mb-lg-7 px-lg-6"><?= $arResult['PROPERTIES']['TABS_HEADER']['~VALUE'] ?></h3>
-            <a class="h3 d-flex align-items-center justify-content-between dark-100 d-md-none" data-bs-toggle="collapse" href="#additional-info-content" role="button" aria-expanded="false" aria-controls="additional-info-content">
-                <?= $arResult['PROPERTIES']['TABS_HEADER']['~VALUE'] ?>
-                <svg class="icon size-m violet-100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                    <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-down"></use>
-                </svg>
-            </a>
-
-            <? $renderer->render('Tabs', $arResult['PROPERTIES']['TABS']['VALUE']); ?>
-
-        </div>
-    </section>
-<? } ?>
-
 
 <? $helper->saveCache(); ?>

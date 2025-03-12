@@ -37,8 +37,6 @@ $APPLICATION->SetTitle("Платежи и переводы");
             "BENEFITS_HEADER",
             "BENEFITS",
             "MOBILE_ONLINE",
-            "TABS_HEADER",
-            "TABS",
             "BANNER_TEMPLATE",
             "BANNER_IMAGE",
             "BANNER_BACKGROUND",
@@ -114,6 +112,8 @@ $APPLICATION->SetTitle("Платежи и переводы");
 	],
 	false
 );?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_tabs.php'); ?>
 
 <? $APPLICATION->IncludeFile('/local/php_interface/include/block_ads_customers.php'); ?>
 

@@ -13,7 +13,6 @@
 $this->setFrameMode(true);
 
 use Dalee\Helpers\HeaderView;
-use Dalee\Helpers\IblockHelper;
 
 $headerView = new HeaderView($component);
 $helper = $headerView->helper();
@@ -25,7 +24,6 @@ $headerView->render(
 );
 ?>
 <section class="section-catalog d-flex flex-column py-6 py-sm-9 py-md-11 gap-4 gap-md-6 gap-lg-7" id="catalog-tabs">
-
     <!-- Табы -->
     <section class="section-catalog__tabs">
         <div class="container">
@@ -56,7 +54,6 @@ $headerView->render(
             </div>
         </div>
     </section>
-
     <!-- Список элементов -->
     <section class="section-catalog__list">
         <div class="container">
