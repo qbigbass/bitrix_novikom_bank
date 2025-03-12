@@ -180,7 +180,7 @@ $this->setFrameMode(true);
                             <div class="application-form__col col-12">
                                 <div class="form-check">
                                     <input class="form-check-input" id="express-guarantee_confirm" type="checkbox" name="REQUEST_CONFIRM" value="" required data-form-checkbox data-form-input>
-                                    <label class="form-check-label" for="express-guarantee_confirm">Подтверждаю согласие на <a class="text-decoration-none" href="<?= $arResult['PRIVACY_POLICY_LINK'] ?>">обработку персональных данных</a></label>
+                                    <label class="form-check-label" for="express-guarantee_confirm">Подтверждаю согласие на <a class="text-decoration-none" href="<?= $arResult['PRIVACY_POLICY_LINK'] ?>" target="_blank">обработку персональных данных</a></label>
                                     <div class="invalid-feedback w-100" aria-live="polite"></div>
                                 </div>
                             </div>

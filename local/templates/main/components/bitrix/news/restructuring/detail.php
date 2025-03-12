@@ -12,7 +12,6 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 ?>
-
 <?$APPLICATION->IncludeComponent(
     "bitrix:news.detail",
     "restructuring_detail",
@@ -68,6 +67,3 @@ $this->setFrameMode(true);
     ],
     $component
 );?>
-
-<?$APPLICATION->IncludeFile('/local/php_interface/include/cross_sale_products_block.php');?>
-

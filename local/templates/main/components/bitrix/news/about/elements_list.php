@@ -184,7 +184,6 @@ if (!empty($elementIds)) {
 <section class="section-layout bg-dark-30">
     <div class="container">
         <div class="row cards-gap">
-
             <? $APPLICATION->IncludeComponent(
                 "bitrix:news.list",
                 "about",
@@ -243,7 +242,6 @@ if (!empty($elementIds)) {
                 $component,
                 ["HIDE_ICONS" => "Y"]
             ); ?>
-
         </div>
         <div class="row d-md-none mt-4">
             <div class="col-12">

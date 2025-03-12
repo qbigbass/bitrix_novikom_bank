@@ -82,7 +82,7 @@ $headerView->render(
     && !empty($arResult['PROPERTIES']['STEPS']['DESCRIPTION'])
     && count($arResult['PROPERTIES']['STEPS']['VALUE']) == count($arResult['PROPERTIES']['STEPS']['DESCRIPTION'])) { ?>
 
-    <section class="section-restructuring-steps bg-dark-10 py-6 py-sm-9 py-md-11 py-xl-16">
+    <section id="section-steps" class="section-restructuring-steps bg-dark-10 py-6 py-sm-9 py-md-11 py-xl-16">
         <div class="container">
             <div class="row px-lg-6">
                 <h3 class="d-none d-md-flex"><?= $arResult['PROPERTIES']['STEPS_HEADER']['VALUE'] ?></h3>
@@ -117,23 +117,6 @@ $headerView->render(
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-<? } ?>
-
-<? if (!empty($arResult['PROPERTIES']['TABS']['VALUE'])) { ?>
-    <section class="section-layout js-collapsed-mobile">
-        <div class="container">
-            <h3 class="d-none d-md-flex mb-md-6 mb-lg-7 px-lg-6"><?= $arResult['PROPERTIES']['TABS_HEADER']['~VALUE'] ?></h3>
-            <a class="h3 d-flex align-items-center justify-content-between dark-100 d-md-none" data-bs-toggle="collapse" href="#additional-info-content" role="button" aria-expanded="false" aria-controls="additional-info-content">
-                <?= $arResult['PROPERTIES']['TABS_HEADER']['~VALUE'] ?>
-                <svg class="icon size-m violet-100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                    <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-down"></use>
-                </svg>
-            </a>
-
-            <? $renderer->render('Tabs', $arResult['PROPERTIES']['TABS']['VALUE'], null, ['elementId' => $arResult['ID']]); ?>
-
         </div>
     </section>
 <? } ?>

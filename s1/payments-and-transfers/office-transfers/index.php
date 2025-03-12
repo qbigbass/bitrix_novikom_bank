@@ -54,8 +54,6 @@ $APPLICATION->IncludeComponent(
         "PAGER_TITLE" => "Страница",
         "PROPERTY_CODE" => [
             0 => "STEPS",
-            1 => "TABS_HEADER",
-            2 => "TABS",
         ],
         "SET_BROWSER_TITLE" => "N",
         "SET_CANONICAL_URL" => "N",
@@ -73,6 +71,8 @@ $APPLICATION->IncludeComponent(
     false
 );
 ?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_tabs.php'); ?>
 
 <? $APPLICATION->IncludeFile('/local/php_interface/include/block_ads_customers.php'); ?>
 

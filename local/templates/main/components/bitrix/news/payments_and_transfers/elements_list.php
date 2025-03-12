@@ -29,7 +29,6 @@ $headerView->render(
 <section class="section-layout bg-dark-10">
     <div class="container">
         <div class="row cards-gutter">
-
             <?$APPLICATION->IncludeComponent(
                 "bitrix:news.list",
                 "payments_and_transfers_list",
@@ -142,6 +141,5 @@ if (!empty($arItems)) {
         </picture>
     </section>
 <? } ?>
-
 
 <? $helper->saveCache(); ?>

@@ -34,7 +34,7 @@ const TABS_PLACEHOLDERS_MATCH = [
 
 
 /** @var float Ключевая ставка % */
-const UF_KEY_RATE = 18;
+const UF_KEY_RATE = 21;
 /** @var string Согласие на обработку персональных данных */
 const UF_PRIVACY_POLICY_LINK = '/upload/politika_v_obrabotki_personalnih_dannih.pdf';
 /**

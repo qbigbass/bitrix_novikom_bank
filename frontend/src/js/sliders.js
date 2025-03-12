@@ -176,6 +176,13 @@ function initHeroBanner() {
             },
         },
         on: {
+
+            init: function () {
+                if (this.slides.length <= 1) {
+                    // Скрываем пагинацию, если слайдов меньше или равно 1
+                    this.pagination.el.style.display = 'none';
+                }
+            },
             slideChange: function () {
                 const activeSlide = this.slides[this.activeIndex];
                 const links = activeSlide.querySelectorAll('a');

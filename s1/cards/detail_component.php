@@ -59,8 +59,6 @@ $APPLICATION->IncludeComponent(
             "CARD_RECEIPT_OPTIONS",
             "CONVENIENCES_HEADING",
             "CONVENIENCES",
-            "TABS_HEADING",
-            "TABS",
             "BONUS_PROGRAMS_HEADING",
             "BONUS_PROGRAMS",
             "STEPS_HEADING",

@@ -95,8 +95,6 @@ if ($idRelationSection > 0) {
                 "BANNER_HEADER",
                 "BANNER_TEXT",
                 "BANNER_IMG",
-                "TABS_HEADER",
-                "TABS",
             ],
             "DETAIL_URL" => $arResultCC["FOLDER"].$arResultCC["URL_TEMPLATES"]["detail"],
             "SECTION_URL" => $arResultCC["FOLDER"].$arResultCC["URL_TEMPLATES"]["section"],

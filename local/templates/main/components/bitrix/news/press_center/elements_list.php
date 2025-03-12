@@ -25,12 +25,12 @@ $headerView->render(
 );
 
 global $activeFilter;
-$condition = !empty($_SESSION['section_page']['/special-offers/']) && $_SESSION['section_page']['/special-offers/'] == '/ended/'
-    ? '<=PROPERTY_END_DATE'
-    : '>=PROPERTY_END_DATE';
-
-$activeFilter = [
-    $condition => date('Y-m-d H:i:s'),
+$currentDate = date("Y-m-d H:i:s");
+$activeFilter['<=PROPERTY_PUBLICATION_DATE'] = $currentDate;
+$activeFilter[] = [
+    'LOGIC' => 'OR',
+    '>=PROPERTY_END_DATE' => $currentDate,
+    'PROPERTY_END_DATE' => false
 ];
 ?>
 
@@ -43,10 +43,8 @@ $activeFilter = [
         </div>
     </div>
 </section>
-
 <section class="section-catalog d-flex flex-column gap-7 py-6 pb-sm-9 pb-md-11 pt-md-5 pt-lg-7" id="catalog-tabs">
-
-<!-- Табы -->
+    <!-- Табы -->
     <section class="section-catalog__tabs">
         <div class="container">
             <div class="row">
@@ -99,7 +97,6 @@ $activeFilter = [
             </div>
         </div>
     </section>
-
     <!-- Список элементов -->
     <section class="section-catalog__list">
         <div class="container">
