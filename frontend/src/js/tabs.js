@@ -72,7 +72,7 @@ function updateHash() {
             // Получаем хэш из атрибута href
             const hash = event.currentTarget.getAttribute('href');
 
-            if (hash && hash.includes('#')) {
+            if (hash && hash.includes('#') && !hash.includes('#links')) {
                 // Изменяем хэш в адресной строке
                 history.pushState(null, null, hash);
             }
