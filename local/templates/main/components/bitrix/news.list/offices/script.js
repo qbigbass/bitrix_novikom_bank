@@ -283,8 +283,8 @@ class OfficesMap {
             }
         }
 
-        this.renderOfficesList()
-        this.renderOfficesPlacemarks(init)
+        this.renderOfficesList();
+        this.renderOfficesPlacemarks();
         this.saveFilterFormValues();
     }
 
@@ -297,7 +297,8 @@ class OfficesMap {
         this.myMap.geoObjects.removeAll()
     }
 
-    renderOfficesPlacemarks(init = false) {
+    renderOfficesPlacemarks() {
+        this.clusterer.removeAll();
         this.clearOfficesPlacemarks();
 
         let iconDefaultSize = [40, 48] // Размер иконки
@@ -319,11 +320,20 @@ class OfficesMap {
                 location.href = item.url
             });
 
-            // Добавляем каждую метку на карту
-            this.myMap.geoObjects.add(myPlacemark);
+            // Проверяем тип метки
+            if (item.type === 'atm') {
+                // Если тип "atm", добавляем метку в кластер
+                this.clusterer.add(myPlacemark);
+            } else {
+                // Если другой тип, добавляем метку напрямую на карту
+                this.myMap.geoObjects.add(myPlacemark);
+            }
         })
 
-        if (init) return false; // При первой инициализации не устанавливаем границы
+        // Добавляем кластер на карту, если есть метки типа "atm"
+        if (this.clusterer.getGeoObjects().length > 0) {
+            this.myMap.geoObjects.add(this.clusterer);
+        }
 
         // Устанавливаем границы карты, чтобы все объекты были видны
         if (this.myMap.geoObjects.getLength() > 0) {
@@ -336,9 +346,6 @@ class OfficesMap {
                 }
             });
         }
-
-        // this.clusterer.add(this.geoObjects)
-        // this.myMap.geoObjects.add(this.clusterer)
     }
 
     renderOfficesList() {
