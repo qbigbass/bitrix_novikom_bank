@@ -23,13 +23,20 @@ $headerView->render(
 );
 
 global $activeFilter;
-$condition = !empty($_SESSION['section_page']['/special-offers/']) && $_SESSION['section_page']['/special-offers/'] == '/ended/'
-    ? '<=PROPERTY_END_DATE'
-    : '>=PROPERTY_END_DATE';
+$currentDate = date("Y-m-d H:i:s");
 
-$activeFilter = [
-    $condition => date('Y-m-d H:i:s'),
-];
+if (!empty($_SESSION['section_page']['/special-offers/']) && $_SESSION['section_page']['/special-offers/'] === '/ended/') {
+    // Завершенные "Спецпредложения"
+    $activeFilter['<PROPERTY_END_DATE'] = $currentDate;
+} else {
+    // Актуальные "Спецпредложения" и "Новости"
+    $activeFilter['<=PROPERTY_PUBLICATION_DATE'] = $currentDate;
+    $activeFilter[] = [
+        'LOGIC' => 'OR',
+        '>=PROPERTY_END_DATE' => $currentDate,
+        'PROPERTY_END_DATE' => false
+    ];
+}
 ?>
 
 <section class="section-catalog d-flex flex-column gap-7 py-6 py-sm-9 py-md-11">

@@ -488,34 +488,6 @@ $headerView
 
 } ?>
 
-<!-- Вкладки -->
-<? if (!empty($arResult['PROPERTIES']['TABS']['VALUE'])) { ?>
-    <section class="section-layout js-collapsed-mobile <?= $arResult['PROPERTIES']['CLASS_BLOCK_TABS']['VALUE'] ?>">
-        <div class="container">
-            <h3 class="d-none d-md-flex mb-md-6 mb-lg-7 px-lg-6"><?= $arResult['PROPERTIES']['TABS_HEADER']['~VALUE'] ?></h3>
-            <a class="h3 d-flex align-items-center justify-content-between dark-100 d-md-none" data-bs-toggle="collapse" href="#additional-info-content" role="button" aria-expanded="false" aria-controls="additional-info-content">
-                <?= $arResult['PROPERTIES']['TABS_HEADER']['~VALUE'] ?>
-                <svg class="icon size-m violet-100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                    <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-down"></use>
-                </svg>
-            </a>
-            <? $renderer->render('Tabs', $arResult['PROPERTIES']['TABS']['VALUE']); ?>
-        </div>
-        <?
-        $imgPath ="/patterns/section-2/pattern-light";
-
-        if (!empty($arResult["PROPERTIES"]["PATH_IMG_BLOCK_TABS"]["VALUE"])) {
-            $imgPath = $arResult["PROPERTIES"]["PATH_IMG_BLOCK_TABS"]["VALUE"];
-        }
-        ?>
-        <picture class="pattern-bg pattern-bg--hide-mobile">
-            <source srcset="/frontend/dist/img<?= $imgPath ?>-s.svg" media="(max-width: 767px)">
-            <source srcset="/frontend/dist/img<?= $imgPath ?>-m.svg" media="(max-width: 1199px)">
-            <img src="/frontend/dist/img<?= $imgPath ?>-l.svg" alt="bg pattern" loading="lazy">
-        </picture>
-    </section>
-<? } ?>
-
 <!-- Сноска (3-ое поле и далее) -->
 <? if (!empty($arResult['PROPERTIES']['QUOTE_TEXT_3']['VALUE'])) {
     $text = $arResult['PROPERTIES']['QUOTE_TEXT_3']['~VALUE']['TEXT'];
@@ -541,17 +513,17 @@ $headerView
                             <div class="accordion-item">
                                 <div class="accordion-header">
                                     <button
-                                        class="accordion-button <? if ($i !== 0) : ?> collapsed<? endif ?>"
+                                        class="accordion-button collapsed"
                                         type="button"
                                         data-bs-toggle="collapse"
                                         data-bs-target="#<?= $elemId?>"
-                                        aria-expanded
+                                        aria-expanded="false"
                                         aria-controls="<?= $elemId?>"
                                     >
                                         <span class="fw-bold h4"><?= $arData["TITLE"]?></span>
                                     </button>
                                 </div>
-                                <div class="accordion-collapse collapse <? if ($i === 0) : ?> show <? endif ?>" id="<?= $elemId ?>" data-bs-parent="#accordion-trust-management">
+                                <div class="accordion-collapse collapse" id="<?= $elemId ?>" data-bs-parent="#accordion-trust-management">
                                     <div class="accordion-body">
                                         <div class="rte rte--accordion">
                                             <?= $arData["TEXT"]?>

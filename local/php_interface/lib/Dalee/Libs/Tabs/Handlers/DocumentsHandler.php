@@ -79,17 +79,14 @@ class DocumentsHandler implements PropertyHandlerInterface
 
         foreach ($this->property['LINK_SECTION_VALUE'] as $key => $section) {
             if (!empty($section['ELEMENTS'])) {
-                $buttonShowClass = ($key == $this->firstSectionKey) ? 'show' : 'collapsed';
-                $ariaExpanded = ($key == $this->firstSectionKey) ? 'aria-expanded="true"' : '';
-                $accordionShowClass = ($key == $this->firstSectionKey) ? 'show' : '';
                 $sectionsHtml .=
                     '<div class="accordion-item">
                         <div class="accordion-header">
-                            <button class="accordion-button ' . $buttonShowClass . '" type="button" data-bs-toggle="collapse" data-bs-target="#' . $section['ID'] . '" aria-controls="' . $section['ID'] . '" ' . $ariaExpanded . '>'
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#' . $section['ID'] . '" aria-controls="' . $section['ID'] . '" aria-expanded="false">'
                                 . $section['NAME'] .
                             '</button>
                         </div>
-                        <div class="accordion-collapse collapse ' . $accordionShowClass . '" id="' . $section['ID'] . '" data-bs-parent="#accordion-' . $this->property['ID'] . '">
+                        <div class="accordion-collapse collapse" id="' . $section['ID'] . '" data-bs-parent="#accordion-' . $this->property['ID'] . '">
                             <div class="accordion-body">
                                 <p class="text-m mb-0 dark-70">'
                                     . $section['DESCRIPTION'] .

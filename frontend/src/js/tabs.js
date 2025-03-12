@@ -4,6 +4,9 @@ const ELEMENTS_TAB = {
     polygonContainer: '.js-polygon-container-polygon',
     tabSlider: '.js-tabs-slider',
     tabContent: '.tab-pane',
+    tabLink: '.tabs-panel__list-item-link',
+    tabLinkWrapper: '.tabs-panel__list',
+    mobileWidth: '767px',
 }
 
 const updatePolygonInTabContent = (el) => {
@@ -59,4 +62,65 @@ function initTabsContent() {
         const collapsedContent = el.querySelector(ELEMENTS_TAB.collapse);
         resizePolygonInTabContent(collapsedContent);
     });
+}
+
+function updateHash() {
+    const tabLinks = document.querySelectorAll(ELEMENTS_TAB.tabLink);
+
+    tabLinks.forEach((link, index) => {
+        link.addEventListener('click', (event) => {
+            // Получаем хэш из атрибута href
+            const hash = event.currentTarget.getAttribute('href');
+
+            if (hash && hash.includes('#') && !hash.includes('#links')) {
+                // Изменяем хэш в адресной строке
+                history.pushState(null, null, hash);
+            }
+        });
+    });
+}
+
+function activateTabFromHash() {
+    // Получаем фрагмент URL
+    const hash = window.location.hash;
+
+    // Проверяем, есть ли фрагмент
+    if (!hash) return false;
+
+    // Ищем элемент с соответствующим href
+    const tabLink = document.querySelector(`a[href="${hash}"]`);
+
+    if (!tabLink) return false;
+
+    const tabWrapper = tabLink.closest(ELEMENTS_TAB.tabLinkWrapper);
+    const tabLinks = tabWrapper?.querySelectorAll(ELEMENTS_TAB.tabLink);
+    const isMobile = window.matchMedia(`(max-width: ${ELEMENTS_TAB.mobileWidth})`).matches;
+    const tabSlider = tabLink.closest(ELEMENTS_TAB.tabSlider);
+
+    if (isMobile) {
+        const collapsedSection = tabLink.closest(ELEMENTS_TAB.collapsedSection);
+        const collapseTrigger = collapsedSection?.querySelector('[data-bs-toggle="collapse"]');
+        collapseTrigger?.click();
+    }
+
+    tabLink.click();
+    const activeLink = Array.from(tabLinks).find(link => link.classList.contains('active'));
+
+    if (activeLink && tabSlider) {
+        const index = Array.from(tabLinks).indexOf(activeLink);
+        setTimeout(() => {
+            tabSlider.swiper.slideTo(index);
+        }, 400);
+    }
+
+    setTimeout(() => {
+        // Получаем координаты элемента tabLink
+        const rect = tabLink.getBoundingClientRect();
+        const scrollTop = window.scrollY || window.pageYOffset;
+        // Прокручиваем только по вертикали
+        window.scrollTo({
+            top: rect.top + scrollTop,
+            behavior: 'smooth'
+        });
+    }, 100)
 }

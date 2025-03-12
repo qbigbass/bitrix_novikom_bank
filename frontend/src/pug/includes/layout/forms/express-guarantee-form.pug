@@ -127,7 +127,7 @@ include ../../../components/forms/textarea
     }
 
 form(action="/" method="POST" novalidate id="express-guarantee-form" data-form data-form-express-guarantee).application-form
-    .application-form__step(data-form-step data-form-validate-group hidden)
+    .application-form__step(data-form-step data-form-validate-group)
         - var step1 = expressGuaranteeForm.step1;
         .row.g-1.g-md-2.g-lg-2_5
             .application-form__col.col-12
@@ -149,7 +149,7 @@ form(action="/" method="POST" novalidate id="express-guarantee-form" data-form d
         .d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-5.column-gap-lg-6.mt-6.mt-lg-7.px-md-2.px-lg-0
             button.btn.btn-primary.btn-lg-lg.w-100.w-md-auto(type="button" disabled aria-disabled="true" data-form-button data-form-step-button-next) Продолжить
             div.text-m.orange-100.text-center(data-form-error)
-    .application-form__step(data-form-step data-form-validate-group)
+    .application-form__step(data-form-step data-form-validate-group hidden)
         - var step2 = expressGuaranteeForm.step2;
         .row.g-1.g-md-2.g-lg-2_5
             .application-form__col.col-12

@@ -37,9 +37,7 @@ $APPLICATION->SetTitle('Новиком сегодня');
             "IMAGES",
             "QUOTE",
             "EXCLAMATION",
-            "TABS",
             "BENEFITS",
-            "TABS_HEADER",
             "NEWS_SHOW",
             "NEWS_LIST",
         ],
@@ -106,6 +104,8 @@ $APPLICATION->SetTitle('Новиком сегодня');
     ],
     false
 ); ?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_tabs.php'); ?>
 
 <? $APPLICATION->IncludeFile('/local/php_interface/include/block_ads_customers.php'); ?>
 

@@ -30,7 +30,7 @@ foreach ($block['elements'] as $element) {
                             <div class="a-collapsed-item js-a-collapsed-item">
                                 <div class="benefit-text-card">
                                     <div class="benefit-text-card__icon">
-                                        <img src="<?= $element['imgPath'] ?>" class="a-icon size-xxl" alt="<?= $element['title'] ?>" loading="lazy">
+                                        <img src="<?= $element['imgPath'] ?>" class="a-icon size-xxl" alt="<?= $element['title'] ?>">
                                     </div>
                                     <h3 class="benefit-text-card__title headline-3"><?= $element['title'] ?></h3>
                                     <p class="benefit-text-card__description body-m-light"><?= $element['desc'] ?></p>
@@ -55,6 +55,6 @@ foreach ($block['elements'] as $element) {
     <picture class="pattern-bg">
         <source srcset="/frontend/dist/assets/patterns/section/pattern-light-s.svg" media="(max-width: 767px)">
         <source srcset="/frontend/dist/assets/patterns/section/pattern-light-m.svg" media="(max-width: 1199px)">
-        <img src="/frontend/dist/assets/patterns/section/pattern-light-l.svg" alt="bg pattenr" loading="lazy">
+        <img src="/frontend/dist/assets/patterns/section/pattern-light-l.svg" alt="bg pattern" loading="lazy">
     </picture>
 </section>

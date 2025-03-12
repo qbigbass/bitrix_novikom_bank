@@ -186,7 +186,7 @@ class HeaderView
                     </div>
 
                     <? if (!empty($headerData['picture'])) { ?>
-                        <img class="banner-product__image" src="<?= $headerData['picture']['SRC'] ?? '' ?>" alt="<?= $headerData['picture']['ALT'] ?? '' ?>" loading="lazy">
+                        <img class="banner-product__image" src="<?= $headerData['picture']['SRC'] ?? '' ?>" alt="<?= $headerData['picture']['ALT'] ?? '' ?>">
                     <? } ?>
 
                     <?= $this->renderBriefConditions($headerData['briefConditions']) ?>
@@ -284,7 +284,7 @@ class HeaderView
 
                     <? if (!empty($headerData['picture'])) { ?>
                         <div class="d-none d-sm-block col-12 col-sm-6 col-md-4">
-                            <img class="banner-text__image position-relative w-auto float-end" src="<?= $headerData['picture']['SRC'] ?>" alt="<?= $headerData['picture']['ALT'] ?>" loading="lazy">
+                            <img class="banner-text__image position-relative w-auto float-end" src="<?= $headerData['picture']['SRC'] ?>" alt="<?= $headerData['picture']['ALT'] ?>">
                         </div>
                     <? } ?>
 

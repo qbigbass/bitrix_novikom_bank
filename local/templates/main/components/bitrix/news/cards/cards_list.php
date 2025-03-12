@@ -115,8 +115,6 @@ $headerView->render(
     </div>
 </section>
 
-<? $renderer->render('Tabs', null, 'cards', ['whole_section' => true]); ?>
-
 <? $APPLICATION->IncludeFile('/local/php_interface/include/request_call.php'); ?>
 
 <? $helper->saveCache(); ?>

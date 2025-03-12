@@ -176,6 +176,13 @@ function initHeroBanner() {
             },
         },
         on: {
+
+            init: function () {
+                if (this.slides.length <= 1 && this.pagination.el) {
+                    // Скрываем пагинацию, если слайдов меньше или равно 1
+                    this.pagination.el.style.display = 'none';
+                }
+            },
             slideChange: function () {
                 const activeSlide = this.slides[this.activeIndex];
                 const links = activeSlide.querySelectorAll('a');
@@ -360,6 +367,7 @@ function initTabsSlider() {
                 });
 
                 this.activeIndex = indexActive;
+                this.slideTo(this.activeIndex);
             },
         },
     });

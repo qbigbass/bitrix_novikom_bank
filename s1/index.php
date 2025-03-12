@@ -269,6 +269,8 @@ $APPLICATION->IncludeComponent(
     </div>
 </section>
 
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_tabs.php'); ?>
+
 <? $APPLICATION->IncludeFile('/local/php_interface/include/block_special_offers.php'); ?>
 
 <? $APPLICATION->IncludeFile('/local/php_interface/include/block_ads_customers.php',

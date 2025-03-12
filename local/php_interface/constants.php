@@ -34,7 +34,7 @@ const TABS_PLACEHOLDERS_MATCH = [
 
 
 /** @var float Ключевая ставка % */
-const UF_KEY_RATE = 18;
+const UF_KEY_RATE = 21;
 /** @var string Согласие на обработку персональных данных */
 const UF_PRIVACY_POLICY_LINK = '/upload/politika_v_obrabotki_personalnih_dannih.pdf';
 /**
@@ -65,4 +65,6 @@ const UF_PB_EMAIL = 'vip@novikom.ru';
 const UF_PB_QR_IMAGE = '/frontend/dist/img/pb-images/pb-contact-qr.png';
 /** @var string Картинка с картой Private Banking */
 const UF_PB_MAP_IMAGE = '/frontend/dist/img/pb-images/pb-contact-map.png';
+/** @var array Соответствие тем формы обратной связи и шаблонов писем */
+const FEEDBACK_FORM_MESSAGES = ['claim' => 90, 'question' => 101, 'gratitude' => 102];
 

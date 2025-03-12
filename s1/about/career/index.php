@@ -109,6 +109,8 @@ $APPLICATION->SetTitle('Карьера в НОВИКОМЕ');
     false,
 ); ?>
 
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_tabs.php'); ?>
+
 <? $APPLICATION->IncludeFile('/local/php_interface/include/block_ads_customers.php'); ?>
 
 <? $APPLICATION->IncludeFile('/local/php_interface/include/block_cross_sale.php'); ?>

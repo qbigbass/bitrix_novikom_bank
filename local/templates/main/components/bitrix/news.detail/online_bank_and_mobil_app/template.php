@@ -65,30 +65,4 @@ $headerView->render(
     </section>
 <? endif; ?>
 
-<? if (!empty($arResult['DISPLAY_PROPERTIES']['TABS']['VALUE'])) : ?>
-    <section class="section-layout js-collapsed-mobile">
-        <div class="container">
-            <h3 class="d-none d-md-block mb-md-6 mb-lg-7 px-lg-6">
-                <?= $arResult['DISPLAY_PROPERTIES']['TABS_HEADER']['VALUE'] ?? 'Установка'; ?>
-            </h3>
-            <a class="h3 d-flex align-items-center justify-content-between dark-100 d-md-none" data-bs-toggle="collapse"
-               href="#additional-info-content" role="button" aria-expanded="false"
-               aria-controls="additional-info-content">
-                Установка
-                <svg class="icon size-m violet-100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                    <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-down"></use>
-                </svg>
-            </a>
-
-            <? $renderer->render('Tabs', $arResult['PROPERTIES']['TABS']['VALUE']); ?>
-
-        </div>
-        <picture class="pattern-bg pattern-bg--hide-mobile">
-            <source srcset="/frontend/dist/img/patterns/section-2/pattern-light-s.svg" media="(max-width: 767px)">
-            <source srcset="/frontend/dist/img/patterns/section-2/pattern-light-m.svg" media="(max-width: 1199px)">
-            <img src="/frontend/dist/img/patterns/section-2/pattern-light-l.svg" alt="bg pattern" loading="lazy">
-        </picture>
-    </section>
-<? endif; ?>
-
 <? $helper->saveCache(); ?>

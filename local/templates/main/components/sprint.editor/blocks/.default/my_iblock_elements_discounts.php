@@ -18,7 +18,7 @@ $elements = Sprint\Editor\Blocks\IblockElements::getList($block, [
                     <? foreach ($elements as $element) {?>
                         <div class="swiper-slide js-swiper-slide">
                             <a class="discount-link" href="#">
-                                <img class="discount-link__icon" src="<?= CFile::GetPath($element['PREVIEW_PICTURE']) ?>" alt="<?= $element['NAME'] ?>" loading="lazy">
+                                <img class="discount-link__icon" src="<?= CFile::GetPath($element['PREVIEW_PICTURE']) ?>" alt="<?= $element['NAME'] ?>">
                                 <span class="discount-link__text headline-4"><?= $element['NAME'] ?></span>
                             </a>
                         </div>

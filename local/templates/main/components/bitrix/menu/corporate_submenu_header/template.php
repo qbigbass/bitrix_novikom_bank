@@ -12,7 +12,7 @@
                 $parentDir = reset($path);
                 $isActive = $parentDir === basename($notHiddenItem['LINK']);
             } else {
-                //$isActive = $notHiddenItem['LINK'] === $APPLICATION->GetCurDir();
+                $isActive = $notHiddenItem['LINK'] === $APPLICATION->GetCurDir();
             }
             ?>
             <? if ($issetChildren) { ?>

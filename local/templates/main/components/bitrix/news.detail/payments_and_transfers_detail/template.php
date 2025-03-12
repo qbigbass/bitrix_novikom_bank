@@ -51,7 +51,6 @@ $renderer = new Renderer($APPLICATION, $component);
                     class="banner-product__image"
                     src="<?= $arResult['DISPLAY_PROPERTIES']['BANNER_IMAGE']['FILE_VALUE']['SRC']; ?>"
                     alt="<?= htmlspecialchars($arResult['~NAME']); ?>"
-                    loading="lazy"
                 >
             <? endif; ?>
         </div>
@@ -283,21 +282,6 @@ $renderer = new Renderer($APPLICATION, $component);
         </div>
     </section>
 <? endif; ?>
-
-<? if (!empty($arResult['PROPERTIES']['TABS']['VALUE'])) { ?>
-    <section class="section-layout js-collapsed-mobile">
-        <div class="container">
-            <h3 class="d-none d-md-flex mb-md-6 mb-lg-7 px-lg-6"><?= $arResult['PROPERTIES']['TABS_HEADER']['~VALUE'] ?></h3>
-            <a class="h3 d-flex align-items-center justify-content-between dark-100 d-md-none" data-bs-toggle="collapse" href="#additional-info-content" role="button" aria-expanded="false" aria-controls="additional-info-content">
-                <?= $arResult['PROPERTIES']['TABS_HEADER']['~VALUE'] ?>
-                <svg class="icon size-m violet-100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                    <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-down"></use>
-                </svg>
-            </a>
-            <? $renderer->render('Tabs', $arResult['PROPERTIES']['TABS']['VALUE']); ?>
-        </div>
-    </section>
-<? } ?>
 
 <? if (!empty($arResult['PROPERTIES']['QUOTE_TEXT_BOTTOM']['VALUE'])) { ?>
     <section class="section-layout">

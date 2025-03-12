@@ -2,12 +2,15 @@ const FEEDBACK_ELEMS = {
     formFeedback: '[data-form-feedback]',
 
     radiosPerson: 'input[name="PERSON"]',
+    radiosTopic: 'input[name="TOPIC"]',
     radiosOtherEmail: 'input[name="OTHER_EMAIL"]',
 
     inputBirthday: 'input[name="BIRTHDAY"]',
     inputInn: 'input[name="INN"]',
     inputOrganization: 'input[name="ORGANIZATION"]',
     inputReplyEmail: 'input[name="REPLY_EMAIL"]',
+    fieldsBlock: '#feedback-fields',
+    topicText: '.js-topic-text',
 }
 
 function initFormFeedback() {
@@ -21,9 +24,12 @@ function initFormFeedback() {
 
 function initFormPerson(form) {
     const personRadios = form.querySelectorAll(FEEDBACK_ELEMS.radiosPerson)
+    const topicRadios = form.querySelectorAll(FEEDBACK_ELEMS.radiosTopic)
     const colInputBirthday = form.querySelector(FEEDBACK_ELEMS.inputBirthday).closest('.application-form__col')
     const colInputInn = form.querySelector(FEEDBACK_ELEMS.inputInn).closest('.application-form__col')
     const colInputOrganization = form.querySelector(FEEDBACK_ELEMS.inputOrganization).closest('.application-form__col')
+    const formFieldsBlock = form.querySelector(FEEDBACK_ELEMS.fieldsBlock);
+    const topicText = form.querySelectorAll(FEEDBACK_ELEMS.topicText);
 
     personRadios.forEach(radio => {
         radio.addEventListener('change', () => {
@@ -35,6 +41,23 @@ function initFormPerson(form) {
                 colInputBirthday.hidden = false
                 colInputInn.hidden = true
                 colInputOrganization.hidden = true
+            }
+            if (formFieldsBlock) {
+                formFieldsBlock.classList.remove('d-none');
+            }
+        })
+    })
+    topicRadios.forEach(radio => {
+        radio.addEventListener('change', () => {
+            const id = radio.id;
+            if (id) {
+                const textContainer = document.querySelector('#' + id + '-text');
+                if (!!textContainer) {
+                    topicText.forEach(el => {
+                        el.hidden = true;
+                    })
+                    textContainer.hidden = false;
+                }
             }
         })
     })

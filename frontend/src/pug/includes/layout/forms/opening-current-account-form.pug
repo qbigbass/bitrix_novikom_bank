@@ -1,0 +1,78 @@
+include ../../../components/forms/input
+include ../../../components/forms/select
+include ../../../components/forms/captcha
+include ../../../components/forms/confirm
+
+-
+    var consultationForm = {
+        formName: "opening-current-account",
+        selects: [
+            {
+                id: "office",
+                label: "Офис",
+                options: ["Москва", "Москва", "Москва"],
+                required: true,
+            },
+
+        ],
+        inputs: [
+            {
+                id: "fio",
+                label: "ФИО контактного лица",
+                placeholder: "Введите ФИО контактного лица",
+                required: true,
+            },
+            {
+                id: "inn",
+                name: "INN",
+                label: "ИНН",
+                placeholder: "Введите ИНН",
+                required: true,
+                mask: "inn"
+            },
+            {
+                id: "phone",
+                label: "Телефон",
+                placeholder: "+7",
+                type: "tel",
+                required: true,
+                mask: "phone",
+                pattern: "\\+7\\s\\(\\d{3}\\)\\s\\d{3}-\\d{2}-\\d{2}",
+                errorMessage: "Неверный формат",
+            },
+            {
+                id: "e-mail",
+                label: "E-mail контактного лица",
+                placeholder: "Введите e-mail контактного лица",
+                type: "email",
+                pattern: "[a-zA-Z0-9._%\\+\\-]+@[a-zA-Z0-9.\\-]+\\.[a-zA-Z]{2,}",
+                errorMessage: "Введите корректный адрес электронной почты",
+            },
+        ],
+    }
+
+form(action="/" method="POST" novalidate id="opening-current-account-form" data-form).application-form
+    .application-form__step(data-form-validate-group)
+        .row.g-1.g-md-2.g-lg-2_5
+            .application-form__col.col-12
+                +input(consultationForm.inputs[0], consultationForm.formName)
+            each item in consultationForm.inputs.slice(1)
+                .application-form__col.col-12.col-md-6
+                    +input(item, consultationForm.formName)
+            .application-form__col.col-12.col-md-6
+                +select(consultationForm.selects[0], consultationForm.formName)
+            .application-form__col.col-12
+                +captcha(consultationForm.formName)
+            .application-form__col.col-12
+                +confirm(consultationForm.formName)
+        .d-flex.flex-column.align-items-center.flex-md-row.row-gap-3.column-gap-5.column-gap-lg-6.mt-6.mt-lg-7.px-md-2.px-lg-0
+            button.btn.btn-primary.btn-lg-lg.w-100.w-md-auto(type="submit" disabled aria-disabled="true" data-form-button) Отправить
+            div.text-m.orange-100.text-center(data-form-error)
+    div(
+        hidden
+        aria-hidden="true"
+        data-success-title="Ваша заявка успешно отправлена!"
+        data-success-info="Мы ответим на вашу заявку, по выбранному способу связи, как только получим и обработаем её"
+        data-error-title="Не удалось отправить заявку"
+        data-error-info="Проверьте правильно ли указаны все данные и отправьте обращение снова"
+    ).js-message

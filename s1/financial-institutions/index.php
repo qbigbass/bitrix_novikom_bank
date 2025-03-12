@@ -49,8 +49,6 @@ $APPLICATION->IncludeComponent(
             "BANNER_HEADER",
             "BANNER_TEXT",
             "BANNER_IMG",
-            "TABS_HEADER",
-            "TABS",
         ],
         "DETAIL_SET_CANONICAL_URL" => "N",
         "DISPLAY_BOTTOM_PAGER" => "Y",
@@ -118,6 +116,8 @@ $APPLICATION->IncludeComponent(
     ["HIDE_ICONS" => "Y"]
 );
 ?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_tabs.php'); ?>
 
 <? $APPLICATION->IncludeFile('/local/php_interface/include/block_ads_customers.php'); ?>
 

@@ -27,7 +27,6 @@ class OfficesMap {
         this.initOfficesSearchFilter()
         this.initOfficesServicesFilter()
         this.setCheckboxesFromFilter();
-        this.renderOfficesPlacemarks()
     }
 
     setCheckboxesFromFilter() {
@@ -285,7 +284,7 @@ class OfficesMap {
         }
 
         this.renderOfficesList()
-        this.renderOfficesPlacemarks()
+        this.renderOfficesPlacemarks(init)
         this.saveFilterFormValues();
     }
 
@@ -298,15 +297,16 @@ class OfficesMap {
         this.myMap.geoObjects.removeAll()
     }
 
-    renderOfficesPlacemarks() {
-        this.clearOfficesPlacemarks()
+    renderOfficesPlacemarks(init = false) {
+        this.clearOfficesPlacemarks();
 
         let iconDefaultSize = [40, 48] // Размер иконки
         let iconDefaultOffset = [-20, -24] // Смещение иконки
 
+
         this.filteredOffices.forEach(item => {
             let iconType = item.type ?? 'office'; // Тип иконки
-            let iconDefaultPath = `/frontend/dist/img/${iconType}-pin.svg` // Путь к иконке
+            let iconDefaultPath = `/frontend/dist/img/${iconType}-pin.svg`; // Путь к иконке
 
             let myPlacemark = new ymaps.Placemark(item.coords, {}, {
                 iconLayout: 'default#image',
@@ -317,19 +317,24 @@ class OfficesMap {
 
             myPlacemark.events.add(['click'], (e) => {
                 location.href = item.url
-            })
+            });
 
-            this.myMap.geoObjects.add(myPlacemark)
+            // Добавляем каждую метку на карту
+            this.myMap.geoObjects.add(myPlacemark);
         })
 
-        if (this.myMap.geoObjects.length) {
+        if (init) return false; // При первой инициализации не устанавливаем границы
+
+        // Устанавливаем границы карты, чтобы все объекты были видны
+        if (this.myMap.geoObjects.getLength() > 0) {
             this.myMap.setBounds(this.myMap.geoObjects.getBounds(), {
                 checkZoomRange: true
             }).then(() => {
+                // Ограничиваем зум, если он больше 14
                 if (this.myMap.getZoom() > 14) {
-                    this.myMap.setZoom(14)
+                    this.myMap.setZoom(14);
                 }
-            })
+            });
         }
 
         // this.clusterer.add(this.geoObjects)
@@ -416,7 +421,6 @@ class OfficesMap {
         for (const [key, value] of Object.entries(this.services)) {
             this.filterFormValues[key] = $('#filter-service-' + key).is(':checked')
         }
-        // console.log('updateFilterFormValues:', this.filterFormValues)
     }
 }
 

@@ -221,9 +221,8 @@ function getStepperIcons(int $stepIndex): string
 
 function getElementIdsIncludedArea(int $iblock): array
 {
-    $elementIds = [];
-
     global $APPLICATION;
+    $elementIds = [];
     $arPathPage = array_filter(explode("/", $APPLICATION->GetCurPage()));
     $startPathUrl = current($arPathPage) ?: 'main';
     $finalPathUrl = end($arPathPage) ?: 'main';
@@ -239,7 +238,11 @@ function getElementIdsIncludedArea(int $iblock): array
     ) {
         $currentDate = date("Y-m-d H:i:s");
         $arFilter['<=PROPERTY_PUBLICATION_DATE'] = $currentDate;
-        $arFilter['>=PROPERTY_END_DATE'] = $currentDate;
+        $arFilter[] = [
+            'LOGIC' => 'OR',
+            '>=PROPERTY_END_DATE' => $currentDate,
+            'PROPERTY_END_DATE' => false
+        ];
     }
 
     $parentSectionId = 0;

@@ -3,13 +3,11 @@ require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 global $APPLICATION;
 $APPLICATION->SetTitle('Документы');
 ?>
-
 <section class="banner-text bg-linear-blue border-green">
     <div class="container banner-text__container position-relative z-2">
         <div class="row ps-lg-6">
             <div class="col-12 col-sm-6 col-md-8 position-relative z-1 mb-5 mb-md-0 pt-6">
                 <div class="banner-text__content d-flex flex-column align-items-start gap-3 gap-lg-4">
-
                     <?
                     $APPLICATION->IncludeComponent(
                         "bitrix:breadcrumb",
@@ -21,14 +19,12 @@ $APPLICATION->SetTitle('Документы');
                         ]
                     );
                     ?>
-
                     <h1 class="banner-text__title dark-0 text-break"><?= $APPLICATION->GetTitle() ?></h1>
                 </div>
             </div>
             <div class="d-none d-sm-block col-12 col-sm-6 col-md-4">
                 <img class="banner-text__image position-relative w-auto float-end"
-                     src="/frontend/dist/img/big-illustrations/large-individual/individual-documents.png" alt=""
-                     loading="lazy">
+                     src="/frontend/dist/img/big-illustrations/large-individual/individual-documents.png" alt="">
             </div>
         </div>
     </div>
@@ -41,10 +37,9 @@ $APPLICATION->SetTitle('Документы');
 <section class="section-layout py-lg-11 pb-lg-0 px-lg-6">
     <div class="container">
         <div class="rte rte--w-xxl-60 px-lg-6 mb-6 mb-lg-7">
-
-                <? $APPLICATION->IncludeFile('/about/purchases/documents/include_text.php'); ?>
-
-        </div><br>
+            <? $APPLICATION->IncludeFile('/about/purchases/documents/include_text.php'); ?>
+        </div>
+        <br>
         <div class="polygon-container js-polygon-container">
             <div class="polygon-container__content">
                 <div class="helper bg-dark-10">
@@ -54,7 +49,6 @@ $APPLICATION->SetTitle('Документы');
                              src="/frontend/dist/img/restructuring-additional-info.png" alt="Обратите внимание">
 
                         <? $APPLICATION->IncludeFile('/about/purchases/documents/include_quote.php'); ?>
-
                     </div>
                 </div>
             </div>
@@ -70,11 +64,11 @@ $APPLICATION->SetTitle('Документы');
 <section class="section-layout py-lg-11 px-lg-6">
     <div class="container">
         <div class="row">
-
-
         </div>
     </div>
 </section>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_tabs.php'); ?>
 
 <? $APPLICATION->IncludeFile('/local/php_interface/include/block_ads_customers.php'); ?>
 
