@@ -298,6 +298,7 @@ class OfficesMap {
     }
 
     renderOfficesPlacemarks(init = false) {
+        this.clusterer.removeAll();
         this.clearOfficesPlacemarks();
 
         let iconDefaultSize = [40, 48] // Размер иконки
@@ -339,7 +340,10 @@ class OfficesMap {
             this.myMap.geoObjects.add(this.clusterer);
         }
 
-        if (init) return false; // При первой инициализации не устанавливаем границы
+        if (init) {
+            console.log('first Init')
+            return false; // При первой инициализации не устанавливаем границы
+        }
 
         // Устанавливаем границы карты, чтобы все объекты были видны
         if (this.myMap.geoObjects.getLength() > 0) {
