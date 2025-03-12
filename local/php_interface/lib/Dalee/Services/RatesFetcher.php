@@ -55,10 +55,11 @@ class RatesFetcher
                 $data['filter']['LINK.ELEMENT.ID'] = $elementIds;
             }
 
-            if (isset($properties['LINK_'])) {
+            if (isset($properties['LINK_']) && !isset($properties['BORROWER_TYPE_'])) {
+                // Только для вкладов
                 $data['select']['INTEREST_PAYMENT_'] = 'LINK.ELEMENT.INTEREST_PAYMENT.VALUE';
             }
-            
+
             $this->loadedElements = $dataClass::getList($data)->fetchAll();
 
             $arrInterestIds = [];
