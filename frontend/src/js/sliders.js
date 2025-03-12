@@ -178,7 +178,7 @@ function initHeroBanner() {
         on: {
 
             init: function () {
-                if (this.slides.length <= 1) {
+                if (this.slides.length <= 1 && this.pagination.el) {
                     // Скрываем пагинацию, если слайдов меньше или равно 1
                     this.pagination.el.style.display = 'none';
                 }
