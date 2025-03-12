@@ -22,7 +22,7 @@ $elements = Sprint\Editor\Blocks\IblockElements::getList($block, [
                             </div>
                             <div class="benefit-card__description body-m-light"><?= $element['PREVIEW_TEXT'] ?></div>
                             <div class="benefit-card__footer">
-                                <img src="<?= CFile::GetPath($element['PROPERTY_SVG_FILE_VALUE']) ?>" class="a-icon green-100 size-xxl" alt="" loading="lazy">
+                                <img src="<?= CFile::GetPath($element['PROPERTY_SVG_FILE_VALUE']) ?>" class="a-icon green-100 size-xxl" alt="">
                             </div>
                         </div>
                     </div>

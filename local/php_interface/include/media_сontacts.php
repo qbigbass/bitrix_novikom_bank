@@ -8,7 +8,7 @@
                         <div class="card-contact__image-container">
                             <img class="card-contact__image"
                                  src="frontend/dist/img/big-illustrations/large-individual/contact.png"
-                                 alt="" loading="lazy"></div>
+                                 alt=""></div>
                         <div class="d-flex flex-column gap-4">
                             <h5 class="card-contact__title text-white-50">Департамент информационной политики</h5>
                             <div class="card-contact__contacts d-flex flex-column flex-lg-row flex-lg-wrap gap-4">

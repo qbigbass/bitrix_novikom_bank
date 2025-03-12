@@ -72,7 +72,7 @@ function updateHash() {
             // Получаем хэш из атрибута href
             const hash = event.currentTarget.getAttribute('href');
 
-            if (hash) {
+            if (hash && hash.includes('#') && !hash.includes('#links')) {
                 // Изменяем хэш в адресной строке
                 history.pushState(null, null, hash);
             }
@@ -104,25 +104,23 @@ function activateTabFromHash() {
     }
 
     tabLink.click();
-    tabLinks.forEach((link, index) => {
-        if (link.classList.contains('active') && tabSlider) {
-            setTimeout(() => {
-                tabSlider.swiper.slideTo(index);
-            }, 400)
-        }
-    });
+    const activeLink = Array.from(tabLinks).find(link => link.classList.contains('active'));
 
-    // Получаем координаты элемента tabLink
-    const rect = tabLink.getBoundingClientRect();
-    const scrollTop = window.scrollY || window.pageYOffset;
+    if (activeLink && tabSlider) {
+        const index = Array.from(tabLinks).indexOf(activeLink);
+        setTimeout(() => {
+            tabSlider.swiper.slideTo(index);
+        }, 400);
+    }
 
     setTimeout(() => {
+        // Получаем координаты элемента tabLink
+        const rect = tabLink.getBoundingClientRect();
+        const scrollTop = window.scrollY || window.pageYOffset;
         // Прокручиваем только по вертикали
         window.scrollTo({
             top: rect.top + scrollTop,
             behavior: 'smooth'
         });
     }, 100)
-
-
 }

@@ -56,7 +56,6 @@ $renderer = new Renderer($APPLICATION, $component);
                         class="banner-text__image position-relative w-auto float-end"
                         src="<?= $arResult['DISPLAY_PROPERTIES']['BONUS_HEADER_IMAGE']['FILE_VALUE']['SRC']; ?>"
                         alt="<?= $arResult['NAME']; ?>"
-                        loading="lazy"
                     >
                 <? endif; ?>
             </div>

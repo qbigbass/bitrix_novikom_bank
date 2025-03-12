@@ -20,7 +20,7 @@ $classColsCount = ($arParams['COL_COUNT'] == '2') ? 'col-lg-6' : 'col-lg-4';
     ?>
     <div class="col-12 <?=$classColsCount?>" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
         <div class="d-flex flex-column flex-md-row flex-lg-column gap-2 gap-md-4 gap-lg-3 align-items-start align-items-md-center align-items-lg-start pe-xxl-11">
-            <img class="icon size-xl" src="<?=$arItem['DISPLAY_PROPERTIES']['ICON']['FILE_VALUE']['SRC']?>" alt="" loading="lazy">
+            <img class="icon size-xl" src="<?=$arItem['DISPLAY_PROPERTIES']['ICON']['FILE_VALUE']['SRC']?>" alt="">
             <div class="d-flex flex-column gap-2 align-items-start">
                 <? if (!empty($arItem['PREVIEW_TEXT'])) : ?>
                     <h4><?=$arItem['~NAME']?></h4>

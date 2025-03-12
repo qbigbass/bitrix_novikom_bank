@@ -23,7 +23,7 @@ foreach ($arResult['ITEMS'] as $arItem) : ?>
         <div class="benefit d-flex gap-3 flex-column">
             <? if (!empty($arItem['PREVIEW_PICTURE'])) : ?>
                 <img class="icon size-xxl" src="<?= $arItem['PREVIEW_PICTURE']['SRC'] ?>"
-                 alt="<?= $arItem['PREVIEW_PICTURE']['ALT'] ?>" loading="lazy">
+                 alt="<?= $arItem['PREVIEW_PICTURE']['ALT'] ?>">
             <? elseif (!empty($arItem["PROPERTIES"]["ICON"]["VALUE"])) : ?>
                 <?
                 $arFile = CFile::GetByID($arItem["PROPERTIES"]["ICON"]["VALUE"])->Fetch();
@@ -32,7 +32,7 @@ foreach ($arResult['ITEMS'] as $arItem) : ?>
                     <img
                         class="icon size-xxl"
                         src="<?= $arFile["SRC"] ?>"
-                        alt="icon" loading="lazy"
+                        alt="icon"
                     >
                 <? endif; ?>
             <? endif; ?>

@@ -120,7 +120,7 @@ $helper = new ComponentHelper($component);
                 <div class="row row-gap-6 mt-6">
                     <div class="col-12">
                         <div class="benefit d-flex gap-3 flex-column">
-                            <img class="icon size-xl" src="/frontend/dist/img/icons/icon-money.svg" alt="icon" loading="lazy">
+                            <img class="icon size-xl" src="/frontend/dist/img/icons/icon-money.svg" alt="icon">
                             <div class="benefit__content d-flex flex-column gap-3">
                                 <div class="benefit__description w-100 text-m">
                                     <span>Отчеты о&nbsp;действиях в&nbsp;интернет-банке</span>
@@ -130,7 +130,7 @@ $helper = new ComponentHelper($component);
                     </div>
                     <div class="col-12">
                         <div class="benefit d-flex gap-3 flex-column">
-                            <img class="icon size-xl" src="/frontend/dist/img/icons/icon-money.svg" alt="icon" loading="lazy">
+                            <img class="icon size-xl" src="/frontend/dist/img/icons/icon-money.svg" alt="icon">
                             <div class="benefit__content d-flex flex-column gap-3">
                                 <div class="benefit__description w-100 text-m">
                                     <span>Напоминания о&nbsp;необходимых платежах по&nbsp;кредитам и&nbsp;кредитным картам</span>

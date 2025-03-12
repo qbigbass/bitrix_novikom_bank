@@ -34,7 +34,7 @@ $elements = Sprint\Editor\Blocks\IblockElements::getList($block, [
                                     <div class="display-stepper-item">
                                         <div class="display-stepper-item__header">
                                             <div class="display-stepper-item__icon">
-                                                <img src="<?= CFile::GetPath($element['PROPERTY_SVG_FILE_VALUE']) ?>" class="a-icon size-xl" alt="<?= $element['NAME'] ?>" loading="lazy">
+                                                <img src="<?= CFile::GetPath($element['PROPERTY_SVG_FILE_VALUE']) ?>" class="a-icon size-xl" alt="<?= $element['NAME'] ?>">
                                             </div>
                                         </div>
                                         <div class="display-stepper-item__content">
