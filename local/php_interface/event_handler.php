@@ -20,13 +20,6 @@ $eventManager->addEventHandler('iblock', 'OnIBlockPropertyBuildList', [CUserType
 $eventManager->addEventHandler('main', 'OnUserTypeBuildList', [CUserTypeSectionStringDescr::class, 'GetUserTypeDescription']);
 $eventManager->addEventHandler('main', 'OnBeforeEventAdd', [FormHelper::class, 'sendFeedBack']);
 
-$eventManager->addEventHandler('iblock', 'OnStartIBlockElementAdd', [CIBEditComplexProp::class, 'OnStartIBlockElementUpdateHandler']);
-$eventManager->addEventHandler('iblock', 'OnStartIBlockElementUpdate', [CIBEditComplexProp::class, 'OnStartIBlockElementUpdateHandler']);
-$eventManager->addEventHandler('iblock', 'OnBeforeIBlockElementAdd', [CIBEditComplexProp::class, 'OnBeforeIBlockElementUpdateHandler']);
-$eventManager->addEventHandler('iblock', 'OnBeforeIBlockElementUpdate', [CIBEditComplexProp::class, 'OnBeforeIBlockElementUpdateHandler']);
-$eventManager->addEventHandler('iblock', 'OnAfterIBlockElementAdd', [CIBEditComplexProp::class, 'OnAfterIBlockElementUpdateHandler']);
-$eventManager->addEventHandler('iblock', 'OnAfterIBlockElementUpdate', [CIBEditComplexProp::class, 'OnAfterIBlockElementUpdateHandler']);
-
 $eventManager->addEventHandler('main', 'OnBeforeProlog', [CIBEditComplexProp::class, 'OnBeforePrologHandler']);
 $eventManager->addEventHandler("main", "OnEndBufferContent", [RatesPlaceholderManager::class, 'handle']);
 
