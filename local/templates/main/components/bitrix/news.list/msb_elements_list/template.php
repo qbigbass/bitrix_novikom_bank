@@ -646,11 +646,6 @@ use Bitrix\Main\Localization\Loc;
                                                                         </svg>
                                                                         Направить обращение
                                                                     </a>
-                                                                    <?
-                                                                    global $FORMS;
-                                                                    $FORMS->includeForm('feedback_form');
-                                                                    $FORMS->includeForm('callback_form');
-                                                                    ?>
                                                                     <p class="card-help__agreement-text m-0 dark-70 fs-4 lh-sm">Нажимая кнопку
                                                                         «Перезвоните мне», вы соглашаетесь с условиями предоставления информации</p>
                                                                 </div>

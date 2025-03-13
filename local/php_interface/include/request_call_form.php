@@ -26,8 +26,3 @@
             «Перезвоните мне», вы соглашаетесь с условиями предоставления информации</p>
     </div>
 </div>
-<?
-global $FORMS;
-$FORMS->includeForm('feedback_form');
-$FORMS->includeForm('callback_form');
-?>

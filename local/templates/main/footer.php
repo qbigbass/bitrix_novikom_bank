@@ -104,10 +104,6 @@ use Bitrix\Main\Localization\Loc;
                     >
                         <?=Loc::getMessage('FEEDBACK_BUTTON_TITLE')?>
                     </a>
-                    <?
-                    global $FORMS;
-                    $FORMS->includeForm('feedback_form');
-                    ?>
                     <div class="d-flex flex-column row-gap-3 pt-md-3 pt-lg-5">
                         <a class="btn btn-lg-lg btn-outline-primary d-flex gap-2 gap-lg-3 align-items-center justify-content-center" id='showAccessibilityPanel' href="#">
                             <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
