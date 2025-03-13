@@ -4,7 +4,6 @@ use Bitrix\Main;
 use Dalee\Helpers\FormHelper;
 use Dalee\Helpers\IblockHelper;
 use Dalee\Services\CacheHandler;
-use Dalee\Services\ContentIndexer;
 use Dalee\Services\RatesPlaceholderManager;
 use Dalee\UserType\CIBEditComplexProp;
 use Dalee\UserType\CUserTypeComplexProperty;
@@ -30,7 +29,6 @@ $eventManager->addEventHandler('iblock', 'OnAfterIBlockElementUpdate', [CIBEditC
 
 $eventManager->addEventHandler('main', 'OnBeforeProlog', [CIBEditComplexProp::class, 'OnBeforePrologHandler']);
 $eventManager->addEventHandler("main", "OnEndBufferContent", [RatesPlaceholderManager::class, 'handle']);
-$eventManager->addEventHandler("main", "OnEndBufferContent", [ContentIndexer::class, 'index']);
 
 $eventManager->addEventHandler('form', 'OnBeforeResultAdd', [FormHelper::class, 'onBeforeResultAdd']);
 
