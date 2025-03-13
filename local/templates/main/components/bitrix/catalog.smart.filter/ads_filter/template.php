@@ -15,11 +15,19 @@ use Bitrix\Main\Localization\Loc;
 $this->setFrameMode(true);
 $adTypes = $arResult["ITEMS"]['TYPE_AD'];
 $url = $APPLICATION->GetCurPage(false);
+
+$disableMenuSections = [
+    'soyuzmash',
+    'tenders',
+    'sustainability'
+];
+
+$disableMenu = in_array(basename($url), $disableMenuSections);
 ?>
 
 <form name="<?=$arResult['FILTER_NAME'] . '_form'?>" action="<?=$arResult['FORM_ACTION']?>" method="get">
     <div class="d-flex flex-column flex-md-row gap-4 gap-md-3 gap-lg-6 align-items-start align-items-md-center justify-content-lg-between">
-        <?if (!empty($adTypes['VALUES'])) :?>
+        <?if (!empty($adTypes['VALUES']) && !$disableMenu) :?>
             <div class="d-lg-none w-100 w-md-50">
                 <select class="form-select form-select--size-small js-select" id="select1" aria-label="Подсказка" onchange="setFilter(this)">
                     <option <?=(!isset($arParams['SET_FILTER'])) ? 'selected' : '';?> value="<?=$url?>">
@@ -65,16 +73,16 @@ $url = $APPLICATION->GetCurPage(false);
                 </ul>
             </div>
         <?endif;?>
-        <?//TODO календарь не работает?>
+
         <?if ($arParams['SHOW_CALENDAR'] === 'Y') :?>
             <div class="position-relative w-100 w-md-50 w-lg-240w">
                 <input
                     class="js-date js-date--range js-date--today-max w-100 form-control"
-                    id="date1"
+                    id="date"
                     type="text"
-                    name="date1"
+                    name="date"
                     placeholder="Показать за период"
-                    value=""
+                    value="<?= $arParams['REQUEST']['date'] ?? ''?>"
                 >
                 <span class="position-absolute top-0 end-0 violet-70 text-m p-2 px-3 pe-none">
                     <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">

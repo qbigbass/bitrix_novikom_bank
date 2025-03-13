@@ -224,22 +224,10 @@ class DocumentsHandler implements PropertyHandlerInterface
                 $result .= $this->getElementsHtml($section['ELEMENTS_ARCHIVE'], true);
             } else {
                 $result .=
-                    '<div class="accordion" id="accordion-' . $section['ID'] . '">
-                        <div class="accordion-item">
-                            <div class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#' . $section['ID'] . '-archive" aria-controls="' . $section['ID'] . '-archive">
-                                    ' . $section['NAME'] . '
-                                </button>
-                            </div>
-                            <div class="accordion-collapse collapse" id="' . $section['ID'] . '-archive" data-bs-parent="#accordion-' . $section['ID'] . '">
-                                <div class="accordion-body">
-                                    <div class="mt-4">'
-                                        . $this->getElementsHtml($section['ELEMENTS_ARCHIVE'], true) .
-                                    '</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>';
+                    '<div class="mt-4">
+                        <h5>' . $section['NAME'] . '</h5>'
+                        . $this->getElementsHtml($section['ELEMENTS_ARCHIVE'], true) .
+                    '</div>';
             }
         }
 
