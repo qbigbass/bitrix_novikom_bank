@@ -8,6 +8,7 @@ use Bitrix\Iblock\SectionTable;
 use CIBlockElement;
 use CIBlockFormatProperties;
 use Bitrix\Iblock\Model\Section;
+use CIBlockSection;
 
 class IblockHelper
 {
@@ -324,5 +325,37 @@ class IblockHelper
                 $CACHE_MANAGER->ClearByTag("bitrix:menu");
             }
         }
+    }
+
+    /**
+     * @param int|null $iblockId
+     * @return array
+     */
+    public static function getEmptySections(?int $iblockId): array
+    {
+        $result = [];
+        if (empty($iblockId)) {
+            return $result;
+        }
+
+        $arSections = CIBlockSection::GetList(
+            ["SORT" => "ASC"],
+            [
+                'IBLOCK_ID' => $iblockId,
+                'CNT_ACTIVE' => 'Y',
+            ],
+            true,
+            [
+                'CODE'
+            ]
+        );
+
+        while ($res = $arSections->fetch()) {
+            if (!$res['ELEMENT_CNT']) {
+                $result[] = $res['CODE'];
+            }
+        }
+
+        return $result;
     }
 }
