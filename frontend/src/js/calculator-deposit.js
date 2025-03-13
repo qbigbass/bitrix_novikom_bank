@@ -148,6 +148,7 @@ function calculateDepositIncome(STATE) {
     // const startDate = new Date(); // Начальная дата
     const endDate = startDate;
     endDate.setDate(endDate.getDate() + period);
+    console.log('endDate', endDate);
 
     // Начисление процентов начинается со следующего дня после зачисления вклада
     const dailyInitialRate = (rate / 100) / calculateDaysInYear(startDate.getFullYear());
