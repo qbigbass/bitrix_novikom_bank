@@ -250,8 +250,6 @@ const getLoanValues = (STATE) => {
 
     }
 
-    console.log('STATE.filteredData', STATE.filteredData);
-
     if (!STATE.filteredData) {
         STATE.filteredData = STATE.calculatorData[0];
     }

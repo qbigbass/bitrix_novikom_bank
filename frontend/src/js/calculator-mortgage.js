@@ -503,7 +503,6 @@ function getMortgageValues(STATE) {
     STATE.filteredData = getMortgagePrograms(STATE.filteredData, STATE);
     STATE.filteredData = getMortgageObjects(STATE.filteredData, STATE);
     STATE.filteredData = getMortgageBorrower(STATE.filteredData, STATE);
-    console.log('STATE.filteredData', STATE.filteredData);
     setStartAttributesInputMortgage(STATE);
 
     STATE.insurance = STATE.elements.inputMortgageInsurance.checked ? 'Да' : 'Нет';
