@@ -6,7 +6,7 @@ use Dalee\Helpers\IblockHelper;
 use Bitrix\Iblock\ElementPropertyTable;
 use \Bitrix\Main\Context;
 
-class CIBEditComplexProp
+class PlaceholderChecker
 {
     /**
      * Обработчик события ИБ вкладок. Проверяем все ли плейсхолдеры заполнены
