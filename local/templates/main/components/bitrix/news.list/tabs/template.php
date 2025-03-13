@@ -17,6 +17,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 $this->setFrameMode(true);
 ?>
 
+<?php if (count($arResult['ITEMS']) > 0): ?>
 <div class="collapse d-md-block" id="additional-info-content">
     <div class="row mt-4">
         <div class="col-12">
@@ -86,4 +87,4 @@ $this->setFrameMode(true);
         </div>
     </div>
 </div>
-
+<?php endif; ?>

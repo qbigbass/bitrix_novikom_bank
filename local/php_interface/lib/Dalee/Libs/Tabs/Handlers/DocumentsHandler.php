@@ -13,6 +13,7 @@ class DocumentsHandler implements PropertyHandlerInterface
     private int $iblockId;
     private array $property;
     private ?array $params;
+    private ?array $element;
     private int $firstSectionKey;
 
     public function __construct(array $property, ?int $elementId = null, ?array $element = null, array $params = [])
@@ -20,6 +21,7 @@ class DocumentsHandler implements PropertyHandlerInterface
         $this->iblockId = iblock("documents");
         $this->property = $property;
         $this->params = $params;
+        $this->element = $element;
 
         $this->property['LINK_SECTION_VALUE'] = !empty($this->property['VALUE']) ?
             $this->getSectionsWithElements($this->property['VALUE']) : [];
@@ -47,11 +49,13 @@ class DocumentsHandler implements PropertyHandlerInterface
             </div>
         ';
 
-        $protectionFromScammers = '
-            <div class="col-12 col-xxl-4">'
-                . $this->getProtectionFromScammersHtml() .
-            '</div>
-        ';
+        if (!empty($this->element['PROPERTIES']['SHOW_DEFEND_BLOCK']['VALUE'])) {
+            $protectionFromScammers = '
+                <div class="col-12 col-xxl-4">'
+                    . $this->getProtectionFromScammersHtml() .
+                '</div>
+            ';
+        }
 
         return $sectionHtml . (empty($params['isAccordion']) ? $protectionFromScammers : '');
     }
