@@ -186,30 +186,41 @@ const setLoanValues = (STATE) => {
 
     $(ELEMS_LOAN.selectLoanProperties).on('select2:select', (event) => {
         STATE.loanType = event.target.value;
-        STATE.filteredData = findLoanData({data: STATE.calculatorData, type: STATE.loanType, borrowerType: STATE.borrowerType});
+        STATE.filteredData = findLoanData(STATE);
         checkInputRangeSlider(STATE);
         handlerInputLoan(STATE);
     });
 
     $(ELEMS_LOAN.selectBorrowerType).on('select2:select', (event) => {
         STATE.borrowerType = event.target.checked;
-        STATE.filteredData = findLoanData({data: STATE.calculatorData, type: STATE.loanType, borrowerType: STATE.borrowerType});
+        STATE.filteredData = findLoanData(STATE);
         checkInputRangeSlider(STATE);
         handlerInputLoan(STATE);
     });
 }
 
-function findLoanData({data, type, borrowerType}) {
-    console.log('type', type);
-    console.log('borrowerType', borrowerType);
-    // strategicClient = strategicClient ? 'Y' : null;
-    const resultType = data.filter(item => item.loanType === type);
-    const result = resultType.find(item => item.borrowerType === borrowerType);
-    console.log('findLoanData', result);
-    if (result !== -1) {
-        return result;
+function findLoanRate(amount, data) {
+    const result =   data.find(item => amount >= item.sumForm && amount <= item.SumTo);
+    return result ? result.rate : data[0].rate;
+}
+
+function findLoanData({calculatorData, loanType, borrowerType, amount}) {
+    // Фильтруем по loanType
+    const resultType = calculatorData.filter(item => item.loanType === loanType);
+
+    // Фильтруем по borrowerType
+    const result = resultType.filter(item => item.borrowerType === borrowerType);
+
+    // Проверяем, есть ли результаты
+    if (result.length > 0) {
+        if (result.length === 1) return result[0];
+        let newResult = result[0];
+        newResult.sumFrom = findMinValue('sumFrom', result);
+        newResult.sumTo = findMaxValue('sumTo', result);
+        newResult.rate = findLoanRate(amount, result);
+        return newResult;
     } else {
-        return resultType[0];
+        return resultType[0]; // Возвращаем первый элемент из resultType, если нет результатов
     }
 }
 
@@ -234,12 +245,12 @@ const getLoanValues = (STATE) => {
         STATE.paymentType = STATE.elements.selectLoanPaymentType.value;
         STATE.borrowerType = STATE.elements.selectBorrowerType.value;
 
-        STATE.filteredData = findLoanData({
-            data: STATE.calculatorData,
-            type: STATE.loanType,
-            borrowerType: STATE.borrowerType,
-        });
+        STATE.filteredData = findLoanData(STATE);
+
+
     }
+
+    console.log('STATE.filteredData', STATE.filteredData);
 
     if (!STATE.filteredData) {
         STATE.filteredData = STATE.calculatorData[0];

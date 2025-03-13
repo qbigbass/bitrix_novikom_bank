@@ -129,20 +129,24 @@ function setStartValues(STATE) {
     STATE.period = STATE.minPeriod;
 }
 
-function isLeapYear(year) {
-    return (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
-}
-
-function calculateDaysInYear(year) {
-    return isLeapYear(year) ? 366 : 365;
-}
-
 function calculateDepositIncome(STATE) {
     let { amount, period, rate, capitalization, filteredData, additionalDeposits, hideAdditional = false } = STATE;
     let totalAmount = amount; // Общая сумма вклада, начиная с первоначальной
     let totalIncome = 0; // Переменная для хранения общего дохода
-    const startDate = new Date(); // Начальная дата
-    const endDate = new Date();
+
+    // TODO: убраить после тестирования
+    const hash = window.location.hash;
+    const startDateString = hash.replace('#startDate=', ''); // Удаляем символ #
+    let startDate;
+
+    if (startDateString) {
+        startDate = parseDate(startDateString);
+    } else {
+        startDate = new Date(); // Если дата не указана в URL, используем текущую дату
+    }
+
+    // const startDate = new Date(); // Начальная дата
+    const endDate = startDate;
     endDate.setDate(endDate.getDate() + period);
 
     // Начисление процентов начинается со следующего дня после зачисления вклада
@@ -159,7 +163,7 @@ function calculateDepositIncome(STATE) {
         // Расчет дохода
         totalIncome += A - amount;
     } else {
-        totalIncome += amount * dailyInitialRate * (period - 1); // Учитываем, что процент начисляется со следующего дня
+        totalIncome += amount * dailyInitialRate * period;
     }
 
     if (!hideAdditional) {
@@ -457,14 +461,6 @@ const getPeriodValue = (input) => {
         return steps[Number(input.value)];
     }
     return Number(input.value);
-}
-
-const findMinValue = (key, data) => {
-    return Math.min(...data.map(obj => obj[key]));
-}
-
-const findMaxValue = (key, data) => {
-    return Math.max(...data.map(obj => obj[key]));
 }
 
 // проверка соседних значений периода вклада,

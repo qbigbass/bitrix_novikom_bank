@@ -391,6 +391,22 @@ function createNewInputSlider(inputSlider, dataAttr) {
     return cloneInputSlider;
 }
 
+function isLeapYear(year) {
+    return (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
+}
+
+function calculateDaysInYear(year) {
+    return isLeapYear(year) ? 366 : 365;
+}
+
+const findMinValue = (key, data) => {
+    return Math.min(...data.map(obj => obj[key]));
+}
+
+const findMaxValue = (key, data) => {
+    return Math.max(...data.map(obj => obj[key]));
+}
+
 const URL = '/local/php_interface/ajax/calc.php';
 
 function getRates({table = null, id = null, name = null}) {
@@ -415,147 +431,8 @@ function getRates({table = null, id = null, name = null}) {
             }
         })
         .catch(error => {
-            // console.error('Error:', error);
-            // TODO: убрать перед пушем
-            return dataTemp.data;
+            console.error('Error:', error);
         })
-}
-
-const dataTemp = {
-    "data": [
-        {
-            "name": "Кредит на рефинансирование для зарплатных клиентов",
-            "loanType": "На рефинансирование",
-            "rate": 23.9,
-            "periodFrom": 6,
-            "periodTo": 60,
-            "sumFrom": 3000000,
-            "sumTo": 5000000,
-            "strategicClient": null,
-            "borrowerType": "Зарплатный клиент"
-        },
-        {
-            "name": "Кредит на рефинансирование для зарплатных клиентов",
-            "loanType": "На рефинансирование",
-            "rate": 23.9,
-            "periodFrom": 6,
-            "periodTo": 60,
-            "sumFrom": 20000,
-            "sumTo": 2999999,
-            "strategicClient": null,
-            "borrowerType": null
-        },
-        {
-            "name": "Кредит на любые цели для зарплатных клиентов",
-            "loanType": "С поручительством физического лица",
-            "rate": 23.9,
-            "periodFrom": 6,
-            "periodTo": 60,
-            "sumFrom": 3000000,
-            "sumTo": 5000000,
-            "strategicClient": null,
-            "borrowerType": null
-        },
-        {
-            "name": "Кредит на любые цели для зарплатных клиентов",
-            "loanType": "С поручительством физического лица",
-            "rate": 23.9,
-            "periodFrom": 6,
-            "periodTo": 60,
-            "sumFrom": 20000,
-            "sumTo": 2999999,
-            "strategicClient": null,
-            "borrowerType": null
-        },
-        {
-            "name": "Кредит на любые цели для зарплатных клиентов",
-            "loanType": "Без обеспечения",
-            "rate": 23.9,
-            "periodFrom": 6,
-            "periodTo": 60,
-            "sumFrom": 3000000,
-            "sumTo": 5000000,
-            "strategicClient": null,
-            "borrowerType": null
-        },
-        {
-            "name": "Кредит на любые цели для зарплатных клиентов",
-            "loanType": "Без обеспечения",
-            "rate": 23.9,
-            "periodFrom": 6,
-            "periodTo": 60,
-            "sumFrom": 20000,
-            "sumTo": 2999999,
-            "strategicClient": null,
-            "borrowerType": null
-        },
-        {
-            "name": "Кредит на рефинансирование для стратегических клиентов",
-            "loanType": "На рефинансирование",
-            "rate": 22.9,
-            "periodFrom": 6,
-            "periodTo": 60,
-            "sumFrom": 20000,
-            "sumTo": 2999999,
-            "strategicClient": "Y",
-            "borrowerType": null
-        },
-        {
-            "name": "Кредит на рефинансирование для стратегических клиентов",
-            "loanType": "На рефинансирование",
-            "rate": 22.9,
-            "periodFrom": 6,
-            "periodTo": 60,
-            "sumFrom": 3000000,
-            "sumTo": 5000000,
-            "strategicClient": "Y",
-            "borrowerType": null
-        },
-        {
-            "name": "Кредит на любые цели <br>для стратегических клиентов",
-            "loanType": "С поручительством физического лица",
-            "rate": 22.9,
-            "periodFrom": 6,
-            "periodTo": 60,
-            "sumFrom": 20000,
-            "sumTo": 2999999,
-            "strategicClient": "Y",
-            "borrowerType": null
-        },
-        {
-            "name": "Кредит на любые цели <br>для стратегических клиентов",
-            "loanType": "С поручительством физического лица",
-            "rate": 22.9,
-            "periodFrom": 6,
-            "periodTo": 60,
-            "sumFrom": 3000000,
-            "sumTo": 5000000,
-            "strategicClient": "Y",
-            "borrowerType": null
-        },
-        {
-            "name": "Кредит на любые цели <br>для стратегических клиентов",
-            "loanType": "Без обеспечения",
-            "rate": 22.9,
-            "periodFrom": 6,
-            "periodTo": 60,
-            "sumFrom": 20000,
-            "sumTo": 2999999,
-            "strategicClient": "Y",
-            "borrowerType": null
-        },
-        {
-            "name": "Кредит на любые цели <br>для стратегических клиентов",
-            "loanType": "Без обеспечения",
-            "rate": 22.9,
-            "periodFrom": 6,
-            "periodTo": 60,
-            "sumFrom": 3000000,
-            "sumTo": 5000000,
-            "strategicClient": "Y",
-            "borrowerType": null
-        }
-    ]
 }
 
 let isInitialLoad = true;
