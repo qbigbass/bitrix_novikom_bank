@@ -138,17 +138,18 @@ function calculateDaysInYear(year) {
 }
 
 function calculateDepositIncome(STATE) {
-    let {amount, period, rate, capitalization, filteredData, additionalDeposits, hideAdditional = false} = STATE;
+    let { amount, period, rate, capitalization, filteredData, additionalDeposits, hideAdditional = false } = STATE;
     let totalAmount = amount; // Общая сумма вклада, начиная с первоначальной
     let totalIncome = 0; // Переменная для хранения общего дохода
     const startDate = new Date(); // Начальная дата
     const endDate = new Date();
     endDate.setDate(endDate.getDate() + period);
 
+    // Начисление процентов начинается со следующего дня после зачисления вклада
     const dailyInitialRate = (rate / 100) / calculateDaysInYear(startDate.getFullYear());
 
     if (capitalization) {
-        // рассчеты с капитализацией
+        // Рассчеты с капитализацией
         const n = 12; // Количество периодов капитализации в год (ежемесячно)
         const t = period / calculateDaysInYear(startDate.getFullYear()); // Количество лет
 
@@ -158,23 +159,24 @@ function calculateDepositIncome(STATE) {
         // Расчет дохода
         totalIncome += A - amount;
     } else {
-        totalIncome += amount * dailyInitialRate * period;
+        totalIncome += amount * dailyInitialRate * (period - 1); // Учитываем, что процент начисляется со следующего дня
     }
+
     if (!hideAdditional) {
         // Обработка каждого пополнения
         additionalDeposits.forEach(deposit => {
             const { amountItem, date } = deposit;
             const depositDate = parseDate(date);
-            // Количество дней, на которые вкладывается пополнение
-            const daysOnDeposit = Math.max(0, Math.floor((endDate - depositDate) / (1000 * 60 * 60 * 24)));
+            // Количество дней, на которые вкладывается пополнение (начиная со следующего дня)
+            const daysOnDeposit = Math.max(0, Math.floor((endDate - depositDate) / (1000 * 60 * 60 * 24))) - 1;
 
             // Обновляем общую сумму
             totalAmount += Number(amountItem);
 
             // Получаем новую процентную ставку в зависимости от общей суммы
-            let newRate = findDepositRate({data: filteredData, amount: totalAmount, period});
+            let newRate = findDepositRate({ data: filteredData, amount: totalAmount, period });
             // Если новая процентная ставка не определена, используем текущую
-            if (!newRate) {newRate = rate}
+            if (!newRate) { newRate = rate; }
 
             STATE.rate = newRate;
             const dailyNewRate = (newRate / 100) / calculateDaysInYear(depositDate.getFullYear());
