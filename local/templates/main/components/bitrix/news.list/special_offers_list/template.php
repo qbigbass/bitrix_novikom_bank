@@ -44,11 +44,10 @@ foreach ($arResult['ITEMS'] as $key => $item) {
                     </span>
                 <? endif; ?>
             </div>
-            <div class="card-news__image-container position-relative z-1 h-100">
+            <div class="card-news__image-container position-relative z-1">
                 <? if (!empty($item['PICTURE'])) { ?>
                     <img class="card-news__img position-relative z-2" src="<?= $item['PICTURE'] ?>"
-                         alt=""
-                         loading="lazy">
+                         alt="">
                     <div class="card-news__top-blackout z-3 position-absolute top-0 start-0 w-100"></div>
                 <? } else { ?>
                     <picture class="pattern-bg pattern-bg--position-sm-top z-1">

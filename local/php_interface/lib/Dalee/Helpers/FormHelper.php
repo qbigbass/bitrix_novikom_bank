@@ -215,7 +215,6 @@ class FormHelper
     {
         if ($event === 'FORM_FILLING_feedback_form') {
             $curTopicCode = self::getTopicCodeByResultId($arFields['RS_FORM_ID'], $arFields['RS_RESULT_ID']);
-            file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/2.txt', print_r([$message_id, FEEDBACK_FORM_MESSAGES[$curTopicCode], FEEDBACK_FORM_MESSAGES, $message_id !== FEEDBACK_FORM_MESSAGES[$curTopicCode]], true), FILE_APPEND);
             if ((int)$message_id !== FEEDBACK_FORM_MESSAGES[$curTopicCode]) {
                 return false;
             }

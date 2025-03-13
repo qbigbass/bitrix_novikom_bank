@@ -21,16 +21,25 @@ $renderer = new Renderer($APPLICATION, $component);
     <? foreach ($arResult['ITEMS'] as $key => $item) { ?>
         <div class="accordion-item">
             <div class="accordion-header">
-                <button class="accordion-button<?= $key != 0 ? ' collapsed' : '' ?>" type="button" data-bs-toggle="collapse" data-bs-target="#<?= $key + 1 ?>" <?= $key == 0 ? 'aria-expanded' : '' ?> aria-controls="<?= $key + 1 ?>">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#<?= $key + 1 ?>" aria-expanded="false" aria-controls="<?= $key + 1 ?>">
                     <span class="fw-bold h4"><?= $item['~NAME'] ?></span>
                 </button>
             </div>
-            <div class="accordion-collapse collapse<?= $key == 0 ? ' show' : '' ?>" id="<?= $key + 1 ?>" data-bs-parent="#accordion-option-bank-support">
+            <div class="accordion-collapse collapse" id="<?= $key + 1 ?>" data-bs-parent="#accordion-option-bank-support">
                 <div class="accordion-body">
                     <div class="d-flex flex-column gap-6 gap-md-7">
                         <? if (!empty($item['DISPLAY_PROPERTIES'])) {
                             foreach ($item['DISPLAY_PROPERTIES'] as $propertyKey => $property) {
                                 if ($property['CODE'] == 'BENEFITS' && !empty($property['VALUE'])) { ?>
+                                    <? if (!empty($item['PROPERTIES']['BENEFITS_HEADER']['~VALUE'])): ?>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <h3>
+                                                    <?= $item['PROPERTIES']['BENEFITS_HEADER']['~VALUE']; ?>
+                                                </h3>
+                                            </div>
+                                        </div>
+                                    <? endif; ?>
                                     <div class="row row-gap-6 gx-xl-6">
                                     <? global $benefitsFilter;
                                     $benefitsFilter = [
@@ -101,8 +110,8 @@ $renderer = new Renderer($APPLICATION, $component);
 
                                 if ($property['CODE'] == 'STEPS' && !empty($property['VALUE'])) {
                                     $renderer->render('Steps', $property['VALUE'], null, [
-                                        'stepsHeader' => $arResult['PROPERTIES']['STEPS_HEADER']['~VALUE'] ?? 'Этапы',
-                                        'stepsTemplate' => 'variants',
+                                        'stepsHeader' => $item['PROPERTIES']['STEPS_HEADER']['~VALUE'] ?? 'Этапы',
+                                        'stepsTemplate' => $item['PROPERTIES']['STEPS_TEMPLATE']['VALUE_XML_ID'] ?? 'variants',
                                     ]);
                                     if ($propertyKey != array_key_last($item['DISPLAY_PROPERTIES'])) { ?>
                                         <span class="border-bottom-dashed" aria-hidden="true"></span>
@@ -118,6 +127,11 @@ $renderer = new Renderer($APPLICATION, $component);
                                                         <div class="helper__wrapper d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-4 gap-lg-6">
                                                             <img class="helper__image w-auto float-end" src="/frontend/dist/img/restructuring-additional-info_orange.png" alt="Обратите внимание">
                                                             <div class="helper__content text-l">
+                                                                <? if (!empty($item['PROPERTIES']['QUOTE_HEADER']['~VALUE'])): ?>
+                                                                    <h4 class="mb-3">
+                                                                        <?= $item['PROPERTIES']['QUOTE_HEADER']['~VALUE']; ?>
+                                                                    </h4>
+                                                                <? endif; ?>
                                                                 <p><?= $property['~VALUE']['TEXT'] ?></p>
                                                             </div>
                                                         </div>
@@ -137,16 +151,14 @@ $renderer = new Renderer($APPLICATION, $component);
                                 <? }
 
                                 if ($property['CODE'] == 'TEXT_FIELD' && !empty($property['~VALUE'])) { ?>
-                                    <? foreach ($property['~VALUE'] as $key => $value) { ?>
-                                        <div class="row">
-                                            <div class="d-flex flex-column gap-3">
-                                                <h4 class="text-l"><?= $property['DESCRIPTION'][$key] ?? '' ?></h4>
-                                                <span><?= $value['TEXT'] ?></span>
-                                            </div>
-                                        </div>
-                                        <? if ($key != array_key_last($property['~VALUE']) && $propertyKey != array_key_last($item['DISPLAY_PROPERTIES'])) { ?>
-                                            <span class="border-bottom-dashed" aria-hidden="true"></span>
-                                        <? } ?>
+                                    <?php if (!empty($item['PROPERTIES']['TEXT_FIELD_HEADER']['~VALUE'])): ?>
+                                        <h4 class="text-l">
+                                            <?= $item['PROPERTIES']['TEXT_FIELD_HEADER']['~VALUE']; ?>
+                                        </h4>
+                                    <?php endif; ?>
+                                    <?= $property['~VALUE']['TEXT'] ?>
+                                    <? if ($propertyKey != array_key_last($item['DISPLAY_PROPERTIES'])) { ?>
+                                        <span class="border-bottom-dashed" aria-hidden="true"></span>
                                     <? } ?>
                                 <? } ?>
                             <? } ?>

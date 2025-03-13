@@ -8,7 +8,7 @@ $stepperColor = $APPLICATION->GetProperty("stepperItemColor") ?: "stepper-item--
 
 <? if (!empty($arResult['ITEMS'])) : ?>
 
-    <section class="section-restructuring-steps section-layout bg-dark-10">
+    <section id="section-steps" class="section-restructuring-steps section-layout bg-dark-10">
         <div class="container">
             <div class="row px-lg-6">
                 <div class="d-none d-md-flex justify-content-between">

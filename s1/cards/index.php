@@ -103,8 +103,6 @@ if (!empty($elementWithoutSection)) {
                 "CARD_RECEIPT_OPTIONS",
                 "CONVENIENCES_HEADING",
                 "CONVENIENCES",
-                "TABS_HEADING",
-                "TABS",
                 "BONUS_PROGRAMS_HEADING",
                 "BONUS_PROGRAMS",
                 "STEPS_HEADING",
@@ -175,6 +173,8 @@ if (!empty($elementWithoutSection)) {
     );
 }
 ?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_tabs.php'); ?>
 
 <? $APPLICATION->IncludeFile('/local/php_interface/include/block_ads_customers.php'); ?>
 

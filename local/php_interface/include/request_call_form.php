@@ -1,4 +1,4 @@
-<div class="card-help d-inline-flex p-3 p-sm-5 p-lg-6 w-100 bg-<?= $arParams['BACKGROUND_COLOR'] ?? 'white' ?> h-100">
+<div class="card-help d-inline-flex p-3 p-sm-5 p-lg-6 w-100 bg-<?= $arParams['BACKGROUND_COLOR'] ?? 'white' ?>">
     <div class="card-help__inner d-flex flex-column gap-4 gap-md-6 h-100 w-100">
         <div class="card-help__title-group d-flex flex-column gap-3">
             <h4 class="card-help__title">Остались вопросы?</h4>

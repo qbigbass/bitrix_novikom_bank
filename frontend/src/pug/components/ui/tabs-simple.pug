@@ -18,6 +18,6 @@ mixin tabs-simple(tabsList, isSmallTabs=false, tabsClassName, tabItemClassName)
             each tab, index in tabsList
                 li.swiper-slide.w-auto.tabs-panel__list-item.nav-item.z-2
                     if tab.isActive
-                        button.tabs-panel__list-item-link.nav-link.bg-transparent.active(class=tabItemClassName data-bs-toggle="tab" data-bs-target=tab.id && '#'+tab.id type="button" role="tab" aria-controls= tab.id aria-selected="true")= tab.linkText
+                        a.tabs-panel__list-item-link.nav-link.bg-transparent.active(class=tabItemClassName href=tab.id && '#'+tab.id data-bs-toggle="tab" data-bs-target=tab.id && '#'+tab.id role="tab" aria-controls= tab.id aria-selected="true")= tab.linkText
                     else
-                        button.tabs-panel__list-item-link.nav-link.bg-transparent(class=tabItemClassName data-bs-toggle="tab" data-bs-target=tab.id && '#'+tab.id type="button" role="tab" aria-controls= tab.id aria-selected="false")= tab.linkText
+                        a.tabs-panel__list-item-link.nav-link.bg-transparent(class=tabItemClassName href=tab.id && '#'+tab.id data-bs-toggle="tab" data-bs-target=tab.id && '#'+tab.id role="tab" aria-controls= tab.id aria-selected="false")= tab.linkText

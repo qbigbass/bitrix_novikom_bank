@@ -39,7 +39,6 @@ $asset->addJs('/frontend/dist/js/sliders.js');
 $asset->addJs('/frontend/dist/js/tabs.js');
 $asset->addJs('/frontend/dist/js/yMap.js');
 $asset->addJs('/frontend/dist/js/private-banking.js');
-$asset->addJs('/frontend/dist/js/currency-converter.js');
 $asset->addJs('/frontend/dist/js/charts.js');
 $asset->addJs('/frontend/dist/js/index.js');
 ?>
@@ -129,8 +128,8 @@ $arResult['CONTENT_JSON'] ?? [],
                 </div>
                 <?$APPLICATION->IncludeComponent(
                     "bitrix:news.detail",
-                    "contancts",
-                    Array(
+                    "contacts",
+                    [
                         "ACTIVE_DATE_FORMAT" => "d.m.Y",
                         "ADD_ELEMENT_CHAIN" => "N",
                         "ADD_SECTIONS_CHAIN" => "N",
@@ -153,7 +152,7 @@ $arResult['CONTENT_JSON'] ?? [],
                         "DISPLAY_TOP_PAGER" => "N",
                         "ELEMENT_CODE" => "kontakty-v-private-banking",
                         "ELEMENT_ID" => "",
-                        "FIELD_CODE" => array("ID","NAME",'PREVIEW_PICTURE','DETAIL_PICTURE'),
+                        "FIELD_CODE" => ["ID","NAME",'PREVIEW_PICTURE','DETAIL_PICTURE'],
                         "IBLOCK_ID" => iblock("contacts_ru"),
                         "IBLOCK_TYPE" => "additional",
                         "IBLOCK_URL" => "",
@@ -165,7 +164,7 @@ $arResult['CONTENT_JSON'] ?? [],
                         "PAGER_SHOW_ALL" => "N",
                         "PAGER_TEMPLATE" => ".default",
                         "PAGER_TITLE" => "Страница",
-                        "PROPERTY_CODE" => array("EMAIL","ADDRESS","DEPARTMENT","PHONE",""),
+                        "PROPERTY_CODE" => ["EMAIL","ADDRESS","DEPARTMENT","PHONE",""],
                         "SET_BROWSER_TITLE" => "N",
                         "SET_CANONICAL_URL" => "N",
                         "SET_LAST_MODIFIED" => "N",
@@ -177,7 +176,7 @@ $arResult['CONTENT_JSON'] ?? [],
                         "STRICT_SECTION_CHECK" => "N",
                         "USE_PERMISSIONS" => "N",
                         "USE_SHARE" => "N"
-                    )
+                    ]
                 );?>
             </div>
         </div>

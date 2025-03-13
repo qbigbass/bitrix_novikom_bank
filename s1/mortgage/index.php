@@ -107,11 +107,13 @@ $APPLICATION->SetTitle("Ипотечные программы");
 		"SEF_URL_TEMPLATES" => [
 			"news" => "",
 			"section" => "#SECTION_CODE#/",
-			"detail" => "#SECTION_CODE#/#ELEMENT_CODE#/",
+			"detail" => "#ELEMENT_CODE#/",
         ]
     ],
 	false
 );?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_tabs.php'); ?>
 
 <? $APPLICATION->IncludeFile('/local/php_interface/include/block_ads_customers.php'); ?>
 

@@ -135,7 +135,7 @@ $headerView->render(
             <div class="d-flex flex-column flex-md-row align-items-start gap-4 gap-sm-5 gap-md-6">
                 <? if (!empty($arItem['UF_IMG'])) : ?>
                     <div class="banner-product-info-alternative__image flex-shrink-0">
-                        <img src="<?= CFile::GetPath($arItem['UF_IMG']) ?>" width="160" height="160" alt="" loading="lazy">
+                        <img src="<?= CFile::GetPath($arItem['UF_IMG']) ?>" width="160" height="160" alt="">
                     </div>
                 <? endif; ?>
                 <div class="banner-product-info-alternative d-flex flex-column gap-4 gap-md-6">

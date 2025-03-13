@@ -16,12 +16,12 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
 
 $this->setFrameMode(true);
 ?>
-<?if (!empty($arResult['ITEMS'])):?>
+<? if (!empty($arResult['ITEMS'])): ?>
     <div class="tab-content mt-4 mt-md-6 mt-lg-7">
         <div class="row row-gap-6">
             <div class="col-12">
                 <div class="accordion accordion--size-lg accordion--bg-transparent" id="accordion-insurance-more">
-                    <?foreach ($arResult['ITEMS'] as $item): ?>
+                    <? foreach ($arResult['ITEMS'] as $item): ?>
                         <div class="accordion-item">
                             <div class="accordion-header">
                                 <button
@@ -38,36 +38,45 @@ $this->setFrameMode(true);
                                  data-bs-parent="#accordion-insurance-more">
                                 <div class="accordion-body">
                                     <div class="rte rte--accordion">
-                                        <?= $item['DETAIL_TEXT'] ?>
-                                        <?if(!empty($item["DISPLAY_PROPERTIES"]["FILE"]["FILE_VALUE"])):?>
+                                        <?= $item['DETAIL_TEXT']; ?>
+                                        <? if (!empty($item['FILES'])): ?>
                                             <div>
                                                 <h5>Подробнее о программе</h5>
                                                 <div class="link-list">
-                                                    <a
-                                                        class="d-flex flex-column gap-2 py-3 document-download text-m"
-                                                        href="<?= $item["DISPLAY_PROPERTIES"]["FILE"]["FILE_VALUE"]["SRC"]?>"
-                                                        download="<?= $item["DISPLAY_PROPERTIES"]["FILE"]["FILE_VALUE"]["ORIGINAL_NAME"]?>"
-                                                    ><?= $item["DISPLAY_PROPERTIES"]["FILE"]["DESCRIPTION"] ?>
-                                                        <div class="d-flex gap-1 align-items-center">
-                                                            <div class="document-download__file caption-m dark-70">
-                                                                <span class="document-download__date-time"><?= $item["TIMESTAMP_X"] ?></span>
-                                                                <span class="document-download__file-type"><?= pathinfo($item["DISPLAY_PROPERTIES"]["FILE"]["FILE_VALUE"]["SRC"], PATHINFO_EXTENSION )?></span>
+                                                    <? foreach ($item['FILES'] as $file): ?>
+                                                        <a
+                                                            class="d-flex flex-column gap-2 py-3 document-download text-m"
+                                                            href="<?= $file['PATH']; ?>"
+                                                            download=""
+                                                        >
+                                                            <?= $file['NAME']; ?>
+                                                            <div class="d-flex gap-1 align-items-center">
+                                                                <div class="document-download__file caption-m dark-70">
+                                                                    <span class="document-download__date-time">
+                                                                        <?= $file['DATE_MODIFIED']; ?>
+                                                                    </span>
+                                                                    <span class="document-download__file-type">
+                                                                        <?= $file['EXTENSION']; ?>
+                                                                    </span>
+                                                                </div>
+                                                                <span class="icon size-s text-primary">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="100%"
+                                                                         height="100%">
+                                                                        <use
+                                                                            xlink:href="/frontend/dist/img/svg-sprite.svg#icon-download-small"></use>
+                                                                    </svg>
+                                                                </span>
                                                             </div>
-                                                            <span class="icon size-s text-primary">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                                                    <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-download-small"></use>
-                                                                </svg>
-                                                            </span>
-                                                        </div>
-                                                    </a>
+                                                        </a>
+                                                    <? endforeach; ?>
                                                 </div>
                                             </div>
-                                        <?endif;?>
+                                        <? endif; ?>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    <?endforeach;?>
+                    <? endforeach; ?>
                 </div>
             </div>
         </div>
@@ -75,4 +84,4 @@ $this->setFrameMode(true);
             <?= $arResult['NAV_STRING'] ?>
         </div>
     </div>
-<?endif;?>
+<? endif; ?>

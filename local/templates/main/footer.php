@@ -5,7 +5,7 @@ global $FORMS;
 use Bitrix\Main\Localization\Loc;
 ?>
 
-<!-- /#WORK_AREA# -------------------------------------------------------------------------------------------------- -->
+<!-- #WORK_AREA# ----------------------------------------------------------------------------------------------------->
 
     <div class="modal fade" id="modal-success" tabindex="-1" data-bs-backdrop="static" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable align-items-end align-items-md-center">
@@ -50,7 +50,7 @@ use Bitrix\Main\Localization\Loc;
                         "MENU_CACHE_TYPE" => "A",
                         "MENU_CACHE_USE_GROUPS" => "Y",
                         "ROOT_MENU_TYPE" => "top",
-                        "USE_EXT" => "Y"
+                        "USE_EXT" => "N"
                     ]
                 );?>
                 <div class="col-12 col-md-6 col-xl-3">
@@ -303,6 +303,9 @@ $APPLICATION->IncludeComponent(
         "FORM_ICONS" => ["img/svg-sprite.svg#icon-phone", "img/svg-sprite.svg#icon-mail"],
     ]
 );
+?>
+<?
+$FORMS->showAll();
 ?>
 </body>
 </html>

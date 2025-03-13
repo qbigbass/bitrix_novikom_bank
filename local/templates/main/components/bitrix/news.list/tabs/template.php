@@ -17,6 +17,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 $this->setFrameMode(true);
 ?>
 
+<?php if (count($arResult['ITEMS']) > 0): ?>
 <div class="collapse d-md-block" id="additional-info-content">
     <div class="row mt-4">
         <div class="col-12">
@@ -43,7 +44,9 @@ $this->setFrameMode(true);
                     <ul class="swiper-wrapper tabs-panel__list nav nav-tabs d-inline-flex flex-nowrap w-auto p-0 border border-purple rounded">
                         <? foreach ($arResult['ITEMS'] as $key => $tab): ?>
                             <li class="swiper-slide w-auto tabs-panel__list-item nav-item z-2">
-                                <button
+                                <a
+                                    id="#additional-info-<?= $tab['ID'] ?>"
+                                    href="#additional-info-<?= $tab['ID'] ?>"
                                     class="tabs-panel__list-item-link nav-link bg-transparent <?= $key == 0 ? 'active' : '' ?>"
                                     data-bs-toggle="tab"
                                     data-bs-target="#additional-info-<?= $tab['ID'] ?>"
@@ -52,7 +55,7 @@ $this->setFrameMode(true);
                                     aria-controls="additional-info-<?= $tab['ID'] ?>"
                                     aria-selected="true">
                                     <?= $tab['NAME'] ?? '' ?>
-                                </button>
+                                </a>
                             </li>
                         <? endforeach; ?>
                     </ul>
@@ -84,4 +87,4 @@ $this->setFrameMode(true);
         </div>
     </div>
 </div>
-
+<?php endif; ?>

@@ -57,11 +57,9 @@ $APPLICATION->IncludeComponent(
         "PROPERTY_CODE" => [
             'BENEFITS',
             'BENEFITS_HEADER',
+            'ADDITIONAL_INFO_IMG',
             'ADDITIONAL_INFO_HEADING',
             'ADDITIONAL_INFO',
-            'TABS',
-            'TABS_HEADER',
-            'ADS_FOR_CUSTOMERS'
         ],
         "SET_BROWSER_TITLE" => "N",
         "SET_CANONICAL_URL" => "N",
@@ -77,6 +75,8 @@ $APPLICATION->IncludeComponent(
     ],
 );
 ?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_tabs.php'); ?>
 
 <? $APPLICATION->IncludeFile('/local/php_interface/include/block_ads_customers.php'); ?>
 

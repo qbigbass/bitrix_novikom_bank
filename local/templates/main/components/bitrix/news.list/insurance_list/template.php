@@ -36,24 +36,21 @@ $headerView->render(
                 <div class="col-12">
                     <div class="accordion accordion--size-lg accordion--bg-transparent" id="accordion-insurance-programs">
                         <?foreach ($arResult["ITEMS"] as $index => $value): ?>
-                            <?
-                            $showClass = ($index === 0) ? "show" : "";
-                            $collapsedClass = ($index === 0) ? "" : "collapsed";
-                            ?>
                             <div class="accordion-item">
                                 <div class="accordion-header">
                                     <button
-                                        class="accordion-button <?= $collapsedClass ?>"
+                                        class="accordion-button collapsed"
                                         type="button"
                                         data-bs-toggle="collapse"
                                         data-bs-target="#<?= $index ?>"
-                                        aria-expanded aria-controls="<?= $index ?>"
+                                        aria-expanded="false"
+                                        aria-controls="<?= $index ?>"
                                     >
                                         <span class="fw-bold h4"><?= $value["NAME"] ?></span>
                                     </button>
                                 </div>
                                 <div
-                                    class="accordion-collapse collapse <?= $showClass ?>"
+                                    class="accordion-collapse collapse"
                                     id="<?= $index ?>"
                                     data-bs-parent="#accordion-insurance-programs"
                                 >

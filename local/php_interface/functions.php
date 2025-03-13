@@ -221,16 +221,30 @@ function getStepperIcons(int $stepIndex): string
 
 function getElementIdsIncludedArea(int $iblock): array
 {
-    $elementIds = [];
-
     global $APPLICATION;
+    $elementIds = [];
     $arPathPage = array_filter(explode("/", $APPLICATION->GetCurPage()));
     $startPathUrl = current($arPathPage) ?: 'main';
     $finalPathUrl = end($arPathPage) ?: 'main';
     $arFilter = [
         'IBLOCK_ID' => $iblock,
-        'ACTIVE' => 'Y',
+        'ACTIVE' => 'Y'
     ];
+
+    if (in_array($iblock, [
+            iblock('special_offers_ru'),
+            iblock('press_center_ru')
+        ], true)
+    ) {
+        $currentDate = date("Y-m-d H:i:s");
+        $arFilter['<=PROPERTY_PUBLICATION_DATE'] = $currentDate;
+        $arFilter[] = [
+            'LOGIC' => 'OR',
+            '>=PROPERTY_END_DATE' => $currentDate,
+            'PROPERTY_END_DATE' => false
+        ];
+    }
+
     $parentSectionId = 0;
 
     if (!empty($startPathUrl)) {
@@ -281,16 +295,12 @@ function getElementIdsIncludedArea(int $iblock): array
                 }
 
                 if ($finalSectionId > 0) {
-                    $arFilter = [
-                        'SECTION_ID' => $finalSectionId,
-                    ];
+                    $arFilter['SECTION_ID'] = $finalSectionId;
                 } else {
                     return [];
                 }
             } else {
-                $arFilter = [
-                    'SECTION_ID' => $parentSectionId,
-                ];
+                $arFilter['SECTION_ID'] = $parentSectionId;
             }
 
             $elements = CIBlockElement::GetList(

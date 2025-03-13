@@ -71,7 +71,7 @@ $this->setFrameMode(true);
                             <? if (!empty($arItem['PREVIEW_PICTURE']['SRC'])) { ?>
                                 <img class="card-award__image w-auto float-end"
                                      src="<?= $arItem['PREVIEW_PICTURE']['SRC'] ?>"
-                                     alt="<?= $arItem['PREVIEW_PICTURE']['ALT'] ?>" loading="lazy">
+                                     alt="<?= $arItem['PREVIEW_PICTURE']['ALT'] ?>">
                             <? } ?>
                             <div class="card-award__content text-l">
                                 <div class="d-flex w-100 align-items-end justify-content-between mb-4">

@@ -132,13 +132,12 @@ $this->setFrameMode(true); ?>
                                                 <div class="d-flex flex-column gap-4">
                                                     <div class="d-flex flex-column">
                                                         <img src="/frontend/dist/img/top-sm.svg" alt="Топ" width="138"
-                                                             height="40"
-                                                             loading="lazy">
+                                                             height="40">
                                                         <? if (!empty($arItem['DISPLAY_PROPERTIES']['IMAGE']['FILE_VALUE']['SRC'])) { ?>
                                                             <img
                                                                 src="<?= $arItem['DISPLAY_PROPERTIES']['IMAGE']['FILE_VALUE']['SRC'] ?>"
                                                                 alt="15" width="138"
-                                                                height="86" loading="lazy">
+                                                                height="86">
                                                         <? } ?>
                                                     </div>
                                                     <p class="card-top-list__description dark-100 text-m mt-auto mb-0">

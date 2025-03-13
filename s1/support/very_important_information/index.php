@@ -8,6 +8,8 @@ $APPLICATION->SetTitle("Очень важная информация");
     "bitrix:catalog",
     "products_services",
     [
+        'CHAIN_DEPTH' => 1,
+
         "TEMPLATE_THEME" => "blue",
         "IBLOCK_TYPE" => "support",
         "IBLOCK_ID" => iblock("very_important_information"),
@@ -204,6 +206,8 @@ $APPLICATION->SetTitle("Очень важная информация");
     ],
     false
 );?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_tabs.php'); ?>
 
 <? $APPLICATION->IncludeFile('/local/php_interface/include/financial_literacy.php'); ?>
 

@@ -9,7 +9,8 @@ const FEEDBACK_ELEMS = {
     inputInn: 'input[name="INN"]',
     inputOrganization: 'input[name="ORGANIZATION"]',
     inputReplyEmail: 'input[name="REPLY_EMAIL"]',
-    fieldsBlock: '#js-feedback-fields',
+    fieldsBlock: '#feedback-fields',
+    topicText: '.js-topic-text',
 }
 
 function initFormFeedback() {
@@ -28,6 +29,7 @@ function initFormPerson(form) {
     const colInputInn = form.querySelector(FEEDBACK_ELEMS.inputInn).closest('.application-form__col')
     const colInputOrganization = form.querySelector(FEEDBACK_ELEMS.inputOrganization).closest('.application-form__col')
     const formFieldsBlock = form.querySelector(FEEDBACK_ELEMS.fieldsBlock);
+    const topicText = form.querySelectorAll(FEEDBACK_ELEMS.topicText);
 
     personRadios.forEach(radio => {
         radio.addEventListener('change', () => {
@@ -40,7 +42,7 @@ function initFormPerson(form) {
                 colInputInn.hidden = true
                 colInputOrganization.hidden = true
             }
-            if (!!formFieldsBlock) {
+            if (formFieldsBlock) {
                 formFieldsBlock.classList.remove('d-none');
             }
         })
@@ -51,7 +53,7 @@ function initFormPerson(form) {
             if (id) {
                 const textContainer = document.querySelector('#' + id + '-text');
                 if (!!textContainer) {
-                    document.querySelectorAll('.js-topic-text').forEach(el => {
+                    topicText.forEach(el => {
                         el.hidden = true;
                     })
                     textContainer.hidden = false;

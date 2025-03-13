@@ -13,6 +13,7 @@ class DocumentsHandler implements PropertyHandlerInterface
     private int $iblockId;
     private array $property;
     private ?array $params;
+    private ?array $element;
     private int $firstSectionKey;
 
     public function __construct(array $property, ?int $elementId = null, ?array $element = null, array $params = [])
@@ -20,6 +21,7 @@ class DocumentsHandler implements PropertyHandlerInterface
         $this->iblockId = iblock("documents");
         $this->property = $property;
         $this->params = $params;
+        $this->element = $element;
 
         $this->property['LINK_SECTION_VALUE'] = !empty($this->property['VALUE']) ?
             $this->getSectionsWithElements($this->property['VALUE']) : [];
@@ -47,11 +49,13 @@ class DocumentsHandler implements PropertyHandlerInterface
             </div>
         ';
 
-        $protectionFromScammers = '
-            <div class="col-12 col-xxl-4">'
-                . $this->getProtectionFromScammersHtml() .
-            '</div>
-        ';
+        if (!empty($this->element['PROPERTIES']['SHOW_DEFEND_BLOCK']['VALUE'])) {
+            $protectionFromScammers = '
+                <div class="col-12 col-xxl-4">'
+                    . $this->getProtectionFromScammersHtml() .
+                '</div>
+            ';
+        }
 
         return $sectionHtml . (empty($params['isAccordion']) ? $protectionFromScammers : '');
     }
@@ -75,17 +79,14 @@ class DocumentsHandler implements PropertyHandlerInterface
 
         foreach ($this->property['LINK_SECTION_VALUE'] as $key => $section) {
             if (!empty($section['ELEMENTS'])) {
-                $buttonShowClass = ($key == $this->firstSectionKey) ? 'show' : 'collapsed';
-                $ariaExpanded = ($key == $this->firstSectionKey) ? 'aria-expanded="true"' : '';
-                $accordionShowClass = ($key == $this->firstSectionKey) ? 'show' : '';
                 $sectionsHtml .=
                     '<div class="accordion-item">
                         <div class="accordion-header">
-                            <button class="accordion-button ' . $buttonShowClass . '" type="button" data-bs-toggle="collapse" data-bs-target="#' . $section['ID'] . '" aria-controls="' . $section['ID'] . '" ' . $ariaExpanded . '>'
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#' . $section['ID'] . '" aria-controls="' . $section['ID'] . '" aria-expanded="false">'
                                 . $section['NAME'] .
                             '</button>
                         </div>
-                        <div class="accordion-collapse collapse ' . $accordionShowClass . '" id="' . $section['ID'] . '" data-bs-parent="#accordion-' . $this->property['ID'] . '">
+                        <div class="accordion-collapse collapse" id="' . $section['ID'] . '" data-bs-parent="#accordion-' . $this->property['ID'] . '">
                             <div class="accordion-body">
                                 <p class="text-m mb-0 dark-70">'
                                     . $section['DESCRIPTION'] .
@@ -223,22 +224,10 @@ class DocumentsHandler implements PropertyHandlerInterface
                 $result .= $this->getElementsHtml($section['ELEMENTS_ARCHIVE'], true);
             } else {
                 $result .=
-                    '<div class="accordion" id="accordion-' . $section['ID'] . '">
-                        <div class="accordion-item">
-                            <div class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#' . $section['ID'] . '-archive" aria-controls="' . $section['ID'] . '-archive">
-                                    ' . $section['NAME'] . '
-                                </button>
-                            </div>
-                            <div class="accordion-collapse collapse" id="' . $section['ID'] . '-archive" data-bs-parent="#accordion-' . $section['ID'] . '">
-                                <div class="accordion-body">
-                                    <div class="mt-4">'
-                                        . $this->getElementsHtml($section['ELEMENTS_ARCHIVE'], true) .
-                                    '</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>';
+                    '<div class="mt-4">
+                        <h5>' . $section['NAME'] . '</h5>'
+                        . $this->getElementsHtml($section['ELEMENTS_ARCHIVE'], true) .
+                    '</div>';
             }
         }
 

@@ -21,11 +21,10 @@ class QuestionsHandler implements PropertyHandlerInterface
             $this->property['LINK_ELEMENT_VALUE'] = $this->getElements($this->property['VALUE']);
         }
         $this->qaLinlk = '';
-        if($element){
+        if ($element){
             $this->element = $element;
             $this->qaLinlk = $this->getQALink();
         }
-
     }
 
     /**
@@ -70,7 +69,7 @@ class QuestionsHandler implements PropertyHandlerInterface
                 ?>
             </div>
         </div>
-        <? if (empty($params['isAccordion'])) { ?>
+        <? if (empty($params['isAccordion']) && !empty($this->element['PROPERTIES']['SHOW_QUESTION_BLOCK']['VALUE'])) { ?>
             <div class="col-12 col-xxl-4">
                 <?= $this->getRequestCallFormHtml() ?>
             </div>

@@ -17,5 +17,5 @@ $aMenuLinksExt = $APPLICATION->IncludeComponent("bitrix:menu.sections", "", arra
     false
 );
 $aMenuLinksElementsExt = IblockHelper::getIblockMenuWithoutSections('small_medium_business', '/msb/');
-$aMenuLinks = array_merge($aMenuLinks, $aMenuLinksExt,$aMenuLinksElementsExt);
+$aMenuLinks = array_merge($aMenuLinksExt,$aMenuLinksElementsExt);
 ?>

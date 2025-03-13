@@ -43,7 +43,7 @@ $this->setFrameMode(true);
                                 </div>
                             </div>
                         </fieldset>
-                        <div id="js-feedback-fields" class="d-none row g-1 g-md-2 g-lg-2_5">
+                        <div id="feedback-fields" class="d-none row g-1 g-md-2 g-lg-2_5">
                             <div class="application-form__col col-12 col-md-6">
                                 <div class="d-flex flex-column row-gap-2">
                                     <label class="form-label mb-0" for="feedback_last-name">Фамилия<span

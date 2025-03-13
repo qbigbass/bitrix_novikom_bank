@@ -27,12 +27,12 @@ $helper = $headerView->helper();
 $headerView
     ->setBtnClasses('btn-tertiary')
     ->render(
-    "Вклад «" . $arResult["~NAME"] . "»",
-    $arResult['~PREVIEW_TEXT'],
-    null,
-    0,
-    $arResult
-);
+        "Вклад «" . $arResult["~NAME"] . "»",
+        $arResult['~PREVIEW_TEXT'],
+        null,
+        0,
+        $arResult
+    );
 ?>
 
 <? if (!empty($arResult['PROPERTIES']['BENEFITS']['VALUE'])) { ?>
@@ -88,7 +88,7 @@ $headerView
                         <div class="polygon-container js-polygon-container">
                             <div class="polygon-container__content">
                                 <img src="<?= CFile::GetPath($arResult['PROPERTIES']['TEXT_BLOCK_IMAGE']['VALUE']) ?>"
-                                     alt="<?= $arResult['PROPERTIES']['TEXT_BLOCK_IMAGE']['ALT'] ?>" loading="lazy">
+                                     alt="<?= $arResult['PROPERTIES']['TEXT_BLOCK_IMAGE']['ALT'] ?>">
                             </div>
                             <div class="polygon-container__polygon js-polygon-container-polygon purple-70">
                                 <svg class="js-polygon-container-svg" xmlns="http://www.w3.org/2000/svg">
@@ -109,25 +109,6 @@ $headerView
     </section>
 <? } ?>
 
-<? if (!empty($arResult['PROPERTIES']['TABS']['VALUE'])) { ?>
-    <section class="section-layout js-collapsed-mobile">
-        <div class="container">
-            <h3 class="d-none d-md-flex mb-md-6 mb-lg-7 px-lg-6"><?= $arResult['PROPERTIES']['TABS_HEADER']['~VALUE'] ?></h3>
-            <a class="h3 d-flex align-items-center justify-content-between dark-100 d-md-none" data-bs-toggle="collapse"
-               href="#additional-info-content" role="button" aria-expanded="false"
-               aria-controls="additional-info-content">
-                <?= $arResult['PROPERTIES']['TABS_HEADER']['~VALUE'] ?>
-                <svg class="icon size-m violet-100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                    <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-down"></use>
-                </svg>
-            </a>
-
-            <? $renderer->render('Tabs', $arResult['PROPERTIES']['TABS']['VALUE'], null, ['elementId' => $arResult['ID']]); ?>
-
-        </div>
-    </section>
-<? } ?>
-
 <? if (!empty($arResult['PROPERTIES']['STEPS']['VALUE'])) {
 
     $renderer->render('Steps', $arResult['PROPERTIES']['STEPS']['VALUE'], null, [
@@ -143,7 +124,7 @@ $headerView
             <div class="d-flex flex-column flex-md-row align-items-start gap-4 gap-sm-5 gap-md-6">
                 <div class="banner-product-info-alternative__image flex-shrink-0">
                     <img src="<?= CFile::GetPath($arResult['PROPERTIES']['QUOTE_IMG']['VALUE']) ?>" width="160"
-                         height="160" alt="" loading="lazy">
+                         height="160" alt="">
                 </div>
                 <div class="banner-product-info-alternative d-flex flex-column gap-4 gap-md-6">
                     <div class="banner-product-info-alternative__header">

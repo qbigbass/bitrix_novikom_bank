@@ -46,8 +46,7 @@ $this->setFrameMode(true); ?>
                        href="<?= $item['PROPERTIES']['HREF']['VALUE'] ?? '#' ?>">
                         <? if (!empty($item['DISPLAY_PROPERTIES']['ICON']['FILE_VALUE']['SRC'])) { ?>
                             <img class="card-sale__image"
-                                 src="<?= $item['DISPLAY_PROPERTIES']['ICON']['FILE_VALUE']['SRC'] ?>" alt=""
-                                 loading="lazy">
+                                 src="<?= $item['DISPLAY_PROPERTIES']['ICON']['FILE_VALUE']['SRC'] ?>" alt="">
                         <? } ?>
                         <h5 class="dark-100"><?= $item['~NAME'] ?></h5>
                         <span class="dark-100"><?= $item['~PREVIEW_TEXT'] ?></span>

@@ -36,7 +36,7 @@ if (!empty($arResult['SECTIONS_FRAUD_PROTECTION'])) {
                             <div class="col-12 col-md-6 col-lg-4">
                                 <div class="benefit d-flex gap-3 flex-column">
                                     <? if (!empty($item['ICON'])) : ?>
-                                        <img class="icon size-xxl" src="<?= $item['ICON'] ?>" alt="icon" loading="lazy">
+                                        <img class="icon size-xxl" src="<?= $item['ICON'] ?>" alt="icon">
                                     <? endif; ?>
                                     <div class="benefit__content d-flex flex-column gap-3">
                                         <div class="benefit__description w-100 text-m">
@@ -88,7 +88,7 @@ if (!empty($arResult['SECTIONS_FRAUD_PROTECTION'])) {
                                             <h4 class="card-product__title"><?= $item['NAME'] ?></h4>
                                             <p class="card-product__description m-0 mw-100"><?= $item['PREVIEW_TEXT'] ?></p>
                                         </div>
-                                        <div class="card-product__footer"><img class="icon size-xxl" src="<?= $item['ICON'] ?>" alt="" loading="lazy">
+                                        <div class="card-product__footer"><img class="icon size-xxl" src="<?= $item['ICON'] ?>" alt="">
                                         </div>
                                     </div></a>
                             </div><?

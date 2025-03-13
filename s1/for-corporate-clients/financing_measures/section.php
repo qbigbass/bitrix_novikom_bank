@@ -33,8 +33,6 @@ $APPLICATION->SetTitle('Корпоративным клиентам');
             "BANNER_HEADER",
             "BANNER_TEXT",
             "BANNER_IMG",
-            "TABS_HEADER",
-            "TABS",
         ],
         "DETAIL_URL" => "/for-corporate-clients/#ELEMENT_CODE#/",
         "SECTION_URL" => "/for-corporate-clients/",
@@ -75,6 +73,22 @@ $APPLICATION->SetTitle('Корпоративным клиентам');
     ],
     false
 );?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_tabs.php'); ?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_ads_customers.php'); ?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_cross_sale.php',
+    [
+        'HEADER_TEXT' => 'Другие услуги для корпоративных клиентов',
+    ]
+);?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_special_offers.php'); ?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_news.php'); ?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_contacts.php'); ?>
 
 <?require($_SERVER['DOCUMENT_ROOT'].'/bitrix/footer.php');?>
 
