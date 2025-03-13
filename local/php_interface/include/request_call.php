@@ -18,10 +18,6 @@
                     "FORM_CODE" => "simple_callback_form",
                 ]
             ); ?>
-            <?
-            global $FORMS;
-            $FORMS->includeForm('feedback_form');
-            ?>
         </div>
     </div>
     <picture class="pattern-bg pattern-bg--position-top">

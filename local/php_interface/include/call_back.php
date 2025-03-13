@@ -14,9 +14,3 @@
         <source srcset="/frontend/dist/img/patterns/card/pattern-light-m.svg" media="(max-width: 1199px)"><img src="/frontend/dist/img/patterns/card/pattern-light-l.svg" alt="bg pattern" loading="lazy">
     </picture>
 </div>
-
-<?
-global $FORMS;
-$FORMS->includeForm('feedback_form');
-$FORMS->includeForm('callback_form');
-?>
