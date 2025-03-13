@@ -4,6 +4,8 @@ const ELEMS_DEPOSIT = {
     period: '.js-calculator-display-period',
     rate: '.js-calculator-display-rate',
     income: '.js-calculator-display-income',
+    percent: '.js-calculator-display-percent',
+    resultRow: '.js-calculator-display-row',
     inputAmount: '.js-input-amount',
     inputPeriod: '.js-input-period',
     inputSlider: '.input-slider',
@@ -17,6 +19,8 @@ const ELEMS_DEPOSIT = {
     inputCapitalization: '.js-input-deposit-capitalization',
     selectName: '.js-select-deposit-name',
     name: '.js-program-name',
+    polygonContainer: '.js-polygon-container',
+    resultBlock: '.card-calculate-result'
 }
 
 const CLASSES_DEPOSIT = {
@@ -94,6 +98,14 @@ function showDepositResult(STATE) {
     STATE.elements.displayPeriod.innerHTML = getFormatedTextByType({value: STATE.period, type: 'day'});
     STATE.elements.displayRate.innerHTML = `${formatNumber(STATE.rate)} %`;
     STATE.elements.displayIncome.innerHTML = `${formatNumberWithSpaces(STATE.income.toFixed(0))} <span class="currency">${CURRENCIES[STATE.currency]}</span>`;
+    const percentRowWrapper = STATE.elements.displayPercent.closest(ELEMS_DEPOSIT.resultRow);
+    if (STATE.filteredData[0].interestPayment) {
+        percentRowWrapper.classList.remove('d-none');
+        STATE.elements.displayPercent.textContent = STATE.filteredData[0].interestPayment;
+    } else {
+        percentRowWrapper.classList.add('d-none');
+        STATE.elements.displayPercent.textContent = '';
+    }
 }
 
 function handlerInputDeposit(STATE) {
@@ -376,6 +388,7 @@ const initElementsDepositCalculator = (root) => {
     const displayRate = root.querySelector(ELEMS_DEPOSIT.rate);
     const displayIncome = root.querySelector(ELEMS_DEPOSIT.income);
     const displayName = root.querySelector(ELEMS_DEPOSIT.name);
+    const displayPercent = root.querySelector(ELEMS_DEPOSIT.percent);
     const inputAmount = root.querySelector(ELEMS_DEPOSIT.inputAmount);
     const inputPeriod = root.querySelector(ELEMS_DEPOSIT.inputPeriod);
     const inputPeriodWrapper = inputPeriod.closest(ELEMS_DEPOSIT.inputSlider);
@@ -390,6 +403,7 @@ const initElementsDepositCalculator = (root) => {
         displayRate,
         displayIncome,
         displayName,
+        displayPercent,
         inputAmount,
         inputPeriod,
         inputPeriodWrapper,
@@ -615,6 +629,26 @@ function setDepositTriggerListener(STATE) {
     })
 }
 
+const updatePolygonInResult = (el) => {
+    const event = new Event("resize", {bubbles: true, composed: true});
+    el.closest(ELEMS_DEPOSIT.polygonContainer).dispatchEvent(event);
+}
+
+const resizePolygonInResult = (el) => {
+    const resizeObserver = new ResizeObserver(entries => {
+        updatePolygonInResult(el);
+    });
+
+    resizeObserver.observe(el);
+}
+
+function initResizePolygonInResult(root) {
+    const resultBlock = root.querySelector(ELEMS_DEPOSIT.resultBlock);
+    if (!resultBlock) return false;
+
+    resizePolygonInResult(resultBlock);
+}
+
 function initCalculatorDeposit() {
     const calculatorsDeposit = document.querySelectorAll(ELEMS_DEPOSIT.root);
 
@@ -625,6 +659,7 @@ function initCalculatorDeposit() {
                 initReplenishment(calculator, STATE);
                 setDepositValues(STATE);
                 setDepositTriggerListener(STATE);
+                initResizePolygonInResult(STATE.elements.root);
             })
             .catch(error => {
                 console.error('Ошибка в initCalculatorDeposit функции:', error);
