@@ -26,7 +26,7 @@ $APPLICATION->SetTitle("404 Not Found");
                     </a>
                 </div>
                 <img class="page-error__image" src="/frontend/dist/img/big-illustrations/large-individual/404.png"
-                     alt="" loading="lazy">
+                     alt="">
             </div>
         </div>
         <picture class="pattern-bg pattern-bg--hide-mobile">

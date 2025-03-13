@@ -47,7 +47,7 @@ $this->setFrameMode(true);
                         </div>
                         <div class="card-benefit__read-more d-flex align-items-end justify-content-between">
                             <div class="card-benefit__icon">
-                                <img class="icon size-xxl" src="<?=$arItem['DISPLAY_PROPERTIES']['ICON']['FILE_VALUE']['SRC']?>" alt="" loading="lazy">
+                                <img class="icon size-xxl" src="<?=$arItem['DISPLAY_PROPERTIES']['ICON']['FILE_VALUE']['SRC']?>" alt="">
                             </div>
                         </div>
                     </div>

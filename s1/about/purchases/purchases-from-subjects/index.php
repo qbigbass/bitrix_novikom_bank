@@ -24,8 +24,7 @@ $APPLICATION->SetTitle('Закупки <br>у субъектов МСП');
             </div>
             <div class="d-none d-sm-block col-12 col-sm-6 col-md-4">
                 <img class="banner-text__image position-relative w-auto float-end"
-                     src="/frontend/dist/img/big-illustrations/large-individual/individual-documents.png" alt=""
-                     loading="lazy">
+                     src="/frontend/dist/img/big-illustrations/large-individual/individual-documents.png" alt="">
             </div>
         </div>
     </div>

@@ -86,7 +86,7 @@ $this->setFrameMode(true);
                                     ?>
                                     <div class="swiper-slide js-swiper-slide" id="<?= $this->GetEditAreaId($item['ID']); ?>">
                                         <a class="card-sale d-flex flex-column align-items-start gap-2 gap-lg-3" href="#">
-                                            <img class="card-sale__image" src="<?=$item['DISPLAY_PROPERTIES']['ICON']['FILE_VALUE']['SRC']?>" alt="" loading="lazy">
+                                            <img class="card-sale__image" src="<?=$item['DISPLAY_PROPERTIES']['ICON']['FILE_VALUE']['SRC']?>" alt="">
                                             <h5 class="dark-100"><?=$item['~NAME']?></h5>
                                             <span class="dark-100"><?=$item['~PREVIEW_TEXT']?></span>
                                         </a>

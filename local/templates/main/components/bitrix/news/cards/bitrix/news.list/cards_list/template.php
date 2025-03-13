@@ -20,7 +20,7 @@ $this->setFrameMode(true);
                     <div class="card-product-list__inner d-flex flex-column flex-lg-row align-items-start h-100 gap-3 gap-md-6 gap-xxl-11">
                         <?if (!empty($arItem['PICTURE'])):?>
                             <div class="card-product-list__image-container mx-auto">
-                                <img class="card-product-list__image" src="<?= CFile::GetPath($arItem['PICTURE']) ?>" alt="" loading="lazy">
+                                <img class="card-product-list__image" src="<?= CFile::GetPath($arItem['PICTURE']) ?>" alt="">
                             </div>
                         <?endif;?>
                         <div class="card-product-list__content flex-column d-flex align-items-start gap-6 gap-lg-9 w-100">

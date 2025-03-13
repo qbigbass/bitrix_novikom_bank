@@ -123,7 +123,7 @@ if (!empty($arItems)) {
                     <div class="banner-product-info__image">
                         <div class="polygon-container js-polygon-container">
                             <div class="polygon-container__content">
-                                <img src="<?= CFile::GetPath($arItem['UF_IMG']) ?>" alt="" loading="lazy">
+                                <img src="<?= CFile::GetPath($arItem['UF_IMG']) ?>" alt="">
                             </div>
                             <div class="polygon-container__polygon js-polygon-container-polygon purple-70">
                                 <svg class="js-polygon-container-svg" xmlns="http://www.w3.org/2000/svg">

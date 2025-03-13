@@ -31,7 +31,7 @@ $this->setFrameMode(true);
                     </div>
                     <? if (!empty($item['DISPLAY_PROPERTIES']['PREVIEW_PICTURE']['FILE_VALUE']['SRC'])) { ?>
                         <img class="card-product__img" src="<?=$item['DISPLAY_PROPERTIES']['PREVIEW_PICTURE']['FILE_VALUE']['SRC']?>"
-                             alt="<?=$item['DISPLAY_PROPERTIES']['PREVIEW_PICTURE']['FILE_VALUE']['DESCRIPTION']?>" loading="lazy">
+                             alt="<?=$item['DISPLAY_PROPERTIES']['PREVIEW_PICTURE']['FILE_VALUE']['DESCRIPTION']?>">
                     <? } ?>
                     <span class="btn btn-link btn-icon m-auto m-lg-0 py-2 py-lg-0" >
                         <span>Подробнее</span>
@@ -82,7 +82,7 @@ $this->setFrameMode(true);
                             </span>
                                 <? if (!empty($item['DISPLAY_PROPERTIES']['PREVIEW_PICTURE']['FILE_VALUE']['SRC'])) { ?>
                                     <img class="icon size-xxl ms-auto" src="<?= $item['DISPLAY_PROPERTIES']['PREVIEW_PICTURE']['FILE_VALUE']['SRC'] ?>"
-                                         alt="<?= $item['DISPLAY_PROPERTIES']['PREVIEW_PICTURE']['FILE_VALUE']['DESCRIPTION'] ?>" loading="lazy">
+                                         alt="<?= $item['DISPLAY_PROPERTIES']['PREVIEW_PICTURE']['FILE_VALUE']['DESCRIPTION'] ?>">
                                 <? } ?>
                             </div>
                         </div>

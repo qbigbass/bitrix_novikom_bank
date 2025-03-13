@@ -3,7 +3,7 @@
         <h3 class="dark-0 card-contact__top-title">Контакты для соискателей</h3>
         <div class="card-contact__image-container">
             <img class="card-contact__image" src="/frontend/dist/img/big-illustrations/large-individual/contact.png"
-                 alt="" loading="lazy">
+                 alt="">
         </div>
         <div class="d-flex flex-column gap-4">
             <h5 class="card-contact__title text-white-50">Департамент HR</h5>

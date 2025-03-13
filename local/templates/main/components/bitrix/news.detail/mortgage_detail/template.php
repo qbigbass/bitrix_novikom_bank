@@ -121,7 +121,7 @@ $headerColorClass = 'banner-product--heavy-violet';
                     <div class="banner-product-info__image">
                         <div class="polygon-container js-polygon-container">
                             <div class="polygon-container__content">
-                                <img src="<?= CFile::GetPath($arResult['PROPERTIES']['TEXT_BLOCK_IMAGE']['VALUE']) ?>" alt="<?= $arResult['PROPERTIES']['TEXT_BLOCK_IMAGE']['ALT'] ?>" loading="lazy">
+                                <img src="<?= CFile::GetPath($arResult['PROPERTIES']['TEXT_BLOCK_IMAGE']['VALUE']) ?>" alt="<?= $arResult['PROPERTIES']['TEXT_BLOCK_IMAGE']['ALT'] ?>">
                             </div>
                             <div class="polygon-container__polygon js-polygon-container-polygon purple-70">
                                 <svg class="js-polygon-container-svg" xmlns="http://www.w3.org/2000/svg">

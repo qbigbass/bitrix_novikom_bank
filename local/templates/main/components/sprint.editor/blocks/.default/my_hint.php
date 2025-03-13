@@ -6,7 +6,7 @@
             <div class="a-polygon-container js-a-polygon-container">
                 <div class="a-polygon-container__content">
                     <div class="a-helper dark-10">
-                        <img src="/frontend/dist/assets/helper-icon.png" class="a-helper__icon" alt="" loading="lazy">
+                        <img src="/frontend/dist/assets/helper-icon.png" class="a-helper__icon" alt="">
                         <div class="a-helper__content">
                             <?if(!empty($block['heading'])) {?>
                                 <h3 class="headline-3"><?=$block['heading']?></h3>
