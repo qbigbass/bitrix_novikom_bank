@@ -7,6 +7,7 @@ use Bitrix\Main\SystemException;
 use CIBlockElement;
 use COption;
 use CSite;
+use Bitrix\Iblock\Iblock as BitrixIblock;
 
 /**
  * Менеджер плейсхолдеров для замены в контенте.<br><br>
@@ -31,6 +32,8 @@ use CSite;
  * - loans_rates: Для работы с данными по кредитам.
  * - mortgage_rates: Для работы с данными по ипотеке.
  * - deposits_rates: Для работы с данными по вкладам.
+ * - loans: ИБ "Кредиты"
+ * - mortgage: ИБ "Ипотека"
  */
 class RatesPlaceholderManager
 {
@@ -38,6 +41,12 @@ class RatesPlaceholderManager
         'loans_rates' => [],
         'mortgage_rates' => [],
         'deposits_rates' => [],
+    ];
+
+    private array $calculatedCostRangeValues = [
+        'loans' => [],
+        'mortgage' => [],
+        'deposits' => [],
     ];
 
     // Для поиска элементов в связанных со ставками ИБ и получения названий и ID
@@ -55,6 +64,12 @@ class RatesPlaceholderManager
         'loan' => 'loans_rates',
         'mortgage' => 'mortgage_rates',
         'deposit' => 'deposits_rates',
+    ];
+
+    // Для поиска блоков в контенте страницы и получения данных из связанных ИБ
+    private array $entriesForCostRange = [
+        'loan' => 'loans',
+        'mortgage' => 'mortgage',
     ];
 
     private array $currencyCodes = [
@@ -110,12 +125,15 @@ class RatesPlaceholderManager
         }
 
         $instance = new self();
-
         $foundEntries = $instance->findUsedBlocks($content, $instance->entriesToProcess);
 
         foreach ($foundEntries as $entry) {
             try {
                 $instance->getRates($instance->entriesToProcess[$entry], $instance->linkedIblocks[$instance->entriesToProcess[$entry]]);
+
+                if (!empty($instance->entriesForCostRange[$entry])) {
+                    $instance->getCostRange($instance->entriesForCostRange[$entry]);
+                }
             } catch (SystemException $e) {
                 echo $e->getMessage();
                 continue;
@@ -168,6 +186,31 @@ class RatesPlaceholderManager
         }
     }
 
+    private function getCostRange(string $iblockCode): void
+    {
+        $iblockId = iblock($iblockCode);
+        $class = BitrixIblock::wakeUp($iblockId)->getEntityDataClass();
+        $elements = $class::getList([
+            "select" => ["CODE", "TOTAL_COST_CREDIT_RANGE"],
+            "filter" => ["ACTIVE" => "Y"],
+        ])->fetchCollection();
+
+        if (!empty($elements)) {
+            foreach ($elements as $element) {
+                $code = $element->getCode();
+                $totalCostCreditRange = '';
+
+                if ($element->getTotalCostCreditRange()) {
+                    $totalCostCreditRange = $element->getTotalCostCreditRange()->getValue();
+                }
+
+                if (!empty($code) && !empty($totalCostCreditRange)) {
+                    $this->calculatedCostRangeValues[$iblockCode][$code] = $totalCostCreditRange;
+                }
+            }
+        }
+    }
+
     /**
      * @param string $iblockCode
      * @return array
@@ -193,6 +236,7 @@ class RatesPlaceholderManager
     {
         preg_match_all('/#(?<product>\w+)_(?<range>min|max)_(?<property>rate|sum|term)\|(?<code>[^#|]*)\|?(?<currency>\w+)?#/', $content, $matches, PREG_SET_ORDER);
         preg_match_all('/#(?<product>\w+)_table\|(?<code>[^|]+)\|(?<currencies>[^#]+)#/', $content, $matchesTable, PREG_SET_ORDER);
+        preg_match_all('/#(?<product>\w+)_cost-range\|(?<code>[^#|]*)\|?(?<currency>\w+)?#/', $content, $matchesCostRange, PREG_SET_ORDER);
 
         if (!empty($matchesTable)) {
             foreach ($matchesTable as &$match) {
@@ -210,6 +254,10 @@ class RatesPlaceholderManager
             $this->processDepositTablesMatches($matchesTable, $result);
         }
 
+        if (!empty($matchesCostRange)) {
+            $this->processCostRangeValuesMatches($matchesCostRange, $result);
+        }
+
         return $result;
     }
 
@@ -221,7 +269,7 @@ class RatesPlaceholderManager
     private function replacePlaceholders(string &$content, array $replacements): void
     {
         foreach ($replacements as $key => [$placeholder, $product, $range, $property, $code, $currency]) {
-            if ($key != 'tables') {
+            if ($key !== 'tables' && $key !== 'cost-range') {
                 $value = $this->calculatedValues[$this->entriesToProcess[$product]][$code] ?? null;
                 if (!empty($value)) {
                     $content = !empty($currency)
@@ -230,9 +278,20 @@ class RatesPlaceholderManager
                 }
             }
         }
+
         foreach ($replacements['tables'] as [$placeholder, $product, $code, $currencies, $table]) {
             if (!empty($table)) {
                 $content = str_replace($placeholder, $table, $content);
+            }
+        }
+
+        if (!empty($replacements['cost-range'])) {
+            foreach ($replacements['cost-range'] as $key => [$placeholder, $product, $code]) {
+                $value = $this->calculatedCostRangeValues[$this->entriesForCostRange[$product]][$code] ?? null;
+
+                if (!empty($value)) {
+                    $content = str_replace($placeholder, $value, $content);
+                }
             }
         }
     }
@@ -337,6 +396,23 @@ class RatesPlaceholderManager
                 $match['property'],
                 $match['code'] ?? null,
                 $match['currency'] ?? null,
+            ];
+        }, $matches));
+    }
+
+    /**
+     * @param array $matches
+     * @param array $result
+     * @return void
+     */
+    private function processCostRangeValuesMatches(array $matches, array &$result): void
+    {
+        $result['cost-range'] = [];
+        $result['cost-range'] = array_merge($result['cost-range'], array_map(function ($match) {
+            return [
+                $match[0],
+                $match['product'],
+                $match['code']
             ];
         }, $matches));
     }
