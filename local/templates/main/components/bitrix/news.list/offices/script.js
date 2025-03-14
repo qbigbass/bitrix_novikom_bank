@@ -128,13 +128,31 @@ class OfficesMap {
                 },
 
                 zoomIn: function () {
+                    // var map = this.getData().control.getMap();
+                    // map.setZoom(map.getZoom() + 1, {checkZoomRange: true});
+
                     var map = this.getData().control.getMap();
-                    map.setZoom(map.getZoom() + 1, {checkZoomRange: true});
+                    var currentZoom = map.getZoom();
+                    var maxZoom = map.options.get('maxZoom'); // Получаем maxZoom
+
+                    // Увеличиваем масштаб только если он меньше maxZoom
+                    if (currentZoom < maxZoom) {
+                        map.setZoom(currentZoom + 1, {checkZoomRange: true});
+                    }
                 },
 
                 zoomOut: function () {
+                    // var map = this.getData().control.getMap();
+                    // map.setZoom(map.getZoom() - 1, {checkZoomRange: true});
+
                     var map = this.getData().control.getMap();
-                    map.setZoom(map.getZoom() - 1, {checkZoomRange: true});
+                    var currentZoom = map.getZoom();
+                    var minZoom = map.options.get('minZoom'); // Получаем minZoom
+
+                    // Уменьшаем масштаб только если он больше minZoom
+                    if (currentZoom > minZoom) {
+                        map.setZoom(currentZoom - 1, {checkZoomRange: true});
+                    }
                 }
             });
 
@@ -346,13 +364,13 @@ class OfficesMap {
                 checkZoomRange: true
             }).then(() => {
                 // Ограничиваем зум, если он больше 12
-                // if (this.myMap.getZoom() > 12) {
-                //     this.myMap.setZoom(12);
-                // }
+                if (this.myMap.getZoom() > 12) {
+                    this.myMap.setZoom(12);
+                }
 
                 console.log('this.myMap', this.myMap);
-                this.myMap.minZoom = 8;
-                this.myMap.maxZoom = 14;
+                this.myMap.minZoom = 9;
+                this.myMap.maxZoom = 12;
             });
         }
     }
