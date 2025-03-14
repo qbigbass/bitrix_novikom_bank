@@ -213,6 +213,8 @@ document.addEventListener('DOMContentLoaded', () => {
     scrollPbAccordion();
 })
 
-window.addEventListener('load', function() {
-    pbAnimation();
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        pbAnimation();
+    }, 100)
 });
