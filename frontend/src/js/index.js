@@ -391,6 +391,25 @@ function createNewInputSlider(inputSlider, dataAttr) {
     return cloneInputSlider;
 }
 
+function checkPattern() {
+    // Получаем все секции с классом .section-layout
+    const sections = document.querySelectorAll('.section-layout');
+
+    // Проходим по секциям, начиная со второй
+    for (let i = 0; i < sections.length - 1; i++) {
+        if (sections[i].querySelector('.pattern-bg')) {
+            // Получаем следующую секцию
+            const nextSection = sections[i + 1];
+
+            if (nextSection.lastElementChild && nextSection.lastElementChild.classList.contains('pattern-bg')) {
+                // Удаляем паттерн
+                nextSection.lastElementChild.remove();
+                // nextSection.lastElementChild.classList.add('d-none');
+            }
+        }
+    }
+}
+
 const URL = '/local/php_interface/ajax/calc.php';
 
 function getRates({table = null, id = null, name = null}) {
@@ -453,6 +472,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initFixScrollAccordions();
     checkWidth();
     updateHash();
+    checkPattern();
 });
 
 window.addEventListener('load', function() {
