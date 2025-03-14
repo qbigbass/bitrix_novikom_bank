@@ -404,7 +404,6 @@ function checkPattern() {
             if (nextSection.lastElementChild && nextSection.lastElementChild.classList.contains('pattern-bg')) {
                 // Удаляем паттерн
                 nextSection.lastElementChild.remove();
-                // nextSection.lastElementChild.classList.add('d-none');
             }
         }
     }
