@@ -43,7 +43,7 @@ $this->setFrameMode(true);
                 <a class="card-special bg-dark-10 dark-100 h-100 d-flex flex-column row-gap-6 row-gap-lg-9"
                    href="<?= $arItem['DETAIL_PAGE_URL'] ?>"
                 >
-                    <div class="card-special__header d-flex align-items-start justify-content-between">
+                    <div class="card-special__header d-flex flex-row-reverse align-items-start justify-content-between">
                         <div class="tag tag--outline tag--triangle-absolute">
                             <? if (!empty($arItem['PROPERTIES']['TAG']['VALUE'])) : ?>
                                 <span class="tag__content text-s fw-semibold"><?= $arItem['PROPERTIES']['TAG']['VALUE'] ?></span>
