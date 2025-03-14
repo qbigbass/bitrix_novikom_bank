@@ -25,6 +25,7 @@ $headerView->render(
     $APPLICATION->GetProperty("description"),
     ['border-green']
 );
+$iblockId = iblock('deposits');
 ?>
 
 <section class="section-catalog d-flex flex-column gap-7 py-6 py-sm-9 py-md-11" id="catalog-tabs">
@@ -126,5 +127,47 @@ $headerView->render(
         </div>
     </section>
 </section>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_tabs.php', ['IBLOCK_ID' => $iblockId]); ?>
+
+<!-- Большой блок "Вклады застрахованы" -->
+<? $arItems = getHlBlockEntries('DepositsInfo'); ?>
+<? if (!empty($arItems)) : ?>
+    <? $arItem = reset($arItems); ?>
+    <section class="section-layout py-lg-11 px-lg-6 bg-blue-10">
+        <div class="container">
+            <div class="d-flex flex-column flex-md-row align-items-start gap-4 gap-sm-5 gap-md-6">
+                <? if (!empty($arItem['UF_IMG'])) : ?>
+                    <div class="banner-product-info-alternative__image flex-shrink-0">
+                        <img src="<?= CFile::GetPath($arItem['UF_IMG']) ?>" width="160" height="160" alt="">
+                    </div>
+                <? endif; ?>
+                <div class="banner-product-info-alternative d-flex flex-column gap-4 gap-md-6">
+                    <div class="banner-product-info-alternative__header">
+                        <h3><?= $arItem['UF_HEADER'] ?? '' ?></h3>
+                    </div>
+                    <div class="banner-product-info-alternative__body d-flex flex-column gap-4 gap-md-6 text-l">
+                        <?= $arItem['UF_TEXT'] ?? '' ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <picture class="pattern-bg pattern-bg--position-top">
+            <source srcset="/frontend/dist/img/patterns/section-heavy/pattern-light-s.svg" media="(max-width: 767px)">
+            <source srcset="/frontend/dist/img/patterns/section-heavy/pattern-light-m.svg" media="(max-width: 1199px)">
+            <img src="/frontend/dist/img/patterns/section-heavy/pattern-light-l.svg" alt="bg pattern" loading="lazy">
+        </picture>
+    </section>
+<? endif; ?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_ads_customers.php'); ?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_cross_sale.php'); ?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_special_offers.php'); ?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_news.php'); ?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_contacts.php'); ?>
 
 <? $helper->saveCache(); ?>
