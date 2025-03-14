@@ -1,9 +1,28 @@
 <?php
+/** @var array $arParams */
+
 use Dalee\Helpers\ComponentRenderer\Renderer;
 
 global $APPLICATION;
 $renderer = new Renderer($APPLICATION);
 $elementIds = getElementIdsIncludedArea(iblock('tabs'));
+$params = [];
+
+if (!empty($arParams['IBLOCK_ID'])) {
+    $code = basename($APPLICATION->GetCurPage());
+    $element = \Bitrix\Iblock\ElementTable::getList([
+        'filter' => [
+            'CODE' => $code,
+            'IBLOCK_ID' => $arParams['IBLOCK_ID'] ?? ''
+        ],
+        'select' => [
+            'ID'
+        ]
+    ])->fetch();
+
+    $params['elementId'] = $element['ID'];
+}
+
 ?>
 <? if (!empty($elementIds)) : ?>
     <?
@@ -27,7 +46,7 @@ $elementIds = getElementIdsIncludedArea(iblock('tabs'));
                     <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-down"></use>
                 </svg>
             </a>
-            <? $renderer->render('Tabs', $elementIds); ?>
+            <? $renderer->render('Tabs', $elementIds, null, $params); ?>
         </div>
         <? if (!empty($picPath)) : ?>
             <picture class="pattern-bg pattern-bg--hide-mobile">

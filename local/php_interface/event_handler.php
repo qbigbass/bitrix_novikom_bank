@@ -27,6 +27,7 @@ $eventManager->addEventHandler("iblock", "OnAfterIBlockElementUpdate", [CacheHan
 $eventManager->addEventHandler("iblock", "OnAfterIBlockElementDelete", [CacheHandler::class, "onAfterIBlockElementUpdateHandler"]);
 
 $eventManager->addEventHandler('iblock', 'OnBeforeIBlockElementUpdate', [PlaceholderChecker::class, 'checkTabPlaceholders']);
+$eventManager->addEventHandler('iblock', 'OnBeforeIBlockElementAdd', [PlaceholderChecker::class, 'checkTabPlaceholders']);
 
 // Сбрасываем тегированный кеш "bitrix:menu" при изменении раздела в ИБ
 $eventManager->addEventHandler('iblock', 'OnAfterIBlockSectionAdd', [IblockHelper::class, 'onAfterIBlockSectionUpdateHandler']);
