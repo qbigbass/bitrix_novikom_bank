@@ -80,6 +80,7 @@ class OfficesMap {
 
     initMap() {
         const maxZoom = 17;
+        const minZoom = 4;
         const coordsCenter = [55.76, 37.64]; // [55.76, 37.64] - Москва
         const isTablet = window.matchMedia(`(min-width: ${MEDIA_QUERIES['tablet']})`).matches;
         const isDesktop = window.matchMedia(`(min-width: ${MEDIA_QUERIES['tablet-album']})`).matches;
@@ -89,7 +90,9 @@ class OfficesMap {
             zoom: 10,
             controls: [],
             maxZoom: maxZoom,
+            minZoom: minZoom,
             autoFitToViewport: 'none',
+            restrictMapArea: true
         });
 
         // Пользовательский макет ползунка масштаба.
@@ -166,7 +169,9 @@ class OfficesMap {
             groupByCoordinates: false,
             // clusterDisableClickZoom: true,
             clusterHideIconOnBalloonOpen: false,
-            geoObjectHideIconOnBalloonOpen: false
+            geoObjectHideIconOnBalloonOpen: false,
+            hasBalloon: false,
+            hasHint: false,
         });
 
         // Запрещаем скролить на карте
@@ -340,9 +345,9 @@ class OfficesMap {
             this.myMap.setBounds(this.myMap.geoObjects.getBounds(), {
                 checkZoomRange: true
             }).then(() => {
-                // Ограничиваем зум, если он больше 14
-                if (this.myMap.getZoom() > 14) {
-                    this.myMap.setZoom(14);
+                // Ограничиваем зум, если он больше 12
+                if (this.myMap.getZoom() > 12) {
+                    this.myMap.setZoom(12);
                 }
             });
         }
