@@ -377,7 +377,7 @@ class IblockHelper
      * @param int|null $iblockId
      * @return array
      */
-    public static function getEmptySections(?int $iblockId): array
+    public static function getEmptySections(?int $iblockId, ?bool $idsOnly = false): array
     {
         $result = [];
         if (empty($iblockId)) {
@@ -391,17 +391,29 @@ class IblockHelper
                 'CNT_ACTIVE' => 'Y',
             ],
             true,
-            [
-                'CODE'
-            ]
+            ['ID', 'CODE']
         );
+
+        $arInactiveSections = SectionTable::getList([
+            'filter' => [
+                'IBLOCK_ID' => $iblockId,
+                'ACTIVE' => 'N'
+            ],
+            'select' => ['ID', 'CODE']
+        ])->fetchAll();
 
         while ($res = $arSections->fetch()) {
             if (!$res['ELEMENT_CNT']) {
-                $result[] = $res['CODE'];
+                $result[] = !$idsOnly ? $res['CODE'] : $res['ID'];
             }
         }
 
-        return $result;
+        if (!empty($arInactiveSections)) {
+            foreach ($arInactiveSections as $section) {
+                $result[] = !$idsOnly ? $section['CODE'] : $section['ID'];
+            }
+        }
+
+        return array_unique($result);
     }
 }

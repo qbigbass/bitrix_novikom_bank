@@ -218,12 +218,24 @@ use Bitrix\Main\Localization\Loc;
             </div>
             <div class="mobile-menu__body js-mobile-menu-body">
                 <div class="d-flex flex-column gap-3 gap-md-4">
-                    <form>
-                        <div class="input-group flex-nowrap js-mobile-search"><span class="input-group-icon" id="input-search-menu"><span class="icon">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                            <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-search"></use>
-                          </svg></span></span>
-                            <input class="form-control" type="text" placeholder="Поиск по сайту" aria-label="Поиск по сайту" aria-describedby="input-search-menu">
+                    <form method="get" action="/search/">
+                        <div class="input-group flex-nowrap js-mobile-search">
+                            <span class="input-group-icon" id="input-search-menu">
+                                <span class="icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-search"></use>
+                                    </svg>
+                                </span>
+                            </span>
+                            <input
+                                class="form-control"
+                                name="q"
+                                type="text"
+                                placeholder="Поиск по сайту"
+                                aria-label="Поиск по сайту"
+                                aria-describedby="input-search-menu"
+                                value="<?= htmlspecialchars($_GET['q'] ?? ''); ?>"
+                            >
                         </div>
                     </form>
                     <div class="mobile-menu__search-content"><span class="dark-70">Популярные запросы:</span>
