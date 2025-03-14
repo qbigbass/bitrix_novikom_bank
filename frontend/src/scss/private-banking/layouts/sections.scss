@@ -409,7 +409,7 @@
       opacity: 1;
       transform: translate(0) rotate(-5deg) translateZ(0);
       animation: card-move-left ease-in-out 16s infinite;
-      animation-delay: 1.8s;
+      animation-delay: 2s;
 
       @include use-media(tablet) {
         transform: rotate(-5deg) translateZ(0);
@@ -488,7 +488,7 @@
       opacity: 1;
       transform: translate(0) translateZ(0);
       animation: card-move-right ease-in-out 16s infinite;
-      animation-delay: 1.8s;
+      animation-delay: 2s;
 
       @include use-media(tablet-album) {
         transform: translate(0) rotate(0) translateZ(0);
@@ -531,7 +531,7 @@
 
   @at-root .animate.animate-show & {
     animation: blink-move-right ease-in-out 16s infinite;
-    animation-delay: 1.8s;
+    animation-delay: 2s;
   }
 }
 
@@ -541,7 +541,7 @@
 
   @at-root .animate.animate-show & {
     animation: blink-move-left ease-in-out 16s infinite;
-    animation-delay: 1.8s;
+    animation-delay: 2s;
   }
 }
 
