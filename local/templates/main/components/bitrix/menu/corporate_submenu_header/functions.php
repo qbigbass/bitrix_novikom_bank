@@ -3,9 +3,10 @@
 use Bitrix\Iblock\SectionTable;
 use Bitrix\Main\Application;
 
-function modifyFirstLevelMainSubmenu(array $firstLevelMenu, int $hiddenKey  = 7) : array
+function modifyFirstLevelMainSubmenu(array $firstLevelMenu, int $hiddenKey = 7): array
 {
     $modifiedFirstLevelMenu = [];
+
     foreach ($firstLevelMenu as $key => &$item) {
         if ($key >= 5) {
             $item['JS_DESKTOP_MOVE_LINK'] = true;
@@ -17,6 +18,7 @@ function modifyFirstLevelMainSubmenu(array $firstLevelMenu, int $hiddenKey  = 7)
             $modifiedFirstLevelMenu['NOT_HIDDEN'][] = $item;
         }
     }
+
     return $modifiedFirstLevelMenu;
 }
 
@@ -31,10 +33,8 @@ function modifyCorporateSubmenuResult(array $arResult): array
     $rootUri = explode('/', $uriString)[1];
     $iblockId = MENU_IBLOCKS[$rootUri] ?? iblock('corporate_clients');
 
-
     foreach ($arResult as $key => $item) {
         $modifiedResult['FIRST_LEVEL_MENU'][] = $item;
-        $iblockId = iblock('corporate_clients');
 
         $sections = SectionTable::getList([
             'filter' => [
@@ -62,8 +62,6 @@ function modifyCorporateSubmenuResult(array $arResult): array
                 $modifiedResult['SECOND_LEVEL_MENU'][$item['ITEM_INDEX']][] = $secondLevelItem;
             }
         }
-
-
 
         $sections = SectionTable::getList([
             'filter' => [
@@ -108,15 +106,23 @@ function modifyCorporateSubmenuResult(array $arResult): array
             ]
         ])->fetchAll();
 
-        if (!empty($elements) && count($elements) > 1) {
-            foreach ($elements as $element) {
-                $secondLevelItem = [
-                    'TEXT' => $element['NAME'],
-                    'LINK' => '/' . $rootUri . '/' . $element['CODE'] . '/',
-                    'DEPTH_LEVEL' => 2
-                ];
-                $modifiedResult['SECOND_LEVEL_MENU'][$item['ITEM_INDEX']][] = $secondLevelItem;
+        if (!empty($elements)) {
+            if (count($elements) == 1 && empty($sections)) {
+                $modifiedResult['FIRST_LEVEL_MENU'][$item['ITEM_INDEX']]['LINK'] = '/' . $rootUri . '/' . $elements[0]['CODE'] . '/';
+            } else {
+                foreach ($elements as $element) {
+                    $secondLevelItem = [
+                        'TEXT' => $element['NAME'],
+                        'LINK' => '/' . $rootUri . '/' . $element['CODE'] . '/',
+                        'DEPTH_LEVEL' => 2
+                    ];
+                    $modifiedResult['SECOND_LEVEL_MENU'][$item['ITEM_INDEX']][] = $secondLevelItem;
+                }
             }
+        }
+
+        if (empty($sections) && empty($elements)) {
+            unset($modifiedResult['FIRST_LEVEL_MENU'][$item['ITEM_INDEX']]);
         }
     }
 

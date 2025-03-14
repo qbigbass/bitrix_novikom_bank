@@ -450,7 +450,7 @@ $headerView
                         "PARENT_SECTION" => "",
                         "PARENT_SECTION_CODE" => "",
                         "PREVIEW_TRUNCATE_LEN" => "",
-                        "PROPERTY_CODE" => ["BENEFITS", "STEPS_HEADER", "STEPS", "QUOTE", "TEXT_FIELD", "BUTTON_TEXT", "BUTTON_LINK", "BUTTON_CODE_FORM"],
+                        "PROPERTY_CODE" => ["BENEFITS", "STEPS_HEADER", "STEPS", "QUOTE", "TEXT_FIELD", "TEXT_FIELD_HEADER", "BUTTON_TEXT", "BUTTON_LINK", "BUTTON_CODE_FORM"],
                         "SET_BROWSER_TITLE" => "N",
                         "SET_LAST_MODIFIED" => "N",
                         "SET_META_DESCRIPTION" => "N",
@@ -497,48 +497,6 @@ $headerView
 
     renderQuote($header . $text);
 } ?>
-
-<!-- Блок с информацией в виде аккордеона -->
-<? if (!empty($arResult['PROPERTIES']['INFORMATION_LIST']['VALUE']) && !empty($arResult["INFORMATION_LIST"])) : ?>
-    <section class="section-layout px-lg-6">
-        <div class="container">
-            <div class="row ">
-                <div class="col-12">
-                    <? if (!empty($arResult['PROPERTIES']['INFORMATION_TITLE']['VALUE'])) : ?>
-                        <h2 class="h3 mb-4 mb-md-6 mb-lg-7"><?= $arResult['PROPERTIES']['INFORMATION_TITLE']['~VALUE'] ?></h2>
-                    <? endif; ?>
-                    <div class="accordion accordion--size-lg accordion--bg-transparent px-lg-6" id="accordion-trust-management">
-                        <? $i = 0;?>
-                        <? foreach ($arResult["INFORMATION_LIST"] as $elemId => $arData) : ?>
-                            <div class="accordion-item">
-                                <div class="accordion-header">
-                                    <button
-                                        class="accordion-button collapsed"
-                                        type="button"
-                                        data-bs-toggle="collapse"
-                                        data-bs-target="#<?= $elemId?>"
-                                        aria-expanded="false"
-                                        aria-controls="<?= $elemId?>"
-                                    >
-                                        <span class="fw-bold h4"><?= $arData["TITLE"]?></span>
-                                    </button>
-                                </div>
-                                <div class="accordion-collapse collapse" id="<?= $elemId ?>" data-bs-parent="#accordion-trust-management">
-                                    <div class="accordion-body">
-                                        <div class="rte rte--accordion">
-                                            <?= $arData["TEXT"]?>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <? $i++; ?>
-                        <? endforeach; ?>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-<? endif; ?>
 
 <!-- Блок с якорными ссылками -->
 <? if (!empty($arResult['PROPERTIES']['ANCHOR_LINKS']['VALUE'])) : ?>

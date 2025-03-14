@@ -57,6 +57,7 @@ $APPLICATION->IncludeComponent(
         "PROPERTY_CODE" => [
             'BENEFITS',
             'BENEFITS_HEADER',
+            'ADDITIONAL_INFO_IMG',
             'ADDITIONAL_INFO_HEADING',
             'ADDITIONAL_INFO',
         ],

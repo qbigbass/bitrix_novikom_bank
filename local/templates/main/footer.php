@@ -5,7 +5,7 @@ global $FORMS;
 use Bitrix\Main\Localization\Loc;
 ?>
 
-<!-- /#WORK_AREA# -------------------------------------------------------------------------------------------------- -->
+<!-- #WORK_AREA# ----------------------------------------------------------------------------------------------------->
 
     <div class="modal fade" id="modal-success" tabindex="-1" data-bs-backdrop="static" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable align-items-end align-items-md-center">
@@ -104,10 +104,6 @@ use Bitrix\Main\Localization\Loc;
                     >
                         <?=Loc::getMessage('FEEDBACK_BUTTON_TITLE')?>
                     </a>
-                    <?
-                    global $FORMS;
-                    $FORMS->includeForm('feedback_form');
-                    ?>
                     <div class="d-flex flex-column row-gap-3 pt-md-3 pt-lg-5">
                         <a class="btn btn-lg-lg btn-outline-primary d-flex gap-2 gap-lg-3 align-items-center justify-content-center" id='showAccessibilityPanel' href="#">
                             <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
@@ -303,6 +299,9 @@ $APPLICATION->IncludeComponent(
         "FORM_ICONS" => ["img/svg-sprite.svg#icon-phone", "img/svg-sprite.svg#icon-mail"],
     ]
 );
+?>
+<?
+$FORMS->showAll();
 ?>
 </body>
 </html>

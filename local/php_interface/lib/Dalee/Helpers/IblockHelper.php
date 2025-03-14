@@ -8,6 +8,7 @@ use Bitrix\Iblock\SectionTable;
 use CIBlockElement;
 use CIBlockFormatProperties;
 use Bitrix\Iblock\Model\Section;
+use CIBlockSection;
 
 class IblockHelper
 {
@@ -269,6 +270,52 @@ class IblockHelper
     }
 
     /**
+     * Получает меню с верхними разделами ИБ, в которых есть активные элементы
+     *
+     * @param string $iblockCode
+     * @return array
+     */
+    public static function getMenuSectionsWithActiveElements(string $iblockCode): array
+    {
+        $aMenuLinksExt = [];
+
+        $sections = CIBlockSection::GetList(
+            [
+                'SORT' => 'ASC',
+                'NAME' => 'ASC'
+            ],
+            [
+                'IBLOCK_ID' => iblock($iblockCode),
+                'ACTIVE' => 'Y',
+                'CNT_ACTIVE' => 'Y',
+                'SECTION_ID' => false,
+            ],
+            true,
+            [
+                'ID',
+                'NAME',
+                'SECTION_PAGE_URL',
+                'ELEMENT_CNT'
+            ]
+        );
+
+        while ($section = $sections->GetNext()) {
+            if ($section['ELEMENT_CNT'] == 0) {
+                continue;
+            }
+
+            $aMenuLinksExt[] = [
+                $section['NAME'],
+                $section['SECTION_PAGE_URL'],
+                [],
+                [],
+            ];
+        }
+
+        return $aMenuLinksExt;
+    }
+
+    /**
      * Получаем Элементы ИБ по фильтру. Используется в комплексным компонентах, для получения элементов по коду
      *
      * @param array $filter
@@ -324,5 +371,37 @@ class IblockHelper
                 $CACHE_MANAGER->ClearByTag("bitrix:menu");
             }
         }
+    }
+
+    /**
+     * @param int|null $iblockId
+     * @return array
+     */
+    public static function getEmptySections(?int $iblockId): array
+    {
+        $result = [];
+        if (empty($iblockId)) {
+            return $result;
+        }
+
+        $arSections = CIBlockSection::GetList(
+            ["SORT" => "ASC"],
+            [
+                'IBLOCK_ID' => $iblockId,
+                'CNT_ACTIVE' => 'Y',
+            ],
+            true,
+            [
+                'CODE'
+            ]
+        );
+
+        while ($res = $arSections->fetch()) {
+            if (!$res['ELEMENT_CNT']) {
+                $result[] = $res['CODE'];
+            }
+        }
+
+        return $result;
     }
 }

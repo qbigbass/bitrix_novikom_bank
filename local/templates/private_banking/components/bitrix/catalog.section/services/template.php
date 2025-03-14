@@ -11,17 +11,16 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
             <ul class="pb-services__header nav nav-tabs flex-nowrap justify-content-center w-100 animate js-animation" role="tablist">
                 <?foreach ($arResult['SECTIONS'] as $item) :
                     $key = $item['CODE'];
-                    ?>
+                ?>
                     <li class="nav-item" role="presentation">
                         <button class="nav-link <?= $key==='finance' ? 'active' : '' ?>" <?= $key==='finance' ? 'aria-selected="true"' : '' ?> id="<?= $key ?>-tab" data-bs-toggle="tab" data-bs-target="#<?= $key ?>" type="button" role="tab" aria-controls="<?= $key ?>"><?= $item['NAME'] ?></button>
                     </li>
                 <?endforeach; ?>
             </ul>
             <div class="tab-content">
-                <?$i = 0;
-                foreach ($arResult['SECTIONS'] as $service) {
+                <?$i = 0; foreach ($arResult['SECTIONS'] as $service) {
                     $key = $service['CODE'];
-                    ?>
+                ?>
                     <div class="tab-pane fade <?= $i===0 ? 'active show' : ''; ?>" id="<?= $key ?>" role="tabpanel" aria-labelledby="<?= $key ?>-tab" tabindex="<?= $i++ ?>">
                         <div class="js-pb-tags-thumbs swiper pb-tags-wrapper animate js-animation">
                             <div class="swiper-wrapper d-flex flex-wrap row-gap-2">
@@ -48,16 +47,11 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
                                                     </a>
                                                 <?php endif; ?>
                                             </div>
-                                            <?
-                                            if($item['PREVIEW_PICTURE']['SRC']){
-                                            ?>
-                                            <div class="pb-card-service__image mt-auto mt-md-0">
-                                                <img src="<?= $item['PREVIEW_PICTURE']['SRC'] ?>" alt="<?= $item['NAME'] ?>">
-                                            </div>
-                                            <?
-
-                                            }
-                                            ?>
+                                            <? if($item['PREVIEW_PICTURE']['SRC']){ ?>
+                                                <div class="pb-card-service__image mt-auto mt-md-0">
+                                                    <img src="<?= $item['PREVIEW_PICTURE']['SRC'] ?>" alt="<?= $item['NAME'] ?>">
+                                                </div>
+                                            <? } ?>
                                         </div>
                                     </div>
                                 <?endforeach; ?>

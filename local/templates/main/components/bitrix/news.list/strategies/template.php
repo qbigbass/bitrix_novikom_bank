@@ -132,27 +132,36 @@ use Bitrix\Main\Localization\Loc;
                                     </div>
                                 </div>
                             <? endif; ?>
-                            <? if(!empty($arStrategy["FILE"])) : ?>
+                            <? if(!empty($arStrategy["FILES"])) : ?>
                                 <div class="d-flex flex-column gap-4">
-                                    <div class="h4"><?= Loc::getMessage("STRATEGY_ITEM_TITLE_FILE")?></div>
+                                    <div class="h4">
+                                        <?= Loc::getMessage("STRATEGY_ITEM_TITLE_FILE")?>
+                                    </div>
                                     <div class="link-list">
-                                        <a
-                                            class="d-flex flex-column gap-1 py-3 document-download text-m"
-                                            href="<?= $arStrategy["FILE"]["PATH"]?>"
-                                            download="<?= $arStrategy["FILE"]["NAME"]?>"
-                                        ><?= $arStrategy["FILE"]["NAME"]?>
-                                            <div class="d-flex gap-1 align-items-center">
-                                                <div class="document-download__file caption-m dark-70">
-                                                    <span class="document-download__date-time"><?= $arStrategy["DATE_MODIFIED"]?></span>
-                                                    <span class="document-download__file-type"><?= $arStrategy["FILE"]["EXTENSION"]?></span>
-                                                </div>
-                                                <span class="icon size-s text-primary">
+                                        <? foreach ($arStrategy["FILES"] as $file): ?>
+                                            <a
+                                                class="d-flex flex-column gap-1 py-3 document-download text-m"
+                                                href="<?= $file["PATH"]; ?>"
+                                                download=""
+                                            >
+                                                <?= $file["NAME"]?>
+                                                <div class="d-flex gap-1 align-items-center">
+                                                    <div class="document-download__file caption-m dark-70">
+                                                        <span class="document-download__date-time">
+                                                            <?= $file["DATE_MODIFIED"]?>
+                                                        </span>
+                                                        <span class="document-download__file-type">
+                                                            <?= $file["EXTENSION"]?>
+                                                        </span>
+                                                    </div>
+                                                    <span class="icon size-s text-primary">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                                                         <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-download-small"></use>
                                                     </svg>
                                                 </span>
-                                            </div>
-                                        </a>
+                                                </div>
+                                            </a>
+                                        <? endforeach; ?>
                                     </div>
                                 </div>
                             <?endif;?>
@@ -187,7 +196,9 @@ use Bitrix\Main\Localization\Loc;
                         <? foreach ($arStrategy["BENEFITS"] as $id => $arData) : ?>
                             <div class="col-12 col-lg-6">
                                 <div class="benefit d-flex gap-3 flex-column flex-column flex-md-row align-items-md-center gap-md-4 gap-lg-6">
-                                    <img class="icon size-xxl" src="<?= $arData['ICON'] ?>" alt="icon" loading="lazy">
+                                    <? if (!empty($arData['ICON'])): ?>
+                                        <img class="icon size-xxl" src="<?= $arData['ICON'] ?>" alt="icon" loading="lazy">
+                                    <? endif; ?>
                                     <div class="benefit__content d-flex flex-column gap-3">
                                         <h4 class="benefit__title"><?= $arData['NAME'] ?></h4>
                                     </div>

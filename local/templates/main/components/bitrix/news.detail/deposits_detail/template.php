@@ -27,12 +27,12 @@ $helper = $headerView->helper();
 $headerView
     ->setBtnClasses('btn-tertiary')
     ->render(
-    "Вклад «" . $arResult["~NAME"] . "»",
-    $arResult['~PREVIEW_TEXT'],
-    null,
-    0,
-    $arResult
-);
+        "Вклад «" . $arResult["~NAME"] . "»",
+        $arResult['~PREVIEW_TEXT'],
+        null,
+        0,
+        $arResult
+    );
 ?>
 
 <? if (!empty($arResult['PROPERTIES']['BENEFITS']['VALUE'])) { ?>

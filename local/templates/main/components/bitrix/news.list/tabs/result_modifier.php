@@ -1,4 +1,13 @@
 <?php
+foreach ($arResult['ITEMS'] as $key => $tab) {
+    if (
+        empty($tab['DISPLAY_PROPERTIES'])
+        || empty($tab['~DETAIL_TEXT'])
+    ) {
+        unset($arResult['ITEMS'][$key]);
+    }
+}
+
 foreach ($arResult['ITEMS'] as &$tab) {
     if (!empty($tab['DISPLAY_PROPERTIES'])) {
         $tab['DISPLAY_PROPERTIES']['SHORT_INFO']['IMG'] = $tab['DISPLAY_PROPERTIES']['ICON_SHORT_INFO']['FILE_VALUE']['SRC'];

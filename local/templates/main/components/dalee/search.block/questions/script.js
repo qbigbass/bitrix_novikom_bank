@@ -24,7 +24,7 @@ function filter(str) {
         if ($(this).find('button').length > 0) {
             let title = $(this).find('button').data('item-name');
 
-            if (!title.toLowerCase().includes(str)) {
+            if (!title.toLowerCase().includes(str.toLowerCase())) {
                 $(this).parent('.accordion').parent('div').hide();
             } else {
                 $(this).parent('.accordion').parent('div').show();

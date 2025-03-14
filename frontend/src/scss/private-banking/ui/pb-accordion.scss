@@ -1,4 +1,10 @@
 .pb {
+  $transition-collapse: height 1.35s ease;
+
+  .collapsing {
+    transition: $transition-collapse;
+  }
+
   .pb-accordion {
     --bs-accordion-bg: transparent;
     --bs-accordion-color: var(--dark-0);

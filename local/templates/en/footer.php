@@ -1,6 +1,7 @@
 <?php
 if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die();
 global $APPLICATION;
+global $FORMS;
 use Bitrix\Main\Localization\Loc;
 ?>
 
@@ -253,7 +254,6 @@ $APPLICATION->IncludeComponent(
 );
 ?>
 <?
-global $FORMS;
 $FORMS->showAll();
 ?>
 </body>

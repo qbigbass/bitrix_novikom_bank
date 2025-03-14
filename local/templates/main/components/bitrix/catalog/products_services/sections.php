@@ -92,7 +92,8 @@ if (empty($sliders)) {
     $headerView->render(
         $APPLICATION->GetTitle(),
         '',
-        ['border-green']
+        ['border-green'],
+        !empty($arParams['CHAIN_DEPTH']) ? $arParams['CHAIN_DEPTH'] : 0
     );
 }
 ?>
