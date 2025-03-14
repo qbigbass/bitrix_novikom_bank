@@ -346,9 +346,13 @@ class OfficesMap {
                 checkZoomRange: true
             }).then(() => {
                 // Ограничиваем зум, если он больше 12
-                if (this.myMap.getZoom() > 12) {
-                    this.myMap.setZoom(12);
-                }
+                // if (this.myMap.getZoom() > 12) {
+                //     this.myMap.setZoom(12);
+                // }
+
+                console.log('this.myMap', this.myMap);
+                this.myMap.minZoom = 8;
+                this.myMap.maxZoom = 14;
             });
         }
     }
