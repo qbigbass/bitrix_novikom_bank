@@ -2,6 +2,7 @@
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 global $APPLICATION;
 $APPLICATION->SetTitle("Вклады Новикома");
+$iblockId = iblock('deposits');
 ?>
 
 <? $APPLICATION->IncludeComponent(
@@ -53,7 +54,7 @@ $APPLICATION->SetTitle("Вклады Новикома");
         "DISPLAY_TOP_PAGER" => "N",
         "FILE_404" => "",
         "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-        "IBLOCK_ID" => iblock("deposits"),
+        "IBLOCK_ID" => $iblockId,
         "IBLOCK_TYPE" => "for_private_clients_ru",
         "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
         "LIST_ACTIVE_DATE_FORMAT" => "d.m.Y",
@@ -109,7 +110,7 @@ $APPLICATION->SetTitle("Вклады Новикома");
     ['HIDE_ICONS' => 'Y']
 ); ?>
 
-<? $APPLICATION->IncludeFile('/local/php_interface/include/block_tabs.php'); ?>
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_tabs.php', ['IBLOCK_ID' => $iblockId]); ?>
 
 <? $APPLICATION->IncludeFile('/local/php_interface/include/block_ads_customers.php'); ?>
 
