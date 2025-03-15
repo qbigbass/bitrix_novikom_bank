@@ -8,14 +8,8 @@ use Dalee\Helpers\ComponentRenderer\Interface\ComponentInterface;
 
 class Tabs implements ComponentInterface
 {
-    public static function render(
-        CMain $application,
-        CBitrixComponent|bool $component,
-        string $filter,
-        ?array $params = []
-    ): void
+    public static function render(CMain $application, CBitrixComponent|bool $component, string $filter, ?array $params = []): void
     {
-        global $filter;
         $padding = false;
         $elementId = false;
         $templateComponent = 'tabs';
