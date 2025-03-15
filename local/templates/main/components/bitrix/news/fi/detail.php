@@ -73,7 +73,6 @@ $this->setFrameMode(true);
         "BLOCK_CONTACT_COLOR_H4" => "dark-100",
         "BLOCK_CONTACT_COLOR_SPAN" => "dark-100",
         "BLOCK_CONTACT_COLOR_ICON" => "dark-100",
-        "HEADER_COLOR_CLASS" => "banner-product border-violet banner-product--graphite", // Для всех детальных страниц ФИ
     ],
     $component
 );?>
