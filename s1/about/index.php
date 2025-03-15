@@ -51,7 +51,7 @@ $APPLICATION->SetTitle('Новиком сегодня');
         "FILE_404" => "",
         "HIDE_LINK_WHEN_NO_DETAIL" => "N",
         "IBLOCK_ID" => iblock("novikom_today_ru"),
-        "IBLOCK_TYPE" => "about_ru",
+        "IBLOCK_TYPE" => "additional",
         "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
         "LIST_ACTIVE_DATE_FORMAT" => "d.m.Y",
         "LIST_FIELD_CODE" => [
@@ -68,7 +68,7 @@ $APPLICATION->SetTitle('Новиком сегодня');
         "MESSAGE_404" => "",
         "META_DESCRIPTION" => "-",
         "META_KEYWORDS" => "-",
-        "NEWS_COUNT" => "12",
+        "NEWS_COUNT" => "999",
         "PAGER_BASE_LINK_ENABLE" => "N",
         "PAGER_DESC_NUMBERING" => "N",
         "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
