@@ -308,10 +308,25 @@ class RatesPlaceholderManager
 
         foreach ($elements as $item) {
             $code = strip_tags($linkedElements[$item['PROPERTIES']['LINK']['VALUE']]) ?? $item['CODE'];
+
             foreach ($properties as $property) {
                 $value = $item['PROPERTIES'][$property]['VALUE'] ?? 0;
-                $currency = !empty($item['PROPERTIES']['CURRENCY']['VALUE']) ? $this->currencyCode($item['PROPERTIES']['CURRENCY']['VALUE']) : null;
 
+                if (
+                    (
+                        $property === 'RATE' ||
+                        $property === 'EFFECTIVE_RATE' ||
+                        $property === 'SUM_FROM_PERCENT' ||
+                        $property === 'SUM_TO_PERCENT' ||
+                        $property === 'MIN_DOWN_PAYMENT'
+                    ) && $value > 0
+                ) {
+                    $value = number_format((float)$value, 2);
+                } elseif (($property === 'SUM_FROM' || $property === 'SUM_TO') && $value > 0) {
+                    $value = number_format((int)$value, 0, '.', ' ');
+                }
+
+                $currency = !empty($item['PROPERTIES']['CURRENCY']['VALUE']) ? $this->currencyCode($item['PROPERTIES']['CURRENCY']['VALUE']) : null;
                 $this->calculateValues($property, $value, $code, $currency, $calculated);
             }
         }
