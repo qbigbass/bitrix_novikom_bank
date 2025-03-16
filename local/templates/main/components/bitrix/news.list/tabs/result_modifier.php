@@ -1,9 +1,8 @@
 <?php
+/** @var $arResult array */
+
 foreach ($arResult['ITEMS'] as $key => $tab) {
-    if (
-        empty($tab['DISPLAY_PROPERTIES'])
-        || empty($tab['~DETAIL_TEXT'])
-    ) {
+    if (empty($tab['DETAIL_TEXT'])) {
         unset($arResult['ITEMS'][$key]);
     }
 }
