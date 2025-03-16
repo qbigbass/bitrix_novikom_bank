@@ -314,12 +314,13 @@ class RatesPlaceholderManager
 
                 if (
                     (
-                        $property === 'RATE' ||
-                        $property === 'EFFECTIVE_RATE' ||
-                        $property === 'SUM_FROM_PERCENT' ||
-                        $property === 'SUM_TO_PERCENT' ||
-                        $property === 'MIN_DOWN_PAYMENT'
-                    ) && $value > 0
+                        $property === 'RATE'
+                        || $property === 'EFFECTIVE_RATE'
+                        || $property === 'SUM_FROM_PERCENT'
+                        || $property === 'SUM_TO_PERCENT'
+                        || $property === 'MIN_DOWN_PAYMENT'
+                    )
+                    && $value > 0
                 ) {
                     $value = number_format((float)$value, 2);
                 } elseif (($property === 'SUM_FROM' || $property === 'SUM_TO') && $value > 0) {
