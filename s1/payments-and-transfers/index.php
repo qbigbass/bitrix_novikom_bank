@@ -40,6 +40,7 @@ $APPLICATION->SetTitle("Платежи и переводы");
             "BANNER_TEMPLATE",
             "BANNER_IMAGE",
             "BANNER_BACKGROUND",
+            'DETAIL_HTML',
             "ADDITIONAL_INFO",
             "ADDITIONAL_INFO_HEADER",
             "CONVENIENCES",
