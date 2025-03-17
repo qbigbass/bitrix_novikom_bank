@@ -84,6 +84,12 @@ class OfficesMap {
         const coordsCenter = [55.76, 37.64]; // [55.76, 37.64] - Москва
         const isTablet = window.matchMedia(`(min-width: ${MEDIA_QUERIES['tablet']})`).matches;
         const isDesktop = window.matchMedia(`(min-width: ${MEDIA_QUERIES['tablet-album']})`).matches;
+        const WORLD_BOUNDS = {
+            north: 85.05112878,
+            south: -85.05112878,
+            west: -180,
+            east: 180,
+        };
 
         this.myMap = new ymaps.Map('map', {
             center: coordsCenter,
@@ -92,7 +98,9 @@ class OfficesMap {
             maxZoom: maxZoom,
             minZoom: minZoom,
             autoFitToViewport: 'none',
-            restrictMapArea: [[85.23618,-178.9], [-73.87011,181] ]
+            restrictMapArea: true,
+        }, {
+            restrictMapArea: [[WORLD_BOUNDS.north, WORLD_BOUNDS.west], [WORLD_BOUNDS.south, WORLD_BOUNDS.east]]
         });
 
         // Пользовательский макет ползунка масштаба.
