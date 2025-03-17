@@ -139,7 +139,8 @@ if ($idRelationSection > 0) {
             "TITLE_BLOCK_CROSS_SALE" => "Другие услуги для корпоративных клиентов",
             "FILTER_BLOCK_CROSS_SALE" => [
                 "SECTION_CODE" => "corporate"
-            ]
+            ],
+            "HEADER_COLOR_CLASS" => $APPLICATION->GetProperty("headerColorClass") ?: "",
         ],
         $component
     );
@@ -202,6 +203,7 @@ if ($idRelationSection > 0) {
             "BLOCK_CONTACT_COLOR_H4" => "dark-0",
             "BLOCK_CONTACT_COLOR_SPAN" => "dark-0",
             "BLOCK_CONTACT_COLOR_ICON" => "dark-0",
+            "HEADER_COLOR_CLASS" => $APPLICATION->GetProperty("headerColorClass") ?: "",
         ],
         $component
     );

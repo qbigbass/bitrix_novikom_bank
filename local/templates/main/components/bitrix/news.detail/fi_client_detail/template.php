@@ -42,7 +42,7 @@ if (!empty($arResult['PROPERTIES']['CNT_COL_BENEFITS_TOP']['VALUE'])) {
     $params["CNT_COL_BENEFITS_TOP"] = $arResult['PROPERTIES']['CNT_COL_BENEFITS_TOP']['VALUE'];
 }
 
-$arResult["PARAMS_HEADER_COLOR_CLASS"] = $APPLICATION->GetProperty("headerColorClass") ?: "";
+$arResult["PARAMS_HEADER_COLOR_CLASS"] = $arParams['HEADER_COLOR_CLASS'];
 
 /*
  * Шапка
