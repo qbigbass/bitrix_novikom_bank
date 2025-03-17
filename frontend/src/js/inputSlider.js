@@ -9,6 +9,7 @@ const JS_CLASSES = {
     textInput: ROOT_JS_CLASS,
     sliderInput: '.js-input-slider-input',
     inputSliderWrapper: '.js-input-slider-wrapper',
+    inputTextWrapper: '.input-slider',
 }
 
 const DATA_ATTRS = {
@@ -479,6 +480,14 @@ const initDefaultEventListeners = (STATE) => {
 
     STATE.elements.inputText.addEventListener('input', (event) => {
         // Останавливаем событие для того чтобы изменения все работали через blur
+        let value = event.target.value;
+        // Удалить все пробелы из значения
+        value = String(value).replace(/\s/g, '');
+        // Преобразовать значение в число
+        value = parseFloat(value);
+        if (value) {
+            STATE.elements.inputText.value = `${formatNumberWithSpaces(value)}`;
+        }
         event.stopPropagation();
     });
 
@@ -495,32 +504,6 @@ const initDefaultEventListeners = (STATE) => {
     });
 }
 
-/**
- * Initializes a component for editing a number in a text input. The component
- * consists of a text input, an edit button and a close button. The user can edit
- * the number by clicking on the edit button. The component also supports a
- * "steps" mode, where the user can select a value from a predefined list of
- * values.
- *
- * @param {HTMLElement} sliderInputText - The root element of the component.
- * @param {Object} defaultValues - The default values for the component. The
- * object should have the following properties:
- *   - `value`: The initial value of the component.
- *   - `minValue`: The minimum value of the component.
- *   - `maxValue`: The maximum value of the component.
- *   - `stepSize`: The step size of the component.
- *   - `type`: The type of the component. Can be one of the following:
- *     - `price`: The component is for editing a price.
- *     - `count`: The component is for editing a count.
- *   - `useSteps`: A boolean indicating whether the component should use steps.
- *   - `steps`: An array of values that the user can select from.
- *
- * @return {Object} An object containing the state of the component and methods
- * for interacting with the component. The object has the following properties:
- *   - `value`: The current value of the component.
- *   - `setValue`: A function for setting the value of the component. The
- *     function takes a single argument, which is the value to set.
- */
 const initInputSliderText = (sliderInputText, defaultValues) => {
     const STATE = initInputTextState(sliderInputText, defaultValues);
     initDefaultEventListeners(STATE);

@@ -51,10 +51,22 @@
                         </div>
                     </div>
                     <div class="input-slider" data-type="day" data-start-value="550">
-                        <label class="text-s dark-70 ps-3 mb-2" for="deposit-period">Срок
-                            вклада</label>
-                        <div
-                            class="input-slider__display-value js-input-slider-display-value h4"></div>
+                        <label class="text-s dark-70 ps-3 mb-2" for="deposit-period">Срок вклада</label>
+                        <div class="input-slider-text js-input-slider-text">
+                            <input class="input-slider-text__input h4 js-input-slider-text-input" value="" readonly="" disabled="">
+                            <button class="input-slider-text__button input-slider-text__button--edit js-input-slider-text-edit"
+                                    type="button" aria-label="Редактировать значение" tabindex="0">
+                                <svg class="icon dark-70 size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                    <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-edit"></use>
+                                </svg>
+                            </button>
+                            <button class="input-slider-text__button input-slider-text__button--close js-input-slider-text-close"
+                                    type="button" aria-label="Закрыть редактирование значения" tabindex="0">
+                                <svg class="icon dark-70 size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                    <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-close"></use>
+                                </svg>
+                            </button>
+                        </div>
                         <div class="input-slider__inner js-input-slider-inner">
                             <input class="js-input-period input-slider__item js-input-slider-input"
                                    id="deposit-period" type="range" step="1" min="0" max="1"

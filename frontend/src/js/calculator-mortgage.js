@@ -194,7 +194,7 @@ function setStartAttributesInputMortgage(STATE) {
 
 function showMortgageResult(STATE) {
     STATE.elements.displayName.textContent = STATE.filteredData[0].name;
-    STATE.elements.displayRate.textContent = `${formatNumber(STATE.rate)} %`;
+    STATE.elements.displayRate.textContent = `${formatNumber(STATE.rate.toFixed(2))} %`;
     STATE.elements.displayPayment.innerHTML = `${formatNumber(STATE.payment.toFixed(2))} <span class="currency">₽</span>`;
     STATE.elements.displayIncome.innerHTML = `${formatNumber(STATE.requiredIncome.toFixed(2))} <span class="currency">₽</span>`;
 }

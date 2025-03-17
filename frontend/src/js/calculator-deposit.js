@@ -19,6 +19,7 @@ const ELEMS_DEPOSIT = {
     inputCapitalization: '.js-input-deposit-capitalization',
     selectName: '.js-select-deposit-name',
     name: '.js-program-name',
+    editButton: '.js-input-slider-text-edit',
     polygonContainer: '.js-polygon-container',
     resultBlock: '.card-calculate-result'
 }
@@ -84,6 +85,26 @@ function createCurrencyList(STATE) {
             uniqueCurrencies.push(item.currency);
         }
     });
+
+    // Определяем порядок сортировки
+    const currencyOrder = ['Рубли', 'Доллары', 'Юань', 'Евро'];
+
+    // Сортируем uniqueCurrencies по заданному порядку
+    uniqueCurrencies.sort((a, b) => {
+        const indexA = currencyOrder.indexOf(a);
+        const indexB = currencyOrder.indexOf(b);
+
+        // Если обе валюты в currencyOrder, сортируем по их индексу
+        if (indexA !== -1 && indexB !== -1) {
+            return indexA - indexB;
+        }
+        // Если только одна из валют в currencyOrder, она должна быть первой
+        if (indexA !== -1) return -1;
+        if (indexB !== -1) return 1;
+        // Если обе валюты не в currencyOrder, сохраняем их порядок
+        return 0;
+    });
+
     uniqueCurrencies.forEach(currency => {
         const tab = createCurrencyTab(currency, STATE);
         STATE.elements.currencyList.append(tab);
@@ -96,7 +117,7 @@ function createCurrencyList(STATE) {
 function showDepositResult(STATE) {
     STATE.elements.displayName.textContent = STATE.filteredData[0].name;
     STATE.elements.displayPeriod.innerHTML = getFormatedTextByType({value: STATE.period, type: 'day'});
-    STATE.elements.displayRate.innerHTML = `${formatNumber(STATE.rate)} %`;
+    STATE.elements.displayRate.innerHTML = `${formatNumber(STATE.rate.toFixed(2))} %`;
     STATE.elements.displayIncome.innerHTML = `${formatNumberWithSpaces(STATE.income.toFixed(0))} <span class="currency">${CURRENCIES[STATE.currency]}</span>`;
     const percentRowWrapper = STATE.elements.displayPercent.closest(ELEMS_DEPOSIT.resultRow);
     if (STATE.filteredData[0].interestPayment) {
@@ -134,7 +155,7 @@ function calculateDepositIncome(STATE) {
     let totalAmount = amount; // Общая сумма вклада, начиная с первоначальной
     let totalIncome = 0; // Переменная для хранения общего дохода
 
-    // TODO: убраить после тестирования
+    // TODO: убрать после тестирования
     const hash = window.location.hash;
     const startDateString = hash.replace('#startDate=', ''); // Удаляем символ #
     let startDate;
@@ -338,7 +359,6 @@ function validateNumberInput(input) {
     }
 
     return input.value;
-
 }
 
 const initReplenishment = (root, STATE) => {
@@ -512,8 +532,15 @@ const getDepositValues = (STATE) => {
     STATE.showCurrency = isShowCurrency(STATE.calculatorData);
 
     if (!STATE.currency) {
-        STATE.currency = STATE.calculatorData[0].currency ? STATE.calculatorData[0].currency : "Рубли";
+        const foundCurrency = STATE.calculatorData.find(data => data.currency === "Рубли");
+
+        if (foundCurrency) {
+            STATE.currency = "Рубли";
+        } else {
+            STATE.currency = STATE.calculatorData[0]?.currency || "Рубли";
+        }
     }
+
     if (STATE.showCurrency) {
         setCurrencyToReplenishment(STATE);
     }
@@ -563,6 +590,7 @@ const setDepositValues = (STATE, currencyTrigger) => {
         STATE.elements.inputPeriodWrapper.classList.remove(CLASSES_DEPOSIT.hide);
         const periodStepsText = STATE.elements.inputPeriodWrapper.querySelector(JS_CLASSES.textSteps);
         const periodSteps = STATE.elements.inputPeriodWrapper.querySelectorAll(JS_CLASSES.sliderSteps);
+        const editButton = STATE.elements.inputPeriodWrapper.querySelector(ELEMS_DEPOSIT.editButton);
         periodSteps.forEach((step) => {
             step.remove();
         })
@@ -570,8 +598,10 @@ const setDepositValues = (STATE, currencyTrigger) => {
         // депозиты с нежескими сроками
         if (STATE.elements.inputPeriodWrapper.classList.contains(CLASSES_DEPOSIT.smallDifference)) {
             STATE.elements.inputPeriodWrapper.removeAttribute('data-steps');
+            editButton.classList.remove(CLASSES_DEPOSIT.hide);
         } else { // депозиты с жескими сроками
             STATE.elements.inputPeriodWrapper.setAttribute('data-steps', STATE.steps);
+            editButton.classList.add(CLASSES_DEPOSIT.hide);
         }
         initInputSlider([STATE.elements.inputPeriodWrapper]);
         STATE.period = getPeriodValue(STATE.elements.inputPeriod);
