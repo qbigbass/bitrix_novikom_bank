@@ -128,6 +128,10 @@ class OfficesMap {
 
                     $('#zoom-in').bind('click', this.zoomInCallback);
                     $('#zoom-out').bind('click', this.zoomOutCallback);
+
+                    this.map = this.getData().control.getMap();
+                    this.map.options.set('maxZoom', maxZoom);
+                    this.map.options.set('minZoom', minZoom);
                 },
 
                 clear: function () {
@@ -138,32 +142,22 @@ class OfficesMap {
                 },
 
                 zoomIn: function () {
-                    // var map = this.getData().control.getMap();
-                    // map.setZoom(map.getZoom() + 1, {checkZoomRange: true});
+                    const currentZoom = this.map.getZoom();
+                    const maxZoom = this.map.options.get('maxZoom');
 
-                    var map = this.getData().control.getMap();
-                    var currentZoom = map.getZoom();
-                    var maxZoom = map.options.get('maxZoom'); // Получаем maxZoom
-
-                    // Увеличиваем масштаб только если он меньше maxZoom
                     if (currentZoom < maxZoom) {
-                        map.setZoom(currentZoom + 1, {checkZoomRange: true});
+                        this.map.setZoom(currentZoom + 1, {checkZoomRange: true});
                     }
                 },
 
                 zoomOut: function () {
-                    // var map = this.getData().control.getMap();
-                    // map.setZoom(map.getZoom() - 1, {checkZoomRange: true});
+                    const currentZoom = this.map.getZoom();
+                    const minZoom = this.map.options.get('minZoom');
 
-                    var map = this.getData().control.getMap();
-                    var currentZoom = map.getZoom();
-                    var minZoom = map.options.get('minZoom'); // Получаем minZoom
-
-                    // Уменьшаем масштаб только если он больше minZoom
                     if (currentZoom > minZoom) {
-                        map.setZoom(currentZoom - 1, {checkZoomRange: true});
+                        this.map.setZoom(currentZoom - 1, {checkZoomRange: true});
                     }
-                }
+                },
             });
 
         const zoomControl = new ymaps.control.ZoomControl({
@@ -195,11 +189,19 @@ class OfficesMap {
         this.clusterer = new ymaps.Clusterer({
             preset: 'islands#invertedVioletClusterIcons',
             groupByCoordinates: false,
-            // clusterDisableClickZoom: true,
             clusterHideIconOnBalloonOpen: false,
             geoObjectHideIconOnBalloonOpen: false,
             hasBalloon: false,
             hasHint: false,
+        });
+
+
+        // Обработчик события изменения уровня зума
+        this.myMap.events.add('boundschange', (event) => {
+            // Получаем текущий уровень зума
+            if (event.get('newZoom') !== event.get('oldZoom')) {
+                this.updateButtonStates(event.get('newZoom'));
+            }
         });
 
         // Запрещаем скролить на карте
@@ -216,6 +218,46 @@ class OfficesMap {
             const offsetPos = this.myMap.options.get('projection').fromGlobalPixels([positions[0] - offsetPX, positions[1]], this.myMap.getZoom());
             this.myMap.setCenter(offsetPos);
         }
+    }
+
+    updateButtonStates(currentZoom) {
+        // Получаем значения minZoom и maxZoom
+        const minZoom = this.myMap.options.get('minZoom');
+        const maxZoom = this.myMap.options.get('maxZoom');
+
+        // Проверяем, нужно ли отключить кнопку увеличения масштаба
+        if (currentZoom >= maxZoom) {
+            this.disableZoomInButton();
+        } else {
+            this.enableZoomInButton();
+        }
+
+        // Проверяем, нужно ли отключить кнопку уменьшения масштаба
+        if (currentZoom <= minZoom) {
+            this.disableZoomOutButton();
+        } else {
+            this.enableZoomOutButton();
+        }
+    }
+
+    disableZoomOutButton() {
+        $('#zoom-out').attr('disabled', true);
+        $('#zoom-out').addClass('disabled');
+    }
+
+    enableZoomOutButton() {
+        $('#zoom-out').attr('disabled', false);
+        $('#zoom-out').removeClass('disabled');
+    }
+
+    disableZoomInButton() {
+        $('#zoom-in').attr('disabled', true);
+        $('#zoom-in').addClass('disabled');
+    }
+
+    enableZoomInButton() {
+        $('#zoom-in').attr('disabled', false);
+        $('#zoom-in').removeClass('disabled');
     }
 
     async loadOffices() {
