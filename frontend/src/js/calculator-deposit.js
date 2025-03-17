@@ -4,6 +4,8 @@ const ELEMS_DEPOSIT = {
     period: '.js-calculator-display-period',
     rate: '.js-calculator-display-rate',
     income: '.js-calculator-display-income',
+    percent: '.js-calculator-display-percent',
+    resultRow: '.js-calculator-display-row',
     inputAmount: '.js-input-amount',
     inputPeriod: '.js-input-period',
     inputSlider: '.input-slider',
@@ -17,6 +19,8 @@ const ELEMS_DEPOSIT = {
     inputCapitalization: '.js-input-deposit-capitalization',
     selectName: '.js-select-deposit-name',
     name: '.js-program-name',
+    polygonContainer: '.js-polygon-container',
+    resultBlock: '.card-calculate-result'
 }
 
 const CLASSES_DEPOSIT = {
@@ -94,6 +98,14 @@ function showDepositResult(STATE) {
     STATE.elements.displayPeriod.innerHTML = getFormatedTextByType({value: STATE.period, type: 'day'});
     STATE.elements.displayRate.innerHTML = `${formatNumber(STATE.rate)} %`;
     STATE.elements.displayIncome.innerHTML = `${formatNumberWithSpaces(STATE.income.toFixed(0))} <span class="currency">${CURRENCIES[STATE.currency]}</span>`;
+    const percentRowWrapper = STATE.elements.displayPercent.closest(ELEMS_DEPOSIT.resultRow);
+    if (STATE.filteredData[0].interestPayment) {
+        percentRowWrapper.classList.remove('d-none');
+        STATE.elements.displayPercent.textContent = STATE.filteredData[0].interestPayment;
+    } else {
+        percentRowWrapper.classList.add('d-none');
+        STATE.elements.displayPercent.textContent = '';
+    }
 }
 
 function handlerInputDeposit(STATE) {
@@ -117,26 +129,32 @@ function setStartValues(STATE) {
     STATE.period = STATE.minPeriod;
 }
 
-function isLeapYear(year) {
-    return (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
-}
-
-function calculateDaysInYear(year) {
-    return isLeapYear(year) ? 366 : 365;
-}
-
 function calculateDepositIncome(STATE) {
-    let {amount, period, rate, capitalization, filteredData, additionalDeposits, hideAdditional = false} = STATE;
+    let { amount, period, rate, capitalization, filteredData, additionalDeposits, hideAdditional = false } = STATE;
     let totalAmount = amount; // Общая сумма вклада, начиная с первоначальной
     let totalIncome = 0; // Переменная для хранения общего дохода
-    const startDate = new Date(); // Начальная дата
-    const endDate = new Date();
-    endDate.setDate(endDate.getDate() + period);
 
+    // TODO: убраить после тестирования
+    const hash = window.location.hash;
+    const startDateString = hash.replace('#startDate=', ''); // Удаляем символ #
+    let startDate;
+
+    if (startDateString) {
+        startDate = parseDate(startDateString);
+    } else {
+        startDate = new Date(); // Если дата не указана в URL, используем текущую дату
+    }
+
+    // const startDate = new Date(); // Начальная дата
+    const endDate = startDate;
+    endDate.setDate(endDate.getDate() + period);
+    console.log('endDate', endDate);
+
+    // Начисление процентов начинается со следующего дня после зачисления вклада
     const dailyInitialRate = (rate / 100) / calculateDaysInYear(startDate.getFullYear());
 
     if (capitalization) {
-        // рассчеты с капитализацией
+        // Рассчеты с капитализацией
         const n = 12; // Количество периодов капитализации в год (ежемесячно)
         const t = period / calculateDaysInYear(startDate.getFullYear()); // Количество лет
 
@@ -148,21 +166,22 @@ function calculateDepositIncome(STATE) {
     } else {
         totalIncome += amount * dailyInitialRate * period;
     }
+
     if (!hideAdditional) {
         // Обработка каждого пополнения
         additionalDeposits.forEach(deposit => {
             const { amountItem, date } = deposit;
             const depositDate = parseDate(date);
-            // Количество дней, на которые вкладывается пополнение
-            const daysOnDeposit = Math.max(0, Math.floor((endDate - depositDate) / (1000 * 60 * 60 * 24)));
+            // Количество дней, на которые вкладывается пополнение (начиная со следующего дня)
+            const daysOnDeposit = Math.max(0, Math.floor((endDate - depositDate) / (1000 * 60 * 60 * 24))) - 1;
 
             // Обновляем общую сумму
             totalAmount += Number(amountItem);
 
             // Получаем новую процентную ставку в зависимости от общей суммы
-            let newRate = findDepositRate({data: filteredData, amount: totalAmount, period});
+            let newRate = findDepositRate({ data: filteredData, amount: totalAmount, period });
             // Если новая процентная ставка не определена, используем текущую
-            if (!newRate) {newRate = rate}
+            if (!newRate) { newRate = rate; }
 
             STATE.rate = newRate;
             const dailyNewRate = (newRate / 100) / calculateDaysInYear(depositDate.getFullYear());
@@ -376,6 +395,7 @@ const initElementsDepositCalculator = (root) => {
     const displayRate = root.querySelector(ELEMS_DEPOSIT.rate);
     const displayIncome = root.querySelector(ELEMS_DEPOSIT.income);
     const displayName = root.querySelector(ELEMS_DEPOSIT.name);
+    const displayPercent = root.querySelector(ELEMS_DEPOSIT.percent);
     const inputAmount = root.querySelector(ELEMS_DEPOSIT.inputAmount);
     const inputPeriod = root.querySelector(ELEMS_DEPOSIT.inputPeriod);
     const inputPeriodWrapper = inputPeriod.closest(ELEMS_DEPOSIT.inputSlider);
@@ -390,6 +410,7 @@ const initElementsDepositCalculator = (root) => {
         displayRate,
         displayIncome,
         displayName,
+        displayPercent,
         inputAmount,
         inputPeriod,
         inputPeriodWrapper,
@@ -441,14 +462,6 @@ const getPeriodValue = (input) => {
         return steps[Number(input.value)];
     }
     return Number(input.value);
-}
-
-const findMinValue = (key, data) => {
-    return Math.min(...data.map(obj => obj[key]));
-}
-
-const findMaxValue = (key, data) => {
-    return Math.max(...data.map(obj => obj[key]));
 }
 
 // проверка соседних значений периода вклада,
@@ -615,6 +628,26 @@ function setDepositTriggerListener(STATE) {
     })
 }
 
+const updatePolygonInResult = (el) => {
+    const event = new Event("resize", {bubbles: true, composed: true});
+    el.closest(ELEMS_DEPOSIT.polygonContainer).dispatchEvent(event);
+}
+
+const resizePolygonInResult = (el) => {
+    const resizeObserver = new ResizeObserver(entries => {
+        updatePolygonInResult(el);
+    });
+
+    resizeObserver.observe(el);
+}
+
+function initResizePolygonInResult(root) {
+    const resultBlock = root.querySelector(ELEMS_DEPOSIT.resultBlock);
+    if (!resultBlock) return false;
+
+    resizePolygonInResult(resultBlock);
+}
+
 function initCalculatorDeposit() {
     const calculatorsDeposit = document.querySelectorAll(ELEMS_DEPOSIT.root);
 
@@ -625,6 +658,7 @@ function initCalculatorDeposit() {
                 initReplenishment(calculator, STATE);
                 setDepositValues(STATE);
                 setDepositTriggerListener(STATE);
+                initResizePolygonInResult(STATE.elements.root);
             })
             .catch(error => {
                 console.error('Ошибка в initCalculatorDeposit функции:', error);

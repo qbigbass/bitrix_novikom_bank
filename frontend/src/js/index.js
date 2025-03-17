@@ -409,6 +409,22 @@ function checkPattern() {
     }
 }
 
+function isLeapYear(year) {
+    return (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
+}
+
+function calculateDaysInYear(year) {
+    return isLeapYear(year) ? 366 : 365;
+}
+
+const findMinValue = (key, data) => {
+    return Math.min(...data.map(obj => obj[key]));
+}
+
+const findMaxValue = (key, data) => {
+    return Math.max(...data.map(obj => obj[key]));
+}
+
 const URL = '/local/php_interface/ajax/calc.php';
 
 function getRates({table = null, id = null, name = null}) {

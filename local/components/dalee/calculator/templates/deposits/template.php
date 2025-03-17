@@ -166,6 +166,9 @@
                                 <div class="d-flex flex-column row-gap-2"><span
                                         class="card-calculate-result__label text-s">Ваш доход составит</span><span
                                         class="text-number-ml fw-bold text-nowrap js-calculator-display-income"></span></div>
+                                <div class="d-flex flex-column row-gap-2 js-calculator-display-row">
+                                    <span class="card-calculate-result__label text-s">Выплата процентов</span>
+                                    <span class="text-number-m fw-bold js-calculator-display-percent"></span></div>
                             </div>
                             <div class="card-calculate-result__footer">
                                 <button class="btn btn-primary btn-lg-lg w-100" type="button">
