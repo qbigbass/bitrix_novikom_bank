@@ -85,10 +85,10 @@ class OfficesMap {
         const isTablet = window.matchMedia(`(min-width: ${MEDIA_QUERIES['tablet']})`).matches;
         const isDesktop = window.matchMedia(`(min-width: ${MEDIA_QUERIES['tablet-album']})`).matches;
         const WORLD_BOUNDS = {
-            north: 85.05112878,
-            south: -85.05112878,
-            west: -180,
-            east: 180,
+            north: 84.23618,
+            south: -73.87011,
+            west: -178.9,
+            east: 181,
         };
 
         this.myMap = new ymaps.Map('map', {
@@ -98,7 +98,6 @@ class OfficesMap {
             maxZoom: maxZoom,
             minZoom: minZoom,
             autoFitToViewport: 'none',
-            restrictMapArea: true,
         }, {
             restrictMapArea: [[WORLD_BOUNDS.north, WORLD_BOUNDS.west], [WORLD_BOUNDS.south, WORLD_BOUNDS.east]]
         });
