@@ -483,6 +483,12 @@ if (!empty($arResult['PROPERTIES']['STEPS']['VALUE'])) {
     ]);
 } ?>
 
+<?
+if (!empty($arResult['PROPERTIES']['QUOTE_TEXT']['~VALUE'])) {
+    foreach ($arResult['PROPERTIES']['QUOTE_TEXT']['~VALUE'] as $quote1)
+    renderQuote1($quote1['TEXT']);
+} ?>
+
 <!-- Сноска (3-ое поле и далее) -->
 <? if (!empty($arResult['PROPERTIES']['ADDITIONAL_INFO_3']['~VALUE']['TEXT'])) {
     $text = $arResult['PROPERTIES']['ADDITIONAL_INFO_3']['~VALUE']['TEXT'];
