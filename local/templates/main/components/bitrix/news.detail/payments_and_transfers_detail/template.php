@@ -62,31 +62,49 @@ $renderer = new Renderer($APPLICATION, $component);
     </picture>
 </div>
 
-<? if (!empty($arResult['DISPLAY_PROPERTIES']['ADDITIONAL_INFO']['~VALUE']['TEXT'])): ?>
-    <section class="section-layout py-lg-11 px-lg-6 bg-blue-10">
+<? if (!empty($arResult['DISPLAY_PROPERTIES']['DETAIL_HTML']['~VALUE']['TEXT'])): ?>
+    <section class="section-layout py-lg-11 px-lg-6">
         <div class="container">
             <div class="d-flex flex-column flex-md-row align-items-start gap-4 gap-sm-5 gap-md-6">
                 <div class="banner-product-info-alternative d-flex flex-column gap-4 gap-md-6">
-                    <? if (!empty($arResult['DISPLAY_PROPERTIES']['ADDITIONAL_INFO_HEADER']['~VALUE'])): ?>
-                        <div class="banner-product-info-alternative__header">
-                            <h3>
-                                <?= $arResult['DISPLAY_PROPERTIES']['ADDITIONAL_INFO_HEADER']['~VALUE']; ?>
-                            </h3>
+                    <?= $arResult['DISPLAY_PROPERTIES']['DETAIL_HTML']['~VALUE']['TEXT'] ?>
+                </div>
+            </div>
+        </div>
+    </section>
+<? endif; ?>
+
+<? if (!empty($arResult['DISPLAY_PROPERTIES']['ADDITIONAL_INFO']['~VALUE']['TEXT'])): ?>
+    <section class="section-layout pt-0 pb-xxl-11">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="polygon-container js-polygon-container">
+                        <div class="polygon-container__content">
+                            <div class="helper bg-dark-10">
+                                <div
+                                    class="helper__wrapper d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-4 gap-lg-6">
+                                    <img class="helper__image w-auto float-end"
+                                         src="/frontend/dist/img/restructuring-additional-info.png" alt="">
+                                    <div class="helper__content text-l">
+                                        <? if (!empty($arResult['DISPLAY_PROPERTIES']['ADDITIONAL_INFO_HEADER']['~VALUE'])): ?>
+                                            <h4 class="mb-3"><?= $arResult['PROPERTIES']['ADDITIONAL_INFO_HEADER']['~VALUE'] ?></h4>
+                                        <? endif; ?>
+                                        <p class="mb-0"><?= $arResult['PROPERTIES']['ADDITIONAL_INFO']['~VALUE']['TEXT'] ?></p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    <? endif; ?>
-                    <div class="banner-product-info-alternative__body d-flex flex-column gap-4 gap-md-6">
-                        <p class="m-0 text-l pe-0 col-lg-8">
-                            <?= $arResult['DISPLAY_PROPERTIES']['ADDITIONAL_INFO']['~VALUE']['TEXT'] ?>
-                        </p>
+                        <div class="polygon-container__polygon js-polygon-container-polygon green-100">
+                            <svg class="js-polygon-container-svg" xmlns="http://www.w3.org/2000/svg">
+                                <polygon points="2,2 335,2 335,394 295,434 2,434" fill="none" stroke="currentColor"
+                                         stroke-width="2" stroke-dasharray="10"></polygon>
+                            </svg>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <picture class="pattern-bg pattern-bg--position-top">
-            <source srcset="/frontend/dist/img/patterns/section-heavy/pattern-light-s.svg" media="(max-width: 767px)">
-            <source srcset="/frontend/dist/img/patterns/section-heavy/pattern-light-m.svg" media="(max-width: 1199px)">
-            <img src="/frontend/dist/img/patterns/section-heavy/pattern-light-l.svg" alt="bg pattern" loading="lazy">
-        </picture>
     </section>
 <? endif; ?>
 
