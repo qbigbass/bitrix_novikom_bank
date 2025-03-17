@@ -87,7 +87,7 @@ $headerView->render(
             <div class="row px-lg-6">
                 <h3 class="d-none d-md-flex"><?= $arResult['PROPERTIES']['STEPS_HEADER']['VALUE'] ?></h3>
                 <a class="h3 d-flex align-items-center justify-content-between dark-100 d-md-none" data-bs-toggle="collapse" href="#restructuring-steps-content" role="button" aria-expanded="false" aria-controls="restructuring-steps-content">
-                    <?= $arResult['PROPERTIES']['STEPS_HEADER']['VALUE'] ?></h3>
+                    <?= $arResult['PROPERTIES']['STEPS_HEADER']['VALUE'] ?>
                     <svg class="icon size-m violet-100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                         <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-down"></use>
                     </svg>

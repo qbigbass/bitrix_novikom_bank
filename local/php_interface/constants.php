@@ -16,20 +16,18 @@ const MENU_IBLOCKS = [
 ];
 /** @var array Соответствие плейсхолдеров и кодов свойств */
 const TABS_PLACEHOLDERS_MATCH = [
-    '#CONDITIONS#' => 'CONDITIONS',
     '#DOCUMENTS#' => 'DOCUMENTS',
-    '#RATES_DESCRIPTION#' => 'RATES_DESCRIPTION',
     '#ACCORDION#' => 'ACCORDION',
-    '#TEST_EXCEPTION#' => 'TEST_EXCEPTION',
     '#CALCULATOR#' => 'CALCULATOR',
     '#ICONS_WITH_DESCRIPTION#' => 'ICONS_WITH_DESCRIPTION',
     '#STEPS#' => 'STEPS',
-    //'#HTML#' => 'HTML',
-    '#ICON_SHORT_INFO#' => 'ICON_SHORT_INFO',
+    '#SHORT_INFO#' => 'SHORT_INFO',
     '#QUOTES#' => 'QUOTES',
     '#QUESTIONS#' => 'QUESTIONS',
     '#BENEFITS#' => 'BENEFITS',
-    '#TARIFFS#' => 'TARIFFS',
+    '#STRATEGIES#' => 'STRATEGIES',
+    '#ICON_SHORT_INFO#' => 'ICON_SHORT_INFO',
+    '#TEST_EXCEPTION#' => 'TEST_EXCEPTION',
 ];
 
 

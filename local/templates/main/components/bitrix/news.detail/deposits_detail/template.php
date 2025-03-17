@@ -27,12 +27,12 @@ $helper = $headerView->helper();
 $headerView
     ->setBtnClasses('btn-tertiary')
     ->render(
-    "Вклад «" . $arResult["~NAME"] . "»",
-    $arResult['~PREVIEW_TEXT'],
-    null,
-    0,
-    $arResult
-);
+        "Вклад «" . $arResult["~NAME"] . "»",
+        $arResult['~PREVIEW_TEXT'],
+        null,
+        0,
+        $arResult
+    );
 ?>
 
 <? if (!empty($arResult['PROPERTIES']['BENEFITS']['VALUE'])) { ?>
@@ -109,14 +109,18 @@ $headerView
     </section>
 <? } ?>
 
-<? if (!empty($arResult['PROPERTIES']['STEPS']['VALUE'])) {
+<? $iblockId = iblock('deposits'); ?>
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_tabs.php', ['IBLOCK_ID' => $iblockId]); ?>
 
-    $renderer->render('Steps', $arResult['PROPERTIES']['STEPS']['VALUE'], null, [
-        'stepsHeader' => $arResult['PROPERTIES']['STEPS_HEADER']['~VALUE'] ?? 'Этапы',
-        'stepsTemplate' => $arResult['PROPERTIES']['STEPS_TEMPLATE']['VALUE_XML_ID'] ?? '',
-    ]);
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_ads_customers.php'); ?>
 
-} ?>
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_cross_sale.php'); ?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_special_offers.php'); ?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_news.php'); ?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_contacts.php'); ?>
 
 <? if (!empty($arResult['PROPERTIES']['QUOTE_TEXT']['VALUE']) && !empty($arResult['PROPERTIES']['QUOTE_HEADER']['VALUE'])) { ?>
     <section class="section-layout py-lg-11 px-lg-6 bg-blue-10">
@@ -143,5 +147,14 @@ $headerView
         </picture>
     </section>
 <? } ?>
+
+<? if (!empty($arResult['PROPERTIES']['STEPS']['VALUE'])) {
+
+    $renderer->render('Steps', $arResult['PROPERTIES']['STEPS']['VALUE'], null, [
+        'stepsHeader' => $arResult['PROPERTIES']['STEPS_HEADER']['~VALUE'] ?? 'Этапы',
+        'stepsTemplate' => $arResult['PROPERTIES']['STEPS_TEMPLATE']['VALUE_XML_ID'] ?? '',
+    ]);
+
+} ?>
 
 <? $helper->saveCache(); ?>

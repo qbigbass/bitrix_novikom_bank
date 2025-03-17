@@ -391,20 +391,22 @@ function createNewInputSlider(inputSlider, dataAttr) {
     return cloneInputSlider;
 }
 
-function isLeapYear(year) {
-    return (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
-}
+function checkPattern() {
+    // Получаем все секции с классом .section-layout
+    const sections = document.querySelectorAll('.section-layout');
 
-function calculateDaysInYear(year) {
-    return isLeapYear(year) ? 366 : 365;
-}
+    // Проходим по секциям, начиная со второй
+    for (let i = 0; i < sections.length - 1; i++) {
+        if (sections[i].querySelector('.pattern-bg')) {
+            // Получаем следующую секцию
+            const nextSection = sections[i + 1];
 
-const findMinValue = (key, data) => {
-    return Math.min(...data.map(obj => obj[key]));
-}
-
-const findMaxValue = (key, data) => {
-    return Math.max(...data.map(obj => obj[key]));
+            if (nextSection.lastElementChild && nextSection.lastElementChild.classList.contains('pattern-bg')) {
+                // Удаляем паттерн
+                nextSection.lastElementChild.remove();
+            }
+        }
+    }
 }
 
 const URL = '/local/php_interface/ajax/calc.php';
@@ -469,6 +471,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initFixScrollAccordions();
     checkWidth();
     updateHash();
+    checkPattern();
 });
 
 window.addEventListener('load', function() {

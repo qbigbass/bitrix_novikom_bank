@@ -138,13 +138,8 @@ $colorIcon = $arParams["COLOR_ICON"] ?? "dark-0";
                                         <p class="card-feedback__description text-l m-0">Оставьте свой телефон и мы перезвоним вам, <br class="d-none d-md-block d-lg-none d-xl-block">либо направьте обращение</p>
                                     </div>
                                     <div class="d-flex flex-column flex-md-row p-0 gap-3 gap-md-4">
-                                        <button href="/feedback/" class="btn btn-outline-primary btn-lg-lg text-ls overflow-visible w-100 w-md-auto">Открыть чат</button>
-                                        <button href="/callback/" class="btn btn-primary btn-lg-lg text-ls overflow-visible w-100 w-md-auto">Перезвоните мне</button>
-                                        <?
-                                        global $FORMS;
-                                        $FORMS->includeForm('feedback_form');
-                                        $FORMS->includeForm('callback_form');
-                                        ?>
+                                        <a href="/feedback/" class="btn btn-outline-primary btn-lg-lg text-ls overflow-visible w-100 w-md-auto">Открыть чат</a>
+                                        <a href="/callback/" class="btn btn-primary btn-lg-lg text-ls overflow-visible w-100 w-md-auto">Перезвоните мне</a>
                                     </div>
                                 </div>
                                 <picture class="pattern-bg pattern-bg--position-top z-1">

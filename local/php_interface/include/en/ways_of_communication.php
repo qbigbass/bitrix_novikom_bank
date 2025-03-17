@@ -17,8 +17,3 @@
 <a class="link link-underline" href="/customer-requests/">
     Procedure for contacting the bank
 </a>
-<?
-global $FORMS;
-$FORMS->includeForm('feedback_form');
-$FORMS->includeForm('callback_form');
-?>

@@ -25,6 +25,7 @@ $headerView->render(
     $APPLICATION->GetProperty("description"),
     ['border-green']
 );
+$iblockId = iblock('deposits');
 ?>
 
 <section class="section-catalog d-flex flex-column gap-7 py-6 py-sm-9 py-md-11" id="catalog-tabs">
@@ -127,6 +128,9 @@ $headerView->render(
     </section>
 </section>
 
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_tabs.php', ['IBLOCK_ID' => $iblockId]); ?>
+
+<!-- Большой блок "Вклады застрахованы" -->
 <? $arItems = getHlBlockEntries('DepositsInfo'); ?>
 <? if (!empty($arItems)) : ?>
     <? $arItem = reset($arItems); ?>
@@ -156,23 +160,14 @@ $headerView->render(
     </section>
 <? endif; ?>
 
-<section class="section-layout js-collapsed-mobile">
-    <div class="container">
-        <h3 class="d-none d-md-flex mb-md-6 mb-lg-7 px-lg-6"><? $APPLICATION->IncludeFile('/deposits/tabs_title.php') ?></h3>
-        <a class="h3 d-flex align-items-center justify-content-between dark-100 d-md-none" data-bs-toggle="collapse" href="#additional-info-content" role="button" aria-expanded="false" aria-controls="additional-info-content">
-            <? $APPLICATION->IncludeFile('/deposits/tabs_title.php') ?>
-            <svg class="icon size-m violet-100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-down"></use>
-            </svg>
-        </a>
-        <? $renderer->render('Tabs', null, 'deposit-list'); ?>
-    </div>
-    <picture class="pattern-bg pattern-bg--hide-mobile">
-        <source srcset="/frontend/dist/img/patterns/section-2/pattern-light-s.svg" media="(max-width: 767px)">
-        <source srcset="/frontend/dist/img/patterns/section-2/pattern-light-m.svg" media="(max-width: 1199px)"><img src="/frontend/dist/img/patterns/section-2/pattern-light-l.svg" alt="bg pattern" loading="lazy">
-    </picture>
-</section>
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_ads_customers.php'); ?>
 
-<? $APPLICATION->IncludeFile('/local/php_interface/include/request_call.php'); ?>
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_cross_sale.php'); ?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_special_offers.php'); ?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_news.php'); ?>
+
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_contacts.php'); ?>
 
 <? $helper->saveCache(); ?>
