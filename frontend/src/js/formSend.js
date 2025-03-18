@@ -182,10 +182,11 @@ function onError(form, modalId) {
 }
 
 function resetForm(form) {
-    form.reset()
+    form.reset();
 
-    const buttons = form.querySelectorAll(FORM_ELEMS.button)
-    const uploadEl = form.querySelector(FORM_ELEMS.upload)
+    const buttons = form.querySelectorAll(FORM_ELEMS.button);
+    const uploadEl = form.querySelector(FORM_ELEMS.upload);
+    const fieldsBlock = form.querySelector(FEEDBACK_ELEMS.fieldsBlock);
 
     buttons.forEach(button => {
         button.disabled = true
@@ -198,6 +199,10 @@ function resetForm(form) {
         uploadFiles.forEach(file => {
             file.remove()
         })
+    }
+
+    if (fieldsBlock) {
+        fieldsBlock.classList.add('d-none');
     }
 }
 
