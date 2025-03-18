@@ -110,7 +110,7 @@ $headerView
 <? } ?>
 
 <? $iblockId = iblock('deposits'); ?>
-<? $APPLICATION->IncludeFile('/local/php_interface/include/block_tabs.php', ['IBLOCK_ID' => $iblockId]); ?>
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_tabs.php', ['IBLOCK_ID' => $iblockId, 'component' => $component]); ?>
 
 <? $APPLICATION->IncludeFile('/local/php_interface/include/block_ads_customers.php'); ?>
 
