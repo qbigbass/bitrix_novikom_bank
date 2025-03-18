@@ -16,5 +16,6 @@ return [
     'QUOTES' => Dalee\Libs\Tabs\Handlers\QuotesHandler::class,
     'QUESTIONS' => Dalee\Libs\Tabs\Handlers\QuestionsHandler::class,
     'BENEFITS' => Dalee\Libs\Tabs\Handlers\BenefitsHandler::class,
+    'BENEFITS_SLIDER' => Dalee\Libs\Tabs\Handlers\BenefitsSliderHandler::class,
     'STRATEGIES' => Dalee\Libs\Tabs\Handlers\StrategiesHandler::class,
 ];
