@@ -3,9 +3,9 @@
 namespace Dalee\Libs\Tabs\Handlers;
 
 use CFile;
+use CIBlockElement;
 use CIBlockSection;
 use CUserFieldEnum;
-use Dalee\Helpers\IblockHelper;
 use Dalee\Libs\Tabs\Interfaces\PropertyHandlerInterface;
 
 class DocumentsHandler implements PropertyHandlerInterface
@@ -171,7 +171,7 @@ class DocumentsHandler implements PropertyHandlerInterface
     private function renderElement(array $element, string $timestampFrom): string
     {
         $date = date('d.m.Y', strtotime($element['ACTIVE_FROM']));
-        $fileType = $this->getFileType($element['PROPERTIES']['FILE']['VALUE']);
+        $fileType = $this->getFileType($element['PROPERTY_FILE_VALUE']);
 
         $result = '<a class="d-flex flex-column gap-2 py-3 document-download text-m" href="/documents/' . $element['CODE'] . '.' . $fileType . '">'
             . $element ['NAME'] .
@@ -284,7 +284,13 @@ class DocumentsHandler implements PropertyHandlerInterface
                 && $result[$element['IBLOCK_SECTION_ID']]['UF_DOCUMENTS_ARCHIVE']
             ) {
                 $result[$element['IBLOCK_SECTION_ID']]['ELEMENTS_ARCHIVE'][$element['ID']] = $element;
-            } else {
+            } elseif (
+                (
+                    !empty($element['ACTIVE_TO'])
+                    && MakeTimeStamp($element['ACTIVE_TO']) > time()
+                )
+                || empty($element['ACTIVE_TO'])
+            ) {
                 $result[$element['IBLOCK_SECTION_ID']]['ELEMENTS'][$element['ID']] = $element;
             }
         }
@@ -326,7 +332,8 @@ class DocumentsHandler implements PropertyHandlerInterface
      */
     private function getElements(array $sectionIds): array
     {
-        return IblockHelper::getElementsWithProperties(
+        $result = [];
+        $elements = CIBlockElement::GetList(
             [
                 'SORT' => 'ASC',
                 'DATE_ACTIVE_FROM' => 'ASC',
@@ -336,6 +343,24 @@ class DocumentsHandler implements PropertyHandlerInterface
                 'IBLOCK_ID' => $this->iblockId,
                 'ACTIVE' => 'Y'
             ],
-        )['items'] ?? [];
+            false,
+            false,
+            [
+                'ID',
+                'IBLOCK_SECTION_ID',
+                'NAME',
+                'CODE',
+                'PREVIEW_TEXT',
+                'ACTIVE_FROM',
+                'ACTIVE_TO',
+                'SORT',
+                'PROPERTY_FILE',
+            ]
+        );
+        while ($element = $elements->Fetch()) {
+            $result[] = $element;
+        }
+
+        return $result;
     }
 }
