@@ -237,10 +237,10 @@ $APPLICATION->IncludeComponent(
                     </div>
                     <ul class="swiper-wrapper tabs-panel__list nav nav-tabs d-inline-flex flex-nowrap w-auto p-0 border border-purple rounded">
                         <li class="swiper-slide w-auto tabs-panel__list-item nav-item z-2">
-                            <a class="tabs-panel__list-item-link nav-link bg-transparent" href="#loan" data-bs-toggle="tab" data-bs-target="#loan" role="tab" aria-controls="loan" aria-selected="false">Кредит</a>
+                            <a class="tabs-panel__list-item-link nav-link bg-transparent active" href="#loan" data-bs-toggle="tab" data-bs-target="#loan" role="tab" aria-controls="loan" aria-selected="true">Кредит</a>
                         </li>
                         <li class="swiper-slide w-auto tabs-panel__list-item nav-item z-2">
-                            <a class="tabs-panel__list-item-link nav-link bg-transparent active" href="#mortgage" data-bs-toggle="tab" data-bs-target="#mortgage" role="tab" aria-controls="mortgage" aria-selected="true">Ипотека</a>
+                            <a class="tabs-panel__list-item-link nav-link bg-transparent" href="#mortgage" data-bs-toggle="tab" data-bs-target="#mortgage" role="tab" aria-controls="mortgage" aria-selected="false">Ипотека</a>
                         </li>
                         <li class="swiper-slide w-auto tabs-panel__list-item nav-item z-2">
                             <a class="tabs-panel__list-item-link nav-link bg-transparent" href="#deposit" data-bs-toggle="tab" data-bs-target="#deposit" role="tab" aria-controls="deposit" aria-selected="false">Вклад</a>
