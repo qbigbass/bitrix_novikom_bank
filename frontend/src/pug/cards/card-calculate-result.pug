@@ -3,13 +3,18 @@ mixin card-calculate-result(data, bgColor = 'bg-dark-0')
         .card-calculate-result__body
             h4.dark-70.js-program-name
             each item in data.rows
-                .d-flex.flex-column.row-gap-2
-                    span.card-calculate-result__label.text-s= item.title
+                if item.additionalClass === 'js-calculator-display-percent'
+                    .d-flex.flex-column.row-gap-2.js-calculator-display-row
+                        span.card-calculate-result__label.text-s= item.title
+                        span.text-number-m.fw-bold(class= item.additionalClass)= item.value
+                else
+                    .d-flex.flex-column.row-gap-2
+                        span.card-calculate-result__label.text-s= item.title
 
-                    span.text-number-ml.fw-bold.text-nowrap(class= item.additionalClass ? item.additionalClass: '')= item.value
-                        if item.currency
-                            | &nbsp;
-                            span.currency ₽
+                        span.text-number-ml.fw-bold.text-nowrap(class= item.additionalClass ? item.additionalClass: '')= item.value
+                            if item.currency
+                                | &nbsp;
+                                span.currency ₽
 
         if data.btnText || data.notes || data.link
             .card-calculate-result__footer

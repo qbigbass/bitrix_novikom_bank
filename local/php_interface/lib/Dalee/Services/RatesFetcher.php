@@ -12,6 +12,7 @@ use Bitrix\Iblock\PropertyTable;
 use Bitrix\Main\ArgumentException;
 use Bitrix\Main\ObjectPropertyException;
 use Bitrix\Main\SystemException;
+use Bitrix\Iblock\PropertyEnumerationTable;
 
 class RatesFetcher
 {
@@ -54,8 +55,46 @@ class RatesFetcher
                 $data['filter']['LINK.ELEMENT.ID'] = $elementIds;
             }
 
+            if (isset($properties['LINK_']) && !isset($properties['BORROWER_TYPE_'])) {
+                // Только для вкладов
+                $data['select']['INTEREST_PAYMENT_'] = 'LINK.ELEMENT.INTEREST_PAYMENT.VALUE';
+            } elseif (isset($properties['LINK_'], $properties['BORROWER_TYPE_'])) {
+                // Для кредитов и ипотек
+                $data['select']['TOTAL_COST_CREDIT_RANGE_'] = 'LINK.ELEMENT.TOTAL_COST_CREDIT_RANGE.VALUE';
+            }
+            
             $this->loadedElements = $dataClass::getList($data)->fetchAll();
 
+            $arrInterestIds = [];
+            $arrInterestValueEnum = [];
+
+            if (!empty($this->loadedElements)) {
+                foreach ($this->loadedElements as $element) {
+                    if (!empty($element['INTEREST_PAYMENT_'])) {
+                        $arrInterestIds[$element['INTEREST_PAYMENT_']] = $element['INTEREST_PAYMENT_'];
+                    }
+                }
+            }
+
+            if (!empty($arrInterestIds)) {
+                $arInterestPropEnum = PropertyEnumerationTable::getList([
+                    'filter' => ['ID' => $arrInterestIds],
+                ])->fetchAll();
+
+                if (!empty($arInterestPropEnum)) {
+                    foreach ($arInterestPropEnum as $arValue) {
+                        $arrInterestValueEnum[$arValue['ID']] = $arValue['VALUE'];
+                    }
+                }
+            }
+
+            if (!empty($arrInterestValueEnum)) {
+                foreach ($this->loadedElements as &$element) {
+                    if (!empty($element['INTEREST_PAYMENT_'])) {
+                        $element['INTEREST_PAYMENT_'] = $arrInterestValueEnum[$element['INTEREST_PAYMENT_']];
+                    }
+                }
+            }
         } catch (SystemException $e) {
             echo $e->getMessage();
         }
@@ -80,19 +119,20 @@ class RatesFetcher
     private function getProperties(int $iblockId): ?array
     {
         $result = [];
-
         $data = [
             'order' => ['SORT' => 'ASC'],
-            'filter' => ['IBLOCK_ID' => $iblockId],
+            'filter' => ['IBLOCK_ID' => $iblockId, 'ACTIVE' => 'Y'],
             'select' => ['CODE', 'PROPERTY_TYPE']
         ];
-
         $properties = PropertyTable::getList($data)->fetchCollection();
 
         foreach ($properties as $property) {
             $type = $property->getPropertyType();
-
             $value = $this->propertySuffixes[$type] ?? 'VALUE';
+
+            if ($property->getCode() === 'BORROWER_TYPE') {
+                $value = '.NAME';
+            }
 
             $result['CODES'][] = $property->getCode() . '_';
             $result['SELECT'][] = $property->getCode() . '.' . $this->propertyTypes[$type] . $value;
