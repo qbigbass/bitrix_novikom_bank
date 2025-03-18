@@ -65,7 +65,9 @@ class DocumentsHandler implements PropertyHandlerInterface
         $simpleHtml = '';
 
         foreach ($this->property['LINK_SECTION_VALUE'] as $key => $section) {
-            $simpleHtml .= $this->getElementsHtml($section['ELEMENTS']);
+            if (!empty($section['ELEMENTS'])) {
+                $simpleHtml .= $this->getElementsHtml($section['ELEMENTS']);
+            }
         }
 
         return $simpleHtml;
