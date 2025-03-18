@@ -273,6 +273,9 @@ $arItem = $arResult;
                     </div>
                 <?php endif;?>
             </div>
+            <?php if (!empty($arResult['DETAIL_TEXT'])): ?>
+                <?= $arResult['DETAIL_TEXT'] ?>
+            <? endif;?>
         </div>
     </div>
 </section>
