@@ -7,7 +7,8 @@ use Dalee\Helpers\ComponentRenderer\Renderer;
  * @global CMain $APPLICATION
  * @var CBitrixComponent $component
  */
-$renderer = new Renderer($APPLICATION, $component);
+
+$renderer = new Renderer($APPLICATION, $component ?? false);
 $elementIds = getElementIdsIncludedArea(iblock('tabs'));
 $params = [];
 
