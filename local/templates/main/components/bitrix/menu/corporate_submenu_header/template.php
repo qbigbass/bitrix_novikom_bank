@@ -53,8 +53,6 @@
                             $path = array_filter(explode('/', $APPLICATION->GetCurDir()));
                             $parentDir = reset($path);
                             $isActive = $parentDir === basename($notHiddenItem['LINK']);
-                        } else {
-                            //$isActive = $notHiddenItem['LINK'] === $APPLICATION->GetCurDir();
                         }
 
                         if ($notHiddenItem['JS_DESKTOP_MOVE_LINK']) { ?>
@@ -93,8 +91,6 @@
                             $path = array_filter(explode('/', $APPLICATION->GetCurDir()));
                             $parentDir = reset($path);
                             $isActive = $parentDir === basename($hiddenItem['LINK']);
-                        } else {
-                            //$isActive = $hiddenItem['LINK'] === $APPLICATION->GetCurDir();
                         }
                         ?>
                         <? if ($issetChildren) { ?>

@@ -8,6 +8,7 @@ $arDirProperties = [
     "defaultColorCard" => "bg-heavy-violet",
     "blockTabsSectionClass" => "",
     "blockTabsTitle" => "Подробнее об услуге",
-    "blockTabsPicPath" => "/frontend/dist/img/patterns/section-2/pattern-light"
+    "blockTabsPicPath" => "/frontend/dist/img/patterns/section-2/pattern-light",
+    "headerColorClass" => "banner-product banner-product--heavy-violet border-yellow"
 ];
 ?>
