@@ -194,6 +194,7 @@ function setStartAttributesInputMortgage(STATE) {
 
 function showMortgageResult(STATE) {
     STATE.elements.displayName.textContent = STATE.filteredData[0].name;
+    STATE.elements.displayFullCost.textContent = STATE.filteredData[0].totalCostCreditRange;
     STATE.elements.displayRate.textContent = `${formatNumber(STATE.rate.toFixed(2))} %`;
     STATE.elements.displayPayment.innerHTML = `${formatNumber(STATE.payment.toFixed(2))} <span class="currency">₽</span>`;
     STATE.elements.displayIncome.innerHTML = `${formatNumber(STATE.requiredIncome.toFixed(2))} <span class="currency">₽</span>`;
@@ -511,6 +512,7 @@ function getMortgageValues(STATE) {
 
     STATE.expenseRatio = STATE.elements.root.dataset.expenseRatio;
     STATE.rate = STATE.filteredData[0].rate;
+    STATE.fullCost = STATE.filteredData[0].totalCostCreditRange;
     STATE.period = STATE.elements.inputPeriod.value;
     STATE.amount = STATE.elements.inputAmount.value;
     STATE.payment = calculateMortgage(STATE);

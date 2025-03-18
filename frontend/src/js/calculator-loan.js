@@ -259,9 +259,7 @@ const getLoanValues = (STATE) => {
     STATE.minAmount = STATE.filteredData.sumFrom;
     STATE.maxAmount = STATE.filteredData.sumTo;
     STATE.rate = STATE.filteredData.rate;
-    // TODO: переделать, когда будут данные fullCost в апи
-    // STATE.fullCost = STATE.filteredData.fullCost;
-    STATE.fullCost = "16,464 – 20,474";
+    STATE.fullCost = STATE.filteredData.totalCostCreditRange;
 
     setStartValues(STATE);
     STATE.payment = calculateMonthlyPayment(STATE);
