@@ -126,6 +126,9 @@ $arResult['CONTENT_JSON'] ?? [],
                         Онлайн-банк
                     </a>
                 </div>
+                <div class="text-center mt-6">
+                    <a class="btn btn-pb btn-pb--outline" href="/"><?= Loc::getMessage('HEADER_MAIN_SITE') ?></a>
+                </div>
                 <?$APPLICATION->IncludeComponent(
                     "bitrix:news.detail",
                     "contacts",
