@@ -62,7 +62,7 @@ $map = $arResult['DETAIL_PICTURE']['SRC'] ?? '';
                 </li>
             <? endif; ?>
         </ul>
-        <a class="btn btn-pb btn-pb--outline" href="/"><?= Loc::getMessage('HEADER_MAIN_SITE') ?></a>
+<!--        <a class="btn btn-pb btn-pb--outline" href="/">--><?php //= Loc::getMessage('HEADER_MAIN_SITE') ?><!--</a>-->
     </div>
 </div>
 

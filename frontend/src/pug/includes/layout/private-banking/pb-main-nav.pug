@@ -48,6 +48,8 @@ mixin pb-main-nav(isOpenModal = false)
                         a.btn.btn-pb.btn-pb--size-m-lg.btn-pb--primary.js-scroll-to(href="#become-client") Стать клиентом
                 .text-center.mt-6
                     a.btn.btn-pb.btn-pb--size-m-lg.btn-pb--outline(href="#") Онлайн-банк
+                .text-center.mt-6
+                    a(href="/").btn.btn-pb.btn-pb--outline Основной сайт Новиком
 
                 .mt-auto.pt-7.pt-lg-0
                     .pb-card-contact.d-flex.flex-column.row-gap-4.row-gap-lg-5.align-items-lg-center
@@ -60,5 +62,3 @@ mixin pb-main-nav(isOpenModal = false)
                                         a(href=item.href).list-pb-contact__link!= item.text
                                     else
                                         span!= item.text
-
-                        a(href="/").btn.btn-pb.btn-pb--outline Основной сайт Новиком
