@@ -41,7 +41,7 @@ $this->setFrameMode(true);
                                         лица<span class="orange-100 ms-1">*</span>
                                     </label>
                                     <input class="form-control form-control-lg-lg" id="opening-current-account_fio"
-                                           type="text" name="fio" placeholder="Введите ФИО контактного лица"
+                                           type="text" name="FIO" placeholder="Введите ФИО контактного лица"
                                            required autocomplete="off" data-form-input>
                                     <div class="invalid-feedback" aria-live="polite"></div>
                                 </div>
@@ -63,7 +63,7 @@ $this->setFrameMode(true);
                                             class="orange-100 ms-1">*</span>
                                     </label>
                                     <input class="js-mask-phone form-control form-control-lg-lg"
-                                           id="opening-current-account_phone" type="tel" name="phone"
+                                           id="opening-current-account_phone" type="tel" name="PHONE"
                                            placeholder="+7" required autocomplete="off" data-form-input
                                            pattern="\+7\s\(\d{3}\)\s\d{3}-\d{2}-\d{2}"
                                            data-error-message="Неверный формат">
@@ -76,7 +76,7 @@ $this->setFrameMode(true);
                                         контактного лица
                                     </label>
                                     <input class="form-control form-control-lg-lg"
-                                           id="opening-current-account_e-mail" type="email" name="e-mail"
+                                           id="opening-current-account_e-mail" type="email" name="EMAIL"
                                            placeholder="Введите e-mail контактного лица" autocomplete="off"
                                            data-form-input
                                            pattern="[a-zA-Z0-9._%\+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}"
@@ -91,7 +91,7 @@ $this->setFrameMode(true);
                                     </label>
                                     <select
                                         class="form-select form-select--size-small form-select--size-small-lg js-select"
-                                        id="opening-current-account_office" aria-label="Офис" required>
+                                        id="opening-current-account_office" aria-label="Офис" name="OFFICE" required>
                                         <option value="0" selected>Москва</option>
                                         <option value="1">Москва</option>
                                         <option value="2">Москва</option>
@@ -99,8 +99,23 @@ $this->setFrameMode(true);
                                     <div class="invalid-feedback" aria-live="polite"></div>
                                 </div>
                             </div>
-                            <input type="hidden" name="sessid" value="<?= bitrix_sessid(); ?>">
-                            <input type="hidden" name="FORM_CODE" value="<?= $arParams['FORM_CODE'] ?>">
+                            <?php if ($arResult['USE_CAPTCHA'] === 'Y') : ?>
+                                <?php $APPLICATION->IncludeComponent(
+                                    "dalee:captcha",
+                                    ".default",
+                                    [
+                                        "FORM_CODE" => $arParams['FORM_CODE'],
+                                    ],
+                                    $component
+                                ); ?>
+                            <?php endif;?>
+                            <div class="application-form__col col-12">
+                                <div class="form-check">
+                                    <input class="form-check-input" id="mortgage_confirm" type="checkbox" name="REQUEST_CONFIRM" value="" required data-form-checkbox data-form-input>
+                                    <label class="form-check-label" for="mortgage_confirm">Подтверждаю согласие на <a href="<?= $arResult['PRIVACY_POLICY_LINK'] ?>" target="_blank">обработку персональных данных</a></label>
+                                    <div class="invalid-feedback w-100" aria-live="polite"></div>
+                                </div>
+                            </div>
                         </div>
                         <div
                             class="d-flex flex-column align-items-center flex-md-row row-gap-3 column-gap-5 column-gap-lg-6 mt-6 mt-lg-7 px-md-2 px-lg-0">

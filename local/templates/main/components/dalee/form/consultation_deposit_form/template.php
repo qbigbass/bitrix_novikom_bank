@@ -40,7 +40,7 @@ $this->setFrameMode(true);
                                             class="orange-100 ms-1">*</span>
                                     </label>
                                     <input class="form-control form-control-lg-lg"
-                                           id="consultation-deposit_last-name" type="text" name="last-name"
+                                           id="consultation-deposit_last-name" type="text" name="LAST_NAME"
                                            placeholder="Введите фамилию" required autocomplete="off"
                                            data-form-input>
                                     <div class="invalid-feedback" aria-live="polite"></div>
@@ -52,7 +52,7 @@ $this->setFrameMode(true);
                                             class="orange-100 ms-1">*</span>
                                     </label>
                                     <input class="form-control form-control-lg-lg"
-                                           id="consultation-deposit_first-name" type="text" name="first-name"
+                                           id="consultation-deposit_first-name" type="text" name="FIRST_NAME"
                                            placeholder="Введите имя" required autocomplete="off" data-form-input>
                                     <div class="invalid-feedback" aria-live="polite"></div>
                                 </div>
@@ -64,7 +64,7 @@ $this->setFrameMode(true);
                                             class="orange-100 ms-1">*</span>
                                     </label>
                                     <input class="form-control form-control-lg-lg"
-                                           id="consultation-deposit_middle-name" type="text" name="middle-name"
+                                           id="consultation-deposit_middle-name" type="text" name="MIDDLE_NAME"
                                            placeholder="Введите отчество" required autocomplete="off"
                                            data-form-input>
                                     <div class="invalid-feedback" aria-live="polite"></div>
@@ -76,7 +76,7 @@ $this->setFrameMode(true);
                                             class="orange-100 ms-1">*</span>
                                     </label>
                                     <input class="js-mask-phone form-control form-control-lg-lg"
-                                           id="consultation-deposit_phone" type="tel" name="phone" placeholder="+7"
+                                           id="consultation-deposit_phone" type="tel" name="PHONE" placeholder="+7"
                                            required autocomplete="off" data-form-input
                                            pattern="\+7\s\(\d{3}\)\s\d{3}-\d{2}-\d{2}"
                                            data-error-message="Неверный формат">
@@ -90,7 +90,7 @@ $this->setFrameMode(true);
                                     </label>
                                     <select
                                         class="form-select form-select--size-small form-select--size-small-lg js-select"
-                                        id="consultation-deposit_office" aria-label="Офис обслуживания" required>
+                                        id="consultation-deposit_office" aria-label="Офис обслуживания" name="OFFICE" required>
                                         <option value="0" selected>Москва</option>
                                         <option value="1">Москва</option>
                                         <option value="2">Москва</option>
@@ -110,7 +110,7 @@ $this->setFrameMode(true);
                             <?php endif;?>
                             <div class="application-form__col col-12">
                                 <div class="form-check">
-                                    <input class="form-check-input" id="mortgage_confirm" type="checkbox" name="request_confirm" value="" required data-form-checkbox data-form-input>
+                                    <input class="form-check-input" id="mortgage_confirm" type="checkbox" name="REQUEST_CONFIRM" value="" required data-form-checkbox data-form-input>
                                     <label class="form-check-label" for="mortgage_confirm">Подтверждаю согласие на <a href="<?= $arResult['PRIVACY_POLICY_LINK'] ?>" target="_blank">обработку персональных данных</a></label>
                                     <div class="invalid-feedback w-100" aria-live="polite"></div>
                                 </div>
