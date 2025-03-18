@@ -202,7 +202,7 @@ function resetForm(form) {
     }
 
     if (fieldsBlock) {
-        formFieldsBlock.classList.add('d-none');
+        fieldsBlock.classList.add('d-none');
     }
 }
 
