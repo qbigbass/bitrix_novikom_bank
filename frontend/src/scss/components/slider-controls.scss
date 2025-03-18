@@ -1,86 +1,109 @@
 $base-transition: .3s ease-in-out;
 
 .slider-controls {
-    $root: #{&};
+  $root: #{&};
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    @include use-media(tablet-album) {
-        justify-content: space-between;
-    }
+  @include use-media(tablet-album) {
+    justify-content: space-between;
+  }
 
-    &__pagination {
-        & .swiper-pagination-bullet {
-          display: inline-block;
+  &__pagination {
+    white-space: nowrap;
+    overflow: hidden;
 
-          &:not(:last-child) {
-            margin-right: 0.5rem;
-          }
-        }
-    }
+    & .swiper-pagination-bullet {
+      display: inline-block;
 
-    &__navigation {
-        position: relative;
+      &:not(:last-child) {
+        margin-right: 0.5rem;
+      }
+
+      &:nth-child(n+7) {
         display: none;
-        gap: 1rem;
+
+        @include use-media(tablet) {
+          display: inline-block;
+        }
+      }
+
+      &:nth-child(n+9) {
+        display: none;
 
         @include use-media(tablet-album) {
-            display: flex;
+          display: inline-block;
         }
-    }
+      }
 
-    @at-root .swiper-navigation-disabled & {
-
-        #{$root}__navigation {
-            display: none;
-        }
-    }
-
-    @at-root .swiper-pagination-disabled & {
-        #{$root}__pagination {
-            display: none;
-        }
-    }
-
-    @at-root .swiper-navigation-disabled.swiper-pagination-disabled & {
+      &:nth-child(n+13) {
         display: none;
+      }
     }
+  }
+
+  &__navigation {
+    position: relative;
+    display: none;
+    gap: 1rem;
+
+    @include use-media(tablet-album) {
+      display: flex;
+    }
+  }
+
+  @at-root .swiper-navigation-disabled & {
+
+    #{$root}__navigation {
+      display: none;
+    }
+  }
+
+  @at-root .swiper-pagination-disabled & {
+    #{$root}__pagination {
+      display: none;
+    }
+  }
+
+  @at-root .swiper-navigation-disabled.swiper-pagination-disabled & {
+    display: none;
+  }
 }
 
 .swiper-pagination-bullet {
-    display: block;
-    cursor: pointer;
-    width: 1.5rem;
-    height: 0.125rem;
-    background: var(--blue-30);
-    border-radius: 0.125rem;
-    transition: background $base-transition, border-radius $base-transition, width $base-transition, height $base-transition, transform $base-transition;
+  display: block;
+  cursor: pointer;
+  width: 1.5rem;
+  height: 0.125rem;
+  background: var(--blue-30);
+  border-radius: 0.125rem;
+  transition: background $base-transition, border-radius $base-transition, width $base-transition, height $base-transition, transform $base-transition;
 
-    &:hover {
-        background: var(--blue-70);
-    }
+  &:hover {
+    background: var(--blue-70);
+  }
 }
 
 .swiper-pagination-bullet-active {
-    background: var(--blue-100);
+  background: var(--blue-100);
 }
 
 .swiper-button-prev,
 .swiper-button-next {
-    //@extend %reset-button;
+  //@extend %reset-button;
 
-    width: 1.5rem;
-    height: 1.5rem;
-    color: var(--blue-100);
-    transition: color $base-transition;
-    cursor: pointer;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--blue-100);
+  transition: color $base-transition;
+  cursor: pointer;
 }
 
 .swiper-button-disabled {
-    color: var(--blue-30);
-    cursor: default;
+  color: var(--blue-30);
+  cursor: default;
 }
 
 .swiper-button-lock {

@@ -48,7 +48,7 @@ const DEFAULT_SLIDER_OPTIONS = {
         el: CLASS_NAME.pagination,
         paginationDisabledClass: 'swiper-pagination-disabled',
         type: 'bullets',
-        clickable: true
+        clickable: true,
     },
     breakpoints: {},
 }
@@ -89,7 +89,7 @@ const createSliderOptionsByAttrs = (dataAttrs, slidesLength) => {
                                 enabled: slidesLength > Number(mqValue)
                             },
                             pagination: {
-                                enabled: slidesLength > Number(mqValue)
+                                enabled: slidesLength > Number(mqValue),
                             }
                         }
                     }
@@ -251,7 +251,7 @@ function initCardSlider() {
 
         const destroyBreakpoints = slider.getAttribute(SLIDER_ATTR.destroyBreakpoint);
         const wrapper = slider.querySelector(CLASS_NAME.wrapper);
-        const controls = slider.querySelector(CLASS_NAME.controls)
+        const controls = slider.querySelector(CLASS_NAME.controls);
 
         options.on = {
             init: function () {
@@ -323,14 +323,8 @@ function initAnnouncementSlider() {
             clickable: true
         },
         breakpoints: {
-            375: {
+            320: {
                 spaceBetween: 8,
-                grid: {
-                    rows: 1,
-                },
-            },
-            768: {
-                spaceBetween: 24,
                 grid: {
                     rows: 2,
                 },
