@@ -163,16 +163,13 @@ function calculateDepositIncome(STATE) {
     let { amount, period, rate, capitalization, filteredData, additionalDeposits, hideAdditional = false } = STATE;
     let totalAmount = amount; // Общая сумма вклада, начиная с первоначальной
     let totalIncome = 0; // Переменная для хранения общего дохода
+    let startDate = new Date(); // Если дата не указана в URL, используем текущую дату
 
     // TODO: убрать после тестирования
     const hash = window.location.hash;
-    const startDateString = hash.replace('#startDate=', '');
-    let startDate;
-
-    if (startDateString) {
-        startDate = parseDate(startDateString);
-    } else {
-        startDate = new Date(); // Если дата не указана в URL, используем текущую дату
+    if (hash.includes('startDate=')) {
+        const startDateString = hash.replace('#startDate=', '');
+        startDate = new Date(startDateString); // Преобразование строки в объект Date
     }
 
     // Устанавливаем дату начала вклада
@@ -186,18 +183,31 @@ function calculateDepositIncome(STATE) {
         while (currentDate < endDate) {
             const year = currentDate.getFullYear();
             const daysInCurrentYear = calculateDaysInYear(year);
-            // Преобразуем процентную ставку
             const dailyInterestRate = (rate * 0.01 / daysInCurrentYear);
             const daysInCurrentMonth = getDaysInMonth(currentDate.getFullYear(), currentDate.getMonth());
-            // Рассчитываем доход за текущий месяц
-            const monthIncome = totalAmount * (dailyInterestRate) * daysInCurrentMonth;
-            totalIncome += monthIncome;
 
-            // Обновляем общую сумму с учетом капитализации
-            totalAmount += monthIncome;
+            // Проверяем, не превышает ли переход на следующий месяц дату окончания
+            if (currentDate.getMonth() + 1 < endDate.getMonth() + 1 || currentDate.getFullYear() < endDate.getFullYear()) {
+                // Рассчитываем доход за полный месяц
+                const monthIncome = totalAmount * dailyInterestRate * daysInCurrentMonth;
+                totalIncome += monthIncome;
+                totalAmount += monthIncome; // Капитализация
+            } else {
+                // Если остались дни до окончания, выходим из цикла
+                break;
+            }
 
             // Переход к следующему месяцу
             currentDate.setMonth(currentDate.getMonth() + 1);
+        }
+
+        // После завершения полного месяца проверяем остаток дней
+        if (currentDate < endDate) {
+            const remainingDays = Math.floor((endDate - currentDate) / (1000 * 60 * 60 * 24));
+            const dailyInterestRate = (rate * 0.01 / calculateDaysInYear(currentDate.getFullYear()));
+            const remainingIncome = totalAmount * dailyInterestRate * remainingDays;
+            totalIncome += remainingIncome;
+            totalAmount += remainingIncome; // Капитализация на оставшиеся дни
         }
     } else {
         // Расчеты без капитализации
