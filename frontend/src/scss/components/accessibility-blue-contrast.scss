@@ -1202,6 +1202,30 @@
       }
     }
 
+    footer {
+      .col-12.col-md-6.col-xl-3.d-flex.flex-column.row-gap-3 {
+        @media (min-width: 768px) {
+          width: 50%;
+        }
+
+        @media (min-width: 1440px) {
+          width: 25%;
+        }
+
+        @media (max-width: 767px) {
+          width: 100%;
+        }
+      }
+
+      .d-flex.flex-column.row-gap-3.pt-md-3.pt-lg-5 {
+        width: 100%;
+      }
+
+      nav .dark-100 {
+        margin: 0;
+        text-align: start;
+      }
+    }
 
     .footer__info {
       background-color: var(--blue-contrast-medium);
@@ -3199,7 +3223,6 @@
       .card-product.card-product--transparent.bg-white {
         background-color: var(--blue-contrast-light-1) !important;
 
-
         .card-product__inner {
           .rte.m-0.gap-3.gap-lg-4 {
             ul {
@@ -3210,7 +3233,6 @@
           }
         }
       }
-
 
       .banner-hero-content__title {
         color: var(--blue-contrast-white);
@@ -3921,7 +3943,6 @@
         align-items: center;
       }
 
-
       .btn.btn-link.btn-lg.d-inline-flex.gap-2.align-items-center.mt-6.mt-lg-7 {
         background-color: var(--blue-contrast-light);
         color: var(--blue-contrast-bg-dark);
@@ -4102,7 +4123,6 @@
         .card-benefit.d-inline-flex.px-3.px-sm-5.px-lg-6.p-4.p-sm-5.p-lg-6.w-100.bg-white {
           background-color: var(--blue-contrast-light-1) !important;
         }
-
 
         .bg-heavy-violet {
           background: none;
@@ -5066,8 +5086,55 @@
             outline-offset: 2px;
           }
         }
-
       }
+    }
+
+    .bg-blue-10,
+    .section-layout--bg-gray,
+    #additional-info-content {
+      .form-label {
+        color: var(--blue-contrast-white);
+      }
+    }
+
+    #catalog-tabs {
+      .card-text__title {
+        color: var(--blue-contrast-white);
+      }
+    }
+
+    .banner-product__footer h4,
+    .quote h4,
+    .bg-dark-10 .accordion-item h5,
+    .bg-dark-10 .accordion-button.collapsed .h4,
+    .banner-product__benefits-list .h4,
+    .card-feedback__title {
+      color: var(--blue-contrast-white) !important;
+    }
+
+    .card-regal__content h4,
+    .card-regal__content p,
+    .card-benefit__title,
+    .card-benefit__read-more a,
+    .card-benefit__description {
+      color: var(--blue-contrast-bg-dark) !important;
+    }
+
+    .card-benefit__icon svg.icon {
+      color: var(--green-100);
+    }
+
+    .container .row.row-gap-6.gx-xl-6 .col-12.col-md-6.col-lg-4 .benefit.d-flex.gap-3.flex-column {
+      &:hover {
+        .benefit__title,
+        .benefit__description {
+          color: var(--blue-contrast-bg-dark);
+        }
+      }
+    }
+
+    .card-product.card-product--transparent.bg-white {
+      background-color: var(--blue-contrast-light-1) !important;
     }
   }
 }

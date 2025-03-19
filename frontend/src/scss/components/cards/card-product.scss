@@ -144,6 +144,8 @@
     }
 
     &--green {
+      background-color: $body-secondary-bg;
+
         &:before {
             background-color: var(--green-100);
         }
