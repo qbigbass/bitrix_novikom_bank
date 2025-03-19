@@ -158,7 +158,7 @@ $this->setFrameMode(true);
                                     <div class="invalid-feedback" aria-live="polite"></div>
                                 </div>
                             </div>
-
+                            <hr>
                             <fieldset class="application-form__col col-12">
                                 <legend class="visually-hidden">Причина обращения</legend>
                                 <div

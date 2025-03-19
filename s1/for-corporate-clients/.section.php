@@ -6,6 +6,7 @@ $arDirProperties = [
     "hiddenKey" => 7,
     "stepperItemColor" => "stepper-item--color-orange",
     "defaultBgBlockContacts" => "",
-    "defaultColorCard" => "contact-block--bg-heavy-purple"
+    "defaultColorCard" => "contact-block--bg-heavy-purple",
+    "headerColorClass" => "banner-product border-orange banner-product--heavy-purple"
 ];
 ?>

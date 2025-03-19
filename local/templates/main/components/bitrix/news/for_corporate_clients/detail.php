@@ -65,7 +65,7 @@ $this->setFrameMode(true);
         "SHARE_SHORTEN_URL_KEY" => $arParams["SHARE_SHORTEN_URL_KEY"],
         "ADD_ELEMENT_CHAIN" => "Y",
         "STRICT_SECTION_CHECK" => $arParams['STRICT_SECTION_CHECK'],
-        "HEADER_COLOR_CLASS" => "banner-product border-orange banner-product--heavy-purple", // Для всех детальных страниц КК
+        "HEADER_COLOR_CLASS" => $APPLICATION->GetProperty("headerColorClass") ?: "",
     ],
     $component
 );?>

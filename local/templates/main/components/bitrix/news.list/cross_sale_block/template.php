@@ -55,17 +55,21 @@ $this->setFrameMode(true);
                                 </div>
                                 <div class="card-product__content">
                                     <h4 class="card-product__title"><?= $item['~NAME'] ?></h4>
-                                    <? if(!empty($item['PROPERTIES']['CONDITION']['VALUE'])) { ?>
+                                    <?php if (!empty($item['PROPERTIES']['CONDITION_HTML']['~VALUE']['TEXT'])): ?>
+                                        <?= $item['PROPERTIES']['CONDITION_HTML']['~VALUE']['TEXT']; ?>
+                                    <?php elseif (!empty($item['PROPERTIES']['CONDITION']['VALUE'])): ?>
                                         <div class="d-inline-flex flex-nowrap align-items-baseline text-l fw-semibold gap-1 violet-100">
                                             <?= $item['PROPERTIES']['CONDITION']['DESCRIPTION'] ?>
                                             <span class="text-number-l fw-bold"><?= $item['PROPERTIES']['CONDITION']['VALUE'] ?></span>
                                         </div>
-                                    <? } ?>
+                                    <?php endif; ?>
                                     <? if(!empty($item['PREVIEW_TEXT'])) { ?>
                                         <p class="card-product__description m-0"><?= $item['~PREVIEW_TEXT'] ?></p>
                                     <? } ?>
                                 </div>
-                                <img class="card-product__img" src="<?= $item['PREVIEW_PICTURE']['SRC'] ?>" alt="<?= $item['PREVIEW_PICTURE']['ALT'] ?>">
+                                <? if (!empty($item['PREVIEW_PICTURE']['SRC'])) : ?>
+                                    <img class="card-product__img" src="<?= $item['PREVIEW_PICTURE']['SRC'] ?>" alt="<?= $item['PREVIEW_PICTURE']['ALT'] ?>">
+                                <? endif; ?>
                                 <? if (!empty($item['PROPERTIES']['LINK']['VALUE'])): ?>
                                     <? if (empty($item['PROPERTIES']['BTN_TYPE']['VALUE']) || $item['PROPERTIES']['BTN_TYPE']['VALUE'] == 'С фоном'): ?>
                                         <a class="btn btn-primary card-product__button" href="<?= $item['PROPERTIES']['LINK']['VALUE']?>">

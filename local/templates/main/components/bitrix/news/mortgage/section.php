@@ -1,11 +1,16 @@
-<?
+<?php
+
+/** @var array $arParams */
+/** @var array $arResult */
 
 $code = $arResult['VARIABLES']['SECTION_CODE'];
 $element = Dalee\Helpers\IblockHelper::getIblockElementByFilter([
     '=CODE' => $code,
     'ACTIVE' => 'Y',
-    'IBLOCK_ID' => $arParams['IBLOCK_ID']
+    'IBLOCK_ID' => $arParams['IBLOCK_ID'],
+    'IBLOCK_SECTION_ID' => false,
 ]);
+
 if (!empty($element)) {
     unset($arResult["VARIABLES"]["SECTION_CODE"]);
     $arResult["VARIABLES"]["ELEMENT_CODE"] = $code;

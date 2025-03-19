@@ -3,6 +3,7 @@ require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 
 global $APPLICATION;
 $APPLICATION->SetTitle("Кредиты");
+$iblockId = iblock('loans');
 ?>
 <?
 $elementWithoutSection = \Bitrix\Iblock\ElementTable::getList([
@@ -55,7 +56,7 @@ if (!empty($elementWithoutSection)) {
                 "PREVIEW_TEXT",
                 "DETAIL_PICTURE",
             ],
-            "IBLOCK_ID" => iblock('loans'),
+            "IBLOCK_ID" => $iblockId,
             "IBLOCK_TYPE" => "for_private_clients_ru",
             "IBLOCK_URL" => "",
             "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
@@ -142,7 +143,7 @@ if (!empty($elementWithoutSection)) {
             "DISPLAY_TOP_PAGER" => "N",
             "FILE_404" => "",
             "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-            "IBLOCK_ID" => iblock("loans"),
+            "IBLOCK_ID" => $iblockId,
             "IBLOCK_TYPE" => "for_private_clients_ru",
             "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
             "LIST_ACTIVE_DATE_FORMAT" => "d.m.Y",
@@ -198,7 +199,7 @@ if (!empty($elementWithoutSection)) {
     );
 } ?>
 
-<? $APPLICATION->IncludeFile('/local/php_interface/include/block_tabs.php'); ?>
+<? $APPLICATION->IncludeFile('/local/php_interface/include/block_tabs.php', ['IBLOCK_ID' => $iblockId]); ?>
 
 <? $APPLICATION->IncludeFile('/local/php_interface/include/block_ads_customers.php'); ?>
 

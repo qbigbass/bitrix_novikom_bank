@@ -58,8 +58,11 @@ class RatesFetcher
             if (isset($properties['LINK_']) && !isset($properties['BORROWER_TYPE_'])) {
                 // Только для вкладов
                 $data['select']['INTEREST_PAYMENT_'] = 'LINK.ELEMENT.INTEREST_PAYMENT.VALUE';
+            } elseif (isset($properties['LINK_'], $properties['BORROWER_TYPE_'])) {
+                // Для кредитов и ипотек
+                $data['select']['TOTAL_COST_CREDIT_RANGE_'] = 'LINK.ELEMENT.TOTAL_COST_CREDIT_RANGE.VALUE';
             }
-
+            
             $this->loadedElements = $dataClass::getList($data)->fetchAll();
 
             $arrInterestIds = [];

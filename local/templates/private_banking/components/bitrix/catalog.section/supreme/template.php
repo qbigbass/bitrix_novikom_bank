@@ -13,7 +13,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
                 <picture class="pb-card-image__bg">
                     <source srcset="/frontend/dist/img/pb-images/pb-card-supreme-dark_bg-desktop.png" media="(min-width: 1200px)">
                     <source srcset="/frontend/dist/img/pb-images/pb-card-supreme-dark_bg-tablet.png" media="(min-width: 768px)">
-                    <img src="/frontend/dist/img/pb-images/pb-card-supreme-dark_bg-mobile.png" loading="lazy">
+                    <img src="/frontend/dist/img/pb-images/pb-card-supreme-dark_bg-mobile.png" alt="card-supreme-dark">
                 </picture>
                 <img src="/frontend/dist/img/pb-images/pb-card-supreme-dark.png" alt="Supreme Card">
                 <svg class="pb-card-image__blink" width="549" height="389" viewBox="0 0 549 389" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -66,7 +66,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
                 <picture class="pb-card-image__bg">
                     <source srcset="/frontend/dist/img/pb-images/pb-card-supreme-light_bg-desktop.png" media="(min-width: 1200px)">
                     <source srcset="/frontend/dist/img/pb-images/pb-card-supreme-light_bg-tablet.png" media="(min-width: 768px)">
-                    <img src="/frontend/dist/img/pb-images/pb-card-supreme-light_bg-mobile.png" loading="lazy">
+                    <img src="/frontend/dist/img/pb-images/pb-card-supreme-light_bg-mobile.png" alt="card-supreme-light">
                 </picture>
                 <img src="/frontend/dist/img/pb-images/pb-card-supreme-light.png" alt="Supreme Card">
                 <svg class="pb-card-image__blink" width="589" height="453" viewBox="0 0 589 453" fill="none" xmlns="http://www.w3.org/2000/svg">

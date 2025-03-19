@@ -91,7 +91,8 @@ if ($delFilter) {
                         "PAGER_PARAMS_NAME" => $arParams["PAGER_PARAMS_NAME"],
                         "INSTANT_RELOAD" => $arParams["INSTANT_RELOAD"],
                         "SHOW_CALENDAR" => "Y",
-                        "SET_FILTER" => $_GET["set_filter"]
+                        "SET_FILTER" => $_GET["set_filter"],
+                        "REQUEST" => $request
                     ],
                     $component,
                     ['HIDE_ICONS' => 'Y']
@@ -101,19 +102,17 @@ if ($delFilter) {
         </div>
         <?
         /* Фильтр объявлений по дате из календаря */
-        if ($request["propDateFrom"]) {
-            $dateFrom = $request["propDateFrom"];
+        if ($request["date"]) {
+            $dates = explode(" - ", $request["date"]);
+            $dateFrom = $dates[0];
+            $dateTo = $dates[1];
 
-            if ($request["propDateTo"]) {
-                $GLOBALS['arrAdFilter']['>=PROPERTY_DATE'] = ConvertDateTime($dateFrom, "YYYY-MM-DD")." 00:00:00";
-            } else {
+            if (!empty($dateFrom) && !empty($dateTo)) {
+                $GLOBALS['arrAdFilter']['>=PROPERTY_DATE'] = ConvertDateTime($dateFrom, "YYYY-MM-DD");
+                $GLOBALS['arrAdFilter']['<=PROPERTY_DATE'] = ConvertDateTime($dateTo, "YYYY-MM-DD");
+            } elseif (!empty($dateFrom)) {
                 $GLOBALS['arrAdFilter']['=PROPERTY_DATE'] = ConvertDateTime($dateFrom, "YYYY-MM-DD");
             }
-        }
-
-        if ($request["propDateTo"]) {
-            $dateTo = $request["propDateTo"];
-            $GLOBALS['arrAdFilter']['<=PROPERTY_DATE'] = ConvertDateTime($dateTo, "YYYY-MM-DD")." 23:59:59";
         }
         ?>
         <!-- Список объявлений -->

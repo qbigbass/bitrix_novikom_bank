@@ -17,6 +17,11 @@
                 currency: true,
                 additionalClass: 'js-calculator-display-income'
             },
+            {
+                title: 'Выплата процентов',
+                value: '',
+                additionalClass: 'js-calculator-display-percent'
+            },
         ],
         btnText: 'Оформить заявку',
         notes: 'Калькулятор не&nbsp;гарантирует точность расчетов. Окончательные параметры вклада определяются по&nbsp;итогам рассмотрения заявки.'
@@ -54,7 +59,7 @@ include ../../../cards/card-calculate-result
                         id: 'deposit-period',
                         type: "day",
                         startValue: 550,
-                        editable: false,
+                        editable: true,
                         additionalClass: "js-input-period",
                         isCalculator: true
                     })

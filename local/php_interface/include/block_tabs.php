@@ -1,9 +1,32 @@
 <?php
+/** @var array $arParams */
+
 use Dalee\Helpers\ComponentRenderer\Renderer;
 
-global $APPLICATION;
-$renderer = new Renderer($APPLICATION);
+/**
+ * @global CMain $APPLICATION
+ * @var CBitrixComponent $component
+ */
+
+$renderer = new Renderer($APPLICATION, $component ?? false);
 $elementIds = getElementIdsIncludedArea(iblock('tabs'));
+$params = [];
+
+if (!empty($arParams['IBLOCK_ID'])) {
+    $code = basename($APPLICATION->GetCurPage());
+    $element = \Bitrix\Iblock\ElementTable::getList([
+        'filter' => [
+            'CODE' => $code,
+            'IBLOCK_ID' => $arParams['IBLOCK_ID'] ?? ''
+        ],
+        'select' => [
+            'ID'
+        ]
+    ])->fetch();
+
+    $params['elementId'] = $element['ID'];
+}
+
 ?>
 <? if (!empty($elementIds)) : ?>
     <?
@@ -13,7 +36,9 @@ $elementIds = getElementIdsIncludedArea(iblock('tabs'));
     ?>
     <section class="section-layout js-collapsed-mobile <?= $blockTabsSectionClass ?>">
         <div class="container">
-            <h3 class="d-none d-md-flex mb-md-6 mb-lg-7 px-lg-6"><?= $title ?></h3>
+            <? if (!empty($title)) : ?>
+                <h3 class="d-none d-md-flex mb-md-6 mb-lg-7 px-lg-6"><?= $title ?></h3>
+            <? endif; ?>
             <a
                 class="h3 d-flex align-items-center justify-content-between dark-100 d-md-none"
                 data-bs-toggle="collapse"
@@ -27,7 +52,7 @@ $elementIds = getElementIdsIncludedArea(iblock('tabs'));
                     <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-down"></use>
                 </svg>
             </a>
-            <? $renderer->render('Tabs', $elementIds); ?>
+            <? $renderer->render('Tabs', $elementIds, null, $params); ?>
         </div>
         <? if (!empty($picPath)) : ?>
             <picture class="pattern-bg pattern-bg--hide-mobile">

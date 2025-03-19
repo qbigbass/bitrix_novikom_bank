@@ -3,9 +3,9 @@
 namespace Dalee\Libs\Tabs\Handlers;
 
 use CFile;
+use CIBlockElement;
 use CIBlockSection;
 use CUserFieldEnum;
-use Dalee\Helpers\IblockHelper;
 use Dalee\Libs\Tabs\Interfaces\PropertyHandlerInterface;
 
 class DocumentsHandler implements PropertyHandlerInterface
@@ -13,6 +13,7 @@ class DocumentsHandler implements PropertyHandlerInterface
     private int $iblockId;
     private array $property;
     private ?array $params;
+    private ?array $element;
     private int $firstSectionKey;
 
     public function __construct(array $property, ?int $elementId = null, ?array $element = null, array $params = [])
@@ -20,6 +21,7 @@ class DocumentsHandler implements PropertyHandlerInterface
         $this->iblockId = iblock("documents");
         $this->property = $property;
         $this->params = $params;
+        $this->element = $element;
 
         $this->property['LINK_SECTION_VALUE'] = !empty($this->property['VALUE']) ?
             $this->getSectionsWithElements($this->property['VALUE']) : [];
@@ -47,11 +49,13 @@ class DocumentsHandler implements PropertyHandlerInterface
             </div>
         ';
 
-        $protectionFromScammers = '
-            <div class="col-12 col-xxl-4">'
-                . $this->getProtectionFromScammersHtml() .
-            '</div>
-        ';
+        if (!empty($this->element['PROPERTIES']['SHOW_DEFEND_BLOCK']['VALUE'])) {
+            $protectionFromScammers = '
+                <div class="col-12 col-xxl-4">'
+                    . $this->getProtectionFromScammersHtml() .
+                '</div>
+            ';
+        }
 
         return $sectionHtml . (empty($params['isAccordion']) ? $protectionFromScammers : '');
     }
@@ -61,7 +65,9 @@ class DocumentsHandler implements PropertyHandlerInterface
         $simpleHtml = '';
 
         foreach ($this->property['LINK_SECTION_VALUE'] as $key => $section) {
-            $simpleHtml .= $this->getElementsHtml($section['ELEMENTS']);
+            if (!empty($section['ELEMENTS'])) {
+                $simpleHtml .= $this->getElementsHtml($section['ELEMENTS']);
+            }
         }
 
         return $simpleHtml;
@@ -165,7 +171,7 @@ class DocumentsHandler implements PropertyHandlerInterface
     private function renderElement(array $element, string $timestampFrom): string
     {
         $date = date('d.m.Y', strtotime($element['ACTIVE_FROM']));
-        $fileType = $this->getFileType($element['PROPERTIES']['FILE']['VALUE']);
+        $fileType = $this->getFileType($element['PROPERTY_FILE_VALUE']);
 
         $result = '<a class="d-flex flex-column gap-2 py-3 document-download text-m" href="/documents/' . $element['CODE'] . '.' . $fileType . '">'
             . $element ['NAME'] .
@@ -220,22 +226,10 @@ class DocumentsHandler implements PropertyHandlerInterface
                 $result .= $this->getElementsHtml($section['ELEMENTS_ARCHIVE'], true);
             } else {
                 $result .=
-                    '<div class="accordion" id="accordion-' . $section['ID'] . '">
-                        <div class="accordion-item">
-                            <div class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#' . $section['ID'] . '-archive" aria-controls="' . $section['ID'] . '-archive">
-                                    ' . $section['NAME'] . '
-                                </button>
-                            </div>
-                            <div class="accordion-collapse collapse" id="' . $section['ID'] . '-archive" data-bs-parent="#accordion-' . $section['ID'] . '">
-                                <div class="accordion-body">
-                                    <div class="mt-4">'
-                                        . $this->getElementsHtml($section['ELEMENTS_ARCHIVE'], true) .
-                                    '</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>';
+                    '<div class="mt-4">
+                        <h5>' . $section['NAME'] . '</h5>'
+                        . $this->getElementsHtml($section['ELEMENTS_ARCHIVE'], true) .
+                    '</div>';
             }
         }
 
@@ -290,7 +284,13 @@ class DocumentsHandler implements PropertyHandlerInterface
                 && $result[$element['IBLOCK_SECTION_ID']]['UF_DOCUMENTS_ARCHIVE']
             ) {
                 $result[$element['IBLOCK_SECTION_ID']]['ELEMENTS_ARCHIVE'][$element['ID']] = $element;
-            } else {
+            } elseif (
+                (
+                    !empty($element['ACTIVE_TO'])
+                    && MakeTimeStamp($element['ACTIVE_TO']) > time()
+                )
+                || empty($element['ACTIVE_TO'])
+            ) {
                 $result[$element['IBLOCK_SECTION_ID']]['ELEMENTS'][$element['ID']] = $element;
             }
         }
@@ -332,7 +332,8 @@ class DocumentsHandler implements PropertyHandlerInterface
      */
     private function getElements(array $sectionIds): array
     {
-        return IblockHelper::getElementsWithProperties(
+        $result = [];
+        $elements = CIBlockElement::GetList(
             [
                 'SORT' => 'ASC',
                 'DATE_ACTIVE_FROM' => 'ASC',
@@ -342,6 +343,24 @@ class DocumentsHandler implements PropertyHandlerInterface
                 'IBLOCK_ID' => $this->iblockId,
                 'ACTIVE' => 'Y'
             ],
-        )['items'] ?? [];
+            false,
+            false,
+            [
+                'ID',
+                'IBLOCK_SECTION_ID',
+                'NAME',
+                'CODE',
+                'PREVIEW_TEXT',
+                'ACTIVE_FROM',
+                'ACTIVE_TO',
+                'SORT',
+                'PROPERTY_FILE',
+            ]
+        );
+        while ($element = $elements->Fetch()) {
+            $result[] = $element;
+        }
+
+        return $result;
     }
 }
