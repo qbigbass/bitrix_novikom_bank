@@ -29,6 +29,12 @@ class Forms
         $entityDataClass = $obEntity->getDataClass();
 
         $rsData = $entityDataClass::getList([
+            'filter' => [
+                '!UF_XML_ID' => [
+                    'callback_form',
+                    'feedback_form'
+                ]
+            ],
             'select' => ['UF_XML_ID'],
         ]);
 
