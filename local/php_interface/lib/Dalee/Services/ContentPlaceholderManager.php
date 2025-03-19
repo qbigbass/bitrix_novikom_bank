@@ -38,6 +38,34 @@ class ContentPlaceholderManager
                 $this->placeholdersMatches[$placeholder] = $code;
             }
         }
+
+        // Блок с инфоврезками
+        for ($index = 1; $index <= 3; $index++) {
+            if (!empty($arResult['DISPLAY_PROPERTIES']['QUOTE_TEXT_' . $index]['~VALUE'])) {
+                $this->placeholdersValues['QUOTE_TEXT']['#QUOTE_TEXT_' . $index . '#'] =
+                    $arResult['DISPLAY_PROPERTIES']['QUOTE_TEXT_' . $index]['~VALUE'];
+                if (!empty($arResult['DISPLAY_PROPERTIES']['QUOTE_HEADER_' . $index]['~VALUE'])) {
+                    $this->placeholdersValues['QUOTE_TEXT']['#QUOTE_TEXT_' . $index . '#']['TEXT'] =
+                    '<h4 class="mb-4">' . $arResult['DISPLAY_PROPERTIES']['QUOTE_HEADER_' . $index]['~VALUE'] . '</h4>' .
+                    $this->placeholdersValues['QUOTE_TEXT']['#QUOTE_TEXT_' . $index . '#']['TEXT'];
+                }
+                $this->placeholdersMatches['#QUOTE_TEXT_' . $index . '#'] = 'QUOTE_TEXT';
+            }
+        }
+
+        // Блок с цитатами
+        for ($index = 1; $index <= 3; $index++) {
+            if (!empty($arResult['DISPLAY_PROPERTIES']['EXCERPT_TEXT_' . $index]['~VALUE'])) {
+                $this->placeholdersValues['EXCERPT_TEXT']['#EXCERPT_TEXT_' . $index . '#'] =
+                    $arResult['DISPLAY_PROPERTIES']['EXCERPT_TEXT_' . $index]['~VALUE'];
+                if (!empty($arResult['DISPLAY_PROPERTIES']['EXCERPT_HEADER_' . $index]['~VALUE'])) {
+                    $this->placeholdersValues['EXCERPT_TEXT']['#EXCERPT_TEXT_' . $index . '#']['TEXT'] =
+                        '<h4 class="mb-4">' . $arResult['DISPLAY_PROPERTIES']['EXCERPT_HEADER_' . $index]['~VALUE'] . '</h4>' .
+                        $this->placeholdersValues['EXCERPT_TEXT']['#EXCERPT_TEXT_' . $index . '#']['TEXT'];
+                }
+                $this->placeholdersMatches['#EXCERPT_TEXT_' . $index . '#'] = 'EXCERPT_TEXT';
+            }
+        }
     }
 
     /**
