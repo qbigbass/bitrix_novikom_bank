@@ -3,8 +3,12 @@
 
 use Dalee\Helpers\ComponentRenderer\Renderer;
 
-global $APPLICATION;
-$renderer = new Renderer($APPLICATION);
+/**
+ * @global CMain $APPLICATION
+ * @var CBitrixComponent $component
+ */
+
+$renderer = new Renderer($APPLICATION, $component ?? false);
 $elementIds = getElementIdsIncludedArea(iblock('tabs'));
 $params = [];
 
