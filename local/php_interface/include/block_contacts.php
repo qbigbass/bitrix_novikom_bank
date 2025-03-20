@@ -1,6 +1,10 @@
 <?php
 global $APPLICATION;
-$elementIds = getElementIdsIncludedArea(iblock('contacts_ru'));
+
+$iblockId = iblock('contacts_ru');
+$arSelectUf = ["UF_COLOR_BLOCK"];
+$sectionData = getSectionData($iblockId, $arSelectUf);
+$elementIds = getElementIdsIncludedArea($sectionData, $iblockId);
 
 if (!empty($elementIds)) {
     global $contactFilter;
@@ -8,7 +12,7 @@ if (!empty($elementIds)) {
         "ID" => $elementIds
     ];
 
-    $defaultBgBlockContacts = $APPLICATION->GetProperty("defaultBgBlockContacts") ?: "bg-blue-10";
+    $blockSectionClass = $sectionData["COLOR_BLOCK"] ?: "bg-blue-10";
     $defaultColorCard = $APPLICATION->GetProperty("defaultColorCard") ?: "contact-block--bg-blue";
     $defaultColorTag = $APPLICATION->GetProperty("defaultColorTag") ?: "tag--outline-white";
     $defaultColorH4 = $APPLICATION->GetProperty("defaultColorH4") ?: "dark-0";
@@ -66,7 +70,7 @@ if (!empty($elementIds)) {
             "SORT_ORDER1" => "DESC",
             "SORT_ORDER2" => "ASC",
             "STRICT_SECTION_CHECK" => "N",
-            "COLOR_SECTION" => $defaultBgBlockContacts,
+            "COLOR_SECTION" => $blockSectionClass,
             "COLOR_CARD" => $defaultColorCard,
             "COLOR_TAG" => $defaultColorTag,
             "COLOR_H4" => $defaultColorH4,
