@@ -4,7 +4,10 @@ namespace Dalee\Services;
 
 use Bitrix\Highloadblock\HighloadBlockTable;
 use Bitrix\Iblock\ElementTable;
+use Bitrix\Main\ArgumentException;
 use Bitrix\Main\Loader;
+use Bitrix\Main\ObjectPropertyException;
+use Bitrix\Main\SystemException;
 
 /**
  * Класс для обработки и преобразования данных ставок продуктов.
@@ -83,7 +86,7 @@ class ProductRatesHandler
             'program_bonuses' => iblock('bonus_programs_ru')
         ];
 
-        $this->linkedIblockElements = $this->getElementNames();
+        $this->linkedIblockElements = $this->getElementsData();
 
         $iblockId = $this->getIblockId();
         $this->ratesFetcher = new RatesFetcher($iblockId);
@@ -181,7 +184,9 @@ class ProductRatesHandler
     {
         return array_map(function ($item) {
             $newItem = [];
-            $newItem['name'] = $this->linkedIblockElements[$item['LINK_']];
+            $newItem['name'] = $this->linkedIblockElements[$item['LINK_']]['name'];
+            $newItem['href'] = !empty($this->linkedIblockElements[$item['LINK_']]['code']) ?
+                "/$this->table/{$this->linkedIblockElements[$item['LINK_']]['code']}/" : null;
             foreach ($item as $key => $value) {
                 if ($key === 'LINK_' || $key === 'NAME') {
                     continue;
@@ -208,16 +213,29 @@ class ProductRatesHandler
         }, $data);
     }
 
-    private function getElementNames()
+    /**
+     * @return array
+     * @throws SystemException
+     */
+    private function getElementsData(): array
     {
+        $result = [];
         $elements = ElementTable::getList([
-            'select' => ['ID', 'NAME'],
+            'select' => ['ID', 'NAME', 'CODE'],
             'filter' => [
                 'IBLOCK_ID' => $this->iblockLinks[$this->table],
             ]
         ])->fetchAll();
 
-        return array_column($elements, 'NAME', 'ID');
+        foreach ($elements as $element) {
+            $result[$element['ID']] = [
+                'name' => $element['NAME'],
+                'code' => $element['CODE'],
+
+            ];
+        }
+
+        return $result;
     }
 
     /**
