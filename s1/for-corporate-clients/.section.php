@@ -9,5 +9,6 @@ $arDirProperties = [
     "defaultColorCard" => "contact-block--bg-heavy-purple",
     "headerColorClass" => "banner-product border-orange banner-product--heavy-purple",
     "blockTabsTitle" => "Об услуге",
+    "cardPromoClass" => "card-promo--heavy-purple"
 ];
 ?>
