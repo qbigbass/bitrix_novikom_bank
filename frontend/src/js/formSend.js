@@ -187,6 +187,9 @@ function resetForm(form) {
     const buttons = form.querySelectorAll(FORM_ELEMS.button);
     const uploadEl = form.querySelector(FORM_ELEMS.upload);
     const fieldsBlock = form.querySelector(FEEDBACK_ELEMS.fieldsBlock);
+    const colInputReplyEmail = form.querySelector(FEEDBACK_ELEMS.inputReplyEmail)?.closest(FEEDBACK_ELEMS.formCol);
+    const topicRadios = form.querySelectorAll(FEEDBACK_ELEMS.radiosTopic);
+    const topicText = form.querySelectorAll(FEEDBACK_ELEMS.topicText);
 
     buttons.forEach(button => {
         button.disabled = true
@@ -203,6 +206,17 @@ function resetForm(form) {
 
     if (fieldsBlock) {
         fieldsBlock.classList.add('d-none');
+    }
+
+    if (colInputReplyEmail) {
+        colInputReplyEmail.hidden = true;
+    }
+
+    if (topicRadios.length) {
+        const activeId = topicRadios[0].id;
+        topicText.forEach(element => {
+            element.hidden = element.id !== `${activeId}-text`;
+        })
     }
 }
 
