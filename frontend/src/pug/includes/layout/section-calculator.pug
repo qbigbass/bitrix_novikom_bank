@@ -1,22 +1,25 @@
 include ../../cards/card-calculate-result
-include ../../components/ui/nav-tabs
+include ../../components/ui/tabs-simple
 -
     var calcList = [
         {
-            link: 'loan',
+            link: '#loan',
+            id: 'loan',
             linkText: 'Кредит',
             isActive: false
         },
         {
-            link: 'mortgage',
+            link: '#mortgage',
+            id: 'mortgage',
             linkText: 'Ипотека',
             isActive: true
         },
         {
-            link: 'deposit',
+            link: '#deposit',
+            id: 'deposit',
             linkText: 'Вклад',
             isActive: false
-        }
+        },
     ]
 
 
@@ -34,7 +37,7 @@ section.section-layout.section-layout--bg-gray.section-calculator
         #calculator.collapse.show.section-calculator__wrapper
             .section-calculator__header.d-flex.flex-md-column.flex-lg-row.gap-md-6.align-items-lg-end.py-4.p-md-0.mb-md-6.mb-lg-7.justify-content-lg-between.ps-lg-6
                 h3.d-none.d-md-inline Рассчитайте выгоду
-                +nav-tabs(calcList)
+                +tabs-simple(calcList)
             .tab-content.px-lg-6
                 #loan.tab-pane.fade(role="tabpanel" aria-labelledby="loan" tabindex="0")
                     include calculator-tabs/tab-loan

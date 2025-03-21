@@ -28,9 +28,9 @@
 
         &-item {
             cursor: pointer;
-            top: var(--border-nav-width);
+            top: calc(2 * var(--border-nav-width));
             right: 0;
-            height: calc(100% - (var(--border-nav-width) * 2));
+            height: calc(95% - (var(--border-nav-width) * 2));
             border-right: var(--border-nav-width) solid var(--purple-30);
             border-radius: 0 0.25rem 0.25rem 0;
             aspect-ratio: 1;

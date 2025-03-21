@@ -218,23 +218,35 @@ $APPLICATION->IncludeComponent(
             <div
                 class="section-calculator__header d-flex flex-md-column flex-lg-row gap-md-6 align-items-lg-end py-4 p-md-0 mb-md-6 mb-lg-7 justify-content-lg-between ps-lg-6">
                 <h3 class="d-none d-md-inline">Рассчитайте выгоду</h3>
-                <ul class="nav nav-tabs" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#loan" type="button"
-                                role="tab" aria-controls="loan" aria-selected>Кредит
-                        </button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#mortgage" type="button"
-                                role="tab" aria-controls="mortgage">Ипотека
-                        </button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#deposit" type="button" role="tab"
-                                aria-controls="deposit">Вклад
-                        </button>
-                    </li>
-                </ul>
+                <div class="tabs-panel js-tabs-slider overflow-hidden position-relative">
+                    <div class="tabs-panel__navigation d-none d-lg-block js-tabs-slider-navigation w-100">
+                        <span class="tabs-panel__navigation-item tabs-panel__navigation-item-reverse js-tabs-slider-navigation-prev d-flex align-items-center justify-content-start px-1 z-3 position-absolute swiper-button-disabled">
+                            <span class="icon size-s">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                  <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-left"></use>
+                                </svg>
+                            </span>
+                        </span>
+                        <span class="tabs-panel__navigation-item js-tabs-slider-navigation-next d-flex align-items-center justify-content-end px-1 z-3 position-absolute swiper-button-disabled">
+                            <span class="icon size-s">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                  <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
+                                </svg>
+                            </span>
+                        </span>
+                    </div>
+                    <ul class="swiper-wrapper tabs-panel__list nav nav-tabs d-inline-flex flex-nowrap w-auto p-0 border border-purple rounded">
+                        <li class="swiper-slide w-auto tabs-panel__list-item nav-item z-2">
+                            <a class="tabs-panel__list-item-link nav-link bg-transparent active" href="#loan" data-bs-toggle="tab" data-bs-target="#loan" role="tab" aria-controls="loan" aria-selected="true">Кредит</a>
+                        </li>
+                        <li class="swiper-slide w-auto tabs-panel__list-item nav-item z-2">
+                            <a class="tabs-panel__list-item-link nav-link bg-transparent" href="#mortgage" data-bs-toggle="tab" data-bs-target="#mortgage" role="tab" aria-controls="mortgage" aria-selected="false">Ипотека</a>
+                        </li>
+                        <li class="swiper-slide w-auto tabs-panel__list-item nav-item z-2">
+                            <a class="tabs-panel__list-item-link nav-link bg-transparent" href="#deposit" data-bs-toggle="tab" data-bs-target="#deposit" role="tab" aria-controls="deposit" aria-selected="false">Вклад</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
             <div class="tab-content ps-lg-6">
                 <div class="tab-pane fade show active" id="loan" role="tabpanel" aria-labelledby="loan" tabindex="0">

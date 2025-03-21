@@ -78,4 +78,20 @@
             scroll-margin-top: 9rem;
         }
     }
+
+    h3.px-lg-6.mb-4.mb-md-6.mb-lg-7 {
+      word-wrap: break-word;
+      word-break: break-word;
+      hyphens: auto;
+    }
+
+  &.bg-blue-10 {
+    .btn.btn-lg.btn-link.btn-icon {
+      white-space: normal;
+
+      @include use-media(tablet) {
+        white-space: nowrap;
+      }
+    }
+  }
 }
