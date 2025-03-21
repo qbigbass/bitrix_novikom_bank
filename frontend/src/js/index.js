@@ -1960,8 +1960,6 @@ const dataTemp = {
     ]
 }
 
-
-
 let isInitialLoad = true;
 
 document.addEventListener('DOMContentLoaded', () => {
