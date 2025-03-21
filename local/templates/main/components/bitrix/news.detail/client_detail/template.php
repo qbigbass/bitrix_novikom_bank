@@ -74,7 +74,7 @@ $headerView
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <div class="card-promo card-promo--heavy-purple card-promo--padding-banner-img">
+                    <div class="card-promo <?= $arParams['CARD_PROMO_CLASS']?> ">
                         <div class="card-promo__wrapper">
                             <div class="card-promo__header d-flex flex-column row-gap-3 row-gap-md-4">
                                 <h2><?= $arResult['PROPERTIES']['BANNER_HEADER']['~VALUE'] ?></h2>
