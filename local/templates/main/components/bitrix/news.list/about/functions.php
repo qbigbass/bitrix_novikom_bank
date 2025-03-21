@@ -21,9 +21,9 @@ function renderStartTags(int $key): string
     return $html;
 }
 
-function renderClasses(int $key, bool|array $detailPicture): string
+function renderClasses(int $key, null|string $detailPicture): string
 {
-    if (!empty($detailPicture['SRC'])) {
+    if (!empty($detailPicture)) {
         $classes = 'card-product card-product--transparent h-auto flex-basis-100 ' . ($key < 6 ? 'flex-basis-md-25' : 'flex-basis-xl-25') . ' flex-grow-1 bg-white';
     } else {
         $classes = 'card-product card-product--transparent card-product--size-height-auto flex-basis-100 ' . ($key < 9 ? 'flex-basis-md-25' : 'flex-basis-xl-25') . ' h-auto flex-grow-1 bg-white';

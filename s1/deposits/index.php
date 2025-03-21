@@ -110,16 +110,8 @@ $iblockId = iblock('deposits');
     ['HIDE_ICONS' => 'Y']
 ); ?>
 
-<? $APPLICATION->IncludeFile('/local/php_interface/include/block_tabs.php', ['IBLOCK_ID' => $iblockId]); ?>
 
-<? $APPLICATION->IncludeFile('/local/php_interface/include/block_ads_customers.php'); ?>
 
-<? $APPLICATION->IncludeFile('/local/php_interface/include/block_cross_sale.php'); ?>
-
-<? $APPLICATION->IncludeFile('/local/php_interface/include/block_special_offers.php'); ?>
-
-<? $APPLICATION->IncludeFile('/local/php_interface/include/block_news.php'); ?>
-
-<? $APPLICATION->IncludeFile('/local/php_interface/include/block_contacts.php'); ?>
+<? $APPLICATION->IncludeFile('/local/php_interface/include/request_call.php'); ?>
 
 <? require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php'); ?>

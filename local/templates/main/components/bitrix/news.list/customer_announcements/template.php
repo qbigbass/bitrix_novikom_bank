@@ -12,11 +12,10 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 $parentSection = $component->getParent()?->arParams['SECTION_URL'] ?? ($component->getParent()?->arParams['SEF_FOLDER'] ?? '/');
-$classColorBg = $arParams["CLASS_COLOR_BG"] ?: "bg-dark-10";
 $pathImgBg = $arParams["PATH_IMG_BG"] ?? "/frontend/dist/img/patterns/section-2/pattern-light";
 ?>
 <? if (!empty($arResult["ITEMS"])) : ?>
-    <section class="section-layout <?= $classColorBg ?>">
+    <section class="section-layout <?= $arParams["CLASS_COLOR_BG"] ?>">
         <div class="container">
             <div class="row">
                 <div class="col-12 col-xxl-6 d-flex flex-column gap-6 gap-lg-7">

@@ -3,11 +3,11 @@ const ELEMS_LOAN = {
     payment: '.js-calculator-display-payment',
     fullCost: '.js-calculator-display-full-cost',
     loanType: '.js-select-loan-type',
-    inputLoanCard: '.js-inp-loan-card',
-    inputLoanCardWrapper: '.js-inp-loan-card-wrapper',
     selectLoanProperties: '.js-select-loan-properties',
     selectLoanPropertiesWrapper: '.js-select-loan-properties-wrapper',
     selectLoanPaymentType: '.js-select-loan-payment-type',
+    selectBorrowerType: '.js-select-borrower-type',
+    selectBorrowerTypeWrapper: '.js-select-borrower-type-wrapper',
     tableSchedule: '#payment-loan-table-body',
     loanName: ".js-program-name",
     rate: '.js-calculator-display-rate',
@@ -96,7 +96,7 @@ function calculateMonthlyPayment({amount, rate, period, paymentType}) {
 }
 function showLoanResult(STATE) {
     STATE.elements.loanName.innerHTML = STATE.filteredData.name;
-    STATE.elements.displayRate.textContent = `${formatNumber(STATE.rate)} %`;
+    STATE.elements.displayRate.textContent = `${formatNumber(STATE.rate.toFixed(2))} %`;
     STATE.elements.displayPayment.innerHTML = `${formatNumber(STATE.payment.toFixed(2))} <span class="currency">₽</span>`;
     STATE.elements.displayFullCost.innerHTML = `${STATE.fullCost} %`;
 
@@ -186,27 +186,41 @@ const setLoanValues = (STATE) => {
 
     $(ELEMS_LOAN.selectLoanProperties).on('select2:select', (event) => {
         STATE.loanType = event.target.value;
-        STATE.filteredData = findLoanData({data: STATE.calculatorData, type: STATE.loanType, strategicClient: STATE.strategicClient});
+        STATE.filteredData = findLoanData(STATE);
         checkInputRangeSlider(STATE);
         handlerInputLoan(STATE);
     });
 
-    STATE.elements.inputLoanCard.addEventListener('change', (event) => {
-        STATE.strategicClient = !event.target.checked;
-        STATE.filteredData = findLoanData({data: STATE.calculatorData, type: STATE.loanType, strategicClient: STATE.strategicClient});
+    $(ELEMS_LOAN.selectBorrowerType).on('select2:select', (event) => {
+        STATE.borrowerType = event.target.checked;
+        STATE.filteredData = findLoanData(STATE);
         checkInputRangeSlider(STATE);
         handlerInputLoan(STATE);
-    })
+    });
 }
 
-function findLoanData({data, type, strategicClient}) {
-    strategicClient = strategicClient ? 'Y' : null;
-    const resultType = data.filter(item => item.loanType === type);
-    const result = resultType.find(item => item.strategicClient === strategicClient);
-    if (result !== -1) {
-        return result;
+function findLoanRate(amount, data) {
+    const result =   data.find(item => amount >= item.sumForm && amount <= item.SumTo);
+    return result ? result.rate : data[0].rate;
+}
+
+function findLoanData({calculatorData, loanType, borrowerType, amount}) {
+    // Фильтруем по loanType
+    const resultType = calculatorData.filter(item => item.loanType === loanType);
+
+    // Фильтруем по borrowerType
+    const result = resultType.filter(item => item.borrowerType === borrowerType);
+
+    // Проверяем, есть ли результаты
+    if (result.length > 0) {
+        if (result.length === 1) return result[0];
+        let newResult = result[0];
+        newResult.sumFrom = findMinValue('sumFrom', result);
+        newResult.sumTo = findMaxValue('sumTo', result);
+        newResult.rate = findLoanRate(amount, result);
+        return newResult;
     } else {
-        return resultType[0];
+        return resultType[0]; // Возвращаем первый элемент из resultType, если нет результатов
     }
 }
 
@@ -217,20 +231,24 @@ function setStartValues(STATE) {
 
 const getLoanValues = (STATE) => {
     const loanType = collectSelectOptions(STATE.calculatorData, 'loanType');
+    const borrowerType = collectSelectOptions(STATE.calculatorData, 'borrowerType');
     setSelectOptions('selectLoanProperties', loanType, STATE);
+    setSelectOptions('selectBorrowerType', borrowerType, STATE);
     if (loanType.length <= 1) { // когда одна программа кредита
         const selectProperties = STATE.elements.selectLoanProperties.closest(ELEMS_LOAN.selectLoanPropertiesWrapper);
-        const inputLoanCard = STATE.elements.inputLoanCard.closest(ELEMS_LOAN.inputLoanCardWrapper);
+        const selectBorrower = STATE.elements.selectBorrowerType.closest(ELEMS_LOAN.selectBorrowerTypeWrapper);
         selectProperties.remove();
-        inputLoanCard.remove();
+        selectBorrower.remove();
         STATE.filteredData = STATE.calculatorData[0];
     } else { // несколько программ кредита на Главной стр
-        STATE.filteredData = findLoanData({data: STATE.calculatorData, type: STATE.loanType, strategicClient: STATE.strategicClient});
-        STATE.strategicClient = !STATE.elements.inputLoanCard.checked;
-    }
+        STATE.loanType = STATE.elements.selectLoanProperties.value;
+        STATE.paymentType = STATE.elements.selectLoanPaymentType.value;
+        STATE.borrowerType = STATE.elements.selectBorrowerType.value;
 
-    STATE.loanType = STATE.elements.selectLoanProperties.value;
-    STATE.paymentType = STATE.elements.selectLoanPaymentType.value;
+        STATE.filteredData = findLoanData(STATE);
+
+
+    }
 
     if (!STATE.filteredData) {
         STATE.filteredData = STATE.calculatorData[0];
@@ -241,9 +259,7 @@ const getLoanValues = (STATE) => {
     STATE.minAmount = STATE.filteredData.sumFrom;
     STATE.maxAmount = STATE.filteredData.sumTo;
     STATE.rate = STATE.filteredData.rate;
-    // TODO: переделать, когда будут данные fullCost в апи
-    // STATE.fullCost = STATE.filteredData.fullCost;
-    STATE.fullCost = "16,464 – 20,474";
+    STATE.fullCost = STATE.filteredData.totalCostCreditRange;
 
     setStartValues(STATE);
     STATE.payment = calculateMonthlyPayment(STATE);
@@ -257,9 +273,9 @@ function initElementsLoanCalculator(root) {
     const inputPeriod = root.querySelector(ELEMS_LOAN.inputPeriod);
     const inputPeriodWrapper = inputPeriod.closest(ELEMS_LOAN.inputSlider);
     const inputAmountWrapper = inputAmount.closest(ELEMS_LOAN.inputSlider);
-    const inputLoanCard = root.querySelector(ELEMS_LOAN.inputLoanCard);
     const selectLoanProperties = root.querySelector(ELEMS_LOAN.selectLoanProperties);
     const selectLoanPaymentType = root.querySelector(ELEMS_LOAN.selectLoanPaymentType);
+    const selectBorrowerType = root.querySelector(ELEMS_LOAN.selectBorrowerType);
     const tableSchedule = root.querySelector(ELEMS_LOAN.tableSchedule);
     const loanName = root.querySelector(ELEMS_LOAN.loanName);
 
@@ -270,9 +286,9 @@ function initElementsLoanCalculator(root) {
         displayFullCost,
         inputAmount,
         inputPeriod,
-        inputLoanCard,
         selectLoanProperties,
         selectLoanPaymentType,
+        selectBorrowerType,
         inputPeriodWrapper,
         inputAmountWrapper,
         tableSchedule,

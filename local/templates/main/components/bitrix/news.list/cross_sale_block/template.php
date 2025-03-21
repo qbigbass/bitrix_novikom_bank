@@ -13,7 +13,7 @@
 $this->setFrameMode(true);
 ?>
 
-<section class="section-layout">
+<section class="section-layout <?= $arParams['CLASS_COLOR_BG']?>">
     <div class="container">
         <h3 class="px-lg-6 mb-4 mb-md-6 mb-lg-7"><?= $arParams['HEADER_TEXT'] ?></h3>
         <div class="swiper slider-cards js-slider-cards" data-slides-per-view="mobile-s:1,mobile:1,tablet:2,tablet-album:2,laptop:2,laptop-x:3" data-space-between="mobile-s:8,mobile:8,tablet:16,tablet-album:16,laptop:16,laptop-x:16">
@@ -67,7 +67,9 @@ $this->setFrameMode(true);
                                         <p class="card-product__description m-0"><?= $item['~PREVIEW_TEXT'] ?></p>
                                     <? } ?>
                                 </div>
-                                <img class="card-product__img" src="<?= $item['PREVIEW_PICTURE']['SRC'] ?>" alt="<?= $item['PREVIEW_PICTURE']['ALT'] ?>">
+                                <? if (!empty($item['PREVIEW_PICTURE']['SRC'])) : ?>
+                                    <img class="card-product__img" src="<?= $item['PREVIEW_PICTURE']['SRC'] ?>" alt="<?= $item['PREVIEW_PICTURE']['ALT'] ?>">
+                                <? endif; ?>
                                 <? if (!empty($item['PROPERTIES']['LINK']['VALUE'])): ?>
                                     <? if (empty($item['PROPERTIES']['BTN_TYPE']['VALUE']) || $item['PROPERTIES']['BTN_TYPE']['VALUE'] == 'С фоном'): ?>
                                         <a class="btn btn-primary card-product__button" href="<?= $item['PROPERTIES']['LINK']['VALUE']?>">

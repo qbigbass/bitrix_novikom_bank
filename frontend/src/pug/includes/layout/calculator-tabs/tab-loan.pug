@@ -65,12 +65,13 @@ include ../../../components/ui/input/input-slider
                 +input-slider(input)
 
             .d-flex.flex-column.row-gap-4
-                .form-check.js-inp-loan-card-wrapper
-                    input#inp-loan-card(type="checkbox" value="" checked).form-check-input.js-inp-loan-card
-                    label(for="inp-loan-card").form-check-label
-                        span(tabindex="0" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="hint" data-bs-title="Таким образом дальнейшее развитие различных форм деятельности влечет за собой процесс внедрения и модернизации модели развития. Не следует, однако забывать, что постоянный количественный рост и сфера нашей активности представляет собой интересный эксперимент проверки форм развития. Повседневная практика показывает, что консультация с широким активом влечет за собой процесс внедрения и модернизации форм развития. Значимость этих проблем настолько очевидна, что постоянное информационно-пропагандистское обеспечение нашей деятельности позволяет оценить значение соответствующий условий активизации. Разнообразный и богатый опыт новая модель организационной деятельности позволяет оценить значение соответствующий условий активизации.").link.link-underline Получаю зарплату на&nbsp;карту Новиком
-
                 .d-flex.flex-column.row-gap-4.row-gap-lg-6
+                    .d-flex.flex-column.row-gap-2.js-select-borrower-type-wrapper
+                        label(for="select-loan-borrower").form-label.mb-0
+                            | Тип заемщика
+                        select#select-loan-borrower(aria-label="Подсказка").form-select.js-select.js-select-borrower-type
+                            option(selected value="Зарплатный клиент") Зарплатный клиент
+                            option(value="Стратегический клиент") Стратегический клиент
                     .d-flex.flex-column.row-gap-2.js-select-loan-properties-wrapper
                         label(for="select-loan-properties").form-label.mb-0
                             | Особенности

@@ -11,36 +11,37 @@ const FEEDBACK_ELEMS = {
     inputReplyEmail: 'input[name="REPLY_EMAIL"]',
     fieldsBlock: '#feedback-fields',
     topicText: '.js-topic-text',
+    formCol: '.application-form__col',
 }
 
 function initFormFeedback() {
-    const formFeedback = document.querySelector(FEEDBACK_ELEMS.formFeedback)
+    const formFeedback = document.querySelector(FEEDBACK_ELEMS.formFeedback);
 
-    if (!formFeedback) return
+    if (!formFeedback) return;
 
-    initFormPerson(formFeedback)
-    initFormOtherEmail()
+    initFormPerson(formFeedback);
+    initFormOtherEmail();
 }
 
 function initFormPerson(form) {
-    const personRadios = form.querySelectorAll(FEEDBACK_ELEMS.radiosPerson)
-    const topicRadios = form.querySelectorAll(FEEDBACK_ELEMS.radiosTopic)
-    const colInputBirthday = form.querySelector(FEEDBACK_ELEMS.inputBirthday).closest('.application-form__col')
-    const colInputInn = form.querySelector(FEEDBACK_ELEMS.inputInn).closest('.application-form__col')
-    const colInputOrganization = form.querySelector(FEEDBACK_ELEMS.inputOrganization).closest('.application-form__col')
+    const personRadios = form.querySelectorAll(FEEDBACK_ELEMS.radiosPerson);
+    const topicRadios = form.querySelectorAll(FEEDBACK_ELEMS.radiosTopic);
+    const colInputBirthday = form.querySelector(FEEDBACK_ELEMS.inputBirthday)?.closest(FEEDBACK_ELEMS.formCol);
+    const colInputInn = form.querySelector(FEEDBACK_ELEMS.inputInn)?.closest(FEEDBACK_ELEMS.formCol);
+    const colInputOrganization = form.querySelector(FEEDBACK_ELEMS.inputOrganization)?.closest(FEEDBACK_ELEMS.formCol);
     const formFieldsBlock = form.querySelector(FEEDBACK_ELEMS.fieldsBlock);
     const topicText = form.querySelectorAll(FEEDBACK_ELEMS.topicText);
 
     personRadios.forEach(radio => {
         radio.addEventListener('change', () => {
             if (radio.value === 'legal') {
-                colInputBirthday.hidden = true
-                colInputInn.hidden = false
-                colInputOrganization.hidden = false
+                colInputBirthday.hidden = true;
+                colInputInn.hidden = false;
+                colInputOrganization.hidden = false;
             } else {
-                colInputBirthday.hidden = false
-                colInputInn.hidden = true
-                colInputOrganization.hidden = true
+                colInputBirthday.hidden = false;
+                colInputInn.hidden = true;
+                colInputOrganization.hidden = true;
             }
             if (formFieldsBlock) {
                 formFieldsBlock.classList.remove('d-none');
@@ -64,11 +65,11 @@ function initFormPerson(form) {
 }
 
 function initFormOtherEmail() {
-    const otherEmailRadios = document.querySelectorAll(FEEDBACK_ELEMS.radiosOtherEmail)
+    const otherEmailRadios = document.querySelectorAll(FEEDBACK_ELEMS.radiosOtherEmail);
 
-    if (!otherEmailRadios.length) return
+    if (!otherEmailRadios.length) return;
 
-    const colInputReplyEmail = document.querySelector(FEEDBACK_ELEMS.inputReplyEmail).closest('.application-form__col')
+    const colInputReplyEmail = document.querySelector(FEEDBACK_ELEMS.inputReplyEmail)?.closest(FEEDBACK_ELEMS.formCol);
 
     otherEmailRadios.forEach(radio => {
         radio.addEventListener('change', () => {

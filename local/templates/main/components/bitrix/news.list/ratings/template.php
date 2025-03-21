@@ -1,4 +1,8 @@
-<? if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
+<?
+
+use Dalee\Helpers\IblockHelper;
+
+if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /** @var array $arParams */
 /** @var array $arResult */
 /** @global CMain $APPLICATION */
@@ -10,7 +14,9 @@
 /** @var string $templateFolder */
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
-$this->setFrameMode(true); ?>
+$this->setFrameMode(true);
+$emptySectionIds = IblockHelper::getEmptySections($arParams['IBLOCK_ID'], true);
+?>
 
 <section class="section-layout py-lg-11">
     <div class="container">
@@ -39,6 +45,9 @@ $this->setFrameMode(true); ?>
                         </div>
                         <ul class="swiper-wrapper tabs-panel__list nav nav-tabs d-inline-flex flex-nowrap w-auto p-0 border border-purple rounded">
                             <? foreach ($arResult['SECTIONS'] as $key => $section) {
+                                if (in_array($key, $emptySectionIds)) {
+                                    continue;
+                                }
                                 $isFirst = $key == array_key_first($arResult['SECTIONS']); ?>
 
                                 <li class="swiper-slide w-auto tabs-panel__list-item nav-item z-2">
@@ -76,6 +85,9 @@ $this->setFrameMode(true); ?>
                         </div>
                         <ul class="swiper-wrapper tabs-panel__list nav nav-tabs d-inline-flex flex-nowrap w-auto p-0 border border-purple rounded">
                             <? foreach ($arResult['SECTIONS'] as $key => $section) {
+                                if (in_array($key, $emptySectionIds)) {
+                                    continue;
+                                }
                                 $isFirst = $key == array_key_first($arResult['SECTIONS']); ?>
 
                                 <li class="swiper-slide w-auto tabs-panel__list-item nav-item z-2">
@@ -92,6 +104,9 @@ $this->setFrameMode(true); ?>
                 </div>
                 <div class="tab-content mt-5 mt-lg-7">
                     <? foreach ($arResult['SECTIONS'] as $key => $section) {
+                        if (in_array($key, $emptySectionIds)) {
+                            continue;
+                        }
                         $isFirst = $key == array_key_first($arResult['SECTIONS']); ?>
                         <div class="tab-pane fade show <?= $isFirst ? 'active' : '' ?>" id="<?= $key ?>"
                              aria-labelledby="<?= $key ?>" tabindex="0"

@@ -4,7 +4,7 @@
 use Dalee\Services\ContentPlaceholderManager;
 
 $properties = [
-    'QUOTE' => fn($value) => '
+    'EXCERPT_TEXT' => fn($value) => '
         <div class="polygon-container js-polygon-container quote-polygon-container">
             <div class="polygon-container__content quote-polygon-container__content">
                 <div class="quote bg-blue-10">
@@ -21,7 +21,7 @@ $properties = [
                 </svg>
             </div>
         </div>',
-    'EXCLAMATION' => fn($value) => '
+    'QUOTE_TEXT' => fn($value) => '
         <div class="polygon-container js-polygon-container">
             <div class="polygon-container__content">
                 <div class="helper bg-dark-10">

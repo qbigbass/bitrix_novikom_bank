@@ -1,35 +1,97 @@
 <?php
+
+use Bitrix\Iblock\Component\Tools;
+
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
+
 global $APPLICATION;
+
 $APPLICATION->SetTitle('Контакты банка Новиком');
+$iblockId = iblock('contact_info_ru');
+
+$classCC = \Bitrix\Iblock\Iblock::wakeUp($iblockId)->getEntityDataClass();
+
+$elementsCC = $classCC::getList([
+    "select" => ["ID", "NAME"],
+    "filter" => [
+        "=ACTIVE" => "Y",
+    ],
+    "limit" => 1,
+    'order' => ['SORT' => 'ASC'],
+])->fetchObject();
+
+if ($elementsCC === null) {
+    Tools::process404(showPage: true);
+}
 ?>
-<section class="banner-text bg-linear-blue border-green">
-    <div class="container banner-text__container position-relative z-2">
-        <div class="row ps-lg-6">
-            <div class="col-12 col-xxl-8 position-relative z-1 mb-6 mb-md-0 pt-6">
-                <div class="banner-text__content d-flex flex-column align-items-start gap-3 gap-lg-4">
-                    <?
-                    $APPLICATION->IncludeComponent(
-                        "bitrix:breadcrumb",
-                        "",
-                        [
-                            "PATH" => "",
-                            "SITE_ID" => "s1",
-                            "START_FROM" => 1
-                        ]
-                    );
-                    ?>
-                    <h1 class="banner-text__title dark-0 text-break"><?= $APPLICATION->GetTitle() ?></h1>
-                </div>
-            </div>
-        </div>
-    </div>
-    <picture class="pattern-bg pattern-bg--position-sm-top banner-text__pattern">
-        <source srcset="/frontend/dist/img/patterns/section/pattern-light-s.svg" media="(max-width: 767px)">
-        <source srcset="/frontend/dist/img/patterns/section/pattern-light-m.svg" media="(max-width: 1199px)">
-        <img src="/frontend/dist/img/patterns/section/pattern-light-l.svg" alt="bg pattern" loading="lazy">
-    </picture>
-</section>
+
+<?php $APPLICATION->IncludeComponent(
+    "bitrix:news.detail",
+    "charter_detail",
+    [
+        "DISPLAY_DATE" => "Y",
+        "DISPLAY_NAME" => "Y",
+        "DISPLAY_PICTURE" => "Y",
+        "DISPLAY_PREVIEW_TEXT" => "Y",
+        "IBLOCK_TYPE" => "for_corporate_clients_ru",
+        "IBLOCK_ID" => $iblockId,
+        "FIELD_CODE" => [
+            "NAME",
+            "PREVIEW_TEXT",
+            "DETAIL_PICTURE"
+        ],
+        "PROPERTY_CODE" => [
+            "BENEFITS_TOP",
+            "BENEFITS_PAGE",
+            "BENEFITS_HEADER",
+            "HEADER_TEMPLATE",
+            "HEADER_COLOR_CLASS",
+            "HEADER_LINE_COLOR_CLASS",
+            "BUTTON_DETAIL",
+            "BUTTON_TEXT_DETAIL",
+            "BUTTON_HREF_DETAIL",
+            "BANNER_HEADER",
+            "BANNER_TEXT",
+            "BANNER_IMG",
+        ],
+        "META_KEYWORDS" => "-",
+        "META_DESCRIPTION" => "-",
+        "BROWSER_TITLE" => "-",
+        "SET_CANONICAL_URL" => "N",
+        "SET_LAST_MODIFIED" => "N",
+        "SET_TITLE" => "Y",
+        "MESSAGE_404" => "",
+        "SET_STATUS_404" => "Y",
+        "SHOW_404" => "Y",
+        "FILE_404" => "",
+        "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+        "ADD_SECTIONS_CHAIN" => "N",
+        "ACTIVE_DATE_FORMAT" => "d.m.Y",
+        "CACHE_TYPE" => "A",
+        "CACHE_TIME" => "36000000",
+        "CACHE_GROUPS" => "Y",
+        "USE_PERMISSIONS" => "N",
+        "GROUP_PERMISSIONS" => [],
+        "DISPLAY_TOP_PAGER" => "N",
+        "DISPLAY_BOTTOM_PAGER" => "Y",
+        "PAGER_TITLE" => "Страница",
+        "PAGER_SHOW_ALWAYS" => "N",
+        "PAGER_TEMPLATE" => "",
+        "PAGER_SHOW_ALL" => "Y",
+        "CHECK_DATES" => "Y",
+        "ELEMENT_ID" => $elementsCC->getId(),
+        "IBLOCK_URL" => '/about/',
+        "USE_SHARE" => "N",
+        "SHARE_HIDE" => "",
+        "SHARE_TEMPLATE" => "",
+        "SHARE_HANDLERS" => "",
+        "SHARE_SHORTEN_URL_LOGIN" => "",
+        "SHARE_SHORTEN_URL_KEY" => "",
+        "ADD_ELEMENT_CHAIN" => "N",
+        "STRICT_SECTION_CHECK" => "Y",
+    ]
+);
+?>
 
 <? $APPLICATION->IncludeFile('/local/php_interface/include/block_tabs.php'); ?>
 

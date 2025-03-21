@@ -21,20 +21,20 @@ require_once __DIR__ . '/functions.php';
     ?>
 
     <?= renderStartTags($key); ?>
-    <? $classes = renderClasses($key, $item['DETAIL_PICTURE']); ?>
+    <? $classes = renderClasses($key, $item['DISPLAY_PROPERTIES']['ICON']['FILE_VALUE']['SRC']); ?>
 
-    <? if (!empty($item['DETAIL_PICTURE']['SRC'])) { ?>
+    <? if (!empty($item['DISPLAY_PROPERTIES']['ICON']['FILE_VALUE']['SRC'])) { ?>
         <div class="<?= $classes ?>" id="<?= $this->GetEditAreaId($item['ID']); ?>">
     <? } else { ?>
         <a class="<?= $classes ?>" href="<?= $item['DETAIL_PAGE_URL'] ?>" id="<?= $this->GetEditAreaId($item['ID']); ?>">
     <? } ?>
         <div class="card-product__inner">
-            <? if (!empty($item['DETAIL_PICTURE']['SRC'])) { ?>
+            <? if (!empty($item['DISPLAY_PROPERTIES']['ICON']['FILE_VALUE']['SRC'])) { ?>
                 <div class="card-product__content">
                     <h4 class="card-product__title"><?= $item['~NAME'] ?></h4>
                 </div>
-                    <img class="card-product__img" src="<?= $item['DETAIL_PICTURE']['SRC'] ?>"
-                         alt="<?= $item['DETAIL_PICTURE']['ALT'] ?>">
+                <img class="card-product__img" src="<?= $item['DISPLAY_PROPERTIES']['ICON']['FILE_VALUE']['SRC']; ?>"
+                         alt="<?= $item['NAME'] ?>">
                 <a class="btn btn-link btn-icon m-auto m-lg-0 py-2 py-lg-0" href="<?= $item['DETAIL_PAGE_URL'] ?>">
                     <span>Подробнее</span>
                     <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
@@ -52,14 +52,10 @@ require_once __DIR__ . '/functions.php';
                             <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-right"></use>
                         </svg>
                     </span>
-                    <? if (!empty($item['PREVIEW_PICTURE']['SRC'])) { ?>
-                        <img class="icon size-xxl ms-auto" src="<?= $item['PREVIEW_PICTURE']['SRC'] ?>"
-                             alt="<?= $item['PREVIEW_PICTURE']['ALT'] ?>">
-                    <? } ?>
                 </div>
             <? } ?>
         </div>
-    <? if (!empty($item['DETAIL_PICTURE']['SRC'])) { ?>
+    <? if (!empty($item['DISPLAY_PROPERTIES']['ICON']['FILE_VALUE']['SRC'])) { ?>
         </div>
     <? } else { ?>
         </a>

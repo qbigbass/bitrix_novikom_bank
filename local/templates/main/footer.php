@@ -218,12 +218,24 @@ use Bitrix\Main\Localization\Loc;
             </div>
             <div class="mobile-menu__body js-mobile-menu-body">
                 <div class="d-flex flex-column gap-3 gap-md-4">
-                    <form>
-                        <div class="input-group flex-nowrap js-mobile-search"><span class="input-group-icon" id="input-search-menu"><span class="icon">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                            <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-search"></use>
-                          </svg></span></span>
-                            <input class="form-control" type="text" placeholder="Поиск по сайту" aria-label="Поиск по сайту" aria-describedby="input-search-menu">
+                    <form method="get" action="/search/">
+                        <div class="input-group flex-nowrap js-mobile-search">
+                            <span class="input-group-icon" id="input-search-menu">
+                                <span class="icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-search"></use>
+                                    </svg>
+                                </span>
+                            </span>
+                            <input
+                                class="form-control"
+                                name="q"
+                                type="text"
+                                placeholder="Поиск по сайту"
+                                aria-label="Поиск по сайту"
+                                aria-describedby="input-search-menu"
+                                value="<?= htmlspecialchars($_GET['q'] ?? ''); ?>"
+                            >
                         </div>
                     </form>
                     <div class="mobile-menu__search-content"><span class="dark-70">Популярные запросы:</span>
@@ -237,12 +249,12 @@ use Bitrix\Main\Localization\Loc;
                         "main_mobil_submenu",
                         [
                             "ALLOW_MULTI_SELECT" => "N",
-                            "CHILD_MENU_TYPE" => "left",
+                            "CHILD_MENU_TYPE" => "iblock_sections",
                             "DELAY" => "N",
                             "MAX_LEVEL" => "2",
                             "MENU_CACHE_GET_VARS" => [""],
                             "MENU_CACHE_TIME" => "3600",
-                            "MENU_CACHE_TYPE" => "A",
+                            "MENU_CACHE_TYPE" => "N",
                             "MENU_CACHE_USE_GROUPS" => "Y",
                             "ROOT_MENU_TYPE" => "left",
                             "USE_EXT" => "Y"

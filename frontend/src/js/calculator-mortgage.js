@@ -194,7 +194,8 @@ function setStartAttributesInputMortgage(STATE) {
 
 function showMortgageResult(STATE) {
     STATE.elements.displayName.textContent = STATE.filteredData[0].name;
-    STATE.elements.displayRate.textContent = `${formatNumber(STATE.rate)} %`;
+    STATE.elements.displayFullCost.textContent = STATE.filteredData[0].totalCostCreditRange;
+    STATE.elements.displayRate.textContent = `${formatNumber(STATE.rate.toFixed(2))} %`;
     STATE.elements.displayPayment.innerHTML = `${formatNumber(STATE.payment.toFixed(2))} <span class="currency">₽</span>`;
     STATE.elements.displayIncome.innerHTML = `${formatNumber(STATE.requiredIncome.toFixed(2))} <span class="currency">₽</span>`;
 }
@@ -372,9 +373,11 @@ function handlerProperty(STATE, value) {
 
 function filterAdditionalData(STATE) {
     STATE.filteredData = STATE.filteredData.filter(item => {
-        if (!item.insurance) item.insurance = 'N';
-        if (!item.salaryBankCard) item.salaryBankCard = 'N';
-        return (item.insurance === STATE.insurance) && (item.salaryBankCard === STATE.card);
+        const insuranceMatch = item.insurance === null || item.insurance === STATE.insurance;
+        const salaryMatch = item.salaryBankCard === null || item.salaryBankCard === STATE.card;
+
+        // Возвращаем true, если совпадают условия по хотя бы одному полю
+        return insuranceMatch && salaryMatch;
     });
 }
 
@@ -400,13 +403,13 @@ function handlerMortgageCheckbox(STATE) {
 
 function setMortgageValues(STATE) {
     STATE.elements.inputMortgageCard.addEventListener('change', (event) => {
-        STATE.card = event.target.checked ? 'Y' : 'N';
+        STATE.card = event.target.checked ? 'Да' : 'Нет';
 
         handlerMortgageCheckbox(STATE);
     })
 
     STATE.elements.inputMortgageInsurance.addEventListener('change', (event) => {
-        STATE.insurance = event.target.checked ? 'Y' : 'N';
+        STATE.insurance = event.target.checked ? 'Да' : 'Нет';
 
         handlerMortgageCheckbox(STATE);
     })
@@ -501,15 +504,15 @@ function getMortgageValues(STATE) {
     STATE.filteredData = getMortgagePrograms(STATE.filteredData, STATE);
     STATE.filteredData = getMortgageObjects(STATE.filteredData, STATE);
     STATE.filteredData = getMortgageBorrower(STATE.filteredData, STATE);
-
     setStartAttributesInputMortgage(STATE);
 
-    STATE.insurance = STATE.elements.inputMortgageInsurance.checked ? 'Y' : 'N';
-    STATE.card = STATE.elements.inputMortgageCard.checked ? 'Y' : 'N';
+    STATE.insurance = STATE.elements.inputMortgageInsurance.checked ? 'Да' : 'Нет';
+    STATE.card = STATE.elements.inputMortgageCard.checked ? 'Да' : 'Нет';
     filterAdditionalData(STATE);
 
     STATE.expenseRatio = STATE.elements.root.dataset.expenseRatio;
     STATE.rate = STATE.filteredData[0].rate;
+    STATE.fullCost = STATE.filteredData[0].totalCostCreditRange;
     STATE.period = STATE.elements.inputPeriod.value;
     STATE.amount = STATE.elements.inputAmount.value;
     STATE.payment = calculateMortgage(STATE);

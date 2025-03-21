@@ -32,7 +32,6 @@ $APPLICATION->SetTitle('Награды');
 </section>
 <section class="section-layout py-lg-11">
     <div class="container">
-        <h3 class="mb-5 mb-lg-7"><? $APPLICATION->IncludeFile('/about/awards/header_text.php'); ?></h3>
         <div class="row">
             <div class="col-12">
                 <? $APPLICATION->IncludeComponent(
@@ -63,7 +62,7 @@ $APPLICATION->SetTitle('Награды');
                         "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
                         "INCLUDE_SUBSECTIONS" => "N",
                         "MESSAGE_404" => "",
-                        "NEWS_COUNT" => "20",
+                        "NEWS_COUNT" => "999",
                         "PAGER_BASE_LINK_ENABLE" => "N",
                         "PAGER_DESC_NUMBERING" => "N",
                         "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",

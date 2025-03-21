@@ -6,7 +6,7 @@ use Dalee\Services\ContentPlaceholderManager;
 use Dalee\Helpers\ComponentRenderer\Renderer;
 
 $properties = [
-    'QUOTE' => fn($value) => '
+    'EXCERPT_TEXT' => fn($value) => '
         <div class="px-lg-6">
             <div class="polygon-container js-polygon-container quote-polygon-container">
                 <div class="polygon-container__content quote-polygon-container__content">
@@ -25,7 +25,7 @@ $properties = [
                 </div>
             </div>
         </div>',
-    'EXCLAMATION' => fn($value) => '
+    'QUOTE_TEXT' => fn($value) => '
         <div class="polygon-container js-polygon-container">
             <div class="polygon-container__content">
                 <div class="helper bg-dark-10">
