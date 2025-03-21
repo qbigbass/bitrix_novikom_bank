@@ -1,5 +1,10 @@
 <?php
+
 use Bitrix\Main\Loader;
+
+if (file_exists($_SERVER['DOCUMENT_ROOT'] . '/../vendor/autoload.php')) {
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/../vendor/autoload.php';
+}
 
 //Loader::registerAutoLoadClasses(null, [
 //    'Lib\UserType\CUserTypeStringDescr' => '/local/php_interface/lib/UserType/CUserTypeStringDescr.php',

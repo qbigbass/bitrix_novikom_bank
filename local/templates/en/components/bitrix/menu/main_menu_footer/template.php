@@ -18,8 +18,8 @@
                 <div class="d-flex align-items-center gap-3">
                     <img src="/frontend/dist/img/footer-insurance.png" width="120" height="120" alt="" loading="lazy">
                     <div class="d-flex flex-column row-gap-3">
-                        <span class="text-s fw-semibold dark-70">Генеральная лицензия №&nbsp;2546 от&nbsp;20&nbsp;ноября&nbsp;2014&nbsp;года</span>
-                        <span class="text-s fw-semibold dark-70">©&nbsp;2009&nbsp;–&nbsp;2024 АО&nbsp;АКБ&nbsp;«НОВИКОМБАНК»</span>
+                        <span class="text-s fw-semibold dark-70">General banking license No. 2546 dated November 20, 2014</span>
+                        <span class="text-s fw-semibold dark-70">©&nbsp;2009&nbsp;–&nbsp;<?= date('Y') ?> JSCB "NOVIKOMBANK"</span>
                     </div>
                 </div>
             </div>

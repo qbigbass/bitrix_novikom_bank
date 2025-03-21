@@ -3,7 +3,10 @@
 /** @global CMain $APPLICATION */
 
 global $APPLICATION;
-$elementIds = getElementIdsIncludedArea(iblock('press_center_ru'));
+$iblockId = iblock('press_center_ru');
+$arSelectUf = ["UF_COLOR_BLOCK"];
+$sectionData = getSectionData($iblockId);
+$elementIds = getElementIdsIncludedArea($sectionData, $iblockId);
 ?>
 <? if (!empty($elementIds)) : ?>
     <?
@@ -11,8 +14,9 @@ $elementIds = getElementIdsIncludedArea(iblock('press_center_ru'));
     $newsFilter = [
         "ID" => $elementIds
     ];
+    $blockSectionClass = $sectionData["COLOR_BLOCK"] ?: "bg-blue-10";
     ?>
-    <section class="section-layout <?= $arParams['CLASS_SECTION'] ?>">
+    <section class="section-layout <?= $arParams['CLASS_SECTION'] ?> <?= $blockSectionClass ?>">
         <div class="container">
             <div class="d-flex align-items-end ps-lg-6 mb-6 mb-lg-7">
                 <h3>Новости</h3>

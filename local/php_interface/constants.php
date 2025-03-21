@@ -6,7 +6,7 @@ const RU_STORE_APP_LINK = 'https://apps.rustore.ru/app/com.bssys.novikomretail';
 const RU_MARKET_APP_LINK = 'https://ruplay.market/apps/com.bssys.novikomretail';
 const NASH_STORE_APP_LINK = 'https://store.nashstore.ru/store/65b74fde0a39b29c04ad1f2f';
 const TELEGRAM_LINK = 'https://t.me/novikombank_official';
-const ENGLISH_VERSION_LINK = 'en/';
+const ENGLISH_VERSION_LINK = '/en/';
 const RUSSIAN_VERSION_LINK = '/';
 /** @var array Инфоблоки для постороения меню (шаблон corporate_submenu_header) */
 const MENU_IBLOCKS = [

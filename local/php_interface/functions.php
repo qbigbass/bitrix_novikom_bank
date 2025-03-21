@@ -1,10 +1,10 @@
 <?php
 
 use Bitrix\Iblock\ElementTable;
-use Bitrix\Iblock\SectionTable;
 use Bitrix\Main\Application;
 use Bitrix\Main\Loader;
 use Bitrix\Main\LoaderException;
+use Bitrix\Iblock\Model\Section;
 
 function iblock(string $code): int
 {
@@ -172,7 +172,7 @@ function showNavChain(string $template = '.default', int $depth = 0, array $para
 
 function getHlBlockEntries(string $hlBlockName): array
 {
-    \Bitrix\Main\Loader::includeModule("highloadblock");
+    Loader::includeModule("highloadblock");
     Bitrix\Highloadblock\HighloadBlockTable::compileEntity($hlBlockName);
     $strEntityDataClass = '\\' . $hlBlockName . 'Table';
 
@@ -190,8 +190,8 @@ function getIBlockElements(int $IBlockId, ?array $filter = null): array
         $arFilter = array_merge($arFilter, $filter);
     }
 
-    \Bitrix\Main\Loader::IncludeModule('iblock');
-    return Bitrix\Iblock\ElementTable::getList([
+    Loader::IncludeModule('iblock');
+    return ElementTable::getList([
         'order' => ['SORT' => 'ASC'],
         'select' => ['ID', 'NAME', 'CODE'],
         'filter' => $arFilter
@@ -219,13 +219,9 @@ function getStepperIcons(int $stepIndex): string
     return $stepperIcons;
 }
 
-function getElementIdsIncludedArea(int $iblock): array
+function getElementIdsIncludedArea(array $sectionData, int $iblock): array
 {
-    global $APPLICATION;
     $elementIds = [];
-    $arPathPage = array_filter(explode("/", $APPLICATION->GetCurPage()));
-    $startPathUrl = current($arPathPage) ?: 'main';
-    $finalPathUrl = end($arPathPage) ?: 'main';
     $arFilter = [
         'IBLOCK_ID' => $iblock,
         'ACTIVE' => 'Y'
@@ -245,31 +241,11 @@ function getElementIdsIncludedArea(int $iblock): array
         ];
     }
 
-    $parentSectionId = 0;
-
-    if (!empty($startPathUrl)) {
-        // Найдем ID родительского раздела
-        $section = SectionTable::getList([
-            'filter' => [
-                'CODE' => $startPathUrl,
-                'IBLOCK_ID' => $iblock,
-                'ACTIVE' => 'Y',
-            ],
-            'select' => [
-                'ID'
-            ],
-            'order' => [
-                'SORT' => 'ASC',
-            ],
-            'limit' => 1
-        ])->fetchObject();
-
-        if ($section) {
-            $parentSectionId = $section->getId();
-        }
+    if (!empty($sectionData['START_PATH_URL'])) {
+        $parentSectionId = $sectionData['PARENT_SECTION_ID'];
 
         if ($parentSectionId > 0) {
-            if ($startPathUrl !== $finalPathUrl) {
+            if ($sectionData['START_PATH_URL'] !== $sectionData['FINAL_PATH_URL']) {
                 // Найдем ID конечного раздела из URL в ИБ включаемой области
                 $rsParentSection = CIBlockSection::GetByID($parentSectionId);
                 $finalSectionId = 0;
@@ -287,7 +263,7 @@ function getElementIdsIncludedArea(int $iblock): array
                     );
 
                     while ($arSect = $rsSect->GetNext()) {
-                        if ($arSect["CODE"] === $finalPathUrl) {
+                        if ($arSect["CODE"] === $sectionData['FINAL_PATH_URL']) {
                             $finalSectionId = $arSect["ID"];
                             break;
                         }
@@ -327,4 +303,44 @@ function getIblockIdsClearMenu(): array
     $iblockMortgage= iblock("mortgage"); // Ипотека
 
     return [$iblockDeposits, $iblockLoans, $iblockMortgage];
+}
+
+function getSectionData(int $iblock, array $selectUf = []): array
+{
+    $arSectionData = [];
+    global $APPLICATION;
+    $arPathPage = array_filter(explode("/", $APPLICATION->GetCurPage()));
+    $startPathUrl = current($arPathPage) ?: 'main';
+    $finalPathUrl = end($arPathPage) ?: 'main';
+
+    $entity = Section::compileEntityByIblock($iblock);
+    $arSelect = array_merge(["ID", "NAME", "CODE"], $selectUf);
+
+    $section = $entity::getList([
+        "select" => $arSelect,
+        "filter" => [
+            "CODE" => $startPathUrl,
+            "ACTIVE" => "Y"
+        ],
+        "order" => ["SORT" => "ASC"],
+        "limit" => 1
+    ])->fetchObject();
+
+    if (!empty($section)) {
+        $arSectionData["PARENT_SECTION_ID"] = $section->getId();
+        $arSectionData["START_PATH_URL"] = $startPathUrl;
+        $arSectionData["FINAL_PATH_URL"] = $finalPathUrl;
+
+        if (in_array("UF_COLOR_BLOCK", $selectUf, true) && !empty($section->getUfColorBlock())) {
+            $colorId = $section->getUfColorBlock();
+            $rsEnum = CUserFieldEnum::GetList([], ["ID" => $colorId]);
+            $arEnum = $rsEnum->GetNext();
+
+            if (!empty($arEnum)) {
+                $arSectionData["COLOR_BLOCK"] = $arEnum["XML_ID"];
+            }
+        }
+    }
+
+    return $arSectionData;
 }
