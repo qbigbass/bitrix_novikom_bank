@@ -7,14 +7,13 @@ $(document).ready(function () {
     }
 
     input.on('input', function () {
-        filter($(this).val());
+        filter($(this).val().trim());
     });
 
     form.on('submit', function (e) {
         e.preventDefault();
         let str = input.val().trim();
         let action = $(this).attr('action');
-
         window.location.href = action + (str ? '?q=' + str : '') + "#links";
     });
 });
