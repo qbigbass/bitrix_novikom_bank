@@ -192,6 +192,26 @@ class OfficesMap {
             hasHint: false,
         });
 
+        // Обработчик события клика на кластер
+        this.clusterer.events.add('click', (e) => {
+            const target = e.get('target');
+            if (!target) return;
+            // Получаем массив объектов в кластере
+            const clusterObjects = target.getGeoObjects();
+            const getCoordinates = clusterObjects.map(item => item.geometry.getCoordinates());
+            const uniqueCoordinates = getCoordinates.filter((array, index, self) =>
+                index === self.findIndex((a) => JSON.stringify(a) === JSON.stringify(array))
+            );
+            let officeList = [];
+
+            uniqueCoordinates.forEach(coords => {
+                const filteredList = this.offices.filter(item => item.coords[0] === coords[0] && item.coords[1] === coords[1]);
+                filteredList.forEach(item => officeList.push(item));
+            })
+
+            this.renderOfficesList(officeList);
+        });
+
 
         // Обработчик события изменения уровня зума
         this.myMap.events.add('boundschange', (event) => {
@@ -417,17 +437,18 @@ class OfficesMap {
                     this.myMap.setZoom(12);
                 }
 
-                console.log('this.myMap', this.myMap);
                 this.myMap.minZoom = 9;
                 this.myMap.maxZoom = 12;
             });
         }
     }
 
-    renderOfficesList() {
-        $('#offices-list').empty()
+    renderOfficesList(data) {
+        $('#offices-list').empty();
 
-        this.filteredOffices.forEach(item => {
+        if (!data) data = this.filteredOffices;
+
+        data.forEach(item => {
             $('#offices-list').append(`
                 <a class="card-office d-flex col-gap-2 align-items-center" href="${item.url}" id="office-item-${item.id}">
                     <div class="card-office__body d-flex flex-grow-1 flex-column row-gap-2 row-gap-md-3">
