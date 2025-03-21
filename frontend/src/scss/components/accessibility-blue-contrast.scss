@@ -16,12 +16,8 @@
     --purple-10: #339ffd;
 
     //Главная страница
-
-
-
     background-color: var(--blue-contrast-bg);
     color: var(--blue-contrast-light);
-
 
     .d-inline-flex.flex-column.row-gap-2.w-min-content span {
       color: var(--blue-contrast-white);
@@ -161,11 +157,6 @@
       }
     }
 
-
-
-
-
-
     .header-contact-link__text {
       color: var(--blue-contrast-white);
     }
@@ -285,9 +276,6 @@
       }
     }
 
-
-
-
     .dropdown-menu {
       --bs-dropdown-link-color: var(--blue-contrast-white);
       --bs-dropdown-bg: var(--blue-contrast-bg-dark);
@@ -296,11 +284,9 @@
 
     .dropdown-nav {
       background-color: var(--blue-contrast-bg-dark);
-
     }
 
     .dropdown-item {
-
       &:hover,
       &:focus {
         background-color: var(--blue-contrast-bg-dark);
@@ -359,9 +345,6 @@
       border-left: 1px solid var(--blue-contrast-white);
     }
 
-
-
-
     .dropdown {
       .icon.size-m.dropdown-toggle.violet-100.js-dropdown-link svg {
 
@@ -418,8 +401,6 @@
       }
     }
 
-
-
     .section-layout .container h3.ps-lg-6.mb-6.mb-lg-7 {
       color: var(--blue-contrast-white);
     }
@@ -444,9 +425,6 @@
       background-color: var(--blue-contrast-light-100);
       color: var(--blue-contrast-white);
     }
-
-
-
 
     .card-product {
       border-radius: 5px;
@@ -539,8 +517,6 @@
       }
     }
 
-
-
     a.card-service {
       color: var(--blue-contrast-bg-dark);
       border-radius: 8px;
@@ -551,7 +527,6 @@
         background: none;
       }
     }
-
 
     //кнопки rustore nashstore
     .d-flex.gap-3 {
@@ -569,8 +544,6 @@
         }
       }
     }
-
-
 
     //направить сообщение кнопка
     .d-flex.flex-column.align-items-start.gap-5.gap-md-6.ps-lg-6 {
@@ -595,14 +568,11 @@
       p.text-s.dark-70.mb-0 {
         color: var(--blue-contrast-white);
       }
-
     }
 
     .section-layout.section-feedback.bg-blue-10 {
       background-color: var(--blue-contrast-medium);
     }
-
-
 
     .form-control.form-control-lg-lg.js-mask-phone:focus {
       border-color: var(--blue-contrast-white);
@@ -640,9 +610,6 @@
       color: var(--blue-contrast-bg-dark)
     }
 
-
-
-
     //кнопки  кешбэк бонусы и акции
     .btn.btn-link.btn-lg-lg.text-info.btn-icon {
       padding: 5px 12px;
@@ -659,7 +626,6 @@
       &:hover,
       &:focus {
         background-color: var(--blue-contrast-bg);
-        ;
         color: var(--blue-contrast-white);
 
         .icon.size-m {
@@ -681,9 +647,6 @@
       color: var(--blue-contrast-bg-dark)
     }
 
-
-
-
     //кнопки  кешбэк бонусы и акции
     .btn.btn-link.btn-lg-lg.text-info.btn-icon {
       padding: 5px 12px;
@@ -700,7 +663,6 @@
       &:hover,
       &:focus {
         background-color: var(--blue-contrast-bg);
-        ;
         color: var(--blue-contrast-white);
 
         .icon.size-m {
@@ -740,8 +702,6 @@
       color: var(--blue-contrast-white);
     }
 
-
-
     .input-slider-text__input.h4.js-input-slider-text-input:focus {
       border: 1px solid var(--blue-contrast-white);
     }
@@ -759,10 +719,6 @@
         outline-offset: 2px;
       }
     }
-
-
-
-
 
     .section-layout {
       background-color: var(--blue-contrast-bg);
@@ -785,11 +741,9 @@
       }
     }
 
-
     .card-about-bank__description {
       border-top: 1px dashed var(--blue-contrast-white);
     }
-
 
     .nav-tabs {
       border: none;
@@ -807,14 +761,6 @@
       }
     }
 
-
-
-
-
-
-
-
-
     .polygon-container.js-polygon-container {
       width: fit-content;
       min-width: 310px;
@@ -823,7 +769,6 @@
     .tab-content {
       color: var(--blue-contrast-white);
     }
-
 
     #loan-consumer label,
     #loan-consumer span,
@@ -870,11 +815,9 @@
       }
     }
 
-
     .dark-70 {
       color: var(--blue-contrast-white);
     }
-
 
     .select2-container--default .select2-results__option--highlighted.select2-results__option--selectable{
       color: var(--blue-contrast-white) !important;
@@ -921,9 +864,6 @@
       color: var(--blue-contrast-white);
     }
 
-
-
-
     .card-calculate-result {
       background: var(--blue-contrast-light);
 
@@ -960,11 +900,6 @@
       }
     }
 
-
-
-
-
-
     button .btn.btn-info.w-100.w-lg-auto {
       background-color: green;
       color: var(--black-contrast-gray-200);
@@ -984,7 +919,6 @@
       }
     }
 
-
     .card-about-bank__cold-flex.flex-column img {
       filter: invert(1) brightness(0) !important;
     }
@@ -993,11 +927,6 @@
       border: 1px solid var(--blue-contrast-white);
       background: var(--blue-contrast-bg-dark);
     }
-
-
-
-
-
 
     button .btn.btn-info.w-100.w-lg-auto {
       background-color: green;
@@ -1011,7 +940,6 @@
         color: var(--black-contrast-black-300);
       }
     }
-
 
     .card-about-bank__cold-flex.flex-column img {
       filter: invert(1) brightness(0) !important;
@@ -1029,7 +957,6 @@
     .card-about-bank__col.d-flex.flex-column {
       background: var(--blue-contrast-bg-dark);
     }
-
 
     #linkToList {
       color: var(--blue-contrast-light-1);
@@ -1049,13 +976,6 @@
       }
     }
 
-
-
-
-
-
-
-
     .violet-100.fw-semibold.text-number-m.fw-bold {
       color: var(--blue-contrast-white);
     }
@@ -1066,8 +986,6 @@
 
     .section-currency-exchange__wrapper.collapse {
       background-color: var(--blue-contrast-bg-dark);
-
-
     }
 
     //предварительный расчет
@@ -1086,8 +1004,6 @@
       color: var(--blue-contrast-bg-dark);
     }
 
-
-
     .form-control.form-control-lg {
       border-color: var(--blue-contrast-bg-dark);
     }
@@ -1102,18 +1018,9 @@
       color: var(--blue-contrast-bg-dark);
     }
 
-
-
     .purple-70 {
       color: red;
     }
-
-
-
-
-
-
-
 
     //офисы и банкоматы
     .btn.btn-link.d-inline-flex.gap-2.align-items-center {
@@ -1133,7 +1040,6 @@
       }
     }
 
-
     //офисы и банкоматы
     .btn.btn-link.d-inline-flex.gap-2.align-items-center {
       background: transparent;
@@ -1145,7 +1051,6 @@
         color: var(--blue-contrast-light-1);
       }
     }
-
 
     .col-12.col-md-6.col-xl-3.d-flex.flex-column.row-gap-3 {
       width: auto;
@@ -1230,8 +1135,6 @@
       }
     }
 
-
-
     //rustore  rumarket  nashstore
     .btn-app.btn.d-inline-flex.justify-content-center.align-items-center.bg-white {
       border: 2px solid var(--blue-contrast-medium);
@@ -1246,7 +1149,6 @@
         outline-offset: 2px;
       }
     }
-
 
     //скачать
     .btn-app.btn.btn-primary.d-flex.align-items-center.gap-2.gap-lg-3.justify-content-center {
@@ -1265,8 +1167,6 @@
         outline-offset: 2px;
       }
     }
-
-
 
     .footer__info {
       background-color: var(--blue-contrast-medium);
@@ -1304,7 +1204,6 @@
       }
     }
 
-
     .row.row-gap-7 {
       .text-s.dark-70 {
         color: var(--blue-contrast-white);
@@ -1323,7 +1222,6 @@
       border: none;
       border-radius: 0;
     }
-
 
     .chat-bot__btn-close.js-chatbot-close svg {
       color: var(--blue-contrast-light-1);
@@ -1358,9 +1256,6 @@
       }
     }
 
-
-
-
     //404/503 pages
     .d-flex.flex-column.flex-xl-row.column-gap-xl-6 img {
       display: none;
@@ -1375,7 +1270,6 @@
         background-color: var(--blue-contrast-light);
         color: var(--blue-contrast-bg-dark);
 
-
         &:hover,
         &:focus {
           background-color: var(--blue-contrast-white);
@@ -1389,13 +1283,10 @@
       }
     }
 
-
     //atms.html
-
     .map-content__header.d-flex.flex-column.row-gap-4.row-gap-md-6 {
       background-color: var(--blue-contrast-bg);
     }
-
 
     .d-flex.flex-column.row-gap-3 {
       h4 {
@@ -1419,10 +1310,8 @@
         color: var(--blue-contrast-bg-dark);
       }
 
-
       &:hover,
       &:focus {
-
         background-color: var(--blue-contrast-light);
 
         .card-office__body.d-flex.flex-grow-1.flex-column.row-gap-2.row-gap-md-3 {
@@ -1431,7 +1320,6 @@
           .card-office__address.text-s.m-0.dark-70 {
             color: var(--blue-contrast-bg-dark);
           }
-
         }
       }
 
@@ -1446,9 +1334,6 @@
     .card-tariff.d-flex.flex-column.gap-5.bg-blue-10 {
       background-color: var(--blue-contrast-bg-dark);
     }
-
-
-
 
     .modal {
       &-header {
@@ -1492,7 +1377,6 @@
         outline: 2px solid Highlight;
         outline-offset: 2px;
       }
-
     }
 
     .d-flex.flex-column.row-gap-6 {
@@ -1504,8 +1388,6 @@
     }
 
     //AWARDS page
-
-
     .bg-linear-blue {
       background: none;
       background-color: var(--blue-contrast-bg);
@@ -1531,11 +1413,7 @@
         color: var(--blue-contrast-white);
         text-decoration: underline;
       }
-
     }
-
-
-
 
     .breadcrumbs__item.d-md-inline-flex.align-items-center.gap-2.text-s.text-white-50.d-none::after {
       color: var(--blue-contrast-light);
@@ -1544,8 +1422,6 @@
     .section-layout.py-lg-11 {
       background-color: var(--blue-contrast-bg);
     }
-
-
 
     .card-award {
       background-color: var(--blue-contrast-bg);
@@ -1610,8 +1486,6 @@
       display: none;
     }
 
-
-
     .banner-product {
       &__wrapper {
         background-color: var(--blue-contrast-bg);
@@ -1625,9 +1499,6 @@
         color: var(--blue-contrast-white);
       }
     }
-
-
-
 
     .banner-product.banner-product--heavy-purple.banner-product--border-orange {
       background-color: var(--blue-contrast-bg);
@@ -1669,8 +1540,6 @@
       display: none;
     }
 
-
-
     .benefit__description.w-100.text-m span {
       color: var(--blue-contrast-bg-dark);
     }
@@ -1678,45 +1547,40 @@
     //карточки
     .row.row-gap-6.row-gap-md-7.px-lg-6{
       .col-12.col-md-6{
-    .benefit.d-flex.gap-3.flex-column {
-      background-color: var(--blue-contrast-light-1);
-      padding: 15px 10px;
-      border-radius: 8px;
-      text-align: center;
-      color: var(--blue-contrast-bg-dark);
-      align-items: center;
-      border:1px solid var(--blue-contrast-bg-dark);
-      height: 100%;
-      &:hover , &:focus {
-background-color: var(--blue-contrast-white);
-      }
-      .icon.size-xl {
-        filter: brightness(0) contrast(100%);
-      }
-    }}}
-
-
-
+        .benefit.d-flex.gap-3.flex-column {
+          background-color: var(--blue-contrast-light-1);
+          padding: 15px 10px;
+          border-radius: 8px;
+          text-align: center;
+          color: var(--blue-contrast-bg-dark);
+          align-items: center;
+          border:1px solid var(--blue-contrast-bg-dark);
+          height: 100%;
+          &:hover , &:focus {
+            background-color: var(--blue-contrast-white);
+          }
+          .icon.size-xl {
+            filter: brightness(0) contrast(100%);
+          }
+        }}}
 
     .banner-product__footer.row.gx-md-2.gx-lg-2_5.row-gap-4.row-gap-lg-6.mt-6.mt-lg-16.mt-xl-26{
       .col-12.col-md-6.col-xl-3{
 
         .benefit.d-flex.gap-3.flex-column{
           background-color: var(--blue-contrast-light-1);
-      padding: 15px 10px;
-      border-radius: 8px;
-      text-align: center;
-      color: var(--blue-contrast-bg-dark);
-      align-items: center;
-      border:1px solid var(--blue-contrast-bg-dark);
-      height: 100%;
+          padding: 15px 10px;
+          border-radius: 8px;
+          text-align: center;
+          color: var(--blue-contrast-bg-dark);
+          align-items: center;
+          border:1px solid var(--blue-contrast-bg-dark);
+          height: 100%;
         }
       }
     }
 
-
-
-//карточки
+    //карточки
     .row.px-lg-6.row-gap-6.row-gap-lg-7.mt-4.mt-md-6.mt-lg-7{
       .col-12.col-lg-4{
         .benefit.d-flex.gap-3.flex-column.pe-xxl-11{
@@ -1729,7 +1593,7 @@ background-color: var(--blue-contrast-white);
           border:1px solid var(--blue-contrast-bg-dark);
           height: 100%;
           &:hover , &:focus {
-    background-color: var(--blue-contrast-white);
+            background-color: var(--blue-contrast-white);
           }
           .icon.size-xl {
             filter: brightness(0) contrast(100%);
@@ -1738,25 +1602,25 @@ background-color: var(--blue-contrast-white);
       }
     }
 
-//карточки
+    //карточки
     .collapse.d-md-block{
       .row.px-lg-6.row-gap-6.row-gap-lg-7.mt-4.mt-md-6.mt-lg-7{
         .col-12.col-lg-6{
           .benefit.d-flex.gap-3.flex-column.pe-xxl-11{
             background-color: var(--blue-contrast-light-1);
-          padding: 15px 0 !important;
-          border-radius: 8px;
-          text-align: center;
-          color: var(--blue-contrast-bg-dark);
-          align-items: center;
-          border:1px solid var(--blue-contrast-bg-dark);
-          height: 100%;
-          &:hover , &:focus {
-    background-color: var(--blue-contrast-white);
-          }
-          .icon.size-xl {
-            filter: brightness(0) contrast(100%);
-          }
+            padding: 15px 0 !important;
+            border-radius: 8px;
+            text-align: center;
+            color: var(--blue-contrast-bg-dark);
+            align-items: center;
+            border:1px solid var(--blue-contrast-bg-dark);
+            height: 100%;
+            &:hover , &:focus {
+              background-color: var(--blue-contrast-white);
+            }
+            .icon.size-xl {
+              filter: brightness(0) contrast(100%);
+            }
           }
         }
       }
@@ -1775,16 +1639,16 @@ background-color: var(--blue-contrast-white);
             height: 100%;
             width: 100%;
             display: grid !important;
-    place-items: center;
-    text-align: center;
+            place-items: center;
+            text-align: center;
             .d-flex.flex-column.gap-2.align-items-start{
               .text-l,.link{
                 color: var(--blue-contrast-bg-dark);
               }
             }
             &:hover , &:focus {
-      background-color: var(--blue-contrast-white);
-      color: var(--blue-contrast-bg-dark);
+              background-color: var(--blue-contrast-white);
+              color: var(--blue-contrast-bg-dark);
             }
             .icon.size-xl {
               filter: brightness(0) contrast(100%);
@@ -1793,12 +1657,6 @@ background-color: var(--blue-contrast-white);
         }
       }
     }
-
-
-
-
-
-
 
     .row.row-gap-6.gx-xl-6{
       .col-12.col-md-6{
@@ -1818,10 +1676,7 @@ background-color: var(--blue-contrast-white);
       }
     }
 
-
-
-
-//карточки
+    //карточки
     .collapse.d-md-block.mt-4.mt-md-6.mt-lg-7{
       .row.px-lg-6.row-gap-6.row-gap-lg-7{
         .col-12.col-md-6{
@@ -1836,16 +1691,16 @@ background-color: var(--blue-contrast-white);
             height: 100%;
             width: 100%;
             display: grid !important;
-    place-items: center;
-    text-align: center;
+            place-items: center;
+            text-align: center;
             .d-flex.flex-column.gap-2.align-items-start{
               .text-l,.link{
                 color: var(--blue-contrast-bg-dark);
               }
             }
             &:hover , &:focus {
-      background-color: var(--blue-contrast-white);
-      color: var(--blue-contrast-bg-dark);
+              background-color: var(--blue-contrast-white);
+              color: var(--blue-contrast-bg-dark);
             }
             .icon.size-xl {
               filter: brightness(0) contrast(100%);
@@ -1866,20 +1721,19 @@ background-color: var(--blue-contrast-white);
       }
     }
 
-
     //карточки
     .container{
-    .row.row-gap-6.gx-xl-6{
-      .col-12.col-md-6.col-lg-4{
-        .benefit.d-flex.gap-3.flex-column{
-          background-color: var(--blue-contrast-light-1);
-          padding: 15px 10px !important;
-          border-radius: 8px;
-          text-align: center;
-          color: var(--blue-contrast-bg-dark);
-          align-items: center;
-          border:1px solid var(--blue-contrast-bg-dark);
-          height: 100%;
+      .row.row-gap-6.gx-xl-6{
+        .col-12.col-md-6.col-lg-4{
+          .benefit.d-flex.gap-3.flex-column{
+            background-color: var(--blue-contrast-light-1);
+            padding: 15px 10px !important;
+            border-radius: 8px;
+            text-align: center;
+            color: var(--blue-contrast-bg-dark);
+            align-items: center;
+            border:1px solid var(--blue-contrast-bg-dark);
+            height: 100%;
             width: 100%;
 
             .icon.size-xl {
@@ -1889,77 +1743,16 @@ background-color: var(--blue-contrast-white);
             &:hover , &:focus {
               background-color: var(--blue-contrast-white);
               color: var(--blue-contrast-bg-dark);
-                    }
-        }
-      }
-    }
-  }
-//карточки
-  .collapse.d-md-block.mt-6.mt-lg-7{
-    .row.row-gap-6.gx-xl-6.px-lg-6{
-      .col-12.col-lg-6{
-        .d-flex.flex-column.flex-md-row.flex-lg-column.gap-2.gap-md-4.gap-lg-3.align-items-start.align-items-md-center.align-items-lg-start.pe-xxl-11{
-          background-color: var(--blue-contrast-light-1);
-          padding: 15px 10px !important;
-          border-radius: 8px;
-          text-align: center;
-          align-items:center !important;
-          border:1px solid var(--blue-contrast-bg-dark);
-          height: 100%;
-            .icon.size-xl {
-              filter: brightness(0) contrast(100%);
             }
-            .d-flex.flex-column.gap-2.align-items-start{
-              width: 100%;
-              align-items:center !important;
-              h4,.text-l{
-                color: var(--blue-contrast-bg-dark);
-            }
-              }
+          }
         }
       }
     }
-  }
-//карточки
-  .benefit.d-flex.gap-3.flex-column.flex-md-row.align-items-md-center.gap-md-4.gap-lg-6{
-    display: flex;
-    justify-content: center;
-        background-color: var(--blue-contrast-light-1);
-        padding: 15px 10px !important;
-        border-radius: 8px;
-        text-align: center;
-        align-items:center !important;
-        border:1px solid var(--blue-contrast-bg-dark);
-        height: 100%;
-        .icon.size-xl {
-          filter: brightness(0) contrast(100%);
-        }
-  }
-
-//карточки
-  .row.row-gap-6.gx-xl-6.px-lg-6{
-    .col-12.col-md-6{
-      .benefit.d-flex.gap-3.flex-column{
-        background-color: var(--blue-contrast-light-1);
-        padding: 15px 10px !important;
-        border-radius: 8px;
-        text-align: center;
-        align-items:center !important;
-        border:1px solid var(--blue-contrast-bg-dark);
-        height: 100%;
-      }
-
-    }
-  }
-
-
-
-//карточки
-  .section-layout{
-    .container{
-      .row.row-gap-6.px-lg-6{
-        .col-12.col-md-6{
-          .benefit.d-flex.gap-3.flex-column{
+    //карточки
+    .collapse.d-md-block.mt-6.mt-lg-7{
+      .row.row-gap-6.gx-xl-6.px-lg-6{
+        .col-12.col-lg-6{
+          .d-flex.flex-column.flex-md-row.flex-lg-column.gap-2.gap-md-4.gap-lg-3.align-items-start.align-items-md-center.align-items-lg-start.pe-xxl-11{
             background-color: var(--blue-contrast-light-1);
             padding: 15px 10px !important;
             border-radius: 8px;
@@ -1970,14 +1763,21 @@ background-color: var(--blue-contrast-white);
             .icon.size-xl {
               filter: brightness(0) contrast(100%);
             }
+            .d-flex.flex-column.gap-2.align-items-start{
+              width: 100%;
+              align-items:center !important;
+              h4,.text-l{
+                color: var(--blue-contrast-bg-dark);
+              }
+            }
           }
         }
       }
     }
-  }
-//карточки
-  .col-12.col-md-6.col-xl-4{
-    .benefit.d-flex.gap-3.flex-column.dark-0{
+    //карточки
+    .benefit.d-flex.gap-3.flex-column.flex-md-row.align-items-md-center.gap-md-4.gap-lg-6{
+      display: flex;
+      justify-content: center;
       background-color: var(--blue-contrast-light-1);
       padding: 15px 10px !important;
       border-radius: 8px;
@@ -1989,26 +1789,46 @@ background-color: var(--blue-contrast-white);
         filter: brightness(0) contrast(100%);
       }
     }
-  }
 
-  .card-tariff.d-flex.flex-column.gap-4.bg-dark-10.w-100{
-    background-color: var(--blue-contrast-bg-dark);
-  }
+    //карточки
+    .row.row-gap-6.gx-xl-6.px-lg-6{
+      .col-12.col-md-6{
+        .benefit.d-flex.gap-3.flex-column{
+          background-color: var(--blue-contrast-light-1);
+          padding: 15px 10px !important;
+          border-radius: 8px;
+          text-align: center;
+          align-items:center !important;
+          border:1px solid var(--blue-contrast-bg-dark);
+          height: 100%;
+        }
+      }
+    }
 
-  .card-tariff.d-flex.flex-column.gap-4.bg-dark-10 ,.card-tariff.d-flex.flex-column.gap-4.bg-purple-10,.card-tariff.d-flex.flex-column.gap-4.bg-blue-10{
-    background-color: var(--blue-contrast-bg-dark);
-    border-radius:25px;
-  }
-
-
-
-
-
-
-  //карточки
-  .row.row-gap-6{
-    .col-12.col-md-6{
-      .benefit.d-flex.gap-3.flex-column{
+    //карточки
+    .section-layout{
+      .container{
+        .row.row-gap-6.px-lg-6{
+          .col-12.col-md-6{
+            .benefit.d-flex.gap-3.flex-column{
+              background-color: var(--blue-contrast-light-1);
+              padding: 15px 10px !important;
+              border-radius: 8px;
+              text-align: center;
+              align-items:center !important;
+              border:1px solid var(--blue-contrast-bg-dark);
+              height: 100%;
+              .icon.size-xl {
+                filter: brightness(0) contrast(100%);
+              }
+            }
+          }
+        }
+      }
+    }
+    //карточки
+    .col-12.col-md-6.col-xl-4{
+      .benefit.d-flex.gap-3.flex-column.dark-0{
         background-color: var(--blue-contrast-light-1);
         padding: 15px 10px !important;
         border-radius: 8px;
@@ -2021,36 +1841,54 @@ background-color: var(--blue-contrast-white);
         }
       }
     }
-  }
 
+    .card-tariff.d-flex.flex-column.gap-4.bg-dark-10.w-100{
+      background-color: var(--blue-contrast-bg-dark);
+    }
 
-  .banner-product__footer.row.gx-md-2.gx-lg-2_5.row-gap-4.row-gap-lg-6.mt-6.mt-lg-16.mt-xl-26{
-    .col-12.col-md-6.col-xl-4{
-      .benefit.d-flex.gap-3.flex-column{
-        background-color: var(--blue-contrast-light-1);
-        padding: 15px 10px !important;
-        border-radius: 8px;
-        text-align: center;
-        align-items:center !important;
-        border:1px solid var(--blue-contrast-bg-dark);
-        height: 100%;
-        .icon.size-xxl {
-          filter: brightness(0) contrast(100%);
+    .card-tariff.d-flex.flex-column.gap-4.bg-dark-10 ,.card-tariff.d-flex.flex-column.gap-4.bg-purple-10,.card-tariff.d-flex.flex-column.gap-4.bg-blue-10{
+      background-color: var(--blue-contrast-bg-dark);
+      border-radius:25px;
+    }
+
+    //карточки
+    .row.row-gap-6{
+      .col-12.col-md-6{
+        .benefit.d-flex.gap-3.flex-column{
+          background-color: var(--blue-contrast-light-1);
+          padding: 15px 10px !important;
+          border-radius: 8px;
+          text-align: center;
+          align-items:center !important;
+          border:1px solid var(--blue-contrast-bg-dark);
+          height: 100%;
+          .icon.size-xl {
+            filter: brightness(0) contrast(100%);
+          }
         }
       }
     }
-  }
 
-
-
-
-
+    .banner-product__footer.row.gx-md-2.gx-lg-2_5.row-gap-4.row-gap-lg-6.mt-6.mt-lg-16.mt-xl-26{
+      .col-12.col-md-6.col-xl-4{
+        .benefit.d-flex.gap-3.flex-column{
+          background-color: var(--blue-contrast-light-1);
+          padding: 15px 10px !important;
+          border-radius: 8px;
+          text-align: center;
+          align-items:center !important;
+          border:1px solid var(--blue-contrast-bg-dark);
+          height: 100%;
+          .icon.size-xxl {
+            filter: brightness(0) contrast(100%);
+          }
+        }
+      }
+    }
 
     .d-flex.flex-column.gap-3 {
       color: var(--blue-contrast-white);
     }
-
-
 
     .helper__wrapper.d-flex.flex-column.flex-sm-row.align-items-start.align-items-sm-center.gap-4.gap-lg-6 {
       background-color: var(--blue-contrast-light-1);
@@ -2083,11 +1921,6 @@ background-color: var(--blue-contrast-white);
         }
       }
     }
-
-
-
-
-
 
     .section-layout.bg-dark-10.px-lg-6 {
       background-color: var(--blue-contrast-bg);
@@ -2141,8 +1974,6 @@ background-color: var(--blue-contrast-white);
       }
     }
 
-
-
     .banner-product-info__image {
       .polygon-container.js-polygon-container {
         .polygon-container__content {
@@ -2172,8 +2003,6 @@ background-color: var(--blue-contrast-white);
         outline-offset: 2px;
       }
     }
-
-
 
     .card-help__agreement-text.m-0.dark-70.fs-4.lh-sm {
       color: var(--blue-contrast-bg-dark);
@@ -2284,8 +2113,6 @@ background-color: var(--blue-contrast-white);
       }
     }
 
-
-
     .row.row-gap-5.row-gap-md-6.row-gap-lg-7.px-lg-6 {
       .col-12 {
         .fw-bold {
@@ -2293,9 +2120,6 @@ background-color: var(--blue-contrast-white);
         }
       }
     }
-
-
-
 
     .ps-xxl-6 {
       background-color: var(--blue-contrast-light);
@@ -2331,7 +2155,6 @@ background-color: var(--blue-contrast-white);
       background: none;
     }
 
-
     .d-flex.flex-column.flex-md-row.p-0.gap-3.gap-md-4 {
       gap: 1rem;
 
@@ -2345,7 +2168,6 @@ background-color: var(--blue-contrast-white);
         overflow: hidden;
       }
     }
-
 
     //кнопка перезвоните мне
     .d-flex.flex-column.flex-md-row.p-0.gap-3.gap-md-4 {
@@ -2364,10 +2186,7 @@ background-color: var(--blue-contrast-white);
           outline: 2px solid Highlight;
           outline-offset: 2px;
         }
-
       }
-
-
 
       //открыть чат
       .btn.btn-outline-primary.btn-lg-lg.text-ls.overflow-visible.w-100.w-md-auto {
@@ -2390,11 +2209,6 @@ background-color: var(--blue-contrast-white);
       }
     }
 
-
-
-
-
-
     //подробнее
     .btn.btn-link.btn-icon.m-auto.m-lg-0.py-2.py-lg-0 {
       background-color: var(--blue-contrast-light-100);
@@ -2413,9 +2227,6 @@ background-color: var(--blue-contrast-white);
         outline-offset: 2px;
       }
     }
-
-
-
 
     //  biometric-identification.html
     .banner-text--border-green {
@@ -2441,8 +2252,6 @@ background-color: var(--blue-contrast-white);
         }
       }
     }
-
-
 
     .d-flex.flex-column.gap-2.py-3.document-download.text-m {
       color: var(--blue-contrast-white);
@@ -2492,7 +2301,6 @@ background-color: var(--blue-contrast-white);
       padding: 5px 12px;
     }
 
-
     .document-download {
       border-bottom: 1px dashed var(--black-contrast-black-0)
     }
@@ -2524,8 +2332,6 @@ background-color: var(--blue-contrast-white);
       border: 1px solid var(--blue-contrast-bg);
     }
 
-
-
     .select2-results__option.select2-results__option--selectable {
       color: var(--blue-contrast-light-1);
     }
@@ -2555,7 +2361,6 @@ background-color: var(--blue-contrast-white);
             color: var(--blue-contrast-light);
             text-decoration: underline;
           }
-
         }
       }
     }
@@ -2565,7 +2370,6 @@ background-color: var(--blue-contrast-white);
     }
 
     //cards.html
-
     .card-product-list.overflow-hidden.position-relative.mh-100.h-auto.bg-dark-10.w-100.pt-7.pb-6.py-sm-9.py-md-9.py-lg-11.px-3.px-sm-4.px-md-5.px-lg-6.pe-xxl-11 {
       background-color: var(--blue-contrast-light-1);
     }
@@ -2587,14 +2391,11 @@ background-color: var(--blue-contrast-white);
       color: var(--blue-contrast-bg-dark)
     }
 
-
-
-
     .tabs-panel__list-item-link.nav-link.bg-transparent.active.section-catalog__tab-list-item ,
     .tabs-panel__list-item-link.nav-link.bg-transparent.active{
       background-color: var(--blue-contrast-light) !important;
-    color: var(--blue-contrast-bg-dark);
-    border-color: var(--blue-contrast-white);
+      color: var(--blue-contrast-bg-dark);
+      border-color: var(--blue-contrast-white);
     }
 
     .tabs-panel__list-item-link.nav-link.bg-transparent.section-catalog__tab-list-item,
@@ -2609,9 +2410,6 @@ background-color: var(--blue-contrast-white);
         border-color:  var(--blue-contrast-light-1) ;
       }
     }
-
-
-
 
     .tabs-panel__navigation-item {
       &.tabs-panel__navigation-item-reverse,
@@ -2642,7 +2440,6 @@ background-color: var(--blue-contrast-white);
       }
     }
 
-
     .card-product-list__condition-list.w-100.w-lg-auto.d-flex.justify-content-between.justify-content-lg-start.flex-column.flex-sm-row.flex-wrap.row-gap-4.row-gap-sm-6.row-gap-lg-6.row-gap-xxl-6.gap-xl-12.gap-xxl-16{
       .card-product-list__condition.d-flex.flex-column.gap-2.w-100.w-sm-50.w-xl-auto{
         .text-m.dark-70{
@@ -2650,8 +2447,6 @@ background-color: var(--blue-contrast-white);
         }
       }
     }
-
-
 
     //оформить заявку
     .btn.btn-tertiary.btn-lg-lg.card-product-list__button.w-100.w-sm-auto {
@@ -2690,7 +2485,6 @@ background-color: var(--blue-contrast-white);
       }
     }
 
-
     //career-vacancy.html
 
     .h2.mb-5.mb-lg-6 {
@@ -2707,7 +2501,6 @@ background-color: var(--blue-contrast-white);
       &:hover,
       &:focus {
         background-color: var(--blue-contrast-white);
-        ;
         color: var(--blue-contrast-bg-dark)
       }
 
@@ -2721,11 +2514,9 @@ background-color: var(--blue-contrast-white);
       color: var(--blue-contrast-white);
     }
 
-
     .card-contact.overflow-hidden.position-relative.bg-linear-blue {
       background-color: var(--blue-contrast-bg-dark);
     }
-
 
     .card-contact__contacts.d-flex.flex-column.flex-lg-row.flex-lg-wrap.gap-4 {
       .card-contact__link.dark-0.gap-3.h5.fw-normal.text-white {
@@ -2784,13 +2575,7 @@ background-color: var(--blue-contrast-white);
       }
     }
 
-
-
-
-
     .search-item.d-flex.flex-column.gap-3.gap-md-4.pb-3.pb-md-4.border-bottom-dashed {
-
-
       padding: 10px 25px 0px 25px;
 
       .search-item__date.text-m.dark-70 {
@@ -2840,12 +2625,10 @@ background-color: var(--blue-contrast-white);
 
     .form-control.form-control-lg.text-l:focus {
       border-color: var(--blue-contrast-light);
-
     }
 
     .input-group-icon {
       border: 1px solid var(--blue-contrast-bg-dark);
-
     }
 
     .page-item {
@@ -2932,10 +2715,6 @@ background-color: var(--blue-contrast-white);
 
     }
 
-
-
-
-
     .table-adaptive__row {
       border-bottom: 1px dashed var(--blue-contrast-white);
     }
@@ -2964,9 +2743,7 @@ background-color: var(--blue-contrast-white);
         outline: 2px solid Highlight;
         outline-offset: 2px;
       }
-
     }
-
 
     .benefit__description.w-100.text-m {
       .text-l {
@@ -2987,11 +2764,7 @@ background-color: var(--blue-contrast-white);
       }
     }
 
-
-
-
     //contribution-detail.html
-
     .mb-0.card-about__description.text-white-50 {
       color: var(--blue-contrast-white) !important;
     }
@@ -3007,10 +2780,6 @@ background-color: var(--blue-contrast-white);
         }
       }
     }
-
-
-
-
 
     //оформить заявку
     .card-calculate-result__footer {
@@ -3048,11 +2817,7 @@ background-color: var(--blue-contrast-white);
         border-style: solid;
         border-color: var(--blue-contrast-white);
       }
-
     }
-
-
-
 
     //contributions.html
     .card-product-list__condition.d-flex.flex-column.gap-2.w-100.w-sm-50.w-xl-auto {
@@ -3103,10 +2868,6 @@ background-color: var(--blue-contrast-white);
       }
     }
 
-
-
-
-
     .accordion-header {
       .accordion-button {
         color: var(--blue-contrast-white);
@@ -3130,7 +2891,6 @@ background-color: var(--blue-contrast-white);
       }
     }
 
-
     .card-help.d-inline-flex.p-3.p-sm-5.p-lg-6.w-100.bg-white.h-100 {
       background-color: var(--blue-contrast-light-1) !important;
     }
@@ -3138,10 +2898,6 @@ background-color: var(--blue-contrast-white);
     .card-about.bg-linear-blue {
       background-color: var(--blue-contrast-bg-dark);
     }
-
-
-
-
 
     .benefit__title {
       color: var(--blue-contrast-white);
@@ -3206,7 +2962,6 @@ background-color: var(--blue-contrast-white);
       .card-benefit__description.m-0.text-m {
         color: var(--blue-contrast-bg-dark);
       }
-
     }
 
     .row.cards-gutter {
@@ -3226,27 +2981,21 @@ background-color: var(--blue-contrast-white);
       }
     }
 
-
-
-
-
-
     .card-benefit.d-inline-flex.px-3.px-sm-5.px-lg-6.p-4.p-sm-5.p-lg-6.w-100.bg-dark-10 {
       background-color: var(--blue-contrast-light-1);
       border: 1px solid var(--blue-contrast-white);
 
-margin: 0 ;
+      margin: 0 ;
       .card-benefit__inner.d-flex.flex-column.gap-6.gap-lg-7.justify-content-between.h-100.w-100{
         .card-benefit__read-more.d-flex.align-items-end.justify-content-between{
-display: flex;
-justify-content: center !important;
+          display: flex;
+          justify-content: center !important;
           .card-benefit__icon{
             display:none;
           }
         }
       }
     }
-
 
     .text-l.dark-70.fw-semibold {
       color: var(--blue-contrast-white);
@@ -3266,8 +3015,6 @@ justify-content: center !important;
       }
     }
 
-
-
     //customer-requests.html
     .list.list--size-l .link {
       color: var(--blue-contrast-bg-dark-100);
@@ -3285,9 +3032,6 @@ justify-content: center !important;
       }
     }
 
-
-
-
     .benefit__description.w-100.text-m {
       .mb-3 {
         color: var(--blue-contrast-bg-dark);
@@ -3297,8 +3041,6 @@ justify-content: center !important;
     .card-benefit__description.m-0.text-m {
       color: var(--blue-contrast-bg-dark);
     }
-
-
 
     //financial-institutes.html
     .card-product.card-product--transparent.card-product--size-large.bg-white,
@@ -3317,29 +3059,15 @@ justify-content: center !important;
       }
     }
 
-
-
-
     .banner-hero-content__title {
       color: var(--blue-contrast-white);
     }
-
-
-
 
     .card-benefit__icon {
       .size-md-xxl.icon {
         filter: brightness(0) contrast(100%);
       }
     }
-
-
-
-
-
-
-
-
 
     //financing.html
     .banner-text--border-orange {
@@ -3378,10 +3106,6 @@ justify-content: center !important;
       background-color: var(--blue-contrast-bg);
     }
 
-
-
-
-
     .text-m.btn.btn-link.btn-lg.d-inline-flex.gap-2.align-items-center {
       background-color: var(--blue-contrast-light-100);
       color: var(--blue-contrast-white);
@@ -3417,10 +3141,6 @@ justify-content: center !important;
     .card-product.card-product--transparent.bg-dark-10.card-product--bg-white {
       background-color: var(--blue-contrast-light-1);
     }
-
-
-
-
 
     .helper__content.text-l {
       .text-lg.fw-semibold.link.link-underline {
@@ -3461,15 +3181,10 @@ justify-content: center !important;
       }
     }
 
-
-
     .pattern-bg.card-about-bank__pattern,
     .pattern-bg.pattern-bg--position-top {
       display: none;
     }
-
-
-
 
     .form-feedback.bg-white {
       .form-label {
@@ -3524,14 +3239,8 @@ justify-content: center !important;
           outline: 2px solid Highlight;
           outline-offset: 2px;
         }
-
       }
     }
-
-
-
-
-
 
     .js-mask-phone.form-control.form-control-lg-lg:focus {
       border: 1px solid var(--blue-contrast-light);
@@ -3545,13 +3254,12 @@ justify-content: center !important;
               border:1px solid var(--blue-contrast-white);
               .icon.size-xl{
                 filter: brightness(0) invert(1);
-    }
+              }
             }
           }
         }
       }
     }
-
 
     //insurance-companies.html
     .banner-text.banner-text--border-green.bg-heavy-violet {
@@ -3571,7 +3279,7 @@ justify-content: center !important;
         &:hover,
         &:focus {
           color: var(--blue-contrast-light);
-    }
+        }
 
         &:focus {
           outline: 2px solid Highlight;
@@ -3716,7 +3424,6 @@ justify-content: center !important;
       color: var(--blue-contrast-white);
     }
 
-
     .banner-product__footer.row.gx-md-2.gx-lg-0.row-gap-4.row-gap-lg-6.mt-6.mt-lg-16.mt-xl-26 {
       .col-12.col-md-6.col-xl-3 {
         .benefit.d-flex.gap-3.flex-column {
@@ -3727,16 +3434,13 @@ justify-content: center !important;
 
     .col-12.col-md-6 {
       .benefit.d-flex.gap-3.flex-column.flex-md-row.align-items-md-center.gap-md-4.gap-lg-6 {
-
         background-color: var(--blue-contrast-bg);
-
 
         .benefit__title.fw-semibold {
           color: var(--blue-contrast-white);
         }
       }
     }
-
 
     .slider-controls.js-swiper-controls.mt-3.mt-md-4 {
       padding-top: 25px;
@@ -3746,13 +3450,10 @@ justify-content: center !important;
       display: none;
     }
 
-
     .card-help.d-inline-flex.p-3.p-sm-5.p-lg-6.w-100.bg-blue-10,
     .card-help__inner.d-flex.flex-column.gap-4.gap-md-6.h-100.w-100{
       width: auto !important;
     }
-
-
 
     //написать в чат
     .card-help__button.btn.btn-link.btn-lg.btn-icon.mx-auto.gap-2 {
@@ -3825,36 +3526,29 @@ justify-content: center !important;
     .tab-pane.fade.show.active {
       gap: 15px;
 
-//карточки
+      //карточки
       .row.row-gap-6.row-gap-lg-7.gx-xl-6{
         .col-12.col-md-6.col-xl-4{
           .benefit.d-flex.gap-3.flex-column{
-          background-color: var(--blue-contrast-light-1);
-          height: 100%;
-          align-items:center;
-          padding:8px 12px;
-          border-radius:8px;
-          .benefit__content.d-flex.flex-column.gap-3{
-            text-align:center;
+            background-color: var(--blue-contrast-light-1);
+            height: 100%;
+            align-items:center;
+            padding:8px 12px;
+            border-radius:8px;
+            .benefit__content.d-flex.flex-column.gap-3{
+              text-align:center;
+            }
+            .icon.size-xl{
+              filter: brightness(0) contrast(100%);
+            }
           }
-          .icon.size-xl{
-            filter: brightness(0) contrast(100%);
-          }
-
-        }
         }
       }
     }
 
-
-
-
-    .stepper-item__number-value{
+    .stepper-item__number-value {
       font-size: 1.5rem !important;
     }
-
-
-
 
     .section-restructuring-steps.bg-dark-10.py-6.py-sm-9.py-md-11.py-xl-16 {
       background-color: var(--blue-contrast-bg-dark);
@@ -3953,10 +3647,6 @@ justify-content: center !important;
       }
     }
 
-
-
-
-
     //смотреть все
     .btn.btn-sm.btn-link.btn-icon.d-none.d-md-inline-flex {
       color: var(--blue-contrast-light);
@@ -4003,20 +3693,16 @@ justify-content: center !important;
       }
     }
 
-
-
     .bg-dark-10 {
       background-color: green;
     }
-
-
 
     //mobile-app.html
     .card-regal.d-flex.flex-column.flex-md-row.row-gap-3.column-gap-md-6.bg-dark-30 {
       background-color: var(--blue-contrast-bg-dark);
     }
 
-//карточки
+    //карточки
     .row.row-gap-6{
       .col-12.col-md-6.col-lg-4{
         .benefit.d-flex.gap-3.flex-column{
@@ -4036,8 +3722,7 @@ justify-content: center !important;
       }
     }
 
-
-//карточки
+    //карточки
     .col-12.col-md-6.col-xl-3{
       .benefit.d-flex.gap-3.flex-column.dark-0{
         background-color: var(--blue-contrast-light-1);
@@ -4049,17 +3734,15 @@ justify-content: center !important;
         border:1px solid var(--blue-contrast-bg-dark);
         height: 100%;
         width: 100%;
-              .icon.size-xl {
-        filter: brightness(0) contrast(100%);
-      }
+        .icon.size-xl {
+          filter: brightness(0) contrast(100%);
+        }
       }
     }
 
     .card-benefit__inner.d-flex.flex-column.gap-6.gap-lg-7.justify-content-between.h-100.w-100{
       align-items: center;
     }
-
-
 
     .btn.btn-link.btn-lg.d-inline-flex.gap-2.align-items-center.mt-6.mt-lg-7{
       background-color: var(--blue-contrast-light);
@@ -4083,7 +3766,6 @@ justify-content: center !important;
       }
     }
 
-
     .benefit__description.w-100.text-m {
       .list li {
         color: var(--blue-contrast-bg-dark);
@@ -4094,14 +3776,12 @@ justify-content: center !important;
       color: var(--blue-contrast-white);
     }
 
-
     //скачать
     .stepper-item.stepper-item--color-violet {
       .btn.btn-primary.btn-icon {
         color: var(--blue-contrast-bg-dark);
         background-color: var(--blue-contrast-light);
         border: 1px solid var(--blue-contrast-white);
-        ;
 
         .icon.size-m {
           color: var(--blue-contrast-bg-dark);
@@ -4144,7 +3824,6 @@ justify-content: center !important;
     }
 
     //mortgage-primary.html
-
     .select2-container .select2-selection--single {
       border-color: var(--blue-contrast-bg-dark) !important;
     }
@@ -4168,7 +3847,7 @@ justify-content: center !important;
       &:hover,
       &:focus {
         background-color: var(--blue-contrast-bg);
-        ;
+      ;
         color: var(--blue-contrast-white);
 
         .icon.size-m {
@@ -4245,8 +3924,6 @@ justify-content: center !important;
       background-color: var(--blue-contrast-light-1) !important;
     }
 
-
-
     .bg-heavy-violet {
       background: none;
       background-color: var(--blue-contrast-bg);
@@ -4281,9 +3958,6 @@ justify-content: center !important;
       background-color: var(--blue-contrast-bg);
     }
 
-
-
-
     .accordion-body {
       color: var(--blue-contrast-white);
       padding: 25px;
@@ -4314,9 +3988,6 @@ justify-content: center !important;
       }
     }
 
-
-
-
     .card-about__title.dark-0 {
       color: var(--blue-contrast-white);
     }
@@ -4333,10 +4004,6 @@ justify-content: center !important;
     .card-feedback__title {
       color: var(--blue-contrast-white);
     }
-
-
-
-
 
     //msb-currency-control.html
     .card-benefit__list.list.list--size-l li:before {
@@ -4369,8 +4036,6 @@ justify-content: center !important;
       }
     }
 
-
-
     .mb-0.text-m {
       color: var(--blue-contrast-white);
     }
@@ -4400,13 +4065,12 @@ justify-content: center !important;
         color: var(--blue-contrast-bg-dark);
       }
 
-  &__inner {
-    .card-product__content{
-      max-width: 90%;
+      &__inner {
+        .card-product__content{
+          max-width: 90%;
+        }
+      }
     }
-  }
-    }
-
 
     .section-layout.px-lg-6{
       .container{
@@ -4436,14 +4100,14 @@ justify-content: center !important;
       }
     }
 
-    .section-layout.px-lg-6{
-      .container{
-        .row.row-gap-6.gx-xl-6{
-          .col-12.col-md-6.col-lg-4{
-            .benefit.d-flex.gap-3.flex-column{
-              .benefit__content.d-flex.flex-column.gap-3{
-                .benefit__description.w-100.text-m{
-                  span , .d-block{
+    .section-layout.px-lg-6 {
+      .container {
+        .row.row-gap-6.gx-xl-6 {
+          .col-12.col-md-6.col-lg-4 {
+            .benefit.d-flex.gap-3.flex-column {
+              .benefit__content.d-flex.flex-column.gap-3 {
+                .benefit__description.w-100.text-m {
+                  span , .d-block {
                     color: var(--blue-contrast-bg-dark);
                   }
                 }
@@ -4454,16 +4118,11 @@ justify-content: center !important;
       }
     }
 
-
-
-
-
     //перейти в интернет банк
     .btn.btn-yellow.d-none.d-md-inline-flex {
       border: 1px solid var(--blue-contrast-white);
       color: var(--blue-contrast-white);
       background-color: var(--blue-contrast-light-100);
-
 
       &:hover,
       &:focus {
@@ -4477,14 +4136,11 @@ justify-content: center !important;
       }
     }
 
-
-
     .card-promo--heavy-violet {
       background: none;
       background-color: var(--blue-contrast-medium);
       color: var(--blue-contrast-white);
     }
-
 
     //открыть счет
     .d-flex.flex-column.flex-md-row.align-items-md-center.gap-3.gap-md-6 {
@@ -4531,7 +4187,6 @@ justify-content: center !important;
     }
 
     .card-product.card-product {
-
       &--undefined.bg-dark-10.h-auto.flex-basis-100.flex-basis-md-25.flex-grow-1.bg-white,
       &--undefined.bg-dark-10.w-100.w-xl-auto.flex-basis-100.flex-basis-xl-25.h-auto.flex-grow-1.bg-white,
       &--size-height-auto.bg-dark-10.flex-basis-100.flex-basis-md-25.h-auto.flex-grow-1.bg-white,
@@ -4586,8 +4241,6 @@ justify-content: center !important;
       }
     }
 
-
-
     .overflow-auto.custom-overflow-scrollbar>table>thead>tr>th {
       font-size: 1.5rem;
       color: var(--blue-contrast-white);
@@ -4607,16 +4260,12 @@ justify-content: center !important;
       }
     }
 
-
-
     .card-rating.bg-blue-10.overflow-hidden.position-relative.mh-100.h-auto {
       background-color: var(--blue-contrast-bg-dark);
       border-radius:12px;
     }
 
-
     //novikom-today.html
-
     .card-top-list__col.bg-blue-10.h-100.overflow-hidden {
       border-radius: 8px;
       border: 1px solid var(--blue-contrast-white);
@@ -4659,7 +4308,6 @@ justify-content: center !important;
       }
     }
 
-
     .card-award.bg-dark-30.h-100 {
       background-color: var(--blue-contrast-light-1);
     }
@@ -4680,14 +4328,10 @@ justify-content: center !important;
       color: var(--blue-contrast-bg-dark) !important;
     }
 
-
-
-
     .card-product.card-product--transparent.card-product--size-height-auto.bg-dark-10.flex-basis-100.flex-basis-md-25.h-auto.flex-grow-1.bg-white,
     .card-product.card-product--transparent.card-product--size-height-auto.bg-dark-10.w-100.w-xl-auto.flex-basis-100.flex-basis-xl-25.h-auto.flex-grow-1.bg-white {
       background-color: var(--blue-contrast-light-1) !important;
     }
-
 
     //office-detail.html
 
@@ -4705,21 +4349,13 @@ justify-content: center !important;
       color: var(--blue-contrast-light-1)
     }
 
-
-
     .card-contact__image {
       display: none;
     }
 
-
-
-
     .card-how-use {
       background-color: var(--blue-contrast-bg-dark);
     }
-
-
-
 
     .dark-0.card-contact__top-title,
     .card-contact__link.dark-0.gap-3 {
@@ -4758,34 +4394,27 @@ justify-content: center !important;
 
     .px-lg-6{
       .w-100.d-flex.flex-column.flex-lg-row.align-items-stretch.gap-4.gap-lg-12{
-          .benefit.d-flex.gap-3.flex-column{
-            background-color: var(--blue-contrast-light-1);
-            padding: 15px 10px;
-            border-radius: 8px;
-            text-align: center;
-            color: var(--blue-contrast-bg-dark);
-            align-items: center;
-            border:1px solid var(--blue-contrast-bg-dark);
-            height: 100%;
-            .icon.size-xl {
-              filter: brightness(0) contrast(100%);
-            }
+        .benefit.d-flex.gap-3.flex-column{
+          background-color: var(--blue-contrast-light-1);
+          padding: 15px 10px;
+          border-radius: 8px;
+          text-align: center;
+          color: var(--blue-contrast-bg-dark);
+          align-items: center;
+          border:1px solid var(--blue-contrast-bg-dark);
+          height: 100%;
+          .icon.size-xl {
+            filter: brightness(0) contrast(100%);
+          }
 
         }
       }}
-
-
-
-
-
 
     //press-center.html
     .card-news__image-container.position-relative.z-1.h-100 {
       .card-news__img.position-relative.z-2 {
         display: none;
       }
-
-
 
       .col-12.col-md-6.col-lg-4 {
         border: 1px solid var(--black-contrast-black-0);
@@ -4825,24 +4454,14 @@ justify-content: center !important;
       }
     }
 
-
-
-
     .bg-dark-10 {
       background-color: var(--black-contrast-gray-100);
     }
-
-
-
-
-
-
 
     .search-item mark {
       color: var(--blue-contrast-bg-dark) !important;
       background: var(--blue-contrast-white)
     }
-
 
     .border-tertiary {
       border-color: var(--blue-contrast-white) !important;
@@ -4856,11 +4475,7 @@ justify-content: center !important;
       }
     }
 
-
-
-
     //TRUST MANAGEMENT PAGE
-
     .banner-product {
       &--border-violet {
         --border-top-color: var(--blue-contrast-white)
@@ -4898,9 +4513,6 @@ justify-content: center !important;
         color: var(--blue-contrast-white);
       }
     }
-
-
-
 
     .benefit__content.d-flex.flex-column.gap-3 {
       .benefit__title {
@@ -4944,12 +4556,9 @@ justify-content: center !important;
       background-color: var(--black-contrast-gray-100);
     }
 
-
-
     .card.overflow-hidden.position-relative {
       background-color: var(--blue-contrast-bg-dark);
     }
-
 
     .card {
       background-color: var(--black-contrast-black-300);
@@ -5010,7 +4619,6 @@ justify-content: center !important;
       }
     }
 
-
     .mobile-menu {
       background-color: var(--blue-contrast-bg);
     }
@@ -5043,7 +4651,6 @@ justify-content: center !important;
     }
 
     .mobile-menu__bank-apps {
-
       .btn.btn-primary.w-100.dropdown-toggle,
       .btn.btn-outline-primary.d-inline-flex.gap-2.align-items-center.justify-content-center {
         background-color: var(--blue-contrast-light);
@@ -5061,7 +4668,6 @@ justify-content: center !important;
         }
       }
     }
-
 
     .mobile-menu__bank-contact {
 
@@ -5127,10 +4733,8 @@ justify-content: center !important;
       }
     }
 
-
-
-//modals.html
-.modal-footer.border-0.justify-content-md-center {
+    //modals.html
+    .modal-footer.border-0.justify-content-md-center {
       .btn.btn-primary.btn-lg-lg.m-0.w-100.w-md-auto {
         background-color: var(--blue-contrast-light);
         color: var(--blue-contrast-bg-dark);
@@ -5197,7 +4801,6 @@ justify-content: center !important;
       }
     }
 
-
     .d-flex.flex-column.align-items-start.row-gap-3 {
       .btn.btn-primary {
         background-color: var(--blue-contrast-light-1);
@@ -5220,7 +4823,6 @@ justify-content: center !important;
       background-color: var(--blue-contrast-bg-dark);
     }
 
-
     .btn-nav-panel--primary {
       background: none;
       background-color: var(--blue-contrast-light);
@@ -5236,7 +4838,77 @@ justify-content: center !important;
       }
     }
 
+    footer {
+      .col-12.col-md-6.col-xl-3.d-flex.flex-column.row-gap-3 {
+        @media (min-width: 768px) {
+          width: 50%;
+        }
 
+        @media (min-width: 1440px) {
+          width: 25%;
+        }
+
+        @media (max-width: 767px) {
+          width: 100%;
+        }
+      }
+
+      .d-flex.flex-column.row-gap-3.pt-md-3.pt-lg-5 {
+        width: 100%;
+      }
+
+      nav .dark-100 {
+        margin: 0;
+        text-align: start;
+      }
+    }
+
+    .bg-blue-10,
+    .section-layout--bg-gray,
+    #additional-info-content {
+      .form-label {
+        color: var(--blue-contrast-white);
+      }
+    }
+
+    #catalog-tabs {
+      .card-text__title {
+        color: var(--blue-contrast-white);
+      }
+    }
+
+    .banner-product__footer h4,
+    .quote h4,
+    .bg-dark-10 .accordion-item h5,
+    .bg-dark-10 .accordion-button.collapsed .h4,
+    .banner-product__benefits-list .h4,
+    .card-feedback__title {
+      color: var(--blue-contrast-white) !important;
+    }
+
+    .card-regal__content h4,
+    .card-regal__content p,
+    .card-benefit__title,
+    .card-benefit__read-more a,
+    .card-benefit__description {
+      color: var(--blue-contrast-bg-dark) !important;
+    }
+
+    .card-benefit__icon svg.icon {
+      color: var(--green-100);
+    }
+
+    .container .row.row-gap-6.gx-xl-6 .col-12.col-md-6.col-lg-4 .benefit.d-flex.gap-3.flex-column {
+      &:hover {
+        .benefit__title,
+        .benefit__description {
+          color: var(--blue-contrast-bg-dark);
+        }
+      }
+    }
+
+    .card-product.card-product--transparent.bg-white {
+      background-color: var(--blue-contrast-light-1) !important;
+    }
   }
-
 }

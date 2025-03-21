@@ -975,6 +975,31 @@
       border: 1px solid var(--yellow-contrast-black-100);
     }
 
+    footer {
+      .col-12.col-md-6.col-xl-3.d-flex.flex-column.row-gap-3 {
+        @media (min-width: 768px) {
+          width: 50%;
+        }
+
+        @media (min-width: 1440px) {
+          width: 25%;
+        }
+
+        @media (max-width: 767px) {
+          width: 100%;
+        }
+      }
+
+      .d-flex.flex-column.row-gap-3.pt-md-3.pt-lg-5 {
+        width: 100%;
+      }
+
+      nav .dark-100 {
+        margin: 0;
+        text-align: start;
+      }
+    }
+
     .footer__info {
       background-color: var(--yellow-contrast-bg-300);
 
