@@ -3,7 +3,10 @@
 /** @global CMain $APPLICATION */
 
 global $APPLICATION;
-$elementIds = getElementIdsIncludedArea(iblock('special_offers_ru'));
+$iblockId = iblock('special_offers_ru');
+$arSelectUf = ["UF_COLOR_BLOCK"];
+$sectionData = getSectionData($iblockId, $arSelectUf);
+$elementIds = getElementIdsIncludedArea($sectionData, $iblockId);
 ?>
 <? if (!empty($elementIds)) : ?>
     <?
@@ -11,8 +14,9 @@ $elementIds = getElementIdsIncludedArea(iblock('special_offers_ru'));
     $specialOffersFilter = [
         "ID" => $elementIds
     ];
+    $blockSectionClass = $sectionData["COLOR_BLOCK"] ?: "bg-blue-10";
     ?>
-    <section class="section-layout bg-blue-10">
+    <section class="section-layout <?= $blockSectionClass ?>">
         <div class="container">
             <div class="d-flex align-items-center justify-content-between px-lg-6 mb-6 mb-lg-7">
                 <h3>Спецпредложения</h3>
@@ -75,7 +79,7 @@ $elementIds = getElementIdsIncludedArea(iblock('special_offers_ru'));
                         "SET_STATUS_404" => "N",
                         "SET_TITLE" => "N",
                         "SHOW_404" => "N",
-                        "SORT_BY1" => "ACTIVE_FROM",
+                        "SORT_BY1" => "PROPERTY_PUBLICATION_DATE",
                         "SORT_BY2" => "SORT",
                         "SORT_ORDER1" => "DESC",
                         "SORT_ORDER2" => "ASC",

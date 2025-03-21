@@ -3,13 +3,17 @@
 /** @global CMain $APPLICATION */
 
 global $APPLICATION;
-$elementIds = getElementIdsIncludedArea(iblock('cross_sale'));
+$iblockId = iblock('cross_sale');
+$arSelectUf = ["UF_COLOR_BLOCK"];
+$sectionData = getSectionData($iblockId);
+$elementIds = getElementIdsIncludedArea($sectionData, $iblockId);
 
 if (!empty($elementIds)) {
     global $crossSaleFilter;
     $crossSaleFilter = [
         "ID" => $elementIds
     ];
+    $blockSectionClass = $sectionData["COLOR_BLOCK"] ?: "";
 
     $APPLICATION->IncludeComponent(
         "bitrix:news.list",
@@ -66,7 +70,8 @@ if (!empty($elementIds)) {
             "SORT_BY2" => "SORT",
             "SORT_ORDER1" => "DESC",
             "SORT_ORDER2" => "ASC",
-            "STRICT_SECTION_CHECK" => "Y"
+            "STRICT_SECTION_CHECK" => "Y",
+            "CLASS_COLOR_BG" => $blockSectionClass
         ]
     );
 }

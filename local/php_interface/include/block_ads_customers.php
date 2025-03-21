@@ -3,13 +3,18 @@
 /** @global CMain $APPLICATION */
 
 global $APPLICATION;
-$elementIds = getElementIdsIncludedArea(iblock('ads_for_customers_ru'));
+$iblockId = iblock('ads_for_customers_ru');
+$arSelectUf = ["UF_COLOR_BLOCK"];
+$sectionData = getSectionData($iblockId);
+$elementIds = getElementIdsIncludedArea($sectionData, $iblockId);
 
 if (!empty($elementIds)) {
     global $adsFilter;
     $adsFilter = [
         "ID" => $elementIds
     ];
+    $blockSectionClass = $sectionData["COLOR_BLOCK"] ?: "bg-dark-10";
+
     $APPLICATION->IncludeComponent(
         "bitrix:news.list",
         "customer_announcements",
@@ -61,7 +66,7 @@ if (!empty($elementIds)) {
             "SORT_ORDER1" => "DESC",
             "SORT_ORDER2" => "ASC",
             "STRICT_SECTION_CHECK" => "N",
-            "CLASS_COLOR_BG" => $arParams["CLASS_COLOR_BG"]
+            "CLASS_COLOR_BG" => $blockSectionClass
         ],
         false,
         ["HIDE_ICONS" => "Y"]
