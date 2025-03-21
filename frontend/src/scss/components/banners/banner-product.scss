@@ -1,8 +1,6 @@
 .banner-product {
     $root: #{&};
-
     --banner-height: 37.5rem; //600px
-
     background: linear-gradient(222.24deg, #101317 20%, #5a2375 80%);
     border-top-width: 0.25rem;
     border-top-style: solid;
@@ -36,7 +34,7 @@
         }
 
         @include use-media(tablet-album) {
-            padding: 2.5rem 5rem 7.5rem 5rem;
+            padding: 2.5rem 5rem 5rem 5rem;
         }
 
         @include use-media(desktop) {

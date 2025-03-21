@@ -94,9 +94,13 @@ $this->setFrameMode(true);
                             </div>
                             <div class="application-form__col col-12 col-md-6" hidden>
                                 <div class="d-flex flex-column row-gap-2">
-                                    <label class="form-label mb-0" for="feedback_inn">ИНН</label>
+                                    <label class="form-label mb-0" for="feedback_inn">ИНН<span
+                                                class="orange-100 ms-1">*</span></label>
                                     <input class="form-control form-control-lg-lg" id="feedback_inn" type="text" name="INN"
-                                           placeholder="Введите ИНН" autocomplete="off" data-form-input>
+                                           pattern="^\d{10}$|^\d{12}$"
+                                           data-error-message="ИНН может состоять только из 10 или 12 цифр"
+                                           placeholder="Введите ИНН" autocomplete="off" required data-form-input
+                                    >
                                     <div class="invalid-feedback" aria-live="polite"></div>
                                 </div>
                             </div>
@@ -116,7 +120,7 @@ $this->setFrameMode(true);
                                             class="orange-100 ms-1">*</span></label>
                                     <input class="form-control form-control-lg-lg" id="feedback_e-mail" type="email"
                                            name="EMAIL" placeholder="Введите почту" required autocomplete="off"
-                                           data-form-input pattern="[a-zA-Z0-9._%\+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}"
+                                           data-form-input pattern="/^\w+([.-]?\w+)@\w+([.-]?\w+)(.\w)$/."
                                            data-error-message="Введите корректный адрес электронной почты">
                                     <div class="invalid-feedback" aria-live="polite"></div>
                                 </div>
