@@ -79,17 +79,27 @@ class OfficesMap {
     }
 
     initMap() {
-        const maxZoom = 17;
+        const maxZoom = 16;
+        const minZoom = 4;
         const coordsCenter = [55.76, 37.64]; // [55.76, 37.64] - Москва
         const isTablet = window.matchMedia(`(min-width: ${MEDIA_QUERIES['tablet']})`).matches;
         const isDesktop = window.matchMedia(`(min-width: ${MEDIA_QUERIES['tablet-album']})`).matches;
+        const WORLD_BOUNDS = {
+            north: 84.23618,
+            south: -73.87011,
+            west: -178.9,
+            east: 181,
+        };
 
         this.myMap = new ymaps.Map('map', {
             center: coordsCenter,
             zoom: 10,
             controls: [],
             maxZoom: maxZoom,
+            minZoom: minZoom,
             autoFitToViewport: 'none',
+        }, {
+            restrictMapArea: [[WORLD_BOUNDS.north, WORLD_BOUNDS.west], [WORLD_BOUNDS.south, WORLD_BOUNDS.east]]
         });
 
         // Пользовательский макет ползунка масштаба.
@@ -115,6 +125,10 @@ class OfficesMap {
 
                     $('#zoom-in').bind('click', this.zoomInCallback);
                     $('#zoom-out').bind('click', this.zoomOutCallback);
+
+                    this.map = this.getData().control.getMap();
+                    this.map.options.set('maxZoom', maxZoom);
+                    this.map.options.set('minZoom', minZoom);
                 },
 
                 clear: function () {
@@ -125,14 +139,22 @@ class OfficesMap {
                 },
 
                 zoomIn: function () {
-                    var map = this.getData().control.getMap();
-                    map.setZoom(map.getZoom() + 1, {checkZoomRange: true});
+                    const currentZoom = this.map.getZoom();
+                    const maxZoom = this.map.options.get('maxZoom');
+
+                    if (currentZoom < maxZoom) {
+                        this.map.setZoom(currentZoom + 1, {checkZoomRange: true});
+                    }
                 },
 
                 zoomOut: function () {
-                    var map = this.getData().control.getMap();
-                    map.setZoom(map.getZoom() - 1, {checkZoomRange: true});
-                }
+                    const currentZoom = this.map.getZoom();
+                    const minZoom = this.map.options.get('minZoom');
+
+                    if (currentZoom > minZoom) {
+                        this.map.setZoom(currentZoom - 1, {checkZoomRange: true});
+                    }
+                },
             });
 
         const zoomControl = new ymaps.control.ZoomControl({
@@ -164,9 +186,39 @@ class OfficesMap {
         this.clusterer = new ymaps.Clusterer({
             preset: 'islands#invertedVioletClusterIcons',
             groupByCoordinates: false,
-            // clusterDisableClickZoom: true,
             clusterHideIconOnBalloonOpen: false,
-            geoObjectHideIconOnBalloonOpen: false
+            geoObjectHideIconOnBalloonOpen: false,
+            hasBalloon: false,
+            hasHint: false,
+        });
+
+        // Обработчик события клика на кластер
+        this.clusterer.events.add('click', (e) => {
+            const target = e.get('target');
+            if (!target) return;
+            // Получаем массив объектов в кластере
+            const clusterObjects = target.getGeoObjects();
+            const getCoordinates = clusterObjects.map(item => item.geometry.getCoordinates());
+            const uniqueCoordinates = getCoordinates.filter((array, index, self) =>
+                index === self.findIndex((a) => JSON.stringify(a) === JSON.stringify(array))
+            );
+            let officeList = [];
+
+            uniqueCoordinates.forEach(coords => {
+                const filteredList = this.offices.filter(item => item.coords[0] === coords[0] && item.coords[1] === coords[1]);
+                filteredList.forEach(item => officeList.push(item));
+            })
+
+            this.renderOfficesList(officeList);
+        });
+
+
+        // Обработчик события изменения уровня зума
+        this.myMap.events.add('boundschange', (event) => {
+            // Получаем текущий уровень зума
+            if (event.get('newZoom') !== event.get('oldZoom')) {
+                this.updateButtonStates(event.get('newZoom'));
+            }
         });
 
         // Запрещаем скролить на карте
@@ -183,6 +235,46 @@ class OfficesMap {
             const offsetPos = this.myMap.options.get('projection').fromGlobalPixels([positions[0] - offsetPX, positions[1]], this.myMap.getZoom());
             this.myMap.setCenter(offsetPos);
         }
+    }
+
+    updateButtonStates(currentZoom) {
+        // Получаем значения minZoom и maxZoom
+        const minZoom = this.myMap.options.get('minZoom');
+        const maxZoom = this.myMap.options.get('maxZoom');
+
+        // Проверяем, нужно ли отключить кнопку увеличения масштаба
+        if (currentZoom >= maxZoom) {
+            this.disableZoomInButton();
+        } else {
+            this.enableZoomInButton();
+        }
+
+        // Проверяем, нужно ли отключить кнопку уменьшения масштаба
+        if (currentZoom <= minZoom) {
+            this.disableZoomOutButton();
+        } else {
+            this.enableZoomOutButton();
+        }
+    }
+
+    disableZoomOutButton() {
+        $('#zoom-out').attr('disabled', true);
+        $('#zoom-out').addClass('disabled');
+    }
+
+    enableZoomOutButton() {
+        $('#zoom-out').attr('disabled', false);
+        $('#zoom-out').removeClass('disabled');
+    }
+
+    disableZoomInButton() {
+        $('#zoom-in').attr('disabled', true);
+        $('#zoom-in').addClass('disabled');
+    }
+
+    enableZoomInButton() {
+        $('#zoom-in').attr('disabled', false);
+        $('#zoom-in').removeClass('disabled');
     }
 
     async loadOffices() {
@@ -340,18 +432,23 @@ class OfficesMap {
             this.myMap.setBounds(this.myMap.geoObjects.getBounds(), {
                 checkZoomRange: true
             }).then(() => {
-                // Ограничиваем зум, если он больше 14
-                if (this.myMap.getZoom() > 14) {
-                    this.myMap.setZoom(14);
+                // Ограничиваем зум, если он больше 12
+                if (this.myMap.getZoom() > 12) {
+                    this.myMap.setZoom(12);
                 }
+
+                this.myMap.minZoom = 9;
+                this.myMap.maxZoom = 12;
             });
         }
     }
 
-    renderOfficesList() {
-        $('#offices-list').empty()
+    renderOfficesList(data) {
+        $('#offices-list').empty();
 
-        this.filteredOffices.forEach(item => {
+        if (!data) data = this.filteredOffices;
+
+        data.forEach(item => {
             $('#offices-list').append(`
                 <a class="card-office d-flex col-gap-2 align-items-center" href="${item.url}" id="office-item-${item.id}">
                     <div class="card-office__body d-flex flex-grow-1 flex-column row-gap-2 row-gap-md-3">

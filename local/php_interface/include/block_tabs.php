@@ -2,6 +2,7 @@
 /** @var array $arParams */
 
 use Dalee\Helpers\ComponentRenderer\Renderer;
+use Bitrix\Iblock\ElementTable;
 
 /**
  * @global CMain $APPLICATION
@@ -9,12 +10,15 @@ use Dalee\Helpers\ComponentRenderer\Renderer;
  */
 
 $renderer = new Renderer($APPLICATION, $component ?? false);
-$elementIds = getElementIdsIncludedArea(iblock('tabs'));
+$iblockId = iblock('tabs');
+$arSelectUf = ["UF_COLOR_BLOCK"];
+$sectionData = getSectionData($iblockId);
+$elementIds = getElementIdsIncludedArea($sectionData, $iblockId);
 $params = [];
 
 if (!empty($arParams['IBLOCK_ID'])) {
     $code = basename($APPLICATION->GetCurPage());
-    $element = \Bitrix\Iblock\ElementTable::getList([
+    $element = ElementTable::getList([
         'filter' => [
             'CODE' => $code,
             'IBLOCK_ID' => $arParams['IBLOCK_ID'] ?? ''
@@ -30,11 +34,11 @@ if (!empty($arParams['IBLOCK_ID'])) {
 ?>
 <? if (!empty($elementIds)) : ?>
     <?
-    $blockTabsSectionClass = $APPLICATION->GetProperty("blockTabsSectionClass") ?: "";
+    $blockSectionClass = $sectionData["COLOR_BLOCK"] ?: "";
     $title = $APPLICATION->GetProperty("blockTabsTitle") ?: "";
     $picPath = $APPLICATION->GetProperty("blockTabsPicPath") ?: "";
     ?>
-    <section class="section-layout js-collapsed-mobile <?= $blockTabsSectionClass ?>">
+    <section class="section-layout js-collapsed-mobile <?= $blockSectionClass ?>">
         <div class="container">
             <? if (!empty($title)) : ?>
                 <h3 class="d-none d-md-flex mb-md-6 mb-lg-7 px-lg-6"><?= $title ?></h3>
