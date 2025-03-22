@@ -14,12 +14,18 @@ $this->setFrameMode(true); ?>
 <?
 $cntCol = $arParams['COL_COUNT'];
 
-if (empty( $arParams['CALC_COLS']) || $arParams['CALC_COLS'] === 'Y') {
+if (empty($arParams['CALC_COLS']) || $arParams['CALC_COLS'] === 'Y') {
     $cntCol = 12 / $arParams['COL_COUNT'];
 }
 
+$classLg = 'col-lg-' . $cntCol;
+
+if (count($arResult['ITEMS']) === 4) {
+    $classLg = '';
+}
+
 foreach ($arResult['ITEMS'] as $arItem) : ?>
-    <div class="col-12 col-md-6 col-lg-<?= $cntCol ?>">
+    <div class="col-12 col-md-6 <?= $classLg ?>">
         <div class="benefit d-flex gap-3 flex-column">
             <? if (!empty($arItem['PREVIEW_PICTURE'])) : ?>
                 <img class="icon size-xxl" src="<?= $arItem['PREVIEW_PICTURE']['SRC'] ?>"
