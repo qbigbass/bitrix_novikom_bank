@@ -20,11 +20,7 @@
     }
 
     &__title {
-        hyphens: auto;
-
-        @include use-media(mobile) {
-            hyphens: unset;
-        }
+        hyphens: none;
 
         @include use-media(mobile-s, tablet-album) {
             font-weight: 600;
