@@ -187,65 +187,30 @@ function calculateDepositIncome(STATE) {
     if (capitalization) {
         while (currentDate < endDate) {
             let oldIncome = 0;
-            // if (!hideAdditional) {
-            //     // Проверяем, есть ли пополнения на текущую дату
-            //     while (depositIndex < additionalDeposits.length && parseDate(additionalDeposits[depositIndex].date) <= currentDate) {
-            //         const depositDate = parseDate(additionalDeposits[depositIndex].date);
-            //         depositDate.setDate(depositDate.getDate() + 1); // Начисление процентов со следующего дня
-            //
-            //         const remainingDepositDays = Math.floor((currentDate - depositDate) / (1000 * 60 * 60 * 24));
-            //         console.log('currentDate', currentDate);
-            //         console.log('depositDate', depositDate);
-            //         console.log('remainingDepositDays', remainingDepositDays);
-            //         const daysInMonth = getDaysInMonth(depositDate.getFullYear(), depositDate.getMonth());
-            //         console.log('daysInMonth', daysInMonth);
-            //         const oldRateDays = daysInMonth - remainingDepositDays;
-            //         console.log('oldRateDays', oldRateDays);
-            //
-            //         if (oldRateDays > 0 && oldRateDays < daysInMonth) {
-            //             const dailyInterestRate = (rate * 0.01 / calculateDaysInYear(currentDate.getFullYear()));
-            //             oldIncome = totalAmount * dailyInterestRate * oldRateDays;
-            //             console.log('oldIncome', oldIncome);
-            //         }
-            //
-            //         // Обновляем общую сумму
-            //         totalAmount += additionalDeposits[depositIndex].amountItem; // Добавляем само пополнение
-            //
-            //         // Получаем новую процентную ставку в зависимости от общей суммы
-            //         let newRate = findDepositRate({data: filteredData, amount: totalAmount, period});
-            //         // Если новая процентная ставка не определена, используем текущую
-            //         if (!newRate) {
-            //             newRate = rate;
-            //         }
-            //
-            //         STATE.rate = newRate;
-            //
-            //         if (remainingDepositDays > 0) { // Если прошло больше 0 дней после пополнения
-            //             const dailyInterestRate = (newRate * 0.01 / calculateDaysInYear(currentDate.getFullYear()));
-            //             const remainingIncome = totalAmount * dailyInterestRate * remainingDepositDays;
-            //             console.log('remainingIncome', remainingIncome);
-            //
-            //             totalAmount += remainingIncome; // Добавляем доход от пополнения к общей сумме
-            //         }
-            //         depositIndex++; // Переходим к следующему пополнению
-            //     }
-            // }
+            let remainingIncome = 0;
+            let monthIncome = 0;
 
             const year = currentDate.getFullYear();
             const daysInCurrentYear = calculateDaysInYear(year);
             const dailyInterestRate = (rate * 0.01 / daysInCurrentYear);
             const daysInCurrentMonth = getDaysInMonth(currentDate.getFullYear(), currentDate.getMonth());
+            const nextCapitalizationDate = new Date(currentDate);
+            nextCapitalizationDate.setDate(nextCapitalizationDate.getDate() + daysInCurrentMonth);
+            console.log('currentDate', currentDate)
+            console.log('nextCapitalizationDate', nextCapitalizationDate)
 
             // Проверяем, не превышает ли переход на следующий месяц дату окончания
             if (currentDate.getMonth() + 1 < endDate.getMonth() + 1 || currentDate.getFullYear() < endDate.getFullYear()) {
                 if (!hideAdditional) {
-                    while (depositIndex < additionalDeposits.length && parseDate(additionalDeposits[depositIndex].date) <= currentDate) {
+                    while (depositIndex < additionalDeposits.length && parseDate(additionalDeposits[depositIndex].date) <= nextCapitalizationDate) {
                         const depositDate = parseDate(additionalDeposits[depositIndex].date);
                         depositDate.setDate(depositDate.getDate() + 1); // Начисление процентов со следующего дня
-                        const remainingDepositDays = Math.floor((currentDate - depositDate) / (1000 * 60 * 60 * 24));
+                        const remainingDepositDays = Math.floor((nextCapitalizationDate - depositDate) / (1000 * 60 * 60 * 24));
                         const oldRateDays = daysInCurrentMonth - remainingDepositDays;
+                        console.log('remainingDepositDays', remainingDepositDays)
+                        console.log('oldRateDays', oldRateDays)
 
-                        if (oldRateDays > 0 && oldRateDays < daysInCurrentMonth) {
+                        if (oldRateDays > 0 && oldRateDays <= daysInCurrentMonth) {
                             oldIncome = totalAmount * dailyInterestRate * oldRateDays;
                             console.log('oldIncome', oldIncome);
                         }
@@ -263,19 +228,20 @@ function calculateDepositIncome(STATE) {
                         STATE.rate = newRate;
 
                         if (remainingDepositDays > 0) { // Если прошло больше 0 дней после пополнения
-                            const dailyInterestRate = (newRate * 0.01 / calculateDaysInYear(currentDate.getFullYear()));
-                            const remainingIncome = totalAmount * dailyInterestRate * remainingDepositDays;
+                            const dailyInterestRate = (newRate * 0.01 / daysInCurrentYear);
+                            remainingIncome = totalAmount * dailyInterestRate * remainingDepositDays;
                             console.log('remainingIncome', remainingIncome);
 
-                            totalAmount += remainingIncome; // Добавляем доход от пополнения к общей сумме
+                            // totalAmount += remainingIncome; // Добавляем доход от пополнения к общей сумме
                         }
 
-                        totalAmount += oldIncome;
+                        // totalAmount += oldIncome;
+                        monthIncome += oldIncome + remainingIncome;
                         depositIndex++; // Переходим к следующему пополнению
                     }
                 }
-                let monthIncome = 0;
                 if (oldIncome <= 0) {
+                    console.log('not oldIncome');
                     // Рассчитываем доход за полный месяц
                     monthIncome = totalAmount * dailyInterestRate * daysInCurrentMonth;
                 }
@@ -283,6 +249,8 @@ function calculateDepositIncome(STATE) {
                 totalIncome += monthIncome;
                 totalAmount += monthIncome; // Капитализация
                 console.log('monthIncome', monthIncome);
+                console.log('totalIncome', totalIncome);
+                console.log('totalAmount', totalAmount);
             } else {
                 // Если остались дни до окончания, выходим из цикла
                 break;
