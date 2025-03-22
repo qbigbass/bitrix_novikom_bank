@@ -1,7 +1,7 @@
 <?php
 
 use Bitrix\Main\Page\Asset;
-
+global $APPLICATION;
 $APPLICATION->SetTitle('Бонусные программы');
 $asset = Asset::getInstance();
 $asset->addJs('/frontend/dist/js/calculator-bonus.js');
