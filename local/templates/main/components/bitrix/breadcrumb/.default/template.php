@@ -18,7 +18,7 @@ for($index = 0; $index < $itemSize; $index++)
 	$title = htmlspecialcharsex(strip_tags($arResult[$index]["TITLE"]));
     $breadcrumbsColorClass = $BREADCRUMBS_PARAMS["breadcrumbsColorClass"] ?? 'text-white-50';
 	$arrow = ($index > 0 ? '
-        <svg class="icon size-s text-white-50 d-inline-block d-md-none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+        <svg class="icon size-s '. $breadcrumbsColorClass .' d-inline-block d-md-none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
             <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-left"></use>
         </svg>' : '');
 
@@ -32,7 +32,11 @@ for($index = 0; $index < $itemSize; $index++)
 	else
 	{
 		$strReturn .= '
-			<div class="breadcrumbs__item d-md-inline-flex align-items-center gap-2 text-s '. $breadcrumbsColorClass .' d-inline-flex">
+		    <a href="' . $arResult[$index-1]["LINK"] . '" class="breadcrumbs__item d-md-inline-flex align-items-center gap-2 text-s dark-70 d-md-none d-lg-block">
+                ' . $arrow . '
+                <span>' . $title . '</span>
+            </a>
+			<div class="breadcrumbs__item d-md-inline-flex align-items-center gap-2 text-s '. $breadcrumbsColorClass .' d-inline-flex d-none">
                 <span>' . $title . '</span>
             </div>';
 	}
