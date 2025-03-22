@@ -219,51 +219,31 @@ $APPLICATION->IncludeComponent(
                 class="section-calculator__header d-flex flex-md-column flex-lg-row gap-md-6 align-items-lg-end py-4 p-md-0 mb-md-6 mb-lg-7 justify-content-lg-between ps-lg-6">
                 <h3 class="d-none d-md-inline">Рассчитайте выгоду</h3>
                 <ul class="nav nav-tabs" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#loan" type="button"
-                                role="tab" aria-controls="loan" aria-selected>Кредит
-                        </button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#mortgage" type="button"
-                                role="tab" aria-controls="mortgage">Ипотека
-                        </button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#deposit" type="button" role="tab"
-                                aria-controls="deposit">Вклад
-                        </button>
-                    </li>
+                    <? foreach (CALC_ORDER as $key => $item):
+                        $active = $key == array_key_first(CALC_ORDER);
+                        ?>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link<?= $active ? ' active' : '' ?>" data-bs-toggle="tab" data-bs-target="#<?= $key ?>" type="button"
+                                    role="tab" aria-controls="<?= $key ?>" <?= $active ? 'aria-selected' : '' ?>><?= $item['title'] ?>
+                            </button>
+                        </li>
+                    <? endforeach; ?>
                 </ul>
             </div>
             <div class="tab-content ps-lg-6">
-                <div class="tab-pane fade show active" id="loan" role="tabpanel" aria-labelledby="loan" tabindex="0">
-                    <? $APPLICATION->IncludeComponent(
-                        "dalee:calculator",
-                        "loans",
-                        array(
-                            "CALCULATOR_ELEMENT_ID" => ""
-                        )
-                    ); ?>
-                </div>
-                <div class="tab-pane fade" id="mortgage" role="tabpanel" aria-labelledby="mortgage" tabindex="0">
-                    <? $APPLICATION->IncludeComponent(
-                        "dalee:calculator",
-                        "mortgage",
-                        array(
-                            "CALCULATOR_ELEMENT_ID" => ""
-                        )
-                    ); ?>
-                </div>
-                <div class="tab-pane fade" id="deposit" role="tabpanel" aria-labelledby="deposit" tabindex="0">
-                    <? $APPLICATION->IncludeComponent(
-                        "dalee:calculator",
-                        "deposits_index",
-                        array(
-                            "CALCULATOR_ELEMENT_ID" => ""
-                        )
-                    ); ?>
-                </div>
+                <? foreach (CALC_ORDER as $key => $item):
+                    $active = $key == array_key_first(CALC_ORDER);
+                    ?>
+                    <div class="tab-pane fade<?= $active ? ' show active' : '' ?>" id="<?= $key ?>" role="tabpanel" aria-labelledby="<?= $key ?>" tabindex="0">
+                        <? $APPLICATION->IncludeComponent(
+                            "dalee:calculator",
+                            $item['template'],
+                            array(
+                                "CALCULATOR_ELEMENT_ID" => ""
+                            )
+                        ); ?>
+                    </div>
+                <? endforeach; ?>
             </div>
         </div>
     </div>

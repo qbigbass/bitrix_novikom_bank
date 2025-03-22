@@ -9,6 +9,8 @@ $table = $data['table'] ?? null;
 $elementId = $data['id'] ?? null;
 $name = $data['name'] ?? null;
 
+$table = 'deposits';
+
 if (empty($table)) {
     echo json_encode(['error' => 'Не указана таблица'], JSON_UNESCAPED_UNICODE);
     die();
