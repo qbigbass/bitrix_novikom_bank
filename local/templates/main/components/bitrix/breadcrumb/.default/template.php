@@ -25,14 +25,14 @@ for($index = 0; $index < $itemSize; $index++)
 	if($arResult[$index]["LINK"] <> "" && $index != $itemSize-1)
 	{
         $strReturn .= '
-            <a class="breadcrumbs__item d-md-inline-flex align-items-center gap-2 text-s '. $breadcrumbsColorClass .' d-inline-flex" href="' . $arResult[$index]["LINK"] . '">
+            <a class="breadcrumbs__item d-md-inline-flex align-items-center gap-2 text-s '. $breadcrumbsColorClass .' d-inline-flex d-none" href="' . $arResult[$index]["LINK"] . '">
                 <span>' . $title . '</span>
             </a>';
 	}
 	else
 	{
 		$strReturn .= '
-		    <a href="' . $arResult[$index-1]["LINK"] . '" class="breadcrumbs__item d-md-inline-flex align-items-center gap-2 text-s dark-70 d-md-none d-lg-block">
+		    <a href="' . $arResult[$index-1]["LINK"] . '" class="breadcrumbs__item d-md-inline-flex align-items-center gap-2 text-s dark-70 d-block d-md-none">
                 ' . $arrow . '
                 <span>' . $title . '</span>
             </a>
