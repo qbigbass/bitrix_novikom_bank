@@ -279,6 +279,7 @@ const MASK_ELEMS = {
     money: '.js-mask-money',
     inn: '.js-mask-inn',
     latin: '.js-mask-latin',
+    name: '.js-mask-name',
 }
 
 function initMask() {
@@ -287,6 +288,7 @@ function initMask() {
     const $inputMoney = $(MASK_ELEMS.money);
     const $inputInn = $(MASK_ELEMS.inn);
     const $inputLatin = $(MASK_ELEMS.latin);
+    const $inputName = $(MASK_ELEMS.name);
 
     $inputPhone.mask('+7 (000) 000-00-00', {
         placeholder: "+7",
@@ -304,6 +306,10 @@ function initMask() {
 
     $inputLatin.on('input', function () {
         this.value = this.value.replace(/[^a-zA-Z\s]/g, '');
+    });
+
+    $inputName.on('input', function () {
+        this.value = this.value.replace(/[^A-Za-zА-Яа-яЁё\s]/g, '');
     });
 }
 
