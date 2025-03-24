@@ -196,23 +196,18 @@ function calculateDepositIncome(STATE) {
             const daysInCurrentMonth = getDaysInMonth(currentDate.getFullYear(), currentDate.getMonth());
             const nextCapitalizationDate = new Date(currentDate);
             nextCapitalizationDate.setDate(nextCapitalizationDate.getDate() + daysInCurrentMonth);
-            console.log('currentDate', currentDate)
-            console.log('nextCapitalizationDate', nextCapitalizationDate)
 
             // Проверяем, не превышает ли переход на следующий месяц дату окончания
-            if (currentDate.getMonth() + 1 < endDate.getMonth() + 1 || currentDate.getFullYear() < endDate.getFullYear()) {
+            if (nextCapitalizationDate < endDate) {
                 if (!hideAdditional) {
-                    while (depositIndex < additionalDeposits.length && parseDate(additionalDeposits[depositIndex].date) <= nextCapitalizationDate) {
+                    while (depositIndex < additionalDeposits.length && parseDate(additionalDeposits[depositIndex].date).setDate(parseDate(additionalDeposits[depositIndex].date).getDate() + 1) <= nextCapitalizationDate) {
                         const depositDate = parseDate(additionalDeposits[depositIndex].date);
                         depositDate.setDate(depositDate.getDate() + 1); // Начисление процентов со следующего дня
                         const remainingDepositDays = Math.floor((nextCapitalizationDate - depositDate) / (1000 * 60 * 60 * 24));
                         const oldRateDays = daysInCurrentMonth - remainingDepositDays;
-                        console.log('remainingDepositDays', remainingDepositDays)
-                        console.log('oldRateDays', oldRateDays)
 
                         if (oldRateDays > 0 && oldRateDays <= daysInCurrentMonth) {
                             oldIncome = totalAmount * dailyInterestRate * oldRateDays;
-                            console.log('oldIncome', oldIncome);
                         }
 
                         // Обновляем общую сумму
@@ -230,27 +225,19 @@ function calculateDepositIncome(STATE) {
                         if (remainingDepositDays > 0) { // Если прошло больше 0 дней после пополнения
                             const dailyInterestRate = (newRate * 0.01 / daysInCurrentYear);
                             remainingIncome = totalAmount * dailyInterestRate * remainingDepositDays;
-                            console.log('remainingIncome', remainingIncome);
-
-                            // totalAmount += remainingIncome; // Добавляем доход от пополнения к общей сумме
                         }
 
-                        // totalAmount += oldIncome;
                         monthIncome += oldIncome + remainingIncome;
                         depositIndex++; // Переходим к следующему пополнению
                     }
                 }
                 if (oldIncome <= 0) {
-                    console.log('not oldIncome');
                     // Рассчитываем доход за полный месяц
                     monthIncome = totalAmount * dailyInterestRate * daysInCurrentMonth;
                 }
                 // const monthIncome = totalAmount * dailyInterestRate * daysInCurrentMonth;
                 totalIncome += monthIncome;
                 totalAmount += monthIncome; // Капитализация
-                console.log('monthIncome', monthIncome);
-                console.log('totalIncome', totalIncome);
-                console.log('totalAmount', totalAmount);
             } else {
                 // Если остались дни до окончания, выходим из цикла
                 break;
@@ -262,8 +249,8 @@ function calculateDepositIncome(STATE) {
 
         // После завершения полного месяца проверяем остаток дней
         if (currentDate < endDate) {
-            const remainingDays = Math.floor((endDate - currentDate) / (1000 * 60 * 60 * 24));
-            const dailyInterestRate = (rate * 0.01 / calculateDaysInYear(currentDate.getFullYear()));
+            let remainingDays = Math.floor((endDate - currentDate) / (1000 * 60 * 60 * 24));
+            const dailyInterestRate = (STATE.rate * 0.01 / calculateDaysInYear(currentDate.getFullYear()));
             const remainingIncome = totalAmount * dailyInterestRate * remainingDays;
             totalIncome += remainingIncome;
             totalAmount += remainingIncome; // Капитализация на оставшиеся дни
