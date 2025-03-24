@@ -187,7 +187,13 @@ function calculateDepositIncome(STATE) {
     additionalDeposits.sort((a, b) => parseDate(a.date) - parseDate(b.date));
 
     let depositIndex = 0; // Индекс для отслеживания пополнений
-
+    additionalDeposits.sort((a, b) => parseDate(a.date) - parseDate(b.date));
+    // Добавление одного дня к каждой дате
+    additionalDeposits.forEach(deposit => {
+        let currentDate = parseDate(deposit.date); // Преобразуем строку в объект Date
+        currentDate.setDate(currentDate.getDate() + 1); // Добавляем один день
+        deposit.date = currentDate; // Обновляем поле date
+    });
     if (capitalization) {
         while (currentDate < endDate) {
             let oldIncome = 0;
@@ -204,9 +210,8 @@ function calculateDepositIncome(STATE) {
             // Проверяем, не превышает ли переход на следующий месяц дату окончания
             if (nextCapitalizationDate < endDate) {
                 if (!hideAdditional) {
-                    while (depositIndex < additionalDeposits.length && parseDate(additionalDeposits[depositIndex].date).setDate(parseDate(additionalDeposits[depositIndex].date).getDate() + 1) <= nextCapitalizationDate) {
-                        const depositDate = parseDate(additionalDeposits[depositIndex].date);
-                        depositDate.setDate(depositDate.getDate() + 1); // Начисление процентов со следующего дня
+                    while (depositIndex < additionalDeposits.length && additionalDeposits[depositIndex].date <= nextCapitalizationDate) {
+                        const depositDate = additionalDeposits[depositIndex].date;
                         const remainingDepositDays = Math.floor((nextCapitalizationDate - depositDate) / (1000 * 60 * 60 * 24));
                         const oldRateDays = daysInCurrentMonth - remainingDepositDays;
 
