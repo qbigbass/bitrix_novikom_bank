@@ -22,7 +22,8 @@ const ELEMS_DEPOSIT = {
     name: '.js-program-name',
     editButton: '.js-input-slider-text-edit',
     polygonContainer: '.js-polygon-container',
-    resultBlock: '.card-calculate-result'
+    resultBlock: '.card-calculate-result',
+    resultButton: '.js-result-button',
 }
 
 const CLASSES_DEPOSIT = {
@@ -136,6 +137,9 @@ function showDepositResult(STATE) {
         percentRowWrapper.classList.add('d-none');
         STATE.elements.displayPercent.textContent = '';
     }
+    if (STATE.elements.displayButton) {
+        STATE.elements.displayButton.href = STATE.filteredData[0].href;
+    }
 }
 
 function handlerInputDeposit(STATE) {
@@ -163,16 +167,13 @@ function calculateDepositIncome(STATE) {
     let { amount, period, rate, capitalization, filteredData, additionalDeposits, hideAdditional = false } = STATE;
     let totalAmount = amount; // Общая сумма вклада, начиная с первоначальной
     let totalIncome = 0; // Переменная для хранения общего дохода
+    let startDate = new Date(); // Если дата не указана в URL, используем текущую дату
 
     // TODO: убрать после тестирования
     const hash = window.location.hash;
-    const startDateString = hash.replace('#startDate=', '');
-    let startDate;
-
-    if (startDateString) {
-        startDate = parseDate(startDateString);
-    } else {
-        startDate = new Date(); // Если дата не указана в URL, используем текущую дату
+    if (hash.includes('startDate=')) {
+        const startDateString = hash.replace('#startDate=', '');
+        startDate = new Date(startDateString); // Преобразование строки в объект Date
     }
 
     // Устанавливаем дату начала вклада
@@ -182,22 +183,86 @@ function calculateDepositIncome(STATE) {
     endDate.setDate(endDate.getDate() + period); // Устанавливаем дату окончания
     let currentDate = new Date(startDate);
 
+    // Сортируем дополнительные пополнения по дате
+    additionalDeposits.sort((a, b) => parseDate(a.date) - parseDate(b.date));
+
+    let depositIndex = 0; // Индекс для отслеживания пополнений
+    additionalDeposits.sort((a, b) => parseDate(a.date) - parseDate(b.date));
+    // Добавление одного дня к каждой дате
+    additionalDeposits.forEach(deposit => {
+        let currentDate = parseDate(deposit.date); // Преобразуем строку в объект Date
+        currentDate.setDate(currentDate.getDate() + 1); // Добавляем один день
+        deposit.date = currentDate; // Обновляем поле date
+    });
     if (capitalization) {
         while (currentDate < endDate) {
+            let oldIncome = 0;
+            let remainingIncome = 0;
+            let monthIncome = 0;
+
             const year = currentDate.getFullYear();
             const daysInCurrentYear = calculateDaysInYear(year);
-            // Преобразуем процентную ставку
             const dailyInterestRate = (rate * 0.01 / daysInCurrentYear);
             const daysInCurrentMonth = getDaysInMonth(currentDate.getFullYear(), currentDate.getMonth());
-            // Рассчитываем доход за текущий месяц
-            const monthIncome = totalAmount * (dailyInterestRate) * daysInCurrentMonth;
-            totalIncome += monthIncome;
+            const nextCapitalizationDate = new Date(currentDate);
+            nextCapitalizationDate.setDate(nextCapitalizationDate.getDate() + daysInCurrentMonth);
 
-            // Обновляем общую сумму с учетом капитализации
-            totalAmount += monthIncome;
+            // Проверяем, не превышает ли переход на следующий месяц дату окончания
+            if (nextCapitalizationDate < endDate) {
+                if (!hideAdditional) {
+                    while (depositIndex < additionalDeposits.length && additionalDeposits[depositIndex].date <= nextCapitalizationDate) {
+                        const depositDate = additionalDeposits[depositIndex].date;
+                        const remainingDepositDays = Math.floor((nextCapitalizationDate - depositDate) / (1000 * 60 * 60 * 24));
+                        const oldRateDays = daysInCurrentMonth - remainingDepositDays;
+
+                        if (oldRateDays > 0 && oldRateDays <= daysInCurrentMonth) {
+                            oldIncome = totalAmount * dailyInterestRate * oldRateDays;
+                        }
+
+                        // Обновляем общую сумму
+                        totalAmount += additionalDeposits[depositIndex].amountItem; // Добавляем само пополнение
+
+                        // Получаем новую процентную ставку в зависимости от общей суммы
+                        let newRate = findDepositRate({data: filteredData, amount: totalAmount, period});
+                        // Если новая процентная ставка не определена, используем текущую
+                        if (!newRate) {
+                            newRate = rate;
+                        }
+
+                        STATE.rate = newRate;
+
+                        if (remainingDepositDays > 0) { // Если прошло больше 0 дней после пополнения
+                            const dailyInterestRate = (newRate * 0.01 / daysInCurrentYear);
+                            remainingIncome = totalAmount * dailyInterestRate * remainingDepositDays;
+                        }
+
+                        monthIncome += oldIncome + remainingIncome;
+                        depositIndex++; // Переходим к следующему пополнению
+                    }
+                }
+                if (oldIncome <= 0) {
+                    // Рассчитываем доход за полный месяц
+                    monthIncome = totalAmount * dailyInterestRate * daysInCurrentMonth;
+                }
+                // const monthIncome = totalAmount * dailyInterestRate * daysInCurrentMonth;
+                totalIncome += monthIncome;
+                totalAmount += monthIncome; // Капитализация
+            } else {
+                // Если остались дни до окончания, выходим из цикла
+                break;
+            }
 
             // Переход к следующему месяцу
             currentDate.setMonth(currentDate.getMonth() + 1);
+        }
+
+        // После завершения полного месяца проверяем остаток дней
+        if (currentDate < endDate) {
+            let remainingDays = Math.floor((endDate - currentDate) / (1000 * 60 * 60 * 24));
+            const dailyInterestRate = (STATE.rate * 0.01 / calculateDaysInYear(currentDate.getFullYear()));
+            const remainingIncome = totalAmount * dailyInterestRate * remainingDays;
+            totalIncome += remainingIncome;
+            totalAmount += remainingIncome; // Капитализация на оставшиеся дни
         }
     } else {
         // Расчеты без капитализации
@@ -217,45 +282,6 @@ function calculateDepositIncome(STATE) {
             currentDate.setMonth(0); // Устанавливаем месяц на январь (0 - январь)
             currentDate.setDate(1); // Устанавливаем день на 1
         }
-    }
-
-    if (!hideAdditional) {
-        // Обработка каждого пополнения
-        additionalDeposits.forEach(deposit => {
-            const { amountItem, date } = deposit;
-            let depositDate = parseDate(date);
-            depositDate.setDate(depositDate.getDate() + 1);
-            // Количество дней, на которые вкладывается пополнение (начиная со следующего дня)
-            const daysOnDeposit = Math.max(0, Math.floor((endDate - depositDate) / (1000 * 60 * 60 * 24)));
-
-            // Обновляем общую сумму
-            totalAmount += Number(amountItem);
-
-            // Получаем новую процентную ставку в зависимости от общей суммы
-            let newRate = findDepositRate({data: filteredData, amount: totalAmount, period});
-            // Если новая процентная ставка не определена, используем текущую
-            if (!newRate) {
-                newRate = rate;
-            }
-
-            STATE.rate = newRate;
-            const dailyNewRate = (newRate * 0.01) / calculateDaysInYear(depositDate.getFullYear());
-
-            // Расчет дохода от пополнения
-            if (capitalization) {
-                const n = 12; // Количество периодов капитализации в год (ежемесячно)
-                const t = daysOnDeposit / calculateDaysInYear(depositDate.getFullYear()); // Количество лет
-
-                // Расчет итоговой суммы с учетом капитализации
-                const A = Number(amountItem) * Math.pow(1 + (newRate * 0.01) / n, n * t);
-
-                // Расчет дохода
-                totalIncome += A - Number(amountItem);
-            } else {
-                // Доход без капитализации
-                totalIncome += Number(amountItem) * dailyNewRate * daysOnDeposit;
-            }
-        });
     }
 
     return totalIncome; // Возвращаем общий доход
@@ -451,6 +477,7 @@ const initElementsDepositCalculator = (root) => {
     const displayIncome = root.querySelector(ELEMS_DEPOSIT.income);
     const displayName = root.querySelector(ELEMS_DEPOSIT.name);
     const displayPercent = root.querySelector(ELEMS_DEPOSIT.percent);
+    const displayButton = root.querySelector(ELEMS_DEPOSIT.resultButton);
     const inputAmount = root.querySelector(ELEMS_DEPOSIT.inputAmount);
     const inputPeriod = root.querySelector(ELEMS_DEPOSIT.inputPeriod);
     const inputPeriodWrapper = inputPeriod.closest(ELEMS_DEPOSIT.inputSlider);
@@ -469,6 +496,7 @@ const initElementsDepositCalculator = (root) => {
         displayIncome,
         displayName,
         displayPercent,
+        displayButton,
         inputAmount,
         inputPeriod,
         inputPeriodWrapper,
@@ -595,8 +623,10 @@ const getDepositValues = (STATE) => {
 
     STATE.minPeriod = findMinValue('periodFrom', STATE.filteredData);
     STATE.maxPeriod = findMaxValue('periodTo', STATE.filteredData);
+    STATE.periodDefault = findDefaultValue('periodDefault', STATE.filteredData[0], {min: STATE.minPeriod, max: STATE.maxPeriod});
     STATE.minAmount = findMinValue('sumFrom', STATE.filteredData);
     STATE.maxAmount = findMaxValue('sumTo', STATE.filteredData);
+    STATE.amountDefault = findDefaultValue('sumDefault', STATE.filteredData[0], {min: STATE.minAmount, max: STATE.maxAmount});
 
     if (STATE.minPeriod !== STATE.maxPeriod) {
         STATE.steps = getStepsPeriod(STATE);
@@ -604,8 +634,8 @@ const getDepositValues = (STATE) => {
         STATE.steps = '';
     }
 
-    STATE.amount = STATE.minAmount;
-    STATE.period = STATE.minPeriod;
+    STATE.amount = STATE.amountDefault;
+    STATE.period = STATE.periodDefault;
 }
 
 const setDepositValues = (STATE, currencyTrigger) => {
@@ -643,11 +673,12 @@ const setDepositValues = (STATE, currencyTrigger) => {
             STATE.elements.inputPeriodWrapper.setAttribute('data-steps', STATE.steps);
             editButton.classList.add(CLASSES_DEPOSIT.hide);
         }
+        STATE.elements.inputPeriodWrapper.setAttribute('data-start-value', STATE.periodDefault);
         initInputSlider([STATE.elements.inputPeriodWrapper]);
         STATE.period = getPeriodValue(STATE.elements.inputPeriod);
     } else { // если период вклада не меняется
         STATE.elements.inputPeriodWrapper.classList.add(CLASSES_DEPOSIT.hide);
-        STATE.period = STATE.minPeriod;
+        STATE.period = STATE.periodDefault;
     }
 
     STATE.elements.inputAmountWrapper.setAttribute('data-min-value', STATE.minAmount);

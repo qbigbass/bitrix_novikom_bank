@@ -12,7 +12,7 @@ mixin banner-text-content(title, breadcrumbsArray, description, button, isSmallT
         if breadcrumbsArray
             - var textColorClass= type === "light" ? "dark-70" : "text-white-50"
             +breadcrumbs(breadcrumbsArray, textColorClass)
-        h1.banner-text__title.text-break(class=[isSmallTitle && "h2 text-white", type === "light" ? "dark-100" : "dark-0"])!= title
+        h1.banner-text__title.text-break(class=[isSmallTitle && "text-white", type === "light" ? "dark-100" : "dark-0"])!= title
         if description
             .banner-text__description.text-l(class=[type === "light" ? "dark-100" : "dark-0"])!= description
         if button

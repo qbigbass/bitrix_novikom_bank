@@ -192,7 +192,7 @@ const setLoanValues = (STATE) => {
     });
 
     $(ELEMS_LOAN.selectBorrowerType).on('select2:select', (event) => {
-        STATE.borrowerType = event.target.checked;
+        STATE.borrowerType = event.target.value;
         STATE.filteredData = findLoanData(STATE);
         checkInputRangeSlider(STATE);
         handlerInputLoan(STATE);
@@ -225,8 +225,8 @@ function findLoanData({calculatorData, loanType, borrowerType, amount}) {
 }
 
 function setStartValues(STATE) {
-    STATE.amount = STATE.minAmount;
-    STATE.period = STATE.minPeriod;
+    STATE.amount = STATE.amountDefault;
+    STATE.period = STATE.periodDefault;
 }
 
 const getLoanValues = (STATE) => {
@@ -244,10 +244,7 @@ const getLoanValues = (STATE) => {
         STATE.loanType = STATE.elements.selectLoanProperties.value;
         STATE.paymentType = STATE.elements.selectLoanPaymentType.value;
         STATE.borrowerType = STATE.elements.selectBorrowerType.value;
-
         STATE.filteredData = findLoanData(STATE);
-
-
     }
 
     if (!STATE.filteredData) {
@@ -256,8 +253,10 @@ const getLoanValues = (STATE) => {
 
     STATE.minPeriod = STATE.filteredData.periodFrom;
     STATE.maxPeriod = STATE.filteredData.periodTo;
+    STATE.periodDefault = findDefaultValue('periodDefault', STATE.filteredData, {min: STATE.minPeriod, max: STATE.maxPeriod});
     STATE.minAmount = STATE.filteredData.sumFrom;
     STATE.maxAmount = STATE.filteredData.sumTo;
+    STATE.amountDefault = findDefaultValue('sumDefault', STATE.filteredData, {min: STATE.minAmount, max: STATE.maxAmount});
     STATE.rate = STATE.filteredData.rate;
     STATE.fullCost = STATE.filteredData.totalCostCreditRange;
 

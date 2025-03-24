@@ -236,46 +236,39 @@ $APPLICATION->IncludeComponent(
                         </span>
                     </div>
                     <ul class="swiper-wrapper tabs-panel__list nav nav-tabs d-inline-flex flex-nowrap w-auto p-0 border border-purple rounded">
-                        <li class="swiper-slide w-auto tabs-panel__list-item nav-item z-2">
-                            <a class="tabs-panel__list-item-link nav-link bg-transparent active" href="#loan" data-bs-toggle="tab" data-bs-target="#loan" role="tab" aria-controls="loan" aria-selected="true">Кредит</a>
-                        </li>
-                        <li class="swiper-slide w-auto tabs-panel__list-item nav-item z-2">
-                            <a class="tabs-panel__list-item-link nav-link bg-transparent" href="#mortgage" data-bs-toggle="tab" data-bs-target="#mortgage" role="tab" aria-controls="mortgage" aria-selected="false">Ипотека</a>
-                        </li>
-                        <li class="swiper-slide w-auto tabs-panel__list-item nav-item z-2">
-                            <a class="tabs-panel__list-item-link nav-link bg-transparent" href="#deposit" data-bs-toggle="tab" data-bs-target="#deposit" role="tab" aria-controls="deposit" aria-selected="false">Вклад</a>
-                        </li>
+                        <? foreach (CALC_ORDER as $key => $item):
+                            $active = $key == array_key_first(CALC_ORDER);
+                            ?>
+                            <li class="swiper-slide w-auto tabs-panel__list-item nav-item z-2">
+                                <a class="tabs-panel__list-item-link nav-link bg-transparent<?= $active ? ' active' : '' ?>"
+                                   href="#<?= $key ?>"
+                                   data-bs-toggle="tab"
+                                   data-bs-target="#<?= $key ?>"
+                                   role="tab"
+                                   aria-controls="<?= $key ?>"
+                                   aria-selected="<?= $active ? 'true' : 'false' ?>"
+                                >
+                                    <?= $item['title'] ?>
+                                </a>
+                            </li>
+                        <? endforeach; ?>
                     </ul>
                 </div>
             </div>
             <div class="tab-content ps-lg-6">
-                <div class="tab-pane fade show active" id="loan" role="tabpanel" aria-labelledby="loan" tabindex="0">
-                    <? $APPLICATION->IncludeComponent(
-                        "dalee:calculator",
-                        "loans",
-                        array(
-                            "CALCULATOR_ELEMENT_ID" => ""
-                        )
-                    ); ?>
-                </div>
-                <div class="tab-pane fade" id="mortgage" role="tabpanel" aria-labelledby="mortgage" tabindex="0">
-                    <? $APPLICATION->IncludeComponent(
-                        "dalee:calculator",
-                        "mortgage",
-                        array(
-                            "CALCULATOR_ELEMENT_ID" => ""
-                        )
-                    ); ?>
-                </div>
-                <div class="tab-pane fade" id="deposit" role="tabpanel" aria-labelledby="deposit" tabindex="0">
-                    <? $APPLICATION->IncludeComponent(
-                        "dalee:calculator",
-                        "deposits_index",
-                        array(
-                            "CALCULATOR_ELEMENT_ID" => ""
-                        )
-                    ); ?>
-                </div>
+                <? foreach (CALC_ORDER as $key => $item):
+                    $active = $key == array_key_first(CALC_ORDER);
+                    ?>
+                    <div class="tab-pane fade<?= $active ? ' show active' : '' ?>" id="<?= $key ?>" role="tabpanel" aria-labelledby="<?= $key ?>" tabindex="0">
+                        <? $APPLICATION->IncludeComponent(
+                            "dalee:calculator",
+                            $item['template'],
+                            array(
+                                "CALCULATOR_ELEMENT_ID" => ""
+                            )
+                        ); ?>
+                    </div>
+                <? endforeach; ?>
             </div>
         </div>
     </div>

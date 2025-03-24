@@ -20,15 +20,7 @@
     }
 
     &__title {
-        hyphens: auto;
-        overflow-wrap: break-word;
-        word-wrap: break-word;
-        -webkit-hyphens: auto;
-        -ms-hyphens: auto;
-        hyphens: auto;
-        @include use-media(mobile) {
-            hyphens: unset;
-        }
+        hyphens: none;
 
         @include use-media(mobile-s, tablet-album) {
             font-weight: 600;
