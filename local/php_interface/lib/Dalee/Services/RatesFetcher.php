@@ -44,7 +44,6 @@ class RatesFetcher
             $dataClass = $this->getDataClass($this->iblockId);
             $properties = $this->getProperties($this->iblockId);
             $properties[] = 'NAME';
-
             $data = [
                 'order' => ['SORT' => 'ASC'],
                 'select' => $properties,
@@ -55,16 +54,15 @@ class RatesFetcher
                 $data['filter']['LINK.ELEMENT.ID'] = $elementIds;
             }
 
-            if (isset($properties['LINK_']) && !isset($properties['BORROWER_TYPE_'])) {
-                // Только для вкладов
+            if (isset($properties['MINIMUM_BALANCE'])) {
+                // Только для вкладов (существует св-во "Неснижаемый остаток")
                 $data['select']['INTEREST_PAYMENT_'] = 'LINK.ELEMENT.INTEREST_PAYMENT.VALUE';
-            } elseif (isset($properties['LINK_'], $properties['BORROWER_TYPE_'])) {
-                // Для кредитов и ипотек
+            } elseif (isset($properties['BORROWER_TYPE_'])) {
+                // Для кредитов и ипотек (существует св-во "Тип заемщика")
                 $data['select']['TOTAL_COST_CREDIT_RANGE_'] = 'LINK.ELEMENT.TOTAL_COST_CREDIT_RANGE.VALUE';
             }
-            
-            $this->loadedElements = $dataClass::getList($data)->fetchAll();
 
+            $this->loadedElements = $dataClass::getList($data)->fetchAll();
             $arrInterestIds = [];
             $arrInterestValueEnum = [];
 
