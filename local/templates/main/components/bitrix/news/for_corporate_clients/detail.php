@@ -66,6 +66,7 @@ $this->setFrameMode(true);
         "ADD_ELEMENT_CHAIN" => "Y",
         "STRICT_SECTION_CHECK" => $arParams['STRICT_SECTION_CHECK'],
         "HEADER_COLOR_CLASS" => $APPLICATION->GetProperty("headerColorClass") ?: "",
+        "CARD_PROMO_CLASS" => $APPLICATION->GetProperty("cardPromoClass") ?: "card-promo--heavy-purple card-promo--padding-banner-img",
     ],
     $component
 );?>

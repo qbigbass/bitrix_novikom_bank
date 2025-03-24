@@ -276,10 +276,10 @@ class HeaderView
                                 <div class="banner-text__description text-l <?= $headerData['h1ColorClass'] ?? 'dark-0' ?>"><?= $headerData['description'] ?></div>
                             <? } ?>
 
+                            <? if (!empty($termsHtml)) { ?>
+                                <?= $termsHtml ?>
+                            <? } ?>
                         </div>
-                        <? if (!empty($termsHtml)) { ?>
-                            <?= $termsHtml ?>
-                        <? } ?>
                     </div>
 
                     <? if (!empty($headerData['picture'])) { ?>

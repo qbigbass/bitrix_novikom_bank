@@ -172,7 +172,11 @@ $customerCategoriesFilter = [
 <? if (!empty($arResult['DISPLAY_PROPERTIES']['BONUS_PROGRAMS']['VALUE'])) : ?>
     <section class="section-layout">
         <div class="container">
-            <h3 class="px-lg-6 mb-6 mb-lg-7"><?= $arResult['DISPLAY_PROPERTIES']['BONUS_PROGRAMS_HEADING']['~VALUE'] ?></h3>
+            <? if (!empty($arResult['DISPLAY_PROPERTIES']['BONUS_PROGRAMS_HEADING']['~VALUE'])) : ?>
+                <h3 class="px-lg-6 mb-6 mb-lg-7">
+                    <?= $arResult['DISPLAY_PROPERTIES']['BONUS_PROGRAMS_HEADING']['~VALUE'] ?>
+                </h3>
+            <? endif; ?>
             <? global $bonusProgramsFilter; ?>
             <? $bonusProgramsFilter = [
                 'ACTIVE' => 'Y',

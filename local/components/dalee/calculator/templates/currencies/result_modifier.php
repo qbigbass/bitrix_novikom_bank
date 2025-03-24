@@ -1,14 +1,24 @@
 <?php
 /** @var array $arResult */
 
+use Bitrix\Iblock\ElementTable;
+
 $filter = [
     'IBLOCK_ID' => iblock('currency-exchange_rates'),
     'ACTIVE' => 'Y',
+    'SECTION.ACTIVE' => 'Y'
 ];
 
-$elements = \Bitrix\Iblock\ElementTable::getList([
-    'filter' => $filter,
+$elements = ElementTable::getList([
     'select' => ['ID', 'NAME'],
+    'filter' => $filter,
+    'runtime' => [
+        'SECTION' => [
+            'data_type' => '\Bitrix\Iblock\SectionTable',
+            'reference' => ['this.IBLOCK_SECTION_ID' => 'ref.ID'],
+            'join_type' => 'LEFT'
+        ]
+    ],
     'order' => ['SORT' => 'ASC'],
 ])->fetchAll();
 

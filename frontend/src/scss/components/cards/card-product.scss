@@ -144,8 +144,14 @@
     }
 
     &--green {
+      background-color: $body-secondary-bg;
+
         &:before {
             background-color: var(--green-100);
+        }
+
+        h3 {
+          color: var(--violet-100);
         }
     }
 
