@@ -56,6 +56,7 @@ function findMinPropertyValue(data) {
     if ((data.sumFromPercent > 0) && (data.sumToPercent > 0)) {
         minPropertyValue = data.sumFrom / (data.sumToPercent * 0.01);
     }
+    minPropertyValue = Math.ceil(minPropertyValue);
 
     return (minPropertyValue > data.sumFrom) ? minPropertyValue : data.sumFrom;
 }
@@ -314,7 +315,7 @@ function findMinMaxInitPay(STATE, maxAmount, minAmount) {
     let minMortgageInitPay = 0;
     let maxMortgageInitPay = 999999999;
 
-    const minInitialPaymentValue = STATE.property - maxAmount;
+    const minInitialPaymentValue = Math.ceil(STATE.property - maxAmount);
     if (minInitialPaymentValue > minMortgageInitPay) minMortgageInitPay = minInitialPaymentValue;
 
     const maxInitialPaymentValue = STATE.property - minAmount;
