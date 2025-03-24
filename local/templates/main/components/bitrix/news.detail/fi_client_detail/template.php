@@ -399,7 +399,10 @@ $headerView
 
 <!-- Варианты банковского сопровождения -->
 <? if (!empty($arResult['PROPERTIES']['SUPPORT_OPTIONS']['VALUE'])) { ?>
-    <section class="section-layout bg-dark-10 px-lg-6">
+    <?
+    $colorBg = $arResult['PROPERTIES']['SUPPORT_COLOR_BLOCK']['VALUE_XML_ID'];
+    ?>
+    <section class="section-layout <?= $colorBg ?> px-lg-6">
         <div class="container">
             <h3 class="mb-4 mb-md-6 mb-lg-7">
                 <?= $arResult['PROPERTIES']['SUPPORT_OPTIONS_HEADER']['~VALUE'] ?? 'Варианты банковского сопровождения' ?>
@@ -410,7 +413,6 @@ $headerView
                 $supportOptionsFilter = [
                     'ID' => $arResult['PROPERTIES']['SUPPORT_OPTIONS']['VALUE']
                 ];
-
                 $APPLICATION->IncludeComponent(
                     "bitrix:news.list",
                     "support_options",
@@ -467,8 +469,8 @@ $headerView
                 );
                 ?>
             </div>
-    </div>
-</section>
+        </div>
+    </section>
 <? } ?>
 
 <!-- Меры финансирования -->
