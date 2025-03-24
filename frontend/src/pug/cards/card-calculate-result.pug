@@ -19,7 +19,7 @@ mixin card-calculate-result(data, bgColor = 'bg-dark-0')
         if data.btnText || data.notes || data.link
             .card-calculate-result__footer
                 if data.btnText
-                    button(type="button").btn.btn-primary.btn-lg-lg.w-100= data.btnText
+                    a(href="#").btn.btn-primary.btn-lg-lg.w-100.js-result-button= data.btnText
                 if data.notes
                     p.dark-70.caption-m.mb-0!= data.notes
                 if data.link

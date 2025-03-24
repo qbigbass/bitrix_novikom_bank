@@ -192,7 +192,7 @@ const setLoanValues = (STATE) => {
     });
 
     $(ELEMS_LOAN.selectBorrowerType).on('select2:select', (event) => {
-        STATE.borrowerType = event.target.checked;
+        STATE.borrowerType = event.target.value;
         STATE.filteredData = findLoanData(STATE);
         checkInputRangeSlider(STATE);
         handlerInputLoan(STATE);
