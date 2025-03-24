@@ -431,6 +431,10 @@ const findMaxValue = (key, data) => {
     return Math.max(...data.map(obj => obj[key]));
 }
 
+const findDefaultValue = (key, data, {min, max}) => {
+    return (data[key] && data[key] > min && data[key] < max) ? data[key] : min;
+}
+
 const URL = '/local/php_interface/ajax/calc.php';
 
 function getRates({table = null, id = null, name = null}) {
