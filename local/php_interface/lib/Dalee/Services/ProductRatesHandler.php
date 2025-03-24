@@ -4,6 +4,7 @@ namespace Dalee\Services;
 
 use Bitrix\Highloadblock\HighloadBlockTable;
 use Bitrix\Iblock\ElementTable;
+use Bitrix\Iblock\Iblock;
 use Bitrix\Main\ArgumentException;
 use Bitrix\Main\Loader;
 use Bitrix\Main\ObjectPropertyException;
@@ -132,7 +133,12 @@ class ProductRatesHandler
             $this->elements = $this->filterByName($this->elements, $this->name);
         }
 
-        $this->response = ['data' => $this->transformKeys($this->elements)];
+        $response = $this->transformKeys($this->elements);
+        usort($response, function ($a, $b) {
+            return $a['sort'] <=> $b['sort'];
+        });
+
+        $this->response = ['data' => $response];
     }
 
     /**
@@ -187,6 +193,11 @@ class ProductRatesHandler
             $newItem['name'] = $this->linkedIblockElements[$item['LINK_']]['name'];
             $newItem['href'] = !empty($this->linkedIblockElements[$item['LINK_']]['code']) ?
                 "/$this->table/{$this->linkedIblockElements[$item['LINK_']]['code']}/" : null;
+            $newItem['sort'] = $this->linkedIblockElements[$item['LINK_']]['sort'];
+            $newItem['sumDefault'] = $this->linkedIblockElements[$item['LINK_']]['sumDefault'];
+            $newItem['periodDefault'] = $this->linkedIblockElements[$item['LINK_']]['periodDefault'];
+
+
             foreach ($item as $key => $value) {
                 if ($key === 'LINK_' || $key === 'NAME') {
                     continue;
@@ -220,18 +231,27 @@ class ProductRatesHandler
     private function getElementsData(): array
     {
         $result = [];
-        $elements = ElementTable::getList([
-            'select' => ['ID', 'NAME', 'CODE'],
-            'filter' => [
-                'IBLOCK_ID' => $this->iblockLinks[$this->table],
-            ]
-        ])->fetchAll();
+        $dataClass = Iblock::wakeUp($this->iblockLinks[$this->table])->getEntityDataClass();
+        $data = [
+            'order' => ['SORT' => 'ASC'],
+            'select' => ['ID', 'NAME', 'CODE', 'SORT'],
+            'filter' => ['ACTIVE' => 'Y']
+        ];
+
+        if ($this->table == 'deposits') {
+            $data['select']['SUM_DEFAULT'] = 'SUM.VALUE';
+            $data['select']['PERIOD_DEFAULT'] = 'PERIOD.VALUE';
+        }
+
+        $elements = $dataClass::getList($data)->fetchAll();
 
         foreach ($elements as $element) {
             $result[$element['ID']] = [
                 'name' => $element['NAME'],
                 'code' => $element['CODE'],
-
+                'sort' => (int)$element['SORT'],
+                'sumDefault' => !empty($element['SUM_DEFAULT']) ? (int)$element['SUM_DEFAULT'] : null,
+                'periodDefault' => !empty($element['PERIOD_DEFAULT']) ? (int)$element['PERIOD_DEFAULT'] : null
             ];
         }
 
