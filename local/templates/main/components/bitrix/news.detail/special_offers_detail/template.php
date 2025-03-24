@@ -49,14 +49,14 @@ $renderer = new Renderer($APPLICATION, $component);
                 <? if ($arResult['PROPERTIES']['BUTTON_DETAIL']['VALUE_XML_ID'] == 'Y' && !empty($arResult['PROPERTIES']['BUTTON_HREF_DETAIL']['VALUE'])): ?>
                     <a class="btn btn-lg-lg btn-outline-primary fw-bold w-100 w-md-auto mt-6 mt-lg-7"
                        href="<?= $arResult['PROPERTIES']['BUTTON_HREF_DETAIL']['VALUE'] ?? '#' ?>">
-                        <?= $arResult['PROPERTIES']['BUTTON_TEXT_DETAIL']['VALUE'] ?>
+                        <?= $arResult['PROPERTIES']['BUTTON_TEXT_DETAIL']['~VALUE'] ?>
                     </a>
                 <? elseif ($arResult['PROPERTIES']['BUTTON_DETAIL']['VALUE_XML_ID'] == 'Y' && !empty($arResult['PROPERTIES']['BUTTON_CODE_FORM']['VALUE'])): ?>
                     <button class="btn btn-lg-lg btn-outline-primary fw-bold w-100 w-md-auto mt-6 mt-lg-7"
                             type="button"
                             data-bs-toggle="modal"
                             data-bs-target="#<?= $arResult['PROPERTIES']['BUTTON_CODE_FORM']['VALUE'] ?>">
-                        <?= $arResult['PROPERTIES']['BUTTON_TEXT_DETAIL']['VALUE'] ?>
+                        <?= $arResult['PROPERTIES']['BUTTON_TEXT_DETAIL']['~VALUE'] ?>
                     </button>
                     <?
                     global $FORMS;
