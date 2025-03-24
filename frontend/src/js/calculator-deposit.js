@@ -22,7 +22,8 @@ const ELEMS_DEPOSIT = {
     name: '.js-program-name',
     editButton: '.js-input-slider-text-edit',
     polygonContainer: '.js-polygon-container',
-    resultBlock: '.card-calculate-result'
+    resultBlock: '.card-calculate-result',
+    resultButton: '.js-result-button',
 }
 
 const CLASSES_DEPOSIT = {
@@ -135,6 +136,9 @@ function showDepositResult(STATE) {
     } else {
         percentRowWrapper.classList.add('d-none');
         STATE.elements.displayPercent.textContent = '';
+    }
+    if (STATE.elements.displayButton) {
+        STATE.elements.displayButton.href = STATE.filteredData[0].href;
     }
 }
 
@@ -468,6 +472,7 @@ const initElementsDepositCalculator = (root) => {
     const displayIncome = root.querySelector(ELEMS_DEPOSIT.income);
     const displayName = root.querySelector(ELEMS_DEPOSIT.name);
     const displayPercent = root.querySelector(ELEMS_DEPOSIT.percent);
+    const displayButton = root.querySelector(ELEMS_DEPOSIT.resultButton);
     const inputAmount = root.querySelector(ELEMS_DEPOSIT.inputAmount);
     const inputPeriod = root.querySelector(ELEMS_DEPOSIT.inputPeriod);
     const inputPeriodWrapper = inputPeriod.closest(ELEMS_DEPOSIT.inputSlider);
@@ -486,6 +491,7 @@ const initElementsDepositCalculator = (root) => {
         displayIncome,
         displayName,
         displayPercent,
+        displayButton,
         inputAmount,
         inputPeriod,
         inputPeriodWrapper,

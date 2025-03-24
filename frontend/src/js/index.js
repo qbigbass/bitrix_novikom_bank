@@ -459,6 +459,7 @@ const dataTemp = {
     "data": [
         {
             "name": "Рост",
+            "href": "\/deposits\/rost\/",
             "currency": "Рубли",
             "rate": 17,
             "effectiveRate": 18.38,
@@ -471,6 +472,7 @@ const dataTemp = {
         },
         {
             "name": "Рост",
+            "href": "\/deposits\/rost\/",
             "currency": "Рубли",
             "rate": 12,
             "effectiveRate": 13.48,
@@ -483,6 +485,7 @@ const dataTemp = {
         },
         {
             "name": "Рантье",
+            "href": "\/deposits\/rante\/",
             "currency": "Рубли",
             "rate": 21.5,
             "effectiveRate": null,
@@ -495,6 +498,7 @@ const dataTemp = {
         },
         {
             "name": "Рост",
+            "href": "\/deposits\/rost\/",
             "currency": "Рубли",
             "rate": 18,
             "effectiveRate": 18.66,
@@ -507,6 +511,7 @@ const dataTemp = {
         },
         {
             "name": "Рост",
+            "href": "\/deposits\/rost\/",
             "currency": "Рубли",
             "rate": 12,
             "effectiveRate": 13.07,
@@ -519,6 +524,7 @@ const dataTemp = {
         },
         {
             "name": "Рост",
+            "href": "\/deposits\/rost\/",
             "currency": "Рубли",
             "rate": 18.3,
             "effectiveRate": 18.98,
@@ -531,6 +537,7 @@ const dataTemp = {
         },
         {
             "name": "Рост",
+            "href": "\/deposits\/rost\/",
             "currency": "Рубли",
             "rate": 17.3,
             "effectiveRate": 18.73,
@@ -543,6 +550,7 @@ const dataTemp = {
         },
         {
             "name": "Рост",
+            "href": "\/deposits\/rost\/",
             "currency": "Рубли",
             "rate": 12.2,
             "effectiveRate": 13.3,
@@ -555,6 +563,7 @@ const dataTemp = {
         },
         {
             "name": "Рост",
+            "href": "\/deposits\/rost\/",
             "currency": "Рубли",
             "rate": 12.2,
             "effectiveRate": 13.73,
@@ -567,6 +576,7 @@ const dataTemp = {
         },
         {
             "name": "Капитал",
+            "href": "\/deposits\/kapital\/",
             "currency": "Юань",
             "rate": 4.3,
             "effectiveRate": null,
@@ -579,6 +589,7 @@ const dataTemp = {
         },
         {
             "name": "Капитал",
+            "href": "\/deposits\/kapital\/",
             "currency": "Рубли",
             "rate": 21.5,
             "effectiveRate": null,
@@ -591,6 +602,7 @@ const dataTemp = {
         },
         {
             "name": "Капитал Социальный",
+            "href": "\/deposits\/kapital-sotsialnyy\/",
             "currency": "Рубли",
             "rate": 18.8,
             "effectiveRate": null,
@@ -603,6 +615,7 @@ const dataTemp = {
         },
         {
             "name": "Капитал Социальный",
+            "href": "\/deposits\/kapital-sotsialnyy\/",
             "currency": "Рубли",
             "rate": 13,
             "effectiveRate": null,
@@ -615,6 +628,7 @@ const dataTemp = {
         },
         {
             "name": "Капитал Социальный",
+            "href": "\/deposits\/kapital-sotsialnyy\/",
             "currency": "Рубли",
             "rate": 13,
             "effectiveRate": null,
@@ -627,6 +641,7 @@ const dataTemp = {
         },
         {
             "name": "Капитал Социальный",
+            "href": "\/deposits\/kapital-sotsialnyy\/",
             "currency": "Рубли",
             "rate": 22.4,
             "effectiveRate": null,
@@ -639,6 +654,7 @@ const dataTemp = {
         },
         {
             "name": "Капитал Социальный",
+            "href": "\/deposits\/kapital-sotsialnyy\/",
             "currency": "Рубли",
             "rate": 21.7,
             "effectiveRate": null,
@@ -651,6 +667,7 @@ const dataTemp = {
         },
         {
             "name": "Капитал Социальный",
+            "href": "\/deposits\/kapital-sotsialnyy\/",
             "currency": "Рубли",
             "rate": 19,
             "effectiveRate": null,
@@ -663,6 +680,7 @@ const dataTemp = {
         },
         {
             "name": "Капитал Социальный",
+            "href": "\/deposits\/kapital-sotsialnyy\/",
             "currency": "Рубли",
             "rate": 13,
             "effectiveRate": null,
@@ -675,6 +693,7 @@ const dataTemp = {
         },
         {
             "name": "Капитал Социальный",
+            "href": "\/deposits\/kapital-sotsialnyy\/",
             "currency": "Рубли",
             "rate": 13,
             "effectiveRate": null,
@@ -687,6 +706,7 @@ const dataTemp = {
         },
         {
             "name": "Комфорт",
+            "href": "\/deposits\/komfort\/",
             "currency": "Рубли",
             "rate": 12.5,
             "effectiveRate": 13.23,
@@ -699,6 +719,7 @@ const dataTemp = {
         },
         {
             "name": "Комфорт",
+            "href": "\/deposits\/komfort\/",
             "currency": "Рубли",
             "rate": 11,
             "effectiveRate": 11.89,
@@ -711,6 +732,7 @@ const dataTemp = {
         },
         {
             "name": "Капитал Социальный",
+            "href": "\/deposits\/kapital-sotsialnyy\/",
             "currency": "Рубли",
             "rate": 21.5,
             "effectiveRate": null,
@@ -723,6 +745,7 @@ const dataTemp = {
         },
         {
             "name": "Капитал Социальный",
+            "href": "\/deposits\/kapital-sotsialnyy\/",
             "currency": "Рубли",
             "rate": 22.2,
             "effectiveRate": null,
@@ -735,6 +758,7 @@ const dataTemp = {
         },
         {
             "name": "Капитал",
+            "href": "\/deposits\/kapital\/",
             "currency": "Юань",
             "rate": 4.8,
             "effectiveRate": null,
@@ -747,6 +771,7 @@ const dataTemp = {
         },
         {
             "name": "Капитал",
+            "href": "\/deposits\/kapital\/",
             "currency": "Юань",
             "rate": 4,
             "effectiveRate": null,
@@ -759,6 +784,7 @@ const dataTemp = {
         },
         {
             "name": "Капитал",
+            "href": "\/deposits\/kapital\/",
             "currency": "Юань",
             "rate": 3.6,
             "effectiveRate": null,
@@ -771,6 +797,7 @@ const dataTemp = {
         },
         {
             "name": "Капитал",
+            "href": "\/deposits\/kapital\/",
             "currency": "Юань",
             "rate": 4,
             "effectiveRate": null,
@@ -783,6 +810,7 @@ const dataTemp = {
         },
         {
             "name": "Капитал",
+            "href": "\/deposits\/kapital\/",
             "currency": "Рубли",
             "rate": 13,
             "effectiveRate": null,
@@ -795,6 +823,7 @@ const dataTemp = {
         },
         {
             "name": "Капитал",
+            "href": "\/deposits\/kapital\/",
             "currency": "Юань",
             "rate": 4.6,
             "effectiveRate": null,
@@ -807,6 +836,7 @@ const dataTemp = {
         },
         {
             "name": "Капитал",
+            "href": "\/deposits\/kapital\/",
             "currency": "Рубли",
             "rate": 13,
             "effectiveRate": null,
@@ -819,6 +849,7 @@ const dataTemp = {
         },
         {
             "name": "Капитал",
+            "href": "\/deposits\/kapital\/",
             "currency": "Юань",
             "rate": 4.2,
             "effectiveRate": null,
@@ -831,6 +862,7 @@ const dataTemp = {
         },
         {
             "name": "Капитал",
+            "href": "\/deposits\/kapital\/",
             "currency": "Юань",
             "rate": 3.8,
             "effectiveRate": null,
@@ -843,6 +875,7 @@ const dataTemp = {
         },
         {
             "name": "Капитал",
+            "href": "\/deposits\/kapital\/",
             "currency": "Рубли",
             "rate": 18.8,
             "effectiveRate": null,
@@ -855,6 +888,7 @@ const dataTemp = {
         },
         {
             "name": "Капитал",
+            "href": "\/deposits\/kapital\/",
             "currency": "Юань",
             "rate": 4.2,
             "effectiveRate": null,
@@ -867,6 +901,7 @@ const dataTemp = {
         },
         {
             "name": "Капитал",
+            "href": "\/deposits\/kapital\/",
             "currency": "Юань",
             "rate": 4.5,
             "effectiveRate": null,
@@ -879,6 +914,7 @@ const dataTemp = {
         },
         {
             "name": "Комфорт",
+            "href": "\/deposits\/komfort\/",
             "currency": "Рубли",
             "rate": 10,
             "effectiveRate": 11.1,
@@ -891,6 +927,7 @@ const dataTemp = {
         },
         {
             "name": "Комфорт",
+            "href": "\/deposits\/komfort\/",
             "currency": "Рубли",
             "rate": 15.5,
             "effectiveRate": 14.38,
@@ -903,6 +940,7 @@ const dataTemp = {
         },
         {
             "name": "Рантье",
+            "href": "\/deposits\/rante\/",
             "currency": "Рубли",
             "rate": 20.6,
             "effectiveRate": null,
@@ -915,6 +953,7 @@ const dataTemp = {
         },
         {
             "name": "Рантье",
+            "href": "\/deposits\/rante\/",
             "currency": "Рубли",
             "rate": 21.3,
             "effectiveRate": null,
@@ -927,6 +966,7 @@ const dataTemp = {
         },
         {
             "name": "Premium Капитал",
+            "href": "\/deposits\/premium-kapital\/",
             "currency": "Доллары",
             "rate": 0.15,
             "effectiveRate": null,
@@ -939,6 +979,7 @@ const dataTemp = {
         },
         {
             "name": "Комфорт",
+            "href": "\/deposits\/komfort\/",
             "currency": "Рубли",
             "rate": 15,
             "effectiveRate": 13.85,
@@ -951,6 +992,7 @@ const dataTemp = {
         },
         {
             "name": "Рост",
+            "href": "\/deposits\/rost\/",
             "currency": "Юань",
             "rate": 3.7,
             "effectiveRate": 3.83,
@@ -963,6 +1005,7 @@ const dataTemp = {
         },
         {
             "name": "Рост",
+            "href": "\/deposits\/rost\/",
             "currency": "Юань",
             "rate": 2.5,
             "effectiveRate": 2.51,
@@ -975,6 +1018,7 @@ const dataTemp = {
         },
         {
             "name": "Рост",
+            "href": "\/deposits\/rost\/",
             "currency": "Юань",
             "rate": 2.8,
             "effectiveRate": 2.83,
@@ -987,6 +1031,7 @@ const dataTemp = {
         },
         {
             "name": "Рост",
+            "href": "\/deposits\/rost\/",
             "currency": "Юань",
             "rate": 3.2,
             "effectiveRate": 3.27,
@@ -999,6 +1044,7 @@ const dataTemp = {
         },
         {
             "name": "Рост",
+            "href": "\/deposits\/rost\/",
             "currency": "Юань",
             "rate": 3.5,
             "effectiveRate": 3.61,
@@ -1011,6 +1057,7 @@ const dataTemp = {
         },
         {
             "name": "Рост",
+            "href": "\/deposits\/rost\/",
             "currency": "Юань",
             "rate": 2.7,
             "effectiveRate": 2.71,
@@ -1023,6 +1070,7 @@ const dataTemp = {
         },
         {
             "name": "Рост",
+            "href": "\/deposits\/rost\/",
             "currency": "Юань",
             "rate": 3,
             "effectiveRate": 3.03,
@@ -1035,6 +1083,7 @@ const dataTemp = {
         },
         {
             "name": "Рантье",
+            "href": "\/deposits\/rante\/",
             "currency": "Рубли",
             "rate": 21.2,
             "effectiveRate": null,
@@ -1047,6 +1096,7 @@ const dataTemp = {
         },
         {
             "name": "Рантье",
+            "href": "\/deposits\/rante\/",
             "currency": "Рубли",
             "rate": 21.1,
             "effectiveRate": null,
@@ -1059,6 +1109,7 @@ const dataTemp = {
         },
         {
             "name": "Рантье",
+            "href": "\/deposits\/rante\/",
             "currency": "Рубли",
             "rate": 21.5,
             "effectiveRate": null,
@@ -1071,6 +1122,7 @@ const dataTemp = {
         },
         {
             "name": "Комфорт",
+            "href": "\/deposits\/komfort\/",
             "currency": "Рубли",
             "rate": 13,
             "effectiveRate": 13.79,
@@ -1083,6 +1135,7 @@ const dataTemp = {
         },
         {
             "name": "Комфорт",
+            "href": "\/deposits\/komfort\/",
             "currency": "Рубли",
             "rate": 11.5,
             "effectiveRate": 12.48,
@@ -1095,6 +1148,7 @@ const dataTemp = {
         },
         {
             "name": "Комфорт",
+            "href": "\/deposits\/komfort\/",
             "currency": "Рубли",
             "rate": 10.5,
             "effectiveRate": 11.62,
@@ -1107,6 +1161,7 @@ const dataTemp = {
         },
         {
             "name": "Рантье",
+            "href": "\/deposits\/rante\/",
             "currency": "Рубли",
             "rate": 21,
             "effectiveRate": null,
@@ -1119,6 +1174,7 @@ const dataTemp = {
         },
         {
             "name": "Перспектива",
+            "href": "\/deposits\/perspektiva\/",
             "currency": "Рубли",
             "rate": 18.5,
             "effectiveRate": null,
@@ -1131,6 +1187,7 @@ const dataTemp = {
         },
         {
             "name": "Перспектива",
+            "href": "\/deposits\/perspektiva\/",
             "currency": "Рубли",
             "rate": 19,
             "effectiveRate": null,
@@ -1143,6 +1200,7 @@ const dataTemp = {
         },
         {
             "name": "Рантье",
+            "href": "\/deposits\/rante\/",
             "currency": "Рубли",
             "rate": 20.2,
             "effectiveRate": null,
@@ -1155,6 +1213,7 @@ const dataTemp = {
         },
         {
             "name": "Рантье",
+            "href": "\/deposits\/rante\/",
             "currency": "Рубли",
             "rate": 21,
             "effectiveRate": null,
@@ -1167,6 +1226,7 @@ const dataTemp = {
         },
         {
             "name": "Рантье",
+            "href": "\/deposits\/rante\/",
             "currency": "Рубли",
             "rate": 21,
             "effectiveRate": null,
@@ -1179,6 +1239,7 @@ const dataTemp = {
         },
         {
             "name": "Рантье",
+            "href": "\/deposits\/rante\/",
             "currency": "Рубли",
             "rate": 20.4,
             "effectiveRate": null,
@@ -1191,6 +1252,7 @@ const dataTemp = {
         },
         {
             "name": "Рантье",
+            "href": "\/deposits\/rante\/",
             "currency": "Рубли",
             "rate": 21.2,
             "effectiveRate": null,
@@ -1203,6 +1265,7 @@ const dataTemp = {
         },
         {
             "name": "Рост",
+            "href": "\/deposits\/rost\/",
             "currency": "Юань",
             "rate": 3.4,
             "effectiveRate": 3.47,
@@ -1215,6 +1278,7 @@ const dataTemp = {
         },
         {
             "name": "Premium Капитал",
+            "href": "\/deposits\/premium-kapital\/",
             "currency": "Рубли",
             "rate": 22.4,
             "effectiveRate": null,
@@ -1227,6 +1291,7 @@ const dataTemp = {
         },
         {
             "name": "Premium Капитал",
+            "href": "\/deposits\/premium-kapital\/",
             "currency": "Доллары",
             "rate": 2,
             "effectiveRate": null,
@@ -1239,6 +1304,7 @@ const dataTemp = {
         },
         {
             "name": "Premium Капитал",
+            "href": "\/deposits\/premium-kapital\/",
             "currency": "Юань",
             "rate": 4.4,
             "effectiveRate": null,
@@ -1251,6 +1317,7 @@ const dataTemp = {
         },
         {
             "name": "Premium Капитал",
+            "href": "\/deposits\/premium-kapital\/",
             "currency": "Юань",
             "rate": 4,
             "effectiveRate": null,
@@ -1263,6 +1330,7 @@ const dataTemp = {
         },
         {
             "name": "Premium Капитал",
+            "href": "\/deposits\/premium-kapital\/",
             "currency": "Юань",
             "rate": 4.4,
             "effectiveRate": null,
@@ -1275,6 +1343,7 @@ const dataTemp = {
         },
         {
             "name": "Premium Капитал",
+            "href": "\/deposits\/premium-kapital\/",
             "currency": "Юань",
             "rate": 4.7,
             "effectiveRate": null,
@@ -1287,6 +1356,7 @@ const dataTemp = {
         },
         {
             "name": "Premium Капитал",
+            "href": "\/deposits\/premium-kapital\/",
             "currency": "Юань",
             "rate": 5,
             "effectiveRate": null,
@@ -1299,6 +1369,7 @@ const dataTemp = {
         },
         {
             "name": "Premium Комфорт",
+            "href": "\/deposits\/premium-komfort\/",
             "currency": "Рубли",
             "rate": 14,
             "effectiveRate": 14.92,
@@ -1311,6 +1382,7 @@ const dataTemp = {
         },
         {
             "name": "Premium Комфорт",
+            "href": "\/deposits\/premium-komfort\/",
             "currency": "Рубли",
             "rate": 12,
             "effectiveRate": 13.07,
@@ -1323,6 +1395,7 @@ const dataTemp = {
         },
         {
             "name": "Premium Комфорт",
+            "href": "\/deposits\/premium-komfort\/",
             "currency": "Рубли",
             "rate": 10.7,
             "effectiveRate": 11.86,
@@ -1335,6 +1408,7 @@ const dataTemp = {
         },
         {
             "name": "Premium Комфорт",
+            "href": "\/deposits\/premium-komfort\/",
             "currency": "Рубли",
             "rate": 16.5,
             "effectiveRate": 17.06,
@@ -1347,6 +1421,7 @@ const dataTemp = {
         },
         {
             "name": "Premium Комфорт",
+            "href": "\/deposits\/premium-komfort\/",
             "currency": "Рубли",
             "rate": 14.3,
             "effectiveRate": 15.26,
@@ -1359,6 +1434,7 @@ const dataTemp = {
         },
         {
             "name": "Premium Комфорт",
+            "href": "\/deposits\/premium-komfort\/",
             "currency": "Рубли",
             "rate": 12.5,
             "effectiveRate": 13.66,
@@ -1371,6 +1447,7 @@ const dataTemp = {
         },
         {
             "name": "Premium Комфорт",
+            "href": "\/deposits\/premium-komfort\/",
             "currency": "Рубли",
             "rate": 10.8,
             "effectiveRate": 11.99,
@@ -1383,6 +1460,7 @@ const dataTemp = {
         },
         {
             "name": "Premium Капитал",
+            "href": "\/deposits\/premium-kapital\/",
             "currency": "Доллары",
             "rate": 0.25,
             "effectiveRate": null,
@@ -1395,6 +1473,7 @@ const dataTemp = {
         },
         {
             "name": "Premium Капитал",
+            "href": "\/deposits\/premium-kapital\/",
             "currency": "Доллары",
             "rate": 1,
             "effectiveRate": null,
@@ -1407,6 +1486,7 @@ const dataTemp = {
         },
         {
             "name": "Premium Капитал",
+            "href": "\/deposits\/premium-kapital\/",
             "currency": "Рубли",
             "rate": 13,
             "effectiveRate": null,
@@ -1419,6 +1499,7 @@ const dataTemp = {
         },
         {
             "name": "Premium Капитал",
+            "href": "\/deposits\/premium-kapital\/",
             "currency": "Рубли",
             "rate": 21.7,
             "effectiveRate": null,
@@ -1431,6 +1512,7 @@ const dataTemp = {
         },
         {
             "name": "Premium Капитал",
+            "href": "\/deposits\/premium-kapital\/",
             "currency": "Рубли",
             "rate": 19,
             "effectiveRate": null,
@@ -1443,6 +1525,7 @@ const dataTemp = {
         },
         {
             "name": "Premium Капитал",
+            "href": "\/deposits\/premium-kapital\/",
             "currency": "Рубли",
             "rate": 13,
             "effectiveRate": null,
@@ -1455,6 +1538,7 @@ const dataTemp = {
         },
         {
             "name": "Premium Капитал",
+            "href": "\/deposits\/premium-kapital\/",
             "currency": "Рубли",
             "rate": 13,
             "effectiveRate": null,
@@ -1467,6 +1551,7 @@ const dataTemp = {
         },
         {
             "name": "Premium Капитал",
+            "href": "\/deposits\/premium-kapital\/",
             "currency": "Рубли",
             "rate": 22.5,
             "effectiveRate": null,
@@ -1479,6 +1564,7 @@ const dataTemp = {
         },
         {
             "name": "Premium Капитал",
+            "href": "\/deposits\/premium-kapital\/",
             "currency": "Рубли",
             "rate": 21.8,
             "effectiveRate": null,
@@ -1491,6 +1577,7 @@ const dataTemp = {
         },
         {
             "name": "Premium Капитал",
+            "href": "\/deposits\/premium-kapital\/",
             "currency": "Рубли",
             "rate": 19.5,
             "effectiveRate": null,
@@ -1503,6 +1590,7 @@ const dataTemp = {
         },
         {
             "name": "Premium Капитал",
+            "href": "\/deposits\/premium-kapital\/",
             "currency": "Рубли",
             "rate": 13,
             "effectiveRate": null,
@@ -1515,6 +1603,7 @@ const dataTemp = {
         },
         {
             "name": "Premium Капитал",
+            "href": "\/deposits\/premium-kapital\/",
             "currency": "Рубли",
             "rate": 13,
             "effectiveRate": null,
@@ -1527,6 +1616,7 @@ const dataTemp = {
         },
         {
             "name": "Premium Капитал",
+            "href": "\/deposits\/premium-kapital\/",
             "currency": "Рубли",
             "rate": 22.7,
             "effectiveRate": null,
@@ -1539,6 +1629,7 @@ const dataTemp = {
         },
         {
             "name": "Premium Капитал",
+            "href": "\/deposits\/premium-kapital\/",
             "currency": "Рубли",
             "rate": 22,
             "effectiveRate": null,
@@ -1551,6 +1642,7 @@ const dataTemp = {
         },
         {
             "name": "Premium Капитал",
+            "href": "\/deposits\/premium-kapital\/",
             "currency": "Рубли",
             "rate": 20,
             "effectiveRate": null,
@@ -1563,6 +1655,7 @@ const dataTemp = {
         },
         {
             "name": "Premium Капитал",
+            "href": "\/deposits\/premium-kapital\/",
             "currency": "Рубли",
             "rate": 13,
             "effectiveRate": null,
@@ -1575,6 +1668,7 @@ const dataTemp = {
         },
         {
             "name": "Premium Комфорт",
+            "href": "\/deposits\/premium-komfort\/",
             "currency": "Рубли",
             "rate": 17.5,
             "effectiveRate": 18.13,
@@ -1587,6 +1681,7 @@ const dataTemp = {
         },
         {
             "name": "Premium Комфорт",
+            "href": "\/deposits\/premium-komfort\/",
             "currency": "Рубли",
             "rate": 14.5,
             "effectiveRate": 15.49,
@@ -1599,6 +1694,7 @@ const dataTemp = {
         },
         {
             "name": "Premium Рост",
+            "href": "\/deposits\/premium-rost\/",
             "currency": "Рубли",
             "rate": 18,
             "effectiveRate": 19.55,
@@ -1611,6 +1707,7 @@ const dataTemp = {
         },
         {
             "name": "Premium Рост",
+            "href": "\/deposits\/premium-rost\/",
             "currency": "Рубли",
             "rate": 19.5,
             "effectiveRate": 20.28,
@@ -1623,6 +1720,7 @@ const dataTemp = {
         },
         {
             "name": "Premium Рост",
+            "href": "\/deposits\/premium-rost\/",
             "currency": "Рубли",
             "rate": 18.5,
             "effectiveRate": 20.14,
@@ -1635,6 +1733,7 @@ const dataTemp = {
         },
         {
             "name": "Premium Рост",
+            "href": "\/deposits\/premium-rost\/",
             "currency": "Юань",
             "rate": 2.9,
             "effectiveRate": 2.91,
@@ -1647,6 +1746,7 @@ const dataTemp = {
         },
         {
             "name": "До востребования",
+            "href": "\/deposits\/do-vostrebovaniya\/",
             "currency": "Юань",
             "rate": 0.01,
             "effectiveRate": null,
@@ -1659,6 +1759,7 @@ const dataTemp = {
         },
         {
             "name": "До востребования",
+            "href": "\/deposits\/do-vostrebovaniya\/",
             "currency": "Евро",
             "rate": 0.01,
             "effectiveRate": null,
@@ -1671,6 +1772,7 @@ const dataTemp = {
         },
         {
             "name": "До востребования",
+            "href": "\/deposits\/do-vostrebovaniya\/",
             "currency": "Рубли",
             "rate": 0.1,
             "effectiveRate": null,
@@ -1683,6 +1785,7 @@ const dataTemp = {
         },
         {
             "name": "До востребования",
+            "href": "\/deposits\/do-vostrebovaniya\/",
             "currency": "Доллары",
             "rate": 0.01,
             "effectiveRate": null,
@@ -1695,6 +1798,7 @@ const dataTemp = {
         },
         {
             "name": "Капитал",
+            "href": "\/deposits\/kapital\/",
             "currency": "Рубли",
             "rate": 22,
             "effectiveRate": null,
@@ -1707,6 +1811,7 @@ const dataTemp = {
         },
         {
             "name": "Капитал",
+            "href": "\/deposits\/kapital\/",
             "currency": "Рубли",
             "rate": 21.3,
             "effectiveRate": null,
@@ -1719,6 +1824,7 @@ const dataTemp = {
         },
         {
             "name": "Капитал",
+            "href": "\/deposits\/kapital\/",
             "currency": "Рубли",
             "rate": 18.5,
             "effectiveRate": null,
@@ -1731,6 +1837,7 @@ const dataTemp = {
         },
         {
             "name": "Капитал",
+            "href": "\/deposits\/kapital\/",
             "currency": "Рубли",
             "rate": 13,
             "effectiveRate": null,
@@ -1743,6 +1850,7 @@ const dataTemp = {
         },
         {
             "name": "Капитал",
+            "href": "\/deposits\/kapital\/",
             "currency": "Рубли",
             "rate": 13,
             "effectiveRate": null,
@@ -1755,6 +1863,7 @@ const dataTemp = {
         },
         {
             "name": "Premium Рост",
+            "href": "\/deposits\/premium-rost\/",
             "currency": "Рубли",
             "rate": 19,
             "effectiveRate": 19.74,
@@ -1767,6 +1876,7 @@ const dataTemp = {
         },
         {
             "name": "Premium Рост",
+            "href": "\/deposits\/premium-rost\/",
             "currency": "Рубли",
             "rate": 17.5,
             "effectiveRate": 18.96,
@@ -1779,6 +1889,7 @@ const dataTemp = {
         },
         {
             "name": "Premium Рост",
+            "href": "\/deposits\/premium-rost\/",
             "currency": "Рубли",
             "rate": 18.5,
             "effectiveRate": 19.2,
@@ -1791,6 +1902,7 @@ const dataTemp = {
         },
         {
             "name": "Premium Комфорт",
+            "href": "\/deposits\/premium-komfort\/",
             "currency": "Рубли",
             "rate": 13,
             "effectiveRate": 14.26,
@@ -1803,6 +1915,7 @@ const dataTemp = {
         },
         {
             "name": "Premium Комфорт",
+            "href": "\/deposits\/premium-komfort\/",
             "currency": "Рубли",
             "rate": 11,
             "effectiveRate": 12.23,
@@ -1815,6 +1928,7 @@ const dataTemp = {
         },
         {
             "name": "Premium Комфорт",
+            "href": "\/deposits\/premium-komfort\/",
             "currency": "Доллары",
             "rate": 0.7,
             "effectiveRate": 0.7,
@@ -1827,6 +1941,7 @@ const dataTemp = {
         },
         {
             "name": "Premium Комфорт",
+            "href": "\/deposits\/premium-komfort\/",
             "currency": "Рубли",
             "rate": 16,
             "effectiveRate": 16.62,
@@ -1839,6 +1954,7 @@ const dataTemp = {
         },
         {
             "name": "Premium Рост",
+            "href": "\/deposits\/premium-rost\/",
             "currency": "Рубли",
             "rate": 13.2,
             "effectiveRate": 14.5,
@@ -1851,6 +1967,7 @@ const dataTemp = {
         },
         {
             "name": "Premium Рост",
+            "href": "\/deposits\/premium-rost\/",
             "currency": "Рубли",
             "rate": 13.2,
             "effectiveRate": 15,
@@ -1863,6 +1980,7 @@ const dataTemp = {
         },
         {
             "name": "Premium Рост",
+            "href": "\/deposits\/premium-rost\/",
             "currency": "Рубли",
             "rate": 13.4,
             "effectiveRate": 14.75,
@@ -1875,6 +1993,7 @@ const dataTemp = {
         },
         {
             "name": "Premium Рост",
+            "href": "\/deposits\/premium-rost\/",
             "currency": "Рубли",
             "rate": 13.4,
             "effectiveRate": 15.26,
@@ -1887,6 +2006,7 @@ const dataTemp = {
         },
         {
             "name": "Premium Рост",
+            "href": "\/deposits\/premium-rost\/",
             "currency": "Рубли",
             "rate": 13.7,
             "effectiveRate": 15.11,
@@ -1899,6 +2019,7 @@ const dataTemp = {
         },
         {
             "name": "Premium Рост",
+            "href": "\/deposits\/premium-rost\/",
             "currency": "Рубли",
             "rate": 13.7,
             "effectiveRate": 15.65,
@@ -1911,6 +2032,7 @@ const dataTemp = {
         },
         {
             "name": "Premium Рост",
+            "href": "\/deposits\/premium-rost\/",
             "currency": "Юань",
             "rate": 3.2,
             "effectiveRate": 3.24,
@@ -1923,6 +2045,7 @@ const dataTemp = {
         },
         {
             "name": "Premium Рост",
+            "href": "\/deposits\/premium-rost\/",
             "currency": "Юань",
             "rate": 3.6,
             "effectiveRate": 3.69,
@@ -1935,6 +2058,7 @@ const dataTemp = {
         },
         {
             "name": "Premium Рост",
+            "href": "\/deposits\/premium-rost\/",
             "currency": "Юань",
             "rate": 4,
             "effectiveRate": 4.15,
@@ -1947,6 +2071,7 @@ const dataTemp = {
         },
         {
             "name": "Капитал",
+            "href": "\/deposits\/kapital\/",
             "currency": "Рубли",
             "rate": 22.2,
             "effectiveRate": null,

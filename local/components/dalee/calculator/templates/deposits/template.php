@@ -184,9 +184,9 @@
                                     <span class="text-number-m fw-bold js-calculator-display-percent"></span></div>
                             </div>
                             <div class="card-calculate-result__footer">
-                                <button class="btn btn-primary btn-lg-lg w-100" type="button">
+                                <a class="btn btn-primary btn-lg-lg w-100" href="#section-steps">
                                     Оформить заявку
-                                </button>
+                                </a>
                                 <p class="dark-70 caption-m mb-0">Калькулятор не&nbsp;гарантирует
                                     точность расчетов. Окончательные параметры вклада определяются
                                     по&nbsp;итогам рассмотрения заявки.</p>
