@@ -30,6 +30,21 @@ const TABS_PLACEHOLDERS_MATCH = [
     '#TEST_EXCEPTION#' => 'TEST_EXCEPTION',
 ];
 
+const CALC_ORDER = [
+    'deposit' => [
+        'title' => 'Вклад',
+        'template' => 'deposits_index'
+    ],
+    'loan' => [
+        'title' => 'Кредит',
+        'template' => 'loans'
+    ],
+    'mortgage' => [
+        'title' => 'Ипотека',
+        'template' => 'mortgage'
+    ],
+
+];
 
 /** @var float Ключевая ставка % */
 const UF_KEY_RATE = 21;

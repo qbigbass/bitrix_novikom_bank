@@ -1,4 +1,4 @@
-form(action="#" data-form).pb-form
+form(action="#" data-form novalidate).pb-form
     div(data-form-validate-group).d-flex.flex-column.row-gap-4.row-gap-lg-5
         h4.pb-form__title.dark-0.text-center Стать клиентом
         .row.g-1
@@ -6,7 +6,7 @@ form(action="#" data-form).pb-form
                 .d-flex.flex-column.row-gap-1.row-gap-lg-2.position-relative
                     label(for="name").form-label.form-label--pb.mb-0
                         | Имя
-                    input#name(type="text" name="name" placeholder="Введите имя" data-form-input required).form-control.form-control--pb
+                    input#name(type="text" name="name" placeholder="Введите имя" data-form-input required).form-control.form-control--pb.js-mask-name
                     .invalid-feedback(aria-live="polite")
             .col-12.col-md-6
                 .d-flex.flex-column.row-gap-1.row-gap-lg-2.position-relative

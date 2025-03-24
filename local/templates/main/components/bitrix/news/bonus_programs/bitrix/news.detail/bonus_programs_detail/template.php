@@ -18,7 +18,7 @@ $renderer = new Renderer($APPLICATION, $component);
 ?>
 <section
     class="banner-text border-green <?=$arResult['DISPLAY_PROPERTIES']['BANNER_STYLE']['VALUE_XML_ID']?>"
-    <? if (!empty($arResult['DISPLAY_PROPERTIES']['BONUS_HEADER_BACKGROUND']['FILE_VALUE']['SRC'])): ?>
+    <? if (!empty($arResult['DISPLAY_PROPERTIES']['BONUS_HEADER_BACKGROUND']['FILE_VALUE']['SRC'])) : ?>
         style="background: url('<?= $arResult['DISPLAY_PROPERTIES']['BONUS_HEADER_BACKGROUND']['FILE_VALUE']['SRC']; ?>') no-repeat center center / cover;"
     <? endif; ?>
 >
@@ -67,16 +67,23 @@ $renderer = new Renderer($APPLICATION, $component);
         <img src="/frontend/dist/img/patterns/section/pattern-light-l.svg" alt="bg pattern" loading="lazy">
     </picture>
 </section>
-<? if (!empty($arResult['DISPLAY_PROPERTIES']['BONUS_BENEFITS']['VALUE'])): ?>
+<? if (!empty($arResult['DISPLAY_PROPERTIES']['BONUS_BENEFITS']['VALUE'])) : ?>
     <section class="section-layout">
         <div class="container">
             <div class="row row-gap-6 row-gap-md-7 px-lg-6">
-                <? if (!empty($arResult['DISPLAY_PROPERTIES']['BONUS_BENEFITS_HEADING']['~VALUE'])): ?>
+                <? if (!empty($arResult['DISPLAY_PROPERTIES']['BONUS_BENEFITS_HEADING']['~VALUE'])) : ?>
                     <h3>
-                        <?= $arResult['DISPLAY_PROPERTIES']['BONUS_BENEFITS_HEADING']['~VALUE']; ?>
+                        <?= $arResult['DISPLAY_PROPERTIES']['BONUS_BENEFITS_HEADING']['~VALUE'] ?>
                     </h3>
                 <? endif; ?>
-                <? $renderer->render('Benefits', $arResult['PROPERTIES']['BONUS_BENEFITS']['VALUE'], null, ['colCount' => $arResult['DISPLAY_PROPERTIES']['BENEFITS_COL']['VALUE'] ?? 3]); ?>
+                <? $renderer->render(
+                    'Benefits',
+                    $arResult['PROPERTIES']['BONUS_BENEFITS']['VALUE'],
+                    null,
+                    [
+                        'colCount' => $arResult['DISPLAY_PROPERTIES']['BENEFITS_COL']['VALUE'] ?? 3
+                    ]
+                ); ?>
             </div>
         </div>
         <picture class="pattern-bg pattern-bg--position-sm-bottom">
@@ -85,10 +92,10 @@ $renderer = new Renderer($APPLICATION, $component);
             <img src="/frontend/dist/img/patterns/section/pattern-light-l.svg" alt="bg pattern" loading="lazy">
         </picture>
     </section>
-<?endif;?>
+<? endif; ?>
 
-<?if(!empty($arResult['DISPLAY_PROPERTIES']['BENEFITS_INFO_BOX']['~VALUE']['TEXT'])) :?>
-    <section class="section-layout">
+<? if (!empty($arResult['DISPLAY_PROPERTIES']['BENEFITS_INFO_BOX']['~VALUE']['TEXT'])) : ?>
+    <section class="section-layout pt-0">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -98,7 +105,7 @@ $renderer = new Renderer($APPLICATION, $component);
                                 <div class="helper__wrapper d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-4 gap-lg-6">
                                     <img class="helper__image w-auto float-end" src="/frontend/dist/img/restructuring-additional-info.png" alt="">
                                     <div class="helper__content text-l">
-                                        <p class="mb-0"><?=$arResult['DISPLAY_PROPERTIES']['BENEFITS_INFO_BOX']['~VALUE']['TEXT']?></p>
+                                        <p class="mb-0"><?= $arResult['DISPLAY_PROPERTIES']['BENEFITS_INFO_BOX']['~VALUE']['TEXT'] ?></p>
                                     </div>
                                 </div>
                             </div>
@@ -113,21 +120,20 @@ $renderer = new Renderer($APPLICATION, $component);
             </div>
         </div>
     </section>
-<?endif;?>
+<? endif; ?>
 
-<?if(!empty($arResult['DISPLAY_PROPERTIES']['CASHBACK_CATEGORIES']['VALUE'])) : ?>
+<? if (!empty($arResult['DISPLAY_PROPERTIES']['CASHBACK_CATEGORIES']['VALUE'])) : ?>
     <section class="section-layout bg-blue-10">
-        <?$GLOBALS['cashbackFilter'] = [
+        <? $GLOBALS['cashbackFilter'] = [
             'ACTIVE' => 'Y',
             'IBLOCK_SECTION_ID' => $arResult['DISPLAY_PROPERTIES']['CASHBACK_CATEGORIES']['VALUE']
         ];?>
 
-        <?$APPLICATION->IncludeComponent(
+        <? $APPLICATION->IncludeComponent(
             "bitrix:news.list",
             "cashback",
             [
                 "CASHBACK_HEADER" => $arResult['DISPLAY_PROPERTIES']['CASHBACK_CATEGORIES_HEADER']['~VALUE'],
-
                 "ACTIVE_DATE_FORMAT" => "d.m.Y",
                 "ADD_SECTIONS_CHAIN" => "N",
                 "AJAX_MODE" => "N",
@@ -181,16 +187,16 @@ $renderer = new Renderer($APPLICATION, $component);
     </section>
 <?endif;?>
 
-<?if($arResult['DISPLAY_PROPERTIES']['SHOW_BONUSES_CALC']['VALUE'] === 'Y'): ?>
+<? if ($arResult['DISPLAY_PROPERTIES']['SHOW_BONUSES_CALC']['VALUE'] === 'Y') : ?>
     <section class="section-layout">
         <div class="container">
             <h3 class="px-lg-6 mb-6 mb-lg-7">Калькулятор бонусов</h3>
             <? $APPLICATION->IncludeComponent(
                 "dalee:calculator",
                 "bonuses",
-                array(
+                [
                     "CALCULATOR_ELEMENT_ID" => $arResult['ID'],
-                )
+                ]
             ); ?>
         </div>
         <picture class="pattern-bg pattern-bg--position-sm-bottom">
@@ -199,26 +205,37 @@ $renderer = new Renderer($APPLICATION, $component);
             <img src="/frontend/dist/img/patterns/section-2/pattern-light-l.svg" alt="bg pattern" loading="lazy">
         </picture>
     </section>
-<?endif;?>
+<? endif; ?>
 
-<?if(!empty($arResult['DISPLAY_PROPERTIES']['INSTRUCTION_1']['VALUE'])) : ?>
+<? if (!empty($arResult['DISPLAY_PROPERTIES']['INSTRUCTION_1']['VALUE'])) : ?>
     <section class="section-layout js-collapsed-mobile bg-dark-10">
         <div class="container">
-            <h3 class="d-none d-md-block mb-md-6 mb-lg-7 px-lg-6"><?=$arResult['DISPLAY_PROPERTIES']['INSTRUCTION_1_HEADING']['~VALUE']?></h3>
-            <a class="h3 d-flex align-items-center justify-content-between dark-100 d-md-none" data-bs-toggle="collapse" href="#instruction-1" role="button" aria-expanded="false" aria-controls="instruction-1">
-                <?=$arResult['DISPLAY_PROPERTIES']['INSTRUCTION_1_HEADING']['~VALUE']?>
+            <? if (!empty($arResult['DISPLAY_PROPERTIES']['INSTRUCTION_1_HEADING']['~VALUE'])) : ?>
+                <h3 class="d-none d-md-block mb-md-6 mb-lg-7 px-lg-6">
+                    <?= $arResult['DISPLAY_PROPERTIES']['INSTRUCTION_1_HEADING']['~VALUE'] ?>
+                </h3>
+            <? endif; ?>
+            <a
+                class="h3 d-flex align-items-center justify-content-between dark-100 d-md-none"
+                data-bs-toggle="collapse"
+                href="#instruction-1"
+                role="button"
+                aria-expanded="false"
+                aria-controls="instruction-1"
+            >
+                <?= $arResult['DISPLAY_PROPERTIES']['INSTRUCTION_1_HEADING']['~VALUE'] ?>
                 <svg class="icon size-m violet-100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                     <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-down"></use>
                 </svg>
             </a>
             <div class="collapse d-md-block" id="instruction-1">
                 <div class="row px-lg-6 row-gap-6 row-gap-lg-7 mt-4 mt-md-6 mt-lg-7">
-                    <?$GLOBALS['cardReceiptOptionsFilter'] = [
+                    <? $GLOBALS['cardReceiptOptionsFilter'] = [
                         'ACTIVE' => 'Y',
                         'ID' => $arResult['DISPLAY_PROPERTIES']['INSTRUCTION_1']['VALUE']
-                    ];?>
+                    ]; ?>
 
-                    <?$APPLICATION->IncludeComponent(
+                    <? $APPLICATION->IncludeComponent(
                         "bitrix:news.list",
                         "instructions",
                         [
@@ -277,13 +294,13 @@ $renderer = new Renderer($APPLICATION, $component);
             </div>
         </div>
     </section>
-<?endif;?>
+<? endif; ?>
 
-<? if (!empty($arResult['DISPLAY_PROPERTIES']['BONUS_TABS']['VALUE'])): ?>
+<? if (!empty($arResult['DISPLAY_PROPERTIES']['BONUS_TABS']['VALUE'])) : ?>
     <section class="section-layout js-collapsed-mobile">
         <div class="container">
             <h3 class="d-none d-md-block mb-md-6 mb-lg-7 px-lg-6">
-                <?= $arResult['DISPLAY_PROPERTIES']['BONUS_TABS_HEADING']['~VALUE']; ?>
+                <?= $arResult['DISPLAY_PROPERTIES']['BONUS_TABS_HEADING']['~VALUE'] ?>
             </h3>
             <a class="h3 d-flex align-items-center justify-content-between dark-100 d-md-none" data-bs-toggle="collapse" href="#additional-info-content" role="button" aria-expanded="false" aria-controls="additional-info-content">
                 <?= $arResult['DISPLAY_PROPERTIES']['BONUS_TABS_HEADING']['~VALUE']; ?>
@@ -301,24 +318,36 @@ $renderer = new Renderer($APPLICATION, $component);
     </section>
 <? endif; ?>
 
-<?if(!empty($arResult['DISPLAY_PROPERTIES']['INSTRUCTION_2']['VALUE'])) : ?>
+<? if (!empty($arResult['DISPLAY_PROPERTIES']['INSTRUCTION_2']['VALUE'])) : ?>
     <section class="section-layout js-collapsed-mobile bg-dark-10">
         <div class="container">
-            <h3 class="d-none d-md-block mb-md-6 mb-lg-7 px-lg-6"><?=$arResult['DISPLAY_PROPERTIES']['INSTRUCTION_2_HEADING']['~VALUE']?></h3>
-            <a class="h3 d-flex align-items-center justify-content-between dark-100 d-md-none" data-bs-toggle="collapse" href="#instruction-2" role="button" aria-expanded="false" aria-controls="instruction-2">
-                <?=$arResult['DISPLAY_PROPERTIES']['INSTRUCTION_2_HEADING']['~VALUE']?>
+            <? if (!empty($arResult['DISPLAY_PROPERTIES']['INSTRUCTION_2_HEADING']['~VALUE'])) : ?>
+                <h3 class="d-none d-md-block mb-md-6 mb-lg-7 px-lg-6">
+                    <?= $arResult['DISPLAY_PROPERTIES']['INSTRUCTION_2_HEADING']['~VALUE'] ?>
+                </h3>
+            <? endif; ?>
+            <a
+                class="h3 d-flex align-items-center justify-content-between dark-100 d-md-none"
+                data-bs-toggle="collapse"
+                href="#instruction-2"
+                role="button"
+                aria-expanded="false"
+                aria-controls="instruction-2"
+            >
+                <?= $arResult['DISPLAY_PROPERTIES']['INSTRUCTION_2_HEADING']['~VALUE'] ?>
                 <svg class="icon size-m violet-100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                     <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-down"></use>
                 </svg>
             </a>
             <div class="collapse d-md-block" id="instruction-2">
                 <div class="row px-lg-6 row-gap-6 row-gap-lg-7 mt-4 mt-md-6 mt-lg-7">
-                    <?$GLOBALS['cardReceiptOptionsFilter'] = [
+                    <?
+                    $GLOBALS['cardReceiptOptionsFilter'] = [
                         'ACTIVE' => 'Y',
                         'ID' => $arResult['DISPLAY_PROPERTIES']['INSTRUCTION_2']['VALUE']
-                    ];?>
-
-                    <?$APPLICATION->IncludeComponent(
+                    ];
+                    ?>
+                    <? $APPLICATION->IncludeComponent(
                         "bitrix:news.list",
                         "instructions",
                         [
@@ -377,9 +406,9 @@ $renderer = new Renderer($APPLICATION, $component);
             </div>
         </div>
     </section>
-<?endif;?>
+<? endif; ?>
 
-<?if(!empty($arResult['DISPLAY_PROPERTIES']['INFO_BOX']['~VALUE']['TEXT'])) :?>
+<? if (!empty($arResult['DISPLAY_PROPERTIES']['INFO_BOX']['~VALUE']['TEXT'])) : ?>
     <section class="section-layout">
         <div class="container">
             <div class="row">
@@ -390,13 +419,13 @@ $renderer = new Renderer($APPLICATION, $component);
                                 <div class="helper__wrapper d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-4 gap-lg-6">
                                     <img class="helper__image w-auto float-end" src="/frontend/dist/img/restructuring-additional-info.png" alt="">
                                     <div class="helper__content text-l">
-                                        <? if (!empty($arResult['DISPLAY_PROPERTIES']['INFO_BOX_HEADER']['~VALUE'])): ?>
+                                        <? if (!empty($arResult['DISPLAY_PROPERTIES']['INFO_BOX_HEADER']['~VALUE'])) : ?>
                                             <h4 class="mb-3">
-                                                <?= $arResult['DISPLAY_PROPERTIES']['INFO_BOX_HEADER']['~VALUE']; ?>
+                                                <?= $arResult['DISPLAY_PROPERTIES']['INFO_BOX_HEADER']['~VALUE'] ?>
                                             </h4>
                                         <? endif; ?>
                                         <p class="mb-0">
-                                            <?= $arResult['DISPLAY_PROPERTIES']['INFO_BOX']['~VALUE']['TEXT']; ?>
+                                            <?= $arResult['DISPLAY_PROPERTIES']['INFO_BOX']['~VALUE']['TEXT'] ?>
                                         </p>
                                     </div>
                                 </div>
@@ -412,26 +441,38 @@ $renderer = new Renderer($APPLICATION, $component);
             </div>
         </div>
     </section>
-<?endif;?>
+<? endif; ?>
 
-<?if(!empty($arResult['DISPLAY_PROPERTIES']['INSTRUCTION_3']['VALUE'])) : ?>
+<? if (!empty($arResult['DISPLAY_PROPERTIES']['INSTRUCTION_3']['VALUE'])) : ?>
     <section class="section-layout js-collapsed-mobile bg-dark-10">
         <div class="container">
-            <h3 class="d-none d-md-block mb-md-6 mb-lg-7 px-lg-6"><?=$arResult['DISPLAY_PROPERTIES']['INSTRUCTION_3_HEADING']['~VALUE']?></h3>
-            <a class="h3 d-flex align-items-center justify-content-between dark-100 d-md-none" data-bs-toggle="collapse" href="#instruction-3" role="button" aria-expanded="false" aria-controls="instruction-3">
-                <?=$arResult['DISPLAY_PROPERTIES']['INSTRUCTION_3_HEADING']['~VALUE']?>
+            <? if (!empty($arResult['DISPLAY_PROPERTIES']['INSTRUCTION_3_HEADING']['~VALUE'])) : ?>
+                <h3 class="d-none d-md-block mb-md-6 mb-lg-7 px-lg-6">
+                    <?= $arResult['DISPLAY_PROPERTIES']['INSTRUCTION_3_HEADING']['~VALUE'] ?>
+                </h3>
+            <? endif; ?>
+            <a
+                class="h3 d-flex align-items-center justify-content-between dark-100 d-md-none"
+                data-bs-toggle="collapse"
+                href="#instruction-3"
+                role="button"
+                aria-expanded="false"
+                aria-controls="instruction-3"
+            >
+                <?= $arResult['DISPLAY_PROPERTIES']['INSTRUCTION_3_HEADING']['~VALUE'] ?>
                 <svg class="icon size-m violet-100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                     <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-chevron-down"></use>
                 </svg>
             </a>
             <div class="collapse d-md-block" id="instruction-3">
                 <div class="row px-lg-6 row-gap-6 row-gap-lg-7 mt-4 mt-md-6 mt-lg-7">
-                    <?$GLOBALS['cardReceiptOptionsFilter'] = [
+                    <?
+                    $GLOBALS['cardReceiptOptionsFilter'] = [
                         'ACTIVE' => 'Y',
                         'ID' => $arResult['DISPLAY_PROPERTIES']['INSTRUCTION_3']['VALUE']
-                    ];?>
-
-                    <?$APPLICATION->IncludeComponent(
+                    ];
+                    ?>
+                    <? $APPLICATION->IncludeComponent(
                         "bitrix:news.list",
                         "instructions",
                         [
@@ -490,9 +531,9 @@ $renderer = new Renderer($APPLICATION, $component);
             </div>
         </div>
     </section>
-<?endif;?>
+<? endif; ?>
 
-<?php $APPLICATION->IncludeComponent(
+<? $APPLICATION->IncludeComponent(
     "dalee:form",
     "credit_card_form",
     [

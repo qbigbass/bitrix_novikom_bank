@@ -16,7 +16,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
  */
 $this->setFrameMode(true);
 ?>
-<form class="pb-form" action="#" data-form>
+<form class="pb-form" action="#" data-form novalidate>
     <input type="hidden" name="sessid" value="<?= bitrix_sessid(); ?>">
     <input type="hidden" name="FORM_CODE" value="<?= $arParams['FORM_CODE'] ?>">
     <div class="d-flex flex-column row-gap-4 row-gap-lg-5" data-form-validate-group>
@@ -25,7 +25,7 @@ $this->setFrameMode(true);
             <div class="col-12 col-md-6">
                 <div class="d-flex flex-column row-gap-1 row-gap-lg-2 position-relative">
                     <label class="form-label form-label--pb mb-0" for="name">Имя</label>
-                    <input class="form-control form-control--pb" id="name" type="text" name="name" placeholder="Введите имя" autocomplete="off" data-form-input required>
+                    <input class="form-control form-control--pb js-mask-name" id="name" type="text" name="name" placeholder="Введите имя" autocomplete="off" data-form-input required>
                     <div class="invalid-feedback" aria-live="polite"></div>
                 </div>
             </div>

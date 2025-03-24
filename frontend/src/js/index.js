@@ -279,6 +279,7 @@ const MASK_ELEMS = {
     money: '.js-mask-money',
     inn: '.js-mask-inn',
     latin: '.js-mask-latin',
+    name: '.js-mask-name',
 }
 
 function initMask() {
@@ -287,6 +288,7 @@ function initMask() {
     const $inputMoney = $(MASK_ELEMS.money);
     const $inputInn = $(MASK_ELEMS.inn);
     const $inputLatin = $(MASK_ELEMS.latin);
+    const $inputName = $(MASK_ELEMS.name);
 
     $inputPhone.mask('+7 (000) 000-00-00', {
         placeholder: "+7",
@@ -304,6 +306,10 @@ function initMask() {
 
     $inputLatin.on('input', function () {
         this.value = this.value.replace(/[^a-zA-Z\s]/g, '');
+    });
+
+    $inputName.on('input', function () {
+        this.value = this.value.replace(/[^A-Za-zА-Яа-яЁё\s]/g, '');
     });
 }
 
@@ -457,6 +463,38 @@ function getRates({table = null, id = null, name = null}) {
         })
 }
 
+function checkTitleVisibility() {
+    const isTablet = window.matchMedia(`(max-width: ${MEDIA_QUERIES['tablet']})`).matches;
+    const titles = document.querySelectorAll('.banner-text__title');
+    if (!titles.length) return;
+
+    if (!isTablet) {
+        titles.forEach((title) => {
+            title.removeAttribute('style'); // Удаляем все инлайн-стили
+        });
+        return;
+    }
+
+    titles.forEach((title) => {
+        title.classList.remove('text-break');
+        title.removeAttribute('style'); // Удаляем все инлайн-стили
+        let rect = title.getBoundingClientRect();
+        const parentRect = title.parentElement.getBoundingClientRect(); // Получаем размеры родительского контейнера
+
+        // Проверяем, помещается ли заголовок по ширине в окно
+        if (rect.width > parentRect.width) {
+            // Уменьшаем размер шрифта, пока заголовок не станет видимым
+            let newSize = parseFloat(window.getComputedStyle(title).fontSize);
+            while (rect.width > parentRect.width && newSize > 10) { // Минимальный размер шрифта 10px
+                newSize -= 1; // Уменьшаем размер шрифта на 1px
+                title.style.fontSize = newSize + 'px';
+                // Обновляем размеры после изменения стиля
+                rect = title.getBoundingClientRect();
+            }
+        }
+    })
+}
+
 let isInitialLoad = true;
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -497,6 +535,7 @@ document.addEventListener('DOMContentLoaded', () => {
 window.addEventListener('load', function() {
     initPolygonContainer();
     activateTabFromHash();
+    checkTitleVisibility();
 
     const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
     const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
@@ -516,5 +555,6 @@ window.addEventListener('resize', () => {
         setVh();
         hideDropDownMenu();
         checkWidth();
+        checkTitleVisibility();
     }
 });

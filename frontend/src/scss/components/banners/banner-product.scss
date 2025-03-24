@@ -101,7 +101,9 @@
 
     &__breadcrumbs {
         & .breadcrumbs__item {
-            white-space: nowrap;
+            @include use-media(tablet) {
+                white-space: nowrap;
+            }
         }
 
         @include use-media(tablet) {

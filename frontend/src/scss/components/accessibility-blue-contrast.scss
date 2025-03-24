@@ -22,7 +22,6 @@
     background-color: var(--blue-contrast-bg);
     color: var(--blue-contrast-light);
 
-
     .d-inline-flex.flex-column.row-gap-2.w-min-content span {
       color: var(--blue-contrast-white);
     }
@@ -266,6 +265,8 @@
 
     }
 
+    
+
     //онлайн банк
     .btn.btn-sm.btn-primary.dropdown-toggle {
       color: var(--blue-contrast-bg-dark);
@@ -288,6 +289,8 @@
 
 
 
+
+
     .dropdown-menu {
       --bs-dropdown-link-color: var(--blue-contrast-white);
       --bs-dropdown-bg: var(--blue-contrast-bg-dark);
@@ -296,11 +299,9 @@
 
     .dropdown-nav {
       background-color: var(--blue-contrast-bg-dark);
-
     }
 
     .dropdown-item {
-
       &:hover,
       &:focus {
         background-color: var(--blue-contrast-bg-dark);
@@ -552,7 +553,6 @@
       }
     }
 
-
     //кнопки rustore nashstore
     .d-flex.gap-3 {
       .btn.btn-info.d-none.d-md-inline-flex.align-items-center {
@@ -595,7 +595,6 @@
       p.text-s.dark-70.mb-0 {
         color: var(--blue-contrast-white);
       }
-
     }
 
     .section-layout.section-feedback.bg-blue-10 {
@@ -742,9 +741,49 @@
 
 
 
-    .input-slider-text__input.h4.js-input-slider-text-input:focus {
+    .input-slider-text__input.h4.js-input-slider-text-input{
       border: 1px solid var(--blue-contrast-white);
+      &:focus {
+        border: 1px solid var(--blue-contrast-light);
+        box-shadow: 0 0 5px var(--blue-contrast-light);
+      }
     }
+
+//дропдаун
+    .d-flex.flex-column.row-gap-4.row-gap-lg-6{
+      .d-flex.flex-column.row-gap-2{
+      .select2-selection.select2-selection--single{
+        border: 1px solid var(--blue-contrast-white) !important;
+        &:focus {
+          border: 1px solid var(--blue-contrast-light) !important;;
+          box-shadow: 0 0 5px var(--blue-contrast-light) !important;;
+        }
+      }
+    }}
+
+    .col-12.col-md-6{
+      .d-flex.flex-column.row-gap-2{
+        .select2.select2-container.select2-container--default.select2-container--below{
+          .selection{
+            .select2-selection.select2-selection--single{
+              border: 1px solid var(--blue-contrast-white)!important;
+              &:focus {
+                border: 1px solid var(--blue-contrast-light) !important;;
+                box-shadow: 0 0 5px var(--blue-contrast-light) !important;;
+            }
+            }
+          }
+         }
+      }
+    }
+
+
+
+
+
+
+
+  
 
     .d-none.d-md-inline.text-s.fw-semibold {
       color: var(--blue-contrast-white);
@@ -785,11 +824,9 @@
       }
     }
 
-
     .card-about-bank__description {
       border-top: 1px dashed var(--blue-contrast-white);
     }
-
 
     .nav-tabs {
       border: none;
@@ -811,7 +848,7 @@
 
 
 
-
+    
 
 
 
@@ -823,7 +860,6 @@
     .tab-content {
       color: var(--blue-contrast-white);
     }
-
 
     #loan-consumer label,
     #loan-consumer span,
@@ -870,11 +906,9 @@
       }
     }
 
-
     .dark-70 {
       color: var(--blue-contrast-white);
     }
-
 
     .select2-container--default .select2-results__option--highlighted.select2-results__option--selectable{
       color: var(--blue-contrast-white) !important;
@@ -902,7 +936,7 @@
 
     .card-special.bg-dark-10.dark-100.h-100.d-flex.flex-column.row-gap-6.row-gap-lg-9 {
       background: var(--blue-contrast-light-1);
-
+      border:1px solid var(--blue-contrast-white);
       &:focus {
         background: var(--blue-contrast-white);
       }
@@ -962,27 +996,21 @@
 
 
 
-
-
-
-    button .btn.btn-info.w-100.w-lg-auto {
-      background-color: green;
-      color: var(--black-contrast-gray-200);
-      border: 1px solid var(--black-contrast-black-0);
-      transition: background-color 0.2s ease;
-
-      &:hover,
-      &:focus {
-        background-color: var(--black-contrast-gray-200);
-        border: none;
-        color: var(--black-contrast-black-300);
-      }
-
-      &:focus {
-        outline: 2px solid Highlight;
-        outline-offset: 2px;
+    .payment-schedule.mt-6.pt-6.mt-md-7.pt-md-7.mt-lg-9.pt-lg-9.custom-overflow-scrollbar{
+      .table.table--bg-transparent.text-center{
+        thead{
+          tr{
+            th{
+              color: var(--blue-contrast-white);
+            }
+          }
+        }
       }
     }
+
+
+
+ 
 
 
     .card-about-bank__cold-flex.flex-column img {
@@ -998,19 +1026,6 @@
 
 
 
-
-    button .btn.btn-info.w-100.w-lg-auto {
-      background-color: green;
-      color: var(--black-contrast-gray-200);
-      border: 1px solid var(--black-contrast-black-0);
-      transition: background-color 0.2s ease;
-
-      &:hover {
-        background-color: var(--black-contrast-gray-200);
-        border: none;
-        color: var(--black-contrast-black-300);
-      }
-    }
 
 
     .card-about-bank__cold-flex.flex-column img {
@@ -1029,7 +1044,6 @@
     .card-about-bank__col.d-flex.flex-column {
       background: var(--blue-contrast-bg-dark);
     }
-
 
     #linkToList {
       color: var(--blue-contrast-light-1);
@@ -1066,9 +1080,9 @@
 
     .section-currency-exchange__wrapper.collapse {
       background-color: var(--blue-contrast-bg-dark);
-
-
     }
+
+    
 
     //предварительный расчет
     .d-flex.flex-column.gap-4.gap-lg-5.gap-xl-4.bg-dark-0.rounded-3.px-3.py-4.p-md-5.px-lg-6.p-xl-6 {
@@ -1079,6 +1093,9 @@
         color: var(--blue-contrast-bg-dark);
       }
     }
+
+
+
 
     .form-label,
     h4,
@@ -1103,14 +1120,31 @@
     }
 
 
-
-    .purple-70 {
-      color: red;
-    }
-
-
-
-
+    .section-layout.pt-0{
+      .container{
+        .d-flex.align-items-end.ps-lg-6.mb-6.mb-lg-7{
+          .violet-100.d-flex.align-items-center.gap-2.ms-auto{
+            padding: 5px 12px;
+            background-color:var(--blue-contrast-light);
+            border: 1px solid var(--blue-contrast-white);
+            border-radius:4px;
+  
+            .d-none.d-md-inline.text-s.fw-semibold{
+              color: var(--blue-contrast-bg-dark);
+            }
+            .icon.size-m{
+              color: var(--blue-contrast-bg-dark);
+            }
+  
+            &:hover {
+              background-color:var(--blue-contrast-white);
+        
+      
+            }
+          }
+          }
+      
+      }}
 
 
 
@@ -1133,7 +1167,6 @@
       }
     }
 
-
     //офисы и банкоматы
     .btn.btn-link.d-inline-flex.gap-2.align-items-center {
       background: transparent;
@@ -1146,10 +1179,15 @@
       }
     }
 
+    
+    
+
+
 
     .col-12.col-md-6.col-xl-3.d-flex.flex-column.row-gap-3 {
       width: auto;
       align-items: flex-start;
+   padding: 0;
 
       .h4 {
         color: var(--blue-contrast-white);
@@ -1197,7 +1235,8 @@
       background-color: var(--blue-contrast-light);
       color: var(--blue-contrast-bg-dark);
       border: 1px solid var(--blue-contrast-white);
-      min-width: 100%;
+      width: 100%;
+      text-align: center;
 
       &:hover,
       &:focus {
@@ -1210,6 +1249,11 @@
         outline-offset: 2px;
       }
     }
+
+   
+
+
+
 
     //версии 2 кнопки
     .btn.btn-lg-lg.btn-outline-primary.d-flex.gap-2.align-items-center.justify-content-center {
@@ -1247,6 +1291,10 @@
       }
     }
 
+
+    .row.row-gap-6.row-gap-lg-7.gx-md-2.gx-lg-2_5.footer__content {
+      margin: 0;
+    }
 
     //скачать
     .btn-app.btn.btn-primary.d-flex.align-items-center.gap-2.gap-lg-3.justify-content-center {
@@ -1287,6 +1335,8 @@
       }
     }
 
+    
+
     .col-4.d-flex.flex-column.row-gap-2.align-items-start {
       .fw-semibold.dark-100 {
         color: var(--blue-contrast-light);
@@ -1303,7 +1353,6 @@
         }
       }
     }
-
 
     .row.row-gap-7 {
       .text-s.dark-70 {
@@ -1324,7 +1373,6 @@
       border-radius: 0;
     }
 
-
     .chat-bot__btn-close.js-chatbot-close svg {
       color: var(--blue-contrast-light-1);
 
@@ -1342,13 +1390,13 @@
     .chatbot-polygon__content.chat-bot__popover-content.bg-blue-10.d-flex.flex-column.gap-3.gap-lg-4 {
       border: 1px solid var(--blue-contrast-light-100);
       background-color: var(--blue-contrast-bg-dark);
-      color: var(--blue-contrast-light-1);
+      
 
       .d-flex.gap-2.align-items-center.text-l {
-
+        color: var(--blue-contrast-white);
         &:hover,
         &:focus {
-          color: var(--blue-contrast-white);
+          color: var(--blue-contrast-light-1);
         }
 
         &:focus {
@@ -1357,6 +1405,8 @@
         }
       }
     }
+
+    
 
 
 
@@ -1375,7 +1425,6 @@
         background-color: var(--blue-contrast-light);
         color: var(--blue-contrast-bg-dark);
 
-
         &:hover,
         &:focus {
           background-color: var(--blue-contrast-white);
@@ -1389,13 +1438,10 @@
       }
     }
 
-
     //atms.html
-
     .map-content__header.d-flex.flex-column.row-gap-4.row-gap-md-6 {
       background-color: var(--blue-contrast-bg);
     }
-
 
     .d-flex.flex-column.row-gap-3 {
       h4 {
@@ -1419,10 +1465,8 @@
         color: var(--blue-contrast-bg-dark);
       }
 
-
       &:hover,
       &:focus {
-
         background-color: var(--blue-contrast-light);
 
         .card-office__body.d-flex.flex-grow-1.flex-column.row-gap-2.row-gap-md-3 {
@@ -1431,7 +1475,6 @@
           .card-office__address.text-s.m-0.dark-70 {
             color: var(--blue-contrast-bg-dark);
           }
-
         }
       }
 
@@ -1492,7 +1535,6 @@
         outline: 2px solid Highlight;
         outline-offset: 2px;
       }
-
     }
 
     .d-flex.flex-column.row-gap-6 {
@@ -1504,8 +1546,6 @@
     }
 
     //AWARDS page
-
-
     .bg-linear-blue {
       background: none;
       background-color: var(--blue-contrast-bg);
@@ -1531,7 +1571,6 @@
         color: var(--blue-contrast-white);
         text-decoration: underline;
       }
-
     }
 
 
@@ -1700,6 +1739,7 @@ background-color: var(--blue-contrast-white);
 
     .banner-product__footer.row.gx-md-2.gx-lg-2_5.row-gap-4.row-gap-lg-6.mt-6.mt-lg-16.mt-xl-26{
       .col-12.col-md-6.col-xl-3{
+  
 
         .benefit.d-flex.gap-3.flex-column{
           background-color: var(--blue-contrast-light-1);
@@ -1714,6 +1754,8 @@ background-color: var(--blue-contrast-white);
       }
     }
 
+    .banner-product__footer.row.gx-md-2.gx-lg-2_5.row-gap-4.row-gap-lg-6.mt-6.mt-lg-16.mt-xl-26{
+      .col-12.col-md-6.col-xl-3{
 
 
 //карточки
@@ -1865,7 +1907,6 @@ background-color: var(--blue-contrast-white);
         }
       }
     }
-
 
     //карточки
     .container{
@@ -2045,7 +2086,6 @@ background-color: var(--blue-contrast-white);
 
 
 
-
     .d-flex.flex-column.gap-3 {
       color: var(--blue-contrast-white);
     }
@@ -2093,9 +2133,7 @@ background-color: var(--blue-contrast-white);
       background-color: var(--blue-contrast-bg);
     }
 
-    .helper__wrapper.d-flex.flex-column.flex-sm-row.align-items-start.align-items-sm-center.gap-4.gap-lg-6 .helper.card-benefit__image {
-      background-color: green;
-    }
+
 
     .card-help__description.text-s-m.m-0 {
       color: var(--blue-contrast-light);
@@ -2180,7 +2218,7 @@ background-color: var(--blue-contrast-white);
     }
 
     .list li:before {
-      background: var(--blue-contrast-light);
+      background: var(--blue-contrast-bg-dark);
     }
 
     .row.row-gap-6 h4 {
@@ -2241,6 +2279,7 @@ background-color: var(--blue-contrast-white);
       background-color: var(--blue-contrast-light-1) !important;
     }
 
+    
 
     .card-feedback.position-relative.overflow-hidden.d-inline-flex.px-3.py-4.p-sm-5.p-lg-6.w-100.bg-white.h-100 {
       background: var(--blue-contrast-bg-dark);
@@ -2304,7 +2343,7 @@ background-color: var(--blue-contrast-white);
 
     .card-feedback__inner::after {
       background: none;
-      background-color: var(--blue-contrast-bg);
+      background-color: var(--blue-contrast-bg-dark);
     }
 
     .caption-m.chip.chip--outlined {
@@ -2331,7 +2370,6 @@ background-color: var(--blue-contrast-white);
       background: none;
     }
 
-
     .d-flex.flex-column.flex-md-row.p-0.gap-3.gap-md-4 {
       gap: 1rem;
 
@@ -2345,7 +2383,6 @@ background-color: var(--blue-contrast-white);
         overflow: hidden;
       }
     }
-
 
     //кнопка перезвоните мне
     .d-flex.flex-column.flex-md-row.p-0.gap-3.gap-md-4 {
@@ -2364,7 +2401,6 @@ background-color: var(--blue-contrast-white);
           outline: 2px solid Highlight;
           outline-offset: 2px;
         }
-
       }
 
 
@@ -2492,7 +2528,6 @@ background-color: var(--blue-contrast-white);
       padding: 5px 12px;
     }
 
-
     .document-download {
       border-bottom: 1px dashed var(--black-contrast-black-0)
     }
@@ -2506,6 +2541,10 @@ background-color: var(--blue-contrast-white);
     .bg-gradient-violet {
       background: none;
     }
+
+
+
+
 
     .select2-selection__rendered {
       color: var(--blue-contrast-white) !important;
@@ -2522,6 +2561,9 @@ background-color: var(--blue-contrast-white);
 
     .select2-container .select2-selection--single {
       border: 1px solid var(--blue-contrast-bg);
+
+
+
     }
 
 
@@ -2555,7 +2597,6 @@ background-color: var(--blue-contrast-white);
             color: var(--blue-contrast-light);
             text-decoration: underline;
           }
-
         }
       }
     }
@@ -2565,7 +2606,6 @@ background-color: var(--blue-contrast-white);
     }
 
     //cards.html
-
     .card-product-list.overflow-hidden.position-relative.mh-100.h-auto.bg-dark-10.w-100.pt-7.pb-6.py-sm-9.py-md-9.py-lg-11.px-3.px-sm-4.px-md-5.px-lg-6.pe-xxl-11 {
       background-color: var(--blue-contrast-light-1);
     }
@@ -2588,6 +2628,11 @@ background-color: var(--blue-contrast-white);
     }
 
 
+    .tabs-panel__list-item-link.nav-link.bg-transparent.section-catalog__tab-list-item,
+    .tabs-panel__list-item-link.nav-link.bg-transparent{
+      background-color: var(--blue-contrast-light-1) ;
+      color: var(--blue-contrast-bg-dark);
+      border-color: var(--blue-contrast-white);
 
 
     .tabs-panel__list-item-link.nav-link.bg-transparent.active.section-catalog__tab-list-item ,
@@ -2642,7 +2687,6 @@ background-color: var(--blue-contrast-white);
       }
     }
 
-
     .card-product-list__condition-list.w-100.w-lg-auto.d-flex.justify-content-between.justify-content-lg-start.flex-column.flex-sm-row.flex-wrap.row-gap-4.row-gap-sm-6.row-gap-lg-6.row-gap-xxl-6.gap-xl-12.gap-xxl-16{
       .card-product-list__condition.d-flex.flex-column.gap-2.w-100.w-sm-50.w-xl-auto{
         .text-m.dark-70{
@@ -2690,7 +2734,6 @@ background-color: var(--blue-contrast-white);
       }
     }
 
-
     //career-vacancy.html
 
     .h2.mb-5.mb-lg-6 {
@@ -2721,11 +2764,9 @@ background-color: var(--blue-contrast-white);
       color: var(--blue-contrast-white);
     }
 
-
     .card-contact.overflow-hidden.position-relative.bg-linear-blue {
       background-color: var(--blue-contrast-bg-dark);
     }
-
 
     .card-contact__contacts.d-flex.flex-column.flex-lg-row.flex-lg-wrap.gap-4 {
       .card-contact__link.dark-0.gap-3.h5.fw-normal.text-white {
@@ -2825,6 +2866,8 @@ background-color: var(--blue-contrast-white);
       }
     }
 
+
+
     .pattern-bg.d-none.d-md-block.pattern-bg--position-sm-top {
       display: none !important;
     }
@@ -2838,46 +2881,88 @@ background-color: var(--blue-contrast-white);
       border-bottom: 1px dashed var(--blue-contrast-white);
     }
 
-    .form-control.form-control-lg.text-l:focus {
-      border-color: var(--blue-contrast-light);
+     .form-control.form-control-lg.text-l:focus  {
+      border: 2px solid var(--blue-contrast-light);
+      border-left: none;
 
+   }
+   
+
+    .input-group.flex-nowrap.d-none.d-lg-flex:focus-within .input-group-icon {
+      border: 2px solid var(--blue-contrast-light);
     }
+    
 
     .input-group-icon {
       border: 1px solid var(--blue-contrast-bg-dark);
 
     }
 
+
+    .input-group.flex-nowrap.d-none.d-lg-flex:focus-within .input-group-icon.bg-transparent {
+      background-color:var(--blue-contrast-white) !important;
+      border: 2px solid var(--blue-contrast-light);
+
+      .icon.violet-100{
+        svg {
+          color:var(--blue-contrast-bg-dark);
+        }
+      }
+  
+    }
+
+  
+    .input-group-icon.bg-transparent{
+      border: 2px solid var(--blue-contrast-light);
+      border-right:none;
+
+      .icon.violet-100{
+        svg {
+          color:var(--blue-contrast-light);
+        }
+      }
+    }
+
+    .form-control.form-control-lg.text-l.bg-transparent{
+      border: 2px solid var(--blue-contrast-light);
+      border-left:none;
+    }
+
+
+
     .page-item {
       .page-link {
-        --bs-pagination-active-bg: var(--blue-contrast-light);
+        color: var(--blue-contrast-bg-dark);
+        border:1px solid var(--blue-contrast-white);
+        --bs-pagination-active-bg: var(--blue-contrast-light-1);
         --bs-pagination-active-border-color: var(--blue-contrast-white) --bs-pagination-border-radius: 4px;
 
         .icon.size-m {
           color: var(--blue-contrast-bg-dark);
         }
 
-        &:hover,
-        &:focus {
-
-          --bs-pagination-hover-bg: var(--blue-contrast-light-1);
-          --bs-pagination-active-bg: var(--black-contrast-black-300) --bs-pagination-active-border-color:var(--blue-contrast-white) --bs-pagination-border-radius: 4px;
+        &:hover
+        {
+color:var(--blue-contrast-bg-dark);
+  
+          --bs-pagination-hover-bg: var(--blue-contrast-light);
+ --bs-pagination-active-border-color:var(--blue-contrast-white) --bs-pagination-border-radius: 4px;
         }
 
         &:focus {
           outline: 2px solid Highlight;
           outline-offset: 2px;
+          background-color: var(--blue-contrast-light);
         }
 
         &:active {
-          background-color: var(--blue-contrast-light-100);
+          color:var(--blue-contrast-white) ;
+          background-color: var(--blue-contrast-light);
         }
 
-        &:active {
-          background-color: var(--blue-contrast-light-100);
-        }
 
         &.active {
+          color:var(--blue-contrast-white) ;
           background-color: var(--blue-contrast-light);
           --bs-pagination-active-bg: var(--blue-contrast-light);
           --bs-pagination-active-border-color: var(--blue-contrast-white) --bs-pagination-border-radius: 4px;
@@ -2885,6 +2970,16 @@ background-color: var(--blue-contrast-white);
       }
     }
 
+
+
+    .d-flex.flex-column.flex-md-row.gap-4.gap-md-3.gap-lg-6.align-items-start.align-items-md-center.justify-content-lg-between{
+      justify-content:flex-start !important;
+    }
+
+    .h2.mb-4.mb-md-5.mb-lg-6{
+      color:var(--blue-contrast-white) ;
+    }
+    
     //cashback.html
 
     .section-layout.bg-blue-10 {
@@ -2933,6 +3028,51 @@ background-color: var(--blue-contrast-white);
     }
 
 
+    .row.row-gap-4.row-gap-md-6.row-gap-lg-7.px-lg-6 {
+      .col-12 {
+        .w-100 {
+          .input-group.flex-nowrap.d-none.d-lg-flex {
+            .input-group-icon {
+              border: 1px solid var(--blue-contrast-white);
+              border-right: none;
+              background-color: transparent;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+    
+              .icon.violet-100 svg {
+                color: var(--blue-contrast-white);
+                transition: color 0.3s ease;
+              }
+            }
+    
+            .form-control.form-control-lg.text-l {
+              border: 1px solid var(--blue-contrast-white);
+              border-left: none;
+              transition: border-color 0.3s ease;
+            }
+            &:has(.form-control:focus) {
+              .input-group-icon {
+                background-color: var(--blue-contrast-white) !important;
+                border-color: var(--blue-contrast-light) !important;
+              }
+    
+              .form-control.form-control-lg.text-l {
+                border-color: var(--blue-contrast-light) !important;
+              }
+    
+              .icon.violet-100 svg {
+                color: var(--blue-contrast-bg-dark);
+              }
+            }
+          }
+        }
+      }
+    }
+    
+    
+    
+
 
 
 
@@ -2964,6 +3104,7 @@ background-color: var(--blue-contrast-white);
         outline: 2px solid Highlight;
         outline-offset: 2px;
       }
+    }
 
     }
 
@@ -2987,14 +3128,65 @@ background-color: var(--blue-contrast-white);
       }
     }
 
+    //contribution-detail.html
+    .mb-0.card-about__description.text-white-50 {
+      color: var(--blue-contrast-white) !important;
+    }
 
 
+    
 
     //contribution-detail.html
 
     .mb-0.card-about__description.text-white-50 {
       color: var(--blue-contrast-white) !important;
+    }//добавить пополнение
+    .d-flex.flex-column.align-items-start.row-gap-4.row-gap-md-6{
+    .btn.btn-link.btn-sm.btn-icon.js-add-replenishment{
+      justify-content: center!important;
+      max-width: 200px !important;
+      padding:24px 12px !important;
+      .icon.size-s{
+        color: var(--blue-contrast-bg-dark)
+      }
     }
+  }
+
+
+  .d-flex.flex-column.row-gap-4.row-gap-md-6{
+  .btn.btn-link.btn-sm.btn-icon.js-add-replenishment{
+    justify-content: center!important;
+    max-width: 200px !important;
+    padding:24px 12px !important;
+    .icon.size-s{
+      color: var(--blue-contrast-bg-dark)
+    }
+  }}
+
+
+  
+
+  .card-calculate-result__footer{
+    .btn.btn-link.btn-sm.btn-icon.mt-md-2.mt-lg-4.align-self-center{
+      color: var(--blue-contrast-white);
+      background-color:var(--blue-contrast-light-100);
+      justify-content: center !important;
+      max-width: 200px !important;
+      padding:24px 12px !important;
+
+      &:hover {
+        background-color:var(--blue-contrast-bg-dark)
+      }
+    }
+  }
+
+  .d-flex.flex-column.row-gap-2{
+    .form-label.mb-0{
+      color: var(--blue-contrast-white);
+      padding: 0 0 0 16px;
+      font-weight: 400;
+    }
+  }
 
     .banner-product {
       --border-top-color: var(--blue-contrast-white)
@@ -3009,6 +3201,7 @@ background-color: var(--blue-contrast-white);
     }
 
 
+    
 
 
 
@@ -3110,8 +3303,8 @@ background-color: var(--blue-contrast-white);
     .accordion-header {
       .accordion-button {
         color: var(--blue-contrast-white);
-        padding-left: 25px;
-        background-color:  var(--blue-contrast-light);
+        padding-left: 15px;
+        background-color:  var(--blue-contrast-bg-dark);
 
         &::after {
           filter: invert(0) brightness(100);
@@ -3130,9 +3323,12 @@ background-color: var(--blue-contrast-white);
       }
     }
 
+    
 
     .card-help.d-inline-flex.p-3.p-sm-5.p-lg-6.w-100.bg-white.h-100 {
       background-color: var(--blue-contrast-light-1) !important;
+      justify-content: center; 
+      align-items: center; 
     }
 
     .card-about.bg-linear-blue {
@@ -3206,6 +3402,7 @@ background-color: var(--blue-contrast-white);
       .card-benefit__description.m-0.text-m {
         color: var(--blue-contrast-bg-dark);
       }
+    }
 
     }
 
@@ -3420,6 +3617,12 @@ justify-content: center !important;
 
 
 
+    .card-promo.card-promo--heavy-blue{
+      .card-promo__wrapper{
+        background-color: var(--blue-contrast-bg-dark);
+      }
+    }
+
 
 
     .helper__content.text-l {
@@ -3468,6 +3671,22 @@ justify-content: center !important;
       display: none;
     }
 
+
+    .section-layout{
+      .container{
+        .row{
+          .col-12{
+            .polygon-container.js-polygon-container{
+              .polygon-container__content{
+                .helper.bg-dark-10{
+                  background-color: var(--blue-contrast-light-1);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
 
 
 
@@ -3543,6 +3762,7 @@ justify-content: center !important;
           .row.row-gap-6{
             .benefit.d-flex.gap-3.flex-column.flex-md-row.align-items-md-center.gap-md-4.gap-lg-6{
               border:1px solid var(--blue-contrast-white);
+              background-color: var(--blue-contrast-bg-dark);
               .icon.size-xl{
                 filter: brightness(0) invert(1);
     }
@@ -3708,7 +3928,7 @@ justify-content: center !important;
     //leasing.html
     .card-promo.card-promo--heavy-purple {
       background: none;
-      background-color: var(--blue-contrast-medium);
+      background-color: var(--blue-contrast-bg-dark);
     }
 
     .mb-4.mb-md-6,
@@ -3847,11 +4067,139 @@ justify-content: center !important;
     }
 
 
+   
+    
+
+
 
 
     .stepper-item__number-value{
+      color:var(--blue-contrast-bg-dark);
+      margin-top: 5px;
       font-size: 1.5rem !important;
     }
+
+    
+
+    .tab-content.mt-4.mt-md-6.mt-lg-7{
+      .tab-pane.fade.active.show{
+  .col-12.col-md-6.col-lg-4{
+    .benefit.d-flex.gap-3.flex-column.flex-md-row.align-items-md-center.gap-md-4.gap-lg-6{
+      background-color:var(--blue-contrast-bg-dark);
+      border-color:var(--blue-contrast-white);
+      .icon.size-lxl{
+        filter: brightness(100); 
+      }
+    }
+    }
+      }
+    }
+
+
+    .tab-content.mt-4.mt-md-6.mt-lg-7{
+      .tab-pane.fade.active.show{
+        .row.row-gap-6.row-gap-lg-7{
+          .col-12.col-md-6.col-xl-4{
+            .benefit.d-flex.gap-3.flex-column.flex-md-row.align-items-md-center.gap-md-4.gap-lg-6{
+              border:1px solid  var(--blue-contrast-white);
+              .benefit__content.d-flex.flex-column.gap-3{
+               
+                .benefit__title.fw-semibold{
+                  color:var(--blue-contrast-bg-dark);
+                
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    
+    .d-flex.align-items-center.justify-content-between.px-lg-6.mb-6.mb-lg-7{
+      .btn.btn-sm.btn-link.btn-icon.d-none.d-md-inline-flex{
+        background-color:var(--blue-contrast-light);
+        color:var(--blue-contrast-bg-dark);
+        border:1px solid var(--blue-contrast-white);
+        .icon.size-s{
+          color:var(--blue-contrast-bg-dark);
+        }
+
+        &:hover {
+          background-color:var(--blue-contrast-white);
+        }
+      }
+    }
+
+
+    // .collapse.d-md-block.mt-4.mt-md-6.mt-lg-7{
+    //   .row.px-lg-6{
+    //     .col-12{
+    //       .tab-content.mt-4.mt-md-6.mt-lg-7{
+            
+    //         #additional-info-1{
+    //     display: flex;
+    //         }
+    //       }
+    //     }
+    //   }
+    // }
+
+
+  
+
+    .collapse.d-md-block.mt-4.mt-md-6.mt-lg-7{
+      .row.px-lg-6.row-gap-6{
+        .col-12.col-lg-4{
+      .d-flex.flex-column.flex-md-row.flex-lg-column.gap-2.gap-md-4.gap-lg-3.align-items-start.align-items-md-center.align-items-lg-start.pe-xxl-11{
+            border:1px solid var(--blue-contrast-white);
+            height: 250px;
+            background-color:var(--blue-contrast-bg-dark);
+            
+          }
+        }
+      }
+    }
+
+
+
+    .tab-content.mt-4.mt-md-6.mt-lg-7.px-lg-6{
+      .tab-pane.fade.active.show{
+        .row.row-gap-6.row-gap-lg-7{
+          
+
+          .col-12.col-md-6{
+            .benefit.d-flex.gap-3.flex-column.flex-md-row.align-items-md-center.gap-md-4.gap-lg-6{
+              background-color:var(--blue-contrast-bg-dark);
+              border-color:var(--blue-contrast-white);
+              .icon.size-xl{
+                filter: brightness(100);
+              }
+              .benefit__content.d-flex.flex-column.gap-3{
+
+                .benefit__title.fw-semibold{
+                  color:var(--blue-contrast-white);
+                }
+                
+              }
+            }
+          }
+          .col-12.col-md-6.col-lg-4{
+            .benefit.d-flex.gap-3.flex-column.flex-md-row.align-items-md-center.gap-md-4.gap-lg-6{
+              background-color:var(--blue-contrast-bg-dark);
+              .benefit__content.d-flex.flex-column.gap-3{
+
+                .benefit__title.fw-semibold{    
+                  color:var(--blue-contrast-white);
+                }
+            
+              }
+            }
+          }
+        }
+      }
+    }
+
+
 
 
 
@@ -4083,7 +4431,6 @@ justify-content: center !important;
       }
     }
 
-
     .benefit__description.w-100.text-m {
       .list li {
         color: var(--blue-contrast-bg-dark);
@@ -4093,7 +4440,6 @@ justify-content: center !important;
     .col-12.col-lg-8 h4 {
       color: var(--blue-contrast-white);
     }
-
 
     //скачать
     .stepper-item.stepper-item--color-violet {
@@ -4146,7 +4492,11 @@ justify-content: center !important;
     //mortgage-primary.html
 
     .select2-container .select2-selection--single {
-      border-color: var(--blue-contrast-bg-dark) !important;
+      border-color: var(--blue-contrast-white)!important;
+      &:focus {
+        border: 1px solid var(--blue-contrast-light) !important;
+        box-shadow: 0 0 5px var(--blue-contrast-light) !important;
+      }
     }
 
     .input-slider-text__input:focus {
@@ -4212,9 +4562,11 @@ justify-content: center !important;
 
     .card-tariff__content.d-flex.flex-column.gap-4 {
       .d-flex.flex-column.gap-2 {
+        text-align: center;
         border-bottom: 1px dashed var(--blue-contrast-white);
 
         .text-s.dark-70 {
+          text-align: center;
           color: var(--blue-contrast-light);
         }
       }
@@ -4240,11 +4592,17 @@ justify-content: center !important;
       }
     }
 
+    
+
     //msb-cooperation-with-funds.html
     .card-benefit.d-inline-flex.px-3.px-sm-5.px-lg-6.p-4.p-sm-5.p-lg-6.w-100.bg-white {
       background-color: var(--blue-contrast-light-1) !important;
     }
 
+
+    .border-yellow{
+      border-color:var(--blue-contrast-white)!important;
+    }
 
 
     .bg-heavy-violet {
@@ -4267,9 +4625,6 @@ justify-content: center !important;
       }
     }
 
-    .stepper-item--color-yellow.stepper-item__number-value {
-      color: red !important;
-    }
 
     .tag.tag--outline.tag--triangle-absolute {
       .tag__content.text-s.fw-semibold.mw-100.w-sm-auto {
@@ -4333,6 +4688,8 @@ justify-content: center !important;
     .card-feedback__title {
       color: var(--blue-contrast-white);
     }
+
+    
 
 
 
@@ -4464,7 +4821,6 @@ justify-content: center !important;
       color: var(--blue-contrast-white);
       background-color: var(--blue-contrast-light-100);
 
-
       &:hover,
       &:focus {
         color: var(--blue-contrast-white);
@@ -4484,7 +4840,6 @@ justify-content: center !important;
       background-color: var(--blue-contrast-medium);
       color: var(--blue-contrast-white);
     }
-
 
     //открыть счет
     .d-flex.flex-column.flex-md-row.align-items-md-center.gap-3.gap-md-6 {
@@ -4531,7 +4886,6 @@ justify-content: center !important;
     }
 
     .card-product.card-product {
-
       &--undefined.bg-dark-10.h-auto.flex-basis-100.flex-basis-md-25.flex-grow-1.bg-white,
       &--undefined.bg-dark-10.w-100.w-xl-auto.flex-basis-100.flex-basis-xl-25.h-auto.flex-grow-1.bg-white,
       &--size-height-auto.bg-dark-10.flex-basis-100.flex-basis-md-25.h-auto.flex-grow-1.bg-white,
@@ -4582,6 +4936,31 @@ justify-content: center !important;
         &:focus {
           outline: 2px solid Highlight;
           outline-offset: 2px;
+        }
+      }
+    }
+
+    
+
+    .card-news__img.position-relative.z-2 {
+    display: none;
+    }
+
+
+    .tab-content.mt-4.mt-md-6.mt-lg-7{
+      .tab-pane.fade.active.show{
+        .col-12.col-md-6{
+          .benefit.d-flex.gap-3.flex-column.flex-md-row.align-items-md-center.gap-md-4.gap-lg-6{
+
+
+background-color:var(--blue-contrast-light-1);
+
+            .benefit__content.d-flex.flex-column.gap-3{
+              .benefit__title.fw-semibold, .benefit__description.w-100.text-m{
+                color: var(--blue-contrast-white);
+              }
+            }
+          }
         }
       }
     }
@@ -4659,7 +5038,6 @@ justify-content: center !important;
       }
     }
 
-
     .card-award.bg-dark-30.h-100 {
       background-color: var(--blue-contrast-light-1);
     }
@@ -4688,7 +5066,6 @@ justify-content: center !important;
       background-color: var(--blue-contrast-light-1) !important;
     }
 
-
     //office-detail.html
 
     .border-top.border-blue10.section-office{
@@ -4702,9 +5079,49 @@ justify-content: center !important;
     }
 
     .map-content__body.d-flex.flex-column.gap-4.gap-md-6 {
-      color: var(--blue-contrast-light-1)
+      color: var(--blue-contrast-light-1);
     }
 
+
+    .accordion.accordion--size-sm{
+      .accordion-item{
+        .accordion-header{
+          .accordion-button{
+            background-color: var(--blue-contrast-bg-dark);
+            &.collapsed{background-color: var(--blue-contrast-bg);}
+      .text-l.fw-semibold{
+        color: var(--blue-contrast-white);
+}
+          }
+        }
+      }
+    }
+
+
+    .map-content__body.d-flex.flex-column.gap-2.gap-md-3{
+.card-office.d-flex.col-gap-2.align-items-center{
+  .icon.size-m.d-none.d-md-block{
+    color: var(--blue-contrast-bg-dark);
+  }
+}
+    }
+
+
+    .map-content__header.d-flex.flex-column.row-gap-4.row-gap-md-6{
+      .d-flex.flex-column.row-gap-3{
+        .d-flex.gap-2{
+          .flex-grow-1{
+            .input-group.input-group--size-small.flex-nowrap{
+              .input-group-icon , .form-control{
+                border:none;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    
 
 
     .card-contact__image {
@@ -4843,7 +5260,6 @@ justify-content: center !important;
       background: var(--blue-contrast-white)
     }
 
-
     .border-tertiary {
       border-color: var(--blue-contrast-white) !important;
     }
@@ -4950,7 +5366,6 @@ justify-content: center !important;
       background-color: var(--blue-contrast-bg-dark);
     }
 
-
     .card {
       background-color: var(--black-contrast-black-300);
     }
@@ -5010,7 +5425,6 @@ justify-content: center !important;
       }
     }
 
-
     .mobile-menu {
       background-color: var(--blue-contrast-bg);
     }
@@ -5043,7 +5457,6 @@ justify-content: center !important;
     }
 
     .mobile-menu__bank-apps {
-
       .btn.btn-primary.w-100.dropdown-toggle,
       .btn.btn-outline-primary.d-inline-flex.gap-2.align-items-center.justify-content-center {
         background-color: var(--blue-contrast-light);
@@ -5062,6 +5475,7 @@ justify-content: center !important;
       }
     }
 
+    .mobile-menu__bank-contact {
 
     .mobile-menu__bank-contact {
 
@@ -5147,6 +5561,10 @@ justify-content: center !important;
         }
       }
     }
+    
+    
+
+ 
 
     .upload-file__box.p-3.p-md-4 {
       .btn.btn-link.btn-icon {
@@ -5197,7 +5615,6 @@ justify-content: center !important;
       }
     }
 
-
     .d-flex.flex-column.align-items-start.row-gap-3 {
       .btn.btn-primary {
         background-color: var(--blue-contrast-light-1);
@@ -5219,7 +5636,6 @@ justify-content: center !important;
     .modal-footer.border-0.justify-content-md-center {
       background-color: var(--blue-contrast-bg-dark);
     }
-
 
     .btn-nav-panel--primary {
       background: none;

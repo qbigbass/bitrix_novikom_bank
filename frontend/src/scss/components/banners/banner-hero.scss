@@ -19,17 +19,34 @@
         height: 100%;
         position: relative;
 
-
         @include use-media(desktop) {
-            max-width: 120rem;
             margin: 0 auto;
         }
 
-        & .swiper-slide {
-            //height: 100%;
-            min-height: 30rem; //480px
+    & .swiper-slide {
+        //height: 100%;
+        min-height: 30rem; //480px
+
+        @include use-media(desktop) {
+            display: flex;
+            justify-content: center;
+        }
+
+        .banner-hero-content {
+            @include use-media(desktop) {
+                max-width: 120rem;
+            }
         }
     }
+
+    .banner-hero__thumbs,
+    .banner-hero-controls,
+    .banner-hero-pagination {
+        @include use-media(desktop) {
+            max-width: 120rem;
+        }
+    }
+  }
 
     &__bg {
         position: absolute;
