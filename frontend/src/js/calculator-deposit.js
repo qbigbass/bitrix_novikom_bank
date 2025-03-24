@@ -623,8 +623,10 @@ const getDepositValues = (STATE) => {
 
     STATE.minPeriod = findMinValue('periodFrom', STATE.filteredData);
     STATE.maxPeriod = findMaxValue('periodTo', STATE.filteredData);
+    STATE.periodDefault = findDefaultValue('periodDefault', STATE.filteredData[0], {min: STATE.minPeriod, max: STATE.maxPeriod});
     STATE.minAmount = findMinValue('sumFrom', STATE.filteredData);
     STATE.maxAmount = findMaxValue('sumTo', STATE.filteredData);
+    STATE.amountDefault = findDefaultValue('sumDefault', STATE.filteredData[0], {min: STATE.minAmount, max: STATE.maxAmount});
 
     if (STATE.minPeriod !== STATE.maxPeriod) {
         STATE.steps = getStepsPeriod(STATE);
@@ -632,8 +634,8 @@ const getDepositValues = (STATE) => {
         STATE.steps = '';
     }
 
-    STATE.amount = STATE.minAmount;
-    STATE.period = STATE.minPeriod;
+    STATE.amount = STATE.amountDefault;
+    STATE.period = STATE.periodDefault;
 }
 
 const setDepositValues = (STATE, currencyTrigger) => {
@@ -671,11 +673,12 @@ const setDepositValues = (STATE, currencyTrigger) => {
             STATE.elements.inputPeriodWrapper.setAttribute('data-steps', STATE.steps);
             editButton.classList.add(CLASSES_DEPOSIT.hide);
         }
+        STATE.elements.inputPeriodWrapper.setAttribute('data-start-value', STATE.periodDefault);
         initInputSlider([STATE.elements.inputPeriodWrapper]);
         STATE.period = getPeriodValue(STATE.elements.inputPeriod);
     } else { // если период вклада не меняется
         STATE.elements.inputPeriodWrapper.classList.add(CLASSES_DEPOSIT.hide);
-        STATE.period = STATE.minPeriod;
+        STATE.period = STATE.periodDefault;
     }
 
     STATE.elements.inputAmountWrapper.setAttribute('data-min-value', STATE.minAmount);
