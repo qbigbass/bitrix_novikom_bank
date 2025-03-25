@@ -707,7 +707,7 @@ const setDepositValues = (STATE, currencyTrigger) => {
     initInputSlider([STATE.elements.inputAmountWrapper]);
 
     const findEndOfTerm = STATE.filteredData.find((item) => item.interestPayment === INTEREST_PAYMENT.endOfTerm);
-    const isRefillable = STATE.filteredData.find((item) => item.refillable === 'Y');
+    const isRefillable = STATE.filteredData.find((item) => item.refillable === true);
 
     if (findEndOfTerm) {
         STATE.elements.inputCapitalizationWrapper.classList.add(CLASSES_DEPOSIT.hide);
