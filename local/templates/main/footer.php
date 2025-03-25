@@ -196,109 +196,43 @@ use Bitrix\Main\Localization\Loc;
             <span class="btn-nav-panel__text"><?=Loc::getMessage('MORTGAGE_BUTTON_TITLE')?></span>
         </a>
     </div>
-    <div class="mobile-main-nav__menu">
-        <div class="mobile-menu">
-            <div class="mobile-menu__header">
-                <?php $APPLICATION->IncludeComponent(
-                    "bitrix:menu",
-                    "main_mobil_menu",
-                    [
-                        "ALLOW_MULTI_SELECT" => "N",
-                        "CHILD_MENU_TYPE" => "left",
-                        "DELAY" => "N",
-                        "MAX_LEVEL" => "1",
-                        "MENU_CACHE_GET_VARS" => [""],
-                        "MENU_CACHE_TIME" => "3600",
-                        "MENU_CACHE_TYPE" => "A",
-                        "MENU_CACHE_USE_GROUPS" => "Y",
-                        "ROOT_MENU_TYPE" => "top",
-                        "USE_EXT" => "N"
-                    ]
-                );?>
-            </div>
-            <div class="mobile-menu__body js-mobile-menu-body">
-                <div class="d-flex flex-column gap-3 gap-md-4">
-                    <form method="get" action="/search/">
-                        <div class="input-group flex-nowrap js-mobile-search">
-                            <span class="input-group-icon" id="input-search-menu">
-                                <span class="icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                        <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-search"></use>
-                                    </svg>
-                                </span>
-                            </span>
-                            <input
-                                class="form-control"
-                                name="q"
-                                type="text"
-                                placeholder="Поиск по сайту"
-                                aria-label="Поиск по сайту"
-                                aria-describedby="input-search-menu"
-                                value="<?= htmlspecialchars($_GET['q'] ?? ''); ?>"
-                            >
-                        </div>
-                    </form>
-                    <div class="mobile-menu__search-content"><span class="dark-70">Популярные запросы:</span>
-                        <div class="d-flex flex-wrap gap-3"><a class="chip text-s" href="#">Зарплатный проект</a><a class="chip text-s" href="#">Зарплатная карта</a><a class="chip text-s" href="#">Расчетный счет</a><a class="chip text-s" href="#">Ипотека в новостройке</a><a class="chip text-s" href="#">Кредит на бизнес</a><a class="chip text-s" href="#">Депозиты</a><a class="chip text-s" href="#">Вклады</a><a class="chip text-s" href="#">Социально-платежная карта МИР</a><a class="chip text-s" href="#">Банковские гарантии</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="mobile-menu__nav">
-                    <?php $APPLICATION->IncludeComponent(
-                        "bitrix:menu",
-                        "main_mobil_submenu",
-                        [
-                            "ALLOW_MULTI_SELECT" => "N",
-                            "CHILD_MENU_TYPE" => "iblock_sections",
-                            "DELAY" => "N",
-                            "MAX_LEVEL" => "2",
-                            "MENU_CACHE_GET_VARS" => [""],
-                            "MENU_CACHE_TIME" => "3600",
-                            "MENU_CACHE_TYPE" => "N",
-                            "MENU_CACHE_USE_GROUPS" => "Y",
-                            "ROOT_MENU_TYPE" => "left",
-                            "USE_EXT" => "Y"
-                        ]
-                    );?>
-                </div>
+    <!-- Меню для адаптива -->
+    <? $APPLICATION->IncludeComponent(
+        "bitrix:menu",
+        "main_mobil_submenu",
+        [
+            "ALLOW_MULTI_SELECT" => "N",
+            "CHILD_MENU_TYPE" => "iblock_sections",
+            "DELAY" => "N",
+            "MAX_LEVEL" => "2",
+            "MENU_CACHE_GET_VARS" => [""],
+            "MENU_CACHE_TIME" => "3600",
+            "MENU_CACHE_TYPE" => "N",
+            "MENU_CACHE_USE_GROUPS" => "Y",
+            "ROOT_MENU_TYPE" => "left",
+            "USE_EXT" => "Y"
+        ]
+    );
+    global $mobileSubMenu;
 
-                <div class="mobile-menu__bank-apps">
-                    <a class="btn btn-outline-primary d-inline-flex gap-2 align-items-center justify-content-center" href="<?=MOBIL_APP_LINK?>">
-                        <svg class="icon size-m" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                            <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-download-small"></use>
-                        </svg>
-                        <?=Loc::getMessage('DOWNLOAD_MOBIL_APP_BUTTON_TITLE')?>
-                    </a>
-                    <div class="dropdown">
-                        <a href="<?=ONLINE_BANK_LINK?>" class="btn btn-primary w-100 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"><?=Loc::getMessage('ONLINE_BUNK_BUTTON_TITLE')?></a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item fw-bold" href="https://online.novikom.ru/#/registration">Для частных лиц</a></li>
-                            <li><a class="dropdown-item fw-bold" href="https://bk.novikom.ru/ru/html/login.html">Для организаций</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="mobile-menu__bank-contact">
-                    <a class="d-flex align-items-center gap-2" href="<?=OFFICES_AND_ATMS_LINK?>">
-                        <span class="icon size-m">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-point"></use>
-                            </svg>
-                        </span>
-                        <span class="fw-bold"><?=Loc::getMessage('OFFICES_AND_ATMS_BUTTON_TITLE')?></span>
-                    </a>
-                    <a class="d-flex align-items-center gap-2" href="tel:<?= clearPhoneNumber(UF_PHONE1) ?>">
-                        <span class="icon size-m">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                                <use xlink:href="/frontend/dist/img/svg-sprite.svg#icon-mobile"></use>
-                            </svg>
-                        </span>
-                        <span class="fw-bold"><?= UF_PHONE1 ?></span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
+    $APPLICATION->IncludeComponent(
+        "bitrix:menu",
+        "main_mobil_menu",
+        [
+            "ALLOW_MULTI_SELECT" => "N",
+            "CHILD_MENU_TYPE" => "left",
+            "DELAY" => "N",
+            "MAX_LEVEL" => "3",
+            "MENU_CACHE_GET_VARS" => [""],
+            "MENU_CACHE_TIME" => "3600",
+            "MENU_CACHE_TYPE" => "A",
+            "MENU_CACHE_USE_GROUPS" => "Y",
+            "ROOT_MENU_TYPE" => "top",
+            "USE_EXT" => "Y",
+            "SUBMENU" => $mobileSubMenu
+        ]
+    );
+    ?>
 </div>
 <?
 /* ChatBot */
