@@ -544,7 +544,7 @@ function initStateDepositCalculator(calculator) {
         });
 }
 
-const getPeriodValue = (input) => {
+const getRangeValue = (input) => {
     const inputSlider = input.closest(ELEMS_DEPOSIT.inputSlider);
     const steps = generateStepsFromAttrs(inputSlider.getAttribute('data-steps') ?? '');
     if (steps.length > 0) {
@@ -644,9 +644,15 @@ const setDepositValues = (STATE, currencyTrigger) => {
         // Добавляем клонированный элемент перед оригинальным
         STATE.elements.inputAmountWrapper.insertAdjacentElement('beforebegin', cloneInputAmount);
         STATE.elements.inputAmountWrapper.remove();
+        // cloneInputAmount.classList.remove(JS_CLASSES.dynamicRange);
+        // cloneInputAmount.querySelectorAll(JS_CLASSES.sliderSteps).forEach((elem) => {
+        //     elem.remove();
+        // });
+        // cloneInputAmount.removeAttribute('data-steps');
         const steps = cloneInputAmount.querySelector(JS_CLASSES.textSteps);
         steps.innerHTML = '';
         STATE.elements.inputAmountWrapper = cloneInputAmount;
+        STATE.elements.inputAmount = STATE.elements.inputAmountWrapper.querySelector(ELEMS_DEPOSIT.inputAmount);
 
         const cloneInputPeriod = STATE.elements.inputPeriodWrapper.cloneNode(true);
         // Добавляем клонированный элемент перед оригинальным
@@ -675,7 +681,7 @@ const setDepositValues = (STATE, currencyTrigger) => {
         }
         STATE.elements.inputPeriodWrapper.setAttribute('data-start-value', STATE.periodDefault);
         initInputSlider([STATE.elements.inputPeriodWrapper]);
-        STATE.period = getPeriodValue(STATE.elements.inputPeriod);
+        STATE.period = getRangeValue(STATE.elements.inputPeriod);
     } else { // если период вклада не меняется
         STATE.elements.inputPeriodWrapper.classList.add(CLASSES_DEPOSIT.hide);
         STATE.period = STATE.periodDefault;
@@ -684,6 +690,12 @@ const setDepositValues = (STATE, currencyTrigger) => {
     STATE.elements.inputAmountWrapper.setAttribute('data-min-value', STATE.minAmount);
     STATE.elements.inputAmountWrapper.setAttribute('data-max-value', STATE.maxAmount);
     STATE.elements.inputAmountWrapper.setAttribute('data-start-value', STATE.amount);
+    // TODO: вынести значение в const, подумать над названием и значением
+    // if (STATE.maxAmount - STATE.minAmount > 1000000) {
+    //     const amountSteps = generateSteps(STATE.minAmount, STATE.maxAmount);
+    //     STATE.elements.inputAmountWrapper.setAttribute('data-steps', amountSteps);
+    //     STATE.elements.inputAmountWrapper.classList.add(JS_CLASSES.dynamicRange);
+    // }
     // показываем или нет валюту
     if (!STATE.showCurrency) {
         STATE.elements.currencyList.innerHTML = '';
@@ -704,6 +716,10 @@ const setDepositValues = (STATE, currencyTrigger) => {
         STATE.elements.inputCapitalizationWrapper.classList.add(CLASSES_DEPOSIT.hide);
         STATE.elements.replenishmentTriggerWrapper.classList.remove(CLASSES_DEPOSIT.hide);
         STATE.capitalization = true;
+        if (STATE.filteredData[0].name === 'Рантье') {
+            STATE.elements.inputCapitalizationWrapper.classList.remove(CLASSES_DEPOSIT.hide);
+            STATE.capitalization = STATE.elements.inputCapitalization.checked;
+        }
     }
 
     // поиск процентной ставки
@@ -717,11 +733,12 @@ const setDepositValues = (STATE, currencyTrigger) => {
 
     STATE.elements.inputAmountWrapper.addEventListener('input', (event) => {
         STATE.amount = event.detail.value;
+        // STATE.amount = getRangeValue(STATE.elements.inputAmount);
         handlerInputDeposit(STATE);
     })
 
     STATE.elements.inputPeriodWrapper.addEventListener('input', () => {
-        STATE.period = getPeriodValue(STATE.elements.inputPeriod);
+        STATE.period = getRangeValue(STATE.elements.inputPeriod);
         handlerInputDeposit(STATE);
     })
 }
@@ -738,11 +755,11 @@ function setDepositTriggerListener(STATE) {
     STATE.elements.inputCapitalization.addEventListener('change', (event) => {
         STATE.capitalization = event.target.checked;
         STATE.filteredData = STATE.calculatorData.filter(item => item.currency === STATE.currency);
-        if (STATE.capitalization) {
-            STATE.filteredData = STATE.filteredData.filter(item => item.interestPayment === INTEREST_PAYMENT.capitalization);
-        } else {
-            STATE.filteredData = STATE.filteredData.filter(item => item.interestPayment === INTEREST_PAYMENT.monthlyPayment);
-        }
+        // if (STATE.capitalization) {
+        //     STATE.filteredData = STATE.filteredData.filter(item => item.interestPayment === INTEREST_PAYMENT.capitalization);
+        // } else {
+        //     STATE.filteredData = STATE.filteredData.filter(item => item.interestPayment === INTEREST_PAYMENT.monthlyPayment);
+        // }
         handlerInputDeposit(STATE);
     })
 }

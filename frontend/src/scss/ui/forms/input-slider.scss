@@ -50,6 +50,18 @@
             cursor: grab;
         }
     }
+
+  &.is-dynamic-range {
+    & .input-slider-text-step {
+      &:not(:first-child):not(:last-child) {
+        display: none;
+      }
+    }
+
+    & .input-slider-step {
+      display: none;
+    }
+  }
 }
 
 .input-slider-text-steps {
