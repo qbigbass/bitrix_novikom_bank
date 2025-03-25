@@ -9,7 +9,8 @@ const JS_CLASSES = {
     textInput: ROOT_JS_CLASS,
     sliderInput: '.js-input-slider-input',
     inputSliderWrapper: '.js-input-slider-wrapper',
-    inputTextWrapper: '.input-slider',
+    inputWrapper: '.input-slider',
+    dynamicRange: 'is-dynamic-range',
 }
 
 const DATA_ATTRS = {
@@ -380,6 +381,7 @@ const normalizeInputTextValue = (value) => {
 const setValueInputText = (state, value, {outsideCall = false, isFocus = false} = {}) => {
     const isInvalid = isNaN(value);
     const adjustedValue = isInvalid ? state.minValue : value;
+    // const inputWrapper = state.elements.root.closest(JS_CLASSES.inputWrapper);
 
     if (state.useSteps && state.disabled) {
         state.value = outsideCall ? adjustedValue : findIndexInRange(state.steps, adjustedValue);
@@ -387,7 +389,14 @@ const setValueInputText = (state, value, {outsideCall = false, isFocus = false} 
         state.value = Math.min(Math.max(adjustedValue, state.minValue), state.maxValue);
     }
 
-    const currentValue = state.useSteps ? state.steps[state.value] : state.value;
+    let currentValue = state.useSteps ? state.steps[state.value] : state.value;
+
+    // if (inputWrapper.classList.contains(JS_CLASSES.dynamicRange) && !outsideCall) {
+    //     state.value = adjustedValue < 50 ? currentValue : adjustedValue;
+    //     currentValue = state.value;
+    // }
+    // console.log('currentValue', currentValue);
+
     state.elements.inputText.setAttribute('value', currentValue);
     state.elements.inputText.value = getFormatedTextByType({value: currentValue, type: state.type, currency: state.elements.activeCurrency}, isFocus);
 }

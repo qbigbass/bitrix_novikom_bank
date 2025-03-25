@@ -463,6 +463,50 @@ function getRates({table = null, id = null, name = null}) {
         })
 }
 
+function generateSteps(min, max) {
+    let steps = [];
+    let current = min;
+
+    while (current < max) {
+        steps.push(current.toString());
+        let step;
+
+        if (current < 50) {
+            step = 5;
+        } else if (current < 100) {
+            step = 50;
+        } else if (current < 1000) {
+            step = 100;
+        } else if (current < 10000) {
+            step = 1000;
+        } else if (current < 100000) {
+            step = 10000;
+        } else if (current < 1000000) {
+            step = 100000;
+        } else if (current < 10000000) {
+            step = 500000;
+        } else if (current < 100000000) {
+            step = 10000000;
+        } else {
+            step = 100000000;
+        }
+
+        // Убедимся, что не превышаем max
+        if (current + step > max) {
+            step = max - current; // Устанавливаем шаг так, чтобы не выйти за пределы
+        }
+
+        current += step;
+    }
+
+
+    // Добавляем последнее значение, если оно не входит в массив
+    if (!steps.includes(max.toString())) {
+        steps.push(max.toString());
+    }
+
+    return steps;
+}
 function checkTitleVisibility() {
     const isTablet = window.matchMedia(`(max-width: ${MEDIA_QUERIES['tablet']})`).matches;
     const titles = document.querySelectorAll('.banner-text__title');
