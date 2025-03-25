@@ -145,6 +145,18 @@
         display: none;
     }
 
+    &__bank {
+        &-contact,
+        &-buttons {
+            display: flex;
+            flex-direction: column;
+
+            &.hidden {
+               display: none;
+            }
+        }
+    }
+
     &__bank-apps,
     &__bank-contact {
         display: flex;
@@ -198,6 +210,11 @@
     }
 
     &__nav {
+        display: none;
+
+        &.is-active {
+            display: block;
+        }
 
         & .accordion-button {
             color: var(--blue-100);
@@ -247,6 +264,34 @@
                     font-size: 1rem;
                     line-height: 1.5;
                 }
+            }
+        }
+    }
+
+    &__tab {
+        white-space: nowrap;
+        color: var(--dark-100);
+        padding: 1em 0;
+        display: inline-block;
+
+        &:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background-color: currentColor;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        &.is-active {
+            color: var(--violet-100);
+
+            &:after {
+                opacity: 1;
+                visibility: visible;
             }
         }
     }

@@ -40,6 +40,7 @@ $asset->addJs('/frontend/dist/js/charts.js');
 $asset->addJs('/frontend/dist/js/inputSlider.js');
 $asset->addJs('/frontend/dist/js/index.js');
 $asset->addJs('/frontend/dist/js/accessibility-panel.js');
+$asset->addJs('/frontend/dist/js/mobileMenu.js');
 
 ?>
 <!DOCTYPE html>
