@@ -94,4 +94,17 @@
       }
     }
   }
+
+  &.bg-dark-10  {
+    span.row {
+      gap: 2.5rem 0;
+    }
+
+    .benefit__description {
+      font-family: $font-family-open-sans;
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 135%;
+    }
+  }
 }
