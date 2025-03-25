@@ -196,7 +196,7 @@ class ProductRatesHandler
             $newItem['sort'] = $this->linkedIblockElements[$item['LINK_']]['sort'];
             $newItem['sumDefault'] = $this->linkedIblockElements[$item['LINK_']]['sumDefault'];
             $newItem['periodDefault'] = $this->linkedIblockElements[$item['LINK_']]['periodDefault'];
-
+            $newItem['refillable'] = $this->linkedIblockElements[$item['LINK_']]['refillable'];
 
             foreach ($item as $key => $value) {
                 if ($key === 'LINK_' || $key === 'NAME') {
@@ -241,6 +241,7 @@ class ProductRatesHandler
         if ($this->table == 'deposits') {
             $data['select']['SUM_DEFAULT'] = 'SUM.VALUE';
             $data['select']['PERIOD_DEFAULT'] = 'PERIOD.VALUE';
+            $data['select']['REFILLABLE_'] = 'REFILLABLE.VALUE';
         }
 
         $elements = $dataClass::getList($data)->fetchAll();
@@ -251,7 +252,8 @@ class ProductRatesHandler
                 'code' => $element['CODE'],
                 'sort' => (int)$element['SORT'],
                 'sumDefault' => !empty($element['SUM_DEFAULT']) ? (int)$element['SUM_DEFAULT'] : null,
-                'periodDefault' => !empty($element['PERIOD_DEFAULT']) ? (int)$element['PERIOD_DEFAULT'] : null
+                'periodDefault' => !empty($element['PERIOD_DEFAULT']) ? (int)$element['PERIOD_DEFAULT'] : null,
+                'refillable' => !empty($element['REFILLABLE_']),
             ];
         }
 
