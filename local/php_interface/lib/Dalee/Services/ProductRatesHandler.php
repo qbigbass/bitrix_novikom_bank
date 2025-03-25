@@ -84,10 +84,10 @@ class ProductRatesHandler
             'deposits' => iblock('deposits'),
             'loans' => iblock('loans'),
             'mortgage' => iblock('mortgage'),
-            'program_bonuses' => iblock('bonus_programs_ru')
+            'program_bonuses' => iblock('cards_detail_pages_ru')
         ];
 
-        $this->linkedIblockElements = $this->getElementsData();
+        $this->linkedIblockElements = isset($this->iblockLinks[$this->table]) ? $this->getElementsData() : [];
 
         $iblockId = $this->getIblockId();
         $this->ratesFetcher = new RatesFetcher($iblockId);
