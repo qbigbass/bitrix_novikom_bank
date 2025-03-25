@@ -707,19 +707,25 @@ const setDepositValues = (STATE, currencyTrigger) => {
     initInputSlider([STATE.elements.inputAmountWrapper]);
 
     const findEndOfTerm = STATE.filteredData.find((item) => item.interestPayment === INTEREST_PAYMENT.endOfTerm);
+    const isRefillable = STATE.filteredData.find((item) => item.refillable === 'Y');
+
     if (findEndOfTerm) {
         STATE.elements.inputCapitalizationWrapper.classList.add(CLASSES_DEPOSIT.hide);
-        STATE.elements.replenishmentTriggerWrapper.classList.add(CLASSES_DEPOSIT.hide);
         STATE.capitalization = false;
 
     } else {
         STATE.elements.inputCapitalizationWrapper.classList.add(CLASSES_DEPOSIT.hide);
-        STATE.elements.replenishmentTriggerWrapper.classList.remove(CLASSES_DEPOSIT.hide);
         STATE.capitalization = true;
         if (STATE.filteredData[0].name === 'Рантье') {
             STATE.elements.inputCapitalizationWrapper.classList.remove(CLASSES_DEPOSIT.hide);
             STATE.capitalization = STATE.elements.inputCapitalization.checked;
         }
+    }
+
+    if (isRefillable) {
+        STATE.elements.replenishmentTriggerWrapper.classList.remove(CLASSES_DEPOSIT.hide);
+    } else {
+        STATE.elements.replenishmentTriggerWrapper.classList.add(CLASSES_DEPOSIT.hide);
     }
 
     // поиск процентной ставки
