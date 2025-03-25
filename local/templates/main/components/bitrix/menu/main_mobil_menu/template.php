@@ -21,7 +21,6 @@ use Bitrix\Main\Localization\Loc;
                                         ><?= $item['TEXT'] ?></a>
                                     <? else:?>
                                         <? $isActive = ($item['SELECTED']) ? ' is-active' : ''; ?>
-
                                         <div class="text-s mobile-menu__tab <?= $isActive ?>" data-tab="tab-<?= $keyFirstLevel ?>">
                                             <span><?= $item['TEXT'] ?></span>
                                         </div>
@@ -70,7 +69,8 @@ use Bitrix\Main\Localization\Loc;
                     </div>
                 </div>
                 <? foreach ($arResult as $keyFirstLevel => $item) : ?>
-                    <div class="mobile-menu__nav" data-list="tab-<?= $keyFirstLevel ?>">
+                    <? $isActive = ($item['SELECTED']) ? ' is-active' : ''; ?>
+                    <div class="mobile-menu__nav <?= $isActive ?>" data-list="tab-<?= $keyFirstLevel ?>">
                         <div class="accordion accordion-flush" id="accordionMenu">
                             <? if (!empty($item['CHILD'])) : ?>
                                 <? foreach ($item['CHILD'] as $keySecondLevel => $itemSecond) : ?>
